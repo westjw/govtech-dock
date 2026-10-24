@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Leveraging Cloud-Based Platforms for Stormwater Utility Billing and Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://muni-link.com/blog/stormwater-utility-billing-software/"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Essential Tools for Municipalities to Manage Utility Billing and Customer Information Efficiently",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://muni-link.com/blog/essential-municipal-utility-billing-tools/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-17",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://muni-link.com/blog/utility-billing-software-improve-collections-payments/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Automation in Utility Billing Accelerates Municipal Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://muni-link.com/blog/how-municipalities-improve-utility-billing-efficiency-software/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What to Look for in Utility Billing Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://muni-link.com/blog/what-to-look-for-in-utility-billing-software/"
   }
  ],
  "profile": {

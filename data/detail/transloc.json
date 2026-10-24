@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "The Last Mile of Rural Health Transformation: Why Fifty Billion Dollars Won\u2019t Fix Rural Access Without Transportation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transloc.com/blog/the-last-mile-of-rural-health-transport-transformation/"
+  },
+  {
    "date": "2026-10-16",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-17",
    "headline": "What Santa Barbara MTD\u2019s Second Stop Teaches Transit Leaders About Scaling a Pilot",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "TransL\u014dc to Exhibit at CPTA Annual Conference & Trade Show 2026, Highlighting Connected Campus Mobility Solutions",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "What a $5 Arts Festival Teaches Transit Leaders About Capacity Planning",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "When the Detour Hits: A Deep Dive on Managing Your Own Routes",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://transloc.com/blog/sedonas-shuttle-model-fixed-route-meets-ondemand-transit/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "The Ride Capacity You Never Actually Had",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://transloc.com/blog/the-ride-capacity-you-never-actually-had/"
   }
  ]
 }

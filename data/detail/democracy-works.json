@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-24",
+   "headline": "Three Weeks of Data Show Voters Getting Ready to Cast Their Ballots",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/three-weeks-of-data-show-voters-getting-ready-to-cast-their-ballots"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-24",
+   "headline": "Democracy Works Responds to Congressional Letter on Election Information and AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/democracy-works-responds-to-congressional-letter-on-election-information-and-ai"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-24",
+   "headline": "Building Voter Confidence: Helping Voters Adapt to Changes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/helping-voters-adapt-to-changes"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "near-h1",
    "first_seen": "2026-10-17",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.democracy.works/news/what-it-takes-to-publish-accurate-election-information"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Powering the Election Information Infrastructure AI Depends On",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.democracy.works/news/infrastructure-ai-depends-on"
-  },
-  {
-   "date": "2026-07-03",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "AI and Our Elections Trust Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.democracy.works/news/ai-and-our-elections-trust-problem"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "What We Learned About Voter Participation in 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.democracy.works/news/what-we-learned-about-voter-participation-in-2025"
   }
  ],
  "profile": {

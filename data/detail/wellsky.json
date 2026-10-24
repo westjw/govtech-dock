@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "time",
+   "first_seen": "2026-10-13",
+   "headline": "Earning it: Why healthcare AI success is built through delivery, not demos.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/resources/on-demand-webinars/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "time",
+   "first_seen": "2026-10-24",
+   "headline": "Ebooks & white papers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/resources/ebooks-white-papers/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -58,15 +76,6 @@
    "date": "2026-10-12",
    "date_source": "time",
    "first_seen": "2026-10-13",
-   "headline": "The FY 2027 hospice final rule: Navigating compliance and payment changes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/resources/on-demand-webinars/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "time",
-   "first_seen": "2026-10-13",
    "headline": "Hospice fraud: What the headlines mean for your agency",
    "kind": "press",
    "kind_rule": null,
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/competitive-bidding-and-more-a-dme-briefing/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Working better together: Lessons from the Health Evolution Summit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/working-better-together-lessons-from-the-health-evolution-summit/"
   }
  ]
 }

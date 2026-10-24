@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-24",
+   "headline": "How to Write a Continuity of Operations Plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/write-continuity-operations-plan-guide"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "index-text",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/emergency-operations-center-software-tips-guide"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "How Emergency Management Software Improves Response Coordination",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/emergency-management-software-dlan"
   }
  ]
 }

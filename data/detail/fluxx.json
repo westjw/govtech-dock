@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Compliance With Federal Grants: Everything You Need To Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/federal-grant-compliance"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fluxx.io/blog/grant-tracking-software-for-nonprofits"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Developing a Grantmaking Policy for Your Foundation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/guide-to-crafting-a-grant-policy"
   }
  ],
  "profile": {

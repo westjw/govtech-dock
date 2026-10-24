@@ -1,7 +1,70 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "From Weighbridge Ticket to Trade: How Traceability Data Makes Material Lots Sellable",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/material-traceability-weighbridge-to-trade/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "og:published",
+   "first_seen": "2026-10-24",
+   "headline": "What is Municipal Solid Waste (MSW)?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/what-is-the-meaning-of-municipal-solid-waste/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "og:published",
+   "first_seen": "2026-10-24",
+   "headline": "Eco-friendly Methods of Solid Waste Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/eco-friendly-solid-waste-management/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "og:published",
+   "first_seen": "2026-10-24",
+   "headline": "What Is Smart Waste Management?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/what-is-smart-waste-management/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Bin Sensors: Revolutionize Your Waste Management for the Better",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/bin-sensors-revolutionize-your-waste-management-for-the-better/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Why Waste Segregation Is More Important Than You Think",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/why-waste-segregation-is-more-important-than-you-think/"
+  },
+  {
    "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Data vs. Waste: Waste Management Compliance Through Evidence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/data-vs-waste-waste-management-compliance-through-evidence/"
+  },
+  {
+   "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "AI Assistants for Municipal Waste Operations: Less Admin, Faster Service",
@@ -21,42 +84,6 @@
   {
    "date": "2026-08-20",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DIWASS Compliance: Obligations, Enforcement and a Practical Checklist",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/diwass-compliance/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DIWASS Requirements: What You Must Submit, When and How",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/diwass-requirements/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is DIWASS? The EU Digital Waste Shipment System, Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/what-is-diwass/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "DIWASS naleving: verplichtingen, handhaving en een praktische checklist",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/nl/blog/diwass-naleving/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "DIWASS vereisten: wat moet u indienen, wanneer en hoe",
    "kind": "press",
@@ -66,47 +93,20 @@
   {
    "date": "2026-08-20",
    "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Wat is DIWASS? Het EU Digital Waste Shipment System uitgelegd",
+   "first_seen": "2026-10-14",
+   "headline": "Smart Waste Management for Municipalities: What Does It Take",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://evreka.co/nl/blog/wat-is-diwass/"
+   "url": "https://evreka.co/blog/smart-waste-management-for-municipalities-what-does-it-take/"
   },
   {
-   "date": "2026-08-10",
+   "date": "2026-08-20",
    "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "AI for Material Traceability: From Plain Language to Chain of Custody",
+   "first_seen": "2026-10-24",
+   "headline": "Selling Recycled Materials in 2026: What the New EU Rules Mean for Sellers and Buyers",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://evreka.co/blog/ai-material-traceability-chain-of-custody/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DIWASS API vs Web Portal",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/diwass-api-vs-web-portal/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "DIWASS API vs Webportaal",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/nl/blog/diwass-api-vs-webportaal/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DIWASS Checklist for Carriers: Waste Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/diwass-checklist-for-carriers-waste-compliance/"
+   "url": "https://evreka.co/blog/selling-recycled-materials-eu-rules-2026/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "53% More Firm Capacity: Closing the Gap in Demand Response\u2019s Final Hour",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/53-more-firm-capacity-closing-the-gap-in-demand-responses-final-hour/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/substation-level-storage-when-to-build-vs-when-to-orchestrate-btm-distributed-energy-resources-ders/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "What is Peak Shaving?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/what-is-peak-shaving/"
   }
  ],
  "profile": {

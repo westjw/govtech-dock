@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Secure Schools service disruption: all services restored",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.secureschools.com/en-gb/blog/secure-schools-service-disruption-resolved"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Secure Schools - PHP Vulnerabilities response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.secureschools.com/en-gb/blog/secure-schools-php-vulnerabilities-response"
+  },
+  {
    "date": "2026-05-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.secureschools.com/en-gb/blog/why-cyber-awareness-matters-for-every-member-of-school-staff"
-  },
-  {
-   "date": "2025-12-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Think Before You Click Poster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.secureschools.com/en-gb/resources/think-before-you-click"
-  },
-  {
-   "date": "2025-12-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Are Your Accounts Secure? Poster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.secureschools.com/en-gb/resources/are-your-accounts-secure"
   }
  ],
  "profile": {

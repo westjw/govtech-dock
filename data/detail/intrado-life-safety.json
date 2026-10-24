@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "The Path to NG9-1-1 Compliance: Whitepaper",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.intrado.com/blog/wp-paths-to-ng911-compliance"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introduces",
    "url": "https://www.intrado.com/blog/intrado-onealert-introduces-french-language-support-for-critical-communications"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Emergency Notification Strategy | Intrado OneAlert\u2122",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.intrado.com/resources/emergency-notification-strategy"
   }
  ],
  "profile": {

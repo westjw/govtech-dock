@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Will Parking Mode Drain Your Car Battery?",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Nexar Beam4 vs Beam2: Which Should You Choose?",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Interior Dash Cam Night Vision: What Rideshare Drivers Need to Know",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Nexar Beam4 vs Nexar One: Which One Should You Buy?",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Nexar Beam4 Review: Features, Pros, and Cons",
    "kind": "press",
@@ -53,6 +53,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getnexar.com/blog/how-to-choose-the-best-4k-dash-cam"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Dash Cam Storage: How Much Memory Do You Need?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getnexar.com/blog/dash-cam-storage-how-much-memory-do-you-really-need"
   },
   {
    "date": "2026-07-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getnexar.com/blog/wireless-dash-cam"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Nexar Beam2 vs Garmin Mini 2: Full Comparison",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getnexar.com/blog/nexar-beam2-vs-garmin-mini-2"
   }
  ],
  "profile": {

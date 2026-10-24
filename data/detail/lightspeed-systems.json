@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "How Schools Can Monitor and Limit Student Screen Time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/blog/how-schools-can-monitor-and-limit-student-screen-time/"
+  },
+  {
    "date": "2026-10-18",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lightspeedsystems.com/en_uk/blog/anonymous-reporting-for-schools-how-to-increase-use/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Proving Screen Time ROI: What Boards and Parents Actually Want to See",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/blog/screen-time-roi-lightspeed-insight/"
   }
  ],
  "profile": {

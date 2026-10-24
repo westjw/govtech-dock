@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Mask Student Data From Vendors, Not From Teachers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/mask-student-data-from-vendors-not-from-teachers"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "and October 13, 2026",
    "kind": "press",
@@ -28,8 +37,8 @@
    "url": "https://www.classlink.com/blog/classlink-products-oct-2026"
   },
   {
-   "date": "2026-09-10",
-   "date_source": "index-text",
+   "date": "2026-09-17",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "and September 10, 2026",
    "kind": "press",
@@ -37,13 +46,22 @@
    "url": "https://www.classlink.com/blog/partnering-with-classlink-sep-2026"
   },
   {
-   "date": "2026-09-10",
-   "date_source": "index-text",
+   "date": "2026-09-17",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "and September 10, 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.classlink.com/blog/keeping-up-with-clon-sep-2026"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Salena Rabidoux and August 28, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/beyond-the-deadline-what-ada-title-ii-means-for-higher-education"
   },
   {
    "date": "2026-09-10",
@@ -53,15 +71,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.classlink.com/blog/a-new-and-improved-prodigy-app-is-available"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Salena Rabidoux and August 28, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/beyond-the-deadline-what-ada-title-ii-means-for-higher-education"
   },
   {
    "date": "2026-08-14",
@@ -82,8 +91,8 @@
    "url": "https://www.classlink.com/blog/partnering-with-classlink-aug-2026"
   },
   {
-   "date": "2026-07-09",
-   "date_source": "index-text",
+   "date": "2026-07-10",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "and July 9, 2026",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.classlink.com/blog/from-compliance-to-capacity-how-accessible-edtech-is-evolving-under-title-ii"
-  },
-  {
-   "date": "2026-06-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Prevent Back-to-School Access and Rostering Issues With These 4 Courses",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/classlink-academy-jun-2026"
   }
  ],
  "profile": {

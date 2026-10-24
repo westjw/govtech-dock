@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "From Conversation to Action: How PayNearMe's AI Agent Transforms Servicing and Collections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/introducing-ai-servicing-collections-agent/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://home.paynearme.com/blog/case-study-avid-acceptance-reached-75-self-service-payments/"
-  },
-  {
-   "date": "2025-05-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The Impact of Payment Experience on Toll Revenue Leakage",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://home.paynearme.com/resources/the-impact-of-payment-experience-on-toll-revenue-leakage/"
   }
  ],
  "profile": {

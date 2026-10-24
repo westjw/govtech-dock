@@ -1,13 +1,31 @@
 {
  "news": [
   {
-   "date": "2026-09-24",
-   "date_source": "time",
+   "date": "2026-02-09",
+   "date_source": "og:published",
    "first_seen": "2026-10-05",
    "headline": "TransNusa expands Skywise collaboration to launch Indonesia\u2019s first integrated\u2026",
    "kind": "product",
    "kind_rule": "launch",
    "url": "https://www.navblue.aero/en/newsroom/press-releases/2026-09-transnusa-expands-skywise-collaboration-to-launch-indonesias-first-integrated-flight-and-technical"
+  },
+  {
+   "date": "2026-02-09",
+   "date_source": "og:published",
+   "first_seen": "2026-10-24",
+   "headline": "IndiGo selects Skywise Core X3 to power next-generation analytics at enterprise scale",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://www.navblue.aero/en/newsroom/press-releases/2026-10-indigo-selects-skywise-core-x3-to-power-next-generation-analytics-at-enterprise-scale"
+  },
+  {
+   "date": "2026-02-09",
+   "date_source": "og:published",
+   "first_seen": "2026-10-24",
+   "headline": "Raya Airways selects Skywise N-Ops & Crew solution to digitalise operations",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://www.navblue.aero/en/newsroom/press-releases/2026-10-raya-airways-selects-skywise-n-ops-crew-solution-to-digitalise-operations"
   }
  ],
  "profile": {

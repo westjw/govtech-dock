@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "The token is the new password",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/token-new-password"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Leidos bringing AI advances to Pentagon logistics system",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/leidos-bringing-ai-advances-pentagon-logistics-system"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/next-25-years-airport-security"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "The changing cyber landscape: 5 operator priorities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/changing-cyber-landscape-5-operator-priorities"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Leidos launches agentic AI platform to speed response to cyber threats",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://leidos.com/insights/leidos-launches-agentic-ai-platform-speed-response-cyber-threats"
   }
  ]
 }

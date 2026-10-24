@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-24",
+   "headline": "How do I get real-time gas alerts from workers in hazardous areas to my control room?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/how-do-i-get-real-time-gas-alerts-from-workers-in-hazardous-areas-to-my-control-room"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://celona.io/resources/what-orchestrator-ai-means-for-enterprise-wireless"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "How Orion brings enterprise wireless together",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://celona.io/resources/how-orion-brings-enterprise-wireless-together"
   }
  ],
  "profile": {
