@@ -31647,6 +31647,326 @@ def check_the_claim_moves_to_hq_on_one_switch() -> int:
     return errors
 
 
+def check_a_pay_range_with_no_period_is_not_published() -> int:
+    """Recruitee sent VertiGIS's "60000-70000 USD" with no interval and the
+    board published it (2026-10-23): a range with no period cannot be told
+    from an hourly rate. build_board.derived drops it, and so does the redraw
+    over a board crawled before; a stated period passes untouched."""
+    import build_board as bb
+    errors = 0
+    raw = {"min": 60000, "max": 70000, "currency": "USD", "source": "ats", "raw": "60000-70000 USD"}
+    for period, kept in ((None, False), ("one-time", False), ("year", True), ("hour", True)):
+        got = bb.derived({"comp": dict(raw, period=period), "jd": "x"})
+        if bool(got.get("comp")) != kept or (not kept and ("comp_floor" in got or "comp_period" in got)):
+            print(f"  FAIL: a pay range with period {period!r} was "
+                  f"{'dropped' if kept else 'published'}: {got}")
+            errors += 1
+    src = (ROOT / "scripts" / "quick_rebuild.py").read_text()
+    if 'p["comp"].get("period") not in bb.COMP_PERIODS' not in src:
+        print("  FAIL: the redraw keeps a pay range with no period that the crawl drops")
+        errors += 1
+    return errors
+
+
+def check_co_bidders_from_hq_become_suggestions_a_person_rules_on() -> int:
+    """scripts/hq_bid_records.py (owner, 2026-10-23: "yes" to co-bidders as
+    competitor suggestions). HQ's feed is who took part in which solicitation,
+    as a person on HQ's team read it off the government's own document
+    (SLED HQ docs/feeds/sledjobs-bid-records.md). Held here:
+
+      - any answer but 200 keeps the records on file, and the token is never
+        printed; with no token nothing is asked;
+      - a record is refused one at a time (bad id, place, address, role,
+        number, a future date, a contact in a name, a repeat), and HQ's
+        company_id links only when the board company's name folds to it;
+      - two board companies that both BID on one solicitation become one
+        cobid proposal; a pre-bid sign-in alone pairs nobody;
+      - a quiet night writes nothing; a ruled pair is never asked again; a
+        pending pair whose records left the feed is withdrawn; a stale read
+        proposes nothing;
+      - accepting writes each onto the other's competitors with the
+        solicitation and the document, once, and refuses at the cap.
+    """
+    import datetime as _dt
+    import agents
+    import hq_bid_records as HB
+    import proposal_rulings
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    today = _dt.datetime.now(_dt.timezone.utc).date()
+    day = today.isoformat()
+
+    def rec(n, company, cid, role, sol="RFP 24-031", url="https://www.roundrocktexas.example.gov/tab.pdf"):
+        return {"id": f"{n:064x}", "government": {"kind": "city", "slug": "round-rock", "name": "Round Rock"},
+                "document_url": url, "solicitation": {"number": sol, "title": "Body-Worn Cameras", "year": 2024},
+                "company": company, "printed_as": company.upper(), "company_id": cid, "supplier_id": None,
+                "role": role, "amount": 412500, "score": None, "decided_on": day, "extra": "never kept"}
+
+    cos = {"acme": {"id": "acme", "name": "Acme Corp", "website": "https://acme.example.com", "competitors": []},
+           "beta": {"id": "beta", "name": "Beta Systems", "website": "https://beta.example.com",
+                    "also_known_as": ["Beta Systems Group"], "competitors": []},
+           "gamma": {"id": "gamma", "name": "Gamma", "website": "https://gamma.example.com"},
+           "full": {"id": "full", "name": "Full House", "website": "https://full.example.com",
+                    "competitors": [{"id": f"x{i}", "why": ""} for i in range(agents.EDGE_CAP)]}}
+    seen = set()
+    for row, says in ((dict(rec(1, "Acme", "acme", "submitted"), id="XYZ"), "64"),
+                      (dict(rec(1, "Acme", "acme", "submitted"), role="won"), "role"),
+                      (dict(rec(1, "Acme", "acme", "submitted"), document_url="ftp://x"), "http"),
+                      (dict(rec(1, "Acme", "acme", "submitted"), decided_on="2999-01-01"), "future"),
+                      (rec(1, "Acme - jane@acme.example.com", "acme", "submitted"), "email"),
+                      (rec(1, "Acme Corp 512-555-0142", "acme", "submitted"), "phone"),
+                      (dict(rec(1, "Acme", "acme", "submitted"), government={"kind": "state", "slug": "tx",
+                                                                            "name": "Texas"}), "city or county")):
+        why = HB.refuse_reason(row, today, seen)
+        if not why or says not in why:
+            errors += fail(f"a record that should refuse ({says}) did not: {why}")
+    if HB.refuse_reason(rec(1, "Acme", "acme", "submitted"), today, {f"{1:064x}"}) != "listed twice":
+        errors += fail("a record listed twice was kept")
+    for r, want in ((rec(1, "ACME, Inc.", "acme", "submitted"), "acme"),
+                    (rec(2, "Beta Systems Group LLC", "beta", "submitted"), "beta"),
+                    (rec(3, "Acme Paving", "acme", "submitted"), None),
+                    (rec(4, "Ghost", "ghost", "submitted"), None)):
+        if HB.link(r, cos)[0] != want:
+            errors += fail(f"{r['company']!r} with HQ's id {r['company_id']!r} linked to {HB.link(r, cos)}")
+
+    feed = [rec(1, "Acme Corp", "acme", "submitted"), rec(2, "Beta Systems", "beta", "awarded"),
+            rec(3, "Gamma", "gamma", "attended_prebid"), rec(4, "Delta Unknown", None, "submitted"),
+            rec(5, "Acme Corp", "acme", "submitted", sol="RFB 25-002", url="https://www.roundrocktexas.example.gov/b.pdf"),
+            rec(6, "Full House", "full", "submitted", sol="RFB 25-002", url="https://www.roundrocktexas.example.gov/b.pdf")]
+
+    class R:
+        def __init__(self, code, body=None):
+            self.status_code, self._body = code, body
+        def json(self):
+            if self._body is None:
+                raise ValueError("not json")
+            return self._body
+    ok = lambda rows: R(200, {"v": 1, "generated_at": "x", "records": rows})
+    secret = "TOKEN-THAT-MUST-NOT-PRINT"
+    keep = (HB.OUT, HB.DATA, agents.STORE, agents.DATA, os.environ.get("SLEDJOBS_FEED_TOKEN"))
+    schema = json.loads((DATA / "schema.json").read_text())
+    try:
+        with _sandbox_admin({"companies.json": list(cos.values()), "schema.json": schema,
+                             "agent_proposals.json": {}}) as tmp:
+            HB.DATA, HB.OUT = tmp, tmp / "hq_bid_records.json"
+            agents.STORE, agents.DATA = tmp / "agent_proposals.json", tmp
+            before = {"records": [], "read_at": "x", "kept": True}
+            HB.OUT.write_text(json.dumps(before))
+            os.environ["SLEDJOBS_FEED_TOKEN"] = secret
+            for name, resp in (("404", R(404)), ("503", R(503)), ("junk", R(200)),
+                               ("v2", R(200, {"v": 2, "records": []}))):
+                out = io.StringIO()
+                with contextlib.redirect_stdout(out):
+                    HB.main(["--write"], get=lambda *a, **k: resp)
+                if json.loads(HB.OUT.read_text()) != before or "kept" not in out.getvalue():
+                    errors += fail(f"a bid-records feed that answered {name} replaced the records on file")
+                if secret in out.getvalue():
+                    errors += fail("the feed token reached the log")
+            run = lambda rows: HB.main(["--write"], get=lambda *a, **k: ok(rows))
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                run(feed)
+            written = HB.OUT.read_text()
+            doc = json.loads(written)
+            if "never kept" in written or secret in written or len(doc.get("records") or []) != 6:
+                errors += fail(f"the records were not kept as sent, from the allow-list: {written[:300]}")
+            store = json.loads(agents.STORE.read_text())
+            keys = sorted(k for k, v in store.items() if v.get("kind") == "cobid")
+            if keys != ["cobid:acme:beta", "cobid:acme:full"]:
+                errors += fail(f"co-bidders were not paired as bidders on one solicitation: {keys}")
+            if any("gamma" in k for k in keys):
+                errors += fail("a pre-bid sign-in made a pair")
+            p = store.get("cobid:acme:beta") or {}
+            sol = ((p.get("cobid") or {}).get("solicitations") or [{}])[0]
+            if p.get("status") != "pending" or "RFP 24-031" not in sol.get("solicitation", "") \
+                    or not sol.get("document_url", "").startswith("https://"):
+                errors += fail(f"the suggestion does not carry its solicitation and document: {p}")
+            now_cos = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+            if HB.settle(json.loads(HB.OUT.read_text()), now_cos, agents.load()) != ([], {}):
+                errors += fail("the same records a second night ask again what is already pending")
+            journal_lines = len((tmp / "admin_journal.jsonl").read_text().splitlines())
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                run(feed)
+            if len((tmp / "admin_journal.jsonl").read_text().splitlines()) != journal_lines:
+                errors += fail("a quiet night with the same records wrote to the journal")
+
+            # accept: each onto the other's competitors, with the document,
+            # and an edge one side already has is not written twice
+            cs = json.loads((tmp / "companies.json").read_text())
+            for c in cs:
+                if c["id"] == "beta":
+                    c["competitors"] = [{"id": "acme", "why": "already on file"}]
+            (tmp / "companies.json").write_text(json.dumps(cs))
+            store = agents.load()
+            res = proposal_rulings.rule(store, "cobid:acme:beta", True, "both bid on the cameras", "owner")
+            got = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+            ab = [e for e in got["acme"].get("competitors") or [] if e.get("id") == "beta"]
+            ba = [e for e in got["beta"].get("competitors") or [] if e.get("id") == "acme"]
+            if res.get("error") or len(ab) != 1 or len(ba) != 1 or ba[0].get("why") != "already on file" \
+                    or "RFP 24-031" not in ab[0].get("why", "") \
+                    or (ab[0].get("source") or {}).get("url", "").find("roundrocktexas") < 0:
+                errors += fail(f"accepting did not write both edges with their evidence: {res} {ab} {ba}")
+            res = proposal_rulings.rule(agents.load(), "cobid:acme:full", True, "", "owner")
+            got = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+            if not res.get("error") or "cap" not in res["error"] \
+                    or any(e.get("id") == "full" for e in got["acme"].get("competitors") or []):
+                errors += fail(f"a company at the cap was written past it, or half-written: {res}")
+            proposal_rulings.rule(agents.load(), "cobid:acme:full", False, "full house is a dealer", "owner")
+
+            # a ruled pair is never asked again; a pending one whose records left is withdrawn
+            feed2 = feed + [rec(7, "Gamma", "gamma", "submitted", sol="RFB 25-002",
+                                url="https://www.roundrocktexas.example.gov/b.pdf")]
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                run(feed2)
+            store = agents.load()
+            if store["cobid:acme:full"]["status"] != "rejected" or store["cobid:acme:beta"]["status"] != "accepted":
+                errors += fail("a pair a person ruled on was asked again")
+            if (store.get("cobid:acme:gamma") or {}).get("status") != "pending":
+                errors += fail("a new bidder on a solicitation was not proposed")
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                run([r for r in feed2 if r["company"] != "Gamma"])
+            if agents.load()["cobid:acme:gamma"]["status"] != "withdrawn":
+                errors += fail("a suggestion whose records left HQ's feed was not withdrawn")
+            stale = dict(doc, read_at=(_dt.datetime.now(_dt.timezone.utc)
+                                       - _dt.timedelta(days=HB.STALE_DAYS + 1)).isoformat())
+            if HB.settle(stale, cos, {}) != ([], {}):
+                errors += fail("a list read more than a week ago proposed or withdrew something")
+
+            # the door, for a proposal that did not come from this producer
+            base = {"kind": "cobid", "id": "acme", "cobid": {"pair": ["acme", "beta"], "solicitations": [
+                {"solicitation": "RFP 1 for Round Rock", "document_url": "https://x.example.gov/a.pdf",
+                 "roles": {"acme": "submitted", "beta": "submitted"}}]}}
+            if agents.check_cobid(base):
+                errors += fail(f"a sound co-bidder suggestion was refused: {agents.check_cobid(base)}")
+            for bad, says in ((["acme", "ghost"], "not a company"), (["acme", "acme"], "two different")):
+                p2 = json.loads(json.dumps(base)); p2["cobid"]["pair"] = bad
+                if says not in (agents.check_cobid(p2) or ""):
+                    errors += fail(f"the door let through a pair that should refuse ({says})")
+            p2 = json.loads(json.dumps(base)); p2["cobid"]["solicitations"][0]["roles"]["beta"] = "attended_prebid"
+            if "interest" not in (agents.check_cobid(p2) or ""):
+                errors += fail("the door let a sign-in sheet stand for a bid")
+            p2["key"] = "cobid:acme:beta2"
+            with contextlib.redirect_stderr(io.StringIO()):
+                rep = agents.ingest("cobid", [p2], model="selftest")
+            if rep.get("kept") or (agents.load().get("cobid:acme:beta2") or {}).get("status") != "refused":
+                errors += fail("ingest stored a co-bidder suggestion its door refuses")
+            os.environ.pop("SLEDJOBS_FEED_TOKEN", None)
+            asked = []
+            with contextlib.redirect_stdout(io.StringIO()):
+                HB.main(["--write"], get=lambda *a, **k: asked.append(1) or ok(feed))
+            if asked:
+                errors += fail("with no token the bid-records feed was still asked")
+    finally:
+        HB.OUT, HB.DATA, agents.STORE, agents.DATA = keep[0], keep[1], keep[2], keep[3]
+        if keep[4] is None:
+            os.environ.pop("SLEDJOBS_FEED_TOKEN", None)
+        else:
+            os.environ["SLEDJOBS_FEED_TOKEN"] = keep[4]
+
+    # THE REVIEW OF 2026-10-23, each a case: grouping, documents, re-asking,
+    # honest withdrawals, the journal's blast limit, contacts in raw fields
+    def sol_rec(n, company, cid, role, sol="Bid 1", year=2024, title="Mowing", url=None):
+        r = rec(n, company, cid, role, sol=sol, url=url or f"https://www.cityx.example.gov/{n}.pdf")
+        r["solicitation"] = {"number": sol, "title": title, "year": year}
+        return r
+    pairs = HB.pairs_of(HB.sort_feed({"records": [
+        sol_rec(11, "Acme Corp", "acme", "submitted", year=2023),
+        sol_rec(12, "Beta Systems", "beta", "submitted", year=2025, title="Fleet Fuel"),
+        sol_rec(13, "Acme Corp", "acme", "awarded", sol=None, title="Mowing Services", url="https://www.cityx.example.gov/memo.pdf"),
+        sol_rec(14, "Beta Systems", "beta", "awarded", sol=None, title="Fleet Fuel", url="https://www.cityx.example.gov/memo.pdf")]},
+        cos, today)[0])
+    if pairs:
+        errors += fail(f"two different solicitations made a pair: {list(pairs)}")
+    took = HB.sort_feed({"records": [
+        sol_rec(21, "Acme Corp", "acme", "submitted", url="https://www.cityx.example.gov/tab.pdf"),
+        sol_rec(22, "Beta Systems", "beta", "submitted", url="https://www.cityx.example.gov/tab.pdf"),
+        sol_rec(23, "Acme Corp", "acme", "awarded", url="https://www.cityx.example.gov/award.pdf"),
+        sol_rec(31, "Acme Corp", "acme", "submitted", sol="RFB 9", url="https://www.cityx.example.gov/a9.pdf"),
+        sol_rec(32, "Gamma", "gamma", "awarded", sol="RFB 9", url="https://www.cityx.example.gov/g9.pdf")]},
+        cos, today)[0]
+    pp = HB.pairs_of(took)
+    s1 = (pp.get(("acme", "beta")) or [{}])[0]
+    s2 = (pp.get(("acme", "gamma")) or [{}])[0]
+    if s1.get("document_url") != "https://www.cityx.example.gov/tab.pdf" or s1.get("roles", {}).get("acme") != "awarded":
+        errors += fail(f"a pair does not cite the document naming both, or the furthest role: {s1}")
+    if s2.get("document_url") is not None or s2.get("documents") != {
+            "acme": ["https://www.cityx.example.gov/a9.pdf"], "gamma": ["https://www.cityx.example.gov/g9.pdf"]}:
+        errors += fail(f"a pair with no document naming both does not cite each one's: {s2}")
+    if (s1.get("as_named") or {}).get("beta", {}).get("printed_as") != "BETA SYSTEMS":
+        errors += fail("the person ruling is not shown the name as confirmed and printed")
+    bad = dict(rec(41, "Acme", "acme", "submitted"), id="Jane Roe <jane.roe@example.com>")
+    took, refused = HB.sort_feed({"records": [bad,
+        dict(rec(42, "Acme", "acme", "submitted"), document_url="https://x.example.gov/s.pdf?by=jane@example.com"),
+        dict(rec(43, "Acme", "acme", "submitted"), government={"kind": "city", "slug": "x", "name": "x jane@example.com"})]},
+        cos, today)
+    if took or refused[0]["id"] is not None or "@" in json.dumps(refused):
+        errors += fail(f"a contact reached the kept records or the refused list: {took} {refused}")
+    keep2 = (HB.OUT, HB.DATA, agents.STORE, agents.DATA, os.environ.get("SLEDJOBS_FEED_TOKEN"))
+    # their own domains, not example.*: the requisitions warning compares
+    # second-level names, and every example.* address shares one
+    many = {f"co{i}": {"id": f"co{i}", "name": f"Company {i}", "website": f"https://co{i}.test",
+                       "competitors": []} for i in range(8)}
+    try:
+        with _sandbox_admin({"companies.json": list(many.values()), "schema.json": schema,
+                             "agent_proposals.json": {}}) as tmp:
+            HB.DATA, HB.OUT = tmp, tmp / "hq_bid_records.json"
+            agents.STORE, agents.DATA = tmp / "agent_proposals.json", tmp
+            os.environ["SLEDJOBS_FEED_TOKEN"] = secret
+            tab = [rec(100 + i, f"Company {i}", f"co{i}", "submitted") for i in range(8)]
+            go = lambda rows: HB.main(["--write"], get=lambda *a, **k: ok(rows))
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                go(tab)
+                code = go([])
+            st = agents.load()
+            if code or sum(1 for v in st.values() if v.get("status") == "withdrawn") != 28:
+                errors += fail(f"one voided bid tab (28 pairs) was not withdrawn, or stopped the run ({code})")
+            if any(v.get("ruled_why") != HB.GONE_FROM_HQ for v in st.values()):
+                errors += fail("a withdrawal gone from HQ's feed does not say so")
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                go(tab)
+            if sum(1 for v in agents.load().values() if v.get("status") == "pending") != 28:
+                errors += fail("withdrawn pairs were not asked again when their records came back")
+            drift = [dict(r, amount="412500.00") for r in tab]
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                go(drift)
+            if sum(1 for v in agents.load().values() if v.get("status") == "pending") != 28:
+                errors += fail("a feed whose every row we refuse (a format change) withdrew the pairs")
+            cs = json.loads((tmp / "companies.json").read_text())
+            for c in cs:
+                if c["id"] in ("co0", "co1"):
+                    c["competitors"] = [{"id": "co1" if c["id"] == "co0" else "co0", "why": "by hand"}]
+            (tmp / "companies.json").write_text(json.dumps(cs))
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                go(tab)
+            if (agents.load().get("cobid:co0:co1") or {}).get("ruled_why") != HB.LISTED:
+                errors += fail("a pair now listing each other was withdrawn with a false reason about HQ")
+            import admin
+            rows = admin.q_proposals(cs, {})
+            if not any(r.get("kind") == "cobid" for r in rows):
+                errors += fail("the Agent proposals queue lists no co-bidder suggestion")
+            if any(r.get("warn") for r in rows if r.get("kind") == "cobid"):
+                errors += fail("a co-bidder row carries the requisitions warning")
+    finally:
+        HB.OUT, HB.DATA, agents.STORE, agents.DATA = keep2[0], keep2[1], keep2[2], keep2[3]
+        if keep2[4] is None:
+            os.environ.pop("SLEDJOBS_FEED_TOKEN", None)
+        else:
+            os.environ["SLEDJOBS_FEED_TOKEN"] = keep2[4]
+
+    src = (ROOT / "admin.html").read_text()
+    if "  cobid: {" not in src[src.find("const PROPOSAL_KINDS = {"):]:
+        errors += fail("admin.html draws no co-bidder suggestion: the queue would show raw fields")
+    yml = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+    i, j, k = (yml.find("scripts/hq_employers.py --write"), yml.find("scripts/hq_bid_records.py --write"),
+               yml.find("name: Build the job board"))
+    if not (0 <= i < j < k) or "secrets.SLEDJOBS_FEED_TOKEN" not in yml[i:j]:
+        errors += fail("the nightly does not read the bid-records feed, with its token, before the build")
+    return errors
+
+
 def check_sled_hq_jobs_reach_the_board() -> int:
     """Jobs posted on SLED HQ are listed on the board, on the agreed contract.
 
@@ -34235,7 +34555,7 @@ def check_suppliers_land_in_the_govtech_categories() -> int:
                                    f"{r.get('held')} {r.get('website')}")
             r = SC.place(sup("bareco", "WEF 2026"), {"verdict": "theirs", "url": "www.bareco.example.com"},
                          by_tag, {}, {"verdict": "theirs"})
-            if r.get("website") != "http://www.bareco.example.com":
+            if r.get("website") != "https://www.bareco.example.com":
                 errors += fail(f"a bare host a person released is not published as a web address: {r}")
             nest = "https://acme.example.com/"
             for host in ("https://www.google.com/url?q=", "https://a.safelinks.protection.outlook.com/?url=",
@@ -34364,6 +34684,117 @@ def check_suppliers_land_in_the_govtech_categories() -> int:
                  [x["supplier_id"] for x in doc.get("suppliers") or [] if SC.phone_spans(x.get("name") or "")]
         if phoned:
             errors += fail(f"a phone number is in data/supplier_categories.json: {phoned[:5]}")
+    return errors
+
+def check_one_supplier_is_one_record_and_an_agency_is_none() -> int:
+    """merge_supplier_records (owner, 2026-10-23: merge the duplicates and pull
+    the agencies) and the bare-host re-read:
+
+      - a merge moves every show and name onto the survivor and takes the
+        merged row out; it refuses an id not on file, one ruled twice, one
+        with no reason, and one not on the survivor's site;
+      - a pulled government body stays on file and the export calls it
+        not_a_company;
+      - what the rulings file says is what the shipped files show;
+      - a bare host ("www.cleanharbors.com") is read over https by the page
+        reader and the identity check, which refused all 19 for three weeks.
+    """
+    import merge_supplier_records as MR
+    import supplier_categories as SC
+    import supplier_identity as SI
+    import supplier_pages as SP
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    sups = [{"id": "acme", "name": "Acme", "description": "exhibited at WEF 2026", "source": "WEF 2026",
+             "website": None, "location": None},
+            {"id": "acme-inc", "name": "Acme, Inc.", "also_known_as": ["ACME Pumps"],
+             "description": "Pumps - exhibited at AWWA ACE 2026", "source": "conference sweep: AWWA ACE 2026",
+             "website": "https://acme.example.com", "location": "Austin, TX", "year_founded": 1990,
+             "govtech": False, "researched": False, "vendor_type": "Equipment / Components"},
+            {"id": "other", "name": "Other Co", "description": "exhibited at WEF 2026"},
+            {"id": "ct-dph", "name": "CT Department of Public Health", "description": "exhibited at CCM 2026"}]
+    ident = {"acme": {"url": "https://www.acme.example.com"}, "acme-inc": {"url": "https://acme.example.com/"},
+             "other": {"url": "https://other.example.com"}, "ct-dph": {"url": "https://portal.ct.example.gov/DPH"}}
+    why = "the same pump maker: one name is the other's legal form"
+    merges, pulls, refused = MR.plan({"merge": [{"into": "acme", "ids": ["acme-inc"], "why": why}],
+                                      "pull": [{"id": "ct-dph", "why": "a state department: it buys from suppliers"}]},
+                                     sups, ident)
+    if refused or len(merges) != 1 or len(pulls) != 1:
+        errors += fail(f"a sound ruling was refused: {refused}")
+    after, moved = MR.apply(merges, pulls, sups)
+    a = {s["id"]: s for s in after}
+    if "acme-inc" in a or "AWWA ACE 2026" not in SC.tags_of(a["acme"]) \
+            or not {"Acme, Inc.", "ACME Pumps"} <= set(a["acme"].get("also_known_as") or []):
+        errors += fail(f"a merge did not move the shows and names onto the survivor: {a.get('acme')}")
+    lost = {k: a["acme"].get(k) for k in ("website", "location", "year_founded", "govtech", "vendor_type")}
+    if None in lost.values() or not a["acme"]["description"].startswith("Pumps - exhibited at"):
+        errors += fail(f"a merge lost research the twin carried: {lost} {a['acme'].get('description')!r}")
+    # the floor reader and the card door know a merged name by its alias
+    import read_floor
+    import proposal_rulings
+    keep_rf = read_floor.DATA
+    try:
+        with _sandbox_admin({"companies.json": [], "suppliers.json": after}) as tmp:
+            (tmp / "conference_intake").mkdir()
+            (tmp / "conference_intake" / "govtech_candidates.json").write_text("[]")
+            read_floor.DATA = tmp
+            if read_floor.ci.norm("ACME Pumps") not in read_floor.settled()[2]:
+                errors += fail("the floor reader does not know a merged name by the survivor's alias")
+            res = proposal_rulings._accept_card({"verdict": "supplier", "name": "ACME Pumps"}, "owner", "", False)
+            if not res.get("error") or "already on file" not in res["error"]:
+                errors += fail(f"the card door filed a merged name back as a new supplier: {res}")
+    finally:
+        read_floor.DATA = keep_rf
+    if not a["ct-dph"].get("not_a_supplier") or a["other"].get("not_a_supplier"):
+        errors += fail("a pull did not mark the agency, or marked a supplier nobody ruled on")
+    r = SC.place(a["ct-dph"], {"verdict": "theirs", "url": "https://portal.ct.example.gov/DPH"}, {}, {})
+    if r.get("status") != "not_a_company":
+        errors += fail(f"a pulled agency is still a supplier in the export: {r.get('status')}")
+    for bad_ruling, says in (
+            ({"merge": [{"into": "acme", "ids": ["ghost"], "why": why}]}, "no supplier"),
+            ({"merge": [{"into": "acme", "ids": ["other"], "why": why}]}, "is not on"),
+            ({"merge": [{"into": "acme", "ids": ["acme-inc"], "why": "same"}]}, "no reason"),
+            ({"merge": [{"into": "acme", "ids": ["acme-inc"], "why": why}],
+              "pull": [{"id": "acme", "why": "a state department: it buys from suppliers"}]}, "twice")):
+        _m, _p, ref = MR.plan(bad_ruling, sups, ident)
+        if not any(says in x["why"] for x in ref):
+            errors += fail(f"a ruling that should refuse ({says}) did not: {ref}")
+
+    # what the rulings file says is what the shipped files show
+    rp = DATA / MR.RULINGS
+    if rp.exists():
+        rulings = json.loads(rp.read_text())
+        ids = {s["id"]: s for s in json.loads((DATA / "suppliers.json").read_text())}
+        exp = {r["supplier_id"]: r for r in
+               json.loads((DATA / "supplier_categories.json").read_text())["suppliers"]}
+        for m in rulings.get("merge") or []:
+            for i in m["ids"]:
+                if i in ids:
+                    errors += fail(f"{i} was ruled merged into {m['into']} and is still a supplier on file")
+                if (exp.get(i) or {}).get("status") != {"merged_into": {"kind": "supplier", "id": m["into"]}}:
+                    errors += fail(f"the export does not say {i} is merged into {m['into']}")
+        for pl in rulings.get("pull") or []:
+            if not (ids.get(pl["id"]) or {}).get("not_a_supplier") \
+                    or (exp.get(pl["id"]) or {}).get("status") != "not_a_company":
+                errors += fail(f"{pl['id']} was ruled pulled and is still a supplier")
+
+    # a bare host is read over https, by both readers
+    if SP.site_for({"verdict": "theirs", "url": "www.cleanharbors.example.com"}) \
+            != "https://www.cleanharbors.example.com":
+        errors += fail("the page reader hands a bare host to the fetcher, which refuses it")
+    seen = []
+
+    class Page:
+        status_code, text, url = 200, "<title>Clean Harbors</title>", "https://www.cleanharbors.example.com"
+
+    SI.check_own({"website": "www.cleanharbors.example.com", "name": "Clean Harbors"},
+                 get=lambda u: seen.append(u) or Page())
+    if not seen or not seen[0].startswith("https://"):
+        errors += fail(f"the identity check asked for a bare host first: {seen[:1]}")
     return errors
 
 def check_the_hq_export_never_loses_a_supplier_to_a_missing_cache() -> int:
@@ -35503,6 +35934,7 @@ def main() -> int:
     errors += check_the_claude_inbox_lists_and_settles()
     errors += check_who_each_supplier_is()
     errors += check_suppliers_land_in_the_govtech_categories()
+    errors += check_one_supplier_is_one_record_and_an_agency_is_none()
     errors += check_a_person_can_release_a_held_supplier()
     errors += check_the_belt_says_when_nothing_publishes()
     errors += check_a_pasted_board_must_prove_it_is_theirs()
@@ -35530,6 +35962,8 @@ def main() -> int:
     errors += check_the_news_sweep_stops_before_the_job_does()
     errors += check_a_slow_site_cannot_outlast_the_sweep()
     errors += check_sled_hq_jobs_reach_the_board()
+    errors += check_co_bidders_from_hq_become_suggestions_a_person_rules_on()
+    errors += check_a_pay_range_with_no_period_is_not_published()
     errors += check_the_supplier_export_follows_every_intake()
     errors += check_the_front_page_is_whole_and_public()
     errors += check_the_claim_moves_to_hq_on_one_switch()

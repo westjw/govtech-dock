@@ -3681,7 +3681,9 @@ def q_proposals(companies, board) -> list:
         # names by name. Accepting either would file a parent's requisitions
         # under a subsidiary, which is the false "Yes" this project exists to
         # refuse. The agent cannot know; the queue can say.
-        warn = proposal_warn(r, c)
+        # a co-bidder suggestion's evidence is a government's bid document,
+        # never a careers page: the requisitions warning means nothing for it
+        warn = None if r.get("kind") == "cobid" else proposal_warn(r, c)
         out.append({
             # THE STORE KEY TRAVELS WITH THE ROW. A ruling is made on a key,
             # and a row that carries only the company id cannot say which of
@@ -3711,6 +3713,9 @@ def q_proposals(companies, board) -> list:
             # and the owner ruled on a blank. The renderer was right the whole
             # time - it was never handed anything to draw.
             "edit": r.get("edit"),
+            # a co-bidder suggestion: the pair and every solicitation both bid
+            # on, each with the government's document to open
+            "cobid": r.get("cobid"),
             "proposed_sector": r.get("sector") if r.get("kind") == "bucket" else None,
             "proposed_category": r.get("category") if r.get("kind") == "bucket" else None,
             "filed_now": (r.get("saw") or {}).get("filed_now"),

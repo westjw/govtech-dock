@@ -1,0 +1,420 @@
+{
+ "note": "Owner, 2026-10-23: 'yes' to merging the suppliers that are one company listed twice and pulling the government bodies filed as suppliers. Each group of published suppliers sharing a website was read by an agent off names, descriptions, shows and the supplier's own homepage text, and challenged by a skeptic who overturned 2 (Sodexo Campus is Sodexo's higher-education division; Bremerton Housing Authority/CMS is a service line it sells). Applied by scripts/merge_supplier_records.py.",
+ "decided_on": "2026-10-23",
+ "merge": [
+  {
+   "host": "abm.com",
+   "into": "abm",
+   "ids": [
+    "abm-industries-inc"
+   ],
+   "why": "ABM and ABM Industries, Inc. are the same facilities-services company: both have the identical abm.com homepage, which calls itself ABM, so 'Industries, Inc.' is just the longer legal form."
+  },
+  {
+   "host": "americantractionsolutions.com",
+   "into": "american-traction-solutions",
+   "ids": [
+    "american-traction-systems"
+   ],
+   "why": "The homepage names the company 'American Traction Solutions Inc. (ATS)', and both records come from APTA 2026, so 'American Traction Systems' is a misspelling of the same firm."
+  },
+  {
+   "host": "aquisense.com",
+   "into": "aquisense-inc",
+   "ids": [
+    "aquisense-incorporated"
+   ],
+   "why": "AquiSense Inc. and AquiSense Incorporated are the same UV-C LED water-treatment maker: the homepage text is identical and only the corporate suffix is spelled differently."
+  },
+  {
+   "host": "bkvgroup.com",
+   "into": "bkv-group",
+   "ids": [
+    "bkv-group-architects-engineers",
+    "bkv-group-architecture-engineering"
+   ],
+   "why": "All three records are BKV Group, the architecture and engineering firm that has been around 'since 1978'. They share one homepage and the same project list, and the suffixes are just tagline variants."
+  },
+  {
+   "host": "blueearthproducts.com",
+   "into": "blue-earth-products",
+   "ids": [
+    "blue-earth-labs-d-b-a-blue-earth-products"
+   ],
+   "why": "The first record's own name says Blue Earth Labs does business as Blue Earth Products, and the shared homepage calls the company Blue Earth Products, so this is one water-chemical firm."
+  },
+  {
+   "host": "cgidigital.com",
+   "into": "cgi-digital",
+   "ids": [
+    "cgi-digital-hellonation"
+   ],
+   "why": "Both records point to the same cgidigital.com homepage of CGI Digital, the municipal-video and marketing agency, and 'CGI Digital/HelloNation' is the same company listed at ICMA 2026 with its HelloNation brand added."
+  },
+  {
+   "host": "cigna.com",
+   "into": "cigna-healthcare",
+   "ids": [
+    "cigna"
+   ],
+   "why": "CIGNA and Cigna Healthcare are the same health-insurance and benefits company, with the same description and the identical cigna.com homepage. This is the owner's own example of a duplicate."
+  },
+  {
+   "host": "civall.com",
+   "into": "civall-social-news-desk",
+   "ids": [
+    "civall-by-social-news-desk"
+   ],
+   "why": "'CivAll | Social News Desk' and 'CivAll by Social News Desk' are the same civic-engagement software company: both homepages describe the CivAll platform and both list 3CMA 2026. Only the separator in the name differs. The merged record holds the root www.civall.com address, which is worth keeping over the /connect page. The survivor is the record holding the root www.civall.com, as the reading advised."
+  },
+  {
+   "host": "csh.org",
+   "into": "csh",
+   "ids": [
+    "corporation-for-supportive-housing"
+   ],
+   "why": "CSH is the short form of Corporation for Supportive Housing: same homepage, and the site calls itself CSH. It is a supportive-housing nonprofit, not a government body."
+  },
+  {
+   "host": "duratrench.com",
+   "into": "eric-sons-manufacturing-duratrench-brand",
+   "ids": [
+    "duratrench-the-drain-brains"
+   ],
+   "why": "The shared homepage says 'Eric'sons Dura Trench', and both records are the same StormCon 2026 trench-drain exhibitor. DuraTrench is Eric'sons Manufacturing's brand, not a separate company, so the record naming the maker is kept."
+  },
+  {
+   "host": "gallagherasphalt.com",
+   "into": "gallagher-asphalt",
+   "ids": [
+    "hot-in-place-recycling"
+   ],
+   "why": "The record 'Hot-In-Place Recycling (Gallagher Asphalt)' names Gallagher Asphalt itself, and the shared homepage lists Hot In-Place Recycling as one of Gallagher's service lines. That is a generic process name, not a separate brand or company."
+  },
+  {
+   "host": "gdit.com",
+   "into": "gdit",
+   "ids": [
+    "general-dynamics-information-technology"
+   ],
+   "why": "GDIT is the short form of General Dynamics Information Technology: same gdit.com homepage and the same government IT-services business."
+  },
+  {
+   "host": "gfoa.org",
+   "into": "government-finance-officers-association",
+   "ids": [
+    "government-finance-officers-association-2"
+   ],
+   "why": "Both records are the Government Finance Officers Association, with the identical gfoa.org homepage. The second only adds '(GFOA)', and this is the owner's own GFOA / GFOA-2 example. GFOA is a professional association, not a government buyer."
+  },
+  {
+   "host": "graybar.com",
+   "into": "graybar",
+   "ids": [
+    "graybar-electric-company-inc"
+   ],
+   "why": "Graybar and Graybar Electric Company, Inc. are the same electrical distributor: same description and identical graybar.com homepage. The longer name is just the legal form."
+  },
+  {
+   "host": "gymsfordogs.com",
+   "into": "gyms-for-dogs",
+   "ids": [
+    "gyms-for-dogs-natural-dog-park-products"
+   ],
+   "why": "Both records are the dog park equipment maker Gyms for Dogs and have the same homepage; the other name just adds the tagline 'Natural Dog Park Products'."
+  },
+  {
+   "host": "haroldbeck.com",
+   "into": "beck-harold-sons-inc",
+   "ids": [
+    "beck-electric-actuators-harold-beck-sons-inc"
+   ],
+   "why": "Both name Harold Beck & Sons Inc., the actuator maker, and the homepage uses that exact company name; 'Beck Electric Actuators' is its product description."
+  },
+  {
+   "host": "idexx.com",
+   "into": "idexx-laboratories",
+   "ids": [
+    "idexx"
+   ],
+   "why": "'Idexx' and 'IDEXX Laboratories' both name the company itself, not a separate brand, and resolve to the same IDEXX homepage; water testing is just one of its business lines, and the merged record's WEFTEC listing shows it covered water too."
+  },
+  {
+   "host": "jjkane.com",
+   "into": "jj-kane-auctions",
+   "ids": [
+    "jj-kane"
+   ],
+   "why": "'JJ Kane' and 'JJ Kane Auctions' are the same equipment auction company with an identical homepage (fleet and equipment auctions across the same locations)."
+  },
+  {
+   "host": "keller-pressure.com",
+   "into": "keller-pressure-inc",
+   "ids": [
+    "keller-america-inc"
+   ],
+   "why": "Both are US 'Inc.' records for the KELLER pressure sensor business with the same homepage ('KELLER Pressure – The leading manufacturer of pressure transducers'); Keller America Inc. is the older name of the US company that now calls itself KELLER Pressure Inc. on its own site."
+  },
+  {
+   "host": "musco.com",
+   "into": "musco-lighting",
+   "ids": [
+    "musco-sports-lighting"
+   ],
+   "why": "'Musco Lighting' and 'Musco Sports Lighting' are two names for one sports lighting company with an identical homepage ('You Always Know When It's Musco')."
+  },
+  {
+   "host": "naspo.org",
+   "into": "national-association-of-state-procurement-officials",
+   "ids": [
+    "national-association-of-state-procurement-officials-2",
+    "national-assoc-of-state-procurement-officials"
+   ],
+   "why": "All three are the National Association of State Procurement Officials, written in full, with '(NASPO)' added, or abbreviated 'Assoc', and they share one homepage; it is a nonprofit association of state procurement officials, not itself a government agency, so it is not flagged."
+  },
+  {
+   "host": "newgenstrategies.net",
+   "into": "newgen-strategies-solutions",
+   "ids": [
+    "newgen-strategies-and-solutions-llc"
+   ],
+   "why": "'NewGen Strategies & Solutions' and 'NewGen Strategies and Solutions, LLC' are the same utility rate consultancy ('&' versus 'and', plus the LLC) with an identical homepage."
+  },
+  {
+   "host": "nfbpa.org",
+   "into": "national-forum-for-black-public-administrators-nfbpa",
+   "ids": [
+    "nfbpa"
+   ],
+   "why": "Both are the National Forum for Black Public Administrators (one by acronym, one in full) with the same homepage, which describes it as an independent 501(c)(3) nonprofit, not a government body."
+  },
+  {
+   "host": "norit.com",
+   "into": "norit-americas",
+   "ids": [
+    "norit-activated-carbon"
+   ],
+   "why": "'Norit Americas' and 'Norit Activated Carbon' are the same activated carbon maker NORIT, at the same US water shows with an identical homepage; 'Activated Carbon' only describes its product."
+  },
+  {
+   "host": "npa-section.com",
+   "into": "npa-section",
+   "ids": [
+    "npa"
+   ],
+   "why": "'NPA' and 'NPA Section' are both the Notary Public Administrators Section of NASS at the same NASS conference with the same homepage; it is a professional section of government and private members, not a government agency, so it is not flagged."
+  },
+  {
+   "host": "nppgov.com",
+   "into": "nppgov",
+   "ids": [
+    "national-purchasing-partners-nppgov"
+   ],
+   "why": "'NPPGov' and 'National Purchasing Partners (NPPGov)' are the same cooperative procurement organization with an identical homepage, which calls itself NPPGov; it offers contracts to agencies rather than being one, so it is not flagged."
+  },
+  {
+   "host": "onterris.com",
+   "into": "onterris",
+   "ids": [
+    "enthalpy-analytical",
+    "ect2"
+   ],
+   "why": "The pages crawled for both other records state 'Enthalpy Analytical is now Onterris' and 'ECT2 is now Onterris', so they are retired names of the one company Onterris, not brands that still operate."
+  },
+  {
+   "host": "orival.com",
+   "into": "orival-inc",
+   "ids": [
+    "orival-water-filters"
+   ],
+   "why": "'Orival Inc' and 'Orival Water Filters' are the same self-cleaning water filter maker with an identical homepage; 'Water Filters' only describes its product."
+  },
+  {
+   "host": "primozone.com",
+   "into": "primozone-inc",
+   "ids": [
+    "primozone-production-ab"
+   ],
+   "why": "Primozone Production AB (the Swedish maker) and Primozone Inc. (its US arm) are one ozone generator business with an identical homepage and one domain, not separate brands."
+  },
+  {
+   "host": "projectlifesaver.org",
+   "into": "project-lifesaver-international",
+   "ids": [
+    "project-lifesaver-inc"
+   ],
+   "why": "Both records share the same homepage, which calls itself 'Project Lifesaver International'; 'Project Lifesaver Inc.' is the same nonprofit under its legal suffix. It sells a locating program and equipment to member agencies, so it is not a government buyer."
+  },
+  {
+   "host": "revive-environmental.com",
+   "into": "revive-environmental",
+   "ids": [
+    "revive-environmental-technology-llc"
+   ],
+   "why": "Both records have the same homepage ('Revive Environmental' PFAS destruction) and the same business, PFAS destruction. 'Revive Environmental Technology, LLC' is the legal form of the name the site uses."
+  },
+  {
+   "host": "seiferttransitgraphics.com",
+   "into": "seifert-transit-graphics",
+   "ids": [
+    "seifert-graphics-inc"
+   ],
+   "why": "The shared homepage names the company 'Seifert Transit Graphics (STG)' and describes transit decals and graphics, which matches 'Seifert Graphics, Inc.' at APTA. It is one company under a shorter name."
+  },
+  {
+   "host": "semtech.com",
+   "into": "semtech",
+   "ids": [
+    "semtech-2",
+    "semtech-sierra-wireless"
+   ],
+   "why": "All three records are 'Semtech' with a 'Sierra Wireless' note ('(Sierra Wireless)', '(formerly Sierra Wireless)', '- Sierra Wireless'), all describe cellular routers and IoT modules, and all have the same Semtech homepage, so they are one company listed three times."
+  },
+  {
+   "host": "spartanfirehydrants.com",
+   "into": "spartan-fire-hydrants",
+   "ids": [
+    "spartan-fire-hydrants-by-sigelock-systems-llc"
+   ],
+   "why": "Both have the same homepage ('Spartan Fire Hydrants', SpartanFireHydrants.com). One record simply adds the maker's legal name, Sigelock Systems, LLC, so they are the same seller."
+  },
+  {
+   "host": "spohnranch.com",
+   "into": "spohn-ranch",
+   "ids": [
+    "spohn-ranch-skateparks"
+   ],
+   "why": "Both have the same skatepark design-build homepage and the same business. 'Spohn Ranch Skateparks' is just a longer form of 'Spohn Ranch'."
+  },
+  {
+   "host": "trojantechnologies.com",
+   "into": "trojan-technologies",
+   "ids": [
+    "trojan-technologies-group-ulc"
+   ],
+   "why": "Both have the same UV and membrane water-treatment homepage. 'Trojan Technologies Group ULC' is the legal-entity form of 'Trojan Technologies'."
+  },
+  {
+   "host": "virtualacademy.com",
+   "into": "virtual-academy",
+   "ids": [
+    "virtual-academy-9-1-1"
+   ],
+   "why": "Both have the same homepage ('At Virtual Academy, we offer flexible training solutions... public safety'). '9-1-1' is a descriptor on the same training company, which is a vendor despite the 'Association / Gov / Media' category label."
+  },
+  {
+   "host": "waterforpeople.org",
+   "into": "water-for-people",
+   "ids": [
+    "wef-charities-of-choice-water-for-people"
+   ],
+   "why": "Both have the same homepage ('Water For People is a global nonprofit'). The second name only adds WEF's 'Charities of Choice' booth label. It is a charity rather than a seller, but it is not a government body."
+  },
+  {
+   "host": "whelen.com",
+   "into": "whelen",
+   "ids": [
+    "whelen-engineering-co-inc"
+   ],
+   "why": "Both have the same Whelen homepage (emergency vehicle lightbars and sirens). 'Whelen Engineering Co Inc' is the legal name of the same company; its 'Engineering / Consulting' label is a conference category, not a different business."
+  },
+  {
+   "host": "winsted.com",
+   "into": "winsted",
+   "ids": [
+    "winsted-consoles"
+   ],
+   "why": "Both have the same homepage ('Winsted sets the industry standard for control room design', consoles and seating). 'WINSTED CONSOLES' is the same company plus its product word."
+  },
+  {
+   "host": "xybix.com",
+   "into": "xybix",
+   "ids": [
+    "xybix-systems-inc"
+   ],
+   "why": "Both have the same Xybix dispatch-desk homepage and overlapping APCO and AAAE conferences. 'Xybix Systems, Inc.' is the legal form of 'Xybix'."
+  },
+  {
+   "host": "youngwilliams.com",
+   "into": "youngwilliams",
+   "ids": [
+    "www-youngwilliams-com"
+   ],
+   "why": "The second record is named after the URL itself, with the same site and the same NCSEA conferences, and its homepage text says 'YoungWilliams'. It is a contractor running child-support offices for agencies, not an agency itself."
+  },
+  {
+   "host": "zumro.com",
+   "into": "zumro",
+   "ids": [
+    "zumro-air-shelters"
+   ],
+   "why": "Both have the same ZUMRO homepage ('premier manufacturer of air shelter systems'). 'Zumro Air Shelters' is the same company plus its product."
+  },
+  {
+   "host": "zymox.com",
+   "into": "pet-king-brands",
+   "ids": [
+    "zymox-pet-king-brands-animal-health"
+   ],
+   "why": "Both records are 'Animal health products' at Animal Care Expo 2026. The site says Pet King Brands is the 'Proud Maker of' ZYMOX, so 'Zymox/Pet King Brands Animal Health' is the same company with its product line in front, and Pet King Brands is the company's own name."
+  },
+  {
+   "host": "cooperlighting.com",
+   "into": "ephesus-lighting",
+   "ids": [
+    "ephesus-sports-lighting"
+   ],
+   "why": "Ephesus Lighting and Ephesus Sports Lighting are one Cooper Lighting brand listed twice, off NIGP and AB Show: both records point at the same Ephesus brand page on cooperlighting.com (judged by Claude; no reader returned this group)."
+  }
+ ],
+ "pull": [
+  {
+   "id": "ct-department-of-public-health",
+   "why": "The Connecticut Department of Public Health is a state agency (provider licensing, birth and death records), a government buyer and not a seller."
+  },
+  {
+   "id": "ct-division-of-emergency-management-and-homeland-security",
+   "why": "The CT Division of Emergency Management and Homeland Security is a state agency that coordinates the state's emergency response and grants, a government buyer and not a seller."
+  },
+  {
+   "id": "sba-office-of-innovation-technology",
+   "why": "The name and description are a federal agency, the SBA office that runs SBIR/STTR. The website on file is also wrong: the sba.com homepage says it is a private business 'not SBA.gov' with 'no affiliation' to the SBA."
+  },
+  {
+   "id": "u-s-epa-office-of-water",
+   "why": "A federal agency office on epa.gov whose homepage says it is 'An official website of the United States government'. It is a regulator, not a seller."
+  },
+  {
+   "id": "colorado-department-of-corrections",
+   "why": "A state corrections department on cdoc.colorado.gov. The homepage covers annual reports, PREA audits and the Governor's Dashboard, and it buys from suppliers."
+  },
+  {
+   "id": "indian-health-service",
+   "why": "A federal agency on ihs.gov, part of the U.S. Department of Health and Human Services."
+  },
+  {
+   "id": "substance-abuse-and-mental-health-services-administration",
+   "why": "A federal agency (HHS) on samhsa.gov whose homepage says it is 'An official website of the United States government'."
+  },
+  {
+   "id": "u-s-department-of-state-bureau-of-medical-services",
+   "why": "A federal department recruiting psychiatrists on careers.state.gov. It is an employer and agency, not a supplier."
+  },
+  {
+   "id": "cybersecurity-and-infrastructure-security-agency-cisa",
+   "why": "A federal agency on cisa.gov. Its services to state and local partners are no-cost, so it does not sell; it is a federal agency and is pulled."
+  },
+  {
+   "id": "sewerage-and-water-board-of-new-orleans",
+   "why": "A city water and sewer utility. Its homepage posts service advisories and work by its contractors, so it buys from suppliers."
+  },
+  {
+   "id": "lancaster-county-solid-waste-management-authority-lcswma",
+   "why": "A county solid waste authority that runs a landfill and a waste-to-energy plant and has a board and meeting schedule. It is an authority that buys equipment and services."
+  },
+  {
+   "id": "clark-county-school-district",
+   "why": "A school district is pulled either way. The website on file also looks wrong: the ccsd.edu homepage mentions NYSSMA and ENL, which suggests a New York district, not Clark County, Nevada."
+  }
+ ]
+}

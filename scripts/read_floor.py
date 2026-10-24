@@ -71,8 +71,12 @@ def settled() -> tuple[set, set, set]:
     cands = json.loads((DATA / "conference_intake" / "govtech_candidates.json").read_text())
     board = {ci.norm(c["name"]) for c in companies}
     board |= {ci.norm(a) for c in companies for a in (c.get("also_known_as") or [])}
-    researched = {ci.norm(s["name"]) for s in suppliers
-                  if s.get("researched") or s.get("govtech") is not None}
+    # every name a researched supplier is known by: a merged twin's name lives
+    # on as the survivor's alias (merge_supplier_records), and reading it as
+    # unjudged put six of them back in front of floor readers
+    researched = {ci.norm(n) for s in suppliers
+                  if s.get("researched") or s.get("govtech") is not None
+                  for n in [s["name"], *(s.get("also_known_as") or [])]}
     queued = {ci.norm(c["name"]) for c in cands if isinstance(c, dict)}
     return board, queued, researched
 

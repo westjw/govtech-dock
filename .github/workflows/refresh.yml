@@ -158,6 +158,15 @@ jobs:
           SLEDJOBS_FEED_TOKEN: ${{ secrets.SLEDJOBS_FEED_TOKEN }}
         run: python scripts/hq_employers.py --write
 
+      - name: Read who bid on what, as SLED HQ's team read it
+        # The same token and the same rule: any answer but 200 keeps the
+        # records on file. Co-bidders on one solicitation become cobid
+        # proposals in the Agent proposals queue; a person rules on each
+        # (scripts/hq_bid_records.py). Counts only in the log.
+        env:
+          SLEDJOBS_FEED_TOKEN: ${{ secrets.SLEDJOBS_FEED_TOKEN }}
+        run: python scripts/hq_bid_records.py --write
+
       - name: Build the job board and market intel
         # Keeps every posting, not only AE reqs: the board and the intel both
         # depend on knowing what KIND of hiring a company is doing.

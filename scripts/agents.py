@@ -67,7 +67,7 @@ STORE = DATA / "agent_proposals.json"
 # can show them; proposal_rulings refuses to land one until the applier
 # exists, by name, rather than raising inside a request handler.
 KINDS = ("bucket", "read", "card", "board", "rival", "profile", "news",
-         "claim", "family", "fact", "where", "buyer")
+         "claim", "family", "fact", "where", "buyer", "cobid")
 CONFIDENCE = ("high", "medium", "low", "unsure")
 
 
@@ -1890,6 +1890,51 @@ def check_fact(p: dict, texts: dict) -> str | None:
     return None
 
 
+# ---------------------------------------------------------------- cobid ----
+# TWO BOARD COMPANIES THAT BID ON ONE SOLICITATION, as a person on SLED HQ's
+# team read it off the government's own document (scripts/hq_bid_records.py,
+# owner 2026-10-23). Not an agent's answer: the producer is deterministic,
+# and the door holds it to what makes the suggestion checkable - two
+# companies on file, and for every solicitation the document a person can
+# open, the government it belongs to, and a BIDDER's role for both. A
+# pre-bid sign-in alone is interest, not a bid.
+COBID_ROLES = ("submitted", "finalist", "recommended", "awarded")
+
+
+def check_cobid(p: dict) -> str | None:
+    c = p.get("cobid")
+    if not isinstance(c, dict):
+        return "a co-bidder suggestion carries no pair and no solicitations"
+    pair = c.get("pair")
+    if not (isinstance(pair, list) and len(pair) == 2 and all(isinstance(x, str) for x in pair)
+            and pair[0] != pair[1]):
+        return "a co-bidder suggestion must name two different companies"
+    if p.get("id") != pair[0]:
+        return "the suggestion is filed under a company that is not in its pair"
+    on_file = {c2.get("id") for c2 in json.loads((DATA / "companies.json").read_text())}
+    missing = [x for x in pair if x not in on_file]
+    if missing:
+        return f"{', '.join(missing)} is not a company on this board"
+    sols = c.get("solicitations")
+    if not isinstance(sols, list) or not sols:
+        return "a co-bidder suggestion names no solicitation they both bid on"
+    web = lambda u: isinstance(u, str) and u.startswith(("http://", "https://"))
+    for s in sols:
+        docs = (s.get("documents") or {}) if isinstance(s, dict) else {}
+        if not isinstance(s, dict) or not (web(s.get("document_url")) or all(
+                isinstance(docs.get(x), list) and docs[x] and all(web(u) for u in docs[x])
+                for x in pair)):
+            return ("every solicitation needs the government's document showing each "
+                    "company's part, for a person to open")
+        if not (s.get("solicitation") or "").strip():
+            return "every solicitation needs what it was and whose"
+        roles = s.get("roles") or {}
+        if any(roles.get(x) not in COBID_ROLES for x in pair):
+            return (f"on {s['solicitation']} one of them only attended or has no role: "
+                    f"a sign-in sheet is interest, not a bid")
+    return None
+
+
 def check_where(p: dict) -> str | None:
     """Refuse a 'they post here' record that would mislead a job seeker.
 
@@ -2370,6 +2415,7 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
                # trimmed brief - a quote from a region dechrome cut is still
                # true and must still verify.
                else check_buyer(p, _profile_texts(p)) if kind == "buyer"
+               else check_cobid(p) if kind == "cobid"
                else None)
         if bad:
             refused.append({"key": key, "why": bad})
@@ -2470,6 +2516,9 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             # REFUSED branch kept it, nested under `proposal`, so the one
             # shape a person could read was the one nobody could accept.
             "edit": p.get("edit") or None,
+            # a co-bidder suggestion IS its pair and the solicitations both
+            # bid on, each with the document a person on SLED HQ read
+            "cobid": p.get("cobid") or None,
             "by": model or "agent",
             "at": now,
             "status": "pending",

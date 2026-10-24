@@ -46,7 +46,8 @@ branch.
     is held, with the new reason `the website on file is not a domain of
     their own`. The lists are the ones in HQ's `websiteDomain()`;
   - a published website is always a lower-case `http://` or `https://`
-    address with `&amp;` read as `&` (two published addresses carried it);
+    address with `&amp;` read as `&` (two published addresses carried it),
+    and a bare host is read and published over `https://`;
     an address that is not a web address at all is held as
     `website unread (the address on file is not a web address)`;
   - an own-site quote is never a sentence with a phone number or an `@` in
@@ -59,6 +60,15 @@ branch.
   HQ's own parser (`parseSupplierExport`) over the rebuilt file: 3,232
   published suppliers usable, 3,429 placements, none refused, and no
   published supplier without a placement.
+- **Duplicates merged and government bodies taken off** (owner, 2026-10-23).
+  49 published suppliers that were one company listed twice now say
+  `{"merged_into": {"kind": "supplier", "id": <survivor>}}`, the survivor
+  carrying their shows; 12 government bodies that buy (state departments,
+  federal agencies, a water board, a school district) are `not_a_company`.
+  Brands of one parent on its site stay separate suppliers. The rulings and
+  reasons are `data/supplier_record_rulings.json`. A bare host on file is
+  now read over https: 13 more suppliers publish. HQ's parser over the
+  result: 3,184 published usable, 3,389 placements, none refused.
 
 ## The file
 

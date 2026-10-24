@@ -487,6 +487,10 @@ def safe_url(u: str) -> str:
     return "".join(out)
 
 
+# The contract's five pay periods (selftest's COMP_PERIODS): a block with none
+# of them is not published, by the crawl or by quick_rebuild's redraw.
+COMP_PERIODS = ("hour", "day", "week", "month", "year")
+
 def derived(row: dict) -> dict:
     """The facts we keep off a fetched row's description, and the text we drop.
 
@@ -534,6 +538,14 @@ def derived(row: dict) -> dict:
     # anywhere. A bad row costs its own pay range and nothing else.
     comp = row.get("comp")
     if not isinstance(comp, dict):
+        comp = None
+    # ...nor one whose period is not the contract's (2026-10-23). Recruitee
+    # sent VertiGIS's "60000-70000 USD" with no interval, and a range with no
+    # period cannot be told from an hourly rate, out by two thousand. Dropped
+    # HERE and not at the fetch: there, a block with no comp falls back to
+    # reading the text, which assumes a year (Lever's "one-time" stipend would
+    # have published as a salary).
+    elif comp.get("period") not in COMP_PERIODS:
         comp = None
     jd = row.get("jd")
     # A CAPTURED row carries its description under `jd_text`, not `jd`, and

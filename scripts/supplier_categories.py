@@ -421,7 +421,7 @@ def clip(quote: str) -> str:
 #    else's site (github.com/acme, linktr.ee/acme: only the bare homepage is
 #    the host's own) is not a domain of the supplier's own, and holds it.
 #  - What HQ's URL check refuses is never published: a bare host gets
-#    "http://" (as an exhibitor list prints it, "playcraftsystems.com"), a
+#    "https://" (as an exhibitor list prints it, "playcraftsystems.com"), a
 #    scheme is lower-cased, and an address that is not a web address at all
 #    (a space in its host, a typo in its scheme) stays "website unread", in
 #    the admin's Supplier websites queue where a person can give the right one.
@@ -465,14 +465,15 @@ HOST = re.compile(rf"(?:{LABEL}\.)+[a-z]{{2,}}")
 
 def web_address(url: str | None) -> str:
     """The address as HQ's URL check takes it: a scheme, lower-cased, and an
-    entity-encoded "&amp;" read as "&". A bare host gets "http://"."""
+    entity-encoded "&amp;" read as "&". A bare host gets "https://", the
+    scheme supplier_pages reads it over."""
     u = (url or "").strip()
     while "&amp;" in u:
         u = u.replace("&amp;", "&")
     m = re.match(r"([a-z][a-z0-9+.-]*)://", u, re.I)
     if m:
         return m.group(1).lower() + u[m.end(1):]
-    return f"http://{u}" if u else ""
+    return f"https://{u}" if u else ""
 
 
 def unwrap(url: str | None) -> str | None:
@@ -645,6 +646,11 @@ def place(s: dict, ident: dict, by_tag: dict, by_stem: dict, ruling: dict | None
     verdict = (ident or {}).get("verdict")
     row = {"supplier_id": sid, "name": s.get("name"), "verdict": verdict}
     if verdict in ("not_a_company", "listing_menu"):
+        row["status"] = "not_a_company"
+        return row
+    # A GOVERNMENT BODY BUYS FROM SUPPLIERS (merge_supplier_records, owner
+    # 2026-10-23): a state department filed off a floor is not one.
+    if s.get("not_a_supplier"):
         row["status"] = "not_a_company"
         return row
     if verdict in ("duplicate", "related") and ident.get("duplicate_of"):

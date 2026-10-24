@@ -71,9 +71,16 @@ EXTRA = 3
 
 
 def site_for(row: dict) -> str | None:
+    """The address to read. A bare host ("www.cleanharbors.com", as an
+    exhibitor list prints it) is read over https, as step 1's own retry
+    reads it: handed over bare, the fetcher refused all 19 with "No scheme
+    supplied" and they sat as "website unread" for three weeks (2026-10-23)."""
     if row.get("verdict") not in READ:
         return None
-    return row.get("url") or row.get("website_was")
+    u = (row.get("url") or row.get("website_was") or "").strip()
+    if not u:
+        return None
+    return u if re.match(r"[a-z][a-z0-9+.-]*://", u, re.I) else f"https://{u}"
 
 
 def visit(sid: str, site: str) -> dict:

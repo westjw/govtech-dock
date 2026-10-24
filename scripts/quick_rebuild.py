@@ -394,6 +394,13 @@ def redraw() -> dict:
             p["sector"], p["category"] = c["sector"], c["category"]
             p["also"] = c.get("also") or None
             restamped += before != [p.get(k) for k in STAMPED]
+            # A PAY BLOCK WITH NO PERIOD, which the crawl now refuses
+            # (build_board.COMP_PERIODS, 2026-10-23): dropped here too, or a
+            # redraw would keep what a crawl would not.
+            if isinstance(p.get("comp"), dict) and p["comp"].get("period") not in bb.COMP_PERIODS:
+                p["comp"] = None
+                p.pop("comp_floor", None)
+                p.pop("comp_period", None)
         # NOT AN OPENING AT ALL (roles.not_a_listing), for every company -
         # including one waiting for the crawl, whose rows otherwise pass
         # through untouched (second review, 2026-10-08). The crawl drops

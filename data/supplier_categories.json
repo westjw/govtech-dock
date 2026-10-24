@@ -1363,12 +1363,6 @@
    "website": "https://americansynturf.com"
   },
   {
-   "supplier_id": "american-traction-systems",
-   "name": "American Traction Systems",
-   "status": "publish",
-   "website": "https://americantractionsolutions.com"
-  },
-  {
    "supplier_id": "amneal-pharmaceuticals",
    "name": "Amneal Pharmaceuticals",
    "status": "publish",
@@ -1867,18 +1861,6 @@
    "name": "BEC Technologies, Inc.",
    "status": "held",
    "held": "website not confirmed by what it sells"
-  },
-  {
-   "supplier_id": "bkv-group-architects-engineers",
-   "name": "BKV Group - Architects & Engineers",
-   "status": "publish",
-   "website": "https://bkvgroup.com"
-  },
-  {
-   "supplier_id": "bkv-group-architecture-engineering",
-   "name": "BKV Group - Architecture & Engineering",
-   "status": "publish",
-   "website": "https://bkvgroup.com"
   },
   {
    "supplier_id": "bmw-of-north-america-llc",
@@ -2801,12 +2783,6 @@
    "name": "CHA",
    "status": "held",
    "held": "website not confirmed by what it sells"
-  },
-  {
-   "supplier_id": "cigna",
-   "name": "CIGNA",
-   "status": "publish",
-   "website": "https://www.cigna.com"
   },
   {
    "supplier_id": "clerprem-spa",
@@ -4961,12 +4937,6 @@
    "website": "https://www.cooperlighting.com/global/brands/ephesus"
   },
   {
-   "supplier_id": "ephesus-sports-lighting",
-   "name": "Ephesus Sports Lighting",
-   "status": "publish",
-   "website": "https://www.cooperlighting.com/global/brands/ephesus"
-  },
-  {
    "supplier_id": "epic-outdoor-cinema",
    "name": "Epic Outdoor Cinema",
    "status": "publish",
@@ -5787,12 +5757,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "gyms-for-dogs-natural-dog-park-products",
-   "name": "GYMS FOR DOGS - NATURAL DOG PARK PRODUCTS",
-   "status": "publish",
-   "website": "https://www.gymsfordogs.com"
-  },
-  {
    "supplier_id": "gagaxp",
    "name": "GagaXP",
    "status": "publish",
@@ -6093,12 +6057,6 @@
    "website": "https://www.gfoa.org"
   },
   {
-   "supplier_id": "government-finance-officers-association-2",
-   "name": "Government Finance Officers Association (GFOA)",
-   "status": "publish",
-   "website": "https://www.gfoa.org"
-  },
-  {
    "supplier_id": "government-sourcing-solutions",
    "name": "Government Sourcing Solutions",
    "status": "held",
@@ -6187,12 +6145,6 @@
   {
    "supplier_id": "graybar",
    "name": "Graybar",
-   "status": "publish",
-   "website": "https://www.graybar.com"
-  },
-  {
-   "supplier_id": "graybar-electric-company-inc",
-   "name": "Graybar Electric Company, Inc.",
    "status": "publish",
    "website": "https://www.graybar.com"
   },
@@ -6657,12 +6609,6 @@
    "name": "Horrocks",
    "status": "publish",
    "website": "https://www.horrocks.net"
-  },
-  {
-   "supplier_id": "hot-in-place-recycling",
-   "name": "Hot-In-Place Recycling (Gallagher Asphalt)",
-   "status": "publish",
-   "website": "https://gallagherasphalt.com"
   },
   {
    "supplier_id": "houston-public-works",
@@ -9187,12 +9133,6 @@
    "website": "https://www.musco.com"
   },
   {
-   "supplier_id": "musco-sports-lighting",
-   "name": "Musco Sports Lighting",
-   "status": "publish",
-   "website": "https://www.musco.com"
-  },
-  {
    "supplier_id": "mycare",
    "name": "MyCare",
    "status": "held",
@@ -9300,12 +9240,6 @@
    "name": "NEXTORCH",
    "status": "publish",
    "website": "https://www.nextorch.com"
-  },
-  {
-   "supplier_id": "nfbpa",
-   "name": "NFBPA (National Forum for Black Public Administrators)",
-   "status": "publish",
-   "website": "https://www.nfbpa.org/home"
   },
   {
    "supplier_id": "nfi-group",
@@ -9490,12 +9424,6 @@
   {
    "supplier_id": "national-association-of-state-procurement-officials",
    "name": "National Association of State Procurement Officials",
-   "status": "publish",
-   "website": "https://www.naspo.org"
-  },
-  {
-   "supplier_id": "national-association-of-state-procurement-officials-2",
-   "name": "National Association of State Procurement Officials (NASPO)",
    "status": "publish",
    "website": "https://www.naspo.org"
   },
@@ -11158,12 +11086,6 @@
    "held": "website unread (homepage: only 0 chars of text)"
   },
   {
-   "supplier_id": "project-lifesaver-inc",
-   "name": "Project Lifesaver Inc.",
-   "status": "publish",
-   "website": "https://projectlifesaver.org"
-  },
-  {
    "supplier_id": "project-lifesaver-international",
    "name": "Project Lifesaver International",
    "status": "publish",
@@ -12126,8 +12048,7 @@
   {
    "supplier_id": "sba-office-of-innovation-technology",
    "name": "SBA/Office of Innovation & Technology",
-   "status": "publish",
-   "website": "https://www.sba.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "schaefer-plastics",
@@ -12604,12 +12525,6 @@
    "held": "website not confirmed by what it sells"
   },
   {
-   "supplier_id": "seifert-graphics-inc",
-   "name": "Seifert Graphics, Inc.",
-   "status": "publish",
-   "website": "https://www.seiferttransitgraphics.com"
-  },
-  {
    "supplier_id": "seiko-instruments-usa-inc",
    "name": "Seiko Instruments USA, INC",
    "status": "held",
@@ -12632,18 +12547,6 @@
    "name": "Selkirk Sport",
    "status": "publish",
    "website": "https://www.selkirk.com"
-  },
-  {
-   "supplier_id": "semtech-2",
-   "name": "Semtech (formerly Sierra Wireless)",
-   "status": "publish",
-   "website": "https://www.semtech.com"
-  },
-  {
-   "supplier_id": "semtech-sierra-wireless",
-   "name": "Semtech",
-   "status": "publish",
-   "website": "https://www.semtech.com"
   },
   {
    "supplier_id": "senior-executive-institute-lead-university-of-virginia",
@@ -15610,12 +15513,6 @@
    "website": "https://www.whallsgroup.com"
   },
   {
-   "supplier_id": "whelen-engineering-co-inc",
-   "name": "Whelen Engineering Co Inc",
-   "status": "publish",
-   "website": "https://www.whelen.com"
-  },
-  {
    "supplier_id": "whelen-engineering-co-inc-2",
    "name": "Whelen Engineering Co., Inc.",
    "status": {
@@ -16318,12 +16215,6 @@
    }
   },
   {
-   "supplier_id": "spohn-ranch-skateparks",
-   "name": "Spohn Ranch Skateparks",
-   "status": "publish",
-   "website": "https://spohnranch.com"
-  },
-  {
    "supplier_id": "street-dynamics",
    "name": "Street Dynamics",
    "status": "publish",
@@ -17008,12 +16899,6 @@
    "held": "website not confirmed by what it sells"
   },
   {
-   "supplier_id": "revive-environmental-technology-llc",
-   "name": "Revive Environmental Technology, LLC",
-   "status": "publish",
-   "website": "https://revive-environmental.com"
-  },
-  {
    "supplier_id": "ricondo-associates",
    "name": "Ricondo & Associates",
    "status": "held",
@@ -17288,12 +17173,6 @@
    "name": "1Government Procurement Alliance",
    "status": "held",
    "held": "no website"
-  },
-  {
-   "supplier_id": "abm-industries-inc",
-   "name": "ABM Industries, Inc.",
-   "status": "publish",
-   "website": "https://www.abm.com"
   },
   {
    "supplier_id": "ambassador-education-solutions",
@@ -18550,12 +18429,6 @@
    "website": "https://www.humanenetwork.org"
   },
   {
-   "supplier_id": "idexx",
-   "name": "Idexx",
-   "status": "publish",
-   "website": "https://www.idexx.com/en"
-  },
-  {
    "supplier_id": "in-pups-we-trust",
    "name": "In Pups We Trust",
    "status": "held",
@@ -19656,12 +19529,6 @@
    "website": "https://www.zulunyala.co.za"
   },
   {
-   "supplier_id": "zymox-pet-king-brands-animal-health",
-   "name": "Zymox/Pet King Brands Animal Health",
-   "status": "publish",
-   "website": "https://zymox.com"
-  },
-  {
    "supplier_id": "abdo",
    "name": "Abdo",
    "status": "publish",
@@ -20229,8 +20096,8 @@
   {
    "supplier_id": "wealthspire",
    "name": "Wealthspire",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.wealthspire.com': No scheme supplied. Perhaps you meant https://www.wealthspire.com?)"
+   "status": "publish",
+   "website": "https://www.wealthspire.com"
   },
   {
    "supplier_id": "weaver",
@@ -20273,26 +20140,26 @@
   {
    "supplier_id": "harvard-university-john-f-kennedy-school-of-government",
    "name": "Harvard University John F. Kennedy School of Government",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'hks.harvard.edu': No scheme supplied. Perhaps you meant https://hks.harvard.edu?)"
+   "status": "publish",
+   "website": "https://hks.harvard.edu"
   },
   {
    "supplier_id": "international-city-county-management-association",
    "name": "International City/County Management Association",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.icma.org': No scheme supplied. Perhaps you meant https://www.icma.org?)"
+   "status": "publish",
+   "website": "https://www.icma.org"
   },
   {
    "supplier_id": "obic",
    "name": "OBIC",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.obicproducts.com': No scheme supplied. Perhaps you meant https://www.obicproducts.com?)"
+   "status": "publish",
+   "website": "https://www.obicproducts.com"
   },
   {
    "supplier_id": "playcraft-systems-a-playcore-company",
    "name": "Playcraft Systems, A PlayCore Company",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'playcraftsystems.com': No scheme supplied. Perhaps you meant https://playcraftsystems.com?)"
+   "status": "publish",
+   "website": "https://playcraftsystems.com"
   },
   {
    "supplier_id": "tips-the-interlocal-purchasing-system",
@@ -21345,12 +21212,6 @@
    "held": "website unread (homepage: only 0 chars of text)"
   },
   {
-   "supplier_id": "national-purchasing-partners-nppgov",
-   "name": "National Purchasing Partners (NPPGov)",
-   "status": "publish",
-   "website": "https://nppgov.com"
-  },
-  {
    "supplier_id": "new-age-industrial",
    "name": "New Age Industrial",
    "status": "publish",
@@ -21552,7 +21413,7 @@
    "supplier_id": "revolution-consumer-solutions",
    "name": "Revolution Consumer Solutions",
    "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.revolutioncompany.com': No scheme supplied. Perhaps you meant https://www.revolutioncomp)"
+   "held": "website not confirmed by what it sells"
   },
   {
    "supplier_id": "rich-chicks-llc",
@@ -21594,7 +21455,7 @@
    "supplier_id": "san-aire-inc",
    "name": "San-Aire, Inc.",
    "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.san-aire.com': No scheme supplied. Perhaps you meant https://www.san-aire.com?)"
+   "held": "website not confirmed by what it sells"
   },
   {
    "supplier_id": "san-j-international-inc",
@@ -22780,12 +22641,6 @@
    "website": "http://www.aquestia.com"
   },
   {
-   "supplier_id": "aquisense-incorporated",
-   "name": "AquiSense Incorporated",
-   "status": "publish",
-   "website": "http://aquisense.com"
-  },
-  {
    "supplier_id": "arq-inc",
    "name": "Arq, Inc",
    "status": "publish",
@@ -22957,12 +22812,6 @@
    "website": "http://blacklinesafety.com"
   },
   {
-   "supplier_id": "blue-earth-labs-d-b-a-blue-earth-products",
-   "name": "Blue Earth Labs D.B.A. Blue Earth Products",
-   "status": "publish",
-   "website": "http://blueearthproducts.com"
-  },
-  {
    "supplier_id": "bluesen-co-ltd",
    "name": "BLUESEN Co., Ltd.",
    "status": "publish",
@@ -23121,8 +22970,8 @@
   {
    "supplier_id": "clean-harbors",
    "name": "Clean Harbors",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.cleanharbors.com': No scheme supplied. Perhaps you meant https://www.cleanharbors.com?)"
+   "status": "publish",
+   "website": "https://www.cleanharbors.com"
   },
   {
    "supplier_id": "cleanwater1",
@@ -23139,8 +22988,8 @@
   {
    "supplier_id": "coflux-purification",
    "name": "Coflux Purification",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.cofluxpurification.com': No scheme supplied. Perhaps you meant https://www.cofluxpurific)"
+   "status": "publish",
+   "website": "https://www.cofluxpurification.com"
   },
   {
    "supplier_id": "continental-carbon-group",
@@ -23307,8 +23156,8 @@
   {
    "supplier_id": "efas-technologies-inc",
    "name": "EFAS Technologies, Inc.",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.efastec.com': No scheme supplied. Perhaps you meant https://www.efastec.com?)"
+   "status": "publish",
+   "website": "https://www.efastec.com"
   },
   {
    "supplier_id": "elite-line-industrial-corp",
@@ -23525,8 +23374,8 @@
   {
    "supplier_id": "gprs",
    "name": "GPRS",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'GPRSINC.com': No scheme supplied. Perhaps you meant https://GPRSINC.com?)"
+   "status": "publish",
+   "website": "https://GPRSINC.com"
   },
   {
    "supplier_id": "gpt-industries",
@@ -23574,7 +23423,7 @@
    "supplier_id": "haver-boecker",
    "name": "Haver & Boecker",
    "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'oh.haverboecker.com': No scheme supplied. Perhaps you meant https://oh.haverboecker.com?)"
+   "held": "website not confirmed by what it sells"
   },
   {
    "supplier_id": "hawkins-inc",
@@ -23803,12 +23652,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "keller-america-inc",
-   "name": "Keller America Inc.",
-   "status": "publish",
-   "website": "https://keller-pressure.com"
-  },
-  {
    "supplier_id": "kenwave-solutions",
    "name": "KenWave Solutions",
    "status": "publish",
@@ -23895,8 +23738,8 @@
   {
    "supplier_id": "lanxess",
    "name": "LANXESS",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.lewatit.com': No scheme supplied. Perhaps you meant https://www.lewatit.com?)"
+   "status": "publish",
+   "website": "https://www.lewatit.com"
   },
   {
    "supplier_id": "layfield-usa-corp",
@@ -24085,8 +23928,8 @@
   {
    "supplier_id": "mokveld-usa-inc",
    "name": "Mokveld USA, Inc.",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.mokveld.com': No scheme supplied. Perhaps you meant https://www.mokveld.com?)"
+   "status": "publish",
+   "website": "https://www.mokveld.com"
   },
   {
    "supplier_id": "molecor-usa",
@@ -24170,12 +24013,6 @@
    "supplier_id": "networking-area",
    "name": "Networking Area",
    "status": "not_a_company"
-  },
-  {
-   "supplier_id": "newgen-strategies-and-solutions-llc",
-   "name": "NewGen Strategies and Solutions, LLC",
-   "status": "publish",
-   "website": "https://www.newgenstrategies.net"
   },
   {
    "supplier_id": "newterra",
@@ -24369,12 +24206,6 @@
    "website": "http://www.primaryflowsignal.com"
   },
   {
-   "supplier_id": "primozone-production-ab",
-   "name": "Primozone Production AB",
-   "status": "publish",
-   "website": "https://www.primozone.com/"
-  },
-  {
    "supplier_id": "proco-products-inc",
    "name": "Proco Products Inc",
    "status": "held",
@@ -24456,13 +24287,13 @@
    "supplier_id": "rashmigroup",
    "name": "Rashmigroup",
    "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.rashmigroup.com': No scheme supplied. Perhaps you meant https://www.rashmigroup.com?)"
+   "held": "website unread (not read)"
   },
   {
    "supplier_id": "rave-technologies-llc",
    "name": "RAVE Technologies, LLC",
    "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.ravetech.biz': No scheme supplied. Perhaps you meant https://www.ravetech.biz?)"
+   "held": "website not confirmed by what it sells"
   },
   {
    "supplier_id": "rdp-technologies-inc",
@@ -24527,8 +24358,8 @@
   {
    "supplier_id": "ritmo-america-llc",
    "name": "Ritmo America llc",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'www.ritmoamerica.com': No scheme supplied. Perhaps you meant https://www.ritmoamerica.com?)"
+   "status": "publish",
+   "website": "https://www.ritmoamerica.com"
   },
   {
    "supplier_id": "roberts-filter-group",
@@ -24693,12 +24524,6 @@
    "website": "http://www.soval.com"
   },
   {
-   "supplier_id": "spartan-fire-hydrants-by-sigelock-systems-llc",
-   "name": "Spartan Fire Hydrants -- by Sigelock Systems, LLC",
-   "status": "publish",
-   "website": "http://www.spartanfirehydrants.com"
-  },
-  {
    "supplier_id": "special-lite-inc",
    "name": "Special-Lite Inc",
    "status": "held",
@@ -24797,8 +24622,8 @@
   {
    "supplier_id": "swan-analytical-usa",
    "name": "Swan Analytical USA",
-   "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'Swan.ch': No scheme supplied. Perhaps you meant https://Swan.ch?)"
+   "status": "publish",
+   "website": "https://Swan.ch"
   },
   {
    "supplier_id": "tank-connection",
@@ -24885,12 +24710,6 @@
    "website": "http://www.tripaconline.com"
   },
   {
-   "supplier_id": "trojan-technologies-group-ulc",
-   "name": "Trojan Technologies Group ULC",
-   "status": "publish",
-   "website": "http://www.trojantechnologies.com"
-  },
-  {
    "supplier_id": "trumbull-manufacturing",
    "name": "Trumbull Manufacturing",
    "status": "publish",
@@ -24911,8 +24730,7 @@
   {
    "supplier_id": "u-s-epa-office-of-water",
    "name": "U.S. EPA Office of Water",
-   "status": "publish",
-   "website": "http://www.epa.gov/aboutepa/about-office-water"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "u-s-pipe",
@@ -25104,7 +24922,7 @@
    "supplier_id": "weaver-labs",
    "name": "Weaver Labs",
    "status": "held",
-   "held": "website unread (homepage: network error: Invalid URL 'weaver-labs.com': No scheme supplied. Perhaps you meant https://weaver-labs.com?)"
+   "held": "website not confirmed by what it sells"
   },
   {
    "supplier_id": "wedeco-xylem",
@@ -25505,12 +25323,6 @@
    "website": "https://inspirationmobility.com/fleet"
   },
   {
-   "supplier_id": "jj-kane",
-   "name": "JJ Kane",
-   "status": "publish",
-   "website": "https://www.jjkane.com/"
-  },
-  {
    "supplier_id": "legends-of-the-road",
    "name": "Legends of the Road",
    "status": "publish",
@@ -25573,12 +25385,6 @@
    "name": "Capgemini America, Inc.",
    "status": "publish",
    "website": "https://www.capgemini.com"
-  },
-  {
-   "supplier_id": "general-dynamics-information-technology",
-   "name": "General Dynamics Information Technology",
-   "status": "publish",
-   "website": "https://www.gdit.com"
   },
   {
    "supplier_id": "mckinsey-company",
@@ -26553,8 +26359,7 @@
   {
    "supplier_id": "colorado-department-of-corrections",
    "name": "Colorado Department of Corrections",
-   "status": "publish",
-   "website": "https://cdoc.colorado.gov/"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "compass-health-network",
@@ -26691,8 +26496,7 @@
   {
    "supplier_id": "indian-health-service",
    "name": "Indian Health Service",
-   "status": "publish",
-   "website": "http://www.ihs.gov"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "ipc-integrated-psychiatric-consultants",
@@ -26955,8 +26759,7 @@
   {
    "supplier_id": "substance-abuse-and-mental-health-services-administration",
    "name": "Substance Abuse and Mental Health Services Administration",
-   "status": "publish",
-   "website": "http://www.samhsa.gov/substance-use/prevention/talk-they-hear-you"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "t-scott-consulting",
@@ -27027,8 +26830,7 @@
   {
    "supplier_id": "u-s-department-of-state-bureau-of-medical-services",
    "name": "U.S. Department of State Bureau of Medical Services",
-   "status": "publish",
-   "website": "http://careers.state.gov/"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "ust-workforce-solutions",
@@ -29160,12 +28962,6 @@
    "website": "https://www.integrityadvantage.com"
   },
   {
-   "supplier_id": "civall-by-social-news-desk",
-   "name": "CivAll by Social News Desk",
-   "status": "publish",
-   "website": "http://civall.com/connect"
-  },
-  {
    "supplier_id": "tthm",
    "name": "TTHM",
    "status": "publish",
@@ -29499,12 +29295,6 @@
    "supplier_id": "www-csgdelivers-com",
    "name": "www.csgdelivers.com",
    "status": "not_a_company"
-  },
-  {
-   "supplier_id": "www-youngwilliams-com",
-   "name": "www.youngwilliams.com",
-   "status": "publish",
-   "website": "http://www.youngwilliams.com/"
   },
   {
    "supplier_id": "hms",
@@ -30141,20 +29931,17 @@
   {
    "supplier_id": "ct-department-of-public-health",
    "name": "CT Department of Public Health",
-   "status": "publish",
-   "website": "https://portal.ct.gov/DPH"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "ct-division-of-emergency-management-and-homeland-security",
    "name": "CT Division of Emergency Management and Homeland Security",
-   "status": "publish",
-   "website": "https://portal.ct.gov/demhs"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "cybersecurity-and-infrastructure-security-agency-cisa",
    "name": "Cybersecurity and Infrastructure Security Agency (CISA)",
-   "status": "publish",
-   "website": "https://www.cisa.gov/"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "fortinet",
@@ -32593,12 +32380,6 @@
    "name": "Beacon Water Technologies",
    "status": "publish",
    "website": "https://beaconwater.com"
-  },
-  {
-   "supplier_id": "beck-electric-actuators-harold-beck-sons-inc",
-   "name": "Beck Electric Actuators (Harold Beck & Sons, Inc)",
-   "status": "publish",
-   "website": "https://haroldbeck.com"
   },
   {
    "supplier_id": "becklar-workforce-safety",
@@ -35079,12 +34860,6 @@
    "website": "https://www.nordicwater.com"
   },
   {
-   "supplier_id": "norit-activated-carbon",
-   "name": "Norit Activated Carbon",
-   "status": "publish",
-   "website": "https://norit.com"
-  },
-  {
    "supplier_id": "novair",
    "name": "NOVAIR",
    "status": "held",
@@ -35173,12 +34948,6 @@
    "name": "ORGANO",
    "status": "held",
    "held": "website not confirmed by what it sells"
-  },
-  {
-   "supplier_id": "orival-water-filters",
-   "name": "Orival Water Filters",
-   "status": "publish",
-   "website": "https://www.orival.com"
   },
   {
    "supplier_id": "oxymat-a-s",
@@ -35765,8 +35534,7 @@
   {
    "supplier_id": "sewerage-and-water-board-of-new-orleans",
    "name": "Sewerage and Water Board of New Orleans",
-   "status": "publish",
-   "website": "https://swbno.org"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "sewpercoat-by-imerys",
@@ -36755,12 +36523,6 @@
    "name": "WEF Charities of Choice - Operators Without Borders",
    "status": "publish",
    "website": "https://operatorswithoutborders.org"
-  },
-  {
-   "supplier_id": "wef-charities-of-choice-water-for-people",
-   "name": "WEF Charities of Choice - Water For People",
-   "status": "publish",
-   "website": "https://www.waterforpeople.org"
   },
   {
    "supplier_id": "weg",
@@ -39095,12 +38857,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "virtual-academy-9-1-1",
-   "name": "Virtual Academy 9-1-1",
-   "status": "publish",
-   "website": "https://www.virtualacademy.com"
-  },
-  {
    "supplier_id": "vista-com",
    "name": "Vista Com",
    "status": "held",
@@ -39665,12 +39421,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "enthalpy-analytical",
-   "name": "Enthalpy Analytical",
-   "status": "publish",
-   "website": "https://www.onterris.com/who-we-are/enthalpy-analytical-now-onterris"
-  },
-  {
    "supplier_id": "blackhawk-technology-co",
    "name": "Blackhawk Technology Co",
    "status": "held",
@@ -39797,12 +39547,6 @@
    "held": "website not confirmed by what it sells"
   },
   {
-   "supplier_id": "ect2",
-   "name": "ECT2",
-   "status": "publish",
-   "website": "https://www.onterris.com/who-we-are/ect2-is-now-onterris"
-  },
-  {
    "supplier_id": "qualpay",
    "name": "Qualpay",
    "status": "publish",
@@ -39901,8 +39645,7 @@
   {
    "supplier_id": "lancaster-county-solid-waste-management-authority-lcswma",
    "name": "Lancaster County Solid Waste Management Authority (LCSWMA)",
-   "status": "publish",
-   "website": "https://lcswma.org"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "contenur",
@@ -40817,12 +40560,6 @@
    "website": "https://www.vlses.com/"
   },
   {
-   "supplier_id": "xybix-systems-inc",
-   "name": "Xybix Systems, Inc.",
-   "status": "publish",
-   "website": "https://www.xybix.com/"
-  },
-  {
    "supplier_id": "aero-snow-removal-llc",
    "name": "Aero Snow Removal LLC",
    "status": "held",
@@ -41061,12 +40798,6 @@
    "name": "Center for Advanced Preparedness & Threat Response Simulation (CAPTRS)",
    "status": "held",
    "held": "website unread (homepage: network error: robots.txt on www.captrs.org did not answer (ConnectTimeout))"
-  },
-  {
-   "supplier_id": "cgi-digital-hellonation",
-   "name": "CGI Digital/HelloNation",
-   "status": "publish",
-   "website": "https://cgidigital.com"
   },
   {
    "supplier_id": "nationwide",
@@ -41865,12 +41596,6 @@
    "name": "WINSOR CONSULTING GROUP LLC",
    "status": "held",
    "held": "website not confirmed by what it sells"
-  },
-  {
-   "supplier_id": "winsted-consoles",
-   "name": "WINSTED CONSOLES",
-   "status": "publish",
-   "website": "https://www.winsted.com"
   },
   {
    "supplier_id": "wold-architects-engineers",
@@ -42798,12 +42523,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "duratrench-the-drain-brains",
-   "name": "DuraTrench - The Drain Brains",
-   "status": "publish",
-   "website": "https://www.duratrench.com"
-  },
-  {
    "supplier_id": "environmental-protection-agency",
    "name": "Environmental Protection Agency",
    "status": "held",
@@ -43166,8 +42885,7 @@
   {
    "supplier_id": "clark-county-school-district",
    "name": "Clark County School District",
-   "status": "publish",
-   "website": "https://www.ccsd.edu"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "council-of-administrators-of-special-education",
@@ -43480,12 +43198,6 @@
    "name": "MarketForce",
    "status": "publish",
    "website": "https://marketforcecorp.com/"
-  },
-  {
-   "supplier_id": "npa",
-   "name": "NPA",
-   "status": "publish",
-   "website": "http://www.npa-section.com"
   },
   {
    "supplier_id": "npa-section",
@@ -44648,12 +44360,6 @@
    "held": "website not confirmed by what it sells"
   },
   {
-   "supplier_id": "zumro-air-shelters",
-   "name": "Zumro Air Shelters",
-   "status": "publish",
-   "website": "https://www.zumro.com"
-  },
-  {
    "supplier_id": "abacus-intel",
    "name": "Abacus Intel",
    "status": "publish",
@@ -45760,12 +45466,6 @@
    "website": "https://navs.org"
   },
   {
-   "supplier_id": "national-assoc-of-state-procurement-officials",
-   "name": "National Assoc of State Procurement Officials",
-   "status": "publish",
-   "website": "https://www.naspo.org"
-  },
-  {
    "supplier_id": "national-assoc-of-certified-professional-midwives",
    "name": "National Assoc. of Certified Professional Midwives",
    "status": "held",
@@ -46600,12 +46300,6 @@
    "website": "https://www.compass-gc.com/"
   },
   {
-   "supplier_id": "corporation-for-supportive-housing",
-   "name": "Corporation for Supportive Housing",
-   "status": "publish",
-   "website": "https://www.csh.org/"
-  },
-  {
    "supplier_id": "deacon-construction-llc",
    "name": "Deacon Construction LLC",
    "status": "publish",
@@ -46844,6 +46538,496 @@
    "name": "YWCA Seattle, King & Snohomish",
    "status": "publish",
    "website": "https://www.ywcaworks.org/"
+  },
+  {
+   "supplier_id": "american-traction-systems",
+   "name": "American Traction Systems",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "american-traction-solutions"
+    }
+   }
+  },
+  {
+   "supplier_id": "bkv-group-architects-engineers",
+   "name": "BKV Group - Architects & Engineers",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "bkv-group"
+    }
+   }
+  },
+  {
+   "supplier_id": "bkv-group-architecture-engineering",
+   "name": "BKV Group - Architecture & Engineering",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "bkv-group"
+    }
+   }
+  },
+  {
+   "supplier_id": "cigna",
+   "name": "CIGNA",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "cigna-healthcare"
+    }
+   }
+  },
+  {
+   "supplier_id": "ephesus-sports-lighting",
+   "name": "Ephesus Sports Lighting",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "ephesus-lighting"
+    }
+   }
+  },
+  {
+   "supplier_id": "gyms-for-dogs-natural-dog-park-products",
+   "name": "GYMS FOR DOGS - NATURAL DOG PARK PRODUCTS",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "gyms-for-dogs"
+    }
+   }
+  },
+  {
+   "supplier_id": "government-finance-officers-association-2",
+   "name": "Government Finance Officers Association (GFOA)",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "government-finance-officers-association"
+    }
+   }
+  },
+  {
+   "supplier_id": "graybar-electric-company-inc",
+   "name": "Graybar Electric Company, Inc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "graybar"
+    }
+   }
+  },
+  {
+   "supplier_id": "hot-in-place-recycling",
+   "name": "Hot-In-Place Recycling (Gallagher Asphalt)",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "gallagher-asphalt"
+    }
+   }
+  },
+  {
+   "supplier_id": "musco-sports-lighting",
+   "name": "Musco Sports Lighting",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "musco-lighting"
+    }
+   }
+  },
+  {
+   "supplier_id": "nfbpa",
+   "name": "NFBPA (National Forum for Black Public Administrators)",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "national-forum-for-black-public-administrators-nfbpa"
+    }
+   }
+  },
+  {
+   "supplier_id": "national-association-of-state-procurement-officials-2",
+   "name": "National Association of State Procurement Officials (NASPO)",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "national-association-of-state-procurement-officials"
+    }
+   }
+  },
+  {
+   "supplier_id": "project-lifesaver-inc",
+   "name": "Project Lifesaver Inc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "project-lifesaver-international"
+    }
+   }
+  },
+  {
+   "supplier_id": "seifert-graphics-inc",
+   "name": "Seifert Graphics, Inc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "seifert-transit-graphics"
+    }
+   }
+  },
+  {
+   "supplier_id": "semtech-2",
+   "name": "Semtech (formerly Sierra Wireless)",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "semtech"
+    }
+   }
+  },
+  {
+   "supplier_id": "semtech-sierra-wireless",
+   "name": "Semtech",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "semtech"
+    }
+   }
+  },
+  {
+   "supplier_id": "whelen-engineering-co-inc",
+   "name": "Whelen Engineering Co Inc",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "whelen"
+    }
+   }
+  },
+  {
+   "supplier_id": "spohn-ranch-skateparks",
+   "name": "Spohn Ranch Skateparks",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "spohn-ranch"
+    }
+   }
+  },
+  {
+   "supplier_id": "revive-environmental-technology-llc",
+   "name": "Revive Environmental Technology, LLC",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "revive-environmental"
+    }
+   }
+  },
+  {
+   "supplier_id": "abm-industries-inc",
+   "name": "ABM Industries, Inc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "abm"
+    }
+   }
+  },
+  {
+   "supplier_id": "idexx",
+   "name": "Idexx",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "idexx-laboratories"
+    }
+   }
+  },
+  {
+   "supplier_id": "zymox-pet-king-brands-animal-health",
+   "name": "Zymox/Pet King Brands Animal Health",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "pet-king-brands"
+    }
+   }
+  },
+  {
+   "supplier_id": "national-purchasing-partners-nppgov",
+   "name": "National Purchasing Partners (NPPGov)",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "nppgov"
+    }
+   }
+  },
+  {
+   "supplier_id": "aquisense-incorporated",
+   "name": "AquiSense Incorporated",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "aquisense-inc"
+    }
+   }
+  },
+  {
+   "supplier_id": "blue-earth-labs-d-b-a-blue-earth-products",
+   "name": "Blue Earth Labs D.B.A. Blue Earth Products",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "blue-earth-products"
+    }
+   }
+  },
+  {
+   "supplier_id": "keller-america-inc",
+   "name": "Keller America Inc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "keller-pressure-inc"
+    }
+   }
+  },
+  {
+   "supplier_id": "newgen-strategies-and-solutions-llc",
+   "name": "NewGen Strategies and Solutions, LLC",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "newgen-strategies-solutions"
+    }
+   }
+  },
+  {
+   "supplier_id": "primozone-production-ab",
+   "name": "Primozone Production AB",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "primozone-inc"
+    }
+   }
+  },
+  {
+   "supplier_id": "spartan-fire-hydrants-by-sigelock-systems-llc",
+   "name": "Spartan Fire Hydrants -- by Sigelock Systems, LLC",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "spartan-fire-hydrants"
+    }
+   }
+  },
+  {
+   "supplier_id": "trojan-technologies-group-ulc",
+   "name": "Trojan Technologies Group ULC",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "trojan-technologies"
+    }
+   }
+  },
+  {
+   "supplier_id": "jj-kane",
+   "name": "JJ Kane",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "jj-kane-auctions"
+    }
+   }
+  },
+  {
+   "supplier_id": "general-dynamics-information-technology",
+   "name": "General Dynamics Information Technology",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "gdit"
+    }
+   }
+  },
+  {
+   "supplier_id": "civall-by-social-news-desk",
+   "name": "CivAll by Social News Desk",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "civall-social-news-desk"
+    }
+   }
+  },
+  {
+   "supplier_id": "www-youngwilliams-com",
+   "name": "www.youngwilliams.com",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "youngwilliams"
+    }
+   }
+  },
+  {
+   "supplier_id": "beck-electric-actuators-harold-beck-sons-inc",
+   "name": "Beck Electric Actuators (Harold Beck & Sons, Inc)",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "beck-harold-sons-inc"
+    }
+   }
+  },
+  {
+   "supplier_id": "norit-activated-carbon",
+   "name": "Norit Activated Carbon",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "norit-americas"
+    }
+   }
+  },
+  {
+   "supplier_id": "orival-water-filters",
+   "name": "Orival Water Filters",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "orival-inc"
+    }
+   }
+  },
+  {
+   "supplier_id": "wef-charities-of-choice-water-for-people",
+   "name": "WEF Charities of Choice - Water For People",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "water-for-people"
+    }
+   }
+  },
+  {
+   "supplier_id": "virtual-academy-9-1-1",
+   "name": "Virtual Academy 9-1-1",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "virtual-academy"
+    }
+   }
+  },
+  {
+   "supplier_id": "enthalpy-analytical",
+   "name": "Enthalpy Analytical",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "onterris"
+    }
+   }
+  },
+  {
+   "supplier_id": "ect2",
+   "name": "ECT2",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "onterris"
+    }
+   }
+  },
+  {
+   "supplier_id": "xybix-systems-inc",
+   "name": "Xybix Systems, Inc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "xybix"
+    }
+   }
+  },
+  {
+   "supplier_id": "cgi-digital-hellonation",
+   "name": "CGI Digital/HelloNation",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "cgi-digital"
+    }
+   }
+  },
+  {
+   "supplier_id": "winsted-consoles",
+   "name": "WINSTED CONSOLES",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "winsted"
+    }
+   }
+  },
+  {
+   "supplier_id": "duratrench-the-drain-brains",
+   "name": "DuraTrench - The Drain Brains",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "eric-sons-manufacturing-duratrench-brand"
+    }
+   }
+  },
+  {
+   "supplier_id": "npa",
+   "name": "NPA",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "npa-section"
+    }
+   }
+  },
+  {
+   "supplier_id": "zumro-air-shelters",
+   "name": "Zumro Air Shelters",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "zumro"
+    }
+   }
+  },
+  {
+   "supplier_id": "national-assoc-of-state-procurement-officials",
+   "name": "National Assoc of State Procurement Officials",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "national-association-of-state-procurement-officials"
+    }
+   }
+  },
+  {
+   "supplier_id": "corporation-for-supportive-housing",
+   "name": "Corporation for Supportive Housing",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "csh"
+    }
+   }
   },
   {
    "supplier_id": "bewith",
@@ -48455,15 +48639,6 @@
    }
   },
   {
-   "supplier_id": "american-traction-systems",
-   "industry": "transit-parking/fleet-and-operations",
-   "basis": "own_site",
-   "source": {
-    "url": "https://americantractionsolutions.com",
-    "quote": "American Traction Solutions Inc."
-   }
-  },
-  {
    "supplier_id": "amneal-pharmaceuticals",
    "industry": "public-safety/police",
    "basis": "conference",
@@ -49280,24 +49455,6 @@
    "source": {
     "url": "https://fall.smartcitiesconnect.org/expo/",
     "quote": "BEC Technologies, Inc."
-   }
-  },
-  {
-   "supplier_id": "bkv-group-architects-engineers",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.sheriffs.org/conferences/",
-    "quote": "BKV Group - Architects & Engineers"
-   }
-  },
-  {
-   "supplier_id": "bkv-group-architecture-engineering",
-   "industry": "public-safety/police",
-   "basis": "conference",
-   "source": {
-    "url": "https://theiacpconference.org/",
-    "quote": "BKV Group - Architecture & Engineering"
    }
   },
   {
@@ -50711,15 +50868,6 @@
    "source": {
     "url": "https://s23.a2zinc.net/clients/NRPA/NRPA2026/Public/eventmap.aspx?shMode=E",
     "quote": "CHA"
-   }
-  },
-  {
-   "supplier_id": "cigna",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.cigna.com/about-us",
-    "quote": "Comprehensive, cost-efficient health care options with a wide array of benefits, including access to a large, national network of providers, mental health and wellness programs, spending accounts, and pharmacy coverage."
    }
   },
   {
@@ -54071,12 +54219,12 @@
    }
   },
   {
-   "supplier_id": "ephesus-sports-lighting",
-   "industry": "parks-rec/events-venues-and-ticketing",
-   "basis": "own_site",
+   "supplier_id": "ephesus-lighting",
+   "industry": "general-gov/suppliers-and-services",
+   "basis": "conference",
    "source": {
-    "url": "https://www.cooperlighting.com/global/brands/ephesus",
-    "quote": "\u200b \u200b From design to installation and through gameday, Ephesus innovation enables venues of all sizes to create a sports lighting experience that exceeds the expectations of players, fans and communities for years to come."
+    "url": "https://nigp26.myexpoonline.com/exhibitors",
+    "quote": "Ephesus Lighting"
    }
   },
   {
@@ -55484,15 +55632,6 @@
    }
   },
   {
-   "supplier_id": "gyms-for-dogs-natural-dog-park-products",
-   "industry": "parks-rec/park-assets-forestry-and-visitor-data",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.gymsfordogs.com",
-    "quote": "Shop quality natural dog playground equipment and dog park and dog agility products designed and manufactured in the U.S.A."
-   }
-  },
-  {
    "supplier_id": "gagaxp",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
@@ -55898,15 +56037,6 @@
    }
   },
   {
-   "supplier_id": "government-finance-officers-association-2",
-   "industry": "general-gov/finance-and-erp",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.gfoa.org",
-    "quote": "Investment Management Learning Pathway Now Available"
-   }
-  },
-  {
    "supplier_id": "government-sourcing-solutions",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -56016,15 +56146,6 @@
   },
   {
    "supplier_id": "graybar",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.graybar.com",
-    "quote": "Prepare Your Data Center for What\u2019s Next"
-   }
-  },
-  {
-   "supplier_id": "graybar-electric-company-inc",
    "industry": "general-gov/it-and-ai-platforms",
    "basis": "own_site",
    "source": {
@@ -56822,15 +56943,6 @@
    "source": {
     "url": "https://www.horrocks.net",
     "quote": "Horrocks completes its first I-15 study and bridge project with the Utah Department of Transportation (UDOT)."
-   }
-  },
-  {
-   "supplier_id": "hot-in-place-recycling",
-   "industry": "public-works/streets",
-   "basis": "own_site",
-   "source": {
-    "url": "https://gallagherasphalt.com",
-    "quote": "Asphalt Plants & Manufacturing"
    }
   },
   {
@@ -60776,15 +60888,6 @@
    }
   },
   {
-   "supplier_id": "musco-sports-lighting",
-   "industry": "parks-rec/events-venues-and-ticketing",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.musco.com",
-    "quote": "Venue management and integrating new technologies can be challenging."
-   }
-  },
-  {
    "supplier_id": "mycare",
    "industry": "public-safety/police",
    "basis": "conference",
@@ -60908,15 +61011,6 @@
    "source": {
     "url": "https://www.nextorch.com",
     "quote": "Designed for Law Enforcement"
-   }
-  },
-  {
-   "supplier_id": "nfbpa",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://icma2026.smallworldlabs.com/exhibitors",
-    "quote": "NFBPA (National Forum for Black Public Administrators)"
    }
   },
   {
@@ -61082,6 +61176,15 @@
    }
   },
   {
+   "supplier_id": "nppgov",
+   "industry": "k12-schools/suppliers-and-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://fp37.a2zinc.net/clients/fpSNA10/ANC2027/Public/EventMap.aspx?shMode=E",
+    "quote": "NPPGov"
+   }
+  },
+  {
    "supplier_id": "nrpa-sales-office",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
@@ -61223,15 +61326,6 @@
    "source": {
     "url": "https://icma2026.smallworldlabs.com/exhibitors",
     "quote": "National Association of State Procurement Officials"
-   }
-  },
-  {
-   "supplier_id": "national-association-of-state-procurement-officials-2",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://icma2026.smallworldlabs.com/exhibitors",
-    "quote": "National Association of State Procurement Officials (NASPO)"
    }
   },
   {
@@ -63890,15 +63984,6 @@
    }
   },
   {
-   "supplier_id": "project-lifesaver-inc",
-   "industry": "public-safety/police",
-   "basis": "own_site",
-   "source": {
-    "url": "https://projectlifesaver.org/who-we-are/",
-    "quote": "Richard Derus currently serves as the Deputy Chief for the Windsor Police Service."
-   }
-  },
-  {
    "supplier_id": "project-lifesaver-international",
    "industry": "public-safety/police",
    "basis": "own_site",
@@ -65456,15 +65541,6 @@
    }
   },
   {
-   "supplier_id": "sba-office-of-innovation-technology",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.techconnectworld.com/World2027/",
-    "quote": "SBA/Office of Innovation & Technology"
-   }
-  },
-  {
    "supplier_id": "schaefer-plastics",
    "industry": "public-works/suppliers-and-services",
    "basis": "conference",
@@ -65506,6 +65582,15 @@
    "basis": "conference",
    "source": {
     "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
+    "quote": "SEMTECH (SIERRA WIRELESS)"
+   }
+  },
+  {
+   "supplier_id": "semtech",
+   "industry": "public-safety/police",
+   "basis": "conference",
+   "source": {
+    "url": "https://theiacpconference.org/",
     "quote": "SEMTECH (SIERRA WIRELESS)"
    }
   },
@@ -66266,15 +66351,6 @@
    }
   },
   {
-   "supplier_id": "seifert-graphics-inc",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
-    "quote": "Seifert Graphics, Inc."
-   }
-  },
-  {
    "supplier_id": "seiko-instruments-usa-inc",
    "industry": "public-safety/police",
    "basis": "conference",
@@ -66308,33 +66384,6 @@
    "source": {
     "url": "https://abshow.expocad.com/Events/abc26/index.html",
     "quote": "Selkirk Sport"
-   }
-  },
-  {
-   "supplier_id": "semtech-2",
-   "industry": "public-safety/police",
-   "basis": "conference",
-   "source": {
-    "url": "https://theiacpconference.org/",
-    "quote": "Semtech (formerly Sierra Wireless)"
-   }
-  },
-  {
-   "supplier_id": "semtech-2",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
-    "quote": "Semtech (formerly Sierra Wireless)"
-   }
-  },
-  {
-   "supplier_id": "semtech-sierra-wireless",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.sheriffs.org/conferences/",
-    "quote": "Semtech - Sierra Wireless"
    }
   },
   {
@@ -67253,6 +67302,15 @@
    "source": {
     "url": "https://www.spohnranch.com",
     "quote": "VIEW OUR SKATEPARK PORTFOLIO"
+   }
+  },
+  {
+   "supplier_id": "spohn-ranch",
+   "industry": "general-gov/suppliers-and-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://icma2026.smallworldlabs.com/exhibitors",
+    "quote": "Spohn Ranch"
    }
   },
   {
@@ -71072,15 +71130,6 @@
    }
   },
   {
-   "supplier_id": "whelen-engineering-co-inc",
-   "industry": "public-safety/police",
-   "basis": "conference",
-   "source": {
-    "url": "https://theiacpconference.org/",
-    "quote": "Whelen Engineering Co Inc"
-   }
-  },
-  {
    "supplier_id": "white-associates",
    "industry": "transit-parking/suppliers-and-services",
    "basis": "conference",
@@ -72143,15 +72192,6 @@
    }
   },
   {
-   "supplier_id": "spohn-ranch-skateparks",
-   "industry": "parks-rec/park-assets-forestry-and-visitor-data",
-   "basis": "own_site",
-   "source": {
-    "url": "https://spohnranch.com",
-    "quote": "VIEW OUR SKATEPARK PORTFOLIO"
-   }
-  },
-  {
    "supplier_id": "street-dynamics",
    "industry": "public-works/streets",
    "basis": "own_site",
@@ -72193,6 +72233,15 @@
    "basis": "conference",
    "source": {
     "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
+    "quote": "ABM"
+   }
+  },
+  {
+   "supplier_id": "abm",
+   "industry": "higher-education/business-and-finance",
+   "basis": "conference",
+   "source": {
+    "url": "https://exhibits.nacuboannualmeeting.org/2026/exhibitor_list.cfm",
     "quote": "ABM"
    }
   },
@@ -73259,24 +73308,6 @@
    }
   },
   {
-   "supplier_id": "revive-environmental-technology-llc",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://revive-environmental.com",
-    "quote": "Drinking Water / Wastewater"
-   }
-  },
-  {
-   "supplier_id": "revive-environmental-technology-llc",
-   "industry": "airports-aviation/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
-    "quote": "Revive Environmental Technology, LLC"
-   }
-  },
-  {
    "supplier_id": "ricondo-associates",
    "industry": "airports-aviation/suppliers-and-services",
    "basis": "conference",
@@ -73724,15 +73755,6 @@
    "source": {
     "url": "https://exhibits.nacuboannualmeeting.org/2026/exhibitor_list.cfm",
     "quote": "1Government Procurement Alliance"
-   }
-  },
-  {
-   "supplier_id": "abm-industries-inc",
-   "industry": "higher-education/business-and-finance",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.nacuboannualmeeting.org/2026/exhibitor_list.cfm",
-    "quote": "ABM Industries, Inc."
    }
   },
   {
@@ -75591,11 +75613,20 @@
   },
   {
    "supplier_id": "gyms-for-dogs",
-   "industry": "general-gov/animal-services",
+   "industry": "parks-rec/park-assets-forestry-and-visitor-data",
    "basis": "own_site",
    "source": {
     "url": "https://www.gymsfordogs.com",
-    "quote": "For more than 20 years, we have developed our unique and custom dog agility equipment and the supplies needed for dog parks, veterinary clinics, kennels, neighborhood parks, doggie daycare centers, animal sanctuaries, HOA\u2019s, cities, multi-family housing, zoo parks and much more!"
+    "quote": "Shop quality natural dog playground equipment and dog park and dog agility products designed and manufactured in the U.S.A."
+   }
+  },
+  {
+   "supplier_id": "gyms-for-dogs",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "quote": "Gyms for Dogs"
    }
   },
   {
@@ -75731,24 +75762,6 @@
    "source": {
     "url": "https://www.humanenetwork.org",
     "quote": "Animal Shelter Behavioral Management Certificate Course"
-   }
-  },
-  {
-   "supplier_id": "idexx",
-   "industry": "general-gov/animal-services",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.idexx.com/en",
-    "quote": "IDEXX Veterinary software"
-   }
-  },
-  {
-   "supplier_id": "idexx",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Idexx"
    }
   },
   {
@@ -77390,15 +77403,6 @@
    }
   },
   {
-   "supplier_id": "zymox-pet-king-brands-animal-health",
-   "industry": "general-gov/animal-services",
-   "basis": "own_site",
-   "source": {
-    "url": "https://zymox.com",
-    "quote": "Trusted by Veterinarians & Animal Lovers Across the Nation"
-   }
-  },
-  {
    "supplier_id": "abdo",
    "industry": "general-gov/finance-and-erp",
    "basis": "own_site",
@@ -78273,11 +78277,11 @@
   },
   {
    "supplier_id": "wealthspire",
-   "industry": "general-gov/finance-and-erp",
-   "basis": "conference",
+   "industry": "general-gov/hr-and-workforce",
+   "basis": "own_site",
    "source": {
-    "url": "https://www.gfoa.org/2026-exhibitors",
-    "quote": "Wealthspire"
+    "url": "https://www.wealthspire.com",
+    "quote": "Fiduciary support for retirement plans of all sizes, helping enhance your employees' ability to retire comfortably"
    }
   },
   {
@@ -78318,47 +78322,47 @@
   },
   {
    "supplier_id": "harvard-university-john-f-kennedy-school-of-government",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
+   "industry": "general-gov/elections",
+   "basis": "own_site",
    "source": {
-    "url": "https://s23.a2zinc.net/clients/corcexpo/NLC2026/Public/Exhibitors.aspx",
-    "quote": "Harvard University John F. Kennedy School of Government"
+    "url": "https://hks.harvard.edu",
+    "quote": "Does the top of the ticket influence down-ballot races?"
    }
   },
   {
    "supplier_id": "international-city-county-management-association",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
+   "industry": "general-gov/libraries",
+   "basis": "own_site",
    "source": {
-    "url": "https://s23.a2zinc.net/clients/corcexpo/NLC2026/Public/Exhibitors.aspx",
-    "quote": "International City/County Management Association"
-   }
-  },
-  {
-   "supplier_id": "obic",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s23.a2zinc.net/clients/corcexpo/NLC2026/Public/Exhibitors.aspx",
-    "quote": "OBIC"
+    "url": "https://www.icma.org",
+    "quote": "Member Self-Published Books"
    }
   },
   {
    "supplier_id": "obic",
    "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.obicproducts.com",
+    "quote": "From private industries whose profitability depends on long-lasting potable water systems, to public utility departments that manage water and sanitary sewer systems, OBIC offers customizable solutions that are proven to extend the life of water and wastewater structures for 50 years or longer."
+   }
+  },
+  {
+   "supplier_id": "obic",
+   "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
    "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+    "url": "https://s23.a2zinc.net/clients/corcexpo/NLC2026/Public/Exhibitors.aspx",
     "quote": "OBIC"
    }
   },
   {
    "supplier_id": "playcraft-systems-a-playcore-company",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
+   "industry": "parks-rec/park-assets-forestry-and-visitor-data",
+   "basis": "own_site",
    "source": {
-    "url": "https://s23.a2zinc.net/clients/corcexpo/NLC2026/Public/Exhibitors.aspx",
-    "quote": "Playcraft Systems, A PlayCore Company"
+    "url": "https://playcraftsystems.com",
+    "quote": "YEAR-END PLAYGROUND EVENT"
    }
   },
   {
@@ -80000,15 +80004,6 @@
    }
   },
   {
-   "supplier_id": "national-purchasing-partners-nppgov",
-   "industry": "k12-schools/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://fp37.a2zinc.net/clients/fpSNA10/ANC2027/Public/EventMap.aspx?shMode=E",
-    "quote": "National Purchasing Partners (NPPGov)"
-   }
-  },
-  {
    "supplier_id": "new-age-industrial",
    "industry": "k12-schools/suppliers-and-services",
    "basis": "conference",
@@ -81023,6 +81018,15 @@
    "source": {
     "url": "http://www.newgenstrategies.net",
     "quote": "NewGen helped us not only with the citizen and the community engagement and seeing if there is a desire and need for public power, but ultimately, this first phase truly went down the rabbit hole into the details of what our municipalization could potentially cost us."
+   }
+  },
+  {
+   "supplier_id": "newgen-strategies-solutions",
+   "industry": "public-works/water",
+   "basis": "conference",
+   "source": {
+    "url": "https://ace2026.smallworldlabs.com/exhibitors",
+    "quote": "NewGen Strategies & Solutions"
    }
   },
   {
@@ -82151,15 +82155,6 @@
    }
   },
   {
-   "supplier_id": "aquisense-incorporated",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "AquiSense Incorporated"
-   }
-  },
-  {
    "supplier_id": "arq-inc",
    "industry": "public-works/water",
    "basis": "own_site",
@@ -82391,15 +82386,6 @@
    "source": {
     "url": "https://www.blacklinesafety.com/solutions/personal-gas-detection",
     "quote": "With out-of-the-box deployment, seamless integration into existing operations, a broad gas sensor portfolio and satellite connectivity when paired with a G7 Bridge base station, Blackline's G7x addresses every facet of your gas detection safety program, no matter where your operations take you."
-   }
-  },
-  {
-   "supplier_id": "blue-earth-labs-d-b-a-blue-earth-products",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "http://blueearthproducts.com",
-    "quote": "Extend the operational life and efficiency of your water infrastructure."
    }
   },
   {
@@ -82638,11 +82624,11 @@
   },
   {
    "supplier_id": "clean-harbors",
-   "industry": "public-works/water",
-   "basis": "conference",
+   "industry": "public-works/waste-and-recycling",
+   "basis": "own_site",
    "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "Clean Harbors"
+    "url": "https://www.cleanharbors.com",
+    "quote": "For 45 years, Clean Harbors has been providing comprehensive hazardous and non-hazardous waste management services to meet the needs of customers throughout North America."
    }
   },
   {
@@ -82918,10 +82904,10 @@
   {
    "supplier_id": "efas-technologies-inc",
    "industry": "public-works/water",
-   "basis": "conference",
+   "basis": "own_site",
    "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "EFAS Technologies, Inc."
+    "url": "https://www.efastec.com",
+    "quote": "Revolutionizing Leak Detection for Water Utilities"
    }
   },
   {
@@ -83215,10 +83201,10 @@
   {
    "supplier_id": "gprs",
    "industry": "public-works/water",
-   "basis": "conference",
+   "basis": "own_site",
    "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "GPRS"
+    "url": "https://GPRSINC.com",
+    "quote": "CCTV Video Pipe Inspection"
    }
   },
   {
@@ -83474,6 +83460,15 @@
    }
   },
   {
+   "supplier_id": "idexx-laboratories",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "quote": "IDEXX Laboratories"
+   }
+  },
+  {
    "supplier_id": "induron-coatings-llc",
    "industry": "public-works/water",
    "basis": "own_site",
@@ -83627,15 +83622,6 @@
    }
   },
   {
-   "supplier_id": "keller-america-inc",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "Keller America Inc."
-   }
-  },
-  {
    "supplier_id": "kenwave-solutions",
    "industry": "public-works/water",
    "basis": "own_site",
@@ -83764,10 +83750,10 @@
   {
    "supplier_id": "lanxess",
    "industry": "public-works/water",
-   "basis": "conference",
+   "basis": "own_site",
    "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "LANXESS"
+    "url": "https://www.lewatit.com",
+    "quote": "Municipal Water Treatment"
    }
   },
   {
@@ -84034,10 +84020,10 @@
   {
    "supplier_id": "mokveld-usa-inc",
    "industry": "public-works/water",
-   "basis": "conference",
+   "basis": "own_site",
    "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "Mokveld USA, Inc."
+    "url": "https://www.mokveld.com",
+    "quote": "Mokveld valves: the sustainable alternative"
    }
   },
   {
@@ -84155,15 +84141,6 @@
    "source": {
     "url": "https://ace2026.smallworldlabs.com/exhibitors",
     "quote": "Netwatch"
-   }
-  },
-  {
-   "supplier_id": "newgen-strategies-and-solutions-llc",
-   "industry": "public-works/waste-and-recycling",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.newgenstrategies.net",
-    "quote": "NewGen's Team helped Recycle Saline connect with our community with our Trash and Recycling Survey."
    }
   },
   {
@@ -84455,15 +84432,6 @@
    }
   },
   {
-   "supplier_id": "primozone-production-ab",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.primozone.com/",
-    "quote": "Transform your water treatment with Primozone ozone systems."
-   }
-  },
-  {
    "supplier_id": "proco-products-inc",
    "industry": "public-works/water",
    "basis": "conference",
@@ -84662,6 +84630,15 @@
    }
   },
   {
+   "supplier_id": "revive-environmental",
+   "industry": "airports-aviation/suppliers-and-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
+    "quote": "Revive Environmental"
+   }
+  },
+  {
    "supplier_id": "rexa",
    "industry": "public-works/water",
    "basis": "conference",
@@ -84691,10 +84668,10 @@
   {
    "supplier_id": "ritmo-america-llc",
    "industry": "public-works/water",
-   "basis": "conference",
+   "basis": "own_site",
    "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "Ritmo America llc"
+    "url": "https://www.ritmoamerica.com",
+    "quote": "Butt Fusion \u2013 High Pressure \u2013 HDPE Pipe"
    }
   },
   {
@@ -84941,15 +84918,6 @@
    }
   },
   {
-   "supplier_id": "spartan-fire-hydrants-by-sigelock-systems-llc",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "http://www.spartanfirehydrants.com",
-    "quote": "Welcome to SpartanFireHydrants.com, the ultimate destination for fire professionals, municipal officials, and anyone seeking reliable and cutting-edge fire hydrant solutions."
-   }
-  },
-  {
    "supplier_id": "special-lite-inc",
    "industry": "public-works/water",
    "basis": "conference",
@@ -85096,10 +85064,10 @@
   {
    "supplier_id": "swan-analytical-usa",
    "industry": "public-works/water",
-   "basis": "conference",
+   "basis": "own_site",
    "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "Swan Analytical USA"
+    "url": "https://Swan.ch",
+    "quote": "Since 1991, SWAN has built high-precision analyzers that catch even the smallest changes in water quality\u2014often before anyone notices a risk."
    }
   },
   {
@@ -85229,15 +85197,6 @@
    }
   },
   {
-   "supplier_id": "trojan-technologies-group-ulc",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "http://www.trojantechnologies.com",
-    "quote": "We provide innovative water treatment solutions to help municipal, industrial, and residential customers address contaminants and micropollutants."
-   }
-  },
-  {
    "supplier_id": "trumbull-manufacturing",
    "industry": "public-works/water",
    "basis": "own_site",
@@ -85262,15 +85221,6 @@
    "source": {
     "url": "https://ace2026.smallworldlabs.com/exhibitors",
     "quote": "U.S. Department of State"
-   }
-  },
-  {
-   "supplier_id": "u-s-epa-office-of-water",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "http://www.epa.gov/aboutepa/about-office-water",
-    "quote": "Surface, Groundwater and Source Water Protection: Develops and implements programs and policies to protect the quality of surface water and underground sources of drinking water."
    }
   },
   {
@@ -86165,15 +86115,6 @@
    }
   },
   {
-   "supplier_id": "jj-kane",
-   "industry": "public-works/fleet-and-asset-mgmt",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.nafainstitute.org/exhibitors-sponsors/",
-    "quote": "JJ Kane"
-   }
-  },
-  {
    "supplier_id": "legends-of-the-road",
    "industry": "public-works/fleet-and-asset-mgmt",
    "basis": "own_site",
@@ -86219,6 +86160,15 @@
    }
   },
   {
+   "supplier_id": "whelen",
+   "industry": "public-safety/police",
+   "basis": "conference",
+   "source": {
+    "url": "https://theiacpconference.org/",
+    "quote": "Whelen"
+   }
+  },
+  {
    "supplier_id": "saic",
    "industry": "general-gov/it-and-ai-platforms",
    "basis": "conference",
@@ -86252,15 +86202,6 @@
    "source": {
     "url": "https://www.nascio.org/events/conferences/annual/sponsors/",
     "quote": "Capgemini America, Inc."
-   }
-  },
-  {
-   "supplier_id": "general-dynamics-information-technology",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.gdit.com",
-    "quote": "Secure Software Development Read more"
    }
   },
   {
@@ -87776,15 +87717,6 @@
    }
   },
   {
-   "supplier_id": "colorado-department-of-corrections",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "conference",
-   "source": {
-    "url": "https://natcon26.eventscribe.net/SearchByExpoCompany.asp?pfp=BrowsebyCompany",
-    "quote": "Colorado Department of Corrections"
-   }
-  },
-  {
    "supplier_id": "compass-health-network",
    "industry": "health-human-services/behavioral-health",
    "basis": "own_site",
@@ -87980,15 +87912,6 @@
    "source": {
     "url": "https://natcon26.eventscribe.net/SearchByExpoCompany.asp?pfp=BrowsebyCompany",
     "quote": "INCITE Consulting Solutions"
-   }
-  },
-  {
-   "supplier_id": "indian-health-service",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "conference",
-   "source": {
-    "url": "https://natcon26.eventscribe.net/SearchByExpoCompany.asp?pfp=BrowsebyCompany",
-    "quote": "Indian Health Service"
    }
   },
   {
@@ -88388,15 +88311,6 @@
    }
   },
   {
-   "supplier_id": "substance-abuse-and-mental-health-services-administration",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "own_site",
-   "source": {
-    "url": "http://www.samhsa.gov/substance-use/prevention/talk-they-hear-you",
-    "quote": "SAMHSA.gov, Substance Abuse and Mental Health Services Administration"
-   }
-  },
-  {
    "supplier_id": "t-scott-consulting",
    "industry": "health-human-services/behavioral-health",
    "basis": "own_site",
@@ -88493,15 +88407,6 @@
    "source": {
     "url": "http://www.trxdevelopment.com",
     "quote": "Whether evaluating programs, securing funding, or improving operations, we work alongside clients in health, social services, and public sectors to develop smart, effective solutions that make a lasting impact."
-   }
-  },
-  {
-   "supplier_id": "u-s-department-of-state-bureau-of-medical-services",
-   "industry": "health-human-services/aging-and-veterans",
-   "basis": "own_site",
-   "source": {
-    "url": "http://careers.state.gov/",
-    "quote": "Military, Veteran and Family Member Programs"
    }
   },
   {
@@ -88771,6 +88676,15 @@
    "basis": "conference",
    "source": {
     "url": "https://pla2026.smallworldlabs.com/exhibitors",
+    "quote": "BKV Group"
+   }
+  },
+  {
+   "supplier_id": "bkv-group",
+   "industry": "public-safety/suppliers-and-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.sheriffs.org/conferences/",
     "quote": "BKV Group"
    }
   },
@@ -91548,6 +91462,15 @@
   },
   {
    "supplier_id": "gdit",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.gdit.com/",
+    "quote": "Secure Software Development Read more"
+   }
+  },
+  {
+   "supplier_id": "gdit",
    "industry": "health-human-services/suppliers-and-services",
    "basis": "conference",
    "source": {
@@ -91625,15 +91548,6 @@
    "source": {
     "url": "https://nampi2026.vfairs.com/en/nampi-2026-annual-conference-sponsors",
     "quote": "Integrity Advantage"
-   }
-  },
-  {
-   "supplier_id": "civall-by-social-news-desk",
-   "industry": "general-gov/citizen-services",
-   "basis": "own_site",
-   "source": {
-    "url": "http://civall.com/connect",
-    "quote": "Civic Engagement Platform One platform for your website, social media & archiving"
    }
   },
   {
@@ -92066,15 +91980,6 @@
    "source": {
     "url": "https://www.ncsea.org/ncsea-corporate-partners-2/",
     "quote": "CurrentMediaGroup.net"
-   }
-  },
-  {
-   "supplier_id": "www-youngwilliams-com",
-   "industry": "health-human-services/case-management-and-social-care",
-   "basis": "own_site",
-   "source": {
-    "url": "http://www.youngwilliams.com/",
-    "quote": "Housing Assistance Programs help eligible people with housing related expenses like rent, home ownership, home repair, and transitional/temporary housing."
    }
   },
   {
@@ -93029,42 +92934,6 @@
    "source": {
     "url": "https://www.ctcomp.com",
     "quote": "Managed IT Tech Leadership"
-   }
-  },
-  {
-   "supplier_id": "ct-department-of-public-health",
-   "industry": "health-human-services/public-health",
-   "basis": "own_site",
-   "source": {
-    "url": "https://portal.ct.gov/DPH",
-    "quote": "The Department of Public Health (DPH) supports CT providers and individuals."
-   }
-  },
-  {
-   "supplier_id": "ct-division-of-emergency-management-and-homeland-security",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "own_site",
-   "source": {
-    "url": "https://portal.ct.gov/demhs",
-    "quote": "Find important news and announcements for Emergency Management and Homeland Security."
-   }
-  },
-  {
-   "supplier_id": "cybersecurity-and-infrastructure-security-agency-cisa",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.cisa.gov/",
-    "quote": "Cybersecurity Awareness Month 2026 Kickoff"
-   }
-  },
-  {
-   "supplier_id": "cybersecurity-and-infrastructure-security-agency-cisa",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
-    "quote": "Cybersecurity and Infrastructure Security Agency (CISA)"
    }
   },
   {
@@ -96359,15 +96228,6 @@
    "source": {
     "url": "https://beaconwater.com/equipment",
     "quote": "The type of water treatment system you require can be determined as soon as you have the results from your water tests."
-   }
-  },
-  {
-   "supplier_id": "beck-electric-actuators-harold-beck-sons-inc",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://haroldbeck.com",
-    "quote": "!e unique design of Beck actuators has made them a standard for modulating damper and valve applications in the North American power industry."
    }
   },
   {
@@ -100088,15 +99948,6 @@
    }
   },
   {
-   "supplier_id": "norit-activated-carbon",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://norit.com",
-    "quote": "And to purify wastewater, flue gas, vent air and other effluents to make them safe for the environment that we live in."
-   }
-  },
-  {
    "supplier_id": "novair",
    "industry": "public-works/water",
    "basis": "conference",
@@ -100229,15 +100080,6 @@
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "ORGANO"
-   }
-  },
-  {
-   "supplier_id": "orival-water-filters",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Orival Water Filters"
    }
   },
   {
@@ -101111,15 +100953,6 @@
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "Sewer Sentry Sales & Marketing"
-   }
-  },
-  {
-   "supplier_id": "sewerage-and-water-board-of-new-orleans",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://swbno.org",
-    "quote": "Erato St Sewer Relocation Traffic Advisory"
    }
   },
   {
@@ -102596,15 +102429,6 @@
    "source": {
     "url": "https://operatorswithoutborders.org",
     "quote": "To assist water and wastewater utilities in developing countries recover from disaster situations, and build capacity through training and mentoring water and wastewater Operators"
-   }
-  },
-  {
-   "supplier_id": "wef-charities-of-choice-water-for-people",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.waterforpeople.org",
-    "quote": "We believe in a world where everyone has safe drinking water, forever."
    }
   },
   {
@@ -106127,15 +105951,6 @@
    }
   },
   {
-   "supplier_id": "virtual-academy-9-1-1",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://apco2026.eventscribe.net/exhibitors/floorplan/floorplan.asp",
-    "quote": "Virtual Academy 9-1-1"
-   }
-  },
-  {
    "supplier_id": "vista-com",
    "industry": "public-safety/suppliers-and-services",
    "basis": "conference",
@@ -107018,15 +106833,6 @@
    }
   },
   {
-   "supplier_id": "enthalpy-analytical",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.onterris.com/who-we-are/enthalpy-analytical-now-onterris",
-    "quote": "Enthalpy Analytical performs a wide range of environmental testing, including air quality testing, water and wastewater analysis, soil testing and specialized analytical services to support regulatory compliance and environmental decision-making."
-   }
-  },
-  {
    "supplier_id": "blackhawk-technology-co",
    "industry": "public-works/waste-and-recycling",
    "basis": "conference",
@@ -107216,15 +107022,6 @@
    }
   },
   {
-   "supplier_id": "ect2",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.onterris.com/who-we-are/ect2-is-now-onterris",
-    "quote": "Onterris continues to support clients across PFAS treatment, water and wastewater treatment, vapor treatment, environmental remediation and regulatory compliance, building on the technology and expertise established by ECT2."
-   }
-  },
-  {
    "supplier_id": "qualpay",
    "industry": "public-works/waste-and-recycling",
    "basis": "conference",
@@ -107366,15 +107163,6 @@
    "source": {
     "url": "https://metalcreteindustries.com",
     "quote": "Met-Top E outperforms ordinary concrete and withstands the extreme service conditions commonly found in waste transfer stations, recycling plants, and material recovery facilities."
-   }
-  },
-  {
-   "supplier_id": "lancaster-county-solid-waste-management-authority-lcswma",
-   "industry": "public-works/waste-and-recycling",
-   "basis": "own_site",
-   "source": {
-    "url": "https://lcswma.org",
-    "quote": "We use your trash to make our"
    }
   },
   {
@@ -108755,24 +108543,6 @@
    }
   },
   {
-   "supplier_id": "xybix-systems-inc",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.xybix.com/",
-    "quote": "911 Center Virtual Showroom"
-   }
-  },
-  {
-   "supplier_id": "xybix-systems-inc",
-   "industry": "airports-aviation/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
-    "quote": "Xybix Systems, Inc."
-   }
-  },
-  {
    "supplier_id": "aero-snow-removal-llc",
    "industry": "airports-aviation/suppliers-and-services",
    "basis": "conference",
@@ -109130,15 +108900,6 @@
    "source": {
     "url": "https://icma2026.smallworldlabs.com/exhibitors",
     "quote": "Center for Advanced Preparedness & Threat Response Simulation (CAPTRS)"
-   }
-  },
-  {
-   "supplier_id": "cgi-digital-hellonation",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://icma2026.smallworldlabs.com/exhibitors",
-    "quote": "CGI Digital/HelloNation"
    }
   },
   {
@@ -110354,15 +110115,6 @@
    "source": {
     "url": "https://911conference.org/176/2026-Vendors",
     "quote": "WINSOR CONSULTING GROUP LLC"
-   }
-  },
-  {
-   "supplier_id": "winsted-consoles",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://911conference.org/176/2026-Vendors",
-    "quote": "WINSTED CONSOLES"
    }
   },
   {
@@ -111626,15 +111378,6 @@
    }
   },
   {
-   "supplier_id": "duratrench-the-drain-brains",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.duratrench.com",
-    "quote": "Eric\u2019sons pioneered the radius trench drain market with Dura Trench TrueRadius \u2122, allowing for integrating necessary drainage that enhances your designs."
-   }
-  },
-  {
    "supplier_id": "environmental-protection-agency",
    "industry": "public-works/water",
    "basis": "conference",
@@ -112184,15 +111927,6 @@
    }
   },
   {
-   "supplier_id": "clark-county-school-district",
-   "industry": "k12-schools/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s36.a2zinc.net/clients/CEC/cecc2027/Public/EventMap.aspx?shMode=E&ID=318",
-    "quote": "Clark County School District"
-   }
-  },
-  {
    "supplier_id": "council-of-administrators-of-special-education",
    "industry": "k12-schools/suppliers-and-services",
    "basis": "conference",
@@ -112658,15 +112392,6 @@
    "source": {
     "url": "https://www.nass.org/events/nass-2026-summer-conference",
     "quote": "MarketForce"
-   }
-  },
-  {
-   "supplier_id": "npa",
-   "industry": "general-gov/elections",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.nass.org/events/nass-2026-summer-conference",
-    "quote": "NPA"
    }
   },
   {
@@ -114389,15 +114114,6 @@
    }
   },
   {
-   "supplier_id": "zumro-air-shelters",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
-    "quote": "Zumro Air Shelters"
-   }
-  },
-  {
    "supplier_id": "abacus-intel",
    "industry": "general-gov/finance-and-erp",
    "basis": "own_site",
@@ -116027,15 +115743,6 @@
    }
   },
   {
-   "supplier_id": "national-assoc-of-state-procurement-officials",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://ncsl.expocad.com/ncsl26/directory",
-    "quote": "National Assoc of State Procurement Officials"
-   }
-  },
-  {
    "supplier_id": "national-assoc-of-certified-professional-midwives",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -117284,15 +116991,6 @@
    "source": {
     "url": "https://www.housingwa.org/2026-sponsors",
     "quote": "Compass Construction"
-   }
-  },
-  {
-   "supplier_id": "corporation-for-supportive-housing",
-   "industry": "housing-community-dev/housing-and-assistance",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.housingwa.org/2026-sponsors",
-    "quote": "Corporation for Supportive Housing"
    }
   },
   {

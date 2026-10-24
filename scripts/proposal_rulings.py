@@ -462,8 +462,12 @@ def _accept_card(p: dict, by: str, why: str, force: bool) -> dict:
     companies = admin.read_companies()
     suppliers = json.loads((admin.DATA / "suppliers.json").read_text())
     key = pc.norm(name)
-    known = {pc.norm(c["name"]): c["name"] for c in companies}
-    known.update({pc.norm(s["name"]): s["name"] for s in suppliers})
+    # names AND aliases: a merged supplier's name lives on as its survivor's
+    # alias, and a card under it would file the twin back (2026-10-23)
+    known = {pc.norm(n): c["name"] for c in companies
+             for n in [c["name"], *(c.get("also_known_as") or [])]}
+    known.update({pc.norm(n): s["name"] for s in suppliers
+                  for n in [s["name"], *(s.get("also_known_as") or [])]})
     match = pc.same_company(key, known)
     if match:
         return {"error": f"{name} is already on file as {match!r}"}
@@ -667,6 +671,56 @@ def _accept_rival(p: dict, by: str, why: str, force: bool, store: dict) -> dict:
     return {"ok": True, "message": f"shortlist written for {p.get('name') or p['id']}"}
 
 
+def _accept_cobid(p: dict, by: str, why: str, force: bool) -> dict:
+    """Each company onto the other's competitors, as ONE journalled write.
+
+    THE EDGE CARRIES ITS EVIDENCE: the reason is the solicitation they both
+    bid on, the source the government's own document a person on SLED HQ's
+    team read. An edge already there is left as it is; a company already at
+    the cap is a refusal, never a truncation (promote_rivals.merge_web's
+    rule), so the person drops one on its page first."""
+    c = p.get("cobid") or {}
+    pair = c.get("pair") or []
+    sols = c.get("solicitations") or []
+    if len(pair) != 2 or not sols:
+        return {"error": "this suggestion carries no pair or no solicitation; nothing to write"}
+    companies = admin.read_companies()
+    index = {x["id"]: x for x in companies if x.get("id")}
+    missing = [x for x in pair if x not in index]
+    if missing:
+        return {"error": f"{', '.join(missing)} is no longer a company on file"}
+    s = sols[0]
+    more = f" (and {len(sols) - 1} more)" if len(sols) > 1 else ""
+    added = []
+    for me, them in (pair, pair[::-1]):
+        edges = [e if isinstance(e, dict) else {"id": e, "why": ""}
+                 for e in (index[me].get("competitors") or [])]
+        if any(e.get("id") == them for e in edges):
+            continue
+        if len(edges) >= agents.EDGE_CAP:
+            return {"error": f"{index[me]['name']} already lists {len(edges)} competitors, the "
+                             f"cap. Drop one on its page first; nothing was written"}
+        # THE DOCUMENT THAT SHOWS THEM: one naming both where there is one,
+        # else the one naming the company this edge adds (a tabulation for
+        # one and an award for the other are both the same solicitation's)
+        url = s.get("document_url") or ((s.get("documents") or {}).get(them) or [None])[0]
+        edges.append({"id": them, "why": f"Both bid on {s['solicitation']}{more}",
+                      "source": {"url": url, "verified_on": s.get("decided_on"),
+                                 "by": "SLED HQ bid records"}})
+        added.append((me, edges))
+    if not added:
+        return {"error": "they already list each other; nothing to write"}
+    for me, edges in added:
+        index[me]["competitors"] = edges
+        index[me].pop("competitors_none_found", None)
+    names = " and ".join(index[x]["name"] for x in pair)
+    bad = admin.save_companies(companies, "accept-cobid",
+                               why=why or f"co-bidders on {s['solicitation']}: {names}", by=by)
+    if bad:
+        return {"error": bad}
+    return {"ok": True, "message": f"{names} now list each other as competitors"}
+
+
 def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
          force: bool = False) -> dict:
     """Accept or reject one proposal. Returns {ok, message} or {error}."""
@@ -746,6 +800,8 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         res = _accept_profile(p, by, why, force, store, key)
     elif kind == "buyer":
         res = _accept_buyer(p, by, why, force, store, key)
+    elif kind == "cobid":
+        res = _accept_cobid(p, by, why, force)
     else:
         return {"error": f"unknown proposal kind {kind!r}"}
     if res.get("error"):

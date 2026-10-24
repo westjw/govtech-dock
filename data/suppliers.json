@@ -3672,30 +3672,6 @@
   "researched": false
  },
  {
-  "id": "american-traction-systems",
-  "name": "American Traction Systems",
-  "website": "https://americantractionsolutions.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Traction motors, generators, power systems - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "APTA 2026",
-  "researched": false
- },
- {
   "id": "amneal-pharmaceuticals",
   "name": "Amneal Pharmaceuticals",
   "website": "https://amneal.com",
@@ -5661,54 +5637,6 @@
   "govtech": false,
   "vendor_type": "Equipment / Components",
   "source": "APTA 2026; Smart Cities Connect 2026",
-  "researched": false
- },
- {
-  "id": "bkv-group-architects-engineers",
-  "name": "BKV Group - Architects & Engineers",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Engineering / Consulting - exhibited at NSA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Engineering / Consulting",
-  "source": "NSA 2026",
-  "researched": false
- },
- {
-  "id": "bkv-group-architecture-engineering",
-  "name": "BKV Group - Architecture & Engineering",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Engineering / Consulting - exhibited at IACP 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Engineering / Consulting",
-  "source": "IACP 2026",
   "researched": false
  },
  {
@@ -9247,7 +9175,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Municipal community video tours and websites - exhibited at ICMA 2025, NACo 2026",
+  "description": "Municipal community video tours and websites - exhibited at ICMA 2025, NACo 2026, ICMA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -9260,8 +9188,18 @@
   },
   "govtech": false,
   "vendor_type": "Services (non-tech)",
-  "source": "ICMA 2025; NACo 2026",
-  "researched": false
+  "source": "ICMA 2025; NACo 2026; ICMA 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "cgi-digital-hellonation",
+    "name": "CGI Digital/HelloNation",
+    "why": "Both records point to the same cgidigital.com homepage of CGI Digital, the municipal-video and marketing agency, and 'CGI Digital/HelloNation' is the same company listed at ICMA 2026 with its HelloNation brand added."
+   }
+  ],
+  "also_known_as": [
+   "CGI Digital/HelloNation"
+  ]
  },
  {
   "id": "cha",
@@ -9285,30 +9223,6 @@
   "govtech": false,
   "vendor_type": "Engineering / Consulting",
   "source": "NRPA 2026",
-  "researched": false
- },
- {
-  "id": "cigna",
-  "name": "CIGNA",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Health insurance and employee benefit plans - exhibited at ICMA 2025",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Services (non-tech)",
-  "source": "ICMA 2025",
   "researched": false
  },
  {
@@ -11215,7 +11129,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Health insurance and employee benefit plans - exhibited at NACo 2026",
+  "description": "Health insurance and employee benefit plans - exhibited at NACo 2026, ICMA 2025",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -11228,8 +11142,18 @@
   },
   "govtech": false,
   "vendor_type": "Services (non-tech)",
-  "source": "NACo 2026",
-  "researched": false
+  "source": "NACo 2026; ICMA 2025",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "cigna",
+    "name": "CIGNA",
+    "why": "CIGNA and Cigna Healthcare are the same health-insurance and benefits company, with the same description and the identical cigna.com homepage. This is the owner's own example of a duplicate."
+   }
+  ],
+  "also_known_as": [
+   "CIGNA"
+  ]
  },
  {
   "id": "cintas-corp",
@@ -11498,7 +11422,7 @@
  {
   "id": "civall-social-news-desk",
   "name": "CivAll | Social News Desk",
-  "website": null,
+  "website": "http://civall.com/connect",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -11516,8 +11440,18 @@
   },
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "NACo 2026",
-  "researched": false
+  "source": "NACo 2026; 3CMA 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "civall-by-social-news-desk",
+    "name": "CivAll by Social News Desk",
+    "why": "'CivAll | Social News Desk' and 'CivAll by Social News Desk' are the same civic-engagement software company: both homepages describe the CivAll platform and both list 3CMA 2026. Only the separator in the name differs. The merged record holds the root www.civall.com address, which is worth keeping over the /connect page. The survivor is the record holding the root www.civall.com, as the reading advised."
+   }
+  ],
+  "also_known_as": [
+   "CivAll by Social News Desk"
+  ]
  },
  {
   "id": "civic-initiatives",
@@ -17743,7 +17677,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at NIGP 2026",
+  "description": "Equipment / Components - exhibited at NIGP 2026, AB Show 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -17756,32 +17690,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "NIGP 2026",
-  "researched": false
- },
- {
-  "id": "ephesus-sports-lighting",
-  "name": "Ephesus Sports Lighting",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at AB Show 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "AB Show 2026",
-  "researched": false
+  "source": "NIGP 2026; AB Show 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "ephesus-sports-lighting",
+    "name": "Ephesus Sports Lighting",
+    "why": "Ephesus Lighting and Ephesus Sports Lighting are one Cooper Lighting brand listed twice, off NIGP and AB Show: both records point at the same Ephesus brand page on cooperlighting.com (judged by Claude; no reader returned this group)."
+   }
+  ],
+  "also_known_as": [
+   "Ephesus Sports Lighting"
+  ]
  },
  {
   "id": "epic-outdoor-cinema",
@@ -21048,30 +20968,6 @@
   "researched": false
  },
  {
-  "id": "gyms-for-dogs-natural-dog-park-products",
-  "name": "GYMS FOR DOGS - NATURAL DOG PARK PRODUCTS",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at NRPA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "NRPA 2026",
-  "researched": false
- },
- {
   "id": "gagaxp",
   "name": "GagaXP",
   "website": null,
@@ -22207,7 +22103,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Association / Gov / Media - exhibited at NIGP 2026",
+  "description": "Association / Gov / Media - exhibited at NIGP 2026, ICMA 2025",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -22220,32 +22116,18 @@
   },
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "NIGP 2026",
-  "researched": false
- },
- {
-  "id": "government-finance-officers-association-2",
-  "name": "Government Finance Officers Association (GFOA)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Association / Gov / Media - exhibited at ICMA 2025, AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Association / Gov / Media",
-  "source": "ICMA 2025",
-  "researched": false
+  "source": "NIGP 2026; ICMA 2025",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "government-finance-officers-association-2",
+    "name": "Government Finance Officers Association (GFOA)",
+    "why": "Both records are the Government Finance Officers Association, with the identical gfoa.org homepage. The second only adds '(GFOA)', and this is the owner's own GFOA / GFOA-2 example. GFOA is a professional association, not a government buyer."
+   }
+  ],
+  "also_known_as": [
+   "Government Finance Officers Association (GFOA)"
+  ]
  },
  {
   "id": "government-sourcing-solutions",
@@ -22567,7 +22449,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Distributor / Reseller / Co-op - exhibited at TechConnect 2026",
+  "description": "Distributor / Reseller / Co-op - exhibited at TechConnect 2026, NIGP 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -22580,32 +22462,18 @@
   },
   "govtech": false,
   "vendor_type": "Distributor / Reseller / Co-op",
-  "source": "TechConnect 2026",
-  "researched": false
- },
- {
-  "id": "graybar-electric-company-inc",
-  "name": "Graybar Electric Company, Inc.",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Distributor / Reseller / Co-op - exhibited at NIGP 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Distributor / Reseller / Co-op",
-  "source": "NIGP 2026",
-  "researched": false
+  "source": "TechConnect 2026; NIGP 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "graybar-electric-company-inc",
+    "name": "Graybar Electric Company, Inc.",
+    "why": "Graybar and Graybar Electric Company, Inc. are the same electrical distributor: same description and identical graybar.com homepage. The longer name is just the legal form."
+   }
+  ],
+  "also_known_as": [
+   "Graybar Electric Company, Inc."
+  ]
  },
  {
   "id": "greatlink-int-l-inc",
@@ -24452,30 +24320,6 @@
   },
   "govtech": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "PWX 2026",
-  "researched": false
- },
- {
-  "id": "hot-in-place-recycling",
-  "name": "Hot-In-Place Recycling (Gallagher Asphalt)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Works",
-  "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at PWX 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
   "source": "PWX 2026",
   "researched": false
  },
@@ -26810,12 +26654,12 @@
  {
   "id": "jj-kane-auctions",
   "name": "JJ Kane Auctions",
-  "website": null,
+  "website": "https://www.jjkane.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Distributor / Reseller / Co-op - exhibited at NIGP 2026, PWX 2026",
+  "description": "Distributor / Reseller / Co-op - exhibited at NIGP 2026, PWX 2026, NAFA I&E 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -26828,8 +26672,18 @@
   },
   "govtech": false,
   "vendor_type": "Distributor / Reseller / Co-op",
-  "source": "NIGP 2026; PWX 2026",
-  "researched": false
+  "source": "NIGP 2026; PWX 2026; NAFA I&E 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "jj-kane",
+    "name": "JJ Kane",
+    "why": "'JJ Kane' and 'JJ Kane Auctions' are the same equipment auction company with an identical homepage (fleet and equipment auctions across the same locations)."
+   }
+  ],
+  "also_known_as": [
+   "JJ Kane"
+  ]
  },
  {
   "id": "jackjaw",
@@ -34423,7 +34277,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at NIGP 2026, Maryland Municipal League 2026, AAAE 2027, Washington Recreation and Park Association 2026",
+  "description": "Equipment / Components - exhibited at NIGP 2026, Maryland Municipal League 2026, AAAE 2027, Washington Recreation and Park Association 2026, AB Show 2026, NRPA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -34436,32 +34290,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "NIGP 2026; AAAE 2026; Maryland Municipal League 2026; AAAE 2027; Washington Recreation and Park Association 2026",
-  "researched": false
- },
- {
-  "id": "musco-sports-lighting",
-  "name": "Musco Sports Lighting",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at AB Show 2026, NRPA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "AB Show 2026; NRPA 2026",
-  "researched": false
+  "source": "NIGP 2026; AAAE 2026; Maryland Municipal League 2026; AAAE 2027; Washington Recreation and Park Association 2026; AB Show 2026; NRPA 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "musco-sports-lighting",
+    "name": "Musco Sports Lighting",
+    "why": "'Musco Lighting' and 'Musco Sports Lighting' are two names for one sports lighting company with an identical homepage ('You Always Know When It's Musco')."
+   }
+  ],
+  "also_known_as": [
+   "Musco Sports Lighting"
+  ]
  },
  {
   "id": "mycare",
@@ -34872,30 +34712,6 @@
   "researched": false
  },
  {
-  "id": "nfbpa",
-  "name": "NFBPA (National Forum for Black Public Administrators)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Professional association for Black public administrators - exhibited at ICMA 2025",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Association / Gov / Media",
-  "source": "ICMA 2025",
-  "researched": false
- },
- {
   "id": "nfi-group",
   "name": "NFI Group",
   "website": null,
@@ -35258,12 +35074,12 @@
  {
   "id": "nppgov",
   "name": "NPPGov",
-  "website": null,
+  "website": "https://nppgov.com",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "National cooperative purchasing organization for public agencies - exhibited at IACP 2026, NIGP 2026, NRPA 2026, NSA 2026, IAFC FRI 2026, Washington Recreation and Park Association 2026",
+  "description": "National cooperative purchasing organization for public agencies - exhibited at IACP 2026, NIGP 2026, NRPA 2026, NSA 2026, IAFC FRI 2026, Washington Recreation and Park Association 2026, SNA ANC 2027, ASBO School Business 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -35276,8 +35092,18 @@
   },
   "govtech": false,
   "vendor_type": "Distributor / Reseller / Co-op",
-  "source": "IACP 2026; NIGP 2026; NRPA 2026; NSA 2026; IAFC FRI 2026; Washington Recreation and Park Association 2026",
-  "researched": false
+  "source": "IACP 2026; NIGP 2026; NRPA 2026; NSA 2026; IAFC FRI 2026; Washington Recreation and Park Association 2026; SNA ANC 2027; ASBO School Business 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "national-purchasing-partners-nppgov",
+    "name": "National Purchasing Partners (NPPGov)",
+    "why": "'NPPGov' and 'National Purchasing Partners (NPPGov)' are the same cooperative procurement organization with an identical homepage, which calls itself NPPGov; it offers contracts to agencies rather than being one, so it is not flagged."
+   }
+  ],
+  "also_known_as": [
+   "National Purchasing Partners (NPPGov)"
+  ]
  },
  {
   "id": "nrpa-sales-office",
@@ -35623,7 +35449,7 @@
   "year_founded": null,
   "sector": "Public Works",
   "category": "Suppliers & Services",
-  "description": "Association / Gov / Media - exhibited at PWX 2026",
+  "description": "Association / Gov / Media - exhibited at PWX 2026, ICMA 2025, NLC City Summit 2026, NCSL Legislative Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -35636,32 +35462,24 @@
   },
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "PWX 2026; ICMA 2026",
-  "researched": false
- },
- {
-  "id": "national-association-of-state-procurement-officials-2",
-  "name": "National Association of State Procurement Officials (NASPO)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Association / Gov / Media - exhibited at ICMA 2025, NLC City Summit 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Association / Gov / Media",
-  "source": "ICMA 2025; ICMA 2026; NLC City Summit 2026",
-  "researched": false
+  "source": "PWX 2026; ICMA 2026; ICMA 2025; NLC City Summit 2026; NCSL Legislative Summit 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "national-association-of-state-procurement-officials-2",
+    "name": "National Association of State Procurement Officials (NASPO)",
+    "why": "All three are the National Association of State Procurement Officials, written in full, with '(NASPO)' added, or abbreviated 'Assoc', and they share one homepage; it is a nonprofit association of state procurement officials, not itself a government agency, so it is not flagged."
+   },
+   {
+    "id": "national-assoc-of-state-procurement-officials",
+    "name": "National Assoc of State Procurement Officials",
+    "why": "All three are the National Association of State Procurement Officials, written in full, with '(NASPO)' added, or abbreviated 'Assoc', and they share one homepage; it is a nonprofit association of state procurement officials, not itself a government agency, so it is not flagged."
+   }
+  ],
+  "also_known_as": [
+   "National Association of State Procurement Officials (NASPO)",
+   "National Assoc of State Procurement Officials"
+  ]
  },
  {
   "id": "national-band-and-tag-co",
@@ -42216,30 +42034,6 @@
   "researched": false
  },
  {
-  "id": "project-lifesaver-inc",
-  "name": "Project Lifesaver Inc.",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Nonprofit wandering-person locating program - exhibited at NSA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Association / Gov / Media",
-  "source": "NSA 2026",
-  "researched": false
- },
- {
   "id": "project-lifesaver-international",
   "name": "Project Lifesaver International",
   "website": null,
@@ -42247,7 +42041,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at IACP 2026",
+  "description": "Equipment / Components - exhibited at IACP 2026, NSA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -42260,8 +42054,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "IACP 2026",
-  "researched": false
+  "source": "IACP 2026; NSA 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "project-lifesaver-inc",
+    "name": "Project Lifesaver Inc.",
+    "why": "Both records share the same homepage, which calls itself 'Project Lifesaver International'; 'Project Lifesaver Inc.' is the same nonprofit under its legal suffix. It sells a locating program and equipment to member agencies, so it is not a government buyer."
+   }
+  ],
+  "also_known_as": [
+   "Project Lifesaver Inc."
+  ]
  },
  {
   "id": "projye-international-co-ltd",
@@ -46053,7 +45857,8 @@
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
   "source": "TechConnect 2026",
-  "researched": false
+  "researched": false,
+  "not_a_supplier": "The name and description are a federal agency, the SBA office that runs SBIR/STTR. The website on file is also wrong: the sba.com homepage says it is a private business 'not SBA.gov' with 'no affiliation' to the SBA."
  },
  {
   "id": "schaefer-plastics",
@@ -46159,7 +45964,7 @@
   "year_founded": null,
   "sector": "Transit & Parking",
   "category": "Suppliers & Services",
-  "description": "Cellular routers and IoT connectivity modules - exhibited at APTA 2026",
+  "description": "Cellular routers and IoT connectivity modules - exhibited at APTA 2026, IACP 2026, NSA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -46172,8 +45977,24 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "APTA 2026",
-  "researched": false
+  "source": "APTA 2026; IACP 2026; NSA 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "semtech-2",
+    "name": "Semtech (formerly Sierra Wireless)",
+    "why": "All three records are 'Semtech' with a 'Sierra Wireless' note ('(Sierra Wireless)', '(formerly Sierra Wireless)', '- Sierra Wireless'), all describe cellular routers and IoT modules, and all have the same Semtech homepage, so they are one company listed three times."
+   },
+   {
+    "id": "semtech-sierra-wireless",
+    "name": "Semtech - Sierra Wireless",
+    "why": "All three records are 'Semtech' with a 'Sierra Wireless' note ('(Sierra Wireless)', '(formerly Sierra Wireless)', '- Sierra Wireless'), all describe cellular routers and IoT modules, and all have the same Semtech homepage, so they are one company listed three times."
+   }
+  ],
+  "also_known_as": [
+   "Semtech (formerly Sierra Wireless)",
+   "Semtech - Sierra Wireless"
+  ]
  },
  {
   "id": "senoplast-usa",
@@ -47952,30 +47773,6 @@
   "researched": false
  },
  {
-  "id": "seifert-graphics-inc",
-  "name": "Seifert Graphics, Inc.",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Vehicle graphics, decals and signage - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "APTA 2026",
-  "researched": false
- },
- {
   "id": "seiko-instruments-usa-inc",
   "name": "Seiko Instruments USA, INC",
   "website": null,
@@ -48069,54 +47866,6 @@
   "govtech": false,
   "vendor_type": "Equipment / Components",
   "source": "AB Show 2026",
-  "researched": false
- },
- {
-  "id": "semtech-2",
-  "name": "Semtech (formerly Sierra Wireless)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Cellular routers and IoT connectivity hardware - exhibited at IACP 2026, APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "IACP 2026; APTA 2026",
-  "researched": false
- },
- {
-  "id": "semtech-sierra-wireless",
-  "name": "Semtech - Sierra Wireless",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Cellular routers and IoT modules - exhibited at NSA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "NSA 2026",
   "researched": false
  },
  {
@@ -50378,12 +50127,12 @@
  {
   "id": "spohn-ranch",
   "name": "Spohn Ranch",
-  "website": null,
-  "location": null,
-  "year_founded": null,
+  "website": "https://spohnranch.com",
+  "location": "Los Angeles, CA",
+  "year_founded": 1993,
   "sector": "Parks & Rec",
   "category": "Suppliers & Services",
-  "description": "Skatepark design and build firm - exhibited at NRPA 2026",
+  "description": "Skatepark design and build firm - exhibited at NRPA 2026, ICMA 2026, NLC City Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -50396,8 +50145,18 @@
   },
   "govtech": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "NRPA 2026",
-  "researched": false
+  "source": "NRPA 2026; ICMA 2026; NLC City Summit 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "spohn-ranch-skateparks",
+    "name": "Spohn Ranch Skateparks",
+    "why": "Both have the same skatepark design-build homepage and the same business. 'Spohn Ranch Skateparks' is just a longer form of 'Spohn Ranch'."
+   }
+  ],
+  "also_known_as": [
+   "Spohn Ranch Skateparks"
+  ]
  },
  {
   "id": "sport-court",
@@ -58183,7 +57942,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Association / Gov / Media - exhibited at IACP 2026, Illinois Chapter of APCO 2026",
+  "description": "Association / Gov / Media - exhibited at IACP 2026, Illinois Chapter of APCO 2026, APCO 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -58196,8 +57955,18 @@
   },
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "IACP 2026; Illinois Chapter of APCO 2026",
-  "researched": false
+  "source": "IACP 2026; Illinois Chapter of APCO 2026; APCO 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "virtual-academy-9-1-1",
+    "name": "Virtual Academy 9-1-1",
+    "why": "Both have the same homepage ('At Virtual Academy, we offer flexible training solutions... public safety'). '9-1-1' is a descriptor on the same training company, which is a vendor despite the 'Association / Gov / Media' category label."
+   }
+  ],
+  "also_known_as": [
+   "Virtual Academy 9-1-1"
+  ]
  },
  {
   "id": "visa-inc",
@@ -59784,30 +59553,6 @@
   "researched": false
  },
  {
-  "id": "whelen-engineering-co-inc",
-  "name": "Whelen Engineering Co Inc",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Engineering / Consulting - exhibited at IACP 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Engineering / Consulting",
-  "source": "IACP 2026",
-  "researched": false
- },
- {
   "id": "whelen-engineering-co-inc-2",
   "name": "Whelen Engineering Co., Inc.",
   "website": null,
@@ -60746,12 +60491,12 @@
  {
   "id": "xybix",
   "name": "Xybix",
-  "website": null,
+  "website": "https://www.xybix.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Dispatch consoles and ergonomic furniture - exhibited at NSA 2026, Illinois Chapter of APCO 2026",
+  "description": "Dispatch consoles and ergonomic furniture - exhibited at NSA 2026, Illinois Chapter of APCO 2026, AAAE 2027, APCO 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -60764,8 +60509,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "NSA 2026; AAAE 2026; Illinois Chapter of APCO 2026",
-  "researched": false
+  "source": "NSA 2026; AAAE 2026; Illinois Chapter of APCO 2026; AAAE 2027; APCO 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "xybix-systems-inc",
+    "name": "Xybix Systems, Inc.",
+    "why": "Both have the same Xybix dispatch-desk homepage and overlapping APCO and AAAE conferences. 'Xybix Systems, Inc.' is the legal form of 'Xybix'."
+   }
+  ],
+  "also_known_as": [
+   "Xybix Systems, Inc."
+  ]
  },
  {
   "id": "yonglang-group-co-ltd",
@@ -60895,7 +60650,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Inflatable shelters and decontamination systems - exhibited at IACP 2026",
+  "description": "Inflatable shelters and decontamination systems - exhibited at IACP 2026, IAEM 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -60908,8 +60663,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "IACP 2026",
-  "researched": false
+  "source": "IACP 2026; IAEM 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "zumro-air-shelters",
+    "name": "Zumro Air Shelters",
+    "why": "Both have the same ZUMRO homepage ('premier manufacturer of air shelter systems'). 'Zumro Air Shelters' is the same company plus its product."
+   }
+  ],
+  "also_known_as": [
+   "Zumro Air Shelters"
+  ]
  },
  {
   "id": "zwagz-by-zz2",
@@ -62520,30 +62285,6 @@
   "source": "ICMA 2026"
  },
  {
-  "id": "spohn-ranch-skateparks",
-  "name": "Spohn Ranch Skateparks",
-  "website": "https://spohnranch.com",
-  "location": "Los Angeles, CA",
-  "year_founded": 1993,
-  "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
-  "description": "Skatepark design, fabrication, and construction for municipal parks - exhibited at ICMA 2026, NLC City Summit 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "researched": false,
-  "vendor_type": "Equipment / Components",
-  "source": "ICMA 2026; NLC City Summit 2026"
- },
- {
   "id": "street-dynamics",
   "name": "Street Dynamics",
   "website": "https://streetdynamics.com",
@@ -62618,12 +62359,12 @@
  {
   "id": "abm",
   "name": "ABM",
-  "website": null,
+  "website": "https://www.abm.com",
   "location": null,
   "year_founded": null,
   "sector": "Airports & Aviation",
   "category": "Suppliers & Services",
-  "description": "Outsourced janitorial, facilities and passenger services provider - exhibited at AAAE 2026, AAAE 2027, IFMA World Workplace 2026",
+  "description": "Outsourced janitorial, facilities and passenger services provider - exhibited at AAAE 2026, AAAE 2027, IFMA World Workplace 2026, NACUBO 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -62637,7 +62378,17 @@
   "govtech": false,
   "researched": false,
   "vendor_type": "Services (non-tech)",
-  "source": "AAAE 2026; AAAE 2027; IFMA World Workplace 2026"
+  "source": "AAAE 2026; AAAE 2027; IFMA World Workplace 2026; NACUBO 2026",
+  "merged_from": [
+   {
+    "id": "abm-industries-inc",
+    "name": "ABM Industries, Inc.",
+    "why": "ABM and ABM Industries, Inc. are the same facilities-services company: both have the identical abm.com homepage, which calls itself ABM, so 'Industries, Inc.' is just the longer legal form."
+   }
+  ],
+  "also_known_as": [
+   "ABM Industries, Inc."
+  ]
  },
  {
   "id": "aecom",
@@ -65280,30 +65031,6 @@
   "source": "AAAE 2026; AAAE 2027"
  },
  {
-  "id": "revive-environmental-technology-llc",
-  "name": "Revive Environmental Technology, LLC",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Airports & Aviation",
-  "category": "Suppliers & Services",
-  "description": "PFAS destruction and remediation for AFFF sites - exhibited at AAAE 2026, SWANA WASTECON 2025",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "researched": false,
-  "vendor_type": "Services (non-tech)",
-  "source": "AAAE 2026; SWANA WASTECON 2025"
- },
- {
   "id": "ricondo-associates",
   "name": "Ricondo & Associates",
   "website": null,
@@ -66392,27 +66119,6 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "Government cooperative purchasing - exhibited at NACUBO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NACUBO 2026"
- },
- {
-  "id": "abm-industries-inc",
-  "name": "ABM Industries, Inc.",
-  "website": "https://www.abm.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Higher Education",
-  "category": "Suppliers & Services",
-  "description": "Facility and janitorial services - exhibited at NACUBO 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -70318,7 +70024,7 @@
   "year_founded": null,
   "sector": "Parks & Rec",
   "category": "Suppliers & Services",
-  "description": "Dog park play equipment - exhibited at Animal Care Expo 2026",
+  "description": "Dog park play equipment - exhibited at Animal Care Expo 2026, NRPA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -70328,7 +70034,21 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Equipment / Components",
+  "source": "conference sweep: NRPA 2026",
+  "merged_from": [
+   {
+    "id": "gyms-for-dogs-natural-dog-park-products",
+    "name": "GYMS FOR DOGS - NATURAL DOG PARK PRODUCTS",
+    "why": "Both records are the dog park equipment maker Gyms for Dogs and have the same homepage; the other name just adds the tagline 'Natural Dog Park Products'."
+   }
+  ],
+  "also_known_as": [
+   "GYMS FOR DOGS - NATURAL DOG PARK PRODUCTS"
+  ]
  },
  {
   "id": "harness-lead",
@@ -70629,27 +70349,6 @@
    "roles": [],
    "checked": null
   }
- },
- {
-  "id": "idexx",
-  "name": "Idexx",
-  "website": "",
-  "location": null,
-  "year_founded": null,
-  "sector": "Health & Human Services",
-  "category": "Suppliers & Services",
-  "description": "Veterinary diagnostics and equipment - exhibited at Animal Care Expo 2026, Maryland Municipal League 2026, WEFTEC 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: WEFTEC 2026; Maryland Municipal League 2026"
  },
  {
   "id": "in-pups-we-trust",
@@ -71829,7 +71528,17 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "zymox-pet-king-brands-animal-health",
+    "name": "Zymox/Pet King Brands Animal Health",
+    "why": "Both records are 'Animal health products' at Animal Care Expo 2026. The site says Pet King Brands is the 'Proud Maker of' ZYMOX, so 'Zymox/Pet King Brands Animal Health' is the same company with its product line in front, and Pet King Brands is the company's own name."
+   }
+  ],
+  "also_known_as": [
+   "Zymox/Pet King Brands Animal Health"
+  ]
  },
  {
   "id": "pet-ag",
@@ -74293,26 +74002,6 @@
   }
  },
  {
-  "id": "zymox-pet-king-brands-animal-health",
-  "name": "Zymox/Pet King Brands Animal Health",
-  "website": "",
-  "location": null,
-  "year_founded": null,
-  "sector": "Health & Human Services",
-  "category": "Suppliers & Services",
-  "description": "Animal health products - exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "abdo",
   "name": "Abdo",
   "website": "https://abdosolutions.com/",
@@ -75661,7 +75350,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Public administration association - exhibited at GFOA 2026",
+  "description": "Public administration association - exhibited at GFOA 2026, ICMA 2025",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -75672,7 +75361,20 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: GFOA 2026"
+  "source": "conference sweep: GFOA 2026; ICMA 2025",
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Association / Gov / Media",
+  "merged_from": [
+   {
+    "id": "nfbpa",
+    "name": "NFBPA (National Forum for Black Public Administrators)",
+    "why": "Both are the National Forum for Black Public Administrators (one by acronym, one in full) with the same homepage, which describes it as an independent 501(c)(3) nonprofit, not a government body."
+   }
+  ],
+  "also_known_as": [
+   "NFBPA (National Forum for Black Public Administrators)"
+  ]
  },
  {
   "id": "national-procurement-institute-npi",
@@ -80141,27 +79843,6 @@
   "source": "conference sweep: SNA ANC 2027"
  },
  {
-  "id": "national-purchasing-partners-nppgov",
-  "name": "National Purchasing Partners (NPPGov)",
-  "website": "https://nppgov.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "K-12 Schools",
-  "category": "Suppliers & Services",
-  "description": "Cooperative procurement organization - exhibited at SNA ANC 2027, ASBO School Business 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: ASBO School Business 2026; SNA ANC 2027"
- },
- {
   "id": "new-age-industrial",
   "name": "New Age Industrial",
   "website": "http://www.newageindustrial.com",
@@ -82502,7 +82183,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Utility rate and management consulting - exhibited at APPA Public Power 2026",
+  "description": "Utility rate and management consulting - exhibited at APPA Public Power 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -82512,7 +82193,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "newgen-strategies-and-solutions-llc",
+    "name": "NewGen Strategies and Solutions, LLC",
+    "why": "'NewGen Strategies & Solutions' and 'NewGen Strategies and Solutions, LLC' are the same utility rate consultancy ('&' versus 'and', plus the LLC) with an identical homepage."
+   }
+  ],
+  "also_known_as": [
+   "NewGen Strategies and Solutions, LLC"
+  ]
  },
  {
   "id": "rwe-clean-energy",
@@ -82824,7 +82516,7 @@
   "year_founded": null,
   "sector": "Public Works",
   "category": "Suppliers & Services",
-  "description": "Asphalt paving contractor - exhibited at NACE 2026",
+  "description": "Asphalt paving contractor - exhibited at NACE 2026, PWX 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -82835,7 +82527,20 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NACE 2026"
+  "source": "conference sweep: NACE 2026; PWX 2026",
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Equipment / Components",
+  "merged_from": [
+   {
+    "id": "hot-in-place-recycling",
+    "name": "Hot-In-Place Recycling (Gallagher Asphalt)",
+    "why": "The record 'Hot-In-Place Recycling (Gallagher Asphalt)' names Gallagher Asphalt itself, and the shared homepage lists Hot In-Place Recycling as one of Gallagher's service lines. That is a generic process name, not a separate brand or company."
+   }
+  ],
+  "also_known_as": [
+   "Hot-In-Place Recycling (Gallagher Asphalt)"
+  ]
  },
  {
   "id": "aerix-industries",
@@ -85050,27 +84755,6 @@
   "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026"
  },
  {
-  "id": "aquisense-incorporated",
-  "name": "AquiSense Incorporated",
-  "website": "http://aquisense.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "UV-C LED disinfection equipment - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: AWWA ACE 2026"
- },
- {
   "id": "arq-inc",
   "name": "Arq, Inc",
   "website": "http://www.arq.com",
@@ -85403,7 +85087,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Valve actuators - exhibited at AWWA ACE 2026",
+  "description": "Valve actuators - exhibited at AWWA ACE 2026, WEFTEC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -85413,7 +85097,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: WEFTEC 2026",
+  "merged_from": [
+   {
+    "id": "beck-electric-actuators-harold-beck-sons-inc",
+    "name": "Beck Electric Actuators (Harold Beck & Sons, Inc)",
+    "why": "Both name Harold Beck & Sons Inc., the actuator maker, and the homepage uses that exact company name; 'Beck Electric Actuators' is its product description."
+   }
+  ],
+  "also_known_as": [
+   "Beck Electric Actuators (Harold Beck & Sons, Inc)"
+  ]
  },
  {
   "id": "beeco-backflow-a-division-of-mifab-inc",
@@ -85660,26 +85355,6 @@
    "checked": null
   },
   "source": "conference sweep: WEFTEC 2026"
- },
- {
-  "id": "blue-earth-labs-d-b-a-blue-earth-products",
-  "name": "Blue Earth Labs D.B.A. Blue Earth Products",
-  "website": "http://blueearthproducts.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "Disinfection chemicals and services - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
  },
  {
   "id": "bluesen-co-ltd",
@@ -88119,7 +87794,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Water microbiology test kits - exhibited at AWWA ACE 2026",
+  "description": "Water microbiology test kits - exhibited at AWWA ACE 2026, Animal Care Expo 2026, WEFTEC 2026, Maryland Municipal League 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -88129,7 +87804,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026; WEFTEC 2026; Maryland Municipal League 2026",
+  "merged_from": [
+   {
+    "id": "idexx",
+    "name": "Idexx",
+    "why": "'Idexx' and 'IDEXX Laboratories' both name the company itself, not a separate brand, and resolve to the same IDEXX homepage; water testing is just one of its business lines, and the merged record's WEFTEC listing shows it covered water too."
+   }
+  ],
+  "also_known_as": [
+   "Idexx"
+  ]
  },
  {
   "id": "induron-coatings-llc",
@@ -88491,26 +88177,6 @@
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
   "description": "Pumps and treatment equipment - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "keller-america-inc",
-  "name": "Keller America Inc.",
-  "website": "https://keller-pressure.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "Pressure sensors and level transmitters - exhibited at AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -89740,26 +89406,6 @@
   }
  },
  {
-  "id": "newgen-strategies-and-solutions-llc",
-  "name": "NewGen Strategies and Solutions, LLC",
-  "website": "https://www.newgenstrategies.net",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "Utility rate consultancy - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "newterra",
   "name": "Newterra",
   "website": "https://www.newterra.com",
@@ -89847,7 +89493,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Activated carbon products - exhibited at AWWA ACE 2026",
+  "description": "Activated carbon products - exhibited at AWWA ACE 2026, WEFTEC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -89857,7 +89503,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: WEFTEC 2026",
+  "merged_from": [
+   {
+    "id": "norit-activated-carbon",
+    "name": "Norit Activated Carbon",
+    "why": "'Norit Americas' and 'Norit Activated Carbon' are the same activated carbon maker NORIT, at the same US water shows with an identical homepage; 'Activated Carbon' only describes its product."
+   }
+  ],
+  "also_known_as": [
+   "Norit Activated Carbon"
+  ]
  },
  {
   "id": "northtown-company",
@@ -89928,7 +89585,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Groundwater treatment services - exhibited at AWWA ACE 2026, WEFTEC 2026",
+  "description": "Groundwater treatment services - exhibited at AWWA ACE 2026, WEFTEC 2026, SWANA WASTECON 2025",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -89939,7 +89596,23 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; SWANA WASTECON 2025",
+  "merged_from": [
+   {
+    "id": "enthalpy-analytical",
+    "name": "Enthalpy Analytical",
+    "why": "The pages crawled for both other records state 'Enthalpy Analytical is now Onterris' and 'ECT2 is now Onterris', so they are retired names of the one company Onterris, not brands that still operate."
+   },
+   {
+    "id": "ect2",
+    "name": "ECT2",
+    "why": "The pages crawled for both other records state 'Enthalpy Analytical is now Onterris' and 'ECT2 is now Onterris', so they are retired names of the one company Onterris, not brands that still operate."
+   }
+  ],
+  "also_known_as": [
+   "Enthalpy Analytical",
+   "ECT2"
+  ]
  },
  {
   "id": "operational-technical-services-llc",
@@ -90010,7 +89683,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Automatic self-cleaning filters - exhibited at AWWA ACE 2026",
+  "description": "Automatic self-cleaning filters - exhibited at AWWA ACE 2026, WEFTEC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -90020,7 +89693,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: WEFTEC 2026",
+  "merged_from": [
+   {
+    "id": "orival-water-filters",
+    "name": "Orival Water Filters",
+    "why": "'Orival Inc' and 'Orival Water Filters' are the same self-cleaning water filter maker with an identical homepage; 'Water Filters' only describes its product."
+   }
+  ],
+  "also_known_as": [
+   "Orival Water Filters"
+  ]
  },
  {
   "id": "orphic-industries",
@@ -90431,26 +90115,6 @@
    "checked": null
   },
   "source": "conference sweep: WEFTEC 2026"
- },
- {
-  "id": "primozone-production-ab",
-  "name": "Primozone Production AB",
-  "website": "https://www.primozone.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "Ozone generators - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
  },
  {
   "id": "proco-products-inc",
@@ -90888,7 +90552,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "PFAS destruction services - exhibited at AWWA ACE 2026, WEFTEC 2026",
+  "description": "PFAS destruction services - exhibited at AWWA ACE 2026, WEFTEC 2026, AAAE 2026, SWANA WASTECON 2025",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -90899,7 +90563,20 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AAAE 2026; SWANA WASTECON 2025",
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Services (non-tech)",
+  "merged_from": [
+   {
+    "id": "revive-environmental-technology-llc",
+    "name": "Revive Environmental Technology, LLC",
+    "why": "Both records have the same homepage ('Revive Environmental' PFAS destruction) and the same business, PFAS destruction. 'Revive Environmental Technology, LLC' is the legal form of the name the site uses."
+   }
+  ],
+  "also_known_as": [
+   "Revive Environmental Technology, LLC"
+  ]
  },
  {
   "id": "rexa",
@@ -91523,26 +91200,6 @@
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
   "description": "Valves and fittings - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "spartan-fire-hydrants-by-sigelock-systems-llc",
-  "name": "Spartan Fire Hydrants -- by Sigelock Systems, LLC",
-  "website": "http://www.spartanfirehydrants.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "Security fire hydrants - exhibited at AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -92186,26 +91843,6 @@
   }
  },
  {
-  "id": "trojan-technologies-group-ulc",
-  "name": "Trojan Technologies Group ULC",
-  "website": "http://www.trojantechnologies.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "UV disinfection systems - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "trumbull-manufacturing",
   "name": "Trumbull Manufacturing",
   "website": "http://www.trumbull-mfg.com",
@@ -92283,7 +91920,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "not_a_supplier": "A federal agency office on epa.gov whose homepage says it is 'An official website of the United States government'. It is a regulator, not a seller."
  },
  {
   "id": "u-s-pipe",
@@ -92720,7 +92358,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Water access nonprofit - exhibited at AWWA ACE 2026",
+  "description": "Water access nonprofit - exhibited at AWWA ACE 2026, WEFTEC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -92730,7 +92368,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: WEFTEC 2026",
+  "merged_from": [
+   {
+    "id": "wef-charities-of-choice-water-for-people",
+    "name": "WEF Charities of Choice - Water For People",
+    "why": "Both have the same homepage ('Water For People is a global nonprofit'). The second name only adds WEF's 'Charities of Choice' booth label. It is a charity rather than a seller, but it is not a government body."
+   }
+  ],
+  "also_known_as": [
+   "WEF Charities of Choice - Water For People"
+  ]
  },
  {
   "id": "water-online",
@@ -94258,26 +93907,6 @@
   }
  },
  {
-  "id": "jj-kane",
-  "name": "JJ Kane",
-  "website": "https://www.jjkane.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Works",
-  "category": "Suppliers & Services",
-  "description": "Fleet and equipment auctions - exhibited at NAFA I&E 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "legends-of-the-road",
   "name": "Legends of the Road",
   "website": "https://www.legendsoftheroad.com/",
@@ -94386,7 +94015,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Emergency vehicle lighting and sirens - exhibited at NAFA I&E 2026",
+  "description": "Emergency vehicle lighting and sirens - exhibited at NAFA I&E 2026, IACP 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -94396,7 +94025,21 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Engineering / Consulting",
+  "source": "conference sweep: IACP 2026",
+  "merged_from": [
+   {
+    "id": "whelen-engineering-co-inc",
+    "name": "Whelen Engineering Co Inc",
+    "why": "Both have the same Whelen homepage (emergency vehicle lightbars and sirens). 'Whelen Engineering Co Inc' is the legal name of the same company; its 'Engineering / Consulting' label is a conference category, not a different business."
+   }
+  ],
+  "also_known_as": [
+   "Whelen Engineering Co Inc"
+  ]
  },
  {
   "id": "saic",
@@ -94467,26 +94110,6 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "IT consulting and systems integration - exhibited at NASCIO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "general-dynamics-information-technology",
-  "name": "General Dynamics Information Technology",
-  "website": "https://www.gdit.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Government IT services integrator - exhibited at NASCIO 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -95269,7 +94892,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NCSEA 2026; NCSEA Policy Forum 2027"
+  "source": "conference sweep: NCSEA 2026; NCSEA Policy Forum 2027",
+  "merged_from": [
+   {
+    "id": "www-youngwilliams-com",
+    "name": "www.youngwilliams.com",
+    "why": "The second record is named after the URL itself, with the same site and the same NCSEA conferences, and its homepage text says 'YoungWilliams'. It is a contractor running child-support offices for agencies, not an agency itself."
+   }
+  ],
+  "also_known_as": [
+   "www.youngwilliams.com"
+  ]
  },
  {
   "id": "vivacity-tech",
@@ -97772,7 +97405,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NatCon 2026"
+  "source": "conference sweep: NatCon 2026",
+  "not_a_supplier": "A state corrections department on cdoc.colorado.gov. The homepage covers annual reports, PREA audits and the Governor's Dashboard, and it buys from suppliers."
  },
  {
   "id": "compass-health-network",
@@ -98254,7 +97888,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NatCon 2026"
+  "source": "conference sweep: NatCon 2026",
+  "not_a_supplier": "A federal agency on ihs.gov, part of the U.S. Department of Health and Human Services."
  },
  {
   "id": "ipc-integrated-psychiatric-consultants",
@@ -99177,7 +98812,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NatCon 2026"
+  "source": "conference sweep: NatCon 2026",
+  "not_a_supplier": "A federal agency (HHS) on samhsa.gov whose homepage says it is 'An official website of the United States government'."
  },
  {
   "id": "t-scott-consulting",
@@ -99424,7 +99060,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NatCon 2026"
+  "source": "conference sweep: NatCon 2026",
+  "not_a_supplier": "A federal department recruiting psychiatrists on careers.state.gov. It is an employer and agency, not a supplier."
  },
  {
   "id": "ust-workforce-solutions",
@@ -100043,7 +99680,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Architecture and engineering firm - exhibited at PLA 2026",
+  "description": "Architecture and engineering firm - exhibited at PLA 2026, NSA 2026, IACP 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -100054,7 +99691,26 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: PLA 2026"
+  "source": "conference sweep: PLA 2026; NSA 2026; IACP 2026",
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Engineering / Consulting",
+  "merged_from": [
+   {
+    "id": "bkv-group-architects-engineers",
+    "name": "BKV Group - Architects & Engineers",
+    "why": "All three records are BKV Group, the architecture and engineering firm that has been around 'since 1978'. They share one homepage and the same project list, and the suffixes are just tagline variants."
+   },
+   {
+    "id": "bkv-group-architecture-engineering",
+    "name": "BKV Group - Architecture & Engineering",
+    "why": "All three records are BKV Group, the architecture and engineering firm that has been around 'since 1978'. They share one homepage and the same project list, and the suffixes are just tagline variants."
+   }
+  ],
+  "also_known_as": [
+   "BKV Group - Architects & Engineers",
+   "BKV Group - Architecture & Engineering"
+  ]
  },
  {
   "id": "blackstone-publishing",
@@ -106374,7 +106030,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "IT services and systems integration for government, including Medicaid claims processing and state health plan marketplace operations for state and local agencies. - exhibited at Healthcare IT Connect 2026",
+  "description": "IT services and systems integration for government, including Medicaid claims processing and state health plan marketplace operations for state and local agencies. - exhibited at Healthcare IT Connect 2026, NASCIO 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -106385,7 +106041,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: Healthcare IT Connect 2026"
+  "source": "conference sweep: Healthcare IT Connect 2026; NASCIO 2026",
+  "merged_from": [
+   {
+    "id": "general-dynamics-information-technology",
+    "name": "General Dynamics Information Technology",
+    "why": "GDIT is the short form of General Dynamics Information Technology: same gdit.com homepage and the same government IT-services business."
+   }
+  ],
+  "also_known_as": [
+   "General Dynamics Information Technology"
+  ]
  },
  {
   "id": "healthcare-fraud-shield",
@@ -106554,27 +106220,6 @@
    "checked": null
   },
   "source": "conference sweep: NAMPI 2026"
- },
- {
-  "id": "civall-by-social-news-desk",
-  "name": "CivAll by Social News Desk",
-  "website": "http://civall.com/connect",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at 3CMA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: 3CMA 2026"
  },
  {
   "id": "tthm",
@@ -107651,27 +107296,6 @@
   "id": "www-csgdelivers-com",
   "name": "www.csgdelivers.com",
   "website": "https://csgdelivers.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at NCSEA 2026, NCSEA Policy Forum 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NCSEA 2026; NCSEA Policy Forum 2027"
- },
- {
-  "id": "www-youngwilliams-com",
-  "name": "www.youngwilliams.com",
-  "website": "https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.youngwilliams.com%2F&amp;data=02%7C01%7C%7C9f2f2dbdab9a4580275908d82e6a3a75%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C637310381068547577&amp;sdata=nQpe%2FCjzWo74iOCjX0CeDZCFu31zB%2F4NpnLDQKoD%2Fsc%3D&amp;reserved=0",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -109913,7 +109537,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: Connecticut Conference of Municipalities 2026"
+  "source": "conference sweep: Connecticut Conference of Municipalities 2026",
+  "not_a_supplier": "The Connecticut Department of Public Health is a state agency (provider licensing, birth and death records), a government buyer and not a seller."
  },
  {
   "id": "ct-division-of-emergency-management-and-homeland-security",
@@ -109934,7 +109559,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: Connecticut Conference of Municipalities 2026"
+  "source": "conference sweep: Connecticut Conference of Municipalities 2026",
+  "not_a_supplier": "The CT Division of Emergency Management and Homeland Security is a state agency that coordinates the state's emergency response and grants, a government buyer and not a seller."
  },
  {
   "id": "cybersecurity-and-infrastructure-security-agency-cisa",
@@ -109955,7 +109581,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: Connecticut Conference of Municipalities 2026; IAEM 2026"
+  "source": "conference sweep: Connecticut Conference of Municipalities 2026; IAEM 2026",
+  "not_a_supplier": "A federal agency on cisa.gov. Its services to state and local partners are no-cost, so it does not sell; it is a federal agency and is pulled."
  },
  {
   "id": "fortinet",
@@ -118020,12 +117647,12 @@
  {
   "id": "aquisense-inc",
   "name": "AquiSense Inc.",
-  "website": null,
+  "website": "http://aquisense.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "UV-C LED disinfection equipment - exhibited at WEFTEC 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -118036,7 +117663,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "aquisense-incorporated",
+    "name": "AquiSense Incorporated",
+    "why": "AquiSense Inc. and AquiSense Incorporated are the same UV-C LED water-treatment maker: the homepage text is identical and only the corporate suffix is spelled differently."
+   }
+  ],
+  "also_known_as": [
+   "AquiSense Incorporated"
+  ]
  },
  {
   "id": "archer-instruments-llc",
@@ -118606,27 +118243,6 @@
   "source": "conference sweep: WEFTEC 2026"
  },
  {
-  "id": "beck-electric-actuators-harold-beck-sons-inc",
-  "name": "Beck Electric Actuators (Harold Beck & Sons, Inc)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: WEFTEC 2026"
- },
- {
   "id": "becklar-workforce-safety",
   "name": "Becklar Workforce Safety",
   "website": null,
@@ -118944,12 +118560,12 @@
  {
   "id": "blue-earth-products",
   "name": "BLUE EARTH PRODUCTS",
-  "website": null,
+  "website": "http://blueearthproducts.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "Disinfection chemicals and services - exhibited at WEFTEC 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -118960,7 +118576,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "blue-earth-labs-d-b-a-blue-earth-products",
+    "name": "Blue Earth Labs D.B.A. Blue Earth Products",
+    "why": "The first record's own name says Blue Earth Labs does business as Blue Earth Products, and the shared homepage calls the company Blue Earth Products, so this is one water-chemical firm."
+   }
+  ],
+  "also_known_as": [
+   "Blue Earth Labs D.B.A. Blue Earth Products"
+  ]
  },
  {
   "id": "blue-skies-drones",
@@ -125055,12 +124681,12 @@
  {
   "id": "keller-pressure-inc",
   "name": "KELLER Pressure Inc",
-  "website": null,
+  "website": "https://keller-pressure.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "Pressure sensors and level transmitters - exhibited at WEFTEC 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -125071,7 +124697,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "keller-america-inc",
+    "name": "Keller America Inc.",
+    "why": "Both are US 'Inc.' records for the KELLER pressure sensor business with the same homepage ('KELLER Pressure \u2013 The leading manufacturer of pressure transducers'); Keller America Inc. is the older name of the US company that now calls itself KELLER Pressure Inc. on its own site."
+   }
+  ],
+  "also_known_as": [
+   "Keller America Inc."
+  ]
  },
  {
   "id": "kenco-plastics-company-inc",
@@ -127300,27 +126936,6 @@
   "source": "conference sweep: WEFTEC 2026"
  },
  {
-  "id": "norit-activated-carbon",
-  "name": "Norit Activated Carbon",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: WEFTEC 2026"
- },
- {
   "id": "novair",
   "name": "NOVAIR",
   "website": null,
@@ -127617,27 +127232,6 @@
  {
   "id": "organo",
   "name": "ORGANO",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: WEFTEC 2026"
- },
- {
-  "id": "orival-water-filters",
-  "name": "Orival Water Filters",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -128289,12 +127883,12 @@
  {
   "id": "primozone-inc",
   "name": "Primozone Inc.",
-  "website": null,
+  "website": "https://www.primozone.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "Ozone generators - exhibited at WEFTEC 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -128305,7 +127899,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "primozone-production-ab",
+    "name": "Primozone Production AB",
+    "why": "Primozone Production AB (the Swedish maker) and Primozone Inc. (its US arm) are one ozone generator business with an identical homepage and one domain, not separate brands."
+   }
+  ],
+  "also_known_as": [
+   "Primozone Production AB"
+  ]
  },
  {
   "id": "pro-o2-llc",
@@ -129712,7 +129316,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026",
+  "not_a_supplier": "A city water and sewer utility. Its homepage posts service advisories and work by its contractors, so it buys from suppliers."
  },
  {
   "id": "sewpercoat-by-imerys",
@@ -130431,12 +130036,12 @@
  {
   "id": "spartan-fire-hydrants",
   "name": "Spartan Fire Hydrants",
-  "website": null,
+  "website": "http://www.spartanfirehydrants.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "Security fire hydrants - exhibited at WEFTEC 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -130447,7 +130052,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "spartan-fire-hydrants-by-sigelock-systems-llc",
+    "name": "Spartan Fire Hydrants -- by Sigelock Systems, LLC",
+    "why": "Both have the same homepage ('Spartan Fire Hydrants', SpartanFireHydrants.com). One record simply adds the maker's legal name, Sigelock Systems, LLC, so they are the same seller."
+   }
+  ],
+  "also_known_as": [
+   "Spartan Fire Hydrants -- by Sigelock Systems, LLC"
+  ]
  },
  {
   "id": "spears-manufacturing-company",
@@ -131943,12 +131558,12 @@
  {
   "id": "trojan-technologies",
   "name": "Trojan Technologies",
-  "website": null,
+  "website": "http://www.trojantechnologies.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "UV disinfection systems - exhibited at WEFTEC 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -131959,7 +131574,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "trojan-technologies-group-ulc",
+    "name": "Trojan Technologies Group ULC",
+    "why": "Both have the same UV and membrane water-treatment homepage. 'Trojan Technologies Group ULC' is the legal-entity form of 'Trojan Technologies'."
+   }
+  ],
+  "also_known_as": [
+   "Trojan Technologies Group ULC"
+  ]
  },
  {
   "id": "troy-valve",
@@ -133140,27 +132765,6 @@
  {
   "id": "wef-charities-of-choice-operators-without-borders",
   "name": "WEF Charities of Choice - Operators Without Borders",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: WEFTEC 2026"
- },
- {
-  "id": "wef-charities-of-choice-water-for-people",
-  "name": "WEF Charities of Choice - Water For People",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -141328,27 +140932,6 @@
   "source": "conference sweep: APCO 2026"
  },
  {
-  "id": "virtual-academy-9-1-1",
-  "name": "Virtual Academy 9-1-1",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at APCO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: APCO 2026"
- },
- {
   "id": "vista-com",
   "name": "Vista Com",
   "website": null,
@@ -141482,7 +141065,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at APCO 2026",
+  "description": "exhibited at APCO 2026, Illinois Chapter of APCO 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -141493,7 +141076,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: APCO 2026"
+  "source": "conference sweep: APCO 2026; Illinois Chapter of APCO 2026",
+  "merged_from": [
+   {
+    "id": "winsted-consoles",
+    "name": "WINSTED CONSOLES",
+    "why": "Both have the same homepage ('Winsted sets the industry standard for control room design', consoles and seating). 'WINSTED CONSOLES' is the same company plus its product word."
+   }
+  ],
+  "also_known_as": [
+   "WINSTED CONSOLES"
+  ]
  },
  {
   "id": "x-keys",
@@ -142280,7 +141873,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at CTAA EXPO 2026",
+  "description": "Vehicle graphics, decals and signage - exhibited at CTAA EXPO 2026, APTA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -142291,7 +141884,20 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: CTAA EXPO 2026"
+  "source": "conference sweep: CTAA EXPO 2026; APTA 2026",
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Equipment / Components",
+  "merged_from": [
+   {
+    "id": "seifert-graphics-inc",
+    "name": "Seifert Graphics, Inc.",
+    "why": "The shared homepage names the company 'Seifert Transit Graphics (STG)' and describes transit decals and graphics, which matches 'Seifert Graphics, Inc.' at APTA. It is one company under a shorter name."
+   }
+  ],
+  "also_known_as": [
+   "Seifert Graphics, Inc."
+  ]
  },
  {
   "id": "skyward-thought-inc",
@@ -143323,27 +142929,6 @@
   "source": "conference sweep: SWANA WASTECON 2025"
  },
  {
-  "id": "enthalpy-analytical",
-  "name": "Enthalpy Analytical",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at SWANA WASTECON 2025",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: SWANA WASTECON 2025"
- },
- {
   "id": "blackhawk-technology-co",
   "name": "Blackhawk Technology Co",
   "website": null,
@@ -143785,27 +143370,6 @@
   "source": "conference sweep: SWANA WASTECON 2025"
  },
  {
-  "id": "ect2",
-  "name": "ECT2",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at SWANA WASTECON 2025",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: SWANA WASTECON 2025"
- },
- {
   "id": "qualpay",
   "name": "Qualpay",
   "website": null,
@@ -144160,7 +143724,8 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: SWANA WASTECON 2025"
+  "source": "conference sweep: SWANA WASTECON 2025",
+  "not_a_supplier": "A county solid waste authority that runs a landfill and a waste-to-energy plant and has a board and meeting schedule. It is an authority that buys equipment and services."
  },
  {
   "id": "contenur",
@@ -146113,7 +145678,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: StormCon 2026"
+  "source": "conference sweep: StormCon 2026",
+  "merged_from": [
+   {
+    "id": "duratrench-the-drain-brains",
+    "name": "DuraTrench - The Drain Brains",
+    "why": "The shared homepage says 'Eric'sons Dura Trench', and both records are the same StormCon 2026 trench-drain exhibitor. DuraTrench is Eric'sons Manufacturing's brand, not a separate company, so the record naming the maker is kept."
+   }
+  ],
+  "also_known_as": [
+   "DuraTrench - The Drain Brains"
+  ]
  },
  {
   "id": "ecopliant-environmental-inc",
@@ -147355,27 +146930,6 @@
   "source": "conference sweep: SWANA WASTECON 2025"
  },
  {
-  "id": "xybix-systems-inc",
-  "name": "Xybix Systems, Inc.",
-  "website": "https://www.xybix.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at AAAE 2027, APCO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: AAAE 2027; APCO 2026"
- },
- {
   "id": "aero-snow-removal-llc",
   "name": "Aero Snow Removal LLC",
   "website": null,
@@ -147540,12 +147094,12 @@
  {
   "id": "american-traction-solutions",
   "name": "American Traction Solutions",
-  "website": null,
+  "website": "https://americantractionsolutions.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at APTA 2026",
+  "description": "Traction motors, generators, power systems - exhibited at APTA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -147556,7 +147110,20 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: APTA 2026"
+  "source": "conference sweep: APTA 2026",
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Equipment / Components",
+  "merged_from": [
+   {
+    "id": "american-traction-systems",
+    "name": "American Traction Systems",
+    "why": "The homepage names the company 'American Traction Solutions Inc. (ATS)', and both records come from APTA 2026, so 'American Traction Systems' is a misspelling of the same firm."
+   }
+  ],
+  "also_known_as": [
+   "American Traction Systems"
+  ]
  },
  {
   "id": "aptiv",
@@ -148186,26 +147753,6 @@
  {
   "id": "center-for-advanced-preparedness-threat-response-simulation-captrs",
   "name": "Center for Advanced Preparedness & Threat Response Simulation (CAPTRS)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at ICMA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "cgi-digital-hellonation",
-  "name": "CGI Digital/HelloNation",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -150900,26 +150447,6 @@
  {
   "id": "winsor-consulting-group-llc",
   "name": "WINSOR CONSULTING GROUP LLC",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Illinois Chapter of APCO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "winsted-consoles",
-  "name": "WINSTED CONSOLES",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -154081,26 +153608,6 @@
   }
  },
  {
-  "id": "duratrench-the-drain-brains",
-  "name": "DuraTrench - The Drain Brains",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at StormCon 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "environmental-protection-agency",
   "name": "Environmental Protection Agency",
   "website": null,
@@ -155319,7 +154826,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "not_a_supplier": "A school district is pulled either way. The website on file also looks wrong: the ccsd.edu homepage mentions NYSSMA and ENL, which suggests a New York district, not Clark County, Nevada."
  },
  {
   "id": "council-of-administrators-of-special-education",
@@ -156362,26 +155870,6 @@
   }
  },
  {
-  "id": "npa",
-  "name": "NPA",
-  "website": "http://www.npa-section.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at NASS Winter/Summer 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "npa-section",
   "name": "NPA Section",
   "website": "http://www.npa-section.com",
@@ -156399,7 +155887,17 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "npa",
+    "name": "NPA",
+    "why": "'NPA' and 'NPA Section' are both the Notary Public Administrators Section of NASS at the same NASS conference with the same homepage; it is a professional section of government and private members, not a government agency, so it is not flagged."
+   }
+  ],
+  "also_known_as": [
+   "NPA"
+  ]
  },
  {
   "id": "voteshield",
@@ -156469,7 +155967,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at NCSHA 2026",
+  "description": "exhibited at NCSHA 2026, Housing Washington 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -156479,7 +155977,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Housing Washington 2026",
+  "merged_from": [
+   {
+    "id": "corporation-for-supportive-housing",
+    "name": "Corporation for Supportive Housing",
+    "why": "CSH is the short form of Corporation for Supportive Housing: same homepage, and the site calls itself CSH. It is a supportive-housing nonprofit, not a government body."
+   }
+  ],
+  "also_known_as": [
+   "Corporation for Supportive Housing"
+  ]
  },
  {
   "id": "essent",
@@ -160225,26 +159734,6 @@
   }
  },
  {
-  "id": "zumro-air-shelters",
-  "name": "Zumro Air Shelters",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at IAEM 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "abacus-intel",
   "name": "Abacus Intel",
   "website": "https://abacusgm.com/intel/",
@@ -163905,26 +163394,6 @@
   }
  },
  {
-  "id": "national-assoc-of-state-procurement-officials",
-  "name": "National Assoc of State Procurement Officials",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at NCSL Legislative Summit 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "national-assoc-of-certified-professional-midwives",
   "name": "National Assoc. of Certified Professional Midwives",
   "website": null,
@@ -166688,26 +166157,6 @@
   "id": "compass-construction",
   "name": "Compass Construction",
   "website": "https://www.compass-gc.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Housing Washington 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "corporation-for-supportive-housing",
-  "name": "Corporation for Supportive Housing",
-  "website": "https://www.csh.org/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",

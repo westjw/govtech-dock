@@ -3234,6 +3234,47 @@ const PROPOSAL_KINDS = {
     },
     needsForce: p => false,
   },
+  /* TWO COMPANIES THAT BID ON THE SAME SOLICITATION, as a person on SLED
+     HQ's team read it off the government's own document. Every document is
+     a link, so the ruling is made on what that person read, not on our
+     summary of it. Accepting puts each on the other's competitors. */
+  cobid: {
+    accept: 'Add them as competitors',
+    evidence(p, line){
+      const e = el('div', 'evi');
+      const c = p.cobid || {};
+      const names = c.names || {};
+      const pair = c.pair || [];
+      e.appendChild(line('Both bid on:', (c.solicitations || []).length + ' solicitation'
+        + ((c.solicitations || []).length === 1 ? '' : 's')
+        + ' (read by a person on SLED HQ, off the government’s own document)'));
+      const link = (d, url, text) => {
+        if (!/^https?:\/\//.test(url || '')) return;
+        const a = el('a'); a.textContent = text;
+        a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        d.appendChild(a); d.appendChild(document.createTextNode(' '));
+      };
+      (c.solicitations || []).forEach(s => {
+        const d = el('div', 'kv');
+        d.appendChild(document.createTextNode('• ' + (s.solicitation || '?') + ' — '
+          + pair.map(id => (names[id] || id) + ' ' + ((s.roles || {})[id] || '?')).join(', ') + ' '));
+        if (s.document_url) link(d, s.document_url, 'the document');
+        else pair.forEach(id => ((s.documents || {})[id] || []).forEach(u => link(d, u, (names[id] || id) + '’s document')));
+        e.appendChild(d);
+        /* HQ's company_id is a match by NAME: show the name as HQ's person
+           confirmed it and as the document prints it, so the match can be
+           checked before anything is written */
+        const named = pair.map(id => {
+          const n = (s.as_named || {})[id] || {};
+          return (names[id] || id) + ': confirmed as “' + (n.company || '?') + '”'
+            + (n.printed_as ? ', printed “' + n.printed_as + '”' : '');
+        }).join(' · ');
+        e.appendChild(el('div', 'kv', named));
+      });
+      return e;
+    },
+    needsForce: p => false,
+  },
   fact: {
     accept: 'Write it',
     evidence(p, line){

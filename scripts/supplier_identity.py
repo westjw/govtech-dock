@@ -353,7 +353,9 @@ def describes(html: str, description: str) -> bool | None:
 
 def check_own(s: dict, get=fetch) -> dict:
     """Is the website on file theirs?"""
-    url = s["website"]
+    url = (s["website"] or "").strip()
+    if url and not re.match(r"[a-z][a-z0-9+.-]*://", url, re.I):
+        url = f"https://{url}"        # a bare host, as a floor prints it: the fetcher needs a scheme
     tried_root = False
     try:
         r = get(url)

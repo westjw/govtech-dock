@@ -6432,10 +6432,10 @@
    "Higher Education": 517,
    "Housing & Community Dev": 10
   },
-  "pay_stated": 1935,
-  "pay_stated_postings": 2248,
+  "pay_stated": 1934,
+  "pay_stated_postings": 2247,
   "pay_source": {
-   "ats": 891,
+   "ats": 890,
    "text": 1357
   },
   "jd_read_postings": 4847,
@@ -384864,16 +384864,7 @@
    "location": "Homeoffice",
    "is_us": null,
    "jd_seen": true,
-   "comp": {
-    "min": 60000,
-    "max": 70000,
-    "currency": "USD",
-    "period": null,
-    "source": "ats",
-    "raw": "60000-70000 USD"
-   },
-   "comp_floor": 60000,
-   "comp_period": null,
+   "comp": null,
    "posted": "2026-10-06",
    "url": "https://vertigis.recruitee.com/o/technical-project-manager",
    "sector": "Public Works",
@@ -507796,5 +507787,9 @@
   "absent": 600,
   "blocked": 231,
   "unchecked": 132
+ },
+ "redrawn": {
+  "at": "2026-10-24T02:27:55Z",
+  "inputs": "880a86c50622c9edce4d5438729e55b2d7258f250e3c137d428452593baf8933"
  }
 }

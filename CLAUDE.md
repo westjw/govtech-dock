@@ -2044,6 +2044,49 @@ the claim link to HQ." Built ahead of the deploy and dormant until then.
   `jobcard_harness.mjs` in four states (switch off and on, verified or not)
   and compares its words and links with the static page's.
 
+### Co-bidders from SLED HQ's bid records (2026-10-23)
+
+Owner: "yes" to "SLED JOBS could turn co-bidders into competitor suggestions
+you rule on". HQ's team opens a Texas government's own bid document (a
+tabulation, a score sheet, an award, a pre-bid sign-in) and records which
+companies it names and in what role; HQ's feed (`/api/feed/bid-records`, its
+`docs/feeds/sledjobs-bid-records.md`, v1) carries only those person-confirmed
+readings, and only HQ's own team's, never a customer's.
+- `scripts/hq_bid_records.py` reads it nightly in `refresh.yml` into
+  `data/hq_bid_records.json`, through `hq_jobs.read_feed` and on its rules:
+  any answer but 200 keeps the records on file, a 200 is the whole list, no
+  token asks nothing. Records are kept from the contract's twelve-field
+  allow-list and refused one at a time (id, place, address, role, numbers, a
+  future date, an email or phone in a name, a repeat).
+- **HQ's `company_id` is checked, never taken**: it links only when that
+  board company's name or an alias folds (case, accents, punctuation, a
+  legal suffix) to the record's company. Otherwise the record is kept,
+  unlinked, with why.
+- **Two board companies that both BID on one solicitation** (submitted,
+  finalist, recommended, awarded) become one `cobid` proposal in Agent
+  proposals: the pair and every solicitation, each with the government's
+  document. A pre-bid sign-in alone pairs nobody: it is interest, not a bid.
+  One solicitation is its place, its printed number (or the document, when
+  none), and its year and title wherever printed, so "Bid 1" in two years is
+  two. The proposal cites the document naming both companies where there is
+  one, else each company's own, and shows each name as HQ's person confirmed
+  it and as the document prints it. A pair already listing each other is not
+  proposed; a pair a person ruled on is never asked again; a pending pair is
+  `withdrawn` with the true reason (its records left HQ's feed, it no longer
+  links to a board company, or the two now list each other) and asked again
+  if its records come back; a read refusing more rows than a real feed
+  explains withdraws nothing; a list read more than `STALE_DAYS` (7) ago
+  proposes nothing; a night with the same records writes nothing. A blind
+  review found 9 defects in the first version, each now a case.
+- **Accepting** (`proposal_rulings._accept_cobid`) writes each onto the
+  other's competitors in one journal entry: why "Both bid on <solicitation>
+  for <government>", source the document, by "SLED HQ bid records". An edge
+  already there stays as it is; a company at the cap (8) is a refusal, never
+  a truncation.
+- Dormant until HQ deploys and `SLEDJOBS_FEED_TOKEN` is set (HQ had no
+  records on 2026-10-23). `check_co_bidders_from_hq_become_suggestions_a_person_rules_on`
+  (mutation-tested with the supplier work, 46 of 46).
+
 ## Launch fixes, 2026-10-06: what each guard holds
 
 A launch audit (the checklist lives in a claude.ai artifact, not the repo)
@@ -2534,7 +2577,7 @@ Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
   - After a change here, run HQ's own `parseSupplierExport` over the file
     (read only, no database) before telling HQ it will pass.
   - A published website is always a lower-case http(s) address (a bare
-    host gets `http://`, `&amp;` reads as `&`); one that is not a web
+    host gets `https://`, as supplier_pages reads it; `&amp;` reads as `&`); one that is not a web
     address at all is `website unread (the address on file is not a web
     address)`, so it stays in the admin's Supplier websites queue.
   - A shelter is a park's unless an animal's ("animal shelters",
@@ -2542,6 +2585,38 @@ Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
   - These are cases in `check_suppliers_land_in_the_govtech_categories`.
     A blind review (3 lenses, a skeptic each) found 13 more ways to publish
     a row HQ refuses, each now a case; mutation-tested 33 of 33.
+- **One company is one supplier, and an agency is none** (owner, 2026-10-23:
+  "yes" to merging the duplicates and pulling the agencies). 62 websites
+  were shared by 134 published suppliers, and HQ's claim keys on a domain.
+  - Each group was read by an agent and challenged by a skeptic told to
+    refute every merge and pull. The skeptic overturned 2: Sodexo Campus is
+    Sodexo's higher-education division, and Bremerton Housing Authority/CMS
+    sells a service. The rulings, with reasons, are
+    `data/supplier_record_rulings.json`; `scripts/merge_supplier_records.py`
+    applies them.
+  - A merge moves the twin's shows and names onto the survivor, and every
+    field the survivor lacks (website, the description's words, location,
+    year, the govtech/research/vendor-type stamps): the first version kept
+    the emptier row and six card-ready groups lost their only website. The
+    twin leaves suppliers.json through the journal; the export says
+    `merged_into` the survivor (49 folded into 45). The floor reader
+    (`read_floor.settled`) and the card door (`_accept_card`) match a
+    supplier's aliases too, or a merged name came back to both.
+  - Brands or divisions of one parent on its site (Flygt and Sanitaire on
+    xylem.com) are not duplicates and stay.
+  - A government body that BUYS - a department, a federal agency, a utility,
+    a school district - stays on file with `not_a_supplier`, so intake still
+    knows the name, and the export calls it not_a_company (12). A public
+    body that sells to government (a degree programme, Connecticut
+    Correctional Enterprises) stays a supplier.
+  - `check_one_supplier_is_one_record_and_an_agency_is_none`.
+- **A bare host is read over https** (2026-10-23). 23 suppliers' websites
+  were printed with no scheme ("www.cleanharbors.com"): the identity check
+  retried them, but supplier_pages handed them over bare and the fetcher
+  refused every one, so they sat as "website unread" for three weeks.
+  `supplier_pages.site_for` and `supplier_identity.check_own` add `https://`;
+  re-read, 18 had pages and 13 now publish. The other 5 are robots.txt bot
+  walls or SSL failures, honestly unread.
 
 ## The supplier backlog is smaller than it looks (checked 2026-08-25)
 
