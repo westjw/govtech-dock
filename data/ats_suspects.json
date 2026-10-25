@@ -606,5 +606,57 @@
   },
   "note": "workday:relx reads (127 posting(s)), but does not match 'LexisNexis Risk Solutions Government'; likely a parent or another company",
   "on": "2026-10-20"
+ },
+ "blackberry": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "bb",
+    "wd3",
+    "BlackBerry"
+   ]
+  },
+  "note": "workday:bb reads (11 posting(s)), but does not match 'BlackBerry'; likely a parent or another company",
+  "on": "2026-10-25"
+ },
+ "courbanize": {
+  "ats": {
+   "type": "greenhouse",
+   "ref": "cleargov"
+  },
+  "note": "greenhouse:cleargov reads (11 posting(s)), but does not match 'coUrbanize'; likely a parent or another company",
+  "on": "2026-10-25"
+ },
+ "griffeye": {
+  "ats": {
+   "type": "lever",
+   "ref": "magnetforensics"
+  },
+  "note": "lever:magnetforensics reads (40 posting(s)), but does not match 'Griffeye'; likely a parent or another company",
+  "on": "2026-10-25"
+ },
+ "syscon-justice-systems": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "1"
+   ]
+  },
+  "note": "workday:harriscomputer reads (106 posting(s)), but does not match 'Syscon Justice Systems'; likely a parent or another company",
+  "on": "2026-10-25"
+ },
+ "shakespeare-composite-structures": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "valmont",
+    "wd1",
+    "ValmontCareers"
+   ]
+  },
+  "note": "workday:valmont reads (59 posting(s)), but does not match 'Shakespeare Composite Structures'; likely a parent or another company",
+  "on": "2026-10-25"
  }
 }
