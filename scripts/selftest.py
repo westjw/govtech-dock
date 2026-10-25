@@ -9297,8 +9297,7 @@ def check_every_control_answers_the_keyboard() -> int:
             (r'el\.style\.cursor="pointer"; reachable\(el,"button"\);', 1, "a conference calendar row"),
             (r'<span class="pay(all|off)" tabindex="0" role="button">', 3, "an include/set-aside switch"),
             (r'<span tabindex="0" role="button" class="colink co(text|wide)"', 4, "a widen/narrow switch"),
-            (r'<span id="j-relax" tabindex="0" role="button"', 1, "the show-all-roles switch"),
-            (r'<i data-dot="\$\{i\}" tabindex="0" role="button"', 1, "a banner dot")):
+            (r'<span id="j-relax" tabindex="0" role="button"', 1, "the show-all-roles switch")):
         if len(re.findall(pat, src)) != n:
             errors += fail(f"{what} is no longer reachable by keyboard ({len(re.findall(pat, src))} of {n})")
     if re.search(r'(row|more|d)\.className="(row clk|more|kv clk)";\s*\n\s*\1\.onclick', src):
@@ -9414,10 +9413,14 @@ console.log(JSON.stringify(pairs.map(([s, c]) =>
     if 'cfClosePanel(true); cfToCompanies(tag)' not in js:
         errors += fail("'all exhibitors' pushes two history entries, so Back skips "
                        "the panel the reader clicked from")
-    hs = js[js.find('document.querySelectorAll(".hsecs button")'):][:500]
-    if "dispatchEvent(" in hs:
-        errors += fail("a home sector button pushes a second history entry "
-                       "through the sector pill, so Back lands on the bare board")
+    hb = js[js.find("function home(){"):]
+    hb = hb[:hb.find("\n}\n")]
+    if not hb or "dispatchEvent(" in hb:
+        errors += fail("the home page reaches the board through a dispatched "
+                       "event, so Back lands on the bare board")
+    if 'goTab("jobs",here(a))' not in hb or "a[data-board]" not in hb:
+        errors += fail("the home page's doors into the board do not open the "
+                       "address they show, in one history entry")
     if 'f.dispatchEvent(new Event("change"))' in js:
         errors += fail("'See what is new' sends a change event nothing handles; "
                        "the board ignores the age it shows")
@@ -9693,9 +9696,6 @@ def check_assistive_tech_hears_what_changed() -> int:
     if re.search(r"data-cfclose\]\"\)\.forEach\(b=>b\.onclick=cfClosePanel\)", js):
         errors += fail("the panel's close button passes its click event as "
                        "`fromUrl`, so closing never gives the address back")
-    if not re.search(r'bn\.addEventListener\("focusin",\s*stopBanner\)', js):
-        errors += fail("the home banner does not pause while a keyboard is in "
-                       "it, so a focused slide rotates away")
     al = (ROOT / "alerts.html").read_text()
     for m in re.finditer(r'<div id="msg"[^>]*>', al):
         if 'role="status"' not in m.group(0):
@@ -9765,36 +9765,60 @@ def check_the_front_page_counts_by_opening() -> int:
     home = front.get("home") or ""
     board = json.loads((DATA / "board.json").read_text())
     rows = [p for p in board["postings"] if p.get("quota_carrying") and p.get("is_us") is not False]
-    for name, n in re.findall(r'<button type="button" data-sec="([^"]+)">\s*[^<]*<b>(\d+)</b>', home):
+    found = re.findall(r'<a href="\?sec=([^"]*)" data-board\s+data-sec="([^"]+)">\s*<span>([^<]*)</span>\s*<b>([\d,]+)</b>', home)
+    for href, name, shown, _n in found:
+        if up.unquote(html.unescape(href)) != html.unescape(name) or html.unescape(shown) != html.unescape(name):
+            errors += fail(f"the home index row '{shown}' opens ?sec={href}")
+    found = [(name, n) for _h, name, _s, n in found]
+    if rows and not found:
+        errors += fail("the home page's department index is gone or no longer "
+                       "reads as one, so nothing here counted it")
+    for name, n in found:
         name = html.unescape(name)
         want = len({p.get("opening_id") or p["id"] for p in rows
                     if p.get("sector") == name or any(a.get("sector") == name for a in p.get("also") or [])})
-        if int(n) != want:
-            errors += fail(f"the home button '{name} {n}' counts rows; the board it "
+        if int(n.replace(",", "")) != want:
+            errors += fail(f"the home index's '{name} {n}' counts rows; the board it "
                            f"opens leads with {want} roles")
-    slides = {x["kick"]: x for x in front.get("slides") or []}
-    sw = (slides.get("Sellers wanted") or {}).get("p", "")
-    if "93 cities" in sw:
-        errors += fail("the Sellers wanted slide still prints the frozen '93 cities'")
+    note = (re.search(r'<p class="fp-note">(.*?)</p>', home, re.S) or [None, ""])[1]
     per = collections.Counter(p.get("opening_id") for p in rows)
     widest = max(per.values()) if per else 0
-    if widest > 1 and f"{widest:,} postings" not in sw:
-        errors += fail(f"the Sellers wanted slide does not name the widest requisition "
-                       f"({widest} postings): {sw[:160]!r}")
-    hh = slides.get("Hiring hardest")
-    top = sorted((o for o in board["organizations"] if o.get("quota_roles")),
-                 key=lambda o: -o["quota_roles"])[:1]
-    if hh and top and not hh["p"].startswith(f"{top[0]['quota_roles']} quota-carrying"):
-        errors += fail(f"Hiring hardest says {hh['p'][:80]!r}; the Companies tab it "
-                       f"opens shows {top[0]['name']} with {top[0]['quota_roles']}")
-    nw = (slides.get("New this run") or {}).get("p", "")
-    named = re.search(r"First seller req we have ever recorded at (.+?)\.(?:\s|$)", nw)
+    if "93 cities" in home:
+        errors += fail("the front page still prints the frozen '93 cities'")
+    if widest > 1 and f"advertised in {widest:,} postings" not in re.sub(r"\s+", " ", note):
+        errors += fail(f"the front page does not name the widest requisition "
+                       f"({widest} postings): {note[:160]!r}")
+    if 'href="?tab=how"' not in note:
+        errors += fail("the front page lost its one link to How a listing gets here")
+    named = re.search(r"First seller req we have ever recorded at (.+?)</p>", home, re.S)
     debut = {o["name"] for o in board["organizations"] if o.get("seller_debut")}
     if named:
-        first = [x.strip() for x in re.split(r",| and ", named.group(1)) if x.strip()]
-        bad = [x for x in first if not re.match(r"\d+ others?$", x) and html.unescape(x) not in debut]
-        if bad:
-            errors += fail(f"the banner names {bad} as a debut; seller_debut does not")
+        # names carry commas of their own ("ImageSource, Inc.", 2026-10-25),
+        # so take out every debut name, longest first, and what is left must
+        # be only the list's own joints
+        rest = html.unescape(named.group(1))
+        for n in sorted(debut, key=len, reverse=True):
+            rest = rest.replace(n, "")
+        if not re.fullmatch(r"(?:\s|,|and|\d+ others?|\.)*", rest):
+            errors += fail(f"the front page names {named.group(1)!r} as a debut; "
+                           f"seller_debut does not hold {rest.strip(' ,.')!r}")
+        if html.unescape(named.group(1)).endswith(".."):
+            errors += fail("the debut line ends in two stops")
+    gen = board.get("generated")
+    ids = {o["id"] for o in board["organizations"] if o.get("seller_debut")}
+    if not named and any(p.get("first_seen") == gen and p.get("company_id") in ids for p in rows):
+        errors += fail("a seller debut reached the board this run and the front page does not say so")
+    deb = front.get("debut") or {}
+    if deb.get("name") and f"First seller req we have ever recorded at {html.escape(deb['name'], quote=True)}" \
+            not in deb.get("home", "").replace("&#x27;", "&#39;"):
+        errors += fail(f"with {deb['name']} a seller debut this run, the front page does not name it")
+    tiles = len(re.findall(r'<div class="tile"', home))
+    hidden = len(re.findall(r'<span class="fp-logo" aria-hidden="true"><div class="tile"', home)) + sum(
+        len(re.findall(r'<div class="tile"', m)) for m in re.findall(
+            r'<span class="fp-stack" aria-hidden="true">(.*?)</span></span>', home, re.S))
+    if tiles != hidden:
+        errors += fail(f"{tiles - hidden} logo tile(s) on the front page are read aloud "
+                       f"into their link's name")
     with _tf.TemporaryDirectory() as tmp:
         h, hh_ = pathlib.Path(tmp) / "h", pathlib.Path(tmp) / "hh"
         h.mkdir(); hh_.mkdir()
@@ -9819,7 +9843,7 @@ def check_the_front_page_counts_by_opening() -> int:
                        f"seller title on any earlier record debuts")
     js = re.sub(r"/\*.*?\*/", "", (ROOT / "index.html").read_text(), flags=re.S)
     if "seenBefore" in js or "o.seller_debut" not in js:
-        errors += fail("the banner's debut is not read from seller_debut")
+        errors += fail("the front page's debut is not read from seller_debut")
     for f, call in (("build_board.py", "mark_seller_debut(orgs, postings, today, sellers_before(today))"),
                     ("quick_rebuild.py", "bb.mark_seller_debut(")):
         if call not in (ROOT / "scripts" / f).read_text():
@@ -10449,8 +10473,6 @@ console.log(JSON.stringify({
         errors += fail("saving a role, a company or a search fails silently when the browser keeps nothing")
     if '[3,"Within 3 days of the last check"]' not in js:
         errors += fail("the age filter says 'in the last 3 days' while counting from the last check")
-    if "more have roles a person captured by hand" not in js:
-        errors += fail("the home map slide counts hand captures as 'open on the last check'")
     if 'if(fromDay&&!((p.first_seen||"").slice(0,10)>=fromDay))return false;' not in js:
         errors += fail("the board ignores a digest link's date window")
     for needle, why in (('${goneWhy(String(id).split("::")[0])}', "the gone-role page"),
@@ -32493,16 +32515,59 @@ def check_no_control_characters_in_source() -> int:
     return errors
 
 
+def _spelled(n: int) -> str:
+    """A count as the front page's headline opens a sentence with it, from a
+    table written here rather than read off the page."""
+    ones = ("zero one two three four five six seven eight nine ten eleven twelve "
+            "thirteen fourteen fifteen sixteen seventeen eighteen nineteen").split()
+    tens = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
+    if n > 99:
+        return f"{n:,}"
+    w = ones[n] if n < 20 else tens[n // 10] + ("-" + ones[n % 10] if n % 10 else "")
+    return w[0].upper() + w[1:]
+
+
+def _conf_range(dates: str):
+    """(first day, last day) of a conference date string in the three shapes
+    the page's calRange() reads, or None for anything else."""
+    months = {m.lower(): i + 1 for i, m in enumerate(
+        ["January", "February", "March", "April", "May", "June", "July", "August",
+         "September", "October", "November", "December"])}
+    t = (dates or "").strip()
+    d = r"\s*[-\u2013\u2014]\s*"
+    shapes = ((rf"^([A-Za-z]+)\s+(\d{{1,2}}){d}([A-Za-z]+)\s+(\d{{1,2}}),\s*(\d{{4}})$", (1, 2), (3, 4)),
+              (rf"^([A-Za-z]+)\s+(\d{{1,2}}){d}(\d{{1,2}}),\s*(\d{{4}})$", (1, 2), (1, 3)),
+              (r"^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})$", (1, 2), (1, 2)))
+    for pat, a, b in shapes:
+        m = re.match(pat, t)
+        if not m:
+            continue
+        y = int(m.groups()[-1])
+        try:
+            first = dt.date(y, months[m.group(a[0]).lower()], int(m.group(a[1])))
+            last = dt.date(y, months[m.group(b[0]).lower()], int(m.group(b[1])))
+        except (KeyError, ValueError):
+            return None
+        return (first, last) if last >= first else None
+    return None
+
+
 def check_the_front_page_counts_what_its_links_open() -> int:
-    """Every front-page number a click turns into the jobs tab counts that tab's
-    default set: quota-carrying, under the United States default (everything
-    not placed outside the US). The home link said "All 1,025" over a page of
-    472 (launch audit, 2026-10-06), and after that was fixed the banner still
-    said 675 over the same 478 (second review, 2026-10-07). Runs the real
-    buildSlides() and home() on the committed board via jobcard_harness and
-    compares with the set computed here, independently.
+    """Every front-page number a click turns into another page counts what
+    that page opens on. The jobs tab's default set is quota-carrying under the
+    United States default (everything not placed outside the US): the home
+    link said "All 1,025" over a page of 472 (launch audit, 2026-10-06), and
+    after that was fixed the banner still said 675 over the same 478 (second
+    review, 2026-10-07).
+
+    The front page (owner, 2026-10-25: option 3 of round 2 of the home page
+    canvas) is RUN on the committed board through jobcard_harness and held,
+    number by number, to what is computed here independently: the search's
+    count, the headline and its "new this run" link, the since-your-visit
+    line, the role cards, Hiring hardest, the show floor and the pay column.
     """
     import shutil, subprocess, json as _json
+    import build_site as bs
     if not shutil.which("node"):
         print("  SKIP: node is not installed here, so the front page was not run")
         return 0
@@ -32514,40 +32579,255 @@ def check_the_front_page_counts_what_its_links_open() -> int:
     front = out.get("front") or {}
     if not front.get("home"):
         return fail(f"home() did not run in the harness: {out.get('errors')}")
+    home = front["home"]
     board = json.loads((DATA / "board.json").read_text())
-    want = len({p["opening_id"] for p in board["postings"]
-                if p.get("quota_carrying") and p.get("is_us") is not False})
+    q = [p for p in board["postings"] if p.get("quota_carrying") and p.get("is_us") is not False]
+    by_id = {p["id"]: p for p in q}
+    want = len({p["opening_id"] for p in q})
     errors = 0
     num = lambda t: int(re.sub(r"[^0-9]", "", t) or -1)
-    m = re.search(r'id="h-all"[^>]*>All ([\d,]+) roles', front["home"])
+    m = re.search(r'id="h-q"[^>]*placeholder="Search all ([\d,]+) roles"', home)
     if not m or num(m.group(1)) != want:
-        errors += fail(f"the home link says All {m and m.group(1)} roles; the jobs "
-                       f"tab opens on {want}")
-    card = re.search(r'id="h-jobs".*?class="big">([\d,]+)<', front["home"], re.S)
-    if not card or num(card.group(1)) != want:
-        errors += fail(f"the home Sales roles card says {card and card.group(1)}; the "
-                       f"jobs tab opens on {want}")
-    seller = next((x for x in front.get("slides", []) if x["kick"] == "Sellers wanted"), None)
-    if seller and num(re.search(r'class="num">([\d,]+)<', seller["h"]).group(1)) != want:
-        errors += fail(f"the banner's Sellers wanted slide says {seller['h'][:60]!r}; "
-                       f"its Open the board link lands on {want}")
+        errors += fail(f"the home search says 'Search all {m and m.group(1)} roles'; "
+                       f"the jobs tab it opens holds {want}")
+    words = front.get("words") or []
+    bad = [(i, w) for i, w in enumerate(words) if w != _spelled(i)]
+    if not words or bad:
+        errors += fail(f"the headline's numWords spells {bad[:3] or 'nothing'}")
+
+    # the headline: a role new this run is one whose earliest posting on the
+    # board was first seen on the crawl; a role that only gained a city is
+    # not one (review, 2026-10-25). Its link opens ?since=0, which counts
+    # openings with any posting new tonight, and says which it holds.
     gen = board.get("generated")
-    fresh = len({p["opening_id"] for p in board["postings"] if p.get("quota_carrying")
-                 and p.get("is_us") is not False and p.get("first_seen") == gen})
-    new_slide = next((x for x in front.get("slides", []) if x["kick"] == "New this run"), None)
-    if fresh and (not new_slide or num(re.search(r'class="num">([\d,]+)<', new_slide["h"]).group(1)) != fresh):
-        errors += fail(f"the New this run slide says {new_slide and new_slide['h'][:60]!r}; "
-                       f"its button opens {fresh} new sales roles")
-    since = sum(1 for _ in {p["opening_id"] for p in board["postings"]
-                            if p.get("quota_carrying") and p.get("is_us") is not False
-                            and (p.get("first_seen") or "") > front.get("lastVisit", "~")})
-    m2 = re.search(r'<div class="since">\s*<strong>([\d,]+) quota-carrying', front["home"])
+    earliest = {}
+    for p in q:
+        earliest[p["opening_id"]] = min(earliest.get(p["opening_id"], "~"), p.get("first_seen") or "~")
+    fresh_ids = {o for o, f in earliest.items() if f == gen}
+    fresh = len(fresh_ids)
+    since0 = len({p["opening_id"] for p in q if p.get("first_seen") == gen})
+    head = re.search(r'id="fp-h" data-n="(\d+)">(.*?)</h2>', home, re.S)
+    link = re.search(r'<a [^>]*id="h-new"[^>]*>All ([\d,]+) (new this run|with new postings this run)', home)
+    text = re.sub(r"<[^>]+>", "", head.group(2)) if head else ""
+    if not head:
+        errors += fail("the front page has no headline")
+    elif fresh:
+        if int(head.group(1)) != fresh or not text.startswith(f"{_spelled(fresh)} new "):
+            errors += fail(f"the headline says {text[:70]!r}; {fresh} new sales "
+                           f"roles reached the board this run")
+        words = "new this run" if since0 == fresh else "with new postings this run"
+        if not link or num(link.group(1)) != since0 or link.group(2) != words \
+                or 'href="?since=0"' not in link.group(0):
+            errors += fail(f"the home link reads {link and link.group(0)[-50:]!r}; ?since=0 "
+                           f"opens {since0} roles, {fresh} of them new")
+    elif head.group(1) != "0" or " new " in f" {text} " or link:
+        errors += fail(f"a run with no new sales role still claims some: {text[:70]!r}")
+    m = re.search(r'<p class="fp-eyebrow">The board, read (\d+) ([A-Za-z]+) (\d{4})</p>', home)
+    if gen and (not m or dt.date(int(m.group(3)), dt.datetime.strptime(m.group(2), "%B").month,
+                                 int(m.group(1))).isoformat() != gen):
+        errors += fail(f"the front page dates its read {m and m.group(0)!r}; the board "
+                       f"was read {gen}")
+    if "not placed outside the US" not in re.sub(r"\s+", " ", home):
+        errors += fail("the front page never says its counts leave out roles placed "
+                       "outside the US, as the board it opens does")
+
+    # a quiet run: the same board read a day later, with nothing new on it
+    quiet = front.get("quiet") or ""
+    qh = re.search(r'id="fp-h" data-n="(\d+)">(.*?)</h2>', quiet, re.S)
+    qt = re.sub(r"<[^>]+>", "", qh.group(2)) if qh else ""
+    if not qh or qh.group(1) != "0" or " new " in f" {qt} " or 'id="h-new"' in quiet \
+            or 'aria-label="New this run"' in quiet:
+        errors += fail(f"a quiet run still claims new roles: {qt[:70]!r}")
+    elif want and not qt.startswith(f"{_spelled(want)} sales role"):
+        errors += fail(f"a quiet run's headline says {qt[:70]!r}; the board holds {want}")
+    if "in the United States" in quiet or "not placed outside the US" not in re.sub(r"\s+", " ", quiet):
+        errors += fail("a quiet run's front page misstates where its roles are")
+    since = len({p["opening_id"] for p in q
+                 if (p.get("first_seen") or "") > front.get("lastVisit", "~")})
+    m2 = re.search(r'<div class="since">\s*<strong>([\d,]+) quota-carrying', home)
     if since and (not m2 or num(m2.group(1)) != since):
         errors += fail(f"the since-your-last-visit line says {m2 and m2.group(1)}; its "
                        f"link opens {since}")
-    if "in the United States" in front["home"].split('id="h-jobs"', 1)[-1][:600]:
-        errors += fail("the home card says its roles are in the United States, and "
+    if "in the United States" in home:
+        errors += fail("the front page says its roles are in the United States, and "
                        "the count includes roles we could not place")
+
+    # the role cards: openings on the default board, the new ones first, and
+    # the lead the best-paid of the new ones where any states a yearly figure
+    def yearly(rows):
+        cs = [p.get("comp") or {} for p in rows]
+        k = {(c.get("min"), c.get("max"), c.get("currency"), c.get("period")) for c in cs}
+        if len(k) != 1 or not all(cs):
+            return None
+        lo, hi, cur, per = next(iter(k))
+        if cur != "USD" or per != "year" or (lo is None and hi is None):
+            return None
+        return (hi if hi is not None else lo, lo if lo is not None else hi)
+    groups = collections.defaultdict(list)
+    for p in q:
+        groups[p["opening_id"]].append(p)
+    sec = re.search(r'<section class="fp-roles.*?</section>', home, re.S)
+    cards = [html.unescape(x) for x in re.findall(r'data-role="([^"]+)"', sec.group(0))] if sec else []
+    if want and not cards:
+        errors += fail("the front page shows no roles over a board holding some")
+    opened = [by_id[c]["opening_id"] if c in by_id else None for c in cards]
+    if None in opened or len(set(opened)) != len(opened):
+        errors += fail(f"a front-page card is not a role on the board it opens, or "
+                       f"is there twice: {cards}")
+    elif fresh:
+        lead_n = min(5, fresh)
+        if not all(o in fresh_ids for o in opened[:lead_n]):
+            errors += fail(f"the first {lead_n} cards are not all new this run: {opened[:lead_n]}")
+        if sec and ('aria-label="New this run"' in sec.group(0)) != all(o in fresh_ids for o in opened):
+            errors += fail("the role cards are labelled New this run over a card that is not")
+        firms = [by_id[c]["company_id"] for c in cards]
+        spread = min(len(firms), len({by_id[c]["company_id"] for c in cards}
+                                     | {groups[o][0]["company_id"] for o in fresh_ids}))
+        if len(set(firms[:spread])) != spread:
+            errors += fail(f"the role cards repeat a company before every company had "
+                           f"one: {firms}")
+        fresh_rows = collections.defaultdict(list)
+        for p in q:
+            if p.get("first_seen") == gen:
+                fresh_rows[p["opening_id"]].append(p)
+        tops = [y[0] for y in map(yearly, fresh_rows.values()) if y]
+        got = yearly(fresh_rows[opened[0]]) if opened else None
+        if tops and (not got or got[0] != max(tops)):
+            errors += fail(f"the lead card pays {got}; the best-paid new role states {max(tops)}")
+
+    # Hiring hardest: the Companies tab's count, on boards we read
+    hire = re.search(r'aria-labelledby="fp-hire-h".*?</section>', home, re.S)
+    shown = [(html.unescape(i), num(n)) for i, n in re.findall(
+        r'data-co="([^"]+)".*?<b class="fp-big">([\d,]+)</b>', hire.group(0), re.S)] if hire else []
+    top = sorted((o for o in board["organizations"]
+                  if (o.get("quota_roles") or 0) > 0 and bs.board_state(o) == "read"),
+                 key=lambda o: (-o["quota_roles"], -(o.get("open_roles") or 0),
+                                o["name"].casefold()))[:3]
+    if shown != [(o["id"], o["quota_roles"]) for o in top]:
+        errors += fail(f"Hiring hardest shows {shown}; the Companies tab ranks "
+                       f"{[(o['id'], o['quota_roles']) for o in top]}")
+
+    # On the floor: events that are not over, with the counts their panel shows
+    floor = re.search(r'aria-labelledby="fp-floor-h".*?</section>', home, re.S)
+    rows = {c["tag"]: c for c in board.get("conferences") or []}
+    today = dt.date.today()
+    dated = [(c, _conf_range(c.get("dates"))) for c in rows.values()]
+    live = [(c, r) for c, r in dated if r and r[1] >= today]
+    on = sorted((x for x in live if x[1][0] <= today), key=lambda x: -(x[0].get("companies") or 0))
+    nxt = sorted((x for x in live if x[1][0] > today), key=lambda x: x[1][0])
+    want_floor = [c["tag"] for c, _ in on + nxt][:3]
+    got_floor = [html.unescape(t) for t in re.findall(r'data-tag="([^"]+)"', floor.group(0) if floor else "")]
+    # both sorts are stable over the catalogue's own order, so ties land alike
+    if got_floor != want_floor:
+        errors += fail(f"the show floor offers {got_floor}; what is on today, the "
+                       f"biggest first, then what comes next, is {want_floor}")
+    lead_ev = re.search(r'class="fp-when">(.*?)</span>', floor.group(0) if floor else "", re.S)
+    if got_floor and lead_ev and got_floor[0] in rows:
+        r0 = _conf_range(rows[got_floor[0]].get("dates"))
+        now = bool(r0 and r0[0] <= today <= r0[1])
+        if now != ("On now" in lead_ev.group(1)):
+            errors += fail(f"the show floor's lead says {lead_ev.group(1)[:40]!r} about an event "
+                           f"{'on today' if now else 'not on today'}")
+    fc = re.search(r'data-tag="([^"]+)".*?<b>([\d,]+)</b> of ([\d,]+) exhibitors hiring',
+                   floor.group(0) if floor else "", re.S)
+    if fc:
+        c = rows.get(html.unescape(fc.group(1))) or {}
+        if (num(fc.group(2)), num(fc.group(3))) != (c.get("hiring"), c.get("companies")):
+            errors += fail(f"the show floor says {fc.group(2)} of {fc.group(3)} hiring; "
+                           f"the conference row holds {c.get('hiring')} of {c.get('companies')}")
+
+    # a day with nothing on: the floor leads with what is next, never a past edition
+    later = (front.get("later") or {}).get("home", "")
+    nxt_only = sorted(((c, r) for c, r in dated if r and r[0] > today), key=lambda x: x[1][0])
+    lt = [html.unescape(t) for t in re.findall(r'data-tag="([^"]+)"', later)]
+    le = re.search(r'class="fp-when">(.*?)</span>', later, re.S)
+    if lt != [c["tag"] for c, _ in nxt_only][:3] or (le and "On now" in le.group(1)):
+        errors += fail(f"with nothing on today the show floor offers {lt} under "
+                       f"{le and le.group(1)[:30]!r}; next up is "
+                       f"{[c['tag'] for c, _ in nxt_only][:3]}")
+    # one role new this run: it leads, older roles top up one company each,
+    # and the section is not called new
+    few = front.get("few") or {}
+    fh = few.get("home", "")
+    fcards = [html.unescape(x) for x in re.findall(r'data-role="([^"]+)"',
+              (re.search(r'<section class="fp-roles.*?</section>', fh, re.S) or [""])[0])]
+    ffirms = [by_id[c]["company_id"] for c in fcards if c in by_id]
+    if few.get("keep") and (not re.search(r'id="fp-h" data-n="1">\s*<span class="fp-u">One new</span> sales role ', fh)
+            or 'aria-label="The newest roles"' not in fh
+            or not fcards or by_id.get(fcards[0], {}).get("opening_id") != few["keep"]
+            or len(set(ffirms)) != len(ffirms)):
+        errors += fail(f"with one role new this run the front page shows {ffirms} under "
+                       f"{re.findall(r'aria-label=.(New this run|The newest roles)', fh)}")
+    # the most sellers on a board we cannot read is not hiring hardest
+    unread = front.get("unread") or {}
+    uh = re.findall(r'data-co="([^"]+)"', unread.get("home", ""))
+    if unread.get("hidden") and (unread["hidden"] in uh or uh != [o["id"] for o in sorted(
+            (o for o in board["organizations"] if (o.get("quota_roles") or 0) > 0
+             and bs.board_state(o) == "read" and o["id"] != unread["hidden"]),
+            key=lambda o: (-o["quota_roles"], -(o.get("open_roles") or 0), o["name"].casefold()))[:3]]):
+        errors += fail(f"with {unread['hidden']}'s board unread, Hiring hardest shows {uh}")
+
+    # the doors, pressed through home()'s own wiring by the harness
+    from urllib.parse import parse_qsl
+    qs = lambda h: sorted(parse_qsl(h.lstrip("?"), keep_blank_values=True))
+    doors = (front.get("doors") or {}).get("doors") or []
+    if not doors:
+        errors += fail("the harness pressed no door on the front page")
+    for d in doors:
+        href, data, plain = d["href"], d["data"], d.get("plain") or {}
+        calls = plain.get("calls") or []
+        if not d["wired"]:
+            # the since-your-visit link is a plain link the browser follows
+            if not href.startswith("?tab=jobs&since="):
+                errors += fail(f"a front-page link is not wired: {href!r}")
+            continue
+        if any(m["calls"] or m["prevented"] for m in d["modified"]):
+            errors += fail(f"a modified click on {href!r} is taken over instead of "
+                           f"doing what the link would")
+        if "board" in data:
+            ok = calls[:1] and calls[0][:2] == ["goTab", "jobs"] and qs(calls[0][2] or "") == qs(href)
+        elif "role" in data:
+            ok = calls == [["openRole", data["role"]]] and qs(href) == [("role", data["role"])]
+        elif "co" in data:
+            ok = calls[:1] == [["co", data["co"]]] and qs(href) == [("co", data["co"])]
+        elif "tag" in data:
+            ok = (calls[:1] == [["goTab", "conferences", None]] and calls[-1:] == [["cfOpenPanel", data["tag"], True]]
+                  and qs(href) == [("e", data["tag"])])
+        elif "tab" in data:
+            want_q = [kv for kv in qs(href) if kv[0] != "tab"]
+            ok = calls[:1] and calls[0][:2] == ["goTab", dict(qs(href)).get("tab")] \
+                and qs(calls[0][2] or "") == want_q
+        else:
+            ok = False
+        if not ok or not plain.get("prevented") or (["scrollTo", 0, 0] not in calls and "role" not in data):
+            errors += fail(f"the front-page door {href!r} does {calls}")
+    srch = (front.get("doors") or {}).get("search") or {}
+    for how_, r_ in (("button", srch.get("click")), ("Enter", srch.get("enter"))):
+        c_ = (r_ or {}).get("calls") or []
+        if not c_ or c_[0][:2] != ["goTab", "jobs"] or qs(c_[0][2] or "") != [("q", "Ver kada & co")]:
+            errors += fail(f"the front page's search by {how_} does {c_}, not the board's own search")
+    if (srch.get("other") or {}).get("calls"):
+        errors += fail("the front page's search fires on a key other than Enter")
+
+    # Pay, where posted: the highest yearly figures, one company each
+    pay = re.search(r'aria-labelledby="fp-pay-h".*?</section>', home, re.S)
+    if pay:
+        got = [yearly(groups[by_id[html.unescape(i)]["opening_id"]])
+               if html.unescape(i) in by_id else None
+               for i in re.findall(r'data-role="([^"]+)"', pay.group(0))]
+        ranked, cos = [], set()
+        for o, rows_ in sorted(((o, r) for o, r in groups.items() if yearly(r)),
+                               key=lambda x: (-yearly(x[1])[0], -yearly(x[1])[1])):
+            if rows_[0]["company_id"] not in cos:
+                cos.add(rows_[0]["company_id"])
+                ranked.append(yearly(rows_))
+        if got != ranked[:len(got)] or len(got) != min(4, len(ranked)):
+            errors += fail(f"the pay column shows {got}; the highest stated yearly "
+                           f"ranges, one company each, are {ranked[:4]}")
+        cap = re.search(r"([\d,]+) of ([\d,]+) postings state pay", re.sub(r"\s+", " ", pay.group(0)))
+        if not cap or (num(cap.group(1)), num(cap.group(2))) != (
+                sum(1 for p in q if p.get("comp")), len(q)):
+            errors += fail(f"the pay column's caption says {cap and cap.group(0)!r}")
     return errors
 
 

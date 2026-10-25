@@ -395,36 +395,162 @@
     border-bottom:1px solid transparent}
   .blowup:hover{border-bottom-color:var(--accent)}
 
-  /* ------------------------------------------------------- home, below the fold
-     A job board whose front door carried no jobs and no search box. The banner
-     says what this is; these say what is in it, and let somebody act without
-     first working out which tab to press. */
-  .hsearch{display:flex;gap:var(--space-2);margin-bottom:var(--space-8)}
-  .hsearch input{flex:1;padding:var(--space-4);font:inherit;font-size:16px;
-    border:1px solid var(--line);background:var(--panel);color:var(--ink)}
-  .hsearch input:focus{outline:2px solid var(--accent);outline-offset:-2px}
-  .hsearch button{font:inherit;font-size:15px;font-weight:700;padding:0 var(--space-6);
-    border:0;background:var(--ink);color:var(--bg);cursor:pointer;white-space:nowrap}
-  .hsearch button:hover{background:var(--accent)}
-  .hsec{display:flex;align-items:baseline;gap:var(--space-3);
-    margin:0 0 var(--space-4)}
-  .hsec h2{font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0}
-  .hsec a{font-size:13px;font-weight:600;color:var(--accent-text);text-decoration:none;
-    margin-left:auto;cursor:pointer}
-  .hsec a:hover{text-decoration:underline}
-  .hrole{display:flex;gap:var(--space-3);align-items:center;padding:var(--space-3) 0;
-    border-top:1px solid var(--line);cursor:pointer;text-decoration:none;color:inherit}
-  .hrole:hover .ht{color:var(--accent-text)}
-  .hrole .ht{font-weight:600;font-size:15px;line-height:1.3}
-  .hrole .hm{font-size:13px;color:var(--dim);margin-top:2px}
-  .hrole .hp{margin-left:auto;font-size:13.5px;font-weight:600;white-space:nowrap;
+  /* ------------------------------------------------------- home: the front page
+     Option 3 of round 2 of the home page canvas (owner, 2026-10-25: "r2 3
+     please"). A newspaper's front page for the board: the date it was read,
+     a headline built from the run, the newest roles as cards, three columns
+     and the departments as an index.
+     ROUND CORNERS ARE THE CONFERENCES DESIGN'S EXCEPTION, carried here with
+     the design: the search pill, its chips, the cards and the logo tiles.
+     Everything else on the page keeps the square system. Every colour is a
+     token, so the dark theme comes along, except the white search glyph and
+     the soft card shadow, which copy the conference bar and the company
+     cards (.cfs-go, .cocard) rather than starting a second recipe. */
+  .fp-top{padding:48px 0 36px}
+  .fp-eyebrow{display:flex;align-items:center;gap:12px;margin:0;font-size:13px;
+    font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .fp-eyebrow::before{content:"";width:28px;height:3px;background:var(--beak);flex:none}
+  .fp-h{margin:18px 0 0;font-size:clamp(40px,6.6vw,84px);line-height:.98;
+    letter-spacing:-.035em;max-width:22ch;text-wrap:balance}
+  /* Beak on the RULE under the words, never the words themselves */
+  .fp-u{text-decoration:underline;text-decoration-color:var(--beak);
+    text-decoration-thickness:.095em;text-underline-offset:.14em;
+    text-decoration-skip-ink:none}
+  .fp-find{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:34px}
+  .fp-search{display:flex;align-items:center;flex:1 1 360px;max-width:520px;
+    min-width:0;background:var(--panel);border-radius:999px;
+    padding:6px 6px 6px 22px;box-shadow:0 1px 2px rgba(31,37,54,.06),
+    0 8px 24px rgba(31,37,54,.08)}
+  .fp-search:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+  .fp-search input{flex:1;min-width:0;border:0;background:transparent;
+    font:inherit;font-size:16px;color:var(--ink);padding:10px 0}
+  .fp-search input::placeholder{color:var(--dim)}
+  .fp-search input:focus{outline:none}
+  .fp-search button{width:44px;height:44px;border-radius:50%;border:0;flex:none;
+    background:var(--accent);color:#fff;display:grid;place-items:center;
+    cursor:pointer;padding:0}
+  .fp-search svg{width:18px;height:18px;fill:none;stroke:currentColor;
+    stroke-width:2.2;stroke-linecap:round}
+  .fp-chip{padding:12px 18px;border-radius:999px;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);text-decoration:none;font-weight:600;
+    font-size:14px;white-space:nowrap}
+  .fp-chip:hover{border-color:var(--accent);color:var(--accent-text)}
+  .fp-scope{margin:14px 0 0;font-size:14px;color:var(--dim)}
+  .fp .since{margin-top:var(--space-6)}
+
+  /* the newest roles: the lead card two rows tall beside a two-by-two */
+  .fp-roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+    gap:16px}
+  .fp-roles.full .fp-lead{grid-row:span 2}
+  .fp-lead,.fp-card{text-decoration:none;min-width:0;border-radius:20px}
+  .fp-lead:focus-visible,.fp-card:focus-visible,.fp-ev:focus-visible{
+    outline:2px solid var(--accent);outline-offset:3px}
+  .fp-lead{display:flex;flex-direction:column;justify-content:space-between;
+    gap:28px;padding:32px;min-height:380px;background:var(--cf-lead);
+    color:var(--cf-lead-ink)}
+  .fp-lead-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .fp-lead .tile{width:64px;height:64px;border-radius:14px;font-size:22px;
+    box-shadow:0 0 0 1px var(--cf-lead-dim)}
+  .fp-lead .fp-meta,.fp-lead .fp-age,.fp-lead .fp-lab{color:var(--cf-lead-dim)}
+  .fp-lead .fp-meta{font-size:15px;font-weight:700}
+  .fp-lead-t{display:block;margin-top:8px;font-family:var(--font-heading);
+    font-size:clamp(30px,3.4vw,42px);line-height:1.02;font-weight:800;
+    letter-spacing:-.03em;overflow-wrap:anywhere}
+  .fp-lead:hover .fp-lead-t{text-decoration:underline;text-decoration-color:var(--beak);
+    text-underline-offset:5px}
+  .fp-lead-foot{display:flex;align-items:flex-end;justify-content:space-between;
+    gap:12px;flex-wrap:wrap;padding-top:18px;
+    border-top:1px solid color-mix(in srgb,var(--cf-lead-dim) 35%,transparent)}
+  .fp-lab{display:block;font-size:13px}
+  .fp-lead-pay{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
-  .hsecs{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-8)}
-  .hsecs button{font:inherit;font-size:13.5px;padding:var(--space-2) var(--space-4);
-    border:1px solid var(--line);background:var(--panel);color:var(--ink);
-    cursor:pointer}
-  .hsecs button:hover{border-color:var(--accent);color:var(--accent-text)}
-  .hsecs b{font-variant-numeric:tabular-nums;color:var(--dim);font-weight:600}
+  .fp-lead-pay.sil{font-size:17px;font-weight:600}
+  .fp-go{padding:10px 16px;border-radius:999px;background:var(--beak);
+    color:var(--hdr-bg);font-weight:800;font-size:14px;white-space:nowrap}
+  .fp-card{display:flex;flex-direction:column;gap:14px;padding:24px;
+    background:var(--panel);color:var(--ink);border:1px solid transparent;
+    box-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.06)}
+  .fp-card:hover{border-color:var(--accent)}
+  .fp-card:hover .fp-t{color:var(--accent-text)}
+  .fp-co{display:flex;align-items:center;gap:12px;min-width:0}
+  .fp-meta{display:block;color:var(--dim);font-weight:600;font-size:16px;
+    line-height:1.3;min-width:0;overflow-wrap:anywhere}
+  .fp-t{font-family:var(--font-heading);font-size:26px;line-height:1.12;
+    font-weight:800;letter-spacing:-.02em;overflow-wrap:anywhere}
+  .fp-foot{display:flex;justify-content:space-between;align-items:baseline;
+    gap:12px;font-size:15px}
+  .fp-age{font-size:13px;font-weight:700;color:var(--dim);white-space:nowrap}
+  .fp-card .fp-age{font-size:15px;font-weight:400}
+  .fp-pay{font-weight:700;color:var(--accent-text);font-variant-numeric:tabular-nums;
+    white-space:nowrap}
+  .fp-sil{color:var(--dim)}
+  .fp-logo{display:flex;flex:none}
+  .fp .tile{display:flex;align-items:center;justify-content:center;flex:none;
+    font-weight:800}
+  .fp-card .tile,.fp-hire .tile{width:44px;height:44px;border-radius:10px;font-size:15px}
+  .fp-more{display:flex;justify-content:flex-end;align-items:baseline;flex-wrap:wrap;
+    gap:var(--space-2) var(--space-6);margin-top:14px}
+  .fp-debut{margin:0 auto 0 0;font-size:14px;color:var(--dim)}
+  .fp-all,.fp-cap a,.fp-note a{font-weight:700;color:var(--accent-text);
+    text-decoration:none;white-space:nowrap}
+  .fp-all:hover,.fp-cap a:hover,.fp-note a:hover{text-decoration:underline}
+
+  /* three columns under a heavy rule, as a front page sets its inside */
+  .fp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+    gap:40px;margin-top:64px;padding-top:28px;border-top:2px solid var(--ink)}
+  .fp-cols section{min-width:0}
+  .fp-cols h2{margin:0 0 18px;font-size:30px}
+  .fp-hire{display:flex;flex-direction:column;gap:16px}
+  .fp-hire a{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
+  .fp-hire .nm{flex:1;min-width:0;font-size:18px;font-weight:700}
+  .fp-hire a:hover .nm{color:var(--accent-text)}
+  .fp-big{font-size:40px;font-weight:800;color:var(--accent-text);letter-spacing:-.02em;
+    line-height:1;font-variant-numeric:tabular-nums}
+  .fp-cap{margin:14px 0 0;font-size:14px;color:var(--dim);line-height:1.45}
+  .fp-ev{display:block;padding:18px;border-radius:16px;background:var(--panel);
+    color:var(--ink);text-decoration:none;border:1px solid transparent;
+    box-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.06)}
+  .fp-ev:hover{border-color:var(--accent)}
+  .fp-ev:hover .fp-evn{color:var(--accent-text)}
+  .fp-when{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
+    color:var(--dim)}
+  .fp-when i{width:8px;height:8px;border-radius:50%;background:var(--beak);flex:none}
+  .fp-evn{display:block;margin-top:6px;font-size:24px;font-weight:800;
+    letter-spacing:-.02em;line-height:1.1}
+  .fp-faces{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;
+    color:var(--dim)}
+  .fp-faces b{color:var(--ink)}
+  .fp-stack{display:flex;flex:none}
+  .fp-stack .tile{width:28px;height:28px;border-radius:50%;font-size:10px;
+    box-shadow:0 0 0 2px var(--panel)}
+  .fp-stack .tile+.tile{margin-left:-8px}
+  .fp-list{display:flex;flex-direction:column;margin-top:10px}
+  .fp-list a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;
+    color:var(--ink)}
+  .fp-list a:hover .fp-pl b{color:var(--accent-text)}
+  .fp-pl{display:flex;flex-direction:column;min-width:0}
+  .fp-pl span{font-size:14px;color:var(--dim);overflow-wrap:anywhere}
+
+  /* the departments as an index, two columns of big names and counts */
+  .fp-dept{margin-top:72px}
+  .fp-dept h2{margin:0 0 20px;font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em}
+  .hsecs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));
+    column-gap:48px;border-top:1px solid var(--ink)}
+  .hsecs a{display:flex;align-items:baseline;gap:16px;padding:18px 0;
+    border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+  .hsecs a span{flex:1;min-width:0;font-size:clamp(21px,2.2vw,26px);font-weight:700;
+    letter-spacing:-.01em}
+  .hsecs a b{font-size:clamp(21px,2.2vw,26px);font-weight:800;color:var(--accent-text);
+    font-variant-numeric:tabular-nums}
+  .hsecs a i{font-style:normal;color:var(--dim)}
+  .hsecs a:hover span{color:var(--accent-text)}
+  .fp-note{margin:20px 0 0;font-size:14px;color:var(--dim);max-width:80ch}
+  /* The lead stops spanning two rows only where the grid is ONE column:
+     two 300px columns fit from 648px, and between there and 768 a lead
+     sized for one row left a hole beside the fifth card (review,
+     2026-10-25). */
+  @media (max-width:647px){ .fp-roles.full .fp-lead{grid-row:auto} }
 
   /* ------------------------------------------------------------ conferences
      Over half this map came off exhibitor lists, and that was only ever
@@ -893,103 +1019,6 @@
 
   main{max-width:1180px;margin:0 auto;padding:0 var(--space-6) var(--space-8)}
 
-  /* ----------------------------------------------------------- home banner
-     The site opened straight into the job list, so there was no front door -
-     `tab="jobs"` was the whole of it. A board is a tool; a home page is the
-     thing that tells a stranger what the tool is for before they use it.
-
-     Every slide is BUILT FROM THE BOARD. Nothing here is copy: if the run
-     found nothing new, the "new this run" slide does not exist rather than
-     saying zero, and if no slide can be built the banner does not render at
-     all. A rotating banner that invents something to rotate is how a live
-     number becomes decoration. */
-  /* THE FIRST SLIDE IS THE ONLY ONE THAT IS NOT A NUMBER. Every other slide
-     is derived from the board and changes when the data does; this one says
-     what the place IS, which a stranger needs before any figure means
-     anything. It carries the expo hall behind it because that is the room
-     these companies are actually in - the catalogue is 125 of those rooms. */
-  .bhero{position:absolute;inset:0;overflow:hidden;pointer-events:none;
-    opacity:0;transition:opacity .4s ease}
-  .bhero.show{opacity:1}
-  .bhero .hall{position:absolute;inset:0;width:100%;height:100%;
-    object-fit:cover;object-position:center bottom;opacity:.85}
-  /* max-height as well as width: at 420px wide the slide is 260px tall and
-     the banner is 248, so the penguin's hat was being clipped. Height wins
-     and the width follows it. */
-  .bhero .pen{position:absolute;right:2%;bottom:0;width:min(38%,420px);
-    max-height:88%;height:auto;object-fit:contain;object-position:bottom right;
-    opacity:.95}
-  .slide.hero h2{font-size:clamp(38px,6.4vw,64px);letter-spacing:-.03em}
-  .slide.hero .tag{font-size:17px;color:var(--hdr-ink);opacity:.92;
-    margin:0 0 var(--space-2);font-weight:600}
-  .slide.hero .how{display:block;width:fit-content;margin-top:var(--space-4);
-    font-size:13.5px;font-weight:600;letter-spacing:.04em;
-    color:var(--hdr-ink);text-decoration:none;
-    border-bottom:1px solid var(--beak);padding-bottom:2px;cursor:pointer}
-  /* Beak on the RULE, not the words. check_beak_is_never_text caught this
-     one within a minute of it being written, which is the guard doing exactly
-     what it was added for this morning. */
-  .slide.hero .how:hover{border-bottom-width:2px;padding-bottom:1px}
-  @media (max-width:768px){
-    /* the penguin would sit under the headline at this width */
-    .bhero .pen{display:none}
-    .bhero .hall{opacity:.55}
-  }
-
-  .banner{position:relative;background:var(--hdr-bg);color:var(--hdr-ink);
-    padding:var(--space-8) var(--space-6);margin-bottom:var(--space-6);
-    overflow:hidden;min-height:196px;display:flex;align-items:center}
-  .banner .slides{width:100%;max-width:820px;position:relative;z-index:1}
-  .slide{display:none}
-  .slide.on{display:block;animation:bfade .45s ease}
-  @keyframes bfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .slide .kicker{font-size:13px;letter-spacing:.1em;text-transform:uppercase;
-    font-weight:700;color:var(--hdr-mute);margin-bottom:var(--space-2)}
-  .slide h2{font-family:var(--font-heading);font-weight:800;font-size:42px;
-    line-height:1.05;letter-spacing:-.02em;margin:0 0 var(--space-3)}
-  .slide h2 .num{font-variant-numeric:tabular-nums}
-  .slide p{font-size:16px;line-height:1.55;color:var(--hdr-mute);margin:0;
-    max-width:62ch}
-  .slide a.go{display:inline-block;margin-top:var(--space-4);font-size:13.5px;
-    font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-    color:var(--hdr-bg);background:var(--beak);padding:var(--space-2) var(--space-4);
-    text-decoration:none;cursor:pointer;border:0;font-family:inherit}
-  .slide a.go:hover{filter:brightness(1.08)}
-  /* Controls sit ON the banner. Arrows are always visible rather than
-     hover-revealed: a control you cannot see is one a touch device never
-     gets, and this rotates on its own so a reader needs a way to stop it. */
-  .bnav{position:absolute;right:var(--space-6);bottom:var(--space-6);
-    display:flex;gap:var(--space-2);align-items:center;
-    padding:6px 10px;border-radius:999px;
-    background:color-mix(in srgb, #1F2536 72%, transparent);
-    backdrop-filter:blur(2px)}
-  .bnav button{width:34px;height:34px;border-radius:50%;
-    border:1px solid var(--hdr-line);background:transparent;color:var(--hdr-ink);
-    cursor:pointer;display:grid;place-items:center;padding:0;font:inherit}
-  .bnav button:hover{border-color:var(--beak);color:var(--hdr-ink)}
-  .bnav svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;
-    stroke-linecap:round;stroke-linejoin:round}
-  .bdots{display:flex;gap:6px;margin-right:var(--space-2)}
-  .bdots i{width:7px;height:7px;background:var(--hdr-line);display:block;
-    border-radius:50%;cursor:pointer}
-  .bdots i.on{background:var(--beak)}
-  /* A carousel that moves while somebody is reading is the classic complaint,
-     and for a reader who has asked the OS to stop animation it is a real
-     accessibility failure - so the timer never starts for them. */
-  @media (prefers-reduced-motion:reduce){
-    .slide.on{animation:none}
-  }
-  /* What sits under the banner: the two doors, plainly. */
-  .hcards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);
-    margin-bottom:var(--space-8)}
-  .hcard{background:var(--panel);border:1px solid var(--line);
-    padding:var(--space-6);text-decoration:none;color:var(--ink);display:block}
-  .hcard:hover{border-color:var(--accent)}
-  .hcard h2{font-family:var(--font-heading);font-weight:800;font-size:20px;
-    margin:0 0 var(--space-2)}
-  .hcard p{font-size:14px;color:var(--dim);line-height:1.5;margin:0}
-  .hcard .big{font-size:32px;font-weight:800;font-variant-numeric:tabular-nums;
-    display:block;line-height:1;margin-bottom:var(--space-2)}
 
 
   /* ------------------------------------------------- the head of the page
@@ -1460,8 +1489,8 @@
     padding:var(--space-3);margin:0 0 var(--space-4);font-size:14.5px;
     max-width:80ch}
 
-  /* Under the banner and above everything else, because it is the one line a
-     returning visitor came back for. Beak on the left edge: the only place on
+  /* Under the front page's search, above the roles, because it is the one
+     line a returning visitor came back for. Beak on the left edge: the only place on
      this page that colour is load-bearing rather than decorative. */
   .since{margin:var(--space-4) 0 0;padding:var(--space-3);background:var(--panel);
     border-left:3px solid var(--beak);font-size:14.5px;max-width:80ch}
@@ -1616,15 +1645,15 @@
     nav button{white-space:nowrap;padding:var(--space-1) 0}
     .hacts{order:2;margin-left:auto}
     .acct{right:var(--space-4)}
-    /* 163px each is not a card, it is two columns of wrapped words. */
-    .hcards{grid-template-columns:1fr}
-    /* 42px was set for a 1180px measure; on 375 it takes four lines before
-       the reader reaches the sentence that explains it. */
-    .banner{padding:var(--space-6) var(--space-4);min-height:0}
-    .slide h2{font-size:28px}
-    .slide p{font-size:15px}
-    /* the arrows would sit on top of the copy at this width */
-    .bnav{position:static;margin-top:var(--space-4);justify-content:flex-end}
+    /* the front page on a phone: one column, the lead card no taller than
+       its words, the headline sized to the screen rather than the desk */
+    .fp-top{padding:28px 0 24px}
+    .fp-h{font-size:clamp(34px,10vw,44px)}
+    .fp-find{margin-top:24px}
+    .fp-search{flex-basis:100%;max-width:none}
+    .fp-lead{min-height:0;padding:24px;gap:22px}
+    .fp-cols{margin-top:44px;gap:32px}
+    .fp-dept{margin-top:48px}
     /* 26px is not a tap target. The rating buttons wrap to two rows here
        anyway, so there is room to make each one hittable rather than a
        thing you aim at and miss. */
@@ -3306,8 +3335,8 @@ function jobs(){
   /* fresh / freshQ / seenBefore / debut lived here to feed a "new this run"
      strip that was moved to the home banner. The strip went; these did not,
      and neither did the code that wrote into #j-newoffer - an element this
-     file has never rendered. buildSlides() computes its own copies for the
-     banner, which is the live one. */
+     file has never rendered. home() computes its own copies for the front
+     page's headline, which is the live one. */
 
   $("#view").innerHTML=`
   <div class="phead">
@@ -3550,7 +3579,7 @@ function jobs(){
 
   ${/* "New this run" used to be a grey strip here. It is the freshest thing
         this board knows and it was the least prominent thing on the page, so
-        it is the first slide of the home banner now. Removed rather than
+        it leads the home page now. Removed rather than
         duplicated: two places showing the same count is two places to drift. */""}
 
   <div class="fchips" id="j-chips"></div>
@@ -4108,7 +4137,7 @@ function toggleSave(p,btn){
    next to a search is the only reason to come back to one, and a total would
    say 12 forever. A search whose matches are all older than the day it was
    saved shows no number at all rather than a zero - the same rule the home
-   banner follows when a run was quiet.
+   page's headline follows when a run was quiet.
 
    Local to the browser, like saved roles were before sync existed. Alerts are
    the thing that emails you; this is the thing that remembers where you were. */
@@ -4751,20 +4780,7 @@ function drawJobs(){
      group. Location becomes the count. Salary shows the figure only when every
      posting in the group states the same one, and otherwise says it varies -
      a stated fact - rather than picking whichever row sorted first. */
-  const groups=[];
-  {
-    const at=new Map();
-    rows.forEach(p=>{
-      const k=p.opening_id||p.id;
-      let g=at.get(k);
-      if(!g){g={lead:p,rows:[]};at.set(k,g);groups.push(g)}
-      g.rows.push(p);
-      // the earliest sighting in the group, because that is when this
-      // advertisement first reached us - not when its 40th city did
-      if((p.first_seen||"")&&(!g.lead.first_seen||p.first_seen<g.lead.first_seen))
-        g.lead=p;
-    });
-  }
+  const groups=groupOpenings(rows);
   const openings=groups.length;
 
   /* Clamp before the url is written, so ?p=99 on a three-page result lands on
@@ -5083,6 +5099,39 @@ function cardLine(kind,html,label){
   return `<div class="jc-line jc-${kind}"><span class="jc-ic" title="${esc(label)}">${
     CARD_ICON[kind]}</span><span class="jc-v">${html}</span></div>`;
 }
+/* Rows into openings, in the order they came: {lead, rows} per opening_id,
+   the lead being the earliest sighting, because that is when this
+   advertisement first reached us - not when its 40th city did. The board's
+   list and the front page group with this one function, so a role is one
+   card in both. */
+function groupOpenings(rows){
+  const groups=[], at=new Map();
+  rows.forEach(p=>{
+    const k=p.opening_id||p.id;
+    let g=at.get(k);
+    if(!g){g={lead:p,rows:[]};at.set(k,g);groups.push(g)}
+    g.rows.push(p);
+    if((p.first_seen||"")&&(!g.lead.first_seen||p.first_seen<g.lead.first_seen))
+      g.lead=p;
+  });
+  return groups;
+}
+/* A GROUP'S PAY: the figure only where every posting that states one agrees,
+   "on N of M postings" beside it when some are silent, "varies" when two
+   figures differ, otherwise which silence. {fig, note}; the card and the
+   front page both say pay this way. */
+function groupPay(rows){
+  const figs=new Set(), silences=new Set(), n=rows.length;
+  let silent=0;
+  rows.forEach(r=>{
+    const b=payBit(r);
+    if(b&&b.cls==="pay")figs.add(b.txt);
+    else{silent++;silences.add(cardSilence(r))}
+  });
+  if(figs.size>1)return{fig:"",note:"pay varies by location"};
+  if(figs.size===1)return{fig:[...figs][0],note:silent?`on ${n-silent} of ${n} postings`:""};
+  return{fig:"",note:silences.size===1?[...silences][0]:"no pay figure on any of these postings"};
+}
 /* One opening as a card. `g` is {lead, rows}: an advertisement grouped after
    filtering, so a multi-city requisition shows the places that MATCHED. */
 function jobCardHTML(g){
@@ -5134,19 +5183,9 @@ function jobCardHTML(g){
   }
   if(placeHTML!==null)
     lines.push(cardLine("place",placeHTML,"where the job sits, or the territory it covers"));
-  const figs=new Set(), silences=new Set();
-  let silent=0;
-  g.rows.forEach(r=>{
-    const b=payBit(r);
-    if(b&&b.cls==="pay")figs.add(b.txt);
-    else{silent++;silences.add(cardSilence(r))}
-  });
-  let payHTML;
-  if(figs.size>1)payHTML=sil("pay varies by location");
-  else if(figs.size===1)payHTML=`<span class="pay">${esc([...figs][0])}</span>`
-    +(silent?" "+sil(`on ${n-silent} of ${n} postings`):"");
-  else payHTML=silences.size===1?sil([...silences][0])
-    :sil("no pay figure on any of these postings");
+  const gp=groupPay(g.rows);
+  const payHTML=gp.fig?`<span class="pay">${esc(gp.fig)}</span>`+(gp.note?" "+sil(gp.note):"")
+    :sil(gp.note);
   lines.push(cardLine("pay",payHTML,"pay"));
   /* TWO DATES, BOTH LABELLED. "first seen" is the day THIS board first read
      the posting; "employer posted" is the date their own board gives. An
@@ -5935,8 +5974,8 @@ function drawCos(){
 
      THE SPOTLIGHT. With nothing typed, the three hiring the most sellers
      among what the filters kept, the first one dark like the conference lead
-     card. Ranked by quota_roles, the field the home banner's "Hiring hardest"
-     uses. Fewer than two is not a strip, so there is none, and the three are
+     card. Ranked by quota_roles, the field the home page's "Hiring hardest"
+     uses, on boards we read, as it does. Fewer than two is not a strip, so there is none, and the three are
      not repeated in the grid below.
 
      GROUPS. Browsing (no search, no sector chosen), cards sit under every
@@ -7161,130 +7200,78 @@ function how(){
    into a filtered list, which is the right landing for somebody who already
    knows what this is and tells a stranger nothing.
 
-   Every slide is DERIVED. buildSlides returns only the ones the data can
-   support, so a quiet run drops the "new this run" slide instead of printing
-   a zero, and if nothing at all can be built the banner is not rendered. The
-   rule is the same one the rest of this board runs on: a number that is not
-   there is not a number to display. */
+   A FRONT PAGE since 2026-10-25 (owner: "r2 3 please", option 3 of round 2
+   of the home page canvas). It replaced a banner of five rotating slides: a
+   headline built from the run, the newest roles as cards, three columns
+   (who is hiring the most sellers, what is on the show floor, the highest
+   pay posted) and the departments as an index.
+
+   Every figure is DERIVED, the rule the banner ran on. A quiet run drops the
+   "new this run" claim instead of printing a zero, and a column with nothing
+   to show is not drawn. A number that is not there is not a number to
+   display. */
 /* THE ROLES THE JOBS TAB OPENS ON: quota-carrying, under the United States
    default, which keeps everything NOT placed outside the US (unplaced rows
    included - so never call these "in the United States"). Every number on
    the front page that a click turns into the board counts this set, or the
    banner says 675 over a link that lands on 478 (second review, 2026-10-07). */
 function boardDefault(rows){ return rows.filter(p=>p.quota_carrying&&p.is_us!==false); }
-function buildSlides(){
-  const out=[], gen=D.generated;
-
-  /* THE FRONT DOOR SLIDE, and the only one not built from a number. It says
-     what this is and offers the one link that explains how a row got here -
-     which is where "How listings get here" now lives, out of the nav and in
-     front of the person who has not yet wondered. */
-  out.push({kick:"Find the right fit", hero:true,
-    h:"SLED JOBS",
-    p:"It&rsquo;s tough SLEDing out there. Here&rsquo;s how SLED JOBS helps "
-      +"you find the right fit.",
-    cta:"Open the board", go:()=>goTab("jobs"),
-    how:true});
-
-  // the jobs tab's US default applies here too: "See what is new" opens it
-  const fresh=D.postings.filter(p=>p.first_seen===gen&&p.is_us!==false);
-  const freshQ=boardDefault(fresh);
-
-  // 1. What this run turned up. Was a grey strip above the job list; it is
-  //    the freshest thing the board knows and it belongs at the front.
-  // COUNTED AS THE BUTTON OPENS IT: the jobs tab with the quota pill on,
-  // since=0 - so new sales roles in openings, not every new posting in every
-  // family (158 over a link that showed 25; third review, 2026-10-07). A run
-  // with none drops the slide rather than printing a zero.
-  if(freshQ.length){
-    /* A DEBUT ON ANY RECORD, not on today's board. Read off today's postings
-       it named Urban SDK, whose two seller titles the hiring record has held
-       since 08-17 (launch audit 2). build_board sets seller_debut from both
-       records; absent means not a debut, or not known to be one. */
-    const debutIds=new Set((D.organizations||[]).filter(o=>o.seller_debut).map(o=>o.id));
-    const debut=[...new Set(freshQ.filter(p=>debutIds.has(p.company_id)).map(p=>p.company))];
-    const freshOpenings=new Set(freshQ.map(p=>p.opening_id)).size;
-    out.push({kick:"New this run",
-      h:`<span class="num">${freshOpenings.toLocaleString()}</span> new sales role${freshOpenings===1?"":"s"}`,
-      p:`First seen on ${esc(gen)}, advertised in <strong>${freshQ.length.toLocaleString()}</strong> posting${freshQ.length===1?"":"s"}.`
-        +(debut.length?` First seller req we have ever recorded at ${esc(debut.slice(0,3).join(", "))}${debut.length>3?` and ${debut.length-3} other${debut.length-3===1?"":"s"}`:""}.`:""),
-      cta:"See what is new", go:()=>{goTab("jobs");
-        // refilter, not a "change" event: #j-since listens for input, so the
-        // event did nothing and the board ignored the age it showed
-        const f=$("#j-since"); if(f){f.value="0";refilter();}}});
-  }
-
-  // 2. The size of the thing, which is the credibility line for a stranger.
-  const q=boardDefault(D.postings);
-  const openings=new Set(q.map(p=>p.opening_id)).size;
-  // the widest single requisition, measured: "93 cities" was a frozen figure
-  // for one that had grown to 228 postings (launch audit 2)
-  const perOpening={};
-  q.forEach(p=>{ perOpening[p.opening_id]=(perOpening[p.opening_id]||0)+1; });
-  const widest=Math.max(0,...Object.values(perOpening));
-  if(q.length){
-    out.push({kick:"Sellers wanted",
-      h:`<span class="num">${openings.toLocaleString()}</span> quota-carrying roles`,
-      p:`Advertised in ${q.length.toLocaleString()} postings across `
-        +`${new Set(q.map(p=>p.company_id)).size.toLocaleString()} govtech companies. `
-        +`We count openings, not rows`
-        +(widest>1?` — one requisition advertised in ${widest.toLocaleString()} postings is one job.`:"."),
-      cta:"Open the board", go:()=>goTab("jobs")});
-  }
-
-  // 3. Who is hiring hardest right now, by openings rather than rows - and by
-  // the count the Companies tab it opens prints. Ranked on the US-only
-  // default it said ZOLL 48 ahead of Motorola 32, over a list showing
-  // Motorola 62 and ZOLL 60 (launch audit 2, 2026-10-09).
-  const top=(D.organizations||[]).filter(o=>(o.quota_roles||0)>0)
-    .map(o=>[o.name,o.quota_roles]).sort((a,b)=>b[1]-a[1]).slice(0,3);
-  if(top.length&&top[0][1]>1){
-    out.push({kick:"Hiring hardest",
-      h:esc(top[0][0]),
-      p:`${top[0][1]} quota-carrying openings right now`
-        +(top.length>1?`, ahead of ${top.slice(1).map(t=>esc(t[0])+" ("+t[1]+")").join(" and ")}.`:"."),
-      cta:"See who is hiring", go:()=>toCompanies(null,null,true)});
-  }
-
-  // 4. The map behind the board. Companies is the half people do not find.
-  if(D.organizations&&D.organizations.length){
-    // what the last check read, apart from what a person captured by hand
-    const fetched=new Set((D.postings||[]).filter(p=>p.source!=="manual").map(p=>p.company_id));
-    const open=D.organizations.filter(o=>(o.open_roles||0)>0);
-    const onCheck=open.filter(o=>fetched.has(o.id)).length, byHand=open.length-onCheck;
-    out.push({kick:"The map",
-      h:`<span class="num">${D.organizations.length.toLocaleString()}</span> govtech companies`,
-      p:`Tracked whether they are hiring or not — ${onCheck.toLocaleString()} have `
-        +`something open on the last check`
-        +(byHand?`, and ${byHand.toLocaleString()} more have roles a person captured by hand`:"")
-        +`. Search by what they sell, not just by name: `
-        +`type “recreation software” or “911 dispatch”.`,
-      cta:"Browse companies", go:()=>toCompanies()});
-  }
-  return out;
+/* A COUNT THAT OPENS A SENTENCE IS A WORD: "Fifteen new sales roles", the
+   way a newspaper sets it. Past ninety-nine the figure reads better than the
+   words, so it stays a figure. */
+const NUM_WORDS=["zero","one","two","three","four","five","six","seven","eight",
+  "nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen",
+  "seventeen","eighteen","nineteen"];
+const NUM_TENS=["","","twenty","thirty","forty","fifty","sixty","seventy",
+  "eighty","ninety"];
+function numWords(n){
+  if(!Number.isInteger(n)||n<0||n>99)return Number(n).toLocaleString();
+  const w=n<20?NUM_WORDS[n]:NUM_TENS[Math.floor(n/10)]+(n%10?"-"+NUM_WORDS[n%10]:"");
+  return w[0].toUpperCase()+w.slice(1);
 }
-
-let BSLIDE=0, BTIMER=null;
-function stopBanner(){ if(BTIMER){clearInterval(BTIMER);BTIMER=null} }
-function showSlide(i,slides){
-  const els=[...document.querySelectorAll(".slide")];
-  if(!els.length)return;
-  BSLIDE=(i+els.length)%els.length;
-  els.forEach((e,n)=>e.classList.toggle("on",n===BSLIDE));
-  /* The art belongs to the hero slide, not the banner, so it leaves when the
-     hero does - otherwise an expo hall sits behind a posting count and reads
-     as decoration rather than as the room those companies are in. */
-  const art=document.getElementById("bhero");
-  if(art)art.classList.toggle("show",els[BSLIDE]&&els[BSLIDE].classList.contains("hero"));
-  [...document.querySelectorAll(".bdots i")].forEach((d,n)=>
-    d.classList.toggle("on",n===BSLIDE));
+/* "23 October 2026": the day the board was read, the way a front page dates
+   itself. Read off the string, never through a Date, so no timezone can move
+   the day. */
+function longDate(iso){
+  const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||"");
+  return m&&CF_MONTH_NAMES[+m[2]-1]?`${+m[3]} ${CF_MONTH_NAMES[+m[2]-1]} ${m[1]}`:"";
 }
-function startBanner(slides){
-  stopBanner();
-  if(slides.length<2)return;
-  // Never for a reader who asked the OS to stop animation.
-  if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
-  BTIMER=setInterval(()=>showSlide(BSLIDE+1,slides),6000);
+/* A group's yearly US-dollar range as numbers [top, bottom], for RANKING by
+   pay, and only where every posting in it states the same one: a figure on
+   some of the postings is not the group's, and an hourly rate or another
+   currency does not sit on the same scale. */
+function groupYearly(g){
+  const gp=groupPay(g.rows), c=g.lead.comp;
+  if(!gp.fig||gp.note||!c||c.currency!=="USD"||c.period!=="year")return null;
+  const hi=typeof c.max==="number"?c.max:c.min, lo=typeof c.min==="number"?c.min:c.max;
+  return typeof hi==="number"?[hi,lo]:null;
+}
+/* Where a grouped role sits and how it is worked, in the card's own words,
+   as parts of one line: "Boston, MA", "on-site"; "7 locations", "remote".
+   Built from the cardPlace and listedCount the job card reads, so a role
+   says the same thing on the front page and on the board. */
+function homePlace(g){
+  const rows=g.rows, n=rows.length, p=g.lead;
+  const stated=rows.map(r=>r.work_mode).filter(m=>CARD_MODE[m]);
+  const mode=stated.length===n&&new Set(stated).size===1?stated[0]:"";
+  const places=[...new Set(rows.map(cardPlace).filter(Boolean))];
+  let place="";
+  if(n>1){
+    const k=places.length;
+    // the card's words for a group naming nowhere: which silence it is
+    place=k>1?`${k} locations`:k===1?places[0]
+      :rows.some(r=>listedCount(r))?"places not named"
+      :mode==="remote"?"":"location not stated";
+    if(k!==n)place=(place?place+" · ":"")+`${n} postings`;
+  }else{
+    place=places[0]||(listedCount(p)?`listed as ${listedCount(p)} locations`:"");
+  }
+  // a remote role that names no place is not "location not stated": the
+  // mode beside it has already said where it is
+  if(!place&&mode!=="remote")place="location not stated";
+  // nor is it said twice: "Remote - AZ; Remote - CA" already says remote
+  const said=mode==="remote"&&/\bremote\b/i.test(place);
+  return [place,mode&&!said?CARD_MODE[mode].toLowerCase():""].filter(Boolean);
 }
 
 
@@ -7556,8 +7543,7 @@ function visitHorizon(on){
   return offered.length?String(offered[0]):"";
 }
 function home(){
-  const slides=buildSlides();
-  const orgs=D.organizations||[];
+  const orgs=D.organizations||[], gen=D.generated||"";
   /* THE SAME ROLES THE JOBS TAB OPENS ON: quota-carrying, and the United
      States default, which keeps everything not positively placed outside it
      (filters' u==="us"). This counted every quota row worldwide, so the
@@ -7566,61 +7552,70 @@ function home(){
      audit, 2026-10-06). A number on the front page is a promise about the
      page it opens. */
   const q=boardDefault(D.postings);
-  const qOpenings=new Set(q.map(p=>p.opening_id)).size;
-  const banner=slides.length?`
-  <div class="banner" id="banner">
-    ${slides.some(s=>s.hero)?`<div class="bhero" id="bhero" aria-hidden="true">
-      <img class="hall" src="assets/mascot/svg/expo-hall.svg" alt="">
-      <img class="pen" src="assets/mascot/svg/mascot-slide.svg" alt="">
-    </div>`:""}
-    <div class="slides">
-      ${slides.map((s,i)=>`<div class="slide${i===0?" on":""}${s.hero?" hero":""}">
-        <div class="kicker">${esc(s.kick)}</div>
-        <h2>${s.h}</h2>
-        <p>${s.p}</p>
-        <a class="go" data-go="${i}" role="button" tabindex="0">${esc(s.cta)}</a>
-        ${s.how?`<a class="how" data-how role="button" tabindex="0">How a listing gets here &rarr;</a>`:""}
-      </div>`).join("")}
-    </div>
-    ${slides.length>1?`<div class="bnav">
-      <div class="bdots">${slides.map((_,i)=>`<i data-dot="${i}" tabindex="0" role="button" aria-label="Slide ${i+1} of ${slides.length}"${i===0?' class="on"':""}></i>`).join("")}</div>
-      <button id="bprev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button id="bnext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
-    </div>`:""}
-  </div>`:"";
+  const all=groupOpenings(q);
+  const qOpenings=all.length;
+  const key=g=>g.lead.opening_id||g.lead.id;
 
-  /* THE NEWEST QUOTA ROLES, as real rows you can click. A job board whose
-     front page carried no jobs made a visitor work out which tab to press
-     before they could see a single thing they came for.
+  /* NEW THIS RUN is a role whose earliest posting on the board was first
+     seen on this crawl. A requisition already here that reached a new city
+     tonight has a new POSTING, not a new role: counting it said Workday's
+     role "reached the board this run" a week after it did (review,
+     2026-10-25). The link opens ?since=0, which counts openings with any
+     posting new tonight, so its words say which of the two it holds. */
+  const fresh=all.filter(g=>g.lead.first_seen===gen);
+  const freshQ=fresh.flatMap(g=>g.rows);
+  const fo=fresh.length;
+  const sinceN=new Set(q.filter(p=>p.first_seen===gen).map(p=>p.opening_id||p.id)).size;
 
-     Sorted by first_seen, and only ever roles this board can actually open -
-     no teaser, no "sign up to see". Six, because the point is to prove there
-     is something here and then get out of the way. */
-  const newest=[...q].sort((a,b)=>
-    String(b.first_seen||"").localeCompare(String(a.first_seen||""))).slice(0,6);
+  /* THE CARDS. The best-paid new role leads, by a stated yearly figure every
+     posting agrees on; without one, the first new role does. Then one card
+     per company before any company gets a second, roles that state pay
+     first, so four Motorola requisitions do not fill the page. A run with
+     fewer than five new roles shows every one of them, then tops up with the
+     newest older roles under the same rule, each card saying how old it is
+     (the top-up ignored the rule and gave one company four cards of five;
+     review, 2026-10-25). */
+  const newest=all.slice().sort((a,b)=>
+    String(b.lead.first_seen||"").localeCompare(String(a.lead.first_seen||"")));
+  const pool=fo?fresh:newest.slice(0,12);
+  let lead=null;
+  pool.forEach(g=>{ const y=groupYearly(g);
+    if(y&&(!lead||y[0]>groupYearly(lead)[0]))lead=g; });
+  lead=lead||pool[0]||null;
+  const rest=pool.filter(g=>g!==lead)
+    .sort((a,b)=>(groupYearly(b)?1:0)-(groupYearly(a)?1:0));
+  const picked=[], cos=new Set(lead?[lead.lead.company_id]:[]);
+  rest.forEach(g=>{ if(picked.length<4&&!cos.has(g.lead.company_id)){
+    picked.push(g); cos.add(g.lead.company_id); } });
+  rest.forEach(g=>{ if(picked.length<4&&!picked.includes(g))picked.push(g); });
+  if(fo){
+    const have=new Set([lead,...picked].filter(Boolean).map(key));
+    const older=newest.filter(g=>!have.has(key(g)));
+    older.forEach(g=>{ if(picked.length<4&&!cos.has(g.lead.company_id)){
+      picked.push(g); cos.add(g.lead.company_id); have.add(key(g)); } });
+    older.forEach(g=>{ if(picked.length<4&&!have.has(key(g))){
+      picked.push(g); have.add(key(g)); } });
+  }
+  // a section is "New this run" only when every card in it is
+  const allNew=fo>0&&[lead,...picked].every(g=>g&&g.lead.first_seen===gen);
 
-  /* WHAT THEY SELL INTO. The sector vocabulary is the thing this board knows
-     that a general job board does not, and it was reachable only by opening a
-     dropdown inside another tab.
+  /* A DEBUT ON ANY RECORD, not on today's board. Read off today's postings
+     it named Urban SDK, whose two seller titles the hiring record has held
+     since 08-17 (launch audit 2). build_board sets seller_debut from both
+     records; absent means not a debut, or not known to be one. */
+  const debutIds=new Set(orgs.filter(o=>o.seller_debut).map(o=>o.id));
+  const debut=[...new Set(freshQ.filter(p=>debutIds.has(p.company_id)).map(p=>p.company))];
 
-     Counted in ROWS, not openings, and that is deliberate against this file's
-     usual habit. Everywhere else the headline counts openings, because one
-     requisition posted to 93 cities is one job. But a NUMBER ON A BUTTON is a
-     promise about what pressing it will show, and the board's own count is
-     rows: offering "Public Safety 143" and then landing on "161 roles" is the
-     small lie drawCos already has a rule against. The number that appears
-     wins.
-     Counted with inSector(), the SAME predicate the board filters by, not by
-     reading p.sector. A vendor can sell into several departments and the
-     filter finds it under any of them, so counting the primary alone
-     promised Parks & Rec 109 and delivered 119. The only way a promise and a
-     result cannot drift is to compute both the same way. */
-  // the same list the sector dropdown is built from, one line up in jobs()
+  /* WHAT THEY SELL INTO, in OPENINGS, as the board it opens leads with.
+     Counting rows put "Parks & Rec 258" over a board reading "32 roles", 228
+     of the rows being one Xplor requisition (launch audit 2, 2026-10-09).
+     Counted with inSector(), the SAME predicate the board filters by: a
+     vendor can sell into several departments and the filter finds it under
+     any of them, so counting the primary alone promised Parks & Rec 109 and
+     delivered 119. A promise and a result computed the same way cannot
+     drift. */
+  // the same list the sector dropdown is built from, in jobs()
   const ALL_SECTORS=[...new Set(D.postings.map(x=>x.sector).filter(Boolean))];
-  /* OPENINGS, as the board it opens leads with. Counting rows put "Parks &
-     Rec 258" over a board reading "32 roles", 228 of the rows being one
-     Xplor requisition, and ranked it above Public Safety's 175 roles
-     (launch audit 2, 2026-10-09). */
   const bySec={};
   q.forEach(p=>{
     ALL_SECTORS.forEach(name=>{ if(inSector(p,name))
@@ -7628,125 +7623,219 @@ function home(){
   });
   const secs=Object.entries(bySec).map(([n,set])=>[n,set.size])
     .sort((a,b)=>b[1]-a[1]).slice(0,8);
+  // the widest single requisition, measured: "93 cities" was a frozen figure
+  // for one that had grown to 228 postings (launch audit 2)
+  const widest=Math.max(0,...all.map(g=>g.rows.length));
 
-  $("#view").innerHTML=`<h1 class="vh">SLED JOBS: sales jobs at govtech companies</h1>`
-    +banner+sinceLastVisit()+`
-  <div class="hsearch">
-    <input id="h-q" type="search" placeholder="Role, skill, or company"
-           aria-label="Search roles">
-    <button id="h-go" type="button">Search</button>
-  </div>
+  /* HIRING HARDEST, by the count the Companies tab prints and on boards we
+     read, as its own spotlight ranks them: ranked on the US-only default it
+     said ZOLL 48 ahead of Motorola 32, over a list showing Motorola 62 and
+     ZOLL 60 (launch audit 2, 2026-10-09). */
+  // the spotlight's own order, ties included, or a tie for third names a
+  // company the page it links to does not
+  const hardest=orgs.filter(o=>(o.quota_roles||0)>0&&boardState(o)==="read")
+    .sort((a,b)=>b.quota_roles-a.quota_roles||(b.open_roles||0)-(a.open_roles||0)
+      ||String(a.name).localeCompare(String(b.name)))
+    .slice(0,3);
 
-  ${newest.length?`
-  <div class="hsec"><h2>Newest sales roles</h2>
-    <a id="h-all" role="button" tabindex="0">All ${qOpenings.toLocaleString()} roles &rarr;</a></div>
-  <div style="margin-bottom:var(--space-8)">
-    ${newest.map(r=>{
-      const age=when(r.first_seen,D.generated);
-      const pay=payText(r.comp);
-      return `<a class="hrole" data-role="${esc(r.id)}" role="button" tabindex="0">
-        ${tileHTML(r.company,r.company_id,"tile")}
-        <span><span class="ht">${esc(r.title)}</span>
-          <span class="hm">${esc(r.company)}${r.location?" &middot; "+esc(r.location):""}${
-            age.txt?" &middot; "+esc(age.txt):""}</span></span>
-        ${pay?`<span class="hp">${esc(pay)}</span>`:""}
-      </a>`;}).join("")}
-  </div>`:""}
+  /* ON THE FLOOR: what is on today (the reader's today, as the Conferences
+     tab reads it), the biggest floor first, then what comes next. A past
+     edition is not on the floor, and an event we cannot date is not placed
+     on a calendar it may not be on. */
+  const evs=(D.conferences||[]).filter(r=>calRange(r.dates)&&!isPast(r.dates));
+  const floor=[
+    ...evs.filter(r=>isNow(r.dates)).sort((a,b)=>(b.companies||0)-(a.companies||0)),
+    ...evs.filter(r=>!isNow(r.dates)).sort((a,b)=>calRange(a.dates).start-calRange(b.dates).start)
+  ].slice(0,3);
+  const thisYear=new Date().getFullYear();
+  const evWhen=r=>{
+    const s=calRange(r.dates).start;
+    return [cfSpotDate(r)+(s.getFullYear()!==thisYear?`, ${s.getFullYear()}`:""),cfPlace(r)]
+      .filter(Boolean).join(" · ");
+  };
+  // who we know is standing there and has roles open, logos first
+  const faces=r=>cfRoster(r.tag).filter(o=>(o.open_roles||0)>0)
+    .sort((a,b)=>(D.logos&&D.logos[b.id]?1:0)-(D.logos&&D.logos[a.id]?1:0)
+      ||(b.quota_roles||0)-(a.quota_roles||0)).slice(0,3);
 
-  ${secs.length?`
-  <div class="hsec"><h2>By what they sell into</h2></div>
-  <div class="hsecs">
-    ${secs.map(([name,n])=>`<button type="button" data-sec="${esc(name)}">
-      ${esc(name)} <b>${n}</b></button>`).join("")}
-  </div>`:""}
+  /* PAY, WHERE POSTED: the highest yearly ranges on the board, by the top of
+     the range, each one a figure every posting of the role states, and one
+     role a company so the column is four employers, not one employer's
+     ladder. Most postings state none, and the caption says how many, because
+     a column of big numbers reads as the market unless it says what it
+     leaves out. */
+  const payCos=new Set();
+  const paid=all.map(g=>[g,groupYearly(g)]).filter(x=>x[1])
+    .sort((a,b)=>b[1][0]-a[1][0]||b[1][1]-a[1][1])
+    .filter(([g])=>!payCos.has(g.lead.company_id)&&payCos.add(g.lead.company_id))
+    .slice(0,4);
+  const statePay=q.filter(p=>p.comp).length;
 
-  <div class="hcards">
-    <!-- OPENINGS. This card said 609 and called them roles, which is the row
-         count - the same requisition advertised in several cities counted
-         once per city. The banner slide three elements above it says "we
-         count openings, not rows" and then this card did the opposite, on the
-         same screen. -->
-    <a class="hcard" id="h-jobs" href="#">
-      <span class="big">${qOpenings.toLocaleString()}</span>
-      <h2>Sales roles</h2>
-      <p>Quota-carrying roles at state and local government technology
-         companies, leaving out those we placed outside the US. Advertised in
-         ${q.length.toLocaleString()} postings.
-         Filter by family, seniority, work mode and pay.</p>
-    </a>
-    <a class="hcard" id="h-cos" href="#">
-      <span class="big">${orgs.length.toLocaleString()}</span>
-      <h2>Companies</h2>
-      <p>The whole map, hiring or not, with what each one sells and where
-         their board is — or that they have none we could find.</p>
-    </a>
+  const meta=g=>esc([g.lead.company,...homePlace(g)].join(" · "));
+  /* A logo is decoration beside a name the link already says: without
+     aria-hidden a screen reader heard "ZM ZOLL Medical 69" (review,
+     2026-10-25), as jobCardHTML already knew. */
+  const logo=(name,cid)=>`<span class="fp-logo" aria-hidden="true">${tileHTML(name,cid,"tile")}</span>`;
+  const payLine=g=>{
+    const gp=groupPay(g.rows);
+    return gp.fig?`<b class="fp-pay">${esc(gp.fig)}</b>${gp.note
+      ?` <span class="fp-sil">${esc(gp.note)}</span>`:""}`
+      :`<span class="fp-sil">${esc(gp.note)}</span>`;
+  };
+  const leadCard=g=>{
+    const gp=groupPay(g.rows), w=when(g.lead.first_seen,gen).txt;
+    return `<a class="fp-lead" href="?role=${encodeURIComponent(g.lead.id)}" data-role="${esc(g.lead.id)}">
+      <span class="fp-lead-top">${logo(g.lead.company,g.lead.company_id)}
+        ${w?`<span class="fp-age">first seen ${esc(w)}</span>`:""}</span>
+      <span><span class="fp-meta">${meta(g)}</span>
+        <span class="fp-lead-t">${esc(g.lead.title)}</span></span>
+      <span class="fp-lead-foot">
+        <span><span class="fp-lab">${gp.fig?"Pay, as posted":"Pay"}</span>
+          <span class="fp-lead-pay${gp.fig?"":" sil"}">${esc(gp.fig||gp.note)}${
+            gp.fig&&gp.note?` <span class="fp-lab">${esc(gp.note)}</span>`:""}</span></span>
+        <span class="fp-go">Open the role</span></span>
+    </a>`;
+  };
+  const card=g=>{
+    const w=when(g.lead.first_seen,gen).txt;
+    return `<a class="fp-card" href="?role=${encodeURIComponent(g.lead.id)}" data-role="${esc(g.lead.id)}">
+      <span class="fp-co">${logo(g.lead.company,g.lead.company_id)}
+        <span class="fp-meta">${meta(g)}</span></span>
+      <span class="fp-t">${esc(g.lead.title)}</span>
+      <span class="fp-foot">${payLine(g)}${w?`<span class="fp-age">${esc(w)}</span>`:""}</span>
+    </a>`;
+  };
+
+  const head=fo
+    ? `<span class="fp-u">${numWords(fo)} new</span> sales role${fo===1?"":"s"} reached the board this run.`
+    : qOpenings
+    ? `<span class="fp-u">${numWords(qOpenings)} sales role${qOpenings===1?"":"s"}</span> at govtech companies.`
+    : "No sales roles on the board this run.";
+  const n=qOpenings.toLocaleString();
+  const topSec=secs.length?secs[0][0]:"";
+  const cols=[];
+  if(hardest.length)cols.push(`<section aria-labelledby="fp-hire-h">
+      <h2 id="fp-hire-h">Hiring hardest</h2>
+      <div class="fp-hire">${hardest.map(o=>`<a href="?co=${encodeURIComponent(o.id)}" data-co="${esc(o.id)}">
+        ${logo(o.name,o.id)}<span class="nm">${esc(o.name)}</span>
+        <b class="fp-big">${o.quota_roles.toLocaleString()}</b></a>`).join("")}</div>
+      <p class="fp-cap">Quota-carrying roles open at each, in every country.
+        <a href="?tab=companies&amp;chire=1" data-tab>See who is hiring &rarr;</a></p>
+    </section>`);
+  if(floor.length){
+    const r=floor[0], fs=faces(r), now=isNow(r.dates);
+    cols.push(`<section aria-labelledby="fp-floor-h">
+      <h2 id="fp-floor-h">On the floor</h2>
+      <a class="fp-ev" href="?e=${encodeURIComponent(r.tag)}" data-tag="${esc(r.tag)}">
+        <span class="fp-when">${now?"<i></i>On now":"Next up"} · ${esc(evWhen(r))}</span>
+        <span class="fp-evn">${esc(r.name)}</span>
+        <span class="fp-faces">${fs.length?`<span class="fp-stack" aria-hidden="true">${fs.map(o=>
+          tileHTML(o.name,o.id,"tile")).join("")}</span>`:""}<span>${r.companies
+          ?(r.hiring?`<b>${r.hiring.toLocaleString()}</b> of ${r.companies.toLocaleString()} exhibitors hiring`
+            :`${r.companies.toLocaleString()} exhibitors on our list`)
+          :"Exhibitor list not mined yet"}</span></span>
+      </a>
+      ${floor.length>1?`<div class="fp-list">${floor.slice(1).map(x=>
+        `<a href="?e=${encodeURIComponent(x.tag)}" data-tag="${esc(x.tag)}"><span class="fp-pl"><b>${esc(x.name)}</b>
+          <span>${isNow(x.dates)?"On now · ":""}${esc(evWhen(x))}</span></span></a>`).join("")}</div>`:""}
+      <p class="fp-cap"><a href="?tab=conferences" data-tab>Every conference we know of &rarr;</a></p>
+    </section>`);
+  }
+  if(paid.length)cols.push(`<section aria-labelledby="fp-pay-h">
+      <h2 id="fp-pay-h">Pay, where posted</h2>
+      <div class="fp-list">${paid.map(([g])=>`<a href="?role=${encodeURIComponent(g.lead.id)}" data-role="${esc(g.lead.id)}">
+        <span class="fp-pl"><b>${esc(g.lead.company)}</b><span>${esc(g.lead.title)}</span></span>
+        <b class="fp-pay">${esc(groupPay(g.rows).fig)}</b></a>`).join("")}</div>
+      <p class="fp-cap">The highest yearly US-dollar ranges, each one stated on
+        every posting of its role. ${statePay.toLocaleString()} of
+        ${q.length.toLocaleString()} postings state pay; we never guess the rest.</p>
+    </section>`);
+
+  $("#view").innerHTML=`<h1 class="vh">SLED JOBS: sales jobs at govtech companies</h1>
+  <div class="fp">
+  <section class="fp-top" aria-labelledby="fp-h">
+    ${gen?`<p class="fp-eyebrow">The board, read ${esc(longDate(gen))}</p>`:""}
+    <h2 class="fp-h" id="fp-h" data-n="${fo}">${head}</h2>
+    <div class="fp-find">
+      <div class="fp-search" role="search">
+        <label class="vh" for="h-q">Search all ${n} roles</label>
+        <input id="h-q" type="search" placeholder="Search all ${n} roles"
+               autocomplete="off" enterkeyhint="search">
+        <button id="h-go" type="button" aria-label="Search"><svg viewBox="0 0 24 24"
+          aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      </div>
+      <a class="fp-chip" href="?where=remote" data-board>Says remote</a>
+      <a class="fp-chip" href="?pay=stated" data-board>States pay</a>
+      ${topSec?`<a class="fp-chip" href="?sec=${encodeURIComponent(topSec)}" data-board>${esc(topSec)}</a>`:""}
+    </div>
+    <p class="fp-scope">Counted as the board opens them: quota-carrying roles,
+      not placed outside the US.</p>
+    ${sinceLastVisit()}
+  </section>
+
+  ${lead?`<section class="fp-roles${picked.length===4?" full":""}" aria-label="${allNew?"New this run":"The newest roles"}">
+    ${leadCard(lead)}${picked.map(card).join("")}
+  </section>
+  <div class="fp-more">${debut.length?`<p class="fp-debut">${(()=>{
+      // a name ending "Inc." ends the sentence itself: no second stop
+      const t=`First seller req we have ever recorded at ${debut.slice(0,3).join(", ")}${
+        debut.length>3?` and ${debut.length-3} other${debut.length-3===1?"":"s"}`:""}`;
+      return esc(/\.$/.test(t)?t:t+".");})()}</p>`:""}
+    ${fo?`<a class="fp-all" id="h-new" href="?since=0" data-board>All ${sinceN.toLocaleString()}${
+        sinceN===fo?" new this run":" with new postings this run"} &rarr;</a>`
+      :`<a class="fp-all" href="?tab=jobs" data-tab>All ${n} roles &rarr;</a>`}</div>`:""}
+
+  ${cols.length?`<div class="fp-cols">${cols.join("")}</div>`:""}
+
+  ${secs.length?`<section class="fp-dept" aria-labelledby="fp-dept-h">
+    <h2 id="fp-dept-h">By what they sell into</h2>
+    <div class="hsecs">${secs.map(([name,k])=>`<a href="?sec=${encodeURIComponent(name)}" data-board
+      data-sec="${esc(name)}"><span>${esc(name)}</span><b>${k.toLocaleString()}</b><i aria-hidden="true">&rarr;</i></a>`).join("")}</div>
+  </section>`:""}
+  <p class="fp-note">${widest>1?`We count openings, not postings: one requisition
+    advertised in ${widest.toLocaleString()} postings is one job. `:""}<a href="?tab=how"
+    data-tab>How a listing gets here &rarr;</a></p>
   </div>`;
 
+  /* Every door is a real link, so it can be middle-clicked, copied and
+     tabbed to; a plain click is taken over so the page does not reload, and
+     goes through goTab with the link's own address, so the board it opens is
+     the address it showed - one history entry, and Back comes home. A
+     modified click does what the link would. */
+  const take=(a,fn)=>{ a.onclick=e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
+    e.preventDefault(); fn(); }; };
+  // goTab draws the tab where the reader was scrolled to, and most of these
+  // doors sit a long way down this page
+  const top=()=>window.scrollTo(0,0);
+  const here=a=>new URLSearchParams((a.getAttribute("href")||"").replace(/^\?/,""));
+  document.querySelectorAll("#view a[data-role]").forEach(a=>take(a,()=>openRole(a.dataset.role)));
+  document.querySelectorAll("#view a[data-co]").forEach(a=>take(a,()=>{ co(a.dataset.co); top(); }));
+  /* An event opens as one history entry, like every other door here: the
+     tab's entry becomes the event's address and the panel opens as if from
+     it, so Back comes home rather than to the catalogue (review,
+     2026-10-25). Closing the panel returns to the catalogue, as it does
+     anywhere. */
+  document.querySelectorAll("#view a[data-tag]").forEach(a=>take(a,()=>{
+    const t=a.dataset.tag;
+    goTab("conferences"); top();
+    CF_LAST_QS="?tab=conferences";
+    history.replaceState({e:t,qs:CF_LAST_QS},"",location.pathname+"?e="+encodeURIComponent(t));
+    cfOpenPanel(t,true); }));
+  document.querySelectorAll("#view a[data-board]").forEach(a=>take(a,()=>{ goTab("jobs",here(a)); top(); }));
+  document.querySelectorAll("#view a[data-tab]").forEach(a=>take(a,()=>{
+    // tabFromUrl is the one reader of ?tab=, so this door means what the
+    // same address pasted into the bar would
+    const u=here(a), t=tabFromUrl(u,"home"); u.delete("tab");
+    goTab(t,[...u.keys()].length?u:null); top(); }));
   /* Hand the query to the board rather than filtering here: one search
      implementation, and the result is a real board state somebody can then
      narrow, share and come back to. */
-  const goSearch=()=>{
-    const v=($("#h-q")||{}).value||"";
-    stopBanner(); goTab("jobs");
-    const box=$("#j-q");
-    if(box&&v.trim()){ box.value=v; box.dispatchEvent(new Event("input",{bubbles:true})); }
-  };
   const hq=$("#h-q"), hgo=$("#h-go");
-  if(hgo)hgo.onclick=goSearch;
-  if(hq)hq.onkeydown=e=>{ if(e.key==="Enter"){e.preventDefault();goSearch()} };
-  const all=$("#h-all");
-  if(all){ all.onclick=()=>{stopBanner();goTab("jobs")};
-           all.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();all.click()}}; }
-  document.querySelectorAll(".hrole").forEach(a=>{
-    const go=()=>{stopBanner();openRole(a.dataset.role)};
-    a.onclick=go;
-    a.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
-  });
-  document.querySelectorAll(".hsecs button").forEach(b=>{
-    b.onclick=()=>{
-      stopBanner(); goTab("jobs");
-      // the sector refines the entry goTab just pushed rather than pushing a
-      // second, so Back from the sector's board goes home, not to the bare board
-      const sel=$("#j-sec-pill");
-      if(sel){ sel.value=b.dataset.sec; if($("#j-sec"))$("#j-sec").value=b.dataset.sec;
-               SHOWN=60; drawJobs(); }
-    };
-  });
-
-  slides.forEach((s,i)=>{
-    const b=document.querySelector(`.go[data-go="${i}"]`);
-    if(b){ b.onclick=()=>{stopBanner();s.go()};
-           b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();stopBanner();s.go()}}; }
-  });
-  document.querySelectorAll("[data-how]").forEach(a=>{
-    const go=()=>{stopBanner();goTab("how");window.scrollTo(0,0)};
-    a.onclick=go;
-    a.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
-  });
-  const prev=$("#bprev"), next=$("#bnext"), bn=$("#banner");
-  if(prev)prev.onclick=()=>{stopBanner();showSlide(BSLIDE-1,slides)};
-  if(next)next.onclick=()=>{stopBanner();showSlide(BSLIDE+1,slides)};
-  [...document.querySelectorAll(".bdots i")].forEach(d=>
-    d.onclick=()=>{stopBanner();showSlide(+d.dataset.dot,slides)});
-  /* Pause while somebody is actually reading it - with a mouse OR a
-     keyboard. It paused on hover only, so a slide rotated away from a
-     focused "Open the board": focus fell to <body> and Enter did nothing
-     (launch audit 2, 2026-10-09). It resumes when neither is inside. */
-  if(bn){
-    const away=e=>!bn.contains(document.activeElement)
-      &&!(e&&e.relatedTarget&&bn.contains(e.relatedTarget))&&!bn.matches(":hover");
-    bn.onmouseenter=stopBanner;
-    bn.onmouseleave=()=>{ if(!bn.contains(document.activeElement))startBanner(slides); };
-    // listeners, not onfocusin/onfocusout: no browser has those properties,
-    // and assigning one does nothing at all
-    bn.addEventListener("focusin",stopBanner);
-    bn.addEventListener("focusout",e=>{ if(away(e))startBanner(slides); });
-  }
-  const hj=$("#h-jobs"), hc=$("#h-cos");
-  if(hj)hj.onclick=e=>{e.preventDefault();goTab("jobs")};
-  if(hc)hc.onclick=e=>{e.preventDefault();toCompanies()};
-  BSLIDE=0;
-  startBanner(slides);
+  const search=()=>{ const v=String((hq&&hq.value)||"").trim();
+    goTab("jobs",v?new URLSearchParams({q:v}):null); top(); };
+  if(hgo)hgo.onclick=search;
+  if(hq)hq.onkeydown=e=>{ if(e.key==="Enter"){e.preventDefault();search()} };
 }
 
 
@@ -8830,7 +8919,7 @@ function paintRating(box,d){
        than new.
        The fact is real and worth stating ONCE, above the list, which
        cfRatingNote() does. Same rule the rest of the board follows: the home
-       banner drops a slide rather than printing a zero, the coverage card
+       page drops its "new this run" claim rather than printing a zero, the coverage card
        renders nothing rather than a nought, and the hiring badge stays dark.
        The rate buttons stay - the invitation is the feature, the dash was
        not. */

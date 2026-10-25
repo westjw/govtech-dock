@@ -1,13 +1,14 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-10-24T01:00:00-04:00",
+  "last_updated": "2026-10-25T18:00:00-04:00",
   "status": "Active Build",
   "progress_pct": 57,
-  "progress_note": "~57% (free board frame; the paid half has no pricing or billing, and the recruiter side lives in SLED HQ) - 2026-10-24: the desk admin opens on a timed shift (option 5 of the admin canvas)",
+  "progress_note": "~57% (free board frame; the paid half has no pricing or billing, and the recruiter side lives in SLED HQ) - 2026-10-25: the Home tab is a front page built from the board (option 3 of round 2 of the home page canvas)",
   "next_move": "Owner, in Cloudflare: fix the sign-in loop, confirm Fail closed, replace CF_API_TOKEN (KV write 401), decide Workers Paid. Then rule the 15 no-website companies, decide the claim link, and supply privacy/contact details. Claude: check the 10-09 nightly (15 rewired careers links, digest timing).",
-  "session_summary": "The desk admin now opens on a shift: pick 10, 20 or 30 minutes and the server deals the highest-impact rulings across every queue, people first, one card at a time, with server-counted progress, board health and a one-key Undo that takes back a whole ruling or refuses when anything changed since. Wrong bucket and Vendor scope ride the belt's own card; the other queues show their own card. Blind-reviewed and mutation-tested.",
+  "session_summary": "The Home tab is now a front page built from live data: the date the board was read, a headline counting the sales roles new this run (dropped on a quiet run), the newest roles as cards led by the best-paid, Hiring hardest, what is on the show floor, the highest pay posted, and the departments as an index. Every number equals what its link opens; the harness renders it on five boards and presses every door. Blind-reviewed (18 confirmed, fixed) and mutation-tested.",
   "recent_work": [
+    "2026-10-25 Home front page (option 3 of round 2): every figure derived and held to the page its link opens; quiet-run, one-new-role, nothing-on-today and unread-board renders in the harness; blind review 18 confirmed (17 fixed, 1 documented); 45 of 45 mutations caught",
     "2026-10-24 Desk admin: the shift (option 5) - dealt hand, belt cards, re-check before showing, all-or-nothing Undo, one ruling per click, server-counted summary; two blind reviews (18 + 6 confirmed, all fixed), 65 of 66 mutations caught",
     "2026-10-08 Second launch batch deployed (main 7c3fc9e): job ads out of the repo, non-listings off, true news labels, job markup off (owner), watchdog deploy check",
     "2026-10-08 Five blind review rounds over the batch: 5, 6, 6, 9, 5 confirmed findings, all fixed and mutation-tested",

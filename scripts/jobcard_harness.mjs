@@ -299,14 +299,15 @@ try {
 } catch (e) {
   errors.push(`running co(): ${e && e.message}`);
 }
-/* THE FRONT PAGE ON THE REAL BOARD: buildSlides() and home(), so every number
-   a click turns into the jobs tab can be held to that tab's default set. */
+/* THE FRONT PAGE ON THE REAL BOARD: home(), so every number a click turns
+   into the jobs tab can be held to that tab's default set. `words` is the
+   page's own numWords() over 0..120, so the headline's spelling is checked
+   against an independent table. */
 let front = null;
 try {
   ctx.__real = JSON.parse(readFileSync(new URL("../data/board.json", import.meta.url), "utf8"));
   front = vm.runInContext(`(() => { D = __real;
-      const slides = buildSlides().map((x) => ({ kick: x.kick, h: String(x.h), p: String(x.p) }));
-      return { slides }; })()`, ctx);
+      return { words: Array.from({ length: 121 }, (_, i) => numWords(i)) }; })()`, ctx);
   const rec2 = { innerHTML: "" };
   const v2 = new Proxy(rec2, { get(t, k) { return k in t ? t[k] : S; },
                                set(t, k, v) { t[k] = v; return true; } });
@@ -321,6 +322,102 @@ try {
   front.lastVisit = g;
   vm.runInContext(`D = __real; LAST_VISIT = ${JSON.stringify(g)}; home();`, ctx);
   front.home = String(rec2.innerHTML);
+  /* A QUIET RUN: the same board read again a day later, so nothing was first
+     seen on the crawl. The headline must drop its "new" claim, not print a
+     zero. */
+  const day = new Date(Date.parse(ctx.__real.generated) + 86400000).toISOString().slice(0, 10);
+  rec2.innerHTML = "";
+  vm.runInContext(`D = Object.assign({}, __real, { generated: ${JSON.stringify(day)} }); LAST_VISIT = ""; home();`, ctx);
+  front.quiet = String(rec2.innerHTML);
+  /* A SELLER DEBUT: the company of the first role new this run marked as one,
+     so the debut line has something true to say. */
+  const deb = vm.runInContext(`(() => { const p = boardDefault(__real.postings).find((x) =>
+      x.first_seen === __real.generated && !boardDefault(__real.postings).some((y) =>
+        y.opening_id === x.opening_id && (y.first_seen || "") < __real.generated));
+    if (!p) return null;
+    D = Object.assign({}, __real, { organizations: __real.organizations.map((o) =>
+      o.id === p.company_id ? Object.assign({}, o, { seller_debut: true }) : o) });
+    LAST_VISIT = ""; home(); return p.company; })()`, ctx);
+  front.debut = { name: deb, home: String(rec2.innerHTML) };
+  /* THREE BOARDS TODAY'S DATA CANNOT SHOW, each made from the real one:
+     - few: one role new this run (the rest re-dated a day earlier), so the
+       cards top up with older roles and the section is no longer all new;
+     - later: no conference on today, so the floor leads with what is next
+       and must leave past editions out;
+     - unread: the company hiring the most sellers on a board we cannot
+       read, which Hiring hardest must leave out as the spotlight does. */
+  const variant = (code) => { rec2.innerHTML = ""; const r = vm.runInContext(`(() => { ${code} })()`, ctx);
+    return Object.assign({ home: String(rec2.innerHTML) }, r || {}); };
+  front.few = variant(`const gen = __real.generated, q = boardDefault(__real.postings);
+    const keep = q.find((x) => x.first_seen === gen && !q.some((y) => y.opening_id === x.opening_id && (y.first_seen || "") < gen));
+    if (!keep) return null;
+    const before = new Date(Date.parse(gen) - 86400000).toISOString().slice(0, 10);
+    D = Object.assign({}, __real, { postings: __real.postings.map((p) =>
+      p.first_seen === gen && p.opening_id !== keep.opening_id ? Object.assign({}, p, { first_seen: before }) : p) });
+    LAST_VISIT = ""; home(); return { keep: keep.opening_id };`);
+  front.later = variant(`const conferences = (__real.conferences || []).filter((r) => !isNow(r.dates));
+    D = Object.assign({}, __real, { conferences }); LAST_VISIT = ""; home();
+    return { tags: conferences.map((r) => r.tag) };`);
+  front.unread = variant(`const top = __real.organizations.filter((o) => (o.quota_roles || 0) > 0 && boardState(o) === "read")
+      .sort((a, b) => b.quota_roles - a.quota_roles)[0];
+    if (!top) return null;
+    D = Object.assign({}, __real, { organizations: __real.organizations.map((o) =>
+      o.id === top.id ? Object.assign({}, o, { enumerable: false }) : o) });
+    LAST_VISIT = ""; home(); return { hidden: top.id };`);
+  /* THE DOORS, PRESSED. Every link the front page drew is handed to home()'s
+     own wiring as an element carrying its attributes, then clicked plainly
+     and with a modifier; goTab, openRole, co, cfOpenPanel and scrollTo
+     record what they were asked. The search box is typed into and sent both
+     ways. A door that draws right and goes somewhere else fails here. */
+  const unesc = (v) => v.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#92;/g, "\\")
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+  const anchors = [...front.home.matchAll(/<a\s([^>]*)>/g)].map((m) => {
+    const at = {};
+    m[1].replace(/([\w-]+)(?:="([^"]*)")?/g, (_, k, v) => { at[k] = v === undefined ? "" : unesc(v); return ""; });
+    const dataset = {};
+    for (const [k, v] of Object.entries(at)) if (k.startsWith("data-"))
+      dataset[k.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase())] = v;
+    return { at, dataset, getAttribute: (k) => (k in at ? at[k] : null), onclick: null, onkeydown: null };
+  });
+  const box = { value: "", onkeydown: null }, goBtn = { onclick: null };
+  ctx.document = new Proxy(S, { get(_t, k) {
+    if (k === "querySelectorAll") return (sel) => {
+      const m = /^#view a\[([\w-]+)\]$/.exec(sel);
+      return m ? anchors.filter((a) => m[1] in a.at) : [];
+    };
+    if (k === "querySelector") return (sel) => (sel === "#view" ? v2 : sel === "#h-q" ? box : sel === "#h-go" ? goBtn : S);
+    if (k === "getElementById") return (id) => (id === "view" ? v2 : S);
+    return S;
+  } });
+  const calls = [];
+  ctx.__calls = calls;
+  ctx.scrollTo = (x, y) => calls.push(["scrollTo", x, y]);
+  rec2.innerHTML = "";
+  vm.runInContext(`(() => { globalThis.__keep = { goTab, openRole, co, cfOpenPanel };
+    goTab = (t, u) => __calls.push(["goTab", t, u ? String(u) : null]);
+    openRole = (id) => __calls.push(["openRole", id]);
+    co = (id) => __calls.push(["co", id]);
+    cfOpenPanel = (t, f) => __calls.push(["cfOpenPanel", t, !!f]);
+    D = __real; LAST_VISIT = ""; home(); })()`, ctx);
+  const press = (fn, ev) => { calls.length = 0; let prevented = false;
+    fn(Object.assign({ button: 0, preventDefault() { prevented = true; } }, ev));
+    return { calls: calls.slice(), prevented }; };
+  const doors = anchors.map((a) => ({ href: a.at.href || "", data: a.dataset, wired: !!a.onclick,
+    plain: a.onclick ? press(a.onclick, {}) : null,
+    modified: a.onclick ? [press(a.onclick, { metaKey: true }), press(a.onclick, { ctrlKey: true }),
+                           press(a.onclick, { shiftKey: true }), press(a.onclick, { button: 1 })] : null }));
+  box.value = "Ver kada & co";
+  const search = { click: goBtn.onclick ? press(() => goBtn.onclick(), {}) : null,
+                   enter: box.onkeydown ? press((e) => box.onkeydown(Object.assign(e, { key: "Enter" })), {}) : null,
+                   other: box.onkeydown ? press((e) => box.onkeydown(Object.assign(e, { key: "a" })), {}) : null };
+  front.doors = { doors, search };
+  vm.runInContext(`(() => { ({ goTab, openRole, co, cfOpenPanel } = __keep); })()`, ctx);
+  delete ctx.scrollTo;
+  ctx.document = new Proxy(S, { get(_t, k) {
+    if (k === "querySelector") return (sel) => (sel === "#view" ? v2 : S);
+    if (k === "getElementById") return (id) => (id === "view" ? v2 : S);
+    return S;
+  } });
   // the Market intel and How tabs, on the real board
   for (const [k, fn] of [["intel", "intel"], ["how", "how"]]) {
     try { rec2.innerHTML = ""; vm.runInContext(`D = __real; ${fn}();`, ctx); front[k] = String(rec2.innerHTML); }

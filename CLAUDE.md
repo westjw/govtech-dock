@@ -35,11 +35,53 @@ tokens or the mark drift. Same pattern, same reason, as the brand.json guard.
 
 **`home` is the first tab and the default.** It used to be `tab="jobs"` — the
 site opened into a filtered list, which is right for somebody who already
-knows what this is and tells a stranger nothing. The home banner's slides are
-BUILT FROM THE BOARD by `buildSlides()`, never written: a quiet run drops the
-"new this run" slide rather than printing a zero, and if no slide can be built
-there is no banner. It auto-advances every 6s, pauses on hover, and never
-starts at all for a reader whose OS asks for reduced motion.
+knows what this is and tells a stranger nothing.
+
+**Home is a front page (owner, 2026-10-25: "r2 3 please", option 3 of round 2
+of the home page canvas).** It replaced the rotating banner and its
+`buildSlides()`. Everything on it is BUILT FROM THE BOARD by `home()`:
+- **The headline** dates the read ("The board, read 23 October 2026") and
+  says how many sales roles reached the board this run, the count spelled as
+  a word up to 99 (`numWords`). A role is new when its EARLIEST posting on
+  the board was first seen on the crawl: one that only gained a city has a
+  new posting, not a new role. A quiet run drops the claim rather than
+  printing a zero, and the headline says the board's size instead. One line
+  under the search says the counts are the board's default (quota-carrying,
+  not placed outside the US); never "in the United States".
+- **The cards** are openings (`groupOpenings`, shared with the jobs tab), new
+  this run first. The lead is the best-paid new role by a yearly US-dollar
+  figure every posting agrees on (`groupYearly`); then one card a company.
+  Pay is the card's rule (`groupPay`, shared with `jobCardHTML`). The link
+  opens `?since=0`, which counts openings with ANY posting new tonight, so it
+  reads "All N new this run" when the two agree and "All N with new postings
+  this run" when they do not. A run with fewer than five new roles shows all
+  of them and tops up with older ones, still one a company, and the section
+  is labelled "New this run" only when every card is.
+- **Hiring hardest** is `quota_roles` on boards we read, in the Companies
+  spotlight's own order, ties included. **On the floor** is what is on today
+  (the reader's today, as the Conferences tab reads it), the biggest floor
+  first, then what comes next. **Pay, where posted** is the highest yearly
+  US-dollar ranges stated on every posting of a role, one company each, and
+  says how many postings state pay. Logos are `aria-hidden` beside the name.
+- **The departments** are counted in openings with `inSector()`, the
+  predicate the board filters by. The footnote names the widest requisition
+  and carries the one link to How a listing gets here.
+- **Every door is a real link** (`?where=remote`, `?pay=stated`, `?sec=`,
+  `?since=0`, `?role=`, `?co=`, `?e=`, `?tab=`), taken over on a plain click
+  and opened through `goTab` with the link's own address (`?tab=` read by
+  `tabFromUrl`): one history entry, the top of the page, and Back comes
+  home. A modified click does what the link would. An event's door replaces
+  the tab's entry with `?e=` and opens the panel as if from the address.
+- `check_the_front_page_counts_what_its_links_open` runs `home()` on the real
+  board, on the same board a day later (a quiet run) and with a seller debut
+  (jobcard_harness.mjs), and holds every number to what its link opens,
+  computed independently. The harness also presses every door through
+  home()'s own wiring, plainly and with modifiers, and types into the
+  search. `check_the_front_page_counts_by_opening` holds the department
+  index (its counts and the address each row opens), the widest requisition,
+  the debut line and the hidden logos. Blind review (3 lenses, a skeptic
+  each): 18 confirmed, all fixed but one, the white search glyph and the
+  card shadow, which stay literals copied from .cfs-go and .cocard.
 
 **The product is called SLED JOBS.** It was GovTech Dock. The git remote is
 still `westjw/govtech-dock` and the portfolio `project_id` is still
@@ -187,7 +229,9 @@ with the company cards").
   a go-to-market push") is a different measurement and stays.
 - **Round corners are the conferences design's exception to --radius.** They
   stay inside the bar, its popover and the cards; toggles, selects and chips
-  outside them stay square.
+  outside them stay square. The home front page carries the exception with
+  its design (2026-10-25): its search pill, its three chips, its cards and
+  its logo tiles.
 
 ## Flag for Job Hunter (owner, 2026-10-20)
 
