@@ -1,13 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-10-21",
+   "date": "2026-10-23",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.quorum.us/blog/introducing-quincy-hub/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-24",
+   "headline": "AI Bill Tracking: 5 Improvements to How Your Team Tracks Legislation in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/ai-bill-tracking-5-improvements-to-how-your-team-tracks-legislation-in-2027/"
   },
   {
    "date": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/ai-meeting-prep-that-keeps-government-affairs-teams-aligned/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Quorum Named a Leader in G2\u2019s Fall 2026 Grid\u00ae Report for Public Affairs Software.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/quorum-named-a-leader-in-g2s-fall-2026-grid-report-for-public-affairs-software/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Managing AI risks in education: A practical guide for schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/managing-ai-risks-in-education"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -31,7 +40,7 @@
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "The back-to-school AI checklist every school leader needs",
+   "headline": "The back-to-school checklist for choosing AI tools as a district",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/back-to-school-checklist-school-leaders"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/classroom-technology-usage-data"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Smart classrooms, stronger districts: New features for the 2026-2027 school year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/new-features-2026-2027"
   }
  ],
  "profile": {

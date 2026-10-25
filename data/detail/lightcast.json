@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "He Found His Trade in Flip-Flops. Thirty Years Later, He Calls It a Brotherhood.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/skilled-trades-stories-eric"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -10,6 +19,24 @@
    "url": "https://lightcast.io/resources/blog/lightcast-announces-ask-and-mcp"
   },
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Highest Explosives Workers\u2019 Salaries in the US",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/skilled-trades-explosives-workers-salaries"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Annual AI Updates Are Too Slow",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://lightcast.io/resources/blog/tracking-ai-workforce-trends-october-2026-update"
+  },
+  {
    "date": "2024-05-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -17,6 +44,60 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://lightcast.io/resources/blog/career-pathways-for-employers"
+  },
+  {
+   "date": "2024-03-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Increased Employee Productivity and Retention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/what-is-upskilling"
+  },
+  {
+   "date": "2023-11-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "identify the most important skills",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/skills-gap-analysis-key-steps-to-identify-the-skills-you-need"
+  },
+  {
+   "date": "2023-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "How to Develop an Agile Workforce Through Skills",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/how-to-develop-an-agile-workforce-through-skills"
+  },
+  {
+   "date": "2023-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Career Pathways in Community Development",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/6-ways-to-use-alumni-outcomes-data"
+  },
+  {
+   "date": "2023-01-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "How to Retain Talent Using Career Pathways",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/how-to-retain-talent-using-career-pathways"
+  },
+  {
+   "date": "2022-12-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Drive Workforce Agility with Lightcast\u2019s Career Pathways Tool",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/career-pathways-launch"
   }
  ]
 }

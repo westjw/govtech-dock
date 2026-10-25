@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-24",
+   "headline": "How private haulers can help prepare their fleets for new waste management contracts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/waste-management-contracts-private-haulers/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/minds-behind-the-miles/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Measuring the supply chain in motion",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/supply-chain-in-motion/"
   }
  ],
  "profile": {

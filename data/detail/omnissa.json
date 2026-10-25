@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Work smarter with our AI assistant, Omni \u2014 now GA!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-2025-security-management-innovations/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Are you managing endpoints or managing workarounds?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/managing-endpoints-or-workarounds/"
+  },
+  {
    "date": "2026-10-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The link between device performance & employee productivity",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Driving EUC adoption: A step-by-step guide to success",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-real-time-remediation/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Vulnerability management for the agentic enterprise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-trending-in-security-at-omnissa/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "One platform for virtual and physical desktop management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-extending-uem-to-virtual-desktops/"
   }
  ]
 }

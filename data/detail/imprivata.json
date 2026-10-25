@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "Five Years of Evolution: The Future of Imprivata Privileged Access",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/five-years-evolution-future-imprivata-privileged-access"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "card-date",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/blog/how-help-employees-spot-social-engineering-attack-its-too-late"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Imprivata Enterprise Access Management Wins 2026 Best in KLAS Award for Access Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/fr/company/press/imprivata-enterprise-access-management-wins-2026-best-klas-award-access-management"
   }
  ],
  "profile": {

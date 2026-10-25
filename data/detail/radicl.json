@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Free App, Rented Connection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/free-app-rented-connection"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/credential-stuffing-bulk-account-takeover-explained"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Cloaking Gate Fronts a Certutil Stager Deploying ScreenConnect",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/cloaking-gate-fronts-a-certutil-stager-deploying-screenconnect"
   }
  ],
  "profile": {

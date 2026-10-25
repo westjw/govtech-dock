@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Capital Improvement Plans Explained: Where Public-Sector Demand Starts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/capital-improvement-plans-explained/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sovra.com/blog/why-your-local-sponsors-struggle-to-submit-and-what-you-can-do-about-it/"
-  },
-  {
-   "date": "2026-07-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "Naugatuck Valley Council of Governments Selects Plan-to-Program to Make Their TIP Process More Efficient",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.sovra.com/press-releases/naugatuck-valley-council-of-governments-selects-ecointeractives-projecttracker-to-make-their-tip-process-more-efficient/"
   }
  ],
  "profile": {

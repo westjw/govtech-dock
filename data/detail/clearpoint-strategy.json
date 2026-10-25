@@ -38,21 +38,12 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Strategy vs. Tactics: Differences, Examples and Data From Real Plans",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clearpointstrategy.com/blog/strategy-vs-tactics"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "The 4 Types of Performance Management Systems - and the One That Decides If Any of Them Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clearpointstrategy.com/blog/types-of-performance-management-systems"
   },
   {
    "date": "2026-09-15",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clearpointstrategy.com/blog/gap-analysis-template"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Strategy Execution Software Compared: ClearPoint vs. the Top 5 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearpointstrategy.com/blog/business-strategy-execution-software-comparison"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "How to Explain a Background Check to a Job Candidate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-to-explain-a-background-check-to-a-job-candidate"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/what-is-an-mvr-check-a-complete-guide-for-employers"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Pre-Employment Drug Testing: What Employers Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/pre-employment-drug-testing-what-employers-need-to-know"
   }
  ],
  "profile": {

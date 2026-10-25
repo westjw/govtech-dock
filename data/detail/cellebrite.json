@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Lessons From the Forensic Examiners Behind the University of Idaho Murders Investigation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/university-of-idaho-murders-forensic-lessons/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cellebrite.com/en/blog/mobile-security-testing-alternatives-ios-blind-spot/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Mobile App Security Checklist: A 30-Day Plan for iOS and Android Read Now",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/mobile-app-security-checklist/"
   }
  ],
  "profile": {

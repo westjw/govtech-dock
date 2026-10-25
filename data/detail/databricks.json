@@ -1,8 +1,44 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Built for Agents: The Case for Spark Declarative Pipelines",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Real-time energy trading and analytics on Databricks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "The Fraud Analyst AI Coworker: Detecting Telecom Fraud in Real-Time on One Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/fraud-analyst-ai-coworker-detecting-telecom-fraud-real-time-one-platform"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "The AI Bill is coming",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/ai-bill-coming"
+  },
+  {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Databricks AI Runtime and NVIDIA make it easier to customize open models with enterprise data",
    "kind": "press",
@@ -11,7 +47,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "AI Runtime is Generally Available",
    "kind": "press",
@@ -20,7 +56,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Deploy RFD4-Proteina on Databricks",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/hp-ai-ready-cdp-databricks-customerlake"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CustomerLake enters Beta: Leading enterprises going live with the Agentic CDP",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/customerlake-beta"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "What makes a catalog open? Unity Catalog Advances the Open Lakehouse",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/what-makes-catalog-open-unity-catalog-advances-open-lakehouse"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "How to get the most out of running dbt on Databricks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-get-most-out-running-dbt-databricks"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Closing the Binary Blind Spot: Domain-Knowledge Injection for LLM Malware Triage in npm Packages",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/closing-binary-blind-spot-domain-knowledge-injection-llm-malware-triage-npm-packages"
   }
  ]
 }

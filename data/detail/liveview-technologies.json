@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Your Integrators Are Part of Your Attack Surface",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/your-integrators-are-part-of-your-attack-surface"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/live-video-monitoring-what-does-it-actually-cost"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Eliminating Crime and Protecting Employees at Marathon Petroleum",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/eliminating-crime-protecting-employees-marathon-petroleum"
   }
  ],
  "profile": {

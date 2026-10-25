@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Dimonoff at Smart City Expo World Congress 2026, Barcelona",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dimonoff.com/news/smart-city-expo-world-congress-2026/"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dimonoff.com/news/eureka-2024-laval-finalist/"
-  },
-  {
-   "date": "2024-05-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Dimonoff at the 2024 UMQ Assises in Montreal",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dimonoff.com/news/assises-umq-2024/"
   }
  ],
  "profile": {

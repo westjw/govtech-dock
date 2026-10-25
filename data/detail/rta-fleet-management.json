@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "What Is EPAct Fleet Compliance? Requirements, Credits, and Options for State Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/blog/what-is-epact-fleet-compliance-requirements-credits-and-options-for-state-fleets"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://rtafleet.com/blog/what-the-gsa-uber-deal-signals-for-every-public-fleet-not-just-federal-agencies"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Centralized Fleet Management: A Guide for Public Fleets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/centralized-fleet-management-a-guide-for-public-fleets"
   }
  ],
  "profile": {

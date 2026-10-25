@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Leading CX Teams That Thrive in the AI Era | Genesys",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/leading-cx-teams-that-thrive-in-the-ai-era"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/genesys-named-a-leader-in-the-2026-gartner-magic-quadranttm-for-ccaas-12-years-running"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Infosys BPM Turns CX Innovation into Measurable Business Value",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/transforming-experience-innovation-into-measurable-business-value"
   },
   {
    "date": "2026-10-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/great-cx-leaders-learn-at-every-opportunity"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "card-date",
-   "first_seen": "2026-10-22",
-   "headline": "Xperience 2026: What We\u2019re Learning About the Next Era of CX",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/xperience-2026-what-were-learning-about-the-next-era-of-cx"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Genesys CEO Tony Bates introduces the operating model for winning in the agentic era",
-   "kind": "product",
-   "kind_rule": "introduces",
-   "url": "https://www.genesys.com/blog/post/genesys-ceo-tony-bates-introduces-the-operating-model-for-winning-in-the-agentic-era"
   }
  ]
 }

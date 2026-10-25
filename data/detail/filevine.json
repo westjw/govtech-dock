@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-01",
+   "date_source": "dateline",
+   "first_seen": "2026-10-24",
+   "headline": "Filevine Unveils Citator and Anti-Hallucination Capabilities for LOIS Legal Research",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://www.filevine.com/news/filevine-introduces-anti-hallucination-for-lois-legal-research/"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "dateline",
+   "first_seen": "2026-10-24",
+   "headline": "Other AI reads. LOIS runs. 90-day free trial launches.",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.filevine.com/news/other-ai-reads-lois-runs-90-day-free-trial-launches/"
+  },
+  {
+   "date": "2026-06-22",
+   "date_source": "dateline",
+   "first_seen": "2026-10-24",
+   "headline": "Filevine Disrupts Legal Research Duopoly with AI Built to Verify Exact Legal Passages, Not Just Cases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.filevine.com/news/filevine-disrupts-legal-research-duopoly-with-ai-built-to-verify-exact-legal-passages-not-just-cases/"
+  },
+  {
    "date": "2026-01-14",
    "date_source": "index-text",
    "first_seen": "2026-10-21",

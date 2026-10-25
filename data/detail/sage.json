@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-22",
    "headline": "Why assisted living and skilled nursing need separate finance scorecards",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Adding an acquired practice to your dental group: the first finance questions to answer before go-live",
    "kind": "press",
@@ -20,12 +20,21 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Orthopedic group budgeting: from annual plan to monthly reforecast",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/orthopedic-group-budgeting-annual-plan-monthly-reforecast/"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Inside LPGA star Paula Creamer\u2019s high-performance mindset",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/infographic-inside-lpga-star-paula-creamers-high-performance-mindset/"
   },
   {
    "date": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/a-guide-to-generally-accepted-accounting-principles-gaap/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "The ultimate guide to accounts payable reconciliation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/accounts-payable-reconciliation/"
   }
  ]
 }

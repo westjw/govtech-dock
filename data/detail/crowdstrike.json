@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-24",
+   "headline": "Why Organizations Secure AI Agents with Falcon Guardian",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/why-organizations-secure-ai-agents-with-falcon-guardian/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-24",
+   "headline": "Obstacles to Weaponizing PHP2Shell Likely Constrain Immediate Widespread Exploitation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/obstacles-to-weaponizing-php2shell-likely-constrain-exploitation/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -29,15 +47,6 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "October 2026 Patch Tuesday: 1,413 CVEs Include Three Zero-Days and 75 Critical Vulnerabilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-october-2026/"
-  },
-  {
-   "date": "2026-10-13",
    "date_source": "near-h1",
    "first_seen": "2026-10-21",
    "headline": "U.S. Government Disrupts FAMOUS CHOLLIMA Operation with CrowdStrike Assistance",
@@ -53,6 +62,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/author.crowdstrike-counter-adversary-operations/"
+  },
+  {
+   "date": "2026-09-26",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "October 2026 Patch Tuesday: 1,413 CVEs Include Three Zero-Days and 75 Critical Vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-october-2026/"
   },
   {
    "date": "2026-09-26",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/video-highlights-the-4-key-steps-to-successful-incident-response/"
-  },
-  {
-   "date": "2019-02-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Helping Non-Security Stakeholders Understand ATT&CK in 10 Minutes or Less [VIDEO]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/helping-non-security-stakeholders-understand-attck-in-10-minutes-or-less/"
-  },
-  {
-   "date": "2019-01-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Analyzing Targeted Intrusions Through the ATT&CK Framework Lens [VIDEO]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/analyzing-targeted-intrusions-through-the-attck-framework-lens-video/"
   }
  ]
 }

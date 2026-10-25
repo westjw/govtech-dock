@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Features That Can Be Enabled/Disabled for Your Organization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/16786795-features-that-can-be-enabled-disabled-for-your-organization"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "time",
+   "first_seen": "2026-10-24",
+   "headline": "Using the MagicSchool Connector",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/15786767-using-the-magicschool-connector"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "time",
    "first_seen": "2026-10-07",
@@ -35,15 +53,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://help.magicschool.ai/en/articles/16765213-what-to-do-when-ai-output-isn-t-what-you-expected"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Features That Can Be Enabled/Disabled for Your Organization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/16786795-features-that-can-be-enabled-disabled-for-your-organization"
   },
   {
    "date": "2026-09-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://help.magicschool.ai/en/articles/10344633-how-do-students-join-a-student-room"
-  },
-  {
-   "date": "2026-09-12",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "How to Download Feedback as PDF in Class Writing Feedback",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/15465325-how-to-download-feedback-as-pdf-in-class-writing-feedback"
   }
  ],
  "profile": {

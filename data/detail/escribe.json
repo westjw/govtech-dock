@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-24",
+   "headline": "AI Meeting Minutes for School Boards: 5 Top Vendors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.escribemeetings.com/blog/ai-minutes-school-boards/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-24",
+   "headline": "5 Best Meeting Minutes Software for Local Government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.escribemeetings.com/blog/best-meeting-minutes-software-local-government/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "near-h1",
    "first_seen": "2026-10-14",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.escribemeetings.com/blog/wcag-compliance-checklist-public-meeting-lifecycle/"
-  },
-  {
-   "date": "2026-02-02",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "City Ordinance vs. City Code: What\u2019s the Difference?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.escribemeetings.com/blog/city-ordinance-vs-city-code/"
-  },
-  {
-   "date": "2025-12-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2026 State of the Clerk\u2019s Office Survey",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.escribemeetings.com/resources/2026-clerk-survey/"
   }
  ],
  "profile": {

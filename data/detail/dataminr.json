@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Inside Dataminr\u2019s Client-Tailored Threat Intelligence: From External Signal to Organizational Relevance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/inside-dataminr-client-tailored-threat-intelligence-from-external-signal-to-organizational-relevance/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/blog/black-hat-2026-what-cisos-kept-telling-us/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Public Data Contributes to Space Domain Awareness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/how-public-data-contributes-to-space-domain-awareness/"
   }
  ],
  "profile": {

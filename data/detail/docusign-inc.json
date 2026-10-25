@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Financial Institutions Can Now Use Mobile Driver\u2019s Licenses to Meet CIP Requirements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/financial-institutions-can-now-use-mobile-drivers-licenses-to-meet-cip-requirements"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "How to Transform Fragmented Agreement Tools into a Strategic Enterprise Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/how-to-transform-fragmented-agreement-tools-into-a-strategic-enterprise-platform"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/docusign-brings-agreement-intelligence-to-small-businesses-in-chatgpt"
-  },
-  {
-   "date": "2026-06-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Architecting for Millions: How Docusign Processes Agreements at Scale",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/architecting-for-millions-how-docusign-processes-agreements-at-scale"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What problems does contract lifecycle management solve?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/what-is-contract-compliance"
   }
  ]
 }

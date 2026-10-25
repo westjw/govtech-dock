@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "What Critical Vulnerability Responses Reveal About Your Web Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/what-critical-vulnerability-responses-reveal-about-your-web-platform"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/what-25-ai-tokens-could-mean-your-website-security"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Why Scam Anxiety Makes Site Performance a Trust and Conversion Issue for Retailers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/why-scam-anxiety-makes-site-performance-trust-conversion-issue"
   }
  ]
 }

@@ -10,8 +10,17 @@
    "url": "https://www.kaiden.ai/post/avoiding-vendor-lock-in-in-law-enforcement-technology"
   },
   {
+   "date": "2026-10-06",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "Avoiding Vendor Lock-In in Law Enforcement Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/blog/avoiding-vendor-lock-in-in-law-enforcement-technology"
+  },
+  {
    "date": "2026-09-01",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "The NRTCCA is building a national standard for RTCC readiness",
    "kind": "press",
@@ -19,8 +28,17 @@
    "url": "https://www.kaiden.ai/post/the-nrtcca-is-building-a-national-standard-for-rtcc-readiness-powered-by-kaiden-ai"
   },
   {
+   "date": "2026-09-01",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "The NRTCCA is building a national standard for RTCC readiness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/blog/the-nrtcca-is-building-a-national-standard-for-rtcc-readiness-powered-by-kaiden-ai"
+  },
+  {
    "date": "2026-07-31",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Baltimore Police Department Launches Pilot of Kaiden AI to Modernize Training",
    "kind": "contract",
@@ -28,8 +46,17 @@
    "url": "https://www.kaiden.ai/post/pilot-announcement-baltimore-pd"
   },
   {
+   "date": "2026-07-31",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "Baltimore Police Department Launches Pilot of Kaiden AI to Modernize Training",
+   "kind": "contract",
+   "kind_rule": "Police Department Launches",
+   "url": "https://www.kaiden.ai/blog/pilot-announcement-baltimore-pd"
+  },
+  {
    "date": "2026-02-12",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Law Enforcement Training Has a Scaling Problem",
    "kind": "press",
@@ -37,8 +64,17 @@
    "url": "https://www.kaiden.ai/post/law-enforcement-training-has-a-scaling-problem"
   },
   {
+   "date": "2026-02-12",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "Law Enforcement Training Has a Scaling Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/blog/law-enforcement-training-has-a-scaling-problem"
+  },
+  {
    "date": "2025-12-04",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Kaiden AI Achieves SOC 2 Type 1: A Commitment to Secure Training Technology",
    "kind": "press",
@@ -46,8 +82,17 @@
    "url": "https://www.kaiden.ai/post/kaiden-ai-achieves-soc-2-type-1-attestation-strengthening-trust-and-security-for-law-enforcement-tr"
   },
   {
+   "date": "2025-12-04",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "Kaiden AI Achieves SOC 2 Type 1: A Commitment to Secure Training Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/blog/kaiden-ai-achieves-soc-2-type-1-attestation-strengthening-trust-and-security-for-law-enforcement-tr"
+  },
+  {
    "date": "2025-10-16",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "How AI in Police Training Improves Retention and Readiness",
    "kind": "press",
@@ -55,22 +100,13 @@
    "url": "https://www.kaiden.ai/post/ai-police-training-retention-readiness"
   },
   {
-   "date": "2025-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How AI-Powered Simulations Are Transforming Scenario-Based Law Enforcement Training",
+   "date": "2025-10-16",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "How AI in Police Training Improves Retention and Readiness",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.kaiden.ai/post/how-ai-powered-simulations-are-transforming-scenario-based-law-enforcement-training"
-  },
-  {
-   "date": "2025-01-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Kaiden AI Raises $1M Pre-Seed Round to Transform Police Training with Realistic AI Simulations",
-   "kind": "funding",
-   "kind_rule": "Raises $1M Pre-Seed Round",
-   "url": "https://www.kaiden.ai/post/kaiden-ai-pre-seed-funding"
+   "url": "https://www.kaiden.ai/blog/ai-police-training-retention-readiness"
   }
  ],
  "profile": {

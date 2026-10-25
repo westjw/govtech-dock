@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Building resilience with crisis exercises and drills",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/building-resilience-with-crisis-exercises-and-drills/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/blog/2026-hospital-hurricane-preparedness-checklist-are-you-ready/"
-  },
-  {
-   "date": "2026-04-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Dynamically Adaptive Resilience: Autonomous when you want it to be, human-guided when you need it to be",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/dynamically-adaptive-resilience-autonomous-when-you-want-it-to-be-human-guided-when-you-need-it-to-be/"
   }
  ],
  "profile": {

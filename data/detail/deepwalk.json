@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Free Sidewalk Mileage: How Cities Use DeepWalk and OpenStreetMap in Preparation for Sidewalk Assessments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/free-sidewalk-mileage-how-cities-can-use-deepwalk-and-openstreetmaps-in-preparation-for-sidewalk-assessments"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Create an Implement Program on DeepWalk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-create-an-implement-program-on-deepwalk"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Turning Assessment into Action: How Genoa, IL Uses DeepWalk for Sidewalk Inspections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/turning-assessment-into-action-genoa-il-uses-deepwalk-for-sidewalk-inspections"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -26,24 +53,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deepwalk.com/blog/how-to-export-trimble-data-to-deepwalk-a-3-step-migration-guide"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Free Sidewalk Mileage: How Cities Use DeepWalk and OpenStreetMaps in Preparation for Sidewalk Assessments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deepwalk.com/blog/free-sidewalk-mileage-how-cities-can-use-deepwalk-and-openstreetmaps-in-preparation-for-sidewalk-assessments"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Create an Implement Program on DeepWalk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deepwalk.com/blog/how-to-create-an-implement-program-on-deepwalk"
   },
   {
    "date": "2026-05-04",
@@ -89,15 +98,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deepwalk.com/blog/how-to-migrate-to-deepwalks-formal-authentication-system"
-  },
-  {
-   "date": "2025-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Turning Assessment into Action: How Genoa, IL Uses DeepWalk for Sidewalk Inspections",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deepwalk.com/blog/turning-assessment-into-action-genoa-il-uses-deepwalk-for-sidewalk-inspections"
   },
   {
    "date": "2025-03-17",

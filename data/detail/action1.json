@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "PHP2Shell: The Biggest Risk Is the PHP You Don\u2019t Know You\u2019re Running",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Best Vulnerability Remediation Tools & Software in 2026",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "How to Reduce MTTR: A Practical Guide for Patching, Vulnerability Remediation, and Software Incidents",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "What is MTBF? Mean Time Between Failures for IT and Software Systems",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Nearly 1,000 Patches in a Month: Why the Old Patching Model Is Breaking Down",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Microsoft Configuration Manager (SCCM) End of Life",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "CWE vs CVE \u2014 Weaknesses vs. Vulnerabilities",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "VM Patch Management: How to Patch Virtual Machines at Scale",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Force a Group Policy Update (gpupdate /force)",
    "kind": "product",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Is Intune the SCCM Replacement? What Actually Replaces Microsoft SCCM",
    "kind": "press",

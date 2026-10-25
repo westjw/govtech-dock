@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "eMudhra CA Compromise: Find and Fix Your Exposure with Tanium",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/emudhra-ca-compromise-find-and-fix-your-exposure-with-tanium"
+  },
+  {
+   "date": "2026-10-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-25",
+   "headline": "HTTP2Shell: Find and Fix Vulnerable Brotli Copies with Tanium",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/http2shell-find-and-fix-vulnerable-brotli-copies-with-tanium"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "AI Compute Just Became an Endpoint Problem",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Notice when a machine stops acting like itself: introducing Endpoint Drift",
    "kind": "product",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Hunt or be Hunted: Every service was unique, and that was the problem",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AI Is Accelerating Vulnerability Discovery. Tanium Helps You Keep Up.",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/press-releases/tanium-redefines-security-operations-for-the-ai-era"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "AI is Accelerating Your Environment. Our Connector Keeps Up: The Next Evolution of the Service Graph Connector for Tanium & ServiceNow",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/service-graph-connector-delta-sync"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Hunter Wins: HuntIQ Tradecraft is your new hunt library",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/huntiq-tradecraft-hub-launch"
   }
  ],
  "profile": {

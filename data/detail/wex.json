@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-10-20",
+   "date": "2026-10-22",
    "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "What is business email compromise and how does it affect B2B payments?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/beware-of-your-inbox-as-bec-cybercrime-climbs/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "4 considerations when choosing employee benefits for the first time",
    "kind": "press",
@@ -44,6 +53,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/wex-enters-open-enrollment-season-at-record-customer-satisfaction/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-24",
+   "headline": "From HSA saver to HSA investor: See the full potential of your health savings account",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/hsa-saver-to-investor/"
   },
   {
    "date": "2026-10-06",

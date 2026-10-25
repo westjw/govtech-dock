@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Testimonials Reed Wellbeing: From a 30-Day Wait to 5",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/reed-wellbeing-from-a-30-day-wait-to-5"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Testimonials GXBank: Banking the Underserved, 24/7",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/gxbank-banking-the-underserved-24-7"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Testimonials Bluecrest Wellness: The Gamble That Paid for the Rest of the Stack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/bluecrest-wellness-the-gamble-that-paid-for-the-rest-of-the-stack"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nice.com/resources/why-ai-pilots-arent-improving-customer-experience-5-practices-that-close-the-value-gap"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Testimonials TD Bank: Turning Bill Payments Into a Tangible Automation Score",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/resources/td-bank-turning-bill-payments-into-a-tangible-automation-score"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "NiCE Positioned Furthest for Vision and Capability in Everest Group\u2019s 2026 European CCaaS PEAK Matrix\u00ae Assessment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/announcements/nice-positioned-furthest-for-vision-and-capability-in-everest-groups-2026-european-ccaas-peak-matrix-assessment"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "IDC MarketScape: Worldwide Agentic Contact Center\u2013as-a-Service Platforms 2026 Vendor Assessment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/resources/idc-marketscape-worldwide-agentic-contact-center-as-a-service-platforms-2026-vendor-assessment"
   }
  ],
  "profile": {

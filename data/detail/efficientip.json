@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "IPAM best practices for simpler network operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/ipam-best-practices-simplifying-network-management/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "DDI Observability Metrics: Assess DNS and DHCP Availability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/ddi-observability-metrics/"
+  },
+  {
    "date": "2025-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/resources/network-source-of-truth-nsot-network-automation-insights-powered-by-gartner/"
-  },
-  {
-   "date": "2022-11-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "AmiViz inks a new partnership with EfficientIP",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/resources/amiviz-inks-a-new-partnership-with-efficientip/"
-  },
-  {
-   "date": "2022-11-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "The strategic role of open APIs in Network Automation and Management ecosystems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/resources/tufin-integration/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "How Elastic helps Audi Revolut F1\u00ae Team find what matters across engineering software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/elastic-audi-revolut-f1-team-partnership"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elastic.co/blog/elastic-cloud-serverless-now-available-azure-iowa"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Elastic Cloud on Azure gets a speed boost: Compute-optimized instances on Azure Cobalt ARM",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/elastic-cloud-azure-cobalt-arm"
   }
  ]
 }

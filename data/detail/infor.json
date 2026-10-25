@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Healthcare operational interoperability: beyond connectivity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/healthcare-operational-interoperability-beyond-connectivity"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-23",
@@ -35,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/gartner-2026-day-1-industry-ai-foundation"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "De-risking the journey to the cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/move-to-cloud-with-less-risk-and-disruption"
   },
   {
    "date": "2026-10-16",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/apac/blog/integrated-erp-planning-profitability"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-15",
-   "headline": "Early Talent launching their careers at Infor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/early-talent-launching-careers"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-15",
-   "headline": "Inside Infor's Early Talent onboarding experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/infor-early-talent-onboarding-experience"
   }
  ],
  "profile": {

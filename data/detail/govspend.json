@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "GovSpend Hits 1 Million Active Contracts: What the Dataset Reveals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/govspend-hits-1-million-active-contracts-what-the-dataset-reveals/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/local-government-procurement-how-city-and-county-purchasing-works/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What is a GWAC? How Vendors Find Task-Order Opportunities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/what-is-a-gwac-how-vendors-find-task-order-opportunities/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "University Research Data Protection Starts at the Records Layer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://softdocs.com/blog/protect-university-research-data-with-document-management"
+  },
+  {
    "date": "2025-12-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://softdocs.com/blog/is-your-legacy-solution-doing-more-harm-than-good"
-  },
-  {
-   "date": "2023-10-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Tightening Data Security in the Cloud \u2013 A Softdocs Q&A",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://softdocs.com/blog/tightening-data-security-in-the-cloud-a-softdocs-qa"
   }
  ],
  "profile": {

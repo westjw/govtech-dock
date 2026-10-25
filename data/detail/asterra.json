@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "Sewer Leak Detection: Underground Methods for Utilities & Municipalities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/blog/sewer-leak-detection/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://asterra.io/resources/global-problems-local-impact-how-utilities-worldwide-used-ai-to-find-fix-and-future-proof-infrastructure/"
-  },
-  {
-   "date": "2026-02-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Global Problems, Local Impact: How Utilities Worldwide Used AI to Find, Fix, and Future-Proof Infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://asterra.io/blog/global-problems-local-impact-how-utilities-worldwide-used-ai-to-find-fix-and-future-proof-infrastructure/"
   }
  ],
  "profile": {

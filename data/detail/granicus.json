@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-24",
+   "headline": "The hidden benefits gap: When residents don\u2019t know they\u2019re eligible",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://granicus.com/blog/the-hidden-benefits-gap-when-residents-dont-know-theyre-eligible/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://granicus.com/blog/from-innovation-to-impact-how-governments-can-expand-capacity-and-deliver-better-outcomes/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in public services: How to choose the right AI for the right job",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://granicus.com/blog/ai-in-public-services-how-to-choose-the-right-ai-for-the-right-job/"
   }
  ],
  "profile": {
