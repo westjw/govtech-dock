@@ -2866,6 +2866,16 @@ Both are the same lesson as the render budget and the journal's BLAST: a
 bound has to be in the unit the failure is measured in, and a workflow's
 commit step has to be derived from what the script writes, not typed in.
 
+**The refresh self-tests the board its own crawl built (owner, 2026-10-25:
+"add the news check to the refresh").** Its first self-test reads last
+night's board, so a defect tonight's crawl introduced went live unchecked: on
+10-23 a Recruitee range with no period shipped and three news runs failed on
+it before anyone knew (10-25's two failures were the debut check's comma
+split). The second run is the LAST step, after the data commit and the
+digests, `if: !cancelled() && steps.build.outcome == 'success'`: it only
+shouts, like the collapse alarm, because refusing the commit would throw away
+a night's crawl. `check_the_refresh_tests_the_board_it_built` (5 of 5).
+
 **The budget did not hold either: one run finished between 2026-09-20 and
 10-05.** The September fix was right but incomplete. The budget stopped
 HANDING OUT companies, and a company already handed out ran to its end.

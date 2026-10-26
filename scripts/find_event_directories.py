@@ -1159,7 +1159,7 @@ def event_name_and_year(page: str, url: str) -> tuple[str | None, str | None]:
 
 
 def _tag(base: str, year: str, taken: set, geo: str | None = None) -> str:
-    """A catalog tag: '<name> <year>', unique, in the charset selftest allows.
+    r"""A catalog tag: '<name> <year>', unique, in the charset selftest allows.
 
     THE CHARSET IS NOT COSMETIC. conferences.json's own rule is
     ^[\w &.'/-]+ 20\d\d$ and a tag lands permanently inside company

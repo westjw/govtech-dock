@@ -7571,10 +7571,14 @@ def check_every_workflow_command_would_parse() -> int:
     if not wf.exists():
         note("no workflows on disk")
         return 0
-    call = _re.compile(r"python3?\s+scripts/([A-Za-z_]+)\.py((?:\s+[^\n|&;]*)?)")
+    # The arguments run to the END OF THE LINE, with a shell continuation
+    # (a backslash, then a newline) joined first. `\s+` here crossed newlines, so the
+    # last command in refresh.yml read the comment block under it as its
+    # flags (2026-10-25: a "# ------ the board this run built" divider).
+    call = _re.compile(r"python3?\s+scripts/([A-Za-z_]+)\.py((?:[ \t]+[^\n|&;]*)?)")
     checked = 0
     for f in sorted(wf.glob("*.yml")):
-        for m in call.finditer(f.read_text()):
+        for m in call.finditer(_re.sub(r"\\\n\s*", " ", f.read_text())):
             script, argstr = m.group(1), m.group(2)
             path = ROOT / "scripts" / f"{script}.py"
             if not path.exists():
@@ -31042,6 +31046,45 @@ def check_discovery_stages_every_file_it_writes() -> int:
     return errors
 
 
+def check_the_refresh_tests_the_board_it_built() -> int:
+    """refresh.yml runs the self-test on the board its own crawl built.
+
+    The self-test at the top of the job reads the previous night's board, so
+    a defect the crawl introduced went live unchecked: on 2026-10-23 a
+    Recruitee pay range with no period shipped and three news runs failed
+    their self-test on it before anyone knew (owner, 2026-10-25: "add the news
+    check to the refresh"). The second run must come AFTER the build and the
+    data commit - before the commit, a failure would throw away the night's
+    crawl - and must run even when a step after the build failed.
+    """
+    yml = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+    code = "\n".join(l for l in yml.splitlines() if not l.strip().startswith("#"))
+    steps = re.split(r"\n      - name: ", code)[1:]
+    names = [st.split("\n", 1)[0].strip() for st in steps]
+    def at(pred):
+        return next((i for i, st in enumerate(steps) if pred(st)), None)
+    build = at(lambda st: re.search(r"run: python scripts/build_board\.py", st))
+    commit = at(lambda st: st.startswith("Commit the refreshed data"))
+    tests = [i for i, st in enumerate(steps) if re.search(r"run: python scripts/selftest\.py\s*$", st.strip())]
+    if build is None or commit is None:
+        return fail("refresh.yml has no build or no data-commit step to order the self-test against")
+    if not re.search(r"^\s*id: build\s*$", steps[build], flags=re.M):
+        return fail(f"refresh.yml's build step ('{names[build]}') has no id, so nothing can ask whether it ran")
+    after = [i for i in tests if i > commit]
+    if not after:
+        return fail("refresh.yml never self-tests the board its own crawl built: the only "
+                    "self-test reads last night's board, so a defect from tonight's crawl ships "
+                    "unchecked and the news sweep is the first to find it")
+    if not re.search(r"if: \$\{\{\s*!cancelled\(\) && steps\.build\.outcome == 'success'\s*\}\}",
+                     steps[after[-1]]):
+        return fail(f"refresh.yml's self-test after the crawl ('{names[after[-1]]}') does not run "
+                    f"whenever the board was built, so a failed step after the build skips it")
+    if re.search(r"continue-on-error:\s*true", steps[after[-1]]):
+        return fail("refresh.yml's self-test after the crawl is continue-on-error, so it can never "
+                    "fail the workflow and nobody hears")
+    return 0
+
+
 def check_the_news_sweep_stops_before_the_job_does() -> int:
     """The re-read must stop on the clock, under the job's timeout.
 
@@ -36836,6 +36879,7 @@ def main() -> int:
     errors += check_no_control_characters_in_source()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()
+    errors += check_the_refresh_tests_the_board_it_built()
     errors += check_a_careers_page_cannot_stall_discovery()
     errors += check_the_news_sweep_stops_before_the_job_does()
     errors += check_a_slow_site_cannot_outlast_the_sweep()

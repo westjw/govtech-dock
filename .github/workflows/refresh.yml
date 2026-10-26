@@ -168,6 +168,7 @@ jobs:
         run: python scripts/hq_bid_records.py --write
 
       - name: Build the job board and market intel
+        id: build
         # Keeps every posting, not only AE reqs: the board and the intel both
         # depend on knowing what KIND of hiring a company is doing.
         # Same rationing, separate queue: refresh renders to learn a STATUS,
@@ -333,6 +334,22 @@ jobs:
           else
             python scripts/send_digests.py
           fi
+
+      # ---------------------------------------- the board this run built
+      - name: Self-test the board this run built
+        # THE CHECK THE NEWS SWEEP USED TO BE THE FIRST TO RUN. The self-test
+        # at the top of this job reads LAST night's board; nothing read
+        # tonight's before it went live. On 2026-10-23 Recruitee handed over
+        # VertiGIS's "60000-70000 USD" with no period, the board shipped with
+        # it, and three news runs in a row failed their self-test on it before
+        # anyone knew (owner, 2026-10-25: "add the news check to the refresh").
+        # HERE, LAST, AND IT ONLY SHOUTS, for the alarm step's reason: the
+        # crawl is committed and the digests are sent, so a failure cannot
+        # cost a day's snapshot - it fails this workflow, which emails the
+        # owner the same morning. It runs whenever the board was built, even
+        # when a step after the build failed (the digests' KV write has).
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python scripts/selftest.py
 
       # ------------------------------------------------------------- deploy
       # There is no deploy step here on purpose. Cloudflare Pages is connected
