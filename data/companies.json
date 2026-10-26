@@ -162991,7 +162991,7 @@
     "year_founded": 2010,
     "sector": "General Gov",
     "category": "Strategy & Performance",
-    "description": "Daily satellite imagery and analytics sold to government agencies",
+    "description": "Daily satellite imagery and analytics sold to government agencies - exhibited at NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.planet.com/company/careers/"
@@ -163005,7 +163005,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; NSGIC 2026",
     "profile": {
       "paragraphs": [
         "Planet sells Earth observation data products drawn from its own satellite constellations. Planet Monitoring supplies near daily coverage at 3.7 meter resolution in four multispectral bands, RGB and Near Infrared. Satellite Tasking adds site specific SkySat high resolution imagery, and Planetary Variables quantifies attributes like soil moisture, biomass, and land surface temperature.",
@@ -163116,7 +163116,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Planet"
+    ]
   },
   {
     "id": "maxar-intelligence",
@@ -223638,6 +223641,54 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "owner 2026-10-21: add infilla.com",
+    "researched": true
+  },
+  {
+    "id": "24pet",
+    "name": "24Pet",
+    "website": "https://www.24pet.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Animal Services",
+    "description": "Animal shelter management software (24PetShelter, PetPoint, Chameleon), pet licensing and a microchip registry for municipal animal services and rescues - exhibited at Animal Care Expo 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: Animal Care Expo 2026",
+    "researched": true
+  },
+  {
+    "id": "here-technologies",
+    "name": "HERE Technologies",
+    "website": "https://www.here.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Map data, real-time traffic and traffic analytics data for state and local transportation agencies and city planning - exhibited at NSGIC 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NSGIC 2026",
     "researched": true
   }
 ]
