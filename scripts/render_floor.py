@@ -55,7 +55,9 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 "
       "(compatible; govtech-dock/1.0; +https://github.com/westjw/govtech-dock)")
 MORE = re.compile(r"^\s*(show|view|see|load)\s+(all|more)\b", re.I)
-MAX_CLICKS = 8
+# a floor of a thousand loads "Load More Results" four or five times, after a
+# press or two spent on controls that redraw the same batch
+MAX_CLICKS = 20
 # AN INFINITE-SCROLL LIST LOADS AS IT IS SCROLLED, and one scroll is not
 # the list. NCSL's EXPOCAD directory rendered exactly 100 exhibitors and
 # stopped at "Distilled Spirits Council" - the letter D - because this
@@ -74,6 +76,57 @@ SCROLL_ALL_JS = ("() => { window.scrollTo(0, document.documentElement.scrollHeig
 def keep_scrolling(clicked: bool, grew: bool, rounds: int) -> bool:
     """Another round: a "show more" was clicked or the list grew, within the bound."""
     return rounds < MAX_SCROLLS and (clicked or grew)
+
+
+def control_key(txt: str, href: str | None) -> tuple[str, str]:
+    """What makes two "show more" controls the same control."""
+    return (re.sub(r"\s+", " ", txt or "").strip().lower(), href or "")
+
+
+async def expand(page) -> None:
+    """Press "show more" and scroll until the list stops growing.
+
+    A CONTROL THAT ADDED NOTHING IS NOT PRESSED AGAIN. MapYourShow puts a
+    "Show All" letter filter above its "Load More Results" button, and both
+    read as "show more": this pressed the first one every round, which redrew
+    the same first batch, so FDIC's 924 exhibitors were read as the 198 from
+    1-9 to D and DISTRIBUTECH's stopped at E (2026-10-25). Now a press that
+    does not grow the page spends that control, and the next round reaches
+    the one that does: four presses of "Load More Results" read FDIC to Z.
+    """
+    spent: set = set()
+    seen = await page.evaluate(SIZE_JS)
+    for rounds in range(1, MAX_SCROLLS + 1):
+        clicked = False
+        for el in (await page.query_selector_all("button, a, [role=button]")
+                   if rounds <= MAX_CLICKS else []):
+            try:
+                txt = (await el.inner_text()).strip()
+            except Exception:                                  # noqa: BLE001
+                continue
+            if not (MORE.match(txt) and len(txt) < 30):
+                continue
+            try:
+                key = control_key(txt, await el.get_attribute("href"))
+                if key in spent or not await el.is_visible():
+                    continue
+                before = await page.evaluate(SIZE_JS)
+                await el.click(timeout=3000)
+                clicked = True
+                await page.wait_for_timeout(1500)
+            except Exception:                                  # noqa: BLE001
+                continue
+            if await page.evaluate(SIZE_JS) <= before:
+                spent.add(key)
+            break
+        await page.mouse.move(640, 500)
+        await page.mouse.wheel(0, 20000)
+        await page.evaluate(SCROLL_ALL_JS)
+        await page.wait_for_timeout(1200)
+        now = await page.evaluate(SIZE_JS)
+        grew, seen = now > seen, max(seen, now)
+        if not keep_scrolling(clicked, grew, rounds):
+            break
 
 
 def address(c: dict) -> str | None:
@@ -129,31 +182,7 @@ async def render(url: str) -> tuple[str, str | None]:
             await page.wait_for_timeout(2500)
             if not await asyncio.to_thread(robots.allowed, page.url):
                 return "", "robots.txt asks crawlers not to read the page it landed on"
-            seen = await page.evaluate(SIZE_JS)
-            for rounds in range(1, MAX_SCROLLS + 1):
-                clicked = False
-                for el in (await page.query_selector_all("button, a, [role=button]")
-                           if rounds <= MAX_CLICKS else []):
-                    try:
-                        txt = (await el.inner_text()).strip()
-                    except Exception:                          # noqa: BLE001
-                        continue
-                    if MORE.match(txt) and len(txt) < 30 and await el.is_visible():
-                        try:
-                            await el.click(timeout=3000)
-                            clicked = True
-                            await page.wait_for_timeout(1500)
-                            break
-                        except Exception:                      # noqa: BLE001
-                            continue
-                await page.mouse.move(640, 500)
-                await page.mouse.wheel(0, 20000)
-                await page.evaluate(SCROLL_ALL_JS)
-                await page.wait_for_timeout(1200)
-                now = await page.evaluate(SIZE_JS)
-                grew, seen = now > seen, max(seen, now)
-                if not keep_scrolling(clicked, grew, rounds):
-                    break
+            await expand(page)
             parts = [await page.content()]
             for fr in page.frames[1:]:
                 try:

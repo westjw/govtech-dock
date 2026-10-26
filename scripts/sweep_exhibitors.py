@@ -157,6 +157,15 @@ CTA_HEAD = re.compile(r"^(contact|visit|meet)\s+(?!(us|me|sales|support|info|inf
                       r"our team|staff|form|page|details|now)\b)(?=\S)", re.I)
 
 
+# A SPONSORSHIP TIER RIDING ON A NAME. Sched's exhibitor directory writes
+# "Esri - Diamond Sponsor" and "VertiGIS & YP Meet-Up Sponsor" (GIS-Pro 2026,
+# 2026-10-25), and as written none of them matched the company already on the
+# board, so each would have come back as a new candidate. Only after a
+# separator, and only a label ending in Sponsor or Participant.
+SPONSOR_TAIL = re.compile(r"\s+(?:-|\u2013|\u2014|&|\|)\s+(?:[A-Za-z][\w'/-]*\s+){0,3}"
+                          r"(?:co-)?(?:sponsor|participant)\s*$", re.I)
+
+
 def clean(s: str) -> str:
     s = s or ""
     # DECODED UNTIL IT STOPS CHANGING: alt="Election Systems &amp;amp; Software"
@@ -169,6 +178,7 @@ def clean(s: str) -> str:
     s = re.sub(r"\s+", " ", s).strip()
     s = CTA_TAIL.sub("", s).strip()
     s = CTA_HEAD.sub("", s).strip()
+    s = SPONSOR_TAIL.sub("", s).strip()
     return s.strip(_ARROWS + " ")
 
 
@@ -731,8 +741,12 @@ def reads_as_a_menu(names: list[dict]) -> str | None:
 
 
 def ready(conferences: list, tag: str | None, images: bool = False) -> list:
-    out = [c for c in conferences if c.get("exhibitor_url")
-           or (images and c.get("fetchability") == "image" and c.get("exhibitor_url_candidate"))]
+    # A NON-SLED ROW IS LISTED, NEVER SWEPT (owner, 2026-09-09), as
+    # render_floor.walled already held: TechConnect 2027 (sled: false) carried
+    # a reader's directory address and this took it, so its floor reached the
+    # suppliers file (2026-10-26, reverted).
+    out = [c for c in conferences if c.get("sled") is not False and (c.get("exhibitor_url")
+           or (images and c.get("fetchability") == "image" and c.get("exhibitor_url_candidate")))]
     if tag:
         out = [c for c in out if (c.get("event_tag") or "") == tag]
     return out

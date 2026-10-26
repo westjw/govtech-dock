@@ -1515,6 +1515,22 @@ only when the organisation's own page states them.
   decodes entities and takes a list's caption off ("IPSTA Conference Vendors-
   as of 10/12/2026" is "IPSTA Conference"). Five stored names corrected.
 
+- **A "show more" that added nothing is not pressed again**
+  (`render_floor.expand`, 2026-10-25). MapYourShow puts a "Show All" letter
+  filter above "Load More Results", both read as "show more", and the first
+  was pressed every round: FDIC's 924 exhibitors read as 198, DISTRIBUTECH's
+  stopped at E. A press that does not grow the page spends that control.
+- **A sponsorship tier is not part of a name** (`SPONSOR_TAIL` in `clean()`):
+  Sched writes "Esri - Diamond Sponsor", which matched no company on file and
+  would have come back as a candidate. Only after a separator, and only a
+  label ending in Sponsor or Participant.
+- **A non-SLED row is listed, never swept, at every door** (2026-10-26).
+  render_floor held the 2026-09-09 ruling and `sweep_exhibitors.ready()` did
+  not, so TechConnect 2027 (sled: false) was swept from a reader's address
+  and intaken: one company tag, four new suppliers, six supplier tags.
+  Reverted the same night (journal 2026-10-26#4); `ready()` and
+  conference_intake (under the event's tag or a prior one) now refuse it.
+  `check_a_non_sled_event_is_listed_never_swept`.
 - **`check_a_redraw_is_the_crawl_without_the_fetch` flaked once** during this
   work: 21 organisations differed after its randomised edits (everbridge,
   urban-sdk, placer-ai first), none with a source the tag change can touch,

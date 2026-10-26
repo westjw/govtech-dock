@@ -173,6 +173,16 @@ def main() -> int:
         print(f"refusing {a.file}: not an exhibitor list - "
               f"{staged.get('why') or 'the sweep found nothing'}", file=sys.stderr)
         return 1
+    # A NON-SLED EVENT IS LISTED, NEVER SWEPT (owner, 2026-09-09): its floor
+    # files nobody. Asked here too, because a file staged by hand skips the
+    # sweep's own refusal (2026-10-26: TechConnect 2027).
+    tag = a.event_tag or staged.get("event_tag")
+    rows = json.loads((DATA / "conferences.json").read_text()).get("conferences", [])
+    if any(r.get("sled") is False and tag and (r.get("event_tag") == tag or tag in (r.get("prior_tags") or []))
+           for r in rows):
+        print(f"refusing {a.file}: {tag} is a non-SLED event - it is listed on the tab and "
+              f"never swept (owner's ruling, 2026-09-09)", file=sys.stderr)
+        return 1
     event, why = resolve_tag(staged, a.event_tag)
     if why:
         print(f"refused: {why}", file=sys.stderr)

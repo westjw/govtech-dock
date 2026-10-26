@@ -10813,8 +10813,50 @@ def check_an_infinite_scroll_floor_is_scrolled_to_its_end() -> int:
     if rf.keep_scrolling(True, True, rf.MAX_SCROLLS):
         errors += fail("the scroll loop has no bound")
     src = (ROOT / "scripts" / "render_floor.py").read_text()
-    if "keep_scrolling(clicked, grew, rounds)" not in src or "SCROLL_ALL_JS" not in src.split("async def render")[1]:
-        errors += fail("render() does not decide its scrolling by keep_scrolling, or does not scroll inner lists")
+    ex = src.split("async def expand", 1)[-1].split("\ndef ", 1)[0]
+    if "keep_scrolling(clicked, grew, rounds)" not in ex or "SCROLL_ALL_JS" not in ex \
+            or "await expand(page)" not in src.split("async def render", 1)[-1]:
+        errors += fail("render() does not expand the list through expand(), or expand() does "
+                       "not decide its scrolling by keep_scrolling, or does not scroll inner lists")
+    # A CONTROL THAT ADDED NOTHING IS NOT PRESSED AGAIN (2026-10-25): driven
+    # on a page whose "Show All" filter redraws the same 198 names above a
+    # "Load More Results" that adds a batch until the list is whole, as
+    # MapYourShow's alpha list does. Pressing the first match every round
+    # read FDIC's 924 exhibitors as 198.
+    import asyncio as _aio
+
+    class _El:
+        def __init__(self, page, txt, href, grows):
+            self.page, self.txt, self.href, self.grows = page, txt, href, grows
+        async def inner_text(self): return self.txt
+        async def get_attribute(self, k): return self.href if k == "href" else None
+        async def is_visible(self): return self.grows is None or self.page.batches < 5
+        async def click(self, timeout=None):
+            self.page.presses.append(self.txt)
+            if self.grows:
+                self.page.batches += 1
+
+    class _Page:
+        def __init__(self):
+            self.batches, self.presses = 1, []
+            self.els = [_El(self, "Show All", "/x#/alpha/*", False),
+                        _El(self, "See All Results", None, False),
+                        _El(self, "Load More Results", None, True)]
+            class _M:
+                async def move(s, *a): pass
+                async def wheel(s, *a): pass
+            self.mouse = _M()
+        async def query_selector_all(self, sel): return self.els
+        async def evaluate(self, js): return self.batches * 200 if "length" in js else None
+        async def wait_for_timeout(self, ms): pass
+
+    pg = _Page()
+    _aio.run(rf.expand(pg))
+    if pg.batches != 5:
+        errors += fail(f"expand() read {pg.batches} of 5 batches of a Load More list; "
+                       f"it pressed {pg.presses}")
+    if pg.presses.count("Show All") > 1 or pg.presses.count("See All Results") > 1:
+        errors += fail(f"expand() pressed a control that added nothing more than once: {pg.presses}")
     return errors
 
 
@@ -10884,7 +10926,13 @@ def check_a_floor_is_read_before_it_is_filed() -> int:
                           ("Website Solutions Inc", "Website Solutions Inc"), ("Delta Dental", "Delta Dental"),
                           ("CONTACT BOTCOPY", "BOTCOPY"), ("Contact Us", "Contact Us"), ("Contact Sales", "Contact Sales"),
                           ("Visit Design Studio", "Design Studio"),
-                          ("Election Systems &amp;amp; Software", "Election Systems & Software")):
+                          ("Election Systems &amp;amp; Software", "Election Systems & Software"),
+                          # a sponsorship tier after a separator (GIS-Pro's Sched, 2026-10-25)
+                          ("Esri - Diamond Sponsor", "Esri"), ("VertiGIS & YP Meet-Up Sponsor", "VertiGIS"),
+                          ("Cultivate Geospatial Solutions - Social Event Co-Sponsor", "Cultivate Geospatial Solutions"),
+                          ("Minnesota GIS/LIS Consortium - Showcase Participant", "Minnesota GIS/LIS Consortium"),
+                          ("Sponsor Services Inc", "Sponsor Services Inc"), ("Johnson & Johnson", "Johnson & Johnson"),
+                          ("Title Sponsor Group", "Title Sponsor Group")):
             if sw.clean(raw) != want:
                 errors += fail(f"sweep_exhibitors.clean({raw!r}) = {sw.clean(raw)!r}, expected {want!r}")
         if one.get("quality") != "menu":
@@ -26880,6 +26928,58 @@ def check_a_platforms_name_field_is_read() -> int:
     return errors
 
 
+def check_a_non_sled_event_is_listed_never_swept() -> int:
+    """A non-SLED row is on the Conferences tab and its floor files nobody.
+
+    Owner, 2026-09-09: ADJACENT / PROVIDER / INDUSTRY rows are added to the
+    site and not swept. render_floor.walled held it and the sweep did not:
+    TechConnect 2027 (sled: false, a federal R&D show) carried a reader's
+    directory address, was swept and intaken, and filed four suppliers
+    (2026-10-26, reverted the same night). The sweep's picker, the browser's
+    and the intake each refuse it; the intake runs for real, as --dry-run.
+    """
+    import subprocess, tempfile
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sweep_exhibitors as sw
+    import render_floor as rf
+    rows = [{"event_tag": "Off 2027", "exhibitor_url": "https://off.test/x", "sled": False},
+            {"event_tag": "Wall 2027", "fetchability": "image", "exhibitor_url_candidate": "https://w.test/",
+             "sled": False},
+            {"event_tag": "Js 2027", "fetchability": "js-walled", "exhibitor_url": "https://j.test/", "sled": False},
+            {"event_tag": "On 2027", "exhibitor_url": "https://on.test/x"}]
+    got = [c["event_tag"] for c in sw.ready(rows, None, images=True)]
+    if got != ["On 2027"]:
+        errors += fail(f"the sweep takes a non-SLED row: {got}")
+    if sw.ready(rows, "Off 2027"):
+        errors += fail("the sweep takes a non-SLED row named by its tag")
+    if rf.walled(rows):
+        errors += fail("the browser read takes a non-SLED row")
+    cat = json.loads((DATA / "conferences.json").read_text())["conferences"]
+    off = [r for r in cat if r.get("sled") is False and r.get("event_tag")]
+    if not off:
+        return errors + fail("the catalogue holds no non-SLED row to try the intake on")
+    # the event's tag, and an earlier edition's (a prior tag stays issued)
+    tags = [off[0]["event_tag"]] + [t for r in off for t in (r.get("prior_tags") or [])][:1]
+    for tag in tags:
+        with tempfile.TemporaryDirectory() as d:
+            f = pathlib.Path(d) / "staged.json"
+            f.write_text(json.dumps({"event_tag": tag, "found": True, "quality": "good",
+                                     "exhibitors": [{"name": "Acme Streetlight Co", "is_govtech": False}]}))
+            r = subprocess.run([sys.executable, str(ROOT / "scripts" / "conference_intake.py"), str(f),
+                                "--dry-run", "--no-hq-export"], capture_output=True, text=True, timeout=300)
+        if r.returncode != 1 or "non-SLED" not in r.stderr:
+            errors += fail(f"conference_intake files a non-SLED event's floor ({tag}): exit {r.returncode}, "
+                           f"{(r.stderr or r.stdout)[-160:]!r}")
+    if len(tags) < 2:
+        errors += fail("no non-SLED row carries a prior tag, so an earlier edition's file was not tried")
+    for row in off:
+        staged = DATA / f"exhibitors_{re.sub(r'[^A-Za-z0-9]+', '_', row['event_tag']).strip('_')}.json"
+        if staged.exists():
+            errors += fail(f"a non-SLED event has a staged floor: {staged.name}")
+    return errors
+
+
 def check_a_logo_wall_is_read_only_where_a_reader_said_so() -> int:
     """Linked logos' alt text is a floor only on a row marked "image".
 
@@ -36757,6 +36857,7 @@ def main() -> int:
     errors += check_a_browser_read_adds_to_a_floor()
     errors += check_a_platforms_name_field_is_read()
     errors += check_a_logo_wall_is_read_only_where_a_reader_said_so()
+    errors += check_a_non_sled_event_is_listed_never_swept()
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()
