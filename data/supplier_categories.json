@@ -23438,12 +23438,6 @@
    "website": "http://www.hobaspipe.com"
   },
   {
-   "supplier_id": "honeywell-smart-energy",
-   "name": "Honeywell",
-   "status": "publish",
-   "website": "https://automation.honeywell.com/us/en/products/smart-energy/water"
-  },
-  {
    "supplier_id": "h-tec",
    "name": "H-Tec",
    "status": "publish",
@@ -91246,15 +91240,6 @@
    "source": {
     "url": "http://www.hobaspipe.com",
     "quote": "\u2022 Raw Water Intake, Pump Station and Pipeline"
-   }
-  },
-  {
-   "supplier_id": "honeywell-smart-energy",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://automation.honeywell.com/us/en/products/smart-energy/water",
-    "quote": "Safely and sustainably improve water utility management with Connected Water from Honeywell."
    }
   },
   {

@@ -417654,7 +417654,7 @@
  "card:honeywell": {
   "kind": "card",
   "id": "honeywell",
-  "name": "Honeywell",
+  "name": "Honeywell Smart Energy",
   "sector": "Utilities & Energy",
   "category": "Grid & Energy",
   "confidence": "high",
@@ -417679,7 +417679,7 @@
   "family": null,
   "verdict": "govtech",
   "description": "Smart meters, SCADA, grid automation and Forge software for electric, gas and water utilities, including electric cooperatives",
-  "website": "https://www.honeywell.com/",
+  "website": "https://automation.honeywell.com/us/en/products/smart-energy",
   "field": null,
   "value": null,
   "url": null,
@@ -417697,7 +417697,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.honeywell.com/us/en/industries/utilities",
   "evidence_checked_on": "2026-10-26",
@@ -417706,7 +417706,10 @@
    "why": "Honeywell's utilities page covers metering, grid automation and Forge software for utilities and names Florida electric cooperative SECO Energy as a customer; the on-file US Digital Designs is only a ",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "owner, 2026-10-26: promote Smart Energy. Honeywell's utility business (meters, grid automation, Forge), high confidence, quote on its own site, second reader agreed; it shares only the parent's name with Honeywell Building Automation, a separate division (divisions of one parent stay separate records, owner's ruling 2026-10-23)"
  },
  "card:iceye": {
   "kind": "card",

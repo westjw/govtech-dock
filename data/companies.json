@@ -121978,9 +121978,6 @@
     "researched": false,
     "vendor_type": "GovTech Product",
     "source": "competitor sweep; APCO 2026; IAFC FRI 2026; FDIC International 2026",
-    "also_known_as": [
-      "Honeywell Technologies; US Digital Designs; Fiplex"
-    ],
     "competitors": [
       {
         "id": "purvis-systems",
@@ -225000,5 +224997,32 @@
     "vendor_type": "GovTech Product",
     "source": "conference sweep: TRB 2027",
     "researched": true
+  },
+  {
+    "id": "honeywell-smart-energy",
+    "name": "Honeywell Smart Energy",
+    "website": "https://automation.honeywell.com/us/en/products/smart-energy",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Smart meters, SCADA, grid automation and Forge software for electric, gas and water utilities, including electric cooperatives - exhibited at DISTRIBUTECH 2026, AWWA ACE 2026, DISTRIBUTECH 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026; AWWA ACE 2026; DISTRIBUTECH 2027",
+    "researched": true,
+    "also_known_as": [
+      "Honeywell - Smart Energy"
+    ]
   }
 ]
