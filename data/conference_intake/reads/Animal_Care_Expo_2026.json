@@ -894,5 +894,29 @@
   "why": "pet ear-care product (zymox.com)",
   "by": "agent:reader",
   "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_Animal_Care_Expo_2026.json",
+  "name": "Aeolus Pet",
+  "verdict": "supplier",
+  "why": "A real company: the sponsor page links its logo to aeoluspet.us. The site describes a manufacturer that sells grooming tables, dryers, kennel runs, cage banks and veterinary ICUs and exam tables direct to buyers. That is hardware, not a government technology product. It exhibited at a shelter-indust",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_Animal_Care_Expo_2026.json",
+  "name": "Exhibit and",
+  "verdict": "not_a_company",
+  "why": "A fragment of the sponsor page's own navigation. humanepro.org/expo/animal-care-expo-sponsors has a menu item 'Exhibit and Sponsor', next to 'Volunteer' and 'Animal Care Expo by the Numbers'. It has no website.",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_Animal_Care_Expo_2026.json",
+  "name": "GotchaCot",
+  "verdict": "unsure",
+  "why": "Probably a real exhibitor, since the sponsor page links a logo to https://gotchacot.com/. But the reader could not open the site: robots.txt on gotchacot.com did not answer (ConnectionError), and www.gotchacot.com answered HTTP 530. With nothing on a page saying what it sells, I cannot tell vendor f",
+  "by": "agent:reader",
+  "on": "2026-10-26"
  }
 ]

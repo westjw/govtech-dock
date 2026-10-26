@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "Built for Agents: The Case for Spark Declarative Pipelines",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "Real-time energy trading and analytics on Databricks",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "The Fraud Analyst AI Coworker: Detecting Telecom Fraud in Real-Time on One Platform",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "The AI Bill is coming",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Databricks AI Runtime and NVIDIA make it easier to customize open models with enterprise data",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "AI Runtime is Generally Available",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Deploy RFD4-Proteina on Databricks",
    "kind": "press",

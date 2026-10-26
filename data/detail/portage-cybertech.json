@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "The Digital Front Door Is Open, Most Residents Still Can\u2019t Find It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.portagecybertech.com/en/blog/if-youre-not-ahead-youre-behind-5-signs-your-government-website-identity-model-is-already-outdated/"
+  },
+  {
    "date": "2026-09-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -10,10 +19,10 @@
    "url": "https://www.portagecybertech.com/fr/blog/la-porte-dentree-numerique-est-ouverte-mais-la-plupart-des-residents-peinent-encore-a-la-trouver/"
   },
   {
-   "date": "2026-07-02",
-   "date_source": "index-text",
+   "date": "2026-09-22",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
-   "headline": "Canada\u2019s Digital Future Depends on More Than Technology",
+   "headline": "The Digital Front Door Is Open, Most Residents Still Can\u2019t Find It",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.portagecybertech.com/en/blog/the-digital-front-door-is-open-most-residents-still-cant-find-it/"
@@ -56,7 +65,7 @@
   },
   {
    "date": "2025-06-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Protecting Citizen Data: How CIAM Helps Prevent Breaches",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2025-05-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Unlocking Trust and Access: 100 Critical Questions for Choosing the Right Public Sector CIAM",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2025-01-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Importance of Meeting WCAG Guidelines When Delivering Services Online in the Public Sector",
    "kind": "press",
@@ -82,8 +91,8 @@
    "url": "https://www.portagecybertech.com/en/blog/importance-of-meeting-wcag-guidelines/"
   },
   {
-   "date": "2024-11-20",
-   "date_source": "index-text",
+   "date": "2024-11-21",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Verifiable Credentials: A Look into the Future",
    "kind": "press",
@@ -91,22 +100,13 @@
    "url": "https://www.portagecybertech.com/en/blog/verifiable-credentials-a-look-into-the-future/"
   },
   {
-   "date": "2024-11-20",
-   "date_source": "index-text",
+   "date": "2024-11-21",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Enhancing Public Sector User Experience Through CIAM",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.portagecybertech.com/en/blog/enhancing-public-sector-user-experience-through-ciam/"
-  },
-  {
-   "date": "2024-11-20",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Why Citizens Are Embracing Digital Government Services: Key Insights and Statistics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.portagecybertech.com/en/blog/why-citizens-are-embracing-digital-government-services-key-insights-and-statistics/"
   }
  ],
  "profile": {

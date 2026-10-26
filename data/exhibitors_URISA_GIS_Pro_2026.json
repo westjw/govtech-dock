@@ -3,7 +3,7 @@
  "conference": "URISA GIS-Pro",
  "found": true,
  "source_url": "https://gispro2026.sched.com/directory/exhibitors",
- "source_note": "Read from https://gispro2026.sched.com/directory/exhibitors by scripts/sweep_exhibitors.py. 44 name(s), 12 with a website the page itself linked. Quality: menu (25% carry a corporate marker, 0% name a site section, 23% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "source_note": "Read from https://gispro2026.sched.com/directory/exhibitors by scripts/sweep_exhibitors.py. 45 name(s), 12 with a website the page itself linked. Quality: menu (22% carry a corporate marker, 0% name a site section, 20% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
    "name": "Avineon, Inc.",
@@ -92,13 +92,13 @@
   {
    "name": "geoConvergence",
    "website": null,
+   "is_govtech": null,
    "read": {
     "verdict": "unsure",
     "why": "lidar/mapping data firm, services vs data unclear; site read empty",
     "by": "agent:reader",
     "on": "2026-10-26"
-   },
-   "is_govtech": null
+   }
   },
   {
    "name": "GIS CERTIFICATION INSTITUTE",
@@ -201,15 +201,26 @@
    }
   },
   {
+   "name": "Terracon Data Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "A real exhibitor: the GIS-Pro sched directory lists 'Terracon Data Solutions - Workshop & GeoPoker/Milwaukee Landmark Crawl Sponsor'. The name points to Terracon (terracon.com, 'Consulting Engineers and Scientists'), an engineering and environmental services firm, which would make it a supplier. But",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
    "name": "Turning Point",
    "website": null,
+   "is_govtech": null,
    "read": {
     "verdict": "unsure",
     "why": "generic name, could be a session or a company",
     "by": "agent:reader",
     "on": "2026-10-26"
-   },
-   "is_govtech": null
+   }
   },
   {
    "name": "VertiGIS",
@@ -274,7 +285,6 @@
  ],
  "why": null,
  "quality": "read",
- "restaged": "44 -> 44 names after re-filtering on 2026-10-26",
  "read_dropped": 19,
  "quality_was": "menu"
 }

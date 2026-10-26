@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Covering the five-week period between August 30 and October 3, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/resources/consumers-return-to-routine-as-summer-momentum-fades/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/best-accounting-software-for-real-estate-investors-property-management/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "JAR Adopts MRI Software\u2019s Agentic AI to Streamline Workflows and Support Resident Service",
-   "kind": "contract",
-   "kind_rule": "Adopts",
-   "url": "https://www.mrisoftware.com/news/jar-adopts-mri-softwares-agentic-ai-to-streamline-workflows-and-support-resident-service/"
   }
  ]
 }

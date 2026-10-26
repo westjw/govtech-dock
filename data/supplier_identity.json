@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T00:12:06-04:00",
+ "generated": "2026-10-26T01:59:25-04:00",
  "verdicts": {
   "theirs": "the website on file names them",
   "unconfirmed": "the website on file answers but does not state their full name - usually an acronym, brand or parent; likely theirs, not confirmed",
@@ -6488,14 +6488,26 @@
    "website_was": null
   },
   "civall-social-news-desk": {
-   "url": "https://www.civall.com",
-   "says": "Civic Engagement Platform for Government | CivAll Improve how your community connects with the best civic engagement pla",
-   "tried": 7,
-   "verdict": "found_review",
-   "matched_on": "CivAll",
-   "why": "the page names part of their listed name",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "url": "http://civall.com/connect",
+   "final": "https://www.civall.com",
+   "deep_link_dead": true,
+   "says": "Civic Engagement Platform for Government | CivAll CivAll is the civic engagement platform for local government, bringing",
+   "present": [
+    "civall",
+    "social"
+   ],
+   "missing": [
+    "news",
+    "desk"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "CivAll",
+    "Social News Desk"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "http://civall.com/connect"
   },
   "classic-recreation-systems-inc": {
    "url": "https://shadesun.com",
@@ -11726,12 +11738,18 @@
    "website_was": null
   },
   "jj-kane-auctions": {
-   "url": "https://www.jjkane.com",
+   "url": "https://www.jjkane.com/",
+   "final": "https://www.jjkane.com",
    "says": "JJ Kane Auctions \u2013 Public Auto & Equipment Auctions Looking for equipment auctions? Buy or sell in our weekly online auc",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "jj",
+    "kane",
+    "auctions"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.jjkane.com/"
   },
   "jaypro-sports": {
    "url": "https://jayprosports.com",
@@ -12742,11 +12760,17 @@
    "website_was": null
   },
   "levine-security-solutions-llc": {
-   "verdict": "not_found",
-   "tried": 25,
-   "why": "no guessed domain named them",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "url": "https://www.levinesecuritysolutions.com/",
+   "final": "https://www.levinesecuritysolutions.com",
+   "says": "Levine Security Solutions, LLC Specialize in writing emergency operations plans, training programs, planned exercises, a",
+   "present": [
+    "levine",
+    "security"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.levinesecuritysolutions.com/"
   },
   "lifeloc-technologies": {
    "verdict": "not_found",
@@ -14384,11 +14408,15 @@
   },
   "nppgov": {
    "url": "https://nppgov.com",
+   "final": "https://nppgov.com",
    "says": "Home Page New - NPPGov Home Page New - NPPGov NPPGov Thank you for your submission!",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "nppgov"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://nppgov.com"
   },
   "murdock-super-secur-mfg-company": {
    "verdict": "not_found",
@@ -14458,12 +14486,16 @@
    "website_was": null
   },
   "naphcare": {
-   "url": "https://www.naphcare.com",
+   "url": "https://www.naphcare.com/",
+   "final": "https://www.naphcare.com",
    "says": "Advancing Correctional Healthcare | NaphCare NaphCare is an innovative provider of correctional healthcare services in j",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "naphcare"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.naphcare.com/"
   },
   "national-association-of-home-builders": {
    "url": "https://www.nahb.org",
@@ -19175,12 +19207,17 @@
    "website_was": null
   },
   "spohn-ranch": {
-   "url": "https://www.spohnranch.com",
+   "url": "https://spohnranch.com",
+   "final": "https://www.spohnranch.com",
    "says": "Spohn Ranch: Skatepark Designers & Skatepark Builders Spohn Ranch designs and builds concrete skateparks, skate plazas, ",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "spohn",
+    "ranch"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://spohnranch.com"
   },
   "sport-court": {
    "url": "https://sportcourt.com",
@@ -22424,13 +22461,16 @@
    "website_was": null
   },
   "xybix": {
-   "url": "https://www.xybix.com",
+   "url": "https://www.xybix.com/",
+   "final": "https://www.xybix.com",
    "says": "911 Dispatch, Radiology, & Command Center Desks and Consoles | Xybix Xybix leads in height-adjustable Ergonomic desks an",
-   "tried": 1,
-   "verdict": "found_review",
-   "why": "the name is too short to be sure",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "xybix"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.xybix.com/"
   },
   "xiamen-lenz-communication-co-ltd": {
    "verdict": "not_found",
@@ -23205,12 +23245,15 @@
   },
   "abm": {
    "url": "https://www.abm.com",
+   "final": "https://www.abm.com",
    "says": "Building Maintenance and Facility Services - ABM Where others see a facility, we see possibility",
-   "tried": 1,
-   "verdict": "found_review",
-   "why": "the name is too short to be sure",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "abm"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.abm.com"
   },
   "icast": {
    "url": "https://icast.net",
@@ -25413,11 +25456,17 @@
    "website_was": "https://www.tiaa.org"
   },
   "aeolus-pet": {
-   "verdict": "not_found",
-   "tried": 20,
-   "why": "no guessed domain named them",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "url": "https://aeoluspet.us/",
+   "final": "https://aeoluspet.us",
+   "says": "Best USA Pet Supply | Aeolus Pet Aeolus Pet is the premier provider of grooming, boarding, dog show, breeding, and veter",
+   "present": [
+    "aeolus",
+    "pet"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://aeoluspet.us/"
   },
   "acf-animal-rescue-pakistan": {
    "verdict": "not_found",
@@ -25905,12 +25954,17 @@
    "website_was": ""
   },
   "design-learned-inc": {
-   "url": "https://www.designlearned.com",
+   "url": "https://www.designlearned.com/",
+   "final": "https://www.designlearned.com",
    "says": "Design Learned | Animal Care Facility Planning DLI designs and engineers animal care facilities mitigate odor, disease, ",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "present": [
+    "design",
+    "learned"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.designlearned.com/"
   },
   "digital-cheetah-solutions": {
    "url": "https://www.digitalcheetah.com",
@@ -26338,11 +26392,18 @@
    "website_was": ""
   },
   "hill-s-pet-nutrition": {
-   "verdict": "not_found",
-   "tried": 25,
-   "why": "no guessed domain named them",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "url": "https://www.hillspet.com",
+   "final": "https://www.hillspet.com",
+   "says": "Hill's Pet Nutrition - Dog & Cat Food Transforming Lives Hill's Pet Nutrition: Creating properly balanced dog & cat food",
+   "present": [
+    "hill",
+    "pet",
+    "nutrition"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.hillspet.com"
   },
   "idexx": {
    "url": "https://www.idexx.com/en",
@@ -26480,11 +26541,18 @@
    "website_was": ""
   },
   "jackson-ryan-architects": {
-   "verdict": "not_found",
-   "tried": 25,
-   "why": "no guessed domain named them",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "url": "https://www.jacksonryan.com/",
+   "final": "https://www.jacksonryan.com",
+   "says": "Jackson & Ryan Architects\r\n Jackson & Ryan Architects, Houston, Texas",
+   "present": [
+    "jackson",
+    "ryan",
+    "architects"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.jacksonryan.com/"
   },
   "lupinepet": {
    "url": "https://www.lupinepet.com",
@@ -26574,12 +26642,16 @@
    "website_was": ""
   },
   "midmark": {
-   "url": "https://www.midmark.com",
+   "url": "https://www.midmark.com/",
+   "final": "https://www.midmark.com",
    "says": "Midmark Medical, Dental, Veterinary Equipment Manufacturer & Supplier Midmark Medical, Dental, Veterinary Equipment Manu",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "present": [
+    "midmark"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.midmark.com/"
   },
   "international-association-of-veterinary-social-work": {
    "verdict": "not_found",
@@ -26808,12 +26880,24 @@
    "website_was": ""
   },
   "pet-king-brands": {
-   "url": "https://zymox.com/pet-king-brands",
-   "says": "Pet king brands PKB Animal Health Consumer Shop Pet king brands Proud Maker of Resolving Ear, Skin & Oral Conditions For",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "url": "https://zymox.com/",
+   "final": "https://zymox.com",
+   "says": "ZYMOX\u00ae Enzymatic Pet Care | Ear, Skin & Oral Health Solutions Veterinarian-trusted enzyme-based pet care for ear, skin &",
+   "present": [
+    "pet"
+   ],
+   "missing": [
+    "king",
+    "brands"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "PKB Animal Health Consumer Shop",
+    "ZYMOX\u00ae Enzymatic Pet Care"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://zymox.com/"
   },
   "pethub": {
    "url": "https://www.pethub.com",
@@ -26839,11 +26923,20 @@
    "website_was": ""
   },
   "national-animal-care-control-association": {
-   "verdict": "not_found",
-   "tried": 23,
-   "why": "no guessed domain named them",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "url": "https://www.nacanet.org/",
+   "final": "https://www.nacanet.org",
+   "says": "National Animal Care & Control Association | Welcome to NACA's Online Community! NACA Blog Get in Touch. Get Involved. F",
+   "present": [
+    "national",
+    "animal",
+    "care",
+    "control",
+    "association"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.nacanet.org/"
   },
   "petlink": {
    "url": "https://www.petlink.net",
@@ -27187,11 +27280,11 @@
    "website_was": ""
   },
   "petco-love": {
-   "verdict": "not_found",
-   "tried": 22,
-   "why": "no guessed domain named them",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "verdict": "unreadable",
+   "url": "https://petcolove.org/",
+   "why": "AtsError: HTTP 403 for https://petcolove.org/",
+   "checked_on": "2026-10-26",
+   "website_was": "https://petcolove.org/"
   },
   "shopmeoow": {
    "url": "https://shopmeoow.com",
@@ -27506,12 +27599,17 @@
    "website_was": ""
   },
   "truesense-marketing": {
-   "url": "https://www.truesense.com",
+   "url": "https://www.truesense.com/",
+   "final": "https://www.truesense.com",
    "says": "Fundraising Agency | TrueSense Marketing TrueSense Marketing is a direct-response fundraising agency who can help win, k",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": ""
+   "present": [
+    "truesense",
+    "marketing"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.truesense.com/"
   },
   "the-compassion-fatigue-couch": {
    "verdict": "not_found",
@@ -38118,7 +38216,7 @@
    ],
    "missing": [],
    "verdict": "theirs",
-   "checked_on": "2026-10-03",
+   "checked_on": "2026-10-26",
    "website_was": "https://connect.na.panasonic.com/toughbookinfo"
   },
   "pencco-inc": {
@@ -48116,17 +48214,11 @@
   },
   "gilson-housing-partners": {
    "url": "https://gilsonhousingpartners.com",
-   "final": "https://gilsonhousingpartners.com",
    "says": "Gilson Housing Partners - Home Your go to solution for Property Management Services, Software products for Housing Agenc",
-   "present": [
-    "gilson",
-    "housing",
-    "partners"
-   ],
-   "missing": [],
-   "verdict": "theirs",
-   "checked_on": "2026-10-03",
-   "website_was": "https://gilsonhousingpartners.com"
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
   },
   "infriq": {
    "url": "https://infriq.com",
@@ -61215,12 +61307,16 @@
    "website_was": null
   },
   "aquisense-inc": {
-   "url": "https://aquisense.com",
-   "says": "Discover our UV-C LED disinfection solutions | AquiSense Inc. Discover AquiSense's range of UV-C LED solutions for water",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "url": "http://aquisense.com",
+   "final": "https://aquisense.com",
+   "says": "UV-C LED Water Treatment Systems | AquiSense Inc. Discover our range of UV-C LED solutions for water treatment. Applicat",
+   "present": [
+    "aquisense"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "http://aquisense.com"
   },
   "archer-instruments-llc": {
    "url": "https://archerinstruments.com",
@@ -61543,12 +61639,18 @@
    "website_was": null
   },
   "blue-earth-products": {
-   "url": "https://blueearthproducts.com",
+   "url": "http://blueearthproducts.com",
+   "final": "https://blueearthproducts.com",
    "says": "Solutions for Safer, Cleaner, Better Water | Blue Earth Products A specialty chemical company that cleans from source to",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "blue",
+    "earth",
+    "products"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "http://blueearthproducts.com"
   },
   "blacoh-industries": {
    "url": "https://blacoh.com",
@@ -63788,12 +63890,17 @@
    "website_was": null
   },
   "keller-pressure-inc": {
-   "url": "https://keller-pressure.com/en",
+   "url": "https://keller-pressure.com",
+   "final": "https://keller-pressure.com/en",
    "says": "KELLER Pressure KELLER Pressure \u2013 Europe's leading manufacturer of isolated pressure transducers and transmitters KELLER",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "keller",
+    "pressure"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://keller-pressure.com"
   },
   "jing-yuh-metal-industrial-co-ltd": {
    "verdict": "not_found",
@@ -65012,12 +65119,16 @@
    "website_was": null
   },
   "primozone-inc": {
-   "url": "https://www.primozone.com",
+   "url": "https://www.primozone.com/",
+   "final": "https://www.primozone.com",
    "says": "Home - Primozone Home - Primozone Primozone Redefining ozone technology for clean water solutions",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "primozone"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.primozone.com/"
   },
   "pleasant-mount-welding-inc": {
    "verdict": "not_found",
@@ -65820,12 +65931,18 @@
    "website_was": null
   },
   "spartan-fire-hydrants": {
-   "url": "https://spartanfirehydrants.com",
+   "url": "http://www.spartanfirehydrants.com",
+   "final": "https://spartanfirehydrants.com",
    "says": "Spartan Fire Hydrants Discover the SPARTAN Fire Hydrant, the ultimate choice for enhancing public safety, water security",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "spartan",
+    "fire",
+    "hydrants"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "http://www.spartanfirehydrants.com"
   },
   "sorbster-inc": {
    "url": "https://sorbster.com",
@@ -66400,12 +66517,17 @@
    "website_was": null
   },
   "trojan-technologies": {
-   "url": "https://www.trojantechnologies.com",
+   "url": "http://www.trojantechnologies.com",
+   "final": "https://www.trojantechnologies.com",
    "says": "Clean Water Solutions | Trojan Technologies Trojan Technologies ensures greater water confidence and environmental stewa",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "trojan",
+    "technologies"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "http://www.trojantechnologies.com"
   },
   "trekk-design-group": {
    "verdict": "not_found",
@@ -73435,11 +73557,16 @@
   },
   "american-traction-solutions": {
    "url": "https://americantractionsolutions.com",
+   "final": "https://americantractionsolutions.com",
    "says": "American Traction Solutions Inc. - Electric Propulsion Controls & Accessories American Traction Solutions Inc. (ATS) des",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-19",
-   "website_was": null
+   "present": [
+    "american",
+    "traction"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://americantractionsolutions.com"
   },
   "parabit-systems": {
    "verdict": "not_found",
@@ -81780,20 +81907,29 @@
    "website_was": null
   },
   "kearney-co": {
-   "url": "https://www.kearney.com",
-   "says": "Global Management Consulting Firm | Kearney Kearney Global Management Consulting Firm - Kearney",
-   "tried": 1,
-   "verdict": "found",
+   "url": "https://www.kearneyco.com",
+   "final": "https://www.kearneyco.com",
+   "says": "Home - Kearney & Company Home - Kearney & Company Kearney & Company",
+   "present": [
+    "kearney"
+   ],
+   "missing": [],
+   "verdict": "theirs",
    "checked_on": "2026-10-26",
-   "website_was": null
+   "website_was": "https://www.kearneyco.com"
   },
   "rok-technologies": {
-   "url": "https://roktechnologies.net",
-   "says": "Rok Technologies: Security & Networking Solutions \n           Secure Your Business with",
-   "tried": 3,
-   "verdict": "found",
+   "url": "https://roktech.net",
+   "final": "https://roktech.net",
+   "says": "ROK Technologies | Your GIS Always Up, Optimized, Supported Optimize your GIS infrastructure with ROK Technologies, a Es",
+   "present": [
+    "rok",
+    "technologies"
+   ],
+   "missing": [],
+   "verdict": "theirs",
    "checked_on": "2026-10-26",
-   "website_was": null
+   "website_was": "https://roktech.net"
   },
   "avineon-inc": {
    "url": "https://www.avineon.com/en-us/home",

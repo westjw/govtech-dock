@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "University of Victoria Joins Univerus iWork",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.univerussportandrecreation.com/post/university-of-victoria-joins-univerus-iwork"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "St. Mary's University Joins Univerus Sport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.univerussportandrecreation.com/post/st-mary-s-university-joins-univerus-sport"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-30",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.univerussportandrecreation.com/post/brock-university-athletics-joins-univerus-sport"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "feed",
-   "first_seen": "2026-09-30",
-   "headline": "Silver Harbour Seniors' Activity Centre Joins Univerus Rec",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.univerussportandrecreation.com/post/silver-harbour-seniors-activity-centre-joins-univerus-rec"
-  },
-  {
-   "date": "2026-05-22",
-   "date_source": "feed",
-   "first_seen": "2026-09-30",
-   "headline": "Why Municipalities Are Modernizing Recreation Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.univerussportandrecreation.com/post/why-municipalities-are-modernizing-recreation-management-software"
   }
  ],
  "profile": {

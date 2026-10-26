@@ -1,5 +1,5 @@
 {
- "note": "Owner, 2026-10-23: 'yes' to merging the suppliers that are one company listed twice and pulling the government bodies filed as suppliers. Each group of published suppliers sharing a website was read by an agent off names, descriptions, shows and the supplier's own homepage text, and challenged by a skeptic who overturned 2 (Sodexo Campus is Sodexo's higher-education division; Bremerton Housing Authority/CMS is a service line it sells). Applied by scripts/merge_supplier_records.py.",
+ "note": "Owner, 2026-10-23: 'yes' to merging the suppliers that are one company listed twice and pulling the government bodies filed as suppliers. Each group of published suppliers sharing a website was read by an agent off names, descriptions, shows and the supplier's own homepage text, and challenged by a skeptic who overturned 2 (Sodexo Campus is Sodexo's higher-education division; Bremerton Housing Authority/CMS is a service line it sells). Applied by scripts/merge_supplier_records.py. A second batch, 2026-10-26: twins the URISA GIS-Pro, AGA PDT and Animal Care Expo floors filed beside rows already on file, ruled by a reader and a skeptic who agreed on all.",
  "decided_on": "2026-10-23",
  "merge": [
   {
@@ -365,6 +365,97 @@
     "ephesus-sports-lighting"
    ],
    "why": "Ephesus Lighting and Ephesus Sports Lighting are one Cooper Lighting brand listed twice, off NIGP and AB Show: both records point at the same Ephesus brand page on cooperlighting.com (judged by Claude; no reader returned this group)."
+  },
+  {
+   "into": "entrust-solutions-group",
+   "ids": [
+    "entrust-solution-group"
+   ],
+   "why": "The two names differ by one letter (Solution vs Solutions), and both rows describe the same business: engineering services for utilities and infrastructure. That is a typo of one company. Neither row has a website, and I could not confirm the spelling from the company's own page. The survivor uses the spelling the URISA floor printed.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "hill-s-pet-nutrition",
+   "ids": [
+    "hill-s-pet-nutritition"
+   ],
+   "why": "\"Nutritition\" is a typo. The site the typo row points to names the company Hill's Pet Nutrition. The survivor inherits the website hillspet.com from the typo row.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "jackson-ryan-architects",
+   "ids": [
+    "jackson-and-ryan-architects-design-for-all-animals"
+   ],
+   "why": "\"Design for all animals\" is a tagline added to the firm's name. The firm's own site names it Jackson & Ryan Architects. The survivor inherits jacksonryan.com.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "midmark",
+   "ids": [
+    "midmark-and-shor-line"
+   ],
+   "why": "Shor-Line is a Midmark product line (stainless cages and kennels) sold on midmark.com, so \"Midmark and Shor-line\" is Midmark's booth with its product line added. Both rows point at midmark.com. There is no separate Shor-Line company row.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "national-animal-care-control-association",
+   "ids": [
+    "national-animal-care-and-control-association"
+   ],
+   "why": "The two rows are the same name, differing only in capitals and \"and\" vs \"&\". The survivor's spelling matches the association's own title. The survivor inherits nacanet.org and its 'theirs' verdict.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "petco-love",
+   "ids": [
+    "petco-love-a-nonprofit-changing-lives",
+    "petco-love-lost"
+   ],
+   "why": "\"a nonprofit changing lives\" is a tagline, and \"Love Lost\" is a Petco Love program: its address is a path on petcolove.org, taken from the program's expo banner. Both are Petco Love read off a logo or banner. The crawler could not read petcolove.org (403), so the data, not the page, is the evidence here.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "truesense-marketing",
+   "ids": [
+    "true-sense-fundraising"
+   ],
+   "why": "Both rows are the same agency on the same site, truesense.com. Its own title names it TrueSense Marketing. \"True Sense Fundraising\" is a mis-spaced name plus a description of what it does.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "pet-king-brands",
+   "ids": [
+    "zymox-lp3-enzyme-system"
+   ],
+   "why": "The LP3 Enzyme System is a ZYMOX product technology made by Pet King Brands. A product read off a logo merges into the company row, which is the owner's own example. The Pet King Brands row already carries the alias Zymox/Pet King Brands Animal Health.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "animal-arts",
+   "ids": [
+    "animal-arts-design-studios-inc"
+   ],
+   "why": "One architecture firm: Animal Arts is the name it uses, and Animal Arts Design Studios is its longer legal name. I chose the plainer row, which holds animalarts.com ('theirs'). Its display name is lower case and should read \"Animal Arts\".",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "into": "design-learned-inc",
+   "ids": [
+    "dli-animal-facility-specialists"
+   ],
+   "why": "DLI is Design Learned, Inc.'s own abbreviation, and \"ANIMAL FACILITY SPECIALISTS\" is the site's tagline. Both rows sit on designlearned.com.",
+   "decided_on": "2026-10-26",
+   "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
   }
  ],
  "pull": [

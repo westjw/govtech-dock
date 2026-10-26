@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-22",
    "headline": "GoodPerson campaign aimed at users bypassing China\u2019s Great Firewall",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-24",
    "headline": "NIST releases key practices for incident response in AI and super intelligence training",
    "kind": "product",

@@ -3,7 +3,7 @@
  "conference": "Animal Care Expo",
  "found": true,
  "source_url": "https://humanepro.org/expo/animal-care-expo-sponsors",
- "source_note": "Read from https://humanepro.org/expo/animal-care-expo-sponsors by scripts/sweep_exhibitors.py. 117 name(s), 42 with a website the page itself linked. Quality: mixed (5% carry a corporate marker, 3% name a site section, 9% use the words a site names itself with - worth a look before running intake). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "source_note": "Read from https://humanepro.org/expo/animal-care-expo-sponsors by scripts/sweep_exhibitors.py. 118 name(s), 43 with a website the page itself linked. Quality: mixed (5% carry a corporate marker, 3% name a site section, 9% use the words a site names itself with - worth a look before running intake). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one. 1 linked logo(s) were not read as a name, so a person should look: 'the association for animal welfare advancement'.",
  "exhibitors": [
   {
    "name": "24Pet by pet place",
@@ -13,6 +13,18 @@
    "read": {
     "verdict": "vendor",
     "why": "24Pet: ShelterBuddy shelter software + microchip registry",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Aeolus Pet",
+   "website": "https://aeoluspet.us/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: A real company: the sponsor page links its logo to aeoluspet.us. The site describes a manufacturer that sells grooming tables, dryers, kennel runs, cage banks and veterinary ICUs and exam tables direct to buyers. That is hardware, not a government technology product. It exhibited at a shelter-indust",
+   "read": {
+    "verdict": "supplier",
+    "why": "A real company: the sponsor page links its logo to aeoluspet.us. The site describes a manufacturer that sells grooming tables, dryers, kennel runs, cage banks and veterinary ICUs and exam tables direct to buyers. That is hardware, not a government technology product. It exhibited at a shelter-indust",
     "by": "agent:reader",
     "on": "2026-10-26"
    }
@@ -112,9 +124,20 @@
   {
    "name": "Donorbox",
    "website": "https://donorbox.org",
+   "is_govtech": null,
    "read": {
     "verdict": "unsure",
     "why": "donation SaaS, sells to nonprofits not gov",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "GotchaCot",
+   "website": "https://gotchacot.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "Probably a real exhibitor, since the sponsor page links a logo to https://gotchacot.com/. But the reader could not open the site: robots.txt on gotchacot.com did not answer (ConnectionError), and www.gotchacot.com answered HTTP 530. With nothing on a page saying what it sells, I cannot tell vendor f",
     "by": "agent:reader",
     "on": "2026-10-26"
    },
@@ -147,10 +170,6 @@
     "by": "agent:reader",
     "on": "2026-10-26"
    }
-  },
-  {
-   "name": "Humane World for Animals",
-   "website": "https://www.humaneworld.org"
   },
   {
    "name": "hurraw balm",
@@ -255,13 +274,13 @@
   {
    "name": "Petfinder powered by purina",
    "website": "https://www.petfinder.com/",
+   "is_govtech": null,
    "read": {
     "verdict": "unsure",
     "why": "Purina-owned adoption listing site, free to shelters",
     "by": "agent:reader",
     "on": "2026-10-26"
-   },
-   "is_govtech": null
+   }
   },
   {
    "name": "Petsmart Charities",
@@ -350,6 +369,9 @@
  ],
  "why": null,
  "quality": "read",
+ "logos_unread": [
+  "the association for animal welfare advancement"
+ ],
  "read_dropped": 85,
  "quality_was": "mixed"
 }

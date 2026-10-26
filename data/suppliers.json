@@ -17598,30 +17598,6 @@
   "researched": false
  },
  {
-  "id": "entrust-solution-group",
-  "name": "Entrust Solution Group",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Infrastructure engineering and design services - exhibited at ICMA 2025",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Engineering / Consulting",
-  "source": "ICMA 2025",
-  "researched": false
- },
- {
   "id": "enwood-structures",
   "name": "Enwood Structures",
   "website": null,
@@ -24499,7 +24475,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Association / Gov / Media - exhibited at NSA 2026, Michigan Sheriffs Association 2026, IAEM 2026, NCSL Legislative Summit 2026, Animal Care Expo 2026",
+  "description": "Association / Gov / Media - exhibited at NSA 2026, Michigan Sheriffs Association 2026, IAEM 2026, NCSL Legislative Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -24512,7 +24488,7 @@
   },
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "NSA 2026; Michigan Sheriffs Association 2026; IAEM 2026; NCSL Legislative Summit 2026; Animal Care Expo 2026",
+  "source": "NSA 2026; Michigan Sheriffs Association 2026; IAEM 2026; NCSL Legislative Summit 2026",
   "researched": false
  },
  {
@@ -67699,7 +67675,7 @@
  {
   "id": "aeolus-pet",
   "name": "Aeolus Pet",
-  "website": "",
+  "website": "https://aeoluspet.us/",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -67714,7 +67690,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "aerapy-animal-health",
@@ -67885,26 +67862,6 @@
   "sector": "Health & Human Services",
   "category": "Suppliers & Services",
   "description": "Nonprofit fundraising consulting - exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "animal-arts-design-studios-inc",
-  "name": "Animal Arts Design Studios, Inc.",
-  "website": "",
-  "location": null,
-  "year_founded": null,
-  "sector": "Health & Human Services",
-  "category": "Suppliers & Services",
-  "description": "Animal shelter architecture - exhibited at Animal Care Expo 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -69182,7 +69139,7 @@
  {
   "id": "design-learned-inc",
   "name": "Design Learned, Inc.",
-  "website": "",
+  "website": "https://www.designlearned.com/",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -69197,7 +69154,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "dli-animal-facility-specialists",
+    "name": "DLI animal facility specialists",
+    "why": "DLI is Design Learned, Inc.'s own abbreviation, and \"ANIMAL FACILITY SPECIALISTS\" is the site's tagline. Both rows sit on designlearned.com."
+   }
+  ],
+  "also_known_as": [
+   "DLI animal facility specialists"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "digital-cheetah-solutions",
@@ -69958,7 +69926,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "grateful-change",
@@ -70197,7 +70166,7 @@
  {
   "id": "hill-s-pet-nutrition",
   "name": "Hill's Pet Nutrition",
-  "website": "",
+  "website": "https://www.hillspet.com",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -70212,7 +70181,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "hill-s-pet-nutritition",
+    "name": "Hill's Pet Nutritition",
+    "why": "\"Nutritition\" is a typo. The site the typo row points to names the company Hill's Pet Nutrition. The survivor inherits the website hillspet.com from the typo row."
+   }
+  ],
+  "also_known_as": [
+   "Hill's Pet Nutritition"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "homeagain",
@@ -70457,7 +70437,7 @@
  {
   "id": "jackson-ryan-architects",
   "name": "Jackson & Ryan Architects",
-  "website": "",
+  "website": "https://www.jacksonryan.com/",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -70472,7 +70452,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "jackson-and-ryan-architects-design-for-all-animals",
+    "name": "Jackson and Ryan Architects Design for all animals",
+    "why": "\"Design for all animals\" is a tagline added to the firm's name. The firm's own site names it Jackson & Ryan Architects. The survivor inherits jacksonryan.com."
+   }
+  ],
+  "also_known_as": [
+   "Jackson and Ryan Architects Design for all animals"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "jotform",
@@ -70978,7 +70969,7 @@
  {
   "id": "midmark",
   "name": "Midmark",
-  "website": "",
+  "website": "https://www.midmark.com/",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -70993,7 +70984,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "midmark-and-shor-line",
+    "name": "Midmark and Shor-line",
+    "why": "Shor-Line is a Midmark product line (stainless cages and kennels) sold on midmark.com, so \"Midmark and Shor-line\" is Midmark's booth with its product line added. Both rows point at midmark.com. There is no separate Shor-Line company row."
+   }
+  ],
+  "also_known_as": [
+   "Midmark and Shor-line"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "midwest-veterinary-supply",
@@ -71138,7 +71140,7 @@
  {
   "id": "national-animal-care-control-association",
   "name": "National Animal Care & Control Association",
-  "website": "",
+  "website": "https://www.nacanet.org/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
@@ -71153,7 +71155,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "national-animal-care-and-control-association",
+    "name": "national animal care and control association",
+    "why": "The two rows are the same name, differing only in capitals and \"and\" vs \"&\". The survivor's spelling matches the association's own title. The survivor inherits nacanet.org and its 'theirs' verdict."
+   }
+  ],
+  "also_known_as": [
+   "national animal care and control association"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "national-association-of-canine-scent-work",
@@ -71519,7 +71532,7 @@
  {
   "id": "pet-king-brands",
   "name": "Pet King Brands",
-  "website": "",
+  "website": "https://zymox.com/",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -71540,11 +71553,18 @@
     "id": "zymox-pet-king-brands-animal-health",
     "name": "Zymox/Pet King Brands Animal Health",
     "why": "Both records are 'Animal health products' at Animal Care Expo 2026. The site says Pet King Brands is the 'Proud Maker of' ZYMOX, so 'Zymox/Pet King Brands Animal Health' is the same company with its product line in front, and Pet King Brands is the company's own name."
+   },
+   {
+    "id": "zymox-lp3-enzyme-system",
+    "name": "zymox lp3 enzyme system",
+    "why": "The LP3 Enzyme System is a ZYMOX product technology made by Pet King Brands. A product read off a logo merges into the company row, which is the owner's own example. The Pet King Brands row already carries the alias Zymox/Pet King Brands Animal Health."
    }
   ],
   "also_known_as": [
-   "Zymox/Pet King Brands Animal Health"
-  ]
+   "Zymox/Pet King Brands Animal Health",
+   "zymox lp3 enzyme system"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "pet-ag",
@@ -71589,7 +71609,7 @@
  {
   "id": "petco-love",
   "name": "Petco Love",
-  "website": "",
+  "website": "https://petcolove.org/",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -71604,7 +71624,24 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "petco-love-a-nonprofit-changing-lives",
+    "name": "Petco Love a nonprofit changing lives",
+    "why": "\"a nonprofit changing lives\" is a tagline, and \"Love Lost\" is a Petco Love program: its address is a path on petcolove.org, taken from the program's expo banner. Both are Petco Love read off a logo or banner. The crawler could not read petcolove.org (403), so the data, not the page, is the evidence here."
+   },
+   {
+    "id": "petco-love-lost",
+    "name": "Petco love lost",
+    "why": "\"a nonprofit changing lives\" is a tagline, and \"Love Lost\" is a Petco Love program: its address is a path on petcolove.org, taken from the program's expo banner. Both are Petco Love read off a logo or banner. The crawler could not read petcolove.org (403), so the data, not the page, is the evidence here."
+   }
+  ],
+  "also_known_as": [
+   "Petco Love a nonprofit changing lives",
+   "Petco love lost"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "petfinder",
@@ -73492,7 +73529,7 @@
  {
   "id": "truesense-marketing",
   "name": "TrueSense Marketing",
-  "website": "",
+  "website": "https://www.truesense.com/",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -73507,7 +73544,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "true-sense-fundraising",
+    "name": "True Sense Fundraising",
+    "why": "Both rows are the same agency on the same site, truesense.com. Its own title names it TrueSense Marketing. \"True Sense Fundraising\" is a mis-spaced name plus a description of what it does."
+   }
+  ],
+  "also_known_as": [
+   "True Sense Fundraising"
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "trupanion",
@@ -166988,7 +167036,7 @@
  {
   "id": "kearney-co",
   "name": "Kearney & Co",
-  "website": null,
+  "website": "https://www.kearneyco.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -167063,7 +167111,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "cultivate-geospatial-solutions",
@@ -167083,7 +167132,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "entrust-solutions-group",
@@ -167093,7 +167143,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at URISA GIS-Pro 2026",
+  "description": "Infrastructure engineering and design services - exhibited at URISA GIS-Pro 2026, ICMA 2025",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -167103,7 +167153,21 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Engineering / Consulting",
+  "source": "conference sweep: ICMA 2025; URISA GIS-Pro 2026",
+  "merged_from": [
+   {
+    "id": "entrust-solution-group",
+    "name": "Entrust Solution Group",
+    "why": "The two names differ by one letter (Solution vs Solutions), and both rows describe the same business: engineering services for utilities and infrastructure. That is a typo of one company. Neither row has a website, and I could not confirm the spelling from the company's own page. The survivor uses the spelling the URISA floor printed."
+   }
+  ],
+  "also_known_as": [
+   "Entrust Solution Group"
+  ]
  },
  {
   "id": "gis-certification-institute",
@@ -167123,7 +167187,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "mauer-stutz-geospatial-services",
@@ -167143,7 +167208,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "mgp-inc",
@@ -167163,7 +167229,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "minnesota-gis-lis-consortium",
@@ -167183,7 +167250,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "pro-west-associates-inc",
@@ -167203,12 +167271,13 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "rok-technologies",
   "name": "ROK Technologies",
-  "website": null,
+  "website": "https://roktech.net",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -167224,7 +167293,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NSGIC 2026"
+  "source": "conference sweep: NSGIC 2026; URISA GIS-Pro 2026"
  },
  {
   "id": "seiler-geospatial",
@@ -167244,7 +167313,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "viewshed",
@@ -167264,7 +167334,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "wisconsin-land-information-association-wlia",
@@ -167284,7 +167355,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "women-in-gis",
@@ -167304,17 +167376,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "animal-arts",
-  "name": "animal arts",
+  "name": "Animal Arts",
   "website": "https://www.animalarts.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
+  "description": "Animal shelter architecture - exhibited at Animal Care Expo 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -167324,7 +167397,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "merged_from": [
+   {
+    "id": "animal-arts-design-studios-inc",
+    "name": "Animal Arts Design Studios, Inc.",
+    "why": "One architecture firm: Animal Arts is the name it uses, and Animal Arts Design Studios is its longer legal name. I chose the plainer row, which holds animalarts.com ('theirs'). Its display name is lower case and should read \"Animal Arts\"."
+   }
+  ],
+  "also_known_as": [
+   "Animal Arts Design Studios, Inc."
+  ],
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "certified-council-for-professional-dog-trainers",
@@ -167344,27 +167428,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
- },
- {
-  "id": "dli-animal-facility-specialists",
-  "name": "DLI animal facility specialists",
-  "website": "https://www.designlearned.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
   },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "doctor-bronner-s-all-one",
@@ -167384,27 +167449,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
- },
- {
-  "id": "hill-s-pet-nutritition",
-  "name": "Hill's Pet Nutritition",
-  "website": "https://www.hillspet.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
   },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "humane-veterinary-medical-alliance",
@@ -167424,7 +167470,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "hurraw-balm",
@@ -167444,107 +167491,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
- },
- {
-  "id": "jackson-and-ryan-architects-design-for-all-animals",
-  "name": "Jackson and Ryan Architects Design for all animals",
-  "website": "https://www.jacksonryan.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
   },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "midmark-and-shor-line",
-  "name": "Midmark and Shor-line",
-  "website": "https://www.midmark.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "national-animal-care-and-control-association",
-  "name": "national animal care and control association",
-  "website": "https://www.nacanet.org/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "petco-love-a-nonprofit-changing-lives",
-  "name": "Petco Love a nonprofit changing lives",
-  "website": "https://petcolove.org/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "petco-love-lost",
-  "name": "Petco love lost",
-  "website": "https://petcolove.org/lost/?utm_medium=referral&amp;utm_source=humanepro&amp;utm_campaign=lovelost-hsus-expo-2026-website-banner-300-250-lost",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "rescue-disinfectants",
@@ -167564,7 +167512,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "smarties",
@@ -167584,47 +167533,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
- },
- {
-  "id": "true-sense-fundraising",
-  "name": "True Sense Fundraising",
-  "website": "https://www.truesense.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
   },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "zymox-lp3-enzyme-system",
-  "name": "zymox lp3 enzyme system",
-  "website": "https://zymox.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Animal Care Expo 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "aero-graphics",
