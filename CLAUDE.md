@@ -1496,7 +1496,12 @@ only when the organisation's own page states them.
   quote is on the site and whose second reader agreed, and only after the
   gate has printed. A govtech card whose only match is an unresearched
   supplier row moves that row out through the journal rather than adding a
-  twin. **Dates:** `conference_dates.confirm` also reads `dates_source`;
+  twin. Two words the door misread (card round, 2026-10-26): the country "US"
+  in a description is not the pronoun (the write-up door already knew), and
+  a legal form (Corporation, Limited, Ltd, GmbH, PLC) is not a distinctive
+  word, so two "... Corporation"s are not held as twins. `--land` with no
+  filter lands every pending card that passes, the owner's refused pile
+  included: a round lands its own keys. **Dates:** `conference_dates.confirm` also reads `dates_source`;
   `apply_conference_reads` takes an `unannounced` read as a dated note.
 
 **Stage 3 (2026-10-15): the registry's promotion door, tightened from use.**

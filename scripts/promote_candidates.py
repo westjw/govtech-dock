@@ -121,6 +121,11 @@ GENERIC = {
     "digital", "smart", "city", "gov", "the", "and", "for", "of", "by",
     "management", "consulting", "partners", "associates", "international",
     "global", "enterprise", "platform", "network", "media", "health", "care",
+    # A LEGAL FORM IS NOT A NAME: "Userful Corporation" was held as a twin of
+    # "Activu Corporation", "EDMI Limited" of "Graph Aware Limited" (card
+    # round, 2026-10-26). "inc" and "llc" were already here; their longer
+    # and foreign spellings were not.
+    "corporation", "incorporated", "limited", "ltd", "gmbh", "plc", "pty",
 }
 
 

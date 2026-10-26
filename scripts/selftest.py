@@ -13416,6 +13416,29 @@ def check_data_writers_are_serialised() -> int:
     return errors
 
 
+def check_a_legal_form_is_not_a_shared_name() -> int:
+    """The card door's twin test does not hold two firms for a shared legal form.
+
+    shares_a_name holds a card that shares a distinctive word with a record on
+    file, for a person. "Corporation" and "Limited" counted as distinctive,
+    so Userful Corporation waited on Activu Corporation and EDMI Limited on
+    Graph Aware Limited (2026-10-26). A real shared word still holds.
+    """
+    import promote_candidates as pc
+    errors = 0
+    by_word = {}
+    for real in ("Activu Corporation", "Graph Aware Limited", "Ensight Technologies GmbH", "Irth"):
+        for w in pc._words(real):
+            by_word.setdefault(w, real)
+    for name in ("Userful Corporation", "EDMI Limited", "Acme Grid GmbH", "Northwind Incorporated", "Hydro Ltd"):
+        if pc.shares_a_name(name, by_word):
+            errors += fail(f"{name!r} was held as a twin for its legal form: {pc.shares_a_name(name, by_word)!r}")
+    for name, want in (("Ensight Plus, LLC", "Ensight Technologies GmbH"), ("Irth Solutions", "Irth")):
+        if pc.shares_a_name(name, by_word) != want:
+            errors += fail(f"{name!r} no longer meets {want!r}, which shares a real word with it")
+    return errors
+
+
 def check_a_negative_verdict_needs_evidence_too() -> int:
     """A wrong "not this board" hides a company for ever, so it is not the cheap answer.
 
@@ -13463,6 +13486,12 @@ def check_a_negative_verdict_needs_evidence_too() -> int:
     if agents.check_card({"name": "Acme", "confidence": "unsure"}, sch) is not None:
         errors += fail("the card door refuses a clean unsure, which must stay "
                        "the cheapest answer available")
+    # THE COUNTRY IS NOT A PRONOUN (2026-10-26): three utility cards were
+    # refused for "in the UK and US"; a lower-case "us" is still the company
+    if agents.check_card({**good, "description": "Grid analytics software for distribution utilities in the UK and US"}, sch) is not None:
+        errors += fail("the card door read the country 'US' as first person")
+    if agents.check_card({**good, "description": "Permitting software for cities - contact us for a demo"}, sch) is None:
+        errors += fail("the card door accepted a lower-case 'us' in the description")
     return errors
 
 
@@ -37171,6 +37200,7 @@ def main() -> int:
     errors += check_a_logo_wall_is_read_only_where_a_reader_said_so()
     errors += check_a_non_sled_event_is_listed_never_swept()
     errors += check_a_floor_purges_only_what_it_filed()
+    errors += check_a_legal_form_is_not_a_shared_name()
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()

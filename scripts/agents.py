@@ -1815,7 +1815,9 @@ def check_card(p: dict, schema: dict) -> str | None:
                 "they sell and to whom")
     if len(desc) > 200:
         return f"the description is one line, got {len(desc)} characters"
-    if _PF_FIRST_PERSON.search(desc):
+    # an upper-case US is the country, as the profile door already reads it:
+    # "for distribution utilities in the UK and US" was refused (2026-10-26)
+    if any(m.group(0) != "US" for m in _PF_FIRST_PERSON.finditer(desc)):
         return "the description is ours, not theirs; no 'we' or 'our'"
     m = _PF_MARKETING_RE.search(desc)
     if m:
