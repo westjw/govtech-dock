@@ -33153,7 +33153,10 @@ def check_a_role_can_be_flagged_for_job_hunter() -> int:
             or 'door(JH_APP,"JobHunter");' not in block
             or 'document.documentElement.classList.add("jh");' not in block
             or 't.href=JH_APP;' not in block or '$("#tabs").appendChild(t);' not in block
-            or any(n in outside for n in ("JH_APP=", "jhtab", 'classList.add("jh")', "JobHunter"))):
+            or ('if(newURL(JH_APP).hostname==="hunter."+location.hostname.replace(/^www\\./,""))'
+                'document.documentElement.classList.add("jhp");') not in block
+            or any(n in outside for n in ("JH_APP=", "jhtab", 'classList.add("jh")', 'classList.add("jhp")',
+                                          "JobHunter"))):
         errors += fail("whoAmI shows the flag, the tab or the Job Hunter door to somebody without the role, "
                        "or builds Job Hunter's address from the address bar instead of whoami's")
     if 'document.querySelectorAll(".jhflag").forEach(a=>{a.href=JH_APP+"?flag="+a.dataset.flag;});' not in block:
@@ -33203,6 +33206,17 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         errors += fail("the panel says one silence for another")
     if "not on your Job Hunter board" not in flat.get("missing", "") or "jhp-flaghost" not in flat.get("missing", ""):
         errors += fail(f"a role Job Hunter does not hold is not offered its Flag: {flat.get('missing','')[:160]!r}")
+    # THE REPLY BECOMES THE RIGHT SILENCE, run on the page's own jhAnswer: Job
+    # Hunter's 401 no_account is a person signed in with no account, its other
+    # refusals and its door's redirect ask for a sign-in, anything else names
+    # its status (second review, 2026-10-26: the mapping was never run)
+    want = {"redirect": {"failed": "signin"}, "no_account": {"failed": "no_account"},
+            "no_token": {"failed": "signin"}, "forbidden": {"failed": "signin"},
+            "down": {"failed": 503}, "found": {"found": True, "id": "s"}}
+    got = jp.get("answers") or {}
+    for k, v in want.items():
+        if got.get(k) != v:
+            errors += fail(f"Job Hunter's {k} reply reads as {got.get(k)!r}, not {v!r}")
     found = flat.get("found", "")
     for needle, why in (("a gate fails: base under the floor", "the failing gate"),
                         ("<b>71</b> now &middot; 88 at best &middot; you rejected this score",
@@ -33228,6 +33242,9 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         miss = [n for n in needles if n not in got]
         if miss:
             errors += fail(f"the panel does not print {why}: missing {miss} in {got[:300]!r}")
+    nc = flat.get("noCeiling", "")
+    if "<b>54</b> now &middot; score accepted" not in nc or "null" in nc or "undefined" in nc:
+        errors += fail(f"a score with no ceiling does not read as the score alone: {nc[:200]!r}")
     if "applied &middot; applied" in flat.get("applied", "") or ">Gate<" in flat.get("applied", ""):
         errors += fail("an applied role says applied twice, or a role no gate fails shows a gate")
     hostile = jp.get("hostile", "")
@@ -33243,11 +33260,13 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
     src = re.sub(r"\s+", "", (ROOT / "index.html").read_text())
     op = src[src.find("asyncfunctionopenJhPanel("):src.find("document.addEventListener(\"keydown\",e=>{constel=$(\"#jhpanel\");")]
     for needle, why in (
-            ('fetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),'
-             '{credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"});',
-             "asks Job Hunter something besides the posting's id, or follows its door's redirect"),
-            ('if(res.type==="opaqueredirect")r={failed:"signin"};', "reads Job Hunter's door as an answer"),
+            ('r=awaitjhAnswer(awaitfetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),'
+             '{credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"}));',
+             "asks Job Hunter something besides the posting's id, follows its door's redirect, "
+             "or reads the reply some other way than jhAnswer"),
             ('}catch(e){r={failed:"unreachable"};}', "reads a request that never answered as something else"),
+            ("constfh=body.querySelector(\".jhp-flaghost\");if(fh)fh.appendChild(jhFlagLink(p));",
+             "offers a role Job Hunter does not hold no Flag"),
             ("if(seq!==JH_PANEL_SEQ||!document.contains(el))return;", "draws an answer after the panel closed"),
             ('el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");', "is not a dialog"),
             ("bd.onclick=()=>closeJhPanel();", "does not close from its backdrop"),
@@ -33267,8 +33286,13 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         errors += fail("Escape does not close the panel, or Tab leaves it")
     pop = 'window.addEventListener("popstate",e=>{if(JH_PANEL_POP){JH_PANEL_POP=false;e.stopImmediatePropagation();return;}'
     i = src.find(pop)
-    if i < 0 or "closeJhPanel(true);if(!(e.state&&e.state.jhpanel))e.stopImmediatePropagation();});" not in src[i:i + 400]:
-        errors += fail("Back does not close the panel, or redraws the page under it")
+    if i < 0 or ('if(!$("#jhpanel"))return;consthome=location.href===JH_PANEL_HREF&&!(e.state&&e.state.jhpanel);'
+                 'closeJhPanel(true);' not in src[i:i + 600]
+                 or "if(home)e.stopImmediatePropagation();});" not in src[i:i + 900]):
+        errors += fail("Back does not close the panel, redraws the page under it, or leaves a page "
+                       "several steps back drawn as the role")
+    if 'history.pushState(Object.assign({},history.state,{jhpanel:1}),"",location.href);JH_PANEL_HREF=location.href;' not in op:
+        errors += fail("the panel does not remember the page it was opened on")
     elif src.find('window.addEventListener("popstate",', i + 1) < 0:
         errors += fail("the panel's Back listener is not registered before the page's own")
     # a redraw closes the panel first, popping nothing (comments aside)
@@ -33276,8 +33300,10 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
     for fn, why in (("functionrender(){", "render()"), ("functionco(id,fromUrl){", "the company page")):
         if fn + "closeJhPanel(true);" not in bare:
             errors += fail(f"{why} does not close the Job Hunter panel first, without popping a page")
-    if ".jhpanelbtn{display:none}" not in src or ":root.jh.jhpanelbtn{display:inline-flex" not in src:
-        errors += fail("the Job Hunter button shows to somebody who is not an owner or beta user")
+    if (".jhpanelbtn{display:none}" not in src or ":root.jhp.jhpanelbtn{display:inline-flex" not in src
+            or ":root.jh.jhpanelbtn" in src):
+        errors += fail("the Job Hunter button shows to somebody who is not an owner or beta user, "
+                       "or on a site Job Hunter does not answer")
     return errors
 
 

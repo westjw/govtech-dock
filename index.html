@@ -1381,13 +1381,13 @@
   /* THE JOB HUNTER PANEL: its button beside the Flag, and the popout at the
      page's right edge, over the page, full width on a phone */
   .jhpanelbtn{display:none}
-  :root.jh .jhpanelbtn{display:inline-flex;align-items:center;min-height:32px;
+  :root.jhp .jhpanelbtn{display:inline-flex;align-items:center;min-height:32px;
     padding:0 var(--space-3);font:inherit;font-size:13px;font-weight:700;
     border:1px solid var(--accent-text);color:var(--accent-text);background:transparent;
     cursor:pointer;white-space:nowrap}
-  :root.jh .jhpanelbtn:hover,:root.jh .jhpanelbtn[aria-expanded=true]{
+  :root.jhp .jhpanelbtn:hover,:root.jhp .jhpanelbtn[aria-expanded=true]{
     background:var(--accent-text);color:var(--bg)}
-  :root.jh .jhpanelbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  :root.jhp .jhpanelbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   .jhp-back{position:fixed;inset:0;z-index:59;background:rgba(31,37,54,.45)}
   body.jhp-lock{overflow:hidden}
   .jhpanel{position:fixed;top:0;right:0;bottom:0;z-index:60;width:min(380px,100vw);
@@ -1763,7 +1763,7 @@
     /* thumbs, not cursors: 44px for the bookmark, 40px for the rest */
     .jc-save{top:var(--space-1);right:var(--space-1)}
     .jc .savebtn{min-width:44px;min-height:44px}
-    :root.jh .jhflag,:root.jh .jhpanelbtn{min-height:40px}
+    :root.jh .jhflag,:root.jhp .jhpanelbtn{min-height:40px}
     .locmore{min-height:40px}
     .jc-locs li{min-height:44px;grid-template-columns:minmax(0,1fr) auto;
       grid-template-areas:"place save" "pay save"}
@@ -4429,7 +4429,7 @@ function jhFlagLink(p,label){
    opening it pushes an entry, so Back closes the panel rather than leaving
    the role (review, 2026-10-25). */
 function jhOrigin(){ return jhApp().replace(/\/app$/,""); }
-let JH_PANEL_SEQ=0, JH_PANEL_OPENER=null, JH_PANEL_POP=false;
+let JH_PANEL_SEQ=0, JH_PANEL_OPENER=null, JH_PANEL_POP=false, JH_PANEL_HREF=null;
 function jhPanelButton(p){
   const b=document.createElement("button");
   b.type="button"; b.className="jhpanelbtn";
@@ -4476,7 +4476,9 @@ function jhPanelHTML(r){
     rejected:"you rejected this score"}[f&&f.review]||"";
   const band={strong:"a strong match",possible:"a possible match",weak:"a weak match",
     blocked:"blocked by a gate",off_family:"not a selling seat"}[r.band];
-  const fit=f?`<b>${esc(String(f.as_is))}</b> now &middot; ${esc(String(f.ceiling))} at best${
+  // a score with no ceiling says only the score (Job Hunter holds one)
+  const fit=f?`<b>${esc(String(f.as_is))}</b> now${
+      f.ceiling==null?"":` &middot; ${esc(String(f.ceiling))} at best`}${
       review?` &middot; ${esc(review)}`:""}`
     :`not scored yet${band?` &middot; ${esc(band)} on its first read`:""}`;
   const g=r.gates&&r.gates.fails?`a gate fails${r.gates.first_fail?`: ${esc(r.gates.first_fail)}`:""}`:"";
@@ -4496,6 +4498,20 @@ function jhPanelHTML(r){
       r.flagged_on?row("Flagged",`on SLED JOBS ${esc(r.flagged_on)}`):""}
     ${go(jhApp()+"#role/"+encodeURIComponent(r.id),"Open in Job Hunter")}`;
 }
+/* What Job Hunter's reply says: the answer, or which silence it was.
+   Job Hunter's own 401s carry the board's CORS header, so their words are
+   read: "no_account" is a person signed in at its door with no account. A
+   reply from Access ITSELF (an expired sign-in's redirect, a refusal) carries
+   no CORS header, so the browser refuses it before it reaches here and it
+   reads as "did not answer", whose words say a sign-in may need renewing
+   (second review, 2026-10-26). A redirect that does arrive (Access answering
+   CORS for the board) is the door: sign in. */
+async function jhAnswer(res){
+  if(res.type==="opaqueredirect")return {failed:"signin"};
+  if(res.ok)return await res.json();
+  let err=null; try{ err=(await res.json()).error; }catch(e){ err=null; }
+  return {failed:err==="no_account"?"no_account":res.status===401||res.status===403?"signin":res.status};
+}
 async function openJhPanel(p,btn){
   closeJhPanel();
   const seq=++JH_PANEL_SEQ;
@@ -4514,17 +4530,12 @@ async function openJhPanel(p,btn){
   JH_PANEL_OPENER=btn; btn.setAttribute("aria-expanded","true");
   el.querySelector(".jhp-x").onclick=()=>closeJhPanel();
   history.pushState(Object.assign({},history.state,{jhpanel:1}),"",location.href);
+  JH_PANEL_HREF=location.href;
   el.focus();
   let r;
   try{
-    const res=await fetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),
-      {credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"});
-    if(res.type==="opaqueredirect")r={failed:"signin"};
-    else if(res.ok)r=await res.json();
-    else{
-      let err=null; try{ err=(await res.json()).error; }catch(e){ err=null; }
-      r={failed:err==="no_account"?"no_account":res.status===401||res.status===403?"signin":res.status};
-    }
+    r=await jhAnswer(await fetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),
+      {credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"}));
   }catch(e){ r={failed:"unreachable"}; }
   // closed, or opened again for another role, while it was asking
   if(seq!==JH_PANEL_SEQ||!document.contains(el))return;
@@ -4551,8 +4562,12 @@ document.addEventListener("keydown",e=>{
 window.addEventListener("popstate",e=>{
   if(JH_PANEL_POP){ JH_PANEL_POP=false; e.stopImmediatePropagation(); return; }
   if(!$("#jhpanel"))return;
+  const home=location.href===JH_PANEL_HREF&&!(e.state&&e.state.jhpanel);
   closeJhPanel(true);
-  if(!(e.state&&e.state.jhpanel))e.stopImmediatePropagation();
+  // one step Back lands on the role the panel was opened on, drawn already;
+  // several steps from the history menu land somewhere else, which redraws
+  // (second review, 2026-10-26)
+  if(home)e.stopImmediatePropagation();
 });
 function saveButton(p,label){
   const b=document.createElement("button");
@@ -9980,6 +9995,13 @@ async function whoAmI(){
       $("#tabs").appendChild(t);
     }
     document.documentElement.classList.add("jh");
+    /* THE PANEL ONLY WHERE JOB HUNTER ANSWERS IT: the board's own host, whose
+       Job Hunter is hunter.<it>. Its door gives the board's address, and no
+       other, leave to read (serve.py); on solesourcejobs.com or the pages.dev
+       alias the button would ask and never hear (second review, 2026-10-26).
+       The Flag and the tab are links, and work from anywhere. */
+    if(new URL(JH_APP).hostname==="hunter."+location.hostname.replace(/^www\./,""))
+      document.documentElement.classList.add("jhp");
   }
 }
 function wireHeader(){

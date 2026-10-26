@@ -457,6 +457,8 @@ try {
         application: { status: "applied", label: "applied", applied_on: "2026-10-14" },
         tailored: true }),
       pending: role({ fit: { as_is: 50, ceiling: 70, review: "pending" } }),
+      // Job Hunter holds a score with no ceiling (an accepted 54)
+      noCeiling: role({ fit: { as_is: 54, ceiling: null, review: "accepted" } }),
       unscored: role({ band: "possible", status: "unknown" }),
       // every string Job Hunter sends, written to be markup
       hostile: role({ id: '"><x-jh>/?#&', title: X, org: X, status: X,
@@ -468,6 +470,25 @@ try {
   })()`, ctx);
 } catch (e) {
   errors.push(`running jhPanelHTML: ${e && e.message}`);
+}
+/* AND THE REPLY BEFORE IT: the page's own jhAnswer on the replies a fetch
+   can hand it, so the silence each one becomes is held, not assumed. */
+try {
+  front.jhpanel.answers = await vm.runInContext(`(async () => {
+    const reply = (o) => Object.assign({ type: "cors", ok: false, status: 200,
+      json: async () => { throw new Error("no body"); } }, o);
+    const body = (x) => async () => x;
+    return {
+      redirect: await jhAnswer(reply({ type: "opaqueredirect", status: 0 })),
+      no_account: await jhAnswer(reply({ status: 401, json: body({ error: "no_account" }) })),
+      no_token: await jhAnswer(reply({ status: 401, json: body({ error: "no_token" }) })),
+      forbidden: await jhAnswer(reply({ status: 403 })),
+      down: await jhAnswer(reply({ status: 503, json: body({ error: "busy" }) })),
+      found: await jhAnswer(reply({ ok: true, json: body({ found: true, id: "s" }) })),
+    };
+  })()`, ctx);
+} catch (e) {
+  errors.push(`running jhAnswer: ${e && e.message}`);
 }
 /* A VISITOR'S OWN VOTE AGAINST A STALE EDGE COPY: loadRatings() run for real
    with a fetch answering n=2, a stored fresh row of n=3, and the paint and

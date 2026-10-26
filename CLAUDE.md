@@ -274,18 +274,25 @@ panel on a role).**
   Hunter holds them, and "Open in Job Hunter". It FETCHES Job Hunter's
   `/api/board-role?id=<posting id>` with the person's own sign-in
   (`credentials: include`, `redirect: manual`, nothing sent but the id).
-  Job Hunter answers that one route to this board's address and no other.
-  Each silence says which it is: its door's redirect is "sign in", "no Job
-  Hunter account is linked" is Job Hunter's own answer, and a request that
-  never answered (the Mac asleep, or a door that refused without a redirect)
-  says the two look the same from here. A failing gate prints above the fit
+  Job Hunter answers that one route to this board's address and no other,
+  so the button shows only on the board's own host (`:root.jhp`, set by
+  whoAmI when Job Hunter is hunter.<this host>): on solesourcejobs.com or the
+  pages.dev alias it would ask and never hear. The Flag and the tab are links
+  and work anywhere. Each silence says which it is (`jhAnswer`): Job Hunter's
+  own 401 "no_account" is a person signed in with no account, its other
+  refusals ask for a sign-in, and a reply from Access itself (an expired
+  sign-in's redirect) carries no CORS header, so the browser refuses it and
+  it reads with a request that never answered (the Mac asleep): "did not
+  answer", whose words say a sign-in may need renewing. A failing gate prints above the fit
   and a score the person rejected says so, as on Job Hunter's own board.
   Everything Job Hunter says is printed as text.
 - **It is a dialog** (review, 2026-10-25): a backdrop that closes it, Tab kept
   inside, Escape, focus given back to its button. Opening it pushes a history
   entry, so Back closes the panel and not the role; the × or Escape pops that
   entry (`JH_PANEL_POP`, swallowed by the panel's popstate listener, which is
-  registered before boot's). `render()` and `co()` close it first with
+  registered before boot's). Several steps back from the history menu land
+  somewhere other than the role (`JH_PANEL_HREF`), and that page redraws.
+  A score with no ceiling prints the score alone. `render()` and `co()` close it first with
   `closeJhPanel(true)`, which pops nothing. A role page left by a link while
   the panel was open keeps that entry: Back from the next page shows the role
   twice. Known, small, and not worth a router.
@@ -296,9 +303,10 @@ panel on a role).**
 - `check_the_job_hunter_panel_says_what_job_hunter_said` runs the page's own
   jhPanelHTML (jobcard_harness) on each silence, on roles in every state Job
   Hunter answers with (crm.LABEL's words), and on one whose every string is
-  markup; the fetch and the dialog are held by source. The flag check reads
-  whoAmI's role block to its closing brace. Mutation-tested 41 of 41, the
-  policy 3 of 3.
+  markup, and its jhAnswer on each reply a fetch can hand it; the fetch and
+  the dialog are held by source. The flag check reads whoAmI's role block to
+  its closing brace. Mutation-tested 50 of 50 after a second blind review
+  (2026-10-26), the policy 3 of 3.
 
 ## The job list is cards (owner, 2026-09-27)
 
