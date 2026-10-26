@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "How to Know When Your Maintenance Team Needs an Enterprise CMMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/enterprise-cmms/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "EAM System Explained: Core Records, Workflows, and Integrations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/eam-system/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "What Is EAM Software? A Guide to Enterprise Asset Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/what-is-eam-software/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "What Are the Four Pillars of a Safety Management System?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/four-pillars-of-a-safety-management-system/"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.upkeep.com/blog/maintenance-ticketing-system/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The Best Equipment Maintenance Software: Top Tools Reviewed for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/best-equipment-maintenance-software/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How to Calculate, Track, and Improve Preventive Maintenance Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/preventive-maintenance-compliance/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Build the software your plant actually needs without a dev team",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/build-the-software-your-plant-actually-needs-without-a-dev-team/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Nova Marketplace: Install Ready-Made AI Apps | UpKeep",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/nova-marketplace/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Why MES and AI work better together",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/why-mes-and-ai-work-better-together"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-23",
    "headline": "Gartner IT Symposium/Xpo 2026: Day 4 Highlights with Infor: Humans and AI agents, one coordinated system",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-22",
    "headline": "Gartner IT Symposium/Xpo 2026: Day 3 Highlights with Infor: Governed by design, ready to scale AI",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Gartner IT Symposium/Xpo 2026: Day 2 Highlights with Infor: Build your AI roadmap, then let value compound",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-19",
    "headline": "Gartner IT Symposium/Xpo 2026: Day 1 Highlights with Infor: Industry intelligence is the new AI foundation",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-13",
    "headline": "From accountable AI to accountable action",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-14",
    "headline": "Balancing freshness, yield, service, and profitability through integrated ERP planning",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/integrated-erp-planning-profitability"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-10-15",
-   "headline": "Balancing freshness, yield, service and profitability through integrated ERP planning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/apac/blog/integrated-erp-planning-profitability"
   }
  ],
  "profile": {

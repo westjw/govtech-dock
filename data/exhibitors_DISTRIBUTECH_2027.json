@@ -1,0 +1,5928 @@
+{
+ "event_tag": "DISTRIBUTECH 2027",
+ "conference": "DISTRIBUTECH",
+ "found": true,
+ "source_url": "https://dt2027.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+ "source_note": "Rendered in a browser from https://dt2027.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm by scripts/render_floor.py (robots.txt asked at every hop). 569 name(s), 0 with a website the page linked. Quality: good (60% carry a corporate marker, 0% name a site section, 1% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "1NCE GmbH",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: 1NCE: IoT SIM connectivity provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "1NCE: IoT SIM connectivity provider",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "4Liberty Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: 4liberty.com: T&D program management and engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "4liberty.com: T&D program management and engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "A-Rent Test Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Test equipment rental",
+   "read": {
+    "verdict": "supplier",
+    "why": "Test equipment rental",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ABB Inc",
+   "website": null
+  },
+  {
+   "name": "Accruent",
+   "website": null
+  },
+  {
+   "name": "Accurant International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Accurant: energy and grid consulting, advisory, investment (accurantllc.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Accurant: energy and grid consulting, advisory, investment (accurantllc.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Actalent",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering and technical staffing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and technical staffing services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Activu Corporation",
+   "website": null
+  },
+  {
+   "name": "ADAION SMART GRID SOLUTIONS, S.L.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Spanish smart-grid firm; site did not answer (SSL), product type unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "AdoModel Tech Inc",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "AdoModel Tech: site did not answer; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Advance Products & Systems, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Advance Products & Systems: pipe casing spacers/seals",
+   "read": {
+    "verdict": "supplier",
+    "why": "Advance Products & Systems: pipe casing spacers/seals",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Advanced Rubber Products, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Rubber products manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Rubber products manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Advantech Corp",
+   "website": null
+  },
+  {
+   "name": "Aemc Instruments",
+   "website": null
+  },
+  {
+   "name": "AFL",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fiber optic cable and connectivity hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fiber optic cable and connectivity hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AiDASH",
+   "website": null
+  },
+  {
+   "name": "Airgain, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Antennas and embedded wireless hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Antennas and embedded wireless hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AIroraSense, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AIroraSense: computer-vision verification of grid construction",
+   "read": {
+    "verdict": "vendor",
+    "why": "AIroraSense: computer-vision verification of grid construction",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AirWorks",
+   "website": null
+  },
+  {
+   "name": "Albedo Telecom Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Network/timing test equipment hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Network/timing test equipment hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Alderbuck Energy Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Alderbuck: solid-state power conversion hardware (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Alderbuck: solid-state power conversion hardware (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Almetek Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Utility identification markers and tags",
+   "read": {
+    "verdict": "supplier",
+    "why": "Utility identification markers and tags",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Amazon Web Services, Inc",
+   "website": null
+  },
+  {
+   "name": "American Battery Chargers, DuraComm & Newmar",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: DC power systems and battery chargers",
+   "read": {
+    "verdict": "supplier",
+    "why": "DC power systems and battery chargers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "American Wire Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Wire and cable manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wire and cable manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Amidyne Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: amidyne.com: T&D and nuclear engineering/services provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "amidyne.com: T&D and nuclear engineering/services provider",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ampacimon Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Dynamic line rating sensors plus rating software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Dynamic line rating sensors plus rating software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Analog Devices",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Semiconductor components sold to OEMs",
+   "read": {
+    "verdict": "supplier",
+    "why": "Semiconductor components sold to OEMs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Anterix",
+   "website": null
+  },
+  {
+   "name": "Arbiter Systems Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GPS clocks and power measurement hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "GPS clocks and power measurement hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ArborWorks, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ArborWorks: utility vegetation management services",
+   "read": {
+    "verdict": "supplier",
+    "why": "ArborWorks: utility vegetation management services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Arcos Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: ARCOS utility crew callout and workforce software",
+   "read": {
+    "verdict": "vendor",
+    "why": "ARCOS utility crew callout and workforce software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Arkion Solutions AB",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: arkion.co: AI grid inspection and asset analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "arkion.co: AI grid inspection and asset analytics platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Aspen Technology, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AspenTech/OSI ADMS, SCADA and grid management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "AspenTech/OSI ADMS, SCADA and grid management software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Asplundh Engineering Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Utility engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Utility engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AssetCool",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Robot-applied coatings for overhead lines; service/hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Robot-applied coatings for overhead lines; service/hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Atop Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industrial Ethernet switches and gateways hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial Ethernet switches and gateways hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Aurigo Software Technologies",
+   "website": null
+  },
+  {
+   "name": "Autodesk Inc.",
+   "website": null
+  },
+  {
+   "name": "Aviat Networks, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Microwave radio hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Microwave radio hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AVO By Megger",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: AVO by Megger: electrical safety training services",
+   "read": {
+    "verdict": "supplier",
+    "why": "AVO by Megger: electrical safety training services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ayr Energy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ayr.energy: transformers, breakers and switchgear manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "ayr.energy: transformers, breakers and switchgear manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Bahra Advanced Cable Manufacture Co. Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bahra Cables: cable manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bahra Cables: cable manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Barco",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Control room display and video wall hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Control room display and video wall hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Base Power",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Home battery backup provider selling to homeowners",
+   "read": {
+    "verdict": "supplier",
+    "why": "Home battery backup provider selling to homeowners",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Bay Metal",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Metal products/fabrication",
+   "read": {
+    "verdict": "supplier",
+    "why": "Metal products/fabrication",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "BBA Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "BEC Technologies",
+   "website": null
+  },
+  {
+   "name": "Beebop BV",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Beebop: DER orchestration platform for utilities (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Beebop: DER orchestration platform for utilities (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Beijing Yahua Boxin Technology Co.，Ltd",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chinese electrical equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chinese electrical equipment manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Belden",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Networking cable and industrial switches",
+   "read": {
+    "verdict": "supplier",
+    "why": "Networking cable and industrial switches",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "BENDY PRODUCTS LIMITED",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bendy Products: Mumbai machining/stamping parts (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bendy Products: Mumbai machining/stamping parts (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Bentley Systems, Inc",
+   "website": null
+  },
+  {
+   "name": "Bicron Electronics Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformers and magnetics components",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformers and magnetics components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "BIDGELY INC.",
+   "website": null
+  },
+  {
+   "name": "Big Sky Aerial Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Aerial/drone utility services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Aerial/drone utility services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Black & Veatch Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering and construction firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and construction firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "BLACKHILL POWER SYSTEM LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: BlackHill Power: switchgear, panelboards, transformers",
+   "read": {
+    "verdict": "supplier",
+    "why": "BlackHill Power: switchgear, panelboards, transformers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Boston Dynamics",
+   "website": null
+  },
+  {
+   "name": "Boundary Electric",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electrical contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electrical contractor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "BTECH Monitoring LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: BTECH: substation battery monitoring hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "BTECH: substation battery monitoring hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Burns & McDonnell",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering and construction firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and construction firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Buzz Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI powerline inspection imagery analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI powerline inspection imagery analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Caliber Engineering Solutions LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Caliber Engineering Solutions: engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Caliber Engineering Solutions: engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Camlin Energy",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Camlin Energy: transformer monitoring + analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Camlin Energy: transformer monitoring + analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Camus Energy Inc",
+   "website": null
+  },
+  {
+   "name": "Cargill",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cargill: FR3 transformer fluid",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cargill: FR3 transformer fluid",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CARIAN",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "carian.com is a placeholder page; business unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CASRAM",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Casram: tungsten/HV components machining (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Casram: tungsten/HV components machining (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Caterpillar Inc.",
+   "website": null
+  },
+  {
+   "name": "CCI - Contract Callers, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Utility collections/call services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Utility collections/call services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ceepower Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chinese power equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chinese power equipment manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Centriforce Products Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Recycled plastic cable covers and products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Recycled plastic cable covers and products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ceragon Networks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Microwave radio hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Microwave radio hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CES Transformers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformer manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformer manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CGI Technologies and Solutions Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: CGI sells software to state/local govt (CGI Advantage ERP) and utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "CGI sells software to state/local govt (CGI Advantage ERP) and utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cha Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering consulting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Charles Industries, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Enclosures and telecom hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Enclosures and telecom hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CHERYONG ELECTRIC CO.,LTD",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cheryong Electric: Korean transformers/switchgear",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cheryong Electric: Korean transformers/switchgear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cheryong Industrial Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cheryong Industrial: Korean electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cheryong Industrial: Korean electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "China Exhibition World Co., Ltd",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "China Exhibition World: trade-show agency; sells no SLED product",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Cisco Systems",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Networking and security platforms sold to utilities and governments",
+   "read": {
+    "verdict": "vendor",
+    "why": "Networking and security platforms sold to utilities and governments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Clean Power Research LLC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Solar/DER software for utilities (PowerClerk, WattPlan)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Solar/DER software for utilities (PowerClerk, WattPlan)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cleaveland Price Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Air break switches hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Air break switches hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cliffhanger Solutions Inc",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "cliffhangersolutions.com timed out; business unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CNIguard",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Remote security monitoring IoT and platform for grid assets",
+   "read": {
+    "verdict": "vendor",
+    "why": "Remote security monitoring IoT and platform for grid assets",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CODESYS CORPORATION",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IEC 61131 control software sold mainly to device makers, not utilities",
+   "read": {
+    "verdict": "supplier",
+    "why": "IEC 61131 control software sold mainly to device makers, not utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "COMEM NORTH AMERICA INC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: COMEM: transformer components",
+   "read": {
+    "verdict": "supplier",
+    "why": "COMEM: transformer components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Continuum Industries Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI infrastructure routing/siting software (Optioneer) for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI infrastructure routing/siting software (Optioneer) for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ControlPoint Technologies",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "ControlPoint Technologies: site unreachable; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "COPA-DATA",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: zenon SCADA/HMI software for energy automation",
+   "read": {
+    "verdict": "vendor",
+    "why": "zenon SCADA/HMI software for energy automation",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CORE Transformers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CORE Transformers: transformer maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "CORE Transformers: transformer maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Creative Composites Group",
+   "website": null
+  },
+  {
+   "name": "Crosslink Technology Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: crosslinktech.com: epoxy insulators and transformer bushings",
+   "read": {
+    "verdict": "supplier",
+    "why": "crosslinktech.com: epoxy insulators and transformer bushings",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CRWN.ai",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: CRWN.ai: sensors + AI predicting grid failures (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "CRWN.ai: sensors + AI predicting grid failures (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Crystal Group Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Rugged computer and server hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Rugged computer and server hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cyberhawk Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Drone inspection plus iHawk asset visualization software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Drone inspection plus iHawk asset visualization software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cyberlock Inc",
+   "website": null
+  },
+  {
+   "name": "Cyclomedia Technology, Inc.",
+   "website": null
+  },
+  {
+   "name": "D Volt Co",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dvolt Electric: low-voltage breakers and protection devices",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dvolt Electric: low-voltage breakers and protection devices",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Daktronics Inc.",
+   "website": null
+  },
+  {
+   "name": "Data Comm For Business, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Network equipment reseller",
+   "read": {
+    "verdict": "supplier",
+    "why": "Network equipment reseller",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Daupler",
+   "website": null
+  },
+  {
+   "name": "Davey Resource Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Vegetation management and consulting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Vegetation management and consulting services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Delphire",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fire suppression systems hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fire suppression systems hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Digi International",
+   "website": null
+  },
+  {
+   "name": "DLMS User Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Metering standards association (membership body)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Metering standards association (membership body)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "DNP Users Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: DNP3 protocol users group (membership body)",
+   "read": {
+    "verdict": "supplier",
+    "why": "DNP3 protocol users group (membership body)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Doble Engineering Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Diagnostic test instruments and testing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Diagnostic test instruments and testing services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Dongwoo Electric Corp.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dongwoo Electric: Korean electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dongwoo Electric: Korean electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Dorbs Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Dorbs: AI products for electric utility work (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Dorbs: AI products for electric utility work (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Dragos",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OT cybersecurity platform for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "OT cybersecurity platform for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "DT Research",
+   "website": null
+  },
+  {
+   "name": "Durabook Americas Inc.",
+   "website": null
+  },
+  {
+   "name": "DVI",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "DVI: bare acronym; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Dynamic Ratings Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformer monitoring hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformer monitoring hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "E Source",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Utility research, data science and analytics subscriptions",
+   "read": {
+    "verdict": "vendor",
+    "why": "Utility research, data science and analytics subscriptions",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Eagle Eye Power Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Battery test and monitoring equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Battery test and monitoring equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Eaglerise Renewable Energy USA INC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformers and inductors manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformers and inductors manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "EagleView Technologies",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Aerial imagery data sold to counties, cities, utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Aerial imagery data sold to counties, cities, utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Eaton Electrical, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Sells CYME and Yukon grid software to utilities, plus equipment",
+   "read": {
+    "verdict": "vendor",
+    "why": "Sells CYME and Yukon grid software to utilities, plus equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "EcoPhi",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ecophi.com: substation merging units and automation hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "ecophi.com: substation merging units and automation hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Edgecom Energy",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Edgecom: energy management/AI peak software (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Edgecom: energy management/AI peak software (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Edgezero LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Edgezero: site refuses crawler; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "EDMI LIMITED",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: EDMI: smart meters + AMI/head-end systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "EDMI: smart meters + AMI/head-end systems",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "EJ",
+   "website": null
+  },
+  {
+   "name": "EKN Engineering, LP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Electric Power Engineers LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Electric Power Research Inst",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: EPRI: utility-funded research institute (membership body)",
+   "read": {
+    "verdict": "supplier",
+    "why": "EPRI: utility-funded research institute (membership body)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Electrical Grid Monitoring",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Line monitoring sensors with grid analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Line monitoring sensors with grid analytics platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Electro - Mechanical LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electro-Mechanical LLC: switchgear/electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electro-Mechanical LLC: switchgear/electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Electromark",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Utility signage and labels",
+   "read": {
+    "verdict": "supplier",
+    "why": "Utility signage and labels",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Elgin Power Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electrical apparatus repair and services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electrical apparatus repair and services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ELM Fieldsight LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "elmfieldsight.com renders no text; business unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Elspec N.A.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Power quality analyzers hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Power quality analyzers hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ema Electromechanics Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: EMA Electromechanics: power equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "EMA Electromechanics: power equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Emerald Transformer",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformer repair and recycling",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformer repair and recycling",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Encoord",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Encoord: SAInt energy systems modeling software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Encoord: SAInt energy systems modeling software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Energyard LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: energyard.com: Houston workforce staffing",
+   "read": {
+    "verdict": "supplier",
+    "why": "energyard.com: Houston workforce staffing",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Enernex",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Power engineering consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "Power engineering consulting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Engineered Intelligence, Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: engineeredintelligence.com: ENGIN utility asset management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "engineeredintelligence.com: ENGIN utility asset management software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ensight Plus, LLC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: ensightplus.com: utility field service management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "ensightplus.com: utility field service management software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "envelio Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Intelligent Grid Platform software for distribution utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Intelligent Grid Platform software for distribution utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ENVIRONMENTAL SYSTEMS RESEARCH INSTITUTE, INC.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Esri: GIS software sold to governments and utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Esri: GIS software sold to governments and utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "EPIC iO",
+   "website": null
+  },
+  {
+   "name": "Episode 1",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Episode 1: possibly a VC fund or show label; unclear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "EPLAN",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Electrical engineering CAD software marketed to utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Electrical engineering CAD software marketed to utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "eSmart Systems AS",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI grid inspection software (Grid Vision)",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI grid inspection software (Grid Vision)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Evans Consoles",
+   "website": null
+  },
+  {
+   "name": "Exacter, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Overhead line condition survey services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Overhead line condition survey services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Exponent",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering consulting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Extreme Networks",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Extreme Networks: networking + cloud mgmt sold to SLED",
+   "read": {
+    "verdict": "vendor",
+    "why": "Extreme Networks: networking + cloud mgmt sold to SLED",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Farmer'S Copper, Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Farmer's Copper: copper products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Farmer's Copper: copper products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Fibox Enclosures",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Enclosures hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Enclosures hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Firescape Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: firescape.ai: wildfire risk intelligence and mitigation platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "firescape.ai: wildfire risk intelligence and mitigation platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Firmatek Llc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Drone survey services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Drone survey services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "First Power America",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "First Power America: site unreachable; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "FLASHNET LLC",
+   "website": null
+  },
+  {
+   "name": "Forsite Consultants",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Forestry/vegetation consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "Forestry/vegetation consulting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Fortinet - NA",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Cybersecurity platforms sold to utilities and governments",
+   "read": {
+    "verdict": "vendor",
+    "why": "Cybersecurity platforms sold to utilities and governments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Franklin Electric",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pumps and equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pumps and equipment manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Fugro",
+   "website": null
+  },
+  {
+   "name": "Fulcrum",
+   "website": null
+  },
+  {
+   "name": "FulcrumAir",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Drone line work services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Drone line work services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "fuseB2B",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: fuseB2B: utility business development for startups (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "fuseB2B: utility business development for startups (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Future Grid",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: LV network analytics software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "LV network analytics software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Future Technologies Venture, Llc",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Future Technologies Venture: offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "G&W Electric Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Switchgear and reclosers manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Switchgear and reclosers manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "G3-Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: G3-PLC standards alliance (membership body)",
+   "read": {
+    "verdict": "supplier",
+    "why": "G3-PLC standards alliance (membership body)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Gai Consultants, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GAI Consultants: engineering consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "GAI Consultants: engineering consulting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Garmin USA, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GPS and satellite communicator devices",
+   "read": {
+    "verdict": "supplier",
+    "why": "GPS and satellite communicator devices",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "GE Vernova",
+   "website": null
+  },
+  {
+   "name": "Genics Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Wood pole testing equipment (Genics Inc.); site unread",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wood pole testing equipment (Genics Inc.); site unread",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "GEOCART SPA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Geocart: aerial survey/mapping services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geocart: aerial survey/mapping services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Geodigital Technologies, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: LiDAR utility asset and vegetation data",
+   "read": {
+    "verdict": "vendor",
+    "why": "LiDAR utility asset and vegetation data",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Getac Inc.",
+   "website": null
+  },
+  {
+   "name": "Giga Energy Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformers and switchgear",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformers and switchgear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Gigawatt AI",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Gigawatt: AI-native software suite for utilities (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Gigawatt: AI-native software suite for utilities (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Golden Triangle Electric Power Technology Co.,Ltd",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Golden Triangle Electric Power: Chinese power equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Golden Triangle Electric Power: Chinese power equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Gresco Utility Supply",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Utility supply distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Utility supply distributor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Grid Raven",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Grid Raven: AI dynamic line rating forecasting",
+   "read": {
+    "verdict": "vendor",
+    "why": "Grid Raven: AI dynamic line rating forecasting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Grid Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (GE Vernova Grid Solutions: GridOS ADMS/EMS software plus equipment); skeptic unsure (DISPUTE: generic name, no site; if GE Vernova's unit, it is the equipment arm)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "GridiQ",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "GridiQ: site unreachable; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Gridsight",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Grid analytics software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Grid analytics software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Gridtwin",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: gridtwin.com: grid planning and hosting capacity software",
+   "read": {
+    "verdict": "vendor",
+    "why": "gridtwin.com: grid planning and hosting capacity software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "GridUnity",
+   "website": null
+  },
+  {
+   "name": "GridWrap",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "gridwrap.com refused by robots; business unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Guangdon Keyuan Electric Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Guangdong Keyuan Electric: Chinese electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Guangdong Keyuan Electric: Chinese electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Guju Technology, Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Guju Technology: site unreachable; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Gyro-Stabilized Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Gyro-Stabilized Systems: aerial camera gimbals",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gyro-Stabilized Systems: aerial camera gimbals",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "H2scan",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hydrogen sensors for transformer monitoring",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hydrogen sensors for transformer monitoring",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Haivision",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Video streaming and control room visualization software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Video streaming and control room visualization software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "HARTING Inc of North America",
+   "website": null
+  },
+  {
+   "name": "Havis Inc",
+   "website": null
+  },
+  {
+   "name": "Hcss",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Construction estimating and field software (HeavyBid, HeavyJob)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Construction estimating and field software (HeavyBid, HeavyJob)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "HD Hyundai Electric",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformers and switchgear manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformers and switchgear manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hdr Engineering Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Heimdall Power, Inc.",
+   "website": null
+  },
+  {
+   "name": "Hellenic Cables Americas Co",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hellenic Cables: cable manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hellenic Cables: cable manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "High to Low Voltage",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: hightolowvoltage.com: transformer sales, service, rentals",
+   "read": {
+    "verdict": "supplier",
+    "why": "hightolowvoltage.com: transformer sales, service, rentals",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hioki USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Test and measurement instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Test and measurement instruments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hitachi Energy",
+   "website": null
+  },
+  {
+   "name": "Honeywell",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Honeywell Smart Energy AMI meters and systems for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Honeywell Smart Energy AMI meters and systems for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hongfa America, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Relays manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Relays manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hubbell",
+   "website": null
+  },
+  {
+   "name": "HZO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Conformal coatings for electronics",
+   "read": {
+    "verdict": "supplier",
+    "why": "Conformal coatings for electronics",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "HÜBERS Verfahrenstechnik Maschinenbau",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Resin casting machinery for manufacturers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Resin casting machinery for manufacturers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "IEC (International Electric)",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "IEC (International Electric) site not found; business unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "IFD Technologies Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ifdtech.com: internal fault detector sensors for transformers",
+   "read": {
+    "verdict": "supplier",
+    "why": "ifdtech.com: internal fault detector sensors for transformers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "IFS North America Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IFS: EAM/ERP/field service software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "IFS: EAM/ERP/field service software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ike Gps",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IKE GPS: pole data collection/analysis software",
+   "read": {
+    "verdict": "vendor",
+    "why": "IKE GPS: pole data collection/analysis software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "IML North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IML: Resistograph pole testing instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "IML: Resistograph pole testing instruments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ind Technology",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Early fault detection sensors and analytics for powerlines",
+   "read": {
+    "verdict": "vendor",
+    "why": "Early fault detection sensors and analytics for powerlines",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Integral Analytics",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Utility DER and load forecasting analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Utility DER and load forecasting analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Integrated Energy",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Integrated Energy: generic name; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Intellirent",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Intellirent: site unreachable; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Intergraph Corporation d/b/a Hexagon Asset Lifecycle Intelligence",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Hexagon ALI: EAM/GIS/utility software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Hexagon ALI: EAM/GIS/utility software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "International Electrical Testing Association (NETA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electrical testing trade association (membership body)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electrical testing trade association (membership body)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ionate Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Ionate: hybrid intelligent transformer hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Ionate: hybrid intelligent transformer hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "IPS-ENERGY a Megger Company",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IPS-ENERGY: utility asset management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "IPS-ENERGY: utility asset management software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Iqgeo",
+   "website": null
+  },
+  {
+   "name": "Irby",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electrical distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electrical distributor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Irth Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Irth Solutions: damage prevention / 811 ticket software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Irth Solutions: damage prevention / 811 ticket software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ISG, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ISG: architecture/engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "ISG: architecture/engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Isolet",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "isolet.com renders no text; business unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "ITAM",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "ITAM: bare acronym; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Itron",
+   "website": null
+  },
+  {
+   "name": "J&D Electronics Co. Ltd",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Current sensors manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Current sensors manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Janitza",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Janitza: power quality meters",
+   "read": {
+    "verdict": "supplier",
+    "why": "Janitza: power quality meters",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "JBI Helicopter Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: JBI Helicopter Services: aviation services",
+   "read": {
+    "verdict": "supplier",
+    "why": "JBI Helicopter Services: aviation services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "JIANGSU ACME POWER CO.,LTD.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Jiangsu Acme Power: Chinese power equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Jiangsu Acme Power: Chinese power equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "JIANGSU SHUANGHUI POWER DEVELOPMENT CO., LTD.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Jiangsu Shuanghui Power: Chinese power equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Jiangsu Shuanghui Power: Chinese power equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "JST Power Equipment Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: medium-voltage transformer maker; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "medium-voltage transformer maker; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "JUBANG GROUP CO., LTD.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Jubang Group: Chinese power/cable products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Jubang Group: Chinese power/cable products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "K&A Power Group",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "K&A Power Group: site refuses crawler; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "KanopyAI",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "KanopyAI: site renders no text; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "KBI Cosmolink",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: KBI Cosmolink: Korean cable maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "KBI Cosmolink: Korean cable maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "KCI Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Kevala, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: grid planning and analytics platform for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "grid planning and analytics platform for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Key Systems Inc",
+   "website": null
+  },
+  {
+   "name": "Keysight Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: test and measurement instruments; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "test and measurement instruments; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Kimley-Horn",
+   "website": null
+  },
+  {
+   "name": "Kingsine Electric Automation Co.,Ltd",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: relay/meter test equipment maker (China)",
+   "read": {
+    "verdict": "supplier",
+    "why": "relay/meter test equipment maker (China)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Kloudgin",
+   "website": null
+  },
+  {
+   "name": "Kona Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Kona Engineering: engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Kona Engineering: engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Konolion Intl. Events (Beijing) Co. Ltd",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Konolion Intl Events: Beijing trade-show agency; sells no SLED product",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "L2 Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "l2solutions.com redirects to OmniTeq (federal AI); identity unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "L3 Harris",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: L3Harris: P25 radio systems sold to state/local agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "L3Harris: P25 radio systems sold to state/local agencies",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "La Marche",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: battery chargers and rectifiers for substations; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "battery chargers and rectifiers for substations; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Landis+Gyr Technology, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Landis+Gyr: AMI and grid edge software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Landis+Gyr: AMI and grid edge software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "LANNER ELECTRONICS INC.",
+   "website": null
+  },
+  {
+   "name": "Larsen & Toubro Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering and construction conglomerate",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and construction conglomerate",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "LED Roadway Lighting Ltd & Liveable Cities",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Liveable Cities: streetlight controls/CMS sold to cities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Liveable Cities: streetlight controls/CMS sold to cities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Leidos",
+   "website": null
+  },
+  {
+   "name": "LEOTEK Electronics",
+   "website": null
+  },
+  {
+   "name": "Leybold Vacuum USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Leybold: vacuum pumps",
+   "read": {
+    "verdict": "supplier",
+    "why": "Leybold: vacuum pumps",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Lindsey Manufacturing Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: line hardware and emergency restoration structures",
+   "read": {
+    "verdict": "supplier",
+    "why": "line hardware and emergency restoration structures",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "LINEVISION INC",
+   "website": null
+  },
+  {
+   "name": "Linxon, US LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Linxon: substation EPC contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Linxon: substation EPC contractor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Logic20/20 Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: management and data consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "management and data consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Looq AI",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI camera and digital-twin platform for utility asset inspection",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI camera and digital-twin platform for utility asset inspection",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Lovink Enertech B.V.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cable joints and enclosures maker (Netherlands)",
+   "read": {
+    "verdict": "supplier",
+    "why": "cable joints and enclosures maker (Netherlands)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "LS ELECTRIC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Korean switchgear and transformer maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Korean switchgear and transformer maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "LTI Mindtree Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: LTIMindtree: IT services/consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "LTIMindtree: IT services/consulting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Mach9 Robotics Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Mach9: LiDAR + AI infrastructure digitization software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Mach9: LiDAR + AI infrastructure digitization software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "MacLean Power Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: overhead line hardware and insulators",
+   "read": {
+    "verdict": "supplier",
+    "why": "overhead line hardware and insulators",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Maddox Industrial Transformer",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transformer maker/supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "transformer maker/supplier",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Magnefy",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: magnefy.com: AI non-invasive transformer fault monitoring platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "magnefy.com: AI non-invasive transformer fault monitoring platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Martin Energy Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Martin Energy Group: energy services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Martin Energy Group: energy services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Marwell Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: marwellcorp.com: UL-listed meter socket adapters maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "marwellcorp.com: UL-listed meter socket adapters maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Maverick",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "bare ambiguous name 'Maverick'; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Megger",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electrical test equipment maker; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "electrical test equipment maker; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Mehta Tech, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: digital fault recorders and PMUs; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "digital fault recorders and PMUs; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Meinberg Funkuhren Gmbh & Co.Kg",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: time servers / PTP-NTP clocks; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "time servers / PTP-NTP clocks; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Meta Power Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: switchgear and power distribution equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "switchgear and power distribution equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Micatu",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: optical voltage/current sensors for the grid; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "optical voltage/current sensors for the grid; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Microej",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "MicroEJ: embedded IoT OS sold to device OEMs, not utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Midsun Group Inc",
+   "website": null
+  },
+  {
+   "name": "Milbank Manufacturing Co.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meter sockets and electrical enclosures",
+   "read": {
+    "verdict": "supplier",
+    "why": "meter sockets and electrical enclosures",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Milsoft Utility Solutions, Inc.",
+   "website": null
+  },
+  {
+   "name": "Mitsubishi Electric Power Products, Inc",
+   "website": null
+  },
+  {
+   "name": "Mobile Mark Inc",
+   "website": null
+  },
+  {
+   "name": "Mobile Mounting Solutions, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: vehicle mounting equipment; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle mounting equipment; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Mosaic",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "bare ambiguous name 'Mosaic'; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Moxa Americas Inc",
+   "website": null
+  },
+  {
+   "name": "Mprest",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: DERMS / grid asset monitoring software",
+   "read": {
+    "verdict": "vendor",
+    "why": "DERMS / grid asset monitoring software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "MTE Meter Test Equipment Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meter test equipment; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "meter test equipment; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "MWResource Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: mwresource.com: energy consulting and resource services to utilities",
+   "read": {
+    "verdict": "supplier",
+    "why": "mwresource.com: energy consulting and resource services to utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "N2 Engineers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Nagarro Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IT services and digital engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT services and digital engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "National Electric Engineering Consultants",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electrical engineering consultants",
+   "read": {
+    "verdict": "supplier",
+    "why": "electrical engineering consultants",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Nayak Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility engineering and staffing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility engineering and staffing services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Neara",
+   "website": null
+  },
+  {
+   "name": "Network Innovations",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Network Innovations: satellite comms integrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "Network Innovations: satellite comms integrator",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ningbo AUX Smart Technology Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Ningbo AUX Smart Technology: Chinese meter maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Ningbo AUX Smart Technology: Chinese meter maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Nira Energy LLC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Nira Energy: interconnection analysis data platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Nira Energy: interconnection analysis data platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "NM Group",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: NM Group: LiDAR + vegetation/asset analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "NM Group: LiDAR + vegetation/asset analytics platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Noark Electric Na",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: circuit breakers and electrical components",
+   "read": {
+    "verdict": "supplier",
+    "why": "circuit breakers and electrical components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Noble Carbon",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "noblecarbon.com unreachable; offering unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "NODES AS",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: grid flexibility marketplace platform for DSOs",
+   "read": {
+    "verdict": "vendor",
+    "why": "grid flexibility marketplace platform for DSOs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Nokia of America Corporation",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: private LTE/IP networks and network software for utilities, public safety",
+   "read": {
+    "verdict": "vendor",
+    "why": "private LTE/IP networks and network software for utilities, public safety",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Noteworthy AI",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI truck-mounted cameras and platform for pole inspection",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI truck-mounted cameras and platform for pole inspection",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Novatech Llc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: NovaTech: Orion substation automation platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "NovaTech: Orion substation automation platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Nreca (Natl Rural Electric Coop Assn)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: national association of electric co-ops; membership body",
+   "read": {
+    "verdict": "supplier",
+    "why": "national association of electric co-ops; membership body",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "NV5 Geospatial, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: geospatial data and ENVI analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "geospatial data and ENVI analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "nVent",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: enclosures and electrical connection products",
+   "read": {
+    "verdict": "supplier",
+    "why": "enclosures and electrical connection products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "NW Signal Maintenance, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: signal maintenance services",
+   "read": {
+    "verdict": "supplier",
+    "why": "signal maintenance services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Nylus",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (nylus.com: field ops dispatch/work-order software for utility services); skeptic unsure (DISPUTE: nylus.com is field-ops software for hydrovac/oilfield contractors)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Nyquis",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Nyquis: grid waveform monitoring/fault detection (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Nyquis: grid waveform monitoring/fault detection (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Octopus Flexibility Services LLC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Octopus Flexibility: DER flexibility software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Octopus Flexibility: DER flexibility software platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "OEL Worldwide Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electrical products manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "electrical products manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "OFIL Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: OFIL Systems: UV corona inspection cameras",
+   "read": {
+    "verdict": "supplier",
+    "why": "OFIL Systems: UV corona inspection cameras",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Olameter",
+   "website": null
+  },
+  {
+   "name": "Olsun Electrics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Olsun Electrics: transformer maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Olsun Electrics: transformer maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Omicron Electronics Corp",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power system test equipment; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "power system test equipment; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "OneLayer",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: private LTE/5G security platform for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "private LTE/5G security platform for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Opal-RT Technologies Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: real-time grid simulation software/platforms for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "real-time grid simulation software/platforms for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Open Access Technology International Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OATI: energy market/grid software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "OATI: energy market/grid software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Open Mobile Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Open Mobile Alliance: standards body selling memberships",
+   "read": {
+    "verdict": "supplier",
+    "why": "Open Mobile Alliance: standards body selling memberships",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Openadr Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: OpenADR standards alliance; membership body",
+   "read": {
+    "verdict": "supplier",
+    "why": "OpenADR standards alliance; membership body",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "OpenText",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OpenText: information management software sold to govts",
+   "read": {
+    "verdict": "vendor",
+    "why": "OpenText: information management software sold to govts",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Orbital Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Osmose Utilities Services Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pole inspection and restoration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "pole inspection and restoration services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Otc Services Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: OTC Services: transformer oil testing/services",
+   "read": {
+    "verdict": "supplier",
+    "why": "OTC Services: transformer oil testing/services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "OUTRAM RESEARCH LIMITED",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power quality recorders; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "power quality recorders; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "OverIT International, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: field service management software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "field service management software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Overstory Inc.",
+   "website": null
+  },
+  {
+   "name": "PAK ELEKTRON LIMITED",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pakistani transformer and appliance maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pakistani transformer and appliance maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Panasonic Connect North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Toughbook rugged computers; hardware (filed supplier before)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Toughbook rugged computers; hardware (filed supplier before)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Panelmatic",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: switchgear and control panel builder",
+   "read": {
+    "verdict": "supplier",
+    "why": "switchgear and control panel builder",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pano Ai",
+   "website": null
+  },
+  {
+   "name": "PCTel Inc",
+   "website": null
+  },
+  {
+   "name": "PDM, Power and Data Management",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "PDM: guessed site under development; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Pearl Solutions Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pearlsolves.com: managed IT services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "pearlsolves.com: managed IT services firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Penta Networks Global- PNG",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Penta Networks Global: site unreachable; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Phoenix Contact USA, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industrial connectors and automation components",
+   "read": {
+    "verdict": "supplier",
+    "why": "industrial connectors and automation components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Phoenix Electric Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electrical distribution equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "electrical distribution equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Piedmont Bushings & Insulators, Llc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bushings and insulators maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "bushings and insulators maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pierce Powerline Co. LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pierce Powerline: line construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pierce Powerline: line construction contractor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pike Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility construction and engineering contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility construction and engineering contractor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "PIQ Energy",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: piqenergy.com: agentic grid planning/interconnection study software",
+   "read": {
+    "verdict": "vendor",
+    "why": "piqenergy.com: agentic grid planning/interconnection study software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Planar Systems, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Planar: displays and video walls",
+   "read": {
+    "verdict": "supplier",
+    "why": "Planar: displays and video walls",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Plexigrid",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: distribution grid management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "distribution grid management software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "PLP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Preformed Line Products: line hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Preformed Line Products: line hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pointerra",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: cloud 3D point-cloud data platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "cloud 3D point-cloud data platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Powell Electrical Systems, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Powell: switchgear/electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Powell: switchgear/electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Power Delivery Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power delivery equipment products",
+   "read": {
+    "verdict": "supplier",
+    "why": "power delivery equipment products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Power Monitors, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power quality recorders; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "power quality recorders; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "PowerSecure, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: PowerSecure: microgrid/distributed generation + services",
+   "read": {
+    "verdict": "supplier",
+    "why": "PowerSecure: microgrid/distributed generation + services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Powerside",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power quality monitors and mitigation equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "power quality monitors and mitigation equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Powertech Labs Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: DSATools grid stability software plus lab testing",
+   "read": {
+    "verdict": "vendor",
+    "why": "DSATools grid stability software plus lab testing",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "PricewaterhouseCoopers LLP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional services/consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional services/consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Primate Technologies Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: primate-tech.com: control room data/visualization software, utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "primate-tech.com: control room data/visualization software, utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Primtech North America LLC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Primtech: 3D substation design software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Primtech: 3D substation design software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Priority Wire and Cable",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: wire and cable distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "wire and cable distributor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Prisma Photonics",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: fiber-optic sensing platform for power line monitoring",
+   "read": {
+    "verdict": "vendor",
+    "why": "fiber-optic sensing platform for power line monitoring",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Project Consultants Llc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Project Consultants LLC: consulting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Project Consultants LLC: consulting services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Prysmian Group",
+   "website": null
+  },
+  {
+   "name": "PSCAD",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: PSCAD: power system simulation software",
+   "read": {
+    "verdict": "vendor",
+    "why": "PSCAD: power system simulation software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "PSP Products, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility tools/products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility tools/products maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Puls",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: PULS: DIN-rail power supplies",
+   "read": {
+    "verdict": "supplier",
+    "why": "PULS: DIN-rail power supplies",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "QINGDAO MEGATRO HOLDING CO.,LIMITED",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Qingdao Megatro: transmission towers/steel structures",
+   "read": {
+    "verdict": "supplier",
+    "why": "Qingdao Megatro: transmission towers/steel structures",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Qualitrol Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transformer monitoring devices; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "transformer monitoring devices; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Qualus",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "power engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Quanta Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility infrastructure contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility infrastructure contractor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Quantum Optics Jena",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Quantum Optics Jena: quantum key distribution hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Quantum Optics Jena: quantum key distribution hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RA-Lock Security Solutions, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: RA-Lock: physical lock security products",
+   "read": {
+    "verdict": "supplier",
+    "why": "RA-Lock: physical lock security products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Raad",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: raad.com: aerial intelligence/drone data for T&D asset inspection",
+   "read": {
+    "verdict": "vendor",
+    "why": "raad.com: aerial intelligence/drone data for T&D asset inspection",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RAD",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: RAD: telecom network equipment for utilities",
+   "read": {
+    "verdict": "supplier",
+    "why": "RAD: telecom network equipment for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Radian Research, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meter test equipment; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "meter test equipment; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ramtech",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Ramtech: ramtech.com is an image host; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "REACTIVE TECHNOLOGIES LIMITED",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: GridMetrix grid inertia measurement data service",
+   "read": {
+    "verdict": "vendor",
+    "why": "GridMetrix grid inertia measurement data service",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Red Hat, LLC",
+   "website": null
+  },
+  {
+   "name": "Reinhausen Manufacturing Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: on-load tap changers; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "on-load tap changers; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RESA Power",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electrical equipment service, testing and parts",
+   "read": {
+    "verdict": "supplier",
+    "why": "electrical equipment service, testing and parts",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Revelstoke Powertech Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Revelstoke Powertech: switches, reclosers, vault monitors",
+   "read": {
+    "verdict": "supplier",
+    "why": "Revelstoke Powertech: switches, reclosers, vault monitors",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Rhizome",
+   "website": null
+  },
+  {
+   "name": "Ritz Instrument Transformers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: instrument transformers; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "instrument transformers; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RLC Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "power engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RMS Energy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: substation and transformer services",
+   "read": {
+    "verdict": "supplier",
+    "why": "substation and transformer services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Rose Electronics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Rose Electronics: KVM switches",
+   "read": {
+    "verdict": "supplier",
+    "why": "Rose Electronics: KVM switches",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Roxtec USA",
+   "website": null
+  },
+  {
+   "name": "RS Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: RS Technologies: composite utility poles",
+   "read": {
+    "verdict": "supplier",
+    "why": "RS Technologies: composite utility poles",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RTDS Technologies, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: real-time digital grid simulator (RSCAD software)",
+   "read": {
+    "verdict": "vendor",
+    "why": "real-time digital grid simulator (RSCAD software)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RTS Power",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: rtspower.com: Indian transformers, cables and wires",
+   "read": {
+    "verdict": "supplier",
+    "why": "rtspower.com: Indian transformers, cables and wires",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "S&C Electric Company",
+   "website": null
+  },
+  {
+   "name": "SAF North America LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: microwave radio equipment; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "microwave radio equipment; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Safegrid USA",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "safegrid.com refused by robots; offering unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "SAGEMCOM Energy & Telecom",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: smart meters and AMI head-end platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "smart meters and AMI head-end platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Saipwell Electric Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chinese electrical enclosures maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chinese electrical enclosures maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Salesforce",
+   "website": null
+  },
+  {
+   "name": "Sam Analytic Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: samanalyticsolutions.com: Siemens SCADA reseller/integrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "samanalyticsolutions.com: Siemens SCADA reseller/integrator",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SAM Companies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: SAM Companies: survey/geospatial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "SAM Companies: survey/geospatial services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sap America, Inc.",
+   "website": null
+  },
+  {
+   "name": "Sargent & Lundy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SAS Institute Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: analytics software sold to utilities and state/local govt",
+   "read": {
+    "verdict": "vendor",
+    "why": "analytics software sold to utilities and state/local govt",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Satec Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power meters and analyzers; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "power meters and analyzers; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SBS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "SBS: bare acronym; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Schaefer, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: schaefer-inc.com: structural engineering firm (Cincinnati)",
+   "read": {
+    "verdict": "supplier",
+    "why": "schaefer-inc.com: structural engineering firm (Cincinnati)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Schneider Electric USA",
+   "website": null
+  },
+  {
+   "name": "Schweitzer Engineering Laboratories, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: protective relays; hardware (filed supplier before)",
+   "read": {
+    "verdict": "supplier",
+    "why": "protective relays; hardware (filed supplier before)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Scope Services Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility engineering/staffing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility engineering/staffing services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Scopito ApS",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: drone inspection image analysis software",
+   "read": {
+    "verdict": "vendor",
+    "why": "drone inspection image analysis software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Secucontrol Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OT cybersecurity/secure remote access for utility automation",
+   "read": {
+    "verdict": "vendor",
+    "why": "OT cybersecurity/secure remote access for utility automation",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SEG Electronics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: protection relays; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "protection relays; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Select Spectrum",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: spectrum brokerage/advisory services",
+   "read": {
+    "verdict": "supplier",
+    "why": "spectrum brokerage/advisory services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SEMAR",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "semar.com.br is a parts dealer; identity unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Semtech Corporation",
+   "website": null
+  },
+  {
+   "name": "Senpilot",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: senpilot.com: AI system for utilities (planning, regulators, calls)",
+   "read": {
+    "verdict": "vendor",
+    "why": "senpilot.com: AI system for utilities (planning, regulators, calls)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sense Labs Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: home energy monitor and utility analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "home energy monitor and utility analytics platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sensewaves",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: meter data analytics software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "meter data analytics software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sensorlink Corp",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: line current measurement tools; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "line current measurement tools; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sequans Communications",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: LTE IoT chips and modules; components",
+   "read": {
+    "verdict": "supplier",
+    "why": "LTE IoT chips and modules; components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ServiceNow, Inc.",
+   "website": null
+  },
+  {
+   "name": "Shanghai Leading International Co., Ltd.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Shanghai Leading International: likely trade agency; unclear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Sharper Shape",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: utility inspection data and software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "utility inspection data and software platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Shenzhen Sensor Electronic Technology Co., ltd",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chinese sensor maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chinese sensor maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sicame North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: connectors and line hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "connectors and line hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SIEMENS",
+   "website": null
+  },
+  {
+   "name": "Siemens Energy Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: grid equipment (transformers, HVDC)",
+   "read": {
+    "verdict": "supplier",
+    "why": "grid equipment (transformers, HVDC)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sieyuan Electric Co.,Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chinese transformer and switchgear maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chinese transformer and switchgear maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sigma Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: sigmatechnologiesinc.com: transformer/GIS monitoring hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "sigmatechnologiesinc.com: transformer/GIS monitoring hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Simplify",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Simplify: generic name; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Sisco, Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IEC 61850 and utility integration software",
+   "read": {
+    "verdict": "vendor",
+    "why": "IEC 61850 and utility integration software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Skydio",
+   "website": null
+  },
+  {
+   "name": "Slingco America Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Slingco: rigging slings",
+   "read": {
+    "verdict": "supplier",
+    "why": "Slingco: rigging slings",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Smart Energy Water",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: utility customer engagement/CX platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "utility customer engagement/CX platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Smart Grid Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name 'Smart Grid Solutions'; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Smart Power Networks Ltd",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Smart Power Networks: site renders no text; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "SmartWorks",
+   "website": null
+  },
+  {
+   "name": "Smilics USA Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Wibeee energy monitors with cloud platform for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Wibeee energy monitors with cloud platform for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SolEpoxy Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: SolEpoxy: epoxy insulators/compounds",
+   "read": {
+    "verdict": "supplier",
+    "why": "SolEpoxy: epoxy insulators/compounds",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Solomon Transformers, LLC dba Sunbelt Solomon Services, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transformer sales and services",
+   "read": {
+    "verdict": "supplier",
+    "why": "transformer sales and services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Southern States Llc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: high-voltage switches; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "high-voltage switches; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Southwire Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: wire and cable maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "wire and cable maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Span",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: software-defined smart electrical panels; utility programs",
+   "read": {
+    "verdict": "vendor",
+    "why": "software-defined smart electrical panels; utility programs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sparus",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility field services",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility field services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Spatial Data Analytics Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Spatial Data Analytics: site renders no text; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Spectrum Industries Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: technology furniture/consoles maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "technology furniture/consoles maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Speedwell Technologies PVT.LTD.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Indian firm; site unreachable, offering unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "SPF America, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: spfamerica.com: copper busbar contract manufacturing",
+   "read": {
+    "verdict": "supplier",
+    "why": "spfamerica.com: copper busbar contract manufacturing",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Staubli Electrical Connectors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electrical connectors; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "electrical connectors; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SteelCon",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: SteelCon: steel structures/fabrication",
+   "read": {
+    "verdict": "supplier",
+    "why": "SteelCon: steel structures/fabrication",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Stego Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: enclosure climate control components",
+   "read": {
+    "verdict": "supplier",
+    "why": "enclosure climate control components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Stella-Jones",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: wood utility poles",
+   "read": {
+    "verdict": "supplier",
+    "why": "wood utility poles",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "STMicroelectronics, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: semiconductor maker; components",
+   "read": {
+    "verdict": "supplier",
+    "why": "semiconductor maker; components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Stored Energy Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Stored Energy Systems: DC battery chargers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Stored Energy Systems: DC battery chargers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Subnet Solutions Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: substation automation and data software",
+   "read": {
+    "verdict": "vendor",
+    "why": "substation automation and data software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SubProTech",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: substation protection engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "substation protection engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Superseal Corp",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Superseal: sealing products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Superseal: sealing products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Survalent",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: SCADA/ADMS software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "SCADA/ADMS software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Suzhou CLOU-MGE Electric Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Suzhou CLOU-MGE: Chinese electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Suzhou CLOU-MGE: Chinese electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Switched Source",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: power-electronics grid hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "power-electronics grid hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Syncrowin",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (syncrowin.com.au: AI operational intelligence for industrial sites); skeptic unsure (DISPUTE: syncrowin.com.au: industrial AI for plants, oil/gas; no public buyer)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Systems With Intelligence Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: substation monitoring cameras with analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "substation monitoring cameras with analytics platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "T&R Electric Supply Co., Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transformer supply",
+   "read": {
+    "verdict": "supplier",
+    "why": "transformer supply",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "T-Mobile for Business",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: wireless network services incl. public-sector priority (T-Priority)",
+   "read": {
+    "verdict": "vendor",
+    "why": "wireless network services incl. public-sector priority (T-Priority)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Taehwatrans Co. LTD",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Korean transformer maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Korean transformer maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TAMURA CORPORATION OF AMERICA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tamura: transformers/magnetics",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tamura: transformers/magnetics",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Tantalus Systems Corp.",
+   "website": null
+  },
+  {
+   "name": "TC Communications",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: fiber optic communication equipment; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "fiber optic communication equipment; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TDS Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: equipment supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment supplier",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TE Connectivity Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: connectors and sensors; components",
+   "read": {
+    "verdict": "supplier",
+    "why": "connectors and sensors; components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Tech Products Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility signs, labels and pole tags",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility signs, labels and pole tags",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Technosylva Inc",
+   "website": null
+  },
+  {
+   "name": "TEKsystems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IT staffing services (filed supplier before)",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT staffing services (filed supplier before)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Teledyne FLIR Defense",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Teledyne FLIR Defense: thermal cameras/drones hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Teledyne FLIR Defense: thermal cameras/drones hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Telenor IoT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Telenor IoT: IoT connectivity provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Telenor IoT: IoT connectivity provider",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Telescada",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: telescada.com: SCADA software and instrumentation for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "telescada.com: SCADA software and instrumentation for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Telit IoT Solutions, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IoT cellular modules; components",
+   "read": {
+    "verdict": "supplier",
+    "why": "IoT cellular modules; components",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Terrago Technologies",
+   "website": null
+  },
+  {
+   "name": "Tesco- The Eastern Specialty Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meter testing equipment and meter services",
+   "read": {
+    "verdict": "supplier",
+    "why": "meter testing equipment and meter services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Tessco Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tessco: wireless equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tessco: wireless equipment distributor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Texas Transformers & Equipment Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Texas Transformers & Equipment: transformer supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Texas Transformers & Equipment: transformer supplier",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Themis Intelligence, a Survalent Company",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Themis (Survalent): AI for grid operations / ADMS",
+   "read": {
+    "verdict": "vendor",
+    "why": "Themis (Survalent): AI for grid operations / ADMS",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ThinkLabs AI, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI grid digital twin software",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI grid digital twin software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Thor Poletest Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pole testing device; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "pole testing device; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Three D Metals",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: metal fabrication",
+   "read": {
+    "verdict": "supplier",
+    "why": "metal fabrication",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ThreeV Technologies, Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "ThreeV Technologies: site renders no text; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Tiano Inc/Zhenglai Electric North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tiano/Zhenglai: Chinese electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tiano/Zhenglai: Chinese electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TJ|H2b Analytical Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: TJ|H2b: transformer oil lab services",
+   "read": {
+    "verdict": "supplier",
+    "why": "TJ|H2b: transformer oil lab services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TMC Transformers USA Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transformer maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "transformer maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Torus",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: flywheel/battery energy storage hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "flywheel/battery energy storage hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Toshiba",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: conglomerate; T&D equipment (filed supplier before)",
+   "read": {
+    "verdict": "supplier",
+    "why": "conglomerate; T&D equipment (filed supplier before)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Transfopower Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transfopower: transformer maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transfopower: transformer maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Transformers and Rectifiers (INDIA) Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transformers and Rectifiers India: transformer maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transformers and Rectifiers India: transformer maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Transgard Llc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transgard: substation animal guards/fencing",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transgard: substation animal guards/fencing",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Trc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Treeswift",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: vegetation/forest LiDAR analytics for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "vegetation/forest LiDAR analytics for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Trench Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trench: instrument transformers, coils",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trench: instrument transformers, coils",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Triangle Microworks",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: DNP3/IEC 61850 protocol software",
+   "read": {
+    "verdict": "vendor",
+    "why": "DNP3/IEC 61850 protocol software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Trident Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name 'Trident Solutions'; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Trihedral, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Trihedral: VTScada software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Trihedral: VTScada software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Trilliant Networks Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AMI/smart grid communications platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "AMI/smart grid communications platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Trinity Touch Pvt. Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trinity Touch: cable glands, enclosures (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trinity Touch: cable glands, enclosures (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TS Conductor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advanced overhead conductors",
+   "read": {
+    "verdict": "supplier",
+    "why": "advanced overhead conductors",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TSEA energia",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: TSEA Energia: Mexican electrical/meter equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "TSEA Energia: Mexican electrical/meter equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Typhoon Hil Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: hardware-in-the-loop grid simulation software/platforms",
+   "read": {
+    "verdict": "vendor",
+    "why": "hardware-in-the-loop grid simulation software/platforms",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Uca International Users Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility communications users group; membership body",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility communications users group; membership body",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Uni-Trend Technology US Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: test meters and instruments; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "test meters and instruments; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "UNITED UTILITY SERVICES",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: United Utility Services: utility contracting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "United Utility Services: utility contracting services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Uplight",
+   "website": null
+  },
+  {
+   "name": "UTEC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "UTEC: bare acronym; site unreachable",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Uticom Systems, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: uticom.net: utility signage and graphics",
+   "read": {
+    "verdict": "supplier",
+    "why": "uticom.net: utility signage and graphics",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Utilismart Corporation",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: meter data management/analytics for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "meter data management/analytics for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Utility Broadband Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility broadband industry alliance; membership body",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility broadband industry alliance; membership body",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Vanguard Electric LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Vanguard Electric: electrical contractor/equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Vanguard Electric: electrical contractor/equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Vanquish Fencing Solutions, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: security fencing",
+   "read": {
+    "verdict": "supplier",
+    "why": "security fencing",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "VaOpto",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: vaopto.com: transformers and substation equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "vaopto.com: transformers and substation equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Verizon",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Verizon: Connect fleet/Frontline products sold to SLED",
+   "read": {
+    "verdict": "vendor",
+    "why": "Verizon: Connect fleet/Frontline products sold to SLED",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "VFP, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: equipment shelters (filed supplier before)",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment shelters (filed supplier before)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Viridi Parente, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: battery energy storage units; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "battery energy storage units; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Virtual Peaker",
+   "website": null
+  },
+  {
+   "name": "Vision Metering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electric/water meter maker; metering hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electric/water meter maker; metering hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Visual Concepts dba vPAC Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: vPAC Alliance (Visual Concepts): industry consortium",
+   "read": {
+    "verdict": "supplier",
+    "why": "vPAC Alliance (Visual Concepts): industry consortium",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "VITEC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "VITEC: ambiguous acronym; cannot identify",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Vodafone IoT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Vodafone IoT: IoT connectivity provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Vodafone IoT: IoT connectivity provider",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Volatus Aerospace Corp/",
+   "website": null
+  },
+  {
+   "name": "Voltair",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Voltair: autonomous line-charging inspection drones + data",
+   "read": {
+    "verdict": "vendor",
+    "why": "Voltair: autonomous line-charging inspection drones + data",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Voltaris Power",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Voltaris Power: site refused robots; offer unknown",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "WAGO Corporation",
+   "website": null
+  },
+  {
+   "name": "WAIN Electrical Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: WAIN Electrical: Chinese electrical components maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "WAIN Electrical: Chinese electrical components maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Wasion Americas Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Wasion: smart meters + AMI systems for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Wasion: smart meters + AMI systems for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Watchfuly Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Watchfuly: Plexus distribution grid power-flow platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Watchfuly: Plexus distribution grid power-flow platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Weave Grid, Inc. (WeaveGrid)",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: WeaveGrid: EV-charging grid management software for utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "WeaveGrid: EV-charging grid management software for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Weidmuller Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Weidmuller: terminal blocks, industrial connectivity hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Weidmuller: terminal blocks, industrial connectivity hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Weschler Instruments",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Weschler Instruments: panel meters and instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Weschler Instruments: panel meters and instruments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Wesco Distribution, Inc.",
+   "website": null
+  },
+  {
+   "name": "West Monroe Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: West Monroe: management/technology consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "West Monroe: management/technology consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Westermo Data Communications Inc",
+   "website": null
+  },
+  {
+   "name": "Westwood Professional Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Westwood: engineering/survey services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Westwood: engineering/survey services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Wi Sun Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Wi-SUN Alliance: standards body selling memberships",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wi-SUN Alliance: standards body selling memberships",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "WIKA USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: WIKA: pressure/temperature/SF6 gas instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "WIKA: pressure/temperature/SF6 gas instruments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Windtec Gmbh/American Superconductor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Windtec/AMSC: wind turbine designs, grid power electronics",
+   "read": {
+    "verdict": "supplier",
+    "why": "Windtec/AMSC: wind turbine designs, grid power electronics",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Wirepas",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Wirepas: mesh IoT network software for utility metering",
+   "read": {
+    "verdict": "vendor",
+    "why": "Wirepas: mesh IoT network software for utility metering",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Wirescan AS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Wirescan: cable condition monitoring instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wirescan: cable condition monitoring instruments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Woolpert, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Woolpert: engineering, architecture and geospatial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Woolpert: engineering, architecture and geospatial services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Workongrid",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Workongrid: field worker safety/compliance software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Workongrid: field worker safety/compliance software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "World Wide Technology, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: World Wide Technology: IT reseller/integrator, no own product",
+   "read": {
+    "verdict": "supplier",
+    "why": "World Wide Technology: IT reseller/integrator, no own product",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "WSCAD Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: WSCAD: electrical CAD software",
+   "read": {
+    "verdict": "vendor",
+    "why": "WSCAD: electrical CAD software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "WSP",
+   "website": null
+  },
+  {
+   "name": "WTIwireless",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: WTIwireless: 4G/5G cellular routers for ATMs, kiosks",
+   "read": {
+    "verdict": "supplier",
+    "why": "WTIwireless: 4G/5G cellular routers for ATMs, kiosks",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Xenerpower USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Xenerpower: Houston transformer & switchgear maker (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Xenerpower: Houston transformer & switchgear maker (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Xybix Systems Inc",
+   "website": null
+  },
+  {
+   "name": "Xylem Inc",
+   "website": null
+  },
+  {
+   "name": "Young Management and Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Young Management and Consulting: consulting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Young Management and Consulting: consulting services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Zelisko",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Zelisko: instrument transformers / electrical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Zelisko: instrument transformers / electrical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ZENOVATE",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "ZENOVATE: zenovate.com for sale, .ai is home renovation; unclear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Zhejiang Fuerte Electrical Apparatus Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Zhejiang Fuerte: Chinese electrical apparatus",
+   "read": {
+    "verdict": "supplier",
+    "why": "Zhejiang Fuerte: Chinese electrical apparatus",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Zhejiang Hailiang International Trading Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Zhejiang Hailiang: copper/trading company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Zhejiang Hailiang: copper/trading company",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Zhejiang Horizon Instrument Transformers Co., Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Zhejiang Horizon: instrument transformers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Zhejiang Horizon: instrument transformers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Zistos Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Zistos: inspection camera/video hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Zistos: inspection camera/video hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ZPro Solutions",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 16,
+ "quality_was": "good"
+}

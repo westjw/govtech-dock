@@ -878,9 +878,9 @@
    "conference": "TRB Annual",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://trb27.myexpoonline.com/exhibitors",
    "fetchability": null,
-   "event_tag": "TRB 2026",
+   "event_tag": "TRB 2027",
    "url": "https://www.trb.org/AnnualMeeting/AnnualMeeting.aspx",
    "dates": "January 10-14, 2027",
    "city": "Washington, DC",
@@ -888,7 +888,12 @@
    "dates_source": "https://www.nationalacademies.org/units/TRB-Transporta-23-P-586",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - trb.org/AnnualMeeting redirects to trb-annual-meeting.nationalacademies.org, whose robots.txt did not answer (ConnectionError) on four attempts, host root inclu | directory read 2026-10-16: unreadable - trb.org/AnnualMeeting redirects to trb-annual-meeting.nationalacademies.org, robots.txt ConnectionError again; annualmeeting.mytrb.org robots.txt HTTP 500 (kept",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-15",
+   "prior_tags": [
+    "TRB 2026"
+   ],
+   "tag_note": "rolled 2026-10-26 from 'TRB 2026' to 'TRB 2027' (owner's ruling): the organiser publishes only the 2027 edition's list; companies tagged 'TRB 2026' keep it - it stays issued as a prior tag.",
+   "exhibitor_url_source": "the TRB 2027 edition's own exhibitor list (owner, 2026-10-26: roll TRB and sweep it)"
   },
   {
    "block": "Public works and infrastructure",
@@ -1134,9 +1139,9 @@
    "conference": "DISTRIBUTECH",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://dt2027.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
    "fetchability": "js-walled",
-   "event_tag": "DISTRIBUTECH 2026",
+   "event_tag": "DISTRIBUTECH 2027",
    "url": "https://www.distributech.com/",
    "dates": "March 1-4, 2027",
    "city": "Atlanta, GA",
@@ -1145,7 +1150,13 @@
    "dates_confidence": "high",
    "exhibitor_url_candidate": "https://dt2027.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm?featured=false",
    "exhibitor_url_candidate_note": "js-walled: MapYourShow; MapYourShow floor plan and exhibitor gallery are Vue templates printing no names. distributech.com/exhibit-sponsor/eventsponsors shows spons (read 2026-10-14)",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-15",
+   "exhibitor_url_source": "the DISTRIBUTECH 2027 edition's own exhibitor list (owner, 2026-10-26: sweep both editions)",
+   "prior_tags": [
+    "DISTRIBUTECH 2026"
+   ],
+   "tag_note": "rolled 2026-10-26 from 'DISTRIBUTECH 2026' to 'DISTRIBUTECH 2027' (owner's ruling): both editions are swept; the 2026 list was read under the 2026 tag first, and companies tagged 'DISTRIBUTECH 2026' keep it - it stays issued as a prior tag.",
+   "exhibitor_url_was": "https://dt2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm"
   },
   {
    "block": "Public works and infrastructure",
@@ -1418,9 +1429,9 @@
    "conference": "FDIC International",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://fdic2027.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
    "fetchability": "js-walled",
-   "event_tag": "FDIC International 2026",
+   "event_tag": "FDIC International 2027",
    "url": "https://www.fdic.com/",
    "dates": "April 12-17, 2027",
    "city": "Indianapolis, IN",
@@ -1429,7 +1440,13 @@
    "dates_confidence": "high",
    "exhibitor_url_candidate": "https://fdic2027.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm?featured=false",
    "exhibitor_url_candidate_note": "js-walled: MapYourShow; fdic.com nav '2027 Exhibitors' and '2027 Floorplan' point to fdic2027.mapyourshow.com. The gallery, sitemap.cfm and exhibitor-alphalist.cfm  (read 2026-10-14)",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-15",
+   "exhibitor_url_source": "the FDIC International 2027 edition's own exhibitor list (owner, 2026-10-26: sweep both editions)",
+   "prior_tags": [
+    "FDIC International 2026"
+   ],
+   "tag_note": "rolled 2026-10-26 from 'FDIC International 2026' to 'FDIC International 2027' (owner's ruling): both editions are swept; the 2026 list was read under the 2026 tag first, and companies tagged 'FDIC International 2026' keep it - it stays issued as a prior tag.",
+   "exhibitor_url_was": "https://fdic2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm"
   },
   {
    "block": "Public safety",

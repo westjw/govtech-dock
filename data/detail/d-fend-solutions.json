@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Drone Risk Mitigation: Operational Disruption is Only Part of the Story",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/drone-incident-briefing-september-2026/"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Covert in Port and Precise at Sea: Drone Mitigation for Ports and Vessels with RF Cyber-Takeover",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://d-fendsolutions.com/blog/a-key-factor-in-determining-rogue-drones-impact/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Drone Countermeasures: The Advantages of a Layered Approach",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://d-fendsolutions.com/blog/drone-countermeasures-the-advantages-of-a-layered-approach/"
   }
  ],
  "profile": {

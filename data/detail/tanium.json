@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-24",
    "headline": "eMudhra CA Compromise: Find and Fix Your Exposure with Tanium",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-25",
    "headline": "HTTP2Shell: Find and Fix Vulnerable Brotli Copies with Tanium",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-22",
    "headline": "AI Compute Just Became an Endpoint Problem",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-15",
    "headline": "Notice when a machine stops acting like itself: introducing Endpoint Drift",
    "kind": "product",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-14",
    "headline": "Hunt or be Hunted: Every service was unique, and that was the problem",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "AI Is Accelerating Vulnerability Discovery. Tanium Helps You Keep Up.",
    "kind": "press",

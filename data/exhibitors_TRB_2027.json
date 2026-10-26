@@ -1,0 +1,1327 @@
+{
+ "event_tag": "TRB 2027",
+ "conference": "TRB Annual",
+ "found": true,
+ "source_url": "https://trb27.myexpoonline.com/exhibitors",
+ "source_note": "Read from https://trb27.myexpoonline.com/exhibitors and its offset pages by scripts/sweep_exhibitors.py's sweep(), one page at a time, merged by name: https://trb27.myexpoonline.com/exhibitors: 57; https://trb27.myexpoonline.com/exhibitors?offset=50: 40; https://trb27.myexpoonline.com/exhibitors?offset=100: 55; https://trb27.myexpoonline.com/exhibitors?offset=150: 24; https://trb27.myexpoonline.com/exhibitors?offset=200: 14. 162 name(s). Quality: good (44% carry a corporate marker, 0% name a site section, 3% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "AASHTO",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AASHTO sells AASHTOWare (Project, Bridge) software to state DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "AASHTO sells AASHTOWare (Project, Bridge) software to state DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AC&A",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "\"AC&A\": cannot tell which firm this is; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Acoustic Technology Group, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: acoustic/noise engineering and products",
+   "read": {
+    "verdict": "supplier",
+    "why": "acoustic/noise engineering and products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Acrow Corporation of America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Acrow: modular steel bridges",
+   "read": {
+    "verdict": "supplier",
+    "why": "Acrow: modular steel bridges",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ADASTEC Corp",
+   "website": null
+  },
+  {
+   "name": "Advanced Infrastructure Design, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: AID: pavement engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "AID: pavement engineering consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AIWaysion",
+   "website": null
+  },
+  {
+   "name": "Altitude by Geotab",
+   "website": null
+  },
+  {
+   "name": "American Galvanizers Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: American Galvanizers Association: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "American Galvanizers Association: trade association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "American Public Transportation Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: APTA: transit association, memberships",
+   "read": {
+    "verdict": "supplier",
+    "why": "APTA: transit association, memberships",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "American Society of Civil Engineers (ASCE)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ASCE: professional society, memberships",
+   "read": {
+    "verdict": "supplier",
+    "why": "ASCE: professional society, memberships",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "American Transportation Research Institute",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: ATRI: licenses truck GPS data/analytics to state DOTs and MPOs",
+   "read": {
+    "verdict": "vendor",
+    "why": "ATRI: licenses truck GPS data/analytics to state DOTs and MPOs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ames Engineering Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Ames Engineering: pavement profiler hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Ames Engineering: pavement profiler hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Applied Research Associates, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ARA: engineering/research consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "ARA: engineering/research consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Aquaphalt",
+   "website": null
+  },
+  {
+   "name": "ARRB Systems",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: ARRB Systems: Hawkeye road survey data systems + software",
+   "read": {
+    "verdict": "vendor",
+    "why": "ARRB Systems: Hawkeye road survey data systems + software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ARTBA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ARTBA: road builders association",
+   "read": {
+    "verdict": "supplier",
+    "why": "ARTBA: road builders association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ATSSA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ATSSA: traffic safety industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "ATSSA: traffic safety industry association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Auburn University McCrary Institute",
+   "website": null,
+   "is_govtech": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "a university centre, lab, foundation or federal body whose selling is unclear; held for a person (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Avanti International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Avanti International: materials importer/supplier (avantiinternational.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Avanti International: materials importer/supplier (avantiinternational.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "AVSimulation",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "AVSimulation: driving sim software; buyers OEMs/research, SLED unclear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "B2Gnow",
+   "website": null
+  },
+  {
+   "name": "BDI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: DISPUTE: bditest.com: bridge testing, inspection, engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: DISPUTE: bditest.com: bridge testing, inspection, engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Bentley Systems",
+   "website": null
+  },
+  {
+   "name": "Brifen USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Brifen: wire rope safety barriers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Brifen: wire rope safety barriers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CATT Laboratory",
+   "website": null,
+   "is_govtech": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "a university centre, lab, foundation or federal body whose selling is unclear; held for a person (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ChemCo Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ChemCo Systems: polymer overlay/repair materials",
+   "read": {
+    "verdict": "supplier",
+    "why": "ChemCo Systems: polymer overlay/repair materials",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CM Labs Simulations",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "CM Labs: Vortex equipment-training simulators; SLED buyer unclear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Coded Radar",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CodedRADAR: 3D GPR hardware and survey services (codedradar.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "CodedRADAR: 3D GPR hardware and survey services (codedradar.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CONTROLS Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CONTROLS: materials testing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "CONTROLS: materials testing equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CTS Cement Mfg Co",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CTS Cement: cement products",
+   "read": {
+    "verdict": "supplier",
+    "why": "CTS Cement: cement products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CycloMedia Technology",
+   "website": null
+  },
+  {
+   "name": "Dareesoft Inc.",
+   "website": null
+  },
+  {
+   "name": "Davey Resource Group, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Vegetation management and consulting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Vegetation management and consulting services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Decision Lens",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Decision Lens: capital planning/prioritization software for agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Decision Lens: capital planning/prioritization software for agencies",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "DENSO Products and Services Americas, Inc",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "DENSO PSA: automotive products arm; no SLED tech product seen",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Derq Inc",
+   "website": null
+  },
+  {
+   "name": "Design-Build Institute of America",
+   "website": null
+  },
+  {
+   "name": "Drivewyze, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Drivewyze: weigh station bypass platform used by state agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Drivewyze: weigh station bypass platform used by state agencies",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Dynamic Map Platform",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Dynamic Map Platform: HD map data platform, pitched to road agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Dynamic Map Platform: HD map data platform, pitched to road agencies",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Dynatest US, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Dynatest: pavement testing/data systems and analysis software for DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Dynatest: pavement testing/data systems and analysis software for DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "E-Chem",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "E-Chem: cannot tell what it sells; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Eco-Counter",
+   "website": null
+  },
+  {
+   "name": "Ecobeton-USA",
+   "website": null
+  },
+  {
+   "name": "Elsevier",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Elsevier: academic publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "Elsevier: academic publisher",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Embry-Riddle Aeronautical University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+   "read": {
+    "verdict": "supplier",
+    "why": "a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ENSCO, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: ENSCO: track inspection systems and data for rail/transit agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "ENSCO: track inspection systems and data for rail/transit agencies",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Esri",
+   "website": null
+  },
+  {
+   "name": "Ettifos",
+   "website": null
+  },
+  {
+   "name": "Expanded Shale, Clay and Slate Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ESCSI: lightweight aggregate trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "ESCSI: lightweight aggregate trade association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Fatzer AG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fatzer: wire ropes/rockfall nets",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fatzer: wire ropes/rockfall nets",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Flock Safety",
+   "website": null
+  },
+  {
+   "name": "Fugro",
+   "website": null
+  },
+  {
+   "name": "Geocomp, Inc.",
+   "website": null
+  },
+  {
+   "name": "Geofem",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Geofem: satellite ground-motion monitoring data for road/rail (geofem.com)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Geofem: satellite ground-motion monitoring data for road/rail (geofem.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Geokon Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Geokon: geotechnical instruments/dataloggers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geokon: geotechnical instruments/dataloggers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "GHD",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GHD: engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "GHD: engineering consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Gilson Company, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Gilson: materials testing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gilson: materials testing equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "GoodVision Ltd",
+   "website": null
+  },
+  {
+   "name": "Google",
+   "website": null
+  },
+  {
+   "name": "Greenwood Engineering A/S",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: DISPUTE: greenwood.dk: 'specialized measuring equipment' (TSD); no software",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: DISPUTE: greenwood.dk: 'specialized measuring equipment' (TSD); no software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Gregory Highway Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Gregory: guardrail products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gregory: guardrail products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "GSSI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GSSI: ground penetrating radar hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "GSSI: ground penetrating radar hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hanson Professional Services Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hanson: engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hanson: engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hanwha Vision",
+   "website": null
+  },
+  {
+   "name": "Hill & Smith Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hill & Smith: road safety barriers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hill & Smith: road safety barriers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hinterland Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hinterland Group: utility/infrastructure contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hinterland Group: utility/infrastructure contractor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ICC-IMS",
+   "website": null
+  },
+  {
+   "name": "IEEE, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IEEE: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IEEE: professional association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Infotech",
+   "website": null
+  },
+  {
+   "name": "Infrasense",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Infrasense: NDT inspection services for bridges/pavement",
+   "read": {
+    "verdict": "supplier",
+    "why": "Infrasense: NDT inspection services for bridges/pavement",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "InfraTest USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: InfraTest: testing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "InfraTest: testing equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Ingios Geotechnics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Ingios: geotechnical testing equipment/services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Ingios: geotechnical testing equipment/services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "INRIX",
+   "website": null
+  },
+  {
+   "name": "InstroTek, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: InstroTek: nuclear density gauges",
+   "read": {
+    "verdict": "supplier",
+    "why": "InstroTek: nuclear density gauges",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Intercomp Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Intercomp: scales and weigh-in-motion hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Intercomp: scales and weigh-in-motion hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ITE and TPCB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ITE/TPCB: professional association and certification",
+   "read": {
+    "verdict": "supplier",
+    "why": "ITE/TPCB: professional association and certification",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Jacobs Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Jacobs: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Jacobs: engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Johns Hopkins University - Engineering for Professionals",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+   "read": {
+    "verdict": "supplier",
+    "why": "a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Kessler Soils Engineering Products, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Kessler: soil testing equipment (DCP)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Kessler: soil testing equipment (DCP)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Kistler Instrument Corp.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Kistler: WIM sensors and instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Kistler: WIM sensors and instruments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Kontur",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Kontur: GIS/disaster geospatial platforms and data (kontur.io)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Kontur: GIS/disaster geospatial platforms and data (kontur.io)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Krah USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Krah: HDPE pipe",
+   "read": {
+    "verdict": "supplier",
+    "why": "Krah: HDPE pipe",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Lanelight Traffic Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: LaneLight: LED warning beacons/RRFBs, hardware (lanelight.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "LaneLight: LED warning beacons/RRFBs, hardware (lanelight.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Lindsay",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Lindsay: road safety barriers (Road Zipper)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Lindsay: road safety barriers (Road Zipper)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Maryland Transportation Institute",
+   "website": null,
+   "is_govtech": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "a university centre, lab, foundation or federal body whose selling is unclear; held for a person (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Matest SpA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Matest: materials testing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Matest: materials testing equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "McTrans Center",
+   "website": null,
+   "is_govtech": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "a university centre, lab, foundation or federal body whose selling is unclear; held for a person (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Measure",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "\"Measure\": cannot identify; measure.com is for sale",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "miniSim™ Driving Simulator",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+   "read": {
+    "verdict": "supplier",
+    "why": "a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Miovision Technologies Inc.",
+   "website": null
+  },
+  {
+   "name": "Morgan State University",
+   "website": null,
+   "is_govtech": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "a university centre, lab, foundation or federal body whose selling is unclear; held for a person (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "MS2",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: MS2: traffic count data management software for DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "MS2: traffic count data management software for DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "National Signal LLC",
+   "website": null
+  },
+  {
+   "name": "NEXCO-West USA, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: NEXCO-West USA: bridge inspection services",
+   "read": {
+    "verdict": "supplier",
+    "why": "NEXCO-West USA: bridge inspection services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "NIRA Dynamics Inc.",
+   "website": null
+  },
+  {
+   "name": "NoTraffic",
+   "website": null
+  },
+  {
+   "name": "Numetric",
+   "website": null
+  },
+  {
+   "name": "NV5",
+   "website": null
+  },
+  {
+   "name": "Omnisight, Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Omnisight, Inc.: cannot identify; likely domains are other firms",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "OmniTrust",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OmniTrust (ex-ISS): V2X security credential management for CV deployments",
+   "read": {
+    "verdict": "vendor",
+    "why": "OmniTrust (ex-ISS): V2X security credential management for CV deployments",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pathway Services Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Pathway Services: pavement data collection and software for DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Pathway Services: pavement data collection and software for DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pavement Technical Solutions, Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Pavement Technical Solutions: services or tech unclear; site unread",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Pavemetrics Systems",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Pavemetrics: LCMS pavement inspection sensors + analysis software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Pavemetrics: LCMS pavement inspection sensors + analysis software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pelco Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pelco Solutions: traffic signal/pole hardware (pelcosolutions.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pelco Solutions: traffic signal/pole hardware (pelcosolutions.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pi-Lit",
+   "website": null
+  },
+  {
+   "name": "Quarterhill",
+   "website": null
+  },
+  {
+   "name": "Realtime Technologies & FAAC Incorporated",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Realtime Tech & FAAC: driving simulators sold to agencies, transit",
+   "read": {
+    "verdict": "vendor",
+    "why": "Realtime Tech & FAAC: driving simulators sold to agencies, transit",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "REBLOC Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: REBLOC: concrete safety barriers",
+   "read": {
+    "verdict": "supplier",
+    "why": "REBLOC: concrete safety barriers",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "REMI",
+   "website": null
+  },
+  {
+   "name": "Rieker Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Rieker: CARS curve advisory speed system/software for DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Rieker: CARS curve advisory speed system/software for DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "RoadRunner Consulting LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "School of PE",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School of PE: exam prep training",
+   "read": {
+    "verdict": "supplier",
+    "why": "School of PE: exam prep training",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sensequake",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Sensequake: structural monitoring sensors + AI software for bridges",
+   "read": {
+    "verdict": "vendor",
+    "why": "Sensequake: structural monitoring sensors + AI software for bridges",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Signal-Tech",
+   "website": null
+  },
+  {
+   "name": "Smart Eye",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Smart Eye: eye-tracking systems for OEMs/research; SLED buyer unclear",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "SOL SOLUTION",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sol Solution: geotechnical penetrometers/testing (sol-solution.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sol Solution: geotechnical penetrometers/testing (sol-solution.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "StreetLight Data",
+   "website": null
+  },
+  {
+   "name": "StrongGo Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: StrongGo: tactile warning surfaces (stronggo.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "StrongGo: tactile warning surfaces (stronggo.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Surface Systems & Instruments, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: SSI: pavement profiler hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "SSI: pavement profiler hardware",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Texas A&M Transportation Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+   "read": {
+    "verdict": "supplier",
+    "why": "a public body or school that sells programmes or training to government is a supplier (owner's ruling, 2026-10-23); re-sorted from 'not a company' (2026-10-26)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TomTom International",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: TomTom: traffic data/analytics sold to DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "TomTom: traffic data/analytics sold to DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TrafFix Devices, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: TrafFix: work zone safety devices",
+   "read": {
+    "verdict": "supplier",
+    "why": "TrafFix: work zone safety devices",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Trimble",
+   "website": null
+  },
+  {
+   "name": "Troxler Electronic Laboratories, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Troxler: nuclear gauges/testing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Troxler: nuclear gauges/testing equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "TufTile, Inc.",
+   "website": null
+  },
+  {
+   "name": "Umovity (Econolite & PTV Group)",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Umovity (Econolite/PTV): signal/ATMS and traffic modelling software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Umovity (Econolite/PTV): signal/ATMS and traffic modelling software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "UTEST Material Testing Equipment, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: UTEST: materials testing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "UTEST: materials testing equipment",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Vaisala",
+   "website": null
+  },
+  {
+   "name": "Valtir, LLC",
+   "website": null
+  },
+  {
+   "name": "Vector Corrosion Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Vector Corrosion: corrosion protection systems",
+   "read": {
+    "verdict": "supplier",
+    "why": "Vector Corrosion: corrosion protection systems",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Versilis - Moovop",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Versilis/Moovop: automated gates, movable barriers (sites)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Versilis/Moovop: automated gates, movable barriers (sites)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Vortex Companies",
+   "website": null
+  },
+  {
+   "name": "Waterline Renewal Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Waterline Renewal: pipe rehabilitation products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waterline Renewal: pipe rehabilitation products",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Wavetronix",
+   "website": null
+  },
+  {
+   "name": "WDM USA",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: WDM: road condition survey data systems for road agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "WDM: road condition survey data systems for road agencies",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Woods & Poole Economics, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Woods & Poole: economic/demographic projection data for MPOs, states",
+   "read": {
+    "verdict": "vendor",
+    "why": "Woods & Poole: economic/demographic projection data for MPOs, states",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "XenomatiX",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 24,
+ "quality_was": "good"
+}

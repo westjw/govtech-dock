@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "EarthDaily Awarded $3 Million NASA Task Order to Advance Commercial Earth Observation Integration with Landsat",
+   "kind": "contract",
+   "kind_rule": "Awarded $3 Million NASA Task Order",
+   "url": "https://earthdaily.com/blog/earthdaily-awarded-3-million-nasa-task-order-to-advance-commercial-earth-observation-integration-with-landsat"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/earthdaily-awarded-government-of-canada-national-master-standing-offer-for-commercial-satellite-imagery"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "August World in 10: European Crops Deteriorate as Record Rainfall Hits the U.S. Corn Belt",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/august-world-in-10-european-crops-deteriorate-as-record-rainfall-hits-the-u.s.-corn-belt"
   }
  ],
  "profile": {

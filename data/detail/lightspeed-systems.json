@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Multi-OS MDM for K-12: One Console for Every School Device",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/blog/multi-os-mdm-for-k-12-one-console-for-every-school-device/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lightspeedsystems.com/blog/anonymous-reporting-for-schools-how-to-increase-use/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Anonymous Reporting for Schools: How to Increase Use",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/en_uk/blog/anonymous-reporting-for-schools-how-to-increase-use/"
   }
  ],
  "profile": {

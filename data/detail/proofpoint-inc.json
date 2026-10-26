@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "og:published",
+   "first_seen": "2026-10-26",
+   "headline": "Proofpoint Joins Microsoft Integrated Cloud Email Security (ICES) Ecosystem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-joins-microsoft-integrated-cloud-email-security-ices-ecosystem"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "og:published",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.proofpoint.com/au/newsroom/press-releases/proofpoint-stops-attacks-traditional-defences-miss-ai-era"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "og:published",
-   "first_seen": "2026-09-28",
-   "headline": "Proofpoint acaba con la divisi\u00f3n entre la seguridad de los datos y la seguridad de la IA con el primer sistema ag\u00e9ntico unificado del sector",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/es/newsroom/press-releases/proofpoint-acaba-con-la-division-entre-la-seguridad-de-los-datos-y-la"
   }
  ],
  "profile": {
