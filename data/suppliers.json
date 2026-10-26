@@ -1460,7 +1460,7 @@
   },
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "IACP 2026; IAEM 2026",
+  "source": "IACP 2026; IAEM 2026; Animal Care Expo 2026",
   "researched": false
  },
  {
@@ -14725,7 +14725,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Engineering / Consulting - exhibited at IACP 2026, GFOA 2026, NASWA 2025, NASCIO 2026, NCSEA 2026, APHSA 2026, EDUCAUSE 2026, Healthcare IT Connect 2026, NAMPI 2026, NHCAA 2025, Maryland Municipal League 2026, NCSEA Policy Forum 2027, ITS America 2026, IAEM 2026, NCPERS 2026",
+  "description": "Engineering / Consulting - exhibited at IACP 2026, GFOA 2026, NASWA 2025, NASCIO 2026, NCSEA 2026, APHSA 2026, EDUCAUSE 2026, Healthcare IT Connect 2026, NAMPI 2026, NHCAA 2025, Maryland Municipal League 2026, NCSEA Policy Forum 2027, ITS America 2026, IAEM 2026, NCPERS 2026, AGA PDT 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -14738,7 +14738,7 @@
   },
   "govtech": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "IACP 2026; GFOA 2026; Healthcare IT Connect 2026; Maryland Municipal League 2026; NAMPI 2026; NCSEA 2026; NCSEA Policy Forum 2027; NHCAA 2025; ITS America 2026; IAEM 2026; NCPERS 2026",
+  "source": "IACP 2026; GFOA 2026; Healthcare IT Connect 2026; Maryland Municipal League 2026; NAMPI 2026; NCSEA 2026; NCSEA Policy Forum 2027; NHCAA 2025; ITS America 2026; IAEM 2026; NCPERS 2026; AGA PDT 2026",
   "researched": false
  },
  {
@@ -20423,7 +20423,7 @@
   "year_founded": null,
   "sector": "Public Works",
   "category": "Suppliers & Services",
-  "description": "Geotechnical and geo-data consulting services - exhibited at PWX 2026",
+  "description": "Geotechnical and geo-data consulting services - exhibited at PWX 2026, URISA GIS-Pro 2026, NSGIC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -20436,7 +20436,7 @@
   },
   "govtech": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "PWX 2026",
+  "source": "PWX 2026; URISA GIS-Pro 2026; NSGIC 2026",
   "researched": false
  },
  {
@@ -22747,7 +22747,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Engineering / Consulting - exhibited at NACo 2026, GFOA 2026, PSHRA 2026, NASWA 2025",
+  "description": "Engineering / Consulting - exhibited at NACo 2026, GFOA 2026, PSHRA 2026, NASWA 2025, AGA PDT 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -22760,7 +22760,7 @@
   },
   "govtech": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "NACo 2026; GFOA 2026; PSHRA 2026",
+  "source": "NACo 2026; GFOA 2026; PSHRA 2026; AGA PDT 2026",
   "researched": false
  },
  {
@@ -24499,7 +24499,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Association / Gov / Media - exhibited at NSA 2026, Michigan Sheriffs Association 2026, IAEM 2026, NCSL Legislative Summit 2026",
+  "description": "Association / Gov / Media - exhibited at NSA 2026, Michigan Sheriffs Association 2026, IAEM 2026, NCSL Legislative Summit 2026, Animal Care Expo 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -24512,7 +24512,7 @@
   },
   "govtech": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "NSA 2026; Michigan Sheriffs Association 2026; IAEM 2026; NCSL Legislative Summit 2026",
+  "source": "NSA 2026; Michigan Sheriffs Association 2026; IAEM 2026; NCSL Legislative Summit 2026; Animal Care Expo 2026",
   "researched": false
  },
  {
@@ -58480,7 +58480,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Engineering / Consulting - exhibited at NACo 2026",
+  "description": "Engineering / Consulting - exhibited at NACo 2026, NSGIC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -58493,7 +58493,7 @@
   },
   "govtech": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "NACo 2026",
+  "source": "NACo 2026; NSGIC 2026",
   "researched": false
  },
  {
@@ -64750,7 +64750,7 @@
   "year_founded": null,
   "sector": "Airports & Aviation",
   "category": "Suppliers & Services",
-  "description": "Infrastructure engineering, geospatial and program management - exhibited at AAAE 2026, AAAE 2027",
+  "description": "Infrastructure engineering, geospatial and program management - exhibited at AAAE 2026, AAAE 2027, NSGIC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -64764,7 +64764,7 @@
   "govtech": false,
   "researched": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "AAAE 2026; AAAE 2027"
+  "source": "AAAE 2026; AAAE 2027; NSGIC 2026"
  },
  {
   "id": "ocem-airfield",
@@ -68774,7 +68774,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "centaur-animal-health",
@@ -68954,7 +68955,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "creative-canine-designs",
@@ -69074,7 +69076,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "dave-s-pet-food",
@@ -69394,7 +69397,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "donorperfect",
@@ -70038,7 +70042,7 @@
   "govtech": false,
   "researched": false,
   "vendor_type": "Equipment / Components",
-  "source": "conference sweep: NRPA 2026",
+  "source": "conference sweep: NRPA 2026; Animal Care Expo 2026",
   "merged_from": [
    {
     "id": "gyms-for-dogs-natural-dog-park-products",
@@ -70788,7 +70792,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "mason-a-midmark-company",
@@ -71468,7 +71473,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "people-are-animals-too-darn-it",
@@ -71778,7 +71784,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "petsuites-san-antonio",
@@ -72538,7 +72545,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "shelter-playgroup-alliance",
@@ -73659,7 +73667,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "vets-plus-more",
@@ -92902,7 +92911,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Geospatial engineering and mapping services - exhibited at IAAO 2026",
+  "description": "Geospatial engineering and mapping services - exhibited at IAAO 2026, NSGIC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -92912,7 +92921,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: NSGIC 2026"
  },
  {
   "id": "linebarger-goggan-blair-sampson-llp",
@@ -96150,7 +96160,7 @@
   "year_founded": null,
   "sector": "Housing & Community Dev",
   "category": "Suppliers & Services",
-  "description": "IT services and business process outsourcing - exhibited at NAHRO 2026",
+  "description": "IT services and business process outsourcing - exhibited at NAHRO 2026, AGA PDT 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -96161,7 +96171,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NAHRO 2026"
+  "source": "conference sweep: NAHRO 2026; AGA PDT 2026"
  },
  {
   "id": "clesia-ventures-llc",
@@ -106439,7 +106449,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at CoSN 2026, NACCHO 360 2026, NASS Winter/Summer 2026",
+  "description": "exhibited at CoSN 2026, NACCHO 360 2026, NASS Winter/Summer 2026, Animal Care Expo 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -106450,7 +106460,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NACCHO 360 2026; CoSN 2026; NASS Winter/Summer 2026"
+  "source": "conference sweep: NACCHO 360 2026; CoSN 2026; NASS Winter/Summer 2026; Animal Care Expo 2026"
  },
  {
   "id": "1kosmos-inc",
@@ -106586,7 +106596,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at GFOA 2026",
+  "description": "exhibited at GFOA 2026, AGA PDT 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -106597,7 +106607,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: GFOA 2026"
+  "source": "conference sweep: GFOA 2026; AGA PDT 2026"
  },
  {
   "id": "can-am-teller-cashiering",
@@ -106733,7 +106743,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at GFOA 2026, NLC City Summit 2026",
+  "description": "exhibited at GFOA 2026, NLC City Summit 2026, AGA PDT 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -106744,7 +106754,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: GFOA 2026; NLC City Summit 2026"
+  "source": "conference sweep: GFOA 2026; NLC City Summit 2026; AGA PDT 2026"
  },
  {
   "id": "progress",
@@ -120024,7 +120034,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "exhibited at WEFTEC 2026, NSGIC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -120035,7 +120045,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; NSGIC 2026"
  },
  {
   "id": "dezurik",
@@ -150192,7 +150202,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at Illinois Chapter of APCO 2026",
+  "description": "exhibited at Illinois Chapter of APCO 2026, URISA GIS-Pro 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -150202,7 +150212,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: URISA GIS-Pro 2026"
  },
  {
   "id": "cordogan-clark-associates-inc",
@@ -159241,7 +159252,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at IAEM 2026",
+  "description": "exhibited at IAEM 2026, NSGIC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -159251,7 +159262,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: NSGIC 2026"
  },
  {
   "id": "orau",
@@ -166962,6 +166974,747 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "kearney-co",
+  "name": "Kearney & Co",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at AGA PDT 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "mil-corp",
+  "name": "MIL Corp",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at AGA PDT 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "rsm",
+  "name": "RSM",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at AGA PDT 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "avineon-inc",
+  "name": "Avineon, Inc.",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "cultivate-geospatial-solutions",
+  "name": "Cultivate Geospatial Solutions",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "entrust-solutions-group",
+  "name": "ENTRUST Solutions Group",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "gis-certification-institute",
+  "name": "GIS CERTIFICATION INSTITUTE",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "mauer-stutz-geospatial-services",
+  "name": "Mauer-Stutz Geospatial Services",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "mgp-inc",
+  "name": "MGP, Inc",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "minnesota-gis-lis-consortium",
+  "name": "Minnesota GIS/LIS Consortium",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "pro-west-associates-inc",
+  "name": "Pro-West & Associates, Inc.",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "rok-technologies",
+  "name": "ROK Technologies",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026, NSGIC 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  },
+  "source": "conference sweep: NSGIC 2026"
+ },
+ {
+  "id": "seiler-geospatial",
+  "name": "Seiler Geospatial",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "viewshed",
+  "name": "VIEWSHED",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "wisconsin-land-information-association-wlia",
+  "name": "Wisconsin Land Information Association/WLIA",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "women-in-gis",
+  "name": "Women in GIS",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at URISA GIS-Pro 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "animal-arts",
+  "name": "animal arts",
+  "website": "https://www.animalarts.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "certified-council-for-professional-dog-trainers",
+  "name": "certified council for professional dog trainers",
+  "website": "https://www.ccpdt.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "dli-animal-facility-specialists",
+  "name": "DLI animal facility specialists",
+  "website": "https://www.designlearned.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "doctor-bronner-s-all-one",
+  "name": "Doctor Bronner's all one",
+  "website": "https://www.drbronner.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "hill-s-pet-nutritition",
+  "name": "Hill's Pet Nutritition",
+  "website": "https://www.hillspet.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "humane-veterinary-medical-alliance",
+  "name": "Humane Veterinary Medical Alliance",
+  "website": "https://www.humanevma.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "hurraw-balm",
+  "name": "hurraw balm",
+  "website": "https://hurrawbalm.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "jackson-and-ryan-architects-design-for-all-animals",
+  "name": "Jackson and Ryan Architects Design for all animals",
+  "website": "https://www.jacksonryan.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "midmark-and-shor-line",
+  "name": "Midmark and Shor-line",
+  "website": "https://www.midmark.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "national-animal-care-and-control-association",
+  "name": "national animal care and control association",
+  "website": "https://www.nacanet.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "petco-love-a-nonprofit-changing-lives",
+  "name": "Petco Love a nonprofit changing lives",
+  "website": "https://petcolove.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "petco-love-lost",
+  "name": "Petco love lost",
+  "website": "https://petcolove.org/lost/?utm_medium=referral&amp;utm_source=humanepro&amp;utm_campaign=lovelost-hsus-expo-2026-website-banner-300-250-lost",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "rescue-disinfectants",
+  "name": "Rescue Disinfectants",
+  "website": "https://www.rescuedisinfectants.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "smarties",
+  "name": "smarties",
+  "website": "https://www.smarties.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "true-sense-fundraising",
+  "name": "True Sense Fundraising",
+  "website": "https://www.truesense.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "zymox-lp3-enzyme-system",
+  "name": "zymox lp3 enzyme system",
+  "website": "https://zymox.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Animal Care Expo 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "aero-graphics",
+  "name": "Aero-Graphics",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at NSGIC 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "bowman",
+  "name": "Bowman",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at NSGIC 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "merrick",
+  "name": "Merrick",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at NSGIC 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "sam",
+  "name": "SAM",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at NSGIC 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "sanborn",
+  "name": "Sanborn",
+  "website": null,
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at NSGIC 2026",
   "ats": {
    "type": "unknown",
    "ref": null

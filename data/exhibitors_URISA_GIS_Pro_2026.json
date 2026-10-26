@@ -1,0 +1,280 @@
+{
+ "event_tag": "URISA GIS-Pro 2026",
+ "conference": "URISA GIS-Pro",
+ "found": true,
+ "source_url": "https://gispro2026.sched.com/directory/exhibitors",
+ "source_note": "Read from https://gispro2026.sched.com/directory/exhibitors by scripts/sweep_exhibitors.py. 44 name(s), 12 with a website the page itself linked. Quality: menu (25% carry a corporate marker, 0% name a site section, 23% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Avineon, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: geospatial and IT services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "geospatial and IT services firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cloudpoint Geospatial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GIS consulting firm (Esri partner)",
+   "read": {
+    "verdict": "supplier",
+    "why": "GIS consulting firm (Esri partner)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Cultivate Geospatial Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GIS consulting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "GIS consulting services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "CycloMedia Technology Inc",
+   "website": null
+  },
+  {
+   "name": "Eagleview",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: aerial imagery + assessment software for local govt",
+   "read": {
+    "verdict": "vendor",
+    "why": "aerial imagery + assessment software for local govt",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ENTRUST Solutions Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering services for utilities",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering services for utilities",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Esri",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: GIS software (ArcGIS) sold to government",
+   "read": {
+    "verdict": "vendor",
+    "why": "GIS software (ArcGIS) sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Fugro",
+   "website": null
+  },
+  {
+   "name": "GeoComm",
+   "website": null
+  },
+  {
+   "name": "geoConvergence",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "lidar/mapping data firm, services vs data unclear; site read empty",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "GIS CERTIFICATION INSTITUTE",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: certification body / association",
+   "read": {
+    "verdict": "supplier",
+    "why": "certification body / association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Mauer-Stutz Geospatial Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm's geospatial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm's geospatial services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "MGP, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: mgpinc.com: local-govt GIS/tech services, consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "mgpinc.com: local-govt GIS/tech services, consulting",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Minnesota GIS/LIS Consortium",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state GIS association",
+   "read": {
+    "verdict": "supplier",
+    "why": "state GIS association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "NavVis",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: mobile mapping scanners with IVION software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "mobile mapping scanners with IVION software platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Nearmap",
+   "website": null
+  },
+  {
+   "name": "Pro-West & Associates, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GIS consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "GIS consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "ROK Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: roktech.net: managed cloud hosting services for Esri GIS",
+   "read": {
+    "verdict": "supplier",
+    "why": "roktech.net: managed cloud hosting services for Esri GIS",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Seiler Geospatial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trimble equipment reseller and training",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trimble equipment reseller and training",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Turning Point",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name, could be a session or a company",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "VertiGIS",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: GIS software (VertiGIS Studio) for government",
+   "read": {
+    "verdict": "vendor",
+    "why": "GIS software (VertiGIS Studio) for government",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Vexcel Data Program",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: aerial imagery data program sold to govt",
+   "read": {
+    "verdict": "vendor",
+    "why": "aerial imagery data program sold to govt",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "VIEWSHED",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: GIS consulting and training firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "GIS consulting and training firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Wisconsin Land Information Association/WLIA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state association",
+   "read": {
+    "verdict": "supplier",
+    "why": "state association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Women in GIS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "restaged": "44 -> 44 names after re-filtering on 2026-10-26",
+ "read_dropped": 19,
+ "quality_was": "menu"
+}

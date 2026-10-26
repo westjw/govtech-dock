@@ -3987,7 +3987,7 @@
    "flagship": true,
    "swept": false,
    "url": "https://humanepro.org/expo",
-   "exhibitor_url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+   "exhibitor_url": "https://humanepro.org/expo/animal-care-expo-sponsors",
    "dates": "May 6-9, 2027",
    "dates_confidence": "high",
    "city": "Grapevine, TX",
@@ -4023,7 +4023,7 @@
    "flagship": false,
    "swept": false,
    "url": "https://pdt.agacgfm.org/",
-   "exhibitor_url": null,
+   "exhibitor_url": "https://aga.digitellinc.com/live/229/page/2410",
    "dates": "July 18-21, 2027",
    "dates_confidence": "high",
    "city": "Chicago, IL",
@@ -4977,15 +4977,15 @@
    "flagship": false,
    "swept": false,
    "url": "https://nsgic.org/events/2026-nsgic-annual-conference/",
-   "exhibitor_url": null,
+   "exhibitor_url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
    "dates": "November 1-6, 2026",
    "dates_confidence": "high",
    "city": "Bozeman, MT",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 11,
+   "hiring": 4,
+   "open_roles": 366
   },
   {
    "tag": "URISA GIS-Pro 2026",
@@ -4995,15 +4995,15 @@
    "flagship": false,
    "swept": false,
    "url": "https://thegpn.org",
-   "exhibitor_url": null,
+   "exhibitor_url": "https://gispro2026.sched.com/directory/exhibitors",
    "dates": "October 12-15, 2026",
    "dates_confidence": "high",
    "city": "Milwaukee, WI",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 6,
+   "hiring": 4,
+   "open_roles": 42
   },
   {
    "tag": "NHCAA 2025",
@@ -7225,7 +7225,7 @@
    "also": null,
    "location": "Chicago, IL",
    "year_founded": 1928,
-   "description": "Radios, 911 call handling, CAD, and video security (Avigilon) for public safety - exhibited at Michigan Sheriffs Association 2026, IAFC FRI 2026, APCO 2026, Illinois Chapter of APCO 2026, IAEM 2026, NCSL Legislative Summit 2026",
+   "description": "Radios, 911 call handling, CAD, and video security (Avigilon) for public safety - exhibited at Michigan Sheriffs Association 2026, IAFC FRI 2026, APCO 2026, Illinois Chapter of APCO 2026, IAEM 2026, NCSL Legislative Summit 2026, NSGIC 2026",
    "website": "https://www.motorolasolutions.com",
    "board_url": "https://www.motorolasolutions.com",
    "linkedin": null,
@@ -7282,7 +7282,8 @@
     "APCO 2026",
     "Illinois Chapter of APCO 2026",
     "IAEM 2026",
-    "NCSL Legislative Summit 2026"
+    "NCSL Legislative Summit 2026",
+    "NSGIC 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 335,
@@ -7315,7 +7316,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026; Michigan Sheriffs Association 2026; IAFC FRI 2026; APCO 2026; Illinois Chapter of APCO 2026; IAEM 2026; NCSL Legislative Summit 2026",
+   "source": "IACP 2026; Michigan Sheriffs Association 2026; IAFC FRI 2026; APCO 2026; Illinois Chapter of APCO 2026; IAEM 2026; NCSL Legislative Summit 2026; NSGIC 2026",
    "researched": true,
    "claimed": null
   },
@@ -11903,7 +11904,7 @@
    "also": null,
    "location": "Redlands, CA",
    "year_founded": 1969,
-   "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026",
+   "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026, URISA GIS-Pro 2026, NSGIC 2026",
    "website": "https://www.esri.com",
    "board_url": "https://www.esri.com/en-us/about/careers/job-search",
    "linkedin": null,
@@ -11949,7 +11950,9 @@
     "IAFC FRI 2026",
     "APCO 2026",
     "IAEM 2026",
-    "NCSL Legislative Summit 2026"
+    "NCSL Legislative Summit 2026",
+    "URISA GIS-Pro 2026",
+    "NSGIC 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -11972,7 +11975,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026",
+   "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026; URISA GIS-Pro 2026; NSGIC 2026",
    "researched": true,
    "claimed": null
   },
@@ -25677,7 +25680,7 @@
    ],
    "location": "Bellevue, WA",
    "year_founded": 2008,
-   "description": "Aerial imagery and property data analytics for county assessors, GIS, and insurers - exhibited at IAAO 2026",
+   "description": "Aerial imagery and property data analytics for county assessors, GIS, and insurers - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026",
    "website": "https://www.eagleview.com",
    "board_url": "https://careers.eagleview.com",
    "linkedin": null,
@@ -25702,7 +25705,9 @@
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
-    "IAAO 2026"
+    "IAAO 2026",
+    "URISA GIS-Pro 2026",
+    "NSGIC 2026"
    ],
    "conference": "IAAO 2026",
    "open_roles": 3,
@@ -25729,7 +25734,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add; IAAO 2026",
+   "source": "direct add; IAAO 2026; URISA GIS-Pro 2026; NSGIC 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-18"
@@ -30224,7 +30229,7 @@
    ],
    "location": "Zaltbommel, Netherlands",
    "year_founded": 1980,
-   "description": "Vehicle-captured 360 street imagery and lidar with AI analytics for local governments and utilities",
+   "description": "Vehicle-captured 360 street imagery and lidar with AI analytics for local governments and utilities - exhibited at URISA GIS-Pro 2026",
    "website": "https://www.cyclomedia.com",
    "board_url": "https://cyclomediatechnology.recruitee.com",
    "linkedin": null,
@@ -30269,8 +30274,10 @@
    "news_checked_on": "2026-10-25",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "URISA GIS-Pro 2026"
+   ],
+   "conference": "URISA GIS-Pro 2026",
    "open_roles": 11,
    "open_postings": 11,
    "quota_roles": 3,
@@ -30297,7 +30304,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add",
+   "source": "direct add; URISA GIS-Pro 2026",
    "researched": true,
    "claimed": null
   },
@@ -36057,7 +36064,7 @@
    ],
    "location": "Pittsburgh, PA",
    "year_founded": 2016,
-   "description": "NG9-1-1 GIS addressing data and VEP software for 911 authorities and PSAPs - exhibited at Illinois Chapter of APCO 2026",
+   "description": "NG9-1-1 GIS addressing data and VEP software for 911 authorities and PSAPs - exhibited at Illinois Chapter of APCO 2026, NSGIC 2026",
    "website": "https://www.datamarkgis.com",
    "board_url": "https://www.mbakerintl.com/careers",
    "linkedin": null,
@@ -36087,7 +36094,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
-    "Illinois Chapter of APCO 2026"
+    "Illinois Chapter of APCO 2026",
+    "NSGIC 2026"
    ],
    "conference": "Illinois Chapter of APCO 2026",
    "open_roles": 0,
@@ -36110,7 +36118,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add; Illinois Chapter of APCO 2026",
+   "source": "direct add; Illinois Chapter of APCO 2026; NSGIC 2026",
    "researched": true,
    "claimed": null
   },
@@ -54043,7 +54051,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Critical incident mapping data for responders - exhibited at IACP 2026, APCO 2026, Illinois Chapter of APCO 2026",
+   "description": "Critical incident mapping data for responders - exhibited at IACP 2026, APCO 2026, Illinois Chapter of APCO 2026, NSGIC 2026",
    "website": "https://critical-response.de/eng",
    "board_url": "https://critical-response.de/eng",
    "linkedin": null,
@@ -54068,7 +54076,8 @@
    "conferences": [
     "IACP 2026",
     "APCO 2026",
-    "Illinois Chapter of APCO 2026"
+    "Illinois Chapter of APCO 2026",
+    "NSGIC 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -54091,7 +54100,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "IACP 2026; APCO 2026; Illinois Chapter of APCO 2026",
+   "source": "IACP 2026; APCO 2026; Illinois Chapter of APCO 2026; NSGIC 2026",
    "researched": null,
    "claimed": null
   },
@@ -68477,7 +68486,7 @@
    ],
    "location": "Stockholm, Sweden",
    "year_founded": 1992,
-   "description": "Enterprise CAD, dispatch and records platforms for police and 911 centers",
+   "description": "Enterprise CAD, dispatch and records platforms for police and 911 centers - exhibited at NSGIC 2026",
    "website": "https://hexagon.com/products/product-groups/public-safety-solutions",
    "board_url": "https://hexagon.com/products/product-groups/public-safety-solutions",
    "linkedin": null,
@@ -68527,8 +68536,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NSGIC 2026"
+   ],
+   "conference": "NSGIC 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -68549,7 +68560,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-25",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; NSGIC 2026",
    "researched": null,
    "claimed": null
   },
@@ -91383,7 +91394,7 @@
    "also": null,
    "location": "Vancouver, British Columbia",
    "year_founded": 2019,
-   "description": "GIS-based asset and work management for local government and utilities - exhibited at AWWA ACE 2026",
+   "description": "GIS-based asset and work management for local government and utilities - exhibited at AWWA ACE 2026, URISA GIS-Pro 2026, NSGIC 2026",
    "website": "https://www.vertigis.com",
    "board_url": "https://vertigis.recruitee.com",
    "linkedin": null,
@@ -91424,7 +91435,9 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
-    "AWWA ACE 2026"
+    "AWWA ACE 2026",
+    "URISA GIS-Pro 2026",
+    "NSGIC 2026"
    ],
    "conference": "AWWA ACE 2026",
    "open_roles": 20,
@@ -91452,7 +91465,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; AWWA ACE 2026",
+   "source": "competitor sweep; AWWA ACE 2026; URISA GIS-Pro 2026; NSGIC 2026",
    "researched": null,
    "claimed": null
   },
@@ -92328,7 +92341,7 @@
    "also": null,
    "location": "St. Cloud, Minnesota",
    "year_founded": 1995,
-   "description": "911 GIS data, indoor mapping and location services for PSAPs - exhibited at APCO 2026, Illinois Chapter of APCO 2026",
+   "description": "911 GIS data, indoor mapping and location services for PSAPs - exhibited at APCO 2026, Illinois Chapter of APCO 2026, URISA GIS-Pro 2026, NSGIC 2026",
    "website": "https://www.geocomm.com",
    "board_url": "https://www.geocomm.com/careers/",
    "linkedin": null,
@@ -92365,7 +92378,9 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [
     "APCO 2026",
-    "Illinois Chapter of APCO 2026"
+    "Illinois Chapter of APCO 2026",
+    "URISA GIS-Pro 2026",
+    "NSGIC 2026"
    ],
    "conference": "APCO 2026",
    "open_roles": 0,
@@ -92388,7 +92403,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-25",
    "posts_at": null,
-   "source": "competitor sweep; APCO 2026; Illinois Chapter of APCO 2026",
+   "source": "competitor sweep; APCO 2026; Illinois Chapter of APCO 2026; URISA GIS-Pro 2026; NSGIC 2026",
    "researched": null,
    "claimed": null
   },
@@ -122486,7 +122501,7 @@
    "also": null,
    "location": "Detroit, MI",
    "year_founded": 2009,
-   "description": "Nationwide parcel data and property mapping licensed to government agencies",
+   "description": "Nationwide parcel data and property mapping licensed to government agencies - exhibited at NSGIC 2026",
    "website": "https://regrid.com",
    "board_url": "https://regrid.com/careers",
    "linkedin": null,
@@ -122508,8 +122523,10 @@
    "news_checked_on": "2026-10-25",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NSGIC 2026"
+   ],
+   "conference": "NSGIC 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -122530,7 +122547,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; NSGIC 2026",
    "researched": null,
    "claimed": null
   },
@@ -122672,7 +122689,7 @@
    "also": null,
    "location": "Graz, Austria",
    "year_founded": 1985,
-   "description": "Aerial imagery programs and geospatial data licensed to government agencies - exhibited at IAAO 2026",
+   "description": "Aerial imagery programs and geospatial data licensed to government agencies - exhibited at IAAO 2026, NSGIC 2026",
    "website": "https://www.vexcel-imaging.com",
    "board_url": "https://www.vexcel-imaging.com/careers",
    "linkedin": null,
@@ -122702,7 +122719,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
-    "IAAO 2026"
+    "IAAO 2026",
+    "NSGIC 2026"
    ],
    "conference": "IAAO 2026",
    "open_roles": 0,
@@ -122725,7 +122743,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; IAAO 2026",
+   "source": "competitor sweep; IAAO 2026; NSGIC 2026",
    "researched": null,
    "claimed": null
   },
@@ -122737,7 +122755,7 @@
    "also": null,
    "location": "Sydney, Australia",
    "year_founded": 2007,
-   "description": "High-frequency aerial imagery and location content for government departments - exhibited at IAAO 2026",
+   "description": "High-frequency aerial imagery and location content for government departments - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026",
    "website": "https://www.nearmap.com",
    "board_url": "https://www.nearmap.com/careers",
    "linkedin": null,
@@ -122766,7 +122784,9 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
-    "IAAO 2026"
+    "IAAO 2026",
+    "URISA GIS-Pro 2026",
+    "NSGIC 2026"
    ],
    "conference": "IAAO 2026",
    "open_roles": 8,
@@ -122793,7 +122813,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; IAAO 2026",
+   "source": "competitor sweep; IAAO 2026; URISA GIS-Pro 2026; NSGIC 2026",
    "researched": null,
    "claimed": null,
    "checked_by_hand": "2026-09-03"
@@ -513889,7 +513909,7 @@
   "unchecked": 53
  },
  "redrawn": {
-  "at": "2026-10-26T01:51:01Z",
-  "inputs": "e7d5c70676cdda6f3b8d0ed5eaba2f9b4305354a311f38597de0bf7ec97d7221"
+  "at": "2026-10-26T04:54:02Z",
+  "inputs": "bbbcc4d7baf1542854978f676e8db757903bea17526def9c7e6d6cdfec851e9b"
  }
 }

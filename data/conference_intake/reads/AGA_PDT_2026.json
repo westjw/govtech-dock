@@ -1,0 +1,58 @@
+[
+ {
+  "file": "exhibitors_AGA_PDT_2026.json",
+  "name": "CGI Federal",
+  "verdict": "unsure",
+  "why": "CGI's federal IT arm (Momentum ERP); tech vendor but federal, out of SLED scope",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_AGA_PDT_2026.json",
+  "name": "Evaluation",
+  "verdict": "not_a_company",
+  "why": "programme item",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_AGA_PDT_2026.json",
+  "name": "Event Host: AGA",
+  "verdict": "not_a_company",
+  "why": "the host itself",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_AGA_PDT_2026.json",
+  "name": "Event Host: CGFM",
+  "verdict": "not_a_company",
+  "why": "host's own certification label",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_AGA_PDT_2026.json",
+  "name": "Kearney & Co",
+  "verdict": "supplier",
+  "why": "CPA / audit consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_AGA_PDT_2026.json",
+  "name": "MIL Corp",
+  "verdict": "supplier",
+  "why": "federal IT and financial services contractor",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ },
+ {
+  "file": "exhibitors_AGA_PDT_2026.json",
+  "name": "RSM",
+  "verdict": "supplier",
+  "why": "accounting and consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-26"
+ }
+]

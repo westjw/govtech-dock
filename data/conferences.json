@@ -499,7 +499,7 @@
    "conference": "AGA PDT",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://aga.digitellinc.com/live/229/page/2410",
    "fetchability": null,
    "event_tag": "AGA PDT 2026",
    "url": "https://pdt.agacgfm.org/",
@@ -508,7 +508,8 @@
    "dates": "July 18-21, 2027",
    "city": "Chicago, IL",
    "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for pdt.agacgfm.org and for the www.agacgfm.org root; the AGA hosts block the crawler. | directory read 2026-10-16: unreadable - pdt.agacgfm.org home, sitemaps.xml and /exhibitors/ answer HTTP 403, as do www.agacgfm.org and agacgfm.org, although pdt's robots.txt (readable) allows them. No",
-   "dates_checked_on": "2026-10-20"
+   "dates_checked_on": "2026-10-20",
+   "exhibitor_url_source": "read 2026-10-25, confirmed by a second reader: 8 company names visible"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -778,7 +779,7 @@
    "conference": "URISA GIS-Pro",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://gispro2026.sched.com/directory/exhibitors",
    "fetchability": null,
    "event_tag": "URISA GIS-Pro 2026",
    "url": "https://thegpn.org",
@@ -789,7 +790,8 @@
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - thegpn.org, www.thegpn.org and www.urisa.org answer HTTP 403 to the identified crawler; www.gis-pro.org's robots.txt failed (SSLError). Nothing read. | directory read 2026-10-16: unreadable - Every door closed: www.gis-pro.org and gis-pro.org robots.txt SSLError; http://www.gis-pro.org redirects to urisa.org/page/GIS-Pro (403); urisa.org, thegpn.org/",
    "dates_note": "read 2026-10-19: no next edition announced on the organisation's site - read in a browser 2026-10-19: the GIS-Pro page still shows 2026 and the GPN calendar runs to February 2027 with no GIS-Pro 2027; confirmed by a blind second rea",
-   "dates_checked_on": "2026-10-19"
+   "dates_checked_on": "2026-10-19",
+   "exhibitor_url_source": "read 2026-10-25, confirmed by a second reader: 21 company names visible"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -797,8 +799,8 @@
    "conference": "NSGIC",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
-   "fetchability": null,
+   "exhibitor_url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
+   "fetchability": "js-walled",
    "event_tag": "NSGIC 2026",
    "url": "https://nsgic.org/events/2026-nsgic-annual-conference/",
    "dates": "November 1-6, 2026",
@@ -807,7 +809,8 @@
    "dates_source": "https://nsgic.org/events/2026-nsgic-annual-conference/",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: not_found - Conference page covers registration, agenda, awards, hotel; no sponsor or exhibitor section (only 'EagleView sponsored this webpage'). 'Current Business Partner | directory read 2026-10-16: not_found - 2026 conference page (Bozeman, Nov 1-6) has registration, agenda, awards, hotel only; thanks EagleView and NOAA. Agenda app nsgic.mobileup.io prints nothing. Bu",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-15",
+   "exhibitor_url_source": "read 2026-10-25, confirmed by a second reader: 29 company names visible"
   },
   {
    "block": "Public works and infrastructure",
@@ -1861,8 +1864,8 @@
    "conference": "Animal Care Expo",
    "flagship": true,
    "swept": false,
-   "exhibitor_url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
-   "fetchability": "readable",
+   "exhibitor_url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+   "fetchability": "image",
    "platform": "custom HTML (humanepro.org); floor plan was MapYourShow",
    "event_year": "2026",
    "approx_count": 400,
@@ -1874,7 +1877,9 @@
    "next_edition": "2027",
    "dates_source": "https://humanepro.org/expo",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-15",
+   "exhibitor_url_was": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+   "exhibitor_url_source": "read 2026-10-25, confirmed by a second reader: 29 company names visible; replaces https://humanepro.org/expo/past-exhibitors-and-sponsors, which a reader ruled not a floor"
   },
   {
    "block": "Community development",

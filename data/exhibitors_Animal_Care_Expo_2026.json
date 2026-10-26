@@ -1,10 +1,355 @@
 {
  "event_tag": "Animal Care Expo 2026",
  "conference": "Animal Care Expo",
- "found": false,
- "source_url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
- "source_note": "Read from https://humanepro.org/expo/past-exhibitors-and-sponsors by scripts/sweep_exhibitors.py. 82 name(s), 9 with a website the page itself linked. Quality: menu (5% carry a corporate marker, 4% name a site section, 12% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [],
- "why": "reader: every one of the 82 names was the site's own text, not an exhibitor; this page is not a floor",
- "read_dropped": 82
+ "found": true,
+ "source_url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+ "source_note": "Read from https://humanepro.org/expo/animal-care-expo-sponsors by scripts/sweep_exhibitors.py. 117 name(s), 42 with a website the page itself linked. Quality: mixed (5% carry a corporate marker, 3% name a site section, 9% use the words a site names itself with - worth a look before running intake). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "24Pet by pet place",
+   "website": "https://www.24petwatch.com",
+   "is_govtech": true,
+   "is_govtech_why": "reader: 24Pet: ShelterBuddy shelter software + microchip registry",
+   "read": {
+    "verdict": "vendor",
+    "why": "24Pet: ShelterBuddy shelter software + microchip registry",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "animal arts",
+   "website": "https://www.animalarts.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: animal shelter architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "animal shelter architecture firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "aspca",
+   "website": "https://www.aspca.org"
+  },
+  {
+   "name": "CDE animal cages",
+   "website": "https://cdecages.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: animal cage hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "animal cage hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "certified council for professional dog trainers",
+   "website": "https://www.ccpdt.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: certification body / association",
+   "read": {
+    "verdict": "supplier",
+    "why": "certification body / association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Companion Protect",
+   "website": "https://poweredbycompanionprotect.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: pet insurance/wellness administrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: pet insurance/wellness administrator",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "dave and cheryl duffield foundation",
+   "website": "https://www.duffieldfoundation.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: charitable foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "charitable foundation",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "DLI animal facility specialists",
+   "website": "https://www.designlearned.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: animal facility design/architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "animal facility design/architecture firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Doctor Bronner's all one",
+   "website": "https://www.drbronner.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: soap maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "soap maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Docupet",
+   "website": "https://www.docupet.com/"
+  },
+  {
+   "name": "Donorbox",
+   "website": "https://donorbox.org",
+   "read": {
+    "verdict": "unsure",
+    "why": "donation SaaS, sells to nonprofits not gov",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Gyms for Dogs Natural Dog Park Products",
+   "website": "https://www.gymsfordogs.com/"
+  },
+  {
+   "name": "Hill's Pet Nutritition",
+   "website": "https://www.hillspet.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pet food maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "pet food maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Humane Veterinary Medical Alliance",
+   "website": "https://www.humanevma.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: veterinary association",
+   "read": {
+    "verdict": "supplier",
+    "why": "veterinary association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Humane World for Animals",
+   "website": "https://www.humaneworld.org"
+  },
+  {
+   "name": "hurraw balm",
+   "website": "https://hurrawbalm.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: lip balm maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "lip balm maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Jackson and Ryan Architects Design for all animals",
+   "website": "https://www.jacksonryan.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Maddie's Fund",
+   "website": "https://www.maddiesfund.org",
+   "is_govtech": false,
+   "is_govtech_why": "reader: charitable foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "charitable foundation",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Microsoft",
+   "website": "https://www.microsoft.com/en-us"
+  },
+  {
+   "name": "Midmark and Shor-line",
+   "website": "https://www.midmark.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: veterinary equipment/kennel maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "veterinary equipment/kennel maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "national animal care and control association",
+   "website": "https://www.nacanet.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Pedigree Foundation",
+   "website": "https://www.pedigreefoundation.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: charitable foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "charitable foundation",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Petco Love a nonprofit changing lives",
+   "website": "https://petcolove.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit grant-maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit grant-maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Petco love lost",
+   "website": "https://petcolove.org/lost/?utm_medium=referral&amp;utm_source=humanepro&amp;utm_campaign=lovelost-hsus-expo-2026-website-banner-300-250-lost",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Petco Love nonprofit's free lost-pet program",
+   "read": {
+    "verdict": "supplier",
+    "why": "Petco Love nonprofit's free lost-pet program",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Petfinder powered by purina",
+   "website": "https://www.petfinder.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "Purina-owned adoption listing site, free to shelters",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Petsmart Charities",
+   "website": "https://petsmartcharities.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: animal welfare charity, not a tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "animal welfare charity, not a tech vendor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Rescue Disinfectants",
+   "website": "https://www.rescuedisinfectants.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: disinfectant chemical maker, no software",
+   "read": {
+    "verdict": "supplier",
+    "why": "disinfectant chemical maker, no software",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Shelter Planners of America",
+   "website": "https://www.shelterplannersofamerica.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: shelter architecture/design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "shelter architecture/design firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "smarties",
+   "website": "https://www.smarties.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: candy maker (smarties.com), food sponsor",
+   "read": {
+    "verdict": "supplier",
+    "why": "candy maker (smarties.com), food sponsor",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "True Sense Fundraising",
+   "website": "https://www.truesense.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit fundraising marketing agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit fundraising marketing agency",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Vetoquinol",
+   "website": "https://www.vetoquinolusa.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: veterinary pharmaceutical maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "veterinary pharmaceutical maker",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "zymox lp3 enzyme system",
+   "website": "https://zymox.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pet ear-care product (zymox.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "pet ear-care product (zymox.com)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 85,
+ "quality_was": "mixed"
 }

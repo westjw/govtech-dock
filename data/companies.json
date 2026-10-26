@@ -1520,7 +1520,7 @@
     "year_founded": 1928,
     "sector": "Public Safety",
     "category": "Police",
-    "description": "Radios, 911 call handling, CAD, and video security (Avigilon) for public safety - exhibited at Michigan Sheriffs Association 2026, IAFC FRI 2026, APCO 2026, Illinois Chapter of APCO 2026, IAEM 2026, NCSL Legislative Summit 2026",
+    "description": "Radios, 911 call handling, CAD, and video security (Avigilon) for public safety - exhibited at Michigan Sheriffs Association 2026, IAFC FRI 2026, APCO 2026, Illinois Chapter of APCO 2026, IAEM 2026, NCSL Legislative Summit 2026, NSGIC 2026",
     "ats": {
       "type": "workday",
       "ref": [
@@ -1748,7 +1748,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "IACP 2026; Michigan Sheriffs Association 2026; IAFC FRI 2026; APCO 2026; Illinois Chapter of APCO 2026; IAEM 2026; NCSL Legislative Summit 2026",
+    "source": "IACP 2026; Michigan Sheriffs Association 2026; IAFC FRI 2026; APCO 2026; Illinois Chapter of APCO 2026; IAEM 2026; NCSL Legislative Summit 2026; NSGIC 2026",
     "researched": true,
     "competitors": [
       {
@@ -10084,7 +10084,7 @@
     "year_founded": 1969,
     "sector": "Public Works",
     "category": "Fleet & Asset Mgmt",
-    "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026",
+    "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026, URISA GIS-Pro 2026, NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.esri.com/en-us/about/careers/job-search"
@@ -10097,7 +10097,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026",
+    "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026; URISA GIS-Pro 2026; NSGIC 2026",
     "researched": true,
     "profile": {
       "paragraphs": [
@@ -29694,7 +29694,7 @@
     "year_founded": 2008,
     "sector": "General Gov",
     "category": "Finance & ERP",
-    "description": "Aerial imagery and property data analytics for county assessors, GIS, and insurers - exhibited at IAAO 2026",
+    "description": "Aerial imagery and property data analytics for county assessors, GIS, and insurers - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://careers.eagleview.com"
@@ -29707,7 +29707,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add; IAAO 2026",
+    "source": "direct add; IAAO 2026; URISA GIS-Pro 2026; NSGIC 2026",
     "researched": true,
     "also_known_as": [
       "Eagleview"
@@ -36684,7 +36684,7 @@
     "year_founded": 1980,
     "sector": "Public Works",
     "category": "Streets",
-    "description": "Vehicle-captured 360 street imagery and lidar with AI analytics for local governments and utilities",
+    "description": "Vehicle-captured 360 street imagery and lidar with AI analytics for local governments and utilities - exhibited at URISA GIS-Pro 2026",
     "ats": {
       "type": "recruitee",
       "ref": "cyclomediatechnology"
@@ -36713,7 +36713,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add",
+    "source": "direct add; URISA GIS-Pro 2026",
     "researched": true,
     "also_known_as": [
       "Cyclomedia Technology, Inc."
@@ -46297,7 +46297,7 @@
     "year_founded": 2016,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "NG9-1-1 GIS addressing data and VEP software for 911 authorities and PSAPs - exhibited at Illinois Chapter of APCO 2026",
+    "description": "NG9-1-1 GIS addressing data and VEP software for 911 authorities and PSAPs - exhibited at Illinois Chapter of APCO 2026, NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.mbakerintl.com/careers"
@@ -46310,7 +46310,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add; Illinois Chapter of APCO 2026",
+    "source": "direct add; Illinois Chapter of APCO 2026; NSGIC 2026",
     "researched": true,
     "also_known_as": [
       "DATAMARK Technologies"
@@ -71272,7 +71272,7 @@
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
-    "description": "Critical incident mapping data for responders - exhibited at IACP 2026, APCO 2026, Illinois Chapter of APCO 2026",
+    "description": "Critical incident mapping data for responders - exhibited at IACP 2026, APCO 2026, Illinois Chapter of APCO 2026, NSGIC 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -71285,7 +71285,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "IACP 2026; APCO 2026; Illinois Chapter of APCO 2026",
+    "source": "IACP 2026; APCO 2026; Illinois Chapter of APCO 2026; NSGIC 2026",
     "researched": false,
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
@@ -90770,7 +90770,7 @@
     "year_founded": 1992,
     "sector": "Public Safety",
     "category": "Police",
-    "description": "Enterprise CAD, dispatch and records platforms for police and 911 centers",
+    "description": "Enterprise CAD, dispatch and records platforms for police and 911 centers - exhibited at NSGIC 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -90784,7 +90784,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; NSGIC 2026",
     "also_known_as": [
       "Hexagon Safety, Infrastructure & Geospatial",
       "Hexagon Asset Lifecycle Intelligence"
@@ -121252,7 +121252,7 @@
     "year_founded": 2019,
     "sector": "Public Works",
     "category": "Fleet & Asset Mgmt",
-    "description": "GIS-based asset and work management for local government and utilities - exhibited at AWWA ACE 2026",
+    "description": "GIS-based asset and work management for local government and utilities - exhibited at AWWA ACE 2026, URISA GIS-Pro 2026, NSGIC 2026",
     "ats": {
       "type": "recruitee",
       "ref": "vertigis"
@@ -121277,7 +121277,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; AWWA ACE 2026",
+    "source": "competitor sweep; AWWA ACE 2026; URISA GIS-Pro 2026; NSGIC 2026",
     "buyer": "Local governments, public safety and transportation authorities, and public utilities, alongside private utilities, telecom network operators, oil and gas firms, engineering and construction companies, manufacturers and real-estate/facility managers.",
     "sells_to_gov": "yes",
     "buyer_source": "https://www.vertigis.com",
@@ -122359,7 +122359,7 @@
     "year_founded": 1995,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "911 GIS data, indoor mapping and location services for PSAPs - exhibited at APCO 2026, Illinois Chapter of APCO 2026",
+    "description": "911 GIS data, indoor mapping and location services for PSAPs - exhibited at APCO 2026, Illinois Chapter of APCO 2026, URISA GIS-Pro 2026, NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.geocomm.com/careers/"
@@ -122373,7 +122373,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; APCO 2026; Illinois Chapter of APCO 2026",
+    "source": "competitor sweep; APCO 2026; Illinois Chapter of APCO 2026; URISA GIS-Pro 2026; NSGIC 2026",
     "website_note": {
       "was": "https://www.geo-comm.com",
       "why": "https://www.geo-comm.com stopped answering (no answer: https SSLError; http ConnectTimeout); the company's site is now https://www.geocomm.com (https://www.geocomm.com/: \"GeoComm: Leading Public Safety GIS Solutions\")",
@@ -162870,7 +162870,7 @@
     "year_founded": 2009,
     "sector": "General Gov",
     "category": "Strategy & Performance",
-    "description": "Nationwide parcel data and property mapping licensed to government agencies",
+    "description": "Nationwide parcel data and property mapping licensed to government agencies - exhibited at NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://regrid.com/careers"
@@ -162884,7 +162884,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; NSGIC 2026",
     "profile": {
       "paragraphs": [
         "Regrid sells standardized parcel data covering North America and Europe under a single schema. Those parcel boundaries carry ownership details, zoning rules, building footprints, and demographics in one view. Coverage runs to every county in the United States. Canadian parcels and European parcel data across 20 countries extend the same land data beyond one market.",
@@ -163162,7 +163162,7 @@
     "year_founded": 1985,
     "sector": "General Gov",
     "category": "Strategy & Performance",
-    "description": "Aerial imagery programs and geospatial data licensed to government agencies - exhibited at IAAO 2026",
+    "description": "Aerial imagery programs and geospatial data licensed to government agencies - exhibited at IAAO 2026, NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.vexcel-imaging.com/careers"
@@ -163176,7 +163176,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; IAAO 2026",
+    "source": "competitor sweep; IAAO 2026; NSGIC 2026",
     "also_known_as": [
       "Vexcel"
     ],
@@ -163197,7 +163197,7 @@
     "year_founded": 2007,
     "sector": "General Gov",
     "category": "Strategy & Performance",
-    "description": "High-frequency aerial imagery and location content for government departments - exhibited at IAAO 2026",
+    "description": "High-frequency aerial imagery and location content for government departments - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.nearmap.com/careers"
@@ -163211,7 +163211,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; IAAO 2026",
+    "source": "competitor sweep; IAAO 2026; URISA GIS-Pro 2026; NSGIC 2026",
     "buyer": "Aerial imagery and property-data subscriptions sold to local, state and federal government agencies (City of Grapevine, City of Sioux Falls, Oklahoma County, Village of Huntley, City of Southfield, Eastvale) and, in equal measure, to P&C insurers, architecture/engineering/construction firms, telecom, utilities, solar, roofing and real estate companies.",
     "sells_to_gov": "yes",
     "buyer_source": "https://www.nearmap.com/solutions/government",

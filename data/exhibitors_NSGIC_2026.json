@@ -1,0 +1,253 @@
+{
+ "event_tag": "NSGIC 2026",
+ "conference": "NSGIC",
+ "found": true,
+ "source_url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
+ "source_note": "Rendered in a browser from https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors by scripts/render_floor.py (robots.txt asked at every hop). 31 name(s), 0 with a website the page linked. Quality: good (19% carry a corporate marker, 0% name a site section, 3% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "Aero-Graphics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: aerial survey/lidar acquisition services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "aerial survey/lidar acquisition services firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Blackshark.ai",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: geospatial AI / 3D digital twin software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "geospatial AI / 3D digital twin software platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Bowman",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bowman Consulting, engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bowman Consulting, engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Critical Response Group (CRG)",
+   "website": null
+  },
+  {
+   "name": "Data Axle",
+   "website": null
+  },
+  {
+   "name": "DATAMARK",
+   "website": null
+  },
+  {
+   "name": "Dewberry",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/geospatial consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/geospatial consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "EagleView",
+   "website": null
+  },
+  {
+   "name": "Esri",
+   "website": null
+  },
+  {
+   "name": "Fugro",
+   "website": null
+  },
+  {
+   "name": "GeoComm",
+   "website": null
+  },
+  {
+   "name": "Geographic Technologies Group (GTG)",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: geotg.com: GIS for gov, sells GeoAdaptor/SafeCityGIS to 1000+ local govs",
+   "read": {
+    "verdict": "vendor",
+    "why": "geotg.com: GIS for gov, sells GeoAdaptor/SafeCityGIS to 1000+ local govs",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Google Maps",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: mapping platform/API sold to government",
+   "read": {
+    "verdict": "vendor",
+    "why": "mapping platform/API sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "HERE",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: HERE Technologies, location data/platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "HERE Technologies, location data/platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Hexagon",
+   "website": null
+  },
+  {
+   "name": "Merrick",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Merrick & Co, engineering/geospatial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Merrick & Co, engineering/geospatial services",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Motorola Solutions",
+   "website": null
+  },
+  {
+   "name": "Nearmap",
+   "website": null
+  },
+  {
+   "name": "NOAA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "NUVIEW",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: nuview.space: satellite lidar data products + platform login",
+   "read": {
+    "verdict": "vendor",
+    "why": "nuview.space: satellite lidar data products + platform login",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "NV5",
+   "website": null
+  },
+  {
+   "name": "Planet",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Planet Labs, satellite imagery data platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Planet Labs, satellite imagery data platform",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Regrid",
+   "website": null
+  },
+  {
+   "name": "ROK Technologies",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: roktech.net: managed cloud GIS hosting (ROK Command)",
+   "read": {
+    "verdict": "vendor",
+    "why": "roktech.net: managed cloud GIS hosting (ROK Command)",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "SAM",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: likely SAM LLC surveying/mapping services; name ambiguous",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely SAM LLC surveying/mapping services; name ambiguous",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "Sanborn",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sanborn Map Co, aerial mapping services; site refused read",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sanborn Map Co, aerial mapping services; site refused read",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  },
+  {
+   "name": "VertiGIS",
+   "website": null
+  },
+  {
+   "name": "Vexcel",
+   "website": null
+  },
+  {
+   "name": "WGI Inc.",
+   "website": null
+  },
+  {
+   "name": "Woolpert",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture/engineering/geospatial firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture/engineering/geospatial firm",
+    "by": "agent:reader",
+    "on": "2026-10-26"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 1,
+ "quality_was": "good"
+}

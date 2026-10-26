@@ -1,6 +1,6 @@
 {
  "v": 1,
- "generated": "2026-10-23",
+ "generated": "2026-10-26",
  "note": "Suppliers in the govtech sectors and categories (data/schema.json). Every assignment quotes its source; status follows the owner's rule that nothing is published without a confirmed website.",
  "sectors": [
   {
@@ -807,8 +807,8 @@
   {
    "supplier_id": "aspca",
    "name": "ASPCA",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "publish",
+   "website": "https://www.aspca.org"
   },
   {
    "supplier_id": "at-sports",
@@ -16829,8 +16829,8 @@
   {
    "supplier_id": "nv5",
    "name": "NV5",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "publish",
+   "website": "https://www.nv5.com"
   },
   {
    "supplier_id": "ocem-airfield",
@@ -25999,8 +25999,8 @@
   {
    "supplier_id": "cgi-federal",
    "name": "CGI Federal",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "publish",
+   "website": "http://www.cgi.com/"
   },
   {
    "supplier_id": "clesia-ventures-llc",
@@ -46540,6 +46540,228 @@
    "website": "https://www.ywcaworks.org/"
   },
   {
+   "supplier_id": "kearney-co",
+   "name": "Kearney & Co",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "mil-corp",
+   "name": "MIL Corp",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "rsm",
+   "name": "RSM",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "avineon-inc",
+   "name": "Avineon, Inc.",
+   "status": "publish",
+   "website": "https://www.avineon.com/en-us/home"
+  },
+  {
+   "supplier_id": "cultivate-geospatial-solutions",
+   "name": "Cultivate Geospatial Solutions",
+   "status": "publish",
+   "website": "https://www.cultivategeospatial.com"
+  },
+  {
+   "supplier_id": "entrust-solutions-group",
+   "name": "ENTRUST Solutions Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "gis-certification-institute",
+   "name": "GIS CERTIFICATION INSTITUTE",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mauer-stutz-geospatial-services",
+   "name": "Mauer-Stutz Geospatial Services",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mgp-inc",
+   "name": "MGP, Inc",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "minnesota-gis-lis-consortium",
+   "name": "Minnesota GIS/LIS Consortium",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "pro-west-associates-inc",
+   "name": "Pro-West & Associates, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "rok-technologies",
+   "name": "ROK Technologies",
+   "status": "publish",
+   "website": "https://roktechnologies.net"
+  },
+  {
+   "supplier_id": "seiler-geospatial",
+   "name": "Seiler Geospatial",
+   "status": "publish",
+   "website": "https://www.seilergeo.com"
+  },
+  {
+   "supplier_id": "viewshed",
+   "name": "VIEWSHED",
+   "status": "publish",
+   "website": "https://viewshed.net"
+  },
+  {
+   "supplier_id": "wisconsin-land-information-association-wlia",
+   "name": "Wisconsin Land Information Association/WLIA",
+   "status": "publish",
+   "website": "https://www.wlia.org"
+  },
+  {
+   "supplier_id": "women-in-gis",
+   "name": "Women in GIS",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "animal-arts",
+   "name": "animal arts",
+   "status": "publish",
+   "website": "https://www.animalarts.com/"
+  },
+  {
+   "supplier_id": "certified-council-for-professional-dog-trainers",
+   "name": "certified council for professional dog trainers",
+   "status": "publish",
+   "website": "https://www.ccpdt.org/"
+  },
+  {
+   "supplier_id": "dli-animal-facility-specialists",
+   "name": "DLI animal facility specialists",
+   "status": "publish",
+   "website": "https://www.designlearned.com/"
+  },
+  {
+   "supplier_id": "doctor-bronner-s-all-one",
+   "name": "Doctor Bronner's all one",
+   "status": "held",
+   "held": "website unread (homepage: HTTP 429 rate limited for https://www.drbronner.com/, asked for 60s)"
+  },
+  {
+   "supplier_id": "hill-s-pet-nutritition",
+   "name": "Hill's Pet Nutritition",
+   "status": "publish",
+   "website": "https://www.hillspet.com"
+  },
+  {
+   "supplier_id": "humane-veterinary-medical-alliance",
+   "name": "Humane Veterinary Medical Alliance",
+   "status": "publish",
+   "website": "https://www.humanevma.org/"
+  },
+  {
+   "supplier_id": "hurraw-balm",
+   "name": "hurraw balm",
+   "status": "held",
+   "held": "website unread (not read)"
+  },
+  {
+   "supplier_id": "jackson-and-ryan-architects-design-for-all-animals",
+   "name": "Jackson and Ryan Architects Design for all animals",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "midmark-and-shor-line",
+   "name": "Midmark and Shor-line",
+   "status": "publish",
+   "website": "https://www.midmark.com/"
+  },
+  {
+   "supplier_id": "national-animal-care-and-control-association",
+   "name": "national animal care and control association",
+   "status": "publish",
+   "website": "https://www.nacanet.org/"
+  },
+  {
+   "supplier_id": "petco-love-a-nonprofit-changing-lives",
+   "name": "Petco Love a nonprofit changing lives",
+   "status": "held",
+   "held": "website unread (not read)"
+  },
+  {
+   "supplier_id": "petco-love-lost",
+   "name": "Petco love lost",
+   "status": "held",
+   "held": "website unread (not read)"
+  },
+  {
+   "supplier_id": "rescue-disinfectants",
+   "name": "Rescue Disinfectants",
+   "status": "publish",
+   "website": "https://www.rescuedisinfectants.com/"
+  },
+  {
+   "supplier_id": "smarties",
+   "name": "smarties",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "true-sense-fundraising",
+   "name": "True Sense Fundraising",
+   "status": "publish",
+   "website": "https://www.truesense.com/"
+  },
+  {
+   "supplier_id": "zymox-lp3-enzyme-system",
+   "name": "zymox lp3 enzyme system",
+   "status": "publish",
+   "website": "https://zymox.com/"
+  },
+  {
+   "supplier_id": "aero-graphics",
+   "name": "Aero-Graphics",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "bowman",
+   "name": "Bowman",
+   "status": "publish",
+   "website": "https://bowman.com"
+  },
+  {
+   "supplier_id": "merrick",
+   "name": "Merrick",
+   "status": "publish",
+   "website": "https://www.merrick.com"
+  },
+  {
+   "supplier_id": "sam",
+   "name": "SAM",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "sanborn",
+   "name": "Sanborn",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
    "supplier_id": "american-traction-systems",
    "name": "American Traction Systems",
    "status": {
@@ -47673,6 +47895,15 @@
    "source": {
     "url": "https://www.apwa.org/events/pwx-conference/",
     "quote": "ARX Perimeters"
+   }
+  },
+  {
+   "supplier_id": "aspca",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.aspca.org",
+    "quote": "Help us end animal cruelty nationwide."
    }
   },
   {
@@ -55395,6 +55626,15 @@
    "source": {
     "url": "https://www.fugro.com",
     "quote": "Fugro signed contract for Greater Sunrise and Bayu Undan pipeline survey programme in Timor-Leste"
+   }
+  },
+  {
+   "supplier_id": "fugro",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "Fugro"
    }
   },
   {
@@ -73201,6 +73441,15 @@
   },
   {
    "supplier_id": "nv5",
+   "industry": "general-gov/permitting-and-licensing",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.nv5.com",
+    "quote": "NV5 Has Merged With Acuren, A Leading Provider of NDT, Inspection, and Mitigation Services"
+   }
+  },
+  {
+   "supplier_id": "nv5",
    "industry": "airports-aviation/suppliers-and-services",
    "basis": "conference",
    "source": {
@@ -74518,7 +74767,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "ACF Animal Rescue, Pakistan"
    }
   },
@@ -74527,7 +74776,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "ACF Animal Rescue, USA"
    }
   },
@@ -74536,7 +74785,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Acoustiblok"
    }
   },
@@ -74545,7 +74794,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Adisa"
    }
   },
@@ -74554,7 +74803,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Adopt a Pet Shelter Plus"
    }
   },
@@ -74563,7 +74812,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Adopt-a-Pet.com"
    }
   },
@@ -74572,7 +74821,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Aeolus Pet"
    }
   },
@@ -74590,7 +74839,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "AIT Supply"
    }
   },
@@ -74617,7 +74866,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Alleycat Spay and Neuter Clinic"
    }
   },
@@ -74626,7 +74875,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Alliance Background"
    }
   },
@@ -74644,7 +74893,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "American Association of Pet Parents"
    }
   },
@@ -74662,7 +74911,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Arts Design Studios, Inc."
    }
   },
@@ -74680,7 +74929,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Care Equipment & Services"
    }
   },
@@ -74689,7 +74938,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Chaplaincy Training from Compassion Consortium"
    }
   },
@@ -74707,7 +74956,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Investigation & Response"
    }
   },
@@ -74716,7 +74965,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal K"
    }
   },
@@ -74725,7 +74974,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Keepers Insurance Program by McNeil & Co."
    }
   },
@@ -74734,7 +74983,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Legal Defense Fund Criminal Justice Program"
    }
   },
@@ -74743,7 +74992,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Place's Food for Thought Program"
    }
   },
@@ -74752,7 +75001,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Resources and Counseling"
    }
   },
@@ -74770,7 +75019,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Welfare Investigations Project Limited"
    }
   },
@@ -74779,7 +75028,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Animal Welfare Organization Insurance Program"
    }
   },
@@ -74797,7 +75046,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Arminco"
    }
   },
@@ -74806,7 +75055,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Association for Pet Loss & Bereavement"
    }
   },
@@ -74815,7 +75064,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Association of Shelter Veterinarians"
    }
   },
@@ -74833,7 +75082,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Austin Pets Alive! Training and Education Center"
    }
   },
@@ -74842,7 +75091,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "AVID Identification Systems"
    }
   },
@@ -74851,7 +75100,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Bacon Group, Inc."
    }
   },
@@ -74860,7 +75109,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Bailing Out Benji"
    }
   },
@@ -74869,7 +75118,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "BCP Veterinary Pharmacy"
    }
   },
@@ -74878,7 +75127,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Bergin College of Canine Studies"
    }
   },
@@ -74887,7 +75136,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "BestyBNB"
    }
   },
@@ -74896,7 +75145,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Bewilderness"
    }
   },
@@ -74905,7 +75154,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "BioOx"
    }
   },
@@ -74914,7 +75163,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "BiteGuard KennelPlex"
    }
   },
@@ -74923,7 +75172,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Black Diamond Radio"
    }
   },
@@ -74932,7 +75181,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Black Pet Business Network"
    }
   },
@@ -74941,7 +75190,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Blue Dawg"
    }
   },
@@ -74950,7 +75199,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Bring Fido"
    }
   },
@@ -74959,7 +75208,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "BuddyID"
    }
   },
@@ -74968,7 +75217,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Butterfly Network"
    }
   },
@@ -74977,7 +75226,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "C. SPECIALTIES INC."
    }
   },
@@ -74995,7 +75244,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Canine Hemp Solutions"
    }
   },
@@ -75004,7 +75253,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "CAPInnoVet- Provecta"
    }
   },
@@ -75013,7 +75262,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Care2"
    }
   },
@@ -75031,7 +75280,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Cathy Kangas Foundation for Animals"
    }
   },
@@ -75049,7 +75298,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "CDE Animal Cages"
    }
   },
@@ -75058,7 +75307,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Centaur Animal Health"
    }
   },
@@ -75067,7 +75316,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Ceva Animal Health"
    }
   },
@@ -75076,7 +75325,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Chappy & Friends"
    }
   },
@@ -75085,7 +75334,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Charity Engine"
    }
   },
@@ -75094,7 +75343,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Clipper Distributing Company, LLC"
    }
   },
@@ -75103,7 +75352,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Code Enforcement Officer Safety Foundation"
    }
   },
@@ -75112,7 +75361,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Companion Animal Euthanasia Training Academy"
    }
   },
@@ -75121,7 +75370,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Companions and Animals for Reform and Equity"
    }
   },
@@ -75139,7 +75388,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Creative Canine Designs"
    }
   },
@@ -75148,7 +75397,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Cresilon/Vetigel"
    }
   },
@@ -75157,7 +75406,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Crijo"
    }
   },
@@ -75166,7 +75415,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "CUDDLY"
    }
   },
@@ -75184,7 +75433,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Dave and Cheryl Duffield Foundation"
    }
   },
@@ -75193,7 +75442,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Dave's Pet Food"
    }
   },
@@ -75202,7 +75451,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "DC Cat Count"
    }
   },
@@ -75220,7 +75469,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Dechra Veterinary Products"
    }
   },
@@ -75229,7 +75478,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Deepwater Consulting"
    }
   },
@@ -75247,7 +75496,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Digital Cheetah Solutions"
    }
   },
@@ -75256,7 +75505,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Direct Animal Products"
    }
   },
@@ -75265,7 +75514,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "DivvyUp"
    }
   },
@@ -75283,7 +75532,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Dog is Good"
    }
   },
@@ -75292,7 +75541,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Dog N Frog"
    }
   },
@@ -75328,7 +75577,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "DonorBox"
    }
   },
@@ -75346,7 +75595,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "DooDoo Baggie Club"
    }
   },
@@ -75355,7 +75604,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Easy Pet Fence by Trident Enterprises"
    }
   },
@@ -75364,7 +75613,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Elgin Butler Brick Co."
    }
   },
@@ -75382,7 +75631,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Embark Veterinary"
    }
   },
@@ -75400,7 +75649,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "EveryCat Health Foundation"
    }
   },
@@ -75409,7 +75658,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Family Dog Mediation Education Center"
    }
   },
@@ -75418,7 +75667,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Farm & Yard"
    }
   },
@@ -75436,7 +75685,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Feathr"
    }
   },
@@ -75445,7 +75694,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Fi"
    }
   },
@@ -75463,7 +75712,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Florida SARC"
    }
   },
@@ -75472,7 +75721,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "ForeverLawn"
    }
   },
@@ -75481,7 +75730,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Free Dog Trainers"
    }
   },
@@ -75490,7 +75739,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "FreeWill"
    }
   },
@@ -75499,7 +75748,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Furry Friends"
    }
   },
@@ -75508,7 +75757,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "GBC Fundraising"
    }
   },
@@ -75535,7 +75784,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Givesmiles.us"
    }
   },
@@ -75553,7 +75802,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Global Faces Direct"
    }
   },
@@ -75571,7 +75820,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "GoodPup"
    }
   },
@@ -75580,7 +75829,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "GotchaCot"
    }
   },
@@ -75589,7 +75838,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Grateful Change"
    }
   },
@@ -75598,7 +75847,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Great Plains SPCA"
    }
   },
@@ -75607,7 +75856,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "GreaterGood.org"
    }
   },
@@ -75625,7 +75874,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Gyms for Dogs"
    }
   },
@@ -75643,7 +75892,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Health Technology Professional Products"
    }
   },
@@ -75661,7 +75910,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "HEART Humane Education Advocates Reaching Teachers"
    }
   },
@@ -75670,7 +75919,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Helen Woodward Animal Center"
    }
   },
@@ -75679,7 +75928,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Henry Schein Animal Health"
    }
   },
@@ -75697,7 +75946,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Hill's Pet Nutrition"
    }
   },
@@ -75706,7 +75955,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "HomeAgain"
    }
   },
@@ -75715,7 +75964,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Homescape Pets"
    }
   },
@@ -75724,7 +75973,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "House Rabbit Society"
    }
   },
@@ -75733,7 +75982,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Humane Animal Rescue of Pittsburgh"
    }
   },
@@ -75742,7 +75991,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Humane Educators of Texas"
    }
   },
@@ -75769,7 +76018,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "In Pups We Trust"
    }
   },
@@ -75787,7 +76036,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Institute for Humane Animal Connection"
    }
   },
@@ -75796,7 +76045,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "International Association of Veterinary Social Work"
    }
   },
@@ -75805,7 +76054,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "It's Paws"
    }
   },
@@ -75814,7 +76063,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Jackson & Ryan Architects"
    }
   },
@@ -75832,7 +76081,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Jurox Animal Health"
    }
   },
@@ -75841,7 +76090,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "K9 Nose Work"
    }
   },
@@ -75859,7 +76108,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "KindredBio"
    }
   },
@@ -75868,7 +76117,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Kinn"
    }
   },
@@ -75877,7 +76126,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Kitty Sause"
    }
   },
@@ -75886,7 +76135,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Kradle"
    }
   },
@@ -75895,7 +76144,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Kurdistan Animal Protection Organization"
    }
   },
@@ -75904,7 +76153,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "La Boit, Inc"
    }
   },
@@ -75922,7 +76171,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Lincoln Memorial University College of Veterinary Medicine"
    }
   },
@@ -75931,7 +76180,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Live Pee Free"
    }
   },
@@ -75940,7 +76189,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Longo Architecture Studios"
    }
   },
@@ -75949,7 +76198,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "LupinePet"
    }
   },
@@ -75967,7 +76216,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Mason, a Midmark company"
    }
   },
@@ -75985,7 +76234,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Mavron, Inc."
    }
   },
@@ -76003,7 +76252,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Meals on Wheels America"
    }
   },
@@ -76012,7 +76261,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Medically"
    }
   },
@@ -76021,7 +76270,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Mercy Full Project"
    }
   },
@@ -76039,7 +76288,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Michelson Found Animals Registry"
    }
   },
@@ -76057,7 +76306,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Midwest Veterinary Supply"
    }
   },
@@ -76066,7 +76315,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Million Cat Challenge"
    }
   },
@@ -76075,7 +76324,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Multiple Options"
    }
   },
@@ -76093,7 +76342,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "My Pit Bull is Family"
    }
   },
@@ -76102,7 +76351,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "MYCO Medical"
    }
   },
@@ -76111,7 +76360,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Myfamily"
    }
   },
@@ -76120,7 +76369,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "National Animal Care & Control Association"
    }
   },
@@ -76129,7 +76378,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "National Association of Canine Scent Work"
    }
   },
@@ -76138,7 +76387,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "National Canine Research Council"
    }
   },
@@ -76147,7 +76396,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "National Disaster Search Dog Foundation"
    }
   },
@@ -76156,7 +76405,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Neighbors by Ring"
    }
   },
@@ -76165,7 +76414,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "No Code Systems"
    }
   },
@@ -76192,7 +76441,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "NWP Harness"
    }
   },
@@ -76219,7 +76468,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "One Love Pit Bull Foundation"
    }
   },
@@ -76228,7 +76477,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Oriana Solutions"
    }
   },
@@ -76237,7 +76486,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Orphan Kitten Club"
    }
   },
@@ -76264,7 +76513,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Pedigree Foundation"
    }
   },
@@ -76273,7 +76522,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "People are Animals too, Darn it!"
    }
   },
@@ -76282,7 +76531,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "PermaTek Coatings"
    }
   },
@@ -76300,7 +76549,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Pet-Ag"
    }
   },
@@ -76318,7 +76567,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Petco Love"
    }
   },
@@ -76327,7 +76576,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Petfinder"
    }
   },
@@ -76336,7 +76585,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "PetHub"
    }
   },
@@ -76345,7 +76594,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Petkey"
    }
   },
@@ -76363,7 +76612,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "petNmind"
    }
   },
@@ -76372,7 +76621,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Pet\u2019s Choice Pharmacy"
    }
   },
@@ -76381,7 +76630,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Pets for the Elderly Foundation"
    }
   },
@@ -76408,7 +76657,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Petsuites San Antonio"
    }
   },
@@ -76417,7 +76666,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Petszel"
    }
   },
@@ -76444,7 +76693,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Pilots to the Rescue"
    }
   },
@@ -76453,7 +76702,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Pit Bull Advocates of America"
    }
   },
@@ -76462,7 +76711,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Powered Living"
    }
   },
@@ -76489,7 +76738,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Program for Pet Health Equity"
    }
   },
@@ -76507,7 +76756,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Project Pet"
    }
   },
@@ -76525,7 +76774,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Pup Relief Tour"
    }
   },
@@ -76561,7 +76810,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Purrfect Wear"
    }
   },
@@ -76570,7 +76819,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "QGiv"
    }
   },
@@ -76579,7 +76828,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Quorum Architects"
    }
   },
@@ -76588,7 +76837,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Rauhaus Freedenfeld & Associates"
    }
   },
@@ -76597,7 +76846,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "RedRover Kind News"
    }
   },
@@ -76606,7 +76855,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Rescue Spot"
    }
   },
@@ -76615,7 +76864,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Revival Animal Health"
    }
   },
@@ -76624,7 +76873,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "RJR Beauty"
    }
   },
@@ -76633,7 +76882,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "RLArchitecture, PLLC"
    }
   },
@@ -76642,7 +76891,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "RLD Consulting Services, LLC"
    }
   },
@@ -76651,7 +76900,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Robertson Ryan & Associates"
    }
   },
@@ -76660,7 +76909,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Roto Rooter"
    }
   },
@@ -76678,7 +76927,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Royal Canin"
    }
   },
@@ -76687,7 +76936,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "RWE Design Build"
    }
   },
@@ -76705,7 +76954,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Sanky Communications"
    }
   },
@@ -76714,7 +76963,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Scrub Racks"
    }
   },
@@ -76741,7 +76990,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Shelter Playgroup Alliance"
    }
   },
@@ -76750,7 +76999,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Shelters United"
    }
   },
@@ -76759,7 +77008,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "ShopDot Pet"
    }
   },
@@ -76768,7 +77017,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "ShopMeoow"
    }
   },
@@ -76777,7 +77026,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Skyhawk"
    }
   },
@@ -76795,7 +77044,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Snyder Mfg. Co"
    }
   },
@@ -76804,7 +77053,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "SPCA International"
    }
   },
@@ -76813,7 +77062,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Spero CBD"
    }
   },
@@ -76831,7 +77080,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Squishface"
    }
   },
@@ -76840,7 +77089,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "State Farm"
    }
   },
@@ -76849,7 +77098,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Stewardship Technology"
    }
   },
@@ -76858,7 +77107,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Stewart-Cooper-Newell Architects"
    }
   },
@@ -76867,7 +77116,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Strategic Behavior Hub"
    }
   },
@@ -76885,7 +77134,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Streamworks"
    }
   },
@@ -76894,7 +77143,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Street Mutts"
    }
   },
@@ -76903,7 +77152,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Studio Miers"
    }
   },
@@ -76912,7 +77161,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Suburban Surgical Co."
    }
   },
@@ -76921,7 +77170,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Summa"
    }
   },
@@ -76930,7 +77179,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Swatt Miers Architects"
    }
   },
@@ -76939,7 +77188,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "SWATT Southwest Animal Transport Team"
    }
   },
@@ -76948,7 +77197,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "SyncPet"
    }
   },
@@ -76957,7 +77206,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Synexis Biodefense"
    }
   },
@@ -76966,7 +77215,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "TabBand"
    }
   },
@@ -76975,7 +77224,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Team Health Network"
    }
   },
@@ -77002,7 +77251,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Terri Lynn"
    }
   },
@@ -77011,7 +77260,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Texas Humane Legislative Network"
    }
   },
@@ -77020,7 +77269,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "ThankView"
    }
   },
@@ -77029,7 +77278,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Animal That Changed You"
    }
   },
@@ -77038,7 +77287,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Association for Animal Welfare Advancement"
    }
   },
@@ -77056,7 +77305,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Blue Buffalo Co."
    }
   },
@@ -77065,7 +77314,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Bridge Clinic"
    }
   },
@@ -77074,7 +77323,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Center for Lost Pets"
    }
   },
@@ -77083,7 +77332,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Compassion Fatigue Couch"
    }
   },
@@ -77092,7 +77341,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Lukens Company"
    }
   },
@@ -77101,7 +77350,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The Magic Zoo"
    }
   },
@@ -77110,7 +77359,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "The National Kitten Coalition"
    }
   },
@@ -77119,7 +77368,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Thompson & Associates"
    }
   },
@@ -77128,7 +77377,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Tomahawk Live Trap"
    }
   },
@@ -77137,7 +77386,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Tony La Russa's Animal Rescue Foundation"
    }
   },
@@ -77155,7 +77404,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Treat"
    }
   },
@@ -77191,7 +77440,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "U.S. Cremation"
    }
   },
@@ -77200,7 +77449,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Ultra Lite Animal Enclosures"
    }
   },
@@ -77209,7 +77458,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Universal Surgical"
    }
   },
@@ -77218,7 +77467,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "University of Florida Veterinary Forensics and Shelter Medicine Distance Education"
    }
   },
@@ -77236,7 +77485,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "VetMed Solutions"
    }
   },
@@ -77245,7 +77494,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Vetoquinol"
    }
   },
@@ -77272,7 +77521,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Victoria Stillwell Academy for Dog Training & Behavior"
    }
   },
@@ -77281,7 +77530,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Vidaah"
    }
   },
@@ -77299,7 +77548,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Virox Animal Health"
    }
   },
@@ -77308,7 +77557,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Vortech Pharmaceuticals"
    }
   },
@@ -77317,7 +77566,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "VSS Medical"
    }
   },
@@ -77326,7 +77575,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Wag'n Tails Mobile Conversions"
    }
   },
@@ -77335,7 +77584,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "WaterShed Animal Fund"
    }
   },
@@ -77344,7 +77593,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Wedgewood Pharmacy"
    }
   },
@@ -77353,7 +77602,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Wellnext"
    }
   },
@@ -77362,7 +77611,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Wings of Rescue"
    }
   },
@@ -77371,7 +77620,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Woollybear Travels"
    }
   },
@@ -77380,7 +77629,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "X Insurance"
    }
   },
@@ -77389,7 +77638,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "Young Living Essential Oils"
    }
   },
@@ -83464,7 +83713,7 @@
    "industry": "general-gov/animal-services",
    "basis": "conference",
    "source": {
-    "url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
     "quote": "IDEXX Laboratories"
    }
   },
@@ -87156,6 +87405,15 @@
    "source": {
     "url": "https://nce2026.smallworldlabs.com/exhibitors",
     "quote": "Bureau Veritas Technical Assessments"
+   }
+  },
+  {
+   "supplier_id": "cgi-federal",
+   "industry": "general-gov/finance-and-erp",
+   "basis": "own_site",
+   "source": {
+    "url": "http://www.cgi.com/en/solution",
+    "quote": "All industries Banking capital markets Communications Government Health Insurance Life sciences Local government Manufacturing Media Oil and gas Retail, consumer and services State and provincial government Transportation and logistics Utilities"
    }
   },
   {
@@ -96993,6 +97251,15 @@
    "source": {
     "url": "https://www.dewberry.com/services/architecture",
     "quote": "Signage design and procurement packages"
+   }
+  },
+  {
+   "supplier_id": "dewberry",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
+    "quote": "Dewberry"
    }
   },
   {
@@ -110001,6 +110268,15 @@
    }
   },
   {
+   "supplier_id": "cloudpoint-geospatial",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "CLOUDPOINT GEOSPATIAL"
+   }
+  },
+  {
    "supplier_id": "cordogan-clark-associates-inc",
    "industry": "public-safety/suppliers-and-services",
    "basis": "conference",
@@ -113916,6 +114192,15 @@
    }
   },
   {
+   "supplier_id": "noaa",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
+    "quote": "NOAA"
+   }
+  },
+  {
    "supplier_id": "orau",
    "industry": "public-safety/emergency-mgmt",
    "basis": "conference",
@@ -117351,6 +117636,339 @@
    "source": {
     "url": "https://www.housingwa.org/2026-sponsors",
     "quote": "YWCA Seattle, King & Snohomish"
+   }
+  },
+  {
+   "supplier_id": "kearney-co",
+   "industry": "general-gov/finance-and-erp",
+   "basis": "conference",
+   "source": {
+    "url": "https://aga.digitellinc.com/live/229/page/2410",
+    "quote": "Kearney & Co"
+   }
+  },
+  {
+   "supplier_id": "mil-corp",
+   "industry": "general-gov/finance-and-erp",
+   "basis": "conference",
+   "source": {
+    "url": "https://aga.digitellinc.com/live/229/page/2410",
+    "quote": "MIL Corp"
+   }
+  },
+  {
+   "supplier_id": "rsm",
+   "industry": "general-gov/finance-and-erp",
+   "basis": "conference",
+   "source": {
+    "url": "https://aga.digitellinc.com/live/229/page/2410",
+    "quote": "RSM"
+   }
+  },
+  {
+   "supplier_id": "avineon-inc",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.avineon.com/en-us/home",
+    "quote": "We are very pleased to announce the acquisition of North Point Geographic Solutions, expanding our GIS implementation and enhancement services."
+   }
+  },
+  {
+   "supplier_id": "cultivate-geospatial-solutions",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.cultivategeospatial.com",
+    "quote": "See us at the 2026 GPN GIS PRO Conference"
+   }
+  },
+  {
+   "supplier_id": "entrust-solutions-group",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "ENTRUST Solutions Group"
+   }
+  },
+  {
+   "supplier_id": "gis-certification-institute",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "GIS CERTIFICATION INSTITUTE"
+   }
+  },
+  {
+   "supplier_id": "mauer-stutz-geospatial-services",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "Mauer-Stutz Geospatial Services"
+   }
+  },
+  {
+   "supplier_id": "mgp-inc",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "MGP, Inc"
+   }
+  },
+  {
+   "supplier_id": "minnesota-gis-lis-consortium",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "Minnesota GIS/LIS Consortium"
+   }
+  },
+  {
+   "supplier_id": "pro-west-associates-inc",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "Pro-West & Associates, Inc."
+   }
+  },
+  {
+   "supplier_id": "rok-technologies",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://roktechnologies.net",
+    "quote": "Rok Technologies delivers cutting-edge security and networking solutions."
+   }
+  },
+  {
+   "supplier_id": "seiler-geospatial",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.seilergeo.com",
+    "quote": "Seiler Geospatial Expands into"
+   }
+  },
+  {
+   "supplier_id": "viewshed",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://viewshed.net",
+    "quote": "VIEWSHED is an interdisciplinary firm that offers landscape architecture, planning, GIS, visual assessment, climate resiliency and community engagement services."
+   }
+  },
+  {
+   "supplier_id": "wisconsin-land-information-association-wlia",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.wlia.org",
+    "quote": "We are united by an interest in land records modernization, GIS, and related technologies, and by the need for government policies and programs that support their efficient and effective application."
+   }
+  },
+  {
+   "supplier_id": "women-in-gis",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://gispro2026.sched.com/directory/exhibitors",
+    "quote": "Women in GIS"
+   }
+  },
+  {
+   "supplier_id": "animal-arts",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.animalarts.com/",
+    "quote": "SAGE Centers for Veterinary Specialty & Emergency Care"
+   }
+  },
+  {
+   "supplier_id": "certified-council-for-professional-dog-trainers",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.ccpdt.org/",
+    "quote": "Veterinarians, breeders, animal shelters, rescue groups, humane societies: Learn more about certified trainers."
+   }
+  },
+  {
+   "supplier_id": "dli-animal-facility-specialists",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.designlearned.com/",
+    "quote": "Services for Animal Shelters"
+   }
+  },
+  {
+   "supplier_id": "doctor-bronner-s-all-one",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+    "quote": "Doctor Bronner's all one"
+   }
+  },
+  {
+   "supplier_id": "hill-s-pet-nutritition",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.hillspet.com/about-us/our-history",
+    "quote": "Prescription Diet k/d becomes the world\u2019s first\u00a0 veterinarian-prepared food for the management of a canine disease."
+   }
+  },
+  {
+   "supplier_id": "humane-veterinary-medical-alliance",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.humanevma.org/",
+    "quote": ">> Modules Anywhere >>> --> \u00a0 HumaneVMA Mission : Humane Veterinary Medical Alliance\u00a0 uses its expertise and resources to advance animal welfare via leadership, advocacy, education and service."
+   }
+  },
+  {
+   "supplier_id": "hurraw-balm",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+    "quote": "hurraw balm"
+   }
+  },
+  {
+   "supplier_id": "jackson-and-ryan-architects-design-for-all-animals",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+    "quote": "Jackson and Ryan Architects Design for all animals"
+   }
+  },
+  {
+   "supplier_id": "midmark-and-shor-line",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.midmark.com/",
+    "quote": "Veterinary Parts + Accessories"
+   }
+  },
+  {
+   "supplier_id": "national-animal-care-and-control-association",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.nacanet.org/",
+    "quote": "National Animal Care & Control is a proud recipient of funding from Maddie\u2019s Fund, #ThanksToMaddie."
+   }
+  },
+  {
+   "supplier_id": "petco-love-a-nonprofit-changing-lives",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+    "quote": "Petco Love a nonprofit changing lives"
+   }
+  },
+  {
+   "supplier_id": "petco-love-lost",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+    "quote": "Petco love lost"
+   }
+  },
+  {
+   "supplier_id": "rescue-disinfectants",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.rescuedisinfectants.com/",
+    "quote": "Animal Shelters Fear Free Disinfection Products"
+   }
+  },
+  {
+   "supplier_id": "smarties",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+    "quote": "smarties"
+   }
+  },
+  {
+   "supplier_id": "true-sense-fundraising",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.truesense.com/services",
+    "quote": "We appreciate that TrueSense is constantly looking for ways to best support their animal care partners."
+   }
+  },
+  {
+   "supplier_id": "zymox-lp3-enzyme-system",
+   "industry": "general-gov/animal-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://zymox.com/",
+    "quote": "Trusted by Veterinarians & Animal Lovers Across the Nation"
+   }
+  },
+  {
+   "supplier_id": "aero-graphics",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
+    "quote": "Aero-Graphics"
+   }
+  },
+  {
+   "supplier_id": "bowman",
+   "industry": "general-gov/hr-and-workforce",
+   "basis": "own_site",
+   "source": {
+    "url": "https://bowman.com",
+    "quote": "Area of Interest * - Select - Engineering Survey/Geospatial Reality Capture/BIM As-Builts Environmental Landscape Architecture/Planning Renewable Energy Recruiting/Careers General/Corporate Other (Please Indicate)"
+   }
+  },
+  {
+   "supplier_id": "merrick",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.merrick.com",
+    "quote": "Merrick is a 100% employee-owned firm offering engineering, architecture, geospatial, and science & technology services nationwide."
+   }
+  },
+  {
+   "supplier_id": "sam",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
+    "quote": "SAM"
+   }
+  },
+  {
+   "supplier_id": "sanborn",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
+    "quote": "Sanborn"
    }
   }
  ]

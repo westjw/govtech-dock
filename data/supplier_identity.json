@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23T22:04:38-04:00",
+ "generated": "2026-10-26T00:12:06-04:00",
  "verdicts": {
   "theirs": "the website on file names them",
   "unconfirmed": "the website on file answers but does not state their full name - usually an acronym, brand or parent; likely theirs, not confirmed",
@@ -81777,6 +81777,427 @@
    "tried": 25,
    "why": "no guessed domain named them",
    "checked_on": "2026-10-22",
+   "website_was": null
+  },
+  "kearney-co": {
+   "url": "https://www.kearney.com",
+   "says": "Global Management Consulting Firm | Kearney Kearney Global Management Consulting Firm - Kearney",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "rok-technologies": {
+   "url": "https://roktechnologies.net",
+   "says": "Rok Technologies: Security & Networking Solutions \n           Secure Your Business with",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "avineon-inc": {
+   "url": "https://www.avineon.com/en-us/home",
+   "says": "Data Engineering | Avineon Spatial intelligence, engineering support, digital modernization. Improving your business by ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "rsm": {
+   "url": "https://sensitron.com",
+   "says": "Sensitron - Manufacturer of solid state power controllers, motor controllers, space level diodes & die, and high reliabi",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "mil-corp": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "seiler-geospatial": {
+   "url": "https://www.seilergeo.com",
+   "says": "Seiler Geospatial \u2013 Survey, GNSS, GIS, Scanning, Drones and More A leading, family-owned, Trimble Authorized Service Pro",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "mauer-stutz-geospatial-services": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "cultivate-geospatial-solutions": {
+   "url": "https://www.cultivategeospatial.com",
+   "says": "Geospatial & Asset Management Software for Government - Cultivate Geospatial Solutions Cultivate Geospatial Solutions pr",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "women-in-gis": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "animal-arts": {
+   "url": "https://www.animalarts.com/",
+   "final": "https://www.animalarts.com",
+   "says": "Animal Arts \u2013 Architecture. Animals. People. Animal Arts. Our art is the process of designing spaces for the care and sh",
+   "present": [
+    "animal",
+    "arts"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.animalarts.com/"
+  },
+  "pro-west-associates-inc": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "dli-animal-facility-specialists": {
+   "url": "https://www.designlearned.com/",
+   "final": "https://www.designlearned.com",
+   "says": "Design Learned | Animal Care Facility Planning DLI designs and engineers animal care facilities mitigate odor, disease, ",
+   "present": [
+    "dli",
+    "animal",
+    "facility"
+   ],
+   "missing": [
+    "specialists"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Design Learned",
+    "2023 Logo.jpg"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.designlearned.com/"
+  },
+  "doctor-bronner-s-all-one": {
+   "url": "https://www.drbronner.com/",
+   "final": "https://www.drbronner.com",
+   "says": "Dr. Bronner's: The Original All-One Magic Soap and More!\n icon-X icon-hamburger Vegan & cruelty-free products for your h",
+   "present": [
+    "bronner",
+    "all",
+    "one"
+   ],
+   "missing": [
+    "doctor"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.drbronner.com/"
+  },
+  "hill-s-pet-nutritition": {
+   "url": "https://www.hillspet.com",
+   "final": "https://www.hillspet.com",
+   "says": "Hill's Pet Nutrition - Dog & Cat Food Transforming Lives Hill's Pet Nutrition: Creating properly balanced dog & cat food",
+   "present": [
+    "hill",
+    "pet"
+   ],
+   "missing": [
+    "nutritition"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Hill",
+    "Hill's Pet Nutrition"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.hillspet.com"
+  },
+  "certified-council-for-professional-dog-trainers": {
+   "url": "https://www.ccpdt.org/",
+   "final": "https://www.ccpdt.org",
+   "says": "Certification for professional dog trainers and behavior consultants Facebook The Certification Council for Professional",
+   "present": [
+    "council",
+    "for",
+    "professional",
+    "dog",
+    "trainers"
+   ],
+   "missing": [
+    "certified"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "CCPDT",
+    "Certification Council For Professional Dog Trainers"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.ccpdt.org/"
+  },
+  "humane-veterinary-medical-alliance": {
+   "url": "https://www.humanevma.org/",
+   "final": "https://www.humanevma.org",
+   "says": "HumaneVMA The Humane Society Veterinary Medical Association is a home for veterinarians, veterinary technicians, and stu",
+   "present": [
+    "humane",
+    "veterinary",
+    "medical"
+   ],
+   "missing": [
+    "alliance"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "HumaneVMA"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.humanevma.org/"
+  },
+  "hurraw-balm": {
+   "verdict": "unreadable",
+   "url": "https://hurrawbalm.com/",
+   "why": "RateLimited: HTTP 429 rate limited for https://hurrawbalm.com/, asked for 60s",
+   "checked_on": "2026-10-26",
+   "website_was": "https://hurrawbalm.com/"
+  },
+  "wisconsin-land-information-association-wlia": {
+   "url": "https://www.wlia.org",
+   "says": "Wisconsin Land Information Association | WLIA  Founded in 1987, WLIA is a grassroots organization representing a collect",
+   "tried": 13,
+   "verdict": "found_review",
+   "matched_on": "WLIA",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "jackson-and-ryan-architects-design-for-all-animals": {
+   "url": "https://www.jacksonryan.com/",
+   "final": "https://www.jacksonryan.com",
+   "says": "Jackson & Ryan Architects\r\n Jackson & Ryan Architects, Houston, Texas",
+   "present": [
+    "jackson",
+    "ryan",
+    "architects"
+   ],
+   "missing": [
+    "design",
+    "for",
+    "all",
+    "animals"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Jackson & Ryan Architects",
+    "Jackson and Ryan Architects"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.jacksonryan.com/"
+  },
+  "midmark-and-shor-line": {
+   "url": "https://www.midmark.com/",
+   "final": "https://www.midmark.com",
+   "says": "Midmark Medical, Dental, Veterinary Equipment Manufacturer & Supplier Midmark Medical, Dental, Veterinary Equipment Manu",
+   "present": [
+    "midmark"
+   ],
+   "missing": [
+    "shor",
+    "line"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Midmark Logo",
+    "midmark-logo-r-small-tagline"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.midmark.com/"
+  },
+  "petco-love-a-nonprofit-changing-lives": {
+   "verdict": "unreadable",
+   "url": "https://petcolove.org/",
+   "why": "AtsError: HTTP 403 for https://petcolove.org/",
+   "checked_on": "2026-10-26",
+   "website_was": "https://petcolove.org/"
+  },
+  "rescue-disinfectants": {
+   "url": "https://www.rescuedisinfectants.com/",
+   "final": "https://www.rescuedisinfectants.com",
+   "says": "Home - Rescue Disinfectants Discover Rescue\u2122 Disinfectants: fast, effective, and safe solutions for keeping your animals",
+   "present": [
+    "rescue",
+    "disinfectants"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.rescuedisinfectants.com/"
+  },
+  "true-sense-fundraising": {
+   "url": "https://www.truesense.com/",
+   "final": "https://www.truesense.com",
+   "says": "Fundraising Agency | TrueSense Marketing TrueSense Marketing is a direct-response fundraising agency who can help win, k",
+   "present": [
+    "true",
+    "sense",
+    "fundraising"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.truesense.com/"
+  },
+  "petco-love-lost": {
+   "verdict": "unreadable",
+   "url": "https://petcolove.org/lost/?utm_medium=referral&amp;utm_source=humanepro&amp;utm_campaign=lovelost-hsus-expo-2026-website-banner-300-250-lost",
+   "why": "AtsError: HTTP 403 for https://petcolove.org/lost/?utm_medium=referral&amp;utm_source=humanepro&amp;utm_campaign=lovelost-hsus-exp",
+   "home_tried": true,
+   "checked_on": "2026-10-26",
+   "website_was": "https://petcolove.org/lost/?utm_medium=referral&amp;utm_source=humanepro&amp;utm_campaign=lovelost-hsus-expo-2026-website-banner-300-250-lost"
+  },
+  "national-animal-care-and-control-association": {
+   "url": "https://www.nacanet.org/",
+   "final": "https://www.nacanet.org",
+   "says": "National Animal Care & Control Association | Welcome to NACA's Online Community! NACA Blog Get in Touch. Get Involved. F",
+   "present": [
+    "national",
+    "animal",
+    "care",
+    "control",
+    "association"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.nacanet.org/"
+  },
+  "zymox-lp3-enzyme-system": {
+   "url": "https://zymox.com/",
+   "final": "https://zymox.com",
+   "says": "ZYMOX\u00ae Enzymatic Pet Care | Ear, Skin & Oral Health Solutions Veterinarian-trusted enzyme-based pet care for ear, skin &",
+   "present": [
+    "zymox",
+    "enzyme"
+   ],
+   "missing": [
+    "lp3",
+    "system"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "PKB Animal Health Consumer Shop",
+    "ZYMOX\u00ae Enzymatic Pet Care"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-26",
+   "website_was": "https://zymox.com/"
+  },
+  "bowman": {
+   "url": "https://bowman.com",
+   "says": "Bowman Consulting Group Ltd. Bowman Consulting Group Ltd. Bowman Better with  Bowman",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "sam": {
+   "url": "https://sam.com",
+   "says": "SAM - A diversified real estate investment company.",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "aero-graphics": {
+   "url": "https://aerographics.com",
+   "says": "AeroGraphics - The Original Aircraft Lettering Company At AeroGraphics we provide high quality vinyl graphics for all ty",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "smarties": {
+   "url": "https://www.smarties.com/",
+   "final": "https://www.smarties.com",
+   "says": "Home - Smarties\u00ae Smarties Candy Company, maker of the iconic Smarties\u00ae candy roll, has been family owned and family run ",
+   "present": [
+    "smarties"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.smarties.com/"
+  },
+  "merrick": {
+   "url": "https://www.merrick.com",
+   "says": "Engineering, Architecture, and Geospatial Services | Merrick Merrick is a 100% employee-owned firm offering engineering,",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "sanborn": {
+   "url": "https://sanborn.io",
+   "says": "Sanborn \u2014 The fastest harness on the market Meet Sanborn, the fastest harness on the market. A Fredycorp Company. The fa",
+   "tried": 2,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "minnesota-gis-lis-consortium": {
+   "verdict": "not_found",
+   "tried": 33,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "viewshed": {
+   "url": "https://viewshed.net",
+   "says": "Viewshed - Home Viewshed - Home Viewshed Space. Place. Community.",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "mgp-inc": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "entrust-solutions-group": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
+   "website_was": null
+  },
+  "gis-certification-institute": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-26",
    "website_was": null
   }
  }
