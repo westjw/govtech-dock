@@ -260,6 +260,46 @@ application) is the other end.
 - `check_a_role_can_be_flagged_for_job_hunter` decodes what the page's own
   jhFlagHref sends (jobcard_harness) and holds the rest by source.
 
+**Back and forth with Job Hunter (owner, 2026-10-25: "I want to go back and
+forth", then "there should be like a popout", and of three, a Job Hunter
+panel on a role).**
+- **The tab row ends in "Job Hunter ↗"** for an owner or beta user, added by
+  whoAmI after start() wired the tabs, so goTab never takes it over. Job
+  Hunter links back from its sidebar, from "See it on SLED JOBS" on every role
+  it took off this board (it keeps the posting each opening leads with,
+  `signals.board_id`), and from the company's name (`?co=`).
+- **A role page's "Job Hunter ▸"** (beside Flag and Save, one `.roleacts`
+  group that takes its own line on a phone) opens a popout at the page's edge:
+  the fit, the application, the resume and the flag as the person's own Job
+  Hunter holds them, and "Open in Job Hunter". It FETCHES Job Hunter's
+  `/api/board-role?id=<posting id>` with the person's own sign-in
+  (`credentials: include`, `redirect: manual`, nothing sent but the id).
+  Job Hunter answers that one route to this board's address and no other.
+  Each silence says which it is: its door's redirect is "sign in", "no Job
+  Hunter account is linked" is Job Hunter's own answer, and a request that
+  never answered (the Mac asleep, or a door that refused without a redirect)
+  says the two look the same from here. A failing gate prints above the fit
+  and a score the person rejected says so, as on Job Hunter's own board.
+  Everything Job Hunter says is printed as text.
+- **It is a dialog** (review, 2026-10-25): a backdrop that closes it, Tab kept
+  inside, Escape, focus given back to its button. Opening it pushes a history
+  entry, so Back closes the panel and not the role; the × or Escape pops that
+  entry (`JH_PANEL_POP`, swallowed by the panel's popstate listener, which is
+  registered before boot's). `render()` and `co()` close it first with
+  `closeJhPanel(true)`, which pops nothing. A role page left by a link while
+  the panel was open keeps that entry: Back from the next page shows the role
+  twice. Known, small, and not worth a router.
+- **`connect-src` on the app page is `'self' https://hunter.<domain>`**
+  (csp.app_connect, from brand.json); every other kind of page stays on
+  `'self'`, and the policy guard holds both. It names the whole host: the one
+  route is Job Hunter's rule, not this one.
+- `check_the_job_hunter_panel_says_what_job_hunter_said` runs the page's own
+  jhPanelHTML (jobcard_harness) on each silence, on roles in every state Job
+  Hunter answers with (crm.LABEL's words), and on one whose every string is
+  markup; the fetch and the dialog are held by source. The flag check reads
+  whoAmI's role block to its closing brace. Mutation-tested 41 of 41, the
+  policy 3 of 3.
+
 ## The job list is cards (owner, 2026-09-27)
 
 The jobs tab was a dense table from 2026-08-23. The owner looked at a federal

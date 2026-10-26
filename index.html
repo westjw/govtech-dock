@@ -347,6 +347,13 @@
     color:var(--hdr-mute);cursor:pointer;border-bottom:2px solid transparent}
   nav button:hover{color:var(--hdr-ink)}
   nav button[aria-current=page]{color:var(--hdr-ink);border-bottom-color:var(--beak)}
+  /* Job Hunter's door in the tab row, for the people it opens for: a tab's
+     voice, and Beak on the rule under it when pointed at, never on the words */
+  nav .jhtab{padding:var(--space-2) 0;font-size:13px;letter-spacing:.08em;
+    text-transform:uppercase;font-weight:600;color:var(--hdr-mute);text-decoration:none;
+    border-bottom:2px solid transparent;white-space:nowrap}
+  nav .jhtab:hover{color:var(--hdr-ink);border-bottom-color:var(--beak)}
+  nav .jhtab:focus-visible{outline:2px solid var(--beak);outline-offset:2px}
   .tabn{font-variant-numeric:tabular-nums;color:var(--hdr-ink);font-size:13px}
 
   /* Circular actions, top right. Round is a deliberate exception to the
@@ -1371,6 +1378,39 @@
     white-space:nowrap}
   :root.jh .jhflag:hover{background:var(--accent-text);color:var(--bg)}
   :root.jh .jhflag:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* THE JOB HUNTER PANEL: its button beside the Flag, and the popout at the
+     page's right edge, over the page, full width on a phone */
+  .jhpanelbtn{display:none}
+  :root.jh .jhpanelbtn{display:inline-flex;align-items:center;min-height:32px;
+    padding:0 var(--space-3);font:inherit;font-size:13px;font-weight:700;
+    border:1px solid var(--accent-text);color:var(--accent-text);background:transparent;
+    cursor:pointer;white-space:nowrap}
+  :root.jh .jhpanelbtn:hover,:root.jh .jhpanelbtn[aria-expanded=true]{
+    background:var(--accent-text);color:var(--bg)}
+  :root.jh .jhpanelbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .jhp-back{position:fixed;inset:0;z-index:59;background:rgba(31,37,54,.45)}
+  body.jhp-lock{overflow:hidden}
+  .jhpanel{position:fixed;top:0;right:0;bottom:0;z-index:60;width:min(380px,100vw);
+    background:var(--panel);color:var(--ink);border-left:3px solid var(--beak);
+    box-shadow:-12px 0 32px rgba(31,37,54,.18);overflow-y:auto;
+    padding:calc(var(--space-6) + env(safe-area-inset-top,0px)) var(--space-6) var(--space-6)}
+  .jhpanel:focus{outline:none}
+  .jhp-top{display:flex;align-items:center;justify-content:space-between;
+    gap:var(--space-3);margin-bottom:var(--space-4)}
+  .jhp-top h2{font-size:20px}
+  .jhp-x{width:40px;height:40px;font:inherit;font-size:24px;line-height:1;cursor:pointer;
+    background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .jhp-x:hover{border-color:var(--accent)}
+  .jhp-role{font-weight:700;margin:0 0 var(--space-3)}
+  .jhp-closed{font-weight:600;color:var(--warn-text);white-space:nowrap}
+  .jhp-row{display:grid;grid-template-columns:7.5em 1fr;gap:var(--space-3);
+    padding:var(--space-3) 0;border-top:1px solid var(--line);font-size:14.5px}
+  .jhp-k{color:var(--dim)}
+  .jhp-v b{font-size:18px;font-variant-numeric:tabular-nums}
+  .jhp-wait{color:var(--dim)}
+  .jhp-go{display:inline-block;margin-top:var(--space-4);padding:var(--space-2) var(--space-4);
+    background:var(--accent-text);color:var(--bg);font-weight:700;text-decoration:none}
+  .jhp-go:hover{filter:brightness(1.08)}
   /* on a card the flag sits under the dates, never in the bookmark's corner,
      so a title keeps its width on a 320px phone */
   .jc-flag{display:none}
@@ -1525,6 +1565,8 @@
   /* the company's own site sits beside its board: you read the company
      before you read its jobs */
   .cohead{display:flex;gap:var(--space-4);align-items:center;margin:var(--space-2) 0 0}
+  .cohead .roleacts{margin-left:auto;display:flex;gap:var(--space-2);align-items:center;
+    flex-wrap:wrap;justify-content:flex-end}
   .cotile{width:56px;height:56px;display:flex;align-items:center;
     justify-content:center;font-size:20px;font-weight:800;flex:none}
   .colinks{display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap;
@@ -1654,6 +1696,9 @@
     .fp-lead{min-height:0;padding:24px;gap:22px}
     .fp-cols{margin-top:44px;gap:32px}
     .fp-dept{margin-top:48px}
+    /* the role's Flag, Job Hunter and Save under its title, not beside it */
+    .cohead:has(.roleacts){flex-wrap:wrap}
+    .cohead .roleacts{margin-left:0;width:100%;justify-content:flex-start}
     /* 26px is not a tap target. The rating buttons wrap to two rows here
        anyway, so there is room to make each one hittable rather than a
        thing you aim at and miss. */
@@ -1718,7 +1763,7 @@
     /* thumbs, not cursors: 44px for the bookmark, 40px for the rest */
     .jc-save{top:var(--space-1);right:var(--space-1)}
     .jc .savebtn{min-width:44px;min-height:44px}
-    :root.jh .jhflag{min-height:40px}
+    :root.jh .jhflag,:root.jh .jhpanelbtn{min-height:40px}
     .locmore{min-height:40px}
     .jc-locs li{min-height:44px;grid-template-columns:minmax(0,1fr) auto;
       grid-template-areas:"place save" "pay save"}
@@ -2934,7 +2979,12 @@ function roleView(id){
   };
   const link=$("#r-co");
   if(link)link.onclick=e=>{e.preventDefault();ROLE=null;co(p.company_id)};
-  const host=$(".savehost"); if(host)host.replaceWith(jhFlagLink(p),saveButton(p));
+  const host=$(".savehost");
+  /* one group, so Flag, Job Hunter and Save stay together at the row's end
+     and take a line of their own on a phone rather than pushing the page
+     wider than the screen */
+  if(host){ const acts=document.createElement("span"); acts.className="roleacts";
+    acts.append(jhFlagLink(p),jhPanelButton(p),saveButton(p)); host.replaceWith(acts); }
   if(siblings.length){
     const h=$("#r-sibs");
     siblings.slice(0,12).forEach(x=>{
@@ -4362,6 +4412,148 @@ function jhFlagLink(p,label){
   a.onclick=e=>e.stopPropagation();
   return a;
 }
+/* THE JOB HUNTER PANEL (owner, 2026-10-25: "I want to go back and forth",
+   then "there should be like a popout", and of three, a Job Hunter panel on
+   a role). A popout at the page's edge says what the person's own Job Hunter
+   holds about this role - the fit, a failing gate, the application, the
+   resume, the flag - and opens it there.
+
+   A FETCH, unlike the Flag's link: Job Hunter's /api/board-role answers this
+   board's address and no other (its serve.py), with the person's own sign-in
+   at its door, so nothing here can read anybody else's board. Nothing is
+   sent but the posting's id. Only an owner or beta user sees the button
+   (:root.jh); everything Job Hunter says is printed as text.
+
+   A DIALOG, like the conference panel: a backdrop that closes it, focus
+   kept inside while it is open and given back after, Escape, and Back -
+   opening it pushes an entry, so Back closes the panel rather than leaving
+   the role (review, 2026-10-25). */
+function jhOrigin(){ return jhApp().replace(/\/app$/,""); }
+let JH_PANEL_SEQ=0, JH_PANEL_OPENER=null, JH_PANEL_POP=false;
+function jhPanelButton(p){
+  const b=document.createElement("button");
+  b.type="button"; b.className="jhpanelbtn";
+  b.textContent="Job Hunter ▸";
+  b.setAttribute("aria-expanded","false");
+  b.setAttribute("aria-label","What Job Hunter holds about "+(p.title||"this role"));
+  b.onclick=e=>{ e.stopPropagation(); openJhPanel(p,b); };
+  return b;
+}
+/* `fromHistory`: Back already popped the panel's entry. Otherwise a panel
+   that pushed one pops it, so the next Back leaves the role as it should. */
+function closeJhPanel(fromHistory){
+  const el=$("#jhpanel");
+  if(!el)return;
+  JH_PANEL_SEQ++;
+  el.remove();
+  const bd=$("#jhpanel-back"); if(bd)bd.remove();
+  document.body.classList.remove("jhp-lock");
+  const b=JH_PANEL_OPENER; JH_PANEL_OPENER=null;
+  if(b){ b.setAttribute("aria-expanded","false"); if(document.contains(b))b.focus(); }
+  // the × or Escape pops the panel's own entry; that pop is the panel's, not
+  // a page change, so the listener below keeps it from redrawing the page
+  if(!fromHistory&&history.state&&history.state.jhpanel){ JH_PANEL_POP=true; history.back(); }
+}
+/* What Job Hunter's answer says, or which silence it was. `r` is the answer,
+   or {failed: why} when there was none to read. */
+function jhPanelHTML(r){
+  const go=(href,txt)=>`<a class="jhp-go" href="${safeUrl(href)}">${esc(txt)} &nearr;</a>`;
+  if(!r||r.failed){
+    const why=!r?"unreachable":r.failed;
+    const say={
+      no_account:"You are signed in to Job Hunter, but no Job Hunter account is linked to that address.",
+      signin:"Sign in to Job Hunter to see this role there.",
+      unreachable:"Job Hunter did not answer. It may be offline, or your sign-in there may need renewing; from here the two look the same.",
+    }[why]||`Job Hunter could not answer just now (${String(why)}).`;
+    return `<p>${esc(say)}</p>${go(jhApp(),"Open Job Hunter")}`;
+  }
+  if(!r.found)return `<p>This role is not on your Job Hunter board yet. Flag it to
+    add it there.</p><p class="jhp-flaghost"></p>`;
+  const row=(k,v)=>`<div class="jhp-row"><span class="jhp-k">${esc(k)}</span>
+    <span class="jhp-v">${v}</span></div>`;
+  const f=r.fit;
+  const review={accepted:"score accepted",pending:"waiting for your review",
+    rejected:"you rejected this score"}[f&&f.review]||"";
+  const band={strong:"a strong match",possible:"a possible match",weak:"a weak match",
+    blocked:"blocked by a gate",off_family:"not a selling seat"}[r.band];
+  const fit=f?`<b>${esc(String(f.as_is))}</b> now &middot; ${esc(String(f.ceiling))} at best${
+      review?` &middot; ${esc(review)}`:""}`
+    :`not scored yet${band?` &middot; ${esc(band)} on its first read`:""}`;
+  const g=r.gates&&r.gates.fails?`a gate fails${r.gates.first_fail?`: ${esc(r.gates.first_fail)}`:""}`:"";
+  const a=r.application;
+  /* "applied 2026-08-22", not "applied · applied 2026-08-22": Job Hunter's
+     label for that stage is the word itself */
+  const app=!a?"not applied":a.status==="applied"
+    ?`applied${a.applied_on?` ${esc(a.applied_on)}`:""}`
+    :`${esc(a.label||a.status)}${a.applied_on?` &middot; applied ${esc(a.applied_on)}`:""}`;
+  const resume=r.resume_sent?"sent":r.tailored?"tailored":"not tailored yet";
+  const state={open:"",closed:"closed on your board",
+    unknown:"Job Hunter cannot tell whether it is still open"}[r.status];
+  return `<p class="jhp-role">${esc(r.title||"")}${r.org?` &middot; ${esc(r.org)}`:""}${
+      state===undefined?` <span class="jhp-closed">${esc(String(r.status))}</span>`
+      :state?` <span class="jhp-closed">${esc(state)}</span>`:""}</p>
+    ${g?row("Gate",g):""}${row("Fit",fit)}${row("Application",app)}${row("Resume",esc(resume))}${
+      r.flagged_on?row("Flagged",`on SLED JOBS ${esc(r.flagged_on)}`):""}
+    ${go(jhApp()+"#role/"+encodeURIComponent(r.id),"Open in Job Hunter")}`;
+}
+async function openJhPanel(p,btn){
+  closeJhPanel();
+  const seq=++JH_PANEL_SEQ;
+  const bd=document.createElement("div");
+  bd.id="jhpanel-back"; bd.className="jhp-back";
+  bd.onclick=()=>closeJhPanel();
+  const el=document.createElement("aside");
+  el.id="jhpanel"; el.className="jhpanel"; el.tabIndex=-1;
+  el.setAttribute("role","dialog"); el.setAttribute("aria-modal","true");
+  el.setAttribute("aria-labelledby","jhpanel-h");
+  el.innerHTML=`<div class="jhp-top"><h2 id="jhpanel-h">Job Hunter</h2>
+    <button type="button" class="jhp-x" aria-label="Close the Job Hunter panel">&times;</button></div>
+    <div class="jhp-body" role="status" aria-live="polite"><p class="jhp-wait">Asking Job Hunter&hellip;</p></div>`;
+  document.body.append(bd,el);
+  document.body.classList.add("jhp-lock");
+  JH_PANEL_OPENER=btn; btn.setAttribute("aria-expanded","true");
+  el.querySelector(".jhp-x").onclick=()=>closeJhPanel();
+  history.pushState(Object.assign({},history.state,{jhpanel:1}),"",location.href);
+  el.focus();
+  let r;
+  try{
+    const res=await fetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),
+      {credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"});
+    if(res.type==="opaqueredirect")r={failed:"signin"};
+    else if(res.ok)r=await res.json();
+    else{
+      let err=null; try{ err=(await res.json()).error; }catch(e){ err=null; }
+      r={failed:err==="no_account"?"no_account":res.status===401||res.status===403?"signin":res.status};
+    }
+  }catch(e){ r={failed:"unreachable"}; }
+  // closed, or opened again for another role, while it was asking
+  if(seq!==JH_PANEL_SEQ||!document.contains(el))return;
+  const body=el.querySelector(".jhp-body");
+  body.innerHTML=jhPanelHTML(r);
+  const fh=body.querySelector(".jhp-flaghost");
+  if(fh)fh.appendChild(jhFlagLink(p));
+}
+document.addEventListener("keydown",e=>{
+  const el=$("#jhpanel");
+  if(!el)return;
+  if(e.key==="Escape"){ closeJhPanel(); return; }
+  // Tab stays inside the panel while it is open (on the document: focus that
+  // falls to <body> never reaches a listener on the panel)
+  if(e.key!=="Tab")return;
+  const f=[...el.querySelectorAll("a[href],button")].filter(x=>!x.disabled);
+  if(!f.length)return;
+  const first=f[0], last=f[f.length-1], at=document.activeElement;
+  if(e.shiftKey&&(at===first||!el.contains(at))){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey&&(at===last||!el.contains(at))){ e.preventDefault(); first.focus(); }
+});
+/* BACK CLOSES THE PANEL. Registered before boot's own popstate listener, so
+   it runs first and keeps that one from redrawing the page under it. */
+window.addEventListener("popstate",e=>{
+  if(JH_PANEL_POP){ JH_PANEL_POP=false; e.stopImmediatePropagation(); return; }
+  if(!$("#jhpanel"))return;
+  closeJhPanel(true);
+  if(!(e.state&&e.state.jhpanel))e.stopImmediatePropagation();
+});
 function saveButton(p,label){
   const b=document.createElement("button");
   b.className="savebtn";
@@ -6633,6 +6825,9 @@ function coAbout(o,dom,det){
 }
 
 function co(id,fromUrl){
+  // co() draws the company page itself, not through render(): the Job Hunter
+  // panel still belongs to the role it was opened on (review, 2026-10-25)
+  closeJhPanel(true);
   const o=(D.organizations||[]).find(x=>x.id===id);
   /* a ?co= that names nobody is said on the companies tab, where the reader
      actually is, rather than into the void from here. */
@@ -9617,6 +9812,9 @@ function stalenessBanner(){
     is current.</div>`;
 }
 function render(){
+  // the Job Hunter panel belongs to the role it was opened on; a page change
+  // is not the panel's Back, so it pops nothing
+  closeJhPanel(true);
   if(typeof VIEWS[tab]!=="function")tab="jobs";
   stalenessBanner();
   /* A view that throws reports a VIEW failure. It used to reach the boot
@@ -9771,6 +9969,16 @@ async function whoAmI(){
     JH_APP=me.hunter_app;
     document.querySelectorAll(".jhflag").forEach(a=>{a.href=JH_APP+"?flag="+a.dataset.flag;});
     door(JH_APP,"Job Hunter");
+    /* AND AT THE END OF THE TAB ROW, so going back and forth is one click on
+       every page (owner, 2026-10-25: "I want to go back and forth"); Job
+       Hunter links back from its sidebar and from every role it took off
+       this board. Appended after start() wired the tabs, so goTab never
+       takes it over: it leaves the board, in this tab. */
+    if(!$("#jhtab")){
+      const t=document.createElement("a");
+      t.id="jhtab"; t.className="jhtab"; t.href=JH_APP; t.textContent="Job Hunter \u2197";
+      $("#tabs").appendChild(t);
+    }
     document.documentElement.classList.add("jh");
   }
 }

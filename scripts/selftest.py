@@ -8894,7 +8894,12 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
                            f"and blanks thousands of style attributes")
         if "report-uri" in d or "report-to" in d:
             errors += fail(f"{k}: a report endpoint costs a Function request per report")
-        if d.get("img-src") != ["'self'"] or d.get("connect-src") != ["'self'"]:
+        # THE APP MAY ASK JOB HUNTER ONE THING (its panel on a role, owner,
+        # 2026-10-25), at hunter.<the brand's domain> and nowhere else; every
+        # other kind of page fetches only from itself
+        dom = json.loads((DATA / "brand.json").read_text()).get("domain")
+        want_connect = ["'self'", f"https://hunter.{dom}"] if k == "app" else ["'self'"]
+        if d.get("img-src") != ["'self'"] or d.get("connect-src") != want_connect:
             errors += fail(f"{k}: img-src/connect-src widened: {d.get('img-src')} / {d.get('connect-src')}")
 
     # 3. A SECOND READER, independent of csp.py's parser
@@ -33130,11 +33135,28 @@ def check_a_role_can_be_flagged_for_job_hunter() -> int:
     if ".jhflag{display:none}" not in flat or ":root.jh.jhflag{display:inline-flex" not in flat:
         errors += fail("the flag link is not hidden from everyone but an owner or beta user")
     who = flat[flat.index("asyncfunctionwhoAmI("):flat.index("functionwireHeader(")]
-    if ('if((roles.includes("owner")||roles.includes("hunter"))&&/^https:\\/\\/hunter\\.[a-z0-9.-]+\\/app$/.test(me.hunter_app||"")){JH_APP=me.hunter_app;' not in who
-            or 'door(JH_APP,"JobHunter");document.documentElement.classList.add("jh");}' not in who):
-        errors += fail("whoAmI shows the flag, or the Job Hunter door, to somebody without the role, "
+    # EVERYTHING JOB HUNTER is inside the role check's own block, read to its
+    # matching brace: a needle anywhere in whoAmI passed with the tab or the
+    # `jh` class moved outside it (review, 2026-10-25)
+    gate = ('if((roles.includes("owner")||roles.includes("hunter"))&&/^https:\\/\\/hunter\\.'
+            '[a-z0-9.-]+\\/app$/.test(me.hunter_app||"")){')
+    at = who.find(gate)
+    block, depth = "", 0
+    if at >= 0:
+        for k in range(at + len(gate) - 1, len(who)):
+            depth += {"{": 1, "}": -1}.get(who[k], 0)
+            if depth == 0:
+                block = who[at + len(gate):k]
+                break
+    outside = who[:at] + who[at + len(gate) + len(block):] if at >= 0 else who
+    if (not block.startswith("JH_APP=me.hunter_app;")
+            or 'door(JH_APP,"JobHunter");' not in block
+            or 'document.documentElement.classList.add("jh");' not in block
+            or 't.href=JH_APP;' not in block or '$("#tabs").appendChild(t);' not in block
+            or any(n in outside for n in ("JH_APP=", "jhtab", 'classList.add("jh")', "JobHunter"))):
+        errors += fail("whoAmI shows the flag, the tab or the Job Hunter door to somebody without the role, "
                        "or builds Job Hunter's address from the address bar instead of whoami's")
-    if 'document.querySelectorAll(".jhflag").forEach(a=>{a.href=JH_APP+"?flag="+a.dataset.flag;});' not in who:
+    if 'document.querySelectorAll(".jhflag").forEach(a=>{a.href=JH_APP+"?flag="+a.dataset.flag;});' not in block:
         errors += fail("flag links drawn before whoami answered keep the address-bar host")
     link = flat[flat.index("functionjhFlagLink("):flat.index("functionsaveButton(")]
     if 'a.rel="noopenernoreferrer";' not in link:
@@ -33142,11 +33164,122 @@ def check_a_role_can_be_flagged_for_job_hunter() -> int:
     if "a.onclick=e=>e.stopPropagation();" not in link:
         errors += fail("a click on Flag also opens the role underneath it")
     for where, needle in (("the job card", 'li.querySelector(".jc-flag").appendChild(jhFlagLink(p,'),
-                          ("the role page", "host.replaceWith(jhFlagLink(p),saveButton(p))"),
+                          ("the role page", "acts.append(jhFlagLink(p),jhPanelButton(p),saveButton(p));host.replaceWith(acts);"),
                           ("the Saved tab", "row.append(jhFlagLink(p),saveButton(p))")):
         if needle not in flat:
             errors += fail(f"{where} has no Flag for Job Hunter")
     return errors
+
+def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
+    """The Job Hunter panel on a role prints what Job Hunter answered, as text.
+
+    Owner, 2026-10-25: "I want to go back and forth", then "there should be
+    like a popout": a Job Hunter panel on a role. The page's own jhPanelHTML is
+    run (jobcard_harness) on each of Job Hunter's silences, a role it does not
+    hold, roles it holds in every state its board answers with (crm.LABEL's
+    own words), and one whose every string is markup. The rest is held by
+    source: the fetch (the person's own sign-in, no redirect followed, nothing
+    sent but the posting's id), and the dialog's manners (review, 2026-10-25):
+    a backdrop, Escape, a Tab trap, focus given back, Back closing the panel
+    and only the panel, and any redraw closing it without popping a page.
+    """
+    errors = 0
+    front = _harness().get("front") or {}
+    jp = front.get("jhpanel") or {}
+    if not jp:
+        return fail("the harness drew no Job Hunter panel")
+    app = jp.get("app") or ""
+    flat = {k: re.sub(r"\s+", " ", v) for k, v in jp.items() if isinstance(v, str)}
+    # EACH SILENCE SAYS WHICH IT IS, and every one offers Job Hunter itself
+    for key, needle in (("signin", "Sign in to Job Hunter"),
+                        ("unreachable", "from here the two look the same"),
+                        ("none", "from here the two look the same"),
+                        ("no_account", "no Job Hunter account is linked"),
+                        ("status", "could not answer just now (503)")):
+        got = flat.get(key, "")
+        if needle not in got or f'href="{app}"' not in got:
+            errors += fail(f"the panel's {key} silence does not say {needle!r} or offer Job Hunter: {got[:200]!r}")
+    if "did not answer" in flat.get("signin", "") or "Sign in" in flat.get("unreachable", ""):
+        errors += fail("the panel says one silence for another")
+    if "not on your Job Hunter board" not in flat.get("missing", "") or "jhp-flaghost" not in flat.get("missing", ""):
+        errors += fail(f"a role Job Hunter does not hold is not offered its Flag: {flat.get('missing','')[:160]!r}")
+    found = flat.get("found", "")
+    for needle, why in (("a gate fails: base under the floor", "the failing gate"),
+                        ("<b>71</b> now &middot; 88 at best &middot; you rejected this score",
+                         "a score the person rejected as rejected"),
+                        ("interviewing &middot; applied 2026-10-14", "the application"),
+                        ('<span class="jhp-v">sent</span>', "a resume that was sent"),
+                        ("on SLED JOBS 2026-10-20", "the flag"),
+                        ("closed on your board", "a role closed on Job Hunter's board"),
+                        (f'href="{app}#role/sig%201"', "the way into Job Hunter")):
+        if needle not in found:
+            errors += fail(f"the panel does not print {why} as Job Hunter said it: {found[:400]!r}")
+    if found.find(">Gate<") < 0 or found.find(">Gate<") > found.find(">Fit<"):
+        errors += fail("a failing gate is not printed above the fit, as Job Hunter's own board puts it")
+    for key, needles, why in (
+            ("applied", ("applied 2026-10-14", "score accepted", '<span class="jhp-v">tailored</span>'),
+             "an applied role, an accepted score, a resume tailored and not sent"),
+            ("pending", ("waiting for your review", "not applied", "not tailored yet"),
+             "a score nobody reviewed, no application, no resume"),
+            ("unscored", ("not scored yet &middot; a possible match on its first read",
+                          "cannot tell whether it is still open"),
+             "a role scored only by its first read, its status unknown")):
+        got = flat.get(key, "")
+        miss = [n for n in needles if n not in got]
+        if miss:
+            errors += fail(f"the panel does not print {why}: missing {miss} in {got[:300]!r}")
+    if "applied &middot; applied" in flat.get("applied", "") or ">Gate<" in flat.get("applied", ""):
+        errors += fail("an applied role says applied twice, or a role no gate fails shows a gate")
+    hostile = jp.get("hostile", "")
+    if "<x-jh" in hostile or "<x-jh" in jp.get("hostile_failed", ""):
+        errors += fail("the panel prints Job Hunter's text as markup")
+    # title, org, status, both scores, the gate, the label, the date applied,
+    # the flag: nine strings, each printed once, as text
+    if hostile.count("&lt;x-jh&gt;") != 9 or "#role/%22%3E%3Cx-jh%3E%2F%3F%23%26" not in hostile:
+        errors += fail(f"the panel drops or mangles Job Hunter's strings "
+                       f"({hostile.count('&lt;x-jh&gt;')} of 9 printed): {re.sub(chr(10), ' ', hostile)[:400]!r}")
+    if "&amp;lt;" in jp.get("hostile_failed", "") or "&lt;x-jh&gt;" not in jp.get("hostile_failed", ""):
+        errors += fail("an unexpected failure is escaped twice or not at all")
+    src = re.sub(r"\s+", "", (ROOT / "index.html").read_text())
+    op = src[src.find("asyncfunctionopenJhPanel("):src.find("document.addEventListener(\"keydown\",e=>{constel=$(\"#jhpanel\");")]
+    for needle, why in (
+            ('fetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),'
+             '{credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"});',
+             "asks Job Hunter something besides the posting's id, or follows its door's redirect"),
+            ('if(res.type==="opaqueredirect")r={failed:"signin"};', "reads Job Hunter's door as an answer"),
+            ('}catch(e){r={failed:"unreachable"};}', "reads a request that never answered as something else"),
+            ("if(seq!==JH_PANEL_SEQ||!document.contains(el))return;", "draws an answer after the panel closed"),
+            ('el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");', "is not a dialog"),
+            ("bd.onclick=()=>closeJhPanel();", "does not close from its backdrop"),
+            ('history.pushState(Object.assign({},history.state,{jhpanel:1}),"",location.href);',
+             "pushes no entry, so Back leaves the role")):
+        if needle not in op:
+            errors += fail(f"the panel {why}")
+    cl = src[src.find("functioncloseJhPanel("):src.find("functionjhPanelHTML(")]
+    if ('if(b){b.setAttribute("aria-expanded","false");if(document.contains(b))b.focus();}' not in cl
+            or "if(!fromHistory&&history.state&&history.state.jhpanel){JH_PANEL_POP=true;history.back();}" not in cl):
+        errors += fail("closing the panel does not give focus back, or leaves its history entry behind")
+    keys = src[src.find('document.addEventListener("keydown",e=>{constel=$("#jhpanel");'):]
+    keys = keys[:keys.find("});") + 3]
+    if ('if(e.key==="Escape"){closeJhPanel();return;}' not in keys
+            or 'if(e.shiftKey&&(at===first||!el.contains(at))){e.preventDefault();last.focus();}' not in keys
+            or 'elseif(!e.shiftKey&&(at===last||!el.contains(at))){e.preventDefault();first.focus();}' not in keys):
+        errors += fail("Escape does not close the panel, or Tab leaves it")
+    pop = 'window.addEventListener("popstate",e=>{if(JH_PANEL_POP){JH_PANEL_POP=false;e.stopImmediatePropagation();return;}'
+    i = src.find(pop)
+    if i < 0 or "closeJhPanel(true);if(!(e.state&&e.state.jhpanel))e.stopImmediatePropagation();});" not in src[i:i + 400]:
+        errors += fail("Back does not close the panel, or redraws the page under it")
+    elif src.find('window.addEventListener("popstate",', i + 1) < 0:
+        errors += fail("the panel's Back listener is not registered before the page's own")
+    # a redraw closes the panel first, popping nothing (comments aside)
+    bare = re.sub(r"\s+", "", re.sub(r"(?m)^\s*//.*$", "", (ROOT / "index.html").read_text()))
+    for fn, why in (("functionrender(){", "render()"), ("functionco(id,fromUrl){", "the company page")):
+        if fn + "closeJhPanel(true);" not in bare:
+            errors += fail(f"{why} does not close the Job Hunter panel first, without popping a page")
+    if ".jhpanelbtn{display:none}" not in src or ":root.jh.jhpanelbtn{display:inline-flex" not in src:
+        errors += fail("the Job Hunter button shows to somebody who is not an owner or beta user")
+    return errors
+
 
 def check_a_family_fold_keeps_a_landed_write_up() -> int:
     """merge_families.write_brands gives the survivor the family's research
@@ -36973,6 +37106,7 @@ def main() -> int:
     errors += check_a_second_listing_sits_on_its_shelf()
     errors += check_the_companies_tab_offers_add_a_company()
     errors += check_a_role_can_be_flagged_for_job_hunter()
+    errors += check_the_job_hunter_panel_says_what_job_hunter_said()
     errors += check_a_family_fold_keeps_a_landed_write_up()
     errors += check_the_jobs_bar_says_the_default_once()
     errors += check_the_front_page_counts_what_its_links_open()

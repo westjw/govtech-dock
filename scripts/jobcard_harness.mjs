@@ -426,6 +426,49 @@ try {
 } catch (e) {
   errors.push(`running the front page: ${e && e.message}`);
 }
+/* THE JOB HUNTER PANEL: the page's own jhPanelHTML on Job Hunter's answers
+   (each silence, a role it does not hold, roles it does in every state its
+   board can be in, and one whose every string is written to be markup), so
+   selftest can hold what it prints. */
+try {
+  front = front || {};
+  front.jhpanel = vm.runInContext(`(() => {
+    const X = "<x-jh>";
+    const role = (o) => jhPanelHTML(Object.assign({ found: true, id: "sig 1", org: "Acme Gov",
+      title: "Account Executive", status: "open", fit: null, band: null,
+      gates: { fails: 0, checks: 0, first_fail: null }, application: null,
+      tailored: false, resume_sent: false, flagged_on: null }, o));
+    return {
+      app: jhApp(),
+      // Job Hunter's silences, as openJhPanel names them
+      signin: jhPanelHTML({ failed: "signin" }),
+      unreachable: jhPanelHTML({ failed: "unreachable" }),
+      no_account: jhPanelHTML({ failed: "no_account" }),
+      status: jhPanelHTML({ failed: 503 }),
+      none: jhPanelHTML(null),
+      missing: jhPanelHTML({ found: false }),
+      // a role with everything: a failing gate, a score the person rejected,
+      // an interview (crm.LABEL's own word), a resume sent, a flag, closed
+      found: role({ status: "closed", fit: { as_is: 71, ceiling: 88, review: "rejected" },
+        band: "strong", gates: { fails: 1, checks: 0, first_fail: "base under the floor" },
+        application: { status: "interview", label: "interviewing", applied_on: "2026-10-14" },
+        tailored: true, resume_sent: true, flagged_on: "2026-10-20" }),
+      applied: role({ fit: { as_is: 64, ceiling: 80, review: "accepted" },
+        application: { status: "applied", label: "applied", applied_on: "2026-10-14" },
+        tailored: true }),
+      pending: role({ fit: { as_is: 50, ceiling: 70, review: "pending" } }),
+      unscored: role({ band: "possible", status: "unknown" }),
+      // every string Job Hunter sends, written to be markup
+      hostile: role({ id: '"><x-jh>/?#&', title: X, org: X, status: X,
+        fit: { as_is: X, ceiling: X, review: "accepted" },
+        gates: { fails: 1, checks: 0, first_fail: X },
+        application: { status: "screen", label: X, applied_on: X }, flagged_on: X }),
+      hostile_failed: jhPanelHTML({ failed: X }),
+    };
+  })()`, ctx);
+} catch (e) {
+  errors.push(`running jhPanelHTML: ${e && e.message}`);
+}
 /* A VISITOR'S OWN VOTE AGAINST A STALE EDGE COPY: loadRatings() run for real
    with a fetch answering n=2, a stored fresh row of n=3, and the paint and
    note functions recording what they were handed. */
