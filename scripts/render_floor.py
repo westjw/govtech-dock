@@ -42,6 +42,7 @@ import json
 import pathlib
 import re
 import sys
+from urllib.parse import urljoin
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -83,18 +84,46 @@ def control_key(txt: str, href: str | None) -> tuple[str, str]:
     return (re.sub(r"\s+", " ", txt or "").strip().lower(), href or "")
 
 
-async def expand(page) -> None:
-    """Press "show more" and scroll until the list stops growing.
+# A "LOAD MORE" IS GIVEN TIME TO LOAD. One reading 1.5 seconds after the
+# press spent a control whose batch took two, and the floor stopped after one
+# batch (second review, 2026-10-26: 2 of 10 batches on a 2-second fake).
+GROW_WAIT_MS = 8000
+GROW_STEP_MS = 500
+
+
+def same_document(a: str | None, b: str | None) -> bool:
+    """Two addresses name one document: they differ, at most, after the #."""
+    return (a or "").split("#", 1)[0] == (b or "").split("#", 1)[0]
+
+
+def leaves(href: str | None, home: str) -> bool:
+    """A link to another page: "See All Speakers", "View All Sessions"."""
+    if not href or href.startswith(("#", "javascript:")):
+        return False
+    return not same_document(urljoin(home, href), home)
+
+
+async def expand(page) -> bool:
+    """Press "show more" and scroll until the list stops growing. False when
+    a control took the page somewhere else and it could not come back.
 
     A CONTROL THAT ADDED NOTHING IS NOT PRESSED AGAIN. MapYourShow puts a
     "Show All" letter filter above its "Load More Results" button, and both
     read as "show more": this pressed the first one every round, which redrew
     the same first batch, so FDIC's 924 exhibitors were read as the 198 from
     1-9 to D and DISTRIBUTECH's stopped at E (2026-10-25). Now a press that
-    does not grow the page spends that control, and the next round reaches
-    the one that does: four presses of "Load More Results" read FDIC to Z.
+    does not grow the page within GROW_WAIT_MS spends that control, and the
+    next round reaches the one that does: four presses of "Load More
+    Results" read FDIC to Z.
+
+    "MORE OF THIS LIST" STAYS ON THIS PAGE. Once the first control was spent
+    the next match was pressed, and on a floor that also links "See All
+    Speakers" that was a link to the speakers, whose names would have been
+    staged as the floor (second review, 2026-10-26). A link to another page
+    is never pressed; a button that navigates is taken back from and spent.
     """
     spent: set = set()
+    home = page.url
     seen = await page.evaluate(SIZE_JS)
     for rounds in range(1, MAX_SCROLLS + 1):
         clicked = False
@@ -106,18 +135,34 @@ async def expand(page) -> None:
                 continue
             if not (MORE.match(txt) and len(txt) < 30):
                 continue
+            grew_now = False
             try:
-                key = control_key(txt, await el.get_attribute("href"))
-                if key in spent or not await el.is_visible():
+                href = await el.get_attribute("href")
+                key = control_key(txt, href)
+                if key in spent or leaves(href, home) or not await el.is_visible():
                     continue
                 before = await page.evaluate(SIZE_JS)
                 await el.click(timeout=3000)
                 clicked = True
-                await page.wait_for_timeout(1500)
+                for _ in range(GROW_WAIT_MS // GROW_STEP_MS):
+                    await page.wait_for_timeout(GROW_STEP_MS)
+                    if not same_document(page.url, home):
+                        break
+                    if await page.evaluate(SIZE_JS) > before:
+                        grew_now = True
+                        break
             except Exception:                                  # noqa: BLE001
                 continue
-            if await page.evaluate(SIZE_JS) <= before:
+            if not grew_now:
                 spent.add(key)
+            if not same_document(page.url, home):
+                try:
+                    await page.go_back(wait_until="domcontentloaded", timeout=20000)
+                    await page.wait_for_timeout(1500)
+                except Exception:                              # noqa: BLE001
+                    pass
+                if not same_document(page.url, home):
+                    return False
             break
         await page.mouse.move(640, 500)
         await page.mouse.wheel(0, 20000)
@@ -127,6 +172,7 @@ async def expand(page) -> None:
         grew, seen = now > seen, max(seen, now)
         if not keep_scrolling(clicked, grew, rounds):
             break
+    return True
 
 
 def address(c: dict) -> str | None:
@@ -144,7 +190,7 @@ def other_edition(url: str, tag: str | None) -> str | None:
 
 def walled(conf: list, tag: str | None = None) -> list:
     rows = [c for c in conf if c.get("fetchability") == "js-walled" and address(c)
-            and c.get("sled") is not False]
+            and not sw.never_swept(c)]
     return [c for c in rows if c.get("event_tag") == tag] if tag else rows
 
 
@@ -182,7 +228,8 @@ async def render(url: str) -> tuple[str, str | None]:
             await page.wait_for_timeout(2500)
             if not await asyncio.to_thread(robots.allowed, page.url):
                 return "", "robots.txt asks crawlers not to read the page it landed on"
-            await expand(page)
+            if not await expand(page):
+                return "", "a control on the page left the list, and the browser could not come back to it"
             parts = [await page.content()]
             for fr in page.frames[1:]:
                 try:

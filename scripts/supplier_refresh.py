@@ -57,10 +57,20 @@ import supplier_categories as SC  # noqa: E402
 
 
 def unjudged(suppliers: list, ident: dict) -> list[str]:
-    """Suppliers step 1 has never looked at, in file order, once each."""
+    """Suppliers step 1 must look at, in file order, once each: never looked
+    at, or judged under a website that has changed since (`website_was`).
+
+    A MERGE MOVES A WEBSITE. The survivor inherits its twin's address, and
+    its verdict was from when it had none: Hill's Pet Nutrition, NACA and
+    Petco Love stayed held as "not found" with their own website on file
+    (2026-10-26), and so did a corrected one until somebody re-ran step 1."""
+    # an id two rows share (supplier_identity's shared_ids) is judged once,
+    # under one row's website: it is current when any of its rows matches
+    current = {s["id"] for s in suppliers if s["id"] in ident
+               and (ident[s["id"]].get("website_was") or "") == (s.get("website") or "")}
     seen, out = set(), []
     for s in suppliers:
-        if s["id"] not in ident and s["id"] not in seen:
+        if s["id"] not in current and s["id"] not in seen:
             seen.add(s["id"])
             out.append(s["id"])
     return out
@@ -83,7 +93,7 @@ def main(argv: list | None = None) -> int:
     todo = unjudged(suppliers, ident)
     print(f"the supplier export (built {export.get('generated', 'never')}) is "
           f"{len(d['new'])} supplier(s) behind and lists {len(d['gone'])} gone; "
-          f"{len(todo)} supplier(s) have never been judged; page cache: {SC.PAGES}")
+          f"{len(todo)} supplier(s) never judged or judged under another website; page cache: {SC.PAGES}")
     if not a.write:
         print("(nothing changed: --write runs the three steps)")
         return 0

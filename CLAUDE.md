@@ -1567,18 +1567,41 @@ only when the organisation's own page states them.
   (`render_floor.expand`, 2026-10-25). MapYourShow puts a "Show All" letter
   filter above "Load More Results", both read as "show more", and the first
   was pressed every round: FDIC's 924 exhibitors read as 198, DISTRIBUTECH's
-  stopped at E. A press that does not grow the page spends that control.
-- **A sponsorship tier is not part of a name** (`SPONSOR_TAIL` in `clean()`):
-  Sched writes "Esri - Diamond Sponsor", which matched no company on file and
-  would have come back as a candidate. Only after a separator, and only a
-  label ending in Sponsor or Participant.
-- **A non-SLED row is listed, never swept, at every door** (2026-10-26).
-  render_floor held the 2026-09-09 ruling and `sweep_exhibitors.ready()` did
-  not, so TechConnect 2027 (sled: false) was swept from a reader's address
+  stopped at E. A press spends its control only when the page has not grown
+  within GROW_WAIT_MS (one reading at 1.5s spent a 2-second Load More), a
+  control is the same control by its text and address (Playwright hands back
+  new element objects every query), a link to another page ("See All
+  Speakers") is never pressed, and a button that navigates is gone back from;
+  if the page cannot come back, render() reads nothing. The test's fake is
+  browser-shaped in each of those ways (second review, 2026-10-26).
+- **A sponsorship tier is not part of a name** (`clean()`): Sched writes
+  "Esri - Diamond Sponsor", "VertiGIS & YP Meet-Up Sponsor" and "Terracon Data
+  Solutions - Workshop & GeoPoker/Milwaukee Landmark Crawl Sponsor". After a
+  dash or bar the whole label goes (`SPONSOR_LABEL`); without one only
+  sponsorship words go (`SPONSOR_WORDS`), and an "&" is a separator only when
+  every word after it is one: "Black & Veatch Gold Sponsor" is Black & Veatch,
+  which the first version cut to "Black".
+- **A logo wall is read without the organiser** (`logo_names`): a logo linking
+  a host the page's header or nav links is the site's own, wherever it sits
+  (Humane World for Animals was staged as a sponsor of its own Animal Care
+  Expo, from its brand in the header and footer). An alt ending in "Logo" names
+  what stands before it ("GotchaCot Logo" was dropped whole), and a sponsor's
+  logo no rule can name is listed on the staged floor (`logos_unread`) rather
+  than lost from a floor graded as read.
+- **A row never swept files nobody, at every door** (2026-10-26).
+  `sweep_exhibitors.never_swept`: ruled out of scope (`sled: false`, off the
+  tab too) or listed and never swept (`harvest: false`: an ADJACENT, PROVIDER
+  or INDUSTRY event, or a training one, which stage_promote now writes onto
+  the row from the registry). render_floor held the first and the sweep held
+  neither, so TechConnect 2027 (sled: false) was swept from a reader's address
   and intaken: one company tag, four new suppliers, six supplier tags.
-  Reverted the same night (journal 2026-10-26#4); `ready()` and
-  conference_intake (under the event's tag or a prior one) now refuse it.
-  `check_a_non_sled_event_is_listed_never_swept`.
+  Reverted the same night (journal 2026-10-26#4). The sweep, the browser read
+  and conference_intake (under the event's tag, stripped, or a prior one) ask
+  the one question. `check_a_non_sled_event_is_listed_never_swept`.
+- **The supplier rulings file holds every batch.** merge_supplier_records
+  passes over a ruling already on file (`landed`), so a second batch joins
+  the first; a twin with no website at all is folded on its name and shows,
+  and two different websites still refuse.
 - **`check_a_redraw_is_the_crawl_without_the_fetch` flaked once** during this
   work: 21 organisations differed after its randomised edits (everbridge,
   urban-sdk, placer-ai first), none with a source the tag change can touch,
@@ -2751,7 +2774,11 @@ Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
   only adds tags, and a tag is a sector assignment (14 of 54 intakes in the
   journal filed no supplier and tagged up to 1,073). A rebuild keeps a
   `merged_into` row whose supplier has left the file (`carry_merges`); the
-  first refresh dropped five and they were restored. First run 2026-10-22:
+  first refresh dropped five and they were restored. Step 1 also takes a
+  supplier judged under a website that has changed since (`website_was`): a
+  merge's survivor inherits its twin's address, and Hill's Pet Nutrition and
+  NACA stayed held as "not found" with their own website on file until it
+  did (2026-10-26). First run 2026-10-22:
   511 placed, 3,235 publish, 4,260 held, 110 merged, 77 not a company. `conference_intake.py`
   runs it after every write (`--no-hq-export` skips it; a failed rebuild is
   reported, never a failed intake). selftest prints a note while the export

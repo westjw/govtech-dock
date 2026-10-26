@@ -65,30 +65,52 @@ def _host(url: str | None) -> str:
     return h[4:] if h.startswith("www.") else h
 
 
+def landed(rulings: dict, suppliers: list) -> tuple[list, list]:
+    """(merges, pulls) the file holds that are already on file: the twins
+    gone and named in the survivor's merged_from, the agency marked. The file
+    is the whole record of rulings, so a second batch is appended to it and a
+    run must pass over the first (2026-10-26)."""
+    by_id = {s["id"]: s for s in suppliers}
+    ms = [m for m in rulings.get("merge") or []
+          if m.get("into") in by_id and m.get("ids")
+          and all(i not in by_id for i in m["ids"])
+          and set(m["ids"]) <= {f.get("id") for f in by_id[m["into"]].get("merged_from") or []}]
+    ps = [p for p in rulings.get("pull") or [] if (by_id.get(p.get("id")) or {}).get("not_a_supplier")]
+    return ms, ps
+
+
 def plan(rulings: dict, suppliers: list, ident: dict) -> tuple[list, list, list]:
     """(merges, pulls, refusals). Every id must be a supplier on file; a
     survivor is never itself merged; an id is merged or pulled once; the
-    survivor and what folds into it share a website, which is the evidence
-    the reading started from."""
+    survivor and what folds into it never sit on two different websites,
+    which is the evidence the first reading started from. A twin with no
+    website at all is judged on its name and shows (a logo's typo, "Hill's
+    Pet Nutritition", carried the website and the plain row had none,
+    2026-10-26). A ruling already on file is passed over (`landed`)."""
     by_id = {s["id"]: s for s in suppliers}
     site = lambda sid: _host((ident.get(sid) or {}).get("url")
                              or (ident.get(sid) or {}).get("website_was")
                              or (by_id.get(sid) or {}).get("website"))
+    done_m, done_p = landed(rulings, suppliers)
     merges, pulls, refused, used = [], [], [], set()
     for m in rulings.get("merge") or []:
+        if m in done_m:
+            continue
         into, ids, why = m.get("into"), list(m.get("ids") or []), (m.get("why") or "").strip()
         bad = (None if into in by_id else f"no supplier {into!r} on file")
         bad = bad or next((f"no supplier {i!r} on file" for i in ids if i not in by_id), None)
         bad = bad or ("no reason given" if len(why) < 15 else None)
         bad = bad or next((f"{i!r} is ruled twice" for i in [into, *ids] if i in used), None)
-        bad = bad or next((f"{i!r} is not on {site(into) or 'the survivor’s site'} but {site(i) or 'no site'}"
-                           for i in ids if site(i) != site(into)), None)
+        bad = bad or next((f"{i!r} is not on {site(into)} but {site(i)}"
+                           for i in ids if site(i) and site(into) and site(i) != site(into)), None)
         if bad:
             refused.append({"into": into, "ids": ids, "why": bad})
             continue
         used.update([into, *ids])
         merges.append({"into": into, "ids": ids, "why": why})
     for p in rulings.get("pull") or []:
+        if p in done_p:
+            continue
         sid, why = p.get("id"), (p.get("why") or "").strip()
         bad = (f"no supplier {sid!r} on file" if sid not in by_id
                else "no reason given" if len(why) < 15
@@ -176,6 +198,9 @@ def main() -> int:
     suppliers = admin.read("suppliers.json", [])
     ident = (admin.read("supplier_identity.json", {}) or {}).get("rows") or {}
     merges, pulls, refused = plan(rulings, suppliers, ident)
+    done_m, done_p = landed(rulings, suppliers)
+    if done_m or done_p:
+        print(f"  {len(done_m)} merge(s) and {len(done_p)} pull(s) in the file are already on file")
     for m in merges:
         print(f"  merge  {', '.join(m['ids'])} -> {m['into']}")
     for p in pulls:

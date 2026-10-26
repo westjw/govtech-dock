@@ -1318,6 +1318,16 @@ def stage_promote(write: bool, which: str = "state") -> int:
                 {"org_code": e["org_code"], "geo": e.get("geo"),
                             "parent_national": e.get("parent_national")},
         }
+        # LISTED, NEVER SWEPT (owner, 2026-09-09): an ADJACENT, PROVIDER or
+        # INDUSTRY event, or a training one, goes on the tab and its floor
+        # files nobody. The registry says so in `scope` and `registry_status`;
+        # the sweep, the browser read and the intake read only the catalogue,
+        # so the ruling travels with the row (second review, 2026-10-26).
+        if which == "national" and (e.get("scope") not in (None, "SLED")
+                                    or e.get("registry_status") == "TRAINING"):
+            row["harvest"] = False
+            row["harvest_note"] = (f"{e.get('scope')} / {e.get('registry_status')} in the registry: "
+                                   "listed on the tab, never swept (owner, 2026-09-09)")
         cat["conferences"].append(row)
         e["promoted"] = True
         e["promoted_tag"] = tag

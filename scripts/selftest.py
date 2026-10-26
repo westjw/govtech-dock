@@ -10830,38 +10830,69 @@ def check_an_infinite_scroll_floor_is_scrolled_to_its_end() -> int:
     # read FDIC's 924 exhibitors as 198.
     import asyncio as _aio
 
+    # The fake is a browser's shape where it matters (second review,
+    # 2026-10-26): every query hands back NEW element objects, as Playwright
+    # does, so a control spent by identity is never recognised; a batch lands
+    # `load_ms` after its press, on the page's own clock; "See All Speakers"
+    # links to another page, and "View All Sessions" is a button that goes
+    # there; going back returns to the list.
     class _El:
-        def __init__(self, page, txt, href, grows):
-            self.page, self.txt, self.href, self.grows = page, txt, href, grows
+        def __init__(self, page, spec):
+            self.page, (self.txt, self.href, self.kind) = page, spec
         async def inner_text(self): return self.txt
         async def get_attribute(self, k): return self.href if k == "href" else None
-        async def is_visible(self): return self.grows is None or self.page.batches < 5
+        async def is_visible(self): return self.kind != "more" or self.page.batches + len(self.page.due) < 5
         async def click(self, timeout=None):
-            self.page.presses.append(self.txt)
-            if self.grows:
-                self.page.batches += 1
+            pg = self.page
+            pg.presses.append(self.txt)
+            # MapYourShow routes by the part after "#": the list's address
+            # changes as it filters and loads, and it is still the list
+            if self.kind == "more":
+                pg.due.append(pg.clock + pg.load_ms)
+                pg.url = f"https://floor.test/floor#/more/{len(pg.presses)}"
+            elif self.kind == "same":
+                pg.url = "https://floor.test/floor#/alpha/*"
+            elif self.kind == "away":
+                pg.url, pg.away = "https://floor.test/sessions", True
 
     class _Page:
-        def __init__(self):
-            self.batches, self.presses = 1, []
-            self.els = [_El(self, "Show All", "/x#/alpha/*", False),
-                        _El(self, "See All Results", None, False),
-                        _El(self, "Load More Results", None, True)]
+        SPECS = [("Show All", "/floor#/alpha/*", "same"), ("See All Speakers", "/speakers", "away"),
+                 ("View All Sessions", None, "away"), ("See All Results", None, "same"),
+                 ("Load More Results", None, "more")]
+
+        def __init__(self, load_ms):
+            self.batches, self.presses, self.due, self.clock = 1, [], [], 0
+            self.load_ms, self.url, self.away = load_ms, "https://floor.test/floor", False
             class _M:
                 async def move(s, *a): pass
                 async def wheel(s, *a): pass
             self.mouse = _M()
-        async def query_selector_all(self, sel): return self.els
-        async def evaluate(self, js): return self.batches * 200 if "length" in js else None
-        async def wait_for_timeout(self, ms): pass
+        async def query_selector_all(self, sel): return [_El(self, sp) for sp in self.SPECS]
+        async def evaluate(self, js):
+            if "length" not in js:
+                return None
+            self.batches += sum(1 for t in self.due if t <= self.clock)
+            self.due = [t for t in self.due if t > self.clock]
+            return (5000 if self.away else self.batches * 200)
+        async def wait_for_timeout(self, ms): self.clock += ms
+        async def go_back(self, **k): self.url, self.away = "https://floor.test/floor", False
 
-    pg = _Page()
-    _aio.run(rf.expand(pg))
-    if pg.batches != 5:
-        errors += fail(f"expand() read {pg.batches} of 5 batches of a Load More list; "
-                       f"it pressed {pg.presses}")
-    if pg.presses.count("Show All") > 1 or pg.presses.count("See All Results") > 1:
-        errors += fail(f"expand() pressed a control that added nothing more than once: {pg.presses}")
+    for load_ms in (300, 2500, 6000):
+        pg = _Page(load_ms)
+        ok = _aio.run(rf.expand(pg))
+        if pg.batches != 5 or not ok or not pg.url.startswith("https://floor.test/floor"):
+            errors += fail(f"expand() read {pg.batches} of 5 batches of a Load More list whose batch "
+                           f"takes {load_ms}ms, ending on {pg.url} ({ok}); it pressed {pg.presses}")
+        if any(pg.presses.count(t) > 1 for t in ("Show All", "See All Results", "View All Sessions")):
+            errors += fail(f"expand() pressed a control that added nothing more than once: {pg.presses}")
+        if "See All Speakers" in pg.presses:
+            errors += fail(f"expand() followed a link to another page as more of the list: {pg.presses}")
+
+    class _Stuck(_Page):
+        async def go_back(self, **k): pass
+    pg = _Stuck(300)
+    if _aio.run(rf.expand(pg)) is not False:
+        errors += fail("expand() reported the list read after a button left it for good")
     return errors
 
 
@@ -10933,11 +10964,21 @@ def check_a_floor_is_read_before_it_is_filed() -> int:
                           ("Visit Design Studio", "Design Studio"),
                           ("Election Systems &amp;amp; Software", "Election Systems & Software"),
                           # a sponsorship tier after a separator (GIS-Pro's Sched, 2026-10-25)
+                          # GIS-Pro 2026's own labels, as Sched prints them
                           ("Esri - Diamond Sponsor", "Esri"), ("VertiGIS & YP Meet-Up Sponsor", "VertiGIS"),
+                          ("Cloudpoint Geospatial & YP Meet-Up Sponsor", "Cloudpoint Geospatial"),
+                          ("Terracon Data Solutions - Workshop & GeoPoker/Milwaukee Landmark Crawl Sponsor",
+                           "Terracon Data Solutions"),
                           ("Cultivate Geospatial Solutions - Social Event Co-Sponsor", "Cultivate Geospatial Solutions"),
                           ("Minnesota GIS/LIS Consortium - Showcase Participant", "Minnesota GIS/LIS Consortium"),
+                          ("MGP, Inc - Workshop Sponsor", "MGP, Inc"),
+                          # an "&" that is the company's own (second review, 2026-10-26)
+                          ("Black & Veatch Gold Sponsor", "Black & Veatch"),
+                          ("Burns & McDonnell Reception Sponsor", "Burns & McDonnell"),
+                          ("Pro-West & Associates Lanyard Sponsor", "Pro-West & Associates"),
+                          ("Merrick & Company Sponsor", "Merrick & Company"),
                           ("Sponsor Services Inc", "Sponsor Services Inc"), ("Johnson & Johnson", "Johnson & Johnson"),
-                          ("Title Sponsor Group", "Title Sponsor Group")):
+                          ("Title Sponsor Group", "Title Sponsor Group"), ("AT&T", "AT&T")):
             if sw.clean(raw) != want:
                 errors += fail(f"sweep_exhibitors.clean({raw!r}) = {sw.clean(raw)!r}, expected {want!r}")
         if one.get("quality") != "menu":
@@ -26952,20 +26993,39 @@ def check_a_non_sled_event_is_listed_never_swept() -> int:
             {"event_tag": "Wall 2027", "fetchability": "image", "exhibitor_url_candidate": "https://w.test/",
              "sled": False},
             {"event_tag": "Js 2027", "fetchability": "js-walled", "exhibitor_url": "https://j.test/", "sled": False},
-            {"event_tag": "On 2027", "exhibitor_url": "https://on.test/x"}]
+            # listed and never swept: an INDUSTRY or training event the
+            # registry promoted (harvest false), on every kind of address
+            {"event_tag": "Ind 2027", "exhibitor_url": "https://i.test/x", "harvest": False},
+            {"event_tag": "IndJs 2027", "fetchability": "js-walled", "exhibitor_url": "https://k.test/",
+             "harvest": False},
+            {"event_tag": "IndWall 2027", "fetchability": "image", "exhibitor_url_candidate": "https://l.test/",
+             "harvest": False},
+            {"event_tag": "On 2027", "exhibitor_url": "https://on.test/x"},
+            {"event_tag": "OnToo 2027", "exhibitor_url": "https://on2.test/x", "harvest": True, "sled": True}]
     got = [c["event_tag"] for c in sw.ready(rows, None, images=True)]
-    if got != ["On 2027"]:
-        errors += fail(f"the sweep takes a non-SLED row: {got}")
-    if sw.ready(rows, "Off 2027"):
-        errors += fail("the sweep takes a non-SLED row named by its tag")
+    if got != ["On 2027", "OnToo 2027"]:
+        errors += fail(f"the sweep takes a row never swept, or drops one it should take: {got}")
+    if sw.ready(rows, "Off 2027") or sw.ready(rows, "Ind 2027"):
+        errors += fail("the sweep takes a row never swept, named by its tag")
     if rf.walled(rows):
-        errors += fail("the browser read takes a non-SLED row")
+        errors += fail(f"the browser read takes a row never swept: {[c['event_tag'] for c in rf.walled(rows)]}")
+    # the intake asks the same question; the promotion writes the answer
+    intake = (ROOT / "scripts" / "conference_intake.py").read_text()
+    if "sweep.never_swept(r) and tag and" not in intake:
+        errors += fail("conference_intake does not ask never_swept, so a listed event's floor would be filed")
+    promote = (ROOT / "scripts" / "find_event_directories.py").read_text()
+    promote = promote[promote.index("def stage_promote("):]
+    if ('if which == "national" and (e.get("scope") not in (None, "SLED")\n'
+        '                                    or e.get("registry_status") == "TRAINING"):\n'
+        '            row["harvest"] = False') not in promote:
+        errors += fail("stage_promote does not carry a non-SLED or training event's harvest: false onto its row")
     cat = json.loads((DATA / "conferences.json").read_text())["conferences"]
     off = [r for r in cat if r.get("sled") is False and r.get("event_tag")]
     if not off:
         return errors + fail("the catalogue holds no non-SLED row to try the intake on")
     # the event's tag, and an earlier edition's (a prior tag stays issued)
-    tags = [off[0]["event_tag"]] + [t for r in off for t in (r.get("prior_tags") or [])][:1]
+    tags = ([off[0]["event_tag"], off[0]["event_tag"] + " "]
+            + [t for r in off for t in (r.get("prior_tags") or [])][:1])
     for tag in tags:
         with tempfile.TemporaryDirectory() as d:
             f = pathlib.Path(d) / "staged.json"
@@ -26976,7 +27036,7 @@ def check_a_non_sled_event_is_listed_never_swept() -> int:
         if r.returncode != 1 or "non-SLED" not in r.stderr:
             errors += fail(f"conference_intake files a non-SLED event's floor ({tag}): exit {r.returncode}, "
                            f"{(r.stderr or r.stdout)[-160:]!r}")
-    if len(tags) < 2:
+    if len(tags) < 3:
         errors += fail("no non-SLED row carries a prior tag, so an earlier edition's file was not tried")
     for row in off:
         staged = DATA / f"exhibitors_{re.sub(r'[^A-Za-z0-9]+', '_', row['event_tag']).strip('_')}.json"
@@ -27054,6 +27114,38 @@ def check_a_logo_wall_is_read_only_where_a_reader_said_so() -> int:
     if any(" at " in n for n in tgot) or "Careers at Broadband" in tgot:
         print(f"  FAIL: an 'at <event>' suffix or the host's own page survived as a name: {sorted(tgot)[:5]}")
         errors += 1
+    # NOT THE ORGANISER'S OWN, AND NOT "<sponsor> Logo" DROPPED (second review,
+    # 2026-10-26): humanepro.org's header and nav link the organiser's brand by
+    # its logo, and its footer again; the sponsors' alts read "GotchaCot Logo";
+    # one is all lower case. A sponsor wall that sits in a footer is still read.
+    sponsors = ["Banfield Pet Hospital", "Chewy, Inc.", "Hill's Pet Nutrition, Inc.", "Midmark Corporation",
+                "Petco Love", "Nestle Purina PetCare Company", "Shelterluv LLC", "Zoetis Inc.", "PetDesk, Inc."]
+    wall3 = ('<header><a href="https://www.brand.test"><img alt="Humane World for Animals"></a>'
+             '<nav><a href="https://www.brand.test/donate"><img alt="Humane World for Animals"></a></nav></header>'
+             '<main><h1>Animal Care Expo 2026 sponsors</h1>'
+             + "".join(f'<a href="https://sp{i}.test/"><img alt="{n}"></a>' for i, n in enumerate(sponsors))
+             + '<a href="https://gotcha.test/"><img alt="GotchaCot Logo"></a>'
+             '<a href="https://aawa.test/"><img alt="the association for animal welfare advancement"></a></main>'
+             '<footer><a href="https://www.brand.test/"><img alt="Humane World for Animals"></a>'
+             '<a href="https://footsponsor.test/"><img alt="Maddie\'s Fund"></a></footer>')
+    class _R3:
+        text = wall3
+    try:
+        ats._page = lambda u, *a, **k: _R3()
+        hw = sw.sweep({"event_tag": "Animal Care Expo 2026", "fetchability": "image",
+                       "exhibitor_url_candidate": "https://humanepro.test/expo/sponsors"})
+    finally:
+        ats._page = keep
+    hgot = {e["name"] for e in hw.get("exhibitors") or []}
+    if "Humane World for Animals" in hgot:
+        errors += fail("the organiser's own brand logo, in its header and footer, was read as a sponsor")
+    if not ({"GotchaCot", "Maddie's Fund"} | set(sponsors)) <= hgot:
+        errors += fail(f"a '<sponsor> Logo' alt, or a sponsor in the footer, was not read: "
+                       f"{sorted(({'GotchaCot', 'Maddie' + chr(39) + 's Fund'} | set(sponsors)) - hgot)}")
+    if hw.get("logos_unread") != ["the association for animal welfare advancement"] \
+            or "were not read as a name" not in (hw.get("source_note") or ""):
+        errors += fail(f"a sponsor's logo the reader could not name is not said on the floor: "
+                       f"{hw.get('logos_unread')!r}")
     return errors
 
 
@@ -31464,6 +31556,16 @@ def check_the_supplier_export_follows_every_intake() -> int:
         errors += fail(f"drift counted wrong (a merged row is not gone): {d}")
     if SR.unjudged(sup, {"a": {}}) != ["b", "c"]:
         errors += fail(f"the never-judged list is wrong or repeats an id: {SR.unjudged(sup, {'a': {}})}")
+    # judged under a website that changed since: a merge's survivor that
+    # inherited its twin's address, or a corrected one (2026-10-26). A blank
+    # and a missing website are the same silence.
+    sup2 = [{"id": "a", "website": "https://a.test"}, {"id": "b", "website": ""}, {"id": "c", "website": None},
+            {"id": "d", "website": "https://d.test"}, {"id": "d", "website": "https://d2.test"}]
+    ident2 = {"a": {"website_was": None}, "b": {"website_was": None}, "c": {"website_was": ""},
+              "d": {"website_was": "https://d.test"}}
+    if SR.unjudged(sup2, ident2) != ["a"]:
+        errors += fail(f"a supplier judged under a website since changed is not judged again: "
+                       f"{SR.unjudged(sup2, ident2)}")
 
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-suprefresh-"))
     keep = (SR.DATA, SC.OUT, SC.PAGES, SR.step)
@@ -35353,6 +35455,21 @@ def check_one_supplier_is_one_record_and_an_agency_is_none() -> int:
         _m, _p, ref = MR.plan(bad_ruling, sups, ident)
         if not any(says in x["why"] for x in ref):
             errors += fail(f"a ruling that should refuse ({says}) did not: {ref}")
+    # A TWIN WITH NO WEBSITE folds on its name and shows; and a ruling that
+    # already landed is passed over, so a second batch can join the file
+    # (2026-10-26)
+    sups2 = sups + [{"id": "acme-typo", "name": "Acmme", "description": "exhibited at NSGIC 2026"}]
+    m2, _p, ref2 = MR.plan({"merge": [{"into": "acme", "ids": ["acme-typo"], "why": why}]}, sups2, ident)
+    if ref2 or len(m2) != 1:
+        errors += fail(f"a twin with no website on file could not be folded: {ref2}")
+    rulings2 = {"merge": [{"into": "acme", "ids": ["acme-inc"], "why": why},
+                          {"into": "acme", "ids": ["acme-typo"], "why": why}],
+                "pull": [{"id": "ct-dph", "why": "a state department: it buys from suppliers"}]}
+    once, _ = MR.apply(*MR.plan({"merge": rulings2["merge"][:1], "pull": rulings2["pull"]}, sups2, ident)[:2], sups2)
+    m3, p3, ref3 = MR.plan(rulings2, once, ident)
+    if ref3 or [m["ids"] for m in m3] != [["acme-typo"]] or p3:
+        errors += fail(f"a second batch could not join a rulings file whose first batch landed: "
+                       f"{ref3} {m3} {p3}")
 
     # what the rulings file says is what the shipped files show
     rp = DATA / MR.RULINGS

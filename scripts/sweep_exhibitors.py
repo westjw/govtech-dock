@@ -158,12 +158,26 @@ CTA_HEAD = re.compile(r"^(contact|visit|meet)\s+(?!(us|me|sales|support|info|inf
 
 
 # A SPONSORSHIP TIER RIDING ON A NAME. Sched's exhibitor directory writes
-# "Esri - Diamond Sponsor" and "VertiGIS & YP Meet-Up Sponsor" (GIS-Pro 2026,
-# 2026-10-25), and as written none of them matched the company already on the
-# board, so each would have come back as a new candidate. Only after a
-# separator, and only a label ending in Sponsor or Participant.
-SPONSOR_TAIL = re.compile(r"\s+(?:-|\u2013|\u2014|&|\|)\s+(?:[A-Za-z][\w'/-]*\s+){0,3}"
-                          r"(?:co-)?(?:sponsor|participant)\s*$", re.I)
+# "Esri - Diamond Sponsor", "VertiGIS & YP Meet-Up Sponsor" and "Terracon Data
+# Solutions - Workshop & GeoPoker/Milwaukee Landmark Crawl Sponsor" (GIS-Pro
+# 2026, 2026-10-25), and as written none of them matched the company already
+# on the board, so each would have come back as a new candidate.
+# - After a dash or a bar, the whole label goes, up to six words, "&" and "/"
+#   inside it included (SPONSOR_LABEL).
+# - Without one, only words a sponsorship is named with go (SPONSOR_WORDS).
+#   An "&" is a separator only when every word after it is one of those:
+#   "Black & Veatch Gold Sponsor" is Black & Veatch, never "Black", which the
+#   first version cut it to (second review, 2026-10-26).
+SPONSOR_LABEL = re.compile(r"\s+(?:-|\u2013|\u2014|\|)\s+(?:[A-Za-z&][\w'/&-]*\s+){0,6}"
+                           r"(?:co-)?(?:sponsor|participant)\s*$", re.I)
+_SPONSOR_WORD = (r"(?:diamond|platinum|gold|silver|bronze|copper|titanium|title|premier|presenting|"
+                 r"supporting|contributing|signature|official|exclusive|major|community|media|event|"
+                 r"exhibit|exhibitor|showcase|workshop|session|track|keynote|plenary|reception|lunch|"
+                 r"luncheon|breakfast|dinner|coffee|social|happy|hour|lanyard|badge|wi-?fi|app|charging|"
+                 r"station|registration|meet-?up|yp|networking|crawl|party|hackathon|student|"
+                 r"scholarship|awards?|gala|golf|tote|bag|hotel|key|notebook|water|bottle)")
+SPONSOR_WORDS = re.compile(rf"(?:\s+&)?(?:\s+{_SPONSOR_WORD}){{0,4}}\s+(?:co-)?(?:sponsor|participant)\s*$",
+                           re.I)
 
 
 def clean(s: str) -> str:
@@ -178,7 +192,8 @@ def clean(s: str) -> str:
     s = re.sub(r"\s+", " ", s).strip()
     s = CTA_TAIL.sub("", s).strip()
     s = CTA_HEAD.sub("", s).strip()
-    s = SPONSOR_TAIL.sub("", s).strip()
+    s = SPONSOR_LABEL.sub("", s).strip()
+    s = SPONSOR_WORDS.sub("", s).strip()
     return s.strip(_ARROWS + " ")
 
 
@@ -405,14 +420,39 @@ LOGO_AT_EVENT = re.compile(
     r"congress|convention|forum|meeting)\b[^\n]*$", re.I)
 
 
-def logo_names(page: str, base: str, host: str | None = None) -> list[dict]:
-    """Linked logos off the page's own host, named by their alt text."""
+# A LOGO'S ALT THAT ENDS IN "Logo" NAMES THE COMPANY BEFORE IT: "GotchaCot
+# Logo" and "Aeolus Pet Logo" were dropped whole by LOGO_ALT_JUNK, which
+# matches "logo" anywhere, off a floor graded as read (second review,
+# 2026-10-26).
+LOGO_SUFFIX = re.compile(r"\s*(?:[-\u2013|:]\s*)?\blogo(?:\s+image)?\s*$", re.I)
+CHROME = re.compile(r"<(header|nav)\b.*?</\1>", re.S | re.I)
+
+
+def logo_names(page: str, base: str, host: str | None = None,
+               unread: list | None = None) -> list[dict]:
+    """Linked logos off the page's own host, named by their alt text.
+
+    NOT THE ORGANISER'S OWN. humanepro.org's header, nav and footer link the
+    organiser's brand, humaneworld.org, by a logo whose alt is "Humane World
+    for Animals", and it was staged as a sponsor of its own Animal Care Expo
+    (second review, 2026-10-26). A logo linking a host the header or nav
+    links is the site's, wherever it sits: the header's, and the footer's
+    copy of the brand, never a sponsor wall that sits in a footer.
+    `unread` collects the alt of every sponsor-shaped logo not read as a
+    name, so the staged floor says what it left out."""
     import urllib.parse as up
-    own = up.urlsplit(base or "").netloc.lower().replace("www.", "")
+
+    def host_of_url(u: str) -> str:
+        return up.urlsplit(u).netloc.lower().replace("www.", "")
+    own = host_of_url(base or "")
+    chrome = [(m.start(), m.end()) for m in CHROME.finditer(page)]
+    chrome_hosts = {host_of_url(h) for a, b in chrome
+                    for h in re.findall(r'<a\b[^>]*href="(https?://[^"]+)"', page[a:b], re.I)}
     out: dict[str, dict] = {}
     for m in re.finditer(r'<a\b[^>]*href="(https?://[^"]+)"[^>]*>(.*?)</a>', page, re.S | re.I):
         href, inner = m.group(1), m.group(2)
-        if not own or up.urlsplit(href).netloc.lower().replace("www.", "") == own:
+        where = host_of_url(href)
+        if not own or where == own or where in chrome_hosts:
             continue
         for alt in re.findall(r'<img\b[^>]*\balt="([^"]{2,120})"', inner, re.I):
             # "Calix at Broadband Communities Summit 2027": an organiser that
@@ -422,14 +462,17 @@ def logo_names(page: str, base: str, host: str | None = None) -> list[dict]:
             # Terrapinn's walls (2026-10-20). The logo links off the host's
             # site, to the sponsor's own, so the suffix is the event and the
             # name is what stands before it.
-            name = clean(LOGO_AT_EVENT.sub("", alt))
+            name = clean(LOGO_SUFFIX.sub("", clean(LOGO_AT_EVENT.sub("", alt))))
             if LOGO_ALT_JUNK.search(name) or not looks_like_a_name(name, host):
+                if unread is not None and not LOGO_ALT_JUNK.search(LOGO_SUFFIX.sub("", alt)):
+                    unread.append(alt)
                 continue
             out.setdefault(name.lower(), {"name": name, "website": href})
     return list(out.values())
 
 
-def harvest(page: str, host: str | None = None, logos_from: str | None = None) -> list[dict]:
+def harvest(page: str, host: str | None = None, logos_from: str | None = None,
+            unread_logos: list | None = None) -> list[dict]:
     """Names off an exhibitor directory, with a website where the page gave one.
 
     Reads anchors first - a directory almost always links each exhibitor to
@@ -470,7 +513,7 @@ def harvest(page: str, host: str | None = None, logos_from: str | None = None) -
             if looks_like_a_name(name, host) and name.lower() not in out:
                 out[name.lower()] = {"name": name, "website": None}
 
-    extra = logo_names(page, logos_from, host) if logos_from else []
+    extra = logo_names(page, logos_from, host, unread_logos) if logos_from else []
     for e in table_of_exhibitors(page, host) + named_fields(page, host) + extra:
         key = e["name"].lower()
         if key not in out or (e["website"] and not out[key]["website"]):
@@ -740,12 +783,20 @@ def reads_as_a_menu(names: list[dict]) -> str | None:
     return None
 
 
+def never_swept(c: dict) -> bool:
+    """A row whose floor files nobody: ruled out of scope (`sled: false`), or
+    listed and never swept (`harvest: false`: an ADJACENT, PROVIDER or
+    INDUSTRY event, or a training one; owner, 2026-09-09). The sweep, the
+    browser read and the intake all ask this one question."""
+    return c.get("sled") is False or c.get("harvest") is False
+
+
 def ready(conferences: list, tag: str | None, images: bool = False) -> list:
-    # A NON-SLED ROW IS LISTED, NEVER SWEPT (owner, 2026-09-09), as
-    # render_floor.walled already held: TechConnect 2027 (sled: false) carried
-    # a reader's directory address and this took it, so its floor reached the
-    # suppliers file (2026-10-26, reverted).
-    out = [c for c in conferences if c.get("sled") is not False and (c.get("exhibitor_url")
+    # NEVER SWEPT MEANS HERE TOO, as render_floor.walled already held for
+    # `sled: false`: TechConnect 2027 carried a reader's directory address and
+    # this took it, so its floor reached the suppliers file (2026-10-26,
+    # reverted).
+    out = [c for c in conferences if not never_swept(c) and (c.get("exhibitor_url")
            or (images and c.get("fetchability") == "image" and c.get("exhibitor_url_candidate")))]
     if tag:
         out = [c for c in out if (c.get("event_tag") or "") == tag]
@@ -771,7 +822,9 @@ def sweep(conf: dict) -> dict:
         staged["why"] = f"{type(exc).__name__}: {str(exc)[:90]}"
         return staged
 
-    names = harvest(page, host_of(conf.get("event_tag")), logos_from=url if image else None)
+    unread: list = []
+    names = harvest(page, host_of(conf.get("event_tag")), logos_from=url if image else None,
+                    unread_logos=unread)
     doubt = suspicious(names)
     grade, note = quality(names)
     if not doubt and grade == "doubtful":
@@ -793,7 +846,11 @@ def sweep(conf: dict) -> dict:
         f"{with_site} with a website the page itself linked. Quality: {grade} "
         f"({note}). Names only - "
         f"nothing here decides whether a company is govtech, and no website "
-        f"was inferred where the page did not give one.")
+        f"was inferred where the page did not give one."
+        + (f" {len(unread)} linked logo(s) were not read as a name, so a person "
+           f"should look: {', '.join(repr(a) for a in unread[:12])}." if unread else ""))
+    if unread:
+        staged["logos_unread"] = unread
     return staged
 
 
