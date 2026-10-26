@@ -6835,7 +6835,7 @@
     "year_founded": 1933,
     "sector": "Public Works",
     "category": "Streets",
-    "description": "Traffic signal controllers, cabinets, and intersection management systems",
+    "description": "Traffic signal controllers, cabinets, and intersection management systems - exhibited at TRB 2027",
     "ats": {
       "type": "html",
       "ref": "https://www.econolite.com/about/careers/career-opportunities/"
@@ -6855,7 +6855,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add",
+    "source": "direct add; TRB 2027",
     "researched": true,
     "posts_at": {
       "where": "own",
@@ -7001,7 +7001,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Umovity"
+    ]
   },
   {
     "id": "verra-mobility",
@@ -121367,7 +121370,7 @@
     "year_founded": 2013,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "Pediatric emergency dosing system and app for EMS agencies - exhibited at FDIC International 2027",
+    "description": "Pediatric emergency dosing system and app for EMS agencies - exhibited at FDIC International 2027, FDIC International 2026",
     "ats": {
       "type": "bamboohr",
       "ref": "handtevy"
@@ -121392,7 +121395,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; FDIC International 2027",
+    "source": "competitor sweep; FDIC International 2027; FDIC International 2026",
     "profile": {
       "paragraphs": [
         "Handtevy sells clinical workflow software for emergency medicine, pairing precision dosing and protocol access for clinicians with control and reporting for the administrators who oversee them. The buyers are agencies and hospitals looking to raise their standard of emergency care.",
@@ -121484,7 +121487,10 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "also_known_as": [
+      "Pediatric Emergency Standards"
+    ]
   },
   {
     "id": "beyond-lucid-technologies",
@@ -224548,6 +224554,451 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "4m-analytics",
+    "name": "4M Analytics",
+    "website": "https://www.4manalytics.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "AI utility-mapping platform that compiles public utility records into one map for state DOTs, engineering firms and contractors - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "buzz-solutions",
+    "name": "Buzz Solutions",
+    "website": "https://www.buzzsolutions.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "PowerAI visual inspection software that analyzes drone imagery of transmission, distribution, substation and solar assets for utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "cgi-technologies-and-solutions-inc",
+    "name": "CGI",
+    "website": "https://www.cgi.com/us/en-us",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Finance & ERP",
+    "description": "IT services firm selling CGI Advantage ERP to state and local governments and OpenGrid360 software to utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true,
+    "also_known_as": [
+      "CGI Technologies and Solutions Inc."
+    ]
+  },
+  {
+    "id": "clean-power-research",
+    "name": "Clean Power Research",
+    "website": "https://www.cleanpower.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "PowerClerk interconnection and program software, WattPlan and SolarAnywhere data for electric utilities and energy agencies - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "electrical-grid-monitoring",
+    "name": "Electrical Grid Monitoring",
+    "website": "https://egm.net",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Powerline sensors and Meta-Alert analytics for fault location, power quality and line rating at cooperative, municipal and investor-owned utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "ensight-plus-llc",
+    "name": "Ensight Plus, LLC",
+    "website": "https://www.ensightplus.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Field service management software for utilities, utility contractors and municipalities: work orders, scheduling, dispatch and inventory - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "etap-operation-technology",
+    "name": "ETAP",
+    "website": "https://etap.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Electrical digital twin software for power system design, analysis, ADMS and SCADA, used by distribution utilities, co-ops, rail and industry - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true,
+    "also_known_as": [
+      "Etap - Operation Technology",
+      "Operation Technology, Inc."
+    ]
+  },
+  {
+    "id": "pci-energy-solutions",
+    "name": "PCI Energy Solutions",
+    "website": "https://www.pcienergysolutions.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Energy trading, bid-to-bill and generation optimization software for utilities, municipal power pools and wholesale power traders - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "resilient-link",
+    "name": "Resilient Link",
+    "website": "https://resilientlink.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Incident data exchange and 911 disruption monitoring software for PSAPs, local emergency management and utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "smart-energy-water",
+    "name": "Smart Energy Water",
+    "website": "https://www.sew.ai/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Billing & Customer Systems",
+    "description": "Customer experience, billing, payments and field workforce platform for energy and water utilities and municipalities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "weave-grid-inc",
+    "name": "WeaveGrid",
+    "website": "https://www.weavegrid.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Grid-edge orchestration software that manages EV charging and home batteries for electric utilities and cooperatives - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true,
+    "also_known_as": [
+      "Weave Grid, Inc. (WeaveGrid)"
+    ]
+  },
+  {
+    "id": "alpine-software-corp",
+    "name": "Alpine Software Corp",
+    "website": "https://alpinesoftware.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "RedAlert fire records management system with NERIS reporting, alerting, scheduling, inspections and LOSAP tracking for U.S. fire departments - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "sims-u-share",
+    "name": "Sims U Share",
+    "website": "https://simsushare.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "SimsUshare fire simulation software for building incident command, size-up and officer training scenarios from local photos for fire departments - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "streetwise-response-software",
+    "name": "StreetWise Response Software",
+    "website": "https://www.streetwisecadlink.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "StreetWise CADLink tablet response software for fire and EMS: call alerting, AVL maps, hydrants, preplans, station boards and a web CAD - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "command-established",
+    "name": "Command Established",
+    "website": "https://commandestablished.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Fire department management software covering incidents with NERIS reporting, apparatus, personnel, training, hydrants and pre-plans - exhibited at FDIC International 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2027",
+    "researched": true
+  },
+  {
+    "id": "decon-track-inc",
+    "name": "DECON-TRACK",
+    "website": "https://www.decon-track.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Exposure and decontamination tracking platform for fire departments, logging on-scene exposure time and NFPA 1550 decon records - exhibited at FDIC International 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2027",
+    "researched": true,
+    "also_known_as": [
+      "DECON-TRACK Inc ( decontamination tracking system in real-time)"
+    ]
+  },
+  {
+    "id": "decision-lens",
+    "name": "Decision Lens",
+    "website": "https://www.decisionlens.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Strategy & Performance",
+    "description": "Planning, prioritization and budgeting software for federal, defense, state and local agencies, including transportation capital plans - exhibited at TRB 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: TRB 2027",
+    "researched": true
+  },
+  {
+    "id": "woods-poole-economics-inc",
+    "name": "Woods & Poole Economics, Inc.",
+    "website": "https://www.woodsandpoole.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Housing & Community Dev",
+    "category": "Planning & Economic Development",
+    "description": "County and metro economic and demographic projections to 2060, sold as downloadable data to state and local governments and planners - exhibited at TRB 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: TRB 2027",
     "researched": true
   }
 ]

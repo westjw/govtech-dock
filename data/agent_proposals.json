@@ -414214,7 +414214,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.4manalytics.com/",
   "evidence_checked_on": "2026-10-26",
@@ -414223,7 +414223,10 @@
    "why": "Read at 4manalytics.com (4m-analytics.com did not answer). 4M sells an AI subsurface-utility mapping and data platform for infrastructure project planning, and its customer stories name Georgia DOT, a",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Benchmark Analytics'; two readers and a skeptic read both companies' own sites and agreed they are different firms (The only shared word is the generic 'Analytics'. The two firms have different domains and do unrelated work: 4M maps underground utilities f)"
  },
  "card:aetheros inc": {
   "kind": "card",
@@ -414676,7 +414679,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.buzzsolutions.com/",
   "evidence_checked_on": "2026-10-26",
@@ -414685,7 +414688,10 @@
    "why": "Read at buzzsolutions.com. Buzz sells PowerAI, a visual-AI platform that analyses utility inspection images, and its homepage cites Troy, Alabama, 'a city utility serving 7,800 customers'. Buzz Seatin",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Buzz Seating'; two readers and a skeptic read both companies' own sites and agreed they are different firms (The only shared word is 'Buzz'. Buzz Solutions sells AI inspection of grid assets. Buzz Seating is an office-chair maker.)"
  },
  "card:celplan technologies, inc": {
   "kind": "card",
@@ -414790,7 +414796,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cgi.com/us/en-us/california",
   "evidence_checked_on": "2026-10-26",
@@ -414799,7 +414805,10 @@
    "why": "CGI's US state and local government page lists products sold to state and local agencies, among them CGI Advantage, CGI OverCite and CGI EngageHub, and its utilities page lists OpenGrid360. CGI Digita",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'CGI Digital'; two readers and a skeptic read both companies' own sites and agreed they are different firms (The card is CGI Inc., the global IT firm (cgi.com) that sells CGI Advantage and OpenGrid360. The on-file CGI Digital (aka CGI Digital/HelloN)"
  },
  "card:claroty": {
   "kind": "card",
@@ -414907,7 +414916,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cleanpower.com/powerclerk/program-locator/",
   "evidence_checked_on": "2026-10-26",
@@ -414916,7 +414925,10 @@
    "why": "cleanpower.com sells PowerClerk, WattPlan and FleetView to 'Utility Industry & Energy Agencies' for interconnection and program workflows. Camfil Clean Air Solutions is an unrelated filtration supplie",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Power DMS by NEOGOV'; two readers and a skeptic read both companies' own sites and agreed they are different firms (The only shared word is 'Power'. Clean Power Research makes utility interconnection and solar data software. PowerDMS is NEOGOV's public-saf)"
  },
  "card:cniguard": {
   "kind": "card",
@@ -416176,7 +416188,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://egm.net/about/",
   "evidence_checked_on": "2026-10-26",
@@ -416185,7 +416197,10 @@
    "why": "egm.net sells Meta-Alert line sensors plus analytics for fault detection and location, and its About page says it serves 'investor-owned utilities (IOUs), electric cooperatives, and municipal utilitie",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Spring City Electrical'; two readers and a skeptic read both companies' own sites and agreed they are different firms (The only shared word is 'Electrical'. EGM makes powerline sensors and analytics. Spring City Electrical is a street-light and lamp-post foun)"
  },
  "card:electron": {
   "kind": "card",
@@ -416461,7 +416476,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.ensightplus.com/",
   "evidence_checked_on": "2026-10-26",
@@ -416470,7 +416485,10 @@
    "why": "ensightplus.com sells field-operations software (work orders, scheduling, asset and inventory tracking) 'built for utilities, utility contractors, and municipalities'. DataWorks Plus is an unrelated c",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Ensight Technologies'; two readers and a skeptic read both companies' own sites and agreed they are different firms (Same root word, but these are two different firms on different domains. Ensight Plus makes field service management software for utilities. )"
  },
  "card:envelio inc": {
   "kind": "card",
@@ -416692,7 +416710,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://etap.com/industries/utility-distribution",
   "evidence_checked_on": "2026-10-26",
@@ -416701,7 +416719,10 @@
    "why": "etap.com sells power-system design, analysis and operations software (digital twin, ADMS, SCADA, microgrid controllers) and lists Utility Distribution and Government & Defense among its industries. Op",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Operation Parent'; two readers and a skeptic read both companies' own sites and agreed they are different firms ('Operation Technology' is ETAP's legal name. It shares only 'Operation' with Operation Parent, a nonprofit that helps parents talk with thei)"
  },
  "card:exodigo": {
   "kind": "card",
@@ -419575,7 +419596,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.pcienergysolutions.com/",
   "evidence_checked_on": "2026-10-26",
@@ -419584,7 +419605,10 @@
    "why": "pcienergysolutions.com sells ETRM, bid-to-bill and outage software to utilities, and its case studies include 'a large cooperative'. Nimble Energy is unrelated.",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Nimble Energy'; two readers and a skeptic read both companies' own sites and agreed they are different firms (The only shared word is 'Energy'. PCI makes energy trading (ETRM) and bid-to-bill software. Nimble Energy is on file as AI utility-bill and )"
  },
  "card:pcitek": {
   "kind": "card",
@@ -420151,7 +420175,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://resilientlink.com/",
   "evidence_checked_on": "2026-10-26",
@@ -420160,7 +420184,10 @@
    "why": "resilientlink.com sells incident data exchange and call-flow analytics software for 911 PSAPs and emergency communications centers. Resilient Structures is a different company.",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Resilient Structures'; two readers and a skeptic read both companies' own sites and agreed they are different firms (The only shared word is 'Resilient'. Resilient Link is a PSAP/911 software startup in Shawnee, KS. Resilient Structures is a utility-structu)"
  },
  "card:rtds technologies, inc": {
   "kind": "card",
@@ -420778,7 +420805,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.sew.ai/industry/municipalities",
   "evidence_checked_on": "2026-10-26",
@@ -420787,7 +420814,10 @@
    "why": "sew.ai sells customer, workforce and AI platforms to energy and water utilities and municipalities, with case studies for the City of Toledo and Oklahoma City Water Utilities. Mueller Water Products i",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Mueller Water Products'; two readers and a skeptic read both companies' own sites and agreed they are different firms (SEW is a customer, billing and field-service software platform for energy and water utilities. Mueller Water Products makes hydrants, valves)"
  },
  "card:smilics usa inc": {
   "kind": "card",
@@ -422104,7 +422134,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.weavegrid.com/news/north-carolinas-electric-cooperatives-launches-evconnectnc-powered-by-weavegrid-to-maximize-charging-during-lower-demand-and-power-cost-periods",
   "evidence_checked_on": "2026-10-26",
@@ -422113,7 +422143,10 @@
    "why": "weavegrid.com sells the DISCO DERMS platform for utility EV and flexible-load orchestration. It names a co-op buyer: 'North Carolina's Electric Cooperatives Launches EVConnectNC, Powered by WeaveGrid'",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'WEAVE'; two readers and a skeptic read both companies' own sites and agreed they are different firms (WeaveGrid sells EV and battery grid-orchestration (DERMS) software to electric utilities. The on-file WEAVE is a supplier with no website, s)"
  },
  "card:windborne systems": {
   "kind": "card",
@@ -423880,7 +423913,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://alpinesoftware.com/",
   "evidence_checked_on": "2026-10-26",
@@ -423889,7 +423922,10 @@
    "why": "alpinesoftware.com sells RedAlert, a NERIS-certified fire records management system used by '1,000+ fire departments'; it is a fire software firm in Rochester NY, unrelated to Alpine Armoring (armored",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Alpine Armoring'; two readers and a skeptic read both companies' own sites and agreed they are different firms (Alpine Software, of Rochester NY, makes the RedAlert fire records management software. Alpine Armoring, near Washington DC, builds armored v)"
  },
  "card:argos connected solutions": {
   "kind": "card",
@@ -424522,7 +424558,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "rejected",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.handtevy.com/",
   "evidence_checked_on": "2026-10-26",
@@ -424531,7 +424567,10 @@
    "why": "pediatricemergencystandards.com redirects to handtevy.com (its About page names Pediatric Emergency Standards), selling Handtevy Mobile dosing/protocol software to EMS agencies, hospitals and states; ",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-round",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "same company as Handtevy on the board: tagged with the show and given the name"
  },
  "card:respondermap": {
   "kind": "card",
@@ -424696,7 +424735,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://simsushare.com/",
   "evidence_checked_on": "2026-10-26",
@@ -424705,7 +424744,10 @@
    "why": "simsushare.com sells fire simulation and training software that builds scenarios from a department's own photos, quoting Fresno City Fire Department; nothing to do with Share Our Strength.",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Share Our Strength'; two readers and a skeptic read both companies' own sites and agreed they are different firms (SimsUshare makes fire simulation training software. Share Our Strength is the No Kid Hungry child-nutrition nonprofit. They share only the w)"
  },
  "card:streetwise response software": {
   "kind": "card",
@@ -424753,7 +424795,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.streetwisecadlink.com/",
   "evidence_checked_on": "2026-10-26",
@@ -424762,7 +424804,10 @@
    "why": "streetwiseresponse.com did not answer, but streetwisecadlink.com sells StreetWise CADlink tablet MDT, Responder app, station SmartBoards and CADuceus lightweight CAD 'Built Specifically for Fire & EMS",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Critical Response Group. Inc.'; two readers and a skeptic read both companies' own sites and agreed they are different firms (StreetWise CADLink is a fire and EMS tablet response product from Hangar 14 Solutions, LLC of Mooresville, NC. Critical Response Group makes)"
  },
  "card:tango tango inc": {
   "kind": "card",
@@ -425041,7 +425086,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://commandestablished.com/",
   "evidence_checked_on": "2026-10-26",
@@ -425050,7 +425095,10 @@
    "why": "commandestablished.com sells fire department management software (incidents with NERIS/NFIRS, apparatus, personnel, training, hydrants, pre-plans) built for volunteer fire departments, so it is govtec",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Tablet Command'; two readers and a skeptic read both companies' own sites and agreed they are different firms (Command Established is its own fire-department records and management platform (NERIS, apparatus, personnel, hydrants). Tablet Command, Inc.)"
  },
  "card:commandsim": {
   "kind": "card",
@@ -425155,7 +425203,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.decon-track.com/",
   "evidence_checked_on": "2026-10-26",
@@ -425164,7 +425212,10 @@
    "why": "decon-track.com sells a real-time exposure-tracking platform for fire departments ('empowers chiefs and city administrators to enforce NFPA compliance'), so it is a fire-service software vendor and ha",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Genesis Rescue Systems Hose Decon System (HDS)'; two readers and a skeptic read both companies' own sites and agreed they are different firms (DECON-TRACK is exposure-tracking software for fire departments, bilingual EN/FR and built by a fire-service veteran. Genesis Rescue Systems,)"
  },
  "card:e.f. johnson company": {
   "kind": "card",
@@ -425497,7 +425548,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.decisionlens.com/",
   "evidence_checked_on": "2026-10-26",
@@ -425506,7 +425557,10 @@
    "why": "decisionlens.com sells a government planning, prioritization and budgeting platform that lists 'State & Local Governments' and transportation planning among its sectors next to federal/defense, so it ",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Decision Optimization Technology'; two readers and a skeptic read both companies' own sites and agreed they are different firms (Decision Lens sells government planning and budgeting software. Decision Optimization Technology (DOT) is asset-management and capital-plann)"
  },
  "card:drivewyze, inc": {
   "kind": "card",
@@ -426304,7 +426358,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "rejected",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.umovity.com/en",
   "evidence_checked_on": "2026-10-26",
@@ -426313,7 +426367,10 @@
    "why": "umovity.com is the brand that unites Econolite and PTV Group ('The products and services under the Umovity brand are created by the company groups Econolite and PTV') and sells traffic modeling, manag",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-round",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "same company as Econolite on the board: tagged with the show and given the name"
  },
  "card:wdm usa": {
   "kind": "card",
@@ -426418,7 +426475,7 @@
   "cobid": null,
   "by": "agent:card-research (2026-10-26 DTECH/FDIC/TRB round, researcher + blind second reader)",
   "at": "2026-10-26T13:22:48-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.woodsandpoole.com/",
   "evidence_checked_on": "2026-10-26",
@@ -426427,6 +426484,9 @@
    "why": "woodsandpoole.com sells county and metro economic and demographic projection databases (data to 2060), and says 'Users of Woods & Poole data include public utilities, state and local government, consu",
    "by": "agent:second-reader (blind)",
    "agree": true
-  }
+  },
+  "ruled_by": "agent:card-door",
+  "ruled_on": "2026-10-26",
+  "ruled_why": "held only for sharing a word with 'Chmura Economics & Analytics'; two readers and a skeptic read both companies' own sites and agreed they are different firms (Woods & Poole Economics is a small independent firm in Washington DC that sells county economic and demographic projections to 2060. Chmura )"
  }
 }

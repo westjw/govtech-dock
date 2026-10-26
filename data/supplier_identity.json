@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T13:33:20-04:00",
+ "generated": "2026-10-26T14:36:30-04:00",
  "verdicts": {
   "theirs": "the website on file names them",
   "unconfirmed": "the website on file answers but does not state their full name - usually an acronym, brand or parent; likely theirs, not confirmed",
@@ -9522,12 +9522,17 @@
    "website_was": null
   },
   "fieldflex-mobile": {
-   "url": "https://fieldflex.com",
+   "url": "https://www.fieldflex.com",
+   "final": "https://www.fieldflex.com",
    "says": "FieldFLEX | EAM Software, Tools, Resources FieldFLEX is the only IBM certified mobile platform. Discover why our EAM sof",
-   "tried": 7,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "fieldflex",
+    "mobile"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://www.fieldflex.com"
   },
   "flatiron-dragados": {
    "url": "https://www.fdcorp.com",

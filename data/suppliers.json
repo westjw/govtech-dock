@@ -19557,12 +19557,12 @@
  {
   "id": "fieldflex-mobile",
   "name": "FieldFLEX Mobile",
-  "website": null,
+  "website": "https://www.fieldflex.com",
   "location": null,
   "year_founded": null,
   "sector": "Public Works",
   "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at PWX 2026, AWWA ACE 2026, WEFTEC 2026",
+  "description": "Equipment / Components - exhibited at PWX 2026, AWWA ACE 2026, WEFTEC 2026, DISTRIBUTECH 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -19575,8 +19575,11 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "PWX 2026; WEFTEC 2026",
-  "researched": false
+  "source": "PWX 2026; WEFTEC 2026; DISTRIBUTECH 2026",
+  "researched": false,
+  "also_known_as": [
+   "FieldFLEX"
+  ]
  },
  {
   "id": "fight-crime-invest-in-kids",
