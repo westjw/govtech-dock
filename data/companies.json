@@ -14288,104 +14288,14 @@
         "Email and SMS tools let an organization or municipality get the word out about what it offers. Reporting and analytics are customizable. The company says its business is routinely and independently assessed for compliance to various security standards. A custom organization app powered by ACTIVENet or Camp & Class Manager gives access to core functionality at any hour.",
         "The company states that it operates across 103 countries. Its history page records that ACTIVE Network was acquired by Vista Equity Partners. The same page notes the opening of its Dallas headquarters. Earlier entries list the acquisition of ReserveAmerica and a strategic alliance agreement with DigitalTown."
       ],
-      "quote": {
-        "text": "ACTIVE offers a variety of scalable management solutions to organizations and municipalities making a positive impact within their communities around the world.",
-        "url": "https://www.activenetwork.com"
-      },
-      "provenance": [
-        {
-          "p": 0,
-          "s": 0,
-          "url": "https://www.activenetwork.com",
-          "quote": "Intelligent Activity Management Software for Communities & Organizers"
-        },
-        {
-          "p": 0,
-          "s": 1,
-          "url": "https://www.activenetwork.com/case-studies/chico-area-recreation-park-district",
-          "quote": "Camps Classes Education Endurance Parks"
-        },
-        {
-          "p": 0,
-          "s": 2,
-          "url": "https://www.activenetwork.com",
-          "quote": "ACTIVE offers a variety of scalable management solutions to organizations and municipalities making a positive impact within their communities around the world."
-        },
-        {
-          "p": 1,
-          "s": 0,
-          "url": "https://www.activenetwork.com",
-          "quote": "Get the word out about your organization or municipality and all it offers through our easy-to-use email and SMS tools."
-        },
-        {
-          "p": 1,
-          "s": 1,
-          "url": "https://www.activenetwork.com",
-          "quote": "Our customizable reporting and analytics spare no details and provides the data you need to grow and flourish."
-        },
-        {
-          "p": 1,
-          "s": 2,
-          "url": "https://www.activenetwork.com",
-          "quote": "Our business is routinely and independently assessed for compliance to various security standards."
-        },
-        {
-          "p": 1,
-          "s": 3,
-          "url": "https://www.activenetwork.com/products",
-          "quote": "With a custom organization app powered by ACTIVENet or Camp & Class Manager, you can access core functionality 24/7 from anywhere."
-        },
-        {
-          "p": 2,
-          "s": 0,
-          "url": "https://www.activenetwork.com/case-studies/chico-area-recreation-park-district",
-          "quote": "operates across 103 countries"
-        },
-        {
-          "p": 2,
-          "s": 1,
-          "url": "https://www.activenetwork.com/about-us",
-          "quote": "ACTIVE Network is also acquired by Vista Equity Partners."
-        },
-        {
-          "p": 2,
-          "s": 2,
-          "url": "https://www.activenetwork.com/about-us",
-          "quote": "ACTIVE also celebrates the opening of its Dallas headquarters"
-        },
-        {
-          "p": 2,
-          "s": 3,
-          "url": "https://www.activenetwork.com/about-us",
-          "quote": "ACTIVE Network acquires ReserveAmerica, signs a strategic alliance agreement with DigitalTown"
-        }
-      ],
-      "sources": [
-        {
-          "url": "https://www.activenetwork.com",
-          "sha": "ce591bce0bdd7aad",
-          "fetched_on": "2026-09-03"
-        },
-        {
-          "url": "https://www.activenetwork.com/products",
-          "sha": "7af73611373abbe6",
-          "fetched_on": "2026-09-03"
-        },
-        {
-          "url": "https://www.activenetwork.com/about-us",
-          "sha": "e1cbe7bf1180314b",
-          "fetched_on": "2026-09-03"
-        },
-        {
-          "url": "https://www.activenetwork.com/case-studies/chico-area-recreation-park-district",
-          "sha": "e3491f2b56b4745e",
-          "fetched_on": "2026-09-03"
-        }
-      ],
-      "written_on": "2026-09-09",
-      "by": "agent:descriptions-03",
+      "quote": null,
+      "provenance": [],
+      "sources": [],
+      "written_on": "2026-09-29",
+      "by": "owner",
       "ruled_by": "owner",
-      "ruled_on": "2026-09-09"
+      "ruled_on": "2026-09-29",
+      "hand_written": true
     },
     "also": [
       {
@@ -14426,7 +14336,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "buyer_checked_on": "2026-09-30",
+    "sells_to_gov": "yes",
+    "buyer_source": "owner (owner)",
+    "buyer_mix": "gov_and_business"
   },
   {
     "id": "amilia",
@@ -14581,10 +14495,22 @@
       {
         "id": "bookking",
         "why": "Both sell registration and facility booking to Canadian and US municipal rec departments"
+      },
+      {
+        "id": "rec",
+        "why": "chosen by the owner"
+      },
+      {
+        "id": "myrec-com",
+        "why": "chosen by the owner"
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "buyer_checked_on": "2026-09-30",
+    "sells_to_gov": "yes",
+    "buyer_source": "owner (owner)",
+    "buyer_mix": "gov_only"
   },
   {
     "id": "daxko",
@@ -14627,10 +14553,33 @@
       {
         "id": "xplor-recreation",
         "why": "Both sell membership and booking software to community recreation centers"
+      },
+      {
+        "id": "bookking",
+        "why": "chosen by the owner"
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "buyer_checked_on": "2026-09-30",
+    "profile": {
+      "paragraphs": [
+        "Daxko sells membership management software and built-in payments to health and wellness organizations. Its original and core market is nonprofit community organizations: YMCAs, Boys & Girls Clubs, JCCs and community centers. For them it offers Daxko Operations and Daxko Core, which cover membership, program and child care registration, scheduling, billing, point-of-sale, facility access and fundraising, plus Daxko Engage and Engage Pro for member engagement and retention. Over time it has added a large portfolio for private fitness operators. Club Automation and CSI serve health clubs and multipurpose facilities. Zen Planner and SugarWOD serve boutique studios, CrossFit-style gyms and martial arts schools. Motionsoft, Daxko Exercise and FitnessForce serve multi-location and franchise operators, with FitnessForce built for international markets. Other add-ons include Daxko Payments, GroupEx Pro for class scheduling, Playerspace for league management, Elevate Wellness, revenue recovery services, and newer AI products (a FrontDesk assistant, AI-built websites and member analytics).",
+        "Daxko replaces an operator's separate systems for member records, billing, class and program scheduling, check-in and marketing with one system of record. For a YMCA, that means members join, register for programs, book classes and pay online, and the front desk handles check-in, point-of-sale and billing in the same platform. Finance teams get the accounting and fundraising tools nonprofits need. Payments are a large part of the business model: Daxko processes the recurring dues and fees that run through the software, and its revenue recovery service chases failed payments. The company says its software runs in about 19,000 fitness and wellness facilities in 55 countries, serving more than 25 million members. It sells directly, and I found no government contract vehicles. One caveat for your list: Daxko's buyers are nonprofits and private gyms, not government agencies, so it sits next to govtech rather than in it. Its main public-sector overlap is municipal rec centers that run like YMCAs.",
+        "Daxko was founded in 1998 and is headquartered at 600 University Park Place in Birmingham, Alabama, with a second hub in Denver. Pamlico Capital backed it earlier and sold to GI Partners in September 2016, when Daxko had about 1,200 customers and 195 employees. In October 2021, Genstar Capital joined GI Partners as a co-investor in a recapitalization meant to fund product development, sales and acquisitions. Much of the current brand lineup came from that acquisition strategy."
+      ],
+      "quote": null,
+      "provenance": [],
+      "sources": [],
+      "written_on": "2026-09-30",
+      "by": "owner",
+      "ruled_by": "owner",
+      "ruled_on": "2026-09-30",
+      "hand_written": true
+    },
+    "sells_to_gov": "yes",
+    "buyer_source": "owner (owner)",
+    "buyer_mix": "gov_and_business"
   },
   {
     "id": "leagueapps",
@@ -20588,10 +20537,22 @@
       {
         "id": "etrak-recreation-software",
         "why": "Both sell cloud registration, memberships and reservations to parks agencies"
+      },
+      {
+        "id": "rec",
+        "why": "chosen by the owner"
+      },
+      {
+        "id": "bookking",
+        "why": "chosen by the owner"
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "buyer_checked_on": "2026-09-30",
+    "sells_to_gov": "yes",
+    "buyer_source": "owner (owner)",
+    "buyer_mix": "gov_only"
   },
   {
     "id": "barkpass",
@@ -69282,7 +69243,7 @@
     "location": null,
     "year_founded": 2012,
     "sector": "Parks & Rec",
-    "category": "Suppliers & Services",
+    "category": "Youth Sports & Leagues",
     "description": "Group communication app for teams and leagues - exhibited at AB Show 2026",
     "ats": {
       "type": "unknown",
@@ -98300,8 +98261,8 @@
   },
   {
     "id": "bookking",
-    "name": "Bookking",
-    "website": "https://www.bookking.ca",
+    "name": "Univerus Sport & Recreation (Bookking)",
+    "website": "https://www.univerussportandrecreation.com/",
     "location": "Ottawa, Ontario, Canada",
     "year_founded": 1997,
     "sector": "Parks & Rec",
@@ -98323,8 +98284,9 @@
     "source": "competitor sweep",
     "parent": "Univerus",
     "also_known_as": [
-      "Univerus Sport & Rec",
-      "Book King"
+      "Book King",
+      "Bookking",
+      "Univerus Sport & Rec"
     ],
     "also": [
       {
@@ -98357,10 +98319,40 @@
       {
         "id": "vermont-systems",
         "why": "Both sell facility reservation and scheduling modules to municipal parks and rec agencies"
+      },
+      {
+        "id": "rec",
+        "why": "chosen by the owner"
+      },
+      {
+        "id": "recdesk",
+        "why": "chosen by the owner"
+      },
+      {
+        "id": "myrec-com",
+        "why": "chosen by the owner"
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "buyer_checked_on": "2026-09-30",
+    "profile": {
+      "paragraphs": [
+        "Univerus Sport & Recreation is the sport and recreation division of Univerus Software Inc. It sells two cloud products to public-sector and institutional buyers. Univerus Rec is recreation management software for municipal parks and recreation departments, community centres, campus recreation at universities and colleges, camps and nonprofits. It covers facility booking across multiple locations, online program registration (custom pricing, discounts, waitlists, attendance, digital waivers), membership management (family accounts, recurring payments, a self-service member portal), point-of-sale with multiple registers and inventory, and staff scheduling with shift trading and certification tracking. Univerus Sport is aimed at university and college athletic departments, school district sports programs and leagues. It handles athlete registration, athlete and coach records, eligibility and compliance tracking, email and SMS messaging, team travel, wellness checks and historical awards. Both products run on a shared \"UNITY\" platform with single sign-on.",
+        "The pitch is that one system replaces paper forms, spreadsheets and older recreation systems. In Univerus Rec, a resident books a gym or field, signs up for a class or buys a family membership through the online portal or on mobile. Payment goes through Univerus's own payment processing. Staff then run the front desk from the same system, with scheduling, reporting and financials all in one place. It also connects to TeamLinkt, a league-management tool, and has an API. On the athletics side, Univerus Sport takes eligibility and compliance paperwork out of spreadsheets and email and tracks it against a central athlete record. The division says it has more than 500 sport and recreation clients, including about 325 municipalities and 100+ universities and organizations, and manages over 83,000 athletes. Its customers are mostly in Canada, with a growing U.S. base; recent wins include the Township of Champlain and Carleton's Dominion-Chalmers Centre."
+      ],
+      "quote": null,
+      "provenance": [],
+      "sources": [],
+      "written_on": "2026-09-30",
+      "by": "owner",
+      "ruled_by": "owner",
+      "ruled_on": "2026-09-30",
+      "hand_written": true
+    },
+    "sells_to_gov": "yes",
+    "buyer_source": "owner (owner)",
+    "buyer_mix": "gov_and_business"
   },
   {
     "id": "rectimes",

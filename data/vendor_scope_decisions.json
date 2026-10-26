@@ -967,5 +967,31 @@
    "to": "candidates",
    "on": "2026-09-26"
   }
+ },
+ "continental-utility-solutions-inc": {
+  "call": "in",
+  "name": "Continental Utility Solutions, Inc.",
+  "on": "2026-10-24",
+  "at": "2026-10-24T15:26:19-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Utility billing and customer information software with a customer web payment portal and mobile meter reading, sold to municipal and district water and electric utilities.",
+   "website": "http://www.cusi.com",
+   "source_event": "AWWA ACE 2026"
+  }
+ },
+ "dazos": {
+  "call": "in",
+  "name": "Dazos",
+  "on": "2026-10-24",
+  "at": "2026-10-24T15:26:33-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Behavioral health CRM covering admissions, marketing, insurance verification, and billing for treatment facilities",
+   "website": "https://dazos.com",
+   "source_event": "NatCon 2026"
+  }
  }
 }

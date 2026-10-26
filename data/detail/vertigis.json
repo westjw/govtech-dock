@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "VertiGIS Updates to PHP Version 8.4.27",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "VertiGIS Accelerates Enterprise GIS Modernization for the City of Houston",
    "kind": "press",
@@ -19,8 +19,26 @@
    "url": "https://www.vertigis.com/news/enterprise-gis-modernization-houston/"
   },
   {
+   "date": "2026-10-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-25",
+   "headline": "VertiGIS Accelerates Enterprise GIS Modernization for the City of Houston",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vertigis.com/news/vertigis-networks"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-25",
+   "headline": "VertiGIS Accelerates Enterprise GIS Modernization for the City of Houston",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vertigis.com/news/vertigis-studio"
+  },
+  {
    "date": "2026-09-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Future-Ready Geospatial Data for Berlin: BIM and VertiGIS Lay the Foundation for the Next Generation of Digital Real Estate Management",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://www.vertigis.com/news/vertigis-acquires-1spatial-to-expand-its-product-portfolio-and-global-reach/"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "VertiGIS \u00fcbernimmt 1Spatial und erweitert Produktportfolio sowie globale Reichweite",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vertigis.com/de/news/vertigis-uebernimmt-1spatial-und-erweitert-produktportfolio-sowie-globale-reichweite/"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "VertiGIS acquiert 1Spatial afin d\u2019\u00e9largir son portefeuille de produits et d\u2019\u00e9tendre sa pr\u00e9sence \u00e0 l\u2019international",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vertigis.com/fr/news/vertigis-acquiert-1spatial-afin-delargir-son-portefeuille-de-produits-et-detendre-sa-presence-a-linternational/"
   }
  ]
 }

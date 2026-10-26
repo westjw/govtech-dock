@@ -13047,17 +13047,73 @@
  "bookking": {
   "about": [
    {
-    "chars": 7476,
-    "sha": "6770066cc61320b7",
-    "url": "https://www.bookking.ca"
+    "chars": 7409,
+    "sha": "5920e81d88c3835d",
+    "url": "https://www.univerussportandrecreation.com/"
+   },
+   {
+    "chars": 4981,
+    "sha": "5de50d2ff4504d87",
+    "url": "https://www.univerussportandrecreation.com/about"
    }
   ],
-  "fetched_on": "2026-09-03",
-  "news": [],
-  "no_news_page": true,
+  "fetched_on": "2026-09-30",
+  "news": [
+   {
+    "chars": 5507,
+    "sha": "2e750c5f6cbb9e98",
+    "url": "https://www.univerussportandrecreation.com/news"
+   },
+   {
+    "chars": 3423,
+    "sha": "47398c1dcb39f8f2",
+    "url": "https://www.univerussportandrecreation.com/post/carleton-dominion-chalmers-centre-joins-univerus-rec"
+   },
+   {
+    "chars": 3511,
+    "sha": "406353c83ff5387c",
+    "url": "https://www.univerussportandrecreation.com/post/township-of-champlain-joins-univerus-rec"
+   },
+   {
+    "chars": 5517,
+    "sha": "5c40d14434948533",
+    "url": "https://www.univerussportandrecreation.com/post/national-coaches-week-feature-the-work-beyond-the-whistle"
+   },
+   {
+    "chars": 3439,
+    "sha": "23adc29c398e5f35",
+    "url": "https://www.univerussportandrecreation.com/post/township-of-perth-east-joins-univerus-iwork"
+   },
+   {
+    "chars": 3324,
+    "sha": "f3a88d2cca0dad01",
+    "url": "https://www.univerussportandrecreation.com/post/municipality-of-killarney-turtle-mountain-joins-univerus-rec"
+   },
+   {
+    "chars": 3660,
+    "sha": "f937407ba28f092c",
+    "url": "https://www.univerussportandrecreation.com/post/keyano-college-joins-univerus-rec-univerus-sport-and-iwork"
+   },
+   {
+    "chars": 6612,
+    "sha": "67f6bc682fd3245c",
+    "url": "https://www.univerussportandrecreation.com/post/beyond-automation-how-ai-can-help-sports-organizations-rethink-operations"
+   },
+   {
+    "chars": 3507,
+    "sha": "109b7d1ba87b9551",
+    "url": "https://www.univerussportandrecreation.com/post/ubc-okanagan-athletics-recreation-joins-univerus-iwork"
+   },
+   {
+    "chars": 7277,
+    "sha": "61d40ad4c770b1e5",
+    "url": "https://www.univerussportandrecreation.com/post/why-athlete-compliance-and-eligibility-tracking-are-becoming-critical-in-modern-sport-management"
+   }
+  ],
+  "no_news_page": false,
   "unread": null,
   "unread_on": null,
-  "website": "https://www.bookking.ca"
+  "website": "https://www.univerussportandrecreation.com/"
  },
  "boostlingo": {
   "about": [
@@ -27776,11 +27832,11 @@
  },
  "daxko": {
   "about": [],
-  "fetched_on": "2026-09-03",
+  "fetched_on": "2026-09-30",
   "news": [],
   "no_news_page": false,
   "unread": "homepage: HTTP 429 rate limited for https://www.daxko.com, no Retry-After given",
-  "unread_on": "2026-09-03",
+  "unread_on": "2026-09-30",
   "website": "https://www.daxko.com"
  },
  "daysmart-recreation": {

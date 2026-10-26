@@ -1,0 +1,106 @@
+{
+ "active-network": {
+  "by": "owner",
+  "on": "2026-09-30",
+  "at": "2026-09-30T10:45:58-04:00",
+  "note": "",
+  "gaps_then": [
+   "board",
+   "competitors"
+  ],
+  "checklist": {
+   "website": true,
+   "board": false,
+   "writeup": true,
+   "competitors": false,
+   "news": true,
+   "supplier": true,
+   "buyer": true,
+   "founded": true,
+   "ownership": true
+  }
+ },
+ "amilia": {
+  "by": "owner",
+  "on": "2026-09-30",
+  "at": "2026-09-30T14:13:56-04:00",
+  "note": "",
+  "gaps_then": [
+   "ownership"
+  ],
+  "checklist": {
+   "website": true,
+   "board": true,
+   "writeup": true,
+   "competitors": true,
+   "news": true,
+   "supplier": true,
+   "buyer": true,
+   "founded": true,
+   "ownership": false
+  }
+ },
+ "bookking": {
+  "by": "owner",
+  "on": "2026-09-30",
+  "at": "2026-09-30T14:24:35-04:00",
+  "note": "",
+  "gaps_then": [
+   "board"
+  ],
+  "checklist": {
+   "website": true,
+   "board": false,
+   "writeup": true,
+   "competitors": true,
+   "news": true,
+   "supplier": true,
+   "buyer": true,
+   "founded": true,
+   "ownership": true
+  }
+ },
+ "communitypass": {
+  "by": "owner",
+  "on": "2026-09-30",
+  "at": "2026-09-30T14:27:47-04:00",
+  "note": "",
+  "gaps_then": [
+   "board",
+   "ownership"
+  ],
+  "checklist": {
+   "website": true,
+   "board": false,
+   "writeup": true,
+   "competitors": true,
+   "news": true,
+   "supplier": true,
+   "buyer": true,
+   "founded": true,
+   "ownership": false
+  }
+ },
+ "daxko": {
+  "by": "owner",
+  "on": "2026-09-30",
+  "at": "2026-09-30T14:32:17-04:00",
+  "note": "",
+  "gaps_then": [
+   "board",
+   "news",
+   "ownership"
+  ],
+  "checklist": {
+   "website": true,
+   "board": false,
+   "writeup": true,
+   "competitors": true,
+   "news": false,
+   "supplier": true,
+   "buyer": true,
+   "founded": true,
+   "ownership": false
+  }
+ }
+}
