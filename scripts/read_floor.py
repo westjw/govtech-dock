@@ -102,17 +102,29 @@ def brief(files: list[pathlib.Path] | None = None) -> list[dict]:
     return out
 
 
-def purge_suppliers(names: list[str], by: str, why: str) -> tuple[int, str | None]:
+def purge_suppliers(dropped: list[tuple[str, str | None]], by: str, why: str) -> tuple[int, str | None]:
     """Remove supplier rows filed off names a reader judged not a company.
 
-    Only a row with NO website: a supplier with a site is a record somebody
-    checked, whatever its name looks like. Through admin.save_decisions, so
-    the journal keeps the before-image and the blast rule sees the count.
+    `dropped` is (name, the floor's event tag). Only a row with NO website (a
+    supplier with a site is a record somebody checked, whatever its name looks
+    like), and only one this floor filed ALONE: every show the row carries is
+    this floor's. A reader on one floor judges that floor's name; a row another
+    floor filed was judged there. BuyBoard (NSBA, NRPA) and Eastern Kentucky
+    University (IAFC FRI) were deleted because a TRB or FDIC reader called the
+    name a government body (2026-10-26, undone). Through admin.save_decisions,
+    so the journal keeps the before-image and the blast rule sees the count.
     """
     import admin
+    import supplier_categories as SC
     rows = json.loads((DATA / "suppliers.json").read_text())
-    gone = {ci.norm(n) for n in names}
-    keep = [r for r in rows if not (ci.norm(r["name"]) in gone and not r.get("website"))]
+    gone: dict[str, set] = {}
+    for name, tag in dropped:
+        gone.setdefault(ci.norm(name), set()).add(tag)
+    def filed_here_alone(r: dict) -> bool:
+        tags = set(SC.tags_of(r))
+        return bool(tags) and tags <= gone[ci.norm(r["name"])]
+    keep = [r for r in rows if not (ci.norm(r["name"]) in gone and not r.get("website")
+                                    and filed_here_alone(r))]
     n = len(rows) - len(keep)
     if not n:
         return 0, None
@@ -176,6 +188,7 @@ def apply(verdicts: list[dict], by: str, write: bool) -> dict:
         if dropped:
             d["read_dropped"] = int(d.get("read_dropped") or 0) + len(dropped)
             report["dropped_names"] += [(fname, n) for n in dropped]
+            report.setdefault("dropped_tags", []).extend((n, d.get("event_tag")) for n in dropped)
         if dropped and not kept:
             # NOTHING REAL WAS ON IT. Not a swept floor with zero exhibitors -
             # a page that was never an exhibitor list, said the way the
@@ -207,7 +220,7 @@ def apply(verdicts: list[dict], by: str, write: bool) -> dict:
             latest.update({k: {**v, "by": by, "on": on} for k, v in verd.items()})
             rec.write_text(json.dumps(list(latest.values()), indent=1, ensure_ascii=False) + "\n")
     if write and report["dropped_names"]:
-        n, bad = purge_suppliers([nm for _, nm in report["dropped_names"]], by,
+        n, bad = purge_suppliers(report.get("dropped_tags") or [], by,
                                  "filed off a floor as an exhibitor; a reader judged "
                                  "the name the site's own text, not a company")
         report["suppliers_purged"], report["purge_refused"] = n, bad

@@ -1461,7 +1461,10 @@ only when the organisation's own page states them.
   candidate, not a supplier a research pass stamped); `apply` stamps a
   reader's verdict beside each name - `vendor` (is_govtech true, a research
   candidate), `supplier` (false), `not_a_company` (leaves the floor, and the
-  supplier row filed off it leaves through the journal), `unsure` (stays
+  supplier row filed off it leaves through the journal: only a row with no
+  website that THIS floor filed alone, `purge_suppliers`; a TRB and an FDIC
+  reader once deleted BuyBoard and Eastern Kentucky University, filed off NSBA,
+  NRPA and IAFC FRI, 2026-10-26, undone), `unsure` (stays
   null, held). A floor whose every name is judged is graded `read`, which
   intake accepts where it refused `menu`; a floor whose every name was the
   site's own text becomes `found: false` with the reason, so the queue shows

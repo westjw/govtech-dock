@@ -10896,6 +10896,42 @@ def check_an_infinite_scroll_floor_is_scrolled_to_its_end() -> int:
     return errors
 
 
+def check_a_floor_purges_only_what_it_filed() -> int:
+    """A reader's "not a company" on one floor removes only that floor's row.
+
+    read_floor's purge took every supplier row of that name with no website,
+    wherever it was filed: a TRB and an FDIC reader calling BuyBoard and
+    Eastern Kentucky University government bodies deleted rows NSBA, NRPA and
+    IAFC FRI had filed (2026-10-26, undone). Driven on a sandbox.
+    """
+    import read_floor as rf
+    errors = 0
+    rows = [{"id": "member-login", "name": "Member Login", "website": None,
+             "description": "exhibited at TRB 2027", "source": "conference sweep: TRB 2027"},
+            {"id": "buyboard", "name": "BuyBoard", "website": None,
+             "description": "exhibited at NRPA 2026, NSBA 2026", "source": "conference sweep: NSBA 2026"},
+            {"id": "two-floors", "name": "Two Floors", "website": None,
+             "description": "exhibited at TRB 2027, NACo 2026", "source": "TRB 2027; NACo 2026"},
+            {"id": "site-map", "name": "Site Map", "website": "https://sitemap.test",
+             "description": "exhibited at TRB 2027", "source": "TRB 2027"},
+            {"id": "keeper", "name": "Keeper Inc", "website": None,
+             "description": "exhibited at TRB 2027", "source": "TRB 2027"}]
+    keep_rf = rf.DATA
+    try:
+        with _sandbox_admin({"companies.json": [], "suppliers.json": rows}) as tmp:
+            rf.DATA = tmp
+            n, bad = rf.purge_suppliers([("Member Login", "TRB 2027"), ("BuyBoard", "TRB 2027"),
+                                         ("Two Floors", "TRB 2027"), ("Site Map", "TRB 2027")],
+                                        "selftest", "fixture")
+            left = {r["id"] for r in json.loads((tmp / "suppliers.json").read_text())}
+    finally:
+        rf.DATA = keep_rf
+    if bad or n != 1 or left != {"buyboard", "two-floors", "site-map", "keeper"}:
+        errors += fail(f"the purge took rows another floor filed, or one with a website: "
+                       f"{n} purged, {sorted(left)} left ({bad})")
+    return errors
+
+
 def check_a_floor_is_read_before_it_is_filed() -> int:
     """A name nobody judged is not a supplier, a page that was never a floor
     is not a swept floor, and a reader's verdict outranks the name rule.
@@ -10916,7 +10952,7 @@ def check_a_floor_is_read_before_it_is_filed() -> int:
     purged: list = []
     try:
         rf.DATA, rf.READS = tmp, tmp / "reads"
-        rf.purge_suppliers = lambda names, by, why: (purged.extend(names) or (len(names), None))
+        rf.purge_suppliers = lambda pairs, by, why: (purged.extend(n for n, _t in pairs) or (len(pairs), None))
         rf.settled = lambda: (set(), set(), set())      # nothing on the fixture board yet
         def floor(name, rows, quality="menu"):
             f = tmp / f"exhibitors_{name}.json"
@@ -37134,6 +37170,7 @@ def main() -> int:
     errors += check_a_platforms_name_field_is_read()
     errors += check_a_logo_wall_is_read_only_where_a_reader_said_so()
     errors += check_a_non_sled_event_is_listed_never_swept()
+    errors += check_a_floor_purges_only_what_it_filed()
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()
