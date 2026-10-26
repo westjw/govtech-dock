@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T10:20:54-04:00",
+ "generated": "2026-10-26T13:33:20-04:00",
  "verdicts": {
   "theirs": "the website on file names them",
   "unconfirmed": "the website on file answers but does not state their full name - usually an acronym, brand or parent; likely theirs, not confirmed",
@@ -91051,6 +91051,19 @@
    "why": "no guessed domain named them",
    "checked_on": "2026-10-26",
    "website_was": null
+  },
+  "wasion-americas-inc": {
+   "url": "https://wasionamericas.com/",
+   "final": "https://wasionamericas.com",
+   "says": "Wasion Americas | Leading the charge in energy efficiency through cutting-edge solutions across the United States and Ca",
+   "present": [
+    "wasion",
+    "americas"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-26",
+   "website_was": "https://wasionamericas.com/"
   }
  }
 }

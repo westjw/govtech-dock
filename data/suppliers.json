@@ -18431,7 +18431,7 @@
   "year_founded": null,
   "sector": "Transit & Parking",
   "category": "Suppliers & Services",
-  "description": "Transit driving simulators and training systems - exhibited at APTA 2026, CTAA EXPO 2026, FDIC International 2026, FDIC International 2027",
+  "description": "Transit driving simulators and training systems - exhibited at APTA 2026, CTAA EXPO 2026, FDIC International 2026, FDIC International 2027, TRB 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -18444,8 +18444,11 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "APTA 2026; CTAA EXPO 2026; FDIC International 2026; FDIC International 2027",
-  "researched": false
+  "source": "APTA 2026; CTAA EXPO 2026; FDIC International 2026; FDIC International 2027; TRB 2027",
+  "researched": false,
+  "also_known_as": [
+   "Realtime Technologies & FAAC Incorporated"
+  ]
  },
  {
   "id": "facets-consulting",
@@ -90874,7 +90877,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Smart metering hardware - exhibited at AWWA ACE 2026",
+  "description": "Smart metering hardware - exhibited at AWWA ACE 2026, DISTRIBUTECH 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -90884,7 +90887,11 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: DISTRIBUTECH 2026",
+  "also_known_as": [
+   "SAGEMCOM Energy & Telecom"
+  ]
  },
  {
   "id": "sanipur-us",
@@ -94497,7 +94504,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Telecommunications and network services - exhibited at NASCIO 2026, County Commissioners Association of Pennsylvania 2026, Maryland Municipal League 2026, DISTRIBUTECH 2027",
+  "description": "Telecommunications and network services - exhibited at NASCIO 2026, County Commissioners Association of Pennsylvania 2026, Maryland Municipal League 2026, DISTRIBUTECH 2027, DISTRIBUTECH 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -94508,7 +94515,10 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: County Commissioners Association of Pennsylvania 2026; Maryland Municipal League 2026; DISTRIBUTECH 2027"
+  "source": "conference sweep: County Commissioners Association of Pennsylvania 2026; Maryland Municipal League 2026; DISTRIBUTECH 2027; DISTRIBUTECH 2026",
+  "also_known_as": [
+   "Verizon Business"
+  ]
  },
  {
   "id": "tekstream",
@@ -94741,7 +94751,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Wireless carrier services for government - exhibited at GMIS International 2026, Maryland Municipal League 2026, Michigan Sheriffs Association 2026, IAEM 2026, FDIC International 2026",
+  "description": "Wireless carrier services for government - exhibited at GMIS International 2026, Maryland Municipal League 2026, Michigan Sheriffs Association 2026, IAEM 2026, FDIC International 2026, DISTRIBUTECH 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -94752,7 +94762,10 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: Maryland Municipal League 2026; Michigan Sheriffs Association 2026; IAEM 2026; FDIC International 2026"
+  "source": "conference sweep: Maryland Municipal League 2026; Michigan Sheriffs Association 2026; IAEM 2026; FDIC International 2026; DISTRIBUTECH 2026",
+  "also_known_as": [
+   "T-Mobile for Business"
+  ]
  },
  {
   "id": "thinkgard",
@@ -109620,7 +109633,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at Connecticut Conference of Municipalities 2026, ITS America 2026",
+  "description": "exhibited at Connecticut Conference of Municipalities 2026, ITS America 2026, DISTRIBUTECH 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -109631,7 +109644,10 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: Connecticut Conference of Municipalities 2026; ITS America 2026"
+  "source": "conference sweep: Connecticut Conference of Municipalities 2026; ITS America 2026; DISTRIBUTECH 2026",
+  "also_known_as": [
+   "Fortinet - NA"
+  ]
  },
  {
   "id": "frontline-outfitters",
@@ -141628,7 +141644,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at CTAA EXPO 2026",
+  "description": "exhibited at CTAA EXPO 2026, TRB 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -141639,7 +141655,10 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: CTAA EXPO 2026"
+  "source": "conference sweep: CTAA EXPO 2026; TRB 2027",
+  "also_known_as": [
+   "AASHTO"
+  ]
  },
  {
   "id": "nebraska-association-of-transportation-providers-natp",
@@ -168651,7 +168670,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "exhibited at DISTRIBUTECH 2026",
+  "description": "exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -168661,7 +168680,11 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: DISTRIBUTECH 2027",
+  "also_known_as": [
+   "Camlin Energy"
+  ]
  },
  {
   "id": "capgemini",
@@ -172189,7 +172212,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "exhibited at DISTRIBUTECH 2026",
+  "description": "exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -172199,7 +172222,11 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: DISTRIBUTECH 2027",
+  "also_known_as": [
+   "Novatech Llc"
+  ]
  },
  {
   "id": "novus-automation",
@@ -191290,6 +191317,26 @@
   "sector": "Public Works",
   "category": "Suppliers & Services",
   "description": "exhibited at TRB 2027",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "wasion-americas-inc",
+  "name": "Wasion Americas Inc",
+  "website": "https://wasionamericas.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Distribution transformers and electric meters made in North America for IOUs, public power utilities and cooperatives",
   "ats": {
    "type": "unknown",
    "ref": null

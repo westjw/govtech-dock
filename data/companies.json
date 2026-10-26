@@ -3322,7 +3322,7 @@
     "year_founded": 2004,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "ePCR, records, and analytics connecting EMS, fire, and hospitals - exhibited at IAFC FRI 2026",
+    "description": "ePCR, records, and analytics connecting EMS, fire, and hospitals - exhibited at IAFC FRI 2026, FDIC International 2026",
     "ats": {
       "type": "greenhouse",
       "ref": "eso"
@@ -3341,7 +3341,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add; IAFC FRI 2026",
+    "source": "direct add; IAFC FRI 2026; FDIC International 2026",
     "researched": true,
     "buyer": "Fire departments, EMS agencies, hospitals and government agencies \u2014 ESO's homepage breaks its own market into exactly those four.",
     "sells_to_gov": "yes",
@@ -3454,7 +3454,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "ESO Solutions"
+    ]
   },
   {
     "id": "imagetrend",
@@ -3753,7 +3756,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "IamResponding"
+    ]
   },
   {
     "id": "carbyne",
@@ -10084,7 +10090,7 @@
     "year_founded": 1969,
     "sector": "Public Works",
     "category": "Fleet & Asset Mgmt",
-    "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026, URISA GIS-Pro 2026, NSGIC 2026, DISTRIBUTECH 2026, FDIC International 2026, FDIC International 2027, TRB 2027",
+    "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026, URISA GIS-Pro 2026, NSGIC 2026, DISTRIBUTECH 2026, FDIC International 2026, FDIC International 2027, TRB 2027, DISTRIBUTECH 2027",
     "ats": {
       "type": "html",
       "ref": "https://www.esri.com/en-us/about/careers/job-search"
@@ -10097,7 +10103,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026; URISA GIS-Pro 2026; NSGIC 2026; DISTRIBUTECH 2026; FDIC International 2026; FDIC International 2027; TRB 2027",
+    "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026; URISA GIS-Pro 2026; NSGIC 2026; DISTRIBUTECH 2026; FDIC International 2026; FDIC International 2027; TRB 2027; DISTRIBUTECH 2027",
     "researched": true,
     "profile": {
       "paragraphs": [
@@ -10192,7 +10198,8 @@
       "ruled_on": "2026-09-08"
     },
     "also_known_as": [
-      "Esri (Environmental Systems Research Institute, In"
+      "Esri (Environmental Systems Research Institute, In",
+      "ENVIRONMENTAL SYSTEMS RESEARCH INSTITUTE, INC."
     ],
     "competitors": [
       {
@@ -18827,7 +18834,7 @@
     "year_founded": 2005,
     "sector": "Utilities & Energy",
     "category": "Street Lighting & Poles",
-    "description": "inteliLIGHT streetlight controllers and management software; 1M+ lights under management - exhibited at DISTRIBUTECH 2027",
+    "description": "inteliLIGHT streetlight controllers and management software; 1M+ lights under management - exhibited at DISTRIBUTECH 2027, DISTRIBUTECH 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -18840,7 +18847,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "TechConnect 2026; DISTRIBUTECH 2027",
+    "source": "TechConnect 2026; DISTRIBUTECH 2027; DISTRIBUTECH 2026",
     "researched": true,
     "profile": {
       "paragraphs": [
@@ -18960,7 +18967,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Flashnet SA"
+    ]
   },
   {
     "id": "itron",
@@ -29694,7 +29704,7 @@
     "year_founded": 2008,
     "sector": "General Gov",
     "category": "Finance & ERP",
-    "description": "Aerial imagery and property data analytics for county assessors, GIS, and insurers - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026",
+    "description": "Aerial imagery and property data analytics for county assessors, GIS, and insurers - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026, DISTRIBUTECH 2026",
     "ats": {
       "type": "html",
       "ref": "https://careers.eagleview.com"
@@ -29707,10 +29717,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add; IAAO 2026; URISA GIS-Pro 2026; NSGIC 2026",
+    "source": "direct add; IAAO 2026; URISA GIS-Pro 2026; NSGIC 2026; DISTRIBUTECH 2026",
     "researched": true,
     "also_known_as": [
-      "Eagleview"
+      "Eagleview",
+      "EagleView Technologies"
     ],
     "also": [
       {
@@ -43095,7 +43106,7 @@
     "year_founded": 2018,
     "sector": "Public Safety",
     "category": "Police",
-    "description": "Drone-as-first-responder software and hardware auto-launching to 911 calls",
+    "description": "Drone-as-first-responder software and hardware auto-launching to 911 calls - exhibited at FDIC International 2026",
     "ats": {
       "type": "jazzhr",
       "ref": "paladindrones"
@@ -43108,7 +43119,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "IACP 2026",
+    "source": "IACP 2026; FDIC International 2026",
     "researched": true,
     "competitors": [
       {
@@ -54819,7 +54830,7 @@
     "year_founded": 2009,
     "sector": "Public Safety",
     "category": "Fire",
-    "description": "Cloud checklist and compliance management: vehicle checks, SCBA, PPE, and narcotics for 1,400+ agencies - exhibited at IAFC FRI 2026, FDIC International 2026",
+    "description": "Cloud checklist and compliance management: vehicle checks, SCBA, PPE, and narcotics for 1,400+ agencies - exhibited at IAFC FRI 2026, FDIC International 2026, FDIC International 2027",
     "ats": {
       "type": "html",
       "ref": "https://station-automation-inc.gnahiring.com"
@@ -54832,7 +54843,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026; IAFC FRI 2026; FDIC International 2026",
+    "source": "NSA 2026; IAFC FRI 2026; FDIC International 2026; FDIC International 2027",
     "researched": true,
     "profile": {
       "paragraphs": [
@@ -54942,7 +54953,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "PSTrax.Com"
+    ]
   },
   {
     "id": "collective-data",
@@ -90758,7 +90772,7 @@
     "year_founded": 1992,
     "sector": "Public Safety",
     "category": "Police",
-    "description": "Enterprise CAD, dispatch and records platforms for police and 911 centers - exhibited at NSGIC 2026, DISTRIBUTECH 2026",
+    "description": "Enterprise CAD, dispatch and records platforms for police and 911 centers - exhibited at NSGIC 2026, DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -90772,10 +90786,11 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; NSGIC 2026; DISTRIBUTECH 2026",
+    "source": "competitor sweep; NSGIC 2026; DISTRIBUTECH 2026; DISTRIBUTECH 2027",
     "also_known_as": [
       "Hexagon Safety, Infrastructure & Geospatial",
-      "Hexagon Asset Lifecycle Intelligence"
+      "Hexagon Asset Lifecycle Intelligence",
+      "Intergraph Corporation d/b/a Hexagon Asset Lifecycle Intelligence"
     ],
     "also": [
       {
@@ -100792,7 +100807,7 @@
     "year_founded": 1896,
     "sector": "Utilities & Energy",
     "category": "Street Lighting & Poles",
-    "description": "Grid network and streetlight control solutions for utilities and cities - exhibited at DISTRIBUTECH 2026",
+    "description": "Grid network and streetlight control solutions for utilities and cities - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
       "type": "html",
       "ref": "https://www.landisgyr.com/careers"
@@ -100806,7 +100821,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; DISTRIBUTECH 2026",
+    "source": "competitor sweep; DISTRIBUTECH 2026; DISTRIBUTECH 2027",
     "profile": {
       "paragraphs": [
         "Landis+Gyr sells metering systems and grid software to utilities, and its homepage frames the work as connecting data, devices, and decisions. The metering line is described as advanced metering systems for utilities that deliver real-time data and grid visibility. Other listed offerings include communication networks, coordination of energy resources across the grid, and digital platforms for monitoring energy performance.",
@@ -100925,7 +100940,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Landis+Gyr Technology, Inc."
+    ]
   },
   {
     "id": "trilliant",
@@ -100935,7 +100953,7 @@
     "year_founded": 1985,
     "sector": "Utilities & Energy",
     "category": "Street Lighting & Poles",
-    "description": "Mesh networking platform for streetlight control and smart cities",
+    "description": "Mesh networking platform for streetlight control and smart cities - exhibited at DISTRIBUTECH 2026",
     "ats": {
       "type": "html",
       "ref": "https://trilliant.com/careers/"
@@ -100949,7 +100967,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; DISTRIBUTECH 2026",
     "competitors": [
       {
         "id": "landis-gyr",
@@ -100977,7 +100995,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Trilliant Networks Inc."
+    ]
   },
   {
     "id": "selc-ireland",
@@ -101091,7 +101112,7 @@
     "year_founded": 2007,
     "sector": "Utilities & Energy",
     "category": "Street Lighting & Poles",
-    "description": "LED streetlight fixtures and controls for utilities and municipalities",
+    "description": "LED streetlight fixtures and controls for utilities and municipalities - exhibited at DISTRIBUTECH 2027",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -101105,7 +101126,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; DISTRIBUTECH 2027",
     "competitors": [
       {
         "id": "evluma",
@@ -101141,7 +101162,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "LED Roadway Lighting Ltd & Liveable Cities"
+    ]
   },
   {
     "id": "carmanah-technologies",
@@ -121228,7 +121252,7 @@
     "year_founded": 2019,
     "sector": "Public Works",
     "category": "Fleet & Asset Mgmt",
-    "description": "GIS-based asset and work management for local government and utilities - exhibited at AWWA ACE 2026, URISA GIS-Pro 2026, NSGIC 2026",
+    "description": "GIS-based asset and work management for local government and utilities - exhibited at AWWA ACE 2026, URISA GIS-Pro 2026, NSGIC 2026, DISTRIBUTECH 2026",
     "ats": {
       "type": "recruitee",
       "ref": "vertigis"
@@ -121253,7 +121277,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; AWWA ACE 2026; URISA GIS-Pro 2026; NSGIC 2026",
+    "source": "competitor sweep; AWWA ACE 2026; URISA GIS-Pro 2026; NSGIC 2026; DISTRIBUTECH 2026",
     "buyer": "Local governments, public safety and transportation authorities, and public utilities, alongside private utilities, telecom network operators, oil and gas firms, engineering and construction companies, manufacturers and real-estate/facility managers.",
     "sells_to_gov": "yes",
     "buyer_source": "https://www.vertigis.com",
@@ -121278,7 +121302,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "VertiGIS GmbH"
+    ]
   },
   {
     "id": "traumasoft",
@@ -121717,7 +121744,7 @@
     "year_founded": 1984,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "Ambulance revenue cycle software and billing for EMS agencies - exhibited at IAFC FRI 2026",
+    "description": "Ambulance revenue cycle software and billing for EMS agencies - exhibited at IAFC FRI 2026, FDIC International 2026",
     "ats": {
       "type": "html",
       "ref": "https://digitechcomputer.com/who-we-are/careers/"
@@ -121731,7 +121758,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; IAFC FRI 2026",
+    "source": "competitor sweep; IAFC FRI 2026; FDIC International 2026",
     "competitors": [
       {
         "id": "zoll-medical",
@@ -121747,7 +121774,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Digitech Computer Inc"
+    ]
   },
   {
     "id": "tablet-command",
@@ -121970,7 +122000,7 @@
     "year_founded": 1974,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "Fire/EMS station alerting and dispatch integration for municipalities - exhibited at IAFC FRI 2026, APCO 2026",
+    "description": "Fire/EMS station alerting and dispatch integration for municipalities - exhibited at IAFC FRI 2026, APCO 2026, FDIC International 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.purvis.com/careers/"
@@ -121984,7 +122014,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; IAFC FRI 2026; APCO 2026",
+    "source": "competitor sweep; IAFC FRI 2026; APCO 2026; FDIC International 2026",
     "buyer": "City and county fire, EMS and 911 dispatch agencies (FDNY, Boston Fire, Washington DC, Jacksonville, Naperville IL, Charleston County SC, Williamson County TX) alongside a long-running federal defense business with the U.S. Navy, NIH and Fort Detrick \u2014 and, on the defense side, private prime contractors and small businesses.",
     "sells_to_gov": "yes",
     "buyer_source": "https://www.purvis.com/clients/",
@@ -122098,7 +122128,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Purvis Systems Incorporated"
+    ]
   },
   {
     "id": "zetron",
@@ -147559,7 +147592,7 @@
     "year_founded": 1986,
     "sector": "Public Works",
     "category": "Water",
-    "description": "VTScada SCADA software for municipal water and wastewater systems - exhibited at WEFTEC 2026, AWWA ACE 2026, DISTRIBUTECH 2026",
+    "description": "VTScada SCADA software for municipal water and wastewater systems - exhibited at WEFTEC 2026, AWWA ACE 2026, DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
       "type": "html",
       "ref": "https://www.vtscada.com/careers/"
@@ -147573,9 +147606,10 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; WEFTEC 2026; AWWA ACE 2026; DISTRIBUTECH 2026",
+    "source": "competitor sweep; WEFTEC 2026; AWWA ACE 2026; DISTRIBUTECH 2026; DISTRIBUTECH 2027",
     "also_known_as": [
-      "VTScada by Trihedral"
+      "VTScada by Trihedral",
+      "Trihedral, Inc."
     ],
     "competitors": [
       {
@@ -150370,7 +150404,7 @@
     "year_founded": 1992,
     "sector": "Utilities & Energy",
     "category": "Grid & Energy",
-    "description": "SCADA, EMS and ADMS control systems for municipal utilities and co-ops",
+    "description": "SCADA, EMS and ADMS control systems for municipal utilities and co-ops - exhibited at DISTRIBUTECH 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -150384,7 +150418,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; DISTRIBUTECH 2026",
     "competitors": [
       {
         "id": "survalent-technology",
@@ -150404,7 +150438,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "AspenTech"
+    ]
   },
   {
     "id": "survalent-technology",
@@ -150414,7 +150451,7 @@
     "year_founded": 1964,
     "sector": "Utilities & Energy",
     "category": "Grid & Energy",
-    "description": "SCADA, ADMS and outage management for municipal utilities and co-ops",
+    "description": "SCADA, ADMS and outage management for municipal utilities and co-ops - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
       "type": "html",
       "ref": "https://www.survalent.com/careers/"
@@ -150435,7 +150472,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; DISTRIBUTECH 2026; DISTRIBUTECH 2027",
     "profile": {
       "paragraphs": [
         "Survalent sells control room software to utilities, bringing SCADA, outage management and distribution management into one system. The company describes its buyers as electric, water and wastewater, oil and gas, renewable energy and transit utilities around the world. It argues that running a distribution network well is hard without a modern, centralized supervisory control and data acquisition system.",
@@ -150565,7 +150602,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Survalent",
+      "Themis Intelligence, a Survalent Company"
+    ]
   },
   {
     "id": "milsoft-utility-solutions",
@@ -218749,7 +218790,7 @@
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Fire",
-    "description": "Prism-IPX Systems makes paging, encrypted messaging, siren control and fire station alerting systems for public safety agencies, utilities and hospitals - exhibited at IAFC FRI 2026, APCO 2026",
+    "description": "Prism-IPX Systems makes paging, encrypted messaging, siren control and fire station alerting systems for public safety agencies, utilities and hospitals - exhibited at IAFC FRI 2026, APCO 2026, FDIC International 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -218762,8 +218803,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: IAFC FRI 2026; APCO 2026",
-    "researched": true
+    "source": "conference sweep: IAFC FRI 2026; APCO 2026; FDIC International 2026",
+    "researched": true,
+    "also_known_as": [
+      "Prism-IPX"
+    ]
   },
   {
     "id": "pulsepoint",
@@ -223655,6 +223699,855 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: NSGIC 2026",
+    "researched": true
+  },
+  {
+    "id": "arcos-inc",
+    "name": "Arcos Inc",
+    "website": "https://www.arcos-inc.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Crew callout, scheduling, storm restoration and field work software for electric and gas utilities, including municipal utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "aveva-software-llc",
+    "name": "AVEVA Software, LLC",
+    "website": "https://www.aveva.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Industrial software (PI System, SCADA, asset performance) for power and water utilities, cities and facility operators - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "claroty",
+    "name": "Claroty",
+    "website": "https://claroty.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Cyber-physical systems security platform for water utilities, public power, transportation and state and local government agencies - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "copa-data",
+    "name": "COPA-DATA",
+    "website": "https://www.copadata.com/en/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "zenon SCADA and automation software for substations, energy systems, water utilities and municipalities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "dragos",
+    "name": "Dragos",
+    "website": "https://www.dragos.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "OT cybersecurity platform, threat intelligence and response for electric, water and gas utilities, co-ops and public agencies - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "easymetering-llc",
+    "name": "Easymetering, LLC",
+    "website": "https://www.easymetering.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "AMI 2.0 metering software and edge AI for energy-loss detection and transformer monitoring at utilities, municipalities and co-ops - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "ecometricx",
+    "name": "EcoMetricx",
+    "website": "https://www.ecometricx.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "AI analytics for utility meter and customer data, demand response and load forecasting, plus software for local government - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "edmi",
+    "name": "EDMI",
+    "website": "https://www.edmi-meters.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Smart electricity, gas and water meters and the NEOS grid platform for municipal, cooperative and investor-owned utilities - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026; DISTRIBUTECH 2027",
+    "researched": true,
+    "also_known_as": [
+      "EDMI LIMITED"
+    ]
+  },
+  {
+    "id": "esmart-systems-as",
+    "name": "eSmart Systems AS",
+    "website": "https://www.esmartsystems.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Grid Vision AI software for virtual inspection and asset intelligence on power lines, sold to municipal and other electric utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "felt",
+    "name": "Felt",
+    "website": "https://felt.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Browser-based GIS mapping, field data collection and public map publishing for city and county governments, utilities and businesses - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "firescape-inc",
+    "name": "Firescape Inc",
+    "website": "https://www.firescape.ai",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Cloud geospatial software for wildfire risk and mitigation planning at electric utilities, including rural electric cooperatives - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "gridtwin",
+    "name": "Gridtwin",
+    "website": "https://gridtwin.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Interconnection screening, hosting capacity and DER forecasting software for utilities, developers and city and state energy planners - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "haivision",
+    "name": "Haivision",
+    "website": "https://www.haivision.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Video encoders, mobile video transmitters and command-center video wall software for public safety agencies, utilities, defense and broadcasters - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "homeboost",
+    "name": "HomeBoost",
+    "website": "https://www.homeboost.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Billing & Customer Systems",
+    "description": "DIY home energy assessment kits, auditor software and library lending programs that utilities and electric cooperatives offer their customers - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "irth",
+    "name": "Irth",
+    "website": "https://irthsolutions.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Fleet & Asset Mgmt",
+    "description": "811 ticket management, damage prevention, pipeline integrity and right-of-way software for utilities, telecoms and municipalities - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026; DISTRIBUTECH 2027",
+    "researched": true,
+    "also_known_as": [
+      "Irth Solutions"
+    ]
+  },
+  {
+    "id": "journyx",
+    "name": "Journyx",
+    "website": "https://journyx.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "Project time tracking and time and attendance software, used by municipal utilities and county governments among other employers - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "kevala-inc",
+    "name": "Kevala, Inc.",
+    "website": "https://www.kevala.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Grid analytics platform for DER adoption, load forecasting and distribution planning, used by utilities, state regulators and developers - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "mprest",
+    "name": "Mprest",
+    "website": "https://www.mprest.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "DERMS and asset health software for power utilities, and the mCity monitoring platform for municipalities; also builds defense C4I systems - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "noteworthy-ai",
+    "name": "Noteworthy AI",
+    "website": "https://www.noteworthy.ai/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Street Lighting & Poles",
+    "description": "Fleet-mounted AI cameras and software that inventory and inspect distribution poles, streetlights and vegetation for electric utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "oati",
+    "name": "OATI",
+    "website": "https://www.oati.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Grid operations, DERMS, smart metering and energy market software for utilities, co-ops, grid operators and municipal utilities - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026; DISTRIBUTECH 2027",
+    "researched": true,
+    "also_known_as": [
+      "Open Access Technology International Inc"
+    ]
+  },
+  {
+    "id": "pointerra",
+    "name": "Pointerra",
+    "website": "https://www.pointerra.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Fleet & Asset Mgmt",
+    "description": "Cloud 3D data and digital twin platform for transport authorities, utilities, surveyors and engineering firms - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "primate-technologies-llc",
+    "name": "Primate Technologies LLC",
+    "website": "https://www.primate-tech.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Control room visualization and video wall software for electric utilities, electric co-ops and pipeline operators - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "sytis",
+    "name": "SYTIS",
+    "website": "https://sytis.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Continuous AI thermal monitoring for early fire detection and electrical asset health, sold to fire departments and utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "ubiik-inc",
+    "name": "Ubiik Inc.",
+    "website": "https://www.ubiik.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "description": "Private LTE, mesh radio and AMI network equipment with head-end software for utilities and public safety agencies - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "check4tech-corp",
+    "name": "Check4Tech Corp",
+    "website": "https://check4tech.net/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Check4Tech Frontline readiness platform for EMS and fire departments: rig and apparatus checks, inventory, narcotics and maintenance logs - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "fireprograms-software",
+    "name": "Fireprograms Software",
+    "website": "https://fireprograms.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "FirePrograms fire RMS with NERIS reporting, inspections, staffing, training, hydrant and equipment records for career and volunteer fire departments - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "hotwash",
+    "name": "Hotwash",
+    "website": "https://www.hotwash.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Hotwash after-action review platform turning field input from incidents and training into reviews, policy insights and task books for fire departments - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "mappedin",
+    "name": "Mappedin",
+    "website": "https://www.mappedin.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Indoor mapping software for venues, with digital floor plans and building pre-plans for fire departments and emergency responders - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "respondermap",
+    "name": "ResponderMap",
+    "website": "https://www.respondermap.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "ResponderMap app sharing real-time road closure and hazard status across a municipality's fire, EMS, police and public works departments and residents - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "tango-tango-inc",
+    "name": "Tango Tango Inc",
+    "website": "https://tangotango.net/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Push-to-talk, CAD alert and fire tone platform linking phones and two-way radios for public safety agencies and school districts - exhibited at FDIC International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2026",
+    "researched": true
+  },
+  {
+    "id": "drivewyze-inc",
+    "name": "Drivewyze, Inc.",
+    "website": "https://drivewyze.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Weigh station bypass and in-cab truck safety alerts, plus e-screening, truck parking and connected-truck safety programs for state DOTs - exhibited at TRB 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: TRB 2027",
+    "researched": true
+  },
+  {
+    "id": "ms2",
+    "name": "MS2",
+    "website": "https://www.ms2soft.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Cloud traffic data management software for traffic counts and related transportation data, used by state DOTs, MPOs and local agencies - exhibited at TRB 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: TRB 2027",
+    "researched": true
+  },
+  {
+    "id": "tomtom-international",
+    "name": "TomTom International",
+    "website": "https://www.tomtom.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Map data, real-time traffic and traffic analytics for traffic authorities, plus maps and navigation for carmakers and fleets - exhibited at TRB 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: TRB 2027",
+    "researched": true
+  },
+  {
+    "id": "userful-corporation",
+    "name": "Userful Corporation",
+    "website": "https://www.userful.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Software platform for control-room video walls and operational dashboards in government, utility and security operations centers - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "utilismart-corporation",
+    "name": "Utilismart Corporation",
+    "website": "https://www.utilismartcorp.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Billing & Customer Systems",
+    "description": "Meter data management, AMI analytics and settlement software for small and mid-sized electric utilities and municipalities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
     "researched": true
   }
 ]
