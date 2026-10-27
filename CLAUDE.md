@@ -1077,6 +1077,18 @@ rulings on those counts:
   carry `sled_only`, he said "read the roles and see if that role does": a
   role is judged by its ad, because a title rule drops real SLED roles whose
   titles do not say so (Bentley "DOT", Hyland "Education", ZOLL "EMS").
+- **The daily review (owner: "yes set up the daily review").**
+  `scripts/scope_review.py brief` lists the openings on the board's default
+  that no ruling and no earlier read covers, each with its full ad where the
+  company's own feed publishes one, and the reading `rules`; a reader and a
+  skeptic return verdicts; `apply --write --by agent:...` turns B2B and
+  FEDERAL into scope rulings (journalled; a B2B call with no quote is
+  refused by name; a ruling on file is never overwritten) and records every
+  verdict in `data/scope_reviews.json` so a role is read once (seeded with
+  the 694 of 10-27). `unclear` lists what no reader could call, for the
+  owner. A scheduled task on the owner's Mac runs it daily in its own
+  worktree (~/govtech-dock-scope), redraws, runs selftest and pushes.
+  `check_the_daily_scope_review_reads_once_and_rules_only_on_quotes`.
 - **A capture answers to the scope rulings too.** `merge_manual()` never
   asked `out_of_scope()`, so two hand-captured B2B roles (SAP Concur, Nearmap)
   stayed listed after their ruling. Both builds pass `scope` now;
@@ -1562,7 +1574,9 @@ only when the organisation's own page states them.
   twin. Two words the door misread (card round, 2026-10-26): the country "US"
   in a description is not the pronoun (the write-up door already knew), and
   a legal form (Corporation, Limited, Ltd, GmbH, PLC) is not a distinctive
-  word, so two "... Corporation"s are not held as twins. `--land` with no
+  word, so two "... Corporation"s are not held as twins. `--land --keys
+  FILE` lands only the cards a round researched itself, which is how an
+  unattended run (the weekly conference scrub) must land. `--land` with no
   filter lands every pending card that passes, the owner's refused pile
   included: a round lands its own keys. **Dates:** `conference_dates.confirm` also reads `dates_source`;
   `apply_conference_reads` takes an `unannounced` read as a dated note.

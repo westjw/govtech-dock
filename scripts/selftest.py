@@ -9853,6 +9853,64 @@ def check_show_all_opens_the_department_page() -> int:
     return errors
 
 
+def check_the_daily_scope_review_reads_once_and_rules_only_on_quotes() -> int:
+    """scope_review.py: a new role is read once, and comes off only on words shown.
+
+    Owner, 2026-10-27: "yes set up the daily review" - each night's new roles
+    read as the 694 were, the clear B2B off, the unclear left for him. Driven
+    on a fixture board (no network, nothing written): `pending` offers only
+    quota-carrying US openings nobody ruled on or read; `plan` refuses a
+    verdict it does not know, an opening already ruled (a person's ruling is
+    never overwritten), one not on the board, one with no reason, and a B2B
+    or FEDERAL call with no quote; it accepts SLED, MIXED and UNCLEAR without
+    one. And the record on file covers every opening on today's default.
+    """
+    import scope_review as sr
+    errors = 0
+    def row(cid, title, quota=True, us=True):
+        return {"id": f"{cid}::{title}::x", "opening_id": f"{cid}::{title}", "company_id": cid,
+                "company": cid.title(), "title": title, "quota_carrying": quota,
+                "is_us": None if us else False}
+    board = {"postings": [row("acme", "AE"), row("acme", "AE, SMB"), row("acme", "SE", quota=False),
+                          row("acme", "AE, Paris", us=False), row("bco", "AE, SLED"), row("cco", "AE")]}
+    scope = {"bco::AE, SLED": {"in_scope": True}}
+    reviews = {"cco::AE": {"verdict": "SLED"}}
+    got = sorted(sr.pending(board, scope, reviews))
+    if got != ["acme::AE", "acme::AE, SMB"]:
+        errors += fail(f"the daily review would read {got}; only quota-carrying US roles nobody "
+                       f"ruled on or read are new")
+    verdicts = [
+        {"opening_id": "acme::AE, SMB", "verdict": "B2B", "why": "SMB", "quote": "sells to small businesses"},
+        {"opening_id": "acme::AE", "verdict": "B2B", "why": "probably commercial"},
+        {"opening_id": "bco::AE, SLED", "verdict": "B2B", "why": "x", "quote": "y"},
+        {"opening_id": "acme::Nope", "verdict": "SLED", "why": "x"},
+        {"opening_id": "cco::AE", "verdict": "MAYBE", "why": "x"},
+    ]
+    ok, bad = sr.plan(verdicts, board, scope, reviews)
+    if [r["opening_id"] for r in ok] != ["acme::AE, SMB"]:
+        errors += fail(f"plan accepted {[r['opening_id'] for r in ok]}")
+    why = dict(bad)
+    for k, must in (("acme::AE", "no quote"), ("bco::AE, SLED", "never overwritten"),
+                    ("acme::Nope", "not an opening"), ("cco::AE", "is not one of")):
+        if must not in (why.get(k) or ""):
+            errors += fail(f"plan did not refuse {k} for {must!r}: {why.get(k)!r}")
+    ok2, bad2 = sr.plan([{"opening_id": "acme::AE", "verdict": "UNCLEAR", "why": "no ad"},
+                         {"opening_id": "acme::AE, SMB", "verdict": "MIXED", "why": "both"}],
+                        board, scope, reviews)
+    if len(ok2) != 2 or bad2:
+        errors += fail(f"a verdict that keeps a role needs no quote: {bad2}")
+    if sr.plan([{"opening_id": "acme::AE", "verdict": "SLED", "why": ""}], board, scope, reviews)[0]:
+        errors += fail("a verdict with no reason was accepted")
+    # the record on file: every opening on today's default was ruled or read
+    live = json.loads((DATA / "board.json").read_text())
+    left = sr.pending(live, json.loads((DATA / "scope_decisions.json").read_text()),
+                      json.loads((DATA / "scope_reviews.json").read_text()))
+    first = {p.get("first_seen") for rs in left.values() for p in rs}
+    if left and first <= {None, ""}:
+        errors += fail(f"{len(left)} opening(s) on the board were never read, and none is new")
+    return errors
+
+
 def check_the_registration_desk_carries_its_days() -> int:
     """The front page's registration desk offers alerts.html's own days.
 
@@ -11422,6 +11480,11 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
         ruled: list = []
         pcd.proposal_rulings.rule = lambda store, k, accept, why="", by="", force=False: ruled.append((k, accept, by)) or {"ok": True}
         pcd._supplier_only_match = lambda name, website=None: None
+        # A ROUND LANDS ITS OWN KEYS (the weekly conference scrub, 2026-10-27):
+        # with keys that do not name the card that passes, nothing lands
+        res = pcd.land(store, "agent:test", keys={"card:dark", "card:low"})
+        if ruled or res["landed"]:
+            errors += fail(f"land with keys took {ruled}: a round must land only its own cards")
         res = pcd.land(store, "agent:test")
         if ruled != [("card:verified", True, "agent:test")] or res["landed"] != 1:
             errors += fail(f"land ruled {ruled}, expected only the card that passed")
@@ -37566,6 +37629,7 @@ def main() -> int:
     errors += check_the_registration_desk_carries_its_days()
     errors += check_a_capture_answers_to_the_scope_rulings()
     errors += check_show_all_opens_the_department_page()
+    errors += check_the_daily_scope_review_reads_once_and_rules_only_on_quotes()
     errors += check_the_feed_and_the_no_js_page_say_what_is_true()
     errors += check_a_cut_sentence_is_never_printed_cut()
     errors += check_an_unread_board_is_never_described_as_read()

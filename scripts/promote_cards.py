@@ -260,12 +260,20 @@ def _supplier_only_match(name: str, website: str | None = None) -> dict | None:
     return s
 
 
-def land(store: dict, by: str, limit: int | None = None) -> dict:
+def land(store: dict, by: str, limit: int | None = None, keys: set | None = None) -> dict:
+    """Land every pending card that passes - or, with `keys`, only those.
+
+    A ROUND LANDS ITS OWN KEYS. --land with no filter takes every pending
+    card that passes, the owner's held pile included (CLAUDE.md). The weekly
+    conference scrub (owner, 2026-10-27: "Weekly, Sundays") runs unattended,
+    so it hands over the keys of the cards it researched itself, and nothing
+    else can land on its run.
+    """
     if not READ.exists():
         raise SystemExit("refusing: --gate has not printed in this checkout. A door a "
                          "person has not looked at is not a door.")
     out = {"landed": 0, "suppliers_moved": 0, "refused": []}
-    todo = [(k, p) for k, p in pending(store) if passes(p)]
+    todo = [(k, p) for k, p in pending(store) if passes(p) and (keys is None or k in keys)]
     for k, p in todo[:limit] if limit else todo:
         moved, before = None, None
         if p.get("verdict") == "govtech":
@@ -310,6 +318,8 @@ def main() -> int:
     ap.add_argument("--land", action="store_true")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--by", default="agent:card-door")
+    ap.add_argument("--keys", metavar="FILE",
+                    help="a JSON list of proposal keys: --land takes only these (a round's own cards)")
     a = ap.parse_args()
     store = agents.load()
     if a.verify:
@@ -321,7 +331,8 @@ def main() -> int:
     if a.gate:
         gate(store)
     if a.land:
-        res = land(store, a.by, a.limit)
+        keys = set(json.loads(pathlib.Path(a.keys).read_text())) if a.keys else None
+        res = land(store, a.by, a.limit, keys)
         print(f"landed {res['landed']} card(s); {res['suppliers_moved']} supplier row(s) moved")
         for k, why in res["refused"]:
             print(f"   refused {k}: {why}")
