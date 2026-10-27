@@ -117,6 +117,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "UCMR 6: What Water Systems Should Know About the EPA's Next Round of Unregulated Contaminant Monitoring",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.120water.com/blog/ucmr-6-what-water-systems-should-know-about-the-epas-next-round-of-unregulated-contaminant-monitoring"
+   },
+   {
     "date": "2026-10-26",
     "date_source": "json-ld",
     "first_seen": "2026-10-26",
@@ -252,8 +261,8 @@
     "url": "https://www.120water.com/blog/the-revised-ccr-rule-changes-deadlines-and-next-steps"
    },
    {
-    "date": "2026-07-14",
-    "date_source": "json-ld",
+    "date": "2026-07-07",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "ACE\u201926 Recap: Water Industry Heroes Unite in Washington, D.C.",
     "kind": "press",
@@ -331,15 +340,6 @@
     "kind": "product",
     "kind_rule": "Introducing",
     "url": "https://www.120water.com/blog/introducing-insights"
-   },
-   {
-    "date": "2024-06-05",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "120Water Announces Brian Crow as Chief Product Officer",
-    "kind": "leadership",
-    "kind_rule": "as Chief",
-    "url": "https://www.120water.com/news/120water-announces-brian-crow-as-cpo"
    }
   ],
   "state": "items"
@@ -8012,7 +8012,7 @@
   "items": [
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-27",
     "headline": "Junior Volleyball Association Selects Ankored to Manage Background Screens and Coaches' Training",
     "kind": "contract",
@@ -8021,7 +8021,7 @@
    },
    {
     "date": "2026-10-23",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-24",
     "headline": "Understanding the difference between PA Act 33, Act 34 and Act 153 clearances for Youth Sports",
     "kind": "press",
@@ -8030,7 +8030,7 @@
    },
    {
     "date": "2026-10-22",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-22",
     "headline": "Who Needs to Complete SafeSport Training? A Guide for Coaches, Staff, and Volunteers",
     "kind": "press",
@@ -8039,7 +8039,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-15",
     "headline": "The Ultimate Guide to Youth Sports Background Checks",
     "kind": "press",
@@ -8066,7 +8066,7 @@
    },
    {
     "date": "2026-09-29",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "What Disqualifies a Coach From a Florida Level 2 Background Check (And What Happens Next)",
     "kind": "press",
@@ -8084,7 +8084,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-28",
     "headline": "How to Build Your 2027 Parks and Recreation Compliance Budget",
     "kind": "press",
@@ -8093,7 +8093,7 @@
    },
    {
     "date": "2026-09-14",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-28",
     "headline": "The Softball Club Compliance Checklist: 6 Seasonal Milestones",
     "kind": "press",
@@ -8102,7 +8102,7 @@
    },
    {
     "date": "2026-09-04",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-09",
     "headline": "CORI Check Massachusetts: 5 Softball Compliance Gaps",
     "kind": "press",
@@ -8120,7 +8120,7 @@
    },
    {
     "date": "2026-08-26",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Why Flag Football Leagues Miss Compliance Deadlines",
     "kind": "press",
@@ -8129,7 +8129,7 @@
    },
    {
     "date": "2026-08-11",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Ankored + Sprocket Sports: Compliance now lives where clubs already work",
     "kind": "press",
@@ -8578,7 +8578,7 @@
  "applied-information": {
   "checked_on": "2026-10-27",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "apply-government-solutions": {
   "checked_on": "2026-10-27",
@@ -11150,7 +11150,7 @@
   "items": [
    {
     "date": "2026-10-08",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-08",
     "headline": "Why Government Procurement Is Stuck in the Past",
     "kind": "press",
@@ -11159,7 +11159,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-07",
     "headline": "Fall 2026 Towing, Public Safety, and Auto Recycling Events: Where to Find Autura",
     "kind": "press",
@@ -11195,7 +11195,7 @@
    },
    {
     "date": "2026-08-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "2026 State of Towing Report Is Coming Soon: Share Your Data and Help Shape the Industry",
     "kind": "press",
@@ -11222,7 +11222,7 @@
    },
    {
     "date": "2026-07-31",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Takeaways Gathered by Directly Asking Tow Operators and Agencies What They Really Need",
     "kind": "press",
@@ -11285,7 +11285,7 @@
    },
    {
     "date": "2026-06-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Autura Pathways: Get to Know Ron Petras",
     "kind": "press",
@@ -11330,7 +11330,7 @@
    },
    {
     "date": "2026-05-18",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Towing Industry Events: 5 Reasons to Attend and Why",
     "kind": "press",
@@ -11348,7 +11348,7 @@
    },
    {
     "date": "2026-04-30",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Autura Spotlight: Get to Know Calvin Pitman",
     "kind": "press",
@@ -12137,7 +12137,7 @@
     "url": "https://www.babelstreet.com/about-us/newsroom/babel-street-launches-agentic-risk-intelligence"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "badger-meter": {
   "checked_on": "2026-10-27",
@@ -16224,7 +16224,7 @@
     "url": "https://blackrainbow.com/blog/customer-engagement-vital-to-blackrainbow/"
    }
   ],
-  "state": "none_found"
+  "state": "unread"
  },
  "blaise-transit": {
   "checked_on": "2026-10-27",
@@ -18686,8 +18686,8 @@
     "url": "https://www.brightlysoftware.com/blog/operational-intelligence-connecting-data-to-better-asset-decisions"
    },
    {
-    "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date": "2026-09-22",
+    "date_source": "time",
     "first_seen": "2026-09-28",
     "headline": "When experience leaves the plant floor: Protecting institutional knowledge for the next generation",
     "kind": "press",
@@ -20254,7 +20254,7 @@
   "items": [
    {
     "date": "2026-07-16",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Expands Remote Monitoring Support for Modbus-Enabled Specialty Equipment",
     "kind": "press",
@@ -20272,7 +20272,7 @@
    },
    {
     "date": "2026-04-30",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "RAC Connected introduces real\u2011time crash intelligence with CalAmp CrashBoxx",
     "kind": "product",
@@ -20281,7 +20281,7 @@
    },
    {
     "date": "2026-04-28",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Recognized by Toyota Motor Europe for Supplier Quality Excellence for Second Consecutive Year",
     "kind": "press",
@@ -20290,7 +20290,7 @@
    },
    {
     "date": "2026-03-26",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Adds Google Pub/Sub Integration to Telematics Cloud, Accelerating Data Delivery for Google Cloud Customers",
     "kind": "press",
@@ -20299,7 +20299,7 @@
    },
    {
     "date": "2026-03-05",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp To Appoint Maurizio Iperti as CEO Following Another Year of Strong Financial and Operational Performance",
     "kind": "leadership",
@@ -20308,7 +20308,7 @@
    },
    {
     "date": "2026-02-05",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Launches Next-Generation Here Comes The Bus\u00ae Parent App with Enhanced Safety and Security",
     "kind": "product",
@@ -20317,7 +20317,7 @@
    },
    {
     "date": "2026-01-27",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "The RAC and CalAmp Partner to Expand RAC Connected Telematics with Advanced Fleet Management and AI Video for UK fleets",
     "kind": "press",
@@ -20326,7 +20326,7 @@
    },
    {
     "date": "2025-12-16",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Earns Caterpillar Supplier Excellence Certification for Second Consecutive Year",
     "kind": "press",
@@ -20335,7 +20335,7 @@
    },
    {
     "date": "2025-07-31",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Launches Edge-Enabled LMU-4350LB to Power Smarter, Safer Fleets Worldwide",
     "kind": "product",
@@ -20344,7 +20344,7 @@
    },
    {
     "date": "2025-04-24",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Delivers Strong Financial Performance in 2024",
     "kind": "press",
@@ -20353,7 +20353,7 @@
    },
    {
     "date": "2025-03-27",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp Announces Headquarters Relocation to Carlsbad, CA to Streamline Operations and Strengthen Technical Hub",
     "kind": "press",
@@ -20362,7 +20362,7 @@
    },
    {
     "date": "2025-03-17",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "CalAmp to Attend North American Snow Conference in Grand Rapids, Michigan, April 6-9",
     "kind": "press",
@@ -20389,7 +20389,7 @@
    },
    {
     "date": "2024-01-24",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "Why Half of School Transportation Officials Want Improved Driver Training and Monitoring",
     "kind": "press",
@@ -20398,7 +20398,7 @@
    },
    {
     "date": "2023-11-28",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "Why OEMs are Increasingly Relying on Industrial IoT",
     "kind": "press",
@@ -20407,7 +20407,7 @@
    },
    {
     "date": "2023-10-23",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "7 Things to Look for in a Telematics Platform",
     "kind": "press",
@@ -20416,7 +20416,7 @@
    },
    {
     "date": "2023-10-23",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "OBD2 Codes Explained: A Complete Guide",
     "kind": "press",
@@ -20425,7 +20425,7 @@
    },
    {
     "date": "2023-09-30",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "Solving Data Overload in Fleet Management",
     "kind": "press",
@@ -20434,7 +20434,7 @@
    },
    {
     "date": "2023-09-30",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "The J1939 Protocol, Explained",
     "kind": "press",
@@ -20443,7 +20443,7 @@
    },
    {
     "date": "2023-09-29",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "10 types of fleet tracking technologies (and how to use them)",
     "kind": "press",
@@ -20452,7 +20452,7 @@
    },
    {
     "date": "2023-09-01",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "Top 7 Must-Have Features for a Fleet Management Solution",
     "kind": "press",
@@ -20461,7 +20461,7 @@
    },
    {
     "date": "2023-08-23",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "Tire Monitor System - Prevent Blowouts and Protect Your Drivers, Trucks, and Cargo",
     "kind": "press",
@@ -22124,7 +22124,7 @@
  "cartegraph": {
   "checked_on": "2026-10-27",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "casebase": {
   "checked_on": "2026-10-27",
@@ -23951,8 +23951,17 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "International Law Enforcement Seizes Domain of Virtualine Bulletproof Hosting Service",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.chainalysis.com/blog/virtualine-bulletproof-hosting-seizure-october-2026/"
+   },
+   {
     "date": "2026-10-26",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-26",
     "headline": "War, Shutdowns, and Licensing Reshape MENA\u2019s $443 Billion Crypto Economy",
     "kind": "press",
@@ -23960,8 +23969,8 @@
     "url": "https://www.chainalysis.com/blog/middle-east-north-africa-crypto-adoption-2026/"
    },
    {
-    "date": "2026-10-26",
-    "date_source": "index-text",
+    "date": "2026-10-14",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "North America: Inside the Growth of Agentic Commerce",
     "kind": "press",
@@ -23969,8 +23978,8 @@
     "url": "https://www.chainalysis.com/blog/north-america-crypto-adoption-2026/"
    },
    {
-    "date": "2026-10-14",
-    "date_source": "index-text",
+    "date": "2026-10-13",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "Chainalysis Reactor Withstands Daubert Scrutiny Again on Appeal",
     "kind": "press",
@@ -23978,8 +23987,8 @@
     "url": "https://www.chainalysis.com/blog/chainalysis-daubert-standard-appeal/"
    },
    {
-    "date": "2026-10-13",
-    "date_source": "index-text",
+    "date": "2026-10-09",
+    "date_source": "json-ld",
     "first_seen": "2026-10-09",
     "headline": "UK Targets Cryptomus, Heleket, TokenSpot in New Russian Sanctions",
     "kind": "press",
@@ -23988,7 +23997,7 @@
    },
    {
     "date": "2026-10-05",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "East Asia Crypto Adoption Report: South Korea\u2019s AI Trade Comes to Crypto",
     "kind": "press",
@@ -23996,8 +24005,8 @@
     "url": "https://www.chainalysis.com/blog/eastern-asia-crypto-adoption-2026/"
    },
    {
-    "date": "2026-10-05",
-    "date_source": "index-text",
+    "date": "2026-10-01",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "How AI Helped Chainalysis Investigators Trace the $387 Million North Korea Stole from Bitget",
     "kind": "press",
@@ -24005,8 +24014,8 @@
     "url": "https://www.chainalysis.com/blog/387m-bitget-theft-2026/"
    },
    {
-    "date": "2026-10-01",
-    "date_source": "index-text",
+    "date": "2026-09-30",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "OFAC Sanctions Tren de Aragua Fugitive Who Laundered ATM Heists With Crypto",
     "kind": "press",
@@ -24015,7 +24024,7 @@
    },
    {
     "date": "2026-09-30",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Singapore Leads Central & Southeast Asia and Oceania\u2019s Crypto Industry",
     "kind": "press",
@@ -24023,8 +24032,8 @@
     "url": "https://www.chainalysis.com/blog/central-southeast-asia-oceania-crypto-adoption-2026/"
    },
    {
-    "date": "2026-09-30",
-    "date_source": "index-text",
+    "date": "2026-09-23",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "2026 Global Crypto Adoption Index: World\u2019s Crypto Economy Held Firm Through the Bear Market",
     "kind": "press",
@@ -24033,7 +24042,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Latin America: Brazil Leads World in Adoption as Region\u2019s Crypto Economy Grows",
     "kind": "press",
@@ -24041,8 +24050,8 @@
     "url": "https://www.chainalysis.com/blog/latin-america-crypto-adoption-2026/"
    },
    {
-    "date": "2026-09-23",
-    "date_source": "index-text",
+    "date": "2026-09-17",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "DPRK and Iran are Leading a 5.2x Surge YoY in Blockchain-Assisted Cyberattacks",
     "kind": "press",
@@ -24059,8 +24068,8 @@
     "url": "https://www.chainalysis.com/blog/chainalysis-supports-arc-with-automatic-token-support/"
    },
    {
-    "date": "2026-09-16",
-    "date_source": "index-text",
+    "date": "2026-09-09",
+    "date_source": "json-ld",
     "first_seen": "2026-09-10",
     "headline": "OFAC and DOJ Strike Xinbi, a Multibillion-Dollar Marketplace for Cybercriminals",
     "kind": "press",
@@ -24069,7 +24078,7 @@
    },
    {
     "date": "2026-09-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-10",
     "headline": "How The $320M Exploit of Liquid Network Went Down",
     "kind": "press",
@@ -24077,8 +24086,8 @@
     "url": "https://www.chainalysis.com/blog/320m-exploit-liquid-network/"
    },
    {
-    "date": "2026-09-09",
-    "date_source": "index-text",
+    "date": "2026-09-08",
+    "date_source": "json-ld",
     "first_seen": "2026-09-09",
     "headline": "Tracing Crypto in a Narcotics Investigation: FBI Charges Alleged Opioid Distributors",
     "kind": "press",
@@ -24096,7 +24105,7 @@
    },
    {
     "date": "2026-09-03",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-09",
     "headline": "FBI Seizes $560K in Crypto From Hamas Fundraising Network",
     "kind": "press",
@@ -24132,7 +24141,7 @@
    },
    {
     "date": "2026-08-25",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "OFAC Targets Ministry of Intelligence, Crypto-for-Oil Payments in Latest Iran Sanctions",
     "kind": "press",
@@ -24158,22 +24167,13 @@
     "url": "https://www.chainalysis.com/blog/violent-crypto-wrench-attacks-2026/"
    },
    {
-    "date": "2026-08-14",
+    "date": "2026-08-10",
     "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Understanding the FATF\u2019s DeFi Report: A Functional Approach to Decentralized Finance Regulation",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.chainalysis.com/blog/understanding-fatf-defi-report-july-2026/"
-   },
-   {
-    "date": "2026-08-10",
-    "date_source": "index-text",
-    "first_seen": "2026-10-06",
-    "headline": "What FATF\u2019s 7th Crypto Compliance Report Card Means: Enforcement Must Catch Up With Legislation",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.chainalysis.com/blog/fatf-7th-targeted-update-crypto-compliance/"
    }
   ],
   "state": "items"
@@ -25963,6 +25963,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Make It Easy to Say Yes: Takeaways from TXShare Office Hours Session 3 Winning Your First Cooperative Quote",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://civicmarketplace.com/news/make-it-easy-to-say-yes-takeaways-from-txshare-office-hours-session-3-winning-your-first-cooperative-quote"
+   },
+   {
     "date": "2026-10-21",
     "date_source": "json-ld",
     "first_seen": "2026-10-21",
@@ -26177,15 +26186,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://civicmarketplace.com/news/going-to-the-grocery-store-with-a-chef-how-fairview-found-expert-guidance-for-its-erp-transition"
-   },
-   {
-    "date": "2026-06-25",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-09",
-    "headline": "Ir al supermercado con un chef: C\u00f3mo Fairview encontr\u00f3 orientaci\u00f3n experta para su transici\u00f3n de ERP",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://civicmarketplace.com/es-us/news/going-to-the-grocery-store-with-a-chef-how-fairview-found-expert-guidance-for-its-erp-transition"
    }
   ],
   "state": "items"
@@ -31229,6 +31229,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "card-date",
+    "first_seen": "2026-10-27",
+    "headline": "Washington Makes It Easier for Students to Apply for State Financial Aid",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://concoursetech.com/newsroom/washington-student-financial-aid-application"
+   },
+   {
     "date": "2026-10-26",
     "date_source": "card-date",
     "first_seen": "2026-10-26",
@@ -34063,6 +34072,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "Creatio Releases Financial Services Edition of The State of Enterprise AI Adoption Report, Revealing How Financial Institutions Are Scaling AI",
+    "kind": "product",
+    "kind_rule": "Releases",
+    "url": "https://www.creatio.com/company/news/25048"
+   },
+   {
     "date": "2026-10-19",
     "date_source": "time",
     "first_seen": "2026-10-22",
@@ -34277,15 +34295,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.creatio.com/company/news/24965"
-   },
-   {
-    "date": "2026-08-13",
-    "date_source": "time",
-    "first_seen": "2026-09-05",
-    "headline": "Avidia Bank Unifies Banking Operations on Creatio, Achieving 86% Employee Adoption in Six Months",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.creatio.com/company/news/24960"
    }
   ],
   "state": "items"
@@ -38227,7 +38236,7 @@
     "url": "https://www.dataminr.com/resources/blog/building-the-next-generation-of-risk-aware-platforms-a-partnership-approach/"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "datatech911": {
   "checked_on": "2026-10-27",
@@ -39208,8 +39217,8 @@
   "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date": "2026-10-26",
+    "date_source": "index-text",
     "first_seen": "2026-10-27",
     "headline": "Mobile LiDAR Sidewalk Mapping: 10 Compatible Sensors from Trimble, Leica, and RIEGL",
     "kind": "press",
@@ -39244,33 +39253,6 @@
     "url": "https://www.deepwalk.com/blog/turning-assessment-into-action-genoa-il-uses-deepwalk-for-sidewalk-inspections"
    },
    {
-    "date": "2026-10-23",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Sidewalk Grading Algorithm Overview",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.deepwalk.com/blog/sidewalk-grading-algorithm-overview"
-   },
-   {
-    "date": "2026-10-23",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "How To: Use DeepWalk Flex For Sidewalk Measurements",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.deepwalk.com/blog/how-to-use-deepwalk-flex-for-sidewalk-measurements"
-   },
-   {
-    "date": "2026-10-23",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Danville Prioritizes Sidewalk Access",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.deepwalk.com/blog/danville-prioritizes-sidewalk-access"
-   },
-   {
     "date": "2026-10-22",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -39280,8 +39262,17 @@
     "url": "https://www.deepwalk.com/blog/pilot-program-success-story-edina-minnesota"
    },
    {
-    "date": "2026-09-28",
-    "date_source": "json-ld",
+    "date": "2026-09-22",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Sidewalk Grading Algorithm Overview",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.deepwalk.com/blog/sidewalk-grading-algorithm-overview"
+   },
+   {
+    "date": "2026-09-21",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "How to Export Trimble Data to DeepWalk: A 3-Step Migration Guide",
     "kind": "press",
@@ -39298,8 +39289,8 @@
     "url": "https://www.deepwalk.com/blog/how-to-add-and-onboard-new-users-on-deepwalk"
    },
    {
-    "date": "2026-05-04",
-    "date_source": "json-ld",
+    "date": "2026-05-01",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "How to Reset Your Password on DeepWalk",
     "kind": "press",
@@ -39307,8 +39298,17 @@
     "url": "https://www.deepwalk.com/blog/how-to-reset-your-password-on-deepwalk"
    },
    {
+    "date": "2026-04-07",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "How To: Use DeepWalk Flex For Sidewalk Measurements",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.deepwalk.com/blog/how-to-use-deepwalk-flex-for-sidewalk-measurements"
+   },
+   {
     "date": "2026-02-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "How To: Register as a New User on DeepWalk",
     "kind": "press",
@@ -39350,6 +39350,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.deepwalk.com/blog/how-to-collect-sidewalk-and-curb-ramp-data-using-deepwalk"
+   },
+   {
+    "date": "2021-08-15",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Danville Prioritizes Sidewalk Access",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.deepwalk.com/blog/danville-prioritizes-sidewalk-access"
    }
   ],
   "state": "items"
@@ -44276,7 +44285,7 @@
     "url": "https://ecins.com/resources/mandated-reporter-resources/"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "ecivis": {
   "checked_on": "2026-10-27",
@@ -46148,7 +46157,7 @@
   "items": [
    {
     "date": "2026-09-25",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Recording Available: How Sumter County Handles 12,000+ Resident Calls Per Month with Voice AI",
     "kind": "press",
@@ -46166,7 +46175,7 @@
    },
    {
     "date": "2026-07-27",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Real-Time Oversight: How Voice AI Catches a Wrong Answer Mid-Call",
     "kind": "press",
@@ -46184,7 +46193,7 @@
    },
    {
     "date": "2026-07-24",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "One Number, Every Department: What Citywide Voice AI Actually Looks Like",
     "kind": "press",
@@ -46193,7 +46202,7 @@
    },
    {
     "date": "2026-07-22",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "The Self-Improving Phone Line: How Voice AI Closes Its Own Gaps",
     "kind": "press",
@@ -46202,7 +46211,7 @@
    },
    {
     "date": "2026-07-20",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "A Recording Is a Paper Trail, Not a Guardrail",
     "kind": "press",
@@ -46211,7 +46220,7 @@
    },
    {
     "date": "2026-07-16",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Context Sharing: Why Residents Should Never Repeat Themselves to a Second AI Agent",
     "kind": "press",
@@ -46220,7 +46229,7 @@
    },
    {
     "date": "2026-07-14",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "The One Oversight Question to Ask Before You Buy Government Voice AI",
     "kind": "press",
@@ -49339,7 +49348,7 @@
   "items": [
    {
     "date": "2026-10-13",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-14",
     "headline": "Nothing to Hide at ICMA 2026: Transparency Tiger\u2019s Guide to Long Beach",
     "kind": "press",
@@ -49348,7 +49357,7 @@
    },
    {
     "date": "2026-09-03",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-10",
     "headline": "3 Exceptional Examples of Strategic Planning in Higher Education (And Why They Work)",
     "kind": "press",
@@ -49357,7 +49366,7 @@
    },
    {
     "date": "2026-08-31",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Community Visioning: What It Is, How the Process Works, and Local Government Examples",
     "kind": "press",
@@ -49366,7 +49375,7 @@
    },
    {
     "date": "2026-08-24",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "How a School Strategic Plan Benefits its Community",
     "kind": "press",
@@ -49375,7 +49384,7 @@
    },
    {
     "date": "2026-07-28",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "How to Report on Infrastructure Projects to Council and the Public",
     "kind": "press",
@@ -49384,7 +49393,7 @@
    },
    {
     "date": "2026-06-22",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "The 5 Best Strategic Planning Software Solutions in 2026",
     "kind": "press",
@@ -49393,7 +49402,7 @@
    },
    {
     "date": "2026-06-17",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "9 Local Government Performance Analytics Dashboard Examples",
     "kind": "press",
@@ -49402,7 +49411,7 @@
    },
    {
     "date": "2026-06-10",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "ClearPoint Strategy vs Envisio: Comparing Strategy and Performance Management Software for the Public Sector",
     "kind": "press",
@@ -49465,7 +49474,7 @@
    },
    {
     "date": "2026-02-03",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Keeping the Momentum: Envisio Named to 2026 GovTech 100 Following Record-Breaking Year",
     "kind": "press",
@@ -51338,6 +51347,15 @@
     "url": "https://etatransit.com/resources/blog/the-ultimate-transit-industry-glossary-your-go-to-source-for-industry-terms/"
    },
    {
+    "date": "2024-10-23",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Automating the Repetitive: The Story Behind Tally",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://etatransit.com/resources/blog/automating-the-repetitive-the-story-behind-tally/"
+   },
+   {
     "date": "2024-10-15",
     "date_source": "json-ld",
     "first_seen": "2026-09-10",
@@ -51426,15 +51444,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://etatransit.com/resources/blog/the-key-to-transit-technology-satisfaction-effective-communication-reliable-hardware/"
-   },
-   {
-    "date": "2023-05-11",
-    "date_source": "json-ld",
-    "first_seen": "2026-10-14",
-    "headline": "The Need for Rugged Transit-Grade Computers in Harsh Transit Environments",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://etatransit.com/resources/blog/title-the-need-for-rugged-transit-grade-computers-in-harsh-transit-environments/"
    }
   ],
   "state": "items"
@@ -53583,7 +53592,7 @@
     "url": "https://extradutysolutions.com/news/extra-duty-solutions-announces-michael-nark-as-chief-executive-officer/"
    }
   ],
-  "state": "items"
+  "state": "unread"
  },
  "eyeride": {
   "checked_on": "2026-10-27",
@@ -56366,7 +56375,7 @@
     "url": "https://flashpoint.io/blog/the-human-element-turning-threat-actor-opsec-fails-into-investigative-breakthroughs/"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "flashvote": {
   "checked_on": "2026-10-27",
@@ -56493,7 +56502,7 @@
   "items": [
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "How Police Are Using License Plate Readers to Locate Suspects and Bring Missing People Home Safely",
     "kind": "press",
@@ -56502,7 +56511,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-19",
     "headline": "How Flock License Plate Reader Cameras Work: What They Capture, What They Don\u2019t, and the Guardrails Around Their Use",
     "kind": "press",
@@ -56511,7 +56520,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-07",
     "headline": "Flock Authorized as a CVE Numbering Authority by CISA",
     "kind": "press",
@@ -56995,15 +57004,6 @@
     "url": "https://www.gofmx.com/blog/business-case-facilities-management-software/"
    },
    {
-    "date": "2026-04-21",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "How to Select the Best Facilities Management Software",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
-   },
-   {
     "date": "2026-02-10",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -57011,6 +57011,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.gofmx.com/blog/fleet-management-metrics/"
+   },
+   {
+    "date": "2025-09-07",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "How to Select the Best Facilities Management Software",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
    },
    {
     "date": "2025-09-07",
@@ -57059,7 +57068,7 @@
    },
    {
     "date": "2025-03-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Facility Use Agreement 101: What to Know",
     "kind": "press",
@@ -57077,7 +57086,7 @@
    },
    {
     "date": "2024-10-17",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "What You Need to Know About Capital Improvement",
     "kind": "press",
@@ -59716,7 +59725,7 @@
  "gatekeeper-systems": {
   "checked_on": "2026-10-27",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "ge-vernova": {
   "checked_on": "2026-10-27",
@@ -62647,6 +62656,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "og:published",
+    "first_seen": "2026-10-27",
+    "headline": "6 Ways the Public Sector Can Modernize Construction Procurement",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.gordian.com/resources/modernize-construction-procurement-public-sector/"
+   },
+   {
     "date": "2026-10-13",
     "date_source": "og:published",
     "first_seen": "2026-10-13",
@@ -62861,15 +62879,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.gordian.com/resources/construction-cost-insights-report-q3-2026/"
-   },
-   {
-    "date": "2026-08-17",
-    "date_source": "og:published",
-    "first_seen": "2026-09-05",
-    "headline": "Common Mistakes Contractors Make With Job Order Contracting (and How t...",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.gordian.com/resources/job-order-contracting-contractor-mistakes/"
    }
   ],
   "state": "items"
@@ -64856,7 +64865,7 @@
  "gravity": {
   "checked_on": "2026-10-27",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "gravyty": {
   "checked_on": "2026-10-27",
@@ -70331,17 +70340,17 @@
   "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-10-14",
-    "date_source": "time",
-    "first_seen": "2026-10-14",
-    "headline": "i-PRO Introduces New Remote Head Camera That Extends Edge AI into Space-Constrained and Discreet Environments",
-    "kind": "product",
-    "kind_rule": "Introduces",
-    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-introduces-new-remote-head-camera"
+    "date": "2026-10-26",
+    "date_source": "og:published",
+    "first_seen": "2026-10-27",
+    "headline": "Notice Regarding the Impact of PHP Vulnerabilities on i-PRO Products",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/notice-regarding-impact-php-vulnerabilities-i-pro-products"
    },
    {
-    "date": "2026-10-13",
-    "date_source": "time",
+    "date": "2026-10-09",
+    "date_source": "og:published",
     "first_seen": "2026-10-14",
     "headline": "Five Cybersecurity Questions to Ask Before Buying a Security Camera",
     "kind": "press",
@@ -70349,8 +70358,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/five-cybersecurity-questions-ask-buying-security-camera"
    },
    {
-    "date": "2026-10-06",
-    "date_source": "time",
+    "date": "2026-10-02",
+    "date_source": "og:published",
     "first_seen": "2026-10-06",
     "headline": "Your Security Camera Is a Computer. Are You Securing It Like One?",
     "kind": "press",
@@ -70359,7 +70368,16 @@
    },
    {
     "date": "2026-09-24",
-    "date_source": "time",
+    "date_source": "og:published",
+    "first_seen": "2026-10-14",
+    "headline": "i-PRO Introduces New Remote Head Camera That Extends Edge AI into Space-Constrained and Discreet Environments",
+    "kind": "product",
+    "kind_rule": "Introduces",
+    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-introduces-new-remote-head-camera"
+   },
+   {
+    "date": "2026-09-18",
+    "date_source": "og:published",
     "first_seen": "2026-10-05",
     "headline": "i-PRO and Kepler Vision Technologies Partner to Improve Patient Safety Monitoring",
     "kind": "press",
@@ -70367,22 +70385,22 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-and-kepler-vision-technologies-partner-improve-patient-safety"
    },
    {
-    "date": "2026-09-22",
-    "date_source": "time",
-    "first_seen": "2026-10-05",
-    "headline": "How Emerging Technologies Are Shaping Utility Perimeter Protection",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-emerging-technologies-are-shaping-utility-perimeter-protection"
-   },
-   {
     "date": "2026-09-16",
-    "date_source": "time",
+    "date_source": "og:published",
     "first_seen": "2026-10-05",
     "headline": "i-PRO Wins Two 2026 Security Today New Product of the Year Awards",
     "kind": "press",
     "kind_rule": null,
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-wins-two-2026-security-today-new-product-year-awards"
+   },
+   {
+    "date": "2026-09-14",
+    "date_source": "og:published",
+    "first_seen": "2026-10-05",
+    "headline": "How Emerging Technologies Are Shaping Utility Perimeter Protection",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-emerging-technologies-are-shaping-utility-perimeter-protection"
    },
    {
     "date": "2026-09-08",
@@ -70394,8 +70412,8 @@
     "url": "https://i-pro.com/products_and_solutions/us-en/surveillance/newsroom/why-cybers-security-just-critical-physical-security-utilities"
    },
    {
-    "date": "2026-09-08",
-    "date_source": "time",
+    "date": "2026-09-01",
+    "date_source": "og:published",
     "first_seen": "2026-10-05",
     "headline": "Why Cyber Security Is Just as Critical as Physical Security for Utilities",
     "kind": "press",
@@ -70421,8 +70439,8 @@
     "url": "https://i-pro.com/products_and_solutions/us-en/surveillance/newsroom/how-edge-ai-reduces-false-alarms-utility-security"
    },
    {
-    "date": "2026-08-25",
-    "date_source": "time",
+    "date": "2026-08-18",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "How Edge AI Reduces False Alarms in Utility Security",
     "kind": "press",
@@ -70430,17 +70448,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-edge-ai-reduces-false-alarms-utility-security"
    },
    {
-    "date": "2026-08-12",
-    "date_source": "time",
-    "first_seen": "2026-09-05",
-    "headline": "How Utilities Can Eliminate Visibility Gaps at Remote Substations",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-utilities-can-eliminate-visibility-gaps-remote-substations"
-   },
-   {
-    "date": "2026-08-04",
-    "date_source": "time",
+    "date": "2026-08-03",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "i-PRO Named Milestone Systems\u2019 Innovation & AI Solution Partner of the Year in the US Region",
     "kind": "press",
@@ -70449,7 +70458,7 @@
    },
    {
     "date": "2026-08-03",
-    "date_source": "time",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "i-PRO ClassSecure Safety System Wins 2026 Secure Campus Award",
     "kind": "press",
@@ -70457,8 +70466,17 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-classsecure-safety-system-wins-2026-secure-campus-award"
    },
    {
+    "date": "2026-07-29",
+    "date_source": "og:published",
+    "first_seen": "2026-09-05",
+    "headline": "How Utilities Can Eliminate Visibility Gaps at Remote Substations",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-utilities-can-eliminate-visibility-gaps-remote-substations"
+   },
+   {
     "date": "2026-07-23",
-    "date_source": "time",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "Why Early Detection Is a Top Priority for Utility Perimeter Security",
     "kind": "press",
@@ -70466,8 +70484,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/why-early-detection-is-a-top-priority-for-utility-perimeter-security"
    },
    {
-    "date": "2026-07-15",
-    "date_source": "time",
+    "date": "2026-07-14",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "i-PRO Introduces Security Update Initiative to Strengthen Long-Term Trust and Compliance",
     "kind": "product",
@@ -70475,8 +70493,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-security-update-initiative"
    },
    {
-    "date": "2026-06-16",
-    "date_source": "time",
+    "date": "2026-06-11",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "Perimeter Protection Award for Security Radar",
     "kind": "press",
@@ -70484,8 +70502,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/perimeter-protection-award-security-radar"
    },
    {
-    "date": "2026-05-26",
-    "date_source": "time",
+    "date": "2026-05-20",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "2026 Security Sales & Integration MVP Award for the X\u2011series Fisheye Cameras with GenAI at the Edge",
     "kind": "press",
@@ -70493,8 +70511,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/2026-security-sales-integration-mvp-award-x-series-fisheye-cameras-genai-edge"
    },
    {
-    "date": "2026-03-19",
-    "date_source": "time",
+    "date": "2026-03-17",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "i-PRO Introduces Its First Cameras with Generative AI at the Edge",
     "kind": "product",
@@ -70502,17 +70520,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-introduces-its-first-cameras-generative-ai-edge"
    },
    {
-    "date": "2026-03-16",
-    "date_source": "time",
-    "first_seen": "2026-09-05",
-    "headline": "Join the i-PRO Team for ISC West 2026",
-    "kind": "leadership",
-    "kind_rule": "Join the",
-    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/join-i-pro-team-isc-west-2026"
-   },
-   {
-    "date": "2026-03-12",
-    "date_source": "time",
+    "date": "2026-03-11",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "i-PRO Enables Camera to Cloud Connectivity Within Milestone\u2019s Arcules VSaaS Platform",
     "kind": "press",
@@ -70520,8 +70529,17 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-enables-camera-cloud-connectivity-within-milestones-arcules-vsaas"
    },
    {
-    "date": "2025-10-22",
-    "date_source": "time",
+    "date": "2026-02-10",
+    "date_source": "og:published",
+    "first_seen": "2026-09-05",
+    "headline": "Join the i-PRO Team for ISC West 2026",
+    "kind": "leadership",
+    "kind_rule": "Join the",
+    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/join-i-pro-team-isc-west-2026"
+   },
+   {
+    "date": "2025-10-03",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "i-PRO Launches Advanced Outdoor Security Radar with AI PTZ Integration for High-Security Environments",
     "kind": "product",
@@ -70529,8 +70547,8 @@
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-launches-advanced-outdoor-security-radar-ai-ptz-integration-high"
    },
    {
-    "date": "2025-10-01",
-    "date_source": "time",
+    "date": "2025-09-30",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "i-PRO Marks Sixth Anniversary as Independent Company",
     "kind": "press",
@@ -70539,21 +70557,12 @@
    },
    {
     "date": "2025-09-25",
-    "date_source": "time",
+    "date_source": "og:published",
     "first_seen": "2026-09-05",
     "headline": "Stepping Into the Era of Generative AI in Security",
     "kind": "press",
     "kind_rule": null,
     "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/webinar-stepping-era-generative-ai-security"
-   },
-   {
-    "date": "2025-09-23",
-    "date_source": "time",
-    "first_seen": "2026-09-05",
-    "headline": "i-PRO Introduces Active Guard Version 3.0 with Generative AI",
-    "kind": "product",
-    "kind_rule": "Introduces",
-    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-introduces-active-guard-version-30-generative-ai"
    }
   ],
   "state": "items"
@@ -70567,8 +70576,17 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Modular quantum computing takes shape with l-couplers",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.ibm.com/quantum/blog/connecting-quantum-processors-with-l-couplers"
+   },
+   {
     "date": "2026-10-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-24",
     "headline": "IBM supports award-winning projects in NEDO Quantum Challenge",
     "kind": "press",
@@ -70577,7 +70595,7 @@
    },
    {
     "date": "2026-10-22",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-22",
     "headline": "Qiskit SDK v2.6 release summary",
     "kind": "press",
@@ -70748,7 +70766,7 @@
    },
    {
     "date": "2026-09-10",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-10",
     "headline": "Switzerland will soon get its first IBM Quantum System Two",
     "kind": "press",
@@ -70781,15 +70799,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.ibm.com/quantum/blog/gordon-bell-finalists-2026"
-   },
-   {
-    "date": "2026-09-09",
-    "date_source": "index-text",
-    "first_seen": "2026-09-10",
-    "headline": "Cleveland Clinic, RIKEN, IBM named Gordon Bell finalists",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://research.ibm.com/quantum/blog/gordon-bell-finalists-2026"
    }
   ],
   "state": "items"
@@ -72784,16 +72793,16 @@
    },
    {
     "date": "2026-10-23",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-24",
-    "headline": "Five Years of Evolution: The Future of Imprivata Privileged Access",
+    "headline": "Five years of evolution: The future of Imprivata Privileged Access",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.imprivata.com/blog/five-years-evolution-future-imprivata-privileged-access"
    },
    {
     "date": "2026-10-20",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-20",
     "headline": "Make secure access easier wherever work happens",
     "kind": "press",
@@ -72811,7 +72820,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-15",
     "headline": "When risk rises, security should get smarter, not harder",
     "kind": "press",
@@ -72820,7 +72829,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "Beyond compliance: Improving workforce efficiency in aged care",
     "kind": "press",
@@ -72847,7 +72856,7 @@
    },
    {
     "date": "2026-10-08",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-08",
     "headline": "Make security easy for your workforce: Take friction out of authentication",
     "kind": "press",
@@ -72856,7 +72865,7 @@
    },
    {
     "date": "2026-10-02",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
     "headline": "Why healthcare needs to ditch the password and switch to the PIN",
     "kind": "press",
@@ -75212,6 +75221,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "In a Surging Multimodal Market: Fingerprints are Still the Gold Standard",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://integratedbiometrics.com/articles/in-a-surging-multimodal-market-fingerprints-are-still-the-gold-standard"
+   },
+   {
     "date": "2026-09-28",
     "date_source": "json-ld",
     "first_seen": "2026-10-05",
@@ -75426,15 +75444,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://integratedbiometrics.com/press-releases/integrated-biometrics-achieves-compliance-for-mosip-for-android-expanding-biometric-solutions-for-developing-nations"
-   },
-   {
-    "date": "2023-05-11",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "University of Missouri Laboratory for Infectious Disease Study Finds Technology Used in Widely Deployed Fingerprint Scanners Kills The Virus that Causes COVID-19",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://integratedbiometrics.com/press-releases/university-of-missouri-laboratory-for-infectious-disease-study-finds-technology-used-in-widely-deployed-fingerprint-scanners-kills-the-virus-that-causes-covid-19"
    }
   ],
   "state": "items"
@@ -78840,53 +78849,8 @@
   "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-10-22",
-    "date_source": "index-text",
-    "first_seen": "2026-10-22",
-    "headline": "Your Step-by-Step Guide to Switching Sports Management Software",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.jerseywatch.com/blog/switching-sports-management-software"
-   },
-   {
-    "date": "2026-10-22",
-    "date_source": "index-text",
-    "first_seen": "2026-10-24",
-    "headline": "5 Best PlayMetrics Alternatives for Youth Sports Clubs",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.jerseywatch.com/blog/playmetrics-alternatives"
-   },
-   {
-    "date": "2026-10-21",
-    "date_source": "index-text",
-    "first_seen": "2026-10-24",
-    "headline": "6 Sports Connect Alternatives That Simplify Youth League Management",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.jerseywatch.com/blog/sportsconnect-alternatives"
-   },
-   {
-    "date": "2026-10-21",
-    "date_source": "index-text",
-    "first_seen": "2026-10-24",
-    "headline": "to Getting Started on Jersey Watch (in 15 minutes or less)",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.jerseywatch.com/blog/getting-started-on-jersey-watch"
-   },
-   {
-    "date": "2026-10-21",
-    "date_source": "index-text",
-    "first_seen": "2026-10-24",
-    "headline": "The Five Jobs Behind Managing a Baseball Team Well",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.jerseywatch.com/blog/how-to-manage-a-baseball-team"
-   },
-   {
     "date": "2026-10-20",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-20",
     "headline": "Feature Release: Create Teams & Filter Registrants",
     "kind": "press",
@@ -78901,15 +78865,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.jerseywatch.com/blog/how-to-split-players-into-teams-after-tryouts"
-   },
-   {
-    "date": "2026-10-20",
-    "date_source": "index-text",
-    "first_seen": "2026-10-24",
-    "headline": "5 Best Softball Website Templates for Teams & Leagues",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.jerseywatch.com/blog/softball-website-template"
    },
    {
     "date": "2026-10-18",
@@ -79063,6 +79018,60 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.jerseywatch.com/blog/youth-soccer-defensive-drills"
+   },
+   {
+    "date": "2026-08-28",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "6 Best Volleyball Club Management Software Options for 2026",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.jerseywatch.com/blog/best-volleyball-club-management-software"
+   },
+   {
+    "date": "2026-08-28",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "What Is the Best Football Team Management App for Your League?",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.jerseywatch.com/blog/best-football-team-management-apps"
+   },
+   {
+    "date": "2026-07-29",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-22",
+    "headline": "Your Step-by-Step Guide to Switching Sports Management Software",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.jerseywatch.com/blog/switching-sports-management-software"
+   },
+   {
+    "date": "2026-04-14",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-24",
+    "headline": "5 Best PlayMetrics Alternatives for Youth Sports Clubs",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.jerseywatch.com/blog/playmetrics-alternatives"
+   },
+   {
+    "date": "2025-04-24",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-24",
+    "headline": "5 Best Softball Website Templates for Teams & Leagues",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.jerseywatch.com/blog/softball-website-template"
+   },
+   {
+    "date": "2025-04-22",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "What Does It Take to Manage a Youth Basketball Team?",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.jerseywatch.com/blog/how-to-manage-a-youth-basketball-team"
    }
   ],
   "state": "items"
@@ -83105,16 +83114,232 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-22",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Kodex Product Update | October 2026",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-october-2026"
+   },
+   {
+    "date": "2026-09-28",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Kodex Product Update | September 2026",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-september-2026"
+   },
+   {
+    "date": "2026-09-15",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Revolut Breach: Day 5 Update",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/revolut-breach-day-5-update"
+   },
+   {
+    "date": "2026-09-14",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Revolut Breach Shows: Criminals Don\u2019t Need AI to Steal Customer Data",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/revolut-law-enforcement-email-compromise"
+   },
+   {
+    "date": "2026-09-09",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Why I Joined Kodex",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/why-i-joined-kodex-brad-brooker"
+   },
+   {
+    "date": "2026-08-20",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Former FBI General Counsel Brad Brooker Joins Kodex Global",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/former-fbi-general-counsel-brad-brooker-joins-kodex"
+   },
+   {
+    "date": "2026-08-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "EU e-Evidence is live today. Here\u2019s what actually changed.",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/eu-e-evidence-live-today-what-actually-changed"
+   },
+   {
+    "date": "2026-08-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Kodex Product Update | August 2026",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-august-2026"
+   },
+   {
+    "date": "2026-08-06",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Everybody\u2019s Arguing About the Wrong Part of the CLARITY Act",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/clarity-act-crime-fighting-bill"
+   },
+   {
+    "date": "2026-07-16",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Kodex Product Update | July 2026",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-july-2026"
+   },
+   {
     "date": "2026-06-30",
-    "date_source": "dateline",
+    "date_source": "json-ld",
     "first_seen": "2026-09-09",
     "headline": "The Infrastructure Behind Every Government Data Request",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.kodexglobal.com/blog/kodex-builds-the-rails-for-government-data-requests"
+   },
+   {
+    "date": "2026-06-24",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "A New Ally for Crypto Investigators in Africa and Latin America",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/kodex-sponsors-basel-institute-crypto-communities-of-practice"
+   },
+   {
+    "date": "2026-06-18",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "A New Partnership for Financial Crime Investigators",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/kodex-partners-with-iafci"
+   },
+   {
+    "date": "2026-06-15",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "Joining the Fight to Disrupt Illicit Virtual Assets",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/kodex-joins-ivan"
+   },
+   {
+    "date": "2026-06-11",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "June 2026 Product Update: Bulk Targets & On-Demand Verifications",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-june-2026"
+   },
+   {
+    "date": "2026-05-15",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "May 2026 Product Update: Next Action Dates & Jurisdiction Access",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-may-2026"
+   },
+   {
+    "date": "2026-03-26",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "Kodex Global Keynote | March, 2026",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/kodex-keynote"
+   },
+   {
+    "date": "2026-02-26",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "February 2026 Product Update: NDO Preservation & Submission Blocking",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-february-2026"
+   },
+   {
+    "date": "2026-01-30",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "January 2026 Product Update: Targets 2.0 Goes International",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-january-2026"
+   },
+   {
+    "date": "2025-12-22",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "December 2025 Product Update: Submission 2.0 & VPN Checks",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-december-2025"
+   },
+   {
+    "date": "2025-11-21",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "November 2025 Product Update: Agent Submission 2.0",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-november-2025"
+   },
+   {
+    "date": "2025-10-15",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "100,000 Strong: A Law Enforcement Request Milestone",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.kodexglobal.com/blog/100-000-strong-more-than-a-milestone"
+   },
+   {
+    "date": "2025-10-10",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "October 2025 Product Update: Targets 2.0 & Custom User Notices",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-october-2025"
+   },
+   {
+    "date": "2025-08-19",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "August 2025 Product Update: Data Retention Controls & Alerts",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-august-2025"
+   },
+   {
+    "date": "2025-07-11",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "July 2025 Product Update: Kodex API & View as Law Enforcement",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.kodexglobal.com/blog/kodex-product-update-july-2025"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "kofile": {
   "checked_on": "2026-10-27",
@@ -85154,7 +85379,7 @@
   "items": [
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-27",
     "headline": "6 Youth Sports Leadership Lessons From NBA Executives",
     "kind": "press",
@@ -85163,7 +85388,7 @@
    },
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-27",
     "headline": "6 Ways to Grow Youth Sports Revenue Beyond Registration",
     "kind": "press",
@@ -85172,7 +85397,7 @@
    },
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-27",
     "headline": "Develop the Whole Athlete: How to Build Better People, Not Just Better Players",
     "kind": "press",
@@ -85244,7 +85469,7 @@
    },
    {
     "date": "2026-09-09",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-09",
     "headline": "What to Evaluate When Switching Youth Sports Management Software",
     "kind": "press",
@@ -85858,6 +86083,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Code Enforcement Body Cameras: What Changes When the Wearer Is Not Police",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.lenslock.com/post/code-enforcement-body-cameras"
+   },
+   {
     "date": "2026-10-20",
     "date_source": "json-ld",
     "first_seen": "2026-10-20",
@@ -86054,7 +86288,7 @@
   "items": [
    {
     "date": "2026-09-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-09",
     "headline": "LeoSight and Axis Communications Unite Video and Sensor Intelligence for More Coordinated Public Safety Response",
     "kind": "press",
@@ -86487,8 +86721,8 @@
   "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-10-12",
-    "date_source": "index-text",
+    "date": "2026-10-16",
+    "date_source": "json-ld",
     "first_seen": "2026-10-16",
     "headline": "Liberty Defense Announces New Chairman to its Board of Directors",
     "kind": "leadership",
@@ -88603,6 +88837,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Defenders Deserve a Microphone: Why LVT Created Defender of the Year",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.lvt.com/blog/why-lvt-created-defender-of-the-year"
+   },
+   {
     "date": "2026-10-26",
     "date_source": "json-ld",
     "first_seen": "2026-10-26",
@@ -88817,15 +89060,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.lvt.com/blog/is-this-thing-on-why-the-most-reliable-security-cameras-uptime-all-the-time"
-   },
-   {
-    "date": "2026-09-15",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-28",
-    "headline": "Data Center Security: Why Physical Protection Is Just as Critical as Cybersecurity",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.lvt.com/blog/data-center-security-why-physical-protection-is-just-as-critical-as-cybersecurity"
    }
   ],
   "state": "items"
@@ -91446,7 +91680,7 @@
   "items": [
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-27",
     "headline": "First Bus Chooses Masabi to Power its Next-Generation National Ticketing Solution",
     "kind": "contract",
@@ -91455,7 +91689,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-21",
     "headline": "Saskatoon Transit Launches Account-Based Ticketing with New TGo Smart Cards, Powered by Masabi",
     "kind": "contract",
@@ -91464,7 +91698,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-19",
     "headline": "Duluth Transit Authority Launches Account-Based Ticketing and Open Payments for myDTA Powered by Masabi",
     "kind": "contract",
@@ -91473,7 +91707,7 @@
    },
    {
     "date": "2026-10-13",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-13",
     "headline": "A Carrot and Stick Fix for Mobile Ticketing Security",
     "kind": "press",
@@ -91482,7 +91716,7 @@
    },
    {
     "date": "2026-10-06",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-06",
     "headline": "Masabi Launches AI Incubator to Develop Practical Tools for Fare Collection that Improve Rider Experience and Increase Operational Efficiency for Public Transit",
     "kind": "product",
@@ -91491,7 +91725,7 @@
    },
    {
     "date": "2026-10-05",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Masabi Launches Passenger, Bringing Agency-Branded Journey Planning, Fare Payments and Concessions Together in One App",
     "kind": "product",
@@ -91500,7 +91734,7 @@
    },
    {
     "date": "2026-09-30",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Halifax Transit Launches Account-Based Ticketing Across Bus and Ferry, Powered by Masabi",
     "kind": "contract",
@@ -91518,7 +91752,7 @@
    },
    {
     "date": "2026-09-14",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Start small, deliver fast: Mobile-First Approach to Regional Fare Collection for UK Bus Franchises",
     "kind": "press",
@@ -91608,7 +91842,7 @@
    },
    {
     "date": "2026-07-14",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "St. Louis Metro Transit Launches Account-Based Ticketing with Network-Wide Tap-and-Go and MetroLink Gate Integration, Powered by Masabi",
     "kind": "contract",
@@ -91626,7 +91860,7 @@
    },
    {
     "date": "2026-07-02",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "San Joaquin Regional Transit District Launches Open Payments with Masabi, Delivering \u201cA Faster, Easy Way to Pay\u201d Across Stockton and the Central Valley",
     "kind": "contract",
@@ -91662,7 +91896,7 @@
    },
    {
     "date": "2026-06-30",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "How SaaS Fare Collection Keeps Getting Faster at Scale",
     "kind": "press",
@@ -95621,7 +95855,7 @@
   "items": [
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-27",
     "headline": "Prevent unnecessary alerts and stop recording at sensitive sites with Geofence Privacy and Event Suppression.",
     "kind": "press",
@@ -95630,7 +95864,7 @@
    },
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-27",
     "headline": "Landscaping fleet safety ROI guide: How to protect margins and keep crews productive.",
     "kind": "press",
@@ -95639,7 +95873,7 @@
    },
    {
     "date": "2026-10-26",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-26",
     "headline": "Enterprise team member spotlight: Driving enterprise growth and scaled success with Motive sales leadership.",
     "kind": "press",
@@ -95648,7 +95882,7 @@
    },
    {
     "date": "2026-10-20",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-20",
     "headline": "Landscaping dispatch software: How to keep crews moving with GPS visibility.",
     "kind": "press",
@@ -95657,7 +95891,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-19",
     "headline": "Motive launches Agents: Tell Agents the goal. They handle the rest.",
     "kind": "product",
@@ -95666,7 +95900,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-15",
     "headline": "How to choose the best fleet safety software for your landscaping company: 5 capabilities to compare.",
     "kind": "press",
@@ -95675,7 +95909,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-14",
     "headline": "Find out what fleet buyers say on G2 and TrustRadius, season after season.",
     "kind": "press",
@@ -95684,7 +95918,7 @@
    },
    {
     "date": "2026-10-12",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-13",
     "headline": "What four organizations measured after switching fleet technology providers.",
     "kind": "press",
@@ -95693,7 +95927,7 @@
    },
    {
     "date": "2026-10-06",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-08",
     "headline": "Truck maintenance 101: Build a program to reduce downtime and costs.",
     "kind": "press",
@@ -95702,7 +95936,7 @@
    },
    {
     "date": "2026-10-05",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Your most expensive fleet problems may be the ones you can\u2019t see.",
     "kind": "press",
@@ -95711,7 +95945,7 @@
    },
    {
     "date": "2026-10-02",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Fleet maintenance managers: Stay on top of preventive maintenance in 2027.",
     "kind": "press",
@@ -99965,7 +100199,7 @@
     "url": "https://www.netradyne.com/mx/blog/how-to-increase-driver-retention-expert-tips-for-2026"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "netskope": {
   "checked_on": "2026-10-27",
@@ -105524,7 +105758,7 @@
     "url": "https://www.opengov.com/resources/opengov-university/"
    }
   ],
-  "state": "items"
+  "state": "unread"
  },
  "operator-xr": {
   "checked_on": "2026-10-27",
@@ -110346,7 +110580,7 @@
     "url": "https://www.penlink.com/de/blog/strengthening-infrastructure-posture-for-agencies-managing-sensitive-data/"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "peregrine": {
   "checked_on": "2026-10-27",
@@ -114115,6 +114349,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-26",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "Procore Boards adds AI-powered SmartBench for daily crew assignments",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.procore.com/blog/procore-boards-adds-ai-powered-smartbench-for-daily-crew-assignments"
+   },
+   {
     "date": "2026-10-22",
     "date_source": "time",
     "first_seen": "2026-10-22",
@@ -114329,15 +114572,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.procore.com/blog/track-your-construction-materials-from-purchase-to-installation"
-   },
-   {
-    "date": "2026-06-17",
-    "date_source": "near-h1",
-    "first_seen": "2026-09-05",
-    "headline": "Procore Introduces New Suite of Portfolio Management and Capital Planning Capabilities for Owners, Powered by Procore AI",
-    "kind": "product",
-    "kind_rule": "Introduces",
-    "url": "https://www.procore.com/press/procore-introduces-new-suite-of-portfolio-management-and-capital-planning-capabilities-for-owners-powered-by-procore-ai"
    }
   ],
   "state": "items"
@@ -116360,8 +116594,8 @@
   "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-10-26",
-    "date_source": "index-text",
+    "date": "2026-10-27",
+    "date_source": "json-ld",
     "first_seen": "2026-09-09",
     "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
     "kind": "product",
@@ -116370,7 +116604,7 @@
    },
    {
     "date": "2026-10-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-24",
     "headline": "AI Bill Tracking: 5 Improvements to How Your Team Tracks Legislation in 2027",
     "kind": "press",
@@ -116379,7 +116613,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-22",
     "headline": "Election Year Advocacy: Trends in Grassroots Mobilization Heading Into 2027",
     "kind": "press",
@@ -116388,7 +116622,7 @@
    },
    {
     "date": "2026-10-08",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-08",
     "headline": "Why Corporate PAC Participation Keeps Sliding (and How to Increase It)",
     "kind": "press",
@@ -116397,7 +116631,7 @@
    },
    {
     "date": "2026-10-01",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
     "headline": "How to Build a 2027 Grassroots Advocacy Plan: Goals, Calendar, and Cadence",
     "kind": "press",
@@ -116406,7 +116640,7 @@
    },
    {
     "date": "2026-09-30",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
     "headline": "2026 Election Prep Guide: What to Expect in Quorum",
     "kind": "press",
@@ -116424,7 +116658,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Candidate Data + AI: Preparing Your Federal Team for the 120th Congress",
     "kind": "press",
@@ -116433,7 +116667,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Why Federal Government Affairs Teams Need More Than an AI Research Tool",
     "kind": "press",
@@ -116442,7 +116676,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "A Day in State Legislative Tracking: How AI Agents Help Teams Cover 50 States",
     "kind": "press",
@@ -116451,7 +116685,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "How AI Agents Make Government Affairs Teams More Efficient",
     "kind": "press",
@@ -116460,7 +116694,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "AI Meeting Prep That Keeps Government Affairs Teams Aligned",
     "kind": "press",
@@ -117154,8 +117388,17 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Digital Hall Passes: A Better Approach to Hall and Bathroom Pass Management",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://raptortech.com/resources/blog/why-schools-need-a-smarter-approach-to-hall-and-bathroom-pass-management/"
+   },
+   {
     "date": "2026-10-26",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-26",
     "headline": "Private School Unifies Visitor, Volunteer, and Emergency Management",
     "kind": "press",
@@ -117164,7 +117407,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-15",
     "headline": "Bullying Prevention in Schools: Challenges and Opportunities",
     "kind": "press",
@@ -117173,7 +117416,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "18 Proven Strategies for Combatting School Vandalism on Halloween (and Year-Round)",
     "kind": "press",
@@ -117182,7 +117425,7 @@
    },
    {
     "date": "2026-10-12",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-13",
     "headline": "Are Your Substitute Teachers Prepared for Campus Emergencies?",
     "kind": "press",
@@ -117191,7 +117434,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-09",
     "headline": "Why Traditional Hall Passes Aren\u2019t Suited for Students With IEPs",
     "kind": "press",
@@ -117200,7 +117443,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-09",
     "headline": "Great Bend Public Schools USD 428 Improves Campus Security with Raptor VisitorSafe\u2122",
     "kind": "press",
@@ -117209,7 +117452,7 @@
    },
    {
     "date": "2026-10-02",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "A Defensible 6-Step Framework for Responding to Bullying at Schools",
     "kind": "press",
@@ -117218,7 +117461,7 @@
    },
    {
     "date": "2026-09-30",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "8 Safety and Planning Steps to Take Before a School Field Trip",
     "kind": "press",
@@ -117368,15 +117611,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://raptortech.com/resources/blog/strategies-for-preventing-playground-accidents-at-schools/"
-   },
-   {
-    "date": "2026-08-20",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "5 Reasons to Attend the 2026 SchoolSAFE Conference",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://raptortech.com/resources/blog/reasons-to-attend-schoolsafe-conference/"
    }
   ],
   "state": "items"
@@ -120172,7 +120406,7 @@
  "rfp360-ai": {
   "checked_on": "2026-10-27",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "rfxpremier": {
   "checked_on": "2026-10-27",
@@ -120869,8 +121103,26 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "From Scale to Invoice: How MyTruckScales and Routeware Connect the Weigh-In to Billing and Routing",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://routeware.com/blog/mytruckscales-routeware-integration/"
+   },
+   {
+    "date": "2026-10-26",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "The Paperless Scale House: What Changes When the Weigh Ticket Goes Digital",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://routeware.com/blog/digital-weigh-ticket-paperless-scale-house/"
+   },
+   {
     "date": "2026-10-14",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-19",
     "headline": "How Roll-Off Dispatch Software Streamlines a Site Services Operation",
     "kind": "press",
@@ -121074,24 +121326,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://routeware.com/en_gb/blog/in-cab-technology-driver-safety/"
-   },
-   {
-    "date": "2026-09-02",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Stirling Council launches new waste and recycling portal for residents",
-    "kind": "product",
-    "kind_rule": "launches",
-    "url": "https://routeware.com/resources/news/stirling-council-launches-new-waste-and-recycling-portal-for-residents/"
-   },
-   {
-    "date": "2026-09-02",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-09",
-    "headline": "7 Things to Check When Choosing Waste Management Software for Residential Collection",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://routeware.com/blog/waste-management-software-residential-collection/"
    }
   ],
   "state": "items"
@@ -121099,6 +121333,15 @@
  "rta-fleet-management": {
   "checked_on": "2026-10-27",
   "items": [
+   {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "RTA Fleet Named No. 48 on Fortune Best Workplaces in Technology\u2122 2026 List",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://rtafleet.com/press/rta-fleet-named-no-48-on-fortune-best-workplaces-in-technology-2026-list"
+   },
    {
     "date": "2026-10-23",
     "date_source": "json-ld",
@@ -121119,7 +121362,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "Town of Queen Creek Named Most Successful Fleet Award Winner of Inaugural RTA Fleet Success Awards",
     "kind": "press",
@@ -121164,7 +121407,7 @@
    },
    {
     "date": "2026-09-15",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "RTA Fleet Named No. 34 on Fortune Best Small Workplaces\u2122 2026 List",
     "kind": "press",
@@ -121314,15 +121557,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://rtafleet.com/blog/what-is-agentic-ai-and-what-does-it-mean-for-fleet-management"
-   },
-   {
-    "date": "2026-07-09",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "RTA Fleet360 Selected by Commonwealth of Pennsylvania to Modernize Government Fleet Operations",
-    "kind": "contract",
-    "kind_rule": "Selected by",
-    "url": "https://rtafleet.com/press/rta-fleet360-selected-by-commonwealth-of-pennsylvania-to-modernize-government-fleet-operations"
    }
   ],
   "state": "items"
@@ -129948,7 +130182,7 @@
     "url": "https://www.sovra.com/press-releases/sovra-recertified-as-an-aep-eprocurement-certified-platform-for-2026/"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "spare": {
   "checked_on": "2026-10-27",
@@ -131653,7 +131887,7 @@
   "items": [
    {
     "date": "2026-10-26",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-26",
     "headline": "Playbook October 26, 2026 RFP Response Mistakes Government Vendors Make The costliest RFP mistakes happen before anyone writes a word. Learn the errors government and education vendors make, ranked by",
     "kind": "press",
@@ -131662,7 +131896,7 @@
    },
    {
     "date": "2026-10-26",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-26",
     "headline": "Playbook October 26, 2026 How to Build an RFP Answer Library for Government Proposals Build an RFP answer library that passes compliance checks. Learn what to store for government and education buyers",
     "kind": "press",
@@ -131671,7 +131905,7 @@
    },
    {
     "date": "2026-10-17",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-17",
     "headline": "Playbook October 17, 2026 What You Can Legally Say to a Government Buyer Pre-RFP What you can discuss with a government or education buyer before a solicitation posts, what changes the day it does, an",
     "kind": "press",
@@ -131680,7 +131914,7 @@
    },
    {
     "date": "2026-10-17",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-17",
     "headline": "Playbook October 17, 2026 How School Districts and Local Governments Score RFPs See how school districts and local governments score RFPs, step by step, from the compliance check and rubric to the pri",
     "kind": "press",
@@ -131689,7 +131923,7 @@
    },
    {
     "date": "2026-10-16",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-16",
     "headline": "Playbook October 16, 2026 Where to Find K\u201312 and Higher Education RFPs See where K\u201312 and higher education RFPs get posted, from state portals and district sites to cooperatives, and how to spot buyin",
     "kind": "press",
@@ -131698,7 +131932,7 @@
    },
    {
     "date": "2026-10-16",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-16",
     "headline": "Playbook October 16, 2026 How to Spot a Government RFP Written for Another Vendor Learn the red flags that show a government RFP was written for another vendor, how to score them, and when walking awa",
     "kind": "press",
@@ -131707,7 +131941,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-16",
     "headline": "Playbook October 15, 2026 MCP for Sales Prospecting Connect Claude or ChatGPT to verified buyer data with MCP, then run five copy-ready prompts to build lists, research accounts, and write outreach.",
     "kind": "press",
@@ -131716,7 +131950,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "Playbook October 14, 2026 Government Sales Are Won Before SAM.gov Public postings on SAM.gov mark the end of the buying process. Learn how to spot buying indicators and shape requirements before a dea",
     "kind": "press",
@@ -131725,7 +131959,7 @@
    },
    {
     "date": "2026-10-10",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-10",
     "headline": "Playbook October 10, 2026 How to Respond to a Government RFP Learn how to respond to a government RFP, from the bid/no-bid call to evaluation criteria and compliance, with a scorecard your team can us",
     "kind": "press",
@@ -131734,7 +131968,7 @@
    },
    {
     "date": "2026-10-10",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-10",
     "headline": "Playbook October 10, 2026 MCP for Government and Education Sales The Model Context Protocol brings live buyer data into Claude and ChatGPT. Learn why it matters more for teams selling to government an",
     "kind": "press",
@@ -131743,7 +131977,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-09",
     "headline": "Playbook October 9, 2026 Government Fiscal Year Calendars for Sales Timing See when state and local government, K\u201312, and higher education fiscal years start, and how to time outreach around fresh bud",
     "kind": "press",
@@ -131752,7 +131986,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "index-text",
+    "date_source": "time",
     "first_seen": "2026-10-09",
     "headline": "Playbook October 9, 2026 Starbridge vs. e.Republic Industry Navigator Compare Starbridge and e.Republic across buying signals, contact data, spend intelligence, RFPs, and contract vehicles for K\u201312 GT",
     "kind": "press",
@@ -135409,6 +135643,15 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Hunt or be Hunted: The Crash That Gives HTTP2Shell Away",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.tanium.com/blog/http2shell-brotli-rce-huntiq"
+   },
+   {
     "date": "2026-10-26",
     "date_source": "card-date",
     "first_seen": "2026-10-26",
@@ -135419,7 +135662,7 @@
    },
    {
     "date": "2026-10-24",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-24",
     "headline": "eMudhra CA Compromise: Find and Fix Your Exposure with Tanium",
     "kind": "press",
@@ -135428,7 +135671,7 @@
    },
    {
     "date": "2026-10-24",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-25",
     "headline": "HTTP2Shell: Find and Fix Vulnerable Brotli Copies with Tanium",
     "kind": "press",
@@ -135446,7 +135689,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "card-date",
+    "date_source": "og:published",
     "first_seen": "2026-10-22",
     "headline": "Tanium Brings Enterprise-Grade Manageability to NVIDIA Local AI Infrastructure",
     "kind": "press",
@@ -135455,7 +135698,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-22",
     "headline": "AI Compute Just Became an Endpoint Problem",
     "kind": "press",
@@ -135464,7 +135707,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "card-date",
+    "date_source": "og:published",
     "first_seen": "2026-10-15",
     "headline": "Tanium Selected as Testing Partner for Microsoft's Codename MDASH",
     "kind": "contract",
@@ -135473,7 +135716,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-15",
     "headline": "Notice when a machine stops acting like itself: introducing Endpoint Drift",
     "kind": "product",
@@ -135482,7 +135725,7 @@
    },
    {
     "date": "2026-10-12",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "Hunt or be Hunted: Every service was unique, and that was the problem",
     "kind": "press",
@@ -135518,7 +135761,7 @@
    },
    {
     "date": "2026-10-06",
-    "date_source": "card-date",
+    "date_source": "og:published",
     "first_seen": "2026-10-06",
     "headline": "Tanium Redefines Security Operations for the AI Era",
     "kind": "press",
@@ -135623,15 +135866,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.tanium.com/blog/ecb-ai-readiness-roadmap"
-   },
-   {
-    "date": "2026-08-20",
-    "date_source": "time",
-    "first_seen": "2026-09-05",
-    "headline": "Tanium Reappoints Co-Founder Orion Hindawi as CEO to Drive Next Chapter of Growth",
-    "kind": "leadership",
-    "kind_rule": "as CEO",
-    "url": "https://www.tanium.com/newsroom/press-releases"
    }
   ],
   "state": "items"
@@ -136779,7 +137013,7 @@
     "url": "https://www.weathercompany.com/media/max-traffic/"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "thentia": {
   "checked_on": "2026-10-27",
@@ -137756,7 +137990,7 @@
    },
    {
     "date": "2026-10-01",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "The Next Chapter for Field Operations",
     "kind": "press",
@@ -137764,8 +137998,8 @@
     "url": "https://trackvia.com/blog/the-next-chapter-for-field-operations/"
    },
    {
-    "date": "2026-10-01",
-    "date_source": "time",
+    "date": "2026-09-30",
+    "date_source": "json-ld",
     "first_seen": "2026-10-08",
     "headline": "Best Practices in Field Operations: Lessons from Vee-Jay Cement",
     "kind": "press",
@@ -137782,8 +138016,8 @@
     "url": "https://trackvia.com/press/trackvia-launches-next-generation-ai-ready-field-operations-platform/"
    },
    {
-    "date": "2026-09-30",
-    "date_source": "time",
+    "date": "2026-08-27",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Best Practices for Modern Field Operations",
     "kind": "press",
@@ -137791,8 +138025,8 @@
     "url": "https://trackvia.com/blog/best-practices-for-modern-field-operations/"
    },
    {
-    "date": "2026-08-27",
-    "date_source": "time",
+    "date": "2026-08-24",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "You Didn\u2019t Outgrow the Spreadsheet. You Outgrew What Replaced It.",
     "kind": "press",
@@ -137800,8 +138034,8 @@
     "url": "https://trackvia.com/blog/you-didnt-outgrow-the-spreadsheet-you-outgrew-what-replaced-it/"
    },
    {
-    "date": "2026-08-24",
-    "date_source": "time",
+    "date": "2026-08-20",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Disaster Response for State Agencies: A Field Workflow Guide",
     "kind": "press",
@@ -137809,8 +138043,8 @@
     "url": "https://trackvia.com/blog/disaster-response-for-state-agencies-a-field-workflow-guide/"
    },
    {
-    "date": "2026-08-20",
-    "date_source": "time",
+    "date": "2026-08-13",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "You Shouldn\u2019t Have to Out-Work Your Software: A Workflow Automation Guide for Public Sector Teams",
     "kind": "press",
@@ -137818,8 +138052,8 @@
     "url": "https://trackvia.com/blog/a-workflow-automation-guide-for-public-sector-teams/"
    },
    {
-    "date": "2026-08-13",
-    "date_source": "time",
+    "date": "2026-08-08",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "How to Track Assets Across Multiple Locations Without Losing Visibility",
     "kind": "press",
@@ -137827,8 +138061,8 @@
     "url": "https://trackvia.com/blog/how-to-track-assets-across-multiple-locations-without-losing-visibility/"
    },
    {
-    "date": "2026-08-08",
-    "date_source": "time",
+    "date": "2026-07-31",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "How to Keep Field Operations Synchronized When Plans Change",
     "kind": "press",
@@ -137836,8 +138070,8 @@
     "url": "https://trackvia.com/blog/how-to-keep-field-operations-synchronized-when-plans-change/"
    },
    {
-    "date": "2026-07-31",
-    "date_source": "time",
+    "date": "2026-03-03",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "TrackVia Achieves FedRAMP Moderate Equivalency for Its Government Workflow Platform",
     "kind": "press",
@@ -138271,7 +138505,16 @@
     "url": "https://tranquility.ai/insights/elizabeth-holmes-says-we-misunderstood-theranos.-we-investigated-her-claims-with-timepilot."
    },
    {
-    "date": "2026-09-28",
+    "date": "2026-10-26",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "Elizabeth Holmes Says We Misunderstood Theranos. We Investigated Her Claims with TimePilot.",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://tranquility.ai/insights/elizabeth-holmes-says-we-misunderstood-theranos.-we-investigated-her-claims-with-timepilot"
+   },
+   {
+    "date": "2026-09-04",
     "date_source": "time",
     "first_seen": "2026-09-09",
     "headline": "Not All AI Is Built for Investigations",
@@ -138689,6 +138932,33 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-26",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Decarbonising Street Lighting Without Compromising Road Safety: POLIS 2026",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.transoftsolutions.com/transportation-safety-operations/resources/blog/decarbonising-street-lighting-without-compromising-road-safety-polis-2026/"
+   },
+   {
+    "date": "2026-10-15",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "d\u2019achat des solutions d\u2019analyse de trajectoires",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.transoftsolutions.com/civil-and-transportation/resources/blog/guide-dachat-des-solutions-danalyse-de-trajectoires/"
+   },
+   {
+    "date": "2026-10-08",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Roundabout Works 2026: From Geometry to Ground Truth \u2013 Designing Roundabouts That Work in the Field",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.transoftsolutions.com/civil-and-transportation/resources/blog/roundabout-works-2026-from-geometry-to-ground-truth-designing-roundabouts-that-work-in-the-field/"
+   },
+   {
     "date": "2026-09-28",
     "date_source": "json-ld",
     "first_seen": "2026-10-05",
@@ -138696,6 +138966,15 @@
     "kind": "product",
     "kind_rule": "Launches",
     "url": "https://www.transoftsolutions.com/news/transoft-solutions-launches-instrato/"
+   },
+   {
+    "date": "2026-09-16",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "TORUS 2026: New Update Now Available",
+    "kind": "product",
+    "kind_rule": "Update",
+    "url": "https://www.transoftsolutions.com/civil-and-transportation/resources/blog/torus-2026-new-update-now-available/"
    },
    {
     "date": "2026-09-09",
@@ -138761,6 +139040,15 @@
     "url": "https://www.transoftsolutions.com/ja/news/guidesign-2026-is-now-available/"
    },
    {
+    "date": "2026-09-09",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "From Traffic Data to Vision Zero",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.transoftsolutions.com/transportation-safety-operations/resources/blog/from-traffic-data-to-vision-zero/"
+   },
+   {
     "date": "2026-09-03",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -138815,6 +139103,15 @@
     "url": "https://www.transoftsolutions.com/de/news/autopath-is-transitioning-to-autoturn/"
    },
    {
+    "date": "2026-07-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Reactive vs Proactive Road Safety: Towards a Smarter, Integrated Approach",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.transoftsolutions.com/transportation-safety-operations/resources/blog/reactive-vs-proactive-road-safety-towards-a-smarter-integrated-approach/"
+   },
+   {
     "date": "2026-07-08",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -138858,60 +139155,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.transoftsolutions.com/de/news/aerocentral-brings-enhanced-geospatial-capabilities-and-operational-insights/"
-   },
-   {
-    "date": "2026-07-08",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "AeroCENTRAL Brings Enhanced Geospatial Capabilities and Operational Insights",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.transoftsolutions.com/es/news/aerocentral-brings-enhanced-geospatial-capabilities-and-operational-insights/"
-   },
-   {
-    "date": "2026-07-08",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "AeroCENTRAL Brings Enhanced Geospatial Capabilities and Operational Insights",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.transoftsolutions.com/uk/news/aerocentral-brings-enhanced-geospatial-capabilities-and-operational-insights/"
-   },
-   {
-    "date": "2026-07-08",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "AeroCENTRAL Brings Enhanced Geospatial Capabilities and Operational Insights",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.transoftsolutions.com/emea/news/aerocentral-brings-enhanced-geospatial-capabilities-and-operational-insights/"
-   },
-   {
-    "date": "2026-07-08",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "AeroCENTRAL Brings Enhanced Geospatial Capabilities and Operational Insights",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.transoftsolutions.com/pt-br/news/aerocentral-brings-enhanced-geospatial-capabilities-and-operational-insights/"
-   },
-   {
-    "date": "2026-07-08",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-10",
-    "headline": "AeroCENTRAL Brings Enhanced Geospatial Capabilities and Operational Insights",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.transoftsolutions.com/au/news/aerocentral-brings-enhanced-geospatial-capabilities-and-operational-insights/"
-   },
-   {
-    "date": "2026-06-04",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "AQCESSRAMP 2026: Latest Version Out Now",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.transoftsolutions.com/news/aqcessramp-2026-latest-version-out-now/"
    }
   ],
   "state": "items"
@@ -142583,7 +142826,7 @@
     "url": "https://www.vectorsolutions.com/resources/press-releases/research-reveals-significant-gaps-in-first-responder-training-and-well-being/"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "velosimo": {
   "checked_on": "2026-10-27",
@@ -144081,7 +144324,7 @@
   "items": [
    {
     "date": "2026-10-20",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-20",
     "headline": "Versaterm Advances Intelligence, Automation and Connected Public Safety at IACP 2026",
     "kind": "press",
@@ -144090,7 +144333,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-07",
     "headline": "Versaterm Advances Drone Response with Native FAA LAANC Airspace Authorization Integration",
     "kind": "press",
@@ -144099,7 +144342,7 @@
    },
    {
     "date": "2026-09-14",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "The Drone Girl \u2013 GENIUS NY Round 10 \u2013 Meet the 5 Competing Drone Startups",
     "kind": "press",
@@ -144108,7 +144351,7 @@
    },
    {
     "date": "2026-08-26",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "KPRC-Houston Police Expanding Drone Program",
     "kind": "press",
@@ -144117,7 +144360,7 @@
    },
    {
     "date": "2026-08-10",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Vertical Magazine \u2013 Drone as First Responder: The Uncrewed Advantage",
     "kind": "press",
@@ -144126,7 +144369,7 @@
    },
    {
     "date": "2026-08-10",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "WSMV4 \u2013 How Sumner County Is Using Data to Make Schools Safer",
     "kind": "press",
@@ -144135,7 +144378,7 @@
    },
    {
     "date": "2026-07-24",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "WINK News \u2013 New Tool Keeps Charlotte County Crime Victims Updated",
     "kind": "product",
@@ -144144,7 +144387,7 @@
    },
    {
     "date": "2026-07-17",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Douglas Dispatch \u2013 Douglas Police Launch Enhanced Victim Notification System",
     "kind": "product",
@@ -144153,7 +144396,7 @@
    },
    {
     "date": "2026-07-17",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "KOLD News 13 \u2013 Oro Valley PD Launches New Alert System",
     "kind": "product",
@@ -144162,7 +144405,7 @@
    },
    {
     "date": "2026-07-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "SCSO Announces Launch of Versaterm CommunityConnect\u2122",
     "kind": "product",
@@ -144171,7 +144414,7 @@
    },
    {
     "date": "2026-07-07",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Oviedo Police Department Launches Versaterm CommunityConnect",
     "kind": "contract",
@@ -144189,7 +144432,7 @@
    },
    {
     "date": "2026-04-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Versaterm Announces 2026 Innovation Award Winners",
     "kind": "press",
@@ -144716,7 +144959,7 @@
   "items": [
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-27",
     "headline": "How the City of Kenora tripled ridership with Microtransit",
     "kind": "press",
@@ -144725,7 +144968,7 @@
    },
    {
     "date": "2026-10-05",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Via announces launch of Fixed Route Live Operations solution",
     "kind": "product",
@@ -144734,7 +144977,7 @@
    },
    {
     "date": "2026-10-02",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Power up your planning: The Remix features you need to know this October.",
     "kind": "press",
@@ -144743,7 +144986,7 @@
    },
    {
     "date": "2026-09-30",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-10-05",
     "headline": "Transforming Transit. The Via Features you need to know this October",
     "kind": "press",
@@ -144788,7 +145031,7 @@
    },
    {
     "date": "2026-09-10",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-10",
     "headline": "The City of Sunnyvale launches Sunnyvale Beam, citywide zero-emission microtransit for workers, students, residents, and visitors",
     "kind": "contract",
@@ -144797,7 +145040,7 @@
    },
    {
     "date": "2026-08-28",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Via Welcomes the Knode.ai Team to Accelerate AI for Public Transit",
     "kind": "leadership",
@@ -144815,7 +145058,7 @@
    },
    {
     "date": "2026-08-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Via and SMART Expand On-Demand Microtransit Into Northern Macomb County",
     "kind": "press",
@@ -144842,7 +145085,7 @@
    },
    {
     "date": "2026-08-24",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "How the City of Mobile, Alabama rewrote its transit contract to improve service delivery",
     "kind": "press",
@@ -144869,7 +145112,7 @@
    },
    {
     "date": "2026-07-29",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Introducing the Rider Experience Dashboard",
     "kind": "product",
@@ -144878,7 +145121,7 @@
    },
    {
     "date": "2026-07-28",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "AI insights help you find your next service improvement in seconds",
     "kind": "press",
@@ -144914,7 +145157,7 @@
    },
    {
     "date": "2026-06-25",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "U.S. Conference of Mayors Adopts Landmark Transit Modernization Resolution, Sponsored by West Sacramento, CA Mayor Martha Guerrero",
     "kind": "press",
@@ -144923,7 +145166,7 @@
    },
    {
     "date": "2026-06-25",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "5 procurement strategies to invite a competitive transit RFP",
     "kind": "press",
@@ -147748,8 +147991,17 @@
   "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Fleet Safety Management: How to Build a Safer Fleet",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://whiparound.com/blog/fleet-safety-management/"
+   },
+   {
     "date": "2026-10-26",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-26",
     "headline": "How to Reduce Costs for Construction Fleets: 8 Practical Strategies",
     "kind": "press",
@@ -147758,7 +148010,7 @@
    },
    {
     "date": "2026-10-22",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-22",
     "headline": "9 Must-Have Features in Fleet Management Software",
     "kind": "press",
@@ -147767,7 +148019,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-22",
     "headline": "How to Improve Fleet Efficiency: 10 Strategies to Reduce Costs and Downtime",
     "kind": "press",
@@ -147776,7 +148028,7 @@
    },
    {
     "date": "2026-10-20",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-20",
     "headline": "Predictive Fleet Maintenance: How to Maximize Fleet Uptime",
     "kind": "press",
@@ -147785,7 +148037,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-19",
     "headline": "How Enterprises Reduce Fuel Waste with Connected Fuel, Driver, and Maintenance Data",
     "kind": "press",
@@ -147794,7 +148046,7 @@
    },
    {
     "date": "2026-10-16",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-16",
     "headline": "Does Your Delivery Fleet Actually Need a USDOT Number?",
     "kind": "press",
@@ -147803,7 +148055,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-15",
     "headline": "IFTA Fuel Tax Reporting for Trucking Fleets: What Actually Has to Be Tracked",
     "kind": "press",
@@ -147812,7 +148064,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "What Happens During a Level I vs. Level II Roadside Inspection?",
     "kind": "press",
@@ -147821,7 +148073,7 @@
    },
    {
     "date": "2026-10-13",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "DOT Annual Inspection Requirements for Dump Trucks, Water Trucks, and Other Construction Vehicles",
     "kind": "press",
@@ -147830,7 +148082,7 @@
    },
    {
     "date": "2026-10-12",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "Managing a Mixed CDL and Non-CDL Construction Fleet: What Compliance Actually Requires",
     "kind": "press",
@@ -147839,7 +148091,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-09",
     "headline": "Do Construction Crews Qualify for an FMCSA Hours-of-Service Exemption?",
     "kind": "press",
@@ -147962,15 +148214,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://whiparound.com/blog/telematics-ecosystem-consideration/"
-   },
-   {
-    "date": "2026-09-16",
-    "date_source": "index-text",
-    "first_seen": "2026-10-05",
-    "headline": "AI vs. Manual Inspections: What Does AI Actually Catch for Fleet Maintenance?",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://whiparound.com/blog/ai-vs-manual-inspections-fleet-maintenance/"
    }
   ],
   "state": "items"
