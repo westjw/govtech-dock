@@ -9809,21 +9809,34 @@ def check_show_all_opens_the_department_page() -> int:
     shelf = ix[ix.index("THE SHELF COUNTS ITS WHOLE SECTOR"):]
     shelf = shelf[:shelf.index("\n    return;\n")]
     if 'document.createElement("a")' not in shelf or "csec:sector" not in shelf \
-            or "toCompanies(sector,null,hiringNow)" not in shelf:
+            or "toCompanies(sector,null,hiringNow," not in shelf:
         errors += fail("a shelf's Show all no longer links to its sector's page")
     if "Show all ${all.length" not in shelf or "rows.forEach(o=>file(inSec,o))" not in shelf:
         errors += fail("a shelf's Show all counts the grid, not the whole sector its page lists")
     if "CO_OPEN_SECS" in ix:
         errors += fail("a shelf still grows in place instead of opening the sector's page")
+    # THE MORE FILTERS RIDE ALONG (review, 2026-10-27): N and the chip counts
+    # are taken under phase and board, so the links carry them and the
+    # address reads them back, or "Show all 10" opened 260
+    if "coMoreParams()" not in shelf or "toCompanies(sector,null,hiringNow,coMoreParams())" not in shelf:
+        errors += fail("a shelf's Show all drops the More filters its count was taken under")
+    if 'cph:"c-phase",crd:"c-reads"' not in ix or '[["cph","c-phase"],["crd","c-reads"]]' not in ix:
+        errors += fail("phase and board are not in the Companies address, so no link can carry them")
     if "coSectorPage(s,ct,q,hiringOnly,cat=>D.organizations.filter(o=>hits(o)&&rest(o,cat)&&open(o)).length)" not in ix:
         errors += fail("the department page's chip counts are not the list's own filters")
     page = ix[ix.index("function coSectorPage("):ix.index("function openEventDoor(")]
     for need, why in (("coCatOptions(D.organizations,sec)", "its sub-industries are not the dropdown's own list"),
                       ("r.sector===sec", "its conferences are not the catalogue's rows for the sector"),
                       ("openEventDoor(a.dataset.ev)", "a conference does not open its panel"),
-                      ("toCompanies(sec,a.dataset.sub||null,hiringNow)", "a sub-industry does not open its list")):
+                      ("toCompanies(sec,a.dataset.sub||null,hiringNow,more)", "a sub-industry does not open its list under the same filters"),
+                      ("mode,more)", "a sub-industry's address drops the More filters"),
+                      ('<span role="listitem"><a href=', "a sub-industry is not a link to assistive tech (role on the anchor)"),
+                      ("n>0||c===cat", "the chosen sub-industry vanishes when it holds none"),
+                      ("r.dates||cfNoDates(r)", "an undated conference is not said in the catalogue's own words")):
         if need not in page:
             errors += fail(f"the department page: {why}")
+    if re.search(r'<a [^>]*role="listitem"', page):
+        errors += fail("a sub-industry anchor carries role=listitem, so assistive tech hears no link")
     # ONE MAP: the suppliers' crosswalk is the conferences' sector
     import supplier_categories as SC
     import conference_sectors as CS
