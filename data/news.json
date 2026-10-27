@@ -5,11 +5,11 @@
   "state": "none_found"
  },
  "120water": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-10-26",
-    "date_source": "json-ld",
+    "date": "2026-10-15",
+    "date_source": "index-text",
     "first_seen": "2026-10-26",
     "headline": "LCRR Annual Notification Requirements: Who Gets a Letter, What It Must Say, and When It's Due",
     "kind": "press",
@@ -27,7 +27,7 @@
    },
    {
     "date": "2026-09-29",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-05",
     "headline": "Why Spreadsheets Fail at Scale for Water Utility Compliance",
     "kind": "press",
@@ -35,8 +35,8 @@
     "url": "https://www.120water.com/blog/why-spreadsheets-fail-at-scale-for-water-utility-compliance"
    },
    {
-    "date": "2026-09-28",
-    "date_source": "json-ld",
+    "date": "2026-09-25",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "Introducing 120Field: Built for the Truck, Not the Office",
     "kind": "product",
@@ -53,8 +53,8 @@
     "url": "https://www.120water.com/news/120water-teamsolve-partner-field-data-compliance"
    },
    {
-    "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date": "2026-09-22",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "The EPA's New Systemic Issues Checklist: What Water Systems Should Know",
     "kind": "press",
@@ -80,17 +80,8 @@
     "url": "https://www.120water.com/blog/life-after-inventory"
    },
    {
-    "date": "2026-09-04",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Celebrating Our Customers: 120Water Clients Honored by the LSLR Collaborative",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.120water.com/blog/celebrating-our-customers-120water-clients-honored-by-the-lslr-collaborative"
-   },
-   {
     "date": "2026-09-02",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "School and Child Care Sampling Waivers: What Qualifies and Who Approves It",
     "kind": "press",
@@ -99,7 +90,7 @@
    },
    {
     "date": "2026-09-02",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Building Your School and Child Care Facility List: What the New EPA Resources Actually Require",
     "kind": "press",
@@ -108,7 +99,7 @@
    },
    {
     "date": "2026-08-18",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Recap: An Operator's Guide to Verifying Unknown Service Lines",
     "kind": "press",
@@ -117,7 +108,7 @@
    },
    {
     "date": "2026-08-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Recap: Preparing for LCRI Service Line Inventory Requirements",
     "kind": "press",
@@ -126,7 +117,7 @@
    },
    {
     "date": "2026-07-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "LCRI Service Line Verification: Lessons from the Field",
     "kind": "press",
@@ -134,8 +125,17 @@
     "url": "https://www.120water.com/blog/lcri-service-line-verification-lessons-from-the-field"
    },
    {
-    "date": "2026-07-21",
-    "date_source": "json-ld",
+    "date": "2026-07-14",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Celebrating Our Customers: 120Water Clients Honored by the LSLR Collaborative",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.120water.com/blog/celebrating-our-customers-120water-clients-honored-by-the-lslr-collaborative"
+   },
+   {
+    "date": "2026-07-14",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "The Revised CCR Rule: Changes, Deadlines, and Next Steps",
     "kind": "press",
@@ -143,8 +143,8 @@
     "url": "https://www.120water.com/blog/the-revised-ccr-rule-changes-deadlines-and-next-steps"
    },
    {
-    "date": "2026-07-14",
-    "date_source": "json-ld",
+    "date": "2026-07-07",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "ACE\u201926 Recap: Water Industry Heroes Unite in Washington, D.C.",
     "kind": "press",
@@ -1352,16 +1352,25 @@
   "state": "items"
  },
  "4sight-labs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-10-23",
+    "date": "2026-10-27",
     "date_source": "json-ld",
     "first_seen": "2026-10-24",
     "headline": "Inmate Monitoring Systems: In-Custody Monitoring",
     "kind": "press",
     "kind_rule": null,
     "url": "https://4sightlabs.com/resources/inmate-biometric-bracelet"
+   },
+   {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-15",
+    "headline": "Jail implements technology aimed at improving inmate health monitoring",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://4sightlabs.com/resources/jail-implements-technology-aimed-at-improving-inmate-health-monitoring"
    },
    {
     "date": "2026-10-23",
@@ -1380,15 +1389,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://4sightlabs.com/resources/correctional-facility-monitoring-technology"
-   },
-   {
-    "date": "2026-10-15",
-    "date_source": "json-ld",
-    "first_seen": "2026-10-15",
-    "headline": "Jail implements technology aimed at improving inmate health monitoring",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://4sightlabs.com/resources/jail-implements-technology-aimed-at-improving-inmate-health-monitoring"
    },
    {
     "date": "2026-10-15",
@@ -1583,7 +1583,7 @@
   "state": "items"
  },
  "a-frame-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-30",
@@ -1814,7 +1814,7 @@
   "state": "items"
  },
  "a-ice": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -1870,7 +1870,7 @@
   "state": "items"
  },
  "aatral-vr-ar-training": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-07",
@@ -2163,7 +2163,7 @@
   "state": "items"
  },
  "acapela-group": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -2394,7 +2394,7 @@
   "state": "items"
  },
  "accela": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -3188,7 +3188,7 @@
   "state": "items"
  },
  "achieveit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-02",
@@ -3798,7 +3798,7 @@
   "state": "items"
  },
  "active-network": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-11",
@@ -3849,7 +3849,7 @@
   "state": "items"
  },
  "active911": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-06-18",
@@ -3936,7 +3936,7 @@
   "state": "items"
  },
  "activu-corporation": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -3951,7 +3951,7 @@
   "state": "none_found"
  },
  "acusensus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -3961,7 +3961,7 @@
   "state": "none_found"
  },
  "adastec": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-04-17",
@@ -4045,12 +4045,12 @@
   "state": "none_found"
  },
  "adobe": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "adp": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-07-04",
@@ -4389,7 +4389,7 @@
   "state": "none_found"
  },
  "aerosimple-llc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
@@ -4620,7 +4620,7 @@
   "state": "items"
  },
  "agents-of-discovery": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-08-29",
@@ -4680,7 +4680,7 @@
   "state": "items"
  },
  "agile-fleet": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -5147,7 +5147,7 @@
   "state": "items"
  },
  "aidash": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -5590,7 +5590,7 @@
   "state": "items"
  },
  "airsight": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -5821,12 +5821,12 @@
   "state": "items"
  },
  "airworks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "alcatraz": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -6434,7 +6434,7 @@
   "state": "items"
  },
  "alli-connect": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-04-18",
@@ -6485,7 +6485,7 @@
   "state": "items"
  },
  "almaviva": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -6800,7 +6800,7 @@
   "state": "unread"
  },
  "amano-mcgann": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-23",
@@ -6896,7 +6896,7 @@
   "state": "items"
  },
  "amazon-web-services": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-25",
@@ -7001,7 +7001,7 @@
   "state": "none_found"
  },
  "amcs-group": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-08",
@@ -7151,7 +7151,7 @@
   "state": "items"
  },
  "amilia": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -7382,7 +7382,7 @@
   "state": "items"
  },
  "amp": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-30",
@@ -7523,7 +7523,7 @@
   "state": "items"
  },
  "amped-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -7630,7 +7630,7 @@
   "state": "items"
  },
  "anaplan": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-23",
@@ -7861,7 +7861,7 @@
   "state": "none_found"
  },
  "andrews-technology": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -7871,7 +7871,7 @@
   "state": "none_found"
  },
  "ankored": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -8439,9 +8439,9 @@
   "state": "none_found"
  },
  "applied-information": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "apply-government-solutions": {
   "checked_on": "2026-10-26",
@@ -8845,7 +8845,7 @@
   "state": "items"
  },
  "apptegy": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -9277,7 +9277,7 @@
   "state": "items"
  },
  "arly": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-15",
@@ -9564,7 +9564,7 @@
   "state": "none_found"
  },
  "arrive": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -9800,7 +9800,7 @@
   "state": "items"
  },
  "ascento-ag": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -9829,7 +9829,7 @@
   "state": "items"
  },
  "assetworks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -10060,7 +10060,7 @@
   "state": "items"
  },
  "asterra": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-24",
@@ -10311,7 +10311,7 @@
   "state": "none_found"
  },
  "atomai-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -10697,12 +10697,12 @@
   "state": "items"
  },
  "aurelian": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "aurigo-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-16",
@@ -10717,7 +10717,7 @@
   "state": "unread"
  },
  "auror": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -10927,7 +10927,7 @@
   "state": "items"
  },
  "autura": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-08",
@@ -10949,7 +10949,7 @@
    },
    {
     "date": "2026-09-17",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "What Public Safety Agencies Are Prioritizing for Next Fiscal Year\u2019s Budget",
     "kind": "press",
@@ -10985,7 +10985,7 @@
    },
    {
     "date": "2026-08-11",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "From Tow to Title: How Connected Municipal Impound Lots Are More Efficient and Profitable",
     "kind": "press",
@@ -10994,7 +10994,7 @@
    },
    {
     "date": "2026-08-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Impound Lots: The Nation's Billion-Dollar Graveyards",
     "kind": "press",
@@ -11066,7 +11066,7 @@
    },
    {
     "date": "2026-06-12",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Autura Pathways: Get to Know Ron Petras",
     "kind": "press",
@@ -11129,7 +11129,7 @@
    },
    {
     "date": "2026-04-30",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Autura Spotlight: Get to Know Calvin Pitman",
     "kind": "press",
@@ -11138,7 +11138,7 @@
    },
    {
     "date": "2026-04-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Risk Increases with Every Minute on the Roadside \u2014 What Agencies Can Do",
     "kind": "press",
@@ -11163,7 +11163,7 @@
   "state": "unread"
  },
  "avail-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -11183,12 +11183,12 @@
   "state": "none_found"
  },
  "avila": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "avolve-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
@@ -11502,12 +11502,12 @@
   "state": "items"
  },
  "azora-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "azuga": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-07",
@@ -11738,7 +11738,7 @@
   "state": "items"
  },
  "b2gnow": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-01-08",
@@ -11780,7 +11780,7 @@
   "state": "items"
  },
  "babel-street": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-16",
@@ -11921,7 +11921,7 @@
   "state": "none_found"
  },
  "badger-meter": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-31",
@@ -12105,7 +12105,7 @@
   "state": "none_found"
  },
  "bamboo-health": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -12659,7 +12659,7 @@
   "state": "items"
  },
  "barkpass": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-05",
@@ -12796,12 +12796,12 @@
   "state": "none_found"
  },
  "baseline-telematics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "basemap": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-17",
@@ -12924,7 +12924,7 @@
   "state": "items"
  },
  "batonroute-school-and-staff-transport-app": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-17",
@@ -13074,7 +13074,7 @@
   "state": "items"
  },
  "bchex": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -13374,7 +13374,7 @@
   "state": "items"
  },
  "beam-global": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -13610,7 +13610,7 @@
   "state": "items"
  },
  "beep": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-24",
@@ -13846,7 +13846,7 @@
   "state": "none_found"
  },
  "benchmark-analytics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -14014,7 +14014,7 @@
   "state": "items"
  },
  "bentek": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-17",
@@ -14056,7 +14056,7 @@
   "state": "none_found"
  },
  "berkeley-varitronics-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -15120,7 +15120,7 @@
   "state": "items"
  },
  "bids-tenders": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-30",
@@ -15285,7 +15285,7 @@
   "state": "items"
  },
  "bigbelly": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -15668,7 +15668,7 @@
   "state": "none_found"
  },
  "black-creek-integrated-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-22",
@@ -15975,7 +15975,7 @@
   "state": "none_found"
  },
  "blackrainbow-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2023-08-09",
@@ -16273,7 +16273,7 @@
   "state": "none_found"
  },
  "bltn": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -16392,7 +16392,7 @@
   "state": "items"
  },
  "blue-voice": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -16601,7 +16601,7 @@
   "state": "items"
  },
  "blyncsy": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-19",
@@ -17606,7 +17606,7 @@
   "state": "items"
  },
  "boostlingo": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-21",
@@ -17792,7 +17792,7 @@
   "state": "items"
  },
  "boston-dynamics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -18038,17 +18038,17 @@
   "state": "items"
  },
  "bounce-imaging": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "box": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
  "brain-co": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -18351,12 +18351,12 @@
   "state": "none_found"
  },
  "briefcam": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
  "brightly": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -18587,7 +18587,7 @@
   "state": "items"
  },
  "brinc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-24",
@@ -18892,7 +18892,7 @@
   "state": "none_found"
  },
  "bs-a-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -19143,7 +19143,7 @@
   "state": "unread"
  },
  "burnbot": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -19574,7 +19574,7 @@
   "state": "items"
  },
  "buspas": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-07",
@@ -19589,7 +19589,7 @@
   "state": "none_found"
  },
  "buspatrol": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-12-15",
@@ -19745,7 +19745,7 @@
   "state": "items"
  },
  "byga": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -19755,7 +19755,7 @@
   "state": "none_found"
  },
  "bytemark": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2023-06-01",
@@ -19986,7 +19986,7 @@
   "state": "items"
  },
  "calamp": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-16",
@@ -20214,7 +20214,7 @@
     "url": "https://www.calamp.com/blog/location-based-analytics/"
    }
   ],
-  "state": "unread"
+  "state": "items"
  },
  "caliper-corporation": {
   "checked_on": "2026-10-26",
@@ -20331,7 +20331,7 @@
   "state": "items"
  },
  "calix": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -20567,7 +20567,7 @@
   "state": "items"
  },
  "campdoc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -20645,7 +20645,7 @@
   "state": "items"
  },
  "camplife": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -21663,7 +21663,7 @@
   "state": "items"
  },
  "carbyne": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-03-17",
@@ -21732,7 +21732,7 @@
   "state": "none_found"
  },
  "card-integrity": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-06-21",
@@ -21793,7 +21793,7 @@
   "state": "none_found"
  },
  "carfax": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -21858,7 +21858,7 @@
   "state": "items"
  },
  "cartegraph": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -22145,7 +22145,7 @@
   "state": "items"
  },
  "caselle": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -22468,7 +22468,7 @@
   "state": "items"
  },
  "catalis": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -22478,7 +22478,7 @@
   "state": "none_found"
  },
  "cell-guardian": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-28",
@@ -22610,7 +22610,7 @@
   "state": "items"
  },
  "cellebrite": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -23072,7 +23072,7 @@
   "state": "items"
  },
  "centegix": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -23525,7 +23525,7 @@
   "state": "items"
  },
  "centralsquare-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-23",
@@ -23675,7 +23675,7 @@
   "state": "items"
  },
  "chainalysis": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -24142,7 +24142,7 @@
   "state": "items"
  },
  "chevin-fleet-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-16",
@@ -24736,12 +24736,12 @@
   "state": "items"
  },
  "chorus-intelligence": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "cims-cemetery-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -25182,12 +25182,12 @@
   "state": "none_found"
  },
  "citibot": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "citiri": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-03-31",
@@ -25285,7 +25285,7 @@
   "state": "none_found"
  },
  "city-detect": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-27",
@@ -25648,12 +25648,12 @@
   "state": "items"
  },
  "citylogix": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "cityreporter": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2022-04-06",
@@ -25668,7 +25668,7 @@
   "state": "items"
  },
  "cityrover": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -25678,7 +25678,7 @@
   "state": "none_found"
  },
  "civic-marketplace": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -26109,17 +26109,17 @@
   "state": "none_found"
  },
  "civiceye": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "civicsmart": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "civilgrid": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -26256,7 +26256,7 @@
   "state": "items"
  },
  "clariti": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-12",
@@ -27055,7 +27055,7 @@
   "state": "none_found"
  },
  "cleargov": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-29",
@@ -27187,7 +27187,7 @@
   "state": "items"
  },
  "clearpoint-strategy": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -27622,7 +27622,7 @@
   "state": "items"
  },
  "clearview-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -27786,7 +27786,7 @@
   "state": "none_found"
  },
  "clerkbase": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -27941,7 +27941,7 @@
   "state": "items"
  },
  "clever-devices": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-01",
@@ -28403,7 +28403,7 @@
   "state": "items"
  },
  "clipr-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2022-01-20",
@@ -28579,7 +28579,7 @@
   "state": "items"
  },
  "cloudpermit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -28738,7 +28738,7 @@
   "state": "items"
  },
  "cobblestone-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2020-04-29",
@@ -28753,7 +28753,7 @@
   "state": "none_found"
  },
  "code-four": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2021-02-16",
@@ -29109,7 +29109,7 @@
   "state": "items"
  },
  "cognyte": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -29355,7 +29355,7 @@
   "state": "items"
  },
  "colbi-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -29814,7 +29814,7 @@
   "state": "none_found"
  },
  "collective-data": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-12",
@@ -30227,17 +30227,17 @@
   "state": "unread"
  },
  "collins-aerospace-an-rtx-business": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "colorado-time-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "comcate": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-21",
@@ -30441,7 +30441,7 @@
   "state": "items"
  },
  "communitypass": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -30629,12 +30629,12 @@
   "state": "items"
  },
  "compumed": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "computer-information-systems-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -30880,7 +30880,7 @@
   "state": "items"
  },
  "concourse-tech": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -30913,7 +30913,7 @@
   "state": "items"
  },
  "conduent": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -31051,12 +31051,12 @@
   "state": "items"
  },
  "connectpoint": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "connixt": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-31",
@@ -31125,7 +31125,7 @@
   "state": "items"
  },
  "connx": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-05",
@@ -31311,7 +31311,7 @@
   "state": "items"
  },
  "consat": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-03-24",
@@ -31395,7 +31395,7 @@
   "state": "items"
  },
  "contentactive": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -33219,7 +33219,7 @@
   "state": "unread"
  },
  "corveris": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-09",
@@ -33314,7 +33314,7 @@
   "state": "none_found"
  },
  "courtreserve": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -33714,7 +33714,7 @@
   "state": "items"
  },
  "creatio": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
@@ -34623,7 +34623,7 @@
   "state": "items"
  },
  "csit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -35277,7 +35277,7 @@
   "state": "items"
  },
  "cyberlock-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -35627,12 +35627,12 @@
   "state": "items"
  },
  "cyclomedia": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "cylus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -35863,7 +35863,7 @@
   "state": "items"
  },
  "cyvl": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-16",
@@ -36049,7 +36049,7 @@
   "state": "items"
  },
  "d-fend-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -36089,7 +36089,7 @@
    },
    {
     "date": "2026-10-01",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-05",
     "headline": "Covert in Port and Precise at Sea: Drone Mitigation for Ports and Vessels with RF Cyber-Takeover",
     "kind": "press",
@@ -36598,7 +36598,7 @@
   "state": "none_found"
  },
  "dailypay": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -37404,7 +37404,7 @@
   "state": "items"
  },
  "datamark": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-15",
@@ -37545,7 +37545,7 @@
   "state": "items"
  },
  "dataminr": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -37773,7 +37773,7 @@
     "url": "https://www.dataminr.com/resources/blog/building-the-next-generation-of-risk-aware-platforms-a-partnership-approach/"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "datatech911": {
   "checked_on": "2026-10-26",
@@ -37781,7 +37781,7 @@
   "state": "none_found"
  },
  "dataworks-plus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -37914,7 +37914,7 @@
   "state": "unread"
  },
  "daysmart-recreation": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-21",
@@ -38028,7 +38028,7 @@
   "state": "items"
  },
  "debtbook": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-08",
@@ -38274,7 +38274,7 @@
   "state": "items"
  },
  "deckard-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -38751,7 +38751,7 @@
   "state": "items"
  },
  "deepwalk": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -39198,7 +39198,7 @@
   "state": "items"
  },
  "deleteme": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -39632,7 +39632,7 @@
   "state": "items"
  },
  "demosphere-international": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-26",
@@ -39864,7 +39864,7 @@
   "state": "unread"
  },
  "designa": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-04-29",
@@ -39987,7 +39987,7 @@
   "state": "items"
  },
  "detail-kommander": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-04-21",
@@ -40066,7 +40066,7 @@
   "state": "none_found"
  },
  "digitaloptometrics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -40122,7 +40122,7 @@
   "state": "none_found"
  },
  "dimonoff": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -40540,7 +40540,7 @@
   "state": "none_found"
  },
  "diverse-computing": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -40980,7 +40980,7 @@
   "state": "none_found"
  },
  "dossier-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2022-06-02",
@@ -41064,12 +41064,12 @@
   "state": "items"
  },
  "dragonforce": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "droneshield": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -41672,7 +41672,7 @@
   "state": "items"
  },
  "dryad-networks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-23",
@@ -42596,7 +42596,7 @@
   "state": "items"
  },
  "eagleview": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-09",
@@ -42779,7 +42779,7 @@
   "state": "items"
  },
  "earthdaily": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -43309,7 +43309,7 @@
   "state": "items"
  },
  "echodyne": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-12",
@@ -43504,7 +43504,7 @@
   "state": "items"
  },
  "ecins": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -43777,7 +43777,7 @@
   "state": "none_found"
  },
  "eco-counter": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -44086,12 +44086,12 @@
   "state": "items"
  },
  "econolite": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "economic-impact-catalyst": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-04-03",
@@ -44441,12 +44441,12 @@
   "state": "none_found"
  },
  "ecube-labs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "edge-ai-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-12-07",
@@ -45600,7 +45600,7 @@
   "state": "items"
  },
  "effigov": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-25",
@@ -45831,7 +45831,7 @@
   "state": "items"
  },
  "eforce-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -45841,7 +45841,7 @@
   "state": "none_found"
  },
  "ekin-smart-city-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-12-15",
@@ -47040,7 +47040,7 @@
   "state": "items"
  },
  "elovate": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-22",
@@ -47454,7 +47454,7 @@
   "state": "items"
  },
  "emburse": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -48219,7 +48219,7 @@
   "state": "none_found"
  },
  "enghouse-transportation": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-11",
@@ -48387,7 +48387,7 @@
   "state": "items"
  },
  "enkon-information-systems-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-09",
@@ -48782,7 +48782,7 @@
   "state": "none_found"
  },
  "envisio": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -49028,7 +49028,7 @@
   "state": "none_found"
  },
  "epic-io": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -49237,7 +49237,7 @@
   "state": "items"
  },
  "eproval": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-24",
@@ -50004,12 +50004,12 @@
   "state": "items"
  },
  "es-s": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "escribe": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -50245,7 +50245,7 @@
   "state": "none_found"
  },
  "esleuth-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-28",
@@ -50323,7 +50323,7 @@
   "state": "items"
  },
  "eso": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -50536,7 +50536,7 @@
   "state": "items"
  },
  "esper": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2022-01-06",
@@ -50551,7 +50551,7 @@
   "state": "items"
  },
  "esri": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-26",
@@ -50656,7 +50656,7 @@
   "state": "items"
  },
  "eta": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -50887,7 +50887,7 @@
   "state": "items"
  },
  "euna-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -51123,7 +51123,7 @@
   "state": "none_found"
  },
  "everbridge": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -51527,7 +51527,7 @@
   "state": "items"
  },
  "everlaw": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-16",
@@ -52856,7 +52856,7 @@
   "state": "items"
  },
  "extra-duty-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -53033,7 +53033,7 @@
   "state": "items"
  },
  "eyeride": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-30",
@@ -53264,7 +53264,7 @@
   "state": "items"
  },
  "ezfacility": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-08",
@@ -54138,7 +54138,7 @@
   "state": "items"
  },
  "fieldware": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-07-17",
@@ -55050,7 +55050,7 @@
   "state": "items"
  },
  "first-due": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-01-12",
@@ -55446,7 +55446,7 @@
   "state": "items"
  },
  "firstnet-built-with-at-t": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-16",
@@ -55580,12 +55580,12 @@
   "state": "items"
  },
  "flashnet": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "flashpoint": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -55816,12 +55816,12 @@
   "state": "none_found"
  },
  "flashvote": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "fleet-complete": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-06-16",
@@ -55926,17 +55926,17 @@
   "state": "items"
  },
  "fleetio": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
  "flightbi": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "flock-safety": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -56394,7 +56394,7 @@
   "state": "items"
  },
  "fmx": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-04",
@@ -56625,7 +56625,7 @@
   "state": "items"
  },
  "focal-forensics-redaction": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -56861,7 +56861,7 @@
   "state": "none_found"
  },
  "fonroche-lighting-america": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -57039,12 +57039,12 @@
   "state": "none_found"
  },
  "forcemetrics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "forerunner": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -57280,7 +57280,7 @@
   "state": "none_found"
  },
  "fortem-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-12",
@@ -57676,7 +57676,7 @@
   "state": "items"
  },
  "forward-thinking-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-12",
@@ -57790,7 +57790,7 @@
   "state": "items"
  },
  "fotokite": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -57951,7 +57951,7 @@
   "state": "items"
  },
  "frontline-education": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -57963,8 +57963,17 @@
     "url": "https://www.frontlineeducation.com/news/frontline-education-notice-of-data-breach/"
    },
    {
+    "date": "2026-10-26",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Student Engagement and Chronic Absenteeism: What School Clinic Data Reveals",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.frontlineeducation.com/blog/student-engagement-and-chronic-absenteeism/"
+   },
+   {
     "date": "2026-10-22",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-22",
     "headline": "Why K-12 AP Teams Can\u2019t Catch Up on Invoices",
     "kind": "press",
@@ -57973,7 +57982,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-21",
     "headline": "The Sub Shortage Got Better. So Why Doesn\u2019t It Feel Like It?",
     "kind": "press",
@@ -57991,7 +58000,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-20",
     "headline": "Teacher Retention and Leadership Development Aren\u2019t Two Problems. They\u2019re One.",
     "kind": "press",
@@ -58000,7 +58009,7 @@
    },
    {
     "date": "2026-10-16",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-19",
     "headline": "Prepare for Flu Season: How School Nurses Can Stay Ahead",
     "kind": "press",
@@ -58036,7 +58045,7 @@
    },
    {
     "date": "2026-10-06",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-07",
     "headline": "Your New Teachers Are Two Months In. Is Your Teacher Mentoring Program Working?",
     "kind": "press",
@@ -58045,7 +58054,7 @@
    },
    {
     "date": "2026-10-05",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "How Wauwatosa\u2019s CFO Turns Staffing Ratios Into Better Board Conversations",
     "kind": "press",
@@ -58168,21 +58177,12 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.frontlineeducation.com/blog/how-to-navigate-school-based-medicaid-compliance-and-maximize-reimbursement-insights-from-a-national-expert/"
-   },
-   {
-    "date": "2026-02-26",
-    "date_source": "json-ld",
-    "first_seen": "2026-10-15",
-    "headline": "Recruit, Retain, Grow: A Lifecycle Playbook for K-12 HR Leaders",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.frontlineeducation.com/blog/12-staff-talent-management-lifecycle/"
    }
   ],
   "state": "items"
  },
  "frost-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -58769,7 +58769,7 @@
   "state": "items"
  },
  "gaggle": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-23",
@@ -59161,9 +59161,9 @@
   "state": "none_found"
  },
  "gatekeeper-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "ge-vernova": {
   "checked_on": "2026-10-26",
@@ -59397,7 +59397,7 @@
   "state": "items"
  },
  "genasys": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -59852,7 +59852,7 @@
   "state": "items"
  },
  "genfare": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -60224,7 +60224,7 @@
   "state": "items"
  },
  "geotab": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -60336,7 +60336,7 @@
    },
    {
     "date": "2026-09-22",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-05",
     "headline": "Measuring the supply chain in motion",
     "kind": "press",
@@ -60455,7 +60455,7 @@
   "state": "items"
  },
  "get-group-north-america": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -60475,7 +60475,7 @@
   "state": "none_found"
  },
  "giro": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-28",
@@ -61520,7 +61520,7 @@
   "state": "none_found"
  },
  "glacier": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -61540,7 +61540,7 @@
   "state": "none_found"
  },
  "go-vocal": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-25",
@@ -61735,7 +61735,7 @@
   "state": "items"
  },
  "gogov": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-17",
@@ -61840,7 +61840,7 @@
   "state": "items"
  },
  "goguardian": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-07",
@@ -62091,7 +62091,7 @@
   "state": "none_found"
  },
  "gordian": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -62397,7 +62397,7 @@
   "state": "items"
  },
  "govinvest": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -62407,7 +62407,7 @@
   "state": "none_found"
  },
  "govpilot": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-18",
@@ -62743,7 +62743,7 @@
   "state": "items"
  },
  "govskills": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-20",
@@ -62857,7 +62857,7 @@
   "state": "items"
  },
  "govspend": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -63319,7 +63319,7 @@
   "state": "items"
  },
  "govstream-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-18",
@@ -63397,7 +63397,7 @@
   "state": "items"
  },
  "govwell": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -63628,7 +63628,7 @@
   "state": "items"
  },
  "govworx": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-22",
@@ -63933,7 +63933,7 @@
   "state": "unread"
  },
  "granicus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -64169,7 +64169,7 @@
   "state": "none_found"
  },
  "graph-aware-limited": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-09",
@@ -64301,7 +64301,7 @@
   "state": "items"
  },
  "gravity": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -64542,7 +64542,7 @@
   "state": "none_found"
  },
  "greehill": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -64562,7 +64562,7 @@
   "state": "unread"
  },
  "greenzie": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-01-27",
@@ -64622,7 +64622,7 @@
   "state": "items"
  },
  "greyparrot": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-05",
@@ -65225,7 +65225,7 @@
   "state": "items"
  },
  "gridware": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-22",
@@ -65339,7 +65339,7 @@
   "state": "items"
  },
  "gtechna": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-28",
@@ -65417,7 +65417,7 @@
   "state": "none_found"
  },
  "guard1": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2020-07-16",
@@ -65432,12 +65432,12 @@
   "state": "items"
  },
  "guardian-alliance-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "guardian-rfid": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2020-02-26",
@@ -66826,12 +66826,12 @@
   "state": "items"
  },
  "hart-intercivic": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "hayden-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -67062,7 +67062,7 @@
   "state": "items"
  },
  "hazel": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-01-01",
@@ -67624,7 +67624,7 @@
   "state": "none_found"
  },
  "hello-heart": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-10",
@@ -68478,7 +68478,7 @@
   "state": "items"
  },
  "holly": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-01-22",
@@ -68883,7 +68883,7 @@
   "state": "items"
  },
  "hopskipdrive": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -69124,7 +69124,7 @@
   "state": "unread"
  },
  "hub-parking-technology-usa-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-08",
@@ -69406,7 +69406,7 @@
   "state": "none_found"
  },
  "hydroapps": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-19",
@@ -69676,7 +69676,7 @@
   "state": "none_found"
  },
  "i-pro-americas": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -69907,12 +69907,12 @@
   "state": "items"
  },
  "i3-verticals": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "ibm": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -70942,7 +70942,7 @@
   "state": "items"
  },
  "idi": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-15",
@@ -71442,12 +71442,12 @@
   "state": "items"
  },
  "ike-smart-city": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "illuminex-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-10",
@@ -71684,7 +71684,7 @@
   "state": "items"
  },
  "imagetrend": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-16",
@@ -72029,11 +72029,11 @@
   "state": "items"
  },
  "imprivata": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-26",
     "headline": "Imprivata Recognized for the First Time in the Gartner\u00ae Magic Quadrant\u2122 for Privileged Access Management",
     "kind": "press",
@@ -72060,7 +72060,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-19",
     "headline": "Authentication Issues Cost Frontline Organizations Thousands of Working Hours Each Year According to Research from Imprivata and FIDO Alliance",
     "kind": "press",
@@ -72087,7 +72087,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-14",
     "headline": "Imprivata and Verosint merge branding, websites and other marketing materials in support of the recent Imprivata acquisition of Verosint",
     "kind": "funding",
@@ -72260,7 +72260,7 @@
   "state": "items"
  },
  "in-a-blink": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -72765,7 +72765,7 @@
   "state": "none_found"
  },
  "infinite-campus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -72908,7 +72908,7 @@
   "state": "items"
  },
  "infor": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -72930,7 +72930,7 @@
    },
    {
     "date": "2026-10-22",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-23",
     "headline": "Gartner IT Symposium/Xpo 2026: Day 4 Highlights with Infor: Humans and AI agents, one coordinated system",
     "kind": "press",
@@ -72939,7 +72939,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-22",
     "headline": "Gartner IT Symposium/Xpo 2026: Day 3 Highlights with Infor: Governed by design, ready to scale AI",
     "kind": "press",
@@ -72948,7 +72948,7 @@
    },
    {
     "date": "2026-10-20",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "Gartner IT Symposium/Xpo 2026: Day 2 Highlights with Infor: Build your AI roadmap, then let value compound",
     "kind": "press",
@@ -72957,7 +72957,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-19",
     "headline": "Gartner IT Symposium/Xpo 2026: Day 1 Highlights with Infor: Industry intelligence is the new AI foundation",
     "kind": "press",
@@ -73002,7 +73002,7 @@
    },
    {
     "date": "2026-10-13",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-13",
     "headline": "From accountable AI to accountable action",
     "kind": "press",
@@ -73011,7 +73011,7 @@
    },
    {
     "date": "2026-10-13",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-14",
     "headline": "Balancing freshness, yield, service, and profitability through integrated ERP planning",
     "kind": "press",
@@ -73029,7 +73029,7 @@
    },
    {
     "date": "2026-10-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-15",
     "headline": "Early Talent launching their careers at Infor",
     "kind": "press",
@@ -73038,7 +73038,7 @@
    },
    {
     "date": "2026-10-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-15",
     "headline": "Inside Infor's Early Talent onboarding experience",
     "kind": "press",
@@ -73047,7 +73047,7 @@
    },
    {
     "date": "2026-10-11",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-13",
     "headline": "Key healthcare innovations from Infor's October 2026 Release",
     "kind": "press",
@@ -73399,7 +73399,7 @@
   "state": "items"
  },
  "infotech": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-09",
@@ -73621,7 +73621,7 @@
   "state": "items"
  },
  "init": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -73785,7 +73785,7 @@
   "state": "none_found"
  },
  "inlogic": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -73991,7 +73991,7 @@
   "state": "unread"
  },
  "inseer-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -74227,7 +74227,7 @@
   "state": "items"
  },
  "intangles-usa-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -74458,7 +74458,7 @@
   "state": "items"
  },
  "integrated-biometrics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-28",
@@ -74694,7 +74694,7 @@
   "state": "none_found"
  },
  "intellicene": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-23",
@@ -74935,12 +74935,12 @@
   "state": "none_found"
  },
  "intellisafe-analytics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "interloc-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -75408,7 +75408,7 @@
   "state": "items"
  },
  "intime-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -75852,7 +75852,7 @@
   "state": "items"
  },
  "inveris-training-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -76297,7 +76297,7 @@
   "state": "items"
  },
  "iris-id-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -76533,22 +76533,22 @@
   "state": "items"
  },
  "isport360": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "issured-mea-digital-evidence-integrity": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "istrike-alerts": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "iteris": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-02",
@@ -76808,7 +76808,7 @@
   "state": "none_found"
  },
  "itron": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -77049,7 +77049,7 @@
   "state": "unread"
  },
  "jacobs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -77295,7 +77295,7 @@
   "state": "items"
  },
  "jaggaer": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -77777,7 +77777,7 @@
   "state": "items"
  },
  "jenoptik-smart-mobility": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-08",
@@ -78023,7 +78023,7 @@
   "state": "items"
  },
  "jersey-watch": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -78269,7 +78269,7 @@
   "state": "items"
  },
  "johnson-controls-openblue": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -78512,7 +78512,7 @@
   "state": "none_found"
  },
  "julota": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -79111,7 +79111,7 @@
   "state": "none_found"
  },
  "just-appraised": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -79335,7 +79335,7 @@
   "state": "none_found"
  },
  "justice-systems-by-long": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-15",
@@ -79566,7 +79566,7 @@
   "state": "items"
  },
  "justicetext": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-20",
@@ -79680,11 +79680,11 @@
   "state": "items"
  },
  "juvare": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-19",
     "headline": "Juvare Partners with Factal, Bringing AI-Driven Threat Detection and Expert Human Verification Directly into WebEOC",
     "kind": "press",
@@ -80099,7 +80099,7 @@
   "state": "items"
  },
  "kaiden-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-07",
@@ -80240,7 +80240,7 @@
   "state": "items"
  },
  "kaizen-labs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -80473,12 +80473,12 @@
   "state": "items"
  },
  "karda-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "kaseware": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
@@ -81108,7 +81108,7 @@
   "state": "items"
  },
  "ketos": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -82005,7 +82005,7 @@
   "state": "items"
  },
  "kinotek-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -82020,7 +82020,7 @@
   "state": "none_found"
  },
  "klir": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-11",
@@ -82256,12 +82256,12 @@
   "state": "none_found"
  },
  "knowink": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "kodex": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-30",
@@ -82276,7 +82276,7 @@
   "state": "none_found"
  },
  "kofile": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -82431,12 +82431,12 @@
   "state": "items"
  },
  "kova-corp": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "kpa": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -83698,7 +83698,7 @@
   "state": "items"
  },
  "landapp-by-landgate": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -83934,7 +83934,7 @@
   "state": "none_found"
  },
  "laserfiche": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-29",
@@ -84213,7 +84213,7 @@
   "state": "items"
  },
  "lcptracker": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-30",
@@ -84228,7 +84228,7 @@
   "state": "items"
  },
  "leagueapps": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-16",
@@ -84852,7 +84852,7 @@
   "state": "items"
  },
  "lenslock": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -85047,7 +85047,7 @@
   "state": "items"
  },
  "leosight": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-04",
@@ -85245,12 +85245,12 @@
   "state": "items"
  },
  "letzchat": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "lexipol": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -85481,7 +85481,7 @@
   "state": "none_found"
  },
  "liberty-defense": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-12",
@@ -85927,7 +85927,7 @@
   "state": "unread"
  },
  "liftango": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-04-29",
@@ -86734,7 +86734,7 @@
   "state": "items"
  },
  "linev-systems-us": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -87375,7 +87375,7 @@
   "state": "items"
  },
  "littlepay": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-05",
@@ -87588,7 +87588,7 @@
   "state": "items"
  },
  "liveview-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -87982,7 +87982,7 @@
   "state": "items"
  },
  "longeye": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-08",
@@ -88186,12 +88186,12 @@
   "state": "items"
  },
  "lost-returns": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "luminator-technology-group": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-01",
@@ -88427,7 +88427,7 @@
   "state": "unread"
  },
  "lux-modus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2023-10-19",
@@ -88615,7 +88615,7 @@
   "state": "none_found"
  },
  "lyt": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-09",
@@ -88846,7 +88846,7 @@
   "state": "items"
  },
  "madison-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-06-05",
@@ -89137,7 +89137,7 @@
   "state": "items"
  },
  "magnet-forensics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -89368,7 +89368,7 @@
   "state": "items"
  },
  "maintainx": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -89599,7 +89599,7 @@
   "state": "items"
  },
  "maintstar": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -89845,7 +89845,7 @@
   "state": "none_found"
  },
  "march-networks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -90076,7 +90076,7 @@
   "state": "items"
  },
  "mark43": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -90430,7 +90430,7 @@
   "state": "items"
  },
  "masabi": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -90661,7 +90661,7 @@
   "state": "items"
  },
  "master-meter": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-07",
@@ -90676,7 +90676,7 @@
   "state": "items"
  },
  "matawan": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-28",
@@ -91086,7 +91086,7 @@
   "state": "none_found"
  },
  "may-mobility": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-23",
@@ -91317,7 +91317,7 @@
   "state": "items"
  },
  "mcci": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-11",
@@ -91431,7 +91431,7 @@
   "state": "items"
  },
  "mcm-technology-llc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-30",
@@ -92160,7 +92160,7 @@
   "state": "items"
  },
  "meridian-knowledge-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -92690,17 +92690,17 @@
   "state": "none_found"
  },
  "metropolis": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "milestone-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "miller-mendel": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-04-28",
@@ -93000,7 +93000,7 @@
   "state": "items"
  },
  "milo-range": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -93251,7 +93251,7 @@
   "state": "items"
  },
  "miovision": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-22",
@@ -93492,7 +93492,7 @@
   "state": "none_found"
  },
  "mitel": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -94273,7 +94273,7 @@
   "state": "items"
  },
  "monday-com": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -94605,7 +94605,7 @@
   "state": "items"
  },
  "motive": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -94836,7 +94836,7 @@
   "state": "items"
  },
  "motorola-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
@@ -95298,7 +95298,7 @@
   "state": "items"
  },
  "msab": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -95526,7 +95526,7 @@
     "url": "https://www.msab.com/it/updates/invitation-to-msabs-capital-markets-day-on-may-7th-2026/"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "mtm": {
   "checked_on": "2026-10-26",
@@ -95534,7 +95534,7 @@
   "state": "none_found"
  },
  "mueller-water-products": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -95879,7 +95879,7 @@
   "state": "items"
  },
  "munibit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -96092,7 +96092,7 @@
   "state": "items"
  },
  "municibid": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-17",
@@ -96323,7 +96323,7 @@
   "state": "items"
  },
  "municipal-parking-services": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -96850,7 +96850,7 @@
   "state": "items"
  },
  "myvolunteer": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -97448,7 +97448,7 @@
   "state": "none_found"
  },
  "ncase-technologies-llc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -98144,7 +98144,7 @@
   "state": "items"
  },
  "neogov": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -98272,7 +98272,7 @@
   "state": "unread"
  },
  "netchex": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-27",
@@ -98545,7 +98545,7 @@
   "state": "items"
  },
  "netradyne": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -98781,7 +98781,7 @@
   "state": "none_found"
  },
  "netsmart": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-16",
@@ -98964,7 +98964,7 @@
   "state": "items"
  },
  "neumo": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-14",
@@ -99195,7 +99195,7 @@
   "state": "items"
  },
  "new-in-blue": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -99464,7 +99464,7 @@
   "state": "items"
  },
  "nexgen-asset-management": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-09",
@@ -99917,7 +99917,7 @@
   "state": "items"
  },
  "nice": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -99936,6 +99936,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.nice.com/resources/gxbank-banking-the-underserved-24-7"
+   },
+   {
+    "date": "2026-10-23",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "White Papers Aberdeen \u201cThe ROI of Proactive Engagement\u201d",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.nice.com/resources/aberdeen-the-roi-of-proactive-engagement"
    },
    {
     "date": "2026-10-22",
@@ -100134,18 +100143,9 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.nice.com/resources/isg-buyers-guide-customer-experience-management-2026"
-   },
-   {
-    "date": "2026-09-01",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Copilot for Workforce Managers | AI Assist That Answers \"Why?\" Before You Ask",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.nice.com/resources/copilot-for-workforce-managers-ai-assist-that-answers-why-before-you-ask"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "niche": {
   "checked_on": "2026-10-26",
@@ -100561,7 +100561,7 @@
   "state": "none_found"
  },
  "ninjaone": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-10",
@@ -101517,7 +101517,7 @@
   "state": "none_found"
  },
  "novotx": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-07-09",
@@ -101541,7 +101541,7 @@
   "state": "items"
  },
  "nutanix": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-22",
@@ -101782,7 +101782,7 @@
   "state": "none_found"
  },
  "nuvei": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -102023,7 +102023,7 @@
   "state": "none_found"
  },
  "o-city": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -102259,7 +102259,7 @@
   "state": "items"
  },
  "obvio": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-01-20",
@@ -102292,17 +102292,17 @@
   "state": "items"
  },
  "octave": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "od-security-north-america": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "off-duty-management": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-10-02",
@@ -102335,7 +102335,7 @@
   "state": "items"
  },
  "offenderwatch": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -102449,7 +102449,7 @@
   "state": "items"
  },
  "offerioai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -102464,7 +102464,7 @@
   "state": "none_found"
  },
  "omnigo-software": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-02",
@@ -103013,7 +103013,7 @@
   "state": "items"
  },
  "omnitracs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-05-16",
@@ -103830,7 +103830,7 @@
   "state": "none_found"
  },
  "ontra-mobility": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -103906,7 +103906,7 @@
    },
    {
     "date": "2026-05-10",
-    "date_source": "og:published",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "Building the Ontra Planning Platform",
     "kind": "press",
@@ -103980,7 +103980,7 @@
   "state": "items"
  },
  "onward-health": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-04-27",
@@ -104212,7 +104212,7 @@
   "state": "items"
  },
  "opengov": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -104326,8 +104326,17 @@
   "state": "items"
  },
  "operator-xr": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
+   {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Two years in: why Dublin Police Department still runs Operator XR",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://operatorxr.com/insights/two-years-in-why-dublin-police-department-still-runs-operator-xr"
+   },
    {
     "date": "2026-09-23",
     "date_source": "json-ld",
@@ -104543,15 +104552,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://operatorxr.com/insights/operator-xr-and-aerometrex-collaborate-to-revolutionize-law-enforcement-and-counter-terrorism-training-with-real-world-xr-scenarios"
-   },
-   {
-    "date": "2023-07-12",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Operator XR Deploys Innovative Law Enforcement VR Training System For Western Australia Police Force",
-    "kind": "contract",
-    "kind_rule": "Deploys",
-    "url": "https://operatorxr.com/insights/operator-xr-deploys-innovative-law-enforcement-vr-training-system-for-western-australia-police-force"
    }
   ],
   "state": "items"
@@ -105126,12 +105126,12 @@
   "state": "items"
  },
  "outdoorlink": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "outsight-sa": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -105377,7 +105377,7 @@
   "state": "none_found"
  },
  "oversite": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -105641,7 +105641,7 @@
   "state": "items"
  },
  "padam-mobility": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -105847,12 +105847,12 @@
   "state": "none_found"
  },
  "paladin-drones": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "palo-alto-networks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -106314,7 +106314,7 @@
   "state": "items"
  },
  "pano-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -106846,7 +106846,7 @@
   "state": "none_found"
  },
  "papercast": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -106906,7 +106906,7 @@
   "state": "items"
  },
  "parentsquare": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -107355,12 +107355,12 @@
   "state": "items"
  },
  "passio-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "passport": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -107969,13 +107969,13 @@
   "state": "items"
  },
  "pavilion": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-02",
     "date_source": "index-text",
     "first_seen": "2026-10-05",
-    "headline": "How-to-guide October 2, 2026 How to pull your Pavilion opportunities in bulk with the Opportunities API Resource title Learn more",
+    "headline": "How-to-guide October 2, 2026 Pavilion Opportunities API Resource title Learn more",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.withpavilion.com/about/resources/pavilion-opportunities-api-guide"
@@ -108205,12 +108205,12 @@
   "state": "none_found"
  },
  "paybyphone": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "payit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-24",
@@ -108406,7 +108406,7 @@
   "state": "none_found"
  },
  "paymentworks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-12",
@@ -108585,12 +108585,12 @@
   "state": "none_found"
  },
  "peachjar": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "peak-transit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -108718,17 +108718,17 @@
   "state": "items"
  },
  "peerconnect": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "peerless-vr": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "penlink": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -108959,7 +108959,7 @@
   "state": "none_found"
  },
  "peregrine": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -109190,7 +109190,7 @@
   "state": "items"
  },
  "perimeter": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-18",
@@ -109437,7 +109437,7 @@
   "state": "items"
  },
  "perry-weather": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -110232,12 +110232,12 @@
   "state": "items"
  },
  "piper-networks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "placer-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -110408,7 +110408,7 @@
   "state": "items"
  },
  "playground-guardian": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -110418,7 +110418,7 @@
   "state": "none_found"
  },
  "playsight": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-24",
@@ -110532,7 +110532,7 @@
   "state": "items"
  },
  "plotbox": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-21",
@@ -110768,7 +110768,7 @@
   "state": "none_found"
  },
  "pmweb": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-04",
@@ -111131,7 +111131,7 @@
   "state": "items"
  },
  "polco": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -111367,7 +111367,7 @@
   "state": "items"
  },
  "polimorphic": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -111414,7 +111414,7 @@
   "state": "unread"
  },
  "populus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-11-04",
@@ -111501,7 +111501,7 @@
   "state": "items"
  },
  "portage-cybertech": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-22",
@@ -111963,12 +111963,12 @@
   "state": "items"
  },
  "power-dms-by-neogov": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "powerdetails": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-04-28",
@@ -112127,7 +112127,7 @@
   "state": "items"
  },
  "powerfleet": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-14",
@@ -112283,7 +112283,7 @@
   "state": "items"
  },
  "powerschool": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -112547,7 +112547,7 @@
   "state": "items"
  },
  "prepared": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -112685,7 +112685,7 @@
   "state": "none_found"
  },
  "procore": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -112916,7 +112916,7 @@
   "state": "items"
  },
  "procurated": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-27",
@@ -112958,12 +112958,12 @@
   "state": "items"
  },
  "prodigiq-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "productive-parks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -112973,7 +112973,7 @@
   "state": "none_found"
  },
  "proofpoint-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -113671,11 +113671,11 @@
   "state": "items"
  },
  "prophoenix": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-26",
     "headline": "Visit us booth 1175 IACP",
     "kind": "press",
@@ -113684,7 +113684,7 @@
    },
    {
     "date": "2026-09-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-05",
     "headline": "Visit us booth #32 Atlantic APCO Conference",
     "kind": "press",
@@ -113693,7 +113693,7 @@
    },
    {
     "date": "2026-09-15",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "Henry County Sheriff\u2019s Office now live with Phoenix software",
     "kind": "press",
@@ -113702,7 +113702,7 @@
    },
    {
     "date": "2026-08-31",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-10",
     "headline": "Real-Time Data, Faster Response",
     "kind": "press",
@@ -113756,7 +113756,7 @@
    },
    {
     "date": "2026-06-22",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Visit us booth 324 at FBINAA",
     "kind": "press",
@@ -113765,7 +113765,7 @@
    },
    {
     "date": "2026-06-11",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Visit us booth 609 at National Sheriffs\u2019 Association Conference",
     "kind": "press",
@@ -113774,7 +113774,7 @@
    },
    {
     "date": "2026-05-20",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Here Today at IACP Tech Booth 537",
     "kind": "press",
@@ -113783,7 +113783,7 @@
    },
    {
     "date": "2026-05-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Dodge County, MN now live with Phoenix software",
     "kind": "press",
@@ -113882,7 +113882,7 @@
   "state": "items"
  },
  "psd-citywide": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -113933,7 +113933,7 @@
   "state": "none_found"
  },
  "pstrax": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -114242,7 +114242,7 @@
   "state": "items"
  },
  "publicinput": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -114252,7 +114252,7 @@
   "state": "none_found"
  },
  "pulsara": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -114404,7 +114404,7 @@
   "state": "items"
  },
  "puretech-systems-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -114891,12 +114891,12 @@
   "state": "none_found"
  },
  "quarterhill": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "quester-tangent": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -114930,11 +114930,11 @@
   "state": "items"
  },
  "quorum": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-09",
     "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
     "kind": "product",
@@ -114943,7 +114943,7 @@
    },
    {
     "date": "2026-10-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-24",
     "headline": "AI Bill Tracking: 5 Improvements to How Your Team Tracks Legislation in 2027",
     "kind": "press",
@@ -114952,7 +114952,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-22",
     "headline": "Election Year Advocacy: Trends in Grassroots Mobilization Heading Into 2027",
     "kind": "press",
@@ -114961,7 +114961,7 @@
    },
    {
     "date": "2026-10-08",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-08",
     "headline": "Why Corporate PAC Participation Keeps Sliding (and How to Increase It)",
     "kind": "press",
@@ -114970,7 +114970,7 @@
    },
    {
     "date": "2026-10-01",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-06",
     "headline": "How to Build a 2027 Grassroots Advocacy Plan: Goals, Calendar, and Cadence",
     "kind": "press",
@@ -114979,7 +114979,7 @@
    },
    {
     "date": "2026-09-30",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-06",
     "headline": "2026 Election Prep Guide: What to Expect in Quorum",
     "kind": "press",
@@ -114997,7 +114997,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "Candidate Data + AI: Preparing Your Federal Team for the 120th Congress",
     "kind": "press",
@@ -115006,7 +115006,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "Why Federal Government Affairs Teams Need More Than an AI Research Tool",
     "kind": "press",
@@ -115015,7 +115015,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "A Day in State Legislative Tracking: How AI Agents Help Teams Cover 50 States",
     "kind": "press",
@@ -115024,7 +115024,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "How AI Agents Make Government Affairs Teams More Efficient",
     "kind": "press",
@@ -115033,7 +115033,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "AI Meeting Prep That Keeps Government Affairs Teams Aligned",
     "kind": "press",
@@ -115161,26 +115161,8 @@
   "state": "items"
  },
  "radicl": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
-   {
-    "date": "2026-10-26",
-    "date_source": "json-ld",
-    "first_seen": "2026-10-26",
-    "headline": "The Principle of Least Privilege: Why Access Control Matters in Cybersecurity",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://radicl.com/resources/the-principle-of-least-privilege-why-access-control-matters-in-cybersecurity"
-   },
-   {
-    "date": "2026-10-26",
-    "date_source": "json-ld",
-    "first_seen": "2026-10-26",
-    "headline": "Aviation Cybersecurity: The High Stakes of Securing Our Skies",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://radicl.com/resources/aviation-cybersecurity-the-high-stakes-of-securing-our-skies"
-   },
    {
     "date": "2026-10-23",
     "date_source": "json-ld",
@@ -115198,24 +115180,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://radicl.com/resources/catalyx-space-rifath-shaarook-compliance-licenses-space-defense"
-   },
-   {
-    "date": "2026-10-21",
-    "date_source": "json-ld",
-    "first_seen": "2026-10-21",
-    "headline": "What is MFA? Multi-Factor Authentication for Government Contractors",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://radicl.com/resources/what-is-mfa-multi-factor-authentication-for-government-contractors"
-   },
-   {
-    "date": "2026-10-19",
-    "date_source": "json-ld",
-    "first_seen": "2026-10-19",
-    "headline": "What is Zero Trust? A Smarter Approach to Cybersecurity",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://radicl.com/resources/what-is-zero-trust-a-smarter-approach-to-cybersecurity"
    },
    {
     "date": "2026-10-16",
@@ -115301,6 +115265,15 @@
    {
     "date": "2026-09-25",
     "date_source": "index-text",
+    "first_seen": "2026-10-26",
+    "headline": "Aviation Cybersecurity: The High Stakes of Securing Our Skies",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://radicl.com/resources/aviation-cybersecurity-the-high-stakes-of-securing-our-skies"
+   },
+   {
+    "date": "2026-09-25",
+    "date_source": "index-text",
     "first_seen": "2026-10-09",
     "headline": "Credential Stuffing: Bulk Account Takeover Explained",
     "kind": "press",
@@ -115315,6 +115288,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://radicl.com/resources/cloaking-gate-fronts-a-certutil-stager-deploying-screenconnect"
+   },
+   {
+    "date": "2026-09-24",
+    "date_source": "index-text",
+    "first_seen": "2026-10-26",
+    "headline": "The Principle of Least Privilege: Why Access Control Matters in Cybersecurity",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://radicl.com/resources/the-principle-of-least-privilege-why-access-control-matters-in-cybersecurity"
    },
    {
     "date": "2026-09-24",
@@ -115344,8 +115326,17 @@
     "url": "https://radicl.com/resources/nerc-cip-compliance-checklist-for-2026"
    },
    {
-    "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date": "2026-09-22",
+    "date_source": "index-text",
+    "first_seen": "2026-10-19",
+    "headline": "What is Zero Trust? A Smarter Approach to Cybersecurity",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://radicl.com/resources/what-is-zero-trust-a-smarter-approach-to-cybersecurity"
+   },
+   {
+    "date": "2026-09-22",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "What Is FedRAMP? Cloud Authorization for Government Contractors",
     "kind": "press",
@@ -115369,6 +115360,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://radicl.com/resources/that-voter-registration-website-might-want-more-than-your-vote"
+   },
+   {
+    "date": "2026-09-21",
+    "date_source": "index-text",
+    "first_seen": "2026-10-21",
+    "headline": "What is MFA? Multi-Factor Authentication for Government Contractors",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://radicl.com/resources/what-is-mfa-multi-factor-authentication-for-government-contractors"
    },
    {
     "date": "2026-09-21",
@@ -115502,7 +115502,7 @@
   "state": "none_found"
  },
  "rain": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -115682,7 +115682,7 @@
   "state": "none_found"
  },
  "rapidsos": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-09",
@@ -115715,7 +115715,7 @@
   "state": "items"
  },
  "raptor-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -115946,7 +115946,7 @@
   "state": "items"
  },
  "rave-mobile-safety": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -115956,7 +115956,7 @@
   "state": "none_found"
  },
  "reach-media-network": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-09",
@@ -116622,7 +116622,7 @@
   "state": "items"
  },
  "rebokeh-vision-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-29",
@@ -116655,8 +116655,17 @@
   "state": "items"
  },
  "rec": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
+   {
+    "date": "2026-10-26",
+    "date_source": "index-text",
+    "first_seen": "2026-10-27",
+    "headline": "How Paradise Is Rebuilding Recreation Access with Rec",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://partner.rec.us/blog/how-paradise-is-rebuilding-recreation-access-with-rec"
+   },
    {
     "date": "2026-10-21",
     "date_source": "index-text",
@@ -116872,15 +116881,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://partner.rec.us/blog/the-next-big-thing-emerging-programming-trends-in-parks-recreation"
-   },
-   {
-    "date": "2025-07-08",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "Rec + City of Lincoln: Transforming Facility Rentals and Increasing Revenue by 4x",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://partner.rec.us/blog/rec-city-of-lincoln-transforming-facility-rentals-and-increasing-revenue-by-4x"
    }
   ],
   "state": "items"
@@ -117179,7 +117179,7 @@
   "state": "items"
  },
  "recycle-track-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -117737,7 +117737,7 @@
   "state": "items"
  },
  "redzone-robotics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -118020,7 +118020,7 @@
   "state": "items"
  },
  "rekor-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
@@ -118274,7 +118274,7 @@
   "state": "none_found"
  },
  "reunitus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-12",
@@ -118398,7 +118398,7 @@
   "state": "none_found"
  },
  "revize": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2022-11-08",
@@ -118491,12 +118491,12 @@
   "state": "items"
  },
  "rfp360-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "rfxpremier": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -118616,12 +118616,12 @@
   "state": "none_found"
  },
  "ridecell": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "rideco": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-12-02",
@@ -118704,7 +118704,7 @@
   "state": "none_found"
  },
  "roadway-management-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-15",
@@ -118818,7 +118818,7 @@
   "state": "items"
  },
  "robin-radar-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-16",
@@ -118941,7 +118941,7 @@
   "state": "items"
  },
  "roc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -119177,17 +119177,17 @@
   "state": "items"
  },
  "rosco-vision": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "routesmart-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "routeware": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-14",
@@ -119418,7 +119418,7 @@
   "state": "items"
  },
  "rta-fleet-management": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -119649,7 +119649,7 @@
   "state": "items"
  },
  "rubicon": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-02",
@@ -119831,7 +119831,7 @@
   "state": "none_found"
  },
  "saab-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -119846,12 +119846,12 @@
   "state": "unread"
  },
  "safety-vision": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "safience": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-12",
@@ -120544,7 +120544,7 @@
   "state": "items"
  },
  "sahay-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -120750,7 +120750,7 @@
   "state": "none_found"
  },
  "salesforce": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-24",
@@ -120981,7 +120981,7 @@
   "state": "items"
  },
  "saltus-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -121539,7 +121539,7 @@
   "state": "items"
  },
  "samsara": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -121775,7 +121775,7 @@
   "state": "none_found"
  },
  "sap-concur": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -121785,12 +121785,12 @@
   "state": "none_found"
  },
  "savi": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "schneider-geospatial": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-05-19",
@@ -122302,7 +122302,7 @@
   "state": "unread"
  },
  "scram-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -122463,7 +122463,7 @@
   "state": "none_found"
  },
  "sdl": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-10-14",
@@ -122959,7 +122959,7 @@
   "state": "items"
  },
  "securly": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -122979,7 +122979,7 @@
   "state": "items"
  },
  "seneca": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-23",
@@ -123012,7 +123012,7 @@
   "state": "items"
  },
  "sensoneo": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -123238,7 +123238,7 @@
   "state": "none_found"
  },
  "sentinelone": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -123251,7 +123251,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "SentinelOne and Lenovo Expand Partnership to Bring AI Security & Governance to the ThinkShield Security Portfolio",
     "kind": "press",
@@ -123260,7 +123260,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "SentinelOne Names LevelBlue Global Delivery Partner for Wayfinder Services",
     "kind": "leadership",
@@ -123269,7 +123269,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "SentinelOne Brings Security Superintelligence to the SOC With Singularity ASOC",
     "kind": "press",
@@ -123278,7 +123278,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "SentinelOne Delivers AI Advantage to Defenders with Singularity ADR and Singularity ASOC",
     "kind": "press",
@@ -123287,7 +123287,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "SentinelOne Arms Partners to Build and Scale AI Security Practices",
     "kind": "press",
@@ -123296,7 +123296,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-21",
     "headline": "SentinelOne Launches Singularity Agentic Detection and Response to Stop Rogue and Malicious AI Agents at Machine Speed",
     "kind": "product",
@@ -123305,7 +123305,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-22",
     "headline": "Stopping PHP2SHELL: How SentinelOne Protects Customers From This Attack Technique",
     "kind": "press",
@@ -123314,7 +123314,7 @@
    },
    {
     "date": "2026-10-21",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-22",
     "headline": "As AI Accelerates Cyberattacks, N-able and SentinelOne Expand Their Strategic Partnership to Advance Resilience",
     "kind": "press",
@@ -123323,7 +123323,7 @@
    },
    {
     "date": "2026-10-19",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-19",
     "headline": "Bring Your Own Vulnerable Driver: What Detection Teams Should Actually Hunt",
     "kind": "press",
@@ -123341,7 +123341,7 @@
    },
    {
     "date": "2026-10-13",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-13",
     "headline": "Bring Your Own Vulnerable Driver: The Trust Gap Attackers Operate Inside",
     "kind": "press",
@@ -123350,7 +123350,7 @@
    },
    {
     "date": "2026-10-13",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-13",
     "headline": "Bring Your Own Vulnerable Driver: How EDR Killing Became an Industry",
     "kind": "press",
@@ -123359,7 +123359,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-09",
     "headline": "5 Years of SentinelOne ThreatOps: Defense from the Ground Up to Global Threat Championships",
     "kind": "press",
@@ -123368,7 +123368,7 @@
    },
    {
     "date": "2026-10-08",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-15",
     "headline": "SentinelOne Wins SIEM Solution of the Year in CyberSecurity Breakthrough Awards 2026",
     "kind": "press",
@@ -123395,7 +123395,7 @@
    },
    {
     "date": "2026-09-29",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-06",
     "headline": "Building Agents Backwards from Evaluation",
     "kind": "press",
@@ -123404,7 +123404,7 @@
    },
    {
     "date": "2026-09-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "SentinelOne and NVIDIA: Governing AI From Silicon to Runtime",
     "kind": "press",
@@ -123422,7 +123422,7 @@
    },
    {
     "date": "2026-09-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-13",
     "headline": "Bring Your Own Vulnerable Driver: The EDR Killer Economy",
     "kind": "press",
@@ -123469,7 +123469,7 @@
   "state": "items"
  },
  "sentrycs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-11-18",
@@ -123979,7 +123979,7 @@
   "state": "items"
  },
  "sewerai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -124210,7 +124210,7 @@
   "state": "items"
  },
  "shadowdragon": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -124537,7 +124537,7 @@
   "state": "items"
  },
  "shark-robotics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -124901,7 +124901,7 @@
   "state": "items"
  },
  "signagent": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -125052,7 +125052,7 @@
   "state": "items"
  },
  "silverride": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -125356,7 +125356,7 @@
   "state": "unread"
  },
  "sita-information-networking-computing-usa-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -125592,7 +125592,7 @@
   "state": "items"
  },
  "sitetracker": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -125848,7 +125848,7 @@
   "state": "items"
  },
  "skopenow": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -126061,12 +126061,12 @@
   "state": "items"
  },
  "skydio": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "skyfireai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -126266,7 +126266,7 @@
   "state": "items"
  },
  "skysafe": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-08",
@@ -126409,7 +126409,7 @@
   "state": "none_found"
  },
  "smartdocs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -126608,7 +126608,7 @@
   "state": "items"
  },
  "social-explorer": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-09",
@@ -126794,7 +126794,7 @@
   "state": "items"
  },
  "social-news-desk": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-22",
@@ -127035,7 +127035,7 @@
   "state": "none_found"
  },
  "softdocs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -127163,7 +127163,7 @@
   "state": "unread"
  },
  "software-solutions-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-12",
@@ -127626,7 +127626,7 @@
   "state": "items"
  },
  "sotaog": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -127862,7 +127862,7 @@
   "state": "items"
  },
  "soundthinking": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -127901,10 +127901,10 @@
     "url": "https://www.soundthinking.com/press-releases/soundthinking-statement-on-city-of-chicago-michael-williams-settlement"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "sovra": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-23",
@@ -128081,7 +128081,7 @@
   "state": "none_found"
  },
  "spare": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-07",
@@ -129065,7 +129065,7 @@
   "state": "items"
  },
  "sportsengine": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-14",
@@ -129224,7 +129224,7 @@
   "state": "items"
  },
  "sportsplus": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -129259,7 +129259,7 @@
   "state": "none_found"
  },
  "ss8-networks": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -129427,7 +129427,7 @@
   "state": "items"
  },
  "stack-sports": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-11-22",
@@ -129700,7 +129700,7 @@
   "state": "items"
  },
  "stackbench": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -129710,7 +129710,7 @@
   "state": "none_found"
  },
  "stage-cares": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-28",
@@ -129779,11 +129779,11 @@
   "state": "items"
  },
  "starbridge": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-26",
     "headline": "Playbook October 26, 2026 RFP Response Mistakes Government Vendors Make The costliest RFP mistakes happen before anyone writes a word. Learn the errors government and education vendors make, ranked by",
     "kind": "press",
@@ -129792,7 +129792,7 @@
    },
    {
     "date": "2026-10-26",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-26",
     "headline": "Playbook October 26, 2026 How to Build an RFP Answer Library for Government Proposals Build an RFP answer library that passes compliance checks. Learn what to store for government and education buyers",
     "kind": "press",
@@ -129801,7 +129801,7 @@
    },
    {
     "date": "2026-10-17",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-17",
     "headline": "Playbook October 17, 2026 What You Can Legally Say to a Government Buyer Pre-RFP What you can discuss with a government or education buyer before a solicitation posts, what changes the day it does, an",
     "kind": "press",
@@ -129810,7 +129810,7 @@
    },
    {
     "date": "2026-10-17",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-17",
     "headline": "Playbook October 17, 2026 How School Districts and Local Governments Score RFPs See how school districts and local governments score RFPs, step by step, from the compliance check and rubric to the pri",
     "kind": "press",
@@ -129819,7 +129819,7 @@
    },
    {
     "date": "2026-10-16",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-16",
     "headline": "Playbook October 16, 2026 Where to Find K\u201312 and Higher Education RFPs See where K\u201312 and higher education RFPs get posted, from state portals and district sites to cooperatives, and how to spot buyin",
     "kind": "press",
@@ -129828,7 +129828,7 @@
    },
    {
     "date": "2026-10-16",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-16",
     "headline": "Playbook October 16, 2026 How to Spot a Government RFP Written for Another Vendor Learn the red flags that show a government RFP was written for another vendor, how to score them, and when walking awa",
     "kind": "press",
@@ -129837,7 +129837,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-16",
     "headline": "Playbook October 15, 2026 MCP for Sales Prospecting Connect Claude or ChatGPT to verified buyer data with MCP, then run five copy-ready prompts to build lists, research accounts, and write outreach.",
     "kind": "press",
@@ -129846,7 +129846,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-14",
     "headline": "Playbook October 14, 2026 Government Sales Are Won Before SAM.gov Public postings on SAM.gov mark the end of the buying process. Learn how to spot buying indicators and shape requirements before a dea",
     "kind": "press",
@@ -129855,7 +129855,7 @@
    },
    {
     "date": "2026-10-10",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-10",
     "headline": "Playbook October 10, 2026 How to Respond to a Government RFP Learn how to respond to a government RFP, from the bid/no-bid call to evaluation criteria and compliance, with a scorecard your team can us",
     "kind": "press",
@@ -129864,7 +129864,7 @@
    },
    {
     "date": "2026-10-10",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-10",
     "headline": "Playbook October 10, 2026 MCP for Government and Education Sales The Model Context Protocol brings live buyer data into Claude and ChatGPT. Learn why it matters more for teams selling to government an",
     "kind": "press",
@@ -129873,7 +129873,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-09",
     "headline": "Playbook October 9, 2026 Government Fiscal Year Calendars for Sales Timing See when state and local government, K\u201312, and higher education fiscal years start, and how to time outreach around fresh bud",
     "kind": "press",
@@ -129882,7 +129882,7 @@
    },
    {
     "date": "2026-10-09",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-09",
     "headline": "Playbook October 9, 2026 Starbridge vs. e.Republic Industry Navigator Compare Starbridge and e.Republic across buying signals, contact data, spend intelligence, RFPs, and contract vehicles for K\u201312 GT",
     "kind": "press",
@@ -130010,7 +130010,7 @@
   "state": "items"
  },
  "starchase": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-03-13",
@@ -130339,7 +130339,7 @@
   "state": "items"
  },
  "status-solutions-network": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -130636,7 +130636,7 @@
   "state": "items"
  },
  "sterling-volunteers": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2023-04-19",
@@ -131046,7 +131046,7 @@
   "state": "items"
  },
  "streamax-america": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -131157,7 +131157,7 @@
   "state": "none_found"
  },
  "streetsaver": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2022-11-15",
@@ -131177,7 +131177,7 @@
   "state": "none_found"
  },
  "subitup": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-07",
@@ -131639,7 +131639,7 @@
   "state": "items"
  },
  "summer": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-19",
@@ -131875,7 +131875,7 @@
   "state": "none_found"
  },
  "surepassid": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -132116,12 +132116,12 @@
   "state": "none_found"
  },
  "swiftgov": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "swiftly": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-21",
@@ -132357,7 +132357,7 @@
   "state": "none_found"
  },
  "swimtopia": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -132367,7 +132367,7 @@
   "state": "none_found"
  },
  "sworn-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-02-25",
@@ -132666,7 +132666,7 @@
   "state": "none_found"
  },
  "systems-methods-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -132902,7 +132902,7 @@
   "state": "items"
  },
  "t2-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -133003,7 +133003,7 @@
   "state": "items"
  },
  "tadera": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-26",
@@ -133536,7 +133536,7 @@
   "state": "none_found"
  },
  "tanium": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -134046,12 +134046,12 @@
   "state": "items"
  },
  "teamgenius": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "teamlinkt": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -134282,12 +134282,12 @@
   "state": "items"
  },
  "teamsideline": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
  "teamsnap": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-07",
@@ -134338,17 +134338,17 @@
   "state": "items"
  },
  "technosylva": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "tek84": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "tele-town-hall": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -134392,7 +134392,7 @@
   "state": "none_found"
  },
  "tenzing-one": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -134511,7 +134511,7 @@
   "state": "none_found"
  },
  "terrago-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-06-27",
@@ -134558,7 +134558,7 @@
   "state": "none_found"
  },
  "textbychoice": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -134568,7 +134568,7 @@
   "state": "none_found"
  },
  "the-mobility-house": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -134633,7 +134633,7 @@
   "state": "none_found"
  },
  "the-routing-company": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-01",
@@ -134816,7 +134816,7 @@
   "state": "items"
  },
  "the-weather-company": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-19",
@@ -135242,7 +135242,7 @@
   "state": "items"
  },
  "thomson-reuters": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -135470,7 +135470,7 @@
     "url": "https://tax.thomsonreuters.com/blog/from-hours-to-minutes-how-ai-is-revolutionalizing-hs-product-classification/"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "thor-guard": {
   "checked_on": "2026-10-26",
@@ -135709,7 +135709,7 @@
   "state": "items"
  },
  "three-one": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -135829,7 +135829,7 @@
   "state": "items"
  },
  "tip411": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -135839,7 +135839,7 @@
   "state": "none_found"
  },
  "token-transit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-03-19",
@@ -135864,7 +135864,7 @@
   "state": "none_found"
  },
  "trackvia": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-06",
@@ -136068,7 +136068,7 @@
   "state": "items"
  },
  "tracsis": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-10",
@@ -136128,12 +136128,12 @@
   "state": "items"
  },
  "traction-rec": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "tracwire-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-31",
@@ -136362,10 +136362,19 @@
   "state": "none_found"
  },
  "tranquility-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
-    "date": "2026-09-04",
+    "date": "2026-10-26",
+    "date_source": "time",
+    "first_seen": "2026-10-27",
+    "headline": "Elizabeth Holmes Says We Misunderstood Theranos. We Investigated Her Claims with TimePilot.",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://tranquility.ai/insights/elizabeth-holmes-says-we-misunderstood-theranos.-we-investigated-her-claims-with-timepilot."
+   },
+   {
+    "date": "2026-09-28",
     "date_source": "time",
     "first_seen": "2026-09-09",
     "headline": "Not All AI Is Built for Investigations",
@@ -136500,7 +136509,7 @@
   "state": "items"
  },
  "transcore": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -136520,7 +136529,7 @@
   "state": "items"
  },
  "transit": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -136780,7 +136789,7 @@
   "state": "items"
  },
  "transoft-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-28",
@@ -137016,7 +137025,7 @@
   "state": "none_found"
  },
  "transtrack-solutions-group": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-22",
@@ -137685,7 +137694,7 @@
   "state": "items"
  },
  "trimble": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -138014,7 +138023,7 @@
   "state": "none_found"
  },
  "trm-labs": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -138054,7 +138063,7 @@
    },
    {
     "date": "2026-10-13",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-13",
     "headline": "Introducing Ardence: The OS for fighting crime",
     "kind": "product",
@@ -138481,7 +138490,7 @@
   "state": "none_found"
  },
  "truleo": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-04",
@@ -138628,7 +138637,7 @@
   "state": "items"
  },
  "tso-mobile": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-17",
@@ -138730,7 +138739,7 @@
   "state": "none_found"
  },
  "tyler-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -138740,7 +138749,7 @@
   "state": "none_found"
  },
  "ubicquia": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-14",
@@ -138971,7 +138980,7 @@
   "state": "items"
  },
  "ufa-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-24",
@@ -139103,7 +139112,7 @@
   "state": "items"
  },
  "ukg": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-17",
@@ -139426,7 +139435,7 @@
   "state": "none_found"
  },
  "unite-us": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-01",
@@ -139663,7 +139672,7 @@
   "state": "items"
  },
  "unstackr": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -139995,7 +140004,7 @@
   "state": "items"
  },
  "upper-hand": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-02-27",
@@ -140084,7 +140093,7 @@
   "state": "none_found"
  },
  "urbint": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -140099,7 +140108,7 @@
   "state": "none_found"
  },
  "utilimarc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-07-30",
@@ -140200,12 +140209,12 @@
   "state": "none_found"
  },
  "uzurv": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "v-armed": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-04-15",
@@ -140230,7 +140239,7 @@
   "state": "unread"
  },
  "valor-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -140291,7 +140300,7 @@
   "state": "items"
  },
  "vantiq": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-06-30",
@@ -140459,7 +140468,7 @@
   "state": "items"
  },
  "vapar": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -140609,12 +140618,12 @@
   "state": "items"
  },
  "varidx": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "vector-airport-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2023-11-27",
@@ -140656,7 +140665,7 @@
   "state": "items"
  },
  "vector-solutions": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2023-11-07",
@@ -140668,7 +140677,7 @@
     "url": "https://www.vectorsolutions.com/resources/press-releases/research-reveals-significant-gaps-in-first-responder-training-and-well-being/"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "velosimo": {
   "checked_on": "2026-10-26",
@@ -140902,17 +140911,17 @@
   "state": "items"
  },
  "vendnovation": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "ventek-international": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "veoci": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -141815,7 +141824,7 @@
   "state": "items"
  },
  "veripic": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -141825,7 +141834,7 @@
   "state": "none_found"
  },
  "veritypay": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-13",
@@ -141921,12 +141930,12 @@
   "state": "items"
  },
  "verizon-connect": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "verkada": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-15",
@@ -142157,12 +142166,12 @@
   "state": "items"
  },
  "verra-mobility": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "versaterm": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-20",
@@ -142797,7 +142806,7 @@
   "state": "none_found"
  },
  "via": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-05",
@@ -143033,7 +143042,7 @@
   "state": "none_found"
  },
  "vialytics": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-11",
@@ -143482,12 +143491,12 @@
   "state": "items"
  },
  "videray-technologies": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "virtra": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "unread"
  },
@@ -143723,7 +143732,7 @@
   "state": "items"
  },
  "virtual-project-manager": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-10",
@@ -144268,7 +144277,7 @@
   "state": "items"
  },
  "vix-technology": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-07",
@@ -144288,7 +144297,7 @@
   "state": "none_found"
  },
  "vocal-technologies-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2021-05-07",
@@ -144420,7 +144429,7 @@
   "state": "items"
  },
  "voda-ai": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -144638,7 +144647,7 @@
   "state": "items"
  },
  "vontas": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -144648,7 +144657,7 @@
   "state": "none_found"
  },
  "vottiv": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2024-12-29",
@@ -145020,12 +145029,12 @@
   "state": "none_found"
  },
  "wavetronix": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "way-com": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-09-02",
@@ -145139,7 +145148,7 @@
   "state": "unread"
  },
  "weathermatic": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -145476,7 +145485,7 @@
   "state": "items"
  },
  "westnet": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-05-12",
@@ -145812,7 +145821,7 @@
   "state": "items"
  },
  "whip-around": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-10-26",
@@ -146157,7 +146166,7 @@
   "state": "items"
  },
  "whooster-inc": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -146398,12 +146407,12 @@
   "state": "none_found"
  },
  "willowglen-systems": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "with": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -146639,11 +146648,20 @@
   "state": "items"
  },
  "wordly": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
+    "date": "2026-10-27",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-27",
+    "headline": "Wordly Launches Audience Engagement, Turning Live Event Content Into Real-Time Insights",
+    "kind": "product",
+    "kind_rule": "Launches",
+    "url": "https://www.wordly.ai/blog/wordly-launches-audience-engagement"
+   },
+   {
     "date": "2026-10-16",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-17",
     "headline": "Live Translation for Events: A Guide for Conference Planners",
     "kind": "press",
@@ -146652,7 +146670,7 @@
    },
    {
     "date": "2026-10-16",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-17",
     "headline": "Multilingual Event Technology: Why Global Event Leaders Choose Wordly",
     "kind": "press",
@@ -146661,7 +146679,7 @@
    },
    {
     "date": "2026-09-29",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Wordly Launches First Hardware-Free Silent Theater Live Audio Solution for Conferences",
     "kind": "product",
@@ -146670,7 +146688,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "How to Turn Live Translation and Captions Into Event Sponsorship Revenue",
     "kind": "press",
@@ -146679,7 +146697,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Wordly Turns Live Event Translation Into Revenue Generator for Events",
     "kind": "press",
@@ -146688,7 +146706,7 @@
    },
    {
     "date": "2026-09-21",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "How to Use Wordly Custom Fields for Enhanced Post Event Reports",
     "kind": "press",
@@ -146697,7 +146715,7 @@
    },
    {
     "date": "2026-09-18",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Silent Disco Guide: How It Works, What It Costs, and How to Run One Without Equipment Rentals",
     "kind": "press",
@@ -146706,7 +146724,7 @@
    },
    {
     "date": "2026-08-28",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "How Wordly Powers Live Translation and Captions at Conferences and Events",
     "kind": "press",
@@ -146715,7 +146733,7 @@
    },
    {
     "date": "2026-08-27",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "How Wordly Serves the Entire Event Content Lifecycle, Before, During, and After",
     "kind": "press",
@@ -146856,21 +146874,12 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.wordly.ai/blog/ai-translation-outperforms-human-interpretation"
-   },
-   {
-    "date": "2026-06-10",
-    "date_source": "index-text",
-    "first_seen": "2026-10-05",
-    "headline": "Event Translation at Global Scale: Wordly Exhibits at IMEX Frankfurt 2026",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.wordly.ai/blog/event-translation"
    }
   ],
   "state": "items"
  },
  "workday": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -147126,12 +147135,12 @@
   "state": "none_found"
  },
  "xovis": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "xplor-recreation": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -147205,7 +147214,7 @@
   "state": "items"
  },
  "xylem": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -147446,7 +147455,7 @@
   "state": "none_found"
  },
  "zactax": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-12",
@@ -148254,7 +148263,7 @@
   "state": "items"
  },
  "zeroeyes": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2025-09-18",
@@ -148350,7 +148359,7 @@
   "state": "none_found"
  },
  "zoll-medical": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
@@ -148478,12 +148487,12 @@
   "state": "items"
  },
  "zoomgrants": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [],
   "state": "none_found"
  },
  "zum": {
-  "checked_on": "2026-10-26",
+  "checked_on": "2026-10-27",
   "items": [
    {
     "date": "2026-08-26",
