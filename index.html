@@ -3244,6 +3244,16 @@ function lightMark(img){
     if(blank){if(!svg)img.remove();return;}
     // an opaque logo brings its own ground; a plate would only frame it
     if(ink<.95*n*n&&onLight<.1*ink&&onDark>.5*ink)img.classList.add("ondark");
+    /* A WHITE MARK WITH A LITTLE COLOUR: CrowdStrike's white wordmark beside
+       a red swoosh drew as the swoosh alone on the white plate (owner,
+       2026-10-27: "fix the crowdstrike logo"). Over 40% of its ink vanishes
+       on white and nearly all of it shows on dark. Only for a mark that
+       leaves most of its square empty: one drawn on its own white disc or
+       box (ink over half the square) brings its own ground. Measured on the
+       1,990 logos on file: 12 change (CrowdStrike, SAP Concur, ADB Safegate,
+       Decision Optimization Technology, Pulse, WaterSmart among them), each
+       read by eye on both plates first. */
+    else if(ink<.5*n*n&&ink-onLight>.4*ink&&onDark>.9*ink)img.classList.add("ondark");
   }catch(e){/* a logo we cannot read is drawn as it is */}
 }
 /*lightMark:end*/

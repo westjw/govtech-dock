@@ -12087,6 +12087,14 @@ function px(kind) {
     if (kind === "empty") p = [0, 0, 0, 0];
     if (kind === "colour" && mark) p = [200, 40, 40, 255];
     if (kind === "opaqueOnWhite") p = mark && x < 12 ? [20, 20, 20, 255] : [255, 255, 255, 255];
+    // CrowdStrike's shape (2026-10-27): a white wordmark beside a red swoosh
+    if (kind === "whiteWithSwoosh" && mark) p = x < 12 ? [200, 40, 40, 255] : [255, 255, 255, 255];
+    // a colour mark with a little white in it: the white plate reads it
+    if (kind === "mostlyColour" && mark) p = x > 20 ? [255, 255, 255, 255] : [200, 40, 40, 255];
+    // a logo on its own white disc, three quarters of the square, a red
+    // mark on it (CivicPlus, DailyPay): it brings its own ground
+    if (kind === "whiteBox" && x > 1 && x < 30 && y > 1 && y < 30)
+      p = x > 9 && x < 22 && y > 9 && y < 22 ? [200, 40, 40, 255] : [255, 255, 255, 255];
     d.set(p, i);
   }
   return d;
@@ -12097,7 +12105,8 @@ const document = { createElement: () => ({ getContext: () => ({
 eval(FN);
 const out = {};
 for (const [kind, url] of [["whiteMark", "a.png"], ["blankSquare", "b.png"], ["empty", "c.ico"],
-                           ["empty", "d.svg"], ["colour", "e.png"], ["opaqueOnWhite", "f.png"]]) {
+                           ["empty", "d.svg"], ["colour", "e.png"], ["opaqueOnWhite", "f.png"],
+                           ["whiteWithSwoosh", "g.png"], ["mostlyColour", "h.png"], ["whiteBox", "i.png"]]) {
   current = kind;
   const cls = new Set(); let removed = false;
   const img = { src: "assets/logos/" + url, currentSrc: "", classList: { add: c => cls.add(c) },
@@ -12113,7 +12122,9 @@ console.log(JSON.stringify(out));
     got = json.loads(r.stdout.strip().splitlines()[-1])
     want = {"whiteMark:a.png": "ondark", "blankSquare:b.png": "removed",
             "empty:c.ico": "removed", "empty:d.svg": "plain",
-            "colour:e.png": "plain", "opaqueOnWhite:f.png": "plain"}
+            "colour:e.png": "plain", "opaqueOnWhite:f.png": "plain",
+            "whiteWithSwoosh:g.png": "ondark", "mostlyColour:h.png": "plain",
+            "whiteBox:i.png": "plain"}
     for k, v in want.items():
         if got.get(k) != v:
             errors += fail(f"lightMark on {k} gave {got.get(k)!r}, expected {v!r}")
