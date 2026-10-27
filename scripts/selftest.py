@@ -9911,6 +9911,82 @@ def check_the_daily_scope_review_reads_once_and_rules_only_on_quotes() -> int:
     return errors
 
 
+def check_a_conference_fact_is_read_never_guessed() -> int:
+    """Costs, exhibitor links, deadlines and who attends, each with its page.
+
+    Owner, 2026-10-27: "what other info can we take and include on the page?
+    including links to their stuff? costs?", then all four kinds. Driven: the
+    door (conference_facts.check_read) refuses an unconfirmed read, an
+    edition older than the one on file, a cost whose figure is not in its
+    quote or carries no currency, a deadline that is not a date, a link kind
+    it does not know and a link that is not http(s); the board carries no
+    quote; the /e/ page and the app's panel drop a javascript: link and a
+    passed deadline, escape what the page said, and draw nothing for a
+    conference nobody has read.
+    """
+    import conference_facts as cf
+    import build_site as bs
+    errors = 0
+    src = "https://x.test/prospectus"
+    read = {"tag": "X 2027", "edition": "2027", "confirmed": True,
+            "costs": [{"what": "10x10 booth", "amount": "$2,950", "quote": "A 10x10 booth is $2,950.", "source": src},
+                      {"what": "Made up", "amount": "$3,100", "quote": "A 10x10 booth is $2,950.", "source": src},
+                      {"what": "No currency", "amount": "2950", "quote": "booth 2950", "source": src},
+                      {"what": "No source", "amount": "$1", "quote": "$1", "source": "javascript:x"}],
+            "links": [{"kind": "prospectus", "url": "https://x.test/p.pdf", "source": src},
+                      {"kind": "brochure", "url": "https://x.test/b"},
+                      {"kind": "booth", "url": "javascript:alert(1)"}],
+            "deadlines": [{"what": "Early-bird", "date": "2027-03-01", "quote": "by March 1", "source": src},
+                          {"what": "Soon", "date": "March 1", "quote": "x", "source": src}],
+            "audience": {"attendance": "6,000+", "quote": "6,000+ attend", "source": src}}
+    got, bad = cf.check_read(read, None)
+    if not got or [c["amount"] for c in got["costs"]] != ["$2,950"] \
+            or [x["kind"] for x in got["links"]] != ["prospectus"] \
+            or [d["date"] for d in got["deadlines"]] != ["2027-03-01"] or not got["audience"]:
+        errors += fail(f"the facts door let through or lost the wrong items: {got}")
+    for need in ("not in its quote", "no currency", "no http(s) source", "brochure",
+                 "not an http(s) address", "not YYYY-MM-DD"):
+        if not any(need in b for b in bad):
+            errors += fail(f"the facts door did not refuse with {need!r}: {bad}")
+    if cf.check_read(dict(read, confirmed=False), None)[0] is not None:
+        errors += fail("a read the second reader did not confirm landed")
+    if cf.check_read(read, {"edition": "2028"})[0] is not None:
+        errors += fail("an older edition's read replaced a newer one on file")
+    # the board ships no quote
+    import build_board as bb
+    saved = bb.DATA
+    import tempfile as _tf
+    with _tf.TemporaryDirectory() as tmp:
+        tmp = pathlib.Path(tmp)
+        (tmp / "conference_facts.json").write_text(json.dumps({"X 2027": {**got, "read_on": "2026-10-27"}}))
+        bb.DATA = tmp
+        try:
+            shipped = bb.load_conference_facts()
+        finally:
+            bb.DATA = saved
+    if "quote" in json.dumps(shipped):
+        errors += fail("board.json carries the facts' quotes")
+    # the /e/ page
+    page = bs._conference_facts_section({"facts": {"edition": "2027", "read_on": "2026-10-27",
+        "costs": [{"what": "Booth <b>", "amount": "$2,950", "source": src}],
+        "links": [{"kind": "prospectus", "url": "https://x.test/p.pdf"}, {"kind": "booth", "url": "javascript:alert(1)"}],
+        "deadlines": [{"what": "Gone", "date": "2001-01-01", "source": src},
+                      {"what": "Ahead", "date": "2099-01-01", "source": src}]}})
+    if "javascript:" in page or "Book a booth" in page or "Gone" in page or "Ahead" not in page or "Booth <b>" in page \
+            or "Exhibitor prospectus" not in page or "the 2027 edition" not in page:
+        errors += fail("the /e/ page's For exhibitors section shows a refused link, a passed "
+                       "deadline or raw markup, or leaves out the edition")
+    if bs._conference_facts_section({"facts": None}):
+        errors += fail("a conference nobody has read draws a For exhibitors section")
+    # the app's panel, run by jobcard_harness
+    fp = (_harness() or {}).get("factsPanel") or {}
+    h = fp.get("html") or ""
+    if not h or "javascript:" in h or "Book a booth" in h or "Early-bird ends" in h or "Exhibitor deadline" not in h \
+            or "<b>10x10</b>" in h or "nonsense" in h or fp.get("none"):
+        errors += fail(f"the panel's For exhibitors section is wrong: {h[:200]!r}")
+    return errors
+
+
 def check_the_registration_desk_carries_its_days() -> int:
     """The front page's registration desk offers alerts.html's own days.
 
@@ -37630,6 +37706,7 @@ def main() -> int:
     errors += check_a_capture_answers_to_the_scope_rulings()
     errors += check_show_all_opens_the_department_page()
     errors += check_the_daily_scope_review_reads_once_and_rules_only_on_quotes()
+    errors += check_a_conference_fact_is_read_never_guessed()
     errors += check_the_feed_and_the_no_js_page_say_what_is_true()
     errors += check_a_cut_sentence_is_never_printed_cut()
     errors += check_an_unread_board_is_never_described_as_read()

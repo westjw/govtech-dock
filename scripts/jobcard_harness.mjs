@@ -695,4 +695,18 @@ try {
 } catch (e) {
   errors.push(`running jhFlagHref(): ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence, coCards, flags }));
+/* FOR EXHIBITORS: the page's own cfFactsHTML on a conference whose facts
+   carry a hostile link, a passed deadline, one ahead and markup in a figure. */
+let factsPanel = null;
+try {
+  ctx.__facts = { tag: "X 2027", facts: { edition: "2027", read_on: "2026-10-27",
+    costs: [{ what: "Booth <b>10x10</b>", amount: "$2,950", source: "https://x.test/prospectus" }],
+    links: [{ kind: "prospectus", url: "https://x.test/p.pdf" }, { kind: "booth", url: "javascript:alert(1)" },
+            { kind: "nonsense", url: "https://x.test/n" }],
+    deadlines: [{ what: "Early-bird ends", date: "2001-01-01", source: "https://x.test/r" },
+                { what: "Exhibitor deadline", date: "2099-05-01", source: "https://x.test/e" }],
+    audience: { attendance: "6,000+", who: "public works directors", source: "https://x.test/about" } } };
+  factsPanel = { html: vm.runInContext("cfFactsHTML(__facts)", ctx),
+                 none: vm.runInContext("cfFactsHTML({tag:'Y'})", ctx) };
+} catch (e) { errors.push(`running cfFactsHTML: ${e && e.message}`); }
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence, coCards, flags, factsPanel }));

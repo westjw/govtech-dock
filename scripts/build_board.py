@@ -975,6 +975,27 @@ def load_claims() -> dict:
     return d if isinstance(d, dict) else {}
 
 
+def load_conference_facts() -> dict:
+    """data/conference_facts.json as the board ships it: each conference's
+    costs, links, deadlines and audience with their source pages, the edition
+    and the day it was read. The quotes stay in the data file, for anybody who
+    argues with a figure; the page links the source instead."""
+    path = DATA / "conference_facts.json"
+    if not path.exists():
+        return {}
+    out = {}
+    for tag, f in json.loads(path.read_text()).items():
+        aud = f.get("audience") or None
+        out[tag] = {
+            "edition": f.get("edition"), "read_on": f.get("read_on"),
+            "costs": [{k: c.get(k) for k in ("what", "amount", "source")} for c in f.get("costs") or []],
+            "links": [{k: x.get(k) for k in ("kind", "url")} for x in f.get("links") or []],
+            "deadlines": [{k: d.get(k) for k in ("what", "date", "source")} for d in f.get("deadlines") or []],
+            "audience": ({k: v for k, v in aud.items() if k != "quote"} if aud else None),
+        }
+    return out
+
+
 def conference_rows(cat: list, orgs: list, companies: list) -> list:
     """The Conferences tab's rows, derived from the catalogue and the map.
 
@@ -991,6 +1012,7 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
     which is the bug just fixed in the calendar feed.
     """
     conf_rows = []
+    facts = load_conference_facts()
     if cat:
         issued = issued_tags(cat)
         open_by_co = {o["id"]: o.get("open_roles", 0) for o in orgs}
@@ -1042,6 +1064,11 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
                 # (owner, 2026-10-27). None where the map has no entry, said
                 # rather than guessed.
                 "sector": (CONF_SECTORS.get((row.get("block"), row.get("department"))) or (None,))[0],
+                # WHAT A SELLER NEEDS TO GET ON THE FLOOR (owner, 2026-10-27):
+                # costs, exhibitor links, deadlines, who attends, each read
+                # off the organiser's page by conference_facts.py's door.
+                # None where nobody has read it yet.
+                "facts": facts.get(tag),
                 "flagship": bool(row.get("flagship")),
                 "swept": bool(row.get("swept")),
                 "url": row.get("url") or None,

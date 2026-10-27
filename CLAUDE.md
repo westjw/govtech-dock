@@ -1693,6 +1693,34 @@ only when the organisation's own page states them.
   and it passed on three reruns. Not understood; written down so the next
   failure is read as the second, not the first.
 
+## For exhibitors: what a seller needs to get on a floor (owner, 2026-10-27)
+
+"What other info can we take and include on the page? including links to
+their stuff? costs?" - and, offered four kinds, all four: COSTS (attendee
+registration, booth, sponsorship), EXHIBITOR LINKS (prospectus, booth
+sign-up, floor plan, exhibit sales contact, registration), DEADLINES and WHO
+ATTENDS (stated attendance, audience, whether a vendor may come without a
+booth, the organiser).
+- **Read off the organiser's own pages, never guessed.**
+  `scripts/conference_facts.py brief` lists the conferences with no facts,
+  facts for an edition before the next one on file, or facts older than
+  120 days, with the reading `rules`; a reader collects, a second reader
+  re-opens every source and sets `confirmed`; `apply --in reads.json --write
+  --by agent:...` is the door. It refuses, item by item: an unconfirmed read,
+  an older edition than the one on file, a cost whose figure is not in its
+  quote or carries no currency, a deadline that is not YYYY-MM-DD, an unknown
+  link kind, anything not http(s). A read replaces a conference's facts
+  whole, so last year's price never sits beside this year's.
+- `data/conference_facts.json` keeps the quotes; build_board ships each
+  conference's facts on its row WITHOUT them (`load_conference_facts`), and
+  the page links the source beside each figure instead.
+- The app's conference panel (`cfFactsHTML`) and the /e/ page
+  (`_conference_facts_section`) draw "For exhibitors" under "the <edition>
+  edition, read <date>": links, costs, deadlines still ahead, who attends.
+  A refused link draws no door; a passed deadline is not listed.
+- The weekly conference scrub (Sundays) reads them as it goes.
+  `check_a_conference_fact_is_read_never_guessed` (5 of 5 breakages caught).
+
 ## Capture: the bookmarklet and the extension
 
 `scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>, plus a

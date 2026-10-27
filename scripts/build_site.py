@@ -1001,6 +1001,10 @@ CFPAGE_CSS = """
   .cfx-roster a{color:var(--link-text);text-decoration:none}
   .cfx-roster a:hover{text-decoration:underline}
   .cfx-more{font-size:13px;color:var(--dim);margin-top:var(--space-3)}
+  /* For exhibitors (2026-10-27): the organiser's own figures, each with its page */
+  .cfx-exhibit h3{font-size:14px;font-weight:700;margin:var(--space-4) 0 var(--space-2)}
+  .cfx-factlinks{display:flex;flex-wrap:wrap;gap:var(--space-2);margin:0 0 var(--space-2)}
+  .cfx-src{font-size:12px;color:var(--dim);margin-left:var(--space-2);text-decoration:underline}
   .cfx-org{font-size:14.5px;line-height:1.5}
   .cfx-org a{font-weight:700;color:var(--link-text);text-decoration:none;font-size:16px}
   .cfx-org .meta{color:var(--dim);font-size:13px;margin-top:3px}
@@ -2640,6 +2644,57 @@ def _cf_provenance(c: dict) -> str:
             }.get((c.get("dates_confidence") or "").lower(), "dates unconfirmed")
 
 
+FACT_LINKS = {"prospectus": "Exhibitor prospectus", "booth": "Book a booth",
+              "floor_plan": "Floor plan", "exhibit_contact": "Exhibit sales contact",
+              "registration": "Register to attend"}
+
+
+def _conference_facts_section(c: dict) -> str:
+    """For exhibitors: costs, links, deadlines and who attends (owner,
+    2026-10-27), each as the organiser's page stated it, with the page linked
+    and the edition and the day it was read said. A deadline that has passed
+    is not listed; a fact we do not hold is not a row."""
+    f = c.get("facts") or {}
+    if not f:
+        return ""
+    esc = html.escape
+    host = lambda u: urllib.parse.urlsplit(u).netloc.removeprefix("www.") if _safe_url(u) else ""
+    src = lambda u: (f' <a class="cfx-src" href="{esc(_safe_url(u))}" rel="nofollow noopener">'
+                     f'{esc(host(u))}</a>' if _safe_url(u) else "")
+    parts = []
+    links = [x for x in f.get("links") or [] if _safe_url(x.get("url")) and x.get("kind") in FACT_LINKS]
+    if links:
+        parts.append('<p class="cfx-factlinks">' + "".join(
+            f'<a class="cfx-door" href="{esc(_safe_url(x["url"]))}" rel="nofollow noopener">'
+            f'{FACT_LINKS[x["kind"]]} &nearr;</a>' for x in links) + "</p>")
+    costs = f.get("costs") or []
+    if costs:
+        parts.append('<h3>Costs</h3><dl class="cfx-facts">' + "".join(
+            f'<dt>{esc(x.get("what") or "")}</dt><dd>{esc(x.get("amount") or "")}{src(x.get("source"))}</dd>'
+            for x in costs) + "</dl>")
+    today = dt.date.today().isoformat()
+    ahead = [d for d in f.get("deadlines") or [] if (d.get("date") or "") >= today]
+    if ahead:
+        parts.append('<h3>Deadlines</h3><dl class="cfx-facts">' + "".join(
+            f'<dt>{esc(d["date"])}</dt><dd>{esc(d.get("what") or "")}{src(d.get("source"))}</dd>'
+            for d in ahead) + "</dl>")
+    a = f.get("audience") or {}
+    rows = [(k, a.get(v)) for k, v in (("Attendance", "attendance"), ("Who attends", "who"),
+                                       ("Vendors without a booth", "vendors"), ("Run by", "organiser"))
+            if a.get(v)]
+    if rows:
+        parts.append('<h3>Who attends</h3><dl class="cfx-facts">' + "".join(
+            f'<dt>{k}</dt><dd>{esc(v)}</dd>' for k, v in rows) + f'</dl><p class="cfx-more">'
+            f'As stated on{src(a.get("source")) or " the organiser&rsquo;s page"}.</p>')
+    if not parts:
+        return ""
+    return (f'<section class="cfx-sec cfx-exhibit"><h2>For exhibitors'
+            f'<span>the {esc(str(f.get("edition") or ""))} edition, read {esc(str(f.get("read_on") or ""))}</span></h2>'
+            + "".join(parts) +
+            '<p class="cfx-more">Read off the organiser&rsquo;s own pages; prices and dates '
+            'change every year, so the page each one came from is linked beside it.</p></section>')
+
+
 def _conference_body(c: dict, tag: str, roster: list, hiring: list,
                      org: dict | None = None, same_dept: list | None = None) -> str:
     """Turn 3's conference page: states 3g, 3e and 3h, drawn from one shape.
@@ -2757,6 +2812,9 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
                      f'Add to calendar (.ics)</a>')
 
     secs = []
+    fsec = _conference_facts_section(c)
+    if fsec:
+        secs.append(fsec)
 
     # ── the middle: what we know about this floor ────────────────────────
     if swept:

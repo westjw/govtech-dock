@@ -840,6 +840,16 @@
   .cfp-roster em{font-style:normal;font-size:11px;color:var(--accent-text);
     margin-left:auto}
   .cfp-note{margin:var(--space-3) 0 0;font-size:12.5px;color:var(--dim)}
+  /* FOR EXHIBITORS (owner, 2026-10-27): the organiser's own figures, links,
+     deadlines and audience, each beside the page it came from */
+  .cfp-exhibit h3 .cfp-ed{font-weight:600;font-size:12.5px;color:var(--dim);margin-left:var(--space-2)}
+  .cfp-exhibit h4{margin:var(--space-4) 0 var(--space-2);font-size:13px;font-weight:700}
+  .cfp-exhibit .cfp-acts{margin-top:var(--space-3)}
+  .cfp-facts{display:grid;grid-template-columns:minmax(120px,40%) 1fr;gap:2px var(--space-4);margin:0}
+  .cfp-facts dt{font-size:13px;color:var(--dim);padding:3px 0}
+  .cfp-facts dd{margin:0;padding:3px 0;font-size:14px;font-weight:600;
+    border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+  .cfp-src{margin-left:var(--space-2);font-size:12px;font-weight:400;color:var(--dim)}
   .cfp-rate .cfrate{border:0;padding:0}
   @media (max-width:640px){
     .cfsearch{flex-direction:column;border-radius:14px}
@@ -9101,6 +9111,8 @@ function cfPanelHTML(r){
       ${r.department?`<span class="cfchip">${esc(r.department)}</span>`:""}
     </div>
 
+    ${cfFactsHTML(r)}
+
     <section class="cfp-sec">
       <h3>Who has a booth
         ${roster.length>8?`<a href="#" data-cfall="${esc(r.tag)}"
@@ -9126,6 +9138,43 @@ function cfPanelHTML(r){
       </div>
     </section>
   </div>`;
+}
+/* FOR EXHIBITORS (owner, 2026-10-27: "what other info can we take and
+   include on the page? including links to their stuff? costs?"): the
+   prospectus, booth, floor plan and sales-contact links, the costs, the
+   deadlines still ahead and who attends, as conference_facts.py's door let
+   them through - each read off the organiser's page, each linking the page
+   it came from, under the edition and the day it was read. A fact we do not
+   hold is not a row, and a passed deadline is not listed. */
+const CF_FACT_LINKS={prospectus:"Exhibitor prospectus",booth:"Book a booth",
+  floor_plan:"Floor plan",exhibit_contact:"Exhibit sales contact",registration:"Register to attend"};
+function cfFactsHTML(r){
+  const f=r&&r.facts; if(!f)return "";
+  const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch{return ""}};
+  const src=u=>{const s=safeUrl(u);
+    return s?` <a class="cfp-src" href="${esc(s)}" target="_blank" rel="noopener noreferrer">${esc(host(s))}</a>`:""};
+  const links=(f.links||[]).filter(x=>CF_FACT_LINKS[x.kind]&&safeUrl(x.url));
+  const today=todayISO();
+  const ahead=(f.deadlines||[]).filter(d=>(d.date||"")>=today);
+  const a=f.audience||{};
+  const aud=[["Attendance",a.attendance],["Who attends",a.who],
+             ["Vendors without a booth",a.vendors],["Run by",a.organiser]].filter(([,v])=>v);
+  const parts=[];
+  if(links.length)parts.push(`<div class="cfp-acts">${links.map(x=>`<a class="cfp-alt"
+      href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener noreferrer">${CF_FACT_LINKS[x.kind]} &nearr;</a>`).join("")}</div>`);
+  if((f.costs||[]).length)parts.push(`<h4>Costs</h4><dl class="cfp-facts">${f.costs.map(c=>
+      `<dt>${esc(c.what)}</dt><dd>${esc(c.amount)}${src(c.source)}</dd>`).join("")}</dl>`);
+  if(ahead.length)parts.push(`<h4>Deadlines</h4><dl class="cfp-facts">${ahead.map(d=>
+      `<dt>${esc(longDate(d.date))}</dt><dd>${esc(d.what)}${src(d.source)}</dd>`).join("")}</dl>`);
+  if(aud.length)parts.push(`<h4>Who attends</h4><dl class="cfp-facts">${aud.map(([k,v])=>
+      `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+      <p class="cfp-note">As stated on${src(a.source)||" the organiser&rsquo;s page"}.</p>`);
+  if(!parts.length)return "";
+  return `<section class="cfp-sec cfp-exhibit">
+    <h3>For exhibitors<span class="cfp-ed">the ${esc(f.edition||"")} edition, read ${esc(longDate(f.read_on||""))}</span></h3>
+    ${parts.join("")}
+    <p class="cfp-note">Read off the organiser&rsquo;s own pages. Prices and dates change every
+      year, so each one links the page it came from.</p></section>`;
 }
 /* "ends Friday" only while it is running, because that is the only time the
    sentence tells a reader something they can act on. */
