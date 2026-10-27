@@ -1,12 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="assets/mascot/svg/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/mascot/favicon/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/mascot/favicon/favicon-180.png">
-<meta name="theme-color" content="#E8F1F7">
+<!-- DARK IS THE DEFAULT (owner, 2026-10-27: "dark one, push it live", round 5
+     of the home page canvas). data-theme="dark" sits on <html>; a reader who
+     switches to light keeps it (restoreTheme). The browser chrome takes the
+     header, which is the same in both themes. -->
+<meta name="theme-color" content="#161B29">
 <title>SLED JOBS — govtech sales roles</title>
 <!-- The font as a <link>, not an @import inside <style>: an @import is
      discovered only after the whole 80 KB style block parses, and it is
@@ -62,7 +66,11 @@
             design draws it. In dark mode Penguin IS the ground, so a literal
             #1F2536 made the card disappear into the page - which is why this
             is a token per theme and not a hex in the rule. */
-         --cf-lead:#1F2536; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#9FB3C4; }
+         --cf-lead:#1F2536; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#9FB3C4;
+         --card-edge:transparent;
+         --card-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.06);
+         --search-shadow:0 1px 2px rgba(31,37,54,.06),0 8px 24px rgba(31,37,54,.08);
+         --rule-strong:#1F2536; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     /* ground becomes Penguin. Badge falls to 2.3:1 there, so both accents
        lighten along their own hue until they clear AA again. */
@@ -73,7 +81,11 @@
     /* Not inverted to white here. The header stays Penguin in both themes on
        purpose and a white card beside it would be the loudest thing on the
        page; lifting to --chip keeps the lead card first without shouting. */
-    --cf-lead:#2E3852; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#A8BCCA; }}
+    --cf-lead:#2E3852; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#A8BCCA;
+    /* the front page's cards and search take a hairline in place of a shadow
+       a dark ground cannot show, and its heavy rules step down from ink */
+    --card-edge:#39435C; --card-shadow:none; --search-shadow:none;
+    --rule-strong:#4A5C71; }}
   /* THE SWITCH, NOT ONLY THE SYSTEM. The account menu's "Switch theme" sets
      data-theme="dark" and nothing here read it, so a reader on a light-mode
      machine could not get the dark theme (launch audit 2, 2026-10-09). The
@@ -89,7 +101,11 @@
     /* Not inverted to white here. The header stays Penguin in both themes on
        purpose and a white card beside it would be the loudest thing on the
        page; lifting to --chip keeps the lead card first without shouting. */
-    --cf-lead:#2E3852; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#A8BCCA; }
+    --cf-lead:#2E3852; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#A8BCCA;
+    /* the front page's cards and search take a hairline in place of a shadow
+       a dark ground cannot show, and its heavy rules step down from ink */
+    --card-edge:#39435C; --card-shadow:none; --search-shadow:none;
+    --rule-strong:#4A5C71; }
   /* ---------------------------------------------- company page (turn 6)
      THE NINE TOKENS THE BUILD SPEC NAMES, and only these. They are scoped to
      .copage rather than :root because the spec's ground (#151B29) is a step
@@ -299,13 +315,15 @@
      page had a top - which is most of why the front door did not read as one.
 
      The three tokens below are deliberately NOT theme-swapped. Everything else
-     here flips with prefers-color-scheme; the header stays Penguin in both,
+     here flips with the theme; the header stays one dark band in both,
      so it is the one fixed thing across every page and either theme. That is
      the "definitive colour change": a reader always knows where they are and
      what the brand looks like, and a header that restyled itself in dark mode
-     would be one more thing that moves. */
-  :root{ --hdr-bg:#1F2536; --hdr-ink:#E8F1F7; --hdr-mute:#9FB3C4;
-         --hdr-line:#39435C; }
+     would be one more thing that moves. The band is the mascot's own deep
+     navy (#161B29), a step under the dark page's Penguin, so the header
+     still reads as a top on the dark ground (round 5, 2026-10-27). */
+  :root{ --hdr-bg:#161B29; --hdr-ink:#E8F1F7; --hdr-mute:#9FB3C4;
+         --hdr-line:#39435C; --hdr-tile:#E8F1F7; }
   header{background:var(--hdr-bg);color:var(--hdr-ink);
     border-bottom:3px solid var(--beak)}
   .hwrap{max-width:1180px;margin:0 auto;padding:var(--space-3) var(--space-6)}
@@ -321,10 +339,13 @@
      figure sets the header height rather than fitting inside it: 210x298
      means 64px tall reads as a character, and the details survive.
 
-     No circle and no padding here. A tall figure centred in a round plate
-     either crops its feet or floats in empty space, and both look like a
-     mistake somebody made rather than a decision. */
-  .brand .mark{height:64px;width:auto;display:block;flex:none}
+     No circle: a tall figure centred in a round plate crops its feet or
+     floats. But the penguin's body is drawn in the header's own Penguin,
+     so on the band it was a floating belly; it stands on a light tile,
+     square with soft corners, the figure filling its height (round 5 of
+     the home page canvas, owner, 2026-10-27). */
+  .brand .mark{height:62px;width:auto;display:block;flex:none;box-sizing:border-box;
+    padding:5px 13px;background:var(--hdr-tile);border-radius:16px}
   .brand .word{font-family:var(--font-heading);font-weight:800;font-size:25px;
     letter-spacing:.02em;line-height:1;white-space:nowrap}
   .brand:hover .word{text-decoration:underline;text-underline-offset:4px}
@@ -426,8 +447,8 @@
   .fp-find{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:34px}
   .fp-search{display:flex;align-items:center;flex:1 1 360px;max-width:520px;
     min-width:0;background:var(--panel);border-radius:999px;
-    padding:6px 6px 6px 22px;box-shadow:0 1px 2px rgba(31,37,54,.06),
-    0 8px 24px rgba(31,37,54,.08)}
+    padding:6px 6px 6px 22px;border:1px solid var(--card-edge);
+    box-shadow:var(--search-shadow)}
   .fp-search:focus-within{outline:2px solid var(--accent);outline-offset:2px}
   .fp-search input{flex:1;min-width:0;border:0;background:transparent;
     font:inherit;font-size:16px;color:var(--ink);padding:10px 0}
@@ -475,8 +496,8 @@
   .fp-go{padding:10px 16px;border-radius:999px;background:var(--beak);
     color:var(--hdr-bg);font-weight:800;font-size:14px;white-space:nowrap}
   .fp-card{display:flex;flex-direction:column;gap:14px;padding:24px;
-    background:var(--panel);color:var(--ink);border:1px solid transparent;
-    box-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.06)}
+    background:var(--panel);color:var(--ink);border:1px solid var(--card-edge);
+    box-shadow:var(--card-shadow)}
   .fp-card:hover{border-color:var(--accent)}
   .fp-card:hover .fp-t{color:var(--accent-text)}
   .fp-co{display:flex;align-items:center;gap:12px;min-width:0}
@@ -504,7 +525,7 @@
 
   /* three columns under a heavy rule, as a front page sets its inside */
   .fp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
-    gap:40px;margin-top:64px;padding-top:28px;border-top:2px solid var(--ink)}
+    gap:40px;margin-top:64px;padding-top:28px;border-top:2px solid var(--rule-strong)}
   .fp-cols section{min-width:0}
   .fp-cols h2{margin:0 0 18px;font-size:30px}
   .fp-hire{display:flex;flex-direction:column;gap:16px}
@@ -515,8 +536,8 @@
     line-height:1;font-variant-numeric:tabular-nums}
   .fp-cap{margin:14px 0 0;font-size:14px;color:var(--dim);line-height:1.45}
   .fp-ev{display:block;padding:18px;border-radius:16px;background:var(--panel);
-    color:var(--ink);text-decoration:none;border:1px solid transparent;
-    box-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.06)}
+    color:var(--ink);text-decoration:none;border:1px solid var(--card-edge);
+    box-shadow:var(--card-shadow)}
   .fp-ev:hover{border-color:var(--accent)}
   .fp-ev:hover .fp-evn{color:var(--accent-text)}
   .fp-when{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
@@ -543,7 +564,7 @@
   .fp-dept{margin-top:72px}
   .fp-dept h2{margin:0 0 20px;font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em}
   .hsecs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));
-    column-gap:48px;border-top:1px solid var(--ink)}
+    column-gap:48px;border-top:1px solid var(--rule-strong)}
   .hsecs a{display:flex;align-items:baseline;gap:16px;padding:18px 0;
     border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
   .hsecs a span{flex:1;min-width:0;font-size:clamp(21px,2.2vw,26px);font-weight:700;
@@ -1679,7 +1700,7 @@
        recognises as the same control they saw on desktop. */
     .htop{gap:var(--space-2)}
     h1{font-size:18px}
-    .brand .mark{height:48px}
+    .brand .mark{height:48px;padding:4px 10px;border-radius:12px}
     .brand .word{font-size:20px}
     nav{order:3;gap:var(--space-3);width:100%;overflow-x:auto;flex-wrap:nowrap;
       -webkit-overflow-scrolling:touch;scrollbar-width:none}

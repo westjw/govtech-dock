@@ -81,10 +81,11 @@
      the two drift - the same pattern, and the same reason, as the brand.json
      / _brand.js guard and the alerts vocabulary guard.
 
-     The three tokens are deliberately NOT theme-swapped: the header stays
-     Penguin in both themes so it is the one fixed thing across every page. */
-  :root{ --hdr-bg:#1F2536; --hdr-ink:#E8F1F7; --hdr-mute:#9FB3C4;
-         --hdr-line:#39435C; }
+     The tokens are deliberately NOT theme-swapped: the header stays one dark
+     band (the mascot's deep navy, #161B29) in both themes so it is the one
+     fixed thing across every page. */
+  :root{ --hdr-bg:#161B29; --hdr-ink:#E8F1F7; --hdr-mute:#9FB3C4;
+         --hdr-line:#39435C; --hdr-tile:#E8F1F7; }
   header{background:var(--hdr-bg);color:var(--hdr-ink);
     border-bottom:3px solid var(--beak);margin-bottom:var(--space-6,24px)}
   .hwrap{max-width:1180px;margin:0 auto;padding:12px 24px}
@@ -97,10 +98,13 @@
      figure sets the header height rather than fitting inside it: 210x298
      means 64px tall reads as a character, and the details survive.
 
-     No circle and no padding here. A tall figure centred in a round plate
-     either crops its feet or floats in empty space, and both look like a
-     mistake somebody made rather than a decision. */
-  .brand .mark{height:64px;width:auto;display:block;flex:none}
+     No circle: a tall figure centred in a round plate crops its feet or
+     floats. But the penguin's body is drawn in the header's own Penguin,
+     so on the band it was a floating belly; it stands on a light tile,
+     square with soft corners, the figure filling its height (round 5 of
+     the home page canvas, owner, 2026-10-27). */
+  .brand .mark{height:62px;width:auto;display:block;flex:none;box-sizing:border-box;
+    padding:5px 13px;background:var(--hdr-tile);border-radius:16px}
   .brand .word{font-family:"Archivo",system-ui,sans-serif;font-weight:800;
     font-size:25px;letter-spacing:.02em;line-height:1;white-space:nowrap}
   .brand:hover .word{text-decoration:underline;text-underline-offset:4px}
@@ -114,7 +118,7 @@
     background:rgba(245,166,35,.12)}
   @media (max-width:768px){
     .hwrap{padding:12px 16px}
-    .brand .mark{height:48px}
+    .brand .mark{height:48px;padding:4px 10px;border-radius:12px}
     .brand .word{font-size:20px}
   }
 </style>
