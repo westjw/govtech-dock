@@ -248,9 +248,14 @@ jobs:
         # built on the digest's shell, with logos. ALERT_TO is a secret, never
         # a tracked file: the repository is public.
         #
-        # Not set up, or a send that fails, and it falls back to the issue -
-        # UNASSIGNED, so that is one email too. An alert is never simply lost,
-        # and the list is always in this run's summary.
+        # Not set up, or a send that fails, and it falls back to the issue,
+        # ASSIGNED to the owner. Unassigned it was meant to be "one email
+        # too", and it was none: GitHub mails the owner about an issue only
+        # when the owner is assigned or watches all activity, so from 10-20 to 10-27
+        # (ALERT_TO never set) four alerts reached nobody (owner, 10-27:
+        # "didnt get this today"). Two plain emails beat a silent one; the
+        # branded email is the normal path. The list is always in this run's
+        # summary.
         env:
           GH_TOKEN: ${{ github.token }}
           RESEND_KEY: ${{ secrets.RESEND_KEY }}
@@ -272,7 +277,8 @@ jobs:
               COUNT=$(grep -c '^### ' "$RUNNER_TEMP/alert.md")
               gh issue create \
                 --title "$COUNT new AE opening(s) — $(date +%F)" \
-                --body-file "$RUNNER_TEMP/alert.md"
+                --body-file "$RUNNER_TEMP/alert.md" \
+                --assignee "$GITHUB_REPOSITORY_OWNER"
             fi
           else
             echo "No new AE openings this run."

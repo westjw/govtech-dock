@@ -26259,8 +26259,15 @@ def check_the_owner_alert_is_one_branded_email() -> int:
         errors += fail(f"the white-logo reading is wrong: {got} - a white mark on the white "
                        f"plate is an empty box, a dark mark on the dark plate is too")
     wf = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
-    if "--assignee" in wf:
-        errors += fail("refresh.yml still assigns an issue: GitHub mails the owner twice for that")
+    # THE FALLBACK IS ASSIGNED. Unassigned, it reached nobody: GitHub mails
+    # the owner about an issue only when assigned or watching all
+    # activity, and four alerts went unseen (10-20 to 10-27, ALERT_TO unset)
+    ae = wf[wf.index("Tell the owner about new AE openings"):]
+    ae = ae[:ae.index("\n      - name:")]
+    fallback = ae[ae.index("gh issue create"):]
+    if '--assignee "$GITHUB_REPOSITORY_OWNER"' not in fallback:
+        errors += fail("the AE alert's fallback issue is not assigned to the owner: unassigned, "
+                       "GitHub mails the owner nothing and a failed email is a silent alert")
     if "python scripts/alert.py --email" not in wf or "ALERT_TO: ${{ secrets.ALERT_TO }}" not in wf:
         errors += fail("refresh.yml does not mail the AE alert, or takes the address from somewhere "
                        "other than a secret")
