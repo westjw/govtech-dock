@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Nobody called Jordan: Grading a higher-ed admissions AI agent",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.druidai.com/blog/nobody-called-jordan-grading-a-higher-ed-admissions-ai-agent"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The claim the dashboard missed: grading a P&C insurance AI agent",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Healthcare call center automation: How agentic AI fixes patient access",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-07-31",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "AI governance in higher education: A framework for academic and operational AI",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-07-31",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "How AI in college admissions covers what your staff can\u2019t",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-07-31",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "What student engagement platforms do after hours",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-07-21",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The AI agent reference model: a complete anatomy of a production agent",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-03",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Your biggest access channel is still a phone queue. And your automation strategy ignores it.",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-07-02",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Scaling Patient Access in Urgent Care: What the Welsh Ambulance Service Learned Deploying Agentic AI",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.druidai.com/blog/scaling-patient-access-in-urgent-care-what-the-welsh-ambulance-service-learned-deploying-agentic-ai"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Escaping the 95% Pilot Trap: 3 Pillars for Operational Insurance AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.druidai.com/blog/escaping-the-95-pilot-trap-3-pillars-for-operational-insurance-ai"
   }
  ]
 }

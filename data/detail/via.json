@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "How the City of Kenora tripled ridership with Microtransit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridewithvia.com/resources/how-the-city-of-kenora-tripled-ridership-with-microtransit"
+  },
+  {
    "date": "2026-10-05",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Via announces launch of Fixed Route Live Operations solution",
    "kind": "product",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Power up your planning: The Remix features you need to know this October.",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Transforming Transit. The Via Features you need to know this October",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "The City of Sunnyvale launches Sunnyvale Beam, citywide zero-emission microtransit for workers, students, residents, and visitors",
    "kind": "contract",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-28",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Via Welcomes the Knode.ai Team to Accelerate AI for Public Transit",
    "kind": "leadership",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Via and SMART Expand On-Demand Microtransit Into Northern Macomb County",
    "kind": "press",
    "kind_rule": null,
    "url": "https://ridewithvia.com/news/via-and-smart-expand-on-demand-microtransit-into-northern-macomb-county?hsLang=en"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "No Fixed Route? No Problem: The Future of City Transit With Jason Via",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ridewithvia.com/resources/no-fixed-route-no-problem-the-future-of-city-transit-with-jason-via?hsLang=en"
   }
  ],
  "profile": {

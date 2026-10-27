@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Tips for beginners and the most seasoned HSA investor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/tips-for-beginners-and-seasoned-hsa-investor/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "index-text",
+   "first_seen": "2026-10-27",
+   "headline": "How finance leaders can strengthen payment fraud prevention in the age of AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/what-financial-leaders-should-ask-about-their-ai-fraud-strategy/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "index-text",
    "first_seen": "2026-10-24",
@@ -89,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/how-to-choose-the-right-fuel-card-for-your-business/"
-  },
-  {
-   "date": "2024-04-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Visit our fintech resource hub which will provide all you need to know about business payments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/payments101/"
   }
  ]
 }

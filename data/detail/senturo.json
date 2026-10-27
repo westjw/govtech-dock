@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "How to Detect School Devices on Unapproved Networks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.senturo.com/blog/detect-school-devices-on-unapproved-networks"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "near-h1",
    "first_seen": "2026-10-22",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.senturo.com/blog/blog-how-to-remotely-wipe-a-lost-school-laptop"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "10 Ways Schools Use Automated Security Policies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.senturo.com/blog/blog-automated-security-policies-school-devices"
   },
   {
    "date": "2026-10-16",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.senturo.com/blog/loaner-device-management"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-22",
-   "headline": "Network Security in Schools: A Practical K-12 Guide for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.senturo.com/blog/network-security-in-schools-a-practical-k-12-guide-for-2026"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-22",
-   "headline": "Privacy-First School Laptop Tracking for K-12 Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.senturo.com/blog/privacy-first-school-laptop-tracking"
   }
  ]
 }

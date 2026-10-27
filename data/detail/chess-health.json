@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-30",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Substance Use Disorder Prevention: A Guide to Early Identification and Intervention",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "The Rise of Cychlorphine, Kratom, and 7-OH: Why Prevention Is the First Line of Defense",
    "kind": "press",
@@ -28,8 +28,8 @@
    "url": "https://www.chess.health/press-releases/chess-health-convenes-national-discussion-on-rural-recovery-access/"
   },
   {
-   "date": "2026-09-21",
-   "date_source": "time",
+   "date": "2026-09-22",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Contingency Management for Substance Use Disorder",
    "kind": "press",

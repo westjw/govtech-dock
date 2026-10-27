@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "AI agent guardrails: Why prompts alone cannot enforce security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/ai-agent-guardrails-why-prompts-alone-cannot-enforce-security"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Protect the tools that protect you: How to control the path to EDR tampering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/protect-the-tools-that-protect-you-how-to-control-the-path-to-edr-tampering"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "card-date",
    "first_seen": "2026-10-22",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/why-an-authenticated-ai-agent-can-still-be-dangerous"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Human-in-the-loop AI: What should require human approval when using AI agents?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/human-in-the-loop-ai-what-should-requre-human-approval-when-using-ai-agents"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Can Zero Trust improve employee productivity?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/can-zero-trust-improve-employee-productivity"
   }
  ]
 }

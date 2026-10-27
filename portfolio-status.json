@@ -1,13 +1,16 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-10-27T15:30:00-04:00",
+  "last_updated": "2026-10-27T18:30:00-04:00",
   "status": "Active Build",
   "progress_pct": 57,
   "progress_note": "~57% (free board frame; the paid half has no pricing or billing, and the recruiter side lives in SLED HQ) - 2026-10-27: home page round 5 (badges, department cards, registration desk), dark default, Map tab removed",
   "next_move": "Owner, in Cloudflare: fix the sign-in loop, confirm Fail closed, replace CF_API_TOKEN (KV write 401), decide Workers Paid. Then rule the 15 no-website companies, decide the claim link, and supply privacy/contact details. Claude: check the 10-09 nightly (15 rewired careers links, digest timing).",
-  "session_summary": "The home page took round 5 of the canvas: dark by default, the newest roles as conference badges, the departments as six cards naming who is hiring most in each, and a registration desk that carries the reader's alert days to the sign-up page. The Map tab is gone. The AE alert reached nobody from 10-20 to 10-27 (unassigned fallback, ALERT_TO unset); the secret is set and the fallback is assigned again.",
+  "session_summary": "The home page took round 5 of the canvas: dark by default, the newest roles as conference badges, the departments as six cards naming who is hiring most in each, and a registration desk that carries the reader's alert days to the sign-up page. The Map tab is gone. The AE alert reached nobody from 10-20 to 10-27 (unassigned fallback, ALERT_TO unset); the secret is set and the fallback is assigned again. The board now carries SLED roles only: 308 B2B and federal roles ruled off after two reads of every open role, and Show all opens each department's own page.",
   "recent_work": [
+    "2026-10-27 SLED-only review: all 694 open roles read (two reads, skeptics); 308 B2B/federal ruled off, board default 694 -> 386; captures now obey scope rulings",
+    "2026-10-27 Companies: Show all opens the department's own page, with its sub-industries and conferences (sector stamped on every conference row)",
+    "2026-10-27 Logos: white-mark rule fixes CrowdStrike and 11 more",
     "2026-10-27 Home round 5: badges, department cards (Hiring most, the button names the department), registration desk with ?cadence= to alerts.html; blind review 3 lenses (5 confirmed, all fixed); 12 of 12 mutations caught",
     "2026-10-27 Map tab removed (view, nav, action, share card, sitemap, checks); D.cities kept for Near a city",
     "2026-10-27 AE alert: ALERT_TO set, fallback issue assigned to the owner again (four alerts had reached nobody)",
@@ -21,9 +24,7 @@
     "2026-10-08 Nine delegated federal in-scope rulings reopened (owner OK): federal roles off the board; Concourse off the board",
     "2026-10-07 Four blind review rounds over the launch fixes: 11, 21, 7, 1 confirmed findings, all fixed or documented",
     "2026-10-07 Emailed links wait for a click; RFC 8058 one-click unsubscribe; admin identity from the verified Access token",
-    "2026-10-06 Launch checklist from a 6-auditor audit; share cards, robots, public logs, alert expiry, per-caller limits, honest zeros, takedowns",
-    "2026-10-05 Site signed-in only until launch (functions/_gate.js, shared verifier functions/_access.js); verified 403 on every hostname; login.js open redirect closed",
-    "2026-10-05 Suppliers step 2: data/supplier_categories.json, the export SLED HQ reads; 3,038 publish, 4,302 held; blind holdout measured"
+    "2026-10-06 Launch checklist from a 6-auditor audit; share cards, robots, public logs, alert expiry, per-caller limits, honest zeros, takedowns"
   ],
   "blockers": [
     "Owner's sign-in loops (www.solesourcejobs.com redirects Access's callback); he cannot see the gated site until the Access application is fixed",

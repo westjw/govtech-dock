@@ -1,0 +1,40 @@
+{
+ "news": [
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Commvault Announces Second Quarter Fiscal 2027 Financial Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.commvault.com/news/commvault-announces-second-quarter-fiscal-2027-financial-results"
+  },
+  {
+   "date": "2025-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Commvault Unveils a New Era in Enterprise Resilience with the Commvault Cloud Unity Platform Release",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://www.commvault.com/news/new-era-in-enterprise-resilience-commvault-cloud-unity-platform-release"
+  },
+  {
+   "date": "2025-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Commvault Ranked Highest in Five of Six Use Cases in the 2025 Gartner\u00ae Critical Capabilities for Backup and Data Protection Platforms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.commvault.com/news/commvault-in-2025-gartner-critical-capabilities"
+  },
+  {
+   "date": "2025-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Commvault Announces Intent to Acquire Data and AI Security Company Satori Cyber",
+   "kind": "funding",
+   "kind_rule": "Intent to Acquire",
+   "url": "https://www.commvault.com/news/commvault-announces-intent-to-acquire-data-and-ai-security-company-satori-cyber"
+  }
+ ]
+}

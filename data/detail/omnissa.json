@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Omnissa adoption resources: Adoption Wizard and Kits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-adoption-resources-adoption-wizard-and-kits/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -10,8 +19,8 @@
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-2025-security-management-innovations/"
   },
   {
-   "date": "2026-10-22",
-   "date_source": "card-date",
+   "date": "2026-10-23",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Are you managing endpoints or managing workarounds?",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The link between device performance & employee productivity",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/federal-IT-modernization/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "How Workspace ONE UEM enables real-time remediation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-real-time-remediation/"
   }
  ]
 }

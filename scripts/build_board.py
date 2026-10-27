@@ -50,6 +50,7 @@ import news           # noqa: E402
 import salary         # noqa: E402
 import tags           # noqa: E402
 import hq_employers   # noqa: E402
+from conference_sectors import CROSSWALK as CONF_SECTORS  # noqa: E402
 
 # READ ONCE, not per company. 2,044 records would otherwise re-parse
 # schema.json 2,044 times to answer the same question.
@@ -1036,6 +1037,11 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
                 "name": html.unescape(row.get("conference") or tag),
                 "block": row.get("block"),
                 "department": row.get("department"),
+                # THE SECTOR ITS BUYERS SIT IN, off the map supplier_categories
+                # files suppliers by, so a sector's page lists its conferences
+                # (owner, 2026-10-27). None where the map has no entry, said
+                # rather than guessed.
+                "sector": (CONF_SECTORS.get((row.get("block"), row.get("department"))) or (None,))[0],
                 "flagship": bool(row.get("flagship")),
                 "swept": bool(row.get("swept")),
                 "url": row.get("url") or None,
@@ -1468,7 +1474,8 @@ def read_in_full(orgs: list[dict]) -> set:
 
 
 def merge_manual(postings: list[dict], man: dict | None,
-                 orgs: list[dict] | None = None) -> tuple[int, int]:
+                 orgs: list[dict] | None = None,
+                 scope: dict | None = None) -> tuple[int, int]:
     """Append manual.json's captures to `postings`. Returns (added, already_fetched).
 
     A CAPTURE AT A COMPANY READ IN FULL TONIGHT IS LEFT OFF. A capture exists
@@ -1478,8 +1485,16 @@ def merge_manual(postings: list[dict], man: dict | None,
     were publishing as "found by hand on a page no fetcher can read" while
     their Greenhouse, Paylocity and BambooHR feeds were read every night
     (fourth review, 2026-10-08). They stay in manual.json; the count is said.
+
+    A CAPTURE ANSWERS TO THE SAME SCOPE RULINGS AS A CRAWLED ROW. A ruling
+    out of scope never reached one: SAP Concur's "SMB Premier" and Nearmap's
+    "Enterprise Account Executive, Insurance" stayed on the board after the
+    2026-10-27 SLED review ruled both B2B, because both were captured by
+    hand. out_of_scope() is asked of every capture now, with its company's
+    sled_only, exactly as main() asks it of a fetched row.
     """
-    manual_count = manual_dupes = retired = 0
+    manual_count = manual_dupes = retired = scoped = 0
+    sled = {o["id"] for o in orgs or [] if o.get("sled_only")}
     seen_ids = {p["id"] for p in postings}
     if man is None:
         return manual_count, manual_dupes
@@ -1506,6 +1521,10 @@ def merge_manual(postings: list[dict], man: dict | None,
         if roles.not_a_listing(mp.get("title") or "", mp.get("company")):
             continue
         row = manual_row(mp)
+        if scope is not None and out_of_scope(row["title"], row["id"], row["opening_id"],
+                                              scope, row.get("company_id") in sled):
+            scoped += 1
+            continue
         # ONE ID, ONE ROW, across both sources. A captured posting is kept
         # because the fetcher could not read the company; when the fetcher
         # CAN read it, the same requisition arrives twice - once from
@@ -1523,6 +1542,9 @@ def merge_manual(postings: list[dict], man: dict | None,
     if retired:
         print(f"  {retired} captured posting(s) left off: their company's own feed "
               f"was read in full and does not list them")
+    if scoped:
+        print(f"  {scoped} captured posting(s) left off: out of scope (federal, "
+              f"sled_only, or a scope ruling)")
     return manual_count, manual_dupes
 
 
@@ -2399,7 +2421,7 @@ def main() -> int:
     # run means the fetcher still cannot see the company, not that the role closed.
     # Only `manual.py none` closes a manual posting. The hand-check date rides on
     # each org already: org_record() read it from `man` through run_context().
-    manual_count, manual_dupes = merge_manual(postings, man, orgs)
+    manual_count, manual_dupes = merge_manual(postings, man, orgs, scope)
     # Jobs employers posted on SLED HQ (scripts/hq_jobs.py read the feed).
     hq_count, hq_dropped = merge_hq(postings, load_hq(), companies)
     if hq_count or hq_dropped:

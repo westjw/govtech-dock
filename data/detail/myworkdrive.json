@@ -1,49 +1,112 @@
 {
  "news": [
   {
-   "date": "2026-08-26",
+   "date": "2026-10-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "SharePoint Server SE After Office Online Server Retirement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/sharepoint-server-subscription-edition-office-online-server-retirement"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "Office Online Server Alternatives After the December 2026 Retirement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/office-online-server-alternatives"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "Beyond On-Premises File Access: Top Use Cases for MyWorkDrive",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/is-myworkdrive-only-for-on-premises"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "How to Use Office Online with Azure Files After Office Online Server End of Life",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/office-online-server-end-of-life-azure-files"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "Conditional Access for SMB File Shares: Entra Private Access and Unmanaged Devices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/conditional-access-smb-file-shares-entra-private-access"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "Shibboleth SSO and File Share Permissions: SAML vs NTFS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/shibboleth-sso-file-share-permissions"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "How MyWorkDrive Fits Into DICOM and Medical Imaging Workflows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/dicom-medical-imaging-file-access"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "CMMC Phase 2 Suspension: What Still Applies to DoD Contractors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/cmmc-phase-2-suspension"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "How Swiss Public Sector Organizations Benefit from MyWorkDrive",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/swiss-public-sector"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "File Access Audit Logging: How to Prove Who Accessed a File on a Windows Share",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/file-access-audit-logging"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "NTFS Permissions and ACL Management: A Practical Guide for File Shares",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/ntfs-permissions-acl-management"
+  },
+  {
+   "date": "2026-08-28",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
-   "headline": "How to Keep ITAR and CUI Files on Campus, Without Copies or Cloud",
+   "headline": "Microsoft 365 Education Storage Limits: What Universities Can Do",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myworkdrive.com/blog/microsoft-365-education-storage-limits"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "How to Keep ITAR and CUI Files on Campus, Without Copies or Cloud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/itar-cui-files-on-campus"
-  },
-  {
-   "date": "2025-03-04",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-21",
-   "headline": "SMB Port: Secure Remote Access Alternatives and Best Practices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/smb-port"
-  },
-  {
-   "date": "2023-03-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "March MyWorkDrive Newsletter 2023",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/news/myworkdrive-version-6-4-released-to-preview"
-  },
-  {
-   "date": "2023-03-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "March MyWorkDrive Newsletter 2023",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/news/march-myworkdrive-newsletter-2023"
   }
  ]
 }

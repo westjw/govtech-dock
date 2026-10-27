@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "index-text",
+   "first_seen": "2026-10-27",
+   "headline": "Businessolver named a Leader and the highest-rated platform in Everest Group\u2019s 2026 PEAK Matrix Reports for benefits administration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://businessolver.com/news/businessolver-leader-highest-rated-platform-everest-group-2026-peak-matrix-report-benefits-administration/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "index-text",
    "first_seen": "2026-10-22",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Businessolver named a Leader in ISG Provider Lens 2026 for the third consecutive year",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "New Data Finds Executives Focused on Cutting Jobs for AI Efficiency Are Half as Likely to Invest in AI Upskilling",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://businessolver.com/blog/workforce-readiness-missing-in-ai-adoption/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Understanding the benefits risks facing frontline and non-desk employees",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://businessolver.com/blog/understanding-benefits-risks-facing-frontline-and-non-desk-employees/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "The confidence gap in application access governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/application-access-governance-report"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Delinea: A PAM Leader in 2026 Gartner\u00ae Magic Quadrant\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/pam-leader-in-2026-gartner-magic-quadrant"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -89,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://delinea.com/blog/iso-27001-vs-soc-2"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Collective Cyber Defense Starts with Identity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://delinea.com/blog/collective-cyber-defense-starts-with-identity"
   }
  ]
 }

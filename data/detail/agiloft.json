@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-27",
+   "headline": "Agiloft Announces 2026 Pacesetter Award Winners Unleashing Contract Data to Drive Enterprise Value",
+   "kind": "contract",
+   "kind_rule": "Award Winners Unleashing Contract",
+   "url": "https://agiloft.com/news/2026-pacesetter-award-winners"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agiloft.com/blog/four-uses-of-ai-in-contract-management"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI governance is the next big priority in legal tech - here\u2019s how CLM is leading the way",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agiloft.com/blog/ai-governance-is-the-next-big-priority-in-legal-tech-heres-how-clm-is-leading-the-way"
   }
  ],
  "profile": {

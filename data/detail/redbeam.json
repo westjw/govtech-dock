@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Inventory Audit: Steps, Methods, and Frequency Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/inventory-audit"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Misappropriation of Assets: Types, Costs, and Prevention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/misappropriation-of-assets"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "RFID in Manufacturing Explained: Uses, Costs, and ROI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/rfid-in-manufacturing"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "RFID Warehouse Management: How It Works and Where to Start",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/rfid-warehouse-management"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "RFID vs. NFC Explained: Range, Frequency, and Use Cases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/rfid-vs-nfc"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Year End Inventory Count: Steps, Variances, and Audit Prep",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/year-end-inventory-count"
+  },
+  {
    "date": "2026-06-10",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -46,49 +100,13 @@
    "url": "https://redbeam.com/blog/sam-gov-vendor"
   },
   {
-   "date": "2024-06-11",
+   "date": "2024-10-24",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "RFID in Healthcare: Advantages and Top Uses",
+   "first_seen": "2026-10-27",
+   "headline": "Facility Asset Management: Key Elements & Benefits Guide",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://redbeam.com/blog/healthcare-rfid"
-  },
-  {
-   "date": "2024-05-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Preventive Maintenance Checklist: Key Tasks for Upkeep",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://redbeam.com/blog/preventive-maintenance-checklist"
-  },
-  {
-   "date": "2023-12-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Asset Utilization: Definition, Calculation, and Importance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://redbeam.com/blog/resources/improve-asset-utilization"
-  },
-  {
-   "date": "2023-09-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What is Physical Asset Management? Types & Key Strategies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://redbeam.com/blog/physical-asset-management"
-  },
-  {
-   "date": "2022-11-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What Is an Asset Audit? Definition, Benefits, and Process",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://redbeam.com/blog/asset-audit"
+   "url": "https://redbeam.com/blog/facility-asset-management"
   }
  ]
 }

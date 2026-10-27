@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Academic Newsletter: October 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.policymap.com/blog/newsletter-october-2026"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Affordability Series, Part 2: Where Homes Got Furthest Out of Reach",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.policymap.com/blog/where-homes-got-furthest-out-of-reach"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Academic Newsletter: October 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.policymap.com/blog/academic-newsletter-october-2026"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://www.policymap.com/blog/newsletter-august-2026"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Affordability Series, Part 1: A New Way to Explore Income Distribution Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.policymap.com/blog/affordability-series-income-distribution-data"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Introducing PolicyMap\u2019s Affordability Series: New Data on the Cost of Living in America",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "http://www.policymap.com/blog/introducing-policymaps-affordability-series"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Health Happens Here: Libraries Respond to Local Needs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.policymap.com/blog/health-happens-here-libraries-respond-to-local-needs"
   }
  ]
 }

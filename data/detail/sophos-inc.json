@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Building intent-based access control for AI agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/building-intent-based-access-control-for-ai-agents"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "The breachpocalypse is here",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/blog/the-breachpocalypse-is-here"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Beyond the mailbox: Graph reconnaissance and ServiceNow user enumeration in a modern identity intrusion",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Show, don\u2019t tell: Sophos AI at CAMLIS",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.sophos.com/en-us/press/press-releases/2026/10/sophos-launches-ai-defense-to-expose-shadow-ai-and-secure-ai-use-in-real-time"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Building intent-based access control without reading minds",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/building-intent-based-access-control-without-reading-minds"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Sophos Named a Leader in the 2026 IDC MarketScape for Worldwide Modern Endpoint Security for Enterprises",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/press/press-releases/2026/10/sophos-named-a-leader-in-the-2026"
   }
  ]
 }

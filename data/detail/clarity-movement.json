@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Construction & demolition dust monitoring in the UK: Regulations, requirements and best practices",
    "kind": "press",
@@ -100,13 +100,13 @@
    "url": "https://www.clarity.io/blog/environmental-grant-writing-how-to-write-a-proposal-that-gets-funded"
   },
   {
-   "date": "2026-04-02",
+   "date": "2026-05-27",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Exercise and air pollution: Should you still exercise when the air quality is poor?",
+   "first_seen": "2026-10-27",
+   "headline": "Cost of air quality monitoring: A pricing guide for cities & agencies",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clarity.io/blog/exercise-and-air-pollution-should-you-still-exercise-when-the-air-quality-is-poor"
+   "url": "https://www.clarity.io/blog/cost-of-air-quality-monitoring-a-pricing-guide-for-cities-agencies"
   }
  ]
 }

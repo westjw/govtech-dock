@@ -1,6 +1,87 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "How to Set Up Microsoft 365 Configuration Monitoring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/how-to-set-up-microsoft-365-configuration-monitoring"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "How to Back Up and Restore Entra ID Configurations: Methods and Best Practices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/back-up-restore-entra-id-configurations"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "The New AI Threats Facing Microsoft 365 Tenants: What Security Teams Need to Watch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/new-ai-threats-facing-microsoft-365-tenants"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Four Ways to Monitor Entra ID Conditional Access Policy Changes \u2013 Full Step-by-Step Instructions, Hidden Gaps and Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/four-ways-to-monitor-entra-id-conditional-access-policy-changes"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "What am I using today in my Microsoft 365 subscription? How do I get more out of my investment?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/microsoft-365-subscription-get-more-out-of-my-investment"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "SharePoint Item-Level Permissions Best Practices in an AI World",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/sharepoint-item-level-permissions-best-practices-in-an-ai-world"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Best Practice for a Microsoft Copilot Readiness Assessment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/best-practice-for-a-microsoft-copilot-readiness-assessment"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Why You Must Fix SharePoint Permissions Before Scaling AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/why-you-must-fix-sharepoint-permissions-before-scaling-ai"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "SharePoint Storage Sprawl: Where Cost Waste Becomes Security Risk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/sharepoint-storage-sprawl-where-cost-waste-becomes-security-risk"
+  },
+  {
    "date": "2026-06-23",
    "date_source": "near-h1",
    "first_seen": "2026-10-22",
@@ -26,87 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coreview.com/news/coreview-and-cyber-vigilance-help-the-halo-trust"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Martin Baron ist neuer Channel-Manager bei CoreView",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/martin-baron-ist-neuer-channel-manager-bei-coreview"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CoreView launches AI agent, Corey, to address growing security and governance challenge of Microsoft 365",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://www.coreview.com/news/coreview-launches-ai-agent-corey"
-  },
-  {
-   "date": "2026-03-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CoreView Wins Gold in the 2026 Cybersecurity Excellence Awards",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/coreview-wins-gold-in-the-2026-cybersecurity-excellence-awards"
-  },
-  {
-   "date": "2026-03-18",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CoreView nomme Laurent Chichereau Channel Account Manager Europe du Sud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/coreview-nomme-laurent-chichereau-channel-account-manager-europe-du-sud"
-  },
-  {
-   "date": "2026-03-05",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Nearly half of large organisations have suffered a Microsoft 365 security or compliance incident caused by a misconfiguration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/large-organisations-suffered-microsoft-365-security-compliance-incidents-misconfiguration"
-  },
-  {
-   "date": "2026-02-12",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Swiss Cyber Security Days: CoreView st\u00e4rkt Tenant-Resilienz und Souver\u00e4nit\u00e4t",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/swiss-cyber-security-days-coreview-starkt-tenant-resilienz-und-souveranitat"
-  },
-  {
-   "date": "2026-02-03",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Free Microsoft 365 security scanner from CoreView",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/free-microsoft-365-security-scanner-from-coreview"
-  },
-  {
-   "date": "2026-01-20",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Microsoft 365 tenant-level attacks expose security blind spot as CoreView launches Tenant Resilience and Tenant Management",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://www.coreview.com/news/microsoft-365-tenant-level-attacks-expose-security-blind-spot-as-coreview-launches-tenant-resilience-and-tenant-management"
-  },
-  {
-   "date": "2025-12-04",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Microsoft-365-Sicherheit: KuppingerCole bescheinigt CoreView herausragende Tiefe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/microsoft-365-sicherheit-kuppingercole-bescheinigt-coreview-herausragende-tiefe"
   }
  ]
 }

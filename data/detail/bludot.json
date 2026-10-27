@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Your CRM should track more than businesses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bludot.io/post/economic-development-stakeholders"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bludot.io/post/building-stronger-business-relationships-in-golden-colorado"
-  },
-  {
-   "date": "2025-12-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Inside New Ulm\u2019s BR&E playbook: From zero database to a connected, proactive program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bludot.io/post/inside-new-ulm-s-br-e-playbook-from-zero-database-to-a-connected-proactive-program"
   }
  ]
 }

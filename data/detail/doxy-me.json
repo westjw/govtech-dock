@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "card-date",
+   "first_seen": "2026-10-27",
+   "headline": "Doxy.me vs. Doximity Dialer: What happens beyond the call?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/doxy-me-vs-doximity-dialer"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "card-date",
+   "first_seen": "2026-10-27",
+   "headline": "Doxy.me vs. Microsoft Teams: What does patient care require?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/doxy-me-vs-microsoft-teams"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "card-date",
+   "first_seen": "2026-10-27",
+   "headline": "Doxy.me vs. Google Meet: Why add dedicated telehealth?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/doxy-me-vs-google-meet"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "card-date",
+   "first_seen": "2026-10-27",
+   "headline": "Doxy.me vs. Zoom for Healthcare: What does dedicated telehealth add?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/doxy-me-vs-zoom-healthcare"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "card-date",
+   "first_seen": "2026-10-27",
+   "headline": "Doxy.me vs. SimplePractice: Is built-in telehealth enough?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/doxy-me-vs-simplepractice"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "card-date",
    "first_seen": "2026-10-22",
@@ -8,6 +53,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://doxy.me/media/doxy-me-limitations"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "card-date",
+   "first_seen": "2026-10-27",
+   "headline": "Doxy.me vs. Upheal: Better visits or broader documentation?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/doxy-me-vs-upheal"
   },
   {
    "date": "2026-10-20",
@@ -53,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://doxy.me/media/telehealth-ehr-integration"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "How the doxy.me Waiting Room works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://doxy.me/media/doxy-me-waiting-room"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Data Residency Requirements: What Workplace and Event Teams Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/data-residency-requirements"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Event RFP Tools: How Venues Turn Incoming Requests Into Signed Contracts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/event-rfp-tool"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/employee-engagement-events"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Event Tech Stack: How to Build a Connected Toolkit for Every Event",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/event-tech-stack"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How AI Integrations With Event Tools Improve Event Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/ai-integrations-with-event-tools"
   }
  ]
 }

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Your practice management system is not your accounting system: what a dental group needs from each",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/practice-management-system-vs-accounting-system-dental-group/"
+  },
+  {
    "date": "2026-10-22",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Why assisted living and skilled nursing need separate finance scorecards",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Adding an acquired practice to your dental group: the first finance questions to answer before go-live",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/accounts-payable-process/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "What is GAAP? Accounting principles defined",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/a-guide-to-generally-accepted-accounting-principles-gaap/"
   }
  ]
 }

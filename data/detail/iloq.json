@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "iLOQ App makes key-fob management and shared access even easier",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iloq.com/en/news/iloq-app-makes-key-fob-management-and-shared-access-even-easier/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -28,6 +37,15 @@
    "url": "https://www.iloq.com/en/insights/the-future-of-smart-cities-starts-with-smarter-access/"
   },
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "iLOQ introduces temporary access codes in iLOQ Web",
+   "kind": "product",
+   "kind_rule": "introduces",
+   "url": "https://www.iloq.com/en/news/iloq-introduces-temporary-access-codes-in-iloq-web/"
+  },
+  {
    "date": "2026-09-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -37,6 +55,15 @@
    "url": "https://www.iloq.com/en/insights/emergency-access-management-in-critical-infrastructure/"
   },
   {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "iLOQ ecosystem receives honorable mention in Fast Company\u2019s 2026 Innovation by Design Awards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iloq.com/en/news/iloq-ecosystem-receives-honorable-mention-in-fast-companys-2026-innovation-by-design-awards/"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -44,6 +71,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.iloq.com/en/insights/what-is-a-smart-door-reader-and-how-do-you-choose-the-right-one/"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "iLOQ App update 1.9 enhances user experience",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://www.iloq.com/en/news/iloq-app-update-1-9-enhances-user-experience/"
   },
   {
    "date": "2026-08-13",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.iloq.com/en/insights/iloq-improves-ecovadis-sustainability-performance-and-strengthens-its-global-ranking/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "How iLOQ's battery-free technology is redefining smart access",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.iloq.com/en/insights/battery-free-smart-access/"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "The battery problem nobody talks about in smart access",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.iloq.com/en/insights/the-battery-problem-nobody-talks-about-in-smart-access/"
-  },
-  {
-   "date": "2025-12-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Retrofitting mechanical locks with i LOQ\u2019s digital locking solution: Easier than you think",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.iloq.com/en/insights/retrofitting-mechanical-locks-with-iloqs-digital-locking-solution-easier-than-you-think/"
-  },
-  {
-   "date": "2025-12-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "i LOQ S50 app update: Enhanced usability and reliability",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://www.iloq.com/en/insights/iloq-s50-app-update-enhanced-usability-and-reliability/"
   }
  ]
 }

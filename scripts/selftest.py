@@ -2626,7 +2626,8 @@ console.log(JSON.stringify({{
     # applied in the same filter that applies the sector
     for needle, why in ((' id="c-cat"', "the sub-sector dropdown is gone"),
                         ('"c-cat"', "drawCos no longer listens to the sub-sector"),
-                        ("if(!coCatOk(o,ct,s))return false;", "the filter no longer applies the sub-sector in the sector's filing"),
+                        ("if(!coCatOk(o,cat,s))return false;", "the filter no longer applies the sub-sector in the sector's filing"),
+                        ("const rest=(o,cat=ct)=>{", "the list's filter no longer defaults to the chosen sub-sector"),
                         ("coCatOk(x,o.category,o.sector)", "the company view's 'Browse all N' counts with another filter than the list it opens"),
                         ('addEventListener("input",syncCoCats)', "the list no longer follows the sector")):
         if needle not in src:
@@ -9756,6 +9757,89 @@ def check_a_us_city_named_for_a_foreign_one_stays_in_the_us() -> int:
     return errors
 
 
+def check_a_capture_answers_to_the_scope_rulings() -> int:
+    """A hand-captured posting is ruled out of scope like a fetched one.
+
+    The 2026-10-27 SLED review ruled 197 roles B2B or federal; two of them,
+    SAP Concur's "SMB Premier" and Nearmap's "Enterprise Account Executive,
+    Insurance", stayed on the board because merge_manual() never asked
+    out_of_scope(). Driven on a capture: a ruling takes it off, a ruling
+    keeping it in leaves it, sled_only drops a title that names no public
+    sector, and a federal title goes either way.
+    """
+    import build_board as bb
+    errors = 0
+    def caps(*titles, cid="capco"):
+        return {"postings": [{"company": "Cap Co", "company_id": cid, "title": t,
+                              "url": f"https://capco.test/{i}", "location": "Austin, TX"}
+                             for i, t in enumerate(titles)]}
+    def merged(man, scope, orgs=None):
+        out = []
+        bb.merge_manual(out, man, orgs or [], scope)
+        return sorted(p["title"] for p in out)
+    man = caps("Account Executive, SMB", "Account Executive, SLED")
+    ruled = {"capco::Account Executive, SMB": {"in_scope": False}}
+    if merged(man, ruled) != ["Account Executive, SLED"]:
+        errors += fail(f"a capture ruled out of scope is still listed: {merged(man, ruled)}")
+    kept = {"capco::Account Executive, SMB": {"in_scope": True}}
+    if merged(man, kept, [{"id": "capco", "sled_only": True}]) != sorted(man_t["title"] for man_t in man["postings"]):
+        errors += fail("a capture a person kept in scope was dropped by sled_only")
+    if merged(man, {}, [{"id": "capco", "sled_only": True}]) != ["Account Executive, SLED"]:
+        errors += fail("sled_only does not narrow a capture as it narrows a fetched row")
+    if merged(caps("Federal Account Executive, Civilian"), {}) != []:
+        errors += fail("a captured federal role is still listed")
+    if merged(man, {}) != sorted(m["title"] for m in man["postings"]):
+        errors += fail("captures with no ruling are being dropped")
+    return errors
+
+
+def check_show_all_opens_the_department_page() -> int:
+    """"Show all N in X" opens X's own page, with its sub-industries and conferences.
+
+    Owner, 2026-10-27: "if you click on show all, it should take you to the
+    public works page" and "it will have the subindustries and conferences
+    that fall into it". The button grew the shelf in place at ?tab=companies;
+    it is a real link to ?tab=companies&csec=X now, and a chosen sector draws
+    coSectorPage above the list. Browser-checked on 2026-10-27: every shelf's
+    N and every sub-industry chip's count equal the list they open, in both
+    Showing modes (158 of 158). Held here by source and on the board's data.
+    """
+    errors = 0
+    ix = (ROOT / "index.html").read_text()
+    shelf = ix[ix.index("THE SHELF COUNTS ITS WHOLE SECTOR"):]
+    shelf = shelf[:shelf.index("\n    return;\n")]
+    if 'document.createElement("a")' not in shelf or "csec:sector" not in shelf \
+            or "toCompanies(sector,null,hiringNow)" not in shelf:
+        errors += fail("a shelf's Show all no longer links to its sector's page")
+    if "Show all ${all.length" not in shelf or "rows.forEach(o=>file(inSec,o))" not in shelf:
+        errors += fail("a shelf's Show all counts the grid, not the whole sector its page lists")
+    if "CO_OPEN_SECS" in ix:
+        errors += fail("a shelf still grows in place instead of opening the sector's page")
+    if "coSectorPage(s,ct,q,hiringOnly,cat=>D.organizations.filter(o=>hits(o)&&rest(o,cat)&&open(o)).length)" not in ix:
+        errors += fail("the department page's chip counts are not the list's own filters")
+    page = ix[ix.index("function coSectorPage("):ix.index("function openEventDoor(")]
+    for need, why in (("coCatOptions(D.organizations,sec)", "its sub-industries are not the dropdown's own list"),
+                      ("r.sector===sec", "its conferences are not the catalogue's rows for the sector"),
+                      ("openEventDoor(a.dataset.ev)", "a conference does not open its panel"),
+                      ("toCompanies(sec,a.dataset.sub||null,hiringNow)", "a sub-industry does not open its list")):
+        if need not in page:
+            errors += fail(f"the department page: {why}")
+    # ONE MAP: the suppliers' crosswalk is the conferences' sector
+    import supplier_categories as SC
+    import conference_sectors as CS
+    if SC.CROSSWALK is not CS.CROSSWALK:
+        errors += fail("supplier_categories keeps its own crosswalk; the conferences' sector "
+                       "and the suppliers' would drift")
+    board = json.loads((DATA / "board.json").read_text())
+    for r in board.get("conferences") or []:
+        want = (CS.CROSSWALK.get((r.get("block"), r.get("department"))) or (None,))[0]
+        if r.get("sector") != want:
+            errors += fail(f"conference {r.get('tag')!r} is filed under {r.get('sector')!r}; "
+                           f"the map says {want!r}")
+            break
+    return errors
+
+
 def check_the_registration_desk_carries_its_days() -> int:
     """The front page's registration desk offers alerts.html's own days.
 
@@ -15082,7 +15166,7 @@ def check_manual_merge_never_doubles_a_fetched_row() -> int:
     body = code[code.find("\ndef main("):]
     merge = code[code.find("\ndef merge_manual("):]
     merge = merge[:merge.find("\ndef ", 1)]
-    if "merge_manual(postings, man, orgs)" not in body:
+    if "merge_manual(postings, man, orgs, scope)" not in body:
         errors += fail("build_board.main() no longer merges manual.json through "
                        "merge_manual(), so nothing guarantees it skips a manual "
                        "row whose id the fetcher already carries")
@@ -33328,7 +33412,7 @@ def check_a_second_listing_sits_on_its_shelf() -> int:
         errors += fail("the browse groups are keyed on the primary sector again, so a second listing shows on no shelf")
     if "coCard(o,q,\"\",o.sector!==sector)" not in browse:
         errors += fail("a second listing's card no longer names its primary sector")
-    if "constsecond=list.filter(o=>o.sector!==sector).length;" not in browse \
+    if "constsecond=all.filter(o=>o.sector!==sector).length;" not in browse \
             or "alsolistedhere" not in browse:
         errors += fail("a shelf no longer says how many of its cards are second listings")
     if "constcoFilings=o=>[{sector:o.sector,category:o.category},...(o.also||[])];" not in flat:
@@ -37467,6 +37551,8 @@ def main() -> int:
     errors += check_a_us_city_named_for_a_foreign_one_stays_in_the_us()
     errors += check_the_front_page_counts_by_opening()
     errors += check_the_registration_desk_carries_its_days()
+    errors += check_a_capture_answers_to_the_scope_rulings()
+    errors += check_show_all_opens_the_department_page()
     errors += check_the_feed_and_the_no_js_page_say_what_is_true()
     errors += check_a_cut_sentence_is_never_printed_cut()
     errors += check_an_unread_board_is_never_described_as_read()

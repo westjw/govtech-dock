@@ -1,8 +1,35 @@
 {
  "news": [
   {
-   "date": "2025-04-02",
-   "date_source": "index-text",
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "The United States Won\u2019t Renew the USMCA: What It Means for US-Mexico-Canada Trade & Regional Economies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/the-united-states-wont-renew-the-usmca-what-it-means-for-us-mexico-canada-trade-regional-economies"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Powering Data Centers: The Economic Effects of Rising Electricity Demand",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/powering-data-centers-the-economic-effects-of-rising-electricity-demand"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Why Housing Affordability Matters for Economic Development",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/why-housing-affordability-matters-for-economic-development"
+  },
+  {
+   "date": "2025-04-08",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Tariff Analysis is Crucial for States Economic and Fiscal Health",
    "kind": "press",
@@ -10,8 +37,71 @@
    "url": "https://www.remi.com/news/tariff-analysis-is-crucial-for-states-economic-and-fiscal-health"
   },
   {
-   "date": "2021-11-15",
-   "date_source": "index-text",
+   "date": "2025-01-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Wildfires in Los Angeles Underscore a Critical Need for Resilience Investment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/wildfires-in-los-angeles-underscore-a-critical-need-for-resilience-investment"
+  },
+  {
+   "date": "2024-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "2024 Economics Nobel Prize Winners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/2024-economics-nobel-prize-winners"
+  },
+  {
+   "date": "2023-12-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Stellantis Expansion in Belvidere, Illinois",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/stellantis-expansion-in-belvidere-illinois"
+  },
+  {
+   "date": "2023-11-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Economic Impacts of Broadband Expansion in Indiana",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/economic-impacts-of-broadband-expansion-in-indiana"
+  },
+  {
+   "date": "2022-05-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Rising Gas Prices: Current Effects and Future Implications",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/rising-gas-prices-current-effects-and-future-implications"
+  },
+  {
+   "date": "2022-01-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Our Rapidly Transforming Energy Industry: How Economic Modeling Evaluates Environmental and Energy-related Policy Variables",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/transforming-energy-industry"
+  },
+  {
+   "date": "2021-12-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "How REMI Contributes to the Future of Economic Analysis",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.remi.com/news/how-remi-contributes-to-the-future-of-economic-analysis"
+  },
+  {
+   "date": "2021-11-17",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Anticipating the Impacts of the $1.2 Trillion Bipartisan Infrastructure Bill",
    "kind": "press",

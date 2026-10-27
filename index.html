@@ -1387,6 +1387,34 @@
   .coshow:hover,.more.coshow:hover{border-color:var(--accent);color:var(--accent-text);
     background:var(--panel)}
   .coshow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* A DEPARTMENT'S PAGE above the list: its sub-industries and its
+     conferences. Square, as the system is outside the bar and the cards. */
+  .cosp{margin:var(--space-6) 0 var(--space-8);padding:var(--space-6) 0 0;
+    border-top:2px solid var(--rule-strong)}
+  .cosp-eyebrow{margin:0;font-size:13px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim)}
+  .cosp h2{margin:6px 0 0;font-size:clamp(32px,4.2vw,48px);letter-spacing:-.03em;line-height:1.05}
+  .cosp-block{margin-top:var(--space-6)}
+  .cosp-block .lab{margin:0 0 var(--space-3)}
+  .cosp-subs{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+  .cosp-subs a{padding:8px 12px;border:1px solid var(--line);background:var(--panel);
+    color:var(--ink);text-decoration:none;font-size:14px;font-weight:600}
+  .cosp-subs a b{color:var(--accent-text);font-variant-numeric:tabular-nums}
+  .cosp-subs a:hover{border-color:var(--accent)}
+  .cosp-subs a[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+  .cosp-subs a[aria-current="true"] b{color:var(--bg)}
+  .cosp-evs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));
+    column-gap:var(--space-8);border-top:1px solid var(--line)}
+  .cosp-ev{display:flex;flex-direction:column;gap:2px;padding:12px 0;min-width:0;
+    border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
+  .cosp-ev b{overflow-wrap:anywhere}
+  .cosp-ev span{font-size:14px;color:var(--dim);overflow-wrap:anywhere}
+  .cosp-ev:hover b{color:var(--accent-text)}
+  .cosp-subs a:focus-visible,.cosp-ev:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .cosp-none{margin:0;color:var(--dim)}
+  /* a shelf's Show all goes to the sector's page: a link, its chevron forward */
+  a.coshow{text-decoration:none}
+  a.coshow::after{transform:rotate(-45deg)}
   @media (max-width:900px){.cospot{grid-template-columns:1fr}}
   /* ON A PHONE the bar is two fields a row (What, and the search button, take
      the whole row), so the first result is not pushed off the first screen
@@ -5815,6 +5843,7 @@ function companies(){
     </div>
   </div>
 
+  <div id="c-secpage"></div>
   <div class="sechead"><h2 id="c-h">Hiring now</h2><div class="n" id="c-n" role="status"></div></div>
   ${/* The search says out loud how it read the query. That sentence IS the
        feature: a bounded concept map is only better than substring matching
@@ -5918,8 +5947,6 @@ function syncCoCats(){
 }
 
 let CSHOWN=60;
-/* Sectors whose group was opened past its first six cards, while browsing. */
-let CO_OPEN_SECS=new Set();
 /* Two set-aside toggles, both answers to the CURRENT query - see coWhy(). They
    reset when the query changes, because carrying "yes also show me the ones
    that only mention it" onto a different question is a silent widening. */
@@ -5955,7 +5982,7 @@ function toggleHiring(btn){
   setHiringPill(want);
   // a deliberate click owns the pill from here: never overrule the person
   CO_AUTO_OFF=false;
-  CSHOWN=60;CO_OPEN_SECS=new Set();drawCos();
+  CSHOWN=60;drawCos();
 }
 function toggleMoreCo(btn){setBarOpen($("#c-bar"),btn,$("#c-bar").style.display==="none")}
 function showMoreCo(){CSHOWN+=60;drawCos();}
@@ -6166,9 +6193,9 @@ function drawCos(){
   const hits=o=>!q||named(o)||concept(o)||(CO_TEXT&&mentions(o));
 
   const ct=g("c-cat");
-  const rest=o=>{
+  const rest=(o,cat=ct)=>{
     if(s&&!inSector(o,s))return false;
-    if(!coCatOk(o,ct,s))return false;
+    if(!coCatOk(o,cat,s))return false;
     if(ph&&!(o.phase||"").startsWith(ph))return false;
     if(rd==="api"&&!(o.open_roles>0))return false;
     if(rd==="x"&&o.enumerable!==false&&!o.unreadable)return false;
@@ -6269,6 +6296,7 @@ function drawCos(){
   $("#c-n").textContent=rows.length.toLocaleString();
   // the export takes THIS list, so it has to be the list the button can see
   CO_ROWS=rows;
+  coSectorPage(s,ct,q,hiringOnly,cat=>D.organizations.filter(o=>hits(o)&&rest(o,cat)&&open(o)).length);
 
   const clist=$("#c-list");
   clist.textContent="";
@@ -6322,32 +6350,46 @@ function drawCos(){
     /* EVERY SECTOR, six cards each, in the order the ranking reaches them,
        and "Show all N in X" opens one. Paging the whole board 60 at a time
        spread each page across every group, above the button, and left the
-       smallest sector with no heading until the last page. */
-    const bySec=new Map();
-    grid.forEach(o=>new Set(coFilings(o).map(f=>f.sector)).forEach(s=>{
-      if(!bySec.has(s))bySec.set(s,[]);bySec.get(s).push(o);}));
+       smallest sector with no heading until the last page.
+       THE BUTTON GOES TO THE SECTOR'S OWN PAGE (owner, 2026-10-27: "if you
+       click on show all, it should take you to the public works page"). It
+       grew the shelf in place, at ?tab=companies, so the sector had no
+       address, no top of page and no spotlight of its own. It is a real
+       link to ?tab=companies&csec=X, in the Showing the reader chose, taken
+       over on a plain click through toCompanies() like every "Browse all"
+       door; a modified click opens it in a new tab. */
+    const hiringNow=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
+    /* THE SHELF COUNTS ITS WHOLE SECTOR, the spotlight's companies
+       included: they are in it, only drawn above. Counting the grid alone
+       printed "Show all 409 in Public Safety" over a page of 412, the three
+       spotlight companies being Public Safety's (2026-10-27). */
+    const bySec=new Map(), inSec=new Map();
+    const file=(m,o)=>new Set(coFilings(o).map(f=>f.sector)).forEach(s=>{
+      if(!m.has(s))m.set(s,[]);m.get(s).push(o);});
+    grid.forEach(o=>file(bySec,o));
+    rows.forEach(o=>file(inSec,o));
     bySec.forEach((list,sector)=>{
-      const lim=CO_OPEN_SECS.has(sector)?list.length:6;
-      const second=list.filter(o=>o.sector!==sector).length;
+      const lim=6, all=inSec.get(sector)||list;
+      const second=all.filter(o=>o.sector!==sector).length;
       const sec=document.createElement("section");
       sec.className="cogroup";
       sec.dataset.sector=sector;
       sec.innerHTML=`<h3 class="cogroup-h">${esc(sector)}<span class="n">${
-        list.length.toLocaleString()} ${list.length===1?"company":"companies"}${
+        all.length.toLocaleString()} ${all.length===1?"company":"companies"}${
         second?` &middot; ${second.toLocaleString()} also listed here`:""}</span></h3>
         <div class="cogrid"></div>`;
       clist.appendChild(sec);
       const cg=sec.querySelector(".cogrid");
       list.slice(0,lim).forEach(o=>cg.appendChild(coCard(o,q,"",o.sector!==sector)));
-      if(list.length>lim){
-        const b=document.createElement("button");
-        b.type="button"; b.className="coshow";
-        b.textContent=`Show all ${list.length.toLocaleString()} in ${sector}`;
-        b.onclick=()=>{
-          CO_OPEN_SECS.add(sector); drawCos();
-          // focus lands on the first card that was not there before
-          const again=[...document.querySelectorAll(".cogroup")].find(x=>x.dataset.sector===sector);
-          again?.querySelectorAll(".cocard")[lim]?.focus();
+      if(all.length>Math.min(lim,list.length)){
+        const b=document.createElement("a");
+        b.className="coshow";
+        b.href="?"+new URLSearchParams(hiringNow?{tab:"companies",csec:sector,chire:"1"}
+          :{tab:"companies",csec:sector,call:"1"}).toString();
+        b.textContent=`Show all ${all.length.toLocaleString()} in ${sector}`;
+        b.onclick=e=>{
+          if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
+          e.preventDefault(); toCompanies(sector,null,hiringNow); window.scrollTo(0,0);
         };
         sec.appendChild(b);
       }
@@ -6371,6 +6413,71 @@ function drawCos(){
     more.onclick=showMoreCo;
     clist.appendChild(more);
   }
+}
+/* A DEPARTMENT'S PAGE (owner, 2026-10-27: "if you click on show all, it
+   should take you to the public works page", and "it will have the
+   subindustries and conferences that fall into it"). Drawn above the list
+   whenever a sector is chosen and nothing is typed.
+   - Its sub-industries are the Sub-sector dropdown's own list for the
+     sector, each a real link to ?csec=&ccat= in the Showing the reader
+     chose, and each count is the list that link opens (`count`, which runs
+     the list's own filters with that sub-sector), so a chip cannot promise
+     one number and open another. "All of X" clears the sub-sector.
+   - Its conferences are the catalogue's rows whose buyers sit in the sector
+     (build_board stamps `sector` off conference_sectors.CROSSWALK, the map
+     suppliers are filed by): what is on now, then what is next, then the
+     ones with no date we can place, then past editions, each saying which.
+     Each opens its panel as a home page event door does. */
+function coSectorPage(sec,cat,q,hiringNow,count){
+  const box=$("#c-secpage"); if(!box)return;
+  if(!sec||q){box.textContent="";return;}
+  const mode=hiringNow?{chire:"1"}:{call:"1"};
+  const qs=c=>new URLSearchParams(Object.assign({tab:"companies",csec:sec},c?{ccat:c}:{},mode)).toString();
+  const subs=coCatOptions(D.organizations,sec).map(c=>[c,count(c)]).filter(([,n])=>n>0);
+  const evs=(D.conferences||[]).filter(r=>r.sector===sec);
+  const when=r=>calRange(r.dates);
+  const now=evs.filter(r=>when(r)&&isNow(r.dates));
+  const next=evs.filter(r=>when(r)&&!isNow(r.dates)&&!isPast(r.dates))
+    .sort((a,b)=>when(a).start-when(b).start);
+  const undated=evs.filter(r=>!when(r)).sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+  const past=evs.filter(r=>when(r)&&isPast(r.dates)).sort((a,b)=>when(b).start-when(a).start);
+  const thisYear=new Date().getFullYear();
+  const dateLine=r=>{ const s=when(r).start;
+    return cfSpotDate(r)+(s.getFullYear()!==thisYear?`, ${s.getFullYear()}`:""); };
+  const evRow=(r,tag)=>`<a class="cosp-ev" href="?e=${encodeURIComponent(r.tag)}" data-ev="${esc(r.tag)}">
+      <b>${esc(r.name)}</b><span>${esc([tag,cfPlace(r)].filter(Boolean).join(" · "))}</span>
+      <span class="cosp-evn">${r.companies?`${r.companies.toLocaleString()} ${r.companies===1?"company":"companies"} on our list`
+        :"exhibitor list not mined yet"}</span></a>`;
+  const rows=[...now.map(r=>evRow(r,"On now · "+dateLine(r))),
+              ...next.map(r=>evRow(r,dateLine(r))),
+              ...undated.map(r=>evRow(r,"date not announced")),
+              ...past.map(r=>evRow(r,"past edition · "+dateLine(r)))];
+  box.innerHTML=`<section class="cosp" aria-labelledby="c-sp-h">
+    <p class="cosp-eyebrow">Sells to</p>
+    <h2 id="c-sp-h">${esc(sec)}</h2>
+    ${subs.length?`<div class="cosp-block"><h3 class="lab" id="c-sp-subs">Sub-industries</h3>
+      <div class="cosp-subs" role="list" aria-labelledby="c-sp-subs">
+        <a role="listitem" href="?${qs("")}" data-sub=""${cat?"":' aria-current="true"'}>All of ${esc(sec)}</a>
+        ${subs.map(([c,n])=>`<a role="listitem" href="?${qs(c)}" data-sub="${esc(c)}"${c===cat?' aria-current="true"':""}>${esc(c)} <b>${n.toLocaleString()}</b></a>`).join("")}
+      </div></div>`:""}
+    <div class="cosp-block"><h3 class="lab">Conferences</h3>
+      ${rows.length?`<div class="cosp-evs">${rows.join("")}</div>`
+        :`<p class="cosp-none">No conference in our catalogue is filed under ${esc(sec)} yet.</p>`}</div>
+  </section>`;
+  const plain=e=>!(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button);
+  box.querySelectorAll("a[data-sub]").forEach(a=>{ a.onclick=e=>{ if(!plain(e))return;
+    e.preventDefault(); toCompanies(sec,a.dataset.sub||null,hiringNow); }; });
+  box.querySelectorAll("a[data-ev]").forEach(a=>{ a.onclick=e=>{ if(!plain(e))return;
+    e.preventDefault(); openEventDoor(a.dataset.ev); }; });
+}
+/* AN EVENT'S DOOR, one way from anywhere: the tab's entry becomes the event's
+   address and the panel opens as if from it, so Back comes to where the
+   reader was (review, 2026-10-25). */
+function openEventDoor(t){
+  goTab("conferences"); window.scrollTo(0,0);
+  CF_LAST_QS="?tab=conferences";
+  history.replaceState({e:t,qs:CF_LAST_QS},"",location.pathname+"?e="+encodeURIComponent(t));
+  cfOpenPanel(t,true);
 }
 /* ONE COMPANY CARD. A real link, so the card opens in place and a
    middle-click or a modified click opens the company in a new tab; the
@@ -8185,12 +8292,7 @@ function home(){
      it, so Back comes home rather than to the catalogue (review,
      2026-10-25). Closing the panel returns to the catalogue, as it does
      anywhere. */
-  document.querySelectorAll("#view a[data-tag]").forEach(a=>take(a,()=>{
-    const t=a.dataset.tag;
-    goTab("conferences"); top();
-    CF_LAST_QS="?tab=conferences";
-    history.replaceState({e:t,qs:CF_LAST_QS},"",location.pathname+"?e="+encodeURIComponent(t));
-    cfOpenPanel(t,true); }));
+  document.querySelectorAll("#view a[data-tag]").forEach(a=>take(a,()=>openEventDoor(a.dataset.tag)));
   document.querySelectorAll("#view a[data-board]").forEach(a=>take(a,()=>{ goTab("jobs",here(a)); top(); }));
   document.querySelectorAll("#view a[data-tab]").forEach(a=>take(a,()=>{
     // tabFromUrl is the one reader of ?tab=, so this door means what the

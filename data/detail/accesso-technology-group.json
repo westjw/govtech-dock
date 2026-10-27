@@ -1,8 +1,53 @@
 {
  "news": [
   {
-   "date": "2026-10-22",
-   "date_source": "index-text",
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "accesso\u00ae Intelligence Introduces 100+ Decision Skills for Visitor Attractions",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://accesso.com/news/accesso-intelligence-introduces-100-decision-skills-for-visitor-attractions/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Weekly Webinar: accesso Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/weekly-webinar-accesso-intelligence-4/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Weekly Webinar: accesso Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/weekly-webinar-accesso-intelligence-3/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "The Upsell No One Hates: Growing Revenue Across the Guest Journey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/the-upsell-no-one-hates-growing-revenue-across-the-guest-journey/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Group Management Made Easier: What\u2019s New in 1RISK",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/group-management-made-easier-whats-new-in-1risk/"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Weekly Webinar: accesso Intelligence",
    "kind": "press",
@@ -10,8 +55,17 @@
    "url": "https://accesso.com/news/accesso-intelligence-agentic-forecasting/"
   },
   {
-   "date": "2026-10-15",
-   "date_source": "index-text",
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Weekly Webinar: accesso Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/weekly-webinar-accesso-intelligence-2/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "Weekly Webinar: accesso Intelligence",
    "kind": "press",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://accesso.com/news/mountain-technology-symposium-2026/"
-  },
-  {
-   "date": "2026-09-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "AZA Annual Conference 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/aza-annual-conference-2026/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "accesso\u00ae Intelligence Introduces Agentic AI for Automated Workflows in Visitor Attractions",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://accesso.com/news/accesso-intelligence-introduces-agentic-ai-for-automated-workflows-in-visitor-attractions/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "MAX 2026 (Midwest Arts XPO)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/max-2026-midwest-arts-xpo/"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "SKI NY Annual Conference 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/ski-ny-annual-conference-2026/"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "IAAPA Europe Expo 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/iaapa-europe-expo-2026-2/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "New England Summit 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/new-england-summit-2026/"
   }
  ]
 }

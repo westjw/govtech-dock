@@ -450,7 +450,7 @@ def redraw() -> dict:
     gone_rows = {i: len(r) for i, r in crawled.items()
                  if i not in on_file and i not in passed}
 
-    manual_count, manual_dupes = bb.merge_manual(postings, man, orgs)
+    manual_count, manual_dupes = bb.merge_manual(postings, man, orgs, scope)
     bb.merge_hq(postings, bb.load_hq(), companies)
     nights, read_from = bb.history_first_seen()
     bb.carry_first_seen(postings, prev.get("postings", []), nights)

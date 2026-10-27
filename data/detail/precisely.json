@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Interview with Walid Abu-Hadba, CEO at Precisely",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.precisely.com/news/interview-with-walid-abu-hadba-ceo-at-precisely/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.precisely.com/news/what-it-takes-to-become-an-ai-company-four-lessons-from-the-top/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "index-text",
+   "first_seen": "2026-10-27",
+   "headline": "Is AI Customer Engagement Transforming Customer Relationships?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.precisely.com/news/is-ai-customer-engagement-transforming-customer-relationships/"
   },
   {
    "date": "2026-10-06",
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.precisely.com/news/precisely-is-turning-legacy-enterprise-data-into-fuel-for-ai-agents/"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "My Advice to Banks on AI: Matt Waxman of Precisely",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.precisely.com/news/my-advice-to-banks-on-ai-matt-waxman-of-precisely/"
   }
  ]
 }

@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Prevent unnecessary alerts and stop recording at sensitive sites with Geofence Privacy and Event Suppression.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/geofence-privacy-event-suppression/"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Landscaping fleet safety ROI guide: How to protect margins and keep crews productive.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/fleet-safety-landscaping/"
+  },
+  {
    "date": "2026-10-26",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-26",
    "headline": "Enterprise team member spotlight: Driving enterprise growth and scaled success with Motive sales leadership.",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Landscaping dispatch software: How to keep crews moving with GPS visibility.",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "Motive launches Agents: Tell Agents the goal. They handle the rest.",
    "kind": "product",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "How to choose the best fleet safety software for your landscaping company: 5 capabilities to compare.",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Find out what fleet buyers say on G2 and TrustRadius, season after season.",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "What four organizations measured after switching fleet technology providers.",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Truck maintenance 101: Build a program to reduce downtime and costs.",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Your most expensive fleet problems may be the ones you can\u2019t see.",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Fleet maintenance managers: Stay on top of preventive maintenance in 2027.",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomotive.com/blog/connected-fleet-maintenance-data/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "time",
-   "first_seen": "2026-10-05",
-   "headline": "Engineering Physical AI: How we build real-world voice and autonomous agents at Motive",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/team-member-spotlight-sean-santschi/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Unable to Assign Unidentified trips",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/9607885243421-Unable-to-Assign-Unidentified-trips"
   }
  ],
  "profile": {

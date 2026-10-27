@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Incode Know Your Business (KYB) now lets customers choose their checks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://incode.com/blog/incode-know-your-business-kyb-now-lets-customers-choose-their-checks/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Incode earns ISO/IEC 42001 certification for responsible AI management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://incode.com/blog/incode-earns-iso-iec-42001-certification-for-responsible-ai-management/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-24",
    "headline": "Incode Launches TrustGraph, the First Trust Network Built for the Agentic Era",
    "kind": "product",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-26",
    "headline": "Incode Launches TrustGraph, the First Trust Network Built for the Agentic Era",
    "kind": "product",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-21",
    "headline": "Incode Launches TrustGraph, a Trust Network to Detect Repeat and Agentic Fraud",
    "kind": "product",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-21",
    "headline": "Incode Adds Peer-to-Peer Cryptography to TrustGraph Fraud Network",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-21",
    "headline": "Incode launches TrustGraph, the first trust network built for the agentic era",
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://incode.com/press/incode-launches-trustgraph-businesswire/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Incode launches TrustGraph, the First Trust Network Built for the Agentic Era",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://incode.com/press/incode-launches-trustgraph-the-first-trust-network-built-for-the-agentic-era/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Incode\u2019s New Network for Anonymized Fraud Signals Boosts Detection by 53%",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://incode.com/press/incodes-new-network-for-anonymized-fraud-signals/"
   }
  ]
 }

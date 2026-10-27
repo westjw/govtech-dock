@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Contour Underwriting selects KYND for new cyber insurance offering",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://www.kynd.io/news/contour-underwriting-selects-kynd-for-new-cyber-insurance-offering/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "\u2022 5 min read The AI you can't see: Key takeaways from our Cyber Drop webinar",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "\u2022 2 min read PRESS RELEASE: KYND joins Anthropic Cyber Verification Programme to advance AI-driven cyber risk assessment for insurers",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://www.kynd.io/news/kynd_available_in_15_languages/"
-  },
-  {
-   "date": "2026-05-12",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "\u2022 3 min read PRESS RELEASE: Global SMB cyber exposure revealed as insurers face growing protection gap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kynd.io/news/global_smb_exposure_revealed_kynd_2026/"
   }
  ]
 }

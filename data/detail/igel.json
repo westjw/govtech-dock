@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "og:published",
+   "first_seen": "2026-10-27",
+   "headline": "The PHP Vulnerability: A Modern Trojan Horse and the Imperative for Cyber Resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.igel.com/blog/the-php-vulnerability-a-modern-trojan-horse-and-the-imperative-for-cyber-resilience/"
+  },
+  {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "Zero Trust for Operational Technology",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-08-18",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "Reboot, Reconnect, Resume: A Faster Path to Business Continuity Amidst an Incident",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.igel.com/blog/reboot-reconnect-recover-emergency-mode/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "A New Way to Deliver Windows Apps to IGEL OS with IMH Published Apps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.igel.com/blog/hypervisor-published-apps/"
   }
  ]
 }

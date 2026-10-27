@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "A Year of Polling Shows Where Behavioral Health Stands on AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/a-year-of-polling-shows-where-behavioral-health-stands-on-ai"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/youre-measuring-your-behavioral-health-ehrs-value-wrong"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Clinical Documentation Improvement: A Key to Mental Health Funding",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/clinical-documentation-improvement-a-key-to-mental-health-funding"
   }
  ],
  "profile": {

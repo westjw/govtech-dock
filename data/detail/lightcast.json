@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Highest Tool and Die Workers\u2019 Salaries in the US",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/skilled-trades-tool-die-workers-salaries"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://lightcast.io/resources/blog/how-to-retain-talent-using-career-pathways"
-  },
-  {
-   "date": "2022-12-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Drive Workforce Agility with Lightcast\u2019s Career Pathways Tool",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lightcast.io/resources/blog/career-pathways-launch"
   }
  ]
 }

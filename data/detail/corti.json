@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Corti Advances Execution and Control Layer for Complex Agentic AI Systems in Healthcare",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Dedalus And Corti Usher In The Agentic EHR Era Across Europe",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Corti and Diktamen Partner to Bring AI-Powered Ambient Voice Technology to NHS Trusts, Private Hospitals, and GP Practices",
    "kind": "press",

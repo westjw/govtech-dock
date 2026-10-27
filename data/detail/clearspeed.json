@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Media Coverage October 22, 2026 Finance Derivative",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/financederivative"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Voice analytics firm eyes Canada",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/canadianunderwriter"
+  },
+  {
    "date": "2026-10-01",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Clearspeed Named to CB Insights Insurtech 50",
    "kind": "press",
@@ -10,8 +28,17 @@
    "url": "https://www.clearspeed.com/news/cbinsights"
   },
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "CB Insights Insurtech 50",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/cbinsightsarticle"
+  },
+  {
    "date": "2026-09-18",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Insurance Fraud Costs $45 Billion per Year, and Honest Policyholders Often Pick Up the Tab",
    "kind": "press",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "New Research Examines Insurance's Verification Gap Amid Rapid AI Adoption",
    "kind": "press",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Clearspeed Highlights AI-Driven Verification Concerns in Insurance",
    "kind": "press",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-09-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Clearspeed's Alex Martin on Insurance Nerds",
    "kind": "press",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-08-26",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "What I Wish I Knew While Leading Insurance Carriers",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-08-26",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Could voice-based risk assessments be the answer?",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clearspeed.com/news/execanalysis"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "card-date",
-   "first_seen": "2026-10-22",
-   "headline": "Clearspeed Appoints Laurie Babinski as General Counsel",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://www.clearspeed.com/news/clearspeed-appoints-laurie-babinski-as-general-counsel"
-  },
-  {
-   "date": "2026-06-13",
-   "date_source": "card-date",
-   "first_seen": "2026-10-22",
-   "headline": "Clearspeed's Alex Martin on NewsNation Morning in America",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clearspeed.com/news/news-nation-clearspeed"
-  },
-  {
-   "date": "2026-06-13",
-   "date_source": "card-date",
-   "first_seen": "2026-10-22",
-   "headline": "Clearspeed advisor Don Blersch in The Hill",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clearspeed.com/news/the-hill-fraud-prevention-clearspeed"
   }
  ]
 }

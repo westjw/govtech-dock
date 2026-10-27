@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Right-sizing compliance software: what small utilities should pay for",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/right-sizing-compliance-software-small-utilities/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Disconnected compliance systems: where the gaps cost you time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/disconnected-compliance-systems-cost/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Run a compliance program audit with five ordinary questions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/compliance-program-audit-five-questions/"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.swiftcomply.com/blog/making-your-programs-impact-visible-to-leadership/"
-  },
-  {
-   "date": "2026-06-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Your backflow program is more vulnerable than you think",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/blog-backflow-program-management-compliance/"
-  },
-  {
-   "date": "2026-06-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When it rains, it pours: Why stormwater compliance is harder than it looks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/when-it-rains-it-pours-why-stormwater-compliance-is-harder-than-it-looks/"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SwiftComply acquires stormwater software ComplianceGo",
-   "kind": "funding",
-   "kind_rule": "acquires",
-   "url": "https://www.swiftcomply.com/blog/swiftcomply-acquires-stormwater-software-compliancego/"
   }
  ],
  "profile": {

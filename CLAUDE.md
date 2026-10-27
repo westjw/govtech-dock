@@ -233,6 +233,17 @@ with the company cards").
     listing's card names its primary sector, and the shelf says "N also
     listed here", so the groups add up to more than the count.
     `check_a_second_listing_sits_on_its_shelf`.
+  - **"Show all N in X" opens X's own page** (owner, 2026-10-27: "it should
+    take you to the public works page"): a real link to
+    `?tab=companies&csec=X` in the Showing chosen, through `toCompanies`, at
+    the top of the page. N counts the whole sector, the spotlight's
+    companies included, so it is the page's count. A chosen sector draws
+    `coSectorPage` above the list: its sub-industries (the dropdown's own
+    list, each count the list its link opens) and its conferences
+    ("the subindustries and conferences that fall into it"), from the
+    `sector` build_board stamps on every conference row off
+    `scripts/conference_sectors.py`, the one crosswalk supplier_categories
+    also files suppliers by. `check_show_all_opens_the_department_page`.
   - Searching or filtering: one grid in rank order, 60 at a time.
   - "Showing" is two buttons, Hiring now and Everyone, each with
     aria-pressed. The tab opens on Everyone (owner, 2026-10-20); Hiring now
@@ -1040,6 +1051,36 @@ nothing errors and no count looks odd.
 **One company loses every posting: Granicus.** Both its roles are federal
 account executives, so it renders as having none. That is a fact about this
 board's scope and not about their hiring, and the build says so by name.
+
+### SLED roles only, read one by one (owner, 2026-10-27)
+
+"Review the roles open, make sure they are just sled jobs not b2b." All 694
+openings on the board's default were read (four readers, a skeptic each,
+B2B only on words a reader could quote): 200 SLED, 186 B2B, 11 federal, 106
+selling to both, 191 that title and page did not settle. The owner's
+rulings on those counts:
+- **B2B and federal off**: 197 per-opening rulings in
+  `scope_decisions.json` (journal 2026-10-27#1, by
+  `agent:sled-review-2026-10-27`, each with the reader's reason), 694
+  openings to 497 before the second read.
+- **Roles that sell to both stay.**
+- **The unclear are read further**, from the full ad on the company's own
+  board feed (`ats.fetch` with details on, for those titles only), not
+  dropped. The second read (157 of 191 ads found; a reader and a skeptic)
+  ruled 95 more B2B (ZOLL's 45 LifeVest and hospital territories among
+  them) and 16 more out of scope (US federal, or a non-US role selling to
+  another country's government: Thales, Mitel and Xylem in Europe, Harris
+  in England). 22 sell to both, 17 are SLED, 41 stay unclear and stay
+  listed. 308 rulings in all; the board's default went from 694 openings
+  to 386.
+- **No title rule.** Asked whether the 75 business-first vendors should
+  carry `sled_only`, he said "read the roles and see if that role does": a
+  role is judged by its ad, because a title rule drops real SLED roles whose
+  titles do not say so (Bentley "DOT", Hyland "Education", ZOLL "EMS").
+- **A capture answers to the scope rulings too.** `merge_manual()` never
+  asked `out_of_scope()`, so two hand-captured B2B roles (SAP Concur, Nearmap)
+  stayed listed after their ruling. Both builds pass `scope` now;
+  `check_a_capture_answers_to_the_scope_rulings`.
 
 ### Two questions off one set of pages: the `buyer` kind, added 2026-09-12
 

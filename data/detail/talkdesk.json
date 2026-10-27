@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Beyond determinism: AI agents governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/blog/beyond-determinism-ai-agents-governance/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Talkdesk announces 2026 CX Innovators Awards winners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/news-and-press/press-releases/2026-cx-innovators-awards-winners/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/field-service-cx-agentic-ai/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Conversational AI in retail: How it impacts your customer experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/conversational-ai-retail/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "End-to-end customer experience: What it is and why it matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/end-to-end-customer-experience/"
   }
  ]
 }

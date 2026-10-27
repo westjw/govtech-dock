@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "What is Vulnerability Management? Process, Tools, and Best Practices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.action1.com/blog/vulnerability-management/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Mean Time to Patch: The Patch Management Metric that Measures Your Exposure Window",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.action1.com/blog/mean-time-to-patch/"
+  },
+  {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "PHP2Shell: The Biggest Risk Is the PHP You Don\u2019t Know You\u2019re Running",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Best Vulnerability Remediation Tools & Software in 2026",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "How to Reduce MTTR: A Practical Guide for Patching, Vulnerability Remediation, and Software Incidents",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "What is MTBF? Mean Time Between Failures for IT and Software Systems",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Nearly 1,000 Patches in a Month: Why the Old Patching Model Is Breaking Down",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Microsoft Configuration Manager (SCCM) End of Life",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "CWE vs CVE \u2014 Weaknesses vs. Vulnerabilities",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "VM Patch Management: How to Patch Virtual Machines at Scale",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "Update",
    "url": "https://www.action1.com/blog/force-a-group-policy-update-gpupdate-force/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Is Intune the SCCM Replacement? What Actually Replaces Microsoft SCCM",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/is-intune-the-sccm-replacement-what-actually-replaces-microsoft-sccm/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "How to Fix Windows Update Errors and Failed Updates?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/windows-update-failed-here-are-7-ways-to-fix-windows-it/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "How Support Agents Can See a Customer's Phone Screen Without Installing an App",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blitzz.co/blog/how-support-agents-can-see-a-customers-phone-screen-without-installing-an-app"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "What AI Tools Write Notes and Reports Automatically After a Customer Video Support Call?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blitzz.co/blog/what-ai-tools-write-notes-and-reports-automatically-after-a-customer-video-support-call"
+  },
+  {
    "date": "2026-10-25",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blitzz.co/blog/remote-visual-inspection-for-pre-purchase-vehicle-checks"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Remote Visual Assistance for Fleet Damage Documentation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blitzz.co/blog/remote-visual-assistance-for-fleet-damage-documentation"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "\u2192 How to Set Up Offline Photo Documentation for Field Crews",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blitzz.co/blog/how-to-set-up-offline-photo-documentation-for-field-crews"
   }
  ]
 }
