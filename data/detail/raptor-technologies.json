@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "index-text",
+   "first_seen": "2026-10-26",
+   "headline": "Private School Unifies Visitor, Volunteer, and Emergency Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/st-agnes-academy-raptor-case-study/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "index-text",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/blog/student-suicide-risk-warning-signs/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A Campus Administrator\u2019s Playbook for Effective Bullying Prevention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/campus-administrator-bullying-prevention-guide/"
   }
  ],
  "profile": {

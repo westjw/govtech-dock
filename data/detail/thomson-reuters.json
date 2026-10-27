@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "og:published",
+   "first_seen": "2026-10-26",
+   "headline": "End-to-end compliance for Oracle Fusion Cloud ERP users",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/blog/thomson-reuters-offers-an-end-to-end-compliance-platform-for-oracle-fusion-cloud-erp-users/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "og:published",
    "first_seen": "2026-09-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://tax.thomsonreuters.com/blog/the-real-reason-automated-retail-indirect-tax-compliance-still-feels-reactive/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "og:published",
-   "first_seen": "2026-09-10",
-   "headline": "Groups urge Tax Court to halt interest on pre-COVID debts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/news/groups-urge-tax-court-to-halt-interest-on-pre-covid-debts/"
   }
  ]
 }

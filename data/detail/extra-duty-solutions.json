@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Introducing Responder: One partner. One platform. One mission.",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://extradutysolutions.com/news/introducing-responder-one-partner-one-platform-one-mission/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Extra Duty Solutions Launches the Responder Platform, Bringing On-Duty and Extra Duty Scheduling Together in One Place",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://extradutysolutions.com/news/extra-duty-solutions-launches-the-responder-platform/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://extradutysolutions.com/insights/police-department-procurement-cooperative-contracts/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "One City, One System: Coordinating Extra Duty Across Every Municipal Department",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://extradutysolutions.com/insights/one-city-one-system-coordinating-extra-duty-across-every-municipal-department/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Audit-Ready by Design: Building an Extra Duty Program That Holds Up to Scrutiny",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://extradutysolutions.com/insights/off-duty-program-audit-compliance/"
   }
  ],
  "profile": {

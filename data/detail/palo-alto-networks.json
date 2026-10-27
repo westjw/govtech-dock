@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Palo Alto Networks Named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u0212...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/10/palo-alto-networks-named-a-leader-in-the-2026-gartner-magic-quadrant-for-privileged-access-management/"
+  },
+  {
    "date": "2026-10-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Palo Alto Networks Brings Continuous AI Defense and Prisma AIRS to the Open...",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Advancing Agentic AI Security with Palo Alto Networks and NVIDIA",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "Reinventing Endpoint Security with Cortex XDR One",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "Introducing Unit 42 Managed Agentic Endpoint Security",
    "kind": "product",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Fast-Track Your PQC Strategy: A Template for OMB M-26-15 Readiness",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "The Blind Spot in Orbit: Why Space Could Be the Next Infrastructure Crisis",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "NHS England evolves its cybersecurity strategy with Palo Alto Networks and ...",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Driven by Innovation: Our Latest Analyst Wins and Product Momentum in Netwo...",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "The Mango Strategy: A CEO\u2019s Guide to AI Cybersecurity",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paloaltonetworks.com/blog/2026/09/sase-gateway-provided-by-kddi-how-sp-interconnect-simplifies-closed-network-zero-trust/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Introducing CLARA Agent: Instant Cloud & AI Risk Insights Available on...",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.paloaltonetworks.com/blog/2026/09/introducing-clara-agent-instant-cloud-ai-risk-insights-available-on-google-cloud-gemini-enterprise/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "index-text",
+   "first_seen": "2026-10-26",
+   "headline": "Waterloop Podcast: AI Moves From Answers To Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sewerai.com/resources/waterloop-podcast-ai-moves-from-answers-to-action"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "card-date",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sewerai.com/resources/how-to-stay-ahead-of-your-cmom-program-instead-of-chasing-it"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Your inspection data is fine. Your QA queue is the bottleneck.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sewerai.com/resources/inspection-data-qa-queue-bottleneck"
   }
  ],
  "profile": {

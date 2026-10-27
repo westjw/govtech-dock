@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Vulnerability Prioritization: Why Patching Faster Isn\u2019t a Strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/vulnerability-prioritization-why-patching-faster-isnt-a-strategy/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/blog/inside-dataminrs-predictive-threat-exposure-management/"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Black Hat 2026: What CISOs Kept Telling Us",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/black-hat-2026-what-cisos-kept-telling-us/"
   }
  ],
  "profile": {

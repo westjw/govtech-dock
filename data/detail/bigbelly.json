@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "The Guest Experience Begins Before the Ride",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bigbelly.com/news/the-guest-experience-begins-before-the-ride"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Welcomes",
    "url": "https://bigbelly.com/news/from-the-factory-floor-to-floridas-waterfront-fort-pierce-welcomes-summer-with-bigbelly"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Summer Together: Hoboken Invests in Cleaner Streets, Smarter Infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bigbelly.com/news/summer-together-hoboken-invests-in-cleaner-streets-smarter-infrastructure"
   }
  ],
  "profile": {

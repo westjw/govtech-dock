@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Why Reliable Uptime Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/why-reliable-uptime-matters"
+  },
+  {
+   "date": "2026-10-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Mitigating Commercial Property Liability and Crime in Outer Perimeters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/mitigating-commercial-property-liability-and-crime-in-outer-perimeters"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/resources/protecting-community-gardens"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Detroit Community Survey Finds Broad Support for LVT Units, Cites Crime Deterrence as Top Reason",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/press/detroit-community-survey-finds-broad-support-for-lvt-units"
-  },
-  {
-   "date": "2026-10-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Live Video Monitoring: What Does It Actually Cost?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/live-video-monitoring-what-does-it-actually-cost"
   }
  ],
  "profile": {

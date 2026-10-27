@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "What FLEETpatrol Does for District Fleet Maintenance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/what-fleetpatrol-does-for-district-fleet-maintenance-1"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/key-stakeholders-in-school-bus-dispatch-rollouts"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-09",
-   "headline": "Understanding Real-Time Dispatch Delays in School Fleets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/understanding-real-time-dispatch-delays-in-school-fleets"
   }
  ],
  "profile": {

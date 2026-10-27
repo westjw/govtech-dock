@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "card-date",
+   "first_seen": "2026-10-26",
+   "headline": "Object Relationships lets teams link the things they manage, so each one keeps its own history and still shows what it belongs to.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/object-relationships"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "update",
    "url": "https://withforerunner.com/post/ai-assistant"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "card-date",
-   "first_seen": "2026-10-15",
-   "headline": "How AI Can Help Government Teams Do Their Best Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/how-ai-can-help-government-teams-do-their-best-work"
   }
  ],
  "profile": {

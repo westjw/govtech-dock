@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "More Than a Portfolio: How Documenting My Journey Helped Me Find My Place",
    "kind": "press",
@@ -17,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/fighting-every-student-dr-darla-keel"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "index-text",
+   "first_seen": "2026-10-26",
+   "headline": "Artificial Intelligence, Data Security and Privacy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/cybersecurity-awareness-month-key-insights-universities"
   },
   {
    "date": "2026-10-01",
@@ -37,8 +46,8 @@
    "url": "https://www.ellucian.com/blog/aligning-people-platforms-ai-change-higher-education"
   },
   {
-   "date": "2026-09-16",
-   "date_source": "index-text",
+   "date": "2026-09-15",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Artificial Intelligence, Student Information Systems",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/its-okay-pivot-your-college-path"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Enrollment, Recruiting and Admissions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/personalized-student-engagement-enrollment"
   }
  ],
  "profile": {

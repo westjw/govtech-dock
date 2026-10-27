@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "index-text",
+   "first_seen": "2026-10-26",
+   "headline": "Visit us booth 1175 IACP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://prophoenix.com/2026/10/visit-us-booth-1175-iacp/"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://prophoenix.com/2026/05/here-today-at-iacp-tech-booth-537/"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Dodge County, MN now live with Phoenix software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://prophoenix.com/2026/05/dodge-county-mn-now-live-with-phoenix-software/"
   }
  ]
 }

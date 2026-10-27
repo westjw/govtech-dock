@@ -1,34 +1,111 @@
 {
-  "date": "2026-10-26",
-  "previous": "2026-10-25",
+  "date": "2026-10-27",
+  "previous": "2026-10-26",
   "changes": [
+    {
+      "company": "Masabi",
+      "id": "masabi",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Zencity",
+      "id": "zencity",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
     {
       "company": "Bentek",
       "id": "bentek",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 504 for https://mybentek.com/about/"
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
-      "company": "Computer Information Systems, Inc.",
-      "id": "computer-information-systems-inc",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://www.cis.com/careers"
+      "company": "Paladin Drones",
+      "id": "paladin-drones",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative ( only"
+    },
+    {
+      "company": "Fotokite",
+      "id": "fotokite",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "The Weather Company",
+      "id": "the-weather-company",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Senior Sales Operations Analyst only"
     },
     {
       "company": "Palantir Technologies",
       "id": "palantir-technologies",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Forward Deployed Enablement Engine only"
     },
     {
-      "company": "HydroPoint Data Systems",
-      "id": "hydropoint-data-systems",
+      "company": "RTA Fleet Management",
+      "id": "rta-fleet-management",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "PlayMetrics",
+      "id": "playmetrics",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: robots.txt on home.playme"
+    },
+    {
+      "company": "Byga",
+      "id": "byga",
       "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 404 for https://www.hydropoint.com/"
+      "note": "network error: robots.txt on byga.net di"
+    },
+    {
+      "company": "Selux",
+      "id": "selux",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Project Manager/Customer Service - only"
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Tribute Technology",
+      "id": "tribute-technology",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: robots.txt on www.tribute"
+    },
+    {
+      "company": "Wastequip",
+      "id": "wastequip",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "StarRez",
+      "id": "starrez",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
     }
   ]
 }

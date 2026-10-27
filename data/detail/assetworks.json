@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Where Fleet Costs Are Really Adding Up Behind the Scenes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/where-fleet-costs-are-really-adding-up-behind-the-scenes/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Calculating the Real ROI of Facility and Asset Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/eam/blog/calculating-the-real-roi-of-facility-and-asset-management-software/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "How to Build an Asset Management Plan: A Step-by-Step Guide for Government Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/eam/blog/how-to-build-an-asset-management-plan/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "The Real Cost of Underutilized Fleet Assets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/the-real-cost-of-underutilized-fleet-assets/"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -8,6 +44,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.assetworks.com/eam/blog/the-next-pickleball-is-already-here-actually-there-are-three/"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Preventive Maintenance Basics Every Fleet Manager Should Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/preventive-maintenance-basics-every-fleet-manager-should-know/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "How to Improve Technician Productivity Without Burning Out Your Team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/how-to-improve-technician-productivity-without-burning-out-your-team/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Why a Modern Interface Isn't Enough: Common Challenges Fleets Face When Upgrading Their System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/why-a-modern-interface-isnt-enough-common-challenges-fleets-face-when-upgrading-their-system/"
   },
   {
    "date": "2026-09-22",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.assetworks.com/fleet/blog/why-disconnected-fleet-systems-create-more-work-than-they-save/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How Poor Asset Visibility Impacts Scheduling and Daily Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/how-poor-asset-visibility-impacts-scheduling-and-daily-operations/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The Hidden Causes of Repeat Repairs in Fleet Maintenance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/the-hidden-causes-of-repeat-repairs-in-fleet-maintenance/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Does a Modern Fleet Operation Actually Look Like?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/what-does-a-modern-fleet-operation-actually-look-like/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Hidden Patterns in Your Parks and Rec Maintenance Backlog",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/the-hidden-patterns-in-your-parks-and-rec-maintenance-backlog/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Municipal Asset Management: A Practical Guide for Cities and Counties",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/municipal-asset-management-guide/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Your Shop Is Always Behind Schedule and How to Get Back on Track",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/why-your-shop-is-always-behind-schedule-and-how-to-get-back-on-track/"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Operational Bottlenecks Are Slowing Down Your Entire Fleet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/why-operational-bottlenecks-are-slowing-down-your-entire-fleet/"
   }
  ],
  "profile": {

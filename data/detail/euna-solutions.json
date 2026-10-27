@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Foundation First: AI in Public Procurement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/ai-in-public-procurement/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eunasolutions.com/resources/franklin-university-euna-marketplace/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Building a Compelling Business Case for Grants Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/building-a-compelling-business-case-for-grants-management-software/"
   },
   {
    "date": "2026-10-22",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eunasolutions.com/resources/how-government-technology-solutions-improve-local-government-operations/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Comparing Best-of-Breed and All-in-One Government Software: Which Approach Fits Your Public Sector Agency?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/best-of-breed-vs-all-in-one-government-software/"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How to Know When a Government Process Has Outgrown Its Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/when-to-replace-government-software/"
   }
  ],
  "profile": {

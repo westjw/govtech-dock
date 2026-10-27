@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Anthropic files S-1 with the SEC for proposed initial public offering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/s1-sec"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/distillation-defenses"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-09",
-   "headline": "2026 Usage Policy update",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://www.anthropic.com/news/2026-usage-policy-update"
   }
  ],
  "profile": {

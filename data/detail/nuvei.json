@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Nuvei secures direct acquiring license in Israel",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Nuvei secures license to offer local payment acceptance in South Africa",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Nuvei and Kolleno Partner to Embed Global Payments into AI-Powered Finance Workflows",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Kayana Partners with Nuvei to Power Connected Commerce for Thousands of Hospitality and Retail Businesses",
    "kind": "press",
