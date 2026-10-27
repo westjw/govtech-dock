@@ -206,7 +206,6 @@ export async function describe(request, env) {
     jobs: ["Sales jobs in govtech", "Every open sales role at state and local government technology companies, in one list."],
     companies: ["Govtech companies", "The companies selling technology to state and local government, and which of them are hiring."],
     conferences: ["Govtech conferences", "Where these companies exhibit, with dates, so you know which floor to stand on."],
-    map: ["Where the desks are", "Every city a govtech company names an office in for an open role, on one map."],
     intel: ["Govtech market intel", "What the hiring across state and local government technology actually looks like."],
     saved: null,
   };

@@ -70,7 +70,10 @@
          --card-edge:transparent;
          --card-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.06);
          --search-shadow:0 1px 2px rgba(31,37,54,.06),0 8px 24px rgba(31,37,54,.08);
-         --rule-strong:#1F2536; }
+         --rule-strong:#1F2536;
+         /* the front page's badges: a Badge band in both themes, its words
+            in Ice (5.9:1), the lanyard slot punched through to --bg */
+         --badge-band:#0B57C4; --badge-band-ink:#E8F1F7; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     /* ground becomes Penguin. Badge falls to 2.3:1 there, so both accents
        lighten along their own hue until they clear AA again. */
@@ -466,16 +469,33 @@
   .fp-scope{margin:14px 0 0;font-size:14px;color:var(--dim)}
   .fp .since{margin-top:var(--space-6)}
 
-  /* the newest roles: the lead card two rows tall beside a two-by-two */
+  /* THE NEWEST ROLES AS BADGES (owner, 2026-10-27: "This should be at the
+     top", over R3 4's Fresh badges, then round 5 of the canvas, "love the
+     new home page, push please"). A conference badge: a Badge band with the
+     lanyard slot punched through to the page, then the role. The lead is
+     two rows tall beside a two-by-two, as it was. */
+  .fp-badges{margin-top:8px}
+  .fp-sechead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:16px 40px;margin-bottom:28px}
+  .fp-sechead>div{min-width:0}
+  .fp-sechead h2,.fp-desk h2{margin:14px 0 0;font-size:clamp(32px,4.2vw,56px);line-height:1.02;
+    letter-spacing:-.035em;text-wrap:balance}
+  .fp-sechead .fp-all{padding-bottom:8px;font-size:17px}
   .fp-roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
-    gap:16px}
+    gap:20px}
   .fp-roles.full .fp-lead{grid-row:span 2}
-  .fp-lead,.fp-card{text-decoration:none;min-width:0;border-radius:20px}
-  .fp-lead:focus-visible,.fp-card:focus-visible,.fp-ev:focus-visible{
-    outline:2px solid var(--accent);outline-offset:3px}
-  .fp-lead{display:flex;flex-direction:column;justify-content:space-between;
-    gap:28px;padding:32px;min-height:380px;background:var(--cf-lead);
-    color:var(--cf-lead-ink)}
+  .fp-lead,.fp-card{text-decoration:none;min-width:0;overflow:hidden}
+  .fp-lead:focus-visible,.fp-card:focus-visible,.fp-ev:focus-visible,.fp-sec:focus-visible,
+  .fp-secmore a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .fp-band{display:flex;flex-direction:column;align-items:center;gap:4px;
+    padding:22px 20px 16px;background:var(--badge-band);color:var(--badge-band-ink);
+    font-size:12px;font-weight:800;letter-spacing:.16em;text-align:center}
+  .fp-band i{width:44px;height:8px;border-radius:4px;background:var(--bg);margin-bottom:10px}
+  .fp-lead{display:flex;flex-direction:column;border-radius:20px;min-height:380px;
+    background:var(--cf-lead);color:var(--cf-lead-ink);border:1px solid var(--card-edge);
+    box-shadow:var(--card-shadow)}
+  .fp-lead-b{flex:1;display:flex;flex-direction:column;justify-content:space-between;
+    gap:28px;padding:28px 32px 32px}
   .fp-lead-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .fp-lead .tile{width:64px;height:64px;border-radius:14px;font-size:22px;
     box-shadow:0 0 0 1px var(--cf-lead-dim)}
@@ -493,14 +513,18 @@
   .fp-lead-pay{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
   .fp-lead-pay.sil{font-size:17px;font-weight:600}
-  .fp-go{padding:10px 16px;border-radius:999px;background:var(--beak);
-    color:var(--hdr-bg);font-weight:800;font-size:14px;white-space:nowrap}
-  .fp-card{display:flex;flex-direction:column;gap:14px;padding:24px;
+  .fp-go{flex:1 1 100%;padding:13px 18px;border-radius:999px;background:var(--beak);
+    color:var(--hdr-bg);font-weight:800;font-size:15px;white-space:nowrap;text-align:center}
+  .fp-card{display:flex;flex-direction:column;border-radius:16px;
     background:var(--panel);color:var(--ink);border:1px solid var(--card-edge);
     box-shadow:var(--card-shadow)}
   .fp-card:hover{border-color:var(--accent)}
   .fp-card:hover .fp-t{color:var(--accent-text)}
-  .fp-co{display:flex;align-items:center;gap:12px;min-width:0}
+  .fp-card-b{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:8px;padding:22px 22px 24px}
+  .fp-card .fp-t{font-size:20px;line-height:1.15}
+  .fp-card .fp-meta{font-size:14px;font-weight:400}
+  .fp-card .fp-foot{margin-top:auto;padding-top:6px;flex-direction:column;align-items:center;gap:2px}
   .fp-meta{display:block;color:var(--dim);font-weight:600;font-size:16px;
     line-height:1.3;min-width:0;overflow-wrap:anywhere}
   .fp-t{font-family:var(--font-heading);font-size:26px;line-height:1.12;
@@ -508,17 +532,16 @@
   .fp-foot{display:flex;justify-content:space-between;align-items:baseline;
     gap:12px;font-size:15px}
   .fp-age{font-size:13px;font-weight:700;color:var(--dim);white-space:nowrap}
-  .fp-card .fp-age{font-size:15px;font-weight:400}
+  .fp-card .fp-age{font-size:14px;font-weight:400}
   .fp-pay{font-weight:700;color:var(--accent-text);font-variant-numeric:tabular-nums;
     white-space:nowrap}
   .fp-sil{color:var(--dim)}
   .fp-logo{display:flex;flex:none}
   .fp .tile{display:flex;align-items:center;justify-content:center;flex:none;
     font-weight:800}
-  .fp-card .tile,.fp-hire .tile{width:44px;height:44px;border-radius:10px;font-size:15px}
-  .fp-more{display:flex;justify-content:flex-end;align-items:baseline;flex-wrap:wrap;
-    gap:var(--space-2) var(--space-6);margin-top:14px}
-  .fp-debut{margin:0 auto 0 0;font-size:14px;color:var(--dim)}
+  .fp-hire .tile{width:44px;height:44px;border-radius:10px;font-size:15px}
+  .fp-card .tile{width:56px;height:56px;border-radius:12px;font-size:18px}
+  .fp-debut{margin:14px 0 0;font-size:14px;color:var(--dim)}
   .fp-all,.fp-cap a,.fp-note a{font-weight:700;color:var(--accent-text);
     text-decoration:none;white-space:nowrap}
   .fp-all:hover,.fp-cap a:hover,.fp-note a:hover{text-decoration:underline}
@@ -560,19 +583,67 @@
   .fp-pl{display:flex;flex-direction:column;min-width:0}
   .fp-pl span{font-size:14px;color:var(--dim);overflow-wrap:anywhere}
 
-  /* the departments as an index, two columns of big names and counts */
+  /* THE DEPARTMENTS AS CARDS (owner, 2026-10-27: "love these", over R3 3's
+     show floor, "dont like calling them halls", no description above them,
+     and the button names its department). Six cards, the rest as chips;
+     every count is openings, as before, and each card names the companies
+     with the most of them. The band takes the header's tokens. */
   .fp-dept{margin-top:72px}
-  .fp-dept h2{margin:0 0 20px;font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em}
-  .hsecs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));
-    column-gap:48px;border-top:1px solid var(--rule-strong)}
-  .hsecs a{display:flex;align-items:baseline;gap:16px;padding:18px 0;
-    border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
-  .hsecs a span{flex:1;min-width:0;font-size:clamp(21px,2.2vw,26px);font-weight:700;
-    letter-spacing:-.01em}
-  .hsecs a b{font-size:clamp(21px,2.2vw,26px);font-weight:800;color:var(--accent-text);
+  .fp-dept h2{margin:0 0 24px;font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em}
+  .fp-secs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px}
+  .fp-sec{display:flex;flex-direction:column;min-width:0;border-radius:16px;overflow:hidden;
+    background:var(--panel);color:var(--ink);text-decoration:none;
+    border:1px solid var(--card-edge);box-shadow:var(--card-shadow)}
+  .fp-sec:hover{border-color:var(--accent)}
+  .fp-secb{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
+    min-height:104px;padding:22px 24px;background:var(--hdr-bg);color:var(--hdr-ink);
+    border-bottom:3px solid var(--beak)}
+  .fp-secb span{min-width:0;font-size:28px;line-height:1.08;font-weight:800;
+    letter-spacing:-.02em;overflow-wrap:anywhere}
+  .fp-secb b{font-size:40px;font-weight:900;letter-spacing:-.03em;line-height:1;
     font-variant-numeric:tabular-nums}
-  .hsecs a i{font-style:normal;color:var(--dim)}
-  .hsecs a:hover span{color:var(--accent-text)}
+  .fp-secw{flex:1;display:flex;flex-direction:column;gap:12px;padding:20px 24px 24px}
+  .fp-secw small{font-size:13px;font-weight:700;color:var(--dim)}
+  .fp-who{display:flex;align-items:center;gap:12px;font-weight:700;min-width:0;
+    overflow-wrap:anywhere}
+  .fp-who .tile{width:32px;height:32px;border-radius:8px;font-size:12px}
+  .fp-secgo{margin-top:auto;padding:13px 18px;border-radius:999px;
+    background:var(--accent-text);color:var(--bg);font-weight:700;text-align:center}
+  .fp-secmore{display:flex;flex-direction:column;gap:14px;margin-top:20px;
+    padding:20px 24px 22px;border-radius:16px;border:1.5px dashed var(--faint)}
+  .fp-secmore>b{font-size:18px}
+  .fp-secmore>div{display:flex;flex-wrap:wrap;gap:8px}
+  .fp-secmore a{padding:7px 12px;border-radius:999px;background:var(--chip);color:var(--ink);
+    font-size:14px;font-weight:700;text-decoration:none}
+  .fp-secmore a b{color:var(--accent-text);font-variant-numeric:tabular-nums}
+  .fp-secmore a:hover{color:var(--accent-text)}
+
+  /* THE REGISTRATION DESK (owner, 2026-10-27: "this should be at the
+     bottom", over R3 4's desk). The alert sign-up with the three cadences
+     alerts.html offers; a pick travels there as ?cadence=. The penguin
+     stands on the header's light tile, an arch here: its navy body is the
+     dark card's own colour. */
+  .fp-desk{margin-top:96px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px;
+    padding:clamp(28px,4vw,48px) clamp(24px,4vw,48px) 0;border-radius:20px;overflow:hidden;
+    background:var(--panel);border:1px solid var(--card-edge);box-shadow:var(--card-shadow)}
+  .fp-desk-t{flex:999 1 420px;min-width:0;padding-bottom:clamp(28px,4vw,48px)}
+  .fp-desk-p{margin:20px 0 0;font-size:19px;line-height:1.5;max-width:42ch}
+  .fp-cad{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .fp-cad button{padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);
+    background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:700;
+    cursor:pointer}
+  .fp-cad button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+  .fp-cad button:focus-visible,.fp-desk-go a:focus-visible{outline:2px solid var(--accent);
+    outline-offset:2px}
+  .fp-desk-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .fp-desk-go a{padding:15px 26px;border-radius:999px;text-decoration:none;font-weight:700;
+    border:1.5px solid var(--ink);color:var(--ink)}
+  .fp-desk-go a.go{background:var(--accent-text);border-color:var(--accent-text);
+    color:var(--bg);font-weight:800}
+  .fp-arch{flex:0 1 236px;max-width:100%;display:flex;justify-content:center;
+    padding:20px 18px 0;box-sizing:border-box;background:var(--hdr-tile);
+    border-radius:118px 118px 0 0}
+  .fp-arch img{display:block;width:200px;max-width:100%;height:auto}
   .fp-note{margin:20px 0 0;font-size:14px;color:var(--dim);max-width:80ch}
   /* The lead stops spanning two rows only where the grid is ONE column:
      two 300px columns fit from 648px, and between there and 768 a lead
@@ -1714,9 +1785,11 @@
     .fp-h{font-size:clamp(34px,10vw,44px)}
     .fp-find{margin-top:24px}
     .fp-search{flex-basis:100%;max-width:none}
-    .fp-lead{min-height:0;padding:24px;gap:22px}
+    .fp-lead{min-height:0}
+    .fp-lead-b{padding:24px;gap:22px}
     .fp-cols{margin-top:44px;gap:32px}
     .fp-dept{margin-top:48px}
+    .fp-desk{margin-top:56px}
     /* the role's Flag, Job Hunter and Save under its title, not beside it */
     .cohead:has(.roleacts){flex-wrap:wrap}
     .cohead .roleacts{margin-left:0;width:100%;justify-content:flex-start}
@@ -2019,7 +2092,7 @@ const ACTS=Object.freeze({
   openRole:el=>openRole(el.dataset.arg),
   alertOnCompany:el=>alertOnCompany(el.dataset.arg),
   coShowAll:el=>coShowAll(el.dataset.arg),
-  mapState:el=>mapToState(el.dataset.arg),
+  deskCadence:el=>deskCadence(el.dataset.arg),
   reload:()=>location.reload(),
   nearChanged:()=>nearChanged(), milesChanged:()=>milesChanged(),
   famPill:()=>famPill(), secPill:()=>secPill(), payPill:()=>payPill(),
@@ -2065,7 +2138,7 @@ document.addEventListener("error",logoEvent,true);
 /* "How listings get here" is in the deck's header for a reason: this board's
    whole claim is that it says where a number came from, and a stranger has
    nowhere to check that unless it is one click from the top of every page. */
-const TABS=[["home","Home"],["jobs","Jobs"],["companies","Companies"],["map","Map"],["conferences","Conferences"],["saved","Saved"],
+const TABS=[["home","Home"],["jobs","Jobs"],["companies","Companies"],["conferences","Conferences"],["saved","Saved"],
   ["intel","Market intel"]];
 /* "How listings get here" is NOT in the nav any more - the owner asked for it
    out, it was the seventh item and the longest label in a row that has to fit
@@ -7455,6 +7528,16 @@ const NUM_WORDS=["zero","one","two","three","four","five","six","seven","eight",
   "seventeen","eighteen","nineteen"];
 const NUM_TENS=["","","twenty","thirty","forty","fifty","sixty","seventy",
   "eighty","ninety"];
+/* THE REGISTRATION DESK'S DAYS: alerts.html's three cadences, in its order
+   and with its values, so a pick travels there as ?cadence= and starts the
+   sign-up form on it. One is pressed at a time. */
+const DESK_CADENCE=[["daily","Every weekday"],["twice","Tuesday and Thursday"],["weekly","Wednesdays"]];
+function deskCadence(v){
+  if(!DESK_CADENCE.some(c=>c[0]===v))return;
+  document.querySelectorAll(".fp-cad button").forEach(b=>
+    b.setAttribute("aria-pressed",String(b.dataset.arg===v)));
+  const a=$("#h-alert"); if(a)a.setAttribute("href","/alerts?cadence="+v);
+}
 function numWords(n){
   if(!Number.isInteger(n)||n<0||n>99)return Number(n).toLocaleString();
   const w=n<20?NUM_WORDS[n]:NUM_TENS[Math.floor(n/10)]+(n%10?"-"+NUM_WORDS[n%10]:"");
@@ -7674,7 +7757,7 @@ function nearNote(NEAR){
       ${esc(NEAR.ambiguous[0].replace("|",", "))}</span>`;
   if(!NEAR.at)return "";
   // a distance is measured on OpenStreetMap's coordinates, so it is credited
-  // wherever one is applied (see the map tab)
+  // wherever one is applied
   const osm=` · <span class="unplaced">distances use city locations &copy;
     <a href="https://www.openstreetmap.org/copyright" target="_blank"
        rel="noopener">OpenStreetMap contributors</a></span>`;
@@ -7847,13 +7930,22 @@ function home(){
      drift. */
   // the same list the sector dropdown is built from, in jobs()
   const ALL_SECTORS=[...new Set(D.postings.map(x=>x.sector).filter(Boolean))];
-  const bySec={};
+  const bySec={}, secCo={}, coName={};
   q.forEach(p=>{
-    ALL_SECTORS.forEach(name=>{ if(inSector(p,name))
-      (bySec[name]=bySec[name]||new Set()).add(p.opening_id||p.id) });
+    ALL_SECTORS.forEach(name=>{ if(!inSector(p,name))return;
+      const k=p.opening_id||p.id, m=secCo[name]=secCo[name]||{};
+      (bySec[name]=bySec[name]||new Set()).add(k);
+      (m[p.company_id]=m[p.company_id]||new Set()).add(k);
+      coName[p.company_id]=p.company; });
   });
+  // every department: the first six as cards, the rest as chips
   const secs=Object.entries(bySec).map(([n,set])=>[n,set.size])
-    .sort((a,b)=>b[1]-a[1]).slice(0,8);
+    .sort((a,b)=>b[1]-a[1]);
+  /* HIRING MOST in a department: the companies holding the most of the
+     openings its card counts, on the board the card opens, ties by name. */
+  const secTop=name=>Object.entries(secCo[name]||{}).map(([id,set])=>[id,set.size])
+    .sort((a,b)=>b[1]-a[1]||(String(coName[a[0]])<String(coName[b[0]])?-1:1))
+    .slice(0,3);
   // the widest single requisition, measured: "93 cities" was a frozen figure
   // for one that had grown to 228 postings (launch audit 2)
   const widest=Math.max(0,...all.map(g=>g.rows.length));
@@ -7913,29 +8005,43 @@ function home(){
       ?` <span class="fp-sil">${esc(gp.note)}</span>`:""}`
       :`<span class="fp-sil">${esc(gp.note)}</span>`;
   };
+  /* A BADGE: the band is decoration, so a screen reader hears the role.
+     When every badge is new this run the heading says when they were first
+     seen and no badge repeats it; otherwise each says its own age. */
+  const band=`<span class="fp-band" aria-hidden="true"><i></i>HELLO, WE&rsquo;RE HIRING</span>`;
   const leadCard=g=>{
     const gp=groupPay(g.rows), w=when(g.lead.first_seen,gen).txt;
+    const tag=allNew?(fo>1?`1 of ${fo.toLocaleString()} new`:"new this run"):w?`first seen ${w}`:"";
     return `<a class="fp-lead" href="?role=${encodeURIComponent(g.lead.id)}" data-role="${esc(g.lead.id)}">
+      ${band}<span class="fp-lead-b">
       <span class="fp-lead-top">${logo(g.lead.company,g.lead.company_id)}
-        ${w?`<span class="fp-age">first seen ${esc(w)}</span>`:""}</span>
+        ${tag?`<span class="fp-age">${esc(tag)}</span>`:""}</span>
       <span><span class="fp-meta">${meta(g)}</span>
         <span class="fp-lead-t">${esc(g.lead.title)}</span></span>
       <span class="fp-lead-foot">
         <span><span class="fp-lab">${gp.fig?"Pay, as posted":"Pay"}</span>
           <span class="fp-lead-pay${gp.fig?"":" sil"}">${esc(gp.fig||gp.note)}${
             gp.fig&&gp.note?` <span class="fp-lab">${esc(gp.note)}</span>`:""}</span></span>
-        <span class="fp-go">Open the role</span></span>
-    </a>`;
+        <span class="fp-go">Open the role &rarr;</span></span>
+    </span></a>`;
   };
   const card=g=>{
-    const w=when(g.lead.first_seen,gen).txt;
+    const w=allNew?"":when(g.lead.first_seen,gen).txt;
     return `<a class="fp-card" href="?role=${encodeURIComponent(g.lead.id)}" data-role="${esc(g.lead.id)}">
-      <span class="fp-co">${logo(g.lead.company,g.lead.company_id)}
-        <span class="fp-meta">${meta(g)}</span></span>
-      <span class="fp-t">${esc(g.lead.title)}</span>
-      <span class="fp-foot">${payLine(g)}${w?`<span class="fp-age">${esc(w)}</span>`:""}</span>
+      ${band}<span class="fp-card-b">${logo(g.lead.company,g.lead.company_id)}
+        <span class="fp-t">${esc(g.lead.title)}</span>
+        <span class="fp-meta">${meta(g)}</span>
+        <span class="fp-foot">${payLine(g)}${w?`<span class="fp-age">${esc(w)}</span>`:""}</span></span>
     </a>`;
   };
+  // a department: its card, or past the sixth, its chip; both open ?sec=
+  const secCard=([name,k])=>`<a class="fp-sec" href="?sec=${encodeURIComponent(name)}" data-board
+      data-sec="${esc(name)}"><span class="fp-secb"><span>${esc(name)}</span><b>${k.toLocaleString()}</b></span>
+      <span class="fp-secw"><small>Hiring most</small>${secTop(name).map(([id])=>
+        `<span class="fp-who">${logo(coName[id],id)}<span>${esc(coName[id])}</span></span>`).join("")}
+        <span class="fp-secgo">${esc(name)} &rarr;</span></span></a>`;
+  const secChip=([name,k])=>`<a href="?sec=${encodeURIComponent(name)}" data-board
+      data-sec="${esc(name)}"><span>${esc(name)}</span> <b>${k.toLocaleString()}</b></a>`;
 
   const head=fo
     ? `<span class="fp-u">${numWords(fo)} new</span> sales role${fo===1?"":"s"} reached the board this run.`
@@ -8004,28 +8110,50 @@ function home(){
     ${sinceLastVisit()}
   </section>
 
-  ${lead?`<section class="fp-roles${picked.length===4?" full":""}" aria-label="${allNew?"New this run":"The newest roles"}">
-    ${leadCard(lead)}${picked.map(card).join("")}
-  </section>
-  <div class="fp-more">${debut.length?`<p class="fp-debut">${(()=>{
+  ${lead?`<section class="fp-badges" aria-labelledby="fp-new-h">
+    <div class="fp-sechead"><div>
+      <p class="fp-eyebrow">${allNew?"Fresh badges":"Newest badges"}</p>
+      <h2 id="fp-new-h">${allNew?`First seen ${esc(when(gen,gen).txt)}.`:"The newest roles on the board."}</h2></div>
+      ${fo?`<a class="fp-all" id="h-new" href="?since=0" data-board>All ${sinceN.toLocaleString()}${
+        sinceN===fo?" new this run":" with new postings this run"} &rarr;</a>`
+      :`<a class="fp-all" href="?tab=jobs" data-tab>All ${n} roles &rarr;</a>`}</div>
+    <div class="fp-roles${picked.length===4?" full":""}">
+      ${leadCard(lead)}${picked.map(card).join("")}
+    </div>
+    ${debut.length?`<p class="fp-debut">${(()=>{
       // a name ending "Inc." ends the sentence itself: no second stop
       const t=`First seller req we have ever recorded at ${debut.slice(0,3).join(", ")}${
         debut.length>3?` and ${debut.length-3} other${debut.length-3===1?"":"s"}`:""}`;
       return esc(/\.$/.test(t)?t:t+".");})()}</p>`:""}
-    ${fo?`<a class="fp-all" id="h-new" href="?since=0" data-board>All ${sinceN.toLocaleString()}${
-        sinceN===fo?" new this run":" with new postings this run"} &rarr;</a>`
-      :`<a class="fp-all" href="?tab=jobs" data-tab>All ${n} roles &rarr;</a>`}</div>`:""}
+  </section>`:""}
 
   ${cols.length?`<div class="fp-cols">${cols.join("")}</div>`:""}
 
   ${secs.length?`<section class="fp-dept" aria-labelledby="fp-dept-h">
     <h2 id="fp-dept-h">By what they sell into</h2>
-    <div class="hsecs">${secs.map(([name,k])=>`<a href="?sec=${encodeURIComponent(name)}" data-board
-      data-sec="${esc(name)}"><span>${esc(name)}</span><b>${k.toLocaleString()}</b><i aria-hidden="true">&rarr;</i></a>`).join("")}</div>
+    <div class="fp-secs">${secs.slice(0,6).map(secCard).join("")}</div>
+    ${secs.length>6?`<div class="fp-secmore"><b>${numWords(secs.length-6)} more</b>
+      <div>${secs.slice(6).map(secChip).join("")}</div></div>`:""}
   </section>`:""}
   <p class="fp-note">${widest>1?`We count openings, not postings: one requisition
     advertised in ${widest.toLocaleString()} postings is one job. `:""}<a href="?tab=how"
     data-tab>How a listing gets here &rarr;</a></p>
+
+  <section class="fp-desk" aria-labelledby="fp-desk-h">
+    <div class="fp-desk-t">
+      <p class="fp-eyebrow">Registration desk</p>
+      <h2 id="fp-desk-h">Let the roles <span class="fp-u">come to you</span>.</h2>
+      <p class="fp-desk-p">Pick your days and your kind of role. Nothing is sent until
+        enough roles clear your bar.</p>
+      <div class="fp-cad" role="group" aria-label="How often">${DESK_CADENCE.map(([v,t],i)=>
+        `<button type="button" data-click="deskCadence" data-arg="${v}"
+          aria-pressed="${i===0}">${t}</button>`).join("")}</div>
+      <div class="fp-desk-go"><a class="go" id="h-alert" href="/alerts?cadence=${DESK_CADENCE[0][0]}">Set
+        up an alert &rarr;</a><a href="?tab=jobs" data-tab>Save a search</a></div>
+    </div>
+    <span class="fp-arch" aria-hidden="true"><img src="assets/mascot/svg/mascot-stand.svg"
+      alt="" width="200" height="284"></span>
+  </section>
   </div>`;
 
   /* Every door is a real link, so it can be middle-clicked, copied and
@@ -9651,171 +9779,8 @@ function wireCfRows(){
   });
 }
 
-
-/* ------------------------------------------------------------------- map
-   THE PROJECT CALLS ITSELF A MAP AND HAD NO MAP. This is it: every city with
-   a desk in it, sized by how many roles sit there.
-
-   THERE IS NO STATE OUTLINE UNDER THESE DOTS, on purpose. Borrowing a
-   TopoJSON of the United States would mean shipping a dependency and a
-   hundred kilobytes of coastline to decorate 265 points - and the points do
-   not need it. Plot govtech offices and the country draws itself: the
-   northeast corridor, the Texas triangle, the California coast, the Front
-   Range. What you are looking at is the data, not a picture with data on top,
-   and every dot is a place somebody actually sits.
-
-   Canvas rather than 265 SVG nodes, per the house rule about generative
-   graphics, and redrawn on resize so it is not a fixed-width picture. */
-const MAP_SECTOR_ORDER=["Public Safety","General Gov","Public Works","Transit & Parking",
-  "K-12 Schools","Health & Human Services","Parks & Rec","Utilities & Energy"];
-function mapProject(lat,lon,w,h){
-  /* Albers-ish: a plain lat/lon plot stretches the north badly at US
-     latitudes, and the cheapest honest fix is to scale x by cos(mid-lat). */
-  const LAT0=39.5,LON0=-96,K=Math.cos(LAT0*Math.PI/180);
-  const x0=-125,x1=-66,y0=24,y1=50;
-  const nx=((lon-x0)*K)/((x1-x0)*K), ny=(y1-lat)/(y1-y0);
-  return [nx*w, ny*h];
-}
-function mapData(){
-  const cities=D.cities||{};
-  const rows=new Map();
-  D.postings.forEach(p=>{
-    const o=p.office; if(!o||!o.city||!o.state) return;
-    const key=o.city+"|"+o.state; const c=cities[key]; if(!c) return;
-    let r=rows.get(key);
-    if(!r){r={key,city:o.city,state:o.state,lat:c[0],lon:c[1],n:0,q:0,secs:{},
-              _o:new Set(),_q:new Set()};rows.set(key,r)}
-    /* OPENINGS PER PIN, not rows. A requisition advertised twice in one city
-       is one job on that desk, and the head used to sum these rows across
-       every city - so "1,398 roles placed on the map" counted one Xplor AE
-       req 82 times. The distinct openings behind those rows are 1,027. */
-    r._o.add(p.opening_id); if(p.quota_carrying)r._q.add(p.opening_id);
-    r.secs[p.sector]=(r.secs[p.sector]||0)+1;
-  });
-  rows.forEach(r=>{r.n=r._o.size; r.q=r._q.size});
-  return [...rows.values()].sort((a,b)=>b.n-a.n);
-}
-function mapDraw(cv,rows,hover){
-  const dpr=window.devicePixelRatio||1, w=cv.clientWidth, h=cv.clientHeight;
-  cv.width=w*dpr; cv.height=h*dpr;
-  const g=cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,w,h);
-  const css=getComputedStyle(document.documentElement);
-  const line=css.getPropertyValue("--line").trim()||"#C9DCE8";
-  const ink=css.getPropertyValue("--ink").trim()||"#1F2536";
-  const badge=css.getPropertyValue("--badge").trim()||css.getPropertyValue("--link").trim()||"#0B57C4";
-  const beak=css.getPropertyValue("--beak").trim()||"#F5A623";
-  const max=rows.length?rows[0].n:1;
-  rows.slice().reverse().forEach(r=>{
-    const [x,y]=mapProject(r.lat,r.lon,w,h);
-    const rad=3+Math.sqrt(r.n/max)*22;
-    g.beginPath(); g.arc(x,y,rad,0,Math.PI*2);
-    g.fillStyle=(r===hover?beak:badge); g.globalAlpha=r===hover?0.95:0.42; g.fill();
-    g.globalAlpha=1; g.lineWidth=1; g.strokeStyle=line; g.stroke();
-  });
-  if(hover){
-    const [x,y]=mapProject(hover.lat,hover.lon,w,h);
-    const label=`${hover.city}, ${hover.state} — ${hover.n} role${hover.n===1?"":"s"}`
-      +(hover.q?`, ${hover.q} quota`:"");
-    g.font="600 13px Archivo,system-ui,sans-serif";
-    const tw=g.measureText(label).width+16;
-    const bx=Math.min(Math.max(x-tw/2,4),w-tw-4), by=y-38<6?y+18:y-38;
-    g.fillStyle=ink; g.globalAlpha=.92; g.fillRect(bx,by,tw,26); g.globalAlpha=1;
-    g.fillStyle=css.getPropertyValue("--bg").trim()||"#E8F1F7";
-    g.fillText(label,bx+8,by+17);
-  }
-}
-function mapHit(rows,mx,my,w,h){
-  let best=null,bd=1e9; const max=rows.length?rows[0].n:1;
-  rows.forEach(r=>{
-    const [x,y]=mapProject(r.lat,r.lon,w,h);
-    const rad=3+Math.sqrt(r.n/max)*22, d=Math.hypot(mx-x,my-y);
-    if(d<=rad+3&&d<bd){bd=d;best=r}
-  });
-  return best;
-}
-function mapView(){
-  const rows=mapData();
-  /* BOTH SIDES IN OPENINGS. `placed` summed per-city rows, and `withOffice`
-     counted rows too, so "unplaced" was a difference between two row counts
-     presented as roles we could not map. An opening placed in one city and
-     unmappable in another is PLACED - it is on the map - so the unplaced set
-     is openings with a city on every row and no geocoded city among them. */
-  const placedIds=new Set(), officeIds=new Set();
-  D.postings.forEach(p=>{
-    if(!p.office||!p.office.city) return;
-    officeIds.add(p.opening_id);
-    const c=(D.cities||{})[p.office.city+"|"+p.office.state];
-    if(c) placedIds.add(p.opening_id);
-  });
-  const placed=placedIds.size;
-  const unplaced=officeIds.size-placedIds.size;
-  // per state, the openings its button opens: the board's default (quota-
-  // carrying, not placed outside the US) with an office there. Counting
-  // every pin printed "CA 626" over a board of 24 (review of launch audit 2)
-  const st={};
-  D.postings.forEach(p=>{ const s=p.office&&p.office.state;
-    if(s&&p.quota_carrying&&p.is_us!==false)(st[s]=st[s]||new Set()).add(p.opening_id); });
-  const byState=Object.entries(st).map(([k,v])=>[k,v.size]).sort((a,b)=>b[1]-a[1]);
-  $("#view").innerHTML=`
-  <div class="phead">
-    <h1 class="ptitle">Where the desks are</h1>
-    <p class="pline"><strong>${rows.length.toLocaleString()}</strong> cities
-      &middot; <strong>${placed.toLocaleString()}</strong> roles placed on the map</p>
-  </div>
-  <div style="border:1px solid var(--line);background:var(--panel);padding:10px">
-    <canvas id="mapcv" role="img" aria-label="Map of the ${rows.length.toLocaleString()} cities where these roles have an office. The list of states below opens the same filtered board."
-      style="width:100%;height:min(62vh,560px);display:block;cursor:crosshair"></canvas>
-  </div>
-  ${/* THE MAP'S ONE ACTION, WITHOUT A MOUSE. The canvas had no name, no
-        fallback and a click-only handler, so a screen reader found nothing
-        and a keyboard could not pick a city (launch audit 2, 2026-10-09).
-        These buttons do what a click on a city does. */""}
-  <details class="mapstates" style="margin-top:10px">
-    <summary>The same, as a list of states</summary>
-    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
-      ${byState.map(([st,n])=>`<button type="button" class="pill" data-click="mapState"
-        data-arg="${esc(st)}">${esc(st)} <span class="v">${n.toLocaleString()}</span></button>`).join("")}
-    </div>
-  </details>
-  <p class="hint" style="max-width:80ch;margin-top:10px">
-    Every city a posting names an office in, sized by how many roles sit there.
-    There is no state outline underneath: these are the offices, and the country
-    draws itself out of them. Click a city to open the board filtered to that
-    state.${unplaced>0?` <strong>${unplaced.toLocaleString()}</strong> role${unplaced===1?" names":"s name"}
-    a city we could not place, and ${(new Set(D.postings.map(p=>p.opening_id)).size-officeIds.size).toLocaleString()}
-    name no city at all - neither is on this map, and neither is a zero.`:""}
-  </p>
-  <!-- THE COORDINATES ARE OPENSTREETMAP'S. geocode_cities.py asks Nominatim,
-       and its usage policy and the ODbL licence ask for a visible credit
-       wherever the data is used; it was only ever in a code comment (launch
-       audit, 2026-10-06). -->
-  <p class="hint" style="margin-top:6px">City locations &copy;
-    <a href="https://www.openstreetmap.org/copyright" target="_blank"
-       rel="noopener">OpenStreetMap contributors</a>.</p>`;
-  const cv=$("#mapcv"); let hover=null;
-  const redraw=()=>mapDraw(cv,rows,hover);
-  requestAnimationFrame(redraw);
-  addEventListener("resize",redraw,{passive:true});
-  cv.addEventListener("mousemove",e=>{
-    const b=cv.getBoundingClientRect();
-    const h2=mapHit(rows,e.clientX-b.left,e.clientY-b.top,b.width,b.height);
-    if(h2!==hover){hover=h2;cv.style.cursor=h2?"pointer":"crosshair";redraw()}
-  });
-  cv.addEventListener("mouseleave",()=>{if(hover){hover=null;redraw()}});
-  cv.addEventListener("click",e=>{
-    const b=cv.getBoundingClientRect();
-    const h2=mapHit(rows,e.clientX-b.left,e.clientY-b.top,b.width,b.height);
-    if(!h2)return;
-    mapToState(h2.state);
-  });
-}
-function mapToState(state){
-  tab="jobs";PENDING_URL=new URLSearchParams({tab:"jobs",off:state});
-  PUSH_NEXT=true; render(); focusView();
-}
-
 const VIEWS=Object.assign(Object.create(null),
-  {home,jobs,companies,conferences,map:mapView,saved:savedView,intel,how});
+  {home,jobs,companies,conferences,saved:savedView,intel,how});
 /* ?tab= comes off a url a stranger can edit, so an unknown value falls back to
    the board rather than throwing and leaving a blank page behind. */
 /* THE BOARD IS OLD AND THE PAGE SHOULD SAY SO WHERE A VISITOR IS LOOKING.
@@ -9833,7 +9798,7 @@ const VIEWS=Object.assign(Object.create(null),
  * discount the banner that matters.
  *
  * It says what is and is not still true, because most of it IS: the companies,
- * the sectors and the map do not go stale in a week. What goes stale is
+ * and the sectors they sell into do not go stale in a week. What goes stale is
  * whether a role is still open, and that is the sentence worth printing. */
 const STALE_AFTER = 2;
 function stalenessBanner(){
@@ -9842,8 +9807,8 @@ function stalenessBanner(){
   if(d===null||d<=STALE_AFTER){host.innerHTML="";return}
   host.innerHTML=`<div class="stalebar" role="status">
     <strong>This board was last built ${d} days ago</strong>, on
-    ${esc(D.generated.slice(0,10))}. The companies and the map are still
-    right; what may not be is whether a role is still open. Every listing
+    ${esc(D.generated.slice(0,10))}. The companies and what they sell into are
+    still right; what may not be is whether a role is still open. Every listing
     links straight to the employer&rsquo;s own board, which is the version that
     is current.</div>`;
 }
@@ -9877,7 +9842,7 @@ function markNav(){
    when one opened and every tab in a browser read the same (launch audit 2,
    2026-10-09). The middleware gives a shared link the same words. */
 const VIEW_TITLES={jobs:"Sales jobs in govtech",companies:"Govtech companies",
-  conferences:"Govtech conferences",map:"Where the desks are",
+  conferences:"Govtech conferences",
   intel:"Govtech market intel",saved:"Saved",how:"How listings get here"};
 function viewTitle(){
   if(tab==="jobs"&&ROLE){

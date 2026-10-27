@@ -411,6 +411,28 @@ try {
                    enter: box.onkeydown ? press((e) => box.onkeydown(Object.assign(e, { key: "Enter" })), {}) : null,
                    other: box.onkeydown ? press((e) => box.onkeydown(Object.assign(e, { key: "a" })), {}) : null };
   front.doors = { doors, search };
+  /* THE DESK'S DAYS, PRESSED through ACTS as dispatch() would: each pick
+     must press that button alone and move the alert link to its day; a
+     value that is not one of the three must change nothing. */
+  const deskBtns = [...front.home.matchAll(/data-click="deskCadence" data-arg="(\w+)"\s+aria-pressed="(\w+)"/g)]
+    .map((m) => { const at = { "aria-pressed": m[2] };
+      return { dataset: { arg: m[1] }, setAttribute: (k, v) => { at[k] = String(v); },
+               getAttribute: (k) => (k in at ? at[k] : null) }; });
+  const alertAt = { href: (/id="h-alert" href="([^"]*)"/.exec(front.home) || [])[1] || "" };
+  const alertEl = { setAttribute: (k, v) => { alertAt[k] = String(v); }, getAttribute: (k) => alertAt[k] ?? null };
+  ctx.document = new Proxy(S, { get(_t, k) {
+    if (k === "querySelectorAll") return (sel) => (sel === ".fp-cad button" ? deskBtns : []);
+    if (k === "querySelector") return (sel) => (sel === "#view" ? v2 : sel === "#h-alert" ? alertEl : S);
+    if (k === "getElementById") return (id) => (id === "view" ? v2 : id === "h-alert" ? alertEl : S);
+    return S;
+  } });
+  const deskState = () => ({ href: alertAt.href,
+    pressed: deskBtns.filter((b) => b.getAttribute("aria-pressed") === "true").map((b) => b.dataset.arg) });
+  front.desk = { start: deskState(), picks: [] };
+  for (const v of [...deskBtns.map((b) => b.dataset.arg), "hourly"]) {
+    vm.runInContext(`ACTS.deskCadence({ dataset: { arg: ${JSON.stringify(v)} } })`, ctx);
+    front.desk.picks.push(Object.assign({ arg: v }, deskState()));
+  }
   vm.runInContext(`(() => { ({ goTab, openRole, co, cfOpenPanel } = __keep); })()`, ctx);
   delete ctx.scrollTo;
   ctx.document = new Proxy(S, { get(_t, k) {

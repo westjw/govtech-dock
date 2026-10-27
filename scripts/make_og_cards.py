@@ -52,8 +52,6 @@ CARDS = {
     # /assets/og/<tab>.png ("market" was the old name of intel)
     "intel": ("What the hiring looks like",
               "who is growing, where, and in what"),
-    "map": ("Where the desks are",
-            "every city a govtech company is hiring in"),
     "alerts": ("The new roles, by email",
                "on the days you choose, above the threshold you set"),
 }

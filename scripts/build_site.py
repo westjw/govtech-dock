@@ -3383,7 +3383,7 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         return {"urls": len(urls), "companies": 0}
     # The app's own tabs (index.html TABS). "market" and "alerts" were listed
     # here and neither is a tab: both opened the job list (2026-10-06).
-    for tab in ("jobs", "companies", "conferences", "map", "intel"):
+    for tab in ("jobs", "companies", "conferences", "intel"):
         urls.append((f"{site}/?tab={tab}", "daily", "0.8"))
     # every company that HAS a page, not every company that is hiring - the
     # 1,810-near-identical-documents argument dies once a page carries a

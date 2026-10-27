@@ -9756,6 +9756,79 @@ def check_a_us_city_named_for_a_foreign_one_stays_in_the_us() -> int:
     return errors
 
 
+def check_the_registration_desk_carries_its_days() -> int:
+    """The front page's registration desk offers alerts.html's own days.
+
+    Owner, 2026-10-27: R3 4's "Registration desk" at the bottom of the front
+    page. Its three day buttons are only true if they are the three cadences
+    the alert endpoint takes, and a pick is only kept if alerts.html starts
+    the form on it: a button that sets a day the sign-up then forgets is a
+    promise the next page breaks.
+    """
+    errors = 0
+    ix = (ROOT / "index.html").read_text()
+    al = (ROOT / "alerts.html").read_text()
+    desk = re.search(r"const DESK_CADENCE=\[(.*?)\];", ix)
+    cad = re.search(r"const CADENCE=\[(.*?)\];", al, re.S)
+    days = re.findall(r'\["(\w+)","', desk.group(1)) if desk else []
+    offered = re.findall(r'\["(\w+)","', cad.group(1)) if cad else []
+    if not days or days != offered:
+        errors += fail(f"the desk offers {days}; alerts.html takes {offered}")
+    # alerts.html's own lines, run: the day it reads off ?cadence= and the
+    # default a new sign-up's form starts on
+    want = re.search(r"const WANT_CADENCE=.*?;\n", al)
+    dflt = re.search(r"  p=p\|\|(\{cadence:.*?\});\n", al)
+    if not (cad and want and dflt):
+        errors += fail("alerts.html no longer reads a day off ?cadence= into a new sign-up")
+    else:
+        js = (f"const CADENCE=[{cad.group(1)}];const out={{}};"
+              f"for(const v of {json.dumps(offered + ['hourly', ''])}){{"
+              f"const q=new URLSearchParams(v?'cadence='+v:'');const COMPANIES=[];"
+              f"{want.group(0)}out[v]=({dflt.group(1)}).cadence;}}"
+              f"console.log(JSON.stringify(out));")
+        r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=30)
+        try:
+            got = json.loads(r.stdout)
+        except ValueError:
+            got = {"error": (r.stderr or r.stdout)[-200:]}
+        if got != {**{v: v for v in offered}, "hourly": "weekly", "": "weekly"}:
+            errors += fail(f"alerts.html starts a new sign-up on {got} for each ?cadence=; "
+                           f"it should take only its own three days and otherwise its default")
+    front = _harness().get("front") or {}
+    home = front.get("home") or ""
+    d = re.search(r'<section class="fp-desk".*?</section>', home, re.S)
+    if not d:
+        return errors + fail("the front page has no registration desk")
+    d = d.group(0)
+    # owner: "this should be at the bottom" - no section follows it
+    if home[home.index('<section class="fp-desk"'):].count("<section") != 1:
+        errors += fail("the registration desk is not the last section of the front page")
+    pressed = re.findall(r'data-arg="(\w+)"\s+aria-pressed="true"', d)
+    btns = re.findall(r'data-click="deskCadence" data-arg="(\w+)"', d)
+    if btns != days or len(pressed) != 1:
+        errors += fail(f"the desk's day buttons are {btns} with {pressed} pressed")
+    go = re.search(r'id="h-alert" href="/alerts\?cadence=(\w+)"', d)
+    if not go or not pressed or go.group(1) != pressed[0]:
+        errors += fail(f"the desk's alert link carries {go and go.group(1)}; the "
+                       f"pressed day is {pressed}")
+    if "deskCadence:el=>deskCadence(el.dataset.arg)" not in ix:
+        errors += fail("the desk's day buttons name an action ACTS does not hold")
+    # pressed through ACTS by the harness: each day presses itself alone and
+    # moves the link; a day that is not one of the three changes nothing
+    desk = front.get("desk") or {}
+    picks = desk.get("picks") or []
+    if [p_["arg"] for p_ in picks[:len(days)]] != days:
+        errors += fail(f"the harness pressed {[p_.get('arg') for p_ in picks]}; the desk offers {days}")
+    for p_ in picks[:len(days)]:
+        if p_["pressed"] != [p_["arg"]] or p_["href"] != f"/alerts?cadence={p_['arg']}":
+            errors += fail(f"pressing {p_['arg']} leaves {p_['pressed']} pressed and the "
+                           f"alert link at {p_['href']}")
+    if len(picks) == len(days) + 1 and picks and (picks[-1]["pressed"] != picks[-2]["pressed"]
+                                                  or picks[-1]["href"] != picks[-2]["href"]):
+        errors += fail(f"a day the desk does not offer ({picks[-1]['arg']}) changed the desk")
+    return errors
+
+
 def check_the_front_page_counts_by_opening() -> int:
     """The home page's sector buttons, banner and debut claim say what is true.
 
@@ -9774,7 +9847,9 @@ def check_the_front_page_counts_by_opening() -> int:
     home = front.get("home") or ""
     board = json.loads((DATA / "board.json").read_text())
     rows = [p for p in board["postings"] if p.get("quota_carrying") and p.get("is_us") is not False]
-    found = re.findall(r'<a href="\?sec=([^"]*)" data-board\s+data-sec="([^"]+)">\s*<span>([^<]*)</span>\s*<b>([\d,]+)</b>', home)
+    # six cards (the name and count in the card's band), then the chips
+    found = re.findall(r'<a (?:class="fp-sec" )?href="\?sec=([^"]*)" data-board\s+data-sec="([^"]+)">'
+                       r'(?:<span class="fp-secb">)?\s*<span>([^<]*)</span>\s*<b>([\d,]+)</b>', home)
     for href, name, shown, _n in found:
         if up.unquote(html.unescape(href)) != html.unescape(name) or html.unescape(shown) != html.unescape(name):
             errors += fail(f"the home index row '{shown}' opens ?sec={href}")
@@ -9789,6 +9864,39 @@ def check_the_front_page_counts_by_opening() -> int:
         if int(n.replace(",", "")) != want:
             errors += fail(f"the home index's '{name} {n}' counts rows; the board it "
                            f"opens leads with {want} roles")
+    # HIRING MOST on each department card: the companies holding the most of
+    # the openings the card counts, ties by name, and its button names the
+    # department (owner, 2026-10-27: "change the lettering ... to match")
+    cards = re.findall(r'<a class="fp-sec" href="[^"]*" data-board\s+data-sec="([^"]+)">(.*?)</a>', home, re.S)
+    if found and len(cards) != min(6, len(found)):
+        errors += fail(f"the front page draws {len(cards)} department cards for "
+                       f"{len(found)} departments; six cards, then chips")
+    for name, body in cards:
+        name = html.unescape(name)
+        per_co, names = collections.defaultdict(set), {}
+        for p in rows:
+            if p.get("sector") == name or any(a.get("sector") == name for a in p.get("also") or []):
+                per_co[p["company_id"]].add(p.get("opening_id") or p["id"])
+                names[p["company_id"]] = p.get("company")
+        want_who = [names[c] for c, _ in sorted(per_co.items(),
+                    key=lambda x: (-len(x[1]), str(names[x[0]])))][:3]
+        got_who = [html.unescape(x) for x in re.findall(
+            r'<span class="fp-who">.*?<span>([^<]*)</span></span>', body, re.S)]
+        if got_who != want_who:
+            errors += fail(f"'{name}' says it is hiring most at {got_who}; its openings "
+                           f"are held most by {want_who}")
+        go = re.search(r'<span class="fp-secgo">([^<]*?) &rarr;</span>', body)
+        if not go or html.unescape(go.group(1)) != name:
+            errors += fail(f"the '{name}' card's button reads {go and go.group(1)!r}")
+    # the page's own words about departments, without the names it prints
+    # (a company, a role or a department may well be called Hall)
+    dept = (re.search(r'<section class="fp-dept".*?</section>', home, re.S) or [""])[0]
+    dept = re.sub(r'<span class="fp-who">.*?</span></span>', " ", dept, flags=re.S)
+    for name in {html.unescape(n) for _h, n, _s, _n in re.findall(
+            r'href="\?sec=([^"]*)" data-board\s+data-sec="([^"]+)">(?:<span class="fp-secb">)?\s*<span>([^<]*)</span>\s*<b>([\d,]+)</b>', home)}:
+        dept = dept.replace(html.escape(name, quote=False), " ")
+    if re.search(r"\bhalls?\b", re.sub(r"<[^>]+>", " ", dept), re.I):
+        errors += fail("the front page calls the departments halls (owner, 2026-10-27: no)")
     note = (re.search(r'<p class="fp-note">(.*?)</p>', home, re.S) or [None, ""])[1]
     per = collections.Counter(p.get("opening_id") for p in rows)
     widest = max(per.values()) if per else 0
@@ -10135,20 +10243,12 @@ def check_every_view_is_announced_and_named() -> int:
         errors += fail("reopening the company drawn last leaves focus on <body>")
     if 'tab="companies"; markNav();' not in co_:
         errors += fail("a company opened from Jobs or Saved leaves that tab marked current")
-    mt = js[js.find("function mapToState("):][:200]
-    if "focusView()" not in mt:
-        errors += fail("the map's keyboard action drops focus to <body>")
-    mv = js[js.find("function mapView("):][:2500]
-    if "p.quota_carrying&&p.is_us!==false" not in mv:
-        errors += fail("the map's state list counts every pin, not the board its button opens")
     op = js[js.find("function cfOpenPanel("):][:1500]
     if "document.title=" not in op:
         errors += fail("an open conference panel leaves a generic title over a shared ?e= link")
     ch = js[js.find("function drawChips("):][:1200]
     if "remove this filter" in ch or 'aria-label",`Remove filter: ' not in ch or "chipFocus(i)" not in ch:
         errors += fail("filter chips share one name, or removing one drops focus")
-    if not re.search(r'<canvas id="mapcv" role="img" aria-label="', ix) or 'data-click="mapState"' not in ix:
-        errors += fail("the map is an unnamed canvas with no keyboard route to its action")
     if "<main class=\"cocol\">" in ix:
         errors += fail("the in-app company view nests a second <main>")
     # headings: each view's sections are h2, nothing skips from h1 to h3
@@ -12039,8 +12139,9 @@ def check_every_view_has_a_heading_and_a_way_past_the_header() -> int:
     errors = 0
     src = (ROOT / "index.html").read_text()
     titles = src.count('<h1 class="ptitle">')
-    if '<h2 class="ptitle">' in src or titles != 5:
-        errors += fail(f"a view title is no longer the page's h1 ({titles} of 5)")
+    # four: the Map tab's "Where the desks are" went with it (owner, 2026-10-27)
+    if '<h2 class="ptitle">' in src or titles != 4:
+        errors += fail(f"a view title is no longer the page's h1 ({titles} of 4)")
     for view in ("SLED JOBS: sales jobs at govtech companies", "Saved", "Market intel"):
         if f'<h1 class="vh">{view}</h1>' not in src:
             errors += fail(f"the {view!r} view has no h1")
@@ -19956,37 +20057,6 @@ def check_feeds_and_structured_data() -> int:
                            "board does not have for 1,492 postings")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
-    return errors
-
-
-def check_map_says_what_it_omits() -> int:
-    """The map plots placed desks and must admit the ones it could not place.
-
-    A city we hold no coordinate for is left out of board.json entirely - "a
-    city at no coordinate is not a city at 0,0" - so the map is always a
-    subset. A map that silently drops what it cannot place is a false "nothing
-    near you", the same failure as a page scan reporting no listings when it
-    could not read.
-
-    Source-level on index.html: the drawing needs a canvas and a browser, but
-    the sentence that keeps it honest is text and can be checked here.
-    """
-    errors = 0
-    src = (ROOT / "index.html").read_text()
-    if "function mapView()" not in src:
-        return fail("the map view is gone - the project calls itself a map")
-    i = src.index("function mapView()")
-    body = src[i:i + 4000]
-    for phrase, why in (
-        ("could not place", "the map must say how many cities it could not place"),
-        ("no city at all", "the map must say how many postings name no city"),
-        ("neither is a zero", "the map must say that an unplaced desk is not an "
-                              "absent one, which is this project's whole rule")):
-        if phrase not in body:
-            errors += fail(f"the map view no longer says {phrase!r}: {why}")
-    if "D.cities" not in src:
-        errors += fail("the map is not reading the geocoded cities the board "
-                       "ships, so it is deriving coordinates from something else")
     return errors
 
 
@@ -32958,7 +33028,7 @@ def check_the_front_page_counts_what_its_links_open() -> int:
     qh = re.search(r'id="fp-h" data-n="(\d+)">(.*?)</h2>', quiet, re.S)
     qt = re.sub(r"<[^>]+>", "", qh.group(2)) if qh else ""
     if not qh or qh.group(1) != "0" or " new " in f" {qt} " or 'id="h-new"' in quiet \
-            or 'aria-label="New this run"' in quiet:
+            or "Fresh badges" in quiet or ">First seen " in quiet:
         errors += fail(f"a quiet run still claims new roles: {qt[:70]!r}")
     elif want and not qt.startswith(f"{_spelled(want)} sales role"):
         errors += fail(f"a quiet run's headline says {qt[:70]!r}; the board holds {want}")
@@ -32988,7 +33058,7 @@ def check_the_front_page_counts_what_its_links_open() -> int:
     groups = collections.defaultdict(list)
     for p in q:
         groups[p["opening_id"]].append(p)
-    sec = re.search(r'<section class="fp-roles.*?</section>', home, re.S)
+    sec = re.search(r'<section class="fp-badges.*?</section>', home, re.S)
     cards = [html.unescape(x) for x in re.findall(r'data-role="([^"]+)"', sec.group(0))] if sec else []
     if want and not cards:
         errors += fail("the front page shows no roles over a board holding some")
@@ -33000,8 +33070,8 @@ def check_the_front_page_counts_what_its_links_open() -> int:
         lead_n = min(5, fresh)
         if not all(o in fresh_ids for o in opened[:lead_n]):
             errors += fail(f"the first {lead_n} cards are not all new this run: {opened[:lead_n]}")
-        if sec and ('aria-label="New this run"' in sec.group(0)) != all(o in fresh_ids for o in opened):
-            errors += fail("the role cards are labelled New this run over a card that is not")
+        if sec and ('id="fp-new-h">First seen ' in sec.group(0)) != all(o in fresh_ids for o in opened):
+            errors += fail("the badges are headed First seen this run over a badge that is not")
         firms = [by_id[c]["company_id"] for c in cards]
         spread = min(len(firms), len({by_id[c]["company_id"] for c in cards}
                                      | {groups[o][0]["company_id"] for o in fresh_ids}))
@@ -33072,14 +33142,14 @@ def check_the_front_page_counts_what_its_links_open() -> int:
     few = front.get("few") or {}
     fh = few.get("home", "")
     fcards = [html.unescape(x) for x in re.findall(r'data-role="([^"]+)"',
-              (re.search(r'<section class="fp-roles.*?</section>', fh, re.S) or [""])[0])]
+              (re.search(r'<section class="fp-badges.*?</section>', fh, re.S) or [""])[0])]
     ffirms = [by_id[c]["company_id"] for c in fcards if c in by_id]
     if few.get("keep") and (not re.search(r'id="fp-h" data-n="1">\s*<span class="fp-u">One new</span> sales role ', fh)
-            or 'aria-label="The newest roles"' not in fh
+            or 'id="fp-new-h">The newest roles on the board.</h2>' not in fh
             or not fcards or by_id.get(fcards[0], {}).get("opening_id") != few["keep"]
             or len(set(ffirms)) != len(ffirms)):
         errors += fail(f"with one role new this run the front page shows {ffirms} under "
-                       f"{re.findall(r'aria-label=.(New this run|The newest roles)', fh)}")
+                       f"{re.findall(r'id=.fp-new-h.>([^<]*)', fh)}")
     # the most sellers on a board we cannot read is not hiring hardest
     unread = front.get("unread") or {}
     uh = re.findall(r'data-co="([^"]+)"', unread.get("home", ""))
@@ -33099,8 +33169,9 @@ def check_the_front_page_counts_what_its_links_open() -> int:
         href, data, plain = d["href"], d["data"], d.get("plain") or {}
         calls = plain.get("calls") or []
         if not d["wired"]:
-            # the since-your-visit link is a plain link the browser follows
-            if not href.startswith("?tab=jobs&since="):
+            # the since-your-visit link, and the desk's alert link to another
+            # page (alerts.html), are plain links the browser follows
+            if not href.startswith(("?tab=jobs&since=", "/alerts?cadence=")):
                 errors += fail(f"a front-page link is not wired: {href!r}")
             continue
         if any(m["calls"] or m["prevented"] for m in d["modified"]):
@@ -37135,7 +37206,6 @@ def main() -> int:
     errors += check_posts_at_vocabulary()
     errors += check_coverage_and_removed()
     errors += check_weekly_report_is_honest()
-    errors += check_map_says_what_it_omits()
     errors += check_prerendered_pages()
     errors += check_static_company_page_matches_the_app()
     errors += check_feeds_and_structured_data()
@@ -37385,6 +37455,7 @@ def main() -> int:
     errors += check_every_view_is_announced_and_named()
     errors += check_a_us_city_named_for_a_foreign_one_stays_in_the_us()
     errors += check_the_front_page_counts_by_opening()
+    errors += check_the_registration_desk_carries_its_days()
     errors += check_the_feed_and_the_no_js_page_say_what_is_true()
     errors += check_a_cut_sentence_is_never_printed_cut()
     errors += check_an_unread_board_is_never_described_as_read()

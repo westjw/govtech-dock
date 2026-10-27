@@ -56,7 +56,8 @@ of the home page canvas).** It replaced the rotating banner and its
   reads "All N new this run" when the two agree and "All N with new postings
   this run" when they do not. A run with fewer than five new roles shows all
   of them and tops up with older ones, still one a company, and the section
-  is labelled "New this run" only when every card is.
+  is headed "Fresh badges / First seen ..." only when every card is new
+  (round 5, below).
 - **Hiring hardest** is `quota_roles` on boards we read, in the Companies
   spotlight's own order, ties included. **On the floor** is what is on today
   (the reader's today, as the Conferences tab reads it), the biggest floor
@@ -66,6 +67,27 @@ of the home page canvas).** It replaced the rotating banner and its
 - **The departments** are counted in openings with `inSector()`, the
   predicate the board filters by. The footnote names the widest requisition
   and carries the one link to How a listing gets here.
+- **Round 5 of the canvas (owner, 2026-10-27: dark is the default, then "love
+  the new home page, push please").** The cards are BADGES: a Badge band
+  ("HELLO, WE'RE HIRING", aria-hidden, the lanyard slot punched through to
+  `--bg`), headed "Fresh badges / First seen <when>." only when every badge
+  is new this run (then no badge repeats its age and the lead says "1 of N
+  new"), else "Newest badges / The newest roles on the board." with each
+  badge's age. The departments are six CARDS, then the rest as chips: never
+  called halls, no description above them, the band on the header's tokens,
+  "Hiring most" naming the three companies holding the most of the card's
+  openings (ties by name), and the button reading the department's name.
+  The **registration desk** is the last section: alerts.html's three days
+  (`DESK_CADENCE`, one pressed, `deskCadence` in ACTS) set the alert link's
+  `?cadence=`, which alerts.html starts a new sign-up on; "Save a search"
+  opens the jobs tab, where saving is. The penguin stands on an arch of
+  `--hdr-tile`. `check_the_registration_desk_carries_its_days` and the
+  Hiring-most cases in `check_the_front_page_counts_by_opening`.
+- **The Map tab is gone (owner, 2026-10-27: "kill the maps tab, all of it")**:
+  the view, its nav entry, its action, its share card and description, its
+  sitemap line and its checks. `D.cities` stays: the Near-a-city filter
+  measures on it and credits OpenStreetMap where it does. An old `?tab=map`
+  link opens the jobs board, as any unknown tab does (render()).
 - **Every door is a real link** (`?where=remote`, `?pay=stated`, `?sec=`,
   `?since=0`, `?role=`, `?co=`, `?e=`, `?tab=`), taken over on a plain click
   and opened through `goTab` with the link's own address (`?tab=` read by
@@ -2622,8 +2644,8 @@ fires.
     `viewTitle()` titles every view, role and company; opening a role or a
     company moves focus to its h1 (`focusView`), and a redraw of the same
     company gives it back; each filter chip names its filter and keeps
-    focus; the map canvas is named and has a list of states doing its one
-    action; views go h1, h2, h3; no nested <main>; the claim page's fields
+    focus; the map canvas was named and had a list of states doing its one
+    action (the Map tab is gone since 2026-10-27); views go h1, h2, h3; no nested <main>; the claim page's fields
     have names and its messages are live. `check_every_view_is_announced_and_named`.
   - **The blind review of the low findings** confirmed 12 (0 refuted), all
     fixed and broken on purpose: Run by counts catalogue rows only (a

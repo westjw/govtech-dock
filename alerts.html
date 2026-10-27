@@ -194,6 +194,11 @@ const CADENCE=[
   ["twice","Tuesday and Thursday mornings","Twice a week. Enough to be early without being a daily habit."],
   ["weekly","Wednesday mornings","One email a week, mid-week. The quietest option."]];
 
+/* A DAY PICKED AT THE FRONT PAGE'S REGISTRATION DESK (2026-10-27) arrives as
+   ?cadence= and starts a new sign-up on it. Only these three values are read;
+   a subscriber's own settings always win. */
+const WANT_CADENCE=(CADENCE.find(c=>c[0]===q.get("cadence"))||[""])[0];
+
 let PREFS=null, SAVED=[], SECTORS=[];
 
 /* A COMPANY ALERT. Every company page links here as /alerts?company=<id>
@@ -256,7 +261,7 @@ function fillSectors(){
 function formHTML(p){
   // a company alert starts with roles abroad included: its company page
   // lists every role (review of launch audit 3)
-  p=p||{cadence:"weekly",min_count:1,worldwide:COMPANIES.length>0};
+  p=p||{cadence:WANT_CADENCE||"weekly",min_count:1,worldwide:COMPANIES.length>0};
   const sel=(v,x)=>v===x?" selected":"";
   return `
   <h2>How often</h2>
