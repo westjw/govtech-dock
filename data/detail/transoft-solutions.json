@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Decarbonising Street Lighting Without Compromising Road Safety: POLIS 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transoftsolutions.com/transportation-safety-operations/resources/blog/decarbonising-street-lighting-without-compromising-road-safety-polis-2026/"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "d\u2019achat des solutions d\u2019analyse de trajectoires",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transoftsolutions.com/civil-and-transportation/resources/blog/guide-dachat-des-solutions-danalyse-de-trajectoires/"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Roundabout Works 2026: From Geometry to Ground Truth \u2013 Designing Roundabouts That Work in the Field",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transoftsolutions.com/civil-and-transportation/resources/blog/roundabout-works-2026-from-geometry-to-ground-truth-designing-roundabouts-that-work-in-the-field/"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -8,6 +35,15 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.transoftsolutions.com/news/transoft-solutions-launches-instrato/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "TORUS 2026: New Update Now Available",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.transoftsolutions.com/civil-and-transportation/resources/blog/torus-2026-new-update-now-available/"
   },
   {
    "date": "2026-09-09",
@@ -71,42 +107,6 @@
    "kind": "product",
    "kind_rule": "now available",
    "url": "https://www.transoftsolutions.com/ja/news/guidesign-2026-is-now-available/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CARSP 2027 Co-hosted by Transoft in Vancouver",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.transoftsolutions.com/news/carsp-2027-co-hosted-by-transoft-in-vancouver/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Autopath is Transitioning to AutoTURN",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.transoftsolutions.com/news/autopath-is-transitioning-to-autoturn/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Autopath is Transitioning to AutoTURN",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.transoftsolutions.com/uk/news/autopath-is-transitioning-to-autoturn/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Autopath is Transitioning to AutoTURN",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.transoftsolutions.com/emea/news/autopath-is-transitioning-to-autoturn/"
   }
  ],
  "profile": {

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "How Police Are Using License Plate Readers to Locate Suspects and Bring Missing People Home Safely",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-19",
    "headline": "How Flock License Plate Reader Cameras Work: What They Capture, What They Don\u2019t, and the Guardrails Around Their Use",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "Flock Authorized as a CVE Numbering Authority by CISA",
    "kind": "press",

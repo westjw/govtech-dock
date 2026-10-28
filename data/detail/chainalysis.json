@@ -1,7 +1,16 @@
 {
  "news": [
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
+   "date_source": "index-text",
+   "first_seen": "2026-10-27",
+   "headline": "International Law Enforcement Seizes Domain of Virtualine Bulletproof Hosting Service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/virtualine-bulletproof-hosting-seizure-october-2026/"
+  },
+  {
+   "date": "2026-10-27",
    "date_source": "index-text",
    "first_seen": "2026-10-26",
    "headline": "War, Shutdowns, and Licensing Reshape MENA\u2019s $443 Billion Crypto Economy",
@@ -28,7 +37,7 @@
    "url": "https://www.chainalysis.com/blog/chainalysis-daubert-standard-appeal/"
   },
   {
-   "date": "2026-10-13",
+   "date": "2026-10-08",
    "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "UK Targets Cryptomus, Heleket, TokenSpot in New Russian Sanctions",
@@ -37,7 +46,7 @@
    "url": "https://www.chainalysis.com/blog/uk-sanctions-cryptomus-heleket-tokenspot/"
   },
   {
-   "date": "2026-10-05",
+   "date": "2026-10-08",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "East Asia Crypto Adoption Report: South Korea\u2019s AI Trade Comes to Crypto",
@@ -55,7 +64,7 @@
    "url": "https://www.chainalysis.com/blog/387m-bitget-theft-2026/"
   },
   {
-   "date": "2026-10-01",
+   "date": "2026-09-30",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "OFAC Sanctions Tren de Aragua Fugitive Who Laundered ATM Heists With Crypto",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/etherhiding-blockchain-dead-drops/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Chainalysis Supports Arc with Automatic Token Support",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/chainalysis-supports-arc-with-automatic-token-support/"
   }
  ],
  "profile": {

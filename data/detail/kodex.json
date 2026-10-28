@@ -1,13 +1,112 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Kodex Product Update | October 2026",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.kodexglobal.com/blog/kodex-product-update-october-2026"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Kodex Product Update | September 2026",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.kodexglobal.com/blog/kodex-product-update-september-2026"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Revolut Breach: Day 5 Update",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.kodexglobal.com/blog/revolut-breach-day-5-update"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Revolut Breach Shows: Criminals Don\u2019t Need AI to Steal Customer Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kodexglobal.com/blog/revolut-law-enforcement-email-compromise"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Why I Joined Kodex",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kodexglobal.com/blog/why-i-joined-kodex-brad-brooker"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Former FBI General Counsel Brad Brooker Joins Kodex Global",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kodexglobal.com/blog/former-fbi-general-counsel-brad-brooker-joins-kodex"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "EU e-Evidence is live today. Here\u2019s what actually changed.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kodexglobal.com/blog/eu-e-evidence-live-today-what-actually-changed"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Kodex Product Update | August 2026",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.kodexglobal.com/blog/kodex-product-update-august-2026"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Everybody\u2019s Arguing About the Wrong Part of the CLARITY Act",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kodexglobal.com/blog/clarity-act-crime-fighting-bill"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Kodex Product Update | July 2026",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.kodexglobal.com/blog/kodex-product-update-july-2026"
+  },
+  {
    "date": "2026-06-30",
-   "date_source": "dateline",
+   "date_source": "time",
    "first_seen": "2026-09-09",
    "headline": "The Infrastructure Behind Every Government Data Request",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kodexglobal.com/blog/kodex-builds-the-rails-for-government-data-requests"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "A New Ally for Crypto Investigators in Africa and Latin America",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kodexglobal.com/blog/kodex-sponsors-basel-institute-crypto-communities-of-practice"
   }
  ],
  "profile": {

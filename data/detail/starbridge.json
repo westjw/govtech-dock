@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-28",
+   "headline": "Product updates October 28, 2026 Starbridge 3.0: Just prompt. Starbridge does the rest. Access all of Starbridge, from running a research query to sending an outbound email, directly with the Starbrid",
+   "kind": "product",
+   "kind_rule": "updates",
+   "url": "https://starbridge.ai/blog/starbridge-3-0"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "index-text",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/government-fiscal-year-calendar"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-09",
-   "headline": "Playbook October 9, 2026 Starbridge vs. e.Republic Industry Navigator Compare Starbridge and e.Republic across buying signals, contact data, spend intelligence, RFPs, and contract vehicles for K\u201312 GT",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-vs-erepublic-industry-navigator"
   }
  ],
  "profile": {

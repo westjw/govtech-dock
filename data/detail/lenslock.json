@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "Code Enforcement Body Cameras: What Changes When the Wearer Is Not Police",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/code-enforcement-body-cameras"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lenslock.com/post/body-camera-platform-slowing-down-department"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "What You're Actually Paying For: Body Camera Pricing Without the Games",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lenslock.com/post/body-camera-pricing-without-hidden-fees"
   }
  ],
  "profile": {

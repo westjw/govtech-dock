@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Notice Regarding the Impact of PHP Vulnerabilities on i-PRO Products",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/notice-regarding-impact-php-vulnerabilities-i-pro-products"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "time",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-edge-ai-reduces-false-alarms-utility-security"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "How Utilities Can Eliminate Visibility Gaps at Remote Substations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-utilities-can-eliminate-visibility-gaps-remote-substations"
   }
  ],
  "profile": {

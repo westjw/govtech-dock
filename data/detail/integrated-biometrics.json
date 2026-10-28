@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "In a Surging Multimodal Market: Fingerprints are Still the Gold Standard",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://integratedbiometrics.com/articles/in-a-surging-multimodal-market-fingerprints-are-still-the-gold-standard"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://integratedbiometrics.com/press-releases/integrated-biometrics-enhances-danno-fingerprint-scanner-with-256-bit-aes-encryption"
-  },
-  {
-   "date": "2025-06-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "GripID and Integrated Biometrics unveil GripID MANNIX, the Next Generation of Mobile Full-palm Identification",
-   "kind": "product",
-   "kind_rule": "unveil",
-   "url": "https://integratedbiometrics.com/press-releases/gripid-and-integrated-biometrics-unveil-gripid-mannix-the-next-generation-of-mobile-full-palm-identification"
   }
  ]
 }

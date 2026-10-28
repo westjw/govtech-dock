@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "time",
+   "first_seen": "2026-10-27",
+   "headline": "Procore Boards adds AI-powered SmartBench for daily crew assignments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.procore.com/blog/procore-boards-adds-ai-powered-smartbench-for-daily-crew-assignments"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "time",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.procore.com/blog/whats-new-in-submittals-2026"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Procore acquires DroneDeploy to bring visual intelligence to every jobsite",
-   "kind": "funding",
-   "kind_rule": "acquires",
-   "url": "https://www.procore.com/blog/procore-acquires-dronedeploy-to-bring-visual-intelligence-to-every-jobsite"
   }
  ],
  "profile": {

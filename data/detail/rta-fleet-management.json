@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "index-text",
+   "first_seen": "2026-10-27",
+   "headline": "RTA Fleet Named No. 48 on Fortune Best Workplaces in Technology\u2122 2026 List",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/press/rta-fleet-named-no-48-on-fortune-best-workplaces-in-technology-2026-list"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://rtafleet.com/blog/fleet-preventative-maintenance-compliance-why-vehicles-fall-behind-and-how-to-fix-it"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What the GSA-Uber Deal Signals for Every Public Fleet, Not Just Federal Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/what-the-gsa-uber-deal-signals-for-every-public-fleet-not-just-federal-agencies"
   }
  ],
  "profile": {

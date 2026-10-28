@@ -1,111 +1,111 @@
 {
-  "date": "2026-10-27",
-  "previous": "2026-10-26",
+  "date": "2026-10-28",
+  "previous": "2026-10-27",
   "changes": [
     {
-      "company": "Masabi",
-      "id": "masabi",
+      "company": "AMP",
+      "id": "amp",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Zencity",
-      "id": "zencity",
-      "from": "Unknown",
+      "company": "Klir",
+      "id": "klir",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Senior Customer Success Manager only"
+    },
+    {
+      "company": "Polco",
+      "id": "polco",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Esper",
+      "id": "esper",
+      "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Enterprise Sales Lead, Southeast (Southeast)"
     },
     {
-      "company": "Bentek",
-      "id": "bentek",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Paladin Drones",
-      "id": "paladin-drones",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative ( only"
-    },
-    {
-      "company": "Fotokite",
-      "id": "fotokite",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "The Weather Company",
-      "id": "the-weather-company",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Senior Sales Operations Analyst only"
-    },
-    {
-      "company": "Palantir Technologies",
-      "id": "palantir-technologies",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Forward Deployed Enablement Engine only"
-    },
-    {
-      "company": "RTA Fleet Management",
-      "id": "rta-fleet-management",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager only"
-    },
-    {
-      "company": "PlayMetrics",
-      "id": "playmetrics",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: robots.txt on home.playme"
-    },
-    {
-      "company": "Byga",
-      "id": "byga",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: robots.txt on byga.net di"
-    },
-    {
-      "company": "Selux",
-      "id": "selux",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Project Manager/Customer Service - only"
-    },
-    {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
+      "company": "LeoTech",
+      "id": "leotech",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Tribute Technology",
-      "id": "tribute-technology",
+      "company": "Vix Technology",
+      "id": "vix-technology",
       "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: robots.txt on www.tribute"
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "Wastequip",
-      "id": "wastequip",
+      "company": "PlayMetrics",
+      "id": "playmetrics",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Byga",
+      "id": "byga",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Enhanced Voting",
+      "id": "enhanced-voting",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.enhancedvoting."
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "EnergyCAP",
+      "id": "energycap",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "StarRez",
-      "id": "starrez",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
+      "company": "Tribute Technology",
+      "id": "tribute-technology",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Wastequip",
+      "id": "wastequip",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Outside Sales Representative (4 Locations)"
+    },
+    {
+      "company": "Altumint, Inc.",
+      "id": "altumint-inc",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://altumint.com/career"
+    },
+    {
+      "company": "Filevine",
+      "id": "filevine",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     }
   ]
 }

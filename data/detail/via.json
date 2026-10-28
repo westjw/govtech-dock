@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-27",
    "headline": "How the City of Kenora tripled ridership with Microtransit",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Via announces launch of Fixed Route Live Operations solution",
    "kind": "product",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Power up your planning: The Remix features you need to know this October.",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Transforming Transit. The Via Features you need to know this October",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-10",
    "headline": "The City of Sunnyvale launches Sunnyvale Beam, citywide zero-emission microtransit for workers, students, residents, and visitors",
    "kind": "contract",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-08-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Via Welcomes the Knode.ai Team to Accelerate AI for Public Transit",
    "kind": "leadership",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Via and SMART Expand On-Demand Microtransit Into Northern Macomb County",
    "kind": "press",

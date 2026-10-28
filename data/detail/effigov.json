@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-09-25",
+   "date": "2026-10-28",
    "date_source": "index-text",
+   "first_seen": "2026-10-28",
+   "headline": "City of Weston Goes Live 24/7 With EffiGov Voice AI, Connected to Accela",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/news/weston-fl-launch-2026"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "Recording Available: How Sumter County Handles 12,000+ Resident Calls Per Month with Voice AI",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.effigov.com/blog/voice-ai-failover-provider-outage-government"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Your Failed Calls Are a To-Do List: How Voice AI Tells You What's Missing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.effigov.com/blog/voice-ai-flags-missing-knowledge-failed-calls"
   }
  ],
  "profile": {
