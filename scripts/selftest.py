@@ -30742,6 +30742,9 @@ def check_a_chapter_listed_without_a_floor_is_held_to_the_page() -> int:
         "https://conf-a.test/conf": "<title>2026 Texas Planning Conference</title><h1>Texas Planning Conference 2026</h1>",
         # a national page that MENTIONS the chapter's event once: the reader's
         # words are on it, so only ownership can refuse it
+        "https://conf-e.test/conf": ("<title>2026 Regional Planning Conference</title><h1>Regional "
+                                     "Planning Conference</h1><p>Texas Planning Conference 2026, "
+                                     "held jointly.</p>"),
         "https://conf-b.test/conf": ("<title>2026 National Planning Conference</title><h1>National "
                                      "Planning Conference</h1><p>Chapter news: Texas Planning "
                                      "Conference 2026 announced.</p>"),
@@ -30767,7 +30770,16 @@ def check_a_chapter_listed_without_a_floor_is_held_to_the_page() -> int:
             row("NOYEAR", "https://conf-c.test/conf", year=""),
             row("ROLLED", "https://conf-d.test/conf"),
             # a joint conference's second chapter: the host row lists it
-            dict(row("JOINT", "https://conf-a.test/conf"), covered_by="GOOD")]
+            dict(row("JOINT", "https://conf-a.test/conf"), covered_by="GOOD"),
+            # the owner's ruling on the page ownership cannot prove (SNEAPA,
+            # 2026-10-28) lists it; an agent's, or one made on another page,
+            # does not
+            dict(row("RULED", "https://conf-e.test/conf"),
+                 ownership_ruling={"by": "owner", "url": "https://conf-e.test/conf"}),
+            dict(row("AGENTRULE", "https://conf-e.test/conf"),
+                 ownership_ruling={"by": "agent:reader", "url": "https://conf-e.test/conf"}),
+            dict(row("OTHERPAGE", "https://conf-e.test/conf"),
+                 ownership_ruling={"by": "owner", "url": "https://conf-e.test/elsewhere"})]
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-listed-"))
     (tmp / "state_events.json").write_text(
         json.dumps({"registry": "state", "note": "", "events": rows}))
@@ -30787,6 +30799,8 @@ def check_a_chapter_listed_without_a_floor_is_held_to_the_page() -> int:
         shutil.rmtree(tmp, ignore_errors=True)
 
     by = {c["state_event"]["org_code"]: c for c in got}
+    if "RULED" not in by:
+        errors += fail("the owner's ruling that a page is the chapter's did not list it")
     if "GOOD" not in by:
         errors += fail("a confirmed read of the chapter's own 2026 page was not "
                        "listed, so this check proves nothing about the refusals")
@@ -30804,7 +30818,9 @@ def check_a_chapter_listed_without_a_floor_is_held_to_the_page() -> int:
                       ("OTHER", "a page that is another state's conference"),
                       ("NOYEAR", "a page that names no year"),
                       ("ROLLED", "a page that has rolled to another edition than the reader read"),
-                      ("JOINT", "a joint conference's second chapter (listed twice)")):
+                      ("JOINT", "a joint conference's second chapter (listed twice)"),
+                      ("AGENTRULE", "a page only an agent's 'ruling' says is the chapter's"),
+                      ("OTHERPAGE", "a page the owner's ruling was not made on")):
         if code in by or staged[code].get("promoted"):
             errors += fail(f"{why} was listed on the public tab")
     return errors

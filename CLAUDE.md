@@ -2830,8 +2830,12 @@ page that highlights what they have gone to and are going to".
 - **37 rows listed for 41 chapters**; 23 floors staged from the names BOTH
   readers saw (532), read by read_floor (16 vendor, 425 supplier, 6 held),
   intaken under Housing & Community Dev; dates and cities landed through
-  apply_conference_reads. Not listed, each for its reason: SNEAPA (CT/RI/MA -
-  its site does not show it is any one chapter's, and its only list is 2025),
+  apply_conference_reads. SNEAPA (CT/RI/MA) failed owns() - its site names no
+  state often enough - and the owner ruled it: "add sneapa under connecticut".
+  The ruling is `ownership_ruling` on the row ({by: "owner", url}), accepted
+  in place of owns() for THAT page only and only from a person; listed as
+  SNEAPA 2026 with Rhode Island and Massachusetts covered by it, no floor (its
+  only sponsor list is 2025's). Not listed, each for its reason:
   National Capital Area and Northern New England (planning.org subdomains with
   a regional geo: owns() has no state to find, and _names_the_org's two-word
   bar would pass APA's own pages), New Jersey and Western Central (robots.txt).

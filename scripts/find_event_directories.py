@@ -1469,9 +1469,18 @@ def _listed(e: dict, hint: str | None):
     page = fetch(url)
     if not page:
         return "the conference page stopped answering"
-    if not owns(page, url, e.get("geo"), e.get("org_url"),
-                PARENT_SITES.get(hint or ""), e.get("org_name") or "",
-                e.get("org_code") or ""):
+    # THE OWNER MAY SAY WHOSE IT IS, for one page. owns() cannot see that a
+    # joint conference's own site belongs to its host chapter - sneapa.org
+    # names no state often enough - and the owner ruled it (2026-10-28: "add
+    # sneapa under connecticut"). The ruling names the page it was made on,
+    # so a conference that moves to another address is asked again, and only
+    # a person's ruling counts: an agent's is the read this check exists to
+    # test.
+    ruling = e.get("ownership_ruling") or {}
+    ruled = ruling.get("by") == "owner" and str(ruling.get("url") or "") == url
+    if not ruled and not owns(page, url, e.get("geo"), e.get("org_url"),
+                              PARENT_SITES.get(hint or ""), e.get("org_name") or "",
+                              e.get("org_code") or ""):
         return "the conference page does not show it is this chapter's"
     # THE READER'S WORDS, FOUND ON THE PAGE TODAY. A chapter's conference
     # page heads itself "Conference & Events" as often as with the event's

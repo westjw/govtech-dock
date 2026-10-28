@@ -3905,6 +3905,29 @@
    "fetchability_note": "text: Reachable after robots retries (prior org_unreachable was transient). The '2026 Annual Conference Sponsors' page lists names in text by tier (Lake Monona, State Street, Capital Square, Exhibiting Spon",
    "dates_checked_on": "2026-10-28",
    "next_edition": "2026"
+  },
+  {
+   "block": "Community development",
+   "department": "Planning & zoning",
+   "conference": "SNEAPA 2026",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": "not-found",
+   "event_tag": "SNEAPA 2026",
+   "url": "https://www.sneapa.org/",
+   "dates": "October 8-9, 2026",
+   "city": "Mashantucket, CT",
+   "dates_source": "https://www.sneapa.org/",
+   "dates_confidence": "high",
+   "discovery_notes": "State chapter event listed from data/state_events.json on 2026-10-28 without a floor a fetcher can read. Organisation name confirmed as 'APA Connecticut Chapter' by https://www.planning.org/chapters/. Conference page https://www.sneapa.org/ read by a reader and confirmed by a skeptic (2026-10-28), re-read on promotion: it is the chapter's and states 2026. Event name read from the page as 'SNEAPA 2026'.",
+   "state_event": {
+    "org_code": "APACH_CT",
+    "geo": "Connecticut",
+    "parent_national": "APA"
+   },
+   "dates_checked_on": "2026-10-28",
+   "next_edition": "2026"
   }
  ]
 }

@@ -7154,7 +7154,7 @@
    "parent_national": "APA",
    "org_url": "https://ct.planning.org/",
    "status": "no_directory_link",
-   "promoted": false,
+   "promoted": true,
    "org_url_source": "https://www.planning.org/chapters/",
    "org_url_why": "APA's own chapter list links it under 'Connecticut' (read in a browser 2026-10-28; planning.org's robots.txt turns crawlers away)",
    "org_name_observed": "APA Connecticut Chapter",
@@ -7231,7 +7231,15 @@
     "by": "agent:apa-chapters-2026-10-28 (a reader and a skeptic)",
     "confirmed": true
    },
-   "reader_note": "read 2026-10-28: DOUBT: no CT page I could read links to SNEAPA. ct.planning.org/robots.txt disallows /events/ even in its permissive version, so the chapter's Events, Past Events and Program Committee pages stay blocked. SNEAPA is the joint Southern New England conference (RI's chapter names it), its 2026 edition is held in Connecticut, and 'CT Chapter' appears in the 2025 sponsor block. sneapa.org still shows only the 2025 (Newport, RI) logos, so the list is the 2025 edition's. I read all 48 logos; the separate Sponsor Directory 2025 page returned HTTP 406. This is the same list as APACH_RI."
+   "reader_note": "read 2026-10-28: DOUBT: no CT page I could read links to SNEAPA. ct.planning.org/robots.txt disallows /events/ even in its permissive version, so the chapter's Events, Past Events and Program Committee pages stay blocked. SNEAPA is the joint Southern New England conference (RI's chapter names it), its 2026 edition is held in Connecticut, and 'CT Chapter' appears in the 2025 sponsor block. sneapa.org still shows only the 2025 (Newport, RI) logos, so the list is the 2025 edition's. I read all 48 logos; the separate Sponsor Directory 2025 page returned HTTP 406. This is the same list as APACH_RI.",
+   "ownership_ruling": {
+    "by": "owner",
+    "on": "2026-10-28",
+    "url": "https://www.sneapa.org/",
+    "said": "add sneapa under connecticut",
+    "why": "SNEAPA is the joint Southern New England conference; its 2026 edition is held in Connecticut and Rhode Island's and Massachusetts's chapters point to it"
+   },
+   "promoted_tag": "SNEAPA 2026"
   },
   {
    "org_code": "APACH_DE",
