@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Acentra Health Names Mihriban Brickner as Senior Vice President of Operations",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://acentra.com/news/acentra-health-names-mihriban-brickner-as-senior-vice-president-of-operations"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://acentra.com/news/acentra-health-acquires-fei-systems"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Acentra Health Names Srini Surendranath as Senior Vice President of Product and Solutions Management",
-   "kind": "leadership",
-   "kind_rule": "Names",
-   "url": "https://acentra.com/news/acentra-health-names-srini-surendranath-as-senior-vice-president-of-product-and-solutions-management"
   }
  ],
  "profile": {

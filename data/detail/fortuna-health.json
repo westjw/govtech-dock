@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "card-date",
+   "first_seen": "2026-10-28",
+   "headline": "States Are Posting for H.R. 1",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/resources-states-are-posting-for-h-r-1"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "card-date",
    "first_seen": "2026-10-21",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Understanding CMS's New Implementation Guidance for Medical Frailty",
    "kind": "press",
@@ -62,15 +71,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fortunahealth.com/resources/what-you-need-to-know-about-medicaid-work-requirements"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "What Stands Out in Nebraska's Medicaid Work Requirements Paperwork",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/what-stands-out-in-nebraskas-medicaid-work-requirements-paperwork"
   },
   {
    "date": "2026-07-30",

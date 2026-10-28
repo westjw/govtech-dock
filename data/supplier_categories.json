@@ -1,6 +1,6 @@
 {
  "v": 1,
- "generated": "2026-10-26",
+ "generated": "2026-10-28",
  "note": "Suppliers in the govtech sectors and categories (data/schema.json). Every assignment quotes its source; status follows the owner's rule that nothing is published without a confirmed website.",
  "sectors": [
   {
@@ -46116,8 +46116,8 @@
   {
    "supplier_id": "scj-alliance",
    "name": "SCJ Alliance",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "publish",
+   "website": "https://www.scjalliance.com"
   },
   {
    "supplier_id": "seatac-lighting-controls",
@@ -53646,6 +53646,2090 @@
    "website": "https://wasionamericas.com/"
   },
   {
+   "supplier_id": "crafton-tull",
+   "name": "Crafton Tull",
+   "status": "publish",
+   "website": "https://www.craftontull.com"
+  },
+  {
+   "supplier_id": "freese-and-nichols",
+   "name": "Freese and Nichols",
+   "status": "publish",
+   "website": "https://www.freese.com"
+  },
+  {
+   "supplier_id": "nwa-regional-planning-commission",
+   "name": "NWA Regional Planning Commission",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "tec",
+   "name": "TEC",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "toole-design",
+   "name": "Toole Design",
+   "status": "publish",
+   "website": "https://tooledesign.com"
+  },
+  {
+   "supplier_id": "albert-a-webb-associates",
+   "name": "Albert A. Webb Associates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "ascent",
+   "name": "Ascent",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "bkf",
+   "name": "BKF",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "ca-governor-s-office-of-land-use-and-climate-innovation",
+   "name": "CA Governor's Office of Land Use and Climate Innovation",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "cal-poly",
+   "name": "Cal Poly",
+   "status": "publish",
+   "website": "https://www.calpoly.edu"
+  },
+  {
+   "supplier_id": "caltrans",
+   "name": "Caltrans",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "civic-solutions",
+   "name": "Civic Solutions",
+   "status": "publish",
+   "website": "https://civicsolutions.com"
+  },
+  {
+   "supplier_id": "community-catalyst",
+   "name": "Community Catalyst",
+   "status": "publish",
+   "website": "https://www.community-catalyst.com"
+  },
+  {
+   "supplier_id": "csg-consultants",
+   "name": "CSG Consultants",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "csun-urban-studies-planning",
+   "name": "CSUN Urban Studies & Planning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "dudek",
+   "name": "Dudek",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "endemic-environmental-services",
+   "name": "Endemic Environmental Services",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "eps",
+   "name": "EPS",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "esa",
+   "name": "ESA",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "good-city-company",
+   "name": "Good City Company",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "gts",
+   "name": "GTS",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "helix-environmental-planning",
+   "name": "HELIX Environmental Planning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "ktgy",
+   "name": "ktgy",
+   "status": "publish",
+   "website": "https://ktgy.com"
+  },
+  {
+   "supplier_id": "mig",
+   "name": "MIG",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "mithun",
+   "name": "Mithun",
+   "status": "publish",
+   "website": "https://mithun.com"
+  },
+  {
+   "supplier_id": "page-turnbull",
+   "name": "Page & Turnbull",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "placeworks",
+   "name": "PlaceWorks",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "plan-to-place",
+   "name": "Plan to Place",
+   "status": "publish",
+   "website": "https://www.plantoplace.com"
+  },
+  {
+   "supplier_id": "provost-pritchard",
+   "name": "Provost & Pritchard",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "rincon-consultants",
+   "name": "Rincon Consultants",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "scag-southern-california-association-of-governments",
+   "name": "SCAG Southern California Association of Governments",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "sjsu-department-of-urban-and-regional-planning",
+   "name": "SJSU Department of Urban and Regional Planning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "socalgas",
+   "name": "SoCalGas",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "somos-group",
+   "name": "SOMOS Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "studioneleven",
+   "name": "studioneleven",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "uc-davis-continuing-and-professional-education",
+   "name": "UC Davis Continuing and Professional Education",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "visionscape-imagery",
+   "name": "VisionScape Imagery",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "yorke-engineering-llc",
+   "name": "Yorke Engineering, LLC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "ayres-associates",
+   "name": "Ayres Associates",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "bohannan-huston-inc",
+   "name": "Bohannan Huston, inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "clarion",
+   "name": "Clarion",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "colorado-brownfields-partnership",
+   "name": "Colorado Brownfields Partnership",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "community-planning-strategies",
+   "name": "Community Planning Strategies",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "denver-regional-council-of-governments",
+   "name": "Denver Regional Council of Governments",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "downtown-colorado-inc",
+   "name": "Downtown Colorado Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "economic-development-council-of-colorado",
+   "name": "Economic Development Council of Colorado",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "felsburg-holt-ullevig",
+   "name": "Felsburg Holt & Ullevig",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "klj-engineering",
+   "name": "KLJ Engineering",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "lja",
+   "name": "LJA",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "logan-simpson",
+   "name": "Logan Simpson",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "norris-design",
+   "name": "Norris Design",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "otten-johnson-robinson-neff-ragonetti-pc",
+   "name": "Otten Johnson Robinson Neff + Ragonetti PC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "progressive-urban-management-associates-p-u-m-a",
+   "name": "Progressive Urban Management Associates (P.U.M.A.)",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "university-of-colorado-denver",
+   "name": "University of Colorado Denver",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "wilson-company",
+   "name": "Wilson & Company",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "ancel-glink",
+   "name": "Ancel Glink",
+   "status": "publish",
+   "website": "https://ancelglink.com"
+  },
+  {
+   "supplier_id": "baxter-woodman",
+   "name": "Baxter & Woodman",
+   "status": "publish",
+   "website": "https://baxterwoodman.com"
+  },
+  {
+   "supplier_id": "canete-medina-consulting-group-inc",
+   "name": "Canete Medina Consulting Group, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "chastain-associates-llc",
+   "name": "Chastain & Associates LLC",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "civiltech-engineering-inc",
+   "name": "Civiltech Engineering, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "demospro-strategies",
+   "name": "DemosPro Strategies",
+   "status": "publish",
+   "website": "https://demosprostrategies.com"
+  },
+  {
+   "supplier_id": "development-planning-partners",
+   "name": "Development Planning Partners",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "divvy-lyft",
+   "name": "Divvy/Lyft",
+   "status": "publish",
+   "website": "https://www.lyft.com"
+  },
+  {
+   "supplier_id": "elrod-friedman-llp",
+   "name": "Elrod Friedman LLP",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "greenprint-partners",
+   "name": "Greenprint Partners",
+   "status": "publish",
+   "website": "https://www.greenprintpartners.com"
+  },
+  {
+   "supplier_id": "heritage-consulting-group",
+   "name": "Heritage Consulting Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "hntb",
+   "name": "HNTB",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "muse-community-design",
+   "name": "MUSE Community + Design",
+   "status": "publish",
+   "website": "https://musecommunitydesign.com"
+  },
+  {
+   "supplier_id": "sb-friedman-development-advisors-llc",
+   "name": "SB Friedman Development Advisors, LLC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "sightline-planning-zoning",
+   "name": "Sightline Planning & Zoning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "speck-dempsey",
+   "name": "Speck Dempsey",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "teska-associates",
+   "name": "Teska Associates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "the-lakota-group",
+   "name": "The Lakota Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "center-for-planning-excellence",
+   "name": "Center for Planning Excellence",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "city-of-baton-rouge-parish-of-east-baton-rouge-planning-commission",
+   "name": "City of Baton Rouge Parish of East Baton Rouge Planning Commission",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "desire-line",
+   "name": "Desire Line",
+   "status": "publish",
+   "website": "https://www.desire-line.com"
+  },
+  {
+   "supplier_id": "lsu-new-orleans-division-of-planning-and-public-affairs",
+   "name": "LSU New Orleans Division of Planning and Public Affairs",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "neel-schaffer",
+   "name": "Neel-Schaffer",
+   "status": "publish",
+   "website": "https://www.neel-schaffer.com"
+  },
+  {
+   "supplier_id": "pond",
+   "name": "POND",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "vectura-consulting-services-llc",
+   "name": "Vectura Consulting Services, LLC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "blackwater-environmental-group",
+   "name": "Blackwater Environmental Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "esi-econsult-solutions-inc",
+   "name": "ESI Econsult Solutions Inc",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "howard-county-planning-and-zoning",
+   "name": "Howard County Planning and Zoning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "jmt",
+   "name": "JMT",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "klt-group",
+   "name": "KLT Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "maryland-department-of-planning",
+   "name": "Maryland Department of Planning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mead-and-hunt",
+   "name": "Mead and Hunt",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "preservation-maryland",
+   "name": "Preservation Maryland",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "the-brick-industry-association",
+   "name": "The Brick Industry Association",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "brick-industry-association"
+    }
+   }
+  },
+  {
+   "supplier_id": "the-wilson-t-ballard-company",
+   "name": "The Wilson T. Ballard Company",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "wallace-montgomery",
+   "name": "Wallace Montgomery",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "wgi-engineering",
+   "name": "WGI Engineering",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "woodvalley-community-strategies",
+   "name": "Woodvalley Community Strategies",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "106-group",
+   "name": "106 Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "alliant-engineering",
+   "name": "Alliant Engineering",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "hkgi",
+   "name": "HKGi",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "hrgreen",
+   "name": "HRGreen",
+   "status": "publish",
+   "website": "https://www.hrgreen.com"
+  },
+  {
+   "supplier_id": "kimley-horn-associates",
+   "name": "Kimley-Horn & Associates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "landform",
+   "name": "Landform",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "larkin-hoffman",
+   "name": "Larkin & Hoffman",
+   "status": "held",
+   "held": "website unread (homepage: only 0 chars of text)"
+  },
+  {
+   "supplier_id": "mend-collaborative",
+   "name": "Mend Collaborative",
+   "status": "publish",
+   "website": "https://www.mendcollaborative.com"
+  },
+  {
+   "supplier_id": "metropolitan-council",
+   "name": "Metropolitan Council",
+   "status": "publish",
+   "website": "https://metrocouncil.org"
+  },
+  {
+   "supplier_id": "minnesota-state-mankato",
+   "name": "Minnesota State Mankato",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "msa",
+   "name": "MSA",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "srf",
+   "name": "SRF",
+   "status": "held",
+   "held": "website unread (homepage: only 58 chars of text)"
+  },
+  {
+   "supplier_id": "stonebrooke-engineering",
+   "name": "Stonebrooke Engineering",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "wsb",
+   "name": "WSB",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "boulder-city",
+   "name": "Boulder City",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "city-of-henderson",
+   "name": "City of Henderson",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "city-of-henderson-redevelopment-agency",
+   "name": "City of Henderson Redevelopment Agency",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "douglas-county",
+   "name": "Douglas County",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "gc-garcia-inc",
+   "name": "GC Garcia, Inc.",
+   "status": "held",
+   "held": "website unread (homepage: only 0 chars of text)"
+  },
+  {
+   "supplier_id": "gcw",
+   "name": "GCW",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "henderson-historical-society",
+   "name": "Henderson Historical Society",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "ibew-neca",
+   "name": "IBEW-NECA",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "kaempfer-crowell",
+   "name": "Kaempfer Crowell",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "landwell-company",
+   "name": "Landwell Company",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "michael-tassi-consulting",
+   "name": "Michael Tassi Consulting",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "nevada-preservation-foundation",
+   "name": "Nevada Preservation Foundation",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "rooftop-realty",
+   "name": "Rooftop Realty",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "rtc-washoe",
+   "name": "RTC Washoe",
+   "status": "publish",
+   "website": "https://rtcwashoe.com"
+  },
+  {
+   "supplier_id": "tahoe-regional-planning-agency-trpa",
+   "name": "Tahoe Regional Planning Agency (TRPA)",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "benchmark-planning",
+   "name": "Benchmark Planning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "clarion-associates",
+   "name": "Clarion Associates",
+   "status": "publish",
+   "website": "https://www.clarionassociates.com"
+  },
+  {
+   "supplier_id": "insight-consulting-group-llc",
+   "name": "Insight Consulting Group, LLC",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "inspire-placemaking-collective-inc",
+   "name": "Inspire Placemaking Collective, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mcadams",
+   "name": "McAdams",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "n-focus-inc",
+   "name": "N-Focus, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "short-elliott-hendrickson-inc",
+   "name": "Short Elliott Hendrickson, Inc",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "vhb",
+   "name": "VHB",
+   "status": "publish",
+   "website": "https://www.vhb.com"
+  },
+  {
+   "supplier_id": "bartlesville-regional-chamber-of-commerce",
+   "name": "Bartlesville Regional Chamber of Commerce",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "civicdynamics",
+   "name": "CivicDynamics",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "halff-associates",
+   "name": "Halff Associates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "housing-forward",
+   "name": "Housing Forward",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "huitt-zollars",
+   "name": "Huitt-Zollars",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "johnson-associates",
+   "name": "Johnson & Associates",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "mears-engineers",
+   "name": "Mears Engineers",
+   "status": "publish",
+   "website": "https://www.mearsengineers.com"
+  },
+  {
+   "supplier_id": "owrb",
+   "name": "OWRB",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "poe-associates",
+   "name": "Poe & Associates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "truity-credit-union",
+   "name": "Truity Credit Union",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "tsw",
+   "name": "TSW",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "wallace-design-collective",
+   "name": "Wallace Design Collective",
+   "status": "publish",
+   "website": "https://wallace.design"
+  },
+  {
+   "supplier_id": "3j-consulting",
+   "name": "3J Consulting",
+   "status": "publish",
+   "website": "https://www.3jconsulting.com"
+  },
+  {
+   "supplier_id": "burgess-niple",
+   "name": "Burgess & Niple",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "cascadia-partners",
+   "name": "Cascadia Partners",
+   "status": "publish",
+   "website": "https://www.cascadia-partners.com"
+  },
+  {
+   "supplier_id": "department-of-land-conservation-development",
+   "name": "Department of Land Conservation & Development",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "dowl",
+   "name": "DOWL",
+   "status": "publish",
+   "website": "https://www.dowl.com"
+  },
+  {
+   "supplier_id": "hapo",
+   "name": "HAPO",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "harper-houf-peterson-righellis-inc",
+   "name": "Harper Houf Peterson Righellis Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "housing-land-advocates",
+   "name": "Housing Land Advocates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "maul-foster-alongi",
+   "name": "Maul Foster Alongi",
+   "status": "publish",
+   "website": "https://maulfoster.com"
+  },
+  {
+   "supplier_id": "port-of-portland",
+   "name": "Port of Portland",
+   "status": "publish",
+   "website": "https://portofportland.com"
+  },
+  {
+   "supplier_id": "transportation-and-growth-management",
+   "name": "Transportation and Growth Management",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "walker-macy",
+   "name": "Walker Macy",
+   "status": "publish",
+   "website": "https://www.walkermacy.com"
+  },
+  {
+   "supplier_id": "winterbrook",
+   "name": "Winterbrook",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "bhc",
+   "name": "BHC",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "bird",
+   "name": "Bird",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "cbb-transportation-engineers-planners",
+   "name": "CBB Transportation Engineers + Planners",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "cmt",
+   "name": "CMT",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "confluence",
+   "name": "Confluence",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "conservation-department-missouri",
+   "name": "Conservation Department Missouri",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "development-strategies",
+   "name": "Development Strategies",
+   "status": "publish",
+   "website": "https://development-strategies.com"
+  },
+  {
+   "supplier_id": "eocene-environmental-group",
+   "name": "Eocene Environmental Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "etc-institute",
+   "name": "ETC Institute",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "gba",
+   "name": "GBA",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "hg-consult-inc",
+   "name": "Hg Consult Inc",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "jeo-consulting-group",
+   "name": "JEO Consulting Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "kansas-city",
+   "name": "Kansas City",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "kansas-state-university-landscape-architecture-and-regional-community-planning",
+   "name": "Kansas State University Landscape Architecture and Regional & Community Planning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "lathrop-gpm",
+   "name": "Lathrop GPM",
+   "status": "publish",
+   "website": "https://www.lathropgpm.com"
+  },
+  {
+   "supplier_id": "lenexa-kansas",
+   "name": "Lenexa Kansas",
+   "status": "publish",
+   "website": "https://www.lenexa.com/Home"
+  },
+  {
+   "supplier_id": "marc-mid-america-regional-council",
+   "name": "MARC Mid-America Regional Council",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "missouri-state-center-for-resource-planning-and-management",
+   "name": "Missouri State Center for Resource Planning and Management",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "multistudio",
+   "name": "Multistudio",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "our-spot-kc",
+   "name": "Our Spot KC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "pec",
+   "name": "PEC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "pgav-planners",
+   "name": "PGAV Planners",
+   "status": "publish",
+   "website": "https://www.pgavplanners.com"
+  },
+  {
+   "supplier_id": "portkc",
+   "name": "PortKC",
+   "status": "publish",
+   "website": "https://portkc.com"
+  },
+  {
+   "supplier_id": "safer-simpler-missouri",
+   "name": "Safer + Simpler Missouri",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "shockey",
+   "name": "Shockey",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "snyder-associates",
+   "name": "Snyder & Associates",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "swt-design",
+   "name": "SWT Design",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "the-university-of-kansas-school-of-public-affairs-administration",
+   "name": "The University of Kansas School of Public Affairs & Administration",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "ups",
+   "name": "UPS",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "venice-communications-inc",
+   "name": "Venice Communications, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "vireo",
+   "name": "Vireo",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "antero-group",
+   "name": "Antero Group",
+   "status": "publish",
+   "website": "https://anterogroup.com"
+  },
+  {
+   "supplier_id": "baxter-woodman-consulting-engineers",
+   "name": "Baxter & Woodman Consulting Engineers",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "gensler",
+   "name": "Gensler",
+   "status": "publish",
+   "website": "https://www.gensler.com"
+  },
+  {
+   "supplier_id": "grapevine-texas-planning-services",
+   "name": "Grapevine Texas Planning Services",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "gresham-smith",
+   "name": "Gresham Smith",
+   "status": "publish",
+   "website": "https://www.greshamsmith.com"
+  },
+  {
+   "supplier_id": "jackson-walker",
+   "name": "Jackson Walker",
+   "status": "publish",
+   "website": "https://www.jw.com"
+  },
+  {
+   "supplier_id": "meta-planning-design",
+   "name": "META Planning + Design",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "plano",
+   "name": "Plano",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "rifeline",
+   "name": "rifeline",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "texas-masonry-council",
+   "name": "Texas Masonry Council",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "urban-alchemy-collective",
+   "name": "Urban Alchemy Collective",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "the-urban-alchemy-collective-llc"
+    }
+   }
+  },
+  {
+   "supplier_id": "verdunity",
+   "name": "Verdunity",
+   "status": "publish",
+   "website": "https://www.verdunity.com"
+  },
+  {
+   "supplier_id": "berkley-group",
+   "name": "Berkley Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "cse",
+   "name": "CSE",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "east-point-energy",
+   "name": "East Point Energy",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "eprpc",
+   "name": "EPRPC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "fernleaf",
+   "name": "fernleaf",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "green-infrastructure-center",
+   "name": "Green Infrastructure Center",
+   "status": "publish",
+   "website": "https://gicinc.org"
+  },
+  {
+   "supplier_id": "site-collaborative",
+   "name": "Site Collaborative",
+   "status": "publish",
+   "website": "https://www.sitecollaborative.com"
+  },
+  {
+   "supplier_id": "sosi",
+   "name": "SOSI",
+   "status": "held",
+   "held": "the website on file is a domain for sale"
+  },
+  {
+   "supplier_id": "summit-design-and-engineering-services",
+   "name": "Summit Design and Engineering Services",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "the-port-of-virginia",
+   "name": "The Port of Virginia",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "timmons-group",
+   "name": "Timmons Group",
+   "status": "publish",
+   "website": "https://www.timmons.com:443"
+  },
+  {
+   "supplier_id": "virginia-housing",
+   "name": "Virginia Housing",
+   "status": "publish",
+   "website": "https://virginiahousing.com"
+  },
+  {
+   "supplier_id": "weston-sampson",
+   "name": "Weston & Sampson",
+   "status": "publish",
+   "website": "https://www.westonandsampson.com"
+  },
+  {
+   "supplier_id": "aqua-terr-systems-inc",
+   "name": "Aqua Terr Systems Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "berk-consulting-inc",
+   "name": "BERK Consulting, Inc.",
+   "status": "publish",
+   "website": "https://www.berkconsulting.com"
+  },
+  {
+   "supplier_id": "broadview-planning",
+   "name": "Broadview Planning",
+   "status": "publish",
+   "website": "https://www.broadviewplanning.com"
+  },
+  {
+   "supplier_id": "cascadia-consulting-group",
+   "name": "Cascadia Consulting Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "city-of-vancouver-washington",
+   "name": "City of Vancouver Washington",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "fehr-peers",
+   "name": "Fehr & Peers",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "lagniappe-planning-design",
+   "name": "Lagniappe Planning & Design",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "lmn",
+   "name": "LMN",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mackay",
+   "name": "MacKay",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "otak-inc",
+   "name": "Otak, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "parametrix",
+   "name": "Parametrix",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "sustainability-solutions-group",
+   "name": "Sustainability Solutions Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "transpo-group",
+   "name": "Transpo Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "uncommon-bridges",
+   "name": "uncommon bridges",
+   "status": "publish",
+   "website": "https://www.uncommonbridges.com"
+  },
+  {
+   "supplier_id": "washington-manufactured-housing-association",
+   "name": "Washington Manufactured Housing Association",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "western-washington-university",
+   "name": "Western Washington University",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "ce-planning-studio",
+   "name": "CE Planning Studio",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "cinnaire",
+   "name": "Cinnaire",
+   "status": "publish",
+   "website": "https://cinnaire.com"
+  },
+  {
+   "supplier_id": "city-of-green-bay",
+   "name": "City of Green Bay",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "city-of-madison",
+   "name": "City of Madison",
+   "status": "publish",
+   "website": "https://www.cityofmadison.com"
+  },
+  {
+   "supplier_id": "city-of-madison-metro-transit",
+   "name": "City of Madison Metro Transit",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mckenna",
+   "name": "McKenna",
+   "status": "held",
+   "held": "website unread (homepage: only 160 chars of text)"
+  },
+  {
+   "supplier_id": "mdroffers-consulting",
+   "name": "MDRoffers Consulting",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "permitpal",
+   "name": "PermitPal",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "sb-friedman",
+   "name": "SB Friedman",
+   "status": "publish",
+   "website": "https://sbfriedman.com"
+  },
+  {
+   "supplier_id": "studio-gwa",
+   "name": "Studio GWA",
+   "status": "publish",
+   "website": "https://www.studiogwa.com"
+  },
+  {
+   "supplier_id": "uw-milwaukee-cultural-resource-management",
+   "name": "UW-Milwaukee Cultural Resource Management",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "wisconsin-housing-alliance",
+   "name": "Wisconsin Housing Alliance",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "zoneco",
+   "name": "ZoneCo",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "4ward-planning-inc",
+   "name": "4ward Planning, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "american-structurepoint",
+   "name": "American Structurepoint",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "brick-industry-association",
+   "name": "Brick Industry Association",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "citywide-development",
+   "name": "CityWide Development",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "codecraft-planning-studio",
+   "name": "CodeCraft Planning Studio",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "compass-point-planning",
+   "name": "Compass Point Planning",
+   "status": "publish",
+   "website": "https://www.compasspointplanning.com"
+  },
+  {
+   "supplier_id": "cudc",
+   "name": "CUDC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "envision",
+   "name": "Envision",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "greater-dayton-rta",
+   "name": "Greater Dayton RTA",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "greater-ohio-policy-center",
+   "name": "Greater Ohio Policy Center",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "kzf-design",
+   "name": "KZF Design",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mannik-smith-group-inc",
+   "name": "Mannik & Smith Group, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mcbride-dale-clarion",
+   "name": "McBride Dale Clarion",
+   "status": "publish",
+   "website": "https://www.mcbridedale.com"
+  },
+  {
+   "supplier_id": "mksk",
+   "name": "MKSK",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mvrpc",
+   "name": "MVRPC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "planning-next",
+   "name": "Planning NEXT",
+   "status": "publish",
+   "website": "https://www.planning-next.com"
+  },
+  {
+   "supplier_id": "rundell-ernstberger-associates",
+   "name": "Rundell Ernstberger Associates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "taylor-siefker-williams-design-group",
+   "name": "Taylor Siefker Williams Design Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "the-kleingers-group",
+   "name": "The Kleingers Group",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "tsw-design",
+   "name": "TSW Design",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "arc3-the-brick-industry",
+   "name": "Arc3 / The Brick Industry",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "auburn-university-masters-of-community-planning-program",
+   "name": "Auburn University \u2013 Masters of Community Planning Program",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "bsi-engineering-surveying-inc",
+   "name": "BSI Engineering Surveying, Inc",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "city-of-opelika-al",
+   "name": "City of Opelika, AL",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "energy-alabama",
+   "name": "Energy Alabama",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "ssr-inc",
+   "name": "SSR, Inc",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "stone-martin-builders",
+   "name": "Stone Martin Builders",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "university-of-south-alabama",
+   "name": "University of South Alabama",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "axis",
+   "name": "AXIS",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "kb-advisory-group",
+   "name": "KB Advisory Group",
+   "status": "held",
+   "held": "website unread (homepage: only 0 chars of text)"
+  },
+  {
+   "supplier_id": "achd",
+   "name": "ACHD",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "agnew-beck",
+   "name": "Agnew::Beck",
+   "status": "publish",
+   "website": "https://agnewbeck.com"
+  },
+  {
+   "supplier_id": "avista",
+   "name": "Avista",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "blue-cross-of-idaho-foundation-for-health-inc",
+   "name": "Blue Cross of Idaho Foundation for Health, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "boise-state-university-urban-studies",
+   "name": "Boise State University Urban Studies",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "clark-wardle",
+   "name": "Clark Wardle",
+   "status": "publish",
+   "website": "https://clarkwardle.com"
+  },
+  {
+   "supplier_id": "czb",
+   "name": "czb",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "downtown-redevelopment-services",
+   "name": "Downtown Redevelopment Services",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "greatwest-engineering",
+   "name": "GreatWest Engineering",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "interstate-engineering",
+   "name": "Interstate Engineering",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "j-u-b-engineers-inc",
+   "name": "J-U-B Engineers, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "kittelson-associates",
+   "name": "Kittelson & Associates",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "montana-department-of-commerce",
+   "name": "Montana Department of Commerce",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "orion-planning-design",
+   "name": "Orion Planning + Design",
+   "status": "publish",
+   "website": "https://www.orionplanningdesign.com"
+  },
+  {
+   "supplier_id": "paradigm-land-design-llc",
+   "name": "Paradigm Land Design LLC",
+   "status": "publish",
+   "website": "https://paradigmland.us"
+  },
+  {
+   "supplier_id": "perspective-planning-consulting",
+   "name": "Perspective Planning & Consulting",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "stahly-engineering-associates-inc",
+   "name": "Stahly Engineering & Associates, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "wgm-group",
+   "name": "WGM Group",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "abundant-housing-michigan",
+   "name": "Abundant Housing Michigan",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "bauckham-thall-seeber-kaufman-koches-pc",
+   "name": "Bauckham, Thall, Seeber, Kaufman & Koches PC.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "beckett-raeder-inc",
+   "name": "Beckett & Raeder, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "bloom-sluggett-pc",
+   "name": "Bloom Sluggett, PC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "carlisle-wortman-associates-inc",
+   "name": "Carlisle | Wortman Associates, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "fahey-schultz-burzych-rhodes-plc",
+   "name": "Fahey Schultz Burzych Rhodes, PLC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "fishbeck",
+   "name": "Fishbeck",
+   "status": "publish",
+   "website": "https://fishbeck.com"
+  },
+  {
+   "supplier_id": "giffels-webster",
+   "name": "Giffels Webster",
+   "status": "publish",
+   "website": "https://giffelswebster.com"
+  },
+  {
+   "supplier_id": "michigan-state-university-extension",
+   "name": "Michigan State University Extension",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "progressive-companies",
+   "name": "Progressive Companies",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "rowe-professional-services-company",
+   "name": "Rowe Professional Services Company",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "spalding-dedecker",
+   "name": "Spalding DeDecker",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "williams-works",
+   "name": "Williams & Works",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "binghamton-university",
+   "name": "Binghamton University",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "c-s-companies",
+   "name": "C&S Companies",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "colliers-engineering-design",
+   "name": "Colliers Engineering & Design",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "county-of-albany",
+   "name": "County of Albany",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "creighton-manning",
+   "name": "Creighton Manning",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "highland-planning",
+   "name": "Highland Planning",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "labella",
+   "name": "LaBella",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "laberge-group",
+   "name": "Laberge Group",
+   "status": "publish",
+   "website": "https://labergegroup.com"
+  },
+  {
+   "supplier_id": "mj-mjteam-com",
+   "name": "MJ (mjteam.com)",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mrb-group",
+   "name": "MRB Group",
+   "status": "publish",
+   "website": "https://mrbgroup.com"
+  },
+  {
+   "supplier_id": "new-york-state-department-of-environmental-conservation-hudson-river-estuary-program",
+   "name": "New York State Department of Environmental Conservation Hudson River Estuary Program",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "new-york-state-hudson-river-valley-greenway",
+   "name": "New York State Hudson River Valley Greenway",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "planning4places",
+   "name": "Planning4Places",
+   "status": "publish",
+   "website": "https://www.planning4places.com"
+  },
+  {
+   "supplier_id": "saratoga-associates",
+   "name": "Saratoga Associates",
+   "status": "publish",
+   "website": "https://www.saratogaassociates.com"
+  },
+  {
+   "supplier_id": "sea-grant-new-york",
+   "name": "Sea Grant New York",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "slr",
+   "name": "SLR",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "artefact-inc",
+   "name": "Artefact, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "buckno-lisicky-company",
+   "name": "Buckno Lisicky & Company",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "carroll-engineering-corporation",
+   "name": "Carroll Engineering Corporation",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "county-of-northampton",
+   "name": "County of Northampton",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "g-petrucci-company-inc",
+   "name": "G. Petrucci Company, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "gilmore-associates-inc",
+   "name": "Gilmore & Associates, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "hailstone-economic",
+   "name": "Hailstone Economic",
+   "status": "publish",
+   "website": "https://hailstoneeconomic.com"
+  },
+  {
+   "supplier_id": "herbert-rowland-grubic-inc",
+   "name": "Herbert, Rowland & Grubic, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "johnson-mirmiran-and-thompson-inc",
+   "name": "Johnson, Mirmiran and Thompson, Inc.",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "kennedy-associates",
+   "name": "Kennedy & Associates",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "kingspry",
+   "name": "KingSpry",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "landcore-engineering-consultants-pc",
+   "name": "Landcore Engineering Consultants, PC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "lehigh-county",
+   "name": "Lehigh County",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "lehigh-university-small-cities-lab",
+   "name": "Lehigh University, Small Cities Lab",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "lehigh-valley-planning-commission",
+   "name": "Lehigh Valley Planning Commission",
+   "status": "publish",
+   "website": "https://lvpc.org"
+  },
+  {
+   "supplier_id": "mackin-engineers-consultants",
+   "name": "Mackin Engineers & Consultants",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "mcnees-wallace-nurick-llc",
+   "name": "McNees Wallace & Nurick LLC",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "ohm-advisors",
+   "name": "OHM Advisors",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "pa-department-of-community-economic-development",
+   "name": "PA Department of Community & Economic Development",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "pennoni",
+   "name": "Pennoni",
+   "status": "publish",
+   "website": "https://www.pennoni.com"
+  },
+  {
+   "supplier_id": "remington-vernick-engineers",
+   "name": "Remington & Vernick Engineers",
+   "status": "publish",
+   "website": "https://rve.com"
+  },
+  {
+   "supplier_id": "simone-collins-landscape-architecture",
+   "name": "Simone Collins Landscape Architecture",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "temple-university",
+   "name": "Temple University",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "the-waterfront",
+   "name": "The Waterfront",
+   "status": "held",
+   "held": "website unread (homepage: only 54 chars of text)"
+  },
+  {
+   "supplier_id": "tpd",
+   "name": "TPD",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "university-of-pennsylvania",
+   "name": "University of Pennsylvania",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "usa-architects",
+   "name": "USA Architects",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "west-chester-university",
+   "name": "West Chester University",
+   "status": "held",
+   "held": "no website"
+  },
+  {
+   "supplier_id": "woodmont-properties",
+   "name": "Woodmont Properties",
+   "status": "publish",
+   "website": "https://www.woodmontproperties.com"
+  },
+  {
    "supplier_id": "entrust-solution-group",
    "name": "Entrust Solution Group",
    "status": {
@@ -57422,11 +59506,20 @@
   },
   {
    "supplier_id": "bolton-menk-inc",
-   "industry": "public-works/water",
-   "basis": "own_site",
+   "industry": "general-gov/suppliers-and-services",
+   "basis": "conference",
    "source": {
-    "url": "https://www.bolton-menk.com",
-    "quote": "Funding Forward: Turning the Tide on Water Quality in Atwater"
+    "url": "https://icma2026.smallworldlabs.com/exhibitors",
+    "quote": "Bolton & Menk, Inc."
+   }
+  },
+  {
+   "supplier_id": "bolton-menk-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Bolton & Menk, Inc."
    }
   },
   {
@@ -57561,6 +59654,15 @@
    "basis": "conference",
    "source": {
     "url": "https://exhibits.nacuboannualmeeting.org/2026/exhibitor_list.cfm",
+    "quote": "Brailsford & Dunlavey"
+   }
+  },
+  {
+   "supplier_id": "brailsford-dunlavey",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
     "quote": "Brailsford & Dunlavey"
    }
   },
@@ -61273,6 +63375,15 @@
    }
   },
   {
+   "supplier_id": "egis",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Egis"
+   }
+  },
+  {
    "supplier_id": "eiseman-ludmar-co-inc-elc-industries",
    "industry": "public-safety/police",
    "basis": "conference",
@@ -62947,6 +65058,15 @@
    }
   },
   {
+   "supplier_id": "gft",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "GFT"
+   }
+  },
+  {
    "supplier_id": "gh-armor",
    "industry": "public-safety/police",
    "basis": "own_site",
@@ -63177,6 +65297,15 @@
    "basis": "conference",
    "source": {
     "url": "https://www.apwa.org/events/pwx-conference/",
+    "quote": "Garver"
+   }
+  },
+  {
+   "supplier_id": "garver",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
     "quote": "Garver"
    }
   },
@@ -63955,6 +66084,15 @@
    }
   },
   {
+   "supplier_id": "halff",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
+    "quote": "Halff"
+   }
+  },
+  {
    "supplier_id": "hall-technical-services",
    "industry": "transit-parking/suppliers-and-services",
    "basis": "conference",
@@ -64438,6 +66576,15 @@
    "source": {
     "url": "https://www.horrocks.net",
     "quote": "Horrocks completes its first I-15 study and bridge project with the Utah Department of Transportation (UDOT)."
+   }
+  },
+  {
+   "supplier_id": "horrocks",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Horrocks"
    }
   },
   {
@@ -65814,6 +67961,15 @@
    "basis": "conference",
    "source": {
     "url": "https://www.apwa.org/events/pwx-conference/",
+    "quote": "Kimley-Horn and Associates, Inc."
+   }
+  },
+  {
+   "supplier_id": "kimley-horn-and-associates-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
     "quote": "Kimley-Horn and Associates, Inc."
    }
   },
@@ -67839,6 +69995,15 @@
    "basis": "conference",
    "source": {
     "url": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list.html",
+    "quote": "Michael Baker International, Inc."
+   }
+  },
+  {
+   "supplier_id": "michael-baker-international-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
     "quote": "Michael Baker International, Inc."
    }
   },
@@ -71956,6 +74121,15 @@
    }
   },
   {
+   "supplier_id": "quiddity-engineering-llc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "Quiddity Engineering, LLC"
+   }
+  },
+  {
    "supplier_id": "quill-corporation",
    "industry": "public-works/waste-and-recycling",
    "basis": "own_site",
@@ -72096,6 +74270,15 @@
    "basis": "conference",
    "source": {
     "url": "https://www.sheriffs.org/conferences/",
+    "quote": "RDG Planning & Design"
+   }
+  },
+  {
+   "supplier_id": "rdg-planning-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
     "quote": "RDG Planning & Design"
    }
   },
@@ -73185,6 +75368,15 @@
    "basis": "conference",
    "source": {
     "url": "https://www.apwa.org/events/pwx-conference/",
+    "quote": "SAFEbuilt"
+   }
+  },
+  {
+   "supplier_id": "safebuilt",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
     "quote": "SAFEbuilt"
    }
   },
@@ -76888,6 +79080,15 @@
    }
   },
   {
+   "supplier_id": "trane",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ilapa.org/aws/APAIL/pt/sp/state-conference",
+    "quote": "Trane"
+   }
+  },
+  {
    "supplier_id": "trango-usa-inc",
    "industry": "public-safety/police",
    "basis": "conference",
@@ -78436,6 +80637,15 @@
    }
   },
   {
+   "supplier_id": "wgi",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "WGI"
+   }
+  },
+  {
    "supplier_id": "willoughby-stainless-fountains-wsf",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
@@ -78486,6 +80696,15 @@
    "basis": "conference",
    "source": {
     "url": "https://dt2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+    "quote": "WSP USA"
+   }
+  },
+  {
+   "supplier_id": "wsp-usa",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
     "quote": "WSP USA"
    }
   },
@@ -78778,6 +80997,15 @@
    }
   },
   {
+   "supplier_id": "waypoint",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Waypoint"
+   }
+  },
+  {
    "supplier_id": "wedriveu",
    "industry": "transit-parking/fleet-and-operations",
    "basis": "own_site",
@@ -78841,6 +81069,15 @@
    }
   },
   {
+   "supplier_id": "wendel",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "Wendel"
+   }
+  },
+  {
    "supplier_id": "wertz-werkz-manufacturing",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
@@ -78900,6 +81137,15 @@
    "basis": "conference",
    "source": {
     "url": "https://www.apwa.org/events/pwx-conference/",
+    "quote": "Westwood"
+   }
+  },
+  {
+   "supplier_id": "westwood",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
     "quote": "Westwood"
    }
   },
@@ -79021,6 +81267,15 @@
    }
   },
   {
+   "supplier_id": "willdan",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Willdan"
+   }
+  },
+  {
    "supplier_id": "williams-architects",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
@@ -79116,6 +81371,15 @@
    "basis": "conference",
    "source": {
     "url": "https://icma2026.smallworldlabs.com/exhibitors",
+    "quote": "WithersRavenel"
+   }
+  },
+  {
+   "supplier_id": "withersravenel",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
     "quote": "WithersRavenel"
    }
   },
@@ -79606,6 +81870,15 @@
    }
   },
   {
+   "supplier_id": "4leaf",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "4LEAF"
+   }
+  },
+  {
    "supplier_id": "baker-tilly",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -80079,6 +82352,15 @@
    "basis": "conference",
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+    "quote": "AECOM"
+   }
+  },
+  {
+   "supplier_id": "aecom",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
     "quote": "AECOM"
    }
   },
@@ -80857,6 +83139,15 @@
    }
   },
   {
+   "supplier_id": "kimley-horn",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Kimley-Horn"
+   }
+  },
+  {
    "supplier_id": "kinley-construction",
    "industry": "airports-aviation/suppliers-and-services",
    "basis": "conference",
@@ -81006,6 +83297,15 @@
    "basis": "conference",
    "source": {
     "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
+    "quote": "Mead & Hunt, Inc."
+   }
+  },
+  {
+   "supplier_id": "mead-hunt-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
     "quote": "Mead & Hunt, Inc."
    }
   },
@@ -81222,6 +83522,15 @@
    "basis": "conference",
    "source": {
     "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
+    "quote": "RS&H"
+   }
+  },
+  {
+   "supplier_id": "rs-h",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://georgiaplanning.org/fall-conference/",
     "quote": "RS&H"
    }
   },
@@ -81505,6 +83814,15 @@
    }
   },
   {
+   "supplier_id": "walker-consultants",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Walker Consultants"
+   }
+  },
+  {
    "supplier_id": "wall-panel-systems-inc",
    "industry": "airports-aviation/suppliers-and-services",
    "basis": "conference",
@@ -81528,6 +83846,15 @@
    "basis": "conference",
    "source": {
     "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
+    "quote": "Wood Rodgers, Inc."
+   }
+  },
+  {
+   "supplier_id": "wood-rodgers-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
     "quote": "Wood Rodgers, Inc."
    }
   },
@@ -89164,6 +91491,15 @@
    }
   },
   {
+   "supplier_id": "seh-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "SEH, Inc."
+   }
+  },
+  {
    "supplier_id": "cmc",
    "industry": "public-works/waste-and-recycling",
    "basis": "own_site",
@@ -90448,6 +92784,15 @@
    "source": {
     "url": "http://www.cdmsmith.com",
     "quote": "We focus deeply on lead in drinking water, Complete Corridors, energy and power, water reuse and desalination, and PFAS treatment and remediation."
+   }
+  },
+  {
+   "supplier_id": "cdm-smith",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "CDM Smith"
    }
   },
   {
@@ -92122,6 +94467,15 @@
    "source": {
     "url": "https://www.onterris.com/",
     "quote": "Why Landfills Are Now Central to the PFAS Conversation"
+   }
+  },
+  {
+   "supplier_id": "onterris",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Onterris"
    }
   },
   {
@@ -97354,6 +99708,15 @@
    }
   },
   {
+   "supplier_id": "isg",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "ISG"
+   }
+  },
+  {
    "supplier_id": "janway-company",
    "industry": "general-gov/libraries",
    "basis": "own_site",
@@ -101440,6 +103803,15 @@
    }
   },
   {
+   "supplier_id": "center-for-the-study-of-economics",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Center for the Study of Economics"
+   }
+  },
+  {
    "supplier_id": "charles-p-johnson-and-associates-inc",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -105130,6 +107502,15 @@
    }
   },
   {
+   "supplier_id": "dewberry",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Dewberry"
+   }
+  },
+  {
    "supplier_id": "dezurik",
    "industry": "public-works/water",
    "basis": "own_site",
@@ -106435,6 +108816,15 @@
    }
   },
   {
+   "supplier_id": "hdr",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
+    "quote": "HDR"
+   }
+  },
+  {
    "supplier_id": "headworks-intl-inc",
    "industry": "public-works/water",
    "basis": "conference",
@@ -106746,6 +109136,15 @@
    "basis": "conference",
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+    "quote": "IMEG"
+   }
+  },
+  {
+   "supplier_id": "imeg",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
     "quote": "IMEG"
    }
   },
@@ -108181,6 +110580,15 @@
    }
   },
   {
+   "supplier_id": "olsson",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Olsson"
+   }
+  },
+  {
    "supplier_id": "omal-usa-corp",
    "industry": "public-works/water",
    "basis": "conference",
@@ -109531,6 +111939,15 @@
    }
   },
   {
+   "supplier_id": "stantec",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Stantec"
+   }
+  },
+  {
    "supplier_id": "statiflo-corp",
    "industry": "public-works/water",
    "basis": "own_site",
@@ -110446,6 +112863,15 @@
    "source": {
     "url": "https://www.wadetrim.com/about-us/",
     "quote": "Oil and Gas Pipelines #11"
+   }
+  },
+  {
+   "supplier_id": "wade-trim",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Wade Trim"
    }
   },
   {
@@ -115336,6 +117762,15 @@
    }
   },
   {
+   "supplier_id": "hdr-engineering",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "HDR Engineering"
+   }
+  },
+  {
    "supplier_id": "mac-trailer-enterprises-inc",
    "industry": "public-works/waste-and-recycling",
    "basis": "conference",
@@ -115647,6 +118082,15 @@
    "basis": "conference",
    "source": {
     "url": "https://dt2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+    "quote": "Burns & McDonnell"
+   }
+  },
+  {
+   "supplier_id": "burns-mcdonnell",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
     "quote": "Burns & McDonnell"
    }
   },
@@ -120880,6 +123324,15 @@
    }
   },
   {
+   "supplier_id": "houseal-lavigne",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Houseal Lavigne"
+   }
+  },
+  {
    "supplier_id": "image-access",
    "industry": "general-gov/libraries",
    "basis": "own_site",
@@ -124778,6 +127231,15 @@
   },
   {
    "supplier_id": "ahbl",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.ahbl.com",
+    "quote": "Our team offers comprehensive expertise in master planning, zoning analysis, feasibility studies, and regulatory navigation, turning ideas into actionable, compliant, community-driven outcomes."
+   }
+  },
+  {
+   "supplier_id": "ahbl",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
    "source": {
@@ -124791,6 +127253,15 @@
    "basis": "conference",
    "source": {
     "url": "https://homebase.map-dynamics.com/wrpa2026/exhibitors",
+    "quote": "AKS Engineering & Forestry"
+   }
+  },
+  {
+   "supplier_id": "aks-engineering-forestry",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
     "quote": "AKS Engineering & Forestry"
    }
   },
@@ -124908,6 +127379,15 @@
    "basis": "conference",
    "source": {
     "url": "https://homebase.map-dynamics.com/wrpa2026/exhibitors",
+    "quote": "Facet"
+   }
+  },
+  {
+   "supplier_id": "facet",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
     "quote": "Facet"
    }
   },
@@ -125101,6 +127581,15 @@
    }
   },
   {
+   "supplier_id": "rrm-design-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "RRM Design Group"
+   }
+  },
+  {
    "supplier_id": "rwd-landscape-architects",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
@@ -125115,6 +127604,15 @@
    "basis": "conference",
    "source": {
     "url": "https://homebase.map-dynamics.com/wrpa2026/exhibitors",
+    "quote": "SCJ Alliance"
+   }
+  },
+  {
+   "supplier_id": "scj-alliance",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
     "quote": "SCJ Alliance"
    }
   },
@@ -125899,6 +128397,15 @@
    "source": {
     "url": "https://bowman.com",
     "quote": "Area of Interest * - Select - Engineering Survey/Geospatial Reality Capture/BIM As-Builts Environmental Landscape Architecture/Planning Renewable Energy Recruiting/Careers General/Corporate Other (Please Indicate)"
+   }
+  },
+  {
+   "supplier_id": "bowman",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Bowman"
    }
   },
   {
@@ -136393,6 +138900,3003 @@
    "source": {
     "url": "https://wasionamericas.com/",
     "quote": "Reliable, compact, and built for overhead distribution networks, our conventional or CSP type single-phase pole-mounted transformers deliver safe, efficient performance for residential, agricultural, and commercial applications."
+   }
+  },
+  {
+   "supplier_id": "crafton-tull",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
+    "quote": "Crafton Tull"
+   }
+  },
+  {
+   "supplier_id": "freese-and-nichols",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.freese.com",
+    "quote": "URBAN PLANNING + DESIGN, WATER RESOURCES"
+   }
+  },
+  {
+   "supplier_id": "nwa-regional-planning-commission",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
+    "quote": "NWA Regional Planning Commission"
+   }
+  },
+  {
+   "supplier_id": "tec",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
+    "quote": "TEC"
+   }
+  },
+  {
+   "supplier_id": "toole-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
+    "quote": "Toole Design"
+   }
+  },
+  {
+   "supplier_id": "albert-a-webb-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Albert A. Webb Associates"
+   }
+  },
+  {
+   "supplier_id": "ascent",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Ascent"
+   }
+  },
+  {
+   "supplier_id": "bkf",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "BKF"
+   }
+  },
+  {
+   "supplier_id": "ca-governor-s-office-of-land-use-and-climate-innovation",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "CA Governor's Office of Land Use and Climate Innovation"
+   }
+  },
+  {
+   "supplier_id": "cal-poly",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.calpoly.edu/about/president-and-leadership",
+    "quote": "Jennifer Haft oversees the daily operations of the President\u2019s Office, which includes the Office of Innovation, Industry and Economic Development and the Office of Tribal Relations."
+   }
+  },
+  {
+   "supplier_id": "caltrans",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Caltrans"
+   }
+  },
+  {
+   "supplier_id": "civic-solutions",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://civicsolutions.com",
+    "quote": "A division of Civic Solutions, our urban design and downtown revitalization team."
+   }
+  },
+  {
+   "supplier_id": "community-catalyst",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Community Catalyst"
+   }
+  },
+  {
+   "supplier_id": "csg-consultants",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "CSG Consultants"
+   }
+  },
+  {
+   "supplier_id": "csun-urban-studies-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "CSUN Urban Studies & Planning"
+   }
+  },
+  {
+   "supplier_id": "dudek",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Dudek"
+   }
+  },
+  {
+   "supplier_id": "endemic-environmental-services",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Endemic Environmental Services"
+   }
+  },
+  {
+   "supplier_id": "eps",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "EPS"
+   }
+  },
+  {
+   "supplier_id": "esa",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "ESA"
+   }
+  },
+  {
+   "supplier_id": "good-city-company",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Good City Company"
+   }
+  },
+  {
+   "supplier_id": "gts",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "GTS"
+   }
+  },
+  {
+   "supplier_id": "helix-environmental-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "HELIX Environmental Planning"
+   }
+  },
+  {
+   "supplier_id": "ktgy",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "ktgy"
+   }
+  },
+  {
+   "supplier_id": "mig",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "MIG"
+   }
+  },
+  {
+   "supplier_id": "mithun",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Mithun"
+   }
+  },
+  {
+   "supplier_id": "page-turnbull",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Page & Turnbull"
+   }
+  },
+  {
+   "supplier_id": "placeworks",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "PlaceWorks"
+   }
+  },
+  {
+   "supplier_id": "plan-to-place",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.plantoplace.com",
+    "quote": "As urban designers and creative thinkers, at Plan to Place we value highly collaborative and inclusive community-based, neighborhood and urban planning efforts."
+   }
+  },
+  {
+   "supplier_id": "provost-pritchard",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Provost & Pritchard"
+   }
+  },
+  {
+   "supplier_id": "rincon-consultants",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Rincon Consultants"
+   }
+  },
+  {
+   "supplier_id": "scag-southern-california-association-of-governments",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "SCAG Southern California Association of Governments"
+   }
+  },
+  {
+   "supplier_id": "sjsu-department-of-urban-and-regional-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "SJSU Department of Urban and Regional Planning"
+   }
+  },
+  {
+   "supplier_id": "socalgas",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "SoCalGas"
+   }
+  },
+  {
+   "supplier_id": "somos-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "SOMOS Group"
+   }
+  },
+  {
+   "supplier_id": "studioneleven",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "studioneleven"
+   }
+  },
+  {
+   "supplier_id": "uc-davis-continuing-and-professional-education",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "UC Davis Continuing and Professional Education"
+   }
+  },
+  {
+   "supplier_id": "visionscape-imagery",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "VisionScape Imagery"
+   }
+  },
+  {
+   "supplier_id": "yorke-engineering-llc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apacalifornia.org/",
+    "quote": "Yorke Engineering, LLC"
+   }
+  },
+  {
+   "supplier_id": "ayres-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Ayres Associates"
+   }
+  },
+  {
+   "supplier_id": "bohannan-huston-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Bohannan Huston, inc."
+   }
+  },
+  {
+   "supplier_id": "clarion",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Clarion"
+   }
+  },
+  {
+   "supplier_id": "colorado-brownfields-partnership",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Colorado Brownfields Partnership"
+   }
+  },
+  {
+   "supplier_id": "community-planning-strategies",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Community Planning Strategies"
+   }
+  },
+  {
+   "supplier_id": "denver-regional-council-of-governments",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Denver Regional Council of Governments"
+   }
+  },
+  {
+   "supplier_id": "downtown-colorado-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Downtown Colorado Inc."
+   }
+  },
+  {
+   "supplier_id": "economic-development-council-of-colorado",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Economic Development Council of Colorado"
+   }
+  },
+  {
+   "supplier_id": "felsburg-holt-ullevig",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Felsburg Holt & Ullevig"
+   }
+  },
+  {
+   "supplier_id": "klj-engineering",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "KLJ Engineering"
+   }
+  },
+  {
+   "supplier_id": "lja",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "LJA"
+   }
+  },
+  {
+   "supplier_id": "logan-simpson",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Logan Simpson"
+   }
+  },
+  {
+   "supplier_id": "norris-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Norris Design"
+   }
+  },
+  {
+   "supplier_id": "otten-johnson-robinson-neff-ragonetti-pc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Otten Johnson Robinson Neff + Ragonetti PC"
+   }
+  },
+  {
+   "supplier_id": "progressive-urban-management-associates-p-u-m-a",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Progressive Urban Management Associates (P.U.M.A.)"
+   }
+  },
+  {
+   "supplier_id": "university-of-colorado-denver",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "University of Colorado Denver"
+   }
+  },
+  {
+   "supplier_id": "wilson-company",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
+    "quote": "Wilson & Company"
+   }
+  },
+  {
+   "supplier_id": "ancel-glink",
+   "industry": "courts-justice/prosecution-and-defense",
+   "basis": "own_site",
+   "source": {
+    "url": "https://ancelglink.com",
+    "quote": "Illinois\u2019 Most Respected Local Government Law Firm for Nearly 100 Years."
+   }
+  },
+  {
+   "supplier_id": "baxter-woodman",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://baxterwoodman.com",
+    "quote": "Building community value through clean water, safe roads, and reliable wastewater treatment."
+   }
+  },
+  {
+   "supplier_id": "demospro-strategies",
+   "industry": "general-gov/finance-and-erp",
+   "basis": "own_site",
+   "source": {
+    "url": "https://demosprostrategies.com/services/",
+    "quote": "Operational Audits: Audit daily operations and prepare process maps to identify pain and gain points of review procedures."
+   }
+  },
+  {
+   "supplier_id": "divvy-lyft",
+   "industry": "higher-education/it-and-administration",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.lyft.com/business/solutions",
+    "quote": "Give students, faculty, and staff convenient rides at colleges and universities."
+   }
+  },
+  {
+   "supplier_id": "greenprint-partners",
+   "industry": "parks-rec/grounds-irrigation-and-turf",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.greenprintpartners.com/services/landscape-architecture",
+    "quote": "Greenprint\u2019s landscape architecture team includes designers, plant enthusiasts and artists who bring genuine passion for solving challenges at sites of all types and scales, united by a shared belief that great design should be built, not just imagined."
+   }
+  },
+  {
+   "supplier_id": "hntb",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "HNTB"
+   }
+  },
+  {
+   "supplier_id": "muse-community-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://musecommunitydesign.com",
+    "quote": "MUSE Community + Design is the largest woman-owned urban planning and public engagement firm in the country ( that we know of!"
+   }
+  },
+  {
+   "supplier_id": "center-for-planning-excellence",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
+    "quote": "Center for Planning Excellence"
+   }
+  },
+  {
+   "supplier_id": "city-of-baton-rouge-parish-of-east-baton-rouge-planning-commission",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
+    "quote": "City of Baton Rouge Parish of East Baton Rouge Planning Commission"
+   }
+  },
+  {
+   "supplier_id": "desire-line",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.desire-line.com",
+    "quote": "It is recognized by the Louisiana Economic Development (LED) Commission as both a Certified-Active Small Entrepreneurship and a Small and Emerging Business Enterprise; and is certified as a Disadvantaged Business Enterprise as part of the Louisiana Unified Certification Program."
+   }
+  },
+  {
+   "supplier_id": "lsu-new-orleans-division-of-planning-and-public-affairs",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
+    "quote": "LSU New Orleans Division of Planning and Public Affairs"
+   }
+  },
+  {
+   "supplier_id": "neel-schaffer",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
+    "quote": "Neel-Schaffer"
+   }
+  },
+  {
+   "supplier_id": "pond",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
+    "quote": "POND"
+   }
+  },
+  {
+   "supplier_id": "vectura-consulting-services-llc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
+    "quote": "Vectura Consulting Services, LLC"
+   }
+  },
+  {
+   "supplier_id": "blackwater-environmental-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Blackwater Environmental Group"
+   }
+  },
+  {
+   "supplier_id": "esi-econsult-solutions-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "ESI Econsult Solutions Inc"
+   }
+  },
+  {
+   "supplier_id": "howard-county-planning-and-zoning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Howard County Planning and Zoning"
+   }
+  },
+  {
+   "supplier_id": "jmt",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "JMT"
+   }
+  },
+  {
+   "supplier_id": "klt-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "KLT Group"
+   }
+  },
+  {
+   "supplier_id": "maryland-department-of-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Maryland Department of Planning"
+   }
+  },
+  {
+   "supplier_id": "mead-and-hunt",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Mead and Hunt"
+   }
+  },
+  {
+   "supplier_id": "preservation-maryland",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Preservation Maryland"
+   }
+  },
+  {
+   "supplier_id": "the-wilson-t-ballard-company",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "The Wilson T. Ballard Company"
+   }
+  },
+  {
+   "supplier_id": "wallace-montgomery",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Wallace Montgomery"
+   }
+  },
+  {
+   "supplier_id": "wgi-engineering",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "WGI Engineering"
+   }
+  },
+  {
+   "supplier_id": "woodvalley-community-strategies",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apamd2026conference.sched.com/directory/sponsors",
+    "quote": "Woodvalley Community Strategies"
+   }
+  },
+  {
+   "supplier_id": "106-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "106 Group"
+   }
+  },
+  {
+   "supplier_id": "alliant-engineering",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Alliant Engineering"
+   }
+  },
+  {
+   "supplier_id": "hkgi",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "HKGi"
+   }
+  },
+  {
+   "supplier_id": "hrgreen",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "HRGreen"
+   }
+  },
+  {
+   "supplier_id": "kimley-horn-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Kimley-Horn & Associates"
+   }
+  },
+  {
+   "supplier_id": "landform",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Landform"
+   }
+  },
+  {
+   "supplier_id": "larkin-hoffman",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Larkin & Hoffman"
+   }
+  },
+  {
+   "supplier_id": "mend-collaborative",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Mend Collaborative"
+   }
+  },
+  {
+   "supplier_id": "metropolitan-council",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://metrocouncil.org/Communities/Services.aspx",
+    "quote": "Coordinate review of local comprehensive land use plans and environmental documents"
+   }
+  },
+  {
+   "supplier_id": "minnesota-state-mankato",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Minnesota State Mankato"
+   }
+  },
+  {
+   "supplier_id": "msa",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "MSA"
+   }
+  },
+  {
+   "supplier_id": "srf",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "SRF"
+   }
+  },
+  {
+   "supplier_id": "stonebrooke-engineering",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "Stonebrooke Engineering"
+   }
+  },
+  {
+   "supplier_id": "wsb",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+    "quote": "WSB"
+   }
+  },
+  {
+   "supplier_id": "boulder-city",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Boulder City"
+   }
+  },
+  {
+   "supplier_id": "city-of-henderson",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "City of Henderson"
+   }
+  },
+  {
+   "supplier_id": "city-of-henderson-redevelopment-agency",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "City of Henderson Redevelopment Agency"
+   }
+  },
+  {
+   "supplier_id": "douglas-county",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Douglas County"
+   }
+  },
+  {
+   "supplier_id": "gc-garcia-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "GC Garcia, Inc."
+   }
+  },
+  {
+   "supplier_id": "gcw",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "GCW"
+   }
+  },
+  {
+   "supplier_id": "henderson-historical-society",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Henderson Historical Society"
+   }
+  },
+  {
+   "supplier_id": "ibew-neca",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "IBEW-NECA"
+   }
+  },
+  {
+   "supplier_id": "kaempfer-crowell",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Kaempfer Crowell"
+   }
+  },
+  {
+   "supplier_id": "landwell-company",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Landwell Company"
+   }
+  },
+  {
+   "supplier_id": "michael-tassi-consulting",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Michael Tassi Consulting"
+   }
+  },
+  {
+   "supplier_id": "nevada-preservation-foundation",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Nevada Preservation Foundation"
+   }
+  },
+  {
+   "supplier_id": "rooftop-realty",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Rooftop Realty"
+   }
+  },
+  {
+   "supplier_id": "rtc-washoe",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "RTC Washoe"
+   }
+  },
+  {
+   "supplier_id": "tahoe-regional-planning-agency-trpa",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://nevada.planning.org/",
+    "quote": "Tahoe Regional Planning Agency (TRPA)"
+   }
+  },
+  {
+   "supplier_id": "benchmark-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "Benchmark Planning"
+   }
+  },
+  {
+   "supplier_id": "clarion-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "Clarion Associates"
+   }
+  },
+  {
+   "supplier_id": "insight-consulting-group-llc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "Insight Consulting Group, LLC"
+   }
+  },
+  {
+   "supplier_id": "inspire-placemaking-collective-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "Inspire Placemaking Collective, Inc."
+   }
+  },
+  {
+   "supplier_id": "mcadams",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "McAdams"
+   }
+  },
+  {
+   "supplier_id": "n-focus-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "N-Focus, Inc."
+   }
+  },
+  {
+   "supplier_id": "short-elliott-hendrickson-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "Short Elliott Hendrickson, Inc"
+   }
+  },
+  {
+   "supplier_id": "vhb",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+    "quote": "VHB"
+   }
+  },
+  {
+   "supplier_id": "bartlesville-regional-chamber-of-commerce",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Bartlesville Regional Chamber of Commerce"
+   }
+  },
+  {
+   "supplier_id": "civicdynamics",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "CivicDynamics"
+   }
+  },
+  {
+   "supplier_id": "halff-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Halff Associates"
+   }
+  },
+  {
+   "supplier_id": "housing-forward",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Housing Forward"
+   }
+  },
+  {
+   "supplier_id": "huitt-zollars",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Huitt-Zollars"
+   }
+  },
+  {
+   "supplier_id": "johnson-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Johnson & Associates"
+   }
+  },
+  {
+   "supplier_id": "mears-engineers",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Mears Engineers"
+   }
+  },
+  {
+   "supplier_id": "owrb",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "OWRB"
+   }
+  },
+  {
+   "supplier_id": "poe-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Poe & Associates"
+   }
+  },
+  {
+   "supplier_id": "truity-credit-union",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "Truity Credit Union"
+   }
+  },
+  {
+   "supplier_id": "tsw",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apaok.civicvenue.com/sponsors",
+    "quote": "TSW"
+   }
+  },
+  {
+   "supplier_id": "wallace-design-collective",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://wallace.design/services/civil-engineering/",
+    "quote": "Our team assesses utility availability, access, topography, floodplain impacts, zoning requirements and site development feasibility to provide a clearer understanding of a property\u2019s development potential."
+   }
+  },
+  {
+   "supplier_id": "3j-consulting",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.3jconsulting.com/what-we-do/",
+    "quote": "3J\u2019s community planners provide a full spectrum of land use services from subdivision design to master planning to comprehensive plans."
+   }
+  },
+  {
+   "supplier_id": "burgess-niple",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Burgess & Niple"
+   }
+  },
+  {
+   "supplier_id": "cascadia-partners",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.cascadia-partners.com",
+    "quote": "Our staff of real estate development professionals know how to get projects built."
+   }
+  },
+  {
+   "supplier_id": "department-of-land-conservation-development",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Department of Land Conservation & Development"
+   }
+  },
+  {
+   "supplier_id": "dowl",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "DOWL"
+   }
+  },
+  {
+   "supplier_id": "hapo",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "HAPO"
+   }
+  },
+  {
+   "supplier_id": "harper-houf-peterson-righellis-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Harper Houf Peterson Righellis Inc."
+   }
+  },
+  {
+   "supplier_id": "housing-land-advocates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Housing Land Advocates"
+   }
+  },
+  {
+   "supplier_id": "maul-foster-alongi",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Maul Foster Alongi"
+   }
+  },
+  {
+   "supplier_id": "port-of-portland",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Port of Portland"
+   }
+  },
+  {
+   "supplier_id": "transportation-and-growth-management",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Transportation and Growth Management"
+   }
+  },
+  {
+   "supplier_id": "walker-macy",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Walker Macy"
+   }
+  },
+  {
+   "supplier_id": "winterbrook",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://oregon.planning.org/",
+    "quote": "Winterbrook"
+   }
+  },
+  {
+   "supplier_id": "bhc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "BHC"
+   }
+  },
+  {
+   "supplier_id": "bird",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Bird"
+   }
+  },
+  {
+   "supplier_id": "cbb-transportation-engineers-planners",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "CBB Transportation Engineers + Planners"
+   }
+  },
+  {
+   "supplier_id": "cmt",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "CMT"
+   }
+  },
+  {
+   "supplier_id": "confluence",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Confluence"
+   }
+  },
+  {
+   "supplier_id": "conservation-department-missouri",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Conservation Department Missouri"
+   }
+  },
+  {
+   "supplier_id": "development-strategies",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Development Strategies"
+   }
+  },
+  {
+   "supplier_id": "eocene-environmental-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Eocene Environmental Group"
+   }
+  },
+  {
+   "supplier_id": "etc-institute",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "ETC Institute"
+   }
+  },
+  {
+   "supplier_id": "gba",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "GBA"
+   }
+  },
+  {
+   "supplier_id": "hg-consult-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Hg Consult Inc"
+   }
+  },
+  {
+   "supplier_id": "jeo-consulting-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "JEO Consulting Group"
+   }
+  },
+  {
+   "supplier_id": "kansas-city",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Kansas City"
+   }
+  },
+  {
+   "supplier_id": "kansas-state-university-landscape-architecture-and-regional-community-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Kansas State University Landscape Architecture and Regional & Community Planning"
+   }
+  },
+  {
+   "supplier_id": "lathrop-gpm",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Lathrop GPM"
+   }
+  },
+  {
+   "supplier_id": "lenexa-kansas",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.lenexa.com/Home",
+    "quote": "Zoning & Future Land Use Map"
+   }
+  },
+  {
+   "supplier_id": "marc-mid-america-regional-council",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "MARC Mid-America Regional Council"
+   }
+  },
+  {
+   "supplier_id": "missouri-state-center-for-resource-planning-and-management",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Missouri State Center for Resource Planning and Management"
+   }
+  },
+  {
+   "supplier_id": "multistudio",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Multistudio"
+   }
+  },
+  {
+   "supplier_id": "our-spot-kc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Our Spot KC"
+   }
+  },
+  {
+   "supplier_id": "pec",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "PEC"
+   }
+  },
+  {
+   "supplier_id": "pgav-planners",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.pgavplanners.com",
+    "quote": "24:1 Land Use & Economic Development Plan"
+   }
+  },
+  {
+   "supplier_id": "portkc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "PortKC"
+   }
+  },
+  {
+   "supplier_id": "safer-simpler-missouri",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Safer + Simpler Missouri"
+   }
+  },
+  {
+   "supplier_id": "shockey",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Shockey"
+   }
+  },
+  {
+   "supplier_id": "snyder-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Snyder & Associates"
+   }
+  },
+  {
+   "supplier_id": "swt-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "SWT Design"
+   }
+  },
+  {
+   "supplier_id": "the-university-of-kansas-school-of-public-affairs-administration",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "The University of Kansas School of Public Affairs & Administration"
+   }
+  },
+  {
+   "supplier_id": "ups",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "UPS"
+   }
+  },
+  {
+   "supplier_id": "venice-communications-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Venice Communications, Inc."
+   }
+  },
+  {
+   "supplier_id": "vireo",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://kc-apa.org/2026-quadstate-conference",
+    "quote": "Vireo"
+   }
+  },
+  {
+   "supplier_id": "antero-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://anterogroup.com",
+    "quote": "Since our founding, we have partnered with municipalities, public agencies, and development organizations to deliver civil engineering, planning, economic development, grant strategy, branding, and environmental services designed to create equitable, functional, and sustainable outcomes."
+   }
+  },
+  {
+   "supplier_id": "baxter-woodman-consulting-engineers",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "Baxter & Woodman Consulting Engineers"
+   }
+  },
+  {
+   "supplier_id": "gensler",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.gensler.com/about/inclusion",
+    "quote": "Brumfield notes his top achievement is Englewood Agro-Eco District Land Use Plan, which will transform a former rail line into \u201can economic hub for urban agriculture,\u201d supporting equity and creating jobs."
+   }
+  },
+  {
+   "supplier_id": "grapevine-texas-planning-services",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "Grapevine Texas Planning Services"
+   }
+  },
+  {
+   "supplier_id": "gresham-smith",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "Gresham Smith"
+   }
+  },
+  {
+   "supplier_id": "jackson-walker",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.jw.com/meet-jw/who-we-are/recognition/",
+    "quote": "2020 Chambers USA Guide \u2013 Ranked in Texas: Bankruptcy/Restructuring, Corporate/M&A, Energy: State Regulatory & Litigation (Electricity), Environment, Healthcare, Labor & Employment, Litigation: General Commercial, Real Estate, and Real Estate: Zoning / Land Use"
+   }
+  },
+  {
+   "supplier_id": "meta-planning-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "META Planning + Design"
+   }
+  },
+  {
+   "supplier_id": "plano",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "Plano"
+   }
+  },
+  {
+   "supplier_id": "rifeline",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "rifeline"
+   }
+  },
+  {
+   "supplier_id": "texas-masonry-council",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
+    "quote": "Texas Masonry Council"
+   }
+  },
+  {
+   "supplier_id": "verdunity",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.verdunity.com",
+    "quote": "With deep municipal experience, we offer targeted workshops and consulting services that simplify sustainable urban planning."
+   }
+  },
+  {
+   "supplier_id": "berkley-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "Berkley Group"
+   }
+  },
+  {
+   "supplier_id": "cse",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "CSE"
+   }
+  },
+  {
+   "supplier_id": "east-point-energy",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "East Point Energy"
+   }
+  },
+  {
+   "supplier_id": "eprpc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "EPRPC"
+   }
+  },
+  {
+   "supplier_id": "fernleaf",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "fernleaf"
+   }
+  },
+  {
+   "supplier_id": "green-infrastructure-center",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://gicinc.org",
+    "quote": "The result\u2026better land use plans that work with critical ecological systems to support people and nature!"
+   }
+  },
+  {
+   "supplier_id": "site-collaborative",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "Site Collaborative"
+   }
+  },
+  {
+   "supplier_id": "sosi",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "SOSI"
+   }
+  },
+  {
+   "supplier_id": "summit-design-and-engineering-services",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "Summit Design and Engineering Services"
+   }
+  },
+  {
+   "supplier_id": "the-port-of-virginia",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "The Port of Virginia"
+   }
+  },
+  {
+   "supplier_id": "timmons-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.timmons.com:443",
+    "quote": "Through civil planning, infrastructure design, economic development, environmental and geotechnical services, and structural engineering, our goal is to help make today\u2019s project a sustainable fixture of your community\u2019s tomorrow."
+   }
+  },
+  {
+   "supplier_id": "virginia-housing",
+   "industry": "housing-community-dev/housing-and-assistance",
+   "basis": "own_site",
+   "source": {
+    "url": "https://virginiahousing.com",
+    "quote": "Housing Choice Voucher Program"
+   }
+  },
+  {
+   "supplier_id": "weston-sampson",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.apavirginia.com/",
+    "quote": "Weston & Sampson"
+   }
+  },
+  {
+   "supplier_id": "aqua-terr-systems-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Aqua Terr Systems Inc."
+   }
+  },
+  {
+   "supplier_id": "berk-consulting-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "BERK Consulting, Inc."
+   }
+  },
+  {
+   "supplier_id": "broadview-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.broadviewplanning.com",
+    "quote": "Founded in 2014, our expertise bridges the gap between urban planning and public health to deliver strategies and solutions that reduce disparities, strengthen resilience, and support thriving, inclusive communities."
+   }
+  },
+  {
+   "supplier_id": "cascadia-consulting-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Cascadia Consulting Group"
+   }
+  },
+  {
+   "supplier_id": "city-of-vancouver-washington",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "City of Vancouver Washington"
+   }
+  },
+  {
+   "supplier_id": "fehr-peers",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Fehr & Peers"
+   }
+  },
+  {
+   "supplier_id": "lagniappe-planning-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Lagniappe Planning & Design"
+   }
+  },
+  {
+   "supplier_id": "lmn",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "LMN"
+   }
+  },
+  {
+   "supplier_id": "mackay",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "MacKay"
+   }
+  },
+  {
+   "supplier_id": "otak-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Otak, Inc."
+   }
+  },
+  {
+   "supplier_id": "parametrix",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Parametrix"
+   }
+  },
+  {
+   "supplier_id": "sustainability-solutions-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Sustainability Solutions Group"
+   }
+  },
+  {
+   "supplier_id": "transpo-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Transpo Group"
+   }
+  },
+  {
+   "supplier_id": "uncommon-bridges",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "uncommon bridges"
+   }
+  },
+  {
+   "supplier_id": "washington-manufactured-housing-association",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Washington Manufactured Housing Association"
+   }
+  },
+  {
+   "supplier_id": "western-washington-university",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+    "quote": "Western Washington University"
+   }
+  },
+  {
+   "supplier_id": "ce-planning-studio",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "CE Planning Studio"
+   }
+  },
+  {
+   "supplier_id": "cinnaire",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "Cinnaire"
+   }
+  },
+  {
+   "supplier_id": "city-of-green-bay",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "City of Green Bay"
+   }
+  },
+  {
+   "supplier_id": "city-of-madison",
+   "industry": "housing-community-dev/housing-and-assistance",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.cityofmadison.com/services",
+    "quote": "Housing Choice Vouchers (Section 8)"
+   }
+  },
+  {
+   "supplier_id": "city-of-madison-metro-transit",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "City of Madison Metro Transit"
+   }
+  },
+  {
+   "supplier_id": "mckenna",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "McKenna"
+   }
+  },
+  {
+   "supplier_id": "mdroffers-consulting",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "MDRoffers Consulting"
+   }
+  },
+  {
+   "supplier_id": "permitpal",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "PermitPal"
+   }
+  },
+  {
+   "supplier_id": "sb-friedman",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://sbfriedman.com",
+    "quote": "We help our clients build vibrant, livable and economically just communities through real estate analysis, development finance and urban planning."
+   }
+  },
+  {
+   "supplier_id": "studio-gwa",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.studiogwa.com/about",
+    "quote": "International Economic Development Council 2024 Excellence Award"
+   }
+  },
+  {
+   "supplier_id": "uw-milwaukee-cultural-resource-management",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "UW-Milwaukee Cultural Resource Management"
+   }
+  },
+  {
+   "supplier_id": "wisconsin-housing-alliance",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "Wisconsin Housing Alliance"
+   }
+  },
+  {
+   "supplier_id": "zoneco",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+    "quote": "ZoneCo"
+   }
+  },
+  {
+   "supplier_id": "4ward-planning-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "4ward Planning, Inc."
+   }
+  },
+  {
+   "supplier_id": "american-structurepoint",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "American Structurepoint"
+   }
+  },
+  {
+   "supplier_id": "brick-industry-association",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Brick Industry Association"
+   }
+  },
+  {
+   "supplier_id": "citywide-development",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "CityWide Development"
+   }
+  },
+  {
+   "supplier_id": "codecraft-planning-studio",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "CodeCraft Planning Studio"
+   }
+  },
+  {
+   "supplier_id": "compass-point-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.compasspointplanning.com",
+    "quote": "The firm provides planning, regulatory, and development related services for communities and projects of all sizes with a specialization in the preparation of comprehensive plans and land use regulations."
+   }
+  },
+  {
+   "supplier_id": "cudc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "CUDC"
+   }
+  },
+  {
+   "supplier_id": "envision",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Envision"
+   }
+  },
+  {
+   "supplier_id": "greater-dayton-rta",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Greater Dayton RTA"
+   }
+  },
+  {
+   "supplier_id": "greater-ohio-policy-center",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Greater Ohio Policy Center"
+   }
+  },
+  {
+   "supplier_id": "kzf-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "KZF Design"
+   }
+  },
+  {
+   "supplier_id": "mannik-smith-group-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Mannik & Smith Group, Inc."
+   }
+  },
+  {
+   "supplier_id": "mcbride-dale-clarion",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.mcbridedale.com",
+    "quote": "The public sector focuses on planning and zoning projects that serve governmental entities (cities, counties, townships, and regions)."
+   }
+  },
+  {
+   "supplier_id": "mksk",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "MKSK"
+   }
+  },
+  {
+   "supplier_id": "mvrpc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "MVRPC"
+   }
+  },
+  {
+   "supplier_id": "planning-next",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.planning-next.com",
+    "quote": "Strategic Plan and Economic Development Strategy"
+   }
+  },
+  {
+   "supplier_id": "rundell-ernstberger-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Rundell Ernstberger Associates"
+   }
+  },
+  {
+   "supplier_id": "taylor-siefker-williams-design-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "Taylor Siefker Williams Design Group"
+   }
+  },
+  {
+   "supplier_id": "the-kleingers-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "The Kleingers Group"
+   }
+  },
+  {
+   "supplier_id": "tsw-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
+    "quote": "TSW Design"
+   }
+  },
+  {
+   "supplier_id": "arc3-the-brick-industry",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "Arc3 / The Brick Industry"
+   }
+  },
+  {
+   "supplier_id": "auburn-university-masters-of-community-planning-program",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "Auburn University \u2013 Masters of Community Planning Program"
+   }
+  },
+  {
+   "supplier_id": "bsi-engineering-surveying-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "BSI Engineering Surveying, Inc"
+   }
+  },
+  {
+   "supplier_id": "city-of-opelika-al",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "City of Opelika, AL"
+   }
+  },
+  {
+   "supplier_id": "energy-alabama",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "Energy Alabama"
+   }
+  },
+  {
+   "supplier_id": "ssr-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "SSR, Inc"
+   }
+  },
+  {
+   "supplier_id": "stone-martin-builders",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "Stone Martin Builders"
+   }
+  },
+  {
+   "supplier_id": "university-of-south-alabama",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://alabamaplanning.org/conference/",
+    "quote": "University of South Alabama"
+   }
+  },
+  {
+   "supplier_id": "axis",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://georgiaplanning.org/fall-conference/",
+    "quote": "AXIS"
+   }
+  },
+  {
+   "supplier_id": "kb-advisory-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://georgiaplanning.org/fall-conference/",
+    "quote": "KB Advisory Group"
+   }
+  },
+  {
+   "supplier_id": "achd",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "ACHD"
+   }
+  },
+  {
+   "supplier_id": "agnew-beck",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Agnew::Beck"
+   }
+  },
+  {
+   "supplier_id": "avista",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Avista"
+   }
+  },
+  {
+   "supplier_id": "blue-cross-of-idaho-foundation-for-health-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Blue Cross of Idaho Foundation for Health, Inc."
+   }
+  },
+  {
+   "supplier_id": "boise-state-university-urban-studies",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Boise State University Urban Studies"
+   }
+  },
+  {
+   "supplier_id": "clark-wardle",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://clarkwardle.com",
+    "quote": "Land Use, Planning And Zoning Law"
+   }
+  },
+  {
+   "supplier_id": "czb",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "czb"
+   }
+  },
+  {
+   "supplier_id": "downtown-redevelopment-services",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Downtown Redevelopment Services"
+   }
+  },
+  {
+   "supplier_id": "greatwest-engineering",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "GreatWest Engineering"
+   }
+  },
+  {
+   "supplier_id": "interstate-engineering",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Interstate Engineering"
+   }
+  },
+  {
+   "supplier_id": "j-u-b-engineers-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "J-U-B Engineers, Inc."
+   }
+  },
+  {
+   "supplier_id": "kittelson-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Kittelson & Associates"
+   }
+  },
+  {
+   "supplier_id": "montana-department-of-commerce",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Montana Department of Commerce"
+   }
+  },
+  {
+   "supplier_id": "orion-planning-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Orion Planning + Design"
+   }
+  },
+  {
+   "supplier_id": "paradigm-land-design-llc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Paradigm Land Design LLC"
+   }
+  },
+  {
+   "supplier_id": "perspective-planning-consulting",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Perspective Planning & Consulting"
+   }
+  },
+  {
+   "supplier_id": "stahly-engineering-associates-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "Stahly Engineering & Associates, Inc."
+   }
+  },
+  {
+   "supplier_id": "wgm-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+    "quote": "WGM Group"
+   }
+  },
+  {
+   "supplier_id": "abundant-housing-michigan",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Abundant Housing Michigan"
+   }
+  },
+  {
+   "supplier_id": "bauckham-thall-seeber-kaufman-koches-pc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Bauckham, Thall, Seeber, Kaufman & Koches PC."
+   }
+  },
+  {
+   "supplier_id": "beckett-raeder-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Beckett & Raeder, Inc."
+   }
+  },
+  {
+   "supplier_id": "bloom-sluggett-pc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Bloom Sluggett, PC"
+   }
+  },
+  {
+   "supplier_id": "carlisle-wortman-associates-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Carlisle | Wortman Associates, Inc."
+   }
+  },
+  {
+   "supplier_id": "fahey-schultz-burzych-rhodes-plc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Fahey Schultz Burzych Rhodes, PLC"
+   }
+  },
+  {
+   "supplier_id": "fishbeck",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://fishbeck.com/services/brownfield-due-diligence",
+    "quote": "Our team of geologists, biologists, engineers, and economic development and brownfield specialists work across a variety of industry and market sectors to provide guidance on environmental challenges and redevelopment opportunities."
+   }
+  },
+  {
+   "supplier_id": "giffels-webster",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://giffelswebster.com",
+    "quote": "In 2022, the City of Grand Ledge received a grant from the Michigan Economic Development Corporation\u2019s Revitalization..."
+   }
+  },
+  {
+   "supplier_id": "michigan-state-university-extension",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Michigan State University Extension"
+   }
+  },
+  {
+   "supplier_id": "progressive-companies",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Progressive Companies"
+   }
+  },
+  {
+   "supplier_id": "rowe-professional-services-company",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Rowe Professional Services Company"
+   }
+  },
+  {
+   "supplier_id": "spalding-dedecker",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Spalding DeDecker"
+   }
+  },
+  {
+   "supplier_id": "williams-works",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+    "quote": "Williams & Works"
+   }
+  },
+  {
+   "supplier_id": "binghamton-university",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "Binghamton University"
+   }
+  },
+  {
+   "supplier_id": "c-s-companies",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "C&S Companies"
+   }
+  },
+  {
+   "supplier_id": "colliers-engineering-design",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "Colliers Engineering & Design"
+   }
+  },
+  {
+   "supplier_id": "county-of-albany",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "County of Albany"
+   }
+  },
+  {
+   "supplier_id": "creighton-manning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "Creighton Manning"
+   }
+  },
+  {
+   "supplier_id": "highland-planning",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "Highland Planning"
+   }
+  },
+  {
+   "supplier_id": "labella",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "LaBella"
+   }
+  },
+  {
+   "supplier_id": "laberge-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://labergegroup.com/services/",
+    "quote": "Laberge Group\u2019s planning team prioritizes the development of Comprehensive Plans and Economic Development plans, and zoning and land use regulations that help our client communities coalesce around a common vision and provide achievable implementation frameworks."
+   }
+  },
+  {
+   "supplier_id": "mj-mjteam-com",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "MJ (mjteam.com)"
+   }
+  },
+  {
+   "supplier_id": "mrb-group",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://mrbgroup.com",
+    "quote": "If you have needs for master planning or facility design, or need consulting services such as economic development or construction administration, we\u2019re here to help fulfill your community\u2019s possibilities."
+   }
+  },
+  {
+   "supplier_id": "new-york-state-department-of-environmental-conservation-hudson-river-estuary-program",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "New York State Department of Environmental Conservation Hudson River Estuary Program"
+   }
+  },
+  {
+   "supplier_id": "new-york-state-hudson-river-valley-greenway",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "New York State Hudson River Valley Greenway"
+   }
+  },
+  {
+   "supplier_id": "planning4places",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.planning4places.com",
+    "quote": "As community planning specialists, Planning4Places offers a wide range of planning services from land use and transportation planning to resiliency planning and public engagement."
+   }
+  },
+  {
+   "supplier_id": "saratoga-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.saratogaassociates.com",
+    "quote": "Whether you\u2019re planning a downtown revitalization, campus master plan, hospitality venture, or environmental restoration, Saratoga Associates is your partner in turning vision into reality ."
+   }
+  },
+  {
+   "supplier_id": "sea-grant-new-york",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "Sea Grant New York"
+   }
+  },
+  {
+   "supplier_id": "slr",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
+    "quote": "SLR"
+   }
+  },
+  {
+   "supplier_id": "artefact-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Artefact, Inc."
+   }
+  },
+  {
+   "supplier_id": "buckno-lisicky-company",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Buckno Lisicky & Company"
+   }
+  },
+  {
+   "supplier_id": "carroll-engineering-corporation",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Carroll Engineering Corporation"
+   }
+  },
+  {
+   "supplier_id": "county-of-northampton",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "County of Northampton"
+   }
+  },
+  {
+   "supplier_id": "g-petrucci-company-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "G. Petrucci Company, Inc."
+   }
+  },
+  {
+   "supplier_id": "gilmore-associates-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Gilmore & Associates, Inc."
+   }
+  },
+  {
+   "supplier_id": "hailstone-economic",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Hailstone Economic"
+   }
+  },
+  {
+   "supplier_id": "herbert-rowland-grubic-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Herbert, Rowland & Grubic, Inc."
+   }
+  },
+  {
+   "supplier_id": "johnson-mirmiran-and-thompson-inc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Johnson, Mirmiran and Thompson, Inc."
+   }
+  },
+  {
+   "supplier_id": "kennedy-associates",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Kennedy & Associates"
+   }
+  },
+  {
+   "supplier_id": "kingspry",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "KingSpry"
+   }
+  },
+  {
+   "supplier_id": "landcore-engineering-consultants-pc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Landcore Engineering Consultants, PC"
+   }
+  },
+  {
+   "supplier_id": "lehigh-county",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Lehigh County"
+   }
+  },
+  {
+   "supplier_id": "lehigh-university-small-cities-lab",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Lehigh University, Small Cities Lab"
+   }
+  },
+  {
+   "supplier_id": "lehigh-valley-planning-commission",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Lehigh Valley Planning Commission"
+   }
+  },
+  {
+   "supplier_id": "mackin-engineers-consultants",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Mackin Engineers & Consultants"
+   }
+  },
+  {
+   "supplier_id": "mcnees-wallace-nurick-llc",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "McNees Wallace & Nurick LLC"
+   }
+  },
+  {
+   "supplier_id": "ohm-advisors",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "OHM Advisors"
+   }
+  },
+  {
+   "supplier_id": "pa-department-of-community-economic-development",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "PA Department of Community & Economic Development"
+   }
+  },
+  {
+   "supplier_id": "pennoni",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Pennoni"
+   }
+  },
+  {
+   "supplier_id": "remington-vernick-engineers",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://rve.com/markets/municipal",
+    "quote": "We serve as Engineer of Record to Municipalities, Engineer and Planner to Municipalities and their Planning, Zoning and/or Land Use Boards, Board Consultant and Floodplain Manager."
+   }
+  },
+  {
+   "supplier_id": "simone-collins-landscape-architecture",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Simone Collins Landscape Architecture"
+   }
+  },
+  {
+   "supplier_id": "temple-university",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "Temple University"
+   }
+  },
+  {
+   "supplier_id": "the-waterfront",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "The Waterfront"
+   }
+  },
+  {
+   "supplier_id": "tpd",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "TPD"
+   }
+  },
+  {
+   "supplier_id": "university-of-pennsylvania",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "University of Pennsylvania"
+   }
+  },
+  {
+   "supplier_id": "usa-architects",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "USA Architects"
+   }
+  },
+  {
+   "supplier_id": "west-chester-university",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "conference",
+   "source": {
+    "url": "https://planningpa.org/annual-conference/",
+    "quote": "West Chester University"
+   }
+  },
+  {
+   "supplier_id": "woodmont-properties",
+   "industry": "housing-community-dev/planning-and-economic-development",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.woodmontproperties.com",
+    "quote": "Proven Track Record of Success in Real Estate Development"
    }
   }
  ]

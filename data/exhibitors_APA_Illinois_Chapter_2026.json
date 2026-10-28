@@ -1,0 +1,264 @@
+{
+ "event_tag": "APA - Illinois Chapter 2026",
+ "conference": "American Planning Association - Illinois Chapter",
+ "found": true,
+ "source_url": "https://www.ilapa.org/aws/APAIL/pt/sp/state-conference",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (logos_alt) from https://www.ilapa.org/aws/APAIL/pt/sp/state-conference, 3 image(s) opened and read. 23 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "Accela",
+   "website": null
+  },
+  {
+   "name": "Ancel Glink",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Baxter & Woodman",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Canete Medina Consulting Group, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering consulting firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Chastain & Associates LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering consulting firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Civiltech Engineering, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transportation engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "DemosPro Strategies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: strategy/engagement consultancy by name; site domain expired",
+   "read": {
+    "verdict": "supplier",
+    "why": "strategy/engagement consultancy by name; site domain expired",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Development Planning Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning/development consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning/development consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Divvy/Lyft",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bike-share operator (Lyft), mobility service not a software vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "bike-share operator (Lyft), mobility service not a software vendor",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Elrod Friedman LLP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Greenprint Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: green infrastructure consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "green infrastructure consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Heritage Consulting Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: historic preservation consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "historic preservation consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "HNTB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: infrastructure engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "infrastructure engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Houseal Lavigne",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and design consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MUSE Community + Design",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and design consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SB Friedman Development Advisors, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: real estate/development advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate/development advisory firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Senf",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: community engagement SaaS platform (senf.app)",
+   "read": {
+    "verdict": "vendor",
+    "why": "community engagement SaaS platform (senf.app)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Sightline Planning & Zoning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and zoning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and zoning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Speck Dempsey",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: urban design/planning firm (Jeff Speck)",
+   "read": {
+    "verdict": "supplier",
+    "why": "urban design/planning firm (Jeff Speck)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Teska Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and landscape consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and landscape consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "The Lakota Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning, urban design and preservation firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning, urban design and preservation firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Trane",
+   "website": null
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "The Complete DVIR Guide: Driver Vehicle Inspection Reports Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/the-complete-dvir-guide-driver-vehicle-inspection-reports-explained/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Tire Pressure, TPMS, and Tire Costs: How Fleets Can Cut Waste and Downtime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/tire-pressure-tpms-and-tire-costs-how-fleets-can-cut-waste-and-downtime/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "California Clean Truck Check: What Fleets Need to Know About CARB Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/california-clean-truck-check-what-fleets-need-to-know-about-carb-compliance/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gpsinsight.com/blog/how-vehicle-side-cameras-help-exonerate-drivers/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Smarter Scheduling for a Changing Workday with FieldAware Smart Scheduler",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/fieldaware-smart-scheduler-dynamic-field-service-scheduling/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Most Common Risky Driving Behaviors Fleets Can Prevent",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/the-most-common-risky-driving-behaviors-fleets-can-prevent/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Safe Driving Incentives Improve Driver Morale and Retention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/how-safe-driving-incentives-improve-driver-morale-and-retention/"
   }
  ]
 }

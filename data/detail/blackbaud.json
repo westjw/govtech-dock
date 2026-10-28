@@ -1,6 +1,105 @@
 {
  "news": [
   {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Blackbaud Data Health Agent",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/blackbaud-data-health-agent"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Blackbaud Billing Management\u2122 and Financial Edge NXT\u00ae Datasheet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/billing-management-and-financial-edge-nxt-datasheet"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "AP Automation with Blackbaud Financial Edge NXT\u00ae Payment Assistant\u2122 powered by BILL",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/ap-automation-with-blackbaud-financial-edge-nxt-payment-assistant-powered-by-bill"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Payment Assistant\u2122 powered by BILL Vendor Payment Setup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/payment-assistant-powered-by-bill-vendor-payment-setup"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "From Grant Compliance to Grant Confidence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/from-grant-compliance-to-grant-confidence"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Streamline Gift Reconciliation with Deposit Connect\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/streamline-gift-reconciliation-with-deposit-connect"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "2026 Blackbaud Cloud Operations for Blackbaud CRM Datasheet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/2026-blackbaud-cloud-operations-for-blackbaud-crm-datasheet"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Blackbaud + Microsoft: Advancing Intelligent Fundraising",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/blackbaud-microsoft-advancing-intelligent-fundraising"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Ultimate End-of-Year Fundraising Toolkit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/end-of-year-fundraising-toolkit"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "7 Tips for Smooth AI Agent Onboarding",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/7-tips-for-smooth-ai-agent-onboarding"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Fundraising Technology Built for Today\u2019s Needs, Ready for Tomorrow\u2019s Challenges",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/fundraising-technology-built-for-todays-needs-ready-for-tomorrows-challenges"
+  },
+  {
    "date": "2026-06-24",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -8,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://institute.blackbaud.com/resources/ai-effectiveness-gap?icid=BBI-US-26-RP-StateofAISocialImpactReport-bbwebsite-resources-tile"
-  },
-  {
-   "date": "2026-03-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Fund Accounting Best Practices Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.blackbaud.com/industry-insights/resources/fund-accounting-best-practices-guide"
-  },
-  {
-   "date": "2025-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Risk is universal. Readiness isn\u2019t. \u200b",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://institute.blackbaud.com/resources/risk-readiness?icid=_p-megamenu_t-homepage_c-keydrivers"
   }
  ]
 }

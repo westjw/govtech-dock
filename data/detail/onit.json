@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Legal Invoice Review Should Optimize for Accuracy, Not Maximum Reductions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.onit.com/blog/legal-invoice-review-accuracy-not-reductions/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "Board-Ready Legal Reporting: Why University Legal Teams Still Build Reports by Hand",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "Legal Ops Doesn\u2019t Need an IT Ticket for Every Workflow",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "AI Outperforms Experienced Lawyers in Legal Invoice Review",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.onit.com/news/onit-expands-the-unity-suite/"
-  },
-  {
-   "date": "2026-03-09",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-24",
-   "headline": "Onit Changes the Game with AI-Native Unity ELM for Matter and Spend Management, Announces Commercial Success of Unity Spend Agent",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.onit.com/news/onit-changes-the-game/"
   }
  ]
 }

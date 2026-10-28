@@ -9987,6 +9987,67 @@ def check_a_conference_fact_is_read_never_guessed() -> int:
     return errors
 
 
+def check_a_company_page_says_which_conferences_it_went_to_and_is_going_to() -> int:
+    """The company page's Conferences box, in the app and on the static page.
+
+    Owner, 2026-10-28: "remember to update the conferences box on each company
+    page that highlights what they have gone to and are going to". A tag says
+    the company's name was on that EDITION's list, so the box is only true if
+    it reads the edition right:
+      - an edition ahead of today is "Going to", one behind is "Went to";
+      - a row that rolled to next year's dates kept its old tag (ICMA 2026
+        carries September 2027): that tag is "Went to", never a booking - the
+        first build of this box put Accela and Esri at ICMA 2027;
+      - a tag moved to prior_tags is a past edition of the row it moved to;
+      - no dates, or dates for an older edition than the tag's, is "Date not
+        announced", never placed ahead or behind;
+      - a tag no row knows draws nothing; a name is escaped.
+    The app's coConfGroups (run by jobcard_harness) and build_site's
+    co_conferences must sort the same fixture into the same groups.
+    """
+    errors = 0
+    import build_site as bs
+    box = (_harness() or {}).get("coConfBox") or {}
+    want = {"now": [], "ahead": ["Ahead 2099", "Evil 2099"], "undated": ["Early 2098", "New 2027"],
+            "went": ["Past 2020", "Rolled 2025", "Moved 2024"]}
+    got = box.get("groups") or {}
+    for k, v in want.items():
+        if sorted(got.get(k) or []) != sorted(v):
+            errors += fail(f"the app's Conferences box puts {sorted(got.get(k) or [])} under {k}, not {sorted(v)}")
+    h = box.get("html") or ""
+    if "<img src=x" in h or "Ghost" in h or "the 2025 edition" not in h or "Going to" not in h \
+            or "Went to" not in h or "dates not on file" not in h or box.get("none"):
+        errors += fail(f"the app's Conferences box draws the wrong thing: {h[:300]!r}")
+    rows = [{"tag": "Ahead 2099", "name": "Ahead Expo", "dates": "March 3-5, 2099", "city": "Reno, NV"},
+            {"tag": "Past 2020", "name": "Past Expo", "dates": "May 4-6, 2020", "city": "Austin, TX"},
+            {"tag": "Rolled 2025", "name": "Rolled Summit", "dates": "September 25-29, 2099"},
+            {"tag": "New 2027", "name": "New Fair", "dates": None, "dates_confidence": "unannounced"},
+            {"tag": "Moved 2099", "name": "Moved Forum", "dates": "June 1-2, 2099", "prior_tags": ["Moved 2024"]},
+            {"tag": "Early 2098", "name": "Stale Dates", "dates": "April 1-2, 2020"},
+            {"tag": "Evil 2099", "name": "<img src=x onerror=alert(1)>", "dates": "July 7-8, 2099"}]
+    org = {"id": "conf-co", "name": "Conf Co", "conferences": ["Ahead 2099", "Past 2020", "Rolled 2025",
+           "New 2027", "Moved 2024", "Early 2098", "Ghost 2026", "Evil 2099"]}
+    page = bs.co_conferences(org, {"conferences": rows, "generated": dt.date.today().isoformat()})
+    names = {"Ahead Expo": "Ahead 2099", "Past Expo": "Past 2020", "Rolled Summit": "Rolled 2025",
+             "New Fair": "New 2027", "Moved Forum": "Moved 2024", "Stale Dates": "Early 2098",
+             "&lt;img src=x onerror=alert(1)&gt;": "Evil 2099"}
+    label = {"On now": "now", "Going to": "ahead", "Date not announced": "undated", "Went to": "went"}
+    static, cur = {k: [] for k in want}, None
+    for m in re.finditer(r'<h3 class="coconf-h">([^<]+)</h3>|<a href="/e/[^"]+">([^<]+)</a>', page):
+        if m.group(1):
+            cur = label.get(m.group(1))
+        elif cur:
+            static[cur].append(names.get(m.group(2), m.group(2)))
+    for k, v in want.items():
+        if sorted(static[k]) != sorted(v):
+            errors += fail(f"the static page's Conferences box puts {sorted(static[k])} under {k}, not {sorted(v)}")
+    if "<img src=x" in page or "Ghost" in page:
+        errors += fail("the static Conferences box draws an unescaped name or a tag no row knows")
+    if bs.co_conferences({"id": "x", "conferences": []}, {"conferences": rows}):
+        errors += fail("a company with no conferences draws an empty Conferences box")
+    return errors
+
+
 def check_the_registration_desk_carries_its_days() -> int:
     """The front page's registration desk offers alerts.html's own days.
 
@@ -30656,6 +30717,99 @@ def check_two_rows_cannot_promote_the_same_exhibitor_url() -> int:
     return errors
 
 
+def check_a_chapter_listed_without_a_floor_is_held_to_the_page() -> int:
+    """A chapter with no readable floor is listed only on its own page's word.
+
+    APA's 48 chapters (owner, 2026-10-28: "add all 48"): many post their
+    sponsors as one picture, behind a browser-only app, or not at all, and
+    stage_promote could only publish a row whose directory a fetch read as
+    companies. So a row may carry `conference_read`, a reader's lead that a
+    skeptic confirmed, and be listed with NO exhibitor_url. The lead is never
+    the fact: the page is fetched again and must answer, must be the
+    chapter's own (owns() - the guard that keeps a parent's event off a
+    chapter), and must state the year the reader read. An unconfirmed read,
+    another state's page, a page with no year, or one that has rolled to the
+    next edition is refused, and nothing a fetcher could sweep is written.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import find_event_directories as fed
+
+    pages = {
+        "https://conf-a.test/conf": "<title>2026 Texas Planning Conference</title><h1>Texas Planning Conference 2026</h1>",
+        # a national page that MENTIONS the chapter's event once: the reader's
+        # words are on it, so only ownership can refuse it
+        "https://conf-b.test/conf": ("<title>2026 National Planning Conference</title><h1>National "
+                                     "Planning Conference</h1><p>Chapter news: Texas Planning "
+                                     "Conference 2026 announced.</p>"),
+        "https://conf-c.test/conf": "<title>Texas Planning Conference</title><h1>Texas Planning Conference</h1>",
+        "https://conf-d.test/conf": "<title>2027 Texas Planning Conference</title><h1>Texas Planning Conference 2027</h1>",
+    }
+    dept = next(iter(fed.CATALOG_PLACE))
+    def row(code, url, year="2026", confirmed=True, form="picture"):
+        return {"org_code": code, "geo": "Texas", "department": dept,
+                "name_confidence": "named", "org_name": f"Texas Body {code}",
+                "org_url": f"https://{code.lower()}.test/", "status": "list_is_an_image",
+                "promoted": False,
+                "conference_read": {"url": url, "year": year, "confirmed": confirmed,
+                                    "quote": f"Texas Planning Conference {year}",
+                                    "name": f"Texas Planning Conference {year}",
+                                    "list_form": form, "list_url": url + "/sponsors",
+                                    "read_on": "2026-10-28"}}
+    rows = [row("GOOD", "https://conf-a.test/conf"),
+            row("UNCONF", "https://conf-a.test/conf", confirmed=False),
+            row("OTHER", "https://conf-b.test/conf"),
+            # no year read at all: the words are on the page, so only the
+            # year rule can refuse it
+            row("NOYEAR", "https://conf-c.test/conf", year=""),
+            row("ROLLED", "https://conf-d.test/conf"),
+            # a joint conference's second chapter: the host row lists it
+            dict(row("JOINT", "https://conf-a.test/conf"), covered_by="GOOD")]
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-listed-"))
+    (tmp / "state_events.json").write_text(
+        json.dumps({"registry": "state", "note": "", "events": rows}))
+    (tmp / "conferences.json").write_text(json.dumps({"conferences": []}))
+    keep = (dict(fed.REGISTRIES), fed.DATA, fed.fetch)
+    try:
+        fed.REGISTRIES["state"], fed.DATA = tmp / "state_events.json", tmp
+        fed.fetch = lambda u: pages.get(u)
+        with contextlib.redirect_stdout(io.StringIO()):
+            fed.stage_promote(True)
+        got = json.loads((tmp / "conferences.json").read_text())["conferences"]
+        staged = {e["org_code"]: e for e in
+                  json.loads((tmp / "state_events.json").read_text())["events"]}
+    finally:
+        fed.REGISTRIES.clear(); fed.REGISTRIES.update(keep[0])
+        fed.DATA, fed.fetch = keep[1], keep[2]
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    by = {c["state_event"]["org_code"]: c for c in got}
+    if "GOOD" not in by:
+        errors += fail("a confirmed read of the chapter's own 2026 page was not "
+                       "listed, so this check proves nothing about the refusals")
+    else:
+        g = by["GOOD"]
+        if g.get("exhibitor_url"):
+            errors += fail("a row listed without a floor carries an exhibitor_url, "
+                           "so a sweep would read the page and stage its menu")
+        if g.get("fetchability") != "picture" or not g.get("exhibitor_url_candidate"):
+            errors += fail("a picture list was not recorded as one no fetcher "
+                           f"reads ({g.get('fetchability')!r})")
+        if not g["event_tag"].endswith(" 2026"):
+            errors += fail(f"the tag {g['event_tag']!r} does not carry the page's year")
+    for code, why in (("UNCONF", "a read no skeptic confirmed"),
+                      ("OTHER", "a page that is another state's conference"),
+                      ("NOYEAR", "a page that names no year"),
+                      ("ROLLED", "a page that has rolled to another edition than the reader read"),
+                      ("JOINT", "a joint conference's second chapter (listed twice)")):
+        if code in by or staged[code].get("promoted"):
+            errors += fail(f"{why} was listed on the public tab")
+    return errors
+
+
 def check_one_event_staged_twice_becomes_one_row_with_both_halves() -> int:
     """The organisation's own name is not part of the event's name.
 
@@ -37438,6 +37592,8 @@ def main() -> int:
     errors += check_a_throttled_lookup_is_not_a_city_that_does_not_exist()
     errors += check_a_title_is_not_a_city()
     errors += check_two_rows_cannot_promote_the_same_exhibitor_url()
+    errors += check_a_chapter_listed_without_a_floor_is_held_to_the_page()
+    errors += check_a_company_page_says_which_conferences_it_went_to_and_is_going_to()
     errors += check_one_event_staged_twice_becomes_one_row_with_both_halves()
     errors += check_a_state_is_matched_whole_and_not_inside_another()
     errors += check_a_sibling_event_cannot_claim_its_neighbours_floor()

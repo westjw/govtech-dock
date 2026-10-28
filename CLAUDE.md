@@ -2800,6 +2800,58 @@ fires.
 - The board's offtopic counts were computed under the broken pattern and
   correct themselves at the first crawl after the fix ships.
 
+## APA's 48 chapters, and the company page's Conferences box (2026-10-28)
+
+Owner, 2026-10-28: "do we have all the apa chapters?" - no: 20 of APA's 48
+(its own list, planning.org/chapters, read in a browser because planning.org
+now serves crawlers `Disallow: /` half the time) and none on the tab. Then
+"yes add all 48", and "remember to update the conferences box on each company
+page that highlights what they have gone to and are going to".
+
+- **Registry.** The 28 missing chapters are rows in state_events.json (merged,
+  never register_state_events, which replaces the file); Arizona and Florida
+  had stale addresses; New York's row is the Metro chapter, Upstate its own.
+  `find_event_directories --directories --only CODES` reads only named rows.
+- **Read by a reader and a skeptic** (four batches): each chapter's own name,
+  its conference, the edition, and THIS edition's sponsor/exhibitor list - in
+  text, alt text, or pictures opened and read (scratch helpers fetch an image
+  through ats._page, robots asked at every hop). Year-round chapter sponsors,
+  older editions and sign-up pages were refused as lists.
+- **The listed route** in stage_promote: a row carrying a confirmed
+  `conference_read` is listed with NO exhibitor_url if the reader's quoted
+  words naming the event and its year are still on the page today (every
+  piece of a "..."-joined quote, matched on _flat text), the page is the
+  chapter's (owns()), and the read is confirmed. A joint conference is listed
+  once, named for the event (`joint_event` on the host row, `covered_by` on
+  the others: Quad State = IA/KS/MO, Deep South = AL/MS, Montana & Idaho).
+  fetchability is `picture` or `reader` where the readers' names are staged,
+  so no sweep reads the page and puts its menu over them (a find replaces a
+  find). check_a_chapter_listed_without_a_floor_is_held_to_the_page: 7 of 7.
+- **37 rows listed for 41 chapters**; 23 floors staged from the names BOTH
+  readers saw (532), read by read_floor (16 vendor, 425 supplier, 6 held),
+  intaken under Housing & Community Dev; dates and cities landed through
+  apply_conference_reads. Not listed, each for its reason: SNEAPA (CT/RI/MA -
+  its site does not show it is any one chapter's, and its only list is 2025),
+  National Capital Area and Northern New England (planning.org subdomains with
+  a regional geo: owns() has no state to find, and _names_the_org's two-word
+  bar would pass APA's own pages), New Jersey and Western Central (robots.txt).
+- **Tags.** `_tag` drops a year the name already carries ("2026 APA Quad State
+  Conference" was "... 2026 2026") and shortens "American Planning
+  Association" to APA before cutting a long name; GENERIC_TITLE knows
+  "Homepage". A name that is only a year and conference words ("2026 Annual
+  Conference") falls back to the organisation.
+- **The Conferences box** (index.html coConfGroups/coConfs, build_site
+  co_conferences, one rule): On now / Going to / Date not announced / Went to,
+  from o.conferences joined to board.conferences, which now ships `prior_tags`.
+  A TAG NAMES ITS EDITION BY ITS YEAR: a row that rolled to next year's dates
+  kept its old tag, so the first build put Accela and Esri "Going to" ICMA
+  2027 off their ICMA 2026 tag. A tag older than its row's dates is Went to,
+  newer is Date not announced. It is rebuilt from board.json, so a scrub that
+  tags companies AND dates the event (then quick_rebuild) updates every box.
+  check_a_company_page_says_which_conferences_it_went_to_and_is_going_to runs
+  the app's own function through jobcard_harness and the static port on one
+  fixture: 8 of 8 breakages caught.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).

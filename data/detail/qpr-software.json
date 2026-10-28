@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Process Mining for Order-to-Cash: Find Where Orders Lose Time, Money and Cash Flow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/process-mining-on-order-to-cash-process"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Process Mining and Process Modeling in One Loop",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/process-mining-process-modeling-closed-loop"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/news/snowflake-native-process-intelligence-directly-to-enterprise-ai-agents"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Task Mining Complements Process Intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/task-mining-process-intelligence"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Process Intelligence in the AI Era: MCP & Enterprise AI | QPR",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/process-intelligence-enterprise-ai-mcp"
   }
  ],
  "profile": {

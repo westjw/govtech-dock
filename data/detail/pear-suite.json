@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "What Happens When Medicaid Eligibility Becomes a Monthly Assignment in Most States?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pearsuite.com/post/what-happens-when-medicaid-eligibility-becomes-a-monthly-assignment-in-most-states/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.pearsuite.com/post/america-is-still-the-cradle-of-creators-innovators-and-entrepreneurs/"
-  },
-  {
-   "date": "2025-09-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Medicaid, SNAP, and the One Big Beautiful Bill Act Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pearsuite.com/post/one-big-beautiful-bill-act/"
   }
  ]
 }

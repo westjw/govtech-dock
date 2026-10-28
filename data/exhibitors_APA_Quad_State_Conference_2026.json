@@ -1,0 +1,594 @@
+{
+ "event_tag": "APA Quad State Conference 2026",
+ "conference": "2026 APA Quad State Conference",
+ "found": true,
+ "source_url": "https://kc-apa.org/2026-quadstate-conference",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (picture) from https://kc-apa.org/2026-quadstate-conference, 52 image(s) opened and read. 52 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "BHC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civil engineering / landscape firm (KC)",
+   "read": {
+    "verdict": "supplier",
+    "why": "civil engineering / landscape firm (KC)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Bird",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: shared e-scooter operator, not gov software",
+   "read": {
+    "verdict": "supplier",
+    "why": "shared e-scooter operator, not gov software",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Bolton & Menk",
+   "website": null
+  },
+  {
+   "name": "Burns McDonnell",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CBB Transportation Engineers + Planners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transportation engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CDM Smith",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CMT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Crawford Murphy & Tilly, engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Crawford Murphy & Tilly, engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Confluence",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: landscape architecture / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "landscape architecture / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Conservation Department Missouri",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Development Strategies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: real estate / planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate / planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Eocene Environmental Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental consulting firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "ETC Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: community survey research firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "community survey research firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Felsburg Holt & Ullevig",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transportation engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Freese and Nichols",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GBA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm (GBA, KC)",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm (GBA, KC)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GFT",
+   "website": null
+  },
+  {
+   "name": "HDR",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Hg Consult Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civil engineering firm (KC)",
+   "read": {
+    "verdict": "supplier",
+    "why": "civil engineering firm (KC)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "HNTB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "ISG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "JEO Consulting Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Kansas City",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: city government (City of KC logo)",
+   "read": {
+    "verdict": "supplier",
+    "why": "city government (City of KC logo)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Kansas State University Landscape Architecture and Regional & Community Planning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university department",
+   "read": {
+    "verdict": "supplier",
+    "why": "university department",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Kimley-Horn",
+   "website": null
+  },
+  {
+   "name": "Lathrop GPM",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Lenexa Kansas",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: city government",
+   "read": {
+    "verdict": "supplier",
+    "why": "city government",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "LWC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "cannot place; site did not answer",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "MARC Mid-America Regional Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: council of governments",
+   "read": {
+    "verdict": "supplier",
+    "why": "council of governments",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MindMixer by Social Assurance",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: civic engagement software",
+   "read": {
+    "verdict": "vendor",
+    "why": "civic engagement software",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Missouri State Center for Resource Planning and Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university center",
+   "read": {
+    "verdict": "supplier",
+    "why": "university center",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MSA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: MSA Professional Services, engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "MSA Professional Services, engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Multistudio",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Olsson",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Our Spot KC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: KC civic initiative / nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "KC civic initiative / nonprofit",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "PEC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional Engineering Consultants",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional Engineering Consultants",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "PGAV Planners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "PortKC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: port authority (government)",
+   "read": {
+    "verdict": "supplier",
+    "why": "port authority (government)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "RDG Planning Design",
+   "website": null
+  },
+  {
+   "name": "Safer + Simpler Missouri",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: housing / building code advocacy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing / building code advocacy coalition",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Senf",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: map-based community engagement SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "map-based community engagement SaaS",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Shockey",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: public engagement consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "public engagement consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SitePulse",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "cannot place; no readable site found",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Snyder & Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Stantec",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / design firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "StreetLight A Jacobs Company",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: mobility data platform (StreetLight Data)",
+   "read": {
+    "verdict": "vendor",
+    "why": "mobility data platform (StreetLight Data)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SWT Design",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: landscape architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "landscape architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "The University of Kansas School of Public Affairs & Administration",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university school",
+   "read": {
+    "verdict": "supplier",
+    "why": "university school",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "UPS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: parcel delivery company (UPS logo)",
+   "read": {
+    "verdict": "supplier",
+    "why": "parcel delivery company (UPS logo)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Venice Communications, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: public involvement / communications firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "public involvement / communications firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Vireo",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning / landscape architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning / landscape architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Wilson & Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "WSP",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

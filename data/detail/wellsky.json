@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "340B webinar recap: What covered entities need to know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/340b-webinar-recap-what-covered-entities-need-to-know/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "time",
    "first_seen": "2026-10-13",
@@ -82,6 +91,15 @@
    "url": "https://wellsky.com/resources/hospice/"
   },
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "What changes are included in the fiscal year 2027 hospice final rule?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/what-changes-are-included-in-the-fiscal-year-2027-hospice-final-rule/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "index-text",
    "first_seen": "2026-10-25",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/whats-changing-in-the-fiscal-year-fy2027-icd-10-cm-code-update/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why access to more patient data isn\u2019t enough to improve care transitions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/why-access-to-more-patient-data-isnt-enough-to-improve-care-transitions/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Competitive bidding and more: A DME briefing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/competitive-bidding-and-more-a-dme-briefing/"
   }
  ]
 }

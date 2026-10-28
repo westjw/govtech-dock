@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "D2L Launch Week Showcases Latest Learning Innovations",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.d2l.com/newsroom/d2l-launch-week-showcases-latest-learning-innovations/"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "CBE Moves Faster When We Row Together",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/cbe-moves-faster-when-we-row-together/"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "A Complete Guide to Generative AI Training for Employees",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/generative-ai-training/"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "DeVry University Selects D2L Brightspace to Launch Next\u2011Gen Competency\u2011Based Digital Learning",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.d2l.com/newsroom/devry-university-selects-d2l-brightspace-to-launch-next-gen-competency-based-digital-learning/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -20,7 +56,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "D2L, WCET and Opened Culture Release Findings from Global Longitudinal Study on AI Governance in Higher Education",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/how-ai-can-tell-learning-impact-story/"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-09",
-   "headline": "Research Minute: How Intentional Design Creates Belonging in Online Learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/research-minute-how-intentional-design-creates-belonging-in-online-learning/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-09",
-   "headline": "How K-12 Leaders Are Rethinking Professional Learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/how-k-12-leaders-are-rethinking-professional-learning/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "LTI 1.1 Is Retiring: What D2L Brightspace Admins Need to Know Now",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/lti-1-1-is-retiring-what-d2l-brightspace-admins-need-to-know-now/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "index-text",
-   "first_seen": "2026-10-08",
-   "headline": "D2L Named a Leader Across 11 G2 Fall 2026 Reports",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/newsroom/d2l-named-a-leader-across-11-g2-fall-2026-reports/"
   }
  ],
  "profile": {

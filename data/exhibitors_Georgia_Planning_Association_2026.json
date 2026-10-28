@@ -1,0 +1,95 @@
+{
+ "event_tag": "Georgia Planning Association 2026",
+ "conference": "2026 GPA Fall Conference",
+ "found": true,
+ "source_url": "https://georgiaplanning.org/fall-conference/",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (picture) from https://georgiaplanning.org/fall-conference/, 16 image(s) opened and read. 9 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "AXIS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Axis Infrastructure, design/planning firm (axiscompanies.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Axis Infrastructure, design/planning firm (axiscompanies.com)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Energy Ready",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader not_a_company (session title on the conference page: 'Energy Ready: Energy in Georgia Communities...'); skeptic supplier (Sponsor logo in the Fall Conference tiers that links to icma.org. It is ICMA's Energy Ready programme (ICMA is an association), so it is a real sponsor, not just a session title.)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "KB Advisory Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: real estate/economic consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate/economic consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MGO MyGovernmentOnline",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: permitting/land management SaaS for local government",
+   "read": {
+    "verdict": "vendor",
+    "why": "permitting/land management SaaS for local government",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "RS&H",
+   "website": null
+  },
+  {
+   "name": "Senf",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: map-based community engagement SaaS (senf.app)",
+   "read": {
+    "verdict": "vendor",
+    "why": "map-based community engagement SaaS (senf.app)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "The Brick Industry Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry trade association",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

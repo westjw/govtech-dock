@@ -1057,6 +1057,11 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
                 # wrong direction; the name is wrong in the record and this is
                 # where the record is built.
                 "name": html.unescape(row.get("conference") or tag),
+                # THE EDITIONS IT ROLLED FROM. A company tagged at DISTRIBUTECH
+                # 2026 keeps that tag after the row moves to 2027; the company
+                # page's Conferences box reads this to call it a past edition
+                # rather than a booking for next year (owner, 2026-10-28).
+                "prior_tags": list(row.get("prior_tags") or []),
                 "block": row.get("block"),
                 "department": row.get("department"),
                 # THE SECTOR ITS BUYERS SIT IN, off the map supplier_categories

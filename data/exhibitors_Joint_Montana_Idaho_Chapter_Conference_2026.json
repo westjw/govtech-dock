@@ -1,0 +1,308 @@
+{
+ "event_tag": "Joint Montana & Idaho Chapter Conference 2026",
+ "conference": "2026 Joint Montana & Idaho Chapter Conference",
+ "found": true,
+ "source_url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (picture) from https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/, 18 image(s) opened and read. 26 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "ACHD",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Ada County Highway District (government)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Ada County Highway District (government)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Agnew::Beck",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Avista",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electric / gas utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "electric / gas utility",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Blue Cross of Idaho Foundation for Health, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health foundation (nonprofit)",
+   "read": {
+    "verdict": "supplier",
+    "why": "health foundation (nonprofit)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Boise State University Urban Studies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university department",
+   "read": {
+    "verdict": "supplier",
+    "why": "university department",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Clark Wardle",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm (Boise)",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm (Boise)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Community Planning Strategies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "czb",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Downtown Redevelopment Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: downtown consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "downtown consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "GreatWest Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "HDR",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "IMEG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Interstate Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "J-U-B Engineers, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Kittelson & Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transportation engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Logan Simpson",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning / environmental firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning / environmental firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Montana Department of Commerce",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Orion Planning + Design",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Paradigm Land Design LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: land design / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "land design / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Perspective Planning & Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Provost & Pritchard",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SCJ Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Stahly Engineering & Associates, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "WAYpoint (Place + Planning at WET)",
+   "website": null
+  },
+  {
+   "name": "WGM Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

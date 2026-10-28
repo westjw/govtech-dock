@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Expanding our partnership with GSA to bring Claude to all levels of government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/partnerships"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Expanding our partnership with GSA to bring Claude to all levels of government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/expanding-partnership-gsa"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/s1-sec"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Anthropic files S-1 with the SEC for proposed initial public offering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/announcements"
   },
   {
    "date": "2026-10-22",
@@ -80,33 +107,6 @@
    "kind": "contract",
    "kind_rule": "signs MOU",
    "url": "https://www.anthropic.com/news/singapore-office-opening"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-15",
-   "headline": "Preparing for the 2026 US midterms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/2026-us-midterms"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Preparing for the 2026 US midterms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/safeguards"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Strengthening our defenses against distillation attacks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/distillation-defenses"
   }
  ],
  "profile": {

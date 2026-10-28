@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Incode now accepts digital IDs from Google Wallet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://incode.com/blog/incode-now-accepts-digital-ids-from-google-wallet/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://incode.com/press/id-tech-incode-trustgraph-peer-to-peer-cryptography/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Incode launches TrustGraph, the first trust network built for the agentic era",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://incode.com/press/incode-launches-trustgraph-businesswire/"
   }
  ]
 }

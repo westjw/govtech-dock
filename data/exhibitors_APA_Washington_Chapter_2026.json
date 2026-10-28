@@ -1,0 +1,360 @@
+{
+ "event_tag": "APA Washington Chapter 2026",
+ "conference": "2026 APA WA Annual Conference",
+ "found": true,
+ "source_url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (text) from https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor, 20 image(s) opened and read. 31 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "3J Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning/land use consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning/land use consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "AHBL",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civil engineering/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "civil engineering/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "AKS Engineering & Forestry, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering and surveying firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and surveying firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Aqua Terr Systems Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: wetland permitting/environmental surveys (atsi.biz)",
+   "read": {
+    "verdict": "supplier",
+    "why": "wetland permitting/environmental surveys (atsi.biz)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "BERK Consulting, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning/policy consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning/policy consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Broadview Planning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Cascadia Consulting Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental/sustainability consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental/sustainability consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "City of Vancouver Washington",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: city government",
+   "read": {
+    "verdict": "supplier",
+    "why": "city government",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "DOWL LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Dudek",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental/engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental/engineering consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Facet",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering, science and planning firm (facetnw.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering, science and planning firm (facetnw.com)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Fehr & Peers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transportation planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "Lagniappe Planning & Design",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "LMN",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture firm (LMN Architects)",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm (LMN Architects)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MacKay",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/planning firm (MacKay Sposito)",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/planning firm (MacKay Sposito)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Maul Foster Alongi",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental/planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental/planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Mithun",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Onterris",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental consulting and remediation",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental consulting and remediation",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Otak, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Parametrix",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "rrm design group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SCJ Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Sustainability Solutions Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: climate planning consultancy co-op",
+   "read": {
+    "verdict": "supplier",
+    "why": "climate planning consultancy co-op",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SwiftGov",
+   "website": null
+  },
+  {
+   "name": "Transpo Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transportation engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation engineering consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "uncommon bridges",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: community engagement consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "community engagement consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Walker Macy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: landscape architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "landscape architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Washington Manufactured Housing Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Waypoint",
+   "website": null
+  },
+  {
+   "name": "Western Washington University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

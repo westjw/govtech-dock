@@ -1192,6 +1192,8 @@ COPAGE_CSS = """
  .corail h2{font:800 9.5px/1.35 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink3);border-bottom:1px solid var(--c-rule);padding-bottom:8px;margin-bottom:4px}
  .corail .r{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px solid var(--c-rule);font-size:12.5px;line-height:1.45}
  .corail .r .d{display:block;font-size:11px;color:var(--c-ink2);margin-top:3px}
+ .corail .coconf-h{font:700 10.5px/1.3 var(--font-heading);color:var(--c-ink2);margin:12px 0 0}
+ .corail .coconf-more summary{font-size:11px;padding-top:9px;cursor:pointer;color:var(--c-accent-text)}
  .corail .r .n{margin-left:auto;font-size:11px;color:var(--c-ink2);font-variant-numeric:tabular-nums;flex:none}
  .corail .tag{margin-left:auto;font:800 9.5px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-text);flex:none}
  .coacq .acqhead{font-size:14px;font-weight:700;margin:0 0 6px}
@@ -1884,6 +1886,93 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
     return out
 
 
+def co_conferences(o: dict, board: dict) -> str:
+    """The company page's Conferences box - coConfs() in index.html, ported,
+    and it has to stay one (owner, 2026-10-28: "the conferences box on each
+    company page that highlights what they have gone to and are going to").
+
+    A tag says the company's name was on that edition's exhibitor or sponsor
+    list. Ahead of the board's own day it is an edition they are booked for,
+    behind it one they were at; a tag the catalogue has since rolled to its
+    next edition (prior_tags) is a past edition whatever the row's new dates
+    say; an edition with no date on file says so rather than being placed."""
+    esc = html.escape
+    tags = list(dict.fromkeys(t for t in (o.get("conferences") or [o.get("conference")]) if t))
+    rows = board.get("conferences") or []
+    by_tag = {r.get("tag"): r for r in rows}
+    rng = lambda r: _ics_range(r.get("dates") or "")
+    yr = lambda t: int((re.search(r"(20\d\d)$", str(t)) or [None, 0])[1])
+    # (tag, row, prior, other): a tag older than its row's dates is an edition
+    # they were at (the row rolled and kept its tag); one newer than the dates
+    # is an edition with no date on file yet. coConfGroups says the same.
+    items = []
+    for t in tags:
+        r, prior = by_tag.get(t), False
+        if not r:
+            r = next((x for x in rows if t in (x.get("prior_tags") or [])), None)
+            prior = bool(r)
+        if not r:
+            continue
+        g, ty = rng(r), yr(t)
+        if not prior and g and ty and ty < g[0].year:
+            prior = True
+        other = bool(not prior and g and ty and ty > g[1].year)
+        items.append((t, r, prior, other))
+    today = _co_now(board)
+    dated = lambda i: not i[2] and not i[3] and rng(i[1])
+    now = [i for i in items if dated(i) and rng(i[1])[0] <= today <= rng(i[1])[1]]
+    ahead = sorted((i for i in items if dated(i) and rng(i[1])[0] > today),
+                   key=lambda i: rng(i[1])[0])
+    undated = sorted((i for i in items if not i[2] and (i[3] or not rng(i[1]))),
+                     key=lambda i: str(i[1].get("name") or ""))
+    went = [i for i in items if i[2] or (dated(i) and rng(i[1])[1] < today)]
+    went.sort(key=lambda i: (dt.date(yr(i[0]) or 1, 12, 31) if i[2] else rng(i[1])[0], 0 if i[2] else 1),
+              reverse=True)
+    if not (now or ahead or undated or went):
+        return ""
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+    def when(t, r, prior, other=False):
+        if prior or other:
+            y = re.search(r"(20\d\d)$", str(t))
+            return (f"the {y.group(1)} edition" + (", dates not on file" if other else "")
+                    if y else "an earlier edition")
+        g = rng(r)
+        if not g:
+            return r.get("dates") or {"unannounced": "next edition not announced yet",
+                                      "unreachable": "dates unconfirmed \u2014 their site would not load"
+                                      }.get(r.get("dates_confidence"), "dates not confirmed")
+        a, b = g
+        if a == b:
+            d = f"{months[a.month - 1]} {a.day}"
+        elif a.month == b.month:
+            d = f"{months[a.month - 1]} {a.day}\u2013{b.day}"
+        else:
+            d = f"{months[a.month - 1]} {a.day} \u2013 {months[b.month - 1]} {b.day}"
+        return d + (f", {a.year}" if a.year != today.year else "")
+
+    def row(i):
+        t, r, prior, other = i
+        tail = " \u00b7 ".join(x for x in (when(t, r, prior, other),
+                                            None if (prior or other) else _cf_place(r)) if x)
+        return (f'<div class="r"><span><a href="/e/{_slugify(r.get("tag"))}.html">{esc(str(r.get("name") or r.get("tag")))}</a>'
+                f'<span class="d">{esc(tail)}</span></span></div>')
+
+    def grp(label, lst, cap=None):
+        if not lst:
+            return ""
+        shown, rest = (lst[:cap], lst[cap:]) if cap else (lst, [])
+        more = (f'<details class="coconf-more"><summary>{len(rest)} more</summary>'
+                f'{"".join(row(i) for i in rest)}</details>') if rest else ""
+        return f'<h3 class="coconf-h">{label}</h3>{"".join(row(i) for i in shown)}{more}'
+
+    return ('<section class="coconfs"><h2>Conferences</h2>'
+            + grp("On now", now) + grp("Going to", ahead) + grp("Date not announced", undated)
+            + grp("Went to", went, 6)
+            + "<p class=\"note\">From the exhibitor and sponsor lists on each organiser's own page.</p>"
+            + "</section>")
+
+
 def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                       by_id: dict, by_name: dict, in_cat: int) -> str:
     """The whole static company page for one organization - co(), ported.
@@ -1987,6 +2076,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
         links += (f'<div class="r">{_ext_link(o["board_url"], "Their hiring board")}'
                   f'{"" if readable else unreadable_tag}</div>')
     rail = f"<section><h2>Links</h2>{links}</section>"
+    rail += co_conferences(o, board)
     if brands:
         rows = ""
         for b in brands:

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-28",
+   "headline": "What Is Cyber Security Awareness Month? 2026 Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.absolute.com/blog/what-is-cyber-security-awareness-month-2026-guide"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.absolute.com/blog/secure-access-14-50-empowering-cyber-resilience"
-  },
-  {
-   "date": "2026-05-12",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Microsoft May Patch Tuesday: Critical Fixes and Urgent Updates",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://www.absolute.com/blog/microsoft-may-patch-tuesday-critical-fixes-and-urgent-updates"
   }
  ]
 }

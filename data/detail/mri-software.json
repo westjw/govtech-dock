@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "common area maintenance (CAM) reconciliations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-is-common-area-maintenance/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/resources/consumers-return-to-routine-as-summer-momentum-fades/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Covering the five-week period between August 30 and October 3, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/resources/mri-onlocation-us-monthly-commentary-september-2026/"
   },
   {
    "date": "2026-10-20",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/where-ai-is-actually-making-a-difference/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Artificial intelligence in contract lifecycle management: Why contract intelligence is becoming a business essential",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/integrating-ai-contract-lifecycle-management-contract-intelligence/"
-  },
-  {
-   "date": "2026-10-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Understanding AI contract review for lease-heavy real estate portfolios",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/benefits-contract-review-automation-legal-efficiency/"
   }
  ]
 }

@@ -1,0 +1,536 @@
+{
+ "event_tag": "APA California Chapter 2026",
+ "conference": "APA California 2026 Conference",
+ "found": true,
+ "source_url": "https://www.apacalifornia.org/",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (picture) from https://www.apacalifornia.org/, 56 image(s) opened and read. 53 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "4LEAF, Inc.",
+   "website": null
+  },
+  {
+   "name": "Accela",
+   "website": null
+  },
+  {
+   "name": "Albert A. Webb Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civil engineering and planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "civil engineering and planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Archistar",
+   "website": null
+  },
+  {
+   "name": "Ascent",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental planning consultancy (Ascent Environmental)",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental planning consultancy (Ascent Environmental)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "BKF",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civil engineering firm (BKF Engineers)",
+   "read": {
+    "verdict": "supplier",
+    "why": "civil engineering firm (BKF Engineers)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CA Governor's Office of Land Use and Climate Innovation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: California state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "California state agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Cal Poly",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Caltrans",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: California state DOT, government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "California state DOT, government agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "canibuild",
+   "website": null
+  },
+  {
+   "name": "Civic Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: California contract planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "California contract planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Community Catalyst",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: community/planning consultancy or nonprofit, no tech product (logo only)",
+   "read": {
+    "verdict": "supplier",
+    "why": "community/planning consultancy or nonprofit, no tech product (logo only)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CSG Consultants",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering, plan review and building services consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering, plan review and building services consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CSUN Urban Studies & Planning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university department",
+   "read": {
+    "verdict": "supplier",
+    "why": "university department",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Dudek",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental and engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental and engineering consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "egis",
+   "website": null
+  },
+  {
+   "name": "Endemic Environmental Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental consulting firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "EPS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Economic & Planning Systems, economics consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Economic & Planning Systems, economics consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "ESA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Environmental Science Associates, environmental consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental Science Associates, environmental consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Good City Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GovAxle",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: govtech software product for planning departments",
+   "read": {
+    "verdict": "vendor",
+    "why": "govtech software product for planning departments",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GTS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transportation planning / traffic engineering firm (gentecsol.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation planning / traffic engineering firm (gentecsol.com)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "HELIX Environmental Planning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Houseal Lavigne",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and design consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "ICC Innovation",
+   "website": null
+  },
+  {
+   "name": "Infilla",
+   "website": null
+  },
+  {
+   "name": "Kimley-Horn",
+   "website": null
+  },
+  {
+   "name": "konveio",
+   "website": null
+  },
+  {
+   "name": "ktgy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture and planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture and planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Madison AI",
+   "website": null
+  },
+  {
+   "name": "MIG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning, design and engagement consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning, design and engagement consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Mithun",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Open Point",
+   "website": null
+  },
+  {
+   "name": "OpenCivic",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: civic tech product; logo reads 'Civic Technology for a Modern Government' (site JS-only)",
+   "read": {
+    "verdict": "vendor",
+    "why": "civic tech product; logo reads 'Civic Technology for a Modern Government' (site JS-only)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Oracle",
+   "website": null
+  },
+  {
+   "name": "Page & Turnbull",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: historic preservation architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "historic preservation architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "PlaceWorks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and environmental consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and environmental consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Plan to Place",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning/placemaking consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning/placemaking consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Provost & Pritchard",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering consulting firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Rincon Consultants",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental and planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental and planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "rrm design group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture, engineering and planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture, engineering and planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SCAG Southern California Association of Governments",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: council of governments / MPO",
+   "read": {
+    "verdict": "supplier",
+    "why": "council of governments / MPO",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Senf",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: community engagement SaaS platform (senf.app), map-based input + AI analysis",
+   "read": {
+    "verdict": "vendor",
+    "why": "community engagement SaaS platform (senf.app), map-based input + AI analysis",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SJSU Department of Urban and Regional Planning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university department",
+   "read": {
+    "verdict": "supplier",
+    "why": "university department",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SoCalGas",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: gas utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "gas utility",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SOMOS Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: no tech product found; speech-bubble logo suggests outreach/communications firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "no tech product found; speech-bubble logo suggests outreach/communications firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "StreetLight",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: mobility/traffic data platform (StreetLight Data)",
+   "read": {
+    "verdict": "vendor",
+    "why": "mobility/traffic data platform (StreetLight Data)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "studioneleven",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture and urban design studio",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture and urban design studio",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "UC Davis Continuing and Professional Education",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university continuing education",
+   "read": {
+    "verdict": "supplier",
+    "why": "university continuing education",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Verdant",
+   "website": null
+  },
+  {
+   "name": "VisionScape Imagery",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: visual simulation / rendering services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "visual simulation / rendering services firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Willdan",
+   "website": null
+  },
+  {
+   "name": "Yorke Engineering, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental/air-quality engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental/air-quality engineering consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

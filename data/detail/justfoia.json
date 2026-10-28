@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "The Hidden Cost of Public Records Requests Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.justfoia.com/news/hidden-cost-public-records-requests/"
+  },
+  {
    "date": "2026-04-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.justfoia.com/news/what-is-a-public-record/"
-  },
-  {
-   "date": "2024-01-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "5 Public Records Request Process Challenges",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.justfoia.com/news/public-records-request-process-challenges-and-how-to-prevent-them/"
   }
  ],
  "profile": {

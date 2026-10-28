@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "U.S. Cyber Command selects Leidos to deploy unified cyber planning platform",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://leidos.com/insights/us-cyber-command-selects-leidos-deploy-unified-cyber-planning-platform"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Modernizing mission planning for the nuclear triad",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/modernizing-mission-planning-nuclear-triad"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "AI in cyber operations: Key lessons from Women in Defense",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/ai-cyber-operations-key-lessons-women-defense"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -80,33 +107,6 @@
    "kind": "leadership",
    "kind_rule": "names",
    "url": "https://leidos.com/insights/leidos-names-stephen-vather-senior-vice-president-investor-relations"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Leidos Security Enterprise Solutions and Analogic close deal to strengthen global security screening capabilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/leidos-security-enterprise-solutions-and-analogic-close-deal-strengthen-global-security"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Leidos appoints AT&T COO Jeff McElfresh to board of directors",
-   "kind": "leadership",
-   "kind_rule": "appoints",
-   "url": "https://leidos.com/insights/leidos-appoints-att-coo-jeff-mcelfresh-board-directors"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "The next 25 years of airport security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/next-25-years-airport-security"
   }
  ]
 }

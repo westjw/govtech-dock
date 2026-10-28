@@ -1,0 +1,262 @@
+{
+ "event_tag": "APA Minnesota Chapter 2026",
+ "conference": "APA MN Planning Conference 2026",
+ "found": true,
+ "source_url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (text) from https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/. 23 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "106 Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cultural resources consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "cultural resources consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Alliant Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Bolton & Menk, Inc.",
+   "website": null
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "HKGi",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning / landscape firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning / landscape firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "HRGreen",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "ISG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Kimley-Horn & Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Landform",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Larkin & Hoffman",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Mend Collaborative",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: landscape / planning studio",
+   "read": {
+    "verdict": "supplier",
+    "why": "landscape / planning studio",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Metropolitan Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: regional government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "regional government agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Minnesota State Mankato",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MSA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: MSA Professional Services, engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "MSA Professional Services, engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SEH",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Senf",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: map-based community engagement SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "map-based community engagement SaaS",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SRF",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: SRF Consulting, engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "SRF Consulting, engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Stantec",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / design firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Stonebrooke Engineering",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "TC2",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "cannot place",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  },
+  {
+   "name": "WSB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Zone Co.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "cannot place; site did not answer",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   },
+   "is_govtech": null
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

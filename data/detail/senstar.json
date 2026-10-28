@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Senstar Introduces the FiberPatrol FP1500 Precision-Locating Fiber Optic Sensor",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-04-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Senstar Technologies Corporation Reports Fourth Quarter 2025 Financial Results",
    "kind": "press",
@@ -46,8 +46,8 @@
    "url": "https://senstar.com/press-releases/senstar-technologies-corporation-announces-agreement-to-acquire-blickfeld-gmbh/"
   },
   {
-   "date": "2025-11-25",
-   "date_source": "index-text",
+   "date": "2025-11-26",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Senstar Technologies Corporation Reports Third Quarter 2025 Financial Results",
    "kind": "press",
@@ -55,8 +55,8 @@
    "url": "https://senstar.com/press-releases/senstar-technologies-corporation-reports-third-quarter-2025-financial-results/"
   },
   {
-   "date": "2025-11-25",
-   "date_source": "index-text",
+   "date": "2025-11-24",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Senstar Technologies Corporation to Report Third Quarter 2025 Results on Tuesday, November 25, 2025",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2025-08-25",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Senstar Technologies Corporation Reports Second Quarter 2025 Financial Results",
    "kind": "press",

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-28",
+   "headline": "CrowdStrike 2026 Legal Threat Landscape Report: eCrime Leads Attacks, China Activity Intensifies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-2026-legal-threat-landscape-report/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-28",
+   "headline": "When AI Guardrails Expose Vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/when-ai-guardrails-expose-vulnerabilities/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "index-text",
    "first_seen": "2026-10-24",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-september-2026/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "August 2026 Patch Tuesday: One Exploited Zero-Day and 62 Critical Vulnerabilities Among 415 CVEs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-august-2026/"
-  },
-  {
-   "date": "2019-12-02",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Highlights the 4 Key Steps to Successful Incident Response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/video-highlights-the-4-key-steps-to-successful-incident-response/"
   }
  ]
 }

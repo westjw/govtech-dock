@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-28",
+   "headline": "NIMS vs. ICS: Understanding the Difference for Government Emergency Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/nims-vs-ics-difference-emergency-management"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "index-text",
+   "first_seen": "2026-10-28",
+   "headline": "Field Notes from Chapel Hill and Durham: Three Days with UNC and Duke",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/field-notes-chapel-hill-durham"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "index-text",
    "first_seen": "2026-10-20",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veoci.com/blog/ai-governance-healthcare-hospitals"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "How a Hospital\u2019s Billing Failure Led to Shutdown\u2014and What It Exposed",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/hospital-billing-failure-shutdown-response-coordination"
-  },
-  {
-   "date": "2026-05-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Healthcare Under Siege: Cybersecurity Is Now a Clinical Operations Crisis",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/healthcare-cybersecurity-clinical-operations-crisis"
   }
  ]
 }

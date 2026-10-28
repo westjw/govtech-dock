@@ -1,0 +1,51 @@
+[
+ {
+  "file": "exhibitors_Georgia_Planning_Association_2026.json",
+  "name": "AXIS",
+  "verdict": "supplier",
+  "why": "Axis Infrastructure, design/planning firm (axiscompanies.com)",
+  "by": "agent:apa-floor-read-2026-10-28",
+  "on": "2026-10-28"
+ },
+ {
+  "file": "exhibitors_Georgia_Planning_Association_2026.json",
+  "name": "Energy Ready",
+  "verdict": "unsure",
+  "why": "split: reader not_a_company (session title on the conference page: 'Energy Ready: Energy in Georgia Communities...'); skeptic supplier (Sponsor logo in the Fall Conference tiers that links to icma.org. It is ICMA's Energy Ready programme (ICMA is an association), so it is a real sponsor, not just a session title.)",
+  "disputed": true,
+  "by": "agent:apa-floor-read-2026-10-28",
+  "on": "2026-10-28"
+ },
+ {
+  "file": "exhibitors_Georgia_Planning_Association_2026.json",
+  "name": "KB Advisory Group",
+  "verdict": "supplier",
+  "why": "real estate/economic consultancy",
+  "by": "agent:apa-floor-read-2026-10-28",
+  "on": "2026-10-28"
+ },
+ {
+  "file": "exhibitors_Georgia_Planning_Association_2026.json",
+  "name": "MGO MyGovernmentOnline",
+  "verdict": "vendor",
+  "why": "permitting/land management SaaS for local government",
+  "by": "agent:apa-floor-read-2026-10-28",
+  "on": "2026-10-28"
+ },
+ {
+  "file": "exhibitors_Georgia_Planning_Association_2026.json",
+  "name": "Senf",
+  "verdict": "vendor",
+  "why": "map-based community engagement SaaS (senf.app)",
+  "by": "agent:apa-floor-read-2026-10-28",
+  "on": "2026-10-28"
+ },
+ {
+  "file": "exhibitors_Georgia_Planning_Association_2026.json",
+  "name": "The Brick Industry Association",
+  "verdict": "supplier",
+  "why": "industry trade association",
+  "by": "agent:apa-floor-read-2026-10-28",
+  "on": "2026-10-28"
+ }
+]

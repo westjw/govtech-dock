@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-09-24",
-   "date_source": "index-text",
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "PayIt and Harris County Tax Office Launch Priority Pass to Verify Documentation Digitally and Accelerate Office Visits",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://payitgov.com/news/payit-and-harris-county-tax-office-launch-priority-pass-to-verify-documentation-digitally-and-accelerate-office-visits/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "New Research Shows How Agencies Can Hit 90% Digital Adoption",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "2026 AWS Champions: PayIt",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "PayIt Named a 2026 AWS Champion for Excellence in Government Cloud Innovation",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://payitgov.com/blog/how-investing-in-the-resident-experience-enables-digital-government-automation/"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "GR PayIt continues to improve convenience and access for Grand Rapids residents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://payitgov.com/news/gr-payit-continues-to-improve-convenience-and-access-for-grand-rapids-residents/"
   }
  ]
 }

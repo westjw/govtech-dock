@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "GE Vernova reports strong third quarter 2026 financial performance, raises 2026 guidance, and increases share repurchase authorization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/ge-vernova-reports-strong-third-quarter-2026-financial-performance"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "GE Vernova to acquire Trench Group",
+   "kind": "funding",
+   "kind_rule": "to acquire",
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-acquire-trench-group"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "GE Vernova and the Boston Celtics Announce Three-Year Partnership to Recognize Members of the United States Armed Forces",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-boston-celtics-announce-three-year-partnership-recognize-members-united"
+  },
+  {
    "date": "2026-10-22",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "GE Vernova Foundation Marks Milestone as First Staffordshire Students Begin \u2018Engineers of Change\u2019 Programme",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gevernova.com/news/press-releases/tenova-collaboration-ge-vernova-supply-worlds-largest-eaf-nippon-steels-yawata-works"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "NRC issues first U.S. construction permit for a BWRX-300 small modular reactor at Tennessee Valley Authority\u2019s Clinch River site",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/nrc-issues-first-us-construction-permit-bwrx-300-small-modular-reactor-tva-clinch-river"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "GE Vernova advances asset longevity for Egypt\u2019s power sector with Rotor Life Extension services",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-advances-asset-longevity-egypts-power-sector-rotor-life-extension"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "SGE, GE Vernova, Hitachi and Samsung C&amp;T sign MoU to advance BWRX-300 fleet deployment in Europe",
-   "kind": "contract",
-   "kind_rule": "sign MoU",
-   "url": "https://www.gevernova.com/news/press-releases/sge-ge-vernova-hitachi-samsung-ct-sign-mou-advance-bwrx-300-fleet-deployment-europe"
   }
  ]
 }

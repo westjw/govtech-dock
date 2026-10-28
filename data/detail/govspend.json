@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "How to Bid on Government Contracts: A Federal and SLED Process",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/how-to-bid-on-government-contracts-a-federal-and-sled-process/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/starbridge-vs-govspend-why-govspend-wins-for-public-sector-sales-intelligence/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Time-and-Materials Government Contracts: Billing, Rates, and Risks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/time-and-materials-government-contracts-billing-rates-and-risks/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "From Crisis to Stability: Supporting Survivors along the Whole Journey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/articles/supporting-domestic-violence-survivors-crisis-to-stability/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://caseworthy.com/news/introducing-claimexchange-caseworthys-innovative-solution-simplifying-medicaid-and-healthcare-billing/"
-  },
-  {
-   "date": "2024-02-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "MediSked, a CaseWorthy Company, Achieves HITRUST Implemented, 1-year (i1) Certification to Manage Data Protection and Mitigate Cybersecurity Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://caseworthy.com/news/medisked-a-caseworthy-company-achieves-hitrust-implemented-1-year-i1-certification-to-manage-data-protection-and-mitigate-cybersecurity-threats/"
   }
  ],
  "profile": {

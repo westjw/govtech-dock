@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "VertiGIS Updates to PHP Version 8.4.27",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "VertiGIS Accelerates Enterprise GIS Modernization for the City of Houston",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-09-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Future-Ready Geospatial Data for Berlin: BIM and VertiGIS Lay the Foundation for the Next Generation of Digital Real Estate Management",
    "kind": "press",

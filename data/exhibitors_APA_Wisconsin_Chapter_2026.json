@@ -1,0 +1,268 @@
+{
+ "event_tag": "APA Wisconsin Chapter 2026",
+ "conference": "APA Wisconsin Chapter",
+ "found": true,
+ "source_url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (text) from https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/. 24 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "Ayres Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering and geospatial services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and geospatial services firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CE Planning Studio",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Cinnaire",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: community development finance nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "community development finance nonprofit",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "City of Green Bay",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: city government",
+   "read": {
+    "verdict": "supplier",
+    "why": "city government",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "City of Madison",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: city government",
+   "read": {
+    "verdict": "supplier",
+    "why": "city government",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "City of Madison Metro Transit",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: city transit agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "city transit agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "HKGi",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and landscape architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and landscape architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "HNTB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: infrastructure engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "infrastructure engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Houseal Lavigne",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and design consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "ISG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture and engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture and engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "McKenna",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning and design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning and design consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MDRoffers Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Mead & Hunt",
+   "website": null
+  },
+  {
+   "name": "MSA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: MSA Professional Services, engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "MSA Professional Services, engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "PermitPal",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: AI permitting-risk tool sold to energy developers/investors, not to government (permitpal.ai)",
+   "read": {
+    "verdict": "supplier",
+    "why": "AI permitting-risk tool sold to energy developers/investors, not to government (permitpal.ai)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "RDG Planning & Design",
+   "website": null
+  },
+  {
+   "name": "SB Friedman",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: real estate/development advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate/development advisory firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SRF",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: SRF Consulting Group, engineering/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "SRF Consulting Group, engineering/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Studio GWA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning/landscape design studio",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning/landscape design studio",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  },
+  {
+   "name": "UW-Milwaukee Cultural Resource Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university program",
+   "read": {
+    "verdict": "supplier",
+    "why": "university program",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Wisconsin Housing Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: housing industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing industry association",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "ZoneCo",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: zoning code consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "zoning code consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

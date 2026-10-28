@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Security Without a Single Point of Failure: How Momentus Technologies Approaches Defense in Depth",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/security-without-a-single-point-of-failure"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/venue-sales-automation"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Employee Engagement Events: A Practical Guide to Planning Those That Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/employee-engagement-events"
   }
  ]
 }

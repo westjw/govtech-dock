@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Ivalua Named a Leader in Supplier Value Management Platforms, Q4 2026 Evaluation by Independent Research Firm",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/press-releases/ivalua-named-a-leader-in-supplier-value-management-platforms-q4-2026-evaluation-by-independent-research-firm/"
+  },
+  {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Businesses waste $1.5 million a year on manual work AI could do",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Ivalua Recognized for Employee Happiness, Perks, and Work-Life Balance",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Ivalua Named a Leader in the IDC MarketScape: Worldwide AI-Enabled Direct Spend",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://it.ivalua.com/blog/gestione-dei-rischi-dellia-agentica-negli-acquisti/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Materiali diretti negli acquisti: la guida definitiva",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://it.ivalua.com/blog/materiali-diretti-negli-acquisti-la-guida-definitiva/"
   }
  ],
  "profile": {

@@ -1,0 +1,144 @@
+{
+ "event_tag": "APA North Carolina Chapter 2026",
+ "conference": "APA-NC Fall Conference 2026",
+ "found": true,
+ "source_url": "https://northcarolina.planning.org/conference-and-events/sponsors/",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (text) from https://northcarolina.planning.org/conference-and-events/sponsors/, 1 image(s) opened and read. 13 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "Benchmark Planning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Charlotte urban planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Charlotte urban planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Bolton & Menk, Inc.",
+   "website": null
+  },
+  {
+   "name": "Clarion Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: zoning/planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "zoning/planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Freese and Nichols, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Insight Consulting Group, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consulting firm; no software product seen",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm; no software product seen",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Inspire Placemaking Collective, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: placemaking/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "placemaking/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Kimley-Horn",
+   "website": null
+  },
+  {
+   "name": "McAdams",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "N-Focus, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: NC planning and design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "NC planning and design consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Short Elliott Hendrickson, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm (SEH)",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm (SEH)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Stantec",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/design firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "VHB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "WithersRavenel",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

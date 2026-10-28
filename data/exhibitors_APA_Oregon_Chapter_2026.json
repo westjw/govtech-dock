@@ -1,0 +1,180 @@
+{
+ "event_tag": "APA Oregon Chapter 2026",
+ "conference": "2026 OAPA Planning Conference",
+ "found": true,
+ "source_url": "https://oregon.planning.org/",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (picture) from https://oregon.planning.org/, 1 image(s) opened and read. 14 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "3J Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Burgess & Niple",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Cascadia Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Department of Land Conservation & Development",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Oregon state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Oregon state agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "DOWL",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "HAPO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: HAPO Community Credit Union",
+   "read": {
+    "verdict": "supplier",
+    "why": "HAPO Community Credit Union",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Harper Houf Peterson Righellis Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Housing Land Advocates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: housing advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing advocacy nonprofit",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Maul Foster Alongi",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental / engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental / engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MIG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning / design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning / design firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Port of Portland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: port authority (government)",
+   "read": {
+    "verdict": "supplier",
+    "why": "port authority (government)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Transportation and Growth Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Oregon state program (ODOT/DLCD)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Oregon state program (ODOT/DLCD)",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Walker Macy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: landscape architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "landscape architecture firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Winterbrook",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

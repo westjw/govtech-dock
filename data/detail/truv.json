@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Introducing Draft Orders: Start a Request, Send it Later",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "http://www.truv.com/blog/introducing-draft-orders"
+  },
+  {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Introducing Batch Processing and SFTP Delivery to Automate Verifications for Agencies",
    "kind": "product",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Introducing The Dashboard AI Chat and Onboarding Checklist",
    "kind": "product",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Product Update: September 2026",
    "kind": "product",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Truv Dashboard Is Now Mobile",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Product Update: August 2026",
    "kind": "product",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Introducing Education Verification: Confirm Enrollment Status at the Source",
    "kind": "product",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-08-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Automating Income Analysis via Documents is now live in Encompass",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "New Feature: Access Monthly Bank Statements from Truv Verification of Assets",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Introducing Truv's New Document Upload: A Smarter, Guided Experience",
    "kind": "product",

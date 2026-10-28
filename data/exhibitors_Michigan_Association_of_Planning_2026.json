@@ -1,0 +1,224 @@
+{
+ "event_tag": "Michigan Association of Planning 2026",
+ "conference": "Planning Michigan Conference",
+ "found": true,
+ "source_url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (logos_alt) from https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference, 3 image(s) opened and read. 19 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "Abundant Housing Michigan",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: housing advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing advocacy nonprofit",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "AutoSitu",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI plan review / code compliance software for cities",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI plan review / code compliance software for cities",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Bauckham, Thall, Seeber, Kaufman & Koches PC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: municipal law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal law firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Beckett & Raeder, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning / landscape firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning / landscape firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Bloom Sluggett, PC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: municipal law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal law firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Carlisle | Wortman Associates, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Fahey Schultz Burzych Rhodes, PLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: municipal law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal law firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Fishbeck",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Giffels Webster",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "McKenna",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Michigan State University Extension",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university extension",
+   "read": {
+    "verdict": "supplier",
+    "why": "university extension",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Progressive Companies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture / engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture / engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Rowe Professional Services Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SafeBuilt",
+   "website": null
+  },
+  {
+   "name": "Spalding DeDecker",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "The Brick Industry Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  },
+  {
+   "name": "Wade Trim",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Williams & Works",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

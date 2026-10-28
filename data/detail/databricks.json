@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Voice Agents are here. Context turns them into real customer value.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/voice-agents-are-here-context-turns-them-real-customer-value"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -28,6 +37,15 @@
    "url": "https://www.databricks.com/blog/bigquery-databricks-strategic-framework"
   },
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Vital Skills: Upskilling Genie Code with Healthcare and Life Sciences skills",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
    "headline": "Building live intelligence: Databricks AI Search supports Streaming Tables, Materialized Views, and Managed tables using Iceberg",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
    "headline": "The media industry is becoming a prediction economy",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/fraud-analyst-ai-coworker-detecting-telecom-fraud-real-time-one-platform"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "The AI Bill is coming",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/ai-bill-coming"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Databricks AI Runtime and NVIDIA make it easier to customize open models with enterprise data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/databricks-ai-runtime-nvidia-train-fine-tune-models"
   }
  ]
 }

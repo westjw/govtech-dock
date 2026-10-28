@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Corti Introduces New Benchmark to Raise the Standard for Evaluating AI-Generated Clinical Notes",
    "kind": "product",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "Redline Data and Corti Partner to Bring Clinical AI Across Germany",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-04-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Corti Ships Symphony for Medical Coding with up to 25% Accuracy Edge Over OpenAI and Anthropic",
    "kind": "press",

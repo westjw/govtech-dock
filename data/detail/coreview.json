@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Microsoft 365 security stories from the field: lessons in tenant governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/microsoft-365-security-stories-from-the-field"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "as VP",
    "url": "https://www.coreview.com/news/coreview-appoints-kasper-lindgaard-as-vp-of-security-strategy"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CoreView and Cyber Vigilance help the HALO Trust secure Microsoft 365 operations across 36 countries, including active conflict zones",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/coreview-and-cyber-vigilance-help-the-halo-trust"
   }
  ]
 }

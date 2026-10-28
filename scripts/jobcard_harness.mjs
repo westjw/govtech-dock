@@ -709,4 +709,28 @@ try {
   factsPanel = { html: vm.runInContext("cfFactsHTML(__facts)", ctx),
                  none: vm.runInContext("cfFactsHTML({tag:'Y'})", ctx) };
 } catch (e) { errors.push(`running cfFactsHTML: ${e && e.message}`); }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence, coCards, flags, factsPanel }));
+/* THE CONFERENCES BOX on a company page (owner, 2026-10-28): the page's own
+   coConfGroups and coConfs on a company tagged at an edition ahead, one
+   behind, one whose row has rolled to next year's dates and kept the tag,
+   one moved to prior_tags, one with no dates, one whose dates are for an
+   older edition, one no row knows, and a hostile name. selftest holds the
+   groups to build_site.co_conferences on the same fixture. */
+let coConfBox = null;
+try {
+  ctx.__confRows = [
+    { tag: "Ahead 2099", name: "Ahead Expo", dates: "March 3-5, 2099", city: "Reno, NV" },
+    { tag: "Past 2020", name: "Past Expo", dates: "May 4-6, 2020", city: "Austin, TX" },
+    { tag: "Rolled 2025", name: "Rolled Summit", dates: "September 25-29, 2099" },
+    { tag: "New 2027", name: "New Fair", dates: null, dates_confidence: "unannounced" },
+    { tag: "Moved 2099", name: "Moved Forum", dates: "June 1-2, 2099", prior_tags: ["Moved 2024"] },
+    { tag: "Early 2098", name: "Stale Dates", dates: "April 1-2, 2020" },
+    { tag: "Evil 2099", name: "<img src=x onerror=alert(1)>", dates: "July 7-8, 2099" },
+  ];
+  ctx.__confOrg = { id: "conf-co", name: "Conf Co", conferences: ["Ahead 2099", "Past 2020", "Rolled 2025",
+    "New 2027", "Moved 2024", "Early 2098", "Ghost 2026", "Evil 2099"] };
+  coConfBox = vm.runInContext(`(() => { D = { conferences: __confRows, organizations: [] };
+    const g = coConfGroups(__confOrg), ts = l => l.map(i => i.t);
+    return { groups: { now: ts(g.now), ahead: ts(g.ahead), undated: ts(g.undated), went: ts(g.went) },
+             html: coConfs(__confOrg), none: coConfs({ id: "x", name: "X", conferences: [] }) }; })()`, ctx);
+} catch (e) { errors.push(`running coConfs: ${e && e.message}`); }
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence, coCards, flags, factsPanel, coConfBox }));

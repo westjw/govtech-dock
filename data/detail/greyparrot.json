@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Climate Week NYC 2026: waste is an unmeasured domestic resource",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Teaching computers to see what we see: Mikela Druckman on AI in waste",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Waste intelligence vs. AI for sorting: what's the difference?",
    "kind": "press",

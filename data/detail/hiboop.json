@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "DSM-6: What the APA's Roadmap Says, and Why There's No Release Date",
    "kind": "press",
@@ -85,7 +85,7 @@
    "date": "2026-01-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Evidence-based guidance for selecting the right clinical assessments for your practice and patient population.",
+   "headline": "How to Choose Mental Health Assessments for Your Clinic",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hiboop.com/insights/choosing-assessments/"
@@ -101,7 +101,7 @@
   },
   {
    "date": "2025-01-27",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "HiBoop Launches Clinical Pilot for Innovative Mental Health Assessment Platform",
    "kind": "product",

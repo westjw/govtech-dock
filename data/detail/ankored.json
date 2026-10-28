@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "What Certifications Does a Youth Sports Coach Need?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ankored.com/blog/youth-sports-coach-certifications"
+  },
+  {
    "date": "2026-10-27",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Junior Volleyball Association Selects Ankored to Manage Background Screens and Coaches' Training",
    "kind": "contract",
@@ -11,16 +20,16 @@
   },
   {
    "date": "2026-10-23",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
-   "headline": "Understanding the difference between PA Act 33, Act 34 and Act 153 clearances for Youth Sports",
+   "headline": "Understanding the Difference Between PA Act 33, Act 34 and Act 153 Clearances for Youth Sports",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ankored.com/blog/pa-act-33-34-151-153-clearances"
   },
   {
    "date": "2026-10-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Who Needs to Complete SafeSport Training? A Guide for Coaches, Staff, and Volunteers",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "The Ultimate Guide to Youth Sports Background Checks",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What Disqualifies a Coach From a Florida Level 2 Background Check (And What Happens Next)",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "How to Build Your 2027 Parks and Recreation Compliance Budget",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "The Softball Club Compliance Checklist: 6 Seasonal Milestones",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "CORI Check Massachusetts: 5 Softball Compliance Gaps",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ankored.com/blog/cori-check-massachusetts"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Platform in Practice: How Ankored Helps Automate Youth Sports Compliance in LeagueApps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ankored.com/blog/platform-in-practice-youth-sports-compliance-leagueapps"
   }
  ],
  "profile": {

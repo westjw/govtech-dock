@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Tricks, Treats, and Spooky Stories from Your Behavioral Health EHR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cantatahealth.com/resource/blog/tricks-treats-spooky-stories-behavioral-health-ehr/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cantatahealth.com/resource/blog/built-to-connect-how-integrated-behavioral-health-ehr-platforms-prepare-leaders-for-whats-next/"
-  },
-  {
-   "date": "2026-03-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Q&A: Exploring How Social Work Principles Shape Product Leadership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cantatahealth.com/resource/blog/qa-exploring-how-social-work-principles-shape-product-leadership/"
   }
  ],
  "profile": {

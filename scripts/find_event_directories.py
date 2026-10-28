@@ -836,7 +836,7 @@ def candidates(page: str, base: str) -> list:
 
 
 def stage_directories(write: bool, limit: int | None, recheck: bool = False,
-                      which: str = "state") -> int:
+                      which: str = "state", only: set | None = None) -> int:
     doc = _load(which)
     if recheck:
         # RE-JUDGE WHAT WAS ALREADY ACCEPTED. The gate that accepted the first
@@ -845,6 +845,12 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
         todo = [e for e in doc["events"] if e.get("org_url")]
     else:
         todo = [e for e in doc["events"] if e.get("org_url") and not e.get("directory_url")]
+    # --only NAMES THE ROWS, so one family can be read without re-judging the
+    # rest: a plain run re-decides every row with no directory, and a status
+    # or a reader's note on a row nobody meant to touch is replaced (APA's 28
+    # new chapters, 2026-10-28, beside 300 rows read on other days).
+    if only is not None:
+        todo = [e for e in todo if e.get("org_code") in only]
     if limit:
         todo = todo[:limit]
     # THE STRIP HAPPENS PER ROW, INSIDE THE LOOP, AND NOT BEFORE --limit.
@@ -1071,7 +1077,10 @@ def confirmed_name(e: dict) -> str | None:
     return None
 
 
-GENERIC_TITLE = re.compile(r"^(home|welcome|index|main|default|untitled)\b", re.I)
+# "Homepage" too: apacalifornia.org is titled "Homepage - American Planning
+# Association California Chapter", and "\bhome\b" does not match inside the
+# one word, so the generic half was taken and the name half never read.
+GENERIC_TITLE = re.compile(r"^(home\s*page|home|welcome|index|main|default|untitled)\b", re.I)
 # THE PLATFORM'S WORDS ARE NOT THE NAME. CivicPlus titles every page
 # "Official Website of the Illinois Chapter of APCO", and that whole string
 # was about to become a public tag (2026-10-15).
@@ -1158,6 +1167,9 @@ def event_name_and_year(page: str, url: str) -> tuple[str | None, str | None]:
     return name, year
 
 
+TAG_SHORT = {"American Planning Association": "APA"}
+
+
 def _tag(base: str, year: str, taken: set, geo: str | None = None) -> str:
     r"""A catalog tag: '<name> <year>', unique, in the charset selftest allows.
 
@@ -1177,6 +1189,15 @@ def _tag(base: str, year: str, taken: set, geo: str | None = None) -> str:
     # Education Networ 2026" (2026-10-20). Past 44 the name is cut back to
     # the last whole word.
     base = clean(base)
+    # THE YEAR ONCE. An event's own name often carries it ("2026 APA Quad
+    # State Conference"), and the tag adds it again at the end.
+    base = re.sub(rf"^{year}\s+|\s+{year}$", "", base).strip() or base
+    # AN ORGANISATION'S OWN ACRONYM BEFORE A CUT. "Pennsylvania Chapter of the
+    # American Planning Association" cut at a word is "Pennsylvania Chapter of
+    # the American 2026"; every chapter site calls its parent APA.
+    if len(base) > 44:
+        for long, short in TAG_SHORT.items():
+            base = re.sub(re.escape(long), short, base, flags=re.I)
     if len(base) > 44:
         base = base[:45].rsplit(" ", 1)[0]
         # nor left hanging on a connector: "Association of 2026"
@@ -1207,6 +1228,18 @@ def stage_promote(write: bool, which: str = "state") -> int:
     a directory that a fetch read as a list of companies; an organisation
     name the parent's own listing confirms; an event name the directory page
     states; and a year. Anything missing and the row says which.
+
+    LISTED WITHOUT A FLOOR (owner, 2026-10-28: "add all 48" APA chapters).
+    A chapter whose sponsors are a picture, a browser-only app or nothing at
+    all has a conference all the same, and the tab is where a seller finds
+    it. Such a row carries `conference_read` - the chapter's conference page,
+    found by a reader and confirmed by a skeptic - and is held to the same
+    bar with the conference page standing where the directory stood: it must
+    answer TODAY, show it is this chapter's (owns(), the guard that keeps a
+    parent's event off a chapter), and state the year the reader read, which
+    the page and not the reader supplies. It lands with no exhibitor_url, so
+    the sweep never reads it; a list a reader read off a picture is staged
+    by the reader's door, never by a fetcher guessing at a logo.
     """
     doc = _load(which)
     cat_p = DATA / "conferences.json"
@@ -1220,6 +1253,9 @@ def stage_promote(write: bool, which: str = "state") -> int:
 
     ready = [e for e in doc["events"]
              if e.get("status") == "directory_found" and not e.get("promoted")]
+    listed = [e for e in doc["events"]
+              if e.get("status") != "directory_found" and not e.get("promoted")
+              and (e.get("conference_read") or {}).get("confirmed") is True]
 
     def _norm(u):
         return (u or "").strip().rstrip("/").lower()
@@ -1227,9 +1263,11 @@ def stage_promote(write: bool, which: str = "state") -> int:
     for e in doc["events"]:
         if e.get("org_url"):
             kin.setdefault(_norm(e["org_url"]), []).append(e.get("event_name") or "")
-    print(f"{len(ready)} event(s) with a directory and not yet promoted\n")
+    print(f"{len(ready)} event(s) with a directory and not yet promoted, "
+          f"{len(listed)} with a confirmed conference page and no floor\n")
     added, refused = [], []
-    for e in ready:
+    for e in ready + listed:
+        floor = e.get("status") == "directory_found"
         org = confirmed_name(e)
         name_source = e.get("org_url_source")
         if not org:
@@ -1249,6 +1287,60 @@ def stage_promote(write: bool, which: str = "state") -> int:
                                            f"{e.get('department')!r}"
                                            + (f" or {cp!r}" if cp else "")))
             continue
+        hint = e.get("parent_national")
+        if not floor:
+            got = _listed(e, hint)
+            if isinstance(got, str):
+                refused.append((e["org_code"], got))
+                continue
+            name, year, cr = got
+            # A JOINT CONFERENCE IS NAMED FOR THE EVENT, not for the chapter
+            # that hosts its row: the Quad State Conference is Iowa's, Kansas's
+            # and Missouri's, and "APA Missouri 2026" on a company page would
+            # say something the page did not.
+            tag = _tag(name if (e.get("joint_event") and name) else org, year, taken, e.get("geo"))
+            taken.add(tag)
+            form = cr.get("list_form")
+            row = {
+                "block": place[0], "department": place[1],
+                "conference": name or org,
+                "flagship": False, "swept": False,
+                "exhibitor_url": None,
+                # "picture" is read by no fetcher: the names on it were read
+                # by a reader and a skeptic and staged by their door, and a
+                # sweep of the page would put its menu over them.
+                # "reader": a list a reader and a skeptic read name by name,
+                # staged by their door. "image" would invite the logo sweep,
+                # and a find replaces a find.
+                "fetchability": ("picture" if form == "picture" else
+                                 "reader" if cr.get("names") else
+                                 "js-walled" if form == "js" else "not-found"),
+                "event_tag": tag,
+                "url": cr["url"],
+                "dates": None, "city": None,
+                "dates_source": cr["url"],
+                "dates_confidence": "unannounced",
+                "discovery_notes": (
+                    f"State chapter event listed from data/{REGISTRIES[which].name} on "
+                    f"{dt.date.today().isoformat()} without a floor a fetcher can read. "
+                    f"Organisation name confirmed as {org!r} by {name_source}. "
+                    f"Conference page {cr['url']} read by a reader and confirmed by a "
+                    f"skeptic ({cr.get('read_on')}), re-read on promotion: it is the "
+                    f"chapter's and states {year}. Event name "
+                    + (f"read from the page as {name!r}." if name else
+                       "not stated on the page; the organisation's name stands in.")),
+                ("state_event" if which == "state" else "national_event"):
+                    {"org_code": e["org_code"], "geo": e.get("geo"),
+                     "parent_national": e.get("parent_national")},
+            }
+            if cr.get("list_url"):
+                row["exhibitor_url_candidate"] = cr["list_url"]
+                row["fetchability_note"] = (f"{form}: {cr.get('list_note') or ''}").strip()[:300]
+            cat["conferences"].append(row)
+            e["promoted"] = True
+            e["promoted_tag"] = tag
+            added.append((e["org_code"], tag, cr["url"]))
+            continue
         if e["directory_url"] in known_urls:
             refused.append((e["org_code"], "that exhibitor url is already in the "
                                            "catalog under another event"))
@@ -1264,7 +1356,6 @@ def stage_promote(write: bool, which: str = "state") -> int:
         # stage promoted it - a page whose sponsors are logo images and
         # whose every harvested name was the site's own menu. The page is
         # judged again, by the same judge, before it becomes public.
-        hint = e.get("parent_national")
         sibs = [n for n in kin.get(_norm(e.get("org_url")), [])
                 if n and n != e.get("event_name")]
         verdict, why, _names = judge(page, e["directory_url"], hint, e.get("geo"),
@@ -1280,7 +1371,7 @@ def stage_promote(write: bool, which: str = "state") -> int:
             refused.append((e["org_code"], "the page names no year, and a tag "
                                            "without one cannot be read back"))
             continue
-        tag = _tag(org, year, taken, e.get("geo"))
+        tag = _tag(name if (e.get("joint_event") and name) else org, year, taken, e.get("geo"))
         taken.add(tag)
         # AND THE URL IS SPOKEN FOR TOO, from this moment on. known_urls was
         # built once from conferences.json and never added to, so the refusal
@@ -1354,6 +1445,73 @@ def stage_promote(write: bool, which: str = "state") -> int:
     return 0
 
 
+def _flat(s: str) -> str:
+    """Text for matching a quote: tags out, entities decoded, punctuation and
+    case gone, so a curly quote or an en dash cannot fail an honest match."""
+    s = html_lib.unescape(re.sub(r"<[^>]+>", " ", s or ""))
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9&]+", " ", s.lower())).strip()
+
+
+def _listed(e: dict, hint: str | None):
+    """(event name, year, conference_read) for a row listed without a floor,
+    or the reason it is refused.
+
+    The reader's read is a lead, never the fact: the page is fetched again
+    and must answer, must be the chapter's own (owns(), which refuses a
+    parent's event however well it reads), and must state a year - the same
+    year the reader read, so a page that has rolled to the next edition since
+    is read again rather than published under the old one.
+    """
+    cr = e.get("conference_read") or {}
+    url = str(cr.get("url") or "")
+    if not url.startswith(("http://", "https://")):
+        return "the confirmed read carries no conference page"
+    page = fetch(url)
+    if not page:
+        return "the conference page stopped answering"
+    if not owns(page, url, e.get("geo"), e.get("org_url"),
+                PARENT_SITES.get(hint or ""), e.get("org_name") or "",
+                e.get("org_code") or ""):
+        return "the conference page does not show it is this chapter's"
+    # THE READER'S WORDS, FOUND ON THE PAGE TODAY. A chapter's conference
+    # page heads itself "Conference & Events" as often as with the event's
+    # name, and lists past and future editions (Illinois's runs to 2029), so
+    # no heading or largest year can be trusted to say which edition this
+    # is. The reader quoted the words that name the event and its year; the
+    # skeptic confirmed them; here they must still be on the page, every
+    # piece of them, or the row waits. A page that has rolled to the next
+    # edition no longer carries them.
+    year = str(cr.get("year") or "")
+    quote = str(cr.get("quote") or "")
+    if not re.fullmatch(r"20\d\d", year) or year not in quote:
+        return "the conference page names no year, and a tag without one cannot be read back"
+    text = _flat(page)
+    parts = [_flat(q) for q in re.split(r"\.\.\.|\u2026", quote) if _flat(q)]
+    if not parts or not all(q in text for q in parts):
+        return (f"the reader's words naming the {year} edition are not on the page "
+                f"today: the edition is read again before anything is published")
+    name = None
+    for cand in (cr.get("name"), re.split(r"\s+\(", str(cr.get("name") or ""))[0]):
+        if cand and _flat(cand) and _flat(cand) in text:
+            name = html_lib.unescape(str(cand)).strip()
+            break
+    # "2026 Annual Conference" is true and names nothing on a tab of a
+    # hundred conferences; the organisation stands in for a name that is
+    # only a year and the words every conference uses.
+    if name and not re.sub(r"\b(20\d\d|\d+(st|nd|rd|th)|annual|conference|fall|spring|"
+                           r"state|planning|the|of)\b|\W", "", name, flags=re.I):
+        name = None
+    # A JOINT CONFERENCE IS LISTED ONCE. SNEAPA is Connecticut's, Rhode
+    # Island's and Massachusetts's; three rows for it would tag every sponsor
+    # with three events. The host row carries it and the others say so.
+    if e.get("covered_by"):
+        return f"a joint conference, listed under {e['covered_by']}"
+    if str(cr.get("year") or "") != year:
+        return (f"the page reads {year} and the reader read {cr.get('year')!r}: "
+                f"the edition is read again before anything is published")
+    return name, year, cr
+
+
 def _save(doc: dict, which: str) -> None:
     # THE DOC DECIDES WHERE IT GOES. A caller that passes the wrong registry
     # name is caught here, before anything is overwritten, because the doc
@@ -1384,6 +1542,7 @@ def main() -> int:
     ap.add_argument("--limit", type=int)
     ap.add_argument("--recheck", action="store_true",
                     help="re-judge rows that already carry a directory url")
+    ap.add_argument("--only", help="comma-separated org codes: read only these rows")
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--national", action="store_true",
                     help="work on data/national_events.json instead of the "
@@ -1399,7 +1558,8 @@ def main() -> int:
             return 1
         return stage_parents(a.write)
     if a.directories:
-        return stage_directories(a.write, a.limit, a.recheck, which)
+        only = {c.strip() for c in a.only.split(",") if c.strip()} if a.only else None
+        return stage_directories(a.write, a.limit, a.recheck, which, only)
     if a.promote:
         return stage_promote(a.write, which)
     ap.print_help()

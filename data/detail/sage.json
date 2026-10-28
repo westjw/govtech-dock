@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Occupancy is up: why is cash still tight in senior living?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/senior-living-cash-flow-occupancy-gap/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Adding an acquired practice to your dental group: the first finance questions to answer before go-live",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/what-is-accounts-payable/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "What is the accounts payable process?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/accounts-payable-process/"
   }
  ]
 }

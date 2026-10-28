@@ -1,0 +1,264 @@
+{
+ "event_tag": "NY Upstate Chapter of the APA 2026",
+ "conference": "NY Upstate Chapter of the American Planning Association",
+ "found": true,
+ "source_url": "https://www.nyupstateplanning.org/2026-annual-conference",
+ "source_note": "Read by a reader and confirmed name by name by a skeptic on 2026-10-28 (picture) from https://www.nyupstateplanning.org/2026-annual-conference, 1 image(s) opened and read. 23 name(s) both readers saw; any name only one of them saw, or that the skeptic disputed (a year-round chapter sponsor, the chapter itself, a tier label), was left out. Names only - nothing here decides whether a company is govtech, and no website was inferred.",
+ "exhibitors": [
+  {
+   "name": "Binghamton University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "C&S Companies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Colliers Engineering & Design",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "County of Albany",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: county government",
+   "read": {
+    "verdict": "supplier",
+    "why": "county government",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Creighton Manning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "CZB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "Highland Planning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "JMT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "LaBella",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Laberge Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MIG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning / design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning / design firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MJ (mjteam.com)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: MJ Engineering, engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "MJ Engineering, engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "MRB Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "New York State Department of Environmental Conservation Hudson River Estuary Program",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state agency program",
+   "read": {
+    "verdict": "supplier",
+    "why": "state agency program",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "New York State Hudson River Valley Greenway",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state agency",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Planning4Places",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: planning consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "planning consultancy",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Saratoga Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: landscape / planning firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "landscape / planning firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "Sea Grant New York",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university / federal program",
+   "read": {
+    "verdict": "supplier",
+    "why": "university / federal program",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "SLR",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: environmental consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental consulting firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  },
+  {
+   "name": "social explorer",
+   "website": null
+  },
+  {
+   "name": "wendel",
+   "website": null
+  },
+  {
+   "name": "Weston & Sampson",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:apa-floor-read-2026-10-28",
+    "on": "2026-10-28"
+   }
+  }
+ ],
+ "why": null,
+ "quality_was": null,
+ "quality": "read"
+}

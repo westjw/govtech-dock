@@ -261,6 +261,11 @@
   .corail .note{font-size:11px;line-height:1.5;color:var(--c-ink2);
     padding-top:9px}
   .corail .all{font-size:11px;padding-top:9px;display:inline-block}
+  /* the Conferences box: a small label per group, the rail's own rows */
+  .corail .coconf-h{font:700 10.5px/1.3 var(--font-heading);color:var(--c-ink2);
+    margin:12px 0 0}
+  .corail .coconf-more summary{font-size:11px;padding-top:9px;cursor:pointer;
+    color:var(--c-accent-text)}
   .coclaim{border:1px solid var(--c-stroke);padding:16px}
   .coclaim.urgent{border-color:var(--c-accent-text)}
   .coclaim h3{font:800 13px/1.2 var(--font-heading);margin:0 0 8px}
@@ -6892,6 +6897,75 @@ function coAge(iso){
    The third does not fall back to the category listing, because that is the
    claim this block was built to stop making. It offers the category as
    NAVIGATION instead, labelled as navigation, which is all it ever was. */
+/* WHERE THEY SHOW UP (owner, 2026-10-28: "the conferences box on each company
+   page that highlights what they have gone to and are going to"). A tag on a
+   company says its name was on that edition's exhibitor or sponsor list, read
+   off the organiser's own page, so an edition still ahead is one they are
+   booked for and one behind them is one they were at. Nothing else is
+   claimed: not that they attend every year, not what they showed.
+   - A TAG THE CATALOGUE HAS SINCE ROLLED (prior_tags) IS A PAST EDITION,
+     whatever the row's new dates say: DISTRIBUTECH 2026's exhibitors are not
+     booked for DISTRIBUTECH 2027 because the row now carries 2027's dates.
+   - An edition with no date on file says so (cfNoDates) rather than being
+     placed ahead or behind; build_site.co_conferences says the same words.
+   Rebuilt from board.json on every build, so a scrub that tags a company and
+   dates the event updates this box with nothing else to do. */
+function coConfGroups(o){
+  const tags=[...new Set((o.conferences&&o.conferences.length?o.conferences:[o.conference]).filter(Boolean))];
+  const rows=D.conferences||[];
+  const yr=t=>+((String(t).match(/(20\d\d)$/)||[])[1]||0);
+  const items=tags.map(t=>{
+    let r=rows.find(x=>x.tag===t), prior=false;
+    if(!r){ r=rows.find(x=>(x.prior_tags||[]).includes(t)); prior=!!r; }
+    if(!r)return null;
+    /* A TAG NAMES ITS EDITION BY ITS YEAR, and a row keeps its tag when its
+       dates roll to the next edition: ICMA 2026's row carries September
+       2027's dates. A 2026 tag under 2027 dates is an edition they were at,
+       never a booking for 2027; a tag newer than the dates is an edition with
+       no date on file yet. */
+    const rg=calRange(r.dates), ty=yr(t);
+    if(!prior&&rg&&ty&&ty<rg.start.getFullYear())prior=true;
+    const other=!prior&&!!rg&&!!ty&&ty>rg.end.getFullYear();
+    return {t,r,prior,other};
+  }).filter(Boolean);
+  const start=i=>(calRange(i.r.dates)||{}).start;
+  const dated=i=>!i.prior&&!i.other&&calRange(i.r.dates);
+  return {
+    now:items.filter(i=>dated(i)&&isNow(i.r.dates)),
+    ahead:items.filter(i=>dated(i)&&!isNow(i.r.dates)&&!isPast(i.r.dates))
+      .sort((a,b)=>start(a)-start(b)),
+    undated:items.filter(i=>!i.prior&&(i.other||!calRange(i.r.dates)))
+      .sort((a,b)=>String(a.r.name).localeCompare(String(b.r.name))),
+    went:items.filter(i=>i.prior||(dated(i)&&isPast(i.r.dates)))
+      .sort((a,b)=>(b.prior?yr(b.t)*1e13:+start(b))-(a.prior?yr(a.t)*1e13:+start(a))
+                   ||(a.prior?0:1)-(b.prior?0:1)),
+  };
+}
+function coConfs(o){
+  const g=coConfGroups(o);
+  const n=g.now.length+g.ahead.length+g.undated.length+g.went.length;
+  if(!n)return "";
+  const thisYear=new Date().getFullYear();
+  const when=i=>{
+    if(i.prior||i.other){ const y=(String(i.t).match(/(20\d\d)$/)||[])[1];
+      return y?`the ${y} edition`+(i.other?", dates not on file":""):"an earlier edition"; }
+    const rg=calRange(i.r.dates);
+    if(!rg)return i.r.dates||cfNoDates(i.r);
+    return cfSpotDate(i.r)+(rg.start.getFullYear()!==thisYear?`, ${rg.start.getFullYear()}`:"");
+  };
+  const row=i=>`<div class="r"><span><a href="?e=${encodeURIComponent(i.r.tag)}" data-ev="${esc(i.r.tag)}">${esc(i.r.name)}</a>
+      <span class="d">${esc([when(i),i.prior||i.other?"":cfPlace(i.r)].filter(Boolean).join(" · "))}</span></span></div>`;
+  const grp=(label,list,cap)=>{
+    if(!list.length)return "";
+    const shown=cap?list.slice(0,cap):list, rest=cap?list.slice(cap):[];
+    return `<h3 class="coconf-h">${label}</h3>${shown.map(row).join("")}${rest.length
+      ?`<details class="coconf-more"><summary>${rest.length} more</summary>${rest.map(row).join("")}</details>`:""}`;
+  };
+  return `<section class="coconfs"><h2>Conferences</h2>
+    ${grp("On now",g.now)}${grp("Going to",g.ahead)}${grp("Date not announced",g.undated)}${grp("Went to",g.went,6)}
+    <p class="note">From the exhibitor and sponsor lists on each organiser's own page.</p>
+  </section>`;
+}
 function coRivals(o,sibs,inCat){
   const list=o.competitors||[];
   const n=(inCat||[]).length;
@@ -7308,6 +7382,7 @@ function co(id,fromUrl){
         rel="noopener">Their hiring board</a>${
         readable?"":`<span class="tag">unreadable</span>`}</div>`:""}
     </section>
+    ${coConfs(o)}
     ${(o.brands&&o.brands.length)?`<section><h2>Brands they own</h2>
       ${o.brands.map(b=>`<div class="r"><span>${coBrandHTML(b)}${
         b.descriptor?`<span class="d">${esc(b.descriptor)}</span>`:""}</span>${
@@ -7352,6 +7427,10 @@ function co(id,fromUrl){
 
   const sv=$("#cosave");
   if(sv) sv.onclick=()=>{ toggleSaveCompany(o); co(id,true); };
+  // an event in the Conferences box opens its panel as every event door does
+  $("#view").querySelectorAll(".coconfs a[data-ev]").forEach(a=>{ a.onclick=e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
+    e.preventDefault(); openEventDoor(a.dataset.ev); }; });
   // the title names the company, and a company the reader just opened gets
   // focus on its name (a redraw of the same one does not move it)
   document.title=`${o.name} · SLED JOBS`;
