@@ -1905,6 +1905,7 @@ def co_conferences(o: dict, board: dict) -> str:
     # (tag, row, prior, other): a tag older than its row's dates is an edition
     # they were at (the row rolled and kept its tag); one newer than the dates
     # is an edition with no date on file yet. coConfGroups says the same.
+    today = _co_now(board)
     items = []
     for t in tags:
         r, prior = by_tag.get(t), False
@@ -1917,31 +1918,42 @@ def co_conferences(o: dict, board: dict) -> str:
         if not prior and g and ty and ty < g[0].year:
             prior = True
         other = bool(not prior and g and ty and ty > g[1].year)
-        items.append((t, r, prior, other))
-    today = _co_now(board)
-    dated = lambda i: not i[2] and not i[3] and rng(i[1])
-    now = [i for i in items if dated(i) and rng(i[1])[0] <= today <= rng(i[1])[1]]
-    ahead = sorted((i for i in items if dated(i) and rng(i[1])[0] > today),
-                   key=lambda i: rng(i[1])[0])
-    undated = sorted((i for i in items if not i[2] and (i[3] or not rng(i[1]))),
+        # A ROW WITH NO DATES STILL NAMES ITS EDITION (review, 2026-10-28):
+        # held_dates, the edition its floor was read at; with none, a tag from
+        # a year already over is an edition they were at. coConfGroups too.
+        hg = None if (g or prior) else _ics_range(r.get("held_dates") or "")
+        # held dates of another year than the tag's are not this edition's
+        dates = r.get("dates") if g else (r.get("held_dates") if hg and (not ty or hg[0].year == ty) else None)
+        if not prior and not dates and ty and ty < today.year:
+            prior = True
+        items.append((t, r, prior, other, dates))
+    drng = lambda i: _ics_range(i[4] or "")
+    dated = lambda i: not i[2] and not i[3] and drng(i)
+    now = [i for i in items if dated(i) and drng(i)[0] <= today <= drng(i)[1]]
+    ahead = sorted((i for i in items if dated(i) and drng(i)[0] > today),
+                   key=lambda i: drng(i)[0])
+    undated = sorted((i for i in items if not i[2] and (i[3] or not drng(i))),
                      key=lambda i: str(i[1].get("name") or ""))
-    went = [i for i in items if i[2] or (dated(i) and rng(i[1])[1] < today)]
-    went.sort(key=lambda i: (dt.date(yr(i[0]) or 1, 12, 31) if i[2] else rng(i[1])[0], 0 if i[2] else 1),
+    went = [i for i in items if i[2] or (dated(i) and drng(i)[1] < today)]
+    # newest first by the day each edition began; a year-only past edition as
+    # that year's first day, the dated one first on a tie - coConfGroups' key
+    went.sort(key=lambda i: (dt.date(yr(i[0]) or 1900, 1, 1) if i[2] else drng(i)[0], 0 if i[2] else 1),
               reverse=True)
     if not (now or ahead or undated or went):
         return ""
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-    def when(t, r, prior, other=False):
+    def when(t, r, prior, other=False, dates=None):
+        y = re.search(r"(20\d\d)$", str(t))
         if prior or other:
-            y = re.search(r"(20\d\d)$", str(t))
             return (f"the {y.group(1)} edition" + (", dates not on file" if other else "")
                     if y else "an earlier edition")
-        g = rng(r)
+        g = _ics_range(dates or "")
         if not g:
-            return r.get("dates") or {"unannounced": "next edition not announced yet",
-                                      "unreachable": "dates unconfirmed \u2014 their site would not load"
-                                      }.get(r.get("dates_confidence"), "dates not confirmed")
+            return r.get("dates") or (f"the {y.group(1)} edition, dates not on file" if y else {
+                "unannounced": "next edition not announced yet",
+                "unreachable": "dates unconfirmed \u2014 their site would not load"
+            }.get(r.get("dates_confidence"), "dates not confirmed"))
         a, b = g
         if a == b:
             d = f"{months[a.month - 1]} {a.day}"
@@ -1952,8 +1964,8 @@ def co_conferences(o: dict, board: dict) -> str:
         return d + (f", {a.year}" if a.year != today.year else "")
 
     def row(i):
-        t, r, prior, other = i
-        tail = " \u00b7 ".join(x for x in (when(t, r, prior, other),
+        t, r, prior, other, dates = i
+        tail = " \u00b7 ".join(x for x in (when(t, r, prior, other, dates),
                                             None if (prior or other) else _cf_place(r)) if x)
         return (f'<div class="r"><span><a href="/e/{_slugify(r.get("tag"))}.html">{esc(str(r.get("name") or r.get("tag")))}</a>'
                 f'<span class="d">{esc(tail)}</span></span></div>')

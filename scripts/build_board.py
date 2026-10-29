@@ -1062,6 +1062,11 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
                 # page's Conferences box reads this to call it a past edition
                 # rather than a booking for next year (owner, 2026-10-28).
                 "prior_tags": list(row.get("prior_tags") or []),
+                # THE EDITION ITS FLOOR WAS READ AT, when the row carries no
+                # dates because the next edition is unannounced (2026-10-28):
+                # without it the box filed Maryland Municipal League's June
+                # exhibitors under "Date not announced".
+                "held_dates": row.get("held_dates") if not row.get("dates") else None,
                 "block": row.get("block"),
                 "department": row.get("department"),
                 # THE SECTOR ITS BUYERS SIT IN, off the map supplier_categories

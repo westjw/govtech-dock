@@ -506,6 +506,630 @@
   {
    "id": "clark-county-school-district",
    "why": "A school district is pulled either way. The website on file also looks wrong: the ccsd.edu homepage mentions NYSSMA and ENL, which suggests a New York district, not Clark County, Nevada."
+  },
+  {
+   "id": "nwa-regional-planning-commission",
+   "why": "Northwest Arkansas Regional Planning Commission, a regional planning agency of local governments: a government buyer, not a seller."
+  },
+  {
+   "id": "ca-governor-s-office-of-land-use-and-climate-innovation",
+   "why": "California Governor's Office of Land Use and Climate Innovation, a state agency: a government buyer, not a seller."
+  },
+  {
+   "id": "caltrans",
+   "why": "Caltrans is California's state department of transportation: a government buyer, not a seller."
+  },
+  {
+   "id": "scag-southern-california-association-of-governments",
+   "why": "SCAG is a council of governments and metropolitan planning organisation: a government buyer, not a seller."
+  },
+  {
+   "id": "denver-regional-council-of-governments",
+   "why": "Denver Regional Council of Governments, a council of local governments: a government buyer, not a seller."
+  },
+  {
+   "id": "city-of-baton-rouge-parish-of-east-baton-rouge-planning-commission",
+   "why": "The City of Baton Rouge / East Baton Rouge Parish planning commission is local government: a buyer, not a seller."
+  },
+  {
+   "id": "howard-county-planning-and-zoning",
+   "why": "Howard County's planning and zoning department is county government: a buyer, not a seller."
+  },
+  {
+   "id": "maryland-department-of-planning",
+   "why": "The Maryland Department of Planning is a state agency: a government buyer, not a seller."
+  },
+  {
+   "id": "metropolitan-council",
+   "why": "The Metropolitan Council is the Twin Cities' regional government agency: a buyer, not a seller."
+  },
+  {
+   "id": "boulder-city",
+   "why": "Boulder City, Nevada is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "city-of-henderson",
+   "why": "The City of Henderson, Nevada is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "city-of-henderson-redevelopment-agency",
+   "why": "The City of Henderson Redevelopment Agency is part of city government: a buyer, not a seller."
+  },
+  {
+   "id": "douglas-county",
+   "why": "Douglas County, Nevada is a county government: a buyer, not a seller."
+  },
+  {
+   "id": "rtc-washoe",
+   "why": "RTC Washoe is the Regional Transportation Commission of Washoe County, a public agency: a buyer, not a seller."
+  },
+  {
+   "id": "tahoe-regional-planning-agency-trpa",
+   "why": "The Tahoe Regional Planning Agency is a bi-state public planning agency: a government buyer, not a seller."
+  },
+  {
+   "id": "owrb",
+   "why": "The Oklahoma Water Resources Board is a state agency: a government buyer, not a seller."
+  },
+  {
+   "id": "department-of-land-conservation-development",
+   "why": "Oregon's Department of Land Conservation and Development is a state agency: a government buyer, not a seller."
+  },
+  {
+   "id": "port-of-portland",
+   "why": "The Port of Portland is a public port authority: a government buyer, not a supplier to government."
+  },
+  {
+   "id": "transportation-and-growth-management",
+   "why": "Transportation and Growth Management is an Oregon state programme of ODOT and DLCD: government, not a seller."
+  },
+  {
+   "id": "conservation-department-missouri",
+   "why": "The Missouri Department of Conservation is a state agency: a government buyer, not a seller."
+  },
+  {
+   "id": "kansas-city",
+   "why": "Kansas City (the City of KC's logo on the sponsor wall) is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "lenexa-kansas",
+   "why": "The City of Lenexa, Kansas is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "marc-mid-america-regional-council",
+   "why": "MARC, the Mid-America Regional Council, is a council of local governments: a government buyer, not a seller."
+  },
+  {
+   "id": "portkc",
+   "why": "PortKC is the Port Authority of Kansas City, a public authority: a government buyer, not a supplier to government."
+  },
+  {
+   "id": "grapevine-texas-planning-services",
+   "why": "Grapevine Texas Planning Services is the City of Grapevine's planning department: city government, a buyer."
+  },
+  {
+   "id": "plano",
+   "why": "Plano here is the City of Plano, a city government: a buyer, not a seller."
+  },
+  {
+   "id": "the-port-of-virginia",
+   "why": "The Port of Virginia is a state port authority: a government buyer, not a supplier to government."
+  },
+  {
+   "id": "virginia-housing",
+   "why": "Virginia Housing is the state's housing finance agency, a public body: a government buyer of technology, not a seller to government."
+  },
+  {
+   "id": "city-of-vancouver-washington",
+   "why": "The City of Vancouver, Washington is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "city-of-green-bay",
+   "why": "The City of Green Bay is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "city-of-madison",
+   "why": "The City of Madison is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "city-of-madison-metro-transit",
+   "why": "City of Madison Metro Transit is the city's transit agency: government, a buyer, not a seller."
+  },
+  {
+   "id": "city-of-opelika-al",
+   "why": "The City of Opelika, Alabama is a city government: a buyer, not a seller."
+  },
+  {
+   "id": "achd",
+   "why": "ACHD is the Ada County Highway District, a public highway district: a government buyer, not a seller."
+  },
+  {
+   "id": "montana-department-of-commerce",
+   "why": "The Montana Department of Commerce is a state agency: a government buyer, not a seller."
+  },
+  {
+   "id": "annapolis-city-of",
+   "why": "The City of Annapolis, a city government; the floor reader's 'supplier' tag does not make it a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "bureau-of-labor-statistics",
+   "why": "BLS is a US Department of Labor statistics agency giving free data; the findakey.net link on file is not BLS at all. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "minnesota-state-library-services",
+   "why": "The state library agency in Minnesota's Department of Education (description 'State library agency'); government, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "bureau-of-economic-analysis",
+   "why": "BEA is a US Department of Commerce statistics agency; its data are free, so it does not sell to government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "department-of-homeland-security-immigration-customs-enforcement",
+   "why": "ICE is a DHS federal agency, a buyer, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "frederick-city-of",
+   "why": "The City of Frederick, MD, a city government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "u-s-department-of-state",
+   "why": "The website on file is the State Department's Office of Conservation and Water on state.gov; a federal agency, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "navy-sbir-sttr",
+   "why": "The Navy's SBIR/STTR office funds small-business research for the Navy; a federal buyer, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "town-of-cary",
+   "why": "The Town of Cary, NC is a town government, a buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "library-of-congress",
+   "why": "The Library of Congress is a federal legislative-branch agency; not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "air-force-office-of-special-investigations",
+   "why": "AFOSI is the US Air Force's own law-enforcement agency, a federal body that sells nothing. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "us-small-business-administration-office-of-disaster-assistance",
+   "why": "SBA's Office of Disaster Assistance is a federal lender to disaster victims (description says federal agency); not a seller to government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "delaware-county-district-library",
+   "why": "An Ohio public library district, a buyer; it is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-budget-and-management",
+   "why": "A state agency (budget and state personnel). (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "federal-bureau-of-prisons",
+   "why": "This is the Bureau of Prisons itself (at IACP), a federal agency; only its UNICOR prison-industries arm would sell. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "pontiac-public-library",
+   "why": "A public library, a buyer; it is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "carnegie-library-of-pittsburgh",
+   "why": "Carnegie Library of Pittsburgh is legally a nonprofit corporation, but it is Pittsburgh's public library system, which the rule names as a buyer; it buys library goods and sells none. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "bladensburg-town-of",
+   "why": "The Town of Bladensburg, MD, a town government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-cannabis-administration",
+   "why": "A state regulator. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "comptroller-of-maryland",
+   "why": "The Comptroller of Maryland is the state's tax and revenue agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "houston-public-works",
+   "why": "Houston Public Works is the City of Houston's public works department (description 'Municipal public works department'), a buyer; it is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-army-national-guard",
+   "why": "A state military body; government, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "u-s-census-bureau",
+   "why": "The Census Bureau is a federal agency whose data are free; at NACo and NLC it is a partner, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-air-national-guard-recruiting",
+   "why": "A state military body recruiting at MML; government, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "national-library-service-f-t-blind-print-disabled",
+   "why": "NLS is a Library of Congress division (loc.gov/nls) lending free accessible books; a federal agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-general-services",
+   "why": "DGS is the state's central buyer and property manager; unlike Texas DIR it is not run as a cooperative contract seller to local government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "city-of-raleigh",
+   "why": "The City of Raleigh is a city government, a buyer; nothing marks it as selling. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "u-s-department-of-state-bridgeusa",
+   "why": "BridgeUSA is the State Department's exchange-visitor programme; a federal agency, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "arizona-commerce-authority",
+   "why": "The Arizona Commerce Authority is the state's statutory economic development agency (description says so); it courts companies and sells nothing to government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "army-family-and-mwr",
+   "why": "Army Family and MWR is the US Army's morale, welfare and recreation command, a federal military body; at NRPA it is a peer of park departments, not a seller. It is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-commerce",
+   "why": "The state's economic development department; it sells nothing to local government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "italian-trade-agency",
+   "why": "The Italian Trade Agency is the Italian government's trade-promotion agency running a pavilion for Italian firms; it is a government body and does not itself sell to airports (the firms it brings do, and they can be listed on their own). (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "douglas-county-sheriffs",
+   "why": "A county sheriff's office, which the rule names as a buyer; no private company of that name shows on file. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-housing-and-community-development",
+   "why": "A state agency that funds housing and local projects; it sells nothing to government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "farmington-public-library",
+   "why": "A public library (description 'Public library'), a buyer; it is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-emergency-management-911-board",
+   "why": "The state 911 Board inside the Department of Emergency Management funds county 911 centres; a state body, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "attorney-general-maryland-office-of-the",
+   "why": "The Maryland Office of the Attorney General is a state agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "bel-air-town-of",
+   "why": "The Town of Bel Air, MD, a town government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-natural-resources",
+   "why": "A state agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "las-vegas-clark-county-library-district",
+   "why": "A public library district (thelibrarydistrict.org), a buyer; it is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "daegu-metropolitan-city",
+   "why": "Daegu Metropolitan City is a South Korean city government (daegu.go.kr, description 'Municipal government delegation'); it may lead a pavilion of Korean water firms, but the city itself is not a supplier. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "hagerstown-city-of",
+   "why": "The City of Hagerstown, MD, a city government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "cambridge-city-of",
+   "why": "The City of Cambridge, MD (at the Maryland Municipal League), a city government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "988-colorado-mental-health-line",
+   "why": "I read 988colorado.com; its FAQ says Colorado law SB25-236 merged it with the state's Colorado Crisis Services line as the free statewide crisis line. It is a state programme serving residents, sells nothing to government, and is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "federal-motor-carrier-safety-administration",
+   "why": "FMCSA is a US DOT regulator; it sells nothing. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "california-correctional-health-care-services",
+   "why": "CCHCS is the California state agency running prison health care (description 'State correctional health agency'); a buyer, and exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "federal-laboratory-consortium",
+   "why": "The FLC is the federally chartered network of federal laboratories; at TechConnect it promotes licensing federal lab technology to industry, which is not selling to state and local government, so it is a federal body. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "wssc-water",
+   "why": "WSSC Water (Washington Suburban Sanitary Commission) is a bi-county public water and sewer utility, a buyer; the floor reader even called it a government agency. It is exported today. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "havre-de-grace-city-of",
+   "why": "The City of Havre de Grace, MD, a city government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "charlotte-mecklenburg-library",
+   "why": "The county's public library system, a buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "federal-bureau-of-investigation",
+   "why": "The FBI is a US Department of Justice agency; its training and services to police are not sold, so it is a government body. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "united-states-department-of-veterans-affairs-office-of-suicide-prevention",
+   "why": "The VA Office of Suicide Prevention is a federal agency office; its outreach to sheriffs is free, not sold. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "office-of-justice-programs-usdoj",
+   "why": "The Office of Justice Programs is the US DOJ grants agency (description 'Federal justice grants and research agency'); it funds, it does not sell. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "minnesota-department-of-transportation",
+   "why": "MnDOT is a state department of transportation, a buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "army-sbir",
+   "why": "Army SBIR is the Army's small-business research grant programme, a federal body that funds and buys research; it sells nothing. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "the-maryland-national-capital-park-and-planning-commission-department-of-parks-and-recreation-prince-george-s-county",
+   "why": "M-NCPPC is a bi-county public planning commission and this is its Prince George's parks department; the rule names planning commissions as buyers. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "lehigh-valley-planning-commission",
+   "why": "A bi-county regional planning commission, which the rule names as pulled; it is exported today and should come out. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "great-lakes-water-authority-glwa",
+   "why": "A regional public water and sewer authority; the rule names water authorities as pulled even though it sells water wholesale to member cities. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "u-s-environmental-protection-agency",
+   "why": "A federal agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "mshda",
+   "why": "The Michigan State Housing Development Authority, a state housing finance agency on michigan.gov; same as Virginia Housing, already pulled. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "md-underground-facilities-damage-prevention-authority",
+   "why": "A statutory state authority that enforces Maryland's one-call law, a government regulator, not a seller. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "national-institute-for-occupational-safety-and-health-niosh",
+   "why": "A federal agency (CDC). (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "michigan-veterans-affairs-agency",
+   "why": "A state agency, a government body that does not sell. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "metra",
+   "why": "The public commuter rail agency of northeastern Illinois; exported today and should come out. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "usdot-its-joint-program-office",
+   "why": "A USDOT office, federal government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "the-bureau-of-sewerage-tokyo-metropolitan-government",
+   "why": "A bureau of the Tokyo Metropolitan Government, a foreign government agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "new-york-state-hudson-river-valley-greenway",
+   "why": "A New York State agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-energy-administration",
+   "why": "A state agency that gives energy grants, a government body that does not sell. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "south-platte-renew-pilot-and-research-center",
+   "why": "South Platte Renew is a wastewater utility owned by Englewood and Littleton; its pilot centre hosts vendor trials and does not sell to government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "lehigh-county",
+   "why": "A county government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-occupational-safety-and-health-maryland-department-of-labor",
+   "why": "MOSH is a unit of the Maryland Department of Labor, a state regulator. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "la-county-sanitation-district",
+   "why": "The LA County Sanitation Districts are a public sanitation agency, a government buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-transportation",
+   "why": "The state department of transportation, a government buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "toho-water-authority",
+   "why": "A public water utility in Osceola County, Florida, a government buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "interstate-medical-licensure-compact-commission",
+   "why": "A government body created by state compact law to license physicians; it charges physicians, not government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "usda-rural-utilities-service",
+   "why": "A federal agency that lends and grants to utilities, government and not a supplier. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "nasa-disasters-program",
+   "why": "A NASA programme, federal government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "noaa",
+   "why": "A federal agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "rural-maryland-council",
+   "why": "A state council/agency that funds rural development, a government body. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "better-buildings-and-better-plants-initiative",
+   "why": "A U.S. Department of Energy programme, federal government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "chicago-transit-authority",
+   "why": "A public transit agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-public-safety-and-correctional-services",
+   "why": "A state department that buys; its selling arm Maryland Correctional Enterprises is its own row on the same MML floor (checked), so this booth is the department. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "massachusetts-educational-financing-authority",
+   "why": "MEFA is a state authority that lends to families, not to government; same as Virginia Housing, already pulled. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "army-rotc",
+   "why": "A U.S. Army programme, federal government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "transportation-security-administration",
+   "why": "A federal agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-social-and-economic-mobility",
+   "why": "A Maryland state department, a government buyer that sells nothing. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "firstnet-authority",
+   "why": "An independent federal authority in NTIA; AT&T sells FirstNet service, the Authority does not. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "westminster-city-of",
+   "why": "The City of Westminster, a city government and buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "mi-public-safety-communications-system",
+   "why": "A State of Michigan office in DTMB that runs the statewide public-safety radio network for member agencies, a state government body; note msp-srms is the same kind of state system. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "state-of-illinois-executive-ethics-commission",
+   "why": "A state agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-lottery-and-gaming",
+   "why": "A state agency that runs the lottery and regulates casinos; it sells to the public, not to government, so it is a government body and is pulled. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "williamsport-town-of",
+   "why": "The Town of Williamsport, a town government and buyer. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "wa-state-dept-of-labor-industries",
+   "why": "A Washington state agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "niosh",
+   "why": "A federal agency (CDC), the same body as the NIOSH row above. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-insurance-administration",
+   "why": "The state insurance regulator, a government agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "nashville-international-airport",
+   "why": "Run by the Metropolitan Nashville Airport Authority, a public authority like a port; it is exported today and should come out. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "alberta-canada-pavilion",
+   "why": "A Canadian provincial and federal government trade-promotion booth; the pavilion itself is government and sells nothing. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-department-of-the-environment",
+   "why": "Maryland's state environmental regulator, a government agency that buys and does not sell. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "dea-drug-enforcement-administration",
+   "why": "A federal law-enforcement agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "county-of-northampton",
+   "why": "A county government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "sosi",
+   "why": "The visitsosi.com footer reads '(c) 2026 Danville Office of Economic Development & Tourism', so it is a city government office, not a nonprofit bureau. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "greater-dayton-rta",
+   "why": "A public transit authority. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "bavarian-pavilion-c-o-bayern-international-gmbh",
+   "why": "Bayern International is the Free State of Bavaria's own trade-promotion agency, and its pavilion sells nothing to US government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "nasa",
+   "why": "A federal agency. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "fairbanks-north-star-borough-school-district",
+   "why": "A public school district, which the rule names as pulled. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "center-for-domestic-preparedness",
+   "why": "FEMA's federal training centre, whose courses are fully funded for state and local responders, so it does not sell; same as CISA, already pulled. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "pace-suburban-bus",
+   "why": "A public transit agency; exported today and should come out. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-esgr",
+   "why": "Maryland ESGR is the state committee of a Department of Defense programme, federal government that sells nothing. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "mvrpc",
+   "why": "The Miami Valley Regional Planning Commission, a regional planning agency and MPO, which the rule names as pulled. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "county-of-albany",
+   "why": "A county government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "asvab-career-exploration-program",
+   "why": "A Department of Defense programme offered free to schools. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "environmental-protection-agency",
+   "why": "The federal EPA. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "hrsd",
+   "why": "Hampton Roads Sanitation District is a public sanitation district, a government buyer; it is exported today and should come out. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "northern-illinois-transit-authority-nita",
+   "why": "The public regional transit authority that replaced the RTA. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-two-fifty-commission",
+   "why": "The state's 250th-anniversary commission, a government body that sells nothing. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "federal-communications-commission-fcc",
+   "why": "A federal regulator. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "new-york-state-department-of-environmental-conservation-hudson-river-estuary-program",
+   "why": "A NYSDEC state programme. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "maryland-relay-department-of-disabilities",
+   "why": "Maryland Relay is a state programme of the Department of Disabilities; the booth is the department, not the private relay contractor. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "european-union",
+   "why": "The EU (its delegation) is a foreign governmental body. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "fema-ipaws",
+   "why": "A FEMA programme, federal government. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
+  },
+  {
+   "id": "pa-department-of-community-economic-development",
+   "why": "A Pennsylvania state department. (floor reader and skeptic agreed, 2026-10-28 sweep of every floor)"
   }
  ]
 }

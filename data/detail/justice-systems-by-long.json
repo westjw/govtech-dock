@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "How Architectural Screens Help Buildings Meet Code",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.long.com/blog/how-architectural-screens-help-buildings-meet-code/"
+  },
+  {
    "date": "2026-09-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.long.com/resources/vrv-best-practices-series-installation/"
-  },
-  {
-   "date": "2026-03-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "VRV Best Practices Series: Design",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.long.com/resources/vrv-best-practices-series-design/"
   }
  ],
  "profile": {

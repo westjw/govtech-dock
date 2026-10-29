@@ -1,10 +1,28 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "S3:E6 // Busting the myths that are costing you evidence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s3e6-busting-the-myths-that-are-costing-you-evidence/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "S2:E4 // The art and science of AI prompting in digital investigations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s2e4-the-art-and-science-of-ai-prompting-in-digital-investigations/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
-   "headline": "Get ahead of the deadline: Grant readiness for 2027",
+   "headline": "Get ahead of the deadline: Grant readiness f\u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/get-ahead-of-the-deadline-grant-readiness-for-2027/"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s2e5-research-reality-and-the-future-of-ai-in-digital-forensics/"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "S2:E1 // From Device examination to evidence\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/s2e1-from-device-examination-to-evidence-direct-examination-of-the-digital-device-examiner/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Ask Me Anything: Accelerating incident res\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/ask-me-anything-accelerating-incident-response-with-digital-forensics-at-scale/"
   }
  ],
  "profile": {

@@ -713,21 +713,30 @@ try {
    coConfGroups and coConfs on a company tagged at an edition ahead, one
    behind, one whose row has rolled to next year's dates and kept the tag,
    one moved to prior_tags, one with no dates, one whose dates are for an
-   older edition, one no row knows, and a hostile name. selftest holds the
-   groups to build_site.co_conferences on the same fixture. */
+   older edition, one no row knows, a hostile name, an undated row whose
+   floor edition is held_dates, and an undated tag from a year gone. selftest
+   holds the groups, in order, to build_site.co_conferences on the same
+   fixture. */
 let coConfBox = null;
 try {
   ctx.__confRows = [
     { tag: "Ahead 2099", name: "Ahead Expo", dates: "March 3-5, 2099", city: "Reno, NV" },
     { tag: "Past 2020", name: "Past Expo", dates: "May 4-6, 2020", city: "Austin, TX" },
     { tag: "Rolled 2025", name: "Rolled Summit", dates: "September 25-29, 2099" },
-    { tag: "New 2027", name: "New Fair", dates: null, dates_confidence: "unannounced" },
+    { tag: "New 2099", name: "New Fair", dates: null, dates_confidence: "unannounced" },
+    { tag: "Held 2026", name: "Held Meeting", dates: null, held_dates: "June 14-17, 2026",
+      dates_confidence: "unannounced", city: "Ocean City, MD" },
+    { tag: "Old 2023", name: "Old Assembly", dates: null, dates_confidence: "unannounced" },
+    { tag: "Dated 2023", name: "Dated Fair", dates: "May 4-6, 2023" },
+    { tag: "Wrong 2099", name: "Wrong Fair", dates: null, held_dates: "June 1-2, 2098" },
+    { tag: "Naco 2099", name: "NACo Expo", dates: null },
+    { tag: "Nacv 2099", name: "NACVSO Expo", dates: null },
     { tag: "Moved 2099", name: "Moved Forum", dates: "June 1-2, 2099", prior_tags: ["Moved 2024"] },
     { tag: "Early 2098", name: "Stale Dates", dates: "April 1-2, 2020" },
     { tag: "Evil 2099", name: "<img src=x onerror=alert(1)>", dates: "July 7-8, 2099" },
   ];
   ctx.__confOrg = { id: "conf-co", name: "Conf Co", conferences: ["Ahead 2099", "Past 2020", "Rolled 2025",
-    "New 2027", "Moved 2024", "Early 2098", "Ghost 2026", "Evil 2099"] };
+    "New 2099", "Moved 2024", "Early 2098", "Ghost 2026", "Evil 2099", "Old 2023", "Held 2026", "Dated 2023", "Wrong 2099", "Naco 2099", "Nacv 2099"] };
   coConfBox = vm.runInContext(`(() => { D = { conferences: __confRows, organizations: [] };
     const g = coConfGroups(__confOrg), ts = l => l.map(i => i.t);
     return { groups: { now: ts(g.now), ahead: ts(g.ahead), undated: ts(g.undated), went: ts(g.went) },

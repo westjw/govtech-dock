@@ -46,3 +46,11 @@ public/
 /data/.publish_base/
 /data/publish_state.tmp
 /data/.admin.lock
+
+# GATE STAMPS: "--gate has printed IN THIS CHECKOUT". Committed, they had
+# printed in every clone and worktree, so a fresh worktree's --land passed a
+# door nobody there had looked at (review, 2026-10-28).
+/data/.cards_read
+/data/.profiles_read
+/data/.rivals_read
+/data/.buyer_read

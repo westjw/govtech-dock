@@ -635,34 +635,117 @@ def quality(names: list[dict]) -> tuple[str, str]:
     return "mixed", note + " - worth a look before running intake"
 
 
-def merge_into(fresh: dict, out: pathlib.Path) -> bool:
-    """Carry a staged file's rulings onto a re-sweep. False means do not write.
+def merge_into(fresh: dict, out: pathlib.Path, how: str | None = None) -> dict | None:
+    """What a re-read of a floor writes over its staged file. None: write nothing.
 
     A re-sweep used to rebuild the file from bare {name, website} rows, so
     every is_govtech flag classify had written - and any a person had set -
     was gone. And a directory that answered last week and refuses today
     overwrote the good list with the refusal. Both are the sweep destroying
-    work it did not do. Flags travel by name; a refusal never replaces a
-    find - it is printed, and the good file stays.
+    work it did not do.
+
+    A FIND NEVER REPLACES A FIND EITHER (review, 2026-10-28). It did: Sunday's
+    scrub ran `--all --write`, which would have put ICC 2026's 11 shell-page
+    names over the 107 a browser read, and sent 65 floors a reader had graded
+    `read` (8,381 names) back to unread - 26 of them to `menu`, which intake
+    refuses whole. So a re-read ADDS (`add_new`): the staged rows keep their
+    names, websites, verdicts and grade, and only names the floor does not
+    already hold are added, unjudged. To start a floor over, delete its file.
+
+    A READER'S "THIS PAGE IS NOT A FLOOR" RULES ON NAMES, NOT ON THE ADDRESS.
+    The page a reader found to be nothing but navigation is often where the
+    list appears later: Government Fleet Expo's /exhibitors was 21 menu items
+    when read and carried 18 GFX 2027 exhibitors a fortnight later (blind
+    review of this change). A re-read over that ruling stages only the names
+    the reader never dropped; when every name is one they dropped, the ruling
+    stands and nothing is written.
     """
     try:
         old = json.loads(out.read_text())
     except Exception:                                   # noqa: BLE001
-        return True
+        return fresh
+    how = how or f"re-swept from {fresh.get('source_url')} by scripts/sweep_exhibitors.py"
     if old.get("found") and not fresh.get("found"):
         print(f"        kept: {out.name} holds {len(old.get('exhibitors') or [])} "
               f"name(s) from an earlier sweep and today's read refused - not "
               f"overwriting a find with a refusal ({str(fresh.get('why'))[:50]})")
-        return False
-    flags = {(e.get("name") or "").lower(): e for e in (old.get("exhibitors") or [])
-             if "is_govtech" in e}
+        return None
+    if old.get("found"):
+        merged = add_new(old, fresh, out, how)
+        if merged is None:
+            print(f"        kept: {out.name} already holds every name today's read found")
+        return merged
+    ruled = str(old.get("why") or "").startswith("reader:")
+    if not fresh.get("found"):
+        # a refusal over a refusal says nothing new; over a reader's ruling it
+        # would erase the ruling
+        return None if ruled else fresh
+    # NO FLOOR ON FILE, AND TODAY'S READ FOUND ONE: what a reader dropped off
+    # this address before stays dropped, what they judged comes back judged
+    seen = add_new({"exhibitors": []}, fresh, out, how)
+    if seen is None:
+        print(f"        kept: every name today's read found on {out.name} is one a reader "
+              f"dropped" + (" - the page is still not a floor" if ruled else ""))
+        return None
+    st = dict(fresh)
+    st["exhibitors"] = seen["exhibitors"]
+    if ruled:
+        st["source_note"] = (f"{fresh.get('source_note') or ''} A reader had ruled this page not "
+                             f"a floor ({str(old.get('why'))[:90]}); the {len(seen['exhibitors'])} "
+                             f"name(s) they never dropped are staged for the reader.").strip()
+    return st
+
+
+def add_new(old: dict, fresh: dict, out: pathlib.Path, how: str) -> dict | None:
+    """The staged floor with only the names it lacks added. None: nothing new.
+
+    THE SAME COMPANY SPELLED AGAIN IS NOT NEW. StormCon's browser read offered
+    "Elastec, Inc." beside the staged "Elastec" and 25 more like it; added,
+    they made a real floor read as a menu ("a name plus a word") and filed
+    twin supplier rows. The match is the candidate door's own. A name a reader
+    dropped from this floor as not a company (its record in
+    conference_intake/reads/) stays dropped when the page still shows it, and
+    one a reader judged comes back with the verdict, so nobody reads it twice.
+    """
+    import promote_candidates as pc
+    known = {pc.norm(e.get("name") or ""): e.get("name") for e in old.get("exhibitors") or []}
+    reads = {}
+    rec = DATA / "conference_intake" / "reads" / out.name.replace("exhibitors_", "")
+    try:
+        reads = {pc.norm(r.get("name") or ""): r for r in json.loads(rec.read_text())}
+    except Exception:                                   # noqa: BLE001
+        pass
+    new, skipped = [], 0
     for e in fresh.get("exhibitors") or []:
-        was = flags.get((e.get("name") or "").lower())
-        if was:
-            for k in ("is_govtech", "is_govtech_why"):
-                if k in was:
-                    e[k] = was[k]
-    return True
+        k = pc.norm(e.get("name") or "")
+        if not k or pc.same_company(k, known):
+            continue
+        r = reads.get(k)
+        if r and r.get("verdict") == "not_a_company":
+            skipped += 1
+            continue
+        e = dict(e)
+        if r and r.get("verdict") in ("vendor", "supplier", "agency"):
+            e["is_govtech"] = r["verdict"] == "vendor"
+            e["is_govtech_why"] = f"reader: {str(r.get('why') or '').strip()}"
+            e["read"] = {k2: r.get(k2) for k2 in ("verdict", "why", "by", "on")}
+            if r["verdict"] == "agency":
+                e["not_a_supplier"] = e["is_govtech_why"]
+        elif r and r.get("verdict") == "unsure":
+            e["is_govtech"] = None
+            e["read"] = {k2: r.get(k2) for k2 in ("verdict", "why", "by", "on")}
+        known[k] = e.get("name")
+        new.append(e)
+    if not new:
+        return None
+    merged = dict(old)
+    merged["exhibitors"] = sorted((old.get("exhibitors") or []) + new,
+                                  key=lambda r: (r.get("name") or "").lower())
+    note = f"Added {len(new)} name(s) {how} on {dt.date.today().isoformat()}"
+    if skipped:
+        note += f"; {skipped} a reader had dropped stayed dropped"
+    merged["source_note"] = f"{old.get('source_note') or ''} {note}.".strip()
+    return merged
 
 
 def restage(files: list) -> int:
@@ -903,7 +986,8 @@ def main() -> int:
         if a.write:
             safe = re.sub(r"[^A-Za-z0-9]+", "_", str(tag)).strip("_")
             out = DATA / f"exhibitors_{safe}.json"
-            if not merge_into(st, out):
+            st = merge_into(st, out)
+            if st is None:
                 continue
             tmp = out.with_suffix(".tmp")
             tmp.write_text(json.dumps(st, indent=1) + "\n")

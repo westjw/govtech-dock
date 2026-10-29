@@ -94,8 +94,12 @@ jobs:
           if [ -n "$NUM" ]; then
             gh issue comment "$NUM" --body-file /tmp/body.md
           else
+            # ASSIGNED: GitHub mails the owner about an issue only when he is
+            # assigned or watches all activity - the unassigned AE alerts of
+            # 10-23 to 10-27 reached nobody (6e35455).
             gh issue create --label watchdog \
-              --title "The board is not being built" --body-file /tmp/body.md
+              --title "The board is not being built" --body-file /tmp/body.md \
+              --assignee "$GITHUB_REPOSITORY_OWNER"
           fi
 
       # And close it on recovery, so a green watchdog never leaves a stale

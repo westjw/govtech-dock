@@ -18,11 +18,19 @@ it assembles the brief and applies the verdicts. The reading itself is agent
 work, and the agent never edits the dataset (CLAUDE.md, "briefs out, proposals
 in").
 
-WHAT A VERDICT IS. One of four words per name:
+WHAT A VERDICT IS. One of five words per name:
   vendor         sells a technology product to government - worth a research
                  card (is_govtech true; conference_intake makes it a candidate)
   supplier       exhibits to government but is not a product vendor - services,
-                 hardware, consulting, an agency, a university (is_govtech false)
+                 hardware, consulting, a trade body, a university's programme
+                 (is_govtech false)
+  agency         a government body that BUYS: a city, a county, a state or
+                 federal department, a regional council or planning agency, a
+                 port, a transit or utility authority, a school district. It
+                 stays on the floor and intake files it with not_a_supplier
+                 (owner, 2026-10-23: "an agency is none"), so the name is
+                 known and nothing is sent to HQ for it. A public body that
+                 SELLS to government (a degree programme) is a supplier.
   not_a_company  the association's own navigation, a programme item, a person,
                  a bare domain: it leaves the staged file
   unsure         stays null; intake holds it back rather than filing it
@@ -56,7 +64,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import conference_intake as ci                                   # noqa: E402
 
-VERDICTS = ("vendor", "supplier", "not_a_company", "unsure")
+VERDICTS = ("vendor", "supplier", "agency", "not_a_company", "unsure")
 
 
 def staged_files() -> list[pathlib.Path]:
@@ -144,7 +152,7 @@ def apply(verdicts: list[dict], by: str, write: bool) -> dict:
             raise SystemExit(f"{v.get('name')!r}: say why, in a word or more a person can check")
         by_file.setdefault(v["file"], {})[ci.norm(v["name"])] = v
     on = dt.date.today().isoformat()
-    report = {"files": 0, "vendor": 0, "supplier": 0, "dropped": 0, "unsure": 0,
+    report = {"files": 0, "vendor": 0, "supplier": 0, "agency": 0, "dropped": 0, "unsure": 0,
               "now_read": [], "dropped_names": [], "not_a_floor": [],
               "suppliers_purged": 0, "purge_refused": None}
     # A NAME THE BOARD ALREADY HOLDS IS JUDGED. The brief leaves it out, so no
@@ -182,6 +190,13 @@ def apply(verdicts: list[dict], by: str, write: bool) -> dict:
             e["is_govtech"] = v["verdict"] == "vendor"
             e["is_govtech_why"] = f"reader: {v['why'].strip()}"
             e["read"] = {"verdict": v["verdict"], "why": v["why"].strip(), "by": by, "on": on}
+            # A BUYER IS NOT A SUPPLIER (review, 2026-10-28): the APA floors
+            # filed 36 cities, counties and state departments as suppliers,
+            # because "an agency" was in the supplier verdict's own list.
+            if v["verdict"] == "agency":
+                e["not_a_supplier"] = f"reader: {v['why'].strip()}"
+            else:
+                e.pop("not_a_supplier", None)
             report[v["verdict"]] += 1
             kept.append(e)
         d["exhibitors"] = kept
@@ -250,6 +265,7 @@ def main() -> int:
     verdicts = json.loads(pathlib.Path(args.verdicts).read_text())
     rep = apply(verdicts, args.by, args.write)
     print(f"{rep['files']} floor(s): {rep['vendor']} vendor, {rep['supplier']} supplier, "
+          f"{rep['agency']} agency (filed not_a_supplier), "
           f"{rep['dropped']} not a company (dropped), {rep['unsure']} unsure (held)")
     if rep["now_read"]:
         print(f"  graded `read`: {', '.join(rep['now_read'])}")

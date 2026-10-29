@@ -272,37 +272,16 @@ def staged_for(c: dict, html: str, why: str | None, url: str) -> dict:
 def add_to(st: dict, out: pathlib.Path) -> dict | None:
     """A browser read ADDS to a floor already staged, never replaces it.
 
-    merge_into() keeps a refusal from overwriting a find and nothing more: a
-    find replaced a find wholesale. On 2026-10-15 the first --all run put a
-    22-item menu over WEFTEC's 1,142 read names and IAFC FRI's 302 with 201,
-    because a floor-plan app's address is not the only way a floor was ever
-    read. The old rows keep their names, websites and rulings; what the
+    On 2026-10-15 the first --all run put a 22-item menu over WEFTEC's 1,142
+    read names and IAFC FRI's 302 with 201, because a floor-plan app's address
+    is not the only way a floor was ever read. sweep_exhibitors.merge_into is
+    the one rule for both readers since 2026-10-28 (the static sweep replaced
+    a find too): the old rows keep their names, websites and rulings; what the
     browser saw that they lack is added, unjudged, for the reader. None means
     nothing new to write.
     """
-    try:
-        old = json.loads(out.read_text())
-    except Exception:                                   # noqa: BLE001
-        return st
-    if not old.get("found") or not st.get("found"):
-        return st
-    import promote_candidates as pc
-    # THE SAME COMPANY SPELLED AGAIN IS NOT NEW. StormCon's browser read
-    # offered "Elastec, Inc." beside the staged "Elastec" and 25 more like it;
-    # added, they made a real floor read as a menu ("a name plus a word") and
-    # filed twin supplier rows. The match is the candidate door's own.
-    known = {pc.norm(e.get("name") or ""): e.get("name") for e in old.get("exhibitors") or []}
-    new = [e for e in st["exhibitors"]
-           if not pc.same_company(pc.norm(e.get("name") or ""), known)]
-    if not new:
-        return None
-    merged = dict(old)
-    merged["exhibitors"] = sorted((old.get("exhibitors") or []) + new,
-                                  key=lambda r: (r.get("name") or "").lower())
-    merged["source_note"] = (f"{old.get('source_note') or ''} Added {len(new)} name(s) "
-                             f"read in a browser from {st.get('source_url')} by "
-                             f"scripts/render_floor.py on {dt.date.today().isoformat()}.").strip()
-    return merged
+    return sw.merge_into(st, out, how=f"read in a browser from {st.get('source_url')} "
+                                      f"by scripts/render_floor.py")
 
 
 def main() -> int:
@@ -336,8 +315,6 @@ def main() -> int:
         if a.write:
             safe = re.sub(r"[^A-Za-z0-9]+", "_", str(tag)).strip("_")
             out = DATA / f"exhibitors_{safe}.json"
-            if not sw.merge_into(st, out):
-                continue
             st = add_to(st, out)
             if st is None:
                 continue

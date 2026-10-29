@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "What is a pay advance? How it works, risks and alternatives",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dailypay.com/resource-center/blog/what-is-a-pay-advance/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dailypay.com/resource-center/blog/employee-turnover-rates-in-retail/"
-  },
-  {
-   "date": "2026-05-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "On-Demand Pay: The Real Cost of On-Demand Pay",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dailypay.com/resource-center/blog/the-real-cost-of-on-demand-pay/"
   }
  ],
  "profile": {

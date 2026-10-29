@@ -2,16 +2,34 @@
  "news": [
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
-   "headline": "Product updates October 28, 2026 Starbridge 3.0: Just prompt. Starbridge does the rest. Access all of Starbridge, from running a research query to sending an outbound email, directly with the Starbrid",
-   "kind": "product",
-   "kind_rule": "updates",
+   "headline": "Read the announcement Learn more",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://starbridge.ai/blog/starbridge-3-0"
   },
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Playbook October 28, 2026 Capture Management for Government and Education Deals Federal capture is too heavy for local government, K\u201312, and higher education deals. Here\u2019s a lighter capture process bu",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/capture-management-government-education"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Playbook October 28, 2026 How to Use Public Spend Data to Find Your Next Deal Public spend data shows more than past purchases. Read POs, contracts, and co-op history as a renewal calendar for every g",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/how-to-use-public-spend-data"
+  },
+  {
    "date": "2026-10-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-26",
    "headline": "Playbook October 26, 2026 RFP Response Mistakes Government Vendors Make The costliest RFP mistakes happen before anyone writes a word. Learn the errors government and education vendors make, ranked by",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-26",
    "headline": "Playbook October 26, 2026 How to Build an RFP Answer Library for Government Proposals Build an RFP answer library that passes compliance checks. Learn what to store for government and education buyers",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-17",
    "headline": "Playbook October 17, 2026 What You Can Legally Say to a Government Buyer Pre-RFP What you can discuss with a government or education buyer before a solicitation posts, what changes the day it does, an",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-10-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-17",
    "headline": "Playbook October 17, 2026 How School Districts and Local Governments Score RFPs See how school districts and local governments score RFPs, step by step, from the compliance check and rubric to the pri",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Playbook October 16, 2026 Where to Find K\u201312 and Higher Education RFPs See where K\u201312 and higher education RFPs get posted, from state portals and district sites to cooperatives, and how to spot buyin",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Playbook October 16, 2026 How to Spot a Government RFP Written for Another Vendor Learn the red flags that show a government RFP was written for another vendor, how to score them, and when walking awa",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Playbook October 15, 2026 MCP for Sales Prospecting Connect Claude or ChatGPT to verified buyer data with MCP, then run five copy-ready prompts to build lists, research accounts, and write outreach.",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Playbook October 14, 2026 Government Sales Are Won Before SAM.gov Public postings on SAM.gov mark the end of the buying process. Learn how to spot buying indicators and shape requirements before a dea",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-10-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-10",
    "headline": "Playbook October 10, 2026 How to Respond to a Government RFP Learn how to respond to a government RFP, from the bid/no-bid call to evaluation criteria and compliance, with a scorecard your team can us",
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/how-to-respond-to-government-rfp"
-  },
-  {
-   "date": "2026-10-10",
-   "date_source": "index-text",
-   "first_seen": "2026-10-10",
-   "headline": "Playbook October 10, 2026 MCP for Government and Education Sales The Model Context Protocol brings live buyer data into Claude and ChatGPT. Learn why it matters more for teams selling to government an",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/model-context-protocol-government-education-sales"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-09",
-   "headline": "Playbook October 9, 2026 Government Fiscal Year Calendars for Sales Timing See when state and local government, K\u201312, and higher education fiscal years start, and how to time outreach around fresh bud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/government-fiscal-year-calendar"
   }
  ],
  "profile": {

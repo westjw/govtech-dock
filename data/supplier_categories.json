@@ -1,6 +1,6 @@
 {
  "v": 1,
- "generated": "2026-10-28",
+ "generated": "2026-10-29",
  "note": "Suppliers in the govtech sectors and categories (data/schema.json). Every assignment quotes its source; status follows the owner's rule that nothing is published without a confirmed website.",
  "sectors": [
   {
@@ -1065,8 +1065,7 @@
   {
    "supplier_id": "air-force-office-of-special-investigations",
    "name": "Air Force Office of Special Investigations",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "airbnb",
@@ -1539,8 +1538,7 @@
   {
    "supplier_id": "arizona-commerce-authority",
    "name": "Arizona Commerce Authority",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "arkon-mounts-2",
@@ -1579,14 +1577,12 @@
   {
    "supplier_id": "army-family-and-mwr",
    "name": "Army Family and MWR",
-   "status": "publish",
-   "website": "https://www.armymwr.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "army-sbir",
    "name": "Army SBIR",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "articulate-labs",
@@ -2601,14 +2597,12 @@
   {
    "supplier_id": "bureau-of-economic-analysis",
    "name": "Bureau of Economic Analysis (BEA)",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "bureau-of-labor-statistics",
    "name": "Bureau of Labor Statistics",
-   "status": "held",
-   "held": "website unread (not read)"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "bus-climate-control",
@@ -3327,8 +3321,7 @@
   {
    "supplier_id": "city-of-raleigh",
    "name": "City of Raleigh",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "cityparkon",
@@ -4201,8 +4194,7 @@
   {
    "supplier_id": "department-of-homeland-security-immigration-customs-enforcement",
    "name": "Department of Homeland Security /Immigration Customs Enforcement",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "detectachem-inc",
@@ -4337,8 +4329,7 @@
   {
    "supplier_id": "douglas-county-sheriffs",
    "name": "Douglas County Sheriffs",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "douglas-sports-equipment",
@@ -5311,26 +5302,22 @@
   {
    "supplier_id": "federal-bureau-of-investigation",
    "name": "Federal Bureau of Investigation (FBI)",
-   "status": "held",
-   "held": "website unread (homepage: only 0 chars of text)"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "federal-bureau-of-prisons",
    "name": "Federal Bureau of Prisons",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "federal-laboratory-consortium",
    "name": "Federal Laboratory Consortium",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "federal-motor-carrier-safety-administration",
    "name": "Federal Motor Carrier Safety Administration",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "federal-signal",
@@ -6607,8 +6594,7 @@
   {
    "supplier_id": "houston-public-works",
    "name": "Houston Public Works",
-   "status": "publish",
-   "website": "https://www.houstonpublicworks.org"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "htracks-usa",
@@ -8831,8 +8817,7 @@
   {
    "supplier_id": "minnesota-department-of-transportation",
    "name": "Minnesota Department of Transportation",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "minuteman-security-life-safety",
@@ -9610,8 +9595,7 @@
   {
    "supplier_id": "navy-sbir-sttr",
    "name": "Navy SBIR/STTR",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "nebraska-sheriffs-association",
@@ -9906,8 +9890,7 @@
   {
    "supplier_id": "office-of-justice-programs-usdoj",
    "name": "Office of Justice Programs, USDOJ",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "officer-media-group",
@@ -14011,8 +13994,7 @@
   {
    "supplier_id": "the-maryland-national-capital-park-and-planning-commission-department-of-parks-and-recreation-prince-george-s-county",
    "name": "The Maryland-National Capital Park and Planning Commission Department of Parks and Recreation, Prince George's County",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "the-motz-group",
@@ -14261,8 +14243,7 @@
   {
    "supplier_id": "town-of-cary",
    "name": "Town of Cary",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "trackless-vehicles",
@@ -14539,8 +14520,7 @@
   {
    "supplier_id": "u-s-census-bureau",
    "name": "U.S. Census Bureau",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "u-s-customs-and-border-protection",
@@ -14563,8 +14543,7 @@
   {
    "supplier_id": "u-s-department-of-state-bridgeusa",
    "name": "U.S. Department of state BridgeUSA",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "u-s-flood-control-corp",
@@ -14663,8 +14642,7 @@
   {
    "supplier_id": "us-small-business-administration-office-of-disaster-assistance",
    "name": "US Small Business Administration Office of Disaster Assistance",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "usa-bmx-foundation",
@@ -14777,8 +14755,7 @@
   {
    "supplier_id": "united-states-department-of-veterans-affairs-office-of-suicide-prevention",
    "name": "United States Department of Veterans Affairs Office of Suicide Prevention (OSP)",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "united-states-tennis-association",
@@ -16667,8 +16644,7 @@
   {
    "supplier_id": "italian-trade-agency",
    "name": "Italian Trade Agency",
-   "status": "held",
-   "held": "website unread (homepage: only 57 chars of text)"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "itw-gse",
@@ -23042,8 +23018,7 @@
   {
    "supplier_id": "daegu-metropolitan-city",
    "name": "Daegu Metropolitan City",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "daeyoun-co-ltd",
@@ -24700,8 +24675,7 @@
   {
    "supplier_id": "u-s-department-of-state",
    "name": "U.S. Department of State",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "u-s-epa-office-of-water",
@@ -24943,8 +24917,7 @@
   {
    "supplier_id": "wssc-water",
    "name": "WSSC Water",
-   "status": "publish",
-   "website": "http://www.wsscwater.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "xavier-university-water-utilities-management-program",
@@ -26179,8 +26152,7 @@
   {
    "supplier_id": "988-colorado-mental-health-line",
    "name": "988 Colorado Mental Health Line",
-   "status": "publish",
-   "website": "http://www.988colorado.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "accreditation-guru-inc",
@@ -26299,8 +26271,7 @@
   {
    "supplier_id": "california-correctional-health-care-services",
    "name": "California Correctional Health Care Services",
-   "status": "publish",
-   "website": "https://www.californiacorrectionalmentalhealth.org/"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "capgrow-partners-llc",
@@ -27080,8 +27051,7 @@
   {
    "supplier_id": "carnegie-library-of-pittsburgh",
    "name": "Carnegie Library of Pittsburgh",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "charlesbridge",
@@ -27092,8 +27062,7 @@
   {
    "supplier_id": "charlotte-mecklenburg-library",
    "name": "Charlotte Mecklenburg Library",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "cherry-lake-publishing-group",
@@ -27193,8 +27162,7 @@
   {
    "supplier_id": "delaware-county-district-library",
    "name": "Delaware County District Library",
-   "status": "publish",
-   "website": "https://www.delawarelibrary.org"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "demco",
@@ -27277,8 +27245,7 @@
   {
    "supplier_id": "farmington-public-library",
    "name": "Farmington Public Library",
-   "status": "publish",
-   "website": "https://www.farmingtonpublic.org"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "fe-technologies",
@@ -27481,8 +27448,7 @@
   {
    "supplier_id": "las-vegas-clark-county-library-district",
    "name": "Las Vegas-Clark County Library District",
-   "status": "publish",
-   "website": "https://thelibrarydistrict.org/"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "lerner-publishing-group",
@@ -27535,8 +27501,7 @@
   {
    "supplier_id": "library-of-congress",
    "name": "Library of Congress",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "library-of-congress-fcu",
@@ -27649,8 +27614,7 @@
   {
    "supplier_id": "minnesota-state-library-services",
    "name": "Minnesota State Library Services",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "mj-library-shelving-by-aurora",
@@ -27697,8 +27661,7 @@
   {
    "supplier_id": "national-library-service-f-t-blind-print-disabled",
    "name": "National Library Service f/t Blind & Print Disabled",
-   "status": "held",
-   "held": "website unread (homepage: HTTP 503 for http://www.loc.gov/nls)"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "nook-wellness-pods",
@@ -27787,8 +27750,7 @@
   {
    "supplier_id": "pontiac-public-library",
    "name": "Pontiac Public Library",
-   "status": "publish",
-   "website": "https://www.pontiac.org/505/Public-Library"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "princeton-university-press",
@@ -30122,8 +30084,7 @@
   {
    "supplier_id": "annapolis-city-of",
    "name": "Annapolis, City of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "asc3nd-technology-group",
@@ -30146,8 +30107,7 @@
   {
    "supplier_id": "attorney-general-maryland-office-of-the",
    "name": "Attorney General, Maryland Office of the",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "ballet-theatre-of-maryland",
@@ -30176,8 +30136,7 @@
   {
    "supplier_id": "bel-air-town-of",
    "name": "Bel Air, Town of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "beyond-the-surface-pros",
@@ -30188,8 +30147,7 @@
   {
    "supplier_id": "bladensburg-town-of",
    "name": "Bladensburg, Town of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "blue-whale-ev",
@@ -30200,8 +30158,7 @@
   {
    "supplier_id": "cambridge-city-of",
    "name": "Cambridge, City of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "capital-one-n-a",
@@ -30272,8 +30229,7 @@
   {
    "supplier_id": "comptroller-of-maryland",
    "name": "Comptroller of Maryland",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "constellation-energy-group",
@@ -30380,8 +30336,7 @@
   {
    "supplier_id": "frederick-city-of",
    "name": "Frederick, City of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "gambrills-equipment",
@@ -30416,14 +30371,12 @@
   {
    "supplier_id": "hagerstown-city-of",
    "name": "Hagerstown, City of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "havre-de-grace-city-of",
    "name": "Havre de Grace, City of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "hilb-group",
@@ -30518,8 +30471,7 @@
   {
    "supplier_id": "maryland-air-national-guard-recruiting",
    "name": "Maryland Air National Guard Recruiting",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-american-water",
@@ -30530,14 +30482,12 @@
   {
    "supplier_id": "maryland-army-national-guard",
    "name": "Maryland Army National Guard",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-cannabis-administration",
    "name": "Maryland Cannabis Administration",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-correctional-enterprises",
@@ -30548,68 +30498,57 @@
   {
    "supplier_id": "maryland-department-of-budget-and-management",
    "name": "Maryland Department of Budget and Management",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-commerce",
    "name": "Maryland Department of Commerce",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-emergency-management-911-board",
    "name": "Maryland Department of Emergency Management- 911 Board",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-general-services",
    "name": "Maryland Department of General Services",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-housing-and-community-development",
    "name": "Maryland Department of Housing and Community Development",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-natural-resources",
    "name": "Maryland Department of Natural Resources",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-public-safety-and-correctional-services",
    "name": "Maryland Department of Public Safety and Correctional Services",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-social-and-economic-mobility",
    "name": "Maryland Department of Social and Economic Mobility",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-the-environment",
    "name": "Maryland Department of the Environment",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-department-of-transportation",
    "name": "Maryland Department of Transportation",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-energy-administration",
    "name": "Maryland Energy Administration",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-environmental-service",
@@ -30620,8 +30559,7 @@
   {
    "supplier_id": "maryland-esgr",
    "name": "Maryland ESGR",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-fire-and-rescue-institute-umd",
@@ -30650,14 +30588,12 @@
   {
    "supplier_id": "maryland-insurance-administration",
    "name": "Maryland Insurance Administration",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-lottery-and-gaming",
    "name": "Maryland Lottery and Gaming",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-municipal-clerks-association",
@@ -30674,14 +30610,12 @@
   {
    "supplier_id": "maryland-occupational-safety-and-health-maryland-department-of-labor",
    "name": "Maryland Occupational Safety and Health/Maryland Department of Labor",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-relay-department-of-disabilities",
    "name": "Maryland Relay-Department of Disabilities",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "maryland-rural-water-association",
@@ -30704,8 +30638,7 @@
   {
    "supplier_id": "maryland-two-fifty-commission",
    "name": "Maryland Two Fifty Commission",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "mccrone",
@@ -30722,8 +30655,7 @@
   {
    "supplier_id": "md-underground-facilities-damage-prevention-authority",
    "name": "MD Underground Facilities Damage Prevention Authority",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "medical-access-service-advantage",
@@ -30872,8 +30804,7 @@
   {
    "supplier_id": "rural-maryland-council",
    "name": "Rural Maryland Council",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "service-line-program-by-homeserve",
@@ -31004,8 +30935,7 @@
   {
    "supplier_id": "westminster-city-of",
    "name": "Westminster, City of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "wgl-energy-services",
@@ -31016,8 +30946,7 @@
   {
    "supplier_id": "williamsport-town-of",
    "name": "Williamsport, Town of",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "abonmarche-byce-securitecture",
@@ -31682,8 +31611,7 @@
   {
    "supplier_id": "mi-public-safety-communications-system",
    "name": "MI Public Safety Communications System",
-   "status": "held",
-   "held": "website unread (not read)"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "municipal-employees-retirement-system-of-michigan",
@@ -32000,8 +31928,7 @@
   {
    "supplier_id": "alberta-canada-pavilion",
    "name": "Alberta/Canada Pavilion",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "alderon-industries",
@@ -32330,8 +32257,7 @@
   {
    "supplier_id": "bavarian-pavilion-c-o-bayern-international-gmbh",
    "name": "Bavarian Pavilion c/o Bayern International GmbH",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "bcr-environmental",
@@ -32390,8 +32316,7 @@
   {
    "supplier_id": "better-buildings-and-better-plants-initiative",
    "name": "Better Buildings and Better Plants Initiative",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "beyond-the-dome",
@@ -33572,8 +33497,7 @@
   {
    "supplier_id": "great-lakes-water-authority-glwa",
    "name": "Great Lakes Water Authority (GLWA)",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "green-steel-environmental",
@@ -33842,8 +33766,7 @@
   {
    "supplier_id": "hrsd",
    "name": "HRSD",
-   "status": "publish",
-   "website": "https://www.hrsd.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "huber-technology-llc",
@@ -34346,8 +34269,7 @@
   {
    "supplier_id": "la-county-sanitation-district",
    "name": "LA County Sanitation District",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "lakeside-equipment-corporation",
@@ -35707,8 +35629,7 @@
   {
    "supplier_id": "south-platte-renew-pilot-and-research-center",
    "name": "South Platte Renew - Pilot and Research Center",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "spaans-babcock",
@@ -35989,8 +35910,7 @@
   {
    "supplier_id": "the-bureau-of-sewerage-tokyo-metropolitan-government",
    "name": "The Bureau of Sewerage, Tokyo Metropolitan Government",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "the-mastrrr-company",
@@ -36079,8 +35999,7 @@
   {
    "supplier_id": "toho-water-authority",
    "name": "Toho Water Authority",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "tomorrow-water",
@@ -36187,8 +36106,7 @@
   {
    "supplier_id": "u-s-environmental-protection-agency",
    "name": "U.S. Environmental Protection Agency",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "u-s-seal-mfg",
@@ -36259,8 +36177,7 @@
   {
    "supplier_id": "usda-rural-utilities-service",
    "name": "USDA Rural Utilities Service",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "usf-fabrication-inc",
@@ -37323,8 +37240,7 @@
   {
    "supplier_id": "national-institute-for-occupational-safety-and-health-niosh",
    "name": "National Institute for Occupational Safety and Health (NIOSH)",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "ncl-government-capital",
@@ -37365,8 +37281,7 @@
   {
    "supplier_id": "niosh",
    "name": "NIOSH",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "nova-southeastern-university",
@@ -39117,8 +39032,7 @@
   {
    "supplier_id": "transportation-security-administration",
    "name": "Transportation Security Administration",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "tsi-video-surveillance",
@@ -39135,8 +39049,7 @@
   {
    "supplier_id": "usdot-its-joint-program-office",
    "name": "USDOT ITS Joint Program Office",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "victa-by-hsm",
@@ -40532,8 +40445,7 @@
   {
    "supplier_id": "nashville-international-airport",
    "name": "Nashville International Airport\u00ae",
-   "status": "publish",
-   "website": "https://www.nashville-airport.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "parabit-systems",
@@ -40586,8 +40498,7 @@
   {
    "supplier_id": "chicago-transit-authority",
    "name": "Chicago Transit Authority",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "enertech-international-inc",
@@ -40640,14 +40551,12 @@
   {
    "supplier_id": "metra",
    "name": "Metra",
-   "status": "publish",
-   "website": "https://metra.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "northern-illinois-transit-authority-nita",
    "name": "Northern Illinois Transit Authority (NITA)",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "one-our-next-energy",
@@ -40658,8 +40567,7 @@
   {
    "supplier_id": "pace-suburban-bus",
    "name": "Pace Suburban Bus",
-   "status": "publish",
-   "website": "https://pacebus.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "pioneer-emobility-e-boost",
@@ -40958,14 +40866,12 @@
   {
    "supplier_id": "army-rotc",
    "name": "Army ROTC",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "asvab-career-exploration-program",
    "name": "ASVAB Career Exploration Program",
-   "status": "held",
-   "held": "website unread (homepage: only 0 chars of text)"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "botvin-lifeskills-training",
@@ -41012,8 +40918,7 @@
   {
    "supplier_id": "dea-drug-enforcement-administration",
    "name": "DEA - Drug Enforcement Administration",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "ekadence-learning-foundation",
@@ -42285,8 +42190,7 @@
   {
    "supplier_id": "massachusetts-educational-financing-authority",
    "name": "Massachusetts Educational Financing Authority",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "mcclintock-associates-p-c",
@@ -42477,8 +42381,7 @@
   {
    "supplier_id": "environmental-protection-agency",
    "name": "Environmental Protection Agency",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "nmsa",
@@ -42872,8 +42775,7 @@
   {
    "supplier_id": "fairbanks-north-star-borough-school-district",
    "name": "Fairbanks North Star Borough School District",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "florida-tech",
@@ -43196,8 +43098,7 @@
   {
    "supplier_id": "mshda",
    "name": "MSHDA",
-   "status": "held",
-   "held": "website unread (not read)"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "neighborworks-america",
@@ -44048,14 +43949,12 @@
   {
    "supplier_id": "fema-ipaws",
    "name": "FEMA IPAWS",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "firstnet-authority",
    "name": "FirstNet Authority",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "flowstop",
@@ -44132,8 +44031,7 @@
   {
    "supplier_id": "nasa-disasters-program",
    "name": "NASA Disasters Program",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "national-mass-violence-center",
@@ -44150,8 +44048,7 @@
   {
    "supplier_id": "noaa",
    "name": "NOAA",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "orau",
@@ -45174,8 +45071,7 @@
   {
    "supplier_id": "european-union",
    "name": "European Union",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "everylife-foundation-for-rare-diseases",
@@ -45210,8 +45106,7 @@
   {
    "supplier_id": "federal-communications-commission-fcc",
    "name": "Federal Communications Commission (FCC)",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "ffrf-action-fund",
@@ -45318,8 +45213,7 @@
   {
    "supplier_id": "interstate-medical-licensure-compact-commission",
    "name": "Interstate Medical Licensure Compact Commission",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "intl-assoc-of-plumbing-mechanical-officials",
@@ -45402,8 +45296,7 @@
   {
    "supplier_id": "nasa",
    "name": "NASA",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "national-anti-vivisection-society",
@@ -45774,8 +45667,7 @@
   {
    "supplier_id": "state-of-illinois-executive-ethics-commission",
    "name": "State of Illinois Executive Ethics Commission",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "state-s-t-policy-fellowship",
@@ -46140,8 +46032,7 @@
   {
    "supplier_id": "wa-state-dept-of-labor-industries",
    "name": "WA State Dept of Labor & Industries",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "wildwood-playgrounds",
@@ -46680,8 +46571,7 @@
   {
    "supplier_id": "center-for-domestic-preparedness",
    "name": "Center for Domestic Preparedness",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "1nce",
@@ -53660,8 +53550,7 @@
   {
    "supplier_id": "nwa-regional-planning-commission",
    "name": "NWA Regional Planning Commission",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "tec",
@@ -53696,8 +53585,7 @@
   {
    "supplier_id": "ca-governor-s-office-of-land-use-and-climate-innovation",
    "name": "CA Governor's Office of Land Use and Climate Innovation",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "cal-poly",
@@ -53708,8 +53596,7 @@
   {
    "supplier_id": "caltrans",
    "name": "Caltrans",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "civic-solutions",
@@ -53828,8 +53715,7 @@
   {
    "supplier_id": "scag-southern-california-association-of-governments",
    "name": "SCAG Southern California Association of Governments",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "sjsu-department-of-urban-and-regional-planning",
@@ -53906,8 +53792,7 @@
   {
    "supplier_id": "denver-regional-council-of-governments",
    "name": "Denver Regional Council of Governments",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "downtown-colorado-inc",
@@ -54092,8 +53977,7 @@
   {
    "supplier_id": "city-of-baton-rouge-parish-of-east-baton-rouge-planning-commission",
    "name": "City of Baton Rouge Parish of East Baton Rouge Planning Commission",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "desire-line",
@@ -54140,8 +54024,7 @@
   {
    "supplier_id": "howard-county-planning-and-zoning",
    "name": "Howard County Planning and Zoning",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "jmt",
@@ -54158,8 +54041,7 @@
   {
    "supplier_id": "maryland-department-of-planning",
    "name": "Maryland Department of Planning",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "mead-and-hunt",
@@ -54258,8 +54140,7 @@
   {
    "supplier_id": "metropolitan-council",
    "name": "Metropolitan Council",
-   "status": "publish",
-   "website": "https://metrocouncil.org"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "minnesota-state-mankato",
@@ -54294,26 +54175,22 @@
   {
    "supplier_id": "boulder-city",
    "name": "Boulder City",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "city-of-henderson",
    "name": "City of Henderson",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "city-of-henderson-redevelopment-agency",
    "name": "City of Henderson Redevelopment Agency",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "douglas-county",
    "name": "Douglas County",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "gc-garcia-inc",
@@ -54372,14 +54249,12 @@
   {
    "supplier_id": "rtc-washoe",
    "name": "RTC Washoe",
-   "status": "publish",
-   "website": "https://rtcwashoe.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "tahoe-regional-planning-agency-trpa",
    "name": "Tahoe Regional Planning Agency (TRPA)",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "benchmark-planning",
@@ -54474,8 +54349,7 @@
   {
    "supplier_id": "owrb",
    "name": "OWRB",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "poe-associates",
@@ -54522,8 +54396,7 @@
   {
    "supplier_id": "department-of-land-conservation-development",
    "name": "Department of Land Conservation & Development",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "dowl",
@@ -54558,14 +54431,12 @@
   {
    "supplier_id": "port-of-portland",
    "name": "Port of Portland",
-   "status": "publish",
-   "website": "https://portofportland.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "transportation-and-growth-management",
    "name": "Transportation and Growth Management",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "walker-macy",
@@ -54612,8 +54483,7 @@
   {
    "supplier_id": "conservation-department-missouri",
    "name": "Conservation Department Missouri",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "development-strategies",
@@ -54654,8 +54524,7 @@
   {
    "supplier_id": "kansas-city",
    "name": "Kansas City",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "kansas-state-university-landscape-architecture-and-regional-community-planning",
@@ -54672,14 +54541,12 @@
   {
    "supplier_id": "lenexa-kansas",
    "name": "Lenexa Kansas",
-   "status": "publish",
-   "website": "https://www.lenexa.com/Home"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "marc-mid-america-regional-council",
    "name": "MARC Mid-America Regional Council",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "missouri-state-center-for-resource-planning-and-management",
@@ -54714,8 +54581,7 @@
   {
    "supplier_id": "portkc",
    "name": "PortKC",
-   "status": "publish",
-   "website": "https://portkc.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "safer-simpler-missouri",
@@ -54786,8 +54652,7 @@
   {
    "supplier_id": "grapevine-texas-planning-services",
    "name": "Grapevine Texas Planning Services",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "gresham-smith",
@@ -54810,8 +54675,7 @@
   {
    "supplier_id": "plano",
    "name": "Plano",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "rifeline",
@@ -54886,8 +54750,7 @@
   {
    "supplier_id": "sosi",
    "name": "SOSI",
-   "status": "held",
-   "held": "the website on file is a domain for sale"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "summit-design-and-engineering-services",
@@ -54898,8 +54761,7 @@
   {
    "supplier_id": "the-port-of-virginia",
    "name": "The Port of Virginia",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "timmons-group",
@@ -54910,8 +54772,7 @@
   {
    "supplier_id": "virginia-housing",
    "name": "Virginia Housing",
-   "status": "publish",
-   "website": "https://virginiahousing.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "weston-sampson",
@@ -54946,8 +54807,7 @@
   {
    "supplier_id": "city-of-vancouver-washington",
    "name": "City of Vancouver Washington",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "fehr-peers",
@@ -55030,20 +54890,17 @@
   {
    "supplier_id": "city-of-green-bay",
    "name": "City of Green Bay",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "city-of-madison",
    "name": "City of Madison",
-   "status": "publish",
-   "website": "https://www.cityofmadison.com"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "city-of-madison-metro-transit",
    "name": "City of Madison Metro Transit",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "mckenna",
@@ -55144,8 +55001,7 @@
   {
    "supplier_id": "greater-dayton-rta",
    "name": "Greater Dayton RTA",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "greater-ohio-policy-center",
@@ -55180,8 +55036,7 @@
   {
    "supplier_id": "mvrpc",
    "name": "MVRPC",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "planning-next",
@@ -55234,8 +55089,7 @@
   {
    "supplier_id": "city-of-opelika-al",
    "name": "City of Opelika, AL",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "energy-alabama",
@@ -55276,8 +55130,7 @@
   {
    "supplier_id": "achd",
    "name": "ACHD",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "agnew-beck",
@@ -55348,8 +55201,7 @@
   {
    "supplier_id": "montana-department-of-commerce",
    "name": "Montana Department of Commerce",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "orion-planning-design",
@@ -55480,8 +55332,7 @@
   {
    "supplier_id": "county-of-albany",
    "name": "County of Albany",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "creighton-manning",
@@ -55522,14 +55373,12 @@
   {
    "supplier_id": "new-york-state-department-of-environmental-conservation-hudson-river-estuary-program",
    "name": "New York State Department of Environmental Conservation Hudson River Estuary Program",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "new-york-state-hudson-river-valley-greenway",
    "name": "New York State Hudson River Valley Greenway",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "planning4places",
@@ -55576,8 +55425,7 @@
   {
    "supplier_id": "county-of-northampton",
    "name": "County of Northampton",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "g-petrucci-company-inc",
@@ -55630,8 +55478,7 @@
   {
    "supplier_id": "lehigh-county",
    "name": "Lehigh County",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "lehigh-university-small-cities-lab",
@@ -55642,8 +55489,7 @@
   {
    "supplier_id": "lehigh-valley-planning-commission",
    "name": "Lehigh Valley Planning Commission",
-   "status": "publish",
-   "website": "https://lvpc.org"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "mackin-engineers-consultants",
@@ -55666,8 +55512,7 @@
   {
    "supplier_id": "pa-department-of-community-economic-development",
    "name": "PA Department of Community & Economic Development",
-   "status": "held",
-   "held": "no website"
+   "status": "not_a_company"
   },
   {
    "supplier_id": "pennoni",
@@ -57435,15 +57280,6 @@
    }
   },
   {
-   "supplier_id": "air-force-office-of-special-investigations",
-   "industry": "public-safety/police",
-   "basis": "conference",
-   "source": {
-    "url": "https://theiacpconference.org/",
-    "quote": "Air Force Office of Special Investigations"
-   }
-  },
-  {
    "supplier_id": "airbnb",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -58281,15 +58117,6 @@
    }
   },
   {
-   "supplier_id": "arizona-commerce-authority",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.techconnectworld.com/World2027/",
-    "quote": "Arizona Commerce Authority"
-   }
-  },
-  {
    "supplier_id": "armor-express",
    "industry": "public-safety/police",
    "basis": "own_site",
@@ -58323,24 +58150,6 @@
    "source": {
     "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
     "quote": "ArmorDeck / Nexatherm"
-   }
-  },
-  {
-   "supplier_id": "army-family-and-mwr",
-   "industry": "parks-rec/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s23.a2zinc.net/clients/NRPA/NRPA2026/Public/eventmap.aspx?shMode=E",
-    "quote": "Army Family and MWR"
-   }
-  },
-  {
-   "supplier_id": "army-sbir",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.techconnectworld.com/World2027/",
-    "quote": "Army SBIR"
    }
   },
   {
@@ -59928,24 +59737,6 @@
    }
   },
   {
-   "supplier_id": "bureau-of-economic-analysis",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
-    "quote": "Bureau of Economic Analysis (BEA)"
-   }
-  },
-  {
-   "supplier_id": "bureau-of-labor-statistics",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
-    "quote": "Bureau of Labor Statistics"
-   }
-  },
-  {
    "supplier_id": "bus-climate-control",
    "industry": "transit-parking/suppliers-and-services",
    "basis": "conference",
@@ -61068,15 +60859,6 @@
    "source": {
     "url": "https://tenaxnorthamerica.com",
     "quote": "The first manufacturer in the world of 100% electric street sweepers and street washers"
-   }
-  },
-  {
-   "supplier_id": "city-of-raleigh",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.techconnectworld.com/World2027/",
-    "quote": "City of Raleigh"
    }
   },
   {
@@ -62493,15 +62275,6 @@
    }
   },
   {
-   "supplier_id": "department-of-homeland-security-immigration-customs-enforcement",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
-    "quote": "Department of Homeland Security /Immigration Customs Enforcement"
-   }
-  },
-  {
    "supplier_id": "detectachem-inc",
    "industry": "public-safety/police",
    "basis": "own_site",
@@ -62697,15 +62470,6 @@
    "source": {
     "url": "https://www.doubletapind.com/products/tactical-range-bag-41l",
     "quote": "The Tactical Range Bag features a fully padded interior designed to help protect firearms accessories, electronics, optics, and other sensitive gear."
-   }
-  },
-  {
-   "supplier_id": "douglas-county-sheriffs",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.sheriffs.org/conferences/",
-    "quote": "Douglas County Sheriffs"
    }
   },
   {
@@ -64407,51 +64171,6 @@
    "source": {
     "url": "https://www.apwa.org/events/pwx-conference/",
     "quote": "Fechometal USA LLC"
-   }
-  },
-  {
-   "supplier_id": "federal-bureau-of-investigation",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.techconnectworld.com/World2027/",
-    "quote": "Federal Bureau of Investigation (FBI)"
-   }
-  },
-  {
-   "supplier_id": "federal-bureau-of-prisons",
-   "industry": "public-safety/police",
-   "basis": "conference",
-   "source": {
-    "url": "https://theiacpconference.org/",
-    "quote": "Federal Bureau of Prisons"
-   }
-  },
-  {
-   "supplier_id": "federal-laboratory-consortium",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.techconnectworld.com/World2027/",
-    "quote": "Federal Laboratory Consortium"
-   }
-  },
-  {
-   "supplier_id": "federal-motor-carrier-safety-administration",
-   "industry": "public-safety/police",
-   "basis": "conference",
-   "source": {
-    "url": "https://theiacpconference.org/",
-    "quote": "Federal Motor Carrier Safety Administration"
-   }
-  },
-  {
-   "supplier_id": "federal-motor-carrier-safety-administration",
-   "industry": "k12-schools/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s36.a2zinc.net/clients/NSBA/ac2026/Public/EventMap.aspx?sortMenu=104002",
-    "quote": "Federal Motor Carrier Safety Administration"
    }
   },
   {
@@ -66585,15 +66304,6 @@
    "source": {
     "url": "https://nevada.planning.org/",
     "quote": "Horrocks"
-   }
-  },
-  {
-   "supplier_id": "houston-public-works",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.houstonpublicworks.org",
-    "quote": "From delivering safe drinking water to managing our streets and drainage systems, our team works tirelessly to ensure a healthy, safe, and vibrant city."
    }
   },
   {
@@ -70080,15 +69790,6 @@
    }
   },
   {
-   "supplier_id": "minnesota-department-of-transportation",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
-    "quote": "Minnesota Department of Transportation"
-   }
-  },
-  {
    "supplier_id": "minuteman-security-life-safety",
    "industry": "transit-parking/suppliers-and-services",
    "basis": "conference",
@@ -71367,15 +71068,6 @@
    }
   },
   {
-   "supplier_id": "navy-sbir-sttr",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.techconnectworld.com/World2027/",
-    "quote": "Navy SBIR/STTR"
-   }
-  },
-  {
    "supplier_id": "nebraska-sheriffs-association",
    "industry": "public-safety/suppliers-and-services",
    "basis": "conference",
@@ -71805,15 +71497,6 @@
    "source": {
     "url": "https://theiacpconference.org/",
     "quote": "Office Furniture EZ, LLC"
-   }
-  },
-  {
-   "supplier_id": "office-of-justice-programs-usdoj",
-   "industry": "public-safety/police",
-   "basis": "conference",
-   "source": {
-    "url": "https://theiacpconference.org/",
-    "quote": "Office of Justice Programs, USDOJ"
    }
   },
   {
@@ -78648,15 +78331,6 @@
    }
   },
   {
-   "supplier_id": "the-maryland-national-capital-park-and-planning-commission-department-of-parks-and-recreation-prince-george-s-county",
-   "industry": "parks-rec/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s23.a2zinc.net/clients/NRPA/NRPA2026/Public/eventmap.aspx?shMode=E",
-    "quote": "The Maryland-National Capital Park and Planning Commission Department of Parks and Recreation, Prince George's County"
-   }
-  },
-  {
    "supplier_id": "the-motz-group",
    "industry": "parks-rec/grounds-irrigation-and-turf",
    "basis": "own_site",
@@ -79023,15 +78697,6 @@
    "source": {
     "url": "https://theiacpconference.org/",
     "quote": "Total Security Solutions"
-   }
-  },
-  {
-   "supplier_id": "town-of-cary",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://icma2026.smallworldlabs.com/exhibitors",
-    "quote": "Town of Cary"
    }
   },
   {
@@ -79458,24 +79123,6 @@
    }
   },
   {
-   "supplier_id": "u-s-census-bureau",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
-    "quote": "U.S. Census Bureau"
-   }
-  },
-  {
-   "supplier_id": "u-s-census-bureau",
-   "industry": "health-human-services/public-health",
-   "basis": "conference",
-   "source": {
-    "url": "https://naccho2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "U.S. Census Bureau"
-   }
-  },
-  {
    "supplier_id": "u-s-customs-and-border-protection",
    "industry": "public-safety/police",
    "basis": "conference",
@@ -79500,15 +79147,6 @@
    "source": {
     "url": "https://theiacpconference.org/",
     "quote": "U.S. DOJ, COPS Office"
-   }
-  },
-  {
-   "supplier_id": "u-s-department-of-state-bridgeusa",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
-    "quote": "U.S. Department of state BridgeUSA"
    }
   },
   {
@@ -79635,15 +79273,6 @@
    "source": {
     "url": "https://playgroundsurfacing.com",
     "quote": "We offer every safety surface possible for your playground, including poured in place rubber, artificial turf and mulch products."
-   }
-  },
-  {
-   "supplier_id": "us-small-business-administration-office-of-disaster-assistance",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
-    "quote": "US Small Business Administration Office of Disaster Assistance"
    }
   },
   {
@@ -79833,15 +79462,6 @@
    "source": {
     "url": "https://theiacpconference.org/",
     "quote": "United Shield International"
-   }
-  },
-  {
-   "supplier_id": "united-states-department-of-veterans-affairs-office-of-suicide-prevention",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.sheriffs.org/conferences/",
-    "quote": "United States Department of Veterans Affairs Office of Suicide Prevention (OSP)"
    }
   },
   {
@@ -83064,15 +82684,6 @@
    "source": {
     "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
     "quote": "ISS North America"
-   }
-  },
-  {
-   "supplier_id": "italian-trade-agency",
-   "industry": "airports-aviation/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
-    "quote": "Italian Trade Agency"
    }
   },
   {
@@ -93003,15 +92614,6 @@
    }
   },
   {
-   "supplier_id": "daegu-metropolitan-city",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "Daegu Metropolitan City"
-   }
-  },
-  {
    "supplier_id": "daeyoun-co-ltd",
    "industry": "public-works/water",
    "basis": "conference",
@@ -95496,15 +95098,6 @@
    }
   },
   {
-   "supplier_id": "u-s-department-of-state",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://ace2026.smallworldlabs.com/exhibitors",
-    "quote": "U.S. Department of State"
-   }
-  },
-  {
    "supplier_id": "u-s-pipe",
    "industry": "public-works/water",
    "basis": "conference",
@@ -95844,15 +95437,6 @@
    "source": {
     "url": "https://ace2026.smallworldlabs.com/exhibitors",
     "quote": "WooRiGiSul Co., Ltd."
-   }
-  },
-  {
-   "supplier_id": "wssc-water",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "http://www.wsscwater.com",
-    "quote": "Emergency water or sewer problem?"
    }
   },
   {
@@ -97818,15 +97402,6 @@
    }
   },
   {
-   "supplier_id": "988-colorado-mental-health-line",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "own_site",
-   "source": {
-    "url": "http://www.988colorado.com",
-    "quote": "Starting June 5, 2026, the Colorado Crisis Services website will redirect to 988Colorado.com for support and services."
-   }
-  },
-  {
    "supplier_id": "accreditation-guru-inc",
    "industry": "health-human-services/behavioral-health",
    "basis": "conference",
@@ -98004,15 +97579,6 @@
    "source": {
     "url": "https://www.housingwa.org/2026-sponsors",
     "quote": "Butler Human Services Furniture"
-   }
-  },
-  {
-   "supplier_id": "california-correctional-health-care-services",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "conference",
-   "source": {
-    "url": "https://natcon26.eventscribe.net/SearchByExpoCompany.asp?pfp=BrowsebyCompany",
-    "quote": "California Correctional Health Care Services"
    }
   },
   {
@@ -99168,30 +98734,12 @@
    }
   },
   {
-   "supplier_id": "carnegie-library-of-pittsburgh",
-   "industry": "general-gov/libraries",
-   "basis": "conference",
-   "source": {
-    "url": "https://pla2026.smallworldlabs.com/exhibitors",
-    "quote": "Carnegie Library of Pittsburgh"
-   }
-  },
-  {
    "supplier_id": "charlesbridge",
    "industry": "general-gov/libraries",
    "basis": "own_site",
    "source": {
     "url": "http://www.charlesbridge.com",
     "quote": "Share your love of STEAM with kids and spread the word about STEAMWORKS with our ambassador program for educators, librarians, booksellers, and parents."
-   }
-  },
-  {
-   "supplier_id": "charlotte-mecklenburg-library",
-   "industry": "general-gov/libraries",
-   "basis": "conference",
-   "source": {
-    "url": "https://pla2026.smallworldlabs.com/exhibitors",
-    "quote": "Charlotte Mecklenburg Library"
    }
   },
   {
@@ -99330,15 +98878,6 @@
    }
   },
   {
-   "supplier_id": "delaware-county-district-library",
-   "industry": "general-gov/libraries",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.delawarelibrary.org",
-    "quote": "Important news from your library"
-   }
-  },
-  {
    "supplier_id": "demco",
    "industry": "general-gov/libraries",
    "basis": "own_site",
@@ -99453,15 +98992,6 @@
    "source": {
     "url": "https://pla2026.smallworldlabs.com/exhibitors",
     "quote": "FamilySearch International"
-   }
-  },
-  {
-   "supplier_id": "farmington-public-library",
-   "industry": "general-gov/libraries",
-   "basis": "conference",
-   "source": {
-    "url": "https://pla2026.smallworldlabs.com/exhibitors",
-    "quote": "Farmington Public Library"
    }
   },
   {
@@ -99789,15 +99319,6 @@
    }
   },
   {
-   "supplier_id": "las-vegas-clark-county-library-district",
-   "industry": "general-gov/libraries",
-   "basis": "own_site",
-   "source": {
-    "url": "https://thelibrarydistrict.org/",
-    "quote": "Explore eBooks with Libby, Hoopla & More"
-   }
-  },
-  {
    "supplier_id": "lerner-publishing-group",
    "industry": "general-gov/libraries",
    "basis": "own_site",
@@ -99867,15 +99388,6 @@
    "source": {
     "url": "http://www.librarylifters.com",
     "quote": "Library Lifters moves fully loaded library bookshelves (stacks) without removing books\u2014reducing labor, protecting collections, and speeding up renovations while improving layout and ADA accessibility with minimal disruption."
-   }
-  },
-  {
-   "supplier_id": "library-of-congress",
-   "industry": "general-gov/libraries",
-   "basis": "conference",
-   "source": {
-    "url": "https://pla2026.smallworldlabs.com/exhibitors",
-    "quote": "Library of Congress"
    }
   },
   {
@@ -100041,15 +99553,6 @@
    }
   },
   {
-   "supplier_id": "minnesota-state-library-services",
-   "industry": "general-gov/libraries",
-   "basis": "conference",
-   "source": {
-    "url": "https://pla2026.smallworldlabs.com/exhibitors",
-    "quote": "Minnesota State Library Services"
-   }
-  },
-  {
    "supplier_id": "mj-library-shelving-by-aurora",
    "industry": "general-gov/libraries",
    "basis": "own_site",
@@ -100110,15 +99613,6 @@
    "source": {
     "url": "https://pla2026.smallworldlabs.com/exhibitors",
     "quote": "National Highlights Inc."
-   }
-  },
-  {
-   "supplier_id": "national-library-service-f-t-blind-print-disabled",
-   "industry": "general-gov/libraries",
-   "basis": "conference",
-   "source": {
-    "url": "https://pla2026.smallworldlabs.com/exhibitors",
-    "quote": "National Library Service f/t Blind & Print Disabled"
    }
   },
   {
@@ -100272,15 +99766,6 @@
    "source": {
     "url": "https://www.plutobooks.com/",
     "quote": "We are one of the world\u2019s oldest radical book publishers, proudly identifying as anti-capitalist, internationalist and politically independent."
-   }
-  },
-  {
-   "supplier_id": "pontiac-public-library",
-   "industry": "general-gov/libraries",
-   "basis": "conference",
-   "source": {
-    "url": "https://pla2026.smallworldlabs.com/exhibitors",
-    "quote": "Pontiac Public Library"
    }
   },
   {
@@ -103641,15 +103126,6 @@
    }
   },
   {
-   "supplier_id": "annapolis-city-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Annapolis, City of"
-   }
-  },
-  {
    "supplier_id": "asc3nd-technology-group",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -103674,15 +103150,6 @@
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "Atlantic Machinery, Inc."
-   }
-  },
-  {
-   "supplier_id": "attorney-general-maryland-office-of-the",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Attorney General, Maryland Office of the"
    }
   },
   {
@@ -103722,15 +103189,6 @@
    }
   },
   {
-   "supplier_id": "bel-air-town-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Bel Air, Town of"
-   }
-  },
-  {
    "supplier_id": "beyond-the-surface-pros",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -103740,30 +103198,12 @@
    }
   },
   {
-   "supplier_id": "bladensburg-town-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Bladensburg, Town of"
-   }
-  },
-  {
    "supplier_id": "blue-whale-ev",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "Blue Whale EV"
-   }
-  },
-  {
-   "supplier_id": "cambridge-city-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Cambridge, City of"
    }
   },
   {
@@ -103872,15 +103312,6 @@
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "Commercial Recreation Products"
-   }
-  },
-  {
-   "supplier_id": "comptroller-of-maryland",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Comptroller of Maryland"
    }
   },
   {
@@ -104055,15 +103486,6 @@
    }
   },
   {
-   "supplier_id": "frederick-city-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Frederick, City of"
-   }
-  },
-  {
    "supplier_id": "gambrills-equipment",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -104106,24 +103528,6 @@
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "Hadco Decorative Lighting"
-   }
-  },
-  {
-   "supplier_id": "hagerstown-city-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Hagerstown, City of"
-   }
-  },
-  {
-   "supplier_id": "havre-de-grace-city-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Havre de Grace, City of"
    }
   },
   {
@@ -104271,39 +103675,12 @@
    }
   },
   {
-   "supplier_id": "maryland-air-national-guard-recruiting",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Air National Guard Recruiting"
-   }
-  },
-  {
    "supplier_id": "maryland-american-water",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "Maryland American Water"
-   }
-  },
-  {
-   "supplier_id": "maryland-army-national-guard",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Army National Guard"
-   }
-  },
-  {
-   "supplier_id": "maryland-cannabis-administration",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Cannabis Administration"
    }
   },
   {
@@ -104316,120 +103693,12 @@
    }
   },
   {
-   "supplier_id": "maryland-department-of-budget-and-management",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Budget and Management"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-commerce",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Commerce"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-emergency-management-911-board",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Emergency Management- 911 Board"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-general-services",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of General Services"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-housing-and-community-development",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Housing and Community Development"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-natural-resources",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Natural Resources"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-public-safety-and-correctional-services",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Public Safety and Correctional Services"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-social-and-economic-mobility",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Social and Economic Mobility"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-the-environment",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of the Environment"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-transportation",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Department of Transportation"
-   }
-  },
-  {
-   "supplier_id": "maryland-energy-administration",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Energy Administration"
-   }
-  },
-  {
    "supplier_id": "maryland-environmental-service",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "Maryland Environmental Service"
-   }
-  },
-  {
-   "supplier_id": "maryland-esgr",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland ESGR"
    }
   },
   {
@@ -104469,24 +103738,6 @@
    }
   },
   {
-   "supplier_id": "maryland-insurance-administration",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Insurance Administration"
-   }
-  },
-  {
-   "supplier_id": "maryland-lottery-and-gaming",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Lottery and Gaming"
-   }
-  },
-  {
    "supplier_id": "maryland-municipal-clerks-association",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -104502,24 +103753,6 @@
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "Maryland Municipal Public Works Officials Association"
-   }
-  },
-  {
-   "supplier_id": "maryland-occupational-safety-and-health-maryland-department-of-labor",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Occupational Safety and Health/Maryland Department of Labor"
-   }
-  },
-  {
-   "supplier_id": "maryland-relay-department-of-disabilities",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Relay-Department of Disabilities"
    }
   },
   {
@@ -104550,15 +103783,6 @@
    }
   },
   {
-   "supplier_id": "maryland-two-fifty-commission",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Maryland Two Fifty Commission"
-   }
-  },
-  {
    "supplier_id": "mccrone",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -104574,15 +103798,6 @@
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "McWane Plant and Industrial"
-   }
-  },
-  {
-   "supplier_id": "md-underground-facilities-damage-prevention-authority",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "MD Underground Facilities Damage Prevention Authority"
    }
   },
   {
@@ -104802,15 +104017,6 @@
    }
   },
   {
-   "supplier_id": "rural-maryland-council",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Rural Maryland Council"
-   }
-  },
-  {
    "supplier_id": "service-line-program-by-homeserve",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -105000,30 +104206,12 @@
    }
   },
   {
-   "supplier_id": "westminster-city-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Westminster, City of"
-   }
-  },
-  {
    "supplier_id": "wgl-energy-services",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
    "source": {
     "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
     "quote": "WGL Energy Services"
-   }
-  },
-  {
-   "supplier_id": "williamsport-town-of",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
-    "quote": "Williamsport, Town of"
    }
   },
   {
@@ -105684,15 +104872,6 @@
    }
   },
   {
-   "supplier_id": "mi-public-safety-communications-system",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.misheriff.org/vendors/",
-    "quote": "MI Public Safety Communications System"
-   }
-  },
-  {
    "supplier_id": "municipal-employees-retirement-system-of-michigan",
    "industry": "public-safety/suppliers-and-services",
    "basis": "conference",
@@ -106176,15 +105355,6 @@
    "source": {
     "url": "https://www.akindustries.com",
     "quote": "is a leading producer of fiberglass and polyethylene products for the wastewater industry that provides solutions for both centralized and decentralized wastewater management."
-   }
-  },
-  {
-   "supplier_id": "alberta-canada-pavilion",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Alberta/Canada Pavilion"
    }
   },
   {
@@ -106674,15 +105844,6 @@
    }
   },
   {
-   "supplier_id": "bavarian-pavilion-c-o-bayern-international-gmbh",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Bavarian Pavilion c/o Bayern International GmbH"
-   }
-  },
-  {
    "supplier_id": "bcr-environmental",
    "industry": "public-works/water",
    "basis": "conference",
@@ -106761,15 +105922,6 @@
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "Beta Group, Inc."
-   }
-  },
-  {
-   "supplier_id": "better-buildings-and-better-plants-initiative",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Better Buildings and Better Plants Initiative"
    }
   },
   {
@@ -108582,15 +107734,6 @@
    }
   },
   {
-   "supplier_id": "great-lakes-water-authority-glwa",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Great Lakes Water Authority (GLWA)"
-   }
-  },
-  {
    "supplier_id": "green-steel-environmental",
    "industry": "public-works/water",
    "basis": "conference",
@@ -109002,15 +108145,6 @@
    "source": {
     "url": "https://www.chartindustries.com/Businesses-Brands/Howden",
     "quote": "High performance centrifugal turbo compressor for municipal wastewater treatment and industrial applications."
-   }
-  },
-  {
-   "supplier_id": "hrsd",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.hrsd.com",
-    "quote": "HRSD promises to treat wastewater and recover natural resources to protect public health and the environment."
    }
   },
   {
@@ -109767,15 +108901,6 @@
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "Kytola Instruments, Inc."
-   }
-  },
-  {
-   "supplier_id": "la-county-sanitation-district",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "LA County Sanitation District"
    }
   },
   {
@@ -111813,15 +110938,6 @@
    }
   },
   {
-   "supplier_id": "south-platte-renew-pilot-and-research-center",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "South Platte Renew - Pilot and Research Center"
-   }
-  },
-  {
    "supplier_id": "spaans-babcock",
    "industry": "public-works/water",
    "basis": "conference",
@@ -112254,15 +111370,6 @@
    }
   },
   {
-   "supplier_id": "the-bureau-of-sewerage-tokyo-metropolitan-government",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "The Bureau of Sewerage, Tokyo Metropolitan Government"
-   }
-  },
-  {
    "supplier_id": "the-mastrrr-company",
    "industry": "public-works/water",
    "basis": "conference",
@@ -112386,15 +111493,6 @@
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "TNE"
-   }
-  },
-  {
-   "supplier_id": "toho-water-authority",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Toho Water Authority"
    }
   },
   {
@@ -112560,15 +111658,6 @@
    }
   },
   {
-   "supplier_id": "u-s-environmental-protection-agency",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "U.S. Environmental Protection Agency"
-   }
-  },
-  {
    "supplier_id": "u-s-seal-mfg",
    "industry": "public-works/water",
    "basis": "conference",
@@ -112665,15 +111754,6 @@
    "source": {
     "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "UNU Inc."
-   }
-  },
-  {
-   "supplier_id": "usda-rural-utilities-service",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "USDA Rural Utilities Service"
    }
   },
   {
@@ -114252,15 +113332,6 @@
    }
   },
   {
-   "supplier_id": "national-institute-for-occupational-safety-and-health-niosh",
-   "industry": "public-safety/fire",
-   "basis": "conference",
-   "source": {
-    "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "National Institute for Occupational Safety and Health (NIOSH)"
-   }
-  },
-  {
    "supplier_id": "ncl-government-capital",
    "industry": "public-safety/fire",
    "basis": "conference",
@@ -114312,15 +113383,6 @@
    "source": {
     "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "NFPA"
-   }
-  },
-  {
-   "supplier_id": "niosh",
-   "industry": "public-safety/fire",
-   "basis": "conference",
-   "source": {
-    "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "NIOSH"
    }
   },
   {
@@ -117096,15 +116158,6 @@
    }
   },
   {
-   "supplier_id": "transportation-security-administration",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://homebase.map-dynamics.com/ctaaexpo2026/floorplan",
-    "quote": "Transportation Security Administration"
-   }
-  },
-  {
    "supplier_id": "tsi-video-surveillance",
    "industry": "transit-parking/suppliers-and-services",
    "basis": "conference",
@@ -117120,15 +116173,6 @@
    "source": {
     "url": "https://www.unitedaccess.com/us/en.html",
     "quote": "Mobility Solution Financing</h2>\\r\\n<p>United Access partners with lenders who understand and specialize in financing accessible vehicles and mobility equipment."
-   }
-  },
-  {
-   "supplier_id": "usdot-its-joint-program-office",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://homebase.map-dynamics.com/ctaaexpo2026/floorplan",
-    "quote": "USDOT ITS Joint Program Office"
    }
   },
   {
@@ -119274,15 +118318,6 @@
    }
   },
   {
-   "supplier_id": "nashville-international-airport",
-   "industry": "airports-aviation/terminal-and-passenger-experience",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.nashville-airport.com",
-    "quote": "During 2025 Nashville Airport registered a total of 25 million passengers."
-   }
-  },
-  {
    "supplier_id": "parabit-systems",
    "industry": "airports-aviation/suppliers-and-services",
    "basis": "conference",
@@ -119352,15 +118387,6 @@
    "source": {
     "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
     "quote": "Certarus"
-   }
-  },
-  {
-   "supplier_id": "chicago-transit-authority",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
-    "quote": "Chicago Transit Authority"
    }
   },
   {
@@ -119436,39 +118462,12 @@
    }
   },
   {
-   "supplier_id": "metra",
-   "industry": "transit-parking/fleet-and-operations",
-   "basis": "own_site",
-   "source": {
-    "url": "https://metra.com",
-    "quote": "Rail System Serving Chicago and the Northeastern Illinois Region"
-   }
-  },
-  {
-   "supplier_id": "northern-illinois-transit-authority-nita",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
-    "quote": "Northern Illinois Transit Authority (NITA)"
-   }
-  },
-  {
    "supplier_id": "one-our-next-energy",
    "industry": "transit-parking/suppliers-and-services",
    "basis": "conference",
    "source": {
     "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
     "quote": "ONE (Our next energy)"
-   }
-  },
-  {
-   "supplier_id": "pace-suburban-bus",
-   "industry": "transit-parking/fleet-and-operations",
-   "basis": "own_site",
-   "source": {
-    "url": "https://pacebus.com",
-    "quote": "Pace Bus is the premier suburban transit provider, safely and efficiently moving people to work, school, and other regional destinations."
    }
   },
   {
@@ -119931,24 +118930,6 @@
    }
   },
   {
-   "supplier_id": "army-rotc",
-   "industry": "k12-schools/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s36.a2zinc.net/clients/NSBA/ac2026/Public/EventMap.aspx?sortMenu=104002",
-    "quote": "Army ROTC"
-   }
-  },
-  {
-   "supplier_id": "asvab-career-exploration-program",
-   "industry": "k12-schools/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s36.a2zinc.net/clients/NSBA/ac2026/Public/EventMap.aspx?sortMenu=104002",
-    "quote": "ASVAB Career Exploration Program"
-   }
-  },
-  {
    "supplier_id": "botvin-lifeskills-training",
    "industry": "k12-schools/suppliers-and-services",
    "basis": "conference",
@@ -120009,15 +118990,6 @@
    "source": {
     "url": "https://s36.a2zinc.net/clients/NSBA/ac2026/Public/EventMap.aspx?sortMenu=104002",
     "quote": "Clinic to Classroom Consulting, LLC."
-   }
-  },
-  {
-   "supplier_id": "dea-drug-enforcement-administration",
-   "industry": "k12-schools/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s36.a2zinc.net/clients/NSBA/ac2026/Public/EventMap.aspx?sortMenu=104002",
-    "quote": "DEA - Drug Enforcement Administration"
    }
   },
   {
@@ -121821,15 +120793,6 @@
    }
   },
   {
-   "supplier_id": "massachusetts-educational-financing-authority",
-   "industry": "higher-education/business-and-finance",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.nasfaa.org/meet_exhibitors_sponsors27",
-    "quote": "Massachusetts Educational Financing Authority"
-   }
-  },
-  {
    "supplier_id": "mcclintock-associates-p-c",
    "industry": "higher-education/business-and-finance",
    "basis": "conference",
@@ -122106,15 +121069,6 @@
    "source": {
     "url": "https://scon26.mapyourshow.com/",
     "quote": "Blocksom & Co. and Fiber Bond Operating LLC"
-   }
-  },
-  {
-   "supplier_id": "environmental-protection-agency",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://scon26.mapyourshow.com/",
-    "quote": "Environmental Protection Agency"
    }
   },
   {
@@ -122703,15 +121657,6 @@
    }
   },
   {
-   "supplier_id": "fairbanks-north-star-borough-school-district",
-   "industry": "k12-schools/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://s36.a2zinc.net/clients/CEC/cecc2027/Public/EventMap.aspx?shMode=E&ID=318",
-    "quote": "Fairbanks North Star Borough School District"
-   }
-  },
-  {
    "supplier_id": "florida-tech",
    "industry": "k12-schools/suppliers-and-services",
    "basis": "conference",
@@ -123186,15 +122131,6 @@
    "source": {
     "url": "https://web.cvent.com/event/c32ddca0-258d-4a00-8adf-c58d845cc8fd/summary",
     "quote": "Lakeview Loan Servicing"
-   }
-  },
-  {
-   "supplier_id": "mshda",
-   "industry": "housing-community-dev/housing-and-assistance",
-   "basis": "conference",
-   "source": {
-    "url": "https://web.cvent.com/event/c32ddca0-258d-4a00-8adf-c58d845cc8fd/summary",
-    "quote": "MSHDA"
    }
   },
   {
@@ -124485,24 +123421,6 @@
    }
   },
   {
-   "supplier_id": "fema-ipaws",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
-    "quote": "FEMA IPAWS"
-   }
-  },
-  {
-   "supplier_id": "firstnet-authority",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
-    "quote": "FirstNet Authority"
-   }
-  },
-  {
    "supplier_id": "flowstop",
    "industry": "public-safety/emergency-mgmt",
    "basis": "own_site",
@@ -124611,15 +123529,6 @@
    }
   },
   {
-   "supplier_id": "nasa-disasters-program",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
-    "quote": "NASA Disasters Program"
-   }
-  },
-  {
    "supplier_id": "national-mass-violence-center",
    "industry": "public-safety/emergency-mgmt",
    "basis": "conference",
@@ -124635,24 +123544,6 @@
    "source": {
     "url": "https://newuseenergy.com",
     "quote": "Emergency Management & Disaster Response"
-   }
-  },
-  {
-   "supplier_id": "noaa",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
-    "quote": "NOAA"
-   }
-  },
-  {
-   "supplier_id": "noaa",
-   "industry": "general-gov/it-and-ai-platforms",
-   "basis": "conference",
-   "source": {
-    "url": "https://nsgic.mobileup.io/events/uOpvGbiBPUyNjTHT1aEhrQ/sponsors",
-    "quote": "NOAA"
    }
   },
   {
@@ -126132,15 +125023,6 @@
    }
   },
   {
-   "supplier_id": "european-union",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://ncsl.expocad.com/ncsl26/directory",
-    "quote": "European Union"
-   }
-  },
-  {
    "supplier_id": "everylife-foundation-for-rare-diseases",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -126183,15 +125065,6 @@
    "source": {
     "url": "https://ncsl.expocad.com/ncsl26/directory",
     "quote": "FanDuel"
-   }
-  },
-  {
-   "supplier_id": "federal-communications-commission-fcc",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://ncsl.expocad.com/ncsl26/directory",
-    "quote": "Federal Communications Commission (FCC)"
    }
   },
   {
@@ -126348,15 +125221,6 @@
    }
   },
   {
-   "supplier_id": "interstate-medical-licensure-compact-commission",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://ncsl.expocad.com/ncsl26/directory",
-    "quote": "Interstate Medical Licensure Compact Commission"
-   }
-  },
-  {
    "supplier_id": "intl-assoc-of-plumbing-mechanical-officials",
    "industry": "general-gov/suppliers-and-services",
    "basis": "conference",
@@ -126471,15 +125335,6 @@
    "source": {
     "url": "https://ncsl.expocad.com/ncsl26/directory",
     "quote": "NAMI"
-   }
-  },
-  {
-   "supplier_id": "nasa",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://ncsl.expocad.com/ncsl26/directory",
-    "quote": "NASA"
    }
   },
   {
@@ -127029,15 +125884,6 @@
    "source": {
     "url": "https://ncsl.expocad.com/ncsl26/directory",
     "quote": "State Innovation Exchange (SiX)"
-   }
-  },
-  {
-   "supplier_id": "state-of-illinois-executive-ethics-commission",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://ncsl.expocad.com/ncsl26/directory",
-    "quote": "State of Illinois Executive Ethics Commission"
    }
   },
   {
@@ -127641,15 +126487,6 @@
    "source": {
     "url": "https://homebase.map-dynamics.com/wrpa2026/exhibitors",
     "quote": "Urban Accessories"
-   }
-  },
-  {
-   "supplier_id": "wa-state-dept-of-labor-industries",
-   "industry": "parks-rec/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://homebase.map-dynamics.com/wrpa2026/exhibitors",
-    "quote": "WA State Dept of Labor & Industries"
    }
   },
   {
@@ -128496,15 +127333,6 @@
    "source": {
     "url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
     "quote": "Embry-Riddle Aeronautical University"
-   }
-  },
-  {
-   "supplier_id": "center-for-domestic-preparedness",
-   "industry": "public-safety/fire",
-   "basis": "conference",
-   "source": {
-    "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Center for Domestic Preparedness"
    }
   },
   {
@@ -138921,15 +137749,6 @@
    }
   },
   {
-   "supplier_id": "nwa-regional-planning-commission",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/",
-    "quote": "NWA Regional Planning Commission"
-   }
-  },
-  {
    "supplier_id": "tec",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -138975,30 +137794,12 @@
    }
   },
   {
-   "supplier_id": "ca-governor-s-office-of-land-use-and-climate-innovation",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.apacalifornia.org/",
-    "quote": "CA Governor's Office of Land Use and Climate Innovation"
-   }
-  },
-  {
    "supplier_id": "cal-poly",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "own_site",
    "source": {
     "url": "https://www.calpoly.edu/about/president-and-leadership",
     "quote": "Jennifer Haft oversees the daily operations of the President\u2019s Office, which includes the Office of Innovation, Industry and Economic Development and the Office of Tribal Relations."
-   }
-  },
-  {
-   "supplier_id": "caltrans",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.apacalifornia.org/",
-    "quote": "Caltrans"
    }
   },
   {
@@ -139173,15 +137974,6 @@
    }
   },
   {
-   "supplier_id": "scag-southern-california-association-of-governments",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.apacalifornia.org/",
-    "quote": "SCAG Southern California Association of Governments"
-   }
-  },
-  {
    "supplier_id": "sjsu-department-of-urban-and-regional-planning",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -139287,15 +138079,6 @@
    "source": {
     "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
     "quote": "Community Planning Strategies"
-   }
-  },
-  {
-   "supplier_id": "denver-regional-council-of-governments",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://colorado.planning.org/conferences-and-meetings/colorado-planning-conference/",
-    "quote": "Denver Regional Council of Governments"
    }
   },
   {
@@ -139470,15 +138253,6 @@
    }
   },
   {
-   "supplier_id": "city-of-baton-rouge-parish-of-east-baton-rouge-planning-commission",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://louisiana.planning.org/conferences-events/2026-state-planning-conference/",
-    "quote": "City of Baton Rouge Parish of East Baton Rouge Planning Commission"
-   }
-  },
-  {
    "supplier_id": "desire-line",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "own_site",
@@ -139542,15 +138316,6 @@
    }
   },
   {
-   "supplier_id": "howard-county-planning-and-zoning",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://apamd2026conference.sched.com/directory/sponsors",
-    "quote": "Howard County Planning and Zoning"
-   }
-  },
-  {
    "supplier_id": "jmt",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -139566,15 +138331,6 @@
    "source": {
     "url": "https://apamd2026conference.sched.com/directory/sponsors",
     "quote": "KLT Group"
-   }
-  },
-  {
-   "supplier_id": "maryland-department-of-planning",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://apamd2026conference.sched.com/directory/sponsors",
-    "quote": "Maryland Department of Planning"
    }
   },
   {
@@ -139704,15 +138460,6 @@
    }
   },
   {
-   "supplier_id": "metropolitan-council",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "own_site",
-   "source": {
-    "url": "https://metrocouncil.org/Communities/Services.aspx",
-    "quote": "Coordinate review of local comprehensive land use plans and environmental documents"
-   }
-  },
-  {
    "supplier_id": "minnesota-state-mankato",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -139755,42 +138502,6 @@
    "source": {
     "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/sponsors-and-exhibitors/",
     "quote": "WSB"
-   }
-  },
-  {
-   "supplier_id": "boulder-city",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://nevada.planning.org/",
-    "quote": "Boulder City"
-   }
-  },
-  {
-   "supplier_id": "city-of-henderson",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://nevada.planning.org/",
-    "quote": "City of Henderson"
-   }
-  },
-  {
-   "supplier_id": "city-of-henderson-redevelopment-agency",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://nevada.planning.org/",
-    "quote": "City of Henderson Redevelopment Agency"
-   }
-  },
-  {
-   "supplier_id": "douglas-county",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://nevada.planning.org/",
-    "quote": "Douglas County"
    }
   },
   {
@@ -139872,24 +138583,6 @@
    "source": {
     "url": "https://nevada.planning.org/",
     "quote": "Rooftop Realty"
-   }
-  },
-  {
-   "supplier_id": "rtc-washoe",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://nevada.planning.org/",
-    "quote": "RTC Washoe"
-   }
-  },
-  {
-   "supplier_id": "tahoe-regional-planning-agency-trpa",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://nevada.planning.org/",
-    "quote": "Tahoe Regional Planning Agency (TRPA)"
    }
   },
   {
@@ -140028,15 +138721,6 @@
    }
   },
   {
-   "supplier_id": "owrb",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://apaok.civicvenue.com/sponsors",
-    "quote": "OWRB"
-   }
-  },
-  {
    "supplier_id": "poe-associates",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -140100,15 +138784,6 @@
    }
   },
   {
-   "supplier_id": "department-of-land-conservation-development",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://oregon.planning.org/",
-    "quote": "Department of Land Conservation & Development"
-   }
-  },
-  {
    "supplier_id": "dowl",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -140151,24 +138826,6 @@
    "source": {
     "url": "https://oregon.planning.org/",
     "quote": "Maul Foster Alongi"
-   }
-  },
-  {
-   "supplier_id": "port-of-portland",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://oregon.planning.org/",
-    "quote": "Port of Portland"
-   }
-  },
-  {
-   "supplier_id": "transportation-and-growth-management",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://oregon.planning.org/",
-    "quote": "Transportation and Growth Management"
    }
   },
   {
@@ -140235,15 +138892,6 @@
    }
   },
   {
-   "supplier_id": "conservation-department-missouri",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://kc-apa.org/2026-quadstate-conference",
-    "quote": "Conservation Department Missouri"
-   }
-  },
-  {
    "supplier_id": "development-strategies",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -140298,15 +138946,6 @@
    }
   },
   {
-   "supplier_id": "kansas-city",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://kc-apa.org/2026-quadstate-conference",
-    "quote": "Kansas City"
-   }
-  },
-  {
    "supplier_id": "kansas-state-university-landscape-architecture-and-regional-community-planning",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -140322,24 +138961,6 @@
    "source": {
     "url": "https://kc-apa.org/2026-quadstate-conference",
     "quote": "Lathrop GPM"
-   }
-  },
-  {
-   "supplier_id": "lenexa-kansas",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.lenexa.com/Home",
-    "quote": "Zoning & Future Land Use Map"
-   }
-  },
-  {
-   "supplier_id": "marc-mid-america-regional-council",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://kc-apa.org/2026-quadstate-conference",
-    "quote": "MARC Mid-America Regional Council"
    }
   },
   {
@@ -140385,15 +139006,6 @@
    "source": {
     "url": "https://www.pgavplanners.com",
     "quote": "24:1 Land Use & Economic Development Plan"
-   }
-  },
-  {
-   "supplier_id": "portkc",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://kc-apa.org/2026-quadstate-conference",
-    "quote": "PortKC"
    }
   },
   {
@@ -140496,15 +139108,6 @@
    }
   },
   {
-   "supplier_id": "grapevine-texas-planning-services",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
-    "quote": "Grapevine Texas Planning Services"
-   }
-  },
-  {
    "supplier_id": "gresham-smith",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -140529,15 +139132,6 @@
    "source": {
     "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
     "quote": "META Planning + Design"
-   }
-  },
-  {
-   "supplier_id": "plano",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://web.cvent.com/event/e96ce49b-110c-4c3e-a1b0-e82e4f1434da/websitePage:fb9b28f3-bda0-45ef-9360-104efba98ac6",
-    "quote": "Plano"
    }
   },
   {
@@ -140631,15 +139225,6 @@
    }
   },
   {
-   "supplier_id": "sosi",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.apavirginia.com/",
-    "quote": "SOSI"
-   }
-  },
-  {
    "supplier_id": "summit-design-and-engineering-services",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -140649,30 +139234,12 @@
    }
   },
   {
-   "supplier_id": "the-port-of-virginia",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.apavirginia.com/",
-    "quote": "The Port of Virginia"
-   }
-  },
-  {
    "supplier_id": "timmons-group",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "own_site",
    "source": {
     "url": "https://www.timmons.com:443",
     "quote": "Through civil planning, infrastructure design, economic development, environmental and geotechnical services, and structural engineering, our goal is to help make today\u2019s project a sustainable fixture of your community\u2019s tomorrow."
-   }
-  },
-  {
-   "supplier_id": "virginia-housing",
-   "industry": "housing-community-dev/housing-and-assistance",
-   "basis": "own_site",
-   "source": {
-    "url": "https://virginiahousing.com",
-    "quote": "Housing Choice Voucher Program"
    }
   },
   {
@@ -140718,15 +139285,6 @@
    "source": {
     "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
     "quote": "Cascadia Consulting Group"
-   }
-  },
-  {
-   "supplier_id": "city-of-vancouver-washington",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://apawa.memberclicks.net/2026-apa-wa-conference-sponsor",
-    "quote": "City of Vancouver Washington"
    }
   },
   {
@@ -140844,33 +139402,6 @@
    "source": {
     "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
     "quote": "Cinnaire"
-   }
-  },
-  {
-   "supplier_id": "city-of-green-bay",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
-    "quote": "City of Green Bay"
-   }
-  },
-  {
-   "supplier_id": "city-of-madison",
-   "industry": "housing-community-dev/housing-and-assistance",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.cityofmadison.com/services",
-    "quote": "Housing Choice Vouchers (Section 8)"
-   }
-  },
-  {
-   "supplier_id": "city-of-madison-metro-transit",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/2026-annual-conference-sponsors/",
-    "quote": "City of Madison Metro Transit"
    }
   },
   {
@@ -141018,15 +139549,6 @@
    }
   },
   {
-   "supplier_id": "greater-dayton-rta",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
-    "quote": "Greater Dayton RTA"
-   }
-  },
-  {
    "supplier_id": "greater-ohio-policy-center",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -141069,15 +139591,6 @@
    "source": {
     "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
     "quote": "MKSK"
-   }
-  },
-  {
-   "supplier_id": "mvrpc",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_sponsors",
-    "quote": "MVRPC"
    }
   },
   {
@@ -141153,15 +139666,6 @@
    }
   },
   {
-   "supplier_id": "city-of-opelika-al",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://alabamaplanning.org/conference/",
-    "quote": "City of Opelika, AL"
-   }
-  },
-  {
    "supplier_id": "energy-alabama",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -141213,15 +139717,6 @@
    "source": {
     "url": "https://georgiaplanning.org/fall-conference/",
     "quote": "KB Advisory Group"
-   }
-  },
-  {
-   "supplier_id": "achd",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
-    "quote": "ACHD"
    }
   },
   {
@@ -141321,15 +139816,6 @@
    "source": {
     "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
     "quote": "Kittelson & Associates"
-   }
-  },
-  {
-   "supplier_id": "montana-department-of-commerce",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/",
-    "quote": "Montana Department of Commerce"
    }
   },
   {
@@ -141522,15 +140008,6 @@
    }
   },
   {
-   "supplier_id": "county-of-albany",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
-    "quote": "County of Albany"
-   }
-  },
-  {
    "supplier_id": "creighton-manning",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
@@ -141582,24 +140059,6 @@
    "source": {
     "url": "https://mrbgroup.com",
     "quote": "If you have needs for master planning or facility design, or need consulting services such as economic development or construction administration, we\u2019re here to help fulfill your community\u2019s possibilities."
-   }
-  },
-  {
-   "supplier_id": "new-york-state-department-of-environmental-conservation-hudson-river-estuary-program",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
-    "quote": "New York State Department of Environmental Conservation Hudson River Estuary Program"
-   }
-  },
-  {
-   "supplier_id": "new-york-state-hudson-river-valley-greenway",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.nyupstateplanning.org/2026-annual-conference",
-    "quote": "New York State Hudson River Valley Greenway"
    }
   },
   {
@@ -141663,15 +140122,6 @@
    "source": {
     "url": "https://planningpa.org/annual-conference/",
     "quote": "Carroll Engineering Corporation"
-   }
-  },
-  {
-   "supplier_id": "county-of-northampton",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://planningpa.org/annual-conference/",
-    "quote": "County of Northampton"
    }
   },
   {
@@ -141747,30 +140197,12 @@
    }
   },
   {
-   "supplier_id": "lehigh-county",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://planningpa.org/annual-conference/",
-    "quote": "Lehigh County"
-   }
-  },
-  {
    "supplier_id": "lehigh-university-small-cities-lab",
    "industry": "housing-community-dev/planning-and-economic-development",
    "basis": "conference",
    "source": {
     "url": "https://planningpa.org/annual-conference/",
     "quote": "Lehigh University, Small Cities Lab"
-   }
-  },
-  {
-   "supplier_id": "lehigh-valley-planning-commission",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://planningpa.org/annual-conference/",
-    "quote": "Lehigh Valley Planning Commission"
    }
   },
   {
@@ -141798,15 +140230,6 @@
    "source": {
     "url": "https://planningpa.org/annual-conference/",
     "quote": "OHM Advisors"
-   }
-  },
-  {
-   "supplier_id": "pa-department-of-community-economic-development",
-   "industry": "housing-community-dev/planning-and-economic-development",
-   "basis": "conference",
-   "source": {
-    "url": "https://planningpa.org/annual-conference/",
-    "quote": "PA Department of Community & Economic Development"
    }
   },
   {

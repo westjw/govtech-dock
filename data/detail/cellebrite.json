@@ -55,15 +55,6 @@
    "url": "https://cellebrite.com/en/resources/press-releases/"
   },
   {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-28",
-   "headline": "\u2018He\u2019ll Never Be Able to Do This to Another Girl Again:\u2019 How Phone Evidence Led to a Predator\u2019s 174 Year Sentence in Maricopa County",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/newsroom/in-the-news/"
-  },
-  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cellebrite.com/en/resources/customer-stories/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "card-date",
+   "first_seen": "2026-09-10",
+   "headline": "iOS Jailbreaking Is Over: What It Means for Your Security Team Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/ios-risk-for-mobile-app-developers-and-security-teams/"
   }
  ],
  "profile": {

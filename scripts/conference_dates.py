@@ -250,6 +250,11 @@ def q_calendar(companies=None, board=None) -> list:
             continue
         held = parsed(c.get("dates") or "")
         seen = report.get(c["conference"]) or {}
+        # A CONFIRMATION IS ABOUT THE DATE IT CHECKED. ICMA's "not found" was
+        # about 2026-10-17 and sat against September 2027 after the row rolled
+        # (blind review, 2026-10-28): a flag about another date is not shown.
+        if seen.get("held") and (not held or seen["held"] != held.isoformat()):
+            seen = {}
         if held and held < today and not next_on_file(c, held):
             out.append({"kind": "passed", "rank": 0,
                         "says": f"ran {(today - held).days} days ago and no "
@@ -334,6 +339,18 @@ def apply_rulings(rows: list | None = None) -> dict:
             c["dates_source"] = f"ruled {r['on']} by {r['by']}"
             changed.append(tag)
         elif r["outcome"] == "unannounced":
+            # THE EDITION THAT WAS HELD IS NOT ERASED WITH THE BLANK: it is
+            # the edition the floor was read at, and the company page's
+            # Conferences box files its exhibitors under Went to by it.
+            # ONLY WHEN THE DATES ARE THE TAG'S OWN EDITION. A row that rolled
+            # carries the NEXT edition's dates under its old tag (ICMA 2026,
+            # September 2027): kept as "held", they booked ICMA 2026's
+            # exhibitors for 2027 (blind review, 2026-10-28).
+            ty = re.search(r"(20\d\d)\s*$", str(c.get("event_tag") or ""))
+            was = parsed(c.get("dates") or "")
+            if was and ty and was.year == int(ty.group(1)):
+                c["held_dates"] = c["dates"]
+                c["held_dates_source"] = c.get("dates_source")
             c["dates"] = None
             c["dates_confidence"] = "unannounced"
             c["dates_source"] = f"ruled {r['on']} by {r['by']}"
@@ -431,6 +448,26 @@ def main() -> int:
 
     if a.json:
         out = DATA / "conference_date_report.json"
+        # THE CONFIRMATIONS ARE CARRIED, NEVER DROPPED (review, 2026-10-28).
+        # The admin's Conference dates queue reads "not found" from this
+        # block alone, and the weekly scrub ran --json with no --confirm: the
+        # rewrite deleted all 20 flags and the push committed the deletion.
+        # A run without --confirm keeps the block on file; a --limit run
+        # replaces only the conferences it re-read.
+        try:
+            prior = json.loads(out.read_text()).get("confirmed") or []
+        except (OSError, json.JSONDecodeError, AttributeError):
+            prior = []
+        fresh = {r["conference"]: r for r in report.get("confirmed") or []}
+        # ...and only while it is still about the date on file: once the row
+        # has another date (it rolled, or a person set one), or has left the
+        # catalogue, the old answer is about nothing we hold
+        now = {c["conference"]: parsed(c.get("dates") or "") for c in rows}
+        kept = [r for r in prior if r.get("conference") not in fresh and r.get("conference") in now
+                and (not r.get("held") or (now[r["conference"]] and
+                                           now[r["conference"]].isoformat() == r["held"]))]
+        if kept or fresh:
+            report["confirmed"] = kept + list(fresh.values())
         out.write_text(json.dumps(report, indent=1) + "\n")
         print(f"\n  wrote {out}")
     return 0

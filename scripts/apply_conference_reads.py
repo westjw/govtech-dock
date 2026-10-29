@@ -2,6 +2,13 @@
 
     python3 scripts/apply_conference_reads.py --in reads.json [--write]
 
+A read may also carry `held_dates` (with `held_dates_source` and
+`held_confidence`): the dates of the edition its floor was read at, for a row
+whose next edition is unannounced. The company page's Conferences box files
+that edition's exhibitors by them (2026-10-28). Refused with no source, with
+held_confidence below medium, written other than "Month D-D, YYYY" (the month
+in full, the catalogue's form), or in another year than the tag's.
+
 THE INPUT IS A READ, NOT A RULING. Each row carries what a page said and the
 url it was read off, so every field written here can be argued with later.
 
@@ -42,6 +49,10 @@ import admin                                                    # noqa: E402
 import conference_dates                                         # noqa: E402
 
 GOOD_DATE = ("high", "medium")
+_MONTH = ("(?:January|February|March|April|May|June|July|August|September|October"
+          "|November|December)")
+# "June 14-17, 2026", "September 30 - October 3, 2026", "June 14, 2026"
+CANON_DATES = re.compile(rf"{_MONTH} \d{{1,2}}(?:\s*[-\u2013\u2014]\s*(?:{_MONTH} )?\d{{1,2}})?, \d{{4}}")
 
 
 def _unread_note(c: dict) -> bool:
@@ -153,6 +164,39 @@ def main() -> int:
                                f"organisation's site - {str(r.get('note') or '')[:160]}")
             c["dates_checked_on"] = today
             what.append("unannounced, noted")
+
+        # THE EDITION THE FLOOR WAS READ AT (2026-10-28). A chapter row is
+        # promoted with no dates, and an "unannounced" read answers the next
+        # edition, so the dates of the one the companies were at were never
+        # kept and the company page's box could not say they went. A read may
+        # carry them as `held_dates`, off the organiser's page like any date:
+        # with its source, high or medium, and in the tag's own year.
+        if r.get("held_dates") and not c.get("dates"):
+            hp = conference_dates.parsed(r["held_dates"])
+            ty = re.search(r"(20\d\d)\s*$", str(c.get("event_tag") or ""))
+            hsrc = r.get("held_dates_source") or r.get("dates_source")
+            if not hsrc:
+                skipped += 1
+                what.append("held_dates REFUSED - no source url")
+            elif str(r.get("held_confidence") or "").lower() not in GOOD_DATE:
+                # its OWN confidence: a high next-edition confidence on dates
+                # that did not land once let a low held read through (review)
+                skipped += 1
+                what.append("held_dates REFUSED - held_confidence is not high or medium")
+            elif not CANON_DATES.fullmatch(str(r["held_dates"]).strip()):
+                # the catalogue's own form, which the app's calRange reads; an
+                # "Aug. 30 - Sept. 2" the static page read and the app did not
+                # put one edition in two groups (review)
+                skipped += 1
+                what.append(f"held_dates REFUSED - {r['held_dates']!r} is not written "
+                            f"\"Month D-D, YYYY\" with the month in full")
+            elif not hp or (ty and hp.year != int(ty.group(1))):
+                skipped += 1
+                what.append(f"held_dates REFUSED - {r['held_dates']!r} is not the tag's edition")
+            elif c.get("held_dates") != r["held_dates"]:
+                c["held_dates"] = r["held_dates"]
+                c["held_dates_source"] = hsrc
+                what.append(f"held_dates={r['held_dates']!r}")
 
         if new_edition:
             # A NEW EDITION IS SOMEWHERE ELSE. The city on file is where the

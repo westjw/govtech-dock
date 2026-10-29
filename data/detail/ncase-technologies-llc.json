@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "What Is the Difference Between a Naloxone Carry Case and a Naloxone Kit?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ncasetechnologies.com/blogs/news/naloxone-carry-case-vs-naloxone-kit"
+  },
+  {
    "date": "2026-10-20",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Built from Loss, Designed for Life \u2013 The nCase Story",
    "kind": "press",
@@ -10,8 +19,8 @@
    "url": "https://www.ncasetechnologies.com/blogs/news/the-ncase-story"
   },
   {
-   "date": "2026-10-19",
-   "date_source": "time",
+   "date": "2026-10-18",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "Where to Buy NARCAN\u00ae \u2013 How to Get Naloxone Near You",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "The 4 Stages of Anaphylaxis \u2013 What Happens and What to Do",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Precipitated Withdrawal \u2013 What It Is, Why It Happens, and What to Do",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Fentanyl Test Strips \u2013 What They Are, How They Work, and Why They Matter",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Opioid Withdrawal Symptoms \u2013 Timeline, Signs and What to Do",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-07-27",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What Is a Zombie Drug? The Truth Behind the Headlines",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ncasetechnologies.com/blogs/news/what-is-a-zombie-drug-the-truth-behind-the-headlines"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Opioid Overdose Response - What Every Bystander Needs to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ncasetechnologies.com/blogs/news/opioid-overdose-response-what-every-bystander-needs-to-know"
   }
  ],
  "profile": {

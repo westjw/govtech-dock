@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Drone Detection Solutions for the 2027 FEMA C-UAS Grant Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-solutions-for-the-2027-fema-c-uas-grant-program"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/what-is-counter-uas"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "AirSight x Skydio: Closing the Gap Between Drone Detection and Response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/airsight-x-skydio-drone-detection-response"
   }
  ],
  "profile": {

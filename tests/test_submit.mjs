@@ -9,13 +9,24 @@ const check = (ok, label) => {
   console.log(`${ok ? "ok  " : "FAIL"} ${label}`);
   if (!ok) failures++;
 };
+/* A fresh store for the daily caps on every call (functions/_mail.js
+   underDailyCap and the site's day), and a JSON body sent as JSON: since
+   2026-10-28 the endpoint refuses anything else and refuses to run with no
+   store to count in. selftest's check_a_submission_cannot_flood_the_public_repo
+   runs this file and scripts/submit_harness.mjs, which tests the caps. */
+const freshStore = () => {
+  const m = new Map();
+  return { async get(k) { return m.has(k) ? m.get(k) : null; },
+           async put(k, v) { m.set(k, v); }, async delete(k) { m.delete(k); } };
+};
 const post = (body, env = {}) =>
   mod.onRequestPost({
-    request: new Request("https://solesourcejobs.com/api/submit", {
+    request: new Request("https://sledjobs.com/api/submit", {
       method: "POST",
+      headers: { "content-type": "application/json" },
       body: JSON.stringify(body),
     }),
-    env,
+    env: { ALERTS: freshStore(), ...env },
   });
 
 // --- no token configured: says so, hands back the manual route

@@ -209,6 +209,8 @@ def main() -> int:
                 by_name[norm(aka)] = (kind, r)
 
     tagged = new_suppliers = 0
+    marked: list[str] = []
+    disputed: list[str] = []
     candidates = []
     unread: list[str] = []
     seen_in_file: set[str] = set()
@@ -226,7 +228,19 @@ def main() -> int:
             unread.append(ex["name"])
             continue
         if hit:
-            _, row = hit
+            kind, row = hit
+            # A READER'S `agency` REACHES A SUPPLIER ALREADY ON FILE (blind
+            # review, 2026-10-28): only a new row carried it, so a transit
+            # authority filed off an earlier floor stayed a supplier, bound for
+            # HQ, while read_floor reported it "filed not_a_supplier". A
+            # reader's `supplier` on a row a reader marked an agency is a
+            # disagreement for a person, never settled by which floor ran last.
+            if kind == "supplier" and ex.get("not_a_supplier") and not row.get("not_a_supplier"):
+                row["not_a_supplier"] = ex["not_a_supplier"]
+                marked.append(row["name"])
+            elif (kind == "supplier" and str(row.get("not_a_supplier") or "").startswith("reader:")
+                  and (ex.get("read") or {}).get("verdict") == "supplier"):
+                disputed.append(row["name"])
             row["description"] = add_event(row.get("description"), event)
             # AND THE FIELD THE SITE ACTUALLY COUNTS.
             #
@@ -258,6 +272,10 @@ def main() -> int:
                 "ats": {"type": "unknown", "ref": None},
                 "hiring": {"status": "Unknown", "note": "not researched",
                            "roles": [], "checked": None},
+                # A GOVERNMENT BODY THAT BUYS (read_floor's `agency`) is filed
+                # so its name is known, and marked so the export never sends
+                # it to HQ as a supplier (owner, 2026-10-23).
+                **({"not_a_supplier": ex["not_a_supplier"]} if ex.get("not_a_supplier") else {}),
             })
             new_suppliers += 1
 
@@ -265,6 +283,12 @@ def main() -> int:
           f"file (note extended), {new_suppliers} new suppliers, "
           f"{len(candidates)} govtech candidates for research"
           + (f", {len(unread)} unread (held back)" if unread else ""))
+    if marked:
+        print(f"  {len(marked)} supplier(s) on file a reader called a government body that buys, "
+              f"now not_a_supplier: {', '.join(marked[:8])}")
+    if disputed:
+        print(f"  {len(disputed)} name(s) a reader calls a supplier that an earlier reader called an "
+              f"agency - left not_a_supplier, for a person: {', '.join(disputed[:8])}")
     if unread:
         print(f"  unread, not filed: {', '.join(unread[:8])}"
               + (f" and {len(unread) - 8} more" if len(unread) > 8 else ""))

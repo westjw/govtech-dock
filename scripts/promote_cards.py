@@ -5,7 +5,8 @@ person reads before it does.
     python3 scripts/promote_cards.py --verify              # evidence against the site
     python3 scripts/promote_cards.py --second-read reads.json
     python3 scripts/promote_cards.py --gate                # what a person reads
-    python3 scripts/promote_cards.py --land --by owner     # land what passed
+    python3 scripts/promote_cards.py --land --keys keys.json --by owner   # land a round's own cards
+    python3 scripts/promote_cards.py --land --all-gated --by owner        # every card that passes
 
 THE OWNER'S RULING (2026-09-09, restated 2026-10-09): a high-confidence row
 publishes without waiting for him. The gate is the door, not his inbox; he
@@ -57,6 +58,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 READ = DATA / ".cards_read"           # when --gate last printed, in this checkout
+GATE_HOURS = 12                       # how long a printed gate holds for --land
 SAMPLE = 0.05
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -216,7 +218,9 @@ def gate(store: dict, seed: int = 0) -> dict:
         show(p)
     READ.write_text(json.dumps({"on": dt.datetime.now().astimezone().isoformat(timespec="seconds"),
                                 "landing": len(landing)}))
-    print(f"\n  Land the {len(landing)}:  python3 scripts/promote_cards.py --land --by owner")
+    print(f"\n  Land this round's own cards:  python3 scripts/promote_cards.py --land --keys FILE --by owner"
+          f"\n  Land all {len(landing)} that pass (the held pile included):"
+          f"  python3 scripts/promote_cards.py --land --all-gated --by owner")
     return {"refused": refused, "low": low, "unverified": unverified, "split": split,
             "landing": landing, "sample": sample}
 
@@ -272,6 +276,17 @@ def land(store: dict, by: str, limit: int | None = None, keys: set | None = None
     if not READ.exists():
         raise SystemExit("refusing: --gate has not printed in this checkout. A door a "
                          "person has not looked at is not a door.")
+    # AND IT PRINTED TODAY. The weekly scrub reuses one worktree, and the stamp
+    # is not committed, so last Sunday's stamp would let this Sunday's --land
+    # through a gate nobody printed (blind review, 2026-10-28).
+    try:
+        on = dt.datetime.fromisoformat(json.loads(READ.read_text()).get("on") or "")
+        age = dt.datetime.now().astimezone() - (on if on.tzinfo else on.astimezone())
+    except (ValueError, TypeError, AttributeError, json.JSONDecodeError):
+        age = None
+    if age is None or age > dt.timedelta(hours=GATE_HOURS):
+        raise SystemExit(f"refusing: --gate last printed {'when, the stamp does not say' if age is None else f'{age.days} day(s) ago'}; "
+                         f"print it again (it holds for {GATE_HOURS} hours).")
     out = {"landed": 0, "suppliers_moved": 0, "refused": []}
     todo = [(k, p) for k, p in pending(store) if passes(p) and (keys is None or k in keys)]
     for k, p in todo[:limit] if limit else todo:
@@ -320,7 +335,18 @@ def main() -> int:
     ap.add_argument("--by", default="agent:card-door")
     ap.add_argument("--keys", metavar="FILE",
                     help="a JSON list of proposal keys: --land takes only these (a round's own cards)")
+    ap.add_argument("--all-gated", action="store_true",
+                    help="--land every pending card that passes, the owner's held pile included")
     a = ap.parse_args()
+    # A BARE --land IS REFUSED (review, 2026-10-28). It took every pending
+    # card that passes, the owner's held pile included, and the only thing
+    # standing in the way was a sentence in CLAUDE.md - and a gate stamp that
+    # was committed to git, so it "had printed" in every fresh worktree. A
+    # round names its own cards; landing the whole pile is said out loud.
+    if a.land and not (a.keys or a.all_gated):
+        raise SystemExit("refusing: --land takes --keys FILE (the cards this round researched) "
+                         "or --all-gated (every pending card that passes, the owner's held pile "
+                         "included). Say which.")
     store = agents.load()
     if a.verify:
         done = verify(store, a.limit, by=a.by)

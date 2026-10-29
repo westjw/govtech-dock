@@ -1577,8 +1577,8 @@ only when the organisation's own page states them.
   word, so two "... Corporation"s are not held as twins. `--land --keys
   FILE` lands only the cards a round researched itself, which is how an
   unattended run (the weekly conference scrub) must land. `--land` with no
-  filter lands every pending card that passes, the owner's refused pile
-  included: a round lands its own keys. **Dates:** `conference_dates.confirm` also reads `dates_source`;
+  filter is refused since 2026-10-28; `--all-gated` lands every pending card
+  that passes, the owner's refused pile included: a round lands its own keys. **Dates:** `conference_dates.confirm` also reads `dates_source`;
   `apply_conference_reads` takes an `unannounced` read as a dated note.
 
 **Stage 3 (2026-10-15): the registry's promotion door, tightened from use.**
@@ -2825,8 +2825,8 @@ page that highlights what they have gone to and are going to".
   once, named for the event (`joint_event` on the host row, `covered_by` on
   the others: Quad State = IA/KS/MO, Deep South = AL/MS, Montana & Idaho).
   fetchability is `picture` or `reader` where the readers' names are staged,
-  so no sweep reads the page and puts its menu over them (a find replaces a
-  find). check_a_chapter_listed_without_a_floor_is_held_to_the_page: 7 of 7.
+  so no sweep reads the page and puts its menu over them (a find replaced a
+  find until Wave 0, below). check_a_chapter_listed_without_a_floor_is_held_to_the_page: 7 of 7.
 - **37 rows listed for 41 chapters**; 23 floors staged from the names BOTH
   readers saw (532), read by read_floor (16 vendor, 425 supplier, 6 held),
   intaken under Housing & Community Dev; dates and cities landed through
@@ -2855,6 +2855,94 @@ page that highlights what they have gone to and are going to".
   check_a_company_page_says_which_conferences_it_went_to_and_is_going_to runs
   the app's own function through jobcard_harness and the static port on one
   fixture: 8 of 8 breakages caught.
+
+## Wave 0 of the 2026-10-28 review: what Sunday's scrub would have broken
+
+Owner, 2026-10-28: "go, start wave 0", after a 72-finding system review (63
+confirmed by a skeptic each). The fixes, each with a guard broken to prove it:
+- **A re-sweep adds, never replaces** (`sweep_exhibitors.merge_into` and
+  `add_new`, which render_floor's `add_to` now calls). The scrub's
+  `sweep_exhibitors --all --write` would have put ICC 2026's 11 shell-page
+  names over 107 a browser read and sent 65 reader-graded floors (8,381
+  names) back to unread. Staged rows keep their names, verdicts and grade; a
+  name the candidate door calls the same company is not new; a name a reader
+  dropped (conference_intake/reads/) stays dropped and one a reader judged
+  comes back judged. A reader's "not a floor" rules on its NAMES, not the
+  address: the first version froze the address, and Government Fleet Expo's
+  /exhibitors, 21 menu items when read, carried 18 GFX 2027 exhibitors two
+  weeks later (blind review). To start a floor over, delete its file.
+  check_sweep_keeps_its_own_work: 11 of 11.
+- **`conference_dates --json` keeps the confirmations** the admin's Conference
+  dates queue reads "not found" from, while each is still about the date on
+  file; a --limit run replaces only what it re-read. A confirmation is about
+  the date it checked (`held`): ICMA's "not found" about 2026-10-17 sat
+  against September 2027 after the row rolled, so q_calendar and the carry
+  both drop one about another date (the queue went 20 to 12).
+  check_the_date_report_keeps_its_confirmations: 6 of 6.
+- **`held_dates`**: the dates of the edition a floor was read at, on a row
+  with no dates (a chapter row is promoted undated; an "unannounced" read
+  answers the NEXT edition, and an owner's "unannounced" ruling erased them).
+  apply_conference_reads takes them with a source, the read's own
+  held_confidence high or medium, written "Month D-D, YYYY" with the month
+  in full (the app's calRange reads nothing else; "Aug. 30" split the two
+  boxes), in the tag's year. The ruling keeps them ONLY when the dates are
+  the tag's own year: a rolled row's dates are the NEXT edition's, and kept
+  as held they put ICMA 2026's exhibitors under Going to 2027 (blind
+  review). Both boxes ignore held dates of another year; build_board ships
+  them; check_calendar_writers_agree holds the two parsers to them too.
+  Maryland Municipal League 2026's (June 14-17, off its exhibits page) moved
+  18 companies from "Date not announced" to Went to.
+  check_an_undated_row_keeps_the_edition_its_floor_was_read_at: 8 of 8.
+- **The box, in order.** The app keyed a prior edition by year x 1e13
+  against milliseconds, so every rolled tag sat above every dated past
+  edition and the six shown differed from the static page for 12 companies.
+  One key now: newest first by start day, a year-only edition as its year's
+  FIRST day (below the dated ones of that year), dated first on a tie. An
+  undated tag from a year already over is Went to; one this year or later
+  says "the YYYY edition, dates not on file". "Date not announced" sorts by
+  name in code-point order on both (localeCompare put NACo before NACVSO).
+  The check compares the order.
+  scripts/show_conferences_box.py prints a company's box off board.json.
+- **Every alert issue is assigned** (watchdog, claim gate):
+  check_every_alert_issue_is_assigned_to_the_owner reads every `gh issue
+  create` (and `gh api` POST to /issues) in the workflows, across
+  continuations, either spelling of the owner. 4 of 4.
+- **/api/submit is capped**: 5 a caller a day, 40 for everyone, JSON by its
+  media type ("text/plain;application/json" is text/plain), refused with no
+  KV to count in. A full day is read first and writes nothing, and says it
+  is the form's day that is full. scripts/submit_harness.mjs imports it, and
+  the check now runs tests/test_submit.mjs too (its URL, honeypot, @mention
+  and leak cases broke unseen when the caps landed).
+  check_a_submission_cannot_flood_the_public_repo: 8 of 8.
+- **Gate stamps are per checkout**: data/.cards_read, .rivals_read,
+  .profiles_read (and .buyer_read) are untracked and gitignored, and a bare
+  `promote_cards --land` is refused: `--keys FILE` or `--all-gated`. The
+  stamp holds 12 hours (`GATE_HOURS`): the weekly scrub reuses its worktree,
+  so last Sunday's untracked stamp would pass this Sunday's --land.
+  check_a_gate_stamp_belongs_to_one_checkout: 4 of 4.
+- **An agency is none, at the reader**: read_floor's fifth verdict `agency`
+  (a city, county, state department, regional council, port or transit
+  authority) is filed by intake with `not_a_supplier`. "an agency" had been
+  in the supplier verdict's own definition since 2026-10-10, so the APA
+  floors filed 35 government bodies as suppliers and every floor read since
+  had filed more. 156 are pulled (supplier_record_rulings.json, journalled,
+  by agent:wave0-2026-10-28): the 35, then 121 found by sweeping all 494
+  supplier rows whose name or reader's reason suggested a public body, a
+  reader and a skeptic agreeing on each, none disputed. 14 of them were
+  published to HQ (WSSC Water, Pace, Metra, Houston Public Works, Lehigh
+  Valley Planning Commission, CCHCS, four public libraries among them).
+  Sellers stay suppliers: HGACBuy, Maryland Correctional Enterprises, the
+  university programmes. Miami-Dade Sheriff's Training Center is held for
+  the owner (the skeptic's pull was low confidence: it may sell courses).
+  Intake now marks a supplier already on file when a reader calls it an
+  agency, and says so when a later reader disagrees.
+- **The scheduled tasks run one command at a time.** The daily role review's
+  first run hung on `cd ~/govtech-dock-launch && git fetch` (a compound in the
+  live checkout); the task files now use `git -C <worktree>`, full script
+  paths, a fixed scratch directory and no `$(...)`. The worktrees
+  ~/govtech-dock-scope and ~/govtech-dock-confscrub were made by hand. The
+  end-of-day inbox reads ~/govtech-dock-launch (it read the stale checkout
+  for 23 days); the four Sep-30 items were carried over.
 
 ## Conventions
 
@@ -3258,8 +3346,10 @@ wait above, the takeover and the companies left off, across two redraws.
   `scripts/ats.py` docstrings), append to companies.json, run selftest, run
   `refresh.py --company <id>`, then `export_xlsx.py`.
 - **Read a floor before filing it:** `python3 scripts/read_floor.py brief --out brief.json`
-  → agents judge (vendor / supplier / not_a_company / unsure) → `python3
-  scripts/read_floor.py apply verdicts.json --write` → `conference_intake.py`.
+  → agents judge (vendor / supplier / agency / not_a_company / unsure: a
+  government body that buys is `agency`, one that sells to government is a
+  supplier) → `python3 scripts/read_floor.py apply verdicts.json --write` →
+  `conference_intake.py`.
 - **Fold supplier rows that are board companies:** `python3 scripts/merge_supplier_twins.py`
   lists twins (a supplier whose name or alias, by intake's norm(), is a board
   company's) and `--write` moves their exhibited-at tags onto the company,
@@ -3269,7 +3359,9 @@ wait above, the takeover and the companies left off, across two redraws.
   has looked. Selftest prints a note while any twin is on file.
 - **Research cards through the door:** `agents.py brief --kind card` → research
   (fetch with `python3 scripts/read_page.py URL`) → `agents.py ingest --kind card`
-  → `promote_cards.py --verify`, `--second-read reads.json`, `--gate`, `--land --by owner`.
+  → `promote_cards.py --verify`, `--second-read reads.json`, `--gate` (it holds
+  12 hours), `--land --keys keys.json --by owner` (the round's own cards;
+  `--all-gated` lands every card that passes, the held pile included).
 - **Discover an ATS (JS-walled board):** `python3 scripts/discover_js.py noats`
   renders each Unknown in headless Chromium and prints the ATS endpoint its
   board actually calls. Needs `pip install playwright` + `python -m playwright

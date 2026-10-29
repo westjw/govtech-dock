@@ -102,11 +102,17 @@ const ymd = (d) =>
   `${String(d.getDate()).padStart(2, "0")}`;
 
 const out = {};
-for (const c of board.conferences || []) {
-  const rg = calRange(c.dates);
-  if (!rg) { out[c.tag] = null; continue; }
+const span = (s) => {
+  const rg = calRange(s);
+  if (!rg) return null;
   const end = new Date(rg.end);
   end.setDate(end.getDate() + 1);      // DTEND on an all-day event is exclusive
-  out[c.tag] = [ymd(rg.start), ymd(end)];
+  return [ymd(rg.start), ymd(end)];
+};
+for (const c of board.conferences || []) {
+  out[c.tag] = span(c.dates);
+  /* the held edition's dates too: the company page's box reads them with
+     this same parser in the app and _ics_range on the static page */
+  if (c.held_dates) out["held:" + c.tag] = span(c.held_dates);
 }
 process.stdout.write(JSON.stringify(out));

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "CJIS compliance: 5 priorities agencies need to address before October 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/cjis-compliance-5-priorities-agencies-need-address-october-2027"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "index-text",
    "first_seen": "2026-10-26",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Five years of evolution: The future of Imprivata Privileged Access",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Make secure access easier wherever work happens",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "When risk rises, security should get smarter, not harder",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Beyond compliance: Improving workforce efficiency in aged care",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Make security easy for your workforce: Take friction out of authentication",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/blog/identity-security-signals-what-watch-cybersecurity-awareness-month"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "card-date",
-   "first_seen": "2026-10-06",
-   "headline": "As privileged access expands, you need simplicity \u2013 not platform sprawl",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/privileged-access-expands-you-need-simplicity-not-platform-sprawl"
   }
  ],
  "profile": {

@@ -2080,7 +2080,7 @@ const ADD_FALLBACK="https://github.com/westjw/govtech-dock/issues/new?template=a
   const link=(j&&j.fallback)||ADD_FALLBACK;
   msg.style.color="var(--warn,#c9822b)";
   msg.innerHTML=(j&&j.error&&j.error!=="not_configured"
-      ? esc(j.error)+" "
+      ? esc(j.message||j.error)+" "
       : "The form is not wired up on this deployment yet. ")
     +`<a href="${esc(safeUrl(link)||ADD_FALLBACK)}" target="_blank"
         rel="noopener">Submit it on GitHub instead &rarr;</a>`;
@@ -6926,19 +6926,36 @@ function coConfGroups(o){
     const rg=calRange(r.dates), ty=yr(t);
     if(!prior&&rg&&ty&&ty<rg.start.getFullYear())prior=true;
     const other=!prior&&!!rg&&!!ty&&ty>rg.end.getFullYear();
-    return {t,r,prior,other};
+    /* A ROW WITH NO DATES STILL NAMES ITS EDITION (review, 2026-10-28). Its
+       held_dates are the edition its floor was read at, dated like any
+       edition; with none, a tag from a year already over is an edition they
+       were at. Maryland Municipal League's June exhibitors sat under "Date
+       not announced" as if they might still go. */
+    const hg=!rg&&!prior?calRange(r.held_dates):null;
+    /* held dates of another year than the tag's are not this edition's */
+    const dates=rg?r.dates:(hg&&(!ty||hg.start.getFullYear()===ty)?r.held_dates:null);
+    if(!prior&&!dates&&ty&&ty<new Date().getFullYear())prior=true;
+    return {t,r,prior,other,dates};
   }).filter(Boolean);
-  const start=i=>(calRange(i.r.dates)||{}).start;
-  const dated=i=>!i.prior&&!i.other&&calRange(i.r.dates);
+  const start=i=>(calRange(i.dates)||{}).start;
+  const dated=i=>!i.prior&&!i.other&&calRange(i.dates);
+  /* NEWEST FIRST, by the day each edition began. A past edition known only by
+     its year ("the 2026 edition") sorts as that year's first day, below every
+     dated edition of the same year: placed on its last, NACo's July edition
+     read as more recent than three October chapters. On a tie the dated one
+     leads. The static page's co_conferences keeps the same key, so the six
+     shown are the same six on both. */
+  const key=i=>i.prior?new Date(yr(i.t)||1900,0,1).getTime():+start(i);
   return {
-    now:items.filter(i=>dated(i)&&isNow(i.r.dates)),
-    ahead:items.filter(i=>dated(i)&&!isNow(i.r.dates)&&!isPast(i.r.dates))
+    now:items.filter(i=>dated(i)&&isNow(i.dates)),
+    ahead:items.filter(i=>dated(i)&&!isNow(i.dates)&&!isPast(i.dates))
       .sort((a,b)=>start(a)-start(b)),
-    undated:items.filter(i=>!i.prior&&(i.other||!calRange(i.r.dates)))
-      .sort((a,b)=>String(a.r.name).localeCompare(String(b.r.name))),
-    went:items.filter(i=>i.prior||(dated(i)&&isPast(i.r.dates)))
-      .sort((a,b)=>(b.prior?yr(b.t)*1e13:+start(b))-(a.prior?yr(a.t)*1e13:+start(a))
-                   ||(a.prior?0:1)-(b.prior?0:1)),
+    /* by name in code-point order, as the static page's sorted() does:
+       localeCompare put "NACo" before "NACVSO" and Python after */
+    undated:items.filter(i=>!i.prior&&(i.other||!calRange(i.dates)))
+      .sort((a,b)=>{const x=String(a.r.name),y=String(b.r.name);return x<y?-1:x>y?1:0;}),
+    went:items.filter(i=>i.prior||(dated(i)&&isPast(i.dates)))
+      .sort((a,b)=>key(b)-key(a)||(a.prior?1:0)-(b.prior?1:0)),
   };
 }
 function coConfs(o){
@@ -6949,9 +6966,10 @@ function coConfs(o){
   const when=i=>{
     if(i.prior||i.other){ const y=(String(i.t).match(/(20\d\d)$/)||[])[1];
       return y?`the ${y} edition`+(i.other?", dates not on file":""):"an earlier edition"; }
-    const rg=calRange(i.r.dates);
-    if(!rg)return i.r.dates||cfNoDates(i.r);
-    return cfSpotDate(i.r)+(rg.start.getFullYear()!==thisYear?`, ${rg.start.getFullYear()}`:"");
+    const rg=calRange(i.dates);
+    if(!rg){ const y=(String(i.t).match(/(20\d\d)$/)||[])[1];
+      return i.r.dates||(y?`the ${y} edition, dates not on file`:cfNoDates(i.r)); }
+    return cfSpotDate({...i.r,dates:i.dates})+(rg.start.getFullYear()!==thisYear?`, ${rg.start.getFullYear()}`:"");
   };
   const row=i=>`<div class="r"><span><a href="?e=${encodeURIComponent(i.r.tag)}" data-ev="${esc(i.r.tag)}">${esc(i.r.name)}</a>
       <span class="d">${esc([when(i),i.prior||i.other?"":cfPlace(i.r)].filter(Boolean).join(" · "))}</span></span></div>`;

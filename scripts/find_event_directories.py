@@ -1310,8 +1310,8 @@ def stage_promote(write: bool, which: str = "state") -> int:
                 # by a reader and a skeptic and staged by their door, and a
                 # sweep of the page would put its menu over them.
                 # "reader": a list a reader and a skeptic read name by name,
-                # staged by their door. "image" would invite the logo sweep,
-                # and a find replaces a find.
+                # staged by their door. "image" would invite the logo sweep
+                # (which since 2026-10-28 adds to a floor, never replaces it).
                 "fetchability": ("picture" if form == "picture" else
                                  "reader" if cr.get("names") else
                                  "js-walled" if form == "js" else "not-found"),

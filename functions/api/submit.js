@@ -17,9 +17,18 @@
  * GitHub issue form, so the feature works either way.
  */
 import { DOMAIN } from "../_brand.js";
+import { underDailyCap } from "../_mail.js";
 
 const REPO = "westjw/govtech-dock";
 const MAX_CONTEXT = 1200;
+/* EVERY SUBMISSION OPENS A PUBLIC ISSUE AND STARTS A WORKFLOW (review,
+ * 2026-10-28), so this endpoint is capped like its siblings: per caller a
+ * day (the IP-day key every cap in functions/ uses), and for everyone a day,
+ * because a caller with many addresses is still one flood. Until then a
+ * script could open unlimited issues on the public repo under the bot's
+ * token, each one running add-company.yml. */
+const SUBMITS_PER_CALLER = 5;
+const SUBMITS_PER_DAY = 40;
 
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), {
@@ -52,7 +61,16 @@ function validUrl(raw) {
   return u;
 }
 
+const siteKey = () => "cap:submitday:" + new Date().toISOString().slice(0, 10);
+
 export async function onRequestPost({ request, env }) {
+  // JSON only: a text/plain POST is a "simple" request a page on any site can
+  // send without a preflight. The MEDIA TYPE is what counts, not a substring:
+  // "text/plain;application/json" is still text/plain to a browser, and went
+  // through a substring test (blind review, 2026-10-28).
+  const type = (request.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
+  if (type !== "application/json")
+    return json({ error: "send JSON" }, 415);
   let body;
   try {
     body = await request.json();
@@ -78,9 +96,10 @@ export async function onRequestPost({ request, env }) {
     `Nothing here is trusted: the bot derives every field from the site itself, ` +
     `and a person reviews the pull request.`;
 
-  if (!token) {
-    // Not configured yet. Say so plainly and hand back the manual route
-    // rather than pretending the submission landed somewhere.
+  if (!token || !env.ALERTS) {
+    // Not configured yet - no token, or no store to hold the daily caps in,
+    // which is not configured either. Say so plainly and hand back the
+    // manual route rather than pretending the submission landed somewhere.
     return json(
       {
         error: "not_configured",
@@ -89,6 +108,23 @@ export async function onRequestPost({ request, env }) {
       501
     );
   }
+
+  // THE SITE'S DAY IS READ FIRST AND WRITES NOTHING WHEN FULL, so a refused
+  // attempt costs no KV write (the namespace's 1,000 a day are shared with
+  // alerts and claims), and the visitor is told it is the form's day that is
+  // full, not theirs.
+  const fallback = `https://github.com/${REPO}/issues/new?template=add-company.yml`;
+  const today = Number((await env.ALERTS.get(siteKey())) || 0);
+  if (today >= SUBMITS_PER_DAY)
+    return json({ error: "too_many",
+                  message: "The form has taken all the submissions it can today. " +
+                           "Try again tomorrow.",
+                  fallback }, 429);
+  if (!(await underDailyCap(env, request, "submit", SUBMITS_PER_CALLER)))
+    return json({ error: "too_many",
+                  message: "That is enough submissions from here today. Try again tomorrow.",
+                  fallback }, 429);
+  await env.ALERTS.put(siteKey(), String(today + 1), { expirationTtl: 60 * 60 * 26 });
 
   const res = await fetch(`https://api.github.com/repos/${REPO}/issues`, {
     method: "POST",

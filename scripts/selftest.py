@@ -3028,6 +3028,56 @@ def check_an_emailed_link_waits_for_a_person() -> int:
     return errors
 
 
+def check_a_submission_cannot_flood_the_public_repo() -> int:
+    """/api/submit is capped per caller and per day, and takes JSON only.
+
+    Every accepted submission opens a public GitHub issue under the bot's
+    token and starts add-company.yml. Until 2026-10-28 it called no cap at
+    all, while beta.js, rate.js and claim.js all did (review): one script
+    could open as many issues as it liked. Run through
+    scripts/submit_harness.mjs, which IMPORTS the module against a fake KV
+    and a fake GitHub that counts the issues it is asked for.
+    """
+    import shutil, subprocess, json as _json
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so the submit endpoint was not run")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "submit_harness.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if r.returncode:
+        return fail(f"the submit endpoint would not run: {r.stderr.strip()[:300]}")
+    d = _json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+    if d.get("issuesAfterOneCaller") != 5 or (d.get("fromOneCaller") or [])[5:] != [429, 429, 429]:
+        errors += fail(f"one caller opened {d.get('issuesAfterOneCaller')} issues in a day "
+                       f"({d.get('fromOneCaller')}); the cap is 5, then 429")
+    if d.get("issuesTotal") != 40 or not d.get("manyRefused"):
+        errors += fail(f"{d.get('issuesTotal')} issues opened in a day across many callers; "
+                       f"the site-wide cap is 40")
+    if d.get("plainText") != 415 or d.get("plainTextDisguised") != 415:
+        errors += fail(f"a text/plain submission answered {d.get('plainText')} "
+                       f"(disguised as 'text/plain;application/json': {d.get('plainTextDisguised')}), "
+                       f"not 415: a page on any site can send one with no preflight")
+    if d.get("jsonWithCharset") != 200:
+        errors += fail(f"'application/json; charset=utf-8' was refused ({d.get('jsonWithCharset')})")
+    if d.get("writesWhenFull") or d.get("keysWhenFull"):
+        errors += fail(f"with the day's submissions full, refused attempts still wrote "
+                       f"{d.get('writesWhenFull')} KV key(s): the store's daily writes are shared")
+    if d.get("noStore") != 501 or d.get("issuesWithNoStore"):
+        errors += fail("with no store to count in, the submit endpoint still opened an issue "
+                       "instead of answering not configured")
+    # AND THE ENDPOINT'S OWN CASES (tests/test_submit.mjs): a link that is not
+    # a company website, the honeypot, a defused @mention, GitHub's refusal
+    # never leaked. A hand-run file nothing ran, it broke silently when the
+    # caps landed (blind review, 2026-10-28).
+    t = subprocess.run(["node", str(ROOT / "tests" / "test_submit.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if t.returncode:
+        bad = [ln for ln in t.stdout.splitlines() if ln.startswith("FAIL")][:4]
+        errors += fail(f"tests/test_submit.mjs fails: {bad or t.stderr.strip()[:300]}")
+    return errors
+
+
 def check_ratings_cannot_spend_the_shared_store() -> int:
     """Conference ratings stay inside a budget alerts and claims can live with.
 
@@ -10000,7 +10050,11 @@ def check_a_company_page_says_which_conferences_it_went_to_and_is_going_to() -> 
         first build of this box put Accela and Esri at ICMA 2027;
       - a tag moved to prior_tags is a past edition of the row it moved to;
       - no dates, or dates for an older edition than the tag's, is "Date not
-        announced", never placed ahead or behind;
+        announced", never placed ahead or behind - unless the row's
+        held_dates (the edition its floor was read at) or the tag's own year
+        say the edition is over, which is "Went to";
+      - the two lists are compared IN ORDER, newest first under Went to, a
+        year-only past edition below the dated ones of its year;
       - a tag no row knows draws nothing; a name is escaped.
     The app's coConfGroups (run by jobcard_harness) and build_site's
     co_conferences must sort the same fixture into the same groups.
@@ -10008,28 +10062,45 @@ def check_a_company_page_says_which_conferences_it_went_to_and_is_going_to() -> 
     errors = 0
     import build_site as bs
     box = (_harness() or {}).get("coConfBox") or {}
-    want = {"now": [], "ahead": ["Ahead 2099", "Evil 2099"], "undated": ["Early 2098", "New 2027"],
-            "went": ["Past 2020", "Rolled 2025", "Moved 2024"]}
+    # IN ORDER (review, 2026-10-28): the app keyed a prior edition by its
+    # year times 1e13 against a dated one's milliseconds, so every rolled tag
+    # sat above every dated past edition and the six shown differed from the
+    # static page's for 12 companies. And an undated row's edition went under
+    # "Date not announced" even when its held_dates, or its tag's year, say
+    # it is over.
+    want = {"now": [], "ahead": ["Ahead 2099", "Evil 2099"],
+            "undated": ["Nacv 2099", "Naco 2099", "New 2099", "Early 2098", "Wrong 2099"],
+            "went": ["Held 2026", "Rolled 2025", "Moved 2024", "Dated 2023", "Old 2023", "Past 2020"]}
     got = box.get("groups") or {}
     for k, v in want.items():
-        if sorted(got.get(k) or []) != sorted(v):
-            errors += fail(f"the app's Conferences box puts {sorted(got.get(k) or [])} under {k}, not {sorted(v)}")
+        if (got.get(k) or []) != v:
+            errors += fail(f"the app's Conferences box puts {got.get(k) or []} under {k}, not {v}")
     h = box.get("html") or ""
     if "<img src=x" in h or "Ghost" in h or "the 2025 edition" not in h or "Going to" not in h \
-            or "Went to" not in h or "dates not on file" not in h or box.get("none"):
+            or "Went to" not in h or "dates not on file" not in h or box.get("none") \
+            or "Jun 14\u201317" not in h or "the 2099 edition, dates not on file" not in h:
         errors += fail(f"the app's Conferences box draws the wrong thing: {h[:300]!r}")
     rows = [{"tag": "Ahead 2099", "name": "Ahead Expo", "dates": "March 3-5, 2099", "city": "Reno, NV"},
             {"tag": "Past 2020", "name": "Past Expo", "dates": "May 4-6, 2020", "city": "Austin, TX"},
             {"tag": "Rolled 2025", "name": "Rolled Summit", "dates": "September 25-29, 2099"},
-            {"tag": "New 2027", "name": "New Fair", "dates": None, "dates_confidence": "unannounced"},
+            {"tag": "New 2099", "name": "New Fair", "dates": None, "dates_confidence": "unannounced"},
+            {"tag": "Held 2026", "name": "Held Meeting", "dates": None, "held_dates": "June 14-17, 2026",
+             "dates_confidence": "unannounced", "city": "Ocean City, MD"},
+            {"tag": "Old 2023", "name": "Old Assembly", "dates": None, "dates_confidence": "unannounced"},
+            {"tag": "Dated 2023", "name": "Dated Fair", "dates": "May 4-6, 2023"},
+            {"tag": "Wrong 2099", "name": "Wrong Fair", "dates": None, "held_dates": "June 1-2, 2098"},
+            {"tag": "Naco 2099", "name": "NACo Expo", "dates": None},
+            {"tag": "Nacv 2099", "name": "NACVSO Expo", "dates": None},
             {"tag": "Moved 2099", "name": "Moved Forum", "dates": "June 1-2, 2099", "prior_tags": ["Moved 2024"]},
             {"tag": "Early 2098", "name": "Stale Dates", "dates": "April 1-2, 2020"},
             {"tag": "Evil 2099", "name": "<img src=x onerror=alert(1)>", "dates": "July 7-8, 2099"}]
     org = {"id": "conf-co", "name": "Conf Co", "conferences": ["Ahead 2099", "Past 2020", "Rolled 2025",
-           "New 2027", "Moved 2024", "Early 2098", "Ghost 2026", "Evil 2099"]}
+           "New 2099", "Moved 2024", "Early 2098", "Ghost 2026", "Evil 2099", "Old 2023", "Held 2026", "Dated 2023", "Wrong 2099", "Naco 2099", "Nacv 2099"]}
     page = bs.co_conferences(org, {"conferences": rows, "generated": dt.date.today().isoformat()})
     names = {"Ahead Expo": "Ahead 2099", "Past Expo": "Past 2020", "Rolled Summit": "Rolled 2025",
-             "New Fair": "New 2027", "Moved Forum": "Moved 2024", "Stale Dates": "Early 2098",
+             "New Fair": "New 2099", "Moved Forum": "Moved 2024", "Stale Dates": "Early 2098",
+             "Held Meeting": "Held 2026", "Old Assembly": "Old 2023", "Dated Fair": "Dated 2023",
+             "Wrong Fair": "Wrong 2099", "NACo Expo": "Naco 2099", "NACVSO Expo": "Nacv 2099",
              "&lt;img src=x onerror=alert(1)&gt;": "Evil 2099"}
     label = {"On now": "now", "Going to": "ahead", "Date not announced": "undated", "Went to": "went"}
     static, cur = {k: [] for k in want}, None
@@ -10039,9 +10110,10 @@ def check_a_company_page_says_which_conferences_it_went_to_and_is_going_to() -> 
         elif cur:
             static[cur].append(names.get(m.group(2), m.group(2)))
     for k, v in want.items():
-        if sorted(static[k]) != sorted(v):
-            errors += fail(f"the static page's Conferences box puts {sorted(static[k])} under {k}, not {sorted(v)}")
-    if "<img src=x" in page or "Ghost" in page:
+        if static[k] != v:
+            errors += fail(f"the static page's Conferences box puts {static[k]} under {k}, not {v}")
+    if "<img src=x" in page or "Ghost" in page or "Jun 14\u201317" not in page \
+            or "the 2099 edition, dates not on file" not in page:
         errors += fail("the static Conferences box draws an unescaped name or a tag no row knows")
     if bs.co_conferences({"id": "x", "conferences": []}, {"conferences": rows}):
         errors += fail("a company with no conferences draws an empty Conferences box")
@@ -11373,6 +11445,17 @@ def check_a_floor_is_read_before_it_is_filed() -> int:
             errors += fail("a vendor verdict did not set is_govtech true with the reading beside it")
         if by.get("Acme Pumps", {}).get("is_govtech") is not False:
             errors += fail("a supplier verdict did not set is_govtech false")
+        # A BUYER IS NOT A SUPPLIER (review, 2026-10-28): 36 cities, counties
+        # and state departments off the APA floors were filed as suppliers.
+        fa = floor("Gov", [{"name": "City of Testville", "is_govtech": None},
+                           {"name": "Testville Paving", "is_govtech": None}])
+        rf.apply([V(fa.name, "City of Testville", "agency", "city government"),
+                  V(fa.name, "Testville Paving", "supplier", "paving contractor")], "agent:test", write=True)
+        ga = {e["name"]: e for e in json.loads(fa.read_text())["exhibitors"]}
+        if (ga.get("City of Testville", {}).get("is_govtech") is not False
+                or "city government" not in str(ga.get("City of Testville", {}).get("not_a_supplier"))
+                or "not_a_supplier" in ga.get("Testville Paving", {})):
+            errors += fail(f"an agency verdict did not mark the name not_a_supplier, or a supplier was: {ga}")
         if "Member Login" in by or one.get("read_dropped") != 1:
             errors += fail("a name judged not a company stayed on the floor")
         if by.get("Zed Quux", {}).get("is_govtech") is not None or by.get("Nobody Looked", {}).get("is_govtech") is not None:
@@ -11446,6 +11529,53 @@ def check_a_floor_is_read_before_it_is_filed() -> int:
             errors += fail(f"the brief asks about settled names: {got}")
     finally:
         rf.DATA, rf.READS, rf.purge_suppliers, rf.settled, rf.staged_files = saved
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # intake files an agency so its name is known, marked not_a_supplier, and
+    # a supplier plainly: driven through main() in a sandbox
+    import conference_intake as ci
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-agency-"))
+    keep = (ci.DATA, ci.STAGE, ci.admin.read_companies, ci.admin.validate, ci.admin.save_companies,
+            ci.admin.write_atomic, sys.argv)
+    try:
+        (tmp / "conferences.json").write_text(json.dumps({"conferences": [
+            {"event_tag": "Agency 2026", "conference": "Agency"}]}))
+        (tmp / "suppliers.json").write_text(json.dumps([
+            {"id": "testville-transit", "name": "Testville Transit Authority", "website": None},
+            {"id": "state-prison-industries", "name": "State Prison Industries", "website": None,
+             "not_a_supplier": "reader: state department"}]))
+        (tmp / "schema.json").write_text((ROOT / "data" / "schema.json").read_text())
+        staged = tmp / "exhibitors_Agency_2026.json"
+        staged.write_text(json.dumps({"event_tag": "Agency 2026", "found": True, "quality": "read", "exhibitors": [
+            {"name": "City of Testville", "is_govtech": False, "not_a_supplier": "reader: city government"},
+            {"name": "Testville Paving", "is_govtech": False},
+            {"name": "Testville Transit Authority", "is_govtech": False,
+             "not_a_supplier": "reader: city transit agency", "read": {"verdict": "agency"}},
+            {"name": "State Prison Industries", "is_govtech": False, "read": {"verdict": "supplier"}}]}))
+        ci.DATA, ci.STAGE = tmp, tmp / "conference_intake"
+        ci.admin.read_companies = lambda: []
+        ci.admin.validate = lambda companies: None
+        ci.admin.save_companies = lambda *a, **k: None
+        ci.admin.write_atomic = lambda name, obj: (tmp / name).write_text(json.dumps(obj))
+        sys.argv = ["conference_intake.py", str(staged), "--event-tag", "Agency 2026", "--no-hq-export"]
+        said = io.StringIO()
+        with contextlib.redirect_stdout(said):
+            ci.main()
+        filed = {r["name"]: r for r in json.loads((tmp / "suppliers.json").read_text())}
+        if "city government" not in str((filed.get("City of Testville") or {}).get("not_a_supplier")) \
+                or "not_a_supplier" in (filed.get("Testville Paving") or {"not_a_supplier": 1}):
+            errors += fail(f"intake filed an agency as a supplier, or marked a supplier: {filed}")
+        if "transit agency" not in str((filed.get("Testville Transit Authority") or {}).get("not_a_supplier")):
+            errors += fail("a reader's agency verdict on a supplier already on file was thrown away at intake")
+        if not (filed.get("State Prison Industries") or {}).get("not_a_supplier") \
+                or "for a person: State Prison Industries" not in said.getvalue():
+            errors += fail("a later reader's supplier silently overruled an earlier reader's agency, "
+                           "or the disagreement was not said")
+    except Exception as exc:                            # noqa: BLE001
+        errors += fail(f"intake would not run in a sandbox: {type(exc).__name__}: {exc}")
+    finally:
+        (ci.DATA, ci.STAGE, ci.admin.read_companies, ci.admin.validate, ci.admin.save_companies,
+         ci.admin.write_atomic, sys.argv) = keep
         shutil.rmtree(tmp, ignore_errors=True)
 
     # intake: a refused page is refused, the unread are held, `read` is accepted
@@ -11613,7 +11743,7 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
                            f"unverified {len(g['unverified'])}, low {len(g['low'])}, refused {len(g['refused'])}")
         if not pcd.READ.exists():
             errors += fail("the gate did not record that it was read")
-            pcd.READ.write_text("{}")          # so the landing below is still exercised
+            pcd.READ.write_text(json.dumps({"on": dt.datetime.now().astimezone().isoformat()}))
         ruled: list = []
         pcd.proposal_rulings.rule = lambda store, k, accept, why="", by="", force=False: ruled.append((k, accept, by)) or {"ok": True}
         pcd._supplier_only_match = lambda name, website=None: None
@@ -11680,7 +11810,7 @@ def check_a_card_moves_only_its_own_supplier_row_and_gives_it_back() -> int:
             pcd.proposal_rulings.rule)
     try:
         pcd.DATA, pcd.READ = tmp, tmp / ".cards_read"
-        pcd.READ.write_text("{}")
+        pcd.READ.write_text(json.dumps({"on": dt.datetime.now().astimezone().isoformat()}))
         pcd.admin.read_companies = lambda: [{"id": "flock", "name": "Flock Safety"}]
         files = {"suppliers.json": [
             {"id": "clarity-group-inc", "name": "Clarity Group, Inc.", "website": None},
@@ -11878,6 +12008,80 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
             errors += fail("a date with no source url was written to the catalogue")
     finally:
         acr.DATA = saved_data
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_an_undated_row_keeps_the_edition_its_floor_was_read_at() -> int:
+    """`held_dates`: the dates of the edition a floor was read at, kept on a
+    row whose next edition is unannounced (review, 2026-10-28).
+
+    A chapter row is promoted with no dates and an "unannounced" read answers
+    the NEXT edition, so the dates of the one the companies were at were
+    never kept; an owner's "unannounced" ruling erased them outright. The
+    company page's Conferences box then filed Maryland Municipal League's
+    June exhibitors under "Date not announced". A held date is a date like
+    any other: off the organiser's page, with its source, and in the tag's
+    own year, or it is refused.
+    """
+    import apply_conference_reads as acr
+    import conference_dates as cd
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-held-"))
+    saved = (acr.DATA, cd.RULED, sys.argv)
+    try:
+        acr.DATA = tmp
+        rows = [{"event_tag": t, "conference": t, "dates": None, "dates_confidence": "unannounced"}
+                for t in ("Good 2026", "NoSource 2026", "WrongYear 2026", "Guess 2026",
+                          "Borrowed 2026", "Short 2026")]
+        (tmp / "conferences.json").write_text(json.dumps({"conferences": rows}))
+        reads = tmp / "reads.json"
+        reads.write_text(json.dumps([
+            {"tag": "Good 2026", "dates_confidence": "unannounced", "held_dates": "June 14-17, 2026",
+             "held_dates_source": "https://g.test/summer", "held_confidence": "high"},
+            {"tag": "NoSource 2026", "dates_confidence": "unannounced", "held_dates": "June 14-17, 2026",
+             "held_confidence": "high"},
+            {"tag": "WrongYear 2026", "dates_confidence": "unannounced", "held_dates": "June 14-17, 2025",
+             "held_dates_source": "https://w.test/", "held_confidence": "high"},
+            {"tag": "Guess 2026", "dates_confidence": "unannounced", "held_dates": "June 14-17, 2026",
+             "held_dates_source": "https://q.test/", "held_confidence": "low"},
+            # a high NEXT-edition confidence is not the held read's own
+            {"tag": "Borrowed 2026", "dates_confidence": "high", "held_dates": "June 14-17, 2026",
+             "held_dates_source": "https://b.test/"},
+            # the static page read "Jun" and the app did not
+            {"tag": "Short 2026", "dates_confidence": "unannounced", "held_dates": "Jun 14-17, 2026",
+             "held_dates_source": "https://s.test/", "held_confidence": "high"}]))
+        sys.argv = ["apply_conference_reads.py", "--in", str(reads), "--write"]
+        with contextlib.redirect_stdout(io.StringIO()):
+            acr.main()
+        out = {c["event_tag"]: c for c in json.loads((tmp / "conferences.json").read_text())["conferences"]}
+        g = out["Good 2026"]
+        if g.get("held_dates") != "June 14-17, 2026" or g.get("held_dates_source") != "https://g.test/summer":
+            errors += fail(f"a held edition's dates read off the organiser's page did not land: {g}")
+        for t in ("NoSource 2026", "WrongYear 2026", "Guess 2026", "Borrowed 2026", "Short 2026"):
+            if out[t].get("held_dates"):
+                errors += fail(f"{t}: a held date with no source, of another year, without its own "
+                               f"high or medium confidence, or not in the catalogue's form landed")
+        # an owner's "unannounced" keeps the edition that was held
+        (tmp / "rulings.json").write_text(json.dumps({"Ran 2026": {
+            "outcome": "unannounced", "on": "2026-10-28", "by": "owner"}}))
+        cd.RULED = tmp / "rulings.json"
+        rep = cd.apply_rulings([{"event_tag": "Ran 2026", "conference": "Ran", "dates": "May 4-6, 2026",
+                                 "dates_source": "https://r.test/"}])
+        ran = rep["rows"][0]
+        if ran.get("dates") is not None or ran.get("held_dates") != "May 4-6, 2026":
+            errors += fail(f"an 'unannounced' ruling erased the edition that was held: {ran}")
+        # A ROLLED ROW carries the next edition's dates under its old tag: they
+        # are not the held edition's, or ICMA 2026's exhibitors go to 2027
+        (tmp / "rulings.json").write_text(json.dumps({"Rolled 2026": {
+            "outcome": "unannounced", "on": "2026-10-28", "by": "owner"}}))
+        rep = cd.apply_rulings([{"event_tag": "Rolled 2026", "conference": "Rolled",
+                                 "dates": "September 25-29, 2027", "dates_source": "https://r.test/"}])
+        if rep["rows"][0].get("held_dates"):
+            errors += fail(f"an 'unannounced' ruling kept a rolled row's NEXT edition as the held one: "
+                           f"{rep['rows'][0]}")
+    finally:
+        acr.DATA, cd.RULED, sys.argv = saved
         shutil.rmtree(tmp, ignore_errors=True)
     return errors
 
@@ -21158,6 +21362,65 @@ def _import_conference_dates():
     return conference_dates
 
 
+def check_the_date_report_keeps_its_confirmations() -> int:
+    """`conference_dates --json` never drops the "is our date still on their
+    page" block (review, 2026-10-28).
+
+    The admin's Conference dates queue reads "not found" from that block
+    alone. The weekly scrub ran --json with no --confirm, the rewrite left
+    the block out, and the push would have committed the loss of all 20
+    flags. Drives main() as the scrub calls it, then a --confirm --limit run,
+    in a temp data directory.
+    """
+    import tempfile
+    cd = _import_conference_dates()
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-dates-"))
+    (tmp / "conferences.json").write_text(json.dumps({"conferences": [
+        {"conference": "Alpha Expo", "event_tag": "Alpha 2027", "dates": "March 1-3, 2027"},
+        {"conference": "Beta Summit", "event_tag": "Beta 2027", "dates": "April 1-3, 2027"},
+        {"conference": "Rolled Fair", "event_tag": "Rolled 2026", "dates": "September 25-29, 2027"}]}))
+    rep = tmp / "conference_date_report.json"
+    rep.write_text(json.dumps({"generated": "2026-09-01", "confirmed": [
+        {"conference": "Alpha Expo", "state": "not found", "held": "2027-03-01"},
+        {"conference": "Beta Summit", "state": "not found", "held": "2027-04-01"},
+        # about a date no longer on file (the row rolled), and a row gone
+        {"conference": "Rolled Fair", "state": "not found", "held": "2026-10-17"},
+        {"conference": "Gone Expo", "state": "confirmed", "held": "2026-05-01"}]}))
+    keep = (cd.DATA, sys.argv, cd.confirm)
+    out = io.StringIO()
+    try:
+        cd.DATA = tmp
+        cal = {r["conference"]: r for r in cd.q_calendar()}
+        if "Rolled Fair" in cal and cal["Rolled Fair"].get("kind") == "not_found":
+            print("  FAIL: the Conference dates queue shows a 'not found' flag about a date no "
+                  "longer on file")
+            errors += 1
+        if (cal.get("Alpha Expo") or {}).get("kind") != "not_found":
+            print("  FAIL: the Conference dates queue lost a 'not found' flag about the date on file")
+            errors += 1
+        sys.argv = ["conference_dates.py", "--json"]
+        with contextlib.redirect_stdout(out):
+            cd.main()
+        after = {r["conference"]: r["state"] for r in json.loads(rep.read_text()).get("confirmed") or []}
+        if after != {"Alpha Expo": "not found", "Beta Summit": "not found"}:
+            print(f"  FAIL: `conference_dates --json` dropped the confirmations on file: {after}")
+            errors += 1
+        cd.confirm = lambda c: {"conference": c["conference"], "state": "confirmed",
+                                "held": cd.parsed(c.get("dates") or "").isoformat()}
+        sys.argv = ["conference_dates.py", "--json", "--confirm", "--limit", "1"]
+        with contextlib.redirect_stdout(out):
+            cd.main()
+        rows = json.loads(rep.read_text()).get("confirmed") or []
+        after = {r["conference"]: r["state"] for r in rows}
+        if after != {"Alpha Expo": "confirmed", "Beta Summit": "not found"} or len(rows) != 2:
+            print(f"  FAIL: a --confirm --limit run did not replace only what it re-read: {after}")
+            errors += 1
+    finally:
+        cd.DATA, sys.argv, cd.confirm = keep
+    return errors
+
+
 def check_conference_dates_engine() -> int:
     """The calendar's maintenance engine confirms dates and never invents one.
 
@@ -26203,13 +26466,17 @@ def check_calendar_writers_agree() -> int:
     # the counting is not.
     mism = []
     for c in board.get("conferences") or []:
-        span = build_site._ics_range(c.get("dates"))
-        mine = None if not span else [
-            span[0].strftime("%Y%m%d"),
-            (span[1] + dt.timedelta(days=1)).strftime("%Y%m%d")]
-        theirs = js.get(c["tag"])
-        if mine != theirs:
-            mism.append((c["tag"], c.get("dates"), mine, theirs))
+        # and the held edition's dates (2026-10-28), which the company page's
+        # Conferences box reads with these same two parsers
+        for key, dates in ((c["tag"], c.get("dates")),
+                           *((("held:" + c["tag"], c.get("held_dates")),) if c.get("held_dates") else ())):
+            span = build_site._ics_range(dates)
+            mine = None if not span else [
+                span[0].strftime("%Y%m%d"),
+                (span[1] + dt.timedelta(days=1)).strftime("%Y%m%d")]
+            theirs = js.get(key)
+            if mine != theirs:
+                mism.append((key, dates, mine, theirs))
     bad = 0
     for tag, dates, mine, theirs in mism[:5]:
         bad += fail(
@@ -26571,6 +26838,50 @@ def check_mail_images_load_without_a_sign_in() -> int:
     return errors
 
 
+def check_every_alert_issue_is_assigned_to_the_owner() -> int:
+    """Every issue a workflow opens names the owner as assignee.
+
+    GitHub mails the owner about an issue only when he is assigned or watches
+    all activity, so an unassigned issue is an alert nobody receives: the AE
+    alerts of 10-23 to 10-27 reached nobody (6e35455), and the watchdog's
+    "The board is not being built" and the claim gate's issue were opened the
+    same way (review, 2026-10-28). Reads each command to its end across its
+    backslash continuations (a "#" inside a quoted title is not a comment),
+    takes either spelling of the owner, and holds `gh api` POSTs to /issues
+    to the same rule.
+    """
+    errors = 0
+    owner = re.compile(r"""(?:--assignee|-a)[ =]+["']?(?:\$GITHUB_REPOSITORY_OWNER|\$\{\{\s*github\.repository_owner\s*\}\})""")
+    api_post = re.compile(r"gh api\b.*?/issues\b(?!/)", re.S)
+    for wf in sorted((ROOT / ".github" / "workflows").glob("*.yml")):
+        lines = wf.read_text().splitlines()
+        i = 0
+        while i < len(lines):
+            start, cmd = i, lines[i]
+            while cmd.rstrip().endswith("\\") and i + 1 < len(lines):
+                i += 1
+                cmd = cmd.rstrip()[:-1] + " " + lines[i]
+            i += 1
+            if cmd.lstrip().startswith("#"):
+                continue
+            if "gh issue create" in cmd and not owner.search(cmd):
+                errors += fail(f"{wf.name}:{start + 1}: `gh issue create` opens an issue nobody is "
+                               f"assigned, so GitHub mails nobody")
+            elif api_post.search(cmd) and re.search(r"(-X|--method)\s+POST|-f\s+title=|--field\s+title=", cmd) \
+                    and "assignees" not in cmd:
+                errors += fail(f"{wf.name}:{start + 1}: `gh api` opens an issue with no assignees")
+    # the reader itself, on the shapes it must read right
+    probe = ['gh issue create --title "Board #12 broke" \\', '  --assignee "$GITHUB_REPOSITORY_OWNER"',
+             'gh issue create -a "${{ github.repository_owner }}" --title x',
+             '# gh issue create --title "a comment, not a command"']
+    hits = []
+    for ln in probe:
+        hits.append(bool(owner.search(ln)))
+    if not (owner.search(probe[0][:-1] + probe[1]) and hits[2]):
+        errors += fail("the assignee reader misses a spelling of the owner it must accept")
+    return errors
+
+
 def check_the_owner_alert_is_one_branded_email() -> int:
     """The owner's AE alert is one email built on the shell, whole, under
     Gmail's clipping limit, with logos a mail client can draw - and no issue
@@ -26920,12 +27231,79 @@ def check_sweep_keeps_its_own_work() -> int:
         f = tmp / "exhibitors_X.json"
         f.write_text(json.dumps({"found": True, "exhibitors": [
             {"name": "Acme", "website": None, "is_govtech": True, "is_govtech_why": "ruled"}]}))
-        fresh = {"found": True, "exhibitors": [{"name": "Acme", "website": "https://acme.test"}]}
-        if not sw.merge_into(fresh, f) or fresh["exhibitors"][0].get("is_govtech") is not True:
-            print("  FAIL: a re-sweep drops the is_govtech flag classify wrote")
+        fresh = {"found": True, "exhibitors": [{"name": "Acme", "website": "https://acme.test"},
+                                               {"name": "Newco Systems", "website": None}]}
+        got = sw.merge_into(fresh, f) or {}
+        names = {e["name"]: e for e in got.get("exhibitors") or []}
+        if (names.get("Acme") or {}).get("is_govtech") is not True or "Newco Systems" not in names:
+            print("  FAIL: a re-sweep drops the is_govtech flag classify wrote, "
+                  "or does not add the name it newly found")
             errors += 1
-        if sw.merge_into({"found": False, "why": "HTTP 403", "exhibitors": []}, f):
+        if sw.merge_into({"found": False, "why": "HTTP 403", "exhibitors": []}, f) is not None:
             print("  FAIL: a refused read would overwrite a good staged file")
+            errors += 1
+        # A FIND NEVER REPLACES A FIND (2026-10-28): Sunday's `--all --write`
+        # would have put ICC's 11 shell-page names over 107 a browser read and
+        # sent 65 reader-graded floors back to unread. A smaller re-read of a
+        # `read` floor keeps every row, verdict and the grade; a name a reader
+        # dropped stays dropped; a reader's "not a floor" stands at its address.
+        rd = tmp / "conference_intake" / "reads"
+        rd.mkdir(parents=True)
+        g = tmp / "exhibitors_G_2026.json"
+        g.write_text(json.dumps({"found": True, "quality": "read", "read_dropped": 1,
+                                 "source_url": "https://g.test/floor", "exhibitors": [
+            {"name": "Kept Vendor Inc", "is_govtech": True, "read": {"verdict": "vendor"}},
+            {"name": "Kept Supplier LLC", "is_govtech": False, "read": {"verdict": "supplier"}}]}))
+        (rd / "G_2026.json").write_text(json.dumps([
+            {"name": "Member Login", "verdict": "not_a_company", "why": "menu"},
+            {"name": "Judged Before Co", "verdict": "supplier", "why": "caterer"},
+            {"name": "City of Judged", "verdict": "agency", "why": "city government"}]))
+        keep_data = sw.DATA
+        sw.DATA = tmp
+        try:
+            got = sw.merge_into({"found": True, "quality": "menu", "source_url": "https://g.test/floor",
+                                 "exhibitors": [{"name": "Kept Vendor"}, {"name": "Member Login"},
+                                                {"name": "Kept Supplier Field Services"},
+                                                {"name": "Judged Before Co"}, {"name": "City of Judged"}]}, g) or {}
+            nfile = tmp / "exhibitors_N_2026.json"
+            ruling = {"found": False, "source_url": "https://g.test/floor",
+                      "why": "reader: every one of the 2 names was the site's own text"}
+            nfile.write_text(json.dumps(ruling))
+            (rd / "N_2026.json").write_text(json.dumps([
+                {"name": "Exhibit With Us", "verdict": "not_a_company", "why": "menu"},
+                {"name": "Contact Sales", "verdict": "not_a_company", "why": "menu"}]))
+            nf = sw.merge_into({"found": True, "source_url": "https://g.test/floor",
+                                "exhibitors": [{"name": "Exhibit With Us"}, {"name": "Contact Sales"}]}, nfile)
+            # THE LIST ARRIVES LATER AT THE SAME ADDRESS (Government Fleet
+            # Expo's /exhibitors, blind review): a ruling on its menu never
+            # keeps the exhibitors out, and the menu stays out
+            nl = sw.merge_into({"found": True, "source_url": "https://g.test/floor",
+                                "exhibitors": [{"name": "Exhibit With Us"}, {"name": "Samsara Fleet"},
+                                               {"name": "Mercury Associates"}]}, nfile) or {}
+            nr = sw.merge_into({"found": False, "why": "HTTP 403", "exhibitors": []}, nfile)
+        finally:
+            sw.DATA = keep_data
+        names = {e["name"]: e for e in got.get("exhibitors") or []}
+        if (got.get("quality") != "read" or "Kept Supplier LLC" not in names
+                or (names.get("Kept Vendor Inc") or {}).get("is_govtech") is not True):
+            print(f"  FAIL: a smaller re-sweep of a read floor lost its rows, a verdict or its grade "
+                  f"- {sorted(names)} {got.get('quality')!r}")
+            errors += 1
+        if "Kept Vendor" in names or "Member Login" in names or "Kept Supplier Field Services" in names:
+            print("  FAIL: a re-sweep added a staged company again, or a name a reader dropped")
+            errors += 1
+        if (names.get("Judged Before Co") or {}).get("is_govtech") is not False \
+                or not (names.get("City of Judged") or {}).get("not_a_supplier"):
+            print("  FAIL: a name a reader judged comes back from a re-sweep unjudged")
+            errors += 1
+        if nf is not None or nr is not None:
+            print("  FAIL: a re-sweep of the same menu, or a refusal, overturns a reader's "
+                  "'this page is not a floor'")
+            errors += 1
+        if sorted(e["name"] for e in nl.get("exhibitors") or []) != ["Mercury Associates", "Samsara Fleet"] \
+                or nl.get("found") is not True:
+            print(f"  FAIL: a reader's 'not a floor' kept out a real list read later at the same "
+                  f"address, or let the menu back in: {nl.get('exhibitors')}")
             errors += 1
 
         (tmp / "companies.json").write_text(json.dumps(
@@ -36493,6 +36871,72 @@ def check_the_claude_inbox_lists_and_settles() -> int:
     return errors
 
 
+def check_a_gate_stamp_belongs_to_one_checkout() -> int:
+    """The landing doors' "--gate has printed in this checkout" stamps are
+    never committed, and a bare `promote_cards --land` is refused.
+
+    data/.cards_read, .rivals_read and .profiles_read were tracked, so the
+    gate "had printed" in every fresh clone and worktree - the weekly scrub
+    makes one at origin/main - and a bare --land landed every pending card
+    that passes, the owner's held pile of 132 included (review, 2026-10-28).
+    """
+    import shutil, subprocess
+    errors = 0
+    stamps = ["data/.cards_read", "data/.rivals_read", "data/.profiles_read", "data/.buyer_read"]
+    if shutil.which("git") and (ROOT / ".git").exists():
+        r = subprocess.run(["git", "ls-files", *stamps], capture_output=True, text=True, cwd=str(ROOT))
+        if r.stdout.strip():
+            errors += fail(f"a gate stamp is committed, so it has 'printed' in every checkout: "
+                           f"{r.stdout.split()}")
+        r = subprocess.run(["git", "check-ignore", "--no-index", *stamps], capture_output=True,
+                           text=True, cwd=str(ROOT))
+        if sorted(r.stdout.split()) != sorted(stamps):
+            errors += fail(f"not every gate stamp is gitignored ({r.stdout.split()}): "
+                           f"`git add -A data` would commit it again")
+    import promote_cards as pcd
+    keep = (sys.argv, pcd.agents.load)
+    pcd.agents.load = lambda: (_ for _ in ()).throw(AssertionError("loaded the store"))
+    try:
+        sys.argv = ["promote_cards.py", "--land"]
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                pcd.main()
+            errors += fail("a bare `promote_cards --land` ran: it lands the owner's held pile")
+        except SystemExit as e:
+            if "--keys" not in str(e):
+                errors += fail(f"a bare --land stopped, but not on the keys rule: {e}")
+        except AssertionError:
+            errors += fail("a bare `promote_cards --land` read the store instead of refusing first")
+    finally:
+        sys.argv, pcd.agents.load = keep
+    # A GATE PRINTED LAST WEEK IS NOT TODAY'S: the scrub reuses its worktree,
+    # and an untracked stamp outlives the run that printed it
+    import tempfile
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-stamp-"))
+    keep_read = pcd.READ
+    try:
+        for label, stamp in (("a week-old", {"on": (dt.datetime.now().astimezone()
+                                                      - dt.timedelta(days=7)).isoformat()}),
+                             ("an undated", {})):
+            pcd.READ = tmp / ".cards_read"
+            pcd.READ.write_text(json.dumps(stamp))
+            try:
+                pcd.land({}, "agent:test", keys=set())
+                errors += fail(f"--land went through on {label} gate stamp")
+            except SystemExit as e:
+                if "print it again" not in str(e):
+                    errors += fail(f"{label} stamp stopped --land for another reason: {e}")
+        pcd.READ.write_text(json.dumps({"on": dt.datetime.now().astimezone().isoformat()}))
+        try:
+            pcd.land({}, "agent:test", keys=set())
+        except SystemExit as e:
+            errors += fail(f"a gate printed just now did not let --land run: {e}")
+    finally:
+        pcd.READ = keep_read
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_a_shift_deals_rules_and_undoes_what_it_says() -> int:
     """The shift (option 5 of the admin canvas, owner 2026-10-23).
 
@@ -37565,6 +38009,7 @@ def main() -> int:
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
     errors += check_conference_dates_engine()
+    errors += check_the_date_report_keeps_its_confirmations()
     errors += check_acquisition_bands_cover_every_strength()
     errors += check_board_stated_mode_and_office()
     errors += check_alert_preview_matches_the_digest()
@@ -37657,6 +38102,7 @@ def main() -> int:
     errors += check_admin_game()
     errors += check_admin_gates()
     errors += check_a_shift_deals_rules_and_undoes_what_it_says()
+    errors += check_a_gate_stamp_belongs_to_one_checkout()
     errors += check_the_shift_screen_keeps_the_belts_rules()
     errors += check_a_shift_counts_each_ruling_once()
     errors += check_the_shift_runs_right_under_its_own_script()
@@ -37783,6 +38229,7 @@ def main() -> int:
     errors += check_one_subscriber_never_silences_the_rest()
     errors += check_an_alert_signup_keeps_its_promises()
     errors += check_ratings_cannot_spend_the_shared_store()
+    errors += check_a_submission_cannot_flood_the_public_repo()
     errors += check_an_emailed_link_waits_for_a_person()
     errors += check_a_failed_kv_write_says_which_failure_it_was()
     errors += check_a_tag_is_derived_and_never_stored()
@@ -37857,11 +38304,13 @@ def main() -> int:
     errors += check_the_card_door_lands_only_what_it_saw()
     errors += check_a_date_read_is_confirmed_against_its_own_page()
     errors += check_a_list_replaces_only_a_url_ruled_not_a_floor()
+    errors += check_an_undated_row_keeps_the_edition_its_floor_was_read_at()
     errors += check_an_infinite_scroll_floor_is_scrolled_to_its_end()
     errors += check_a_candidate_on_the_board_by_domain_is_not_researched()
     errors += check_a_card_moves_only_its_own_supplier_row_and_gives_it_back()
     errors += check_mail_images_load_without_a_sign_in()
     errors += check_the_owner_alert_is_one_branded_email()
+    errors += check_every_alert_issue_is_assigned_to_the_owner()
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()

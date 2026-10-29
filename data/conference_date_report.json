@@ -1,60 +1,466 @@
 {
- "generated": "2026-09-01",
- "total": 126,
+ "generated": "2026-10-28",
+ "total": 179,
  "stale": [
   {
-   "conference": "State Healthcare IT Connect Summit",
-   "tag": "Healthcare IT Connect 2026",
-   "dates": "February 23-26, 2026",
-   "was": "2026-02-23",
-   "days_ago": 190,
-   "next_edition": null,
-   "url": "https://healthcareitconnect.com/"
+   "conference": "2026 Nebraska Planning Conference",
+   "tag": "APA Nebraska Chapter 2026",
+   "dates": "March 4-6, 2026",
+   "was": "2026-03-04",
+   "days_ago": 238,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://nebraska.planning.org/conferences-and-meetings/chapter-conference/"
+  },
+  {
+   "conference": "First Ever Joint APA / ASLA Kentucky Conference: Common Ground: Shaping Communities Together",
+   "tag": "APA-KY 2026",
+   "dates": "April 16-17, 2026",
+   "was": "2026-04-16",
+   "days_ago": 195,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.apaky.org/events.html"
+  },
+  {
+   "conference": "2026 2nd MSLUS",
+   "tag": "APA West Virginia Chapter 2026",
+   "dates": "May 5-7, 2026",
+   "was": "2026-05-05",
+   "days_ago": 176,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://wv.planning.org/conferences-events/mountain-state-land-use-academy/"
+  },
+  {
+   "conference": "APA Virginia Annual Conference",
+   "tag": "APA Virginia Chapter 2026",
+   "dates": "July 26-29, 2026",
+   "was": "2026-07-26",
+   "days_ago": 94,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://virginia.planning.org/"
   },
   {
    "conference": "MESC",
    "tag": "MESC 2026",
    "dates": "August 17-20, 2026",
    "was": "2026-08-17",
-   "days_ago": 15,
+   "days_ago": 72,
    "next_edition": null,
+   "next_on_file": false,
    "url": "https://mesconference.org/"
   },
   {
-   "conference": "GMIS International",
-   "tag": "GMIS International 2026",
-   "dates": "August 23-26, 2026",
-   "was": "2026-08-23",
+   "conference": "2026 Joint Montana & Idaho Chapter Conference",
+   "tag": "Joint Montana & Idaho Chapter Conference 2026",
+   "dates": "September 9-11, 2026",
+   "was": "2026-09-09",
+   "days_ago": 49,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://mtplanners.org/conference/montana-association-of-planners-2026-annual-conference/"
+  },
+  {
+   "conference": "APA Utah Fall Conference 2026",
+   "tag": "Utah Chapter American Planning Association 2026",
+   "dates": "September 9-10, 2026",
+   "was": "2026-09-09",
+   "days_ago": 49,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://web.cvent.com/event/ec079ae7-00a9-4789-93ad-81a27e9a2330/summary"
+  },
+  {
+   "conference": "NATOA",
+   "tag": "NATOA 2026",
+   "dates": "September 14-17, 2026",
+   "was": "2026-09-14",
+   "days_ago": 44,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.natoa.org/events/2026-annual-conference"
+  },
+  {
+   "conference": "KLC Conference & Expo",
+   "tag": "Kentucky League of Cities 2026",
+   "dates": "September 22-25, 2026",
+   "was": "2026-09-22",
+   "days_ago": 36,
+   "next_edition": null,
+   "next_on_file": false,
+   "url": "http://www.klc.org"
+  },
+  {
+   "conference": "2026 GPA Fall Conference",
+   "tag": "Georgia Planning Association 2026",
+   "dates": "September 23-25, 2026",
+   "was": "2026-09-23",
+   "days_ago": 35,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://georgiaplanning.org/fall-conference/"
+  },
+  {
+   "conference": "NASPO Annual",
+   "tag": "NASPO 2026",
+   "dates": "September 27-30, 2026",
+   "was": "2026-09-27",
+   "days_ago": 31,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.naspo.org/events-and-webinars/naspo-annual/"
+  },
+  {
+   "conference": "IPMA-HR International",
+   "tag": "PSHRA 2026",
+   "dates": "September 28-30, 2026",
+   "was": "2026-09-28",
+   "days_ago": 30,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.pshra.org/"
+  },
+  {
+   "conference": "AACE",
+   "tag": "AACE 2026",
+   "dates": "September 28 - October 1, 2026",
+   "was": "2026-09-28",
+   "days_ago": 30,
+   "next_edition": null,
+   "next_on_file": false,
+   "url": "https://www.aace1.org/page/2026AACEconference"
+  },
+  {
+   "conference": "Deep South Planning Conference",
+   "tag": "Deep South Planning Conference 2026",
+   "dates": "September 29 - October 1, 2026",
+   "was": "2026-09-29",
+   "days_ago": 29,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://alabamaplanning.org/conference/"
+  },
+  {
+   "conference": "NALIT",
+   "tag": "NALIT 2026",
+   "dates": "September 30 - October 3, 2026",
+   "was": "2026-09-30",
+   "days_ago": 28,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.ncsl.org/events/details/2026-nalit-professional-development-seminar"
+  },
+  {
+   "conference": "American Planning Association - Illinois Chapter",
+   "tag": "APA - Illinois Chapter 2026",
+   "dates": "September 30 - October 2, 2026",
+   "was": "2026-09-30",
+   "days_ago": 28,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.ilapa.org/aws/APAIL/pt/sp/past-future-conference"
+  },
+  {
+   "conference": "2026 OKI Regional Planning Conference",
+   "tag": "American Planning Association Ohio Chapter 2026",
+   "dates": "September 30 - October 2, 2026",
+   "was": "2026-09-30",
+   "days_ago": 28,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.ohioplanning.org/aws/APAOH/pt/sp/conference_home_page"
+  },
+  {
+   "conference": "Planning Michigan Conference",
+   "tag": "Michigan Association of Planning 2026",
+   "dates": "September 30 - October 2, 2026",
+   "was": "2026-09-30",
+   "days_ago": 28,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.planningmi.org/aws/MAP/pt/sp/michigan-conference"
+  },
+  {
+   "conference": "2026 Arkansas Chapter Conference",
+   "tag": "APA Arkansas Chapter 2026",
+   "dates": "September 30 - October 2, 2026",
+   "was": "2026-09-30",
+   "days_ago": 28,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://arkansas.planning.org/conferences-and-events/past-conferences/2026-arkansas-chapter-conference/"
+  },
+  {
+   "conference": "APA California 2026 Conference",
+   "tag": "APA California Chapter 2026",
+   "dates": "October 3-6, 2026",
+   "was": "2026-10-03",
+   "days_ago": 25,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.apacalifornia.org/"
+  },
+  {
+   "conference": "Vermont League of Cities and Towns",
+   "tag": "Vermont League of Cities and Towns 2027",
+   "dates": "October 7, 2026",
+   "was": "2026-10-07",
+   "days_ago": 21,
+   "next_edition": null,
+   "next_on_file": false,
+   "url": "http://www.vlct.org"
+  },
+  {
+   "conference": "2026 APA WA Annual Conference",
+   "tag": "APA Washington Chapter 2026",
+   "dates": "October 7-9, 2026",
+   "was": "2026-10-07",
+   "days_ago": 21,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.washington-apa.org/"
+  },
+  {
+   "conference": "SCAPA Fall 2026 Conference",
+   "tag": "South Carolina Chapter of the APA 2026",
+   "dates": "October 7-9, 2026",
+   "was": "2026-10-07",
+   "days_ago": 21,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://scapa.org/conferences/2026fall_columbia/"
+  },
+  {
+   "conference": "APA Wisconsin Chapter",
+   "tag": "APA Wisconsin Chapter 2026",
+   "dates": "October 8-9, 2026",
+   "was": "2026-10-08",
+   "days_ago": 20,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://wisconsin.planning.org/conferences-and-events/apa-wi-2026-annual-conference-madison/"
+  },
+  {
+   "conference": "SNEAPA 2026",
+   "tag": "SNEAPA 2026",
+   "dates": "October 8-9, 2026",
+   "was": "2026-10-08",
+   "days_ago": 20,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.sneapa.org/"
+  },
+  {
+   "conference": "URISA GIS-Pro",
+   "tag": "URISA GIS-Pro 2026",
+   "dates": "October 12-15, 2026",
+   "was": "2026-10-12",
+   "days_ago": 16,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://thegpn.org"
+  },
+  {
+   "conference": "2026 TAPA Fall Conference",
+   "tag": "APA Tennessee Chapter 2026",
+   "dates": "October 12-14, 2026",
+   "was": "2026-10-12",
+   "days_ago": 16,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://tennessee.planning.org/conferences-and-meetings/chapter-conference/"
+  },
+  {
+   "conference": "CJJ",
+   "tag": "CJJ 2026",
+   "dates": "October 13-15, 2026",
+   "was": "2026-10-13",
+   "days_ago": 15,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://juvjustice.org/events/conferences/"
+  },
+  {
+   "conference": "2026 Florida Planning Conference",
+   "tag": "APA Florida 2026",
+   "dates": "October 13-16, 2026",
+   "was": "2026-10-13",
+   "days_ago": 15,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://floridaplanningconference.org/"
+  },
+  {
+   "conference": "APA Texas Chapter",
+   "tag": "APA Texas Chapter 2026",
+   "dates": "October 14-16, 2026",
+   "was": "2026-10-14",
+   "days_ago": 14,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://texas.planning.org/conferences-and-events/chapter-conference/"
+  },
+  {
+   "conference": "NY Upstate Chapter of the American Planning Association",
+   "tag": "NY Upstate Chapter of the APA 2026",
+   "dates": "October 14-16, 2026",
+   "was": "2026-10-14",
+   "days_ago": 14,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.nyupstateplanning.org/2026-annual-conference"
+  },
+  {
+   "conference": "2026 APA NYM Annual Conference",
+   "tag": "APA NYM 2026",
+   "dates": "October 15, 2026",
+   "was": "2026-10-15",
+   "days_ago": 13,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.nyplanning.org/events-calender/egdeonhudson-fhdet-4ysfx"
+  },
+  {
+   "conference": "Michigan Sheriffs\u2019 Association",
+   "tag": "Michigan Sheriffs Association 2026",
+   "dates": "October 18-20, 2026",
+   "was": "2026-10-18",
+   "days_ago": 10,
+   "next_edition": null,
+   "next_on_file": false,
+   "url": "https://www.misheriff.org/"
+  },
+  {
+   "conference": "IPSTA Conference",
+   "tag": "Illinois Chapter of APCO 2026",
+   "dates": "October 18-21, 2026",
+   "was": "2026-10-18",
+   "days_ago": 10,
+   "next_edition": null,
+   "next_on_file": false,
+   "url": "http://www.ilapco.org"
+  },
+  {
+   "conference": "Pennsylvania Chapter of the American Planning Association",
+   "tag": "Pennsylvania Chapter of the APA 2026",
+   "dates": "October 18-20, 2026",
+   "was": "2026-10-18",
+   "days_ago": 10,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://planningpa.org/annual-conference/"
+  },
+  {
+   "conference": "APA MD 2026 Conference",
+   "tag": "APA Maryland 2026",
+   "dates": "October 18-20, 2026",
+   "was": "2026-10-18",
+   "days_ago": 10,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://apamd2026conference.sched.com/"
+  },
+  {
+   "conference": "APA New Mexico Chapter",
+   "tag": "APA New Mexico Chapter 2026",
+   "dates": "October 19-21, 2026",
+   "was": "2026-10-19",
    "days_ago": 9,
    "next_edition": "2026",
-   "url": "https://www.gmis.org/page/2026homepage"
+   "next_on_file": false,
+   "url": "https://newmexico.planning.org/apa-new-mexico-annual-conference/"
   },
   {
-   "conference": "NAMPI Annual",
-   "tag": "NAMPI 2026",
-   "dates": "August 23-26, 2026",
-   "was": "2026-08-23",
-   "days_ago": 9,
+   "conference": "Housing Washington",
+   "tag": "Housing Washington 2026",
+   "dates": "October 20-22, 2026",
+   "was": "2026-10-20",
+   "days_ago": 8,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://www.housingwa.org/"
+  },
+  {
+   "conference": "NAMD Fall Conference",
+   "tag": "NAMD 2025",
+   "dates": "October 21-23, 2026",
+   "was": "2026-10-21",
+   "days_ago": 7,
    "next_edition": null,
-   "url": "https://nampi.net/"
+   "next_on_file": false,
+   "url": "https://medicaiddirectors.org/events/"
   },
   {
-   "conference": "StormCon",
-   "tag": "StormCon 2026",
-   "dates": "August 25-27, 2026",
-   "was": "2026-08-25",
+   "conference": "APA-NC Fall Conference 2026",
+   "tag": "APA North Carolina Chapter 2026",
+   "dates": "October 21-23, 2026",
+   "was": "2026-10-21",
    "days_ago": 7,
    "next_edition": "2026",
-   "url": "https://www.stormcon.com/"
+   "next_on_file": false,
+   "url": "https://northcarolina.planning.org/conference-and-events/"
   },
   {
-   "conference": "APWA PWX",
-   "tag": "PWX 2026",
-   "dates": "August 30 - September 2, 2026",
-   "was": "2026-08-30",
+   "conference": "APA MN Planning Conference 2026",
+   "tag": "APA Minnesota Chapter 2026",
+   "dates": "October 21-23, 2026",
+   "was": "2026-10-21",
+   "days_ago": 7,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://minnesota.planning.org/conferences-and-meetings/minnesota-planning-conference-2024/"
+  },
+  {
+   "conference": "54th Annual Nevada State Planning Conference",
+   "tag": "APA Nevada Chapter 2026",
+   "dates": "October 22-23, 2026",
+   "was": "2026-10-22",
+   "days_ago": 6,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://nevada.planning.org/conferences-and-meetings/chapter-conference/"
+  },
+  {
+   "conference": "IACP Annual",
+   "tag": "IACP 2026",
+   "dates": "October 24-27, 2026",
+   "was": "2026-10-24",
+   "days_ago": 4,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://theiacpconference.org/"
+  },
+  {
+   "conference": "ARMA InfoCon",
+   "tag": "ARMA InfoCon 2026",
+   "dates": "October 25-28, 2026",
+   "was": "2026-10-25",
+   "days_ago": 3,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://infocon.arma.org"
+  },
+  {
+   "conference": "IEDC Annual",
+   "tag": "IEDC 2026",
+   "dates": "October 25-28, 2026",
+   "was": "2026-10-25",
+   "days_ago": 3,
+   "next_edition": "2026",
+   "next_on_file": false,
+   "url": "https://neworleans.iedconline.org/"
+  },
+  {
+   "conference": "ULI Fall Meeting",
+   "tag": "ULI Fall Meeting 2026",
+   "dates": "October 26-28, 2026",
+   "was": "2026-10-26",
    "days_ago": 2,
    "next_edition": "2026",
-   "url": "https://www.apwa.org/events/pwx-conference/"
+   "next_on_file": false,
+   "url": "https://fall.uli.org/"
   }
  ],
  "undated": [
@@ -77,33 +483,31 @@
    "url": "https://www.astho.org/education/upcoming-events/"
   },
   {
-   "conference": "NCSEA Leadership Symposium",
+   "conference": "Maryland Municipal League",
    "why": "unannounced",
    "dates": null,
-   "url": "https://www.ncsea.org/ncsea-leadership-symposium/"
+   "url": "http://www.mdmunicipal.org/"
   },
   {
-   "conference": "NASRO",
-   "why": "unreachable",
-   "dates": null,
-   "url": "https://www.nasro.org/conference/future-nasro-conferences/"
-  },
-  {
-   "conference": "IACLEA",
+   "conference": "2026 CT EMERGENCY MANAGEMENT SYMPOSIUM",
    "why": "unannounced",
    "dates": null,
-   "url": "https://iaclea.org/event/2026-iaclea-annual-conference-exposition/"
+   "url": "http://www.ccm-ct.org"
+  },
+  {
+   "conference": "North Carolina Sheriffs' Association",
+   "why": "unannounced",
+   "dates": null,
+   "url": "https://ncsheriffs.org/"
+  },
+  {
+   "conference": "2026 OAPA Planning Conference",
+   "why": "unannounced",
+   "dates": null,
+   "url": "https://oregon.planning.org/"
   }
  ],
  "confirmed": [
-  {
-   "conference": "ICMA Annual",
-   "state": "not found",
-   "held": "2026-10-17",
-   "url": "https://conference.icma.org/",
-   "other_dates_on_the_page": [],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
   {
    "conference": "NACo Annual",
    "state": "not found",
@@ -114,19 +518,6 @@
     "Feb. 11 \u2013 15 2028",
     "Jul. 23 \u2013 26 2028",
     "May 25 \u2013 28 2027"
-   ],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
-   "conference": "NACo Legislative",
-   "state": "not found",
-   "held": "2027-02-19",
-   "url": "https://www.naco.org/event/2026-naco-legislative-conference",
-   "other_dates_on_the_page": [
-    "Feb. 21-24, 2026",
-    "February 19, 2026",
-    "February 22, 2026",
-    "February 23, 2026"
    ],
    "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
   },
@@ -163,14 +554,6 @@
    "state": "confirmed",
    "held": "2026-09-30",
    "saw": "September 30, 2026"
-  },
-  {
-   "conference": "Smart Cities Connect",
-   "state": "not found",
-   "held": "2026-09-22",
-   "url": "https://smartcitiesconnect.org/",
-   "other_dates_on_the_page": [],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
   },
   {
    "conference": "IIMC Annual",
@@ -219,21 +602,9 @@
    "how": "month and start day, with the year elsewhere on the page"
   },
   {
-   "conference": "IMLA Annual",
-   "state": "confirmed",
-   "held": "2026-09-23",
-   "saw": "September 23-27, 2026"
-  },
-  {
    "conference": "NAAG",
    "state": "unreadable",
    "why": "AtsError"
-  },
-  {
-   "conference": "3CMA",
-   "state": "confirmed",
-   "held": "2026-09-09",
-   "saw": "September 9 - 11, 2026"
   },
   {
    "conference": "NAGC",
@@ -245,19 +616,6 @@
    "state": "confirmed",
    "held": "2027-06-06",
    "saw": "June 6\u20139, 2027"
-  },
-  {
-   "conference": "NASBO",
-   "state": "confirmed",
-   "held": "2026-09-30",
-   "saw": "September 30 (+2026 on the page)",
-   "how": "month and start day, with the year elsewhere on the page"
-  },
-  {
-   "conference": "NAST",
-   "state": "confirmed",
-   "held": "2026-09-27",
-   "saw": "September 27-30, 2026"
   },
   {
    "conference": "ALGA",
@@ -276,16 +634,6 @@
    "conference": "AGA PDT",
    "state": "unreadable",
    "why": "AtsError"
-  },
-  {
-   "conference": "IAAO Annual",
-   "state": "not found",
-   "held": "2026-10-13",
-   "url": "https://www.iaao.org/events/annual-conference/",
-   "other_dates_on_the_page": [
-    "July 27, 2026"
-   ],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
   },
   {
    "conference": "NIGP Forum",
@@ -326,13 +674,6 @@
    "url": "https://conference.primacentral.org/2027/",
    "other_dates_on_the_page": [],
    "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
-   "conference": "NASCIO Annual & Midyear",
-   "state": "confirmed",
-   "held": "2026-09-27",
-   "saw": "September 27 (+2026 on the page)",
-   "how": "month and start day, with the year elsewhere on the page"
   },
   {
    "conference": "GMIS International",
@@ -424,28 +765,10 @@
    "saw": "Nov. 18\u201320, 2026"
   },
   {
-   "conference": "StormCon",
-   "state": "confirmed",
-   "held": "2026-08-25",
-   "saw": "AUGUST 25-27, 2026"
-  },
-  {
    "conference": "AWWA ACE",
    "state": "confirmed",
    "held": "2027-06-13",
    "saw": "June 13-16, 2027"
-  },
-  {
-   "conference": "WEFTEC",
-   "state": "confirmed",
-   "held": "2026-09-26",
-   "saw": "September 26\u201330, 2026"
-  },
-  {
-   "conference": "SWANA WASTECON",
-   "state": "confirmed",
-   "held": "2026-09-29",
-   "saw": "September 29 \u2013 October 2, 2026"
   },
   {
    "conference": "WasteExpo",
@@ -496,39 +819,12 @@
    "saw": "May 16\u201318, 2027"
   },
   {
-   "conference": "ACI-NA",
-   "state": "confirmed",
-   "held": "2026-09-14",
-   "saw": "September 14 (+2026 on the page)",
-   "how": "month and start day, with the year elsewhere on the page"
-  },
-  {
-   "conference": "AAPA Annual",
-   "state": "not found",
-   "held": "2026-09-27",
-   "url": "https://www.ports.org",
-   "other_dates_on_the_page": [],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
-   "conference": "AAMVA Annual",
-   "state": "confirmed",
-   "held": "2026-09-29",
-   "saw": "Sep 29 - Oct 1, 2026"
-  },
-  {
    "conference": "IACP Annual",
    "state": "not found",
    "held": "2026-10-24",
    "url": "https://theiacpconference.org/",
    "other_dates_on_the_page": [],
    "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
-   "conference": "NSA Annual",
-   "state": "confirmed",
-   "held": "2027-06-21",
-   "saw": "June 21-24, 2027"
   },
   {
    "conference": "APCO Annual",
@@ -556,28 +852,6 @@
    "url": "https://www.fdic.com/",
    "other_dates_on_the_page": [],
    "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
-   "conference": "EMS World Expo",
-   "state": "not found",
-   "held": "2026-09-28",
-   "url": "https://www.hmpglobalevents.com/emsworldexpo",
-   "other_dates_on_the_page": [],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
-   "conference": "IAEM Annual",
-   "state": "not found",
-   "held": "2026-11-06",
-   "url": "https://www.iaemconference.org/",
-   "other_dates_on_the_page": [],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
-   "conference": "ICC Annual Conference",
-   "state": "confirmed",
-   "held": "2026-10-18",
-   "saw": "October 18\u201321, 2026"
   },
   {
    "conference": "NACM Annual",
@@ -673,12 +947,6 @@
    "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
   },
   {
-   "conference": "NASWA",
-   "state": "confirmed",
-   "held": "2026-09-16",
-   "saw": "September 16-17, 2026"
-  },
-  {
    "conference": "Animal Care Expo",
    "state": "confirmed",
    "held": "2027-05-06",
@@ -703,27 +971,9 @@
    "how": "month and start day, with the year elsewhere on the page"
   },
   {
-   "conference": "NAHRO National Conference",
-   "state": "confirmed",
-   "held": "2026-10-15",
-   "saw": "October 15-17, 2026"
-  },
-  {
-   "conference": "NCSHA Annual",
-   "state": "confirmed",
-   "held": "2026-10-03",
-   "saw": "October 3 \u2013 6, 2026"
-  },
-  {
    "conference": "ULI Fall Meeting",
    "state": "unreadable",
    "why": "AtsError"
-  },
-  {
-   "conference": "NRPA Annual",
-   "state": "confirmed",
-   "held": "2026-09-29",
-   "saw": "September 29 - October 1, 2026"
   },
   {
    "conference": "Athletic Business Show",
@@ -762,12 +1012,6 @@
    "saw": "April 2-4, 2027"
   },
   {
-   "conference": "ASBO International",
-   "state": "confirmed",
-   "held": "2026-10-14",
-   "saw": "October 14\u201316, 2026"
-  },
-  {
    "conference": "CoSN Annual",
    "state": "confirmed",
    "held": "2027-04-12",
@@ -784,13 +1028,6 @@
    "conference": "NAESP",
    "state": "unreadable",
    "why": "AtsError"
-  },
-  {
-   "conference": "NAPT Summit",
-   "state": "confirmed",
-   "held": "2026-10-03",
-   "saw": "October 3 (+2026 on the page)",
-   "how": "month and start day, with the year elsewhere on the page"
   },
   {
    "conference": "SNA ANC",
@@ -846,14 +1083,6 @@
    "why": "AtsError"
   },
   {
-   "conference": "NAMPI Annual",
-   "state": "not found",
-   "held": "2026-08-23",
-   "url": "https://nampi.net/",
-   "other_dates_on_the_page": [],
-   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
-  },
-  {
    "conference": "SALGBA Annual",
    "state": "confirmed",
    "held": "2027-04-26",
@@ -864,12 +1093,6 @@
    "conference": "AIRA National Meeting",
    "state": "unreadable",
    "why": "AtsError"
-  },
-  {
-   "conference": "State Healthcare IT Connect Summit",
-   "state": "confirmed",
-   "held": "2026-02-23",
-   "saw": "Feb 23, 2026"
   },
   {
    "conference": "NAMD Fall Conference",
