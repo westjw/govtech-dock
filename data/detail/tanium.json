@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-27",
    "headline": "Hunt or be Hunted: The Crash That Gives HTTP2Shell Away",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-28",
    "headline": "Hunt or be Hunted: HuntIQ Hunters Take on php2shell",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-24",
    "headline": "eMudhra CA Compromise: Find and Fix Your Exposure with Tanium",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-25",
    "headline": "HTTP2Shell: Find and Fix Vulnerable Brotli Copies with Tanium",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-22",
    "headline": "PHP2Shell: Responding to CVE-2026-109618 and CVE-2026-109619",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-22",
    "headline": "AI Compute Just Became an Endpoint Problem",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-15",
    "headline": "Notice when a machine stops acting like itself: introducing Endpoint Drift",
    "kind": "product",

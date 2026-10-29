@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "This is some text inside of a div block.",
    "kind": "press",

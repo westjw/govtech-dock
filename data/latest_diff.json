@@ -1,111 +1,111 @@
 {
-  "date": "2026-10-28",
-  "previous": "2026-10-27",
+  "date": "2026-10-29",
+  "previous": "2026-10-28",
   "changes": [
     {
-      "company": "AMP",
-      "id": "amp",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Klir",
-      "id": "klir",
+      "company": "Flock Safety",
+      "id": "flock-safety",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Senior Customer Success Manager only"
+      "note": "Principal Sales Operations Busines only"
     },
     {
-      "company": "Polco",
-      "id": "polco",
-      "from": "Yes",
+      "company": "Eventeny",
+      "id": "eventeny",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Sales & Business Development Manag"
+    },
+    {
+      "company": "CivilGrid",
+      "id": "civilgrid",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive - Engineering Fi (Remote)"
+    },
+    {
+      "company": "Brain Co.",
+      "id": "brain-co",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive, State (Remote)"
+    },
+    {
+      "company": "Propelus",
+      "id": "propelus",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Esper",
-      "id": "esper",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Enterprise Sales Lead, Southeast (Southeast)"
+      "company": "Sparkrock",
+      "id": "sparkrock",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "LeoTech",
-      "id": "leotech",
+      "company": "FAIRTIQ",
+      "id": "fairtiq",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Vix Technology",
-      "id": "vix-technology",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "PlayMetrics",
-      "id": "playmetrics",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Byga",
-      "id": "byga",
+      "company": "Vanderlande",
+      "id": "vanderlande",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Enhanced Voting",
-      "id": "enhanced-voting",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://www.enhancedvoting."
-    },
-    {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "EnergyCAP",
-      "id": "energycap",
+      "company": "FeedbackFruits",
+      "id": "feedbackfruits",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Tribute Technology",
-      "id": "tribute-technology",
-      "from": "Unknown",
+      "company": "Nelnet Campus Commerce",
+      "id": "nelnet-campus-commerce",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Senior Account Manager- G&A/SGO -  (Remote)"
+    },
+    {
+      "company": "K16 Solutions",
+      "id": "k16-solutions",
+      "from": "Yes",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "Wastequip",
-      "id": "wastequip",
+      "company": "MagicSchool",
+      "id": "magicschool",
       "from": "None found",
       "to": "Yes",
-      "note": "Outside Sales Representative (4 Locations)"
+      "note": "Account Executive (K12 Education)  (Alabama)"
     },
     {
-      "company": "Altumint, Inc.",
-      "id": "altumint-inc",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://altumint.com/career"
+      "company": "HackerOne",
+      "id": "hackerone",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive \u2013 Commercial, En (San Francisco)"
     },
     {
       "company": "Filevine",
       "id": "filevine",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }
