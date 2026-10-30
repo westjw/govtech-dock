@@ -1,13 +1,31 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "CAM reconciliation: What it is, how the process works, and how to automate it",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-is-cam-reconciliation-recovery/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
-   "headline": "common area maintenance (CAM) reconciliations",
+   "headline": "What is common area maintenance (CAM)? \u2013 Charges, fees, and how to calculate CAM",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/what-is-common-area-maintenance/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "The real opportunity with AI lies in what it makes possible",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/the-real-opportunity-with-ai-lies-in-what-it-makes-possible/"
   },
   {
    "date": "2026-10-23",
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/resources/mri-onlocation-us-monthly-commentary-september-2026/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "What is a CMMS?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-is-a-cmms/"
   },
   {
    "date": "2026-10-20",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/what-is-the-contract-abstraction-process/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Multifamily centralization: Benefits, challenges, and best practices for centralized property management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/centralization-multifamily-real-estate-challenges-opportunities-path-forward/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "MRI Software Named a Leader in 2026 IDC MarketScape for Worldwide AI-Enabled Lease Administration Applications",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/news/mri-software-named-a-leader-in-2026-idc-marketscape-for-worldwide-ai-enabled-lease-administration-applications/"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Where AI is actually making a difference",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/where-ai-is-actually-making-a-difference/"
   }
  ]
 }

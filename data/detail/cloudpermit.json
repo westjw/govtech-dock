@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "How to Evaluate Community Development Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/how-to-evaluate-community-development-software"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/why-mobile-inspection-software-matters-for-public-works"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Supporting Public Works With Better Digital Tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/supporting-public-works-with-better-digital-tools"
   }
  ],
  "profile": {

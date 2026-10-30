@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Pennsylvania Goes Bell-to-Bell: What K12 Schools Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/pennsylvania-bell-to-bell-k12-schools-need-know"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deledao.com/post/choosing-the-right-digital-student-engagement-platform-what-schools-need-to-know"
-  },
-  {
-   "date": "2025-12-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The Hidden Costs of Gen AI on Our Environment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deledao.com/post/hidden-costs-generative-ai-environment"
   }
  ],
  "profile": {

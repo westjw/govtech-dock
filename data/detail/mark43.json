@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Know the Threat Before It Knocks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/know-the-threat-before-it-knocks/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://mark43.com/resources/blog/blog-2-how-to-rebuild-trust-when-its-broken/"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Mark43: Demystifying the Whiteboard Exercise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://mark43.com/resources/blog/demystifying-the-whiteboard-exercise-at-mark43/"
   }
  ],
  "profile": {

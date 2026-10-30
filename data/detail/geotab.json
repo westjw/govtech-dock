@@ -1,8 +1,35 @@
 {
  "news": [
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "9 best DOT compliance software tools for fleets [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/best-dot-compliance-software/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "Connecting Fleets Without Slowing Them Down",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/minds-behind-the-miles-melissa-hoffman/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "OTR trucking: How to improve driver safety and fleet efficiency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/otr-trucking/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "How to start a trucking business: Step-by-step guide for owner operators",
    "kind": "press",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Geotab's Response to PHP Vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
    "kind": "press",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Garbage truck safety: Three questions for your video review process",
    "kind": "press",
@@ -28,8 +55,17 @@
    "url": "https://www.geotab.com/blog/garbage-truck-safety/"
   },
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Why you need AI in your fleet operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/why-fleet-ai/"
+  },
+  {
    "date": "2026-10-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "How fleet data gets you from what happened to what to do next",
    "kind": "press",
@@ -38,7 +74,7 @@
   },
   {
    "date": "2026-10-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "How private haulers can help prepare their fleets for new waste management contracts",
    "kind": "press",
@@ -47,7 +83,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "A 95% location rate in 2026: what Geotab brings to rental, leasing and mobility fleets",
    "kind": "press",
@@ -56,7 +92,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "4 signals you could have captured before the crash",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/field-service-dispatch-management/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "index-text",
-   "first_seen": "2026-10-07",
-   "headline": "7 benefits of the Geotab Fleet Card",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/geotab-fleet-card-fuel-benefits/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Snow plow safety: focus on the moments that matter",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/snow-plow-safety/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "How to stop fuel fraud at the pump",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/how-to-stop-fuel-card-fraud/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Top seven best fleet fuel cards: How to choose the right one for your business?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/fleet-fuel-cards/"
   }
  ],
  "profile": {

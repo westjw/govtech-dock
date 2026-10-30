@@ -1,13 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-09-16",
+   "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Teller Government Cashiering Earns Workday Design Approved Status",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goteller.com/news/teller-government-cashiering-earns-workday-design-approved-status"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Teller and Government Clients Connect at Workday Rising 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/teller-and-government-clients-connect-at-workday-rising-2026"
   },
   {
    "date": "2026-08-19",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Welcomes",
    "url": "https://www.goteller.com/news/teller-cashiering-welcomes-jacob-bruen-as-implementation-software-engineer"
-  },
-  {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Can/Am Technologies Simplifies Government Payment Operations with the Launch of Teller Payments, Powered by Fiserv",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://www.goteller.com/news/launch-of-teller-payments-powered-by-fiserv"
   }
  ],
  "profile": {

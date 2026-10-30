@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Learning Measurement and Skills",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/blog/skills-based-approach-mindset-talent-management"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://explorance.com/blog/explorance-mly-3-4-more-control-privacy-and-consistency-for-qualitative-insights"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Learning Measurement and Skills",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://explorance.com/blog/explorance-metrics-that-matter-98-built-for-simpler-more-flexible-workflows"
   }
  ],
  "profile": {

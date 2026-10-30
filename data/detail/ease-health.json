@@ -1,6 +1,105 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Native or Integrated: Test the CRM, EHR, and RCM Path",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/native-integrated-crm-ehr-rcm-evidence-tests"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Multi-Location EHR Permissions: Buyer Test Cases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/multi-location-ehr-permission-evidence-tests"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Measurement-Based Care: Preserve Instrument History",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/measurement-based-care-instrument-version-history"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Legacy EHR Access: Test the Read-Only Plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/legacy-ehr-read-only-access-evidence"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "External Clinical Documents: Preserve the Source",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/external-clinical-document-provenance-review"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "EHR Support Questions: Test the Service Model",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/ehr-support-service-level-evidence-questions"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "EHR RFP Shortlist: Write an Evidence Summary",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/ehr-rfp-shortlist-evidence-summary"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "EHR Migration: Verify Notes, Signatures, and Files",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/ehr-migration-signed-notes-attachments-validation"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "EHR Migration Reconciliation: Design the Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/ehr-migration-reconciliation-sample-design"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "EHR Migration: Validate Patient Identity Links",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/ehr-migration-patient-identity-validation"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "EHR Billing Migration: Balances Versus History",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/ehr-migration-active-balances-billing-history"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -8,105 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://easehealth.com/blog/20-questions-to-ask-in-a-behavioral-health-ehr-demo"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "What Drives Behavioral Health EHR Implementation Cost",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/what-drives-behavioral-health-ehr-implementation-cost"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Can I Transfer Years of Client Records to a New EHR?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/can-i-transfer-years-of-client-records-to-a-new-ehr"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Behavioral Health EHR RFP Template and Scoring Matrix",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/behavioral-health-ehr-rfp-template-and-scoring-matrix"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Signs You've Outgrown Your Behavioral Health EHR",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/signs-you-ve-outgrown-your-behavioral-health-ehr"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Bed Management and Census for Residential Behavioral Health",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/bed-management-and-census-for-residential-behavioral-health"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "EHR for Multi-State Behavioral Health Groups",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/ehr-for-multi-state-behavioral-health-groups"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Is There a Free EHR for Behavioral Health? What Free Costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/free-ehr-for-behavioral-health-what-free-really-costs"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Substance Abuse Progress Note Examples, Intake to Discharge",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/substance-abuse-progress-note-examples"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Mental Health Discharge Summary Example and Template",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/mental-health-discharge-summary-example-and-template"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Long Does Behavioral Health EHR Implementation Take?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/how-long-does-behavioral-health-ehr-implementation-take"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Behavioral Health RCM Benchmarks: Clean Claims, AR, Denials",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/behavioral-health-rcm-benchmarks-clean-claim-rate-days-in-ar"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Absentee Ballot Tracking Best Practices for the Final 30 Days",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://phoenixelectionprinting.com/blog/absentee-ballot-tracking-best-practices"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://phoenixelectionprinting.com/blog/print-solutions-for-smooth-elections"
-  },
-  {
-   "date": "2025-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Election Mail Integrity: Ensuring Trust and Accuracy in Democratic Outreach",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://phoenixelectionprinting.com/blog/election-mail-integrity"
   }
  ],
  "profile": {

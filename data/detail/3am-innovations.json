@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Years of Tradition Unimpeded by Progress",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://3aminnovations.com/post/years-of-tradition-unimpeded-by-progress/"
+  },
+  {
    "date": "2026-07-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -46,8 +55,8 @@
    "url": "https://3aminnovations.com/post/florian-for-planned-events/"
   },
   {
-   "date": "2026-06-08",
-   "date_source": "json-ld",
+   "date": "2026-06-09",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "3AM Innovations Integrates BK Technologies Radios into FLORIAN Platform",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Awarded Grant",
    "url": "https://3aminnovations.com/post/buckskin-fire-department-awarded-grant-to-upgrade-technology/"
-  },
-  {
-   "date": "2025-01-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "3AM Innovations Named to GovTech 100 for Sixth Consecutive Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://3aminnovations.com/post/3am-innovations-named-to-govtech-100-for-sixth-consecutive-year/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "time",
+   "first_seen": "2026-10-29",
+   "headline": "Self-Healing Workflows Automatically Repair Silent Failures to Deliver Higher-Quality Outputs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stackai.com/blog/self-healing-workflows-automatically-repair-silent-failures-to-deliver-higher-quality-outputs"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "time",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stackai.com/blog/hipaa-gdpr-ready-ai-agents"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "time",
-   "first_seen": "2026-10-24",
-   "headline": "what Jev AI is and what enterprises still need.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stackai.com/blog/what-is-jev-ai-enterprise-agents"
   }
  ]
 }

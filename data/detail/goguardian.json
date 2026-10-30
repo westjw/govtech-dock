@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "This is some text inside of a div block.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/who-was-on-campus-last-tuesday-and-7-other-questions-every-school-should-be-able-to-answer-about-visitors-in-two-minutes"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
-   "headline": "This is some text inside of a div block.",
+   "headline": "How GoGuardian Can Help Your District Manage AI Governance",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/how-goguardian-can-help-your-district-manage-ai-governance"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/back-to-school-best-practices-setting-your-goguardian-admin-account-up-for-success"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Essential Checklists for a Secure and Successful School Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/essential-checklists-for-a-secure-and-successful-school-year"
   }
  ],
  "profile": {

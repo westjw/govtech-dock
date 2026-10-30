@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "The path from Infor VISUAL to CloudSuite Industrial",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/path-from-infor-visual-to-cloudsuite-industrial"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "From ideas to impact: Meet the 2026 Infor Community Hackathon winners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/hackathon-winners-2026"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/ai-ambition-to-real-business-outcomes"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-19",
-   "headline": "Secure workforce modernization for government",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/secure-government-workforce-modernization"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-15",
-   "headline": "Singapore's Next AI Challenge: Turning Readiness into Enterprise-Wide Value",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/apac/blog/singapore-ai-readiness-to-enterprise-value"
   }
  ],
  "profile": {

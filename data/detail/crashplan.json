@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Google Vault vs. Google Workspace Backup: Why Enterprises Need Both",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crashplan.com/blog/google-vault-vs-google-workspace-backup/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crashplan.com/resources/how-universities-can-manage-microsoft-365-data-growth-without-disrupting-academic-work/"
-  },
-  {
-   "date": "2026-04-20",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Microsoft 365 Backup Policy Template for SMB IT Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crashplan.com/resources/microsoft-365-backup-policy-template-for-smb-it-teams/"
   }
  ]
 }

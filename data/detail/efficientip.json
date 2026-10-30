@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "DDI for AI-Driven Operations: Key Use Cases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/ddi-ai-driven-operations-use-cases/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/blog/idc-2023-network-automation-report-why-ddi-is-an-obvious-starting-point/"
-  },
-  {
-   "date": "2023-04-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Network Source of Truth (NSOT) \u2013 Network Automation Insights Powered by Gartner",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/resources/network-source-of-truth-nsot-network-automation-insights-powered-by-gartner/"
   }
  ]
 }

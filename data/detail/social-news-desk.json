@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Alt Text Is Doing Double Duty. Is Your Newsroom Treating It That Way?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.socialnewsdesk.com/blog/alt-text-social-media-accessibility-newsrooms/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.socialnewsdesk.com/blog/the-five-minutes-between-storys-live-and-posts-up/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Design in Canva, Publish in SND: Introducing the New Canva Integration",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.socialnewsdesk.com/blog/design-in-canva-publish-in-snd-canva-integration/"
   }
  ],
  "profile": {

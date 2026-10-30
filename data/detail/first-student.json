@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "First Student Reports 63% Reduction in Forward Collision Risk Through Connected Safety Technology",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "First Student and Con Edison Advance Electric School Bus Infrastructure in New York City",
    "kind": "press",

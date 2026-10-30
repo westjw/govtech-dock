@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Participation without policy is a microphone nobody plugged in",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govocal.com/blog/participation-without-policy-microphone-nobody-plugged-in"
+  },
+  {
    "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govocal.com/nl-nl/blog/whats-really-changing-in-participation-insights-from-dutch-municipalities"
-  },
-  {
-   "date": "2026-04-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Go Vocal is rethinking online public deliberation with AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govocal.com/blog/rethinking-public-deliberation-ai"
   }
  ],
  "profile": {

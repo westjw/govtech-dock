@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "How to Start Talking to Your Preschooler About Online Safety",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/online-safety-for-preschoolers/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bark.us/blog/what-happens-after-assembly/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "index-text",
-   "first_seen": "2026-10-17",
-   "headline": "Kids\u2019 Online Safety Is a Global Problem: What Parents in the US and UK Are Seeing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bark.us/blog/kids-online-safety-global/"
   }
  ],
  "profile": {

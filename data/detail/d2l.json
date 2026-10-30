@@ -1,13 +1,40 @@
 {
  "news": [
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "How to Build AI Literacy in the Workplace",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/ai-literacy/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "index-text",
    "first_seen": "2026-10-28",
    "headline": "D2L Launch Week Showcases Latest Learning Innovations",
    "kind": "product",
    "kind_rule": "Launch",
    "url": "https://www.d2l.com/newsroom/d2l-launch-week-showcases-latest-learning-innovations/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "From Policy to Platform: How HOGENT Is Turning Responsible AI Principles into Practice",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/from-policy-to-platform-how-hogent-is-turning-responsible-ai-principles-into-practice/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Launch Week Recap: Building Better Learning With Repeatable Workflows, Purposeful AI and Real Expertise",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.d2l.com/blog/launch-week-recap-building-better-learning-with-repeatable-workflows-purposeful-ai-and-real-expertise/"
   },
   {
    "date": "2026-10-27",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-28",
    "headline": "DeVry University Selects D2L Brightspace to Launch Next\u2011Gen Competency\u2011Based Digital Learning",
    "kind": "contract",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-22",
    "headline": "D2L, WCET and Opened Culture Release Findings from Global Longitudinal Study on AI Governance in Higher Education",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "contract",
    "kind_rule": "Adopts",
    "url": "https://www.d2l.com/newsroom/d2l-signs-first-strategic-vietnam-customer-as-van-lang-education-group-adopts-d2l-brightspace/"
-  },
-  {
-   "date": "2026-10-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-18",
-   "headline": "How AI in Higher Education Is Reshaping Teaching and Learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/ai-in-higher-education/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-16",
-   "headline": "From First Touch to Lifelong Value: Connecting Learning to the Member Lifecycle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/connecting-learning-to-the-member-lifecycle/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-15",
-   "headline": "From Data to Narrative: How AI Can Help L&D Tell a Learning Impact Story",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/how-ai-can-tell-learning-impact-story/"
   }
  ],
  "profile": {

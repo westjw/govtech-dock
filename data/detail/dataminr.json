@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Why Client-Tailored Threat Intelligence Is Different: Relevance Built In, Not Bolted On",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/why-client-tailored-threat-intelligence-is-different/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/blog/why-ptem-is-different-threat-first-all-the-way-to-a-decision/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Inside Dataminr\u2019s Predictive Threat Exposure Management. From Signal to Business Risk.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/inside-dataminrs-predictive-threat-exposure-management/"
   }
  ],
  "profile": {

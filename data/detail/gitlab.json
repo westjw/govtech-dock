@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "GitLab Orbit is generally available Higher agent accuracy, lower token cost",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/gitlab-orbit-ga/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "GitLab Orbit: Find vulnerability blast radius without the manual hunt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/find-vulnerability-blast-radius-with-gitlab-orbit/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "What happens when vulnerabilities are discovered faster than you can fix them?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/security-at-machine-speed/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/secrets-manager-ga/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Get every merge request in front of the right reviewer, faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/recommend-reviewers-flow/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Connect your agents to your software lifecycle with the GitLab MCP server",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/mcp-server-ga/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Adapter Git \u00e0 l'usine logicielle agentique",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/fr-fr/blog/scaling-git-for-the-agentic-software-factory/"
   }
  ]
 }

@@ -37,6 +37,15 @@
    "url": "https://www.action1.com/blog/mean-time-to-patch/"
   },
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Why is Risk Based Patch Management Important?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://action1.com/blog/what-is-vulnerability-management"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.action1.com/blog/microsoft-configuration-manager-sccm-end-of-life/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CWE vs CVE \u2014 Weaknesses vs. Vulnerabilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/cwe-vs-cve-weaknesses-vs-vulnerabilities/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "The PHP2Shell patch: What online retailers should do before Black Friday",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/blog/php2shell-patch-load-testing"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -37,8 +46,8 @@
    "url": "https://www.tricentis.com/blog/how-sb122-affects-your-pubsec-team"
   },
   {
-   "date": "2026-10-20",
-   "date_source": "index-text",
+   "date": "2026-10-19",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Tricentis Celebrates APJ Winners of the 2026 Customer Innovation Awards at Transform Singapore",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "What quality engineering has always been missing",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "How IBM tests AI apps and code with AIDA and AI Workspace",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tricentis.com/blog/infosys-tosca-cloud-adoption-partner-spotlight"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Public sector observability: Shift left for reliable digital services",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/public-sector-observability-shift-left"
   }
  ]
 }

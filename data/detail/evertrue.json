@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "og:published",
+   "first_seen": "2026-10-29",
+   "headline": "Fighting Donor Fatigue: What it is and How to Prevent it",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evertrue.com/blog/donor-fatigue/"
+  },
+  {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-10-22",
    "headline": "How To Create and Share Winning Donor Thank-You Videos",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "7 Donor Outreach Strategies that Lead to Real Support",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.evertrue.com/blog/legacy-gifts-taking-your-orgs-strategy-to-new-heights/"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Alumni Giving: Intelligent Higher Education Fundraising",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evertrue.com/blog/alumni-giving-intelligent-higher-education-fundraising/"
   }
  ],
  "profile": {

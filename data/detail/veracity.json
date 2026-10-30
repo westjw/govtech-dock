@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Can your district answer these parent questions about AI?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veracityvs.com/blog/answering_parent_questions_about_ai/"
+  },
+  {
    "date": "2026-09-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veracityvs.com/blog/the-reality-of-ai-in-k-12/"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "5 Questions Every K-12 Leader Should Ask About Their EdTech Portfolio",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veracityvs.com/blog/5-questions-every-superintendent-should-ask-about-their-edtech-portfolio/"
   }
  ]
 }

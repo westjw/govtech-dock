@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "The HR director who went through it himself: A conversation with Steve Kilo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meetsummer.com/post/the-hr-director-who-went-through-it-himself"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "The employees you're not counting: A conversation with Maggie Ruvoldt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meetsummer.com/post/the-employees-youre-not-counting"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "Student debt is creating an affordability crisis: A conversation with Dr. Grace Page",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meetsummer.com/post/student-debt-is-creating-an-affordability-crisis"
+  },
+  {
    "date": "2026-08-19",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.meetsummer.com/post/employee-spotlight-jan-singelmann-chief-of-staff-corporate-external-affairs"
-  },
-  {
-   "date": "2026-01-16",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Employee Spotlight: Kaitlyn Vitez, Senior Community Engagement Manager",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meetsummer.com/post/employee-spotlight-kaitlyn-vitez-senior-community-engagement-manager"
-  },
-  {
-   "date": "2025-10-20",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "NYC & NYS College Support Spotlight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meetsummer.com/post/nyc-nys-college-support-spotlight"
-  },
-  {
-   "date": "2025-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Student Debt Reality Check: It's Not the Employees You Think",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meetsummer.com/post/student-debt-reality-check-its-not-the-employees-you-think"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "SentinelOne Named Pax8\u2019s Partner\u2019s Most Valuable Vendor in EMEA at Beyond EMEA 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-named-pax8-s-partner-s-most-valuable-vendor-in-emea-at-beyond-emea-2026/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "SentinelOne to Add Anthropic\u2019s Claude Mythos 5.1 to Wayfinder Frontier AI Services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-to-add-anthropic-s-claude-mythos-5-1-to-wayfinder-frontier-ai-services/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-what-detection-teams-should-actually-hunt/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-16",
-   "headline": "The Good, the Bad and the Ugly in Cybersecurity - Week 42 (2026)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-42-8/"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "Bring Your Own Vulnerable Driver: The Trust Gap Attackers Operate Inside",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-the-trust-gap-attackers-operate-inside/"
   }
  ],
  "profile": {

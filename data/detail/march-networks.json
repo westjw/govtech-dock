@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "VIVOTEK and March Networks Showcase Connected Intelligence at ISC East 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.marchnetworks.com/news/vivotek-and-march-networks-showcase-connected-intelligence-at-isc-east-2026/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Behind the Lens \u2013 October 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.marchnetworks.com/news/behind-the-lens-september-2026-2/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -38,9 +56,9 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
-   "headline": "March Networks and VIVOTEK Highlight Connected Transit Intelligence at APTA 2026",
+   "headline": "Security Today New Product of the Year",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/news/march-networks-and-vivotek-highlight-connected-transit-intelligence-at-apta-2026/"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/es/news/march-networks-achieves-bis-er-01-certification-in-india/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "March Networks Obtient la certification BIS ER-01 en Inde",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.marchnetworks.com/fr/news/march-networks-achieves-bis-er-01-certification-in-india/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "March Networks Ottiene la certificazione BIS ER-01 in India",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.marchnetworks.com/it/news/march-networks-achieves-bis-er-01-certification-in-india/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "AI for differentiation that starts from your lesson",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kiddom.co/insights/ai-for-differentiation"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kiddom.co/insights/kiddom-assistant-prompt-library"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Spotlight Mode: Student Work on Screen in Seconds",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kiddom.co/insights/spotlight-mode-student-work-discussion"
   }
  ]
 }

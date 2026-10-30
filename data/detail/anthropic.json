@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "AI for Science expands to foundations and research institutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "update",
    "url": "https://www.anthropic.com/news/policy"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "Anthropic opens Singapore office and signs MOU with the Government of Singapore",
-   "kind": "contract",
-   "kind_rule": "signs MOU",
-   "url": "https://www.anthropic.com/news/singapore-office-opening"
   }
  ],
  "profile": {

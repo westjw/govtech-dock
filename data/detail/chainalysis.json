@@ -1,7 +1,16 @@
 {
  "news": [
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "South Africa Leads Sub-Saharan Africa\u2019s 13.4% Crypto Growth",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/sub-saharan-africa-crypto-adoption-2026/"
+  },
+  {
+   "date": "2026-10-29",
    "date_source": "index-text",
    "first_seen": "2026-10-28",
    "headline": "Treasury Sanctions Russians, North Koreans supporting DPRK IT Worker Fraud",
@@ -28,7 +37,7 @@
    "url": "https://www.chainalysis.com/blog/middle-east-north-africa-crypto-adoption-2026/"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-14",
    "headline": "North America: Inside the Growth of Agentic Commerce",
@@ -37,7 +46,7 @@
    "url": "https://www.chainalysis.com/blog/north-america-crypto-adoption-2026/"
   },
   {
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-14",
    "headline": "Chainalysis Reactor Withstands Daubert Scrutiny Again on Appeal",
@@ -55,7 +64,7 @@
    "url": "https://www.chainalysis.com/blog/uk-sanctions-cryptomus-heleket-tokenspot/"
   },
   {
-   "date": "2026-10-08",
+   "date": "2026-10-05",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "East Asia Crypto Adoption Report: South Korea\u2019s AI Trade Comes to Crypto",
@@ -64,7 +73,7 @@
    "url": "https://www.chainalysis.com/blog/eastern-asia-crypto-adoption-2026/"
   },
   {
-   "date": "2026-10-01",
+   "date": "2026-10-05",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "How AI Helped Chainalysis Investigators Trace the $387 Million North Korea Stole from Bitget",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/2026-global-crypto-adoption-index/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Latin America: Brazil Leads World in Adoption as Region\u2019s Crypto Economy Grows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/latin-america-crypto-adoption-2026/"
   }
  ],
  "profile": {

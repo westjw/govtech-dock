@@ -1,8 +1,26 @@
 {
  "news": [
   {
-   "date": "2026-10-27",
+   "date": "2026-10-29",
    "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "How Zero Trust changes when the \u201cuser\u201d is an AI agent",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/how-zero-trust-changes-when-the-user-is-an-ai-agent"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Cyber insurance and AI: Why cybersecurity is no longer just an IT concern",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/cyber-insurance-and-ai-why-cybersecurity-is-no-longer-just-an-it-concern"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "card-date",
    "first_seen": "2026-10-27",
    "headline": "AI agent guardrails: Why prompts alone cannot enforce security",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-28",
    "headline": "How PHP2Shell exploit leads directly to RCE and how to mitigate the threat",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/the-principle-of-least-privilege-for-ai-agents"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Types of AI attacks and how adopting Zero Trust can stop them",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/types-of-ai-attacks-and-how-adopting-zero-trust-can-stop-them"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Seven questions to ask before approving an AI agent",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/seven-questions-to-ask-before-approving-an-ai-agent"
   }
  ]
 }

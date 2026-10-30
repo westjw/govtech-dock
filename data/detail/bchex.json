@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "How Often Should You Re-Screen Volunteers?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-often-should-you-re-screen-volunteers"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/what-triggers-an-i-9-audit"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Why Is My Background Check Taking So Long?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/why-is-my-background-check-taking-so-long-1"
   }
  ],
  "profile": {

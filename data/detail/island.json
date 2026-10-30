@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "card-date",
+   "first_seen": "2026-10-29",
+   "headline": "Island: The Enterprise Browser for AI Agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/island-the-enterprise-browser-for-ai-agents"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Island Brings the Enterprise Browser to AI Agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/press/island-brings-the-enterprise-browser-to-ai-agents"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "card-date",
    "first_seen": "2026-10-21",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Island Named the Only 2026 Gartner\u00ae Peer Insights\u2122 Customers' Choice for Secure Enterprise Browsers",
    "kind": "press",
@@ -44,6 +62,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/blog/how-attackers-built-software-an-ai-would-recommend"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Island Announces $400 Million Series F, Bringing Valuation to $6.4 Billion",
+   "kind": "funding",
+   "kind_rule": "$400 Million Series",
+   "url": "https://www.island.io/press/island-announces-400-million-series-f-bringing-valuation-to-6-4-billion"
   },
   {
    "date": "2026-10-06",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/blog/new-report-the-enterprise-browser-as-security-control-point"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Why SASE Can\u2019t Keep Up With AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/why-sase-cant-keep-up-with-ai"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Forrester Report: Closing the Door to Data Extraction",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/forrester-report-closing-the-door-to-data-extraction"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "How to Prepare for a CMMC Audit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/how-to-prepare-for-a-cmmc-audit"
   }
  ]
 }

@@ -1,13 +1,112 @@
 {
  "news": [
   {
-   "date": "2025-03-31",
-   "date_source": "index-text",
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai reports sales growth in third and fourth quarters and focus on higher-value solutions as it reports FY2026 results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infinitii.ai/post/infinitii-ai-reports-sales-growth-in-third-and-fourth-quarters-and-focus-on-higher-value-solutions-a"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai launches overflow risk mitigation & regulatory compliance system for water utilities at WEFTEC 2026",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.infinitii.ai/post/infinitii-ai-launches-overflow-risk-mitigation-regulatory-compliance-system-for-water-utilities-at"
+  },
+  {
+   "date": "2026-05-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai reports Q3 FY2026 revenue growth, reduced operating loss and continued customer expansion",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infinitii.ai/post/infinitii-ai-reports-q3-fy2026-revenue-growth-reduced-operating-loss-and-continued-customer-expansi"
+  },
+  {
+   "date": "2026-02-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai grows Q2 revenue following oversubscribed $610,000 financing and experiences 100% customer retention",
+   "kind": "funding",
+   "kind_rule": "$610,000 financing",
+   "url": "https://www.infinitii.ai/post/infinitii-ai-grows-q2-2026-revenue-following-oversubscribed-610-000-financing"
+  },
+  {
+   "date": "2025-11-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai advances three-vector growth strategy with improved cost structure and strategic capital raise in Q1 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infinitii.ai/post/infinitii-ai-advances-three-vector-growth-strategy-with-improved-cost-structure-and-strategic-capita"
+  },
+  {
+   "date": "2025-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai annual meeting unveils three-vector strategy to accelerate expansion",
+   "kind": "product",
+   "kind_rule": "unveils",
+   "url": "https://www.infinitii.ai/post/infinitii-ai-annual-meeting-unveils-three-vector-strategy-to-accelerate-expansion"
+  },
+  {
+   "date": "2025-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai reports 12% FY2025 revenue growth, 21% loss decrease and launches new mobile and dashboard solutions to drive sales expansion",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.infinitii.ai/post/infinitii-ai-reports-12-fy2025-revenue-growth-21-loss-decrease-and-launches-new-mobile-and-dashbo"
+  },
+  {
+   "date": "2025-10-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai inc. closes oversubscribed convertible debenture offering for $610,000",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infinitii.ai/post/infinitii-ai-inc-closes-oversubscribed-convertible-debenture-offering-for-610-000"
+  },
+  {
+   "date": "2025-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai inc. announces convertible debenture offering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infinitii.ai/post/infinitii-ai-inc-announces-convertible-debenture-offering"
+  },
+  {
+   "date": "2025-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "infinitii ai launches mobile and dashboards products for water utilities at WEFTEC 2025",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.infinitii.ai/post/infinitii-ai-launches-mobile-and-dashboards-products-for-water-utilities-at-weftec-2025"
+  },
+  {
+   "date": "2025-05-26",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "infinitii ai ramped revenue growth by 16% while reducing total comprehensive loss by 46% for the nine month period ended March 31, 2025",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infinitii.ai/post/infinitii-ai-closed-q3-with-a-16-year-over-year-revenue-increase"
+  },
+  {
+   "date": "2025-02-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "With 10 consecutive quarters of year-over-year revenue increases, infinitii ai ramps revenues 25% by end of Q2 FY2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infinitii.ai/post/with-10-consecutive-quarters-of-year-over-year-revenue-increases-infinitii-ai-ramps-revenues-25"
   }
  ]
 }

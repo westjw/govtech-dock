@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "From CHNA to Community Benefit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://metopio.com/blog/from-chna-to-community-benefit"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://metopio.com/blog/automating-your-community-health-assessment-and-chip-process"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Prioritization: How to Go From 20 Community Needs to 5",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://metopio.com/blog/prioritization-from-20-community-needs-to-5"
   }
  ]
 }

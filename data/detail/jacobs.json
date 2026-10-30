@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "How one office shaped the foundations of Jacobs today",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jacobs.com/newsroom/news/how-one-office-shaped-foundations-jacobs-today"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "Jacobs joins the World Ocean Council",
+   "kind": "leadership",
+   "kind_rule": "joins the",
+   "url": "https://www.jacobs.com/newsroom/news/jacobs-joins-world-ocean-council"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "index-text",
    "first_seen": "2026-10-20",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jacobs.com/newsroom/news/creating-spaces-where-travel-takes-jacobs-extends-relationship-united-airlines"
-  },
-  {
-   "date": "2025-04-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Jacobs to support London Gatwick\u2019s capital investment program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jacobs.com/newsroom/news/jacobs-support-london-gatwicks-capital-investment-program"
-  },
-  {
-   "date": "2024-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Burbank-Glendale-Pasadena Airport Authority soars in style: Paves way for new passenger terminal",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jacobs.com/newsroom/news/burbank-glendale-pasadena-airport-authority-soars-style-paves-way-new-passenger"
   }
  ],
  "profile": {

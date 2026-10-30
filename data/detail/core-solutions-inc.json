@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Oregon's Community Counseling Solutions Selects Cx360 Intelligence: The Intelligent Care Record",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.coresolutionsinc.com/news/oregons-community-counseling-solutions-selects-cx360-intelligence-the-intelligent-care-record"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/7-technology-must-haves-in-behavioral-health-revenue-cycle-solutions"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "You're Measuring Your Behavioral Health EHR's Value Wrong",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/youre-measuring-your-behavioral-health-ehrs-value-wrong"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-29",
+   "headline": "Self-Hosted Document Editing for Data Sovereignty",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/self-hosted-document-editing-data-sovereignty"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "near-h1",
    "first_seen": "2026-10-27",
@@ -91,22 +100,13 @@
    "url": "https://www.myworkdrive.com/blog/file-access-audit-logging"
   },
   {
-   "date": "2026-09-09",
-   "date_source": "near-h1",
+   "date": "2026-09-02",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
-   "headline": "NTFS Permissions and ACL Management: A Practical Guide for File Shares",
+   "headline": "Giving AI Agents Access to On-Premises Files Without Migrating to the Cloud",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myworkdrive.com/blog/ntfs-permissions-acl-management"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Microsoft 365 Education Storage Limits: What Universities Can Do",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/microsoft-365-education-storage-limits"
   }
  ]
 }

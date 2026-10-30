@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-29",
+   "headline": "How Navigation Simulators Prepare Mariners for Real-World Conditions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/navigation-simulator-how-it-prepares-mariners-for-real-seas"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "index-text",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/incident-management-software-integration"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Why Real-Time Dashboards Matter in Incident Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/real-time-incident-dashboard-emergency-management"
   }
  ]
 }

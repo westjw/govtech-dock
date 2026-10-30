@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-27",
+   "headline": "Weekly Webinar: accesso Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/weekly-webinar-accesso-intelligence-2/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "index-text",
    "first_seen": "2026-10-27",
@@ -53,15 +62,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://accesso.com/news/accesso-intelligence-agentic-forecasting/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Weekly Webinar: accesso Intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/weekly-webinar-accesso-intelligence-2/"
   },
   {
    "date": "2026-10-15",

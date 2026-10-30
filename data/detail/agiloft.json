@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-29",
+   "headline": "Agiloft Appoints Enterprise SaaS Veteran Jeff Romano as Chief Customer Officer",
+   "kind": "leadership",
+   "kind_rule": "as Chief",
+   "url": "https://agiloft.com/news/agiloft-appoints-jeff-romano-as-cco"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "near-h1",
    "first_seen": "2026-10-27",
@@ -8,6 +17,15 @@
    "kind": "contract",
    "kind_rule": "Award Winners Unleashing Contract",
    "url": "https://agiloft.com/news/2026-pacesetter-award-winners"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-29",
+   "headline": "Agiloft Named Contributing Partner in PwC Global Digital Procurement Survey Report Marking CLM's Rise as a Standalone Investment Priority",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://agiloft.com/news/agiloft-named-contributing-partner-in-pwc-survey-report"
   },
   {
    "date": "2026-09-23",
@@ -46,15 +64,6 @@
    "url": "https://agiloft.com/posts/introducing-astra-ai-powered-contract-intelligence"
   },
   {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "5 Ways to Unlock Contract Data to Drive New Revenue",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://agiloft.com/posts/3-ways-to-unlock-contract-data-to-drive-new-revenue"
-  },
-  {
    "date": "2026-09-15",
    "date_source": "near-h1",
    "first_seen": "2026-10-05",
@@ -73,15 +82,6 @@
    "url": "https://agiloft.com/news/multi-player-sponsorship-2026-us-open"
   },
   {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Powering EBITDA With Contracts: How Procurement Teams Can Create Faster Financial Impact with AI-Powered CLM",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://agiloft.com/posts/powering-ebitda-with-contracts-how-procurement-teams-can-create-faster-financial-impact-with-ai-powered-clm"
-  },
-  {
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -91,15 +91,6 @@
    "url": "https://agiloft.com/blog/legal-executives-first-operating-decision"
   },
   {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Before You Lead the Function, Lead Yourself: Why Purpose Is the Legal Executive\u2019s First Operating Decision",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://agiloft.com/posts/legal-executives-first-operating-decision"
-  },
-  {
    "date": "2026-08-20",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://agiloft.com/news/agiloft-for-salesforce-on-salesforce-agentexchange"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Before You Lead the Function, Lead Yourself: Why Purpose Is the Legal Executive\u2019s First Operating Decision",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://agiloft.com/posts/legal-executives-first-operating-decision"
   }
  ],
  "profile": {

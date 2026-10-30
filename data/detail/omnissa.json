@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Shadow AI governance: Why visibility beats bans",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/why-visibility-beats-bans/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -10,13 +19,13 @@
    "url": "https://www.omnissa.com/newsroom/blog/more-hypervisor-choice-horizon-8-red-hat-openshift/"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-28",
    "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Omnissa adoption resources: Adoption Wizard and Kits",
+   "first_seen": "2026-10-21",
+   "headline": "Autonomous endpoint management starts with the admin experience",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-adoption-resources-adoption-wizard-and-kits/"
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-aem-building-blocks/"
   },
   {
    "date": "2026-10-23",
@@ -35,6 +44,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/managing-endpoints-or-workarounds/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Introducing Omnissa Elara: an authority layer for AI",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-announcing-omnissa-elara/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "card-date",
+   "first_seen": "2026-10-27",
+   "headline": "Omnissa adoption resources: Adoption Wizard and Kits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-adoption-resources-adoption-wizard-and-kits/"
   },
   {
    "date": "2026-10-21",
@@ -73,15 +100,6 @@
    "url": "https://www.omnissa.com/newsroom/blog/driving-euc-adoption/"
   },
   {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Autonomous endpoint management starts with the admin experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-aem-building-blocks/"
-  },
-  {
    "date": "2026-10-16",
    "date_source": "card-date",
    "first_seen": "2026-10-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/device-fleet-as-a-budget-decision/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Why IT teams are switching from Citrix to Horizon",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/switching-from-citrix-to-horizon/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Omnissa introduces Omnissa Elara, a new authority layer for AI governance and high-impact enterprise actions",
-   "kind": "product",
-   "kind_rule": "introduces",
-   "url": "https://www.omnissa.com/newsroom/news/omnissa-one-amer-2026-elara-press-release/"
   }
  ]
 }

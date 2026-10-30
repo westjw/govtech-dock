@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Public Grant Data, Made AI-Ready: Meet the Fluxx Open Exchange",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/introducing-the-fluxx-open-exchange"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fluxx.io/blog/family-wealth-philanthropy-strategies"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Grants Shouldn\u2019t Be a Riddle with Olivia Jones",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/grants-shouldnt-be-a-riddle-with-olivia-jones"
   }
  ],
  "profile": {
