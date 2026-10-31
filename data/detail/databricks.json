@@ -19,6 +19,15 @@
    "url": "https://www.databricks.com/blog/how-procore-powering-construction-analytics-opensharing-0"
   },
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/media-industry-becoming-prediction-economy"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "Built for Agents: The Case for Spark Declarative Pipelines",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines"
   }
  ]
 }

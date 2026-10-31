@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "From Individual Detections to a More Complete View of Risk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/from-detection-to-a-complete-view-of-risk"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.netradyne.com/blog/how-to-increase-driver-retention-reduce-driver-turnover"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "A Smarter Way to Act on Intelligence: The New Netradyne Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/uk/blog/a-smarter-way-to-act-on-intelligence-the-new-netradyne-experience"
   }
  ],
  "profile": {

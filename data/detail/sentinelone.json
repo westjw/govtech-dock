@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "The Good, the Bad and the Ugly in Cybersecurity - Week 44 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-44-8/"
+  },
+  {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "SentinelOne Named Pax8\u2019s Partner\u2019s Most Valuable Vendor in EMEA at Beyond EMEA 2026",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "SentinelOne to Add Anthropic\u2019s Claude Mythos 5.1 to Wayfinder Frontier AI Services",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "SentinelOne and Lenovo Expand Partnership to Bring AI Security & Governance to the ThinkShield Security Portfolio",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "SentinelOne Names LevelBlue Global Delivery Partner for Wayfinder Services",
    "kind": "leadership",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "SentinelOne Brings Security Superintelligence to the SOC With Singularity ASOC",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "SentinelOne Delivers AI Advantage to Defenders with Singularity ADR and Singularity ASOC",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "SentinelOne Arms Partners to Build and Scale AI Security Practices",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Stopping PHP2SHELL: How SentinelOne Protects Customers From This Attack Technique",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "As AI Accelerates Cyberattacks, N-able and SentinelOne Expand Their Strategic Partnership to Advance Resilience",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/press/as-ai-accelerates-cyberattacks-n-able-and-sentinelone-expand-their-strategic-partnership-to-advance-resilience/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-19",
-   "headline": "Bring Your Own Vulnerable Driver: What Detection Teams Should Actually Hunt",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-what-detection-teams-should-actually-hunt/"
   }
  ],
  "profile": {

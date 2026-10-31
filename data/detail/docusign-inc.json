@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Take the Friction Out of HR Operations with Docusign IAM for HR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/streamline-hr-operations-iam-for-hr"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "From Investment to Impact: Modernizing Agreement Management for the Rural Health Transformation Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/from-investment-to-impact-modernizing-agreement-management-for-the-rural-health-transformation-program"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/docusign-extends-agreement-intelligence-to-small-businesses-in-claude"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Docusign Named a Leader in the IDC MarketScape for Worldwide Integrated Signing Workflow Software 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/docusign-named-a-leader-in-the-idc-marketscape-integrated-signing-workflows"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Docusign Brings Agreement Intelligence to Small Businesses in ChatGPT",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/docusign-brings-agreement-intelligence-to-small-businesses-in-chatgpt"
   }
  ]
 }

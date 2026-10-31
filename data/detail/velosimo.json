@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Mendocino County, CA, Links Bluebeam and Accela with Velosimo Connect\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.velosimo.com/newsroom/mendocino-county-ca-links-bluebeam-and-accela-with-velosimo-connect"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Integration with",
    "url": "https://www.velosimo.com/newsroom/city-of-kettering-oh-advances-payment-integration-with-velosimo-connect"
-  },
-  {
-   "date": "2026-06-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "City of Visalia, CA, Selects Velosimo Connect\u2122 to Integrate Accela with Stripe",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.velosimo.com/newsroom/city-of-visalia-ca-selects-velosimo-connect-to-integrate-accela-with-stripe"
   }
  ]
 }

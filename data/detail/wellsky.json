@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "A technology partner who evolves as your needs change: How StoneGate Senior Living transformed its clinical workflow with WellSky",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/a-technology-partner-who-evolves-as-your-needs-change-how-stonegate-senior-living-transform-its-clinical-workflow-with-wellsky/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/what-changes-are-included-in-the-fiscal-year-2027-hospice-final-rule/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-25",
-   "headline": "What\u2019s changing in the fiscal year FY2027 ICD-10-CM code update?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/whats-changing-in-the-fiscal-year-fy2027-icd-10-cm-code-update/"
   }
  ]
 }

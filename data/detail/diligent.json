@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "7 trends shaping the GC and CoSec agenda in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/general-counsel-corporate-secretary-trends"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "The CISO's 2027 reality check: 6 trends every security leader needs to get ahead of",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/ciso-cybersecurity-trends"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -89,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/resources/blog/diligent-elevate-faq"
-  },
-  {
-   "date": "2024-10-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "AI: The corporate secretary\u2019s powerful new ally in governance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/ai-benefits-for-corporate-secretaries"
   }
  ]
 }

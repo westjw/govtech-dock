@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Who Is the Web For When Bots Do the Browsing?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/who-web-when-bots-do-browsing"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "The Future of AI Search: 3 Tips for Getting LLMs To Recommend Your Brand",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/future-ai-search-3-tips-getting-llms-recommend-your-brand"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/announcing-p1-beta"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "What I Heard at GoLive: Building A New Agency Operating System Together",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/building-new-agency-operating-system-together"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Protecting Your Pantheon Account and Sites from Look-Alike Login Attacks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/protecting-your-pantheon-account-and-sites-look-alike-login-attacks"
   }
  ]
 }

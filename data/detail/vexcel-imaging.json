@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Vexcel to join CoStar Group",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/vexcel-to-join-costar-group/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vexcel-imaging.com/news/were-exhibiting-k-geo-festa/"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "We\u2019re exhibiting: EAASI Summit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/were-exhibiting-eaasi-summit-2/"
   },
   {
    "date": "2026-10-01",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vexcel-imaging.com/news/stabilization-mounts-expectations-vs-reality-with-johannes-dreyer-from-somag-tech-talk-ep-5-spotlight/"
-  },
-  {
-   "date": "2026-06-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Linkfast Technology becomes new authorized partner in Taiwan",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/linkfast-technology-becomes-partner-in-taiwan/"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Tech Talk | EP. 4: UltraMap & UltraCam Merlin",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/tech-talk-ep-4-ultramap-ultracam-merlin/"
   }
  ]
 }

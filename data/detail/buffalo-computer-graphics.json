@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-30",
+   "headline": "After Action Report Template: How to Document Lessons Learned",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/after-action-report-template-how-to-capture-lessons-learned"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "index-text",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/full-mission-bridge-simulator-definition"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "How Incident Management Software Integrates With 911 and Weather Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/incident-management-software-integration"
   }
  ]
 }

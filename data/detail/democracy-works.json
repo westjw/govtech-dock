@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-30",
+   "headline": "Democracy Works Partners with MapQuest to Help Voters Find Their Polling Place",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/find-your-polling-place-in-mapquest"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "near-h1",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.democracy.works/news/continuing-our-partnership-with-google-for-the-2026-midterm-elections"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "TurboVote\u2019s Trusted Guidance Now Available in More Than 20 Languages",
-   "kind": "product",
-   "kind_rule": "Now Available",
-   "url": "https://www.democracy.works/news/turbovotes-trusted-guidance-now-available-in-more-than-20-languages"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Public Construction Spending by State: What GovSpend Data Shows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/public-construction-spending-by-state-what-govspend-data-shows/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/pavilion-and-govspend-are-partnering-to-bring-suppliers-earlier-warmer-public-sector-opportunities/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Starbridge vs. GovSpend: Why GovSpend Wins for Public-Sector Sales Intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/starbridge-vs-govspend-why-govspend-wins-for-public-sector-sales-intelligence/"
   }
  ],
  "profile": {

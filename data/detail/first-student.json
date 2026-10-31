@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "First Student\u2019s Transformational Technology Raises the Bar for Student Transportation, Earns Four National Honors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://firststudentinc.com/resources/newsroom/first-students-transformational-technology-raises-the-bar-for-student-transportation-earns-four-national-honors/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-08-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "First Student Named to Inc. 5000 for Second Consecutive Year, Reflecting Leadership in Modernizing and Transforming the Home-to-School Transportation Experience",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-08-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "First Student Enters the New School Year with Strong Safety, Technology, and Operational Performance",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-06-25",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "First Student Named Official New York New Jersey World Cup 2026 Host City Supporter",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-06-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "First Student, Inc. Launches National Hiring Week Events to Recruit and Empower the Next Generation of School Transportation Professionals",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Wins Major Student Transportation Contract",
    "url": "https://firststudentinc.com/resources/newsroom/first-student-inc-wins-major-student-transportation-contract-in-saskatchewan-expanding-commitment-to-innovation-and-partnership-in-canada/"
-  },
-  {
-   "date": "2026-04-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "First Student Named to TIME100 Most Influential Companies List",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://firststudentinc.com/resources/newsroom/first-student-named-to-time100-most-influential-companies-list/"
   }
  ],
  "profile": {

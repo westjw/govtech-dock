@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Remote Guarding Explained: People + Technology = Smarter Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/remote-guarding-explained-people-technology-smarter-security"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -46,6 +55,15 @@
    "url": "https://www.lvt.com/blog/your-integrators-are-part-of-your-attack-surface"
   },
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Gas Station and Convenience Store Security Camera Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/gas-station-and-convenience-store-security-camera-guide"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/temporary-security-cameras-how-to-secure-short-term-and-seasonal-sites"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-16",
-   "headline": "Mobile Surveillance Trailers Compared: LVT vs. RAD Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/mobile-surveillance-trailers-compared-lvt-vs-rad-security"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-17",
-   "headline": "Mobile Surveillance Trailers Compared: LVT vs. Mobile Pro Systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/mobile-surveillance-trailers-compared-lvt-vs-mobile-pro-systems"
   }
  ],
  "profile": {

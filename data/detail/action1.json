@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "What is Vulnerability Prioritization?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.action1.com/blog/what-is-vulnerability-prioritization/"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "What is Continuous Vulnerability Management (CVM)?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.action1.com/blog/what-is-continuous-vulnerability-management-cvm/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.action1.com/blog/critical-gitlab-vulnerability-cve-2026-97229-puts-software-supply-chains-at-risk/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Nearly 1,000 Patches in a Month: Why the Old Patching Model Is Breaking Down",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/nearly-1000-patches-in-a-month-why-the-old-patching-model-is-breaking-down/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Microsoft Configuration Manager (SCCM) End of Life",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/microsoft-configuration-manager-sccm-end-of-life/"
   }
  ]
 }

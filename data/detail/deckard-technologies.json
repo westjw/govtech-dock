@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Short-Term Rental Safety for Communities Without an Ordinance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/short-term-rental-safety-without-an-ordinance"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://deckard.com/resources/how-tax-assessors-can-stop-lost-revenue-with-integrated-str-tax-software"
-  },
-  {
-   "date": "2026-04-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Long-Term vs. Short-Term Rental Compliance: Why They're Not the Same Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://deckard.com/resources/long-term-vs-short-term-rental-compliance"
   }
  ],
  "profile": {

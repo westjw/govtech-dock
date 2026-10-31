@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "What Is Unified Enrollment? A Guide to Building a Connected Enrollment System in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/https-goedmo-com-blog-unified-enrollment-higher-education/"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "How to Detect Fake Academic Credentials During the Admissions Process",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/https-goedmo-com-blog-how-to-detect-fake-academic-credentials/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-15",
    "headline": "Financial Model in Higher Education: How Universities Can Plan Hiring, Budgets, and Financial Stability",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/strategies-to-increase-student-engagement/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Student Journey Mapping in Higher Education: Step-by-Step Guide, Example & Template",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/what-is-student-journey-mapping-step-by-step-guide-how-can-ai-help-in-this/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Student Enrollment Process: Key Stages & Strategies for Enrollment Lifecycle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/student-enrollment-process/"
   }
  ],
  "profile": {

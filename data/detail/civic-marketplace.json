@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "New for Agencies: 7 Updates to Help You Find and Buy What You Need, Faster",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://civicmarketplace.com/news/new-for-agencies-7-updates-to-help-you-find-and-buy-what-you-need-faster"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://civicmarketplace.com/es-us/news/how-local-agencies-can-use-cooperative-contracts-to-reduce-procurement-cycle-times-from-months-to-weeks"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How the City of University Park, Texas Eliminated OBBBA Payroll Risk \u2014 in Six Weeks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://civicmarketplace.com/news/how-the-city-of-university-park-texas-eliminated-obbba-payroll-risk-in-six-weeks"
   }
  ],
  "profile": {

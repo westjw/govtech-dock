@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Testimonials Public Storage: One Stack, One Vendor, Zero Disruption",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/public-storage-one-stack-one-vendor-zero-disruption"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nice.com/resources/fulton-bank-frictionless-for-customers-frictionless-for-agents"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Testimonials SolarEdge Technologies: From Nine Disconnected Systems to One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/resources/solaredge-technologies-from-nine-disconnected-systems-to-one"
   }
  ],
  "profile": {

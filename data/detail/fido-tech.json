@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Pinpoint water leaks exactly with FIDO Sounding",
    "kind": "press",
@@ -11,25 +11,25 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
-   "headline": "How can water utilities reduce customer-side leakage more effectively? Polly Oct 13, 2026 Read 7 min",
+   "headline": "How can water utilities reduce customer-side leakage more effectively? Paul Parr Oct 13, 2026 Read 7 min",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/how-can-water-utilities-reduce-customer-side-leakage-more-effectively/"
   },
   {
    "date": "2026-10-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
-   "headline": "FIDO Tech wins joint EMMA award for AI-powered water leak reduction project Polly Oct 12, 2026 Read 2 min",
+   "headline": "FIDO Tech wins joint EMMA award for AI-powered water leak reduction project Graham Baker Oct 12, 2026 Read 2 min",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/fido-tech-northumbrian-water-win-joint-emma-award/"
   },
   {
    "date": "2026-10-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "What's new in the FIDO app version 3.5.0",
    "kind": "product",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "FIDO Tech appoints Jamie Stapleton as Chief Technology Officer",
    "kind": "leadership",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "David Archard takes key FIDO US business development role",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Alex Leyland joins FIDO Tech as Operations Director",
    "kind": "press",

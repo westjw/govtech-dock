@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "People Behind the Data: Kelly Olsen on Finding Meaning in Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/people-behind-the-data-kelly-olsen-on-finding-meaning-in-change"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/why-border-security-needs-persistent-broad-area-change-detection"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "EarthDaily Selected as Preferred InSAR Provider for Global Engineering Firm\u2019s Tailings Management Platform",
-   "kind": "contract",
-   "kind_rule": "Selected as",
-   "url": "https://earthdaily.com/blog/earthdaily-selected-as-preferred-insar-provider-for-global-engineering-firms-tailings-management-platform"
   }
  ],
  "profile": {

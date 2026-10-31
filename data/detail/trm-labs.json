@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "North Korea Steals USD 6.36 Billion From Binance in the Largest Hack in History",
    "kind": "press",
@@ -10,8 +10,17 @@
    "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
   },
   {
+   "date": "2026-10-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-30",
+   "headline": "North Korea Has Stolen USD 12.8 Billion in Crypto, USD 7.4 Billion of It in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/north-korea-has-stolen-usd-128-billion-in-crypto-usd-74-billion-of-it-in-2026"
+  },
+  {
    "date": "2026-10-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-28",
    "headline": "FBI Seizes Virtualine Domain After Provider Led Bulletproof Hosting Sector in Illicit Inflows",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-28",
    "headline": "Crypto Continues to Flow Through Sihanoukville Casinos Despite Cambodia's Crackdown",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/reports-and-whitepapers"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-08",
-   "headline": "UK Sanctions Cryptomus, Heleket, and TokenSpot in New Russia Package Targeting Crypto and Payment Channels",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/uk-sanctions-cryptomus-heleket-and-tokenspot-in-new-russia-package-targeting-crypto-and-payment-channels"
   }
  ],
  "profile": {

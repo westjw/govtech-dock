@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Meeting Student Expectations: Lessons From Higher Ed Leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gravyty.com/blog/meeting-student-expectations/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gravyty.com/blog/student-self-service-by-student-type/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Alumni Pipeline Starts Freshman Year: Why Student Support Experience Predicts Future Giving",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gravyty.com/blog/student-support-experience-alumni-giving/"
   }
  ],
  "profile": {

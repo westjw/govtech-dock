@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Malicious Claude Code extension distributed through Cursor marketplace",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/malicious-claude-code-extension-distributed-through-cursor-marketplace"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/en-us/blog/connectwise-cloud-backup-application-abused-in-token-sweep"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "ConnectWise Cloud Backup application abused in cross-tenant token sweep",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/blog/connectwise-cloud-backup-application-abused-in-token-sweep"
   }
  ]
 }

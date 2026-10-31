@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "How to Calculate a Fair Personal Vehicle Reimbursement Rate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/blog/how-to-calculate-a-fair-personal-vehicle-reimbursement-rate"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Fleet Parts Inventory Management Guide for 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/blog/fleet-parts-inventory-management-guide-for-2026"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "index-text",
    "first_seen": "2026-10-27",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://rtafleet.com/blog/fleet-chargeback-systems-a-guide-to-cost-allocation-rates-and-billing"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Fleet Cost Recovery: A Guide for Public Fleet Managers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/fleet-cost-recovery-a-guide-for-public-fleet-managers"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fleet Preventative Maintenance Compliance: Why Vehicles Fall Behind and How to Fix It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/fleet-preventative-maintenance-compliance-why-vehicles-fall-behind-and-how-to-fix-it"
   }
  ],
  "profile": {

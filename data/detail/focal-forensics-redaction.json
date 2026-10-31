@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "time",
+   "first_seen": "2026-10-30",
+   "headline": "Redaction Deadlines Are Getting Shorter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/video-redaction-deadlines-getting-shorter"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "time",
    "first_seen": "2026-10-21",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "School Surveillance Video Redaction Under FERPA",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/how-to-choose-a-video-redaction-company"
-  },
-  {
-   "date": "2026-08-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Digital Evidence Authentication in the Age of AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/digital-evidence-authentication-ai"
   }
  ]
 }

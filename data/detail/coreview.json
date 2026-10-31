@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Building business case urgency for cyber uplift projects",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/building-business-case-urgency-for-cyber-uplift-projects"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -40,7 +49,7 @@
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
-   "headline": "Four Ways to Monitor Entra ID Conditional Access Policy Changes \u2013 Full Step-by-Step Instructions, Hidden Gaps and Videos",
+   "headline": "Four Ways to Monitor Entra ID Conditional Access Policy Changes \u2013 Full Step-by-Step Instructions and Hidden Gaps",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coreview.com/blog/four-ways-to-monitor-entra-id-conditional-access-policy-changes"
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://www.coreview.com/news/coreview-launches-control-for-sharepoint"
-  },
-  {
-   "date": "2026-06-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CoreView appoints Kasper Lindgaard as VP of Security Strategy",
-   "kind": "leadership",
-   "kind_rule": "as VP",
-   "url": "https://www.coreview.com/news/coreview-appoints-kasper-lindgaard-as-vp-of-security-strategy"
   }
  ]
 }

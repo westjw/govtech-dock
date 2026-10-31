@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-30",
+   "headline": "New Prompt Injection Techniques Cover Agent-Planning Attacks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/new-prompt-injection-techniques-cover-agent-planning-attacks/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-30",
+   "headline": "VAPOR PANDA Uses AI-Driven ARTEX to Scale a Global Espionage Campaign",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "index-text",
    "first_seen": "2026-10-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-october-2026/"
-  },
-  {
-   "date": "2026-09-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CrowdStrike Named a Leader in The Forrester Wave\u2122: Proactive Security Platforms, Q3 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-named-leader-forrester-wave-proactive-security-platforms-q3-2026/"
-  },
-  {
-   "date": "2026-09-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "September 2026 Patch Tuesday: Two Exploited Zero-Days and 113 Critical Vulnerabilities Among 972 CVEs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-september-2026/"
   }
  ]
 }

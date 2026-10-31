@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "How AI Turns Workforce Management into Workforce Orchestration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/how-ai-turns-workforce-management-into-workforce-orchestration"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Rethinking legacy CX: Is \u201cstill working\u201d enough? | Genesys",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/rethinking-legacy-cx-is-still-working-enough"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Empowering people to transform customer experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/empowering-people-to-transform-customer-experience"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/personal-ai-will-change-the-customer-relationship"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Conversational intelligence is becoming the engine for action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/conversational-intelligence-is-becoming-the-engine-for-action"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "How to Build AI Use Cases that Deliver Real ROI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/most-ai-projects-struggle-to-deliver-value-heres-the-roadmap-to-fix-that"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "AI and Quality Management: From Scorecards to Orchestration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/beyond-the-scorecard-ais-new-role-in-quality-management"
   }
  ]
 }

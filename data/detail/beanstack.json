@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "Meet Book Talks with Benny",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.beanstack.com/blog/product-spotlight-book-talks-with-benny"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.beanstack.com/blog/reading-challenge-playbook"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "5 Tips for Running Your Beanstack Early Literacy Reading Challenge",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.beanstack.com/blog/5-tips-for-running-your-beanstack-early-literacy-reading-challenge"
   }
  ],
  "profile": {

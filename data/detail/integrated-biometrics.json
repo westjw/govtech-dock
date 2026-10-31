@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "BioRidge-60 from SIC Biometrics, Palm, finger, iris and face field multimodal",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://integratedbiometrics.com/press-releases/bioridge-60-from-sic-biometrics-palm-finger-iris-and-face-field-multimodal"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://integratedbiometrics.com/press-releases/integrated-biometrics-kojak-scanner-achieves-stqc-certification"
-  },
-  {
-   "date": "2025-06-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Integrated Biometrics Enhances Danno Fingerprint Scanner with 256-Bit AES Encryption",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://integratedbiometrics.com/press-releases/integrated-biometrics-enhances-danno-fingerprint-scanner-with-256-bit-aes-encryption"
   }
  ]
 }

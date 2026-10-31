@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "card-date",
+   "first_seen": "2026-10-30",
+   "headline": "Cybersecurity Awareness Month: Securing the Next 250 with Cyber Threat Hunting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/cybersecurity-awareness-month-2026"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "card-date",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/stack-ranking-high-cardinality"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "card-date",
-   "first_seen": "2026-10-09",
-   "headline": "Path to SecOps Transformation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/resources/machine-speed-defenses-ebook"
   }
  ],
  "profile": {

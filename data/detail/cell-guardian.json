@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "time",
+   "first_seen": "2026-10-30",
+   "headline": "Rahm Sensor Development Named 2026 Startup of the Year by Texas Tech University",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cell-guardian.com/news/rahm-sensor-development-named-2026-startup-of-the-year-by-texas-tech-university"
+  },
+  {
    "date": "2026-05-28",
    "date_source": "dateline",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cell-guardian.com/blog/emerging-technology-ai-threat-detection-in-correctional-facilities"
-  },
-  {
-   "date": "2025-08-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Emerging Technology: Using AI to Monitor and Detect Inmate Behavior",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cell-guardian.com/blog/emerging-technology-using-ai-to-monitor-and-detect-inmate-behavior"
   }
  ],
  "profile": {

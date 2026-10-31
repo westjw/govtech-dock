@@ -1,62 +1,90 @@
 {
-  "date": "2026-10-30",
-  "previous": "2026-10-29",
+  "date": "2026-10-31",
+  "previous": "2026-10-30",
   "changes": [
     {
-      "company": "Zencity",
-      "id": "zencity",
-      "from": "Yes",
+      "company": "Sensoneo",
+      "id": "sensoneo",
+      "from": "Sales (non-AE)",
       "to": "Unknown",
-      "note": "robots.txt on zencity.io answered HTTP 2"
+      "note": "HTTP 404 for https://www.sensoneo.com/ca"
     },
     {
-      "company": "Sparkrock",
-      "id": "sparkrock",
-      "from": "Unknown",
+      "company": "ClearPoint Strategy",
+      "id": "clearpoint-strategy",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
+      "company": "Bentek",
+      "id": "bentek",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: robots.txt on www.mybente"
+    },
+    {
+      "company": "Roadway Management Technologies",
+      "id": "roadway-management-technologies",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "HydroPoint Data Systems",
+      "id": "hydropoint-data-systems",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Alertus Technologies",
-      "id": "alertus-technologies",
+      "company": "Binti",
+      "id": "binti",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
       "from": "Yes",
       "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Alertus Technologies",
+      "id": "alertus-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (Baltimore, MD)"
     },
     {
       "company": "Vanderlande",
       "id": "vanderlande",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
-      "company": "FeedbackFruits",
-      "id": "feedbackfruits",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager North Ame only"
+      "company": "CampusIQ",
+      "id": "campusiq",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Playon",
-      "id": "playon",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Chmura Economics & Analytics",
-      "id": "chmura-economics-analytics",
+      "company": "Huntress",
+      "id": "huntress",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Account Executive (Richmond, VA)"
+      "note": "Technical Account Manager II (United States of A)"
+    },
+    {
+      "company": "Givebacks",
+      "id": "givebacks",
+      "from": "None found",
+      "to": "Yes",
+      "note": "District Account Executive"
     }
   ]
 }

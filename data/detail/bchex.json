@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-30",
+   "headline": "How to Run a Background Check on a Babysitter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-to-run-a-background-check-on-a-babysitter"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/how-employment-verification-works"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Triggers an I-9 Audit?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/what-triggers-an-i-9-audit"
   }
  ],
  "profile": {
