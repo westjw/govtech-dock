@@ -140,8 +140,10 @@
   "note": "https://www.robinradar.com/hubfs/New%20Website%202024/Logo/RRP-2024-favicon.svg"
  },
  "netradyne": {
-  "ok": false,
-  "note": "logo found but 218KB, over the 214KB cap"
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/691f9a539f7f4834f9f9995c/6ada443fd43dda1d9f92903d_Netradyne%20Logo%20Green%20Favicon.",
+  "via": "markup-logo",
+  "url": "https://cdn.prod.website-files.com/691f9a539f7f4834f9f9995c/6ada443fd43dda1d9f92903d_Netradyne%20Logo%20Green%20Favicon.png"
  },
  "prepared": {
   "ok": true,
@@ -222,8 +224,10 @@
   "note": "https://www.corebt.com/wp-content/uploads/2021/02/core_logo_mark.png"
  },
  "cubic-transportation-systems": {
-  "ok": false,
-  "note": "no readable icon on the site"
+  "ok": true,
+  "note": "https://www.cubic.com/themes/custom/cubic/favicons/apple-touch-icon.png",
+  "via": "declared-icon, read in a browser",
+  "url": "https://www.cubic.com/themes/custom/cubic/favicons/apple-touch-icon.png"
  },
  "roller": {
   "ok": true,
@@ -379,7 +383,7 @@
  },
  "invita-healthcare-technologies": {
   "ok": false,
-  "note": "blocked to non-browser clients (403)"
+  "note": "robots.txt on invitahealth.com answered HTTP 202; kept out until it answers"
  },
  "giro": {
   "ok": true,
@@ -561,7 +565,7 @@
  },
  "modaxo": {
   "ok": false,
-  "note": "blocked to non-browser clients (403)"
+  "note": "robots.txt on www.modaxo.com answered HTTP 202; kept out until it answers"
  },
  "concourse": {
   "ok": true,
@@ -593,7 +597,7 @@
  },
  "recdesk": {
   "ok": false,
-  "note": "blocked to non-browser clients (403)"
+  "note": "robots.txt on recdesk.com answered HTTP 202; kept out until it answers"
  },
  "teamsnap": {
   "ok": true,
@@ -601,7 +605,7 @@
  },
  "ips-group": {
   "ok": false,
-  "note": "blocked to non-browser clients (403)"
+  "note": "robots.txt on ipsgroup.com answered HTTP 202; kept out until it answers"
  },
  "civilgrid": {
   "ok": true,
@@ -4308,8 +4312,10 @@
   "note": "https://www.missionsquare.com/favicon.ico"
  },
  "american-fidelity": {
-  "ok": false,
-  "note": "no readable icon on the site"
+  "ok": true,
+  "note": "https://americanfidelity.com/media/i35jtgpr/favicon.webp",
+  "via": "declared-icon, read in a browser",
+  "url": "https://americanfidelity.com/media/i35jtgpr/favicon.webp"
  },
  "tcp-software": {
   "ok": true,
@@ -4400,8 +4406,10 @@
   "note": "https://www.scytl.com/apple-touch-icon.png"
  },
  "civix": {
-  "ok": false,
-  "note": "site unreachable (ConnectionError)"
+  "ok": true,
+  "note": "https://gocivix.com/wp-content/uploads/Logomark-Dark@2x-300x300.png",
+  "via": "markup-logo",
+  "url": "https://gocivix.com/wp-content/uploads/Logomark-Dark@2x-300x300.png"
  },
  "democracy-live": {
   "ok": true,
@@ -5388,8 +5396,10 @@
   "note": "https://www.flir.com/favicon.ico"
  },
  "thales": {
-  "ok": false,
-  "note": "no readable icon on the site"
+  "ok": true,
+  "note": "https://www.thalesgroup.com/themes/custom/thales/favicon.ico",
+  "via": "declared-icon, read in a browser",
+  "url": "https://www.thalesgroup.com/themes/custom/thales/favicon.ico"
  },
  "bigbear-ai": {
   "ok": true,
@@ -8978,5 +8988,165 @@
   "note": "https://www.wexinc.com/wp-content/uploads/2023/06/cropped-favicon-300x300.png",
   "via": "declared-icon",
   "url": "https://www.wexinc.com/wp-content/uploads/2023/06/cropped-favicon-300x300.png"
+ },
+ "aveva-software-llc": {
+  "ok": true,
+  "note": "https://www.aveva.com/content/dam/aveva/images/icons/fav-icon/favicon.ico",
+  "via": "declared-icon",
+  "url": "https://www.aveva.com/content/dam/aveva/images/icons/fav-icon/favicon.ico"
+ },
+ "dragos": {
+  "ok": true,
+  "note": "https://dragos.brightspotcdn.com/9d/64/c5a518e840ac86c1cfd4685fa538/header-nav-dragos-logo-8-25.svg",
+  "via": "markup-logo",
+  "url": "https://dragos.brightspotcdn.com/9d/64/c5a518e840ac86c1cfd4685fa538/header-nav-dragos-logo-8-25.svg"
+ },
+ "here-technologies": {
+  "ok": true,
+  "note": "https://www.here.com/apple-touch-icon.png",
+  "via": "apple-touch-icon",
+  "url": "https://www.here.com/apple-touch-icon.png"
+ },
+ "island": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/61a5e47b1afd0c116d16aa40/6a68fde8c2412f426d6c6e02_favicon-96x96.png",
+  "via": "declared-icon",
+  "url": "https://cdn.prod.website-files.com/61a5e47b1afd0c116d16aa40/6a68fde8c2412f426d6c6e02_favicon-96x96.png"
+ },
+ "mri-software": {
+  "ok": true,
+  "note": "https://cdn-fcdch.nitrocdn.com/cNYQZjhejOqxikuYkZcyUKwXfKCwKOuc/assets/images/optimized/rev-356a0fa/www.mrisoftware.com/",
+  "via": "apple-touch-icon",
+  "url": "https://cdn-fcdch.nitrocdn.com/cNYQZjhejOqxikuYkZcyUKwXfKCwKOuc/assets/images/optimized/rev-356a0fa/www.mrisoftware.com/apple-touch-icon.png"
+ },
+ "irth": {
+  "ok": true,
+  "note": "https://irthsolutions.com/hubfs/Irth_Logo.svg",
+  "via": "markup-logo",
+  "url": "https://irthsolutions.com/hubfs/Irth_Logo.svg"
+ },
+ "buzz-solutions": {
+  "ok": true,
+  "note": "https://www.buzzsolutions.com/wp-content/uploads/2026/02/cropped-buzz-icon-only-192x192.png",
+  "via": "declared-icon",
+  "url": "https://www.buzzsolutions.com/wp-content/uploads/2026/02/cropped-buzz-icon-only-192x192.png"
+ },
+ "via-science": {
+  "ok": true,
+  "note": "https://www.solvewithvia.com/wp-content/uploads/2018/03/favicon.ico",
+  "via": "declared-icon",
+  "url": "https://www.solvewithvia.com/wp-content/uploads/2018/03/favicon.ico"
+ },
+ "oati": {
+  "ok": true,
+  "note": "https://www.oati.com/wp-content/themes/oati/favicons/apple-touch-icon.png",
+  "via": "apple-touch-icon",
+  "url": "https://www.oati.com/wp-content/themes/oati/favicons/apple-touch-icon.png"
+ },
+ "implan": {
+  "ok": true,
+  "note": "https://implan.com/wp-content/uploads/2026/07/og_image.jpg",
+  "via": "markup",
+  "url": "https://implan.com/wp-content/uploads/2026/07/og_image.jpg"
+ },
+ "duress": {
+  "ok": true,
+  "note": "https://www.duress.com/favicon.png",
+  "via": "declared-icon",
+  "url": "https://www.duress.com/favicon.png"
+ },
+ "merit": {
+  "ok": false,
+  "note": "ruled not theirs: Aspire's logo; the website on file (aspiretech.us) may not be Merit's"
+ },
+ "infilla": {
+  "ok": true,
+  "note": "https://framerusercontent.com/images/O9tQtmfwLSiuv7gb1zQOr1hK4.png",
+  "via": "markup",
+  "url": "https://framerusercontent.com/images/O9tQtmfwLSiuv7gb1zQOr1hK4.png"
+ },
+ "haivision": {
+  "ok": true,
+  "note": "https://www.haivision.com/wp-content/uploads/2024/06/cropped-haivision-shark-favicon-192x192.png",
+  "via": "declared-icon",
+  "url": "https://www.haivision.com/wp-content/uploads/2024/06/cropped-haivision-shark-favicon-192x192.png"
+ },
+ "tango-tango-inc": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/68471af1228709347fac5672/684cc2578fa4e16ec142b443_ttwebclip.png",
+  "via": "markup",
+  "url": "https://cdn.prod.website-files.com/68471af1228709347fac5672/684cc2578fa4e16ec142b443_ttwebclip.png"
+ },
+ "clean-power-research": {
+  "ok": true,
+  "note": "https://www.cleanpower.com/wp-content/uploads/CPR-Icon.svg",
+  "via": "declared-icon",
+  "url": "https://www.cleanpower.com/wp-content/uploads/CPR-Icon.svg"
+ },
+ "oracle": {
+  "ok": true,
+  "note": "https://www.oracle.com/asset/web/favicons/favicon.ico",
+  "via": "declared-icon",
+  "url": "https://www.oracle.com/asset/web/favicons/favicon.ico"
+ },
+ "vcs-hr-jobs4blue": {
+  "ok": true,
+  "note": "https://vcshr.com/wp-content/uploads/2026/03/VCS-HR-Primary-Logo-no-tag-color-e1773205426842.png",
+  "via": "markup-logo",
+  "url": "https://vcshr.com/wp-content/uploads/2026/03/VCS-HR-Primary-Logo-no-tag-color-e1773205426842.png"
+ },
+ "druid-ai": {
+  "ok": true,
+  "note": "https://www.druidai.com/hubfs/druid-logo-neg-2025.svg",
+  "via": "markup-logo",
+  "url": "https://www.druidai.com/hubfs/druid-logo-neg-2025.svg"
+ },
+ "givebacks": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/694c013c60b72bd5fd863176/6a1db89ac5b93f13587ca6e1_webclip%20image.png",
+  "via": "markup",
+  "url": "https://cdn.prod.website-files.com/694c013c60b72bd5fd863176/6a1db89ac5b93f13587ca6e1_webclip%20image.png"
+ },
+ "exygy": {
+  "ok": true,
+  "note": "https://framerusercontent.com/images/iDMYT4Mrolpp6CLcW3W1cS0dg.png",
+  "via": "markup",
+  "url": "https://framerusercontent.com/images/iDMYT4Mrolpp6CLcW3W1cS0dg.png"
+ },
+ "quicket-solutions": {
+  "ok": true,
+  "note": "https://www.quicketsolutions.com/wp-content/uploads/2026/09/Quicket-NewFavicon.svg",
+  "via": "declared-icon",
+  "url": "https://www.quicketsolutions.com/wp-content/uploads/2026/09/Quicket-NewFavicon.svg"
+ },
+ "chmura-economics-analytics": {
+  "ok": true,
+  "note": "https://www.chmura.com/hubfs/Logos/Chmura/chmura%20logomark%202024.png",
+  "via": "markup-logo",
+  "url": "https://www.chmura.com/hubfs/Logos/Chmura/chmura%20logomark%202024.png"
+ },
+ "vanishid": {
+  "ok": true,
+  "note": "https://vanishid.com/wp-content/uploads/2025/12/cropped-slidicon-192x192.webp",
+  "via": "declared-icon",
+  "url": "https://vanishid.com/wp-content/uploads/2025/12/cropped-slidicon-192x192.webp"
+ },
+ "aclima": {
+  "ok": true,
+  "note": "https://aclima.earth/hs-fs/hubfs/2022_Aclima_Logo_Ocean_500px_wR.png",
+  "via": "markup-logo",
+  "url": "https://aclima.earth/hs-fs/hubfs/2022_Aclima_Logo_Ocean_500px_wR.png"
+ },
+ "brandt-information-services": {
+  "ok": true,
+  "note": "https://b4052759.assetcdn.net/2.0/4052759/wp-content/uploads/2025/03/cropped-favicon-300x300.png",
+  "via": "declared-icon",
+  "url": "https://b4052759.assetcdn.net/2.0/4052759/wp-content/uploads/2025/03/cropped-favicon-300x300.png"
+ },
+ "arcos-inc": {
+  "ok": true,
+  "note": "https://www.arcos-inc.com/hubfs/Arcos-logo-green.svg",
+  "via": "markup-logo",
+  "url": "https://www.arcos-inc.com/hubfs/Arcos-logo-green.svg"
  }
 }

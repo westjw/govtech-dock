@@ -176,6 +176,21 @@ GENERIC_HASHES = {
         "reseller storefront default globe",
 }
 
+# IMAGES A PERSON LOOKED AT AND RULED NOT THIS COMPANY'S MARK, by content, so
+# --retry can never land them again; the finder moves on to the next
+# candidate on the page. Each was fetched from the company's own site and
+# passed every rule above, which is why only an eye caught it (2026-11-01).
+NOT_THEIRS = {
+    "3f577144a4d8d09cb980ba90125b6d6d9f7a19cd8ead7931478dc360191eb57f":
+        "a customer's logo (Charlotte Housing Authority) off implan.com's case studies",
+    "7a18ef7777c9562364eadd8f0f574285d5287842726d0a255cef5272850936b3":
+        "a 1200x630 social-share photo off oracle.com, not a mark",
+    "6b73957a3f196893259bc4091355e1c26ed9bb0de286b359daf0460e8730bd62":
+        "a 1200x1200 social-share photo off oracle.com, not a mark",
+    "7c9943313c50655d0857237e0f90c061a72695b4027fcf1255b38bffc0bb39fc":
+        "Aspire's logo, on the aspiretech.us site filed as Merit's",
+}
+
 WORD_RE = re.compile(r"[a-z0-9]+")
 
 # Enough of the suffix space to find the brand label in a hostname. A real
@@ -468,10 +483,13 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
             time.sleep(0.25)
             if not ir.ok:
                 continue
-            generic = GENERIC_HASHES.get(
-                hashlib.sha256(ir.content).hexdigest())
+            digest = hashlib.sha256(ir.content).hexdigest()
+            generic = GENERIC_HASHES.get(digest)
             if generic:
                 last = f"only icon is the {generic}"
+                continue
+            if digest in NOT_THEIRS:
+                last = f"ruled not theirs: {NOT_THEIRS[digest]}"
                 continue
             ext, why = sniff(ir.content, ir.headers.get("content-type", ""))
             if not ext:
