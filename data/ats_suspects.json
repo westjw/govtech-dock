@@ -658,5 +658,33 @@
   },
   "note": "workday:valmont reads (59 posting(s)), but does not match 'Shakespeare Composite Structures'; likely a parent or another company",
   "on": "2026-10-25"
+ },
+ "etap-operation-technology": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "aveva",
+    "wd3",
+    "ETAP_Careers"
+   ]
+  },
+  "note": "workday:aveva reads (23 posting(s)), but does not match 'ETAP'; likely a parent or another company",
+  "on": "2026-11-01"
+ },
+ "honeywell-smart-energy": {
+  "ats": {
+   "type": "oracle",
+   "ref": "https://ibqbjb.fa.ocs.oraclecloud.com"
+  },
+  "note": "oracle:ibqbjb reads (0 posting(s)), but does not match 'Honeywell Smart Energy'; likely a parent or another company",
+  "on": "2026-11-01"
+ },
+ "marketplace-city": {
+  "ats": {
+   "type": "oracle",
+   "ref": "https://ehxr.fa.us2.oraclecloud.com"
+  },
+  "note": "oracle:ehxr reads (0 posting(s)), but does not match 'Marketplace.city'; likely a parent or another company",
+  "on": "2026-11-01"
  }
 }

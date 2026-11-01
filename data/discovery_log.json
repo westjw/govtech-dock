@@ -1871,7 +1871,7 @@
   "note": "no board found"
  },
  "cims-cemetery-software": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://ramaker.isolvedhire.com found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -1933,13 +1933,13 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "openmeeting-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "clerkbase": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -1974,7 +1974,7 @@
   "note": "no board found"
  },
  "elation-systems": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -1995,7 +1995,7 @@
   "note": "no board found"
  },
  "savi": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at https://angel.co/company/bysavi/jobs (HTTP 403)",
   "retry_soon": true
@@ -2022,7 +2022,7 @@
   "note": "no board found"
  },
  "bids-tenders": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -2038,7 +2038,7 @@
   "weak": true
  },
  "sysoft-getall": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -2287,7 +2287,7 @@
   "note": "no board found"
  },
  "rock-solid-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -2319,7 +2319,7 @@
   "note": "paylocity:https://recruiting.paylocity.com/recruit, 4 posting(s) readable"
  },
  "cyracom-international": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -2341,7 +2341,7 @@
   "note": "greenhouse:clariticloudinc reads (11 posting(s)), but does not match 'Camino Technologies'; likely a parent or another company"
  },
  "vitech-systems-group": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "oracle:https://saasfaprod1.fa.ocs.oraclec found but unreadable (HTTP 503 for https://saasfaprod1.fa.)",
   "retry_soon": true
@@ -2352,9 +2352,9 @@
   "note": "workday:['americanfidelity', 'wd5', 'External'], 72 posting(s) readable"
  },
  "avue-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "could not fetch the site (ConnectionError)",
+  "note": "could not fetch the site (SSLError)",
   "retry_soon": true
  },
  "acendre": {
@@ -2385,7 +2385,7 @@
   "note": "careers page at /for-candidates/career-opportunities/all, no ATS marker"
  },
  "fire-police-selection": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -2395,7 +2395,7 @@
   "note": "careers page at rs, no ATS marker"
  },
  "springbrook-software": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://springbrooksoftware.isolve found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -2418,13 +2418,13 @@
   "weak": true
  },
  "microvote-general-corporation": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "gave up after 45s",
   "retry_soon": true
  },
  "smartmatic": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -2492,7 +2492,7 @@
   "note": "no board found"
  },
  "caliper-corporation": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /jobs (HTTP 403)",
   "retry_soon": true
@@ -2508,7 +2508,7 @@
   "note": "no board found"
  },
  "seachange-print-innovations": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -2526,7 +2526,7 @@
   "weak": true
  },
  "platinum-technology-resource": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
@@ -2543,13 +2543,13 @@
   "note": "no board found"
  },
  "trueballot": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
  },
  "optum-serve": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (404)",
   "retry_soon": true
@@ -2584,7 +2584,7 @@
   "note": "workday:['merative', 'wd12', 'External_Career_Si, 21 posting(s) readable"
  },
  "findhelp": {
-  "on": "2026-10-18",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -2600,13 +2600,13 @@
   "note": "careers page at .com/about/working-at-get-insured, no ATS marker"
  },
  "id-me": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
  },
  "pondera-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -2660,7 +2660,7 @@
   "note": "no board found"
  },
  "ebid-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
@@ -2672,10 +2672,9 @@
   "weak": true
  },
  "marketplace-city": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "oracle:https://saasfaprod1.fa.ocs.oraclec found but unreadable (HTTP 503 for https://saasfaprod1.fa.)",
-  "retry_soon": true
+  "note": "oracle:ehxr reads (0 posting(s)), but does not match 'Marketplace.city'; likely a parent or another company"
  },
  "zycus": {
   "on": "2026-10-25",
@@ -2684,7 +2683,7 @@
   "weak": true
  },
  "proactis": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -2705,7 +2704,7 @@
   "note": "bamboohr:euna reads (48 posting(s)), but does not match 'AmpliFund (StreamLink Software)'; likely a parent or another company"
  },
  "citybase": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -2777,10 +2776,9 @@
   "note": "no board found"
  },
  "chronicle": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "could not fetch the site: robots.txt on www.chronicle.rip answered HTTP 520; kept out until it answers"
  },
  "everspot": {
   "on": "2026-10-04",
@@ -2808,7 +2806,7 @@
   "note": "no board found"
  },
  "memorial-business-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /jobs (HTTP 403)",
   "retry_soon": true
@@ -2845,7 +2843,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "axiom-cemetery-management-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -2887,9 +2885,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "system-automation": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "govbuilt": {
@@ -2941,7 +2939,7 @@
   "note": "html:https://corporater.teamtailor.com, 0 posting(s) readable"
  },
  "urbanfootprint": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "greenhouse:urbanfootprint found but unreadable (HTTP 404 for https://boards-api.gree)",
   "retry_soon": true
@@ -2975,7 +2973,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "numina": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -2986,9 +2984,9 @@
   "note": "no board found"
  },
  "justice-systems-inc": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "imagesoft": {
@@ -3040,9 +3038,9 @@
   "note": "could not fetch the site: robots.txt on bisdigital.com answered HTTP 202; kept out until it answers"
  },
  "viq-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "courtcall": {
@@ -3077,7 +3075,7 @@
   "note": "careers page at /company/neubrain-careers, no ATS marker"
  },
  "unit4": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 429)",
   "retry_soon": true
@@ -3145,9 +3143,9 @@
   "note": "no board found"
  },
  "dynamic-infrastructure": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "frost-solutions": {
@@ -3213,7 +3211,7 @@
   "note": "no board found"
  },
  "precise-mrm-llc": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -3234,21 +3232,20 @@
   "note": "no board found"
  },
  "yunex-traffic": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "rhythm-engineering": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at /careers (HTTP 403)",
-  "retry_soon": true
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "sensys-networks": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "global-traffic-technologies": {
@@ -3272,7 +3269,7 @@
   "note": "no board found"
  },
  "inrix": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -3289,9 +3286,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "numetric": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "agileassets": {
@@ -3300,7 +3297,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "streetscan": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
@@ -3371,13 +3368,13 @@
   "weak": true
  },
  "kamstrup": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 429)",
   "retry_soon": true
  },
  "diehl-metering": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -3389,7 +3386,7 @@
   "retry_soon": true
  },
  "innovyze": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -3411,9 +3408,9 @@
   "weak": true
  },
  "gutermann": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "ovarro": {
@@ -3434,7 +3431,7 @@
   "weak": true
  },
  "envirosight": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -3482,10 +3479,10 @@
   "weak": true
  },
  "tomra": {
-  "on": "2026-10-25",
-  "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "machinex": {
   "on": "2026-08-20",
@@ -3494,9 +3491,9 @@
   "weak": true
  },
  "bulk-handling-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "zenrobotics": {
@@ -3580,7 +3577,7 @@
   "note": "no board found"
  },
  "sonrai-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -3592,7 +3589,7 @@
   "weak": true
  },
  "cleanrobotics": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -3778,9 +3775,9 @@
   "note": "no board found"
  },
  "gotsport": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "sportsplus": {
@@ -3831,7 +3828,7 @@
   "note": "no board found"
  },
  "ssci": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -3862,7 +3859,7 @@
   "note": "careers page at /corporate/careers-home, no ATS marker"
  },
  "hunter-industries": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -3929,7 +3926,7 @@
   "note": "careers page at /job-openings, no ATS marker"
  },
  "trailhead-labs": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 429)",
   "retry_soon": true
@@ -3945,7 +3942,7 @@
   "note": "no board found"
  },
  "jackrabbit-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -3976,7 +3973,7 @@
   "note": "no board found"
  },
  "etix": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 202)",
   "retry_soon": true
@@ -4014,9 +4011,9 @@
   "weak": true
  },
  "point": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "initlive": {
@@ -4051,13 +4048,13 @@
   "note": "no board found"
  },
  "maximum-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
  },
  "rec1": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -4102,7 +4099,7 @@
   "weak": true
  },
  "priority-dispatch": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://www.paycomonline.net/v4/at found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -4123,7 +4120,7 @@
   "note": "no board found"
  },
  "porter-lee": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /jobs (HTTP 403)",
   "retry_soon": true
@@ -4176,9 +4173,9 @@
   "note": "no board found"
  },
  "jailgeek": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "guard1": {
@@ -4198,7 +4195,7 @@
   "note": "careers page at .outlook.com/?url=https%3A%2F%2Frecruiting.paylocity.com%2Frecruiting%2Fjobs%2FAll%2F281738b4-8c12-499f-9675-d58fbec1da87%2FTW-VENDING-INC&data=04%7C01%7CKatym%40tkc32m.com%7C474b2a98f0eb4c9a324d08d9e1b4e8df%7C8c76fae6dea14cf3b8975c4b1ee817b7%7C0%7C0%7C637788989378298241%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&sdata=jncO1CHTozoOvq3u3TsTYkAzoWBT46AVHLqeAeGyL9k%3D&reserved=0, no ATS marker"
  },
  "tiger-correctional-services": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -4220,9 +4217,9 @@
   "note": "no board found"
  },
  "neuralguard": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "ecins": {
@@ -4262,13 +4259,13 @@
   "note": "no board found"
  },
  "securetech-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "precision-kiosk-technologies": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
@@ -4309,13 +4306,13 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "nexsos": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (404)",
   "retry_soon": true
  },
  "breadcrumbs": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /careers (HTTP 403)",
   "retry_soon": true
@@ -4381,7 +4378,7 @@
   "note": "no board found"
  },
  "elovate": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "workday:['wd3', 'modaxo', 'Elovate'] found but unreadable (network error: HTTPSConnectionPool(h)",
   "retry_soon": true
@@ -4501,7 +4498,7 @@
   "note": "no board found"
  },
  "stackbench": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -4549,15 +4546,15 @@
   "note": "no board found"
  },
  "hexagon": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (404)",
   "retry_soon": true
  },
  "caliber-public-safety": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "southern-software": {
@@ -4566,9 +4563,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "sun-ridge-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "eforce-software": {
@@ -4592,7 +4589,7 @@
   "note": "greenhouse:versaterm reads (31 posting(s)), but does not match 'Adashi Systems'; likely a parent or another company"
  },
  "getac-video-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (404)",
   "retry_soon": true
@@ -4608,7 +4605,7 @@
   "note": "no board found"
  },
  "nec-corporation-of-america": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -4636,10 +4633,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "adf-solutions": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "could not fetch the site: robots.txt on www.adfsolutions.com answered HTTP 520; kept out until it answers"
  },
  "griffeye": {
   "on": "2026-10-25",
@@ -4662,7 +4658,7 @@
   "note": "greenhouse:versaterm reads (31 posting(s)), but does not match 'CI Technologies'; likely a parent or another company"
  },
  "apex-officer": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -4679,7 +4675,7 @@
   "weak": true
  },
  "firstwatch": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -4749,7 +4745,7 @@
   "weak": true
  },
  "twiage": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -4760,7 +4756,7 @@
   "note": "no board found"
  },
  "angeltrack": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -4797,19 +4793,19 @@
   "weak": true
  },
  "icsolutions": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "icims:careers-tkcholdings found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
  },
  "legacy-inmate-communications": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "prodigy-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -4865,16 +4861,15 @@
   "note": "no board found"
  },
  "talitrix": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
  },
  "accurate-controls": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "montgomery-technology": {
   "on": "2026-10-04",
@@ -4894,13 +4889,13 @@
   "weak": true
  },
  "vendengine": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
  },
  "averhealth": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://www.paycomonline.net/v4/at found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -4936,25 +4931,25 @@
   "note": "no board found"
  },
  "incident-response-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
  },
  "vibrant-planet": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "ashby:Vibrant found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
   "retry_soon": true
  },
  "alchera-x": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "could not fetch the site (ConnectionError)",
+  "note": "could not fetch the site (SSLError)",
   "retry_soon": true
  },
  "insight-robotics": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "bamboohr:insight found but unreadable (non-JSON response)",
   "retry_soon": true
@@ -4971,7 +4966,7 @@
   "weak": true
  },
  "lion-group": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://recruiting.ultipro.com/LIO found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -4987,7 +4982,7 @@
   "note": "no board found"
  },
  "alertsense": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
@@ -5003,7 +4998,7 @@
   "note": "careers page at com/careers-hiring, no ATS marker"
  },
  "one-concern": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "lever:oneconcern found but unreadable (HTTP 404 for https://api.lever.co/v0)",
   "retry_soon": true
@@ -5037,7 +5032,7 @@
   "weak": true
  },
  "passport": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -5089,7 +5084,7 @@
   "note": "no board found"
  },
  "vontas": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "workday:['wd3', 'modaxo', 'Vontas'] found but unreadable (network error: HTTPSConnectionPool(h)",
   "retry_soon": true
@@ -5208,9 +5203,9 @@
   "note": "no board found"
  },
  "tss-paratransit": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "adastec": {
@@ -5312,7 +5307,7 @@
   "note": "careers page at reers, no ATS marker"
  },
  "apollo-video-technology": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
@@ -5349,13 +5344,13 @@
   "note": "no board found"
  },
  "amano-mcgann": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
  },
  "trapeze-group": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "workday:['wd3', 'modaxo', 'Trapeze'] found but unreadable (network error: HTTPSConnectionPool(h)",
   "retry_soon": true
@@ -5387,9 +5382,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "nwave-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "fybr": {
@@ -5430,7 +5425,7 @@
   "note": "no board found"
  },
  "complus-data-innovations": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -5447,7 +5442,7 @@
   "weak": true
  },
  "cts-software": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -5505,7 +5500,7 @@
   "note": "no board found"
  },
  "holon": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -5561,9 +5556,9 @@
   "note": "lever:goswift reads (11 posting(s)), but does not match 'Hopthru'; likely a parent or another company"
  },
  "saferwatch": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "aequitas-solutions": {
@@ -5578,7 +5573,7 @@
   "note": "greenhouse:emslinqinc, 9 posting(s) readable"
  },
  "escape-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -5594,7 +5589,7 @@
   "note": "careers page at et/careers, no ATS marker"
  },
  "heartland-school-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -5670,7 +5665,7 @@
   "note": "no board found"
  },
  "schoolpass": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "icims:careers-raptortech found but unreadable (HTTP 404 for https://careers-raptort)",
   "retry_soon": true
@@ -5688,7 +5683,7 @@
   "weak": true
  },
  "anonymous-alerts": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -5751,7 +5746,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "safestop": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /about/careers (HTTP 403)",
   "retry_soon": true
@@ -5763,7 +5758,7 @@
   "retry_soon": true
  },
  "kango": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectTimeout)",
   "retry_soon": true
@@ -5774,9 +5769,9 @@
   "note": "no board found"
  },
  "blue-bird-corporation": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "thomas-built-buses": {
@@ -5806,9 +5801,9 @@
   "note": "no board found"
  },
  "nimble-energy": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "airworks": {
@@ -5837,7 +5832,7 @@
   "note": "careers page at s, no ATS marker"
  },
  "current-lighting-solutions": {
-  "on": "2026-10-18",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -5875,7 +5870,7 @@
   "note": "icims:careers-selux, 6 posting(s) readable"
  },
  "stresscrete-group": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -5891,7 +5886,7 @@
   "note": "careers page at /employment, no ATS marker"
  },
  "structural-steel-products": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -5930,7 +5925,7 @@
   "weak": true
  },
  "selc-ireland": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -5989,7 +5984,7 @@
   "note": "careers page at /, no ATS marker"
  },
  "aspentech-osi": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6011,13 +6006,13 @@
   "note": "workday:['harriscomputer', 'wd3', '1'], 36 posting(s) readable"
  },
  "sentient-energy": {
-  "on": "2026-10-25",
-  "found": false,
-  "note": "could not fetch the site (SSLError)",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "camus-energy": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "greenhouse:camusenergy found but unreadable (HTTP 404 for https://boards-api.gree)",
   "retry_soon": true
@@ -6040,7 +6035,7 @@
   "note": "careers page at .com, no ATS marker"
  },
  "copperleaf-technologies": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /company/careers (HTTP 429)",
   "retry_soon": true
@@ -6067,7 +6062,7 @@
   "note": "workday:['adtran', 'wd3', 'ADTRAN'], 29 posting(s) readable"
  },
  "tarana-wireless": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6187,7 +6182,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "hub-parking-technology-usa-inc": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "breezy:assets-cdn found but unreadable (non-JSON response)",
   "retry_soon": true
@@ -6219,9 +6214,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "parkspace-by-bookflowgo": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "passur-aerospace": {
@@ -6263,15 +6258,15 @@
   "weak": true
  },
  "tadera": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "workday:['wd3', 'modaxo', 'Tadera'] found but unreadable (network error: HTTPSConnectionPool(h)",
   "retry_soon": true
  },
  "thoroughtec-simulation-usa-inc": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "tiba-parking-systems-llc": {
@@ -6286,7 +6281,7 @@
   "weak": true
  },
  "vector-airport-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://vectorus.clearcompany.com found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -6312,10 +6307,9 @@
   "note": "careers page at /en/careers, no ATS marker"
  },
  "frogparking": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "could not fetch the site: robots.txt on towne.com answered HTTP 520; kept out until it answers"
  },
  "nedap-identification-systems": {
   "on": "2026-08-20",
@@ -6341,15 +6335,15 @@
   "weak": true
  },
  "leidos-security-detection-automation": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at https://careers.leidos.com (HTTP 403)",
   "retry_soon": true
  },
  "astrophysics-inc": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "voti-detection": {
@@ -6358,7 +6352,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "teledyne-flir": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6375,7 +6369,7 @@
   "retry_soon": true
  },
  "vision-box": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -6393,7 +6387,7 @@
   "retry_soon": true
  },
  "hid-global": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6410,7 +6404,7 @@
   "note": "bamboohr:gentrack reads (2 posting(s)), but does not match 'Veovo'; likely a parent or another company"
  },
  "blip-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -6442,7 +6436,7 @@
   "note": "careers page at .com/all-jobs, no ATS marker"
  },
  "daifuku-airport-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (404)",
   "retry_soon": true
@@ -6471,7 +6465,7 @@
   "weak": true
  },
  "ink-innovation": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
@@ -6482,7 +6476,7 @@
   "note": "paylocity:Civix reads (4 posting(s)), but does not match 'GCR (Woolpert)'; likely a parent or another company"
  },
  "airit": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6510,7 +6504,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "uavionix": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6522,7 +6516,7 @@
   "weak": true
  },
  "resa": {
-  "on": "2026-10-18",
+  "on": "2026-11-01",
   "found": false,
   "note": "gave up after 45s",
   "retry_soon": true
@@ -6555,7 +6549,7 @@
   "note": "no board found"
  },
  "box": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://box.csod.com found but unreadable (network error: robots.txt on box.cso)",
   "retry_soon": true
@@ -6627,9 +6621,9 @@
   "note": "no board found"
  },
  "castus": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "coderight-inc": {
@@ -6686,9 +6680,9 @@
   "note": "no board found"
  },
  "asldeafined": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "could not fetch the site (500)",
+  "note": "blocked at /careers (HTTP 403)",
   "retry_soon": true
  },
  "cogsdale-corporation": {
@@ -6819,7 +6813,7 @@
   "note": "no board found"
  },
  "atozdatabases": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6846,7 +6840,7 @@
   "note": "no board found"
  },
  "sirsidynix": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6909,7 +6903,7 @@
   "note": "jazzhr:transparentlanguage, 0 posting(s) readable"
  },
  "innovative": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -6965,9 +6959,9 @@
   "note": "workday:volarisgroup reads (1 posting(s)), but does not match 'EnvisionWare'; likely a parent or another company"
  },
  "lote4kids": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (502)",
   "retry_soon": true
  },
  "insignia-software": {
@@ -6983,10 +6977,9 @@
   "weak": true
  },
  "can-am-technologies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at https://canamtechnologies.com/careers (HTTP 403)",
-  "retry_soon": true
+  "note": "no board found"
  },
  "myfilmfriend": {
   "on": "2026-10-18",
@@ -7098,7 +7091,7 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "civic-roundtable": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "ashby:Civic found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
   "retry_soon": true
@@ -7153,7 +7146,7 @@
   "weak": true
  },
  "muni-link": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://recruiting.ultipro.com/ROP found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -7333,7 +7326,7 @@
   "note": "bamboohr:minga, 3 posting(s) readable"
  },
  "brainfreeze": {
-  "on": "2026-10-18",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -7434,10 +7427,9 @@
   "note": "ashby:cybernut, 0 posting(s) readable"
  },
  "incident-iq": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "simpledu": {
   "on": "2026-08-23",
@@ -7481,7 +7473,7 @@
   "note": "no board found"
  },
  "pcs-revenue-control-systems-inc": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "gave up after 45s",
   "retry_soon": true
@@ -7508,10 +7500,9 @@
   "note": "paylocity:CEV-MULTIMEDIA-LTD reads (0 posting(s)), but does not match 'iCEV'; likely a parent or another company"
  },
  "harris-school-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "nutri-link-technologies": {
   "on": "2026-08-23",
@@ -7526,7 +7517,7 @@
   "weak": true
  },
  "eratesync": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /careers (HTTP 403)",
   "retry_soon": true
@@ -7625,10 +7616,9 @@
   "note": "workday:['harriscomputer', 'wd3', 'Smartworks'], 0 posting(s) readable"
  },
  "ascend-analytics": {
-  "on": "2026-10-25",
-  "found": false,
-  "note": "greenhouse:ascendanalytics found but unreadable (HTTP 404 for https://boards-api.gree)",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "bamboohr:ascendanalytics, 7 posting(s) readable"
  },
  "advanced-utility-systems": {
   "on": "2026-08-23",
@@ -7637,7 +7627,7 @@
   "weak": true
  },
  "hansen-technologies": {
-  "on": "2026-10-18",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (404)",
   "retry_soon": true
@@ -7649,9 +7639,9 @@
   "weak": true
  },
  "lambent": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "systems-software": {
@@ -7797,7 +7787,7 @@
   "weak": true
  },
  "touchnet-a-global-payments-company": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -7916,7 +7906,7 @@
   "weak": true
  },
  "wooclap": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -7959,13 +7949,12 @@
   "note": "bamboohr:bibliu, 46 posting(s) readable"
  },
  "unimarket": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "note": "no board found"
  },
  "givecard": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "ashby:GiveCard found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
   "retry_soon": true
@@ -8002,7 +7991,7 @@
   "weak": true
  },
  "modality": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /careers (HTTP 403)",
   "retry_soon": true
@@ -8070,16 +8059,14 @@
   "weak": true
  },
  "seats-one": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "could not fetch the site: robots.txt on seatsone.com answered HTTP 520; kept out until it answers"
  },
  "smowl": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "n2n-services": {
   "on": "2026-10-18",
@@ -8087,12 +8074,12 @@
   "note": "no board found"
  },
  "learnwise-ai": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
  "terminalfour": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /jobs (HTTP 403)",
   "retry_soon": true
@@ -8116,7 +8103,7 @@
   "weak": true
  },
  "niche": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /careers (HTTP 403)",
   "retry_soon": true
@@ -8206,7 +8193,7 @@
   "note": "no board found"
  },
  "honorlock": {
-  "on": "2026-10-18",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://recruiting.ultipro.com/HON found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -8329,7 +8316,7 @@
   "note": "no board found"
  },
  "collegevine": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "ashby:https://collegevine.com found but unreadable (HTTP 401 for https://api.ashbyhq.com)",
   "retry_soon": true
@@ -8411,7 +8398,7 @@
   "weak": true
  },
  "coursedog": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://coursedog.pinpointhq.com found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -8626,7 +8613,7 @@
   "note": "no board found"
  },
  "mirza": {
-  "on": "2026-10-18",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at https://www.forbes.com/sites/christinecarter/2025/09/24/nyc-childcare-navigator-scales-boosting-maternal-employment (HTTP 403)",
   "retry_soon": true
@@ -8786,7 +8773,7 @@
   "note": "no board found"
  },
  "bltn": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "ashby:Multitude found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
   "retry_soon": true
@@ -8828,13 +8815,13 @@
   "note": "no board found"
  },
  "get-group-north-america": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "bamboohr:resources found but unreadable (HTTP 404 for https://resources.bambo)",
   "retry_soon": true
  },
  "idi": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /careers (HTTP 403)",
   "retry_soon": true
@@ -9030,16 +9017,15 @@
   "note": "could not fetch the site: robots.txt on wavepointsolution.com answered HTTP 202; kept out until it answers"
  },
  "uber-technologies-inc": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (406)",
   "retry_soon": true
  },
  "soilflo": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "guard1-by-timekeeping-systems": {
   "on": "2026-10-19",
@@ -9080,15 +9066,16 @@
   "weak": true
  },
  "counting-opinions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /jobs (HTTP 404)",
   "retry_soon": true
  },
  "cott-systems": {
-  "on": "2026-09-13",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career-opportunities/)",
+  "weak": true
  },
  "speridian": {
   "on": "2026-09-13",
@@ -9097,23 +9084,23 @@
   "weak": true
  },
  "plowops": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "ai-rgus": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
+  "note": "could not fetch the site (ConnectionError)",
   "retry_soon": true
  },
  "docket": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
  "vault-technologies-inc": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
@@ -9135,12 +9122,12 @@
   "weak": true
  },
  "pulselight": {
-  "on": "2026-09-13",
+  "on": "2026-11-01",
   "found": false,
   "note": "no board found"
  },
  "monster-government-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -9164,10 +9151,10 @@
   "weak": true
  },
  "abnormal-ai": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "could not fetch the site (ConnectTimeout)",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "action1": {
   "on": "2026-10-19",
@@ -9213,7 +9200,7 @@
   "note": "greenhouse:coreview, 20 posting(s) readable"
  },
  "cornerstone-ondemand": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://marketplace.csod.com found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -9361,7 +9348,7 @@
   "note": "html:reveal reads (0 posting(s)), but does not match 'Logikcull'; likely a parent or another company"
  },
  "igel": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://igeltechnology.careers.hib found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -9377,7 +9364,7 @@
   "note": "workday:['kyriba', 'wd5', 'Kyriba-Careers'], 18 posting(s) readable"
  },
  "omnissa": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (ReadTimeout)",
   "retry_soon": true
@@ -9405,7 +9392,7 @@
   "weak": true
  },
  "onestream": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://recruiting.ultipro.com/ONE found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -9435,16 +9422,15 @@
   "weak": true
  },
  "precisely": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers-and-culture/)",
+  "weak": true
  },
  "qlik": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "note": "no board found"
  },
  "pluralsight": {
   "on": "2026-10-19",
@@ -9452,21 +9438,21 @@
   "note": "workday:['pluralsight', 'wd1', 'Careers'], 14 posting(s) readable"
  },
  "pulpstream": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "powerfront": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/jobs)",
+  "weak": true
  },
  "repay": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
-  "note": "gave up after 45s",
+  "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
  },
  "socure": {
@@ -9589,9 +9575,9 @@
   "note": "ashby:stack-ai, 23 posting(s) readable"
  },
  "verint-systems": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
-  "note": "gave up after 45s",
+  "note": "oracle:https://saasfaprod1.fa.ocs.oraclec found but unreadable (HTTP 503 for https://saasfaprod1.fa.)",
   "retry_soon": true
  },
  "genesys": {
@@ -9600,10 +9586,10 @@
   "note": "no board found"
  },
  "xakia": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "wex": {
   "on": "2026-10-19",
@@ -9670,7 +9656,7 @@
   "weak": true
  },
  "labware-inc": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -9774,10 +9760,10 @@
   "note": "no board found"
  },
  "omnitronics-inc": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "blocked at /company-profile/employment (HTTP 403)",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company-profile/employment/)",
+  "weak": true
  },
  "higherground-inc": {
   "on": "2026-10-19",
@@ -9913,13 +9899,13 @@
   "weak": true
  },
  "trafera": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
  },
  "tellabs": {
-  "on": "2026-10-19",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -10170,10 +10156,9 @@
   "weak": true
  },
  "poll-everywhere": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "lever:polleverywhere found but unreadable (network error: HTTPSConnectionPool(h)",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "lever:polleverywhere, 0 posting(s) readable"
  },
  "screencomply": {
   "on": "2026-10-19",
@@ -10257,10 +10242,10 @@
   "note": "workday:merative reads (30 posting(s)), but does not match 'Curam'; likely a parent or another company"
  },
  "policymap": {
-  "on": "2026-10-19",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "onit": {
   "on": "2026-10-19",
@@ -10331,7 +10316,7 @@
   "note": "no board found"
  },
  "tootris-child-care-solutions": {
-  "on": "2026-10-20",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -10370,7 +10355,7 @@
   "note": "could not fetch the site: robots.txt asks crawlers not to read www.linkedin.com"
  },
  "propylon": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "icims:globalcareers-rws found but unreadable (robots.txt asks crawlers not to read)",
   "retry_soon": true
@@ -10415,13 +10400,13 @@
   "weak": true
  },
  "opexus": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
  },
  "hdl-companies": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "could not fetch the site (SSLError)",
   "retry_soon": true
@@ -10481,7 +10466,7 @@
   "weak": true
  },
  "vant4ge": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /careers (HTTP 403)",
   "retry_soon": true
@@ -10586,7 +10571,7 @@
   "note": "no board found"
  },
  "learning-ally": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
   "retry_soon": true
@@ -10626,7 +10611,7 @@
   "weak": true
  },
  "hotb-software-solutions": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -10637,7 +10622,7 @@
   "note": "no board found"
  },
  "executivepulse": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at /company/careers (HTTP 403)",
   "retry_soon": true
@@ -10795,7 +10780,7 @@
   "note": "no board found"
  },
  "yardi-systems": {
-  "on": "2026-10-25",
+  "on": "2026-11-01",
   "found": false,
   "note": "blocked at the door (HTTP 403)",
   "retry_soon": true
@@ -10820,5 +10805,315 @@
   "on": "2026-10-25",
   "found": false,
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "felt": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "24pet": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "claroty": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "journyx": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "irth": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "workable:irth-solutions, 32 posting(s) readable"
+ },
+ "here-technologies": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "icims:careers-here, 37 posting(s) readable"
+ },
+ "cgi-technologies-and-solutions-inc": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/us/en-us/careers)",
+  "weak": true
+ },
+ "drivewyze-inc": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "blocked at /careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "decision-lens": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
+ },
+ "ms2": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers)",
+  "weak": true
+ },
+ "4m-analytics": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "pointerra": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "check4tech-corp": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "sytis": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "tomtom-international": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "hotwash": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "fireprograms-software": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "haivision": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
+ },
+ "respondermap": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "mappedin": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
+ },
+ "tango-tango-inc": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "userful-corporation": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
+ },
+ "sims-u-share": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "command-established": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "resilient-link": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "streetwise-response-software": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "alpine-software-corp": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "arcos-inc": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "workable:arcos, 5 posting(s) readable"
+ },
+ "dragos": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "greenhouse:dragos, 46 posting(s) readable"
+ },
+ "decon-track-inc": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "ecometricx": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "aveva-software-llc": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "workday:['aveva', 'wd3', 'AVEVA_careers'], 151 posting(s) readable"
+ },
+ "copa-data": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/career/)",
+  "weak": true
+ },
+ "edmi": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "firescape-inc": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "homeboost": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "esmart-systems-as": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
+ },
+ "kevala-inc": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "lever:Kevala found but unreadable (HTTP 404 for https://api.lever.co/v0)",
+  "retry_soon": true
+ },
+ "gridtwin": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "noteworthy-ai": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "rippling:noteworthy-ai-inc, 1 posting(s) readable"
+ },
+ "primate-technologies-llc": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "oati": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "utilismart-corporation": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
+ },
+ "buzz-solutions": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "greenhouse:buzzsolutions, 14 posting(s) readable"
+ },
+ "easymetering-llc": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "ubiik-inc": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career/)",
+  "weak": true
+ },
+ "mprest": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/mprest_careers/)",
+  "weak": true
+ },
+ "clean-power-research": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
+ },
+ "etap-operation-technology": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "workday:aveva reads (23 posting(s)), but does not match 'ETAP'; likely a parent or another company"
+ },
+ "electrical-grid-monitoring": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "weave-grid-inc": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "greenhouse:weavegrid found but unreadable (HTTP 404 for https://boards-api.gree)",
+  "retry_soon": true
+ },
+ "ensight-plus-llc": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "honeywell-smart-energy": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "oracle:ibqbjb reads (0 posting(s)), but does not match 'Honeywell Smart Energy'; likely a parent or another company"
+ },
+ "smart-energy-water": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/sew-career)",
+  "weak": true
+ },
+ "woods-poole-economics-inc": {
+  "on": "2026-11-01",
+  "found": false,
+  "note": "no board found"
+ },
+ "pci-energy-solutions": {
+  "on": "2026-11-01",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
  }
 }
