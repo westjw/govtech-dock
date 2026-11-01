@@ -732,7 +732,11 @@ const INTRO = {
     + 'of government their conference says they sell to, or would not load for our crawler. About '
     + 'half really are their website — a catalogue with no sentences, a page that says too '
     + 'little, a bot wall — and only a look settles it. Open the site, then say whose it is. '
-    + 'Nothing publishes without a website, so "theirs" is what puts a supplier on SLED HQ.'
+    + 'Nothing publishes without a website, so "theirs" is what puts a supplier on SLED HQ.',
+  logos: 'Logos the nightly found by guessing from a company’s page, parked until you look. '
+    + 'An icon a site declares for itself goes live on its own; one picked out of the page — '
+    + 'where a customer’s logo or a stock photo hides — waits here. Use it, or say it is not '
+    + 'theirs: that image is never taken again, and the next night tries their site once more.'
 };
 
 async function boot() {
@@ -5607,6 +5611,57 @@ RENDER.review = r => {
     toast(res.message); n.remove(); refreshCounts();
   };
   row.append(yes, dismissBtn('review', r.id, 'No — different company'));
+  n.appendChild(row);
+  return n;
+};
+
+/* A PARKED LOGO, shown as the board draws it: on the light plate and on the
+   dark one, at tile size, so a white mark or a stock photo shows for what it
+   is. The image is the admin's own copy under /assets/logos/review/. */
+RENDER.logos = r => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, r.name || r.id));
+  const tiles = el('div', 'row');
+  for (const bg of ['#e2e8f0', '#161B29']) {
+    const t = el('div');
+    t.style.cssText = 'width:64px;height:64px;border-radius:12px;display:flex;'
+      + 'align-items:center;justify-content:center;background:' + bg;
+    const img = el('img');
+    img.src = r.src; img.alt = '';
+    img.style.cssText = 'max-width:48px;max-height:48px';
+    t.appendChild(img);
+    tiles.appendChild(t);
+  }
+  n.appendChild(tiles);
+  if (r.website) {
+    const w = el('div', 'kv');
+    const a = el('a', null, r.website); a.href = r.website; a.target = '_blank'; a.rel = 'noopener';
+    w.appendChild(a); n.appendChild(w);
+  }
+  const from = [r.via ? 'found via ' + r.via : 'source not recorded', r.url ? 'at ' + r.url : '']
+    .filter(Boolean).join(' ');
+  n.appendChild(el('div', 'kv', [from, r.kb + ' KB', r.open_roles ? r.open_roles + ' open roles' : '']
+    .filter(Boolean).join(' · ')));
+  if (r.has_live) n.appendChild(el('div', 'kv', 'They already have a live logo; this one can only be refused.'));
+  const row = el('div', 'row');
+  const why = el('input');
+  why.type = 'text'; why.placeholder = 'Why not, if not (optional) — e.g. a customer’s logo';
+  if (!r.has_live) {
+    const yes = el('button', 'act go', 'Use this logo');
+    yes.onclick = async () => {
+      const res = await api('/api/logo-accept', {id: r.id});
+      if (res.error) return toast(res.error, true);
+      toast(res.message); n.remove(); refreshCounts();
+    };
+    row.appendChild(yes);
+  }
+  const no = el('button', 'act', 'Not theirs');
+  no.onclick = async () => {
+    const res = await api('/api/logo-refuse', {id: r.id, why: why.value.trim()});
+    if (res.error) return toast(res.error, true);
+    toast(res.message); n.remove(); refreshCounts();
+  };
+  row.append(no, why);
   n.appendChild(row);
   return n;
 };

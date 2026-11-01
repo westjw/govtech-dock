@@ -2400,6 +2400,12 @@ def check_admin_writes_are_journalled() -> int:
         ("founded_provenance", "founded_provenance.json"),
         ("act_save_website", "discovery_log.json"),
         ("act_retry_board", "discovery_log.json"),
+        # A logo ruling moves or deletes a FILE as well as writing this record,
+        # and the journal can restore the record but not the file: an Undo
+        # would leave a live logo nothing says was accepted, or a refusal for
+        # a file back in the queue. The record is kept, keyed by company, with
+        # its image hash, by and at; the file's history is git's (2026-11-01).
+        ("_rule_logo", "logo_rulings.json"),
     }
     errors = 0
     seen = set()
@@ -9180,9 +9186,12 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
                     ('<svg viewBox="0 0 10 10"><path d="M0 0h10"/><title>Acme</title></svg>', False)):
         if logo_runs(t) != want:
             errors += fail(f"the logo scanner {'passed' if want else 'flagged'} {t[:60]!r}")
-    for f in sorted((ROOT / "assets" / "logos").glob("*.svg")):
+    # rglob, not glob: review/ and pending/ are not on the board but
+    # build_site copies the whole folder into public/ (2026-11-01)
+    for f in sorted((ROOT / "assets" / "logos").rglob("*.svg")):
         if logo_runs(f.read_text(errors="replace")):
-            errors += fail(f"assets/logos/{f.name} carries script; replace it with a plain image")
+            rel = f.relative_to(ROOT / "assets" / "logos")
+            errors += fail(f"assets/logos/{rel} carries script; replace it with a plain image")
 
     # 7. NO LAUNCH ON A POLICY THAT ONLY REPORTS
     gated = re.search(r"export const GATED\s*=\s*(true|false)", (ROOT / "functions" / "_gate.js").read_text())
@@ -36932,6 +36941,184 @@ def check_the_claude_inbox_lists_and_settles() -> int:
     return errors
 
 
+def check_the_nightly_parks_a_guessed_logo_and_lands_a_declared_one() -> int:
+    """Owner, 2026-11-01: "add it to the nightly" - and its guesses wait.
+
+    Driven through fetch_logos.fetch_one against two stubbed sites, with the
+    network, the folders and the rulings file all redirected: an icon a site
+    declares in its head lands live; a logo picked out of the page's markup
+    is parked in review/, never live; an image the desk refused is never
+    landed again; and due() picks only companies with nothing live or parked,
+    retrying a refused one once. The workflow step itself is checked too.
+    """
+    import hashlib, shutil, tempfile
+    import ats
+    import fetch_logos as fl
+    errors = 0
+    png = lambda tag: b"\x89PNG\r\n\x1a\n" + tag.encode() * (200 // len(tag) + 1)
+    alpha_icon, beta_logo = png("alpha"), png("beta")
+    pages = {
+        "https://alpha.example": "<html><head><title>Alpha</title>"
+                                 '<link rel="icon" href="/favicon.png"></head>'
+                                 "<body>" + "Alpha sells to cities. " * 80 + "</body></html>",
+        "https://beta.example": "<html><head><title>Beta</title></head><body>"
+                                '<img src="/img/beta-logo.png" alt="Beta">'
+                                + "Beta sells to counties. " * 80 + "</body></html>",
+    }
+    files = {"https://alpha.example/favicon.png": alpha_icon,
+             "https://beta.example/img/beta-logo.png": beta_logo}
+
+    class R:
+        def __init__(self, url, status, body):
+            self.url, self.status_code, self.ok = url, status, status == 200
+            self.content = body if isinstance(body, bytes) else body.encode()
+            self.text = body if isinstance(body, str) else ""
+            self.headers = {"content-type": "text/html" if isinstance(body, str) else "image/png"}
+
+    def follow(url, _get):
+        key = url.rstrip("/")
+        if key in pages:
+            return R(url, 200, pages[key])
+        if url in files:
+            return R(url, 200, files[url])
+        return R(url, 404, "")
+
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    real = (ats.follow, fl.OUT, fl.REVIEW, fl.PENDING, fl.RULINGS, fl.time.sleep)
+    try:
+        ats.follow = follow
+        fl.time.sleep = lambda s: None
+        fl.OUT = tmp / "logos"
+        fl.REVIEW, fl.PENDING = fl.OUT / "review", fl.OUT / "pending"
+        fl.RULINGS = tmp / "logo_rulings.json"
+        fl.REVIEW.mkdir(parents=True)
+        (fl.REVIEW / "alpha.svg").write_text("<svg/>")   # parked from an earlier run
+        a = fl.fetch_one(("alpha", "https://alpha.example", "Alpha", False))
+        if not (a["ok"] and not a["review"] and (fl.OUT / "alpha.png").exists()):
+            errors += fail(f"an icon the site declares did not land live: {a}")
+        if (fl.REVIEW / "alpha.svg").exists():
+            errors += fail("a live logo left the company's parked one in the desk's queue")
+        b = fl.fetch_one(("beta", "https://beta.example", "Beta", False))
+        if not (b["ok"] and b["review"] and (fl.REVIEW / "beta.png").exists()
+                and not (fl.OUT / "beta.png").exists()):
+            errors += fail(f"a logo guessed from the page's markup was not parked "
+                           f"for a person: {b}")
+        if real[2].parent != real[1]:
+            errors += fail("review/ is not a folder inside assets/logos/, so the build "
+                           "would read parked logos as live ones")
+        # the desk refused beta's: the same image is never landed again
+        (fl.REVIEW / "beta.png").unlink()
+        fl.RULINGS.write_text(json.dumps({"beta": {
+            "ruling": "refuse", "sha256": hashlib.sha256(beta_logo).hexdigest()}}))
+        again = fl.fetch_one(("beta", "https://beta.example", "Beta", False))
+        if again["ok"] or any(fl.OUT.rglob("beta.*")):
+            errors += fail(f"an image the desk refused was landed again: {again}")
+    finally:
+        (ats.follow, fl.OUT, fl.REVIEW, fl.PENDING, fl.RULINGS, fl.time.sleep) = real
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    log = {"tried": {"ok": False}, "gone": {"ok": True, "review": True},
+           "live": {"ok": True}, "parked": {"ok": True, "review": True}}
+    have, parked = {"live"}, {"parked"}
+    for cid, retry, want in (("never", False, True), ("tried", False, False),
+                             ("tried", True, True), ("gone", False, True),
+                             ("live", True, False), ("parked", True, False)):
+        if fl.due(cid, log, have, parked, retry) != want:
+            errors += fail(f"due({cid!r}, retry={retry}) is {not want}; a nightly would "
+                           f"{'skip' if want else 'refetch'} it")
+
+    # and the run itself chooses with due(), not with a rule of its own
+    import ast as _ast
+    tree = _ast.parse((ROOT / "scripts" / "fetch_logos.py").read_text())
+    main_fn = next((n for n in tree.body if isinstance(n, _ast.FunctionDef) and n.name == "main"), None)
+    if main_fn is None or not any(isinstance(n, _ast.Call) and isinstance(n.func, _ast.Name)
+                                  and n.func.id == "due" for n in _ast.walk(main_fn)):
+        errors += fail("fetch_logos.main picks companies without due(), so a parked or "
+                       "refused logo is not what decides the next run")
+
+    wf = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+    step = re.search(r"- name: Find logos[^\n]*\n(.*?)(?=\n      - name:)", wf, re.S)
+    body = step.group(1) if step else ""
+    if not step or wf.index("- name: Find logos") > wf.index("- name: Build the job board"):
+        errors += fail("the nightly does not look for logos before it builds the board")
+    elif (not re.search(r"^\s*run:[^\n]*fetch_logos\.py(?![^\n]*--retry)", body, re.M)
+          or not re.search(r"^\s*continue-on-error:\s*true", body, re.M)):
+        errors += fail("the nightly's logo step must run fetch_logos.py without --retry "
+                       "and must never fail the run")
+    return errors
+
+
+def check_the_desk_rules_on_a_parked_logo() -> int:
+    """"Logos to check": a parked logo is shown, and the desk's ruling moves it.
+
+    "Use this logo" moves it up a level, live; "Not theirs" deletes it and
+    keeps its hash so no run lands it again; neither accepts a path for an id.
+    Driven through admin.q_logos and the two actions on a temp data folder and
+    temp logo folders. And the website-save step calls fetch_one the way it
+    answers: it unpacked a 2-tuple into three names and said "could not reach
+    the site" for every website saved at the desk (found 2026-11-01).
+    """
+    import ast as _ast, hashlib, shutil, tempfile
+    import admin
+    import fetch_logos as fl
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    real = (admin.DATA, fl.OUT, fl.REVIEW, fl.RULINGS)
+    try:
+        admin.DATA = tmp / "data"
+        admin.DATA.mkdir()
+        fl.OUT = tmp / "logos"
+        fl.REVIEW = fl.OUT / "review"
+        fl.RULINGS = admin.DATA / "logo_rulings.json"
+        fl.REVIEW.mkdir(parents=True)
+        good, bad = b"\x89PNG\r\n\x1a\ngood" * 20, b"\x89PNG\r\n\x1a\nbad!" * 20
+        (fl.REVIEW / "acme.png").write_bytes(good)
+        (fl.REVIEW / "zeta.png").write_bytes(bad)
+        (admin.DATA / "logo_log.json").write_text(json.dumps(
+            {"acme": {"ok": True, "review": True, "via": "markup-logo", "url": "https://acme.example/l.png"}}))
+        rows = admin.q_logos([{"id": "acme", "name": "Acme"}, {"id": "zeta", "name": "Zeta"}],
+                             {"organizations": [{"id": "zeta", "open_roles": 4}]})
+        if [r["id"] for r in rows] != ["zeta", "acme"] or rows[1]["via"] != "markup-logo" \
+                or rows[0]["src"] != "/assets/logos/review/zeta.png":
+            errors += fail(f"Logos to check does not list the parked logos, most-hiring "
+                           f"first, with where each came from: {rows}")
+        out = admin.act_logo_accept({"id": "acme"})
+        if out.get("error") or not (fl.OUT / "acme.png").exists() or (fl.REVIEW / "acme.png").exists():
+            errors += fail(f"'Use this logo' did not move the parked logo live: {out}")
+        out = admin.act_logo_refuse({"id": "zeta", "why": "a customer's logo"})
+        rul = json.loads(fl.RULINGS.read_text()) if fl.RULINGS.exists() else {}
+        if out.get("error") or (fl.REVIEW / "zeta.png").exists() or any(fl.OUT.glob("zeta.*")):
+            errors += fail(f"'Not theirs' did not take the parked logo away: {out}")
+        if (rul.get("zeta") or {}).get("sha256") != hashlib.sha256(bad).hexdigest() \
+                or hashlib.sha256(bad).hexdigest() not in fl.refused_hashes() \
+                or (rul.get("acme") or {}).get("ruling") != "accept":
+            errors += fail(f"a refusal is not kept by the image's hash where the finder "
+                           f"reads it: {rul}")
+        for body in ({"id": "../acme"}, {"id": "a*"}, {"id": 5}, {"id": "acme"}):
+            if not admin.act_logo_accept(body).get("error"):
+                errors += fail(f"'Use this logo' accepted {body!r}")
+        (fl.REVIEW / "acme.png").write_bytes(bad)       # parked again, live one present
+        if not admin.act_logo_accept({"id": "acme"}).get("error"):
+            errors += fail("'Use this logo' replaced a company's live logo")
+    finally:
+        admin.DATA, fl.OUT, fl.REVIEW, fl.RULINGS = real
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    tree = _ast.parse((ROOT / "scripts" / "admin.py").read_text())
+    calls = [n for n in _ast.walk(tree) if isinstance(n, _ast.Call)
+             and isinstance(n.func, _ast.Attribute) and n.func.attr == "fetch_one"]
+    if not calls or any(not (len(c.args) == 1 and isinstance(c.args[0], _ast.Tuple)
+                             and len(c.args[0].elts) == 4) for c in calls):
+        errors += fail("the desk calls fetch_logos.fetch_one with something other than "
+                       "(id, site, name, pending)")
+    unpacked = [n for n in _ast.walk(tree) if isinstance(n, _ast.Assign)
+                and isinstance(n.targets[0], _ast.Tuple) and isinstance(n.value, _ast.Call)
+                and isinstance(n.value.func, _ast.Attribute) and n.value.func.attr == "fetch_one"]
+    if unpacked:
+        errors += fail("the desk unpacks fetch_one's answer as a tuple; it answers a dict")
+    return errors
+
+
 def check_a_gate_stamp_belongs_to_one_checkout() -> int:
     """The landing doors' "--gate has printed in this checkout" stamps are
     never committed, and a bare `promote_cards --land` is refused.
@@ -38164,6 +38351,8 @@ def main() -> int:
     errors += check_admin_gates()
     errors += check_a_shift_deals_rules_and_undoes_what_it_says()
     errors += check_a_gate_stamp_belongs_to_one_checkout()
+    errors += check_the_nightly_parks_a_guessed_logo_and_lands_a_declared_one()
+    errors += check_the_desk_rules_on_a_parked_logo()
     errors += check_the_shift_screen_keeps_the_belts_rules()
     errors += check_a_shift_counts_each_ruling_once()
     errors += check_the_shift_runs_right_under_its_own_script()

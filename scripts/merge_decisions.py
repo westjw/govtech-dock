@@ -42,6 +42,8 @@ DECISION_FILES = {
     "data/placement_rulings.json", "data/vendor_scope_decisions.json",
     "data/web_merge_rulings.json", "data/web_founded_rulings.json",
     "data/web_user_rulings.json", "data/admin_dismissed.json",
+    # the desk's logo rulings, keyed by company (2026-11-01)
+    "data/logo_rulings.json",
 }
 
 

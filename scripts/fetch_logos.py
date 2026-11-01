@@ -14,6 +14,12 @@ calls a logo, og:image, then a short list of conventional paths. Nothing is
 invented - a company with no reachable icon simply keeps its initials tile,
 which is a fine fallback and is already what the board draws.
 
+WHAT GOES LIVE ON ITS OWN (owner, 2026-11-01, when this joined the nightly):
+only an icon the site declares for itself (`LIVE_VIA`). A logo picked out of
+the page's markup or found at a guessed path is parked in assets/logos/review/
+and waits for the desk's "Logos to check"; a refusal there is kept by the
+image's hash, and the next run tries the page's next candidate once.
+
   python scripts/fetch_logos.py [--limit 400] [--all] [--retry] [--stats]
   python scripts/fetch_logos.py --audit      # offline: logos that may be
                                              # somebody else's brand
@@ -55,7 +61,20 @@ OUT = ROOT / "assets" / "logos"
 # and the file is moved up one level. Binding a logo to an unconfirmed website
 # is exactly how the wrong company's mark would end up on a card permanently.
 PENDING = OUT / "pending"
+# PARKED FOR A PERSON'S LOOK (owner, 2026-11-01: the nightly finds logos, and
+# its guesses wait). Not live for the same reason as pending/: the build never
+# descends. The desk's "Logos to check" moves one up a level, or refuses it.
+REVIEW = OUT / "review"
 LOG = DATA / "logo_log.json"
+# The desk's rulings on parked logos, {company id: ruling}. A refusal carries
+# the image's sha256, and no run lands that image again.
+RULINGS = DATA / "logo_rulings.json"
+# THE ICON A SITE DECLARES FOR ITSELF goes live on its own; a logo picked out
+# of the page's markup, or found at a guessed path, waits for a person.
+# Measured on the first nightly-sized batch (31, 2026-11-01): all three wrong
+# logos - a customer's mark off a case study, two social-share photos - came
+# from the markup; none came from a declared icon.
+LIVE_VIA = {"apple-touch-icon", "declared-icon", "manifest"}
 PROPOSED_SITES = DATA / "proposed_websites.json"
 MIN_BYTES = 120          # anything smaller is a 1x1 or an error page
 MAX_BYTES = 220_000      # a logo, not a hero image
@@ -403,9 +422,9 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
     import requests
     sys.path.insert(0, str(ROOT / "scripts"))
     import ats
-    out_dir = PENDING if pending else OUT
     res = {"id": cid, "ok": False, "note": "", "via": None, "url": None,
-           "pending": pending}
+           "pending": pending, "review": False}
+    refused = refused_hashes()
     page, base, status = "", site, 0
     last = "site unreachable"
     sess = requests.Session()
@@ -488,8 +507,8 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
             if generic:
                 last = f"only icon is the {generic}"
                 continue
-            if digest in NOT_THEIRS:
-                last = f"ruled not theirs: {NOT_THEIRS[digest]}"
+            if digest in refused:
+                last = f"ruled not theirs: {refused[digest]}"
                 continue
             ext, why = sniff(ir.content, ir.headers.get("content-type", ""))
             if not ext:
@@ -500,21 +519,64 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
                     oversize = (f"logo found but {len(ir.content) // 1024}KB, "
                                 f"over the {MAX_BYTES // 1024}KB cap")
                 continue
+            via = classify_source(url, base, page)
+            review = not pending and via not in LIVE_VIA
+            out_dir = PENDING if pending else REVIEW if review else OUT
             try:
                 dest = logo_path(cid, ext, out_dir)
             except ValueError as exc:
                 res["note"] = str(exc)
                 return res
             out_dir.mkdir(parents=True, exist_ok=True)
+            # ONE FILE PER COMPANY PER FOLDER, as logos.py keeps it: a parked
+            # .png beside an older parked .svg would show the desk either.
+            for old in out_dir.glob(f"{cid}.*"):
+                if old != dest:
+                    old.unlink()
+            if out_dir == OUT:
+                # a live logo answers the question a parked one was asking
+                for old in REVIEW.glob(f"{cid}.*"):
+                    old.unlink()
             dest.write_bytes(ir.content)
             res.update(ok=True, note=tidy(url)[:120], url=tidy(url)[:300],
-                       ext=ext, via=classify_source(url, base, page))
+                       ext=ext, via=via, review=review, sha256=digest)
             return res
         except Exception:
             continue
     res["note"] = (oversize or ("no readable icon on the site" if tried
                                 else "no candidate urls on the page"))
     return res
+
+
+def refused_hashes() -> dict:
+    """{sha256: why} for every image no run may land: the ones ruled by eye in
+    this file, and the ones the desk refused in data/logo_rulings.json."""
+    out = dict(NOT_THEIRS)
+    try:
+        rulings = json.loads(RULINGS.read_text())
+    except (OSError, ValueError):
+        rulings = {}
+    for cid, r in (rulings.items() if isinstance(rulings, dict) else []):
+        if isinstance(r, dict) and r.get("ruling") == "refuse" and r.get("sha256"):
+            out[r["sha256"]] = f"refused at the desk for {cid}" + (
+                f": {r['why']}" if r.get("why") else "")
+    return out
+
+
+def due(cid: str, log: dict, have: set, parked: set, retry: bool) -> bool:
+    """Whether a run should look for this company's logo.
+
+    Never when one is live or parked for a look. Otherwise when it was never
+    tried, when --retry says so, or when the last thing found was parked and
+    is gone - the desk refused it, so the next candidate on the page gets its
+    turn once (the refused image itself is skipped by its hash).
+    """
+    if cid in have or cid in parked:
+        return False
+    e = log.get(cid)
+    if e is None or retry:
+        return True
+    return bool(isinstance(e, dict) and e.get("review"))
 
 
 def tidy(url: str) -> str:
@@ -667,6 +729,7 @@ def main() -> int:
     log = json.loads(LOG.read_text()) if LOG.exists() else {}
     have = {f.stem for f in OUT.glob("*.*")}
     parked = {f.stem for f in PENDING.glob("*.*")} if PENDING.exists() else set()
+    waiting = {f.stem for f in REVIEW.glob("*.*")} if REVIEW.exists() else set()
 
     if a.stats:
         print(f"{len(have)} logos on file, {len(log)} companies attempted")
@@ -690,7 +753,7 @@ def main() -> int:
             site, pending = proposed.get(cid), True
             if not site or cid in parked:
                 continue
-        elif not (a.retry or cid not in log):
+        elif not due(cid, log, have, waiting, a.retry):
             continue
         todo.append((cid, site, c.get("name") or cid, pending))
     # Companies with open roles first: they are the ones actually on screen.
@@ -711,10 +774,13 @@ def main() -> int:
             if res["ok"]:
                 entry["via"] = res["via"]
                 entry["url"] = res["url"]
+                entry["sha256"] = res.get("sha256")
                 if res["pending"]:
                     # not live, and the log must say so or the next reader
                     # will count it as coverage it does not have
                     entry["pending"] = True
+                if res.get("review"):
+                    entry["review"] = True      # parked for the desk, not live
                 got += 1
                 by_via[res["via"]] = by_via.get(res["via"], 0) + 1
             log[res["id"]] = entry
@@ -724,6 +790,9 @@ def main() -> int:
     total = sum(f.stat().st_size for f in OUT.glob("*.*"))
     print(f"{got} of {len(todo)} found · {len(list(OUT.glob('*.*')))} on file · "
           f"{total/1024:.0f} KB total")
+    waiting_now = len(list(REVIEW.glob("*.*"))) if REVIEW.exists() else 0
+    if waiting_now:
+        print(f"  {waiting_now} parked in review/ for the desk's \"Logos to check\"")
     for via, n in sorted(by_via.items(), key=lambda kv: -kv[1]):
         print(f"    {n:4d} via {via}")
     return 0

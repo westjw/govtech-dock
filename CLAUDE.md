@@ -2951,6 +2951,39 @@ confirmed by a skeptic each). The fixes, each with a guard broken to prove it:
   end-of-day inbox reads ~/govtech-dock-launch (it read the stale checkout
   for 23 days); the four Sep-30 items were carried over.
 
+## Logos: the nightly finds them, the desk checks the guesses (owner, 2026-11-01)
+
+Owner, on a job card full of letter tiles: "logos?", then "yes, add it to the
+nightly". 38 hiring companies had none: 24 never tried, because
+`fetch_logos.py` only ever ran by hand, and 14 that failed once. A hand run
+found 29, and three of those were wrong (IMPLAN's was a customer's logo off
+its case studies, Oracle's two were social-share photos, Merit's was Aspire's
+off the website on file). All three came from the page's markup; none from
+an icon the site declares.
+
+- **The nightly runs `fetch_logos.py --limit 80` before the build** (its
+  step in refresh.yml, `continue-on-error`), so a logo found is on the cards
+  the same morning. Never `--retry` there: a site that said 403 yesterday
+  mostly says it again; retrying failures stays a person's call.
+- **What goes live on its own** is `fetch_logos.LIVE_VIA`: an apple-touch
+  icon, a declared icon, a manifest icon. Anything else (a logo picked out
+  of the markup, og:image, a guessed path) is parked in
+  `assets/logos/review/`, which the build never reads.
+- **The desk's "Logos to check"** (admin queue `logos`) shows a parked logo
+  on both plates. "Use this logo" moves it up a level; "Not theirs" deletes
+  it and keeps its sha256 in `data/logo_rulings.json`, which every run reads,
+  so that image is never landed again, and the next nightly tries the
+  site's next candidate once (`fetch_logos.due`). Not journaled, on purpose:
+  the journal can restore the record but not the file it moved.
+- **Refused by content in code** (`NOT_THEIRS`) are the images ruled by eye
+  before the desk queue existed.
+- **The desk's website save fetches a logo again.** It unpacked
+  `fetch_one`'s dict answer as a 2-tuple, so it raised and said "could not
+  reach the site" for every website saved at the desk.
+- Guards: `check_the_nightly_parks_a_guessed_logo_and_lands_a_declared_one`,
+  `check_the_desk_rules_on_a_parked_logo`; the SVG script scan now reads the
+  subfolders too, since `build_site` copies them into public/.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).

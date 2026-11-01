@@ -167,6 +167,19 @@ jobs:
           SLEDJOBS_FEED_TOKEN: ${{ secrets.SLEDJOBS_FEED_TOKEN }}
         run: python scripts/hq_bid_records.py --write
 
+      - name: Find logos for hiring companies that have none
+        # Owner, 2026-11-01: "add it to the nightly". BEFORE the build, which
+        # globs assets/logos/ into the board's manifest, so a logo found here
+        # is on the cards tonight. Only companies never tried (or whose parked
+        # logo the desk refused); --retry stays a person's call, since a site
+        # that said 403 yesterday mostly says it again. An icon the site
+        # declares goes live; a logo guessed from the page is parked in
+        # assets/logos/review/ for the desk's "Logos to check".
+        # continue-on-error because a logo is never worth a day's crawl.
+        continue-on-error: true
+        timeout-minutes: 20
+        run: python scripts/fetch_logos.py --limit 80
+
       - name: Build the job board and market intel
         id: build
         # Keeps every posting, not only AE reqs: the board and the intel both

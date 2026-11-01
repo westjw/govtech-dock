@@ -3469,15 +3469,20 @@ def act_save_website(body: dict) -> dict:
     steps = [f"website saved{' and renamed to ' + name if name else ''}"]
 
     # 2. the logo, straight away
+    # fetch_one takes (id, site, name, pending) and answers a dict. This
+    # unpacked a 2-tuple into three names, so it raised every time and said
+    # "could not reach the site" for every website saved here (2026-11-01).
     got_logo = False
     try:
         import fetch_logos
-        _, ext, note = fetch_logos.fetch_one((cid, url))
-        if ext:
+        res = fetch_logos.fetch_one((cid, url, c.get("name") or cid, False))
+        if res.get("ok") and res.get("review"):
+            steps.append("logo found, waiting in Logos to check")
+        elif res.get("ok"):
             got_logo = True
             steps.append("logo found")
         else:
-            steps.append("no logo on the site")
+            steps.append(f"no logo on the site ({res.get('note') or 'none found'})")
     except Exception as exc:  # noqa: BLE001 - a logo is never worth a 500
         steps.append("could not reach the site for a logo")
 
@@ -3992,13 +3997,111 @@ def who_is(email: str) -> dict | None:
     return None
 
 
+def q_logos(companies, board) -> list:
+    """Logos the nightly found by guessing, parked until a person looks.
+
+    Owner, 2026-11-01: the nightly finds logos, and its guesses wait. An icon
+    a site declares for itself goes live on its own (fetch_logos.LIVE_VIA);
+    one picked out of the page's markup is parked in assets/logos/review/,
+    because that is where all three wrong logos of the first batch came from -
+    a customer's mark off a case study and two social-share photos. Most-hiring
+    first: those are the cards most people see.
+    """
+    import fetch_logos as fl
+    if not fl.REVIEW.exists():
+        return []
+    seq = companies if isinstance(companies, list) else list(companies.values())
+    by_id = {c.get("id"): c for c in seq}
+    hiring = {o.get("id"): o.get("open_roles", 0) or 0
+              for o in (board or {}).get("organizations", [])}
+    log = read("logo_log.json", {})
+    live = {f.stem for f in fl.OUT.glob("*.*")}
+    out = []
+    for f in sorted(fl.REVIEW.glob("*.*")):
+        cid = f.stem
+        if not ID_OK.match(cid):
+            continue
+        c = by_id.get(cid) or {}
+        e = log.get(cid) if isinstance(log.get(cid), dict) else {}
+        out.append({"id": cid, "name": c.get("name") or cid,
+                    "website": c.get("website") or "",
+                    "src": "/assets/logos/review/" + urllib.parse.quote(f.name),
+                    "kb": round(f.stat().st_size / 1024, 1),
+                    "via": e.get("via") or "", "url": e.get("url") or "",
+                    "open_roles": hiring.get(cid, 0), "has_live": cid in live})
+    out.sort(key=lambda r: (-r["open_roles"], r["name"].lower()))
+    return out
+
+
+def _parked_logo(body: dict):
+    """(company id, its one parked file) or an error dict."""
+    import fetch_logos as fl
+    cid = body.get("id")
+    if not isinstance(cid, str) or not ID_OK.match(cid.strip()):
+        return {"error": "that is not a company id"}
+    cid = cid.strip()
+    files = sorted(fl.REVIEW.glob(f"{cid}.*")) if fl.REVIEW.exists() else []
+    files = [f for f in files if f.stem == cid]
+    if len(files) != 1:
+        return {"error": f"no parked logo for {cid}" if not files
+                else f"{len(files)} parked files for {cid}; expected one"}
+    return cid, files[0]
+
+
+def _rule_logo(cid: str, f: pathlib.Path, ruling: str, why: str, by: str) -> None:
+    """Keep the ruling, keyed by company: the nightly reads a refusal's hash.
+
+    NOT JOURNALED, deliberately: the journal can put a ruling back but not the
+    file it moved, and an Undo that restored one without the other would
+    leave a live logo nothing says was accepted, or a refusal for a file that
+    is back in the queue."""
+    import hashlib
+    rulings = read("logo_rulings.json", {})
+    log = read("logo_log.json", {})
+    e = log.get(cid) if isinstance(log.get(cid), dict) else {}
+    rulings[cid] = {"ruling": ruling, "sha256": hashlib.sha256(f.read_bytes()).hexdigest(),
+                    "file": f.name, "via": e.get("via"), "url": e.get("url"),
+                    "why": (why or "")[:200], "by": by or "owner",
+                    "at": dt.datetime.now().astimezone().isoformat(timespec="seconds")}
+    write_atomic("logo_rulings.json", rulings)
+
+
+def act_logo_accept(body: dict) -> dict:
+    """"Use this logo": the parked file goes live, one level up."""
+    import fetch_logos as fl
+    got = _parked_logo(body)
+    if isinstance(got, dict):
+        return got
+    cid, f = got
+    if any(fl.OUT.glob(f"{cid}.*")):
+        return {"error": f"{cid} already has a live logo; refuse this one instead"}
+    dest = fl.logo_path(cid, f.suffix.lstrip("."), fl.OUT)
+    _rule_logo(cid, f, "accept", "", body.get("by"))
+    f.replace(dest)
+    return {"ok": True, "message": f"{cid}: logo is live from the next build "
+                                   f"(publish to put it on the site)"}
+
+
+def act_logo_refuse(body: dict) -> dict:
+    """"Not theirs": the parked file goes, and its image is never landed again.
+    The next nightly tries the site's next candidate once."""
+    got = _parked_logo(body)
+    if isinstance(got, dict):
+        return got
+    cid, f = got
+    _rule_logo(cid, f, "refuse", body.get("why") or "", body.get("by"))
+    f.unlink()
+    return {"ok": True, "message": f"{cid}: refused; the next nightly looks once "
+                                   f"for another logo on their site"}
+
+
 QUEUES = {"users": q_users, "profiles": q_profiles, "proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review,
           "calendar": _q_calendar, "sweeps": q_sweeps,
           "signedoff": lambda companies, board: _page_belt().q_signedoff(companies, board),
           "scrub": lambda companies, board: _page_belt().q_scrub(companies, board),
-          "suppliers": q_supplier_sites}
+          "suppliers": q_supplier_sites, "logos": q_logos}
 
 
 def publish_status() -> dict:
@@ -4055,7 +4158,8 @@ LABEL = {"users": "Users", "profiles": "Write-ups to check", "proposals": "Agent
          "sweeps": "Conference floors",
          "signedoff": "Open on approved pages",
          "scrub": "Scrub",
-         "suppliers": "Supplier websites"}
+         "suppliers": "Supplier websites",
+         "logos": "Logos to check"}
 
 
 # ---------------------------------------------------------------- actions
@@ -6160,6 +6264,7 @@ def shifts(limit: int = 6) -> list:
 
 
 ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
+           "logo-accept": act_logo_accept, "logo-refuse": act_logo_refuse,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
