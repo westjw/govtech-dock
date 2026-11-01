@@ -37998,12 +37998,14 @@ def check_every_queue_is_a_pile_or_says_why() -> int:
             errors += fail(f"pile {s['queue']}:{s['pile']} applies {s['apply']!r}, which is not an applier")
         if s["reach"] not in desk.TOLERANCE or not s.get("check") or not callable(s.get("landed")):
             errors += fail(f"pile {s['queue']}:{s['pile']} lacks a reach, a check or a landed test")
-    if "acquisitions" in piled or "boards" in piled or "scrub" in piled:
-        errors += fail("a queue the owner reads one by one is batched")
+    for q in ("acquisitions", "boards", "scrub", "profiles", "suppliers", "vendors"):
+        if q in piled:
+            errors += fail(f"{q} is batched, and the owner's rules read it one by one")
     src = (ROOT / "scripts" / "desk.py").read_text()
     if re.search(r"^DATA\s*=", src, re.M):
         errors += fail("desk.py copies admin.DATA at import, so the sandbox cannot move it")
-    allowed = {("act_batch_rule", None), ("act_batch_undo", None), ("act_batch_mark", "MARKS")}
+    allowed = {("act_batch_rule", None), ("act_batch_undo", None), ("act_batch_mark", "MARKS"),
+               ("next_round", "MARKS")}
     for fn in ast.walk(ast.parse(src)):
         if not isinstance(fn, ast.FunctionDef):
             continue
@@ -38020,12 +38022,20 @@ def check_every_queue_is_a_pile_or_says_why() -> int:
 
 
 def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
-    """The engine end to end, through the desk's own appliers, in a sandbox:
-    no accept before the sample is read, none on a stale count, none past a
-    wrong card; one journal entry per file, every ruling record saying
-    `via`; ONE ruling to the counters and nothing to the agree-rate; an undo
-    that survives a nightly change to another field, refuses a change to a
-    field the batch wrote, and takes back additions RUNAWAY would refuse."""
+    """The engine end to end, through the desk's own appliers, in a sandbox.
+
+    No accept before the sample is read on what it shows NOW; none on a stale
+    count; none while a card of the round is marked wrong, wherever that card
+    was seen or its row has gone; marks only by a person, never journalled.
+    One journal entry per file, every ruling record saying `via`; ONE ruling
+    to the counters, nothing to the agree-rate, the why meter or the shift's
+    tally. A row its own applier refuses is held out, not a block for good; a
+    row that "succeeds" without landing stops the batch. Undo survives a
+    nightly change to another field, refuses a change to a field the batch
+    wrote, takes back additions RUNAWAY would refuse and leaves a later
+    dismissal in a queue the batch created, and refuses a batch the journal
+    has partly archived. (Review, 2026-11-01.)"""
+    import collections as _c
     import admin
     import desk
     import journal
@@ -38036,59 +38046,109 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
              if c.get("sector") == "General Gov" and c.get("category") != "Records"][:3]
     target = next(s for s in schema["sectors"] if s["name"] == "Public Safety")
     tcat = target["categories"][0]
-    sups = [{"supplier_id": f"sup-{i}"} for i in range(40)]
-    existing = {f"old-{i}": {"verdict": "theirs", "by": "owner"} for i in range(61)}
+    existing = {f"old-{i}": {"v": 0, "by": "owner"} for i in range(61)}
     files = {"companies.json": picks, "schema.json": schema, "admin_dismissed.json": {},
-             "placement_rulings.json": {}, "supplier_rulings.json": existing,
-             "supplier_categories.json": {"suppliers": sups}}
+             "placement_rulings.json": {}, "selftest_rulings.json": existing}
     mis_rows = [{"id": c["id"], "name": c["name"], "sector": c["sector"],
                  "category": c["category"], "proposed_sector": "Public Safety",
-                 "proposed_category": tcat, "confidence": "high",
+                 "proposed_category": tcat, "confidence": "high", "also": [],
                  "description": "x", "evidence": ["test"]} for c in picks]
-    sup_rows = [{"id": s["supplier_id"], "name": s["supplier_id"], "url": "https://x.example",
-                 "step1": "theirs", "sector": "General Gov"} for s in sups]
-    keep_q = dict(admin.QUEUES)
+    t_rows = [{"key": f"t{i:02d}", "id": picks[i % 3]["id"], "name": f"T{i}", "v": 1,
+               "bad": i == 5} for i in range(40)]
+    gone = set()
+
+    def t_apply(b):
+        if b.get("bad"):
+            return {"error": "selftest: its own button refuses this row"}
+        if b.get("hollow"):
+            return {"ok": True}                       # says yes, writes nothing
+        d = admin.read("selftest_rulings.json", {})
+        d[b["id"]] = {"v": b["v"], "by": b["by"], "at": admin.now(), "why": b.get("why")}
+        bad = admin.save_decisions("selftest_rulings.json", d, "selftest", by=b["by"])
+        return {"error": bad} if bad else {"ok": True}
+
+    spec = {"queue": "selftest", "pile": "adds", "reach": "public", "label": "Selftest {n}",
+            "answer": "Recorded", "select": lambda r: True, "apply": "_selftest",
+            "body": lambda r: {"id": r["key"], "v": r["v"], "bad": r.get("bad"),
+                               "hollow": r.get("hollow")},
+            "check": "selftest", "landed": lambda st, r: r["key"] in
+            (((st["held"].get("selftest_rulings.json") or {}).get("after")) or {})}
+    keep_q, keep_f = dict(admin.QUEUES), set(admin.FILTERABLE)
+    keep_p = list(desk.PILES)
     with _sandbox_admin(files) as tmp:
         admin.QUEUES["miscategorized"] = lambda c, b: [
             r for r in mis_rows if next(x for x in admin.read("companies.json", [])
-                                        if x["id"] == r["id"])["category"] != tcat]
-        admin.QUEUES["suppliers"] = lambda c, b: [
-            r for r in sup_rows if r["id"] not in admin.read("supplier_rulings.json", {})]
+                                        if x["id"] == r["id"])["category"] != r["proposed_category"]]
+        admin.QUEUES["selftest"] = lambda c, b: [
+            r for r in t_rows if r["key"] not in gone
+            and r["key"] not in admin.read("selftest_rulings.json", {})]
+        admin.FILTERABLE.add("selftest")
+        desk.PILES.append(spec)
+        desk.APPLIERS["_selftest"] = t_apply
         try:
-            def post(fn, body):
+            def post(fn, body, by="owner"):
                 journal.WRITTEN.clear(); journal.DESK = True
                 try:
-                    return fn({**body, "by": "owner"})
+                    return fn({**body, "by": by})
                 finally:
                     journal.DESK = False
 
+            def mark_all(bid, how=lambda c, i: "right"):
+                for i, c in enumerate(desk.batch(bid)["sample"]):
+                    m = how(c, i)
+                    if c["mark"] != m:
+                        post(desk.act_batch_mark, {"batch": bid, "key": c["key"], "mark": m,
+                                                   "why": "selftest: wrong" if m == "wrong" else ""})
+
+            # ── a read-all pile of 3, through act_place ────────────────────
             bid = "miscategorized:high:all"
             v = desk.batch(bid)
-            if v.get("n") != 3 or v.get("sample_n") != 3 or not v.get("read_all"):
+            if v.get("n") != 3 or not v.get("read_all"):
                 errors += fail(f"the three-row pile reads as {v.get('n')}/{v.get('sample_n')}")
             before = (tmp / "companies.json").read_text()
             r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": 3})
             if not r.get("error") or (tmp / "companies.json").read_text() != before:
                 errors += fail("a pile was accepted before its sample was read")
             n0 = len(journal._entries())
-            for c in v["sample"]:
-                post(desk.act_batch_mark, {"batch": bid, "key": c["key"], "mark": "right"})
+            mark_all(bid)
             if len(journal._entries()) != n0:
                 errors += fail("a sample mark wrote a journal entry; 58 of them would push real "
                                "rulings out of the 500 Undo can reach")
+            # what the card showed changes after it was read: it is unread again
+            mis_rows[1]["proposed_category"] = target["categories"][1]
+            if desk.batch(bid)["read"] != 2:
+                errors += fail("a mark outlived the answer it was made on")
+            r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": 3})
+            if not r.get("error"):
+                errors += fail("a pile was accepted on a card nobody read as it is now")
+            mark_all(bid)
             r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": 4})
             if not r.get("stale"):
                 errors += fail("a pile was accepted on a count the person was not shown")
-            stamps0 = len(admin._ruling_stamps())
-            agree0 = admin.agree_rate()
+            t0 = admin.now()
+            stamps0, agree0 = len(admin._ruling_stamps()), admin.agree_rate()
+
+            def why_cov():
+                g = admin._game(_c.defaultdict(int))
+                def find(d):
+                    if isinstance(d, dict):
+                        if "why_coverage" in d:
+                            return d["why_coverage"]
+                        for x in d.values():
+                            y = find(x)
+                            if y is not None:
+                                return y
+                    return None
+                return find(g)
+            why0 = why_cov()
             r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": 3,
                                            "why": "selftest pile"})
             if r.get("error"):
                 errors += fail(f"a read pile was refused: {r['error']}")
             entries = [journal.find(i) for i in journal.WRITTEN]
-            files_written = [e["file"] for e in entries if e.get("batch_ruling")]
-            if sorted(files_written) != ["companies.json", "placement_rulings.json"]:
-                errors += fail(f"the batch journalled {files_written}, not one entry per file")
+            written = sorted(e["file"] for e in entries if e.get("batch_ruling"))
+            if written != ["companies.json", "placement_rulings.json"]:
+                errors += fail(f"the batch journalled {written}, not one entry per file")
             pr = admin.read("placement_rulings.json", {})
             if len(pr) != 3 or not all(str(x.get("via", "")).startswith("batch:") for x in pr.values()):
                 errors += fail("a batch-ruled record does not say it came from a batch")
@@ -38096,10 +38156,15 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
                 errors += fail(f"a batch of 3 counted as {len(admin._ruling_stamps()) - stamps0} rulings")
             if admin.agree_rate() != agree0:
                 errors += fail("a batch moved the agree-rate; it read a sample, not the rows")
+            if why_cov() != why0:
+                errors += fail("a batch moved the why meter; its rows carry one why between them")
+            ss = admin.shift_summary(t0, admin.read("companies.json", []), {})
+            if ss.get("ruled") != 1 or (ss.get("proposed") or {}).get("ruled") != 0:
+                errors += fail(f"the shift tally read a batch as more than one ruling: {ss.get('ruled')}, "
+                               f"{ss.get('proposed')}")
             rid = r.get("batch_ruling")
-            # the nightly rewrites hiring on every company: not a conflict
             cos = admin.read("companies.json", [])
-            for c in cos:
+            for c in cos:                                  # the nightly, on another field
                 c["hiring"] = {**(c.get("hiring") or {}), "checked": "2099-01-01"}
             admin.write_atomic("companies.json", cos)
             u = post(desk.act_batch_undo, {"batch_ruling": rid})
@@ -38110,75 +38175,112 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
                 errors += fail("a batch undo reverted the nightly's change along with its own")
             if admin.read("placement_rulings.json", {}):
                 errors += fail("a batch undo left its ruling records behind")
-            # again, and this time a person changes a field the batch wrote
+            mark_all(bid)
             v = desk.batch(bid)
             r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": v["n"]})
             cos = admin.read("companies.json", [])
-            cos[0]["category"] = target["categories"][1]
+            cos[0]["category"] = target["categories"][2]   # a person, on a field it wrote
             admin.write_atomic("companies.json", cos)
             snap = (tmp / "companies.json").read_text()
             u = post(desk.act_batch_undo, {"batch_ruling": r.get("batch_ruling")})
             if not u.get("error") or (tmp / "companies.json").read_text() != snap:
                 errors += fail("a batch undo overwrote a field changed after the batch")
 
-            # TWO ROWS OF ONE FILE THAT ITS APPLIER READS OFF DISK: agents.load
-            # reads agent_proposals.json directly, and a batch that held only
-            # admin's saves kept the last row's change and lost the first
-            import agents
-            keep_store = agents.STORE
-            agents.STORE = tmp / "agent_proposals.json"
-            store = {f"read:{c['id']}": {"kind": "read", "id": c["id"], "status": "pending",
-                                          "none_found": True, "postings": [], "confidence": "medium",
-                                          "by": "selftest", "at": "2026-11-01T00:00:00"}
-                     for c in picks[:2]}
-            agents.STORE.write_text(json.dumps(store))
-            admin.QUEUES["proposals"] = lambda c, b: [
-                {"key": k, "id": p["id"], "kind": "read", "none_found": True, "warn": None,
-                 "sector": "General Gov", "name": p["id"]}
-                for k, p in agents.load().items() if p.get("status") == "pending"]
-            try:
-                pb = "proposals:reads-empty:all"
-                for c in desk.batch(pb)["sample"]:
-                    post(desk.act_batch_mark, {"batch": pb, "key": c["key"], "mark": "right"})
-                r = post(desk.act_batch_rule, {"batch": pb, "ruling": "accept", "expect_n": 2})
-                got = json.loads(agents.STORE.read_text())
-                if r.get("error") or [p.get("status") for p in got.values()] != ["accepted", "accepted"]:
-                    errors += fail(f"two rows of the proposals file did not both land: "
-                                   f"{r.get('error') or [p.get('status') for p in got.values()]}")
-            finally:
-                agents.STORE = keep_store
-
-            # a big pile: a wrong card stops it; accepted, its 40 additions are
-            # 40% of a 101-record file, which RUNAWAY refuses to remove - except
-            # as the undo of the batch that added them
-            sb = "suppliers:theirs:all"
-            sv = desk.batch(sb)
-            if sv["read_all"] or sv["sample_n"] >= 40:
-                errors += fail("a 40-row pile is read whole")
-            for i, c in enumerate(sv["sample"]):
-                post(desk.act_batch_mark, {"batch": sb, "key": c["key"],
-                                           "mark": "wrong" if i == 0 else "right",
-                                           "why": "selftest: not theirs" if i == 0 else ""})
-            r = post(desk.act_batch_rule, {"batch": sb, "ruling": "accept", "expect_n": 40})
-            if not r.get("error") or len(admin.read("supplier_rulings.json", {})) != 61:
-                errors += fail("a sampled pile with a wrong card was accepted")
-            post(desk.act_batch_mark, {"batch": sb, "key": sv["sample"][0]["key"], "mark": "right"})
-            r = post(desk.act_batch_rule, {"batch": sb, "ruling": "accept", "expect_n": 40})
-            if r.get("error") or len(admin.read("supplier_rulings.json", {})) != 101:
-                errors += fail(f"a read supplier pile did not land: {r.get('error')}")
-            u = post(desk.act_batch_undo, {"batch_ruling": r.get("batch_ruling")})
-            if u.get("error") or len(admin.read("supplier_rulings.json", {})) != 61:
-                errors += fail(f"the undo of 40 additions was refused or partial: {u.get('error')}")
+            # ── a sampled pile of 40 ───────────────────────────────────────
+            sa, sg = "selftest:adds:all", "selftest:adds:General Gov"
+            v = desk.batch(sa)
+            if v["read_all"] or v["n"] != 40:
+                errors += fail(f"the 40-row pile reads as {v['n']}, read_all={v['read_all']}")
+            first = v["sample"][0]["key"]
+            r = post(desk.act_batch_mark, {"batch": sa, "key": first, "mark": "right"},
+                     by="agent:selftest")
+            if not r.get("error"):
+                errors += fail("an agent marked a sample card")
+            post(desk.act_batch_mark, {"batch": sa, "key": first, "mark": "wrong",
+                                       "why": "selftest: wrong"})
+            mark_all(sg)                                   # the department's own draw
+            r = post(desk.act_batch_rule, {"batch": sg, "ruling": "accept", "expect_n": desk.batch(sg)["n"]})
+            if not r.get("error"):
+                errors += fail("a department's view of a pile was accepted past a card the "
+                               "whole-board view marked wrong")
+            gone.add(first)                                # the wrong row is ruled away
+            mark_all(sa)
+            r = post(desk.act_batch_rule, {"batch": sa, "ruling": "accept", "expect_n": desk.batch(sa)["n"]})
+            if not r.get("error"):
+                errors += fail("a wrong card's row left the pile and the rest was accepted")
+            r = post(desk.act_batch_rule, {"batch": sa, "ruling": "send_back", "expect_n": desk.batch(sa)["n"]})
+            if r.get("error") or desk.batch(sa)["round"] != 1 or desk.batch(sa)["read"]:
+                errors += fail(f"sending a pile back did not start a new round: {r.get('error')}")
+            gone.discard(first)
+            mark_all(sa)
+            w = desk.batch(sa)["sample"][1]["key"]         # a mis-click, withdrawn
+            post(desk.act_batch_mark, {"batch": sa, "key": w, "mark": "wrong", "why": "selftest: oops"})
+            post(desk.act_batch_mark, {"batch": sa, "key": w, "mark": "right"})
+            r = post(desk.act_batch_rule, {"batch": sa, "ruling": "accept", "expect_n": 40})
+            if not r.get("stale") or desk.batch(sa)["n"] != 39 or desk.batch(sa)["held_out"] != 1:
+                errors += fail(f"a row its own button refuses was not held out: {r}")
+            mark_all(sa)
+            r = post(desk.act_batch_rule, {"batch": sa, "ruling": "accept", "expect_n": 39})
+            if r.get("error") or len(admin.read("selftest_rulings.json", {})) != 61 + 39:
+                errors += fail(f"a read pile of 39 did not land: {r.get('error')}")
+            rid = r.get("batch_ruling")
+            e = next((journal.find(i) for i in journal.WRITTEN
+                      if (journal.find(i) or {}).get("file") == "selftest_rulings.json"), {})
+            if "withdrawn" not in (e.get("why") or ""):
+                errors += fail("a withdrawn wrong mark is not in the batch's why")
+            aud = desk._audits()
+            ruling = next(x for x in aud["selftest:adds"]["rulings"] if x["id"] == rid)
+            keep_ids = list(ruling["journal"])
+            ruling["journal"] = keep_ids + ["1999-01-01#1"]
+            admin.write_atomic(desk.AUDITS, aud)
+            u = post(desk.act_batch_undo, {"batch_ruling": rid})
+            if not u.get("error") or len(admin.read("selftest_rulings.json", {})) != 100:
+                errors += fail("a batch the journal has partly archived was half undone")
+            ruling["journal"] = keep_ids
+            admin.write_atomic(desk.AUDITS, aud)
+            u = post(desk.act_batch_undo, {"batch_ruling": rid})
+            if u.get("error") or len(admin.read("selftest_rulings.json", {})) != 61:
+                errors += fail(f"the undo of 39 additions was refused or partial: {u.get('error')}")
             if journal.UNDOING_ADDS:
                 errors += fail("journal.UNDOING_ADDS was left set after an undo")
-            _ch, ref = journal.check("supplier_rulings.json",
+            _ch, ref = journal.check("selftest_rulings.json",
                                      {**existing, **{f"x{i}": {} for i in range(40)}}, existing, True)
             if not ref:
                 errors += fail("RUNAWAY no longer refuses removing 40% of a file outside a batch undo")
+            # a row that says yes and writes nothing stops the batch
+            for x in t_rows:
+                x["bad"], x["hollow"] = False, x["key"] == "t07"
+            mark_all(sa)
+            before = (tmp / "selftest_rulings.json").read_text()
+            r = post(desk.act_batch_rule, {"batch": sa, "ruling": "accept", "expect_n": desk.batch(sa)["n"]})
+            if "did not land" not in (r.get("error") or "") or \
+                    (tmp / "selftest_rulings.json").read_text() != before:
+                errors += fail(f"a row that did not land let the batch write: {r}")
+
+            # ── a dismissal batch's queue key, and a later dismissal in it ──
+            dm = admin.read("admin_dismissed.json", {})
+            dm.pop("review", None)
+            admin.write_atomic("admin_dismissed.json", dm)
+            admin.QUEUES["review"] = lambda c, b: [
+                {"id": c0["id"], "name": c0["name"], "url": "https://selftest-new.example"}
+                for c0 in picks if c0["id"] not in admin.read("admin_dismissed.json", {}).get("review", {})]
+            rb = "review:all:all"
+            mark_all(rb)
+            r = post(desk.act_batch_rule, {"batch": rb, "ruling": "accept", "expect_n": 3})
+            if r.get("error"):
+                errors += fail(f"the review pile did not land: {r['error']}")
+            post(admin.act_dismiss, {"queue": "review", "key": "someone-else", "why": "later"})
+            u = post(desk.act_batch_undo, {"batch_ruling": r.get("batch_ruling")})
+            left = admin.read("admin_dismissed.json", {}).get("review", {})
+            if u.get("error") or set(left) != {"someone-else"}:
+                errors += fail(f"a later dismissal in a queue the batch created blocked or was lost "
+                               f"in its undo: {u.get('error')} {sorted(left)}")
         finally:
             admin.QUEUES.clear(); admin.QUEUES.update(keep_q)
+            admin.FILTERABLE.clear(); admin.FILTERABLE.update(keep_f)
+            desk.PILES[:] = keep_p
+            desk.APPLIERS.pop("_selftest", None)
     return errors
-
 
 
 def check_the_batch_screen_runs_right_under_its_own_script() -> int:
@@ -38217,6 +38319,9 @@ def check_the_batch_screen_runs_right_under_its_own_script() -> int:
     if l.get("sent") != [["batch-undo", {"batch_ruling": "suppliers:theirs:all#1"}],
                          ["undo", {"entries": ["2026-11-01#3", "2026-11-01#4"]}]]:
         bad += fail(f"the ledger's Undo sent the wrong request: {l.get('sent')}")
+    el_ = out.get("a_wrong_card_elsewhere_still_blocks") or {}
+    if el_.get("accept") != "shut" or el_.get("back") != "open":
+        bad += fail(f"a card marked wrong off this screen did not keep Accept shut: {el_}")
     t = out.get("the_toggle_and_a_question") or {}
     if [v[0] for v in t.get("views") or []] != ["1 Waiting on you", "2 Morning brief", "3 Batches",
                                                "4 Health map", "5 Ask the desk", "Shift"] \

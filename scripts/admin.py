@@ -2764,16 +2764,27 @@ def receipt() -> dict:
     companies, board = read("companies.json", []), read("board.json", {})
     done_now = rulings_by_queue()
     lines = []
+    # A BATCH IS ONE RULING THAT SETTLED MANY ROWS: the bar winds back by
+    # the rows it landed, or a 49-row batch read "from 37% to 37%" (review,
+    # 2026-11-01)
+    import desk
+    rows_moved = collections.Counter(by_queue)
+    for b in desk.batch_rulings():
+        t = _ts(b.get("at"))
+        if t and t >= start:
+            rows_moved[b.get("queue")] += max(0, int(b.get("landed") or 1) - 1)
     for q in ("miscategorized", "vendors"):
         n = by_queue.get(q, 0)
         if not n:
             continue
+        moved = rows_moved.get(q, n)
         left_now = len(QUEUES[q](companies, board))
         now = queue_state(q, left_now, done_now)
-        # a ruling moves exactly one row from left to done, so the state at
-        # the start of the sitting is this one wound back by n
-        before = queue_state(q, left_now + n,
-                             collections.Counter({q: done_now.get(q, 0) - n}))
+        # a ruling moves exactly one row from left to done (a batch, the rows
+        # it landed), so the state at the start of the sitting is this one
+        # wound back by that many
+        before = queue_state(q, left_now + moved,
+                             collections.Counter({q: done_now.get(q, 0) - moved}))
         lines.append({"queue": q, "name": now["name"], "n": n,
                       "from": before["pct"], "to": now["pct"],
                       "left": now["left"]})
@@ -2857,13 +2868,20 @@ def _game(counts: dict) -> dict:
                         ("placement_rulings.json", "refiled")):
         for r in read(fname, {}).values():
             if not isinstance(r, dict) or not r.get("on") \
-                    or not _is_person(r.get("by")):
+                    or not _is_person(r.get("by")) or r.get("via"):
                 continue
             what = r.get("name") or r.get("sector")
             if verb == "refiled":
                 what = f"{r.get('sector')} / {r.get('category')}"
             tape.append({"on": r["on"], "verb": verb, "what": what,
                          "call": r.get("call"), "why": r.get("why")})
+    # a batch is one line on the tape, not one per record it wrote
+    import desk
+    for b in desk.batch_rulings():
+        if b.get("on") and _is_person(b.get("by")):
+            tape.append({"on": b["on"], "verb": "ruled as a batch",
+                         "what": f"{b.get('landed')} rows in {LABEL.get(b.get('queue'), b.get('queue'))}",
+                         "call": None, "why": b.get("why")})
     tape.sort(key=lambda t: t["on"], reverse=True)
     states = [queue_state(q, counts.get(q, 0), done_by_queue)
               for q in END_STATE
@@ -6134,6 +6152,11 @@ def shift_summary(since: str, companies, board, sector: str = "") -> dict:
     # proposal rulings are a subset of the stamps, so they are walked as
     # their own records among the rest.
     others = [(t, None) for t, q in stamps if q != "miscategorized"]
+    # a wrong-bucket BATCH is a ruling too, though no record of it is walked
+    # above (its records say `via`): the next placement is paced against it
+    import desk
+    others += [(_ts(b.get("at")), None) for b in desk.batch_rulings()
+               if b.get("queue") == "miscategorized" and _ts(b.get("at"))]
     walk = sorted(others + plain + [(t, i) for i, (t, _ok) in enumerate(props)],
                   key=lambda x: x[0])
     paced_at: dict = {}
@@ -6966,7 +6989,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if what == "brief":
                 return self._json(desk.brief())
             if what == "ledger":
-                return self._json(desk.ledger(limit=int(arg("limit") or 60)))
+                return self._json(desk.ledger(limit=int(arg("limit") or 60), who=arg("who")))
             return self._json({"error": "not found"}, 404)
         if path == "/api/triage":
             companies, board = read_companies(), read("board.json", {})

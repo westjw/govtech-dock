@@ -924,7 +924,9 @@ function drawSectorPicker() {
     const views = {__pagebelt: () => showPageBelt(SECTOR || undefined, ''),
                    __desk_waiting: showWaiting, __desk_brief: showBrief,
                    __desk_batches: () => showBatches(), __desk_health: () => showHealth(),
-                   __desk_ask: () => showAsk(),
+                   __desk_ask: () => showAsk(), __shift: () => showShiftHome(),
+                   /* a pile or a square is one department's: the new one's list */
+                   __desk_batch: () => showBatches(), __desk_healthcell: () => showHealth(),
                    __start: showStart,
                    __capture: showCapture, __sort: showSort, __sweep: () => showSweep()};
     if (views[was]) views[was]();
@@ -1810,6 +1812,9 @@ async function show(key) {
   const v = $('#view'); v.innerHTML = '';
   const load = el('div', 'empty', 'loading…'); v.appendChild(load);
   const res = await api(secQ('/api/queue/' + key));
+  /* left for another view while this was asked (the five doors' views and
+     this one share #view): drop it rather than append into theirs */
+  if (TAB !== key) return;
   load.remove();
   if (res.error) {
     v.appendChild(el('div', 'empty', res.error));
@@ -7030,16 +7035,22 @@ function drawDeskToggle() {
     bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Which desk opens');
     $('#sub').after(bar);
   }
-  bar.innerHTML = '';
-  bar.appendChild(el('span', 'lab', 'Desk'));
   const pick = deskPick();
-  DESK_VIEWS.forEach(([k, label]) => {
-    const b = el('button', null, label);
-    b.type = 'button';
-    b.setAttribute('aria-pressed', String(k === pick));
-    b.title = k === pick ? 'The desk opens on this one' : 'Open on this one from now on';
-    b.onclick = () => { deskSet(k); drawDeskToggle(); DESK_SHOW[k](); };
-    bar.appendChild(b);
+  /* DRAWN ONCE, THEN UPDATED IN PLACE: rebuilding the buttons inside their
+     own click dropped keyboard focus on every press (review, 2026-11-01). */
+  if (!bar.querySelector('button')) {
+    bar.appendChild(el('span', 'lab', 'Desk'));
+    DESK_VIEWS.forEach(([k, label]) => {
+      const b = el('button', null, label);
+      b.type = 'button'; b.dataset.view = k;
+      b.onclick = () => { deskSet(k); drawDeskToggle(); DESK_SHOW[k](); };
+      bar.appendChild(b);
+    });
+  }
+  bar.querySelectorAll('button').forEach(b => {
+    const on = b.dataset.view === pick;
+    b.setAttribute('aria-pressed', String(on));
+    b.title = on ? 'The desk opens on this one' : 'Open on this one from now on';
   });
 }
 
@@ -7082,18 +7093,16 @@ function dkSection(host, title, sub) {
 /* Open one queue, in one department, from any view. The header's picker is
    the queue tabs' department, so it moves with it and the counts follow. */
 async function goQueue(queue, sector) {
-  sector = sector || '';
+  /* No department named keeps the one in the header (review, 2026-11-01:
+     an 'Open it' reset it to Everything). A change goes through boot(), which
+     redraws the tabs, their counts and their '· all' marks. */
+  if (sector === undefined || sector === null) sector = SECTOR;
   if (sector !== SECTOR) {
     SECTOR = sector;
     const u = new URL(location.href);
     if (SECTOR) u.searchParams.set('sector', SECTOR); else u.searchParams.delete('sector');
     history.replaceState(null, '', u);
-    META = await api(secQ('/api/queues'));
-    drawSectorPicker();
-    document.querySelectorAll('nav button').forEach(b => {
-      const n = b.querySelector('.n');
-      if (n && META.counts) n.textContent = META.counts[b.dataset.key];
-    });
+    await boot();
   }
   show(queue);
 }
@@ -7101,7 +7110,7 @@ async function goQueue(queue, sector) {
 function dkGo(go) {
   if (!go) return;
   if (go.view === 'batch') return showBatch(go.batch);
-  if (go.view === 'queue') return goQueue(go.queue, go.sector);
+  if (go.view === 'queue') return goQueue(go.queue, go.sector || undefined);
   if (go.view === 'question' || go.view === 'waiting') return showWaiting();
   if (go.view === 'ledger') return showAsk({ ledger: true });
   if (go.view === 'health') return go.sector ? showHealth({ sector: go.sector }) : showHealth();
@@ -7149,7 +7158,9 @@ function dkQuestion(q, opts) {
       b.disabled = false;
       if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
       msg.textContent = r.message; msg.style.color = r.still ? 'var(--warn)' : 'var(--accent)';
-      if (!r.still) { toast(r.message); if (opts.onDone) setTimeout(opts.onDone, 900); }
+      /* only redraw the view it was answered from, if that is still on
+         screen: a slow answer must not pull the person back */
+      if (!r.still) { toast(r.message); if (opts.onDone && (!opts.live || opts.live())) setTimeout(() => { if (!opts.live || opts.live()) opts.onDone(); }, 900); }
     };
     row.appendChild(b);
   });
@@ -7206,15 +7217,17 @@ function dkLedger(host, rows, opts) {
         if (res.error) { toast(res.error, true); return; }
         toast(res.message || 'taken back');
         refreshCounts();
-        if (opts.onUndo) opts.onUndo();
+        if (opts.onUndo && (!opts.live || opts.live())) opts.onUndo();
       };
       right.appendChild(u);
     } else right.appendChild(el('span', 'kv', String(r.who).startsWith('yours') ? '' : 'not yours to undo here'));
     e.appendChild(right);
     if (r.why) e.appendChild(el('div', 'why', r.why));
+    if (r.note) e.appendChild(el('div', 'why', r.note));
     box.appendChild(e);
   });
-  if (!box.children.length) box.appendChild(el('p', 'kv', opts.mine ? 'No rulings of yours in the journal yet.' : 'Nothing in the journal yet.'));
+  if (!box.children.length) box.appendChild(el('p', 'kv', (opts.mine ? 'None of your rulings are' : 'Nothing is')
+    + ' in the live journal' + (opts.from ? ', which runs from ' + opts.from : '') + '.'));
   host.appendChild(box);
 }
 
@@ -7223,8 +7236,14 @@ const WHO_LABEL = { batch: 'You, on a sample', you: 'You, one by one', agent: 'A
                     nightly: 'Nightly', scrub: 'Sunday scrub', nobody: 'Nobody' };
 
 function dkBacklog(host, b) {
+  /* the rows IN a pile are on a sample; the rest of a batch queue belongs to
+     whoever works it one by one (review, 2026-11-01) */
   const tally = {};
-  b.queues.forEach(q => { tally[q.who] = (tally[q.who] || 0) + (q.n || 0); });
+  const add = (k, n) => { tally[k] = (tally[k] || 0) + (n || 0); };
+  b.queues.forEach(q => {
+    if (q.kind === 'batch') { add('batch', q.in_piles); add(q.who_left || 'you', q.left); }
+    else add(q.who, q.n);
+  });
   const big = el('div', 'dk-big');
   ['batch', 'you', 'agent', 'nightly'].forEach(k => {
     const d = el('div');
@@ -7244,7 +7263,7 @@ function dkBacklog(host, b) {
   b.queues.forEach(q => {
     const tr = el('tr');
     tr.appendChild(el('td', null, q.label));
-    tr.appendChild(el('td', 'num', fmtN(q.n)));
+    tr.appendChild(el('td', 'num', fmtN(q.n) + (q.all ? ' · all' : '')));
     const w = el('td'); w.appendChild(el('span', 'dk-who ' + q.who, WHO_LABEL[q.who] || q.who)); tr.appendChild(w);
     tr.appendChild(el('td', 'kv', q.note || q.why || ''));
     const a = el('td');
@@ -7253,7 +7272,7 @@ function dkBacklog(host, b) {
       btn.onclick = () => showBatches({ focus: q.queue }); a.appendChild(btn);
     } else if (q.n) {
       const btn = el('button', 'act', 'Open');
-      btn.onclick = () => goQueue(q.queue, b.sector || ''); a.appendChild(btn);
+      btn.onclick = () => goQueue(q.queue); a.appendChild(btn);
     }
     tr.appendChild(a);
     tb.appendChild(tr);
@@ -7270,12 +7289,12 @@ async function showWaiting() {
   const qsec = dkSection(host, 'Only you can decide these');
   qsec.appendChild(el('div', 'empty', 'reading…'));
   const [qs, b, led] = await Promise.all([dkGet('/api/desk/questions'),
-    dkGet(secQ('/api/desk/batches')), dkGet('/api/desk/ledger?limit=40')]);
+    dkGet(secQ('/api/desk/batches')), dkGet('/api/desk/ledger?who=mine&limit=12')]);
   if (!live()) return;
   qsec.innerHTML = '';
   qsec.appendChild(el('h3', null, 'Only you can decide these'
     + (qs.questions ? ' (' + qs.questions.length + ')' : '')));
-  dkQuestions(qsec, qs, { onDone: () => showWaiting() });
+  dkQuestions(qsec, qs, { onDone: () => showWaiting(), live });
   const cols = el('div', 'dk-cols'); host.appendChild(cols);
   const left = el('div'), right = el('div'); cols.append(left, right);
   const bsec = dkSection(left, 'The backlog, and who is on it',
@@ -7286,14 +7305,14 @@ async function showWaiting() {
   bsec.appendChild(Object.assign(el('div', 'row'))).appendChild(shift);
   const lsec = dkSection(right, 'Your last rulings');
   if (led.error) dkSay(lsec, led.error, true);
-  else dkLedger(lsec, led.rows, { mine: true, onUndo: () => showWaiting() });
+  else dkLedger(lsec, led.rows, { mine: true, from: led.from, onUndo: () => showWaiting(), live });
 }
 
 /* ── 2. Morning brief ───────────────────────────────────────────────────── */
 async function showBrief() {
   const { host, live } = dkEnter('brief');
   host.appendChild(el('div', 'empty', 'reading the night…'));
-  const [br, b] = await Promise.all([dkGet('/api/desk/brief'), dkGet('/api/desk/batches')]);
+  const [br, b] = await Promise.all([dkGet('/api/desk/brief'), dkGet(secQ('/api/desk/batches'))]);
   if (!live()) return;
   host.innerHTML = '';
   if (br.error) { dkSay(host, br.error, true); return; }
@@ -7340,7 +7359,7 @@ async function showBrief() {
   const cols = el('div', 'dk-cols'); host.appendChild(cols);
   const left = el('div'), right = el('div'); cols.append(left, right);
   const n = dkSection(left, 'Needs you', 'Every answer is journalled, and Undo takes it back.');
-  dkQuestions(n, br.questions, { onDone: () => showBrief() });
+  dkQuestions(n, br.questions, { onDone: () => showBrief(), live });
 
   const p = dkSection(left, 'Piles ready to rule on a sample',
     'Each pile is one machine answer over many rows. Read the sample; if none is wrong, rule the pile.');
@@ -7348,21 +7367,24 @@ async function showBrief() {
   else dkPiles(p, b.queues.filter(q => q.kind === 'batch'), { limit: 6 });
 
   const r = dkSection(right, 'Your rulings lately');
-  if (!br.rulings.length) dkSay(r, 'None of yours in the last 30 days of the journal.');
+  if (!br.rulings.length) dkSay(r, 'None of yours in the live journal'
+    + (br.journal_from ? ', which runs from ' + br.journal_from : '') + '.');
   br.rulings.forEach(dy => {
     r.appendChild(el('div', 'day kv', dy.day + ' · ' + dy.n + ' ruling' + (dy.n === 1 ? '' : 's')));
     const ul = el('ul', 'kv');
     dy.rows.slice(0, 4).forEach(x => ul.appendChild(el('li', null, x.what + (x.n > 1 ? ` (${fmtN(x.n)} records)` : ''))));
     r.appendChild(ul);
   });
-  const dsec = dkSection(right, 'What the doors did', 'The last 30 days of the live journal, by who wrote it.');
+  const dsec = dkSection(right, 'What the doors did', 'The live journal'
+    + (br.journal_from ? ', from ' + br.journal_from : '') + ', by who wrote it. Older entries are archived.');
   if (!br.doors.length) dkSay(dsec, 'No door wrote in the live journal.');
   br.doors.forEach(x => dsec.appendChild(el('p', 'kv', `${x.by}: ${fmtN(x.entries)} write(s), ${fmtN(x.records)} records`)));
   const bl = dkSection(right, 'The backlog');
   if (!b.error) {
     const total = b.queues.reduce((s, q) => s + (q.n || 0), 0);
     const top = b.queues.slice(0, 3).map(q => `${q.label} (${fmtN(q.n)})`).join(', ');
-    bl.appendChild(el('p', 'kv', `${fmtN(total)} rows wait in ${b.queues.filter(q => q.n).length} queues. The biggest: ${top}.`));
+    bl.appendChild(el('p', 'kv', `${fmtN(total)} rows wait in ${b.queues.filter(q => q.n).length} queues`
+      + (b.sector ? ` (${b.sector}, and the whole board where a queue cannot be filtered)` : '') + `. The biggest: ${top}.`));
     const row = el('div', 'row');
     const a = el('button', 'act', 'Open the batches'); a.onclick = () => showBatches();
     const s = el('button', 'act', 'Or start a shift'); s.onclick = () => showShiftHome();
@@ -7385,7 +7407,8 @@ function dkPiles(host, queues, opts) {
     d.appendChild(el('p', 'kv', dkPileState(p)));
     const row = el('div', 'row');
     const b = el('button', 'act' + (p.state === 'ready' ? ' go' : ''),
-      p.state === 'ready' ? 'Rule it' : p.read_all ? 'Read them all' : 'Read the sample');
+      p.state === 'ready' ? 'Rule it' : p.state === 'marked wrong' ? 'Send it back'
+      : p.read_all ? 'Read them all' : 'Read the sample');
     b.onclick = () => showBatch(p.id);
     row.appendChild(b); d.appendChild(row);
     host.appendChild(d);
@@ -7396,8 +7419,8 @@ function dkPileState(p) {
   const what = p.read_all ? (p.n === 1 ? '1 row: read it, then rule it'
     : `${fmtN(p.n)} rows: read them all, then rule them together`)
     : `Read ${fmtN(p.sample_n)} of ${fmtN(p.n)}. None wrong proves it is under ${Math.round(p.tolerance * 100)}% wrong`;
-  const done = p.state === 'sent back' ? ` · sent back: ${p.wrong} marked wrong`
-    : p.read ? ` · ${p.read} read${p.wrong ? ', ' + p.wrong + ' wrong' : ''}` : '';
+  const done = p.state === 'marked wrong' ? ` · ${p.wrong_round} card(s) marked wrong: send it back`
+    : p.read ? ` · ${p.read} of ${p.sample_n} read${p.wrong ? ', ' + p.wrong + ' wrong' : ''}` : '';
   const last = p.last ? ` · last ruled ${String(p.last.on || '')}: ${p.last.ruling === 'accept' ? 'accepted ' + fmtN(p.last.landed) : 'sent back'}${p.last.undone ? ' (undone)' : ''}` : '';
   return what + done + last;
 }
@@ -7414,7 +7437,7 @@ async function showBatches(opts) {
     + 'are read whole. The first wrong card ends it, and the pile goes back.'));
   const body = el('div'); host.appendChild(body);
   body.appendChild(el('div', 'empty', 'reading every queue…'));
-  const [b, led] = await Promise.all([dkGet(secQ('/api/desk/batches')), dkGet('/api/desk/ledger?limit=80')]);
+  const [b, led] = await Promise.all([dkGet(secQ('/api/desk/batches')), dkGet('/api/desk/ledger?who=batch&limit=30')]);
   if (!live()) return;
   body.innerHTML = '';
   if (b.error) { dkSay(body, b.error, true); return; }
@@ -7440,13 +7463,13 @@ async function showBatches(opts) {
   b.queues.forEach(q => {
     const tr = el('tr'); tr.id = 'dk-q-' + q.queue;
     const name = el('td'); name.appendChild(el('strong', null, q.label)); tr.appendChild(name);
-    tr.appendChild(el('td', 'num', fmtN(q.n)));
+    tr.appendChild(el('td', 'num', fmtN(q.n) + (q.all ? ' · all' : '')));
     tr.appendChild(el('td', 'num', ''));
     tr.appendChild(el('td', 'kv', q.kind === 'batch'
       ? (q.left ? fmtN(q.left) + ' row(s) in no pile stay for you one by one' : 'every row is in a pile')
       : q.why || ''));
     const a = el('td');
-    if (q.n) { const o = el('button', 'act mute', 'Open the queue'); o.onclick = () => goQueue(q.queue, b.sector || ''); a.appendChild(o); }
+    if (q.n) { const o = el('button', 'act mute', 'Open the queue'); o.onclick = () => goQueue(q.queue); a.appendChild(o); }
     tr.appendChild(a); tb.appendChild(tr);
     (q.piles || []).forEach(p => {
       const s = el('tr', 'sub');
@@ -7457,7 +7480,8 @@ async function showBatches(opts) {
       const c = el('td');
       if (p.n) {
         const btn = el('button', 'act' + (p.state === 'ready' ? ' go' : ''),
-          p.state === 'ready' ? 'Rule it' : p.read_all ? 'Read all' : 'Read the sample');
+          p.state === 'ready' ? 'Rule it' : p.state === 'marked wrong' ? 'Send it back'
+          : p.read_all ? 'Read all' : 'Read the sample');
         btn.onclick = () => showBatch(p.id); c.appendChild(btn);
       }
       s.appendChild(c); tb.appendChild(s);
@@ -7466,12 +7490,12 @@ async function showBatches(opts) {
   t.appendChild(tb); wrap.appendChild(t); sec.appendChild(wrap);
   if (opts.focus) { const f = $('#dk-q-' + opts.focus); if (f) f.scrollIntoView({ block: 'center' }); }
   const lsec = dkSection(body, 'Batches ruled', 'A batch is one entry in the ledger, and Undo takes all of it back or none.');
-  if (!led.error) dkLedger(lsec, (led.rows || []).filter(r => r.undo && r.undo.batch_ruling || /^Batch/.test(r.what)),
-    { onUndo: () => showBatches() });
+  if (!led.error) dkLedger(lsec, led.rows || [], { from: led.from, onUndo: () => showBatches(), live });
 }
 
 /* ── the batch screen: one pile, its sample, its ruling ─────────────────── */
 async function showBatch(id) {
+  DESK.lastBatch = id;
   const { host, live } = dkEnter('batch');
   const back = el('button', 'dk-back', '← All batches');
   back.onclick = () => showBatches();
@@ -7498,8 +7522,16 @@ async function showBatch(id) {
     bar.appendChild(fill); prog.appendChild(bar);
     rule.update(read, wrong);
   };
+  if (v.wrong_round > v.wrong && !v.read_all)
+    host.appendChild(el('p', 'kv warn', `${v.wrong_round - v.wrong} card(s) marked wrong in this round are not on this screen `
+      + '(another department, or a row ruled since). A wrong card stands: this pile can only go back.'));
+  if (v.held_out_rows && v.held_out_rows.length) {
+    const d = el('details'); d.appendChild(el('summary', 'kv', `${v.held_out_rows.length} row(s) held out: their own button refused them`));
+    v.held_out_rows.forEach(h => d.appendChild(el('p', 'kv', (h.name || h.key) + ': ' + h.why)));
+    host.appendChild(d);
+  }
   const grid = el('div', 'dk-cards'); host.appendChild(grid);
-  const rule = dkRulePanel(v, () => showBatch(id));
+  const rule = dkRulePanel(v, () => { if (live()) showBatch(id); });
   v.sample.forEach((c, i) => grid.appendChild(dkSampleCard(v, c, i, paint)));
   host.appendChild(rule.node);
   paint();
@@ -7526,7 +7558,7 @@ function dkRulePanel(v, reload) {
     acc.disabled = back.disabled = true; msg.textContent = 'ruling…'; msg.style.color = '';
     const r = await api('/api/batch-rule', { batch: v.id, ruling, expect_n: v.n, why: why.value });
     acc.disabled = back.disabled = false;
-    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; if (r.stale) setTimeout(reload, 1500); return; }
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; if (r.stale) setTimeout(reload, 2500); return; }
     toast(r.message); refreshCounts(); reload();
   };
   acc.onclick = () => send('accept');
@@ -7539,11 +7571,15 @@ function dkRulePanel(v, reload) {
     seen = [read, wrong];
     const all = read === v.sample.length && v.n > 0;
     const take = v.read_all ? v.sample.filter(c => c.mark === 'right').length : v.n;
+    /* a wrong card of this round off the screen (another department, a row
+       ruled since) blocks a sampled pile too: the server says how many */
+    const outside = Math.max(0, (v.wrong_round || 0) - (v.wrong || 0));
+    const blocked = !v.read_all && (wrong > 0 || outside > 0);
     acc.textContent = v.read_all ? `Accept the ${fmtN(take)} marked right` : `Accept all ${fmtN(v.n)}`;
-    acc.disabled = !all || (!v.read_all && wrong > 0) || take === 0;
-    back.disabled = !(wrong > 0 || why.value.trim());
+    acc.disabled = !all || blocked || take === 0;
+    back.disabled = !(wrong > 0 || outside > 0 || why.value.trim());
     msg.textContent = !all ? `Accept opens when all ${v.sample.length} cards are marked.`
-      : wrong && !v.read_all ? 'A card is marked wrong, so the pile can only go back.' : '';
+      : blocked ? 'A card is marked wrong, so the pile can only go back.' : '';
     msg.style.color = '';
   } };
   return panel;
@@ -7623,6 +7659,7 @@ function dkSampleCard(v, c, i, repaint) {
   why.hidden = c.mark !== 'wrong'; if (c.mark_why) why.value = c.mark_why;
   const mark = async (m) => {
     if (m === 'wrong' && why.hidden) { why.hidden = false; why.focus(); return; }
+    if (c.mark === 'wrong' && m !== 'wrong' && !v.read_all) toast('Withdrawing a wrong mark is kept, and the ruling will say so.');
     if (m === 'wrong' && !why.value.trim()) { why.classList.add('needed'); why.focus(); return; }
     [right, wrong, clear].forEach(b => b.disabled = true);
     const res = await api('/api/batch-mark', { batch: v.id, key: c.key, mark: m, why: m === 'wrong' ? why.value : '' });
@@ -7650,9 +7687,9 @@ function dkSampleCard(v, c, i, repaint) {
 const HEALTH_SAYS = {
   logo: 'A logo file on the board for the company. The nightly finds them; a guessed one waits in Logos to check.',
   website: 'A website on file that is theirs and not a hijacked domain.',
-  board: 'A job board the board reads, or a place they post with nothing to capture. A company that has no public board at all is finished, not missing, and is left out of the share.',
+  board: 'A job board the board reads, or a place they post with nothing to capture. A company where discovery found no board counts as without one: No board found holds it, and a scan never proves there is none.',
   writeup: 'A write-up live on the company page. A draft waiting in Write-ups to check does not count.',
-  founded: 'A founding year on file.'};
+  founded: 'A founding year a person set or confirmed. A year an agent wrote waits in Founding year until someone stands behind it.'};
 
 const shade = s => s == null ? 'dk-h0' : s >= 90 ? 'dk-h0' : s >= 75 ? 'dk-h1' : s >= 60 ? 'dk-h2'
   : s >= 45 ? 'dk-h3' : s >= 30 ? 'dk-h4' : 'dk-h5';
@@ -7689,7 +7726,8 @@ async function showHealth(opts) {
       b.type = 'button';
       b.appendChild(el('b', null, c.share == null ? '—' : c.share + '%'));
       b.appendChild(el('small', null, c.without ? fmtN(c.without) + ' without' : 'all'));
-      b.setAttribute('aria-label', `${d.sector}, ${m.label}: ${c.share}% (${c.have} of ${c.of})`);
+      b.setAttribute('aria-label', c.share == null ? `${d.sector}, ${m.label}: no companies`
+        : `${d.sector}, ${m.label}: ${c.share}% (${c.have} of ${c.of})`);
       b.onclick = () => showHealthCell(i === 0 ? '' : d.sector, m.key);
       td.appendChild(b); tr.appendChild(td);
     });
@@ -7702,8 +7740,8 @@ async function showHealth(opts) {
    ['dk-h4', '30 to 44'], ['dk-h5', 'under 30']].forEach(([c, l]) => lg.appendChild(el('span', c, l)));
   left.appendChild(lg);
   left.appendChild(el('p', 'kv', 'Hiring is context, not a gap: the share of the department’s companies with an open role. '
-    + 'A company with no public board at all is left out of the board column: '
-    + fmtN(h.whole.board_absent) + ' of them across the board.'));
+    + 'In the board column, ' + fmtN(h.whole.board_absent) + ' companies where discovery found none count as without one: '
+    + 'a scan never proves there is none, and they wait in No board found.'));
   const g = dkSection(right, 'Biggest gaps', 'The lowest square in each department, lowest first.');
   g.style.margin = '0';
   h.gaps.forEach((x, i) => {
@@ -7716,7 +7754,7 @@ async function showHealth(opts) {
     row.appendChild(o); d.appendChild(row); g.appendChild(d);
   });
   const only = dkSection(right, 'Only you can decide these');
-  dkQuestions(only, qs, { compact: true, onDone: () => showHealth() });
+  dkQuestions(only, qs, { compact: true, onDone: () => showHealth(), live });
   if (opts.sector) {
     const low = h.gaps.find(x => x.sector === opts.sector);
     if (low) showHealthCell(opts.sector, low.measure);
@@ -7724,6 +7762,7 @@ async function showHealth(opts) {
 }
 
 async function showHealthCell(sector, measure) {
+  DESK.lastCell = [sector, measure];
   const { host, live } = dkEnter('healthcell');
   const back = el('button', 'dk-back', '← The health map');
   back.onclick = () => showHealth(); host.appendChild(back);
@@ -7777,7 +7816,7 @@ async function showHealthCell(sector, measure) {
   q.appendChild(el('p', 'kv', 'About a minute a row. Each one settled here moves this square by about '
     + (c.of ? (100 / c.of).toFixed(1) : '?') + ' points.'));
   const r = el('div', 'row'); const b = el('button', 'act', 'Open the queue');
-  b.onclick = () => goQueue(m.closes, sector); r.appendChild(b); q.appendChild(r); lev.appendChild(q);
+  b.onclick = () => goQueue(m.closes, sector || ''); r.appendChild(b); q.appendChild(r); lev.appendChild(q);
   if (live_.length && c.of) {
     const after = dkSection(right, 'What the square reads after');
     const ul2 = el('ul', 'kv');
@@ -7838,8 +7877,8 @@ async function showAsk(opts) {
   const wsec = dkSection(right, 'Waiting on you');
   const [led, qs] = await Promise.all([dkGet('/api/desk/ledger?limit=80'), dkGet('/api/desk/questions')]);
   if (!live()) return;
-  if (led.error) dkSay(lsec, led.error, true); else dkLedger(lsec, led.rows, { onUndo: () => showAsk({ ledger: true }) });
-  dkQuestions(wsec, qs, { compact: true, onDone: () => showAsk() });
+  if (led.error) dkSay(lsec, led.error, true); else dkLedger(lsec, led.rows, { from: led.from, onUndo: () => showAsk({ ledger: true }), live });
+  dkQuestions(wsec, qs, { compact: true, onDone: () => showAsk(), live });
   if (opts.ledger) lsec.scrollIntoView({ block: 'start' }); else box.focus();
 }
 

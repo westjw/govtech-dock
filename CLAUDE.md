@@ -1883,51 +1883,75 @@ with Claude), and about 9,000 rows waited in 24 queues.
   screen, and opens queues through `goQueue` with the department, so a ruling
   in one is the truth in the other four.
 - **Questions only the owner can answer** are computed (the launch, asked of
-  the site itself signed out, at most every half hour; submissions) or filed
-  in `data/owner_questions.json` by whoever found them, each answer naming
-  what happens next and the write it makes (`apply`): `not_a_supplier`, or
-  `ask_claude` (a line in Claude's inbox). Answering is journalled.
+  the site itself signed out, in the background at most every half hour, and
+  an alarm if the boards answer without a sign-in; submissions) or filed in
+  `data/owner_questions.json` by whoever found them, each answer naming what
+  happens next and the write it makes (`apply`): `not_a_supplier`, or
+  `ask_claude` (one job a question in Claude's inbox). An answer that writes
+  needs the owner's own why. Answering is journalled; Undo takes back the
+  answer and its write, not an inbox job.
 - **The health map** counts by `page_belt.checklist`, the page sweep's own
-  definition; a company with no public board (coverage `absent`) is finished,
-  not a gap, and is left out of the board column. A square's levers are only
-  the piles that move THAT square (`closes`).
+  definition. A company where discovery found no board counts as WITHOUT one
+  (it waits in No board found, and a scan never proves absence); the number
+  is shown beside the column. A square's levers are only the piles that move
+  THAT square (`closes`).
 - **The batch engine** (direction 3). A pile is one machine answer already
   stored on a queue's rows, where the owner's rules allow ruling fast
-  (`PILES`); every other queue is in `NEVER` or `NEEDS_AGENT` with its reason,
-  and `check_every_queue_is_a_pile_or_says_why` makes a new queue choose.
-  Not batched, by rule: No board found and Scrub (a scan never proves
-  absence), Acquisitions (slow reading), Vendor scope (no stored answer, and
-  the SLED-only ruling), Duplicates, Boards we found, people.
+  (`PILES`): empty page reads, Wrong bucket at high and medium (a proposal
+  its button can take: `_placeable`), researched founding years with a quote,
+  and Website review and Wrong placement read whole. Every other queue is in
+  `NEVER` or `NEEDS_AGENT` with its reason, and
+  `check_every_queue_is_a_pile_or_says_why` makes a new queue choose. Not
+  batched, by rule: **Write-ups** (the gate: every refused, medium, low or
+  unsure write-up is read by a person), **Supplier websites** (a held
+  supplier is released one look each, 2026-10-05), No board found and Scrub
+  (a scan never proves absence), Acquisitions, Vendor scope, Duplicates,
+  Boards we found, people. The first blind review found the write-up and
+  supplier piles broke those rules; the owner can reopen either.
 - **The sample is sized by what it proves, not by a percentage**: zero-defect
   acceptance sampling at 95% (hypergeometric). A pile that reaches the public
   board reads about 58 cards with none wrong (under 5% wrong); a record-only
   pile about 29 (under 10%); 20 rows or fewer are read whole, and accepting a
-  read-all pile takes only the cards marked right. The first wrong card on a
-  sampled pile leaves only Send back. The draw ranks rows by a hash of batch
-  and key, so a row leaving does not redraw cards already read.
+  read-all pile takes only the cards marked right.
+- **Marks** (`data/batch_marks.json`, gitignored, not journalled: up to 58 a
+  pile would push real rulings out of the 500-entry live journal) are kept
+  per PILE, not per department view, and only a person makes one. A mark
+  holds only while the card shows what it showed (`_seen`, a fingerprint of
+  what the ruling would write). A card marked wrong stands for the round,
+  wherever it was seen and wherever its row has gone since; withdrawing one
+  is kept and the ruling says so. Every ruling starts a new round with a new
+  draw (the rank is a hash of pile, round and key). The ruling copies the
+  round's marks, with who made them, into the journalled
+  `data/batch_audits.json`.
 - **Accept runs every row through the applier its own button uses**
   (`APPLIERS`), with saves held in memory (`held_writes`: admin.read,
   read_companies, save_*, write_atomic and agents.load, which reads the
   proposals file off disk and would otherwise keep only the last row), then a
   `landed` test per row, then ONE journal entry per file (chunked under
-  RUNAWAY), force only because `expect_n` matches the count shown. Every ruling
-  record it wrote says `via: batch:<id>`; `_ruling_stamps` counts a batch
-  once, and the agree-rate, the why meter and the shift tally skip `via`
-  records (check_admin_game: a batch must not buy those numbers with volume).
-- **Marks are not journalled**, deliberately: up to 58 a pile would push real
-  rulings out of the 500-entry live journal. They live in the gitignored
-  `data/batch_marks.json`, and the ruling copies the sample's marks into the
-  journalled `data/batch_audits.json`.
+  RUNAWAY), force only because `expect_n` matches the count shown. A row its
+  own applier refuses is held out of the pile, named, and the person looks
+  again (`held_out`). Every ruling record it wrote says `via: batch:<id>`;
+  `_ruling_stamps` counts a batch once, the receipt winds back by the rows it
+  landed, and the agree-rate, the why meter and the shift tally skip `via`
+  records (a batch must not buy those numbers with volume).
 - **Batch undo is field by field** (`act_batch_undo`): the nightly rewrites
   hiring on every company, so act_undo's whole-record test refused every
   batch by morning. A field the batch wrote and something changed since is
-  named and nothing is written; records the batch added are removed under
-  `journal.UNDOING_ADDS`, which lifts RUNAWAY for exactly those keys.
+  named and nothing is written; a dismissal made later in a queue the batch
+  created stays (`CONTAINERS`); records the batch added are removed under
+  `journal.undoing_adds()`, which lifts RUNAWAY for exactly those keys and
+  cannot leak. A batch any of whose entries the journal has archived is
+  refused whole (`batch_live`); the ledger offers no Undo for it.
+- **The ledger filters on the server** (`who=mine|batch`, before the limit)
+  and says how far back the live journal goes. A person's entry without the
+  desk mark from before 2026-10-24T15:23 is "yours"; after, "yours, in chat".
 - Guards: `check_a_sample_proves_what_it_says`,
   `check_every_queue_is_a_pile_or_says_why`,
   `check_a_batch_is_ruled_on_its_sample_and_undone_whole` (the real appliers
-  in a sandbox) and `check_the_batch_screen_runs_right_under_its_own_script`
-  (harness cases 14-18).
+  and a test pile, in a sandbox) and
+  `check_the_batch_screen_runs_right_under_its_own_script` (harness cases
+  14-19). Blind review (3 lenses, a skeptic each): 35 confirmed, all fixed or
+  ruled out by taking the two piles away.
 
 ## The shift: the desk admin's front door until 2026-11-01 (owner, 2026-10-23)
 

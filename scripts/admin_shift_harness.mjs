@@ -599,4 +599,15 @@ const acceptState = S => { const a = btn(S.doc.querySelector(".dk-rule"), /^Acce
     answer: (D.sent.find(x => x[0] === "answer") || [])[1] || null };
 }
 
+// 19. A card of this round marked wrong OFF this screen (the whole-board view,
+//     or a row ruled since) keeps a sampled pile's Accept shut even with every
+//     card here marked right; Send back is open.
+{
+  const D = deskServer(pileView({ wrong_round: 1, wrong: 0 }));
+  const S = load(D.h);
+  S.ctx.showBatch("suppliers:theirs:all"); await S.drain();
+  for (const c of S.doc.querySelectorAll(".dk-card")) { btn(c, /^Right$/).click(); await S.drain(); }
+  out.a_wrong_card_elsewhere_still_blocks = acceptState(S);
+}
+
 console.log(JSON.stringify(out));

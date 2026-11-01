@@ -44,6 +44,7 @@ ruling cost a minute instead of being permanent and unnoticed.
 """
 from __future__ import annotations
 
+import contextlib
 import datetime as dt
 import json
 import os
@@ -85,7 +86,19 @@ DESK = False
 # a batch of 1,811 supplier rulings could be written and never taken back,
 # because removing them is 90% of the file (2026-11-01). Set only for the
 # length of one record() call, and it lifts RUNAWAY for exactly these keys.
+# Set ONLY through undoing_adds(), which cannot leave it set (a refused undo
+# that left it would hand the exemption to the next request's write).
 UNDOING_ADDS: set = set()
+
+
+@contextlib.contextmanager
+def undoing_adds(keys):
+    global UNDOING_ADDS
+    UNDOING_ADDS = set(keys or ())
+    try:
+        yield
+    finally:
+        UNDOING_ADDS = set()
 
 
 # --- WHAT COUNTS AS A RECORD, PER FILE ------------------------------------
