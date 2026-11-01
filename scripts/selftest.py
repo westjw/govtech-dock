@@ -38054,7 +38054,7 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
                  "proposed_category": tcat, "confidence": "high", "also": [],
                  "description": "x", "evidence": ["test"]} for c in picks]
     t_rows = [{"key": f"t{i:02d}", "id": picks[i % 3]["id"], "name": f"T{i}", "v": 1,
-               "bad": i == 5} for i in range(40)]
+               "bad": False} for i in range(40)]
     gone = set()
 
     def t_apply(b):
@@ -38094,8 +38094,12 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
                     journal.DESK = False
 
             def mark_all(bid, how=lambda c, i: "right"):
+                # a card already marked wrong is left as it is: changing it
+                # would be a withdrawal, which is its own case below
                 for i, c in enumerate(desk.batch(bid)["sample"]):
                     m = how(c, i)
+                    if c["mark"] == "wrong":
+                        continue
                     if c["mark"] != m:
                         post(desk.act_batch_mark, {"batch": bid, "key": c["key"], "mark": m,
                                                    "why": "selftest: wrong" if m == "wrong" else ""})
@@ -38187,11 +38191,22 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
                 errors += fail("a batch undo overwrote a field changed after the batch")
 
             # ── a sampled pile of 40 ───────────────────────────────────────
+            # the refused undo above left the three filed elsewhere: put them
+            # back, or the General Gov view below is empty and proves nothing
+            admin.write_atomic("companies.json", json.loads(json.dumps(picks)))
             sa, sg = "selftest:adds:all", "selftest:adds:General Gov"
+            if desk.batch(sg)["n"] != 40:
+                errors += fail(f"the department view of the test pile holds {desk.batch(sg)['n']}, not 40")
             v = desk.batch(sa)
             if v["read_all"] or v["n"] != 40:
                 errors += fail(f"the 40-row pile reads as {v['n']}, read_all={v['read_all']}")
-            first = v["sample"][0]["key"]
+            # a card in the whole-board draw that the department's draw does
+            # NOT show: the case where a wrong card is off the screen
+            in_sg = {c["key"] for c in desk.batch(sg)["sample"]}
+            first = next((c["key"] for c in v["sample"] if c["key"] not in in_sg),
+                         v["sample"][0]["key"])
+            if first in in_sg:
+                errors += fail("the two views drew the same cards; the off-screen case is untested")
             r = post(desk.act_batch_mark, {"batch": sa, "key": first, "mark": "right"},
                      by="agent:selftest")
             if not r.get("error"):
@@ -38199,6 +38214,9 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
             post(desk.act_batch_mark, {"batch": sa, "key": first, "mark": "wrong",
                                        "why": "selftest: wrong"})
             mark_all(sg)                                   # the department's own draw
+            if desk.batch(sg)["state"] != "marked wrong":
+                errors += fail("a department's view of a pile does not show a card the whole-board "
+                               "view marked wrong; its Accept would open on the page")
             r = post(desk.act_batch_rule, {"batch": sg, "ruling": "accept", "expect_n": desk.batch(sg)["n"]})
             if not r.get("error"):
                 errors += fail("a department's view of a pile was accepted past a card the "
@@ -38212,6 +38230,9 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
             if r.get("error") or desk.batch(sa)["round"] != 1 or desk.batch(sa)["read"]:
                 errors += fail(f"sending a pile back did not start a new round: {r.get('error')}")
             gone.discard(first)
+            # a row its own button refuses, from here on: until now every
+            # accept above was refused for the reason it tests and no other
+            t_rows[5]["bad"] = True
             mark_all(sa)
             w = desk.batch(sa)["sample"][1]["key"]         # a mis-click, withdrawn
             post(desk.act_batch_mark, {"batch": sa, "key": w, "mark": "wrong", "why": "selftest: oops"})
@@ -38256,6 +38277,39 @@ def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
             if "did not land" not in (r.get("error") or "") or \
                     (tmp / "selftest_rulings.json").read_text() != before:
                 errors += fail(f"a row that did not land let the batch write: {r}")
+
+            # ── two rows of a file its applier reads OFF DISK: agents.load
+            # reads agent_proposals.json directly, and a batch that held only
+            # admin's saves kept the last row's change and lost the first
+            import agents
+            keep_store = agents.STORE
+            agents.STORE = tmp / "agent_proposals.json"
+            agents.STORE.write_text(json.dumps({
+                f"read:{c['id']}": {"kind": "read", "id": c["id"], "status": "pending",
+                                    "none_found": True, "postings": [], "confidence": "medium",
+                                    "evidence": (c.get("website") or "").rstrip("/") + "/careers",
+                                    "why": "none",
+                                    "by": "selftest", "at": "2026-11-01T00:00:00"}
+                for c in picks[:2]}))
+            admin.QUEUES["proposals"] = lambda c, b: [
+                {"key": k, "id": p_["id"], "kind": "read", "none_found": True, "warn": None,
+                 "evidence": p_["evidence"], "why": p_["why"], "name": p_["id"]}
+                for k, p_ in agents.load().items() if p_.get("status") == "pending"]
+            try:
+                pb = "proposals:reads-empty:all"
+                mark_all(pb)
+                r = post(desk.act_batch_rule, {"batch": pb, "ruling": "accept", "expect_n": 2})
+                got = json.loads(agents.STORE.read_text())
+                if r.get("error") or sorted(x.get("status") for x in got.values()) != ["accepted", "accepted"]:
+                    errors += fail(f"two rows of the proposals file did not both land: "
+                                   f"{r.get('error') or [x.get('status') for x in got.values()]}")
+            finally:
+                agents.STORE = keep_store
+            # a placement already under `also` is not offered: validate() refuses it
+            row = dict(mis_rows[0], proposed_category=target["categories"][3])
+            if not desk._placeable(row) or desk._placeable(dict(row, also=[
+                    {"sector": "Public Safety", "category": target["categories"][3]}])):
+                errors += fail("a placement the company already has under `also` is offered as a pile")
 
             # ── a dismissal batch's queue key, and a later dismissal in it ──
             dm = admin.read("admin_dismissed.json", {})
