@@ -4066,6 +4066,45 @@ def check_a_company_sits_on_at_most_two_shelves() -> int:
     return errors
 
 
+def check_a_workable_job_in_two_countries_is_two_postings() -> int:
+    """Workable lists a job once per country, with one address and often no
+    city: read as "" twice, two postings shared one posting_id and the
+    nightly build's self-test failed (IRTH, 2026-11-01). The rows that would
+    collide take their state and country as the location; a row with a city,
+    or alone at its address, keeps exactly the location it always had, so
+    no other posting_id moves. Driven through fetch_workable with the feed
+    stubbed.
+    """
+    import json as _json
+
+    class Stub:
+        def __init__(self, payload): self.text = _json.dumps(payload); self.status_code = 200
+        def json(self): return _json.loads(self.text)
+    J = lambda code, **kw: dict({"title": "Cloud Engineer", "url": f"https://apply.workable.com/j/{code}",   # noqa: E731
+                                 "city": "", "state": "", "country": "United States",
+                                 "published_on": "2026-10-16", "telecommuting": True,
+                                 "description": "<p>x</p>"}, **kw)
+    feed = {"jobs": [J("AAA"), J("AAA", country="Canada"),
+                     J("BBB", city="Austin", state="Texas"), J("BBB", city="Toronto", country="Canada"),
+                     J("CCC"),
+                     J("DDD", city="London", state="England", country="United Kingdom"),
+                     J("DDD", city="London", state="Ontario", country="Canada")]}
+    keep = ats._get
+    ats._get = lambda url, **kw: Stub(feed)
+    errors = 0
+    try:
+        rows = ats.fetch_workable("acme")
+    finally:
+        ats._get = keep
+    locs = [(r["url"][-3:], r["location"]) for r in rows]
+    want = [("AAA", "United States"), ("AAA", "Canada"), ("BBB", "Austin"), ("BBB", "Toronto"), ("CCC", ""),
+            ("DDD", "London, England, United Kingdom"), ("DDD", "London, Ontario, Canada")]
+    if locs != want:
+        errors += fail(f"a Workable job open in two countries is not two places, or a row that "
+                       f"never collided changed its location (and so its posting id): {locs}")
+    return errors
+
+
 def check_jibe_is_read_and_verifiable() -> int:
     """The Jibe fetcher parses its API, pages past the first page, and can
     say whose board it is.
@@ -38397,6 +38436,7 @@ def main() -> int:
     errors += check_placement_queues_can_say_both()
     errors += check_a_company_sits_on_at_most_two_shelves()
     errors += check_jibe_is_read_and_verifiable()
+    errors += check_a_workable_job_in_two_countries_is_two_postings()
     errors += check_merge_repoints_competitor_edges()
     errors += check_claiming_holds_the_domain_line()
     errors += check_ask_proposes_and_never_writes()

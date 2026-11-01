@@ -65,6 +65,7 @@ import sys
 import threading
 import time
 import urllib.parse
+from collections import Counter
 
 import requests
 
@@ -1161,7 +1162,22 @@ def fetch_workable(slug: str) -> list[dict]:
     # a Workable salary only ever comes out of the description text.
     url = f"https://apply.workable.com/api/v1/widget/accounts/{slug}?details=true"
     data = _json(_get(url))
-    return [{"title": j.get("title", ""), "location": j.get("city", "") or "",
+    jobs = data.get("jobs", [])
+    # ONE JOB, ONE ROW PER COUNTRY. Workable lists a job once for each
+    # country it is open in, with the same address; with no city on either,
+    # the location read as "" twice and two postings got one posting_id -
+    # IRTH's Cloud Engineer in the US and in Canada broke the nightly build's
+    # self-test (2026-11-01). Only the rows that would collide take their
+    # state and country as the location; every other row keeps exactly the
+    # location (and so the posting_id) it always had.
+    seen = Counter((j.get("url", ""), j.get("city", "") or "") for j in jobs)
+
+    def where(j):
+        city = j.get("city", "") or ""
+        if seen[(j.get("url", ""), city)] < 2:
+            return city
+        return ", ".join(x for x in (city, j.get("state") or "", j.get("country") or "") if x)
+    return [{"title": j.get("title", ""), "location": where(j),
              "url": j.get("url", ""),
              "posted": posted_date(j.get("published_on")),
              # telecommuting True means remote. FALSE MEANS NOT REMOTE, which
@@ -1171,7 +1187,7 @@ def fetch_workable(slug: str) -> list[dict]:
              "office_hint": office_hint(j.get("city"), j.get("state"),
                                         j.get("country")),
              "jd": plain_html(j.get("description") or "")}
-            for j in data.get("jobs", [])]
+            for j in jobs]
 
 
 def fetch_recruitee(slug: str) -> list[dict]:
