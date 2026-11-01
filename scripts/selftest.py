@@ -34282,6 +34282,28 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         miss = [n for n in needles if n not in got]
         if miss:
             errors += fail(f"the panel does not print {why}: missing {miss} in {got[:300]!r}")
+    # THE SCORE IS THE PRESS (owner, 2026-10-29): an open, unscored role
+    # offers its Score with the price and what they hold; a role already
+    # scored, gated or closed opens Job Hunter as before; the owner, who
+    # never pays, sees no price
+    for key, needles, absent in (
+            ("scorePaid", ("Score it in Job Hunter", "1 credit, you have 3"), ("Open in Job Hunter",)),
+            ("scoreBroke", ("Score it in Job Hunter", "you have none left: buy a pack in Job Hunter"), ()),
+            ("scoreOwner", ("Score it in Job Hunter",), ("credit",)),
+            ("scoreGated", ("Open in Job Hunter",), ("Score it", "credit")),
+            ("scoreClosed", ("Open in Job Hunter",), ("Score it", "credit")),
+            ("scoreRunning", ("Being scored in Job Hunter now", "Open in Job Hunter"),
+             ("Score it", "buy a pack")),
+            ("scoreShort", ("2 credits, you have 1: buy a pack in Job Hunter",), ("none left",)),
+            ("scoreHeld", ("1 credit, you have 2, 1 held for work in progress",), ("buy a pack",)),
+            ("unscored", ("Open in Job Hunter",), ("Score it",)),
+            ("pending", ("Open in Job Hunter",), ("Score it",))):
+        got = flat.get(key, "")
+        bad = [n for n in needles if n not in got] + [a for a in absent if a in got]
+        if bad:
+            errors += fail(f"the panel's Score button says the wrong thing for {key}: {bad} in {got[-300:]!r}")
+    if "<x-jh" in jp.get("scoreHostile", "") or "NaN" in jp.get("scoreHostile", ""):
+        errors += fail("the panel prints Job Hunter's credit figures as markup or as NaN")
     nc = flat.get("noCeiling", "")
     if "<b>54</b> now &middot; score accepted" not in nc or "null" in nc or "undefined" in nc:
         errors += fail(f"a score with no ceiling does not read as the score alone: {nc[:200]!r}")

@@ -1547,6 +1547,7 @@
   .jhp-go{display:inline-block;margin-top:var(--space-4);padding:var(--space-2) var(--space-4);
     background:var(--accent-text);color:var(--bg);font-weight:700;text-decoration:none}
   .jhp-go:hover{filter:brightness(1.08)}
+  .jhp-cost{margin:var(--space-2) 0 0;font-size:13px;color:var(--dim)}
   /* on a card the flag sits under the dates, never in the bookmark's corner,
      so a title keeps its width on a 320px phone */
   .jc-flag{display:none}
@@ -4643,12 +4644,29 @@ function jhPanelHTML(r){
   const resume=r.resume_sent?"sent":r.tailored?"tailored":"not tailored yet";
   const state={open:"",closed:"closed on your board",
     unknown:"Job Hunter cannot tell whether it is still open"}[r.status];
+  /* THE SCORE IS THE PRESS (owner, 2026-10-29: "the job hunter for that
+     role, like you click a button and it charges you"). An open role Job
+     Hunter has not scored, with no failing gate, offers its Score - which
+     is pressed on Job Hunter's own role page, where the credit is spent -
+     and says on its face what it costs and what they hold. Nothing for an
+     account that never pays. */
+  const cr=r.credits;
+  const canScore=!f&&!r.scoring&&!(r.gates&&r.gates.fails)&&r.status==="open";
+  const n=cr&&Number(cr.score_costs)||1, have=cr&&cr.required?Number(cr.available)||0:null;
+  const held=cr&&cr.required?Number(cr.held)||0:0;
+  /* what they hold, as Job Hunter's own header says it (review, 2026-10-29) */
+  const holds=have<=0?"you have none left":`you have ${have}`;
+  const cost=!cr||!cr.required?"":` &middot; ${n} credit${n===1?"":"s"}, ${holds}${
+    held?`, ${held} held for work in progress`:""}${have<n?": buy a pack in Job Hunter":""}`;
   return `<p class="jhp-role">${esc(r.title||"")}${r.org?` &middot; ${esc(r.org)}`:""}${
       state===undefined?` <span class="jhp-closed">${esc(String(r.status))}</span>`
       :state?` <span class="jhp-closed">${esc(state)}</span>`:""}</p>
     ${g?row("Gate",g):""}${row("Fit",fit)}${row("Application",app)}${row("Resume",esc(resume))}${
       r.flagged_on?row("Flagged",`on SLED JOBS ${esc(r.flagged_on)}`):""}
-    ${go(jhApp()+"#role/"+encodeURIComponent(r.id),"Open in Job Hunter")}`;
+    ${r.scoring?`<p class="jhp-cost">Being scored in Job Hunter now.</p>`:""}${
+      canScore?`${go(jhApp()+"#role/"+encodeURIComponent(r.id),"Score it in Job Hunter")}${
+      cost?`<p class="jhp-cost">${cost.replace(/^ &middot; /,"")}</p>`:""}`
+      :go(jhApp()+"#role/"+encodeURIComponent(r.id),"Open in Job Hunter")}`;
 }
 /* What Job Hunter's reply says: the answer, or which silence it was.
    Job Hunter's own 401s carry the board's CORS header, so their words are

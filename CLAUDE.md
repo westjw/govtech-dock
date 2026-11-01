@@ -304,7 +304,14 @@ panel on a role).**
 - **A role page's "Job Hunter ▸"** (beside Flag and Save, one `.roleacts`
   group that takes its own line on a phone) opens a popout at the page's edge:
   the fit, the application, the resume and the flag as the person's own Job
-  Hunter holds them, and "Open in Job Hunter". It FETCHES Job Hunter's
+  Hunter holds them, and "Open in Job Hunter". **An open role Job Hunter has
+  not scored, with no failing gate and no score on its way, offers "Score it
+  in Job Hunter"** (owner, 2026-10-29: "the job hunter for that role, like you
+  click a button and it charges you"): the Score is pressed on Job Hunter's
+  role page, where the credit is spent, and the panel says what it costs and
+  what they hold, as Job Hunter's header says it (Job Hunter's board-role
+  answer carries `credits` and `scoring`). No price for an account that
+  never pays; "Being scored in Job Hunter now" while one is on its way. It FETCHES Job Hunter's
   `/api/board-role?id=<posting id>` with the person's own sign-in
   (`credentials: include`, `redirect: manual`, nothing sent but the id).
   Job Hunter answers that one route to this board's address and no other,

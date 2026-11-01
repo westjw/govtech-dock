@@ -482,6 +482,18 @@ try {
       // Job Hunter holds a score with no ceiling (an accepted 54)
       noCeiling: role({ fit: { as_is: 54, ceiling: null, review: "accepted" } }),
       unscored: role({ band: "possible", status: "unknown" }),
+      // CREDITS (2026-10-29): an open, unscored role offers its Score with
+      // the price and the balance; nothing about credits for the owner
+      scorePaid: role({ band: "possible", credits: { required: true, score_costs: 1, available: 3 } }),
+      scoreBroke: role({ band: "possible", credits: { required: true, score_costs: 1, available: 0 } }),
+      scoreOwner: role({ band: "possible", credits: { required: false, score_costs: 1 } }),
+      scoreGated: role({ gates: { fails: 1, checks: 0, first_fail: "clearance" },
+        credits: { required: true, score_costs: 1, available: 3 } }),
+      scoreHostile: role({ credits: { required: true, score_costs: X, available: X, held: X } }),
+      scoreClosed: role({ status: "closed", band: "possible", credits: { required: true, score_costs: 1, available: 3 } }),
+      scoreRunning: role({ scoring: true, credits: { required: true, score_costs: 1, available: 0, held: 1 } }),
+      scoreShort: role({ credits: { required: true, score_costs: 2, available: 1, held: 0 } }),
+      scoreHeld: role({ credits: { required: true, score_costs: 1, available: 2, held: 1 } }),
       // every string Job Hunter sends, written to be markup
       hostile: role({ id: '"><x-jh>/?#&', title: X, org: X, status: X,
         fit: { as_is: X, ceiling: X, review: "accepted" },
