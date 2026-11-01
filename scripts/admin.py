@@ -3469,22 +3469,15 @@ def act_save_website(body: dict) -> dict:
     steps = [f"website saved{' and renamed to ' + name if name else ''}"]
 
     # 2. the logo, straight away
-    # fetch_one takes (id, site, name, pending) and answers a dict. This
-    # unpacked a 2-tuple into three names, so it raised every time and said
-    # "could not reach the site" for every website saved here (2026-11-01).
-    got_logo = False
-    try:
-        import fetch_logos
-        res = fetch_logos.fetch_one((cid, url, c.get("name") or cid, False))
-        if res.get("ok") and res.get("review"):
-            steps.append("logo found, waiting in Logos to check")
-        elif res.get("ok"):
-            got_logo = True
-            steps.append("logo found")
-        else:
-            steps.append(f"no logo on the site ({res.get('note') or 'none found'})")
-    except Exception as exc:  # noqa: BLE001 - a logo is never worth a 500
-        steps.append("could not reach the site for a logo")
+    # THE LOGO IS THE NIGHTLY'S, NOT THE DESK'S (2026-11-01). This called
+    # fetch_one with a 2-tuple and unpacked its dict answer into three names,
+    # so it raised every time and said "could not reach the site" for every
+    # website saved here. Fixed, it would write logo files into the desk's
+    # checkout that the nightly also writes, which the publisher never
+    # carries and which block its fast-forward (review). fetch_logos.due()
+    # looks again when a company's website changes, so tonight's run does it.
+    got_logo = None
+    steps.append("logo: tonight's run looks for it")
 
     # 3. the board, verified before it is written
     got_board = None
@@ -4014,19 +4007,25 @@ def q_logos(companies, board) -> list:
     by_id = {c.get("id"): c for c in seq}
     hiring = {o.get("id"): o.get("open_roles", 0) or 0
               for o in (board or {}).get("organizations", [])}
+    import hashlib
     log = read("logo_log.json", {})
+    ruled = read("logo_rulings.json", {})
     live = {f.stem for f in fl.OUT.glob("*.*")}
     out = []
     for f in sorted(fl.REVIEW.glob("*.*")):
         cid = f.stem
-        if not ID_OK.match(cid):
+        if not ID_OK.match(cid) or f.suffix.lower() not in Handler.LOGO_TYPES:
+            continue
+        # DECIDED, NOT YET APPLIED: tonight's run moves or deletes it
+        if hashlib.sha256(f.read_bytes()).hexdigest() in ruled:
             continue
         c = by_id.get(cid) or {}
         e = log.get(cid) if isinstance(log.get(cid), dict) else {}
+        size = f.stat().st_size
         out.append({"id": cid, "name": c.get("name") or cid,
                     "website": c.get("website") or "",
                     "src": "/assets/logos/review/" + urllib.parse.quote(f.name),
-                    "kb": round(f.stat().st_size / 1024, 1),
+                    "kb": round(size / 1024, 1), "too_big": size > fl.LIVE_MAX_BYTES,
                     "via": e.get("via") or "", "url": e.get("url") or "",
                     "open_roles": hiring.get(cid, 0), "has_live": cid in live})
     out.sort(key=lambda r: (-r["open_roles"], r["name"].lower()))
@@ -4048,26 +4047,31 @@ def _parked_logo(body: dict):
     return cid, files[0]
 
 
-def _rule_logo(cid: str, f: pathlib.Path, ruling: str, why: str, by: str) -> None:
-    """Keep the ruling, keyed by company: the nightly reads a refusal's hash.
+def _rule_logo(cid: str, f: pathlib.Path, ruling: str, why: str, by: str,
+               action: str) -> str | None:
+    """Record a ruling on one parked image. Refusal message, or None.
 
-    NOT JOURNALED, deliberately: the journal can put a ruling back but not the
-    file it moved, and an Undo that restored one without the other would
-    leave a live logo nothing says was accepted, or a refusal for a file that
-    is back in the queue."""
+    A RECORD ONLY, keyed by the image's sha256, journaled like every ruling:
+    the desk never moves or deletes a logo file. fetch_logos.apply_rulings()
+    does that on the run's side, which owns assets/logos/, so the publisher
+    carries this file like any decision and Undo puts a ruling back cleanly
+    (review, 2026-11-01: moving files at the desk left them unpublishable and
+    blocked the checkout's fast-forward). Keyed by image, so two refusals for
+    one company both stand."""
     import hashlib
-    rulings = read("logo_rulings.json", {})
+    rulings = dict(read("logo_rulings.json", {}))
     log = read("logo_log.json", {})
     e = log.get(cid) if isinstance(log.get(cid), dict) else {}
-    rulings[cid] = {"ruling": ruling, "sha256": hashlib.sha256(f.read_bytes()).hexdigest(),
-                    "file": f.name, "via": e.get("via"), "url": e.get("url"),
-                    "why": (why or "")[:200], "by": by or "owner",
-                    "at": dt.datetime.now().astimezone().isoformat(timespec="seconds")}
-    write_atomic("logo_rulings.json", rulings)
+    rulings[hashlib.sha256(f.read_bytes()).hexdigest()] = {
+        "company": cid, "ruling": ruling, "file": f.name,
+        "via": e.get("via"), "url": e.get("url"), "why": (why or "")[:200],
+        "by": by or "owner",
+        "at": dt.datetime.now().astimezone().isoformat(timespec="seconds")}
+    return save_decisions("logo_rulings.json", rulings, action, why=why or "", by=by or "owner")
 
 
 def act_logo_accept(body: dict) -> dict:
-    """"Use this logo": the parked file goes live, one level up."""
+    """"Use this logo": recorded now, live after tonight's run moves it up."""
     import fetch_logos as fl
     got = _parked_logo(body)
     if isinstance(got, dict):
@@ -4075,24 +4079,28 @@ def act_logo_accept(body: dict) -> dict:
     cid, f = got
     if any(fl.OUT.glob(f"{cid}.*")):
         return {"error": f"{cid} already has a live logo; refuse this one instead"}
-    dest = fl.logo_path(cid, f.suffix.lstrip("."), fl.OUT)
-    _rule_logo(cid, f, "accept", "", body.get("by"))
-    f.replace(dest)
-    return {"ok": True, "message": f"{cid}: logo is live from the next build "
-                                   f"(publish to put it on the site)"}
+    if f.stat().st_size > fl.LIVE_MAX_BYTES:
+        return {"error": f"{f.stat().st_size // 1024}KB is over the "
+                         f"{fl.LIVE_MAX_BYTES // 1000}KB a live logo may be; refuse "
+                         f"it, or shrink it on the Mac first (scripts/shrink_logos.py)"}
+    bad = _rule_logo(cid, f, "accept", "", body.get("by"), "logo-accept")
+    if bad:
+        return {"error": bad}
+    return {"ok": True, "message": f"{cid}: accepted; tonight's run puts it on the board"}
 
 
 def act_logo_refuse(body: dict) -> dict:
-    """"Not theirs": the parked file goes, and its image is never landed again.
-    The next nightly tries the site's next candidate once."""
+    """"Not theirs": recorded now; tonight's run deletes it, never takes that
+    image again, and looks once more on their site."""
     got = _parked_logo(body)
     if isinstance(got, dict):
         return got
     cid, f = got
-    _rule_logo(cid, f, "refuse", body.get("why") or "", body.get("by"))
-    f.unlink()
-    return {"ok": True, "message": f"{cid}: refused; the next nightly looks once "
-                                   f"for another logo on their site"}
+    bad = _rule_logo(cid, f, "refuse", body.get("why") or "", body.get("by"), "logo-refuse")
+    if bad:
+        return {"error": bad}
+    return {"ok": True, "message": f"{cid}: refused; tonight's run removes it and "
+                                   f"looks once more on their site"}
 
 
 QUEUES = {"users": q_users, "profiles": q_profiles, "proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
@@ -6742,6 +6750,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if framed:
             self.send_header("Content-Security-Policy", "frame-ancestors 'self'")
             self.send_header("X-Frame-Options", "SAMEORIGIN")
+        elif ctype == "image/svg+xml":
+            # AN SVG IS A DOCUMENT, and a logo is fetched off somebody else's
+            # site. Opened in its own tab on this origin it would run as the
+            # admin; the public site serves these sandboxed, and so does this
+            # (review, 2026-11-01). No script, nothing fetched, never framed.
+            self.send_header("Content-Security-Policy",
+                             "default-src 'none'; img-src data:; style-src 'unsafe-inline'; "
+                             "sandbox; frame-ancestors 'none'")
+            self.send_header("X-Frame-Options", "DENY")
         else:
             self.send_header("Content-Security-Policy", "frame-ancestors 'none'")
             self.send_header("X-Frame-Options", "DENY")
@@ -6800,7 +6817,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
     # file and asserts the logo directory is genuinely its parent rather than
     # trusting the string - "..%2f" and a symlink both die on the resolve.
     LOGO_TYPES = {".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp",
-                  ".ico": "image/x-icon", ".svg": "image/svg+xml"}
+                  ".ico": "image/x-icon", ".svg": "image/svg+xml", ".gif": "image/gif"}
 
     def _mascot(self, name: str):
         """The penguin. Same resolve-and-contain check as the logos."""

@@ -736,7 +736,8 @@ const INTRO = {
   logos: 'Logos the nightly found by guessing from a company’s page, parked until you look. '
     + 'An icon a site declares for itself goes live on its own; one picked out of the page — '
     + 'where a customer’s logo or a stock photo hides — waits here. Use it, or say it is not '
-    + 'theirs: that image is never taken again, and the next night tries their site once more.'
+    + 'theirs: that image is never taken again, and the next night tries their site once more. '
+    + 'A ruling is recorded now and carried out by tonight’s run.'
 };
 
 async function boot() {
@@ -5643,10 +5644,12 @@ RENDER.logos = r => {
   n.appendChild(el('div', 'kv', [from, r.kb + ' KB', r.open_roles ? r.open_roles + ' open roles' : '']
     .filter(Boolean).join(' · ')));
   if (r.has_live) n.appendChild(el('div', 'kv', 'They already have a live logo; this one can only be refused.'));
+  if (r.too_big) n.appendChild(el('div', 'kv', r.kb + ' KB is over what a live logo may be; '
+    + 'refuse it, or shrink it on the Mac (scripts/shrink_logos.py) and it comes back.'));
   const row = el('div', 'row');
   const why = el('input');
   why.type = 'text'; why.placeholder = 'Why not, if not (optional) — e.g. a customer’s logo';
-  if (!r.has_live) {
+  if (!r.has_live && !r.too_big) {
     const yes = el('button', 'act go', 'Use this logo');
     yes.onclick = async () => {
       const res = await api('/api/logo-accept', {id: r.id});

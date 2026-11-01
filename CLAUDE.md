@@ -2966,23 +2966,40 @@ an icon the site declares.
   the same morning. Never `--retry` there: a site that said 403 yesterday
   mostly says it again; retrying failures stays a person's call.
 - **What goes live on its own** is `fetch_logos.LIVE_VIA`: an apple-touch
-  icon, a declared icon, a manifest icon. Anything else (a logo picked out
-  of the markup, og:image, a guessed path) is parked in
-  `assets/logos/review/`, which the build never reads.
+  icon, a declared icon, a manifest icon - decided by WHERE `candidates()`
+  found it, never by how the URL is spelled - and only when it is on the
+  company's own host (or a known CDN) and under `LIVE_MAX_BYTES` (100KB, the
+  selftest's live ceiling; CI cannot shrink one). Anything else (a markup
+  logo, og:image, a guessed path) is parked in `assets/logos/review/`,
+  which the build never reads. An SVG that can run (`svg_runs`, the one
+  rule selftest's scan also uses) is never written at all.
 - **The desk's "Logos to check"** (admin queue `logos`) shows a parked logo
-  on both plates. "Use this logo" moves it up a level; "Not theirs" deletes
-  it and keeps its sha256 in `data/logo_rulings.json`, which every run reads,
-  so that image is never landed again, and the next nightly tries the
-  site's next candidate once (`fetch_logos.due`). Not journaled, on purpose:
-  the journal can restore the record but not the file it moved.
+  on both plates. "Use this logo" / "Not theirs" only RECORD a ruling in
+  `data/logo_rulings.json`, keyed by the image's sha256 and journaled like
+  any ruling (so the publisher carries it and Undo works). The desk never
+  moves a logo file: `fetch_logos.apply_rulings()`, at the start of every
+  run on main, moves an accepted one up a level and deletes a refused one.
+  Keyed by image, so two refusals for one company both stand; a refused
+  image is never landed again for anyone, and the next run tries the
+  site's next candidate once (`fetch_logos.due`).
+- **The desk does not fetch logos.** Its website save called `fetch_one`
+  with a 2-tuple and unpacked a dict, so it had been saying "could not reach
+  the site" every time; fixed, it would have written files the nightly also
+  writes. `due()` looks again when a company's website changes, so the
+  nightly does it. The desk serves a parked SVG sandboxed, and GIFs.
+- **A hand run pushed during the nightly** no longer stops its push:
+  `merge_decisions --resolve` keeps upstream's copy of a logo file both
+  sides wrote, and merges `logo_log.json` by company, upstream's entry where
+  both looked. The run writes its log every ten companies, and one site's
+  exception is one miss, not the end of the run.
 - **Refused by content in code** (`NOT_THEIRS`) are the images ruled by eye
   before the desk queue existed.
-- **The desk's website save fetches a logo again.** It unpacked
-  `fetch_one`'s dict answer as a 2-tuple, so it raised and said "could not
-  reach the site" for every website saved at the desk.
 - Guards: `check_the_nightly_parks_a_guessed_logo_and_lands_a_declared_one`,
-  `check_the_desk_rules_on_a_parked_logo`; the SVG script scan now reads the
-  subfolders too, since `build_site` copies them into public/.
+  `check_the_desk_rules_on_a_parked_logo`,
+  `check_a_logo_both_sides_wrote_resolves_to_upstream`; the SVG scan reads
+  the subfolders too, since `build_site` copies them into public/. Blind
+  review of d969c7c (2 reviewers, a skeptic per finding): 14 real, all
+  fixed; 41 of 42 breakages caught across both commits.
 
 ## Conventions
 

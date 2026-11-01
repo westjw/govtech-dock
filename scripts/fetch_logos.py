@@ -66,15 +66,25 @@ PENDING = OUT / "pending"
 # descends. The desk's "Logos to check" moves one up a level, or refuses it.
 REVIEW = OUT / "review"
 LOG = DATA / "logo_log.json"
-# The desk's rulings on parked logos, {company id: ruling}. A refusal carries
-# the image's sha256, and no run lands that image again.
+# The desk's rulings on parked logos, {image sha256: ruling}. KEYED BY THE
+# IMAGE, not the company: two refusals for one company are two keys and both
+# stand, where a company key let the second erase the first and the nightly
+# offered the same two wrong logos in turn (review, 2026-11-01). The desk only
+# WRITES a ruling (journaled, so Undo works); apply_rulings(), run by every
+# run on main, moves or deletes the file - the desk never touches assets/.
 RULINGS = DATA / "logo_rulings.json"
 # THE ICON A SITE DECLARES FOR ITSELF goes live on its own; a logo picked out
-# of the page's markup, or found at a guessed path, waits for a person.
-# Measured on the first nightly-sized batch (31, 2026-11-01): all three wrong
-# logos - a customer's mark off a case study, two social-share photos - came
-# from the markup; none came from a declared icon.
+# of the page's markup, its share image, or one found at a guessed path waits
+# for a person. Measured on the first nightly-sized batch (31, 2026-11-01): all
+# three wrong logos - a customer's mark off a case study, two social-share
+# photos - came from the markup; none came from a declared icon. Decided by
+# WHERE candidates() found it, never by how its URL is spelled.
 LIVE_VIA = {"apple-touch-icon", "declared-icon", "manifest"}
+# Nothing over this goes live unattended: selftest's
+# check_a_logo_is_the_size_it_is_drawn_at refuses a live logo over it, and a
+# failing selftest stops every data workflow the next morning. shrink_logos
+# needs macOS, so CI cannot fix one; a big one waits in review/ instead.
+LIVE_MAX_BYTES = 100_000
 PROPOSED_SITES = DATA / "proposed_websites.json"
 MIN_BYTES = 120          # anything smaller is a 1x1 or an error page
 MAX_BYTES = 220_000      # a logo, not a hero image
@@ -336,9 +346,12 @@ def manifest_icons(base: str, page: str, get) -> list[tuple[int, str]]:
             doc = json.loads(blob.decode("utf-8", "replace"))
         except Exception:
             continue
-        for icon in (doc.get("icons") or [])[:12]:
-            src = (icon or {}).get("src")
-            if not src or src.startswith("data:"):
+        # A MANIFEST IS SOMEBODY ELSE'S JSON: [] or null or icons as strings
+        # raised here, outside fetch_one's try, and ended the whole run.
+        icons = doc.get("icons") if isinstance(doc, dict) else None
+        for icon in (icons if isinstance(icons, list) else [])[:12]:
+            src = icon.get("src") if isinstance(icon, dict) else None
+            if not isinstance(src, str) or not src or src.startswith("data:"):
                 continue
             sizes = re.search(r"(\d+)", str(icon.get("sizes") or ""))
             px = int(sizes.group(1)) if sizes else 0
@@ -353,9 +366,15 @@ def manifest_icons(base: str, page: str, get) -> list[tuple[int, str]]:
 
 
 def candidates(site: str, page: str, cid: str = "", name: str = "",
-               get=None) -> list[str]:
-    """Icon URLs to try, best first."""
-    out: list[tuple[int, str]] = []
+               get=None) -> list[tuple[str, str]]:
+    """(icon URL, where it came from) to try, best first.
+
+    THE SOURCE TRAVELS WITH THE URL. Whether a find goes live is decided by
+    where it came from (LIVE_VIA), and that was read back off the URL's
+    spelling: a manifest icon was always "blind-path" and parked, and a
+    share image named /social-icon.png was a "declared-icon" and went live
+    (review, 2026-11-01). A URL found two ways keeps the stronger source."""
+    out: list[tuple[int, str, str]] = []
     for tag in ICON_RE.findall(page or ""):
         m = HREF_RE.search(tag)
         if not m:
@@ -364,26 +383,28 @@ def candidates(site: str, page: str, cid: str = "", name: str = "",
         if href.startswith("data:"):
             continue
         size = int(SIZES_RE.search(tag).group(1)) if SIZES_RE.search(tag) else 0
+        source = "declared-icon"
         if "apple-touch" in tag.lower():
-            size = max(size, 180)
-        out.append((size, urllib.parse.urljoin(site, htmllib.unescape(href))))
+            size, source = max(size, 180), "apple-touch-icon"
+        out.append((size, urllib.parse.urljoin(site, htmllib.unescape(href)), source))
     if get is not None:
-        out += manifest_icons(site, page, get)
-    out += markup_logos(site, page or "", cid, name, site)
+        out += [(r, u, "manifest") for r, u in manifest_icons(site, page, get)]
+    out += [(r, u, "markup-logo") for r, u in markup_logos(site, page or "", cid, name, site)]
     # og:image is the card image a site shows when shared - very often the
     # logo, and present on sites that declare no icon at all
     for tag in OG_RE.findall(page or ""):
         m = CONTENT_RE.search(tag)
         if m and not m.group(1).startswith("data:"):
-            out.append((40, urllib.parse.urljoin(site, htmllib.unescape(m.group(1).strip()))))
-    out.sort(reverse=True)
-    urls = [u for _, u in out]
-    urls += [urllib.parse.urljoin(site, path) for path in BLIND_PATHS]
+            out.append((40, urllib.parse.urljoin(site, htmllib.unescape(m.group(1).strip())),
+                        "og-image"))
+    out.sort(key=lambda t: t[0], reverse=True)
+    pairs = [(u, s) for _, u, s in out]
+    pairs += [(urllib.parse.urljoin(site, path), "blind-path") for path in BLIND_PATHS]
     seen, uniq = set(), []
-    for u in urls:
+    for u, s in pairs:
         if u not in seen:
             seen.add(u)
-            uniq.append(u)
+            uniq.append((u, s))
     return uniq[:16]
 
 
@@ -491,7 +512,7 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
         return res
 
     tried, oversize = 0, ""
-    for url in candidates(base, page, cid, name, get):
+    for url, source in candidates(base, page, cid, name, get):
         tried += 1
         if tried > 16:
             break
@@ -511,6 +532,11 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
                 last = f"ruled not theirs: {refused[digest]}"
                 continue
             ext, why = sniff(ir.content, ir.headers.get("content-type", ""))
+            if ext == "svg" and svg_runs(ir.content.decode("utf-8", "replace")):
+                # an SVG is a document; one that can run is never written,
+                # live or parked - build_site ships review/ to public/ too
+                last = "an svg that carries script, not taken"
+                continue
             if not ext:
                 if why.startswith("too big") and not oversize:
                     # Worth saying out loud. This is a real logo we chose not
@@ -519,8 +545,16 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
                     oversize = (f"logo found but {len(ir.content) // 1024}KB, "
                                 f"over the {MAX_BYTES // 1024}KB cap")
                 continue
-            via = classify_source(url, base, page)
-            review = not pending and via not in LIVE_VIA
+            via = source
+            # A DECLARED ICON ON ANOTHER BRAND'S HOST is the subsidiary page
+            # naming its parent's mark - live would put the parent on the
+            # card; a known CDN serving the company's own file is not that.
+            final = getattr(ir, "url", None) or url
+            host = (urllib.parse.urlsplit(final).hostname or "").lower()
+            foreign = (not same_brand(site, final, cid, name)
+                       and not any(k in host for k in CDNS))
+            review = not pending and (via not in LIVE_VIA or foreign
+                                      or len(ir.content) > LIVE_MAX_BYTES)
             out_dir = PENDING if pending else REVIEW if review else OUT
             try:
                 dest = logo_path(cid, ext, out_dir)
@@ -548,35 +582,93 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
     return res
 
 
-def refused_hashes() -> dict:
-    """{sha256: why} for every image no run may land: the ones ruled by eye in
-    this file, and the ones the desk refused in data/logo_rulings.json."""
-    out = dict(NOT_THEIRS)
+def load_rulings() -> dict:
+    """{sha256: ruling} from the desk, or {} when there are none yet."""
     try:
         rulings = json.loads(RULINGS.read_text())
     except (OSError, ValueError):
-        rulings = {}
-    for cid, r in (rulings.items() if isinstance(rulings, dict) else []):
-        if isinstance(r, dict) and r.get("ruling") == "refuse" and r.get("sha256"):
-            out[r["sha256"]] = f"refused at the desk for {cid}" + (
+        return {}
+    return {k: v for k, v in rulings.items() if isinstance(v, dict)} \
+        if isinstance(rulings, dict) else {}
+
+
+def refused_hashes() -> dict:
+    """{sha256: why} for every image no run may land: the ones ruled by eye in
+    this file, and every one the desk refused. A refusal is about the IMAGE,
+    so it holds whichever company's page offers it next."""
+    out = dict(NOT_THEIRS)
+    for sha, r in load_rulings().items():
+        if r.get("ruling") == "refuse":
+            out[sha] = f"refused at the desk for {r.get('company') or '?'}" + (
                 f": {r['why']}" if r.get("why") else "")
     return out
 
 
-def due(cid: str, log: dict, have: set, parked: set, retry: bool) -> bool:
+def apply_rulings() -> list[str]:
+    """Carry out the desk's rulings on the parked logos. What was done, as lines.
+
+    THE RUN APPLIES THEM, NOT THE DESK. A ruling is a record the desk writes
+    and publishes like any other; this moves or deletes the file on the side
+    that owns assets/logos/ - the nightly's checkout - so the desk never holds
+    a logo file the nightly also writes (review, 2026-11-01). Matched by the
+    file's own hash: a ruling about one image never touches another.
+    """
+    done: list[str] = []
+    rulings = load_rulings()
+    if not rulings or not REVIEW.exists():
+        return done
+    for f in sorted(REVIEW.glob("*.*")):
+        r = rulings.get(hashlib.sha256(f.read_bytes()).hexdigest())
+        if not r:
+            continue
+        cid = f.stem
+        if r.get("ruling") == "refuse":
+            f.unlink()
+            done.append(f"{cid}: refused at the desk, removed")
+        elif r.get("ruling") == "accept" and r.get("company") == cid:
+            if any(OUT.glob(f"{cid}.*")):
+                f.unlink()
+                done.append(f"{cid}: accepted, but a live logo is on file; parked copy removed")
+            elif f.stat().st_size > LIVE_MAX_BYTES:
+                done.append(f"{cid}: accepted, but {f.stat().st_size // 1024}KB is over "
+                            f"the live cap; left parked")
+            else:
+                f.replace(logo_path(cid, f.suffix.lstrip("."), OUT))
+                done.append(f"{cid}: accepted at the desk, now live")
+    return done
+
+
+def svg_runs(text: str) -> bool:
+    """An SVG that can run something: script, foreignObject and its kin, an
+    on* handler, or a javascript: URL. The one definition, used where a logo is
+    fetched and by selftest's scan of everything on file."""
+    import html as _html
+    u = re.sub(r"[\t\n\r]", "", _html.unescape(text))
+    return bool(re.search(r"<([\w.-]+:)?(script|foreignobject|iframe|embed|object)\b", u, re.I)
+                or re.search(r"[\s/\"']on[a-z]+\s*=", u, re.I)
+                or re.search(r"=\s*[\"']?[\x00-\x20]*javascript:", u, re.I))
+
+
+def due(cid: str, log: dict, have: set, parked: set, retry: bool,
+        site: str = "") -> bool:
     """Whether a run should look for this company's logo.
 
     Never when one is live or parked for a look. Otherwise when it was never
-    tried, when --retry says so, or when the last thing found was parked and
-    is gone - the desk refused it, so the next candidate on the page gets its
-    turn once (the refused image itself is skipped by its hash).
+    tried, when --retry says so, when its website changed since the last look
+    (the desk's website save fetches nothing itself), or when the last thing
+    found was parked and is gone - the desk refused it, so the page's next
+    candidate gets its turn (the refused image is skipped by its hash).
     """
     if cid in have or cid in parked:
         return False
     e = log.get(cid)
     if e is None or retry:
         return True
-    return bool(isinstance(e, dict) and e.get("review"))
+    if not isinstance(e, dict):
+        return True
+    if site and e.get("site") and e["site"] != site:
+        return True
+    return bool(e.get("review"))
 
 
 def tidy(url: str) -> str:
@@ -587,23 +679,6 @@ def tidy(url: str) -> str:
     noise and record a credential-shaped string we have no business holding.
     """
     return url.split("?", 1)[0]
-
-
-def classify_source(url: str, base: str, page: str) -> str:
-    """Which technique found it - so a bad logo can be traced to the rule
-    that chose it, and the rule fixed rather than guessed at."""
-    path = urllib.parse.urlsplit(url).path.lower()
-    if url in page or urllib.parse.urlsplit(url).path in page:
-        if "apple-touch" in path:
-            return "apple-touch-icon"
-        if "logo" in path:
-            return "markup-logo"
-        if "favicon" in path or "icon" in path:
-            return "declared-icon"
-        return "markup"
-    if "manifest" in path:
-        return "manifest"
-    return "blind-path"
 
 
 # Hosts that legitimately serve a company's own icon on its behalf. A logo
@@ -740,6 +815,11 @@ def main() -> int:
             print(f"  {len(parked)} parked in pending/ behind a proposed website")
         return 0
 
+    for line in apply_rulings():
+        print(f"  {line}")
+    have = {f.stem for f in OUT.glob("*.*")}
+    waiting = {f.stem for f in REVIEW.glob("*.*")} if REVIEW.exists() else set()
+
     proposed = load_proposed() if a.proposed else {}
     only = {s.strip() for s in a.only.split(",") if s.strip()}
 
@@ -753,7 +833,7 @@ def main() -> int:
             site, pending = proposed.get(cid), True
             if not site or cid in parked:
                 continue
-        elif not due(cid, log, have, waiting, a.retry):
+        elif not due(cid, log, have, waiting, a.retry, site):
             continue
         todo.append((cid, site, c.get("name") or cid, pending))
     # Companies with open roles first: they are the ones actually on screen.
@@ -768,9 +848,23 @@ def main() -> int:
     print(f"fetching {len(todo)} logos with {a.workers} workers...", flush=True)
     got = 0
     by_via: dict[str, int] = {}
+    sites = {t[0]: t[1] for t in todo}
+    today = time.strftime("%Y-%m-%d")
+
+    def safe(row):
+        # ONE SITE'S SURPRISE IS ONE MISS. An exception out of a worker ended
+        # ex.map and with it the run, after its files were written and before
+        # its log was - so the same companies were fetched every night.
+        try:
+            return fetch_one(row)
+        except Exception as exc:                    # noqa: BLE001
+            return {"id": row[0], "ok": False, "note": f"crashed: {type(exc).__name__}",
+                    "via": None, "url": None, "pending": row[3], "review": False}
+
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
-        for i, res in enumerate(ex.map(fetch_one, todo), 1):
-            entry = {"ok": res["ok"], "note": res["note"][:120]}
+        for i, res in enumerate(ex.map(safe, todo), 1):
+            entry = {"ok": res["ok"], "note": res["note"][:120],
+                     "site": sites.get(res["id"]), "on": today}
             if res["ok"]:
                 entry["via"] = res["via"]
                 entry["url"] = res["url"]
@@ -784,6 +878,9 @@ def main() -> int:
                 got += 1
                 by_via[res["via"]] = by_via.get(res["via"], 0) + 1
             log[res["id"]] = entry
+            if i % 10 == 0:
+                # as it goes: a step timeout keeps what was already found
+                LOG.write_text(json.dumps(log, indent=1))
             if i % 25 == 0:
                 print(f"  {i}/{len(todo)}, {got} found", flush=True)
     LOG.write_text(json.dumps(log, indent=1))

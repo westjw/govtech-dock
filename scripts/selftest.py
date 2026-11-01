@@ -2400,12 +2400,6 @@ def check_admin_writes_are_journalled() -> int:
         ("founded_provenance", "founded_provenance.json"),
         ("act_save_website", "discovery_log.json"),
         ("act_retry_board", "discovery_log.json"),
-        # A logo ruling moves or deletes a FILE as well as writing this record,
-        # and the journal can restore the record but not the file: an Undo
-        # would leave a live logo nothing says was accepted, or a refusal for
-        # a file back in the queue. The record is kept, keyed by company, with
-        # its image hash, by and at; the file's history is git's (2026-11-01).
-        ("_rule_logo", "logo_rulings.json"),
     }
     errors = 0
     seen = set()
@@ -6709,8 +6703,14 @@ def check_a_logo_is_the_size_it_is_drawn_at() -> int:
                            f"stand-in for exactly this")
 
     # THE CEILING. 2,146,645 bytes came off this directory on 2026-09-18 and
-    # nothing should quietly put them back.
+    # nothing should quietly put them back. The fetcher's own cap for a live
+    # logo IS this number, so the nightly cannot land a file this refuses.
+    import fetch_logos as _fl
     CEILING = 100_000
+    if _fl.LIVE_MAX_BYTES > CEILING:
+        errors += fail(f"fetch_logos.LIVE_MAX_BYTES is {_fl.LIVE_MAX_BYTES:,}, over this "
+                       f"check's {CEILING:,}: the nightly could land a logo that fails "
+                       f"the next morning's selftest and stops every data workflow")
     over = [(p.name, p.stat().st_size) for p in logos.iterdir()
             if p.is_file() and p.stat().st_size > CEILING]
     if over:
@@ -9173,11 +9173,10 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
     # company websites (fetch_logos.py accepts any <svg>). An SVG is XML: a
     # script element may carry a namespace prefix (<svg:script>, <h:script>)
     # and an attribute may be entity-encoded (second review, 2026-10-09).
-    def logo_runs(t: str) -> bool:
-        u = re.sub(r"[\t\n\r]", "", html.unescape(t))
-        return bool(re.search(r"<([\w.-]+:)?(script|foreignobject|iframe|embed|object)\b", u, re.I)
-                    or re.search(r"[\s/\"']on[a-z]+\s*=", u, re.I)
-                    or re.search(r"=\s*[\"']?[\x00-\x20]*javascript:", u, re.I))
+    # ONE DEFINITION, shared with the fetcher, which refuses such an SVG
+    # before writing it (2026-11-01); the cases below hold the shared rule
+    import fetch_logos as _fl
+    logo_runs = _fl.svg_runs
     for t, want in (('<svg><script>x</script></svg>', True),
                     ('<svg:svg xmlns:svg="http://www.w3.org/2000/svg"><svg:script>x</svg:script></svg:svg>', True),
                     ('<svg><h:script xmlns:h="http://www.w3.org/1999/xhtml">x</h:script></svg>', True),
@@ -35779,6 +35778,60 @@ def _git_repo(path: pathlib.Path) -> pathlib.Path:
     return path
 
 
+def check_a_logo_both_sides_wrote_resolves_to_upstream() -> int:
+    """The nightly fetches logos since 2026-11-01, so a hand fetch_logos run
+    pushed while it crawls conflicts on the same logo file and the same log
+    entry - and the resolver left any non-data path "for a person", which
+    stopped the night's push (review). Driven through a real stopped rebase:
+    upstream's logo file stands, the attempt log keeps both sides'
+    companies with upstream's entry where both looked."""
+    import merge_decisions as MD
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-logo-resolve-"))
+    keep_root = MD.ROOT
+    try:
+        r = _git_repo(tmp / "r")
+        (r / "data").mkdir()
+        (r / "assets" / "logos").mkdir(parents=True)
+        log = r / "data" / "logo_log.json"
+        log.write_text(json.dumps({"old": {"ok": False}}, indent=1) + "\n")
+        _git(r, "add", "-A"); _git(r, "commit", "-q", "-m", "base")
+        _git(r, "branch", "bot")
+        mine, bots = b"\x89PNG\r\n\x1a\nperson" * 9, b"\x89PNG\r\n\x1a\nbot!!!" * 9
+        (r / "assets" / "logos" / "acme.png").write_bytes(mine)
+        log.write_text(json.dumps({"old": {"ok": False}, "acme": {"ok": True, "via": "hand"}}, indent=1) + "\n")
+        _git(r, "add", "-A"); _git(r, "commit", "-q", "-m", "a hand run")
+        _git(r, "checkout", "-q", "bot")
+        (r / "assets" / "logos").mkdir(parents=True, exist_ok=True)    # empty at base: untracked
+        (r / "assets" / "logos" / "acme.png").write_bytes(bots)
+        log.write_text(json.dumps({"old": {"ok": False}, "acme": {"ok": True, "via": "nightly"},
+                                   "beta": {"ok": False, "note": "none"}}, indent=1) + "\n")
+        _git(r, "add", "-A"); _git(r, "commit", "-q", "-m", "daily refresh")
+        rb = subprocess.run(["git", "rebase", "main"], cwd=r, capture_output=True, text=True)
+        if rb.returncode == 0:
+            errors += fail("the fixture did not produce a rebase conflict to resolve")
+        MD.ROOT = r
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            rc = MD.resolve()
+        if rc != 0:
+            errors += fail("a logo both sides wrote was left for a person; the night's push "
+                           "would stop")
+        else:
+            env = dict(os.environ, GIT_EDITOR="true")
+            subprocess.run(["git", "rebase", "--continue"], cwd=r, capture_output=True, env=env)
+            got = json.loads(log.read_text())
+            if (r / "assets" / "logos" / "acme.png").read_bytes() != mine:
+                errors += fail("the bot's logo replaced the one a person pushed")
+            if (got.get("acme") or {}).get("via") != "hand" or "beta" not in got:
+                errors += fail(f"the attempt log lost a side: {got}")
+    except RuntimeError as exc:
+        errors += fail(f"the resolver fixture could not be built: {exc}")
+    finally:
+        MD.ROOT = keep_root
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_the_nightly_resolver_carries_the_crawl_onto_a_desk_publish() -> int:
     """The workflows' push step rebases the bot's commit onto main. With the
     desk publisher committing data during the 45-minute crawl, a conflict in
@@ -36944,29 +36997,49 @@ def check_the_claude_inbox_lists_and_settles() -> int:
 def check_the_nightly_parks_a_guessed_logo_and_lands_a_declared_one() -> int:
     """Owner, 2026-11-01: "add it to the nightly" - and its guesses wait.
 
-    Driven through fetch_logos.fetch_one against two stubbed sites, with the
-    network, the folders and the rulings file all redirected: an icon a site
-    declares in its head lands live; a logo picked out of the page's markup
-    is parked in review/, never live; an image the desk refused is never
-    landed again; and due() picks only companies with nothing live or parked,
-    retrying a refused one once. The workflow step itself is checked too.
+    Driven through fetch_logos.fetch_one against stubbed sites, the network,
+    folders and rulings redirected: an icon a site declares for itself, or one
+    its manifest names, lands live; a markup logo, a share image (even one
+    named "icon"), a declared icon on another brand's host, and one over the
+    live cap are parked in review/; an SVG that can run is never written; an
+    image the desk refused is never landed again. Then fetch_logos.main on a
+    temp data folder: it carries out the desk's rulings first, one crashing
+    site is one miss, and the log records which website was looked at.
     """
     import hashlib, shutil, tempfile
     import ats
     import fetch_logos as fl
     errors = 0
-    png = lambda tag: b"\x89PNG\r\n\x1a\n" + tag.encode() * (200 // len(tag) + 1)
-    alpha_icon, beta_logo = png("alpha"), png("beta")
+    png = lambda tag, n=200: b"\x89PNG\r\n\x1a\n" + (tag.encode() * (n // len(tag) + 1))[:n]
+    filler = "<p>" + "They sell to cities and counties. " * 60 + "</p>"
+    head = lambda extra: f"<html><head><title>x</title>{extra}</head><body>{filler}</body></html>"
     pages = {
-        "https://alpha.example": "<html><head><title>Alpha</title>"
-                                 '<link rel="icon" href="/favicon.png"></head>'
-                                 "<body>" + "Alpha sells to cities. " * 80 + "</body></html>",
-        "https://beta.example": "<html><head><title>Beta</title></head><body>"
-                                '<img src="/img/beta-logo.png" alt="Beta">'
-                                + "Beta sells to counties. " * 80 + "</body></html>",
+        "https://alpha.example": head('<link rel="icon" href="/favicon.png">'),
+        "https://beta.example": "<html><head></head><body>"
+                                '<img src="/img/beta-logo.png" alt="Beta">' + filler + "</body></html>",
+        "https://gamma.example": head('<meta property="og:image" content="/img/social-icon.png">'),
+        # real-looking hosts: ".example" reads as the brand of every test site
+        "https://delta.com": head('<link rel="icon" href="https://parentco.com/favicon.png">'),
+        "https://eps.example": head('<link rel="icon" href="/favicon.png">'),
+        "https://zeta.example": head('<link rel="icon" href="/favicon.svg">'),
+        "https://mu.example": head('<link rel="manifest" href="/site.webmanifest">'),
+        "https://nu.example": head('<link rel="manifest" href="/site.webmanifest">'
+                                   '<link rel="apple-touch-icon" href="/apple-touch-icon.png">'),
     }
-    files = {"https://alpha.example/favicon.png": alpha_icon,
-             "https://beta.example/img/beta-logo.png": beta_logo}
+    files = {"https://alpha.example/favicon.png": png("alpha"),
+             "https://beta.example/img/beta-logo.png": png("beta"),
+             "https://gamma.example/img/social-icon.png": png("gamma"),
+             "https://parentco.com/favicon.png": png("parent"),
+             "https://eps.example/favicon.png": png("eps", fl.LIVE_MAX_BYTES + 5000),
+             # over MIN_BYTES, or sniff refuses it as too small before the scan
+             "https://zeta.example/favicon.svg": b'<svg xmlns="http://www.w3.org/2000/svg">'
+                                                 b'<desc>' + b'Zeta mark ' * 20 + b'</desc>'
+                                                 b'<script>alert(1)</script></svg>',
+             "https://mu.example/site.webmanifest": b'{"icons": [{"src": "/i/192.png", "sizes": "192x192"}]}',
+             "https://mu.example/i/192.png": png("mu"),
+             # somebody else's JSON: [] raised outside fetch_one's try
+             "https://nu.example/site.webmanifest": b'[]',
+             "https://nu.example/apple-touch-icon.png": png("nu")}
 
     class R:
         def __init__(self, url, status, body):
@@ -36983,51 +37056,111 @@ def check_the_nightly_parks_a_guessed_logo_and_lands_a_declared_one() -> int:
             return R(url, 200, files[url])
         return R(url, 404, "")
 
+    def run(cid):
+        site = "https://delta.com" if cid == "delta" else f"https://{cid}.example"
+        return fl.fetch_one((cid, site, cid.title(), False))
+
     tmp = pathlib.Path(tempfile.mkdtemp())
-    real = (ats.follow, fl.OUT, fl.REVIEW, fl.PENDING, fl.RULINGS, fl.time.sleep)
+    real = (ats.follow, fl.OUT, fl.REVIEW, fl.PENDING, fl.RULINGS, fl.DATA, fl.LOG,
+            fl.time.sleep, fl.fetch_one, sys.argv)
     try:
         ats.follow = follow
         fl.time.sleep = lambda s: None
         fl.OUT = tmp / "logos"
         fl.REVIEW, fl.PENDING = fl.OUT / "review", fl.OUT / "pending"
-        fl.RULINGS = tmp / "logo_rulings.json"
+        fl.DATA = tmp / "data"
+        fl.DATA.mkdir()
+        fl.RULINGS, fl.LOG = fl.DATA / "logo_rulings.json", fl.DATA / "logo_log.json"
         fl.REVIEW.mkdir(parents=True)
-        (fl.REVIEW / "alpha.svg").write_text("<svg/>")   # parked from an earlier run
-        a = fl.fetch_one(("alpha", "https://alpha.example", "Alpha", False))
-        if not (a["ok"] and not a["review"] and (fl.OUT / "alpha.png").exists()):
-            errors += fail(f"an icon the site declares did not land live: {a}")
+        (fl.REVIEW / "alpha.svg").write_text("<svg/>")   # parked by an earlier run
+        for cid, where in (("alpha", "live"), ("mu", "live"), ("nu", "live"),
+                           ("beta", "parked"), ("gamma", "parked"), ("delta", "parked"),
+                           ("eps", "parked")):
+            try:
+                got = run(cid)
+            except Exception as exc:                        # noqa: BLE001
+                got = {"ok": False, "note": f"raised {type(exc).__name__}: {exc}"}
+            live, parked = any(fl.OUT.glob(f"{cid}.*")), any(fl.REVIEW.glob(f"{cid}.*"))
+            if not got.get("ok") or (where == "live") != live or (where == "parked") != parked:
+                errors += fail(f"{cid}: expected {where}, got live={live} parked={parked} "
+                               f"({got.get('via')}, {got.get('note')})")
         if (fl.REVIEW / "alpha.svg").exists():
             errors += fail("a live logo left the company's parked one in the desk's queue")
-        b = fl.fetch_one(("beta", "https://beta.example", "Beta", False))
-        if not (b["ok"] and b["review"] and (fl.REVIEW / "beta.png").exists()
-                and not (fl.OUT / "beta.png").exists()):
-            errors += fail(f"a logo guessed from the page's markup was not parked "
-                           f"for a person: {b}")
+        z = run("zeta")
+        if z["ok"] or any(fl.OUT.rglob("zeta.*")):
+            errors += fail(f"an SVG that carries script was written: {z}")
         if real[2].parent != real[1]:
             errors += fail("review/ is not a folder inside assets/logos/, so the build "
                            "would read parked logos as live ones")
-        # the desk refused beta's: the same image is never landed again
+        # two refusals for one company both stand, and neither image comes back
         (fl.REVIEW / "beta.png").unlink()
-        fl.RULINGS.write_text(json.dumps({"beta": {
-            "ruling": "refuse", "sha256": hashlib.sha256(beta_logo).hexdigest()}}))
-        again = fl.fetch_one(("beta", "https://beta.example", "Beta", False))
+        fl.RULINGS.write_text(json.dumps({
+            hashlib.sha256(png("beta")).hexdigest(): {"company": "beta", "ruling": "refuse"},
+            hashlib.sha256(b"an earlier one").hexdigest(): {"company": "beta", "ruling": "refuse"}}))
+        again = run("beta")
         if again["ok"] or any(fl.OUT.rglob("beta.*")):
             errors += fail(f"an image the desk refused was landed again: {again}")
+        if len([s for s in fl.refused_hashes() if s not in fl.NOT_THEIRS]) != 2:
+            errors += fail("a second refusal for a company erased the first")
+
+        # fetch_logos.main: the desk's rulings first, one crash is one miss
+        shutil.rmtree(fl.OUT)
+        fl.REVIEW.mkdir(parents=True)
+        acc, ref, other = png("accepted"), png("refused"), png("someone else's")
+        (fl.REVIEW / "c3.png").write_bytes(ref)
+        (fl.REVIEW / "c4.png").write_bytes(acc)
+        (fl.REVIEW / "c5.png").write_bytes(other)
+        fl.RULINGS.write_text(json.dumps({
+            hashlib.sha256(ref).hexdigest(): {"company": "c3", "ruling": "refuse"},
+            hashlib.sha256(acc).hexdigest(): {"company": "c4", "ruling": "accept"},
+            hashlib.sha256(other).hexdigest(): {"company": "c9", "ruling": "accept"}}))
+        (fl.DATA / "companies.json").write_text(json.dumps(
+            [{"id": f"c{i}", "name": f"C{i}", "website": f"https://c{i}.example"} for i in (1, 2)]))
+        (fl.DATA / "board.json").write_text(json.dumps(
+            {"organizations": [{"id": "c1", "open_roles": 3}, {"id": "c2", "open_roles": 2}]}))
+
+        def fake(row):
+            if row[0] == "c1":
+                raise RuntimeError("a site nobody expected")
+            return {"id": row[0], "ok": False, "note": "no readable icon on the site",
+                    "via": None, "url": None, "pending": False, "review": False}
+        fl.fetch_one = fake
+        sys.argv = ["fetch_logos.py", "--limit", "5"]
+        import contextlib, io
+        with contextlib.redirect_stdout(io.StringIO()):
+            try:
+                code = fl.main()
+            except Exception as exc:                        # noqa: BLE001
+                code = f"raised {type(exc).__name__}"
+        log = json.loads(fl.LOG.read_text()) if fl.LOG.exists() else {}
+        if code != 0 or "crashed" not in (log.get("c1") or {}).get("note", "") \
+                or (log.get("c2") or {}).get("site") != "https://c2.example":
+            errors += fail(f"one crashing site ended the run, or the log lost which "
+                           f"website it read: {code} {log}")
+        if (fl.REVIEW / "c3.png").exists() or not (fl.OUT / "c4.png").exists() \
+                or (fl.REVIEW / "c4.png").exists() or not (fl.REVIEW / "c5.png").exists():
+            errors += fail("the run did not carry out the desk's rulings: a refused logo "
+                           "stayed, an accepted one stayed parked, or an accept for "
+                           "another company moved this one")
     finally:
-        (ats.follow, fl.OUT, fl.REVIEW, fl.PENDING, fl.RULINGS, fl.time.sleep) = real
+        (ats.follow, fl.OUT, fl.REVIEW, fl.PENDING, fl.RULINGS, fl.DATA, fl.LOG,
+         fl.time.sleep, fl.fetch_one, sys.argv) = real
         shutil.rmtree(tmp, ignore_errors=True)
 
     log = {"tried": {"ok": False}, "gone": {"ok": True, "review": True},
-           "live": {"ok": True}, "parked": {"ok": True, "review": True}}
+           "live": {"ok": True}, "parked": {"ok": True, "review": True},
+           "moved": {"ok": False, "site": "https://old.example"}}
     have, parked = {"live"}, {"parked"}
-    for cid, retry, want in (("never", False, True), ("tried", False, False),
-                             ("tried", True, True), ("gone", False, True),
-                             ("live", True, False), ("parked", True, False)):
-        if fl.due(cid, log, have, parked, retry) != want:
-            errors += fail(f"due({cid!r}, retry={retry}) is {not want}; a nightly would "
-                           f"{'skip' if want else 'refetch'} it")
+    for cid, retry, site, want in (("never", False, "", True), ("tried", False, "", False),
+                                   ("tried", True, "", True), ("gone", False, "", True),
+                                   ("live", True, "", False), ("parked", True, "", False),
+                                   ("moved", False, "https://new.example", True),
+                                   ("moved", False, "https://old.example", False)):
+        if fl.due(cid, log, have, parked, retry, site) != want:
+            errors += fail(f"due({cid!r}, retry={retry}, site={site!r}) is {not want}; "
+                           f"a nightly would {'skip' if want else 'refetch'} it")
 
-    # and the run itself chooses with due(), not with a rule of its own
+    # and the run chooses with due(), not with a rule of its own
     import ast as _ast
     tree = _ast.parse((ROOT / "scripts" / "fetch_logos.py").read_text())
     main_fn = next((n for n in tree.body if isinstance(n, _ast.FunctionDef) and n.name == "main"), None)
@@ -37049,73 +37182,98 @@ def check_the_nightly_parks_a_guessed_logo_and_lands_a_declared_one() -> int:
 
 
 def check_the_desk_rules_on_a_parked_logo() -> int:
-    """"Logos to check": a parked logo is shown, and the desk's ruling moves it.
+    """"Logos to check": the desk records a ruling; the run carries it out.
 
-    "Use this logo" moves it up a level, live; "Not theirs" deletes it and
-    keeps its hash so no run lands it again; neither accepts a path for an id.
-    Driven through admin.q_logos and the two actions on a temp data folder and
-    temp logo folders. And the website-save step calls fetch_one the way it
-    answers: it unpacked a 2-tuple into three names and said "could not reach
-    the site" for every website saved at the desk (found 2026-11-01).
+    The desk never moves or deletes a logo file - it writes a journaled ruling
+    keyed by the image's sha256, which the publisher carries like any other and
+    Undo can put back (review, 2026-11-01). Driven through admin.q_logos and the
+    two actions on temp data, journal and logo folders: a decided logo leaves
+    the queue, two refusals for one company both stand, an oversize logo or a
+    company with a live one cannot be accepted, and a path is never an id. The
+    desk no longer fetches logos itself, and serves an SVG sandboxed.
     """
     import ast as _ast, hashlib, shutil, tempfile
     import admin
+    import journal as _journal
     import fetch_logos as fl
     errors = 0
     tmp = pathlib.Path(tempfile.mkdtemp())
-    real = (admin.DATA, fl.OUT, fl.REVIEW, fl.RULINGS)
+    real = (admin.DATA, _journal.DATA, _journal.LOG, getattr(_journal, "ARCHIVE", None),
+            fl.OUT, fl.REVIEW, fl.RULINGS)
     try:
-        admin.DATA = tmp / "data"
+        admin.DATA = _journal.DATA = tmp / "data"
         admin.DATA.mkdir()
+        _journal.LOG = admin.DATA / "admin_journal.jsonl"
+        if hasattr(_journal, "ARCHIVE"):
+            _journal.ARCHIVE = admin.DATA / "admin_journal.archive.jsonl"
         fl.OUT = tmp / "logos"
         fl.REVIEW = fl.OUT / "review"
         fl.RULINGS = admin.DATA / "logo_rulings.json"
         fl.REVIEW.mkdir(parents=True)
-        good, bad = b"\x89PNG\r\n\x1a\ngood" * 20, b"\x89PNG\r\n\x1a\nbad!" * 20
-        (fl.REVIEW / "acme.png").write_bytes(good)
-        (fl.REVIEW / "zeta.png").write_bytes(bad)
+        one, two = b"\x89PNG\r\n\x1a\none!" * 20, b"\x89PNG\r\n\x1a\ntwo!" * 20
+        big = b"\x89PNG\r\n\x1a\n" + b"x" * (fl.LIVE_MAX_BYTES + 10)
+        (fl.REVIEW / "acme.png").write_bytes(one)
+        (fl.REVIEW / "zeta.png").write_bytes(two)
+        (fl.REVIEW / "huge.png").write_bytes(big)
+        (fl.REVIEW / "odd.bmp").write_bytes(one)
         (admin.DATA / "logo_log.json").write_text(json.dumps(
             {"acme": {"ok": True, "review": True, "via": "markup-logo", "url": "https://acme.example/l.png"}}))
-        rows = admin.q_logos([{"id": "acme", "name": "Acme"}, {"id": "zeta", "name": "Zeta"}],
-                             {"organizations": [{"id": "zeta", "open_roles": 4}]})
-        if [r["id"] for r in rows] != ["zeta", "acme"] or rows[1]["via"] != "markup-logo" \
-                or rows[0]["src"] != "/assets/logos/review/zeta.png":
-            errors += fail(f"Logos to check does not list the parked logos, most-hiring "
-                           f"first, with where each came from: {rows}")
+        cos = [{"id": "acme", "name": "Acme"}, {"id": "zeta", "name": "Zeta"},
+               {"id": "huge", "name": "Huge"}, {"id": "odd", "name": "Odd"}]
+        board = {"organizations": [{"id": "zeta", "open_roles": 4}]}
+        rows = admin.q_logos(cos, board)
+        if [r["id"] for r in rows] != ["zeta", "acme", "huge"] or rows[1]["via"] != "markup-logo" \
+                or rows[0]["src"] != "/assets/logos/review/zeta.png" or not rows[2]["too_big"]:
+            errors += fail(f"Logos to check does not list the parked logos it can show, "
+                           f"most-hiring first, with where each came from: {rows}")
         out = admin.act_logo_accept({"id": "acme"})
-        if out.get("error") or not (fl.OUT / "acme.png").exists() or (fl.REVIEW / "acme.png").exists():
-            errors += fail(f"'Use this logo' did not move the parked logo live: {out}")
-        out = admin.act_logo_refuse({"id": "zeta", "why": "a customer's logo"})
         rul = json.loads(fl.RULINGS.read_text()) if fl.RULINGS.exists() else {}
-        if out.get("error") or (fl.REVIEW / "zeta.png").exists() or any(fl.OUT.glob("zeta.*")):
-            errors += fail(f"'Not theirs' did not take the parked logo away: {out}")
-        if (rul.get("zeta") or {}).get("sha256") != hashlib.sha256(bad).hexdigest() \
-                or hashlib.sha256(bad).hexdigest() not in fl.refused_hashes() \
-                or (rul.get("acme") or {}).get("ruling") != "accept":
-            errors += fail(f"a refusal is not kept by the image's hash where the finder "
-                           f"reads it: {rul}")
-        for body in ({"id": "../acme"}, {"id": "a*"}, {"id": 5}, {"id": "acme"}):
+        rec = rul.get(hashlib.sha256(one).hexdigest()) or {}
+        if out.get("error") or rec.get("ruling") != "accept" or rec.get("company") != "acme":
+            errors += fail(f"'Use this logo' did not record an accept for that image: {out} {rul}")
+        if not (fl.REVIEW / "acme.png").exists() or any(fl.OUT.glob("acme.*")):
+            errors += fail("the desk moved a logo file itself; the run does that")
+        if "acme" in [r["id"] for r in admin.q_logos(cos, board)]:
+            errors += fail("a logo the desk has ruled on is still in the queue")
+        lines = _journal.LOG.read_text().splitlines() if _journal.LOG.exists() else []
+        if not any("logo_rulings.json" in ln for ln in lines):
+            errors += fail("a logo ruling was written without a journal entry, so the "
+                           "publisher cannot carry it and Undo cannot put it back")
+        # two refusals for one company, in turn: both stand
+        out = admin.act_logo_refuse({"id": "zeta", "why": "a customer's logo"})
+        (fl.REVIEW / "zeta.png").write_bytes(one + b"next")        # the next night's pick
+        out2 = admin.act_logo_refuse({"id": "zeta", "why": "a stock photo"})
+        refused = fl.refused_hashes()
+        if out.get("error") or out2.get("error") \
+                or hashlib.sha256(two).hexdigest() not in refused \
+                or hashlib.sha256(one + b"next").hexdigest() not in refused:
+            errors += fail(f"a second refusal for a company erased the first: {out} {out2}")
+        if not admin.act_logo_accept({"id": "huge"}).get("error"):
+            errors += fail("'Use this logo' accepted a logo over the live cap")
+        for body in ({"id": "../acme"}, {"id": "a*"}, {"id": 5}, {"id": "nobody"}):
             if not admin.act_logo_accept(body).get("error"):
                 errors += fail(f"'Use this logo' accepted {body!r}")
-        (fl.REVIEW / "acme.png").write_bytes(bad)       # parked again, live one present
+        (fl.OUT / "acme.png").write_bytes(one)                     # now live
         if not admin.act_logo_accept({"id": "acme"}).get("error"):
-            errors += fail("'Use this logo' replaced a company's live logo")
+            errors += fail("'Use this logo' was offered over a company's live logo")
     finally:
-        admin.DATA, fl.OUT, fl.REVIEW, fl.RULINGS = real
+        admin.DATA, _journal.DATA, _journal.LOG = real[0], real[1], real[2]
+        if real[3] is not None:
+            _journal.ARCHIVE = real[3]
+        fl.OUT, fl.REVIEW, fl.RULINGS = real[4], real[5], real[6]
         shutil.rmtree(tmp, ignore_errors=True)
 
     tree = _ast.parse((ROOT / "scripts" / "admin.py").read_text())
-    calls = [n for n in _ast.walk(tree) if isinstance(n, _ast.Call)
-             and isinstance(n.func, _ast.Attribute) and n.func.attr == "fetch_one"]
-    if not calls or any(not (len(c.args) == 1 and isinstance(c.args[0], _ast.Tuple)
-                             and len(c.args[0].elts) == 4) for c in calls):
-        errors += fail("the desk calls fetch_logos.fetch_one with something other than "
-                       "(id, site, name, pending)")
-    unpacked = [n for n in _ast.walk(tree) if isinstance(n, _ast.Assign)
-                and isinstance(n.targets[0], _ast.Tuple) and isinstance(n.value, _ast.Call)
-                and isinstance(n.value.func, _ast.Attribute) and n.value.func.attr == "fetch_one"]
-    if unpacked:
-        errors += fail("the desk unpacks fetch_one's answer as a tuple; it answers a dict")
+    if any(isinstance(n, _ast.Attribute) and n.attr == "fetch_one" for n in _ast.walk(tree)):
+        errors += fail("the desk fetches logos itself again; the files it writes are the "
+                       "nightly's, and the publisher never carries them")
+    if admin.Handler.LOGO_TYPES.get(".gif") != "image/gif":
+        errors += fail("the desk cannot show a parked GIF, so it would be ruled on unseen")
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    m = re.search(r'elif ctype == "image/svg\+xml":(.*?)else:', src, re.S)
+    if not m or "sandbox" not in m.group(1) or "default-src 'none'" not in m.group(1):
+        errors += fail("the desk serves an SVG logo without a sandbox; one opened in its "
+                       "own tab would run on the admin's origin")
     return errors
 
 
@@ -38502,6 +38660,7 @@ def main() -> int:
     errors += check_the_company_page_keeps_itself()
     errors += check_the_merge_keeps_both_sides_record_by_record()
     errors += check_the_nightly_resolver_carries_the_crawl_onto_a_desk_publish()
+    errors += check_a_logo_both_sides_wrote_resolves_to_upstream()
     errors += check_the_publisher_publishes_the_desk_and_only_the_desk()
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_zero_is_only_printed_when_a_board_was_read()

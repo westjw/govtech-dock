@@ -128,6 +128,39 @@ def resolve() -> int:
                 subprocess.run(["git", "add", path], cwd=ROOT, check=True)
                 print(f"  {path}: the bot's freshly built copy")
             continue
+        if path.startswith("assets/logos/"):
+            # A LOGO FILE BOTH SIDES WROTE: a hand fetch_logos run pushed while
+            # the nightly ran (it fetches logos since 2026-11-01). Upstream's
+            # stands - a person ran it - and the bot's next run sees it on file.
+            # existence only: a logo is binary, and _text() decodes
+            if subprocess.run(["git", "cat-file", "-e", f":2:{path}"],
+                              cwd=ROOT, capture_output=True).returncode != 0:
+                subprocess.run(["git", "rm", "-q", "--cached", "--ignore-unmatch", path],
+                               cwd=ROOT, check=True)
+                (ROOT / path).unlink(missing_ok=True)
+                print(f"  {path}: upstream removed it; removed")
+            else:
+                subprocess.run(["git", "checkout", "--ours", "--", path], cwd=ROOT, check=True)
+                subprocess.run(["git", "add", path], cwd=ROOT, check=True)
+                print(f"  {path}: upstream's copy")
+            continue
+        if path == "data/logo_log.json":
+            # A RECORD OF ATTEMPTS, not a ruling: both sides' companies are
+            # kept, and where both looked at one, upstream's entry stands, to
+            # match the logo file kept above.
+            base, ours, theirs = _show(1, path), _show(2, path), _show(3, path)
+            if ours is None or theirs is None:
+                print(f"  {path}: a side is not a JSON dict, left for a person", file=sys.stderr)
+                rc = 1
+                continue
+            merged = dict(theirs)
+            for k, v in ours.items():
+                if base is None or base.get(k) != v or k not in merged:
+                    merged[k] = v
+            (ROOT / path).write_text(json.dumps(merged, indent=1, ensure_ascii=False) + "\n")
+            subprocess.run(["git", "add", path], cwd=ROOT, check=True)
+            print(f"  {path}: merged attempts, upstream's where both looked")
+            continue
         if not path.startswith("data/"):
             print(f"  {path}: not a data file, left for a person", file=sys.stderr)
             rc = 1
