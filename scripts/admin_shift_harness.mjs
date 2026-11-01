@@ -54,6 +54,11 @@ function makeDom() {
     remove() { if (this.parentNode) this.parentNode.removeChild(this); }
     replaceWith(n) { if (this.parentNode) this.parentNode.replaceChild(n, this); }
     before(n) { if (this.parentNode) this.parentNode.insertBefore(n, this); }
+    after(n) {
+      if (!this.parentNode) return;
+      const sib = this.parentNode.childNodes[this.parentNode.childNodes.indexOf(this) + 1];
+      this.parentNode.insertBefore(n, sib || null);
+    }
     get textContent() { return this.childNodes.map(c => c.textContent).join(""); }
     set textContent(v) {
       this.childNodes.forEach(c => { c.parentNode = null; });
@@ -91,6 +96,7 @@ function makeDom() {
     }
     removeAttribute(k) { delete this.attrs[k]; }
     focus() { doc.activeElement = this; }
+    scrollIntoView() {}
     blur() { if (doc.activeElement === this) doc.activeElement = doc.body; }
     click() { if (!this.disabled && this.onclick) this.onclick({ preventDefault() {}, target: this }); }
     addEventListener() {}
@@ -478,6 +484,119 @@ const out = {};
   if (box) box.value = "new123";
   S.ctx.shiftLeave();
   out.a_typed_code_is_kept = { box: !!box, stored: S.store.code };
+}
+
+// ── THE FIVE FRONT DOORS (2026-11-01) ─────────────────────────────────────
+// The batch screen is the one place a single press rules hundreds of rows, so
+// its order is pinned here, through the page's own buttons: Accept stays shut
+// until every sample card is marked, a Wrong needs its line before it is
+// sent, a wrong card on a sampled pile leaves only Send back, and Accept
+// sends the count the person was shown (expect_n), never a count the
+// server picks.
+const pileView = (over = {}) => ({ id: "suppliers:theirs:all", queue: "suppliers",
+  queue_label: "Supplier websites", pile: "theirs", sector: null, reach: "public",
+  label: "Rule 50 supplier websites theirs", answer: "Their website", tolerance: 0.05,
+  n: 50, sample_n: 3, read_all: false, read: 0, wrong: 0, check: "Open the site.",
+  state: "unread", rulings: [],
+  sample: ["s1", "s2", "s3"].map(k => ({ key: k, answer: "Their website", mark: null,
+    row: { id: k, name: "Supplier " + k, url: "https://" + k + ".example", step1: "theirs",
+           sector: "Public Works", category: "Fleet" } })), ...over });
+function deskServer(view) {
+  const sent = [];
+  const h = {
+    "/api/desk/batch": () => [200, view],
+    "/api/batch-mark": (_u, b) => { sent.push(["mark", b]); return [200, { ok: true, message: "marked" }]; },
+    "/api/batch-rule": (_u, b) => { sent.push(["rule", b]); return [200, { ok: true, message: "ruled", landed: view.n }]; },
+    "/api/batch-undo": (_u, b) => { sent.push(["batch-undo", b]); return [200, { ok: true, message: "undid" }]; },
+    "/api/undo": (_u, b) => { sent.push(["undo", b]); return [200, { ok: true, message: "undid" }]; },
+    "/api/desk-answer": (_u, b) => { sent.push(["answer", b]); return [200, { ok: true, message: "answered" }]; },
+    "/api/queues": () => [200, { counts: {}, labels: {} }],
+  };
+  return { h, sent };
+}
+const btn = (root, re) => root.querySelectorAll("button").find(b => re.test(b.textContent));
+const acceptState = S => { const a = btn(S.doc.querySelector(".dk-rule"), /^Accept/);
+  const b = btn(S.doc.querySelector(".dk-rule"), /Send it back/);
+  return { accept: a ? (a.disabled ? "shut" : "open") : "missing", back: b && !b.disabled ? "open" : "shut", label: a && a.textContent }; };
+
+// 14. Mark every card right: Accept opens only after the last one, and sends
+//     the shown count.
+{
+  const D = deskServer(pileView());
+  const S = load(D.h);
+  S.ctx.showBatch("suppliers:theirs:all"); await S.drain();
+  const cards = S.doc.querySelectorAll(".dk-card");
+  const steps = [acceptState(S)];
+  for (const c of cards) { btn(c, /^Right$/).click(); await S.drain(); steps.push(acceptState(S)); }
+  btn(S.doc.querySelector(".dk-rule"), /^Accept/).click(); await S.drain();
+  out.a_pile_opens_only_when_read = { cards: cards.length, steps,
+    marks: D.sent.filter(x => x[0] === "mark").map(x => x[1].mark),
+    rule: (D.sent.find(x => x[0] === "rule") || [])[1] || null };
+}
+
+// 15. A Wrong is not sent without its line; once sent, a sampled pile can only
+//     go back, and Send back carries the batch.
+{
+  const D = deskServer(pileView());
+  const S = load(D.h);
+  S.ctx.showBatch("suppliers:theirs:all"); await S.drain();
+  const [c1, c2, c3] = S.doc.querySelectorAll(".dk-card");
+  btn(c1, /^Wrong$/).click(); await S.drain();          // opens the line box
+  btn(c1, /^Wrong$/).click(); await S.drain();          // empty line: nothing sent
+  const before = D.sent.length;
+  c1.querySelector("input.txt").value = "a listing site";
+  btn(c1, /^Wrong$/).click(); await S.drain();
+  btn(c2, /^Right$/).click(); await S.drain();
+  btn(c3, /^Right$/).click(); await S.drain();
+  const st = acceptState(S);
+  btn(S.doc.querySelector(".dk-rule"), /Send it back/).click(); await S.drain();
+  out.a_wrong_card_sends_the_pile_back = { sent_before_line: before,
+    wrong: (D.sent.find(x => x[0] === "mark" && x[1].mark === "wrong") || [])[1] || null,
+    state: st, rule: (D.sent.find(x => x[0] === "rule") || [])[1] || null };
+}
+
+// 16. A read-all pile accepts the rows marked right and says how many.
+{
+  const D = deskServer(pileView({ n: 3, sample_n: 3, read_all: true }));
+  const S = load(D.h);
+  S.ctx.showBatch("suppliers:theirs:all"); await S.drain();
+  const [c1, c2, c3] = S.doc.querySelectorAll(".dk-card");
+  c1.querySelector("button"); btn(c1, /^Wrong$/).click(); await S.drain();
+  c1.querySelector("input.txt").value = "not theirs"; btn(c1, /^Wrong$/).click(); await S.drain();
+  btn(c2, /^Right$/).click(); await S.drain(); btn(c3, /^Right$/).click(); await S.drain();
+  out.a_read_all_pile_takes_the_right_ones = acceptState(S);
+}
+
+// 17. The ledger's Undo sends a batch to batch-undo and a ruling to undo.
+{
+  const D = deskServer(pileView());
+  const S = load(D.h);
+  const host = S.doc.createElement("div"); S.doc.body.appendChild(host);
+  S.ctx.dkLedger(host, [
+    { day: "2026-11-01", at: "2026-11-01T10:00", who: "yours", what: "Batch: x", n: 40, undo: { batch_ruling: "suppliers:theirs:all#1" } },
+    { day: "2026-11-01", at: "2026-11-01T09:00", who: "yours", what: "filed a company", n: 1, undo: { entries: ["2026-11-01#3", "2026-11-01#4"] } },
+    { day: "2026-11-01", at: "2026-11-01T08:00", who: "doors", what: "added a company", n: 1, undo: null }]);
+  const undos = host.querySelectorAll("button");
+  undos.forEach(b => b.click()); await S.drain();
+  out.the_ledger_undoes_the_right_way = { buttons: undos.map(b => b.textContent),
+    sent: D.sent.map(x => [x[0], x[1]]) };
+}
+
+// 18. The toggle draws every view, marks the one in use, and a question's
+//     answer carries its id, its key and the why typed beside it.
+{
+  const D = deskServer(pileView());
+  const S = load(D.h);
+  S.ctx.drawDeskToggle();
+  const tg = S.doc.querySelector("#dk-toggle");
+  const host = S.doc.createElement("div"); S.doc.body.appendChild(host);
+  host.appendChild(S.ctx.dkQuestion({ id: "merit-website", kind: "website", title: "Is it Merit's?",
+    answers: [{ key: "yes", label: "That is Merit's site" }, { key: "no", label: "Not theirs" }] }));
+  host.querySelector("input.txt").value = "their logo is Aspire's";
+  btn(host, /Not theirs/).click(); await S.drain();
+  out.the_toggle_and_a_question = {
+    views: tg ? tg.querySelectorAll("button").map(b => [b.textContent, b.getAttribute("aria-pressed")]) : null,
+    answer: (D.sent.find(x => x[0] === "answer") || [])[1] || null };
 }
 
 console.log(JSON.stringify(out));

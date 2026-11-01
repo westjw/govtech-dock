@@ -1,0 +1,32 @@
+{
+ "merit-website": {
+  "kind": "website", "tag": "Company · Merit · 3 open roles", "since": "2026-11-01",
+  "company": "merit",
+  "title": "Is aspiretech.us Merit's website?",
+  "body": "It is the website on file for Merit. The logo taken from it is Aspire's, so it was refused. If the site is not Merit's, what was read from it may not be Merit's either. Merit sells license portability to state licensing boards.",
+  "facts": [["Website on file", "https://www.aspiretech.us"], ["Logo there", "Aspire's mark, refused 1 November"], ["Not on file", "whether Merit and Aspire are one company"]],
+  "asked_by": "agent:claude (logo run, 2026-11-01)",
+  "answers": [
+   {"key": "yes", "label": "That is Merit's site", "done": "Kept, and recorded as your answer.",
+    "next": ["aspiretech.us stays on file, with your answer recorded.", "The Aspire logo stays refused.", "The nightly tries the site's next logo; a guessed one comes to Logos to check."]},
+   {"key": "no", "label": "Not theirs: find the right one", "done": "Recorded. Claude's inbox has the search.",
+    "next": ["Your answer is recorded; nothing on Merit's page changes yet.", "Claude's inbox gets the job: find Merit's real website, with a skeptic.", "A site they agree on comes to Website review for you."]}
+  ],
+  "apply": {"no": {"do": "ask_claude", "company": "merit", "item": "website",
+                   "ask": "Find Merit's own website (license portability for state licensing boards). aspiretech.us carries Aspire's logo; the owner says it is not Merit's. Reader + skeptic; land the answer in Website review."}}
+ },
+ "miami-dade-sheriff-s-training-center": {
+  "kind": "supplier", "tag": "Supplier · held for you", "since": "2026-10-28",
+  "title": "Miami-Dade Sheriff's Training Center: a government body, or a seller?",
+  "body": "On 28 October a reader and a skeptic took 156 public bodies off the supplier list. They held this one: a county sheriff's training academy, filed off the IACP 2026 floor, that may sell courses.",
+  "facts": [["Filed as", "Public Safety / Suppliers & Services"], ["Source", "IACP 2026 exhibitor list"], ["Website on file", "none"]],
+  "asked_by": "agent:claude (agency pull, 2026-10-28)",
+  "answers": [
+   {"key": "gov", "label": "Government body: take it off", "done": "Taken off the supplier list, like the other 156.",
+    "next": ["Marked not a supplier, with your words as the reason.", "It stops appearing in the supplier export."]},
+   {"key": "keep", "label": "It sells courses: keep it", "done": "Kept, and recorded as your answer.",
+    "next": ["It stays a held supplier.", "It publishes only once a website is confirmed for it."]}
+  ],
+  "apply": {"gov": {"do": "not_a_supplier", "id": "miami-dade-sheriff-s-training-center", "why": "a county sheriff's training academy, a government body"}}
+ }
+}

@@ -481,6 +481,102 @@ textarea.txt { resize: vertical; line-height: 1.5; }
     .sh-len{grid-template-columns:1fr}
     .sh-sum{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
+  /* ── The five front doors (owner, 2026-11-01: "build all 5 and just have a
+     toggle where I can pick which one to use"). One look for all five, on
+     this sheet's own tokens: square corners, hairline rules, tabular
+     figures. The canvas drew them on the dark palette; here they follow the
+     theme like every other view. */
+  .dk-toggle{display:flex;flex-wrap:wrap;margin:12px 0 0;border:1px solid var(--line);
+    width:max-content;max-width:100%}
+  .dk-toggle .lab{padding:9px 10px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--faint);border-right:1px solid var(--line);align-self:center}
+  .dk-toggle button{font:inherit;font-size:12.5px;padding:9px 12px;border:0;border-radius:0;
+    border-right:1px solid var(--line);background:var(--bg);color:var(--dim);cursor:pointer;min-height:40px}
+  .dk-toggle button:last-child{border-right:0}
+  .dk-toggle button[aria-pressed=true]{background:var(--panel);color:var(--ink);font-weight:600;
+    box-shadow:inset 0 -2px 0 var(--accent)}
+  .dk-toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  body.shiftrun .dk-toggle{display:none}
+  .dk h2{font-size:21px;margin:0 0 4px}
+  .dk .lede{color:var(--dim);font-size:13.5px;margin:0 0 18px;max-width:80ch}
+  .dk-sec{margin:0 0 28px}
+  .dk-sec > h3{font-size:16px;margin:0 0 4px}
+  .dk-sec > .kv{margin:0 0 10px}
+  .dk-cols{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:start}
+  .dk-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  @media (max-width:960px){.dk-cols,.dk-two{grid-template-columns:minmax(0,1fr)}}
+  .dk-q{border:1px solid var(--line);padding:13px 15px;background:var(--bg);min-width:0}
+  .dk-q + .dk-q{margin-top:10px}
+  .dk-q .tag,.dk-card .meta{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+  .dk-q h4{font-size:15px;margin:4px 0 6px}
+  .dk-q ol{margin:6px 0 0 20px;padding:0;font-size:13px}
+  .dk-q .next{font-size:12px;color:var(--dim);margin:6px 0 0}
+  .dk-facts{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:3px 14px;
+    font-size:12.5px;margin:8px 0 0}
+  .dk-facts dt{color:var(--dim)} .dk-facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+  .dk-scroll{overflow-x:auto}
+  .dk-table{width:100%;border-collapse:collapse;font-size:13px}
+  .dk-table th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);
+    text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap}
+  .dk-table td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+  .dk-table td.num,.dk-table th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .dk-table tr.sub td{border-bottom-style:dotted}
+  .dk-table tr.sub td:first-child{padding-left:22px}
+  .dk-who{font-size:11px;padding:2px 7px;background:var(--chip);color:var(--dim);white-space:nowrap}
+  .dk-who.you,.dk-who.batch{color:var(--ink);font-weight:600}
+  .dk-big{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 18px}
+  @media (max-width:760px){.dk-big{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .dk-big > div{border:1px solid var(--line);padding:12px 14px;background:var(--bg);min-width:0}
+  .dk-big strong{display:block;font-family:var(--font-heading);font-weight:800;font-size:26px;
+    font-variant-numeric:tabular-nums;line-height:1.1}
+  .dk-big span{font-size:12.5px;color:var(--dim)}
+  .dk-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  @media (max-width:960px){.dk-cards{grid-template-columns:minmax(0,1fr)}}
+  .dk-card{border:1px solid var(--line);padding:13px 15px;background:var(--bg);min-width:0}
+  .dk-card.right{border-color:var(--accent)}
+  .dk-card.wrong{border-color:var(--warn)}
+  .dk-card h4{margin:3px 0 6px;font-size:15px;overflow-wrap:anywhere}
+  .dk-card .ans{font-size:12.5px;background:var(--chip);padding:6px 9px;margin:8px 0 0}
+  .dk-card .para{font-size:13px;margin:6px 0 0;max-width:72ch}
+  .dk-card blockquote{margin:8px 0 0;padding:6px 10px;border:1px solid var(--line);font-size:13px}
+  .dk-card .mark{font-size:12px;font-weight:600;margin-left:auto}
+  .dk-bar{height:6px;background:var(--chip);margin:8px 0}
+  .dk-bar i{display:block;height:100%;background:var(--accent)}
+  .dk-rule{border:1px solid var(--line);padding:14px 16px;background:var(--bg)}
+  .dk-heat{border-collapse:collapse;font-size:13px;width:100%}
+  .dk-heat th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);
+    font-weight:600;padding:6px;text-align:center;vertical-align:bottom}
+  .dk-heat th.dep,.dk-heat td.dep{text-align:left;min-width:170px}
+  .dk-heat td{border:1px solid var(--line);padding:0}
+  .dk-heat td.dep{padding:7px 8px;border:0;border-bottom:1px solid var(--line)}
+  .dk-heat button{all:unset;box-sizing:border-box;display:block;width:100%;min-width:82px;min-height:44px;
+    padding:6px 4px;text-align:center;cursor:pointer;font-variant-numeric:tabular-nums}
+  .dk-heat button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  .dk-heat button b{display:block;font-size:14px}
+  .dk-heat button small{display:block;font-size:11px;color:var(--dim)}
+  .dk-heat .ctx{text-align:center;color:var(--dim);font-variant-numeric:tabular-nums;padding:6px}
+  .dk-h0{background:var(--panel)}
+  .dk-h1{background:color-mix(in srgb,var(--warn) 9%,var(--panel))}
+  .dk-h2{background:color-mix(in srgb,var(--warn) 18%,var(--panel))}
+  .dk-h3{background:color-mix(in srgb,var(--warn) 29%,var(--panel))}
+  .dk-h4{background:color-mix(in srgb,var(--warn) 42%,var(--panel))}
+  .dk-h5{background:color-mix(in srgb,var(--warn) 56%,var(--panel))}
+  .dk-legend{display:flex;gap:6px;flex-wrap:wrap;font-size:11.5px;color:var(--dim);margin:8px 0 0}
+  .dk-legend span{padding:3px 8px;border:1px solid var(--line)}
+  .dk-ask{display:flex;gap:8px;flex-wrap:wrap}
+  .dk-ask input.txt{min-width:0;flex:1 1 320px;font-size:15px;padding:10px 12px}
+  .dk-ask button.act{min-height:44px}
+  .dk-read{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+  .dk-read .chip{font-size:12px;padding:4px 9px}
+  .dk-read .chip b{color:var(--ink);font-weight:600}
+  .dk-led .day{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);
+    margin:14px 0 4px}
+  .dk-led .ent{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;
+    padding:8px 0;border-top:1px solid var(--line);font-size:13px}
+  .dk-led .ent .why{grid-column:1/-1;color:var(--dim);font-size:12px;overflow-wrap:anywhere}
+  .dk-led .ent.undone .what{text-decoration:line-through;color:var(--dim)}
+  .dk-back{background:none;border:0;padding:0;font:inherit;font-size:12.5px;color:var(--accent);
+    cursor:pointer;margin:0 0 10px}
 </style>
 </head>
 <body>
@@ -747,6 +843,11 @@ async function boot() {
   $('#sub').textContent = `${META.companies.toLocaleString()} govtech companies · `
     + `${META.postings.toLocaleString()} postings · board built ${META.generated || '—'}`;
   const nav = $('#tabs'); nav.innerHTML = '';
+  /* THE DESK: whichever of the five front doors the toggle picked
+     (owner, 2026-11-01). The Shift keeps its own tab beside it. */
+  const deskBtn = el('button', null, 'Desk');
+  deskBtn.dataset.key = '__desk'; deskBtn.onclick = () => showDeskHome();
+  nav.appendChild(deskBtn);
   const shiftBtn = el('button', null, 'Shift');
   shiftBtn.dataset.key = '__shift'; shiftBtn.onclick = () => showShiftHome();
   nav.appendChild(shiftBtn);
@@ -780,9 +881,11 @@ async function boot() {
     b.onclick = () => show(k);
     b.dataset.key = k; nav.appendChild(b);
   });
-  /* The shift is the front door (option 5, owner 2026-10-23); Start here
-     is one click away on it and in the nav. */
-  showShiftHome();
+  /* The front door is the one the toggle picked (owner, 2026-11-01: "build
+     all 5 and just have a toggle"): Waiting on you until another is
+     chosen, the Shift among them. Start here is one click away in the nav. */
+  drawDeskToggle();
+  showDeskHome();
   /* No code bar up front any more: the shift home, where the admin opens,
      has its own code box, and two boxes fought over focus while a person
      typed (review, 2026-10-24). A refused ruling anywhere still opens the
@@ -819,6 +922,9 @@ function drawSectorPicker() {
     history.replaceState(null, '', u);
     await boot();
     const views = {__pagebelt: () => showPageBelt(SECTOR || undefined, ''),
+                   __desk_waiting: showWaiting, __desk_brief: showBrief,
+                   __desk_batches: () => showBatches(), __desk_health: () => showHealth(),
+                   __desk_ask: () => showAsk(),
                    __start: showStart,
                    __capture: showCapture, __sort: showSort, __sweep: () => showSweep()};
     if (views[was]) views[was]();
@@ -6889,6 +6995,853 @@ RENDER.scrub = x => {
   n.append(row, msg);
   return n;
 };
+
+
+/* ── The five front doors (owner, 2026-11-01) ───────────────────────────────
+   "build all 5 and just have a toggle where I can pick which one to use. make
+   sure all of them are wired together." The round-2 admin canvas: 1 Waiting
+   on you, 2 Morning brief, 3 Batches, 4 Health map, 5 Ask the desk, plus the
+   Shift that was the front door before. The toggle under the header picks
+   which one the desk opens on (remembered in this browser); every view reads
+   the same /api/desk/ core (scripts/desk.py), draws the same question card,
+   ledger and batch screen, and opens the same queues - so a ruling made from
+   one is already the truth in the other four. */
+const DESK_VIEWS = [
+  ['waiting', '1 Waiting on you'], ['brief', '2 Morning brief'],
+  ['batches', '3 Batches'], ['health', '4 Health map'],
+  ['ask', '5 Ask the desk'], ['shift', 'Shift']];
+const DESK = { seq: 0, back: null };
+
+function deskPick() {
+  try { return localStorage.getItem('desk.view') || 'waiting'; } catch (e) { return 'waiting'; }
+}
+function deskSet(k) { try { localStorage.setItem('desk.view', k); } catch (e) { /* this browser keeps nothing */ } }
+
+const DESK_SHOW = {
+  waiting: () => showWaiting(), brief: () => showBrief(), batches: () => showBatches(),
+  health: () => showHealth(), ask: () => showAsk(), shift: () => showShiftHome()};
+
+function showDeskHome() { (DESK_SHOW[deskPick()] || DESK_SHOW.waiting)(); }
+
+function drawDeskToggle() {
+  let bar = $('#dk-toggle');
+  if (!bar) {
+    bar = el('div', 'dk-toggle'); bar.id = 'dk-toggle';
+    bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Which desk opens');
+    $('#sub').after(bar);
+  }
+  bar.innerHTML = '';
+  bar.appendChild(el('span', 'lab', 'Desk'));
+  const pick = deskPick();
+  DESK_VIEWS.forEach(([k, label]) => {
+    const b = el('button', null, label);
+    b.type = 'button';
+    b.setAttribute('aria-pressed', String(k === pick));
+    b.title = k === pick ? 'The desk opens on this one' : 'Open on this one from now on';
+    b.onclick = () => { deskSet(k); drawDeskToggle(); DESK_SHOW[k](); };
+    bar.appendChild(b);
+  });
+}
+
+/* Every view starts here: leave the belt and the shift, mark the nav, and
+   take a sequence number so a slow answer for a view already left is
+   dropped instead of drawn over the next one. */
+function dkEnter(key) {
+  TAB = '__desk_' + key;
+  beltOff();
+  document.querySelectorAll('nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.key === '__desk'));
+  drawDeskToggle();
+  const v = $('#view'); v.innerHTML = '';
+  const host = el('div', 'dk'); host.id = 'dk-host';
+  v.appendChild(host);
+  const seq = ++DESK.seq;
+  return { host, seq, live: () => TAB === '__desk_' + key && DESK.seq === seq };
+}
+
+/* The desk process predates this page when /api/desk/ answers 404: say the
+   one thing that fixes it rather than an error about a route. */
+async function dkGet(path) {
+  const j = await api(path);
+  if (j && j.error && /not found|unknown action/.test(j.error))
+    return { error: 'This desk was started before the five front doors were built. '
+                  + 'Stop it and start it again to use this view.' };
+  return j;
+}
+
+const fmtN = n => (n == null ? '?' : Number(n).toLocaleString());
+const dkSay = (host, text, bad) => { const p = el('p', 'kv', text); if (bad) p.style.color = 'var(--warn)'; host.appendChild(p); return p; };
+function dkSection(host, title, sub) {
+  const s = el('section', 'dk-sec');
+  if (title) s.appendChild(el('h3', null, title));
+  if (sub) s.appendChild(el('p', 'kv', sub));
+  host.appendChild(s);
+  return s;
+}
+
+/* Open one queue, in one department, from any view. The header's picker is
+   the queue tabs' department, so it moves with it and the counts follow. */
+async function goQueue(queue, sector) {
+  sector = sector || '';
+  if (sector !== SECTOR) {
+    SECTOR = sector;
+    const u = new URL(location.href);
+    if (SECTOR) u.searchParams.set('sector', SECTOR); else u.searchParams.delete('sector');
+    history.replaceState(null, '', u);
+    META = await api(secQ('/api/queues'));
+    drawSectorPicker();
+    document.querySelectorAll('nav button').forEach(b => {
+      const n = b.querySelector('.n');
+      if (n && META.counts) n.textContent = META.counts[b.dataset.key];
+    });
+  }
+  show(queue);
+}
+
+function dkGo(go) {
+  if (!go) return;
+  if (go.view === 'batch') return showBatch(go.batch);
+  if (go.view === 'queue') return goQueue(go.queue, go.sector);
+  if (go.view === 'question' || go.view === 'waiting') return showWaiting();
+  if (go.view === 'ledger') return showAsk({ ledger: true });
+  if (go.view === 'health') return go.sector ? showHealth({ sector: go.sector }) : showHealth();
+  if (go.view === 'brief') return showBrief();
+  if (go.view === 'batches') return showBatches();
+  if (go.view === 'company') {
+    window.open('/preview/c/' + encodeURIComponent(go.id) + '.html', '_blank', 'noopener');
+  }
+}
+
+/* ── shared: a question only the owner can answer ──────────────────────── */
+function dkQuestion(q, opts) {
+  opts = opts || {};
+  const n = el('div', 'dk-q');
+  n.appendChild(el('div', 'tag', [q.tag, q.since ? 'since ' + q.since : ''].filter(Boolean).join(' · ')));
+  n.appendChild(el('h4', null, q.title));
+  if (!opts.compact && q.body) n.appendChild(el('p', 'kv', q.body));
+  if (q.steps) {
+    const ol = el('ol');
+    q.steps.forEach(s => ol.appendChild(el('li', null, s)));
+    n.appendChild(ol);
+  }
+  if (!opts.compact && q.facts && q.facts.length) {
+    const dl = el('dl', 'dk-facts');
+    q.facts.forEach(([k, v]) => { dl.appendChild(el('dt', null, k)); dl.appendChild(el('dd', null, v)); });
+    n.appendChild(dl);
+  }
+  if (q.state) n.appendChild(el('p', 'kv', 'Now: ' + q.state
+    + (q.checked ? ' (asked ' + String(q.checked).slice(11, 16) + ')' : '')));
+  let why = null;
+  if (q.kind !== 'launch' && q.kind !== 'submission') {
+    why = el('input', 'txt');
+    why.placeholder = 'Why, in a line (kept with your answer)';
+    why.setAttribute('aria-label', 'Why, for: ' + q.title);
+  }
+  const row = el('div', 'row');
+  const msg = el('p', 'kv');
+  (q.answers || []).forEach((a, i) => {
+    const b = el('button', 'act' + (i === 0 ? ' go' : ''), a.label);
+    b.type = 'button';
+    b.onclick = async () => {
+      if (q.kind === 'submission') return goQueue('submissions');
+      b.disabled = true; msg.textContent = q.kind === 'launch' ? 'asking the site…' : 'saving…';
+      const r = await api('/api/desk-answer', { id: q.id, answer: a.key, why: why ? why.value : '' });
+      b.disabled = false;
+      if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+      msg.textContent = r.message; msg.style.color = r.still ? 'var(--warn)' : 'var(--accent)';
+      if (!r.still) { toast(r.message); if (opts.onDone) setTimeout(opts.onDone, 900); }
+    };
+    row.appendChild(b);
+  });
+  if (q.doc) row.appendChild(el('span', 'kv', 'The steps: ' + q.doc));
+  if (why) { const wr = el('div', 'row'); wr.appendChild(why); n.appendChild(wr); }
+  n.appendChild(row);
+  if (!opts.compact) (q.answers || []).forEach(a => {
+    if (a.next && a.next.length) n.appendChild(el('p', 'next', a.label + ': ' + a.next.join(' ')));
+  });
+  n.appendChild(msg);
+  return n;
+}
+
+function dkQuestions(host, qs, opts) {
+  if (!qs || qs.error) { dkSay(host, (qs && qs.error) || 'The questions could not be read.', true); return; }
+  if (!qs.questions.length) dkSay(host, 'Nothing waits on you.');
+  qs.questions.forEach(q => host.appendChild(dkQuestion(q, opts)));
+  (qs.watch || []).forEach(w => {
+    const p = dkSay(host, w.text);
+    if (w.n) { const b = el('button', 'act', 'Open it'); b.onclick = () => goQueue(w.queue); p.appendChild(b); }
+  });
+}
+
+/* ── shared: the ledger, every ruling with its Undo ─────────────────────── */
+const WHO_SAYS = { 'yours': 'Yours', 'yours, written in chat': 'Yours, in chat', 'doors': 'Doors', 'phone': 'Phone' };
+
+function dkLedger(host, rows, opts) {
+  opts = opts || {};
+  const box = el('div', 'dk-led');
+  let day = null;
+  (rows || []).forEach(r => {
+    if (opts.mine && !String(r.who).startsWith('yours')) return;
+    if (r.day !== day) { day = r.day; box.appendChild(el('div', 'day', day)); }
+    const e = el('div', 'ent' + (r.undone ? ' undone' : ''));
+    const left = el('div');
+    left.appendChild(el('span', 'dk-who' + (String(r.who).startsWith('yours') ? ' you' : ''),
+      WHO_SAYS[r.who] || r.who));
+    left.appendChild(document.createTextNode(' '));
+    left.appendChild(el('span', 'what', r.what));
+    left.appendChild(el('span', 'kv', ' · ' + fmtN(r.n) + ' record' + (r.n === 1 ? '' : 's')
+      + ' · ' + String(r.at || '').slice(11, 16)));
+    e.appendChild(left);
+    const right = el('div');
+    if (r.undone) right.appendChild(el('span', 'kv', 'taken back'));
+    else if (r.undo) {
+      const u = el('button', 'act', r.undo.batch_ruling ? 'Undo the batch' : 'Undo');
+      u.type = 'button';
+      u.onclick = async () => {
+        u.disabled = true;
+        const res = r.undo.batch_ruling
+          ? await api('/api/batch-undo', { batch_ruling: r.undo.batch_ruling })
+          : await api('/api/undo', { entries: r.undo.entries });
+        u.disabled = false;
+        if (res.error) { toast(res.error, true); return; }
+        toast(res.message || 'taken back');
+        refreshCounts();
+        if (opts.onUndo) opts.onUndo();
+      };
+      right.appendChild(u);
+    } else right.appendChild(el('span', 'kv', String(r.who).startsWith('yours') ? '' : 'not yours to undo here'));
+    e.appendChild(right);
+    if (r.why) e.appendChild(el('div', 'why', r.why));
+    box.appendChild(e);
+  });
+  if (!box.children.length) box.appendChild(el('p', 'kv', opts.mine ? 'No rulings of yours in the journal yet.' : 'Nothing in the journal yet.'));
+  host.appendChild(box);
+}
+
+/* ── shared: the backlog, and who is on each queue ──────────────────────── */
+const WHO_LABEL = { batch: 'You, on a sample', you: 'You, one by one', agent: 'An agent first',
+                    nightly: 'Nightly', scrub: 'Sunday scrub', nobody: 'Nobody' };
+
+function dkBacklog(host, b) {
+  const tally = {};
+  b.queues.forEach(q => { tally[q.who] = (tally[q.who] || 0) + (q.n || 0); });
+  const big = el('div', 'dk-big');
+  ['batch', 'you', 'agent', 'nightly'].forEach(k => {
+    const d = el('div');
+    d.appendChild(el('strong', null, fmtN(tally[k] || 0)));
+    d.appendChild(el('span', null, WHO_LABEL[k]));
+    big.appendChild(d);
+  });
+  host.appendChild(big);
+  const wrap = el('div', 'dk-scroll');
+  const t = el('table', 'dk-table');
+  const hr = el('tr');
+  ['Queue', 'Waiting', 'Who', 'Note', ''].forEach((h, i) => {
+    const th = el('th', i === 1 ? 'num' : null, h); hr.appendChild(th);
+  });
+  t.appendChild(el('thead')).appendChild(hr);
+  const tb = el('tbody');
+  b.queues.forEach(q => {
+    const tr = el('tr');
+    tr.appendChild(el('td', null, q.label));
+    tr.appendChild(el('td', 'num', fmtN(q.n)));
+    const w = el('td'); w.appendChild(el('span', 'dk-who ' + q.who, WHO_LABEL[q.who] || q.who)); tr.appendChild(w);
+    tr.appendChild(el('td', 'kv', q.note || q.why || ''));
+    const a = el('td');
+    if (q.piles && q.piles.some(p => p.n)) {
+      const btn = el('button', 'act', 'Its piles');
+      btn.onclick = () => showBatches({ focus: q.queue }); a.appendChild(btn);
+    } else if (q.n) {
+      const btn = el('button', 'act', 'Open');
+      btn.onclick = () => goQueue(q.queue, b.sector || ''); a.appendChild(btn);
+    }
+    tr.appendChild(a);
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb); wrap.appendChild(t); host.appendChild(wrap);
+}
+
+/* ── 1. Waiting on you ──────────────────────────────────────────────────── */
+async function showWaiting() {
+  const { host, live } = dkEnter('waiting');
+  host.appendChild(el('h2', null, 'Waiting on you'));
+  host.appendChild(el('p', 'lede', 'The decisions only you can make, first. Everything else has '
+    + 'an owner, in the backlog below.'));
+  const qsec = dkSection(host, 'Only you can decide these');
+  qsec.appendChild(el('div', 'empty', 'reading…'));
+  const [qs, b, led] = await Promise.all([dkGet('/api/desk/questions'),
+    dkGet(secQ('/api/desk/batches')), dkGet('/api/desk/ledger?limit=40')]);
+  if (!live()) return;
+  qsec.innerHTML = '';
+  qsec.appendChild(el('h3', null, 'Only you can decide these'
+    + (qs.questions ? ' (' + qs.questions.length + ')' : '')));
+  dkQuestions(qsec, qs, { onDone: () => showWaiting() });
+  const cols = el('div', 'dk-cols'); host.appendChild(cols);
+  const left = el('div'), right = el('div'); cols.append(left, right);
+  const bsec = dkSection(left, 'The backlog, and who is on it',
+    'Every queue, biggest first. Where a pile can be ruled on a sample, it says so.');
+  if (b.error) dkSay(bsec, b.error, true); else dkBacklog(bsec, b);
+  const shift = el('button', 'act', 'Or start a shift');
+  shift.onclick = () => showShiftHome();
+  bsec.appendChild(Object.assign(el('div', 'row'))).appendChild(shift);
+  const lsec = dkSection(right, 'Your last rulings');
+  if (led.error) dkSay(lsec, led.error, true);
+  else dkLedger(lsec, led.rows, { mine: true, onUndo: () => showWaiting() });
+}
+
+/* ── 2. Morning brief ───────────────────────────────────────────────────── */
+async function showBrief() {
+  const { host, live } = dkEnter('brief');
+  host.appendChild(el('div', 'empty', 'reading the night…'));
+  const [br, b] = await Promise.all([dkGet('/api/desk/brief'), dkGet('/api/desk/batches')]);
+  if (!live()) return;
+  host.innerHTML = '';
+  if (br.error) { dkSay(host, br.error, true); return; }
+  const d = new Date(br.date + 'T12:00:00');
+  host.appendChild(el('h2', null, 'The morning brief · ' + d.toLocaleDateString(undefined,
+    { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })));
+  const runs = (br.runs && br.runs.runs) || [];
+  const failed = runs.filter(r => r.conclusion === 'failure').length;
+  const last = runs[0];
+  const lede = [];
+  if (last) lede.push(last.conclusion === 'success'
+    ? 'The last nightly run passed' + (failed ? ` (${failed} of the last ${runs.length} failed).` : '.')
+    : last.conclusion === 'failure' ? `The last nightly run failed (${failed} of the last ${runs.length}).`
+    : `The last nightly run is ${last.status}.`);
+  lede.push(`${fmtN(br.logos.hiring_with_logo)} of ${fmtN(br.logos.hiring)} hiring companies have a logo.`);
+  lede.push(`${br.questions.questions.length} question${br.questions.questions.length === 1 ? '' : 's'} wait for you.`);
+  host.appendChild(el('p', 'lede', lede.filter(Boolean).join(' ')));
+
+  const o = dkSection(host, 'Overnight');
+  const big = el('div', 'dk-big');
+  [[br.board.open_roles, 'open roles'], [br.board.postings, 'postings'],
+   [br.board.companies, 'companies on the board'],
+   [br.board.changes, br.board.changes == null ? 'no change list for today' : 'hiring changes in the last run']]
+    .forEach(([n, l]) => { const x = el('div'); x.appendChild(el('strong', null, n == null ? '—' : fmtN(n))); x.appendChild(el('span', null, l)); big.appendChild(x); });
+  o.appendChild(big);
+  o.appendChild(el('p', 'kv', 'Logos: ' + (br.logos.found_today == null
+    ? 'how many arrived today is not known here (no history to ask)'
+    : `${fmtN(br.logos.found_today)} added to the board today`)
+    + `; ${fmtN(br.logos.parked_today)} parked for a look in Logos to check.`));
+  if (runs.length) {
+    const ul = el('ul', 'kv');
+    runs.forEach(r => {
+      const li = el('li', null, `${(r.createdAt || '').replace('T', ' ').slice(0, 16)} UTC: ${r.conclusion || r.status}`);
+      if (r.conclusion === 'failure') li.style.color = 'var(--warn)';
+      ul.appendChild(li);
+    });
+    o.appendChild(ul);
+  } else o.appendChild(el('p', 'kv', 'The nightly runs are not known here: '
+    + ((br.runs && br.runs.error) || 'this computer could not ask GitHub') + '.'));
+  if (br.publish && !br.publish.installed)
+    o.appendChild(el('p', 'kv', 'The desk publisher is not installed on this computer, so your '
+      + 'rulings reach the public site only when they are published by hand.'));
+
+  const cols = el('div', 'dk-cols'); host.appendChild(cols);
+  const left = el('div'), right = el('div'); cols.append(left, right);
+  const n = dkSection(left, 'Needs you', 'Every answer is journalled, and Undo takes it back.');
+  dkQuestions(n, br.questions, { onDone: () => showBrief() });
+
+  const p = dkSection(left, 'Piles ready to rule on a sample',
+    'Each pile is one machine answer over many rows. Read the sample; if none is wrong, rule the pile.');
+  if (b.error) dkSay(p, b.error, true);
+  else dkPiles(p, b.queues.filter(q => q.kind === 'batch'), { limit: 6 });
+
+  const r = dkSection(right, 'Your rulings lately');
+  if (!br.rulings.length) dkSay(r, 'None of yours in the last 30 days of the journal.');
+  br.rulings.forEach(dy => {
+    r.appendChild(el('div', 'day kv', dy.day + ' · ' + dy.n + ' ruling' + (dy.n === 1 ? '' : 's')));
+    const ul = el('ul', 'kv');
+    dy.rows.slice(0, 4).forEach(x => ul.appendChild(el('li', null, x.what + (x.n > 1 ? ` (${fmtN(x.n)} records)` : ''))));
+    r.appendChild(ul);
+  });
+  const dsec = dkSection(right, 'What the doors did', 'The last 30 days of the live journal, by who wrote it.');
+  if (!br.doors.length) dkSay(dsec, 'No door wrote in the live journal.');
+  br.doors.forEach(x => dsec.appendChild(el('p', 'kv', `${x.by}: ${fmtN(x.entries)} write(s), ${fmtN(x.records)} records`)));
+  const bl = dkSection(right, 'The backlog');
+  if (!b.error) {
+    const total = b.queues.reduce((s, q) => s + (q.n || 0), 0);
+    const top = b.queues.slice(0, 3).map(q => `${q.label} (${fmtN(q.n)})`).join(', ');
+    bl.appendChild(el('p', 'kv', `${fmtN(total)} rows wait in ${b.queues.filter(q => q.n).length} queues. The biggest: ${top}.`));
+    const row = el('div', 'row');
+    const a = el('button', 'act', 'Open the batches'); a.onclick = () => showBatches();
+    const s = el('button', 'act', 'Or start a shift'); s.onclick = () => showShiftHome();
+    row.append(a, s); bl.appendChild(row);
+  }
+}
+
+/* ── shared: a list of piles, each opening its batch screen ─────────────── */
+function dkPiles(host, queues, opts) {
+  opts = opts || {};
+  let piles = [];
+  queues.forEach(q => (q.piles || []).forEach(p => { if (p.n) piles.push({ ...p, queue_label: q.label }); }));
+  piles.sort((a, b) => b.n - a.n);
+  if (opts.limit) piles = piles.slice(0, opts.limit);
+  if (!piles.length) { dkSay(host, 'No pile has rows in it.'); return; }
+  piles.forEach(p => {
+    const d = el('div', 'dk-q');
+    d.appendChild(el('div', 'tag', p.queue_label + (p.sector ? ' · ' + p.sector : '')));
+    d.appendChild(el('h4', null, p.label));
+    d.appendChild(el('p', 'kv', dkPileState(p)));
+    const row = el('div', 'row');
+    const b = el('button', 'act' + (p.state === 'ready' ? ' go' : ''),
+      p.state === 'ready' ? 'Rule it' : p.read_all ? 'Read them all' : 'Read the sample');
+    b.onclick = () => showBatch(p.id);
+    row.appendChild(b); d.appendChild(row);
+    host.appendChild(d);
+  });
+}
+
+function dkPileState(p) {
+  const what = p.read_all ? (p.n === 1 ? '1 row: read it, then rule it'
+    : `${fmtN(p.n)} rows: read them all, then rule them together`)
+    : `Read ${fmtN(p.sample_n)} of ${fmtN(p.n)}. None wrong proves it is under ${Math.round(p.tolerance * 100)}% wrong`;
+  const done = p.state === 'sent back' ? ` · sent back: ${p.wrong} marked wrong`
+    : p.read ? ` · ${p.read} read${p.wrong ? ', ' + p.wrong + ' wrong' : ''}` : '';
+  const last = p.last ? ` · last ruled ${String(p.last.on || '')}: ${p.last.ruling === 'accept' ? 'accepted ' + fmtN(p.last.landed) : 'sent back'}${p.last.undone ? ' (undone)' : ''}` : '';
+  return what + done + last;
+}
+
+/* ── 3. Batches, not rows ───────────────────────────────────────────────── */
+async function showBatches(opts) {
+  opts = opts || {};
+  const { host, live } = dkEnter('batches');
+  host.appendChild(el('h2', null, 'Batches, not rows'));
+  host.appendChild(el('p', 'lede', 'Where a machine has already answered a whole pile the same way, '
+    + 'read a sample of it and rule the pile. The sample is sized by what it must prove: '
+    + 'a pile that publishes something takes about 58 cards with none wrong (under 5% wrong, '
+    + '95% sure), a pile that only writes a record about 29 (under 10%), and 20 rows or fewer '
+    + 'are read whole. The first wrong card ends it, and the pile goes back.'));
+  const body = el('div'); host.appendChild(body);
+  body.appendChild(el('div', 'empty', 'reading every queue…'));
+  const [b, led] = await Promise.all([dkGet(secQ('/api/desk/batches')), dkGet('/api/desk/ledger?limit=80')]);
+  if (!live()) return;
+  body.innerHTML = '';
+  if (b.error) { dkSay(body, b.error, true); return; }
+  const piles = [];
+  b.queues.forEach(q => (q.piles || []).forEach(p => p.n && piles.push(p)));
+  const rows = piles.reduce((s, p) => s + p.n, 0);
+  const cards = piles.reduce((s, p) => s + p.sample_n, 0);
+  const big = el('div', 'dk-big');
+  [[fmtN(rows), 'rows in ' + piles.length + ' piles' + (b.sector ? ' in ' + b.sector : '')],
+   [fmtN(cards), 'cards to read for all of them'],
+   [Math.round(cards / 60 * 10) / 10 + ' h', 'at a card a minute'],
+   [Math.round(rows / 60) + ' h', 'to read every row instead']]
+    .forEach(([n, l]) => { const x = el('div'); x.appendChild(el('strong', null, n)); x.appendChild(el('span', null, l)); big.appendChild(x); });
+  body.appendChild(big);
+  const sec = dkSection(body, 'Every queue, biggest first',
+    'A queue with no pile says why: no machine answer on its rows, or a rule of yours that it is read one at a time.');
+  const wrap = el('div', 'dk-scroll'); const t = el('table', 'dk-table');
+  const hr = el('tr');
+  ['Queue or pile', 'Rows', 'To read', 'Where it stands', ''].forEach((h, i) =>
+    hr.appendChild(el('th', i === 1 || i === 2 ? 'num' : null, h)));
+  t.appendChild(el('thead')).appendChild(hr);
+  const tb = el('tbody');
+  b.queues.forEach(q => {
+    const tr = el('tr'); tr.id = 'dk-q-' + q.queue;
+    const name = el('td'); name.appendChild(el('strong', null, q.label)); tr.appendChild(name);
+    tr.appendChild(el('td', 'num', fmtN(q.n)));
+    tr.appendChild(el('td', 'num', ''));
+    tr.appendChild(el('td', 'kv', q.kind === 'batch'
+      ? (q.left ? fmtN(q.left) + ' row(s) in no pile stay for you one by one' : 'every row is in a pile')
+      : q.why || ''));
+    const a = el('td');
+    if (q.n) { const o = el('button', 'act mute', 'Open the queue'); o.onclick = () => goQueue(q.queue, b.sector || ''); a.appendChild(o); }
+    tr.appendChild(a); tb.appendChild(tr);
+    (q.piles || []).forEach(p => {
+      const s = el('tr', 'sub');
+      s.appendChild(el('td', null, p.label));
+      s.appendChild(el('td', 'num', fmtN(p.n)));
+      s.appendChild(el('td', 'num', p.n ? fmtN(p.sample_n) : ''));
+      s.appendChild(el('td', 'kv', p.n ? dkPileState(p) : 'empty'));
+      const c = el('td');
+      if (p.n) {
+        const btn = el('button', 'act' + (p.state === 'ready' ? ' go' : ''),
+          p.state === 'ready' ? 'Rule it' : p.read_all ? 'Read all' : 'Read the sample');
+        btn.onclick = () => showBatch(p.id); c.appendChild(btn);
+      }
+      s.appendChild(c); tb.appendChild(s);
+    });
+  });
+  t.appendChild(tb); wrap.appendChild(t); sec.appendChild(wrap);
+  if (opts.focus) { const f = $('#dk-q-' + opts.focus); if (f) f.scrollIntoView({ block: 'center' }); }
+  const lsec = dkSection(body, 'Batches ruled', 'A batch is one entry in the ledger, and Undo takes all of it back or none.');
+  if (!led.error) dkLedger(lsec, (led.rows || []).filter(r => r.undo && r.undo.batch_ruling || /^Batch/.test(r.what)),
+    { onUndo: () => showBatches() });
+}
+
+/* ── the batch screen: one pile, its sample, its ruling ─────────────────── */
+async function showBatch(id) {
+  const { host, live } = dkEnter('batch');
+  const back = el('button', 'dk-back', '← All batches');
+  back.onclick = () => showBatches();
+  host.appendChild(back);
+  host.appendChild(el('div', 'empty', 'drawing the sample…'));
+  const v = await dkGet('/api/desk/batch?id=' + encodeURIComponent(id));
+  if (!live()) return;
+  host.innerHTML = ''; host.appendChild(back);
+  if (v.error) { dkSay(host, v.error, true); return; }
+  host.appendChild(el('div', 'kv', v.queue_label + (v.sector ? ' · ' + v.sector : '') + ' · '
+    + (v.reach === 'public' ? 'this reaches the public board' : 'this writes a record only')));
+  host.appendChild(el('h2', null, v.label));
+  host.appendChild(el('p', 'lede', v.read_all
+    ? `${fmtN(v.n)} row${v.n === 1 ? '' : 's'}, so you read ${v.n === 1 ? 'it' : 'them all'}. Mark each one; accepting rules the ones you marked right, and the ones you marked wrong stay in ${v.queue_label}.`
+    : `Read ${fmtN(v.sample_n)} of the ${fmtN(v.n)}, drawn at random. If none is wrong, the pile is under ${Math.round(v.tolerance * 100)}% wrong (95% sure), and you rule all ${fmtN(v.n)} at once. The first wrong card ends it: send the pile back.`));
+  host.appendChild(el('p', 'kv', 'What to check: ' + v.check));
+  if (!v.n) { dkSay(host, 'This pile is empty now.'); }
+  const prog = el('div'); host.appendChild(prog);
+  const paint = () => {
+    prog.innerHTML = '';
+    const read = v.sample.filter(c => c.mark).length, wrong = v.sample.filter(c => c.mark === 'wrong').length;
+    prog.appendChild(el('p', 'kv', `${read} of ${v.sample.length} read · ${wrong} marked wrong`));
+    const bar = el('div', 'dk-bar'); const fill = el('i'); fill.style.width = (v.sample.length ? 100 * read / v.sample.length : 0) + '%';
+    bar.appendChild(fill); prog.appendChild(bar);
+    rule.update(read, wrong);
+  };
+  const grid = el('div', 'dk-cards'); host.appendChild(grid);
+  const rule = dkRulePanel(v, () => showBatch(id));
+  v.sample.forEach((c, i) => grid.appendChild(dkSampleCard(v, c, i, paint)));
+  host.appendChild(rule.node);
+  paint();
+  if (v.rulings && v.rulings.length) {
+    const h = dkSection(host, 'This pile before');
+    v.rulings.slice().reverse().forEach(r => h.appendChild(el('p', 'kv',
+      `${r.on}: ${r.ruling === 'accept' ? 'accepted ' + fmtN(r.landed) : 'sent back'} by ${r.by}`
+      + ` (${r.read} read, ${r.wrong} wrong)${r.why ? ' · ' + r.why : ''}${r.undone ? ' · undone' : ''}`)));
+  }
+}
+
+function dkRulePanel(v, reload) {
+  const node = el('div', 'dk-rule'); node.style.marginTop = '18px';
+  node.appendChild(el('h3', null, 'Rule the pile'));
+  node.appendChild(el('p', 'kv', 'One entry in the journal either way, with your words as the why. '
+    + 'Undo takes back exactly what it wrote, or names what moved since and writes nothing.'));
+  const why = el('input', 'txt'); why.placeholder = 'Why (recorded either way)';
+  why.setAttribute('aria-label', 'Why, for this pile');
+  const row = el('div', 'row');
+  const acc = el('button', 'act go', '');
+  const back = el('button', 'act', 'Send it back');
+  const msg = el('p', 'kv');
+  const send = async (ruling) => {
+    acc.disabled = back.disabled = true; msg.textContent = 'ruling…'; msg.style.color = '';
+    const r = await api('/api/batch-rule', { batch: v.id, ruling, expect_n: v.n, why: why.value });
+    acc.disabled = back.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; if (r.stale) setTimeout(reload, 1500); return; }
+    toast(r.message); refreshCounts(); reload();
+  };
+  acc.onclick = () => send('accept');
+  back.onclick = () => send('send_back');
+  row.append(acc, back);
+  node.append(why, row, msg);
+  let seen = [0, 0];
+  why.oninput = () => panel.update(seen[0], seen[1]);
+  const panel = { node, why, update(read, wrong) {
+    seen = [read, wrong];
+    const all = read === v.sample.length && v.n > 0;
+    const take = v.read_all ? v.sample.filter(c => c.mark === 'right').length : v.n;
+    acc.textContent = v.read_all ? `Accept the ${fmtN(take)} marked right` : `Accept all ${fmtN(v.n)}`;
+    acc.disabled = !all || (!v.read_all && wrong > 0) || take === 0;
+    back.disabled = !(wrong > 0 || why.value.trim());
+    msg.textContent = !all ? `Accept opens when all ${v.sample.length} cards are marked.`
+      : wrong && !v.read_all ? 'A card is marked wrong, so the pile can only go back.' : '';
+    msg.style.color = '';
+  } };
+  return panel;
+}
+
+/* One sample card. It shows the row as its own queue serves it and the ONE
+   answer the pile would write, so what is judged is the answer. */
+function dkSampleCard(v, c, i, repaint) {
+  const r = c.row || {};
+  const n = el('div', 'dk-card' + (c.mark ? ' ' + c.mark : ''));
+  const sec = r.sector || (r.current || {}).sector, cat = r.category || (r.current || {}).category;
+  n.appendChild(el('div', 'meta', `${i + 1} of ${v.sample.length}` + (sec ? ' · ' + sec + (cat ? ' / ' + cat : '') : '')));
+  n.appendChild(el('h4', null, r.name || r.title || c.key));
+  const link = (href, text) => { if (!href) return; const a = el('a', null, text || href.replace(/^https?:\/\//, '')); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; const p = el('p', 'kv'); p.appendChild(a); n.appendChild(p); };
+  const q = v.queue;
+  if (q === 'profiles') {
+    link(r.website);
+    /* EACH SENTENCE BESIDE THE WORDS IT CAME FROM (CLAUDE.md, council
+       review: show the raw text beside our reading of it). A paragraph is
+       a list of sentences, each with the quote and page behind it; the
+       check is whether a sentence says more than its quote. */
+    (r.paragraphs || []).forEach(par => {
+      const sents = Array.isArray(par) ? par : [{ text: String(par) }];
+      n.appendChild(el('p', 'para', sents.map(x => x.text || '').join(' ')));
+      const det = el('details'); det.appendChild(el('summary', 'kv', 'Each sentence beside its quote'));
+      sents.forEach(x => {
+        const d = el('div', 'kv'); d.style.margin = '6px 0';
+        d.appendChild(el('div', null, x.text || ''));
+        if (x.quote) d.appendChild(el('blockquote', null, x.quote));
+        if (x.url) { const a2 = el('a', null, String(x.url).replace(/^https?:\/\//, '')); a2.href = x.url; a2.target = '_blank'; a2.rel = 'noopener noreferrer'; d.appendChild(a2); }
+        det.appendChild(d);
+      });
+      n.appendChild(det);
+    });
+    if (r.refused_why) n.appendChild(el('p', 'kv', 'The door refused it: ' + r.refused_why));
+    if (r.why) n.appendChild(el('p', 'kv', 'Writer’s note: ' + r.why));
+    n.appendChild(el('p', 'kv', 'Confidence: ' + (r.confidence || '?') + ' · by ' + (r.by || '?')));
+  } else if (q === 'suppliers') {
+    link(r.url);
+    if (r.says) n.appendChild(el('p', 'kv', 'The page says: ' + r.says));
+    n.appendChild(el('p', 'kv', 'Step 1 said: ' + (r.step1 || '?') + (r.basis ? ' · filed off ' + r.basis : '')));
+    if (r.listed_at) link(r.listed_at, 'where it was listed');
+  } else if (q === 'proposals') {
+    link(r.evidence, 'the careers page the agent read');
+    if (r.why) n.appendChild(el('p', 'para', r.why));
+    n.appendChild(el('p', 'kv', 'By ' + (r.by || '?') + ' · ' + String(r.at || '').slice(0, 10)));
+  } else if (q === 'miscategorized') {
+    link(r.website);
+    if (r.description) n.appendChild(el('p', 'para', r.description));
+    n.appendChild(el('p', 'kv', `Filed: ${r.sector} / ${r.category}`));
+    (r.evidence || []).forEach(e => n.appendChild(el('p', 'kv', '“' + e + '”')));
+    n.appendChild(el('p', 'kv', `${fmtN(r.open_roles || 0)} open role(s)`));
+  } else if (q === 'founded') {
+    n.appendChild(el('p', 'para', 'Year on file: ' + r.year));
+    if (r.quote) n.appendChild(el('blockquote', null, r.quote));
+    link(r.source, 'where the quote is');
+    if (r.research_why) n.appendChild(el('p', 'kv', r.research_why));
+  } else if (q === 'review') {
+    n.appendChild(el('p', 'kv', 'On file now: ' + (r.was || '?') + (r.was_why ? ' (' + r.was_why + ')' : '')));
+    link(r.url);
+    if (r.why) n.appendChild(el('p', 'para', r.why));
+  } else if (q === 'placement') {
+    if (r.description) n.appendChild(el('p', 'para', r.description));
+    n.appendChild(el('p', 'kv', `Filed: ${(r.current || {}).sector} / ${(r.current || {}).category}`));
+    (r.why || []).forEach(e => n.appendChild(el('p', 'kv', e)));
+  }
+  const ans = q === 'miscategorized' ? `${c.answer}: ${r.proposed_sector} / ${r.proposed_category}`
+    : q === 'placement' ? `${c.answer}: ${(r.suggested || {}).sector} / ${(r.suggested || {}).category}`
+    : c.answer;
+  n.appendChild(el('div', 'ans', 'If the pile is accepted: ' + ans));
+  const row = el('div', 'row');
+  const right = el('button', 'act', 'Right');
+  const wrong = el('button', 'act', 'Wrong');
+  const clear = el('button', 'act mute', 'Clear');
+  const why = el('input', 'txt'); why.placeholder = 'What was wrong, in a line';
+  why.setAttribute('aria-label', 'What was wrong with ' + (r.name || c.key));
+  why.hidden = c.mark !== 'wrong'; if (c.mark_why) why.value = c.mark_why;
+  const mark = async (m) => {
+    if (m === 'wrong' && why.hidden) { why.hidden = false; why.focus(); return; }
+    if (m === 'wrong' && !why.value.trim()) { why.classList.add('needed'); why.focus(); return; }
+    [right, wrong, clear].forEach(b => b.disabled = true);
+    const res = await api('/api/batch-mark', { batch: v.id, key: c.key, mark: m, why: m === 'wrong' ? why.value : '' });
+    [right, wrong, clear].forEach(b => b.disabled = false);
+    if (res.error) { toast(res.error, true); return; }
+    c.mark = m; c.mark_why = m === 'wrong' ? why.value : null;
+    n.className = 'dk-card' + (m ? ' ' + m : '');
+    why.hidden = m !== 'wrong';
+    right.setAttribute('aria-pressed', String(m === 'right'));
+    wrong.setAttribute('aria-pressed', String(m === 'wrong'));
+    repaint();
+  };
+  right.onclick = () => mark('right');
+  wrong.onclick = () => mark('wrong');
+  clear.onclick = () => mark(null);
+  why.onkeydown = e => { if (e.key === 'Enter') mark('wrong'); };
+  right.setAttribute('aria-pressed', String(c.mark === 'right'));
+  wrong.setAttribute('aria-pressed', String(c.mark === 'wrong'));
+  row.append(right, wrong, clear);
+  n.append(row, why);
+  return n;
+}
+
+/* ── 4. The health map ──────────────────────────────────────────────────── */
+const HEALTH_SAYS = {
+  logo: 'A logo file on the board for the company. The nightly finds them; a guessed one waits in Logos to check.',
+  website: 'A website on file that is theirs and not a hijacked domain.',
+  board: 'A job board the board reads, or a place they post with nothing to capture. A company that has no public board at all is finished, not missing, and is left out of the share.',
+  writeup: 'A write-up live on the company page. A draft waiting in Write-ups to check does not count.',
+  founded: 'A founding year on file.'};
+
+const shade = s => s == null ? 'dk-h0' : s >= 90 ? 'dk-h0' : s >= 75 ? 'dk-h1' : s >= 60 ? 'dk-h2'
+  : s >= 45 ? 'dk-h3' : s >= 30 ? 'dk-h4' : 'dk-h5';
+
+async function showHealth(opts) {
+  opts = opts || {};
+  const { host, live } = dkEnter('health');
+  host.appendChild(el('h2', null, 'The health map'));
+  host.appendChild(el('p', 'lede', 'Each square is the share of a department’s companies that have it. '
+    + 'Darker is a gap. Open a square to see what closes it, and what it costs you.'));
+  const body = el('div'); host.appendChild(body);
+  body.appendChild(el('div', 'empty', 'reading every company…'));
+  const [h, qs] = await Promise.all([dkGet('/api/desk/health'), dkGet('/api/desk/questions')]);
+  if (!live()) return;
+  body.innerHTML = '';
+  if (h.error) { dkSay(body, h.error, true); return; }
+  DESK.health = h;
+  const left = el('div'); body.appendChild(left);
+  const right = el('div', 'dk-two'); right.style.marginTop = '22px'; body.appendChild(right);
+  const wrap = el('div', 'dk-scroll'); const t = el('table', 'dk-heat');
+  const hr = el('tr'); hr.appendChild(el('th', 'dep', 'Department'));
+  h.measures.forEach(m => hr.appendChild(el('th', null, m.label)));
+  hr.appendChild(el('th', null, 'Hiring'));
+  t.appendChild(el('thead')).appendChild(hr);
+  const tb = el('tbody');
+  [h.whole].concat(h.departments).forEach((d, i) => {
+    const tr = el('tr');
+    const dep = el('td', 'dep'); dep.appendChild(el('strong', null, d.sector));
+    dep.appendChild(el('div', 'kv', fmtN(d.n) + ' companies')); tr.appendChild(dep);
+    h.measures.forEach(m => {
+      const c = d.cells[m.key];
+      const td = el('td', shade(c.share));
+      const b = el('button');
+      b.type = 'button';
+      b.appendChild(el('b', null, c.share == null ? '—' : c.share + '%'));
+      b.appendChild(el('small', null, c.without ? fmtN(c.without) + ' without' : 'all'));
+      b.setAttribute('aria-label', `${d.sector}, ${m.label}: ${c.share}% (${c.have} of ${c.of})`);
+      b.onclick = () => showHealthCell(i === 0 ? '' : d.sector, m.key);
+      td.appendChild(b); tr.appendChild(td);
+    });
+    tr.appendChild(el('td', 'ctx', (d.hiring_share == null ? '—' : d.hiring_share + '%') + ' · ' + fmtN(d.hiring)));
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb); wrap.appendChild(t); left.appendChild(wrap);
+  const lg = el('div', 'dk-legend');
+  [['dk-h0', '90 to 100%'], ['dk-h1', '75 to 89'], ['dk-h2', '60 to 74'], ['dk-h3', '45 to 59'],
+   ['dk-h4', '30 to 44'], ['dk-h5', 'under 30']].forEach(([c, l]) => lg.appendChild(el('span', c, l)));
+  left.appendChild(lg);
+  left.appendChild(el('p', 'kv', 'Hiring is context, not a gap: the share of the department’s companies with an open role. '
+    + 'A company with no public board at all is left out of the board column: '
+    + fmtN(h.whole.board_absent) + ' of them across the board.'));
+  const g = dkSection(right, 'Biggest gaps', 'The lowest square in each department, lowest first.');
+  g.style.margin = '0';
+  h.gaps.forEach((x, i) => {
+    const d = el('div', 'dk-q');
+    d.appendChild(el('div', 'tag', (i + 1) + ' · ' + x.sector));
+    d.appendChild(el('h4', null, `${x.label}: ${x.share}%`));
+    d.appendChild(el('p', 'kv', `${fmtN(x.without)} of ${fmtN(x.of)} have none; ${fmtN(x.hiring_without)} of those are hiring.`));
+    const row = el('div', 'row');
+    const o = el('button', 'act go', 'What closes it'); o.onclick = () => showHealthCell(x.sector, x.measure);
+    row.appendChild(o); d.appendChild(row); g.appendChild(d);
+  });
+  const only = dkSection(right, 'Only you can decide these');
+  dkQuestions(only, qs, { compact: true, onDone: () => showHealth() });
+  if (opts.sector) {
+    const low = h.gaps.find(x => x.sector === opts.sector);
+    if (low) showHealthCell(opts.sector, low.measure);
+  }
+}
+
+async function showHealthCell(sector, measure) {
+  const { host, live } = dkEnter('healthcell');
+  const back = el('button', 'dk-back', '← The health map');
+  back.onclick = () => showHealth(); host.appendChild(back);
+  let h = DESK.health;
+  if (!h) { h = await dkGet('/api/desk/health'); if (!live()) return; DESK.health = h; }
+  const d = sector ? h.departments.find(x => x.sector === sector) : h.whole;
+  const m = h.measures.find(x => x.key === measure);
+  if (!d || !m) { dkSay(host, 'That square is not on the map.', true); return; }
+  const c = d.cells[measure];
+  host.appendChild(el('div', 'kv', (sector || 'The whole board') + ' · ' + m.label));
+  host.appendChild(el('h2', null, `${c.share}% · ${fmtN(c.have)} of ${fmtN(c.of)} companies`));
+  host.appendChild(el('p', 'lede', `${fmtN(c.without)} do not, and ${fmtN(c.hiring_without)} of those are hiring. `
+    + `Across the whole board it is ${h.whole.cells[measure].share}%.`));
+  const cols = el('div', 'dk-cols'); host.appendChild(cols);
+  const left = el('div'), right = el('div'); cols.append(left, right);
+  const what = dkSection(left, 'What this square counts');
+  what.appendChild(el('p', 'kv', HEALTH_SAYS[measure] || ''));
+  const rest = dkSection(left, 'The rest of the row');
+  const ul = el('ul', 'kv');
+  h.measures.forEach(x => {
+    const li = el('li', null, `${x.label}: ${d.cells[x.key].share}%` + (x.key === measure ? ' (this one)' : ''));
+    ul.appendChild(li);
+  });
+  rest.appendChild(ul);
+  const lev = dkSection(right, 'What closes it', 'Each lever, and what it costs you.');
+  lev.appendChild(el('div', 'empty', 'reading the piles…'));
+  const p = await dkGet('/api/desk/piles?queue=' + encodeURIComponent(m.closes)
+    + (sector ? '&sector=' + encodeURIComponent(sector) : ''));
+  if (!live()) return;
+  lev.innerHTML = ''; lev.appendChild(el('h3', null, 'What closes it'));
+  if (p.error) { dkSay(lev, p.error, true); return; }
+  /* only a pile that moves THIS square: dismissing a refused write-up
+     closes a row, and puts no write-up on a page */
+  const live_ = (p.piles || []).filter(x => x.n && x.closes === measure);
+  if (live_.length) {
+    live_.forEach(x => {
+      const q = el('div', 'dk-q');
+      q.appendChild(el('div', 'tag', 'A pile in ' + p.label));
+      q.appendChild(el('h4', null, x.label));
+      q.appendChild(el('p', 'kv', dkPileState(x) + `. Your time: about ${fmtN(x.sample_n)} minute(s), a card a minute.`));
+      const r = el('div', 'row'); const b = el('button', 'act go', x.read_all ? 'Read them all' : 'Read the sample');
+      b.onclick = () => showBatch(x.id); r.appendChild(b); q.appendChild(r); lev.appendChild(q);
+    });
+  } else {
+    lev.appendChild(el('p', 'kv', (p.why ? p.label + ' is not ruled as a pile. ' + p.why
+      : 'Nothing in ' + p.label + ' is a pile for ' + (sector || 'the board') + ' today.')));
+  }
+  const q = el('div', 'dk-q');
+  q.appendChild(el('div', 'tag', 'One by one'));
+  q.appendChild(el('h4', null, 'Open ' + p.label + (sector ? ' for ' + sector : '')));
+  q.appendChild(el('p', 'kv', 'About a minute a row. Each one settled here moves this square by about '
+    + (c.of ? (100 / c.of).toFixed(1) : '?') + ' points.'));
+  const r = el('div', 'row'); const b = el('button', 'act', 'Open the queue');
+  b.onclick = () => goQueue(m.closes, sector); r.appendChild(b); q.appendChild(r); lev.appendChild(q);
+  if (live_.length && c.of) {
+    const after = dkSection(right, 'What the square reads after');
+    const ul2 = el('ul', 'kv');
+    live_.forEach(x => {
+      const gain = Math.min(c.without, x.n);
+      ul2.appendChild(el('li', null, `If "${x.label}" is accepted and every row settles this square: `
+        + `${Math.round(100 * (c.have + gain) / c.of)}% (${fmtN(c.have + gain)} of ${fmtN(c.of)}). `
+        + 'Some rows may be companies that already have it.'));
+    });
+    after.appendChild(ul2);
+  }
+}
+
+/* ── 5. Ask the desk ────────────────────────────────────────────────────── */
+async function showAsk(opts) {
+  opts = opts || {};
+  const { host, live } = dkEnter('ask');
+  host.appendChild(el('h2', null, 'Say what to do.'));
+  host.appendChild(el('p', 'lede', 'Type a decision the way you would say it in chat. The desk shows how '
+    + 'it read your words and where that leads; nothing is written until you press a button with the number on it.'));
+  const form = el('form', 'dk-ask');
+  const box = el('input', 'txt'); box.placeholder = 'accept the write-ups for Public Safety';
+  box.setAttribute('aria-label', 'Your decision');
+  const go = el('button', 'act go', 'Preview'); go.type = 'submit';
+  form.append(box, go); host.appendChild(form);
+  const tries = el('div', 'row');
+  ['accept the write-ups for Public Safety', 'show me the duplicates', 'launch the site',
+   'accept the founding years', 'show me write-ups for Courts & Justice', 'undo']
+    .forEach(t => { const b = el('button', 'act mute', t); b.type = 'button'; b.onclick = () => { box.value = t; preview(); }; tries.appendChild(b); });
+  host.appendChild(tries);
+  const out = el('div', 'dk-sec'); out.style.marginTop = '16px'; host.appendChild(out);
+  const preview = async () => {
+    const text = box.value.trim(); if (!text) { box.focus(); return; }
+    out.innerHTML = ''; out.appendChild(el('div', 'empty', 'reading it…'));
+    const r = await api('/api/desk-ask', { text });
+    if (!live()) return;
+    out.innerHTML = '';
+    if (r.error) { dkSay(out, /unknown action/.test(r.error) ? 'This desk was started before Ask the desk was built. Stop it and start it again.' : r.error, true); return; }
+    out.appendChild(el('div', 'kv', 'You said: “' + text + '”'));
+    const read = el('div', 'dk-read');
+    const chip = (k, v) => { if (!v) return; const c = el('span', 'chip'); c.appendChild(document.createTextNode(k + ' ')); c.appendChild(el('b', null, v)); read.appendChild(c); };
+    const rd = r.read || {};
+    chip('do', rd.verb); chip('queue', rd.queue_label); chip('department', rd.sector);
+    chip('company', rd.company && rd.company.name); chip('view', rd.view); chip('about', rd.about);
+    if (!read.children.length) read.appendChild(el('span', 'chip', 'nothing the desk knows'));
+    out.appendChild(el('h3', null, 'The desk read that as')); out.appendChild(read);
+    out.appendChild(el('p', null, r.say || ''));
+    if (r.piles && r.piles.length) {
+      const list = el('div'); dkPiles(list, [{ label: rd.queue_label || '', piles: r.piles }]); out.appendChild(list);
+    }
+    if (r.go) { const b = el('button', 'act go', 'Open it'); b.onclick = () => dkGo(r.go); out.appendChild(Object.assign(el('div', 'row'))).appendChild(b); }
+  };
+  form.onsubmit = e => { e.preventDefault(); preview(); };
+  const cols = el('div', 'dk-cols'); host.appendChild(cols);
+  const left = el('div'), right = el('div'); cols.append(left, right);
+  const lsec = dkSection(left, 'Ledger', 'Every decision, newest first, with what it changed. Undo takes back a whole decision, all of it or none.');
+  lsec.id = 'dk-ledger';
+  const wsec = dkSection(right, 'Waiting on you');
+  const [led, qs] = await Promise.all([dkGet('/api/desk/ledger?limit=80'), dkGet('/api/desk/questions')]);
+  if (!live()) return;
+  if (led.error) dkSay(lsec, led.error, true); else dkLedger(lsec, led.rows, { onUndo: () => showAsk({ ledger: true }) });
+  dkQuestions(wsec, qs, { compact: true, onDone: () => showAsk() });
+  if (opts.ledger) lsec.scrollIntoView({ block: 'start' }); else box.focus();
+}
 
 </script>
 </body>

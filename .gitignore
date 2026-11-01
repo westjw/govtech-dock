@@ -39,6 +39,8 @@ public/
 /data/claude_inbox.jsonl
 /data/claude_inbox.state.json
 /data/admin_shifts.jsonl
+# a batch's sample marks: the desk's own reading, not rulings (scripts/desk.py MARKS)
+/data/batch_marks.json
 
 # The desk publisher's own state, and the lock it shares with the admin
 # (scripts/publish.py). Local to this machine.

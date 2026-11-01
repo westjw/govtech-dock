@@ -648,7 +648,8 @@ rows all stay; only the counting changes.
 ## The admin backend
 
 `python3 scripts/admin.py`, then <http://127.0.0.1:8787>. It opens on the
-shift (below, "The shift"). Twenty-three queues,
+front door the desk toggle picked (below, "The five front doors"), the
+shift among them. Twenty-four queues,
 and `LABEL` in admin.py is the list (this paragraph said fourteen for a month,
 then twenty for another): Users, Write-ups to check, Agent proposals, Warm
 leads, Boards we found, Founding year, Wrong bucket, Vendor scope, Scope
@@ -1862,10 +1863,77 @@ recognition (#8 — sparingly, or it reads as spam).
   anything a spreadsheet could read as a formula neutralised, because
   company names arrive here from outside submissions.
 
-## The shift: the desk admin's front door (owner, 2026-10-23)
+## The five front doors, and the batch engine (owner, 2026-11-01)
+
+"so read 58 per batch instead of 5%? also build all 5 and just have a toggle
+where I can pick which one to use. make sure all of them are wired together."
+The five are round 2 of the admin canvas (claude.ai artifact
+CUsqeCcCC1E1fmePcWK4bm): 1 Waiting on you, 2 Morning brief, 3 Batches,
+4 Health map, 5 Ask the desk. The finding they answer, measured that day: the
+shift had never been run, the owner's rulings came in bursts (mostly in chat
+with Claude), and about 9,000 rows waited in 24 queues.
+- **The toggle** (`#dk-toggle`, under the header) picks the door the desk
+  opens on, remembered in this browser (`localStorage desk.view`, Waiting on
+  you until another is picked); the Shift is the sixth door. The nav's Desk
+  tab goes to the picked one.
+- **One core, `scripts/desk.py`, read by all five** through `/api/desk/*`
+  (questions, batches, batch, piles, health, brief, ledger) and the actions
+  batch-mark, batch-rule, batch-undo, desk-answer and desk-ask (read-only,
+  open). Every view draws the same question card, ledger, pile list and batch
+  screen, and opens queues through `goQueue` with the department, so a ruling
+  in one is the truth in the other four.
+- **Questions only the owner can answer** are computed (the launch, asked of
+  the site itself signed out, at most every half hour; submissions) or filed
+  in `data/owner_questions.json` by whoever found them, each answer naming
+  what happens next and the write it makes (`apply`): `not_a_supplier`, or
+  `ask_claude` (a line in Claude's inbox). Answering is journalled.
+- **The health map** counts by `page_belt.checklist`, the page sweep's own
+  definition; a company with no public board (coverage `absent`) is finished,
+  not a gap, and is left out of the board column. A square's levers are only
+  the piles that move THAT square (`closes`).
+- **The batch engine** (direction 3). A pile is one machine answer already
+  stored on a queue's rows, where the owner's rules allow ruling fast
+  (`PILES`); every other queue is in `NEVER` or `NEEDS_AGENT` with its reason,
+  and `check_every_queue_is_a_pile_or_says_why` makes a new queue choose.
+  Not batched, by rule: No board found and Scrub (a scan never proves
+  absence), Acquisitions (slow reading), Vendor scope (no stored answer, and
+  the SLED-only ruling), Duplicates, Boards we found, people.
+- **The sample is sized by what it proves, not by a percentage**: zero-defect
+  acceptance sampling at 95% (hypergeometric). A pile that reaches the public
+  board reads about 58 cards with none wrong (under 5% wrong); a record-only
+  pile about 29 (under 10%); 20 rows or fewer are read whole, and accepting a
+  read-all pile takes only the cards marked right. The first wrong card on a
+  sampled pile leaves only Send back. The draw ranks rows by a hash of batch
+  and key, so a row leaving does not redraw cards already read.
+- **Accept runs every row through the applier its own button uses**
+  (`APPLIERS`), with saves held in memory (`held_writes`: admin.read,
+  read_companies, save_*, write_atomic and agents.load, which reads the
+  proposals file off disk and would otherwise keep only the last row), then a
+  `landed` test per row, then ONE journal entry per file (chunked under
+  RUNAWAY), force only because `expect_n` matches the count shown. Every ruling
+  record it wrote says `via: batch:<id>`; `_ruling_stamps` counts a batch
+  once, and the agree-rate, the why meter and the shift tally skip `via`
+  records (check_admin_game: a batch must not buy those numbers with volume).
+- **Marks are not journalled**, deliberately: up to 58 a pile would push real
+  rulings out of the 500-entry live journal. They live in the gitignored
+  `data/batch_marks.json`, and the ruling copies the sample's marks into the
+  journalled `data/batch_audits.json`.
+- **Batch undo is field by field** (`act_batch_undo`): the nightly rewrites
+  hiring on every company, so act_undo's whole-record test refused every
+  batch by morning. A field the batch wrote and something changed since is
+  named and nothing is written; records the batch added are removed under
+  `journal.UNDOING_ADDS`, which lifts RUNAWAY for exactly those keys.
+- Guards: `check_a_sample_proves_what_it_says`,
+  `check_every_queue_is_a_pile_or_says_why`,
+  `check_a_batch_is_ruled_on_its_sample_and_undone_whole` (the real appliers
+  in a sandbox) and `check_the_batch_screen_runs_right_under_its_own_script`
+  (harness cases 14-18).
+
+## The shift: the desk admin's front door until 2026-11-01 (owner, 2026-10-23)
 
 "build option 5 for the admin": the fifth option of the admin canvas, "free
-rein: a shift on the show floor". The admin opens on it (`showShiftHome`);
+rein: a shift on the show floor". The admin opened on it until the five front
+doors (above); it is the toggle's sixth door now (`showShiftHome`);
 Start here is a button on it and a tab, and every queue is one click away
 under "Or work one queue".
 - **A shift is a box the person picks** (10, 20 or 30 minutes) **and a hand

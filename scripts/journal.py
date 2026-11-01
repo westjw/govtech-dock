@@ -79,6 +79,13 @@ WRITTEN: list[str] = []
 # is marked `desk`, and every entry after the first carries the first's id as
 # `same_ruling_as`, so one click that writes two files counts as one ruling.
 DESK = False
+# KEYS A BATCH UNDO IS TAKING BACK OUT: records that batch itself added
+# (desk.act_batch_undo). Removing them is the reverse of an addition, and an
+# addition never counted toward RUNAWAY, so neither may its undo - otherwise
+# a batch of 1,811 supplier rulings could be written and never taken back,
+# because removing them is 90% of the file (2026-11-01). Set only for the
+# length of one record() call, and it lifts RUNAWAY for exactly these keys.
+UNDOING_ADDS: set = set()
 
 
 # --- WHAT COUNTS AS A RECORD, PER FILE ------------------------------------
@@ -328,7 +335,8 @@ def check(name: str, before, after, force: bool = False) -> tuple[dict, str | No
     # destruction.
     was = snapshot(before, name)
     total = max(len(was), 1)
-    rewritten = sum(1 for c in changes.values() if c["before"] is not None)
+    rewritten = sum(1 for k, c in changes.items() if c["before"] is not None
+                    and not (c["after"] is None and k in UNDOING_ADDS))
     share = rewritten / total
     if total >= RUNAWAY_FLOOR and share > RUNAWAY:
         return changes, (

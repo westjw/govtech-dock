@@ -2303,7 +2303,11 @@ def agree_rate() -> dict:
         seen.append((_ts(at), (conf or "unstated"), chose == prop))
 
     for rec in read("placement_rulings.json", {}).values():
-        if not isinstance(rec, dict):
+        # A BATCH-RULED RECORD IS NOT AN AGREEMENT. A batch takes the
+        # proposal on every row, and the person read a sample, not the
+        # row: counting those would hand the guesser an agree-rate of 100%
+        # it never earned (scripts/desk.py; check_admin_game).
+        if not isinstance(rec, dict) or rec.get("via"):
             continue
         prop = _seen_proposal(rec)
         if not prop:
@@ -2315,7 +2319,7 @@ def agree_rate() -> dict:
     # those would measure only the cases where the guesser was already
     # trusted, which is how a model grades itself.
     for q, _k, rec in dismissal_records():
-        if q != "miscategorized":
+        if q != "miscategorized" or rec.get("via"):
             continue
         prop = _seen_proposal(rec)
         was = (rec.get("saw") or {}).get("was")
@@ -2600,7 +2604,8 @@ def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
                          ("placement_rulings.json", "miscategorized"),
                          ("scope_decisions.json", "scope")):
         for rec in read(fname, {}).values():
-            if not isinstance(rec, dict):
+            # a batch is ONE ruling, counted below, not one per record
+            if not isinstance(rec, dict) or rec.get("via"):
                 continue
             if mine_only and not _is_person(rec.get("by")):
                 continue
@@ -2608,6 +2613,8 @@ def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
             if t:
                 out.append((t, queue))
     for q, _k, rec in dismissal_records():
+        if rec.get("via"):
+            continue
         if mine_only and not _is_person(rec.get("by")):
             continue
         t = _ts(rec.get("at"))
@@ -2615,6 +2622,11 @@ def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
             out.append((t, q))
     for t, queue, _eid in _journal_rulings(mine_only):
         out.append((t, queue))
+    import desk
+    for r in desk.batch_rulings():
+        t = _ts(r.get("at"))
+        if t and (not mine_only or _is_person(r.get("by"))):
+            out.append((t, r.get("queue")))
     return sorted(out)
 
 
@@ -2815,13 +2827,15 @@ def _game(counts: dict) -> dict:
     done_by_queue = rulings_by_queue()
     for fname, queue in sources:
         for r in read(fname, {}).values():
-            if not isinstance(r, dict) or not _is_person(r.get("by")):
+            # a batch's records all carry the batch's one why: counting them
+            # would buy the meter with volume (scripts/desk.py)
+            if not isinstance(r, dict) or not _is_person(r.get("by")) or r.get("via"):
                 continue
             total += 1
             if (r.get("why") or "").strip():
                 with_why += 1
     for _q, _k, entry in dismissal_records():
-        if _is_person(entry.get("by")):
+        if _is_person(entry.get("by")) and not entry.get("via"):
             total += 1
             if (entry.get("why") or "").strip():
                 with_why += 1
@@ -6098,7 +6112,7 @@ def shift_summary(since: str, companies, board, sector: str = "") -> dict:
     # still the one before the next
     props, plain = [], []
     for rec in read("placement_rulings.json", {}).values():
-        if not isinstance(rec, dict) or not _is_person(rec.get("by")):
+        if not isinstance(rec, dict) or not _is_person(rec.get("by")) or rec.get("via"):
             continue
         t, prop = _ts(rec.get("at")), _seen_proposal(rec)
         if t and prop:
@@ -6106,7 +6120,7 @@ def shift_summary(since: str, companies, board, sector: str = "") -> dict:
         elif t:
             plain.append((t, None))
     for q, _k, rec in dismissal_records():
-        if q != "miscategorized" or not _is_person(rec.get("by")):
+        if q != "miscategorized" or not _is_person(rec.get("by")) or rec.get("via"):
             continue
         t = _ts(rec.get("at"))
         if t and _seen_proposal(rec):
@@ -6271,8 +6285,27 @@ def shifts(limit: int = 6) -> list:
     return out[::-1][:limit]
 
 
+def act_desk_ask(body: dict) -> dict:
+    """Ask the desk: read a typed decision and say where it leads. Writes
+    nothing, so it needs no code (OPEN_ACTIONS)."""
+    import desk
+    return desk.ask(body.get("text") or "")
+
+
+def _desk(name):
+    """The five front doors' writes live in scripts/desk.py; imported on the
+    call so a desk.py edit shows the stale banner like any other script."""
+    def run(body):
+        import desk
+        return getattr(desk, name)(body)
+    return run
+
+
 ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "logo-accept": act_logo_accept, "logo-refuse": act_logo_refuse,
+           "batch-mark": _desk("act_batch_mark"), "batch-rule": _desk("act_batch_rule"),
+           "batch-undo": _desk("act_batch_undo"), "desk-answer": _desk("act_desk_answer"),
+           "desk-ask": act_desk_ask,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
@@ -6362,11 +6395,11 @@ CODE_HEADER = "X-Admin-Code"
 # though a ruling were on its way (review, 2026-10-24). Sent with the queue
 # counts so the page has one list.
 READ_ONLY_POSTS = ("search-companies", "inspect-submission", "verify-website",
-                   "verify-board", "worklist")
+                   "verify-board", "worklist", "desk-ask")
 
 OPEN_ACTIONS = {"capture", "search-companies", "submit",
                 "inspect-submission", "verify-website", "verify-board",
-                "worklist", "task-note", "identify"}
+                "worklist", "task-note", "identify", "desk-ask"}
 
 
 def _mint_code() -> str:
@@ -6909,6 +6942,32 @@ class Handler(http.server.BaseHTTPRequestHandler):
         return self._send(f.read_bytes(), kind)
 
     def _api_get(self, path: str):
+        if path.startswith("/api/desk/"):
+            # THE FIVE FRONT DOORS (owner, 2026-11-01): one core, scripts/desk.py,
+            # read by every view, so a ruling in one is the same in all five.
+            import desk
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            arg = lambda k: (qs.get(k) or [""])[0] or None
+            what = path[len("/api/desk/"):]
+            if what == "questions":
+                return self._json(desk.questions())
+            if what == "batches":
+                return self._json(desk.batches(sector=arg("sector")))
+            if what == "batch":
+                out = desk.batch(arg("id") or "")
+                return self._json(out, 404 if out.get("error") else 200)
+            if what == "piles":
+                q = arg("queue") or ""
+                return self._json({"piles": desk.pile_counts(q, arg("sector")),
+                                   "label": LABEL.get(q, q),
+                                   "why": desk.NEVER.get(q) or desk.NEEDS_AGENT.get(q)})
+            if what == "health":
+                return self._json(desk.health())
+            if what == "brief":
+                return self._json(desk.brief())
+            if what == "ledger":
+                return self._json(desk.ledger(limit=int(arg("limit") or 60)))
+            return self._json({"error": "not found"}, 404)
         if path == "/api/triage":
             companies, board = read_companies(), read("board.json", {})
             # THE PAGE SAYS "every count below is <sector> only" and this

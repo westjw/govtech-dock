@@ -37680,8 +37680,13 @@ def check_the_shift_screen_keeps_the_belts_rules() -> int:
     for word in ("streak", "great job", "well done", "personal best", "level up", "earned"):
         if word in code.lower():
             bad += fail(f"the shift says {word!r}; no achievement language")
-    if "__start: showStart" not in full or "  showShiftHome();\n" not in script:
-        bad += fail("the admin no longer opens on the shift, or a department change drops Start here")
+    # THE FRONT DOOR IS THE ONE THE TOGGLE PICKED (owner, 2026-11-01: "build
+    # all 5 and just have a toggle"): boot opens the desk, and the shift is
+    # one of the doors it can pick.
+    if "__start: showStart" not in full or "  showDeskHome();\n" not in script \
+            or "shift: () => showShiftHome()" not in full:
+        bad += fail("the admin no longer opens on the desk the toggle picked, the shift is "
+                    "no longer one of its doors, or a department change drops Start here")
     if node:
         def cut(n: str) -> str:
             i = code.find(f"const {n} =")
@@ -37926,6 +37931,299 @@ def check_the_shift_runs_right_under_its_own_script() -> int:
     if not e["sent"] or e["sent"]["skipped"] != 1 or "ruled" in e["sent"] \
             or "on the record, counted by the server" not in e["says"]:
         bad += fail(f"End shift sent the page's count or did not show the server's record: {e}")
+    return bad
+
+
+
+# ── THE FIVE FRONT DOORS AND THE BATCH ENGINE (owner, 2026-11-01) ──────────
+# scripts/desk.py. One press rules a pile, so each promise the module makes in
+# its docstring is held here, driven through the real appliers in a sandbox.
+
+def check_a_sample_proves_what_it_says() -> int:
+    """sample_size against an independent count: the smallest n whose clean
+    draw is under 5% likely when the pile is at its tolerance, and the whole
+    pile at READ_ALL_AT or fewer. A flat percentage is what this replaced."""
+    import math
+    import desk
+    errors = 0
+
+    def need(n, tol):
+        if n <= 20:                       # the owner's "read it whole" line, said here, not read back
+            return n
+        bad = max(1, math.ceil(tol * n))
+        for k in range(1, n + 1):
+            if n - bad < k or math.comb(n - bad, k) / math.comb(n, k) <= 0.05:
+                return k
+        return n
+
+    for n in (1, 12, 20, 21, 44, 59, 66, 134, 214, 1008, 2036):
+        for reach, tol in (("public", 0.05), ("record", 0.10)):
+            if desk.sample_size(n, reach) != need(n, tol):
+                errors += fail(f"sample_size({n}, {reach}) = {desk.sample_size(n, reach)}, "
+                               f"the count says {need(n, tol)}")
+    if not 50 <= desk.sample_size(2036, "public") <= 60:
+        errors += fail("a big public pile no longer reads about 58 cards")
+    keys = [f"k{i}" for i in range(300)]
+    a = desk.draw("q:p:all", keys, 30)
+    b = desk.draw("q:p:all", [k for k in keys if k != "k7"], 30)
+    if len(set(a) & set(b)) < 29:
+        errors += fail("removing one row redrew the sample: cards already read would be lost")
+    if a == keys[:30] or a == sorted(keys)[:30] or a == desk.draw("other:p:all", keys, 30):
+        errors += fail("the sample is the first rows, or the same rows for every pile: not a draw")
+    return errors
+
+
+def check_every_queue_is_a_pile_or_says_why() -> int:
+    """Every queue is either worked in piles or named in NEVER / NEEDS_AGENT
+    with its reason, every pile's applier exists, the owner column covers
+    every queue, and the writes desk.py makes to disk are the journalled
+    batch and its undo, or the marks (named, not rulings)."""
+    import ast
+    import admin
+    import desk
+    errors = 0
+    piled = {s["queue"] for s in desk.PILES}
+    for q in admin.QUEUES:
+        n = (q in piled) + (q in desk.NEVER) + (q in desk.NEEDS_AGENT)
+        if n != 1:
+            errors += fail(f"queue {q!r} is in {n} of PILES / NEVER / NEEDS_AGENT; a new "
+                           f"queue must say whether it is batched and why not")
+        if q not in desk.WHO:
+            errors += fail(f"queue {q!r} has no owner in desk.WHO")
+    for q in piled | set(desk.NEVER) | set(desk.NEEDS_AGENT):
+        if q not in admin.QUEUES:
+            errors += fail(f"desk names queue {q!r}, which admin.QUEUES no longer has")
+    for s in desk.PILES:
+        if s["apply"] not in desk.APPLIERS:
+            errors += fail(f"pile {s['queue']}:{s['pile']} applies {s['apply']!r}, which is not an applier")
+        if s["reach"] not in desk.TOLERANCE or not s.get("check") or not callable(s.get("landed")):
+            errors += fail(f"pile {s['queue']}:{s['pile']} lacks a reach, a check or a landed test")
+    if "acquisitions" in piled or "boards" in piled or "scrub" in piled:
+        errors += fail("a queue the owner reads one by one is batched")
+    src = (ROOT / "scripts" / "desk.py").read_text()
+    if re.search(r"^DATA\s*=", src, re.M):
+        errors += fail("desk.py copies admin.DATA at import, so the sandbox cannot move it")
+    allowed = {("act_batch_rule", None), ("act_batch_undo", None), ("act_batch_mark", "MARKS")}
+    for fn in ast.walk(ast.parse(src)):
+        if not isinstance(fn, ast.FunctionDef):
+            continue
+        for node in ast.walk(fn):
+            if (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
+                    and node.func.attr == "write_atomic"):
+                tgt = node.args[0].id if node.args and isinstance(node.args[0], ast.Name) else None
+                if (fn.name, None) in allowed and "journal.record(" in ast.get_source_segment(src, fn):
+                    continue
+                if (fn.name, tgt) in allowed:
+                    continue
+                errors += fail(f"desk.py:{node.lineno} {fn.name}() writes to disk outside the journal")
+    return errors
+
+
+def check_a_batch_is_ruled_on_its_sample_and_undone_whole() -> int:
+    """The engine end to end, through the desk's own appliers, in a sandbox:
+    no accept before the sample is read, none on a stale count, none past a
+    wrong card; one journal entry per file, every ruling record saying
+    `via`; ONE ruling to the counters and nothing to the agree-rate; an undo
+    that survives a nightly change to another field, refuses a change to a
+    field the batch wrote, and takes back additions RUNAWAY would refuse."""
+    import admin
+    import desk
+    import journal
+    errors = 0
+    real = json.loads((DATA / "companies.json").read_text())
+    schema = json.loads((DATA / "schema.json").read_text())
+    picks = [json.loads(json.dumps(c)) for c in real
+             if c.get("sector") == "General Gov" and c.get("category") != "Records"][:3]
+    target = next(s for s in schema["sectors"] if s["name"] == "Public Safety")
+    tcat = target["categories"][0]
+    sups = [{"supplier_id": f"sup-{i}"} for i in range(40)]
+    existing = {f"old-{i}": {"verdict": "theirs", "by": "owner"} for i in range(61)}
+    files = {"companies.json": picks, "schema.json": schema, "admin_dismissed.json": {},
+             "placement_rulings.json": {}, "supplier_rulings.json": existing,
+             "supplier_categories.json": {"suppliers": sups}}
+    mis_rows = [{"id": c["id"], "name": c["name"], "sector": c["sector"],
+                 "category": c["category"], "proposed_sector": "Public Safety",
+                 "proposed_category": tcat, "confidence": "high",
+                 "description": "x", "evidence": ["test"]} for c in picks]
+    sup_rows = [{"id": s["supplier_id"], "name": s["supplier_id"], "url": "https://x.example",
+                 "step1": "theirs", "sector": "General Gov"} for s in sups]
+    keep_q = dict(admin.QUEUES)
+    with _sandbox_admin(files) as tmp:
+        admin.QUEUES["miscategorized"] = lambda c, b: [
+            r for r in mis_rows if next(x for x in admin.read("companies.json", [])
+                                        if x["id"] == r["id"])["category"] != tcat]
+        admin.QUEUES["suppliers"] = lambda c, b: [
+            r for r in sup_rows if r["id"] not in admin.read("supplier_rulings.json", {})]
+        try:
+            def post(fn, body):
+                journal.WRITTEN.clear(); journal.DESK = True
+                try:
+                    return fn({**body, "by": "owner"})
+                finally:
+                    journal.DESK = False
+
+            bid = "miscategorized:high:all"
+            v = desk.batch(bid)
+            if v.get("n") != 3 or v.get("sample_n") != 3 or not v.get("read_all"):
+                errors += fail(f"the three-row pile reads as {v.get('n')}/{v.get('sample_n')}")
+            before = (tmp / "companies.json").read_text()
+            r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": 3})
+            if not r.get("error") or (tmp / "companies.json").read_text() != before:
+                errors += fail("a pile was accepted before its sample was read")
+            n0 = len(journal._entries())
+            for c in v["sample"]:
+                post(desk.act_batch_mark, {"batch": bid, "key": c["key"], "mark": "right"})
+            if len(journal._entries()) != n0:
+                errors += fail("a sample mark wrote a journal entry; 58 of them would push real "
+                               "rulings out of the 500 Undo can reach")
+            r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": 4})
+            if not r.get("stale"):
+                errors += fail("a pile was accepted on a count the person was not shown")
+            stamps0 = len(admin._ruling_stamps())
+            agree0 = admin.agree_rate()
+            r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": 3,
+                                           "why": "selftest pile"})
+            if r.get("error"):
+                errors += fail(f"a read pile was refused: {r['error']}")
+            entries = [journal.find(i) for i in journal.WRITTEN]
+            files_written = [e["file"] for e in entries if e.get("batch_ruling")]
+            if sorted(files_written) != ["companies.json", "placement_rulings.json"]:
+                errors += fail(f"the batch journalled {files_written}, not one entry per file")
+            pr = admin.read("placement_rulings.json", {})
+            if len(pr) != 3 or not all(str(x.get("via", "")).startswith("batch:") for x in pr.values()):
+                errors += fail("a batch-ruled record does not say it came from a batch")
+            if len(admin._ruling_stamps()) - stamps0 != 1:
+                errors += fail(f"a batch of 3 counted as {len(admin._ruling_stamps()) - stamps0} rulings")
+            if admin.agree_rate() != agree0:
+                errors += fail("a batch moved the agree-rate; it read a sample, not the rows")
+            rid = r.get("batch_ruling")
+            # the nightly rewrites hiring on every company: not a conflict
+            cos = admin.read("companies.json", [])
+            for c in cos:
+                c["hiring"] = {**(c.get("hiring") or {}), "checked": "2099-01-01"}
+            admin.write_atomic("companies.json", cos)
+            u = post(desk.act_batch_undo, {"batch_ruling": rid})
+            back = {c["id"]: c for c in admin.read("companies.json", [])}
+            if u.get("error") or any(back[c["id"]]["category"] != c["category"] for c in picks):
+                errors += fail(f"a batch could not be taken back after a nightly change: {u.get('error')}")
+            if any((back[c["id"]].get("hiring") or {}).get("checked") != "2099-01-01" for c in picks):
+                errors += fail("a batch undo reverted the nightly's change along with its own")
+            if admin.read("placement_rulings.json", {}):
+                errors += fail("a batch undo left its ruling records behind")
+            # again, and this time a person changes a field the batch wrote
+            v = desk.batch(bid)
+            r = post(desk.act_batch_rule, {"batch": bid, "ruling": "accept", "expect_n": v["n"]})
+            cos = admin.read("companies.json", [])
+            cos[0]["category"] = target["categories"][1]
+            admin.write_atomic("companies.json", cos)
+            snap = (tmp / "companies.json").read_text()
+            u = post(desk.act_batch_undo, {"batch_ruling": r.get("batch_ruling")})
+            if not u.get("error") or (tmp / "companies.json").read_text() != snap:
+                errors += fail("a batch undo overwrote a field changed after the batch")
+
+            # TWO ROWS OF ONE FILE THAT ITS APPLIER READS OFF DISK: agents.load
+            # reads agent_proposals.json directly, and a batch that held only
+            # admin's saves kept the last row's change and lost the first
+            import agents
+            keep_store = agents.STORE
+            agents.STORE = tmp / "agent_proposals.json"
+            store = {f"read:{c['id']}": {"kind": "read", "id": c["id"], "status": "pending",
+                                          "none_found": True, "postings": [], "confidence": "medium",
+                                          "by": "selftest", "at": "2026-11-01T00:00:00"}
+                     for c in picks[:2]}
+            agents.STORE.write_text(json.dumps(store))
+            admin.QUEUES["proposals"] = lambda c, b: [
+                {"key": k, "id": p["id"], "kind": "read", "none_found": True, "warn": None,
+                 "sector": "General Gov", "name": p["id"]}
+                for k, p in agents.load().items() if p.get("status") == "pending"]
+            try:
+                pb = "proposals:reads-empty:all"
+                for c in desk.batch(pb)["sample"]:
+                    post(desk.act_batch_mark, {"batch": pb, "key": c["key"], "mark": "right"})
+                r = post(desk.act_batch_rule, {"batch": pb, "ruling": "accept", "expect_n": 2})
+                got = json.loads(agents.STORE.read_text())
+                if r.get("error") or [p.get("status") for p in got.values()] != ["accepted", "accepted"]:
+                    errors += fail(f"two rows of the proposals file did not both land: "
+                                   f"{r.get('error') or [p.get('status') for p in got.values()]}")
+            finally:
+                agents.STORE = keep_store
+
+            # a big pile: a wrong card stops it; accepted, its 40 additions are
+            # 40% of a 101-record file, which RUNAWAY refuses to remove - except
+            # as the undo of the batch that added them
+            sb = "suppliers:theirs:all"
+            sv = desk.batch(sb)
+            if sv["read_all"] or sv["sample_n"] >= 40:
+                errors += fail("a 40-row pile is read whole")
+            for i, c in enumerate(sv["sample"]):
+                post(desk.act_batch_mark, {"batch": sb, "key": c["key"],
+                                           "mark": "wrong" if i == 0 else "right",
+                                           "why": "selftest: not theirs" if i == 0 else ""})
+            r = post(desk.act_batch_rule, {"batch": sb, "ruling": "accept", "expect_n": 40})
+            if not r.get("error") or len(admin.read("supplier_rulings.json", {})) != 61:
+                errors += fail("a sampled pile with a wrong card was accepted")
+            post(desk.act_batch_mark, {"batch": sb, "key": sv["sample"][0]["key"], "mark": "right"})
+            r = post(desk.act_batch_rule, {"batch": sb, "ruling": "accept", "expect_n": 40})
+            if r.get("error") or len(admin.read("supplier_rulings.json", {})) != 101:
+                errors += fail(f"a read supplier pile did not land: {r.get('error')}")
+            u = post(desk.act_batch_undo, {"batch_ruling": r.get("batch_ruling")})
+            if u.get("error") or len(admin.read("supplier_rulings.json", {})) != 61:
+                errors += fail(f"the undo of 40 additions was refused or partial: {u.get('error')}")
+            if journal.UNDOING_ADDS:
+                errors += fail("journal.UNDOING_ADDS was left set after an undo")
+            _ch, ref = journal.check("supplier_rulings.json",
+                                     {**existing, **{f"x{i}": {} for i in range(40)}}, existing, True)
+            if not ref:
+                errors += fail("RUNAWAY no longer refuses removing 40% of a file outside a batch undo")
+        finally:
+            admin.QUEUES.clear(); admin.QUEUES.update(keep_q)
+    return errors
+
+
+
+def check_the_batch_screen_runs_right_under_its_own_script() -> int:
+    """The five front doors' screens, run as admin.html's own script in
+    scripts/admin_shift_harness.mjs (cases 14-18): Accept stays shut until
+    every sample card is marked and sends the count shown; a Wrong is not
+    sent without its line and leaves a sampled pile only Send back; a
+    read-all pile takes the cards marked right; the ledger's Undo sends a
+    batch to batch-undo and a ruling to undo; the toggle draws all six doors
+    and a question's answer carries its id, its key and the why typed."""
+    import shutil
+
+    if not shutil.which("node"):
+        return fail("node is not installed; the desk's page cannot be run")
+    r = subprocess.run(["node", str(ROOT / "scripts" / "admin_shift_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    try:
+        out = json.loads(r.stdout)
+    except json.JSONDecodeError:
+        return fail("the desk harness did not run: " + (r.stderr.strip().splitlines() or ["?"])[-1])
+    bad = 0
+    a = out.get("a_pile_opens_only_when_read") or {}
+    if a.get("cards") != 3 or [s["accept"] for s in a.get("steps", [])] != ["shut", "shut", "shut", "open"]:
+        bad += fail(f"Accept opened before every sample card was marked: {a}")
+    if (a.get("rule") or {}).get("expect_n") != 50 or (a.get("rule") or {}).get("ruling") != "accept":
+        bad += fail(f"Accept did not send the count the person was shown: {a.get('rule')}")
+    w = out.get("a_wrong_card_sends_the_pile_back") or {}
+    if w.get("sent_before_line") != 0 or (w.get("wrong") or {}).get("why") != "a listing site":
+        bad += fail(f"a Wrong was sent without its line, or lost it: {w}")
+    if (w.get("state") or {}).get("accept") != "shut" or (w.get("rule") or {}).get("ruling") != "send_back":
+        bad += fail(f"a sampled pile with a wrong card could still be accepted: {w}")
+    ra = out.get("a_read_all_pile_takes_the_right_ones") or {}
+    if ra.get("accept") != "open" or "2 marked right" not in (ra.get("label") or ""):
+        bad += fail(f"a read-all pile does not take only the cards marked right: {ra}")
+    l = out.get("the_ledger_undoes_the_right_way") or {}
+    if l.get("sent") != [["batch-undo", {"batch_ruling": "suppliers:theirs:all#1"}],
+                         ["undo", {"entries": ["2026-11-01#3", "2026-11-01#4"]}]]:
+        bad += fail(f"the ledger's Undo sent the wrong request: {l.get('sent')}")
+    t = out.get("the_toggle_and_a_question") or {}
+    if [v[0] for v in t.get("views") or []] != ["1 Waiting on you", "2 Morning brief", "3 Batches",
+                                               "4 Health map", "5 Ask the desk", "Shift"] \
+            or [v[1] for v in t.get("views") or []].count("true") != 1:
+        bad += fail(f"the toggle does not draw the six doors with one in use: {t.get('views')}")
+    if t.get("answer") != {"id": "merit-website", "answer": "no", "why": "their logo is Aspire's"}:
+        bad += fail(f"a question's answer did not carry its id, key and why: {t.get('answer')}")
     return bad
 
 
@@ -38661,6 +38959,10 @@ def main() -> int:
     errors += check_the_merge_keeps_both_sides_record_by_record()
     errors += check_the_nightly_resolver_carries_the_crawl_onto_a_desk_publish()
     errors += check_a_logo_both_sides_wrote_resolves_to_upstream()
+    errors += check_a_sample_proves_what_it_says()
+    errors += check_every_queue_is_a_pile_or_says_why()
+    errors += check_a_batch_is_ruled_on_its_sample_and_undone_whole()
+    errors += check_the_batch_screen_runs_right_under_its_own_script()
     errors += check_the_publisher_publishes_the_desk_and_only_the_desk()
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_zero_is_only_printed_when_a_board_was_read()
