@@ -47,12 +47,21 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-27",
    "headline": "Building intent-based access control for AI agents",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/en-us/blog/building-intent-based-access-control-for-ai-agents"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Proof-of-concept exploit released for PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.sophos.com/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
   },
   {
    "date": "2026-10-26",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Proof-of-concept exploit released for PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
    "kind": "product",
@@ -73,17 +82,8 @@
    "url": "https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
   },
   {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Proof-of-concept exploit released for PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
-   "kind": "product",
-   "kind_rule": "released",
-   "url": "https://www.sophos.com/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
-  },
-  {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "BRONZE SANDCASTLE deploys modified Meterpreter shells",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "ConnectWise Cloud Backup application abused in cross-tenant token sweep",
    "kind": "press",

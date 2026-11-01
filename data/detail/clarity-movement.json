@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Understanding IAQM dust monitoring guidance: How to create a compliant dust management plan (DMP)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clarity.io/blog/understanding-iaqm-dust-monitoring-guidance-how-to-create-a-compliant-dust-management-plan-dmp"
+  },
+  {
    "date": "2026-10-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Sulfur dioxide monitoring 101: What SO2 is and how to measure it",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clarity.io/blog/wildfire-air-quality-sensor-expansion-act-of-2026-a-proposed-bill-for-expanded-wildfire-smoke-air-quality-monitoring"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Environmental grant writing: How to write a proposal that gets funded",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clarity.io/blog/environmental-grant-writing-how-to-write-a-proposal-that-gets-funded"
   }
  ]
 }

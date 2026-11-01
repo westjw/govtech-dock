@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "\u201cThis is useful AI\u201d: The future of robotic recycling with EverestLabs CEO",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everestlabs.ai/news/this-is-useful-ai-the-future-of-robotic-recycling-with-everestlabs-ceo"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "EPR demands push AI vision systems toward MRFs",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "California Waste Solutions upgrades technology at California MRFs",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "EverestLabs adds AI agent to its MRF robotics offerings",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-04-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How AI Is Simplifying Extended Producer Responsibility Compliance",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-03-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Innodisk, RealSense, and EverestLabs Partner to Enable Real-Time AI Sorting for Industrial Recycling",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2025-12-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "New York county installs robotics at MRF",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everestlabs.ai/news/new-york-county-installs-robotics-at-mrf"
-  },
-  {
-   "date": "2025-12-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "EverestLabs 2025 In Review",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/blog/everestlabs-2025-in-review"
   }
  ],
  "profile": {

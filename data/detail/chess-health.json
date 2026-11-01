@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Navigating Changes to SAMHSA\u2019s Approach to MOUD and Harm Reduction",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/samhsa-moud-guidance-what-you-need-to-know/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "CHESS Health Partners with Ria Health to Bring 24/7 Peer-Backed Digital Recovery Support to Virtual Care",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/press-releases/chess-health-partners-with-ria-health-for-round-the-clock-support-for-aud-patients/"
+  },
+  {
    "date": "2026-09-30",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Substance Use Disorder Prevention: A Guide to Early Identification and Intervention",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "The Rise of Cychlorphine, Kratom, and 7-OH: Why Prevention Is the First Line of Defense",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "time",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Contingency Management for Substance Use Disorder",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chess.health/blog/hidden-in-plain-sight-why-alcohol-use-disorder-demands-urgent-attention/"
-  },
-  {
-   "date": "2026-03-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Compounding Crisis: SUD, Comorbidities, and the Cost of Fragmented Care",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chess.health/blog/sud-comorbidities-and-the-cost-of-fragmented-care/"
-  },
-  {
-   "date": "2026-03-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Retention is a Revenue Strategy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chess.health/blog/retention-is-a-revenue-strategy/"
   }
  ],
  "profile": {

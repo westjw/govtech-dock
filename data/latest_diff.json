@@ -1,90 +1,202 @@
 {
-  "date": "2026-10-31",
-  "previous": "2026-10-30",
+  "date": "2026-11-01",
+  "previous": "2026-10-31",
   "changes": [
     {
       "company": "Sensoneo",
       "id": "sensoneo",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://www.sensoneo.com/ca"
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
-      "company": "ClearPoint Strategy",
-      "id": "clearpoint-strategy",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "company": "Gravity",
+      "id": "gravity",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://ats.rippling.com/gr"
     },
     {
       "company": "Bentek",
       "id": "bentek",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: robots.txt on www.mybente"
-    },
-    {
-      "company": "Roadway Management Technologies",
-      "id": "roadway-management-technologies",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "HydroPoint Data Systems",
-      "id": "hydropoint-data-systems",
       "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
-      "company": "Binti",
-      "id": "binti",
-      "from": "Sales (non-AE)",
+      "company": "Citylogix",
+      "id": "citylogix",
+      "from": "Yes",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "HTTP 404 for https://ats.rippling.com/ci"
+    },
+    {
+      "company": "Skyward",
+      "id": "skyward",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Singlewire Software",
       "id": "singlewire-software",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Alertus Technologies",
-      "id": "alertus-technologies",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager (Baltimore, MD)"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "CampusIQ",
-      "id": "campusiq",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Huntress",
-      "id": "huntress",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Technical Account Manager II (United States of A)"
+      "company": "Ascend Analytics",
+      "id": "ascend-analytics",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "Givebacks",
-      "id": "givebacks",
-      "from": "None found",
+      "company": "Abnormal AI",
+      "id": "abnormal-ai",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Poll Everywhere",
+      "id": "poll-everywhere",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Pulpstream",
+      "id": "pulpstream",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Omnitronics, Inc.",
+      "id": "omnitronics-inc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "HERE Technologies",
+      "id": "here-technologies",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "District Account Executive"
+      "note": "Sr Account Executive"
+    },
+    {
+      "company": "Arcos Inc",
+      "id": "arcos-inc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "AVEVA Software, LLC",
+      "id": "aveva-software-llc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Connect Account Manager (Chicago) (Chicago, Illinois,)"
+    },
+    {
+      "company": "Claroty",
+      "id": "claroty",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Dragos",
+      "id": "dragos",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Technical Account Manager (Australia)"
+    },
+    {
+      "company": "Firescape Inc",
+      "id": "firescape-inc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Haivision",
+      "id": "haivision",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Irth",
+      "id": "irth",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "Noteworthy AI",
+      "id": "noteworthy-ai",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "OATI",
+      "id": "oati",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Mappedin",
+      "id": "mappedin",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Tango Tango Inc",
+      "id": "tango-tango-inc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "4M Analytics",
+      "id": "4m-analytics",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Buzz Solutions",
+      "id": "buzz-solutions",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Executive (Southeas (Remote)"
+    },
+    {
+      "company": "Clean Power Research",
+      "id": "clean-power-research",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Electrical Grid Monitoring",
+      "id": "electrical-grid-monitoring",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Decision Lens",
+      "id": "decision-lens",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }

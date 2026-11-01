@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "FIDO Tech awarded ISO 14001 certification for commitment to environmental excellence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/fido-tech-awarded-iso-14001-certification-for-commitment-to-environmental-excellence/"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
-   "headline": "Pinpoint water leaks exactly with FIDO Sounding",
+   "headline": "Pinpoint water leaks exactly with FIDO Sounding Cristiano Trionfera Oct 13, 2026 Read 4 min",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/pinpoint-water-leaks-exactly-with-fido-sounding/"
@@ -22,7 +31,7 @@
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
-   "headline": "FIDO Tech wins joint EMMA award for AI-powered water leak reduction project Graham Baker Oct 12, 2026 Read 2 min",
+   "headline": "FIDO Tech wins joint EMMA award for AI-powered water leak reduction project",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/fido-tech-northumbrian-water-win-joint-emma-award/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/articles/news/alex-leyland-fido-operations-director/"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "FIDO Tech appoints Dr Piers Clark to Board of Directors",
-   "kind": "leadership",
-   "kind_rule": "appoints",
-   "url": "https://fido.tech/news/dr-piers-clark-joins-fido-board/"
   }
  ],
  "profile": {

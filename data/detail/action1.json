@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "What is Vulnerability Prioritization?",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "What is Continuous Vulnerability Management (CVM)?",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
    "headline": "What is Vulnerability Management? Process, Tools, and Best Practices",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
    "headline": "Mean Time to Patch: The Patch Management Metric that Measures Your Exposure Window",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "PHP2Shell: The Biggest Risk Is the PHP You Don\u2019t Know You\u2019re Running",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Best Vulnerability Remediation Tools & Software in 2026",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "How to Reduce MTTR: A Practical Guide for Patching, Vulnerability Remediation, and Software Incidents",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "What is MTBF? Mean Time Between Failures for IT and Software Systems",
    "kind": "press",

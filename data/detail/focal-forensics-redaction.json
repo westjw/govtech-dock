@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-31",
+   "date_source": "time",
+   "first_seen": "2026-10-31",
+   "headline": "Medical Privacy Redaction in Body Camera Footage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/medical-privacy-redaction-body-camera-footage"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "time",
    "first_seen": "2026-10-30",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-10",
    "headline": "School Surveillance Video Redaction Under FERPA",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/defensible-video-redaction"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Choose a Video Redaction Company: A Practical Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/how-to-choose-a-video-redaction-company"
   }
  ]
 }

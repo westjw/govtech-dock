@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-31",
+   "headline": "2026 Q3 Business and Product Updates: YuJa Expands Strategic Partnerships and Thought Leadership Globally October 30, 2026 | 2 min read",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://www.yuja.com/blog/news/2026-q3-business-product-updates/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "index-text",
    "first_seen": "2026-10-29",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "YuJa Panorama v26.8.0 Release \u2013 Deeper Remediation Capabilities, Optimized Integration Workflows, New Dashboards and More\u2026",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "YuJa AutoPilot v26.8.0 \u2013 Automated Remediation That Aligns with Your Style and Branding",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-22",
    "headline": "YuJa Verity v26.8.0 Release \u2013 New AI Compliance Assistant, Integrity Dashboards, Updated AI-Based Room Scans, and More\u2026",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Adopts",
    "url": "https://www.yuja.com/blog/news/st-marys-college-of-maryland-yuja-equalground/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "og:published",
-   "first_seen": "2026-10-16",
-   "headline": "Making a Difference with Website Remediation in Public and Regulated Sectors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.yuja.com/blog/making-a-difference-with-website-remediation-in-public-and-regulated-sectors/"
   }
  ],
  "profile": {

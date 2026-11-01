@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Object-Centric Process Mining: When One Process View No Longer Tells the Whole Story",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/object-centric-process-mining"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/blog/making-the-dashboard-optional-process-intelligence-ai"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "QPR brings AI Agent Mining for Snowflake to Snowflake World Tour Stockholm",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/ai-agent-mining-snowflake-world-tour-stockholm"
   }
  ],
  "profile": {

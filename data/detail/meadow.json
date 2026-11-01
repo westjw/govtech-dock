@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Student List, now rebuilt for better payment insights and easier workflows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meadowfi.com/resources/student-list-now-rebuilt-for-better-payment-insights-and-easier-workflows"
+  },
+  {
    "date": "2026-09-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Getting Buy-In: How to Build the Case for AI in Your Office",
    "kind": "press",
@@ -10,8 +19,17 @@
    "url": "https://www.meadowfi.com/resources/getting-buy-in-how-to-build-the-case-for-ai-in-your-office"
   },
   {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Student billing communications, now easier to see, edit, and trust",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meadowfi.com/resources/student-billing-communications-now-easier-to-see-edit-and-trust"
+  },
+  {
    "date": "2026-08-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Is It FERPA Compliant? A comprehensive overview of FERPA and AI in Student Accounts",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Meadow Partners with the California State University to Modernize Student Financial Services Across 22 Campuses",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-07-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Meadow Joins the Foundation for California Community Colleges Procurement Program to Expand Access to Modern Student Financial Tools Across California Community Colleges and Independent Institutions",
    "kind": "leadership",
@@ -37,8 +55,17 @@
    "url": "https://www.meadowfi.com/resources/meadow-joins-the-foundation-for-california-community-colleges-procurement-program-to-expand-access-to-modern-student-financial-tools-across-california-community-colleges-and-independent-institutions"
   },
   {
+   "date": "2026-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "AI for Data Analysis in Student Accounts: Where to Start",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meadowfi.com/resources/ai-for-data-analysis-in-student-accounts-where-to-start"
+  },
+  {
    "date": "2026-05-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How to Talk to AI: A Prompting Guide for Student Accounts Professionals",
    "kind": "press",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Enrollment Marketing Gets Students In \u2014 But the Financial Experience is What Keeps Them There",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-03-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "5 Signs Your Institution\u2019s Pre-Collections Process Is Broken",
    "kind": "press",
@@ -65,7 +92,7 @@
   },
   {
    "date": "2026-02-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Late Fee Policy Recommendations for Higher Education: A Student-Centered Framework to Drive Persistence",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "From Penalties to Partnership: The New Era of Late Fee Policy in Higher Education",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.meadowfi.com/resources/from-penalties-to-partnership-the-new-era-of-late-fee-policy-in-higher-education"
-  },
-  {
-   "date": "2026-02-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Late Fee Policies in Higher Education: Three Models Used Across U.S. Colleges and Universities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meadowfi.com/resources/late-fee-policies-in-higher-education-three-models-used-across-u-s-colleges-and-universities"
-  },
-  {
-   "date": "2026-01-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Student Accounts Innovators Are Winning in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meadowfi.com/resources/the-student-accounts-innovators-are-winning-in-2026"
-  },
-  {
-   "date": "2026-01-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Why Tuition Payment Plans Will Be Key in Defining Student Accounts Outcomes in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meadowfi.com/resources/why-tuition-payment-plans-will-be-key-in-defining-student-accounts-outcomes-in-2026"
   }
  ],
  "profile": {

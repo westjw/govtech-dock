@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "\u201cLiving in My Future\u201d: Miguel Villarreal on Farmers, Free Lunch and Four Decades in School Food",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linq.com/blog/living-in-my-future-miguel-villarreal-on-farmers-free-lunch-and-four-decades-in-school-food/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.linq.com/blog/activity-funds-as-additional-revenue-streams-for-schools/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What\u2019s Actually Slowing Down Healthier School Meals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/whats-actually-slowing-down-healthier-school-meals/"
   }
  ],
  "profile": {

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-31",
+   "headline": "CrowdStrike Expands Falcon Adversary OverWatch Threat Hunting Across AI and Google Cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-expands-threat-hunting-across-ai-and-google-cloud/"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-31",
+   "headline": "Build an Intelligence Advantage with Falcon Next-Gen SIEM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/build-intelligence-advantage-with-falcon-next-gen-siem/"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-31",
+   "headline": "CrowdStrike Agent Graph Shows How Agents Act on the Endpoint",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-agent-graph-shows-how-agents-act-on-endpoint/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "index-text",
    "first_seen": "2026-10-30",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-achieves-uk-ncsc-cir-enhanced-level-assurance/"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-21",
-   "headline": "U.S. Government Disrupts FAMOUS CHOLLIMA Operation with CrowdStrike Assistance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/fbi-disrupts-famous-chollima-operation-with-crowdstrike-assistance/"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CrowdStrike Counter Adversary Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/author.crowdstrike-counter-adversary-operations/"
-  },
-  {
-   "date": "2026-09-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "October 2026 Patch Tuesday: 1,413 CVEs Include Three Zero-Days and 75 Critical Vulnerabilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-october-2026/"
   }
  ]
 }

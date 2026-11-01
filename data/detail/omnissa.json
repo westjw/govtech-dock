@@ -30,20 +30,20 @@
   {
    "date": "2026-10-23",
    "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Are you managing endpoints or managing workarounds?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/managing-endpoints-or-workarounds/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Introducing Omnissa Elara: an authority layer for AI",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-announcing-omnissa-elara/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "card-date",
+   "first_seen": "2026-10-24",
+   "headline": "Are you managing endpoints or managing workarounds?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/managing-endpoints-or-workarounds/"
   },
   {
    "date": "2026-10-22",

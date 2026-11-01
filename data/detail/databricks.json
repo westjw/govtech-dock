@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Databricks and SAP unleash end-to-end data & AI capabilities to level up enterprise AI transformation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/databricks-and-sap-unleash-end-end-data-ai-capabilities-level-enterprise-ai-transformation"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Wealth Management Client Onboarding Needs More Than AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Deliberate decisions and enterprise AI value",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/deliberate-decisions-and-enterprise-ai-value"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "How to teach with Databricks Free Edition",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-teach-databricks-free-edition"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Building live intelligence: Databricks AI Search supports Streaming Tables, Materialized Views, and Managed tables using Iceberg",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-27",
-   "headline": "The media industry is becoming a prediction economy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/media-industry-becoming-prediction-economy"
   }
  ]
 }

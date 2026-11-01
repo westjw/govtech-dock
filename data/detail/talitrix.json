@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-31",
+   "headline": "Talitrix Announces Expansion into the U.S. Virgin Islands with New Electronic Monitoring Contract",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://talitrix.com/news/talitrix-announces-expansion-into-the-us-virgin-islands-with-new-electronic-monitoring-contract"
+  },
+  {
    "date": "2026-06-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2025-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Talitrix Recognizes Domestic Violence Awareness Month with Continued Support for Victims Through the Talitrix Shield App",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2025-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Talitrix Strengthens Presence in Louisiana with Multiple State Contracts and Growth throughout Parishes Statewide",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2025-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Talitrix Selected as a GPS Provider for Florida\u2019s 20th Judicial Circuit",
    "kind": "contract",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2024-06-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Talitrix and Securus Monitoring Join Expertise to Deliver New Standard in Electronic Monitoring",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://talitrix.com/news/innovating-for-a-safer-tomorrow-the-ethical-promise-of-talitrix"
-  },
-  {
-   "date": "2024-03-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Talitrix supports human rights by providing ethical electronic monitoring",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://talitrix.com/news/talitrix-supports-human-rights-by-providing-ethical-electronic-monitoring"
   }
  ]
 }
