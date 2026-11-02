@@ -21423,16 +21423,20 @@ def check_the_date_report_keeps_its_confirmations() -> int:
     cd = _import_conference_dates()
     errors = 0
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-dates-"))
+    # Upcoming whenever this runs. Fixed 2027 dates would have failed every
+    # run from 2027-03-04, when Alpha Expo stopped being upcoming (found by
+    # running the suite at future dates, 2026-11-02).
+    y = max(2027, dt.date.today().year + 1)
     (tmp / "conferences.json").write_text(json.dumps({"conferences": [
-        {"conference": "Alpha Expo", "event_tag": "Alpha 2027", "dates": "March 1-3, 2027"},
-        {"conference": "Beta Summit", "event_tag": "Beta 2027", "dates": "April 1-3, 2027"},
-        {"conference": "Rolled Fair", "event_tag": "Rolled 2026", "dates": "September 25-29, 2027"}]}))
+        {"conference": "Alpha Expo", "event_tag": f"Alpha {y}", "dates": f"March 1-3, {y}"},
+        {"conference": "Beta Summit", "event_tag": f"Beta {y}", "dates": f"April 1-3, {y}"},
+        {"conference": "Rolled Fair", "event_tag": f"Rolled {y - 1}", "dates": f"September 25-29, {y}"}]}))
     rep = tmp / "conference_date_report.json"
     rep.write_text(json.dumps({"generated": "2026-09-01", "confirmed": [
-        {"conference": "Alpha Expo", "state": "not found", "held": "2027-03-01"},
-        {"conference": "Beta Summit", "state": "not found", "held": "2027-04-01"},
+        {"conference": "Alpha Expo", "state": "not found", "held": f"{y}-03-01"},
+        {"conference": "Beta Summit", "state": "not found", "held": f"{y}-04-01"},
         # about a date no longer on file (the row rolled), and a row gone
-        {"conference": "Rolled Fair", "state": "not found", "held": "2026-10-17"},
+        {"conference": "Rolled Fair", "state": "not found", "held": f"{y - 1}-10-17"},
         {"conference": "Gone Expo", "state": "confirmed", "held": "2026-05-01"}]}))
     keep = (cd.DATA, sys.argv, cd.confirm)
     out = io.StringIO()
@@ -33264,6 +33268,10 @@ def check_sled_hq_jobs_reach_the_board() -> int:
         return 1
 
     today = _dt.date(2026, 10, 6)
+    # hq_jobs.main() sorts on the real date, so the open job must still be open
+    # whenever this runs: a fixed "closes" of 2026-11-01 failed every run from
+    # 2026-11-02 and blocked the nightly.
+    still_open = (max(today, _dt.date.today()) + _dt.timedelta(days=60)).isoformat()
     cos = {"acme": {"id": "acme", "name": "Acme", "website": "https://acme.example.com",
                     "sector": "Public Safety", "category": "Police"},
            "nosite": {"id": "nosite", "name": "Nosite", "website": "",
@@ -33274,7 +33282,7 @@ def check_sled_hq_jobs_reach_the_board() -> int:
             "territory": {"states": ["TX", "OK"], "region": "Southwest", "stated": True},
             "comp": {"min": 90000, "max": 120000, "currency": "USD", "period": "year",
                      "source": "employer"},
-            "posted": "2026-10-01", "closes": "2026-11-01",
+            "posted": "2026-10-01", "closes": still_open,
             "url": "https://hq.sledjobs.com/jobs/a1?source=sledjobs",
             "description": "SECRET JOB COPY", "updated_at": "2026-10-02T00:00:00Z"}
     bad = {
