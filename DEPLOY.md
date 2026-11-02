@@ -176,6 +176,55 @@ Users board; it takes effect when the next build ships `users.json`.
 - `curl -sI https://sledjobs.com/data/board.json` → `403`
 - Sign in as a non-admin address and open `/admin/` → `403`
 
+## 3d. "Continue with Google" on the landing page (built 2026-11-02, off until you do this)
+
+The owner: "Can I have the cloudflare sign in and future google sign in on
+the landing page". Both buttons are built into `landing.html` and the sign-in
+page, and Google stays hidden until `GOOGLE` in `functions/_gate.js` is true.
+Access cannot be told by a link which login method to use when an
+application allows two; it shows its own chooser. So Google gets a small
+application of its own on one path, with instant authentication, which goes
+straight to Google.
+
+**Do §3a first:** a button on the front page does nothing while Access still
+covers the front page. Then, in Zero Trust (about 4 minutes; the names are
+Cloudflare's as of November 2026):
+1. The EXISTING application → **Login methods**: Google AND One-time PIN
+   both selected (§3a step 3). The main application must allow Google:
+   after Google answers, `/signin/google` sends the person on to
+   `/admin/api/login`, and Access issues the main application's token from
+   that same sign-in without asking again.
+2. Access controls → Applications → **Create new application** →
+   **Self-hosted and private**. Name it `SLED JOBS Google sign-in`.
+   **Add public hostname**: `sledjobs.com`, Path `signin/google`. One
+   hostname is enough, and fewer is better: every Google button on every
+   hostname links to sledjobs.com, and each extra hostname adds a hop to
+   the sign-in.
+3. Its **Policies**: Allow, Include **Everyone**.
+4. Its **Login methods**: select **Google only** (not One-time PIN), and
+   turn on **Apply instant authentication**.
+5. Its **Advanced settings** → **Cookie settings** → **Path attribute**:
+   **ON** for this application only, so its cookie stays on
+   `/signin/google`. The main application's stays OFF (§3a step 4).
+6. Check it, then tell Claude:
+   - Signed out, `curl -sI https://sledjobs.com/signin/google` answers a
+     `302` to the team domain, and following it reaches
+     `accounts.google.com` (Claude can run this).
+   - **In a private window, you:** open
+     `https://sledjobs.com/signin/google?to=%2F%3Ftab%3Djobs` (the address
+     the button will use; the button itself is not on the page yet), pick
+     your Google account, and the jobs board must load with no Cloudflare
+     page between Google and the board. That proves the hand-off to the
+     main application, which the curl cannot see.
+   Then `GOOGLE` goes to true and is pushed.
+
+**Why a second application is safe here** when §3 says never make one: the
+site checks the MAIN application's audience only (`functions/_access.js`).
+This application's token is never read, so it opens nothing on its own;
+it only makes Google the one method on one path. `/signin/google` itself
+only redirects, to a path on this site (`functions/_to.js`). §3 names it as
+the one second application to keep.
+
 ## 3. Signed-in only until launch (decided 2026-10-05)
 The whole site stays private until it is ready to go live. Two doors guard it,
 and both check a sign-in from the SAME Access application, the one that
@@ -219,6 +268,10 @@ while the Function runs: see step 1 below.
      audience (AUD) tag (`functions/_access.js`), so two applications on the
      same hostnames cannot both work. If a second one gets created anyway,
      delete it and do step 3 on the original.
+   - **The one exception (2026-11-02): `SLED JOBS Google sign-in`**, on
+     `sledjobs.com` path `signin/google` only (§3d). Keep it. Its token is
+     never read; it only makes Google the one sign-in method on that path.
+     Delete any OTHER second application.
    - Only if the original itself is gone: clear the Path on its replacement as
      in step 3, set the Pages variable `ACCESS_AUD` to the replacement's tag,
      and redeploy.
@@ -298,8 +351,9 @@ caught.
    and endpoint shows the holding page again one deploy later. Or, faster
    and with no push: Pages → Deployments → the last gated deployment →
    **Rollback to this deployment**.
-2. Clear the path `admin` on the Access application's hostnames again, so
-   signing in covers the whole site (step 3 above).
+2. Clear the path `admin` on the MAIN Access application's hostnames
+   again, so signing in covers the whole site (step 3 above). Leave the
+   Google sign-in application (§3d) as it is.
 3. Check: `curl -s -o /dev/null -w "%{http_code}\n" https://sledjobs.com/`
    answers 302 (Access) or 403 (the code gate), never 200.
 

@@ -878,6 +878,24 @@ subscribe", and anyone may sign in, free (email and one-time code).
   Access application, policy Everyone with One-time PIN, Fail closed kept.
   Until he does them, Access still covers the whole host and nothing changes
   on sledjobs.com; the pages.dev alias shows the landing at once.
+- **"Continue with Google" is built and OFF** (owner, 2026-11-02: "Can I
+  have the cloudflare sign in and future google sign in on the landing
+  page"). Access has no link that picks one login method on an application
+  with two, so Google gets its own Access application on `/signin/google`
+  (Google only, instant authentication) and `functions/signin/google.js`
+  sends the person on to `/admin/api/login`; the main application issues its
+  token from the same global session. The site still reads one audience.
+  That application (sledjobs.com, path `signin/google` only) is the ONE
+  exception to "never a second Access application"; DEPLOY.md §3 says so.
+  `landing.html` and the sign-in page carry both versions of every changed
+  line between `<!--google-on-->` / `<!--google-off-->` markers, and
+  `_gate.js` `signinBlocks()` keeps the one `GOOGLE` says; `build_site`
+  `sign_in_version()` makes the same choice when it ships landing.html, since
+  `/landing` is served as-is to a signed-in person (review: both versions
+  showed there at once). Flip `GOOGLE` only after DEPLOY.md §3d is done:
+  `/signin/google` signed out reaches accounts.google.com, AND the owner's
+  private-window run lands on the board with no Cloudflare page between. The `to` check for both links is `functions/_to.js`.
+  Guard: `check_continue_with_google_waits_for_its_own_door`.
 
 **Until 2026-10-22 the WHOLE site was signed-in only (owner, 2026-10-05).**
 `functions/_gate.js` runs first in `functions/_middleware.js` on every page,

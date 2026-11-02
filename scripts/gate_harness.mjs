@@ -189,6 +189,39 @@ for (const to of ["/%09/x.example", "/.//x.example", "/./%09/x.example", "//x.ex
   out.login_redirects.push(await landing(to));
 }
 out.login_keeps_path = await landing(encodeURIComponent("/c/verkada.html?tab=jobs"));
+// "CONTINUE WITH GOOGLE" (owner, 2026-11-02). /signin/google passes the gate
+// signed out, like login, and only ever sends a person on to login with a
+// `to` that stays on this site. Both pages are drawn both ways: what a
+// visitor sees with GOOGLE false (today) and true (after DEPLOY.md §3d).
+const google = await import(new URL("../functions/signin/google.js", import.meta.url));
+const gatemod = await import(new URL("../functions/_gate.js", import.meta.url));
+const { readFileSync } = await import("node:fs");
+out.google_flag = gatemod.GOOGLE;
+out.google_open = await ask("/signin/google?to=%2F");
+out.google_open_alias = await ask("/signin/google?to=%2F", { host: ALIAS });
+async function viaGoogle(to) {
+  const res = await google.onRequestGet({ request: new Request(`${ORIGIN}/signin/google?to=${to}`) });
+  const loc = res.headers.get("location") || "";
+  const first = new URL(loc.replace(/[\t\n\r]/g, ""), `${ORIGIN}/signin/google`);
+  const inner = first.searchParams.get("to") || "";
+  const last = new URL(inner.replace(/[\t\n\r]/g, ""), `${ORIGIN}/admin/api/login`);
+  return { to, status: res.status, location: loc, origin: first.origin, path: first.pathname,
+           inner, inner_origin: last.origin };
+}
+out.google_redirects = [];
+for (const to of ["/%09/x.example", "/.//x.example", "/./%09/x.example", "//x.example",
+                  "/%2F%2Fx.example", "/%5Cx.example", "https://x.example/", "/%0A/x.example",
+                  "%20/x.example", "/%7F/x.example", "javascript:alert(1)"]) {
+  out.google_redirects.push(await viaGoogle(to));
+}
+out.google_keeps_path = await viaGoogle(encodeURIComponent("/c/verkada.html?tab=jobs"));
+const landingSrc = readFileSync(new URL("../landing.html", import.meta.url), "utf8");
+out.landing_on = gatemod.signinBlocks(landingSrc, true);
+out.landing_off = gatemod.signinBlocks(landingSrc, false);
+const drawn = (g) => gatemod.holdingPage(new URL(`${ORIGIN}/c/verkada.html?tab=jobs`), 403,
+                                         "line", undefined, g).text();
+out.holding_on = await drawn(true);
+out.holding_off = await drawn(false);
 // A ROLE PAGE, DRAWN: which head handlers the middleware attaches. node has no
 // HTMLRewriter, so a stub records them; the role index answers through ASSETS
 // with a role that carries every markup field.

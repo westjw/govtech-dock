@@ -61,7 +61,36 @@ import { SITE, NAME } from "./_brand.js";
 
 export const GATED = true;
 
-export const OPEN = new Set(["/admin/api/whoami", "/admin/api/login"]);
+export const OPEN = new Set(["/admin/api/whoami", "/admin/api/login", "/signin/google"]);
+
+/* "CONTINUE WITH GOOGLE" ON THE LANDING PAGE AND THE SIGN-IN PAGE (owner,
+ * 2026-11-02: "Can I have the cloudflare sign in and future google sign in on
+ * the landing page"). False until Google is a login method on the main
+ * Access application AND the Google-only application guards /signin/google
+ * (DEPLOY.md §3d); with either missing, the button would land a person on
+ * Cloudflare's chooser, or on a page with no Google at all. The pages carry
+ * both versions of every line that changes, between <!--google-on--> and
+ * <!--google-off--> markers, and signinBlocks() keeps the one this says. */
+export const GOOGLE = false;
+
+export function signinBlocks(html, google = GOOGLE) {
+  const keep = google ? "on" : "off", drop = google ? "off" : "on";
+  return String(html)
+    .replace(new RegExp(`<!--google-${drop}-->[\\s\\S]*?<!--/google-${drop}-->`, "g"), "")
+    .replace(new RegExp(`<!--/?google-${keep}-->`, "g"), "");
+}
+/* build_site.sign_in_version() applies the same rule to landing.html when it
+ * ships it, so /landing (served as-is to a signed-in person) is one version
+ * too; landingPage() still runs this, for a build older than the flag. */
+
+/* Google's own mark, as its sign-in button guidelines draw it (light theme:
+ * white fill, #747775 stroke, #1F1F1F label in Google Sans Medium). */
+export const G_MARK = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 48 48" style="flex:none">'
+  + '<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>'
+  + '<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>'
+  + '<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>'
+  + '<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>'
+  + '</svg>';
 
 /* The landing page, served at / to a visitor with no verified sign-in.
  * Pages answers it at /landing (it redirects /landing.html there). */
@@ -107,7 +136,7 @@ async function landingPage(request, env) {
     res = env && env.ASSETS ? await env.ASSETS.fetch(new URL(LANDING, request.url).toString()) : null;
   } catch { res = null; }
   if (!res || res.status !== 200) return null;
-  const body = request.method === "HEAD" ? null : await res.text();
+  const body = request.method === "HEAD" ? null : signinBlocks(await res.text());
   return new Response(body, { status: 200, headers: {
     "content-type": "text/html; charset=utf-8",
     "cache-control": "no-store", "vary": "Cookie" } });
@@ -119,10 +148,11 @@ const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-function holdingPage(url, status, line, heading = "Sign in to see this page.") {
+export function holdingPage(url, status, line, heading = "Sign in to see this page.", google = GOOGLE) {
   // Back to the page they asked for once they are signed in. login.js only
   // follows a same-site path, so this cannot become an open redirect.
   const back = `${SITE}/admin/api/login?to=${encodeURIComponent(url.pathname + url.search)}`;
+  const viaGoogle = `${SITE}/signin/google?to=${encodeURIComponent(url.pathname + url.search)}`;
   // THE SIGN-IN PAGE IS OPTION 1 of the landing canvas (owner, 2026-10-22: "I do
   // love 1 sign in"). It names nothing about the page asked for - that page is
   // not public - and carries no script, so the holding policy (no script at
@@ -135,6 +165,7 @@ function holdingPage(url, status, line, heading = "Sign in to see this page.") {
 <title>Sign in to see this page &middot; ${esc(NAME)}</title>
 <link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
+<!--google-on--><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&amp;display=swap"><!--/google-on-->
 <style>
   *,*::before,*::after{box-sizing:border-box}
   body{margin:0;background:#E8F1F7;color:#1F2536;
@@ -154,6 +185,9 @@ function holdingPage(url, status, line, heading = "Sign in to see this page.") {
     padding:0 24px;border-radius:10px;background:#0B57C4;color:#E8F1F7;font-size:18px;font-weight:600;
     text-decoration:none}
   .btn:hover{background:#1F2536;color:#E8F1F7}
+  .btn-g{gap:12px;background:#FFFFFF;border:1px solid #747775;color:#1F1F1F;
+    font-family:'Google Sans',Roboto,Archivo,system-ui,sans-serif;font-weight:500}
+  .btn-g:hover{background:#F2F2F2;color:#1F1F1F}
   .about{display:inline-flex;align-items:center;min-height:44px;font-size:16px;font-weight:600;color:#0B57C4}
   .about:hover{color:#1F2536}
   a:focus-visible{outline:3px solid #0B57C4;outline-offset:3px}
@@ -166,12 +200,14 @@ function holdingPage(url, status, line, heading = "Sign in to see this page.") {
 <p>${esc(line)}</p>
 <p class="next">Once you are in, subscribe to job alerts and the roles that fit come to you.</p>
 <div class="acts">
-<a class="btn" href="${esc(back)}">Sign in</a>
+<!--google-on--><a class="btn btn-g" href="${esc(viaGoogle)}">${G_MARK}Continue with Google</a>
+<a class="btn" href="${esc(back)}">Sign in with email</a><!--/google-on-->
+<!--google-off--><a class="btn" href="${esc(back)}">Sign in</a><!--/google-off-->
 <a class="about" href="${esc(SITE)}/">What is ${esc(NAME)}?</a>
 </div>
 </div></main></body></html>
 `;
-  return new Response(html, {
+  return new Response(signinBlocks(html, google), {
     status, headers: { ...HEADERS, "content-type": "text/html; charset=utf-8" } });
 }
 
@@ -234,7 +270,8 @@ async function isSubscriberLink(request, url) {
 }
 
 const SIGN_IN_LINE = "The job, company and conference boards are for signed-in members. "
-  + "Signing in is free: your email and a one-time code, no password.";
+  + (GOOGLE ? "Signing in is free: Google, or your email and a one-time code. No password."
+            : "Signing in is free: your email and a one-time code, no password.");
 
 export async function gate(request, env) {
   if (!GATED) return null;

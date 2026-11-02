@@ -1661,6 +1661,130 @@ def check_the_front_page_is_whole_and_public() -> int:
     return errors
 
 
+def check_continue_with_google_waits_for_its_own_door() -> int:
+    """"Continue with Google" on the landing page and the sign-in page.
+
+    Owner, 2026-11-02: "Can I have the cloudflare sign in and future google
+    sign in on the landing page". Access has no link that picks one sign-in
+    method when an application allows two, so Google gets an Access
+    application of its own on /signin/google (DEPLOY.md §3d), and
+    functions/signin/google.js sends the person on to /admin/api/login once
+    Google has answered. Driven through gate_harness.mjs, with the real
+    gate, the real pages and the real redirect:
+      - /signin/google passes the gate signed out, on the alias too, as
+        login does; a person cannot sign in through a door that is shut;
+      - it sends a person only to /admin/api/login on this site, with a `to`
+        that stays on this site, from every `to` that tried to leave in the
+        2026-10-05 review, and keeps the page they asked for;
+      - with GOOGLE false (until the owner's steps are done) neither page
+        shows Google at all, and with it true both do, each Google link
+        carrying the same `to` as the email link beside it;
+      - the markers that hold both versions are balanced and none reaches
+        a visitor;
+      - the `to` check lives once, in _to.js, for both links.
+    """
+    import shutil
+    import subprocess
+    errors = 0
+    gate_src = (ROOT / "functions" / "_gate.js").read_text()
+    flag = re.search(r"export const GOOGLE\s*=\s*(true|false);", gate_src)
+    if not flag:
+        return fail("functions/_gate.js exports no boolean GOOGLE; nothing says whether "
+                    "the Google button is shown")
+    if '"/signin/google"' not in re.search(r"export const OPEN = new Set\(\[([^\]]*)\]\)", gate_src).group(1):
+        errors += fail("/signin/google is not in the gate's OPEN set; the Google button "
+                       "would land a visitor on the sign-in page it came from")
+    for f in ("functions/admin/api/login.js", "functions/signin/google.js"):
+        src = (ROOT / f).read_text()
+        if "sameSitePath(" not in src or "/_to.js\"" not in src:
+            errors += fail(f"{f} does not hold `to` through _to.js's sameSitePath")
+        if "new URL(to" in src:
+            errors += fail(f"{f} carries its own copy of the `to` check; it lives in _to.js")
+    page = (ROOT / "landing.html").read_text()
+    for which in ("on", "off"):
+        opens = [m.start() for m in re.finditer(f"<!--google-{which}-->", page)]
+        shuts = [m.start() for m in re.finditer(f"<!--/google-{which}-->", page)]
+        if len(opens) != len(shuts) or any(not (o < c) for o, c in zip(opens, shuts)) \
+                or any(c > o2 for c, o2 in zip(shuts, opens[1:])):
+            errors += fail(f"landing.html's google-{which} markers are not paired; a version "
+                           f"would leak into the other or swallow the page")
+    if not shutil.which("node"):
+        print("  note: node is not installed; the Google button was not driven")
+        return errors
+    r = subprocess.run(["node", str(ROOT / "scripts" / "gate_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    try:
+        out = json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError) as exc:
+        return errors + fail(f"gate_harness.mjs printed no JSON ({exc}): {r.stderr[-300:]}")
+    if out.get("google_flag") is not (flag.group(1) == "true"):
+        errors += fail("the harness read a different GOOGLE from the one in _gate.js")
+    for k in ("google_open", "google_open_alias"):
+        c = out.get(k) or {}
+        if c.get("status") != 200 or not c.get("reached"):
+            errors += fail(f"the gate refused /signin/google signed out ({k}: {c.get('status')}); "
+                           f"the Google button would go nowhere")
+    redirects = out.get("google_redirects") or []
+    if len(redirects) < 10:
+        errors += fail("the harness drove too few Google redirects to trust")
+    for c in redirects + [out.get("google_keeps_path") or {}]:
+        if (c.get("status") != 302 or c.get("origin") != "https://sledjobs.com"
+                or c.get("path") != "/admin/api/login" or c.get("inner_origin") != "https://sledjobs.com"
+                or str(c.get("inner", "")).startswith("//")):
+            errors += fail(f"/signin/google sends to={c.get('to')!r} somewhere other than this "
+                           f"site's sign-in (Location {c.get('location')!r})")
+    if (out.get("google_keeps_path") or {}).get("inner") != "/c/verkada.html?tab=jobs":
+        errors += fail("/signin/google no longer returns a person to the page they asked for")
+    on, off = out.get("landing_on", ""), out.get("landing_off", "")
+    hold_on, hold_off = out.get("holding_on", ""), out.get("holding_off", "")
+    for name, html in (("landing page", off), ("sign-in page", hold_off)):
+        if "signin/google" in html or "Continue with Google" in html:
+            errors += fail(f"with GOOGLE false the {name} still offers Google; it would land "
+                           f"a person on a page with no Google on it")
+    for name, html in (("landing page", on), ("sign-in page", hold_on)):
+        if "Continue with Google" not in html:
+            errors += fail(f"with GOOGLE true the {name} offers no Google button")
+    for name, html in (("landing page", on), ("landing page", off),
+                       ("sign-in page", hold_on), ("sign-in page", hold_off)):
+        if "<!--google-" in html or "<!--/google-" in html:
+            errors += fail(f"a google marker reached a visitor on the {name}")
+    if on.count('href="https://sledjobs.com/signin/google?to=%2F"') < 2:
+        errors += fail("with GOOGLE true the landing page lost a Google button (hero and badge)")
+    if (">Sign in free<" in on or ">Sign in with email<" not in on
+            or ">Sign in free<" not in off or ">Sign in with email<" in off):
+        errors += fail("the email button is not named for what it does in each version")
+    for html in (on, off):
+        if 'href="https://sledjobs.com/admin/api/login?to=%2F"' not in html:
+            errors += fail("a version of the landing page lost its email sign-in")
+    # THE SHIPPED FILE IS ONE VERSION TOO (review, 2026-11-02). /landing is
+    # served as-is to a signed-in person, and to everyone once the boards are
+    # public; with both versions in it every changed line showed twice and
+    # Google appeared with GOOGLE false. build_site chooses, by the same rule.
+    import tempfile
+    import build_site as bs
+    if bs.google_sign_in() is not (flag.group(1) == "true"):
+        errors += fail("build_site reads a different GOOGLE from functions/_gate.js")
+    for g, js_version in ((True, on), (False, off)):
+        if bs.sign_in_version(page, g) != js_version:
+            errors += fail(f"build_site and _gate.js keep different versions of the landing "
+                           f"page (GOOGLE {g}); /landing and / would disagree")
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-ship-"))
+    try:
+        bs.ship_file("landing.html", tmp)
+        shipped = (tmp / "landing.html").read_text()
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    if ("<!--google-" in shipped or "<!--/google-" in shipped
+            or shipped != bs.sign_in_version(page, bs.google_sign_in())):
+        errors += fail("the build ships landing.html with both versions in it: /landing shows "
+                       "every changed line twice to a signed-in person")
+    if ('href="https://sledjobs.com/signin/google?to=%2Fc%2Fverkada.html%3Ftab%3Djobs"' not in hold_on
+            or 'href="https://sledjobs.com/admin/api/login?to=%2Fc%2Fverkada.html%3Ftab%3Djobs"' not in hold_on):
+        errors += fail("on the sign-in page the Google and email links do not both return "
+                       "a person to the page they asked for")
+    return errors
+
+
 def check_the_site_is_signed_in_only_until_launch() -> int:
     """The front door is public; nothing else is served without a sign-in.
 
@@ -39146,6 +39270,7 @@ def main() -> int:
     errors += check_a_pay_range_with_no_period_is_not_published()
     errors += check_the_supplier_export_follows_every_intake()
     errors += check_the_front_page_is_whole_and_public()
+    errors += check_continue_with_google_waits_for_its_own_door()
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()

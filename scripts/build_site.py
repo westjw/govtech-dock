@@ -3486,6 +3486,37 @@ company record that was merged into another, both end up looking like this.</p>
 """)
 
 
+def google_sign_in() -> bool:
+    """Whether the pages offer "Continue with Google": functions/_gate.js
+    GOOGLE, read off the source the Function runs, as boards_signed_in reads
+    GATED, so the shipped landing page and the sign-in page cannot disagree."""
+    src = (ROOT / "functions" / "_gate.js").read_text()
+    m = re.search(r"^export const GOOGLE = (true|false);", src, re.M)
+    if not m:
+        raise SystemExit("functions/_gate.js declares no GOOGLE; refusing to guess which sign-in to show")
+    return m.group(1) == "true"
+
+
+def sign_in_version(html: str, google: bool) -> str:
+    """landing.html carries both versions of every line "Continue with Google"
+    changes, between <!--google-on--> and <!--google-off--> markers (owner,
+    2026-11-02). Keep the one GOOGLE says and drop the markers: the rule
+    _gate.js signinBlocks() applies, restated because the file is served
+    as-is at /landing to a signed-in person, and to everyone once the boards
+    are public (review, 2026-11-02: both versions showed there at once)."""
+    keep, drop = ("on", "off") if google else ("off", "on")
+    html = re.sub(rf"<!--google-{drop}-->.*?<!--/google-{drop}-->", "", html, flags=re.S)
+    return re.sub(rf"<!--/?google-{keep}-->", "", html)
+
+
+def ship_file(name: str, out: pathlib.Path) -> None:
+    """One of SHIP into the output, landing.html with its sign-in chosen."""
+    if name == "landing.html":
+        (out / name).write_text(sign_in_version((ROOT / name).read_text(), google_sign_in()))
+    else:
+        shutil.copy2(ROOT / name, out / name)
+
+
 def boards_signed_in() -> bool:
     """Whether the boards are for signed-in members only: functions/_gate.js
     GATED, read off the source the Function runs, so the crawl files and
@@ -3680,7 +3711,7 @@ def main() -> int:
     (out / "data").mkdir(parents=True)
 
     for name in SHIP:
-        shutil.copy2(ROOT / name, out / name)
+        ship_file(name, out)
 
     # the mascot: favicon, hero and the four expression heads
     mascot = ROOT / "assets" / "mascot"

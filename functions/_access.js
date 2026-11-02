@@ -13,6 +13,11 @@
  * SAME audience, so widening the existing Access application from /admin to
  * the whole site keeps every token valid; creating a second application
  * would not.
+ *
+ * The one other application, `SLED JOBS Google sign-in` on /signin/google
+ * (DEPLOY.md §3d), is never checked here: its token opens nothing, and
+ * functions/signin/google.js hands the person on to this application's
+ * sign-in, which issues the token both doors read.
  */
 export const TEAM = "solesource-c6g-pages.cloudflareaccess.com";
 export const AUD = "80b769d2980cc241d0df575dd9fc1f67d68c6e23eb2e3065396e6ecac95cead9";
