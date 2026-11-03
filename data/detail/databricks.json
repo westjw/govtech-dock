@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-01",
+   "headline": "Lakebase branching for CI/CD: lessons from 100 PR databases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/lakebase-branching-cicd-lessons-100-pr-databases"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-31",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/vital-skills-upskilling-genie-code-healthcare-and-life-sciences-skills"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Unify your productivity and AI data with Lakeflow Connect",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/unify-your-productivity-and-ai-data-lakeflow-connect"
   }
  ]
 }

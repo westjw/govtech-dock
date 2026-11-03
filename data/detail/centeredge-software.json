@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-01",
+   "headline": "CenterEdge and FEC Playbook Partner to Help Operators Simplify Operations and Strengthen the Guest Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://centeredgesoftware.com/news/centeredge-and-fec-playbook-partner-to-help-operators-simplify-operations-and-strengthen-the-guest-experience/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://centeredgesoftware.com/blog/how-to-stop-making-guests-work-too-hard-to-spend-money/"
-  },
-  {
-   "date": "2026-05-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Natasa Kipper Joins CenterEdge as COO",
-   "kind": "leadership",
-   "kind_rule": "as COO",
-   "url": "https://centeredgesoftware.com/news/natasa-kipper-joins-centeredge-as-coo/"
   }
  ],
  "profile": {

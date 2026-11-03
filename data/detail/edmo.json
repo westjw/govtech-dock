@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-01",
+   "headline": "Enrollment Workflows in Higher Education: A Guide to Optimization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/https-goedmo-com-enrollment-workflow-optimization/"
+  },
+  {
+   "date": "2026-11-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-01",
+   "headline": "How AI Improves Multilingual Student Support in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/https-goedmo-com-ai-multilingual-student-support/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/transfer-evaluation-system/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Recruitment Ecosystem in Higher Education: A Guide for Enrollment Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/recruitment-ecosystem-in-higher-education/"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Key Strategies to Increase Student Engagement in Higher Education",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/strategies-to-increase-student-engagement/"
   }
  ],
  "profile": {

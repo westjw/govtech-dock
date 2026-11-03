@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-31",
    "headline": "Student List, now rebuilt for better payment insights and easier workflows",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Getting Buy-In: How to Build the Case for AI in Your Office",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-31",
    "headline": "Student billing communications, now easier to see, edit, and trust",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Meadow Partners with the California State University to Modernize Student Financial Services Across 22 Campuses",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-07-07",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Meadow Joins the Foundation for California Community Colleges Procurement Program to Expand Access to Modern Student Financial Tools Across California Community Colleges and Independent Institutions",
    "kind": "leadership",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Enrollment Marketing Gets Students In \u2014 But the Financial Experience is What Keeps Them There",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-03-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "5 Signs Your Institution\u2019s Pre-Collections Process Is Broken",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-02-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Late Fee Policy Recommendations for Higher Education: A Student-Centered Framework to Drive Persistence",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "From Penalties to Partnership: The New Era of Late Fee Policy in Higher Education",
    "kind": "press",
