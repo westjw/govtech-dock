@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Scaling with intention: How Robin maintains company culture during rapid growth",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/scaling-with-intention-how-robin-maintains-company-culture-during-rapid-growth"
+  },
+  {
    "date": "2026-09-16",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "How to improve counter-drone capabilities at your airport",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "We Are Not Vulnerable: What the World Cup Proved About Drone Security",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Adapting to the speed of the fight: How IRIS supports Special Operations Forces (SOF)",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-04-28",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Radar on the move: Defenture and Robin Radar Systems",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-04-16",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Bridging the gap: C-UAS as an integrated ecosystem",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-03-31",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "\u201cWe have a strong culture of getting the job done\u201d: A chat with Robin CTO, Vivien Croes",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.robinradar.com/blog/collaboration-as-a-catalyst-radar-guided-counter-uas-with-origin-robotics"
-  },
-  {
-   "date": "2025-12-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Robin Radar Systems: 2025, A Year in Reflection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.robinradar.com/blog/robin-radar-systems-2025-a-year-in-reflection"
   }
  ],
  "profile": {

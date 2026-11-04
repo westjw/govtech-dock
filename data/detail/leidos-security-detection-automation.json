@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Leidos delivers strong Q3, enhances 2026 outlook for third straight quarter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/leidos-delivers-strong-q3-enhances-2026-outlook-third-straight-quarter"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Leidos mobilizes supply chain to scale production of thousands of U.S. cruise missiles",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/leidos-mobilizes-supply-chain-scale-production-thousands-us-cruise-missiles"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-31",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/how-cognitive-security-can-protect-judgment-ai-use"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-14",
-   "headline": "MOD extends Leidos LCST contract, continuing critical logistics support to UK defence",
-   "kind": "contract",
-   "kind_rule": "extends Leidos LCST contract",
-   "url": "https://leidos.com/insights/mod-extends-leidos-lcst-contract-continuing-critical-logistics-support-uk-defence"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Leidos participates at U.S. Army's Reveille Forge \u2018permanent hackathon\u2019",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/leidos-participates-us-armys-reveille-forge-permanent-hackathon"
   }
  ]
 }

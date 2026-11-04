@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "MIT World Peace University selects D2L to help transform campus learning",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://www.d2l.com/newsroom/mit-world-peace-university-selects-d2l-to-help-transform-campus-learning/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "D2L Brightspace Named a 2026 Top Learning Platform by Training Industry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/newsroom/d2l-brightspace-named-a-2026-top-learning-platform-by-training-industry/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/devlearn-exclusive-hear-how-serefin-is-connecting-learning-skills-and-career-growth/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-25",
-   "headline": "Keeping the Light: Eight Practices for Leaders Governing AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/keeping-the-light-eight-practices-for-leaders-governing-ai/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "D2L, WCET and Opened Culture Release Findings from Global Longitudinal Study on AI Governance in Higher Education",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/newsroom/d2l-wcet-and-opened-culture-release-findings-from-global-longitudinal-study-on-ai-governance-in-higher-education/"
   }
  ],
  "profile": {

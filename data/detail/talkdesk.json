@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "time",
+   "first_seen": "2026-11-03",
+   "headline": "AI is transforming customer experience in EMEA. But not for everyone.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/news-and-press/press-releases/the-state-of-agentic-automation-in-cx-emea/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/how-ai-transforming-bank-branch-attribution/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Meet the AI that finally speaks field service",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/field-service-cx-agentic-ai/"
   }
  ]
 }

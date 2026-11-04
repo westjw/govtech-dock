@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "card-date",
+   "first_seen": "2026-11-03",
+   "headline": "The Fridge Was Never the Target",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/the-fridge-was-never-the-target"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "card-date",
+   "first_seen": "2026-11-03",
+   "headline": "What's new in Island AI Threat Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/whats-new-in-island-ai-threat-intelligence"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "card-date",
    "first_seen": "2026-10-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/blog/how-attackers-use-sponsored-search-custom-gpts-in-malware-delivery"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Expanded Claude Compliance API now Reports Into Island",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/claude-code-cowork-and-claude-for-microsoft-365-now-report-into-island"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "New Report: The Enterprise Browser as Security Control Point",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/new-report-the-enterprise-browser-as-security-control-point"
   }
  ]
 }

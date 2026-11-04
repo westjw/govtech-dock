@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "The faster students get feedback, the more they grow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kiddom.co/insights/ai-feedback-for-students"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "index-text",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kiddom.co/insights/back-to-school-2026"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "What You Can Actually Ask Kiddom Assistant",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kiddom.co/insights/kiddom-assistant-prompt-library"
   }
  ]
 }

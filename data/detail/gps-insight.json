@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "The Difference Between Smart Fleet Alerts and Alert Fatigue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/the-difference-between-smart-fleet-alerts-and-alert-fatigue/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "The Future of Fleet Safety, Compliance, and Insurance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/the-future-of-fleet-safety-compliance-and-insurance/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gpsinsight.com/blog/why-backup-accidents-are-more-common-than-you-think/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Fleet GPS Tracking Devices: OBD-II, Hardwired, and Asset Trackers Compared",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/fleet-gps-tracking-devices-obd-ii-vs-hardwired/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Vehicle Side Cameras Help Exonerate Drivers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/how-vehicle-side-cameras-help-exonerate-drivers/"
   }
  ]
 }

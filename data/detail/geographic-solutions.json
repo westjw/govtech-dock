@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Geographic Solutions Welcomes Buse Hoffman as Public Relations Specialist",
+   "kind": "leadership",
+   "kind_rule": "Welcomes",
+   "url": "https://www.geographicsolutions.com/News-Events/Newsroom/geographic-solutions-welcomes-buse-hoffman-as-public-relations-specialist"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Geographic Solutions Ranks Second Among Tampa Bay\u2019s Largest Software Developers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geographicsolutions.com/News-Events/Newsroom/geographic-solutions-ranks-second-among-tampa-bays-largest-software-developers"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geographicsolutions.com/News-Events/Newsroom/geographic-solutions-named-a-finalist-in-the-2026-ai-awards"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why Labor Force Participation Matters: Paul Toomey Insights Featured in Fast Company",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geographicsolutions.com/News-Events/Newsroom/paul-toomey-fast-company-economic-indicators"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Resilience in Leadership: Paul Toomey Highlights Team Alignment Strategies in Fast Company",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geographicsolutions.com/News-Events/Newsroom/keeping-teams-aligned-fast-company-paul-toomey"
   }
  ],
  "profile": {

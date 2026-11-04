@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-03",
+   "headline": "Why We Don't Use AI to Classify People in Prisons",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/why-we-dont-use-ai-to-classify-people-in-prisons"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "near-h1",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://recidiviz.org/updates/most-innovative-2026"
-  },
-  {
-   "date": "2026-03-19",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Building a Reentry Resource Network within the Case Planning Assistant",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://recidiviz.org/updates/reentry-resource-network-case-planning"
   }
  ],
  "profile": {

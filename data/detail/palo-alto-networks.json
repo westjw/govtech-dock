@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Guiding Customers Through Critical PHP Vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/11/guiding-customers-through-critical-php-vulnerabilities/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "New Cortex XDR Integration with Claude Cowork Secures Desktop AI Agents",
+   "kind": "product",
+   "kind_rule": "Integration with",
+   "url": "https://www.paloaltonetworks.com/blog/2026/11/new-cortex-xdr-integration-with-claude-cowork-secures-desktop-ai-agents/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -67,7 +85,7 @@
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
-   "headline": "The Blind Spot in Orbit: Why Space Could Be the Next Infrastructure Crisis",
+   "headline": "The Blind Spot in Orbit: Why Space Could Be the Next Infrastructure Cr...",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paloaltonetworks.com/blog/2026/10/the-blind-spot-in-orbit-why-space-could-be-the-next-infrastructure-crisis/"
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-08",
    "headline": "Driven by Innovation: Our Latest Analyst Wins and Product Momentum in Netwo...",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paloaltonetworks.com/blog/2026/10/driven-by-innovation-our-latest-analyst-wins-and-product-momentum-in-network-ai-security/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "The Mango Strategy: A CEO\u2019s Guide to AI Cybersecurity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.paloaltonetworks.com/blog/2026/10/the-mango-strategy-a-ceos-guide-to-ai-cybersecurity/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "\u201cSASE Gateway\u201d provided by KDDI : How SP Interconnect Simplifies Closed Net...",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.paloaltonetworks.com/blog/2026/09/sase-gateway-provided-by-kddi-how-sp-interconnect-simplifies-closed-network-zero-trust/"
   }
  ],
  "profile": {

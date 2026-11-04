@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Expanding the capabilities of mobile investigations with Magnet Graykey 2",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/expanding-the-capabilities-of-mobile-investigations-with-magnet-graykey-2/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -22,7 +31,7 @@
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
-   "headline": "S2:E4 // The art and science of AI prompting in digital investigations",
+   "headline": "S2:E4 // The art and science of AI prompting\u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s2e4-the-art-and-science-of-ai-prompting-in-digital-investigations/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/todays-investigative-challenges-are-growing-more-complex/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "S2:E5 // Research, reality, and the future o\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/s2e5-research-reality-and-the-future-of-ai-in-digital-forensics/"
   }
  ],
  "profile": {

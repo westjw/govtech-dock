@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "What We Heard at IACP 2026: Leadership Feedback Shaping Flock\u2019s Next Steps",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/what-we-heard-at-iacp-2026-leadership-feedback-shaping-flocks-next-steps"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "How Police Are Using License Plate Readers to Locate Suspects and Bring Missing People Home Safely",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "How Flock License Plate Reader Cameras Work: What They Capture, What They Don\u2019t, and the Guardrails Around Their Use",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "Flock Authorized as a CVE Numbering Authority by CISA",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Updates",
    "url": "https://www.flocksafety.com/blog/building-on-trust-updates-to-flocks-terms-and-conditions"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Flock Updates Privacy, Accountability, Security, and Transparency Safeguards",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://www.flocksafety.com/blog/flock-guardrails-address-lpr-privacy-concerns-and-police-transparency?q_offer_info=eyJpZCI6IjE5NzcyMzE4MDA2NDE0NjQwMjAiLCJleHBpcmF0aW9uIjoxNzg2NjU5NzM3NjY3fQ%3D%3D"
   }
  ],
  "profile": {

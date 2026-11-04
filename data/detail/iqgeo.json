@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "IQGeo Visual Agent Studio for Telecom Fieldwork Validation and Asset Inspection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/blog/visual-agent-studio-for-telecom-networks"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "2026 Ground Truth Survey: What\u2019s Standing Between Telecoms and Autonomous Networks?",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "BEAD Supplemental Round: How Fiber Providers Can Win $21 Billion in New Funding",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What Are Visual AI Agents for Telecom and Utility Network Operations",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-07-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Hidden Problem with Field Data Quality in Telecom and Utility Networks",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Why Autonomous Networks in Telecom Depend on Trusted Digital Twins of Physical Infrastructure",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.iqgeo.com/news/iqgeo-launches-automated-error-detection-for-telecom-network-records"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "IQGeo Signs Agreement with German Telco UGG to Deploy AI-Powered Field QA for Fiber Rollouts",
-   "kind": "contract",
-   "kind_rule": "Signs Agreement",
-   "url": "https://www.iqgeo.com/news/iqgeo-signs-agreement-with-german-telco-ugg-to-deploy-ai-powered-field-qa-for-fiber-rollouts"
   }
  ],
  "profile": {

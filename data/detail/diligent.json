@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How Pennon Group strengthened secure collaboration with Diligent Boards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/pennon-group-case-study"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/company/newsroom/executive-compensation-2026-press-release"
-  },
-  {
-   "date": "2026-01-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "The ultimate guide to Diligent Elevate 2027: Everything you need to know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/diligent-elevate-faq"
   }
  ]
 }

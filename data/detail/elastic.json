@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "Elastic Stack 8.19.24 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-8-19-24-released"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "Elastic Stack 9.4.9 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-9-4-9-released"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "Elastic Stack 9.5.6 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-9-5-6-released"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -80,33 +107,6 @@
    "kind": "product",
    "kind_rule": "released",
    "url": "https://www.elastic.co/blog/elastic-stack-9-5-5-released"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Bring your own key to existing Elastic Cloud deployments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/byok-existing-deployments-elastic-cloud-hosted"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Better together: Celebrating the 2026\u20132027 Elastic Partner Awards",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/elastic-partner-awards-2026"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "When AI agents swarm, can banks keep up?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/banks-ai-agents-visibility"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "card-date",
+   "first_seen": "2026-11-04",
+   "headline": "Procore Announces Third Quarter 2026 Financial Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.procore.com/press/procore-announces-third-quarter-2026-financial-results"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "time",
    "first_seen": "2026-10-29",
@@ -85,7 +94,7 @@
    "date": "2026-10-21",
    "date_source": "time",
    "first_seen": "2026-10-22",
-   "headline": "From Plan to Build to Operate: Connecting the Full Building Lifecycle",
+   "headline": "From plan to build to operate: Connecting the full building lifecycle",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.procore.com/blog/from-plan-to-build-to-operate-connecting-the-full-building-lifecycle"
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "names",
    "url": "https://www.procore.com/blog/procore-names-compass-its-preferred-subcontractor-prequalification-solution"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "card-date",
-   "first_seen": "2026-10-13",
-   "headline": "Procore Announces Timing of Third Quarter Fiscal Year 2026 Earnings Call",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.procore.com/press/procore-announces-timing-of-third-quarter-fiscal-year-2026-earnings-call"
   }
  ],
  "profile": {

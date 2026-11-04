@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How Sanofi is Accelerating Global Laboratory Deployment with LabWare",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/how-sanofi-is-accelerating-global-laboratory-deployment-with-labware"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -55,8 +64,8 @@
    "url": "https://www.labware.com/blog/labware-launches-labware-water"
   },
   {
-   "date": "2026-08-21",
-   "date_source": "index-text",
+   "date": "2026-09-05",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "LabWare 2026 Asia Pacific CEC: Where Labs, Technology & People Connect",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.labware.com/blog/labware-phizzle-cleanroom-instrument-data-integration"
-  },
-  {
-   "date": "2026-01-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Thank You for Making LabWare\u2019s 2025 Customer Education Conferences a Global Success!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.labware.com/blog/cec-2025-around-the-world"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Webinars Why the Agentic Enterprise Needs an Orchestrated AI Strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/why-the-agentic-enterprise-needs-an-orchestrated-ai-strategy"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nice.com/resources/the-orchestration-advantage-why-platform-architecture-determines-whether-enterprise-cx-ai-scales"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Testimonials Fulton Bank: Frictionless for Customers, Frictionless for Agents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/resources/fulton-bank-frictionless-for-customers-frictionless-for-agents"
   }
  ],
  "profile": {

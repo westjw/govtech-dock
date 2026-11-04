@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "GitHub Universe 2026: What We Learned About Teaching CS in the Agent Era",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/github-universe-2026-what-we-learned-about-teaching-cs-in-the-agent-era"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.codio.com/blog/codio-now-supports-splice"
-  },
-  {
-   "date": "2024-06-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "From eBooks to Interactive Courseware: Transforming Computing Education",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.codio.com/blog/from-ebooks-to-interactive-courseware"
   }
  ],
  "profile": {

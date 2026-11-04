@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-23",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-24",
    "headline": "Hiab announces third-quarter results and corporate updates",
    "kind": "product",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2025-10-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Reliance Truck, Exclusive Distributor for Colorado",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2025-10-17",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Environmental Products Group now Distrbutor for the Carolinas",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2025-10-16",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "New Exclusive Distributor in Western New York State",
    "kind": "press",

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "From packaging to declaring: the next generation of Mac app deployment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/declarative-mac-app-deployment-alme/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "index-text",
    "first_seen": "2026-10-31",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jamf.com/blog/what-is-commercial-spyware/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Jamf announces Premium Support upgrades and Technical Account Manager services",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/jamf-premium-support-technical-account-managers/"
   }
  ]
 }

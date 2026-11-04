@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Tenant parking rights: What property managers need to know about leases, laws, and rules",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/tenant-parking-rights-rules-for-property-managers/"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "MRI Software Expands Agora AI to Simplify Leasing and Property Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/news/mri-software-expands-agora-ai-to-simplify-leasing-and-property-operations/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/what-is-cam-reconciliation-recovery/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "What does being an IDC MarketScape Leader mean for property occupiers?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-does-being-an-idc-marketscape-leader-mean-for-property-occupiers/"
   },
   {
    "date": "2026-10-28",
@@ -35,6 +62,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/resources/consumers-return-to-routine-as-summer-momentum-fades/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-28",
+   "headline": "Covering the five-week period between August 30 and October 3, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/resources/mri-onlocation-us-monthly-commentary-september-2026/"
   },
   {
    "date": "2026-10-22",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/what-floridas-new-rental-fraud-law-means-for-multifamily-housing/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Safer homes, stronger outcomes: Transforming affordable housing through intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/safer-homes-stronger-outcomes-transforming-affordable-housing-through-intelligence/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "How do property management companies work: Business model, structure, and org chart",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/how-do-property-management-companies-operate-org-chart/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "The modern contract abstraction process: How AI turns leases into decision-ready data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-is-the-contract-abstraction-process/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Multifamily centralization: Benefits, challenges, and best practices for centralized property management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/centralization-multifamily-real-estate-challenges-opportunities-path-forward/"
   }
  ]
 }

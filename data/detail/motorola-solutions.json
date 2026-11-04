@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Door Access Control Systems: Buyer\u2019s Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/door-access-control-systems"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Neighborhood Security Cameras: Complete Community Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/neighborhood-security-cameras"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.motorolasolutions.com/en_us/blog/data-center-design"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Video\u00fcberwachung im Mehrfamilienhaus: Schritt f\u00fcr Schritt",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.motorolasolutions.com/de/blog/apartment-building-security-cameras"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "S\u00e9curit\u00e9 physique : planification et bonnes pratiques pour les entreprises",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.motorolasolutions.com/fr/blog/physical-security-guide"
   }
  ],
  "profile": {

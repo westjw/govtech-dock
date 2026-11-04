@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "10 Questions to Ask When Evaluating ePCR Software for EMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/top-epcr-questions-2026/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How Your Feedback Drives Better Outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/uservoice-feedback-drives-outcomes/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -21,14 +39,23 @@
   {
    "date": "2026-10-16",
    "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "10 Questions to Ask When Evaluating ePCR Software for EMS",
+   "first_seen": "2026-10-16",
+   "headline": "The Hidden Cost of Compliance Gaps in Ontario EMS",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.imagetrend.com/blog/top-epcr-questions-2026/"
+   "url": "https://www.imagetrend.com/blog/compliance-gaps-ontario-ems/"
   },
   {
-   "date": "2026-09-29",
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "EMS World 2026 Recap: Big Stages, Bold Ideas and Real Talk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/ems-world-expo-2026-recap/"
+  },
+  {
+   "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Pediatric Air Medical Intubation: Findings From a National Study",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imagetrend.com/blog/ems-software-implementation-crew-adoption/"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "EMS World 2026 Recap: Big Stages, Bold Ideas and Real Talk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/blog/ems-world-expo-2026-recap/"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-16",
-   "headline": "The Hidden Cost of Compliance Gaps in Ontario EMS",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/blog/compliance-gaps-ontario-ems/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Prehospital Blood Data Without Outcomes Is Only Half the Story",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/blog/prehospital-blood-data-outcomes/"
   }
  ],
  "profile": {

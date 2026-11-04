@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "card-date",
+   "first_seen": "2026-11-03",
+   "headline": "Tanium Joins OpenAI Trusted Access for Cyber Program to Strengthen Platform Security with Frontier AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/press-releases/tanium-joins-openai-trusted-access-for-cyber-program-to-strengthen-platform-security-with-frontier-ai"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "card-date",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "introducing",
    "url": "https://www.tanium.com/blog/introducing-endpoint-drift"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "card-date",
-   "first_seen": "2026-10-14",
-   "headline": "Hunt or be Hunted: Every service was unique, and that was the problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/stack-ranking-high-cardinality"
   }
  ],
  "profile": {

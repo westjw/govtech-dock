@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Speed Without Scramble: Managing Suspect Low Bids a Different Way",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.colbitech.com/post/suspect-low-bids"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.colbitech.com/post/cupccaa-informal-bids"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Part 13 of 15 GAAP Accounting and Grant Funding: Why Your Books Need Two Numbers, Not One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.colbitech.com/post/gaap-grant-accounting"
   }
  ],
  "profile": {

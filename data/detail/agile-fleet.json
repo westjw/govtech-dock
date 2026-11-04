@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How Universities Can Evaluate the True Cost of Fleet Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-universities-can-evaluate-the-true-cost-of-fleet-management-software"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/is-low-fleet-utilization-really-a-demand-problem-8-access-barriers-that-can-make-shared-vehicles-look-underused"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What Should Government Fleets Do With Underutilized Vehicles? A 6-Option Decision Framework",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/what-should-government-fleets-do-with-underutilized-vehicles-a-6-option-decision-framework"
   }
  ],
  "profile": {

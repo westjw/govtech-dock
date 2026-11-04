@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Disclosure-Ready: Building an Auditable Trail Under CPIA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/cpia-disclosure/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.penlink.com/blog/osint-new-playbook-sports-security/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "OSINT and the New Playbook for Sports Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/pt/blog/osint-new-playbook-sports-security/"
   }
  ],
  "profile": {

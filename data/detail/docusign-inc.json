@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Docusign Acquires Suplari to Accelerate AI-Powered Contract Management for Procurement",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.docusign.com/blog/docusign-acquires-suplari"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/how-contract-lifecycle-management-helps-scale-the-contract-process"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Claude for Small Business",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/docusign-extends-agreement-intelligence-to-small-businesses-in-claude"
   }
  ]
 }

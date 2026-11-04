@@ -1,10 +1,19 @@
 {
  "news": [
   {
-   "date": "2026-10-29",
+   "date": "2026-11-03",
    "date_source": "index-text",
-   "first_seen": "2026-10-29",
+   "first_seen": "2026-11-03",
    "headline": "This is some text inside of a div block.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/one-safety-standard-every-building-uniting-visitor-check-in-and-hall-passes"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Who Was on Campus Last Tuesday? And 7 Other Questions Every School Should Be Able to Answer About Visitors in Two Minutes",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/who-was-on-campus-last-tuesday-and-7-other-questions-every-school-should-be-able-to-answer-about-visitors-in-two-minutes"
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.goguardian.com/newsroom/goguardian-discover-wins-2026-codie-award-for-best-emerging-edtech-for-administrators-and-launches-new-screen-time-insights-dashboard"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Back-to-School Best Practices: Setting Your GoGuardian Admin Account Up for Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/back-to-school-best-practices-setting-your-goguardian-admin-account-up-for-success"
   }
  ],
  "profile": {

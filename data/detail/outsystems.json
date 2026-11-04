@@ -1,13 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-10-28",
+   "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "IDC MarketScape OutSystems is a Leader in AI-Enabled Low-Code and No-Code Developer Technologies",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/idc-marketscape-ai-low-code-leader"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "OutSystems achieves TX-RAMP compliance certification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/outsystems-tx-ramp-certification"
   },
   {
    "date": "2026-10-28",
@@ -19,7 +28,7 @@
    "url": "https://www.outsystems.com/blog/posts/agentic-ai-sprawl-governance"
   },
   {
-   "date": "2026-10-23",
+   "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "How OutSystems is evolving to give enterprises leverage and digital sovereignty in the AI era",
@@ -28,7 +37,7 @@
    "url": "https://www.outsystems.com/blog/posts/outsystems-enterprise-agentic-ai-governance"
   },
   {
-   "date": "2026-10-23",
+   "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "The future of enterprise AI is Agentic Systems Engineering",
@@ -37,7 +46,7 @@
    "url": "https://www.outsystems.com/blog/posts/enterprise-ai-future"
   },
   {
-   "date": "2026-10-23",
+   "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "How to build an agentic AI enterprise: Strategies that work",
@@ -46,7 +55,7 @@
    "url": "https://www.outsystems.com/blog/posts/agentic-ai-strategies-that-work"
   },
   {
-   "date": "2026-10-22",
+   "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "A new generation of mobile development: Capacitor on ODC",

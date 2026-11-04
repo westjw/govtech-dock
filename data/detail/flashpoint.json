@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Inside the Retail Fraud Underground: The Schemes Targeting Retailers Ahead of the Holiday Season",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/inside-the-retail-fraud-underground-the-schemes-targeting-retailers/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/beyond-support-how-flashpoint-redefines-the-customer-success-experience/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Ransomware Risk Model: Flashpoint\u2019s Patented Scoring Method to Inform Vulnerability Prioritization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/ransomware-risk-model-flashpoint-patented-scoring-method/"
   }
  ],
  "profile": {

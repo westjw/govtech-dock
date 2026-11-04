@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "Commercial UAV News \u2013 From Airborne to Action: Powering the Public Safety Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.versaterm.com/news/commercial-uav-news-from-airborne-to-action/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "index-text",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Police Department Launches",
    "url": "https://www.versaterm.com/news/oviedo-police-department-launches-versaterm-communityconnect/"
-  },
-  {
-   "date": "2026-05-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Versaterm Appoints Michael Pelfrey as Chief Revenue Officer",
-   "kind": "leadership",
-   "kind_rule": "as Chief",
-   "url": "https://www.versaterm.com/news/versaterm-appoints-michael-pelfrey-as-chief-revenue-officer/"
   }
  ],
  "profile": {

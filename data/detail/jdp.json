@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "from the U.S. Equal Employment Opportunity Commission (EEOC) Regarding Affirmative Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jdp.com/blog/updates-from-the-u-s-equal-employment-opportunity-commission-eeoc-regarding-affirmative-action/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Pay Transparency Requirement Updates: What Employers Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jdp.com/blog/pay-transparency-requirement-updates/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jdp.com/blog/background-screening-partner/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Identity-First Screening: How to Reduce Hiring Fraud Before It Starts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jdp.com/blog/identity-first-screening-how-to-reduce-hiring-fraud/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "What Causes Background Check Delays? A Guide to Turnaround Time",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jdp.com/blog/what-causes-background-check-delays/"
   }
  ]
 }

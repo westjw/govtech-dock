@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "School Safety Funding: How Michigan Leaders Prioritize Investments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/school-safety-funding-michigan-superintendents"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Beyond the Technology: How School Leaders Build Staff Trust and a Culture of Safety",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/school-alert-system-staff-trust-safety-culture"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How Two Superintendents Built School Safety Systems Their Staff Trust",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/school-safety-plan-michigan-superintendents"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.centegix.com/blog/blog-school-safety-funding-jack-markell"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Ron Self on Why Staff Didn\u2019t Use His District\u2019s School Alert System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/ron-self-school-alert-system-staff-adoption"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Ron Self on the Student Who Changed His Mission in School Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/ron-self-student-changed-school-safety-mission"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "From Concern to Accountability: How School Boards Can Advance School Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/school-safety-board-accountability"
   }
  ],
  "profile": {

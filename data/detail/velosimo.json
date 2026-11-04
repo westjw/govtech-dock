@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Inglewood Aligns Revenue Records with Velosimo Connect\u2122 Integration Between HdL and Tyler Cashiering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.velosimo.com/newsroom/inglewood-aligns-revenue-records-with-velosimo-connect-integration-between-hdl-and-tyler-cashiering-1"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.velosimo.com/newsroom/fresno-simplifies-online-payments-with-velosimo-connect-integration-between-heartland-and-accela"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "City of Kettering, OH, Advances Payment Integration with Velosimo Connect\u2122",
-   "kind": "product",
-   "kind_rule": "Integration with",
-   "url": "https://www.velosimo.com/newsroom/city-of-kettering-oh-advances-payment-integration-with-velosimo-connect"
   }
  ]
 }

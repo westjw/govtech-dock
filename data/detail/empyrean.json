@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-08-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Empyrean Halo Brings Connected Intelligence Across the Benefits Experience",
    "kind": "press",
@@ -10,8 +10,71 @@
    "url": "https://goempyrean.com/en/insights/empyrean-halo-brings-connected-intelligence-across-the-benefits-experience"
   },
   {
-   "date": "2023-02-20",
-   "date_source": "index-text",
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Empyrean Announces EVOLVE27: The Next Chapter in Benefit Experiences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goempyrean.com/en/insights/empyrean-announces-evolve27-the-next-chapter-in-benefit-experiences"
+  },
+  {
+   "date": "2024-04-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Empowering Public Sector HR: Empyrean Joins Forces with Sourcewell",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goempyrean.com/en/insights/empowering-public-sector-hr-empyreans-new-partnership-with-sourcewell"
+  },
+  {
+   "date": "2024-02-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Solutions Expansion for Connected Culture Across the Employee Journey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goempyrean.com/en/insights/empyrean-announces-an-expansion-of-solutions-that-champion-a-connected-culture-across-the-employee-journey"
+  },
+  {
+   "date": "2024-02-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Empyrean Launches the Experience Lab \u2013 Transforming Client Engagement Through Customized Content",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://goempyrean.com/en/insights/empyrean-launches-the-experience-lab-transforming-client-engagement-through-customized-content"
+  },
+  {
+   "date": "2024-02-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Empyrean Enhances Benefits Tech and Launches In-House Content Services",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://goempyrean.com/en/insights/empyrean-launches-enhanced-benefits-capabilities-to-support-a-richer-more-connected-employee-experience"
+  },
+  {
+   "date": "2023-12-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Empyrean Awarded for Using AI to Drive QA Excellence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goempyrean.com/en/insights/empyrean-awarded-for-using-ai-to-drive-qa-excellence"
+  },
+  {
+   "date": "2023-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Empyrean Receives Aetna Workplace Well-being Inspiring Change Award",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goempyrean.com/en/insights/empyrean-receives-aetna-workplace-well-being-inspiring-change-award"
+  },
+  {
+   "date": "2023-02-19",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Empyrean Acquires Employee Communications and Engagement Platform and Launches +YOU, a Holistic Solution That Improves Employee Productivity, Wellbeing, and Retention",
    "kind": "funding",
@@ -20,7 +83,7 @@
   },
   {
    "date": "2021-10-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Empyrean Unveils New Brand Messaging and Enhanced Corporate Website",
    "kind": "product",

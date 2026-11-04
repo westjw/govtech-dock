@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "card-date",
+   "first_seen": "2026-11-03",
+   "headline": "Fresh From the Traverse Toolbox: What\u2019s New This Fall",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.teamnorthwoods.com/resources/blog/fresh-from-the-traverse-toolbox-whats-new-this-fall/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Beyond the Recognition: What Meaningful AI Looks Like in Human Services",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Northwoods Named to Inaugural Ohio AI25 for Advancing AI in Human Services",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-07",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "AI for Caseworkers: Returning Time Without Removing Responsibility",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Celebrating Excellence: Congratulations to Park County on Receiving the Colorado C-Stat Distinguished Performance Award",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.teamnorthwoods.com/resources/blog/meet-the-team-shaping-whats-next-at-northwoods/"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Helping Those Who Help Others Starts at Home",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.teamnorthwoods.com/resources/blog/helping-those-who-help-others-starts-at-home/"
   }
  ],
  "profile": {

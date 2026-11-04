@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "GE Vernova Foundation Celebrates Official Launch of \u2018Engineers of Change\u2019 Program in Greenville",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-foundation-celebrates-official-launch-engineers-change-program-greenville"
+  },
+  {
    "date": "2026-10-28",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "GE Vernova reports strong third quarter 2026 financial performance, raises 2026 guidance, and increases share repurchase authorization",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "GE Vernova to acquire Trench Group",
    "kind": "funding",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "GE Vernova and the Boston Celtics Announce Three-Year Partnership to Recognize Members of the United States Armed Forces",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gevernova.com/news/press-releases/ge-vernova-declares-fourth-quarter-2026-dividend"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Tenova, in collaboration with GE Vernova, to supply the World\u2019s Largest EAF to Nippon Steel\u2019s Yawata Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/tenova-collaboration-ge-vernova-supply-worlds-largest-eaf-nippon-steels-yawata-works"
   }
  ]
 }

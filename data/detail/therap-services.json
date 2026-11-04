@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Business Intelligence for Human Services: Turning Documentation Into Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/business-intelligence-for-human-services-turning-documentation-into-decisions/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.therapservices.net/blog/5-ways-electronic-documentation-empowers-dsps/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "5 Ways Artificial Intelligence Empowers Person\u2011Centered Planning in IDD Services",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/5-ways-artificial-intelligence-empowers-person-centered-planning-in-i-dd-services/"
   }
  ]
 }

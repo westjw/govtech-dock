@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "recap | Dust monitoring in the UK: MCERTS, IAQM, and the Clarity Dust Module",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clarity.io/blog/webinar-recap-dust-monitoring-in-the-uk-mcerts-iaqm-and-the-clarity-dust-module"
+  },
+  {
    "date": "2026-10-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-31",
    "headline": "Understanding IAQM dust monitoring guidance: How to create a compliant dust management plan (DMP)",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clarity.io/blog/fenceline-monitoring-101-how-to-detect-track-and-report-emissions-from-industrial-sites"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Wildfire Air Quality Sensor Expansion Act of 2026: A proposed bill for expanded wildfire smoke air quality monitoring",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clarity.io/blog/wildfire-air-quality-sensor-expansion-act-of-2026-a-proposed-bill-for-expanded-wildfire-smoke-air-quality-monitoring"
   }
  ]
 }

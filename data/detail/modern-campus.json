@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Who Owns the Fix? Higher Ed Lessons from the PHP2Shell Vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/who-owns-the-fix-higher-ed-lessons-from-the-php2shell-vulnerabilities"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://moderncampus.com/blog/how-student-communication-campaigns-drive-engagement"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Higher Education Website Redesign Checklist: 10 Things Institutions Should Plan For",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://moderncampus.com/blog/higher-education-website-redesign-checklist-10-things-institutions-should-plan-for"
   }
  ],
  "profile": {

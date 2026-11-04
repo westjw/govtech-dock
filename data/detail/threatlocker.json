@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How to stop AI agents from taking unintended actions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/how-to-stop-ai-agents-from-taking-unintended-actions"
+  },
+  {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "How Zero Trust changes when the \u201cuser\u201d is an AI agent",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/why-clickfix-is-so-effective-against-security-aware-users"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "The principle of least privilege for AI agents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/the-principle-of-least-privilege-for-ai-agents"
   }
  ]
 }

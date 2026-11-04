@@ -1,8 +1,35 @@
 {
  "news": [
   {
-   "date": "2026-10-12",
+   "date": "2026-10-26",
    "date_source": "time",
+   "first_seen": "2026-11-03",
+   "headline": "Alternatives to open-web face search: what to ask before you buy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2026/10/open-web-face-search-alternatives/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "time",
+   "first_seen": "2026-11-03",
+   "headline": "Five questions a council should put in writing before it approves public-safety technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2026/10/council-questions-public-safety-technology/"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "time",
+   "first_seen": "2026-11-03",
+   "headline": "What the Apple Photos ruling says about keeping a face template",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2026/10/apple-photos-bipa-ruling-face-templates/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Identity intelligence starts with a record, not a face",
    "kind": "press",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Known-offender identification at the bank branch: what it is and what it is not",
    "kind": "press",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "Clearview AI alternatives: what to ask before you buy face search",
    "kind": "press",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "What residents are rejecting when a city cancels its plate readers",
    "kind": "press",
@@ -46,22 +73,22 @@
    "url": "https://safience.io/2026/10/why-cities-are-cancelling-license-plate-reader-contracts/"
   },
   {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Biometrica Systems now operates as Safience",
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What goes into UMbRA",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://safience.io/2021/06/report-finds-possible-coordinated-child-sex-abuse-ring-in-18-mexican-schools/"
+   "url": "https://safience.io/2026/10/where-umbra-records-come-from/"
   },
   {
    "date": "2026-10-01",
    "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "Biometrica Systems now operates as Safience",
+   "first_seen": "2026-09-28",
+   "headline": "A match is only as good as the record behind it",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://safience.io/2021/05/federal-rules-on-reasonable-suspicion-testing-for-workplace-substance-abuse/"
+   "url": "https://safience.io/2026/09/a-match-is-only-as-good-as-the-record-behind-it/"
   },
   {
    "date": "2026-10-01",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2022/02/millions-of-americans-are-victims-of-stalking-each-year/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Biometrica Systems now operates as Safience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2021/12/examining-the-homeland-security-effort-against-trafficking-through-the-blue-campaign/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Biometrica Systems now operates as Safience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2021/12/bjs-survey-finds-violent-victimization-rate-dropped-22-between-2019-and-2020/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "Biometrica Systems now operates as Safience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2019/09/thirty-four-individuals-including-medical-professionals-charged-for-alleged-medicare-and-medicaid-fraud/"
   }
  ],
  "profile": {

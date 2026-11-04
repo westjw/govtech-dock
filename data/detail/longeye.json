@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-01",
+   "date_source": "time",
+   "first_seen": "2026-11-03",
+   "headline": "Product Update November Product Update",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.longeye.com/blog/product-update-nov-2026"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -10,10 +19,10 @@
    "url": "https://www.longeye.com/blog/product-update-oct-2026"
   },
   {
-   "date": "2026-09-14",
+   "date": "2026-10-08",
    "date_source": "time",
    "first_seen": "2026-09-28",
-   "headline": "Product Update September Product Update",
+   "headline": "Product Update September Product Update Danielle Man \u00b7 September 2026",
    "kind": "product",
    "kind_rule": "Update",
    "url": "https://www.longeye.com/blog/product-update-sep-2026"
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Update",
    "url": "https://www.longeye.com/blog/product-update-apr-2026"
-  },
-  {
-   "date": "2026-04-08",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "ABC7 News: How Longeye's AI is Helping Law Enforcement Crack Cases Faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.longeye.com/blog/abc7-news-longeye-ai-law-enforcement"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "NEW | See why IBM was named a Gartner\u00ae Leader in AI Agent Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/new/announcements/ibm-named-a-leader-in-the-2026-gartner-magic-quadrant-for-ai-agent-management-platforms"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "index-text",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/think/news/ai-tightening-consulting-teams-forward-deployed-units"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Inside the \u201cAI-themed\u201d high school teaching the tech as a superpower",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/seckinger-ai-themed-high-school"
   }
  ],
  "profile": {

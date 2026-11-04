@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Lesson 5: You Don't Need the Perfect Prompt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meadowfi.com/resources/lesson-5-you-dont-need-the-perfect-prompt"
+  },
+  {
    "date": "2026-10-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-31",
    "headline": "Student List, now rebuilt for better payment insights and easier workflows",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Getting Buy-In: How to Build the Case for AI in Your Office",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Enrollment Marketing Gets Students In \u2014 But the Financial Experience is What Keeps Them There",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-03-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "5 Signs Your Institution\u2019s Pre-Collections Process Is Broken",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-02-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Late Fee Policy Recommendations for Higher Education: A Student-Centered Framework to Drive Persistence",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.meadowfi.com/resources/late-fee-policy-recommendations-for-higher-education-a-student-centered-framework-to-drive-persistence"
-  },
-  {
-   "date": "2026-02-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "From Penalties to Partnership: The New Era of Late Fee Policy in Higher Education",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meadowfi.com/resources/from-penalties-to-partnership-the-new-era-of-late-fee-policy-in-higher-education"
   }
  ],
  "profile": {

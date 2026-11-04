@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "time",
+   "first_seen": "2026-11-03",
+   "headline": "Pantheon Debuts Website Management AI Agent to Advance More Efficient, Mission-Driven Digital Operations for the United Nations, in Collaboration with Google Cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/press-releases/pantheon-debuts-website-management-ai-agent"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How the SaaSpocalypse Ended DXP as a Category",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/how-saaspocalypse-ended-dxp-category"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Site Performance Insights: Drilling Deeper Into Your Traffic",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/site-performance-insights-drilling-deeper-your-traffic"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-31",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/humans-vs-ai-people-leaders-take-what-stays-human"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Meet the Pantheon Public API: Your Platform Is Now Programmable",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/meet-pantheon-public-api"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Your Fleet Just Got Agent-Ready: Introducing the Pantheon MCP Server",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://pantheon.io/blog/introducing-pantheon-mcp-server"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "time",
-   "first_seen": "2026-10-22",
-   "headline": "The Hidden Costs of Neglect: Why an Outdated Website Is a Major Business Risk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/hidden-costs-neglect-why-outdated-website-major-business-risk"
   }
  ]
 }

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Central Valley Nitrate Control Program: Who Must Comply, Deadlines and Free Well Testing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ketos.co/resources/central-valley-nitrate-control-program"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Cooling Tower Blowdown Discharge: Permits, Limits and Testing for Data Centers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ketos.co/resources/cooling-tower-blowdown-discharge-permits"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "California Data Center Water Law (AB 2619 and AB 2469): What Operators Must Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ketos.co/resources/california-data-center-water-law"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ketos.co/resources/the-week-in-water-deja-bloom-september-2026"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Week in Water: Still Waters Run Deep (August 2026)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ketos.co/resources/the-week-in-water-still-waters-august-2026"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Week in Water: The Cheyenne Contamination, a Texas Grid Audit, and What Data Centers Send Back",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ketos.co/resources/the-week-in-water-data-centers-august-2026"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Week in Water: Hacked Utilities, the Lettuce Recall\u2019s Water Problem, and Five Data-Center Fights",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ketos.co/resources/the-week-in-water-august-2026"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "7 Questions to Ask Before You Renew Your Process Mining Contract",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/process-mining-contract-renewal-questions"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "When Is Process Mining Worth It? 6 Signs You Need It \u2013 and 4 Signs You Don't (Yet)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/when-is-process-mining-worth-it"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-31",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/blog/how-to-start-scale-process-intelligence"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "CEO Interview: Matti Erkheikki on How to Start and Scale Process Intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/ceo-interview-matti-erkheikki-on-how-to-start-and-scale-process-intelligence"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Making the Dashboard Optional",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/making-the-dashboard-optional-process-intelligence-ai"
   }
  ],
  "profile": {

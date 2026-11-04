@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Your first month-end close after acquiring a senior living community: the finance setup to settle first",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/first-month-end-close-after-acquiring-senior-living-community/"
+  },
+  {
    "date": "2026-10-30",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "The 2027 Assumption Ledger: Is your plan flexible?",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "PPO pressure: the contribution margin questions dental group finance teams should ask",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/labor-cost-occupancy-by-community-weekly-senior-living-finance/"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Agentic AI in supply chain: How AI agents move operations from reactive to resilient",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/agentic-ai-in-supply-chain/"
   }
  ]
 }

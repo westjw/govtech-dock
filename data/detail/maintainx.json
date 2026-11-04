@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "10 Ways to Get Operators Involved in Maintenance: A guide to operator-led and operator-assisted maintenance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/how-to-involve-operators-involved-in-maintenance"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "A Playbook For Aligning Operations and Maintenance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/how-to-adopt-autonomous-maintenance-aligning-operations-and-maintenance"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "6S Audit Checklist: Get Your Free Template Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/6s-audit-checklist"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "DVIR Checklist: Get Your Free Template Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/dvir-checklist"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Clean in Place (CIP) Inspection Checklist: Get Your Free Template Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/clean-in-place-checklist"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Pre-Shift Equipment Inspection Checklist: Get Your Free Template Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/pre-shift-equipment-inspection-checklist"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "What's New at MaintainX: November 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/whats-new-at-maintainx-november-2026"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "near-h1",
    "first_seen": "2026-10-23",
@@ -13,7 +76,7 @@
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
-   "headline": "A Complete Guide to Overall Equipment Effectiveness (OEE)",
+   "headline": "OEE Explained: A Complete Guide to Measuring and Improving Overall Equipment Effectiveness for Maintenance Teams",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/complete-guide-to-overall-equipment-effectiveness-oee"
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/layered-process-audit"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "When Did Finance Stop Trusting Maintenance Data?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/when-did-finance-stop-trusting-maintenance-data"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why Downtime Costs Are Rising In Manufacturing And What To Do",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/downtime-costs-in-manufacturing"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-05",
-   "headline": "My week at IMTS 2026: Manufacturing\u2019s biggest stage delivers again",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/newsroom/my-week-at-imts-2026-manufacturings-biggest-stage-delivers-again"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-05",
-   "headline": "5 Questions with Brett Pyper, Maintenance Planning Leader at Hudsonville Ice Cream",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/newsroom/5-questions-with-brett-pyper-maintenance-planning-leader-at-hudsonville-ice-cream"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-05",
-   "headline": "The True Price of Unplanned Downtime in Food Manufacturing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/newsroom/the-true-price-of-unplanned-downtime-in-food-manufacturing"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-05",
-   "headline": "To Reshore Manufacturing, Examine Reliability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/newsroom/to-reshore-manufacturing-examine-reliability"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Corrective Action Plan Template for Maintenance Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/corrective-action-plan-template"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "What is Syntopic Exposure and why does it matter for photogrammetry?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/what-is-syntopic-exposure/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -26,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vexcel-imaging.com/news/were-exhibiting-eaasi-summit-2/"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "We\u2019re exhibiting: EAASI Summit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/were-exhibiting-eaasi-summit/"
   },
   {
    "date": "2026-10-01",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vexcel-imaging.com/news/next-level-color-balancing-in-ultramap-tech-talk-ep-6-webinar/"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "We\u2019re exhibiting: Open Day Photogrammetry 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/were-exhibiting-open-day-photogrammetry-2026/"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Tech Talk | Ep. 5: Somag stabilization mounts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/stabilization-mounts-expectations-vs-reality-with-johannes-dreyer-from-somag-tech-talk-ep-5-spotlight/"
   }
  ]
 }

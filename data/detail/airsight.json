@@ -1,6 +1,105 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Drone Detection for Prisons: Stop Contraband Drops | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-for-prisons"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Drone as First Responder: How Police Drone Programs Work | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-as-first-responder"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Anti-Drone Systems in Action: What Real Deployments Show | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/anti-drone-systems-in-action"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Drone Detection Systems for Every Industry | AirSight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-systems-by-industry"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "What Is a Drone Detection System? How It Works & Who Uses It | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/what-is-a-drone-detection-system"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Best Anti-Drone Systems and Companies | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/best-anti-drone-systems"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Critical Infrastructure Drone Detection: A Practical Guide | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/critical-infrastructure-drone-detection"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Law Enforcement Drone Detection: How to Build a Program | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/law-enforcement-drone-detection"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Drone Detection for Events and Stadiums: Keep the Game On | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-for-events-and-stadiums"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Airport Drone Detection: From Sighting to Runway Decision | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/airport-drone-detection"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Portable vs. Stationary Anti-Drone Systems: How to Choose | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/portable-vs-stationary-anti-drone-systems"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -8,105 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/drone-detection-solutions-for-the-2027-fema-c-uas-grant-program"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "FEMA's $250M Counter-UAS Grant: Key Details for States and Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/femas-250m-counter-uas-grant-key-details-for-states-and-agencies"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Anti-Drone Systems for Airports: What Protects a Runway | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/anti-drone-systems-for-airports"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Drone Detection System Requirements: The RFP Checklist | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-system-requirements"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Best Drone Detection System: How to Actually Compare Them | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/best-drone-detection-system"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Drone Detection Solutions: Matching the System to the Mission | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-solutions-by-mission"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Anti-Drone Systems: Types, Legality, and Which You Need | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/anti-drone-systems"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Counter-UAS Solutions: How to Shortlist Vendors | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/counter-uas-solutions"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How Do Anti-Drone Systems Work? A Step-by-Step Guide | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/how-do-anti-drone-systems-work"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Counter-UAS Systems: What a Complete C-UAS Stack Includes | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/counter-uas-systems"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Counter-Drone Measures: Every Lawful Option, Ranked | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/counter-drone-measures"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Is Counter-UAS? The Complete C-UAS Guide | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/what-is-counter-uas"
   }
  ],
  "profile": {

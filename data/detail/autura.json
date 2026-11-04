@@ -1,8 +1,26 @@
 {
  "news": [
   {
-   "date": "2026-10-08",
+   "date": "2026-11-03",
    "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Towing Business Owners: What Did Paperwork Cost You Last Month?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autura.com/insights/towing-business-owners-what-did-paperwork-cost-you-last-month"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Autura Statement on Recent Las Vegas Towing Coverage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autura.com/news/autura-statement-on-recent-las-vegas-towing-coverage"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "index-text",
    "first_seen": "2026-10-08",
    "headline": "Why Government Procurement Is Stuck in the Past",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.autura.com/insights/from-scheduled-impound-auction-events-to-on-demand-auctions-why-this-change-benefits-sellers-and-buyers"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Why We Rebuilt Autura Marketplace",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.autura.com/insights/why-we-rebuilt-autura-marketplace"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Autura Rebuilds the Marketplace That Moves 77,000 Unclaimed Vehicles a Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.autura.com/news/autura-rebuilds-the-marketplace-that-moves-77-000-unclaimed-vehicles-a-year"
   }
  ],
  "profile": {

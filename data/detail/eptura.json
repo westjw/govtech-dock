@@ -1,6 +1,87 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Eptura Names First Chief AI Officer",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://eptura.com/news/eptura-names-first-chief-ai-officer/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Corporate real estate portfolio management: Evaluate options, optimize space, and reduce risk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/optimizing-your-real-estate-portfolio/"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How to fix maintenance contracts and service agreements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/maintenance-contracts-everything-you-need-to-know/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Flex DC 2026 recap: Five insights for federal facilities leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/flex-dc-2026-recap/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "This month in FM trends: Turning operational insight into coordinated action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/fm-trends-turning-operational-insights-into-action/"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Facility condition assessments for maintenance and capital planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/facility-condition-assessment/"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Beyond occupancy: New UK workplace insights for facilities teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/new-uk-workplace-insights-for-facilities-teams/"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Critical capabilities for visitor management system in connected enterprise operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/top-features-to-look-for-in-an-enterprise-visitor-management-system/"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Replacement asset value (RAV) for maintenance teams: From formula to investment decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/what-is-replacement-asset-value/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -26,87 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/sustainable-maintenance-that-also-protects-uptime-and-asset-life/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Workplace rollouts that stick: A framework for policy adoption",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/workplace-rollouts-that-stick/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Repurposing underused office space for focus, collaboration, and hybrid work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/empty-office-space-ideas/"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Asset utilization: How to find efficiencies across the seven factors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/asset-utilization/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How to leverage utilization data for stronger space planning and portfolio decisions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/leveraging-utilization-data-for-stronger-space-planning/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "This month in FM trends: Changing the question to get a better answer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/september-fm-trends/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why occupancy data is needed to challenge workplace assumptions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/why-occupancy-data-is-needed-to-challenge-workplace-assumptions/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How AI-backed buildings support hybrid work with better occupancy and building data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/how-ai-augmented-buildings-support-hybrid-work-in-2026/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "A practical framework for infrastructure maintenance and lifecycle planning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/infrastructure-maintenance/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "From reactive to strategic: How AI is changing the role of facility manager",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/how-ai-is-changing-the-role-of-facility-manager/"
   }
  ],
  "profile": {

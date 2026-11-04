@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "10 questions to ask any software vendor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/10-questions-to-ask-any-software-vendor-about-sovereignty/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/gitlab-joins-open-secure-ai-alliance/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "GitLab Secrets Manager: Govern secrets like your code",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/secrets-manager-ga/"
   }
  ]
 }

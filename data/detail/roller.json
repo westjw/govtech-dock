@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "6 key takeaways from the 2027 Attractions Industry Benchmark Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.roller.software/blog/6-key-takeaways-from-the-2027-attractions-industry-benchmark-report"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "WWA Show 2026 Recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.roller.software/blog/wwa-show-2026-recap"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.roller.software/blog/lazer-blaze"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Future of Discovery: How AI Is Reshaping the Way Guests Find and Choose Attractions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/how-ai-is-reshaping-the-way-guests-find-and-choose-attractions"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Area 51 Automated Retention and Streamlined F&B with ROLLER",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/area-51-partners"
   }
  ],
  "profile": {

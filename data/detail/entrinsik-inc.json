@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Insurance Agency Modernization: Empowering Your Team to Build Smarter Solutions",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The Four Levels of Reporting Maturity: Where Does Your Agency Stand?",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "What Your Regional Manager Should See Every Monday Morning",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Five Characteristics of a Decision-Ready Dashboard",
    "kind": "press",
@@ -37,8 +37,17 @@
    "url": "https://entrinsik.com/blog/decision-ready-dashboard-characteristics/"
   },
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "A Billion Dollars in Fraudulent Student Aid. Is Your CE Registration System Prepared for Workforce Pell?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://entrinsik.com/blog/workforce-pell-student-aid-fraud-ce-registration/"
+  },
+  {
    "date": "2026-10-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Why Annual Planning and Reporting No Longer Work in the Insurance Industry",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Decision Independence: The Next Evolution of Insurance Reporting",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://entrinsik.com/news/entrinsik-launches-informer-apps-informer-go/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "How Informer Apps and Informer GO Change the Game to Quick Action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://entrinsik.com/blog/informer-apps-informer-go-launch/"
   }
  ]
 }

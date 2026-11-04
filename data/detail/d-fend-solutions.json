@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Police Drones Are Mission-Critical. Is Your Counter-UAS Strategy Ready?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/police-drones-counter-uas-mission-continuity/"
+  },
+  {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Why Challenging Environments and Situations Demand a Different Kind of Counter-Drone Equipment",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Covert in Port and Precise at Sea: Drone Mitigation for Ports and Vessels with RF Cyber-Takeover",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://d-fendsolutions.com/blog/what-is-counter-uas-c-uas-a-guide-to-drone-defense/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The Unseen D-Fender: How the 2026 World Cup Proved the Case for SLTT Airspace Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/world-cup-drone-airspace-security/"
   }
  ],
  "profile": {

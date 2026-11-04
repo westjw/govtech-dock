@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "EarthDaily and Geosolutions Partner to Bring High-Frequency Satellite Intelligence to Central America",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/earthdaily-and-geosolutions-partner-to-bring-high-frequency-satellite-intelligence-to-central-america"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "October World in 10: From Soybean Planting Uncertainty to Winter Wheat Concerns",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/october-world-in-10-from-soybean-planting-uncertainty-to-winter-wheat-concerns"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "COP31's Accountability Challenge: Unequal Access to Climate Evidence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/cop31s-accountability-challenge-unequal-access-to-climate-evidence"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/nasa-esa-and-usgs-raise-the-bar-for-commercial-satellite-data"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "EarthDaily Secures Marigold Renewals With Two Global Mining Majors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/earthdaily-secures-marigold-renewals-with-two-global-mining-majors"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why Climate Risk Needs a Continuous Record of Change",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/why-climate-risk-needs-a-continuous-record-of-change"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why Border Security Needs Persistent Broad-Area Change Detection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/why-border-security-needs-persistent-broad-area-change-detection"
   }
  ],
  "profile": {

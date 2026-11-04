@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How to Manage Distributed Construction Teams Across Crews, Sites, and Subcontractors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://vitruvisoftware.com/blog/how-to-manage-distributed-construction-teams"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How Engineering Managers Use Construction Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://vitruvisoftware.com/blog/construction-management-software-for-engineering-managers"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Municipal Water Infrastructure Construction: How Contractors Deliver for City Owners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://vitruvisoftware.com/blog/municipal-water-infrastructure-construction"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://vitruvisoftware.com/blog/how-field-supervisors-use-construction-management-software"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "8 Key Benefits of Construction Management Software: Why Linear Construction Teams Are Going Digital",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://vitruvisoftware.com/blog/benefits-of-construction-management-software"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How QA/QC Managers Use Construction Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://vitruvisoftware.com/blog/how-qa-qc-managers-use-construction-management-software"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Project Managers Use Construction Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://vitruvisoftware.com/blog/how-project-managers-use-construction-management-software"
   }
  ]
 }

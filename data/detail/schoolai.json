@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Using AI to support school decision making",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/using-ai-for-school-decision-making"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "UCM education students design and lead AI workshops for working teachers through new SchoolAI internship",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/utm-ed-students-ai"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/how-to-tell-if-edtech-is-working"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "give yourself a month",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/managing-ai-implementation-in-schools"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "tools don't share data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/understanding-which-tools-teachers-use"
   }
  ],
  "profile": {

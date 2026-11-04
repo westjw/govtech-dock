@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Fight Tonight Needs Public-Data I&W Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/flight-tonight-needs-public-data-i-and-w-now/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/blog/singapore-cybersecurity-code-of-practice/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why PTEM Is Different: Threat-First, All the Way to a Decision",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/why-ptem-is-different-threat-first-all-the-way-to-a-decision/"
   }
  ],
  "profile": {

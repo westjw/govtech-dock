@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Not All Satellite Leak Detection Is Created Equal",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/blog/not-all-satellite-leak-detection-is-created-equal/"
+  },
+  {
    "date": "2026-10-24",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://asterra.io/blog/water-main-leak-detection/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Beneath the Surface: Using Satellite Leak Detection Across Different Environments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/blog/satellite-leak-detection-across-different-ground/"
   },
   {
    "date": "2026-09-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://asterra.io/blog/your-network-is-losing-water-eo-discover-3-0-helps-utilities-find-where-to-look-first/"
-  },
-  {
-   "date": "2026-06-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Introducing EO Discover 3.0",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://asterra.io/blog/eo-discover-3-0-is-here/"
-  },
-  {
-   "date": "2026-02-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Global Problems, Local Impact: How Utilities Worldwide Used AI to Find, Fix, and Future-Proof Infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://asterra.io/resources/global-problems-local-impact-how-utilities-worldwide-used-ai-to-find-fix-and-future-proof-infrastructure/"
   }
  ],
  "profile": {

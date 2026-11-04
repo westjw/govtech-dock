@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "DNS for AI Governance : Your AI program Isn\u2019t Stuck on Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/dns-for-ai-governance/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/blog/elevate-dns-threat-intelligence-for-proactive-network-security/"
-  },
-  {
-   "date": "2023-05-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "IDC 2023 Network Automation Report: Why DDI is an Obvious Starting Point",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/blog/idc-2023-network-automation-report-why-ddi-is-an-obvious-starting-point/"
   }
  ]
 }

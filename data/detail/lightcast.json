@@ -1,10 +1,28 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Where Talent Wants to Be: The 2026 Talent Attraction Scorecard",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/2026-talent-attraction-scorecard"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "It\u2019s Scary That AI Might Give You Bad Data. It\u2019s Terrifying That You Might Believe It.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/halloween-mcp-otj"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
-   "headline": "Highest Tool and Die Workers\u2019 Salaries in the US",
+   "headline": "The Highest Tool and Die Workers\u2019 Salaries in the US",
    "kind": "press",
    "kind_rule": null,
    "url": "https://lightcast.io/resources/blog/skilled-trades-tool-die-workers-salaries"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://lightcast.io/resources/blog/how-to-develop-an-agile-workforce-through-skills"
-  },
-  {
-   "date": "2023-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Career Pathways in Community Development",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lightcast.io/resources/blog/6-ways-to-use-alumni-outcomes-data"
-  },
-  {
-   "date": "2023-01-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "How to Retain Talent Using Career Pathways",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lightcast.io/resources/blog/how-to-retain-talent-using-career-pathways"
   }
  ]
 }

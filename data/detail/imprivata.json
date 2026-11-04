@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "time",
+   "first_seen": "2026-11-03",
+   "headline": "Imprivata Wins 2026 Top InfoSec Innovator Award for AI Security and Governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/company/press/imprivata-wins-2026-top-infosec-innovator-award-ai-security-and-governance"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "card-date",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/blog/make-security-easy-your-workforce-take-friction-out-authentication"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "card-date",
-   "first_seen": "2026-10-06",
-   "headline": "Why healthcare needs to ditch the password and switch to the PIN",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/why-healthcare-needs-ditch-password-and-switch-pin"
   }
  ],
  "profile": {

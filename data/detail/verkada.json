@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "Introducing FIPS 201 (FICAM) PIV Card Support for Verkada Access Control",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.verkada.com/blog/introducing-fips-201-for-access-control/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "index-text",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.verkada.com/blog/introducing-maps-in-command/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-07",
-   "headline": "Verkada Fire Alarm Monitoring: Modern, Cloud-Managed Protection for Every Site",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/introducing-fire-alarm-monitoring/"
   }
  ],
  "profile": {

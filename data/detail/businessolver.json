@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "New Businessolver Research Finds CEOs and CHROs Expect Empathy to Cost Them Authority",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://businessolver.com/news/new-businessolver-research-finds-ceos-and-chros-expect-empathy-to-cost-them-authority/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "index-text",
    "first_seen": "2026-10-31",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Businessolver named a Leader and the highest-rated platform in Everest Group\u2019s 2026 PEAK Matrix Reports for benefits administration",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Businessolver named a Leader in ISG Provider Lens 2026 for the third consecutive year",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "New Data Finds Executives Focused on Cutting Jobs for AI Efficiency Are Half as Likely to Invest in AI Upskilling",
    "kind": "press",
    "kind_rule": null,
    "url": "https://businessolver.com/news/ai-job-cuts-vs-upskilling-investment/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-21",
-   "headline": "Businessolver\u2019s Sofia AI Named 2026 AI-Powered Enterprise Solution of the Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://businessolver.com/news/businessolvers-sofia-ai-named-2026-ai-powered-enterprise-solution-of-the-year/"
   }
  ]
 }

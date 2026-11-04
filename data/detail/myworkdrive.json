@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-10-26",
+   "date": "2026-10-29",
    "date_source": "near-h1",
+   "first_seen": "2026-11-03",
+   "headline": "Can Files Stay On-Premises While Editing in Microsoft 365?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/edit-on-premises-files-microsoft-365"
+  },
+  {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Self-Hosted Document Editing for Data Sovereignty",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "SharePoint Server SE After Office Online Server Retirement",
    "kind": "press",
@@ -91,22 +100,13 @@
    "url": "https://www.myworkdrive.com/blog/swiss-public-sector"
   },
   {
-   "date": "2026-09-11",
-   "date_source": "near-h1",
+   "date": "2026-09-09",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
-   "headline": "File Access Audit Logging: How to Prove Who Accessed a File on a Windows Share",
+   "headline": "NTFS Permissions and ACL Management: A Practical Guide for File Shares",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myworkdrive.com/blog/file-access-audit-logging"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "index-text",
-   "first_seen": "2026-10-27",
-   "headline": "Giving AI Agents Access to On-Premises Files Without Migrating to the Cloud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/ntfs-permissions-acl-management"
   }
  ]
 }

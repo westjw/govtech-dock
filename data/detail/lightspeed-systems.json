@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How to Block Google\u2019s AI Overview and AI Mode for Students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/blog/block-google-ai-overview-ai-mode-students/"
+  },
+  {
    "date": "2026-11-01",
    "date_source": "json-ld",
    "first_seen": "2026-11-01",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lightspeedsystems.com/blog/10-questions-to-ask-your-edtech-vendor/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "10 Questions to Ask Your Edtech Vendor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/en_uk/blog/10-questions-to-ask-your-edtech-vendor/"
   }
  ],
  "profile": {

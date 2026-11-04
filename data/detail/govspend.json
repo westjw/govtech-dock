@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How Lighthouse Therapy Turned GovSpend Data Into an AI-Powered Sales Workflow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/case-study-how-lighthouse-therapy-turned-govspend-data-into-an-ai-powered-sales-workflow/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/how-small-businesses-get-government-contracts/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Pavilion and GovSpend Are Partnering to Bring Suppliers Earlier, Warmer Public Sector Opportunities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/pavilion-and-govspend-are-partnering-to-bring-suppliers-earlier-warmer-public-sector-opportunities/"
   }
  ],
  "profile": {

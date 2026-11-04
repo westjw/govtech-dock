@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "The Mathematics of FRS 102 Lease Accounting: Break Clauses, Peppercorn Rents, and More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://finquery.com/blog/frs-102-break-clauses-peppercorn-rents-more/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://finquery.com/blog/accrued-expenses-vs-accounts-payable-explained/"
-  },
-  {
-   "date": "2026-05-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Fixed Asset Accounting Explained with Examples, Journal Entries, and More",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://finquery.com/blog/fixed-assets-in-accounting-explained-examples/"
   }
  ]
 }

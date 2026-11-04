@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "CrowdStrike to Acquire Dreadnode to Bring Automated AI Security Testing to the Falcon Platform",
+   "kind": "funding",
+   "kind_rule": "to Acquire",
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-to-acquire-dreadnode/"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "CrowdStrike to Acquire Fiddler to Deliver Falcon Observe for AI Agent Observability",
+   "kind": "funding",
+   "kind_rule": "to Acquire",
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-to-acquire-fiddler/"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "CrowdStrike Secures AI Agents Inside Claude Cowork",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-secures-ai-agents-inside-claude-cowork/"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "CrowdStrike Advances AI Security and Safety from Endpoint to Cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-advances-ai-security-and-safety-falcon-guardian/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "index-text",
    "first_seen": "2026-10-31",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/why-organizations-secure-ai-agents-with-falcon-guardian/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "Obstacles to Weaponizing PHP2Shell Likely Constrain Immediate Widespread Exploitation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/obstacles-to-weaponizing-php2shell-likely-constrain-exploitation/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CrowdStrike Uncovers New Agentic AI Campaigns",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-uncovers-new-agentic-ai-campaigns/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CrowdStrike Protects Customers from Threats Delivered via PHP2Shell",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-protects-customers-from-php-rce-zero-days/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "CrowdStrike Achieves NCSC CIR Enhanced Level Assurance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-achieves-uk-ncsc-cir-enhanced-level-assurance/"
   }
  ]
 }

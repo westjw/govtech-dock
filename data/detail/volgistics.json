@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "Create Holidays to Close the Schedule on Certain Days",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/create-holidays-to-close-the-schedule-on-certain-days/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/display-whos-here-at-victouch/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Delete an Entire Batch of Service",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/delete-an-entire-batch-of-service/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "When the Park Is Full: Smarter Collections for Peak Attendance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bigbelly.com/news/when-the-park-is-full-smarter-collections-for-peak-attendance"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bigbelly.com/news/protecting-our-oceans-starts-in-our-communities"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From the Factory Floor to Florida\u2019s Waterfront: Fort Pierce Welcomes Summer with Bigbelly",
-   "kind": "leadership",
-   "kind_rule": "Welcomes",
-   "url": "https://bigbelly.com/news/from-the-factory-floor-to-floridas-waterfront-fort-pierce-welcomes-summer-with-bigbelly"
   }
  ],
  "profile": {

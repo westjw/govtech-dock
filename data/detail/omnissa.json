@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How HP and Omnissa streamline PC provisioning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-omnissa-and-hp-bring-drop-ship-provisioning/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -10,8 +19,8 @@
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-aem-building-blocks/"
   },
   {
-   "date": "2026-10-26",
-   "date_source": "card-date",
+   "date": "2026-10-30",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Horizon 8 on Red Hat OpenShift: More hypervisor choice",
    "kind": "press",
@@ -37,8 +46,8 @@
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-announcing-omnissa-elara/"
   },
   {
-   "date": "2026-10-22",
-   "date_source": "card-date",
+   "date": "2026-10-23",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Are you managing endpoints or managing workarounds?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/driving-euc-adoption/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "The device fleet is a budget strategy, not a perk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/device-fleet-as-a-budget-decision/"
   }
  ]
 }
