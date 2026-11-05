@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "How Escondido's P&R team automates admin work with Amilia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.amilia.com/blog/amilia-the-parks-and-tech-podcast-episode-escondido"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "index-text",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.amilia.com/blog/5-ways-the-amilia-bloomerang-integration-helps-organizations"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "A company reflecting the community they serve: Amilia named 2026 Best Workplace for Inclusion",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.amilia.com/newsroom/amilia-best-workplace-inclusion-2026"
   }
  ],
  "profile": {

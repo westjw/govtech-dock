@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Healthcare Hiring Strategy: How to Hire Healthcare Workers Safely",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jdp.com/blog/healthcare-hiring-strategy-how-to-hire-healthcare-workers/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jdp.com/blog/what-employers-can-learn-from-california-fair-chance-and-crd-investigations/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "The Difference Between a Screening Provider and a Background Screening Partner",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jdp.com/blog/background-screening-partner/"
   }
  ]
 }

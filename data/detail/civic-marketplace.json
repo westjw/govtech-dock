@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How a K-12 School Turned Its Existing Microsoft 365 Licenses Into an AI-Powered Security Operation in 10 Weeks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://civicmarketplace.com/news/how-a-k-12-school-turned-its-existing-microsoft-365-licenses-into-an-ai-powered-security-operation-in-10-weeks"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://civicmarketplace.com/news/how-local-agencies-can-use-cooperative-contracts-to-reduce-procurement-cycle-times-from-months-to-weeks"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Presupuesto para IA: C\u00f3mo los gobiernos locales pueden evitar la trampa de los precios por token",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://civicmarketplace.com/es-us/news/budgeting-for-ai-how-local-governments-can-avoid-the-token-pricing-trap"
   }
  ],
  "profile": {

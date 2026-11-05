@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-03",
-   "date_source": "time",
+   "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Imprivata Wins 2026 Top InfoSec Innovator Award for AI Security and Governance",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "index-text",
+   "date_source": "time",
    "first_seen": "2026-10-14",
    "headline": "Imprivata and Verosint merge branding, websites and other marketing materials in support of the recent Imprivata acquisition of Verosint",
    "kind": "funding",

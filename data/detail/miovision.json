@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "card-date",
+   "first_seen": "2026-11-04",
+   "headline": "How AI and Emergency Vehicle Preemption (EVP) Data Are Transforming Safety, Speed, and Operational Insights for First Responders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://miovision.com/blog/ai-first-responders-evp-insights/"
+  },
+  {
    "date": "2026-06-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://miovision.com/blog/intelligent-mobility-barriers-funding-politics-or-technology/"
-  },
-  {
-   "date": "2026-03-18",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Breaking Down the Barriers to AI Adoption in Traffic Engineering",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://miovision.com/blog/barriers-to-ai-adoption/"
   }
  ],
  "profile": {

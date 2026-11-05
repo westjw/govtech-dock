@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-26",
+   "headline": "Why Reliable Uptime Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/why-reliable-uptime-matters"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -26,15 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/four-questions-prevent-buyers-remorse"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Why Reliable Uptime Matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/why-reliable-uptime-matters"
   },
   {
    "date": "2026-10-24",

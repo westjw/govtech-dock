@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "Mueller Water Products Reports Record Fourth Quarter and Full Year 2026 Results; Introduces Fiscal 2027 Guidance",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "http://www.muellerwaterproducts.com/press-releases/mueller-water-products-reports-record-fourth-quarter-and-full-year-2026-results"
+  },
+  {
+   "date": "2026-10-23",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "Mueller Water Products Announces Agreement to Transition Metering Business to ZENNER USA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.muellerwaterproducts.com/press-releases/mueller-water-products-announces-agreement-transition-metering-business-zenner-usa"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "index-text",
    "first_seen": "2026-10-24",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://www.muellerwaterproducts.com/press-releases/mueller-water-products-announces-quarterly-dividend-42"
-  },
-  {
-   "date": "2026-05-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Mueller Water Products Announces Dates for Third Quarter 2026 Earnings Release and Conference Call",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.muellerwaterproducts.com/press-releases/mueller-water-products-announces-dates-third-quarter-2026-earnings-release-and"
-  },
-  {
-   "date": "2026-04-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Condition Assessment: How Much Detail is Needed and Where",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.muellerwaterproducts.com/news/condition-assessment-how-much-detail-needed-and-where"
   }
  ],
  "profile": {

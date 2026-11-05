@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How to Build a Districtwide Communication Consistency Policy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/districtwide-communication-consistency-policy"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "SchoolStatus Earns 30 G2 Badges for Fall 2026",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/nine-questions-attendance-diagnostic"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "New Book Gives District Leaders a Practical Framework for Improving Chronic Absenteeism\u2014and a Comprehensive Look at State-Level Attendance Policies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/new-book-for-improving-chronic-absenteeism"
   }
  ],
  "profile": {

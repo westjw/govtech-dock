@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How to Conduct a Business Impact Analysis (BIA)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/business-impact-analysis"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.motorolasolutions.com/en_us/blog/mobile-credentials"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "A complete guide for data center design and architecture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.motorolasolutions.com/en_us/blog/data-center-design"
   }
  ],
  "profile": {

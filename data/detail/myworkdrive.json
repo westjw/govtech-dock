@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-04",
+   "headline": "ONLYOFFICE Integration for File Servers and Cloud Storage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/onlyoffice-integration-file-servers-cloud-storage"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-04",
+   "headline": "MyWorkDrive at EDUCAUSE 2026: Recap from Denver",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/news/educause-2026"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "near-h1",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myworkdrive.com/blog/cmmc-phase-2-suspension"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-27",
-   "headline": "How Swiss Public Sector Organizations Benefit from MyWorkDrive",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/swiss-public-sector"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-27",
-   "headline": "NTFS Permissions and ACL Management: A Practical Guide for File Shares",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/file-access-audit-logging"
   }
  ]
 }

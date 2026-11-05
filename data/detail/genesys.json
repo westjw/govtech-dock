@@ -4,7 +4,7 @@
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
-   "headline": "How AI Turns Workforce Management into Workforce Orchestration",
+   "headline": "AI turns WFM into workforce orchestration | Genesys",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/how-ai-turns-workforce-management-into-workforce-orchestration"
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "Empowering people to transform customer experience",
    "kind": "press",
@@ -49,7 +49,7 @@
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
-   "headline": "Infosys BPM Turns CX Innovation into Measurable Business Value",
+   "headline": "Infosys BPM: CX innovation to business value | Genesys",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/transforming-experience-innovation-into-measurable-business-value"
@@ -85,9 +85,9 @@
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
-   "headline": "Security Update: Incident Affecting Certain Genesys Internal Business Systems",
+   "headline": "Security update: Internal systems incident | Genesys",
    "kind": "product",
-   "kind_rule": "Update",
+   "kind_rule": "update",
    "url": "https://www.genesys.com/blog/post/security-update-incident-affecting-certain-genesys-internal-business-systems"
   },
   {

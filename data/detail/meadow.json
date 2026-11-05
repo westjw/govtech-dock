@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Introducing Predictive Risk Scores",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.meadowfi.com/resources/introducing-predictive-risk-scores"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Getting Buy-In: How to Build the Case for AI in Your Office",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Enrollment Marketing Gets Students In \u2014 But the Financial Experience is What Keeps Them There",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-03-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "5 Signs Your Institution\u2019s Pre-Collections Process Is Broken",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.meadowfi.com/resources/5-signs-your-institutions-pre-collections-process-is-broken"
-  },
-  {
-   "date": "2026-02-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Late Fee Policy Recommendations for Higher Education: A Student-Centered Framework to Drive Persistence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meadowfi.com/resources/late-fee-policy-recommendations-for-higher-education-a-student-centered-framework-to-drive-persistence"
   }
  ],
  "profile": {

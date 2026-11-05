@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Best Virtual Computer Labs for Universities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://spektrasystems.com/blog/best-virtual-computer-labs-for-universities"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://spektrasystems.com/blog/virtual-it-lab-cost"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Best Customer Training Platforms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://spektrasystems.com/blog/best-customer-training-platforms"
   }
  ]
 }

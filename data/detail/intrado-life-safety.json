@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "End-to-End Monitoring and Emergency Coordination for Military Installations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.intrado.com/blog/video-end-to-end-monitoring-and-emergency-coordination-for-military-installations"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.intrado.com/blog/lessons-in-burnout-prevention-for-telecommunicators"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Intrado OneAlert\u2122 Introduces French Language Support for Critical Communications",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://www.intrado.com/blog/intrado-onealert-introduces-french-language-support-for-critical-communications"
   }
  ],
  "profile": {

@@ -2,20 +2,20 @@
  "news": [
   {
    "date": "2026-11-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
-   "headline": "Product Update November Product Update",
+   "headline": "The November product update \u2192",
    "kind": "product",
-   "kind_rule": "Update",
+   "kind_rule": "update",
    "url": "https://www.longeye.com/blog/product-update-nov-2026"
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-14",
-   "headline": "The October product update \u2192",
+   "headline": "October Product Update \ud83c\udf42",
    "kind": "product",
-   "kind_rule": "update",
+   "kind_rule": "Update",
    "url": "https://www.longeye.com/blog/product-update-oct-2026"
   },
   {

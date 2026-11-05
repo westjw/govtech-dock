@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How to Make the Case for a School Meal Price Increase",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linq.com/blog/how-to-make-the-case-for-a-school-meal-price-increase/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-31",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.linq.com/blog/building-a-finance-and-nutrition-partnership-in-k-12-districts/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Activity Funds as Additional Revenue Streams for Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/activity-funds-as-additional-revenue-streams-for-schools/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Digital Evidence Overload: Is Death by Data the New Normal?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/digital-evidence-overload/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.penlink.com/de/blog/coanalyst360-investigators-time/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "OSINT and the New Playbook for Sports Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/blog/osint-new-playbook-sports-security/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "Digital Accessibility Remediation Accelerates: YuJa Reports Significant Improvements Across Documents and Websites in 2026 November 4, 2026 | 2 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.yuja.com/blog/news/digital-accessibility-remediation-accelerates-2026/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "Metro Technology Centers Selects YuJa Panorama to Uphold LMS Accessibility Standards November 2, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.yuja.com/blog/news/metro-technology-centers-yuja-panorama/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "index-text",
    "first_seen": "2026-10-31",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "YuJa Panorama v26.8.0 Release \u2013 Deeper Remediation Capabilities, Optimized Integration Workflows, New Dashboards and More\u2026",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "YuJa AutoPilot v26.8.0 \u2013 Automated Remediation That Aligns with Your Style and Branding",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-22",
    "headline": "YuJa Verity v26.8.0 Release \u2013 New AI Compliance Assistant, Integrity Dashboards, Updated AI-Based Room Scans, and More\u2026",
    "kind": "product",
    "kind_rule": "Updated",
    "url": "https://www.yuja.com/blog/yuja-verity-v26-8-0-release-smarter-proctoring-and-enhanced-assessment-security-with-new-ai-assistant/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-20",
-   "headline": "Taft College Adopts YuJa Panorama to Increase Accessibility of Digital Course Content October 19, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Adopts",
-   "url": "https://www.yuja.com/blog/news/taft-college-yuja-panorama/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-17",
-   "headline": "St. Mary\u2019s College of Maryland Adopts YuJa EqualGround to Upgrade Web Content Accessibility October 16, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Adopts",
-   "url": "https://www.yuja.com/blog/news/st-marys-college-of-maryland-yuja-equalground/"
   }
  ],
  "profile": {

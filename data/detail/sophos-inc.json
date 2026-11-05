@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Sophos Helps Organizations Secure the AI-Era Network as Demands on Performance and Protection Grow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/press/press-releases/2026/11/sophos-helps-organizations-secure-the-ai-era-network"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Securing the AI-era network: Why performance and defense now belong together",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/blog/securing-the-ai-era-network-why-performance-and-defense-now-belong-together"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Sophos Firewall v23 is now available",
+   "kind": "product",
+   "kind_rule": "now available",
+   "url": "https://www.sophos.com/blog/sophos-firewall-v23-now-available"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Building intent-based access control for AI agents",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Proof-of-concept exploit released for PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
    "kind": "product",
    "kind_rule": "released",
    "url": "https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "BRONZE SANDCASTLE deploys modified Meterpreter shells",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/bronze-sandcastle-deploys-modified-meterpreter-shells"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "BRONZE SANDCASTLE deploys modified Meterpreter shells",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/blog/bronze-sandcastle-deploys-modified-meterpreter-shells"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "ConnectWise Cloud Backup application abused in cross-tenant token sweep",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/connectwise-cloud-backup-application-abused-in-token-sweep"
   }
  ]
 }

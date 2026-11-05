@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How to Pilot Shared Fleet Management Software Before a Full Rollout",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-pilot-shared-fleet-management-software-before-a-full-rollout"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How to Set Fair Vehicle Reservation Priority Rules for Shared Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-set-fair-vehicle-reservation-priority-rules-for-shared-fleets"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "When Should Organizations Replace Personal Mileage Reimbursement With Shared Fleet Vehicles?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/when-should-organizations-replace-personal-mileage-reimbursement-with-shared-fleet-vehicles"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/10-warning-signs-your-shared-fleet-scheduling-process-is-breaking-down"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Much Does Poor Vehicle Availability Actually Cost a Shared Fleet?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-much-does-poor-vehicle-availability-actually-cost-a-shared-fleet"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Should Shared Fleets Handle Peak Demand Without Buying Vehicles They Rarely Need?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-should-shared-fleets-handle-peak-demand-without-buying-vehicles-they-rarely-need"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Is Low Fleet Utilization Really a Demand Problem? 8 Access Barriers That Can Make Shared Vehicles Look Underused",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/is-low-fleet-utilization-really-a-demand-problem-8-access-barriers-that-can-make-shared-vehicles-look-underused"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "What is LLMjacking, and how can organizations prevent it?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/what-is-llmjacking-and-how-can-organizations-prevent-it"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-29",
    "headline": "How Zero Trust changes when the \u201cuser\u201d is an AI agent",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/non-human-identities-the-expanding-identity-attack-surface-in-modern-smb-environments"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Why ClickFix is so effective against security-aware users",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/why-clickfix-is-so-effective-against-security-aware-users"
   }
  ]
 }

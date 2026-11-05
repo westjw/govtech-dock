@@ -1,83 +1,83 @@
 {
-  "date": "2026-11-04",
-  "previous": "2026-11-03",
+  "date": "2026-11-05",
+  "previous": "2026-11-04",
   "changes": [
     {
-      "company": "Accela",
-      "id": "accela",
+      "company": "Routeware",
+      "id": "routeware",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Account Executive (Remote Based - US)"
+      "note": "Account Executive - Municipalities"
     },
     {
-      "company": "Automotus",
-      "id": "automotus",
+      "company": "Paymentus",
+      "id": "paymentus",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.paymentus.com/c"
+    },
+    {
+      "company": "AiDash",
+      "id": "aidash",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Manager (US Remote)"
+    },
+    {
+      "company": "Municibid",
+      "id": "municibid",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Nuvei",
+      "id": "nuvei",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Propelus",
+      "id": "propelus",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Manager of Customer Success (Remot only"
+    },
+    {
+      "company": "Grant Street Group",
+      "id": "grant-street-group",
       "from": "None found",
       "to": "Unknown",
-      "note": "no jobs parsed from JazzHR board and the"
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "ClearPoint Strategy",
-      "id": "clearpoint-strategy",
-      "from": "None found",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "InVeris Training Solutions",
-      "id": "inveris-training-solutions",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Auror",
-      "id": "auror",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Director of Customer Success only"
-    },
-    {
-      "company": "KPA",
-      "id": "kpa",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive - Automotive (Dallas, TX)"
-    },
-    {
-      "company": "Integrated Biometrics",
-      "id": "integrated-biometrics",
+      "company": "Vanderlande",
+      "id": "vanderlande",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "Fluxx",
-      "id": "fluxx",
+      "company": "EnergyHub",
+      "id": "energyhub",
       "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Sales Executive (Remote - United St)"
+    },
+    {
+      "company": "GL Solutions",
+      "id": "gl-solutions",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Attenti",
-      "id": "attenti",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Chmura Economics & Analytics",
-      "id": "chmura-economics-analytics",
+      "company": "Psych Hub",
+      "id": "psych-hub",
       "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative only"
+      "to": "None found",
+      "note": ""
     }
   ]
 }

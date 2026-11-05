@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "CX in 2027: 5 Challenges and Opportunities for Leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/customer-experience-challenges"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Docusign Named a Leader in the 2026 IDC MarketScape for Worldwide Contract Life-Cycle Management Software for Corporate Legal",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/docusign-leader-2026-idc-marketscape-worldwide-contract-life-cycle-management-software-corporate-legal"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/digital-agreement-abandonment"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Customers Who Switched to Docusign Reported Higher and Faster Completion Rates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/docusign-higher-and-faster-completion-rates"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "How Contract Lifecycle Management (CLM) Helps Scale the Contract Process",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/how-contract-lifecycle-management-helps-scale-the-contract-process"
   }
  ]
 }

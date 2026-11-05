@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Volgistics vs. Better Impact Software Comparison: What Makes These Platforms Different?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/volgistics-vs-betterimpact-software-comparison/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/use-substitute-tracking-for-schedule-adjustments/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Display Who\u2019s Here at VicTouch",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/display-whos-here-at-victouch/"
   }
  ]
 }

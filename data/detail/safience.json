@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-26",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Alternatives to open-web face search: what to ask before you buy",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Five questions a council should put in writing before it approves public-safety technology",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "What the Apple Photos ruling says about keeping a face template",
    "kind": "press",
@@ -28,8 +28,8 @@
    "url": "https://safience.io/2026/10/apple-photos-bipa-ruling-face-templates/"
   },
   {
-   "date": "2026-10-21",
-   "date_source": "index-text",
+   "date": "2026-10-12",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Identity intelligence starts with a record, not a face",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Biometrica Systems now operates as Safience",
    "kind": "press",
@@ -85,15 +85,6 @@
    "date": "2026-10-01",
    "date_source": "index-text",
    "first_seen": "2026-09-28",
-   "headline": "A match is only as good as the record behind it",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2026/09/a-match-is-only-as-good-as-the-record-behind-it/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
    "headline": "Biometrica Systems now operates as Safience",
    "kind": "press",
    "kind_rule": null,
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2022/02/millions-of-americans-are-victims-of-stalking-each-year/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Biometrica Systems now operates as Safience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2021/12/examining-the-homeland-security-effort-against-trafficking-through-the-blue-campaign/"
   }
  ],
  "profile": {

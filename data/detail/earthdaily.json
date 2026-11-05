@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "The EarthDaily Monitor Nov 2026: EarthDaily-Landsat Integration, COP31\u2019s Evidence Test and Persistent GEOINT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/the-earthdaily-monitor-nov-2026-earthdaily-landsat-integration-cop31s-evidence-test-and-persistent-geoint"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/september-world-in-10-a-global-crop-outlook-divided-by-wetness-and-dryness"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "NASA, ESA and USGS Raise the Bar for Commercial Satellite Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/nasa-esa-and-usgs-raise-the-bar-for-commercial-satellite-data"
   }
  ],
  "profile": {

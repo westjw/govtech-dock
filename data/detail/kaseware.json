@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "AI Is Accelerating Investigations. Can Law Enforcement Keep Up?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/ai-in-law-enforcement-investigative-readiness"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kaseware.com/post/the-other-side-of-the-case-modernizing-victim-assistance-in-the-digital-criminal-justice-system"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Staying Ahead of Hate \u2013 Part VIII: The Expanding Target",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaseware.com/post/staying-ahead-of-hate-part-viii-the-expanding-target"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "The Hardest Part of Legal Tech Modernization Isn\u2019t the New System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.onit.com/blog/the-hardest-part-of-legal-tech-modernization-isnt-the-new-system/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "Legal Ops Doesn\u2019t Need an IT Ticket for Every Workflow",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "Where Legal Hold Processes Break Down and What a Stronger Process Looks Like",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.onit.com/blog/ai-outperforms-lawyers-legal-invoice-review-research/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What Model Context Protocol Means for the Future of Legal AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.onit.com/blog/model-context-protocol-legal-ai/"
   }
  ]
 }

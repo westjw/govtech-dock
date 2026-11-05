@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "The readiness gap: How poor handoffs slow organizational resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/the-readiness-gap-how-poor-handoffs-slow-organizational-resilience/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "10 risks shaping resilience in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/10-risks-shaping-resilience-in-2027/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/blog/why-eu-energy-and-utility-resilience-depends-on-turning-alerts-into-coordinated-action/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond duty of care: 5 trends redefining travel risk management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/beyond-duty-of-care-5-trends-redefining-travel-risk-management/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2026 hospital hurricane preparedness checklist: Are you ready?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/2026-hospital-hurricane-preparedness-checklist-are-you-ready/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Volunteer Management Best Practices for Nonprofits in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://learn.givepulse.com/blog/volunteer-management-best-practices-for-nonprofits"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How to Measure Volunteer Impact (and Actually Prove It to Donors)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://learn.givepulse.com/blog/how-to-measure-volunteer-impact-and-prove-it-to-donors"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://learn.givepulse.com/blog/what-corporations-actually-look-for-in-a-nonprofit-partner"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Best Way to Celebrate Democracy? Strengthen It!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://learn.givepulse.com/blog/the-best-way-to-celebrate-democracy-strengthen-it"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Corporate Social Responsibility 2.0: Moving from Donations to Collaboration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://learn.givepulse.com/blog/corporate-social-responsibility-2.0-moving-from-donations-to-collaboration"
   }
  ]
 }

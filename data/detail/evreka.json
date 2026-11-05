@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "What Is PPWR? EU Packaging Regulation Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/what-is-ppwr-2/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -73,7 +82,7 @@
    "url": "https://evreka.co/blog/ai-assistants-municipal-waste-operations/"
   },
   {
-   "date": "2026-08-25",
+   "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How AI Assistants Are Simplifying EPR CSRD Reporting",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://evreka.co/blog/smart-waste-management-for-municipalities-what-does-it-take/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Selling Recycled Materials in 2026: What the New EU Rules Mean for Sellers and Buyers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/selling-recycled-materials-eu-rules-2026/"
   }
  ],
  "profile": {

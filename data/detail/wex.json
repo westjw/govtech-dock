@@ -1,13 +1,31 @@
 {
  "news": [
   {
-   "date": "2026-11-03",
+   "date": "2026-11-04",
    "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "From answers to action: Why the real measure of member experience is resolution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/benefits-member-experience/"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Navigating HSA and FSA compliance: Key FAQs and common misconceptions",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/hsa-and-fsa-faqs/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "How to prevent payment fraud: 5 ways to build a strong anti-fraud culture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/create-an-anti-fraud-culture/"
   },
   {
    "date": "2026-10-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/wex-enters-open-enrollment-season-at-record-customer-satisfaction/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "From HSA saver to HSA investor: See the full potential of your health savings account",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/blog/hsa-saver-to-investor/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "HSA Day 2026: How an HSA can be a financial safety net",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/blog/hsa-day-2026/"
   }
  ]
 }

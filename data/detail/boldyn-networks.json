@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Smart City Roma appoints Brendan O\u2019Reilly as Chairman of the Board",
+   "kind": "leadership",
+   "kind_rule": "appoints",
+   "url": "https://www.boldyn.com/news/smart-city-roma-appoints-brendan-oreilly-as-chairman-of-the-board"
+  },
+  {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Radford University resets the student experience with connectivity that feels like home",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Boldyn Networks partners with Pilot Fiber to further enhance connectivity throughout the Northeast",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "20 more campuses select Boldyn for connectivity and IT operations",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Southern California\u2019s most popular airport scales for the future with Boldyn Networks\u2019 advanced private wireless network",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "NYRA chooses Boldyn Networks as connectivity partner for the Belmont Park redevelopment project",
    "kind": "contract",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.boldyn.com/news/boldyn-networks-supercharges-connectivity-at-the-o2-belfast-with-o2-customers-to-experience-it-first"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The UK's smartest city where no one is left behind",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.boldyn.com/blog/smartest-city-where-no-one-is-left-behind"
   }
  ],
  "profile": {

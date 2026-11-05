@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Lightning Delay Rules: When to Stop, Reset the Clock, and Resume Activity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/lightning-delay-rules/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/ossaa-heat-policy-the-wbgt-playbook-for-oklahoma-schools/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "VHSL Heat Policy: The WBGT Playbook for Virginia Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/vhsl-heat-policy-the-wbgt-playbook-for-virginia-schools/"
   }
  ],
  "profile": {

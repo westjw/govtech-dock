@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Fire department software: the core tech stack and why data integration comes first",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/fire-department-tech-stack"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "First responder wellness data: how to catch burnout",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/fire-rescue-wellness-data-burnout-webinar-recap"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -89,24 +107,6 @@
    "kind": "leadership",
    "kind_rule": "as CFO",
    "url": "https://www.peregrine.io/resources/peregrine-technologies-names-adrian-kaplan-as-cfo"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Connecting Hayward\u2019s vulnerable community members with services through integrated data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/connecting-haywards-vulnerable-community-members-with-services-through-integrated-data"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "FOX 13 Tampa Bay Fox 13 Tampa Bay: Manatee County tracks heat emergencies in Peregrine",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/fox-13-tampa-bay-manatee-county-tracks-heat-emergencies-in-peregrine"
   }
  ],
  "profile": {

@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Condition Monitoring and Predictive Maintenance Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/condition-monitoring-and-predictive-maintenance/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How to Choose and Roll out Cloud-Based CMMS Software for Your Maintenance Team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/cloud-based-cmms/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "EAM Maintenance Software: What It Is and How to Choose It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/eam-maintenance-software/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "What Are IIoT Services? How Connected Equipment Data Turns Into Maintenance Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/iiot-services/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "6 Best Data Security Practices for IIoT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/data-security-practices-for-iiot/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.upkeep.com/blog/iiot-applications/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Reduce Downtime in Manufacturing: A Line-Level Playbook",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/reduce-downtime-in-manufacturing/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Maintenance Teams Are Adopting AI Before Their Companies Do",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/maintenance-teams-are-adopting-ai-before-their-companies-do/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Introducing Mobile Purchase Orders: Order Parts From Any Work Order, Right From the Field",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.upkeep.com/blog/mobile-purchase-orders/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Food Manufacturing EHS Software: 6 Top Options Compared",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/food-manufacturing-ehs-software/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Maintenance Ticket Software 101: Benefits, Features, and Setup",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/maintenance-ticketing-system/"
   }
  ]
 }

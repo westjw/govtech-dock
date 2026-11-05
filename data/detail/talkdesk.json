@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Holiday shopping sees retailers push AI. Shoppers are checking it twice.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/blog/ai-holiday-shopping-trends-2026/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "time",
+   "first_seen": "2026-11-04",
+   "headline": "Retailers are betting on AI agents for holiday shopping, but consumers refuse to hand over their wallets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/news-and-press/press-releases/2026-holiday-shopping-survey/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "time",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/omnichannel-contact-center/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Speech analytics software: A definitive guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/speech-analytics-software/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Are banks undervaluing their branches?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/how-ai-transforming-bank-branch-attribution/"
   }
  ]
 }

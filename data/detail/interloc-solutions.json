@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "index-text",
+   "first_seen": "2026-11-04",
+   "headline": "Maximo Application Suite Security Bulletins November 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/maximo-application-suite-security-bulletins-november-2026"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/why-im-excited-about-what-interloc-is-bringing-to-apta-2026-transform-expo"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Interloc Solutions Launches interloc.ai, an Enterprise Agentic AI Platform Built Specifically for IBM Maximo",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.interlocsolutions.com/company/news/interloc-solutions-launches-interloc.ai-an-enterprise-agentic-ai-platform-built-specifically-for-ibm-maximo"
   }
  ],
  "profile": {

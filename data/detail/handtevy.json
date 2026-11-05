@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Indiana EMS Partnership Renewed: More Rural Agencies Gain Access to Handtevy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/indiana-ems-partnership-renewal/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.handtevy.com/news/more-childrens-lives-will-be-saved-as-utah-partners-with-handtevy-for-all-ems-agencies-in-the-state/"
-  },
-  {
-   "date": "2019-11-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Child\u2019s Play: Scoop-and-Run May Not Be Best for Kids in Cardiac Arrest",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.handtevy.com/news/childs-play-scoop-and-run-may-not-be-best-for-kids-in-cardiac-arrest/"
   }
  ],
  "profile": {

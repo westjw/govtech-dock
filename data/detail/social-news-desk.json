@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Social Media Metrics for News Publishers: What to Track Beyond Likes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.socialnewsdesk.com/blog/social-media-metrics-for-news-publishers-what-to-track-beyond-likes/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.socialnewsdesk.com/blog/how-local-newsrooms-cover-breaking-news-faster-with-snd/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Five Minutes Between \u201cStory\u2019s Live\u201d and \u201cPost\u2019s Up\u201d",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.socialnewsdesk.com/blog/the-five-minutes-between-storys-live-and-posts-up/"
   }
  ],
  "profile": {

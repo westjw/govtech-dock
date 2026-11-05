@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Leidos introduces HeadWay Dispatch for AI agent oversight",
+   "kind": "product",
+   "kind_rule": "introduces",
+   "url": "https://leidos.com/insights/leidos-introduces-headway-dispatch-ai-agent-oversight"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/why-document-intelligence-must-move-beyond-extraction"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-16",
-   "headline": "How cognitive security can protect judgment in AI use",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/how-cognitive-security-can-protect-judgment-ai-use"
   }
  ]
 }

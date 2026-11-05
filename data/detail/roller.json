@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "ROLLER at IAAPA Expo Europe 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.roller.software/blog/iaapa-expo-europe-2026-recap"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "What's Working, and What's Next, in AI-Powered Guest Retention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.roller.software/blog/whats-working-and-whats-next-in-ai-powered-guest-retention"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.roller.software/blog/stoke-factory-used-roller-capital"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Memberships and Loyalty Programs: Why the Best Venues Run Both",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/memberships-and-loyalty-programs-why-the-best-run-both"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Lazer Blaze Is Turning Party Guests Into Regulars With ROLLER Loyalty",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/lazer-blaze"
   }
  ],
  "profile": {

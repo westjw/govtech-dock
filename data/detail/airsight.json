@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How AirGuard's New Analytics Turns Drone Detection Data into Findings You Can Act On",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/how-airguards-new-analytics-turns-drone-detection-data-into-findings-you-can-act-on"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/portable-vs-stationary-anti-drone-systems"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Drone Detection Solutions for the 2027 FEMA C-UAS Grant Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-solutions-for-the-2027-fema-c-uas-grant-program"
   }
  ],
  "profile": {

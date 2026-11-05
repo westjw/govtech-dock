@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Agents run on the endpoint. Secure them there.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/news/omnissa-one-safe-place-to-run-release/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Zero Trust for AI agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-zero-trust/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "AI needs a safe place to run",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-safe-place-to-run-for-ai/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Omnissa Sovereign Solution expands to servers and new markets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-oss-expands-to-more-countries/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -26,6 +62,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/more-hypervisor-choice-horizon-8-red-hat-openshift/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-29",
+   "headline": "Shadow AI governance: Why visibility beats bans",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/why-visibility-beats-bans/"
   },
   {
    "date": "2026-10-23",
@@ -57,56 +102,11 @@
   {
    "date": "2026-10-22",
    "date_source": "card-date",
-   "first_seen": "2026-10-29",
-   "headline": "Shadow AI governance: Why visibility beats bans",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/why-visibility-beats-bans/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "card-date",
    "first_seen": "2026-10-27",
    "headline": "Omnissa adoption resources: Adoption Wizard and Kits",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-adoption-resources-adoption-wizard-and-kits/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "The link between device performance & employee productivity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/device-performance-undermining-employee-productivity/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "The agentic endpoint, the last mile of enterprise security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/agentic-endpoint/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Omnissa expands into the Kingdom of Saudi Arabia",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/news/Omnissa-enters-KSA/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Driving EUC adoption: A step-by-step guide to success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/driving-euc-adoption/"
   }
  ]
 }

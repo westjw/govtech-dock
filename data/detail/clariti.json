@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "How Ontario Permitting Teams Can Get Cleaner Applications Before Review Starts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/how-ontario-permitting-teams-can-get-cleaner-applications"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://www.claritisoftware.com/blog/clariti-acquires-civcheck-to-accelerate-permit-approvals-with-ai"
-  },
-  {
-   "date": "2025-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Long Beach, CA, to \u2018Dramatically Improve\u2019 Permitting Experience with Clariti Enterprise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.claritisoftware.com/blog/long-beach-selects-clariti-enterprise"
   }
  ],
  "profile": {

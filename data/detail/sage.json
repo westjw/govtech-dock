@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Dental practice KPIs for multi-location groups: a scorecard by location",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/dental-practice-kpis-multi-location-scorecard/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-30",
    "headline": "PPO pressure: the contribution margin questions dental group finance teams should ask",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/home-health-hospice-adding-branches-without-adding-close-days/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Labor cost and occupancy by community: the weekly numbers senior living finance teams need",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/labor-cost-occupancy-by-community-weekly-senior-living-finance/"
   }
  ]
 }
