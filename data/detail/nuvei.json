@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "What travelling home for the holidays reveals about the limits of purchase intent",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nuvei.com/posts/holiday-travel-bookings-price-transparency"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "What travelling home for the holidays reveals about the future of agentic commerce",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nuvei.com/posts/agentic-commerce-holiday-travel-bookings"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "What travelling home for the holidays reveals about how context shapes payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nuvei.com/posts/holiday-travel-payment-preferences"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "The payment visibility paradox: Why more data doesn't always offer clearer answers",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nuvei.com/posts/governments-biggest-technology-problem"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "\"The hardest payment in the world\": Why travel payments are so hard to get right",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nuvei.com/posts/the-hardest-payment-in-the-world-why-travel-is-the-toughest-payment-to-get-right"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Is your payment experience holding back your omnichannel strategy?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nuvei.com/posts/is-your-payment-experience-holding-back-your-omnichannel-strategy"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Nuvei and Kolleno Partner to Embed Global Payments into AI-Powered Finance Workflows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nuvei.com/posts/nuvei-and-kolleno-partner-to-embed-global-payments-into-ai-powered-finance-workflows"
   }
  ]
 }

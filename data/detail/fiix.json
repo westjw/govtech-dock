@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-08-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Automation World Q&A with Fiix by Rockwell Automation",
    "kind": "press",
@@ -19,8 +19,8 @@
    "url": "https://fiixsoftware.com/blog/allergen-changeover-maintenance/"
   },
   {
-   "date": "2026-07-14",
-   "date_source": "index-text",
+   "date": "2026-07-23",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Rockwell Automation and Augury Partner to Improve Industrial Performance with Agentic AI",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-03-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "SAP Makes Fiix by Rockwell Automation Official Build Partner, Currently Live on SAP Store",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2025-09-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Salesforce-Connected Third-Party Drift Application Incident Response",
    "kind": "press",
@@ -100,8 +100,8 @@
    "url": "https://fiixsoftware.com/blog/fiix-salesforce-security-incident-update/"
   },
   {
-   "date": "2025-03-06",
-   "date_source": "index-text",
+   "date": "2025-03-11",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Rockwell Automation (Fiix) Named a Leader by IDC MarketScape for SaaS CMMS Applications",
    "kind": "press",

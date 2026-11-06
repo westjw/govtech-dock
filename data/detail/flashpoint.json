@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Inside BTMob: How a Source Code Leak Expanded Access to a Mobile RAT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/inside-btmob-how-a-source-code-leak-expanded-access-to-a-mobile-rat/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Beyond Support: How Flashpoint Redefines the Customer Success Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/beyond-support-how-flashpoint-redefines-the-customer-success-experience/"
   }
  ],
  "profile": {

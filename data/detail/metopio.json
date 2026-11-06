@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Public Health Performance Management: Takeaways from ASTHO\u2019s Solutions Showcase",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://metopio.com/blog/public-health-performance-management-system"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "How Health Departments Track CHIP Progress: NACCHO Webinar Recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://metopio.com/blog/tracking-chip-progress"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://metopio.com/blog/where-ai-actually-helps-in-public-health-data-work"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Discussing Your Biggest Community Health Improvement Cycle Data Topics & Priorities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://metopio.com/blog/discussing-your-biggest-community-health-improvement-cycle-data-topicsand-priorities"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "A Practical Guide to Automating Your Community Health Assessment (and CHIP) Process",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://metopio.com/blog/automating-your-community-health-assessment-and-chip-process"
   }
  ]
 }

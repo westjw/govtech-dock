@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "How to fix maintenance contracts and service agreements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/how-to-fix-maintenance-contracts-and-service-agreements/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "How to fix maintenance contracts and service agreements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/maintenance-contracts-everything-you-need-to-know/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
@@ -17,15 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/optimizing-your-real-estate-portfolio/"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "How to fix maintenance contracts and service agreements",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/maintenance-contracts-everything-you-need-to-know/"
   },
   {
    "date": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/how-it-coordinates-contractor-access/"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Sustainable maintenance that also protects uptime and asset life",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/sustainable-maintenance-that-also-protects-uptime-and-asset-life/"
   }
  ],
  "profile": {

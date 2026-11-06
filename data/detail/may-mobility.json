@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "Forterra and May Mobility Advance to Phase III of DIU\u2019s ROADS Challenge, Bringing Autonomous Rides to Soldiers on Military Bases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/posts/forterra-and-may-mobility-advance-to-phase-iii-of-dius-roads-challenge-bringing-autonomous-rides-to-soldiers-on-military-bases/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "index-text",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://maymobility.com/posts/get-to-know-may-mike-diaz-senior-autonomy-release-engineer/"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Espa\u00f1ol (Estados Unidos) \ud83c\uddfa\ud83c\uddf8",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maymobility.com/es/posts/get-to-know-may-mike-diaz-senior-autonomy-release-engineer/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "12 Questions Industry Leaders Asked at the Maintenance Heroes Summit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://limblecmms.com/blog/questions-industry-leaders-asked-at-the-maintenance-heroes-summit"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://limblecmms.com/blog/scaling-a-cmms-global-program"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Limble Ranks #1 in Predictive Maintenance Across G2's Fall 2026 Report",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://limblecmms.com/news/g2-fall-2026-report"
   }
  ],
  "profile": {

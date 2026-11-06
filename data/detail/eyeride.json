@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "index-text",
+   "first_seen": "2026-11-06",
+   "headline": "How many damage claims did your fleet pay last year? And how many of them actually happened?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eyeride.io/blog/how-many-damage-claims-did-your-fleet-pay-last-year-and-how-many-of-them-actually-happened/"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "index-text",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eyeride.io/blog/how-small-fleet-issues-quietly-become-big-costs/"
-  },
-  {
-   "date": "2026-04-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Officer Safety Paradox",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eyeride.io/blog/the-officer-safety-paradox/"
   }
  ],
  "profile": {

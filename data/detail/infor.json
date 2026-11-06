@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Accelerate revenue with a better buying experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/accelerate-revenue-with-better-buying-experience"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Infor CloudSuite Automotive 2026.10: More automation and an easier route to the agentic enterprise",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "October 2026 release: Infor CloudSuites for distribution put AI to work where distributors need it most",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-05",
    "headline": "Hoteliers, read this before you adopt another AI tool",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "From ideas to impact: Meet the 2026 Infor Community Hackathon winners",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-29",
    "headline": "Hiring faster \u2260 hiring better",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-28",
    "headline": "What does the bank get in return? Managing commercial customer commitments",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-23",
    "headline": "Gartner IT Symposium/Xpo 2026: Day 4 Highlights with Infor: Humans and AI agents, one coordinated system",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-22",
    "headline": "Gartner IT Symposium/Xpo 2026: Day 3 Highlights with Infor: Governed by design, ready to scale AI",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/gartner-2026-day-3-governed-ai-trust"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Gartner IT Symposium/Xpo 2026: Day 2 Highlights with Infor: Build your AI roadmap, then let value compound",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/gartner-2026-day-2-ai-roadmap-compounding-value"
   }
  ],
  "profile": {

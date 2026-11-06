@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Modernization of the Contact Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brandtinfo.com/resources/modernization-of-the-contact-center/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brandtinfo.com/resources/licensing-auto-renew-increase-continuous-licensure-and-reduce-gaps-between-license-purchases/"
-  },
-  {
-   "date": "2025-12-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Out of the Woods: Urgent Customer Communications Best Practices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brandtinfo.com/resources/out-of-the-woods-urgent-customer-communications-best-practices/"
   }
  ]
 }

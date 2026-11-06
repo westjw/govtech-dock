@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Rules in Docusign IAM: The Fastest Path to Agreement Automation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/rules-iam-contract-automation"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/legal-ai-adoption-culture"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Why 40% of Organizations Lose Customers on Digital Agreements\u2014and How to Fix It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/digital-agreement-abandonment"
   }
  ]
 }

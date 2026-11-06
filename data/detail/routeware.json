@@ -1,8 +1,35 @@
 {
  "news": [
   {
-   "date": "2026-10-27",
+   "date": "2026-11-05",
    "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Smart Technologies Help Municipalities Optimize Waste Collection Routes and Reduce Costs.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/resources/news/smart-technologies-help-municipalities-optimize-waste-collection-routes-and-reduce-costs/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "Operational AI: Closing the Blind Spot in Waste Collection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/operational-ai-waste-collection/"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "How to Choose the Best Waste Management Software: A UK Council\u2019s Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/best-waste-management-software-uk/"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
    "headline": "From Scale to Invoice: How MyTruckScales and Routeware Connect the Weigh-In to Billing and Routing",
    "kind": "press",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
    "headline": "The Paperless Scale House: What Changes When the Weigh Ticket Goes Digital",
    "kind": "press",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-19",
    "headline": "How Roll-Off Dispatch Software Streamlines a Site Services Operation",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/blog/optimized-waste-collection-routes-live-maps/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "Surgical Waste Management for Medical Waste Haulers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/surgical-waste-management/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "How Haulers and Cities Run Smarter, Cleaner Operations With a Smart Garbage Management System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/garbage-management-system/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "How Routeware ReCollect Powers Smarter University Waste Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/university-waste-management/"
   }
  ],
  "profile": {

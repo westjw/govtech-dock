@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "5 employee experience gaps that may be hurting workplace culture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://businessolver.com/blog/five-employee-experience-gaps/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-27",
    "headline": "Businessolver named a Leader and the highest-rated platform in Everest Group\u2019s 2026 PEAK Matrix Reports for benefits administration",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Businessolver named a Leader in ISG Provider Lens 2026 for the third consecutive year",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://businessolver.com/blog/c-suite-divided-does-empathy-really-matter/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "New Data Finds Executives Focused on Cutting Jobs for AI Efficiency Are Half as Likely to Invest in AI Upskilling",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://businessolver.com/news/ai-job-cuts-vs-upskilling-investment/"
   }
  ]
 }

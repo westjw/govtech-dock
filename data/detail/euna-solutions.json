@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "State of Public Sector Finance 2026 Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/2026-state-of-public-sector-finance-report/"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "2026 State of Public Sector Finance: Trends in Government Budgeting, Grants, and Procurement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/2026-state-of-public-sector-finance-report-breakdown/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eunasolutions.com/resources/franklin-university-centralizes-purchasing-euna-marketplace/"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Foundation First: AI in Public Procurement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/ai-in-public-procurement/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Protected: Building a Compelling Business Case for Grants Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/uilding-a-compelling-business-case-for-grants-management-software/"
   }
  ],
  "profile": {

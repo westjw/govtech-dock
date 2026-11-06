@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "College Enrollment Statistics: Trends, Demographics, and Predictions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/college-enrollment-statistics/"
+  },
+  {
    "date": "2026-11-01",
    "date_source": "json-ld",
    "first_seen": "2026-11-01",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/degree-plan/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Transfer Evaluation System: How Colleges Can Streamline Credit Evaluation and Increase Enrollment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/transfer-evaluation-system/"
   }
  ],
  "profile": {

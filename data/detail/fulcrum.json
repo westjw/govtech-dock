@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "The role of field data in root cause analysis and CAPA process",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/the-role-of-field-data-in-root-cause-analysis-and-capa-process/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Beyond the report: the lasting value of structured environmental data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/the-lasting-value-of-structured-environmental-data/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/newsroom/fulcrum-announces-mcp-connector-and-ai-toolkit/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Woolpert and Fulcrum put utility vegetation management risk data in field crews\u2019 hands",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/woolpert-and-fulcrum-partnership-for-vegetation-risk-management/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Wildnote teams: Build the tool your field team needs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/wildnote-teams-build-the-tool-your-field-team-needs/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "time",
+   "first_seen": "2026-11-05",
+   "headline": "The Freezers Were Hacked at Midnight. One Store Lost Nothing.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mitel.com/blog/freezers-hacked-at-midnight-one-store-lost-nothing"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "time",
+   "first_seen": "2026-11-05",
+   "headline": "Face-to-Face, Future Ready: Reflections from the Mitel APAC META Partner Congregation 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mitel.com/blog/future-ready-reflections-mitel-apac-meta-partner-congregation-2026"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "time",
    "first_seen": "2026-10-22",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mitel.com/blog/mitels-ehr-integration-answer-the-call-with-chart-open"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Why Hospitality Compliance Keeps Failing at the Property Level",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mitel.com/blog/why-hospitality-compliance-keeps-failing-property-level"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "From Innovation to Certification: Building Ecosystem Integrations Through the Mitel Unified Communications Accelerator",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mitel.com/blog/innovation-to-certification-building-ecosystem-integrations-mitel-unified-communications-accerator"
   }
  ],
  "profile": {

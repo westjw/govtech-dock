@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "86% of students face campus connectivity issues, but just one in five report problems to IT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.boldyn.com/news/2026-student-connectivity-experience-report-released"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "NYRA chooses Boldyn Networks as connectivity partner for the Belmont Park redevelopment project",
    "kind": "contract",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.boldyn.com/blog/connecting-the-past-and-the-future"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Boldyn Networks supercharges connectivity at The O2 Belfast with O2 customers to experience it first",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.boldyn.com/news/boldyn-networks-supercharges-connectivity-at-the-o2-belfast-with-o2-customers-to-experience-it-first"
   }
  ],
  "profile": {

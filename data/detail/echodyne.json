@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "card-date",
+   "first_seen": "2026-11-05",
+   "headline": "Shield to acquire Echodyne in a transaction valued at $5.3 billion and raise $2.5 billion at a $28.8 billion valuation",
+   "kind": "funding",
+   "kind_rule": "to acquire",
+   "url": "https://www.echodyne.com/newsroom/shield-to-acquire-echodyne"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "card-date",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.echodyne.com/newsroom/echodyne-uniquely-positioned-to-support-laser-effectors"
-  },
-  {
-   "date": "2026-03-04",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Echodyne Selected as Range Radar for Project Fly Trap 4.5",
-   "kind": "contract",
-   "kind_rule": "Selected as",
-   "url": "https://www.echodyne.com/newsroom/echodyne-selected-as-range-radar-for-project-fly-trap-45"
   }
  ],
  "profile": {

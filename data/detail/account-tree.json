@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "We Digitized the Form and Threw Away the Envelope",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accounttree.com/post/we-digitized-the-form-and-threw-away-the-envelope"
+  },
+  {
    "date": "2026-05-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.accounttree.com/post/why-simple-isn-t-a-feature-it-s-a-philosophy"
-  },
-  {
-   "date": "2025-04-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Transparent Pricing with No Hidden Fees",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.accounttree.com/post/transparent-pricing-with-no-hidden-fees"
   }
  ]
 }

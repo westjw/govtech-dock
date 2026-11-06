@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Why School Bus Routing Tools Fail Drivers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/why-school-bus-routing-tools-fail-drivers"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/what-makes-student-boarding-verification-hard-to-sustain"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "What FLEETpatrol Does for District Fleet Maintenance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/what-fleetpatrol-does-for-district-fleet-maintenance"
   }
  ],
  "profile": {

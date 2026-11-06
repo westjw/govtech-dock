@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Transparency is Key: Utility Customers Want To Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/transparency-is-key-utility-customers-want-to-know/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/byod-bring-your-own-device-2026-why-oem-agnostic-demand-flexibility-programs-are-winning/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What is a Distributed Energy Resource (DER)?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/distributed-energy-resource/"
   }
  ],
  "profile": {

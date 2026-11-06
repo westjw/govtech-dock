@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "ORNL, IBM, and AMD launch co-design platform for quantum error correction",
+   "kind": "product",
+   "kind_rule": "launch",
+   "url": "https://www.ibm.com/quantum/blog/ornl-amd-error-correction-co-design-platform"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/think/news/fruit-fly-connectome-brain-map-minecraft-doom"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "AI is tightening consulting teams\u2014and raising the bar for who\u2019s on them",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/ai-tightening-consulting-teams-forward-deployed-units"
   }
  ],
  "profile": {

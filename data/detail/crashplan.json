@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "The Guide to Microsoft 365 Backup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crashplan.com/resources/the-enterprise-guide-to-microsoft-365-backup-solutions/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "CrashPlan for Entra ID",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Server Backup Economics: Are You Paying Too Much to Protect What\u2019s Left On-Prem?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crashplan.com/blog/blog-enterprise-saas-backup-recovery-strategy/"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "How Universities Can Manage Microsoft 365 Data Growth Without Disrupting Academic Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crashplan.com/resources/how-universities-can-manage-microsoft-365-data-growth-without-disrupting-academic-work/"
   }
  ]
 }

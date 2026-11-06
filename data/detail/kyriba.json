@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "What SIBOS 2026 means for banks in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kyriba.com/blog/sibos-2026-banks-2027/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kyriba.com/it/blog/lancio-agentic-ai-tai/"
-  },
-  {
-   "date": "2025-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "La IA Ag\u00e9ntica de Kyriba, TAI, ya est\u00e1 disponible.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kyriba.com/es/blog/agentic-ai-tai-launch/"
   }
  ]
 }

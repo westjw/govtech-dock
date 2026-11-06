@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "DNS TTL Strategy: Caching, Failover and Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/dns-ttl-strategy/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/resources/gorilla-guide-5-steps-for-a-successful-network-automation-journey/"
-  },
-  {
-   "date": "2023-06-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Elevate DNS Threat Intelligence for Proactive Network Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/blog/elevate-dns-threat-intelligence-for-proactive-network-security/"
   }
  ]
 }

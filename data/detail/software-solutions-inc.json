@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Navigating the Shift from FIRE to IRIS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mysoftwaresolutions.com/news/navigating-the-shift-from-fire-to-iris"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.mysoftwaresolutions.com/news/introducing-frank-vips-new-ai-assistant"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Florida Senate Bill 4-F and House Bill 1329 Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mysoftwaresolutions.com/news/florida-senate-bill-4-f-and-house-bill-1329-explained"
   }
  ],
  "profile": {

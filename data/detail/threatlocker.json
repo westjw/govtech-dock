@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Five critical AI controls your security strategy needs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/five-critical-ai-controls-your-security-strategy-needs"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-03",
    "headline": "How to stop AI agents from taking unintended actions",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/threatlocker-mdr-team-intercepts-chimera-c2-clickfix-attack"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Non-human identities: The expanding identity attack surface in modern SMB environments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/non-human-identities-the-expanding-identity-attack-surface-in-modern-smb-environments"
   }
  ]
 }

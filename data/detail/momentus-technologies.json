@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "3: Consider Payment and Automation Requirements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/everything-you-need-to-know-about-event-crm"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "4. Live Day-of Execution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/everything-you-need-to-know-about-event-risk-management"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/community-event-planning"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Event Revenue Tracking: How to See Every Dollar Your Events Earn",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/event-revenue-tracking"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Venue Sales Automation: How AI Moves Inquiries to Signed Contracts Faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/venue-sales-automation"
   }
  ]
 }

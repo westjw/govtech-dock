@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-05",
+   "headline": "Openness Is More Than an On/Off Switch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/openness-more-than-onoff-switch"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "near-h1",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.instructure.com/resources/blog/building-new-era-openness"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-19",
-   "headline": "The New Era of Openness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/new-era-openness"
   }
  ],
  "profile": {

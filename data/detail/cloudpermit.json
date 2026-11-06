@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "What Community Development Software Really Costs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/what-community-development-software-really-costs"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/how-ai-can-help-public-works-teams-work-smarter"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Mobile Inspection Software Matters for Public Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/why-mobile-inspection-software-matters-for-public-works"
   }
  ],
  "profile": {

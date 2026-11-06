@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Pantheon achieves ISO 27001 certification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/pantheon-achieves-iso-27001-certification"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "time",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/from-fleet-level-signal-to-site-level-action"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Humans vs. AI: A People Leader\u2019s Take on What Stays Human",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/humans-vs-ai-people-leaders-take-what-stays-human"
   }
  ]
 }

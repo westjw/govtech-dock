@@ -10,6 +10,15 @@
    "url": "https://www.schoolstatus.com/blog/districtwide-communication-consistency-policy"
   },
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "An Absence Alert Isn\u2019t an Attendance Strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/attendance-notifications-vs-interventions"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Same Data, Every Building: How One Texas District Built Real Attendance Visibility",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/business-case-district-communication-platform"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Nine Questions That Reveal What Your District Really Knows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/nine-questions-attendance-diagnostic"
   }
  ],
  "profile": {

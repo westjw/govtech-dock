@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "How Adversaries Are Turning the Vulnerability Ecosystem Against Defenders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/adversaries-turn-vulnerability-ecosystem-against-defenders/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "index-text",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-agent-graph-shows-how-agents-act-on-endpoint/"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "index-text",
-   "first_seen": "2026-10-30",
-   "headline": "New Prompt Injection Techniques Cover Agent-Planning Attacks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/new-prompt-injection-techniques-cover-agent-planning-attacks/"
   }
  ]
 }

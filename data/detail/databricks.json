@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "A builder\u2019s guide to scaling Databricks Apps",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/builders-guide-scaling-databricks-apps"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Which Data Collaboration Tool: OpenSharing, Clean Rooms, Marketplace",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/which-data-collaboration-tool-opensharing-clean-rooms-marketplace"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "From Delta Sharing to OpenSharing: what changed, what's next",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/delta-sharing-opensharing-what-changed-whats-next"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Introducing Apache Spark\u00ae 4.3 - Now available in Databricks Runtime 19",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -38,7 +83,7 @@
   },
   {
    "date": "2026-10-31",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-01",
    "headline": "Lakebase branching for CI/CD: lessons from 100 PR databases",
    "kind": "press",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-31",
-   "headline": "Deliberate decisions and enterprise AI value",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/deliberate-decisions-and-enterprise-ai-value"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Smarter cost controls for serverless",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/smarter-cost-controls-serverless"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "How Procore is powering construction analytics with OpenSharing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-procore-powering-construction-analytics-opensharing-0"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "How Procore is powering construction analytics with OpenSharing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-procore-powering-construction-analytics-opensharing"
   }
  ]
 }

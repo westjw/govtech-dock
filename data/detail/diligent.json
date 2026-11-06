@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Corporate governance at an inflection point",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/governance-ai-inflection-point"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "How Riverview Gardens School District cut agenda creation from 3 hours to 10 minutes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/riverview-gardens-school-district-case-study"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/resources/blog/in-depth-director-tenure-how-long-is-too-long"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "AI in control testing: Where the sequence breaks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/ai-control-testing-internal-audit"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Diligent Report: More Than Half of Mission-Driven Organizations Identify Economic or Funding Downturns as a Top Risk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/company/newsroom/mdo-governance-outlook-press-release"
   }
  ]
 }

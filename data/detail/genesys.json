@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Engineering the Future of Customer Experience at DNB | Genesys",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/engineering-the-future-of-customer-experience-at-dnb"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Beyond the Cost of AI: When AI Succeeds, Value Has to Scale Too",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/beyond-the-cost-of-ai-when-ai-succeeds-value-has-to-scale-too"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "update",
    "url": "https://www.genesys.com/blog/post/security-update-incident-affecting-certain-genesys-internal-business-systems"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "AI is changing the CX operating model. Is your workforce ready? | Genesys",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/ai-is-changing-the-cx-operating-model-is-your-workforce-ready"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Personal AI Will Change the Customer Relationship | Genesys",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/personal-ai-will-change-the-customer-relationship"
   }
  ]
 }

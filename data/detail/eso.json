@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "ESO Appoints Three Associate Chief Medical Officers Across EMS, Education and Trauma",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.eso.com/news/press-releases/eso-appoints-three-associate-chief-medical-officers-across-ems-education-and-trauma/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/resources/ems-index/"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2026 ESO Fire Service Index",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eso.com/resources/fire-index/"
   }
  ],
  "profile": {

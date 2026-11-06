@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "Introducing Predictive Risk Scores",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-03",
    "headline": "Lesson 5: You Don't Need the Perfect Prompt",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-31",
    "headline": "Student List, now rebuilt for better payment insights and easier workflows",
    "kind": "press",

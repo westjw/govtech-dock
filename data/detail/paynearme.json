@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Making Toll Payments Easier with Virtual Agents and Smart Links",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/making-toll-payments-easier-with-virtual-agents-and-smart-links/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://home.paynearme.com/blog/case-study-first-texas-auto-credit-paynearme-payxm/"
-  },
-  {
-   "date": "2025-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "How Avid Acceptance reached 75% self-service payments while elevating the customer experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://home.paynearme.com/blog/case-study-avid-acceptance-reached-75-self-service-payments/"
   }
  ],
  "profile": {

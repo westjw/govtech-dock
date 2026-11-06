@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Beyond the Program: Measuring What Matters for Survivors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/articles/beyond-the-program-measuring-what-matters-for-survivors/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://caseworthy.com/news/caseworthys-medisked-platform-achieves-hitrust-recertification/"
-  },
-  {
-   "date": "2024-02-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing ClaimExchange: CaseWorthy\u2019s Innovative Solution Simplifying Medicaid and Healthcare Billing",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://caseworthy.com/news/introducing-claimexchange-caseworthys-innovative-solution-simplifying-medicaid-and-healthcare-billing/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "MS NOW: AZ law enforcement prep for election day security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/ms-now-az-law-enforcement-prep-for-election-day-security-"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/connected-in-crisis-unifying-emergency-response-in-florida"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Peregrine Technologies names Adrian Kaplan as CFO | Peregrine",
-   "kind": "leadership",
-   "kind_rule": "as CFO",
-   "url": "https://www.peregrine.io/resources/peregrine-technologies-names-adrian-kaplan-as-cfo"
   }
  ],
  "profile": {

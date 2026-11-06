@@ -1,83 +1,83 @@
 {
-  "date": "2026-11-05",
-  "previous": "2026-11-04",
+  "date": "2026-11-06",
+  "previous": "2026-11-05",
   "changes": [
     {
-      "company": "Routeware",
-      "id": "routeware",
-      "from": "Sales (non-AE)",
+      "company": "Prepared",
+      "id": "prepared",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive - Municipalities"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Paymentus",
-      "id": "paymentus",
+      "company": "Ubicquia",
+      "id": "ubicquia",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Beam Global",
+      "id": "beam-global",
       "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 403 for https://www.paymentus.com/c"
+      "note": "network error: robots.txt on beamforall."
     },
     {
-      "company": "AiDash",
-      "id": "aidash",
+      "company": "Veritone",
+      "id": "veritone",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Account Manager (US Remote)"
+      "note": "Junior Media Account Executive (London, UK)"
     },
     {
-      "company": "Municibid",
-      "id": "municibid",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Nuvei",
-      "id": "nuvei",
+      "company": "VCS HR & Jobs4Blue",
+      "id": "vcs-hr-jobs4blue",
       "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Propelus",
-      "id": "propelus",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Manager of Customer Success (Remot only"
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Grant Street Group",
       "id": "grant-street-group",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Unknown",
+      "company": "UVeye",
+      "id": "uveye",
+      "from": "Yes",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "EnergyHub",
-      "id": "energyhub",
+      "company": "OpenAI",
+      "id": "openai",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Sales Executive (Remote - United St)"
+      "note": "Business Development Manager, Prod (Munich, Germany)"
     },
     {
-      "company": "GL Solutions",
-      "id": "gl-solutions",
-      "from": "Unknown",
+      "company": "FeedbackFruits",
+      "id": "feedbackfruits",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Psych Hub",
-      "id": "psych-hub",
+      "company": "ITO Health",
+      "id": "ito-health",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Darwin AI",
+      "id": "darwin-ai",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     }
   ]
 }

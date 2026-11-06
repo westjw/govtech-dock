@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Move the Intelligence, Not the Data: Snowflake-Native Process Mining",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/snowflake-native-process-mining"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/blog/ericsson-process-mining-trade-compliance"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How to Start and Scale Process Intelligence Across the Enterprise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/how-to-start-scale-process-intelligence"
   }
  ],
  "profile": {

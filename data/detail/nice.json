@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Webinars The future of customer service work: How AI agents change the workforce",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/the-future-of-customer-service-work-how-ai-agents-change-the-workforce"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Testimonials Hyatt: Turning Agents Into Experts, Not Just Searchers:",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/hyatt-turning-agents-into-experts-not-just-searchers"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Reports IDC MarketScape: Worldwide Agentic AI\u2013Enabled Customer Service 2026 Vendor Assessment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/idc-marketscape-worldwide-agentic-ai-enabled-customer-service-2026-vendor-assessment"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nice.com/resources/cxone-supervisor-advisory-board"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "SolarEdge Simplified the Operation Before It Automated It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/resources/solaredge-simplified-the-operation-before-it-automated-it"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "White Papers The end of the digital storefront: How Agentic AI is rewiring eCommerce and CX",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/resources/the-end-of-the-digital-storefront-how-agentic-ai-is-rewiring-ecommerce-and-cx"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "White Papers The Orchestration Advantage: Why Platform Architecture Determines Whether Enterprise CX AI Scales",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nice.com/resources/the-orchestration-advantage-why-platform-architecture-determines-whether-enterprise-cx-ai-scales"
   }
  ],
  "profile": {

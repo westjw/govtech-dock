@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Clearer ratings and flood capture: two ImpactResponse enhancements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nearmap.com/blog/impact-response-enhancements"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -91,22 +100,13 @@
    "url": "https://www.nearmap.com/blog/accurate-materials-pricing-through-itel-total-price"
   },
   {
-   "date": "2026-08-17",
+   "date": "2026-08-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Nearmap Labs: Your transport to the future of property intelligence",
+   "headline": "How claims teams used Nearmap AI after the Spokane fires",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.nearmap.com/blog/nearmap-labs-your-transport-to-the-future-of-property-intelligence"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "dateline",
-   "first_seen": "2026-09-09",
-   "headline": "Introducing Nearmap Labs: A window into the future of property intelligence",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.nearmap.com/newsroom/introducing-nearmap-labs-a-window-into-the-future-of-property-intelligence"
+   "url": "https://www.nearmap.com/blog/claims-teams-used-nearmap-ai-after-the-spokane-fires"
   }
  ],
  "profile": {

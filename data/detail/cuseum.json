@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "How the Jewish Museum Vienna Leveraged Digital to Take a Special Exhibition Beyond Its Walls",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cuseum.com/blog/jewish-museum-vienna-exhibition-app"
+  },
+  {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-31",
    "headline": "What Apple Wallet's Latest Style Upgrade Means for Membership Cards",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "AZA 2026 Recap: Quick Wins for Zoo and Aquarium Membership",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Museum Membership Marketing: Plan Every Campaign Around Its Goal",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What Keeps Members Engaged: Lessons From Three Museums",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Building a More Resilient Museum Membership Program",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "From Digital to In-Person: Creating a Seamless Museum Experience",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "The Year-End Ask Starts Long Before December: A Year-Round Fundraising Strategy for Museums",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Beyond the Benefits: Rethinking the Museum Membership Value Proposition",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "The Member Journey: Turning Museum Visitors Into Long-Term Advocates",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cuseum.com/blog/why-people-choose-to-join"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cuseum Featured in NonProfit PRO's 40 Nonprofit Trends for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cuseum.com/blog/cuseum-featured-in-nonprofit-pro-40-nonprofit-trends-2026"
   }
  ],
  "profile": {

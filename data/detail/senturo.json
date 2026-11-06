@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-05",
+   "headline": "How to Run a Device Inventory Audit Across a School District",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.senturo.com/blog/device-inventory-audit-school-district"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "near-h1",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.senturo.com/blog/mdm-policies"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-22",
-   "headline": "Loaner Device Management: How to Track and Secure Devices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.senturo.com/blog/loaner-device-management"
   }
  ]
 }

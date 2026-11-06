@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "Social engineering in K-12 in the age of AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/social-engineering-k12-schools-ai/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jamf.com/blog/cybersecurity-awareness-month-a-practitioners-view/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Commercial spyware: the invisible threat in your pocket",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/what-is-commercial-spyware/"
   }
  ]
 }

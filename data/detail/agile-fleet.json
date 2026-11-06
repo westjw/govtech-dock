@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "How to Improve Shared Fleet Vehicle Turnaround Times and Prevent Reservation Delays",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-improve-shared-fleet-vehicle-turnaround-times-and-prevent-reservation-delays"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/how-to-tell-whether-your-shared-fleet-has-a-vehicle-distribution-problem-instead-of-a-fleet-size-problem"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "10 Warning Signs Your Shared Fleet Scheduling Process Is Breaking Down",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/10-warning-signs-your-shared-fleet-scheduling-process-is-breaking-down"
   }
  ],
  "profile": {

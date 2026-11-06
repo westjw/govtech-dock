@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "From Serving in Law Enforcement to Helping Shape Its Future",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.leosight.com/blog/shaping-the-future-of-public-safety-technology"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.leosight.com/newsroom/leosight-and-veritone-to-provide-next-generation-of-real-time-ai-powered-public-safety"
-  },
-  {
-   "date": "2026-01-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Leading in the Moment: What the FBI National Academy Taught Me About Unified Command",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.leosight.com/blog/fbina-lessons-unified-command-leadership"
   }
  ],
  "profile": {

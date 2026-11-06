@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "6 Key Ways Cities Reduce Emergency Department Use",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/6-key-ways-cities-reduce-emergency-department-use/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/what-is-behavioral-health-deflection/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Rural Healthcare Access: How MIH Closed the Gap Early",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/rural-healthcare-access-how-mih-closed-the-gap-early/"
   }
  ],
  "profile": {

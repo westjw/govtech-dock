@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "card-date",
+   "first_seen": "2026-11-05",
+   "headline": "Identity Security Signals: AI-powered threats, access governance gaps, authentication friction, and the growing need for cyber resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/identity-security-signals-ai-powered-threats-access-governance-gaps-authentication-friction"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/company/press/imprivata-access-intelligence-platform-wins-cybersecurity-breakthrough-award-second"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "card-date",
-   "first_seen": "2026-10-08",
-   "headline": "Make security easy for your workforce: Take friction out of authentication",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/make-security-easy-your-workforce-take-friction-out-authentication"
   }
  ],
  "profile": {

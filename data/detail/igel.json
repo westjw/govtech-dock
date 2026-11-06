@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "og:published",
+   "first_seen": "2026-11-05",
+   "headline": "When a Freezer Becomes a Cyber Weapon: Why Aren\u2019t We Preventing It?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.igel.com/blog/freezer-cyberattacks-prevention/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "og:published",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.igel.com/blog/ai-armor-secure-enterprise-ai-trust-fabric/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Guacamole\u2122 by Hummingbirds AI provides continuous human verification during the active session",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.igel.com/blog/guacamole-by-hummingbirds-ai-provides-continuous-human-verification-during-the-active-session/"
   }
  ]
 }

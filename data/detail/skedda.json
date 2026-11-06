@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Features & Updates October 2026 Release Roundup",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://www.skedda.com/blog/october-2026-release-roundup"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Features & Updates Skedda Now Supports Data Residency in 4 Regions",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://www.skedda.com/blog/skedda-data-residency-regions"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -22,7 +40,7 @@
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
-   "headline": "Space Planning Do You Need More Space? Signs You've Outgrown Your Office",
+   "headline": "Space Planning Oct 15, 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.skedda.com/blog/signs-youve-outgrown-office-space"
@@ -31,7 +49,7 @@
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
-   "headline": "Features & Updates September 2026 Release Roundup",
+   "headline": "Features & Updates Oct 7, 2026",
    "kind": "product",
    "kind_rule": "Updates",
    "url": "https://www.skedda.com/blog/september-2026-release-roundup"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://support.skedda.com/en/articles/812494-is-there-a-skedda-app"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Create a Custom Field",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://support.skedda.com/en/articles/105789"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Features & Updates Jul 23, 2026",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://www.skedda.com/blog/organization-hub"
   }
  ],
  "profile": {

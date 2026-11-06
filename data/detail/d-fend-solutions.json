@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Securing Your Airspace: How SLTT Agencies Can Leverage FEMA\u2019s C-UAS Grant Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/fema-c-uas-grant-program/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://d-fendsolutions.com/blog/building-sltt-counter-drone-readiness/"
-  },
-  {
-   "date": "2026-09-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Is Counter-UAS (C-UAS)? A Guide to Drone Defense",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/what-is-counter-uas-c-uas-a-guide-to-drone-defense/"
   }
  ],
  "profile": {

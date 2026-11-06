@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "From Classroom to Career: How Universities Can Make Education More Practical",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://writesea.com/blog/practical-education-classroom-to-career/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://writesea.com/blog/why-every-university-needs-an-employability-strategy-not-just-a-career-center/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Skills-Based University: Preparing Students Beyond the Degree",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://writesea.com/blog/the-skills-based-university-preparing-students-beyond-the-degree/"
   }
  ]
 }

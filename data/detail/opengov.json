@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "Government Procurement Software: How to Evaluate Vendors Before You Sign (2027)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://opengov.com/resources/blog/government-procurement-software-2027/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.opengov.com/resources/ai-customer-commitments/"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Unlock your full potential with OpenGov University",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.opengov.com/resources/opengov-university/"
   }
  ],
  "profile": {

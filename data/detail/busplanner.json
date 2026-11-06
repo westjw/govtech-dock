@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "5 Ways Fleet Maintenance Technology Cuts K-12 Bus Downtime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://busplanner.com/resources/blog/fleet-maintenance-technology-k12-bus-downtime/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://busplanner.com/resources/blog/school-transportation-data-2027-budget-request/"
-  },
-  {
-   "date": "2024-08-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Webinars That Keep You Updated",
-   "kind": "product",
-   "kind_rule": "Updated",
-   "url": "https://busplanner.com/resources/webinars/"
   }
  ]
 }

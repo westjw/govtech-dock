@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-05",
+   "headline": "Behind the Meter: Capacity Costs, Coincident Peaks, and the Value of Storage | November 5, 2026, 11am MT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/behind-the-meter-capacity-costs-coincident-peaks-and-the-value-of-storage-november-5-2026-11am-mt"
+  },
+  {
    "date": "2026-10-15",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "NYISO & ISO-NE 6.1 Market Outlook: Is Green-ish Good Enough? | October 15, 2026, 11am MT",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Beyond COD | The Path to Successful Market Participation | August 27, 2026, 11am MT",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Forecasting VDER Revenue and Charging Costs for Community BESS in New York with Ascend Analytics | 12 August, 2026",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ascendanalytics.com/blog/ercot-market-outlook-scarcity-pricing-load-growth"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "PowerVAL Insights: Commercializing Your Asset | July 29, 2026 | 11am MT",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ascendanalytics.com/blog/powerval-insights-commercializing-your-asset-july-29-2026-11am-mt"
   }
  ],
  "profile": {
