@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "How public sector organizations can govern AI at scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/how-public-sector-organizations-can-govern-ai-scale"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -46,6 +55,15 @@
    "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19"
   },
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Real-time fraud detection with Feature Views",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/real-time-fraud-detection-feature-views"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Declare and optimize with UNIQUE constraints on Databricks",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/lakebase-branching-cicd-lessons-100-pr-databases"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-31",
-   "headline": "Databricks and SAP unleash end-to-end data & AI capabilities to level up enterprise AI transformation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/databricks-and-sap-unleash-end-end-data-ai-capabilities-level-enterprise-ai-transformation"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-31",
-   "headline": "Wealth Management Client Onboarding Needs More Than AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai"
   }
  ]
 }

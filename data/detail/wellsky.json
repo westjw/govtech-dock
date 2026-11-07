@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Building, learning, and connection on full display at DevDays + Solutions Summit 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/building-learning-and-connection-on-full-display-at-devdays-solutions-summit-2026/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/why-reducing-hospital-readmissions-requires-more-than-discharge-planning/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "time",
-   "first_seen": "2026-10-13",
-   "headline": "Hospice fraud: What the headlines mean for your agency",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/resources/hospice/"
   }
  ]
 }

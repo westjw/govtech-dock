@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "How to Build a Customer Academy for a SaaS Product",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://spektrasystems.com/blog/how-to-build-a-customer-academy"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://spektrasystems.com/blog/best-partner-training-lms"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Best Cybersecurity Lab and Cyber Range Platforms for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://spektrasystems.com/blog/best-cyber-range-platforms"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-06",
+   "headline": "ONLYOFFICE vs Collabora Online vs Office for the Web",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/onlyoffice-vs-collabora-vs-office-for-the-web"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "near-h1",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myworkdrive.com/blog/dicom-medical-imaging-file-access"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-27",
-   "headline": "CMMC Phase 2 Suspension: What Still Applies to DoD Contractors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/cmmc-phase-2-suspension"
   }
  ]
 }

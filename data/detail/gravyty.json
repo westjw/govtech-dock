@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "The Gala Is Over. Now the Real Fundraising Starts.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gravyty.com/blog/the-gala-is-over-now-the-real-fundraising-starts/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gravyty.com/blog/alumni-relations-teams-events/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Homecoming Is Coming: How to Turn Fall Event Attendance Into Giving",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gravyty.com/blog/homecoming-fundraising/"
   }
  ],
  "profile": {

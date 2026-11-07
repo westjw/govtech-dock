@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-06",
+   "headline": "Connecting Corrections and Benefits Data for Successful Reentry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/connecting-corrections-and-benefits-data-for-successful-reentry"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "near-h1",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Updates",
    "url": "https://recidiviz.org/updates/march-2026-product-updates"
-  },
-  {
-   "date": "2026-03-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Recidiviz Named to Fast Company's Most Innovative Companies of 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://recidiviz.org/updates/most-innovative-2026"
   }
  ],
  "profile": {

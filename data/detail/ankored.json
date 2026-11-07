@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-11-05",
+   "date": "2026-11-06",
    "date_source": "time",
+   "first_seen": "2026-11-06",
+   "headline": "How to Create a Background Check Policy for Your Youth Sports Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ankored.com/blog/how-to-create-a-background-check-policy-for-your-youth-sports-program"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "How to Avoid the Most Common Youth Sports Compliance Issues",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-13",
    "headline": "What You Need to Know About California AB 506 for Youth Sports",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ankored.com/blog/buying-sandlot-culture-of-safety"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "time",
-   "first_seen": "2026-10-05",
-   "headline": "What Disqualifies a Coach From a Florida Level 2 Background Check (And What Happens Next)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ankored.com/blog/level-2-background-check-florida-coach-disqualification"
   }
  ],
  "profile": {

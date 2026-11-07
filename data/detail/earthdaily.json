@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "What Makes Earth Observation Data Trustworthy? Seven Questions to Ask",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/what-makes-earth-observation-data-trustworthy"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/tracking-crop-change-after-severe-weather"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "September World in 10: A Global Crop Outlook Divided by Wetness and Dryness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/september-world-in-10-a-global-crop-outlook-divided-by-wetness-and-dryness"
   }
  ],
  "profile": {

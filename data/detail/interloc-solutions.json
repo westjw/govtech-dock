@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "index-text",
+   "first_seen": "2026-11-06",
+   "headline": "Bring Your Own AI Agent: Exploring the IBM Maximo MCP Server",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/bring-your-own-ai-agent-exploring-the-ibm-maximo-mcp-server"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/maximo-application-suite-security-bulletins-october-2026"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-08",
-   "headline": "From the Field to Maximo: Why Mobility Matters for Utilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/from-the-field-to-maximo-why-mobility-matters-for-utilities"
   }
  ],
  "profile": {

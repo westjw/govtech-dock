@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "The real measure of enterprise agentic AI maturity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/blog/enterprise-agentic-ai-maturity/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/ai-customer-service-utilities/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What is an omnichannel contact center? Benefits and features",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/omnichannel-contact-center/"
   }
  ]
 }

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-05",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-05",
    "headline": "Omnissa DEX Agent for end users: AI that fixes, not flags",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-05",
    "headline": "Omnissa DEX: Fix employee experience on any desktop",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-04",
    "headline": "Zero Trust for AI agents",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-04",
    "headline": "AI needs a safe place to run",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-04",
    "headline": "Omnissa Sovereign Solution expands to servers and new markets",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-03",
    "headline": "How HP and Omnissa streamline PC provisioning",
    "kind": "press",
@@ -73,8 +73,8 @@
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-aem-building-blocks/"
   },
   {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
+   "date": "2026-10-26",
+   "date_source": "card-date",
    "first_seen": "2026-10-28",
    "headline": "Horizon 8 on Red Hat OpenShift: More hypervisor choice",
    "kind": "press",

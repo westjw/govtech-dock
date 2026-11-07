@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "index-text",
+   "first_seen": "2026-11-06",
+   "headline": "Chicago\u2019s bid to lead the country in quantum computing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/chicago-quantum-computer"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/think/insights/shadow-ai-has-reached-soc-security-teams-blind-spots"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Scientists mapped a fruit fly\u2019s brain. The internet made it play Doom.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/fruit-fly-connectome-brain-map-minecraft-doom"
   }
  ],
  "profile": {

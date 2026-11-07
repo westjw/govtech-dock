@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "A Card Skimmer Hiding in Plain Sight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/a-card-skimmer-hiding-in-plain-sight"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/the-complete-guide-to-nist-csf-what-it-is-the-six-functions-explained-and-how-to-implement-it"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Nigerian Princes, Free iPads, and the Evolution of Social Engineering",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/signal-noise-volume-12"
   }
  ],
  "profile": {

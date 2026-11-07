@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-05",
    "headline": "Features & Updates October 2026 Release Roundup",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-05",
    "headline": "Features & Updates Skedda Now Supports Data Residency in 4 Regions",
    "kind": "product",
@@ -19,8 +19,8 @@
    "url": "https://www.skedda.com/blog/skedda-data-residency-regions"
   },
   {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date": "2026-11-03",
+   "date_source": "time",
    "first_seen": "2026-10-30",
    "headline": "Space Planning Office Space Per Person: How Much Do Growing Teams Need?",
    "kind": "press",
@@ -28,8 +28,8 @@
    "url": "https://www.skedda.com/blog/office-space-per-person"
   },
   {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date": "2026-10-27",
+   "date_source": "time",
    "first_seen": "2026-10-22",
    "headline": "Space Planning The Cost of Running Hiring Growth on Spreadsheets and Printouts",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-16",
    "headline": "Space Planning Oct 15, 2026",
    "kind": "press",
@@ -46,8 +46,8 @@
    "url": "https://www.skedda.com/blog/signs-youve-outgrown-office-space"
   },
   {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date": "2026-10-15",
+   "date_source": "time",
    "first_seen": "2026-10-08",
    "headline": "Features & Updates Oct 7, 2026",
    "kind": "product",
@@ -64,8 +64,8 @@
    "url": "https://www.skedda.com/blog/skedda-api-booking-data"
   },
   {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
+   "date": "2026-09-23",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Features & Updates Sep 2, 2026",
    "kind": "product",
@@ -82,8 +82,8 @@
    "url": "https://www.skedda.com/blog/occupancy-insights"
   },
   {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
+   "date": "2026-08-25",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Features & Updates Aug 4, 2026",
    "kind": "product",
@@ -91,8 +91,8 @@
    "url": "https://www.skedda.com/blog/july-2026-release-roundup"
   },
   {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
+   "date": "2026-08-04",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Space Planning Jul 29, 2026",
    "kind": "press",

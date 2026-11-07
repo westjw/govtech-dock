@@ -2,12 +2,21 @@
  "news": [
   {
    "date": "2026-11-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-05",
    "headline": "Where can fraud hide in the B2B payment process?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/how-to-balance-security-and-efficiency-in-enterprise-payments/"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "2027 FSA limits, commuter limits announced",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/2027-fsa-limits-commuter-limits/"
   },
   {
    "date": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/payment-fraud-is-getting-smarter/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "HSA Day 2026 resources: Be ready when life happens",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/blog/hsa-day-2026-resources/"
   }
  ]
 }

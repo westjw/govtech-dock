@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Artesia, CA partners with Passport to bring its entire curb onto one platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.passportinc.com/blog/artesia-ca-partners-with-passport-to-bring-its-entire-curb-onto-one-platform/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.passportinc.com/blog/parking-as-a-strategic-revenue-source-how-cities-can-unlock-the-full-value-of-their-curb-assets/"
-  },
-  {
-   "date": "2026-06-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ogden, UT launches Passport\u2019s unified platform to manage parking compliance and payments",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://www.passportinc.com/blog/ogden-ut-launches-passports-unified-platform-to-manage-parking-compliance-and-payments/"
   }
  ],
  "profile": {

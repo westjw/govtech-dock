@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "The Pentagon wants to know who checks code when AI writes it",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/department-of-war-instruction-for-ai-generated-code/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/three-developer-tasks-worth-handing-to-an-agent/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Building AI security in the open",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/gitlab-joins-open-secure-ai-alliance/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Introducing Brute Force Sentry: See Who's Knocking on Your Exposed Logins, and Know When One Gets In",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.huntress.com/blog/brute-force-sentry"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.huntress.com/blog/espm-attack-reduction-clickfix"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Rapid Response: php2shell, Leaked Critical PHP Vulnerabilities (CVE-2026-109618 & CVE-2026-109619)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/php2shell-leaked-critical-php-vulnerabilities"
   }
  ]
 }

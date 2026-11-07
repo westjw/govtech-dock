@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "time",
+   "first_seen": "2026-11-06",
+   "headline": "Pantheon Achieves ISO 27001 Certification, Giving Enterprise Web Teams a Clearer Path Through Security Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/press-releases/pantheon-achieves-iso-27001-certification-giving-enterprise-web-teams-clearer-path"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/p1-fresh-start-web-builders-ai-era"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "From Fleet-Level Signal to Site-Level Action: Understanding What Drives Your Traffic",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/from-fleet-level-signal-to-site-level-action"
   }
  ]
 }

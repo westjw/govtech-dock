@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "From PDF to Platform: What Cox Roofing Learned by...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eagleview.com/blog/from-pdf-to-platform-what-cox-roofing-learned-by-standardizing-on-eagleview-one/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eagleview.com/es/blog/operational-efficiency-in-insurance-is-no-longer-about-doing-more-with-less-its-about-knowing-more-before-you-go/?wg-choose-original=false"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "L'efficacit\u00e9 op\u00e9rationnelle dans le secteur de l'assurance ne consiste plus \u00e0 en faire plus avec moins, mais \u00e0 mieux s'informer avant d'agir.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eagleview.com/fr-ca/blog/operational-efficiency-in-insurance-is-no-longer-about-doing-more-with-less-its-about-knowing-more-before-you-go/?wg-choose-original=false"
   }
  ],
  "profile": {

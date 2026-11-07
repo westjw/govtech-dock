@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "See Billing Management in Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/see-billing-management-in-action"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.blackbaud.com/industry-insights/resources/fundraising-technology-built-for-todays-needs-ready-for-tomorrows-challenges"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Bridging the AI Effectiveness Gap \u200b",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://institute.blackbaud.com/resources/ai-effectiveness-gap?icid=BBI-US-26-RP-StateofAISocialImpactReport-bbwebsite-resources-tile"
   }
  ]
 }

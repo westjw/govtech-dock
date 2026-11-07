@@ -1,83 +1,104 @@
 {
-  "date": "2026-11-06",
-  "previous": "2026-11-05",
+  "date": "2026-11-07",
+  "previous": "2026-11-06",
   "changes": [
     {
-      "company": "Prepared",
-      "id": "prepared",
-      "from": "Unknown",
+      "company": "Juvare",
+      "id": "juvare",
+      "from": "None found",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Account Executive - Critical Infra (United States)"
+    },
+    {
+      "company": "GovSpend",
+      "id": "govspend",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Renewals Manager only"
     },
     {
       "company": "Ubicquia",
       "id": "ubicquia",
-      "from": "Unknown",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "ClearPoint Strategy",
+      "id": "clearpoint-strategy",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
       "company": "Beam Global",
       "id": "beam-global",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: robots.txt on beamforall."
-    },
-    {
-      "company": "Veritone",
-      "id": "veritone",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Junior Media Account Executive (London, UK)"
-    },
-    {
-      "company": "VCS HR & Jobs4Blue",
-      "id": "vcs-hr-jobs4blue",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Grant Street Group",
-      "id": "grant-street-group",
       "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "UVeye",
-      "id": "uveye",
+      "company": "Interloc Solutions",
+      "id": "interloc-solutions",
       "from": "Yes",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "OpenAI",
-      "id": "openai",
+      "company": "Tanium",
+      "id": "tanium",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Deal Desk Manager only"
+    },
+    {
+      "company": "EverDriven",
+      "id": "everdriven",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Account Specialist, Ohio only"
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Business Development Manager, Prod (Munich, Germany)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "FeedbackFruits",
-      "id": "feedbackfruits",
+      "company": "Intelligent Video Solutions",
+      "id": "intelligent-video-solutions",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "ITO Health",
-      "id": "ito-health",
+      "company": "StarRez",
+      "id": "starrez",
       "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "to": "Sales (non-AE)",
+      "note": "Director, Customer Success only"
     },
     {
-      "company": "Darwin AI",
-      "id": "darwin-ai",
+      "company": "Revenue Solutions, Inc.",
+      "id": "revenue-solutions-inc",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Vice President, Sales only"
+    },
+    {
+      "company": "Huntress",
+      "id": "huntress",
       "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "note": "Channel Account Manager II, Servic only"
+    },
+    {
+      "company": "Sophos, Inc.",
+      "id": "sophos-inc",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
     }
   ]
 }

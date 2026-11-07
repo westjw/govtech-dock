@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "How To Reduce Casework Documentation and Improve Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://nctinc.com/blog/how-to-reduce-casework-documentation-and-improve-compliance/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://nctinc.com/blog/what-is-an-early-intervention-management-system-in-human-services/"
-  },
-  {
-   "date": "2025-05-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Why Use a Document Management System for Human Services?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://nctinc.com/blog/why-use-a-document-management-system-for-human-services/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Surprising things I\u2019ve learned when moving into the Microsoft security sector",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coreview.com/blog/surprising-microsoft-365-security-lessons-from-moving-into-it-security"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coreview.com/blog/why-you-must-fix-sharepoint-permissions-before-scaling-ai"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "SharePoint Storage Sprawl: Where Cost Waste Becomes Security Risk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/blog/sharepoint-storage-sprawl-where-cost-waste-becomes-security-risk"
   }
  ]
 }

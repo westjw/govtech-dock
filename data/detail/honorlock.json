@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "How to Talk to Students Suspected of Cheating",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://honorlock.com/blog/how-to-talk-to-students-suspected-of-cheating/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://honorlock.com/news/honorlock-and-alpine-testing-solutions-partner-to-protect-high-stakes-credentialing-programs/"
-  },
-  {
-   "date": "2026-05-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Online Proctoring Cell Phone Detection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://honorlock.com/blog/proctoring-cell-phone-detection-new/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Admissions Metrics and KPIs: What Every Enrollment Team Should Track",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/admissions-metrics-kpis/"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Digital Transformation in Higher Education: Strategy, Examples, and Roadmap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/digital-transformation-in-higher-education/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -28,8 +46,17 @@
    "url": "https://goedmo.com/blog/https-goedmo-com-ai-multilingual-student-support/"
   },
   {
-   "date": "2026-10-30",
+   "date": "2026-11-01",
    "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Enrollment Workflows in Higher Education: A Guide to Optimization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/enrollment-workflow-optimization/"
+  },
+  {
+   "date": "2026-10-30",
+   "date_source": "index-text",
    "first_seen": "2026-10-30",
    "headline": "What Is Unified Enrollment? A Guide to Building a Connected Enrollment System in Higher Education",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/https-goedmo-com-blog-marketing-to-non-traditional-students/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-15",
-   "headline": "Financial Model in Higher Education: How Universities Can Plan Hiring, Budgets, and Financial Stability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/financial-model-in-higher-education/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Administrative Benchmarking in Higher Education: A Guide for Universities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/administrative-benchmarking/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Degree Plan: How Universities Can Build Clearer Academic Pathways for Students",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/degree-plan/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "How to Balance Speed and Security When 93% of Customers Would Lose Trust After a Data Mishap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/speed-security-digital-customer-experience"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.docusign.com/blog/docusign-pdf-editor"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "How to Build AI Fluency Across Your Legal Department",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/legal-ai-adoption-culture"
   }
  ]
 }

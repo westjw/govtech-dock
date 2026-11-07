@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Why AI agents need just-in-time access",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/why-ai-agents-need-just-in-time-access"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-04",
    "headline": "What is LLMjacking, and how can organizations prevent it?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/php2shell-why-organizations-must-patch-critical-php-vulnerabilities-now"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "ThreatLocker MDR team intercepts Chimera C2 ClickFix attack",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/threatlocker-mdr-team-intercepts-chimera-c2-clickfix-attack"
   }
  ]
 }

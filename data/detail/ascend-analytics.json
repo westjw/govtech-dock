@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Behind the Meter: Capacity Costs, Coincident Peaks, and the Value of Storage | November 5, 2026, 11am MT",
    "kind": "press",
@@ -19,22 +19,49 @@
    "url": "https://www.ascendanalytics.com/blog/nyiso-iso-ne-6-1-market-outlook-is-green-is-good-enough-october-15-2026-11am-mt"
   },
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "US Midwest, Southwest Lead Clean Power Purchasing in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/us-midwest-southwest-lead-clean-power-purchasing-in-2026"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Will New York's 1GW Storage Contracts Finally Break the State's Big Battery Impasse?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/will-new-yorks-1gw-storage-contracts-finally-break-the-states-big-battery-impasse"
+  },
+  {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Brent Nelson Discusses the Forces Reshaping Power Markets September 9, 2026",
+   "headline": "Brent Nelson Discusses the Forces Reshaping Power Markets",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ascendanalytics.com/blog/brent-nelson-discusses-the-forces-reshaping-power-markets"
   },
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "ERCOT Load Continues to Reach Record Highs September 9, 2026",
+   "headline": "ERCOT Load Continues to Reach Record Highs",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ascendanalytics.com/blog/ercot-load-continues-to-reach-record-highs"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Ascend Analytics Surpasses 5 GW of Battery Storage Assets Managed with SmartBidder",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/ascend-analytics-surpasses-5-gw-of-battery-storage-assets-managed-with-smartbidder"
   },
   {
    "date": "2026-08-27",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "dateline",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Ascend Analytics Appoints Matthew Boyda as Chief Product Officer",
    "kind": "leadership",
@@ -73,40 +100,13 @@
    "url": "https://www.ascendanalytics.com/blog/texas-clean-energy-summit"
   },
   {
-   "date": "2026-08-13",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "PJM Market Outlook 6.1 | Herding Cats: The Quest to Create a Market Structure That Works for All | August 13, 2026, 11am MT",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ascendanalytics.com/blog/pjm-market-outlook-6-1-herding-cats-the-quest-to-create-a-market-structure-that-works-for-all"
-  },
-  {
-   "date": "2026-08-12",
+   "date": "2026-08-17",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Forecasting VDER Revenue and Charging Costs for Community BESS in New York with Ascend Analytics | 12 August, 2026",
+   "first_seen": "2026-11-06",
+   "headline": "Central Coast Community Energy (3CE) Announces Request for Proposals to Meet its Renewable Portfolio Standard (RPS) and Reliability Goals in CAISO",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.ascendanalytics.com/blog/forecasting-vder-revenue-and-charging-costs-for-community-bess-in-ny"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "dateline",
-   "first_seen": "2026-09-09",
-   "headline": "Ascend Analytics Appoints Keith Davies as Chief Technology Officer",
-   "kind": "leadership",
-   "kind_rule": "as Chief",
-   "url": "https://www.ascendanalytics.com/blog/ascend-analytics-appoints-keith-davies-as-chief-technology-officer"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "index-text",
-   "first_seen": "2026-09-11",
-   "headline": "Can ERCOT's Energy Supply Keep Pace with Soaring Demand Appetite?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ascendanalytics.com/blog/ercot-market-outlook-scarcity-pricing-load-growth"
+   "url": "https://www.ascendanalytics.com/blog/central-coast-community-energy-3ce-announces-request-for-proposals"
   }
  ],
  "profile": {

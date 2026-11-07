@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Physical AI: How Indoor Maps & Navigation Act as Spatial Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/physical-ai-indoor-maps-navigation-spatial-intelligence"
+  },
+  {
    "date": "2026-09-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.pointr.tech/blog/ai-mapping-benchmark"
-  },
-  {
-   "date": "2025-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "the world\u2019s first AI indoor mapping benchmark",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pointr.tech/blog/pointr-first-ai-mapping-benchmark"
   }
  ],
  "profile": {

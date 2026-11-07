@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Senior living accounting software vs care platform: which system owns which number",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/senior-living-accounting-software-vs-care-platform/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-30",
    "headline": "The 2027 Assumption Ledger: Is your plan flexible?",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-24",
    "headline": "Inside LPGA star Paula Creamer\u2019s high-performance mindset",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/dental-group-month-end-close-replacing-consolidation-spreadsheet/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Home health and hospice finance: adding branches without adding close days",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/home-health-hospice-adding-branches-without-adding-close-days/"
   }
  ]
 }

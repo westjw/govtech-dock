@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "AI Is Changing Process Mining Platform Selection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/news/ai-process-mining-platform-renewal"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "QPR CEO: In the AI Era, Process Mining Architecture Is a Business Decision",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/news/qpr-ceo-process-mining-architecture-ai-era"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/blog/process-intelligence-ai-gary-chitan-toch-consulting"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "QPR partner TOCH Consulting shares its view on the future of Process Intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/qpr-toch-consulting-future-of-process-intelligence"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Ericsson Uses Process Mining for Trade Compliance | QPR",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/ericsson-process-mining-trade-compliance"
   }
  ],
  "profile": {

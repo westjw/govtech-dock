@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-06",
+   "headline": "Formative assessment in math is already in your lesson",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kiddom.co/insights/formative-assessment-in-math"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kiddom.co/insights/inside-five-kiddom-imv360-lesson-activities"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Back to School 2026: Plan, instruct, assess in one connected system",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kiddom.co/insights/back-to-school-2026"
   }
  ]
 }

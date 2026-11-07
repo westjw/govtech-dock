@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Here\u2019s how YMCA Camp Round Rock uses Perry Weather to keep a busy camp safe.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/ymca-camp-round-rock/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "index-text",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/njsiaa-heat-policy-the-wbgt-playbook-for-new-jersey-schools/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "OSSAA Heat Policy: The WBGT Playbook for Oklahoma Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/ossaa-heat-policy-the-wbgt-playbook-for-oklahoma-schools/"
   }
  ],
  "profile": {

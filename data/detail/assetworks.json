@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "People Are Living Longer. Can Your Parks Keep Up?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/eam/blog/people-are-living-longer-can-your-parks-keep-up/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.assetworks.com/eam/blog/gis-asset-management-for-parks/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Why Disconnected Fleet Systems Create More Work Than They Save",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/why-disconnected-fleet-systems-create-more-work-than-they-save/"
   }
  ],
  "profile": {

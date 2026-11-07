@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-11-06",
+   "headline": "Why GIS Software for Emergency Management Is Critical for Modern Incident Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/gis-software-for-emergency-management-why-it-is-critical"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/mutual-aid-agreement-emergency-management"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-09",
-   "headline": "What Is the National Incident Management System?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/national-incident-management-system-guide"
   }
  ]
 }

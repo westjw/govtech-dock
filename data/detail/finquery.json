@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Leasehold Improvements Accounting and Amortization under US GAAP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://finquery.com/blog/leasehold-improvements-accounting-amortization-us-gaap/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://finquery.com/blog/frs-102-transition-advice-from-experts/"
-  },
-  {
-   "date": "2026-05-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Accrued Expenses vs. Accounts Payable Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://finquery.com/blog/accrued-expenses-vs-accounts-payable-explained/"
   }
  ]
 }

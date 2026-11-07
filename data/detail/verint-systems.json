@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Explainable AI Quality Management: Evidence vs. Blind Trust",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/explainable-ai-quality-management/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verint.com/resources/isg-buyers-guide-for-contact-centers/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Escaping Pilot Purgatory: A Use Case Road Map for Winning the AI ROI Battle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verint.com/resources/idc-ai-use-case-road-map/"
   }
  ]
 }

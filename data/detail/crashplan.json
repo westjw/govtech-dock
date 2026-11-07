@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-05",
    "headline": "The Guide to Microsoft 365 Backup",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "CrashPlan for Entra ID",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Server Backup Economics: Are You Paying Too Much to Protect What\u2019s Left On-Prem?",
    "kind": "press",

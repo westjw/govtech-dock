@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "A Practical Guide to Reality Capture in Construction",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/construction-reality-capture/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/autodesk-construction-cloud-alternatives/"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "2026 Construction Industry Trends: 8 Problems Owners and GCs Can Solve Now",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/2026-construction-industry-trends/"
   }
  ],
  "profile": {

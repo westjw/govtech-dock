@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "index-text",
+   "first_seen": "2026-11-06",
+   "headline": "University of Florida selects TIND Digital Archive and Institutional Repository",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://blog.tind.io/press/university-of-florida-selects-tind-da-ir"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "index-text",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "selects",
    "url": "https://blog.tind.io/press/george-mason-university-selects-tind-digital-archive-and-tind-institutional-repository"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Cedarville University implements TIND Institutional Repository and TIND Digital Archive",
-   "kind": "contract",
-   "kind_rule": "University implements",
-   "url": "https://blog.tind.io/press/cedarville-university-implements-tind-digital-archive-and-institutional-repository"
   }
  ]
 }

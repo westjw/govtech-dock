@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Hiring For The Big Picture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.katapultengineering.com/blog/hiring-for-the-big-picture"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.katapultengineering.com/blog/field-team-health"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "v26.8 Katapult Pro Release Notes - Featuring Workflow Management and Configurable Proposed Cable Logic!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.katapultengineering.com/blog/v26.8-katapult-pro-release-notes-featuring-workflow-management-and-configurable-proposed-cable-logic"
   }
  ],
  "profile": {

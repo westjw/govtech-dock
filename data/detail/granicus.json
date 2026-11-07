@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "The information gap keeping residents from the great outdoors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://granicus.com/blog/the-information-gap-keeping-residents-from-the-great-outdoors/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://granicus.com/blog/accessibility-risk-reduction-for-special-districts/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Supporting overextended special district teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://granicus.com/blog/supporting-overextended-special-district-teams/"
   }
  ],
  "profile": {

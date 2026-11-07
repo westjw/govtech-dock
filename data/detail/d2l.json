@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-06",
+   "headline": "Completion data isn\u2019t readiness data: Showing the impact of workplace learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/showing-the-impact-of-workplace-learning/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -10,8 +19,8 @@
    "url": "https://www.d2l.com/blog/the-strategic-role-of-associations-in-shaping-the-future-workforce/"
   },
   {
-   "date": "2026-11-02",
-   "date_source": "index-text",
+   "date": "2026-11-03",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "MIT World Peace University selects D2L to help transform campus learning",
    "kind": "contract",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "D2L Brightspace Named a 2026 Top Learning Platform by Training Industry",
    "kind": "press",
@@ -40,7 +49,7 @@
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
-   "headline": "What Expanded 529 Eligibility Could Mean for Association Learning",
+   "headline": "What expanded 529 eligibility could mean for association learning",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/what-expanded-529-eligibility-could-mean-for-association-learning/"
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "D2L Launch Week Showcases Latest Learning Innovations",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/generative-ai-training/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-28",
-   "headline": "DeVry University Selects D2L Brightspace to Launch Next\u2011Gen Competency\u2011Based Digital Learning",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.d2l.com/newsroom/devry-university-selects-d2l-brightspace-to-launch-next-gen-competency-based-digital-learning/"
   }
  ],
  "profile": {

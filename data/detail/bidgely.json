@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-05",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "The Future of Energy Efficiency for Gas",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-07",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-09",
    "headline": "Crawl, Walk, Run: How FortisBC Built My Energy Use 2.0",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-01",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Every Customer, Known. Every Interaction, Smarter. How OG&E Is Showing the Industry What Behind-the-Meter Intelligence Can Do",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-07-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "PJM Broke an All-Time Demand Record. Most Utilities Haven't Tapped the Flexibility That Could Ease the Next One.",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-02-27",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Time-Based Rates: From Experimentation to Validation",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-01-07",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Avista AMI Data & Bidgely's DER Analytics as a Use-Case Generator: How The Utility's Data-Driven Culture Is Keeping It Future-Ready",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2025-12-20",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "How PNM is Leveraging AMI Data to Optimize Time-Varying Rates",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2025-12-08",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Bidgely Accelerates AI Agents for Utilities as a Launch Partner for Snowflake Intelligence",
    "kind": "product",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2025-11-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Navigating Extreme Wholesale Market Volatility: How European Energy Retailers Can Shield Margins Through Customer-Side Demand Flexibility",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2025-08-25",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Customer Churn & Commoditisation: How European Energy Retailers Can Win on Value",
    "kind": "press",
