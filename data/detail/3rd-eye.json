@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "Closing the Loop Between the Route and the Office View Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3rdeyecam.com/news/closing-the-loop-between-the-route-and-the-office/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "The Knowledge Behind The Uptime View Article",
+   "headline": "The Knowledge Behind The Uptime",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.3rdeyecam.com/news/knowledge-behind-the-uptime-article/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.3rdeyecam.com/news/ai-in-the-waste-industry-waste-advantage/"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "3rd Eye and Heil Environmental Join Terex Services Demo Day in Tennessee",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.3rdeyecam.com/news/3rd-eye-and-heil-environmental-join-terex-services-demo-day-in-tennessee/"
   }
  ],
  "profile": {

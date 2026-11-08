@@ -1,7 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-10-27",
+   "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Mask Student Data From Vendors, Not From Teachers",
@@ -28,6 +28,15 @@
    "url": "https://www.classlink.com/news/classlink-launches-insights-to-help-schools-see-how-edtech-relates-to-student-outcomes"
   },
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "and October 13, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/classlink-products-oct-2026"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -46,17 +55,8 @@
    "url": "https://www.classlink.com/blog/analytics-plus-brings-safari-activity-into-view"
   },
   {
-   "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "and October 13, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/classlink-products-oct-2026"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
+   "date": "2026-09-17",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "and September 10, 2026",
    "kind": "press",

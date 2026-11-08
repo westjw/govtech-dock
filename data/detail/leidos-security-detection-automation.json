@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "Energy concierge: Trust and savings for utilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/energy-concierge-trust-and-savings-utilities"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "selects",
    "url": "https://leidos.com/insights/us-cyber-command-selects-leidos-full-spectrum-cyber-operations"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Why document intelligence must move beyond extraction",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/why-document-intelligence-must-move-beyond-extraction"
   }
  ]
 }

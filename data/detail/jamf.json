@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "index-text",
+   "first_seen": "2026-11-07",
+   "headline": "The bluetooth trust problem we carry in our ears",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/the-bluetooth-trust-problem-we-carry-in-our-ears/"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "index-text",
+   "first_seen": "2026-11-07",
+   "headline": "New and updated Jamf 100 Course released",
+   "kind": "product",
+   "kind_rule": "updated",
+   "url": "https://www.jamf.com/blog/jamf-100-updates/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jamf.com/blog/cve-2026-20971-samsung-knox-proca-vulnerability/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "What does a good digital employee experience actually look like on Mac?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/good-digital-employee-experience-mac/"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Cybersecurity awareness month: a practitioner\u2019s view",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/cybersecurity-awareness-month-a-practitioners-view/"
   }
  ]
 }

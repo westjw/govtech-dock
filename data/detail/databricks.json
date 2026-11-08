@@ -10,6 +10,24 @@
    "url": "https://www.databricks.com/blog/how-public-sector-organizations-can-govern-ai-scale"
   },
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "Read, don't copy: replacing file feeds with OpenSharing - Part 2 (How to Implement)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/read-dont-copy-replacing-file-feeds-opensharing-part-2-how-implement"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "Read, don't copy: replacing file and API feeds with OpenSharing - Part 1 (The Why)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/read-dont-copy-replacing-file-and-api-feeds-opensharing-part-1-why"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Lakebase Postgres is now generally available on Google Cloud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/lakebase-postgres-now-generally-available-google-cloud"
-  },
-  {
-   "date": "2026-10-31",
-   "date_source": "index-text",
-   "first_seen": "2026-11-01",
-   "headline": "Lakebase branching for CI/CD: lessons from 100 PR databases",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/lakebase-branching-cicd-lessons-100-pr-databases"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "School Routing Software Performance on District Networks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/school-routing-software-performance-on-district-networks"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/best-student-transportation-platforms-compared"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Best School Bus Routing and Safety Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/best-school-bus-routing-and-safety-software"
   }
  ],
  "profile": {

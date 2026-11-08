@@ -10,8 +10,17 @@
    "url": "https://www.threatlocker.com/blog/why-ai-agents-need-just-in-time-access"
   },
   {
-   "date": "2026-11-05",
+   "date": "2026-11-06",
    "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "GovRAMP vs. FedRAMP: What's the difference?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/govramp-vs-fedramp-whats-the-difference"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "card-date",
    "first_seen": "2026-11-05",
    "headline": "Five critical AI controls your security strategy needs",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "releases",
    "url": "https://www.threatlocker.com/blog/nist-releases-key-practices-for-incident-response-in-ai-and-super-intelligence-training"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "PHP2Shell: Why organizations must patch critical PHP vulnerabilities now",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/php2shell-why-organizations-must-patch-critical-php-vulnerabilities-now"
   }
  ]
 }

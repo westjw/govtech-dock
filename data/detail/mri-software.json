@@ -82,15 +82,6 @@
    "url": "https://www.mrisoftware.com/resources/consumers-return-to-routine-as-summer-momentum-fades/"
   },
   {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Covering the five-week period between August 30 and October 3, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/resources/mri-onlocation-us-monthly-commentary-september-2026/"
-  },
-  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/best-apartment-management-software-comparison/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "What is lease abstraction and why is it important?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-is-lease-abstraction/"
   }
  ]
 }

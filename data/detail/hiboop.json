@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "Hi. Meet our new advisory board",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/advisory-board/"
+  },
+  {
    "date": "2026-09-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "DSM-6 Release Date: None Set Yet, and What the APA's Roadmap Says",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-05-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Inside the UVic research: how peer-reviewed comorbidity data reshaped HiBoop's recommendation logic",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-03-09",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AuDHD: What Happens When ADHD and Autism Coexist",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hiboop.com/insights/value-based-care/"
-  },
-  {
-   "date": "2025-07-06",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Me & Autism: Building a Space That Says Yes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hiboop.com/insights/stories/me-and-autism-building-a-space-that-says-yes/"
   }
  ],
  "profile": {

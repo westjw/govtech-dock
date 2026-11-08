@@ -1,17 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "CLEAR Airport Guide: Louis Armstrong New Orleans International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-msy"
+  },
+  {
    "date": "2026-11-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
-   "headline": "CLEAR Airport Guide: Dallas Fort Worth International Airport",
+   "headline": "CLEAR Airport Guide: Dallas Fort-Worth International Airport",
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/airport-guides-dfw"
   },
   {
    "date": "2026-10-27",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "CLEAR Travel Tips: How to Pack for Wedding Travel",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Worth the Trip: What\u2019s the One Meal You\u2019d Fly Across the World For?",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "CLEAR Airport Guide: Harry Reid International Airport",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "CLEAR Airport Guide: San Francisco International Airport",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "CLEAR Hosts Military Veterans at NY HQ to Preview New Initiative with VA.gov",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "CLEAR Destination Guide: Denver on a Layover",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "CLEAR Travel Tips: What Do I Do If My Luggage is Lost",
    "kind": "press",
@@ -82,31 +91,22 @@
    "url": "https://clearme.com/blog/aiport-guide-ord"
   },
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "CLEAR Airport Guide: Chicago O\u2019Hare International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-ord"
+  },
+  {
    "date": "2026-09-18",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "CLEAR Travel Tips: Checked Bag vs. Carry-On",
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/checked-bag-vs-carry-on"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "CLEAR Destination Guide: LA on a Layover",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/la-on-a-layover"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "CLEAR Airport Guide: Atlanta Hartsfield-Jackson International Airport",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/airport-guide-atl"
   }
  ],
  "profile": {

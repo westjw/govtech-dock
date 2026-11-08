@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-07",
+   "headline": "How to Run a Software Proof of Concept, and the Platforms That Host One",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://spektrasystems.com/blog/software-proof-of-concept-platforms"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://spektrasystems.com/blog/best-hackathon-platforms"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Best Partner Training LMS Platforms for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://spektrasystems.com/blog/best-partner-training-lms"
   }
  ]
 }

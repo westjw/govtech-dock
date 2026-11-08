@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-06",
    "headline": "Killing ill-willed skills: Sophos AI at BSides Sydney",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-27",
    "headline": "Building intent-based access control for AI agents",
    "kind": "press",

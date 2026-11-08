@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-06",
    "headline": "Parcel data update | November 2026",
    "kind": "product",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Announcing Parcels: How Property Shapes Geography \u2014 A new book from Esri Press by Jerry Paffendorf and Nancy von Meyer",
    "kind": "press",

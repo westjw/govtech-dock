@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-08",
+   "headline": "Live Video Monitoring: How to Choose a Provider",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/live-video-monitoring-how-to-choose-a-provider"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/security-camera-trailer-rental-vs-owning-vs-managed-service"
-  },
-  {
-   "date": "2026-10-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-19",
-   "headline": "Peak Season Cargo Theft: How to Protect Freight in Q4",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/peak-season-cargo-theft-q4"
   }
  ],
  "profile": {

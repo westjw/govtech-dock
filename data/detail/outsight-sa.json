@@ -1,12 +1,21 @@
 {
  "news": [
   {
+   "date": "2026-11-07",
+   "date_source": "card-date",
+   "first_seen": "2026-11-07",
+   "headline": "Outsight obtains ENS certification for its Spatial Intelligence Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsight.ai/insights/outsight-obtains-ens-certification-for-its-spatial-intelligence-platform/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "card-date",
    "first_seen": "2026-10-16",
-   "headline": "Outsight selected for French Tech 2030",
+   "headline": "Selected for French Tech 2030",
    "kind": "contract",
-   "kind_rule": "selected for",
+   "kind_rule": "Selected for",
    "url": "https://www.outsight.ai/insights/outsight-joins-the-french-tech-2030-programme/"
   },
   {
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Airport deploys",
    "url": "https://www.outsight.ai/insights/bordeaux-airport-deploys-outsight-solution-to-reduce-passenger-waiting-times/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Outsight joins EONA-X to develop collaboration and data innovation in European airports",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsight.ai/insights/outsight-joins-eona-x-to-develop-collaboration-and-data-innovation-in-european-airports/"
   }
  ],
  "profile": {

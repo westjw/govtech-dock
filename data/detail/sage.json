@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-06",
    "headline": "Senior living accounting software vs care platform: which system owns which number",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-04",
    "headline": "Dental practice KPIs for multi-location groups: a scorecard by location",
    "kind": "press",
@@ -19,8 +19,8 @@
    "url": "https://www.sage.com/en-us/blog/dental-practice-kpis-multi-location-scorecard/"
   },
   {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
+   "date": "2026-11-02",
+   "date_source": "card-date",
    "first_seen": "2026-11-03",
    "headline": "Your first month-end close after acquiring a senior living community: the finance setup to settle first",
    "kind": "press",
