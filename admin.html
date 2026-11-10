@@ -4707,6 +4707,12 @@ RENDER.profiles = p => {
     w.appendChild(document.createTextNode(p.why));
     n.appendChild(w);
   }
+  if (p.review_note) {
+    const w = el('div', 'kv');
+    w.appendChild(el('b', null, "Reviewers' note. "));
+    w.appendChild(document.createTextNode(String(p.review_note)));
+    n.appendChild(w);
+  }
   const e = el('div', 'evi');
   // THE WRITE-UP AS IT WILL READ, not as it was assembled. This used to put
   // every sentence on its own line with its quote underneath, which is the
@@ -4722,27 +4728,59 @@ RENDER.profiles = p => {
     return m ? m[1] : null;
   })();
   const sentence = (host, text) => {
-    if (refusedTok && text.includes(refusedTok)) {
-      const [a, b] = text.split(refusedTok);
-      host.append(a, el('mark', null, refusedTok), b === undefined ? '' : b);
+    const at = refusedTok ? text.indexOf(refusedTok) : -1;
+    if (at >= 0) {
+      // the FIRST occurrence marked, the rest of the sentence kept whole
+      host.append(text.slice(0, at), el('mark', null, refusedTok),
+                  text.slice(at + refusedTok.length));
     } else {
       host.appendChild(document.createTextNode(text));
     }
   };
 
+  /* TAKE A SENTENCE OUT (owner, 2026-11-10). A sound write-up with one bad
+     sentence had two answers, both wrong: on the page with it, or rejected
+     whole. Clicking a sentence strikes it; the button below then lands the
+     rest, and the server runs the trimmed text through the door again
+     (proposal_rulings.accept_without), so a cut that leaves too little is
+     refused there, not here. */
+  const struck = new Set();
+  const said = {};          // sentence number -> its text, sent with a cut
+  let onStrike = () => {};
   let sn = 0;
   const cited = [];
-  (p.paragraphs || []).forEach(para => {
+  (Array.isArray(p.paragraphs) ? p.paragraphs : []).forEach(para => {
     const block = el('p');
     block.style.cssText = 'margin:0 0 11px;line-height:1.6';
     (Array.isArray(para) ? para : []).forEach((sx, j) => {
+      if (!sx || typeof sx !== 'object') sx = {text: typeof sx === 'string' ? sx : ''};
+      if (typeof sx.text !== 'string') sx = Object.assign({}, sx, {text: sx.text == null ? '' : String(sx.text)});
+      const idx = sn;
+      said[idx] = sx.text || '';
       sn += 1;
       cited.push({ n: sn, quote: sx.quote || '', url: sx.url || '' });
       if (j) block.appendChild(document.createTextNode(' '));
-      sentence(block, sx.text || '');
+      const sp = el('span');
+      sentence(sp, sx.text || '');
       const sup = el('sup', null, String(sn));
       sup.style.cssText = 'font-size:.68em;opacity:.65;margin-left:1px';
-      block.appendChild(sup);
+      sp.appendChild(sup);
+      sp.tabIndex = 0;
+      sp.title = 'Click to take this sentence out';
+      sp.style.cursor = 'pointer';
+      const toggle = () => {
+        if (struck.has(idx)) struck.delete(idx); else struck.add(idx);
+        const on = struck.has(idx);
+        sp.style.textDecoration = on ? 'line-through' : '';
+        sp.style.opacity = on ? '.5' : '';
+        sp.setAttribute('aria-pressed', on ? 'true' : 'false');
+        onStrike();
+      };
+      sp.setAttribute('role', 'button');
+      sp.setAttribute('aria-pressed', 'false');
+      sp.onclick = toggle;
+      sp.onkeydown = ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); } };
+      block.appendChild(sp);
     });
     if (block.childNodes.length) e.appendChild(block);
   });
@@ -4785,28 +4823,59 @@ RENDER.profiles = p => {
   const why = el('input', 'in');
   why.placeholder = 'why (recorded either way)'; why.style.flex = '1';
   const msg = el('div', 'kv'); msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  const cutBtn = el('button', 'btn primary', '');
+  cutBtn.hidden = true;
+  /* WHILE A SENTENCE IS STRUCK, THE PLAIN ACCEPT IS OFF. A blind review
+     found the obvious slip: strike the bad sentence, then click the familiar
+     "Put it on the page", which lands the whole draft, struck sentence and
+     all. */
+  let plainYes = null;
+  onStrike = () => {
+    const k = struck.size;
+    cutBtn.hidden = !k;
+    cutBtn.textContent = 'Put it on the page without ' + k + ' sentence' + (k === 1 ? '' : 's');
+    if (plainYes) {
+      plainYes.disabled = k > 0;
+      plainYes.title = k ? 'Sentences are struck: use the button that leaves them out' : '';
+    }
+  };
+  cutBtn.onclick = async () => {
+    cutBtn.disabled = true;
+    const cut = [...struck].sort((a, b) => a - b);
+    const r = await api('/api/profile-cut', {key: p.key, cut, texts: cut.map(i => said[i]),
+                                            at: p.at || undefined, why: why.value.trim()});
+    cutBtn.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    toast(r.message); n.remove();
+  };
+  if (sn) n.appendChild(el('div', 'kv', 'Click a sentence to take it out.'));
   if (p.status === 'refused') {
     const dis = el('button', 'btn', 'Dismiss');
     dis.onclick = async () => {
       dis.disabled = true;
-      const r = await api('/api/dismiss', {queue: 'profiles', key: p.key, why: why.value.trim() || 'read'});
+      const r = await api('/api/dismiss', {queue: 'profiles', key: p.key, why: why.value.trim() || 'read',
+                                           saw: {at: p.at || null}});
       if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; dis.disabled = false; return; }
       toast('dismissed; the door\'s refusal stands'); n.remove();
     };
-    row.append(why, dis, msg);
+    row.append(why, cutBtn, dis, msg);
   } else {
     const yes = el('button', 'btn primary', 'Put it on the page');
+    plainYes = yes;
     const no = el('button', 'btn', 'Reject');
     const send = async (accept) => {
+      if (accept && struck.size) return;
       yes.disabled = no.disabled = true;
-      const r = await api('/api/proposal-ruling', {key: p.key, accept, why: why.value.trim()});
-      yes.disabled = no.disabled = false;
+      const r = await api('/api/proposal-ruling', {key: p.key, accept, why: why.value.trim(),
+                                                    at: p.at || undefined});
+      no.disabled = false;
+      yes.disabled = struck.size > 0;
       if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
       toast(r.message); n.remove();
     };
     yes.onclick = () => send(true);
     no.onclick = () => send(false);
-    row.append(why, yes, no, msg);
+    row.append(why, cutBtn, yes, no, msg);
   }
   n.appendChild(row);
   return n;

@@ -6021,6 +6021,435 @@ def check_profile_door_needs_provenance() -> int:
     return errors
 
 
+def check_the_door_reads_a_page_word_written_another_way() -> int:
+    """The door stays strict on names, numbers and quotes, and reads a
+    version, the company's own name and a FAQ heading the way the page means.
+
+    The owner, 2026-11-10, asked for the door to stop refusing spacing variants
+    and spelled-out abbreviations. Three versions of a rewrite ('SOC 2' for
+    'SOC2', 'Department of Defense' for 'DoD', '35,000' for '35K+', list items
+    picked out of a quote) were built, and three blind reviews each published
+    invented claims through them on real cached pages: "New York Police" off
+    "Rochester, NY / Police", a Department of Defense customer off a
+    day-over-day "DoD", Veterans Affairs as Virginia, a spliced "is / certified"
+    over "is not yet certified". A door that checks each word against
+    everything a company's pages say anywhere cannot tell a coincidence from a
+    match, so the rewrites were withdrawn.
+
+    EVERY ATTACK SENTENCE FROM THOSE REVIEWS IS KEPT BELOW AS A REFUSAL, so a
+    future widening has to get past all of them. What stayed: a dotted version
+    is one number, the name on file counts without Inc, and FAQ is a heading.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+
+    page = ("Acme Records builds software for the DoD and other defense buyers and for city halls. "
+            "CJIS Equivalent & SOC2 Compliant. Support 8AM-5PM PT. "
+            "Trusted by 35K+ officers. Its shares are listed on the NYSE: ACR. "
+            "Hosted in the cloud on AWS. Built on Oracle’s PeopleSoft. "
+            "The IBScan Ultimate Software Development Kit (SDK) ships with it. "
+            "Download the Ultimate SDK today. Rated 4,5 Sterne. "
+            "Over 4,100,000 users. It raised €2M last year. "
+            "Meets NEMSIS 3.5.0. Serving LA County and agencies across CA. "
+            "Our office is at 12 Grand River Ave. in Lansing. "
+            "Over 100.000 km of roads captured.\n"
+            "Customer mobile apps\nMerchant validation apps\nWeb portals\n"
+            "API integrations and documentation\n"
+            "Dispatch to evidence and fleet management – in one system. "
+            "Each agency keeps its own data, and the GIS layer is shared. "
+            "Find an office at acme.example/locations/houston for opening hours. "
+            "Police use it daily. PW crews like it. The ct scan room is next door. "
+            # THE BLIND REVIEW'S PROBES (2026-11-10), each a page word that
+            # the first version of the rewrite turned into an invented claim
+            "Our CAD module and our mobile apps serve police. Grant funding helps "
+            "every county. Our Chicago Police partner is happy. Take a test drive "
+            "with Jane Roe. Our Baton Rouge, LA 70801 office opens soon. It runs on "
+            "12V DC power. CT scanners sit next door. It records 4K video through a "
+            "35mm lens. Staff get a 401(k). Version 1.000 shipped. Firmware: 10.000 is out.\n"
+            "The company is not yet certified under any standard.\n"
+            # round two of the blind review (2026-11-10)
+            "Caseworkers at Pennsylvania DHS use it. We work with the state's department of "
+            "transportation. Customers include the Texas Department of Transportation. The "
+            "Vermont Department for Children and Families (DCF) also uses it. Our mobile team "
+            "serves the Department of Public Safety (DPS). It runs 135 agencies. SOC 2 Type I "
+            "audited. 70,000 students and 6,000 hours and 3,000,000 users. Over 2,5 million "
+            "visits.\nIncluded:\nRoad Lighting\nNot included:\nTraffic Cameras\n"
+            "We are\nnot\ncertified for that.\n"
+            "Arlington, TX\nPolice Department\n")
+    T = {"https://acme.example/": page}
+    Q = "Acme Records builds software for the DoD"
+    base = ["Acme Records builds software for city halls and for public agencies.",
+            "Each agency keeps its own data, and the layers are shared between them.",
+            "The company sells its software to public agencies and keeps it running."]
+    pad = ["Acme Records builds software for city halls across many places.",
+           "Each agency keeps its own data in the product they all use.",
+           "The software is sold to public agencies and supported for years.",
+           "Support is offered to every public agency that runs the software."]
+
+    def prop(sentence, quote=Q):
+        return {"key": "profile:acme", "id": "acme", "confidence": "medium",
+                "paragraphs": [[{"text": s, "url": "https://acme.example/", "quote": Q}
+                                for s in base],
+                               [{"text": sentence, "url": "https://acme.example/", "quote": quote}]
+                               + [{"text": s, "url": "https://acme.example/", "quote": Q}
+                                  for s in pad]],
+                "company": {"name": "Acme Records Inc", "also_known_as": [],
+                            "sector": "Public Safety", "category": "Police"}}
+
+    accept = [
+        ("a version taken whole", "It meets NEMSIS 3.5.0 requirements."),
+        ("the name on file without Inc", "Acme Records serves city halls."),
+        ("a FAQ heading", "The FAQ explains the licence terms for each agency."),
+    ]
+    refuse = [
+        # the withdrawn widenings, each now refused by the strict door
+        ("Department of Defense against DoD", "department", "It sells software to the Department of Defense."),
+        ("Pacific against PT", "pacific", "Support runs from 8 to 5 Pacific."),
+        ("35,000 against 35K+", "35000", "More than 35,000 officers use it."),
+        ("New York Stock Exchange against NYSE", ("stock", "new york"), "Acme is listed on the New York Stock Exchange."),
+        ("Los Angeles County against LA County", ("los", "angeles"), "It serves Los Angeles County agencies."),
+        ("Texas Police against 'Rochester, NY' over 'Police'", ("texas", "police"),
+         "The Texas Police use its public dashboards."),
+        ("Department of Energy against DoD", ("department", "energy"), "It sells software to the Department of Energy."),
+        ("40,000 against 35K+", "40000", "More than 40,000 officers use it."),
+        ("SOC 2 Type II against SOC2", ("type", "ii", "soc"), "It is SOC 2 Type II certified."),
+        ("3.5 against a page that says 3.5.0", "3.5", "It meets NEMSIS 3.5 requirements."),
+        ("Los Angeles Police against LA County", ("los", "department"),
+         "It serves the Los Angeles Police Department."),
+        ("New York City against nothing", "new york city", "It serves New York City agencies."),
+        ("a two-letter initialism not in the table", "works", "It serves the Public Works team."),
+        ("an opener the page has only inside a url", "houston police", "Houston Police use it daily."),
+        ("an invented customer beside a true one", "dallas", "It serves Dallas and LA County."),
+        ("a version the page does not print", "3.4.1", "It meets NEMSIS 3.4.1 requirements."),
+        ("a time zone the page prints only in lower case", "central", "Support runs until 5 Central."),
+        # the blind review's probes: every one passed the first version
+        ("initials of an invented name that spell a page word", ("clark", "area", "dispatch"),
+         "Customers include Clark Area Dispatch."),
+        ("initials of an invented utility that spell AWS", ("water", "service"),
+         "Arizona Water Service runs the software."),
+        ("a compass point added to a name on the page", "south", "It serves the South Chicago Police."),
+        ("an invented title expanded from an address word", ("jane roe", "dr"),
+         "Dr. Jane Roe leads the company."),
+        ("Los Angeles against Louisiana's LA", "los", "It serves Los Angeles agencies."),
+        ("the District of Columbia against direct current", "district",
+         "It powers the District of Columbia."),
+        ("Central against a CT scanner", "central", "Customers include Central."),
+        ("a two-word place whose first word is ordinary prose", "mobile police",
+         "Mobile Police use it daily."),
+        ("a county named by an ordinary word", "grant county", "Grant County uses the software."),
+        ("4,000 against 4K video", "4000", "More than 4,000 agencies use it."),
+        ("35,000,000 against a 35mm lens", "35000000", "It has 35,000,000 users."),
+        ("401,000 against a 401(k)", "401000", "It has 401,000 users."),
+        ("1,000 against Version 1.000", "1000", "More than 1,000 agencies use it."),
+        ("a number too long to be one", "9", "It has " + "9" * 400 + " users."),
+        # round two: each passed the second version
+        ("Los Angeles after an opening word, against Louisiana's LA", ("los", "angeles"),
+         "In Los Angeles, police use the software."),
+        ("the District of Columbia at a sentence start, against direct current", "district",
+         "The District of Columbia uses the software."),
+        ("Homeland Security against a county's Human Services DHS", ("homeland", "department"),
+         "The company sells software to the Department of Homeland Security."),
+        ("State Department against the state's department", "state department",
+         "The State Department uses the software."),
+        ("one state's word beside another agency's initialism", "texas dcf",
+         "Texas DCF uses the software every day."),
+        ("a place beside a page-defined initialism", ("mobile", "dps"), "Mobile DPS uses it."),
+        ("a zone word after a count, not an hour", "central", "It installs 12 Central scanners."),
+        ("Part 135 against a PT time zone and 135 agencies", "part", "It holds a Part 135 certificate."),
+        ("a SOC level the page does not print", ("soc", "type"), "It is SOC2 Type 2 audited."),
+        ("a grade band read as thousands", "70", "It serves 70 K-12 districts."),
+        ("a video resolution read as thousands", "6", "It records 6K video."),
+        ("a company read as millions", "3", "3M is a partner."),
+        ("a figure read from the middle of a decimal comma", "5000000", "It has 5,000,000 visits."),
+        ("a firmware number read as a German thousand", "10000", "It has 10,000 users."),
+    ]
+    errors = 0
+    for name, s in accept:
+        got = agents.check_profile(prop(s), T)
+        if got is not None:
+            errors += fail(f"the door refused {name}: {got}. The page prints the same "
+                           f"thing another way, and a refusal of a true sentence "
+                           f"is the door being too tight")
+    for name, token, s in refuse:
+        got = agents.check_profile(prop(s), T)
+        if got is None:
+            errors += fail(f"the door ACCEPTED {name}: {s!r}. A rewrite into the "
+                           f"page's own words must not admit what the page does not say")
+        elif not any(t in got.lower() for t in ((token,) if isinstance(token, str) else token)):
+            errors += fail(f"the door refused {name} without naming {token!r}: {got}")
+
+    # RULE 4 STAYS VERBATIM. A quote that picks items out of a list, skips a
+    # heading, or drops a dash is not on the page as written, and three
+    # versions of a looser rule each let a quote splice a sentence apart.
+    for name, quote, sentence in (
+            ("list items picked in order", "Customer mobile apps\nMerchant validation apps\n"
+             "API integrations and documentation", "It offers customer mobile apps and API integrations."),
+            ("a list that skips a 'Not included:' heading", "Road Lighting\nTraffic Cameras",
+             "It covers road lighting and traffic cameras."),
+            ("a heading whose 'not' was broken over block tags", "We are\ncertified for that.",
+             "It is certified for that."),
+            ("a sentence spliced across 'not yet'", "The company is\ncertified under any standard.",
+             "It is certified under a standard.")):
+        got = agents.check_profile(prop(sentence, quote), T)
+        if got is None or not got.startswith("4."):
+            errors += fail(f"rule 4 did not refuse {name}: {got}")
+    return errors
+
+
+def check_a_write_up_can_land_without_named_sentences() -> int:
+    """'Put it on the page without these sentences' lands the rest, and only
+    after the trimmed text passes the door again.
+
+    The owner, 2026-11-10. Before this, the choices for a sound write-up with
+    one bad sentence were: land it with the bad sentence, or reject it whole.
+    Asserted here: the cut sentence is gone from companies.json and recorded
+    on the proposal; a cut that leaves the write-up under the shape rule
+    (80 words) lands nothing and says why; a refused draft can be landed once
+    the sentence the door refused is cut, and not before; a bad sentence
+    number, an empty cut and a missing author are refused by name; and the
+    write-ups tab shows a refused draft's sentences, which it did not.
+    """
+    import json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, proposal_rulings
+    import fetch_profiles as fp
+
+    page = ("Acme builds dispatch software for police departments and fire "
+            "departments in small and large cities alike. The system runs in the "
+            "cloud and keeps every call on record for as long as the agency needs. "
+            "Agencies use it to send units, track them on a map and write the "
+            "report when the call is over. Dispatchers see every open call on one "
+            "screen and can move a unit with a single click. Support is available "
+            "to every agency at any hour of the day and on every day of the year. "
+            "The software is sold by subscription and installed by the company's "
+            "own team of engineers. Training is included for every dispatcher and "
+            "every officer who uses the system.")
+    U = "https://acme.example"
+    S = [["Acme builds dispatch software for police departments and fire departments in small and large cities alike.",
+          "The system runs in the cloud and keeps every call on record for as long as the agency needs.",
+          "Agencies use it to send units, track them on a map and write the report when the call is over.",
+          "Dispatchers see every open call on one screen and can move a unit with a single click."],
+         ["Support is available to every agency at any hour of the day and on every day of the year.",
+          "The software is sold by subscription and installed by the company's own team of engineers.",
+          "Training is included for every dispatcher and every officer who uses the system.",
+          "Customers include the Baltimore Police Department."]]
+    paras = [[{"text": t, "url": U, "quote": t[:40]} for t in para] for para in S]
+    companies = [{"id": "acme", "name": "Acme", "sector": "Public Safety",
+                  "category": "Police", "description": "CAD for police",
+                  "website": U, "ats": {"type": "unknown", "ref": None},
+                  "hiring": "Unknown", "govtech": True, "vendor_type": "product"},
+                 {"id": "beta", "name": "Beta", "sector": "Public Safety",
+                  "category": "Police", "description": "CAD for police",
+                  "website": U, "ats": {"type": "unknown", "ref": None},
+                  "hiring": "Unknown", "govtech": True, "vendor_type": "product"}]
+    row = {"kind": "profile", "id": "acme", "name": "Acme", "status": "pending",
+           "confidence": "medium", "sector": "Public Safety", "category": "Police",
+           "why": "fixture", "paragraphs": paras,
+           "saw": {"pages": [{"url": U, "sha": "ab", "fetched_on": "2026-11-10"}]}}
+    refused = {"kind": "profile", "id": "beta", "name": "Beta", "status": "refused",
+               "confidence": "medium",
+               "refused_why": "5. 'Baltimore Police Department' is not on any of their pages.",
+               "proposal": {"id": "beta", "name": "Beta", "confidence": "medium",
+                            "sector": "Public Safety", "category": "Police",
+                            "paragraphs": _json.loads(_json.dumps(paras)),
+                            "saw": {"pages": [{"url": U, "sha": "ab"}]}},
+               "by": "agent:test"}
+    # A PENDING ROW WITH ITS DRAFT UNDER "proposal": what recheck_refused left
+    # behind before 2026-11-10. Fourteen of these were in the queue, showing no
+    # sentences and unable to land.
+    gamma = {"kind": "profile", "id": "gamma", "name": "Gamma", "status": "pending",
+             "confidence": "medium", "reopened_why": "the refusal was ours",
+             "proposal": {"id": "gamma", "name": "Gamma", "confidence": "medium",
+                          "sector": "Public Safety", "category": "Police",
+                          "paragraphs": _json.loads(_json.dumps(paras))[:1] + [
+                              [dict(x) for x in _json.loads(_json.dumps(paras))[1][:3]]],
+                          "saw": {"pages": [{"url": U, "sha": "ab"}]}}}
+    companies.append(dict(companies[0], id="gamma", name="Gamma"))
+    # a draft whose sixth sentence leans on the fifth ("It ...")
+    delta = _json.loads(_json.dumps(row))
+    delta["id"] = "delta"
+    delta["paragraphs"][1][1]["text"] = ("It is sold by subscription and installed by the "
+                                         "company's own team of engineers.")
+    # and its second paragraph opens on a pointer back across the break
+    delta["paragraphs"][1][0]["text"] = ("Two years later, it was available to every agency at "
+                                         "any hour of the day and on every day of the year.")
+    companies.append(dict(companies[0], id="delta", name="Delta"))
+    # a refused draft refused for its shape: the tab must still draw
+    eps = {"kind": "profile", "id": "acme", "name": "Acme", "status": "refused",
+           "confidence": "medium", "refused_why": "1. shape",
+           "proposal": {"id": "acme", "paragraphs": "not a list"}}
+    # A DRAFT ABOUT ANOTHER COMPANY (ingest's rule 0): its text quotes this
+    # company's page, so the door's rules 1 to 10 pass it, and nothing may
+    # trim it onto this record, reopen it or lift it (blind review, 2026-11-10)
+    zeta = {"kind": "profile", "id": "acme", "name": "Acme", "status": "refused",
+            "confidence": "medium", "at": "2026-11-01T10:00:00",
+            "refused_why": "0. this answer names 'acme-ai' and was asked about 'acme'.",
+            "proposal": {"id": "acme-ai", "name": "Acme", "confidence": "medium",
+                         "paragraphs": _json.loads(_json.dumps(paras))}}
+    store = {"profile:acme": row, "profile:beta": refused, "profile:gamma": gamma,
+             "profile:delta": delta, "profile:eps": eps, "profile:zeta": zeta}
+    files = {"companies.json": companies, "agent_proposals.json": store,
+             "manual.json": {"checks": {}, "postings": []},
+             "admin_dismissed.json": {}, "placement_rulings.json": {}}
+    errors = 0
+    with _sandbox_admin(files) as tmp:
+        keep, keep_dir = agents.STORE, fp.DIR
+        agents.STORE = tmp / "agent_proposals.json"
+        fp.DIR = tmp / "site_pages"
+        fp.DIR.mkdir(parents=True, exist_ok=True)
+        try:
+            for cid in ("acme", "beta", "gamma", "delta"):
+                fp.save({"id": cid, "name": cid, "website": U, "news": [],
+                         "about": [{"url": U, "text": page, "chars": len(page), "sha": "ab"}]})
+            # the refused draft shows its sentences in the tab
+            rows = {r["key"]: r for r in admin.q_profiles(companies, {})}
+            if not (rows.get("profile:beta") or {}).get("paragraphs"):
+                errors += fail("the write-ups tab shows a refused draft with no "
+                               "sentences, so a person rules on text they cannot see")
+            # refusals by name
+            for cut, by, want in (([], "owner", "name the sentences"),
+                                  ([9], "owner", "has 8 sentences"),
+                                  ([0], "", "needs an author"),
+                                  (list(range(8)), "owner", "every sentence")):
+                r = proposal_rulings.accept_without(agents.load(), "profile:acme", cut, by=by)
+                if not r.get("error") or want not in r["error"]:
+                    errors += fail(f"accept_without({cut}, by={by!r}) was not refused "
+                                   f"with {want!r}: {r}")
+            # a refused draft cannot land with its refused sentence still in it
+            r = proposal_rulings.accept_without(agents.load(), "profile:beta", [0], by="owner")
+            if not r.get("error") or "baltimore" not in r["error"].lower():
+                errors += fail(f"a refused draft landed with the sentence the door "
+                               f"refused still in it: {r}")
+            # a cut that leaves too little is refused by the door, nothing written
+            r = proposal_rulings.accept_without(agents.load(), "profile:acme", [0, 1, 2, 3], by="owner")
+            cos = _json.loads((tmp / "companies.json").read_text())
+            if not r.get("error") or "door refuses" not in r["error"] \
+                    or any((c.get("profile") or {}).get("paragraphs") for c in cos):
+                errors += fail(f"a cut below the shape rule was not refused by the "
+                               f"door, or wrote something: {r}")
+            # A NUMBER IS ONLY A POSITION: struck text that is not the text at
+            # those numbers now (the draft was replaced) refuses
+            r = proposal_rulings.accept_without(agents.load(), "profile:acme", [7], by="owner",
+                                                expect=["Some other sentence entirely."])
+            if not r.get("error") or "changed since" not in r["error"]:
+                errors += fail(f"a cut whose struck text no longer matches was not refused: {r}")
+            r = admin.act_profile_cut({"key": "profile:acme", "cut": [7]})
+            if not r.get("error"):
+                errors += fail("the desk's cut action took numbers without the struck text")
+            # the real thing: cut the invented customer and land the rest
+            r = proposal_rulings.accept_without(agents.load(), "profile:acme", [7],
+                                                why="customer not on the page", by="owner",
+                                                expect=["Customers include the Baltimore Police Department."])
+            if r.get("error"):
+                errors += fail(f"a sound cut did not land: {r}")
+            cos = _json.loads((tmp / "companies.json").read_text())
+            prof = next(c for c in cos if c["id"] == "acme").get("profile") or {}
+            text = " ".join(prof.get("paragraphs") or [])
+            if "Baltimore" in text or "Support is available" not in text \
+                    or len(prof.get("provenance") or []) != 7:
+                errors += fail(f"the landed write-up kept the cut sentence or lost a "
+                               f"kept one: {prof}")
+            st = agents.load()["profile:acme"]
+            if st.get("status") != "accepted" \
+                    or [x.get("n") for x in (st.get("cut") or {}).get("sentences") or []] != [7]:
+                errors += fail(f"the store does not record what was cut: {st}")
+            r = proposal_rulings.accept_without(agents.load(), "profile:acme", [0], by="owner")
+            if not r.get("error") or "already ruled" not in r["error"]:
+                errors += fail(f"a landed write-up could be cut and landed again: {r}")
+            # and a refused draft lands once its refused sentence is cut
+            r = proposal_rulings.accept_without(agents.load(), "profile:beta", [7], by="owner")
+            cos = _json.loads((tmp / "companies.json").read_text())
+            prof = next(c for c in cos if c["id"] == "beta").get("profile") or {}
+            if r.get("error") or "Baltimore" in " ".join(prof.get("paragraphs") or []):
+                errors += fail(f"a refused draft did not land once its refused "
+                               f"sentence was cut: {r}")
+            if agents.load()["profile:beta"].get("refused_was", "")[:2] != "5.":
+                errors += fail("a refused draft landed after a cut lost the record "
+                               "of what the door had refused")
+            # a reviewer's note shows on the card, from the local notes file
+            (tmp / "review_notes.json").write_text(_json.dumps({"profile:eps": "Reviewers: fine."}))
+            rows = {r["key"]: r for r in admin.q_profiles(companies, {})}
+            if (rows.get("profile:eps") or {}).get("review_note") != "Reviewers: fine.":
+                errors += fail("a reviewer's note in data/review_notes.json is not on the card")
+            # a kept sentence that leans on a struck one is refused by name
+            r = proposal_rulings.accept_without(agents.load(), "profile:delta", [4], by="owner")
+            if not r.get("error") or "leans on" not in r["error"]:
+                errors += fail(f"a cut that leaves 'It ...' pointing at a struck sentence "
+                               f"was not refused: {r}")
+            r = proposal_rulings.accept_without(agents.load(), "profile:delta", [3], by="owner")
+            if not r.get("error") or "leans on" not in r["error"]:
+                errors += fail(f"a paragraph opening 'Two years later, it ...' after a struck "
+                               f"sentence was not refused: {r}")
+            if (rows.get("profile:eps") or {}).get("paragraphs") != []:
+                errors += fail("a refused draft with a malformed shape was sent to the tab as is")
+            # the row recheck_refused left broken shows its text and lands
+            rows = {r["key"]: r for r in admin.q_profiles(companies, {})}
+            if not (rows.get("profile:gamma") or {}).get("paragraphs"):
+                errors += fail("a reopened draft with its text under proposal shows "
+                               "no sentences in the write-ups tab")
+            r = proposal_rulings.rule(agents.load(), "profile:gamma", True, why="x", by="owner")
+            cos = _json.loads((tmp / "companies.json").read_text())
+            gp = next(c for c in cos if c["id"] == "gamma").get("profile") or {}
+            if r.get("error") or not gp.get("paragraphs"):
+                errors += fail(f"a reopened draft with its text under proposal could "
+                               f"not be put on the page: {r}")
+            # a draft about another company: never trimmed, lifted or reopened
+            r = proposal_rulings.accept_without(agents.load(), "profile:zeta", [7], by="owner")
+            if not r.get("error") or "another company" not in r["error"]:
+                errors += fail(f"a draft refused as being about another company was trimmed "
+                               f"onto this record: {r}")
+            z = agents.load()["profile:zeta"]
+            agents.lift_draft(z)
+            agents.reopen_refused(z, "x")
+            if z.get("paragraphs") or z.get("status") != "refused":
+                errors += fail("a draft about another company was lifted or reopened")
+            # a draft replaced since the tab loaded: its timestamp no longer matches
+            r = proposal_rulings.accept_without(agents.load(), "profile:delta", [3, 4, 5], by="owner",
+                                                expect_at="2020-01-01T00:00:00")
+            if not r.get("error") or "changed since" not in r["error"]:
+                errors += fail(f"a cut sent with a stale draft timestamp was not refused: {r}")
+            # the pointer list: "The company" leans, all-capitals IT does not
+            for t, want in (("It runs everywhere.", True), ("IT departments run it.", False),
+                            ("ITS corridors use it.", False), ("\u201cIt runs,\u201d they say.", True),
+                            ("Support is staffed.", False), ("Two years later, it grew.", True),
+                            ("In 2021 it moved to Austin.", True), ("Later the partnership grew.", True),
+                            ("Off Duty Management runs programs for agencies, their officers and "
+                             "cities.", False)):
+                if bool(proposal_rulings._LEANS.match(t)) != want:
+                    errors += fail(f"the lean check read {t!r} wrongly (wanted {want})")
+            # "The company" leans only on a struck sentence that named another party
+            if not (proposal_rulings._LEANS_COMPANY.match("The company runs it.")
+                    and proposal_rulings._names_another("In 2021 Acme acquired Beta Systems.", {"acme"})
+                    and not proposal_rulings._names_another("Between 1941 and 1945 the company "
+                                                            "built rings.", {"acme"})):
+                errors += fail("'The company' after a struck sentence is not judged by whether "
+                               "that sentence named another party")
+            # a reopened draft counts as unread by a gate printed before it reopened
+            import promote_profiles
+            rp = {"at": "2026-09-03T18:00:00", "reopened_why": "x"}
+            if not promote_profiles._after_gate(rp, "2026-10-01T00:00:00"):
+                errors += fail("a draft reopened with no reopened_at passed a gate it never saw")
+            rp["reopened_at"] = "2026-09-20T00:00:00"
+            if promote_profiles._after_gate(rp, "2026-10-01T00:00:00"):
+                errors += fail("a draft reopened before the gate was held back anyway")
+            # a dismissed draft is not on the tab, so it cannot be cut and landed
+            admin.dismiss("profiles", "profile:delta", "fixture", by="owner")
+            r = proposal_rulings.accept_without(agents.load(), "profile:delta", [3, 4, 5], by="owner")
+            if not r.get("error") or "dismissed" not in r["error"]:
+                errors += fail(f"a dismissed draft was cut and landed: {r}")
+            # the desk wires it, behind the run code like every ruling
+            if admin.ACTIONS.get("profile-cut") is not admin.act_profile_cut \
+                    or "profile-cut" in getattr(admin, "OPEN_ACTIONS", ()):
+                errors += fail("the desk has no coded profile-cut action")
+        finally:
+            agents.STORE, fp.DIR = keep, keep_dir
+    page_html = (ROOT / "admin.html").read_text()
+    if "/api/profile-cut" not in page_html or "Click a sentence to take it out" not in page_html \
+            or "plainYes.disabled = k > 0" not in page_html or "texts: cut.map" not in page_html:
+        errors += fail("the write-ups tab has no way to strike a sentence and land the rest")
+    return errors
+
+
 def check_ingest_keeps_refusals() -> int:
     """What the door refuses is KEPT, with the rule that refused it.
 
@@ -39394,6 +39823,8 @@ def main() -> int:
     errors += check_the_watch_sweep_works_without_the_bodies()
     errors += check_the_company_page_says_which_kind_of_no_news()
     errors += check_profile_door_needs_provenance()
+    errors += check_the_door_reads_a_page_word_written_another_way()
+    errors += check_a_write_up_can_land_without_named_sentences()
     errors += check_fetch_decodes_utf8_without_a_charset()
     errors += check_every_html_fetch_uses_the_one_charset_rule()
     errors += check_ingest_keeps_refusals()

@@ -919,6 +919,8 @@ _PF_STATES = (
     "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
     "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia",
     "Washington", "West Virginia", "Wisconsin", "Wyoming")
+# Words that are never a claim about anybody: a page's "FAQ" is a heading.
+_PF_GENERIC = ("FAQ", "FAQs")
 _PF_STATE_CODES = ("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME "
                    "MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA "
                    "RI SC SD TN TX UT VT VA WA WV WI WY").split()
@@ -976,6 +978,8 @@ _PF_OPENERS = "\"'([{‘“"
 # these ('Inc. Dallas' is still one name) or the token has inner periods.
 _PF_ABBREV = {"inc", "co", "corp", "ltd", "llc", "plc", "st", "mt", "ft",
               "dept", "dr", "mr", "mrs", "ms", "jr", "sr", "no", "vs"}
+_PF_CORP_SUFFIX = {"inc", "llc", "ltd", "corp", "corporation", "co", "plc",
+                   "gmbh", "ag", "sa", "bv", "pty", "lp", "llp", "pc", "pllc"}
 _PF_BRIDGE = {"of", "&"}                 # 'State of Texas', 'Johnson & Johnson'
 # A sentence-start word that never begins a name, so 'The Lemur weighs' is
 # checked as Lemur while 'Dallas Police fly' is still checked as Dallas Police.
@@ -993,7 +997,11 @@ _PF_FIRST_PERSON = re.compile(r"\b(we|our|us|ours|we're|we've)\b", re.I)
 _PF_MARKETING_RE = re.compile(
     r"\b(?:" + "|".join(r"[-\s]+".join(re.escape(part) for part in w.split("-"))
                         for w in MARKETING) + r")\b", re.I)
-_PF_NUMBER = re.compile(r"\d+(?:\.\d+)?")
+# A VERSION IS ONE NUMBER. "NEMSIS 3.5.0" was read as 3.5 and 0, and 3.5 is
+# rightly not on a page that says 3.5.0, so a version the page prints word
+# for word was refused (2026-11-10). Dotted runs are taken whole, so a
+# sentence still needs the exact version the page prints.
+_PF_NUMBER = re.compile(r"\d+(?:\.\d+)*")
 
 
 # A PAGE DECODED WITH THE WRONG CHARACTER SET is still that page. Eleven of
@@ -1104,10 +1112,21 @@ def _pf_allow(company: dict) -> tuple[set[str], set[tuple[str, ...]]]:
         aka = [aka]
     own = [company.get("name") or "", company.get("sector") or "",
            company.get("category") or "", *aka]
+    # OUR RECORD'S NAME, WITHOUT ITS CORPORATE SUFFIX, IS STILL OUR RECORD'S
+    # NAME. "E-Ring Software Solutions" was refused for a company on file as
+    # "E-Ring Software Solutions Inc": the phrase allowed was the whole name,
+    # suffix and all. Dropping Inc, LLC and the like names nobody new: every
+    # word of the shorter phrase is already allowed as a token.
+    for nm in [company.get("name") or "", *aka]:
+        words = str(nm).replace(",", " ").split()
+        while words and words[-1].strip(".").casefold() in _PF_CORP_SUFFIX:
+            words = words[:-1]
+            own.append(" ".join(words))
     tokens: set[str] = set()
     phrases: set[tuple[str, ...]] = set()
     for by_token, items in ((True, own), (False, [*_PF_STATES, *_PF_STATE_CODES,
-                                                  *_PF_MONTHS, *_PF_COUNTRY])):
+                                                  *_PF_MONTHS, *_PF_COUNTRY,
+                                                  *_PF_GENERIC])):
         for item in items:
             keys = tuple(k for k in map(_pf_key, str(item).split()) if k)
             if not keys:
@@ -2307,6 +2326,54 @@ def check_rival_web(p: dict, own_site: str | None = None) -> str | None:
                 f"shortlist; the cap is {EDGE_CAP} and it binds on keep plus "
                 f"add, not on add alone")
     return None
+
+
+def wrong_company(row: dict) -> bool:
+    """Was this draft refused for being about ANOTHER company (rule 0 of
+    ingest)? Its text is not about the company the row is filed under, so no
+    later step may lift it, reopen it or trim it onto this record: the door's
+    rules 1 to 10 never ask which company a text is about, so re-running the
+    door on it proves nothing. Found by a blind review, 2026-11-10."""
+    draft = row.get("proposal") or {}
+    return (str(row.get("refused_why") or "").startswith("0.")
+            or bool(draft.get("id") and row.get("id") and draft.get("id") != row.get("id")))
+
+
+def lift_draft(row: dict) -> dict:
+    """Copy a draft kept under "proposal" up to where a pending row keeps it
+    (see reopen_refused). Fields the row already has are left alone. A draft
+    about another company is never lifted (wrong_company)."""
+    if wrong_company(row):
+        return row
+    draft = row.get("proposal") or {}
+    for field in ("paragraphs", "quote", "sector", "category", "evidence",
+                  "saw", "also_known_as"):
+        if row.get(field) in (None, "", [], {}) and draft.get(field) not in (None, "", [], {}):
+            row[field] = draft[field]
+    return row
+
+
+def reopen_refused(row: dict, why: str) -> dict:
+    """Move a refused write-up back to pending, with its draft where a
+    pending row keeps it.
+
+    A REFUSED ROW KEEPS ITS DRAFT UNDER "proposal" (ingest, above), and a
+    pending row keeps it at the top level, which is where the write-ups tab,
+    promote_profiles.land and _has_text all read it. recheck_refused only
+    changed the status, so a draft it reopened showed no sentences and could
+    never land: land() counted it as an unsure answer with nothing to write.
+    Found 2026-11-10 while reopening the drafts the fixed door now accepts:
+    14 pending write-ups in the queue were in that state."""
+    if wrong_company(row):
+        return row
+    lift_draft(row)
+    row["refused_was"] = row.get("refused_why")
+    row["status"] = "pending"
+    row["reopened_why"] = why
+    # WHEN it was reopened, so a category's gate review read before this
+    # moment does not count as having read it (promote_profiles._after_gate)
+    row["reopened_at"] = dt.datetime.now().astimezone().isoformat(timespec="seconds")
+    return row
 
 
 def _profile_texts(p: dict) -> dict:

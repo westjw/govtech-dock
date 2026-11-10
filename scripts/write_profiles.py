@@ -210,9 +210,11 @@ def recheck_refused(limit: int, apply: bool) -> int:
     review where a person reads them. Nothing here lands anything.
     """
     store = agents.load()
+    # a draft a person dismissed is not re-opened behind their back
     refused = [(k, v) for k, v in store.items()
                if isinstance(v, dict) and v.get("kind") == "profile"
-               and v.get("status") == "refused" and v.get("id")]
+               and v.get("status") == "refused" and v.get("id")
+               and not admin.profile_dismissed(k, v) and not agents.wrong_company(v)]
     now_ok, still, unread = [], 0, 0
     for key, prop in refused:
         rec = fp.load(prop["id"])
@@ -234,9 +236,8 @@ def recheck_refused(limit: int, apply: bool) -> int:
         print("  nothing changed: add --write to reopen them for the gate")
         return 0
     for key in now_ok[:limit]:
-        store[key]["status"] = "pending"
-        store[key]["reopened_why"] = ("the door refused this and now accepts "
-                                      "it unchanged; the refusal was ours")
+        agents.reopen_refused(store[key], "the door refused this and now accepts "
+                                          "it unchanged; the refusal was ours")
     bad = agents.save(store, "profile-recheck",
                       why=f"{len(now_ok[:limit])} write-up(s) the door now "
                           f"accepts unchanged, moved to pending for review",

@@ -3850,6 +3850,19 @@ def q_proposals(companies, board) -> list:
     return out
 
 
+def profile_dismissed(key: str, row: dict) -> bool:
+    """Is THIS draft dismissed? A dismissal that names the draft it saw
+    (saw.at, the draft's own timestamp) covers that draft only: the writer
+    reuses the key for the company's next draft, and a dismissal that hid
+    every future draft would hide the fresh one a dismissal usually asks
+    for. A dismissal with no saw.at covers the key, as it always did."""
+    rec = dismissed().get("profiles", {}).get(key)
+    if rec is None:
+        return False
+    at = ((rec.get("saw") or {}) if isinstance(rec, dict) else {}).get("at")
+    return at is None or at == ((row or {}).get("at") or (row or {}).get("proposed_on"))
+
+
 def q_profiles(companies, board) -> list:
     """Company write-ups that need a person: refused by the door, or written
     at medium, low or unsure confidence.
@@ -3871,6 +3884,11 @@ def q_profiles(companies, board) -> list:
     rows = list(raw.values()) if isinstance(raw, dict) else raw
     keys = {id(v): k for k, v in raw.items()} if isinstance(raw, dict) else {}
     by_id = {c["id"]: c for c in companies}
+    # WHAT A REVIEWER SAID ABOUT A DRAFT, kept on this machine only
+    # (data/review_notes.json is gitignored): reviewers quote pages, and pages
+    # name people, and none of that belongs in the public repo.
+    review_notes = read("review_notes.json", {})
+    review_notes = review_notes if isinstance(review_notes, dict) else {}
     out = []
     for r in rows:
         if not isinstance(r, dict) or r.get("kind") != "profile":
@@ -3883,18 +3901,31 @@ def q_profiles(companies, board) -> list:
             pass
         else:
             continue
-        if is_dismissed("profiles", key):
+        if profile_dismissed(key, r):
             continue
         c = by_id.get(r.get("id")) or {}
-        pages = ((r.get("saw") or {}).get("pages") or [])
+        # A REFUSED ROW KEEPS ITS DRAFT UNDER "proposal" (agents.ingest), and
+        # this read only the top level, so a refused write-up showed its
+        # refusal and none of its sentences: a person was asked to rule on
+        # text they could not see. Read from wherever the draft is.
+        src = r if r.get("paragraphs") else (r.get("proposal") or {})
+        # a refused draft may be refused FOR its shape: clean it so the tab
+        # can draw it (a paragraph that is not a list, a sentence that is
+        # not an object)
+        raw_paras = src.get("paragraphs")
+        clean = [[s for s in para if isinstance(s, dict)] for para in raw_paras
+                 if isinstance(para, list)] if isinstance(raw_paras, list) else []
+        pages = ((r.get("saw") or src.get("saw") or {}).get("pages") or [])
         out.append({"key": key, "id": r.get("id"), "name": c.get("name") or r.get("name") or r.get("id"),
                     "sector": c.get("sector"), "category": c.get("category"),
                     "website": c.get("website"), "confidence": conf, "status": st,
                     "refused_why": r.get("refused_why"), "why": r.get("why"),
-                    "evidence": r.get("evidence"), "paragraphs": r.get("paragraphs") or [],
-                    "quote": r.get("quote") if isinstance(r.get("quote"), dict) else None,
+                    "evidence": r.get("evidence"), "paragraphs": clean,
+                    "quote": src.get("quote") if isinstance(src.get("quote"), dict) else None,
                     "pages": [x.get("url") for x in pages if isinstance(x, dict)],
-                    "by": r.get("by"), "at": r.get("at") or r.get("proposed_on")})
+                    "by": r.get("by"), "at": r.get("at") or r.get("proposed_on"),
+                    # what a reviewer said about this draft, shown on the card
+                    "review_note": review_notes.get(key)})
     order = {"refused": 0, "pending": 1}
     conf_order = {"unsure": 0, "low": 1, "medium": 2}
     out.sort(key=lambda x: (order.get(x["status"], 9), conf_order.get(x["confidence"], 9), x["name"] or ""))
@@ -5563,8 +5594,11 @@ def act_dismiss(body: dict) -> dict:
     if not isinstance(queue, str) or not queue.strip() \
             or not isinstance(key, str) or not key.strip():
         return {"error": "a dismissal needs the queue and the key of the row"}
+    # a write-up dismissal names the draft it saw (profile_dismissed), so the
+    # company's next draft under the same key is not hidden with it
+    saw = body.get("saw") if isinstance(body.get("saw"), dict) else None
     bad = dismiss(queue.strip(), key.strip(),
-                  body.get("why", ""), by=(body.get("by") or "owner"))
+                  body.get("why", ""), by=(body.get("by") or "owner"), saw=saw)
     if bad:
         return {"error": bad}
     return {"ok": True, "message": "dismissed"}
@@ -5675,7 +5709,34 @@ def act_proposal_ruling(body: dict) -> dict:
     return proposal_rulings.rule(store, key, bool(body.get("accept")),
                                  why=(body.get("why") or ""),
                                  by=(body.get("by") or "owner"),
-                                 force=bool(body.get("force")))
+                                 force=bool(body.get("force")),
+                                 expect_at=(body.get("at") if isinstance(body.get("at"), str)
+                                            else None))
+
+
+def act_profile_cut(body: dict) -> dict:
+    """Put a write-up on the page without the sentences a person struck.
+
+    The applier is proposal_rulings.accept_without, which sends the trimmed
+    text back through the door (check_profile) before anything lands. Body:
+    {key, cut: [sentence numbers counted from 0], texts: [each struck
+    sentence as shown, in the order of sorted(cut)], why}. The texts are
+    required from the page: a number alone cuts whatever sits there now."""
+    import proposal_rulings, agents
+    key = (body.get("key") or "").strip()
+    if not key:
+        return {"error": "need a proposal key"}
+    cut = body.get("cut")
+    texts = body.get("texts")
+    if not isinstance(texts, list):
+        return {"error": "send the struck sentences' text with their numbers"}
+    # the tab always sends the draft's timestamp when the row has one; a
+    # body without it is held to it anyway ("" means "the tab saw none")
+    at = body.get("at") if isinstance(body.get("at"), str) else ""
+    return proposal_rulings.accept_without(agents.load(), key, cut,
+                                           why=(body.get("why") or ""),
+                                           by=(body.get("by") or "owner"),
+                                           expect=texts, expect_at=at)
 
 
 def sweep_gaps(c: dict, board_org: dict | None, news: dict,
@@ -6343,6 +6404,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,
            "proposal-ruling": act_proposal_ruling,
+           "profile-cut": act_profile_cut,
            "dismiss": act_dismiss, "ask": act_ask,
            "page-review": act_page_review,
            "user-grant": act_user_grant, "user-revoke": act_user_revoke,

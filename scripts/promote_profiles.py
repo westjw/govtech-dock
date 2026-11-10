@@ -128,6 +128,15 @@ def _after_gate(p: dict, when: str | None) -> bool:
     if not when:
         return True
     at = p.get("at")
+    # A DRAFT REOPENED FROM REFUSED WAS NOT ON THE GATE'S SCREEN AS PENDING
+    # TEXT, whatever its original timestamp says. Its reopening time counts;
+    # one reopened before reopened_at was stamped is treated as unread.
+    if p.get("reopened_why"):
+        # one reopened before reopened_at was stamped (2026-11-10) counts as
+        # reopened then: a gate printed after that read it as pending text
+        again = p.get("reopened_at") if isinstance(p.get("reopened_at"), str) \
+            else "2026-11-10T23:59:59"
+        at = max(at, again) if isinstance(at, str) else again
     return not isinstance(at, str) or at > when
 
 
@@ -700,6 +709,9 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
             p = store.get(k)
             if not p or p.get("status") != "pending" or p.get("id") not in index:
                 continue
+            # a draft reopened from refused before 2026-11-10 kept its text
+            # under "proposal" (agents.reopen_refused); read it from there
+            agents.lift_draft(p)
             if not _has_text(p):
                 # AN UNSURE ANSWER HAS NOTHING TO LAND. It passed the door
                 # because unsure is a valid answer; landing it would write a
@@ -747,6 +759,10 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
 
 
 def _has_text(p: dict) -> bool:
+    # where land() reads it: the top level, or a draft kept under "proposal"
+    # that agents.lift_draft would lift (never one about another company)
+    if not p.get("paragraphs") and p.get("proposal") and not agents.wrong_company(p):
+        p = p.get("proposal") or {}
     return any(isinstance(para, list) and any((s.get("text") or "").strip() for s in para
                                               if isinstance(s, dict))
                for para in (p.get("paragraphs") or []))

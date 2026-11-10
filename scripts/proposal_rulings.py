@@ -41,6 +41,7 @@ import argparse
 import datetime as dt
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -621,6 +622,7 @@ def _accept_profile(p: dict, by: str, why: str, force: bool, store: dict,
     not pending, which is what keeps a door-refused write-up off the page
     even from here: the door's word stands, a person can only dismiss it."""
     import promote_profiles
+    agents.lift_draft(p)       # a draft reopened from refused keeps it under "proposal"
     if not promote_profiles._has_text(p):
         return {"error": "nothing to land: this write-up carries no paragraphs. "
                          "An unsure answer is a valid answer and stays pending"}
@@ -722,13 +724,18 @@ def _accept_cobid(p: dict, by: str, why: str, force: bool) -> dict:
 
 
 def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
-         force: bool = False) -> dict:
-    """Accept or reject one proposal. Returns {ok, message} or {error}."""
+         force: bool = False, expect_at: str | None = None) -> dict:
+    """Accept or reject one proposal. Returns {ok, message} or {error}.
+    `expect_at`, when given, is the draft timestamp the person's tab showed:
+    a newer draft under the same key is refused, not ruled unseen."""
     if not by:
         return {"error": "a ruling needs an author: owner, or agent:<label>"}
     p = store.get(key)
     if not isinstance(p, dict):
         return {"error": f"no proposal on file under {key!r}"}
+    if expect_at is not None and (p.get("at") or p.get("proposed_on")) != expect_at:
+        return {"error": "this proposal changed since the tab loaded (a newer draft "
+                         "replaced it). Reload and rule again"}
     kind = p.get("kind")
     # A WRITE-UP ON THE PAGE CAN ALWAYS BE TAKEN BACK. Every other ruling is
     # once-only, and rightly: re-accepting a board or a read twice does work
@@ -816,6 +823,225 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         return {"error": bad}
     _log_employer_ruling(p, key, True, by, why)
     return res
+
+
+# A pointer back at the sentence before, at the start or after a lead-in
+# ("Two years later, it ..."), past any opening quote or bracket. A heuristic,
+# and a conservative one: a false hit only refuses a cut, which the person then
+# widens. "The company" is on it: struck "Acme partners with Beta.", kept "The
+# company runs ..." can be Beta. All-capitals IT is information technology.
+_LEAD_IN = (r"[\"'\u201c\u2018(\[]*"
+            r"(?:(?:[^,.;:]{0,45},\s+)"                      # "Two years later, "
+            r"|(?:(?i:in|since|by|after|before|later|then|today|now|until|during|over|"
+            r"two|three|four|five|several|many|\d{4})\b[^,.;:]{0,30}?\s+))?"   # "In 2021 "
+            r"[\"'\u201c\u2018(\[]*")
+_LEANS = re.compile(_LEAD_IN +
+                    r"(?:(?!IT\b|ITS\b|IT'S\b|IT\u2019S\b)(?i:it|its|it's|it\u2019s)|(?i:they|their|"
+                    r"them|this|that|these|those|another|both|he|she|his|her|such|each|either|"
+                    r"neither|the other|the same|the latter|the former|the two|the three|the pair|"
+                    r"the partnership|the deal|the acquisition|the merger|the agreement|"
+                    r"the contract))\b")
+# "The company" is the write-up's own subject nearly always. It leans only
+# when the struck sentence brought in another named party for it to mean.
+_LEANS_COMPANY = re.compile(_LEAD_IN + r"(?i:the company|the firm|the vendor|the business|"
+                            r"the startup|the group)\b")
+
+
+def _js_string(t) -> str:
+    """What JavaScript's String() makes of a JSON value, so the text the tab
+    showed and the text checked here are one string."""
+    if t is None:
+        return ""
+    if isinstance(t, bool):
+        return "true" if t else "false"
+    if isinstance(t, float) and t.is_integer():
+        return str(int(t))
+    if isinstance(t, list):
+        return ",".join("" if x is None else _js_string(x) for x in t)
+    if isinstance(t, dict):
+        return "[object Object]"
+    return t if isinstance(t, str) else str(t)
+
+
+def _names_another(text: str, own: set) -> bool:
+    """Does this sentence name a party other than the company itself? A
+    capitalised word off the sentence start that is not the company's own
+    name, a month, a state or a country word."""
+    words = re.findall(r"[A-Za-z][A-Za-z0-9&'-]*", text or "")
+    plain = {w.casefold() for w in (*agents._PF_MONTHS, *agents._PF_STATE_CODES)} | \
+        {w.casefold() for x in (*agents._PF_STATES, *agents._PF_COUNTRY) for w in x.split()}
+    for w in words[1:]:
+        if w[:1].isupper() and w.casefold() not in own and w.casefold() not in plain \
+                and w.casefold() not in agents._PF_OPENING_WORDS:
+            return True
+    return False
+
+
+def trim(store: dict, key: str, cut: list, by: str, companies: list,
+         expect: list | None = None, expect_at: str | None = None) -> str | None:
+    """Take the numbered sentences out of one write-up proposal and send the
+    rest back through the door. On success the row in `store` now carries the
+    trimmed text, a record of the cut, and status pending. Nothing is saved
+    here: accept_without lands one, and a batch can trim many and land them
+    in one journal entry. Returns a refusal in words, or None.
+
+    `cut` is a list of sentence numbers, counted from 0 across all the
+    paragraphs, the order the write-ups tab numbers them in (shown from 1).
+
+    `expect`, when given, is the text of each struck sentence in the order of
+    sorted(cut), as the person saw it. A NUMBER IS ONLY A POSITION: if the
+    writer replaced the draft between the tab loading and the click, the same
+    numbers would cut different sentences and leave the struck one in. A
+    mismatch refuses, and the person reloads."""
+    import copy
+    if not by:
+        return "a ruling needs an author: owner, or agent:<label>"
+    p = store.get(key)
+    if not isinstance(p, dict) or p.get("kind") != "profile":
+        return f"no write-up proposal on file under {key!r}"
+    if p.get("status") not in ("pending", "refused"):
+        return (f"{key} was already ruled {p.get('status')} by "
+                f"{p.get('ruled_by')} on {p.get('ruled_on')}")
+    if admin.profile_dismissed(key, p):
+        return f"{key} was dismissed; it is not on the write-ups tab to rule"
+    if agents.wrong_company(p):
+        return ("this draft answers about another company (the door's rule 0), so no "
+                "part of it can be put on this company's page")
+    if expect_at == "":
+        # the tab saw no timestamp; a row that has one is not the row it saw
+        if p.get("at") or p.get("proposed_on"):
+            return ("this write-up changed since the tab loaded (a newer draft replaced it). "
+                    "Reload and strike again")
+        expect_at = None
+    if expect_at is not None and (p.get("at") or p.get("proposed_on")) != expect_at:
+        return ("this write-up changed since the tab loaded (a newer draft replaced it). "
+                "Reload and strike again")
+    if not isinstance(cut, list) or not cut \
+            or not all(isinstance(n, int) and not isinstance(n, bool) for n in cut):
+        return "name the sentences to take out, by number"
+    src = p if p.get("paragraphs") else (p.get("proposal") or {})
+    # numbered exactly as the write-ups tab numbers them (admin.q_profiles):
+    # list paragraphs, object sentences
+    paras = [[s for s in para if isinstance(s, dict)]
+             for para in (src.get("paragraphs") or []) if isinstance(para, list)]
+    paras = [para for para in paras if para]
+    flat = [(i, j) for i, para in enumerate(paras) for j in range(len(para))]
+    drop = set(cut)
+    if any(n < 0 or n >= len(flat) for n in drop):
+        return (f"this write-up has {len(flat)} sentences; "
+                f"{sorted(drop)} names one it does not have")
+    if len(drop) >= len(flat):
+        return "that takes out every sentence; reject it instead"
+    def said(s) -> str:
+        """A sentence's text the way the tab shows it (JavaScript String())."""
+        return _js_string(s.get("text") if isinstance(s, dict) else s)
+
+    on_file = next((c for c in companies if c.get("id") == p.get("id")), None) or {}
+    own = {w.casefold() for nm in [p.get("name") or "", on_file.get("name") or "",
+                                   *(on_file.get("also_known_as") or []),
+                                   *((p.get("proposal") or {}).get("also_known_as") or [])]
+           for w in re.findall(r"[A-Za-z0-9&'-]+", str(nm))}
+    kept, n, prev_sentence = [], 0, None
+    for para in paras:
+        keep = []
+        for j, s in enumerate(para):
+            if n not in drop:
+                # A KEPT SENTENCE CAN LEAN ON A STRUCK ONE. "It", "This",
+                # "Another" point back at the sentence before; strike that one
+                # and the pointer lands on whatever is left, often the company
+                # itself, and says something the pages never said about it.
+                # The door checks sentences one at a time and cannot see this.
+                if (n - 1) in drop and (_LEANS.match(said(s).strip()) or (
+                        _LEANS_COMPANY.match(said(s).strip())
+                        and _names_another(said(prev_sentence), own))):
+                    return (f"sentence {n + 1} starts '{said(s).strip().split()[0]}' and leans on "
+                            f"sentence {n}, which you struck. Strike it too, or keep both")
+                keep.append(copy.deepcopy(s))
+            n += 1
+            prev_sentence = s
+        if keep:
+            kept.append(keep)
+    removed = [{"n": k, "text": said(paras[flat[k][0]][flat[k][1]]) or None}
+               for k in sorted(drop)]
+    if expect is not None:
+        seen = [" ".join(str(x or "").split()) for x in expect] if isinstance(expect, list) else None
+        have = [" ".join(str(x["text"] or "").split()) for x in removed]
+        if seen != have:
+            return ("this write-up changed since the tab loaded, so the sentences "
+                    "you struck are not the ones at those numbers now. Reload and strike again")
+    mine = next((c for c in companies if c.get("id") == p.get("id")), None) or {}
+    if (mine.get("profile") or {}).get("hand_written"):
+        return (f"the owner wrote {mine.get('name')}'s write-up by hand, so "
+                f"this draft is not landed over it")
+    # THE SAME NAMES THE DOOR ALLOWED AT INGEST. A refused draft keeps its
+    # company's name, sector and category inside proposal["company"] (all 58
+    # on file did), and ten carried name None at the top level; leaving the
+    # dict out made the trimmed text answer to a narrower allowlist than the
+    # draft it came from.
+    known = src.get("company") if isinstance(src.get("company"), dict) else {}
+    trial = {"id": p.get("id"), "confidence": src.get("confidence") or p.get("confidence"),
+             "paragraphs": kept, "quote": src.get("quote"),
+             "name": src.get("name") or p.get("name") or known.get("name") or mine.get("name"),
+             "sector": src.get("sector") or p.get("sector") or known.get("sector") or mine.get("sector"),
+             "category": (src.get("category") or p.get("category") or known.get("category")
+                          or mine.get("category")),
+             "also_known_as": (src.get("also_known_as") or known.get("also_known_as")
+                               or mine.get("also_known_as") or [])}
+    if known:
+        trial["company"] = known
+    if trial["confidence"] == "unsure":
+        return "an unsure answer has no write-up to trim"
+    refused = agents.check_profile(trial, agents._profile_texts(trial))
+    if refused:
+        return f"without those sentences the door refuses it: {refused} Nothing was written."
+    for field in ("paragraphs", "quote", "name", "sector", "category", "confidence"):
+        p[field] = trial[field]
+    if not p.get("saw") and src.get("saw"):
+        p["saw"] = src["saw"]          # a refused row keeps it inside "proposal"
+    p["cut"] = {"sentences": removed, "by": by, "on": dt.date.today().isoformat()}
+    if p.get("status") == "refused":
+        agents.reopen_refused(p, f"accepted without {len(removed)} sentence(s); "
+                                 f"the trimmed write-up passed the door")
+    return None
+
+
+def accept_without(store: dict, key: str, cut: list, why: str = "", by: str = "",
+                   expect: list | None = None, expect_at: str | None = None) -> dict:
+    """Land a write-up with some of its sentences taken out. The trimmed
+    version goes back through the door first.
+
+    THE OWNER, 2026-11-10: "do all 4", the second being an "accept without
+    these sentences" button. A reader often finds a sound write-up with one
+    bad sentence in it: a testimonial byline written up as a customer, a
+    footer link, a news headline whose body is lorem ipsum. Until now the only
+    choices were Put it on the page (bad sentence included) and Reject
+    (sound sentences lost). This is the third choice.
+
+    THE DOOR DECIDES AGAIN, ON THE TRIMMED TEXT, AGAINST THE SAME PAGES.
+    Taking sentences out can only remove claims, but it can still break the
+    shape rule: fewer than 80 words, one paragraph, fewer than three
+    sentences. So the trimmed proposal goes through check_profile exactly as
+    a new one would (trim). A refusal lands nothing and says why.
+
+    A REFUSED DRAFT CAN BE TRIMMED TOO. The door refused it for one sentence.
+    Without that sentence it is a new text, and the door's word on the new
+    text is the one that counts. That is the same rule that keeps refused
+    rows off the page everywhere else: the door decides, a person cannot
+    overrule it."""
+    import promote_profiles
+    companies = admin.read_companies()
+    bad = trim(store, key, cut, by, companies, expect, expect_at)
+    if bad:
+        return {"error": bad}
+    p = store[key]
+    note = why or ("accepted without sentence(s) "
+                   + ", ".join(str(x["n"] + 1) for x in p["cut"]["sentences"]))
+    n = promote_profiles.land(store, companies, [key], by, note)
+    if not n:
+        return {"error": "the write-up could not be landed; see the journal"}
+    _log_employer_ruling(p, key, True, by, note)
+    return {"ok": True, "message": f"write-up on the page for {p.get('name') or p.get('id')}, "
+                                   f"without {len(p['cut']['sentences'])} sentence(s)"}
 
 
 def main() -> int:
