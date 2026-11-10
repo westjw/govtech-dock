@@ -3921,7 +3921,7 @@
    "city": "Anaheim, CA",
    "state": null,
    "approx_count": 250,
-   "companies": 60,
+   "companies": 62,
    "hiring": 15,
    "open_roles": 533
   },
@@ -4920,7 +4920,7 @@
    "city": "New Orleans, LA",
    "state": null,
    "approx_count": 8,
-   "companies": 3,
+   "companies": 4,
    "hiring": 0,
    "open_roles": 0
   },
@@ -5734,7 +5734,7 @@
    "city": "Kansas City, MO",
    "state": null,
    "approx_count": null,
-   "companies": 26,
+   "companies": 27,
    "hiring": 6,
    "open_roles": 78
   },
@@ -5756,7 +5756,7 @@
    "city": "Orlando, FL",
    "state": null,
    "approx_count": null,
-   "companies": 138,
+   "companies": 146,
    "hiring": 29,
    "open_roles": 853
   },
@@ -5778,7 +5778,7 @@
    "city": "San Antonio, TX",
    "state": null,
    "approx_count": 36,
-   "companies": 16,
+   "companies": 17,
    "hiring": 4,
    "open_roles": 219
   },
@@ -5822,7 +5822,7 @@
    "city": "San Diego, CA",
    "state": null,
    "approx_count": 80,
-   "companies": 25,
+   "companies": 27,
    "hiring": 10,
    "open_roles": 594
   },
@@ -6947,8 +6947,8 @@
    "state": null,
    "approx_count": null,
    "companies": 163,
-   "hiring": 42,
-   "open_roles": 1552
+   "hiring": 43,
+   "open_roles": 1553
   },
   {
    "tag": "AAPA 2026",
@@ -7476,9 +7476,9 @@
    "city": null,
    "state": "Michigan",
    "approx_count": null,
-   "companies": 20,
-   "hiring": 3,
-   "open_roles": 340
+   "companies": 25,
+   "hiring": 4,
+   "open_roles": 362
   },
   {
    "tag": "North Carolina Sheriffs' Association 2026",
@@ -7521,8 +7521,8 @@
    "state": null,
    "approx_count": null,
    "companies": 90,
-   "hiring": 17,
-   "open_roles": 389
+   "hiring": 18,
+   "open_roles": 390
   },
   {
    "tag": "SWANA WASTECON 2025",
@@ -8229,7 +8229,7 @@
    "city": "Orlando, FL",
    "state": null,
    "approx_count": 80,
-   "companies": 57,
+   "companies": 58,
    "hiring": 16,
    "open_roles": 185
   },
@@ -8662,7 +8662,7 @@
    "city": "Milwaukee, WI",
    "state": null,
    "approx_count": 20,
-   "companies": 28,
+   "companies": 29,
    "hiring": 4,
    "open_roles": 146
   },
@@ -8692,19 +8692,19 @@
  "boards_read": 515,
  "unreadable": 10,
  "rendered": 7,
- "no_board_on_file": 921,
- "manual_postings": 243,
+ "no_board_on_file": 934,
+ "manual_postings": 244,
  "manual_already_fetched": 0,
  "totals": {
-  "postings": 9363,
-  "quota_carrying_postings": 979,
-  "openings": 8083,
-  "quota_carrying": 858,
-  "us": 3613,
+  "postings": 9364,
+  "quota_carrying_postings": 980,
+  "openings": 8084,
+  "quota_carrying": 859,
+  "us": 3614,
   "non_us": 2437,
   "families": {
    "engineering": 1910,
-   "gtm": 2325,
+   "gtm": 2326,
    "ops": 287,
    "ga": 523,
    "product": 380,
@@ -8716,7 +8716,7 @@
    "exec": 79
   },
   "sectors": {
-   "Public Safety": 1694,
+   "Public Safety": 1695,
    "Public Works": 1245,
    "Transit & Parking": 595,
    "General Gov": 1816,
@@ -8736,7 +8736,7 @@
    "text": 1388
   },
   "jd_read_postings": 4827,
-  "jd_unread_postings": 4536
+  "jd_unread_postings": 4537
  },
  "claim_at": null,
  "hq_post_at": "https://hq.sledjobs.com/recruit",
@@ -9439,7 +9439,7 @@
    "also": null,
    "location": "Scottsdale, AZ",
    "year_founded": 1993,
-   "description": "Body cameras, TASER energy weapons, digital evidence cloud, and real-time operations - exhibited at APTA 2026, Illinois Chapter of APCO 2026, NCSL Legislative Summit 2026",
+   "description": "Body cameras, TASER energy weapons, digital evidence cloud, and real-time operations - exhibited at APTA 2026, Illinois Chapter of APCO 2026, NCSL Legislative Summit 2026, APCO 2026",
    "website": "https://www.axon.com",
    "board_url": "https://www.axon.com/careers/all",
    "linkedin": null,
@@ -9455,7 +9455,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Axon 911 - The Future of 911"
+   ],
    "competitors": [
     {
      "id": "motorola-solutions",
@@ -9498,7 +9500,8 @@
     "APTA 2026",
     "IACP 2026",
     "Illinois Chapter of APCO 2026",
-    "NCSL Legislative Summit 2026"
+    "NCSL Legislative Summit 2026",
+    "APCO 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -9521,7 +9524,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; IACP 2026; Illinois Chapter of APCO 2026; NCSL Legislative Summit 2026",
+   "source": "APTA 2026; IACP 2026; Illinois Chapter of APCO 2026; NCSL Legislative Summit 2026; APCO 2026",
    "researched": true,
    "claimed": null
   },
@@ -30625,7 +30628,7 @@
    "also": null,
    "location": "Falls Church, VA",
    "year_founded": 1989,
-   "description": "Corrections communications, tablets, and reentry services (formerly GTL/Global Tel Link) - exhibited at ACA Congress 2026",
+   "description": "Corrections communications, tablets, and reentry services (formerly GTL/Global Tel Link) - exhibited at ACA Congress 2026, Michigan Sheriffs Association 2026",
    "website": "https://www.viapath.com",
    "board_url": "https://careers-viapath.icims.com/jobs/search?ss=1",
    "linkedin": null,
@@ -30642,7 +30645,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Via Path Technologies"
+   ],
    "competitors": [
     {
      "id": "securus-technologies",
@@ -30683,7 +30688,8 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [
     "NSA 2026",
-    "ACA Congress 2026"
+    "ACA Congress 2026",
+    "Michigan Sheriffs Association 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 22,
@@ -30712,7 +30718,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; ACA Congress 2026",
+   "source": "NSA 2026; ACA Congress 2026; Michigan Sheriffs Association 2026",
    "researched": true,
    "claimed": null
   },
@@ -36503,11 +36509,13 @@
     "NSA 2026"
    ],
    "conference": "IACP 2026",
-   "open_roles": 0,
-   "open_postings": 0,
-   "quota_roles": 0,
-   "quota_postings": 0,
-   "families": {},
+   "open_roles": 1,
+   "open_postings": 1,
+   "quota_roles": 1,
+   "quota_postings": 1,
+   "families": {
+    "gtm": 1
+   },
    "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
@@ -36532,7 +36540,9 @@
    },
    "source": "IACP 2026; NSA 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "checked_by_hand": "2026-11-10",
+   "seller_debut": true
   },
   {
    "id": "paladin-drones",
@@ -42058,7 +42068,7 @@
    "also": null,
    "location": "Greensboro, NC",
    "year_founded": 1986,
-   "description": "Inmate calling, messaging, video visitation, and mail scanning focused on county jails (employee-owned) - exhibited at North Carolina Sheriffs' Association 2026",
+   "description": "Inmate calling, messaging, video visitation, and mail scanning focused on county jails (employee-owned) - exhibited at North Carolina Sheriffs' Association 2026, Michigan Sheriffs Association 2026",
    "website": "https://www.paytel.com",
    "board_url": "https://www.paytel.com/careers",
    "linkedin": null,
@@ -42074,7 +42084,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Paytel"
+   ],
    "competitors": [
     {
      "id": "securus-technologies",
@@ -42115,7 +42127,8 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [
     "NSA 2026",
-    "North Carolina Sheriffs' Association 2026"
+    "North Carolina Sheriffs' Association 2026",
+    "Michigan Sheriffs Association 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -42138,7 +42151,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; North Carolina Sheriffs' Association 2026",
+   "source": "NSA 2026; North Carolina Sheriffs' Association 2026; Michigan Sheriffs Association 2026",
    "researched": true,
    "claimed": null
   },
@@ -42455,7 +42468,7 @@
    "also": null,
    "location": "Covington, LA",
    "year_founded": 2000,
-   "description": "Sex offender registry management and community notification for 3,400+ agencies in 36 states",
+   "description": "Sex offender registry management and community notification for 3,400+ agencies in 36 states - exhibited at Michigan Sheriffs Association 2026",
    "website": "https://www.offenderwatch.com",
    "board_url": "https://www.offenderwatch.com/careers",
    "linkedin": null,
@@ -42471,14 +42484,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Offender Watch"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-11-08",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "Michigan Sheriffs Association 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -42501,7 +42517,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026",
    "researched": true,
    "claimed": null
   },
@@ -42920,7 +42936,7 @@
    "also": null,
    "location": "St. Louis, MO",
    "year_founded": 1975,
-   "description": "Commissary and inmate services with tech arms ICSolutions (inmate phone/investigations) and Access Corrections - exhibited at North Carolina Sheriffs' Association 2026, ACA Congress 2026",
+   "description": "Commissary and inmate services with tech arms ICSolutions (inmate phone/investigations) and Access Corrections - exhibited at North Carolina Sheriffs' Association 2026, ACA Congress 2026, Michigan Sheriffs Association 2026",
    "website": "https://www.keefegroup.com",
    "board_url": "https://www.keefegroup.com/careers",
    "linkedin": null,
@@ -42936,7 +42952,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Keefe Group/IC Solutions"
+   ],
    "competitors": [
     {
      "id": "union-supply-group",
@@ -42978,7 +42996,8 @@
    "conferences": [
     "NSA 2026",
     "North Carolina Sheriffs' Association 2026",
-    "ACA Congress 2026"
+    "ACA Congress 2026",
+    "Michigan Sheriffs Association 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -43001,7 +43020,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
+   "source": "NSA 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026; Michigan Sheriffs Association 2026",
    "researched": true,
    "claimed": null
   },
@@ -46327,7 +46346,7 @@
    "category": "Corrections",
    "also": null,
    "location": "College Station, TX",
-   "year_founded": null,
+   "year_founded": 2012,
    "description": "SOTER RS low-dose transmission X-ray body scanners for jails and state prisons - exhibited at ACA Congress 2026",
    "website": "https://odsecurityna.com",
    "board_url": "https://odsecurityna.com",
@@ -76387,7 +76406,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -76594,7 +76613,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -76700,7 +76719,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -76945,7 +76964,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -77034,7 +77053,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -77123,7 +77142,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -77212,7 +77231,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -77301,7 +77320,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -77390,7 +77409,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -77630,7 +77649,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -77795,7 +77814,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -77957,7 +77976,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -78289,7 +78308,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -78459,7 +78478,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -78633,7 +78652,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -78989,7 +79008,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -79075,7 +79094,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -79243,7 +79262,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -79413,7 +79432,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -79490,7 +79509,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -79644,7 +79663,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -79733,7 +79752,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -79968,7 +79987,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -80211,7 +80230,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -80281,7 +80300,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -80349,7 +80368,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -80418,7 +80437,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -80506,7 +80525,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -80583,7 +80602,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -80745,7 +80764,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -80819,7 +80838,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -80891,7 +80910,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -80952,7 +80971,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -81015,7 +81034,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -81163,7 +81182,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -81301,7 +81320,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -81374,7 +81393,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -81519,7 +81538,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -81659,7 +81678,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -81718,7 +81737,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -82102,7 +82121,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -82518,7 +82537,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -82579,7 +82598,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -82652,7 +82671,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -82723,7 +82742,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -82799,7 +82818,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -82929,7 +82948,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -82994,7 +83013,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -83485,7 +83504,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -83798,7 +83817,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -83952,7 +83971,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84163,7 +84182,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84309,7 +84328,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84446,7 +84465,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84511,7 +84530,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84567,7 +84586,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84636,7 +84655,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84774,7 +84793,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -84912,7 +84931,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -85185,7 +85204,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -85241,7 +85260,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -85379,7 +85398,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -85456,7 +85475,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -85692,8 +85711,8 @@
      "why": "Both sell signal control and adaptive intersection systems to city and county traffic departments"
     }
    ],
-   "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_state": "none_found",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -85831,7 +85850,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -85908,7 +85927,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -85981,7 +86000,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -86057,7 +86076,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -86212,7 +86231,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -86423,7 +86442,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -86492,7 +86511,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -86561,7 +86580,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -86707,7 +86726,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -86793,7 +86812,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -86873,8 +86892,8 @@
      "why": "Both run violator-funded enforcement camera programs for cities and school zones"
     }
    ],
-   "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_state": "items",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87026,7 +87045,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87099,7 +87118,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -87171,7 +87190,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87324,7 +87343,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87533,7 +87552,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87598,7 +87617,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87659,7 +87678,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87733,7 +87752,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87805,7 +87824,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87879,7 +87898,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -87954,7 +87973,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -88082,7 +88101,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -88300,7 +88319,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -88644,7 +88663,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -88735,7 +88754,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -88913,7 +88932,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -88999,7 +89018,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -89265,7 +89284,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -89429,7 +89448,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -89526,7 +89545,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -89675,7 +89694,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -89859,7 +89878,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -89932,7 +89951,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -90005,7 +90024,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -90078,7 +90097,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -90164,7 +90183,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -90233,7 +90252,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -90298,7 +90317,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -90427,7 +90446,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -90491,7 +90510,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -90623,7 +90642,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -90684,7 +90703,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -90754,7 +90773,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -90833,7 +90852,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -90905,7 +90924,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -90970,7 +90989,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -91031,7 +91050,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -91107,7 +91126,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -91184,7 +91203,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -91314,7 +91333,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -91395,7 +91414,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -91467,7 +91486,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -91557,7 +91576,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -91626,7 +91645,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -91716,7 +91735,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -91839,7 +91858,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -91915,7 +91934,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -92059,7 +92078,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -92267,7 +92286,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -92426,7 +92445,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -92560,7 +92579,7 @@
     }
    ],
    "news_state": "hosts_news",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -92710,7 +92729,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -92771,7 +92790,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -92849,7 +92868,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93060,7 +93079,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -93225,7 +93244,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93298,7 +93317,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93375,7 +93394,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93448,7 +93467,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93525,7 +93544,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93590,7 +93609,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93655,7 +93674,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -93793,7 +93812,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -93925,7 +93944,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -94016,7 +94035,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -94074,7 +94093,7 @@
    ],
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -94159,8 +94178,8 @@
      "why": "EMS agencies buying EMS-to-hospital communication and handoff"
     }
    ],
-   "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_state": "items",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -94368,7 +94387,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -94516,7 +94535,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -94592,7 +94611,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -94739,7 +94758,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -94807,7 +94826,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -94953,7 +94972,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95087,7 +95106,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95151,7 +95170,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -95218,7 +95237,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95295,7 +95314,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95369,7 +95388,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95433,7 +95452,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95506,7 +95525,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95572,7 +95591,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95647,7 +95666,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95786,7 +95805,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -95862,7 +95881,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -96160,7 +96179,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -96293,7 +96312,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -96354,7 +96373,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -96443,7 +96462,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -96592,7 +96611,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -96807,7 +96826,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -96872,7 +96891,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -96930,7 +96949,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -97012,7 +97031,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -97148,7 +97167,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -97225,7 +97244,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -97303,7 +97322,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -97381,7 +97400,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -97465,7 +97484,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -97534,7 +97553,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -97623,7 +97642,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -97705,8 +97724,8 @@
      "why": "Behavioral health agencies buying an EHR"
     }
    ],
-   "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_state": "none_found",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -97773,7 +97792,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -97979,7 +97998,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98040,7 +98059,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98105,7 +98124,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98177,7 +98196,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98325,7 +98344,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98381,7 +98400,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -98449,7 +98468,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98514,7 +98533,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -98601,7 +98620,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98694,7 +98713,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98783,7 +98802,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -98872,7 +98891,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99050,7 +99069,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99123,7 +99142,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99359,7 +99378,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99428,7 +99447,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99506,7 +99525,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99590,7 +99609,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99732,7 +99751,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99817,7 +99836,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99894,7 +99913,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -99984,7 +100003,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -100070,7 +100089,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -100236,7 +100255,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -100422,7 +100441,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -100513,7 +100532,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -100759,7 +100778,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -100850,7 +100869,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -100934,7 +100953,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -101101,7 +101120,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -101331,7 +101350,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -101409,7 +101428,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -101499,7 +101518,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -101592,7 +101611,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -101847,7 +101866,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -101938,7 +101957,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -102029,7 +102048,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102110,7 +102129,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -102181,7 +102200,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102247,7 +102266,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102311,7 +102330,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102384,7 +102403,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102457,7 +102476,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102530,7 +102549,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102611,7 +102630,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -102683,7 +102702,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -103031,7 +103050,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -103105,7 +103124,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -103249,7 +103268,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -103314,7 +103333,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -103448,7 +103467,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -103707,7 +103726,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -103794,7 +103813,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -103949,7 +103968,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104028,7 +104047,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104162,7 +104181,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104232,7 +104251,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104299,7 +104318,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104361,7 +104380,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104434,7 +104453,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104572,7 +104591,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104633,7 +104652,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -104757,7 +104776,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -104919,7 +104938,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -105073,7 +105092,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -105150,7 +105169,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -105217,7 +105236,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -105551,7 +105570,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -105632,7 +105651,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -105705,7 +105724,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -105769,7 +105788,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -105922,7 +105941,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -106013,7 +106032,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -106194,7 +106213,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -106280,7 +106299,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -106454,7 +106473,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -106699,7 +106718,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -106978,7 +106997,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -107134,7 +107153,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -107430,7 +107449,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -107686,7 +107705,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -107749,7 +107768,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -107805,7 +107824,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -108156,7 +108175,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -108220,7 +108239,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -108347,7 +108366,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -108416,7 +108435,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -108483,7 +108502,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -108619,7 +108638,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -108837,7 +108856,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -108903,7 +108922,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -109372,7 +109391,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -109453,7 +109472,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -109593,7 +109612,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -109855,7 +109874,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -109927,7 +109946,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -109996,7 +110015,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -110123,7 +110142,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -110269,7 +110288,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -110344,7 +110363,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -110416,8 +110435,8 @@
      "why": "District buying electric school buses"
     }
    ],
-   "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_state": "none_found",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -110549,7 +110568,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -110853,7 +110872,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -111003,7 +111022,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -111220,7 +111239,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -111296,7 +111315,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -111377,7 +111396,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -111523,7 +111542,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -111771,7 +111790,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -111913,7 +111932,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -111985,7 +112004,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -112057,7 +112076,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -112279,7 +112298,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -112356,7 +112375,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -112504,7 +112523,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -112573,7 +112592,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -112649,7 +112668,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -112728,7 +112747,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -112936,7 +112955,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -113012,7 +113031,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -113087,7 +113106,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -113166,7 +113185,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -113222,7 +113241,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -113283,7 +113302,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -113347,7 +113366,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -113417,7 +113436,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -113484,7 +113503,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -113548,7 +113567,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -113617,7 +113636,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -113686,7 +113705,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -113839,7 +113858,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -113904,7 +113923,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -113960,7 +113979,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -114045,7 +114064,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -114110,7 +114129,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -114175,7 +114194,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -114322,7 +114341,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -114405,7 +114424,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -114632,7 +114651,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -114925,7 +114944,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -115060,7 +115079,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -115123,7 +115142,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -115266,7 +115285,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -115337,7 +115356,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -115418,7 +115437,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -115506,7 +115525,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -115664,7 +115683,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -115745,7 +115764,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -115837,7 +115856,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -115927,8 +115946,8 @@
      "why": "Public power utilities buying CIS and billing"
     }
    ],
-   "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_state": "unread",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -115996,7 +116015,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116074,7 +116093,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116217,7 +116236,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116285,7 +116304,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116343,7 +116362,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116422,7 +116441,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116487,7 +116506,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116568,7 +116587,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116647,7 +116666,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116784,7 +116803,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116848,7 +116867,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116912,7 +116931,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -116979,7 +116998,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -117043,7 +117062,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -117104,7 +117123,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -117172,7 +117191,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -117678,7 +117697,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -117763,7 +117782,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -118099,7 +118118,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -118180,7 +118199,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -118261,7 +118280,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -118346,7 +118365,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -118512,7 +118531,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -118979,7 +118998,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -119075,7 +119094,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -119445,7 +119464,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -119518,7 +119537,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -119587,7 +119606,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -119729,7 +119748,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -119816,7 +119835,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -119910,7 +119929,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -119980,7 +119999,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -120074,7 +120093,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -120143,7 +120162,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -120214,7 +120233,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -120305,7 +120324,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -120380,7 +120399,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -120451,7 +120470,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -120554,7 +120573,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -120729,7 +120748,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -120819,7 +120838,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -120883,7 +120902,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -120949,7 +120968,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121035,7 +121054,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121121,7 +121140,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121273,7 +121292,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121335,7 +121354,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121405,7 +121424,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121481,7 +121500,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121645,7 +121664,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121862,7 +121881,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -121932,7 +121951,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -122006,7 +122025,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -122158,7 +122177,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -122240,7 +122259,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -122623,7 +122642,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -122854,7 +122873,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -122927,7 +122946,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -123072,7 +123091,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -123218,7 +123237,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -123356,7 +123375,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -123422,7 +123441,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -123483,7 +123502,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -123693,7 +123712,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -123768,7 +123787,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -123922,7 +123941,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -124005,7 +124024,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -124218,7 +124237,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -124431,7 +124450,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -124560,7 +124579,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [],
@@ -124616,7 +124635,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -124749,7 +124768,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -124830,7 +124849,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -124907,7 +124926,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -124984,7 +125003,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -125045,7 +125064,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -125101,7 +125120,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -125170,7 +125189,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -125237,7 +125256,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -125301,7 +125320,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -125368,7 +125387,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -125438,7 +125457,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -125555,7 +125574,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -125611,7 +125630,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -125788,7 +125807,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -126056,7 +126075,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -126182,7 +126201,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -126238,7 +126257,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -126367,7 +126386,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -126444,7 +126463,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -126797,7 +126816,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -126853,7 +126872,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -126918,7 +126937,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -126979,7 +126998,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -127046,7 +127065,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -127172,7 +127191,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -127241,7 +127260,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -127366,7 +127385,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -127434,7 +127453,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -127556,7 +127575,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -127620,7 +127639,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -127676,7 +127695,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -127826,7 +127845,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -127993,7 +128012,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128079,7 +128098,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128144,7 +128163,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -128219,7 +128238,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128374,7 +128393,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128527,8 +128546,8 @@
      "why": "Incident commanders buying personnel readiness and resource tracking"
     }
    ],
-   "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_state": "items",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128589,7 +128608,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128654,7 +128673,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128715,7 +128734,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128776,7 +128795,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -128920,7 +128939,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -128995,7 +129014,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -129072,7 +129091,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -129153,7 +129172,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -129226,7 +129245,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -129282,7 +129301,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -129339,7 +129358,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -129474,7 +129493,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -129546,7 +129565,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -129602,7 +129621,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -129663,7 +129682,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -129794,7 +129813,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -129926,7 +129945,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -130003,7 +130022,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -130076,7 +130095,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -130214,7 +130233,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -130405,7 +130424,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -130461,7 +130480,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [],
@@ -130517,7 +130536,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -130585,7 +130604,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
@@ -130659,7 +130678,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -130752,7 +130771,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131080,7 +131099,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131143,7 +131162,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -131250,7 +131269,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131317,7 +131336,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131404,7 +131423,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131467,7 +131486,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131538,7 +131557,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131731,7 +131750,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131865,7 +131884,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -131998,7 +132017,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132199,7 +132218,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132341,7 +132360,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132407,7 +132426,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132471,7 +132490,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132533,7 +132552,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -132591,7 +132610,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132682,7 +132701,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132749,7 +132768,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132816,7 +132835,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -132934,7 +132953,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133050,7 +133069,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133200,7 +133219,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133436,7 +133455,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133519,7 +133538,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133673,7 +133692,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133748,7 +133767,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133807,7 +133826,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -133977,7 +133996,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -134123,7 +134142,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -134281,7 +134300,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -134349,7 +134368,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -134488,7 +134507,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -134680,7 +134699,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135033,7 +135052,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135120,7 +135139,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135187,7 +135206,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -135250,7 +135269,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135327,7 +135346,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135390,7 +135409,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135484,7 +135503,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135555,7 +135574,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135827,7 +135846,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -135889,7 +135908,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136137,7 +136156,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136192,7 +136211,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Beacon Crisis Dispatch"
+   ],
    "competitors": [
     {
      "id": "active911",
@@ -136204,7 +136225,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136338,7 +136359,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136421,7 +136442,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136488,7 +136509,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136559,7 +136580,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136648,7 +136669,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136716,7 +136737,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136787,7 +136808,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -136923,7 +136944,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137070,7 +137091,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137148,7 +137169,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137212,7 +137233,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137281,7 +137302,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137348,7 +137369,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137415,7 +137436,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137540,7 +137561,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137603,7 +137624,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137667,7 +137688,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137758,7 +137779,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -137845,7 +137866,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138024,7 +138045,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138252,7 +138273,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138327,7 +138348,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138402,7 +138423,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138489,7 +138510,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138560,7 +138581,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138645,7 +138666,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138716,7 +138737,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -138781,7 +138802,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139069,7 +139090,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139137,7 +139158,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139284,7 +139305,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139371,7 +139392,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139445,7 +139466,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139586,7 +139607,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139649,7 +139670,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139840,7 +139861,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Playgarden Online"
+   ],
    "competitors": [
     {
      "id": "decodable-reads",
@@ -139848,7 +139871,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -139906,7 +139929,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -139988,7 +140011,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140060,7 +140083,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140123,7 +140146,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140192,7 +140215,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140263,7 +140286,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140330,7 +140353,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140405,7 +140428,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140492,7 +140515,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140571,7 +140594,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140692,7 +140715,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140918,8 +140941,8 @@
      "why": "Universities buying a student portal platform"
     }
    ],
-   "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_state": "items",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -140982,7 +141005,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -141045,7 +141068,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -141108,7 +141131,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -141241,7 +141264,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -141395,7 +141418,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -141463,7 +141486,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -141521,7 +141544,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -141719,7 +141742,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -141798,7 +141821,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -142034,7 +142057,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -142217,7 +142240,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -142362,7 +142385,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -142429,7 +142452,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -142492,7 +142515,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -142700,7 +142723,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -142763,7 +142786,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -142842,7 +142865,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -142900,7 +142923,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143194,7 +143217,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143433,7 +143456,7 @@
     }
    ],
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143504,7 +143527,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143666,7 +143689,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143728,8 +143751,8 @@
      "why": "University advancement offices buying donor engagement and stewardship software"
     }
    ],
-   "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_state": "items",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143808,7 +143831,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143876,7 +143899,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -143939,7 +143962,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144018,7 +144041,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144085,7 +144108,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144173,7 +144196,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144247,7 +144270,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144313,7 +144336,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144380,7 +144403,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144443,7 +144466,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144498,7 +144521,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "DAC Bond"
+   ],
    "competitors": [
     {
      "id": "bondlink",
@@ -144697,7 +144722,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144768,7 +144793,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -144831,7 +144856,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -144960,7 +144985,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -145018,7 +145043,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -145143,7 +145168,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -145220,7 +145245,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -145295,7 +145320,7 @@
     }
    ],
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-20",
    "conferences": [
@@ -145484,7 +145509,7 @@
     }
    ],
    "news_state": "items",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
@@ -145543,7 +145568,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "unread",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -145601,7 +145626,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-11-07",
+   "news_checked_on": "2026-11-10",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -146744,7 +146769,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Solus UK Ltd."
+   ],
    "competitors": [
     {
      "id": "bibliocommons",
@@ -150854,7 +150881,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Can/Am Teller Cashiering"
+   ],
    "competitors": [
     {
      "id": "core-business-technologies",
@@ -151820,7 +151849,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Sand Technologies"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
@@ -155436,7 +155467,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Tova"
+   ],
    "competitors": [
     {
      "id": "aquasight",
@@ -159664,7 +159697,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Sells Canva Enterprise, a visual design and communication platform with brand controls, SSO and approval workflows, to government communications, public affairs and other agency teams - exhibited at 3CMA 2026",
+   "description": "Sells Canva Enterprise, a visual design and communication platform with brand controls, SSO and approval workflows, to government communications, public affairs and other agency teams - exhibited at 3CMA 2026, EDUCAUSE 2026",
    "website": "https://www.canva.com/",
    "board_url": "https://www.lifeatcanva.com/en/",
    "linkedin": null,
@@ -159680,14 +159713,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Canva Pty Ltd"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
    "competitors_none_found": true,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
-    "3CMA 2026"
+    "3CMA 2026",
+    "EDUCAUSE 2026"
    ],
    "conference": "3CMA 2026",
    "open_roles": 0,
@@ -159710,7 +159746,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-19",
    "posts_at": null,
-   "source": "conference sweep: 3CMA 2026",
+   "source": "conference sweep: 3CMA 2026; EDUCAUSE 2026",
    "researched": true,
    "claimed": null
   },
@@ -160624,7 +160660,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Data Axle's Reference Solutions is a business and consumer reference database sold to public and academic libraries for patron research, job search and staff training - exhibited at PLA 2026",
+   "description": "Data Axle's Reference Solutions is a business and consumer reference database sold to public and academic libraries for patron research, job search and staff training - exhibited at PLA 2026, IEDC 2026",
    "website": "https://www.data-axle.com/platforms-products/reference-solutions/",
    "board_url": "https://www.data-axle.com/platforms-products/reference-solutions/",
    "linkedin": null,
@@ -160640,7 +160676,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Data-Axle"
+   ],
    "competitors": [
     {
      "id": "atozdatabases",
@@ -160652,7 +160690,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-10-22",
    "conferences": [
-    "PLA 2026"
+    "PLA 2026",
+    "IEDC 2026"
    ],
    "conference": "PLA 2026",
    "open_roles": 0,
@@ -160675,7 +160714,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-19",
    "posts_at": null,
-   "source": "conference sweep: PLA 2026",
+   "source": "conference sweep: PLA 2026; IEDC 2026",
    "researched": true,
    "claimed": null
   },
@@ -161859,7 +161898,7 @@
    ],
    "location": null,
    "year_founded": null,
-   "description": "Equifax sells employment and income verification data through The Work Number to government agencies that decide eligibility for SNAP, Medicaid, TANF and public housing - exhibited at Healthcare IT Connect 2026, MESC 2026, APHSA 2026",
+   "description": "Equifax sells employment and income verification data through The Work Number to government agencies that decide eligibility for SNAP, Medicaid, TANF and public housing - exhibited at Healthcare IT Connect 2026, MESC 2026, APHSA 2026, Michigan Sheriffs Association 2026",
    "website": "https://theworknumber.com/solutions/industries/government-verification",
    "board_url": "https://theworknumber.com/solutions/industries/government-verification",
    "linkedin": null,
@@ -161876,7 +161915,8 @@
    "brands": null,
    "acquired": null,
    "also_known_as": [
-    "Equifax/Carahsoft"
+    "Equifax/Carahsoft",
+    "Equifax Workforce Solutions"
    ],
    "competitors": [
     {
@@ -161899,7 +161939,8 @@
    "conferences": [
     "Healthcare IT Connect 2026",
     "MESC 2026",
-    "APHSA 2026"
+    "APHSA 2026",
+    "Michigan Sheriffs Association 2026"
    ],
    "conference": "Healthcare IT Connect 2026",
    "open_roles": 0,
@@ -161922,7 +161963,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-19",
    "posts_at": null,
-   "source": "conference sweep: Healthcare IT Connect 2026; MESC 2026; APHSA 2026",
+   "source": "conference sweep: Healthcare IT Connect 2026; MESC 2026; APHSA 2026; Michigan Sheriffs Association 2026",
    "researched": true,
    "claimed": null,
    "news_by": "theworknumber.com"
@@ -165929,7 +165970,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Secto"
+   ],
    "competitors": [
     {
      "id": "darwin-ai",
@@ -182507,6 +182550,763 @@
    "board_checked_on": "2026-11-01",
    "posts_at": null,
    "source": "conference sweep: DISTRIBUTECH 2026; AWWA ACE 2026; DISTRIBUTECH 2027",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "blumira",
+   "name": "Blumira",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Cloud SIEM and XDR security platform with CJIS and NIST 800-53 compliance reporting, sold to state and local government IT teams and other organizations - exhibited at GMIS International 2026",
+   "website": "https://www.blumira.com/",
+   "board_url": "https://www.blumira.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "GMIS International 2026"
+   ],
+   "conference": "GMIS International 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: GMIS International 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "boomi",
+   "name": "Boomi",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Boomi Enterprise Platform for integration, API management and automation, sold to government agencies, cities, universities and businesses - exhibited at EDUCAUSE 2026",
+   "website": "https://boomi.com/",
+   "board_url": "https://boomi.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "EDUCAUSE 2026"
+   ],
+   "conference": "EDUCAUSE 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: EDUCAUSE 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "canonical",
+   "name": "Canonical",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Ubuntu Linux, Ubuntu Pro security subscriptions, Landscape fleet management and cloud software with support, sold to schools, universities, government and enterprises - exhibited at EDUCAUSE 2026",
+   "website": "https://canonical.com/",
+   "board_url": "https://canonical.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": null,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "EDUCAUSE 2026"
+   ],
+   "conference": "EDUCAUSE 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: EDUCAUSE 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "checkr",
+   "name": "Checkr",
+   "sector": "Health & Human Services",
+   "category": "Benefits & Medicaid Systems",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Background check and income, employment and asset verification platform, sold to employers, lenders and state agencies verifying Medicaid and SNAP eligibility - exhibited at APHSA 2026",
+   "website": "https://checkr.com/",
+   "board_url": "https://checkr.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": null,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "APHSA 2026"
+   ],
+   "conference": "APHSA 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: APHSA 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "dynatrace",
+   "name": "Dynatrace",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Observability, application security and AIOps software for monitoring state and local agency digital services, cloud and AI workloads - exhibited at EDUCAUSE 2026",
+   "website": "https://www.dynatrace.com/",
+   "board_url": "https://www.dynatrace.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "EDUCAUSE 2026"
+   ],
+   "conference": "EDUCAUSE 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: EDUCAUSE 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "eightfold-ai",
+   "name": "Eightfold AI",
+   "sector": "Health & Human Services",
+   "category": "Workforce & Labor",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "AI talent-matching software for public employers and state workforce agencies, including a job marketplace linking job seekers to employers - exhibited at NASWA 2025",
+   "website": "https://eightfold.ai/",
+   "board_url": "https://eightfold.ai/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": null,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "NASWA 2025"
+   ],
+   "conference": "NASWA 2025",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: NASWA 2025",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "jps-interoperability-solutions-inc",
+   "name": "JPS Interoperability Solutions, Inc.",
+   "sector": "Public Safety",
+   "category": "Emergency Mgmt",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Makes radio-over-IP gateways, dispatch consoles and interoperability devices that link land mobile radio and cellular push-to-talk for public safety agencies - exhibited at APCO 2026",
+   "website": "https://jps.com/",
+   "board_url": "https://jps.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 2,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "APCO 2026"
+   ],
+   "conference": "APCO 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: APCO 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "halcyon",
+   "name": "Halcyon",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Sells anti-ransomware endpoint software and a ransomware response service to state and local governments, school districts and other organizations - exhibited at EDUCAUSE 2026",
+   "website": "https://www.halcyon.ai/",
+   "board_url": "https://www.halcyon.ai/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "EDUCAUSE 2026"
+   ],
+   "conference": "EDUCAUSE 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: EDUCAUSE 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "knowbe4",
+   "name": "KnowBe4",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Security awareness training, phishing simulation and email security software for organizations including K-12 districts and colleges - exhibited at EDUCAUSE 2026",
+   "website": "https://www.knowbe4.com/",
+   "board_url": "https://www.knowbe4.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "EDUCAUSE 2026"
+   ],
+   "conference": "EDUCAUSE 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: EDUCAUSE 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "pathsolutions",
+   "name": "PathSolutions",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "TotalView network monitoring and troubleshooting software for IT teams, with customers that include a city government and a community college - exhibited at EDUCAUSE 2026",
+   "website": "https://www.pathsolutions.com/",
+   "board_url": "https://www.pathsolutions.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "EDUCAUSE 2026"
+   ],
+   "conference": "EDUCAUSE 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: EDUCAUSE 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "securityscorecard",
+   "name": "SecurityScorecard",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Security ratings and third-party cyber risk monitoring software for state and local agencies, schools, federal bodies and private companies - exhibited at NASCIO 2026",
+   "website": "https://securityscorecard.com/",
+   "board_url": "https://securityscorecard.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "NASCIO 2026"
+   ],
+   "conference": "NASCIO 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: NASCIO 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "zoom",
+   "name": "Zoom",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Sells video meetings, phone, chat and contact center software, with a Zoom for Government edition for federal, state and local agencies - exhibited at EDUCAUSE 2026, CoSN 2026",
+   "website": "https://www.zoom.com",
+   "board_url": "https://www.zoom.com",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": [
+    "Zoom Communications"
+   ],
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "EDUCAUSE 2026",
+    "CoSN 2026"
+   ],
+   "conference": "EDUCAUSE 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: EDUCAUSE 2026; CoSN 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "zscaler",
+   "name": "Zscaler",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Sells a zero trust cloud security platform to businesses and to state and local government agencies - exhibited at NASCIO 2026",
+   "website": "https://www.zscaler.com",
+   "board_url": "https://www.zscaler.com",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "NASCIO 2026"
+   ],
+   "conference": "NASCIO 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: NASCIO 2026",
    "researched": true,
    "claimed": null
   }
@@ -515905,13 +516705,51 @@
    "office": null,
    "opening_postings": 1,
    "opening_locations": 1
+  },
+  {
+   "id": "tip411::Account Executive \u2013 SaaS Sales::2d231fa1",
+   "company": "tip411",
+   "company_id": "tip411",
+   "title": "Account Executive \u2013 SaaS Sales",
+   "family": "gtm",
+   "quota_carrying": true,
+   "seniority": "mid",
+   "states": [],
+   "region": null,
+   "work_mode": "not stated",
+   "location": "St Paul, MN",
+   "is_us": true,
+   "url": "https://home.tip411.com/tip411jobs",
+   "sector": "Public Safety",
+   "category": "Police",
+   "first_seen": "2026-11-10",
+   "captured_from": "https://home.tip411.com/tip411jobs",
+   "source": "manual",
+   "jd_seen": false,
+   "comp": null,
+   "opening_id": "tip411::Account Executive \u2013 SaaS Sales",
+   "territory": {
+    "states": [],
+    "region": null,
+    "stated": false
+   },
+   "office": {
+    "city": "St Paul",
+    "state": "MN"
+   },
+   "opening_postings": 1,
+   "opening_locations": 1
   }
  ],
  "coverage": {
-  "structured": 438,
-  "page only": 1021,
+  "structured": 446,
+  "page only": 1014,
   "absent": 670,
   "blocked": 195,
-  "unchecked": 56
+  "unchecked": 68
+ },
+ "redrawn": {
+  "at": "2026-11-10T21:41:29Z",
+  "inputs": "553d9dac0eefab29b48df0dc0c0f68ef7c54d6ca84bbe9295d37831ebecece59"
  }
 }

@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "GE Vernova to Invest $34.5 Million in Shreveport Facility Expansion to Meet Growing Grid Infrastructure Demand",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-invest-345-million-shreveport-facility-expansion-meet-growing-grid"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "GE Vernova Advances Hydrogen Capabilities for Aeroderivative Gas Turbines with New Milestones",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-advances-hydrogen-capabilities-aeroderivative-gas-turbines-new-milestones"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "GE Vernova to spotlight electrification, energy security and local collaboration as Climate Supporter of COP31 in T\u00fcrkiye",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-spotlight-electrification-energy-security-local-collaboration-climate"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "GE Vernova continues wind energy expansion in Germany with new order from Stadtwerke Heidenheim AG",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-continues-wind-energy-expansion-germany-new-order-stadtwerke-heidenheim"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "card-date",
    "first_seen": "2026-11-06",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gevernova.com/news/press-releases/net-zero-without-compromising-reliability-ge-vernova-shows-how-spain-can-design"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "card-date",
-   "first_seen": "2026-10-13",
-   "headline": "GE Vernova to announce third quarter 2026 financial results on October 28",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-announce-third-quarter-2026-financial-results-october-28"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "card-date",
-   "first_seen": "2026-10-07",
-   "headline": "GE Vernova to Double the Number of MIT Interns and Permanent Hires in 2027",
-   "kind": "leadership",
-   "kind_rule": "Hires",
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-double-number-mit-interns-permanent-hires-2027"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "GE Vernova-powered projects receive 2026 POWER Magazine Awards for advancements in energy efficiency and decarbonization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-powered-projects-receive-2026-power-magazine-awards-advancements-energy"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "GE Vernova and PROTEC Celebrate Next Engineers Engineering Academy Graduation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-protec-celebrate-next-engineers-engineering-academy-graduation"
   }
  ]
 }

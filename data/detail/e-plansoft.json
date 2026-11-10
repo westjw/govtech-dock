@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The Best Plan Review Software for Collaborating Across Disciplines",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eplansoft.com/resources/best-collaborative-plan-review-software"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eplansoft.com/resources/ai-didnt-replace-radiologists.-it-wont-replace-plan-reviewers-either"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Where AI Belongs In Plan Review",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eplansoft.com/resources/where-ai-belongs"
   }
  ],
  "profile": {

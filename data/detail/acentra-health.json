@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Same Situation, Different Perspective: How SAMA Puts AI into Practice",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://acentra.com/blog/how-sama-puts-ai-into-practice?hsLang=en"
+  },
+  {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-06",
    "headline": "NAMD 2026 Recap: Strengthening Medicaid Through Collaboration, Technology, & Community Partnerships",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "The Best Partnerships Begin with Curiosity and Lead to Better Outcomes",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Preparing for the Next Phase of the Rural Health Transformation Program: From Application Success to Performance Success",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Modernizing Medicaid Systems Without Disrupting Care",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Key Takeaways from NAMPI 2026: Advancing Medicaid Program Integrity Through Collaboration, Data, and Action",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "MESC 2026 and the Next Phase of Medicaid Modernization",
    "kind": "press",
    "kind_rule": null,
    "url": "https://acentra.com/blog/2026-acentra-health-post-mesc?hsLang=en"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Acentra Health Awarded Five-Year Contract Extension to Continue Utilization Management Services in Colorado",
-   "kind": "contract",
-   "kind_rule": "Awarded Five-Year Contract",
-   "url": "https://acentra.com/news/acentra-health-awarded-five-year-contract-extension-to-continue-utilization-management-services-in-co"
   }
  ],
  "profile": {

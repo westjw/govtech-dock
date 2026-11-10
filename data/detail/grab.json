@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "SoftBank Group and Grab Sign Joint Development Agreements to Develop AI Infrastructure in Malaysia",
+   "kind": "contract",
+   "kind_rule": "Sign Joint Development Agreements",
+   "url": "https://www.grab.com/sg/press/consumers-drivers/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "SoftBank Group and Grab Sign Joint Development Agreements to Develop AI Infrastructure in Malaysia",
+   "kind": "contract",
+   "kind_rule": "Sign Joint Development Agreements",
+   "url": "https://www.grab.com/sg/press/people/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "SoftBank Group and Grab Sign Joint Development Agreements to Develop AI Infrastructure in Malaysia",
+   "kind": "contract",
+   "kind_rule": "Sign Joint Development Agreements",
+   "url": "https://www.grab.com/sg/press/tech-product/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
@@ -8,33 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.grab.com/sg/press/business/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "Grab Reports Third Quarter 2026 Results, Raises Full-Year Guidance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.grab.com/sg/press/consumers-drivers/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "Grab Reports Third Quarter 2026 Results, Raises Full-Year Guidance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.grab.com/sg/press/people/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "Grab Reports Third Quarter 2026 Results, Raises Full-Year Guidance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.grab.com/sg/press/tech-product/"
   }
  ]
 }

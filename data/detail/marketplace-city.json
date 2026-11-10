@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Maryland DoIT Partners for Technology Research Efficiency, Becoming Marketplace.city's First State Customer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://go.marketplace.city/blog/maryland-doit-first-state-customer"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://go.marketplace.city/blog/software-fastest-growing-local-government-budget"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Buy Government Technology Without an RFP: A Complete Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://go.marketplace.city/blog/how-to-buy-government-technology-without-rfp"
   }
  ],
  "profile": {

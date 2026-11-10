@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Search the Event Log or a volunteer\u2019s Notes tab",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/search-the-event-log-or-a-volunteers-notes-tab/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/use-sets-for-checklist-items-that-apply-to-multiple-assignments/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Use Substitute Tracking for Schedule Adjustments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/use-substitute-tracking-for-schedule-adjustments/"
   }
  ]
 }

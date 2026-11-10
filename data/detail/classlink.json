@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Better Together: A Season of Gratitude",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/partnering-with-classlink-nov-2026"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "What's New in ClassLink: More Control Over SAML, Rosters, and Reports",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/classlink-products-nov-2026"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "3 Ways to Get More From OneSync and Roster Server",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/keeping-up-with-clon-nov-2026"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.classlink.com/blog/a-new-and-improved-prodigy-app-is-available"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Salena Rabidoux and August 28, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/beyond-the-deadline-what-ada-title-ii-means-for-higher-education"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "5 Things Your Team Will Bring Home From CLON27",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/keeping-up-with-clon-aug-2026"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Supporting Successful Classrooms: Meet Hackersjack and Discover What's New This Month",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/partnering-with-classlink-aug-2026"
   }
  ],
  "profile": {

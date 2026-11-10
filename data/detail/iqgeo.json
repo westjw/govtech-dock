@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The AI Tools Utility Operators Need To Get the Grid Ready for AI Data Centers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/blog/optimizing-utility-grids-for-data-centers"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "IQGeo Extends the AI-Powered Network Intelligence Platform with Five Products",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "2026 Ground Truth Survey: What\u2019s Standing Between Telecoms and Autonomous Networks?",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "BEAD Supplemental Round: How Fiber Providers Can Win $21 Billion in New Funding",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What Are Visual AI Agents for Telecom and Utility Network Operations",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Hidden Problem with Field Data Quality in Telecom and Utility Networks",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-07-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Why Autonomous Networks in Telecom Depend on Trusted Digital Twins of Physical Infrastructure",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.iqgeo.com/blog/autonomous-networks-in-telecom-depend-on-trusted-digital-twins"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "IQGeo Launches Automated Error Detection for Telecom Network Records",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.iqgeo.com/news/iqgeo-launches-automated-error-detection-for-telecom-network-records"
   }
  ],
  "profile": {

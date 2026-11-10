@@ -1,8 +1,44 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "What Google Wallet's New Design Means for Membership Cards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cuseum.com/blog/google-wallet-passes-membership-cards"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "How to Win Back Lapsed Museum Members: A 2027 Playbook",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cuseum.com/blog/win-back-lapsed-museum-members"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "QR Code on Membership Cards: How Museums Get Them Right in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cuseum.com/blog/qr-code-membership-card-museums"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "What We Heard at AMMC 2026: Three Membership Lessons to Plan Around in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cuseum.com/blog/ammc-2026-recap-museum-membership-lessons"
+  },
+  {
    "date": "2026-11-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "How the Jewish Museum Vienna Leveraged Digital to Take a Special Exhibition Beyond Its Walls",
    "kind": "press",
@@ -11,7 +47,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-31",
    "headline": "What Apple Wallet's Latest Style Upgrade Means for Membership Cards",
    "kind": "press",
@@ -20,7 +56,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "AZA 2026 Recap: Quick Wins for Zoo and Aquarium Membership",
    "kind": "press",
@@ -29,7 +65,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Museum Membership Marketing: Plan Every Campaign Around Its Goal",
    "kind": "press",
@@ -38,7 +74,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What Keeps Members Engaged: Lessons From Three Museums",
    "kind": "press",
@@ -47,7 +83,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Building a More Resilient Museum Membership Program",
    "kind": "press",
@@ -56,7 +92,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "From Digital to In-Person: Creating a Seamless Museum Experience",
    "kind": "press",
@@ -65,48 +101,12 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "The Year-End Ask Starts Long Before December: A Year-Round Fundraising Strategy for Museums",
    "kind": "press",
    "kind_rule": null,
    "url": "https://cuseum.com/blog/year-end-fundraising-strategy-for-museums"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "card-date",
-   "first_seen": "2026-09-09",
-   "headline": "Beyond the Benefits: Rethinking the Museum Membership Value Proposition",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cuseum.com/blog/beyond-the-benefits-museum-membership-value-proposition"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "card-date",
-   "first_seen": "2026-09-09",
-   "headline": "The Member Journey: Turning Museum Visitors Into Long-Term Advocates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cuseum.com/blog/the-member-journey-turning-museum-visitors-into-long-term-advocates"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Maximizing Membership Revenue in the Digital Era",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cuseum.com/blog/maximizing-membership-revenue-in-the-digital-era"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why People Choose to Join Arts & Culture Organizations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cuseum.com/blog/why-people-choose-to-join"
   }
  ],
  "profile": {

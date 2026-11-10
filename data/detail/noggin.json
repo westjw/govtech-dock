@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "An Energy Resilience Software Buyer's Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.noggin.io/blog/an-energy-resilience-software-buyers-guide"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.noggin.io/blog/a-2026-guide-to-combatting-organized-retail-crime"
-  },
-  {
-   "date": "2026-05-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A 2026 compliance guide for financial institutions in Southeast Asia",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.noggin.io/blog/a-2026-compliance-guide-for-financial-institutions-in-southeast-asia?hsLang=en"
   }
  ],
  "profile": {

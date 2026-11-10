@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "City of Lansing, MI, Selects Velosimo Connect\u2122 to Link Trimble Unity Permit with PayIt",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.velosimo.com/newsroom/city-of-lansing-mi-selects-velosimo-connect-to-link-trimble-unity-permit-with-payit"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Integration with",
    "url": "https://www.velosimo.com/newsroom/town-of-los-gatos-ca-advances-financial-and-document-integration-with-velosimo-connect"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fresno Connects Heartland and Accela with Velosimo Connect\u2122",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.velosimo.com/newsroom/fresno-simplifies-online-payments-with-velosimo-connect-integration-between-heartland-and-accela"
   }
  ]
 }

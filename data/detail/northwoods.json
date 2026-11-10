@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "From Caseload to Capacity: How Automation Empowers the HHS Workforce, and How to Choose the Right Partner to Get There",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.teamnorthwoods.com/resources/from-caseload-to-capacity-how-automation-empowers-the-hhs-workforce-and-how-to-choose-the-right-partner-to-get-there/"
+  },
+  {
    "date": "2026-11-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Fresh From the Traverse Toolbox: What\u2019s New This Fall",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Building Better Human Services Technology Starts With the People Who Use It",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "From Spokane to Columbus: What We Heard at ISM 2026",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Camp Northwoods: Taking Time to Recharge and Reconnect",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "What if Finding the Answer Didn\u2019t Mean Searching an Entire Case File?",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Northwoods Named to Inaugural Ohio AI25 for Advancing AI in Human Services",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.teamnorthwoods.com/resources/blog/celebrating-excellence-congratulations-to-park-county-on-receiving-the-colorado-c-stat-distinguished-performance-award/"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Meet the Team Shaping What\u2019s Next at Northwoods",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.teamnorthwoods.com/resources/blog/meet-the-team-shaping-whats-next-at-northwoods/"
   }
  ],
  "profile": {

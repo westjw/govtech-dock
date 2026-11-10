@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "4 Essentials Every Facility Emergency Plan Needs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://alertus.com/blog/4-essentials-every-facility-emergency-plan-needs"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://alertus.com/blog/beyond-legacy-alerts-a-modern-approach-to-campus-emergency-response"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Quick Guide to Alertus\u2019 UL Listings, Ratings, and Certifications",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://alertus.com/blog/quick-guide-to-alertus-ul-listings-ratings-and-certifications"
   }
  ],
  "profile": {

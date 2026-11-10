@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "What is outsourced revenue cycle management for DME?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/what-is-outsourced-revenue-cycle-management-for-dme/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -17,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/what-is-your-october-hhvbp-ipr-really-telling-you/"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "time",
-   "first_seen": "2026-10-13",
-   "headline": "4 ways to get the most out of CGM resupply package inserts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/resources/tip-sheets/"
   },
   {
    "date": "2026-10-29",
@@ -53,15 +53,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/resources/on-demand-webinars/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "time",
-   "first_seen": "2026-10-24",
-   "headline": "Ebooks & white papers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/resources/ebooks-white-papers/"
   },
   {
    "date": "2026-10-21",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/why-reducing-hospital-readmissions-requires-more-than-discharge-planning/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "time",
+   "first_seen": "2026-10-13",
+   "headline": "5 things DME providers need to know about the CY 2027 proposed rule",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/resources/tip-sheets/"
   }
  ]
 }

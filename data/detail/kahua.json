@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "A GC\u2019s Guide to Construction Change Orders: The Scope Changed\u2014Now, what?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/construction-change-order/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/pmweb-alternatives-capital-programs/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "How to Choose an Autodesk Construction Cloud Alternative: A 10-Point Checklist",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/autodesk-construction-cloud-alternatives/"
   }
  ],
  "profile": {

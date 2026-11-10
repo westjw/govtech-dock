@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "og:published",
+   "first_seen": "2026-11-10",
+   "headline": "Why Continuous Monitoring Needs To Replace One-Time Accessibility Audits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.yuja.com/blog/why-continuous-monitoring-needs-to-replace-one-time-accessibility-audits/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Walla Walla Community College Adopts YuJa EqualGround to Enhance Website Accessibility November 9, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Adopts",
+   "url": "https://www.yuja.com/blog/news/walla-walla-community-college-yuja-equalground/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "index-text",
    "first_seen": "2026-11-06",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-10-30",
    "headline": "YuJa Panorama v26.8.0 Release \u2013 Deeper Remediation Capabilities, Optimized Integration Workflows, New Dashboards and More\u2026",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-10-30",
    "headline": "YuJa AutoPilot v26.8.0 \u2013 Automated Remediation That Aligns with Your Style and Branding",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://www.yuja.com/blog/news/community-college-system-of-new-hampshire-yuja-equalground/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "Stark State College Adopts YuJa Panorama to Strengthen Digital Course Content Accessibility October 23, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Adopts",
-   "url": "https://www.yuja.com/blog/news/stark-state-college-yuja-panorama/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-22",
-   "headline": "Montana Technological University Selects YuJa Verity to Support Secure Testing Processes October 21, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.yuja.com/blog/news/montana-technological-university-yuja-verity/"
   }
  ],
  "profile": {

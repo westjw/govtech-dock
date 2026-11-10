@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Anthropic launches roadshow for proposed initial public offering",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.anthropic.com/news/roadshow-launch"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-16",
    "headline": "An update on independent evaluators",
    "kind": "product",
    "kind_rule": "update",
    "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "An update on independent evaluators",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://www.anthropic.com/news/policy"
   }
  ],
  "profile": {

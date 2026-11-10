@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Improving Reimbursement in Compliance With Mental Health Parity Laws",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/improving-reimbursement-in-compliance-with-mental-health-parity-laws"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/ai-meets-behavioral-health-exploring-the-cx360-intelligence-ehr-with-dr-michael-arevalo"
-  },
-  {
-   "date": "2026-09-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Improving Behavioral Health EHR Buy-In & Adoption With Core Solutions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/improving-behavioral-health-ehr-buy-in-adoption-with-core-solutions"
   }
  ],
  "profile": {

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "By Dr. Warren Hilton",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/community-colleges-workforce-student-success"
+  },
+  {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "More Than a Portfolio: How Documenting My Journey Helped Me Find My Place",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-17",
    "headline": "Heroes of Higher Ed",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-26",
    "headline": "Artificial Intelligence, Data Security and Privacy",
    "kind": "press",
@@ -46,7 +55,16 @@
    "url": "https://www.ellucian.com/blog/aligning-people-platforms-ai-change-higher-education"
   },
   {
-   "date": "2026-09-16",
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "How I Found the Motivation to Keep Going in My Studies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/finding-motivation-and-resilience-student"
+  },
+  {
+   "date": "2026-09-15",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Artificial Intelligence, Student Information Systems",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/proposed-uniform-guidance-changes-higher-education"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Student Success and Retention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/data-driven-advising-improves-student-retention"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "It's Okay to Pivot Your College Path",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/its-okay-pivot-your-college-path"
   }
  ],
  "profile": {

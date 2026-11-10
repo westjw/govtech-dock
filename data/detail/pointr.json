@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Pointr's October Demo Day Recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/october-demo-day"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.pointr.tech/blog/workplace-indoor-mapping-wayfinding-rfp-playbook-key-questions"
-  },
-  {
-   "date": "2025-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Mapping Benchmark 2.0: Performance Insights for Multi-Modal Spatial AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pointr.tech/blog/ai-mapping-benchmark"
   }
  ],
  "profile": {

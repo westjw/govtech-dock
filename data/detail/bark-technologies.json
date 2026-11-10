@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "What\u2019s Coming Out This Holiday Season: A Parent\u2019s Guide to New Movies, TV, and Games",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/new-releases-holiday-season-2026/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bark.us/blog/safer-music-devies/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Safer Music Devices for Kids: A Roundup of Our Top Choices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bark.us/blog/safer-music-devices/"
   }
  ],
  "profile": {

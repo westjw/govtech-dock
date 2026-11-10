@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "CLEAR Airport Guides: Newark Liberty International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-ewr"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/airport-guide-ord"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "CLEAR Travel Tips: Checked Bag vs. Carry-On",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/checked-bag-vs-carry-on"
   }
  ],
  "profile": {

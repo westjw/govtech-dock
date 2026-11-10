@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Understanding School Bus Dispatch Data Bottlenecks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/understanding-school-bus-dispatch-data-bottlenecks"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "School Bus Maintenance Records: What Inspectors Ask For",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/school-bus-maintenance-records-what-inspectors-ask-for"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/what-fleetpatrol-does-for-district-fleet-maintenance-1"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Key Safety Analytics in Student Transportation Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/key-safety-analytics-in-student-transportation-software"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Best Student Transportation Platforms Compared",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/best-student-transportation-platforms-compared"
   }
  ],
  "profile": {

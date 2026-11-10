@@ -177,6 +177,13 @@
    "found": true,
    "note": null,
    "source": "https://orlo.tech/careers/"
+  },
+  "tip411": {
+   "checked_on": "2026-11-10",
+   "by": "agent:proposals-review",
+   "found": true,
+   "note": null,
+   "source": "https://home.tip411.com/tip411jobs"
   }
  },
  "postings": [
@@ -5256,6 +5263,25 @@
    "category": "Citizen Services",
    "first_seen": "2026-11-09",
    "captured_from": "https://orlo.tech/careers/"
+  },
+  {
+   "id": "tip411::Account Executive \u2013 SaaS Sales",
+   "company": "tip411",
+   "company_id": "tip411",
+   "title": "Account Executive \u2013 SaaS Sales",
+   "family": "gtm",
+   "quota_carrying": true,
+   "seniority": "mid",
+   "states": [],
+   "region": null,
+   "work_mode": "not stated",
+   "location": "St Paul, MN",
+   "is_us": true,
+   "url": "https://home.tip411.com/tip411jobs",
+   "sector": "Public Safety",
+   "category": "Police",
+   "first_seen": "2026-11-10",
+   "captured_from": "https://home.tip411.com/tip411jobs"
   }
  ]
 }

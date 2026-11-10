@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Eptura Advances Unified Worktech Platform with New AI, Benchmarking, and Enterprise Integrations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/news/eptura-announces-lease-benchmarking-ai-integrations/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Asset management in the supply chain means more than maintenance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/importance-of-asset-management-in-supply-chain/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/how-to-fix-maintenance-contracts-and-service-agreements/"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Meeting room management across APAC\u2019s uneven workweek",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/meeting-room-management-across-apac-workweek/"
   },
   {
    "date": "2026-11-04",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Eptura Names First Chief AI Officer",
    "kind": "leadership",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/top-features-to-look-for-in-an-enterprise-visitor-management-system/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Replacement asset value (RAV) for maintenance teams: From formula to investment decisions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/what-is-replacement-asset-value/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Build a facility maintenance plan teams can execute, measure, and improve",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/how-to-build-a-facility-maintenance-plan/"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "How IT can coordinate contractor access across visitors, assets, spaces, and work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/how-it-coordinates-contractor-access/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Beyond service: Veterans shaping what comes next",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/beyond-service-veterans-shaping-what-comes-next"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Leidos wins $672 million contract to modernize airport checkpoint security",
+   "kind": "contract",
+   "kind_rule": "wins $672 million contract",
+   "url": "https://leidos.com/insights/leidos-wins-672-million-contract-modernize-airport-checkpoint-security"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/token-new-password"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Leidos bringing AI advances to Pentagon logistics system",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/leidos-bringing-ai-advances-pentagon-logistics-system"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "U.S. Cyber Command selects Leidos for full-spectrum cyber operations",
-   "kind": "contract",
-   "kind_rule": "selects",
-   "url": "https://leidos.com/insights/us-cyber-command-selects-leidos-full-spectrum-cyber-operations"
   }
  ]
 }

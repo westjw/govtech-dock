@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "What\u2019s changing with Medicaid (Medical Assistance) in Pennsylvania?",
    "kind": "press",
@@ -19,8 +19,8 @@
    "url": "https://www.propel.app/blog/summer-2024-energy-assistance/"
   },
   {
-   "date": "2026-10-24",
-   "date_source": "index-text",
+   "date": "2026-10-21",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Propel and GiveDirectly $100 cash support FAQs: How it works, who\u2019s eligible, and more",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Propel is sending $1 million to SNAP families missing benefits this Thanksgiving",
    "kind": "press",
@@ -55,8 +55,8 @@
    "url": "https://www.propel.app/blog/is-it-cheaper-to-make-your-own-dog-food/"
   },
   {
-   "date": "2026-10-20",
-   "date_source": "index-text",
+   "date": "2026-10-15",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "What\u2019s changing with Medicaid in Michigan?",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "What\u2019s changing with Medi-Cal (Medicaid) in California?",
    "kind": "press",

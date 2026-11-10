@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "South Dakota Home Care Services For People With Dementia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/south-dakota-home-care-services-for-people-with-dementia/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Dementia Education For South Dakota Caregivers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/dementia-education-south-dakota-caregivers/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Caregiver Support Groups In South Dakota",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/caregiver-support-groups-south-dakota/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-11-06",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-06",
    "headline": "What Is Palliative Care At Home?",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trualta.com/resources/blog/when-should-someone-be-offered-palliative-care-a-guide-for-families-caregivers/"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "\u201cWhat Hospice Does Not Tell You\u201d \u2013 But Should",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/what-hospice-does-not-tell-you-but-should-the-full-story-of-care-comfort/"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "\u201cWhy Palliative Care Is Bad\u201d & Other Myths To Ignore",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/why-palliative-care-is-bad-other-misconceptions-you-should-ignore/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "Sundowning Aggression: Is It Dangerous, And How Do You Respond?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/sundowning-aggression-is-dangerous/"
   }
  ]
 }

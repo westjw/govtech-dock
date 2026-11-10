@@ -1356,7 +1356,7 @@
     "year_founded": 1993,
     "sector": "Public Safety",
     "category": "Police",
-    "description": "Body cameras, TASER energy weapons, digital evidence cloud, and real-time operations - exhibited at APTA 2026, Illinois Chapter of APCO 2026, NCSL Legislative Summit 2026",
+    "description": "Body cameras, TASER energy weapons, digital evidence cloud, and real-time operations - exhibited at APTA 2026, Illinois Chapter of APCO 2026, NCSL Legislative Summit 2026, APCO 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.axon.com/careers/all"
@@ -1369,7 +1369,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "APTA 2026; IACP 2026; Illinois Chapter of APCO 2026; NCSL Legislative Summit 2026",
+    "source": "APTA 2026; IACP 2026; Illinois Chapter of APCO 2026; NCSL Legislative Summit 2026; APCO 2026",
     "researched": true,
     "competitors": [
       {
@@ -1505,7 +1505,10 @@
       "by": "agent:profile-police-2026-09-03",
       "ruled_by": "agent:review-police-2026-09-03",
       "ruled_on": "2026-09-03"
-    }
+    },
+    "also_known_as": [
+      "Axon 911 - The Future of 911"
+    ]
   },
   {
     "id": "motorola-solutions",
@@ -18981,8 +18984,8 @@
     "category": "Street Lighting & Poles",
     "description": "Streetlight control nodes and SCMS smart-city management platform for municipalities and utilities - exhibited at Smart Cities Connect 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.dimonoff.com/careers"
+      "type": "smartrecruiters",
+      "ref": "Dimonoff"
     },
     "hiring": {
       "status": "Unknown",
@@ -30002,8 +30005,8 @@
     "category": "Fleet & Asset Mgmt",
     "description": "Enterprise asset management, GIS, and budgeting software plus advisory for local governments",
     "ats": {
-      "type": "html",
-      "ref": "https://www.psdcitywide.com/careers"
+      "type": "bamboohr",
+      "ref": "psd"
     },
     "hiring": {
       "status": "Unknown",
@@ -34246,7 +34249,7 @@
     "year_founded": 1989,
     "sector": "Public Safety",
     "category": "Corrections",
-    "description": "Corrections communications, tablets, and reentry services (formerly GTL/Global Tel Link) - exhibited at ACA Congress 2026",
+    "description": "Corrections communications, tablets, and reentry services (formerly GTL/Global Tel Link) - exhibited at ACA Congress 2026, Michigan Sheriffs Association 2026",
     "ats": {
       "type": "icims",
       "ref": "careers-viapath"
@@ -34270,7 +34273,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026; ACA Congress 2026",
+    "source": "NSA 2026; ACA Congress 2026; Michigan Sheriffs Association 2026",
     "researched": true,
     "buyer": "Correctional facilities and the government agencies that run them \u2014 the site says it has partnered with more than 2,300 correctional facilities nationwide and serves \"government facilities and state agencies\" \u2014 with a second revenue stream from the families and friends of incarcerated people, who pay ViaPath's own consumer brands (ConnectNetwork, GettingOut, TouchPay Direct) for calls, messaging and deposits.",
     "sells_to_gov": "yes",
@@ -34395,7 +34398,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Via Path Technologies"
+    ]
   },
   {
     "id": "status-solutions",
@@ -47136,8 +47142,8 @@
     "category": "EMS",
     "description": "ActiveAlert dispatch alerting and response apps for fire, EMS, and LE - exhibited at APCO 2026, FDIC International 2026, FDIC International 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.active911.com/careers"
+      "type": "greenhouse",
+      "ref": "active911"
     },
     "hiring": {
       "status": "Unknown",
@@ -47777,8 +47783,8 @@
     "category": "Parking & Curb",
     "description": "Towing lifecycle software for city towing programs and impound management (ex-AutoReturn + TSD)",
     "ats": {
-      "type": "html",
-      "ref": "https://www.autura.com/careers"
+      "type": "greenhouse",
+      "ref": "autura"
     },
     "hiring": {
       "status": "Unknown",
@@ -48325,8 +48331,8 @@
     "category": "Recreation Management",
     "description": "Salesforce-native membership and recreation management CRM for YMCAs, JCCs, and rec centers - exhibited at NRPA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://tractionrec.com/careers"
+      "type": "bamboohr",
+      "ref": "tractionrec"
     },
     "hiring": {
       "status": "Unknown",
@@ -52565,7 +52571,7 @@
     "year_founded": 1986,
     "sector": "Public Safety",
     "category": "Corrections",
-    "description": "Inmate calling, messaging, video visitation, and mail scanning focused on county jails (employee-owned) - exhibited at North Carolina Sheriffs' Association 2026",
+    "description": "Inmate calling, messaging, video visitation, and mail scanning focused on county jails (employee-owned) - exhibited at North Carolina Sheriffs' Association 2026, Michigan Sheriffs Association 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.paytel.com/careers"
@@ -52578,7 +52584,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026; North Carolina Sheriffs' Association 2026",
+    "source": "NSA 2026; North Carolina Sheriffs' Association 2026; Michigan Sheriffs Association 2026",
     "researched": true,
     "competitors": [
       {
@@ -52675,7 +52681,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "also_known_as": [
+      "Paytel"
+    ]
   },
   {
     "id": "combined-public-communications",
@@ -53019,7 +53028,7 @@
     "year_founded": 2000,
     "sector": "Public Safety",
     "category": "Corrections",
-    "description": "Sex offender registry management and community notification for 3,400+ agencies in 36 states",
+    "description": "Sex offender registry management and community notification for 3,400+ agencies in 36 states - exhibited at Michigan Sheriffs Association 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.offenderwatch.com/careers"
@@ -53032,7 +53041,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026",
+    "source": "NSA 2026; Michigan Sheriffs Association 2026",
     "researched": true,
     "profile": {
       "paragraphs": [
@@ -53101,7 +53110,10 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "also_known_as": [
+      "Offender Watch"
+    ]
   },
   {
     "id": "scram-systems",
@@ -53445,7 +53457,7 @@
     "year_founded": 1975,
     "sector": "Public Safety",
     "category": "Corrections",
-    "description": "Commissary and inmate services with tech arms ICSolutions (inmate phone/investigations) and Access Corrections - exhibited at North Carolina Sheriffs' Association 2026, ACA Congress 2026",
+    "description": "Commissary and inmate services with tech arms ICSolutions (inmate phone/investigations) and Access Corrections - exhibited at North Carolina Sheriffs' Association 2026, ACA Congress 2026, Michigan Sheriffs Association 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.keefegroup.com/careers"
@@ -53458,7 +53470,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
+    "source": "NSA 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026; Michigan Sheriffs Association 2026",
     "researched": true,
     "profile": {
       "paragraphs": [
@@ -53576,7 +53588,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Keefe Group/IC Solutions"
+    ]
   },
   {
     "id": "leotech",
@@ -58900,7 +58915,7 @@
     "name": "OD Security North America",
     "website": "https://odsecurityna.com",
     "location": "College Station, TX",
-    "year_founded": null,
+    "year_founded": 2012,
     "sector": "Public Safety",
     "category": "Corrections",
     "description": "SOTER RS low-dose transmission X-ray body scanners for jails and state prisons - exhibited at ACA Congress 2026",
@@ -132397,8 +132412,8 @@
     "category": "Case Management & Social Care",
     "description": "Case management and HMIS for government-funded human services programs",
     "ats": {
-      "type": "html",
-      "ref": "https://caseworthy.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/1d1e59c7-5489-4941-a56e-e93b421869b2/CaseWorthy-LLC"
     },
     "hiring": {
       "status": "Unknown",
@@ -178908,8 +178923,8 @@
     "category": "Broadband & Connectivity",
     "description": "Broadband access platforms for municipal utilities and public network operators",
     "ats": {
-      "type": "html",
-      "ref": "https://www.dzsi.com/company/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/71dd2780-25a5-421a-9c99-959c6be49e8c/Zhone-Technologies-Inc"
     },
     "hiring": {
       "status": "Unknown",
@@ -189680,7 +189695,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Beacon Crisis Dispatch"
+    ]
   },
   {
     "id": "asldeafined",
@@ -195569,7 +195587,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "also_known_as": [
+      "Playgarden Online"
+    ]
   },
   {
     "id": "simplyanalytics",
@@ -202817,7 +202838,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "DAC Bond"
+    ]
   },
   {
     "id": "fundview",
@@ -206183,7 +206207,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "also_known_as": [
+      "Solus UK Ltd."
+    ]
   },
   {
     "id": "transparent-language",
@@ -212654,7 +212681,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Can/Am Teller Cashiering"
+    ]
   },
   {
     "id": "divdat-powered-by-meridian",
@@ -213700,8 +213730,8 @@
     "category": "Operations & SIS",
     "description": "Online career and technical education curriculum and industry certification testing for school districts, workforce programs and reentry education - exhibited at APPA Probation 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/646acf7b-3795-46d1-8ec6-8ec7238debd9/CEV-MULTIMEDIA-LTD"
     },
     "hiring": {
       "status": "Unknown",
@@ -214348,7 +214378,10 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "also_known_as": [
+      "Sand Technologies"
+    ]
   },
   {
     "id": "teamsolve",
@@ -219466,7 +219499,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Tova"
+    ]
   },
   {
     "id": "metrix-learning",
@@ -224814,7 +224850,7 @@
     "year_founded": null,
     "sector": "General Gov",
     "category": "Citizen Services",
-    "description": "Sells Canva Enterprise, a visual design and communication platform with brand controls, SSO and approval workflows, to government communications, public affairs and other agency teams - exhibited at 3CMA 2026",
+    "description": "Sells Canva Enterprise, a visual design and communication platform with brand controls, SSO and approval workflows, to government communications, public affairs and other agency teams - exhibited at 3CMA 2026, EDUCAUSE 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.lifeatcanva.com/en/"
@@ -224827,11 +224863,14 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: 3CMA 2026",
+    "source": "conference sweep: 3CMA 2026; EDUCAUSE 2026",
     "researched": true,
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "also_known_as": [
+      "Canva Pty Ltd"
+    ]
   },
   {
     "id": "clearspeed",
@@ -225617,7 +225656,7 @@
     "year_founded": null,
     "sector": "General Gov",
     "category": "Libraries",
-    "description": "Data Axle's Reference Solutions is a business and consumer reference database sold to public and academic libraries for patron research, job search and staff training - exhibited at PLA 2026",
+    "description": "Data Axle's Reference Solutions is a business and consumer reference database sold to public and academic libraries for patron research, job search and staff training - exhibited at PLA 2026, IEDC 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -225630,7 +225669,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: PLA 2026",
+    "source": "conference sweep: PLA 2026; IEDC 2026",
     "researched": true,
     "competitors": [
       {
@@ -225639,7 +225678,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Data-Axle"
+    ]
   },
   {
     "id": "datadog",
@@ -226400,7 +226442,7 @@
     "year_founded": null,
     "sector": "Health & Human Services",
     "category": "Benefits & Medicaid Systems",
-    "description": "Equifax sells employment and income verification data through The Work Number to government agencies that decide eligibility for SNAP, Medicaid, TANF and public housing - exhibited at Healthcare IT Connect 2026, MESC 2026, APHSA 2026",
+    "description": "Equifax sells employment and income verification data through The Work Number to government agencies that decide eligibility for SNAP, Medicaid, TANF and public housing - exhibited at Healthcare IT Connect 2026, MESC 2026, APHSA 2026, Michigan Sheriffs Association 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -226413,10 +226455,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: Healthcare IT Connect 2026; MESC 2026; APHSA 2026",
+    "source": "conference sweep: Healthcare IT Connect 2026; MESC 2026; APHSA 2026; Michigan Sheriffs Association 2026",
     "researched": true,
     "also_known_as": [
-      "Equifax/Carahsoft"
+      "Equifax/Carahsoft",
+      "Equifax Workforce Solutions"
     ],
     "also": [
       {
@@ -229035,7 +229078,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Secto"
+    ]
   },
   {
     "id": "sensource-inc",
@@ -238283,5 +238329,320 @@
     "also_known_as": [
       "Honeywell - Smart Energy"
     ]
+  },
+  {
+    "id": "blumira",
+    "name": "Blumira",
+    "website": "https://www.blumira.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Cloud SIEM and XDR security platform with CJIS and NIST 800-53 compliance reporting, sold to state and local government IT teams and other organizations - exhibited at GMIS International 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: GMIS International 2026",
+    "researched": true
+  },
+  {
+    "id": "boomi",
+    "name": "Boomi",
+    "website": "https://boomi.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Boomi Enterprise Platform for integration, API management and automation, sold to government agencies, cities, universities and businesses - exhibited at EDUCAUSE 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: EDUCAUSE 2026",
+    "researched": true
+  },
+  {
+    "id": "canonical",
+    "name": "Canonical",
+    "website": "https://canonical.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Higher Education",
+    "category": "IT & Administration",
+    "description": "Ubuntu Linux, Ubuntu Pro security subscriptions, Landscape fleet management and cloud software with support, sold to schools, universities, government and enterprises - exhibited at EDUCAUSE 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: EDUCAUSE 2026",
+    "researched": true
+  },
+  {
+    "id": "checkr",
+    "name": "Checkr",
+    "website": "https://checkr.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Health & Human Services",
+    "category": "Benefits & Medicaid Systems",
+    "description": "Background check and income, employment and asset verification platform, sold to employers, lenders and state agencies verifying Medicaid and SNAP eligibility - exhibited at APHSA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: APHSA 2026",
+    "researched": true
+  },
+  {
+    "id": "dynatrace",
+    "name": "Dynatrace",
+    "website": "https://www.dynatrace.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Observability, application security and AIOps software for monitoring state and local agency digital services, cloud and AI workloads - exhibited at EDUCAUSE 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: EDUCAUSE 2026",
+    "researched": true
+  },
+  {
+    "id": "eightfold-ai",
+    "name": "Eightfold AI",
+    "website": "https://eightfold.ai/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Health & Human Services",
+    "category": "Workforce & Labor",
+    "description": "AI talent-matching software for public employers and state workforce agencies, including a job marketplace linking job seekers to employers - exhibited at NASWA 2025",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NASWA 2025",
+    "researched": true
+  },
+  {
+    "id": "jps-interoperability-solutions-inc",
+    "name": "JPS Interoperability Solutions, Inc.",
+    "website": "https://jps.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Makes radio-over-IP gateways, dispatch consoles and interoperability devices that link land mobile radio and cellular push-to-talk for public safety agencies - exhibited at APCO 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: APCO 2026",
+    "researched": true
+  },
+  {
+    "id": "halcyon",
+    "name": "Halcyon",
+    "website": "https://www.halcyon.ai/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Sells anti-ransomware endpoint software and a ransomware response service to state and local governments, school districts and other organizations - exhibited at EDUCAUSE 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: EDUCAUSE 2026",
+    "researched": true
+  },
+  {
+    "id": "knowbe4",
+    "name": "KnowBe4",
+    "website": "https://www.knowbe4.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Security awareness training, phishing simulation and email security software for organizations including K-12 districts and colleges - exhibited at EDUCAUSE 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: EDUCAUSE 2026",
+    "researched": true
+  },
+  {
+    "id": "pathsolutions",
+    "name": "PathSolutions",
+    "website": "https://www.pathsolutions.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "TotalView network monitoring and troubleshooting software for IT teams, with customers that include a city government and a community college - exhibited at EDUCAUSE 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: EDUCAUSE 2026",
+    "researched": true
+  },
+  {
+    "id": "securityscorecard",
+    "name": "SecurityScorecard",
+    "website": "https://securityscorecard.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Security ratings and third-party cyber risk monitoring software for state and local agencies, schools, federal bodies and private companies - exhibited at NASCIO 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NASCIO 2026",
+    "researched": true
+  },
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "website": "https://www.zoom.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Sells video meetings, phone, chat and contact center software, with a Zoom for Government edition for federal, state and local agencies - exhibited at EDUCAUSE 2026, CoSN 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: EDUCAUSE 2026; CoSN 2026",
+    "researched": true,
+    "also_known_as": [
+      "Zoom Communications"
+    ]
+  },
+  {
+    "id": "zscaler",
+    "name": "Zscaler",
+    "website": "https://www.zscaler.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Sells a zero trust cloud security platform to businesses and to state and local government agencies - exhibited at NASCIO 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NASCIO 2026",
+    "researched": true
   }
 ]

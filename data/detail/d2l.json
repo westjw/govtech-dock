@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Beyond features: A modern framework for LMS selection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/beyond-features-a-modern-framework-for-lms-selection/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Humber Polytechnic and D2L partner to reimagine teaching and learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/newsroom/humber-polytechnic-and-d2l-partner-to-reimagine-teaching-and-learning/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "New Hire Orientation Guide for HR Leaders and Managers",
+   "kind": "leadership",
+   "kind_rule": "Hire",
+   "url": "https://www.d2l.com/blog/new-hire-orientation/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "How to Create an Employee Development Plan (With Examples)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/employee-development-plan/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -19,8 +55,8 @@
    "url": "https://www.d2l.com/blog/the-strategic-role-of-associations-in-shaping-the-future-workforce/"
   },
   {
-   "date": "2026-11-02",
-   "date_source": "index-text",
+   "date": "2026-11-03",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "MIT World Peace University selects D2L to help transform campus learning",
    "kind": "contract",
@@ -29,7 +65,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "D2L Brightspace Named a 2026 Top Learning Platform by Training Industry",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "product",
    "kind_rule": "Launch",
    "url": "https://www.d2l.com/newsroom/d2l-launch-week-showcases-latest-learning-innovations/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "From Policy to Platform: How HOGENT Is Turning Responsible AI Principles into Practice",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/from-policy-to-platform-how-hogent-is-turning-responsible-ai-principles-into-practice/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Launch Week Recap: Building Better Learning With Repeatable Workflows, Purposeful AI and Real Expertise",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://www.d2l.com/blog/launch-week-recap-building-better-learning-with-repeatable-workflows-purposeful-ai-and-real-expertise/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "CBE Moves Faster When We Row Together",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/cbe-moves-faster-when-we-row-together/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "A Complete Guide to Generative AI Training for Employees",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/generative-ai-training/"
   }
  ],
  "profile": {
