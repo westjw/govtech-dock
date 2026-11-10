@@ -34476,11 +34476,28 @@ def check_the_front_page_counts_what_its_links_open() -> int:
         if sec and ('id="fp-new-h">First seen ' in sec.group(0)) != all(o in fresh_ids for o in opened):
             errors += fail("the badges are headed First seen this run over a badge that is not")
         firms = [by_id[c]["company_id"] for c in cards]
-        spread = min(len(firms), len({by_id[c]["company_id"] for c in cards}
-                                     | {groups[o][0]["company_id"] for o in fresh_ids}))
-        if len(set(firms[:spread])) != spread:
-            errors += fail(f"the role cards repeat a company before every company had "
-                           f"one: {firms}")
+        # THE NEW ROLES COME FIRST, ALL OF THEM, one card per company before a
+        # second; then the top-up, one card per company not yet shown before
+        # any repeat (index.html "THE CARDS"). Checked as two blocks. As one
+        # block it asked the impossible when the new roles came from fewer
+        # companies than there were new roles: on 2026-11-09 three new roles,
+        # two of them Fotokite's, must fill the first three cards, and the
+        # first four were also required to be four companies. The nightly
+        # failed on that for two days with the page doing what it says.
+        fresh_cos = {groups[o][0]["company_id"] for o in fresh_ids}
+        head = firms[:lead_n]
+        k = min(len(head), len(fresh_cos))
+        if len(set(head[:k])) != k:
+            errors += fail(f"the new roles' cards repeat a company before every company "
+                           f"with a new role had one: {firms}")
+        seen = set(head)
+        tail = firms[lead_n:]
+        for i, f in enumerate(tail):
+            if f in seen and any(t not in seen for t in tail[i + 1:]):
+                errors += fail(f"the top-up cards repeat a company before every company "
+                               f"had one: {firms}")
+                break
+            seen.add(f)
         fresh_rows = collections.defaultdict(list)
         for p in q:
             if p.get("first_seen") == gen:
