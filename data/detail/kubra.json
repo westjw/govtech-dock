@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://kubra.com/resources/navigating-the-e-bill-currents-with-charlotte-water"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "KUBRA sells billing, payments and customer communications software, presented on the homepage as one platform called KUBRA HQ. The homepage also points to a SOC 3 report covering information security for client and customer data.",
+   "The homepage names Greater Cincinnati Water Works in a client story about outsourcing the rendering of bills and letters that had been done in-house. The partners page describes formal relationships with over 50 market leaders and technology players that deliver customer engagement management solutions to clients. The homepage also states that KUBRA is now part of REPAY.",
+   "The locations page lists an office at 40 E Rio Salado Pkwy Suite 535 in Tempe, Arizona, alongside addresses in Coppell, Piscataway and Gardena."
+  ],
+  "quote": {
+   "text": "It\u2019s official. KUBRA is now part of REPAY.",
+   "url": "https://kubra.com"
+  },
+  "sources": [
+   {
+    "url": "https://kubra.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://kubra.com/about-us/who-we-are",
+    "fetched_on": null
+   },
+   {
+    "url": "https://kubra.com/about-us/locations",
+    "fetched_on": null
+   },
+   {
+    "url": "https://kubra.com/about-us/partners-and-alliances",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://kubra.com"
+   ],
+   [
+    "https://kubra.com",
+    "https://kubra.com/about-us/partners-and-alliances"
+   ],
+   [
+    "https://kubra.com/about-us/locations"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

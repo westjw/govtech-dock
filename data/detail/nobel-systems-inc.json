@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.nobel-systems.com/post/geoviewer-new-features"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Nobel Systems sells GIS-based asset management and billing software to utilities. The flagship product is GeoViewer, described on the company site as a field-friendly Operations Management Solution with back-office capabilities. GeoViewer syncs data across mobile and desktop apps and runs as a cloud-based platform.",
+   "The homepage frames water utility management as the core case, pairing real-time pressure monitoring with business analytics. Water quality monitoring comes from smart IoT water pressure and quality sensors. Billing, service requests and work orders sit in an app that lets customers interact directly with utility providers.",
+   "The products page presents a suite of mapping and asset management software offered to utility companies worldwide. Deployment options listed there cover cloud platforms, mobile devices and desktops. The homepage names local government utilities and private entities as the intended users."
+  ],
+  "quote": {
+   "text": "It is an essential tool for local government utilities and private entities seeking operational excellence.",
+   "url": "https://www.nobel-systems.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.nobel-systems.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nobel-systems.com/products",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.nobel-systems.com"
+   ],
+   [
+    "https://www.nobel-systems.com"
+   ],
+   [
+    "https://www.nobel-systems.com/products",
+    "https://www.nobel-systems.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

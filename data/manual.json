@@ -170,6 +170,13 @@
    "found": true,
    "note": null,
    "source": "https://www.hirenimble.com/careers"
+  },
+  "orlo": {
+   "checked_on": "2026-11-09",
+   "by": "owner",
+   "found": true,
+   "note": null,
+   "source": "https://orlo.tech/careers/"
   }
  },
  "postings": [
@@ -5230,6 +5237,25 @@
    "category": "Operations & SIS",
    "first_seen": "2026-09-26",
    "captured_from": "https://www.hirenimble.com/careers"
+  },
+  {
+   "id": "orlo::Digital Marketing Undergraduate Work Experience",
+   "company": "Orlo",
+   "company_id": "orlo",
+   "title": "Digital Marketing Undergraduate Work Experience",
+   "family": "gtm",
+   "quota_carrying": false,
+   "seniority": "mid",
+   "states": [],
+   "region": null,
+   "work_mode": "not stated",
+   "location": "Marketing Team",
+   "is_us": null,
+   "url": "https://orlo.tech/careers/",
+   "sector": "General Gov",
+   "category": "Citizen Services",
+   "first_seen": "2026-11-09",
+   "captured_from": "https://orlo.tech/careers/"
   }
  ]
 }

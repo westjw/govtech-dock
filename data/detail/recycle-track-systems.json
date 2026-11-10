@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.rts.com/blog/plastic-pollution-solutions/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Recycle Track Systems sells waste and recycling service delivered through a hauler network at customer locations. The company builds waste collection, recycling, and sustainability plans for businesses. Alongside collection, staff handle procurement, data validation, invoice consolidation, and ongoing performance support after onboarding.",
+   "Pello sensors measure inside waste and recycling bins, detecting fullness and contamination as it happens. The Pello dashboard gives a snapshot of key operational metrics. Pello imaging AI and fullness data identify pickups with over 95% accuracy.",
+   "Cycle, a reverse vending machine and rewards platform, incentivizes consumers with merchandise, tickets, and specialty prizes. Cycle works with universities, stadiums, and event locales to incentivize recycling. The pages name the Javits Center and the Baltimore Ravens among the organizations RTS works with."
+  ],
+  "quote": {
+   "text": "RTS exists to redefine waste management by building the most advanced, AI-powered integrated systems in the industry and setting a new standard for how waste is measured, managed, and reduced.",
+   "url": "https://www.rts.com/products"
+  },
+  "sources": [
+   {
+    "url": "https://www.rts.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rts.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rts.com/product/pello/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rts.com/product/cycle-reverse-vending-machine/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.rts.com",
+    "https://www.rts.com/products"
+   ],
+   [
+    "https://www.rts.com/product/pello/"
+   ],
+   [
+    "https://www.rts.com/products",
+    "https://www.rts.com/product/cycle-reverse-vending-machine/",
+    "https://www.rts.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

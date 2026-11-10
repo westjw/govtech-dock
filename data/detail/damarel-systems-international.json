@@ -90,5 +90,37 @@
    "kind_rule": null,
    "url": "https://www.damarel.com/news/l-dcs-for-globalia-groundforce/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Damarel Systems International supplies software for airline passenger processing. A second suite is built specifically for ground handlers and covers the whole ground handling operation.",
+   "Passengers can be checked in through shared airport terminals, kiosks, the web or mobile. One product is an airline departure control system pitched as fast and affordable. Another keeps passengers moving when the primary departure control system fails. Boarding is automated by a product called Embark.",
+   "Security is a further product line on the site. Business continuity is listed as its own solution category. The company says its solutions are in use all over the world and offers a map of where."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.damarel.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.damarel.com/products/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.damarel.com/products/"
+   ],
+   [
+    "https://www.damarel.com"
+   ],
+   [
+    "https://www.damarel.com/products/",
+    "https://www.damarel.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

@@ -106,5 +106,205 @@
   "was_why": "its secure connection fails",
   "why": "stresscretegroup.com redirects here over http; titled 'StressCrete Group', listing King Luminaire and StressCrete.",
   "by": "agent:launch-fix"
+ },
+ "accufund": {
+  "name": "AccuFund",
+  "url": "https://accufund.com/find-a-reseller/",
+  "found_on": "2026-11-10",
+  "was": "https://accufund.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "i3 Verticals has no page that names AccuFund. The i3 ERP page that accufund.com links to never mentions it, so there is no product page under the new owner. AccuFund's own site, now run by i3, still has a reseller page that sells AccuFund accounting with government modules (utility billing, court fines, property tax). It is a deep page because the homepage is only the 'now i3 Verticals' notice. Now owned by i3 Verticals.",
+  "checked": "The page loaded for our crawler. It is AccuFund's own page (footer: i3 Verticals), and the homepage menu still links to it, so it is current rather than a leftover. It says AccuFund sells its accounting suite through certified U.S. resellers, and it names the government modules: utility billing, court fines, property tax collection, and fees, taxes and licenses. That matches the listing (fund acco",
+  "by": "agent:writeup-review"
+ },
+ "ambient-ai": {
+  "name": "Ambient.ai",
+  "url": "https://www.ambient.ai/",
+  "found_on": "2026-11-10",
+  "was": "https://www.ambientai.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "ambient.ai is the company's own site. It sells AI physical security, including gun detection and a page for schools, which fits the Public Safety listing. The ambientai.com address on file is an unrelated AI news site.",
+  "checked": "The page loads for our crawler. It is Ambient.ai's own site (title 'Ambient.ai', footer '(c) 2026 Ambient AI', founded 2017). It sells AI physical security: threat and gun detection, access intelligence and forensics, with an Education solution page. That fits Public Safety / Suppliers & Services. It is not parked and is not a same-name business.",
+  "by": "agent:writeup-review"
+ },
+ "bruker-detection": {
+  "name": "Bruker Detection",
+  "url": "https://www.bruker.com/en/products-and-solutions/cbrne-detectors.html",
+  "found_on": "2026-11-10",
+  "was": "https://bruker.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "This is the main page for Bruker's detection unit: IMS trace detectors, mobile GC/MS, and radiological and bio detection. Its product pages include the DE-tector flex explosives trace detector, which its own page says meets the ECAC standard and is used for airport screening.",
+  "checked": "The page loads. It is Bruker's own hub for its detection unit: IMS, mobile GC/MS, passive FT-IR, radiological and bio detection, with nothing about life-science instruments. Its IMS subpage lists the DE-tector flex and RoadRunner explosives and narcotics trace detectors. The DE-tector flex page says it meets the ECAC standard, is TSA approved for air cargo, and is used to screen people at airports",
+  "by": "agent:writeup-review"
+ },
+ "catapult-ems": {
+  "name": "Catapult EMS",
+  "url": "https://www.catapultemergencymanagement.com/",
+  "found_on": "2026-11-10",
+  "was": "https://catapultems.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "This is CatapultEMS's marketing site: K-12 emergency alerts, panic button, reunification and threat reporting. The Catapult K12 homepage itself is only a router page, and its 'EMS or WeTip Sales' button links here. The address on file is the app's sign-in screen.",
+  "checked": "The page loads. It is the CatapultEMS marketing site: a K-12 emergency management system with alerts, panic button, anonymous threat reporting (WeTip integration), reunification and drills. It has district case studies (Twin Rivers USD, Springdale, Galena Park ISD). Its links go to catapultk12.com support and terms and to the catapultems.com app login, so it is the same company as the listing. It ",
+  "by": "agent:writeup-review"
+ },
+ "code-four": {
+  "name": "Code Four",
+  "url": "https://www.codefour.us/",
+  "found_on": "2026-11-10",
+  "was": "https://www.codefour.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "codefour.us is Code Four's own site. It sells AI police report writing and investigation software and lists police departments as users, which matches the listing's description. The location (Huntington Beach) and 2007 founding year on file probably came from the wrong codefour.com site and should be checked.",
+  "checked": "codefour.us loaded and is Code Four's own site. It sells AI police report writing from body-cam footage plus investigation software (Report, Insights, Redact, Flash), and says it is live in more than 200 U.S. police departments. That is word for word what the listing describes ('AI police report writing and investigation software - exhibited at IACP 2026'). The Huntington Beach location on file ma",
+  "by": "agent:writeup-review"
+ },
+ "coreforce": {
+  "name": "Coreforce",
+  "url": "https://www.coreforcetech.com/",
+  "found_on": "2026-11-10",
+  "was": "https://www.coreforce.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "This is Coreforce's own site. It sells CAD, RMS, JMS, body-worn cameras, ALPR and real-time intelligence to law enforcement, corrections and emergency response, so it matches the public safety listing. The coreforce.com site on file belongs to an unrelated apparel back-office company.",
+  "checked": "The page loads and is Coreforce's own public safety site (title 'Coreforce | Public Safety Technology'). It sells CAD, RMS, JMS, DEMS, body-worn cameras, ALPR, in-vehicle video and real-time intelligence to law enforcement, corrections and emergency response, with police department quotes. Same name, and it fits Public Safety / Suppliers & Services. The apparel back-office company at coreforce.com",
+  "by": "agent:writeup-review"
+ },
+ "critical-response-group-inc": {
+  "name": "Critical Response Group. Inc.",
+  "url": "https://www.crgplans.com/",
+  "found_on": "2026-11-10",
+  "was": "https://critical-response.de/eng",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "crgplans.com is the US Critical Response Group's own site. It sells Collaborative Response Graphics critical incident maps to K-12, law enforcement, fire and PSAPs. The critical-response.de address on file belongs to a German self-defense trainer.",
+  "checked": "The page loads. The footer reads '(c) 2026 Critical Response Group, Inc.', with a Hamilton, NJ address, which matches the listing name. It sells Collaborative Response Graphics critical incident maps and the CRG OnScene app to K-12, state and local government, law enforcement, fire, OEM and PSAPs. That fits Public Safety / Suppliers & Services.",
+  "by": "agent:writeup-review"
+ },
+ "dossier-systems": {
+  "name": "Dossier Systems",
+  "url": "https://www.amcsgroup.com/solutions/dossier-systems/",
+  "found_on": "2026-11-10",
+  "was": "https://www.dossiersystemsinc.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "This is AMCS's own Dossier Systems page. It names Dossier, compares it with AMCS Fleet Maintenance, and says the hosted Dossier On-Demand service is still offered. The page also says Dossier has become AMCS Fleet Maintenance, so you may prefer to list it under AMCS instead. Now owned by AMCS.",
+  "checked": "The page loaded and is AMCS's own page for the Dossier product. It names Dossier Systems throughout, compares Dossier with AMCS Fleet Maintenance, says customers keep 'the latest release of Dossier 6' with the same interface, and says the hosted Dossier On-Demand service is still offered. That fits the listing (fleet maintenance software for transit and government fleets, Fleet & Operations). The ",
+  "by": "agent:writeup-review"
+ },
+ "dragonforce": {
+  "name": "DragonForce",
+  "url": "https://drakontas.com/",
+  "found_on": "2026-11-10",
+  "was": "https://dragonforce.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "Drakontas makes DragonForce, and this is its own site. The page sells DragonForce as mobile team collaboration and command-and-control software for SWAT, emergency management and large events. The footer reads Drakontas LLC, so the product still belongs to its maker.",
+  "checked": "The page loads. It is the maker's own homepage, selling DragonForce mobile team collaboration and command-and-control software (tracking, GIS mapping, tactical whiteboarding, push-to-talk, video) for SWAT, emergency management and large-scale operations. The footer reads Drakontas LLC, Glenside PA. It is the product named in the listing under its own maker, it fits Public Safety, and it is clearly",
+  "by": "agent:writeup-review"
+ },
+ "gatekeeper-security": {
+  "name": "Gatekeeper Security",
+  "url": "https://www.rapiscan-ase.com/optical-inspection-products",
+  "found_on": "2026-11-10",
+  "was": "https://gatekeepersecurity.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "Gatekeeper is now part of Rapiscan AS&E, and this Rapiscan page carries the whole Gatekeeper line by name. That includes the under-vehicle scanners (IVUS) and the vehicle-occupant systems (IVOD, IVOC), which is exactly what the listing describes. Now owned by Rapiscan Systems | AS&E (OSI Systems).",
+  "checked": "The page loaded and is Rapiscan AS&E's page for the whole Gatekeeper line, named throughout: IVUS and ITUS undercarriage scanners, IVOD and IVOC vehicle-occupant face recognition, ILPA and IVCA plate and vehicle analytics, the container code reader, and the GEMS software. It says the line secures borders, transport operations and government facilities. That matches the listing (under-vehicle and o",
+  "by": "agent:writeup-review"
+ },
+ "gcr": {
+  "name": "GCR (Woolpert)",
+  "url": "https://www.tadera.com/",
+  "found_on": "2026-11-10",
+  "was": "https://www.gcrincorporated.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "TADERA is GCR, Inc.'s trade name and sells its AirportIQ airport software. The site's About page says 'TADERA \u2014 a DBA of GCR, Inc.' and 'Acquired in 2023 by: Modaxo', so the '(Woolpert)' in the listing name looks wrong. Its products are airport finance, credentialing and compliance software, so the Terminal & Passenger Experience category may also need a look. Now owned by Modaxo.",
+  "checked": "tadera.com loads. Its About page says 'TADERA - a DBA of GCR, Inc.', founded in 1979 in New Orleans as GCR, Inc., and 'Acquired in 2023 by: Modaxo'. It sells airport software (ABRM revenue and lease, capital program and Secure Credentials badging) to airports. So it is GCR's airport business and fits the Airports & Aviation sector. A web search found nothing linking Woolpert to GCR (Woolpert bough",
+  "by": "agent:writeup-review"
+ },
+ "grab": {
+  "name": "Grab (Servy)",
+  "url": "https://servy.us/grab-airports/",
+  "found_on": "2026-11-10",
+  "was": "https://www.grab.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "Servy's own site sells its airport e-commerce marketplace, and its menu lists 'grab for airports'. 'Grab' is Servy's airport ordering product, not the Southeast Asian superapp on file. Servy was bought by GrayMatter in late 2024, and the page mentions GrayMatter at ACI-NA 2026, but the site still runs under the Servy name.",
+  "checked": "The page loads. It is Servy's own site, and Servy is the owner named in the listing ('Grab (Servy)'). Its menu lists 'grab for airports', and it describes airport e-commerce at 80+ airports, so it fits Airports & Aviation / Terminal & Passenger Experience and is not the Southeast Asian superapp. But the homepage also covers restaurants, hotels, venues and enterprise food service. Servy's own Grab ",
+  "by": "agent:writeup-review"
+ },
+ "ipvideo": {
+  "name": "IPVideo (HALO Smart Sensor)",
+  "url": "https://www.avigilon.com/halo-detect",
+  "found_on": "2026-11-10",
+  "was": "https://ipvideocorp.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "HALO's own domain, halodetect.com, now redirects to this Halo Smart Sensor product page on Avigilon, a Motorola Solutions brand. The page sells HALO vape and safety sensors to schools. Pelco, where ipvideocorp.com now lands, is also a Motorola Solutions brand. Now owned by Motorola Solutions (Avigilon).",
+  "checked": "The page loads, and halodetect.com itself now lands on this exact url, which confirms HALO's own domain moved here. It is the Halo Smart Sensor product page (vape detector, air quality and threat alerts for camera-free privacy areas), on Avigilon, a Motorola Solutions brand. It lists school customers and a School Security Guide. The page never names IPVideo, but it is the HALO product of that name",
+  "by": "agent:writeup-review"
+ },
+ "leidos-security-detection-automation": {
+  "name": "Leidos Security Detection & Automation",
+  "url": "https://www.analogic.com/aviation-critical-infrastructure/",
+  "found_on": "2026-11-10",
+  "was": "https://leidos.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "Leidos's own security-detection URL (leidos.com/markets/aviation/security-detection) now redirects to this Analogic page. The page carries the former Leidos screening lines by name: ClearScan, ProPassage, Pro:Vision and the B220 trace detectors. Analogic's 'New to Analogic' page says it completed its combination with the security businesses formerly owned by Leidos, so the listing may need renaming or tying to Analogic. Now owned by Analogic.",
+  "checked": "Confirmed: Leidos's own security-detection URL (leidos.com/markets/aviation/security-detection) redirects to this page, and the page loads. It presents the security lines that were Leidos's, by name, as 'newly added solutions': ProSight, Pro:Vision 3 and CI, ProPassage, ClearScan, the PX X-ray series, and the QS:B220, B220-HT and H150-E trace detectors. Analogic's 'New to Analogic' page says it ha",
+  "by": "agent:writeup-review"
+ },
+ "matterhorn": {
+  "name": "Matterhorn (Court Innovations)",
+  "url": "https://www.courtinnovations.com/",
+  "found_on": "2026-11-10",
+  "was": "https://getmatterhorn.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "This is the Court Innovations site, still live, where people find their court and resolve cases online through Matterhorn. Its footer reads Catalis, so Catalis now owns it. getmatterhorn.com lands on a Catalis page whose body never names Matterhorn, and Catalis's own Online Dispute Resolution page doesn't name it either, so this is the only page found that still names the product. Now owned by Catalis.",
+  "checked": "The page loads. It is the Court Innovations site, titled 'Court Innovations'. It carries 'Get Matterhorn for Your Location' and a list of participating courts (district, municipal, traffic and justice of the peace courts in several states) where people find their case and resolve it online. That is the Matterhorn product, it fits Courts & Justice / Courts & Case Management, and the footer reads Ca",
+  "by": "agent:writeup-review"
+ },
+ "msa-safety": {
+  "name": "MSA Safety",
+  "url": "https://us.msasafety.com/",
+  "found_on": "2026-11-10",
+  "was": "https://www.msasafety.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "This is MSA's US English site, the one past the country chooser on file. It sells firefighter breathing apparatus, fire helmets, protective clothing and Connected Firefighter products, which fits the Fire category.",
+  "checked": "The page loads as 'MSA Safety | United States' (North America, English), past the country chooser. It sells SCBA (G1 SCBA XR, NFPA 1970 2025), fire helmets, firefighter protective clothing, thermal imaging and Connected Firefighter. It has Fire Service market and Fire Grant Assistance pages, which fit Public Safety / Fire.",
+  "by": "agent:writeup-review"
+ },
+ "ncourt": {
+  "name": "nCourt",
+  "url": "https://catalisgov.com/payments/",
+  "found_on": "2026-11-10",
+  "was": "https://ncourt.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "ncourt.com now opens Catalis. This is Catalis's government payments page, and it names nCourt as its court payments product in a Jefferson County, TN case study. Catalis's support page also still lists nCourt. Now owned by Catalis.",
+  "checked": "The page loads. It is Catalis's government payments page (court, utility and tax payments), and it names nCourt directly: 'Catalis Payments Solutions (nCourt)' in the Jefferson County, TN court case study. ncourt.com itself now lands on catalisgov.com/ncourt-lp/, a bare 'nCourt is now Catalis' notice with client login and e-file locator buttons, which confirms the takeover. The court-payments subp",
+  "by": "agent:writeup-review"
+ },
+ "parkhub": {
+  "name": "ParkHub",
+  "url": "https://www.justpark.com/us",
+  "found_on": "2026-11-10",
+  "was": "https://parkhub.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "After the 2024 merger, ParkHub rebranded as JustPark. The footer of this US business page says ParkHub, Inc. now does business as JustPark. The page sells parking management for events, municipalities and airports, unlike the UK consumer site that parkhub.com now opens. Now owned by JustPark.",
+  "checked": "The page loads. The footer states 'ParkHub, Inc., doing business as JustPark', which ties it directly to the listed company. This US business page sells event parking passes, LPR, permits and on-demand parking for municipalities, universities, venues and airports. That fits Airports & Aviation / Parking & Ground Transport, unlike the UK consumer site that parkhub.com now opens.",
+  "by": "agent:writeup-review"
+ },
+ "straffic-america": {
+  "name": "STraffic America",
+  "url": "https://go-straffic.com/main/main.html",
+  "found_on": "2026-11-10",
+  "was": "https://straffic.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "go-straffic.com is the STraffic group's English site, and Mass Transit's directory entry for STraffic America LLC links to it as the company's website. It sells automatic fare collection, its location page lists the US subsidiary in Vienna, VA, and its news covers the BART fare gate work. I found no separate STraffic America site: strafficamerica.com and similar names did not answer.",
+  "checked": "The page loaded. It is the STraffic group's English site (the bare go-straffic.com redirects to this exact URL). Its location page lists the US subsidiary at the Vienna, VA address on file. It sells automatic fare collection, tolling and ITS, and its news covers the US work: BART fare gates at 50 stations, an LA Metro contract, a WMATA project, and the APTA EXPO 2026 booth. That matches the listin",
+  "by": "agent:writeup-review"
+ },
+ "syrinix": {
+  "name": "Syrinix",
+  "url": "https://www.badgermeter.com/products/pressure-and-leak-monitoring/pipeminder/",
+  "found_on": "2026-11-10",
+  "was": "https://www.syrinix.com",
+  "was_why": "the pages saved from it are another business's or a new owner's (write-up review 2026-11-09)",
+  "why": "Badger Meter bought Syrinix. This is Badger Meter's page for its Syrinix product line (PIPEMINDER pressure and leak monitoring), and it names Syrinix as the former company. Now owned by Badger Meter.",
+  "checked": "The page loaded and is Badger Meter's PIPEMINDER page. Near the end it says 'With the acquisition of PIPEMINDER (formerly known as Syrinix)', and it describes the high-frequency pressure monitoring and leak detection products for water distribution and collection networks (the PIPEMINDER-ONE loggers and the RADAR platform). That fits Public Works / Water and names Syrinix, so it is the product of ",
+  "by": "agent:writeup-review"
  }
 }

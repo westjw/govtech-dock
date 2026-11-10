@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/defensible-video-redaction"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Focal Forensics is a redaction provider working for law enforcement, government, schools and private organizations. The work is sold as a service, with no obligation quotations offered up front.",
+   "The pitch is that a department should not have to make video redaction a full time job of its own. Redaction covers video, audio, image and document material. Separate audio services include voice enhancement, audio authentication, transcription and digital media recovery. When evidence is examined for authenticity, detailed work notes are prepared for the client.",
+   "The company says it has provided law enforcement support to local, national and federal agencies on investigations both big and small. Its staff page describes a forensic video technician who holds a master's degree from the National Center for Media Forensics. The same person is described as having testified in court at both the federal and state level."
+  ],
+  "quote": {
+   "text": "Video redaction does not have to be a full time job.",
+   "url": "https://focalforensics.com"
+  },
+  "sources": [
+   {
+    "url": "https://focalforensics.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://focalforensics.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://focalforensics.com"
+   ],
+   [
+    "https://focalforensics.com"
+   ],
+   [
+    "https://focalforensics.com",
+    "https://focalforensics.com/about"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

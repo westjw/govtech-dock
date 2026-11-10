@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://netchex.com/blog/netchex-vs-lyons-hr/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Netchex sells payroll and HR software for American businesses where the work happens on the floor, in the field, or behind a counter as well as at a desk. The payroll product manages shift differentials, tax compliance, overtime, and tax filing. The solutions page describes payroll and tax software that pays employees and files taxes automatically.",
+   "Time and attendance collects hours worked and creates schedules in a system that integrates directly with payroll. Punching is done on mobile with geofencing, punch rules, missed punch requests, and approvals. Benefits administration covers healthcare, worker's comp, Earned Wage Access, and COBRA.",
+   "Training is delivered as expert-led courses in English and Spanish with built-in compliance content. The solutions page groups recruiting, onboarding, training, and evaluation as the employee lifecycle. The home page describes AI teammates that run inside Netchex for the pay cycle, onboarding, analytics, and employee requests."
+  ],
+  "quote": {
+   "text": "Payroll & HR for the floor, not just the desk.",
+   "url": "https://netchex.com"
+  },
+  "sources": [
+   {
+    "url": "https://netchex.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://netchex.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://netchex.com/solutions/recruit/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://netchex.com/solutions/onboarding-software",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://netchex.com",
+    "https://netchex.com/solutions"
+   ],
+   [
+    "https://netchex.com/solutions",
+    "https://netchex.com"
+   ],
+   [
+    "https://netchex.com",
+    "https://netchex.com/solutions"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

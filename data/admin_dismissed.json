@@ -36,5 +36,673 @@
    "by": "owner",
    "why": "Filed correctly"
   }
+ },
+ "profiles": {
+  "profile:accufund": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T20:30:13-04:00"
+   }
+  },
+  "profile:agileassets": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's, and no replacement was found",
+   "saw": {
+    "at": "2026-09-03T20:30:13-04:00"
+   }
+  },
+  "profile:airnav-systems": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T20:30:13-04:00"
+   }
+  },
+  "profile:ambient-ai": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T20:30:13-04:00"
+   }
+  },
+  "profile:black-spirit-software-solutions-llc": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's, and no replacement was found",
+   "saw": {
+    "at": "2026-09-03T20:48:41-04:00"
+   }
+  },
+  "profile:bruker-detection": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T19:25:31-04:00"
+   }
+  },
+  "profile:calsense": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:care-predictor": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:casebase": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:catapult-ems": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:code-four": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T19:25:31-04:00"
+   }
+  },
+  "profile:collins-aerospace-an-rtx-business": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:combined-public-communications": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:coreforce": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T21:27:46-04:00"
+   }
+  },
+  "profile:critical-response-group-inc": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T21:27:46-04:00"
+   }
+  },
+  "profile:docupet": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T21:27:46-04:00"
+   }
+  },
+  "profile:dossier-systems": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T19:25:31-04:00"
+   }
+  },
+  "profile:dragonforce": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T21:27:46-04:00"
+   }
+  },
+  "profile:elucd": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's, and no replacement was found",
+   "saw": {
+    "at": "2026-09-03T21:45:26-04:00"
+   }
+  },
+  "profile:emergency-reporting": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's, and no replacement was found",
+   "saw": {
+    "at": "2026-09-03T19:25:31-04:00"
+   }
+  },
+  "profile:fathom": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's, and no replacement was found",
+   "saw": {
+    "at": "2026-09-03T21:45:26-04:00"
+   }
+  },
+  "profile:gcr": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T21:45:26-04:00"
+   }
+  },
+  "profile:gale": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T21:45:26-04:00"
+   }
+  },
+  "profile:gatekeeper-security": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T21:45:26-04:00"
+   }
+  },
+  "profile:grab": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:home-to-home": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:icsolutions": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:ipvideo": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:imagesource-inc": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is right but the saved pages were another site's; needs a fresh read and draft",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:ivy-computer": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T19:55:49-04:00"
+   }
+  },
+  "profile:juganu": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T12:16:17-04:00"
+   }
+  },
+  "profile:kaizen-labs": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T19:55:49-04:00"
+   }
+  },
+  "profile:leidos-security-detection-automation": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-13T12:53:07-04:00"
+   }
+  },
+  "profile:lumca": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T12:53:07-04:00"
+   }
+  },
+  "profile:msa-safety": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-13T13:38:21-04:00"
+   }
+  },
+  "profile:machinex": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T19:55:49-04:00"
+   }
+  },
+  "profile:matterhorn": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-13T12:53:08-04:00"
+   }
+  },
+  "profile:nec-software-solutions": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T14:24:58-04:00"
+   }
+  },
+  "profile:nisc": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T14:24:58-04:00"
+   }
+  },
+  "profile:parkhub": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-13T10:07:53-04:00"
+   }
+  },
+  "profile:premium-parking": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T15:34:33-04:00"
+   }
+  },
+  "profile:protran-technology": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T16:11:36-04:00"
+   }
+  },
+  "profile:qualo": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T16:11:36-04:00"
+   }
+  },
+  "profile:rl-core-technologies": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T16:49:34-04:00"
+   }
+  },
+  "profile:resting-gardens": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T16:49:34-04:00"
+   }
+  },
+  "profile:roadbotics": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-13T16:49:34-04:00"
+   }
+  },
+  "profile:straffic-america": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-13T20:06:59-04:00"
+   }
+  },
+  "profile:selux": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "unsure, and the pages really say nothing to write from",
+   "saw": {
+    "at": "2026-09-03T20:13:34-04:00"
+   }
+  },
+  "profile:sightbit": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's, and no replacement was found",
+   "saw": {
+    "at": "2026-09-13T18:50:56-04:00"
+   }
+  },
+  "profile:synect": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is right but the saved pages were another site's; needs a fresh read and draft",
+   "saw": {
+    "at": "2026-09-13T20:06:59-04:00"
+   }
+  },
+  "profile:syrinix": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-13T20:06:59-04:00"
+   }
+  },
+  "profile:ncourt": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the website on file is not this company's; a replacement is in Website review",
+   "saw": {
+    "at": "2026-09-13T14:24:58-04:00"
+   }
+  },
+  "profile:aclara-technologies": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T20:30:13-04:00"
+   }
+  },
+  "profile:almaviva": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T20:30:13-04:00"
+   }
+  },
+  "profile:cartegraph": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:hitachi-energy": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:idemia": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T19:55:49-04:00"
+   }
+  },
+  "profile:indra-group": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:carmanah-technologies": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:collabrios-health": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T19:25:31-04:00"
+   }
+  },
+  "profile:gis-webtech": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T21:45:26-04:00"
+   }
+  },
+  "profile:givecard": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:glydways": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T19:55:49-04:00"
+   }
+  },
+  "profile:homewav": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:shadowdragon": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T12:00:37-04:00"
+   }
+  },
+  "profile:valor-systems": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T12:00:37-04:00"
+   }
+  },
+  "profile:willowglen-systems": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T20:13:34-04:00"
+   }
+  },
+  "profile:xylem": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the door's refusal was right (write-up review 2026-11-09)",
+   "saw": {
+    "at": "2026-09-03T20:13:34-04:00"
+   }
+  },
+  "profile:contentkeeper": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the company is no longer on file (merged or removed)",
+   "saw": {
+    "at": "2026-09-03T21:07:10-04:00"
+   }
+  },
+  "profile:flowbird": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the company is no longer on file (merged or removed)",
+   "saw": {
+    "at": "2026-09-03T21:45:26-04:00"
+   }
+  },
+  "profile:social-pinpoint": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the company is no longer on file (merged or removed)",
+   "saw": {
+    "at": "2026-09-13T19:27:51-04:00"
+   }
+  },
+  "profile:heymirza": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the company is no longer on file (merged or removed)",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  },
+  "profile:materna-ips": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the company is no longer on file (merged or removed)",
+   "saw": {
+    "at": "2026-09-13T12:53:08-04:00"
+   }
+  },
+  "profile:hopthru": {
+   "on": "2026-11-10",
+   "at": "2026-11-10T14:22:34-05:00",
+   "by": "agent:writeup-review",
+   "why": "the company is no longer on file (merged or removed)",
+   "saw": {
+    "at": "2026-09-03T22:09:16-04:00"
+   }
+  }
  }
 }

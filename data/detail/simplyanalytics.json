@@ -9,5 +9,35 @@
    "kind_rule": null,
    "url": "https://www.simplyanalytics.com/news/simplyanalytics"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SimplyAnalytics is a web-based mapping, analytics and data visualization application.",
+   "Data can be viewed by state, county, ZIP Code, census tract or block group. Charting covers bar charts, histograms and scatter plots. The application generates seven kinds of detailed tabular report, including ranking tables and ring studies around a target location. Users can bring in academic, business or marketing data of their own. Output leaves as image files, spreadsheets, or shapefiles for desktop GIS software.",
+   "The catalogue runs past 200,000 variables spanning demographics, income, health, consumer spending and census history. Business data covers more than 25 million establishments with employee counts and revenue. Crosstabs draw on over 100,000 consumer behavior variables."
+  ],
+  "quote": {
+   "text": "A versatile, multidisciplinary tool for research and analysis",
+   "url": "https://www.simplyanalytics.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.simplyanalytics.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.simplyanalytics.com"
+   ],
+   [
+    "https://www.simplyanalytics.com"
+   ],
+   [
+    "https://www.simplyanalytics.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

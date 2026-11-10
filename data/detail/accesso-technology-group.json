@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://accesso.com/news/mountain-technology-symposium-2026/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "accesso sells ticketing, payments and guest experience technology to attractions and venues. Its cloud ticketing platform pulls on-site, mobile and online sales into one system. Separate ticketing products are built for particular industries, including one written for ski areas.",
+   "Around ticketing sit food and beverage and retail functionality. Virtual queuing is meant to cut the time guests spend standing in line. Embedded payments put ticketing, food and beverage, retail and payment processing on a single system.",
+   "An analytics layer joins ticketing, food and beverage, retail, operations, weather, visitor reviews and local events into one view. Managers ask it questions in plain language instead of routing them through a data team. Support is presented as part of the deal, with onboarding, training and system health checks."
+  ],
+  "quote": {
+   "text": "Stop making decisions in the dark.",
+   "url": "https://accesso.com/solutions/analytics/"
+  },
+  "sources": [
+   {
+    "url": "https://accesso.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://accesso.com/solutions/analytics/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://accesso.com/solutions/embedded-payments/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://accesso.com/solutions/ticketing/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://accesso.com",
+    "https://accesso.com/solutions/ticketing/"
+   ],
+   [
+    "https://accesso.com",
+    "https://accesso.com/solutions/embedded-payments/"
+   ],
+   [
+    "https://accesso.com/solutions/analytics/",
+    "https://accesso.com/solutions/ticketing/"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

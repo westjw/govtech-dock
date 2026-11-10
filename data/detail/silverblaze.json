@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.silverblaze.com/blog/how-utility-billing-solutions-improve-efficiency-with-real-time-data-and-cloud-integration/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Silverblaze sells a cloud-hosted customer engagement portal, a mobile app, smart meter analytics, and smart forms solutions for utilities. The portal is a customizable self-service web portal whose features include e-billing, payment, and customer usage. Smart forms, built with the company's workflow software, are described as covering workflows and approvals, customer service, finance and billing, and engineering and operations.",
+   "Add-ons for the customer portal include smart metering, demand and outage integration, telecom, and a content management system. One add-on page describes Harris SmartVx, a video experience platform that delivers personalized videos with embedded calls-to-action. That page lists tasks the videos are meant to prompt, including understanding a bill, making online payments, and signing up for paperless billing.",
+   "The homepage says the company has been offering software to utility providers since 1999. It also says that Silverblaze is part of the Harris Family and works with the Harris Utilities portfolio of solutions."
+  ],
+  "quote": {
+   "text": "Silverblaze has the resources your utility needs to transition to digital customer engagement",
+   "url": "https://www.silverblaze.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.silverblaze.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.silverblaze.com/platform/add-ons/service-link/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.silverblaze.com/platform/add-ons/datavoice/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.silverblaze.com/platform/add-ons/smart-video-experience/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.silverblaze.com"
+   ],
+   [
+    "https://www.silverblaze.com",
+    "https://www.silverblaze.com/platform/add-ons/smart-video-experience/"
+   ],
+   [
+    "https://www.silverblaze.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

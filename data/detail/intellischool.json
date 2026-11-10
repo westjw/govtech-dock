@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Intellischool sells a data platform for schools that brings data from the systems a school already runs into one governed foundation. Data from source systems such as SIS, LMS, assessment, attendance and wellbeing is loaded into a school's own data lakehouse, with synchronisation running daily. Access rules decide who can see what before a dashboard, a report or an AI tool reads the data, so a teacher sees their classes and a principal sees the whole school.",
+   "Dashboards are embedded in the school's LMS, including Schoolbox or Canvas, and staff can put plain-English questions to the AI tool a school chooses. Creator, the built-in BI studio, lets staff build and share dashboards and reports without buying a separate BI platform. Schools already running Power BI, Tableau or Looker can connect them, and the lakehouse can be replicated into BigQuery, Redshift, Snowflake or Synapse.",
+   "Across a school group, data is aggregated from all member schools, whichever SIS or LMS each one runs. Testimonials on the home page come from Nazareth College, St John's School and Galen Catholic College."
+  ],
+  "quote": {
+   "text": "Your school's data, connected and governed, ready for the AI tools you choose.",
+   "url": "https://intellischool.co"
+  },
+  "sources": [
+   {
+    "url": "https://intellischool.co",
+    "fetched_on": null
+   },
+   {
+    "url": "https://intellischool.co/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://intellischool.co/platform/integration",
+    "fetched_on": null
+   },
+   {
+    "url": "https://intellischool.co/platform/lakehouse",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://intellischool.co",
+    "https://intellischool.co/platform"
+   ],
+   [
+    "https://intellischool.co/platform"
+   ],
+   [
+    "https://intellischool.co/platform",
+    "https://intellischool.co"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
+}

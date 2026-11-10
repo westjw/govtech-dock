@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.omnitracs.com/blog/creating-a-fleet-safety-policy-9-steps-for-success"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Omnitracs sells fleet management software for transportation fleets, organised around a platform it calls Omnitracs One. The platform page describes one place for drivers, teams in the field, and the back office to work from a single source of truth. Functions named on the solutions page include driver workflow, data and document submission, communications, and vehicle inspection reporting.",
+   "Routing sits alongside that, sold as connected solutions for routing, dispatch, and driver experience. Video safety is a second line, described as storage in the cloud plus artificial intelligence that picks out the video moments a fleet needs to see.",
+   "The customers these pages name are commercial carriers and distributors, among them Dayton Freight Lines and Palmer-Donavin. Buyers are otherwise described in the pages' own terms as delivery and service fleets. The about page dates the company to 1998, when it was formed as a division of Qualcomm to track assets and communicate with drivers."
+  ],
+  "quote": {
+   "text": "Save time and fuel while improving your customer experience with connected solutions for routing, dispatch, and driver experience.",
+   "url": "https://www.omnitracs.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.omnitracs.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.omnitracs.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.omnitracs.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.omnitracs.com/company/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.omnitracs.com/platform",
+    "https://www.omnitracs.com/solutions"
+   ],
+   [
+    "https://www.omnitracs.com"
+   ],
+   [
+    "https://www.omnitracs.com",
+    "https://www.omnitracs.com/solutions",
+    "https://www.omnitracs.com/company/about-us"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

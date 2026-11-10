@@ -108,5 +108,35 @@
    "kind_rule": null,
    "url": "https://oneconcern.com/en/news/one-concern-veolia-join-to-foster-resilience-in-japan-water-sector/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "One Concern sells data about physical risk, built with AI, data science, and deep catastrophe modeling into a digital twin of the physical world. The platform gives customers a metric for physical risk measured in the form of time, to evaluate and benchmark properties, companies and sectors. The stated focus is business interruption vulnerability arising from the infrastructure that properties and businesses depend on, including power outages and supply chain disruptions.",
+   "The pages name financial services, insurance, capital markets and real estate as the markets served, and describe the work as bridging climate risk to financial risk."
+  ],
+  "quote": {
+   "text": "For the first time ever, our data platform gives customers a consistent, comparable metric for physical risk measured in the form of time to evaluate and benchmark properties, companies and sectors.",
+   "url": "https://www.oneconcern.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.oneconcern.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.oneconcern.com/en/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.oneconcern.com"
+   ],
+   [
+    "https://www.oneconcern.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

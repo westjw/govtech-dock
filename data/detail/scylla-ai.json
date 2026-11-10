@@ -1,0 +1,45 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Scylla sells software that reads video from cameras and turns what it sees into insights about activity and objects. Suspicious content is checked in real time by a decision-making algorithm the company calls Charon, and the result goes to alerting protocols. Alerts go to security response units over web and mobile channels with a screenshot and the location and time of the incident.",
+   "Detection products cover firearms, identification of specific individuals such as suspects or persons of interest, and shoplifting events. One product detects persons or vehicles in a specific zone at a specified time. An edge device delivers the video analytics out of the box. Scylla AI integrates with existing VMS and cameras and filters out false alarms.",
+   "A channel partner program gives distributors and integrators support to deliver Scylla AI solutions to their customers. The company states its mission as creating AI tech for video surveillance."
+  ],
+  "quote": {
+   "text": "At Scylla, our mission is to create the best possible AI tech for video surveillance",
+   "url": "https://scylla.ai/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://scylla.ai",
+    "fetched_on": null
+   },
+   {
+    "url": "https://scylla.ai/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://scylla.ai/case-studies/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://scylla.ai/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://scylla.ai"
+   ],
+   [
+    "https://scylla.ai"
+   ],
+   [
+    "https://scylla.ai",
+    "https://scylla.ai/about-us/"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
+}

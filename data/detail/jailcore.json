@@ -1,0 +1,33 @@
+{
+ "profile": {
+  "paragraphs": [
+   "JailCore sells cloud-based inmate management software that lets Correctional Officers document cell checks and observations, head counts, location changes and inmate interactions on a handheld rugged mobile device. Collected data is transmitted to JailCore OPS, the Command Staff's Observational Patrol System, where supervisor-level staff members view it in real-time and are alerted to past-due observations.",
+   "The homepage presents the platform as a replacement for paper logs and describes NFC-driven technology that verifies staff presence. The about page says the solution covers a jail housing as few as 50 inmates or as many as 5,000."
+  ],
+  "quote": {
+   "text": "Free your jail from tedious paperwork and liability.",
+   "url": "https://jailcore.com"
+  },
+  "sources": [
+   {
+    "url": "https://jailcore.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://jailcore.com/about/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://jailcore.com/about/"
+   ],
+   [
+    "https://jailcore.com",
+    "https://jailcore.com/about/"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
+}

@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.liftango.com/resources/beyond-the-subsidy-trap-engineering-the-financial-viability-of-demand-responsive-transit-drt"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Liftango sells transport software that brings demand-responsive transport, fixed-route buses and carpool together as one platform. The fixed-route product covers live vehicle tracking and journey planning alongside route and on-time performance optimisation. The demand-responsive product schedules vehicles around real-time demand from the trips passengers request. The carpool product lets people within one organisation share journeys over a secure carpool network.",
+   "A section on who the company helps names cities and Fortune 500 companies. The public transport section offers improved access, reduced congestion and better use of existing transport services. Bus operator material points to managing fixed-route and on-demand services together while reducing operational costs and increasing ridership. For community transport and paratransit, the pages describe scheduling, routing and on-demand transport brought together in one platform.",
+   "Liftango was founded in 2016 with the stated goal of reducing the number of cars on the road. The about page describes guiding global organisations to plan, launch and scale shared mobility programs. The homepage puts support at over 120 organisations globally and millions of passengers each year."
+  ],
+  "quote": {
+   "text": "With three transport solutions within one app, Liftango can power your entire network.",
+   "url": "https://www.liftango.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.liftango.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.liftango.com/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.liftango.com"
+   ],
+   [
+    "https://www.liftango.com"
+   ],
+   [
+    "https://www.liftango.com/about-us",
+    "https://www.liftango.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

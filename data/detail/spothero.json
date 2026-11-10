@@ -9,5 +9,49 @@
    "kind_rule": null,
    "url": "https://spothero.com/press/spothero-is-the-proud-partner-of-cfg-bank-arena"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SpotHero sells parking reservations through an app and a website, where a driver enters a destination and a time, compares nearby locations and prices, and books before arriving. What a driver needs on arrival sits on the parking pass. Reservations can be changed or cancelled up to the time they start, and payment carries a promise of a spot at the price paid or a refund.",
+   "The company dates itself to 2011 and describes millions of drivers finding parking at more than 14,000 garages, lots, and valets in over 400 major North American cities. The parking described is for events and games, airports, travel and hotels, nights and weekends, daily commuting, and monthly stays.",
+   "Supply comes from partners whose inventory levels the company monitors to avoid overbooking, rather than from spaces held open one by one."
+  ],
+  "quote": {
+   "text": "SpotHero helps you find and book parking right from your mobile phone or computer.",
+   "url": "https://spothero.com/about/promo-code"
+  },
+  "sources": [
+   {
+    "url": "https://spothero.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://spothero.com/about/parking-guarantee",
+    "fetched_on": null
+   },
+   {
+    "url": "https://spothero.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://spothero.com/about/promo-code",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://spothero.com",
+    "https://spothero.com/about/parking-guarantee"
+   ],
+   [
+    "https://spothero.com/about",
+    "https://spothero.com"
+   ],
+   [
+    "https://spothero.com/about/parking-guarantee"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

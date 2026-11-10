@@ -72,5 +72,44 @@
    "kind_rule": null,
    "url": "https://www.luxmodus.com/post/lux-modus-3d-mapping-technology"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Lux Modus sells a mobile mapping and data collection platform with integrated high-resolution LiDAR and imagery sensors that can be attached to almost any type of vehicle. Data collected in the field is uploaded directly to the cloud for automatic processing. Output is presented in a 3D point cloud and imagery viewer that lets users tag or comment on scans and view the geo-reference data associated with them.",
+   "The company groups its offering into three parts: LuxGear, vehicle-mounted hardware for LiDAR scans; LuxWeb, which turns data into usable 3D forms; and geospatial project management. Lux Modus is based in Calgary, Canada. It also describes itself as an official Canadian Ouster reseller of LiDAR sensors.",
+   "The stated market is asset owners, with a focus on the energy, rail, power, and construction sectors. Buyers pay only for the data they use."
+  ],
+  "quote": {
+   "text": "Our mission is to empower asset owners across the globe with the ability to create comprehensive 3D maps that are both accessible and scalable.",
+   "url": "https://www.luxmodus.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.luxmodus.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.luxmodus.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.luxmodus.com/solutions",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.luxmodus.com"
+   ],
+   [
+    "https://www.luxmodus.com/about"
+   ],
+   [
+    "https://www.luxmodus.com/about",
+    "https://www.luxmodus.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

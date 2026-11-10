@@ -36,5 +36,41 @@
    "kind_rule": null,
    "url": "https://stacksports.com/news/two-sports-tech-companies-team-up-and-partner-with-association-of-paddlesurf-professionals-app-world-tour"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Stack Sports sells software for sports organizations, describing an ecosystem of software, programming initiatives, and development tools that powers sports at every level. The solutions page groups the offering into sports and league management, camps and events, funding and payments, and international programs. The payment platform is described as developed specifically for sports, and the pages also cover camps and events, recruiting, and media and sponsorship.",
+   "The pages describe the people served as the volunteers, administrators, and organizations that make sports possible. The home page states that the software powers more than fifty thousand sports organizations. The about page counts local clubs and leagues among those powered by the ecosystem."
+  ],
+  "quote": {
+   "text": "Our solutions for league management make the day to day of running a sports organization easy.",
+   "url": "https://www.stacksports.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.stacksports.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stacksports.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stacksports.com/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.stacksports.com",
+    "https://stacksports.com/solutions"
+   ],
+   [
+    "https://www.stacksports.com",
+    "https://stacksports.com/about-us"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

@@ -63,5 +63,41 @@
    "kind_rule": null,
    "url": "https://stagecares.com/news/modeling"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Stage CARES sells technology for planning, implementing, and evaluating opioid abatement plans. The product is described as patent-pending technology that helps communities manage resources and meet opioid settlement requirements. Its tools cover data collection, analysis, and visualization at local, county, regional, and state levels.",
+   "Analytics named on the pages include epidemiologic, resource, and economic analysis. The company states that Stage CARES was developed through working directly with communities and combines experience in epidemiology, program evaluation, and investment modeling. Stage Analytics was founded in 2017 to bring scientific solutions to leaders in their industries.",
+   "The pages say the product is designed to assist stakeholders involved in solving the opioid epidemic. Reports and dashboards are offered to meet settlement requirements. Decision makers at the county, region, and state levels are named as the audience for the analytics."
+  ],
+  "quote": {
+   "text": "Stage CARES meets communities wherever they are in solving the opioid epidemic.",
+   "url": "https://stagecares.com"
+  },
+  "sources": [
+   {
+    "url": "https://stagecares.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stagecares.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://stagecares.com"
+   ],
+   [
+    "https://stagecares.com",
+    "https://stagecares.com/about"
+   ],
+   [
+    "https://stagecares.com",
+    "https://stagecares.com/about"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

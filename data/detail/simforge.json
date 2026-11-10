@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "SimForge sells simulation software for developing autonomous systems, offering photorealistic 3D environments to build, test and train them. Application domains listed on the site include simulation for autonomous vehicle development and advanced driver assistance systems. Warehouse robotics work covers digital twins of autonomous mobile robots and articulated arms inside 3D warehouse interiors.",
+   "Aerospace coverage extends to UAV and autonomous aircraft systems simulation with flight dynamics and atmospheric modelling. Logistics and manufacturing domains cover supply chain simulation, automated guided vehicle digital twins and physics simulation for articulated arms. The site offers both pre-built simulators for immediate testing and tailored simulation environments developed for specific requirements.",
+   "Integration points named on the site include ROS connectivity with autonomy stacks, OpenDRIVE and OpenSCENARIO support, and Python APIs. Existing products shown include the CARLA Simulator for autonomous vehicle development and a lunar robotics simulator built for the Lunar Autonomy Challenge. The technology stack is given as CARLA, NVIDIA Omniverse, Isaac Sim, Chrono, Unreal Engine 5 and Unity 3D."
+  ],
+  "quote": {
+   "text": "Advancing autonomous systems through high-fidelity physical AI simulation.",
+   "url": "https://simforge.io"
+  },
+  "sources": [
+   {
+    "url": "https://simforge.io",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://simforge.io"
+   ],
+   [
+    "https://simforge.io"
+   ],
+   [
+    "https://simforge.io"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
+}

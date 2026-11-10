@@ -108,5 +108,35 @@
    "kind_rule": null,
    "url": "https://www.clever.com/blog/2025/09/cracking-the-k-12-code-where-corporations-stumble"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Clever describes itself as the identity platform for education. It gives teachers and students one secure place to reach the applications they depend on. The company says a unified identity grants quick access, safeguards student and school data, and accelerates learning.",
+   "A single integration connects the data and accounts needed for digital learning in one centralized platform. A layered security approach provides identity and access management for the entire school community. Named services include Secure Sync Rostering. The site also lists secure password management. A service called Clever LMS Connect is offered to application partners.",
+   "Free online training for educators is offered on the site."
+  ],
+  "quote": {
+   "text": "The identity platform for education",
+   "url": "https://clever.com"
+  },
+  "sources": [
+   {
+    "url": "https://clever.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://clever.com"
+   ],
+   [
+    "https://clever.com"
+   ],
+   [
+    "https://clever.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

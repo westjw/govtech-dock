@@ -63,5 +63,40 @@
    "kind_rule": null,
    "url": "https://provensoftware.com/blog/a-new-digital-experience-for-proven-software/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Proven Software sells ProvenEHR, AI-enabled enterprise software for the behavioral health, intellectual and developmental disabilities, and physical therapy markets. The platform covers clinic scheduling, provider appointments, treatment plans, administrative and billing functions in one integrated system. Proven states that an AI-native design delivers additional functionality at a lower cost than legacy EHRs.",
+   "The pages describe the customer base as practices of all sizes, from solo providers to multi-state organizations, with live support for every partner. Clinicians and clinical directors are the named users, with visibility into schedules, caseloads and availability. ID/D organizations are offered tools for diverse programs, staffing models and regulatory requirements.",
+   "Proven describes a lifecycle running from intake and scheduling through documentation, billing, outcomes tracking and organizational reporting. Billing runs through what the site calls the Billing Engine, aimed at cleaner submissions and faster payments. Reporting is delivered as Practice Intelligence, covering staff availability and rescheduling of canceled appointments."
+  ],
+  "quote": {
+   "text": "Proven believes in building partnerships, not just acquiring customers.",
+   "url": "https://provensoftware.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://provensoftware.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://provensoftware.com/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://provensoftware.com"
+   ],
+   [
+    "https://provensoftware.com/about-us/",
+    "https://provensoftware.com"
+   ],
+   [
+    "https://provensoftware.com"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

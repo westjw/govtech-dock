@@ -1,0 +1,28 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Route4Me sells route planning and route optimization software delivered as an API with SDKs. SDKs are published for Python, Java, PHP, Ruby, Node.js, and other languages.",
+   "The site describes the product as an integrated telematics platform for dispatchers and field-service personnel who plan, manage, and execute delivery or pickup routes. The routing engine is based on RESTful APIs and has algorithm backends that solve vehicle routing or traveling salesman problems. The optimization engine runs on any flavor of Linux and can optimize thousands of routes per second. For deployments that require the lowest amount of latency, the optimization engine can function independent of the telematics platform behind a firewall."
+  ],
+  "quote": {
+   "text": "Route4Me is an integrated telematics platform which enables dispatchers and field-service personnel to plan, manage, and execute delivery or pickup routes.",
+   "url": "https://route4me.io"
+  },
+  "sources": [
+   {
+    "url": "https://route4me.io",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://route4me.io"
+   ],
+   [
+    "https://route4me.io"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
+}

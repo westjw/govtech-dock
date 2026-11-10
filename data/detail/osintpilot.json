@@ -1,0 +1,37 @@
+{
+ "profile": {
+  "paragraphs": [
+   "OSINT Pilot sells software that runs open source intelligence investigations, using AI agents for breach analysis, social footprint mapping, and public records research. An investigation starts from an email, phone number, or name, with optional context such as location or known aliases. Fraud, elder exploitation, missing persons, insider threats, and background vetting are named as the work an investigation begins from.",
+   "One set of agents searches property records, court filings, and corporate registries. Other agents navigate government portals, fill forms, and pull structured data from sites that block APIs. Each investigation ends in a structured report with digital footprint, breach history, linked identities, and sourced findings, which can be exported as Markdown or shared with a team.",
+   "The site says the product is built and operated by Pentester, a cybersecurity technology platform. The about page places the platform in closed beta with law-enforcement and investigative teams. The same page says investigators, analysts, and fraud teams use the platform in production."
+  ],
+  "quote": {
+   "text": "Six specialized AI agents work in parallel, cross-referencing data across dozens of intelligence sources.",
+   "url": "https://osintpilot.com"
+  },
+  "sources": [
+   {
+    "url": "https://osintpilot.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://osintpilot.com/about/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://osintpilot.com",
+    "https://osintpilot.com/about/"
+   ],
+   [
+    "https://osintpilot.com"
+   ],
+   [
+    "https://osintpilot.com/about/"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
+}

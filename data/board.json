@@ -4630,8 +4630,8 @@
    "state": null,
    "approx_count": 35,
    "companies": 25,
-   "hiring": 5,
-   "open_roles": 71
+   "hiring": 6,
+   "open_roles": 72
   },
   {
    "tag": "NAGC 2026",
@@ -8693,18 +8693,18 @@
  "unreadable": 12,
  "rendered": 4,
  "no_board_on_file": 921,
- "manual_postings": 242,
+ "manual_postings": 243,
  "manual_already_fetched": 0,
  "totals": {
-  "postings": 9334,
+  "postings": 9335,
   "quota_carrying_postings": 965,
-  "openings": 8053,
+  "openings": 8054,
   "quota_carrying": 854,
   "us": 3593,
   "non_us": 2444,
   "families": {
    "engineering": 1914,
-   "gtm": 2306,
+   "gtm": 2307,
    "ops": 281,
    "ga": 526,
    "product": 369,
@@ -8719,7 +8719,7 @@
    "Public Safety": 1684,
    "Public Works": 1233,
    "Transit & Parking": 597,
-   "General Gov": 1814,
+   "General Gov": 1815,
    "Parks & Rec": 227,
    "K-12 Schools": 235,
    "Utilities & Energy": 525,
@@ -8736,7 +8736,7 @@
    "text": 1390
   },
   "jd_read_postings": 4849,
-  "jd_unread_postings": 4485
+  "jd_unread_postings": 4486
  },
  "claim_at": null,
  "hq_post_at": "https://hq.sledjobs.com/recruit",
@@ -148636,11 +148636,13 @@
     "3CMA 2026"
    ],
    "conference": "3CMA 2026",
-   "open_roles": 0,
-   "open_postings": 0,
+   "open_roles": 1,
+   "open_postings": 1,
    "quota_roles": 0,
    "quota_postings": 0,
-   "families": {},
+   "families": {
+    "gtm": 1
+   },
    "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
@@ -148658,7 +148660,8 @@
    "posts_at": null,
    "source": "conference sweep: 3CMA 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "checked_by_hand": "2026-11-09"
   },
   {
    "id": "magicschool",
@@ -514962,6 +514965,37 @@
    "office": null,
    "opening_postings": 1,
    "opening_locations": 0
+  },
+  {
+   "id": "orlo::Digital Marketing Undergraduate Work Experience::2b0b186a",
+   "company": "Orlo",
+   "company_id": "orlo",
+   "title": "Digital Marketing Undergraduate Work Experience",
+   "family": "gtm",
+   "quota_carrying": false,
+   "seniority": "mid",
+   "states": [],
+   "region": null,
+   "work_mode": "not stated",
+   "location": "Marketing Team",
+   "is_us": null,
+   "url": "https://orlo.tech/careers/",
+   "sector": "General Gov",
+   "category": "Citizen Services",
+   "first_seen": "2026-11-09",
+   "captured_from": "https://orlo.tech/careers/",
+   "source": "manual",
+   "jd_seen": false,
+   "comp": null,
+   "opening_id": "orlo::Digital Marketing Undergraduate Work Experience",
+   "territory": {
+    "states": [],
+    "region": null,
+    "stated": false
+   },
+   "office": null,
+   "opening_postings": 1,
+   "opening_locations": 1
   }
  ],
  "coverage": {
@@ -514970,5 +515004,9 @@
   "absent": 670,
   "blocked": 195,
   "unchecked": 56
+ },
+ "redrawn": {
+  "at": "2026-11-10T19:29:53Z",
+  "inputs": "c9d3e55631c8d51294c6bd1426a245aec5127adfd6b930f9ec4bb4d5892ef2c5"
  }
 }

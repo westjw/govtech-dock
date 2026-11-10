@@ -63,5 +63,47 @@
    "kind_rule": null,
    "url": "https://www.nedapidentification.com/insights/choosing-between-anpr-and-transponder-based-vehicle-id/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Nedap Identification Systems sells long-range vehicle identification and vehicle access control equipment aimed at security professionals. The homepage groups the offering into semi-active RFID readers, passive UHF readers, license plate recognition cameras, and mobile and card based access. It claims more than 30 years of experience in automatic vehicle identification.",
+   "TRANSIT Ultimate, a semi-active RFID reader, identifies a vehicle and its driver at once at a stated range of up to 15 meters. The page lists typical applications as vehicle access at airports, seaports, mines, military bases and factories, and at tank and loading facilities for flammable gases, liquids and solids.",
+   "uPASS Go is a passive UHF RFID reader for vehicle access points, with an adjustable read range of up to 10 meters. Its listed applications are office car parks, gated communities, staff parking zones and university campuses, and it supports Wiegand and OSDP interfaces."
+  ],
+  "quote": {
+   "text": "Readers using RFID technology can be used to identify vehicles and drivers quickly and automatically from a distance.",
+   "url": "https://www.nedapidentification.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.nedapidentification.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nedapidentification.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nedapidentification.com/products/transit/transit-ultimate/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nedapidentification.com/products/upass/upass-go/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.nedapidentification.com"
+   ],
+   [
+    "https://www.nedapidentification.com/products/transit/transit-ultimate/"
+   ],
+   [
+    "https://www.nedapidentification.com/products/upass/upass-go/"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }

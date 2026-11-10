@@ -9,5 +9,50 @@
    "kind_rule": null,
    "url": "https://door2door.io/de/news/presse/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "door2door sells technology and consulting services for on-demand mobility, covering the planning, running and optimizing of a new service. The portfolio is aimed at anyone setting out to create new mobility offers, for classic as well as autonomous mobility. Consulting accompanies the project from analysis and design through to implementation, including funding and the legal context.",
+   "The door2door Mobility Platform connects on-demand services, ridepooling, autonomous vehicles, electronic fleets and multimodal apps. Passengers, drivers and dispatchers each get an app, and an Operations Management system plans, operates and monitors the service in real time. The passenger app carries the operator's own brand identity through a whitelabel solution. Listed integrations include an existing public transport service, car and bike sharing, and existing ticketing and payment systems.",
+   "Before a launch, door2door compares supply and demand to identify operating areas and the operating parameters for the service. An economic feasibility study sets out personnel, fleet and other costs and produces a sales forecast for the planned service. One success story names Stadtwerke M\u00fcnster, whose managing director for mobility describes a service linking bus, train, bike and electric scooters."
+  ],
+  "quote": {
+   "text": "We provide you with a digital infrastructure which, as a mobility platform, can efficiently guide transportation.",
+   "url": "https://door2door.io/en/solutions/"
+  },
+  "sources": [
+   {
+    "url": "https://www.door2door.io",
+    "fetched_on": null
+   },
+   {
+    "url": "https://door2door.io/en/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://door2door.io/en/solutions/plan/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://door2door.io/en/solutions/run/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://door2door.io/en/solutions/",
+    "https://www.door2door.io"
+   ],
+   [
+    "https://www.door2door.io",
+    "https://door2door.io/en/solutions/run/"
+   ],
+   [
+    "https://door2door.io/en/solutions/plan/",
+    "https://www.door2door.io"
+   ]
+  ],
+  "written_on": "2026-11-10",
+  "by_kind": "site"
+ }
 }
