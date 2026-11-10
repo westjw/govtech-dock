@@ -34498,12 +34498,14 @@ def check_the_front_page_counts_what_its_links_open() -> int:
                                f"had one: {firms}")
                 break
             seen.add(f)
-        fresh_rows = collections.defaultdict(list)
-        for p in q:
-            if p.get("first_seen") == gen:
-                fresh_rows[p["opening_id"]].append(p)
-        tops = [y[0] for y in map(yearly, fresh_rows.values()) if y]
-        got = yearly(fresh_rows[opened[0]]) if opened else None
+        # THE BEST-PAID NEW ROLE, over the roles new this run (fresh_ids), each
+        # read as the page reads a group: every posting it holds. This counted
+        # every posting first seen tonight, so an older role that reached one
+        # more city was ranked as new: on 2026-11-10 OpenGov's Enterprise AE,
+        # on the board since 10-23, put $260K over a lead the page had rightly
+        # given to a new role. A new role's postings are all tonight's anyway.
+        tops = [y[0] for y in (yearly(groups[o]) for o in fresh_ids) if y]
+        got = yearly(groups[opened[0]]) if opened else None
         if tops and (not got or got[0] != max(tops)):
             errors += fail(f"the lead card pays {got}; the best-paid new role states {max(tops)}")
 
