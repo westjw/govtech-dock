@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Microsoft Ignite 2026: Your workplace in Microsoft 365",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/microsoft-ignite-2026/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "index-text",
    "first_seen": "2026-11-10",
    "headline": "Eptura Advances Unified Worktech Platform with New AI, Benchmarking, and Enterprise Integrations",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Eptura Names First Chief AI Officer",
    "kind": "leadership",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/new-uk-workplace-insights-for-facilities-teams/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Critical capabilities for visitor management system in connected enterprise operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/top-features-to-look-for-in-an-enterprise-visitor-management-system/"
   }
  ],
  "profile": {

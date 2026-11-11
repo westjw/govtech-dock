@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "How to prevent leaks from Claude Code's 'Don't ask again' file",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/prevent-leaks-from-claude-code-dont-ask-again-file/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/redesign-how-your-team-ships-software-with-ai-agents/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "AI Governance: One view of agent activity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/ai-governance-dashboard/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Extending our partnership as California's enrollment broker",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maximus.com/news/california-health-care-options-partnership"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://maximus.com/insights/ai-digital-modernization-federal-health-outcomes"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How a focus on proactive accuracy is shaping human services program integrity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maximus.com/news/david-crowson-human-services-accuracy-policy-practice"
   }
  ],
  "profile": {

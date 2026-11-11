@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "From First Call to Final Tribute: The Modern Funeral Home Workflow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://plotbox.com/blog/from-first-call-to-final-tribute-the-modern-funeral-home-workflow"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://plotbox.com/blog/nfda-2025-people-love-coffee-and-9-other-things-we-learned"
-  },
-  {
-   "date": "2025-10-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Halloween to All Souls Day: Cemeteries as Spaces of Connection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://plotbox.com/blog/from-halloween-to-all-souls-day-cemeteries-as-spaces-of-connection"
   }
  ],
  "profile": {

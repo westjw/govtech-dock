@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "dateline",
    "first_seen": "2026-11-10",
    "headline": "Smartsheet Integrates With Claude Sheets, Making It Easy to Start Projects in Claude and Launch Workflows Across Teams with Smartsheet",
    "kind": "product",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "dateline",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Smartsheet Named a Leader for Fourth Consecutive Year in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Collaborative Work Management",
    "kind": "press",

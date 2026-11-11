@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-10",
    "headline": "Binance breach: Why it highlights the importance of default deny controls",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-10",
    "headline": "Why credential theft is only the beginning of an attack",
    "kind": "press",

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Remote Water Heater Inspections: A Contractor\u2019s Step-by-Step Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blitzz.co/blog/remote-water-heater-inspections-a-contractors-step-by-step-guide"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blitzz.co/blog/what-ai-tools-write-notes-and-reports-automatically-after-a-customer-video-support-call"
-  },
-  {
-   "date": "2026-10-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Which Video Support Tools Integrate With Salesforce Service Cloud or Genesys?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blitzz.co/blog/which-video-support-tools-integrate-with-salesforce-service-cloud-or-genesys"
   }
  ]
 }

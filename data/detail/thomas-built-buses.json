@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "News --> Thomas Built Buses names Brian Daniels vice president of sales, aftermarket and marketing Sep 17, 2026 Read More",
    "kind": "leadership",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-05-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "News --> Thomas Built Buses names Carolina Thomas as 2025 Dealer of the Year May 27, 2026 Read More",
    "kind": "leadership",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-04-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "News --> Thomas Built Buses adds gasoline option to C2 powertrain lineup for 2026 Apr 02, 2026 Read More",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-02-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "News --> Thomas Built Buses\u2019 \u2018If You Pass\u2019 school bus safety campaign sparks community support and conversation, along with nearl... Feb 23, 2026 Read More",
    "kind": "press",

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Being Bonterra: Honoring a legacy with veteran Sarah Newton",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bonterratech.com/blog/being-bonterra-honoring-a-legacy-with-veteran-sarah-newton"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-13",
    "headline": "Volunteer recruitment strategies: 13 proven ways to attract more volunteers",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bonterratech.com/resources/activity-vs-impact-a-nonprofit-scorecard-for-measuring-what-matters"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Nonprofit fundraising and grant statistics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bonterratech.com/blog/nonprofit-fundraising-and-grant-statistics"
   }
  ],
  "profile": {

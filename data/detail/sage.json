@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "The monthly board finance pack for community health centers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/monthly-board-finance-pack-community-health-center/"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "What\u2019s new in Sage Intacct 2026 Release 4?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/sage-intacct-2026-release-4/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-04",
    "headline": "Dental practice KPIs for multi-location groups: a scorecard by location",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/assisted-living-skilled-nursing-separate-finance-scorecards/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Adding an acquired practice to your dental group: the first finance questions to answer before go-live",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/dental-group-acquired-practice-finance-questions/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Orthopedic group budgeting: from annual plan to monthly reforecast",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/orthopedic-group-budgeting-annual-plan-monthly-reforecast/"
   }
  ]
 }

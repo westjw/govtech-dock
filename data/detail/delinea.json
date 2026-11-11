@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Node2Shell and eMudhra: two Unrelated Problems, one Node.js release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/node2shell-and-emudhra-2-unrelated-problems-1-node.js-release"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://delinea.com/blog/ai-agents-wont-go-rogue-theyll-inherit-overprivileged-access"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "NVIDIA secures the agent's machine; we secure everything it reaches",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://delinea.com/blog/nvidia-secures-the-agents-machine-delinea-secures-its-access"
   }
  ]
 }

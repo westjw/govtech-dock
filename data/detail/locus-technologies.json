@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Blog // November 11, 2026 PFAS and Evolving Drinking Water Rules: Building a Data Foundation for What Comes Next",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/pfas-and-evolving-drinking-water-rules/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-10",
    "headline": "Blog // September 10, 2026 What Does Scalability Mean for Complex Environmental Data?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.locustec.com/blog/eu-f-gas-regulation-compliance-workflows/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Your GHG numbers only count if they can be verified.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.locustec.com/resources/epa-ghg-calculator/"
   }
  ]
 }

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "A.M. Simpkins and Associates",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://amsa-highered.com/blog/the-hidden-cost-of-ghost-students-when-fraudulent-enrollment-takes-opportunities-away-from-real-students/"
+  },
+  {
    "date": "2026-06-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "How AI and Automation Are Powering College Application Fraud Detection",
    "kind": "press",
@@ -10,8 +19,8 @@
    "url": "https://amsa-highered.com/blog/how-ai-and-automation-are-powering-college-application-fraud-detection/"
   },
   {
-   "date": "2026-05-11",
-   "date_source": "index-text",
+   "date": "2026-05-12",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The Hidden Epidemic: How to Detect \u201cGhost Students\u201d Skewing Your Enrollment Data",
    "kind": "press",
@@ -19,8 +28,8 @@
    "url": "https://amsa-highered.com/blog/the-hidden-epidemic-how-to-detect-ghost-students-skewing-your-enrollment-data-3/"
   },
   {
-   "date": "2026-05-11",
-   "date_source": "index-text",
+   "date": "2026-05-12",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Breaking Down Data Silos: The ROI of Real-Time Integration for University Operations",
    "kind": "press",
@@ -28,8 +37,8 @@
    "url": "https://amsa-highered.com/blog/breaking-down-data-silos-the-roi-of-real-time-integration-for-university-operations-2/"
   },
   {
-   "date": "2026-05-11",
-   "date_source": "index-text",
+   "date": "2026-05-12",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The True Cost of Fraudulent Applications (Beyond Lost Tuition Revenue)",
    "kind": "press",

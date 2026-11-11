@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Demand-Side Readiness Report: Post Summer 2026 Season",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uplight.com/resources/demand-side-readiness-report-november-2026/"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Uplight Continues to Scale Demand Flexibility Portfolio, Delivering Reliable Capacity and Empowering Utility Partners to Meet Record Summer Demand and Keep Bills Affordable",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uplight.com/press/uplight-continues-to-scale-demand-flexibility-portfolio-delivering-reliable-capacity-and-empowering-utility-partners-to-meet-record-summer-demand-and-keep-bills-affordable/"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Uplight On the Fast Company\u2019s Best Workplace for Innovators List for the Fifth Year in a Row",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "July\u2019s Heat Dome Put DR on the Front Lines with One of Our Biggest Event Weeks to Date",
    "kind": "press",

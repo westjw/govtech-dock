@@ -1,12 +1,21 @@
 {
  "news": [
   {
-   "date": "2026-11-10",
-   "date_source": "index-text",
-   "first_seen": "2026-11-10",
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
    "headline": "This is some text inside of a div block.",
    "kind": "press",
    "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/how-long-does-it-take-to-implement-a-school-visitor-management-system"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Introducing GoGuardian Visitor: Visitor Management Built for K-12",
+   "kind": "product",
+   "kind_rule": "Introducing",
    "url": "https://www.goguardian.com/blog/introducing-goguardian-visitor-visitor-management-built-for-k-12"
   },
   {
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/why-quality-matters-more-than-quantity-when-it-comes-to-screen-time"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Benefits and Challenges of Technology in the Classroom",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/technology-in-the-classroom-importance-challenges"
   }
  ],
  "profile": {

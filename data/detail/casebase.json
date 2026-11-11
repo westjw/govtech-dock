@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Why Probation Leaders Should Adopt AI Now.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casebase.co/blog/ai-in-probation-should-you-wait"
+  },
+  {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "CJIS Cybersecurity in the Age of AI",
    "kind": "press",

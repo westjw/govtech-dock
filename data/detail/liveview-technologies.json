@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "The Mechanics of Off-Grid Autonomous Security: How a Mobile Security Tower Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/the-mechanics-of-off-grid-autonomous-security-how-a-mobile-security-tower-works"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/car-dealership-security-guide-protect-your-lot-and-inventory"
+  },
+  {
+   "date": "2026-11-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Mobile Surveillance vs. Fixed CCTV for Off-Grid and Temporary Jobsites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/mobile-surveillance-vs-fixed-cctv-for-off-grid-and-temporary-jobsites"
   },
   {
    "date": "2026-11-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/where-security-leaders-should-focus-2027"
-  },
-  {
-   "date": "2026-10-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Mitigating Commercial Property Liability and Crime in Outer Perimeters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/mitigating-commercial-property-liability-and-crime-in-outer-perimeters"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Your Integrators Are Part of Your Attack Surface",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/your-integrators-are-part-of-your-attack-surface"
   }
  ],
  "profile": {

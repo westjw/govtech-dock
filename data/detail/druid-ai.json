@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Druid wins two Microsoft awards for AI agents that do real work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.druidai.com/news/druid-wins-two-microsoft-awards-for-ai-agents-that-do-real-work"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "time",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.druidai.com/blog/ai-voice-agents-for-healthcare-the-phone-queue-is-still-your-biggest-access-channel.-now-it-can-run-itself"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Scaling Patient Access in Urgent Care: What the Welsh Ambulance Service Learned Deploying Agentic AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.druidai.com/blog/scaling-patient-access-in-urgent-care-what-the-welsh-ambulance-service-learned-deploying-agentic-ai"
   }
  ]
 }

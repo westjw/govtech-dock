@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "iLOQ and Lobeco announce strategic distribution partnership for the Netherlands, Belgium and Luxembourg",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iloq.com/en/news/iloq-and-lobeco-announce-strategic-distribution-partnership-for-the-netherlands-belgium-and-luxembourg/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.iloq.com/en/insights/what-is-the-best-smart-lock/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Robert Mancuso recognized in the Security Innovator Awards",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.iloq.com/en/insights/robert-mancuso-recognized-in-the-security-innovator-awards/"
   }
  ]
 }

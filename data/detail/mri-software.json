@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "MRI Software celebrates technology innovators with 2026 RE:Visionary Awards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/news/mri-software-celebrates-technology-innovators-with-2026-revisionary-awards/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "MRI Software Expands Agora AI to Simplify Leasing and Property Operations",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-28",
    "headline": "What is common area maintenance (CAM)? \u2013 Charges, fees, and how to calculate CAM",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/resources/the-future-of-document-data-extraction-with-mri-contract-intelligence/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Covering the five-week period between August 30 and October 3, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/resources/consumers-return-to-routine-as-summer-momentum-fades/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Your training data is boring: Anomaly detection with LLMs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/your-training-data-is-boring-anomaly-detection-with-llms"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/en-us/blog/ai-used-in-aur0ra-ransomware-testing-and-execution"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "AI used in Aur0ra ransomware testing and execution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/blog/ai-used-in-aur0ra-ransomware-testing-and-execution"
   }
  ]
 }

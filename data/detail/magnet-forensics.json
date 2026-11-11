@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Extending digital investigations: From endpoints to mobile devices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/extending-digital-investigations-from-endpoints-to-mobile-devices/"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "S3:E1 // Are you DF, IR, or both? Navigating the overlap between forensics and incident response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s3e1-are-you-df-ir-or-both-navigating-the-overlap-between-forensics-and-incident-response/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -22,7 +40,7 @@
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
-   "headline": "Expanding the capabilities of mobile investigations with Magnet Graykey 2",
+   "headline": "Expanding the capabilities of mobile investi\u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/expanding-the-capabilities-of-mobile-investigations-with-magnet-graykey-2/"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/ask-me-anything-accelerating-incident-response-with-digital-forensics-at-scale-2/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "S3:E2 // IR beyond malware: Investigating bu\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/s3e2-ir-beyond-malware-investigating-business-email-compromise-and-fraud/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-19",
-   "headline": "No surprises on the stand: Pretrial preparation framework for investigators and digital device examiners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/no-surprises-on-the-stand-pretrial-preparation-framework-for-investigators-and-digital-device-examiners/"
   }
  ],
  "profile": {

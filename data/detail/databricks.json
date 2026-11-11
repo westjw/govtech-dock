@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "The new Genie: autonomous AI for complex enterprise work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Genie One: The AI cowork home for everyone",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/genie-one-ai-cowork-home-everyone"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Bring your business context to ChatGPT, Claude, Microsoft Copilot Cowork and Grok Bot",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/bring-your-business-context-chatgpt-claude-microsoft-copilot-cowork-and-grok-bot"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Databricks Doubles Down on AI Products, Opens New 235,000-Square-Foot San Francisco Headquarters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/databricks-doubles-down-ai-products-opens-new-235000-square-foot-san-francisco-headquarters"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Air gapped, not data dark: how Bright Machines gives customers live factory dashboards without opening the plant",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/air-gapped-not-data-dark-how-bright-machines-gives-customers-live-factory-dashboards-without"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Announcing GA of Genie Ontology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Genie with Genie Ontology Delivers 1.6\u00d7 the Accuracy with Less than Half the Tokens",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/turn-buying-signals-pipeline-sendoso-gifts-genie-one"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "How public sector organizations can govern AI at scale",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-public-sector-organizations-can-govern-ai-scale"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-07",
-   "headline": "Read, don't copy: replacing file feeds with OpenSharing - Part 2 (How to Implement)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/read-dont-copy-replacing-file-feeds-opensharing-part-2-how-implement"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-07",
-   "headline": "Read, don't copy: replacing file and API feeds with OpenSharing - Part 1 (The Why)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/read-dont-copy-replacing-file-and-api-feeds-opensharing-part-1-why"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "A builder\u2019s guide to scaling Databricks Apps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/builders-guide-scaling-databricks-apps"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "index-text",
-   "first_seen": "2026-11-05",
-   "headline": "Which Data Collaboration Tool: OpenSharing, Clean Rooms, Marketplace",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/which-data-collaboration-tool-opensharing-clean-rooms-marketplace"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "From Delta Sharing to OpenSharing: what changed, what's next",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/delta-sharing-opensharing-what-changed-whats-next"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "Push-based CDC into Unity Catalog with Zerobus Ingest and Debezium",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "Introducing Apache Spark\u00ae 4.3 - Now available in Databricks Runtime 19",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19"
   }
  ]
 }

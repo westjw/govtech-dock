@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "How to Reduce Fleet Fuel Costs: A Guide to Cutting Idling and Fuel Waste",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/how-to-reduce-fleet-fuel-costs-a-guide-to-cutting-idling-and-fuel-waste/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "What Is an ELD? The Complete Guide to Electronic Logging Devices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/the-complete-guide-to-electronic-logging-devices/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Introducing 200-Hour Video Storage with Driver\u2022i",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.gpsinsight.com/blog/driveri-200-hour-video-recording-fleet-dash-cameras/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gpsinsight.com/blog/how-preventative-maintenance-supports-csa-compliance/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Why CSA Scores Matter More Than Ever",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/why-csa-scores-matter-more-than-ever/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "How Asset Trackers Improve Small Equipment and Trailer Visibility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/how-asset-trackers-improve-small-equipment-and-trailer-visibility/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why Backup Accidents Are More Common Than You Think",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/why-backup-accidents-are-more-common-than-you-think/"
   }
  ]
 }

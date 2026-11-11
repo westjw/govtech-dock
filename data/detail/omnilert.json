@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Ohio School Safety Grants: Funding Opportunities to Strengthen School Security in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnilert.com/blog/ohio-school-safety-grants"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnilert.com/blog/school-shootings-2026"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Beyond Uptime: The Next Generation of Camera Health Monitoring",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnilert.com/blog/beyond-uptime-camera-health-monitoring"
   }
  ],
  "profile": {

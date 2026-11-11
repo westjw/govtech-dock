@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "GPS fleet tracking small businesses: A complete guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/gps-fleet-tracking-small-businesses/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/waste-management-contracts-private-haulers/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "A 95% location rate in 2026: what Geotab brings to rental, leasing and mobility fleets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/lrm-locationrate/"
   }
  ],
  "profile": {

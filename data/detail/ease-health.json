@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "EHR Medication Tracking at Methadone Treatment Sites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/ehr-medication-tracking-methadone-treatment"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Medicare and Medicaid at Substance Use Treatment Sites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/sud-treatment-sites-medicare-medicaid-acceptance"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Counseling and IOP at Methadone Treatment Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/otp-counseling-and-iop-services"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-11",
+   "headline": "Enterprise EHR Consolidation Planner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/resources/enterprise-ehr-consolidation-planner"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Co-Occurring Programs at Residential SUD Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/residential-sud-co-occurring-programs"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Outside Records at Mental Health Telehealth Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/mental-health-telehealth-outside-records"
+  },
+  {
    "date": "2026-11-01",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://easehealth.com/blog/rhode-island-ccbhc-program-year-ehr-change-control"
-  },
-  {
-   "date": "2026-11-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Rescheduled Consults: Keep the Original Access Clock",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/psychiatry-rescheduled-consultation-access-clock"
-  },
-  {
-   "date": "2026-11-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Cross-Covering Psychiatry Panels: Track the Next Owner",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/psychiatry-provider-panel-cross-coverage-software"
-  },
-  {
-   "date": "2026-11-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Pennsylvania Service Locations During an EHR Change",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/pennsylvania-medical-assistance-service-location-ehr-change"
-  },
-  {
-   "date": "2026-11-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Pennsylvania BH-MCO Routing: Preserve County Context",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/pennsylvania-behavioral-healthchoices-county-mco-routing"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Native or Integrated: Test the CRM, EHR, and RCM Path",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/native-integrated-crm-ehr-rcm-evidence-tests"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Multi-Location EHR Permissions: Buyer Test Cases",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/blog/multi-location-ehr-permission-evidence-tests"
   }
  ],
  "profile": {

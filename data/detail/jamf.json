@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "How Lean IT Teams Can Improve DEX Without Adding Headcount",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/how-lean-it-teams-improve-dex-without-adding-headcount/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jamf.com/blog/zero-touch-device-onboarding-workflow-with-jamf/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Beyond model guardrails, part 3: when prevention fails",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/agentic-ai-security-input-trust-monitoring-recovery/"
   }
  ]
 }

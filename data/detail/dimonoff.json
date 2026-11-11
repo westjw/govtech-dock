@@ -2,16 +2,16 @@
  "news": [
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Dimonoff at the 2026 IES Street & Area Lighting Conference",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Laval: smart parking signs speed up snow removal",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.dimonoff.com/news/ies-salc-phoenix-2026/"
+   "url": "https://www.dimonoff.com/news/laval-smart-parking-signs/"
   },
   {
-   "date": "2026-11-05",
-   "date_source": "index-text",
+   "date": "2026-10-23",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Dimonoff at Smart City Expo World Congress 2026, Barcelona",
    "kind": "press",
@@ -26,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dimonoff.com/news/smart-cities-connect-2026/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dimonoff at the 2026 IES Street & Area Lighting Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dimonoff.com/news/ies-salc-phoenix-2026/"
   },
   {
    "date": "2026-05-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dimonoff.com/news/smart-cities-connect-san-antonio-2025/"
-  },
-  {
-   "date": "2024-11-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Laval named Eur\u00eaka! 2024 finalist for its Dimonoff project",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dimonoff.com/news/eureka-2024-laval-finalist/"
   }
  ],
  "profile": {
