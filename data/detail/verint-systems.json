@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The Real Seasonal Challenge Isn\u2019t Only Volume. It\u2019s How Fast Your Workforce Can Flex.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/seasonal-workforce-management/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verint.com/blog/automated-quality-assurance-5-cs/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Verint Recognized as an Exemplary Provider in Four 2026 ISG Buyers Guides\u2122 for Contact Centers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verint.com/resources/isg-buyers-guide-for-contact-centers/"
   }
  ]
 }

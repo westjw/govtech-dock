@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Retail Crime Is a Worker Safety Issue: What Security Teams Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/retail-crime-is-a-worker-safety-issue-what-security-teams-need-to-know"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Flock Drone as First Responder and License Plate Reader Cameras Give Officers Context When Every Second Counts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/flock-drone-as-first-responder-and-license-plate-reader-cameras-give-officers-context-when-every-second-counts"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "index-text",
    "first_seen": "2026-11-04",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "How Police Are Using License Plate Readers to Locate Suspects and Bring Missing People Home Safely",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "How Flock License Plate Reader Cameras Work: What They Capture, What They Don\u2019t, and the Guardrails Around Their Use",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.flocksafety.com/blog/what-flocks-privacy-and-security-updates-mean-for-private-sector-customers"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Independent Study: Vehicle Thefts Fell 11% After Flock Cameras Went Live",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.flocksafety.com/blog/independent-study-vehicle-thefts-fell-11-after-flock-cameras-went-live"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Building on Trust: Updates to Flock\u2019s Terms and Conditions",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://www.flocksafety.com/blog/building-on-trust-updates-to-flocks-terms-and-conditions"
   }
  ],
  "profile": {

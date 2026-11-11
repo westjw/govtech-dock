@@ -1,8 +1,44 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "ARTEX: Attackers apply agentic AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/artex-attackers-apply-agentic-ai"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "N-able issues advisory on critical vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/n-able-issues-advisory-on-critical-vulnerabilities"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "N-able issues advisory on critical vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/blog/n-able-issues-advisory-on-critical-vulnerabilities"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Enforcing intent-based access control at the endpoint",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/enforcing-intent-based-access-control-at-the-endpoint"
+  },
+  {
    "date": "2026-11-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-06",
    "headline": "Killing ill-willed skills: Sophos AI at BSides Sydney",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/blog/ai-used-in-aur0ra-ransomware-testing-and-execution"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "\u2018Node2Shell\u2019 vulnerability (CVE-2026-111497) in active exploitation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/node2shell-cve-2026-111497-in-active-exploitation"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "\u2018Node2Shell\u2019 vulnerability (CVE-2026-111497) in active exploitation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/blog/node2shell-cve-2026-111497-in-active-exploitation"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "card-date",
-   "first_seen": "2026-10-27",
-   "headline": "Building intent-based access control for AI agents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/building-intent-based-access-control-for-ai-agents"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Proof-of-concept exploit released for PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
-   "kind": "product",
-   "kind_rule": "released",
-   "url": "https://www.sophos.com/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
   }
  ]
 }

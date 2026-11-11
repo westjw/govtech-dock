@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "340 Drone Incidents Near UK Military Sites: Hobbyist or Hostile?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/uk-military-drone-incidents-counter-uas/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Why Challenging Environments and Situations Demand a Different Kind of Counter-Drone Equipment",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Covert in Port and Precise at Sea: Drone Mitigation for Ports and Vessels with RF Cyber-Takeover",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://d-fendsolutions.com/blog/drone-neutralization-systems/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "From Stadiums to Prisons: Building Persistent SLTT Counter-Drone Readiness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/building-sltt-counter-drone-readiness/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "How Government Agencies Can Manage Mutual Aid Requests During an Emergency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/government-mutual-aid-requests"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "index-text",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veoci.com/blog/healthcare-breach-incident-response-readiness"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Everyone Wants AI Governance. Almost Nobody Says What They're Governing.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/ai-governance-healthcare-hospitals"
   }
  ]
 }

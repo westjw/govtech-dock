@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Check Point Certification Path 2026: CCSA, CCSE, CCTE and Where to Practise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://spektrasystems.com/blog/check-point-certification-path"
+  },
+  {
+   "date": "2026-11-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Virtual Labs vs Physical Labs vs Simulators for IT Training",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://spektrasystems.com/blog/virtual-labs-vs-physical-labs"
+  },
+  {
    "date": "2026-11-07",
    "date_source": "json-ld",
    "first_seen": "2026-11-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://spektrasystems.com/blog/best-lms-for-technical-training"
-  },
-  {
-   "date": "2026-10-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "10 Best Sales Demo Environment Platforms for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://spektrasystems.com/blog/best-demo-environment-platforms"
-  },
-  {
-   "date": "2026-10-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Best Hackathon Hosting Platforms for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://spektrasystems.com/blog/best-hackathon-platforms"
   }
  ]
 }

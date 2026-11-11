@@ -1,8 +1,26 @@
 {
  "news": [
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Binance breach: Why it highlights the importance of default deny controls",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/binance-breach-why-it-highlights-the-importance-of-default-deny-controls"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Why credential theft is only the beginning of an attack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/why-credential-theft-is-only-the-beginning-of-an-attack"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "card-date",
    "first_seen": "2026-11-06",
    "headline": "Why AI agents need just-in-time access",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-11-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-07",
    "headline": "GovRAMP vs. FedRAMP: What's the difference?",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/protect-the-tools-that-protect-you-how-to-control-the-path-to-edr-tampering"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "card-date",
-   "first_seen": "2026-10-22",
-   "headline": "GoodPerson campaign aimed at users bypassing China\u2019s Great Firewall",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/goodperson-campaign-aimed-at-users-bypassing-chinas-great-firewall"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "card-date",
-   "first_seen": "2026-10-24",
-   "headline": "NIST releases key practices for incident response in AI and super intelligence training",
-   "kind": "product",
-   "kind_rule": "releases",
-   "url": "https://www.threatlocker.com/blog/nist-releases-key-practices-for-incident-response-in-ai-and-super-intelligence-training"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "How Shared Fleet Access Gaps Create Safety and Accountability Risks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-shared-fleet-access-gaps-create-safety-and-accountability-risks"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "How to Set Shared Fleet Availability Targets Without Buying More Vehicles",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-set-shared-fleet-availability-targets-without-buying-more-vehicles"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.agilefleet.com/news/agile-fleet-launches-fleetcommander-go-to-simplify-vehicle-sharing-and-automated-key-access"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "10 Warning Signs Your Utility's Shared Vehicle Program Has an Accountability Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/10-warning-signs-your-utilitys-shared-vehicle-program-has-an-accountability-problem"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How to Tell Whether Your Shared Fleet Has a Vehicle Distribution Problem Instead of a Fleet Size Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-to-tell-whether-your-shared-fleet-has-a-vehicle-distribution-problem-instead-of-a-fleet-size-problem"
   }
  ],
  "profile": {

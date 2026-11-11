@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Cut Truck Rolls on Network Installations With Live Video Support",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blitzz.co/blog/cut-truck-rolls-on-network-installations-with-live-video-support"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Reading Serial Numbers with OCR Over Live Video",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blitzz.co/blog/reading-serial-numbers-ocr-live-video"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blitzz.co/blog/which-video-support-tools-integrate-with-salesforce-service-cloud-or-genesys"
-  },
-  {
-   "date": "2026-10-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Which Virtual Inspection Apps Do Building Departments Use for Remote Inspections?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blitzz.co/blog/which-virtual-inspection-apps-do-building-departments-use-for-remote-inspections"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "How Contractors and Homeowners Can Prepare for Remote Inspections Under AB 1738",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blitzz.co/blog/how-contractors-and-homeowners-can-prepare-for-remote-inspections-under-ab-1738"
   }
  ]
 }

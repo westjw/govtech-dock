@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "What Does Optimal Service Coordination Between Agencies Look Like?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/interagency-service-coordination/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/the-psychology-of-hope-in-law-enforcement-what-the-research-says/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What is Behavioral Health Deflection?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/what-is-behavioral-health-deflection/"
   }
  ],
  "profile": {

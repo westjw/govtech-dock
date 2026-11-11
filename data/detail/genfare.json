@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Voters back transit funding and put the focus on service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/voters-back-transit-funding-and-put-the-focus-on-service/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://genfare.com/blog/practical-approach-data-interoperability/"
-  },
-  {
-   "date": "2025-11-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to fight fare evasion and improve fare debt recovery",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://genfare.com/blog/blog-how-to-fight-fare-evasion/"
   }
  ],
  "profile": {

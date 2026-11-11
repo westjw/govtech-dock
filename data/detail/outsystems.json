@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "OutSystems achieves TX-RAMP compliance certification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/outsystems-tx-ramp-certification"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Industry Solutions: Introducing Agentic First Notice of Loss",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.outsystems.com/blog/posts/introducing-outsystems-agentic-first-notice-of-loss"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -8,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/idc-marketscape-ai-low-code-leader"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "OutSystems achieves TX-RAMP compliance certification",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/outsystems-tx-ramp-certification"
   },
   {
    "date": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/ai-agent-orchestration"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "Is AppGen a threat to SaaS? OutSystems customers react",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/app-generation-impacts-saas/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "5 Ways Clean Student Data Improves School Bus Routing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://busplanner.com/resources/blog/5-ways-clean-student-data-improves-school-bus-routing/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://busplanner.com/resources/blog/evaluate-student-ride-times/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "6 Types of Transportation Data to Include in Your District\u2019s Budget Request",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://busplanner.com/resources/blog/school-transportation-data-2027-budget-request/"
   }
  ]
 }

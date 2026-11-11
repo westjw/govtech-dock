@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "iDEAL is becoming Wero: What does that mean for European merchants?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nuvei.com/posts/ideal-is-becoming-wero-what-does-that-mean-for-european-merchants"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Why consistency no longer has to mean uniformity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nuvei.com/posts/why-consistency-no-longer-has-to-mean-uniformity"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "OTA payments: The real cost between booking and departure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nuvei.com/posts/ota-payments-the-real-cost-between-booking-and-departure"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nuvei.com/posts/ai-has-a-getting-paid-problem"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-14",
-   "headline": "Nuvei secures license to offer local payment acceptance in South Africa",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nuvei.com/posts/nuvei-secures-license-to-offer-local-payment-acceptance-in-south-africa"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "Can peak season payment performance make or break a brand?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nuvei.com/posts/can-peak-season-payment-performance-make-or-break-a-brand"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Government's biggest technology problem isn't AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nuvei.com/posts/governments-biggest-technology-problem"
   }
  ]
 }

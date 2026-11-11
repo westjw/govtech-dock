@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Motive and Routeware Partner to Bring AI-Powered Visual Proof of Service to Waste and Public Works Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/resources/news/motive-and-routeware-partner-to-bring-ai-powered-visual-proof-of-service-to-waste-and-public-works-fleets/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Routeware Puts AI to Work in Waste and Recycling, from the Back Office to the Curb",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/resources/news/routeware-puts-ai-to-work-in-waste-and-recycling-from-the-back-office-to-the-curb/"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "How AI Contamination Detection Works on Garbage Truck Cameras",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/garbage-truck-cameras-contamination-detection/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -8,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/resources/news/smart-technologies-help-municipalities-optimize-waste-collection-routes-and-reduce-costs/"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Waste Management Analytics: What to Track and How AI Can Help",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/waste-management-analytics-what-to-track-how-ai-helps/"
   },
   {
    "date": "2026-11-02",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/blog/how-municipal-fleets-handle-disaster-debris-management/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "index-text",
-   "first_seen": "2026-10-08",
-   "headline": "AI in Waste Management: Helpful or Hype?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/ai-waste-management-helpful-or-hype/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "index-text",
-   "first_seen": "2026-10-19",
-   "headline": "Garden Waste Management: How UK Councils Can Run a Service That Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/garden-waste-management-how-uk-councils-can-run-a-service-that-works/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "Payment Solutions for Waste Management That Get Haulers Paid Faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/payment-solutions-for-waste-management/"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "How to Create Optimized Waste Collection Routes With Live Maps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/optimized-waste-collection-routes-live-maps/"
   }
  ],
  "profile": {

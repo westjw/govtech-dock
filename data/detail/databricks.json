@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Databricks' Commitment to European Sovereignty",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/databricks-commitment-european-sovereignty"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Accelerate GPU training on Unity Catalog tables with UCDataset",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/accelerate-gpu-training-unity-catalog-tables-ucdataset"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Turn buying signals into pipeline with Sendoso gifts in Genie One",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/turn-buying-signals-pipeline-sendoso-gifts-genie-one"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -38,7 +74,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-05",
    "headline": "Which Data Collaboration Tool: OpenSharing, Clean Rooms, Marketplace",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "Real-time fraud detection with Feature Views",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/real-time-fraud-detection-feature-views"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "The Enterprise Case for Open-Weight Models on Databricks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/enterprise-case-open-weight-models-databricks"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Claude Platform now supports native OpenTelemetry observability in Databricks MLflow",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "Declare and optimize with UNIQUE constraints on Databricks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks"
   }
  ]
 }

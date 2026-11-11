@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Salesforce CPQ End-of-Sale: What it Means for Your Contracts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/salesforce-cpq-end-of-sale-contract-management"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -40,7 +49,7 @@
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
-   "headline": "Docusign Named a Leader in the 2026 IDC MarketScape for Worldwide Contract Life-Cycle Management Software for Corporate Legal",
+   "headline": "Docusign Named a Leader in the IDC MarketScape for Worldwide Contract Life-Cycle Management Software for Corporate Legal, 2026-2027",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/docusign-leader-2026-idc-marketscape-worldwide-contract-life-cycle-management-software-corporate-legal"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/2026-inc-power-partner-award-winner"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Why is Contract Lifecycle Management Important for Modern Business?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/why-contract-lifecycle-management-matters"
   }
  ]
 }

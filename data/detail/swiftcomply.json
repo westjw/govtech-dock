@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Wastewater compliance: what it actually covers, and why it\u2019s getting harder to manage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/wastewater-compliance/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Water quality compliance: what it means, and why monitoring is the hard part",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/water-quality-compliance/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.swiftcomply.com/blog/celebrating-national-backflow-prevention-day-with-the-water-industry-in-buford-ga/"
-  },
-  {
-   "date": "2026-07-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "3 steps to start your pretreatment program\u2019s CROMERR application",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/3-simple-steps-cromerr-pretreatment/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Making your program\u2019s impact visible to leadership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/making-your-programs-impact-visible-to-leadership/"
   }
  ],
  "profile": {

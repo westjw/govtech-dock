@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Verify the agent, secure the device: a closer look at governing AI end to end with Jamf and Okta",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/okta-jamf-ai-agent-governance-identity-device/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "index-text",
    "first_seen": "2026-11-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jamf.com/blog/agentic-ai-security-input-trust-monitoring-recovery/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "When security logic becomes an attack surface: lessons from CVE-2026-20971",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/cve-2026-20971-samsung-knox-proca-vulnerability/"
   }
  ]
 }

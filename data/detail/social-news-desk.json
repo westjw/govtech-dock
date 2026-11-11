@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "How Newsrooms Can Sustain Disaster Coverage Without Burning Out Their Social Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.socialnewsdesk.com/blog/how-newsrooms-can-sustain-disaster-coverage-without-burning-out-their-social-teams/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.socialnewsdesk.com/blog/the-newsroom-social-media-audit-what-to-fix-before-q4-coverage-gets-heavy/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Local Newsrooms Cover Breaking News Faster with SND",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.socialnewsdesk.com/blog/how-local-newsrooms-cover-breaking-news-faster-with-snd/"
   }
  ],
  "profile": {

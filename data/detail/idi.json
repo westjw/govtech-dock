@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "7 priorities shaping Medicaid program integrity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ididata.com/blog/7-priorities-shaping-medicaid-program-integrity/"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Beyond the vendor name: Understanding the relationships behind federal suppliers",
+   "kind": "leadership",
+   "kind_rule": "name",
+   "url": "https://www.ididata.com/blog/beyond-the-vendor-name-understanding-the-relationships-behind-federal-suppliers/"
+  },
+  {
    "date": "2026-05-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ididata.com/blog/please-serve-yourself-how-consumer-behavior-is-reshaping-collections-and-recovery/"
+  },
+  {
+   "date": "2025-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Gain actionable insights with the most advanced identity intelligence platform on the market",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ididata.com/blog/enhancing-success-with-kyc-top-3-ways-to-improve-business-outcomes/"
   }
  ],
  "profile": {

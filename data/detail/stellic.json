@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The Hidden Cost of Student Attrition",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/student-attrition-cost"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The Hidden Cost of Missed Transfer Enrollment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/missed-transfer-enrollment-cost"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The Hidden Cost of Manual Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/staff-capacity-cost"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/what-is-a-catalog-year"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "How Transfer Credit Equivalency Works (and Why Credits Get Denied)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/how-transfer-credit-equivalency-works"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Persistence Rate vs. Retention Rate: What Is the Difference?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/persistence-rate-vs-retention-rate"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "SAP is measured across GPA, pace, and maximum timeframe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/how-is-sap-measured"
   }
  ],
  "profile": {

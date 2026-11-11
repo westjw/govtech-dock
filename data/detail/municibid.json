@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Commercial Dump Truck Insurance: Costs & Savings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://municibid.com/blog/commercial-dump-truck-insurance-cost-guide"
+  },
+  {
    "date": "2026-11-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Best Used SUV: Government Fleet Auction Deals",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Dump Truck Rental vs. Buying: Break-Even Guide",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "2028 Ford Expedition Police Responder: Specs & Tech",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-06",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Municibid App Is Here! Plus a Rare Micro Van and Picnic Highlights",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://municibid.com/blog/skid-steer-attachments-guide"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "The Holy Grail of Rolex Collecting Found in a Police Auction",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://municibid.com/blog/the-holy-grail-of-rolex-collecting-found-in-a-police-auction"
   }
  ],
  "profile": {

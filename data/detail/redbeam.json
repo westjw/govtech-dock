@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Warehouse Efficiency: KPIs, Benchmarks, and Fixes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/warehouse-efficiency"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Shop Floor Control Systems: Functions, Phases, and ERP Fit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/shop-floor-control"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Cycle Counting: Methods, Frequency, and Accuracy Benchmarks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://redbeam.com/blog/cycle-counting-methods"
+  },
+  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://redbeam.com/blog/physical-inventory-count"
-  },
-  {
-   "date": "2025-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Accelerating RFID Sales with RedBeam: BlueStar Nation Podcast",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://redbeam.com/blog/accelerating-rfid-sales-with-redbeam"
-  },
-  {
-   "date": "2025-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "RedBeam RFID Leads with SGTIN Support",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://redbeam.com/blog/redbeam-rfid-leads-with-sgtin-support"
-  },
-  {
-   "date": "2025-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "RedBeam to Showcase RFID Solutions at VARTECH 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://redbeam.com/blog/rfid-solutions-at-vartech-2025"
   }
  ]
 }

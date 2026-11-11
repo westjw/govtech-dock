@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "LINEV Systems at RSNA 2026: FOBOS XR and FLOWD 8020 in Chicago",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://linevsystems.us/news/linev-systems-at-rsna-2026-fobos-xr-and-flowd-8020-in-chicago/"
+  },
+  {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Employee and Visitor Security Screening: How to Build an Efficient Workplace Checkpoint",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "School Bag Screening Systems: Building Faster, Smarter Security Checkpoints for U.S. Schools",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "LINEV Systems to Showcase FOBOS XR at NAME 2026",
    "kind": "leadership",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "LINEV Systems ClearPass Body Scanner Among Improvements Recognized in Lake County\u2019s National Innovation Award",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Securing Campus Service Entrances with X-Ray Screening Technology",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-07-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Advanced X-Ray Screening for Contraband Control in Correctional Facilities",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://linevsystems.us/news/modern-airport-x-ray-security-for-faster-passenger-and-baggage-screening/"
-  },
-  {
-   "date": "2026-05-29",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "LINEV Systems and Quantum Detection Advance AI-Powered X-Ray Screening",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://linevsystems.us/news/linev-systems-and-quantum-detection-advance-ai-powered-x-ray-screening/"
   }
  ],
  "profile": {

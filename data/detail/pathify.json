@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "When Your Cabinet Asks About AI, What Do You Hand Them?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pathify.com/blog/when-your-cabinet-asks-about-ai-what-do-you-hand-them/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Budgeting Through Uncertainty Without Losing Sight of the Mission",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pathify.com/blog/budgeting-through-uncertainty-without-losing-sight-of-the-mission/"
+  },
+  {
    "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-06-24",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What\u2019s the Quiet Driver of ROI? The Campus Experience",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Governance Blueprint: 4 Ways to Scale Your CXP Without the Chaos",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-04-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "In the Business of Transformation",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-04-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Rebuilding the Digital Core",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-04-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Breaking Free From the Link Farm",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-04-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Mind the (Experience) Gap",
    "kind": "press",
    "kind_rule": null,
    "url": "https://pathify.com/blog/mind-the-experience-gap/"
-  },
-  {
-   "date": "2026-04-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Extending the Ecosystem Concordia University Wisconsin Expands with Communities Read More \u2192",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pathify.com/blog/extending-the-ecosystem/"
-  },
-  {
-   "date": "2026-04-03",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Put the Polishing Cloth Down",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pathify.com/blog/put-the-polishing-cloth-down/"
   }
  ],
  "profile": {

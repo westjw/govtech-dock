@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Australia\u2019s Student Visa Crackdown Is a University Budget Problem in Disguise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jaggaer.com/blog/student-visa-changes-impacts-university-budget"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jaggaer.com/blog/mastering-complex-quick-tenders"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "GEP SMART vs Zycus (2026): Which Is Right for Your Business?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jaggaer.com/blog/gep-smart-vs-zycus"
   }
  ],
  "profile": {

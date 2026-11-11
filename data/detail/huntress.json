@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Beyond the clipboard: The evolving tradecraft of ClickFix",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/the-evolving-tradecraft-of-clickfix"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "N-able Disables Cloud Services Following Disclosure of \"Able2Shell\" Exploit Chains",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/n-able-disables-cloud-services-following-disclosure-of-able2shell-exploit-chains"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Inside an AhsayCBS Intrusion: Hidden Webshells, a CryptoMiner, and a C2 Implant",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/ahsaycbs-webshells"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.huntress.com/blog/unboxing-phishing-kits"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "M365 Token Spray and Replay Campaign Compromises Business Email Accounts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/token-replay-spray"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Amazon-Themed ClickFix Campaign Serves Up Finger-Licking Malware",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/amazon-clickfix-finger"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Attack Reduction in Huntress Managed ESPM: Disrupting ClickFix",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/espm-attack-reduction-clickfix"
   }
  ]
 }

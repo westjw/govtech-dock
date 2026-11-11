@@ -1,188 +1,146 @@
 {
-  "date": "2026-11-10",
-  "previous": "2026-11-08",
+  "date": "2026-11-11",
+  "previous": "2026-11-10",
   "changes": [
     {
-      "company": "Glacier",
-      "id": "glacier",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Senior Business Development Manage (Remote MT or CT ti)"
-    },
-    {
-      "company": "Cyvl",
-      "id": "cyvl",
-      "from": "Yes",
+      "company": "Dimonoff",
+      "id": "dimonoff",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "VODA.ai",
-      "id": "voda-ai",
+      "company": "PSD Citywide",
+      "id": "psd-citywide",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Account Executive (Dallas, Texas, Uni)"
     },
     {
-      "company": "RecDesk",
-      "id": "recdesk",
-      "from": "None found",
+      "company": "Active911",
+      "id": "active911",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Autura",
+      "id": "autura",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Customer Success Manager only"
+      "note": "Autura Sales Talent Network only"
     },
     {
-      "company": "Vermont Systems",
-      "id": "vermont-systems",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager only"
+      "company": "Traction Rec",
+      "id": "traction-rec",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Parks and Recre (Vancouver, British)"
     },
     {
-      "company": "Edulog",
-      "id": "edulog",
+      "company": "Concourse Tech",
+      "id": "concourse-tech",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive (Georgia, South Car)"
+    },
+    {
+      "company": "Papercast",
+      "id": "papercast",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "BS&A Software",
-      "id": "bs-a-software",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Zencity",
-      "id": "zencity",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Bamboo Health",
-      "id": "bamboo-health",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Director, Deal Desk only"
-    },
-    {
-      "company": "Citylogix",
-      "id": "citylogix",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Applied Information",
-      "id": "applied-information",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Sensys Gatso Group",
-      "id": "sensys-gatso-group",
+      "company": "VCS HR & Jobs4Blue",
+      "id": "vcs-hr-jobs4blue",
       "from": "None found",
-      "to": "Yes",
-      "note": "Area Sales Manager (Haarlem, Noord-Hol)"
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
-      "company": "Aequitas Solutions",
-      "id": "aequitas-solutions",
+      "company": "Transfinder",
+      "id": "transfinder",
       "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Pikmykid",
       "id": "pikmykid",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 500 for https://www.pikmykid.com/ca"
-    },
-    {
-      "company": "Key Data Dashboard",
-      "id": "key-data-dashboard",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "accesso Technology Group",
-      "id": "accesso-technology-group",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "AirGarage",
-      "id": "airgarage",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive (Chicago, IL) (Chicago, IL)"
-    },
-    {
-      "company": "Overstory",
-      "id": "overstory",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Campspot",
-      "id": "campspot",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Manager (Small Business)"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Open Point",
-      "id": "open-point",
-      "from": "None found",
+      "company": "CaseWorthy",
+      "id": "caseworthy",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Sales Development Representative only"
+      "note": "Revenue Operations AI Specialist only"
     },
     {
-      "company": "Chorus Innovations",
-      "id": "chorus-innovations",
-      "from": "Yes",
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "VP of Customer Success only"
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "GE Vernova",
+      "id": "ge-vernova",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "DZS",
+      "id": "dzs",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Inside Sales Representative only"
+    },
+    {
+      "company": "iCEV",
+      "id": "icev",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Territory Manager (Northeast) (Remote Worker)"
     },
     {
       "company": "Sage",
       "id": "sage",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.sage.com/en-us/"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "BK Technologies",
-      "id": "bk-technologies",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "company": "Sophos, Inc.",
+      "id": "sophos-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Deccan International",
-      "id": "deccan-international",
+      "company": "Tricentis",
+      "id": "tricentis",
       "from": "Yes",
       "to": "Unknown",
-      "note": "network error: robots.txt on deccanintl."
+      "note": "HTTP 502 for https://tricentis.wd1.mywor"
+    },
+    {
+      "company": "Cotiviti",
+      "id": "cotiviti",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: robots.txt on careers-cot"
+    },
+    {
+      "company": "Filevine",
+      "id": "filevine",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     }
   ]
 }

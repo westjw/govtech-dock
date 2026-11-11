@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Vantiq and SRS.AI Sign MOU to Bring Real-Time AI Orchestration to Portable Data Centers",
+   "kind": "contract",
+   "kind_rule": "Sign MOU",
+   "url": "https://vantiq.com/news/vantiq-srs-ai-sign-mou-real-time-ai-orchestration-to-portable-data-centers/"
+  },
+  {
    "date": "2026-06-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -31,7 +40,7 @@
    "date": "2026-06-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Vantiq and Daol TS Forge Strategic Partnership to Expand Real-Time, Event-Driven AI Across Korea\u2019s Enterprise, Manufacturing, Logistics, Public, and Energy Sectors",
+   "headline": "Take the next steps",
    "kind": "press",
    "kind_rule": null,
    "url": "https://vantiq.com/news/vantiq-and-daol-ts-forge-strategic-partnership-to-expand-real-time-event-driven-ai-across-koreas-enterprise-manufacturing-logistics-public-and-energy-sectors/"
@@ -40,7 +49,7 @@
    "date": "2026-04-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Take the next steps",
+   "headline": "Vantiq and NTT ExC Partner Corporation Expand Strategic Alliance to Bolster HR Operations",
    "kind": "press",
    "kind_rule": null,
    "url": "https://vantiq.com/news/vantiq-and-ntt-exc-partner-corporation-expand-strategic-alliance-to-bolster-hr-operations/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://vantiq.com/resources/gai-insights-research-article-the-rise-of-second-generation-ai-orchestration/"
-  },
-  {
-   "date": "2022-03-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Data Sheet Vantiq Platform Datasheet The Vantiq platform combines a powerful set of product features and advanced tools to make the next generation of digital solutions a reality today. More info",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://vantiq.com/resources/vantiq-platform-datasheet/"
   }
  ]
 }

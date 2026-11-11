@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "card-date",
+   "first_seen": "2026-11-10",
+   "headline": "ZaristAI Accepted into the AWS Activate Startup Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aristai.io/newsroom/news/fdf2d949-b31f-4fe6-8589-8471ae4ea8d0"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "card-date",
+   "first_seen": "2026-11-10",
+   "headline": "ZaristAI Selected for Harvard Business School Foundry Startup Bootcamp",
+   "kind": "contract",
+   "kind_rule": "Selected for",
+   "url": "https://www.aristai.io/newsroom/news/9a2e852b-cbc9-4cc5-b064-8cf46b6d439a"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "card-date",
    "first_seen": "2026-10-14",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aristai.io/newsroom/blog/a0f80bee-7c32-4c98-8dce-0b9287afb624"
-  },
-  {
-   "date": "2026-07-03",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Is Good Faith a Legal Defense for Accessibility?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aristai.io/newsroom/blog/f6ea13d2-d109-4507-9f6d-9139c0955b18"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "A National Award for AI Done Right: Congratulations to Prof. Toni Gist",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aristai.io/newsroom/news/23c6aa5c-9ebb-45aa-a01c-2d6b30049b7c"
   }
  ]
 }

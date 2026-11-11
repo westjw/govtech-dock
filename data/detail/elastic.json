@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Elastic Stack 8.19.25 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-8-19-25-released"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elastic.co/blog/elastic-leader-gartner-magic-quadrant-enterprise-ai-search-2026"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Elastic Stack 8.19.23 released",
-   "kind": "product",
-   "kind_rule": "released",
-   "url": "https://www.elastic.co/blog/elastic-stack-8-19-23-released"
   }
  ]
 }

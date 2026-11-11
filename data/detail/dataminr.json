@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "The Mission Doesn\u2019t End When You Take Off the Uniform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/the-mission-doesnt-end-when-you-take-off-the-uniform/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/blog/flight-tonight-needs-public-data-i-and-w-now/"
+  },
+  {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Fight Tonight Needs Public-Data I&W Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/fight-tonight-needs-public-data-i-and-w-now/"
   },
   {
    "date": "2026-10-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/blog/how-transit-agencies-benefit-from-autonomous-real-time-intelligence/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Dataminr 2026 U.S. Midterm Election Security Checklist",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/dataminr-2026-u-s-midterm-election-security-checklist/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Singapore Just Told Its Critical Infrastructure Operators That Compliance Isn\u2019t the Finish Line",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/singapore-cybersecurity-code-of-practice/"
   }
  ],
  "profile": {

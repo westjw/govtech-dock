@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "AirSight Metro: Affordable Airspace Intelligence for Cities, Counties, and Towns",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/metro-affordable-airspace-intelligence-cities-counties-towns"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "FEMA C-UAS Grant: The November 16 Deadline and What Comes After",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/fema-c-uas-grant-november-16-deadline"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/drone-detection-for-events-and-stadiums"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Airport Drone Detection: From Sighting to Runway Decision | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/airport-drone-detection"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Portable vs. Stationary Anti-Drone Systems: How to Choose | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/portable-vs-stationary-anti-drone-systems"
   }
  ],
  "profile": {

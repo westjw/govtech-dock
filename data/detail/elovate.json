@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "IACP 2026 Recap: What Chiefs Asked About Automated Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/iacp-2026-recap/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://elovate.com/blog/public-trust-sustains-ate-programs/"
-  },
-  {
-   "date": "2026-03-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How State DOTs Are Redefining the Future of Work Zone Speed Enforcement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://elovate.com/blog/how-state-dots-redefining-future-of-work-zone-enforcement/"
   }
  ],
  "profile": {

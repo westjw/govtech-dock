@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Dimonoff at the 2026 IES Street & Area Lighting Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dimonoff.com/news/ies-salc-phoenix-2026/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-10-24",
@@ -17,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dimonoff.com/news/smart-cities-connect-2026/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Dimonoff at the 2026 IES Street & Area Lighting Conference",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dimonoff.com/news/ies-salc-phoenix-2026/"
   },
   {
    "date": "2026-05-22",

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Voluntary benefits: A guide for your first-time enrollees",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/voluntary-benefits-first-time/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Introducing the WEX Index: Real data for a complicated fuel economy",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.wexinc.com/resources/blog/introducing-the-wex-index-real-data-for-a-complicated-fuel-economy/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "What's the smartest way to pay suppliers right now?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/whats-the-smartest-way-to-pay-suppliers-right-now/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -17,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/2027-fsa-limits-commuter-limits/"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The WEX Index\u00ae gives you benchmarks to see where your fleet stands, and where you may be leaving money on the table.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/wex-index/"
   },
   {
    "date": "2026-11-04",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/what-financial-leaders-should-ask-about-their-ai-fraud-strategy/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "What is business email compromise and how does it affect B2B payments?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/blog/beware-of-your-inbox-as-bec-cybercrime-climbs/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "4 considerations when choosing employee benefits for the first time",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/blog/choosing-employee-benefits-first-time/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Over-the-road fuel cards: How data, fraud protection, and cardless payments help trucking fleets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/blog/over-the-road-fuel-cards-how-data-fraud-protection-and-cardless-payments-help-trucking-fleets/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "What businesses need to know about payment fraud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/blog/payment-fraud-is-getting-smarter/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "National Family Engagement Month: Why Schools and Families Must Partner for Student Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/national-family-engagement-month/"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Where the Work Happens: Looking Beyond the Technology Inventory",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/edtech-value-where-work-happens/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.powerschool.com/blog/naviance-product-news-summer-2026/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "PowerSchool Strengthens Global Privacy Posture with Independent Certifications, Validations, and Updated Global Privacy Statement",
-   "kind": "product",
-   "kind_rule": "Updated",
-   "url": "https://www.powerschool.com/news/powerschool-strengthens-global-privacy-posture-with-independent-certifications-validations-and-updated-global-privacy-statement/"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "PowerSchool CCLR (Naviance) is Recognized with Tech & Learning\u2019s Best of Show Award at ISTELive 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.powerschool.com/news/powerschool-cclr-naviance-is-recognized-with-tech-learnings-best-of-show-award-at-istelive-2026/"
   }
  ],
  "profile": {

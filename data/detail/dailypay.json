@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "What is a pay period? How to explain different types to your workforce",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dailypay.com/resource-center/blog/what-is-a-pay-period/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dailypay.com/resource-center/blog/what-is-earned-wage-access/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Comparing weekly and biweekly pay for employees and employers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dailypay.com/resource-center/blog/weekly-vs-bi-weekly-pay/"
   }
  ],
  "profile": {

@@ -1,10 +1,28 @@
 {
  "news": [
   {
-   "date": "2026-11-05",
+   "date": "2026-11-10",
    "date_source": "index-text",
-   "first_seen": "2026-11-05",
+   "first_seen": "2026-11-10",
    "headline": "This is some text inside of a div block.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/introducing-goguardian-visitor-visitor-management-built-for-k-12"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "GoGuardian Launches GoGuardian Visitor, Delivering the Most Complete Visitor Management Solution in K-12",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.goguardian.com/newsroom/goguardian-launches-goguardian-visitor-delivering-the-most-complete-visitor-management-solution-in-k-12"
+  },
+  {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-05",
+   "headline": "How Do Schools Enforce Custody Orders at the Front Desk?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/how-do-schools-enforce-custody-orders-at-the-front-desk"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/technology-in-the-classroom-importance-challenges"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Back-to-School Best Practices: Setting Your GoGuardian Beacon Account Up for Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/back-to-school-best-practices-setting-your-goguardian-beacon-account-up-for-success"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Back-to-School Best Practices: Setting your GoGuardian Teacher Account Up for Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/back-to-school-best-practices-setting-your-goguardian-teacher-account-up-for-success"
   }
  ],
  "profile": {

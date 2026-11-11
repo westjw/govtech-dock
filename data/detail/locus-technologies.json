@@ -1,22 +1,112 @@
 {
  "news": [
   {
-   "date": "2015-12-01",
+   "date": "2026-11-02",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Browse our library of product tours, recorded demos, and webinars.",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // November 2, 2026 Environmental Data as a Chain of Evidence",
    "kind": "press",
    "kind_rule": null,
+   "url": "https://www.locustec.com/blog/environmental-data-as-chain-of-evidence/"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // October 27, 2026 How Electronic Data Deliverables (EDDs) Solve the Subsurface Puzzle",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/how-electronic-data-deliverables-solve-the-subsurface-puzzle/"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // October 15, 2026 From Apps to Agents: Why Locus Is Ready to Reinvent Environmental Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/agentic-ai-environmental-software/"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Insights , updates and expert guidance",
+   "kind": "product",
+   "kind_rule": "updates",
    "url": "https://www.locustec.com/resources/videos/"
   },
   {
-   "date": "2015-10-29",
+   "date": "2026-09-17",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Peruse our library of analysis on the technical and scientific aspects of EHS.",
+   "first_seen": "2026-11-10",
+   "headline": "Insights , updates and expert guidance",
+   "kind": "product",
+   "kind_rule": "updates",
+   "url": "https://www.locustec.com/resources/press-releases/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Insights , updates and expert guidance",
+   "kind": "product",
+   "kind_rule": "updates",
+   "url": "https://www.locustec.com/resources/webinars/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // September 10, 2026 What Does Scalability Mean for Complex Environmental Data?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.locustec.com/resources/white-papers/"
+   "url": "https://www.locustec.com/blog/scalability-for-complex-environmental-data/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // September 8, 2026 How Global Companies Can Manage EU and US Refrigerant Compliance on One Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/eu-us-refrigerant-compliance-software/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // September 3, 2026 Sustainability Talk Is Cheap. Where Is the Data?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/sustainability-talk-verified-environmental-data/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // August 27, 2026 How Can Buyers Tell Whether Environmental Software Is Truly Proven?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/how-can-buyers-tell-whether-environmental-software-is-truly-proven/"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "Blog // August 26, 2026 EU F-Gas Regulation: How Equipment Operators Can Turn Compliance Requirements into Practical Workflows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/eu-f-gas-regulation-compliance-workflows/"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Your GHG numbers only count if they can be verified.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/resources/epa-ghg-calculator/"
   }
  ]
 }

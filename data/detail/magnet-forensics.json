@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Clearing the path to justice: Public sector digital investigations report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/public-sector-digital-investigations-2027-report/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/no-surprises-on-the-stand-pretrial-preparation-framework-for-investigators-and-digital-device-examiners/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Leading the Digital Path to Justice",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/leading-the-digital-path-to-justice/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-06",
+   "date_source": "og:published",
+   "first_seen": "2026-11-11",
+   "headline": "Infor CloudSuite for metal fabrication",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/infor-cloudsuite-for-metal-fabrication"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Infor CPQ 2026.10 Release: Configure, quote, and close deals faster with Infor CPQ and embedded AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/infor-cpq-2026-10-release-embedded-ai"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Infor CloudSuite Automotive 2026.10: More automation and an easier route to the agentic enterprise",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "October 2026 release: Infor CloudSuites for distribution put AI to work where distributors need it most",
    "kind": "press",
@@ -29,12 +47,21 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Hoteliers, read this before you adopt another AI tool",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/hotel-ai-strategy"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "og:published",
+   "first_seen": "2026-11-11",
+   "headline": "Infor CloudSuite Automotive for tier suppliers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/infor-cloudsuite-automotive-for-tier-suppliers"
   },
   {
    "date": "2026-10-29",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "From ideas to impact: Meet the 2026 Infor Community Hackathon winners",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Hiring faster \u2260 hiring better",
    "kind": "press",
@@ -65,7 +92,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "What does the bank get in return? Managing commercial customer commitments",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/why-mes-and-ai-work-better-together"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Healthcare operational interoperability: beyond connectivity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/healthcare-operational-interoperability-beyond-connectivity"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-23",
-   "headline": "Gartner IT Symposium/Xpo 2026: Day 4 Highlights with Infor: Humans and AI agents, one coordinated system",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/gartner-2026-day-4-human-ai-collaboration"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-22",
-   "headline": "Gartner IT Symposium/Xpo 2026: Day 3 Highlights with Infor: Governed by design, ready to scale AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/gartner-2026-day-3-governed-ai-trust"
   }
  ],
  "profile": {

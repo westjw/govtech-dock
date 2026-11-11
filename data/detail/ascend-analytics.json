@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-10",
+   "headline": "The New M&A and PPA Playbook: Interconnection, Offtake Certainty, Permitting and Deal Dynamics in 2027 | November 10, 2026, 11am MT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/the-new-m-a-and-ppa-playbook-interconnection-offtake-certainty-permitting-and-deal-dynamics-in-2027"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ascendanalytics.com/blog/texas-clean-energy-summit"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "Central Coast Community Energy (3CE) Announces Request for Proposals to Meet its Renewable Portfolio Standard (RPS) and Reliability Goals in CAISO",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ascendanalytics.com/blog/central-coast-community-energy-3ce-announces-request-for-proposals"
   }
  ],
  "profile": {

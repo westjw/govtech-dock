@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "What Is Business Email Compromise and How To Prevent It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://vanishid.com/resources/blog/what-is-business-email-compromise/"
+  },
+  {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "External Identity Security: The Complete Guide for Security & Risk Leaders",
    "kind": "press",
@@ -10,8 +19,8 @@
    "url": "https://vanishid.com/resources/blog/external-identity-security-guide/"
   },
   {
-   "date": "2026-11-02",
-   "date_source": "index-text",
+   "date": "2026-10-30",
+   "date_source": "json-ld",
    "first_seen": "2026-10-31",
    "headline": "What Is Doxing and Why Is It Dangerous for Executives?",
    "kind": "press",

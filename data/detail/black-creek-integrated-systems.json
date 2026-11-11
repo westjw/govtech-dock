@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "2026 | Case Study: Winnebago County Sheriff's Office",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blackcreekisc.com/news/2026-case-study-winnebago-county-sheriffs-office"
+  },
+  {
    "date": "2026-07-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blackcreekisc.com/news/2025-black-creek-featured-in-correctional-news"
-  },
-  {
-   "date": "2025-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2025 | Don Bryan, Customer Service Manager",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blackcreekisc.com/news/2025-don-bryan-customer-service-manager"
   }
  ],
  "profile": {

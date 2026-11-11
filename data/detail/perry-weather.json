@@ -10,8 +10,17 @@
    "url": "https://perryweather.com/resources/ymca-camp-round-rock/"
   },
   {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Here\u2019s how YMCA of Central Texas uses Perry Weather to keep a busy camp safe.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/ymca-of-central-texas/"
+  },
+  {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Lightning Delay Rules: When to Stop, Reset the Clock, and Resume Activity",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/schsl-heat-policy-the-wbgt-playbook-for-south-carolina-schools/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "NJSIAA Heat Policy: The WBGT Playbook for New Jersey Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/njsiaa-heat-policy-the-wbgt-playbook-for-new-jersey-schools/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Microsoft 365 Backup Costs: How Enterprises Can Control Storage Growth and 5-Year TCO",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crashplan.com/blog/microsoft-365-backup-costs/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crashplan.com/resources/server-backup-economics-guide/"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "SaaS Backup Is Becoming Tier 1. Is Your Recovery Strategy Ready?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crashplan.com/blog/blog-enterprise-saas-backup-recovery-strategy/"
   }
  ]
 }

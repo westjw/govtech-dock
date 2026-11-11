@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Scaling AI You Can Trust: Lessons from Emburse Assurance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/scaling-ai-you-can-trust"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "The Last Mile of Finance Technology: What Should Your Vendor Deliver, and What Should You Build?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/what-should-your-vendor-deliver"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "How Cybersecurity Builds Lasting Trust",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Emburse Named a Leader in Three 2026 IDC MarketScape Reports for AI-Enabled Accounts Payable and Embedded Payments",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Emburse Data Shows Growth in Recorded Lodging Nights Easing After Strong H1 Ahead of 2027 Budget Planning",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "The Top 10 U.S. Cities Driving Business Travel Demand in 2026",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Modernizing Corporate Travel Policies for Success",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "How to Build a Travel and Spend Program That Scales With You",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.emburse.com/blog/how-to-build-a-travel-and-spend-program"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "card-date",
-   "first_seen": "2026-09-28",
-   "headline": "What Rising Travel Spend Can Tell Business Leaders",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/blog/what-rising-travel-spend-can-tell-business-leaders-about-growth"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "card-date",
-   "first_seen": "2026-09-28",
-   "headline": "Air Travel Accounts for More Than 75% of Corporate Transportation Spend Growth, New Emburse Data Reveals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/company/news/air-travel-accounts-for-more-than-75-of-corporate-transportation-spend-growth-new-emburse-data-reveals"
   }
  ],
  "profile": {

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "AI Capability Assessment: What It Is and How to Measure It",
    "kind": "press",
@@ -10,8 +10,44 @@
    "url": "https://answerr.ai/blog/ai-capability-assessment"
   },
   {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "AI at Work: Key Statistics on How People Use AI (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://answerr.ai/blog/ai-at-work-statistics"
+  },
+  {
+   "date": "2026-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "The AI Capability Framework: The Five Dimensions of Working Well With AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://answerr.ai/blog/ai-capability-framework"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "AI capability assessment: how to measure how well your team works with AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://answerr.ai/blog/ai-capability-assessment-how-to-measure"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "AI readiness assessment: how to tell if your team is actually ready to work with AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://answerr.ai/blog/ai-readiness-assessment-is-your-team-ready"
+  },
+  {
    "date": "2026-10-25",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-26",
    "headline": "How to Assess a Candidate's AI Skills Before You Hire",
    "kind": "press",
@@ -71,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://answerr.ai/blog/usage-vs-capability-why-ai-adoption-metrics-dont-tell-the-whole-story"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "How to Choose the Right Education Software to Improve Student Engagement and Outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://answerr.ai/blog/how-to-choose-education-software-to-improve-student-engagement"
-  },
-  {
-   "date": "2026-04-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "AI and Emotional Intelligence in Leadership: Does It Help or Hinder?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://answerr.ai/blog/ai-and-emotional-intelligence-in-leadership"
-  },
-  {
-   "date": "2026-03-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Open AI Platforms for Academic Work in 2026: Infrastructure, Governance and Learning Provenance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://answerr.ai/blog/open-ai-platforms-for-academic-work"
   }
  ]
 }

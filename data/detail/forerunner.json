@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "card-date",
+   "first_seen": "2026-11-10",
+   "headline": "Introducing Route History: See Where Your Team Has Been",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://withforerunner.com/post/route-history"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://withforerunner.com/post/modernizing-code-enforcement-in-denham-springs-la"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Assistant for Forms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/forerunners-ai-assistant-for-forms"
   }
  ],
  "profile": {

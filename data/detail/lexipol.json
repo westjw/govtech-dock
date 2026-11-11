@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "AI-Generated CSAM After Anderegg",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/ai-generated-csam-after-anderegg/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lexipol.com/resources/blog/how-top-agencies-close-the-gap-between-policy-and-practice/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "The Secret to More Resilient First Responders: More Cardio",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/the-secret-to-more-resilient-first-responders-more-cardio/"
   }
  ],
  "profile": {

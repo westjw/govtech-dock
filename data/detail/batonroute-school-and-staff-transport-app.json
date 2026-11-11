@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Gesti\u00f3n del transporte escolar: gu\u00eda para colegios",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://batonroute.com/blog/gestion-del-transporte-escolar-guia-para-colegios/"
+  },
+  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://batonroute.com/blog/como-optimizar-la-movilidad-en-centros-de-dia-y-servicios-asistenciales/"
-  },
-  {
-   "date": "2026-03-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Los principales retos en la gesti\u00f3n del transporte y c\u00f3mo resolverlos de forma eficiente",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://batonroute.com/blog/los-principales-retos-en-la-gestion-del-transporte-y-como-resolverlos-de-forma-eficiente/"
   }
  ],
  "profile": {

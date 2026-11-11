@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "How Should In-House Legal Teams Prepare for Rising Consumer Protection Litigation?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.onit.com/blog/prepare-for-rising-consumer-protection-litigation/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Three Things Legal Ops Won\u2019t Stop Talking About This Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.onit.com/blog/legal-ops-trends-this-year/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Why Legal Ops Teams Are Asking Questions Instead of Running Reports",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.onit.com/blog/ask-unity-conversational-reporting/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-28",
    "headline": "Legal Invoice Review Should Optimize for Accuracy, Not Maximum Reductions",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.onit.com/blog/legal-ops-doesnt-need-an-it-ticket-for-every-workflow/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "og:published",
-   "first_seen": "2026-10-21",
-   "headline": "Where Legal Hold Processes Break Down and What a Stronger Process Looks Like",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.onit.com/blog/where-legal-hold-processes-break-down/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "og:published",
-   "first_seen": "2026-10-21",
-   "headline": "Legal Invoice Review Has a Coverage Problem, Not Just a Savings Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.onit.com/blog/legal-invoice-review-has-a-coverage-problem/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "og:published",
-   "first_seen": "2026-10-21",
-   "headline": "AI Outperforms Experienced Lawyers in Legal Invoice Review",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.onit.com/blog/ai-outperforms-lawyers-legal-invoice-review-research/"
   }
  ]
 }

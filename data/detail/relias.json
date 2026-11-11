@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "How to Improve Patient Experience (and Healthcare System Performance)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.relias.com/blog/how-to-improve-patient-experience-and-healthcare-system-performance"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Ambulatory Surgery Center Marketing: Strategies to Grow Your ASC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.relias.com/blog/ambulatory-surgery-center-marketing"
+  },
+  {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Integrating the 4 Rs of Trauma-Informed Care Into Your Practice",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "7 Dimensions of Applied Behavior Analysis (ABA)",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "How to Attract and Retain Direct Support Professionals",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Can AI Replace Human Expertise in Healthcare Training?",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Measuring the ROI of a Healthcare Training Partnership",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Compliance Training ROI: What it Is, How to Measure it, and Why it Matters",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.relias.com/blog/how-to-maximize-roi-with-your-healthcare-training"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Relias vs. MedTrainer: Which Healthcare Workforce Platform Is Right for You?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.relias.com/blog/relias-vs-medtrainer"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Dental Practice Marketing: The Guide to Growing Your Practice",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.relias.com/blog/dental-practice-marketing"
   }
  ]
 }

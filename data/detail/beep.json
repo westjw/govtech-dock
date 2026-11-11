@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Beep Launches Freebee Microtransit Service In Pasco County",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://ridebeep.com/press-releases/beep-launches-freebee-microtransit-service-in-pasco-county"
+  },
+  {
    "date": "2026-09-24",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "MOIA America Welcomes Its First Riders In Autonomous ID. Buzz Vehicles With Beep",
    "kind": "leadership",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Beep And Freebee Combine To Create The Essential Transit Partner For Modern Mobility",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Beep Closes Series B To Accelerate Commercial Deployment Of Autonomous Mobility Networks",
    "kind": "funding",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ridebeep.com/press-releases/beep-announces-shared-av-deployments-set-to-debut-with-global-and-regional-impact"
-  },
-  {
-   "date": "2025-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beep, Inc. and ADASTEC Announce Alliance Agreement to Scale Shared Autonomous Transportation Services Ahead of Two Upcoming Deployments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ridebeep.com/press-releases/beep-inc-and-adastec-announce-alliance-agreement-to-scale-shared-autonomous-transportation-services-ahead-of-two-upcoming-deployments"
   }
  ],
  "profile": {

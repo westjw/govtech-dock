@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "How to design a decision-grade pilot for agentic AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/how-to-develop-a-decision-grade-ai-pilot/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/ai-governance-dashboard/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Three developer tasks worth handing to an agent",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/three-developer-tasks-worth-handing-to-an-agent/"
   }
  ]
 }

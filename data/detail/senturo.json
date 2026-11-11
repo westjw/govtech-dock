@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-10",
+   "headline": "Shared Device Cart Management: How K-12 Districts Track Missing Devices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.senturo.com/blog/shared-device-cart-management"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "near-h1",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.senturo.com/blog/how-to-track-a-windows-laptop"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-22",
-   "headline": "MDM Policies: How to Secure Devices Before Something Goes Wrong",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.senturo.com/blog/mdm-policies"
   }
  ]
 }

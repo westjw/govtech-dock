@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Growth vs. complexity: Rethinking the multifamily operating model",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/growth-vs-complexity-rethinking-the-multifamily-operating-model/"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Facilities management metrics: 20 KPIs to track, with formulas and benchmarks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/facility-management-kpis/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -46,6 +64,15 @@
    "url": "https://www.mrisoftware.com/blog/what-does-being-an-idc-marketscape-leader-mean-for-property-occupiers/"
   },
   {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "What MRI\u2019s IDC Leader position says about where lease administration is heading",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-mris-idc-leadership-position-says-about-where-lease-administration-is-heading/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/resources/consumers-return-to-routine-as-summer-momentum-fades/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "What is a CMMS?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-is-a-cmms/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "10 Best apartment management software platforms compared for 2026 (G2 shortlist)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/best-apartment-management-software-comparison/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "time",
-   "first_seen": "2026-10-22",
-   "headline": "What is lease abstraction and why is it important?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-is-lease-abstraction/"
   }
  ]
 }

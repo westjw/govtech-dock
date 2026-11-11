@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "PM10 vs PM2.5: Understanding the difference in particulate matter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clarity.io/blog/pm10-vs-pm2-5-understanding-the-difference-in-particulate-matter"
+  },
+  {
    "date": "2026-11-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "recap | Dust monitoring in the UK: MCERTS, IAQM, and the Clarity Dust Module",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clarity.io/blog/ultrafine-particle-monitoring-101-how-to-measure-and-track-ufp-pollution"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Fenceline monitoring 101: How to detect, track, and report emissions from industrial sites",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clarity.io/blog/fenceline-monitoring-101-how-to-detect-track-and-report-emissions-from-industrial-sites"
   }
  ]
 }

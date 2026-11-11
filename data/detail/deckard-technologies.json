@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "How Is Short-Term Rental Compliance Software Priced?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/how-is-short-term-rental-compliance-software-priced"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://deckard.com/resources/forensic-ai-for-rental-compliance"
-  },
-  {
-   "date": "2026-05-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "How Tax Assessors Can Stop Lost Revenue with Integrated STR Tax Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://deckard.com/resources/how-tax-assessors-can-stop-lost-revenue-with-integrated-str-tax-software"
   }
  ],
  "profile": {
