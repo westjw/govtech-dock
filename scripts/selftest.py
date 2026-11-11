@@ -153,6 +153,22 @@ FAMILY_CASES = [
     ("Sales Engineer", "gtm"),
     ("Associate General Counsel, Revenue", "ga"),
     ("Senior Software Engineer", "engineering"),
+    # the rules added after the 2026-11-11 Unclassified review (roles.py, last
+    # in RULES); none of these titles is in family_overrides.json
+    ("Residential Field Appraiser", "field"),
+    ("Senior Category Buyer", "ga"),
+    ("Billing Coordinator", "ga"),
+    ("People & Culture Generalist", "ga"),
+    ("Workplace Services Lead", "ga"),
+    ("Gestionnaire des contrats", "ga"),
+    ("Medical Coding Auditor", "ga"),
+    ("Senior Database Administrator II", "engineering"),
+    ("Développeur(se) back-end", "engineering"),
+    ("Directrice des ventes", "gtm"),
+    ("Gestionnaire de comptes principal", "gtm"),
+    ("Competitive Intelligence Lead", "gtm"),
+    # accounts payable in French is not account management
+    ("Comptes fournisseurs - technicien", "other"),
 ]
 
 

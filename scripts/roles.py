@@ -209,6 +209,26 @@ RULES: list[tuple[str, re.Pattern]] = [
                       r"pricing|security governance|shipping|logistics|"
                       r"enrollment agent|clerk|"
                   r"administrative (assistant|manager|specialist|coordinator))\b", re.I)),
+    # LAST, SO THEY ONLY CATCH TITLES NO RULE ABOVE PLACES. Each word below
+    # decided the family every time it appeared in the Unclassified queue on
+    # 2026-11-11, where two blind readers placed 1,060 of 1,272 titles from
+    # their ads: appraiser 17/17 field, buyer 10/10 and billing 7/7 G&A,
+    # database administrator 9/9 and developpeur 11/11 engineering, ventes and
+    # comptes (French sales and account management) GTM. Left out because the
+    # titles were mixed: "supply chain" (IT leads), "system administrator"
+    # (Salesforce and CPQ admins) and "assessor" (clinical assessors).
+    ("field", re.compile(r"\bappraisers?\b", re.I)),
+    ("ga", re.compile(r"\b(buyers?|billing|people (and|&) culture|"
+                      r"workplace (experience|services|operations)|contrats?|"
+                      r"medical (coding|coder)|coding (specialist|validation)|"
+                      r"validation coder)\b", re.I)),
+    ("engineering", re.compile(r"\b(database administrator|\bdba\b|"
+                               r"d[eé]veloppeu(r|se|r\(se\)|r\(euse\)))", re.I)),
+    # "comptes" is account management only outside accounting: comptes
+    # fournisseurs / clients / a payer are accounts payable and receivable.
+    ("gtm", re.compile(r"\bventes?\b|"
+                       r"\bcomptes?\b(?!\s+(fournisseurs|clients|[aà] payer|[aà] recevoir))|"
+                       r"\bcompetitive (intelligence|insights?)\b", re.I)),
 ]
 
 
