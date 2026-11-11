@@ -1,9 +1,9 @@
 {
- "checked_on": "2026-11-04",
+ "checked_on": "2026-11-11",
  "counts": {
   "moved": 141,
-  "ok": 3037,
-  "unread": 277
+  "ok": 3046,
+  "unread": 276
  },
  "links": {
   "365labs": [
@@ -113,22 +113,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.airit.com"
-   }
-  ],
-  "airline-data-inc": [
-   {
-    "field": "website",
-    "final": "https://www.airlinedata.com/",
-    "kind": "unread",
-    "plain_http": {
-     "final": "http://www.airlinedata.com/",
-     "kind": "ok",
-     "title": "Airline Data Inc. | Home of The Hub"
-    },
-    "status": null,
-    "title": "",
-    "url": "https://www.airlinedata.com/",
-    "why": "connection dropped"
    }
   ],
   "aladtec": [
@@ -255,6 +239,22 @@
     "status": null,
     "title": "",
     "url": "https://www.apollovideo.com",
+    "why": "timed out"
+   }
+  ],
+  "applied-information": [
+   {
+    "field": "board",
+    "final": "https://appinfoinc.com/careers",
+    "kind": "unread",
+    "plain_http": {
+     "final": "https://appinfoinc.com/careers/",
+     "kind": "ok",
+     "title": "Intelligent Transportation System Careers at Applied Information"
+    },
+    "status": null,
+    "title": "",
+    "url": "https://appinfoinc.com/careers",
     "why": "timed out"
    }
   ],
@@ -422,6 +422,24 @@
     "url": "https://www.linkedin.com/company/barkpass/jobs/"
    }
   ],
+  "bchex": [
+   {
+    "field": "website",
+    "final": "https://bchex.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Background Check Software & Systems | Bchex",
+    "url": "https://www.bib.com"
+   },
+   {
+    "field": "board",
+    "final": "https://bchex.com/careers",
+    "kind": "moved",
+    "status": 200,
+    "title": "Careers at Bchex: Build Safer Communities",
+    "url": "https://www.bib.com/careers"
+   }
+  ],
   "bis-digital": [
    {
     "field": "website",
@@ -462,6 +480,17 @@
     "url": "https://blitzpermits.ai/careers"
    }
   ],
+  "blocksi": [
+   {
+    "field": "board",
+    "final": "https://blocksi.net/careers",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://blocksi.net/careers",
+    "why": "timed out"
+   }
+  ],
   "blue-bird-corporation": [
    {
     "field": "website",
@@ -483,22 +512,6 @@
     "url": "https://jobs.bentley.com"
    }
   ],
-  "bond-sports": [
-   {
-    "field": "board",
-    "final": "https://facilities.bondsports.co/careers",
-    "kind": "unread",
-    "plain_http": {
-     "final": "https://facilities.bondsports.co/careers",
-     "kind": "ok",
-     "title": "Careers | Bond Sports"
-    },
-    "status": null,
-    "title": "",
-    "url": "https://facilities.bondsports.co/careers",
-    "why": "timed out"
-   }
-  ],
   "bonfire-interactive": [
    {
     "field": "website",
@@ -507,6 +520,16 @@
     "status": 200,
     "title": "Government & Public Sector Procurement Software | Euna",
     "url": "https://gobonfire.com"
+   }
+  ],
+  "boomi": [
+   {
+    "field": "website",
+    "final": "https://boomi.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://boomi.com/"
    }
   ],
   "brainfreeze": [
@@ -594,6 +617,16 @@
     "status": 403,
     "title": "",
     "url": "https://www.bullard.com/careers/"
+   }
+  ],
+  "calamp": [
+   {
+    "field": "website",
+    "final": "https://www.calamp.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.calamp.com"
    }
   ],
   "caliber-public-safety": [
@@ -721,7 +754,7 @@
     "final": "https://www.trimble.com/en/products/trimble-unity-maintain",
     "kind": "moved",
     "status": 200,
-    "title": "Trimble Unity Maintain: The Future of AgileAssets & Cityworks",
+    "title": "Enterprise Asset Management Software | Trimble Unity Maintain",
     "url": "https://www.cityworks.com"
    }
   ],
@@ -894,6 +927,35 @@
     "url": "https://www.courbanize.com"
    }
   ],
+  "courtsmart": [
+   {
+    "field": "website",
+    "final": "https://www.courtsmart.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.courtsmart.com",
+    "why": "no such domain"
+   },
+   {
+    "field": "board",
+    "final": "https://www.courtsmart.com/employment/",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.courtsmart.com/employment/",
+    "why": "no such domain"
+   },
+   {
+    "field": "posts_at",
+    "final": "https://www.courtsmart.com/employment/",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.courtsmart.com/employment/",
+    "why": "no such domain"
+   }
+  ],
   "csg-forte": [
    {
     "field": "website",
@@ -980,17 +1042,6 @@
     "why": "network error"
    }
   ],
-  "debristech": [
-   {
-    "field": "website",
-    "final": "https://debristech.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://debristech.com",
-    "why": "timed out"
-   }
-  ],
   "debtbook": [
    {
     "field": "website",
@@ -999,6 +1050,26 @@
     "status": 200,
     "title": "Treasury Software for Government and Nonprofits | Monetary",
     "url": "https://www.debtbook.com"
+   }
+  ],
+  "deccan-international": [
+   {
+    "field": "website",
+    "final": "https://deccanintl.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://deccanintl.com",
+    "why": "certificate is for another address"
+   },
+   {
+    "field": "board",
+    "final": "https://deccanintl.com/who-we-are/careers/",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://deccanintl.com/who-we-are/careers/",
+    "why": "certificate is for another address"
    }
   ],
   "dedrone-by-axon": [
@@ -1049,17 +1120,6 @@
     "status": 200,
     "title": "Digital Ally | Body Cameras, In-Car & Fleet Video Solutions",
     "url": "https://www.digitalallyinc.com"
-   }
-  ],
-  "digital-assurance-certification-llc": [
-   {
-    "field": "website",
-    "final": "https://www.dacbond.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.dacbond.com",
-    "why": "timed out"
    }
   ],
   "disaster-tech": [
@@ -1120,14 +1180,6 @@
     "status": 200,
     "title": "Gigabit Connectivity Everywhere - Zhone",
     "url": "https://www.dzsi.com"
-   },
-   {
-    "field": "board",
-    "final": "https://zhone.com/company/about/careers/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Careers - Zhone",
-    "url": "https://www.dzsi.com/company/careers"
    }
   ],
   "e-j-ward": [
@@ -1207,6 +1259,16 @@
     "url": "https://ecivis.com"
    }
   ],
+  "edmunds-govtech": [
+   {
+    "field": "website",
+    "final": "https://www.edmundsgovtech.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.edmundsgovtech.com"
+   }
+  ],
   "edovo": [
    {
     "field": "website",
@@ -1274,6 +1336,16 @@
     "url": "https://www.etix.com"
    }
   ],
+  "everdriven": [
+   {
+    "field": "website",
+    "final": "https://everdriven.com",
+    "kind": "unread",
+    "status": 520,
+    "title": "",
+    "url": "https://everdriven.com"
+   }
+  ],
   "evluma": [
    {
     "field": "website",
@@ -1318,22 +1390,6 @@
     "status": 404,
     "title": "",
     "url": "https://fasterasset.com/careers"
-   }
-  ],
-  "filevine": [
-   {
-    "field": "board",
-    "final": "https://www.filevine.com/jobs/",
-    "kind": "unread",
-    "plain_http": {
-     "final": "https://www.filevine.com/jobs/",
-     "kind": "ok",
-     "title": "Jobs | Filevine"
-    },
-    "status": null,
-    "title": "",
-    "url": "https://www.filevine.com/jobs/",
-    "why": "timed out"
    }
   ],
   "findhelp": [
@@ -1561,16 +1617,6 @@
     "url": "https://govos.com/about/careers"
    }
   ],
-  "grab": [
-   {
-    "field": "website",
-    "final": "https://www.grab.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.grab.com"
-   }
-  ],
   "greenq": [
    {
     "field": "website",
@@ -1579,7 +1625,7 @@
     "status": null,
     "title": "",
     "url": "https://greenq.co.il",
-    "why": "connection refused"
+    "why": "timed out"
    },
    {
     "field": "board",
@@ -1588,7 +1634,7 @@
     "status": null,
     "title": "",
     "url": "https://greenq.co.il/join-us/",
-    "why": "connection refused"
+    "why": "timed out"
    }
   ],
   "greenspace-health": [
@@ -1617,46 +1663,6 @@
     "status": 200,
     "title": "Magnet Griffeye: Digital Media Analysis | Magnet Forensics",
     "url": "https://www.griffeye.com"
-   }
-  ],
-  "guard1": [
-   {
-    "field": "website",
-    "final": "https://www.guard1.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.guard1.com",
-    "why": "timed out"
-   },
-   {
-    "field": "board",
-    "final": "https://www.guard1.com/about/careers/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.guard1.com/about/careers/",
-    "why": "timed out"
-   }
-  ],
-  "guard1-by-timekeeping-systems": [
-   {
-    "field": "website",
-    "final": "https://www.guard1.com/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.guard1.com/",
-    "why": "timed out"
-   },
-   {
-    "field": "board",
-    "final": "https://www.guard1.com/about/careers/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.guard1.com/about/careers/",
-    "why": "timed out"
    }
   ],
   "gutermann": [
@@ -1959,24 +1965,6 @@
     "url": "https://inrix.com"
    }
   ],
-  "insignia-software": [
-   {
-    "field": "website",
-    "final": "https://www.insigniasoftware.com",
-    "kind": "unread",
-    "status": 500,
-    "title": "",
-    "url": "https://www.insigniasoftware.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.insigniasoftware.com/Careers",
-    "kind": "unread",
-    "status": 500,
-    "title": "",
-    "url": "https://www.insigniasoftware.com/Careers"
-   }
-  ],
   "invita-healthcare-technologies": [
    {
     "field": "website",
@@ -2021,21 +2009,23 @@
   "ipvideo": [
    {
     "field": "website",
-    "final": "https://www.pelco.com",
-    "kind": "moved",
-    "status": 200,
-    "title": "CCTV Solutions, Security Cameras, Sensors & Devices | Pelco",
-    "url": "https://ipvideocorp.com"
+    "final": "https://ipvideocorp.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://ipvideocorp.com",
+    "why": "certificate expired"
    }
   ],
   "it-curves": [
    {
     "field": "website",
-    "final": "https://itcurves.ai/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Go! Time: two years of on-demand transit in Maryland\u2019s capital",
-    "url": "https://itcurves.net"
+    "final": "https://itcurves.net",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://itcurves.net",
+    "why": "certificate is for another address"
    }
   ],
   "iworq-systems": [
@@ -2465,6 +2455,16 @@
     "url": "https://moodle.com/us/careers/"
    }
   ],
+  "moovit": [
+   {
+    "field": "website",
+    "final": "https://moovit.com",
+    "kind": "unread",
+    "status": 202,
+    "title": "",
+    "url": "https://moovit.com"
+   }
+  ],
   "mprest": [
    {
     "field": "website",
@@ -2634,7 +2634,7 @@
     "status": null,
     "title": "",
     "url": "https://numina.co",
-    "why": "certificate is for another address"
+    "why": "timed out"
    }
   ],
   "nwave-technologies": [
@@ -2776,24 +2776,32 @@
     "url": "https://passportworkforce.com/careers"
    }
   ],
-  "passur-aerospace": [
+  "paymentus": [
    {
     "field": "website",
-    "final": "https://www.passur.com",
+    "final": "https://www.paymentus.com",
     "kind": "unread",
-    "status": null,
+    "status": 403,
     "title": "",
-    "url": "https://www.passur.com",
-    "why": "timed out"
+    "url": "https://www.paymentus.com"
    },
    {
     "field": "board",
-    "final": "https://passur.com/about-us/careers/",
+    "final": "https://www.paymentus.com/careers",
     "kind": "unread",
-    "status": null,
+    "status": 403,
     "title": "",
-    "url": "https://passur.com/about-us/careers/",
-    "why": "timed out"
+    "url": "https://www.paymentus.com/careers"
+   }
+  ],
+  "pikmykid": [
+   {
+    "field": "board",
+    "final": "https://www.centegix.com/careers",
+    "kind": "moved",
+    "status": 200,
+    "title": "Careers | CENTEGIX",
+    "url": "https://www.pikmykid.com/careers"
    }
   ],
   "planetbids": [
@@ -3103,16 +3111,6 @@
     "url": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true"
    }
   ],
-  "relias": [
-   {
-    "field": "board",
-    "final": "https://www.relias.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.relias.com/careers"
-   }
-  ],
   "repay": [
    {
     "field": "website",
@@ -3169,6 +3167,16 @@
     "status": 200,
     "title": "Road Assessments - Michelin Mobility Intelligence",
     "url": "https://www.roadbotics.com"
+   }
+  ],
+  "roadway-management-technologies": [
+   {
+    "field": "board",
+    "final": "https://roadman.tech/careers/",
+    "kind": "unread",
+    "status": 404,
+    "title": "",
+    "url": "https://roadman.tech/careers/"
    }
   ],
   "rock-solid-technologies": [
@@ -3333,17 +3341,23 @@
     "status": null,
     "title": "",
     "url": "https://sedaru.com",
-    "why": "secure connection failed"
+    "why": "timed out"
    }
   ],
   "sedc": [
    {
     "field": "website",
-    "final": "https://www.nisc.coop/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Homepage - National Information Solutions Cooperative (NISC)",
-    "url": "https://www.sedata.com"
+    "final": "https://www.sedata.com",
+    "kind": "unread",
+    "plain_http": {
+     "final": "https://www.nisc.coop/",
+     "kind": "moved",
+     "title": "Homepage - National Information Solutions Cooperative (NISC)"
+    },
+    "status": null,
+    "title": "",
+    "url": "https://www.sedata.com",
+    "why": "timed out"
    },
    {
     "field": "board",
@@ -3561,16 +3575,6 @@
     "title": "",
     "url": "https://sportskey.com",
     "why": "connection dropped"
-   }
-  ],
-  "spout": [
-   {
-    "field": "posts_at",
-    "final": "https://wellfound.com/company/spout-1/jobs",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://wellfound.com/company/spout-1/jobs"
    }
   ],
   "srs-computing": [
@@ -3896,17 +3900,6 @@
     "url": "https://www.outerspatial.com"
    }
   ],
-  "trapeze-group": [
-   {
-    "field": "website",
-    "final": "https://trapezegroup.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://trapezegroup.com",
-    "why": "timed out"
-   }
-  ],
   "tss-paratransit": [
    {
     "field": "website",
@@ -3916,6 +3909,22 @@
     "title": "",
     "url": "https://tssparatransit.com",
     "why": "connection dropped"
+   }
+  ],
+  "turbo-data-systems": [
+   {
+    "field": "website",
+    "final": "https://www.turbodata.com",
+    "kind": "unread",
+    "plain_http": {
+     "final": "http://www.turbodata.com/",
+     "kind": "ok",
+     "title": "Turbo Data Systems | Citation processing and enforcement"
+    },
+    "status": null,
+    "title": "",
+    "url": "https://www.turbodata.com",
+    "why": "certificate not trusted"
    }
   ],
   "twiage": [
@@ -4117,17 +4126,6 @@
     "why": "no such domain"
    }
   ],
-  "vitalsense-technologies": [
-   {
-    "field": "website",
-    "final": "https://vitalsensetechnologies.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://vitalsensetechnologies.com",
-    "why": "timed out"
-   }
-  ],
   "vitech-systems-group": [
    {
     "field": "website",
@@ -4217,24 +4215,14 @@
     "why": "connection dropped"
    }
   ],
-  "zencity": [
+  "zaristai": [
    {
     "field": "website",
-    "final": "https://zencity.io",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://zencity.io",
-    "why": "connection dropped"
-   },
-   {
-    "field": "board",
-    "final": "https://zencity.io/careers",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://zencity.io/careers",
-    "why": "connection dropped"
+    "final": "https://www.zaristai.io/",
+    "kind": "moved",
+    "status": 200,
+    "title": "AI-Powered Tutor, Accessibility, & Curriculum Tools",
+    "url": "https://www.aristai.io"
    }
   ],
   "zenrobotics": [
