@@ -16091,8 +16091,11 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "IACP 2026; IAFC FRI 2026; APCO 2026; FDIC International 2026",
-  "researched": false
+  "source": "IACP 2026; IAFC FRI 2026; APCO 2026; FDIC International 2026; FDIC International 2027",
+  "researched": false,
+  "also_known_as": [
+   "E.F. Johnson Company"
+  ]
  },
  {
   "id": "egym",
@@ -46833,7 +46836,10 @@
   "govtech": false,
   "vendor_type": "Equipment / Components",
   "source": "APTA 2026; IACP 2026; NSA 2026; CTAA EXPO 2026; NAPT Summit 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "Safe Fleet/Seon"
+  ]
  },
  {
   "id": "safe-restraints-inc",
@@ -63881,7 +63887,10 @@
   "govtech": false,
   "researched": false,
   "vendor_type": "Equipment / Components",
-  "source": "AAAE 2026; ACA Congress 2026; TRB 2027"
+  "source": "AAAE 2026; ACA Congress 2026; TRB 2027; ITS America 2026",
+  "also_known_as": [
+   "Hanwha Vision America"
+  ]
  },
  {
   "id": "hi-lite-airfield-services",
@@ -64770,7 +64779,10 @@
   "govtech": false,
   "researched": false,
   "vendor_type": "Engineering / Consulting",
-  "source": "AAAE 2026; AAAE 2027; NSGIC 2026; TRB 2027"
+  "source": "AAAE 2026; AAAE 2027; NSGIC 2026; TRB 2027; DISTRIBUTECH 2026",
+  "also_known_as": [
+   "NV5 Geospatial, Inc."
+  ]
  },
  {
   "id": "ocem-airfield",
@@ -85996,7 +86008,10 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026",
+  "also_known_as": [
+   "VeloDyne Systems, A Cleanwater1 Company"
+  ]
  },
  {
   "id": "clear-creek-systems",
@@ -91795,7 +91810,11 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: WEFTEC 2026",
+  "also_known_as": [
+   "TOMCO2 Systems"
+  ]
  },
  {
   "id": "touchgrid",
@@ -105358,7 +105377,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Animal Care Expo 2026"
  },
  {
   "id": "connectwell",
@@ -115488,7 +115508,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: PLA 2026"
  },
  {
   "id": "playgarden-online",
@@ -123997,7 +124018,10 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026",
+  "also_known_as": [
+   "Infiltrator Water Technologies/Orenco Systems"
+  ]
  },
  {
   "id": "infrastructure-dynamics",
@@ -135974,7 +135998,10 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: IAFC FRI 2026; FDIC International 2027"
+  "source": "conference sweep: IAFC FRI 2026; FDIC International 2027; FDIC International 2026",
+  "also_known_as": [
+   "Hinckley Medical"
+  ]
  },
  {
   "id": "osage-ambulances",
@@ -198608,6 +198635,706 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "Digital distributed antenna systems (DAS) for in-building public safety radio coverage (ERCES) in buildings, tunnels, airports and campuses.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "bridgecom-systems",
+  "name": "BridgeCom Systems",
+  "website": "https://www.bridgecomsystems.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Sells two-way radios, repeaters, duplexers and radio systems to fire and rescue departments, businesses and amateur radio operators.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "clean-methane-systems",
+  "name": "Clean Methane Systems",
+  "website": "https://methanesys.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Sells biogas conditioning and upgrading systems, including IonPack, for municipal wastewater digesters and industrial and agricultural waste-to-energy projects.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "del-tank-filtration-systems",
+  "name": "DEL Tank & Filtration Systems",
+  "website": "https://www.deltank.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Manufactures, sells and rents tanks, dewatering, solids control and filtration equipment for municipal, construction and industrial users.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "dupont-water-solutions",
+  "name": "DuPont Water Solutions",
+  "website": "https://www.dupont.com/water.html",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Reverse osmosis, ultrafiltration and ion exchange membranes and resins for municipal drinking water and wastewater treatment and for industry.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "electrolytic-technologies-systems-llc",
+  "name": "Electrolytic Technologies Systems LLC",
+  "website": "https://electrolytictech.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Manufactures Klorigen on-site chlorine and sodium hypochlorite generators for municipal water and wastewater disinfection and industry.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "flexaseal-engineered-seals-and-systems",
+  "name": "Flexaseal Engineered Seals and Systems",
+  "website": "https://www.flexaseal.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "flomotion-systems-inc",
+  "name": "Flomotion Systems Inc",
+  "website": "https://flomotionsystems.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "flonergia-systems-inc",
+  "name": "FloNergia Systems Inc.",
+  "website": "https://www.flonergia.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "gemt-solutions",
+  "name": "GEMT Solutions",
+  "website": "https://gemtsolutions.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "ide-water-solutions-north-america",
+  "name": "IDE Water Solutions, North America",
+  "website": "https://ide-tech.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Develops, engineers, builds and operates desalination, water reuse and water treatment plants for municipal and industrial customers.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "jireh-sewer-inspection-robotics",
+  "name": "JIREH - SEWER INSPECTION ROBOTICS",
+  "website": "https://www.jireh.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Battery-powered robotic crawlers and push cameras for municipal sewer pipe inspection.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "mlm-conveying-systems-inc",
+  "name": "MLM Conveying Systems, Inc.",
+  "website": "https://www.mlmconveying.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Shafted and shaftless screw conveyors and biosolids handling systems for municipal and industrial treatment plants.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "modus-engineered-solutions",
+  "name": "Modus Engineered Solutions",
+  "website": "https://modus-es.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Skid-mounted chemical feed, polymer feed, chlorine analyzer and septage receiving systems for water and wastewater treatment plants.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "nbcp-communications-system",
+  "name": "NBCP Communications System",
+  "website": "https://www.nbcpcommunications.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "AV and communications systems integration for city halls, council chambers, courtrooms and command centers.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "polygone-systems",
+  "name": "PolyGone Systems",
+  "website": "https://www.polygonesystems.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Microplastic filtration media and removal systems for wastewater plants, plus microplastic lab testing of water samples.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "prime-solution-inc",
+  "name": "Prime Solution Inc",
+  "website": "https://psirotary.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Rotary Fan Press sludge dewatering equipment, skid and mobile systems, and dewatering services for wastewater treatment.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "public-health-informatics-institute",
+  "name": "Public Health Informatics Institute",
+  "website": "https://phii.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Nonprofit program giving informatics technical assistance, guidance and training to state and local health departments.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "spatco-energy-solutions",
+  "name": "SPATCO Energy Solutions",
+  "website": "https://www.spatco.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Sells, installs and services fueling dispensers, tanks, fuel management systems and EV chargers, including to municipal fleets through Sourcewell.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "spectrashield-liner-systems",
+  "name": "Spectrashield Liner Systems",
+  "website": "https://spectrashield.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Spray-applied liner systems for corrosion protection and rehabilitation of manholes, lift stations and water and wastewater structures.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "thermal-process-systems",
+  "name": "Thermal Process Systems",
+  "website": "https://thermalprocess.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Biosolids treatment processes and equipment, including ThermAer and ExCalibAer systems, for municipal water reclamation facilities.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "tnt-rescue-systems-inc",
+  "name": "TNT Rescue Systems Inc",
+  "website": "https://tntrescue.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Hydraulic and battery-powered rescue and extrication tools for fire departments and emergency responders, sold through dealers.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "viavi-solutions",
+  "name": "VIAVI Solutions",
+  "website": "https://www.viavisolutions.com/en-us",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Sells land mobile radio test sets and network test and monitoring equipment to radio shops, network operators and government agencies.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "wsg-solutions-inc",
+  "name": "WSG & Solutions Inc",
+  "website": "https://www.wsgandsolutions.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Sells wastewater and stormwater screens, grit removal equipment, OEM headworks parts and installation services to treatment plants.",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "harding-instruments",
+  "name": "Harding Instruments",
+  "website": "https://harding-tech.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "key-systems-inc",
+  "name": "Key Systems, Inc.",
+  "website": "https://www.keystorage.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "morse-watchmans-inc",
+  "name": "Morse Watchmans, Inc.",
+  "website": "https://www.morsewatchmans.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "securitas-technology",
+  "name": "Securitas Technology",
+  "website": "https://www.securitastechnology.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "celplan-technologies-inc",
+  "name": "CelPlan Technologies, Inc.",
+  "website": "https://celplan.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Wireless network design, RF planning tools, integration and field services for utilities, carriers and cities",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "dnv-usa-inc",
+  "name": "DNV USA, Inc.",
+  "website": "https://www.dnv.us/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Energy advisory, testing, certification and verification services for utilities, energy companies, regulators and governments",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "powertech-labs-inc",
+  "name": "Powertech Labs Inc",
+  "website": "https://powertechlabs.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Accredited electrical, materials and hydrogen testing, power system engineering and DSATools grid analysis software for utilities",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "arrb-systems",
+  "name": "ARRB Systems",
+  "website": "https://arrbsystems.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Road condition data collection vehicles and equipment (Hawkeye, Roughometer, iPAVe), survey services and data viewing software for road authorities",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "dynatest-us-inc",
+  "name": "Dynatest US, Inc.",
+  "website": "https://dynatest.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Pavement testing equipment such as falling weight deflectometers and profilers, with ELMOD and other analysis software, for road and airport owners",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "pathway-services-inc",
+  "name": "Pathway Services Inc.",
+  "website": "https://www.pathwayservices.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "Automated pavement condition and road asset data collection vehicles, LiDAR and survey services, with data viewing software, for state agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "pavemetrics-systems",
+  "name": "Pavemetrics Systems",
+  "website": "https://www.pavemetrics.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "3D laser inspection systems (LCMS, LRAIL, LTSS, LFOD) measuring cracks, rutting and defects on roads, runways, rail and tunnels",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "wdm-usa",
+  "name": "WDM USA",
+  "website": "https://www.wdm-int.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "SCRIM friction and TM2 texture survey vehicles, road survey services and friction data analytics for highway agencies",
   "ats": {
    "type": "unknown",
    "ref": null

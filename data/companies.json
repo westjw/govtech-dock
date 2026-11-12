@@ -8854,7 +8854,8 @@
     "source": "PWX 2026; AWWA ACE 2026; WEFTEC 2026; DISTRIBUTECH 2026; DISTRIBUTECH 2027",
     "researched": true,
     "also_known_as": [
-      "Xylem Vue"
+      "Xylem Vue",
+      "Xylem Service Solutions"
     ],
     "buyer": "Water and wastewater utilities and municipalities are the anchor buyer, but the site gives equal billing to industrial and commercial markets - food and beverage, oil and gas, refining and chemicals, metals and mining, pharmaceutical, data centers, microelectronics, agriculture and buildings.",
     "sells_to_gov": "yes",
@@ -12554,7 +12555,7 @@
     "year_founded": 1966,
     "sector": "General Gov",
     "category": "Finance & ERP",
-    "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026, ASBO School Business 2026, NACVSO 2026, ACA Congress 2026, FDIC International 2026, APA Colorado Chapter 2026, APA - Illinois Chapter 2026, APA Minnesota Chapter 2026, APA Texas Chapter 2026, APA Virginia Chapter 2026, APA Wisconsin Chapter 2026, American Planning Association Ohio Chapter 2026, Georgia Planning Association 2026, Michigan Association of Planning 2026",
+    "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026, ASBO School Business 2026, NACVSO 2026, ACA Congress 2026, FDIC International 2026, APA Colorado Chapter 2026, APA - Illinois Chapter 2026, APA Minnesota Chapter 2026, APA Texas Chapter 2026, APA Virginia Chapter 2026, APA Wisconsin Chapter 2026, American Planning Association Ohio Chapter 2026, Georgia Planning Association 2026, Michigan Association of Planning 2026, FDIC International 2027",
     "ats": {
       "type": "html",
       "ref": "https://www.tylertech.com/careers/job-listings"
@@ -12574,7 +12575,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026; ICC 2026; ASBO School Business 2026; NACVSO 2026; ACA Congress 2026; FDIC International 2026; APA Colorado Chapter 2026; APA - Illinois Chapter 2026; APA Minnesota Chapter 2026; APA Texas Chapter 2026; APA Virginia Chapter 2026; APA Wisconsin Chapter 2026; American Planning Association Ohio Chapter 2026; Georgia Planning Association 2026; Michigan Association of Planning 2026",
+    "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026; ICC 2026; ASBO School Business 2026; NACVSO 2026; ACA Congress 2026; FDIC International 2026; APA Colorado Chapter 2026; APA - Illinois Chapter 2026; APA Minnesota Chapter 2026; APA Texas Chapter 2026; APA Virginia Chapter 2026; APA Wisconsin Chapter 2026; American Planning Association Ohio Chapter 2026; Georgia Planning Association 2026; Michigan Association of Planning 2026; FDIC International 2027",
     "researched": true,
     "also": [
       {
@@ -12713,7 +12714,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "also_known_as": [
+      "EMERGENCY NETWORKING"
+    ]
   },
   {
     "id": "euna-solutions",
@@ -120594,7 +120598,7 @@
     "year_founded": null,
     "sector": "K-12 Schools",
     "category": "Operations & SIS",
-    "description": "School nutrition POS and MySchoolBucks payments for K-12 districts - exhibited at SNA ANC 2027",
+    "description": "School nutrition POS and MySchoolBucks payments for K-12 districts - exhibited at SNA ANC 2027, ASBO School Business 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -120608,7 +120612,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; SNA ANC 2027",
+    "source": "competitor sweep; SNA ANC 2027; ASBO School Business 2026",
     "competitors": [
       {
         "id": "cybersoft-technologies",
@@ -120644,7 +120648,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "MySchoolBucks - Heartland School Solutions"
+    ]
   },
   {
     "id": "transfinder",
@@ -120964,7 +120971,7 @@
     "year_founded": 1998,
     "sector": "K-12 Schools",
     "category": "Operations & SIS",
-    "description": "Website, CMS and mass communications platform for school districts",
+    "description": "Website, CMS and mass communications platform for school districts - exhibited at ASBO School Business 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.finalsite.com/jobs"
@@ -120978,7 +120985,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; ASBO School Business 2026",
     "profile": {
       "paragraphs": [
         "Finalsite sells a platform covering the school experience online, from websites and mobile apps to communications, enrollment and marketing. The company says it has been helping schools connect with their communities since 1999.",
@@ -121092,7 +121099,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "RevTrak (Finalsite)"
+    ]
   },
   {
     "id": "edlio",
@@ -154999,7 +155009,7 @@
     "year_founded": 2018,
     "sector": "Public Works",
     "category": "Water",
-    "description": "AI performance software for water treatment and desalination operators",
+    "description": "AI performance software for water treatment and desalination operators - exhibited at WEFTEC 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -155013,7 +155023,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; WEFTEC 2026",
     "profile": {
       "paragraphs": [
         "Pani Energy is a global software company focused on utility and industrial water and wastewater operations intelligence. Its offering is described as one platform holding a complete intelligence toolbox for a plant. An agent called Agent Zed is described as an AI process engineer that does analysis, answers questions, and performs recurring jobs.",
@@ -155117,7 +155127,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Pani"
+    ]
   },
   {
     "id": "transcend",
@@ -164430,7 +164443,7 @@
     "year_founded": 1982,
     "sector": "General Gov",
     "category": "Permitting & Licensing",
-    "description": "Community development, permitting and inspections software for municipalities",
+    "description": "Community development, permitting and inspections software for municipalities - exhibited at ICC 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.municipalsoftware.com/careers"
@@ -164444,7 +164457,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; ICC 2026",
     "profile": {
       "paragraphs": [
         "CityView sells community development software to municipalities, giving them one integrated system for permitting, inspections, planning, code enforcement and licensing. The company describes the platform as purpose-built for local government.",
@@ -164589,7 +164602,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "CityView, a division of Harris Computer Systems"
+    ]
   },
   {
     "id": "avenu-insights-analytics",
@@ -179288,7 +179304,7 @@
     "year_founded": null,
     "sector": "Utilities & Energy",
     "category": "Broadband & Connectivity",
-    "description": "Pole measurement and joint-use data software for utilities and network builders - exhibited at DISTRIBUTECH 2026",
+    "description": "Pole measurement and joint-use data software for utilities and network builders - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
       "type": "html",
       "ref": "https://ikegps.com/careers/"
@@ -179302,7 +179318,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; DISTRIBUTECH 2026",
+    "source": "competitor sweep; DISTRIBUTECH 2026; DISTRIBUTECH 2027",
     "profile": {
       "paragraphs": [
         "IKE sells data acquisition and structural analysis software for power and communication infrastructure. IKE Device speeds up field data collection, and field data uploads to IKE Office Pro for management of pole records. IKE PoleForeman is a structural analysis tool for NESC compliance and pole loading analysis of overhead infrastructure.",
@@ -203229,7 +203245,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Diversified Computer Service, LLC"
+    ]
   },
   {
     "id": "legaledge-software",
@@ -208285,7 +208304,7 @@
     "year_founded": 2017,
     "sector": "Public Works",
     "category": "Water",
-    "description": "Agentic AI products for water and wastewater utilities covering treatment decision support, workforce readiness and environmental permit compliance - exhibited at AWWA ACE 2026",
+    "description": "Agentic AI products for water and wastewater utilities covering treatment decision support, workforce readiness and environmental permit compliance - exhibited at AWWA ACE 2026, WEFTEC 2026",
     "ats": {
       "type": "html",
       "ref": "https://deltabravo.ai/careers"
@@ -208298,7 +208317,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: AWWA ACE 2026",
+    "source": "conference sweep: AWWA ACE 2026; WEFTEC 2026",
     "researched": true,
     "competitors": [
       {
@@ -208315,7 +208334,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Delta Bravo Artificial Intelligence"
+    ]
   },
   {
     "id": "kloudgin",
@@ -237756,7 +237778,7 @@
     "year_founded": null,
     "sector": "General Gov",
     "category": "Finance & ERP",
-    "description": "IT services firm selling CGI Advantage ERP to state and local governments and OpenGrid360 software to utilities - exhibited at DISTRIBUTECH 2026",
+    "description": "IT services firm selling CGI Advantage ERP to state and local governments and OpenGrid360 software to utilities - exhibited at DISTRIBUTECH 2026, NAHRO 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.cgi.com/us/en-us/careers"
@@ -237769,10 +237791,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: DISTRIBUTECH 2026",
+    "source": "conference sweep: DISTRIBUTECH 2026; NAHRO 2026",
     "researched": true,
     "also_known_as": [
-      "CGI Technologies and Solutions Inc."
+      "CGI Technologies and Solutions Inc.",
+      "CGI Federal"
     ]
   },
   {
@@ -238499,6 +238522,630 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: NASCIO 2026",
+    "researched": true
+  },
+  {
+    "id": "customguide",
+    "name": "CustomGuide",
+    "website": "https://www.customguide.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Libraries",
+    "description": "Sells customizable online software-skills and compliance training courses, a course builder and an LMS to public libraries, government agencies and schools - exhibited at PLA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: PLA 2026",
+    "researched": true
+  },
+  {
+    "id": "mentorapm",
+    "name": "MentorAPM",
+    "website": "https://mentorapm.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Sells cloud asset and work management software (EAM/CMMS) to water and wastewater utilities, including city utility departments and water agencies - exhibited at WEFTEC 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: WEFTEC 2026",
+    "researched": true
+  },
+  {
+    "id": "sansio",
+    "name": "Sansio",
+    "website": "https://sansio.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Sells MobileTouch EMS ePCR and MobileTouch Fire records software, configured in HealthEMS Manager, to EMS agencies and fire departments - exhibited at IAFC FRI 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: IAFC FRI 2026",
+    "researched": true
+  },
+  {
+    "id": "flairsoft",
+    "name": "Flairsoft",
+    "website": "https://flairsoft.net/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "Sells Flairdocs right-of-way, real estate and permitting software plus IT consulting and staffing to state and local agencies, federal agencies, utilities and pipeline companies - exhibited at APTA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: APTA 2026",
+    "researched": true
+  },
+  {
+    "id": "navilens",
+    "name": "NaviLens",
+    "website": "https://www.navilens.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Transit & Parking",
+    "category": "Rider Experience",
+    "description": "Sells long-range accessible code signage, apps and a content platform to transit agencies for stations, stops and vehicles - exhibited at APTA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: APTA 2026",
+    "researched": true
+  },
+  {
+    "id": "routeward",
+    "name": "Routeward",
+    "website": "https://www.routeward.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Transit & Parking",
+    "category": "Fleet & Operations",
+    "description": "Sells fleet management software linking vehicles, dispatch, control centers and passenger information to public transit and state agencies - exhibited at APTA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: APTA 2026",
+    "researched": true
+  },
+  {
+    "id": "digital-global-systems",
+    "name": "Digital Global Systems (DGS)",
+    "website": "https://www.digitalglobalsystems.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Broadband & Connectivity",
+    "description": "Sells CLEARSITE RF spectrum monitoring and management and CLEARSKY drone and rogue-signal detection to cities, public safety agencies, airports and seaports - exhibited at Smart Cities Connect 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: Smart Cities Connect 2026",
+    "researched": true
+  },
+  {
+    "id": "lexia",
+    "name": "Lexia",
+    "website": "https://www.lexialearning.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Sells Core5 Reading, PowerUp Literacy and English Language Development curriculum software, embedded assessment and LETRS professional learning to school districts - exhibited at AASA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: AASA 2026",
+    "researched": true
+  },
+  {
+    "id": "govpath",
+    "name": "GovPath",
+    "website": "https://www.govpath.tech/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "Sells subscription add-ons for government permitting systems (AI permit guidance, inspection management, e-plan review) plus Accela services to state and local agencies - exhibited at ICC 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ICC 2026",
+    "researched": true
+  },
+  {
+    "id": "selectron-technologies",
+    "name": "Selectron Technologies",
+    "website": "https://www.selectron.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Citizen Services",
+    "description": "Sells citizen self-service (inspection scheduling, utility billing), outbound notification, payment and mobile field-work software to state and local agencies - exhibited at ICC 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ICC 2026",
+    "researched": true
+  },
+  {
+    "id": "carto",
+    "name": "CARTO",
+    "website": "https://carto.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Sells a cloud-native GIS and spatial analytics platform to city and government agencies and to companies in other industries - exhibited at ITS America 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ITS America 2026",
+    "researched": true
+  },
+  {
+    "id": "cavnue",
+    "name": "Cavnue",
+    "website": "https://www.cavnue.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Sells smart road sensor networks and an AI road intelligence platform for connected and automated vehicle corridors to state transportation departments - exhibited at ITS America 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ITS America 2026",
+    "researched": true
+  },
+  {
+    "id": "commsignia",
+    "name": "Commsignia",
+    "website": "https://commsignia.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Sells V2X roadside and onboard units with roadway intelligence, emergency vehicle and transit signal priority software to road operators and public fleets - exhibited at ITS America 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ITS America 2026",
+    "researched": true
+  },
+  {
+    "id": "gridmatrix",
+    "name": "GridMatrix",
+    "website": "https://www.gridmatrix.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Sells a cloud traffic analytics platform that turns existing roadway sensors into congestion, signal performance, emissions and safety data for cities and DOTs - exhibited at ITS America 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ITS America 2026",
+    "researched": true
+  },
+  {
+    "id": "boosterhub",
+    "name": "BoosterHub",
+    "website": "https://www.boosterhub.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Booster club and PTO management software, plus DistrictHub, which gives school districts oversight of club finances, compliance and reporting - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "intellinetics",
+    "name": "Intellinetics",
+    "website": "https://intellinetics.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Document management, records digitization, AP automation and budget software, including YellowFolder, for school districts, government agencies and businesses - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "selerix",
+    "name": "Selerix",
+    "website": "https://selerix.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "Benefits administration, enrollment, ACA and COBRA compliance software for employers, brokers and carriers, including government employers and school districts - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "diffit",
+    "name": "Diffit",
+    "website": "https://web.diffit.me/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "AI tool that generates differentiated, print-ready lesson resources for teachers, sold to schools and districts as annual licenses - exhibited at CEC Convention 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: CEC Convention 2027",
+    "researched": true
+  },
+  {
+    "id": "everway",
+    "name": "Everway",
+    "website": "https://www.everway.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Literacy and math accessibility software, special education curriculum and IEP management systems for K-12 districts, colleges and workplaces - exhibited at CEC Convention 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: CEC Convention 2027",
+    "researched": true
+  },
+  {
+    "id": "spedsync",
+    "name": "SpedSync",
+    "website": "https://spedsync.io/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "IEP meeting scheduling software that matches special education team calendars and lets parents book meeting times, for schools and districts - exhibited at CEC Convention 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: CEC Convention 2027",
+    "researched": true
+  },
+  {
+    "id": "experian",
+    "name": "Experian",
+    "website": "https://www.experian.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Health & Human Services",
+    "category": "Benefits & Medicaid Systems",
+    "description": "Credit bureau and data company whose public sector unit sells identity proofing, income and employment verification, eligibility data and fraud analytics to federal, state and local agencies - exhibited at NASS Winter/Summer 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NASS Winter/Summer 2026",
+    "researched": true
+  },
+  {
+    "id": "sonicwall",
+    "name": "SonicWall",
+    "website": "https://www.sonicwall.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Firewalls, secure access, endpoint security and managed detection and response for businesses, K-12 schools and state and local governments - exhibited at Smart Cities Connect 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: Smart Cities Connect 2026",
+    "researched": true
+  },
+  {
+    "id": "deepmatrix",
+    "name": "DeepMatrix",
+    "website": "https://deepmatrix.io/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Transit & Parking",
+    "category": "Fleet & Operations",
+    "description": "AI geospatial platform that turns LiDAR, imagery and asset data into safety and maintenance insight for transit agencies, grid operators, telecom and mining - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "iceye",
+    "name": "ICEYE",
+    "website": "https://www.iceye.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "SAR satellite imagery and flood and wildfire impact data for defense, emergency management agencies, insurers and utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "itineris",
+    "name": "Itineris",
+    "website": "https://itineris.net",
+    "location": null,
+    "year_founded": null,
+    "sector": "Utilities & Energy",
+    "category": "Billing & Customer Systems",
+    "description": "UMAX cloud CIS, CRM and billing software on Microsoft Dynamics 365 for energy and water utilities, including municipal utilities - exhibited at DISTRIBUTECH 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: DISTRIBUTECH 2026",
+    "researched": true
+  },
+  {
+    "id": "astral8",
+    "name": "Astral8",
+    "website": "https://astral8.io",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "All-in-one fire department operations platform covering incidents, personnel, apparatus, training, pre-plans, inspections and inventory - exhibited at FDIC International 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: FDIC International 2027",
     "researched": true
   }
 ]
