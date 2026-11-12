@@ -1,115 +1,66 @@
 {
-  "date": "2026-11-11",
-  "previous": "2026-11-10",
+  "date": "2026-11-12",
+  "previous": "2026-11-11",
   "changes": [
     {
-      "company": "Dimonoff",
-      "id": "dimonoff",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "PSD Citywide",
-      "id": "psd-citywide",
+      "company": "Paymentus",
+      "id": "paymentus",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive (Dallas, Texas, Uni)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Active911",
-      "id": "active911",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "company": "Finalsite",
+      "id": "finalsite",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Autura",
-      "id": "autura",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Autura Sales Talent Network only"
-    },
-    {
-      "company": "Traction Rec",
-      "id": "traction-rec",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive, Parks and Recre (Vancouver, British)"
-    },
-    {
-      "company": "Concourse Tech",
-      "id": "concourse-tech",
+      "company": "UVeye",
+      "id": "uveye",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Account Executive (Georgia, South Car)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Papercast",
-      "id": "papercast",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "VCS HR & Jobs4Blue",
-      "id": "vcs-hr-jobs4blue",
+      "company": "Overstory",
+      "id": "overstory",
       "from": "None found",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "HTTP 404 for https://boards-api.greenhou"
     },
     {
-      "company": "Transfinder",
-      "id": "transfinder",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Pikmykid",
-      "id": "pikmykid",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "CaseWorthy",
-      "id": "caseworthy",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Revenue Operations AI Specialist only"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
+      "company": "Labrie Group",
+      "id": "labrie-group",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
-      "from": "Yes",
+      "company": "Halda",
+      "id": "halda",
+      "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "DZS",
-      "id": "dzs",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Inside Sales Representative only"
-    },
-    {
-      "company": "iCEV",
-      "id": "icev",
-      "from": "Unknown",
+      "company": "ClassDojo",
+      "id": "classdojo",
+      "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Territory Manager (Northeast) (Remote Worker)"
+      "note": "Senior Account Executive (Remote)"
     },
     {
-      "company": "Sage",
-      "id": "sage",
+      "company": "Ascend Analytics",
+      "id": "ascend-analytics",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "Psyrin",
+      "id": "psyrin",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
@@ -117,30 +68,37 @@
     {
       "company": "Sophos, Inc.",
       "id": "sophos-inc",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Tricentis",
       "id": "tricentis",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 502 for https://tricentis.wd1.mywor"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sr. Account Executive \u2013 Germany (P (DE - Remote)"
     },
     {
       "company": "Cotiviti",
       "id": "cotiviti",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: robots.txt on careers-cot"
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales VP - EDI & Interoperability only"
+    },
+    {
+      "company": "Deccan International",
+      "id": "deccan-international",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Filevine",
       "id": "filevine",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }

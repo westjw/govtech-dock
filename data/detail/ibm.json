@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "The year of advantage\u2014and what comes next",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/qdc-2026"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "QDC 2026: what quantum developers need to know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/dev-tools-qdc-2026"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "Tracking progress on the path to IBM Quantum Starling",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/path-to-ibm-quantum-starling"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "index-text",
    "first_seen": "2026-11-06",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/quantum/blog/directed-execution"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "A hand that walks? Swiss researchers built one, and it\u2019s weirdly adorable",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/eth-zurich-robot-hand-walks-on-fingers"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "From AI pilots to autonomous AMS: The enterprise readiness test for SAP",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/insights/from-ai-pilots-autonomous-ams"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Shadow AI has reached the SOC: Why security teams are becoming their own blind spot",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/insights/shadow-ai-has-reached-soc-security-teams-blind-spots"
   }
  ],
  "profile": {

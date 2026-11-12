@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Breckland Strategic Impact Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/breckland-strategic-impact-review/"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "London Resuce & Response Strategic Impact Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/london-resuce-response-strategic-impact-review/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ecins.com/resources/ssw-resource-red-ribbon-week-daily-theme-ideas/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "SSW Resource: Tips for Social Workers Using ECINS Reporting Tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ecins.com/resources/ssw-resource-tips-for-social-workers-using-ecins-reporting-tools/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "SSW Resource: How Do I Grow? Self-Reflective Worksheet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ecins.com/resources/ssw-resource-how-do-i-grow-self-reflective-worksheet/"
   }
  ],
  "profile": {

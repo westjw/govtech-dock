@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "DOT Compliance Software: What It Does and What to Look For",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/dot-compliance-software/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/fleet-management-software-features/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "How to Improve Fleet Efficiency: 10 Strategies to Reduce Costs and Downtime",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/improve-fleet-efficiency/"
   }
  ],
  "profile": {

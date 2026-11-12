@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "Why Was 2026 a Quiet Hurricane Season?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/why-was-2026-a-quiet-hurricane-season/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "Lightning Delay Rules: When to Stop, Reset the Clock, and Resume Activity",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/bay-district-schools/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SCHSL Heat Policy: The WBGT Playbook for South Carolina Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/schsl-heat-policy-the-wbgt-playbook-for-south-carolina-schools/"
   }
  ],
  "profile": {

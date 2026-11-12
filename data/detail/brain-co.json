@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Tishman Speyer Builds on AI Strategy Through Partnership with Brain Co.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brain.co/news/design"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Tishman Speyer Builds on AI Strategy Through Partnership with Brain Co.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brain.co/blog/tishman-speyer-builds-on-ai-strategy-through-partnership-with-brain-co"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "index-text",
    "first_seen": "2026-10-28",
@@ -21,29 +39,20 @@
   {
    "date": "2026-10-06",
    "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Authorship Over Output Sep 15, 2026 How we rebuilt the design career ladder, headcount, and hiring bar at Brain Co. around a single principle: authorship over output.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://brain.co/blog/authorship-over-output"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Knighthead Life Selects Brain Co. to Power Annuity Operations",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://brain.co/news/design"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Knighthead Life Selects Brain Co. to Power Annuity Operations",
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://brain.co/blog/knighthead-life-selects-brain-co-to-power-annuity-operations"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Authorship Over Output Sep 15, 2026 How we rebuilt the design career ladder, headcount, and hiring bar at Brain Co. around a single principle: authorship over output.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brain.co/blog/authorship-over-output"
   },
   {
    "date": "2026-09-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://brain.co/blog/an-ai-blitz-highlights-from-brain-co-s-hackathon-2026"
-  },
-  {
-   "date": "2026-02-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Confidence Scoring with Bayesian Networks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://brain.co/blog/confidence-scoring-with-bayesian-networks"
   }
  ],
  "profile": {

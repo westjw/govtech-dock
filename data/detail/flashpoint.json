@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Inside the Fraud Underground: Key Takeaways for Retail and Financial Services Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/inside-the-fraud-underground-key-takeaways-for-retail-and-financial-services-teams/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/inside-joint-disruption-week-28-arrests-and-37-million-scam-accounts-removed/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Insider Threat Report: Dark Web Recruitment & Access Trends",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/insider-threat-report-dark-web-recruitment-access-trends/"
   }
  ],
  "profile": {

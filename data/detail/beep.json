@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-02",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-11",
    "headline": "Beep Launches Freebee Microtransit Service In Pasco County",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "MOIA America Welcomes Its First Riders In Autonomous ID. Buzz Vehicles With Beep",
    "kind": "leadership",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "Beep And Freebee Combine To Create The Essential Transit Partner For Modern Mobility",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-10",
    "headline": "Beep Closes Series B To Accelerate Commercial Deployment Of Autonomous Mobility Networks",
    "kind": "funding",

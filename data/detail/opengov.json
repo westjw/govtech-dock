@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "What an Audit Finding Means for Your Finance Team, and How to Get Ahead for Next Season",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://opengov.com/resources/blog/audit-finding-finance-team/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://opengov.com/resources/blog/building-permits-without-the-wait-how-ai-changes-what-plan-review-can-be/"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Our customer commitments on artificial intelligence (AI)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.opengov.com/resources/ai-customer-commitments/"
   }
  ],
  "profile": {

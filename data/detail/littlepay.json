@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Washington\u2019s Tap. Ride. Go. story: beyond the fare gate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://littlepay.com/resource-hub/blog/articles/washingtons-tap-ride-go-story-beyond-the-fare-gate/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://littlepay.com/resource-hub/blog/articles/transport-ticketing-global-2026/"
-  },
-  {
-   "date": "2026-03-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Littlepay, Google and Go-Ahead Launch prepaid bus passes in Google Wallet",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://littlepay.com/resource-hub/blog/articles/littlepay-google-and-go-ahead-launch-prepaid-bus-passes-in-google-wallet/"
   }
  ],
  "profile": {

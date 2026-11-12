@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "March Networks and VIVOTEK Bring Connected Video Security to Canadian Transit at CUTA 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.marchnetworks.com/news/march-networks-and-vivotek-bring-connected-video-security-to-canadian-transit-at-cuta-2026/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -58,7 +67,7 @@
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "Security Today New Product of the Year",
+   "headline": "March Networks and VIVOTEK Highlight Connected Transit Intelligence at APTA 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/news/march-networks-and-vivotek-highlight-connected-transit-intelligence-at-apta-2026/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/it/news/march-networks-and-vivotek-showcase-integrations-across-combined-portfolio-at-gsx-2026/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "March Networks Obtiene la certificaci\u00f3n BIS ER-01 en la India",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.marchnetworks.com/es/news/march-networks-achieves-bis-er-01-certification-in-india/"
   }
  ],
  "profile": {

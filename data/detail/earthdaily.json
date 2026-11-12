@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Decision-Making Under Uncertainty: How Much Confidence Is Enough?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/decision-making-under-uncertainty-how-much-confidence-is-enough"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/when-agricultural-claims-arrive-as-a-wave"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Tracking Crop Change After Severe Weather",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/tracking-crop-change-after-severe-weather"
   }
  ],
  "profile": {
