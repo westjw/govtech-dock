@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "The Cost of Choosing the Wrong LMS for Regulated Organizations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://meridianks.com/blog/the-cost-of-choosing-the-wrong-lms-for-regulated-organizations/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://meridianks.com/blog/scaling-training-for-partners-vendors-and-chapters/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Meridian Knowledge Solutions Secures U.S. Patent for Cloud Environment Compliance Automation Technology",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://meridianks.com/blog/meridian-knowledge-solutions-secures-u-s-patent-for-cloud-environment-compliance-automation-technology/"
   }
  ],
  "profile": {

@@ -10,6 +10,24 @@
    "url": "https://www.sophos.com/en-us/blog/your-training-data-is-boring-anomaly-detection-with-llms"
   },
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Malicious ScreenConnect deployments observed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/malicious-screenconnect-deployments-observed"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Malicious ScreenConnect deployments observed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/blog/malicious-screenconnect-deployments-observed"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/blog/fake-coding-test-reaches-security-company"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Malicious Claude Code extension distributed through Cursor marketplace",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/malicious-claude-code-extension-distributed-through-cursor-marketplace"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "AI used in Aur0ra ransomware testing and execution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/ai-used-in-aur0ra-ransomware-testing-and-execution"
   }
  ]
 }

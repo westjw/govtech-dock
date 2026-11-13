@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Charlotte Hornets scale cellular 5G connectivity across Spectrum Center and new Novant Health Performance Center with Boldyn Networks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.boldyn.com/news/charlotte-hornets-scale-cellular-5g-connectivity-across-spectrum-center-and-new-novant-health-performance-center-with-boldyn-networks"
+  },
+  {
    "date": "2026-11-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Army expands high-speed barracks Wi-Fi at Fort Riley and Fort Wainwright",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "86% of students face campus connectivity issues, but just one in five report problems to IT",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Smart City Roma appoints Brendan O\u2019Reilly as Chairman of the Board",
    "kind": "leadership",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Radford University resets the student experience with connectivity that feels like home",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Boldyn Networks partners with Pilot Fiber to further enhance connectivity throughout the Northeast",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.boldyn.com/blog/how-connectivity-is-reimagining-the-race-weekend"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "West Sussex advances smart livestock monitoring with Pneumonitor and Boldyn Networks\u2019 private 5G",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.boldyn.com/news/west-sussex-advances-smart-livestock-monitoring-with-pneumonitor-and-boldyn-networks-private-5g"
   }
  ],
  "profile": {

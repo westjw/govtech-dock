@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "What is digital friction? How it affects your business",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/what-is-digital-friction/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "AI needs a safe place to run",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-safe-place-to-run-for-ai/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-04",
+   "headline": "Zero Trust for AI agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-zero-trust/"
+  },
+  {
    "date": "2026-11-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Omnissa DEX Agent for end users: AI that fixes, not flags",
    "kind": "press",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Omnissa DEX: Fix employee experience on any desktop",
    "kind": "press",
@@ -29,25 +56,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "card-date",
-   "first_seen": "2026-11-04",
-   "headline": "Zero Trust for AI agents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-zero-trust/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "card-date",
-   "first_seen": "2026-11-04",
-   "headline": "AI needs a safe place to run",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-safe-place-to-run-for-ai/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Omnissa Sovereign Solution expands to servers and new markets",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "How HP and Omnissa streamline PC provisioning",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-announcing-omnissa-elara/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "card-date",
-   "first_seen": "2026-10-29",
-   "headline": "Shadow AI governance: Why visibility beats bans",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/why-visibility-beats-bans/"
   }
  ]
 }

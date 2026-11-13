@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Cloud Security Checklist For K-12 Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/cloud-application-security-checklist/"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Choosing Classroom Technology: A Friendly Guide for K\u201312 Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/how-to-evaluate-k12-edtech-tools/"
+  },
+  {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "A Guide to Digital Rights and Responsibilities for Educators and Students",
    "kind": "press",
@@ -10,17 +28,8 @@
    "url": "https://managedmethods.com/blog/digital-rights-and-responsibilities/"
   },
   {
-   "date": "2026-11-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing Email Threat Intelligence: A Smarter Way to Understand Phishing Risk in K-12",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://managedmethods.com/blog/email-threat-intelligence-k12-phishing-analytics/"
-  },
-  {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "How Classroom Manager Gives Teachers More Control",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "How Phishing Attacks Turn Into School District Data Breaches",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "How to Stop an Internal Breach From Compromised Accounts\u200b & Why MFA Isn\u2019t Enough",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Phishing Incident Response for K\u201312 Schools: What to Do After You Detect an Account Takeover",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "How to Block Distracting Websites and Improve Student Focus in the Classroom",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "In the News | Classroom Manager Wins Tech & Learning 2026 Back to School Award",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "In the News | Visibility is the School AI Problem",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How Classroom Manager Keeps Students Engaged in the Classroom",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://managedmethods.com/blog/in-the-news-uniteai-banning-ai-and-screens-in-schools-2/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "How to Control Internet Access by Device Without Creating More Work for IT Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/control-internet-access-by-device-without-creating-more-work/"
   }
  ],
  "profile": {

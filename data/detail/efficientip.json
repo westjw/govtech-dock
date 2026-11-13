@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "From Fake Zillow Pages to ClickFix NetSupport RAT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/clickfix-netsupport-rat/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/blog/ecosystem-for-boosting-netops-network-automation/"
-  },
-  {
-   "date": "2024-02-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "DDI Observability Center Overview Video This enterprise-grade cloud platform allows you to improve visibility, enhance operational efficiency, and optimize network performance effortlessly.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/resources/efficientip-ddi-observability-center-overview/"
   }
  ]
 }

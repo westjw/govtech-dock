@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-13",
    "headline": "ITO Health Launches HealthEligible, a Free Tool to Help Rhode Islanders Find and Keep Benefits",
    "kind": "product",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-03-30",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Why We Should Stop Talking About Healthcare Costs",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-03-09",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Human-centered design isn\u2019t enough",
    "kind": "press",

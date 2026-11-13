@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "TRM Labs Launches Beacon Concierge to Help Law Enforcement Worldwide Interdict and Seize Illicit Crypto Funds On Any Chain In Any Asset",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.trmlabs.com/resources/blog/trm-labs-launches-beacon-concierge-to-help-law-enforcement-worldwide-interdict-and-seize-illicit-crypto-funds-on-any-chain-in-any-asset"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "TRM Labs Launches Disruption Awards, Celebrating the People and Partnerships Disrupting Crime Together",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.trmlabs.com/resources/blog/trm-labs-launches-disruption-awards-celebrating-the-people-and-partnerships-disrupting-crime-together"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/russia-escalates-prosecutions-of-darknet-market-figures-as-volume-heads-toward-usd-17-billion"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "TRM Labs Supports Microsoft's Disruption of YAM Store, CoGUI, and Iron Man, Three Services Behind Global Scam Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/trm-supports-takedown-of-chinese-language-cybercrime-ecosystem-with-microsoft-health-isac-and-others"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "TRM Labs Launches Ardence, the AI Investigation Platform, to Help Crimefighters Disrupt AI-Enabled Crime",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.trmlabs.com/resources/blog/trm-launches-ardence-ai-investigation-platform"
   }
  ],
  "profile": {

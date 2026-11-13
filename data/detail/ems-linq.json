@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "The Work Nobody Brags About, and Why We Decided to Make a Big Deal",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linq.com/blog/introducing-the-linq-imagine-awards/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.linq.com/blog/try-again-chef-kevin-jenkins-on-cooking-for-the-toughest-critics-the-kids/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "The Best School Accounting Software for K-12 Districts: 6 Ways to Find the Right Solution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/the-best-school-accounting-software-for-k-12-districts-6-ways-to-find-the-right-solution/"
   }
  ],
  "profile": {

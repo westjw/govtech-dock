@@ -1,12 +1,12 @@
 {
  "news": [
   {
-   "date": "2026-10-12",
-   "date_source": "index-text",
+   "date": "2026-10-16",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
-   "headline": "Liberty Defense Announces New Chairman to its Board of Directors",
-   "kind": "leadership",
-   "kind_rule": "Board of Directors",
+   "headline": "Liberty Defense Announces New Board Member",
+   "kind": "product",
+   "kind_rule": "Announces New",
    "url": "https://libertydefense.com/news/liberty-defense-announces-new-board-member/"
   },
   {
@@ -91,6 +91,15 @@
    "url": "https://libertydefense.com/news/liberty-defense-expands-aviation-footprint-with-new-hexwave-award-at-major-international-airport/"
   },
   {
+   "date": "2026-06-11",
+   "date_source": "time",
+   "first_seen": "2026-11-12",
+   "headline": "Proactive Security Measures to Protect Communities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/resources/insights/proactive-security-measures-to-protect-communities/"
+  },
+  {
    "date": "2026-04-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://libertydefense.com/news/liberty-defense-announces-closing-of-its-u-s-initial-public-offering/"
-  },
-  {
-   "date": "2026-01-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cybersecurity predictions 2026: Quantum threats, nation-state attacks and the rise of dark AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://libertydefense.com/news/cybersecurity-predictions-2026-quantum-threats-nation-state-attacks-and-the-rise-of-dark-ai/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Every family, every document: our partnership with CivicPlus",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.parentsquare.com/blog/partner-civicplus-docaccess/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.parentsquare.com/blog/community-connect-for-k-12-leaders/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A Shared Approach to Attendance: What\u2019s New in Attendance Plus",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.parentsquare.com/blog/whats-new-attendance-plus-2026-2027/"
   }
  ],
  "profile": {

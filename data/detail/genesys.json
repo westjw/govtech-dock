@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Maribeth Lagman: 2026 Genesys Orchestrators Innovation Award",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/delivering-exceptional-customer-experiences-one-interaction-at-a-time"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -22,7 +31,7 @@
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
-   "headline": "AI turns WFM into workforce orchestration | Genesys",
+   "headline": "AI Turns WFM Into Workforce Orchestration | Genesys",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/how-ai-turns-workforce-management-into-workforce-orchestration"
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "Empowering people to transform customer experience",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/from-integration-to-intelligence-how-genesys-and-salesforce-are-redefining-what-a-connected-ecosystem-can-do"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Security update: Internal systems incident | Genesys",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://www.genesys.com/blog/post/security-update-incident-affecting-certain-genesys-internal-business-systems"
   }
  ]
 }

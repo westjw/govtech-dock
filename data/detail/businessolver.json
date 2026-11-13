@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Leaders are just supposed to know.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://businessolver.com/blog/leaders-are-just-supposed-to-know/"
+  },
+  {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "5 employee experience gaps that may be hurting workplace culture",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-31",
    "headline": "Benefits Pulse Newsletter See it coming.",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Using Compliance to Drive Better Business Outcomes",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The AI efficiency trap",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Benefits literacy isn\u2019t enough: Turning understanding into action",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "All in for annual enrollment: How we\u2019re preparing for the moment that matters most",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Employees don\u2019t fear AI. They\u2019re afraid of being left behind.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://businessolver.com/blog/employee-ai-readiness/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "A C-suite divided: Does empathy really matter?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://businessolver.com/blog/c-suite-divided-does-empathy-really-matter/"
   }
  ]
 }

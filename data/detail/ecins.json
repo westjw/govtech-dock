@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Harrow Council Strategic Impact Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/harrow-strategic-impact-review-identifying-knife-crime-risks-through-intelligence-sharing/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Brighton & Hove Strategic Impact Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/brighton-hove-strategic-impact-review/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ecins.com/resources/ssw-resource-mental-health-support-resources-sheet/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "SSW Resource: Back to School Toolkit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ecins.com/resources/ssw-resource-back-to-school-toolkit/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "SSW Resource: Red Ribbon Week Daily Theme Ideas",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ecins.com/resources/ssw-resource-red-ribbon-week-daily-theme-ideas/"
   }
  ],
  "profile": {

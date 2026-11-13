@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-10",
+   "headline": "Industry Solutions: Introducing Agentic First Notice of Loss",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.outsystems.com/blog/posts/introducing-outsystems-agentic-first-notice-of-loss"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Operationalizing agentic AI in manufacturing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/operationalizing-agentic-ai-manufacturing"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -8,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/outsystems-tx-ramp-certification"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Industry Solutions: Introducing Agentic First Notice of Loss",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.outsystems.com/blog/posts/introducing-outsystems-agentic-first-notice-of-loss"
   },
   {
    "date": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/news/outsystems-launches-agent-experience"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-11-05",
-   "headline": "AI agent orchestration for true enterprise transformation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/ai-agent-orchestration"
   }
  ]
 }

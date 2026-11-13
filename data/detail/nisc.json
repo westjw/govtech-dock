@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "70 Percent of United Fiber Service Signups Happen Online with NISC\u2019s SmartHub Order Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nisc.coop/blog/70-percent-of-united-fiber-service-signups-happen-online-with-niscs-smarthub-order-management/"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/desperate-times-disparate-measures-embracing-zero-trust-to-protect-critical-infrastructure/"
-  },
-  {
-   "date": "2025-02-13",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Making Employees Part of Change is Key to Project Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nisc.coop/blog/making-employees-part-of-change-is-key-to-projec-t-success/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "We\u2019re attending: Trimble Applanix User Group Meeting 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/were-attending-trimble-applanix-user-group-meeting-2026/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "We\u2019re exhibiting: Geospatial Innovations Week",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/were-exhibiting-geospatial-innovations-week/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vexcel-imaging.com/news/scientific-paper-high-precision-airborne-mapping/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "I Fly UltraCam with Latitude Spatial",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/latitude-spatial-showcases-ultracam-merlin-5-0-in-a-new-iflyultracam-video/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Tech Talk | Ep. 6: Automated color balancing in UltraMap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/next-level-color-balancing-in-ultramap-tech-talk-ep-6-webinar/"
   }
  ]
 }

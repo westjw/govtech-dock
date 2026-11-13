@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "What Does an AI-Ready Graduate Actually Look Like?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://writesea.com/blog/what-does-an-ai-ready-graduate-look-like/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://writesea.com/resources/career-fair-activation-kit/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Every University Needs an Employability Strategy, Not Just a Career Center",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://writesea.com/blog/why-every-university-needs-an-employability-strategy-not-just-a-career-center/"
   }
  ]
 }

@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Topic Modeling: What It Finds in Your Text Data and What It Doesn\u2019t",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alteryx.com/blog/how-text-mining-structures-the-unstructured-without-the-code"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Escape the Rebuild Tax by Automating Your Multi-Step Data Pipeline",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alteryx.com/blog/topic-modeling-what-it-finds-in-your-text-data-and-what-it-doesnt"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Data Pipeline Monitoring: How to Catch Data Quality Issues Before They Reach the Business",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alteryx.com/blog/escape-the-rebuild-tax-by-automating-your-multi-step-data-pipeline"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Fixing the Foundational Gaps: What Every CFO Should Know Before Scaling AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alteryx.com/blog/data-pipeline-monitoring-how-to-catch-data-quality-issues-before-they-reach-the-business"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",

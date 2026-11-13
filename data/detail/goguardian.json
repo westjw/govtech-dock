@@ -10,10 +10,19 @@
    "url": "https://www.goguardian.com/newsroom/goguardian-launches-goguardian-visitor-delivering-the-most-complete-visitor-management-solution-in-k-12"
   },
   {
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "date_source": "index-text",
-   "first_seen": "2026-11-11",
+   "first_seen": "2026-11-12",
    "headline": "This is some text inside of a div block.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/do-schools-need-new-hardware-for-a-visitor-management-system"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "How Long Does It Take to Implement a School Visitor Management System?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/how-long-does-it-take-to-implement-a-school-visitor-management-system"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/newsroom/goguardian-announces-ai-powered-recommendation-engine-in-goguardian-admin-turning-student-online-behavior-patterns-into-proactive-policy-recommendations"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Why Quality Matters More Than Quantity When It Comes to Screen Time",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/why-quality-matters-more-than-quantity-when-it-comes-to-screen-time"
   }
  ],
  "profile": {

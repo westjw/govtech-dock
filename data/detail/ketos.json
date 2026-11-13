@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "The Week in Water: 99 Percent of Rivers, Never Sampled (November 2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ketos.co/resources/the-week-in-water-99-percent-of-rivers-never-sampled-november-2026"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ketos.co/resources/the-week-in-water-clean-bill-of-health-september-2026"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "The Week in Water: Chlorine\u2019s Fine Print",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ketos.co/resources/the-week-in-water-chlorines-fine-print-september-2026"
   }
  ],
  "profile": {

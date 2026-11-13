@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "4 Things Top Tow Operators and Business Owners Do Differently",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autura.com/insights/4-things-top-tow-operators-and-business-owners-do-differently"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-07-31",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Takeaways Gathered by Directly Asking Tow Operators and Agencies What They Really Need",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.autura.com/insights/insights-gathered-from-directly-asking-tow-operators-and-agencies-what-they-really-need"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "From Scheduled Impound Auction Events to On-Demand Auctions: Why This Change Benefits Sellers and Buyers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.autura.com/insights/from-scheduled-impound-auction-events-to-on-demand-auctions-why-this-change-benefits-sellers-and-buyers"
   }
  ],
  "profile": {

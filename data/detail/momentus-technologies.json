@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Venue Management Software Reviews: Comparing Security and Compliance for Public-Sector Convention Centers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/venue-management-software-reviews"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "near-h1",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/event-management-accounting-software"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Ready to Electrify Events at Your Venue?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/community-event-planning"
   }
  ],
  "profile": {

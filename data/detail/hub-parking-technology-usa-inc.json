@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-10-29",
+   "date": "2026-11-12",
    "date_source": "near-h1",
+   "first_seen": "2026-11-12",
+   "headline": "HUB Solutions not affected by PHP Vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hubparking.com/news/hub-solutions-not-affected-by-php-vulnerabilities/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "index-text",
    "first_seen": "2026-10-29",
    "headline": "Upgrade Once. Scale Forward.",
    "kind": "press",
@@ -74,9 +83,9 @@
   },
   {
    "date": "2026-08-25",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
-   "headline": "Making payment faster in just one scan with J4Pay",
+   "headline": "Making payment fa... \u2192",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hubparking.com/news/making-payment-faster-in-just-one-scan-with-j4pay/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hubparking.com/news/summer-holidays-closure-2026/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Customized user management: the Marina di Alassio project",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hubparking.com/news/a-customized-user-management-the-marina-di-alassio-project/"
   }
  ],
  "profile": {

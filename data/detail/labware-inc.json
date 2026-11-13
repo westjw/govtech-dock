@@ -1,13 +1,31 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Exploring AI for Water Quality Analysis: LabWare in Action at Wetterskip Fryslan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.labware.com/blog/exploring-ai-for-water-quality-analysis-labware-in-action-at-wetterskip-fryslan"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "LabWare 2026 China CEC: Customers, Compliance & Community in Changsha",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.labware.com/blog/chinacec26"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "How Sanofi is Accelerating Global Laboratory Deployment with LabWare",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.labware.com/blog/how-sanofi-is-accelerating-global-laboratory-deployment-with-labware"
+   "url": "http://www.labware.com/blog/how-sanofi-is-accelerating-global-laboratory-deployment-with-labware"
   },
   {
    "date": "2026-10-27",
@@ -16,7 +34,7 @@
    "headline": "Beyond Accreditation: Turning ISO/IEC 17025 into Everyday Practice",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.labware.com/blog/beyond-accreditation-iso-17025"
+   "url": "http://www.labware.com/blog/beyond-accreditation-iso-17025"
   },
   {
    "date": "2026-10-24",
@@ -25,7 +43,7 @@
    "headline": "ALCOA+ and FAIR Data Principles: Why Regulated Labs Need Both",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.labware.com/blog/fair-alcoa-plus"
+   "url": "http://www.labware.com/blog/fair-alcoa-plus"
   },
   {
    "date": "2026-10-22",
@@ -34,7 +52,7 @@
    "headline": "Beyond Electronic Signatures: Why Faster Laboratory Approvals Require More Than a Digital Signature",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.labware.com/blog/beyond-electronic-signatures"
+   "url": "http://www.labware.com/blog/beyond-electronic-signatures"
   },
   {
    "date": "2026-10-11",
@@ -61,11 +79,11 @@
    "headline": "LabWare Launches LabWare WATER, a Modern Compliance Solution for Municipal Water Utilities",
    "kind": "product",
    "kind_rule": "Launches",
-   "url": "https://www.labware.com/blog/labware-launches-labware-water"
+   "url": "http://www.labware.com/blog/labware-launches-labware-water"
   },
   {
-   "date": "2026-08-21",
-   "date_source": "index-text",
+   "date": "2026-09-05",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "LabWare 2026 Asia Pacific CEC: Where Labs, Technology & People Connect",
    "kind": "press",
@@ -79,7 +97,7 @@
    "headline": "How Does a LIMS Work?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.labware.com/blog/how-does-a-lims-work"
+   "url": "http://www.labware.com/blog/how-does-a-lims-work"
   },
   {
    "date": "2026-07-02",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.labware.com/blog/lis-vs-lims"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "LabWare\u2019s 2026 North America Customer Education Conference: Reconnecting in Palm Springs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.labware.com/blog/cec26na"
-  },
-  {
-   "date": "2026-04-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "LabWare and Phizzle Advance Connected Cleanroom Lab Integration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.labware.com/blog/labware-phizzle-cleanroom-instrument-data-integration"
   }
  ]
 }

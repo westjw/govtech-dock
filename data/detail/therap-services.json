@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "eMAR Explained: How Electronic Medication Administration Records Reduce Errors for IDD Providers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/emar-explained-how-electronic-medication-administration-records-reduce-errors-for-idd-providers/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.therapservices.net/blog/the-idd-documentation-software-buyers-checklist-12-questions-to-ask-before-you-switch/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Program Integrity in Human Services: Key Takeaways on Identifying and Avoiding for Fraud, Waste, and Abuse",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/program-integrity-in-human-services/"
   }
  ]
 }

@@ -1,8 +1,8 @@
 {
  "news": [
   {
-   "date": "2026-11-09",
-   "date_source": "index-text",
+   "date": "2026-11-06",
+   "date_source": "json-ld",
    "first_seen": "2026-11-06",
    "headline": "AI Training for Employees: How to close the Skill Gaps and Drive Performance",
    "kind": "press",
@@ -37,33 +37,6 @@
    "url": "https://www.wooclap.com/en/blog/wooflash-digital-ecosystem/"
   },
   {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Data-informed teaching in practice at Ghent University and the University of Strasbourg",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/data-informed-teaching/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-10-19",
-   "headline": "The best team collaboration tools for every team",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/team-collaboration-tools/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Corporate training solutions: success stories from our partners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/corporate-training-solutions-success-stories/"
-  },
-  {
    "date": "2026-10-31",
    "date_source": "index-text",
    "first_seen": "2026-11-07",
@@ -82,31 +55,58 @@
    "url": "https://www.wooclap.com/en/blog/digital-transformation-in-higher-education/"
   },
   {
-   "date": "2026-10-29",
+   "date": "2026-10-27",
    "date_source": "index-text",
-   "first_seen": "2026-11-07",
-   "headline": "Neuroscience and education: how brain science is reshaping modern teaching",
+   "first_seen": "2026-09-11",
+   "headline": "Wooflash in action: The edtech solution educators actually use",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/neuroscience-education/"
+   "url": "https://www.wooclap.com/en/blog/edtech-solutions-wooflash/"
   },
   {
-   "date": "2026-10-29",
+   "date": "2026-10-27",
    "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "What's new in Wooclap in october: a new way to read your polls, a cleaner screen, and attendance checks at any point in your session",
+   "first_seen": "2026-11-06",
+   "headline": "Creating Wooclap events for learners with cognition and learning disabilities",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/new-in-wooclap-october-2026/"
+   "url": "https://www.wooclap.com/en/blog/wooclap-support-cognition-disabilities/"
   },
   {
-   "date": "2026-10-29",
+   "date": "2026-10-23",
    "date_source": "index-text",
-   "first_seen": "2026-11-07",
-   "headline": "The Best AI Quiz Generators",
+   "first_seen": "2026-11-05",
+   "headline": "6 ways to improve the value of training",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/top-quiz-ia/"
+   "url": "https://www.wooclap.com/en/blog/6-ways-to-improve-the-value-of-training/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-11-06",
+   "headline": "Teaching languages in the age of AI: what if the real challenge is preserving cognitive effort?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/teaching-languages-ai/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "What if interactivity became an institutional reflex?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/creps-wooclap/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Data-informed teaching in practice at Ghent University and the University of Strasbourg",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/data-informed-teaching/"
   }
  ]
 }

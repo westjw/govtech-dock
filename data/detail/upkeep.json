@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Why US Fatal Injury Rates Stayed Flat While Recordable Injuries Fell 28%, and Where Lockout/Tagout Fits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/why-us-fatal-injury-rates-stayed-flat-while-recordable-injuries-fell-28percent-an/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.upkeep.com/blog/cmms-in-manufacturing/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "8 IIoT Applications That Turn Industrial Data Into Action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/iiot-applications/"
   }
  ]
 }

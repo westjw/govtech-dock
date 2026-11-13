@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "How the Country Club of St. Albans Deals with Storms That Aren\u2019t on the Forecast",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/country-club-st-albans/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/the-wbgt-playbook-for-maryland-schools/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Bay District Schools faced a hurricane. This is the system they trust for weather safety.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/bay-district-schools/"
   }
  ],
  "profile": {

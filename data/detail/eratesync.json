@@ -1,13 +1,13 @@
 {
  "news": [
   {
-   "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "E-Rate Changes 2026: The 17 Updates Service Providers Need to Know",
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "E-Rate Eligibility for 2027: What's on the FY2027 Eligible Services List (ESL)",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.eratesync.com/blog/e-rate-changes-service-providers-2026"
+   "url": "https://www.eratesync.com/blog/e-rate-eligibility-2027-eligible-services-list"
   },
   {
    "date": "2026-08-23",
@@ -49,6 +49,15 @@
    "date": "2026-08-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
+   "headline": "E-Rate Changes 2026: The 17 Updates Service Providers Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eratesync.com/blog/e-rate-changes-service-providers-2026"
+  },
+  {
+   "date": "2026-08-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
    "headline": "E-Rate Changes 2026: Every Update for Schools, Libraries, and Consortiums",
    "kind": "product",
    "kind_rule": "Update",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Everything You Need to Know About E-Rate PIA Reviews",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Top E-Rate Category 2 Mistakes Applicants Make",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-07-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The 30 Changes Proposed in the FCC's USAC Reform NPRM (WC Docket 26-173)",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-06-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "FCC E-Rate Top-to-Bottom Review: What Changed Between the Documents (FCC-26-41)",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-06-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "E-Rate Category 2: What It Covers and How to Plan Your C2 Budget",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eratesync.com/blog/e-rate-category-2"
-  },
-  {
-   "date": "2026-06-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Everything You Need to Know About E-Rate Deadlines",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eratesync.com/blog/e-rate-deadlines"
   }
  ],
  "profile": {

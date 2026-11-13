@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "What Makes Municipal Software Implementation Successful",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/what-makes-municipal-software-implementation-successful"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/7-signs-youve-outgrown-spreadsheets-for-public-works"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How AI Can Help Public Works Teams Work Smarter",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/how-ai-can-help-public-works-teams-work-smarter"
   }
  ],
  "profile": {

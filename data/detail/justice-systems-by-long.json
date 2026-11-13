@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Industrial Automation and UL 508A Panel Shop Services Built for Alaska",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.long.com/blog/industrial-automation-panel-shop-services-alaska/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.long.com/resources/munters-data-center-technologies-overview/"
-  },
-  {
-   "date": "2026-03-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "VRV Best Practices Series: Installation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.long.com/resources/vrv-best-practices-series-installation/"
   }
  ],
  "profile": {

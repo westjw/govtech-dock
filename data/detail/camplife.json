@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "From a Campsite to CampLife: The Story of How It All Began",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://software.camplife.com/blog/from-a-campsite-to-camplife-the-story-of-how-it-all-began"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://software.camplife.com/blog/picture-perfect-5-photos-every-campground-should-have"
-  },
-  {
-   "date": "2026-04-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Clean, Friendly, and Ready: How Candy Hill Campground Sets the Standard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://software.camplife.com/blog/clean-friendly-and-ready-how-candy-hill-campground-sets-the-standard"
   }
  ]
 }

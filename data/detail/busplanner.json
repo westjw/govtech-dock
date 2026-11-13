@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "4 Ways to Plan School Transportation for Magnet & Choice Programs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://busplanner.com/resources/blog/plan-school-transportation-magnet-choice-programs/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://busplanner.com/resources/blog/school-bus-safety-week-review/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Are Your Students Spending Too Long on the Bus? How to Evaluate Ride Times",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://busplanner.com/resources/blog/evaluate-student-ride-times/"
   }
  ]
 }

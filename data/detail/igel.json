@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "og:published",
+   "first_seen": "2026-11-12",
+   "headline": "The NCSC Annual Review 2026, the patch wave and Gartner\u2019s WISE",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.igel.com/blog/ncsc-gartner-wise-immutable-endpoints/"
+  },
+  {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-11-05",
    "headline": "When a Freezer Becomes a Cyber Weapon: Why Aren\u2019t We Preventing It?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.igel.com/blog/igel-os-12-common-criteria-evaluation/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "AI Armor: From Endpoint Protection to a Platform-Wide Trust Fabric",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.igel.com/blog/ai-armor-secure-enterprise-ai-trust-fabric/"
   }
  ]
 }

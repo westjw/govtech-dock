@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Great Holiday Travel Does Exist with CLEAR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/great-holiday-travel-does-exist-with-clear"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -37,6 +46,15 @@
    "url": "https://clearme.com/blog/airport-guides-dfw"
   },
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "CLEAR Airport Guide: Dallas Fort-Worth International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-dfw"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -44,6 +62,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/clear-travel-tips-how-to-pack-for-wedding-travel"
+  },
+  {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "CLEAR Travel Tips: How to Pack for Wedding Travel",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/how-to-pack-for-wedding-travel"
   },
   {
    "date": "2026-10-26",
@@ -73,40 +100,13 @@
    "url": "https://clearme.com/blog/airport-guides-sfo"
   },
   {
-   "date": "2026-10-07",
+   "date": "2026-10-15",
    "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "CLEAR Hosts Military Veterans at NY HQ to Preview New Initiative with VA.gov",
+   "first_seen": "2026-11-12",
+   "headline": "CLEAR Airport Guide: San Francisco International Airport",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://clearme.com/blog/clear-veterans-preview-va-gov-sign-in"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "CLEAR Destination Guide: Denver on a Layover",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/denver-on-a-layover"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "CLEAR Travel Tips: What Do I Do If My Luggage is Lost",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/what-do-i-do-if-my-luggage-is-lost"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "CLEAR Airport Guide: Chicago O\u2019Hare International Airport",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/aiport-guide-ord"
+   "url": "https://clearme.com/blog/airport-guide-sfo"
   }
  ],
  "profile": {

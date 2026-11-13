@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-12",
+   "headline": "Netherlands: The Cbw 24-Hour Deadline and File Access",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/netherlands-cyberbeveiligingswet-file-incidents"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "near-h1",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myworkdrive.com/blog/shibboleth-sso-file-share-permissions"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "How MyWorkDrive Fits Into DICOM and Medical Imaging Workflows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/dicom-medical-imaging-file-access"
   }
  ]
 }

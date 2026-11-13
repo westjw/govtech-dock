@@ -10,6 +10,15 @@
    "url": "https://www.action1.com/blog/n-able-n-central-vulnerabilities-expose-a-bigger-risk/"
   },
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "What If N-central Were Compromised, but Customer Endpoints Remained Protected?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.action1.com/blog/what-if-n-able-had-etp/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.action1.com/blog/best-vulnerability-remediation-tools-software/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "How to Reduce MTTR: A Practical Guide for Patching, Vulnerability Remediation, and Software Incidents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/how-to-reduce-mttr-a-practical-guide/"
   }
  ]
 }

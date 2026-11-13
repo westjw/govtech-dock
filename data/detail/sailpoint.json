@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "SailPoint Announces Date of Fiscal Third Quarter 2027 Earnings Conference Call and Participation in Upcoming Investor Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sailpoint.com/press-releases/sailpoint-fiscal-q3-2027-earnings-call"
+  },
+  {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "SailPoint Announces Modernization Capabilities for both Cloud and On-Premises Identity Security",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "SailPoint Report Finds 79% of Enterprises Run AI Agents in Production, Yet Only 2% Have Deployed Purpose-built Security",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sailpoint.com/blog/agent-audit-exportable-evidence-for-agents-you-already-govern"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-31",
-   "headline": "No more silos: The case for a unified foundation and control plane",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sailpoint.com/blog/no-more-silos-the-case-for-a-unified-foundation-and-control-plane"
   }
  ]
 }

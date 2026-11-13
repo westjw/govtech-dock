@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-12",
+   "headline": "An industry first: Samsara provides AI safety to forklifts, off-highway equipment, and airport ground support",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.samsara.com/blog/an-industry-first-samsara-provides-ai-safety-to-forklifts-off-highway-equipment-and-airport-ground-support"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "near-h1",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.samsara.com/blog/beyond-2026-with-pike-corp-signals-from-the-field"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "August product updates: 5 new Samsara releases to help you turn insights into action",
-   "kind": "product",
-   "kind_rule": "updates",
-   "url": "https://www.samsara.com/blog/august-product-updates-2026"
   }
  ],
  "profile": {

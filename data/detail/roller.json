@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "How to Increase Average Order Value at Your Venue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.roller.software/blog/how-to-increase-average-order-value"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.roller.software/blog/what-the-1-october-2026-surcharge-ban-means-for-your-venue"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Stoke Factory Used ROLLER Capital to Expand Faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/stoke-factory-used-roller-capital"
   }
  ],
  "profile": {

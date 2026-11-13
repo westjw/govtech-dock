@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "Can Your Healthcare Legal Team Respond While Protecting Patient Data?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/blog/can-your-healthcare-legal-team-respond-while-protecting-patient-data/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Casepoint Wins 2026 \u201ceDiscovery Innovation of the Year\u201d Award for Casepoint IQ\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/press/casepoint-wins-2026-ediscovery-innovation-award-for-casepoint-iq/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "index-text",
    "first_seen": "2026-10-30",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.casepoint.com/blog/canadian-legal-teams-automate-legal-holds/"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "What Casepoint Heard at the 2026 CLOC Global Institute",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casepoint.com/blog/cloc-2026-legal-ai-execution-governance-trends/"
-  },
-  {
-   "date": "2026-04-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "For Legal Teams, Government IT Modernization Starts With Fewer Tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casepoint.com/blog/for-legal-teams-government-it-modernization-starts-with-fewer-tools/"
   }
  ],
  "profile": {

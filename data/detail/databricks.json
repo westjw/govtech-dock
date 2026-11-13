@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "How Constellation is building a governed data foundation on Databricks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/how-constellation-building-governed-data-foundation-databricks"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Eclipse Aerospace simplifies flight-data ingestion with Databricks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "How H6.ai builds AI-powered financial automation with Lakebase Postgres",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/how-h6ai-builds-ai-powered-financial-automation-lakebase-postgres"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Lakehouse//RT: Scale real-time analytics, not your bill",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Genie in Slack is now Generally Available: Governed AI cowork, right where work happens",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/genie-slack-now-generally-available-governed-ai-cowork-right-where-work-happens"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "How Block powers collaborative AI agents with Buzz and Unity Gateway",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/how-block-powers-collaborative-ai-agents-buzz-and-unity-gateway"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -29,7 +83,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-11",
    "headline": "Databricks Doubles Down on AI Products, Opens New 235,000-Square-Foot San Francisco Headquarters",
    "kind": "press",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/announcing-ga-genie-ontology"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "Genie with Genie Ontology Delivers 1.6\u00d7 the Accuracy with Less than Half the Tokens",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "From enterprise context to action: Genie Agents now analyze more data sources to transform your work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/enterprise-context-action-genie-agents-now-analyze-more-data-sources-transform-your-work"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Unity Catalog Metric Views, now in Power BI: one unified, governed semantic layer for all your reporting and AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Databricks' Commitment to European Sovereignty",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/databricks-commitment-european-sovereignty"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Accelerate GPU training on Unity Catalog tables with UCDataset",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/accelerate-gpu-training-unity-catalog-tables-ucdataset"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Turn buying signals into pipeline with Sendoso gifts in Genie One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/turn-buying-signals-pipeline-sendoso-gifts-genie-one"
   }
  ]
 }

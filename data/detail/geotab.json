@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "GPS vs. Bluetooth asset tracking: How to choose the right one for your fleet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/asset-tracking-comparison-gps-vs-bluetooth/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "Top fleet accident prevention software for safer fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/fleet-accident-prevention-software/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "How can self-hosted AI give organizations more control over data?",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "How to start a trucking business: Step-by-step guide for owner operators",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Geotab's Response to PHP Vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Garbage truck safety: Three questions for your video review process",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Why you need AI in your fleet operations",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/why-fleet-ai/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-27",
-   "headline": "How fleet data gets you from what happened to what to do next",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/predictive-fleet-intelligence/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "How private haulers can help prepare their fleets for new waste management contracts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/waste-management-contracts-private-haulers/"
   }
  ],
  "profile": {

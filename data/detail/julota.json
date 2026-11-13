@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "How AI Is Changing Youth Suicide Crisis Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/how-ai-is-changing-youth-suicide-crisis-response/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/community-paramedicine-jail-diversion-lead/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "The Psychology of Hope in Law Enforcement: What the Research Says",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/the-psychology-of-hope-in-law-enforcement-what-the-research-says/"
   }
  ],
  "profile": {

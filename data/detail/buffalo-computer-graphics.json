@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "How API Integrations Improve Emergency Response Coordination",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/api-integrations-emergency-response-teams-need-to-coordinate"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/higher-education-emergency-management-incident"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "index-text",
-   "first_seen": "2026-10-15",
-   "headline": "What Is a Threat Assessment Management (TAM) Tool?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/threat-assessment-management-tam-tool"
   }
  ]
 }

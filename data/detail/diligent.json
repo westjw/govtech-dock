@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Nearly 60% of Legal Leaders Say AI Adoption is Outpacing Governance, Diligent Institute Report Finds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/company/newsroom/gc-risk-index-reveals-ai-governance-gaps"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "IN-DEPTH: Why are activists circling industrials?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/in-depth-why-are-activists-circling-industrials"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/resources/blog/general-counsel-corporate-secretary-trends"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "The CISO's 2027 reality check: 6 trends every security leader needs to get ahead of",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/ciso-cybersecurity-trends"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "IN-DEPTH: Activist universe broadens in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/in-depth-activist-universe-broadens-in-2026"
   }
  ]
 }

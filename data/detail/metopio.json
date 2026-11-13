@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "The Case for Collaborative Community Health Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://metopio.com/blog/the-case-for-collaborative-community-health-work"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://metopio.com/blog/how-parkview-health-is-tackling-rural-cancer-disparities"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Where AI Actually Helps in Public Health Data Work (and Where It Shouldn't)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://metopio.com/blog/where-ai-actually-helps-in-public-health-data-work"
   }
  ]
 }

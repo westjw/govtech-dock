@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "card-date",
+   "first_seen": "2026-11-12",
+   "headline": "Trimming the Guest List: The $71 Million Cost of Pricey Thanksgiving Flights",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://implan.com/resources/blog/pricey-thanksgiving-flights/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "card-date",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://implan.com/resources/blog/glp1-usage/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "You Pay More at the Pump. But That\u2019s Just the Beginning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://implan.com/resources/blog/rising-gas-prices/"
   }
  ]
 }

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "How to reduce telehealth no-shows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/reduce-telehealth-no-shows"
+  },
+  {
    "date": "2026-11-10",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Best telehealth platforms for therapists in 2026",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Best free telehealth platforms: What\u2019s included and where free ends",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Browser-based vs. app-based telehealth",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Free for you. Worth supporting for us.",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Doxy.me vs. Doximity Dialer: What happens beyond the call?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://doxy.me/media/doxy-me-vs-upheal"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Is doxy.me really free? What you get and what costs extra.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://doxy.me/media/is-doxy-me-free"
   }
  ]
 }

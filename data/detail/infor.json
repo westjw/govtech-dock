@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Building a framework for trusted health data exchange",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/trusted-health-data-exchange"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "From insight to action: Bringing Claude into the operations that run manufacturing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/claude-in-manufacturing-operations"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "og:published",
    "first_seen": "2026-11-11",
@@ -64,6 +82,15 @@
    "url": "https://www.infor.com/resources/infor-cloudsuite-automotive-for-tier-suppliers"
   },
   {
+   "date": "2026-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Infor named \"Leader\" in Gartner report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/gartner-names-cloudsuite-solutions-as-leader"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/hackathon-winners-2026"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-29",
-   "headline": "Hiring faster \u2260 hiring better",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/hiring-faster-vs-hiring-better"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-28",
-   "headline": "What does the bank get in return? Managing commercial customer commitments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/managing-commercial-banking-customer-commitments"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Why MES and AI work better together",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/why-mes-and-ai-work-better-together"
   }
  ],
  "profile": {

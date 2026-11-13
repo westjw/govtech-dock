@@ -1,13 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.quorum.us/blog/introducing-quincy-hub/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-12",
+   "headline": "The 2026 Lame-Duck Session: What Can Still Pass Before the New Congress",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/the-2026-lame-duck-session-what-can-still-pass-before-the-new-congress/"
   },
   {
    "date": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/pac-data-is-leaving-its-silo/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Candidate Data + AI: Preparing Your Federal Team for the 120th Congress",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/candidate-data-ai-preparing-your-federal-team-for-the-120th-congress/"
   }
  ]
 }

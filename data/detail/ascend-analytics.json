@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "TechCrunch Interview: Why the Data Center You Dread Might Never Even Be Built",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/why-the-data-center-you-dread-might-never-even-be-built"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ascendanalytics.com/blog/new-york-vder-storage-outlook-capacity-charging-costs"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Texas Clean Energy Summit | August 18-20, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ascendanalytics.com/blog/texas-clean-energy-summit"
   }
  ],
  "profile": {

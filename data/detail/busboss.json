@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Best Dispatch Software for Special Ed Routes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/best-dispatch-software-for-special-ed-routes"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/contractor-mileage-verification-that-holds-up-in-a-dispute"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "What FLEETpatrol Does for District Fleet Maintenance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/what-fleetpatrol-does-for-district-fleet-maintenance-1"
   }
  ],
  "profile": {

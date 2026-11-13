@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "AutoTURN User Day 2026: Swept Path Analysis Across Every Vehicle, Street, and Workflow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transoftsolutions.com/civil-and-transportation/resources/blog/autoturn-user-day-2026-swept-path-analysis-across-every-vehicle-street-and-workflow/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "now available",
    "url": "https://www.transoftsolutions.com/latam/news/guidesign-2026-is-now-available/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "GuideSIGN 2026 is now available",
-   "kind": "product",
-   "kind_rule": "now available",
-   "url": "https://www.transoftsolutions.com/zh-hans/news/guidesign-2026-is-now-available/"
   }
  ],
  "profile": {

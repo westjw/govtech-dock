@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Orlando permitting automation: 97% self service, 10% higher user satisfaction",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accela.com/blog/orlando-permitting-automation/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.accela.com/blog/digital-permitting-mesa-arizona/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The City of Fresno\u2019s New Public Portal to Enhance Online Permitting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.accela.com/press-releases/accela-announces-launch-of-the-city-of-fresnos-new-public-portal-to-enhance-online-permitting"
   }
  ],
  "profile": {

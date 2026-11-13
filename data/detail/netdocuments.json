@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "time",
+   "first_seen": "2026-11-12",
+   "headline": "Inspire EMEA 2026: Scaling the value of legal AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netdocuments.com/blog/inspire-emea-2026-scaling-the-value-of-legal-ai/"
+  },
+  {
    "date": "2026-10-23",
    "date_source": "time",
    "first_seen": "2026-10-24",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launch",
    "url": "https://www.netdocuments.com/blog/netdocuments-google-cloud-gemini-enterprise-legal/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "time",
-   "first_seen": "2026-10-28",
-   "headline": "Why Legal AI Adoption Stalls Before it Starts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netdocuments.com/blog/why-legal-ai-adoption-stalls-before-it-starts/"
   }
  ]
 }

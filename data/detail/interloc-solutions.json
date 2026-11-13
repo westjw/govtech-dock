@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "From Maintenance History to Asset Insights: Building Confidence in IBM Maximo APM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/from-maintenance-history-to-asset-insights-building-confidence-in-ibm-maximo-apm"
+  },
+  {
    "date": "2026-11-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-06",
    "headline": "Bring Your Own AI Agent: Exploring the IBM Maximo MCP Server",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "From Pilot to Fleet: Exploring IBM Maximo Monitor at Scale",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "From Failure Modes to Work Orders: Exploring IBM Maximo Reliability Strategies",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Maximo Application Suite Security Bulletins November 2026",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "From Managing Maintenance to Making Smarter Decisions: The Evolution of IBM Maximo",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/running-ibm-maximo-application-suite-on-aws-sno"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-09",
-   "headline": "Maximo Application Suite Security Bulletins October 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/maximo-application-suite-security-bulletins-october-2026"
   }
  ],
  "profile": {

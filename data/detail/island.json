@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "card-date",
+   "first_seen": "2026-11-12",
+   "headline": "TypoPrompting: From AI Typos to Malware",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/typoprompting-from-ai-typos-to-malware"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "card-date",
+   "first_seen": "2026-11-12",
+   "headline": "How Moving to .NET NativeAOT Broke (and Saved) Our Plugin System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/how-moving-to-net-nativeaot-broke-and-saved-our-plugin-system"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "card-date",
    "first_seen": "2026-11-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/press/island-named-the-only-2026-gartner-r-peer-insights-tm-customers-choice-for-secure-enterprise-browsers"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Android Anatomy 101: Deconstructing the Bundle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/android-anatomy-101-deconstructing-the-bundle"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "How Attackers Built Software an AI Would Recommend",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/how-attackers-built-software-an-ai-would-recommend"
   }
  ]
 }

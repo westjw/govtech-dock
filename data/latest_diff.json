@@ -1,104 +1,76 @@
 {
-  "date": "2026-11-12",
-  "previous": "2026-11-11",
+  "date": "2026-11-13",
+  "previous": "2026-11-12",
   "changes": [
     {
-      "company": "Paymentus",
-      "id": "paymentus",
-      "from": "Unknown",
+      "company": "Gridware",
+      "id": "gridware",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Bigbelly",
+      "id": "bigbelly",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Regional Sales Manager - South Cen (Non-HQ Location)"
+    },
+    {
+      "company": "SOVRA",
+      "id": "sovra",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Netchex",
+      "id": "netchex",
+      "from": "Sales (non-AE)",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Finalsite",
       "id": "finalsite",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
-    },
-    {
-      "company": "UVeye",
-      "id": "uveye",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Overstory",
-      "id": "overstory",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://boards-api.greenhou"
-    },
-    {
-      "company": "Labrie Group",
-      "id": "labrie-group",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "Halda",
-      "id": "halda",
+      "company": "mdf commerce",
+      "id": "mdf-commerce",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Xtract One Technologies",
+      "id": "xtract-one-technologies",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
       "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "ClassDojo",
-      "id": "classdojo",
+      "company": "Vaisala",
+      "id": "vaisala",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Ready.net",
+      "id": "ready-net",
       "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Senior Account Executive (Remote)"
-    },
-    {
-      "company": "Ascend Analytics",
-      "id": "ascend-analytics",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive"
-    },
-    {
-      "company": "Psyrin",
-      "id": "psyrin",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Sophos, Inc.",
-      "id": "sophos-inc",
-      "from": "Unknown",
       "to": "None found",
       "note": ""
-    },
-    {
-      "company": "Tricentis",
-      "id": "tricentis",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sr. Account Executive \u2013 Germany (P (DE - Remote)"
-    },
-    {
-      "company": "Cotiviti",
-      "id": "cotiviti",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Sales VP - EDI & Interoperability only"
-    },
-    {
-      "company": "Deccan International",
-      "id": "deccan-international",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Filevine",
-      "id": "filevine",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }
