@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "index-text",
+   "first_seen": "2026-11-11",
+   "headline": "The Shadow Market Behind China\u2019s AI Model Distillation Boom",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/chinese-ai-proxy-services/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -19,7 +28,7 @@
    "url": "https://www.chainalysis.com/blog/western-europe-crypto-adoption-2026/"
   },
   {
-   "date": "2026-11-09",
+   "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "DPRK Hackers Perfected Their Fake Interview Playbook Over Dozens of Attacks Before Binance",
@@ -28,7 +37,7 @@
    "url": "https://www.chainalysis.com/blog/binance-hack-dprk-employment-fraud/"
   },
   {
-   "date": "2026-11-02",
+   "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Disrupting the Mercado Bitcoin Attack: How Chainalysis Led the Freeze of Nearly $10M in Stolen Funds",
@@ -48,15 +57,15 @@
   {
    "date": "2026-10-30",
    "date_source": "index-text",
-   "first_seen": "2026-11-11",
-   "headline": "The Shadow Market Behind China\u2019s AI Model Distillation Boom",
+   "first_seen": "2026-11-13",
+   "headline": "FinCEN Bars U.S. Institutions From Moving Funds for MEXC Global",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/chinese-ai-proxy-services/"
+   "url": "https://www.chainalysis.com/blog/fincen-mexc-global-november-2026/"
   },
   {
    "date": "2026-10-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "Updated Nov 10: Chainalysis Security Incident Information",
    "kind": "product",
@@ -64,7 +73,7 @@
    "url": "https://www.chainalysis.com/blog/security-incident-october-30/"
   },
   {
-   "date": "2026-10-30",
+   "date": "2026-10-29",
    "date_source": "index-text",
    "first_seen": "2026-10-29",
    "headline": "South Africa Leads Sub-Saharan Africa\u2019s 13.4% Crypto Growth",
@@ -73,7 +82,7 @@
    "url": "https://www.chainalysis.com/blog/sub-saharan-africa-crypto-adoption-2026/"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "date_source": "index-text",
    "first_seen": "2026-10-28",
    "headline": "Treasury Sanctions Russians, North Koreans supporting DPRK IT Worker Fraud",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/middle-east-north-africa-crypto-adoption-2026/"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "North America: Inside the Growth of Agentic Commerce",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/north-america-crypto-adoption-2026/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "CITE 2026 Preview: School Safety, Innovation, and Connected Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/cite-2026-school-safety-technology-preview"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "What Does Smarter Healthcare Look Like? CENTEGIX Previews HLTH USA 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/hlth-usa-2026-healthcare-innovation-emergency-management"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.centegix.com/blog/school-alert-system-everyday-emergency-readiness"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Jack Markell on Critical Incident Mapping: Why Responders Need to Know the Building",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/critical-incident-mapping-jack-markell"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Jack Markell on School Safety Funding: \u201cShow Me Your Budget\u201d",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/blog-school-safety-funding-jack-markell"
   }
  ],
  "profile": {

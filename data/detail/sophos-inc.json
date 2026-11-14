@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-11",
    "headline": "Your training data is boring: Anomaly detection with LLMs",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-10",
    "headline": "Enforcing intent-based access control at the endpoint",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-11-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-06",
    "headline": "Killing ill-willed skills: Sophos AI at BSides Sydney",
    "kind": "press",

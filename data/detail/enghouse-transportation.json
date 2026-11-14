@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Real-World TMS Results: Cost, Visibility, and Efficiency Gains",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/real-world-tms-results-cost-visibility-and-efficiency-gains/"
+  },
+  {
    "date": "2026-08-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.enghousetransportation.com/enghouse-resources/blog/maas-vs-reality-what-cities-actually-need-from-journey-planning/"
-  },
-  {
-   "date": "2026-01-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-11",
-   "headline": "Do Transit Authorities Need a White-Label Journey Planner or Just Better Transit Data?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/do-transit-authorities-need-a-white-label-journey-planner-or-just-better-transit-data/"
   }
  ],
  "profile": {

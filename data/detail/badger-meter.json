@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Why the ModMAG M2000 Electromagnetic Flow Meter Is Ideal for CDU Applications",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.badgermeter.com/blog/cdu-flow-measurement/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Keeping Data Centers Cool, Efficient and Resilient with Smarter Flow Monitoring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.badgermeter.com/blog/keeping-data-centers-cool/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -8,6 +26,15 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://www.badgermeter.com/newsroom/37south/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "5 Ways Flow Measurement Reduces Energy Costs in HVAC Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.badgermeter.com/blog/reduce-hvac-energy-costs/"
   },
   {
    "date": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.badgermeter.com/blog/closing-data-gaps/"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Releases 2025 Sustainability Report",
-   "kind": "product",
-   "kind_rule": "Releases",
-   "url": "https://www.badgermeter.com/newsroom/2025-sustainability-report/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Expands Leadership Position in Global Sewer Line Monitoring with Acquisition of UDlive",
-   "kind": "funding",
-   "kind_rule": "Acquisition of",
-   "url": "https://www.badgermeter.com/newsroom/udlive/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Badger Meter Expands Leadership Position in Global Sewer Line Monitoring with Acquisition of UDlive",
-   "kind": "funding",
-   "kind_rule": "Acquisition of",
-   "url": "https://www.badgermeter.com/en-ca/newsroom/udlive/"
   }
  ],
  "profile": {

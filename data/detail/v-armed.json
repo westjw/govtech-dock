@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2024-06-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "An Introduction to VR in Training: A Game-Changer for Corporate and Law Enforcement Sectors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.v-armed.com/2024/06/vr-training-revolution/"
+  },
+  {
    "date": "2024-04-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.v-armed.com/2024/04/on-the-beat-in-virtual-reality-the-rise-of-police-training-with-vr/"
+  },
+  {
+   "date": "2024-03-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Agency Completes Upgrade to Fully Wireless V-Armed System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.v-armed.com/2024/03/agency-completes-upgrade-to-fully-wireless/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Content Filters Blocking MagicSchool",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/16764998-content-filters-blocking-magicschool"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "time",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://help.magicschool.ai/en/articles/15033384-enable-class-writing-feedback-using-microsoft-onedrive"
-  },
-  {
-   "date": "2026-09-12",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Class Writing Feedback: Canvas & Schoology Integrations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/15235553-class-writing-feedback-canvas-schoology-integrations"
   }
  ],
  "profile": {

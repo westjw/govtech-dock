@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "St. Johns County, Florida: Short-Term Rental Code Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/st-johns-county-florida"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-11",
    "headline": "Nassau County, Florida: 81% Short-Term Rental Tax Compliance",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://deckard.com/resources/path-to-str-compliance-excellence"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Housing Data Should Cities Actually Track for Long-Term Rentals?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://deckard.com/resources/housing-data-cities-should-track-long-term-rentals"
   }
  ],
  "profile": {

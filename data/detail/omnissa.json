@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Horizon 8 2609: Performance, security, management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/horizon-8-2609/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-03",
    "headline": "How HP and Omnissa streamline PC provisioning",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-2025-security-management-innovations/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Introducing Omnissa Elara: an authority layer for AI",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-announcing-omnissa-elara/"
   }
  ]
 }

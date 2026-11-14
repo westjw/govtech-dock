@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Blood Transfusions at Home: How MIH-CP Brings Hospital-Level Care to the Living Room",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/blood-transfusions-at-home-how-mih-cp-brings-hospital-level-care-to-the-living-room/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/alternatives-to-911-for-a-mental-health-crisis-what-they-look-like-heading-into-2027/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "MIH-CP and LEAD Partnerships: Breaking the Jail-and-Release Loop",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/community-paramedicine-jail-diversion-lead/"
   }
  ],
  "profile": {

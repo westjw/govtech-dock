@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Signal & Noise: Incident Spotlight and Veterans Day Special Edition",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/signal-noise-volume-19-incident-spotlight-and-veterans-day-special-edition"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/internal-tool-gets-body-double"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "EP 123 \u2014 Overmatch Ventures' Morgan Hitzig On The Founder Offset And Why America Wins By Playing Its Own Game",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/morgan-hitzig-founder-offset"
   }
  ],
  "profile": {

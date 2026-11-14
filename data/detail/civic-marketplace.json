@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "See your quote requests without logging in",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://civicmarketplace.com/news/see-quote-requests-without-logging-in"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.civicmarketplace.com/news/budgeting-for-ai-how-local-governments-can-avoid-the-token-pricing-trap"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How local agencies can use cooperative contracts to reduce procurement cycle times from months to weeks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://civicmarketplace.com/news/how-local-agencies-can-use-cooperative-contracts-to-reduce-procurement-cycle-times-from-months-to-weeks"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-13",
+   "headline": "How AI Dash Cams Help Waste Fleets Coach Drivers and Defend Claims",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/ai-dash-cam/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -19,8 +28,17 @@
    "url": "https://routeware.com/resources/news/routeware-puts-ai-to-work-in-waste-and-recycling-from-the-back-office-to-the-curb/"
   },
   {
+   "date": "2026-11-09",
+   "date_source": "index-text",
+   "first_seen": "2026-11-13",
+   "headline": "Digital Waste Tracking: What It Means for UK Councils, and How to Be Ready",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/digital-waste-tracking-uk/"
+  },
+  {
    "date": "2026-11-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-10",
    "headline": "How AI Contamination Detection Works on Garbage Truck Cameras",
    "kind": "press",
@@ -55,7 +73,7 @@
    "url": "https://routeware.com/blog/operational-ai-waste-collection/"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
    "headline": "How to Choose the Best Waste Management Software: A UK Council\u2019s Guide",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/blog/how-roll-off-dispatch-software-streamlines-a-site-services-operation/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "index-text",
-   "first_seen": "2026-10-19",
-   "headline": "Waste Management Billing: How Can Haulers Bill Customers Better?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/waste-management-billing-how-can-haulers-bill-customers-better/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "index-text",
-   "first_seen": "2026-10-19",
-   "headline": "How Municipal Fleets Handle Disaster Debris Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/how-municipal-fleets-handle-disaster-debris-management/"
   }
  ],
  "profile": {

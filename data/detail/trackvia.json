@@ -1,7 +1,16 @@
 {
  "news": [
   {
-   "date": "2026-10-29",
+   "date": "2026-11-09",
+   "date_source": "time",
+   "first_seen": "2026-11-13",
+   "headline": "Your Inspections Went Digital. Your Safety and Compliance Record Didn\u2019t.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/manufacturing-safety-compliance-audit-readiness/"
+  },
+  {
+   "date": "2026-11-09",
    "date_source": "time",
    "first_seen": "2026-11-11",
    "headline": "4 Best Practices to Grow Your Business and Control Costs: Lessons from Cascade Stucco",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://trackvia.com/blog/how-to-keep-field-operations-synchronized-when-plans-change/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "TrackVia Achieves FedRAMP Moderate Equivalency for Its Government Workflow Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://trackvia.com/blog/trackvia-fedramp-ready-status/"
   }
  ]
 }

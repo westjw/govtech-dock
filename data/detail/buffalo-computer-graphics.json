@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-13",
+   "headline": "How to Integrate 911 Dispatch Data Into Your Incident Management System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/how-to-integrate-911-dispatch-data-into-your-incident-system"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/emergency-operations-plan-step-guide"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-16",
-   "headline": "Incident Management in Higher Education",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/higher-education-emergency-management-incident"
   }
  ]
 }

@@ -1,4 +1,87 @@
 {
+ "news": [
+  {
+   "date": "2024-02-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Integrate WorkCanvas with your monday boards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/16760164756242-Integrate-WorkCanvas-with-your-monday-boards"
+  },
+  {
+   "date": "2023-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Share and Analyze your WorkForm",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/14129260394002-Share-and-Analyze-your-WorkForm"
+  },
+  {
+   "date": "2023-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Get started with WorkCanvas",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/13206630995346-Get-started-with-WorkCanvas"
+  },
+  {
+   "date": "2023-04-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "WorkForms settings and permissions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/11040473466258-WorkForms-settings-and-permissions"
+  },
+  {
+   "date": "2019-10-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "How to share a board view publicly",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/360009695080-How-to-share-a-board-view-publicly"
+  },
+  {
+   "date": "2018-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Get started with WorkForms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/360000358700-Get-started-with-WorkForms"
+  },
+  {
+   "date": "2018-07-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Is the monday.com mobile app HIPAA compliant?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/360001292545-Notifications-explained-"
+  },
+  {
+   "date": "2018-04-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "The Google Apps Authentication",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/360000810329--Google-Apps-Authentication?abcb=87224"
+  },
+  {
+   "date": "2017-12-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Is the monday.com mobile app HIPAA compliant?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.monday.com/hc/en-us/articles/115005900249-The-Updates-Section"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "monday.com sells project management software for running projects and teams online. The about page presents it as one platform for any use case.",

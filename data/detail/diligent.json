@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Why the Elizabeth Holmes documentary wants your board to reconsider the word 'can'",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/elizabeth-holmes-theranos-ai-governance"
+  },
+  {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "FedRAMP VDR & VER: A practical compliance guide for authorized cloud providers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/fedramp-vdr-ver-compliance"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/resources/blog/pennon-group-case-study"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Managing risk: An infographic and guide for public leaders",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/infographic-managing-risk-public-sector"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "7 trends shaping the GC and CoSec agenda in 2027",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/general-counsel-corporate-secretary-trends"
   }
  ]
 }

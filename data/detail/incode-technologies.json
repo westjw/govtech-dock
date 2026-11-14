@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "What is agentic fraud? How it works and how to stop it",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://incode.com/blog/what-is-agentic-fraud-how-it-works-and-how-to-stop-it/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://incode.com/press/uk-tech-news-incode-trustgraph/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Incode Launches TrustGraph, the First Trust Network Built for the Agentic Era",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://incode.com/press/uk-tech-news-incode-trustgraph-launch/"
   }
  ]
 }

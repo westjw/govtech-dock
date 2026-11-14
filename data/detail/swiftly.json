@@ -1,7 +1,16 @@
 {
  "news": [
   {
-   "date": "2026-11-03",
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing the industry\u2019s most trusted AI-powered CAD/AVL solution",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.goswift.ly/blog/introducing-swiftly-cad-avl"
+  },
+  {
+   "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Oulu Public Transport Authority improves on-time performance and delivers more efficient service with Swiftly",
@@ -89,15 +98,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goswift.ly/blog/3-lessons-from-hundreds-of-data-therapy-sessions"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Introducing the industry\u2019s most trusted AI-powered CAD/AVL solution",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.goswift.ly/blog/introducing-swiftly-cad-avl"
   },
   {
    "date": "2026-09-23",

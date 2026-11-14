@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Revolver Debt and Revolving Lines of Credit in Accounting Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://finquery.com/blog/revolver-debt-revolving-lines-credit-explained/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://finquery.com/blog/incurred-expenses-explained/"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "FRS 102 Transition Advice from the Experts: KPMG, Lease Solutions Pro, & FinQuery",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://finquery.com/blog/frs-102-transition-advice-from-experts/"
   }
  ]
 }

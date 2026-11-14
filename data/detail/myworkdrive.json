@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-13",
+   "headline": "Microsoft 365 Outage: How to Keep File Access Running",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/news/microsoft-365-outage-file-access"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-13",
+   "headline": "UK: Account for Supplier Access to File Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myworkdrive.com/blog/uk-third-party-file-access-audit"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "near-h1",
    "first_seen": "2026-11-12",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myworkdrive.com/blog/office-online-server-end-of-life-azure-files"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-27",
-   "headline": "Conditional Access for SMB File Shares: Entra Private Access and Unmanaged Devices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/conditional-access-smb-file-shares-entra-private-access"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-27",
-   "headline": "Shibboleth SSO and File Share Permissions: SAML vs NTFS",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myworkdrive.com/blog/shibboleth-sso-file-share-permissions"
   }
  ]
 }

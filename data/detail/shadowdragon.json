@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "index-text",
+   "first_seen": "2026-11-13",
+   "headline": "View How a metropolitan police department closed cases faster with OSINT investigation tools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://shadowdragon.io/resources/osint-investigation-tools-police-case-study/"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "index-text",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/top-osint-websites-and-resources/"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "View OSINT social media search: Find any hidden profile",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://shadowdragon.io/resources/osint-social-media-search/"
   }
  ]
 }

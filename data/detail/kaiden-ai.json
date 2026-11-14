@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "card-date",
+   "first_seen": "2026-11-14",
+   "headline": "Is Ignorance Bliss, or Is It Required?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/blog/is-ignorance-bliss-police-training-records"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kaiden.ai/post/ai-police-training-retention-readiness"
-  },
-  {
-   "date": "2025-10-16",
-   "date_source": "card-date",
-   "first_seen": "2026-10-24",
-   "headline": "How AI in Police Training Improves Retention and Readiness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaiden.ai/blog/ai-police-training-retention-readiness"
   }
  ],
  "profile": {

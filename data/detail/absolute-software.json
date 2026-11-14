@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-13",
+   "headline": "Ransomware Response: A Step-by-Step Playbook for IT Ops Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.absolute.com/blog/ransomware-response-a-step-by-step-playbook-for-it-ops-teams"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.absolute.com/blog/vibe-coders-leave-behind-software-microsoft-patch-tuesday-misses"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "August 2026 Patch Tuesday: How Attackers Chain CVEs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.absolute.com/blog/microsoft-patch-tuesday-august-2026-critical-fixes-and-urgent-updates"
   }
  ]
 }

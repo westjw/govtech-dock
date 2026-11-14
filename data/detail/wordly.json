@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-11",
+   "date_source": "index-text",
+   "first_seen": "2026-11-13",
+   "headline": "SB 1187 Update: What Changed in California\u2019s Brown Act",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wordly.ai/blog/sb-1187-brown-act-update"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wordly.ai/blog/live-translation-for-conferences-and-events"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "How Wordly Serves the Entire Event Content Lifecycle, Before, During, and After",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wordly.ai/blog/event-content-lifecycle"
   }
  ]
 }

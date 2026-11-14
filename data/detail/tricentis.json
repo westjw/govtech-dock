@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-12",
    "headline": "Agents are in production. Who\u2019s signing off on quality?",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-12",
    "headline": "SAP\u2019s Autonomous Enterprise runs on context. So should quality engineering.",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-29",
    "headline": "The PHP2Shell patch: What online retailers should do before Black Friday",
    "kind": "press",

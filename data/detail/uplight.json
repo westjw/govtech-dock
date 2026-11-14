@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "California CCAs are Taking Grid Action and Unlocking DER Potential With VPPs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uplight.com/blog/california-ccas-are-taking-grid-action-and-unlocking-der-potential-with-vpps/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-11",
    "headline": "Uplight Continues to Scale Demand Flexibility Portfolio, Delivering Reliable Capacity and Empowering Utility Partners to Meet Record Summer Demand and Keep Bills Affordable",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Uplight On the Fast Company\u2019s Best Workplace for Innovators List for the Fifth Year in a Row",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "July\u2019s Heat Dome Put DR on the Front Lines with One of Our Biggest Event Weeks to Date",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://uplight.com/blog/how-one-utility-drives-demand-stack-enrollment-with-ehers-achieving-94-customer-satisfaction/"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What We\u2019re Enhancing (and Expecting) Ahead of the Summer 2026 DR Season",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://uplight.com/blog/what-were-enhancing-and-expecting-ahead-of-the-summer-2026-dr-season/"
   }
  ]
 }

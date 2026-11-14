@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Home Care In Iowa: Support For Chronic Conditions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/home-care-iowa-support-for-chronic-conditions/"
+  },
+  {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Meal Preparation For Seniors: A Caregiver\u2019s Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/meal-preparation-seniors-caregiver-guide/"
+  },
+  {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Personal Care For Elderly Loved Ones: A Caregiver\u2019s Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/personal-care-elderly-loved-ones/"
+  },
+  {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "How To Communicate With Someone With Dementia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/how-communicate-with-someone-dementia/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trualta.com/resources/blog/caregivers-in-south-dakota-things-to-do-with-your-care-recipient/"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "How Long Does a Concussion Last?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/how-long-does-a-concussion-last/"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "South Dakota Home Care Services For People With Dementia",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/south-dakota-home-care-services-for-people-with-dementia/"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Dementia Education For South Dakota Caregivers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/dementia-education-south-dakota-caregivers/"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Caregiver Support Groups In South Dakota",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/caregiver-support-groups-south-dakota/"
   }
  ]
 }

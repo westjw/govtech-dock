@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "index-text",
+   "first_seen": "2026-11-13",
+   "headline": "Florida State University implements TIND Digital Archive",
+   "kind": "contract",
+   "kind_rule": "State University implements",
+   "url": "https://blog.tind.io/press/florida-state-university-implements-tind-digital-archive"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "index-text",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "selects",
    "url": "https://blog.tind.io/press/vmi-selects-tind-digital-archive"
-  },
-  {
-   "date": "2026-04-23",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "George Mason University selects TIND Digital Archive and TIND Institutional Repository",
-   "kind": "contract",
-   "kind_rule": "selects",
-   "url": "https://blog.tind.io/press/george-mason-university-selects-tind-digital-archive-and-tind-institutional-repository"
   }
  ]
 }

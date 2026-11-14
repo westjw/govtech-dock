@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "How school leaders can use AI insights to improve teaching and learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/ai-insights-for-school-leaders"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/signs-classroom-technology-is-effective"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to tell if EdTech is working (and what to do when it isn't)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/how-to-tell-if-edtech-is-working"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-13",
+   "headline": "Lose Google Search or Allow AI? Here's a Better Option for Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/lose-google-search-or-allow-ai-what-admins-should-do"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deledao.com/post/how-do-we-measure-ed-tech-success-in-device-use"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Navigating the Cellphone Challenge for Student Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deledao.com/post/navigating-the-cellphone-challenge-for-student-success"
   }
  ],
  "profile": {

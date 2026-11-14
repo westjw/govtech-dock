@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "National Family Engagement Month: Why Schools and Families Must Partner for Student Success",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Where the Work Happens: Looking Beyond the Technology Inventory",
    "kind": "press",
