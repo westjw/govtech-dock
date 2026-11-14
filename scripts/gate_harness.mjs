@@ -190,9 +190,10 @@ for (const to of ["/%09/x.example", "/.//x.example", "/./%09/x.example", "//x.ex
 }
 out.login_keeps_path = await landing(encodeURIComponent("/c/verkada.html?tab=jobs"));
 // "CONTINUE WITH GOOGLE" (owner, 2026-11-02). /signin/google passes the gate
-// signed out, like login, and only ever sends a person on to login with a
-// `to` that stays on this site. Both pages are drawn both ways: what a
-// visitor sees with GOOGLE false (today) and true (after DEPLOY.md §3d).
+// signed out, like every sign-in path. With no Google client set up (no env
+// here) it sends a person to the email sign-in, /signin, with a `to` that
+// stays on this site; signin_harness drives it set up. Both pages are drawn
+// both ways: what a visitor sees with GOOGLE false and true (DEPLOY.md §3d).
 const google = await import(new URL("../functions/signin/google.js", import.meta.url));
 const gatemod = await import(new URL("../functions/_gate.js", import.meta.url));
 const { readFileSync } = await import("node:fs");
@@ -204,7 +205,7 @@ async function viaGoogle(to) {
   const loc = res.headers.get("location") || "";
   const first = new URL(loc.replace(/[\t\n\r]/g, ""), `${ORIGIN}/signin/google`);
   const inner = first.searchParams.get("to") || "";
-  const last = new URL(inner.replace(/[\t\n\r]/g, ""), `${ORIGIN}/admin/api/login`);
+  const last = new URL(inner.replace(/[\t\n\r]/g, ""), `${ORIGIN}/signin`);
   return { to, status: res.status, location: loc, origin: first.origin, path: first.pathname,
            inner, inner_origin: last.origin };
 }

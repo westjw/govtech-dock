@@ -130,102 +130,110 @@ Two things to know:
 4. **Custom domains** tab → add the domain you bought. Cloudflare wires DNS
    itself since it is the registrar.
 
-## 3a. The front page is public; the boards are signed-in (decided 2026-10-22)
+## 3a. Anyone can sign in, with the site's own sign-in (2026-11-13)
 
 The owner: "we need a better landing page, accessing the job, company, and
-conference boards should be sign in", "we want people to log in and
-subscribe", and **anyone may sign in, free** (an email and a one-time code).
-In code, as of this change:
-- A visitor with no sign-in at `/` gets `landing.html`, and the mascot art and
-  the front page's share card it loads (`functions/_gate.js` `PUBLIC`).
-  Everything else stays exactly as gated as §3 below says: a board page gets
-  the sign-in page (option 1 of the landing canvas), an endpoint gets JSON 403.
-- A signed-in person at `/` gets the boards, as before.
-- **The `/admin` door now checks a role** (`functions/_roles.js`): owner or
-  admin on the Users board, or nothing. Until today a sign-in meant you were
-  on the Access list; once anyone can sign in, a sign-in alone must not open
-  the queues, the rulings or the Users board.
+conference boards should be sign in" (2026-10-22), then on 2026-11-13
+"anyone can sign in" and "build".
 
-**Your steps in the dashboard, in this order (about 3 minutes):**
-1. Keep **Fail closed** (§3 step 1). Still required.
-2. Zero Trust → Access controls → Applications → the EXISTING application →
-   **Edit** → put the **Path** `admin` back on all three hostnames
-   (`sledjobs.com`, `www.sledjobs.com`, `solesourcejobs.com`). Access then
-   guards only `/admin`, and the code gate decides everything else. Still no
-   new application and no `*.sledjobs.com` wildcard.
-3. Same application → **Policies**: let anyone sign in. Allow, Include
-   **Everyone**. Then **Login methods**: tick **Google** and **One-time
-   PIN**. Google is already an identity provider on this account (added for
-   Job Hunter on 2026-10-14, job-hunter `deploy/README.md`), so there is
-   nothing to set up in Google Cloud. Leave the Auth0 email-and-password
-   provider unticked here: its sign-ups are off, so it could only admit
-   people created by hand. Strangers who sign in see the
-   boards; the `/admin` door turns away anyone the Users board has not made an
-   owner or admin, you included only if your row says so (it does: owner,
-   admin, hunter).
-4. Same application → **Settings** → the Cookie **Path Attribute** stays OFF,
-   so the sign-in made at `/admin/api/login` counts on every page.
+**Why not Cloudflare Access for members.** Every person who signs in through
+Access takes a Zero Trust seat until they go inactive; the free plan has 50,
+and once they are used the next person is turned away ("Seat management" in
+Cloudflare's docs). So members sign in with the site's own sign-in, and Access
+keeps `/admin` for you and the admins you list: a handful of seats.
 
-**After step 3, taking someone's admin away is the Users board, not Access.**
-The policy admits everyone, so there is no line to remove. Revoke them on the
-Users board; it takes effect when the next build ships `users.json`.
+**What is built (in code):**
+- `/` with no sign-in is `landing.html`; every board page, data file and
+  endpoint needs a sign-in (`functions/_gate.js`). Unchanged.
+- **The site's own sign-in**, `functions/signin/` and `functions/_session.js`:
+  - `/signin`: Continue with Google (when `GOOGLE` is true), or an email
+    address. The email carries a link (opening it shows "Sign in as <your
+    address>" and one button, so a company mail scanner that opens every link
+    signs nobody in) and a 10-character code (signs in the device that
+    asked). Both work 15 minutes.
+  - Google is Google's own OAuth with our client (code flow with PKCE,
+    asking only `openid email`), not an Access application.
+  - A sign-in is a cookie (`__Host-sj_session`, 30 days, HttpOnly, Secure)
+    sealed with `SESSION_SECRET`. Nothing is stored: no accounts, no
+    passwords, no table. Changing `SESSION_SECRET` signs everybody out.
+  - Email sign-ins share the free Resend allowance (100 a day) with the alert
+    digests, so they are capped: 8 a day per network (an IPv6 /48), 4 per
+    inbox (`+tags` and Gmail dots count as one), 60 in all
+    (`SIGNIN_MAILS_PER_DAY` overrides the 60). A refused request writes
+    nothing to KV. Google costs no email. Resend's click and open tracking
+    are OFF on sledjobs.com (checked 2026-11-13); keep them off, or every
+    sign-in link would pass through Resend's redirector.
+- **`/admin` reads Access alone.** The site's own sign-in never opens it, not
+  even on your address; it still needs owner or admin on the Users board.
+  An Access sign-in also opens the boards, so you need one sign-in, not two.
+- The Job Hunter beta page moved to `/beta/` (`/admin/hunter/` forwards),
+  and the account menu asks `/api/whoami`, both outside `/admin`.
 
-**Check it afterwards:**
+**Your steps, in this order (about 10 minutes):**
+1. **Fail closed** stays on (§3 step 1).
+2. **The session secret.** In Terminal run
+   `openssl rand -base64 48 | tr -d '\n' | pbcopy` (it copies a random
+   secret; nobody sees it). Then Workers & Pages → `solesource` → Settings →
+   Variables and secrets → **Add** → Type **Secret**, name `SESSION_SECRET`,
+   paste, Save, for **Production**. Never rename a secret in place: delete
+   and add again (§3b's lesson).
+3. **Google (optional today; email works without it).** Google Cloud console
+   → APIs & Services → Credentials → Create credentials → **OAuth client
+   ID** → Web application, name `SLED JOBS sign-in`. Authorized redirect URI:
+   `https://sledjobs.com/signin/google/callback` (only that one). Copy the
+   client ID and secret into two more Pages secrets, `GOOGLE_CLIENT_ID` and
+   `GOOGLE_CLIENT_SECRET`. On the OAuth consent screen the app needs only the
+   `openid` and `email` scopes and must be **In production**, not Testing
+   (Testing admits only listed test users).
+4. **A new deployment** so the Functions see the secrets: Deployments → the
+   latest → Retry deployment (or let the next push do it).
+5. **Access back to `/admin`.** Zero Trust → Access controls → Applications
+   → the EXISTING application → Edit → put the **Path** `admin` back on all
+   three hostnames (`sledjobs.com`, `www.sledjobs.com`, `solesourcejobs.com`).
+   **Leave its policy as it is** (you and your admins), not Everyone. Cookie
+   Path Attribute stays OFF, so your Access sign-in counts on the boards too.
+   No new application, and no `*.sledjobs.com` wildcard. (The "SLED JOBS
+   Google sign-in" Access application the old §3d described is NOT needed.)
+
+6. **Optional, recommended once strangers arrive:** Security → WAF → Rate
+   limiting rules. The Free plan allows ONE rule, matching on the path only,
+   counting per IP over 10 seconds. Set: URI Path equals `/signin/email`, OR
+   URI Path equals `/signin/code` (both take only POSTs that matter, so no
+   method is needed); more than 3 requests in 10 seconds; Block for 10
+   seconds. It refuses a script at the edge before any Function runs, so it
+   costs neither a request nor a KV write. It is per IP, so it slows one
+   person and not a crowd: the day's 60 sign-in emails can still be spent by
+   someone with many networks (the shared count is approximate across
+   Cloudflare's locations), after which email sign-in waits for midnight UTC
+   and Resend's own 100 a day is untouched past that. Google sign-in is the
+   way in no allowance limits. A firm count would need a Durable Object, a
+   small separate Worker; not worth it until abuse is seen.
+
+**Check it afterwards** (Claude can run the curls):
 - `curl -sI https://sledjobs.com/` → `200`, no `location:` to cloudflareaccess.com
-- `curl -sI "https://sledjobs.com/?tab=jobs"` → `403` (the sign-in page)
+- `curl -sI "https://sledjobs.com/?tab=jobs"` → `403` (the sign-in card)
 - `curl -sI https://sledjobs.com/data/board.json` → `403`
-- Sign in as a non-admin address and open `/admin/` → `403`
+- `curl -s -o /dev/null -w '%{http_code}\n' https://sledjobs.com/signin` →
+  `200` (`503` means `SESSION_SECRET` is not seen yet: step 2 or 4)
+- **You, in a private window:** open `https://sledjobs.com/?tab=jobs`, sign
+  in by email, and the jobs board must load. Then the same with Google once
+  step 3 is done, after which `GOOGLE` in `functions/_gate.js` goes to true.
+- `https://sledjobs.com/admin/` from that private window → Access's own
+  sign-in, never the queues.
 
-## 3d. "Continue with Google" on the landing page (built 2026-11-02, off until you do this)
-
-The owner: "Can I have the cloudflare sign in and future google sign in on
-the landing page". Both buttons are built into `landing.html` and the sign-in
-page, and Google stays hidden until `GOOGLE` in `functions/_gate.js` is true.
-Access cannot be told by a link which login method to use when an
-application allows two; it shows its own chooser. So Google gets a small
-application of its own on one path, with instant authentication, which goes
-straight to Google.
-
-**Do §3a first:** a button on the front page does nothing while Access still
-covers the front page. Then, in Zero Trust (about 4 minutes; the names are
-Cloudflare's as of November 2026):
-1. The EXISTING application → **Login methods**: Google AND One-time PIN
-   both selected (§3a step 3). The main application must allow Google:
-   after Google answers, `/signin/google` sends the person on to
-   `/admin/api/login`, and Access issues the main application's token from
-   that same sign-in without asking again.
-2. Access controls → Applications → **Create new application** →
-   **Self-hosted and private**. Name it `SLED JOBS Google sign-in`.
-   **Add public hostname**: `sledjobs.com`, Path `signin/google`. One
-   hostname is enough, and fewer is better: every Google button on every
-   hostname links to sledjobs.com, and each extra hostname adds a hop to
-   the sign-in.
-3. Its **Policies**: Allow, Include **Everyone**.
-4. Its **Login methods**: select **Google only** (not One-time PIN), and
-   turn on **Apply instant authentication**.
-5. Its **Advanced settings** → **Cookie settings** → **Path attribute**:
-   **ON** for this application only, so its cookie stays on
-   `/signin/google`. The main application's stays OFF (§3a step 4).
-6. Check it, then tell Claude:
-   - Signed out, `curl -sI https://sledjobs.com/signin/google` answers a
-     `302` to the team domain, and following it reaches
-     `accounts.google.com` (Claude can run this).
-   - **In a private window, you:** open
-     `https://sledjobs.com/signin/google?to=%2F%3Ftab%3Djobs` (the address
-     the button will use; the button itself is not on the page yet), pick
-     your Google account, and the jobs board must load with no Cloudflare
-     page between Google and the board. That proves the hand-off to the
-     main application, which the curl cannot see.
-   Then `GOOGLE` goes to true and is pushed.
-
-**Why a second application is safe here** when §3 says never make one: the
-site checks the MAIN application's audience only (`functions/_access.js`).
-This application's token is never read, so it opens nothing on its own;
-it only makes Google the one method on one path. `/signin/google` itself
-only redirects, to a path on this site (`functions/_to.js`). §3 names it as
-the one second application to keep.
+**Taking someone's admin away** is the Users board plus a deploy, or the
+Access policy, whichever is sooner. Taking a member's sign-in away is not
+possible one person at a time; changing `SESSION_SECRET` signs everybody out.
 
 ## 3. Signed-in only until launch (decided 2026-10-05)
+**Read §3a first. Since 2026-11-13 Access covers `/admin` ONLY, for good.**
+Steps 3 to 5 and the Verify below are the 2026-10-05 history, when Access
+covered whole hostnames and was how everyone signed in. Do NOT clear the Path
+now: Access would answer every request at the edge with a policy that admits
+only you and your admins, and every member, the landing page, `/signin` and
+every alert's "Stop these emails" link would meet Access instead. Step 1,
+Fail closed, still holds.
+
 The whole site stays private until it is ready to go live. Two doors guard it,
 and both check a sign-in from the SAME Access application, the one that
 already guards `/admin`. So there is no new secret, variable or application.
@@ -268,10 +276,9 @@ while the Function runs: see step 1 below.
      audience (AUD) tag (`functions/_access.js`), so two applications on the
      same hostnames cannot both work. If a second one gets created anyway,
      delete it and do step 3 on the original.
-   - **The one exception (2026-11-02): `SLED JOBS Google sign-in`**, on
-     `sledjobs.com` path `signin/google` only (§3d). Keep it. Its token is
-     never read; it only makes Google the one sign-in method on that path.
-     Delete any OTHER second application.
+   - **No exceptions since 2026-11-13.** Google is the site's own sign-in
+     now (§3a), so the `SLED JOBS Google sign-in` application the 2026-11-02
+     plan allowed is not needed; if one was made, delete it.
    - Only if the original itself is gone: clear the Path on its replacement as
      in step 3, set the Pages variable `ACCESS_AUD` to the replacement's tag,
      and redeploy.
@@ -351,11 +358,11 @@ caught.
    and endpoint shows the holding page again one deploy later. Or, faster
    and with no push: Pages → Deployments → the last gated deployment →
    **Rollback to this deployment**.
-2. Clear the path `admin` on the MAIN Access application's hostnames
-   again, so signing in covers the whole site (step 3 above). Leave the
-   Google sign-in application (§3d) as it is.
-3. Check: `curl -s -o /dev/null -w "%{http_code}\n" https://sledjobs.com/`
-   answers 302 (Access) or 403 (the code gate), never 200.
+2. Leave Access alone: it stays on `/admin`. Since 2026-11-13 members sign
+   in with the site's own sign-in, so the gate alone makes the boards
+   private again. Clearing the Path would lock every member out (§3).
+3. Check: `curl -s -o /dev/null -w "%{http_code}\n" "https://sledjobs.com/?tab=jobs"`
+   answers 403 (the sign-in card); `/` answers 200, the public landing page.
 
 ## 2b. www.solesourcejobs.com loops on sign-in — OPEN, verified 2026-09-03
 Signing in at `www.solesourcejobs.com/admin` ends in ERR_TOO_MANY_REDIRECTS.
@@ -398,16 +405,16 @@ answers with an issue URL instead of `not_configured`. Until then the form's
 fallback link opens the same issue template by hand, which works.
 
 ## 3c. Log in, and who may reach what (nothing to set up)
-Access already covers `/admin` on every hostname (step 2 above), and the
-site's account menu now offers **Log in**, which is `/admin/api/login` -
-Access asks for a code by email, then sends the person back. Who they may
-then reach is the owner's ruling on the desk admin's **Users** tab: `admin`
-(the web admin) and `hunter` (the closed Job Hunter beta at
-`/admin/hunter/`). `data/users.json` carries a handle, roles and a hash of
-the address, never the address; the build refuses to ship a row with an
-`@` in it. Verify: signed out, `curl -s -o /dev/null -w "%{http_code}"
-https://sledjobs.com/admin/api/whoami` is a 302 to Access; signed in, the
-account menu names your handle and shows the doors your roles open.
+Since 2026-11-13: members sign in at `/signin` (the site's own sign-in, §3a);
+the account menu offers **Sign in** and, once in, **Sign out**. Access covers
+`/admin` only, where `/admin/api/login` is your and your admins' sign-in.
+Who may reach what is the owner's ruling on the desk admin's **Users** tab:
+`admin` (the web admin, which also needs the Access sign-in) and `hunter`
+(the closed Job Hunter beta page, `/beta/`). `data/users.json` carries a
+handle, roles and a hash of the address, never the address; the build
+refuses to ship a row with an `@` in it. Verify: signed out, `curl -s
+https://sledjobs.com/api/whoami` answers `{"signed_in": false}`; signed in,
+the account menu names your handle and shows the doors your roles open.
 
 ## 4. Deploying: already handled, and deliberately only one way
 

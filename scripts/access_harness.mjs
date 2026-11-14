@@ -43,21 +43,27 @@ const { createHash } = await import("node:crypto");
 const h = (e) => createHash("sha256").update(e).digest("hex");
 const USERS = {
   wyeth: { email_sha256: h("owner@desk"), roles: ["owner"] },
+  // an owner row an address of the site's OWN sign-in matches (it must be a
+  // real address shape, so an RFC 2606 one): that sign-in never opens /admin
+  wy2: { email_sha256: h("owner@example.org"), roles: ["owner"] },
   ana: { email_sha256: h("person@desk"), roles: ["admin"] },
   hal: { email_sha256: h("hunter@desk"), roles: ["hunter"] },
   rex: { email_sha256: h("revoked@desk"), roles: ["admin"], revoked_on: "2026-10-01" },
 };
 let usersDown = false;
-const ENV = { ASSETS: { fetch: async (u) => {
+const ENV = { SESSION_SECRET: "s".repeat(48), ASSETS: { fetch: async (u) => {
   if (usersDown) throw new Error("assets down");
   return String(u).endsWith("/admin/users.json")
     ? new Response(JSON.stringify(USERS), { status: 200 }) : new Response("no", { status: 404 });
 } } };
 
-async function ask(path, { header, cookie } = {}) {
+async function ask(path, { header, cookie, ours } = {}) {
   const headers = new Headers();
   if (header) headers.set("Cf-Access-Jwt-Assertion", header);
-  if (cookie) headers.set("Cookie", `CF_Authorization=${cookie}; other=1`);
+  const jar = [];
+  if (cookie) jar.push(`CF_Authorization=${cookie}`, "other=1");
+  if (ours) jar.push(`__Host-sj_session=${ours}`);
+  if (jar.length) headers.set("Cookie", jar.join("; "));
   const req = new Request(`https://solesource-c6g.pages.dev${path}`, { headers });
   let reached = false;
   const data = {};
@@ -87,12 +93,28 @@ out.hunter_only     = await ask("/admin/data.json", { cookie: mint({ email: "hun
 out.revoked         = await ask("/admin/data.json", { cookie: mint({ email: "revoked@desk" }) });
 out.no_email        = await ask("/admin/data.json", { cookie: mint({ email: undefined }) });
 out.stranger_api    = await ask("/admin/api/rule", { cookie: mint({ email: "stranger@desk" }) });
-// the Job Hunter beta page is for every signed-in person, at exactly one spelling
+// the Job Hunter beta page moved to /beta/ (2026-11-13): the old address
+// forwards, signed in or not, and serves nothing; any other spelling under
+// /admin/hunter needs the role like the rest
 out.hunter_page_member   = await ask("/admin/hunter/", { cookie: mint({ email: "hunter@desk" }) });
-out.hunter_page_stranger = await ask("/admin/hunter/", { cookie: mint({ email: "stranger@desk" }) });
 out.hunter_page_noslash  = await ask("/admin/hunter", { cookie: mint({ email: "stranger@desk" }) });
-out.hunter_page_file     = await ask("/admin/hunter/index.html", { cookie: mint({ email: "stranger@desk" }) });
 out.hunter_page_anon     = await ask("/admin/hunter/");
+out.hunter_page_file     = await ask("/admin/hunter/index.html", { cookie: mint({ email: "stranger@desk" }) });
+out.hunter_page_member_file = await ask("/admin/hunter/index.html", { cookie: mint({ email: "hunter@desk" }) });
+// THE SITE'S OWN SIGN-IN NEVER OPENS /admin, not even on the owner's own
+// address: the door reads Access alone. The cookie is a real one, sealed
+// the way functions/_session.js seals it, and proven valid first.
+{
+  const S = await import(new URL("../functions/_session.js", import.meta.url));
+  const set = await S.sessionCookie(ENV, "owner@example.org", "google");
+  const ours = set.split(";")[0].split("=").slice(1).join("=");
+  const probe = new Request("https://sledjobs.com/", { headers: { Cookie: `__Host-sj_session=${ours}` } });
+  out.ours_is_valid = !!(await S.sessionOf(probe, ENV));
+  out.ours_owner_data  = await ask("/admin/data.json", { ours });
+  out.ours_owner_users = await ask("/admin/users.json", { ours });
+  out.ours_owner_rule  = await ask("/admin/api/rule", { ours });
+  out.ours_owner_page  = await ask("/admin/", { ours });
+}
 usersDown = true;
 out.users_down      = await ask("/admin/data.json", { cookie: mint({}) });
 usersDown = false;

@@ -41,7 +41,9 @@ export const CSP_MODE = "enforce";
  * The public board stays embeddable. */
 export const NO_FRAME = new Set(["/alerts", "/alerts.html", "/claim", "/claim.html"]);
 const FRAME = "frame-ancestors 'none'";
-export const framed = (path) => NO_FRAME.has(path) || /^\/admin(\/|$)/.test(path);
+/* The sign-in pages too (2026-11-13): their cookies are Lax, so a framed
+ * one sets nothing, but a sign-in form is no page to put inside another. */
+export const framed = (path) => NO_FRAME.has(path) || /^\/(admin|signin)(\/|$)/.test(path);
 
 let MANIFEST = null;            // per isolate; a failure is retried next time
 

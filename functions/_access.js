@@ -14,10 +14,11 @@
  * the whole site keeps every token valid; creating a second application
  * would not.
  *
- * The one other application, `SLED JOBS Google sign-in` on /signin/google
- * (DEPLOY.md §3d), is never checked here: its token opens nothing, and
- * functions/signin/google.js hands the person on to this application's
- * sign-in, which issues the token both doors read.
+ * Members do not sign in here at all since 2026-11-13: every Access sign-in
+ * takes a Zero Trust seat (50 on the free plan), so they use the site's own
+ * sign-in (functions/_session.js), and this application is for the owner
+ * and his admins. Google is ours too (functions/signin/google.js); there is
+ * no second Access application.
  */
 export const TEAM = "solesource-c6g-pages.cloudflareaccess.com";
 export const AUD = "80b769d2980cc241d0df575dd9fc1f67d68c6e23eb2e3065396e6ecac95cead9";
@@ -32,10 +33,14 @@ function b64url(s) {
 }
 const b64json = (s) => JSON.parse(new TextDecoder().decode(b64url(s)));
 
+/* Only ASCII space and tab are trimmed, as a browser writes the header
+ * ("; " between pairs). String.trim() also strips Unicode spaces, so a
+ * cookie a sibling host planted as "\u00a0name" would have read as "name"
+ * (security review, 2026-11-13). */
 export function cookie(request, name) {
   const raw = request.headers.get("Cookie") || "";
   for (const part of raw.split(";")) {
-    const [k, ...v] = part.trim().split("=");
+    const [k, ...v] = part.replace(/^[ \t]+|[ \t]+$/g, "").split("=");
     if (k === name) return v.join("=");
   }
   return null;

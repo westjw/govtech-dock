@@ -13,6 +13,7 @@
  */
 import { FROM, SITE, NAME, DOMAIN, PUBLIC_ASSETS } from "./_brand.js";
 import { GATED } from "./_gate.js";
+import { validEmail } from "./_address.js";
 
 // A MAIL CLIENT FETCHES IMAGES WITH NO SIGN-IN. While the site is gated every
 // image under sledjobs.com answers the sign-in redirect, so the mascot came
@@ -48,9 +49,6 @@ async function emailKey(email) {
     .map((x) => x.toString(16).padStart(2, "0")).join("");
 }
 
-/* Deliberately conservative rather than RFC-complete: this address is going
- * to be handed to a mail API, so anything exotic is likelier to be an attempt
- * at header injection than a real mailbox. */
 /* AN IPv6 CALLER IS ITS /64. One machine is routinely handed a whole /64,
  * and Cloudflare passes the full address, so keyed on the /128 a script that
  * walked 2001:db8:1:2::1, ::2, ::3 ... was a new caller every request and no
@@ -97,14 +95,6 @@ async function underDailyCap(env, request, scope, cap) {
   return true;
 }
 
-function validEmail(raw) {
-  const e = String(raw || "").trim().toLowerCase();
-  if (e.length < 6 || e.length > 254) return null;
-  if (/[\s<>",;\\()\[\]]/.test(e)) return null;
-  if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(e)) return null;
-  if (e.includes("..")) return null;
-  return e;
-}
 
 /* A token from a URL, used only as a KV key. Constrain its shape so a crafted
  * one cannot reach for a neighbouring key. */

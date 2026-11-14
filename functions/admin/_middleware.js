@@ -51,6 +51,13 @@ export async function onRequest(context) {
   const { request, env, next } = context;
   const url = new URL(request.url);
   if (OPEN.has(url.pathname)) return next();
+  // THE JOB HUNTER BETA PAGE MOVED TO /beta/ (2026-11-13). It is for every
+  // signed-in member, and since members sign in the site's own way, a page
+  // under /admin - behind the Access application - was one they could not
+  // open. The old address forwards; nothing is served from it.
+  if (url.pathname === "/admin/hunter" || url.pathname === "/admin/hunter/") {
+    return new Response(null, { status: 302, headers: { location: "/beta/", "cache-control": "no-store" } });
+  }
   const token = tokenOf(request);
   if (!token) return refuse(url, 403, "not signed in through Cloudflare Access");
   let claims = null;
@@ -66,13 +73,11 @@ export async function onRequest(context) {
   // rulings with his reasons and the Users board. Now the Users board
   // decides: owner or admin, or nothing under /admin. rule.js still checks
   // the role for each write on its own (a grant needs the owner).
-  // ONE PAGE UNDER /admin IS FOR EVERY SIGNED-IN PERSON: /admin/hunter/, the
-  // Job Hunter beta page the account menu sends every member to (index.html
-  // whoAmI). It holds no data - it reads whoami and posts a beta code to
-  // /api/beta - so a sign-in is enough. Exactly that spelling; every other
-  // one stays behind the role (review, 2026-10-22).
-  const who = url.pathname === "/admin/hunter/" ? { roles: ADMIN_ROLES }
-    : await whoIs(request, env, claims.email);
+  // THE SITE'S OWN SIGN-IN (functions/_session.js) NEVER OPENS THIS DOOR:
+  // it is read nowhere in this file. Every path under /admin needs a
+  // verified Access sign-in AND the role. (Until 2026-11-13 /admin/hunter/
+  // needed only the sign-in; it is /beta/ now, outside this door.)
+  const who = await whoIs(request, env, claims.email);
   if (!who || !who.roles.some((r) => ADMIN_ROLES.includes(r))) {
     return refuse(url, 403, "signed in, but the Users board has not granted you the admin");
   }

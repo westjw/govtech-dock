@@ -55,22 +55,36 @@
  * LAUNCH IS ONE LINE: set GATED to false and push, then narrow the Access
  * application back to /admin (DEPLOY.md). selftest drives the gate in
  * whichever state it is in, so the flip needs no test edit.
+ *
+ * TWO SIGN-INS OPEN THE BOARDS SINCE 2026-11-13: ours, and Access. Every
+ * Access sign-in takes a Zero Trust seat and the free plan has 50, after
+ * which Cloudflare turns the next person away, so members sign in with the
+ * site's own sign-in (functions/_session.js: email or Google, a cookie the
+ * site signs, nothing stored) and Access keeps /admin for the owner and the
+ * admins he lists. An Access sign-in still opens the boards, so the owner
+ * needs one sign-in, not two. Ours never opens /admin: that door reads
+ * Access alone (functions/admin/_middleware.js).
  */
 import { verify, tokenOf } from "./_access.js";
 import { SITE, NAME } from "./_brand.js";
+import { sessionOf, ours as ourCookie, SESSION } from "./_session.js";
 
 export const GATED = true;
 
-export const OPEN = new Set(["/admin/api/whoami", "/admin/api/login", "/signin/google"]);
+export const OPEN = new Set(["/admin/api/whoami", "/admin/api/login", "/api/whoami",
+  "/signin", "/signin/email", "/signin/check", "/signin/code", "/signin/link", "/signin/out",
+  "/signin/google", "/signin/google/callback"]);
 
-/* "CONTINUE WITH GOOGLE" ON THE LANDING PAGE AND THE SIGN-IN PAGE (owner,
+/* "CONTINUE WITH GOOGLE" ON THE LANDING PAGE AND THE SIGN-IN PAGES (owner,
  * 2026-11-02: "Can I have the cloudflare sign in and future google sign in on
- * the landing page"). False until Google is a login method on the main
- * Access application AND the Google-only application guards /signin/google
- * (DEPLOY.md §3d); with either missing, the button would land a person on
- * Cloudflare's chooser, or on a page with no Google at all. The pages carry
- * both versions of every line that changes, between <!--google-on--> and
- * <!--google-off--> markers, and signinBlocks() keeps the one this says. */
+ * the landing page"). Since 2026-11-13 Google is the site's own sign-in
+ * (functions/signin/google.js, Google's OAuth with our own client), not an
+ * Access application. False until GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET
+ * are Pages secrets and the owner's own run lands on the board (DEPLOY.md
+ * §3a step 3); until then /signin/google sends a person to the email sign-in. The
+ * pages carry both versions of every line that changes, between
+ * <!--google-on--> and <!--google-off--> markers, and signinBlocks() keeps
+ * the one this says. */
 export const GOOGLE = false;
 
 export function signinBlocks(html, google = GOOGLE) {
@@ -148,26 +162,9 @@ const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-export function holdingPage(url, status, line, heading = "Sign in to see this page.", google = GOOGLE) {
-  // Back to the page they asked for once they are signed in. login.js only
-  // follows a same-site path, so this cannot become an open redirect.
-  const back = `${SITE}/admin/api/login?to=${encodeURIComponent(url.pathname + url.search)}`;
-  const viaGoogle = `${SITE}/signin/google?to=${encodeURIComponent(url.pathname + url.search)}`;
-  // THE SIGN-IN PAGE IS OPTION 1 of the landing canvas (owner, 2026-10-22: "I do
-  // love 1 sign in"). It names nothing about the page asked for - that page is
-  // not public - and carries no script, so the holding policy (no script at
-  // all) holds. Its one image is the mascot kit's, which the gate serves to
-  // anyone (PUBLIC).
-  const html = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Sign in to see this page &middot; ${esc(NAME)}</title>
-<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
-<!--google-on--><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&amp;display=swap"><!--/google-on-->
-<style>
-  *,*::before,*::after{box-sizing:border-box}
+/* The sign-in pages' look: option 1 of the landing canvas, one card. Shared
+ * with functions/_signin_page.js, which adds the form. */
+export const CARD_CSS = `  *,*::before,*::after{box-sizing:border-box}
   body{margin:0;background:#E8F1F7;color:#1F2536;
     font:18px/1.55 Archivo,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
   main{max-width:656px;margin:0 auto;padding:120px 48px;display:flex;justify-content:center}
@@ -192,7 +189,30 @@ export function holdingPage(url, status, line, heading = "Sign in to see this pa
   .about:hover{color:#1F2536}
   a:focus-visible{outline:3px solid #0B57C4;outline-offset:3px}
   @media (max-width:720px){main{padding:48px 20px}.card{padding:32px 24px}h1{font-size:30px;line-height:36px}}
-</style></head>
+`;
+
+export function holdingPage(url, status, line, heading = "Sign in to see this page.", google = GOOGLE) {
+  // Back to the page they asked for once they are signed in. The sign-in
+  // only follows a same-site path (_to.js), so this cannot become an open
+  // redirect. Our own sign-in since 2026-11-13; /admin/api/login is the
+  // admin's, through Access.
+  const back = `${SITE}/signin?to=${encodeURIComponent(url.pathname + url.search)}`;
+  const viaGoogle = `${SITE}/signin/google?to=${encodeURIComponent(url.pathname + url.search)}`;
+  // THE SIGN-IN PAGE IS OPTION 1 of the landing canvas (owner, 2026-10-22: "I do
+  // love 1 sign in"). It names nothing about the page asked for - that page is
+  // not public - and carries no script, so the holding policy (no script at
+  // all) holds. Its one image is the mascot kit's, which the gate serves to
+  // anyone (PUBLIC).
+  const html = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sign in to see this page &middot; ${esc(NAME)}</title>
+<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
+<!--google-on--><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&amp;display=swap"><!--/google-on-->
+<style>
+${CARD_CSS}</style></head>
 <body><main><div class="card">
 <img src="/assets/mascot/svg/head-offer-in.svg" width="96" height="96" alt="">
 <p class="kick">${esc(NAME)}</p>
@@ -273,12 +293,20 @@ const SIGN_IN_LINE = "The job, company and conference boards are for signed-in m
   + (GOOGLE ? "Signing in is free: Google, or your email and a one-time code. No password."
             : "Signing in is free: your email and a one-time code, no password.");
 
+/* Pages answers /signin/ (a trailing slash) with the same handler as
+ * /signin, so the sign-in paths pass with one; nothing else does (a
+ * trailing slash on /admin/api/login is still not the open path). */
+const isOpen = (p) => OPEN.has(p) || (/^\/signin(\/[a-z]+)*\/$/.test(p) && OPEN.has(p.slice(0, -1)));
+
 export async function gate(request, env) {
   if (!GATED) return null;
   const url = new URL(request.url);
-  if (OPEN.has(url.pathname)) return null;
+  if (isOpen(url.pathname)) return null;
   if (isOneClickUnsubscribe(request, url)) return null;
   if (await isSubscriberLink(request, url)) return null;
+  // OUR OWN SIGN-IN first: an HMAC over a cookie, no network, no seat
+  if (await sessionOf(request, env)) return null;
+  const ours = !!ourCookie(request, SESSION);
   const token = tokenOf(request);
   let claims = null, unverifiable = false;
   if (token) {
@@ -300,5 +328,5 @@ export async function gate(request, env) {
       "We could not check your sign-in.");
   }
   return refuse(request, url, 403, "not_signed_in",
-    token ? "Your sign-in has expired or is not for this site. Sign in again." : SIGN_IN_LINE);
+    token || ours ? "Your sign-in has expired or is not for this site. Sign in again." : SIGN_IN_LINE);
 }

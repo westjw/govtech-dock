@@ -48,6 +48,11 @@ ROUTES = [
     ("claim", r"^/claim(\.html)?/?$"),
     ("company", r"^/c/"),
     ("static", r"^/(s|e)/"),
+    # the Job Hunter beta page, for every signed-in member (2026-11-13)
+    ("beta", r"^/beta(/.*)?$"),
+    # our own sign-in pages, drawn by functions/signin/: no script, and the
+    # one kind whose form may post (to this site only)
+    ("signin", r"^/signin(/.*)?$"),
     ("app", r"^/(index\.html)?$"),
     # the public front page, which the gate also serves at / to a visitor
     # with no sign-in (under the holding page's policy, which allows no
@@ -98,8 +103,10 @@ def kind_of(rel: str) -> str | None:
         return "none"
     if rel == "landing.html":
         return "landing"
-    if rel in ("admin/index.html", "admin/hunter/index.html"):
+    if rel == "admin/index.html":
         return "admin"
+    if rel == "beta/index.html":
+        return "beta"
     if re.fullmatch(r"c/[^/]+\.html", rel):
         return "company"
     if re.fullmatch(r"(s|e)/[^/]+\.html", rel):
@@ -224,10 +231,16 @@ def sha(script: str) -> str:
     return "'sha256-" + base64.b64encode(d).decode("ascii") + "'"
 
 
-def policy(hashes, connect: str = "'self'") -> str:
+def policy(hashes, connect: str = "'self'", form: str = "'none'") -> str:
     src = " ".join([f"'nonce-{NONCE}'", ORIGIN + CHALLENGE] + sorted(set(hashes)))
-    return "; ".join(f"{k} {src if v is None else connect if k == 'connect-src' else v}"
+    return "; ".join(f"{k} {src if v is None else connect if k == 'connect-src' else form if k == 'form-action' else v}"
                      for k, v in BASE)
+
+
+# The kinds of page whose forms may post, and where. Only our own sign-in:
+# its pages carry no script, so a form is the only way they can send an
+# address or a code (2026-11-13). Every other kind stays at 'none'.
+FORMS = {"signin": "'self'"}
 
 
 def app_connect(brand: dict) -> str:
@@ -251,9 +264,10 @@ def expected(root: pathlib.Path, brand: dict, hunter: str, lightmark: str) -> di
         "app": of(src("index.html")),
         "alerts": of(src("alerts.html")),
         "claim": of(src("claim.html")),
-        "admin": of(src("admin-web.html")) + of(hunter),
+        "admin": of(src("admin-web.html")),
+        "beta": of(hunter),
         "company": of(lightmark),
-        "static": [], "none": [], "landing": [],
+        "static": [], "none": [], "landing": [], "signin": [],
     }
 
 
@@ -291,7 +305,7 @@ def build(out: pathlib.Path, allowed: dict, connect_app: str = "'self'") -> dict
         "note": "Written by scripts/csp.py at build time; read by functions/_csp.js. "
                 "Do not edit: every hash is recomputed from the pages on every build.",
         "routes": [[k, rx] for k, rx in ROUTES],
-        "policies": {k: policy(v, connect_app if k == "app" else "'self'")
+        "policies": {k: policy(v, connect_app if k == "app" else "'self'", FORMS.get(k, "'none'"))
                      for k, v in hashes.items()},
         "scripts": count,
     }

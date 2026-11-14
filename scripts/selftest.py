@@ -1597,16 +1597,30 @@ def check_the_admin_door_is_verified_on_every_hostname() -> int:
         c = out.get(k) or {}
         if c.get("status") != 403 or c.get("reached"):
             errors += fail(f"the admin door let in {what} ({c.get('status')}, reached={c.get('reached')})")
-    # THE JOB HUNTER BETA PAGE is every signed-in person's, at one spelling:
-    # the account menu sends every member there (review, 2026-10-22)
-    for k in ("hunter_page_member", "hunter_page_stranger"):
+    # THE JOB HUNTER BETA PAGE moved to /beta/ (2026-11-13): members sign in
+    # the site's own way and never pass the Access application on /admin.
+    # The old address forwards and serves nothing; every other spelling
+    # needs the role like the rest of /admin.
+    for k in ("hunter_page_member", "hunter_page_noslash", "hunter_page_anon"):
         c = out.get(k) or {}
-        if c.get("status") != 200 or not c.get("reached") or not (c.get("identity") or {}).get("email"):
-            errors += fail(f"the beta page refused a signed-in member, or lost who they are ({k}: {c.get('status')})")
-    for k in ("hunter_page_noslash", "hunter_page_file", "hunter_page_anon"):
+        if c.get("status") != 302 or c.get("reached"):
+            errors += fail(f"the old beta page address ({k}) did not forward to /beta/ "
+                           f"({c.get('status')}, reached={c.get('reached')})")
+    for k in ("hunter_page_file", "hunter_page_member_file"):
         c = out.get(k) or {}
         if c.get("status") != 403 or c.get("reached"):
-            errors += fail(f"{k} passed the admin door; only /admin/hunter/ is open to members")
+            errors += fail(f"{k} passed the admin door without the role")
+    # THE SITE'S OWN SIGN-IN NEVER OPENS /admin (2026-11-13), not even on the
+    # owner's own address: anyone may sign in that way, and the door reads
+    # Access alone. The cookie is proven valid first, or this proves nothing.
+    if not out.get("ours_is_valid"):
+        errors += fail("the harness's own-sign-in cookie did not verify, so the /admin cases "
+                       "for it prove nothing")
+    for k in ("ours_owner_data", "ours_owner_users", "ours_owner_rule", "ours_owner_page"):
+        c = out.get(k) or {}
+        if c.get("status") != 403 or c.get("reached"):
+            errors += fail(f"the site's own sign-in opened the admin ({k}: {c.get('status')}, "
+                           f"reached={c.get('reached')}); /admin must need Access and the role")
     if not out.get("keys_cached"):
         errors += fail("the door refetches the Access keys on every request")
     api = out.get("api_no_token") or {}
@@ -1647,8 +1661,8 @@ def check_the_front_page_is_whole_and_public() -> int:
         errors += fail("landing.html shows a [placeholder] to the public")
     if re.search(r"\b\d{1,3}(?:,\d{3})+\b", text):
         errors += fail("landing.html sells a count again; the owner asked for none")
-    for want in ('href="https://sledjobs.com/admin/api/login?to=%2F"',
-                 'href="https://sledjobs.com/admin/api/login?to=%2Falerts"'):
+    for want in ('href="https://sledjobs.com/signin?to=%2F"',
+                 'href="https://sledjobs.com/signin?to=%2Falerts"'):
         if want not in src:
             errors += fail(f"landing.html lost one of its two actions ({want})")
     loads = re.findall(r'<img[^>]+src="(/[^"]+)"', src)
@@ -1681,17 +1695,17 @@ def check_continue_with_google_waits_for_its_own_door() -> int:
     """"Continue with Google" on the landing page and the sign-in page.
 
     Owner, 2026-11-02: "Can I have the cloudflare sign in and future google
-    sign in on the landing page". Access has no link that picks one sign-in
-    method when an application allows two, so Google gets an Access
-    application of its own on /signin/google (DEPLOY.md §3d), and
-    functions/signin/google.js sends the person on to /admin/api/login once
-    Google has answered. Driven through gate_harness.mjs, with the real
-    gate, the real pages and the real redirect:
-      - /signin/google passes the gate signed out, on the alias too, as
-        login does; a person cannot sign in through a door that is shut;
-      - it sends a person only to /admin/api/login on this site, with a `to`
-        that stays on this site, from every `to` that tried to leave in the
-        2026-10-05 review, and keeps the page they asked for;
+    sign in on the landing page". Since 2026-11-13 Google is the site's own
+    sign-in (functions/signin/google.js, OAuth with our own client), not an
+    Access application; check_our_own_sign_in_proves_the_address_and_opens_only_the_boards
+    drives it set up. Driven here through gate_harness.mjs, with the real
+    gate, the real pages and the real redirect, and NO Google client:
+      - /signin/google passes the gate signed out, on the alias too; a
+        person cannot sign in through a door that is shut;
+      - with no client it sends a person only to the email sign-in on this
+        site, /signin, with a `to` that stays on this site, from every `to`
+        that tried to leave in the 2026-10-05 review, and keeps the page
+        they asked for;
       - with GOOGLE false (until the owner's steps are done) neither page
         shows Google at all, and with it true both do, each Google link
         carrying the same `to` as the email link beside it;
@@ -1710,7 +1724,9 @@ def check_continue_with_google_waits_for_its_own_door() -> int:
     if '"/signin/google"' not in re.search(r"export const OPEN = new Set\(\[([^\]]*)\]\)", gate_src).group(1):
         errors += fail("/signin/google is not in the gate's OPEN set; the Google button "
                        "would land a visitor on the sign-in page it came from")
-    for f in ("functions/admin/api/login.js", "functions/signin/google.js"):
+    for f in ("functions/admin/api/login.js", "functions/signin/google.js",
+              "functions/signin/google/callback.js", "functions/signin/index.js",
+              "functions/signin/email.js", "functions/signin/code.js", "functions/signin/link.js"):
         src = (ROOT / f).read_text()
         if "sameSitePath(" not in src or "/_to.js\"" not in src:
             errors += fail(f"{f} does not hold `to` through _to.js's sameSitePath")
@@ -1745,7 +1761,7 @@ def check_continue_with_google_waits_for_its_own_door() -> int:
         errors += fail("the harness drove too few Google redirects to trust")
     for c in redirects + [out.get("google_keeps_path") or {}]:
         if (c.get("status") != 302 or c.get("origin") != "https://sledjobs.com"
-                or c.get("path") != "/admin/api/login" or c.get("inner_origin") != "https://sledjobs.com"
+                or c.get("path") != "/signin" or c.get("inner_origin") != "https://sledjobs.com"
                 or str(c.get("inner", "")).startswith("//")):
             errors += fail(f"/signin/google sends to={c.get('to')!r} somewhere other than this "
                            f"site's sign-in (Location {c.get('location')!r})")
@@ -1770,7 +1786,7 @@ def check_continue_with_google_waits_for_its_own_door() -> int:
             or ">Sign in free<" not in off or ">Sign in with email<" in off):
         errors += fail("the email button is not named for what it does in each version")
     for html in (on, off):
-        if 'href="https://sledjobs.com/admin/api/login?to=%2F"' not in html:
+        if 'href="https://sledjobs.com/signin?to=%2F"' not in html:
             errors += fail("a version of the landing page lost its email sign-in")
     # THE SHIPPED FILE IS ONE VERSION TOO (review, 2026-11-02). /landing is
     # served as-is to a signed-in person, and to everyone once the boards are
@@ -1795,9 +1811,333 @@ def check_continue_with_google_waits_for_its_own_door() -> int:
         errors += fail("the build ships landing.html with both versions in it: /landing shows "
                        "every changed line twice to a signed-in person")
     if ('href="https://sledjobs.com/signin/google?to=%2Fc%2Fverkada.html%3Ftab%3Djobs"' not in hold_on
-            or 'href="https://sledjobs.com/admin/api/login?to=%2Fc%2Fverkada.html%3Ftab%3Djobs"' not in hold_on):
+            or 'href="https://sledjobs.com/signin?to=%2Fc%2Fverkada.html%3Ftab%3Djobs"' not in hold_on):
         errors += fail("on the sign-in page the Google and email links do not both return "
                        "a person to the page they asked for")
+    return errors
+
+
+def check_our_own_sign_in_proves_the_address_and_opens_only_the_boards() -> int:
+    """The site's own sign-in (owner, 2026-11-13: "anyone can sign in", then,
+    told that every Cloudflare Access sign-in takes one of the free plan's 50
+    seats and turns the 51st person away: "build").
+
+    Members sign in by email (a link and a code) or with Google, and hold a
+    cookie functions/_session.js seals with SESSION_SECRET; nothing is stored.
+    Access keeps /admin for the owner and his admins. Driven through
+    scripts/signin_harness.mjs, which imports the real modules and signs in
+    with the link and the code out of the mail its stub Resend received:
+      - not set up (no secret, or a short one): nothing verifies, no mail;
+      - the link and the code each sign in, to the page asked for, with a
+        __Host- cookie that is HttpOnly, Secure, Lax and 30 days; the cookie
+        opens the boards on every hostname and /api/whoami names the handle;
+      - nothing else is a sign-in: a tampered or expired link, a value made
+        for another purpose (link, pending, oauth), another secret, an odd
+        method, a wrong code, another request's code, no pending cookie;
+      - only our own page may send mail or set a cookie (Origin), a bad
+        address sends nothing, a failed send sets nothing, and each of the
+        three daily allowances stops at its number;
+      - `to` never leaves the site, from every `to` the 2026-10-05 review
+        tried, through the link and through Google;
+      - Google: no client is the email sign-in; set up, the start asks only
+        openid and email with PKCE, and the callback signs in only with this
+        device's verifier, our state, Google's issuer, our client, a verified
+        address and a live token; a cancel says so;
+      - signing out is a POST from our own page, and goes on to Access's own
+        sign-out when an Access cookie is there too;
+      - the sign-in paths pass the gate signed out, and nothing beside them.
+    The admin door refusing this sign-in is held in
+    check_the_admin_door_is_verified_on_every_hostname.
+    """
+    import shutil
+    import subprocess
+    errors = 0
+    if not shutil.which("node"):
+        print("  note: node is not installed; our own sign-in was not driven")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "signin_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    try:
+        o = json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError) as exc:
+        return fail(f"signin_harness.mjs printed no JSON ({exc}): {r.stderr[-400:]}")
+    st = lambda k: (o.get(k) or {}).get("status")                  # noqa: E731
+
+    # not set up
+    if st("unset_page") != 503 or st("unset_email") != 503 or o.get("unset_mailed"):
+        errors += fail("with no SESSION_SECRET the sign-in pages do not say so, or mail went out")
+    for k in ("unset_gate", "short_secret_gate"):
+        if (o.get(k) or {}).get("reached"):
+            errors += fail(f"a sign-in cookie opened the boards with no secret, or a short one ({k})")
+    # the page
+    page = (o.get("page") or {}).get("body", "")
+    if (st("page") != 200 or 'action="/signin/email"' not in page or "<script" in page.lower()
+            or 'name="to" value="/?tab=jobs"' not in page):
+        errors += fail("the sign-in page lost its form, its `to`, or carries a script")
+    for k in ("page_www", "page_old"):
+        if (o.get(k) or {}).get("location") != "https://sledjobs.com/signin?to=%2F":
+            errors += fail(f"the sign-in page is drawn off the site's own address ({k}); its cookie "
+                           f"would be set on a host the site does not read")
+    if 'name="to" value="/"' not in (o.get("page_evil_to") or {}).get("body", ""):
+        errors += fail("the sign-in page carries a `to` that leaves the site")
+    if "cancelled" not in (o.get("page_note") or {}).get("body", "") \
+            or "hi" in re.sub(r"<[^>]+>", "", (o.get("page_note_unknown") or {}).get("body", "")).split("Sign in", 1)[-1][:40]:
+        errors += fail("the sign-in page does not say a Google sign-in was cancelled, or prints "
+                       "a note it was handed")
+    # by email: the link
+    if (st("email_first") != 303 or (o.get("email_first") or {}).get("location") != "/signin/check"
+            or o.get("mail_to") != ["jane@example.org"]):
+        errors += fail(f"asking for a sign-in did not mail the address, trimmed and lower-cased: "
+                       f"{st('email_first')} {o.get('mail_to')}")
+    if not o.get("mail_has_link") or not o.get("mail_html_has_link") or len(o.get("mail_code") or "") != 10:
+        errors += fail("the sign-in email lost its link, or its code, in either version")
+    if o.get("mail_braces"):
+        errors += fail("a template token reached the sign-in email")
+    # WHERE ASKING LANDS IS A GET PAGE (runtime review, 2026-11-13): drawn as the
+    # POST's answer, a reload sent the form, and the email, again
+    cp = o.get("check_page") or {}
+    if (cp.get("status") != 200 or "jane@example.org" not in cp.get("body", "")
+            or 'action="/signin/code"' not in cp.get("body", "")):
+        errors += fail(f"/signin/check does not draw the code box for the address asked for: {cp.get('status')}")
+    if st("check_none") != 400:
+        errors += fail("/signin/check with no pending sign-in does not say it has run out")
+    for k in ("check_head", "page_head"):
+        if st(k) != 200:
+            errors += fail(f"a HEAD of a sign-in page ({k}) is not answered (Pages would hand it to the asset server's 404)")
+    # NEVER NO-REFERRER: under it a browser sends every POST with Origin: null,
+    # and every form here is checked by its Origin. Chrome refused every sign-in
+    # that way until the runtime review (2026-11-13).
+    refs = {k: v.get("referrer") for k, v in o.items()
+            if isinstance(v, dict) and "referrer" in v and v.get("status")}
+    bad_ref = {k: r for k, r in refs.items() if r != "same-origin"}
+    if bad_ref or len(refs) < 20:
+        errors += fail(f"a sign-in response's Referrer-Policy is not same-origin: {bad_ref or len(refs)}")
+    if 'content="same-origin"' not in (o.get("page") or {}).get("body", "") \
+            or "no-referrer" in (ROOT / "functions" / "_signin_page.js").read_text().split("export const REFERRER")[1]:
+        errors += fail("the sign-in pages carry a no-referrer policy; every form would post with Origin: null")
+    for k in ("null_origin_same_site",):
+        c = o.get(k) or {}
+        if c.get("mailed") != 1 or c.get("status") != 303:
+            errors += fail(f"a same-origin POST under a no-referrer policy (Origin: null, Sec-Fetch-Site: same-origin) "
+                           f"was refused: {c.get('status')}")
+    if st("code_null_same") != 303 or not (o.get("code_null_same") or {}).get("jar", {}).get("__Host-sj_session"):
+        errors += fail("the code, posted with Origin: null from our own page, did not sign in")
+    pend = " ".join((o.get("email_first") or {}).get("set", []))
+    if "__Host-sj_pending=" not in pend or "HttpOnly" not in pend or "Max-Age=900" not in pend:
+        errors += fail(f"the pending sign-in cookie is missing or loose: {pend[:120]}")
+    # THE LINK ASKS BEFORE IT SIGNS IN (security review, 2026-11-13): opening
+    # it draws a button that posts back, and sets nothing, so a mail scanner
+    # that opens every link is handed no sign-in
+    lo = o.get("link_open") or {}
+    if lo.get("status") != 200 or lo.get("set") or 'action="/signin/link"' not in lo.get("body", ""):
+        errors += fail(f"opening the emailed link does not ask first, or signs in on a GET: {lo.get('status')} {lo.get('set')}")
+    if (o.get("link") or {}).get("location") != "/?tab=jobs" or not (o.get("link") or {}).get("jar", {}).get("__Host-sj_session"):
+        errors += fail(f"pressing Sign in on the emailed link does not sign in to the page asked for: {o.get('link')}")
+    if (o.get("link_same_person") or {}).get("location") != "/?tab=jobs":
+        errors += fail("a link opened on a device already signed in as that address still asks")
+    if "somebody else" not in (o.get("link_replacing") or {}).get("body", "") \
+            or (o.get("link_replacing") or {}).get("set"):
+        errors += fail("a link for another address does not say it replaces this device's sign-in, or replaces it on a GET")
+    for k in ("link_cross_site", "link_no_origin_cross"):
+        if st(k) != 403 or (o.get(k) or {}).get("set"):
+            errors += fail(f"another site can press the link's Sign in ({k}: {st(k)})")
+    attrs = o.get("session_attrs", "")
+    for want in ("__Host-sj_session=", "Path=/", "Max-Age=2592000", "HttpOnly", "Secure", "SameSite=Lax"):
+        if want not in attrs:
+            errors += fail(f"the sign-in cookie lacks {want}: {attrs[-120:]}")
+    if "Domain=" in attrs:
+        errors += fail("the sign-in cookie names a Domain; it would reach hq. and hunter.")
+    for k in ("gate_board", "gate_data", "gate_alias", "g_gate"):
+        if not (o.get(k) or {}).get("reached"):
+            errors += fail(f"a real sign-in did not open the boards ({k}: {(o.get(k) or {}).get('status')})")
+    if (o.get("gate_none") or {}).get("reached"):
+        errors += fail("the boards opened with no sign-in")
+    if (o.get("whoami_email") or {}).get("via") != "email" or (o.get("whoami_email") or {}).get("handle") != "jane":
+        errors += fail(f"/api/whoami does not read our sign-in: {o.get('whoami_email')}")
+    if (o.get("g_whoami") or {}).get("via") != "google":
+        errors += fail(f"/api/whoami does not say a Google sign-in is one: {o.get('g_whoami')}")
+    if o.get("whoami_none") != {"signed_in": False}:
+        errors += fail(f"/api/whoami signed somebody in with nothing: {o.get('whoami_none')}")
+    if "@" in json.dumps(o.get("whoami_email")) + json.dumps(o.get("g_whoami")):
+        errors += fail("/api/whoami answers with an address; the page needs a handle, not a person")
+    for k in ("link_tampered", "link_pending_as_link", "link_expired", "link_tampered_open", "link_pending_as_link_open"):
+        if st(k) != 400 or (o.get(k) or {}).get("jar", {}).get("__Host-sj_session"):
+            errors += fail(f"{k} signed somebody in ({st(k)})")
+    for k in ("gate_link_as_session", "gate_pending_as_session", "gate_other_secret", "gate_expired",
+              "gate_odd_method", "gate_bad_address"):
+        if (o.get(k) or {}).get("reached"):
+            errors += fail(f"the gate took {k} for a sign-in")
+    # ONE OF OUR COOKIE NAMES TWICE is no cookie (a sibling host's planted one
+    # must not be read first), a near-name is not ours, and a tab is trimmed
+    if o.get("dup_session") or o.get("near_name_session") or not o.get("tab_trimmed_session"):
+        errors += fail(f"the cookie reader took a duplicate or a near-name, or lost a tab-spaced one: "
+                       f"dup={o.get('dup_session')} near={o.get('near_name_session')} tab={o.get('tab_trimmed_session')}")
+    # by email: the code
+    if st("code_right") != 303 or (o.get("code_right") or {}).get("location") != "/?tab=companies" \
+            or not o.get("code_session_ok"):
+        errors += fail(f"the emailed code, typed in lower case with a space, did not sign in: {st('code_right')}")
+    if (o.get("code_wrong") or {}).get("location") != "/signin/check?e=wrong" \
+            or "does not match" not in (o.get("code_wrong_page") or {}).get("body", ""):
+        errors += fail("a wrong code does not land on the check page saying it does not match")
+    for k, want in (("code_wrong", 303), ("code_other_pending", 303), ("code_no_pending", 400),
+                    ("code_link_as_pending", 400), ("code_cross_site", 403)):
+        c = o.get(k) or {}
+        if c.get("status") != want or c.get("jar", {}).get("__Host-sj_session"):
+            errors += fail(f"{k} signed somebody in, or answered {c.get('status')} not {want}")
+    if not o.get("codes_differ"):
+        errors += fail("two requests for one address were given the same code")
+    # what may not send mail
+    for k, want in (("cross_site", 403), ("null_origin", 403), ("no_origin_cross_site", 403), ("bad_address", 400),
+                    ("markup_address", 400), ("resend_down", 502)):
+        c = o.get(k) or {}
+        if c.get("status") != want or c.get("mailed") or c.get("jar", {}).get("__Host-sj_pending"):
+            errors += fail(f"{k}: answered {c.get('status')} (not {want}), mailed {c.get('mailed')} or set a cookie")
+    if "<script>alert" in (o.get("markup_address") or {}).get("body", ""):
+        errors += fail("the sign-in page writes a typed address into the page unescaped")
+    # the allowances
+    # each stops at its number; a refusal writes NOTHING to KV (the free plan's
+    # 1,000 writes a day are alerts' and claims' too) and never says "use
+    # Google" while Google is off; a send writes three
+    google_on = re.search(r"export const GOOGLE\s*=\s*true;", (ROOT / "functions" / "_gate.js").read_text())
+    caps = o.get("caps") or {}
+    for k, n in (("cap_caller", caps.get("PER_CALLER")), ("cap_caller_v6", caps.get("PER_CALLER")),
+                 ("cap_address", caps.get("PER_ADDRESS")), ("cap_mailbox", caps.get("PER_ADDRESS")), ("cap_all", 3)):
+        rows = o.get(k) or []
+        sent, refused = rows[:n], rows[n:]
+        if (len(sent) != n or not refused or any(r.get("mailed") != 1 or r.get("writes") != 3 for r in sent)
+                or any(r.get("status") != 429 or r.get("mailed") or r.get("writes") or r.get("pending") for r in refused)):
+            errors += fail(f"the {k[4:]} allowance did not stop at {n} with nothing written past it: {rows}")
+        if not google_on and any(r.get("google") for r in refused):
+            errors += fail(f"a {k[4:]} refusal tells a person to use Google, which is off")
+    if not o.get("mailbox_fold") or o.get("mailbox_fold") != o.get("mailbox_fold_want"):
+        errors += fail(f"one inbox is not counted as one however it is spelled: {o.get('mailbox_fold')}")
+    kc, ka, kg = (o.get(k) or {} for k in ("kv_caller_put", "kv_all_put", "kv_get"))
+    # a refused personal write (a double-click) sends nothing; the shared
+    # counter, written first so a race can be seen, may have taken one unit
+    if kc.get("mailed") or kc.get("pending") or (kc.get("writes") or 0) > 1 or kc.get("status") != 429:
+        errors += fail(f"a refused personal counter write (a double-click) still sent, or wrote more than the shared count: {kc}")
+    # a refused write to the SHARED counter refuses the request (final review,
+    # 2026-11-13: letting it pass is how a burst got past the daily allowance)
+    if ka.get("mailed") or ka.get("status") != 503 or ka.get("pending"):
+        errors += fail(f"a refused write to the shared counter still sent an email: {ka}")
+    if kg.get("mailed") or kg.get("status") != 503:
+        errors += fail(f"KV that cannot be read still let a sign-in email go: {kg}")
+    # SIMULTANEOUS REQUESTS (final review, 2026-11-13: 104 emails against a cap
+    # of 60). Three bursts of 13 from 13 networks each may send at most a
+    # couple an instant, whichever way KV takes the race; and a stale read
+    # never refuses an honest sign-in
+    for name, n in (o.get("burst") or {}).items():
+        if n > 6:
+            errors += fail(f"simultaneous requests got past the shared allowance ({name}: {n} emails "
+                           f"from 3 bursts of 13)")
+    if len(o.get("burst") or {}) != 2:
+        errors += fail("the harness did not race the shared allowance both ways")
+    if [r.get("mailed") for r in (o.get("stale_honest") or [])] != [1, 1, 1]:
+        errors += fail(f"a stale KV read refused an honest sign-in: {o.get('stale_honest')}")
+    if (caps.get("PER_CALLER") or 0) < 20:
+        errors += fail("the per-network allowance is back under 20; an office or a conference's Wi-Fi "
+                       "shares one address")
+    # WHERE A PERSON LANDS (final review): the code box while a sign-in is
+    # pending, a fresh form on "start again", a POST address opened as a page,
+    # Back after signing in, a HEAD of the Google button, a `to` too long to seal
+    if (o.get("signin_pending") or {}).get("location") != "/signin/check":
+        errors += fail("/signin with a sign-in pending does not show the code box, where the email says to type it")
+    sa = o.get("signin_again") or {}
+    if sa.get("status") != 200 or "__Host-sj_pending=; Path=/; Max-Age=0" not in " ".join(sa.get("set", [])):
+        errors += fail("'start again with another address' does not forget the pending sign-in")
+    for k, want in (("email_get_pending", "/signin/check"), ("email_get_none", "/signin"),
+                    ("code_get_pending", "/signin/check"), ("check_back_signed_in", "/"),
+                    ("google_head", "/signin")):
+        if (o.get(k) or {}).get("location") != want:
+            errors += fail(f"{k} does not land on {want}: {(o.get(k) or {}).get('status')} "
+                           f"{(o.get(k) or {}).get('location')!r}")
+    if (o.get("google_head") or {}).get("set"):
+        errors += fail("a HEAD of /signin/google minted a verifier cookie")
+    lt = o.get("long_to") or {}
+    if lt.get("link") != "/" or lt.get("cookie_len", 0) > 1000:
+        errors += fail(f"a `to` too long to seal still went into the sign-in: {lt}")
+    # `to`
+    cases = o.get("to_cases") or []
+    if len(cases) < 12:
+        errors += fail("the harness drove too few `to` values to trust")
+    for c in cases:
+        if c.get("link_origin") != "https://sledjobs.com" or str(c.get("link_location", "")).startswith("//") \
+                or c.get("google_host") != "accounts.google.com":
+            errors += fail(f"a sign-in sent to={c.get('to')!r} off the site: {c}")
+    if not (o.get("short_secret_control") or {}).get("reached"):
+        errors += fail("the short-secret case proves nothing: the same cookie under a long "
+                       "enough secret did not open the boards either")
+    for k, loc in (o.get("sealed_evil") or {}).items():
+        if loc != "/":
+            errors += fail(f"the {k} door followed a `to` sealed off the site ({loc!r}); each "
+                           f"door that redirects must hold `to` itself")
+    if len(o.get("sealed_evil") or {}) != 3:
+        errors += fail("the harness did not drive a sealed off-site `to` through all three doors")
+    if o.get("to_keeps_path") != "/c/verkada.html?tab=jobs":
+        errors += fail(f"a sign-in no longer returns a person to the page they asked for: {o.get('to_keeps_path')}")
+    # Google
+    if (o.get("g_off") or {}).get("location") != "/signin?to=%2F%3Ftab%3Djobs&e=google_off":
+        errors += fail(f"with no Google client the button does not fall back to the email sign-in: {o.get('g_off')}")
+    if "e=google_off" not in (o.get("g_off_callback") or {}).get("location", ""):
+        errors += fail("with no Google client the callback signs somebody in or fails silently")
+    if (o.get("g_www") or {}).get("location") != "https://sledjobs.com/signin/google?to=%2F":
+        errors += fail("a Google sign-in starts off the site's own address; Google answers only there")
+    g = o.get("g_start") or {}
+    if (g.get("host") != "accounts.google.com" or g.get("client_id") != "client-123.apps.googleusercontent.com"
+            or g.get("redirect_uri") != "https://sledjobs.com/signin/google/callback"
+            or g.get("scope") != "openid email" or g.get("method") != "S256"
+            or g.get("response_type") != "code" or not g.get("challenge_matches") or not g.get("nonce_sent")
+            or g.get("state_has_to")):
+        errors += fail(f"the Google start is not the code flow with PKCE, asking openid and email only: {g}")
+    for want in ("__Host-sj_oauth=", "HttpOnly", "Secure", "SameSite=Lax", "Max-Age=600"):
+        if want not in g.get("oauth_cookie", ""):
+            errors += fail(f"the Google verifier cookie lacks {want}")
+    ok = o.get("g_ok") or {}
+    if not ok.get("signed") or ok.get("location") != "/?tab=jobs":
+        errors += fail(f"a good Google answer did not sign in to the page asked for: {ok.get('location')}")
+    tc = o.get("g_token_call") or {}
+    if not (tc.get("verifier_sent") and tc.get("secret_sent") and tc.get("grant") == "authorization_code"
+            and tc.get("redirect_uri") == "https://sledjobs.com/signin/google/callback"):
+        errors += fail(f"the token request is not the one Google's code flow with PKCE needs: {tc}")
+    for k, c in (o.get("g_fail") or {}).items():
+        if c.get("signed") or "e=google_failed" not in c.get("location", ""):
+            errors += fail(f"Google: {k} signed somebody in, or did not say it failed ({c.get('location')})")
+    if len(o.get("g_fail") or {}) < 15:
+        errors += fail("the harness drove too few failed Google answers to trust")
+    if (o.get("g_cancel") or {}).get("signed") or "e=google_cancel" not in (o.get("g_cancel") or {}).get("location", ""):
+        errors += fail("a cancelled Google sign-in signed somebody in, or did not say it was cancelled")
+    # signing out
+    post = " ".join((o.get("out_post") or {}).get("set", []))
+    if st("out_post") != 303 or "__Host-sj_session=; Path=/; Max-Age=0" not in post:
+        errors += fail(f"signing out does not drop the cookie: {st('out_post')} {post[:100]}")
+    oa = o.get("out_access") or {}
+    if (oa.get("status") != 200 or 'href="/cdn-cgi/access/logout"' not in oa.get("body", "")
+            or "__Host-sj_session=; Path=/; Max-Age=0" not in " ".join(oa.get("set", []))):
+        errors += fail("signing out with an Access sign-in too does not drop ours and offer Access's own sign-out")
+    if (o.get("out_stale_access") or {}).get("location") != "/":
+        errors += fail("a stale Access cookie makes sign-out claim the admin is still signed in")
+    if (o.get("whoami_both") or {}).get("via") != "access":
+        errors += fail(f"with both sign-ins held, /api/whoami answers as ours, not Access's: {o.get('whoami_both')}")
+    if o.get("signin_frame") != "DENY" or o.get("home_frame"):
+        errors += fail(f"the sign-in pages can be framed, or the board no longer can: "
+                       f"{o.get('signin_frame')!r} {o.get('home_frame')!r}")
+    if st("out_cross") != 403 or (o.get("out_cross") or {}).get("set"):
+        errors += fail("another site can sign a person out")
+    if (o.get("out_page") or {}).get("set"):
+        errors += fail("opening the sign-out page signed somebody out; only its POST may")
+    if (o.get("page_signed_in") or {}).get("location") != "/?tab=conferences":
+        errors += fail("a person already signed in is asked to sign in again")
+    # the doors
+    for p, c in (o.get("open") or {}).items():
+        if not c.get("reached"):
+            errors += fail(f"the gate shut {p}, a sign-in path, to a person signed out")
+    for p, c in (o.get("shut") or {}).items():
+        if c.get("reached"):
+            errors += fail(f"the gate opened {p}, which is no sign-in path")
+    # where a sign-in may come from, by source: our pages post only to here
+    for f in ("email.js", "code.js", "out.js"):
+        if "fromOurPage(request)" not in (ROOT / "functions" / "signin" / f).read_text():
+            errors += fail(f"functions/signin/{f} no longer checks the POST came from our page")
     return errors
 
 
@@ -2059,15 +2399,15 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         if not ((out.get(k) or {}).get("json") or {}).get("error"):
             errors += fail(f"{k}: an endpoint refusal is not JSON with an error")
     home = (out.get("anon_home") or {}).get("body", "")
-    if 'href="https://sledjobs.com/admin/api/login?to=%2F%3Ftab%3Djobs"' not in home:
+    if 'href="https://sledjobs.com/signin?to=%2F%3Ftab%3Djobs"' not in home:
         errors += fail("the sign-in page has no sign-in link back to the board page asked for")
     if 'href="https://sledjobs.com/"' not in home or "free" not in home:
         errors += fail("the sign-in page does not say signing in is free, or does not link "
                        "to the front page for a visitor who does not know the site")
     alias = (out.get("anon_alias_page") or {}).get("body", "")
-    if 'href="https://sledjobs.com/admin/api/login?to=' not in alias:
+    if 'href="https://sledjobs.com/signin?to=' not in alias:
         errors += fail("on the alias the sign-in link does not go to sledjobs.com, "
-                       "where Access can actually sign somebody in")
+                       "whose own address is the one a sign-in's cookie is set on")
     xss = (out.get("xss") or {}).get("body", "")
     if "<script>alert" in xss or "<img src=x" in xss:
         errors += fail("the holding page writes the requested path into the page unescaped")
@@ -2797,13 +3137,13 @@ def check_login_endpoint_names_a_handle_never_an_address() -> int:
     if got["none"] != {"signed_in": False}:
         errors += fail(f"no token must be signed out, nothing more: {got['none']}")
     for k in ("jane", "jane_cookie"):
-        if got[k] != {"signed_in": True, "handle": "jane", "roles": ["hunter"],
+        if got[k] != {"signed_in": True, "via": "access", "handle": "jane", "roles": ["hunter"],
                       "hunter_app": "https://hunter.sledjobs.com/app"}:
             errors += fail(f"a verified address on file ({k}) must answer handle and roles, "
                            f"matched after trimming and lower-casing: {got[k]}")
-    if got["old"] != {"signed_in": True, "handle": None, "roles": []}:
+    if got["old"] != {"signed_in": True, "via": "access", "handle": None, "roles": []}:
         errors += fail(f"a revoked person is signed in with no handle and no roles: {got['old']}")
-    if got["stranger"] != {"signed_in": True, "handle": None, "roles": []}:
+    if got["stranger"] != {"signed_in": True, "via": "access", "handle": None, "roles": []}:
         errors += fail(f"an address the owner never granted gets no roles: {got['stranger']}")
     for k, what in (("header_only", "the address in a header nobody verified"),
                     ("forged", "a token signed by another key"),
@@ -2823,14 +3163,18 @@ def check_login_endpoint_names_a_handle_never_an_address() -> int:
     # in index.html and a comment mentioning it satisfied the check while
     # the fetch was gone.
     site = (ROOT / "index.html").read_text()
-    if 'href="/admin/api/login?to=/"' not in site:
-        errors += fail("index.html no longer offers the log-in link")
-    if 'fetch("/admin/api/whoami",{credentials:"include",redirect:"manual"})' not in site:
-        errors += fail("index.html no longer asks /admin/api/whoami with the browser's "
+    # Since 2026-11-13 the site's own sign-in (/signin) and /api/whoami,
+    # outside /admin, where a member signed in our way never meets Access.
+    if 'href="/signin?to=/"' not in site:
+        errors += fail("index.html no longer offers the sign-in link")
+    if 'fetch("/api/whoami",{credentials:"include",redirect:"manual"})' not in site:
+        errors += fail("index.html no longer asks /api/whoami with the browser's "
                        "cookies and a manual redirect; signed-in people would never see it")
+    if 'door("/signin/out","Sign out")' not in site:
+        errors += fail("the account menu no longer offers Sign out")
     build = (ROOT / "scripts" / "build_site.py").read_text()
-    if '"users.json"' not in build or "hunter" not in build:
-        errors += fail("build_site no longer ships users.json and the beta page under /admin")
+    if '"users.json"' not in build or 'admin_dir.parent / "beta"' not in build:
+        errors += fail("build_site no longer ships users.json under /admin and the beta page at /beta/")
     return errors
 
 
@@ -9550,9 +9894,18 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
         if extra or "'nonce-{{NONCE}}'" not in ss:
             errors += fail(f"{k}: script-src allows {extra or 'no nonce'}; only the nonce, "
                            f"the challenge path and this kind's hashes may run")
-        for name in ("script-src-attr", "form-action", "base-uri", "object-src"):
+        for name in ("script-src-attr", "base-uri", "object-src"):
             if d.get(name) != ["'none'"]:
                 errors += fail(f"{k}: {name} is {d.get(name)}, not 'none'")
+        # A FORM MAY POST ONLY FROM OUR OWN SIGN-IN PAGES, and only to this
+        # site (2026-11-13): they carry no script, so a form is how they send
+        # an address or a code. Every other kind stays at 'none', and the
+        # sign-in pages may run no script at all.
+        want_form = ["'self'"] if k == "signin" else ["'none'"]
+        if d.get("form-action") != want_form:
+            errors += fail(f"{k}: form-action is {d.get('form-action')}, not {want_form}")
+        if k == "signin" and any(x.startswith("'sha256-") for x in ss):
+            errors += fail("signin: the sign-in pages' policy allows a script; they carry none")
         st = d.get("style-src") or []
         if "'unsafe-inline'" not in st or any(x.startswith(("'sha", "'nonce")) for x in st):
             errors += fail(f"{k}: style-src {st}: a hash or nonce there switches unsafe-inline off "
@@ -39743,6 +40096,7 @@ def main() -> int:
     errors += check_the_supplier_export_follows_every_intake()
     errors += check_the_front_page_is_whole_and_public()
     errors += check_continue_with_google_waits_for_its_own_door()
+    errors += check_our_own_sign_in_proves_the_address_and_opens_only_the_boards()
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()

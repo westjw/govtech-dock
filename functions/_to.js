@@ -16,8 +16,15 @@
  * protocol-relative and leaves. Refusing control characters and spaces
  * first is a second line only: mutation-tested 2026-10-05, removing it
  * changes no outcome the harness can reach. */
+/* A `to` longer than this is "/": every sign-in seals `to` into a link, a
+ * cookie or Google's state, and past about 3,000 characters those no longer
+ * fit (a browser drops a cookie over 4 KB), so an email went out that could
+ * never sign anybody in (final review, 2026-11-13). */
+export const MAX_TO = 1024;
+
 export function sameSitePath(to, origin) {
   to = to || "/";
+  if (typeof to !== "string" || to.length > MAX_TO) return "/";
   let dest = "/";
   if (to.startsWith("/") && !to.startsWith("//") && !to.includes("\\")
       && !/[\x00-\x20\x7f]/.test(to)) {

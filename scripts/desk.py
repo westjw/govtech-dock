@@ -1086,8 +1086,10 @@ def questions(check_launch: bool = True) -> dict:
             "title": f"Open {_launch_host()} to the public?",
             "body": "The landing page is built and waiting. Three steps in the "
                     "Cloudflare dashboard, and only you can do them.",
-            "steps": ["Put the admin path back on the Access app.",
-                      "Let anyone sign in, with Google or a one-time code.",
+            # the site's own sign-in since 2026-11-13: Access stays on /admin
+            # with the owner and his admins, and is never opened to everyone
+            "steps": ["Add SESSION_SECRET as a Pages secret and redeploy (DEPLOY.md 3a, steps 2 to 4).",
+                      "Put the admin path back on the Access app; leave its policy as you and your admins.",
                       "Keep Fail closed."],
             "state": ("The site did not answer just now." if ls.get("error") else
                       "Access still covers the whole site." if ls.get("access_whole_host") else

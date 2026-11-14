@@ -857,12 +857,11 @@ subscribe", and anyone may sign in, free (email and one-time code).
   Gated, the stop link in every alert email led to a sign-in, which the law on
   commercial email does not allow. A NEW subscription still needs a sign-in.
   `/data/sectors.json` is public for the alerts page; company names are not.
-- `/admin/hunter/` (exactly) is open to any signed-in person: the account
-  menu sends every member there and it holds no data. Every other `/admin`
-  spelling needs the role.
-- **Revoking an admin is now the Users board plus a deploy**, not the Access
-  policy: with the policy at Everyone there is no line to take a person off.
-  A revoke reaches the door when the next build ships `users.json`.
+- The Job Hunter beta page is `/beta/` (it was `/admin/hunter/`, which now
+  forwards): any signed-in member reaches it, and it holds no data. Every
+  `/admin` path needs Access and the role.
+- **Revoking an admin** is the Users board plus a deploy, or the Access
+  policy (which lists only the owner and his admins again since 2026-11-13).
 - While the boards are signed-in, `sitemap.xml` lists `/` alone and
   `robots.txt` allows `/` and the art (`build_site.boards_signed_in` reads
   `GATED` off `_gate.js`; `/?utm_` is allowed too, so a shared link unfurls).
@@ -874,27 +873,91 @@ subscribe", and anyone may sign in, free (email and one-time code).
   role cases in `check_the_admin_door_is_verified_on_every_hostname`. Blind
   review (3 lenses, a skeptic each): 4 confirmed and 9 smaller, all fixed;
   22 of 22 breakages caught.
-- The owner's dashboard steps are DEPLOY.md §3a: Path `admin` back on the
-  Access application, policy Everyone with One-time PIN, Fail closed kept.
-  Until he does them, Access still covers the whole host and nothing changes
-  on sledjobs.com; the pages.dev alias shows the landing at once.
+- **Members sign in with the SITE'S OWN SIGN-IN, not Access (owner,
+  2026-11-13: "anyone can sign in", then, told every Access sign-in takes one
+  of the Zero Trust free plan's 50 seats and the 51st person is turned away:
+  "build").** `functions/_session.js` (the core), `functions/signin/`
+  (the pages and doors), `functions/_signin_page.js` (the card), and
+  `functions/api/whoami.js` (outside `/admin`; `/admin/api/whoami`
+  re-exports it).
+  - `/signin`: Continue with Google (when `GOOGLE` is true), or an address.
+    The email (Resend, `alerts@`, click tracking OFF) carries a link and a
+    10-character Crockford code (50 bits) that signs in only the device
+    holding the pending cookie it was derived from. Both live 15 minutes.
+    **The link asks before it signs in**: GET draws "Sign in as <address>"
+    and a button that POSTs the token back, so a mail scanner that opens
+    every link is handed nothing and somebody else's link cannot silently
+    replace your sign-in. Google is OpenID Connect's code flow with PKCE against our own
+    OAuth client (`GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`), scope
+    `openid email`, `email_verified` required.
+  - **Nothing is stored.** A sign-in is `__Host-sj_session` (30 days,
+    HttpOnly, Secure, Lax, no Domain), an HMAC-SHA256 under
+    `SESSION_SECRET` over the address and method; every sealed value names
+    its purpose (session, link, pending, oauth) inside the MAC. No secret, or
+    one under 32 characters, and nothing verifies. One person cannot be
+    signed out alone; changing the secret signs out everyone.
+  - Email sign-ins are capped (KV counters, 26 h): 20 a day per network (IPv6
+    by /48; offices and conference Wi-Fi share one address), 4 per INBOX (`mailbox()`: +tags off, Gmail dots folded), 60 in
+    all (`SIGNIN_MAILS_PER_DAY`), because the free Resend allowance (100 a
+    day) is the digests' too. ALL are read before ANY is written, so a
+    refusal writes nothing (KV's 1,000 writes a day are alerts' and claims'
+    too). KV has no atomic increment, so the SHARED key is written first
+    with the request's own mark and read back: a refused write, or a mark
+    overwritten by a simultaneous request (same or higher count, other mark),
+    refuses; a stale read never does. Bursts of 13 from 13 networks send one
+    each (final review: 104 emails got past a cap of 60 before). Across
+    Cloudflare's locations the count stays approximate; Resend's 100 a day is
+    the backstop, a Durable Object the firm fix. Every POST that
+    sends mail or sets a cookie must come from our own page (`fromOurPage`:
+    Origin, else Sec-Fetch-Site). Refusals mention Google only when it is on.
+  - Our cookies are read by `_session.ours()`: ASCII-trimmed, and a name that
+    arrives twice is no cookie (a sibling host cannot set `__Host-`, so a
+    duplicate is a plant). `/api/whoami` prefers a verified Access sign-in
+    over ours when both are held. `/signin` refuses to be framed.
+  - The sign-in pages are the `signin` CSP kind: no script, and the ONE kind
+    whose `form-action` is `'self'` (`csp.FORMS`). **Their Referrer-Policy is
+    `same-origin`, NEVER `no-referrer`**: under no-referrer a browser sends
+    every POST with `Origin: null`, and the first version refused every
+    Chrome sign-in that way (runtime review, 2026-11-13; the harness's fake
+    browser had always sent a real Origin, so the suite enforced the bug).
+    `fromOurPage` takes `Origin: null` only with `Sec-Fetch-Site:
+    same-origin`. Asking for an email answers 303 to `/signin/check` (a GET
+    drawn from the pending cookie), so a reload never re-sends the email.
+    Google's request carries a nonce sealed in the state, checked in the ID
+    token. The GET pages answer HEAD; `/signin/` with a trailing slash passes
+    the gate. `/signin` with a sign-in pending goes to the code box (the
+    email says to type the code there); the POST doors opened as pages go
+    back to it; Back after signing in is not "run out"; a `to` over 1,024
+    characters is "/" (`_to.js` MAX_TO), since a sealed one must fit a
+    cookie. A real-browser run (Chromium, the real middleware and CSP)
+    signed in by code and by link, and out, with a real Origin on every
+    POST.
+  - **The gate takes ours or Access's**; `/admin` takes Access alone (the
+    owner's Access sign-in opens the boards too). `access_harness` proves a
+    real session on the owner's own address is refused at `/admin`.
+  - The `to` of every door is `_to.js`'s, held again by each door that
+    redirects, even from a sealed value.
+  - Guard: `check_our_own_sign_in_proves_the_address_and_opens_only_the_boards`
+    (`scripts/signin_harness.mjs`, signing in with the link and code out of
+    the mail its stub received). Blind security review (2026-11-13): no way
+    to sign in as somebody else or reach /admin; six smaller findings, all
+    fixed.
+- The owner's dashboard steps are DEPLOY.md §3a: `SESSION_SECRET` (and the
+  two Google secrets) as Pages secrets, a redeploy, then Path `admin` back
+  on the EXISTING Access application with its policy left as the owner and
+  his admins (NOT Everyone), Fail closed kept. No second Access application:
+  the 2026-11-02 "SLED JOBS Google sign-in" one is not needed.
 - **"Continue with Google" is built and OFF** (owner, 2026-11-02: "Can I
   have the cloudflare sign in and future google sign in on the landing
-  page"). Access has no link that picks one login method on an application
-  with two, so Google gets its own Access application on `/signin/google`
-  (Google only, instant authentication) and `functions/signin/google.js`
-  sends the person on to `/admin/api/login`; the main application issues its
-  token from the same global session. The site still reads one audience.
-  That application (sledjobs.com, path `signin/google` only) is the ONE
-  exception to "never a second Access application"; DEPLOY.md §3 says so.
+  page"); since 2026-11-13 it is the site's own (above), and until the
+  client exists `/signin/google` sends a person to the email sign-in.
   `landing.html` and the sign-in page carry both versions of every changed
   line between `<!--google-on-->` / `<!--google-off-->` markers, and
   `_gate.js` `signinBlocks()` keeps the one `GOOGLE` says; `build_site`
   `sign_in_version()` makes the same choice when it ships landing.html, since
   `/landing` is served as-is to a signed-in person (review: both versions
-  showed there at once). Flip `GOOGLE` only after DEPLOY.md §3d is done:
-  `/signin/google` signed out reaches accounts.google.com, AND the owner's
-  private-window run lands on the board with no Cloudflare page between. The `to` check for both links is `functions/_to.js`.
+  showed there at once). Flip `GOOGLE` only after DEPLOY.md §3a step 3 is
+  done and the owner's private-window run through Google lands on the board.
   Guard: `check_continue_with_google_waits_for_its_own_door`.
 
 **Until 2026-10-22 the WHOLE site was signed-in only (owner, 2026-10-05).**

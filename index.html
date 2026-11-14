@@ -1962,14 +1962,12 @@
    <a class="row" href="/alerts" id="acctsync">Sync across devices →</a>
    <a class="row" href="/alerts">Email alerts and cadence →</a>
    <a class="row" href="#" id="accttheme">Switch theme →</a>
-   <!-- Signing in is for the people who run the board and the closed beta:
-        a code sent to your email, no password, decided by the owner. The row
-        SAYS WHO IT IS FOR. It said "Log in" to every visitor, right under
-        "Nothing here asks who you are", and the sign-in behind it admits only
-        the addresses the owner put on the list - a job seeker who clicked it
-        met a refusal and could read it as "this board needs an account"
-        (launch audit, 2026-10-06). whoami replaces it once you are signed in. -->
-   <a class="row" href="/admin/api/login?to=/" id="acctlogin">Team and beta sign-in →</a>
+   <!-- Anyone may sign in (owner, 2026-10-22), with the site's own sign-in
+        since 2026-11-13: Google, or a link and a code sent to your email, no
+        password. Until then the row said "Team and beta sign-in", because the
+        sign-in behind it admitted only the addresses the owner listed (launch
+        audit, 2026-10-06). whoami replaces it once you are signed in. -->
+   <a class="row" href="/signin?to=/" id="acctlogin">Sign in →</a>
    <div id="acctdoors"></div>
  </div>
 </header>
@@ -4537,7 +4535,7 @@ function paintSave(btn,on){
    posting as this board shows it, base64url JSON, and nothing else. Job
    Hunter asks the person to confirm every flag, so nothing here needs the
    referrer. Only an owner or a Job Hunter beta user sees the link: whoAmI
-   puts "jh" on the root when /admin/api/whoami answers with `hunter_app`,
+   puts "jh" on the root when /api/whoami answers with `hunter_app`,
    Job Hunter's address built from the brand domain, and repoints every link
    already drawn - the hostname default below is only what a link carries
    before that answer, and on solesourcejobs.com it would be wrong. */
@@ -10236,23 +10234,24 @@ function openAcct(open){
   b.setAttribute("aria-expanded",String(show));
 }
 
-/* WHO IS SIGNED IN. Access holds the door on /admin; asking /admin/api/whoami
-   with the browser's cookies either answers, or redirects to the sign-in
-   page - which a fetch with redirect:"manual" sees as an opaque redirect,
-   and that is the signed-out case. Nothing here stores anything: the answer
-   is a handle and roles, and it is asked for fresh on every load. */
+/* WHO IS SIGNED IN. /api/whoami reads the site's own sign-in and an Access
+   one (2026-11-13; it was /admin/api/whoami, under the Access application,
+   which a member signed in our way never passes). A fetch with
+   redirect:"manual" sees any redirect as opaque, and that is the signed-out
+   case. Nothing here stores anything: the answer is how you signed in, a
+   handle and roles, asked for fresh on every load. */
 async function whoAmI(){
   const row=$("#acctlogin"), doors=$("#acctdoors");
   if(!row||!doors)return;
   let me=null;
   try{
-    const r=await fetch("/admin/api/whoami",{credentials:"include",redirect:"manual"});
+    const r=await fetch("/api/whoami",{credentials:"include",redirect:"manual"});
     if(r.ok) me=await r.json();
   }catch(e){ me=null; }
-  if(!me||!me.signed_in){ row.textContent="Team and beta sign-in \u2192"; row.href="/admin/api/login?to="+encodeURIComponent(location.pathname+location.search); return; }
+  if(!me||!me.signed_in){ row.textContent="Sign in \u2192"; row.href="/signin?to="+encodeURIComponent(location.pathname+location.search); return; }
   const roles=me.roles||[];
-  row.textContent=me.handle?"Signed in as "+me.handle:"Signed in, not on the list yet";
-  row.href="/admin/hunter/";
+  row.textContent=me.handle?"Signed in as "+me.handle:me.via==="google"?"Signed in with Google":"Signed in by email";
+  row.href="/beta/";
   doors.textContent="";
   const door=(href,label)=>{const a=document.createElement("a");a.className="row";a.href=href;a.textContent=label+" \u2192";doors.appendChild(a);};
   if(roles.includes("owner")||roles.includes("admin")) door("/admin/","Admin");
@@ -10282,6 +10281,7 @@ async function whoAmI(){
     if(new URL(JH_APP).hostname==="hunter."+location.hostname.replace(/^www\./,""))
       document.documentElement.classList.add("jhp");
   }
+  door("/signin/out","Sign out");
 }
 function wireHeader(){
   whoAmI();

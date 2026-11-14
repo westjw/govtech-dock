@@ -83,8 +83,11 @@ def _public_row(row: dict) -> dict:
 
 
 def _hunter_page(brand: dict) -> str:
-    """The closed-beta holding page under /admin/hunter/. Access signs the
-    person in; whoami says whether the owner granted them the beta."""
+    """The closed-beta holding page at /beta/. Any signed-in member reaches it
+    (the gate); whoami says whether the owner granted them the beta. It was
+    /admin/hunter/ until 2026-11-13, behind the Access application, which
+    members signed in the site's own way never pass; that address forwards
+    here (functions/admin/_middleware.js)."""
     name = html.escape(brand.get("name") or "SLED JOBS")
     # JOB HUNTER IS LIVE (2026-10-14) at hunter.<domain>, behind its own
     # Access application, so a beta user is sent there, not told to wait.
@@ -99,15 +102,19 @@ main{{max-width:640px;margin:40px auto;padding:0 20px;line-height:1.5}}h1{{font-
 a{{color:#0B57C4}}</style></head><body>
 <div class="band"><a href="/">{name}</a> &middot; Job Hunter, closed beta</div>
 <main><h1>Job Hunter</h1><p class="kv" id="who">Checking who you are&hellip;</p><div id="body"></div>
-<p><a href="/">Back to the board</a> &middot; <a href="/admin/">Admin</a></p></main>
+<p><a href="/">Back to the board</a><span id="adm"></span></p></main>
 <script>
 (async () => {{
   const who = document.getElementById("who"), body = document.getElementById("body");
   let me = {{signed_in: false}};
-  try {{ const r = await fetch("/admin/api/whoami", {{credentials: "include"}}); if (r.ok) me = await r.json(); }} catch (e) {{}}
+  try {{ const r = await fetch("/api/whoami", {{credentials: "include"}}); if (r.ok) me = await r.json(); }} catch (e) {{}}
   if (!me.signed_in) {{ who.textContent = "You are not signed in."; return; }}
   const roles = me.roles || [];
-  who.textContent = me.handle ? "Signed in as " + me.handle + "." : "Signed in, but not on the list yet.";
+  who.textContent = me.handle ? "Signed in as " + me.handle + "." : "Signed in.";
+  if (roles.includes("owner") || roles.includes("admin")) {{
+    const a = document.createElement("a"); a.href = "/admin/"; a.textContent = "Admin";
+    const adm = document.getElementById("adm"); adm.append(" \u00b7 ", a);
+  }}
   if (roles.includes("hunter") || roles.includes("owner")) {{
     body.innerHTML = '<div class="in"><b>You are in the beta.</b> Job Hunter reads the roles on this board, scores them against what you have told it about yourself, and drafts nothing on its own: every application is yours to send. <a href="{app}">Open Job Hunter</a>. On this board, the Flag beside any role puts it on your Job Hunter board.</div>';
     return;
@@ -283,11 +290,11 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
         if not isinstance(u, dict) or any("@" in str(v) for v in u.values()):
             raise SystemExit(f"users.json row {h!r} carries an address; refusing to ship it")
     (admin_dir / "users.json").write_text(json.dumps(users, indent=1))
-    # THE CLOSED JOB HUNTER BETA, behind the same door. A holding page for
-    # now: it says who is signed in and whether the owner has let them in.
-    # The tool itself runs on the desk today; when a browser version exists
-    # this is where it lives, and the Users board already decides who sees it.
-    hunter = admin_dir / "hunter"
+    # THE CLOSED JOB HUNTER BETA, for every signed-in member, at /beta/
+    # (outside /admin since 2026-11-13: members sign in the site's own way and
+    # never pass the Access application on /admin). A holding page: it says
+    # who is signed in and whether the owner has let them in.
+    hunter = admin_dir.parent / "beta"
     hunter.mkdir(parents=True, exist_ok=True)
     brand = json.loads((ROOT / "data" / "brand.json").read_text())
     (hunter / "index.html").write_text(_hunter_page(brand))
