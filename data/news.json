@@ -2681,7 +2681,7 @@
     "url": "https://www.acapela-group.com/de/news/seasons-greetings-from-the-acapela-team/"
    }
   ],
-  "state": "unread"
+  "state": "items"
  },
  "accela": {
   "checked_on": "2026-11-14",
@@ -11344,7 +11344,7 @@
  "atomai-solutions": {
   "checked_on": "2026-11-14",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "atomic-jolt": {
   "checked_on": "2026-11-14",
@@ -11989,7 +11989,7 @@
   "items": [
    {
     "date": "2026-11-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-12",
     "headline": "4 Things Top Tow Operators and Business Owners Do Differently",
     "kind": "press",
@@ -11998,7 +11998,7 @@
    },
    {
     "date": "2026-11-03",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-03",
     "headline": "Towing Business Owners: What Did Paperwork Cost You Last Month?",
     "kind": "press",
@@ -12007,7 +12007,7 @@
    },
    {
     "date": "2026-11-02",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-03",
     "headline": "Autura Statement on Recent Las Vegas Towing Coverage",
     "kind": "press",
@@ -12025,7 +12025,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-07",
     "headline": "Fall 2026 Towing, Public Safety, and Auto Recycling Events: Where to Find Autura",
     "kind": "press",
@@ -12061,7 +12061,7 @@
    },
    {
     "date": "2026-08-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "2026 State of Towing Report Is Coming Soon: Share Your Data and Help Shape the Industry",
     "kind": "press",
@@ -12151,7 +12151,7 @@
    },
    {
     "date": "2026-06-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Autura Pathways: Get to Know Ron Petras",
     "kind": "press",
@@ -13243,7 +13243,7 @@
     "url": "https://www.badgermeter.com/es-es/blog/datos-flujo-y-turbidez/"
    }
   ],
-  "state": "items"
+  "state": "unread"
  },
  "balancing-act": {
   "checked_on": "2026-11-14",
@@ -23418,7 +23418,7 @@
     "url": "https://carbyne.com/resources/press/carbyne-achieves-aws-government-competency-status/"
    }
   ],
-  "state": "unread"
+  "state": "items"
  },
  "card-integrity": {
   "checked_on": "2026-11-14",
@@ -24401,6 +24401,15 @@
     "url": "https://cellebrite.com/en/blog/cellebrites-mission-is-to-protect-communities-nations-and-businesses/"
    },
    {
+    "date": "2026-11-11",
+    "date_source": "index-text",
+    "first_seen": "2026-11-14",
+    "headline": "\u2018It Was a True Gangster\u2019s Paradise:\u2019 Mississippi DPS Uses Technology to Unravel Prison Criminal Enterprise",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://cellebrite.com/en/newsroom/in-the-news/"
+   },
+   {
     "date": "2026-11-02",
     "date_source": "json-ld",
     "first_seen": "2026-11-03",
@@ -24597,15 +24606,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://cellebrite.com/en/blog/direct-access-to-digital-evidence-for-prosecutors/"
-   },
-   {
-    "date": "2026-09-02",
-    "date_source": "card-date",
-    "first_seen": "2026-09-10",
-    "headline": "Cellebrite Guardian Completes IRAP Assessment: Achieves PROTECTED Level for Australian Government Agencies",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-guardian-completes-irap-assessment-achieves-protected-level-for-australian-government-agencies/"
    }
   ],
   "state": "items"
@@ -25521,7 +25521,7 @@
    },
    {
     "date": "2026-10-30",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-30",
     "headline": "Updated Nov 10: Chainalysis Security Incident Information",
     "kind": "product",
@@ -25664,8 +25664,8 @@
     "url": "https://www.chainalysis.com/blog/ofac-sanctions-xinbi-cybercriminal-crypto-marketplace/"
    },
    {
-    "date": "2026-09-16",
-    "date_source": "json-ld",
+    "date": "2026-09-17",
+    "date_source": "index-text",
     "first_seen": "2026-10-05",
     "headline": "Chainalysis Supports Arc with Automatic Token Support",
     "kind": "press",
@@ -27026,7 +27026,7 @@
  "citibot": {
   "checked_on": "2026-11-14",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "citiri": {
   "checked_on": "2026-11-14",
@@ -30128,7 +30128,7 @@
     "url": "https://www.cleverdevices.com/news/capital-metro-clever-devices-innovative-solutions-award-for-trip-planning/"
    }
   ],
-  "state": "items"
+  "state": "unread"
  },
  "cleverciti": {
   "checked_on": "2026-11-14",
@@ -56800,7 +56800,7 @@
     "url": "https://extradutysolutions.com/news/extra-duty-solutions-named-on-2026-inc-5000-list/"
    }
   ],
-  "state": "items"
+  "state": "unread"
  },
  "eyeride": {
   "checked_on": "2026-11-14",
@@ -60221,15 +60221,6 @@
     "url": "https://www.gofmx.com/blog/business-case-facilities-management-software/"
    },
    {
-    "date": "2026-04-21",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "How to Select the Best Facilities Management Software",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
-   },
-   {
     "date": "2026-02-10",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -60237,6 +60228,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.gofmx.com/blog/fleet-management-metrics/"
+   },
+   {
+    "date": "2025-09-07",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "How to Select the Best Facilities Management Software",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
    },
    {
     "date": "2025-09-07",
@@ -60285,7 +60285,7 @@
    },
    {
     "date": "2025-03-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Facility Use Agreement 101: What to Know",
     "kind": "press",
@@ -60303,7 +60303,7 @@
    },
    {
     "date": "2024-10-17",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "What You Need to Know About Capital Improvement",
     "kind": "press",
@@ -68549,7 +68549,7 @@
  "greehill": {
   "checked_on": "2026-11-14",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "green-river": {
   "checked_on": "2026-11-14",
@@ -77762,12 +77762,21 @@
    },
    {
     "date": "2026-11-12",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-11-12",
     "headline": "From insight to action: Bringing Claude into the operations that run manufacturing",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.infor.com/blog/claude-in-manufacturing-operations"
+   },
+   {
+    "date": "2026-11-12",
+    "date_source": "json-ld",
+    "first_seen": "2026-11-14",
+    "headline": "From insight to action: Bringing Claude into the operations that run manufacturing",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.infor.com/blog/infor-anthropic-for-manufacturing-operations"
    },
    {
     "date": "2026-11-06",
@@ -77780,7 +77789,7 @@
    },
    {
     "date": "2026-11-06",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-11-11",
     "headline": "Infor CPQ 2026.10 Release: Configure, quote, and close deals faster with Infor CPQ and embedded AI",
     "kind": "press",
@@ -77798,7 +77807,7 @@
    },
    {
     "date": "2026-11-04",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-11-03",
     "headline": "Infor CloudSuite Automotive 2026.10: More automation and an easier route to the agentic enterprise",
     "kind": "press",
@@ -77807,7 +77816,7 @@
    },
    {
     "date": "2026-11-04",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-11-04",
     "headline": "October 2026 release: Infor CloudSuites for distribution put AI to work where distributors need it most",
     "kind": "press",
@@ -77816,7 +77825,7 @@
    },
    {
     "date": "2026-11-04",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-11-05",
     "headline": "Hoteliers, read this before you adopt another AI tool",
     "kind": "press",
@@ -77852,7 +77861,7 @@
    },
    {
     "date": "2026-10-29",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-30",
     "headline": "From ideas to impact: Meet the 2026 Infor Community Hackathon winners",
     "kind": "press",
@@ -77861,7 +77870,7 @@
    },
    {
     "date": "2026-10-28",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-29",
     "headline": "Hiring faster \u2260 hiring better",
     "kind": "press",
@@ -77870,7 +77879,7 @@
    },
    {
     "date": "2026-10-27",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-28",
     "headline": "What does the bank get in return? Managing commercial customer commitments",
     "kind": "press",
@@ -77957,15 +77966,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.infor.com/resources/secure-government-workforce-modernization"
-   },
-   {
-    "date": "2026-10-15",
-    "date_source": "index-text",
-    "first_seen": "2026-10-15",
-    "headline": "Singapore's Next AI Challenge: Turning Readiness into Enterprise-Wide Value",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.infor.com/apac/blog/singapore-ai-readiness-to-enterprise-value"
    }
   ],
   "state": "items"
@@ -79170,42 +79170,6 @@
     "url": "https://www.intangles.ai/news/intangles-wins-best-cloud-project-automotive-tech-award-at-the-india-devops-show-2025/"
    },
    {
-    "date": "2026-10-07",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Intangles wins EV SaaS Solution of the Year",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.intangles.ai/news/intangles-wins-ev-saas-solution-of-the-year/"
-   },
-   {
-    "date": "2026-10-07",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Intangles Wins Best Use of AI in Logistics",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.intangles.ai/news/intangles-wins-best-use-of-ai-in-logistics/"
-   },
-   {
-    "date": "2026-10-07",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Intangles Elevate \u2013 West Zone 2025",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.intangles.ai/news/intangles-elevate-west-zone-2025/"
-   },
-   {
-    "date": "2026-10-07",
-    "date_source": "json-ld",
-    "first_seen": "2026-11-14",
-    "headline": "Aman Singh\u2019s Panel Discussion at the Commercial Vehicle Forum 2025",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.intangles.ai/news/aman-singhs-panel-discussion-at-the-commercial-vehicle-forum-2025/"
-   },
-   {
     "date": "2026-08-24",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -79303,6 +79267,42 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.intangles.ai/news/indias-trucks-are-connected-the-next-test-is-performance/"
+   },
+   {
+    "date": "2026-07-07",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Intangles wins EV SaaS Solution of the Year",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.intangles.ai/news/intangles-wins-ev-saas-solution-of-the-year/"
+   },
+   {
+    "date": "2026-07-07",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Intangles Wins Best Use of AI in Logistics",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.intangles.ai/news/intangles-wins-best-use-of-ai-in-logistics/"
+   },
+   {
+    "date": "2025-11-10",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Intangles Elevate \u2013 West Zone 2025",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.intangles.ai/news/intangles-elevate-west-zone-2025/"
+   },
+   {
+    "date": "2025-06-12",
+    "date_source": "index-text",
+    "first_seen": "2026-11-14",
+    "headline": "Aman Singh\u2019s Panel Discussion at the Commercial Vehicle Forum 2025",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.intangles.ai/news/aman-singhs-panel-discussion-at-the-commercial-vehicle-forum-2025/"
    }
   ],
   "state": "items"
@@ -91243,7 +91243,7 @@
     "url": "https://www.leosight.com/blog/the-forgotten-majority-making-public-safety-tech-work-for-small-agencies"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "leotek-electronics-usa": {
   "checked_on": "2026-11-14",
@@ -101201,7 +101201,7 @@
     "url": "https://support.monday.com/hc/en-us/articles/115005900249-The-Updates-Section"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "moovit": {
   "checked_on": "2026-11-14",
@@ -103051,7 +103051,7 @@
     "url": "https://www.munibit.com/blog/ada-compliance-local-sites"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "municibid": {
   "checked_on": "2026-11-14",
@@ -103247,7 +103247,7 @@
    },
    {
     "date": "2025-11-19",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Transit Surplus Rule Update: What Agencies Need To Know",
     "kind": "press",
@@ -103274,7 +103274,7 @@
    },
    {
     "date": "2025-10-10",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-09-09",
     "headline": "When New Police Cars Sit Idle: A Lesson in Procurement, Budgeting, and Asset Utilization",
     "kind": "press",
@@ -112629,7 +112629,7 @@
   "items": [
    {
     "date": "2026-11-07",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-11-07",
     "headline": "Outsight obtains ENS certification for its Spatial Intelligence Platform",
     "kind": "press",
@@ -112638,7 +112638,7 @@
    },
    {
     "date": "2026-10-15",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-10-16",
     "headline": "Selected for French Tech 2030",
     "kind": "contract",
@@ -112646,8 +112646,8 @@
     "url": "https://www.outsight.ai/insights/outsight-joins-the-french-tech-2030-programme/"
    },
    {
-    "date": "2026-10-08",
-    "date_source": "json-ld",
+    "date": "2026-10-15",
+    "date_source": "time",
     "first_seen": "2026-10-08",
     "headline": "Outsight and Enchanted Tools bring Beyond Line-of-Sight awareness to Service Robots",
     "kind": "press",
@@ -112656,7 +112656,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-10-07",
     "headline": "Outsight acquires GRASP Aviation Innovation",
     "kind": "funding",
@@ -112665,7 +112665,7 @@
    },
    {
     "date": "2026-09-28",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-10-05",
     "headline": "Costa Rica's SJO airport expands Outsight's Spatial Intelligence to new terminal areas",
     "kind": "press",
@@ -112674,7 +112674,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-10-05",
     "headline": "Outsight accelerates in Asia-Pacific: new Singapore hub",
     "kind": "press",
@@ -112683,7 +112683,7 @@
    },
    {
     "date": "2026-09-20",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-10-05",
     "headline": "Outsight crosses 280 million passengers under real-time measurement, from the busiest US hubs to Singapore Changi",
     "kind": "press",
@@ -112710,7 +112710,7 @@
    },
    {
     "date": "2026-04-23",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Aeroporti di Roma to deploy Outsight's Physical AI solution at scale across Rome Fiumicino Airport",
     "kind": "press",
@@ -112719,7 +112719,7 @@
    },
    {
     "date": "2026-04-21",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Intel and Outsight Announce Strategic Collaboration to Bring Physical AI\u2013Powered Spatial Intelligence to the Enterprise Edge",
     "kind": "press",
@@ -112746,7 +112746,7 @@
    },
    {
     "date": "2026-02-19",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "What's a Motional Digital Twin?",
     "kind": "press",
@@ -120484,7 +120484,7 @@
     "url": "https://www1.powerschool.com/news/powerschool-joins-white-house-k-12-education-technology-secure-by-design-pledge-announces-new-commitments-to-education-ecosystem-security/"
    }
   ],
-  "state": "unread"
+  "state": "items"
  },
  "precisely": {
   "checked_on": "2026-11-14",
@@ -127804,7 +127804,7 @@
   "items": [
    {
     "date": "2026-11-12",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-11-13",
     "headline": "How AI Dash Cams Help Waste Fleets Coach Drivers and Defend Claims",
     "kind": "press",
@@ -127831,7 +127831,7 @@
    },
    {
     "date": "2026-11-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-11-13",
     "headline": "Digital Waste Tracking: What It Means for UK Councils, and How to Be Ready",
     "kind": "press",
@@ -128028,7 +128028,7 @@
     "url": "https://routeware.com/blog/what-modern-snow-management-looks-like-for-cities/"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "rta-fleet-management": {
   "checked_on": "2026-11-14",
@@ -128037,7 +128037,7 @@
     "date": "2026-11-06",
     "date_source": "json-ld",
     "first_seen": "2026-11-06",
-    "headline": "Fuel Cards, Telematics, and FMIS: One Source of Fleet Truth",
+    "headline": "Fleet Data Single Source of Truth: Fuel Cards + Telematics",
     "kind": "press",
     "kind_rule": null,
     "url": "https://rtafleet.com/blog/fuel-cards-telematics-and-fmis-one-source-of-fleet-truth"
@@ -145426,7 +145426,7 @@
     "url": "https://support.tokentransit.com/hc/en-us/articles/360003126331-How-do-I-send-passes-to-a-rider"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "totara": {
   "checked_on": "2026-11-14",
@@ -149214,7 +149214,7 @@
     "url": "https://www.ukg.com/company/newsroom/ukg-and-omnia-partners-expand-access-ukgs-workforce-operating-platform-35000-private-sector-members"
    }
   ],
-  "state": "unread"
+  "state": "none_found"
  },
  "unimarket": {
   "checked_on": "2026-11-14",
