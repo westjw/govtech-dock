@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "index-text",
+   "first_seen": "2026-11-14",
+   "headline": "The New Mexico State University System Adopts YuJa Panorama to Help Support Inclusive Learning November 13, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Adopts",
+   "url": "https://www.yuja.com/blog/news/new-mexico-state-university-yuja-panorama/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.yuja.com/blog/yuja-smartspeaker-v26-8-0-use-text-to-speech-for-documents-length-with-unlimited-smartspeaker/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-30",
-   "headline": "YuJa AutoPilot v26.8.0 \u2013 Automated Remediation That Aligns with Your Style and Branding",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.yuja.com/blog/yuja-autopilot-v26-8-0-automated-remediation-that-aligns-with-your-style-and-branding/"
   }
  ],
  "profile": {

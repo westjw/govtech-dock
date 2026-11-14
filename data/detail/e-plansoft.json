@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Introducing the Permit Approval SLA Map: See Review Deadlines by State and City",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.eplansoft.com/resources/permit-approval-sla-map"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eplansoft.com/resources/why-plan-review-teams-keep-reworking-the-same-comments"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "AI Didn\u2019t Replace Radiologists. It Won\u2019t Replace Plan Reviewers Either.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eplansoft.com/resources/ai-didnt-replace-radiologists.-it-wont-replace-plan-reviewers-either"
   }
  ],
  "profile": {

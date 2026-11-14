@@ -1363,7 +1363,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://www.axon.com/career",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -1528,9 +1528,195 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Enterprise Account Executive (United Kingdom Off)",
+      "roles": [
+        {
+          "title": "Enterprise Account Executive",
+          "location": "United Kingdom Offsite (ZUK99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/United-Kingdom-Offsite-ZUK99/Enterprise-Account-Executive_R69070-1"
+        },
+        {
+          "title": "Senior Account Executive (Arizona)",
+          "location": "Phoenix, AZ, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Phoenix-AZ/Senior-Account-Executive--Arizona-_R69221"
+        },
+        {
+          "title": "Account Executive Germany & Austria",
+          "location": "Germany Offsite (ZWG99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/Account-Executive-Germany---Austria_R69234"
+        },
+        {
+          "title": "Account Executive - Logging Recorder",
+          "location": "Illinois Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-Remote-Work/Account-Executive---Logging-Recorder--Cybersecurity-_R69278"
+        },
+        {
+          "title": "Account Executive - Logging Recorder",
+          "location": "Illinois Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-Remote-Work/Account-Executive---Logging-Recorder--Cybersecurity-_R69274"
+        },
+        {
+          "title": "Senior Account Executive - Software (Canada)",
+          "location": "Ontario,Canada Offsite, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/OntarioCanada-Offsite/Senior-Account-Executive---Software--Canada-_R67337"
+        },
+        {
+          "title": "Senior Account Executive - Software (Northeast)",
+          "location": "Connecticut, US Offsite, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Connecticut-US-Offsite/Senior-Account-Executive---Software--Northeast-_R68851"
+        },
+        {
+          "title": "Senior Account Executive - New England",
+          "location": "Connecticut Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Connecticut-Remote-Work/Senior-Account-Executive---New-England_R68873-1"
+        },
+        {
+          "title": "Account Executive - Logging Recorder (Federal)",
+          "location": "Washington DC, US Offsite, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-US-Offsite/Account-Executive---Logging-Recorder--Federal--Cybersecurity-_R69275"
+        },
+        {
+          "title": "Senior Account Executive - SLED (Software)",
+          "location": "Dallas, TX, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Dallas-TX/Senior-Account-Executive----SLED--Software-_R69482-1"
+        },
+        {
+          "title": "Mid-Market Account Executive \u2013 Cloud Software Sales",
+          "location": "Chicago, IL, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Mid-Market-Account-Executive---Cloud-Software-Sales_R68439"
+        },
+        {
+          "title": "Senior Account Executive - Software (Next Generation 9-1-1)",
+          "location": "Indiana, US Offsite, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Indiana-US-Offsite/Senior-Account-Executive---Software--Next-Generation-9-1-1-_R69395"
+        },
+        {
+          "title": "Senior Account Manager - Software Sales",
+          "location": "Illinois Remote Work",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-Remote-Work/Senior-Account-Executive---Cybersecurity_R68257"
+        },
+        {
+          "title": "Sales Executive - Fixed Video Solutions",
+          "location": "Denmark Offsite (ZDK99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Denmark-Offsite-ZDK99/Sales-Executive---Fixed-Video-Solutions_R69309"
+        },
+        {
+          "title": "Sales Executive - Fixed Video Solutions (Sub-Saharan Africa)",
+          "location": "South Africa Offsite (ZSA99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/South-Africa-Offsite-ZSA99/Sales-Executive---Fixed-Video-Solutions--Sub-Saharan-Africa-_R66662-1"
+        },
+        {
+          "title": "Key Account Manager Defence",
+          "location": "Germany Offsite (ZWG99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/Key-Account-Manager-Defence_R68324"
+        },
+        {
+          "title": "Junior Account Manager",
+          "location": "Oklahoma, US Offsite",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Oklahoma-US-Offsite/Junior-Account-Manager_R70596"
+        },
+        {
+          "title": "Senior Account Manager - FAST (Remote - Chicago)",
+          "location": "Chicago, IL",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Senior-Account-Manager---FAST--Remote---Chicago-_R69684"
+        },
+        {
+          "title": "Senior Account Manager - DoD (Japan Expat Assignment)",
+          "location": "Illinois, US Offsite, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-US-Offsite/Senior-Account-Manager---DoD--Japan-Expat-Assignment-_R69479"
+        },
+        {
+          "title": "Business Development Manager, Education",
+          "location": "Florida Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Florida-Remote-Work/Business-Development-Manager--Education_R64819-1"
+        },
+        {
+          "title": "Regional Sales Manager - Government (Video - WI)",
+          "location": "Wisconsin Remote Work",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Wisconsin-Remote-Work/Regional-Sales-Manager---Government--Video---WI-_R67909"
+        },
+        {
+          "title": "Regional Sales Manager - Government Video",
+          "location": "California Northern, US Offsite",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/California-Northern-US-Offsite/Regional-Sales-Manager---Government-Video-Team_R65260"
+        },
+        {
+          "title": "Regional Sales Director - CAM - DACH",
+          "location": "Germany Offsite (ZWG99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/Regional-Sales-Director---CAM-ENT---DACH_R65506"
+        },
+        {
+          "title": "Area Sales Manager - Enterprise Resiliency and Security",
+          "location": "Chicago, IL, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Area-Sales-Manager---Enterprise-Resiliency-and-Security_R67242"
+        },
+        {
+          "title": "Inbound Sales Representative",
+          "location": "Allen, TX (TX139)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Allen-TX-TX139/Inbound-Sales-Representative_R67545"
+        },
+        {
+          "title": "Regional Sales Manager (Taiwan)",
+          "location": "Taipei, Taiwan (ZTW27)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Taipei-Taiwan-ZTW27/Regional-Sales-Manager--Taiwan-_R69701"
+        },
+        {
+          "title": "Regional Sales Manager (Malaysia)",
+          "location": "Penang, Malaysia",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Penang-Malaysia/Regional-Sales-Manager--Malaysia-_R69699"
+        },
+        {
+          "title": "Regional Sales Manager (Singapore)",
+          "location": "Singapore, Singapore",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Singapore-Singapore/Regional-Sales-Manager--Singapore-_R69698"
+        },
+        {
+          "title": "Regional Sales Manager - Pelco",
+          "location": "Alberta Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Alberta-Remote-Work/Regional-Sales-Manager---Pelco_R69648"
+        },
+        {
+          "title": "Senior Sales Director, Law Enforcement & Homeland Defense",
+          "location": "California Southern Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/California-Southern-Remote-Work/Senior-Sales-Director--Law-Enforcement---Homeland-Defense_R69008"
+        },
+        {
+          "title": "Area Sales Manager \u2013 Central Region (Strategic Project Teams)",
+          "location": "Illinois Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-Remote-Work/Area-Sales-Manager---Central-Region--Strategic-Project-Teams-_R69255"
+        },
+        {
+          "title": "Senior Sales Director, Original Equipment Manufacturer (OEM) & Defense Primes",
+          "location": "California Southern Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/California-Southern-Remote-Work/Senior-Sales-Director--Original-Equipment-Manufacturer--OEM----Defense-Primes_R69398"
+        },
+        {
+          "title": "Senior Account Manager - Control Room Sales DACH with a focus on Austria",
+          "location": "Poland Offsite (ZPL99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Poland-Offsite-ZPL99/Senior-Account-Manager---Control-Room-Sales-DACH-with-a-focus-on-Austria_R65789-1"
+        },
+        {
+          "title": "Senior Account Manager - Control Room Sales DACH with a focus on Austria",
+          "location": "Austria Offsite (ZAT99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Austria-Offsite-ZAT99/Senior-Account-Manager---Control-Room-Sales-DACH-with-a-focus-on-Austria_R68408"
+        },
+        {
+          "title": "Senior Account Manager - Control Room Sales DACH with a focus on Austria",
+          "location": "Germany Offsite (ZWG99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/Senior-Account-Manager---Control-Room-Sales-DACH-with-a-focus-on-Austria_R68406"
+        },
+        {
+          "title": "Senior Account Manager : Systems (Government)",
+          "location": "Taipei, Taiwan",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Taipei-Taiwan/Senior-Account-Manager---Systems--Government-_R69656"
+        },
+        {
+          "title": "Senior Account Manager - Software",
+          "location": "New Mexico Remote Work, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/New-Mexico-Remote-Work/Senior-Account-Manager---Software_R69995"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -2945,8 +3131,8 @@
       "ref": "kaiden-incorporated-868aff01-6710-4309-b719-c196125e023c"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://jobs.gusto.com/boar",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -3548,7 +3734,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://www.axon.com/career",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -3869,9 +4055,330 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Territory Manager (Madrid, Spain)",
+      "roles": [
+        {
+          "title": "Territory Manager",
+          "location": "Madrid, Spain",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Madrid-Spain/Territory-Manager_R20509"
+        },
+        {
+          "title": "Associate Territory Manager - South India",
+          "location": "India Remote",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/India-Remote/Business-Development-Executive--South-India_R19334"
+        },
+        {
+          "title": "Associate Territory Manager - North/East India",
+          "location": "India Remote",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/India-Remote/Business-Development-Executive-North-East-India_R19335"
+        },
+        {
+          "title": "Territory Manager",
+          "location": "",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Territory-Manager_R20742"
+        },
+        {
+          "title": "Business Development Manager, Gov/Military (APAC)",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Kuala-Lumpur-Malaysia/Business-Development-Manager--Gov-Military--APAC-_R18734"
+        },
+        {
+          "title": "Territory Manager (Kansas City, MO)",
+          "location": "Kansas City, MO",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Kansas-City-MO/Territory-Manager--Kansas-City--MO-_R20303"
+        },
+        {
+          "title": "Territory Manager (Chicago, IL)",
+          "location": "Chicago, IL",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Chicago-IL/Territory-Manager--Chicago--IL-_R20305"
+        },
+        {
+          "title": "Territory Manager (Southern FL)",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Miami-FL/Territory-Manager--Southern-FL-_R20306"
+        },
+        {
+          "title": "Territory Manager (Southern CA)",
+          "location": "Los Angeles, CA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Los-Angeles-CA/Territory-Manager--Southern-CA-_R20307"
+        },
+        {
+          "title": "Business Development Manager, APAC",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Kuala-Lumpur-Malaysia/Business-Development-Manager--APAC_R18784"
+        },
+        {
+          "title": "Associate Territory Manager - New Zealand",
+          "location": "New Zealand Remote",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-Zealand-Remote/Associate-Territory-Manager---New-Zealand_R19890"
+        },
+        {
+          "title": "Regional Sales Manager - Washington, DC",
+          "location": "Washington, DC",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Washington-DC/Regional-Sales-Manager---Washington--DC_R20360"
+        },
+        {
+          "title": "Regional Sales Manager - Omaha, NE",
+          "location": "3 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Omaha-NE/Regional-Sales-Manager---Omaha--NE_R20444"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Albuquerque, NM",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Albuquerque-NM/Regional-Sales-Manager_R20718"
+        },
+        {
+          "title": "Regional Sales Manager - Salt Lake City, UT",
+          "location": "Salt Lake City, UT",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Salt-Lake-City-UT/Regional-Sales-Manager---Salt-Lake-City--UT_R20750"
+        },
+        {
+          "title": "Territory Manager - Philippines",
+          "location": "Manila, Philippines",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Manila-Philippines/Business-Development-Manager---Philippines_R17838"
+        },
+        {
+          "title": "\u533b\u7642\u6a5f\u5668\u55b6\u696d\uff08LifeVest Sales Rep\uff09",
+          "location": "Tokyo, Japan",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Tokyo-Japan/-LifeVest-Sales-Rep-_R20212"
+        },
+        {
+          "title": "\u533b\u7642\u6a5f\u5668\u55b6\u696d\uff08LifeVest Sales Rep\uff09\uff08\u795e\u5948\u5ddd\u62c5\u5f53\uff09",
+          "location": "Tokyo, Japan",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Tokyo-Japan/-LifeVest-Sales-Rep---_R20724-5"
+        },
+        {
+          "title": "\u533b\u7642\u6a5f\u5668\u55b6\u696d\uff08LifeVest Sales Rep\uff09\uff08\u6771\u4eac\u30fb\u795e\u5948\u5ddd\u62c5\u5f53\uff09",
+          "location": "Tokyo, Japan",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Tokyo-Japan/-LifeVest-Sales-Rep----_R20729-2"
+        },
+        {
+          "title": "Business Development Manager, APAC",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/SG-Singapore/Business-Development-Manager--APAC_R19115"
+        },
+        {
+          "title": "Territory Manager - Software",
+          "location": "Austin, TX",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Austin-TX/Territory-Manager---Software_R20617"
+        },
+        {
+          "title": "Territory Manager, Delhi and Mumbai",
+          "location": "New Delhi, India",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-Delhi-India/Territory-Manager--Delhi-and-Mumbai_R18492"
+        },
+        {
+          "title": "Territory Manager (m/w/d) - Bayern",
+          "location": "Munich, Germany",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Munich-Germany/Territory-Manager-Bavaria_R18825"
+        },
+        {
+          "title": "Account Manager Medizintechnik (m/w/d) \u2013 Respiratory Care | Bayern",
+          "location": "Munich, Germany",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Munich-Germany/Territory-Manager--Respiratory-Care---South-Germany_R18910"
+        },
+        {
+          "title": "Territory Manager Public Safety UK",
+          "location": "3 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Runcorn-Cheshire-United-Kingdom/Territory-Manager-Public-Safety-UK_R19391"
+        },
+        {
+          "title": "Territory Manager - Sacramento 1",
+          "location": "Sacramento, CA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Sacramento-CA/Territory-Manager---Sacramento-1_R19834"
+        },
+        {
+          "title": "Associate Territory Manager - Louisville, KY",
+          "location": "Louisville, KY",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Louisville-KY/Associate-Territory-Manager---Louisville--KY_R19906"
+        },
+        {
+          "title": "Territory Manager, EMS",
+          "location": "Portland, OR",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Portland-OR/Territory-Manager--EMS_R19847-1"
+        },
+        {
+          "title": "Associate Territory Manager - Shreveport",
+          "location": "Shreveport, LA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Shreveport-LA/Associate-Territory-Manager---Shreveport_R20050"
+        },
+        {
+          "title": "Gebietsleiter / Territory Manager (m/w/d) N\u00fcrnberg",
+          "location": "Nuremberg, Germany",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Nuremberg-Germany/Gebietsleiter---Territory-Manager--m-w-d--Nrnberg_R20164"
+        },
+        {
+          "title": "Associate Territory Manager - Memphis",
+          "location": "Memphis, TN",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Memphis-TN/Associate-Territory-Manager---Memphis_R20181-1"
+        },
+        {
+          "title": "Territory Manager, Hospital (Canada)",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/CA-QC-Remote/Territory-Manager--Hospital--Canada-_R20185"
+        },
+        {
+          "title": "Territory Manager - Cranford, NJ",
+          "location": "Morristown, NJ",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Morristown-NJ/Territory-Manager---Cranford--NJ_R19959"
+        },
+        {
+          "title": "Associate Territory Manager - NYC / Bronx",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-York-NY/Associate-Territory-Manager---NYC---Bronx_R20250-1"
+        },
+        {
+          "title": "Territory Manager - Eastern Washington: Tri-Cities/Spokane",
+          "location": "Spokane, WA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Spokane-WA/Territory-Manager---Eastern-Washington--Tri-Cities-Spokane_R20266"
+        },
+        {
+          "title": "Associate Territory Manager - Orange County",
+          "location": "Orange, CA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Orange-CA/Associate-Territory-Manager---Orange-County_R20251"
+        },
+        {
+          "title": "Territory Manager - Little Rock",
+          "location": "Little Rock, AR",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Little-Rock-AR/Territory-Manager---Little-Rock_R20265"
+        },
+        {
+          "title": "Associate Territory Manager - Kansas City",
+          "location": "Kansas City, MO",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Kansas-City-MO/Associate-Territory-Manager---Kansas-City_R20187"
+        },
+        {
+          "title": "Territory Manager - Minneapolis NW",
+          "location": "Minneapolis, MN",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Minneapolis-MN/Territory-Manager---Minneapolis-NW_R20188-1"
+        },
+        {
+          "title": "Associate Territory Manager - Las Vegas",
+          "location": "Las Vegas, NV",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Las-Vegas-NV/Associate-Territory-Manager---Las-Vegas_R20373"
+        },
+        {
+          "title": "Territory Manager - Bethlehem",
+          "location": "Bethlehem, PA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Bethlehem-PA/Territory-Manager---Bethlehem_R20408"
+        },
+        {
+          "title": "Associate Territory Manager - Middleton, NJ",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Toms-River-NJ/Associate-Territory-Manager---Middleton--NJ_R20432"
+        },
+        {
+          "title": "Territory Manager - Rhode Island",
+          "location": "Providence, RI",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Providence-RI/Territory-Manager---Rhode-Island_R20460"
+        },
+        {
+          "title": "Territory Manager Region Center (West Andaluc\u00eda & Extremadura), Spain",
+          "location": "Madrid, Spain",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Madrid-Spain/Territory-Manager-Region-Center--West-Andaluca---Extremadura---Spain_R20415"
+        },
+        {
+          "title": "Territory Manager - Morgantown, WV",
+          "location": "Morgantown, WV",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Morgantown-WV/Territory-Manager---Morgantown--WV_R20475"
+        },
+        {
+          "title": "Territory Manager - Nashville North",
+          "location": "Nashville, TN",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Nashville-TN/Territory-Manager---Nashville-North_R20476-1"
+        },
+        {
+          "title": "Territory Manager - Memphis - Jonesboro",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Memphis-TN/Territory-Manager---Memphis-North_R20515"
+        },
+        {
+          "title": "Territory Manager - Santa Rosa",
+          "location": "Santa Rosa, CA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Santa-Rosa-CA/Territory-Manager---Santa-Rosa_R20514"
+        },
+        {
+          "title": "Territory Manager - Texas South",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Harlingen-TX/Territory-Manager---Texas-South_R20543"
+        },
+        {
+          "title": "Territory Manager, Ventilation",
+          "location": "4 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Raleigh-NC/Territory-Manager--Ventilation_R20523"
+        },
+        {
+          "title": "Territory Manager - Indianapolis - Bloomington",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Indianapolis-IN/Territory-Manager---Indianapolis-South_R20596"
+        },
+        {
+          "title": "Territory Manager: Respiratory Care, Northern Germany",
+          "location": "Hamburg, Germany",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Hamburg-Germany/Territory-Manager--Respiratory-Care--Northern-Germany_R20572"
+        },
+        {
+          "title": "Associate Territory Manager - Chicago South",
+          "location": "Chicago, IL",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Chicago-IL/Associate-Territory-Manager---Chicago_R20595-1"
+        },
+        {
+          "title": "Associate Territory Manager - San Diego",
+          "location": "San Diego, CA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/San-Diego-CA/Associate-Territory-Manager---San-Diego_R20594-1"
+        },
+        {
+          "title": "Territory Manager - Seattle",
+          "location": "Seattle, WA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Seattle-WA/Territory-Manager---Seattle_R20627"
+        },
+        {
+          "title": "Associate Territory Manager - St. Louis",
+          "location": "Saint Louis, MO",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Saint-Louis-MO/Associate-Territory-Manager---St-Louis_R20695"
+        },
+        {
+          "title": "Associate Territory Manager - Houston",
+          "location": "Houston, TX",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Houston-TX/Associate-Territory-Manager---Houston_R20694"
+        },
+        {
+          "title": "Territory Manager - Phoenix North Central",
+          "location": "Phoenix, AZ",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Phoenix-AZ/Territory-Manager---Phoenix-North-Central_R20491-1"
+        },
+        {
+          "title": "Territory Manager - Ft Lauderdale East",
+          "location": "Fort Lauderdale, FL",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Fort-Lauderdale-FL/Territory-Manager---Ft-Lauderdale-East_R20804"
+        },
+        {
+          "title": "Associate Territory Manager - Flint / Macomb",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Flint-MI/Associate-Territory-Manager---Flint---Macomb_R20790"
+        },
+        {
+          "title": "Territory Manager - Suffolk West",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Smithtown-NY/Territory-Manager---Suffolk-West_R20805"
+        },
+        {
+          "title": "Associate Territory Manager - Cleveland",
+          "location": "Cleveland, OH",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Cleveland-OH/Associate-Territory-Manager---Cleveland_R20824"
+        },
+        {
+          "title": "Territory Manager- Hospital Defibrillators (MS)",
+          "location": "Jackson, MS",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Jackson-MS/Territory-Manager--Hospital-Defibrillators--MS-_R20838-1"
+        },
+        {
+          "title": "Account Manager Medizintechnik (m/w/d) \u2013 Respiratory Care | Baden-W\u00fcrttemberg",
+          "location": "Stuttgart, Germany",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Stuttgart-Germany/Territory-Manager--Respiratory-Care---Baden-Wrttemberg_R19649"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -4422,15 +4929,9 @@
       "ref": "md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922"
     },
     "hiring": {
-      "status": "Yes",
-      "note": "Sales Executive - Public Safety (Remote)",
-      "roles": [
-        {
-          "title": "Sales Executive - Public Safety",
-          "location": "Remote",
-          "url": "https://jobs.gusto.com/postings/md-ally-sales-executive-public-safety-e091231e-cd69-47fe-9c22-52beeda07e56"
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 403 for https://jobs.gusto.com/boar",
+      "roles": [],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -8171,9 +8672,170 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Executive Sales Representative - N (12 Locations)",
+      "roles": [
+        {
+          "title": "Executive Sales Representative - New Business Only",
+          "location": "12 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/La-Mirada-California/Executive-Sales-Representative---New-Business-Only_R50294"
+        },
+        {
+          "title": "Key Account Manager",
+          "location": "Budapest, Hungary",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Budapest-Hungary/Key-Account-Manager_R48396"
+        },
+        {
+          "title": "Business Development Manager - India",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Chennai-10th-Floor/Business-Development-Manager---India_R47320"
+        },
+        {
+          "title": "Business Development Manager (Ultra-Pure/Deionized Water)",
+          "location": "7 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Nottingham/Business-Development-Manager--Ultra-Pure-Deionized-Water-_R50008-1"
+        },
+        {
+          "title": "Senior Capital Account Manager",
+          "location": "East Rutherford, New Jersey",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/East-Rutherford-New-Jersey/Senior-Capital-Account-Manager_R51473"
+        },
+        {
+          "title": "Senior Key Account Manager",
+          "location": "9 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Brecksville-Ohio/Senior-Key-Account-Manager_R51575"
+        },
+        {
+          "title": "Key Account Manager Poland Water Infrastructure",
+          "location": "Warszawa",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Warszawa/WI-Transport-Key-Account-Manager-Poland_R50581"
+        },
+        {
+          "title": "Rental Sales Rep. - Ireland",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Mallusk/Rental-Sales-Rep---Ireland_R51185"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Fort Mill, South Carolina",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Fort-Mill-South-Carolina/Sales-Representative_R48823"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Pompano Beach, Florida",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Pompano-Beach-Florida/Sales-Representative_R49721"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Wilmington, North Carolina",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Wilmington-North-Carolina/Sales-Representative_R51391"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Sacramento, California",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Sacramento-California/Sales-Representative_R51389"
+        },
+        {
+          "title": "Senior Sales Representative",
+          "location": "4 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Bolingbrook-Illinois/Senior-Sales-Representative_R51636"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "6 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Miami-Florida/Sales-Representative_R50880"
+        },
+        {
+          "title": "Aftermarket Territory Manager \u2013 Treatment",
+          "location": "6 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Charlotte-North-Carolina/Aftermarket-Territory-Manager---Treatment_R50735"
+        },
+        {
+          "title": "Outside Sales Rep - Capital Sales",
+          "location": "5 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Seattle-Washington/Outside-Sales-Rep---Capital-Sales_R50996"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Tampa, Florida",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Tampa-Florida/Sales-Representative_R50242"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Bozrah, Connecticut",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Bozrah-Connecticut/Sales-Representative_R50988"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Livonia, Michigan",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Livonia-Michigan/Sales-Representative_R51469"
+        },
+        {
+          "title": "Senior Sales Representative",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Houston-Texas-Operations/Senior-Sales-Representative_R50826"
+        },
+        {
+          "title": "Senior Sales Representative",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Madison-Wisconsin/Senior-Sales-Representative_R50907"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "5 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Los-Angeles-California/Regional-Sales-Manager_R51175"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "5 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Nottingham/Regional-Sales-Manager_R50951"
+        },
+        {
+          "title": "Area Sales Manager - North | AW Trade Sales UK & I",
+          "location": "4 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Thirsk/Area-Sales-Manager---North---AW-Trade-Sales-UK---I_R47845"
+        },
+        {
+          "title": "Transport Senior Sales Representative",
+          "location": "Kempton Park",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Kempton-Park/Transport-Senior-Sales-Representative_R50712"
+        },
+        {
+          "title": "Sales Rep. - Clean Water Treatment",
+          "location": "5 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Nottingham/Sales-Rep---Clean-Water-Treatment_R51271-1"
+        },
+        {
+          "title": "Territory Sales Manager, Flygt Mixers (US)",
+          "location": "5 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Pittsburgh-111-47th/Territory-Sales-Manager--Flygt-Mixers--US-_R48492"
+        },
+        {
+          "title": "National Sales Manager & Global Business Development Manager \u2013 Xylem A-C Custom Pump",
+          "location": "Pewaukee, Wisconsin",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Pewaukee-Wisconsin/National-Sales-Manager---Global-Business-Development-Manager---Xylem-A-C-Custom-Pump_R51219"
+        },
+        {
+          "title": "Account Manager / Vertriebsprofi (m/w/d) Pumpentechnik - Region Bremen / Hannover / Hamburg",
+          "location": "3 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Langenhagen/Verkufer---Account-Manager--m-w-d--Produkt--und-Mietgeschft-Pumpentechnik-in-Norddeutschland_R48728"
+        },
+        {
+          "title": "Business Development Manager, Mixers (UK & I)",
+          "location": "5 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Nottingham/Business-Development-Manager--Treatment-Mixers--UK---I-_R46825-1"
+        },
+        {
+          "title": "Business Development Manager, Vertical Expansion",
+          "location": "5 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Lainate/Business-Development-Manager--Vertical-Expansion_R50033"
+        },
+        {
+          "title": "Business Development Manager",
+          "location": "Sacramento, California",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Sacramento-California/Business-Development-Manager_R49530"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -8240,8 +8902,8 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
+      "status": "Sales (non-AE)",
+      "note": "Sales Enablement Analyst Intern only",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -8385,9 +9047,30 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Jr. Sales Representative (Remote - Tennessee)",
+      "roles": [
+        {
+          "title": "Jr. Sales Representative",
+          "location": "Remote - Tennessee",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/Remote---Tennessee/Jr-Sales-Representative_R6686-1"
+        },
+        {
+          "title": "Infrastructure Territory Manager",
+          "location": "6 Locations",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/Phoenix-Arizona/Infrastructure-Territory-Manager_R6728"
+        },
+        {
+          "title": "Infrastructure Territory Manager",
+          "location": "3 Locations",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/Remote---Nova-Scotia/Infrastructure-Territory-Manager_R6802"
+        },
+        {
+          "title": "Infrastructure Territory Manager",
+          "location": "2 Locations",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/San-Antonio-Texas/Infrastructure-Territory-Manager_R6869"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -13912,7 +14595,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://jobs.globalpayments",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -15198,7 +15881,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://evolv.com/careers",
+      "note": "HTTP 403 for https://www.evolvtechnology",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -16197,7 +16880,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -16799,9 +17482,20 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Account Manager - East Coast (2 Locations)",
+      "roles": [
+        {
+          "title": "Account Manager - East Coast",
+          "location": "2 Locations",
+          "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_USA_careers/job/Boston-Massachusetts/Account-Manager---East-Coast_REQ_49493"
+        },
+        {
+          "title": "SATCOM Sales Account Manager (RF & mmWave Systems)",
+          "location": "USA Home NC",
+          "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_USA_careers/job/USA-Home-NC/SATCOM-Sales-Account-Manager_REQ_47792"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -18609,8 +19303,8 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
+      "status": "Sales (non-AE)",
+      "note": "Senior Manager, Sales - Resiliency only",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -27963,7 +28657,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 405 for https://files-prod01.planet",
+      "note": "robots.txt asks crawlers not to read pla",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -36391,7 +37085,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 502 for https://www.projectmates.co",
+      "note": "robots.txt on www.projectmates.com answe",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -36674,7 +37368,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "robots.txt on bentleysystems.wd5.myworkd",
+      "note": "page too small - likely JS-rendered",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -39556,7 +40250,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 502 for https://www.365labs.com/car",
+      "note": "robots.txt on www.365labs.com answered H",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -42023,23 +42717,13 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Atlanta, GA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5026955007"
+          "location": "Boston, MA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/5161632007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "New York City, NY United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Philadelphia, PA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103490007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Los Angeles, CA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5027198007"
+          "location": "Austin, TX United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4087046007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
@@ -42048,13 +42732,28 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "St. Petersburg, FL United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4134175007"
+          "location": "Philadelphia, PA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103490007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Boston, MA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5161632007"
+          "location": "New York City, NY United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "Atlanta, GA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/5026955007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "Los Angeles, CA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/5027198007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "St. Petersburg, FL United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4134175007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
@@ -42065,11 +42764,6 @@
           "title": "Account Executive, Territory (Mid-Market)",
           "location": "San Mateo, CA United States",
           "url": "https://job-boards.greenhouse.io/verkada/jobs/5170485007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Austin, TX United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4087046007"
         },
         {
           "title": "Account Executive, UK",
@@ -42532,9 +43226,15 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Junior Media Account Executive (London, UK)",
+      "roles": [
+        {
+          "title": "Junior Media Account Executive",
+          "location": "London, UK",
+          "url": "https://veritone.wd1.myworkdayjobs.com/en-US/Veritone_Career_Site/job/London-UK/Junior-Media-Account-Executive_R0203"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -44057,9 +44757,15 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Senior Sales Executive (2 Locations)",
+      "roles": [
+        {
+          "title": "Senior Sales Executive",
+          "location": "2 Locations",
+          "url": "https://bostondynamics.wd1.myworkdayjobs.com/en-US/Boston_Dynamics/job/Waltham-Office-POST/Senior-Sales-Executive_R3117"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -51208,8 +51914,8 @@
       "ref": "guardian-rfid-e0866fa4-85e7-4897-afb6-c2e9937c5797"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://jobs.gusto.com/boar",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -52522,7 +53228,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "robots.txt on scramsystems.dejobs.org an",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -54688,8 +55394,8 @@
       "ref": "tranquility-ai-inc-bb9f0c71-bab2-453e-af2e-ba90d745a5ad"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://jobs.gusto.com/boar",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -60025,7 +60731,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "network error: robots.txt on www.modeshi",
+      "note": "robots.txt on www.modeshift.com answered",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -61260,7 +61966,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "network error: robots.txt on www.enghous",
+      "note": "robots.txt on www.enghouse.com answered ",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -65921,7 +66627,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "network error: robots.txt on www.hanover",
+      "note": "robots.txt on www.hanoverdisplays.com an",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -66999,7 +67705,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "network error: robots.txt on qryde.com d",
+      "note": "robots.txt on qryde.com answered HTTP 20",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -69292,8 +69998,8 @@
       "ref": "https://jobs.adp.com/en/?rb=ADP_COM"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://jobs.adp.com/en/?rb",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -71305,9 +72011,35 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Support Account Manager, Enterpris (Ireland Dublin Off)",
+      "roles": [
+        {
+          "title": "Support Account Manager, Enterprise Accounts",
+          "location": "Ireland Dublin Office",
+          "url": "https://bentleysystems.wd5.myworkdayjobs.com/en-US/bentley/job/Ireland-Dublin-Office/Support-Account-Manager--Enterprise-Accounts_R68"
+        },
+        {
+          "title": "Account Manager, Enterprise",
+          "location": "2 Locations",
+          "url": "https://bentleysystems.wd5.myworkdayjobs.com/en-US/bentley/job/So-Paulo-So-Paulo-Brazil/Account-Manager--Enterprise_R85"
+        },
+        {
+          "title": "Account Manager, Enterprise",
+          "location": "Illinois, United States - Remote",
+          "url": "https://bentleysystems.wd5.myworkdayjobs.com/en-US/bentley/job/Illinois-United-States---Remote/Account-Manager--Enterprise_R88"
+        },
+        {
+          "title": "Enterprise Account Manager, DOT",
+          "location": "3 Locations",
+          "url": "https://bentleysystems.wd5.myworkdayjobs.com/en-US/bentley/job/Arizona-United-States---Remote/Enterprise-Account-Manager--DOT_R46"
+        },
+        {
+          "title": "Technical Account Manager",
+          "location": "Mumbai, Maharashtra, India",
+          "url": "https://bentleysystems.wd5.myworkdayjobs.com/en-US/bentley/job/Mumbai-Maharashtra-India/Technical-Account-Manager_RC125"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -80636,7 +81368,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://careers.nutanix.com",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -86522,9 +87254,275 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Account Executive (Japan, Tokyo)",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": "Japan, Tokyo",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Japan-Tokyo/Account-Executive_JR-0103573-1"
+        },
+        {
+          "title": "Senior Account Executive",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Japan-Tokyo/Senior-Account-Executive_JR-0109320"
+        },
+        {
+          "title": "Senior Account Executive",
+          "location": "Korea, Seoul",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Korea-Seoul/Senior-Account-Executive_JR-0110100"
+        },
+        {
+          "title": "Account Executive, Platform",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Canada-BC-Vancouver/Account-Executive--Platform_JR-0111008"
+        },
+        {
+          "title": "Account Executive (Finance)",
+          "location": "Japan, Tokyo",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Japan-Tokyo/Account-Executive--Finance-_JR-0111131"
+        },
+        {
+          "title": "Commercial Account Executive",
+          "location": "6 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-TX-Frisco/Commercial-Account-Executive_JR-0110984"
+        },
+        {
+          "title": "Account Executive - Customer Base",
+          "location": "Hong Kong",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Hong-Kong/Account-Executive---Customer-Base_JR-0109279"
+        },
+        {
+          "title": "Senior Account Executive - Philippines",
+          "location": "Singapore",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Singapore/Senior-Account-Executive---Philippines_JR-0110646-1"
+        },
+        {
+          "title": "Medium Enterprise Account Executive",
+          "location": "3 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-TX-Frisco/Medium-Enterprise-Account-Executive_JR-0110515"
+        },
+        {
+          "title": "Account Executive, Platform - FSI",
+          "location": "21 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-NY-New-York-City/Account-Executive--Platform---FSI_JR-0111001"
+        },
+        {
+          "title": "Senior Account Executive, Malaysia",
+          "location": "Malaysia, Kuala Lumpur",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Malaysia-Kuala-Lumpur/Senior-Account-Executive--Malaysia_JR-0111000"
+        },
+        {
+          "title": "Account Executive, Platform - Healthcare",
+          "location": "21 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-Pleasanton/Account-Executive--Platform---Healthcare_JR-0111004"
+        },
+        {
+          "title": "Account Executive Medium Enterprise",
+          "location": "Italy, Milan",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Italy-Milan/Account-Executive-Medium-Enterprise_JR-0111077"
+        },
+        {
+          "title": "Account Executive - Identity (Southeast)",
+          "location": "USA, GA, Atlanta",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Account-Executive---Identity_JR-0111150"
+        },
+        {
+          "title": "Account Executive, Identity (Northeast)",
+          "location": "10 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-NY-New-York-City/Account-Executive---Identity_JR-0111149"
+        },
+        {
+          "title": "Account Executive - Identity (Midwest)",
+          "location": "3 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-IL-Chicago/Account-Executive---Identity_JR-0111148"
+        },
+        {
+          "title": "Account Executive, Identity (West)",
+          "location": "11 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-Pleasanton/Account-Executive---Identity_JR-0111166-1"
+        },
+        {
+          "title": "Account Executive - Identity - Canada",
+          "location": "Canada, ON, Toronto",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Canada-ON-Toronto/Account-Executive---Identity---Canada_JR-0111274"
+        },
+        {
+          "title": "Senior Account Executive (Osaka)",
+          "location": "JPN.Osaka",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/JPNOsaka/Senior-Account-Executive--Osaka-_JR-0111569"
+        },
+        {
+          "title": "Enterprise Account Executive - Large Enterprise",
+          "location": "India, Mumbai",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/India-Mumbai/Enterprise-Account-Executive---Large-Enterprise_JR-0106386"
+        },
+        {
+          "title": "Account Executive Medium Enterprise - Lyon",
+          "location": "FRA, Remote",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/FRA-Remote/Account-Executive-Medium-Enterprise---Lyon_JR-0110680-1"
+        },
+        {
+          "title": "Commercial Account Executive, Customer Base",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-San-Francisco/Commercial-Account-Executive--Customer-Base_JR-0110985"
+        },
+        {
+          "title": "Account Executive - Customer Base Major Accounts - FSI UKI",
+          "location": "United Kingdom, London",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/United-Kingdom-London/Account-Executive---Customer-Base-Major-Accounts---FSI-UKI_JR-0111505"
+        },
+        {
+          "title": "Large Enterprise Customer Base Account Executive",
+          "location": "USA, CO, Denver",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CO-Denver/Large-Enterprise-Customer-Base-Account-Executive_JR-0110341"
+        },
+        {
+          "title": "Specialized Account Executive - CLM & Document AI",
+          "location": "7 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-NY-New-York-City/Specialized-Account-Executive---CLM---Document-AI_JR-0109922"
+        },
+        {
+          "title": "Large Enterprise Customer Base Account Executive",
+          "location": "USA, IL, Chicago",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-IL-Chicago/Large-Enterprise-Customer-Base-Account-Executive_JR-0110874"
+        },
+        {
+          "title": "Medium Enterprise Account Executive, Customer Base",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-NY-New-York-City/Medium-Enterprise-Account-Executive--Customer-Base_JR-0110844"
+        },
+        {
+          "title": "Medium Enterprise Account Executive, Customer Base",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-Pleasanton/Medium-Enterprise-Account-Executive--Customer-Base_JR-0110836"
+        },
+        {
+          "title": "Large Enterprise Customer Base Account Executive",
+          "location": "3 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-San-Francisco/Large-Enterprise-Customer-Base-Account-Executive_JR-0111062"
+        },
+        {
+          "title": "Medium Enterprise Account Executive, Customer Base",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-IL-Chicago/Medium-Enterprise-Account-Executive--Customer-Base_JR-0110839"
+        },
+        {
+          "title": "Medium Enterprise Account Executive, Customer Base",
+          "location": "4 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-San-Francisco/Medium-Enterprise-Account-Executive--Customer-Base_JR-0110841"
+        },
+        {
+          "title": "Specialised Account Executive \u2013 CLM & Document AI",
+          "location": "United Kingdom, London",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/United-Kingdom-London/Specialised-Account-Executive---CLM---Document-AI_JR-0111542"
+        },
+        {
+          "title": "Medium Enterprise Account Executive, Customer Base",
+          "location": "USA, GA, Atlanta",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Medium-Enterprise-Account-Executive--Customer-Base_JR-0110902"
+        },
+        {
+          "title": "Medium Enterprise Account Executive, Customer Base",
+          "location": "USA, GA, Atlanta",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Medium-Enterprise-Account-Executive--Customer-Base_JR-0110842"
+        },
+        {
+          "title": "Account Executive, Medium Enterprise - Customer Base",
+          "location": "United Kingdom, London",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/United-Kingdom-London/Account-Executive--Medium-Enterprise---Customer-Base_JR-0111489-1"
+        },
+        {
+          "title": "Account Executive, Platform - SLED, Higher Ed, NFP",
+          "location": "18 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Account-Executive--Platform---SLED--Higher-Ed--NFP_JR-0111003"
+        },
+        {
+          "title": "Account Executive, Platform - Medium Enterprise Diversified Industries",
+          "location": "9 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Account-Executive--Platform---Medium-Enterprise-Diversified-Industries_JR-0111006"
+        },
+        {
+          "title": "Account Executive, Platform - Large Enterprise Diversified Industries",
+          "location": "11 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-Home-Office/Account-Executive--Platform---Large-Enterprise-Diversified-Industries_JR-0111005"
+        },
+        {
+          "title": "Account Executive - Existing Large Enterprise Clients - Germany",
+          "location": "3 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Germany-Munich/Account-Executive---Existing-Large-Enterprise-Clients---Germany_JR-0111208"
+        },
+        {
+          "title": "Medium Enterprise Account Executive, Customer Base - FSI",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-NY-New-York-City/Medium-Enterprise-Account-Executive--Customer-Base---FSI_JR-0111079"
+        },
+        {
+          "title": "(Sr.) Account Executive Medium Enterprise - Existing Clients - Germany",
+          "location": "3 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Germany-Munich/XMLNAME--Sr--Account-Executive-Medium-Enterprise---Existing-Clients---Germany_JR-0111143"
+        },
+        {
+          "title": "Account Executive Customer Base Large Enterprise - Retail / Hospitality / Transportation",
+          "location": "France, Paris",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/France-Paris/Account-Executive-Customer-Base-Large-Enterprise_JR-0107739"
+        },
+        {
+          "title": "Senior Account Executive, Singapore Large Enterprise [Expression of Interest]",
+          "location": "Singapore",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Singapore/Senior-Account-Executive--Singapore-Large-Enterprise--Expression-of-Interest-_JR-0111002"
+        },
+        {
+          "title": "Global Account Manager",
+          "location": "Japan, Tokyo",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Japan-Tokyo/Global-Account-Manager_JR-0110620"
+        },
+        {
+          "title": "Senior Technical Account Manager (APJ Shift)",
+          "location": "IND.Pune",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/INDPune/Senior-Technical-Account-Manager--APJ-Shift-_JR-0109508"
+        },
+        {
+          "title": "Senior Technical Account Manager",
+          "location": "Japan, Tokyo",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Japan-Tokyo/Senior-Technical-Account-Manager_JR-0108569"
+        },
+        {
+          "title": "Principal Partner Sales Executive",
+          "location": "3 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/India-Mumbai/Principal-Partner-Sales-Executive_JR-0109617"
+        },
+        {
+          "title": "Medium Enterprise Regional Sales Director - Healthcare",
+          "location": "4 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-MA-Boston/Medium-Enterprise--Regional-Sales-Director---Healthcare_JR-0109172-1"
+        },
+        {
+          "title": "Regional Sales Director - Identity - Canada",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Canada-ON-Toronto/Regional-Sales-Director---Identity---Canada_JR-0111273"
+        },
+        {
+          "title": "Regional Sales Director - Identity",
+          "location": "8 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CA-Pleasanton/Regional-Sales-Director---Identity_JR-0111167"
+        },
+        {
+          "title": "Regional Sales Director, FSI",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-NY-New-York-City/Regional-Sales-Director--FSI_JR-0111140"
+        },
+        {
+          "title": "Regional Sales Director, Platform - Canada",
+          "location": "Canada, ON, Toronto",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Canada-ON-Toronto/Regional-Sales-Director--Platform---Canada_JR-0111019"
+        },
+        {
+          "title": "Senior Partner Sales Executive",
+          "location": "2 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Australia-NSW-North-Sydney/Senior-Partner-Sales-Executive_JR-0110135"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -89717,8 +90715,8 @@
       "ref": "https://www.collinsaerospace.com/collinsaerospace/careers/engineering"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://www.collinsaerospac",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -99986,15 +100984,9 @@
       "ref": "upper-hand-89518d41-1ea4-4e74-8937-17ff05442a66"
     },
     "hiring": {
-      "status": "Yes",
-      "note": "Account Executive (INDIANAPOLIS, IN)",
-      "roles": [
-        {
-          "title": "Account Executive",
-          "location": "INDIANAPOLIS, IN",
-          "url": "https://jobs.gusto.com/postings/upper-hand-account-executive-d01aee71-019b-49fa-af66-d730b1863a8a"
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 403 for https://jobs.gusto.com/boar",
+      "roles": [],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -102429,7 +103421,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://www.acuityinc.com/c",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -104861,7 +105853,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://trilliant.com/caree",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -108830,9 +109822,185 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Account Manager (3 Locations)",
+      "roles": [
+        {
+          "title": "Account Manager",
+          "location": "3 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Pennsylvania/Account-Manager_JR567"
+        },
+        {
+          "title": "Account Manager",
+          "location": "Little Rock, Arkansas",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Little-Rock-Arkansas/Account-Manager_JR553"
+        },
+        {
+          "title": "Sales Account Manager",
+          "location": "3 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Fort-Wayne-Indiana/Sales-Account-Manager_JR1060"
+        },
+        {
+          "title": "Sales Account Manager",
+          "location": "4 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Springfield-Illinois/Sales-Account-Manager_JR1152"
+        },
+        {
+          "title": "Sales Account Manager- IL",
+          "location": "Illinois Remote",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Illinois-Remote/Sales-Account-Manager--IL_JR592"
+        },
+        {
+          "title": "Sales Account Manager- OKC",
+          "location": "3 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/US-Remote/Sales-Account-Manager--OKC_JR1111"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "US Remote",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/US-Remote/Outside-Sales-Representative_JR800"
+        },
+        {
+          "title": "Outside Sales Representative- KC MO",
+          "location": "2 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/US-Remote/Outside-Sales-Representative--KC-MO_JR694"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Eugene, Oregon",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Eugene-Oregon/Outside-Sales-Representative_JR817"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Dayton, Ohio",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Dayton-Ohio/Outside-Sales-Representative_JR856"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Zanesville, Ohio",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Zanesville-Ohio/Outside-Sales-Representative_JR859"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Saginaw, Michigan",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Saginaw-Michigan/Outside-Sales-Representative_JR860"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Evansville, Indiana",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Evansville-Indiana/Outside-Sales-Representative_JR853"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Akron, Ohio",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Akron-Ohio/Outside-Sales-Representative_JR855"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Grand Rapids, Michigan",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Grand-Rapids-Michigan/Outside-Sales-Representative_JR882"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Illinois Remote",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Illinois-Remote/Outside-Sales-Representative_JR875"
+        },
+        {
+          "title": "Sales Representative- S CA",
+          "location": "5 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/US-Remote/Sales-Representative--S-CA_JR895"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "US Remote",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/US-Remote/Outside-Sales-Representative_JR908"
+        },
+        {
+          "title": "Sales Representative- AZ",
+          "location": "5 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Phoenix-Arizona/Sales-Representative--AZ_JR928"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "2 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Coeur-dAlene-Idaho/Outside-Sales-Representative_JR967"
+        },
+        {
+          "title": "Sales Representative-NV",
+          "location": "Las Vegas, Nevada",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Las-Vegas-Nevada/Sales-Representative-NV_JR1034"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "2 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Riverside-California/Outside-Sales-Representative_JR1054"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Grand Junction, Colorado",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Grand-Junction-Colorado/Outside-Sales-Representative_JR1058"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Columbus, Ohio",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Columbus-Ohio/Outside-Sales-Representative_JR1070"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Miami, Florida",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Miami-Florida/Outside-Sales-Representative_JR1102"
+        },
+        {
+          "title": "Sales Representative- AL",
+          "location": "3 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/US-Remote/Sales-Representative--AL_JR1122"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Billings, Montana",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Billings-Montana/Outside-Sales-Representative_JR1113"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Helena, Montana",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Helena-Montana/Outside-Sales-Rep_JR1139"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "3 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-Utah/Outside-Sales-Representative_JR1141"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "2 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Portland-Oregon/Outside-Sales-Representative_JR554"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "6 Locations",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Phoenix-Arizona/Outside-Sales-Representative_JR552"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Kalamazoo, Michigan",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Kalamazoo-Michigan/Outside-Sales-Representative_JR648"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Grand Rapids, Michigan",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Grand-Rapids-Michigan/Outside-Sales-Representative_JR649"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Medford, Oregon",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Medford-Oregon/Outside-Sales-Representative_JR653"
+        },
+        {
+          "title": "Outside Sales Representative",
+          "location": "Boise, Idaho",
+          "url": "https://americanfidelity.wd5.myworkdayjobs.com/en-US/External/job/Boise-Idaho/Outside-Sales-Representative_JR957"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -117264,9 +118432,20 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "SaaS Account Executive - Weather (United Kingdom - R)",
+      "roles": [
+        {
+          "title": "SaaS Account Executive - Weather",
+          "location": "United Kingdom - Remote",
+          "url": "https://dtn.wd1.myworkdayjobs.com/en-US/DTN_Careers/job/United-Kingdom---Remote/SaaS-Account-Executive---Weather_R-003180"
+        },
+        {
+          "title": "Account Manager - Agriculture",
+          "location": "4 Locations",
+          "url": "https://dtn.wd1.myworkdayjobs.com/en-US/DTN_Careers/job/Remote-MN/Account-Executive---Agriculture_R-003152"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -130692,8 +131871,8 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
+      "status": "Sales (non-AE)",
+      "note": "Sr. Product Manager - Revenue Cycl only",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -139003,9 +140182,50 @@
       "ref": "xtractone"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
-      "roles": [],
+      "status": "Yes",
+      "note": "Regional Sales Manager (Washington, Distri)",
+      "roles": [
+        {
+          "title": "Regional Sales Manager",
+          "location": "Washington, District of Columbia, United States",
+          "url": "https://xtractone.bamboohr.com/careers/223"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Baltimore, Maryland, United States",
+          "url": "https://xtractone.bamboohr.com/careers/224"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Charlotte, North Carolina, United States",
+          "url": "https://xtractone.bamboohr.com/careers/225"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "San Jose, California, United States",
+          "url": "https://xtractone.bamboohr.com/careers/226"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Sacramento, California, United States",
+          "url": "https://xtractone.bamboohr.com/careers/227"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "San Francisco, California, United States",
+          "url": "https://xtractone.bamboohr.com/careers/228"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Seattle, Washington, United States",
+          "url": "https://xtractone.bamboohr.com/careers/229"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Denver, Colorado, United States",
+          "url": "https://xtractone.bamboohr.com/careers/230"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -141114,7 +142334,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://www.axon.com/career",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -149673,7 +150893,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "network error: robots.txt on lionlion.ca",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -151559,7 +152779,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://www.neptunetg.com/c",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -152844,7 +154064,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://www.badgermeter.com",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -155121,16 +156341,9 @@
       "ref": "https://adbsafegate.com/about/career"
     },
     "hiring": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://adbsafegate.com/about/career",
-          "synthetic": true
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 403 for https://adbsafegate.com/abo",
+      "roles": [],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -156911,8 +158124,8 @@
       "ref": "https://www.gevernova.com/careers"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -163770,7 +164983,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://www.archistar.ai/ca",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -179375,13 +180588,13 @@
         },
         {
           "title": "Account Executive, Startups",
-          "location": "Dublin, IE",
-          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5391313008"
+          "location": "San Francisco, CA | New York City, NY",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5400138008"
         },
         {
           "title": "Account Executive, Startups",
-          "location": "San Francisco, CA | New York City, NY",
-          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5400138008"
+          "location": "Dublin, IE",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5391313008"
         },
         {
           "title": "Enterprise Account Executive",
@@ -179620,13 +180833,13 @@
         },
         {
           "title": "Strategic Account Executive, Tech",
-          "location": "Seattle, WA",
-          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5126008008"
+          "location": "San Francisco, CA",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5108111008"
         },
         {
           "title": "Strategic Account Executive, Tech",
-          "location": "San Francisco, CA",
-          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5108111008"
+          "location": "Seattle, WA",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5126008008"
         }
       ],
       "checked": "2026-11-14"
@@ -183995,8 +185208,8 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
+      "status": "Sales (non-AE)",
+      "note": "Strategic Account Director -Wester only",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -185152,7 +186365,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 403 for https://moodle.com/us/caree",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -190284,9 +191497,25 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "FACTS Account Executive (Maryland, (Remote)",
+      "roles": [
+        {
+          "title": "FACTS Account Executive (Maryland, DC, Delaware, Virginia)",
+          "location": "Remote",
+          "url": "https://nelnet.wd1.myworkdayjobs.com/en-US/MyNelnet/job/Remote/FACTS-Account-Executive--Maryland--DC--Delaware--Virginia-_R23327"
+        },
+        {
+          "title": "Account Executive, Scholarship Tax Credit Payroll Deduction (BenefitEd)",
+          "location": "2 Locations",
+          "url": "https://nelnet.wd1.myworkdayjobs.com/en-US/MyNelnet/job/Lincoln-NE/Account-Executive--Scholarship-Tax-Credit-Payroll-Deduction--BenefitEd-_R23311"
+        },
+        {
+          "title": "Senior Account Manager- G&A/SGO - FACTS - NBS",
+          "location": "Remote",
+          "url": "https://nelnet.wd1.myworkdayjobs.com/en-US/MyNelnet/job/Remote/Senior-Account-Manager--G-A-SGO---FACTS---NBS_R23263-1"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -202259,7 +203488,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "gusto board is closed - find where they ",
+      "note": "HTTP 403 for https://jobs.gusto.com/boar",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -223448,16 +224677,9 @@
       "ref": "https://www.armis.com/armis-careers"
     },
     "hiring": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.armis.com/armis-careers",
-          "synthetic": true
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 403 for https://www.armis.com/armis",
+      "roles": [],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -223603,7 +224825,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://www.lifeatcanva.com",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -223672,9 +224894,70 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Account Executive - SLED (6 Locations)",
+      "roles": [
+        {
+          "title": "Account Executive - SLED",
+          "location": "6 Locations",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-New-York-Remote/Account-Executive---SLED_261497-1"
+        },
+        {
+          "title": "Enterprise Account Executive",
+          "location": "US-California-Remote",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-California-Remote/Enterprise-Account-Executive_261394"
+        },
+        {
+          "title": "Account Executive - Financial Services",
+          "location": "2 Locations",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-North-Carolina-Remote/Key-Account-Director---Bank-of-America_260850"
+        },
+        {
+          "title": "Account Executive - SLED Central",
+          "location": "US-Texas-Remote",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-Texas-Remote/Account-Executive---SLED-Central_260840-1"
+        },
+        {
+          "title": "Sales Account Executive - Public Sector",
+          "location": "Switzerland-Zurich",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/Switzerland-Zurich/Sales-Account-Executive_261229"
+        },
+        {
+          "title": "Senior Account Executive \u2013 Federal Civilian",
+          "location": "2 Locations",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-Washington-DC-Remote/Senior-Account-Executive---Federal-Civilian_261479"
+        },
+        {
+          "title": "Account Executive - SLED North East",
+          "location": "6 Locations",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-New-York-Remote/Account-Executive---SLED-North-East_261533-2"
+        },
+        {
+          "title": "Sales Account Manager: Financial Services",
+          "location": "Brazil > Sao Paulo",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/Brazil--Sao-Paulo/Sales-Account-Manager--Financial-Services_261220"
+        },
+        {
+          "title": "Sr Sales Executive",
+          "location": "Germany-Remote",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/Germany-Remote/Sr-Sales-Executive_261522-1"
+        },
+        {
+          "title": "Applied AI Sales executive",
+          "location": "Singapore > Singapore",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/Singapore--Singapore/Applied-AI-Sales-executive_261431"
+        },
+        {
+          "title": "Sales Executive, Applied AI",
+          "location": "UK-Remote",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/UK-Remote/Sales-Executive--Applied-AI_261426-1"
+        },
+        {
+          "title": "Sales Executive, Applied AI, Cloudera",
+          "location": "US-Texas-Remote",
+          "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-Texas-Remote/Sales-Executive--Applied-AI--Cloudera_261432-1"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -224017,9 +225300,240 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Corporate Account Executive, Kolka (India - Remote)",
+      "roles": [
+        {
+          "title": "Corporate Account Executive, Kolkata (Remote, IND)",
+          "location": "India - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/India---Remote/Corporate-Account-Executive--Remote--IND-_R27406"
+        },
+        {
+          "title": "Regional Sales Manager - Manufacturing",
+          "location": "Japan - Tokyo",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Japan---Tokyo/Regional-Sales-Manager---Manufacturing_R30755"
+        },
+        {
+          "title": "Corporate Account Executive (\u65b0\u898f\u958b\u62d3\u62c5\u5f53\u55b6\u696d)",
+          "location": "Japan - Tokyo",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Japan---Tokyo/Corporate-Account-Executive---_R30795"
+        },
+        {
+          "title": "Regional Sales Manager, New Accounts",
+          "location": "Italy - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Italy---Remote/Regional-Sales-Manager--New-Accounts_R30900"
+        },
+        {
+          "title": "Regional Sales Manager, Existing Accounts",
+          "location": "France - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/France---Remote/Regional-Sales-Manager--Existing-Accounts_R30732-1"
+        },
+        {
+          "title": "Regional Sales Manager, New Accounts (Remote, DEU)",
+          "location": "Germany - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Germany---Remote/Regional-Sales-Manager--New-Accounts--Remote--DEU-_R30756"
+        },
+        {
+          "title": "Regional Sales Manager (Remote, NSW)",
+          "location": "Australia - Remote, NW",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Australia---Remote-NW/Regional-Sales-Manager--Remote--NSW-_R30209-1"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "United Kingdom - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/United-Kingdom---Remote/Regional-Sales-Manager--Existing-Accounts_R30683"
+        },
+        {
+          "title": "Regional Sales Manager, Nagoya (\u540d\u53e4\u5c4b\u30a8\u30f3\u30bf\u30fc\u30d7\u30e9\u30a4\u30ba\u30a2\u30ab\u30a6\u30f3\u30c8\u62c5\u5f53\u30cf\u30a4\u30bf\u30c3\u30c1\u55b6\u696d) (Remote, JPN)",
+          "location": "Japan - Remote, Nagoya",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Japan---Remote-Nagoya/Regional-Sales-Manager--Nagoya-----Remote--JPN-_R28867"
+        },
+        {
+          "title": "Corporate Account Executive - Manitoba/Saskatchewan (Remote, CAN)",
+          "location": "Canada - Remote, MB",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Canada---Remote-MB/Corporate-Account-Executive--Remote--CAN-_R30104"
+        },
+        {
+          "title": "Account Manager, French speaking",
+          "location": "Spain - Barcelona",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Spain---Barcelona/Account-Manager--French-speaking_R30686"
+        },
+        {
+          "title": "Regional Sales Manager, New Accounts (Remote, NLD)",
+          "location": "Netherlands - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Netherlands---Remote/Regional-Sales-Manager--New-Accounts--Remote--NLD-_R30702"
+        },
+        {
+          "title": "Regional Sales Manager, Poland (Remote)",
+          "location": "Poland - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Poland---Remote/Regional-Sales-Manager--Poland--Remote-_R30489"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Spain - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Spain---Remote/Regional-Sales-Manager_R30751"
+        },
+        {
+          "title": "Regional Sales Manager - Saudi Arabia (Remote)",
+          "location": "Saudi Arabia - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Saudi-Arabia---Remote/Regional-Sales-Manager---Saudi-Arabia--Remote-_R30759"
+        },
+        {
+          "title": "Regional Sales Manager, Existing Accounts (Remote, Germany)",
+          "location": "Germany - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Germany---Remote/Regional-Sales-Manager--Existing-Accounts--Remote--Germany-_R30717-1"
+        },
+        {
+          "title": "Regional Sales Manager, New Accounts (Remote, DEU)",
+          "location": "Germany - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Germany---Remote/Regional-Sales-Manager--New-Accounts--Remote--DEU-_R30729"
+        },
+        {
+          "title": "Regional Sales Manager (Remote, Pol)",
+          "location": "Poland - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Poland---Remote/Regional-Sales-Manager--Remote--Pol-_R30715"
+        },
+        {
+          "title": "Regional Sales Manager, New Accounts",
+          "location": "France - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/France---Remote/Regional-Sales-Manager--New-Accounts_R30733"
+        },
+        {
+          "title": "Corporate Account Executive",
+          "location": "Spain - Barcelona",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Spain---Barcelona/Corporate-Account-Executive_R30707-1"
+        },
+        {
+          "title": "Regional Sales Director (Remote)",
+          "location": "4 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote-VA/Regional-Sales-Director--Remote-_R30631"
+        },
+        {
+          "title": "Regional Sales Manager, New Accounts",
+          "location": "United Kingdom - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/United-Kingdom---Remote/Regional-Sales-Manager--New-Accounts_R30682"
+        },
+        {
+          "title": "Corporate Account Executive - Saudi Arabia (Remote)",
+          "location": "2 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/UAE---Remote/Corporate-Account-Executive---Saudi-Arabia--Remote-_R30434"
+        },
+        {
+          "title": "Regional Sales Manager, Enterprise (New Accounts)",
+          "location": "India - Gurugram",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/India---Gurugram/Regional-Sales-Manager--Enterprise--New-Accounts-_R28930"
+        },
+        {
+          "title": "Regional Sales Manager, Netherlands",
+          "location": "Netherlands - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Netherlands---Remote/Regional-Sales-Manager--Netherlands_R30534"
+        },
+        {
+          "title": "Regional Sales Manager, Southeast (Remote - DMV)",
+          "location": "3 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote-DC/Regional-Sales-Manager--Southeast--Remote---DMV-_R30442-1"
+        },
+        {
+          "title": "Regional Sales Manager, Public Sector (Remote, Poland)",
+          "location": "Poland - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Poland---Remote/Regional-Sales-Manager--Public-Sector--Remote--Poland-_R30490"
+        },
+        {
+          "title": "Regional Sales Manager, Healthcare (Remote, West Coast)",
+          "location": "USA - Remote, CA",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote-CA/Regional-Sales-Manager--Healthcare--Remote--West-Coast-_R30337-1"
+        },
+        {
+          "title": "Enterprise Regional Sales Manager - Federal Civilian (Remote, DMV)",
+          "location": "3 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote-DC/Enterprise-Regional-Sales-Manager---Federal-Civilian--Remote--DMV-_R30385"
+        },
+        {
+          "title": "Named, Corporate Account Manager (Hybrid)",
+          "location": "4 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Sunnyvale-CA/Named--Corporate-Account-Manager--Hybrid-_R27877"
+        },
+        {
+          "title": "Sr. Corporate Account Executive (Remote, NZD)",
+          "location": "2 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/New-Zealand---Remote-AUK/Sr-Corporate-Account-Executive--Remote--NZD-_R30273"
+        },
+        {
+          "title": "Regional Sales Manager, Federal DoD - US Army (Remote)",
+          "location": "4 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Regional-Sales-Manager--Federal-DoD---US-Army--Remote-_R29289"
+        },
+        {
+          "title": "Corporate Account Executive, Italian Speaking",
+          "location": "Spain - Barcelona",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Spain---Barcelona/Corporate-Account-Executive--Italian-Speaking_R30132"
+        },
+        {
+          "title": "Enterprise Regional Sales Manager - FED CIV (Remote, DMV)",
+          "location": "3 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote-DC/Enterprise-Regional-Sales-Manager---FED-CIV--Remote--DMV-_R30073"
+        },
+        {
+          "title": "Corporate Account Executive - North/West Africa (Remote, UAE)",
+          "location": "UAE - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/UAE---Remote/Corporate-Account-Executive---North-West-Africa--Remote--UAE-_R27372"
+        },
+        {
+          "title": "Sr. Regional Sales Manager",
+          "location": "Singapore",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Singapore/Sr-Regional-Sales-Manager_R30066-1"
+        },
+        {
+          "title": "Corporate Account Executive, Mumbai",
+          "location": "India - Mumbai",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/India---Mumbai/Corporate-Account-Executive--Mumbai_R29832"
+        },
+        {
+          "title": "Strategic Partner Business Development Manager - Global Systems Integrators (Europe) (Remote)",
+          "location": "2 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/United-Kingdom---Remote/Strategic-Partner-Business-Development-Manager---Global-Systems-Integrators--Europe---Remote-_R29567"
+        },
+        {
+          "title": "Regional Sales Manager (Remote, Croatia)",
+          "location": "Croatia - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Croatia---Remote/Regional-Sales-Manager--Remote--Croatia-_R29871"
+        },
+        {
+          "title": "Regional Sales Manager, Existing Accounts (Remote, DEU)",
+          "location": "Germany - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Germany---Remote/Regional-Sales-Manager--Enterprise--Remote-_R26189"
+        },
+        {
+          "title": "Named Account Executive",
+          "location": "10 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Austin-TX/Corporate-Account-Executive--Hybrid-_R17816"
+        },
+        {
+          "title": "Regional Sales Manager - SLED Hunter (Remote, Midwest)",
+          "location": "8 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote-IL/Regional-Sales-Manager---SLED-Hunter--Remote--Midwest-_R27775"
+        },
+        {
+          "title": "Regional Sales Manager, Enterprise, NY/NJ (Remote)",
+          "location": "2 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Regional-Sales-Manager--Enterprise--NY-NJ--Remote-_R25886"
+        },
+        {
+          "title": "Regional Sales Manager, New Accounts",
+          "location": "Greece - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Greece---Remote/Regional-Sales-Manager--New-Accounts_R30727"
+        },
+        {
+          "title": "Technical Account Manager - Mid-Market (Hebrew Speaking - Europe, Remote)",
+          "location": "6 Locations",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Germany---Remote/Technical-Account-Manager--Hebrew-Speaking--Europe--Remote-_R30275"
+        },
+        {
+          "title": "Regional Sales Manager, Chennai (Remote, IND)",
+          "location": "India - Remote",
+          "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/India---Remote/Regional-Sales-Manager--Chennai--Remote--IND-_R30339"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -225890,9 +227404,16 @@
       "ref": "https://corp.kaltura.com/company/careers/"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "HTTP 403 for https://corp.kaltura.com/co",
-      "roles": [],
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://corp.kaltura.com/company/careers/",
+          "synthetic": true
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -226001,9 +227522,65 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Strategic Account Executive (New York)",
+      "roles": [
+        {
+          "title": "Strategic Account Executive",
+          "location": "New York",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/New-York/Strategic-Account-Executive_R-06229"
+        },
+        {
+          "title": "Senior Account Executive",
+          "location": "Tokyo",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/Tokyo/Senior-Account-Executive_R-06440-1"
+        },
+        {
+          "title": "Sales Account Executive - Enterprise - DACH",
+          "location": "Frankfurt",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/Frankfurt/Sales-Account-Executive---Enterprise---DACH_R-06227-1"
+        },
+        {
+          "title": "Senior Sales Account Executive - Mid Market - DACH",
+          "location": "Frankfurt",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/Frankfurt/Senior-Sales-Account-Executive---Mid-Market---DACH_R-06471-1"
+        },
+        {
+          "title": "Senior Account Manager",
+          "location": "London",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/London/Senior-Account-Manager_R-06522"
+        },
+        {
+          "title": "Senior Account Manager",
+          "location": "United States",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/United-States/Senior-Account-Management_R-05669"
+        },
+        {
+          "title": "Enterprise Sales Executive",
+          "location": "Remote India",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/Remote-India/Enterprise-Sales-Executive_R-05799-1"
+        },
+        {
+          "title": "Sales Executive",
+          "location": "New York",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/New-York/Sales-Executive_R-06274"
+        },
+        {
+          "title": "Enterprise Sales Executive, Manufacturing",
+          "location": "London",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/London/Enterprise-Sales-Executive_R-06504"
+        },
+        {
+          "title": "Senior Support Account Manager",
+          "location": "London",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/London/Senior-Support-Account-Manager_R-06490"
+        },
+        {
+          "title": "Strategic Sales Executive, Financial Institutions",
+          "location": "London",
+          "url": "https://kyriba.wd5.myworkdayjobs.com/en-US/Kyriba-Careers/job/London/Strategic-Sales-Executive--Financial-Institutions-_R-05812-1"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -226207,9 +227784,16 @@
       "ref": "https://lumu.io/careers/"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "HTTP 403 for https://lumu.io/careers/",
-      "roles": [],
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://lumu.io/careers/",
+          "synthetic": true
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -226718,9 +228302,15 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Regional Sales Director - APAC (Remote - Australia)",
+      "roles": [
+        {
+          "title": "Regional Sales Director - APAC",
+          "location": "Remote - Australia",
+          "url": "https://pluralsight.wd1.myworkdayjobs.com/en-US/Careers/job/Remote---Australia/Regional-Sales-Director---APAC_R0014458"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -227135,16 +228725,9 @@
       "ref": "https://www.sage.com/en-us/company/careers/"
     },
     "hiring": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.sage.com/en-us/company/careers/",
-          "synthetic": true
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 403 for https://www.sage.com/en-us/",
+      "roles": [],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -227202,9 +228785,210 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Commercial Account Executive (Remote (New York, )",
+      "roles": [
+        {
+          "title": "Commercial Account Executive",
+          "location": "Remote (New York, USA)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-New-York-USA/Corporate-Account-Executive_R014277"
+        },
+        {
+          "title": "Enterprise Account Executive",
+          "location": "Remote (Georgia, USA)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Georgia-USA/Sales-Executive_R014370"
+        },
+        {
+          "title": "Account Executive- SLED",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-California-USA/Sales-Executive_R014453"
+        },
+        {
+          "title": "Healthcare Account Executive",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Washington-USA/Healthcare-Account-Executive_R014506"
+        },
+        {
+          "title": "Healthcare Account Executive",
+          "location": "3 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Headquarters-Austin-Texas-USA/Healthcare-Account-Executive_R014436"
+        },
+        {
+          "title": "Healthcare Account Executive - Tennessee",
+          "location": "Remote (Tennessee, USA)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Tennessee-USA/Healthcare-Account-Executive---Midwest_R013980"
+        },
+        {
+          "title": "Enterprise Account Executive-Colorado",
+          "location": "Remote (Colorado, USA)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Colorado-USA/Software-Sales-Executive_R013529"
+        },
+        {
+          "title": "Strategic Account Executive-Arizona",
+          "location": "Remote (Arizona, USA)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Arizona-USA/Strategic-Account-Executive-Southern-California_R014223"
+        },
+        {
+          "title": "Strategic Account Executive-Southern California",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Los-Angeles-California-USA/Strategic-Account-Executive-Southern-California_R014222"
+        },
+        {
+          "title": "Enterprise Account Executive-Southern California",
+          "location": "Remote (Los Angeles, California, USA)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Los-Angeles-California-USA/Enterprise-Account-Executive-Southern-California_R013664"
+        },
+        {
+          "title": "Strategic Account Executive - Agentic Technology Specialist",
+          "location": "Remote (South Korea)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-South-Korea/Strategic-Account-Executive---Agentic-Technology-Specialist_R013677"
+        },
+        {
+          "title": "Strategic Account Executive -San Francisco/Seattle/Portland",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Washington-USA/Strategic-Account-Executive--San-Francisco-Seattle-Portland_R014013"
+        },
+        {
+          "title": "Account Executive SLED MN.WI, IA. SD and ND",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Minnesota-USA/Account-Executive-SLED-MNWI--IA-SD-and-ND_R014377"
+        },
+        {
+          "title": "Sales Executive",
+          "location": "Remote (Germany)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Germany/Sales-Executive_R012924-2"
+        },
+        {
+          "title": "Sales Executive",
+          "location": "Remote (Dubai, UAE)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Dubai-UAE/Sales-Executive_R012598"
+        },
+        {
+          "title": "Sales Executive",
+          "location": "Remote (Austria)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Austria/Sales-Executive_R013585"
+        },
+        {
+          "title": "Sales Executive",
+          "location": "Remote (Japan)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Japan/Sales-Executive_R014457"
+        },
+        {
+          "title": "Sales Executive",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Singapore/Sales-Executive_R014503"
+        },
+        {
+          "title": "Strategic Sales Executive",
+          "location": "Remote (United Kingdom)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-United-Kingdom/Strategic-Sales-Executive_R013102"
+        },
+        {
+          "title": "Sales Executive (Sales6)",
+          "location": "Remote (United Kingdom)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-United-Kingdom/Sales-Executive--Sales6-_R013288"
+        },
+        {
+          "title": "Strategic Sales Executive",
+          "location": "Remote (United Kingdom)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-United-Kingdom/Strategic-Sales-Executive_R013104"
+        },
+        {
+          "title": "Enterprise Sales Executive",
+          "location": "Remote (Sweden)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Sweden/Enterprise-Sales-Executive_R013108"
+        },
+        {
+          "title": "Public Sector Sales Executive",
+          "location": "Remote (Italy)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Italy/Sales-Executive_R012861"
+        },
+        {
+          "title": "Sales Executive Federal Government",
+          "location": "Remote (Ottawa, Canada)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Ottawa-Canada/Sales-Executive-Federal-Government_R014280"
+        },
+        {
+          "title": "Software Sales Executive",
+          "location": "Remote (Brazil)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Brazil/Software-Sales-Executive_R014367"
+        },
+        {
+          "title": "Federal Sales Executive-DOW",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Virginia-USA/Federal-Sales-Executive-DOW_R014050"
+        },
+        {
+          "title": "Federal Sales Executive-DHS",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Maryland-USA/Federal-Sales-Executive-DOW_R013971"
+        },
+        {
+          "title": "Agentic Technology Specialist Sales Executive",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Sweden/Agentic-Technology-Specialist-Sales-Executive_R013808"
+        },
+        {
+          "title": "Enterprise Sales Representative",
+          "location": "Remote (France)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-France/Enterprise-Sales-Representative_R014229"
+        },
+        {
+          "title": "Agentic Technology Specialist Sales Executive",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Netherlands/Agentic-Technology-Specialist-Sales-Executive_R013810"
+        },
+        {
+          "title": "Strategic Sales Executive",
+          "location": "Local Office (Paris, France)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Local-Office-Paris-France/Strategic-Sales-Executive_R011221"
+        },
+        {
+          "title": "Strategic Sales Executive",
+          "location": "Remote (Sweden)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Sweden/Strategic-Sales-Executive_R010164"
+        },
+        {
+          "title": "Strategic Sales Executive",
+          "location": "Remote (Germany)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Germany/Strategic-Sales-Executive_R012923-2"
+        },
+        {
+          "title": "Sales Executive",
+          "location": "Local Office (Seoul, South Korea)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Local-Office-Seoul-South-Korea/Sales-Executive_R014148"
+        },
+        {
+          "title": "Strategic Sales Executive",
+          "location": "Remote (India)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-India/Strategic-Sales-Executive_R014015"
+        },
+        {
+          "title": "Digital Sales Representative - Swedish speaking",
+          "location": "Local Office (London, UK)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Local-Office-London-UK/Digital-Sales-Representative---Swedish-speaking_R010730"
+        },
+        {
+          "title": "Digital Sales Representative - Turkish Speaker",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Local-Office-London-UK/Digital-Sales-Representative---Middle-East_R013419"
+        },
+        {
+          "title": "Digital Sales Representative - German Speaking",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Local-Office-London-UK/Digital-Sales-Representative---German-Speaking_R014197"
+        },
+        {
+          "title": "Digital Sales Representative BeNeLux",
+          "location": "2 Locations",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Local-Office-Madrid-Spain/Digital-Sales-Representative-BeNeLux_R012939"
+        },
+        {
+          "title": "Digital Sales Representative",
+          "location": "Headquarters (Austin, Texas, USA)",
+          "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Headquarters-Austin-Texas-USA/Digital-Sales-Representative_R014335"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -228005,9 +229789,55 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Sr. Account Executive \u2013 Germany (P (DE - Remote)",
+      "roles": [
+        {
+          "title": "Sr. Account Executive \u2013 Germany (Public Sector)",
+          "location": "DE - Remote",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/DE---Remote/Sr-Account-Executive---Germany--Public-Sector-_JR106055-1"
+        },
+        {
+          "title": "Senior Account Executive",
+          "location": "US - Remote",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/US---Remote/Senior-Account-Executive-_JR105996"
+        },
+        {
+          "title": "Account Executive",
+          "location": "US - Atlanta",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/US---Atlanta/Account-Executive_JR106052"
+        },
+        {
+          "title": "Account Executive",
+          "location": "US - Remote",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/US---Remote/Account-Executive_JR106051"
+        },
+        {
+          "title": "Sr. Account Executive",
+          "location": "US - Austin",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/US---Austin/Sr-Account-Executive_JR105970"
+        },
+        {
+          "title": "Senior Account Executive (India)",
+          "location": "IN - Remote",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/IN---Remote/Senior-Account-Executive--India-_JR105992"
+        },
+        {
+          "title": "Senior Account Executive (Singapore)",
+          "location": "SG - Singapore",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/SG---Singapore/Senior-Account-Executive--Singapore-_JR105993"
+        },
+        {
+          "title": "Senior Account Executive (Malaysia & Thailand)",
+          "location": "SG - Singapore",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/SG---Singapore/Senior-Account-Executive--Malaysia---Thailand-_JR105985"
+        },
+        {
+          "title": "Senior Account Executive",
+          "location": "JP - Tokyo",
+          "url": "https://tricentis.wd1.myworkdayjobs.com/en-US/Tricentis_Careers/job/JP---Tokyo/Senior-Account-Executive_JR105896"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -228666,8 +230496,8 @@
       "ref": "careers-cotiviti"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "Sales VP - EDI & Interoperability only",
+      "status": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host=",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -230173,8 +232003,8 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
+      "status": "None found",
+      "note": "",
       "roles": [],
       "checked": "2026-11-14"
     },
@@ -230312,9 +232142,15 @@
       ]
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "non-JSON response",
-      "roles": [],
+      "status": "Yes",
+      "note": "Sales Director (Hong Kong)",
+      "roles": [
+        {
+          "title": "Sales Director",
+          "location": "Hong Kong",
+          "url": "https://syniverse.wd1.myworkdayjobs.com/en-US/SyniverseCareers/job/Hong-Kong/Sales-Director_R0007447"
+        }
+      ],
       "checked": "2026-11-14"
     },
     "govtech": true,
@@ -230792,8 +232628,8 @@
       "ref": "https://www.oneplan.io/jobs/"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://www.oneplan.io/jobs",
       "roles": [],
       "checked": "2026-11-14"
     },

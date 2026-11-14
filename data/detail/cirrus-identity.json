@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Course Sharing and Visiting Student Access: Why the Login Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/course-sharing-visiting-student-access"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cirrusidentity.com/blog/rethinking-governance-as-external-identities-scale"
-  },
-  {
-   "date": "2026-02-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When Slate Credentials Aren\u2019t Enough: Hidden IAM Costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cirrusidentity.com/blog/when-slate-credentials-arent-enough-the-hidden-iam-cost-of-applicant-access"
   }
  ],
  "profile": {

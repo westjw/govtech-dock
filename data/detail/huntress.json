@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Attackers use Crypto Exchange Names to Disguise Unauthorized Sessions on 100+ ScreenConnect Servers",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.huntress.com/blog/fake-crypto-exchange-sessions-screenconnect"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.huntress.com/blog/reports-that-siem-is-dead-are-exaggerated"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Managed for Malice: How Attackers Turn MDM into Remote Access",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/attackers-turn-mdm-into-remote-access"
   }
  ]
 }

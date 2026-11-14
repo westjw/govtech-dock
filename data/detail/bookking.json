@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "Central Frontenac Joins Univerus Rec",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.univerussportandrecreation.com/post/central-frontenac-joins-univerus-rec"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-26",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.univerussportandrecreation.com/post/why-athlete-compliance-and-eligibility-tracking-are-becoming-critical-in-modern-sport-management"
-  },
-  {
-   "date": "2026-06-03",
-   "date_source": "feed",
-   "first_seen": "2026-09-30",
-   "headline": "Brock University Athletics Joins Univerus Sport",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.univerussportandrecreation.com/post/brock-university-athletics-joins-univerus-sport"
   }
  ],
  "profile": {

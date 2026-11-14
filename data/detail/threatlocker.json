@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-14",
+   "headline": "What is an MCP server, and what are the security risks?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/what-is-an-mcp-server-and-what-are-the-security-risks"
+  },
+  {
    "date": "2026-11-11",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "What is agentic AI security, and how does it work?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/ai-agent-guardrails-why-prompts-alone-cannot-enforce-security"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "card-date",
-   "first_seen": "2026-10-28",
-   "headline": "How PHP2Shell exploit leads directly to RCE and how to mitigate the threat",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/how-php2shell-exploit-leads-directly-to-rce-and-how-to-mitigate-the-threat"
   }
  ]
 }
