@@ -32448,8 +32448,8 @@
     "category": "HR & Workforce",
     "description": "Student loan and PSLF navigation benefit for public-sector employers (NACo program partner)",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://wellfound.com/company/bysavi/jobs"
     },
     "hiring": {
       "status": "Unknown",
@@ -116067,8 +116067,8 @@
     "category": "Streets",
     "description": "Roadway speed, congestion and safety analytics for DOTs and MPOs - exhibited at ITS America 2026, TRB 2027",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://inrix.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -141391,8 +141391,12 @@
     "category": "Security & Screening",
     "description": "Threat detection, thermal and CBRNE sensors for airports and agencies",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "workday",
+      "ref": [
+        "flir",
+        "wd1",
+        "flircareers"
+      ]
     },
     "hiring": {
       "status": "Unknown",
@@ -238366,8 +238370,8 @@
     "category": "IT & AI Platforms",
     "description": "Cloud SIEM and XDR security platform with CJIS and NIST 800-53 compliance reporting, sold to state and local government IT teams and other organizations - exhibited at GMIS International 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "blumira"
     },
     "hiring": {
       "status": "Unknown",
@@ -238414,8 +238418,8 @@
     "category": "IT & Administration",
     "description": "Ubuntu Linux, Ubuntu Pro security subscriptions, Landscape fleet management and cloud software with support, sold to schools, universities, government and enterprises - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "canonical"
     },
     "hiring": {
       "status": "Unknown",
@@ -238438,8 +238442,8 @@
     "category": "Benefits & Medicaid Systems",
     "description": "Background check and income, employment and asset verification platform, sold to employers, lenders and state agencies verifying Medicaid and SNAP eligibility - exhibited at APHSA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://checkr.com/company/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -238462,8 +238466,8 @@
     "category": "IT & AI Platforms",
     "description": "Observability, application security and AIOps software for monitoring state and local agency digital services, cloud and AI workloads - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.dynatrace.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -238486,8 +238490,8 @@
     "category": "Workforce & Labor",
     "description": "AI talent-matching software for public employers and state workforce agencies, including a job marketplace linking job seekers to employers - exhibited at NASWA 2025",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://app.eightfold.ai/careers/search"
     },
     "hiring": {
       "status": "Unknown",
@@ -238510,8 +238514,8 @@
     "category": "Emergency Mgmt",
     "description": "Makes radio-over-IP gateways, dispatch consoles and interoperability devices that link land mobile radio and cellular push-to-talk for public safety agencies - exhibited at APCO 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://jps.com/about-us/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -238534,8 +238538,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells anti-ransomware endpoint software and a ransomware response service to state and local governments, school districts and other organizations - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "halcyon"
     },
     "hiring": {
       "status": "Unknown",
@@ -238558,8 +238562,8 @@
     "category": "IT & AI Platforms",
     "description": "Security awareness training, phishing simulation and email security software for organizations including K-12 districts and colleges - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.knowbe4.com/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -238582,8 +238586,8 @@
     "category": "IT & AI Platforms",
     "description": "TotalView network monitoring and troubleshooting software for IT teams, with customers that include a city government and a community college - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.pathsolutions.com/company/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -238606,8 +238610,8 @@
     "category": "IT & AI Platforms",
     "description": "Security ratings and third-party cyber risk monitoring software for state and local agencies, schools, federal bodies and private companies - exhibited at NASCIO 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "securityscorecard"
     },
     "hiring": {
       "status": "Unknown",
@@ -238630,8 +238634,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells video meetings, phone, chat and contact center software, with a Zoom for Government edition for federal, state and local agencies - exhibited at EDUCAUSE 2026, CoSN 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.careers.zoom.us/"
     },
     "hiring": {
       "status": "Unknown",
@@ -238657,8 +238661,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells a zero trust cloud security platform to businesses and to state and local government agencies - exhibited at NASCIO 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.zscaler.com/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -238681,8 +238685,8 @@
     "category": "Libraries",
     "description": "Sells customizable online software-skills and compliance training courses, a course builder and an LMS to public libraries, government agencies and schools - exhibited at PLA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.customguide.com/courses/career-readiness/career"
     },
     "hiring": {
       "status": "Unknown",
@@ -238705,8 +238709,8 @@
     "category": "Water",
     "description": "Sells cloud asset and work management software (EAM/CMMS) to water and wastewater utilities, including city utility departments and water agencies - exhibited at WEFTEC 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://mentorapm.com/about-us/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -238753,8 +238757,8 @@
     "category": "Permitting & Licensing",
     "description": "Sells Flairdocs right-of-way, real estate and permitting software plus IT consulting and staffing to state and local agencies, federal agencies, utilities and pipeline companies - exhibited at APTA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://flairsoft.net/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -238777,8 +238781,8 @@
     "category": "Rider Experience",
     "description": "Sells long-range accessible code signage, apps and a content platform to transit agencies for stations, stops and vehicles - exhibited at APTA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.navilens.com/en/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -238825,8 +238829,8 @@
     "category": "Broadband & Connectivity",
     "description": "Sells CLEARSITE RF spectrum monitoring and management and CLEARSKY drone and rogue-signal detection to cities, public safety agencies, airports and seaports - exhibited at Smart Cities Connect 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.digitalglobalsystems.com/job-listing/"
     },
     "hiring": {
       "status": "Unknown",
@@ -238945,8 +238949,8 @@
     "category": "Streets",
     "description": "Sells smart road sensor networks and an AI road intelligence platform for connected and automated vehicle corridors to state transportation departments - exhibited at ITS America 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "cavnue"
     },
     "hiring": {
       "status": "Unknown",
@@ -238969,8 +238973,8 @@
     "category": "Streets",
     "description": "Sells V2X roadside and onboard units with roadway intelligence, emergency vehicle and transit signal priority software to road operators and public fleets - exhibited at ITS America 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://commsignia.com/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -238993,8 +238997,8 @@
     "category": "Streets",
     "description": "Sells a cloud traffic analytics platform that turns existing roadway sensors into congestion, signal performance, emissions and safety data for cities and DOTs - exhibited at ITS America 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.gridmatrix.com/join-us"
     },
     "hiring": {
       "status": "Unknown",
@@ -239041,8 +239045,8 @@
     "category": "Operations & SIS",
     "description": "Document management, records digitization, AP automation and budget software, including YellowFolder, for school districts, government agencies and businesses - exhibited at ASBO School Business 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "intellinetics"
     },
     "hiring": {
       "status": "Unknown",
@@ -239065,8 +239069,8 @@
     "category": "HR & Workforce",
     "description": "Benefits administration, enrollment, ACA and COBRA compliance software for employers, brokers and carriers, including government employers and school districts - exhibited at ASBO School Business 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://selerix.com/careers-slx/"
     },
     "hiring": {
       "status": "Unknown",
@@ -239089,8 +239093,8 @@
     "category": "Operations & SIS",
     "description": "AI tool that generates differentiated, print-ready lesson resources for teachers, sold to schools and districts as annual licenses - exhibited at CEC Convention 2027",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "ashby",
+      "ref": "diffit"
     },
     "hiring": {
       "status": "Unknown",
@@ -239113,8 +239117,8 @@
     "category": "Operations & SIS",
     "description": "Literacy and math accessibility software, special education curriculum and IEP management systems for K-12 districts, colleges and workplaces - exhibited at CEC Convention 2027",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "everway"
     },
     "hiring": {
       "status": "Unknown",
@@ -239161,8 +239165,8 @@
     "category": "Benefits & Medicaid Systems",
     "description": "Credit bureau and data company whose public sector unit sells identity proofing, income and employment verification, eligibility data and fraud analytics to federal, state and local agencies - exhibited at NASS Winter/Summer 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.experian.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -239185,8 +239189,8 @@
     "category": "IT & AI Platforms",
     "description": "Firewalls, secure access, endpoint security and managed detection and response for businesses, K-12 schools and state and local governments - exhibited at Smart Cities Connect 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.sonicwall.com/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -239209,8 +239213,8 @@
     "category": "Fleet & Operations",
     "description": "AI geospatial platform that turns LiDAR, imagery and asset data into safety and maintenance insight for transit agencies, grid operators, telecom and mining - exhibited at DISTRIBUTECH 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://app.pyjamahr.com/careers?company=DEEPMATRIX%20PRIVATE%20LIMITED&company_uuid=491B6A04B5"
     },
     "hiring": {
       "status": "Unknown",
@@ -239233,8 +239237,8 @@
     "category": "Emergency Mgmt",
     "description": "SAR satellite imagery and flood and wildfire impact data for defense, emergency management agencies, insurers and utilities - exhibited at DISTRIBUTECH 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.iceye.com/careers?hsLang=en"
     },
     "hiring": {
       "status": "Unknown",
@@ -239281,8 +239285,8 @@
     "category": "Fire",
     "description": "All-in-one fire department operations platform covering incidents, personnel, apparatus, training, pre-plans, inspections and inventory - exhibited at FDIC International 2027",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://astral8.io/careers"
     },
     "hiring": {
       "status": "Unknown",

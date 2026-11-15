@@ -501,7 +501,7 @@
    "ref": "https://eoja.fa.ap1.oraclecloud.com"
   },
   "note": "oracle:eoja reads (0 posting(s)), but does not match 'Hansen Technologies'; likely a parent or another company",
-  "on": "2026-08-23"
+  "on": "2026-11-15"
  },
  "systems-software": {
   "ats": {
@@ -686,5 +686,53 @@
   },
   "note": "oracle:ehxr reads (0 posting(s)), but does not match 'Marketplace.city'; likely a parent or another company",
   "on": "2026-11-01"
+ },
+ "govpath": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "truepointsolutions"
+  },
+  "note": "bamboohr:truepointsolutions reads (0 posting(s)), but does not match 'GovPath'; likely a parent or another company",
+  "on": "2026-11-15"
+ },
+ "sansio": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "volarisgroup",
+    "wd3",
+    "Sansio"
+   ]
+  },
+  "note": "workday:volarisgroup reads (2 posting(s)), but does not match 'Sansio'; likely a parent or another company",
+  "on": "2026-11-15"
+ },
+ "lexia": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "cambiumlearning",
+    "wd1",
+    "Opportunities"
+   ]
+  },
+  "note": "workday:cambiumlearning reads (2 posting(s)), but does not match 'Lexia'; likely a parent or another company",
+  "on": "2026-11-15"
+ },
+ "verint-systems": {
+  "ats": {
+   "type": "ashby",
+   "ref": "27cfd344-670f-4dcd-8b13-0e18005b0d65"
+  },
+  "note": "ashby:27cfd344-670f-4dcd-8b13-0e18005b0d65 reads (18 posting(s)), but does not match 'Verint Systems'; likely a parent or another company",
+  "on": "2026-11-15"
+ },
+ "drivewyze-inc": {
+  "ats": {
+   "type": "greenhouse",
+   "ref": "bestpass"
+  },
+  "note": "greenhouse:bestpass reads (11 posting(s)), but does not match 'Drivewyze, Inc.'; likely a parent or another company",
+  "on": "2026-11-15"
  }
 }
