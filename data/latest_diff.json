@@ -1,286 +1,104 @@
 {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "previous": "2026-11-14",
   "changes": [
     {
-      "company": "Motorola Solutions",
-      "id": "motorola-solutions",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Enterprise Account Executive (United Kingdom Off)"
-    },
-    {
-      "company": "Kaiden AI",
-      "id": "kaiden-ai",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://jobs.gusto.com/boar"
-    },
-    {
-      "company": "ZOLL Medical",
-      "id": "zoll-medical",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Territory Manager (Madrid, Spain)"
-    },
-    {
-      "company": "MD Ally",
-      "id": "md-ally",
+      "company": "InTime Solutions",
+      "id": "intime-solutions",
       "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 403 for https://jobs.gusto.com/boar"
+      "note": "HTTP 403 for https://intime.com/careers"
     },
     {
-      "company": "Xylem",
-      "id": "xylem",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Executive Sales Representative - N (12 Locations)"
-    },
-    {
-      "company": "Badger Meter",
-      "id": "badger-meter",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Sales Enablement Analyst Intern only"
-    },
-    {
-      "company": "Mueller Water Products",
-      "id": "mueller-water-products",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Jr. Sales Representative (Remote - Tennessee)"
-    },
-    {
-      "company": "Cubic Transportation Systems",
-      "id": "cubic-transportation-systems",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager - East Coast (2 Locations)"
-    },
-    {
-      "company": "Itron",
-      "id": "itron",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Senior Manager, Sales - Resiliency only"
-    },
-    {
-      "company": "Veritone",
-      "id": "veritone",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Junior Media Account Executive (London, UK)"
-    },
-    {
-      "company": "Boston Dynamics",
-      "id": "boston-dynamics",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Senior Sales Executive (2 Locations)"
-    },
-    {
-      "company": "GUARDIAN RFID",
-      "id": "guardian-rfid",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://jobs.gusto.com/boar"
-    },
-    {
-      "company": "Tranquility AI",
-      "id": "tranquility-ai",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://jobs.gusto.com/boar"
-    },
-    {
-      "company": "ADP",
-      "id": "adp",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://jobs.adp.com/en/?rb"
-    },
-    {
-      "company": "Bentley Systems",
-      "id": "bentley-systems",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Support Account Manager, Enterpris (Ireland Dublin Off)"
-    },
-    {
-      "company": "Workday",
-      "id": "workday",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (Japan, Tokyo)"
-    },
-    {
-      "company": "Collins Aerospace, An RTX Business",
-      "id": "collins-aerospace-an-rtx-business",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.collinsaerospac"
-    },
-    {
-      "company": "Upper Hand",
-      "id": "upper-hand",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://jobs.gusto.com/boar"
-    },
-    {
-      "company": "American Fidelity",
-      "id": "american-fidelity",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager (3 Locations)"
-    },
-    {
-      "company": "DTN",
-      "id": "dtn",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "SaaS Account Executive - Weather (United Kingdom - R)"
-    },
-    {
-      "company": "WellSky",
-      "id": "wellsky",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Sr. Product Manager - Revenue Cycl only"
-    },
-    {
-      "company": "Xtract One Technologies",
-      "id": "xtract-one-technologies",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Regional Sales Manager (Washington, Distri)"
-    },
-    {
-      "company": "ADB SAFEGATE",
-      "id": "adb-safegate",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://adbsafegate.com/abo"
-    },
-    {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
+      "company": "INRIX",
+      "id": "inrix",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "OCLC",
-      "id": "oclc",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Strategic Account Director -Wester only"
-    },
-    {
-      "company": "Nelnet Campus Commerce",
-      "id": "nelnet-campus-commerce",
+      "company": "Teledyne FLIR",
+      "id": "teledyne-flir",
       "from": "Unknown",
       "to": "Yes",
-      "note": "FACTS Account Executive (Maryland, (Remote)"
-    },
-    {
-      "company": "ARMIS",
-      "id": "armis",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.armis.com/armis"
-    },
-    {
-      "company": "Cloudera",
-      "id": "cloudera",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive - SLED (6 Locations)"
-    },
-    {
-      "company": "CrowdStrike",
-      "id": "crowdstrike",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Corporate Account Executive, Kolka (India - Remote)"
-    },
-    {
-      "company": "Kaltura Inc",
-      "id": "kaltura-inc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "KYRIBA",
-      "id": "kyriba",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Strategic Account Executive (New York)"
-    },
-    {
-      "company": "Lumu Technologies",
-      "id": "lumu-technologies",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Pluralsight",
-      "id": "pluralsight",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Regional Sales Director - APAC (Remote - Australia)"
-    },
-    {
-      "company": "Sage",
-      "id": "sage",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.sage.com/en-us/"
-    },
-    {
-      "company": "SailPoint",
-      "id": "sailpoint",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Commercial Account Executive (Remote (New York, )"
-    },
-    {
-      "company": "Tricentis",
-      "id": "tricentis",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sr. Account Executive \u2013 Germany (P (DE - Remote)"
+      "note": "UK Commercial Account Manager (UK - Fareham)"
     },
     {
       "company": "Cotiviti",
       "id": "cotiviti",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales VP - EDI & Interoperability only"
     },
     {
-      "company": "Sharecare",
-      "id": "sharecare",
+      "company": "Blumira",
+      "id": "blumira",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Solution Engineer, Post-Sales only"
+    },
+    {
+      "company": "Canonical",
+      "id": "canonical",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Embedded Devices Software Solution (Home based - World)"
+    },
+    {
+      "company": "Halcyon",
+      "id": "halcyon",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Don't see the exact role you're lo (Remote, US)"
+    },
+    {
+      "company": "SecurityScorecard",
+      "id": "securityscorecard",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (United States (Rem)"
+    },
+    {
+      "company": "MentorAPM",
+      "id": "mentorapm",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "NaviLens",
+      "id": "navilens",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Cavnue",
+      "id": "cavnue",
       "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Syniverse",
-      "id": "syniverse",
+      "company": "Intellinetics",
+      "id": "intellinetics",
       "from": "Unknown",
-      "to": "Yes",
-      "note": "Sales Director (Hong Kong)"
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "OnePlan",
-      "id": "oneplan",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.oneplan.io/jobs"
+      "company": "Diffit",
+      "id": "diffit",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Everway",
+      "id": "everway",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (WA) (Remote, USA)"
     }
   ]
 }

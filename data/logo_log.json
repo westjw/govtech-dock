@@ -9166,5 +9166,23 @@
   "via": "apple-touch-icon",
   "url": "https://cdn.prod.website-files.com/630fb9ce3432770993c32b05/638cdf529bf138836de77897_favicon256x256.webp",
   "sha256": "8d443b778c03dfaeb3b593f80ef9416f23f1a9cc9c5022a613a5565b9adf64e0"
+ },
+ "kaltura-inc": {
+  "ok": true,
+  "note": "https://corp.kaltura.com/wp-content/uploads/2020/07/fav_icon.png",
+  "site": "https://corp.kaltura.com/",
+  "on": "2026-11-15",
+  "via": "declared-icon",
+  "url": "https://corp.kaltura.com/wp-content/uploads/2020/07/fav_icon.png",
+  "sha256": "bd971e96726b20f59a7fe22ded804f61bf600310aa5592d0e522fe4e72a24d16"
+ },
+ "lumu-technologies": {
+  "ok": true,
+  "note": "https://lumu.io/wp-content/uploads/2020/01/favicon.png",
+  "site": "https://lumu.io/cybersecurity-for-schools/",
+  "on": "2026-11-15",
+  "via": "declared-icon",
+  "url": "https://lumu.io/wp-content/uploads/2020/01/favicon.png",
+  "sha256": "d9cbcbc3cf030a5e3d164317ba2fdb8322619ff8fe6560e3e17dc8dbf04bed3d"
  }
 }
