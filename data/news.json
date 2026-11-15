@@ -1767,6 +1767,24 @@
   "checked_on": "2026-11-15",
   "items": [
    {
+    "date": "2026-11-15",
+    "date_source": "json-ld",
+    "first_seen": "2026-11-15",
+    "headline": "ArcSuite AI Is Now A-Frame One",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.aframesolutions.com/news/a-frame-one"
+   },
+   {
+    "date": "2026-11-15",
+    "date_source": "json-ld",
+    "first_seen": "2026-11-15",
+    "headline": "Federal Procurement November 2026 \u00b7 6 min read",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.aframesolutions.com/blog/palt-procurement-administrative-lead-time"
+   },
+   {
     "date": "2026-10-31",
     "date_source": "json-ld",
     "first_seen": "2026-10-31",
@@ -1777,16 +1795,16 @@
    },
    {
     "date": "2026-09-30",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
-    "headline": "ArcSuite AI Added to A-Frame Solutions\u2019 GSA Multiple Award Schedule",
+    "headline": "A-Frame One Added to A-Frame Solutions\u2019 GSA Multiple Award Schedule",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.aframesolutions.com/news/gsa-schedule-arcsuite"
    },
    {
     "date": "2026-09-30",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
     "headline": "Product Feature September 30, 2026",
     "kind": "press",
@@ -1822,9 +1840,9 @@
    },
    {
     "date": "2026-09-28",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
-    "headline": "A-Frame Solutions Awarded State of Montana Contract to Provide ArcSuite AI to State Agencies",
+    "headline": "A-Frame Solutions Awarded State of Montana Contract to Provide A-Frame One to State Agencies",
     "kind": "contract",
     "kind_rule": "Awarded State of Montana Contract",
     "url": "https://www.aframesolutions.com/news/montana-ai-contract"
@@ -1833,7 +1851,7 @@
     "date": "2026-08-18",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "A-Frame Solutions Releases ArcPerform, a Free Builder for the PWS, PRS and QASP",
+    "headline": "A-Frame Solutions Releases A-Frame One Perform, a Free Builder for the PWS, PRS and QASP",
     "kind": "product",
     "kind_rule": "Releases",
     "url": "https://www.aframesolutions.com/news/arcperform-free-pws-qasp-builder"
@@ -1878,7 +1896,7 @@
     "date": "2026-08-16",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "ArcCompose Turns a Document Into a Record That Tracks Itself",
+    "headline": "A-Frame One Docs Turns a Document Into a Record That Tracks Itself",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.aframesolutions.com/news/arccompose-controlled-records"
@@ -1932,7 +1950,7 @@
     "date": "2026-07-24",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "ArcProcure Now Builds the Entire Solicitation With You \u2014 and Keeps Buyers and Vendors in Sync",
+    "headline": "A-Frame One Procure Now Builds the Entire Solicitation With You \u2014 and Keeps Buyers and Vendors in Sync",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.aframesolutions.com/news/arcprocure-ai-solicitation-builder"
@@ -1972,24 +1990,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.aframesolutions.com/blog/why-your-naics-code-costs-you-contracts"
-   },
-   {
-    "date": "2026-07-02",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-12",
-    "headline": "The FAR's New CUI Rule: What Changed in the June 2026 Overhaul Version",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.aframesolutions.com/blog/far-cui-rule-overhaul-2026"
-   },
-   {
-    "date": "2026-07-01",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-12",
-    "headline": "FAR vs. DFARS: What's the Difference, and When Does Each Apply?",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.aframesolutions.com/blog/far-vs-dfars-difference"
    }
   ],
   "state": "items"
@@ -11989,7 +11989,7 @@
   "items": [
    {
     "date": "2026-11-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-12",
     "headline": "4 Things Top Tow Operators and Business Owners Do Differently",
     "kind": "press",
@@ -11998,7 +11998,7 @@
    },
    {
     "date": "2026-11-03",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-03",
     "headline": "Towing Business Owners: What Did Paperwork Cost You Last Month?",
     "kind": "press",
@@ -12007,7 +12007,7 @@
    },
    {
     "date": "2026-11-02",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-03",
     "headline": "Autura Statement on Recent Las Vegas Towing Coverage",
     "kind": "press",
@@ -12025,7 +12025,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-07",
     "headline": "Fall 2026 Towing, Public Safety, and Auto Recycling Events: Where to Find Autura",
     "kind": "press",
@@ -12061,7 +12061,7 @@
    },
    {
     "date": "2026-08-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "2026 State of Towing Report Is Coming Soon: Share Your Data and Help Shape the Industry",
     "kind": "press",
@@ -12151,7 +12151,7 @@
    },
    {
     "date": "2026-06-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Autura Pathways: Get to Know Ron Petras",
     "kind": "press",
@@ -22213,8 +22213,8 @@
     "url": "https://www.campdoc.com/blog/camp-software-security-privacy/"
    },
    {
-    "date": "2026-10-13",
-    "date_source": "json-ld",
+    "date": "2026-10-15",
+    "date_source": "index-text",
     "first_seen": "2026-10-14",
     "headline": "The State of Camp Health: Key Findings from Summer 2026",
     "kind": "press",
@@ -32332,7 +32332,7 @@
  "collins-aerospace-an-rtx-business": {
   "checked_on": "2026-11-15",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "colorado-time-systems": {
   "checked_on": "2026-11-15",
@@ -44366,7 +44366,7 @@
    },
    {
     "date": "2026-10-14",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-10-14",
     "headline": "DroneShield Q4 Software Release Helps Operators Detect, Identify and Defeat Drone Threats Faster",
     "kind": "press",
@@ -44375,7 +44375,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-10-07",
     "headline": "DroneShield Access Portal Recognised with Australian Good Design Award",
     "kind": "press",
@@ -44384,7 +44384,7 @@
    },
    {
     "date": "2026-10-06",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
     "headline": "DroneShield Appoints Joint Company Secretary",
     "kind": "leadership",
@@ -44402,7 +44402,7 @@
    },
    {
     "date": "2026-10-01",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-10-06",
     "headline": "DroneShield Launches Mission Ready Services",
     "kind": "product",
@@ -56818,7 +56818,7 @@
     "url": "https://extradutysolutions.com/news/extra-duty-solutions-named-on-2026-inc-5000-list/"
    }
   ],
-  "state": "unread"
+  "state": "items"
  },
  "eyeride": {
   "checked_on": "2026-11-15",
@@ -60239,15 +60239,6 @@
     "url": "https://www.gofmx.com/blog/business-case-facilities-management-software/"
    },
    {
-    "date": "2026-04-21",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "How to Select the Best Facilities Management Software",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
-   },
-   {
     "date": "2026-02-10",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -60255,6 +60246,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.gofmx.com/blog/fleet-management-metrics/"
+   },
+   {
+    "date": "2025-09-07",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "How to Select the Best Facilities Management Software",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
    },
    {
     "date": "2025-09-07",
@@ -60303,7 +60303,7 @@
    },
    {
     "date": "2025-03-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Facility Use Agreement 101: What to Know",
     "kind": "press",
@@ -60321,7 +60321,7 @@
    },
    {
     "date": "2024-10-17",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "What You Need to Know About Capital Improvement",
     "kind": "press",
@@ -62978,7 +62978,7 @@
  "gatekeeper-systems": {
   "checked_on": "2026-11-15",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "ge-vernova": {
   "checked_on": "2026-11-15",
@@ -64079,7 +64079,7 @@
   "items": [
    {
     "date": "2026-11-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-12",
     "headline": "GPS vs. Bluetooth asset tracking: How to choose the right one for your fleet",
     "kind": "press",
@@ -64106,7 +64106,7 @@
    },
    {
     "date": "2026-11-10",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-11-10",
     "headline": "How can self-hosted AI give organizations more control over data?",
     "kind": "press",
@@ -64151,7 +64151,7 @@
    },
    {
     "date": "2026-10-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-28",
     "headline": "How to start a trucking business: Step-by-step guide for owner operators",
     "kind": "press",
@@ -64160,7 +64160,7 @@
    },
    {
     "date": "2026-10-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-28",
     "headline": "Geotab's Response to PHP Vulnerabilities (CVE-2026-109618, CVE-2026-109619)",
     "kind": "press",
@@ -64169,7 +64169,7 @@
    },
    {
     "date": "2026-10-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-28",
     "headline": "Garbage truck safety: Three questions for your video review process",
     "kind": "press",
@@ -64178,7 +64178,7 @@
    },
    {
     "date": "2026-10-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-29",
     "headline": "Why you need AI in your fleet operations",
     "kind": "press",
@@ -64187,7 +64187,7 @@
    },
    {
     "date": "2026-10-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-27",
     "headline": "How fleet data gets you from what happened to what to do next",
     "kind": "press",
@@ -64196,7 +64196,7 @@
    },
    {
     "date": "2026-10-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-24",
     "headline": "How private haulers can help prepare their fleets for new waste management contracts",
     "kind": "press",
@@ -64241,7 +64241,7 @@
    },
    {
     "date": "2026-10-06",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-06",
     "headline": "Snow plow safety: focus on the moments that matter",
     "kind": "press",
@@ -64286,7 +64286,7 @@
    },
    {
     "date": "2026-09-25",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "Why the OEM versus device-level telematics debate misses the point for mixed-fleet operators",
     "kind": "press",
@@ -98313,7 +98313,7 @@
     "url": "https://mcmtechnology.com/blog/streamlining-safety-mcmtech-inspection-software-is-a-game-changer-for-fire-departments/"
    }
   ],
-  "state": "items"
+  "state": "unread"
  },
  "mdf-commerce": {
   "checked_on": "2026-11-15",
@@ -100600,7 +100600,7 @@
     "url": "https://www.mitel.com/blog/coffee-shop-etiquette-in-the-age-of-the-cloud-phone"
    }
   ],
-  "state": "items"
+  "state": "unread"
  },
  "mjm-innovations": {
   "checked_on": "2026-11-15",
@@ -103087,14 +103087,14 @@
     "url": "https://www.munibit.com/blog/ada-compliance-local-sites"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "municibid": {
   "checked_on": "2026-11-15",
   "items": [
    {
     "date": "2026-11-09",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-11-11",
     "headline": "Commercial Dump Truck Insurance: Costs & Savings",
     "kind": "press",
@@ -103103,7 +103103,7 @@
    },
    {
     "date": "2026-11-04",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-11-04",
     "headline": "Best Used SUV: Government Fleet Auction Deals",
     "kind": "press",
@@ -103112,7 +103112,7 @@
    },
    {
     "date": "2026-11-04",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-11-04",
     "headline": "Dump Truck Rental vs. Buying: Break-Even Guide",
     "kind": "press",
@@ -103121,7 +103121,7 @@
    },
    {
     "date": "2026-09-17",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-28",
     "headline": "Mini Skid Steer vs. Full-Size, Tractor & Excavator",
     "kind": "press",
@@ -103130,7 +103130,7 @@
    },
    {
     "date": "2026-09-17",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-28",
     "headline": "2028 Ford Expedition Police Responder: Specs & Tech",
     "kind": "press",
@@ -103184,7 +103184,7 @@
    },
    {
     "date": "2026-07-06",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "The Municibid App Is Here! Plus a Rare Micro Van and Picnic Highlights",
     "kind": "press",
@@ -103193,7 +103193,7 @@
    },
    {
     "date": "2026-07-05",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Skid Steer Attachments: Types, Matching & Best Deals",
     "kind": "press",
@@ -103301,7 +103301,7 @@
    },
    {
     "date": "2025-10-31",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "When the Government Shuts Down: Public Assets, Surplus, and Auctions",
     "kind": "press",
@@ -103859,7 +103859,7 @@
  "myvolunteer": {
   "checked_on": "2026-11-15",
   "items": [],
-  "state": "none_found"
+  "state": "unread"
  },
  "myworkdrive": {
   "checked_on": "2026-11-15",
@@ -128092,7 +128092,7 @@
     "url": "https://routeware.com/blog/what-modern-snow-management-looks-like-for-cities/"
    }
   ],
-  "state": "none_found"
+  "state": "items"
  },
  "rta-fleet-management": {
   "checked_on": "2026-11-15",
@@ -139129,7 +139129,7 @@
  "stackbench": {
   "checked_on": "2026-11-15",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "stackmap": {
   "checked_on": "2026-11-15",
@@ -149111,7 +149111,7 @@
    },
    {
     "date": "2025-09-10",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Air Force Invests in Biometric-Driven Technology for Air Traffic Control Training",
     "kind": "press",
@@ -153806,7 +153806,7 @@
  "virtra": {
   "checked_on": "2026-11-15",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "virtual-peaker": {
   "checked_on": "2026-11-15",
