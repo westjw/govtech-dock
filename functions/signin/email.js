@@ -92,7 +92,7 @@ function mail(link, code) {
     `<div style="font-size:20px;font-weight:800;margin:0 0 12px">Sign in to ${NAME}</div>
 <p style="margin:0 0 18px">Here is your link. It works for ${LINK_MINUTES} minutes.</p>
 ${button(link, "Sign in")}
-<p style="margin:22px 0 6px">Reading this on another device? Type this code on the sign-in page:</p>
+<p style="margin:22px 0 6px">Signing in from another app or device? Type this code on the sign-in page:</p>
 <div style="font-family:${FONT};font-size:26px;font-weight:800;letter-spacing:.14em;color:#1F2536">${shown}</div>
 <p style="margin:22px 0 0;font-size:13px;color:#556F82">If you did not ask to sign in, ignore this email:
 nothing happens unless it is used.</p>`, []);

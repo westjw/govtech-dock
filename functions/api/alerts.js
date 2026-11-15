@@ -27,13 +27,19 @@
  *
  * Nothing is ever mailed to an address that has not clicked its own
  * confirmation link. Otherwise this endpoint is a machine for sending mail
- * to strangers under someone else's name.
+ * to strangers under someone else's name. The one exception (owner,
+ * 2026-11-14) is no exception to the rule's reason: a person signed in with
+ * this very address has already proved the mailbox, so their NEW
+ * subscription starts confirmed (see subscribe()). Every other address
+ * still confirms by email.
  *
  * Setup (one time): create a KV namespace, bind it to the Pages project as
  * ALERTS, and add RESEND_KEY (an API key from a transactional mail provider)
  * as an encrypted variable. Without either, this endpoint reports that it is
  * not configured - it never pretends a signup landed.
  */
+import { signedIn } from "../_identity.js";
+import { fromOurPage } from "../_session.js";
 import { json, mintToken, emailKey, underDailyCap, validEmail, cleanToken, send, button, shell,
          SITE, FROM, NAME } from "../_mail.js";
 const MAX_SAVED = 500;          // a person's shortlist, not a scrape target
@@ -408,6 +414,25 @@ export async function onRequestPost({ request, env }) {
  * a handful of people; a script is the thing this stops. */
 const SIGNUPS_PER_CALLER = 10;
 
+/* "You are already subscribed": the settings link, to the inbox only. */
+function settingsMail(token) {
+  return ["Your SLED JOBS alert settings",
+    `Your settings link:\n\n${SITE}/alerts?t=${token}\n\n` +
+    `You are already subscribed, so nothing changed. Use the link to ` +
+    `adjust what you get or stop the emails.`,
+    shell(
+      "Your settings link - nothing changed on your subscription.",
+      `<div style="font-size:20px;font-weight:800;letter-spacing:-.015em;
+ line-height:1.3">Your ${NAME} settings</div>
+<p style="margin:12px 0 0">You are already subscribed, so nothing changed.
+ Use the link below to adjust what you get, or to stop the emails.</p>
+<div style="padding:20px 0 4px">${button(SITE + "/alerts?t=" + token,
+        "Open settings")}</div>
+<p style="margin:16px 0 0;color:#556F82;font-size:13px">If you did not ask for
+ this, ignore it &mdash; nothing about your subscription has changed.</p>`,
+      [])];
+}
+
 async function subscribe(body, env, request) {
   if (body.company_fax) return json({ ok: true });   // honeypot, as on submit
   const email = validEmail(body.email);
@@ -427,6 +452,47 @@ async function subscribe(body, env, request) {
   const existing = await env.ALERTS.get(ek);
   const now = Math.floor(Date.now() / 1000);
 
+  /* THE ADDRESS A PERSON SIGNED IN WITH IS ALREADY PROVEN (owner,
+   * 2026-11-14: "do that too, good idea", of filling it in and sparing a
+   * newcomer the second email). A sign-in by email link or code, by Google
+   * (email_verified) or through Access proved this browser holds that
+   * mailbox, which is everything the confirmation email proves. So for THAT
+   * address, and only that one, a NEW subscription starts confirmed and its
+   * settings token comes back to the page. Held to three things (review,
+   * 2026-11-14):
+   *   - only from our own page, as JSON (fromOurPage; a cross-site JSON POST
+   *     needs a preflight nobody answers), so another site, a sibling host
+   *     included, cannot start somebody's emails with their sign-in;
+   *   - an EXISTING confirmed subscription's token never comes back to the
+   *     page: it is permanent and carries the saved roles, and a session on
+   *     a shared machine is not the mailbox. Its settings link is mailed, as
+   *     before, and the page says so;
+   *   - a pending one is replaced by a fresh confirmed one, so the token that
+   *     went out in its confirmation email opens nothing.
+   * Any other address still gets the confirmation and the same answer as
+   * before, so none of this says whether somebody ELSE is subscribed. */
+  const me = await signedIn(request, env);
+  const asJson = (request.headers.get("content-type") || "").toLowerCase().includes("application/json");
+  if (me && me.email === email && asJson && fromOurPage(request)) {
+    const held = existing ? await env.ALERTS.get("sub:" + existing) : null;
+    const prior = held ? JSON.parse(held) : null;
+    if (prior && prior.confirmed) {
+      if (now - (prior.settings_sent || 0) >= CONFIRM_COOLDOWN) {
+        prior.settings_sent = now;
+        await putSub(env, existing, prior);
+        await send(env, email, ...settingsMail(existing));
+      }
+      return json({ ok: true, subscribed: true, already: true });
+    }
+    if (prior) await env.ALERTS.delete("sub:" + existing);
+    const token = mintToken();
+    await putSub(env, token, { email, prefs, saved: [], removed: {}, confirmed: true,
+                               confirmed_by: "sign-in", created: now, last_sent: null });
+    await env.ALERTS.put(ek, token);
+    await env.ALERTS.delete(budgetKey(ek));
+    return json({ ok: true, subscribed: true, already: false, token });
+  }
+
   if (existing) {
     const raw = await env.ALERTS.get("sub:" + existing);
     if (raw) {
@@ -439,21 +505,7 @@ async function subscribe(body, env, request) {
         if (now - (sub.settings_sent || 0) < CONFIRM_COOLDOWN) return same;
         sub.settings_sent = now;
         await putSub(env, existing, sub);
-        await send(env, email, "Your SLED JOBS alert settings",
-          `Your settings link:\n\n${SITE}/alerts?t=${existing}\n\n` +
-          `You are already subscribed, so nothing changed. Use the link to ` +
-          `adjust what you get or stop the emails.`,
-          shell(
-            "Your settings link - nothing changed on your subscription.",
-            `<div style="font-size:20px;font-weight:800;letter-spacing:-.015em;
- line-height:1.3">Your ${NAME} settings</div>
-<p style="margin:12px 0 0">You are already subscribed, so nothing changed.
- Use the link below to adjust what you get, or to stop the emails.</p>
-<div style="padding:20px 0 4px">${button(SITE + "/alerts?t=" + existing,
-              "Open settings")}</div>
-<p style="margin:16px 0 0;color:#556F82;font-size:13px">If you did not ask for
- this, ignore it &mdash; nothing about your subscription has changed.</p>`,
-            []));
+        await send(env, email, ...settingsMail(existing));
         return same;
       }
       // Pending: re-send the confirmation, but not more than once an hour, so

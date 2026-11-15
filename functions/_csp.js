@@ -107,7 +107,10 @@ const pageLike = (path) => /(^|\/)[^/.]*$|\.html$/i.test(path);
 /* Frame headers where they belong, and the policy on every HTML response. */
 export async function secure(res, request, env, { holding = false, mode = CSP_MODE } = {}) {
   const path = decodedPath(request);
-  const isFramed = framed(path);
+  // THE GATE'S SIGN-IN CARD carries the address box since 2026-11-14, so it
+  // is framed out like the sign-in pages wherever it is served (review,
+  // 2026-11-14); the landing page, a 200 under the same policy, is not
+  const isFramed = framed(path) || (holding && res.status !== 200);
   const type = res.headers.get("content-type") || "";
   const html = type.includes("text/html");
   /* A 304 CARRIES NO POLICY. The browser copies a policy header from a 304

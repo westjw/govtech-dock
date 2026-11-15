@@ -22,6 +22,21 @@
 import { SITE, NAME } from "./_brand.js";
 import { gate } from "./_gate.js";
 import { secure } from "./_csp.js";
+import { themed } from "./_signin_page.js";
+import { SWITCH_MARK } from "./_card.js";
+
+/* THE READER'S LIGHT OR DARK on a sign-in page (owner, 2026-11-14). The
+ * pages are drawn dark with an empty switch (functions/_signin_page.js); the
+ * request, which only this middleware holds, says which the reader chose. */
+async function themeSignin(res, request) {
+  let path = new URL(request.url).pathname;
+  try { path = decodeURIComponent(path); } catch { /* as sent */ }
+  if (!/^\/signin(\/|$)/.test(path) || res.status === 304) return res;
+  if (!(res.headers.get("content-type") || "").includes("text/html")) return res;
+  const html = await res.text();
+  if (!html.includes(SWITCH_MARK)) return new Response(html, res);
+  return new Response(request.method === "HEAD" ? null : themed(html, request), res);
+}
 
 const TAGLINE = "Every open sales role at state and local government technology companies.";
 
@@ -400,7 +415,7 @@ export async function onRequest(context) {
   }
   // secure() decodes the path itself: Pages serves /%61lerts as /alerts, so a
   // lookup on the raw path left that spelling framable (2026-10-08)
-  let res = await secure(await next(), request, context.env);
+  let res = await secure(await themeSignin(await next(), request), request, context.env);
   let path = new URL(request.url).pathname;
   try { path = decodeURIComponent(path); } catch { /* malformed: as sent */ }
   const keep = request.method === "GET" && res.status === 200

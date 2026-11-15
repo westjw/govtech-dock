@@ -68,7 +68,7 @@ async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie
            cache: res.headers.get("cache-control") || "",
            vary: res.headers.get("vary") || "",
            json: text.startsWith("{") ? JSON.parse(text) : null,
-           body: text.slice(0, 4000) };
+           body: text.slice(0, 16000) };
 }
 
 const ALIAS = "solesource-c6g.pages.dev";

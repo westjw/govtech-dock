@@ -1,5 +1,4 @@
-import { verify, tokenOf } from "../_access.js";
-import { sessionOf } from "../_session.js";
+import { signedIn } from "../_identity.js";
 import { DOMAIN } from "../_brand.js";
 import { sha256 } from "../_roles.js";
 
@@ -52,22 +51,7 @@ export async function whoami(request, env) {
 
 export const onRequestGet = ({ request, env }) => whoami(request, env);
 
-/* {email, via} from a VERIFIED sign-in, or null. ACCESS FIRST when there is
- * one: it is the owner's and the admins', and a link somebody else sent the
- * owner must not make the account menu answer as that somebody (security
- * review, 2026-11-13). A member carries no Access token, so for them this
- * costs nothing. */
-async function signedIn(request, env) {
-  const token = tokenOf(request);
-  if (token) {
-    try {
-      const claims = await verify(token, env);
-      if (claims && typeof claims.email === "string") return { email: claims.email, via: "access" };
-    } catch (e) { /* keys did not answer: fall back to ours */ }
-  }
-  const ours = await sessionOf(request, env);
-  return ours ? { email: ours.email, via: ours.method } : null;
-}
+/* who is signed in: functions/_identity.js, shared with /api/me and alerts */
 
 function json(body) {
   return new Response(JSON.stringify(body), {

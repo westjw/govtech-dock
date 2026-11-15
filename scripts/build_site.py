@@ -92,14 +92,22 @@ def _hunter_page(brand: dict) -> str:
     # JOB HUNTER IS LIVE (2026-10-14) at hunter.<domain>, behind its own
     # Access application, so a beta user is sent there, not told to wait.
     app = html.escape(f"https://hunter.{brand.get('domain') or ''}/app")
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+    # LIGHT AND DARK like the board (owner, 2026-11-14): dark unless this
+    # browser chose light. The sled-theme cookie decides, because every
+    # switch writes it; localStorage only where it is missing. The header
+    # band is the board's navy in both.
+    return f"""<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Job Hunter beta</title>
-<style>body{{margin:0;font-family:Archivo,"Helvetica Neue",Arial,sans-serif;background:#E8F1F7;color:#1F2536}}
-.band{{background:#1F2536;color:#E8F1F7;padding:12px 20px;font-weight:700}}.band a{{color:inherit;text-decoration:none}}
+<script>(function(){{var t=null,m=/(?:^|;\\s*)sled-theme=(light|dark)(?:;|$)/.exec(document.cookie||"");if(m)t=m[1];else{{try{{t=localStorage.getItem("sled-theme")}}catch(e){{}}}}if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}})();</script>
+<style>:root{{color-scheme:light;--bg:#E8F1F7;--panel:#FAF7F0;--ink:#1F2536;--dim:#4B5A6B;--link:#0B57C4;--field:#FFFFFF;--line:#9FB3C4}}
+:root[data-theme=dark]{{color-scheme:dark;--bg:#1F2536;--panel:#262E42;--ink:#E8F1F7;--dim:#A8BCCA;--link:#76ABF9;--field:#1F2536;--line:#4A5C71}}
+body{{margin:0;font-family:Archivo,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink)}}
+.band{{background:#161B29;color:#E8F1F7;padding:12px 20px;font-weight:700}}.band a{{color:inherit;text-decoration:none}}
 main{{max-width:640px;margin:40px auto;padding:0 20px;line-height:1.5}}h1{{font-size:28px;margin:0 0 8px}}
-.kv{{color:#4B5A6B}}.in{{border-left:3px solid #F5A623;padding:10px 14px;background:#FAF7F0;margin:18px 0}}
-a{{color:#0B57C4}}</style></head><body>
+.kv{{color:var(--dim)}}.in{{border-left:3px solid #F5A623;padding:10px 14px;background:var(--panel);margin:18px 0}}
+input,button{{background:var(--field);color:var(--ink);border:1px solid var(--line);border-radius:4px}}
+a{{color:var(--link)}}</style></head><body>
 <div class="band"><a href="/">{name}</a> &middot; Job Hunter, closed beta</div>
 <main><h1>Job Hunter</h1><p class="kv" id="who">Checking who you are&hellip;</p><div id="body"></div>
 <p><a href="/">Back to the board</a><span id="adm"></span></p></main>

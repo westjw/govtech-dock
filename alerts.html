@@ -1,8 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- LIGHT OR DARK AS THE READER CHOSE (owner, 2026-11-14: "white/dark options
+     on all of them"): dark like the board, unless this browser chose light.
+     The sled-theme cookie decides, because every switch writes it (the
+     board's and the sign-in pages'); localStorage only where it is missing. -->
+<script>(function(){var t=null,m=/(?:^|;\s*)sled-theme=(light|dark)(?:;|$)/.exec(document.cookie||"");if(m)t=m[1];else{try{t=localStorage.getItem("sled-theme")}catch(e){}}if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)})();</script>
 <!-- The settings token travels in the URL, so no request from this page may
      carry a Referer that contains it. This is the whole reason the page is
      separate from index.html. -->
@@ -27,6 +32,13 @@
     --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
     --bad:#E46855; --beak:#F5A623; --chip:#2E3852;
     --accent-text:#76ABF9; --dim-chip:#A8BCCA; --warn-text:#EE8676; }}
+  /* THE READER'S OWN CHOICE, not only the system's (2026-11-14): the same
+     dark tokens when data-theme says dark, as the board's switch writes it */
+  :root[data-theme=dark]{ color-scheme:dark;
+    --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7;
+    --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
+    --bad:#E46855; --beak:#F5A623; --chip:#2E3852;
+    --accent-text:#76ABF9; --dim-chip:#A8BCCA; --warn-text:#EE8676; }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
        font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -183,6 +195,9 @@ const q=new URLSearchParams(location.search);
 const TOKEN=q.get("t");
 const WANT_CONFIRM=q.get("confirm")==="1";
 const WANT_STOP=q.get("stop")==="1";
+/* a signed-in person who subscribed the address they signed in with lands
+   here straight away (functions/api/alerts.js): no email to wait for */
+const WELCOME=q.get("welcome")==="1";
 /* ...but only once the page has what it needs (review, 2026-10-22). Taken
    out at once, a reload after "Your settings did not load" asked for /alerts
    with no token: the sign-up form, and since the boards went signed-in, the
@@ -396,6 +411,23 @@ function signupView(){
     <div id="msg" class="msg" role="status" aria-live="polite"></div>
   </div>`;
   fillSectors(); paintCompanies();
+  /* THE ADDRESS YOU SIGNED IN WITH, filled in (owner, 2026-11-14). Asked of
+     /api/me, which answers only this browser's own sign-in. Subscribing that
+     address needs no confirmation email, so the button says what will
+     happen; type another address and it goes back to asking for one. */
+  let ME=null;
+  const paintGo=()=>{
+    const mine=!!ME&&$("#email").value.trim().toLowerCase()===ME;
+    $("#go").textContent=mine?"Start my alerts":"Send me the confirmation";
+  };
+  fetch("/api/me",{credentials:"same-origin",redirect:"manual"})
+    .then(r=>r.ok?r.json():null).then(d=>{
+      if(!d||typeof d.email!=="string"||!d.email)return;
+      ME=d.email.toLowerCase();
+      if(!$("#email").value)$("#email").value=d.email;
+      paintGo();
+    }).catch(()=>{});
+  $("#email").addEventListener("input",paintGo);
   $("#go").onclick=async()=>{
     const email=$("#email").value.trim();
     if(!email){say("err","Add your email first.");return}
@@ -405,6 +437,16 @@ function signupView(){
     $("#go").disabled=false;
     if(r.error==="not_configured"){
       say("err","Alerts are not switched on yet. Nothing was sent and no address was stored.");
+    }else if(r.ok&&r.subscribed&&typeof r.token==="string"&&/^[A-Za-z0-9_-]{40,64}$/.test(r.token)){
+      // the address this browser signed in with: on to its settings, now
+      location.href="/alerts?t="+encodeURIComponent(r.token)+"&welcome=1";
+    }else if(r.ok&&r.subscribed&&r.already){
+      // ALREADY SUBSCRIBED: the settings link goes to the inbox, never to this
+      // page (functions/api/alerts.js), and what was picked here is not saved
+      say("ok","You already get alerts at this address, so nothing changed here. We have emailed you "
+        +"the link to your settings, where you can add a company or change anything. If you asked "
+        +"in the last hour, use the email you already have.");
+      $("#go").disabled=true;
     }else if(r.ok){
       // Deliberately the same words whether or not this address was already
       // subscribed. The page must not become a way to test whether someone
@@ -598,6 +640,7 @@ function settingsView(data){
     settingsView(d);
     // after the new view's live region is in the tree, or it is not heard
     if(justConfirmed)setTimeout(()=>say("ok","Confirmed. You will get your first digest on the next matching morning."),150);
+    else if(WELCOME)setTimeout(()=>say("ok","You are subscribed. You will get your first digest on the next matching morning."),150);
   }else if(d.error==="not_configured"){
     $("#view").innerHTML='<div class="panel"><h2>Not switched on</h2>'
       +'<p class="note">Alerts are not configured on this site yet.</p></div>';

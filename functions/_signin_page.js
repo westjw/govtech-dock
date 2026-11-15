@@ -1,37 +1,21 @@
 /* THE SIGN-IN PAGES, drawn in one place (owner, 2026-11-13).
  *
  * The card is the gate's sign-in card (option 1 of the landing canvas,
- * _gate.js CARD_CSS) with a form in it. No script: these pages are served
+ * functions/_card.js, light and dark) with a form in it. No script: these pages are served
  * under the "signin" policy (scripts/csp.py), which allows no script and
  * lets a form post only to this site. Every page here is noindex, no-store
  * and no-referrer, and names nothing about the board.
  */
 import { NAME } from "./_brand.js";
-import { CARD_CSS, G_MARK, GOOGLE } from "./_gate.js";
+import { G_MARK, GOOGLE } from "./_gate.js";
+import { CARD_CSS, FORM_CSS, THEME_HTML, switchSlot, emailForm, esc, themeOf, themeSwitch } from "./_card.js";
 import { LINK_MINUTES, SESSION_DAYS, unseal, ours, PENDING } from "./_session.js";
 
-export const esc = (s) =>
-  String(s ?? "").replace(/[&<>"']/g, (c) =>
-    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+export { esc };
 
-const FORM_CSS = `
-  form{width:100%;max-width:320px;margin:0 auto;display:flex;flex-direction:column;align-items:stretch;gap:8px;text-align:left}
-  label{font-size:15px;font-weight:600;color:#1F2536}
-  input[type=email],input[type=text]{width:100%;min-height:52px;padding:0 14px;border:1px solid #9FB3C4;border-radius:10px;
-    background:#FFFFFF;color:#1F2536;font:inherit;font-size:18px}
-  input:focus-visible{outline:3px solid #0B57C4;outline-offset:2px}
-  input.code{text-transform:uppercase;letter-spacing:.12em;font-weight:600}
-  button.btn{border:0;cursor:pointer;font:inherit;font-weight:600;font-size:18px}
-  button.btn:focus-visible{outline:3px solid #0B57C4;outline-offset:3px}
-  .or{margin:16px 0 8px;font-size:14px;color:#556F82}
-  .note{margin:16px 0 0;width:100%;padding:12px 14px;border-left:3px solid #F5A623;background:#FFFFFF;
-    font-size:16px;line-height:22px;text-align:left}
-  .sent{font-weight:600;overflow-wrap:anywhere}
-  .next a{color:#0B57C4}`;
-
-function doc(title, inner, google) {
+function doc(title, inner, google, here = "") {
   return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+${THEME_HTML}<head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="referrer" content="same-origin">
@@ -45,8 +29,25 @@ ${CARD_CSS}${FORM_CSS}
 <img src="/assets/mascot/svg/head-offer-in.svg" width="96" height="96" alt="">
 <p class="kick">${esc(NAME)}</p>
 ${inner}
+${switchSlot(here)}
 </div></main></body></html>
 `;
+}
+
+/* THE READER'S THEME, put on a sign-in page by the root middleware, which
+ * holds the request (these builders do not): light when the sled-theme
+ * cookie says so, and the switch to the other one, back to this page. A POST
+ * answered with a page (a refusal) switches back to the sign-in page. */
+export function themed(html, request) {
+  const theme = themeOf(request);
+  const url = new URL(request.url);
+  let out = String(html);
+  if (theme === "light") out = out.replace(THEME_HTML, '<html lang="en" data-theme="light">');
+  return out.replace(/<!--sj-theme-switch(?::([A-Za-z0-9%._~!*'()-]*))?-->/, (_m, named) => {
+    let here = request.method === "GET" || request.method === "HEAD" ? url.pathname + url.search : "/signin";
+    if (named) { try { here = decodeURIComponent(named); } catch { /* keep the default */ } }
+    return themeSwitch(theme, here);
+  });
 }
 
 /* SAME-ORIGIN, NEVER NO-REFERRER. Under no-referrer the Fetch standard sends
@@ -89,16 +90,11 @@ ${note(message)}
 <div class="acts">
 ${google ? `<a class="btn btn-g" href="/signin/google?to=${esc(encodeURIComponent(to))}">${G_MARK}Continue with Google</a>
 <p class="or">or with your email</p>` : ""}
-<form method="post" action="/signin/email">
-<label for="em">Email address</label>
-<input id="em" type="email" name="email" value="${esc(email)}" required autocomplete="email" inputmode="email" maxlength="254">
-<input type="hidden" name="to" value="${esc(to)}">
-<button class="btn" type="submit">Email me a sign-in link</button>
-</form>
+${emailForm(to, email)}
 </div>
 <p class="next">We email you a link and a code. There is no account to make and nothing to remember: the sign-in is kept on this device for ${SESSION_DAYS} days.</p>
 <a class="about" href="/">What is ${esc(NAME)}?</a>`;
-  return respond(status, doc("Sign in", inner, google), headers);
+  return respond(status, doc("Sign in", inner, google, `/signin?to=${encodeURIComponent(to)}`), headers);
 }
 
 /* After the email has gone: where it went, and the code box. */
@@ -108,13 +104,13 @@ export function checkPage(email, to, { message = "", status = 200, headers = [] 
 ${note(message)}
 <div class="acts">
 <form method="post" action="/signin/code">
-<label for="cd">Reading it on another device? Type the code from the email here.</label>
+<label for="cd">Opened the email in another app or on another device? Type its code here.</label>
 <input id="cd" class="code" type="text" name="code" required autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="16" placeholder="XXXXX-XXXXX">
 <button class="btn" type="submit">Sign in</button>
 </form>
 </div>
 <p class="next">Nothing there after a minute? Look in spam, or <a href="${esc(again(to))}&amp;again=1">start again with another address</a>.</p>`;
-  return respond(status, doc("Check your email", inner, false), headers);
+  return respond(status, doc("Check your email", inner, false, "/signin/check"), headers);
 }
 
 /* Anything that went wrong, with the one way forward. */
@@ -122,20 +118,20 @@ export function messagePage(status, heading, line, to = "/", headers = []) {
   const inner = `<h1>${esc(heading)}</h1>
 <p>${esc(line)}</p>
 <div class="acts"><a class="btn" href="${esc(again(to))}">Sign in again</a></div>`;
-  return respond(status, doc(heading, inner, false), headers);
+  return respond(status, doc(heading, inner, false, again(to)), headers);
 }
 
 /* What an emailed link opens: whose sign-in it is, and one button that
  * posts the token back (functions/signin/link.js says why it is a button). */
 export function confirmPage(email, token, replacing = false) {
-  const inner = `<h1>Sign in?</h1>
-<p>This link signs you in as <span class="sent">${esc(email)}</span>.</p>
+  const inner = `<h1>Almost there</h1>
+<p>Press Sign in to finish signing in as <span class="sent">${esc(email)}</span>.</p>
 ${replacing ? note("This device is signed in as somebody else now. Continuing signs it in as the address above instead.") : ""}
 <div class="acts"><form method="post" action="/signin/link">
 <input type="hidden" name="t" value="${esc(token)}">
 <button class="btn" type="submit">Sign in</button>
 </form></div>
-<p class="next">Not you, or did not ask? Close this page: nothing happens unless you press Sign in.</p>`;
+<p class="next">This one extra press keeps company email scanners, which open every link, from signing in for you. Not you, or did not ask? Close this page: nothing happens unless you press Sign in.</p>`;
   return respond(200, doc("Sign in", inner, false));
 }
 

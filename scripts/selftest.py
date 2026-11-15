@@ -1810,8 +1810,12 @@ def check_continue_with_google_waits_for_its_own_door() -> int:
             or shipped != bs.sign_in_version(page, bs.google_sign_in())):
         errors += fail("the build ships landing.html with both versions in it: /landing shows "
                        "every changed line twice to a signed-in person")
+    # the card on the site's own address carries the address box itself
+    # (owner, 2026-11-14), whose hidden `to` is the page asked for
     if ('href="https://sledjobs.com/signin/google?to=%2Fc%2Fverkada.html%3Ftab%3Djobs"' not in hold_on
-            or 'href="https://sledjobs.com/signin?to=%2Fc%2Fverkada.html%3Ftab%3Djobs"' not in hold_on):
+            or 'action="/signin/email"' not in hold_on
+            or 'name="to" value="/c/verkada.html?tab=jobs"' not in hold_on
+            or 'name="to" value="/c/verkada.html?tab=jobs"' not in hold_off):
         errors += fail("on the sign-in page the Google and email links do not both return "
                        "a person to the page they asked for")
     return errors
@@ -2134,6 +2138,122 @@ def check_our_own_sign_in_proves_the_address_and_opens_only_the_boards() -> int:
     for p, c in (o.get("shut") or {}).items():
         if c.get("reached"):
             errors += fail(f"the gate opened {p}, which is no sign-in path")
+    # LIGHT AND DARK ON EVERY SIGN-IN PAGE (owner, 2026-11-14: "I want
+    # white/dark options on all of them"): dark unless the sled-theme cookie
+    # says light, as on the board; a switch to the other on every page, back
+    # to that page (a POST's page back to /signin); never the empty slot
+    ts = o.get("theme_signin") or {}
+    for k, want in (("dark", "dark"), ("odd", "dark"), ("posted", "dark"), ("light", "light")):
+        c = ts.get(k) or {}
+        if not c.get(want) or c.get("slot") or not c.get("toLight" if want == "dark" else "toDark"):
+            errors += fail(f"a sign-in page ({k}) is not drawn {want} with a switch to the other: {c}")
+    if (ts.get("dark") or {}).get("back") != "%2Fsignin%3Fto%3D%252F%253Ftab%253Djobs" \
+            or (ts.get("posted") or {}).get("back") != "%2Fsignin%3Fto%3D%252F":
+        errors += fail(f"the theme switch does not return a person to the page they were on: "
+                       f"{(ts.get('dark') or {}).get('back')!r} {(ts.get('posted') or {}).get('back')!r}")
+    tc = o.get("theme_card") or {}
+    if not (tc.get("light") or {}).get("light") or not (tc.get("dark") or {}).get("dark"):
+        errors += fail(f"the gate's sign-in card does not follow the reader's theme: {tc}")
+    sw = o.get("theme_switch") or {}
+    if (sw.get("location") != "/?tab=jobs" or "sled-theme=light; Path=/" not in sw.get("cookie", "")
+            or "HttpOnly" in sw.get("cookie", "") or sw.get("evil") != "/"
+            or "sled-theme=dark" not in sw.get("odd", "") or not sw.get("gate")):
+        errors += fail(f"/signin/theme does not set the board's own theme cookie and return to a "
+                       f"page on this site: {sw}")
+    site = (ROOT / "index.html").read_text()
+    if "themeCookie(next);" not in site or "sled-theme=(light|dark)" not in site:
+        errors += fail("the board's theme switch does not write the cookie the sign-in pages read, "
+                       "or does not take up a choice made on one of them")
+    # THE ALERTS PAGE TAKES THE SIGNED-IN ADDRESS (owner, 2026-11-14: "do that
+    # too, good idea"): /api/me answers a signed-in browser its own address and
+    # nobody else; that address starts at once, confirmed by its sign-in, with
+    # no email; any other address still gets the confirmation and the same
+    # answer as before, so this says nothing about anybody else
+    am = o.get("api_me") or {}
+    if ((am.get("signed_in") or {}).get("email") != "pat@example.org"
+            or (am.get("signed_out") or {}).get("email") is not None or am.get("gated")):
+        errors += fail(f"/api/me answers somebody other than the signed-in person, or passes the gate: {am}")
+    ad = o.get("alerts_direct") or {}
+    own, again = ad.get("own") or {}, ad.get("again") or {}
+    if not (own.get("subscribed") and own.get("token") and own.get("confirmed") and own.get("by") == "sign-in"
+            and own.get("mailed") == 0 and own.get("already") is False):
+        errors += fail(f"subscribing the address you signed in with did not start at once: {own}")
+    # an EXISTING confirmed subscription never hands its permanent token to
+    # the page (review, 2026-11-14): its settings link goes to the inbox, once
+    # an hour, as before
+    if not (again.get("already") and not again.get("token") and again.get("mailed") == 1
+            and again.get("thrice_mailed") == 0 and not again.get("thrice_token")):
+        errors += fail(f"subscribing a signed-in address that is already subscribed handed its token to "
+                       f"the page, or did not mail its settings link once: {again}")
+    # another page carrying the member's sign-in (a sibling host), or a text
+    # body, never takes the direct path: the old answer and the confirmation
+    for k in ("sibling", "text_body"):
+        c = ad.get(k) or {}
+        if c.get("body") != {"ok": True, "check_your_email": True} or c.get("mailed") != 1:
+            errors += fail(f"a subscribe not from our own page as JSON ({k}) skipped the confirmation: {c}")
+    for k in ("other", "anon"):
+        c = ad.get(k) or {}
+        if c.get("body") != {"ok": True, "check_your_email": True} or c.get("mailed") != 1:
+            errors += fail(f"an address that is not the signed-in one ({k}) skipped its confirmation, "
+                           f"or answered differently: {c}")
+    pd = ad.get("pending") or {}
+    if not (pd.get("confirmed_now") and pd.get("fresh_token") and pd.get("old_gone") and pd.get("confirmed")
+            and pd.get("points_to_new") and pd.get("mailed") == 0):
+        errors += fail(f"a pending subscription for the signed-in address was not confirmed in place: {pd}")
+    if 'fetch("/api/me"' not in (ROOT / "alerts.html").read_text():
+        errors += fail("the alerts page no longer fills in the address the person signed in with")
+    # THE GATE'S CARD (review, 2026-11-14): it carries a form, so it refuses to
+    # be framed; the landing page does not; with a sign-in pending, the code
+    cf = o.get("card_frame") or {}
+    if cf.get("card") != "DENY" or cf.get("card_status") != 403 or not cf.get("card_has_form"):
+        errors += fail(f"the gate's sign-in card, which carries the address box, can be framed: {cf}")
+    if cf.get("landing") or cf.get("landing_status") != 200:
+        errors += fail(f"the landing page stopped being embeddable: {cf}")
+    if not cf.get("pending_offers_code") or cf.get("plain_offers_code"):
+        errors += fail(f"the card does not offer the code to a device with a sign-in pending: {cf}")
+    # THE COOKIE DECIDES, read before paint, on every page with a switch.
+    # RUN, not read (mutation, 2026-11-14: a source-order test passed a script
+    # that read localStorage first): each page's first <head> script, under
+    # node, with a stub document and localStorage, in four states
+    import json as _json
+    import subprocess
+    import build_site as _bs
+    heads = {}
+    for name, txt in (("index.html", (ROOT / "index.html").read_text()),
+                      ("alerts.html", (ROOT / "alerts.html").read_text()),
+                      ("the /beta/ page", _bs._hunter_page(_json.loads((ROOT / "data" / "brand.json").read_text())
+                                                          if (ROOT / "data" / "brand.json").exists()
+                                                          else {"name": "SLED JOBS", "domain": "sledjobs.com"}))):
+        head = txt[:txt.find("</head>")]
+        m = re.search(r"<script>(.*?)</script>", head, re.S)
+        heads[name] = m.group(1) if m else ""
+    runner = """
+const cases = [["sled-theme=light", "dark", "light"], ["sled-theme=dark", "light", "dark"],
+               ["", "light", "light"], ["", null, null]];
+const out = {};
+for (const [name, src] of Object.entries(HEADS)) {
+  out[name] = cases.map(([cookie, stored, want]) => {
+    let set = null;
+    const document = { cookie, documentElement: { setAttribute: (k, v) => { if (k === "data-theme") set = v; } } };
+    const localStorage = { getItem: () => stored };
+    try { new Function("document", "localStorage", src)(document, localStorage); } catch (e) { return "threw"; }
+    return set === want;
+  });
+}
+console.log(JSON.stringify(out));"""
+    r = subprocess.run(["node", "-e", "const HEADS = " + _json.dumps(heads) + ";" + runner],
+                       capture_output=True, text=True, timeout=60)
+    try:
+        got = _json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError):
+        got = {}
+        errors += fail(f"the pages' theme scripts did not run under node: {r.stderr[-200:]}")
+    for name, res in got.items():
+        if res != [True, True, True, True]:
+            errors += fail(f"{name} does not take the sled-theme cookie first, before paint "
+                           f"(cookie beats stored, stored where no cookie, nothing leaves the default): {res}")
+    if len(got) != 3:
+        errors += fail("the theme script check did not run all three pages")
     # where a sign-in may come from, by source: our pages post only to here
     for f in ("email.js", "code.js", "out.js"):
         if "fromOurPage(request)" not in (ROOT / "functions" / "signin" / f).read_text():
@@ -2399,8 +2519,16 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         if not ((out.get(k) or {}).get("json") or {}).get("error"):
             errors += fail(f"{k}: an endpoint refusal is not JSON with an error")
     home = (out.get("anon_home") or {}).get("body", "")
-    if 'href="https://sledjobs.com/signin?to=%2F%3Ftab%3Djobs"' not in home:
-        errors += fail("the sign-in page has no sign-in link back to the board page asked for")
+    # ON THE SITE'S OWN ADDRESS THE CARD CARRIES THE ADDRESS BOX (owner,
+    # 2026-11-14), returning the person to the page asked for; anywhere else
+    # (the alias, below) it links to the sign-in on the site
+    if ('action="/signin/email"' not in home or 'name="to" value="/?tab=jobs"' not in home
+            or "/signin/theme?set=light" not in home):
+        errors += fail("the sign-in page has no sign-in link back to the board page asked for "
+                       "(on sledjobs.com: the address box with its `to`, and the theme switch)")
+    if 'action="/signin/email"' in (out.get("anon_alias_page") or {}).get("body", ""):
+        errors += fail("the card on the alias carries the address box; it would sign a person in "
+                       "on a host whose cookie the site does not read")
     if 'href="https://sledjobs.com/"' not in home or "free" not in home:
         errors += fail("the sign-in page does not say signing in is free, or does not link "
                        "to the front page for a visitor who does not know the site")
@@ -9897,11 +10025,12 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
         for name in ("script-src-attr", "base-uri", "object-src"):
             if d.get(name) != ["'none'"]:
                 errors += fail(f"{k}: {name} is {d.get(name)}, not 'none'")
-        # A FORM MAY POST ONLY FROM OUR OWN SIGN-IN PAGES, and only to this
-        # site (2026-11-13): they carry no script, so a form is how they send
-        # an address or a code. Every other kind stays at 'none', and the
+        # A FORM MAY POST ONLY FROM OUR OWN SIGN-IN PAGES and the gate's
+        # sign-in card, and only to this site (2026-11-13, the card
+        # 2026-11-14): they carry no script, so a form is how they send an
+        # address or a code. Every other kind stays at 'none', and the
         # sign-in pages may run no script at all.
-        want_form = ["'self'"] if k == "signin" else ["'none'"]
+        want_form = ["'self'"] if k in ("signin", "holding") else ["'none'"]
         if d.get("form-action") != want_form:
             errors += fail(f"{k}: form-action is {d.get('form-action')}, not {want_form}")
         if k == "signin" and any(x.startswith("'sha256-") for x in ss):
@@ -27992,6 +28121,10 @@ def check_mail_is_built_from_the_shell() -> int:
     if n != 1:
         print("  FAIL: alerts.js no longer imports from ../_mail.js")
         return errors + 1
+    # its other real imports too (../_identity.js since 2026-11-14), resolved
+    # the same way, so the copy run from a temp file walks the real chain
+    src = re.sub(r'from\s*"\.\./(_[a-z]+\.js)"',
+                 lambda m: f'from "{(ROOT / "functions" / m.group(1)).resolve().as_uri()}"', src)
     if "function shell(" in src or "async function send(" in src:
         print("  FAIL: alerts.js carries its own copy of the mail shell again; "
               "the copy is what drifts, and only _mail.js is guarded")

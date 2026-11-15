@@ -2,6 +2,11 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
+<!-- THE READER'S LIGHT OR DARK BEFORE THE PAGE PAINTS (review, 2026-11-14):
+     restoreTheme ran at the end of the page's script, after the header had
+     painted dark. Same rule as restoreTheme: the sled-theme cookie decides,
+     localStorage where it is missing. -->
+<script>(function(){var t=null,m=/(?:^|;\s*)sled-theme=(light|dark)(?:;|$)/.exec(document.cookie||"");if(m)t=m[1];else{try{t=localStorage.getItem("sled-theme")}catch(e){}}if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="assets/mascot/svg/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/mascot/favicon/favicon-32.png" sizes="32x32">
@@ -423,6 +428,8 @@
   .acct a.row{display:block;font-size:13.5px;font-weight:600;color:var(--accent-text);
     text-decoration:none;padding:var(--space-2) 0;border-top:1px solid var(--line)}
   .acct a.row:hover{color:var(--ink)}
+  /* who is signed in: said, not offered (whoAmI) */
+  .acct a.row.status,.acct a.row.status:hover{color:var(--dim);font-weight:500;cursor:default}
   /* The company, on a role card: enough to place them, then the rest on ask. */
   .costory p{font-size:14px;line-height:1.6;color:var(--dim);margin:0 0 var(--space-3)}
   .costory .more p:last-child{margin-bottom:0}
@@ -10216,7 +10223,7 @@ function acctText(){
   const roles=n===1?"1 role":n+" roles";
   if(!n) return linked
     ? "You have not kept any roles yet. When you do, they will follow you to your other devices."
-    : "You have not kept any roles yet. Nothing here asks who you are \u2014 tap the bookmark on a role and it is kept in this browser.";
+    : "You have not kept any roles yet. Tap the bookmark on a role and it is kept in this browser.";
   return linked
     ? roles+" kept, and syncing to your other devices."
     : roles+" kept in this browser. They stay on this device unless you turn on sync \u2014 no password, just a link to your email.";
@@ -10251,7 +10258,13 @@ async function whoAmI(){
   if(!me||!me.signed_in){ row.textContent="Sign in \u2192"; row.href="/signin?to="+encodeURIComponent(location.pathname+location.search); return; }
   const roles=me.roles||[];
   row.textContent=me.handle?"Signed in as "+me.handle:me.via==="google"?"Signed in with Google":"Signed in by email";
-  row.href="/beta/";
+  /* A STATUS, NOT A DOOR (new-user run, 2026-11-14). It linked to the
+     closed beta's page, so a newcomer who clicked their own sign-in read "The
+     beta is closed. If the owner gave you a code, put it in." The owner hands
+     /beta/ to the people he gives a code; owners and beta users get their own
+     door below, inside the role check. */
+  row.removeAttribute("href");
+  row.classList.add("status");
   doors.textContent="";
   const door=(href,label)=>{const a=document.createElement("a");a.className="row";a.href=href;a.textContent=label+" \u2192";doors.appendChild(a);};
   if(roles.includes("owner")||roles.includes("admin")) door("/admin/","Admin");
@@ -10309,16 +10322,35 @@ function wireHeader(){
 /* Theme is a per-browser preference, so it is stored per browser and never
    travels with the sync token: a phone in a dark room and a desktop in a lit
    office are not a disagreement to be resolved. */
+/* THE CHOICE TRAVELS TO THE SIGN-IN PAGES (owner, 2026-11-14: "I want
+   white/dark options on all of them"). They run no script, so the server
+   reads the same choice from a cookie of the same name; their own switch
+   (/signin/theme) writes that cookie, and this page takes it up when this
+   browser has no choice of its own stored. */
+function themeCookie(t){
+  try{ document.cookie="sled-theme="+t+"; Path=/; Max-Age=31536000; SameSite=Lax"
+         +(location.protocol==="https:"?"; Secure":""); }catch{}
+}
 function toggleTheme(){
   const cur=document.documentElement.getAttribute("data-theme");
   const sysDark=matchMedia("(prefers-color-scheme:dark)").matches;
   const next=cur?(cur==="dark"?"light":"dark"):(sysDark?"light":"dark");
   document.documentElement.setAttribute("data-theme",next);
   try{ localStorage.setItem("sled-theme",next) }catch{}
+  themeCookie(next);
 }
+/* THE COOKIE DECIDES (review, 2026-11-14): every switch writes it, the
+   sign-in pages' included, so it is the newest choice; localStorage only
+   where it is missing. Both are brought into line. The <head> script makes
+   the same choice before the page paints. */
 (function restoreTheme(){
-  try{ const t=localStorage.getItem("sled-theme");
-       if(t)document.documentElement.setAttribute("data-theme",t); }catch{}
+  const m=/(?:^|;\s*)sled-theme=(light|dark)(?:;|$)/.exec(document.cookie||"");
+  let t=m?m[1]:null;
+  if(!t){ try{ t=localStorage.getItem("sled-theme"); }catch{} }
+  if(t!=="light"&&t!=="dark")return;
+  document.documentElement.setAttribute("data-theme",t);
+  try{ localStorage.setItem("sled-theme",t) }catch{}
+  themeCookie(t);
 })();
 
 function start(d){

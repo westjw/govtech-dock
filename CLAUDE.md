@@ -914,8 +914,22 @@ subscribe", and anyone may sign in, free (email and one-time code).
     arrives twice is no cookie (a sibling host cannot set `__Host-`, so a
     duplicate is a plant). `/api/whoami` prefers a verified Access sign-in
     over ours when both are held. `/signin` refuses to be framed.
-  - The sign-in pages are the `signin` CSP kind: no script, and the ONE kind
-    whose `form-action` is `'self'` (`csp.FORMS`). **Their Referrer-Policy is
+  - **Light and dark (owner, 2026-11-14: "I want white/dark options on all
+    of them").** The sign-in pages, the gate's card, `/beta/` and `/alerts`
+    are dark by default like the board and light when chosen. The
+    `sled-theme` cookie DECIDES (every switch writes it: the board's
+    `toggleTheme` via `themeCookie`, and `/signin/theme` on the no-script
+    pages), localStorage only where it is missing; each page reads it in its
+    `<head>` before painting, the sign-in pages server-side
+    (`_middleware.js themeSignin`, `_signin_page.themed`). Colours and the
+    card live once in `functions/_card.js`.
+  - **The gate's card carries the address box** on the site's own host
+    (owner: "do it please!"), and, with a sign-in pending on the device, the
+    code first; elsewhere it links to the site's sign-in. It refuses to be
+    framed wherever it is served (`secure`: holding and not 200).
+  - The sign-in pages and the gate's card are the `signin` and `holding`
+    CSP kinds: no script, and the ONLY kinds whose `form-action` is
+    `'self'` (`csp.FORMS`). **Their Referrer-Policy is
     `same-origin`, NEVER `no-referrer`**: under no-referrer a browser sends
     every POST with `Origin: null`, and the first version refused every
     Chrome sign-in that way (runtime review, 2026-11-13; the harness's fake
@@ -2162,15 +2176,26 @@ Rules that hold here:
 - **No accounts, no passwords.** A subscription IS the identity: one long
   random token, mailed to the address, which also carries the saved-role sync.
   Nothing in this project should ever grow a password store.
-- **Double opt-in, no override.** `send_digests.py` skips unconfirmed
-  addresses and has no flag to stop skipping them.
+- **Double opt-in, no override, with ONE proven exception (owner,
+  2026-11-14).** `send_digests.py` skips unconfirmed addresses and has no
+  flag to stop skipping them. The exception: a signed-in person subscribing
+  the very address they signed in with (email link or code, Google with
+  `email_verified`, or Access) has proved that mailbox, so a NEW subscription
+  starts confirmed (`confirmed_by: "sign-in"`), from our own page as JSON only
+  (`fromOurPage`). An existing confirmed one never hands its token to the
+  page (it is permanent and carries the saved roles): its settings link is
+  mailed, as before. A pending one is replaced, so the mailed token opens
+  nothing. Every other address keeps the confirmation email.
 - **Nothing sends without `--send`.** The dry run is the default.
 - **`last_sent` advances only after a successful send**, so a mail outage
   delays roles rather than swallowing the window they were in.
 - **Subscribe answers identically** whether the address is new, pending or
   already subscribed. Varying it makes the endpoint an oracle for "does this
   person have an account on a job board", which is exactly the question this
-  site must never answer about somebody.
+  site must never answer about somebody. The answer differs only toward the
+  person who proved that mailbox by signing in (above): never about anybody
+  else. The alerts page fills in the signed-in address from `/api/me`
+  (gated; the caller's own address only).
 - **Unsubscribe deletes.** No suppression list — that is still a record of who
   wanted out of their job.
 - **Saved roles stay local by default.** Sync is off until someone turns it on

@@ -22,6 +22,9 @@ const out_ = await M("signin/out.js");
 const google = await M("signin/google.js");
 const callback = await M("signin/google/callback.js");
 const check = await M("signin/check.js");
+const themeSw = await M("signin/theme.js");
+const me = await M("api/me.js");
+const alerts = await M("api/alerts.js");
 const who = await M("api/whoami.js");
 const csp = await M("_csp.js");
 
@@ -79,6 +82,7 @@ function kv({ failPut = null, failGet = false, delay = 0, oncePerSecond = false,
     get: async (k) => { await wait(); if (failGet) throw new Error("KV GET failed: 500");
       if (stale) return first.has(k) ? first.get(k) : (m.has(k) ? m.get(k) : null);
       return m.has(k) ? m.get(k) : null; },
+    delete: async (k) => { m.delete(k); },
     put: async (k, v) => { await wait();
       if (failPut && failPut(k)) throw new Error("KV PUT failed: 429 Too Many Requests");
       const t = Date.now();
@@ -509,4 +513,104 @@ for (const p of ["/signin/other", "/signin/other/", "/signin//", "/signin/google
   out.shut[p] = await gate(p);
 }
 
+
+/* --- light and dark on every sign-in page (owner, 2026-11-14) ------------- */
+{
+  ENV = envOf();
+  const viaMw = async (path, { cookies = {}, method = "GET", form, handler } = {}) => {
+    const r = req(path, { method, cookies, form, origin: method === "GET" ? null : "same" });
+    const res = await onRequest({ request: r, env: ENV, data: {},
+      next: async () => handler({ request: r, env: ENV }) });
+    return see(res);
+  };
+  const dark = await viaMw("/signin?to=%2F%3Ftab%3Djobs", { handler: page.onRequestGet });
+  const light = await viaMw("/signin?to=%2F%3Ftab%3Djobs", { cookies: { "sled-theme": "light" }, handler: page.onRequestGet });
+  const odd = await viaMw("/signin", { cookies: { "sled-theme": "pink" }, handler: page.onRequestGet });
+  const posted = await viaMw("/signin/email", { method: "POST", form: { email: "nope", to: "/" }, handler: email.onRequestPost });
+  const pick = (r) => ({ status: r.status, dark: r.body.includes('<html lang="en" data-theme="dark">'),
+    light: r.body.includes('<html lang="en" data-theme="light">'),
+    toLight: r.body.includes("/signin/theme?set=light"), toDark: r.body.includes("/signin/theme?set=dark"),
+    slot: r.body.includes("<!--sj-theme-switch-->"),
+    back: (r.body.match(/\/signin\/theme\?set=\w+&amp;to=([^"]+)"/) || [])[1] || "" });
+  out.theme_signin = { dark: pick(dark), light: pick(light), odd: pick(odd), posted: pick(posted) };
+  const gL = await onRequest({ request: req("/?tab=jobs", { origin: null, cookies: { "sled-theme": "light" } }), env: ENV, data: {},
+    next: async () => new Response("board") });
+  const gD = await onRequest({ request: req("/?tab=jobs", { origin: null }), env: ENV, data: {}, next: async () => new Response("board") });
+  out.theme_card = { light: pick(await see(gL)), dark: pick(await see(gD)) };
+  const sw = await call(themeSw, "onRequestGet", req("/signin/theme?set=light&to=%2F%3Ftab%3Djobs", { origin: null }));
+  const swEvil = await call(themeSw, "onRequestGet", req("/signin/theme?set=light&to=%2F%2Fx.example", { origin: null }));
+  const swOdd = await call(themeSw, "onRequestGet", req("/signin/theme?set=neon&to=%2F", { origin: null }));
+  out.theme_switch = { location: sw.location, cookie: sw.set.join(" | "), evil: swEvil.location,
+    odd: swOdd.set.join(" | "), gate: (await gate("/signin/theme?set=light&to=%2F")).reached };
+}
+
+/* --- the alerts page: the signed-in address, filled in and taken at once -- */
+{
+  ENV = envOf();
+  const mine = (await S.sessionCookie(ENV, "pat@example.org", "email")).split(";")[0].split("=").slice(1).join("=");
+  const meIn = await (await me.onRequestGet({ request: req("/api/me", { origin: null, cookies: { [S.SESSION]: mine } }), env: ENV })).json();
+  const meOut = await (await me.onRequestGet({ request: req("/api/me", { origin: null }), env: ENV })).json();
+  out.api_me = { signed_in: meIn, signed_out: meOut, gated: (await gate("/api/me")).reached };
+  const sub = async (addr, cookies = {}, prefs = {}, { origin = "https://sledjobs.com", ctype = "application/json", ip = "192.0.2.50" } = {}) => {
+    const before = mails.length;
+    const r = new Request("https://sledjobs.com/api/alerts", { method: "POST",
+      headers: { "content-type": ctype, "cf-connecting-ip": ip,
+                 ...(origin ? { Origin: origin, "Sec-Fetch-Site": origin === "https://sledjobs.com" ? "same-origin" : "same-site" } : {}),
+                 ...(Object.keys(cookies).length ? { Cookie: Object.entries(cookies).map(([k, v]) => `${k}=${v}`).join("; ") } : {}) },
+      body: JSON.stringify({ action: "subscribe", email: addr, prefs }) });
+    const res = await alerts.onRequestPost({ request: r, env: ENV });
+    return { status: res.status, body: await res.json(), mailed: mails.length - before };
+  };
+  const own = await sub("Pat@Example.org", { [S.SESSION]: mine }, { quota: true });
+  const rec = own.body.token ? JSON.parse(await ENV.ALERTS.get("sub:" + own.body.token)) : null;
+  const again = await sub("pat@example.org", { [S.SESSION]: mine }, { quota: false });
+  const thrice = await sub("pat@example.org", { [S.SESSION]: mine }, { quota: false });
+  const rec2 = own.body.token ? JSON.parse(await ENV.ALERTS.get("sub:" + own.body.token)) : null;
+  // ANOTHER PAGE WITH THE MEMBER'S SIGN-IN (a sibling host, same-site) and a
+  // text/plain body: never the direct path, only the old double opt-in
+  const sib = (await S.sessionCookie(ENV, "sib@example.org", "email")).split(";")[0].split("=").slice(1).join("=");
+  const sibling = await sub("sib@example.org", { [S.SESSION]: sib }, {}, { origin: "https://hunter.sledjobs.com", ip: "192.0.2.61" });
+  const textBody = await sub("sib2@example.org", { [S.SESSION]: (await S.sessionCookie(ENV, "sib2@example.org", "email")).split(";")[0].split("=").slice(1).join("=") }, {}, { ctype: "text/plain", ip: "192.0.2.62" });
+  const other = await sub("someone.else@example.org", { [S.SESSION]: mine });
+  const anon = await sub("anon@example.org");
+  // a pending subscription for the signed-in address is confirmed, not duplicated
+  const pend = await sub("quinn@example.org");
+  const quinn = (await S.sessionCookie(ENV, "quinn@example.org", "google")).split(";")[0].split("=").slice(1).join("=");
+  const ek = (await (await import(new URL("../functions/_mail.js", import.meta.url))).emailKey("quinn@example.org"));
+  const pendTok = await ENV.ALERTS.get(ek);
+  const conf = await sub("quinn@example.org", { [S.SESSION]: quinn });
+  out.alerts_direct = {
+    own: { status: own.status, subscribed: own.body.subscribed, already: own.body.already, token: !!own.body.token,
+           mailed: own.mailed, confirmed: rec && rec.confirmed, by: rec && rec.confirmed_by, quota: rec && rec.prefs && rec.prefs.quota },
+    again: { subscribed: again.body.subscribed, already: again.body.already, token: "token" in again.body,
+             mailed: again.mailed, thrice_mailed: thrice.mailed, thrice_token: "token" in thrice.body },
+    sibling: { body: sibling.body, mailed: sibling.mailed },
+    text_body: { body: textBody.body, mailed: textBody.mailed },
+    other: { body: other.body, mailed: other.mailed },
+    anon: { body: anon.body, mailed: anon.mailed },
+    pending: { first_mailed: pend.mailed, confirmed_now: conf.body.subscribed, fresh_token: !!conf.body.token && conf.body.token !== pendTok,
+               old_gone: (await ENV.ALERTS.get("sub:" + pendTok)) === null,
+               confirmed: conf.body.token ? JSON.parse(await ENV.ALERTS.get("sub:" + conf.body.token)).confirmed : false,
+               points_to_new: (await ENV.ALERTS.get(ek)) === conf.body.token, mailed: conf.mailed },
+  };
+}
+
+/* --- the gate's card: framed out, the landing not, the code when pending -- */
+{
+  ENV = envOf();
+  const viaGate = async (path, cookies = {}) => {
+    const res = await onRequest({ request: req(path, { origin: null, cookies }), env: ENV, data: {},
+      next: async () => new Response("board") });
+    const r = await see(res);
+    return { ...r, xfo: res.headers.get("x-frame-options") || "" };
+  };
+  const card = await viaGate("/?tab=jobs");
+  const landing = await viaGate("/");
+  const a = await ask("pending@example.org", "/?tab=jobs");
+  const withPending = await viaGate("/?tab=jobs", { [S.PENDING]: a.jar[S.PENDING] });
+  out.card_frame = { card: card.xfo, card_status: card.status, landing: landing.xfo, landing_status: landing.status,
+    card_has_form: card.body.includes('action="/signin/email"'),
+    pending_offers_code: withPending.body.includes('href="/signin/check"'),
+    plain_offers_code: card.body.includes('href="/signin/check"') };
+}
 console.log(JSON.stringify(out));

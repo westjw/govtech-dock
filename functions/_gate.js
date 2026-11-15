@@ -67,12 +67,13 @@
  */
 import { verify, tokenOf } from "./_access.js";
 import { SITE, NAME } from "./_brand.js";
-import { sessionOf, ours as ourCookie, SESSION } from "./_session.js";
+import { sessionOf, ours as ourCookie, onSite, unseal, SESSION, PENDING } from "./_session.js";
+import { CARD_CSS, FORM_CSS, emailForm, themeOf, themeSwitch } from "./_card.js";
 
 export const GATED = true;
 
 export const OPEN = new Set(["/admin/api/whoami", "/admin/api/login", "/api/whoami",
-  "/signin", "/signin/email", "/signin/check", "/signin/code", "/signin/link", "/signin/out",
+  "/signin", "/signin/email", "/signin/check", "/signin/code", "/signin/link", "/signin/out", "/signin/theme",
   "/signin/google", "/signin/google/callback"]);
 
 /* "CONTINUE WITH GOOGLE" ON THE LANDING PAGE AND THE SIGN-IN PAGES (owner,
@@ -162,49 +163,42 @@ const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-/* The sign-in pages' look: option 1 of the landing canvas, one card. Shared
- * with functions/_signin_page.js, which adds the form. */
-export const CARD_CSS = `  *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;background:#E8F1F7;color:#1F2536;
-    font:18px/1.55 Archivo,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  main{max-width:656px;margin:0 auto;padding:120px 48px;display:flex;justify-content:center}
-  .card{width:100%;max-width:560px;background:#FAF7F0;border:1px solid #C9DCE8;border-radius:16px;
-    padding:48px;display:flex;flex-direction:column;align-items:center;text-align:center}
-  .card img{display:block;width:96px;height:96px}
-  .kick{margin:16px 0 0;font-size:13px;line-height:18px;font-weight:600;letter-spacing:.1em;
-    text-transform:uppercase;color:#556F82}
-  h1{margin:12px 0 0;font-size:36px;line-height:40px;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
-  p{margin:16px 0 0}
-  .next{margin-top:20px;padding-top:16px;width:100%;border-top:1px solid #C9DCE8;
-    font-size:15px;line-height:22px;color:#556F82}
-  .acts{margin-top:32px;width:100%;display:flex;flex-direction:column;align-items:center;gap:8px}
-  .btn{display:flex;align-items:center;justify-content:center;width:100%;max-width:320px;min-height:52px;
-    padding:0 24px;border-radius:10px;background:#0B57C4;color:#E8F1F7;font-size:18px;font-weight:600;
-    text-decoration:none}
-  .btn:hover{background:#1F2536;color:#E8F1F7}
-  .btn-g{gap:12px;background:#FFFFFF;border:1px solid #747775;color:#1F1F1F;
-    font-family:'Google Sans',Roboto,Archivo,system-ui,sans-serif;font-weight:500}
-  .btn-g:hover{background:#F2F2F2;color:#1F1F1F}
-  .about{display:inline-flex;align-items:center;min-height:44px;font-size:16px;font-weight:600;color:#0B57C4}
-  .about:hover{color:#1F2536}
-  a:focus-visible{outline:3px solid #0B57C4;outline-offset:3px}
-  @media (max-width:720px){main{padding:48px 20px}.card{padding:32px 24px}h1{font-size:30px;line-height:36px}}
-`;
+/* The sign-in card's look, light and dark, and its email form: functions/_card.js,
+ * shared with the sign-in pages. Re-exported for the modules that read it here. */
+export { CARD_CSS };
 
-export function holdingPage(url, status, line, heading = "Sign in to see this page.", google = GOOGLE) {
+export function holdingPage(url, status, line, heading = "Sign in to see this page.", google = GOOGLE,
+                            theme = "dark", pending = false) {
   // Back to the page they asked for once they are signed in. The sign-in
   // only follows a same-site path (_to.js), so this cannot become an open
   // redirect. Our own sign-in since 2026-11-13; /admin/api/login is the
   // admin's, through Access.
-  const back = `${SITE}/signin?to=${encodeURIComponent(url.pathname + url.search)}`;
-  const viaGoogle = `${SITE}/signin/google?to=${encodeURIComponent(url.pathname + url.search)}`;
+  const here = url.pathname + url.search;
+  const back = `${SITE}/signin?to=${encodeURIComponent(here)}`;
+  const viaGoogle = `${SITE}/signin/google?to=${encodeURIComponent(here)}`;
+  // THE ADDRESS BOX ON THE CARD ITSELF (owner, 2026-11-14: "do it please!"),
+  // so a person who opened a shared role signs in from this card, not from a
+  // second page. Only on the site's own address (or a local preview): the
+  // form posts to this host, and a sign-in made anywhere else would set a
+  // cookie the site does not read. Elsewhere (www, the old domain, the
+  // pages.dev alias) the card links to the sign-in on the site, as before.
+  const inline = !onSite(url);
+  // A SIGN-IN ALREADY ASKED FOR on this device: its code box first (review,
+  // 2026-11-14). Without it a person back on a shared link, code in hand,
+  // could only ask again, which spent an allowance and made that code stop
+  // matching; /signin already sends such a person to /signin/check.
+  const codeFirst = inline && pending
+    ? `<a class="btn" href="/signin/check">Type the code from your email</a>
+<p class="or">or send a new email</p>
+` : "";
+  const box = inline ? codeFirst + emailForm(here) : "";
   // THE SIGN-IN PAGE IS OPTION 1 of the landing canvas (owner, 2026-10-22: "I do
   // love 1 sign in"). It names nothing about the page asked for - that page is
   // not public - and carries no script, so the holding policy (no script at
   // all) holds. Its one image is the mascot kit's, which the gate serves to
   // anyone (PUBLIC).
   const html = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en" data-theme="${theme === "light" ? "light" : "dark"}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Sign in to see this page &middot; ${esc(NAME)}</title>
@@ -212,7 +206,7 @@ export function holdingPage(url, status, line, heading = "Sign in to see this pa
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
 <!--google-on--><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&amp;display=swap"><!--/google-on-->
 <style>
-${CARD_CSS}</style></head>
+${CARD_CSS}${FORM_CSS}</style></head>
 <body><main><div class="card">
 <img src="/assets/mascot/svg/head-offer-in.svg" width="96" height="96" alt="">
 <p class="kick">${esc(NAME)}</p>
@@ -221,20 +215,26 @@ ${CARD_CSS}</style></head>
 <p class="next">Once you are in, subscribe to job alerts and the roles that fit come to you.</p>
 <div class="acts">
 <!--google-on--><a class="btn btn-g" href="${esc(viaGoogle)}">${G_MARK}Continue with Google</a>
-<a class="btn" href="${esc(back)}">Sign in with email</a><!--/google-on-->
-<!--google-off--><a class="btn" href="${esc(back)}">Sign in</a><!--/google-off-->
+${inline ? `<p class="or">or with your email</p>
+${box}` : `<a class="btn" href="${esc(back)}">Sign in with email</a>`}<!--/google-on-->
+<!--google-off-->${inline ? box : `<a class="btn" href="${esc(back)}">Sign in</a>`}<!--/google-off-->
 <a class="about" href="${esc(SITE)}/">What is ${esc(NAME)}?</a>
 </div>
+${themeSwitch(theme, here)}
 </div></main></body></html>
 `;
   return new Response(signinBlocks(html, google), {
     status, headers: { ...HEADERS, "content-type": "text/html; charset=utf-8" } });
 }
 
-function refuse(request, url, status, error, line, heading) {
+async function refuse(request, env, url, status, error, line, heading) {
   const page = (request.method === "GET" || request.method === "HEAD")
     && !url.pathname.startsWith("/api/") && !url.pathname.startsWith("/admin/api/");
-  if (page) return holdingPage(url, status, line, heading);
+  if (page) {
+    let pending = false;
+    try { pending = !!(await unseal(env, "pending", ourCookie(request, PENDING))); } catch { pending = false; }
+    return holdingPage(url, status, line, heading, GOOGLE, themeOf(request), pending);
+  }
   return new Response(JSON.stringify({ error }), {
     status, headers: { ...HEADERS, "content-type": "application/json" } });
 }
@@ -323,10 +323,10 @@ export async function gate(request, env) {
   }
   if (reading && isPublicFile(request)) return null;
   if (unverifiable) {
-    return refuse(request, url, 503, "sign_in_unverifiable",
+    return refuse(request, env, url, 503, "sign_in_unverifiable",
       "Your sign-in could not be checked just now. Try again in a minute.",
       "We could not check your sign-in.");
   }
-  return refuse(request, url, 403, "not_signed_in",
+  return refuse(request, env, url, 403, "not_signed_in",
     token || ours ? "Your sign-in has expired or is not for this site. Sign in again." : SIGN_IN_LINE);
 }

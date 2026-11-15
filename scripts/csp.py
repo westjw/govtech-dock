@@ -239,8 +239,11 @@ def policy(hashes, connect: str = "'self'", form: str = "'none'") -> str:
 
 # The kinds of page whose forms may post, and where. Only our own sign-in:
 # its pages carry no script, so a form is the only way they can send an
-# address or a code (2026-11-13). Every other kind stays at 'none'.
-FORMS = {"signin": "'self'"}
+# address or a code (2026-11-13). The gate's "Sign in to see this page" card
+# ("holding") carries the same address box since 2026-11-14 (owner: a person
+# who opened a shared role signs in from that card). Every other kind stays
+# at 'none'.
+FORMS = {"signin": "'self'", "holding": "'self'"}
 
 
 def app_connect(brand: dict) -> str:
