@@ -153,7 +153,7 @@
    "ids": [
     "keller-america-inc"
    ],
-   "why": "Both are US 'Inc.' records for the KELLER pressure sensor business with the same homepage ('KELLER Pressure – The leading manufacturer of pressure transducers'); Keller America Inc. is the older name of the US company that now calls itself KELLER Pressure Inc. on its own site."
+   "why": "Both are US 'Inc.' records for the KELLER pressure sensor business with the same homepage ('KELLER Pressure \u2013 The leading manufacturer of pressure transducers'); Keller America Inc. is the older name of the US company that now calls itself KELLER Pressure Inc. on its own site."
   },
   {
    "host": "musco.com",
@@ -456,6 +456,176 @@
    "why": "DLI is Design Learned, Inc.'s own abbreviation, and \"ANIMAL FACILITY SPECIALISTS\" is the site's tagline. Both rows sit on designlearned.com.",
    "decided_on": "2026-10-26",
    "read_by": "a reader and a skeptic, after the second review found twins filed by the 10-25 floors"
+  },
+  {
+   "host": "transitmarketinggroup.com",
+   "into": "transit-marketing-group",
+   "ids": [
+    "transit-marketing-group-sportworks"
+   ],
+   "why": "Both rows are Transit Marketing Group, the APTA manufacturers' representative and reseller on transitmarketinggroup.com, which lists SPORTWORKS - Transit Bike Racks among its lines; the Sportworks booth was the rep's, and no separate Sportworks row exists. Both rows carried transitmarketing.com, a different Tucson consultancy, corrected the same day.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "brentwoodindustries.com",
+   "into": "brentwood-industries",
+   "ids": [
+    "stormtank"
+   ],
+   "why": "StormTank(R), including its Module 25 Series and Urban Root System, is a product line on Brentwood Industries' stormwater page. It is not a company. StormCon listed the product name and WEFTEC listed 'Brentwood Industries'. Merging the product into its maker follows the DuraTrench and ZYMOX LP3 rulings.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "fdsoa.org",
+   "into": "fire-department-safety-officers-association-fdsoa",
+   "ids": [
+    "fire-department-safety-officers-assoc"
+   ],
+   "why": "One association, with its name written in full (IAFC FRI 2026) and abbreviated (FDIC 2026). Both rows share the homepage titled 'Fire Department Safety Officers Association (FDSOA)'.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "firedex.com",
+   "into": "fire-dex",
+   "ids": [
+    "fire-dex-gear-wash"
+   ],
+   "why": "gearwash.com states 'Gear Wash is a division of Fire-Dex, LLC'. The FRI row 'Fire-Dex/Gear Wash' names the parent first with its division added, which is the CGI Digital/HelloNation and Midmark/Shor-line pattern, so it is Fire-Dex's booth. The plain 'Fire Dex' row (FDIC 2026/2027) is the same company. No separate Gear Wash row exists. If one is ever wanted, it would sit on gearwash.com.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "hentechnologies.com",
+   "into": "hen-technologies",
+   "ids": [
+    "hen-nozzles"
+   ],
+   "why": "There is one homepage, titled 'Fire Hose Nozzles & Technology | HEN Technologies'. 'HEN Nozzles' (FDIC) is the same maker named by its product, and it is the same company as the IAFC FRI row.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "hks.harvard.edu",
+   "into": "harvard-kennedy-school",
+   "ids": [
+    "harvard-university-john-f-kennedy-school-of-government"
+   ],
+   "why": "'Harvard Kennedy School' is the short name of the John F. Kennedy School of Government, and both rows resolve to the homepage titled 'Harvard Kennedy School'. The kept row has the location and fuller description. Aside: a held row, harvard-kennedy-school-executive-education (NCSL 2026), is a further twin outside the published set.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "ifsta.org",
+   "into": "ifsta-fire-protection-publications",
+   "ids": [
+    "ifsta-fire-protection-publication"
+   ],
+   "why": "The names differ only in capitals and a plural. The IFSTA homepage describes the IFSTA/FPP relationship at Oklahoma State University. The rows came off IAFC FRI and FDIC.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "kuritaamerica.com",
+   "into": "kurita-america",
+   "ids": [
+    "kurita-america-tonka-water-a-kurita-brand"
+   ],
+   "why": "AWWA ACE's staged floor lists the exhibitor as 'KURITA AMERICA / Tonka Water, a Kurita brand', with Kurita America's own page as its website. That page says Tonka Water is a trusted brand 'part of Kurita America'. The name puts the company first, so this is Kurita America's booth with its brand added.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "liquidspring.com",
+   "into": "liquidspring-llc",
+   "ids": [
+    "liquid-spring"
+   ],
+   "why": "One suspension maker, named with and without the space and 'LLC' (CTAA and FDIC). The shared homepage names 'LiquidSpring LLC' and its EMS, Fire & Rescue line.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "mokveld.com",
+   "into": "mokveld-usa-inc",
+   "ids": [
+    "mokveld-valves"
+   ],
+   "why": "Mokveld's global contact page lists 'Mokveld USA Inc.' in Houston as a Mokveld office, and the company is Mokveld Valves BV of Gouda. This is one axial-valve business on one domain, the same case as the Primozone maker-and-US-arm ruling. The kept row has the root address and a description.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "playcraftsystems.com",
+   "into": "playcraft-systems",
+   "ids": [
+    "playcraft-systems-a-playcore-company"
+   ],
+   "why": "The second name only adds its parent's tagline. There is one homepage, 'Commercial Playground Manufacturer | Playcraft Systems', and its careers links go to PlayCore.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "spartanarmorsystems.com",
+   "into": "spartan-armor-systems",
+   "ids": [
+    "tk-armor-systems-llc-dba-spartan-armor-systems"
+   ],
+   "why": "The FDIC row's own name says TK Armor Systems does business as Spartan Armor Systems, and the site reads '\u00a9 Spartan Armor Systems'. This is the Blue Earth Labs d/b/a ruling.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "supervac.com",
+   "into": "super-vac",
+   "ids": [
+    "super-vac-command-light"
+   ],
+   "why": "'Super Vac/ Command Light' is a joint IAFC FRI booth of sister brands. supervac.com says 'Super Vac and Command Light team up'. FDIC listed Super Vac and Command Light separately, and Command Light already has its own published row on commandlight.com. Folding the joint row into super-vac loses nothing. Aside: the held row super-vacuum-mfg-co (FDIC 2027) looks like another Super Vac twin.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "vpacalliance.com",
+   "into": "vpac-alliance",
+   "ids": [
+    "visual-concepts-dba-vpac-alliance"
+   ],
+   "why": "One alliance at DISTRIBUTECH 2026 and 2027. The 2027 name says Visual Concepts does business as vPAC Alliance, and the site reads 'Copyright \u00a92026 vPACalliance'. This is the d/b/a pattern.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "www2.blackinton.com",
+   "into": "v-h-blackinton",
+   "ids": [
+    "blackinton"
+   ],
+   "why": "One badge maker. The page title ends '- V. H. Blackinton', and the address reads 'V.H. Blackinton & Co., Inc.'. 'Blackinton' (FDIC) is its short name. The kept row has the description.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "zumro.com",
+   "into": "zumro",
+   "ids": [
+    "zumro-by-air-shelters-usa-llc"
+   ],
+   "why": "This is a second twin of ZUMRO, after the 10-23 ruling folded zumro-air-shelters into zumro. The homepage, 'ZUMRO Air Shelter Systems', names Air Shelters USA, the FDIC row's legal name. The 10-23 ruling has landed, so a new ruling into zumro is not 'ruled twice'.",
+   "decided_on": "2026-11-16",
+   "read_by": "a reader and a skeptic (shared-website audit 2026-11-16), each page read with read_page.py"
+  },
+  {
+   "host": "tthm.com",
+   "into": "tthm",
+   "ids": [
+    "telephone-town-hall-meeting"
+   ],
+   "why": "One company: tthm.com's homepage is titled 'TTHM - Teletownhalls, Branded Texts and more mass-outreach' and reads 'TTHM Telephone Town Hall Meeting produces Teletownhalls', so 'Telephone Town Hall Meeting' is the name TTHM abbreviates. Both rows came off the 3CMA 2026 floor. Kept tthm, the id already published.",
+   "decided_on": "2026-11-16",
+   "read_by": "Claude, read with read_page.py, after the 2026-11-16 export rebuild placed the second row"
   }
  ],
  "pull": [

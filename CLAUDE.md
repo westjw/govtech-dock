@@ -3366,6 +3366,22 @@ Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
   `supplier_pages.site_for` and `supplier_identity.check_own` add `https://`;
   re-read, 18 had pages and 13 now publish. The other 5 are robots.txt bot
   walls or SSL failures, honestly unread.
+- **A corrected website is read again** (2026-11-16). The second
+  shared-website audit (reader + skeptic, every page through read_page.py)
+  folded 17 twins (`supplier_record_rulings.json`, decided_on 2026-11-16),
+  gave 5 suppliers their own site in place of another company's (Cunningham
+  Recreation off gametime.com, Transit Marketing Group off a Tucson
+  consultancy's transitmarketing.com, two IAFC divisions off iafc.org), and
+  put 2 unread leads in the Supplier websites queue (Butterball Foodservice,
+  the Canadian fire chiefs). supplier_pages passed over the corrected ones
+  because a page file existed, and the export quoted the OLD site as their
+  own: HQ's parseSupplierExport refused 3 placements. `supplier_pages.stale`
+  re-reads pages that came off another host, and `own_text` never quotes
+  them (held `website unread (pages read from ...)` until read).
+  `check_a_corrected_website_is_read_again_before_it_is_quoted`. Kept apart
+  on purpose: brands and divisions on a parent's site (xylem, sodexo,
+  hubbell/Beckwith, EXL Health, Komline, GEO Care, Nationwide, PPG, Progress,
+  CGI, Chart) and Fusion Learning Partners' two programmes on fusionlp.org.
 
 ## The supplier backlog is smaller than it looks (checked 2026-08-25)
 

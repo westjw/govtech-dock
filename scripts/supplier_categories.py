@@ -486,11 +486,17 @@ SENT = re.compile(r"(?<=[.!?])\s+|\n+")
 
 
 
-def own_text(sid: str) -> tuple[list[dict], str | None]:
+def own_text(sid: str, site: str | None = None) -> tuple[list[dict], str | None]:
+    """A supplier's own pages, or why there are none. Pages read off another
+    website than `site`, the one on file now, are none of its own: the
+    supplier's website was corrected after they were read (supplier_pages
+    .stale), and quoting them is what SLED HQ refused on 2026-11-16."""
     p = PAGES / f"{sid}.json"
     if not p.exists():
         return [], "not read"
     rec = json.loads(p.read_text())
+    if SP.stale(rec, site):
+        return [], f"pages read from {SP.site_host(rec['website'])}, not the website on file"
     pages = [x for x in rec.get("pages") or [] if x.get("text")]
     if not pages:
         return [], rec.get("unread") or "no readable page"
@@ -552,7 +558,7 @@ def place(s: dict, ident: dict, by_tag: dict, by_stem: dict, ruling: dict | None
         return row
 
     where = where_it_sells(s, by_tag, by_stem)
-    pages, unread = own_text(sid)
+    pages, unread = own_text(sid, (ident or {}).get("url") or (ident or {}).get("website_was"))
     sells = what_it_sells(pages) if pages else []
     sectors = {w["sector"] for w in where}
 

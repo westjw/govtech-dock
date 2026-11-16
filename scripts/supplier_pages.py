@@ -83,6 +83,34 @@ def site_for(row: dict) -> str | None:
     return u if re.match(r"[a-z][a-z0-9+.-]*://", u, re.I) else f"https://{u}"
 
 
+def site_host(u: str | None) -> str:
+    """The host an address names, as two readings of one site compare it:
+    lower-cased, no port, no "www." (a bare host read over https)."""
+    u = (u or "").strip()
+    if not u:
+        return ""
+    if not re.match(r"[a-z][a-z0-9+.-]*://", u, re.I):
+        u = f"https://{u}"
+    h = (up.urlsplit(u).hostname or "").lower()
+    return h[4:] if h.startswith("www.") else h
+
+
+def stale(rec: dict | None, site: str | None) -> bool:
+    """Pages read from another website than the one on file now.
+
+    A supplier's website corrected after its pages were read kept the old
+    site's pages (2026-11-16): Cunningham Recreation, GameTime's dealer, was
+    moved off gametime.com to cunninghamrec.com, main() passed over it because
+    its file existed, and the export quoted gametime.com as Cunningham's own
+    site - SLED HQ's door refused the placement ("an own-site quote from a
+    page that is not on the supplier's own domain"), as it did for two IAFC
+    divisions moved off iafc.org. Such pages are read again here, and the
+    export never quotes them (supplier_categories.own_text). A record that
+    names no website predates the field and is kept."""
+    return bool(rec and rec.get("website") and site
+                and site_host(rec["website"]) != site_host(site))
+
+
 def visit(sid: str, site: str) -> dict:
     out = {"id": sid, "website": site, "fetched_on": dt.date.today().isoformat(),
            "pages": [], "unread": None}
@@ -136,7 +164,8 @@ def main() -> int:
         site = site_for(row)
         if not site:
             continue
-        if not a.refresh and (DIR / f"{sid}.json").exists():
+        # read again when the pages on file came off another website (stale)
+        if not a.refresh and (DIR / f"{sid}.json").exists() and not stale(load(sid), site):
             continue
         todo.append((sid, site))
     print(f"{len(todo)} supplier site(s) to read")

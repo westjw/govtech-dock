@@ -40478,12 +40478,12 @@
  {
   "id": "playcraft-systems",
   "name": "Playcraft Systems",
-  "website": null,
+  "website": "playcraftsystems.com",
   "location": null,
   "year_founded": null,
   "sector": "Parks & Rec",
   "category": "Suppliers & Services",
-  "description": "Commercial playground equipment manufacturer - exhibited at NRPA 2026",
+  "description": "Commercial playground equipment manufacturer - exhibited at NRPA 2026, NLC City Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -40496,8 +40496,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "NRPA 2026",
-  "researched": false
+  "source": "NRPA 2026; NLC City Summit 2026",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "playcraft-systems-a-playcore-company",
+    "name": "Playcraft Systems, A PlayCore Company",
+    "why": "The second name only adds its parent's tagline. There is one homepage, 'Commercial Playground Manufacturer | Playcraft Systems', and its careers links go to PlayCore."
+   }
+  ],
+  "also_known_as": [
+   "Playcraft Systems, A PlayCore Company"
+  ]
  },
  {
   "id": "playground-grass-by-foreverlawn",
@@ -49801,7 +49811,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at IACP 2026",
+  "description": "Equipment / Components - exhibited at IACP 2026, FDIC International 2026, FDIC International 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -49814,8 +49824,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "IACP 2026",
-  "researched": false
+  "source": "IACP 2026; FDIC International 2026; FDIC International 2027",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "tk-armor-systems-llc-dba-spartan-armor-systems",
+    "name": "TK Armor Systems LLC dba Spartan Armor Systems",
+    "why": "The FDIC row's own name says TK Armor Systems does business as Spartan Armor Systems, and the site reads '\u00a9 Spartan Armor Systems'. This is the Blue Earth Labs d/b/a ruling."
+   }
+  ],
+  "also_known_as": [
+   "TK Armor Systems LLC dba Spartan Armor Systems"
+  ]
  },
  {
   "id": "spartan-sports-lighting",
@@ -54942,30 +54962,6 @@
   "researched": false
  },
  {
-  "id": "transit-marketing-group-sportworks",
-  "name": "Transit Marketing Group / Sportworks",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Bus bike racks and transit equipment sales - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Distributor / Reseller / Co-op",
-  "source": "APTA 2026",
-  "researched": false
- },
- {
   "id": "transit-re",
   "name": "Transit RE",
   "website": null,
@@ -57041,7 +57037,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Badges, insignia and uniform emblems - exhibited at IACP 2026",
+  "description": "Badges, insignia and uniform emblems - exhibited at IACP 2026, FDIC International 2026, FDIC International 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -57054,8 +57050,18 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "IACP 2026",
-  "researched": false
+  "source": "IACP 2026; FDIC International 2026; FDIC International 2027",
+  "researched": false,
+  "merged_from": [
+   {
+    "id": "blackinton",
+    "name": "Blackinton",
+    "why": "One badge maker. The page title ends '- V. H. Blackinton', and the address reads 'V.H. Blackinton & Co., Inc.'. 'Blackinton' (FDIC) is its short name. The kept row has the description."
+   }
+  ],
+  "also_known_as": [
+   "Blackinton"
+  ]
  },
  {
   "id": "vds-rail-spa",
@@ -60661,7 +60667,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Inflatable shelters and decontamination systems - exhibited at IACP 2026, IAEM 2026",
+  "description": "Inflatable shelters and decontamination systems - exhibited at IACP 2026, IAEM 2026, FDIC International 2026, FDIC International 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -60674,17 +60680,23 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "IACP 2026; IAEM 2026",
+  "source": "IACP 2026; IAEM 2026; FDIC International 2026; FDIC International 2027",
   "researched": false,
   "merged_from": [
    {
     "id": "zumro-air-shelters",
     "name": "Zumro Air Shelters",
     "why": "Both have the same ZUMRO homepage ('premier manufacturer of air shelter systems'). 'Zumro Air Shelters' is the same company plus its product."
+   },
+   {
+    "id": "zumro-by-air-shelters-usa-llc",
+    "name": "Zumro By Air Shelters Usa, Llc.",
+    "why": "This is a second twin of ZUMRO, after the 10-23 ruling folded zumro-air-shelters into zumro. The homepage, 'ZUMRO Air Shelter Systems', names Air Shelters USA, the FDIC row's legal name. The 10-23 ruling has landed, so a new ruling into zumro is not 'ruled twice'."
    }
   ],
   "also_known_as": [
-   "Zumro Air Shelters"
+   "Zumro Air Shelters",
+   "Zumro By Air Shelters Usa, Llc."
   ]
  },
  {
@@ -61607,7 +61619,7 @@
   "year_founded": 1936,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Public policy graduate school and executive education for government leaders - exhibited at ICMA 2026, NCSL Legislative Summit 2026",
+  "description": "Public policy graduate school and executive education for government leaders - exhibited at ICMA 2026, NCSL Legislative Summit 2026, NLC City Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -61621,7 +61633,17 @@
   "govtech": false,
   "researched": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "ICMA 2026; NCSL Legislative Summit 2026"
+  "source": "ICMA 2026; NCSL Legislative Summit 2026; NLC City Summit 2026",
+  "merged_from": [
+   {
+    "id": "harvard-university-john-f-kennedy-school-of-government",
+    "name": "Harvard University John F. Kennedy School of Government",
+    "why": "'Harvard Kennedy School' is the short name of the John F. Kennedy School of Government, and both rows resolve to the homepage titled 'Harvard Kennedy School'. The kept row has the location and fuller description. Aside: a held row, harvard-kennedy-school-executive-education (NCSL 2026), is a further twin outside the published set."
+   }
+  ],
+  "also_known_as": [
+   "Harvard University John F. Kennedy School of Government"
+  ]
  },
  {
   "id": "human-rights-campaign",
@@ -76169,27 +76191,6 @@
   "source": "conference sweep: IEDC 2026; NLC City Summit 2026; NAHRO 2026"
  },
  {
-  "id": "harvard-university-john-f-kennedy-school-of-government",
-  "name": "Harvard University John F. Kennedy School of Government",
-  "website": "hks.harvard.edu",
-  "location": null,
-  "year_founded": null,
-  "sector": "Higher Education",
-  "category": "Suppliers & Services",
-  "description": "Executive education for government - exhibited at NLC City Summit 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NLC City Summit 2026"
- },
- {
   "id": "international-city-county-management-association",
   "name": "International City/County Management Association",
   "website": "www.icma.org",
@@ -76230,27 +76231,6 @@
    "checked": null
   },
   "source": "conference sweep: WEFTEC 2026; NLC City Summit 2026"
- },
- {
-  "id": "playcraft-systems-a-playcore-company",
-  "name": "Playcraft Systems, A PlayCore Company",
-  "website": "playcraftsystems.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
-  "description": "Playground equipment - exhibited at NLC City Summit 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NLC City Summit 2026"
  },
  {
   "id": "tips-the-interlocal-purchasing-system",
@@ -77156,7 +77136,7 @@
  {
   "id": "butterball-foodservice",
   "name": "Butterball Foodservice",
-  "website": "https://bushbeansfoodservice.com/k12",
+  "website": "https://www.butterballfoodservice.com/",
   "location": null,
   "year_founded": null,
   "sector": "K-12 Schools",
@@ -88459,26 +88439,6 @@
   "source": "conference sweep: WEFTEC 2026"
  },
  {
-  "id": "kurita-america-tonka-water-a-kurita-brand",
-  "name": "KURITA AMERICA / Tonka Water, a Kurita brand",
-  "website": "https://www.kuritaamerica.com/industries/municipal-drinking-water",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "Municipal water treatment systems - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "k-water",
   "name": "K-water",
   "website": "https://www.kwater.or.kr/",
@@ -89177,7 +89137,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Axial control valves - exhibited at AWWA ACE 2026",
+  "description": "Axial control valves - exhibited at AWWA ACE 2026, WEFTEC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -89187,7 +89147,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: WEFTEC 2026",
+  "merged_from": [
+   {
+    "id": "mokveld-valves",
+    "name": "Mokveld Valves",
+    "why": "Mokveld's global contact page lists 'Mokveld USA Inc.' in Houston as a Mokveld office, and the company is Mokveld Valves BV of Gouda. This is one axial-valve business on one domain, the same case as the Primozone maker-and-US-arm ruling. The kept row has the root address and a description."
+   }
+  ],
+  "also_known_as": [
+   "Mokveld Valves"
+  ]
  },
  {
   "id": "molecor-usa",
@@ -105278,27 +105249,6 @@
   "source": "conference sweep: PSHRA 2026"
  },
  {
-  "id": "telephone-town-hall-meeting",
-  "name": "Telephone Town Hall Meeting",
-  "website": "https://tthm.com",
-  "location": null,
-  "year_founded": 2010,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Produced telephone town halls, text alerts, voice broadcasts, and direct mail campaigns for municipalities, school districts, unions, and campaigns",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: 3CMA 2026"
- },
- {
   "id": "5e-analytics-llc",
   "name": "5e Analytics, LLC",
   "website": "https://www.5eanalytics.com",
@@ -106317,10 +106267,10 @@
   "name": "TTHM",
   "website": "https://tthm.com/",
   "location": null,
-  "year_founded": null,
+  "year_founded": 2010,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at 3CMA 2026",
+  "description": "Produced telephone town halls, text alerts, voice broadcasts, and direct mail campaigns for municipalities, school districts, unions, and campaigns - exhibited at 3CMA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -106331,7 +106281,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: 3CMA 2026"
+  "source": "conference sweep: 3CMA 2026",
+  "merged_from": [
+   {
+    "id": "telephone-town-hall-meeting",
+    "name": "Telephone Town Hall Meeting",
+    "why": "One company: tthm.com's homepage is titled 'TTHM - Teletownhalls, Branded Texts and more mass-outreach' and reads 'TTHM Telephone Town Hall Meeting produces Teletownhalls', so 'Telephone Town Hall Meeting' is the name TTHM abbreviates. Both rows came off the 3CMA 2026 floor. Kept tthm, the id already published."
+   }
+  ],
+  "also_known_as": [
+   "Telephone Town Hall Meeting"
+  ]
  },
  {
   "id": "merck",
@@ -110992,7 +110952,7 @@
  {
   "id": "cunningham-recreation-gametime",
   "name": "Cunningham Recreation/Gametime",
-  "website": null,
+  "website": "https://cunninghamrec.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -118923,7 +118883,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "exhibited at WEFTEC 2026, StormCon 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -118934,7 +118894,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; StormCon 2026",
+  "merged_from": [
+   {
+    "id": "stormtank",
+    "name": "StormTank",
+    "why": "StormTank(R), including its Module 25 Series and Urban Root System, is a product line on Brentwood Industries' stormwater page. It is not a company. StormCon listed the product name and WEFTEC listed 'Brentwood Industries'. Merging the product into its maker follows the DuraTrench and ZYMOX LP3 rulings."
+   }
+  ],
+  "also_known_as": [
+   "StormTank"
+  ]
  },
  {
   "id": "brightwater-tools",
@@ -125275,12 +125245,12 @@
  {
   "id": "kurita-america",
   "name": "KURITA AMERICA",
-  "website": null,
+  "website": "https://www.kuritaamerica.com/industries/municipal-drinking-water",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
+  "description": "Municipal water treatment systems - exhibited at WEFTEC 2026, AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -125291,7 +125261,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: WEFTEC 2026"
+  "source": "conference sweep: WEFTEC 2026; AWWA ACE 2026",
+  "merged_from": [
+   {
+    "id": "kurita-america-tonka-water-a-kurita-brand",
+    "name": "KURITA AMERICA / Tonka Water, a Kurita brand",
+    "why": "AWWA ACE's staged floor lists the exhibitor as 'KURITA AMERICA / Tonka Water, a Kurita brand', with Kurita America's own page as its website. That page says Tonka Water is a trusted brand 'part of Kurita America'. The name puts the company first, so this is Kurita America's booth with its brand added."
+   }
+  ],
+  "also_known_as": [
+   "KURITA AMERICA / Tonka Water, a Kurita brand"
+  ]
  },
  {
   "id": "kusiar-project-services-inc",
@@ -126557,27 +126537,6 @@
  {
   "id": "mody-pumps-inc",
   "name": "Mody Pumps Inc.",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: WEFTEC 2026"
- },
- {
-  "id": "mokveld-valves",
-  "name": "Mokveld Valves",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -133943,7 +133902,7 @@
  {
   "id": "canadian-association-of-fire-chiefs-iafc",
   "name": "Canadian Association of Fire Chiefs (IAFC)",
-  "website": null,
+  "website": "https://cafc.ca/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -134473,7 +134432,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at IAFC FRI 2026",
+  "description": "exhibited at IAFC FRI 2026, FDIC International 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -134484,7 +134443,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: IAFC FRI 2026"
+  "source": "conference sweep: IAFC FRI 2026; FDIC International 2026",
+  "merged_from": [
+   {
+    "id": "fire-department-safety-officers-assoc",
+    "name": "Fire Department Safety Officers Assoc.",
+    "why": "One association, with its name written in full (IAFC FRI 2026) and abbreviated (FDIC 2026). Both rows share the homepage titled 'Fire Department Safety Officers Association (FDSOA)'."
+   }
+  ],
+  "also_known_as": [
+   "Fire Department Safety Officers Assoc."
+  ]
  },
  {
   "id": "fire-engineering-training",
@@ -134594,27 +134563,6 @@
  {
   "id": "fire-recovery-usa",
   "name": "Fire Recovery USA",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at IAFC FRI 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: IAFC FRI 2026"
- },
- {
-  "id": "fire-dex-gear-wash",
-  "name": "Fire-Dex/Gear Wash",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -135040,7 +134988,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at IAFC FRI 2026",
+  "description": "exhibited at IAFC FRI 2026, FDIC International 2026, FDIC International 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -135051,7 +134999,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: IAFC FRI 2026"
+  "source": "conference sweep: IAFC FRI 2026; FDIC International 2026; FDIC International 2027",
+  "merged_from": [
+   {
+    "id": "hen-nozzles",
+    "name": "HEN Nozzles",
+    "why": "There is one homepage, titled 'Fire Hose Nozzles & Technology | HEN Technologies'. 'HEN Nozzles' (FDIC) is the same maker named by its product, and it is the same company as the IAFC FRI row."
+   }
+  ],
+  "also_known_as": [
+   "HEN Nozzles"
+  ]
  },
  {
   "id": "hexarmor",
@@ -135229,7 +135187,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at IAFC FRI 2026",
+  "description": "exhibited at IAFC FRI 2026, FDIC International 2026, FDIC International 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -135240,7 +135198,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: IAFC FRI 2026"
+  "source": "conference sweep: IAFC FRI 2026; FDIC International 2026; FDIC International 2027",
+  "merged_from": [
+   {
+    "id": "ifsta-fire-protection-publication",
+    "name": "IFSTA/FIRE PROTECTION PUBLICATION",
+    "why": "The names differ only in capitals and a plural. The IFSTA homepage describes the IFSTA/FPP relationship at Oklahoma State University. The rows came off IAFC FRI and FDIC."
+   }
+  ],
+  "also_known_as": [
+   "IFSTA/FIRE PROTECTION PUBLICATION"
+  ]
  },
  {
   "id": "imppact-first-responder-disability-training",
@@ -136657,7 +136625,7 @@
  {
   "id": "southeastern-association-of-fire-chiefs-iafc",
   "name": "Southeastern Association of Fire Chiefs (IAFC)",
-  "website": null,
+  "website": "https://www.seafc.org/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -136678,7 +136646,7 @@
  {
   "id": "southwestern-fire-chief-s-association-iafc",
   "name": "Southwestern Fire Chief's Association (IAFC)",
-  "website": null,
+  "website": "https://www.swd-iafc.org/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -136741,27 +136709,6 @@
  {
   "id": "steel-blue-work-boots",
   "name": "Steel Blue Work Boots",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at IAFC FRI 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: IAFC FRI 2026"
- },
- {
-  "id": "super-vac-command-light",
-  "name": "Super Vac/ Command Light",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -141670,7 +141617,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at CTAA EXPO 2026",
+  "description": "exhibited at CTAA EXPO 2026, FDIC International 2026, FDIC International 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -141681,7 +141628,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: CTAA EXPO 2026"
+  "source": "conference sweep: CTAA EXPO 2026; FDIC International 2026; FDIC International 2027",
+  "merged_from": [
+   {
+    "id": "liquid-spring",
+    "name": "Liquid Spring",
+    "why": "One suspension maker, named with and without the space and 'LLC' (CTAA and FDIC). The shared homepage names 'LiquidSpring LLC' and its EMS, Fire & Rescue line."
+   }
+  ],
+  "also_known_as": [
+   "Liquid Spring"
+  ]
  },
  {
   "id": "master-s-transportation",
@@ -147649,12 +147606,12 @@
  {
   "id": "transit-marketing-group",
   "name": "Transit Marketing Group",
-  "website": null,
+  "website": "https://transitmarketinggroup.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at APTA 2026",
+  "description": "Bus bike racks and transit equipment sales - exhibited at APTA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -147665,7 +147622,20 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: APTA 2026"
+  "source": "conference sweep: APTA 2026",
+  "govtech": false,
+  "researched": false,
+  "vendor_type": "Distributor / Reseller / Co-op",
+  "merged_from": [
+   {
+    "id": "transit-marketing-group-sportworks",
+    "name": "Transit Marketing Group / Sportworks",
+    "why": "Both rows are Transit Marketing Group, the APTA manufacturers' representative and reseller on transitmarketinggroup.com, which lists SPORTWORKS - Transit Bike Racks among its lines; the Sportworks booth was the rep's, and no separate Sportworks row exists. Both rows carried transitmarketing.com, a different Tucson consultancy, corrected the same day."
+   }
+  ],
+  "also_known_as": [
+   "Transit Marketing Group / Sportworks"
+  ]
  },
  {
   "id": "transitcheck",
@@ -153724,26 +153694,6 @@
  {
   "id": "nmsa",
   "name": "NMSA",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at StormCon 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "stormtank",
-  "name": "StormTank",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -175220,7 +175170,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "exhibited at DISTRIBUTECH 2026",
+  "description": "exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -175230,7 +175180,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: DISTRIBUTECH 2027",
+  "merged_from": [
+   {
+    "id": "visual-concepts-dba-vpac-alliance",
+    "name": "Visual Concepts dba vPAC Alliance",
+    "why": "One alliance at DISTRIBUTECH 2026 and 2027. The 2027 name says Visual Concepts does business as vPAC Alliance, and the site reads 'Copyright \u00a92026 vPACalliance'. This is the d/b/a pattern."
+   }
+  ],
+  "also_known_as": [
+   "Visual Concepts dba vPAC Alliance"
+  ]
  },
  {
   "id": "wain-electrical-co-ltd",
@@ -177183,26 +177144,6 @@
   }
  },
  {
-  "id": "visual-concepts-dba-vpac-alliance",
-  "name": "Visual Concepts dba vPAC Alliance",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "exhibited at DISTRIBUTECH 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "vodafone-iot",
   "name": "Vodafone IoT",
   "website": null,
@@ -178479,27 +178420,6 @@
  {
   "id": "bill-fox-balfour-co",
   "name": "Bill Fox Balfour Co",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026, FDIC International 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: FDIC International 2027"
- },
- {
-  "id": "blackinton",
-  "name": "Blackinton",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -180523,26 +180443,6 @@
   "source": "conference sweep: FDIC International 2027"
  },
  {
-  "id": "fire-department-safety-officers-assoc",
-  "name": "Fire Department Safety Officers Assoc.",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "fire-dex",
   "name": "Fire Dex",
   "website": null,
@@ -180550,7 +180450,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026, FDIC International 2027",
+  "description": "exhibited at FDIC International 2026, FDIC International 2027, IAFC FRI 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -180561,7 +180461,17 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: FDIC International 2027"
+  "source": "conference sweep: FDIC International 2027; IAFC FRI 2026",
+  "merged_from": [
+   {
+    "id": "fire-dex-gear-wash",
+    "name": "Fire-Dex/Gear Wash",
+    "why": "gearwash.com states 'Gear Wash is a division of Fire-Dex, LLC'. The FRI row 'Fire-Dex/Gear Wash' names the parent first with its division added, which is the CGI Digital/HelloNation and Midmark/Shor-line pattern, so it is Fire-Dex's booth. The plain 'Fire Dex' row (FDIC 2026/2027) is the same company. No separate Gear Wash row exists. If one is ever wanted, it would sit on gearwash.com."
+   }
+  ],
+  "also_known_as": [
+   "Fire-Dex/Gear Wash"
+  ]
  },
  {
   "id": "fire-dynamics-training-programs-llc",
@@ -182097,27 +182007,6 @@
   "source": "conference sweep: FDIC International 2027"
  },
  {
-  "id": "hen-nozzles",
-  "name": "HEN Nozzles",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026, FDIC International 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: FDIC International 2027"
- },
- {
   "id": "henry-schein-inc",
   "name": "Henry Schein Inc",
   "website": null,
@@ -182467,27 +182356,6 @@
  {
   "id": "idex-fire-safety",
   "name": "IDEX Fire & Safety",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026, FDIC International 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: FDIC International 2027"
- },
- {
-  "id": "ifsta-fire-protection-publication",
-  "name": "IFSTA/FIRE PROTECTION PUBLICATION",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -183664,27 +183532,6 @@
    "roles": [],
    "checked": null
   }
- },
- {
-  "id": "liquid-spring",
-  "name": "Liquid Spring",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026, FDIC International 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: FDIC International 2027"
  },
  {
   "id": "lite-tactical-solutions",
@@ -187466,7 +187313,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026",
+  "description": "exhibited at FDIC International 2026, IAFC FRI 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -187476,7 +187323,18 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: IAFC FRI 2026",
+  "merged_from": [
+   {
+    "id": "super-vac-command-light",
+    "name": "Super Vac/ Command Light",
+    "why": "'Super Vac/ Command Light' is a joint IAFC FRI booth of sister brands. supervac.com says 'Super Vac and Command Light team up'. FDIC listed Super Vac and Command Light separately, and Command Light already has its own published row on commandlight.com. Folding the joint row into super-vac loses nothing. Aside: the held row super-vacuum-mfg-co (FDIC 2027) looks like another Super Vac twin."
+   }
+  ],
+  "also_known_as": [
+   "Super Vac/ Command Light"
+  ]
  },
  {
   "id": "surrey-fire-safety",
@@ -187867,27 +187725,6 @@
    "roles": [],
    "checked": null
   }
- },
- {
-  "id": "tk-armor-systems-llc-dba-spartan-armor-systems",
-  "name": "TK Armor Systems LLC dba Spartan Armor Systems",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026, FDIC International 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: FDIC International 2027"
  },
  {
   "id": "tohatsu-america-corp",
@@ -189051,27 +188888,6 @@
  {
   "id": "zolatone-automotive-industiral-marine",
   "name": "Zolatone Automotive, Industiral & Marine",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "exhibited at FDIC International 2026, FDIC International 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: FDIC International 2027"
- },
- {
-  "id": "zumro-by-air-shelters-usa-llc",
-  "name": "Zumro By Air Shelters Usa, Llc.",
   "website": null,
   "location": null,
   "year_founded": null,

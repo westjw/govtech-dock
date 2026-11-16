@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T17:11:33-04:00",
+ "generated": "2026-11-16T18:28:31-05:00",
  "verdicts": {
   "theirs": "the website on file names them",
   "unconfirmed": "the website on file answers but does not state their full name - usually an acronym, brand or parent; likely theirs, not confirmed",
@@ -16108,11 +16108,16 @@
   },
   "playcraft-systems": {
    "url": "https://playcraftsystems.com",
+   "final": "https://playcraftsystems.com",
    "says": "Commercial Playground Manufacturer | Playcraft Systems Playground Adventures Playcraft Systems has teamed up with Agents",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "present": [
+    "playcraft",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "playcraftsystems.com"
   },
   "playground-os": {
    "url": "https://playgroundai.com",
@@ -29935,23 +29940,12 @@
    "website_was": "http://www.chefscornerfoods.com"
   },
   "butterball-foodservice": {
-   "url": "https://bushbeansfoodservice.com/k12",
-   "final": "https://www.bushbeansfoodservice.com/k12",
-   "says": "K-12 Schools & Education | BUSH\u2019S\u00ae Beans Food Service Create trays students won\u2019t want to trade. Bush\u2019s\u00ae Beans deliver g",
-   "present": [
-    "foodservice"
-   ],
-   "missing": [
-    "butterball"
-   ],
-   "verdict": "unconfirmed",
-   "page_names": [
-    "BUSH\u2019S\u00ae Beans Food Service",
-    "Bush Brothers & Company"
-   ],
-   "why": "the page does not state their full name",
-   "checked_on": "2026-10-03",
-   "website_was": "https://bushbeansfoodservice.com/k12"
+   "verdict": "unreadable",
+   "url": "https://www.butterballfoodservice.com/",
+   "why": "AtsError: HTTP 403 for https://www.butterballfoodservice.com/",
+   "home_tried": true,
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.butterballfoodservice.com/"
   },
   "young-living-essential-oils": {
    "verdict": "not_found",
@@ -55849,14 +55843,24 @@
    "website_was": null
   },
   "cunningham-recreation-gametime": {
-   "url": "https://www.gametime.com",
-   "says": "GameTime | Commercial Playground Equipment, Outdoor Fitness Products, Custom Recreation Designs GameTime is a leading ma",
-   "tried": 17,
-   "verdict": "found_review",
-   "matched_on": "Gametime",
-   "why": "the page names part of their listed name",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "url": "https://cunninghamrec.com/",
+   "final": "https://cunninghamrec.com",
+   "says": "Commercial Playground Equipment Suppliers | Cunningham Recreation Cunningham Recreation has created inclusive parks and ",
+   "present": [
+    "cunningham",
+    "recreation"
+   ],
+   "missing": [
+    "gametime"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Cunningham Recreation",
+    "CunninghamRec-logo"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://cunninghamrec.com/"
   },
   "esrgc": {
    "url": "https://esrgc.org",
@@ -64066,12 +64070,17 @@
    "website_was": null
   },
   "kurita-america": {
-   "url": "https://www.kuritaamerica.com",
-   "says": "Water Treatment Solutions Company - Kurita America A water treatment solutions company delivering innovative technologie",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "url": "https://www.kuritaamerica.com/industries/municipal-drinking-water",
+   "final": "https://www.kuritaamerica.com/industries/municipal-drinking-water",
+   "says": "Municipal Water Treatment Solutions - Drinking Water Systems - Kurita America Our municipal drinking water treatment sys",
+   "present": [
+    "kurita",
+    "america"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.kuritaamerica.com/industries/municipal-drinking-water"
   },
   "kleanpro-technologies-suzhou-co-ltd": {
    "verdict": "not_found",
@@ -67526,14 +67535,11 @@
    "website_was": null
   },
   "canadian-association-of-fire-chiefs-iafc": {
-   "url": "https://www.iafc.org:443",
-   "says": "IAFC | International Association of Fire Chiefs\r\n The International Association of Fire Chiefs (IAFC) represents the lea",
-   "tried": 13,
-   "verdict": "found_review",
-   "matched_on": "IAFC",
-   "why": "the page names part of their listed name",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "verdict": "unreadable",
+   "url": "https://cafc.ca/",
+   "why": "AtsError: HTTP 403 for https://cafc.ca/",
+   "checked_on": "2026-11-16",
+   "website_was": "https://cafc.ca/"
   },
   "yao-ling-co-ltd-acevision-beijing-exhibition-co-ltd": {
    "verdict": "not_found",
@@ -68492,14 +68498,26 @@
    "website_was": null
   },
   "southeastern-association-of-fire-chiefs-iafc": {
-   "url": "https://www.iafc.org:443",
-   "says": "IAFC | International Association of Fire Chiefs\r\n The International Association of Fire Chiefs (IAFC) represents the lea",
-   "tried": 11,
-   "verdict": "found_review",
-   "matched_on": "IAFC",
-   "why": "the page names part of their listed name",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "url": "https://www.seafc.org/",
+   "final": "https://www.seafc.org",
+   "says": "Home \u2013 Southeastern Association of Fire Chiefs Home \u2013 Southeastern Association of Fire Chiefs Southeastern Association o",
+   "present": [
+    "southeastern",
+    "association",
+    "of",
+    "fire",
+    "chiefs"
+   ],
+   "missing": [
+    "iafc"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Southeastern Association of Fire Chiefs"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.seafc.org/"
   },
   "spencer-fire-trucks": {
    "url": "https://www.spencerfiretrucks.com",
@@ -68596,14 +68614,20 @@
    "website_was": null
   },
   "southwestern-fire-chief-s-association-iafc": {
-   "url": "https://www.iafc.org:443",
-   "says": "IAFC | International Association of Fire Chiefs\r\n The International Association of Fire Chiefs (IAFC) represents the lea",
-   "tried": 13,
-   "verdict": "found_review",
-   "matched_on": "IAFC",
-   "why": "the page names part of their listed name",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "url": "https://www.swd-iafc.org/",
+   "final": "https://www.swd-iafc.org",
+   "says": "Home | Southwestern Association of Fire Chiefs Home | Southwestern Association of Fire Chiefs SWD-IAFC     HELPING FIRE ",
+   "present": [
+    "southwestern",
+    "fire",
+    "chief",
+    "association",
+    "iafc"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.swd-iafc.org/"
   },
   "trublue-technologies": {
    "url": "https://trubluetech.com/us/en/adventure/professional/training-at-height",
@@ -73692,12 +73716,17 @@
    "website_was": null
   },
   "transit-marketing-group": {
-   "url": "https://transitmarketing.com",
-   "says": "Transit Marketing Home",
-   "tried": 1,
-   "verdict": "found",
-   "checked_on": "2026-10-19",
-   "website_was": null
+   "url": "https://transitmarketinggroup.com/",
+   "final": "https://transitmarketinggroup.com",
+   "says": "Home - Transit Marketing Group TransMark is a reputable family-owned representative firm that has presented quality prod",
+   "present": [
+    "transit",
+    "marketing"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://transitmarketinggroup.com/"
   },
   "hitachi": {
    "url": "https://www.hitachi.com/en",
@@ -93689,6 +93718,618 @@
    "why": "no guessed domain named them",
    "checked_on": "2026-10-28",
    "website_was": null
+  },
+  "a-1-alternative-fuel-systems": {
+   "url": "https://www.a1altfuels.com",
+   "final": "https://www.a1altfuels.com",
+   "says": "A-1 Alternative Fuel Systems | Natural Gas Trucks A-1 Alternative Fuel Systems is the leading provider of renewable natu",
+   "present": [
+    "alternative",
+    "fuel"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.a1altfuels.com"
+  },
+  "kovalus-separation-solutions": {
+   "url": "https://www.kovalus.com",
+   "final": "https://www.kovalus.com",
+   "says": "Your Filtration and Separation Source | Kovalus Separation Solutions Kovalus offers innovative liquid-solid separation t",
+   "present": [
+    "kovalus",
+    "separation"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.kovalus.com"
+  },
+  "clean-methane-systems": {
+   "url": "https://methanesys.com/",
+   "final": "https://methanesys.com",
+   "says": "Clean Methane Systems | We Get Biogas. You get Energy | Home Biogas conditioning & upgrading experts with 200+ global in",
+   "present": [
+    "clean",
+    "methane"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://methanesys.com/"
+  },
+  "avari-wireless": {
+   "url": "https://www.avariwireless.com",
+   "final": "https://www.avariwireless.com",
+   "says": "Home | Avari Wireless Home | Avari Wireless Avari Wireless       Mission-Critical Communications When Every Second Matte",
+   "present": [
+    "avari",
+    "wireless"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.avariwireless.com"
+  },
+  "del-tank-filtration-systems": {
+   "url": "https://www.deltank.com/",
+   "final": "https://www.deltank.com",
+   "says": "DEL Corporation | Specializing in the Manufacturing, Sales, and Rental of Dewatering, Solids Control, and Bulk Material ",
+   "present": [
+    "del",
+    "tank",
+    "filtration"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.deltank.com/"
+  },
+  "dupont-water-solutions": {
+   "url": "https://www.dupont.com/water.html",
+   "final": "https://www.dupont.com/water.html",
+   "says": "Solving Water Challenges  Solving Water Challenges | Water Solutions DuPont Water Solutions offers a portfolio of indust",
+   "present": [
+    "dupont",
+    "water"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.dupont.com/water.html"
+  },
+  "cardiac-solutions": {
+   "url": "https://cardiac-solutions.net/",
+   "final": "https://cardiac-solutions.net",
+   "says": "AED Solutions | AEDs, Training & Support - Cardiac Solutions, Birmingham AL Headquartered in Birmingham, AL, we offer AE",
+   "present": [
+    "cardiac",
+    "solutions"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://cardiac-solutions.net/"
+  },
+  "amiad-water-systems": {
+   "url": "https://amiad.com/",
+   "final": "https://amiad.com",
+   "says": "Water Filtration Solutions for Industry and Irrigation | Amiad Amiad is a global leader, and specializes in advanced wat",
+   "present": [
+    "amiad",
+    "water"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://amiad.com/"
+  },
+  "flexaseal-engineered-seals-and-systems": {
+   "url": "https://www.flexaseal.com/",
+   "final": "https://www.flexaseal.com",
+   "says": "Mechanical Seals & Support Systems | Flexaseal Mechanical Seals manufactured in the U.S. for rotating equipment, slurry ",
+   "present": [
+    "flexaseal",
+    "engineered",
+    "seals"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.flexaseal.com/"
+  },
+  "bridgecom-systems": {
+   "url": "https://www.bridgecomsystems.com/",
+   "final": "https://www.bridgecomsystems.com",
+   "says": "BridgeCom Systems - your source for two-way radios and systems\n American Express Apple Pay Your source for professional,",
+   "present": [
+    "bridgecom",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.bridgecomsystems.com/"
+  },
+  "flomotion-systems-inc": {
+   "url": "https://flomotionsystems.com/",
+   "final": "https://flomotionsystems.com",
+   "says": "Flomotion Systems Inc. | Systems and equipment for liquid flow, level measurement and chemical metering applications.",
+   "present": [
+    "flomotion",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://flomotionsystems.com/"
+  },
+  "flonergia-systems-inc": {
+   "url": "https://www.flonergia.com/",
+   "final": "https://www.flonergia.com",
+   "says": "FloNergia Systems",
+   "present": [
+    "flonergia",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.flonergia.com/"
+  },
+  "gemt-solutions": {
+   "url": "https://gemtsolutions.com/",
+   "final": "https://gemtsolutions.com",
+   "says": "GEMT Solutions GEMT Solutions GEMT Solutions  GEMT Cost Reporting Services You Can Trust.",
+   "present": [
+    "gemt",
+    "solutions"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://gemtsolutions.com/"
+  },
+  "automation-products-group-inc": {
+   "url": "https://apgsensors.com/",
+   "final": "https://apgsensors.com",
+   "says": "Industrial Sensor Manufacturer | APG, Inc. Automation Products Group, Inc. (APG Sensors) is an industrial sensor manufac",
+   "present": [
+    "automation",
+    "products"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://apgsensors.com/"
+  },
+  "kemira-water-solutions-inc": {
+   "url": "https://www.kemira.com/",
+   "final": "https://www.kemira.com",
+   "says": "Kemira Global - Kemira Kemira is a global leader in sustainable chemical solutions for water intensive industries with f",
+   "present": [
+    "kemira",
+    "water"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.kemira.com/"
+  },
+  "jireh-sewer-inspection-robotics": {
+   "url": "https://www.jireh.com/",
+   "final": "https://www.jireh.com",
+   "says": "Let JIREH help you perform efficient inspection for every UT application. Jireh Industries | Inspection Robotics Jireh I",
+   "present": [
+    "jireh",
+    "inspection",
+    "robotics"
+   ],
+   "missing": [
+    "sewer"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "JIREH",
+    "JIREH Industries"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.jireh.com/"
+  },
+  "modus-engineered-solutions": {
+   "url": "https://modus-es.com/",
+   "final": "https://modus-es.com",
+   "says": "Home - Modus Engineered Solutions Home - Modus Engineered Solutions Modus Engineered Solutions",
+   "present": [
+    "modus",
+    "engineered"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://modus-es.com/"
+  },
+  "mlm-conveying-systems-inc": {
+   "url": "https://www.mlmconveying.com/",
+   "final": "https://www.mlmconveying.com",
+   "says": "Spirals and Conveying Systems | MLM Conveying TOTAL SYSTEM SOLUTION for all your sludge transport and handling needs inc",
+   "present": [
+    "mlm",
+    "conveying"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.mlmconveying.com/"
+  },
+  "nbcp-communications-system": {
+   "url": "https://www.nbcpcommunications.com/",
+   "final": "https://www.nbcpcommunications.com",
+   "says": "Commercial AV Integrator in San Antonio | NBCP Communications NBCP Communications Systems Commercial AV Integrator in Sa",
+   "present": [
+    "nbcp",
+    "communications",
+    "system"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.nbcpcommunications.com/"
+  },
+  "prime-solution-inc": {
+   "url": "https://psirotary.com/",
+   "final": "https://psirotary.com",
+   "says": "Home - Prime Solution, Inc. Prime Solution offers superior mechanical dewatering and ancillary equipment. Our project te",
+   "present": [
+    "prime",
+    "solution"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://psirotary.com/"
+  },
+  "polygone-systems": {
+   "url": "https://www.polygonesystems.com/",
+   "final": "https://www.polygonesystems.com",
+   "says": "PolyGone Systems, Systematic Solutions for Microplastic Pollution PolyGone Systems PolyGone Systems, Systematic Solution",
+   "present": [
+    "polygone",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.polygonesystems.com/"
+  },
+  "alco-lite": {
+   "url": "https://www.fireladder.com/",
+   "final": "https://www.fireladder.com",
+   "says": "Alco-Lite Fire Ladders . Fire Department Ladders - Fast Turn around We invented Aluminum Fire Ladders! Order today for t",
+   "present": [
+    "alco",
+    "lite"
+   ],
+   "missing": [
+    "sam",
+    "carbis"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Fire Ladder",
+    "Fast Turn around"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.fireladder.com/"
+  },
+  "spectrashield-liner-systems": {
+   "url": "https://spectrashield.com/",
+   "final": "https://spectrashield.com",
+   "says": "Homepage - SpectraShield Homepage - SpectraShield SpectraShield Protecting the \ninfrastructure \n communities \ndepend on.",
+   "present": [
+    "spectrashield"
+   ],
+   "missing": [
+    "liner"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "SpectraShield"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://spectrashield.com/"
+  },
+  "viavi-solutions": {
+   "url": "https://www.viavisolutions.com/en-us",
+   "final": "https://www.viavisolutions.com/en-us",
+   "says": "VIAVI Solutions | Network Test, Monitoring, and Assurance VIAVI Solutions VIAVI Solutions VIAVI Solutions Inc. VIAVI Sol",
+   "present": [
+    "viavi",
+    "solutions"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.viavisolutions.com/en-us"
+  },
+  "key-systems-inc": {
+   "url": "https://www.keystorage.com/",
+   "final": "https://www.keystorage.com",
+   "says": "Key Systems, Inc. Key Systems, Inc. Key Systems, Inc. Key Systems, Inc. is an industry leader in providing asset managem",
+   "present": [
+    "key",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.keystorage.com/"
+  },
+  "harding-instruments": {
+   "url": "https://harding-tech.com/",
+   "final": "https://harding-tech.com",
+   "says": "#Home | Harding Technologies Advanced Life Safety Protection Harding Technologies | Advanced Life Safety Protection #Hom",
+   "present": [
+    "harding"
+   ],
+   "missing": [
+    "instruments"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Harding Technologies",
+    "#Home"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://harding-tech.com/"
+  },
+  "wsg-solutions-inc": {
+   "url": "https://www.wsgandsolutions.com/",
+   "final": "https://www.wsgandsolutions.com",
+   "says": "Wastewater & Stormwater Solutions | WSG & Solutions Inc. Search Search WSG & Solutions Inc. is the go-to source for scre",
+   "present": [
+    "wsg",
+    "solutions"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.wsgandsolutions.com/"
+  },
+  "morse-watchmans-inc": {
+   "url": "https://www.morsewatchmans.com/",
+   "final": "https://www.morsewatchmans.com",
+   "says": "Access Control & Key Control Security Systems | Morse Watchmans  Eliminate losses, track activity and improve efficiency",
+   "present": [
+    "morse",
+    "watchmans"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.morsewatchmans.com/"
+  },
+  "electrolytic-technologies-systems-llc": {
+   "url": "https://electrolytictech.com/",
+   "final": "https://electrolytictech.com",
+   "says": "Electrolytic Tech - On-Site Chlorine And Sodium Hypochlorite Generation Electrolytic Technologies has been the exclusive",
+   "present": [
+    "electrolytic",
+    "technologies",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://electrolytictech.com/"
+  },
+  "spatco-energy-solutions": {
+   "url": "https://www.spatco.com/",
+   "final": "https://www.spatco.com",
+   "says": "Energy Solutions  | SPATCO SPATCO | Home Page SPATCO is a top supplier, installer, & maintenance provider of advanced li",
+   "present": [
+    "spatco",
+    "energy"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.spatco.com/"
+  },
+  "securitas-technology": {
+   "url": "https://www.securitastechnology.com/",
+   "final": "https://www.securitastechnology.com",
+   "says": "Commercial & Business Security Systems | Securitas Technology Safeguard your business with tailored business security sy",
+   "present": [
+    "securitas",
+    "technology"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.securitastechnology.com/"
+  },
+  "thermal-process-systems": {
+   "url": "https://thermalprocess.com/",
+   "final": "https://thermalprocess.com",
+   "says": "Thermal Process Systems - Biosolids Management Solutions Thermal Process Systems works alongside water reclamation facil",
+   "present": [
+    "thermal",
+    "process"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://thermalprocess.com/"
+  },
+  "powertech-labs-inc": {
+   "url": "https://powertechlabs.com/",
+   "final": "https://powertechlabs.com",
+   "says": "Powertech Labs | Accredited Testing, Engineering & Energy Innovation - The Power of Trust. The Future of Energy. Accredi",
+   "present": [
+    "powertech",
+    "labs"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://powertechlabs.com/"
+  },
+  "pathway-services-inc": {
+   "url": "https://www.pathwayservices.com",
+   "final": "https://www.pathwayservices.com",
+   "says": "Home - Pathway Services Inc Home - Pathway Services Inc Pathway Services Inc Where  Innovation  meets the  Road .  Desig",
+   "present": [
+    "pathway",
+    "services"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.pathwayservices.com"
+  },
+  "celplan-technologies-inc": {
+   "url": "https://celplan.com/",
+   "final": "https://celplan.com",
+   "says": "Home - CelPlan CelPlan optimizes business performance through AI integration across all processes, ICT solutions, and ne",
+   "present": [
+    "celplan"
+   ],
+   "missing": [
+    "technologies"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "CelPlan - Global Technology Solutions",
+    "CelPlan"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://celplan.com/"
+  },
+  "tnt-rescue-systems-inc": {
+   "url": "https://tntrescue.com/",
+   "final": "https://tntrescue.com",
+   "says": "Hydraulic Rescue Tools | USA-Made | Forever Warranty | TNT When lives are on the line, you need tools you can trust comp",
+   "present": [
+    "tnt",
+    "rescue"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://tntrescue.com/"
+  },
+  "wdm-usa": {
+   "url": "https://www.wdm-int.com",
+   "final": "https://www.wdm-int.com",
+   "says": "WDM USA | Data-Driven Highways Management Services WDM USA delivers data-driven highway management services to improve s",
+   "present": [
+    "wdm",
+    "usa"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.wdm-int.com"
+  },
+  "dnv-usa-inc": {
+   "url": "https://www.dnv.us/",
+   "final": "https://www.dnv.us",
+   "says": "DNV.us - When trust matters - DNV Driven by our purpose of safeguarding life, property and the environment, DNV enables ",
+   "present": [
+    "dnv"
+   ],
+   "missing": [
+    "usa"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "DNV",
+    "DNV.us"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.dnv.us/"
+  },
+  "dynatest-us-inc": {
+   "url": "https://dynatest.com",
+   "final": "https://dynatest.com",
+   "says": "Dynatest - Pavement Testing Equipment & Software Advancing pavement engineering through precision measurement since 1976",
+   "present": [
+    "dynatest",
+    "us"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://dynatest.com"
+  },
+  "pavemetrics-systems": {
+   "url": "https://www.pavemetrics.com",
+   "final": "https://www.pavemetrics.com",
+   "says": "Pavemetrics | Automated Inspection of Transportation Infrastructures Automated inspection of transportation infrastructu",
+   "present": [
+    "pavemetrics",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://www.pavemetrics.com"
+  },
+  "arrb-systems": {
+   "url": "https://arrbsystems.com",
+   "final": "https://arrbsystems.com",
+   "says": "Homepage - ARRB Systems ARRB Systems: Your partner for data-driven road management. We provide expert road survey servic",
+   "present": [
+    "arrb",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://arrbsystems.com"
+  },
+  "ide-water-solutions-north-america": {
+   "url": "https://ide-tech.com/",
+   "final": "https://ide-tech.com/en",
+   "says": "Water Treatment and Desalination Solutions | IDE Technologies IDE Tech - Development, engineering, construction and oper",
+   "present": [
+    "ide",
+    "water"
+   ],
+   "missing": [
+    "north",
+    "america"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "IDE Tech",
+    "YouTube"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-11-16",
+   "website_was": "https://ide-tech.com/"
+  },
+  "public-health-informatics-institute": {
+   "url": "https://phii.org/",
+   "final": "https://phii.org",
+   "says": "Home | Public Health Informatics Institute PHII guides public health organizations to effectively access, use and share ",
+   "present": [
+    "public",
+    "health",
+    "informatics",
+    "institute"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-11-16",
+   "website_was": "https://phii.org/"
   }
  }
 }

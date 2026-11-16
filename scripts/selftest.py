@@ -37719,6 +37719,100 @@ def check_the_hq_export_never_loses_a_supplier_to_a_missing_cache() -> int:
     return errors
 
 
+def check_a_corrected_website_is_read_again_before_it_is_quoted() -> int:
+    """A supplier whose website is corrected is read again, and the pages of
+    its old website are never quoted as its own (2026-11-16).
+
+    The shared-website audit moved Cunningham Recreation (GameTime's dealer)
+    off gametime.com and two IAFC divisions off iafc.org. supplier_pages
+    passed over all three because a page file existed, and the export placed
+    them by the OLD site's text; SLED HQ's parseSupplierExport refused the
+    three placements ("an own-site quote from a page that is not on the
+    supplier's own domain"). Driven through supplier_pages.main() and
+    supplier_categories.main() against a sandbox.
+    """
+    import tempfile, io, contextlib
+    import supplier_categories as SC
+    import supplier_pages as SP
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    # one site read two ways is one site: port, www, case, a bare host
+    for a, b in (("https://www.iafc.org:443", "https://iafc.org/"), ("www.Pumpco.example.com", "https://pumpco.example.com")):
+        if SP.stale({"website": a}, b):
+            errors += fail(f"{a} and {b} read as two websites")
+    if SP.stale({"pages": []}, "https://dealer.example.com"):
+        errors += fail("a page record that names no website (written before the field) read as stale")
+    if not SP.stale({"website": "https://www.brand.example.com"}, "https://dealer.example.com"):
+        errors += fail("pages off brand.example.com read as dealer.example.com's own")
+
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-stale-"))
+    data = tmp / "data"
+    data.mkdir()
+    pages = data / "supplier_pages"
+    pages.mkdir()
+    (data / "schema.json").write_text((DATA / "schema.json").read_text())
+    (data / "conferences.json").write_text(json.dumps({"conferences": [
+        {"event_tag": "WEF 2026", "block": "Public works and infrastructure", "department": "Wastewater",
+         "url": "https://weftec.example.com/"}]}))
+    (data / "suppliers.json").write_text(json.dumps([
+        {"id": "dealerco", "name": "Dealerco", "website": "https://dealer.example.com",
+         "description": "Pumps - exhibited at WEF 2026"},
+        {"id": "pumpco", "name": "Pumpco", "description": "Pumps - exhibited at WEF 2026"}]))
+    (data / "supplier_identity.json").write_text(json.dumps({"rows": {
+        "dealerco": {"verdict": "theirs", "url": "https://dealer.example.com"},
+        "pumpco": {"verdict": "theirs", "url": "https://www.pumpco.example.com:443"}}}))
+    words = [{"url": "https://{h}/", "text": "We build pumps for wastewater treatment plants and municipal lift stations."},
+             {"url": "https://{h}/a", "text": "Our valves and pump stations serve every water utility we work with, worldwide."}]
+    page = lambda h: [{k: v.format(h=h) for k, v in w.items()} for w in words]
+    # dealerco's pages came off the brand it resells, before its website was corrected
+    (pages / "dealerco.json").write_text(json.dumps({"id": "dealerco", "website": "https://www.brand.example.com",
+                                                     "pages": page("www.brand.example.com")}))
+    (pages / "pumpco.json").write_text(json.dumps({"id": "pumpco", "website": "https://pumpco.example.com",
+                                                   "pages": page("pumpco.example.com")}))
+    out = data / "supplier_categories.json"
+    out.write_text(json.dumps({"suppliers": [{"supplier_id": "dealerco", "name": "Dealerco", "status": "publish"},
+                                             {"supplier_id": "pumpco", "name": "Pumpco", "status": "publish"}]}))
+    keep = SC.ROOT, SC.DATA, SC.OUT, SC.PAGES, SP.DATA, SP.DIR
+    SC.ROOT, SC.DATA, SC.OUT, SC.PAGES = tmp, data, out, pages
+    SP.DATA, SP.DIR = data, pages
+    argv = sys.argv
+    try:
+        sys.argv = ["supplier_pages.py"]
+        said = io.StringIO()
+        with contextlib.redirect_stdout(said):
+            SP.main()
+        if not said.getvalue().startswith("1 supplier site(s) to read"):
+            errors += fail("supplier_pages did not read again the one supplier whose pages came off "
+                           f"another website: {said.getvalue().strip()[:120]}")
+        sys.argv = ["supplier_categories.py", "--write"]
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            rc = SC.main()
+        if rc != 0:
+            errors += fail(f"the rebuild was refused ({rc})")
+        else:
+            got = json.loads(out.read_text())
+            rows = {r["supplier_id"]: r for r in got["suppliers"]}
+            quoted = [a for a in got.get("assignments") or [] if a.get("supplier_id") == "dealerco"
+                      and "brand.example.com" in json.dumps(a.get("source") or {})]
+            if quoted:
+                errors += fail(f"the export quoted the old website's pages as dealerco's own: {quoted[0]}")
+            d = rows.get("dealerco") or {}
+            if d.get("status") != "held" or not (d.get("held") or "").startswith("website unread"):
+                errors += fail(f"a supplier with only its old website's pages was not held for a reading: {d}")
+            if (rows.get("pumpco") or {}).get("status") != "publish":
+                errors += fail(f"a supplier whose pages are its own site, read with www and a port, "
+                               f"was not published: {rows.get('pumpco')}")
+    finally:
+        SC.ROOT, SC.DATA, SC.OUT, SC.PAGES, SP.DATA, SP.DIR = keep
+        sys.argv = argv
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_a_person_can_release_a_held_supplier() -> int:
     """The "Supplier websites" queue (admin, 2026-10-05).
 
@@ -40268,6 +40362,7 @@ def main() -> int:
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()
+    errors += check_a_corrected_website_is_read_again_before_it_is_quoted()
     errors += check_the_digest_counts_openings_and_keeps_to_the_boards_default()
     errors += check_a_stranger_cannot_mail_somebody_without_end()
     errors += check_claim_links_open_pages_that_exist()

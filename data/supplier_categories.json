@@ -1,6 +1,6 @@
 {
  "v": 1,
- "generated": "2026-10-29",
+ "generated": "2026-11-16",
  "note": "Suppliers in the govtech sectors and categories (data/schema.json). Every assignment quotes its source; status follows the owner's rule that nothing is published without a confirmed website.",
  "sectors": [
   {
@@ -14316,12 +14316,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "transit-marketing-group-sportworks",
-   "name": "Transit Marketing Group / Sportworks",
-   "status": "publish",
-   "website": "https://transitmarketing.com"
-  },
-  {
    "supplier_id": "transit-re",
    "name": "Transit RE",
    "status": "held",
@@ -20096,12 +20090,6 @@
    }
   },
   {
-   "supplier_id": "harvard-university-john-f-kennedy-school-of-government",
-   "name": "Harvard University John F. Kennedy School of Government",
-   "status": "publish",
-   "website": "https://hks.harvard.edu"
-  },
-  {
    "supplier_id": "international-city-county-management-association",
    "name": "International City/County Management Association",
    "status": "publish",
@@ -20112,12 +20100,6 @@
    "name": "OBIC",
    "status": "publish",
    "website": "https://www.obicproducts.com"
-  },
-  {
-   "supplier_id": "playcraft-systems-a-playcore-company",
-   "name": "Playcraft Systems, A PlayCore Company",
-   "status": "publish",
-   "website": "https://playcraftsystems.com"
   },
   {
    "supplier_id": "tips-the-interlocal-purchasing-system",
@@ -20380,8 +20362,8 @@
   {
    "supplier_id": "butterball-foodservice",
    "name": "Butterball Foodservice",
-   "status": "publish",
-   "website": "https://bushbeansfoodservice.com/k12"
+   "status": "held",
+   "held": "website unread (pages read from bushbeansfoodservice.com, not the website on file)"
   },
   {
    "supplier_id": "cambro-manufacturing",
@@ -23661,12 +23643,6 @@
    "name": "Kupferle Water Solutions",
    "status": "publish",
    "website": "http://www.hydrants.com"
-  },
-  {
-   "supplier_id": "kurita-america-tonka-water-a-kurita-brand",
-   "name": "KURITA AMERICA / Tonka Water, a Kurita brand",
-   "status": "publish",
-   "website": "https://www.kuritaamerica.com/industries/municipal-drinking-water"
   },
   {
    "supplier_id": "k-water",
@@ -28606,12 +28582,6 @@
    "website": "https://www.simpliverified.com"
   },
   {
-   "supplier_id": "telephone-town-hall-meeting",
-   "name": "Telephone Town Hall Meeting",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
-  },
-  {
    "supplier_id": "5e-analytics-llc",
    "name": "5e Analytics, LLC",
    "status": "held",
@@ -30241,7 +30211,7 @@
    "supplier_id": "cunningham-recreation-gametime",
    "name": "Cunningham Recreation/Gametime",
    "status": "publish",
-   "website": "https://www.gametime.com"
+   "website": "https://cunninghamrec.com/"
   },
   {
    "supplier_id": "custom-park-surfacing-llc",
@@ -34246,7 +34216,7 @@
    "supplier_id": "kurita-america",
    "name": "KURITA AMERICA",
    "status": "publish",
-   "website": "https://www.kuritaamerica.com"
+   "website": "https://www.kuritaamerica.com/industries/municipal-drinking-water"
   },
   {
    "supplier_id": "kusiar-project-services-inc",
@@ -34612,12 +34582,6 @@
    "name": "Mody Pumps Inc.",
    "status": "held",
    "held": "no website"
-  },
-  {
-   "supplier_id": "mokveld-valves",
-   "name": "Mokveld Valves",
-   "status": "publish",
-   "website": "https://mokveld.com/en/axial-flow-valves-by-mokveld"
   },
   {
    "supplier_id": "molendotech",
@@ -36712,8 +36676,8 @@
   {
    "supplier_id": "canadian-association-of-fire-chiefs-iafc",
    "name": "Canadian Association of Fire Chiefs (IAFC)",
-   "status": "publish",
-   "website": "https://www.iafc.org:443"
+   "status": "held",
+   "held": "website unread (pages read from iafc.org, not the website on file)"
   },
   {
    "supplier_id": "cet-fire-pumps",
@@ -36900,12 +36864,6 @@
    "name": "Fire Recovery USA",
    "status": "held",
    "held": "no website"
-  },
-  {
-   "supplier_id": "fire-dex-gear-wash",
-   "name": "Fire-Dex/Gear Wash",
-   "status": "publish",
-   "website": "https://firedex.com"
   },
   {
    "supplier_id": "fireblast-global",
@@ -37485,13 +37443,13 @@
    "supplier_id": "southeastern-association-of-fire-chiefs-iafc",
    "name": "Southeastern Association of Fire Chiefs (IAFC)",
    "status": "publish",
-   "website": "https://www.iafc.org:443"
+   "website": "https://www.seafc.org/"
   },
   {
    "supplier_id": "southwestern-fire-chief-s-association-iafc",
    "name": "Southwestern Fire Chief's Association (IAFC)",
    "status": "publish",
-   "website": "https://www.iafc.org:443"
+   "website": "https://www.swd-iafc.org/"
   },
   {
    "supplier_id": "spencer-fire-trucks",
@@ -37510,12 +37468,6 @@
    "name": "Steel Blue Work Boots",
    "status": "held",
    "held": "website not confirmed by what it sells"
-  },
-  {
-   "supplier_id": "super-vac-command-light",
-   "name": "Super Vac/ Command Light",
-   "status": "publish",
-   "website": "https://supervac.com"
   },
   {
    "supplier_id": "sutphen-corporation",
@@ -40603,7 +40555,7 @@
    "supplier_id": "transit-marketing-group",
    "name": "Transit Marketing Group",
    "status": "publish",
-   "website": "https://transitmarketing.com"
+   "website": "https://transitmarketinggroup.com/"
   },
   {
    "supplier_id": "transitcheck",
@@ -42388,12 +42340,6 @@
    "name": "NMSA",
    "status": "held",
    "held": "no website"
-  },
-  {
-   "supplier_id": "stormtank",
-   "name": "StormTank",
-   "status": "publish",
-   "website": "https://www.brentwoodindustries.com/products/stormwater"
   },
   {
    "supplier_id": "zurn-industries-llc",
@@ -49334,12 +49280,6 @@
    "held": "website not confirmed by what it sells"
   },
   {
-   "supplier_id": "visual-concepts-dba-vpac-alliance",
-   "name": "Visual Concepts dba vPAC Alliance",
-   "status": "publish",
-   "website": "https://vpacalliance.com"
-  },
-  {
    "supplier_id": "vodafone-iot",
    "name": "Vodafone IoT",
    "status": "held",
@@ -49720,12 +49660,6 @@
    "name": "Bill Fox Balfour Co",
    "status": "held",
    "held": "no website"
-  },
-  {
-   "supplier_id": "blackinton",
-   "name": "Blackinton",
-   "status": "publish",
-   "website": "https://www2.blackinton.com"
   },
   {
    "supplier_id": "blanchat-mfg-inc",
@@ -50310,12 +50244,6 @@
    "website": "https://www.firedeptcoffee.com"
   },
   {
-   "supplier_id": "fire-department-safety-officers-assoc",
-   "name": "Fire Department Safety Officers Assoc.",
-   "status": "publish",
-   "website": "https://fdsoa.org"
-  },
-  {
    "supplier_id": "fire-dex",
    "name": "Fire Dex",
    "status": "publish",
@@ -50766,12 +50694,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "hen-nozzles",
-   "name": "HEN Nozzles",
-   "status": "publish",
-   "website": "https://www.hentechnologies.com"
-  },
-  {
    "supplier_id": "henry-schein-inc",
    "name": "Henry Schein Inc",
    "status": "held",
@@ -50878,12 +50800,6 @@
    "name": "IDEX Fire & Safety",
    "status": "publish",
    "website": "https://www.idexfiresafety.com"
-  },
-  {
-   "supplier_id": "ifsta-fire-protection-publication",
-   "name": "IFSTA/FIRE PROTECTION PUBLICATION",
-   "status": "publish",
-   "website": "https://www.ifsta.org"
   },
   {
    "supplier_id": "illinois-fire-serv-inst",
@@ -51224,12 +51140,6 @@
    "name": "LION Safety Solutions",
    "status": "held",
    "held": "no website"
-  },
-  {
-   "supplier_id": "liquid-spring",
-   "name": "Liquid Spring",
-   "status": "publish",
-   "website": "https://liquidspring.com"
   },
   {
    "supplier_id": "lite-tactical-solutions",
@@ -52458,12 +52368,6 @@
    "held": "no website"
   },
   {
-   "supplier_id": "tk-armor-systems-llc-dba-spartan-armor-systems",
-   "name": "TK Armor Systems LLC dba Spartan Armor Systems",
-   "status": "publish",
-   "website": "https://www.spartanarmorsystems.com"
-  },
-  {
    "supplier_id": "tohatsu-america-corp",
    "name": "Tohatsu America Corp",
    "status": "held",
@@ -52804,12 +52708,6 @@
    "name": "Zolatone Automotive, Industiral & Marine",
    "status": "held",
    "held": "no website"
-  },
-  {
-   "supplier_id": "zumro-by-air-shelters-usa-llc",
-   "name": "Zumro By Air Shelters Usa, Llc.",
-   "status": "publish",
-   "website": "https://www.zumro.com"
   },
   {
    "supplier_id": "20-20-gene-systems-inc",
@@ -55573,6 +55471,434 @@
    "name": "Woodmont Properties",
    "status": "publish",
    "website": "https://www.woodmontproperties.com"
+  },
+  {
+   "supplier_id": "cardiac-solutions",
+   "name": "Cardiac Solutions",
+   "status": "publish",
+   "website": "https://cardiac-solutions.net/"
+  },
+  {
+   "supplier_id": "kemira-water-solutions-inc",
+   "name": "Kemira Water Solutions, Inc.",
+   "status": "publish",
+   "website": "https://www.kemira.com/"
+  },
+  {
+   "supplier_id": "kovalus-separation-solutions",
+   "name": "Kovalus Separation Solutions",
+   "status": "publish",
+   "website": "https://www.kovalus.com"
+  },
+  {
+   "supplier_id": "a-1-alternative-fuel-systems",
+   "name": "A-1 Alternative Fuel Systems",
+   "status": "publish",
+   "website": "https://www.a1altfuels.com"
+  },
+  {
+   "supplier_id": "alco-lite",
+   "name": "Alco-Lite (Sam Carbis Solutions)",
+   "status": "publish",
+   "website": "https://www.fireladder.com/"
+  },
+  {
+   "supplier_id": "amiad-water-systems",
+   "name": "Amiad Water Systems",
+   "status": "publish",
+   "website": "https://amiad.com/"
+  },
+  {
+   "supplier_id": "automation-products-group-inc",
+   "name": "Automation Products Group Inc",
+   "status": "publish",
+   "website": "https://apgsensors.com/"
+  },
+  {
+   "supplier_id": "avari-wireless",
+   "name": "Avari Wireless",
+   "status": "publish",
+   "website": "https://www.avariwireless.com"
+  },
+  {
+   "supplier_id": "bridgecom-systems",
+   "name": "BridgeCom Systems",
+   "status": "publish",
+   "website": "https://www.bridgecomsystems.com/"
+  },
+  {
+   "supplier_id": "clean-methane-systems",
+   "name": "Clean Methane Systems",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "del-tank-filtration-systems",
+   "name": "DEL Tank & Filtration Systems",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "dupont-water-solutions",
+   "name": "DuPont Water Solutions",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "electrolytic-technologies-systems-llc",
+   "name": "Electrolytic Technologies Systems LLC",
+   "status": "publish",
+   "website": "https://electrolytictech.com/"
+  },
+  {
+   "supplier_id": "flexaseal-engineered-seals-and-systems",
+   "name": "Flexaseal Engineered Seals and Systems",
+   "status": "publish",
+   "website": "https://www.flexaseal.com/"
+  },
+  {
+   "supplier_id": "flomotion-systems-inc",
+   "name": "Flomotion Systems Inc",
+   "status": "publish",
+   "website": "https://flomotionsystems.com/"
+  },
+  {
+   "supplier_id": "flonergia-systems-inc",
+   "name": "FloNergia Systems Inc.",
+   "status": "publish",
+   "website": "https://www.flonergia.com/"
+  },
+  {
+   "supplier_id": "gemt-solutions",
+   "name": "GEMT Solutions",
+   "status": "publish",
+   "website": "https://gemtsolutions.com/"
+  },
+  {
+   "supplier_id": "ide-water-solutions-north-america",
+   "name": "IDE Water Solutions, North America",
+   "status": "publish",
+   "website": "https://ide-tech.com/"
+  },
+  {
+   "supplier_id": "jireh-sewer-inspection-robotics",
+   "name": "JIREH - SEWER INSPECTION ROBOTICS",
+   "status": "publish",
+   "website": "https://www.jireh.com/"
+  },
+  {
+   "supplier_id": "mlm-conveying-systems-inc",
+   "name": "MLM Conveying Systems, Inc.",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "modus-engineered-solutions",
+   "name": "Modus Engineered Solutions",
+   "status": "publish",
+   "website": "https://modus-es.com/"
+  },
+  {
+   "supplier_id": "nbcp-communications-system",
+   "name": "NBCP Communications System",
+   "status": "publish",
+   "website": "https://www.nbcpcommunications.com/"
+  },
+  {
+   "supplier_id": "polygone-systems",
+   "name": "PolyGone Systems",
+   "status": "publish",
+   "website": "https://www.polygonesystems.com/"
+  },
+  {
+   "supplier_id": "prime-solution-inc",
+   "name": "Prime Solution Inc",
+   "status": "held",
+   "held": "website not confirmed by what it sells"
+  },
+  {
+   "supplier_id": "public-health-informatics-institute",
+   "name": "Public Health Informatics Institute",
+   "status": "publish",
+   "website": "https://phii.org/"
+  },
+  {
+   "supplier_id": "spatco-energy-solutions",
+   "name": "SPATCO Energy Solutions",
+   "status": "publish",
+   "website": "https://www.spatco.com/"
+  },
+  {
+   "supplier_id": "spectrashield-liner-systems",
+   "name": "Spectrashield Liner Systems",
+   "status": "publish",
+   "website": "https://spectrashield.com/"
+  },
+  {
+   "supplier_id": "thermal-process-systems",
+   "name": "Thermal Process Systems",
+   "status": "publish",
+   "website": "https://thermalprocess.com/"
+  },
+  {
+   "supplier_id": "tnt-rescue-systems-inc",
+   "name": "TNT Rescue Systems Inc",
+   "status": "publish",
+   "website": "https://tntrescue.com/"
+  },
+  {
+   "supplier_id": "viavi-solutions",
+   "name": "VIAVI Solutions",
+   "status": "publish",
+   "website": "https://www.viavisolutions.com/en-us"
+  },
+  {
+   "supplier_id": "wsg-solutions-inc",
+   "name": "WSG & Solutions Inc",
+   "status": "publish",
+   "website": "https://www.wsgandsolutions.com/"
+  },
+  {
+   "supplier_id": "harding-instruments",
+   "name": "Harding Instruments",
+   "status": "publish",
+   "website": "https://harding-tech.com/"
+  },
+  {
+   "supplier_id": "key-systems-inc",
+   "name": "Key Systems, Inc.",
+   "status": "publish",
+   "website": "https://www.keystorage.com/"
+  },
+  {
+   "supplier_id": "morse-watchmans-inc",
+   "name": "Morse Watchmans, Inc.",
+   "status": "publish",
+   "website": "https://www.morsewatchmans.com/"
+  },
+  {
+   "supplier_id": "securitas-technology",
+   "name": "Securitas Technology",
+   "status": "publish",
+   "website": "https://www.securitastechnology.com/"
+  },
+  {
+   "supplier_id": "celplan-technologies-inc",
+   "name": "CelPlan Technologies, Inc.",
+   "status": "publish",
+   "website": "https://celplan.com/"
+  },
+  {
+   "supplier_id": "dnv-usa-inc",
+   "name": "DNV USA, Inc.",
+   "status": "publish",
+   "website": "https://www.dnv.us/"
+  },
+  {
+   "supplier_id": "powertech-labs-inc",
+   "name": "Powertech Labs Inc",
+   "status": "publish",
+   "website": "https://powertechlabs.com/"
+  },
+  {
+   "supplier_id": "arrb-systems",
+   "name": "ARRB Systems",
+   "status": "publish",
+   "website": "https://arrbsystems.com"
+  },
+  {
+   "supplier_id": "dynatest-us-inc",
+   "name": "Dynatest US, Inc.",
+   "status": "publish",
+   "website": "https://dynatest.com"
+  },
+  {
+   "supplier_id": "pathway-services-inc",
+   "name": "Pathway Services Inc.",
+   "status": "publish",
+   "website": "https://www.pathwayservices.com"
+  },
+  {
+   "supplier_id": "pavemetrics-systems",
+   "name": "Pavemetrics Systems",
+   "status": "publish",
+   "website": "https://www.pavemetrics.com"
+  },
+  {
+   "supplier_id": "wdm-usa",
+   "name": "WDM USA",
+   "status": "publish",
+   "website": "https://www.wdm-int.com"
+  },
+  {
+   "supplier_id": "telephone-town-hall-meeting",
+   "name": "Telephone Town Hall Meeting",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "tthm"
+    }
+   }
+  },
+  {
+   "supplier_id": "transit-marketing-group-sportworks",
+   "name": "Transit Marketing Group / Sportworks",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "transit-marketing-group"
+    }
+   }
+  },
+  {
+   "supplier_id": "harvard-university-john-f-kennedy-school-of-government",
+   "name": "Harvard University John F. Kennedy School of Government",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "harvard-kennedy-school"
+    }
+   }
+  },
+  {
+   "supplier_id": "playcraft-systems-a-playcore-company",
+   "name": "Playcraft Systems, A PlayCore Company",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "playcraft-systems"
+    }
+   }
+  },
+  {
+   "supplier_id": "kurita-america-tonka-water-a-kurita-brand",
+   "name": "KURITA AMERICA / Tonka Water, a Kurita brand",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "kurita-america"
+    }
+   }
+  },
+  {
+   "supplier_id": "mokveld-valves",
+   "name": "Mokveld Valves",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "mokveld-usa-inc"
+    }
+   }
+  },
+  {
+   "supplier_id": "fire-dex-gear-wash",
+   "name": "Fire-Dex/Gear Wash",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "fire-dex"
+    }
+   }
+  },
+  {
+   "supplier_id": "super-vac-command-light",
+   "name": "Super Vac/ Command Light",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "super-vac"
+    }
+   }
+  },
+  {
+   "supplier_id": "stormtank",
+   "name": "StormTank",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "brentwood-industries"
+    }
+   }
+  },
+  {
+   "supplier_id": "visual-concepts-dba-vpac-alliance",
+   "name": "Visual Concepts dba vPAC Alliance",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "vpac-alliance"
+    }
+   }
+  },
+  {
+   "supplier_id": "blackinton",
+   "name": "Blackinton",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "v-h-blackinton"
+    }
+   }
+  },
+  {
+   "supplier_id": "fire-department-safety-officers-assoc",
+   "name": "Fire Department Safety Officers Assoc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "fire-department-safety-officers-association-fdsoa"
+    }
+   }
+  },
+  {
+   "supplier_id": "hen-nozzles",
+   "name": "HEN Nozzles",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "hen-technologies"
+    }
+   }
+  },
+  {
+   "supplier_id": "ifsta-fire-protection-publication",
+   "name": "IFSTA/FIRE PROTECTION PUBLICATION",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "ifsta-fire-protection-publications"
+    }
+   }
+  },
+  {
+   "supplier_id": "liquid-spring",
+   "name": "Liquid Spring",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "liquidspring-llc"
+    }
+   }
+  },
+  {
+   "supplier_id": "tk-armor-systems-llc-dba-spartan-armor-systems",
+   "name": "TK Armor Systems LLC dba Spartan Armor Systems",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "spartan-armor-systems"
+    }
+   }
+  },
+  {
+   "supplier_id": "zumro-by-air-shelters-usa-llc",
+   "name": "Zumro By Air Shelters Usa, Llc.",
+   "status": {
+    "merged_into": {
+     "kind": "supplier",
+     "id": "zumro"
+    }
+   }
   },
   {
    "supplier_id": "entrust-solution-group",
@@ -72841,6 +73167,15 @@
    }
   },
   {
+   "supplier_id": "playcraft-systems",
+   "industry": "general-gov/suppliers-and-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://s23.a2zinc.net/clients/corcexpo/NLC2026/Public/Exhibitors.aspx",
+    "quote": "Playcraft Systems"
+   }
+  },
+  {
    "supplier_id": "playground-grass-by-foreverlawn",
    "industry": "parks-rec/suppliers-and-services",
    "basis": "conference",
@@ -78808,15 +79143,6 @@
    }
   },
   {
-   "supplier_id": "transit-marketing-group-sportworks",
-   "industry": "transit-parking/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
-    "quote": "Transit Marketing Group / Sportworks"
-   }
-  },
-  {
    "supplier_id": "transit-re",
    "industry": "transit-parking/suppliers-and-services",
    "basis": "conference",
@@ -82980,6 +83306,15 @@
    "basis": "conference",
    "source": {
     "url": "https://trb27.myexpoonline.com/exhibitors",
+    "quote": "NV5"
+   }
+  },
+  {
+   "supplier_id": "nv5",
+   "industry": "utilities-energy/grid-and-energy",
+   "basis": "conference",
+   "source": {
+    "url": "https://dt2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "NV5"
    }
   },
@@ -88105,15 +88440,6 @@
    }
   },
   {
-   "supplier_id": "harvard-university-john-f-kennedy-school-of-government",
-   "industry": "general-gov/elections",
-   "basis": "own_site",
-   "source": {
-    "url": "https://hks.harvard.edu",
-    "quote": "Does the top of the ticket influence down-ballot races?"
-   }
-  },
-  {
    "supplier_id": "international-city-county-management-association",
    "industry": "general-gov/libraries",
    "basis": "own_site",
@@ -88138,15 +88464,6 @@
    "source": {
     "url": "https://s23.a2zinc.net/clients/corcexpo/NLC2026/Public/Exhibitors.aspx",
     "quote": "OBIC"
-   }
-  },
-  {
-   "supplier_id": "playcraft-systems-a-playcore-company",
-   "industry": "parks-rec/park-assets-forestry-and-visitor-data",
-   "basis": "own_site",
-   "source": {
-    "url": "https://playcraftsystems.com",
-    "quote": "YEAR-END PLAYGROUND EVENT"
    }
   },
   {
@@ -93556,15 +93873,6 @@
    "source": {
     "url": "http://www.hydrants.com",
     "quote": "to improve and maintain water quality"
-   }
-  },
-  {
-   "supplier_id": "kurita-america-tonka-water-a-kurita-brand",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.kuritaamerica.com/industries/municipal-drinking-water",
-    "quote": "Tonka Water has been dedicated to meeting the potable water needs of public water systems across North America since 1956."
    }
   },
   {
@@ -101038,6 +101346,15 @@
    }
   },
   {
+   "supplier_id": "petcademy",
+   "industry": "general-gov/animal-services",
+   "basis": "conference",
+   "source": {
+    "url": "https://humanepro.org/expo/animal-care-expo-sponsors",
+    "quote": "Petcademy"
+   }
+  },
+  {
    "supplier_id": "connectwell",
    "industry": "general-gov/libraries",
    "basis": "own_site",
@@ -101048,11 +101365,20 @@
   },
   {
    "supplier_id": "tutor-com",
-   "industry": "higher-education/it-and-administration",
+   "industry": "general-gov/hr-and-workforce",
    "basis": "own_site",
    "source": {
     "url": "https://www.tutor.com",
-    "quote": "Dedicated Customer Success Managers focused on your goals and long-term student success"
+    "quote": "FOR EMPLOYEE BENEFITS PROGRAMS"
+   }
+  },
+  {
+   "supplier_id": "online-rental-exchange",
+   "industry": "housing-community-dev/housing-and-assistance",
+   "basis": "conference",
+   "source": {
+    "url": "https://nce2026.smallworldlabs.com/exhibitors",
+    "quote": "ONLINE Rental Exchange"
    }
   },
   {
@@ -101758,6 +102084,15 @@
    }
   },
   {
+   "supplier_id": "wiz",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nascio.org/events/conferences/annual/sponsors/",
+    "quote": "Wiz"
+   }
+  },
+  {
    "supplier_id": "innovacer-inc",
    "industry": "health-human-services/benefits-and-medicaid-systems",
    "basis": "conference",
@@ -101785,6 +102120,15 @@
    }
   },
   {
+   "supplier_id": "rubrik",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "conference",
+   "source": {
+    "url": "https://www.nascio.org/events/conferences/annual/sponsors/",
+    "quote": "Rubrik"
+   }
+  },
+  {
    "supplier_id": "sas",
    "industry": "health-human-services/benefits-and-medicaid-systems",
    "basis": "conference",
@@ -101808,6 +102152,15 @@
    "basis": "conference",
    "source": {
     "url": "https://dt2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+    "quote": "ServiceNow"
+   }
+  },
+  {
+   "supplier_id": "servicenow",
+   "industry": "higher-education/it-and-administration",
+   "basis": "conference",
+   "source": {
+    "url": "https://educause26.smallworldlabs.com/exhibitors",
     "quote": "ServiceNow"
    }
   },
@@ -103328,8 +103681,8 @@
    "industry": "parks-rec/park-assets-forestry-and-visitor-data",
    "basis": "own_site",
    "source": {
-    "url": "https://www.gametime.com",
-    "quote": "Everyone remembers their favorite playground."
+    "url": "https://cunninghamrec.com/",
+    "quote": "Take Your Park or Playground Project from Vision to Reality"
    }
   },
   {
@@ -104692,12 +105045,30 @@
    }
   },
   {
+   "supplier_id": "mergent-by-ftse-russell",
+   "industry": "general-gov/libraries",
+   "basis": "conference",
+   "source": {
+    "url": "https://pla2026.smallworldlabs.com/exhibitors",
+    "quote": "Mergent by FTSE Russell"
+   }
+  },
+  {
    "supplier_id": "playgarden-online",
    "industry": "general-gov/libraries",
    "basis": "own_site",
    "source": {
     "url": "https://playgardenonline.com",
     "quote": "View plans for libraries, hospitals, and school"
+   }
+  },
+  {
+   "supplier_id": "simplestudyingai-inc",
+   "industry": "higher-education/it-and-administration",
+   "basis": "conference",
+   "source": {
+    "url": "https://educause26.smallworldlabs.com/exhibitors",
+    "quote": "SimpleStudyingAI Inc"
    }
   },
   {
@@ -109417,15 +109788,6 @@
    }
   },
   {
-   "supplier_id": "mokveld-valves",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://mokveld.com/en/axial-flow-valves-by-mokveld",
-    "quote": "A true zero emission valve!"
-   }
-  },
-  {
    "supplier_id": "molendotech",
    "industry": "public-works/water",
    "basis": "own_site",
@@ -112542,10 +112904,10 @@
   {
    "supplier_id": "canadian-association-of-fire-chiefs-iafc",
    "industry": "public-safety/fire",
-   "basis": "own_site",
+   "basis": "conference",
    "source": {
-    "url": "https://www.iafc.org:443",
-    "quote": "Federal & Military Fire Services"
+    "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+    "quote": "Canadian Association of Fire Chiefs (IAFC)"
    }
   },
   {
@@ -112825,15 +113187,6 @@
    "source": {
     "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "Fire Recovery USA"
-   }
-  },
-  {
-   "supplier_id": "fire-dex-gear-wash",
-   "industry": "public-safety/fire",
-   "basis": "own_site",
-   "source": {
-    "url": "https://firedex.com",
-    "quote": "A groundbreaking leap in firefighter comfort and safety."
    }
   },
   {
@@ -113696,8 +114049,8 @@
    "industry": "public-safety/fire",
    "basis": "own_site",
    "source": {
-    "url": "https://www.iafc.org:443",
-    "quote": "Federal & Military Fire Services"
+    "url": "https://www.seafc.org/",
+    "quote": "Southeastern Association of Fire Chiefs"
    }
   },
   {
@@ -113705,8 +114058,8 @@
    "industry": "public-safety/fire",
    "basis": "own_site",
    "source": {
-    "url": "https://www.iafc.org:443",
-    "quote": "Federal & Military Fire Services"
+    "url": "https://www.swd-iafc.org/",
+    "quote": "There are over 1,000 fire departments represented by the Southwestern Division of the IAFC."
    }
   },
   {
@@ -113734,15 +114087,6 @@
    "source": {
     "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "Steel Blue Work Boots"
-   }
-  },
-  {
-   "supplier_id": "super-vac-command-light",
-   "industry": "public-safety/fire",
-   "basis": "own_site",
-   "source": {
-    "url": "https://supervac.com",
-    "quote": "FIREFIGHTING WHICH FAN IS RIGHT FOR YOU?"
    }
   },
   {
@@ -115966,6 +116310,15 @@
    "source": {
     "url": "https://homebase.map-dynamics.com/napt2026/floorplan",
     "quote": "Lippert"
+   }
+  },
+  {
+   "supplier_id": "liquidspring-llc",
+   "industry": "public-safety/ems",
+   "basis": "own_site",
+   "source": {
+    "url": "https://liquidspring.com",
+    "quote": "EMS, Fire and Rescue Vehicles"
    }
   },
   {
@@ -121078,15 +121431,6 @@
    "source": {
     "url": "https://scon26.mapyourshow.com/",
     "quote": "NMSA"
-   }
-  },
-  {
-   "supplier_id": "stormtank",
-   "industry": "public-works/water",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.brentwoodindustries.com/products/stormwater",
-    "quote": "Water & Wastewater Rep Finder"
    }
   },
   {
@@ -131503,15 +131847,6 @@
    }
   },
   {
-   "supplier_id": "visual-concepts-dba-vpac-alliance",
-   "industry": "utilities-energy/grid-and-energy",
-   "basis": "own_site",
-   "source": {
-    "url": "https://vpacalliance.com",
-    "quote": "automation, and control solutions for power system substations."
-   }
-  },
-  {
    "supplier_id": "vodafone-iot",
    "industry": "utilities-energy/grid-and-energy",
    "basis": "conference",
@@ -132067,15 +132402,6 @@
    "source": {
     "url": "https://fdic2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "Bill Fox Balfour Co"
-   }
-  },
-  {
-   "supplier_id": "blackinton",
-   "industry": "public-safety/fire",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www2.blackinton.com",
-    "quote": "I wanted something to commemorate my 50 years as a firefighter-that started as an infant adopted from the unwed mother\u2019s ward at the old Cook County Hospital in Chicago\u2026along with the year I became a FF (1973) and my 50th year-and this could not have been or come out more perfectly."
    }
   },
   {
@@ -132952,15 +133278,6 @@
    }
   },
   {
-   "supplier_id": "fire-department-safety-officers-assoc",
-   "industry": "public-safety/fire",
-   "basis": "own_site",
-   "source": {
-    "url": "https://fdsoa.org",
-    "quote": "WE are all about saving Civilian Lives and Firefighter\u2019s Lives!"
-   }
-  },
-  {
    "supplier_id": "fire-dex",
    "industry": "public-safety/fire",
    "basis": "own_site",
@@ -133636,15 +133953,6 @@
    }
   },
   {
-   "supplier_id": "hen-nozzles",
-   "industry": "public-safety/fire",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.hentechnologies.com",
-    "quote": "MAKING FIREFIGHTING SMARTER, SAFER, AND MORE EFFECTIVE"
-   }
-  },
-  {
    "supplier_id": "henry-schein-inc",
    "industry": "public-safety/fire",
    "basis": "conference",
@@ -133804,15 +134112,6 @@
    "source": {
     "url": "https://www.idexfiresafety.com",
     "quote": "firefighter recruitment toolkit."
-   }
-  },
-  {
-   "supplier_id": "ifsta-fire-protection-publication",
-   "industry": "public-safety/fire",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.ifsta.org",
-    "quote": "Essentials of Fire Fighting \u00ae , 8th Edition"
    }
   },
   {
@@ -134308,15 +134607,6 @@
    "source": {
     "url": "https://fdic2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "LION Safety Solutions"
-   }
-  },
-  {
-   "supplier_id": "liquid-spring",
-   "industry": "public-safety/ems",
-   "basis": "own_site",
-   "source": {
-    "url": "https://liquidspring.com",
-    "quote": "EMS, Fire and Rescue Vehicles"
    }
   },
   {
@@ -136129,15 +136419,6 @@
    }
   },
   {
-   "supplier_id": "tk-armor-systems-llc-dba-spartan-armor-systems",
-   "industry": "public-safety/police",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.spartanarmorsystems.com",
-    "quote": "Understanding Backpack Armor"
-   }
-  },
-  {
    "supplier_id": "tohatsu-america-corp",
    "industry": "public-safety/fire",
    "basis": "conference",
@@ -136648,15 +136929,6 @@
    "source": {
     "url": "https://fdic2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
     "quote": "Zolatone Automotive, Industiral & Marine"
-   }
-  },
-  {
-   "supplier_id": "zumro-by-air-shelters-usa-llc",
-   "industry": "public-safety/fire",
-   "basis": "conference",
-   "source": {
-    "url": "https://fdic2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Zumro By Air Shelters Usa, Llc."
    }
   },
   {
@@ -140320,6 +140592,348 @@
    "source": {
     "url": "https://www.woodmontproperties.com",
     "quote": "Proven Track Record of Success in Real Estate Development"
+   }
+  },
+  {
+   "supplier_id": "cardiac-solutions",
+   "industry": "public-safety/ems",
+   "basis": "own_site",
+   "source": {
+    "url": "https://cardiac-solutions.net/",
+    "quote": "Each year, 500,000 people die from sudden cardiac arrest."
+   }
+  },
+  {
+   "supplier_id": "kemira-water-solutions-inc",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.kemira.com/",
+    "quote": "REPUR S.r.l provides activated carbon services for municipal & industrial water treatment applications"
+   }
+  },
+  {
+   "supplier_id": "kovalus-separation-solutions",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.kovalus.com",
+    "quote": "Cost-Effective Filtration for Water and Wastewater Applications."
+   }
+  },
+  {
+   "supplier_id": "a-1-alternative-fuel-systems",
+   "industry": "public-works/fleet-and-asset-mgmt",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.a1altfuels.com",
+    "quote": "Natural Gas, propane, and hydrogen conversion solutions designed for work trucks, buses, delivery vehicles, and other commercial applications across a wide range of duty cycles."
+   }
+  },
+  {
+   "supplier_id": "alco-lite",
+   "industry": "public-safety/fire",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.fireladder.com/",
+    "quote": "Double Roof Hook Pumper Ladder"
+   }
+  },
+  {
+   "supplier_id": "amiad-water-systems",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://amiad.com/",
+    "quote": "About Amiad Water Systems"
+   }
+  },
+  {
+   "supplier_id": "automation-products-group-inc",
+   "industry": "parks-rec/grounds-irrigation-and-turf",
+   "basis": "own_site",
+   "source": {
+    "url": "https://apgsensors.com/industries/agriculture/",
+    "quote": "Accurately manage bulk solids like grain and feed, monitor chemical levels with confidence, and keep irrigation systems running efficiently with dependable sensing technology."
+   }
+  },
+  {
+   "supplier_id": "avari-wireless",
+   "industry": "public-safety/emergency-mgmt",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.avariwireless.com",
+    "quote": "Avari Wireless designs and manufactures advanced Digital Distributed Antenna Systems (DAS) for Emergency Responder Communications Enhancement Systems (ERCES), delivering reliable, scalable public safety radio coverage across buildings, transportation networks, and critical infrastructure."
+   }
+  },
+  {
+   "supplier_id": "bridgecom-systems",
+   "industry": "general-gov/hr-and-workforce",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.bridgecomsystems.com/",
+    "quote": "Mobile Adventure Starter Pack with $194 Training Course FREE!"
+   }
+  },
+  {
+   "supplier_id": "electrolytic-technologies-systems-llc",
+   "industry": "utilities-energy/grid-and-energy",
+   "basis": "own_site",
+   "source": {
+    "url": "https://electrolytictech.com/",
+    "quote": "Klorigen\u2122 generators produce non-pressurized chlorine gas, membrane-grade sodium hydroxide, and 10-15% high strength sodium hypochlorite at point-of-use, using only salt, water, and electricity."
+   }
+  },
+  {
+   "supplier_id": "flexaseal-engineered-seals-and-systems",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.flexaseal.com/",
+    "quote": "Flexaseal designs and manufactures high-quality mechanical seals and engineered seal support systems for the world\u2019s most demanding industries, including oil & gas, chemical processing, power generation, water treatment, and pharmaceuticals ."
+   }
+  },
+  {
+   "supplier_id": "flomotion-systems-inc",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://flomotionsystems.com/",
+    "quote": "Sigmamotor back pressure valves, pressure relief valves and calibration cylinders are widely used as vital components in chemical feed systems."
+   }
+  },
+  {
+   "supplier_id": "flonergia-systems-inc",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.flonergia.com/",
+    "quote": "Driving the Future of Water Systems witH"
+   }
+  },
+  {
+   "supplier_id": "gemt-solutions",
+   "industry": "public-safety/ems",
+   "basis": "own_site",
+   "source": {
+    "url": "https://gemtsolutions.com/",
+    "quote": "At GEMT Solutions, our mission is to empower EMS organizations to optimize their Ground Emergency Medical Transportation (GEMT) reimbursement\u2014accurately, confidently, and in full compliance."
+   }
+  },
+  {
+   "supplier_id": "ide-water-solutions-north-america",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://ide-tech.com/",
+    "quote": "WATER TREATMENT SOLUTIONS"
+   }
+  },
+  {
+   "supplier_id": "jireh-sewer-inspection-robotics",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.jireh.com/",
+    "quote": "Battery-powered crawlers for municipal pipe inspection"
+   }
+  },
+  {
+   "supplier_id": "modus-engineered-solutions",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://modus-es.com/",
+    "quote": "Boiler and Cooling Water Treatment Systems"
+   }
+  },
+  {
+   "supplier_id": "nbcp-communications-system",
+   "industry": "general-gov/citizen-services",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.nbcpcommunications.com/industries",
+    "quote": "In council chambers, courtrooms, and public meeting rooms, systems often include desk-mounted microphones, integrated speaker systems, PTZ cameras for streaming and recording, and simple touchscreen controls."
+   }
+  },
+  {
+   "supplier_id": "polygone-systems",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.polygonesystems.com/",
+    "quote": "In doing so, we will safeguard water quality, human health, and aquatic ecosystems."
+   }
+  },
+  {
+   "supplier_id": "public-health-informatics-institute",
+   "industry": "health-human-services/public-health",
+   "basis": "own_site",
+   "source": {
+    "url": "https://phii.org/",
+    "quote": "THE CEMENTING AGENT BETWEEN PUBLIC HEALTH AND HEALTHCARE"
+   }
+  },
+  {
+   "supplier_id": "spatco-energy-solutions",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://spatco.com/shop",
+    "quote": "Manholes & Spill Containers"
+   }
+  },
+  {
+   "supplier_id": "spectrashield-liner-systems",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://spectrashield.com/",
+    "quote": "for water and wastewater systems."
+   }
+  },
+  {
+   "supplier_id": "thermal-process-systems",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://thermalprocess.com/",
+    "quote": "Your proven solution for biosolids management."
+   }
+  },
+  {
+   "supplier_id": "tnt-rescue-systems-inc",
+   "industry": "public-safety/fire",
+   "basis": "own_site",
+   "source": {
+    "url": "https://tntrescue.com/about-us/",
+    "quote": "From employees at the factory, management, or our dealers, we have current and retired firefighters throughout our organization and fully understand the expectations of tool performance on the street."
+   }
+  },
+  {
+   "supplier_id": "viavi-solutions",
+   "industry": "utilities-energy/broadband-and-connectivity",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.viavisolutions.com/en-us",
+    "quote": "Fiber Channel, Ethernet, FCoE, NVMeoF"
+   }
+  },
+  {
+   "supplier_id": "wsg-solutions-inc",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.wsgandsolutions.com/",
+    "quote": "Your Source for Wastewater & Stormwater Screening Solutions, Grit Removal Products & Genuine OEM Parts"
+   }
+  },
+  {
+   "supplier_id": "harding-instruments",
+   "industry": "utilities-energy/broadband-and-connectivity",
+   "basis": "own_site",
+   "source": {
+    "url": "https://harding-tech.com/",
+    "quote": "OEM Products for the Oil and Gas industry, Oil Sands Recovery, Heavy Equipment Control, Telecommunications and Related Industries"
+   }
+  },
+  {
+   "supplier_id": "key-systems-inc",
+   "industry": "public-works/fleet-and-asset-mgmt",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.keystorage.com/",
+    "quote": "Ensure the security and safety of your company with KSI \u2013 the industry leader in asset management."
+   }
+  },
+  {
+   "supplier_id": "morse-watchmans-inc",
+   "industry": "general-gov/it-and-ai-platforms",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.morsewatchmans.com/",
+    "quote": "Why Physical Keys Are Still a Cybersecurity Risk for Data Centers"
+   }
+  },
+  {
+   "supplier_id": "securitas-technology",
+   "industry": "public-safety/emergency-mgmt",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.securitastechnology.com/solutions",
+    "quote": "Provide a centralized security management and mass notification platform."
+   }
+  },
+  {
+   "supplier_id": "celplan-technologies-inc",
+   "industry": "utilities-energy/broadband-and-connectivity",
+   "basis": "own_site",
+   "source": {
+    "url": "https://celplan.com/",
+    "quote": "We specialize in building vendor-neutral, turnkey systems tailored to your needs\u2014seamlessly combining hardware, software, connectivity, and support."
+   }
+  },
+  {
+   "supplier_id": "dnv-usa-inc",
+   "industry": "general-gov/hr-and-workforce",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.dnv.us/about/diversity-dei/north-america/",
+    "quote": "Regional Manager, GSS HR North America"
+   }
+  },
+  {
+   "supplier_id": "powertech-labs-inc",
+   "industry": "utilities-energy/grid-and-energy",
+   "basis": "own_site",
+   "source": {
+    "url": "https://powertechlabs.com/",
+    "quote": "From grid modernization and transformer health to hydrogen infrastructure and electric vehicles, we design smarter tests, solve critical failures, and validate technologies that shape the future of energy and infrastructure."
+   }
+  },
+  {
+   "supplier_id": "arrb-systems",
+   "industry": "public-works/streets",
+   "basis": "own_site",
+   "source": {
+    "url": "https://arrbsystems.com",
+    "quote": "NH44 Traffic-Speed Pavement Assessment Using iPAVe"
+   }
+  },
+  {
+   "supplier_id": "dynatest-us-inc",
+   "industry": "public-works/streets",
+   "basis": "own_site",
+   "source": {
+    "url": "https://dynatest.com",
+    "quote": "Why pavement testing is needed"
+   }
+  },
+  {
+   "supplier_id": "pathway-services-inc",
+   "industry": "public-works/streets",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.pathwayservices.com",
+    "quote": "Automated PAVEMENT CONDITION and ASSET INVENTORY Data Collection Equipment and Services."
+   }
+  },
+  {
+   "supplier_id": "pavemetrics-systems",
+   "industry": "public-works/water",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.pavemetrics.com",
+    "quote": "Manhole Measurement: How to Standardize the Assessment of Height Differences and Sagging"
+   }
+  },
+  {
+   "supplier_id": "wdm-usa",
+   "industry": "general-gov/strategy-and-performance",
+   "basis": "own_site",
+   "source": {
+    "url": "https://www.wdm-int.com/about/",
+    "quote": "We offer a complete suite of pavement safety performance tools and data integration and data management services to support proactive performance management across the asset lifecycle.."
    }
   }
  ]
