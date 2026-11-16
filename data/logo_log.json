@@ -9184,5 +9184,100 @@
   "via": "declared-icon",
   "url": "https://lumu.io/wp-content/uploads/2020/01/favicon.png",
   "sha256": "d9cbcbc3cf030a5e3d164317ba2fdb8322619ff8fe6560e3e17dc8dbf04bed3d"
+ },
+ "canonical": {
+  "ok": true,
+  "note": "https://assets.ubuntu.com/v1/c55060fd-COF%20android-chrome-512x512.png",
+  "site": "https://canonical.com/",
+  "on": "2026-11-16",
+  "via": "manifest",
+  "url": "https://assets.ubuntu.com/v1/c55060fd-COF%20android-chrome-512x512.png",
+  "sha256": "676513b9894e8a748e4f59919497675cc4ea87a2d85242454ae47379c33f3ca0",
+  "review": true
+ },
+ "eightfold-ai": {
+  "ok": true,
+  "note": "https://eightfold.ai/wp-content/uploads/cropped-EF_favicon_new-192x192.png",
+  "site": "https://eightfold.ai/",
+  "on": "2026-11-16",
+  "via": "declared-icon",
+  "url": "https://eightfold.ai/wp-content/uploads/cropped-EF_favicon_new-192x192.png",
+  "sha256": "eb41d4827285b1c4a51985309762972802735dea3fb60990290df698513ac11f"
+ },
+ "securityscorecard": {
+  "ok": true,
+  "note": "https://securityscorecard.com/wp-content/themes/securityscorecard/resources/images/favicon/cropped-Securityscorecard_fav",
+  "site": "https://securityscorecard.com/",
+  "on": "2026-11-16",
+  "via": "declared-icon",
+  "url": "https://securityscorecard.com/wp-content/themes/securityscorecard/resources/images/favicon/cropped-Securityscorecard_favicon-192x192.webp",
+  "sha256": "ad484af6fb62a9a9e786457d7825b6016c2fa217df22d168abc104eb774391c5"
+ },
+ "everway": {
+  "ok": true,
+  "note": "https://everway.cdn.prismic.io/everway/Z3xmWpbqstJ99GMM_KPMGlogo.svg",
+  "site": "https://www.everway.com/",
+  "on": "2026-11-16",
+  "via": "markup-logo",
+  "url": "https://everway.cdn.prismic.io/everway/Z3xmWpbqstJ99GMM_KPMGlogo.svg",
+  "sha256": "9ac7d2adb9d6f08d0c0098b555a15eca58de22099122e8baa60033778312db28",
+  "review": true
+ },
+ "halcyon": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/6568a1bce0ae49e6bedec385/6568a1bce0ae49e6bedec41a_Group%20330%20(1).png",
+  "site": "https://www.halcyon.ai/",
+  "on": "2026-11-16",
+  "via": "apple-touch-icon",
+  "url": "https://cdn.prod.website-files.com/6568a1bce0ae49e6bedec385/6568a1bce0ae49e6bedec41a_Group%20330%20(1).png",
+  "sha256": "f478a394373500172cbe8a9dce73c5b8ef7c3a23cd29ad4f974fc07ec7470245"
+ },
+ "zoom": {
+  "ok": true,
+  "note": "https://st1.zoom.us/homepage/20261112-1031/primary/dist/assets/zoommedia/logo-zoom@2x.png",
+  "site": "https://www.zoom.com",
+  "on": "2026-11-16",
+  "via": "markup-logo",
+  "url": "https://st1.zoom.us/homepage/20261112-1031/primary/dist/assets/zoommedia/logo-zoom@2x.png",
+  "sha256": "3b0d46f4d2fa5a4d0178c376f39eb3a1464ca9cd3b912e452a84f1c49090b447",
+  "review": true
+ },
+ "dynatrace": {
+  "ok": true,
+  "note": "https://dt-cdn.net/images/apple-touch-icon-57x57-57-1fffb01d7e.png",
+  "site": "https://www.dynatrace.com/",
+  "on": "2026-11-16",
+  "via": "apple-touch-icon",
+  "url": "https://dt-cdn.net/images/apple-touch-icon-57x57-57-1fffb01d7e.png",
+  "sha256": "1c76b4c18dd60262af51496118dbe438f402f7d273fd0170657a1ec007c8e566"
+ },
+ "flairsoft": {
+  "ok": true,
+  "note": "https://flairsoft.net/wp-content/themes/flairsoft/images/flairsoft-logo1.png",
+  "site": "https://flairsoft.net/",
+  "on": "2026-11-16",
+  "via": "markup-logo",
+  "url": "https://flairsoft.net/wp-content/themes/flairsoft/images/flairsoft-logo1.png",
+  "sha256": "19c82d22bdd91382a13a5e0e23464168b8a6555c404c2020c2dd4103622dc693",
+  "review": true
+ },
+ "blumira": {
+  "ok": true,
+  "note": "https://www.blumira.com/hubfs/blumira-logo.svg",
+  "site": "https://www.blumira.com/",
+  "on": "2026-11-16",
+  "via": "markup-logo",
+  "url": "https://www.blumira.com/hubfs/blumira-logo.svg",
+  "sha256": "80d06bad5b53db80196a02b4e151d7f5652e5e9d6c6f6933d01aedd90e0e53d4",
+  "review": true
+ },
+ "intellinetics": {
+  "ok": true,
+  "note": "https://assets.intellinetics.com/favicons/apple-touch-icon.png",
+  "site": "https://intellinetics.com/",
+  "on": "2026-11-16",
+  "via": "apple-touch-icon",
+  "url": "https://assets.intellinetics.com/favicons/apple-touch-icon.png",
+  "sha256": "bfac58591deb004789f977d24d0e756529c77650fc56f34ec1ad2ebbe6345e10"
  }
 }

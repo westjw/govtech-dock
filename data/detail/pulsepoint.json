@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-05",
+   "headline": "Franklin County, Illinois Wins 2026 PulsePoint AED Contest",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pulsepoint.org/news/event"
+  },
+  {
+   "date": "2026-11-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-05",
+   "headline": "Franklin County, Illinois Wins 2026 PulsePoint AED Contest",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pulsepoint.org/news/highlights"
+  },
+  {
+   "date": "2026-11-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-05",
+   "headline": "advisory or news release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pulsepoint.org/news/press-release"
+  },
+  {
+   "date": "2026-11-15",
+   "date_source": "index-text",
+   "first_seen": "2026-11-15",
+   "headline": "Franklin County, Illinois Wins 2026 PulsePoint AED Contest",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pulsepoint.org/news/franklin-county-illinois-wins-2026-pulsepoint-aed-contest"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-05",
@@ -10,24 +46,6 @@
    "url": "https://www.pulsepoint.org/news/savestation-installed-at-kincaid-nordic-stadium"
   },
   {
-   "date": "2026-11-03",
-   "date_source": "near-h1",
-   "first_seen": "2026-11-05",
-   "headline": "SaveStation Installed at Kincaid Nordic Stadium",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pulsepoint.org/news/event"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "near-h1",
-   "first_seen": "2026-11-05",
-   "headline": "SaveStation Installed at Kincaid Nordic Stadium",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pulsepoint.org/news/highlights"
-  },
-  {
    "date": "2026-09-15",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -35,15 +53,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.pulsepoint.org/news/rapidsos-and-the-pulsepoint-foundation-partner-to-connect-911-directly-to-the-nations-registry-of-life-saving-emergency-resources"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "near-h1",
-   "first_seen": "2026-11-05",
-   "headline": "advisory or news release",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pulsepoint.org/news/press-release"
   },
   {
    "date": "2026-08-31",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.pulsepoint.org/news/pulsepoint-and-zoll-accelerate-growth-of-national-emergency-aed-registry-helping-more-communities-locate-and-use-devices-when-seconds-count"
-  },
-  {
-   "date": "2025-12-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Data-Driven AED Optimization Pilot Through CARES + NEAR Collaboration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pulsepoint.org/news/data-driven-aed-optimization-pilot-through-cares-near-collaboration"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-15",
+   "date_source": "card-date",
+   "first_seen": "2026-11-15",
+   "headline": "ArcSuite AI Is Now A-Frame One",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aframesolutions.com/news/a-frame-one"
+  },
+  {
+   "date": "2026-11-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-15",
+   "headline": "Federal Procurement November 2026 \u00b7 6 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aframesolutions.com/blog/palt-procurement-administrative-lead-time"
+  },
+  {
    "date": "2026-10-31",
    "date_source": "json-ld",
    "first_seen": "2026-10-31",
@@ -13,7 +31,7 @@
    "date": "2026-09-30",
    "date_source": "card-date",
    "first_seen": "2026-10-06",
-   "headline": "ArcSuite AI Added to A-Frame Solutions\u2019 GSA Multiple Award Schedule",
+   "headline": "A-Frame One Added to A-Frame Solutions\u2019 GSA Multiple Award Schedule",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aframesolutions.com/news/gsa-schedule-arcsuite"
@@ -58,7 +76,7 @@
    "date": "2026-09-28",
    "date_source": "card-date",
    "first_seen": "2026-10-06",
-   "headline": "A-Frame Solutions Awarded State of Montana Contract to Provide ArcSuite AI to State Agencies",
+   "headline": "A-Frame Solutions Awarded State of Montana Contract to Provide A-Frame One to State Agencies",
    "kind": "contract",
    "kind_rule": "Awarded State of Montana Contract",
    "url": "https://www.aframesolutions.com/news/montana-ai-contract"
@@ -67,7 +85,7 @@
    "date": "2026-08-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "A-Frame Solutions Releases ArcPerform, a Free Builder for the PWS, PRS and QASP",
+   "headline": "A-Frame Solutions Releases A-Frame One Perform, a Free Builder for the PWS, PRS and QASP",
    "kind": "product",
    "kind_rule": "Releases",
    "url": "https://www.aframesolutions.com/news/arcperform-free-pws-qasp-builder"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aframesolutions.com/blog/performance-requirements-summary"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Requirements August 2026 \u00b7 6 min read",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aframesolutions.com/blog/qasp-surveillance-methods"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Requirements August 2026 \u00b7 8 min read",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aframesolutions.com/blog/how-to-write-pws-prs-qasp"
   }
  ],
  "profile": {

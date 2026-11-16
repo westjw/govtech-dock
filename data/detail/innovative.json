@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-15",
+   "headline": "Modernizing library operations at scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://iii.com/resources/modernizing-library-operations-at-scale/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-15",
+   "headline": "Expanding library access across a growing community",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://iii.com/resources/expanding-library-access-across-a-growing-community/"
+  },
+  {
    "date": "2026-08-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -13,7 +31,7 @@
    "date": "2026-08-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Polaris, Registration-required, Vega LX",
+   "headline": "Extending library services beyond the building",
    "kind": "press",
    "kind_rule": null,
    "url": "https://iii.com/resources/case-study-extending-library-services-beyond-the-building/"
@@ -31,7 +49,7 @@
    "date": "2026-08-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Redesigning the Patron Experience with Polaris and Vega LX \u2013\u2026",
+   "headline": "Redesigning the Patron Experience with Polaris and Vega LX \u2013 West Des Moines Public Library",
    "kind": "press",
    "kind_rule": null,
    "url": "https://iii.com/resources/case-study-redesigning-the-patron-experience-with-polaris-and-vega-lx-west-des-moines-public-library/"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://iii.com/resources/white-paper-driving-polaris-roi/"
-  },
-  {
-   "date": "2025-11-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Product Overview: Sierra ILS for Public Libraries",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://iii.com/resources/product-overview-sierra-ils-for-public-libraries/"
-  },
-  {
-   "date": "2025-11-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fact Sheet: Sierra LSP",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://iii.com/resources/fact-sheet-sierra-lsp/"
   }
  ],
  "profile": {
