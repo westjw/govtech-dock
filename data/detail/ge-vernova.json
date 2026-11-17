@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "GE Vernova CEO Scott Strazik to speak at Goldman Sachs Industrials and Materials Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-ceo-scott-strazik-speak-goldman-sachs-industrials-materials-conference"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "GE Vernova's factory in Taubat\u00e9 celebrates 70 years of operation in Brazil",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernovas-factory-taubate-celebrates-70-years-operation-brazil"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "GE Vernova strengthens German wind energy expansion with new order from wpd",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-strengthens-german-wind-energy-expansion-new-order-wpd"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "GE Vernova launches SF\u2086-free compact switchgear for space-constrained high-voltage substations",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-launches-sf6-free-compact-switchgear-space-constrained-high-voltage"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "card-date",
    "first_seen": "2026-11-10",
@@ -71,42 +107,6 @@
    "kind": "funding",
    "kind_rule": "to acquire",
    "url": "https://www.gevernova.com/news/press-releases/ge-vernova-acquire-trench-group"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "card-date",
-   "first_seen": "2026-10-28",
-   "headline": "GE Vernova and the Boston Celtics Announce Three-Year Partnership to Recognize Members of the United States Armed Forces",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-boston-celtics-announce-three-year-partnership-recognize-members-united"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "card-date",
-   "first_seen": "2026-10-24",
-   "headline": "GE Vernova Foundation Marks Milestone as First Staffordshire Students Begin \u2018Engineers of Change\u2019 Programme",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-foundation-marks-milestone-first-staffordshire-students-begin-engineers"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "card-date",
-   "first_seen": "2026-10-20",
-   "headline": "GE Vernova secures order aimed to strengthen regional energy capacity in C\u00f4te d\u2019Ivoire",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-secures-order-aimed-strengthen-regional-energy-capacity-cote-divoire"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "card-date",
-   "first_seen": "2026-10-15",
-   "headline": "Net Zero Without Compromising Reliability: GE Vernova Shows How Spain Can Design a Power System That Achieves Both",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/net-zero-without-compromising-reliability-ge-vernova-shows-how-spain-can-design"
   }
  ]
 }

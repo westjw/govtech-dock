@@ -2044,17 +2044,22 @@
     },
     "hiring": {
       "status": "Yes",
-      "note": "Account Executive, DFR (Remote (Select Sta)",
+      "note": "Account Executive, DFR (USA)",
       "roles": [
         {
           "title": "Account Executive, DFR",
-          "location": "Remote (Select States)",
+          "location": "USA",
           "url": "https://jobs.ashbyhq.com/brinc/51cdc028-27ee-4c07-b3f0-1c8e46a94a06"
         },
         {
           "title": "Account Executive, Fire/EMS",
-          "location": "Remote (Select Territories, USA)",
+          "location": "USA",
           "url": "https://jobs.ashbyhq.com/brinc/fce92aaf-1893-4935-8ed5-1de4cab6430d"
+        },
+        {
+          "title": "Area Sales Manager, DFR (East)",
+          "location": "Remote (East Coast, USA)",
+          "url": "https://jobs.ashbyhq.com/brinc/ef743f7b-c91b-4f5d-afc2-784ffef0ecf9"
         }
       ],
       "checked": "2026-11-17"
@@ -4529,6 +4534,16 @@
           "url": "https://jobs.lever.co/everbridge/62af77b6-058a-4cb2-ad78-bdd41e23ec3e"
         },
         {
+          "title": "Associate Account Executive, State & Local Government - East",
+          "location": "United States",
+          "url": "https://jobs.lever.co/everbridge/027c8b14-cb41-42f4-b46d-c7b82a786300"
+        },
+        {
+          "title": "Associate Account Executive, State & Local Government - West",
+          "location": "United States",
+          "url": "https://jobs.lever.co/everbridge/30c61b49-e032-4929-96fb-3c1e6575329d"
+        },
+        {
           "title": "Enterprise Account Executive",
           "location": "United Kingdom",
           "url": "https://jobs.lever.co/everbridge/197a5193-e646-4b39-be1b-306bf265b428"
@@ -4552,21 +4567,6 @@
           "title": "Senior Account Executive, New Business - South Central",
           "location": "United States",
           "url": "https://jobs.lever.co/everbridge/4e70f198-51eb-4812-b942-ecc7f8dc5b3f"
-        },
-        {
-          "title": "Territory Sales Manager - RedSky",
-          "location": "United States",
-          "url": "https://jobs.lever.co/everbridge/ca712ed2-c2bc-453c-a0c4-8edc8b7a4f66"
-        },
-        {
-          "title": "Territory Sales Manager, State & Local Government - East",
-          "location": "United States",
-          "url": "https://jobs.lever.co/everbridge/027c8b14-cb41-42f4-b46d-c7b82a786300"
-        },
-        {
-          "title": "Territory Sales Manager, State & Local Government - West",
-          "location": "United States",
-          "url": "https://jobs.lever.co/everbridge/30c61b49-e032-4929-96fb-3c1e6575329d"
         }
       ],
       "checked": "2026-11-17"
@@ -27696,25 +27696,9 @@
       "ref": "esper"
     },
     "hiring": {
-      "status": "Yes",
-      "note": "Enterprise Sales Lead, Northeast (United States)",
-      "roles": [
-        {
-          "title": "Enterprise Sales Lead, Northeast",
-          "location": "United States",
-          "url": "https://jobs.lever.co/esper/933d7d67-fe3a-4f01-a96c-db7c23f4678a"
-        },
-        {
-          "title": "Enterprise Sales Lead, Southeast",
-          "location": "United States",
-          "url": "https://jobs.lever.co/esper/1ec64bc7-5370-4d04-8fbd-9a17fa1cf964"
-        },
-        {
-          "title": "Enterprise Sales Lead, West",
-          "location": "United States",
-          "url": "https://jobs.lever.co/esper/befcc347-4be0-4c9b-9b4f-4ac178a7a212"
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 502 for https://api.lever.co/v0/pos",
+      "roles": [],
       "checked": "2026-11-17"
     },
     "govtech": true,
@@ -33011,7 +32995,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "robots.txt on runbeck.net answered HTTP ",
+      "note": "HTTP 520 for https://runbeck.net/careers",
       "roles": [],
       "checked": "2026-11-17"
     },
@@ -42025,8 +42009,8 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Atlanta, GA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5026955007"
+          "location": "Philadelphia, PA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103490007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
@@ -42050,28 +42034,23 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "New York City, NY United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Philadelphia, PA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103490007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
           "location": "Los Angeles, CA United States",
           "url": "https://job-boards.greenhouse.io/verkada/jobs/5027198007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Boston, MA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5161632007"
+          "location": "Atlanta, GA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/5026955007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
           "location": "San Mateo, CA United States",
           "url": "https://job-boards.greenhouse.io/verkada/jobs/5170485007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "New York City, NY United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
         },
         {
           "title": "Account Executive, UK",
@@ -116216,9 +116195,16 @@
       "ref": "https://www.hydropoint.com/careers"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "HTTP 504 for https://www.hydropoint.com/",
-      "roles": [],
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.hydropoint.com/careers",
+          "synthetic": true
+        }
+      ],
       "checked": "2026-11-17"
     },
     "govtech": true,
@@ -130278,30 +130264,9 @@
       ]
     },
     "hiring": {
-      "status": "Yes",
-      "note": "Account Executive, Springbuk (Remote \u2013 United St)",
-      "roles": [
-        {
-          "title": "Account Executive, Springbuk",
-          "location": "Remote \u2013 United States",
-          "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Remote--United-States/Account-Executive--Springbuk_JR01763-1"
-        },
-        {
-          "title": "Commercial Account Executive, Truven",
-          "location": "Remote \u2013 United States",
-          "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Remote--United-States/Commercial-Account-Executive--Truven_JR01759"
-        },
-        {
-          "title": "Lead Account Executive, Direct Sales",
-          "location": "Remote \u2013 United States",
-          "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Remote--United-States/Lead-Account-Executive--Direct-Sales_JR01793"
-        },
-        {
-          "title": "Strategic Sales Executive, Micromedex",
-          "location": "Remote \u2013 United States",
-          "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Remote--United-States/Strategic-Sales-Executive--Micromedex_JR01803"
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 429 rate limited for https://merati",
+      "roles": [],
       "checked": "2026-11-17"
     },
     "govtech": true,
@@ -149607,8 +149572,8 @@
       "ref": "highlandfleets-2"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host=",
+      "status": "Sales (non-AE)",
+      "note": "Customer Success Manager (CA) only",
       "roles": [],
       "checked": "2026-11-17"
     },
@@ -150040,8 +150005,8 @@
       "ref": "skedda"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "Business Development Representativ only",
       "roles": [],
       "checked": "2026-11-17"
     },
@@ -157145,7 +157110,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 504 for https://www.meridian.coop/c",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-11-17"
     },
@@ -169262,15 +169227,9 @@
       ]
     },
     "hiring": {
-      "status": "Yes",
-      "note": "Outside Sales Representative (4 Locations)",
-      "roles": [
-        {
-          "title": "Outside Sales Representative",
-          "location": "4 Locations",
-          "url": "https://wastequip.wd108.myworkdayjobs.com/en-US/Wastequip_Careers/job/San-Francisco/Outside-Sales-Representative_R-101489-2"
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 429 rate limited for https://wasteq",
+      "roles": [],
       "checked": "2026-11-17"
     },
     "govtech": true,
@@ -173180,8 +173139,8 @@
       "ref": "https://measuresforjustice.org/careers"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host=",
       "roles": [],
       "checked": "2026-11-17"
     },
@@ -179140,13 +179099,13 @@
         },
         {
           "title": "Enterprise Account Executive, Public Sector",
-          "location": "Milan, Italy",
-          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5458689008"
+          "location": "Madrid, Spain",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5458064008"
         },
         {
           "title": "Enterprise Account Executive, Public Sector",
-          "location": "Madrid, Spain",
-          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5458064008"
+          "location": "Milan, Italy",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5458689008"
         },
         {
           "title": "Enterprise Account Executive, Public Sector, DACH",
@@ -202444,7 +202403,7 @@
     },
     "hiring": {
       "status": "Unknown",
-      "note": "HTTP 404 for https://streametric.io/care",
+      "note": "HTTP 504 for https://streametric.io/care",
       "roles": [],
       "checked": "2026-11-17"
     },
@@ -227317,13 +227276,13 @@
         },
         {
           "title": "Enterprise Account Executive, Financial Services",
-          "location": "Boston",
-          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8311501"
+          "location": "Richmond",
+          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8311503"
         },
         {
           "title": "Enterprise Account Executive, Financial Services",
-          "location": "Richmond",
-          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8311503"
+          "location": "Boston",
+          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8311501"
         },
         {
           "title": "Enterprise Account Executive - Mixed Industries",
@@ -227666,135 +227625,9 @@
       ]
     },
     "hiring": {
-      "status": "Yes",
-      "note": "Account Executive (2 Locations)",
-      "roles": [
-        {
-          "title": "Account Executive",
-          "location": "2 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---CO/Account-Executive_R12804"
-        },
-        {
-          "title": "Strategic Account Executive",
-          "location": "4 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---MA/Strategic-Account-Executive_R12780"
-        },
-        {
-          "title": "Account Executive - Denmark",
-          "location": "2 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Copenhagen/Account-Executive---Denmark_R11973"
-        },
-        {
-          "title": "Account Executive - Norway",
-          "location": "2 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Stockholm/Account-Executive---Norway_R11304"
-        },
-        {
-          "title": "Strategic Account Executive - Expansions Team",
-          "location": "4 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---OH/Strategic-Account-Executive---Expansions-Team_R12674"
-        },
-        {
-          "title": "Senior Account Executive - Sweden",
-          "location": "3 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---Sweden/Senior-Account-Executive---Sweden_R11705"
-        },
-        {
-          "title": "Senior Account Executive - SLED",
-          "location": "USA - Remote",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Senior-Account-Executive---SLED_R12096"
-        },
-        {
-          "title": "Lead Account Executive - Enterprise",
-          "location": "Remote - Hong Kong",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---Hong-Kong/Senior-Account-Executive_R12296"
-        },
-        {
-          "title": "Senior Account Executive - Belgium",
-          "location": "Remote - Belgium",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---Belgium/Senior-Account-Executive---Belgium_R12397"
-        },
-        {
-          "title": "Senior Account Executive - Toronto",
-          "location": "2 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---ON/Senior-Account-Executive---Toronto_R12333"
-        },
-        {
-          "title": "Senior Account Executive - Government",
-          "location": "Remote - ON",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---ON/Senior-Account-Executive---Government_R12587-1"
-        },
-        {
-          "title": "Senior Account Executive - DACH",
-          "location": "Remote - Germany",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---Germany/Senior-Account-Executive---DACH_R12783"
-        },
-        {
-          "title": "Senior Account Executive - State Government",
-          "location": "5 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---IL/Senior-Account-Executive---State-Government_R12751"
-        },
-        {
-          "title": "Solution Sales Executive, GRC",
-          "location": "Remote - UK",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---UK/Solution-Sales-Executive--GRC_R12683"
-        },
-        {
-          "title": "Senior Solution Sales Executive - Sustainability",
-          "location": "Remote - UK",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---UK/Senior-Solution-Sales-Executive---Sustainability_R12759"
-        },
-        {
-          "title": "Partner Sales Executive - UK Financial Services & Investment",
-          "location": "Remote - UK",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---UK/Partner-Sales-Executive---UK-Financial-Services---Investment_R12784"
-        },
-        {
-          "title": "Senior Solution Sales Executive, GRC - DACH",
-          "location": "Remote - Germany",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---Germany/Senior-Solution-Sales-Executive--GRC---DACH_R12174"
-        },
-        {
-          "title": "Solution Sales Executive - Governance Risk & Compliance",
-          "location": "USA - Remote",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Solution-Sales-Executive---Governance-Risk---Compliance_R12670"
-        },
-        {
-          "title": "Senior Solution Sales Executive, GRC - Financial Services UKI",
-          "location": "London",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/London/Senior-Solution-Sales-Executive--GRC---Financial-Services-UKI_R12109"
-        },
-        {
-          "title": "Senior Solution Sales Executive - Multi Entity Reporting",
-          "location": "2 Locations",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/London/Senior-Solution-Sales-Executive---Multi-Entity-Reporting_R12434"
-        },
-        {
-          "title": "Solution Sales Executive - Governance, Risk, and Compliance",
-          "location": "USA - Remote",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Solution-Sales-Executive---Governance--Risk--and-Compliance_R11787"
-        },
-        {
-          "title": "Solution Sales Executive - Governance, Risk & Compliance (Mexico)",
-          "location": "Remote - Mexico",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Remote---Mexico/Solution-Sales-Executive---Governance--Risk---Compliance--Mexico-_R12343"
-        },
-        {
-          "title": "Senior Solution Sales Executive - Governance, Risk & Compliance",
-          "location": "USA - Remote",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Senior-Solution-Sales-Executive---Governance--Risk---Compliance_R12671"
-        },
-        {
-          "title": "Solution Sales Executive - Governance, Risk & Compliance - Financial Services",
-          "location": "USA - Remote",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Solution-Sales-Executive---Governance--Risk---Compliance---Financial-Services_R12650"
-        },
-        {
-          "title": "Senior Solution Sales Executive - Governance, Risk, and Compliance (Central Canada)",
-          "location": "Canada - Remote",
-          "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/Canada---Remote/Senior-Solution-Sales-Executive---Governance--Risk--and-Compliance--Central-Canada-_R12367"
-        }
-      ],
+      "status": "Unknown",
+      "note": "HTTP 429 rate limited for https://workiv",
+      "roles": [],
       "checked": "2026-11-17"
     },
     "govtech": true,
@@ -233257,8 +233090,8 @@
       "ref": "brandtinformationservicesllc"
     },
     "hiring": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "Account Management Manager only",
       "roles": [],
       "checked": "2026-11-17"
     },

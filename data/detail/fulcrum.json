@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "What Spatial Networks\u2019 ISO 27001 certification means for your Fulcrum data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/spatial-networks-iso-27001-certification/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "The Company Behind Fulcrum, Spatial Networks, Inc., Achieves ISO/IEC 27001:2022 Certification for Information Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/spatial-networks-achieves-iso-27001-certification/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -46,6 +64,15 @@
    "url": "https://www.fulcrumapp.com/blog/fulcrum-slalom-partnership/"
   },
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Fulcrum and Slalom Bring AI Transformation to Utility Field Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-slalom-partnership/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
-   "first_seen": "2026-10-22",
-   "headline": "Fulcrum and Slalom Bring AI Transformation to Utility Field Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-slalom-partnership/"
-  },
-  {
-   "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Fulcrum and Overstory, working the same problem from both ends",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/fulcrum-and-overstory-partnership/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Overstory and Fulcrum Partner to Deliver Closed-Loop Risk Reduction for Utilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-overstory-partnership/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "With Fulcrum MCP connector and AI Toolkit, workflows once too hard to build are now within reach",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/fulcrum-mcp-connector-ai-toolkit/"
   }
  ],
  "profile": {

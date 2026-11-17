@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Corti Brings Its Sovereign Healthcare AI Offering to France on Scaleway\u2019s European Cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corti.ai/newsroom/corti-brings-its-sovereign-healthcare-ai-offering-to-france-on-scaleways-european-cloud"
+  },
+  {
    "date": "2026-10-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Corti Advances Execution and Control Layer for Complex Agentic AI Systems in Healthcare",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Dedalus and Corti Usher In the Agentic EHR Era Across Europe",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Corti and Diktamen Partner to Bring AI-Powered Ambient Voice Technology to NHS Trusts, Private Hospitals, and GP Practices",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Corti Introduces New Benchmark to Raise the Standard for Evaluating AI-Generated Clinical Notes",
    "kind": "product",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "Redline Data and Corti Partner to Bring Clinical AI Across Germany",
    "kind": "press",
@@ -64,6 +73,33 @@
    "url": "https://www.corti.ai/newsroom/dcai-and-corti-launch-sovereign-ai-control-layer-for-european-enterprises---trifork-first-to-adopt-as-implementation-partner"
   },
   {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "DCAI and Corti Launch Sovereign AI Control Layer for European Enterprises - Trifork First to Adopt as Implementation Partner",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.corti.ai/da/newsroom/dcai-and-corti-launch-sovereign-ai-control-layer-for-european-enterprises---trifork-first-to-adopt-as-implementation-partner"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "DCAI and Corti Launch Sovereign AI Control Layer for European Enterprises - Trifork First to Adopt as Implementation Partner",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.corti.ai/de/newsroom/dcai-and-corti-launch-sovereign-ai-control-layer-for-european-enterprises---trifork-first-to-adopt-as-implementation-partner"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "DCAI and Corti Launch Sovereign AI Control Layer for European Enterprises - Trifork First to Adopt as Implementation Partner",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.corti.ai/fr/newsroom/dcai-and-corti-launch-sovereign-ai-control-layer-for-european-enterprises---trifork-first-to-adopt-as-implementation-partner"
+  },
+  {
    "date": "2026-05-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -71,42 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.corti.ai/newsroom/corti-launches-symphony-for-speech-to-text"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Posos Joins Corti\u2019s Agentic Framework to Bring Certified Medication Intelligence to Clinical AI Agents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.corti.ai/newsroom/posos-corti-ai-assisted-prescribing-clinical-grade-ai-healthcare"
-  },
-  {
-   "date": "2026-05-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Corti Steps Up Its Support for the Next Wave of Healthcare and Life Sciences Startups as OpenAI Pushes Into the Space and Others Retreat From Europe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.corti.ai/newsroom/corti-launches-healthcare-ai-startup-acceleration-program"
-  },
-  {
-   "date": "2026-04-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Corti Scores 93.3* in KLAS First Look Report, Scored \u201cHighly Satisfied\u201d by Healthcare Vendors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.corti.ai/newsroom/klas-first-look-93-3-score-highly-satisfied"
-  },
-  {
-   "date": "2026-04-01",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Corti Ships Symphony for Medical Coding With up to 25% Accuracy Edge Over OpenAI and Anthropic",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.corti.ai/newsroom/corti-ships-symphony-for-medical-coding-accuracy-over-openai-anthropic"
   }
  ],
  "profile": {

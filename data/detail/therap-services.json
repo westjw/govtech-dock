@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Integrated Billing vs. Standalone Billing Software: What HCBS Providers Should Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/integrated-billing-vs-standalone-billing-software-what-hcbs-providers-should-know/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.therapservices.net/blog/electronic-visit-verification-evv-explained-what-idd-and-hcbs-providers-need-to-know/"
-  },
-  {
-   "date": "2026-10-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "The IDD Documentation Software Buyer's Checklist: 12 Questions to Ask Before You Switch",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/the-idd-documentation-software-buyers-checklist-12-questions-to-ask-before-you-switch/"
   }
  ]
 }

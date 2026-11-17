@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "IDEMIA Secure Transactions showcases IDEMIA Sphere HSM at Hexatrust\u2019s UECC 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idemia.com/news/idemia-secure-transactions-showcases-idemia-sphere-hsm-hexatrusts-uecc-2026-2026-11-17"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.idemia.com/insights/biometric-innovation-travel-border-management-qa-tim-ferris"
-  },
-  {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "IDEMIA Secure Transactions and Commercial Bank of Ceylon Launch Google Pay in Sri Lanka",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://www.idemia.com/news/idemia-secure-transactions-and-commercial-bank-ceylon-launch-google-pay-sri-lanka-2026-02-17"
   }
  ]
 }

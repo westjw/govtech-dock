@@ -1,97 +1,69 @@
 {
   "date": "2026-11-17",
-  "previous": "2026-11-16",
+  "previous": "2026-11-17",
   "changes": [
     {
-      "company": "Prophecy Gov",
-      "id": "prophecy-gov",
-      "from": "None found",
+      "company": "Esper",
+      "id": "esper",
+      "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
-    },
-    {
-      "company": "Veritone",
-      "id": "veritone",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Junior Media Account Executive (London, UK)"
-    },
-    {
-      "company": "Systems & Methods, Inc.",
-      "id": "systems-methods-inc",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "AccessE11",
-      "id": "accesse11",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "network error: robots.txt on accesse11.c"
+      "note": "HTTP 502 for https://api.lever.co/v0/pos"
     },
     {
       "company": "HydroPoint Data Systems",
       "id": "hydropoint-data-systems",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 504 for https://www.hydropoint.com/"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Merative",
       "id": "merative",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive, Springbuk (Remote \u2013 United St)"
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 429 rate limited for https://merati"
     },
     {
       "company": "Highland Electric Fleets",
       "id": "highland-electric-fleets",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager (CA) only"
     },
     {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Skedda",
+      "id": "skedda",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Business Development Representativ only"
     },
     {
       "company": "Wastequip",
       "id": "wastequip",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Outside Sales Representative (4 Locations)"
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 429 rate limited for https://wasteq"
     },
     {
-      "company": "Dun & Bradstreet, Inc.",
-      "id": "dun-bradstreet-inc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Business Development Manager (Hong Kong)"
-    },
-    {
-      "company": "Totara",
-      "id": "totara",
+      "company": "Measures for Justice",
+      "id": "measures-for-justice",
       "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Director only"
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
       "company": "Workiva",
       "id": "workiva",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (2 Locations)"
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 429 rate limited for https://workiv"
     },
     {
-      "company": "MRI Software",
-      "id": "mri-software",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "SaaS Sales (Business Development M (Singapore Office)"
+      "company": "Brandt Information Services",
+      "id": "brandt-information-services",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Account Management Manager only"
     }
   ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-17",
+   "headline": "How Maryland DHS Used AI to Analyze Child Welfare Case Notes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.augintel.us/blog/how-maryland-dhs-used-ai-to-analyze-child-welfare-case-notes"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "near-h1",
    "first_seen": "2026-10-29",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.augintel.us/posts/what-child-welfare-agencies-should-ask-when-evaluating-ai"
+  },
+  {
+   "date": "2026-10-28",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-17",
+   "headline": "What Child Welfare IT Leaders Should Ask When Evaluating AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.augintel.us/blog/what-child-welfare-it-leaders-should-ask-when-evaluating-ai"
   },
   {
    "date": "2026-10-22",
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.augintel.us/posts/what-child-welfare-case-notes-can-show-us-at-scale"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-17",
+   "headline": "What Child Welfare Case Notes Can Show Us at Scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.augintel.us/blog/what-child-welfare-case-notes-can-show-us-at-scale"
   },
   {
    "date": "2026-09-01",
@@ -55,6 +82,15 @@
    "url": "https://www.augintel.us/resources/how-illinois-dcfs-uses-ai-to-uncover-bias-in-child-welfare-case-notes"
   },
   {
+   "date": "2026-05-26",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-17",
+   "headline": "A Different Approach to CCWIS and Tech Modernization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.augintel.us/blog/flipping-the-script-on-ccwis-a-different-approach-to-ccwis-and-tech-modernization"
+  },
+  {
    "date": "2024-08-30",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.augintel.us/posts/rising-social-risk-in-patients-with-serious-mental-illness-and-other-complex-conditions-dr-kristine-mccoy"
-  },
-  {
-   "date": "2024-07-25",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Recognizing SDOH through Natural Language Processing by Dr. Kristine McCoy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.augintel.us/posts/recognizing-sdoh-hrsn-through-natural-language-processing-by-dr-kristine-mccoy"
-  },
-  {
-   "date": "2024-07-05",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Why wait for SDOH Screening? By Dr. Kristine McCoy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.augintel.us/posts/why-wait-for-sdoh-screening-by-dr-kristine-mccoy"
-  },
-  {
-   "date": "2024-06-20",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "EHRA (Electronic Health Records Association) Hits the Nail on the Head by Dr. Kristine McCoy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.augintel.us/posts/ehra-electronic-health-records-association-hits-the-nail-on-the-head"
-  },
-  {
-   "date": "2024-02-15",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Caseworker Safety Alerts; Technology That Supports Practice",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.augintel.us/posts/caseworker-safety-alerts-technology-that-supports-practice"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Leidos continuing support for NASA flight hardware, logistics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/leidos-continuing-support-nasa-flight-hardware-logistics"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/ai-cyber-operations-key-lessons-women-defense"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "The token is the new password",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/token-new-password"
   }
  ]
 }

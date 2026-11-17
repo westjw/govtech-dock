@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-05-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How one test saved a sacred cow from slaughter.",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-05-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How competitor pricing affects your parking demand.",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Introducing Visibility: A Live View of Your Asset, From Anywhere",
    "kind": "product",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-05-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Here\u2019s how local events impact parking revenue and demand.",
    "kind": "press",
@@ -65,12 +65,21 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "5 Top Options for ABM Parking Alternatives (2026)",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airgarage.com/blog/abm-parking-alternatives-2026"
+  },
+  {
+   "date": "2026-05-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Primary vs. secondary drivers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/weather-affect-parking-demand"
   },
   {
    "date": "2026-04-30",
@@ -80,6 +89,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airgarage.com/blog/how-parking-demand-works"
+  },
+  {
+   "date": "2026-04-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Introducing Property Insights: See the demand dynamics shaping your asset's performance",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.airgarage.com/blog/property-insights"
+  },
+  {
+   "date": "2026-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Return to office recovery",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/how-rto-trends-affect-parking"
   }
  ],
  "profile": {
