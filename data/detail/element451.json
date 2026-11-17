@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Connected Data Doesn't Follow Up. Agents Do.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/disconnected-campus-systems-ai-agents"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Element451 Joins the Connected Campus Ecosystem, Extending Agentic AI Engagement Across the Student Lifecycle",
+   "kind": "leadership",
+   "kind_rule": "Joins the",
+   "url": "https://www.element451.com/blog/element451-joins-connected-campus"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Element451 Introduces Bolt Fraud Detection and Resolution, an Agentic Solution Built With Socure to Close the Gap on Higher Education Fraud",
    "kind": "product",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Bolt Custom Skills: Teach Your AI Agents Your Institution's Processes",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.element451.com/blog/beat-the-game-of-telephone-before-ai-amplifies-it"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Element451 Powers Smarter Student Data With NVIDIA Nemotron",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/element451-powers-smarter-student-data-with-nvidia"
-  },
-  {
-   "date": "2026-08-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Case Management Closes the Gap Advisors Can't Close Alone",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/element451-case-management-student-success"
   }
  ],
  "profile": {

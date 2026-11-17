@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Operating at Scale: How to Run Multi-Location Cemetery, Crematory and Funeral Home Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://plotbox.com/blog/multi-location-cemetery-funeral-home-operations"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://plotbox.com/blog/built-on-vs-on-purpose-built-cemetery-software"
-  },
-  {
-   "date": "2025-11-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NFDA 2025: 'People love coffee' and 9 other things we learned",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://plotbox.com/blog/nfda-2025-people-love-coffee-and-9-other-things-we-learned"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Statement Regarding Public Portal Availability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.journaltech.com/blog/public-portal-availability-statement"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.journaltech.com/blog/south-australia-embraces-change-with-ecourt"
-  },
-  {
-   "date": "2025-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "King County + eSeries: The Importance of Adaptability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.journaltech.com/blog/king-county-eseries-the-importance-of-adaptability"
   }
  ],
  "profile": {

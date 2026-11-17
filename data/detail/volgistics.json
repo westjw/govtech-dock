@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Create Automatic Report to Track Checklist Items",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/create-automatic-report-to-track-checklist-items/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/coordinating-volunteers-the-complete-guide-to-organizing-effective-volunteer-programs/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Use Sets for Checklist Items That Apply to Multiple Assignments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/use-sets-for-checklist-items-that-apply-to-multiple-assignments/"
   }
  ]
 }

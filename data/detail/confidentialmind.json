@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Tenstorrent and ConfidentialMind Partner to Deliver Sovereign AI on Open Hardware",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/tenstorrent-confidentialmind-sovereign-ai"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Your AI service could run on the GPUs you already own",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/slurm-support"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "ConfidentialMind\u2019s SampoTron: adapting queries, reusing the index",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/sampotron-adapting-queries-reusing-index"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Large-Model Retrieval Quality With Right-Sized Embeddings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/large-model-quality-right-sized-embeddings"
+  },
+  {
+   "date": "2025-06-16",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "ConfidentialMind Adds NVIDIA NIM Support",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/universal-nim-support-for-the-confidentialmind-platform"
+  },
+  {
+   "date": "2025-04-04",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Introducing CM PurplePill: Kubernetes GPU Monitoring Solution",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://confidentialmind.com/blog/kubernetes-gpu-monitoring-solution"
+  },
+  {
+   "date": "2025-02-19",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Building Advanced RAG Pipelines For High Accuracy Output",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/building-advanced-rag-pipelines"
+  },
+  {
+   "date": "2025-02-12",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Using BM25 to Optimize Q&A and Search Accuracy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/okapi-bm25"
+  },
+  {
    "date": "2024-12-10",
    "date_source": "og:published",
    "first_seen": "2026-10-21",
@@ -26,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://confidentialmind.com/blog/generative-ai-for-telecommunications"
+  },
+  {
+   "date": "2024-09-13",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Embedding Models Explained: The Reason AI Can \u2018Read\u2019 and \u2018Listen\u2019",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/embeddings-and-llms"
   }
  ]
 }

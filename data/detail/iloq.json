@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "iLOQ and Securitas Technology expand collaboration with new international partner agreement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iloq.com/en/news/iloq-and-securitas-technology-expand-collaboration-with-new-international-partner-agreement/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "update",
    "url": "https://www.iloq.com/en/news/iloq-app-update-1-9-enhances-user-experience/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "What is the best smart lock?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.iloq.com/en/insights/what-is-the-best-smart-lock/"
   }
  ]
 }

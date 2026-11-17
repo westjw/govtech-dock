@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "SchoolAI is one of the first platforms to earn the updated ISTE Seal, now with an AI review",
+   "kind": "product",
+   "kind_rule": "updated",
+   "url": "https://schoolai.com/blog/schoolai-earns-updated-iste-seal"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/what-success-looks-like-for-school-ai-tools"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Signs your classroom technology is actually paying off",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/signs-classroom-technology-is-effective"
   }
  ],
  "profile": {

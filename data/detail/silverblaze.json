@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Paperless Billing Adoption Stalled? Why Customers Opt Out and How Utilities Win Them Back",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.silverblaze.com/blog/paperless-billing-adoption-stalled-why-customers-opt-out-and-how-utilities-win-them-back/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-07",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-06-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How an Outage Management System Improves Utility Response",
    "kind": "press",
@@ -74,9 +83,9 @@
   },
   {
    "date": "2026-05-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-07",
-   "headline": "How Smart Water Meter Technology Improves Utility Customer Engagement",
+   "headline": "\u201cHow Smart Water Meter Technology Improves Utility Customer Engagement\u201d post",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.silverblaze.com/blog/how-smart-water-meter-technology-improves-utility-customer-engagement/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.silverblaze.com/blog/how-ami-utility-data-supports-better-decision-making/"
-  },
-  {
-   "date": "2026-05-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "\u201cHow Utility Billing Solutions Improve Efficiency With Real-Time Data and Cloud Integration\u201d post",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.silverblaze.com/blog/how-utility-billing-solutions-improve-efficiency-with-real-time-data-and-cloud-integration/"
   }
  ],
  "profile": {

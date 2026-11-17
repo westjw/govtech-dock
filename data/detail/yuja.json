@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "Santa Monica College Adopts YuJa CivicGuard to Elevate Course Document Accessibility November 16, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Adopts",
+   "url": "https://www.yuja.com/blog/news/santa-monica-college-yuja-civicguard/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "YuJa EqualGround v26.8.0 Release \u2013 Expanded LiveFix Capabilities, A New Office Add-In, and More\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.yuja.com/blog/yuja-equalground-v26-8-0-release/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "index-text",
    "first_seen": "2026-11-14",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-11-10",
    "headline": "Why Continuous Monitoring Needs To Replace One-Time Accessibility Audits",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-10-30",
    "headline": "YuJa Panorama v26.8.0 Release \u2013 Deeper Remediation Capabilities, Optimized Integration Workflows, New Dashboards and More\u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.yuja.com/blog/yuja-panorama-v26-8-0-release-deeper-remediation-capabilities-optimized-integration-workflows-new-dashboards-and-more/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "og:published",
-   "first_seen": "2026-10-30",
-   "headline": "YuJa Structural Remediation v26.8.0 \u2013 Optimize Your PDF Remediation Workflows with Enhanced User Experiences",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.yuja.com/blog/yuja-structural-remediation-v26-8-0-optimize-your-pdf-remediation-workflows-with-enhanced-user-experiences/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-30",
-   "headline": "YuJa SmartSpeaker v26.8.0 \u2013 Use Text-to-Speech for Documents Length with Unlimited SmartSpeaker",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.yuja.com/blog/yuja-smartspeaker-v26-8-0-use-text-to-speech-for-documents-length-with-unlimited-smartspeaker/"
   }
  ],
  "profile": {

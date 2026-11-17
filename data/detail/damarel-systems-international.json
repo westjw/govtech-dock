@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-01",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "Damarel Appoints Chris Foster, CCO",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.damarel.com/news/damarel-appoints-chris-foster-cco/"
+  },
+  {
+   "date": "2026-11-01",
+   "date_source": "og:published",
+   "first_seen": "2026-11-16",
+   "headline": "27th GHI Annual Conference 01 \u2013 03DEC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.damarel.com/news/27th-ghi-annual-conference-01-03dec/"
+  },
+  {
    "date": "2024-03-20",
    "date_source": "og:published",
    "first_seen": "2026-09-05",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2022-04-19",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-09",
    "headline": "New Sites for L-DCS & LodeStone",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2022-01-06",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-09",
    "headline": "L-DCS & LodeStone for Ras Al Khaimah, UAE",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2021-11-04",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-09",
    "headline": "33rd IATA Ground Handling Conference",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2021-09-22",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-09",
    "headline": "GHI Annual Conference 2021 \u2013 Welcome Back!",
    "kind": "press",
@@ -83,7 +101,7 @@
   },
   {
    "date": "2021-07-29",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-09",
    "headline": "L-DCS & LodeStone for Globalia Groundforce",
    "kind": "press",

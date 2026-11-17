@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "time",
+   "first_seen": "2026-11-16",
+   "headline": "Your Releases Outpace Your Testing. It\u2019s Time to Close the Gap.",
+   "kind": "product",
+   "kind_rule": "Releases",
+   "url": "https://www.hackerone.com/blog/continuous-security-validation-web-apps-apis"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "time",
    "first_seen": "2026-11-10",

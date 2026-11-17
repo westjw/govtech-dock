@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-16",
+   "headline": "Announcing the Inaugural Innovation Champions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/announcing-the-inaugural-innovation-champions"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "near-h1",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Updates",
    "url": "https://recidiviz.org/updates/april-2026-product-updates"
-  },
-  {
-   "date": "2026-04-02",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "March Product Updates: The Road Home",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://recidiviz.org/updates/march-2026-product-updates"
   }
  ],
  "profile": {

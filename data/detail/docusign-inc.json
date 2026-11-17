@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Reclaiming 45% of HR Time: Why Modern People Teams Are Automating Agreement Lifecycles",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.docusign.com/blog/reclaiming-45-of-hr-time-why-modern-people-teams-are-automating-agreement-lifecycles"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.docusign.com/blog/how-to-transform-fragmented-agreement-tools-into-a-strategic-enterprise-platform"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Docusign Recognized as a 2026 Inc. Power Partner Award Winner",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.docusign.com/blog/2026-inc-power-partner-award-winner"
   }
  ]
 }

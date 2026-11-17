@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "time",
+   "first_seen": "2026-11-16",
+   "headline": "The New NetDocuments Experience is now available to every customer",
+   "kind": "product",
+   "kind_rule": "now available",
+   "url": "https://www.netdocuments.com/blog/the-new-netdocuments-experience-is-now-available-to-every-customer/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "time",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.netdocuments.com/blog/netdocuments-expands-mcp-ecosystem-legal-ai-context/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "NetDocuments Collaborates with Google Cloud on Launch of Gemini Enterprise for Legal",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://www.netdocuments.com/blog/netdocuments-google-cloud-gemini-enterprise-legal/"
   }
  ]
 }

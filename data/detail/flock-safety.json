@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Desert Hot Springs Police Recover $50,000 Stolen Generator Using Flock",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/desert-hot-springs-police-recover-50-000-stolen-generator-using-flock"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Flock\u2019s Solved Story Hub Showcases Thousands of Crimes Solved, Missing People Found",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/flocks-solved-story-hub-showcases-thousands-of-crimes-solved-missing-people-found"
+  },
+  {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Retail Crime Is a Worker Safety Issue: What Security Teams Need to Know",
    "kind": "press",
@@ -11,16 +29,16 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
-   "headline": "Flock Drone as First Responder and License Plate Reader Cameras Give Officers Context When Every Second Counts",
+   "headline": "Drone as First Responder, LPR Cameras Give Officers Context When Every Second Counts",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.flocksafety.com/blog/flock-drone-as-first-responder-and-license-plate-reader-cameras-give-officers-context-when-every-second-counts"
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "What We Heard at IACP 2026: Leadership Feedback Shaping Flock\u2019s Next Steps",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.flocksafety.com/blog/what-is-traffic-analytics"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "California SB34: What Private Organizations Using ALPR Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.flocksafety.com/blog/california-sb34-what-private-organizations-using-alpr-need-to-know"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Flock's Privacy and Security Updates Mean for Private Sector Customers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.flocksafety.com/blog/what-flocks-privacy-and-security-updates-mean-for-private-sector-customers"
   }
  ],
  "profile": {

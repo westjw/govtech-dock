@@ -1,8 +1,53 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Getting Help With Personal Care In New York",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/home-care-nyc-helping-with-personal-care-tasks-at-home/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "How To Choose A Home Care Agency In New York",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/how-choose-home-care-agency-new-york/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Fall Prevention For Elderly Loved Ones: A Caregiver\u2019s Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/fall-prevention-for-elderly-loved-ones/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "New York Home Care: Respite Programs And Resources",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/new-york-home-care-respite-programs-resources/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Home Care And Caregiver Training: Why You Need Both",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/home_care_and_caregiver_training/"
+  },
+  {
    "date": "2026-11-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "Home Care In Iowa: Support For Chronic Conditions",
    "kind": "press",
@@ -11,7 +56,7 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "Meal Preparation For Seniors: A Caregiver\u2019s Guide",
    "kind": "press",
@@ -20,7 +65,7 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "Personal Care For Elderly Loved Ones: A Caregiver\u2019s Guide",
    "kind": "press",
@@ -29,7 +74,7 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "How To Communicate With Someone With Dementia",
    "kind": "press",
@@ -38,7 +83,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "Iowa Family Caregiver Program: What Support Is Available",
    "kind": "press",
@@ -47,7 +92,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "Respite Care In Iowa: How To Find And Fund It",
    "kind": "press",
@@ -56,57 +101,12 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "Urgent Care Or The Emergency Room? A Guide For Caregivers",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trualta.com/resources/blog/urgent-care-or-the-emergency-room/"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Iowa Medicaid Eligibility Guidelines: What Caregivers Need To Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/iowa-medicaid-eligibility-guidelines/"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "South Dakota Foster Care: Resources For Foster Parents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/south-dakota-foster-care-resources-for-foster-parents/"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "time",
-   "first_seen": "2026-11-11",
-   "headline": "Financial Help For South Dakota Caregivers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/financial-help-south-dakota-caregivers/"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "index-text",
-   "first_seen": "2026-11-11",
-   "headline": "Transportation For Caregivers In South Dakota: Six Options",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/transportation-caregivers-south-dakota/"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "South Dakota: Things To Do With Your Loved One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/caregivers-in-south-dakota-things-to-do-with-your-care-recipient/"
   }
  ]
 }

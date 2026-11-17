@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "How Better Fleet Data Changes Day-to-Day Decision-Making",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/how-better-fleet-data-changes-day-to-day-decision-making/"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Why Lack of Fleet Visibility Is Costing You More Than You Think",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/why-lack-of-fleet-visibility-is-costing-you-more-than-you-think/"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "How to Improve Coordination Between Fleet, Maintenance, and Operations Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/how-to-improve-coordination-between-fleet-maintenance-and-operations-teams/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.assetworks.com/fleet/blog/why-a-modern-interface-isnt-enough-common-challenges-fleets-face-when-upgrading-their-system/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "From Reactive to Predictive: How AI and IoT Are Reshaping Facility Maintenance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/from-reactive-to-predictive-how-ai-and-iot-are-reshaping-facility-maintenance/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Local Government Asset Management: Common Challenges and How to Solve Them",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/local-government-asset-management-common-challenges-and-how-to-solve-them/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "GIS Asset Management for Parks: Mapping Trails, Fields, and Facilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/gis-asset-management-for-parks/"
   }
  ],
  "profile": {

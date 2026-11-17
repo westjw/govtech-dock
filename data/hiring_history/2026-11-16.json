@@ -33,8 +33,8 @@
       "roles": []
     },
     "technosylva": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "Product Marketing Manager - Sales  only",
       "roles": []
     },
     "dryad-networks": {
@@ -251,8 +251,13 @@
     },
     "everbridge": {
       "status": "Yes",
-      "note": "Account Executive (United Kingdom)",
+      "note": "Account Executive (United States)",
       "roles": [
+        {
+          "title": "Account Executive",
+          "location": "United States",
+          "url": "https://jobs.lever.co/everbridge/4898f5a4-1a87-4ad2-9671-ad5faf03fdda"
+        },
         {
           "title": "Account Executive",
           "location": "United Kingdom",
@@ -287,11 +292,6 @@
           "title": "Senior Account Executive, New Business - South Central",
           "location": "United States",
           "url": "https://jobs.lever.co/everbridge/4e70f198-51eb-4812-b942-ecc7f8dc5b3f"
-        },
-        {
-          "title": "Senior Account Manager",
-          "location": "United States",
-          "url": "https://jobs.lever.co/everbridge/c872ea52-0e9e-4feb-be8b-f40b08a21308"
         },
         {
           "title": "Territory Sales Manager - RedSky",
@@ -739,6 +739,11 @@
           "url": "https://careers-granicus.icims.com/jobs/10757/associate-account-executive---remote/job?in_iframe=1"
         },
         {
+          "title": "Enterprise Account Executive - Canada",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10746/enterprise-account-executive---canada/job?in_iframe=1"
+        },
+        {
           "title": "Account Executive - Simpleview",
           "location": "",
           "url": "https://careers-granicus.icims.com/jobs/10715/account-executive---simpleview/job?in_iframe=1"
@@ -806,16 +811,9 @@
       ]
     },
     "civicplus": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://jobs.jobvite.com/civicplus/search",
-          "synthetic": true
-        }
-      ]
+      "status": "None found",
+      "note": "",
+      "roles": []
     },
     "polimorphic": {
       "status": "None found",
@@ -1113,15 +1111,10 @@
     },
     "centegix": {
       "status": "Yes",
-      "note": "Senior Sales Executive (Northeast) (Remote Worker - N/)",
+      "note": "Sales Executive - Pacific Northwes (Remote Worker - N/)",
       "roles": [
         {
-          "title": "Senior Sales Executive (Northeast)",
-          "location": "Remote Worker - N/A",
-          "url": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC"
-        },
-        {
-          "title": "Senior Sales Executive (Central California)",
+          "title": "Sales Executive - Pacific Northwest",
           "location": "Remote Worker - N/A",
           "url": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC"
         },
@@ -1131,7 +1124,12 @@
           "url": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC"
         },
         {
-          "title": "Sales Executive - Pacific Northwest",
+          "title": "Senior Sales Executive (Central California)",
+          "location": "Remote Worker - N/A",
+          "url": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC"
+        },
+        {
+          "title": "Senior Sales Executive (Northeast)",
           "location": "Remote Worker - N/A",
           "url": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC"
         }
@@ -1886,8 +1884,8 @@
       "roles": []
     },
     "sovra": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only",
       "roles": []
     },
     "avila": {
@@ -1997,7 +1995,7 @@
     },
     "three-one": {
       "status": "Sales (non-AE)",
-      "note": "Director of Revenue Operations only",
+      "note": "Senior Business Development Office only",
       "roles": []
     },
     "govpilot": {
@@ -2147,7 +2145,7 @@
     },
     "runbeck-election-services": {
       "status": "Unknown",
-      "note": "robots.txt on runbeck.net answered HTTP ",
+      "note": "HTTP 520 for https://runbeck.net/careers",
       "roles": []
     },
     "ballotready": {
@@ -2298,11 +2296,6 @@
           "url": "https://job-boards.greenhouse.io/fleetio/jobs/5187750007"
         },
         {
-          "title": "Account Executive, SMB",
-          "location": "Remote - USA",
-          "url": "https://job-boards.greenhouse.io/fleetio/jobs/5184846007"
-        },
-        {
           "title": "Regional Sales Manager, Mid-Market",
           "location": "Remote - USA",
           "url": "https://job-boards.greenhouse.io/fleetio/jobs/5254640007"
@@ -2365,11 +2358,6 @@
         },
         {
           "title": "Mid-Market Account Executive",
-          "location": "Hybrid - Austin, Texas",
-          "url": "https://job-boards.greenhouse.io/gomotive/jobs/8606982002"
-        },
-        {
-          "title": "Mid-Market Account Executive",
           "location": "Hybrid - Nashville, Tennessee",
           "url": "https://job-boards.greenhouse.io/gomotive/jobs/8606984002"
         },
@@ -2377,6 +2365,11 @@
           "title": "Mid-Market Account Executive",
           "location": "United States - Remote",
           "url": "https://job-boards.greenhouse.io/gomotive/jobs/8608835002"
+        },
+        {
+          "title": "Mid-Market Account Executive",
+          "location": "Hybrid - Austin, Texas",
+          "url": "https://job-boards.greenhouse.io/gomotive/jobs/8606982002"
         },
         {
           "title": "Mid-Market Account Executive, Networks",
@@ -2774,7 +2767,7 @@
           "url": "https://job-boards.greenhouse.io/versaterm/jobs/5397568008"
         },
         {
-          "title": "Sales Account Manager",
+          "title": "Strategic Account Manager",
           "location": "U.S. (Remote)",
           "url": "https://job-boards.greenhouse.io/versaterm/jobs/5469682008"
         }
@@ -3007,33 +3000,13 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Boston, MA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5161632007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
           "location": "Austin, TX United States",
           "url": "https://job-boards.greenhouse.io/verkada/jobs/4087046007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Salt Lake City, UT United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4087051007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Philadelphia, PA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103490007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "New York City, NY United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Atlanta, GA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5026955007"
+          "location": "Boston, MA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/5161632007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
@@ -3042,18 +3015,38 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "St. Petersburg, FL United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4134175007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Tempe, AZ United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4135236007"
+          "location": "Atlanta, GA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/5026955007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
           "location": "San Mateo, CA United States",
           "url": "https://job-boards.greenhouse.io/verkada/jobs/5170485007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "St. Petersburg, FL United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4134175007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "New York City, NY United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "Philadelphia, PA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103490007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "Salt Lake City, UT United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4087051007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "Tempe, AZ United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4135236007"
         },
         {
           "title": "Account Executive, UK",
@@ -4420,7 +4413,7 @@
     },
     "gatekeeper-systems": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "network error: robots.txt on www.gatekee",
       "roles": []
     },
     "march-networks": {
@@ -5059,6 +5052,11 @@
           "url": "https://jobs.lever.co/emburse/e1cd8b3d-5a32-4475-8311-9f050ab12a74"
         },
         {
+          "title": "Associate Account Executive",
+          "location": "Addison, TX",
+          "url": "https://jobs.lever.co/emburse/835b148c-2757-4f7b-8e23-c29b2d2e06bc"
+        },
+        {
           "title": "Sales Account Executive - UK",
           "location": "London",
           "url": "https://jobs.lever.co/emburse/35b9f877-4002-4d74-a2c3-c3a0aa990c8c"
@@ -5256,12 +5254,12 @@
     },
     "kpa": {
       "status": "Yes",
-      "note": "Account Executive - Automotive (Dallas, TX)",
+      "note": "Account Executive - Automotive (Richmond, VA)",
       "roles": [
         {
           "title": "Account Executive - Automotive",
-          "location": "Dallas, TX",
-          "url": "https://jobs.lever.co/kpaonline/d2fe6b07-88ad-4e07-9d6d-51cf13592d13"
+          "location": "Richmond, VA",
+          "url": "https://jobs.lever.co/kpaonline/a9e2a691-4cf3-4be5-8f4e-4b1a8dc0cbe1"
         }
       ]
     },
@@ -5397,16 +5395,9 @@
       "roles": []
     },
     "netchex": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://netchex.com/careers",
-          "synthetic": true
-        }
-      ]
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
+      "roles": []
     },
     "neutralaiz-inc": {
       "status": "Unknown",
@@ -5745,9 +5736,15 @@
       "roles": []
     },
     "tanium": {
-      "status": "Sales (non-AE)",
-      "note": "Deal Desk Manager only",
-      "roles": []
+      "status": "Yes",
+      "note": "Commercial Account Executive (Addison, TX)",
+      "roles": [
+        {
+          "title": "Commercial Account Executive",
+          "location": "Addison, TX",
+          "url": "https://job-boards.greenhouse.io/tanium/jobs/8369394"
+        }
+      ]
     },
     "the-mobility-house": {
       "status": "None found",
@@ -5884,60 +5881,9 @@
       "roles": []
     },
     "xplor-recreation": {
-      "status": "Yes",
-      "note": "Account Executive - Direct Sales (Santa Fe, NM)",
-      "roles": [
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "Santa Fe, NM",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156641769"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "Tucson, AZ",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156640459"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "Phoenix, AZ",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156639071"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "Las Vegas, NV",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156638836"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "Albuquerque, NM",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156636904"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "El Paso, TX",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156637976"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "San Antonio, TX",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156637979"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "Austin, TX",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156637501"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "Los Angeles, CA",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156637579"
-        },
-        {
-          "title": "Account Executive - Direct Sales",
-          "location": "San Diego, CA",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000156427719"
-        }
-      ]
+      "status": "Sales (non-AE)",
+      "note": "Sales Development Representative only",
+      "roles": []
     },
     "ebridge-procurement": {
       "status": "Yes",
@@ -6152,11 +6098,6 @@
         },
         {
           "title": "Associate Account Executive (Healthcare/GPO)",
-          "location": "Nashville, Tennessee, United States",
-          "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780315003"
-        },
-        {
-          "title": "Associate Account Executive (Healthcare/GPO)",
           "location": "Chicago, Illinois, United States",
           "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780314003"
         },
@@ -6164,6 +6105,11 @@
           "title": "Associate Account Executive (Healthcare/GPO)",
           "location": "New York, New York, United States",
           "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780313003"
+        },
+        {
+          "title": "Associate Account Executive (Healthcare/GPO)",
+          "location": "Nashville, Tennessee, United States",
+          "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780315003"
         },
         {
           "title": "Associate Account Executive (Healthcare/GPO)",
@@ -6179,11 +6125,6 @@
           "title": "Associate Account Executive (Houston)",
           "location": "Houston, Texas, United States",
           "url": "https://job-boards.greenhouse.io/metropolis/jobs/7810054003"
-        },
-        {
-          "title": "Associate Account Executive (Knoxville)",
-          "location": "Knoxville, Tennessee, United States",
-          "url": "https://job-boards.greenhouse.io/metropolis/jobs/8084887003"
         },
         {
           "title": "Associate Account Executive (Phoenix)",
@@ -7057,7 +6998,7 @@
     },
     "onsolve": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://www.crisis24.com/lp",
       "roles": []
     },
     "general-code": {
@@ -7201,8 +7142,8 @@
       "roles": []
     },
     "propelus": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "Data Partnerships Manager (Remote  only",
       "roles": []
     },
     "springbrook-software": {
@@ -7569,9 +7510,16 @@
       "roles": []
     },
     "calsense": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://calsense.com/careers",
+          "synthetic": true
+        }
+      ]
     },
     "banyan-water": {
       "status": "Yes",
@@ -7712,15 +7660,9 @@
       "roles": []
     },
     "ems-linq": {
-      "status": "Yes",
-      "note": "Account Executive (Austin, Texas)",
-      "roles": [
-        {
-          "title": "Account Executive",
-          "location": "Austin, Texas",
-          "url": "https://job-boards.greenhouse.io/emslinqinc/jobs/5436411008"
-        }
-      ]
+      "status": "Sales (non-AE)",
+      "note": "Manager, Salesforce only",
+      "roles": []
     },
     "escape-technologies": {
       "status": "Unknown",
@@ -8218,11 +8160,6 @@
           "title": "Enterprise Sales Account Executive - Net New",
           "location": "'s-Hertogenbosch, North Brabant",
           "url": "https://jobs.smartrecruiters.com/IFS1/744000137913949"
-        },
-        {
-          "title": "Strategic Account Executive, Utilities | Install Base - IFS Copperleaf",
-          "location": "Itasca, Illinois",
-          "url": "https://jobs.smartrecruiters.com/IFS1/744000137191771"
         },
         {
           "title": "Account Executive - AI sales",
@@ -8764,8 +8701,8 @@
       "roles": []
     },
     "mdf-commerce": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only",
       "roles": []
     },
     "ionwave-technologies": {
@@ -8810,17 +8747,17 @@
     },
     "ivalua": {
       "status": "Yes",
-      "note": "Account Executive (Denmark)",
+      "note": "Account Executive (United States)",
       "roles": [
-        {
-          "title": "Account Executive",
-          "location": "Denmark",
-          "url": "https://boards.greenhouse.io/ivalua/jobs/8244692?gh_jid=8244692"
-        },
         {
           "title": "Account Executive",
           "location": "United States",
           "url": "https://boards.greenhouse.io/ivalua/jobs/8279999?gh_jid=8279999"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Denmark",
+          "url": "https://boards.greenhouse.io/ivalua/jobs/8244692?gh_jid=8244692"
         },
         {
           "title": "Strategic Account Manager",
@@ -9205,6 +9142,11 @@
           "title": "Sales Executive - Healthcare",
           "location": "Baltimore, MD",
           "url": "https://jobs.lever.co/alertus/9eb9c588-fb1d-4bb3-b576-20634d8b391b"
+        },
+        {
+          "title": "Sales Executive - International (Spanish/English)",
+          "location": "Baltimore, MD",
+          "url": "https://jobs.lever.co/alertus/d928487d-3bea-4a9d-85f8-f93d0314ccb6"
         }
       ]
     },
@@ -9265,8 +9207,13 @@
     },
     "clear": {
       "status": "Yes",
-      "note": "Senior Enterprise Account Executiv (Chicago, IL, Unite)",
+      "note": "Senior Enterprise Account Executiv (Austin, TX, United)",
       "roles": [
+        {
+          "title": "Senior Enterprise Account Executive (C1 - B2B)",
+          "location": "Austin, TX, United States",
+          "url": "https://job-boards.greenhouse.io/clear/jobs/8290736"
+        },
         {
           "title": "Senior Enterprise Account Executive (C1 - B2B)",
           "location": "Chicago, IL, United States",
@@ -9276,11 +9223,6 @@
           "title": "Senior Enterprise Account Executive (C1 - B2B)",
           "location": "Dallas, TX, United States",
           "url": "https://job-boards.greenhouse.io/clear/jobs/8290801"
-        },
-        {
-          "title": "Senior Enterprise Account Executive (C1 - B2B)",
-          "location": "Austin, TX, United States",
-          "url": "https://job-boards.greenhouse.io/clear/jobs/8290736"
         },
         {
           "title": "Senior Enterprise Account Executive (C1 - B2B)",
@@ -9463,15 +9405,9 @@
       "roles": []
     },
     "sentinel-offender-services": {
-      "status": "Yes",
-      "note": "Regional Sales Manager - Southwest (remote, remote, US)",
-      "roles": [
-        {
-          "title": "Regional Sales Manager - Southwest",
-          "location": "remote, remote, US",
-          "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=94da5684-2a09-4d91-90bc-7073c53b74b5&ccId=19000101_000001&jobId=9201445058064_1&lang=en_US"
-        }
-      ]
+      "status": "None found",
+      "note": "",
+      "roles": []
     },
     "corrisoft": {
       "status": "Unknown",
@@ -9607,7 +9543,7 @@
     },
     "msa-safety": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "robots.txt on www.msasafety.com answered",
       "roles": []
     },
     "bullard": {
@@ -9777,7 +9713,7 @@
     },
     "lion-electric": {
       "status": "Unknown",
-      "note": "network error: robots.txt on lionlion.ca",
+      "note": "page scan found no listings",
       "roles": []
     },
     "greenpower-motor-company": {
@@ -10174,13 +10110,8 @@
     },
     "pointr": {
       "status": "Yes",
-      "note": "Senior Account Manager, Strategic  (Boston Office)",
+      "note": "Senior Account Manager, Strategic  (London Office)",
       "roles": [
-        {
-          "title": "Senior Account Manager, Strategic Events Accounts",
-          "location": "Boston Office",
-          "url": "https://jobs.ashbyhq.com/pointr/bef507fe-93c8-4b90-82aa-b4f727541b87"
-        },
         {
           "title": "Senior Account Manager, Strategic EMEA Accounts",
           "location": "London Office",
@@ -10204,16 +10135,9 @@
       "roles": []
     },
     "ge-vernova": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.gevernova.com/careers",
-          "synthetic": true
-        }
-      ]
+      "status": "Unknown",
+      "note": "page scan found no listings",
+      "roles": []
     },
     "hitachi-energy": {
       "status": "Unknown",
@@ -10254,7 +10178,7 @@
     },
     "sedc": {
       "status": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host=",
+      "note": "page scan found no listings",
       "roles": []
     },
     "tantalus-systems": {
@@ -12604,7 +12528,7 @@
     },
     "writesea": {
       "status": "Unknown",
-      "note": "page too small - likely JS-rendered",
+      "note": "page scan found no listings",
       "roles": []
     },
     "heliocampus": {
@@ -12812,8 +12736,8 @@
       "roles": []
     },
     "gravyty": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "Enterprise Customer Success Manage only",
       "roles": []
     },
     "honorlock": {
@@ -13851,9 +13775,16 @@
       "roles": []
     },
     "ito-health": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://itohealth.org/careers",
+          "synthetic": true
+        }
+      ]
     },
     "psyrin": {
       "status": "Yes",
@@ -14344,50 +14275,9 @@
       "roles": []
     },
     "dun-bradstreet-inc": {
-      "status": "Yes",
-      "note": "Business Development Manager (Hong Kong)",
-      "roles": [
-        {
-          "title": "Business Development Manager",
-          "location": "Hong Kong",
-          "url": "https://jobs.lever.co/dnb/c0b7e9bd-c5a9-4b2b-952e-fb231d022e07"
-        },
-        {
-          "title": "Concierge Account Manager (R-20143)",
-          "location": "Jacksonville - Florida - United States",
-          "url": "https://jobs.lever.co/dnb/48c38b66-3e53-4e20-9f03-2265c499a601"
-        },
-        {
-          "title": "Strategic Account Executive (R-19750)",
-          "location": "Ahmedabad - India",
-          "url": "https://jobs.lever.co/dnb/34bafbe1-9478-4d6e-b4f0-adb856e084fe"
-        },
-        {
-          "title": "Strategic Account Executive (R-20099)",
-          "location": "Mumbai - India",
-          "url": "https://jobs.lever.co/dnb/3faec7b8-8b39-4e14-bbef-e3af5ebc5afe"
-        },
-        {
-          "title": "Strategic Account Manager (R-19236)",
-          "location": "Bengaluru - India",
-          "url": "https://jobs.lever.co/dnb/df458bd0-3c6f-4784-9e6e-906bab7c5ba1"
-        },
-        {
-          "title": "Strategic Account Manager (R-19900)",
-          "location": "Mumbai - India",
-          "url": "https://jobs.lever.co/dnb/90554e94-f87e-44b1-80fe-66f9fa6654b4"
-        },
-        {
-          "title": "Strategic Account Manager (R-20006)",
-          "location": "Delhi - India",
-          "url": "https://jobs.lever.co/dnb/8a1512e4-c576-4f04-92a6-9d8394f9fe26"
-        },
-        {
-          "title": "Strategic Account Manager (R-20122)",
-          "location": "Bengaluru - India",
-          "url": "https://jobs.lever.co/dnb/8bb408e5-857a-457f-a682-50466be9a14a"
-        }
-      ]
+      "status": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host=",
+      "roles": []
     },
     "efficientip": {
       "status": "Unknown",
@@ -14531,16 +14421,9 @@
       ]
     },
     "zagaran-software": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://zagaran.com/join-us/",
-          "synthetic": true
-        }
-      ]
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
+      "roles": []
     },
     "hackerone": {
       "status": "Yes",
@@ -14637,17 +14520,17 @@
     },
     "incode-technologies": {
       "status": "Yes",
-      "note": "Account Executive (San Francisco)",
+      "note": "Account Executive (London)",
       "roles": [
-        {
-          "title": "Account Executive",
-          "location": "San Francisco",
-          "url": "https://job-boards.greenhouse.io/incode/jobs/6231218004"
-        },
         {
           "title": "Account Executive",
           "location": "London",
           "url": "https://job-boards.greenhouse.io/incode/jobs/6230891004"
+        },
+        {
+          "title": "Account Executive",
+          "location": "San Francisco",
+          "url": "https://job-boards.greenhouse.io/incode/jobs/6231218004"
         },
         {
           "title": "Senior Technical Account Manager",
@@ -15038,18 +14921,18 @@
         },
         {
           "title": "Enterprise Account Executive, Financial Services",
-          "location": "Boston",
-          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8311501"
-        },
-        {
-          "title": "Enterprise Account Executive, Financial Services",
           "location": "Richmond",
           "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8311503"
         },
         {
+          "title": "Enterprise Account Executive, Financial Services",
+          "location": "Boston",
+          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8311501"
+        },
+        {
           "title": "Enterprise Account Executive - Mixed Industries",
-          "location": "Phoenix",
-          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8246937"
+          "location": "Salt Lake City",
+          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8246924"
         },
         {
           "title": "Enterprise Account Executive - Mixed Industries",
@@ -15058,8 +14941,8 @@
         },
         {
           "title": "Enterprise Account Executive - Mixed Industries",
-          "location": "Salt Lake City",
-          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8246924"
+          "location": "Phoenix",
+          "url": "https://job-boards.greenhouse.io/talkdesk2/jobs/8246937"
         },
         {
           "title": "Enterprise Account Executive - UK&I",
@@ -15242,9 +15125,16 @@
       "roles": []
     },
     "filevine": {
-      "status": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host=",
-      "roles": []
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.filevine.com/jobs/",
+          "synthetic": true
+        }
+      ]
     },
     "genesys": {
       "status": "Unknown",
@@ -16121,45 +16011,9 @@
       "roles": []
     },
     "mri-software": {
-      "status": "Yes",
-      "note": "SaaS Sales (Business Development M (Singapore Office)",
-      "roles": [
-        {
-          "title": "SaaS Sales (Business Development Manager | Account Manager)",
-          "location": "Singapore Office",
-          "url": "https://mrisoftware.wd501.myworkdayjobs.com/en-US/External_CareerSite/job/Singapore-Office/Enterprise-SaaS-Sales_R-109720"
-        },
-        {
-          "title": "Account Executive (Software-as-a-Service)",
-          "location": "London, UK Office",
-          "url": "https://mrisoftware.wd501.myworkdayjobs.com/en-US/External_CareerSite/job/London-UK-Office/Account-Executive--Software-as-a-Service-_R-109695"
-        },
-        {
-          "title": "Account Executive, Energy & Facility Management Software",
-          "location": "3 Locations",
-          "url": "https://mrisoftware.wd501.myworkdayjobs.com/en-US/External_CareerSite/job/Cleveland-Ohio-Office/Account-Executive--Energy---Facility-Management-Software_R-109310"
-        },
-        {
-          "title": "Account Executive",
-          "location": "2 Locations",
-          "url": "https://mrisoftware.wd501.myworkdayjobs.com/en-US/External_CareerSite/job/US-Remote/Account-Executive_R-109718"
-        },
-        {
-          "title": "Account Executive I",
-          "location": "Cleveland, Ohio Office",
-          "url": "https://mrisoftware.wd501.myworkdayjobs.com/en-US/External_CareerSite/job/Cleveland-Ohio-Office/Account-Executive-I_R-109392"
-        },
-        {
-          "title": "Account Manager",
-          "location": "2 Locations",
-          "url": "https://mrisoftware.wd501.myworkdayjobs.com/en-US/External_CareerSite/job/US-Remote/Account-Manager_R-109716"
-        },
-        {
-          "title": "Account Manager (Software-as-a-Service)",
-          "location": "London, UK Office",
-          "url": "https://mrisoftware.wd501.myworkdayjobs.com/en-US/External_CareerSite/job/London-UK-Office/Account-Manager--Software-as-a-Service-_R-109659"
-        }
-      ]
+      "status": "Unknown",
+      "note": "HTTP 429 rate limited for https://mrisof",
+      "roles": []
     },
     "yardi-systems": {
       "status": "Unknown",
@@ -16190,8 +16044,13 @@
     },
     "here-technologies": {
       "status": "Yes",
-      "note": "Lead Account Executive",
+      "note": "Account Executive",
       "roles": [
+        {
+          "title": "Account Executive",
+          "location": "",
+          "url": "https://careers-here.icims.com/jobs/85078/account-executive/job?in_iframe=1"
+        },
         {
           "title": "Lead Account Executive",
           "location": "",
@@ -16206,6 +16065,11 @@
           "title": "Account Executive | Hyperscalers & AI",
           "location": "",
           "url": "https://careers-here.icims.com/jobs/83745/account-executive-%7c-hyperscalers-%26-ai/job?in_iframe=1"
+        },
+        {
+          "title": "Senior Automotive Business Development Manager",
+          "location": "",
+          "url": "https://careers-here.icims.com/jobs/83730/senior-automotive-business-development-manager/job?in_iframe=1"
         },
         {
           "title": "Senior Enterprise Account Executive",

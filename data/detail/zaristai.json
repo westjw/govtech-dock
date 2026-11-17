@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "card-date",
+   "first_seen": "2026-11-16",
+   "headline": "Keep Writing in LaTeX. ZaristAI Takes Care of Accessibility",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aristai.io/newsroom/news/a2ee045a-7ab1-4f31-8337-bcfdd79d1a64"
+  },
+  {
    "date": "2026-11-14",
    "date_source": "card-date",
    "first_seen": "2026-11-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aristai.io/newsroom/news/acf501d9-86c6-401c-85a3-394f14215f78"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Why are PDFs Still So Inaccessible? (And How to Start Fixing It)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aristai.io/newsroom/blog/552137dd-9e1c-4281-9d76-2ad75ac7d64e"
   }
  ]
 }

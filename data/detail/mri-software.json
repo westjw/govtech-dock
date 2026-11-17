@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Property management software features in 2027: A guide for commercial and multifamily portfolios",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/features-of-commercial-property-management-software/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "What does a successful AI-powered leasing journey look like?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-does-a-successful-ai-powered-leasing-journey-look-like/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "6 Best lease accounting software solutions for 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/best-lease-accounting-software-solutions/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/what-does-being-an-idc-marketscape-leader-mean-for-property-occupiers/"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "What MRI\u2019s IDC Leader position says about where lease administration is heading",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-mris-idc-leadership-position-says-about-where-lease-administration-is-heading/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "common area maintenance (CAM) reconciliations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-is-common-area-maintenance/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "The real opportunity with AI lies in what it makes possible",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/the-real-opportunity-with-ai-lies-in-what-it-makes-possible/"
   }
  ]
 }

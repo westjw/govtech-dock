@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "This is some text inside of a div block.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/how-to-introduce-a-new-visitor-check-in-system-to-parents-and-guardians"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -11,9 +20,9 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
-   "headline": "This is some text inside of a div block.",
+   "headline": "Do Schools Need New Hardware for a Visitor Management System?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/do-schools-need-new-hardware-for-a-visitor-management-system"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/rethinking-screen-time-what-district-leaders-actually-recommend"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "GoGuardian Announces AI-Powered Recommendation Engine in GoGuardian Admin Turning Student Online Behavior Patterns Into Proactive Policy Recommendations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/newsroom/goguardian-announces-ai-powered-recommendation-engine-in-goguardian-admin-turning-student-online-behavior-patterns-into-proactive-policy-recommendations"
   }
  ],
  "profile": {

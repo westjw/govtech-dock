@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "What 44% of employees in a seven-country survey say about workspace availability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/what-employees-say-about-workspace-availability/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/fm-trends-turning-operational-insights-into-action/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Facility condition assessments for maintenance and capital planning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/facility-condition-assessment/"
   }
  ],
  "profile": {

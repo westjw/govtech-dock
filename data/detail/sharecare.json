@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Sharecare integrates IDMe into AskMD, providing over 100 million Americans a seamless, secure way to access personalized health guidance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.sharecare.com/press-releases/sharecare-integrates-idme-into-askmd-providing-over-100-million-americans-a-seamless-secure-way-to-access-personalized-health-guidance/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Sharecare partners with HomeTown Health to bring AskMD, funded through the GREAT Health Program, to more rural hospitals and patients across Georgia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.sharecare.com/press-releases/sharecare-partners-with-hometown-health-to-bring-askmd-funded-through-the-great-health-program-to-more-rural-hospitals-and-patients-across-georgia/"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-07-27",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "HealthEx to help Americans bring their medical records into AskMD by Sharecare",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-06-30",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Sharecare teams up with AWS to deliver health navigation through agentic, multi-model AI with AskMD",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-06-16",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Sharecare selected by Georgia Department of Community Health to advance rural health transformation through GREAT Health Program",
    "kind": "contract",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-06-11",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Sharecare wins 14 Digital Health Awards in Spring 2026 competition",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-06-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Sharecare to honor extraordinary nurses through The DAISY Foundation\u2019s global recognition program",
    "kind": "press",

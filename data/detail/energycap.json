@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "Data centers and your electric bill: who really pays?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.energycap.com/blog/data-centers-electric-bill/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "index-text",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.energycap.com/press/energycap-adds-insights-to-its-energy-management-platform/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "The ROI of energy management: why it pays off as utility costs climb",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.energycap.com/blog/energy-management-roi/"
   }
  ],
  "profile": {

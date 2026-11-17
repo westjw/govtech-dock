@@ -1,22 +1,13 @@
 {
  "news": [
   {
-   "date": "2026-11-03",
-   "date_source": "index-text",
+   "date": "2026-11-01",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Introducing Voicemail Hotline: More Ways For Your Community To Be Heard",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.openpoint.com/resources/news/introducing-voicemail-hotline/"
-  },
-  {
-   "date": "2026-11-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Open Point Launches Unified Platform for Integrated Community and Stakeholder Engagement",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.openpoint.com/resources/news/open-point-launches-unified-platform-for-integrated-community-and-stakeholder-engagement/"
   },
   {
    "date": "2026-07-06",
@@ -26,6 +17,15 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://www.openpoint.com/resources/news/open-point-acquires-converlens-to-expand-engagement-intelligence-capabilities/"
+  },
+  {
+   "date": "2026-03-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Open Point Launches Unified Platform for Integrated Community and Stakeholder Engagement",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.openpoint.com/resources/news/open-point-launches-unified-platform-for-integrated-community-and-stakeholder-engagement/"
   },
   {
    "date": "2025-10-24",

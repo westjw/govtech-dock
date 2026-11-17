@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "2027 home health final rule: what changes in your forecast",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/2027-home-health-final-rule-forecast/"
+  },
+  {
    "date": "2026-11-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "Investor reporting for growing primary care groups: what to have ready",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "The monthly board finance pack for community health centers",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/senior-living-cash-flow-occupancy-gap/"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "card-date",
-   "first_seen": "2026-10-27",
-   "headline": "Your practice management system is not your accounting system: what a dental group needs from each",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/practice-management-system-vs-accounting-system-dental-group/"
   }
  ]
 }

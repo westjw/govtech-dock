@@ -1,377 +1,132 @@
 {
   "date": "2026-11-16",
-  "previous": "2026-11-15",
+  "previous": "2026-11-16",
   "changes": [
     {
-      "company": "Motorola Solutions",
-      "id": "motorola-solutions",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://motoro"
-    },
-    {
-      "company": "ZOLL Medical",
-      "id": "zoll-medical",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://zoll.w"
-    },
-    {
-      "company": "Xylem",
-      "id": "xylem",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://xylem."
-    },
-    {
-      "company": "Badger Meter",
-      "id": "badger-meter",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://badger"
-    },
-    {
-      "company": "Mueller Water Products",
-      "id": "mueller-water-products",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://muelle"
-    },
-    {
-      "company": "Cubic Transportation Systems",
-      "id": "cubic-transportation-systems",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://cubic."
-    },
-    {
-      "company": "Itron",
-      "id": "itron",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://itron."
-    },
-    {
-      "company": "Veritone",
-      "id": "veritone",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://verito"
-    },
-    {
-      "company": "Dataminr",
-      "id": "dataminr",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://datami"
-    },
-    {
-      "company": "DroneShield",
-      "id": "droneshield",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Regional Sales Manager \u2013 West Coas (San Diego, Califor)"
-    },
-    {
-      "company": "Boston Dynamics",
-      "id": "boston-dynamics",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://boston"
-    },
-    {
-      "company": "InTime Solutions",
-      "id": "intime-solutions",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "GIRO",
-      "id": "giro",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://giro.w"
-    },
-    {
-      "company": "Modaxo",
-      "id": "modaxo",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://modaxo"
-    },
-    {
-      "company": "TransTrack Solutions Group",
-      "id": "transtrack-solutions-group",
+      "company": "Technosylva",
+      "id": "technosylva",
       "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://modaxo"
+      "to": "Sales (non-AE)",
+      "note": "Product Marketing Manager - Sales  only"
     },
     {
-      "company": "ADP",
-      "id": "adp",
-      "from": "Unknown",
+      "company": "CivicPlus",
+      "id": "civicplus",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Bentley Systems",
-      "id": "bentley-systems",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://bentle"
-    },
-    {
-      "company": "Intellicene",
-      "id": "intellicene",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://volari"
-    },
-    {
-      "company": "Mitel",
-      "id": "mitel",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://mitel."
-    },
-    {
-      "company": "Systems & Methods, Inc.",
-      "id": "systems-methods-inc",
+      "company": "SOVRA",
+      "id": "sovra",
       "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://smiinc"
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only"
     },
     {
-      "company": "Workday",
-      "id": "workday",
+      "company": "Netchex",
+      "id": "netchex",
       "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://workda"
-    },
-    {
-      "company": "Evluma",
-      "id": "evluma",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "ProudCity",
-      "id": "proudcity",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "American Fidelity",
-      "id": "american-fidelity",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://americ"
-    },
-    {
-      "company": "DTN",
-      "id": "dtn",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://dtn.wd"
-    },
-    {
-      "company": "Merative",
-      "id": "merative",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://merati"
-    },
-    {
-      "company": "WellSky",
-      "id": "wellsky",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://wellsk"
-    },
-    {
-      "company": "Teledyne FLIR",
-      "id": "teledyne-flir",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://flir.w"
-    },
-    {
-      "company": "Thales",
-      "id": "thales",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://thales"
-    },
-    {
-      "company": "ADB SAFEGATE",
-      "id": "adb-safegate",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
+      "company": "Tanium",
+      "id": "tanium",
       "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Commercial Account Executive (Addison, TX)"
+    },
+    {
+      "company": "Xplor Recreation",
+      "id": "xplor-recreation",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative only"
+    },
+    {
+      "company": "Propelus",
+      "id": "propelus",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Data Partnerships Manager (Remote  only"
+    },
+    {
+      "company": "Calsense",
+      "id": "calsense",
+      "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Wastequip",
-      "id": "wastequip",
+      "company": "EMS LINQ",
+      "id": "ems-linq",
       "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://wasteq"
+      "to": "Sales (non-AE)",
+      "note": "Manager, Salesforce only"
     },
     {
-      "company": "Adtran",
-      "id": "adtran",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://adtran"
-    },
-    {
-      "company": "OCLC",
-      "id": "oclc",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://oclc.w"
-    },
-    {
-      "company": "SmartWorks",
-      "id": "smartworks",
+      "company": "mdf commerce",
+      "id": "mdf-commerce",
       "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://harris"
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only"
     },
     {
-      "company": "Nelnet Campus Commerce",
-      "id": "nelnet-campus-commerce",
+      "company": "Sentinel Offender Services",
+      "id": "sentinel-offender-services",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "GE Vernova",
+      "id": "ge-vernova",
       "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://nelnet"
+      "note": "page scan found no listings"
     },
     {
-      "company": "Harris",
-      "id": "harris",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://harris"
+      "company": "Gravyty",
+      "id": "gravyty",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Enterprise Customer Success Manage only"
     },
     {
-      "company": "Alteryx, Inc",
-      "id": "alteryx-inc",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://altery"
+      "company": "ITO Health",
+      "id": "ito-health",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Cloudera",
-      "id": "cloudera",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://cloude"
-    },
-    {
-      "company": "CrowdStrike",
-      "id": "crowdstrike",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://crowds"
-    },
-    {
-      "company": "Kaltura Inc",
-      "id": "kaltura-inc",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://corp.kaltura.com/co"
-    },
-    {
-      "company": "KYRIBA",
-      "id": "kyriba",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://kyriba"
-    },
-    {
-      "company": "Lumu Technologies",
-      "id": "lumu-technologies",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://lumu.io/careers/"
-    },
-    {
-      "company": "Pluralsight",
-      "id": "pluralsight",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://plural"
-    },
-    {
-      "company": "SailPoint",
-      "id": "sailpoint",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://sailpo"
-    },
-    {
-      "company": "Tricentis",
-      "id": "tricentis",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://tricen"
-    },
-    {
-      "company": "Workiva",
-      "id": "workiva",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://workiv"
-    },
-    {
-      "company": "Filevine",
-      "id": "filevine",
+      "company": "Dun & Bradstreet, Inc.",
+      "id": "dun-bradstreet-inc",
       "from": "Yes",
       "to": "Unknown",
       "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Sharecare",
-      "id": "sharecare",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://sharec"
-    },
-    {
-      "company": "Syniverse",
-      "id": "syniverse",
+      "company": "Zagaran Software",
+      "id": "zagaran-software",
       "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://synive"
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
-      "company": "OnePlan",
-      "id": "oneplan",
+      "company": "Filevine",
+      "id": "filevine",
       "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "AVEVA Software, LLC",
-      "id": "aveva-software-llc",
+      "company": "MRI Software",
+      "id": "mri-software",
       "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://aveva."
+      "note": "HTTP 429 rate limited for https://mrisof"
     }
   ]
 }

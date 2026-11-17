@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "How PSEG Long Island Turned Next-Day Drop Box Waits into Same-Minute Bill Payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/pseg-long-island-euna-payments/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "How PennBid Modernized Bidding for Pennsylvania\u2019s Public Agencies with Euna",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/pennbid-euna-procurement/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eunasolutions.com/resources/emv-readiness-for-government-agencies/"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "How Government Agencies Improve Procurement Contract Management for Better Stakeholder Outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/how-to-improve-procurement-contract-management-for-happier-stakeholders-and-better-outcomes/"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "What Florida HJR 1-F Means for Local Government Finance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/florida-hjr-1f-local-government-finance/"
   }
  ],
  "profile": {

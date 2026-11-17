@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "Fleet software comparison: How to choose the right solution for your business",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/fleet-software-comparison/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "GPS fleet tracking small businesses: A complete guide",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/garbage-truck-safety/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Why you need AI in your fleet operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/why-fleet-ai/"
   }
  ],
  "profile": {

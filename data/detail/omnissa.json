@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "Horizon 8 2609: Performance, security, management",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "What is digital friction? How it affects your business",
    "kind": "press",

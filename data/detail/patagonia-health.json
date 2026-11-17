@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "What to Look for in an EHR Vendor: RFPs, Demos, and Red Flags",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://patagoniahealth.com/blog/selecting-an-ehr-vendor"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://patagoniahealth.com/blog/how-emrs-support-substance-abuse-care"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "10 Advantages of EHRs for Healthcare Organizations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://patagoniahealth.com/blog/10-advantages-of-ehrs-for-modern-healthcare"
   }
  ]
 }

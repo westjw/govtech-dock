@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "CVE-2026-84869 in ScreenConnect Exploited to Run Malicious Files on MSP Technician Accounts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/cve-2026-84869-screenconnect-technician-exploitation"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "The AI Arena: Huntress CTF 2026 Retro",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/ai-arena-huntress-ctf-2026-retro"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "New Huntress Security Insights Report & Reporting Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/security-insights-report"
+  },
+  {
    "date": "2026-11-14",
    "date_source": "json-ld",
    "first_seen": "2026-11-14",
@@ -80,33 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.huntress.com/blog/itdr-adversary-infrastructure"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Huntress + Hudu Integration: Security Context in Your IT Docs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/hudu-huntress-integration"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Wuffy, Go Fetch the Money Trail\u2026Even if it Leads to the Kremlin",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/declassified-money-train-episode-four"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Reports of SIEM's Death Have Been Greatly Exaggerated",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/reports-that-siem-is-dead-are-exaggerated"
   }
  ]
 }

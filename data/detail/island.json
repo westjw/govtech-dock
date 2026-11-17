@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "card-date",
+   "first_seen": "2026-11-16",
+   "headline": "Governing Unified Claude: Securing the Chat & Cowork Merge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/governing-unified-claude-securing-the-chat-cowork-merge"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Island Achieves Awardable Status on Department of War Tradewinds Solutions Marketplace",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/press/island-achieves-awardable-status-on-department-of-war-tradewinds-solutions-marketplace"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "card-date",
    "first_seen": "2026-11-12",
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/blog/reduce-ai-cost-with-visibility-you-can-act-on"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "How Fintech Companies Can Get Rid of VPN, VDI, and DLP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/how-fintech-companies-can-get-rid-of-vpn-vdi-and-dlp"
   },
   {
    "date": "2026-11-05",
@@ -65,7 +92,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Island Brings the Enterprise Browser to AI Agents",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/blog/seasonal-surges-shared-kiosks-and-franchise-data-what-retail-needs-from-an-enterprise-browser"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "PHP2Shell Turns Nearly Half of the Web into Exploitation Infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/php2shell-turns-nearly-half-of-the-web-into-exploitation-infrastructure"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Island is a Gartner\u00ae \u201cCustomers\u2019 Choice\u201d for Secure Enterprise Browsers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/island-is-a-gartner-customers-choice-for-secure-enterprise-browsers"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Island Named the Only 2026 Gartner\u00ae Peer Insights\u2122 Customers' Choice for Secure Enterprise Browsers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/press/island-named-the-only-2026-gartner-r-peer-insights-tm-customers-choice-for-secure-enterprise-browsers"
   }
  ]
 }

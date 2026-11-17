@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "time",
+   "first_seen": "2026-11-16",
+   "headline": "Talkdesk breaks bottlenecks in specialty care with Life Sciences Experience Cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/news-and-press/press-releases/life-sciences-experience-cloud/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/what-gartner-magic-quadrant-2026-reveal-about-cx/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "time",
-   "first_seen": "2026-10-24",
-   "headline": "Talkdesk named a Leader in the 2026 Gartner Magic Quadrant for Contact Center as a Service",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/news-and-press/press-releases/2026-gartner-ccaas-mq/"
   }
  ]
 }

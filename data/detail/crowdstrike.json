@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "Hidden in the Weights: Supply Chain Risk from Backdoored LoRA Models",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/supply-chain-risk-from-backdoored-lora-models/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "index-text",
    "first_seen": "2026-11-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-secures-ai-agents-inside-claude-cowork/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "CrowdStrike Advances AI Security and Safety from Endpoint to Cloud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-advances-ai-security-and-safety-falcon-guardian/"
   }
  ]
 }
