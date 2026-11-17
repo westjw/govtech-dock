@@ -2,7 +2,7 @@
  "_comment": "Written by scripts/workday_snapshot.py on the owner's machine; read by ats.fetch when GOVTECH_DOCK_WORKDAY_SNAPSHOT=1 (refresh.yml). Never edit by hand.",
  "boards": {
   "[\"adtran\", \"wd3\", \"ADTRAN\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -147,7 +147,7 @@
    ]
   },
   "[\"alteryx\", \"wd108\", \"AlteryxCareers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -250,16 +250,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Sydney, Australia",
-     "title": "Senior Technical Trainer",
-     "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/Sydney-Australia/Senior-Technical-Trainer_R12559"
+     "location": "7 Locations",
+     "title": "Sales Enablement Professional \u2013 Sales Leadership",
+     "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/Colorado-USA---Remote/Sales-Enablement-Professional---Sales-Leadership_R12558"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "7 Locations",
-     "title": "Sales Enablement Professional \u2013 Sales Leadership",
-     "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/Colorado-USA---Remote/Sales-Enablement-Professional---Sales-Leadership_R12558"
+     "location": "Sydney, Australia",
+     "title": "Senior Technical Trainer",
+     "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/Sydney-Australia/Senior-Technical-Trainer_R12559"
     },
     {
      "comp": null,
@@ -355,7 +355,7 @@
    ]
   },
   "[\"americanfidelity\", \"wd5\", \"External\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -675,7 +675,7 @@
    ]
   },
   "[\"aveva\", \"wd3\", \"AVEVA_careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -1093,16 +1093,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "2 Locations",
-     "title": "R&D Senior Manager, Engineering, China",
-     "url": "https://aveva.wd3.myworkdayjobs.com/en-US/AVEVA_careers/job/Beijing-China/R-D-Senior-Manager--Engineering--China_R015143-3"
+     "location": "Kuala Lumpur, Malaysia",
+     "title": "Senior Account Manager - Oil & Gas + Marine",
+     "url": "https://aveva.wd3.myworkdayjobs.com/en-US/AVEVA_careers/job/Kuala-Lumpur-Malaysia/Senior-Account-Manager---Oil---Gas---Marine_R013927"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "Kuala Lumpur, Malaysia",
-     "title": "Senior Account Manager - Oil & Gas + Marine",
-     "url": "https://aveva.wd3.myworkdayjobs.com/en-US/AVEVA_careers/job/Kuala-Lumpur-Malaysia/Senior-Account-Manager---Oil---Gas---Marine_R013927"
+     "location": "2 Locations",
+     "title": "R&D Senior Manager, Engineering, China",
+     "url": "https://aveva.wd3.myworkdayjobs.com/en-US/AVEVA_careers/job/Beijing-China/R-D-Senior-Manager--Engineering--China_R015143-3"
     },
     {
      "comp": null,
@@ -1695,7 +1695,7 @@
    ]
   },
   "[\"badgermeter\", \"wd5\", \"us_careersite\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -1931,7 +1931,7 @@
    ]
   },
   "[\"bentleysystems\", \"wd5\", \"bentley\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -2139,7 +2139,7 @@
    ]
   },
   "[\"bostondynamics\", \"wd1\", \"Boston_Dynamics\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -2403,7 +2403,7 @@
    ]
   },
   "[\"cloudera\", \"wd5\", \"External_Career\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -2646,7 +2646,7 @@
    ]
   },
   "[\"crowdstrike\", \"wd5\", \"crowdstrikecareers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -3736,7 +3736,7 @@
    ]
   },
   "[\"cubic\", \"wd1\", \"cubic_USA_careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -3916,7 +3916,7 @@
    ]
   },
   "[\"dataminr\", \"wd12\", \"Dataminr\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -4019,7 +4019,7 @@
    ]
   },
   "[\"dtn\", \"wd1\", \"DTN_Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -4108,7 +4108,7 @@
    ]
   },
   "[\"flir\", \"wd1\", \"flircareers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -4274,9 +4274,9 @@
     {
      "comp": null,
      "jd": "",
-     "location": "7 Locations",
+     "location": "6 Locations",
      "title": "Sr. Manager, Industrial Participation and Localization",
-     "url": "https://flir.wd1.myworkdayjobs.com/en-US/flircareers/job/UAE---Abu-Dhabi/Sr-Manager--Industrial-Participation-and-Localization_REQ35536"
+     "url": "https://flir.wd1.myworkdayjobs.com/en-US/flircareers/job/UK---Field/Sr-Manager--Industrial-Participation-and-Localization_REQ35536"
     },
     {
      "comp": null,
@@ -5268,7 +5268,7 @@
    ]
   },
   "[\"giro\", \"wd10\", \"GIRO\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -5448,7 +5448,7 @@
    ]
   },
   "[\"harriscomputer\", \"wd3\", \"1\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -5726,13 +5726,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "2 Locations",
-     "title": "Sales Representative Bilingual",
-     "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/New-Brunswick-Canada/Sales-Representative_R0047431-2"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Australia",
      "title": "Director Sales APAC",
      "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Australia/Director-Sales-APAC_R0046224"
@@ -5743,6 +5736,13 @@
      "location": "6 Locations",
      "title": "Regional Sales Executive",
      "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Pennsylvania-United-States/Regional-Sales-Executive_R0046594"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "2 Locations",
+     "title": "Sales Representative Bilingual",
+     "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/New-Brunswick-Canada/Sales-Representative_R0047431-2"
     },
     {
      "comp": null,
@@ -6125,11 +6125,11 @@
    ]
   },
   "[\"harriscomputer\", \"wd3\", \"Smartworks\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": []
   },
   "[\"itron\", \"wd5\", \"Itron\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -6386,7 +6386,7 @@
    ]
   },
   "[\"kyriba\", \"wd5\", \"Kyriba-Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -6524,7 +6524,7 @@
    ]
   },
   "[\"merative\", \"wd12\", \"External_Career_Site\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -6565,15 +6565,15 @@
      "comp": null,
      "jd": "",
      "location": "2 Locations",
-     "title": "Curam QA Consultant",
-     "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Bengaluru/Curam-QA-Consultant_JR01588"
+     "title": "Portfolio Manager, Technology Product Management",
+     "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Remote--United-States/Portfolio-Manager--Technology-Product-Management_JR01771"
     },
     {
      "comp": null,
      "jd": "",
      "location": "2 Locations",
-     "title": "Portfolio Manager, Technology Product Management",
-     "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Remote--United-States/Portfolio-Manager--Technology-Product-Management_JR01771"
+     "title": "Curam QA Consultant",
+     "url": "https://merative.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Bengaluru/Curam-QA-Consultant_JR01588"
     },
     {
      "comp": null,
@@ -6704,7 +6704,7 @@
    ]
   },
   "[\"mitel\", \"wd3\", \"mitelcareers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -7024,7 +7024,7 @@
    ]
   },
   "[\"modaxo\", \"wd3\", \"Modaxo\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -7064,11 +7064,11 @@
    ]
   },
   "[\"modaxo\", \"wd3\", \"TransTrack\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": []
   },
   "[\"motorolasolutions\", \"wd5\", \"Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -7542,13 +7542,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Lithuania Offsite (ZLI99 )",
-     "title": "Associate Territory Director Silvus for Ukraine",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Lithuania-Offsite-ZLI99-/Associate-Territory-Director-for-Ukraine_R63035"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "California Northern, US Offsite",
      "title": "Regional Sales Manager - Government Video",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/California-Northern-US-Offsite/Regional-Sales-Manager---Government-Video-Team_R65260"
@@ -7556,9 +7549,9 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Chicago, IL, More...",
-     "title": "Global FP&A Sr Analyst",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Global-FP-A-Sr-Analyst_R68016"
+     "location": "Lithuania Offsite (ZLI99 )",
+     "title": "Associate Territory Director Silvus for Ukraine",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Lithuania-Offsite-ZLI99-/Associate-Territory-Director-for-Ukraine_R63035"
     },
     {
      "comp": null,
@@ -7566,6 +7559,13 @@
      "location": "Germany Offsite (ZWG99)",
      "title": "Regional Sales Director - CAM - DACH",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/Regional-Sales-Director---CAM-ENT---DACH_R65506"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Chicago, IL, More...",
+     "title": "Global FP&A Sr Analyst",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Global-FP-A-Sr-Analyst_R68016"
     },
     {
      "comp": null,
@@ -7598,13 +7598,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Texas, US Offsite, More...",
-     "title": "Project Manager - North American VS&A Complex Project Deployment",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Texas-US-Offsite/Project-Manager---North-American-VS-A-Complex-Project-Deployment_R68983-1"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Richardson, TX (TX145), More...",
      "title": "Solutions Engineer",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Richardson-TX-TX145/Solutions-Engineer_R70097"
@@ -7612,9 +7605,9 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Singapore, Singapore",
-     "title": "Defense Solutions & Business Development Engineer",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Singapore-Singapore/Defense-Solutions---Business-Development-Engineer_R68862"
+     "location": "Texas, US Offsite, More...",
+     "title": "Project Manager - North American VS&A Complex Project Deployment",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Texas-US-Offsite/Project-Manager---North-American-VS-A-Complex-Project-Deployment_R68983-1"
     },
     {
      "comp": null,
@@ -7636,6 +7629,13 @@
      "location": "Bangalore, India",
      "title": "Technical Product Manager",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Bangalore-India/Technical-Product-Manager_R68278"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Singapore, Singapore",
+     "title": "Defense Solutions & Business Development Engineer",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Singapore-Singapore/Defense-Solutions---Business-Development-Engineer_R68862"
     },
     {
      "comp": null,
@@ -7801,13 +7801,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Chicago, IL",
-     "title": "Director, Global Procurement \u2013 Software & Cybersecurity",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Director--Global-Procurement---Software---Cybersecurity_R67308"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Krakow, Poland",
      "title": "C++ Senior Software Engineer for Silent Sentinel",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Krakow-Poland/C---Senior-Software-Engineer-for-Silent-Sentinel_R68543-1"
@@ -7822,13 +7815,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Schaumburg, IL",
-     "title": "Facility Security Officer (FSO)",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Schaumburg-IL/Facility-Security-Officer--FSO-_R70297"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Illinois Remote Work, More...",
      "title": "Senior Sales Operations Analyst - Compensation",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-Remote-Work/Senior-Sales-Operations-Analyst---Compensation_R68954"
@@ -7836,16 +7822,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Chicago, IL",
-     "title": "Senior Manager, Software Engineering (Chicago Hybrid)",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Senior-Manager--Software-Engineering--Chicago-Hybrid-_R68805"
+     "location": "Schaumburg, IL",
+     "title": "Facility Security Officer (FSO)",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Schaumburg-IL/Facility-Security-Officer--FSO-_R70297"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "Illinois, US Offsite",
-     "title": "Manager of Partner Success",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-US-Offsite/Manager-of-Partner-Success_R69523"
+     "location": "Chicago, IL",
+     "title": "Director, Global Procurement \u2013 Software & Cybersecurity",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Director--Global-Procurement---Software---Cybersecurity_R67308"
     },
     {
      "comp": null,
@@ -7867,6 +7853,13 @@
      "location": "Krakow, Poland",
      "title": "AI-Native UX Designer",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Krakow-Poland/AI-Native-UX-Designer_R68646"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Chicago, IL",
+     "title": "Senior Manager, Software Engineering (Chicago Hybrid)",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Senior-Manager--Software-Engineering--Chicago-Hybrid-_R68805"
     },
     {
      "comp": null,
@@ -7895,6 +7888,13 @@
      "location": "Colorado Remote Work, More...",
      "title": "Presales Engineer - West",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Colorado-Remote-Work/Presales-Engineer---West_R66913"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Illinois, US Offsite",
+     "title": "Manager of Partner Success",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-US-Offsite/Manager-of-Partner-Success_R69523"
     },
     {
      "comp": null,
@@ -7955,13 +7955,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Irvine, CA, More...",
-     "title": "Director of Product Management - Tactical Communications & Integrated Solutions",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Irvine-CA/Director-of-Product-Management---Tactical-Communications---Integrated-Solutions_R70525"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Bangalore, India",
      "title": "IT - Full Stack Developer",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Bangalore-India/IT---Full-Stack-Developer_R67142"
@@ -7979,6 +7972,13 @@
      "location": "Plantation, FL",
      "title": "Senior Program Manager",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Plantation-FL/Senior-Program-Manager_R70310"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Irvine, CA, More...",
+     "title": "Director of Product Management - Tactical Communications & Integrated Solutions",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Irvine-CA/Director-of-Product-Management---Tactical-Communications---Integrated-Solutions_R70525"
     },
     {
      "comp": null,
@@ -8025,13 +8025,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Salt Lake City, UT (UT17)",
-     "title": "Manufacturing Production Supervisor Silvus",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Salt-Lake-City-UT-UT17/Manufacturing-Production-Supervisor-Silvus_R67792"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Illinois Remote Work",
      "title": "NextGen 9-1-1 Core Services Project Manager",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Illinois-Remote-Work/NextGen-9-1-1-Core-Services-Project-Manager_R70188-1"
@@ -8042,6 +8035,13 @@
      "location": "Elgin, IL",
      "title": "Technical Project Manager - Hybrid - Greater Chicago Area",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Elgin-IL/Technical-Project-Manager---Midwest-Region_R70681"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Salt Lake City, UT (UT17)",
+     "title": "Manufacturing Production Supervisor Silvus",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Salt-Lake-City-UT-UT17/Manufacturing-Production-Supervisor-Silvus_R67792"
     },
     {
      "comp": null,
@@ -8154,13 +8154,6 @@
      "location": "Germany Offsite (ZWG99)",
      "title": "International Sales Engineer",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/International-Sales-Engineer_R70340"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "",
-     "title": "",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Junior-Pre-Sales-Engineer--HindSight_R66534"
     },
     {
      "comp": null,
@@ -8634,13 +8627,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Copenhagen, Denmark",
-     "title": "Applications Engineer I Silvus (Copenhagen office)",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Copenhagen-Denmark/Applications-Engineer-I-Silvus--Copenhagen-office-_R66330"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Washington DC Remote Work, More...",
      "title": "Project Manager Operations Consultant/ Circuit Analyst",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Project-Manager-Operations-Consultant--Circuit-Analyst_R70291"
@@ -8651,6 +8637,13 @@
      "location": "Washington DC Remote Work, More...",
      "title": "Project Manager/ Spectrum Analyst",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Project-Manager--Spectrum-Analyst_R70463"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Copenhagen, Denmark",
+     "title": "Applications Engineer I Silvus (Copenhagen office)",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Copenhagen-Denmark/Applications-Engineer-I-Silvus--Copenhagen-office-_R66330"
     },
     {
      "comp": null,
@@ -9243,13 +9236,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Washington DC Remote Work, More...",
-     "title": "Field Service Technician II",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Field-Service-Technician-II_R70452-1"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Tennessee Remote Work, More...",
      "title": "UO FE Summer Internship 2027",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Tennessee-Remote-Work/UO-FE-Summer-Internship-2027_R69092"
@@ -9274,6 +9260,13 @@
      "location": "Texas Remote Work, More...",
      "title": "Sr Engineer - Systems Design & Implementation",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Texas-Remote-Work/Sr-Engineer---Systems-Design---Implementation_R70704-1"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Washington DC Remote Work, More...",
+     "title": "Field Service Technician II",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Field-Service-Technician-II_R70452-1"
     },
     {
      "comp": null,
@@ -9341,13 +9334,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Virginia Remote Work, More...",
-     "title": "Field Service Technician - Navy ELMR Patching",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Virginia-Remote-Work/Field-Service-Technician---Navy-ELMR-Patching_R68234"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Chicago, IL, More...",
      "title": "Procurement Category Manager - Software",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Procurement-Category-Manager---Software_R63930"
@@ -9386,6 +9372,13 @@
      "location": "Beltsville, MD",
      "title": "Field Service Technician - Beltsville, MD",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Beltsville-MD/Field-Service-Technician---Beltsville--MD_R69998"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Virginia Remote Work, More...",
+     "title": "Field Service Technician - Navy ELMR Patching",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Virginia-Remote-Work/Field-Service-Technician---Navy-ELMR-Patching_R68234"
     },
     {
      "comp": null,
@@ -9460,27 +9453,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Washington DC Remote Work, More...",
-     "title": "Principal Systems Engineer",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Principal-Systems-Engineer_R70066"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "Washington DC Remote Work, More...",
-     "title": "Principal Systems Engineer",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Principal-Systems-Engineer_R70007"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "Washington DC Remote Work, More...",
-     "title": "Senior Systems Engineer",
-     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Senior-Systems-Engineer_R70070"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Orlando, FL",
      "title": "System Technologist - Orlando, FL",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Orlando-FL/System-Technologist---Orlando--FL_R69099"
@@ -9505,6 +9477,27 @@
      "location": "Salt Lake City, UT - Factory",
      "title": "Warehouse Inventory Clerk-I (Evening Shift)",
      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Salt-Lake-City-UT---Factory/Warehouse-Inventory-Clerk-I--Evening-Shift-_R70536-1"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Washington DC Remote Work, More...",
+     "title": "Principal Systems Engineer",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Principal-Systems-Engineer_R70066"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Washington DC Remote Work, More...",
+     "title": "Principal Systems Engineer",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Principal-Systems-Engineer_R70007"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Washington DC Remote Work, More...",
+     "title": "Senior Systems Engineer",
+     "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Washington-DC-Remote-Work/Senior-Systems-Engineer_R70070"
     },
     {
      "comp": null,
@@ -9733,7 +9726,7 @@
    ]
   },
   "[\"mrisoftware\", \"wd501\", \"External_CareerSite\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -9941,7 +9934,7 @@
    ]
   },
   "[\"muellerwaterproducts\", \"wd5\", \"Mueller\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -10121,7 +10114,7 @@
    ]
   },
   "[\"nelnet\", \"wd1\", \"MyNelnet\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -10245,7 +10238,7 @@
    ]
   },
   "[\"oclc\", \"wd1\", \"OCLC_Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -10327,7 +10320,7 @@
    ]
   },
   "[\"pluralsight\", \"wd1\", \"Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -10381,7 +10374,7 @@
    ]
   },
   "[\"sailpoint\", \"wd1\", \"SailPoint\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -10967,7 +10960,7 @@
    ]
   },
   "[\"sharecare\", \"wd1\", \"Sharecare_Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -10986,7 +10979,7 @@
    ]
   },
   "[\"smiinc\", \"wd108\", \"smicareers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -11005,7 +10998,7 @@
    ]
   },
   "[\"syniverse\", \"wd1\", \"SyniverseCareers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -11038,7 +11031,7 @@
    ]
   },
   "[\"thales\", \"wd3\", \"Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -13780,7 +13773,7 @@
    ]
   },
   "[\"tricentis\", \"wd1\", \"Tricentis_Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -13995,7 +13988,7 @@
    ]
   },
   "[\"veritone\", \"wd1\", \"Veritone_Career_Site\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -14021,7 +14014,7 @@
    ]
   },
   "[\"volarisgroup\", \"wd3\", \"Intellicene\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -14040,7 +14033,7 @@
    ]
   },
   "[\"wastequip\", \"wd108\", \"Wastequip_Careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -14073,7 +14066,7 @@
    ]
   },
   "[\"wellsky\", \"wd1\", \"WellSkyCareers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -14141,7 +14134,7 @@
    ]
   },
   "[\"workday\", \"wd5\", \"Workday\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -15420,7 +15413,7 @@
    ]
   },
   "[\"workiva\", \"wd503\", \"careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -15698,16 +15691,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "London",
-     "title": "Senior Solutions Consultant - Financial Services",
-     "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/London/Senior-Solutions-Consultant---Financial-Services_R12540"
+     "location": "USA - Remote",
+     "title": "Sales Development Representative",
+     "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Sales-Development-Representative_R12648"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "USA - Remote",
-     "title": "Sales Development Representative",
-     "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Sales-Development-Representative_R12648"
+     "location": "London",
+     "title": "Senior Solutions Consultant - Financial Services",
+     "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/London/Senior-Solutions-Consultant---Financial-Services_R12540"
     },
     {
      "comp": null,
@@ -16041,7 +16034,7 @@
    ]
   },
   "[\"xylem\", \"wd5\", \"xylem-careers\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -17026,13 +17019,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "",
-     "title": "",
-     "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Dordrecht",
      "title": "Inside Sales Engineer",
      "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Dordrecht/Inside-Sales-Engineer_R46331"
@@ -17169,13 +17155,6 @@
      "location": "Lima",
      "title": "Ingeniero de ventas",
      "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Lima/Ingeniero-de-ventas_R50910"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "Pewaukee, Wisconsin",
-     "title": "National Sales Manager & Global Business Development Manager \u2013 Xylem A-C Custom Pump",
-     "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Pewaukee-Wisconsin/National-Sales-Manager---Global-Business-Development-Manager---Xylem-A-C-Custom-Pump_R51219"
     },
     {
      "comp": null,
@@ -17712,7 +17691,7 @@
    ]
   },
   "[\"zoll\", \"wd5\", \"ZOLLMedicalCorp\"]": {
-   "read_at": "2026-11-17T19:07:40+00:00",
+   "read_at": "2026-11-17T19:31:09+00:00",
    "rows": [
     {
      "comp": null,
@@ -18662,5 +18641,5 @@
    ]
   }
  },
- "generated": "2026-11-17T19:07:40+00:00"
+ "generated": "2026-11-17T19:31:09+00:00"
 }
