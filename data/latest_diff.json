@@ -3,67 +3,382 @@
   "previous": "2026-11-17",
   "changes": [
     {
-      "company": "Esper",
-      "id": "esper",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 502 for https://api.lever.co/v0/pos"
-    },
-    {
-      "company": "HydroPoint Data Systems",
-      "id": "hydropoint-data-systems",
+      "company": "Motorola Solutions",
+      "id": "motorola-solutions",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Enterprise Account Executive (United Kingdom Off)"
     },
     {
-      "company": "Merative",
-      "id": "merative",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://merati"
+      "company": "ZOLL Medical",
+      "id": "zoll-medical",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Territory Manager (Madrid, Spain)"
     },
     {
-      "company": "Highland Electric Fleets",
-      "id": "highland-electric-fleets",
+      "company": "Xylem",
+      "id": "xylem",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Executive Sales Representative - N (12 Locations)"
+    },
+    {
+      "company": "Badger Meter",
+      "id": "badger-meter",
       "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Customer Success Manager (CA) only"
+      "note": "Sales Enablement Analyst Intern only"
     },
     {
-      "company": "Skedda",
-      "id": "skedda",
-      "from": "None found",
+      "company": "Mueller Water Products",
+      "id": "mueller-water-products",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Jr. Sales Representative (Remote - Tennessee)"
+    },
+    {
+      "company": "Cubic Transportation Systems",
+      "id": "cubic-transportation-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager - East Coast (2 Locations)"
+    },
+    {
+      "company": "Itron",
+      "id": "itron",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Business Development Representativ only"
+      "note": "Customer Success Manager only"
     },
     {
-      "company": "Wastequip",
-      "id": "wastequip",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://wasteq"
+      "company": "Monetary",
+      "id": "debtbook",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Capital Markets Account Executive (Charlotte, NC)"
     },
     {
-      "company": "Measures for Justice",
-      "id": "measures-for-justice",
-      "from": "None found",
+      "company": "Esper",
+      "id": "esper",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Sales Lead, Northeast (United States)"
+    },
+    {
+      "company": "Dataminr",
+      "id": "dataminr",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, (SLED) NY/NJ (3 Locations)"
+    },
+    {
+      "company": "Boston Dynamics",
+      "id": "boston-dynamics",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Sales Executive (2 Locations)"
+    },
+    {
+      "company": "GIRO",
+      "id": "giro",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Director, Strategic Business Devel only"
+    },
+    {
+      "company": "Modaxo",
+      "id": "modaxo",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Director (Italy - Signa)"
+    },
+    {
+      "company": "TransTrack Solutions Group",
+      "id": "transtrack-solutions-group",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Bentley Systems",
+      "id": "bentley-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Support Account Manager, Enterpris (Ireland Dublin Off)"
+    },
+    {
+      "company": "Intellicene",
+      "id": "intellicene",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Sales Executive \u2013 New L (2 Locations)"
+    },
+    {
+      "company": "Mitel",
+      "id": "mitel",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Hunter / Account Executive (2 Locations)"
+    },
+    {
+      "company": "Workday",
+      "id": "workday",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Japan, Tokyo)"
+    },
+    {
+      "company": "Palantir Technologies",
+      "id": "palantir-technologies",
+      "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Workiva",
-      "id": "workiva",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://workiv"
+      "company": "American Fidelity",
+      "id": "american-fidelity",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (3 Locations)"
     },
     {
-      "company": "Brandt Information Services",
-      "id": "brandt-information-services",
-      "from": "None found",
+      "company": "DTN",
+      "id": "dtn",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "SaaS Account Executive - Weather (United Kingdom - R)"
+    },
+    {
+      "company": "AirDNA",
+      "id": "airdna",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Merative",
+      "id": "merative",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Springbuk (Remote \u2013 United St)"
+    },
+    {
+      "company": "WellSky",
+      "id": "wellsky",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Account Management Manager only"
+      "note": "Sr. Product Manager - Revenue Cycl only"
+    },
+    {
+      "company": "Teledyne FLIR",
+      "id": "teledyne-flir",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "UK Commercial Account Manager (UK - Fareham)"
+    },
+    {
+      "company": "Thales",
+      "id": "thales",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Account Manager (3 Locations)"
+    },
+    {
+      "company": "Wastequip",
+      "id": "wastequip",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Outside Sales Representative (4 Locations)"
+    },
+    {
+      "company": "Measures for Justice",
+      "id": "measures-for-justice",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Adtran",
+      "id": "adtran",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Director NSP (2 Locations)"
+    },
+    {
+      "company": "OCLC",
+      "id": "oclc",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Strategic Account Director -Wester only"
+    },
+    {
+      "company": "SmartWorks",
+      "id": "smartworks",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Nelnet Campus Commerce",
+      "id": "nelnet-campus-commerce",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Scholarship Tax (2 Locations)"
+    },
+    {
+      "company": "Harris",
+      "id": "harris",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (5 Locations)"
+    },
+    {
+      "company": "Alteryx, Inc",
+      "id": "alteryx-inc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (United Kingdom - R)"
+    },
+    {
+      "company": "Cloudera",
+      "id": "cloudera",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - SLED (6 Locations)"
+    },
+    {
+      "company": "CrowdStrike",
+      "id": "crowdstrike",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Corporate Account Executive, Kolka (India - Remote)"
+    },
+    {
+      "company": "KYRIBA",
+      "id": "kyriba",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Strategic Account Executive (New York)"
+    },
+    {
+      "company": "Pluralsight",
+      "id": "pluralsight",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Director - APAC (Remote - Australia)"
+    },
+    {
+      "company": "SailPoint",
+      "id": "sailpoint",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Commercial Account Executive (Remote (New York, )"
+    },
+    {
+      "company": "Tricentis",
+      "id": "tricentis",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sr. Account Executive \u2013 Germany (P (DE - Remote)"
+    },
+    {
+      "company": "Workiva",
+      "id": "workiva",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (2 Locations)"
+    },
+    {
+      "company": "Sharecare",
+      "id": "sharecare",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Syniverse",
+      "id": "syniverse",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Director (Hong Kong)"
+    },
+    {
+      "company": "AVEVA Software, LLC",
+      "id": "aveva-software-llc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, CONNECT Platfor (4 Locations)"
+    },
+    {
+      "company": "CodeHS",
+      "id": "codehs",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "EdSights",
+      "id": "edsights",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (United States)"
+    },
+    {
+      "company": "Nectir",
+      "id": "nectir",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative ( only"
+    },
+    {
+      "company": "Newsela",
+      "id": "newsela",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Mid-Market (Rem (Remote - US)"
+    },
+    {
+      "company": "SchooLinks",
+      "id": "schoolinks",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "Seesaw",
+      "id": "seesaw",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Digital Customer Success Manager only"
+    },
+    {
+      "company": "Wayground",
+      "id": "wayground",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Bangalore)"
+    },
+    {
+      "company": "Amira Learning",
+      "id": "amira-learning",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Kira Learning",
+      "id": "kira-learning",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Class Technologies",
+      "id": "class-technologies",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     }
   ]
 }
