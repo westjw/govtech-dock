@@ -23187,8 +23187,8 @@
   },
   {
     "id": "debtbook",
-    "name": "DebtBook",
-    "website": "https://www.debtbook.com",
+    "name": "Monetary",
+    "website": "https://monetaryhq.com",
     "location": "Charlotte, NC",
     "year_founded": 2018,
     "sector": "General Gov",
@@ -23196,7 +23196,7 @@
     "description": "Cloud treasury: debt management, GASB 87/96 lease accounting, and cash management for gov finance - exhibited at NACUBO 2026, GFOA 2026",
     "ats": {
       "type": "greenhouse",
-      "ref": "debtbook"
+      "ref": "monetary"
     },
     "hiring": {
       "status": "Unknown",
@@ -23332,12 +23332,16 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "DebtBook"
+    ],
+    "ats_note": "read live 2026-11-17: 15 posting(s)"
   },
   {
     "id": "just-appraised",
-    "name": "Just Appraised",
-    "website": "https://www.justappraised.com",
+    "name": "Alltus",
+    "website": "https://www.alltus.com",
     "location": "San Francisco, CA",
     "year_founded": 2017,
     "sector": "General Gov",
@@ -23481,7 +23485,10 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Just Appraised"
+    ]
   },
   {
     "id": "zactax",
@@ -236669,6 +236676,568 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: FDIC International 2027",
+    "researched": true
+  },
+  {
+    "id": "abre",
+    "name": "Abre",
+    "website": "https://abre.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "K-12 data platform for school districts: analytics, MTSS, early warning, student plans, finance dashboards and family engagement",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "branching-minds",
+    "name": "Branching Minds",
+    "website": "https://www.branchingminds.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "MTSS and RTI platform for K-12 districts: intervention planning, behavior support, early warning and Canopy case management",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "codehs",
+    "name": "CodeHS",
+    "website": "https://codehs.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "K-12 computer science and coding curriculum platform with teacher training and admin dashboards, sold to school districts",
+    "ats": {
+      "type": "rippling",
+      "ref": "codehs"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 10 posting(s)"
+  },
+  {
+    "id": "edpuzzle",
+    "name": "Edpuzzle",
+    "website": "https://edpuzzle.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Interactive video lesson platform for teachers, with Pro School plans sold to K-12 schools and districts",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "edsights",
+    "name": "EdSights",
+    "website": "https://www.edsights.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Higher Education",
+    "category": "IT & Administration",
+    "description": "AI chatbot and student-feedback platform for enrollment and retention, sold to colleges and universities",
+    "ats": {
+      "type": "ashby",
+      "ref": "edsights"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 4 posting(s)"
+  },
+  {
+    "id": "kami",
+    "name": "Kami",
+    "website": "https://www.kamiapp.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Classroom annotation, accessibility and Book Creator apps for K-12 teachers, sold to schools and districts",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "labster",
+    "name": "Labster",
+    "website": "https://www.labster.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Higher Education",
+    "category": "IT & Administration",
+    "description": "Virtual science lab simulations for STEM courses, licensed by colleges and universities campus-wide or by department",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "nectir",
+    "name": "Nectir",
+    "website": "https://www.nectir.io",
+    "location": null,
+    "year_founded": null,
+    "sector": "Higher Education",
+    "category": "IT & Administration",
+    "description": "Custom AI course assistants connected to the LMS, sold to colleges, universities and high schools",
+    "ats": {
+      "type": "ashby",
+      "ref": "nectir"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 4 posting(s)"
+  },
+  {
+    "id": "newsela",
+    "name": "Newsela",
+    "website": "https://newsela.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "K-12 literacy, social studies and STEM content, Formative assessment and attendance tools sold to school districts",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "newsela"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 10 posting(s)"
+  },
+  {
+    "id": "noredink",
+    "name": "NoRedInk",
+    "website": "https://www.noredink.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Adaptive writing and grammar curriculum platform for grades 3-12, sold to K-12 school districts and schools as NoRedInk Premium",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "otus",
+    "name": "Otus",
+    "website": "https://otus.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Assessment, standards-based grading, progress monitoring and student data platform sold to K-12 school districts",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "packback",
+    "name": "Packback",
+    "website": "https://packback.co",
+    "location": null,
+    "year_founded": null,
+    "sector": "Higher Education",
+    "category": "IT & Administration",
+    "description": "AI-supported discussion, writing feedback and originality platform sold to colleges, universities and K-12 districts",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "padlet",
+    "name": "Padlet",
+    "website": "https://padlet.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Visual collaboration boards and digital canvases for classrooms, sold with school and district-wide licenses",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "schoolinks",
+    "name": "SchooLinks",
+    "website": "https://www.schoolinks.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "College and career readiness platform for K-12 districts: counselor caseloads, state compliance reporting and work-based learning",
+    "ats": {
+      "type": "workable",
+      "ref": "schoolinks"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 9 posting(s)"
+  },
+  {
+    "id": "seesaw",
+    "name": "Seesaw",
+    "website": "https://seesaw.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Elementary learning platform with assignments, portfolios, literacy curriculum and family messaging, licensed to K-12 schools and districts",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "seesaw"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 4 posting(s)"
+  },
+  {
+    "id": "wayground",
+    "name": "Wayground",
+    "website": "https://wayground.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "AI assessment, presentation, video and flashcard platform for K-12 teachers (formerly Quizizz), with school and district plans",
+    "ats": {
+      "type": "lever",
+      "ref": "Wayground"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 8 posting(s)"
+  },
+  {
+    "id": "wevideo",
+    "name": "WeVideo",
+    "website": "https://www.wevideo.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Cloud video creation and interactive video platform for classrooms, sold to K-12 schools and districts and to higher education",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "amira-learning",
+    "name": "Amira Learning",
+    "website": "https://www.amiralearning.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "AI reading assessment, instruction and tutoring in English and Spanish, adopted by K-12 school districts and states",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "amiralearning"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 7 posting(s)"
+  },
+  {
+    "id": "kira-learning",
+    "name": "Kira Learning",
+    "website": "https://www.kira-learning.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "AI instruction, assessment and intervention platform for K-12 teachers, sold to schools and districts",
+    "ats": {
+      "type": "ashby",
+      "ref": "kira"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 13 posting(s)"
+  },
+  {
+    "id": "carnegie-learning",
+    "name": "Carnegie Learning",
+    "website": "https://www.carnegielearning.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "K-12 math, literacy and world language curriculum and software (MATHia, Fast ForWord) plus professional learning for school districts",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "class-technologies",
+    "name": "Class Technologies",
+    "website": "https://www.class.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Higher Education",
+    "category": "IT & Administration",
+    "description": "Virtual classroom software built on Zoom and Microsoft Teams, sold to colleges, K-12 districts, government agencies and corporate training teams",
+    "ats": {
+      "type": "bamboohr",
+      "ref": "classtechnologies"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true,
+    "ats_note": "read live 2026-11-17: 0 posting(s)"
+  },
+  {
+    "id": "magma-math",
+    "name": "Magma Math",
+    "website": "https://www.magmamath.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "K-12 math lesson and formative assessment platform that shows student work to teachers, sold to school districts",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
+    "researched": true
+  },
+  {
+    "id": "top-hat",
+    "name": "Top Hat",
+    "website": "https://tophat.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Higher Education",
+    "category": "IT & Administration",
+    "description": "Active-learning platform with in-class response, attendance, assessments and interactive texts, sold to colleges and universities",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "research pass: GovWire 150 (2027)",
     "researched": true
   }
 ]
