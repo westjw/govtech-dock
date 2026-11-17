@@ -281,9 +281,76 @@ def check() -> list[dict]:
             f"but the newest snapshot is {snaps[-1]} - the run recorded "
             f"itself and did not leave the data behind", hard=False)
 
+    for what, why, hard in workday_snapshot_faults():
+        bad(what, why, hard)
     for what, why, hard in deploy_faults():
         bad(what, why, hard)
     return out
+
+
+WORKDAY_SNAPSHOT_STALE_HOURS = 20
+WORKDAY_BOARD_STUCK_HOURS = 36
+
+
+def _hours(stamp, now: dt.datetime) -> float | None:
+    try:
+        at = dt.datetime.fromisoformat(stamp or "")
+    except (TypeError, ValueError):
+        return None
+    if at.tzinfo is None:
+        at = at.replace(tzinfo=dt.timezone.utc)
+    return (now - at).total_seconds() / 3600
+
+
+def workday_snapshot_faults(snap: dict | None = None, now: dt.datetime | None = None
+                            ) -> list[tuple[str, str, bool]]:
+    """The Mac's Workday read has stopped (owner, 2026-11-17).
+
+    The crawl reads Workday from data/workday_snapshot.json because Workday
+    refuses GitHub's runners. Nothing on GitHub can run that job, so the only
+    way the owner hears it stopped - the Mac asleep for days, the launch agent
+    unloaded, a push that keeps failing, Workday refusing the Mac too - is
+    this.
+
+    AGE IS EACH BOARD'S OWN read_at, never `generated`: a run that read
+    nothing used to stamp a fresh `generated` and keep this quiet while every
+    board aged out (2026-11-17 review). The writer no longer does that, and
+    this would not believe it if it did.
+
+    20 HOURS, BECAUSE THIS RUNS ONCE A DAY (15:00 UTC) and the crawl after it
+    can read Workday up to ~23 hours later; the crawl stops trusting a board
+    at 48 (ats.WORKDAY_SNAPSHOT_MAX_AGE). A healthy snapshot is under ~11
+    hours old here, so 20 means two Mac runs missed and still fires a day
+    before the board loses Workday. 36 fired after the loss.
+    """
+    now = now or dt.datetime.now(dt.timezone.utc)
+    snap = load(DATA / "workday_snapshot.json") if snap is None else snap
+    boards = (snap or {}).get("boards") or {}
+    if not boards:
+        return [("the Mac's Workday snapshot is missing",
+                 "data/workday_snapshot.json is not in the repo or holds no boards, so "
+                 "every Workday board is asked live from GitHub, which Workday refuses. "
+                 "Run scripts/workday_snapshot.py --push on the Mac (CLAUDE.md, 'Workday "
+                 "is read on the owner's Mac')", True)]
+    ages = sorted(h for h in (_hours(b.get("read_at"), now) for b in boards.values())
+                  if h is not None)
+    if not ages:
+        return [("the Mac's Workday snapshot has no readable dates",
+                 "no board in data/workday_snapshot.json carries a read_at", True)]
+    median = ages[len(ages) // 2]
+    if median > WORKDAY_SNAPSHOT_STALE_HOURS:
+        return [(f"the Mac has not read Workday in {median:.0f} hours",
+                 f"half of the {len(boards)} Workday boards in data/workday_snapshot.json "
+                 f"were last read {median:.0f}+ hours ago. At 48 hours the crawl asks "
+                 f"Workday live, Workday refuses GitHub, and about a quarter of the board "
+                 f"goes with it. Wake the Mac, or read ~/Library/Logs/sledjobs-workday.log", True)]
+    stuck = sum(1 for h in ages if h > WORKDAY_BOARD_STUCK_HOURS)
+    if stuck:
+        return [(f"{stuck} Workday board(s) have not read on the Mac in {WORKDAY_BOARD_STUCK_HOURS}+ hours",
+                 "the Mac's read keeps their last good rows while they refuse; at 48 "
+                 "hours the crawl asks them live and loses them. "
+                 "~/Library/Logs/sledjobs-workday.log names them", False)]
+    return []
 
 
 def main() -> int:

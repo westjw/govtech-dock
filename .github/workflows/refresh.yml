@@ -42,8 +42,16 @@ jobs:
     # Runners are UTC. Snapshots are keyed by date, so an evening manual run
     # would otherwise be stamped tomorrow and sort ahead of a same-evening
     # local run. Pin to the owner's clock so dates match their calendar.
+    #
+    # WORKDAY IS READ ON THE OWNER'S MAC (owner, 2026-11-17). Workday answers
+    # 429 to GitHub's runners from the first request; the Mac's nightly job
+    # (scripts/workday_snapshot.py --push, deploy/launchd/) commits
+    # data/workday_snapshot.json and every step here that reads a board takes
+    # Workday from it. A board the Mac has not read in 48h is asked live, and
+    # its failure says how old the snapshot is (ats.WORKDAY_SNAPSHOT).
     env:
       TZ: America/New_York
+      GOVTECH_DOCK_WORKDAY_SNAPSHOT: "1"
     steps:
       - uses: actions/checkout@v5
 

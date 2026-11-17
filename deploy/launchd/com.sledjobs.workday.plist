@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Read every Workday board from this machine and push data/workday_snapshot.json
+  (scripts/workday_snapshot.py --push). Owner, 2026-11-17: "Read Workday from my
+  Mac" - Workday refuses GitHub's runners, so the nightly crawl reads Workday
+  from this file instead (ats.WORKDAY_SNAPSHOT, refresh.yml).
+
+  23:40 ET is before the earliest the 05:23 UTC crawl can start (00:23 ET in
+  winter); 07:10 refreshes it for the usual late start. A Mac asleep at either
+  time runs the missed job when it wakes. The crawl accepts a read up to 48
+  hours old; the watchdog opens an issue at 36.
+
+  It runs in its own worktree, never a checkout anyone edits in: --push refuses
+  a checkout with any change besides the snapshot, then stands on origin/main.
+
+  Install (replace __HOME__ with your home directory, __PYTHON__ with the
+  python3 that has `requests`):
+    git -C ~/govtech-dock fetch origin
+    git -C ~/govtech-dock worktree add --detach ~/govtech-dock-workday origin/main
+    sed -e "s#__HOME__#$HOME#g" -e "s#__PYTHON__#$(command -v python3)#g" \
+      ~/govtech-dock-workday/deploy/launchd/com.sledjobs.workday.plist \
+      > ~/Library/LaunchAgents/com.sledjobs.workday.plist
+    launchctl load ~/Library/LaunchAgents/com.sledjobs.workday.plist
+  Run it now:  launchctl start com.sledjobs.workday
+  Its log:     ~/Library/Logs/sledjobs-workday.log
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.sledjobs.workday</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__PYTHON__</string>
+    <string>__HOME__/govtech-dock-workday/scripts/workday_snapshot.py</string>
+    <string>--push</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>__HOME__/govtech-dock-workday</string>
+
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Hour</key>
+      <integer>23</integer>
+      <key>Minute</key>
+      <integer>40</integer>
+    </dict>
+    <dict>
+      <key>Hour</key>
+      <integer>7</integer>
+      <key>Minute</key>
+      <integer>10</integer>
+    </dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/sledjobs-workday.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/sledjobs-workday.log</string>
+</dict>
+</plist>

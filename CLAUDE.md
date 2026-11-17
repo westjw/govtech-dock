@@ -3557,6 +3557,45 @@ and `build_board.read_board` and `refresh.check_company` ask once more after
 a 429. All 42 read through the shared gate from a laptop: 305 requests, 156s,
 0 refused. `check_workday_is_paced_as_one_service_and_a_429_is_asked_again`.
 
+**Workday is read on the owner's Mac** (owner, 2026-11-17: "Read Workday from
+my Mac"). The pacing above was not the CI cause: on the 2026-11-17 re-run,
+with the shared gate live, Workday still answered 429 to 39 of 42 tenants -
+from the FIRST request of the hiring step (Motorola, no description reads; CI
+never passes `--details`) - while the same code read all 42 from the Mac that
+hour. GitHub's runner addresses are shared with every scraper on Azure; no
+crawl code changed between the last good run (11-15) and the first failure.
+- `scripts/workday_snapshot.py --push` runs on the Mac (launch agent
+  `deploy/launchd/com.sledjobs.workday.plist`, 23:40 and 07:10 ET, in its own
+  worktree `~/govtech-dock-workday`, log `~/Library/Logs/sledjobs-workday.log`):
+  it reads every Workday ref on file with the same crawler rules and commits
+  `data/workday_snapshot.json` alone. `--push` refuses a checkout with any
+  other change and stands on `origin/main` before reading.
+- `refresh.yml` sets `GOVTECH_DOCK_WORKDAY_SNAPSHOT=1` for the whole job, so
+  `ats.fetch` takes a Workday board from the file when the Mac read it in the
+  last 48h (`WORKDAY_SNAPSHOT_MAX_AGE`). A board the Mac could not read raises
+  the Mac's error, said as the Mac's; one it has not read in 48h, or never
+  (a Workday company added today), is asked live, and that failure names the
+  snapshot's age. Off by default: the desk and the Mac's own read are live.
+- A bad night on the Mac hides nothing: a refusal for now (429, timeout, a
+  5xx or a maintenance page - Workday DOWN is not an answer) keeps that
+  board's last good rows with THEIR date, so they still age out; a real error
+  (404, robots) is recorded; and when most boards were not read fresh tonight
+  in any way, nothing is written, so the file's age stays honest. Known
+  property: a kept board's rows (under 48h) reach the crawl like a fresh read.
+- The watchdog judges every board's own `read_at`, never `generated`, and
+  faults when the median board is 20h old (`watchdog.workday_snapshot_faults`):
+  it runs once a day at 15:00 UTC and the crawl after it can read Workday ~23h
+  later, so 20h warns a day before the 48h cutoff (36h, as first written,
+  warned after the loss). One board stuck 36h+ is a note.
+- First version reviewed blind by three readers (2026-11-17); all three found
+  the same two defects: a night that read nothing still wrote a fresh
+  `generated` (the guard counted only transient errors, and every board is
+  "kept" from night two), and a Workday outage replaced good rows with errors.
+- The longer-term options put to the owner the same day: carry a refused
+  board's last-good postings forward so one source never freezes the deploy,
+  and move this job to an always-on machine on a home connection.
+`check_workday_is_read_from_the_owners_mac` (16/17 mutations; the 17th is equivalent).
+
 **The offline mode is `scripts/quick_rebuild.py` (2026-09-28).** This section
 said it was deliberately not built because the postings flow through the fetch
 loop that builds `orgs`. That loop no longer builds them: every organization

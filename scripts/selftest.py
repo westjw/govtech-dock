@@ -25973,6 +25973,185 @@ def check_a_transport_failure_gets_a_second_chance() -> int:
 
 
 
+def check_workday_is_read_from_the_owners_mac() -> int:
+    """The crawl takes Workday from the Mac's snapshot, and the snapshot hides nothing.
+
+    From 2026-11-16 Workday answered 429 to GitHub's runners from the first
+    request of a run (39 of 42 tenants, Motorola first) while the same code
+    read all 42 from the owner's Mac; pacing them as one service did not help,
+    because the address was the problem. The owner's ruling (2026-11-17): read
+    Workday from the Mac. scripts/workday_snapshot.py writes the file there,
+    ats.fetch reads it on GitHub. Each rule below is a way that goes quietly
+    wrong: a stale file read as fresh, a Mac-side failure published as "no
+    jobs", a bad night overwriting good rows, the workflow not switching it on.
+    """
+    import watchdog
+    import workday_snapshot as ws
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import datetime as _dt
+    now = _dt.datetime(2026, 11, 17, 12, 0, tzinfo=_dt.timezone.utc)
+    fresh, stale = "2026-11-17T04:40:00+00:00", "2026-11-14T04:40:00+00:00"
+    good, broken, old, gone = (["acme", "wd5", "Careers"], ["bust", "wd1", "X"],
+                               ["olde", "wd3", "Y"], ["none", "wd1", "Z"])
+    row = {"title": "Account Executive", "location": "Remote", "url": "u", "jd": "", "comp": None}
+    snap = {"generated": fresh, "boards": {
+        ats.workday_key(good): {"read_at": fresh, "rows": [row]},
+        ats.workday_key(broken): {"read_at": fresh, "error": "HTTP 404 for https://bust"},
+        ats.workday_key(old): {"read_at": stale, "rows": [row]}}}
+    live_calls = []
+
+    def live(ref):
+        live_calls.append(ref[0])
+        raise ats.RateLimited(f"https://{ref[0]}.wd5.myworkdayjobs.com/x", None)
+
+    real = (ats.WORKDAY_SNAPSHOT, ats._WD_SNAP, ats.FETCHERS["workday"], ats._utcnow)
+    try:
+        ats.WORKDAY_SNAPSHOT, ats._WD_SNAP, ats.FETCHERS["workday"] = True, snap, live
+        ats._utcnow = lambda: now
+
+        got = ats.fetch({"type": "workday", "ref": good})
+        if got != [row] or live_calls:
+            errors += fail(f"a fresh snapshot board read {got!r} and asked Workday {live_calls}")
+        got[0]["title"] = "edited"
+        if snap["boards"][ats.workday_key(good)]["rows"][0]["title"] != "Account Executive":
+            errors += fail("a caller's edit reached the snapshot's own row")
+        try:
+            ats.fetch({"type": "workday", "ref": broken})
+            errors += fail("a board the Mac could not read came back as rows")
+        except ats.AtsError as exc:
+            if "404" not in str(exc) or "owner's machine" not in str(exc) or live_calls:
+                errors += fail(f"the Mac's failure was not said as the Mac's: {exc} (live {live_calls})")
+        for ref, why in ((old, "h ago"), (gone, "no entry")):
+            live_calls.clear()
+            try:
+                ats.fetch({"type": "workday", "ref": ref})
+                errors += fail(f"{ref[0]}: a live 429 came back as rows")
+            except ats.RateLimited as exc:
+                if live_calls != [ref[0]] or why not in str(exc):
+                    errors += fail(f"{ref[0]}: asked live {live_calls}, said {exc!s:.120}")
+        ats.WORKDAY_SNAPSHOT, live_calls[:] = False, []
+        try:
+            ats.fetch({"type": "workday", "ref": good})
+        except ats.RateLimited:
+            pass
+        if live_calls != ["acme"]:
+            errors += fail("with the switch off the snapshot was still read (the Mac's own read would read itself)")
+    finally:
+        ats.WORKDAY_SNAPSHOT, ats._WD_SNAP, ats.FETCHERS["workday"], ats._utcnow = real
+
+    # the writer: a refusal for now keeps the last good rows at THEIR date; a
+    # real error is recorded; a read replaces; most boards failing writes nothing
+    old_snap = {"boards": {ats.workday_key(good): {"read_at": stale, "rows": [row]},
+                           ats.workday_key(broken): {"read_at": stale, "rows": [row]}}}
+    answers = {"acme": ats.RateLimited("https://acme", None),
+               "bust": ats.AtsError("HTTP 404 for https://bust"),
+               "olde": [dict(row, title="New role")]}
+    asked = []
+
+    def fake(block):
+        asked.append(block["ref"][0])
+        a = answers[block["ref"][0]]
+        if isinstance(a, Exception):
+            raise a
+        return a
+    refs = {ats.workday_key(r): r for r in (good, broken, old)}
+    new, counts = ws.build(refs, old_snap, fresh, fetch=fake)
+    b = new["boards"]
+    if b[ats.workday_key(good)] != {"read_at": stale, "rows": [row]}:
+        errors += fail(f"a 429 on the Mac replaced the last good read: {b[ats.workday_key(good)]}")
+    if asked.count("acme") != 2:
+        errors += fail(f"a 429 on the Mac was not asked again once: {asked}")
+    if not b[ats.workday_key(broken)].get("error") or "rows" in b[ats.workday_key(broken)]:
+        errors += fail(f"a 404 kept yesterday's rows instead of saying so: {b[ats.workday_key(broken)]}")
+    if b[ats.workday_key(old)].get("rows", [{}])[0].get("title") != "New role" \
+            or b[ats.workday_key(old)].get("read_at") != fresh:
+        errors += fail(f"a good read did not replace the old one: {b[ats.workday_key(old)]}")
+    if counts != {"read": 1, "kept": 1, "error": 1, "postings": 1}:
+        errors += fail(f"counts {counts}")
+
+    # Workday DOWN (5xx, a maintenance page) is a refusal for now, not an answer
+    for down_err in ("HTTP 503 for https://acme", "non-JSON response"):
+        answers["acme"] = ats.AtsError(down_err)
+        n2, _ = ws.build({ats.workday_key(good): good}, old_snap, fresh, fetch=fake)
+        if n2["boards"][ats.workday_key(good)] != {"read_at": stale, "rows": [row]}:
+            errors += fail(f"'{down_err}' on the Mac threw away the last good rows")
+
+    # a night when NOTHING was read writes nothing - every board already has
+    # rows, so they are all "kept" (the case the first guard missed)
+    every = {ats.workday_key([f"t{i}", "wd1", "S"]): [f"t{i}", "wd1", "S"] for i in range(6)}
+    had = {"boards": {k: {"read_at": stale, "rows": [row]} for k in every}}
+
+    def refused(block):
+        raise ats.RateLimited("https://x", None)
+    night, c = ws.build(every, had, fresh, fetch=refused)
+    if not ws.mostly_failed(night, len(every)):
+        errors += fail(f"a night that read no board would be written and pushed: {c}")
+    ok_night = {"generated": fresh, "boards": {
+        "a": {"read_at": fresh, "rows": []}, "b": {"read_at": fresh, "rows": []},
+        "c": {"read_at": stale, "rows": [row]}}}
+    if ws.mostly_failed(ok_night, 3):
+        errors += fail("a night with one board kept would write nothing")
+
+    # an untracked snapshot is deleted, a changed one restored, anything else refuses
+    plan = ws.cleanup_plan(f"?? {ws.REL}\n")
+    plan2 = ws.cleanup_plan(f" M {ws.REL}\n M scripts/ats.py\n")
+    if plan != ([], "delete") or plan2 != (["scripts/ats.py"], "restore"):
+        errors += fail(f"checkout cleanup plans {plan} / {plan2}")
+
+    # a Mac that just woke gets its network back before the run gives up
+    calls, real_git = [], ws.git
+
+    class _R:
+        def __init__(self, rc):
+            self.returncode, self.stdout, self.stderr = rc, "", "no network"
+    fetches = iter([1, 1, 0])
+
+    def fake_git(*args, check=True):
+        calls.append(args[0])
+        return _R(next(fetches)) if args[0] == "fetch" else _R(0)
+    try:
+        ws.git = fake_git
+        ws.prepare_checkout(sleep=lambda s: None)
+    except SystemExit as exc:
+        errors += fail(f"a fetch that failed twice then worked ended the run: {exc}")
+    finally:
+        ws.git = real_git
+    if calls.count("fetch") != 3 or calls[-1] != "checkout":
+        errors += fail(f"fetch retry made calls {calls}")
+
+    # the watchdog reads every board's own date, before the crawl loses them
+    def snap_at(stamp, gen=None, n=4):
+        return {"generated": gen or stamp,
+                "boards": {str(i): {"read_at": stamp, "rows": []} for i in range(n)}}
+    if watchdog.workday_snapshot_faults(snap_at(fresh), now=now):
+        errors += fail("the watchdog faulted a 7-hour-old snapshot")
+    late = watchdog.workday_snapshot_faults(snap_at("2026-11-16T14:00:00+00:00"), now=now)
+    if not late or not late[0][2]:
+        errors += fail(f"a 22-hour-old snapshot raised no hard fault: {late}")
+    lie = watchdog.workday_snapshot_faults(snap_at(stale, gen=fresh), now=now)
+    if not lie or not lie[0][2]:
+        errors += fail("a fresh `generated` over boards read days ago kept the watchdog quiet")
+    one = snap_at(fresh)
+    one["boards"]["0"]["read_at"] = stale
+    soft = watchdog.workday_snapshot_faults(one, now=now)
+    if not soft or soft[0][2]:
+        errors += fail(f"one board stuck for days raised {soft}, not a note")
+    if not watchdog.workday_snapshot_faults({}, now=now):
+        errors += fail("a missing snapshot raised no fault")
+
+    # and the crawl actually switches it on, for every step that reads a board
+    wf = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+    m = re.search(r"\n    env:\n((?:      .*\n)+)    steps:", wf)
+    if not m or not re.search(r'GOVTECH_DOCK_WORKDAY_SNAPSHOT:\s*"1"', m.group(1)):
+        errors += fail("refresh.yml does not set GOVTECH_DOCK_WORKDAY_SNAPSHOT for the whole job")
+    return errors
+
+
 def check_workday_is_paced_as_one_service_and_a_429_is_asked_again() -> int:
     """Workday's tenants share one gate, and "slow down" is not "no jobs".
 
@@ -40260,6 +40439,7 @@ def main() -> int:
     errors += check_the_gate_sees_an_unreadable_cliff()
     errors += check_a_transport_failure_gets_a_second_chance()
     errors += check_workday_is_paced_as_one_service_and_a_429_is_asked_again()
+    errors += check_workday_is_read_from_the_owners_mac()
     errors += check_a_refusal_is_not_a_search()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()

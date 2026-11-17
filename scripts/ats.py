@@ -109,6 +109,70 @@ TIMEOUT = 20
 FETCH_DETAILS = os.environ.get("GOVTECH_DOCK_JD_DETAILS", "") not in ("", "0")
 DETAIL_PAUSE = 0.2                        # seconds between per-posting requests
 
+# WORKDAY IS READ FROM THE OWNER'S MAC, AND THE CRAWL READS WHAT IT READ
+# (owner, 2026-11-17: "Read Workday from my Mac"). From 2026-11-16 Workday
+# answered 429 to GitHub's runners from the FIRST request of a run - 39 of 42
+# tenants, Motorola at index 11 included - while the same code read all 42 from
+# the owner's machine the same hour. GitHub's addresses are shared with every
+# scraper on Azure; ours are not. So scripts/workday_snapshot.py runs on the
+# Mac (launchd, deploy/launchd/) and commits data/workday_snapshot.json, and a
+# run with GOVTECH_DOCK_WORKDAY_SNAPSHOT=1 (refresh.yml sets it) takes a
+# Workday board from that file instead of asking Workday.
+#
+# The file never hides a failure. A board the Mac could not read is an error
+# here too, said as the Mac's error. A board it has not read in
+# WORKDAY_SNAPSHOT_MAX_AGE, or never read, is asked live - and when that live
+# read fails, the failure names the snapshot's age, because the fix is then
+# the Mac's job, not the board.
+WORKDAY_SNAPSHOT = os.environ.get("GOVTECH_DOCK_WORKDAY_SNAPSHOT", "") not in ("", "0")
+WORKDAY_SNAPSHOT_PATH = pathlib.Path(__file__).resolve().parent.parent / "data" / "workday_snapshot.json"
+WORKDAY_SNAPSHOT_MAX_AGE = dt.timedelta(hours=48)
+_WD_SNAP: dict | None = None
+_WD_SNAP_LOCK = threading.Lock()
+
+
+def _utcnow() -> dt.datetime:
+    return dt.datetime.now(dt.timezone.utc)
+
+
+def workday_key(ref) -> str:
+    """The snapshot's key for one Workday ref: the ref itself, as JSON."""
+    return json.dumps([str(x) for x in ref])
+
+
+def _workday_snapshot() -> dict:
+    global _WD_SNAP
+    with _WD_SNAP_LOCK:
+        if _WD_SNAP is None:
+            try:
+                _WD_SNAP = json.loads(WORKDAY_SNAPSHOT_PATH.read_text())
+            except (OSError, ValueError):
+                _WD_SNAP = {}
+        return _WD_SNAP
+
+
+def _workday_from_snapshot(ref, now: dt.datetime | None = None) -> tuple[list[dict] | None, str]:
+    """(rows, "") when the Mac read this board recently; (None, why not) otherwise.
+
+    Raises AtsError for a board the Mac read recently and could not read."""
+    entry = (_workday_snapshot().get("boards") or {}).get(workday_key(ref))
+    if not entry:
+        return None, "the Mac's Workday snapshot has no entry for this board"
+    try:
+        at = dt.datetime.fromisoformat(entry["read_at"])
+    except (KeyError, TypeError, ValueError):
+        return None, "the Mac's Workday snapshot entry has no readable date"
+    if at.tzinfo is None:
+        at = at.replace(tzinfo=dt.timezone.utc)
+    age = (now or _utcnow()) - at
+    if age > WORKDAY_SNAPSHOT_MAX_AGE:
+        return None, (f"the Mac last read this board {age.total_seconds() / 3600:.0f}h ago "
+                      f"(~/Library/Logs/sledjobs-workday.log says why)")
+    if entry.get("error"):
+        raise AtsError(f"{entry['error']} (read on the owner's machine, {entry['read_at'][:16]})")
+    # Copies: a caller that edits a row must not edit the next caller's row.
+    return [dict(r) for r in entry.get("rows") or []], ""
+
 
 class AtsError(Exception):
     pass
@@ -2565,6 +2629,19 @@ def fetch(ats: dict) -> list[dict]:
     fn = FETCHERS.get(kind)
     if fn is None:
         raise AtsError(f"unsupported ats type: {kind}")
+    if kind == "workday" and WORKDAY_SNAPSHOT:
+        # Rows the Mac stored came out of plain_rows already; they go back as
+        # they were stored rather than through it twice.
+        rows, why_not = _workday_from_snapshot(ref)
+        if rows is not None:
+            return rows
+        try:
+            return plain_rows(fn(ref))
+        except RateLimited as exc:
+            exc.args = (f"{exc.args[0] if exc.args else exc}; {why_not}",)
+            raise
+        except AtsError as exc:
+            raise AtsError(f"{exc}; {why_not}") from exc
     # One normalisation point for sixteen fetchers. Doing it per fetcher means
     # the next one added quietly skips it, and the escape reaches the id - or,
     # now, the row comes back with no jd/comp keys at all and a consumer that
