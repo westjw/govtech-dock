@@ -25973,6 +25973,132 @@ def check_a_transport_failure_gets_a_second_chance() -> int:
 
 
 
+def check_workday_is_paced_as_one_service_and_a_429_is_asked_again() -> int:
+    """Workday's tenants share one gate, and "slow down" is not "no jobs".
+
+    Every Workday tenant is a host of its own, so the per-host gate never
+    paced Workday: its 42 boards went out together from ten workers, and on
+    2026-11-16 Workday answered 39 of them "429 rate limited" in both crawls of
+    the day. Neither the build nor the hiring refresh asked again, so each
+    board read as a company with no openings, 24% of the board went with
+    them, and the sanity gate refused to publish it - twice. Read alone from
+    here, the same tenant answered at once.
+    """
+    import refresh
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    # one key for every Workday tenant, on both of its board hosts; every
+    # other host keeps its own, and a look-alike is not Workday
+    wd = ["https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/x/y/jobs",
+          "https://badgermeter.wd5.myworkdayjobs.com/wday/cxs/x/y/jobs",
+          "https://wd3.myworkdaysite.com/wday/cxs/modaxo/Tadera/jobs",
+          "https://acme.wd1.myworkdayjobs.com:443/x"]
+    keys = {ats._gate_key(u) for u in wd}
+    if len(keys) != 1:
+        errors += fail(f"Workday tenants queue at different gates {sorted(keys)}, so they go out together")
+    other = ["https://boards-api.greenhouse.io/v1/boards/a/jobs",
+             "https://api.lever.co/v0/postings/b",
+             "https://myworkdayjobs.com.evil.test/x"]
+    okeys = [ats._gate_key(u) for u in other]
+    if len(set(okeys)) != len(other) or keys & set(okeys):
+        errors += fail(f"a host that is not Workday shares a gate: {okeys} against {sorted(keys)}")
+
+    real = (ats.HOST_PAUSE, ats.RATE_LIMIT_PAUSE, ats.requests.post, ats.HTTP_CACHE)
+    ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear(); ats._HOST_NOT_BEFORE.clear()
+
+    class _Resp:
+        def __init__(self, code, headers=None):
+            self.status_code, self.headers, self.text = code, headers or {}, ""
+
+        def json(self):
+            return {"jobPostings": []}
+    try:
+        # six tenants from six threads come out spaced, not in a burst
+        pause = 0.05
+        ats.HOST_PAUSE = pause
+        stamps, lock = [], threading.Lock()
+
+        def hit(u):
+            ats._host_gate(u)
+            with lock:
+                stamps.append(time.monotonic())
+        ts = [threading.Thread(target=hit, args=(f"https://t{i}.wd5.myworkdayjobs.com/x",)) for i in range(6)]
+        for th in ts: th.start()
+        for th in ts: th.join()
+        stamps.sort()
+        gaps = [b - a for a, b in zip(stamps, stamps[1:])]
+        if gaps and min(gaps) < pause * 0.8:
+            errors += fail(f"six Workday tenants went out {min(gaps):.3f}s apart (pause {pause}s): "
+                           f"Workday is not paced as one service")
+
+        # a 429 that names no Retry-After still backs the whole service off,
+        # and only that service
+        ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear(); ats._HOST_NOT_BEFORE.clear()
+        ats.HOST_PAUSE, ats.RATE_LIMIT_PAUSE, ats.HTTP_CACHE = 0.01, 0.6, None
+        ats.requests.post = lambda *a, **k: _Resp(429)
+        try:
+            ats._post_json(wd[0], {})
+            errors += fail("a 429 on a Workday POST did not raise")
+        except ats.RateLimited:
+            pass
+        ats.requests.post = lambda *a, **k: _Resp(200)
+        t0 = time.monotonic(); ats._post_json(wd[1], {})
+        if time.monotonic() - t0 < 0.45:
+            errors += fail("after one tenant's 429 with no Retry-After, another tenant went "
+                           "straight back in: the service was not backed off")
+        t0 = time.monotonic(); ats._post_json("https://boards-api.greenhouse.io/x", {})
+        if time.monotonic() - t0 > 0.4:
+            errors += fail("Workday's 429 backed off an unrelated host")
+    finally:
+        ats.HOST_PAUSE, ats.RATE_LIMIT_PAUSE, ats.requests.post, ats.HTTP_CACHE = real
+        ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear(); ats._HOST_NOT_BEFORE.clear()
+
+    # the hiring refresh asks once more after a 429, and only once
+    keep = (ats.fetch, refresh._try_render)
+    calls = {"n": 0}
+    job = [{"title": "Account Executive, State and Local Government", "location": "Remote",
+            "url": "https://acme.wd5.myworkdayjobs.com/en-US/Careers/job/1"}]
+    try:
+        refresh._try_render = lambda *a, **k: None
+
+        def limited_then(n):
+            def f(_ats):
+                calls["n"] += 1
+                if calls["n"] <= n:
+                    raise ats.RateLimited("https://acme.wd5.myworkdayjobs.com/x", None)
+                return job
+            return f
+        comp = {"id": "acme", "name": "Acme", "website": None,
+                "ats": {"type": "workday", "ref": ["acme", "wd5", "Careers"]}}
+        ats.fetch = limited_then(1)
+        got = refresh.check_company(comp)
+        if got.get("status") == "Unknown" or calls["n"] != 2:
+            errors += fail(f"the hiring refresh did not ask again after one 429 "
+                           f"({calls['n']} read(s)): {got}")
+        calls["n"] = 0
+        ats.fetch = limited_then(9)
+        got = refresh.check_company(comp)
+        if got.get("status") != "Unknown" or calls["n"] != 2:
+            errors += fail(f"a board that kept saying 429 was read {calls['n']} time(s) "
+                           f"or not left Unknown: {got}")
+    finally:
+        ats.fetch, refresh._try_render = keep
+
+    # the build's read_board retries a 429 as it retries a dropped socket
+    # (shape: read_board is a closure inside main)
+    src = (ROOT / "scripts" / "build_board.py").read_text()
+    i = src.find("def read_board(")
+    body = "\n".join(ln.split("#")[0] for ln in src[i:i + 3200].split("\n"))
+    if not re.search(r"transient\s*=[^\n]*(\n[^\n]*){0,3}RateLimited", body):
+        errors += fail("build_board's read_board does not count a 429 as transient, so a "
+                       "board that said 'not so fast' publishes as a company with no jobs")
+    return errors
+
+
 def check_a_refusal_is_not_a_search() -> int:
     """"We could not find a board" and "they turned us away" are not the same.
 
@@ -40133,6 +40259,7 @@ def main() -> int:
     errors += check_an_unread_board_is_not_a_zero()
     errors += check_the_gate_sees_an_unreadable_cliff()
     errors += check_a_transport_failure_gets_a_second_chance()
+    errors += check_workday_is_paced_as_one_service_and_a_429_is_asked_again()
     errors += check_a_refusal_is_not_a_search()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()

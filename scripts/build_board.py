@@ -2158,10 +2158,17 @@ def main() -> int:
         # that the slug is gone; asking twice wastes somebody's request and
         # changes nothing. The 16 of those in the same run are a real finding
         # that a retry would only have hidden more slowly.
+        #
+        # A 429 IS RETRIED TOO (2026-11-16). It is the board saying "not so
+        # fast", not an answer about its jobs: Workday turned 39 boards away
+        # with it in one crawl, and each was about to publish as a company
+        # with no openings. The retry queues at the same gate, which holds it
+        # until the server's backoff has passed (ats._back_off).
         try:
             return c, once(), None, True, False
         except Exception as exc:
-            transient = "network error" in str(exc) or "timed out" in str(exc).lower()
+            transient = ("network error" in str(exc) or "timed out" in str(exc).lower()
+                         or isinstance(exc, ats.RateLimited))
             if not transient:
                 return c, [], str(exc)[:60], True, kind == "html"
             time.sleep(1.5)

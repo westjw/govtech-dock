@@ -389,8 +389,34 @@ _HOST_LOCKS: dict[str, threading.Lock] = {}
 _HOST_TABLE = threading.Lock()
 
 
-def _host_gate(url: str) -> None:
+# ONE SERVICE, ONE GATE (2026-11-16). Every Workday tenant is a host of its
+# own (motorolasolutions.wd5.myworkdayjobs.com, badgermeter.wd5...), so the
+# per-host gate never paced Workday at all: its 42 boards went out together
+# from build_board's ten workers, and on 2026-11-16 Workday answered 39 of
+# them "429 rate limited" in both crawls of the day - 24% of the board, and
+# the sanity gate refused to publish it twice. The same tenant read from here
+# alone answered at once. Workday's limit is on the caller, not the tenant,
+# so its tenants share one gate (and one backoff). Every host not named here
+# keeps its own gate.
+_SHARED_GATES = ((re.compile(r"(^|\.)(myworkdayjobs|myworkdaysite)\.com$"), "workday"),)
+# A 429 that names no Retry-After still backs its gate off this long: a
+# server that says only "too many" has said to wait, and asking again at once
+# is the burst that earned the 429.
+RATE_LIMIT_PAUSE = float(os.environ.get("GOVTECH_DOCK_429_PAUSE", "15"))
+
+
+def _gate_key(url: str) -> str:
+    """The gate a request queues at: its host, or the service it shares."""
     host = urllib.parse.urlsplit(url).netloc.lower()
+    name = host.rsplit("@", 1)[-1].split(":")[0]
+    for rx, key in _SHARED_GATES:
+        if rx.search(name):
+            return key
+    return host
+
+
+def _host_gate(url: str) -> None:
+    host = _gate_key(url)
     if not host or HOST_PAUSE <= 0:
         return
     with _HOST_TABLE:                       # only guards the dicts, never a sleep
@@ -416,12 +442,13 @@ def _host_gate(url: str) -> None:
 def _back_off(url: str, resp) -> None:
     """A 429 is an instruction. Record it where the gate will read it."""
     wait = _retry_after(resp.headers.get("Retry-After"))
-    if wait:
-        host = urllib.parse.urlsplit(url).netloc.lower()
+    hold = wait or RATE_LIMIT_PAUSE
+    if hold:
+        host = _gate_key(url)
         with _HOST_TABLE:
             _HOST_LOCKS.setdefault(host, threading.Lock())
             _HOST_NOT_BEFORE[host] = max(_HOST_NOT_BEFORE.get(host, 0.0),
-                                         time.monotonic() + min(wait, 300))
+                                         time.monotonic() + min(hold, 300))
     raise RateLimited(url, wait)
 
 

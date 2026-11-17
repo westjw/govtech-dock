@@ -3544,6 +3544,19 @@ do sleep 15; done` - or bracket the pattern, `pgrep -f "[b]uild_board.py"`.
 (correctly - a partial run overwriting the full board destroyed the dataset
 once).
 
+**Workday is one service, paced as one** (2026-11-16). Each Workday tenant is
+a host of its own, so the per-host gate (`ats._host_gate`) never paced
+Workday: its 42 boards went out together from ten workers, and Workday
+answered 39 of them `429 rate limited` in both crawls of 2026-11-16. Neither
+the build nor the hiring refresh asked again, so 24% of the board read as
+companies with no openings and the sanity gate refused to publish it twice;
+read alone, the same tenants answered at once. `ats._gate_key` gives every
+`*.myworkdayjobs.com` / `*.myworkdaysite.com` tenant one gate and one backoff,
+a 429 with no Retry-After still backs its gate off `RATE_LIMIT_PAUSE` (15s),
+and `build_board.read_board` and `refresh.check_company` ask once more after
+a 429. All 42 read through the shared gate from a laptop: 305 requests, 156s,
+0 refused. `check_workday_is_paced_as_one_service_and_a_429_is_asked_again`.
+
 **The offline mode is `scripts/quick_rebuild.py` (2026-09-28).** This section
 said it was deliberately not built because the postings flow through the fetch
 loop that builds `orgs`. That loop no longer builds them: every organization

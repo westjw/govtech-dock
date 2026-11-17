@@ -215,7 +215,13 @@ def check_company(comp: dict) -> dict:
     if kind == "unknown":
         return {"status": "Unknown", "note": "no ATS on file", "roles": [], "skipped": True}
     try:
-        jobs = ats.fetch(comp["ats"])
+        try:
+            jobs = ats.fetch(comp["ats"])
+        except ats.RateLimited:
+            # "not so fast" is not an answer about the board (2026-11-16:
+            # Workday turned 39 boards away in one crawl). Asked once more; the
+            # gate holds this until the server's backoff has passed.
+            jobs = ats.fetch(comp["ats"])
         status, note, roles = classify.rollup(jobs)
     except ats.AtsError as exc:
         # "page too small - likely JS-rendered" is the MOST render-appropriate
