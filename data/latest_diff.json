@@ -1,132 +1,97 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "previous": "2026-11-16",
   "changes": [
     {
-      "company": "Technosylva",
-      "id": "technosylva",
+      "company": "Prophecy Gov",
+      "id": "prophecy-gov",
       "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Product Marketing Manager - Sales  only"
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
     },
     {
-      "company": "CivicPlus",
-      "id": "civicplus",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "SOVRA",
-      "id": "sovra",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative,  only"
-    },
-    {
-      "company": "Netchex",
-      "id": "netchex",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Tanium",
-      "id": "tanium",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Commercial Account Executive (Addison, TX)"
-    },
-    {
-      "company": "Xplor Recreation",
-      "id": "xplor-recreation",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative only"
-    },
-    {
-      "company": "Propelus",
-      "id": "propelus",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Data Partnerships Manager (Remote  only"
-    },
-    {
-      "company": "Calsense",
-      "id": "calsense",
+      "company": "Veritone",
+      "id": "veritone",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Junior Media Account Executive (London, UK)"
     },
     {
-      "company": "EMS LINQ",
-      "id": "ems-linq",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Manager, Salesforce only"
-    },
-    {
-      "company": "mdf commerce",
-      "id": "mdf-commerce",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative,  only"
-    },
-    {
-      "company": "Sentinel Offender Services",
-      "id": "sentinel-offender-services",
-      "from": "Yes",
+      "company": "Systems & Methods, Inc.",
+      "id": "systems-methods-inc",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
+      "company": "AccessE11",
+      "id": "accesse11",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "network error: robots.txt on accesse11.c"
+    },
+    {
+      "company": "HydroPoint Data Systems",
+      "id": "hydropoint-data-systems",
       "from": "Yes",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "HTTP 504 for https://www.hydropoint.com/"
     },
     {
-      "company": "Gravyty",
-      "id": "gravyty",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Enterprise Customer Success Manage only"
-    },
-    {
-      "company": "ITO Health",
-      "id": "ito-health",
+      "company": "Merative",
+      "id": "merative",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Account Executive, Springbuk (Remote \u2013 United St)"
     },
     {
-      "company": "Dun & Bradstreet, Inc.",
-      "id": "dun-bradstreet-inc",
-      "from": "Yes",
+      "company": "Highland Electric Fleets",
+      "id": "highland-electric-fleets",
+      "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Zagaran Software",
-      "id": "zagaran-software",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
-      "company": "Filevine",
-      "id": "filevine",
+      "company": "Wastequip",
+      "id": "wastequip",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Outside Sales Representative (4 Locations)"
+    },
+    {
+      "company": "Dun & Bradstreet, Inc.",
+      "id": "dun-bradstreet-inc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Business Development Manager (Hong Kong)"
+    },
+    {
+      "company": "Totara",
+      "id": "totara",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Director only"
+    },
+    {
+      "company": "Workiva",
+      "id": "workiva",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (2 Locations)"
     },
     {
       "company": "MRI Software",
       "id": "mri-software",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 429 rate limited for https://mrisof"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "SaaS Sales (Business Development M (Singapore Office)"
     }
   ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "IBM, AMD advance quantum error correction decoding at scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/pelagos"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/quantum/blog/qiskit-beyond-python"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Directed execution: Scaling a research platform for quantum error correction",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/directed-execution"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "time",
+   "first_seen": "2026-11-16",
+   "headline": "Drone Footage Redaction: What Agencies Need to Know Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/drone-footage-redaction-guide"
+  },
+  {
    "date": "2026-10-31",
    "date_source": "time",
    "first_seen": "2026-10-31",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "School Surveillance Video Redaction Under FERPA",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/body-camera-public-records-law-2026"
-  },
-  {
-   "date": "2026-08-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Defensible Video Redaction: What Courts Look For",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/defensible-video-redaction"
   }
  ],
  "profile": {

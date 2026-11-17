@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "36 Hours to Get on the Same Channel: Mutual Aid Without Shared Radios",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.leosight.com/blog/mutual-aid-communication-without-shared-radios"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.leosight.com/blog/doj-fy25-edward-byrne-memorial-justice-grant-program"
-  },
-  {
-   "date": "2026-03-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "LeoSight and Veritone to Provide Next-Generation of Real-Time, AI-Powered Public Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.leosight.com/newsroom/leosight-and-veritone-to-provide-next-generation-of-real-time-ai-powered-public-safety"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Piers Dormeyer Interviews Brannon Lacey on Powering Property Intelligence with AI: The Altitude Podcast, Season 3, Episode 2",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eagleview.com/blog/altitude-podcast-season-3-episode-2/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eagleview.com/blog/operational-efficiency-in-insurance-is-no-longer-about-doing-more-with-less-its-about-knowing-more-before-you-go/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "La eficiencia operativa en el sector de los seguros ya no consiste en hacer m\u00e1s con menos, sino en saber m\u00e1s antes de actuar.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eagleview.com/es/blog/operational-efficiency-in-insurance-is-no-longer-about-doing-more-with-less-its-about-knowing-more-before-you-go/?wg-choose-original=false"
   }
  ],
  "profile": {

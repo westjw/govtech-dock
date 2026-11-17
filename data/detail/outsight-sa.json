@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "card-date",
+   "first_seen": "2026-11-16",
+   "headline": "Outsight, Intel and Microsoft bring Dynamic World Models to the Enterprise Edge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsight.ai/insights/outsight-intel-and-microsoft-bring-dynamic-world-models-to-the-edge/"
+  },
+  {
    "date": "2026-11-07",
    "date_source": "card-date",
    "first_seen": "2026-11-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsight.ai/insights/intel-and-outsight-announce-strategic-collaboration/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Bordeaux Airport deploys Outsight solution to reduce passenger waiting times",
-   "kind": "contract",
-   "kind_rule": "Airport deploys",
-   "url": "https://www.outsight.ai/insights/bordeaux-airport-deploys-outsight-solution-to-reduce-passenger-waiting-times/"
   }
  ],
  "profile": {

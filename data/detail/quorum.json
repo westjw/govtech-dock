@@ -1,13 +1,58 @@
 {
  "news": [
   {
-   "date": "2026-11-12",
+   "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.quorum.us/blog/introducing-quincy-hub/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "KPIs for a Lawmaker\u2019s Office: How to Show What You Delivered",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/kpis-for-a-lawmakers-office-how-to-show-what-you-delivered/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "Hiring Your First Legislative Staff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/hiring-your-first-legislative-staff/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "Who Decides What: Decision Trees for a Lawmaker\u2019s Office",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/who-decides-what-decision-trees-for-a-lawmakers-office/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "Working With Colleagues: Caucuses, Committees, and Coalitions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/working-with-colleagues-caucuses-committees-and-coalitions/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "How to Set Up a New Lawmaker\u2019s Office: A 90-Day Plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/how-to-set-up-a-new-lawmakers-office-a-90-day-plan/"
   },
   {
    "date": "2026-11-12",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/ai-bill-tracking-5-improvements-to-how-your-team-tracks-legislation-in-2027/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-22",
-   "headline": "Election Year Advocacy: Trends in Grassroots Mobilization Heading Into 2027",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/election-year-advocacy-trends-in-grassroots-mobilization-heading-into-2027/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-08",
-   "headline": "Why Corporate PAC Participation Keeps Sliding (and How to Increase It)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/why-corporate-pac-participation-keeps-sliding/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "How to Build a 2027 Grassroots Advocacy Plan: Goals, Calendar, and Cadence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/grassroots-advocacy-plan/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "2026 Election Prep Guide: What to Expect in Quorum",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/2026-election-prep-guide-what-to-expect-in-quorum/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "PAC Data Is Leaving Its Silo",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/pac-data-is-leaving-its-silo/"
   }
  ]
 }

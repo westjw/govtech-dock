@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-16",
+   "headline": "FMCSA Hours of Service Rules Explained: 11-Hour, 14-Hour, and 30-Minute Break",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/hours-of-service-rules/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "index-text",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/construction-fleet-safety/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-27",
-   "headline": "Fleet Safety Management: How to Build a Safer Fleet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/fleet-safety-management/"
   }
  ],
  "profile": {

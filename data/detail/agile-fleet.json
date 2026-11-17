@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "How to Build a Shared Fleet Operating Model That Scales Across Departments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-build-a-shared-fleet-operating-model-that-scales-across-departments"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/how-to-build-an-audit-ready-shared-fleet-process-for-government-agencies"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Agile Fleet Launches FleetCommander GO, Expanding Automated Vehicle Access for Departments and Smaller Fleets",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.agilefleet.com/news/agile-fleet-launches-fleetcommander-go-to-simplify-vehicle-sharing-and-automated-key-access"
   }
  ],
  "profile": {

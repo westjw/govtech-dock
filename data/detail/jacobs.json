@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Supporting the development of the New Zealand Flood Map",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jacobs.com/newsroom/news/supporting-development-new-zealand-flood-map"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "index-text",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jacobs.com/newsroom/news/jacobs-earns-18-no1-rankings-across-engineering-news-records-full-2026-market-review"
-  },
-  {
-   "date": "2026-01-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Creating spaces where travel takes off: Jacobs extends relationship with United Airlines",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jacobs.com/newsroom/news/creating-spaces-where-travel-takes-jacobs-extends-relationship-united-airlines"
   }
  ],
  "profile": {
