@@ -1,9 +1,9 @@
 {
- "checked_on": "2026-11-11",
+ "checked_on": "2026-11-18",
  "counts": {
   "moved": 141,
-  "ok": 3046,
-  "unread": 276
+  "ok": 3121,
+  "unread": 273
  },
  "links": {
   "365labs": [
@@ -84,6 +84,24 @@
     "url": "https://actuate.ai/careers"
    }
   ],
+  "acuity-brands": [
+   {
+    "field": "website",
+    "final": "https://www.acuitybrands.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.acuitybrands.com"
+   },
+   {
+    "field": "board",
+    "final": "https://acuityinc.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://acuityinc.com/careers"
+   }
+  ],
   "adf-solutions": [
    {
     "field": "website",
@@ -113,6 +131,24 @@
     "status": 403,
     "title": "",
     "url": "https://www.airit.com"
+   }
+  ],
+  "airnav-systems": [
+   {
+    "field": "website",
+    "final": "https://www.airnavradar.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.airnavradar.com/"
+   },
+   {
+    "field": "board",
+    "final": "https://www.airnavradar.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.airnavradar.com/careers"
    }
   ],
   "aladtec": [
@@ -242,20 +278,14 @@
     "why": "timed out"
    }
   ],
-  "applied-information": [
+  "apx-data": [
    {
-    "field": "board",
-    "final": "https://appinfoinc.com/careers",
+    "field": "website",
+    "final": "https://www.apxdata.com",
     "kind": "unread",
-    "plain_http": {
-     "final": "https://appinfoinc.com/careers/",
-     "kind": "ok",
-     "title": "Intelligent Transportation System Careers at Applied Information"
-    },
-    "status": null,
+    "status": 500,
     "title": "",
-    "url": "https://appinfoinc.com/careers",
-    "why": "timed out"
+    "url": "https://www.apxdata.com"
    }
   ],
   "aquarius-spectrum": [
@@ -284,6 +314,24 @@
     "status": 403,
     "title": "",
     "url": "https://www.archistar.ai/careers/"
+   }
+  ],
+  "armis": [
+   {
+    "field": "website",
+    "final": "https://www.armis.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.armis.com/"
+   },
+   {
+    "field": "board",
+    "final": "https://www.armis.com/armis-careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.armis.com/armis-careers"
    }
   ],
   "aspentech-osi": [
@@ -462,35 +510,6 @@
     "why": "no such domain"
    }
   ],
-  "blitz": [
-   {
-    "field": "website",
-    "final": "https://blitzpermits.ai/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://blitzpermits.ai/"
-   },
-   {
-    "field": "board",
-    "final": "https://blitzpermits.ai/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://blitzpermits.ai/careers"
-   }
-  ],
-  "blocksi": [
-   {
-    "field": "board",
-    "final": "https://blocksi.net/careers",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://blocksi.net/careers",
-    "why": "timed out"
-   }
-  ],
   "blue-bird-corporation": [
    {
     "field": "website",
@@ -522,22 +541,12 @@
     "url": "https://gobonfire.com"
    }
   ],
-  "boomi": [
-   {
-    "field": "website",
-    "final": "https://boomi.com/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://boomi.com/"
-   }
-  ],
   "brainfreeze": [
    {
     "field": "website",
     "final": "https://brainfreeze.ai",
     "kind": "unread",
-    "status": 403,
+    "status": 521,
     "title": "",
     "url": "https://brainfreeze.ai"
    }
@@ -640,6 +649,16 @@
     "why": "connection dropped"
    }
   ],
+  "canva": [
+   {
+    "field": "website",
+    "final": "https://www.canva.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.canva.com/"
+   }
+  ],
   "carasolva": [
    {
     "field": "website",
@@ -669,16 +688,6 @@
     "status": 200,
     "title": "Asset Management Software for Government & Public Works | OpenGov",
     "url": "https://www.cartegraph.com"
-   }
-  ],
-  "caseguard": [
-   {
-    "field": "website",
-    "final": "https://caseguard.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://caseguard.com"
    }
   ],
   "caselle": [
@@ -821,18 +830,18 @@
   "collins-aerospace-an-rtx-business": [
    {
     "field": "website",
-    "final": "https://www.rtx.com/collinsaerospace/",
-    "kind": "moved",
-    "status": 200,
-    "title": "AEROSPACE REDEFINED | Collins Aerospace",
+    "final": "https://www.collinsaerospace.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
     "url": "https://www.collinsaerospace.com/"
    },
    {
     "field": "board",
-    "final": "https://www.rtx.com/collinsaerospace/careers/engineering/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Engineering Careers | Collins Aerospace",
+    "final": "https://www.collinsaerospace.com/collinsaerospace/careers/engineering",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
     "url": "https://www.collinsaerospace.com/collinsaerospace/careers/engineering"
    }
   ],
@@ -927,35 +936,6 @@
     "url": "https://www.courbanize.com"
    }
   ],
-  "courtsmart": [
-   {
-    "field": "website",
-    "final": "https://www.courtsmart.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.courtsmart.com",
-    "why": "no such domain"
-   },
-   {
-    "field": "board",
-    "final": "https://www.courtsmart.com/employment/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.courtsmart.com/employment/",
-    "why": "no such domain"
-   },
-   {
-    "field": "posts_at",
-    "final": "https://www.courtsmart.com/employment/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.courtsmart.com/employment/",
-    "why": "no such domain"
-   }
-  ],
   "csg-forte": [
    {
     "field": "website",
@@ -1031,47 +1011,6 @@
     "url": "https://www.daysmart.com/recreation"
    }
   ],
-  "deaf-link": [
-   {
-    "field": "website",
-    "final": "https://www.deaflink.com/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.deaflink.com/",
-    "why": "network error"
-   }
-  ],
-  "debtbook": [
-   {
-    "field": "website",
-    "final": "https://monetaryhq.com/?from=debtbook",
-    "kind": "moved",
-    "status": 200,
-    "title": "Treasury Software for Government and Nonprofits | Monetary",
-    "url": "https://www.debtbook.com"
-   }
-  ],
-  "deccan-international": [
-   {
-    "field": "website",
-    "final": "https://deccanintl.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://deccanintl.com",
-    "why": "certificate is for another address"
-   },
-   {
-    "field": "board",
-    "final": "https://deccanintl.com/who-we-are/careers/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://deccanintl.com/who-we-are/careers/",
-    "why": "certificate is for another address"
-   }
-  ],
   "dedrone-by-axon": [
    {
     "field": "board",
@@ -1098,7 +1037,7 @@
     "final": "https://www.atlantiscollectiebeheer.nl/",
     "kind": "moved",
     "status": 200,
-    "title": "Atlantis Archief- en Collectiebeheer",
+    "title": "Collectiebeheer voor archieven, musea en erfgoed | Atlantis",
     "url": "https://www.deventit.nl"
    }
   ],
@@ -1120,6 +1059,24 @@
     "status": 200,
     "title": "Digital Ally | Body Cameras, In-Car & Fleet Video Solutions",
     "url": "https://www.digitalallyinc.com"
+   }
+  ],
+  "digitech": [
+   {
+    "field": "website",
+    "final": "https://www.digitechcomputer.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.digitechcomputer.com"
+   },
+   {
+    "field": "board",
+    "final": "https://digitechcomputer.com/who-we-are/careers/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://digitechcomputer.com/who-we-are/careers/"
    }
   ],
   "disaster-tech": [
@@ -1259,16 +1216,6 @@
     "url": "https://ecivis.com"
    }
   ],
-  "edmunds-govtech": [
-   {
-    "field": "website",
-    "final": "https://www.edmundsgovtech.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.edmundsgovtech.com"
-   }
-  ],
   "edovo": [
    {
     "field": "website",
@@ -1316,7 +1263,7 @@
     "final": "https://www.escapetech.com",
     "kind": "unread",
     "plain_http": {
-     "final": "https://www.frontlineeducation.com/escape",
+     "final": "https://www.frontlineeducation.com/escape/",
      "kind": "moved",
      "title": "Escape Technology, now part of Frontline Education"
     },
@@ -1344,24 +1291,6 @@
     "status": 520,
     "title": "",
     "url": "https://everdriven.com"
-   }
-  ],
-  "evluma": [
-   {
-    "field": "website",
-    "final": "https://www.evluma.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.evluma.com"
-   },
-   {
-    "field": "board",
-    "final": "https://evluma.com/about/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://evluma.com/about/careers"
    }
   ],
   "evolv-technology": [
@@ -1392,6 +1321,16 @@
     "url": "https://fasterasset.com/careers"
    }
   ],
+  "federated-wireless": [
+   {
+    "field": "website",
+    "final": "https://federatedwireless.ai",
+    "kind": "moved",
+    "status": 200,
+    "title": "Federated Wireless | Shared Spectrum AI, CBRS SAS, 6 GHz AFC",
+    "url": "https://www.federatedwireless.com"
+   }
+  ],
   "findhelp": [
    {
     "field": "website",
@@ -1420,16 +1359,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.firstwatch.net"
-   }
-  ],
-  "fleetio": [
-   {
-    "field": "website",
-    "final": "https://www.fleetio.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.fleetio.com"
    }
   ],
   "frogparking": [
@@ -1625,7 +1554,7 @@
     "status": null,
     "title": "",
     "url": "https://greenq.co.il",
-    "why": "timed out"
+    "why": "connection refused"
    },
    {
     "field": "board",
@@ -1634,7 +1563,7 @@
     "status": null,
     "title": "",
     "url": "https://greenq.co.il/join-us/",
-    "why": "timed out"
+    "why": "connection refused"
    }
   ],
   "greenspace-health": [
@@ -1836,6 +1765,17 @@
     "url": "https://identakid.com"
    }
   ],
+  "ier": [
+   {
+    "field": "website",
+    "final": "https://www.ier.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.ier.com",
+    "why": "timed out"
+   }
+  ],
   "ifs": [
    {
     "field": "website",
@@ -1904,13 +1844,24 @@
     "url": "https://www.irtsoftware.com"
    }
   ],
+  "indra-group": [
+   {
+    "field": "website",
+    "final": "https://www.indragroup.com/es",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.indragroup.com/es",
+    "why": "network error"
+   }
+  ],
   "infrahub": [
    {
     "field": "website",
     "final": "https://www.infrahub.com/",
     "kind": "moved",
     "status": 200,
-    "title": "AI for Public Works | InfraHub Asset Management",
+    "title": "AI for Public Works | InfraHub",
     "url": "https://www.infrahub.ai"
    }
   ],
@@ -1935,16 +1886,6 @@
     "why": "no such domain"
    }
   ],
-  "innovative": [
-   {
-    "field": "website",
-    "final": "https://www.iii.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.iii.com"
-   }
-  ],
   "innovyze": [
    {
     "field": "website",
@@ -1953,16 +1894,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.autodesk.com/products/innovyze"
-   }
-  ],
-  "inrix": [
-   {
-    "field": "website",
-    "final": "https://inrix.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://inrix.com"
    }
   ],
   "invita-healthcare-technologies": [
@@ -2009,12 +1940,11 @@
   "ipvideo": [
    {
     "field": "website",
-    "final": "https://ipvideocorp.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://ipvideocorp.com",
-    "why": "certificate expired"
+    "final": "https://www.pelco.com",
+    "kind": "moved",
+    "status": 200,
+    "title": "CCTV Solutions, Security Cameras, Sensors & Devices | Pelco",
+    "url": "https://ipvideocorp.com"
    }
   ],
   "it-curves": [
@@ -2074,16 +2004,6 @@
     "title": "",
     "url": "https://jailgeek.com",
     "why": "connection dropped"
-   }
-  ],
-  "just-appraised": [
-   {
-    "field": "website",
-    "final": "https://www.alltus.com/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Alltus \u2014 Building capacity for greater public good",
-    "url": "https://www.justappraised.com"
    }
   ],
   "justice-systems-by-long": [
@@ -2188,52 +2108,34 @@
     "why": "no such domain"
    }
   ],
-  "lexisnexis-risk-solutions": [
-   {
-    "field": "website",
-    "final": "https://risk.lexisnexis.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://risk.lexisnexis.com"
-   },
-   {
-    "field": "board",
-    "final": "https://risk.lexisnexis.com/contact-us#career",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://risk.lexisnexis.com/contact-us#career"
-   }
-  ],
-  "lexisnexis-risk-solutions-government": [
-   {
-    "field": "website",
-    "final": "https://risk.lexisnexis.com/government",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://risk.lexisnexis.com/government"
-   }
-  ],
   "limble": [
    {
     "field": "website",
     "final": "https://limble.com/",
     "kind": "moved",
     "status": 200,
-    "title": "#1 Rated Maintenance Asset Management Platform | Limble",
+    "title": "Limble CMMS | Maintenance Software Technicians Actually Use | Limble",
     "url": "https://limblecmms.com"
    }
   ],
   "lion-electric": [
    {
     "field": "website",
-    "final": "https://lionlion.ca/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Home - Lion Electric",
-    "url": "https://thelionelectric.com"
+    "final": "https://thelionelectric.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://thelionelectric.com",
+    "why": "timed out"
+   },
+   {
+    "field": "board",
+    "final": "https://lionlion.ca/careers/",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://lionlion.ca/careers/",
+    "why": "timed out"
    }
   ],
   "lobbyguard-solutions": [
@@ -2333,6 +2235,16 @@
     "url": "https://www.maximus.com/careers"
    }
   ],
+  "md-ally": [
+   {
+    "field": "posts_at",
+    "final": "https://jobs.gusto.com/boards/md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://jobs.gusto.com/boards/md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922"
+   }
+  ],
   "mdf-commerce": [
    {
     "field": "website",
@@ -2341,24 +2253,6 @@
     "status": 200,
     "title": "SOVRA | Government procurement software for public sector",
     "url": "https://mdfcommerce.com"
-   }
-  ],
-  "metrasens": [
-   {
-    "field": "website",
-    "final": "https://metrasens.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://metrasens.com"
-   },
-   {
-    "field": "board",
-    "final": "https://metrasens.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://metrasens.com/careers"
    }
   ],
   "missionsquare-retirement": [
@@ -2377,6 +2271,16 @@
     "status": 200,
     "title": "Career Opportunities at MissionSquare",
     "url": "https://www.missionsq.org/careers"
+   }
+  ],
+  "mitel": [
+   {
+    "field": "website",
+    "final": "https://www.mitel.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.mitel.com"
    }
   ],
   "ml-schedules": [
@@ -2605,6 +2509,24 @@
     "why": "connection dropped"
    }
   ],
+  "nordsense": [
+   {
+    "field": "website",
+    "final": "https://reen.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Streamlining waste management \u2013 REEN",
+    "url": "https://nordsense.com"
+   },
+   {
+    "field": "board",
+    "final": "https://reen.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Streamlining waste management \u2013 REEN",
+    "url": "https://nordsense.com/job"
+   }
+  ],
   "notraffic": [
    {
     "field": "website",
@@ -2634,7 +2556,7 @@
     "status": null,
     "title": "",
     "url": "https://numina.co",
-    "why": "timed out"
+    "why": "certificate is for another address"
    }
   ],
   "nwave-technologies": [
@@ -2651,19 +2573,29 @@
   "onsolve": [
    {
     "field": "website",
-    "final": "https://www.crisis24.com/lp/onsolve",
-    "kind": "moved",
-    "status": 200,
-    "title": "OnSolve | Crisis24",
+    "final": "https://www.onsolve.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
     "url": "https://www.onsolve.com"
    },
    {
     "field": "board",
-    "final": "https://www.crisis24.com/lp/onsolve",
-    "kind": "moved",
-    "status": 200,
-    "title": "OnSolve | Crisis24",
+    "final": "https://www.onsolve.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
     "url": "https://www.onsolve.com/careers"
+   }
+  ],
+  "openai": [
+   {
+    "field": "website",
+    "final": "https://openai.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://openai.com"
    }
   ],
   "opendatasoft": [
@@ -2776,24 +2708,6 @@
     "url": "https://passportworkforce.com/careers"
    }
   ],
-  "paymentus": [
-   {
-    "field": "website",
-    "final": "https://www.paymentus.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.paymentus.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.paymentus.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.paymentus.com/careers"
-   }
-  ],
   "pikmykid": [
    {
     "field": "board",
@@ -2902,6 +2816,16 @@
     "url": "https://www.powerfleet.com"
    }
   ],
+  "precise-mrm-llc": [
+   {
+    "field": "website",
+    "final": "https://precisemrm.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://precisemrm.com"
+   }
+  ],
   "precision-kiosk-technologies": [
    {
     "field": "website",
@@ -2931,6 +2855,26 @@
     "status": 403,
     "title": "",
     "url": "https://proactis.com"
+   }
+  ],
+  "prodata-ptexcellence": [
+   {
+    "field": "website",
+    "final": "https://www.pptexcellence.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.pptexcellence.com",
+    "why": "network error"
+   },
+   {
+    "field": "board",
+    "final": "https://www.pptexcellence.com/jobs",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.pptexcellence.com/jobs",
+    "why": "network error"
    }
   ],
   "prodigy-solutions": [
@@ -2963,24 +2907,6 @@
     "title": "",
     "url": "https://propeller.cloud",
     "why": "connection dropped"
-   }
-  ],
-  "proudcity": [
-   {
-    "field": "website",
-    "final": "https://proudcity.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://proudcity.com"
-   },
-   {
-    "field": "board",
-    "final": "https://proudcity.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://proudcity.com/careers"
    }
   ],
   "q-free": [
@@ -3061,6 +2987,16 @@
     "url": "https://www.ravemobilesafety.com"
    }
   ],
+  "readspeaker": [
+   {
+    "field": "board",
+    "final": "https://karriar.jobbet.se/readspeaker",
+    "kind": "moved",
+    "status": 200,
+    "title": "ReadSpeaker",
+    "url": "https://www.readspeaker.com/careers/"
+   }
+  ],
   "rec1": [
    {
     "field": "website",
@@ -3109,16 +3045,6 @@
     "status": 200,
     "title": "Rehrig Pacific Company \u2013 Careers",
     "url": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true"
-   }
-  ],
-  "repay": [
-   {
-    "field": "website",
-    "final": "https://repay.com/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://repay.com/"
    }
   ],
   "resourcex": [
@@ -3218,6 +3144,24 @@
     "why": "connection dropped"
    }
   ],
+  "sage": [
+   {
+    "field": "website",
+    "final": "https://www.sage.com/en-us/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.sage.com/en-us/"
+   },
+   {
+    "field": "board",
+    "final": "https://www.sage.com/en-us/company/careers/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.sage.com/en-us/company/careers/"
+   }
+  ],
   "sandata-technologies": [
    {
     "field": "board",
@@ -3226,6 +3170,24 @@
     "status": 200,
     "title": "Careers | HHAeXchange",
     "url": "https://www.sandata.com/careers"
+   }
+  ],
+  "sap-concur": [
+   {
+    "field": "board",
+    "final": "https://jobs.sap.com/en/jobs/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://jobs.sap.com/en/jobs/"
+   },
+   {
+    "field": "posts_at",
+    "final": "https://jobs.sap.com/search/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://jobs.sap.com/search/"
    }
   ],
   "scheidt-bachmann": [
@@ -3328,50 +3290,22 @@
     "url": "https://securustech.net"
    }
   ],
-  "sedaru": [
-   {
-    "field": "website",
-    "final": "https://sedaru.com",
-    "kind": "unread",
-    "plain_http": {
-     "final": "http://sedaru.com/",
-     "kind": "ok",
-     "title": ""
-    },
-    "status": null,
-    "title": "",
-    "url": "https://sedaru.com",
-    "why": "timed out"
-   }
-  ],
   "sedc": [
    {
     "field": "website",
-    "final": "https://www.sedata.com",
-    "kind": "unread",
-    "plain_http": {
-     "final": "https://www.nisc.coop/",
-     "kind": "moved",
-     "title": "Homepage - National Information Solutions Cooperative (NISC)"
-    },
-    "status": null,
-    "title": "",
-    "url": "https://www.sedata.com",
-    "why": "timed out"
+    "final": "https://www.nisc.coop/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Homepage - National Information Solutions Cooperative (NISC)",
+    "url": "https://www.sedata.com"
    },
    {
     "field": "board",
-    "final": "https://www.sedata.com/careers",
-    "kind": "unread",
-    "plain_http": {
-     "final": "https://www.nisc.coop/careers/",
-     "kind": "moved",
-     "title": "Careers - National Information Solutions Cooperative (NISC)"
-    },
-    "status": null,
-    "title": "",
-    "url": "https://www.sedata.com/careers",
-    "why": "timed out"
+    "final": "https://www.nisc.coop/careers/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Careers - National Information Solutions Cooperative (NISC)",
+    "url": "https://www.sedata.com/careers"
    }
   ],
   "selc-ireland": [
@@ -3383,6 +3317,16 @@
     "title": "",
     "url": "https://www.selc.ie",
     "why": "no such domain"
+   }
+  ],
+  "selectron-technologies": [
+   {
+    "field": "website",
+    "final": "https://www.selectron.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.selectron.com/"
    }
   ],
   "selux": [
@@ -3472,16 +3416,6 @@
     "url": "https://sifinetworks.com/corporate/available-career-opportunities-sifi-networks"
    }
   ],
-  "sims-u-share": [
-   {
-    "field": "website",
-    "final": "https://simsushare.com/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://simsushare.com/"
-   }
-  ],
   "sirsidynix": [
    {
     "field": "website",
@@ -3510,6 +3444,16 @@
     "status": 403,
     "title": "",
     "url": "https://www.smartmatic.com"
+   }
+  ],
+  "snowflake": [
+   {
+    "field": "website",
+    "final": "https://www.snowflake.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.snowflake.com/"
    }
   ],
   "soilflo": [
@@ -3614,16 +3558,6 @@
     "status": 200,
     "title": "Careers | Telematics site",
     "url": "https://tlmw.com/careers"
-   }
-  ],
-  "stackbench": [
-   {
-    "field": "website",
-    "final": "https://stackbench.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://stackbench.com"
    }
   ],
   "steadyiq": [
@@ -3968,6 +3902,16 @@
     "url": "https://www.unit4.com"
    }
   ],
+  "upper-hand": [
+   {
+    "field": "posts_at",
+    "final": "https://jobs.gusto.com/boards/upper-hand-89518d41-1ea4-4e74-8937-17ff05442a66",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://jobs.gusto.com/boards/upper-hand-89518d41-1ea4-4e74-8937-17ff05442a66"
+   }
+  ],
   "uptrust": [
    {
     "field": "website",
@@ -4022,7 +3966,7 @@
     "final": "https://www.karman.co/",
     "kind": "moved",
     "status": 200,
-    "title": "Karman | Boost compute capacity by 50%",
+    "title": "Karman | Boost compute capacity by 60%",
     "url": "https://utilidata.com"
    },
    {
@@ -4097,24 +4041,6 @@
     "why": "connection dropped"
    }
   ],
-  "virtra": [
-   {
-    "field": "website",
-    "final": "https://www.virtra.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.virtra.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.virtra.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.virtra.com/careers"
-   }
-  ],
   "vision-box": [
    {
     "field": "website",
@@ -4124,6 +4050,16 @@
     "title": "",
     "url": "https://vision-box.com",
     "why": "no such domain"
+   }
+  ],
+  "vitalsource": [
+   {
+    "field": "website",
+    "final": "https://www.vitalsource.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.vitalsource.com"
    }
   ],
   "vitech-systems-group": [
@@ -4192,6 +4128,16 @@
     "status": 403,
     "title": "",
     "url": "https://www.way.com/careers"
+   }
+  ],
+  "wayground": [
+   {
+    "field": "website",
+    "final": "https://wayground.com",
+    "kind": "unread",
+    "status": 202,
+    "title": "",
+    "url": "https://wayground.com"
    }
   ],
   "yardi-systems": [
