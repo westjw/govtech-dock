@@ -102,7 +102,7 @@ const SVG_POLICY = "default-src 'none'; img-src data:; style-src 'unsafe-inline'
 
 /* A path a page is served at: no extension, or .html. A 304 carries no
  * content-type, so this is how one for a page is told from one for a file. */
-const pageLike = (path) => /(^|\/)[^/.]*$|\.html$/i.test(path);
+export const pageLike = (path) => /(^|\/)[^/.]*$|\.html$/i.test(path);
 
 /* Frame headers where they belong, and the policy on every HTML response. */
 export async function secure(res, request, env, { holding = false, mode = CSP_MODE } = {}) {

@@ -3469,6 +3469,262 @@ def _run_argv(mod, argv):
         sys.argv = keep
 
 
+def check_saved_roles_follow_the_sign_in() -> int:
+    """Saved roles follow the sign-in, and nothing about the list leaks or drifts.
+
+    Owner, 2026-11-18: "saves should follow my sign-in". He signed in from a
+    private window, found none of his saved roles, and asked whether he had
+    made a second account. functions/api/saved.js keeps a signed-in person's
+    list in D1 (bound as DB) under a hash of the address; the board merges it
+    in on every load and sends changes up (accountSync in index.html).
+
+    Run through scripts/saved_harness.mjs: the real module, a D1 that IS
+    SQLite (node:sqlite), sign-ins minted by functions/_session.js. Each rule
+    below is a way this quietly goes wrong: a stale device re-adding what was
+    unsaved, another site writing a signed-in browser's list, the address
+    stored, one script spending the database's day, a missing database
+    passed off as a save that left the browser.
+    """
+    import shutil, subprocess, json as _json
+    errors = 0
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so /api/saved was not run")
+    else:
+        r = subprocess.run(["node", str(ROOT / "scripts" / "saved_harness.mjs")],
+                           capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+        if r.returncode:
+            return fail(f"/api/saved would not run: {r.stderr.strip()[-300:]}")
+        try:
+            d = _json.loads(r.stdout.strip().splitlines()[-1])
+        except (ValueError, IndexError) as exc:
+            return fail(f"saved_harness.mjs printed no JSON ({exc}): {r.stderr[-300:]}")
+        if d.get("skip"):
+            print(f"  SKIP: {d['skip']}")
+        else:
+            want = {
+                "not_configured": (501, "with no database bound the endpoint must say not_configured, "
+                                        "never pretend a save left the browser"),
+                "not_configured_post": (501, "a POST with no database must say not_configured"),
+                "not_signed_in": (403, "a POST with no sign-in was accepted"),
+                "not_signed_in_get": (403, "a GET with no sign-in answered"),
+                "cross_site": (403, "another site made a signed-in browser write its saved list"),
+                "cross_site_wrote": (0, "a refused cross-site POST still wrote rows"),
+                "idempotent_wrote": (0, "sending the same list twice wrote rows the second time - "
+                                        "every page load would spend the day's writes"),
+                "address_stored": (False, "an address (or part of one) is stored in the saved-roles tables"),
+                "too_large": (413, "a body past MAX_BODY was read"),
+                "past_five_hundred": ({"status": 200, "capped": 0, "n": 500, "has_one_more": True},
+                                      "an unsave that freed a place did not let the next save in"),
+                "past_five_hundred_again": ({"status": 200, "capped": 2, "n": 500},
+                                            "past 500 the merge must still answer, land none past the "
+                                            "cap and say how many it held back (a refusal stops that "
+                                            "device syncing for good)"),
+                "garbage_removed": ([], "a stamp that is not ISO, or years ahead, was kept as a tombstone"),
+                "garbage_cannot_unsave": (["g1"], "a far-future stamp unsaved a role"),
+                "plus_elsewhere_is_another_list": ([], "a +tag at a domain that is not Gmail read the "
+                                                       "untagged address's list"),
+                "stale_cap": ({"live": 500, "capped": 100}, "a writer that read before another landed "
+                              "300 roles went past the 500 cap on its old read"),
+                "six_hundred": ({"status": 200, "n": 500, "capped": 100},
+                                "600 roles sent at once did not land 500 and count the 100 held back"),
+                "future_date_unsaves": ([], "a role saved with a date ahead of the clock could not be unsaved"),
+                "owner_cookie_304": ({"status": 304, "has_tag": True, "cache": "private, no-cache"},
+                                     "a cached (304) page is not told whose list it holds, or the answer "
+                                     "that sets the cookie could sit in a shared cache"),
+                "owner_cookie_signed_out": (True, "a signed-out page leaves the last person's tag"),
+                "owner_cookie_wired": ({"on_304": True, "on_gate": True},
+                                       "the middleware does not send the tag on 304s or the gate's pages"),
+                "bad_json": (400, "a body that is not JSON was not refused"),
+                "unavailable": (503, "a database that would not answer did not read as unavailable"),
+                "after_90_days_saved": (["r1"], "after 90 days the saved roles are not what was saved"),
+                "after_90_days_removed": (["r2"], "a tombstone younger than 90 days went, or an older one stayed"),
+            }
+            for k, (v, why) in want.items():
+                if d.get(k) != v:
+                    errors += fail(f"/api/saved {k}: got {d.get(k)!r}, want {v!r} - {why}")
+            if (d.get("laptop") or {}).get("ids") != ["r1", "r2"] or (d.get("laptop") or {}).get("wrote") != 2:
+                errors += fail(f"/api/saved: the laptop's two saves did not land as two rows: {d.get('laptop')}")
+            if (d.get("phone") or {}).get("ids") != ["r1", "r2"]:
+                errors += fail(f"/api/saved: the same inbox spelled another way (Gmail dots, +tag) did not "
+                               f"see its saves: {d.get('phone')}")
+            if (d.get("stranger") or {}).get("ids") != []:
+                errors += fail(f"/api/saved: a different sign-in read somebody's saved list: {d.get('stranger')}")
+            if (d.get("unsave") or {}).get("ids") != ["r2"] or "r1" not in (d.get("unsave") or {}).get("removed", []):
+                errors += fail(f"/api/saved: unsaving on the phone did not take: {d.get('unsave')}")
+            if (d.get("stale_laptop") or {}).get("ids") != ["r2"]:
+                errors += fail(f"/api/saved: a stale device put back a role that was unsaved after it was "
+                               f"saved: {d.get('stale_laptop')}")
+            if (d.get("resave") or {}).get("ids") != ["r1", "r2"]:
+                errors += fail(f"/api/saved: saving again after an unsave did not bring it back: {d.get('resave')}")
+            c = d.get("clean") or {}
+            want_c = {"title_len": 200, "url_kept": True,
+                      "territory": {"stated": True, "states": ["AZ", "NM"], "region": "Southwest"},
+                      "office": {"city": "Phoenix", "state": "AZ"}, "work_mode": "hybrid", "quota": True,
+                      "has_secret": False, "has_extra": False}
+            if c != want_c:
+                errors += fail(f"/api/saved: a saved role does not keep the posting's own shapes "
+                               f"(territory and office are objects on every posting), or the client "
+                               f"decided what it holds: {c}")
+            if (d.get("five_hundred") or {}).get("n") != 500:
+                errors += fail(f"/api/saved: 500 saved roles did not all land: {d.get('five_hundred')}")
+            cap = d.get("capped") or {}
+            if cap.get("status") != 429 or cap.get("wrote") != 0:
+                errors += fail(f"/api/saved: a person past the day's write cap was let through, or the "
+                               f"refusal wrote rows: {cap}")
+            pw = d.get("paused_writer") or {}
+            if pw != {"statuses": [200, 200, 200], "x_ids": ["x1", "y1", "z1"], "v": 3, "writes": 3,
+                      "later_status": 200, "later_ids": ["w1", "x1", "y1", "z1"]}:
+                errors += fail(f"/api/saved: a writer that read, then waited while two others committed, "
+                               f"committed on its old read, lost a write, or jammed later writes: {pw}")
+            race = d.get("race") or {}
+            if not (set(race.get("statuses") or []) <= {200, 409} and race.get("live_rows") == 500
+                    and race.get("writes_counted") == 500):
+                errors += fail(f"/api/saved: twelve requests at once got past the caps together (one "
+                               f"writer at a time is the rule): {race}")
+            bw = d.get("borrowed") or {}
+            if not (bw.get("replace") is True and bw.get("ids") == ["b0"] and bw.get("tag_is_b")
+                    and bw.get("same_inbox_same_tag") and bw.get("tag_is_not_key")):
+                errors += fail(f"/api/saved: a borrowed browser's copy (tagged as another account) was merged "
+                               f"into the account signing in, or the tag is wrong: {bw}")
+            if (d.get("untagged_merges") or {}) != {"replace": False, "ids": ["b0", "b1"]}:
+                errors += fail(f"/api/saved: an untagged copy (saves from before the tag) did not merge into the "
+                               f"first account to sign in: {d.get('untagged_merges')}")
+            if (d.get("own_tag_merges") or {}) != {"replace": False, "ids": ["b0", "b1", "b2"]}:
+                errors += fail(f"/api/saved: a copy carrying the account's own tag did not merge: {d.get('own_tag_merges')}")
+            a90 = d.get("after_90_days") or {}
+            if a90.get("rows") != ["r1", "r2"] or a90.get("tombstone_rows") != ["r2"]:
+                errors += fail(f"/api/saved: the 90-day tombstone prune is wrong: {a90}")
+    # The board's own sync code, run (saved_board_harness.mjs): what the page
+    # does with each answer /api/saved can give.
+    if shutil.which("node"):
+        r = subprocess.run(["node", str(ROOT / "scripts" / "saved_board_harness.mjs")],
+                           capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+        try:
+            b = _json.loads(r.stdout.strip().splitlines()[-1])
+        except (ValueError, IndexError) as exc:
+            return errors + fail(f"saved_board_harness.mjs printed no JSON ({exc}): {r.stderr[-300:]}")
+        if b.get("load_errors"):
+            errors += fail(f"index.html's script did not load: {b['load_errors'][:2]}")
+        if b.get("off") != {"returned": False, "state": "off", "local": ["a"]} or b.get("off_save_calls") != 0:
+            errors += fail(f"board: with no database the sign-in's list must be off and hand back to the "
+                           f"alert sync, touching nothing: {b.get('off')}, {b.get('off_save_calls')} save call(s)")
+        on = b.get("on") or {}
+        if on.get("state") != "on" or on.get("local") != ["a", "c"] \
+                or on.get("sent") != {"saved": ["a", "b"], "removed": []}:
+            errors += fail(f"board: the merge with the sign-in's list is wrong (a role saved elsewhere must "
+                           f"arrive, one unsaved elsewhere later must go, and this browser's list must go "
+                           f"up): {on}")
+        if b.get("on_save_goes_to") != ["/api/saved"]:
+            errors += fail(f"board: with the sign-in's list on, a save went to {b.get('on_save_goes_to')}")
+        if b.get("local_unsave_wins") != []:
+            errors += fail(f"board: a role this browser unsaved came back from an older save on the server")
+        if b.get("mid_flight_kept") != ["a", "e"]:
+            errors += fail(f"board: a save made while a sync was in flight was lost: {b.get('mid_flight_kept')}")
+        if b.get("mid_flight_sent") != {"posts": 2, "second_has_e": True} or b.get("mid_flight_clean_after") is not True:
+            errors += fail(f"board: a save made while the first sync was in flight was never sent: "
+                           f"{b.get('mid_flight_sent')}, clean after: {b.get('mid_flight_clean_after')}")
+        if b.get("claim_b") != {"local": ["bb"], "applied": False, "owner": "tagB-0000000002", "a_aside": True,
+                                "waiting": ""}:
+            errors += fail(f"board: a copy tagged with the last person was drawn for the next, or deleted "
+                           f"instead of set aside, or the next person's own copy did not come back: {b.get('claim_b')}")
+        if b.get("waiting_hides") != {"local": [], "waiting": "mine-tag-0001", "owner": "pending"}:
+            errors += fail(f"board: with no cookie to say whose it is, a tagged copy was drawn before the "
+                           f"server answered: {b.get('waiting_hides')}")
+        if b.get("waiting_back") != {"local": ["meanwhile", "own"], "owner": "mine-tag-0001", "waiting": "",
+                                     "no_pending_left": True} \
+                or b.get("waiting_back_sent") is not True:
+            errors += fail(f"board: a copy set aside for want of a cookie did not come back for its owner "
+                           f"with this page's saves on top, or did not go up: {b.get('waiting_back')}")
+        if b.get("waiting_other") != {"local": ["mine"], "owner": "tagB-0000000002", "a_still_aside": True}:
+            errors += fail(f"board: the answer named somebody else and the set-aside copy came back for "
+                           f"them: {b.get('waiting_other')}")
+        if b.get("signout") != {"prevented": True, "posts": 1, "went": "https://sledjobs.com/signin/out",
+                                "in_view": ["s1", "s2"], "owner": "mine-tag-0001"}:
+            errors += fail(f"board: Sign out did not send what was not up and then go on, or it set the copy "
+                           f"aside (which hid it from the same person coming back): {b.get('signout')}")
+        if b.get("signout_back") != {"local": ["s1", "s2"], "applied": {"s1": "2026-11-12"}, "searches": 1,
+                                     "token": "tok-mine"}:
+            errors += fail(f"board: signing out and back in as the same person lost saves, applied marks, "
+                           f"searches or the alert token: {b.get('signout_back')}")
+        if b.get("signout_clean") != {"prevented": False, "posts": 0}:
+            errors += fail(f"board: with nothing to send, Sign out is not a plain link: {b.get('signout_clean')}")
+        tp = b.get("three_people") or {}
+        if tp != {"a_back": {"local": ["a1"], "applied": {"a1": "2026-11-10"}}, "b_back": ["b1"],
+                  "a_again": ["a1"], "a_marks": ["a1", "a2"]}:
+            errors += fail(f"board: three people taking turns on one browser did not each get their own copy "
+                           f"back, or a second set-aside replaced the first: {tp}")
+        if b.get("answer_restores") != {"local": ["a7"], "applied": {"a7": "2026-11-14"}, "token": "tok-A",
+                                        "aside_left": False} or b.get("answer_restores_sends") is not True:
+            errors += fail(f"board: with no cookie, the answer naming the owner of a set-aside copy did not "
+                           f"bring it back (saves, marks, the alert token) and send it: {b.get('answer_restores')}")
+        if b.get("park_merges") != {"saved": ["x1", "x2"], "applied": ["a", "b"], "searches": 2, "view_empty": True}:
+            errors += fail(f"board: a second set-aside under the same tag replaced the first instead of "
+                           f"merging: {b.get('park_merges')}")
+        if b.get("parked_save_goes_up") is not True:
+            errors += fail("board: a save the server never took, set aside while somebody else was signed in, "
+                           "did not go up when its owner came back")
+        if b.get("clean_needs_all") is not False:
+            errors += fail("board: a copy the server did not hold all of was called clean (Sign out would drop it)")
+        if b.get("conflict_retries") != 3:
+            errors += fail(f"board: a run of 409s retried {b.get('conflict_retries')} times; it must back off after 3")
+        if b.get("replace_sets_aside") is not True or (b.get("replaced") or {}).get("foreign_aside") is not True:
+            errors += fail("board: somebody else's copy was written over instead of set aside")
+        if b.get("fold_foreign") != ["a"] or b.get("fold_once") is not True:
+            errors += fail(f"board: another person's subscription was folded into this account, or the fold "
+                           f"runs on every load: {b.get('fold_foreign')}, once: {b.get('fold_once')}")
+        if b.get("replace_keeps_journal") != ["j", "m"] or b.get("replace_sends_journal") is not True:
+            errors += fail(f"board: taking the account's list over somebody else's copy threw away this "
+                           f"page's own saves: {b.get('replace_keeps_journal')}, sent: {b.get('replace_sends_journal')}")
+        if (b.get("fold") or {}) != {"local": ["a", "s9"], "alerts_writes": 0} or b.get("fold_sends") is not True:
+            errors += fail(f"board: the subscription's copy was not folded into the sign-in's list (or the "
+                           f"fold wrote to KV): {b.get('fold')}, sent: {b.get('fold_sends')}")
+        if b.get("clock_skew_hours") != 2:
+            errors += fail(f"board: stamps are not made on the server's clock: {b.get('clock_skew_hours')}h")
+        if b.get("busy") != {"state": "error", "reason": "busy"}:
+            errors += fail(f"board: a spent day of writes reads as the server being down: {b.get('busy')}")
+        if b.get("error") != {"returned": True, "state": "error", "local": ["a"]}:
+            errors += fail(f"board: a server error must keep the list here, say so, and not hand it to the "
+                           f"alert sync: {b.get('error')}")
+        rp = {k: v for k, v in (b.get("replaced") or {}).items() if k != "foreign_aside"}
+        if rp != {"local": ["m"], "tombs": ["q"], "owner": "mine-tag", "sent_owner": "someone-else-tag", "flag": "1"}:
+            errors += fail(f"board: a copy the server says is somebody else's was not replaced whole by the "
+                           f"account's list, or the tag was not sent or kept: {rp}")
+        if b.get("flag_cleared_when_off") is not True:
+            errors += fail("board: with no database the alerts page is still told the sign-in carries the list")
+        if "follow your sign-in" not in (b.get("menu_text") or ""):
+            errors += fail(f"board: the account menu does not say the list follows the sign-in: {b.get('menu_text')!r}")
+    # The board: the sign-in's list first, the alert sync only when the site
+    # cannot keep one, and changes go up to the account when it does.
+    board = (ROOT / "index.html").read_text()
+    for needle, why in (
+        ('fetch("/api/saved"', "the board never talks to /api/saved"),
+        ("accountSync().then(on=>{ if(!on) pullSync(); else foldSubscription(); })",
+         "the board does not try the sign-in's list first and fall back to the alert sync only when it is off"),
+        ('if(ACCT_SYNC==="on"||ACCT_SYNC==="error"){', "a save does not go up to the sign-in's list"),
+        ('if(st===501||st===401||st===403){\n      ACCT_SYNC="off";',
+         "a missing database or sign-in does not hand the list back to the alert sync"),
+        ("These follow your sign-in", "the Saved tab does not say the list follows the sign-in"),
+        ('out.addEventListener("click",signOutHere)', "the Sign out link does not send, then clear, an account's copy"),
+        ("claimAtLoad();", "the board does not check whose copy it holds before drawing it"),
+    ):
+        if needle not in board:
+            errors += fail(f"index.html: {why}")
+    alerts = (ROOT / "functions" / "api" / "alerts.js").read_text()
+    if "function cleanSaved" in alerts or "function cleanRemoved" in alerts:
+        errors += fail("alerts.js defines its own cleanSaved/cleanRemoved again: there must be one copy "
+                       "(functions/_saved.js), or the two saved lists drift apart")
+    mw = (ROOT / "functions" / "_middleware.js").read_text()
+    if "res = await withOwner(res, request, context.env)" not in mw:
+        errors += fail("_middleware.js does not tell the page whose saved list it should hold")
+    if "forgetList" in alerts:
+        errors += fail("alerts.js Stop deletes the saved list that follows the sign-in again: it is "
+                       "reached from every digest's one-click link, which says nothing about it")
+    gate = (ROOT / "functions" / "_gate.js").read_text()
+    if '"/api/saved"' in gate:
+        errors += fail("_gate.js names /api/saved: it must stay behind the sign-in like every endpoint")
+    return errors
+
+
 def check_an_alert_signup_keeps_its_promises() -> int:
     """The alerts endpoint does what its own emails say it does.
 
@@ -3554,6 +3810,15 @@ def check_an_alert_signup_keeps_its_promises() -> int:
                        f"subscribed: {ans}")
     if d.get("afterStop"):
         errors += fail("unsubscribing left a key behind")
+    # Stop promises "delete my data": since 2026-11-18 that includes the saved
+    # list that follows the sign-in, and only that person's (node:sqlite runs it)
+    sd = d.get("stopKeepsSavedList")
+    if sd is not None and sd != {"before": 2, "mine_after": 1, "others_after": 1}:
+        errors += fail(f"Stop touched the saved list that follows the sign-in (it is reached from every "
+                       f"digest's one-click link, which says nothing about it): {sd}")
+    if d.get("settingsOwnerTag") is not True:
+        errors += fail("the alerts settings read does not say whose subscription it is (owner_tag), so a "
+                       "board cannot keep another person's subscription out of its account")
     if not d.get("cappedKnown") or d.get("cappedKnown") != d.get("cappedUnknown"):
         errors += fail(f"a capped caller gets a different answer for an address on "
                        f"file ({d.get('cappedKnown')}) than for one that is not "
@@ -28430,6 +28695,9 @@ def check_mail_is_built_from_the_shell() -> int:
     # the same way, so the copy run from a temp file walks the real chain
     src = re.sub(r'from\s*"\.\./(_[a-z]+\.js)"',
                  lambda m: f'from "{(ROOT / "functions" / m.group(1)).resolve().as_uri()}"', src)
+    # and a neighbour in functions/api/ (./saved.js since 2026-11-18, for Stop)
+    src = re.sub(r'from\s*"\./([a-z_]+\.js)"',
+                 lambda m: f'from "{(ROOT / "functions" / "api" / m.group(1)).resolve().as_uri()}"', src)
     if "function shell(" in src or "async function send(" in src:
         print("  FAIL: alerts.js carries its own copy of the mail shell again; "
               "the copy is what drifts, and only _mail.js is guarded")
@@ -40576,6 +40844,7 @@ def main() -> int:
     errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_one_subscriber_never_silences_the_rest()
     errors += check_an_alert_signup_keeps_its_promises()
+    errors += check_saved_roles_follow_the_sign_in()
     errors += check_ratings_cannot_spend_the_shared_store()
     errors += check_a_submission_cannot_flood_the_public_repo()
     errors += check_an_emailed_link_waits_for_a_person()

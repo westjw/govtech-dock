@@ -2198,7 +2198,79 @@ Rules that hold here:
   (gated; the caller's own address only).
 - **Unsubscribe deletes.** No suppression list — that is still a record of who
   wanted out of their job.
-- **Saved roles stay local by default.** Sync is off until someone turns it on
+- **Saved roles follow the sign-in (owner, 2026-11-18: "saves should follow my
+  sign-in").** He signed in from a private window, found none of his saved
+  roles and asked whether he had made a second account; there are no accounts,
+  so the signed-in address is what the list now hangs from.
+  `functions/api/saved.js` (GET; POST merge-and-answer; DELETE) keeps it in
+  **D1 bound as `DB`**, NOT the ALERTS KV: the free plan's KV allows 1,000
+  writes a day for the whole account and every sign-in email spends three; D1
+  allows 100,000 rows a day and a merge writes only changed rows. Rows are
+  keyed by a hash of the inbox (`inboxOf`: lower-cased, and only Gmail's dots
+  and +tags folded - elsewhere a +tag is a different address, so a catch-all
+  box cannot read Alice's list), never the address; one row per (owner,
+  role), saved iff `saved_at` > `removed_at`, the later of each wins.
+  - **One writer at a time per person:** the merge reads the version and the
+    rows in ONE batch (one snapshot), and its write batch starts with a
+    compare-and-set: `INSERT INTO saved_cas (ok) VALUES (CASE WHEN version
+    still = read THEN 1 END)` against a NOT NULL column, so a stale writer's
+    batch fails whole and reads again; nothing is claimed or cleaned up, so
+    nothing can be slipped into or left to jam later writes (a first lock
+    did both: second review, 2026-11-18; the harness pauses a writer between
+    read and write with AsyncLocalStorage while two others commit). Caps: 500
+    saved (past it the newest that fit land and `capped` counts every role
+    held back, including past-500 uploads), 600 KB body,
+    `SAVED_WRITES_PER_DAY` (3,000) rows a person a day, `fromOurPage` on
+    POST, tombstones pruned at 90 days, stamps or dates that are not ISO or
+    are over a day ahead dropped (`_saved.stamp`). No DELETE: a one-shot
+    delete does not stick while any browser holds a copy.
+  - **A saved role keeps the posting's shapes** (`_saved.cleanSaved`):
+    territory `{stated, states, region}` and office `{city, state}` are
+    objects on every posting; links keep 1,000 characters.
+  - **Whose copy is this - settled when a copy CHANGES HANDS, i.e. when the
+    next person loads the board, never at Sign out** (third review,
+    2026-11-18: setting things aside at Sign out hid them from the same
+    person coming back, and ran before the person had confirmed). The page
+    gets a hint, the `__Host-sj_owner` cookie from `functions/_middleware.js`
+    on every page answer (200, the bare 304 a cached board comes back as,
+    the gate's own pages; private, never weaker than the gate's no-store);
+    the account `/api/saved` answers for is the authority. `claimAtLoad()`:
+    the cookie names the copy's owner - drawn; names somebody else - the copy
+    is set aside under its owner's tag (`park`, never deleted) and the
+    cookie's person's own set-aside copy comes back (`unpark`); no cookie - a
+    tagged copy is set aside until the answer (`WAITING_FOR`) and saves made
+    meanwhile are tagged `pending`. On EVERY OK answer `adopt(owner)` sets
+    aside a copy that is somebody else's, brings back the owner's set-aside
+    copy if any (then sends it up), and puts this page's own changes
+    (`JOURNAL`) on top. `park` and `unpark` MERGE (later-wins saves, both
+    sets of applied marks and searches, the alert token), so a second
+    set-aside never replaces the first. Sign out (`signOutHere`) only sends
+    what is not up yet (no keepalive: bodies over 64 KB fail) and goes on; a
+    plain link when there is nothing to send. An untagged copy, from before
+    saves followed the sign-in, belongs to whoever signs in first. Clean
+    means the server holds every role here.
+  - **Nothing is lost in flight:** every change bumps `SAVE_GEN`; an answer
+    that comes back after the page moved on sends again; a run of 409s backs
+    off after 3.
+  - **The alert subscription** is folded in ONCE per browser, and only when
+    its `owner_tag` (now in the alerts settings read) is this account's - a
+    token left by the last person on a shared browser is theirs. Stop on the
+    alerts page deletes the subscription only (it is reached from every
+    digest's one-click link); the page says the sign-in's list stays.
+  - **The server's clock:** answers carry `now`; the board keeps the offset
+    and stamps on it (`nowISO`).
+  No `DB` bound: 501, and the board falls back to the alert sync exactly as
+  before. `check_saved_roles_follow_the_sign_in` runs `scripts/
+  saved_harness.mjs` (the real module on a D1 that IS SQLite, `node:sqlite`,
+  sign-ins minted by `_session.js`) and `scripts/saved_board_harness.mjs`
+  (the board's own code in a vm); the alerts check runs Stop against D1.
+  Reviewed blind three times (three readers, then two, then two,
+  2026-11-18); every finding fixed and given the reviewer's own scenario as
+  a case; mutations 16/16, 16/17 (a duplicate guard) and 8/8. Setup:
+  DEPLOY.md §3e.
+- **Before the sign-in carried them, saved roles stayed local by default.**
+  The alert sync below still carries them where no `DB` is bound. It is off
+  until someone turns it on
   for one browser, and an unlinked visitor makes zero API calls. Sync carries
   **tombstones**: a union merge would let a stale phone resurrect a role you
   unsaved, forever. Tombstones compare against `saved_at` (a timestamp), not

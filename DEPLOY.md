@@ -225,6 +225,31 @@ keeps `/admin` for you and the admins you list: a handful of seats.
 Access policy, whichever is sooner. Taking a member's sign-in away is not
 possible one person at a time; changing `SESSION_SECRET` signs everybody out.
 
+## 3e. Saved roles follow the sign-in (2026-11-18, ~3 minutes)
+
+The owner: "saves should follow my sign-in". The code is in
+`functions/api/saved.js`; it needs one database, and until it has one the
+board keeps saved roles in each browser exactly as before (it answers 501
+not_configured, and the board falls back). Why D1 and not the ALERTS KV is in
+CLAUDE.md ("Saved roles follow the sign-in"): KV's free 1,000 writes a day are
+the sign-in's.
+
+**Your steps:**
+1. Cloudflare → **Storage & databases → D1 SQL database → Create**. Name it
+   `sledjobs`, leave the location on automatic, **Create**. Nothing else: the
+   endpoint makes its own tables on first use.
+2. **Workers & Pages → `solesource` → Settings → Bindings → Add → D1
+   database.** Variable name **`DB`** (exactly), database **`sledjobs`**,
+   **Save** (Production).
+3. A new deployment, so the Functions see the binding (Claude can push an
+   empty commit, or Deployments → latest → Retry deployment).
+
+**Check it afterwards:** signed in, open the Saved tab: it says "These follow
+your sign-in". Save a role, then open the board signed in on another browser
+(a private window will do): the role is there. On a shared browser,
+whoever signs in after you never sees your list: it is set aside for you
+until you sign in there again. The list itself stays with the sign-in.
+
 ## 3. Signed-in only until launch (decided 2026-10-05)
 **Read §3a first. Since 2026-11-13 Access covers `/admin` ONLY, for good.**
 Steps 3 to 5 and the Verify below are the 2026-10-05 history, when Access

@@ -4260,11 +4260,15 @@ function applyUrl(u){
   URL_LOADING=false;
 }
 /* Saved roles. A board you cannot come back to is a board you visit once.
-   This lives in the browser, not on a server: no account, no sign-in, and
-   nothing about what you are looking for leaves the machine - which for a
-   job search someone is running quietly is the right default, not a
-   limitation. A saved role keeps its own copy of what it said, so it still
-   reads correctly after the posting comes down. */
+   The list lives in the browser AND, when the site can keep it, with the
+   sign-in (owner, 2026-11-18: "saves should follow my sign-in"): the boards
+   need a sign-in anyway, so the address is already there to hang a list from,
+   and a list that stayed in one browser made the owner's private window look
+   like a second, empty account. /api/saved keeps it under a hash of the
+   address, never the address (functions/api/saved.js). This browser's copy is
+   still the one the board draws from, so the board works with the network
+   gone. A saved role keeps its own copy of what it said, so it still reads
+   correctly after the posting comes down. */
 const SAVED_KEY="solesource.saved.v1";
 function savedAll(){
   try{return JSON.parse(localStorage.getItem(SAVED_KEY)||"{}")}catch{return {}}
@@ -4321,8 +4325,8 @@ function toggleSave(p,btn){
       url:p.url,sector:p.sector,category:p.category,family:p.family,
       quota_carrying:p.quota_carrying,seniority:p.seniority,
       territory:p.territory,office:p.office,work_mode:p.work_mode,
-      saved_on:new Date().toISOString().slice(0,10),
-      saved_at:new Date().toISOString()};
+      saved_on:nowISO().slice(0,10),
+      saved_at:nowISO()};
   }
   if(!writeSaved(all)){ storageRefused(); return; }
   const on=isSaved(p.id);
@@ -4331,7 +4335,7 @@ function toggleSave(p,btn){
     if(b!==btn&&b.dataset.id===p.id)paintSave(b,on);
   });
   const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||"";
-  syncSoon();
+  noteChange(p.id);
 }
 
 /* --- saved searches -----------------------------------------------------
@@ -4468,17 +4472,309 @@ const SYNC_KEY="solesource.synctoken.v1";
 const TOMB_KEY="solesource.unsaved.v1";
 function syncToken(){try{return localStorage.getItem(SYNC_KEY)||""}catch{return ""}}
 function tombs(){try{return JSON.parse(localStorage.getItem(TOMB_KEY)||"{}")}catch{return {}}}
-function tombstone(id){const t=tombs();t[id]=new Date().toISOString();
+function tombstone(id){const t=tombs();t[id]=nowISO();
   try{localStorage.setItem(TOMB_KEY,JSON.stringify(t))}catch{}}
 function untombstone(id){const t=tombs();delete t[id];
   try{localStorage.setItem(TOMB_KEY,JSON.stringify(t))}catch{}}
 
 let SYNC_TIMER=null, SYNC_STATE="off";
+/* THE SIGN-IN'S LIST (2026-11-18). "unknown" until the first answer, "on"
+   when /api/saved keeps it, "off" when the site cannot (no database bound, or
+   not signed in: the alert sync below then carries on as before), "error"
+   when it could and did not (ACCT_REASON says which: "down", "busy" - the
+   day's writes are spent - or "large"). Only "off" hands the list to the
+   alert sync: an error is a moment, and two remotes written at once would
+   spend the alert sync's KV writes for nothing. */
+let ACCT_SYNC="unknown", ACCT_TIMER=null, ACCT_REASON="", ACCT_CAPPED=0;
+/* SAVE_GEN counts this page's changes; an answer that comes back while it has
+   moved on did not carry them all, so another request goes (review,
+   2026-11-18: a bookmark pressed while the first sync was in flight was never
+   sent). ACCT_CLEAN is true only when the server holds exactly this copy. */
+let SAVE_GEN=0, ACCT_CLEAN=false;
+/* This page's own changes since the last clean answer, by id, so that if the
+   server says this copy was somebody else's the account's list is taken and
+   THESE are put back on top, not thrown away with the rest. */
+const JOURNAL=new Map();
+/* Whose list this browser's copy is: the account's tag, kept beside the copy
+   (functions/api/saved.js, "A BORROWED BROWSER"). ACCT_FLAG tells the alerts
+   page the sign-in carries the list. */
+const OWNER_KEY="solesource.saved.owner.v1", ACCT_FLAG="solesource.acctsync.v1";
+function savedOwner(){try{return localStorage.getItem(OWNER_KEY)||""}catch{return ""}}
+/* THE SERVER'S CLOCK, as near as this browser can tell. Saves and unsaves
+   are compared by their stamps across devices, so a laptop an hour fast
+   stamps an unsave that beats a real re-save made later on the phone
+   (review, 2026-11-18). /api/saved answers with its own `now`; the difference
+   is kept, and every stamp this board writes is made on the server's clock. */
+const SKEW_KEY="solesource.clockskew.v1";
+let SKEW=(()=>{try{const v=Number(localStorage.getItem(SKEW_KEY));return Number.isFinite(v)&&Math.abs(v)<30*86400000?v:0}catch{return 0}})();
+function nowISO(){return new Date(Date.now()+SKEW).toISOString()}
+function learnClock(serverNow,sentAt,gotAt){
+  const t=Date.parse(serverNow||""); if(!Number.isFinite(t))return;
+  const off=t-(sentAt+gotAt)/2;
+  SKEW=Math.abs(off)<60000?0:off;   // a minute is the network, not the clock
+  try{localStorage.setItem(SKEW_KEY,String(SKEW))}catch{}
+}
+/* Applied marks, saved searches and an alert-sync token are this browser's
+   alone, so they go with their owner: set aside under the owner's tag, and
+   back when that person signs in here again. */
+const SET_ASIDE=()=>[SAVED_KEY,TOMB_KEY,APPLIED_KEY,SEARCH_KEY,SYNC_KEY];
+/* A copy the page knows is a signed-in person's, but not yet whose (no cookie
+   to say, and no answer yet): saves made meanwhile are tagged with this, so
+   they are set aside rather than handed to whoever signs in next (third
+   review, 2026-11-18). The answer turns it into the account's own tag. */
+const PENDING="pending";
+function cookieOwner(){const m=/(?:^|;\s*)__Host-sj_owner=([A-Za-z0-9_-]{8,64})(?:;|$)/.exec(document.cookie||"");return m?m[1]:""}
+function setOwner(tag){try{ if(tag)localStorage.setItem(OWNER_KEY,tag); else localStorage.removeItem(OWNER_KEY); }catch{}}
+const readJSON=(k,dflt)=>{try{const v=localStorage.getItem(k);return v===null?dflt:JSON.parse(v)}catch{return dflt}};
+/* Two copies of a list, one list: the later of each save and unsave wins, the
+   rule mergeRemote uses for an answer. Pure: returns {saved, gone}. */
+function mergeLists(aSaved,aGone,bSaved,bGone){
+  const saved={...aSaved}, gone={...aGone};
+  Object.entries(bGone||{}).forEach(([id,w])=>{ if(!gone[id]||w>gone[id])gone[id]=w; });
+  Object.values(bSaved||{}).forEach(x=>{
+    if(!x||!x.id)return;
+    const when=x.saved_at||x.saved_on||"", mine=saved[x.id];
+    if(gone[x.id]&&!(when>gone[x.id]))return;
+    if(!mine||when>(mine.saved_at||mine.saved_on||""))saved[x.id]=x;
+  });
+  Object.keys(gone).forEach(id=>{
+    const x=saved[id];
+    if(x&&!((x.saved_at||x.saved_on||"")>gone[id]))delete saved[id];
+  });
+  return {saved,gone};
+}
+/* Applied marks (id -> date) and saved searches (a list) from two places:
+   both kept, nothing dropped. */
+function unionOf(k,a,b){
+  if(Array.isArray(a)||Array.isArray(b)){
+    const out=[...(a||[])];
+    (b||[]).forEach(x=>{ if(!out.some(y=>JSON.stringify(y)===JSON.stringify(x)))out.push(x); });
+    return out;
+  }
+  return {...(b||{}),...(a||{})};
+}
+/* Set the copy in view aside under `tag`, MERGED with anything already set
+   aside there (a second set-aside used to overwrite the first - third
+   review), and clear the view. Never deletes a save. */
+function park(tag){
+  if(!tag)return;
+  try{
+    const m=mergeLists(readJSON(SAVED_KEY+"@"+tag,{}),readJSON(TOMB_KEY+"@"+tag,{}),readJSON(SAVED_KEY,{}),readJSON(TOMB_KEY,{}));
+    localStorage.setItem(SAVED_KEY+"@"+tag,JSON.stringify(m.saved));
+    localStorage.setItem(TOMB_KEY+"@"+tag,JSON.stringify(m.gone));
+    [APPLIED_KEY,SEARCH_KEY].forEach(k=>{
+      const here=readJSON(k,null), there=readJSON(k+"@"+tag,null);
+      if(here!==null||there!==null)localStorage.setItem(k+"@"+tag,JSON.stringify(unionOf(k,here,there)));
+    });
+    const tok=localStorage.getItem(SYNC_KEY);
+    if(tok!==null)localStorage.setItem(SYNC_KEY+"@"+tag,tok);
+    SET_ASIDE().forEach(k=>localStorage.removeItem(k));
+    localStorage.removeItem(OWNER_KEY);
+  }catch{}
+}
+/* Bring `tag`'s set-aside copy back, MERGED into what is in view (which may
+   hold saves this page made meanwhile). Returns whether there was one. */
+function unpark(tag){
+  if(!tag)return false;
+  let back=false;
+  try{
+    back=SET_ASIDE().some(k=>localStorage.getItem(k+"@"+tag)!==null);
+    if(!back)return false;
+    const m=mergeLists(readJSON(SAVED_KEY,{}),readJSON(TOMB_KEY,{}),readJSON(SAVED_KEY+"@"+tag,{}),readJSON(TOMB_KEY+"@"+tag,{}));
+    writeSaved(m.saved); localStorage.setItem(TOMB_KEY,JSON.stringify(m.gone));
+    [APPLIED_KEY,SEARCH_KEY].forEach(k=>{
+      const there=readJSON(k+"@"+tag,null); if(there===null)return;
+      localStorage.setItem(k,JSON.stringify(unionOf(k,readJSON(k,null),there)));
+    });
+    const tok=localStorage.getItem(SYNC_KEY+"@"+tag);
+    if(tok!==null&&localStorage.getItem(SYNC_KEY)===null)localStorage.setItem(SYNC_KEY,tok);
+    SET_ASIDE().forEach(k=>localStorage.removeItem(k+"@"+tag));
+  }catch{}
+  return back;
+}
+/* This page's own saves and unsaves, put (back) on top of whatever copy is
+   here now. Idempotent: the same change applied twice is the same change. */
+function applyJournal(){
+  if(!JOURNAL.size)return;
+  const all=savedAll(), gone=tombs();
+  JOURNAL.forEach((c,id)=>{ if(c.saved){all[id]=c.saved;delete gone[id]} else {delete all[id];gone[id]=c.removed} });
+  writeSaved(all); try{localStorage.setItem(TOMB_KEY,JSON.stringify(gone))}catch{}
+}
+/* WHOSE COPY IS THIS - settled when a copy CHANGES HANDS, which is when the
+   next person loads the board, never at Sign out (third review, 2026-11-18:
+   setting things aside at Sign out hid them from the same person coming
+   back, and ran before the person had confirmed). The page is told who is
+   signed in (the __Host-sj_owner cookie, functions/_middleware.js); the
+   account /api/saved answers for is the authority (adopt).
+   - the cookie names the copy's own owner: drawn as it is;
+   - it names somebody else: the copy is set aside under its owner's tag,
+     and the cookie's person's own set-aside copy comes back;
+   - no cookie to say: a tagged copy is set aside until the answer
+     (WAITING_FOR), and saves made meanwhile are tagged PENDING;
+   - an untagged copy, from before saves followed the sign-in, belongs to
+     whoever signs in first. */
+let WAITING_FOR="";
+function claimAtLoad(){
+  const now=cookieOwner(), mine=savedOwner();
+  if(now){
+    if(mine&&mine!==now)park(mine);
+    unpark(now);
+    setOwner(now);
+    return;
+  }
+  if(mine){ park(mine); WAITING_FOR=mine; setOwner(PENDING); }
+}
+claimAtLoad();
+/* The answer named account T. A copy in view that is somebody else's is set
+   aside; T's own set-aside copy, if any, is merged back in; this page's own
+   changes go on top; and what came back has to go up. A PENDING copy is
+   this page's, and so T's. */
+function adopt(T){
+  if(!T)return false;
+  const mine=savedOwner();
+  let moved=false;
+  if(mine&&mine!==T&&mine!==PENDING){park(mine);moved=true;}
+  if(unpark(T))moved=true;
+  applyJournal();
+  WAITING_FOR="";
+  setOwner(T);
+  return moved;
+}
+/* The Sign out link: what this browser holds goes up first, so nothing waits
+   on a device the person may not come back to; then the sign-out page, as
+   normal. Nothing is set aside here: the next person's load does that, and
+   the same person coming back finds everything where it was. No keepalive:
+   a keepalive body over 64 KB is a network error, and this waits anyway. */
+async function signOutHere(ev){
+  if(ACCT_CLEAN&&!ACCT_TIMER)return;       // nothing to send: sign out as normal
+  if(ev&&ev.preventDefault)ev.preventDefault();
+  const href=(ev&&ev.currentTarget&&ev.currentTarget.href)||"/signin/out";
+  clearTimeout(ACCT_TIMER); ACCT_TIMER=null;
+  try{ await Promise.race([accountSync(), new Promise(r=>setTimeout(r,4000))]); }catch{}
+  location.href=href;
+}
+/* Called by every save and unsave, after the change is written here. */
+function noteChange(id){
+  SAVE_GEN++; ACCT_CLEAN=false;
+  const s=savedAll()[id];
+  JOURNAL.set(id, s?{saved:s}:{removed:tombs()[id]||nowISO()});
+  syncSoon();
+}
 function syncSoon(){
+  // the load-time sync is still in flight: its answer sees SAVE_GEN moved
+  // and sends again, to whichever remote turns out to keep the list
+  if(ACCT_SYNC==="unknown")return;
+  if(ACCT_SYNC==="on"||ACCT_SYNC==="error"){
+    clearTimeout(ACCT_TIMER);
+    // Debounced: clicking through five roles is one write, not five.
+    ACCT_TIMER=setTimeout(()=>{ACCT_TIMER=null;return accountSync()},1500);
+    return;
+  }
   if(!syncToken())return;
   clearTimeout(SYNC_TIMER);
-  // Debounced: clicking through five roles is one write, not five.
   SYNC_TIMER=setTimeout(()=>pushSync(),1500);
+}
+/* One merge for both remotes: what the other side holds comes in unless this
+   browser unsaved it later, and what the other side unsaved goes unless this
+   browser saved it again later. Returns whether this browser's copy changed,
+   tombstones included (they too have to reach the other remote). */
+function mergeRemote(d){
+  const local=savedAll(), had=tombs(), gone={...had};
+  Object.entries(d.removed||{}).forEach(([id,w])=>{ if(!gone[id]||w>gone[id])gone[id]=w; });
+  const before=JSON.stringify([Object.keys(local).sort(),had]);
+  (d.saved||[]).forEach(s=>{
+    if(!s||!s.id)return;
+    const when=s.saved_at||s.saved_on||"";
+    // A role comes back only if it was saved AFTER it was last unsaved.
+    if(gone[s.id]&&!(when>gone[s.id]))return;
+    if(!local[s.id])local[s.id]=s;
+  });
+  Object.keys(gone).forEach(id=>{
+    const mine=local[id];
+    if(mine&&!((mine.saved_at||mine.saved_on||"")>gone[id]))delete local[id];
+  });
+  writeSaved(local);
+  try{localStorage.setItem(TOMB_KEY,JSON.stringify(gone))}catch{}
+  const c=$("#savedcount"); if(c)c.textContent=Object.keys(local).length||"";
+  return before!==JSON.stringify([Object.keys(local).sort(),gone]);
+}
+/* One request is both directions: this browser's list goes up, the merged
+   list comes back. Answers whether the account carries the list, so the
+   caller knows whether the alert sync still has a job. */
+let CONFLICTS=0;
+async function accountSync(){
+  if(!storageWorks()){ACCT_SYNC="off";return false}
+  const gen0=SAVE_GEN, sentAt=Date.now();
+  let d=null, st=0;
+  try{
+    const r=await fetch("/api/saved",{method:"POST",credentials:"include",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({saved:Object.values(savedAll()),removed:tombs(),owner:savedOwner()})});
+    st=r.status;
+    if(st===501||st===401||st===403){
+      ACCT_SYNC="off"; ACCT_REASON=""; try{localStorage.removeItem(ACCT_FLAG)}catch{}
+      // nobody can say whose a set-aside copy is: it comes back as it was
+      if(WAITING_FOR){ if(savedOwner()===PENDING)setOwner(""); unpark(WAITING_FOR); setOwner(WAITING_FOR); WAITING_FOR=""; }
+      if(SAVE_GEN!==gen0)syncSoon();
+      return false;
+    }
+    if(r.ok)d=await r.json();
+  }catch{d=null}
+  let changed=false;
+  if(!d||!d.ok){
+    ACCT_SYNC="error"; ACCT_CLEAN=false;
+    ACCT_REASON=st===429?"busy":st===413?"large":"down";
+    // another device was writing: again shortly, but not for ever
+    if(st===409){ CONFLICTS++; if(CONFLICTS<=3)syncSoon(); }
+    else if(SAVE_GEN!==gen0)syncSoon();
+  }else{
+    CONFLICTS=0;
+    learnClock(d.now,sentAt,Date.now());
+    // THE ANSWER NAMES THE ACCOUNT. A copy that was somebody else's - the
+    // server said replace, or the tag differs - is set aside, never written
+    // over, and this person's own set-aside copy comes back with this page's
+    // changes on top; then the account's list is merged in.
+    // EVERY answer, not only a replace: T's set-aside copy comes back
+    // whenever there is one (third review: after a sign-out and sign-in the
+    // same person's copy otherwise stayed aside for good)
+    if(adopt(d.owner)||d.replace){ SAVE_GEN++; changed=true; }   // what came back has to go up
+    changed=mergeRemote(d)||changed;
+    try{ if(d.owner)localStorage.setItem(OWNER_KEY,d.owner); localStorage.setItem(ACCT_FLAG,"1") }catch{}
+    ACCT_SYNC="on"; ACCT_REASON=""; ACCT_CAPPED=Number(d.capped)||0;
+    // CLEAN only when the server holds every role this browser does (second
+    // review: a capped or cut list read as clean, and Sign out then dropped
+    // the roles that never went up)
+    const theirs=new Set((d.saved||[]).map(s=>s&&s.id));
+    const all=Object.keys(savedAll()).every(id=>theirs.has(id));
+    if(SAVE_GEN===gen0&&all&&!ACCT_CAPPED){ JOURNAL.clear(); ACCT_CLEAN=true; }
+    else { ACCT_CLEAN=false; if(SAVE_GEN!==gen0)syncSoon(); }
+  }
+  try{paintAcctPip()}catch{}
+  if(changed||tab==="saved")render();
+  return true;
+}
+/* With the sign-in carrying the list, a browser that also syncs through an
+   alert subscription folds the subscription's copy in once a load (a KV read,
+   no write), so saves and unsaves only the subscription holds - made on a
+   browser that has not opened the board since - reach the account (review,
+   2026-11-18). */
+const FOLDED_KEY="solesource.folded.v1";
+async function foldSubscription(){
+  const t=syncToken(), me=savedOwner(); if(!t||!me||me===PENDING)return;
+  // ONCE, and only into the account the subscription belongs to: its copy no
+  // longer changes once the sign-in carries the list, so folding it on every
+  // load would bring back what was unsaved after it (second review), and a
+  // token left by the last person on a shared browser is theirs, not ours
+  let done=""; try{done=localStorage.getItem(FOLDED_KEY)||""}catch{}
+  if(done===me+":"+t)return;
+  try{
+    const r=await fetch("/api/alerts?t="+encodeURIComponent(t));
+    if(!r.ok)return;
+    const d=await r.json(); if(!d||!d.ok)return;
+    if(d.owner_tag!==me)return;
+    if(mergeRemote(d)){ SAVE_GEN++; ACCT_CLEAN=false; syncSoon(); render(); }
+    try{localStorage.setItem(FOLDED_KEY,me+":"+t)}catch{}
+  }catch{}
 }
 async function pushSync(){
   const t=syncToken(); if(!t)return;
@@ -4501,22 +4797,8 @@ async function pullSync(){
     }
     const d=await r.json();
     if(!d.ok){SYNC_STATE="error";return}
-    const local=savedAll(), gone={...tombs(),...(d.removed||{})};
-    (d.saved||[]).forEach(s=>{
-      if(!s||!s.id)return;
-      const when=s.saved_at||s.saved_on||"";
-      // A role comes back only if it was saved AFTER it was last unsaved.
-      if(gone[s.id]&&!(when>gone[s.id]))return;
-      if(!local[s.id])local[s.id]=s;
-    });
-    Object.keys(gone).forEach(id=>{
-      const mine=local[id];
-      if(mine&&!((mine.saved_at||mine.saved_on||"")>gone[id]))delete local[id];
-    });
-    writeSaved(local);
-    try{localStorage.setItem(TOMB_KEY,JSON.stringify(gone))}catch{}
+    mergeRemote(d);
     SYNC_STATE="on";
-    const c=$("#savedcount"); if(c)c.textContent=Object.keys(local).length||"";
     pushSync();                        // hand this device's additions back
   }catch{SYNC_STATE="error"}
   if(tab==="saved")render();
@@ -4789,7 +5071,26 @@ function savedView(){
   const all=roles;
   const nap=open.filter(p=>!ap[p.id]).length;
   const linked=!!syncToken();
-  const bar=linked
+  const bar=WAITING_FOR&&ACCT_SYNC!=="on"
+    ? `<div class="syncbar"><span>Your saved roles appear here once the server
+        confirms your sign-in.</span></div>`
+    : ACCT_SYNC==="on"&&ACCT_CAPPED
+    ? `<div class="syncbar"><span class="warn">Your sign-in keeps up to 500 saved
+        roles, so ${ACCT_CAPPED} newer one${ACCT_CAPPED===1?"":"s"} stayed on this
+        browser only. Remove some you no longer need to keep the rest with you.</span></div>`
+    : ACCT_SYNC==="on"
+    ? `<div class="syncbar"><span>These follow your sign-in: sign in on any
+        browser or phone and they are there. Which ones you have applied to
+        stays on this browser.</span></div>`
+    : ACCT_SYNC==="error"&&ACCT_REASON==="busy"
+    ? `<div class="syncbar"><span class="warn">That is a lot of saving and
+        unsaving for one day, so today's changes stay on this browser and go up
+        to your sign-in tomorrow.</span></div>`
+    : ACCT_SYNC==="error"
+    ? `<div class="syncbar"><span class="warn">Saving to your sign-in is not
+        reaching the server right now. Everything is still saved on this
+        device, and it goes up when the server answers.</span></div>`
+    : linked
     ? `<div class="syncbar">${
         SYNC_STATE==="error"
           ? `<span class="warn">Syncing is not reaching the server right now.
@@ -4846,7 +5147,7 @@ function savedView(){
     + (seeGone?`<div class="list" id="s-gone"></div>`:"");
   $("#view").innerHTML=`<h1 class="vh">Saved</h1>`+searchHTML+cosHTML
     + `<div class="sechead"><h2>Saved roles</h2>
-      <div class="n">${open.length} ${linked?"kept with your subscription":"kept on this device"}${
+      <div class="n">${open.length} ${ACCT_SYNC==="on"||ACCT_SYNC==="error"?"kept with your sign-in":linked?"kept with your subscription":"kept on this device"}${
         open.length&&nap<open.length?` &middot; ${nap} still to apply to`:""}</div></div>`
     + bar + exportHTML
     + (open.length?`<div class="list" id="s-open"></div>`
@@ -7487,12 +7788,12 @@ function toggleSaveCompany(o){
     untombstone(k);
     all[k]={id:k,kind:"company",company_id:o.id,title:o.name,company:o.name,
       sector:o.sector,category:o.category,
-      saved_on:new Date().toISOString().slice(0,10),
-      saved_at:new Date().toISOString()};
+      saved_on:nowISO().slice(0,10),
+      saved_at:nowISO()};
   }
   if(!writeSaved(all)){ storageRefused(); return; }
   const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||"";
-  syncSoon();
+  noteChange(k);
 }
 function alertOnCompany(id){ location.href="/alerts?company="+encodeURIComponent(id); }
 function coShowAll(fam){
@@ -10221,6 +10522,14 @@ function acctText(){
   if(!storageWorks())return NO_STORAGE;
   const n=savedCount(), linked=!!syncToken();
   const roles=n===1?"1 role":n+" roles";
+  if(WAITING_FOR&&ACCT_SYNC!=="on")
+    return "Your saved roles appear here once the server confirms your sign-in.";
+  if(ACCT_SYNC==="on") return n
+    ? roles+" kept. They follow your sign-in to any browser or phone."
+    : "You have not kept any roles yet. When you do, they follow your sign-in to any browser or phone.";
+  if(ACCT_SYNC==="error") return n
+    ? roles+" kept. They follow your sign-in; the latest changes go up when the server answers."
+    : "You have not kept any roles yet. When you do, they follow your sign-in to any browser or phone.";
   if(!n) return linked
     ? "You have not kept any roles yet. When you do, they will follow you to your other devices."
     : "You have not kept any roles yet. Tap the bookmark on a role and it is kept in this browser.";
@@ -10233,10 +10542,13 @@ function openAcct(open){
   const m=$("#acctmenu"), b=$("#btn-acct");
   if(!m||!b)return;
   const show = open===undefined ? !m.classList.contains("open") : open;
-  $("#accttitle").textContent = syncToken() ? "Your saved roles" : "Saved on this device";
+  const acct=ACCT_SYNC==="on"||ACCT_SYNC==="error";
+  $("#accttitle").textContent = acct||syncToken() ? "Your saved roles" : "Saved on this device";
   $("#acctbody").textContent = acctText();
   const sync=$("#acctsync");
-  if(sync) sync.textContent = syncToken() ? "Sync settings \u2192" : "Sync across devices \u2192";
+  // With the sign-in carrying the list, the alerts page is for alerts, not sync.
+  if(sync) sync.textContent = acct ? "Job alerts \u2192"
+    : syncToken() ? "Sync settings \u2192" : "Sync across devices \u2192";
   m.classList.toggle("open",show);
   b.setAttribute("aria-expanded",String(show));
 }
@@ -10266,7 +10578,7 @@ async function whoAmI(){
   row.removeAttribute("href");
   row.classList.add("status");
   doors.textContent="";
-  const door=(href,label)=>{const a=document.createElement("a");a.className="row";a.href=href;a.textContent=label+" \u2192";doors.appendChild(a);};
+  const door=(href,label)=>{const a=document.createElement("a");a.className="row";a.href=href;a.textContent=label+" \u2192";doors.appendChild(a);return a;};
   if(roles.includes("owner")||roles.includes("admin")) door("/admin/","Admin");
   /* JOB HUNTER IS LIVE at hunter.<this host> (2026-10-14), so the door goes
      there, and an owner or beta user gets a Flag on every role. */
@@ -10294,7 +10606,8 @@ async function whoAmI(){
     if(new URL(JH_APP).hostname==="hunter."+location.hostname.replace(/^www\./,""))
       document.documentElement.classList.add("jhp");
   }
-  door("/signin/out","Sign out");
+  const out=door("/signin/out","Sign out");
+  if(out&&out.addEventListener) out.addEventListener("click",signOutHere);
 }
 function wireHeader(){
   whoAmI();
@@ -10409,7 +10722,11 @@ function start(d){
   // with the network gone, and a saved list is the last thing worth waiting on.
   // Its own try for the same reason: a sync that throws must not replace a
   // board that drew correctly with an error about the board.
-  try{ pullSync(); }catch(e){ console.error("saved-role sync failed",e); }
+  // The sign-in's list first (2026-11-18); the alert sync only when the site
+  // cannot keep one, so a subscriber's list still travels as it always did.
+  try{ accountSync().then(on=>{ if(!on) pullSync(); else foldSubscription(); })
+         .catch(e=>console.error("saved-role sync failed",e)); }
+  catch(e){ console.error("saved-role sync failed",e); }
   // the back button should undo a search, not leave the page. it only ever
   // reaches this listener because openRole and a settled filter change push
   // real entries now; with everything on replaceState there was one entry and

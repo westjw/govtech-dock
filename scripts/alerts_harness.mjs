@@ -114,6 +114,10 @@ out.settingsNames = (await getSettings()).company_names;
 env.ASSETS = { fetch: async () => { throw new Error("assets down"); } };
 const down = await getSettings();
 out.settingsNamesDown = { ok: down.ok, names: down.company_names };
+/* ...and it says whose subscription this is, as the sign-in's list is tagged,
+   so a board folds it only into its own account (2026-11-18) */
+out.settingsOwnerTag = down.owner_tag
+  === await (await import("../functions/api/saved.js")).ownerTag("pat@example.org");
 delete env.ASSETS;
 
 /* 5. An already-subscribed address: one settings mail, then a cooldown. */
@@ -130,9 +134,40 @@ out.settingsMailsAfterAnHour = sent.length - before;
 /* 6. The answer never varies with the address's state. */
 out.freshAnswer = (await post({ action: "subscribe", email: "lee@example.org", prefs: PREFS })).body;
 
-/* 7. Unsubscribing deletes both keys. */
+/* 7. Unsubscribing deletes both keys - and NOT the saved list that follows
+   the sign-in (2026-11-18): Stop is reached from every digest's one-click
+   link, which says nothing about the board, and the page says that list
+   stays. */
+let sqlite = null;
+try { sqlite = await import("node:sqlite"); } catch { sqlite = null; }
+let savedRowsBefore = null, savedKey = null, sdb = null;
+if (sqlite) {
+  sdb = new sqlite.DatabaseSync(":memory:");
+  const stmt = (sql, params = []) => ({ bind: (...q) => stmt(sql, q),
+    async all() { return { results: sdb.prepare(sql).all(...params) }; },
+    async first() { return sdb.prepare(sql).get(...params) ?? null; },
+    async run() { sdb.prepare(sql).run(...params); return { success: true }; } });
+  env.DB = { prepare: (sql) => stmt(sql),
+    async batch(list) { sdb.exec("BEGIN"); try { for (const x of list) await x.run(); sdb.exec("COMMIT"); }
+                        catch (e) { sdb.exec("ROLLBACK"); throw e; } } };
+  const saved = await import("../functions/api/saved.js");
+  savedKey = await saved.ownerKey("pat@example.org");
+  sdb.exec(`CREATE TABLE IF NOT EXISTS saved_roles (owner TEXT NOT NULL, id TEXT NOT NULL,
+    item TEXT, saved_at TEXT, removed_at TEXT, PRIMARY KEY (owner, id))`);
+  sdb.prepare("INSERT INTO saved_roles (owner, id, item, saved_at) VALUES (?, ?, ?, ?)")
+    .run(savedKey, "r1", JSON.stringify({ id: "r1" }), "2026-11-18T12:00:00.000Z");
+  sdb.prepare("INSERT INTO saved_roles (owner, id, item, saved_at) VALUES (?, ?, ?, ?)")
+    .run("o1:someone-else", "r9", JSON.stringify({ id: "r9" }), "2026-11-18T12:00:00.000Z");
+  savedRowsBefore = sdb.prepare("SELECT COUNT(*) AS n FROM saved_roles").get().n;
+}
 await post({ action: "stop", token });
 out.afterStop = [...KV.keys()].filter((k) => KV.get(k).v === token || k === "sub:" + token).length;
+if (sdb) {
+  out.stopKeepsSavedList = { before: savedRowsBefore,
+    mine_after: sdb.prepare("SELECT COUNT(*) AS n FROM saved_roles WHERE owner = ?").get(savedKey).n,
+    others_after: sdb.prepare("SELECT COUNT(*) AS n FROM saved_roles WHERE owner != ?").get(savedKey).n };
+  delete env.DB;
+}
 
 /* 8. ONE CALLER, MANY ADDRESSES: the per-caller allowance. */
 const mailsBefore = sent.length;

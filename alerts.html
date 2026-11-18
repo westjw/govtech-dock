@@ -467,18 +467,29 @@ function signupView(){
    sync on is a deliberate act on one browser at a time, so a shared or
    borrowed machine never quietly starts carrying somebody's shortlist. */
 const SYNC_KEY="solesource.synctoken.v1";
+let ACCT=false;
 function paintSync(){
   let on=false;
   try{on=localStorage.getItem(SYNC_KEY)===TOKEN}catch{}
   const n=$("#syncnote"), b=$("#synctoggle");
   if(!n||!b)return;
-  n.textContent=on
+  // The board writes this when the sign-in carries the saved list (2026-11-18).
+  let acct=false;
+  try{acct=localStorage.getItem("solesource.acctsync.v1")==="1"}catch{}
+  n.textContent=acct
+    ? "Roles you save on the board already follow your sign-in to any browser or phone, so this browser does not need alert sync."
+    : on
     ? "This browser is syncing its saved roles with your subscription, so they follow you to your other devices."
     : "Roles you save on the board are kept in this browser alone. Turn sync on here and they travel with your subscription instead.";
   b.textContent=on?"Stop syncing on this browser":"Sync saved roles on this browser";
+  // nothing to switch on when the sign-in already carries the list, unless
+  // this browser is syncing and wants a way to stop
+  b.hidden=acct&&!on;
 }
 
 function settingsView(data){
+  // the board writes this when the sign-in carries the saved list (2026-11-18)
+  try{ACCT=localStorage.getItem("solesource.acctsync.v1")==="1"}catch{ACCT=false}
   PREFS=data.prefs; SAVED=data.saved||[];
   COMPANIES=Array.isArray(PREFS&&PREFS.companies)?PREFS.companies.filter(x=>ID_RE.test(x)):[];
   const live=SAVED.length;
@@ -498,8 +509,11 @@ function settingsView(data){
     <button class="ghost" id="synctoggle"></button>
   </div>
   ${live?`<div class="panel"><h2>Saved roles</h2>
-    <p class="note">${live} role${live===1?"":"s"} kept with this subscription, so
-      they follow you between your laptop and your phone.</p>
+    <p class="note">${ACCT
+      ? `An older copy of ${live} role${live===1?"":"s"}, from before your saved
+         roles followed your sign-in. The board keeps the up-to-date list now.`
+      : `${live} role${live===1?"":"s"} kept with this subscription, so
+      they follow you between your laptop and your phone.`}</p>
     <ul class="saved">${SAVED.slice(0,40).map(s=>{
       const u=safeUrl(s.url);
       return `<li>${u?`<a href="${esc(u)}" rel="noopener noreferrer">${esc(s.title)}</a>`
@@ -510,7 +524,9 @@ function settingsView(data){
   <div class="panel">
     <h2>Stop</h2>
     <p class="note">This deletes the subscription, the settings and the saved roles
-      above. There is no suppression list and no record kept that you were here.</p>
+      above. There is no suppression list and no record kept that you were here.${ACCT
+      ? " The saved roles that follow your sign-in stay on the board; unsave them there."
+      : ""}</p>
     <button class="danger" id="stop">Stop these emails and delete my data</button>
   </div>`;
   fillSectors(); paintCompanies();

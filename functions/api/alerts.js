@@ -40,10 +40,10 @@
  */
 import { signedIn } from "../_identity.js";
 import { fromOurPage } from "../_session.js";
+import { cleanSaved, cleanRemoved } from "../_saved.js";
+import { ownerTag } from "./saved.js";
 import { json, mintToken, emailKey, underDailyCap, validEmail, cleanToken, send, button, shell,
          SITE, FROM, NAME } from "../_mail.js";
-const MAX_SAVED = 500;          // a person's shortlist, not a scrape target
-const MAX_ID = 300;
 const CONFIRM_COOLDOWN = 3600;  // seconds between mails per address, either kind
 /* AN UNCONFIRMED SIGNUP EXPIRES. The confirmation mail has always said "the
  * request expires on its own", and until 2026-10-06 nothing made it true:
@@ -158,78 +158,6 @@ function cleanPrefs(raw) {
   };
 }
 
-/* Saved roles carry their own snapshot, not just an id.
- *
- * Ids alone would be smaller, but a role saved on the laptop and opened on
- * the phone a week later would render as a blank row: the posting has come
- * down and no device can look it up any more. The snapshot costs nothing in
- * privacy that the id does not already cost - "this person kept this job" is
- * the sensitive fact, and the id is that fact - so it is stored.
- *
- * Only these fields, at these lengths. The client is not trusted to decide
- * what a saved role contains. */
-/* saved_at is not decoration: it is the timestamp a tombstone is compared
- * against. Without it the comparison falls back to saved_on, which is a DATE,
- * and re-saving a role on the same day you unsaved it loses to its own
- * tombstone - the role silently disappears again on the next sync. */
-// `kind` separates a saved COMPANY from a saved role. Dropped, a company saved
-// on the laptop came back on the phone as a role "no longer listed" that "may
-// have been filled" (launch audit 3, 2026-10-09).
-const SAVED_FIELDS = ["id", "title", "company", "company_id", "url", "sector",
-                      "category", "family", "seniority", "saved_on", "saved_at",
-                      "kind"];
-
-function cleanSaved(raw) {
-  if (!Array.isArray(raw)) return [];
-  const seen = new Set();
-  const out = [];
-  for (const item of raw) {
-    if (!item || typeof item !== "object" || typeof item.id !== "string") continue;
-    const id = item.id.slice(0, MAX_ID);
-    if (!id || seen.has(id)) continue;
-    seen.add(id);
-    const row = { id };
-    for (const f of SAVED_FIELDS) {
-      if (f !== "id" && typeof item[f] === "string") row[f] = item[f].slice(0, 200);
-    }
-    if (item.quota_carrying === true) row.quota_carrying = true;
-    out.push(row);
-    if (out.length >= MAX_SAVED) break;
-  }
-  return out;
-}
-
-/* Tombstones: id -> when it was unsaved.
- *
- * Without these, sync only ever adds. Unsave a role on the laptop, open the
- * phone - which still holds it - and the next sync puts it back, forever.
- * Union merges are only safe for sets nobody removes from.
- *
- * They are pruned after 90 days: by then every device has long since seen the
- * removal, and a tombstone list that only grows is a slow leak of exactly the
- * data unsaving was supposed to get rid of. */
-const TOMBSTONE_DAYS = 90;
-
-function cleanRemoved(raw, prior) {
-  const merged = { ...(prior && typeof prior === "object" ? prior : {}) };
-  if (raw && typeof raw === "object") {
-    for (const [id, when] of Object.entries(raw)) {
-      if (typeof id !== "string" || typeof when !== "string") continue;
-      const k = id.slice(0, MAX_ID);
-      if (!merged[k] || when > merged[k]) merged[k] = when.slice(0, 30);
-    }
-  }
-  const cutoff = new Date(Date.now() - TOMBSTONE_DAYS * 86400000).toISOString();
-  const out = {};
-  for (const [id, when] of Object.entries(merged)) {
-    if (when >= cutoff) out[id] = when;
-  }
-  // Bound it the same way saved is bounded, newest kept.
-  const keys = Object.keys(out).sort((a, b) => out[b].localeCompare(out[a]))
-    .slice(0, MAX_SAVED);
-  return Object.fromEntries(keys.map((k) => [k, out[k]]));
-}
-
 /* A token from a URL, used only as a KV key. Constrain its shape so a crafted
  * one cannot reach for a neighbouring key. */
 function confirmMail(token, prefs) {
@@ -315,6 +243,11 @@ export async function onRequestGet({ request, env }) {
     saved: sub.saved || [],
     removed: sub.removed || {},
     last_sent: sub.last_sent || null,
+    // WHOSE LIST THIS IS, as the sign-in's list is tagged (functions/api/
+    // saved.js), so the board folds a subscription into the account it
+    // belongs to and never into the next person's on a shared browser
+    // (second review, 2026-11-18). A hash, never the address.
+    owner_tag: await ownerTag(sub.email),
   });
 }
 
@@ -404,6 +337,10 @@ export async function onRequestPost({ request, env }) {
     // list is still a record of who was interested in leaving their job.
     await env.ALERTS.delete("sub:" + token);
     await env.ALERTS.delete(await emailKey(sub.email));
+    // NOT the list that follows the sign-in (2026-11-18): Stop is reached
+    // from every digest's one-click link, which says nothing about the board,
+    // and a delete there would not stick while a browser holds a copy (second
+    // review). The page says what Stop deletes and what stays.
     return json({ ok: true, stopped: true });
   }
 

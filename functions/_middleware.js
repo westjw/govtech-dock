@@ -21,9 +21,56 @@
  */
 import { SITE, NAME } from "./_brand.js";
 import { gate } from "./_gate.js";
-import { secure } from "./_csp.js";
+import { secure, pageLike } from "./_csp.js";
 import { themed } from "./_signin_page.js";
 import { SWITCH_MARK } from "./_card.js";
+import { signedIn } from "./_identity.js";
+import { ownerTag } from "./api/saved.js";
+
+/* WHOSE SAVED LIST THIS BROWSER SHOULD HOLD, told to the page before it draws
+ * one (2026-11-18). The board keeps a copy of the signed-in person's saved
+ * roles in the browser; on a shared or borrowed machine that copy may be the
+ * last person's, and the board must know that BEFORE it paints a single
+ * bookmark, not when /api/saved answers a moment later (review, 2026-11-18).
+ * So every page carries the account's tag - a hash, never the address, the
+ * same tag /api/saved answers with - in a cookie the page's script can read.
+ * Signed out, the cookie goes. */
+export const OWNER_COOKIE = "__Host-sj_owner";
+/* On EVERY page answer: a 200, the bare 304 a revalidated page comes back as
+ * (it has no content-type, and the board's own load is usually one - second
+ * review, 2026-11-18: the first version skipped them, so a cached board kept
+ * a stale tag), and the gate's own sign-in card and landing page. Refreshed
+ * each time, so it never outlives the sign-in. Marked private: a response
+ * that sets one person's cookie must never sit in a shared cache. The board
+ * treats the cookie as a fast path only - the account /api/saved answers
+ * for is the authority (index.html, claimAtLoad and adopt). */
+export async function withOwner(res, request, env) {
+  let tag = "";
+  try {
+    const me = await signedIn(request, env);
+    if (me && me.email) tag = await ownerTag(me.email);
+  } catch (e) { tag = ""; }
+  const out = new Response(res.status === 304 || res.status === 204 ? null : res.body, res);
+  out.headers.append("Set-Cookie", tag
+    ? `${OWNER_COOKIE}=${tag}; Path=/; Max-Age=${30 * 86400}; Secure; SameSite=Lax`
+    : `${OWNER_COOKIE}=; Path=/; Max-Age=0; Secure; SameSite=Lax`);
+  // NEVER IN A SHARED CACHE, and never weaker than what was there: a
+  // response the gate marked no-store stays no-store (its landing page and
+  // refusals are), a public one becomes private, and one with no rule is
+  // private and revalidated
+  const cc = out.headers.get("Cache-Control") || "";
+  if (!/\bno-store\b/i.test(cc)) {
+    out.headers.set("Cache-Control", !cc ? "private, no-cache"
+      : /\bpublic\b/i.test(cc) ? cc.replace(/\bpublic\b/i, "private")
+      : /\bprivate\b/i.test(cc) ? cc : `private, ${cc}`);
+  }
+  return out;
+}
+function pathOf(request) {
+  let path = new URL(request.url).pathname;
+  try { path = decodeURIComponent(path); } catch { /* as sent */ }
+  return path;
+}
 
 /* THE READER'S LIGHT OR DARK on a sign-in page (owner, 2026-11-14). The
  * pages are drawn dark with an empty switch (functions/_signin_page.js); the
@@ -406,7 +453,11 @@ export async function onRequest(context) {
   // verified sign-in. See functions/_gate.js.
   const shut = await gate(request, context.env);
   // the holding page carries no script of ours, so its policy is enforced
-  if (shut) return secure(shut, request, context.env, { holding: true });
+  if (shut) {
+    const held = await secure(shut, request, context.env, { holding: true });
+    // the gate's card and landing page are signed out: the tag goes
+    try { return await withOwner(held, request, context.env); } catch (e) { return held; }
+  }
   // after the gate, so a visitor without a sign-in still meets the gate first
   if (disguisedPath(request)) {
     return new Response("Not found", { status: 404, headers: {
@@ -425,7 +476,12 @@ export async function onRequest(context) {
     res.headers.set("Cache-Control", keep[1]);
   }
   const type = res.headers.get("content-type") || "";
+  if (res.status === 304 && pageLike(pathOf(request))) {
+    try { return await withOwner(res, request, context.env); } catch (e) { return res; }
+  }
   if (!type.includes("text/html")) return res;
+  try { res = await withOwner(res, request, context.env); }
+  catch (e) { /* a missing tag costs the page nothing: the board waits for /api/saved instead */ }
 
   let meta = null;
   try { meta = await describe(request, context.env); }
