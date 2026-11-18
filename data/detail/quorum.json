@@ -1,13 +1,31 @@
 {
  "news": [
   {
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.quorum.us/blog/introducing-quincy-hub/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "index-text",
+   "first_seen": "2026-11-17",
+   "headline": "What We Learned at NABPAC: Five Post-Election Takeaways for PAC Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/what-we-learned-at-nabpac-five-post-election-takeaways-for-pac-teams/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "index-text",
+   "first_seen": "2026-11-17",
+   "headline": "Map the New Congress as One Team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/map-the-new-congress-as-one-team/"
   },
   {
    "date": "2026-11-16",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/how-to-advertise-to-newly-elected-officials-before-day-one/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "Answer Engine Optimization for Government Affairs: How to Become a Trusted Source in AI Search",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/answer-engine-optimization-for-government-affairs-how-to-become-a-trusted-source-in-ai-search/"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-24",
-   "headline": "AI Bill Tracking: 5 Improvements to How Your Team Tracks Legislation in 2027",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/ai-bill-tracking-5-improvements-to-how-your-team-tracks-legislation-in-2027/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "She Opened With Her Own Money",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accounttree.com/post/she-opened-with-her-own-money"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.accounttree.com/post/software-that-needs-lots-of-tech-support-isn-t-simple"
-  },
-  {
-   "date": "2025-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "Why \u201cSimple\u201d Isn\u2019t a Feature\u2014 It\u2019s a Philosophy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.accounttree.com/post/why-simple-isn-t-a-feature-it-s-a-philosophy"
   }
  ]
 }

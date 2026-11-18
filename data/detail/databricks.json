@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Branch, sync, serve: What our Lakebase Hackathon taught us about building on Lakebase",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/branch-sync-serve-what-our-lakebase-hackathon-taught-us-about-building-lakebase"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Azure Databricks sessions at Microsoft Ignite 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/azure-databricks-sessions-microsoft-ignite-2026"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "How packaged clean rooms bring RampID to your lakehouse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/liveramp-rampid-identity-resolution-packaged-clean-rooms"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Advancing Catalog Interoperability with Unity Catalog and Google Cloud\u2019s Borderless Lakehouse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/advancing-catalog-interoperability-unity-catalog-and-google-clouds-borderless-lakehouse"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "The new Azure Databricks on Azure Government is now in Beta",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/new-azure-databricks-azure-government-now-beta"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Built on object storage, served from cache",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/built-object-storage-served-cache"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -11,7 +74,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-16",
    "headline": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
    "kind": "press",
@@ -20,16 +83,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-16",
-   "headline": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-16",
    "headline": "Build a real-time next-best-offer recommender using Databricks Feature Views",
    "kind": "press",
@@ -38,7 +92,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-16",
    "headline": "Tabular foundation models on Databricks AI Runtime",
    "kind": "press",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one"
-  },
-  {
-   "date": "2026-11-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-16",
-   "headline": "Databricks is a Leader and positioned highest in execution in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Data Lakehouse Platforms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/databricks-leader-and-positioned-highest-execution-2026-gartnerr-magic-quadranttm-data"
-  },
-  {
-   "date": "2026-11-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-13",
-   "headline": "OpenAI and Databricks: Enterprise AI on your governed data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "index-text",
-   "first_seen": "2026-11-12",
-   "headline": "How Constellation is building a governed data foundation on Databricks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-constellation-building-governed-data-foundation-databricks"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "index-text",
-   "first_seen": "2026-11-12",
-   "headline": "Eclipse Aerospace simplifies flight-data ingestion with Databricks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "index-text",
-   "first_seen": "2026-11-12",
-   "headline": "How H6.ai builds AI-powered financial automation with Lakebase Postgres",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-h6ai-builds-ai-powered-financial-automation-lakebase-postgres"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "index-text",
-   "first_seen": "2026-11-12",
-   "headline": "Lakehouse//RT: Scale real-time analytics, not your bill",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill"
   }
  ]
 }

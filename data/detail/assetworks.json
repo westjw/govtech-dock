@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "What Makes a Well-Organized Fleet Maintenance Shop Actually Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/what-makes-a-well-organized-fleet-maintenance-shop-actually-work/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.assetworks.com/fleet/blog/how-to-improve-technician-productivity-without-burning-out-your-team/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "Why a Modern Interface Isn't Enough: Common Challenges Fleets Face When Upgrading Their System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/why-a-modern-interface-isnt-enough-common-challenges-fleets-face-when-upgrading-their-system/"
   }
  ],
  "profile": {

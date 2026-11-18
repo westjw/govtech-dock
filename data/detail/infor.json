@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "index-text",
+   "first_seen": "2026-11-17",
+   "headline": "Real-time credit intelligence for distributors, now inside Infor CloudSuite Distribution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/wholesail-infor-cloudsuite-distribution"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "og:published",
    "first_seen": "2026-11-16",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-16",
    "headline": "Predict, see, and adapt: What's new in Infor Supply Chain",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-16",
    "headline": "What\u2019s new in Infor CloudSuite Food & Beverage: Highlights from the October 2026 release",
    "kind": "press",
@@ -53,6 +62,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/ai-that-works-the-way-councils-need-it-to"
+  },
+  {
+   "date": "2026-11-13",
+   "date_source": "og:published",
+   "first_seen": "2026-11-17",
+   "headline": "Connect CRM and ERP data with Infor CRM SLX",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/connect-crm-and-erp-data-with-infor-crm-slx"
   },
   {
    "date": "2026-11-12",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-14",
    "headline": "From insight to action: Bringing Claude into the operations that run manufacturing",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/infor-cloudsuite-for-metal-fabrication"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "Infor CPQ 2026.10 Release: Configure, quote, and close deals faster with Infor CPQ and embedded AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/infor-cpq-2026-10-release-embedded-ai"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "Accelerate revenue with a better buying experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/accelerate-revenue-with-better-buying-experience"
   }
  ],
  "profile": {

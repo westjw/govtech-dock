@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "Operationalizing agentic AI in manufacturing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/operationalizing-agentic-ai-manufacturing"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "OWT London: OutSystems unveils agentic legacy modernization",
+   "kind": "product",
+   "kind_rule": "unveils",
+   "url": "https://www.outsystems.com/blog/posts/agentic-legacy-modernization"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -8,15 +26,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.outsystems.com/blog/posts/introducing-outsystems-agentic-first-notice-of-loss"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Operationalizing agentic AI in manufacturing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/operationalizing-agentic-ai-manufacturing"
   },
   {
    "date": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/news/outsystems-research-agentic-ai-enterprise-readiness"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "near-h1",
-   "first_seen": "2026-11-05",
-   "headline": "OutSystems Agent Experience Is Now Generally Available, Bringing Governed AI Development to Any Coding Agent",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/news/outsystems-launches-agent-experience"
   }
  ]
 }

@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "date_source": "near-h1",
+   "first_seen": "2026-11-17",
+   "headline": "Best Strategic Planning Software for Nonprofits (2026): Compared on Board Reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearpointstrategy.com/blog/best-strategic-planning-software-for-nonprofits"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "index-text",
    "first_seen": "2026-11-16",
    "headline": "Strategic Plan Progress Report to City Council: Free Template and Example (2026)",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clearpointstrategy.com/blog/establish-rag-statuses-for-kpis"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Gap Analysis: What 21,000+ Strategic Plans Reveal About the Gaps That Don't Close",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clearpointstrategy.com/blog/gap-analysis-template"
   }
  ],
  "profile": {

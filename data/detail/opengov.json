@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "California AB 1621: What the Two-Round Plan Check Limit Means for Your Building Department",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://opengov.com/resources/blog/ab-1621-plan-check/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "5 Parks Maintenance Gaps Draining Your Budget (and How to Fix Them)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://opengov.com/resources/blog/parks-maintenance-gaps/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://opengov.com/resources/blog/florida-house-bill-1329-is-here-is-your-budget-process-ready/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Florida HJR 1-F: How to Navigate the $11.86 Billion Property Tax Cliff",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://opengov.com/resources/blog/florida-hjr-1-f-how-to-navigate-the-11-86-billion-property-tax-cliff/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Building Permits Without the Wait: How AI Changes What Plan Review Can Be",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://opengov.com/resources/blog/building-permits-without-the-wait-how-ai-changes-what-plan-review-can-be/"
   }
  ],
  "profile": {

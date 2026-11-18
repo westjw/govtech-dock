@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Huntress Delivers 24/7 Response for Microsoft Defender Incidents Across Endpoints and Microsoft 365",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/huntress-response-for-microsoft-defender-incidents-across-endpoints-and-microsoft-365"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.huntress.com/blog/brute-force-sentry"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "Herd Immunity for Identity: Introducing Adversary Infrastructure",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.huntress.com/blog/itdr-adversary-infrastructure"
   }
  ]
 }

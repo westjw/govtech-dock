@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "What CISA\u2019s new cyber strategy means for how you ship software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/cisa-2030-cyber-strategy/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/gitlab-helps-remediate-critical-php-flaws/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Uncover the business logic vulnerabilities SAST scanners miss",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/gitlab-business-logic-security-analyzer/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "OSINT for GSOC Teams: Seeing Threats Before They Arrive",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/osint-gsoc-teams/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-21",
    "headline": "Data Center Security: Why It\u2019s an Intelligence Problem First",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.penlink.com/blog/coanalyst360-investigators-time/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "How CoAnalyst360 Gives Investigators Their Time Back",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/pt/blog/coanalyst360-investigators-time/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "No One Asks a Thermostat to Show Its Work. AI Agents Should.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/no-one-asks-thermostat-show-its-work-ai-agents-should"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/php2shell-what-teams-asked-while-fix-was-rolling-out"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "What Critical Vulnerability Responses Reveal About Your Web Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/what-critical-vulnerability-responses-reveal-about-your-web-platform"
   }
  ]
 }

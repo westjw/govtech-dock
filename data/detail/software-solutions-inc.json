@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "How to Apply for the GFOA Distinguished Budget Presentation Award",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mysoftwaresolutions.com/news/how-to-apply-for-the-gfoa-distinguished-budget-presentation-award"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mysoftwaresolutions.com/news/minnesota-hf-4074-chapter-106-and-sf-4760-chapter-97-explained"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing Frank, VIP's New Ai Assistant",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.mysoftwaresolutions.com/news/introducing-frank-vips-new-ai-assistant"
   }
  ],
  "profile": {

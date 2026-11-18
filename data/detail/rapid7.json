@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "CVE-2026-114938: Reported Critical Pre-authentication Remote Code Execution in Java 17",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rapid7.com/blog/post/etr-cve-2026-114938-reported-critical-pre-authentication-remote-code-execution-java-17/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "On-Demand Pay, now built into Workday",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dailypay.com/resource-center/blog/on-demand-pay-now-built-into-workday/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dailypay.com/resource-center/blog/get-paid-early/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is earned wage access? A complete guide for employees and employers.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dailypay.com/resource-center/blog/what-is-earned-wage-access/"
   }
  ],
  "profile": {

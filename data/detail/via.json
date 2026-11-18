@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "time",
+   "first_seen": "2026-11-17",
+   "headline": "Via launches two new services and expands a third service in New Jersey",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://ridewithvia.com/news/via-launches-two-new-services-and-expands-a-third-service-in-new-jersey?hsLang=en"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "time",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ridewithvia.com/resources/the-remix-features-you-need-to-know-this-october"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "time",
-   "first_seen": "2026-10-05",
-   "headline": "Transforming Transit. The Via Features you need to know this October",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ridewithvia.com/resources/the-via-features-you-need-to-know-this-october"
   }
  ],
  "profile": {

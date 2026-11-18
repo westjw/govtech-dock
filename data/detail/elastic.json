@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "How security leaders see AI being used in the SOC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/how-security-leaders-see-ai-being-used-in-the-soc"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elastic.co/blog/making-data-work-across-boundaries-policing"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Elastic named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Enterprise AI Search",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/elastic-leader-gartner-magic-quadrant-enterprise-ai-search-2026"
   }
  ]
 }

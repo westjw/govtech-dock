@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "When Legacy Infrastructure Grounds a Nation, Public Safety Should Pay Attention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.10-8systems.com/insights/faa-ground-stop-cad-continuity"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.10-8systems.com/insights/the-visibility-gap-no-cad-demo-will-show"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Your CAD platform is only as next-gen as the infrastructure running it",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.10-8systems.com/insights/what-next-generation-cad-means"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Inside the Agency: What Government Buyers Want Suppliers to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/inside-the-agency-what-government-buyers-want/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Welcomes",
    "url": "https://www.sovra.com/press-releases/sovra-welcomes-akhilesh-agarwal-to-board-of-directors/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "How to Find Government Contracts Before the RFP is Issued",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sovra.com/blog/how-to-find-government-contracts-before-the-rfp-is-issued/"
   }
  ],
  "profile": {

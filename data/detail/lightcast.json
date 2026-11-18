@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Carpenters\u2019 Salaries in the US: Pay and Purchasing Power by State",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/carpenters-salaries"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://lightcast.io/resources/blog/career-pathways-for-employers"
-  },
-  {
-   "date": "2024-03-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Increased Employee Productivity and Retention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lightcast.io/resources/blog/what-is-upskilling"
   }
  ]
 }

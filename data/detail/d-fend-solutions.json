@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Why Sensitive Sites Cannot Wait for Proof of Drone Intent",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/drone-threat-assessment-sensitive-sites/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Rogue Drone Response: When Decisions Cannot Wait",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/drone-incident-briefing-october-2026/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Why Challenging Environments and Situations Demand a Different Kind of Counter-Drone Equipment",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://d-fendsolutions.com/blog/major-event-counter-drone-operations/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The Varying Consequences of Rogue Drone Escalation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/the-varying-consequences-of-rogue-drone-escalation/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Drone Neutralization Systems: Comparing Methods and Outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/drone-neutralization-systems/"
   }
  ],
  "profile": {

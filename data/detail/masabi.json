@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "time",
+   "first_seen": "2026-11-17",
+   "headline": "Masabi and Passenger Join UK\u2019s G-Cloud 15 to Streamline Bus Technology Procurement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/news/masabi-and-passenger-join-uks-g-cloud-15-to-streamline-bus-technology-procurement/"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "time",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.masabi.com/resources/reducing-cash-onboard-public-transit/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Bridging the Fare Gap: Unlocking Equity and Efficiency Through Fare Capping",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.masabi.com/resources/bridging-the-fare-gap/"
   }
  ],
  "profile": {

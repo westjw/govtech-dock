@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "time",
+   "first_seen": "2026-11-17",
+   "headline": "Bistatic and multistatic radar: Synchronizing distributed sensing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.oscilloquartz.com/en/newsroom/blog/20261117-bistatic-and-multistatic-radar-synchronizing-distributed-sensing"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "time",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.oscilloquartz.com/en/newsroom/blog/20260731-why-precision-timing-matters-in-public-safety-communications"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Oscilloquartz wins contract with quantum computing firm to provide optical cesium solutions",
-   "kind": "contract",
-   "kind_rule": "wins contract",
-   "url": "https://www.oscilloquartz.com/en/newsroom/press-releases/20260730-oscilloquartz-wins-contract-with-quantum-computing-firm-to-provide-optical-cesium-solutions"
   }
  ]
 }

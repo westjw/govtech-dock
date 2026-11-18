@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Headless, not brainless: Introducing the Kyriba TAI MCP for governed liquidity intelligence",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.kyriba.com/blog/introducing-tai-mcp/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kyriba.com/news/kyriba-and-esker-partner-to-help-companies-improve-cash-visibility-forecasting-and-liquidity-optimization/"
-  },
-  {
-   "date": "2025-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Kyriba\u2019s Agentic AI, TAI, Is Now Available",
-   "kind": "product",
-   "kind_rule": "Now Available",
-   "url": "https://www.kyriba.com/blog/agentic-ai-tai-launch/"
   }
  ]
 }

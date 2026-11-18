@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "og:published",
+   "first_seen": "2026-11-17",
+   "headline": "The FAA Disruption Is a Warning: America Must Engineer for Cyber Survivability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.igel.com/blog/faa-disruption-cyber-survivability/"
+  },
+  {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-11-12",
    "headline": "The NCSC Annual Review 2026, the patch wave and Gartner\u2019s WISE",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.igel.com/blog/trustworthy-ai-agentic-authority/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Why IGEL OS\u2122 12\u2019s Common Criteria Evaluation Matters for Security, Resilience and Business Continuity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.igel.com/blog/igel-os-12-common-criteria-evaluation/"
   }
  ]
 }

@@ -9279,5 +9279,84 @@
   "via": "apple-touch-icon",
   "url": "https://assets.intellinetics.com/favicons/apple-touch-icon.png",
   "sha256": "bfac58591deb004789f977d24d0e756529c77650fc56f34ec1ad2ebbe6345e10"
+ },
+ "kira-learning": {
+  "ok": true,
+  "note": "https://framerusercontent.com/images/yBC28x3PGAjXdJl0myloEIHw4Go.png",
+  "site": "https://www.kira-learning.com",
+  "on": "2026-11-18",
+  "via": "apple-touch-icon",
+  "url": "https://framerusercontent.com/images/yBC28x3PGAjXdJl0myloEIHw4Go.png",
+  "sha256": "6c5386e53fdb01033ba5773d901017529628719c05b7360d08564f32d19bd019"
+ },
+ "codehs": {
+  "ok": true,
+  "note": "https://static1.codehs.com/img/logos/codehs_icon.svg",
+  "site": "https://codehs.com",
+  "on": "2026-11-18",
+  "via": "markup-logo",
+  "url": "https://static1.codehs.com/img/logos/codehs_icon.svg",
+  "sha256": "d3196aa8b746ef4ef118e45e3e3b26a28f8d68cd6c1163881773f75f6f1601a3",
+  "review": true
+ },
+ "newsela": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/6643998773f47007e008ebae/66f1805da7952f0e6ee76574_Webclip.png",
+  "site": "https://newsela.com",
+  "on": "2026-11-18",
+  "via": "apple-touch-icon",
+  "url": "https://cdn.prod.website-files.com/6643998773f47007e008ebae/66f1805da7952f0e6ee76574_Webclip.png",
+  "sha256": "99ce80498380bb2d516bccc692107ce29d0452e39c45c6b7ab67f857e7461903"
+ },
+ "schoolinks": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/6746d31a9f09e71b8d50a8e9/676068b4680b01628beb52f1_Webclip.svg",
+  "site": "https://www.schoolinks.com",
+  "on": "2026-11-18",
+  "via": "apple-touch-icon",
+  "url": "https://cdn.prod.website-files.com/6746d31a9f09e71b8d50a8e9/676068b4680b01628beb52f1_Webclip.svg",
+  "sha256": "a4d95941ca8af712c2e57f7f08392172672c740d94333879d4aaea1154ad55f5"
+ },
+ "wayground": {
+  "ok": false,
+  "note": "robots.txt on www.wayground.com answered HTTP 202; kept out until it answers",
+  "site": "https://wayground.com",
+  "on": "2026-11-18"
+ },
+ "amira-learning": {
+  "ok": true,
+  "note": "https://www.amiralearning.com/assets/apple-touch-icon.png",
+  "site": "https://www.amiralearning.com",
+  "on": "2026-11-18",
+  "via": "apple-touch-icon",
+  "url": "https://www.amiralearning.com/assets/apple-touch-icon.png",
+  "sha256": "617c73f34d401d277060c42273c7d56988fe3569465595bf8c62d1aa24b4eee5"
+ },
+ "seesaw": {
+  "ok": true,
+  "note": "https://seesaw.com/wp-content/uploads/2020/02/seesaw-favicon-300x300.jpg",
+  "site": "https://seesaw.com",
+  "on": "2026-11-18",
+  "via": "declared-icon",
+  "url": "https://seesaw.com/wp-content/uploads/2020/02/seesaw-favicon-300x300.jpg",
+  "sha256": "0bf6a584579b523bcdac4496dd4ca4a62313837c4a3907f67df27cc75bf0baa5"
+ },
+ "edsights": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/6644271adb6d248ebe3108d8/664563419b326482dfff90bc_favicon.png",
+  "site": "https://www.edsights.com",
+  "on": "2026-11-18",
+  "via": "apple-touch-icon",
+  "url": "https://cdn.prod.website-files.com/6644271adb6d248ebe3108d8/664563419b326482dfff90bc_favicon.png",
+  "sha256": "0ff1569e04a83d64480e506f84d9ab716aca3ad21eb6512bedce3c14dcd9b625"
+ },
+ "nectir": {
+  "ok": true,
+  "note": "https://www.nectir.io/apple-icon.png",
+  "site": "https://www.nectir.io",
+  "on": "2026-11-18",
+  "via": "apple-touch-icon",
+  "url": "https://www.nectir.io/apple-icon.png",
+  "sha256": "77da41257ab0fb278d8ab1976252767bae7b4aa2ff9749b03b5d65bd50c78dbf"
  }
 }

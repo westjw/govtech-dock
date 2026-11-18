@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Condition-based maintenance for fleets: Reduce downtime and repairs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/blog-condition-based-maintenance/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "time",
    "first_seen": "2026-11-16",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomotive.com/blog/motive-fleet-fuel-card-fraud-control/"
+  },
+  {
+   "date": "2026-11-13",
+   "date_source": "time",
+   "first_seen": "2026-11-17",
+   "headline": "How to improve fleet fuel management and prevent fuel fraud.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/smarter-fleet-fuel-strategies/"
   },
   {
    "date": "2026-11-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomotive.com/blog/team-member-spotlight-angie-bretag/"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "time",
-   "first_seen": "2026-10-20",
-   "headline": "Landscaping dispatch software: How to keep crews moving with GPS visibility.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/landscaping-dispatch-software/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "time",
-   "first_seen": "2026-10-19",
-   "headline": "Motive launches Agents: Tell Agents the goal. They handle the rest.",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://gomotive.com/blog/motive-launches-ai-agents/"
   }
  ],
  "profile": {

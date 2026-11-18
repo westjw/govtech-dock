@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Quick Guide to Person-Centered Planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.relias.com/blog/person-centered-planning"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.relias.com/blog/measuring-the-roi-of-a-healthcare-training-partnership"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Compliance Training ROI: What it Is, How to Measure it, and Why it Matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.relias.com/blog/compliance-training-roi"
   }
  ]
 }

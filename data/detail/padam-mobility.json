@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Pr\u00e9carit\u00e9 mobilit\u00e9 : 17 millions de Fran\u00e7ais sans r\u00e9elle solution pour se d\u00e9placer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.padam-mobility.com/blog/precarite-mobilite-17-millions-de-francais-sans-reelle-solution-pour-se-deplacer"
+  },
+  {
    "date": "2026-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.padam-mobility.com/en/blog/smarter-mobility-for-burgenland-padam-mobility-and-hacon-deliver-software-for-the-new-bast-app"
-  },
-  {
-   "date": "2026-02-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Padam Mobility und Hacon liefern Software f\u00fcr die neue BAST-App",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.padam-mobility.com/de/blog/padam-mobility-und-hacon-liefern-software-fur-die-neue-bast-app"
   }
  ],
  "profile": {

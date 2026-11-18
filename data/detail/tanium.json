@@ -10,6 +10,24 @@
    "url": "https://www.tanium.com/press-releases/tanium-honors-top-global-partners-for-growth-and-innovation-at-converge-2026"
   },
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Java4Shell: a critical flaw may allow remote code execution in OpenJDK. Find every Java runtime.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/java4shell-cve-2026-114938-find-every-java-runtime"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "card-date",
+   "first_seen": "2026-11-17",
+   "headline": "Tanium Launches AgentSight to Observe and Govern AI Across Endpoints",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.tanium.com/press-releases/tanium-launches-agentsight-to-observe-and-govern-ai-across-endpoints"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "card-date",
    "first_seen": "2026-11-13",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/emudhra-ca-compromise-find-and-fix-your-exposure-with-tanium"
-  },
-  {
-   "date": "2026-10-24",
-   "date_source": "card-date",
-   "first_seen": "2026-10-25",
-   "headline": "HTTP2Shell: Find and Fix Vulnerable Brotli Copies with Tanium",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/http2shell-find-and-fix-vulnerable-brotli-copies-with-tanium"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-22",
-   "headline": "PHP2Shell: Responding to CVE-2026-109618 and CVE-2026-109619",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/php2shell-responding-to-cve-2026-109618-and-cve-2026-109619"
   }
  ],
  "profile": {

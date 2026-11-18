@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "time",
+   "first_seen": "2026-11-18",
+   "headline": "arduino-lmic v6.1.0: LoRaWAN sessions that survive deep sleep",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mcci.com/blog/arduino-lmic-v6-1-0-lorawan-sessions-that-survive-deep-sleep/"
+  },
+  {
    "date": "2026-10-11",
    "date_source": "time",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://mcci.com/blog/type-c-support-in-truetask-usb-part-2/"
-  },
-  {
-   "date": "2021-02-06",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Type C Support in TrueTask\u00aeUSB",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://mcci.com/blog/type-c-support-in-truetask-usb/"
   }
  ]
 }

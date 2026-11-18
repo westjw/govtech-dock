@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Smarter Lending, Compliance, & Coverage with Eligibility Data in Salesforce",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.policymap.com/blog/smarter-lending-compliance-coverage-with-eligibility-data-in-salesforce"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://www.policymap.com/blog/library-newsletter-september-2026"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "See How California Libraries Are Mapping Community Needs with PolicyMap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.policymap.com/blog/california-public-library-statewide-access"
   }
  ]
 }

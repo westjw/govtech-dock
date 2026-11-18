@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "KYND launches privacy risk report as insurers face rising claims",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.kynd.io/news/kynd_privacy_summary_report/"
+  },
+  {
    "date": "2026-10-26",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
-   "headline": "Contour Underwriting selects KYND for new cyber insurance offering",
+   "headline": "\u2022 2 min read PRESS RELEASE: Contour Underwriting selects KYND for new cyber insurance offering",
    "kind": "contract",
    "kind_rule": "selects",
    "url": "https://www.kynd.io/news/contour-underwriting-selects-kynd-for-new-cyber-insurance-offering/"
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "\u2022 5 min read The AI you can't see: Key takeaways from our Cyber Drop webinar",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kynd.io/news/kynd_named_as_one_of_top_100_aifintech100/"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "\u2022 2 min read PRESS RELEASE: KYND launches industry-first 15 language cyber risk analytics platform for SMB insurance markets worldwide",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://www.kynd.io/news/kynd_available_in_15_languages/"
   }
  ]
 }

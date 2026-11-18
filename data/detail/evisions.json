@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Read Data Culture Is Not Built by Dashboards Alone",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/data-culture-is-not-built-by-dashboards-alone/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.evisions.com/blog/heat-index-issue-124-ai-exposed-majors/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Read Your Applications Changed. Your Data Strategy Should Stay Yours.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evisions.com/blog/your-applications-changed-your-data-strategy-should-stay-yours/"
   }
  ],
  "profile": {

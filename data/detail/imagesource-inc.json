@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Domain-Specific AI: Turning Business Context into Measurable Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagesourceinc.com/resources/domain-specific-ai-turning-business-context-into-measurable-results/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -10,6 +19,15 @@
    "url": "https://www.imagesourceinc.com/resources/deep-analysis-examines-ai-and-automation-at-imagesource/"
   },
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-11",
+   "headline": "Get Your Complimentary Gartner\u00ae Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagesourceinc.com/resources/get-your-complimentary-gartner-report/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -17,15 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imagesourceinc.com/resources/mutual-benefit-cxa/"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "Get Your Complimentary Gartner\u00ae Report",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagesourceinc.com/resources/get-your-complimentary-gartner-report/"
   },
   {
    "date": "2026-10-21",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-11",
    "headline": "The Six Advantages of AP Automation",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imagesourceinc.com/resources/ilinx-9-7-demo-eforms/"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "card-date",
-   "first_seen": "2026-11-11",
-   "headline": "ILINX 9.7 Connects AI Across the Enterprise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagesourceinc.com/resources/ilinx-9-7-connects-ai-across-the-enterprise/"
   }
  ]
 }

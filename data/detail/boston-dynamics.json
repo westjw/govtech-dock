@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Boston Dynamics & GlobalFoundries Expand Robotics Collaboration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Breaking Down Data Silos in the Physical World",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/boston-dynamics-joins-dow-skillbridge-program/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Spot 5.2 Delivers Embodied AI for the Factory Floor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/the-missing-piece-of-your-ai-stack/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Spot 5.2 Delivers Embodied AI for the Factory Floor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/news/spot-5-2-delivers-embodied-ai-for-the-factory-floor/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "How to Build a Holiday Content Calendar for Your Newsroom",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.socialnewsdesk.com/blog/holiday-news-content-calendar/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.socialnewsdesk.com/blog/social-search-is-changing-news-discovery-what-it-means-for-newsrooms/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The Newsroom Social Media Audit: What to Fix Before Q4 Coverage Gets Heavy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.socialnewsdesk.com/blog/the-newsroom-social-media-audit-what-to-fix-before-q4-coverage-gets-heavy/"
   }
  ],
  "profile": {

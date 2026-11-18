@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Hijacked Optimizely snippets served malicious code on major websites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/hijacked-optimizely-snippets-served-malicious-code"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Hijacked Optimizely snippets served malicious code on major websites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/blog/hijacked-optimizely-snippets-served-malicious-code"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/en-us/press/press-releases/2026/11/sophos-helps-organizations-secure-the-ai-era-network"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Securing the AI-era network: Why performance and defense now belong together",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/blog/securing-the-ai-era-network-why-performance-and-defense-now-belong-together"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Sophos Firewall v23 is now available",
-   "kind": "product",
-   "kind_rule": "now available",
-   "url": "https://www.sophos.com/blog/sophos-firewall-v23-now-available"
   }
  ]
 }

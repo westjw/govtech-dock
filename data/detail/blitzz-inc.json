@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "Inspection reports that keep working offline",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blitzz.co/blog/inspection-reports-offline-mode"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "12 Questions to Ask Before Choosing a Jobsite Photo Documentation App for Your Crews",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blitzz.co/blog/12-questions-to-ask-before-choosing-a-jobsite-photo-documentation-app-for-your-crews"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blitzz.co/blog/contact-center-metrics"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Construction Photo Documentation: What to Look For in Software (2026)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blitzz.co/blog/construction-photo-documentation-what-to-look-for-in-software-2026"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "Remote Water Heater Inspections: A Contractor\u2019s Step-by-Step Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blitzz.co/blog/remote-water-heater-inspections-a-contractors-step-by-step-guide"
   }
  ]
 }

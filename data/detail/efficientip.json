@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "DNS and Ai agents: What Enterprises Need to Prepare For",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/dns-and-ai-agents/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/resources/2025-ema-hybrid-multi-cloud-report/"
-  },
-  {
-   "date": "2024-04-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Ecosystem for Boosting NetOps: Network Automation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/blog/ecosystem-for-boosting-netops-network-automation/"
   }
  ]
 }
