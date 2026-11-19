@@ -2611,18 +2611,31 @@ round.
   somebody else (MISMATCH, both names quoted) or nobody.
 - **An advertisement is not a second board, and a question that did not get
   through is not a doubt** (the first real run, 2026-11-18: 38 companies, 9
-  to wire, 15 held, and three of the 15 were neither). The company's Indeed,
-  LinkedIn, Y Combinator or Wellfound page (`wire_found.ADVERTISED_ON`), and
-  the own site of the very platform the board is on (`VENDOR_SITES`: "Powered
-  by JazzHR" under an embedded JazzHR board, filed as `other:jazzhr.com`),
-  are kept on the row as `advertised_on` and hold nothing: Anaplan's and
-  Freebee's boards were held on exactly those. `other:<any other site>`
-  still holds - a careers link to a host nothing knows is what a parent's
-  careers site looks like - and no vendor site is trusted for adp, oracle or
-  workday. A board that read and whose identity probe failed ON THE DAY
-  (`failed == "unreadable"`: a timeout, a broken page) is SKIP `unreadable`
-  and asked again by the next plan; a page that refused or is gone is still
-  held, because it is as closed tomorrow.
+  to wire, 15 held, and three of the 15 were neither). A LINK to (or a
+  mention of) the company's Indeed or LinkedIn page (`ADVERTISED_ON`, seen as
+  `href` or `text`), and a LINK to the own site of the very platform the
+  board is on (`VENDOR_SITES`, seen as `href`: "Powered by JazzHR" under an
+  embedded JazzHR board, filed as `other:jazzhr.com`), are kept on the row
+  as `advertised_on` and hold nothing: Anaplan's and Freebee's boards were
+  held on exactly those. Everything else holds (second blind review,
+  2026-11-19): an aggregator the page embeds, scripts, requests or redirects
+  to (it shows where they hire today); Y Combinator and Wellfound (hiring
+  channels, not copies); a vendor host seen as a frame (a Workable posting
+  framed by short code is any account's); `other:<any other site>` (a
+  careers link to a host nothing knows is what a parent's careers site
+  looks like). `VENDOR_SITES` lists only vendors whose boards sit under a
+  path on their board host - never a domain that gives each tenant a careers
+  site of its own (jibeapply.com, applytojob.com, bamboohr.com, breezy.hr,
+  recruitee.com, icims.com, workable.com: a link there can be another
+  tenant's, a parent's) - and none for adp, oracle or workday. A board that
+  read and whose identity probe failed ON THE DAY is SKIP `unreadable` and
+  asked again by the next plan - decided BY CAUSE, by
+  `verify_boards.board_says`' `transient` (True only for a network error, a
+  timeout, an HTTP 5xx, an HTTP 429, or a robots.txt that did not answer),
+  never by `failed`'s label. A page that leads off to another host, an
+  answer in a shape nobody knows, a non-JSON feed, another 4xx, a page that
+  refused or is gone is held for the owner with the reason in words: it
+  comes back every day, and skipped it never reached him.
 - **A Workable board a site asks for by number is wired by its slug, or not
   wired.** A page that embeds Workable's widget asks for the board by the
   account's NUMBER (`.../widget/accounts/710855`), and a rendered read sees
@@ -2633,13 +2646,29 @@ round.
   The first real batch carried Archistar that way and a blind reviewer
   opened the link before it was written (2026-11-19). `named_by_number`
   follows ONE posting to where it lands (`add_company.lands_at`: robots.txt
-  at each hop, no page read), reads the slug off the landing address, and
-  holds the slug to the number: the board read under the slug must list
-  exactly the postings the number listed. It runs before anything is keyed,
-  so a board another company holds under its slug is seen to be that board.
-  A number whose slug cannot be found is held with the reason and is never
-  wired, by the plan or by `apply`; `board_url` links the company's website
-  for a number that reaches a record some other way.
+  at each hop, no page read, only a 200 is a landing, a 429 honoured at the
+  host gate), reads the slug off the landing address, and holds the slug to
+  the number: the board read under the slug must list exactly the postings
+  the number listed. A number is tested as the reader reads it (`710855/` is
+  a number). It asks nothing about a company somebody already answered
+  about - out of scope, on a board, or with a refusal in EITHER store - and
+  stops at a number whose own board holds 500 rows (no follow, no slug
+  read; SKIP giant). A resolved board is ONE board under TWO keys, the
+  slug's and the number's (`board_keys`, `row_keys`): holders, twins,
+  refusals and waiting rows meet it under either, in the plan and in
+  `apply`; a company the pre-pass skips keeps the number's key (and gains
+  the slug's when the same number was resolved for another company), and a
+  record on file holding a number resolved in the run holds the slug too.
+  A refused company's number is taken to be the Workable board it was
+  refused under (nothing is asked to find out). A follow, or a read under
+  the slug, that failed ON THE DAY is SKIP `unreadable` and asked again; a
+  robots.txt disallow, a 404, a landing on no board and the rest are held
+  with the reason and never wired, by the plan or by `apply`. The wired
+  record's `ats_note`, and a held row's `identity_why`, say "asks for it as
+  Workable account N; its postings open under apply.workable.com/<slug>".
+  `board_url` and the desk's `boardUrlFor` link the filed page or the
+  company's website for a number, never `apply.workable.com/<number>`; the
+  desk's Accept refuses a numbered Workable ref (its slug is needed).
 - **A board is sized by its openings, not its rows.** `fetch_rippling`
   returns the logo's file name as a row on every board, and a talent pool or
   an unfilled template is a row too. The door counts what
@@ -2658,12 +2687,27 @@ round.
   not hold, or is not that shape, stops the plan before its first read. The
   first batch: JustFOIA's own board, whose ads open "JustFOIA, an MCCi
   brand" - whether a parent's brand is wired on its own board is his call.
-  **And it stays his.** A board a door FILED in his queue (the row carries
-  `filed`) is held by every later plan, with the doubt it was filed on,
-  until he rules: the same board found again used to be "the question
-  already asked, which the checks may now answer", and the sweep's plan had
-  JustFOIA as WIRE. A row an older finder left, with no door's doubt on it,
-  may still be answered by the two checks.
+  **And it stays his.** `apply --write` keeps every doubt in the worklist's
+  `reader_doubts` - whatever its row ended as, HOLD, SKIP or no board - in
+  `data/board_doubts.json` ({company id: {board, why, by, on, at}}, one
+  journalled entry under the agent's label, written FIRST, words redacted;
+  no file is no doubts; a file that does not read stops plan and apply). A
+  company with a standing doubt is HOLD in every later plan, in the words,
+  until he rules on it in Boards we found SINCE (a ruling in
+  `board_proposal_rulings.json` later than the doubt: refused is SKIP
+  refused, accepted means the checks decide; an older ruling, or one the
+  same day with no stamps, leaves it standing). `--doubts` adds on top, and
+  a second doubt about the same company is kept beside the first. A SKIP
+  made after the doubts are gathered carries them, and the plan and the look
+  print, for each doubted company whose doubt reaches no queue row, "a
+  reader's doubt was not filed: the row was skipped (<kind>); it is kept as
+  a standing doubt". A board a door FILED in his queue (the row carries
+  `filed`) is held by every later plan too, with the doubt it was filed on;
+  a row an older finder left, with no door's doubt on it, may still be
+  answered by the two checks. No doubt sentence or SKIP says "asked again on
+  the next plan" unless it is. A doubt means a NEW plan, a new look, and that
+  look's code: a worklist planned before the doubt is left alone by apply
+  once the doubt is kept, but not before.
 - **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
   not read (kept with its error, not retried); a site that named only a
   reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
@@ -2695,18 +2739,29 @@ round.
   alone, by name: a row that no longer carries both checks, what they were
   judged against, a dated read with postings and a size under the line; a
   read older than 24 hours (`board_proposals.MAX_AGE_HOURS`), undated or
-  dated ahead; a company or board listed twice; and anything that MOVED since
-  the plan: the board on file, the website (check 1 is asked again), the name
-  or also_known_as (check 2 was judged against them), out_of_scope, a parent,
-  a note, a refusal, another holder, more postings shown than the board read.
+  dated ahead; a company or board listed twice (under either key); a
+  company its own worklist's readers doubted (`doubted`, however the row
+  came to say WIRE); and anything that MOVED since the plan: the board on
+  file, the website (check 1 is asked again), the name or also_known_as
+  (check 2 was judged against them), out_of_scope, a parent, a note, a
+  refusal, a reader's doubt kept since (`standing`), a door-filed row in
+  Boards we found for any board (`queued`), a waiting row or pending
+  proposal the plan did not record in the row's `waiting_seen` (`waiting`),
+  another holder (under either key), more postings shown than the board
+  read. A worklist older than version 3, or without `reader_doubts`, is
+  refused: version 2 counted rows and let an aggregator through.
 - **What a write is.** The wired boards are ONE journalled batch (action
   `wire-found`, the agent's own label, never `owner`; force only for the
   25-record rule, after the count is printed): `ats`, an `ats_note` saying
   both checks, and `board_owner` where the board's stated name differs in
-  form. The held boards are one journalled APPEND to data/embedded_ats.json.
-  The worklist is redacted as it is read, whoever wrote it. Commit
-  data/companies.json, data/embedded_ats.json and both journal files
-  together. Postings appear after the nightly crawl, not before.
+  form. The held boards are one journalled APPEND to data/embedded_ats.json
+  (its journal entry says "the board did not name the company, or something
+  on file, or a reader, argues with it"). The readers' doubts are one
+  journalled entry in data/board_doubts.json, written before the rest. The
+  worklist is redacted as it is read, whoever wrote it. Commit
+  data/companies.json, data/embedded_ats.json, data/board_doubts.json and
+  both journal files together. Postings appear after the nightly crawl, not
+  before.
 - **The queue's own door is `board_proposals.file_found`.** It appends and
   never replaces; takes `agent:<label>` only; never files `matches` (that
   word in this file is leave for `wire_embedded.py` to wire), a company
@@ -2725,6 +2780,7 @@ round.
   `check_a_board_named_by_a_number_is_wired_by_its_slug`,
   `check_a_found_board_is_sized_by_its_openings`,
   `check_a_readers_doubt_holds_the_board`,
+  `check_a_readers_doubt_stands_until_the_owner_rules`,
   `check_a_found_board_is_not_wired_past_what_moved`,
   `check_the_boards_found_card_opens_what_it_names` (executed under node),
   `check_a_finder_cannot_replace_the_owners_queue`. They share `_WiringBox`,
@@ -2732,13 +2788,18 @@ round.
   stubbed only the seams it knew about once let a new seam ask a real host.
   Blind review of 7742d06: 10 findings, all real, all fixed in 1a89cdf; 124
   mutations of the door, 124 noticed (the first check alone had missed 26 of
-  41).
+  41). Second blind review (2026-11-19, of the four refinements): 26
+  findings, all reproduced, all fixed together with the checks above.
 - **The owner's to settle:** whether a job platform nothing reads, named on
-  their own site, should hold a board (it does now; an aggregator and the
-  board's own vendor do not); whether a board named
-  only in plain text should (it does now); and whether Oracle finds are
-  worth a way to ask their size. Giants on readers that do read the whole
-  board are still read in full before they are skipped.
+  their own site, should hold a board (it does now; a link to an aggregator
+  and a link to the board's own vendor do not); whether a board named
+  only in plain text should (it does now); whether Oracle finds are
+  worth a way to ask their size; and what becomes of a board held under a
+  Workable NUMBER whose slug could not be found: the desk will not accept a
+  number, and while that door-filed row is unruled no plan wires the slug,
+  so it waits for him to refuse it or for a person to put the slug on file.
+  Giants on readers that do read the whole board are still read in full
+  before they are skipped.
 
 ## Build order (owner, 2026-08-23)
 

@@ -1854,6 +1854,18 @@ def act_board_proposal(body: dict) -> dict:
     if not found:
         return {"error": "that proposal is no longer on file"}
     block = found["found"]
+    number = block.get("ref").strip().rstrip("/") if isinstance(block.get("ref"), str) else ""
+    if block.get("type") == "workable" and number.isdigit():
+        # A WORKABLE ACCOUNT NUMBER READS AND DOES NOT OPEN, and accepting
+        # writes the ref exactly as the row has it. wire_found.py files a
+        # board it could not find the slug of under its number, and a record
+        # holding a number is one board under two keys for every door after.
+        return {"error": f"that board is written as Workable account number {number}, "
+                         f"not as the board's own address: apply.workable.com/{number} "
+                         f"is Workable's error page. Its slug is needed - open one of "
+                         f"its postings, see where it lands "
+                         f"(apply.workable.com/<slug>/j/...), and put the board on file "
+                         f"by that slug. Nothing was written."}
     ok, detail = add_company.verify(block)
     if not ok:
         return {"error": f"the board no longer reads: {detail}"}

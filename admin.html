@@ -5085,7 +5085,7 @@ RENDER.boardfound = c => {
   const open = el('a', 'btn');
   open.textContent = 'Open the board';
   open.href = typeof c.found.ref === 'string' && c.found.ref.startsWith('http')
-    ? c.found.ref : boardUrlFor(c.found);
+    ? c.found.ref : boardUrlFor(c.found, c);
   open.target = '_blank'; open.rel = 'noopener noreferrer';
   // THE OTHER HALF OF THE QUESTION. A row a door filed names the page that
   // pointed at the board; "is this theirs" is answered by looking at both,
@@ -5133,7 +5133,9 @@ function boardFoundPage(c){
 // seven it did not - Workday first among them, the largest group a door
 // holds while Workday states no employer name - opened '#', so "Open the
 // board" did nothing on exactly the rows that most need looking at.
-function boardUrlFor(f){
+// `c` is the row the card draws (its filed page and website), for the one
+// board whose own ref does not open.
+function boardUrlFor(f, c){
   const r = f.ref;
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
@@ -5145,6 +5147,14 @@ function boardUrlFor(f){
       : 'https://'+r[0]+'.'+r[1]+'.myworkdayjobs.com/'+r[2];
   }
   if (typeof r !== 'string' || !r) return '#';
+  // A WORKABLE ACCOUNT NUMBER READS AND DOES NOT OPEN: apply.workable.com/
+  // <number> is Workable's error page, and wire_found.py files a board under
+  // its number when its slug could not be found. The page that asked for it
+  // (which shows the widget), else their website - as the public site does.
+  if (f.type === 'workable' && /^\d+$/.test(r.trim().replace(/\/+$/, ''))) {
+    const site = c && typeof c.website === 'string' ? c.website.trim() : '';
+    return boardFoundPage(c) || (/^https?:\/\//i.test(site) ? site : '#');
+  }
   if (f.type === 'adp') {
     // the portal's cid, with its ccId after a bar when it needs one
     const [cid, cc] = r.split('|');

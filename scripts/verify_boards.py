@@ -660,14 +660,53 @@ def _failure(exc: BaseException) -> tuple:
                           f"({type(exc).__name__})")
 
 
+def said_transient(text) -> bool:
+    """Do these words - an AtsError's message, or the detail a reader hands
+    back - name a failure of the day? See `transient`."""
+    t = _clean(str(text or ""))
+    status = re.match(r"HTTP (\d{3})\b", t)
+    if status:
+        code = int(status.group(1))
+        return code == 429 or 500 <= code <= 599
+    if t.startswith("network error"):
+        return True                 # no answer at all, robots.txt's included
+    # robots.txt answered with a server error: kept out until it answers
+    return bool(re.match(r"robots\.txt on \S+ answered HTTP 5\d\d\b", t))
+
+
+def transient(exc) -> bool:
+    """WAS THIS A FAILURE OF THE DAY? True only for a network error, a
+    timeout, an HTTP 5xx, an HTTP 429, or a robots.txt that did not answer
+    (no answer, or a 5xx); False for everything else.
+
+    BY CAUSE, NOT BY `failed`'s LABEL. `failed` is three piles for a person
+    to read, and its "unreadable" pile also holds failures that come back
+    every day: a board whose page leads off to another host, an answer in a
+    shape nobody recognises, a non-JSON feed, a 400. A door that asks again
+    tomorrow only for what can answer tomorrow needs this instead - and its
+    429, which `failed` calls "refused", is the most passing failure there
+    is. A robots.txt that DISALLOWS is the site's own word and stays so.
+    """
+    if isinstance(exc, ats.RobotsRefused):
+        return getattr(exc, "kind", "disallowed") != "disallowed"
+    if isinstance(exc, ats.RateLimited):
+        return True
+    if isinstance(exc, ats.AtsError):
+        return said_transient(str(exc))
+    # the network failing where nothing wrapped it (a stream cut mid-read):
+    # the HTTP library's own error, told by where it was raised from
+    return type(exc).__module__.split(".")[0] in ("requests", "urllib3")
+
+
 def _fell_short(out: dict, exc: BaseException, lead: str) -> None:
     """A HALF-READ BOARD HAS STATED NOTHING. Whatever a probe had noted
     before it fell over is withdrawn, so "could not read" can never arrive
-    at proven() carrying a name; `failed` says what kind of failure it was
-    and `how` says it in words."""
+    at proven() carrying a name; `failed` says what kind of failure it was,
+    `transient` whether it was one of the day, and `how` says it in words."""
     kind, words = _failure(exc)
     out["names"], out["name"], out["stated"], out["site"] = [], None, False, None
     out["failed"], out["how"] = kind, f"{lead}: {words}"
+    out["transient"] = transient(exc)
 
 
 def _decoded(raw: bytes, resp) -> str:
@@ -1039,7 +1078,7 @@ def board_says(kind: str, ref) -> dict:
     """Ask the board who it belongs to.
 
     Returns {name, hosts, n, how, names, stated, site, kind, failed,
-    n_is_partial}:
+    transient, n_is_partial}:
 
       name    the employer name the board states, or None. Where it states
               several, the alphabetically first - kept for the callers that
@@ -1064,6 +1103,11 @@ def board_says(kind: str, ref) -> dict:
               429 - never asked again in the same run), "gone" (404, 410),
               "unreadable" (anything else; `how` says what). Set too when
               the feed answered and only the board's own page did not.
+      transient
+              True only when the failure was one of the day - a network
+              error, a timeout, an HTTP 5xx, an HTTP 429, or a robots.txt
+              that did not answer - and False otherwise, a board that read
+              included. By cause, not by `failed`: see transient().
       n_is_partial
               True when `n` counts only part of the board: on icims it is
               the first page. Take a board's size from the reader
@@ -1075,7 +1119,7 @@ def board_says(kind: str, ref) -> dict:
     """
     out = {"name": None, "hosts": set(), "n": 0, "how": None,
            "names": [], "stated": False, "site": None,
-           "kind": kind, "failed": None, "n_is_partial": False}
+           "kind": kind, "failed": None, "transient": False, "n_is_partial": False}
     try:
         if kind == "greenhouse":
             d = ats._json(ats._get(

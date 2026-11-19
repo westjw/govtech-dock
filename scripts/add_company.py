@@ -330,9 +330,32 @@ def board_total(ats_block: dict) -> tuple[int | None, str]:
 
 def lands_at(url: str) -> str:
     """Where an address ends up, asking robots.txt at every hop and reading
-    no page (ats.resolve). A seam of its own so a door that needs one landing
-    address has one name to call, and a test has one name to stand in for."""
-    return ats.resolve(url)
+    no page. A seam of its own so a door that needs one landing address has
+    one name to call, and a test has one name to stand in for.
+
+    ONLY A 200 IS A LANDING. ats.resolve hands back the address of whatever
+    answered last, so a 429, a 404 (the posting closed since the feed was
+    read) or a 503 came back as "the landing", and the door wrote "one of its
+    postings opens at <the address it asked>, which names no board" - a
+    failure read as an answer, and put in the owner's queue. Here a final
+    answer other than 200 raises, naming its status; a 429 is honoured at the
+    host gate first (ats._back_off, Retry-After and all), as every other read
+    honours it; a robots.txt refusal stays the refusal ats.follow raises.
+    """
+    resp = ats.follow(url, lambda u: ats._one(u, stream=True))
+    try:
+        status = getattr(resp, "status_code", None)
+        where = str(getattr(resp, "url", "") or url)
+        if status == 429:
+            ats._back_off(where, resp)          # raises ats.RateLimited
+        if status != 200:
+            raise ats.AtsError(f"HTTP {status} for {where}")
+        return where
+    finally:
+        try:
+            resp.close()
+        except Exception:                       # noqa: BLE001 - a stand-in response
+            pass
 
 
 def main() -> int:
