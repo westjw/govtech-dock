@@ -1,0 +1,143 @@
+name: board-sweep
+
+# WHICH BOARD DOES EACH COMPANY'S OWN SITE POINT TO. About 1,900 companies
+# have a careers page nothing can enumerate, or no board on file at all, and
+# nobody had ever opened their sites in a browser and written down what the
+# page loads: the nightly render keeps a page's job links and throws away its
+# frames and its requests. scripts/find_site_boards.py --render keeps them.
+#
+# IT FINDS, IT DOES NOT WIRE. The owner's rule (2026-11-18) takes two checks
+# before a program may wire a board: the company's own site points to it, and
+# the board names that company. This job is the first check only. So it holds
+# read permission and nothing else, it commits nothing, and it stays out of
+# the group the data-writing jobs queue in: an hour of rendering must never
+# sit in front of the nightly crawl. What it found leaves as one results file
+# per machine, and enters data/ only through the wiring door, where the
+# second check is made.
+#
+# BY HAND ONLY, deliberately. Every run opens up to three pages on each of
+# ~1,900 other people's websites. That is somebody's decision each time, not
+# a cron's. One sweep at a time (the group below), so two dispatches never
+# read the same sites at once.
+#
+# THE RESULTS FILES ARE NOT PRIVATE. The log below carries counts only, but
+# an artifact of a public repository can be downloaded by any signed-in
+# GitHub account until it expires. Each file names companies beside what
+# their own public pages link to and how the read went, and nothing else;
+# it is kept for a week.
+on:
+  workflow_dispatch:
+    inputs:
+      shards:
+        description: "how many machines to split the list across (1-20)"
+        default: "10"
+      budget:
+        description: "seconds each machine may spend looking"
+        default: "4800"
+      limit:
+        description: "companies per machine; 0 is its whole part of the list"
+        default: "0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: board-sweep
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      TZ: America/New_York        # every data job pins the owner's calendar
+      PYTHONUNBUFFERED: "1"
+    outputs:
+      parts: ${{ steps.split.outputs.parts }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Self-test
+        # ONCE, HERE, before any machine opens a browser. A finder whose
+        # patterns hand the readers a ref in the wrong shape finds nothing
+        # and says so politely on 1,900 sites; the suite is what notices.
+        run: python scripts/selftest.py
+
+      - name: Split the list
+        id: split
+        env:
+          SHARDS: ${{ inputs.shards }}
+        run: |
+          python -c "import json, os; n = max(1, min(20, int(os.environ['SHARDS']))); print('parts=' + json.dumps(list(range(1, n + 1))))" >> "$GITHUB_OUTPUT"
+
+  sweep:
+    needs: plan
+    runs-on: ubuntu-latest
+    # The budget below is the bound; this is the backstop. 4,800s of looking,
+    # two minutes of browser install, and the two companies in hand when the
+    # budget runs out fit with room to spare. A machine that runs out of
+    # budget still uploads what it read, and says how many it left.
+    # MEASURED 2026-11-18, one laptop: eight companies in 100 seconds, two
+    # pages at a time. At ten machines that is ~195 companies and about 40
+    # minutes each; a runner is slower than the laptop, hence the room.
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false            # one machine's bad hour is not the others'
+      matrix:
+        part: ${{ fromJSON(needs.plan.outputs.parts) }}
+    env:
+      TZ: America/New_York
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install the browser
+        # NOT optional here, unlike the nightly crawl's copy of this step:
+        # rendering is this job's whole purpose, so a failed install fails it.
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Read each company's own site in a browser
+        env:
+          PART: ${{ matrix.part }}
+          PARTS: ${{ strategy.job-total }}
+          BUDGET: ${{ inputs.budget }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          # COUNTS ONLY in this log: it is public, and a company's name
+          # beside "blocked" or "left for another site" is not ours to
+          # publish here. The split is by the SITE each company's website
+          # is on, the same on every machine, so no site is read by two of
+          # them. (It was by company id, and that sentence was untrue for
+          # the eleven hosts that are the website of two or three records.)
+          # A machine whose browser dies exits 3 after writing what it had
+          # read; the step below still hands that file back.
+          mkdir -p sweep
+          python scripts/find_site_boards.py --render --shard "$PART/$PARTS" \
+            --budget "$BUDGET" --limit "$LIMIT" --out "sweep/site-boards-$PART.json"
+
+      - name: Hand the findings back
+        # even when the step above failed or ran out of time: the file is
+        # rewritten every few companies, and what was read is still read
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-boards-${{ matrix.part }}
+          path: sweep/site-boards-${{ matrix.part }}.json
+          if-no-files-found: error
+          retention-days: 7
