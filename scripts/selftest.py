@@ -20115,11 +20115,11 @@ def check_render_rotation() -> int:
     errors = 0
 
     # A board never tried sorts ahead of every dated one; among dated ones the
-    # oldest goes first. This is the sort the pre-pass runs.
+    # oldest goes first. This is the sort the pre-pass runs (render_order),
+    # here with no recent yielder.
     attempts = {"b": "2026-08-27", "c": "2026-08-20", "e": "2026-08-28"}
     cos = [{"id": x} for x in ["a", "b", "c", "d", "e"]]
-    cos.sort(key=lambda c: (attempts.get(c["id"], ""), c["id"]))
-    order = [c["id"] for c in cos]
+    order = [c["id"] for c in bb.render_order(cos, attempts, {})]
     if order[:2] != ["a", "d"]:
         errors += fail(f"render queue put {order[:2]} first; boards never tried "
                        f"(a, d) must lead or the tail is never reached")
@@ -20159,6 +20159,48 @@ def check_render_rotation() -> int:
         errors += fail("a dry run can now write render_attempts.json, which "
                        "would push boards to the back of the queue and hide "
                        "them from the next real build")
+
+    # RECENT YIELDERS FIRST (2026-11-19). A JS page publishes its roles only
+    # on the night it gets a render turn: 53 of the 152 html companies with
+    # postings over 11-03..11-19 showed them on some nights only, and 39 showed
+    # nothing on the last one. A page that yielded lately is rendered first,
+    # every night it keeps yielding; the rest rotate behind it as before.
+    attempts = {"y-old": "2026-11-10", "y-new": "2026-11-18", "n-old": "2026-11-01",
+                "n-new": "2026-11-18"}
+    yielded = {"y-old": "2026-11-15", "y-new": "2026-11-18", "y-never": "2026-11-12"}
+    cos = [{"id": x} for x in ["n-new", "y-new", "n-never", "n-old", "y-old", "y-never"]]
+    order = [c["id"] for c in bb.render_order(cos, attempts, yielded)]
+    if order != ["y-never", "y-old", "y-new", "n-never", "n-old", "n-new"]:
+        errors += fail(f"render_order gave {order}: recent yielders first (the least "
+                       f"recently attempted of them first), then the rest as the rotation "
+                       f"always ran")
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-yield-"))
+    try:
+        def snap(day, ids, raw=None):
+            (tmp / f"{day}.json").write_text(raw if raw is not None else json.dumps(
+                {"date": day, "ids": ids, "hiring": {}}))
+        snap("2026-11-19", ["tonight-co::Role::aa"])          # tonight: not read
+        snap("2026-11-14", ["inside-co::Role::bb", "both-co::Role::cc", 17, "no-colons"])
+        snap("2026-11-17", ["both-co::Role::dd"])
+        snap("2026-10-20", ["stale-co::Role::ee"])            # outside 21 days
+        snap("2026-10-29", ["edge-co::Role::ff"])             # exactly 21 days before
+        snap("2026-11-15", None, raw="{not json")             # skipped, not fatal
+        got = bb.recent_yielders("2026-11-19", history=tmp)
+        want = {"inside-co": "2026-11-14", "both-co": "2026-11-17", "edge-co": "2026-10-29"}
+        if got != want:
+            errors += fail(f"recent_yielders read {got}; want {want}: the nights inside the "
+                           f"window and before tonight, each company's latest, ignoring "
+                           f"what is not a posting id and a snapshot that does not read")
+        if bb.recent_yielders("not a date", history=tmp) != {}:
+            errors += fail("recent_yielders read history for a night that is not a date")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    # ...and the pre-pass really orders by it, with no second sort after it
+    if "yielded = recent_yielders(today)" not in src \
+            or "wanted = render_order(wanted, attempts, yielded)" not in src \
+            or "wanted.sort(" in src:
+        errors += fail("the render pre-pass does not order its queue through "
+                       "recent_yielders and render_order")
     return errors
 
 

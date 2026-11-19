@@ -4045,6 +4045,24 @@ do sleep 15; done` - or bracket the pattern, `pgrep -f "[b]uild_board.py"`.
 (correctly - a partial run overwriting the full board destroyed the dataset
 once).
 
+**The render queue: recent yielders first, then the rotation (2026-11-19).**
+After the parallel fetch, the html boards whose plain read failed are handed
+to one browser until `--render-budget` (900s in the nightly) is spent:
+about 140 a night out of ~920, so each got a turn every four to seven
+nights, least recently attempted first (`render_attempts.json`, stamped on
+the attempt, never by a dry run). A page only a browser can read publishes
+its roles on its turn and nothing between: over 11-03..11-19, 53 of the 152
+html companies that showed postings did so on some nights only (Caselle
+11-07, 11-14, 11-17; Conduent 11-11, 11-16; UKG 11-13, 11-17), 39 of them
+showing nothing on the last night. So `render_order` puts first every board
+whose company had a posting on the board in the last `YIELD_DAYS` (21)
+snapshots before tonight (`recent_yielders`, read off data/history like
+history_first_seen), least recently attempted first among them, then
+everything else as the rotation always ran. A page that stops yielding
+leaves the front by itself after 21 nights. The cost is a slower turn for
+the ~870 pages that have not yielded, where 95% of renders return nothing.
+`check_render_rotation` holds the order, the window and the wiring.
+
 **Workday is one service, paced as one** (2026-11-16). Each Workday tenant is
 a host of its own, so the per-host gate (`ats._host_gate`) never paced
 Workday: its 42 boards went out together from ten workers, and Workday

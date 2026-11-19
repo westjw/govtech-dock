@@ -338,6 +338,69 @@ def _save_render_attempts(d: dict) -> None:
     RENDER_ATTEMPTS.write_text(json.dumps(d, indent=0, sort_keys=True))
 
 
+# A JS careers page that has shown postings lately is rendered first, every
+# night, while it keeps doing so. 21 days is about three turns of the old
+# rotation, so a page that yields on one turn is still in the window when the
+# next is due.
+YIELD_DAYS = 21
+
+
+def recent_yielders(today: str, days: int = YIELD_DAYS,
+                    history: pathlib.Path | None = None) -> dict:
+    """{company id: the last night it had a posting on the board}, over the
+    snapshots of the `days` nights before `today` (data/history).
+
+    WHY. A careers page only a browser can read publishes its roles on the
+    nights it gets a render turn, and with ~920 such pages sharing a 900s
+    budget a turn came round every four to seven nights. Measured over
+    2026-11-03..11-19: 53 of the 152 html companies that showed postings did
+    so only on some nights, 39 of them showed nothing on the last one, and
+    each came back on its next turn (Caselle 11-07, 11-14, 11-17; Conduent
+    11-11, 11-16; UKG 11-13, 11-17). So the page was readable all along and
+    the board said "nothing open" six nights in seven. These are the pages a
+    render is worth spending on first: 95% of renders of every other page
+    return nothing.
+
+    Read when called, like history_first_seen. Tonight's own snapshot is not
+    read (it is written after the render), nor is anything older than the
+    window, so a page that stops yielding leaves the front of the queue by
+    itself.
+    """
+    history = HISTORY if history is None else history
+    try:
+        start = (dt.date.fromisoformat(today) - dt.timedelta(days=days)).isoformat()
+    except ValueError:
+        return {}
+    out: dict = {}
+    for f in sorted(history.glob("*.json")):
+        if not (start <= f.stem < today):
+            continue
+        try:
+            snap = json.loads(f.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        day = snap.get("date") or f.stem
+        for i in snap.get("ids") or []:
+            if isinstance(i, str) and "::" in i:
+                co = i.split("::")[0]
+                if day > out.get(co, ""):
+                    out[co] = day
+    return out
+
+
+def render_order(wanted: list, attempts: dict, yielded: dict) -> list:
+    """The order the render pre-pass hands boards to the browser.
+
+    Recent yielders first (recent_yielders), then everything else least
+    recently attempted first, a board never tried ahead of every dated one,
+    the id breaking ties so the order is stable. Within the yielders the
+    least recently attempted also goes first, so a budget that cannot reach
+    all of them still rotates among them.
+    """
+    return sorted(wanted, key=lambda c: (c["id"] not in yielded,
+                                         attempts.get(c["id"], ""), c["id"]))
+
+
 def board_url(c: dict) -> str | None:
     """Where a person can go look themselves. Matters most where extraction fails."""
     a = c.get("ats") or {}
@@ -2227,12 +2290,16 @@ def main() -> int:
         today = dt.date.today().isoformat()
         wanted = [c for c, jobs, err, enumerable, may_render in fetched
                   if err and may_render and c["id"] not in owns]
-        # "" sorts before any date, so a board never tried goes first; the id
-        # breaks ties so the order is stable rather than dict-insertion luck.
-        wanted.sort(key=lambda c: (attempts.get(c["id"], ""), c["id"]))
+        # Recent yielders first, then least recently attempted (render_order).
+        yielded = recent_yielders(today)
+        wanted = render_order(wanted, attempts, yielded)
         if wanted:
-            print(f"  {len(wanted)} board(s) want rendering; oldest attempt "
-                  f"{attempts.get(wanted[0]['id']) or 'never'}", flush=True)
+            first = sum(1 for c in wanted if c["id"] in yielded)
+            rest = [c for c in wanted if c["id"] not in yielded]
+            print(f"  {len(wanted)} board(s) want rendering; {first} showed postings in "
+                  f"the last {YIELD_DAYS} nights and go first; oldest attempt among the "
+                  f"rest {(attempts.get(rest[0]['id']) or 'never') if rest else '-'}",
+                  flush=True)
         for c in wanted:
             if time.monotonic() - render_started >= a.render_budget:
                 render_skipped += 1
