@@ -102,6 +102,7 @@ import board_proposals                                 # noqa: E402
 import journal                                         # noqa: E402
 import page_belt                                       # noqa: E402
 import privacy                                         # noqa: E402
+import roles                                           # noqa: E402
 import verify_boards                                   # noqa: E402
 
 # The owner's line for this round: AWS / Oracle / Salesforce / IBM size.
@@ -180,6 +181,11 @@ SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
 # the part of a Paylocity address that IS the board: the id after /jobs/all/
 # (a uuid on every board seen), whatever follows it
 _PAYLOCITY = re.compile(r"/jobs/all/([^/?#]+)")
+# A Workable posting's short address, and the address it opens at. The second
+# carries the board's slug, which the first does not.
+_WORKABLE_SHORT = re.compile(r"https://apply\.workable\.com/j/([A-Za-z0-9]{6,24})")
+_WORKABLE_PAGE = re.compile(
+    r"https://apply\.workable\.com/([a-z0-9][a-z0-9-]{1,59})/j/([A-Za-z0-9]{6,24})", re.I)
 _ICIMS = re.compile(r"([a-z0-9-]+)\.icims\.com(?:[/?]|$)")
 _POD = re.compile(r"wd\d+")             # a Workday pod: wd1, wd5, wd108, wd503
 
@@ -396,7 +402,10 @@ def boards_named(entry: dict) -> tuple[list, list]:
             "times": times if isinstance(times, int) and not isinstance(times, bool)
             and times > 0 else 1,
             "hop": hop if isinstance(hop, int) and not isinstance(hop, bool) else 0,
-            "mode": cand.get("mode")})
+            "mode": cand.get("mode"),
+            # set by named_by_number: the account number the site used, or
+            # why the board's own address could not be found from it
+            "account": cand.get("account"), "no_address": cand.get("no_address")})
     for b in boards.values():
         b["times"] = sum(s["times"] for s in b["seen"])
         spelled = {spelling(b["type"], s["ref"]): show(b["type"], s["ref"]) for s in b["seen"]}
@@ -669,6 +678,102 @@ def standing(companies: list, board: dict) -> dict:
             "total": {}, "read": {}, "said": {}}
 
 
+# ------------------------------------------------- a board named by a number
+
+def numbered(kind, ref) -> bool:
+    """A Workable board written as its account number, not its slug.
+
+    A page that embeds Workable's widget asks for the board by the account's
+    NUMBER (apply.workable.com/api/v1/widget/accounts/710855), and a rendered
+    read of that page sees nothing else. The number reads - it is the address
+    the crawl's own reader asks - and it is not an address a person can open:
+    apply.workable.com/710855 is Workable's error page, and the public site
+    builds its "go and look" link from the ref (build_board.board_url). The
+    first real run of this door would have published exactly that dead link
+    for Archistar; a blind reviewer opened it (2026-11-19).
+    """
+    return kind == "workable" and isinstance(ref, str) and ref.strip().isdigit()
+
+
+def workable_slug(number: str, ctx: dict) -> tuple[str | None, str]:
+    """(the slug of the Workable board with this account number, how it is
+    known) - or (None, why it could not be found).
+
+    The feed carries no slug. Each posting on it has a short address
+    (apply.workable.com/j/<code>) that opens at the board's own
+    (apply.workable.com/<slug>/j/<code>), so ONE posting is followed to where
+    it lands - robots.txt asked at each hop, no page read - and the slug is
+    read off the landing address. Then THE SLUG IS HELD TO THE NUMBER: the
+    board is read once under the slug and must list exactly the postings the
+    number listed. An address that merely looks like a slug is how a board
+    gets wired to the wrong company, so anything short of the same board is
+    "could not be found", and the board goes to a person.
+
+    Both reads are kept in ctx["read"] under their own spellings, so the plan
+    does not ask the board again.
+    """
+    def read(ref):
+        exact = spelling("workable", ref)
+        if exact not in ctx["read"]:
+            ctx["read"][exact] = (*add_company.read_board({"type": "workable", "ref": ref}),
+                                  admin.now())
+        return ctx["read"][exact]
+
+    ok, detail, rows, _at = read(number)
+    if not ok:
+        return None, f"the board did not read under its number: {detail}"
+    urls = sorted(str(r.get("url") or "").strip() for r in rows)
+    short = next((u for u in urls if _WORKABLE_SHORT.fullmatch(u)), None)
+    if not short:
+        return None, "it lists no posting whose address could be followed to the board's own"
+    code = _WORKABLE_SHORT.fullmatch(short).group(1)
+    try:
+        landed = str(add_company.lands_at(short) or "").strip()
+    except Exception as exc:                    # noqa: BLE001 - a refusal is an answer
+        return None, f"following one of its postings to the board failed: {str(exc)[:70]}"
+    m = _WORKABLE_PAGE.fullmatch(landed.split("?", 1)[0].split("#", 1)[0].rstrip("/"))
+    slug = m.group(1) if m else ""
+    if not m or m.group(2) != code or slug.isdigit():
+        return None, f"one of its postings opens at {landed[:120] or 'no address'}, which names no board"
+    ok, detail, under_slug, _at = read(slug)
+    if not ok:
+        return None, f"workable/{slug}, where its postings open, did not read: {detail}"
+    if urls != sorted(str(r.get("url") or "").strip() for r in under_slug):
+        return None, (f"workable/{slug}, where one of its postings opens, does not list the "
+                      f"same postings as account {number}")
+    return slug, f"its postings open under apply.workable.com/{slug}"
+
+
+def named_by_number(results: dict, ctx: dict) -> None:
+    """Give every Workable board the finder wrote as a number its slug.
+
+    Done to the finder's results BEFORE anything is keyed, so that the board
+    is one board everywhere after: the same key as the slug already on file
+    for another company, or refused before, or waiting in a queue. A company
+    a person already answered about is not asked (the same cheap questions
+    `consider` asks first). Where the slug cannot be found the number stays,
+    marked, and `consider` holds the board with the reason.
+    """
+    found = ctx.setdefault("slugs", {})
+    for cid in sorted(results):
+        c = ctx["by_id"].get(cid)
+        if c is None or c.get("out_of_scope") \
+                or (c.get("ats") or {}).get("type") not in WAITING \
+                or any(r["store"] == "Boards we found" for r in ctx["refusals"].get(cid) or []):
+            continue
+        for cand in results[cid].get("candidates") or []:
+            if not numbered(cand.get("type"), cand.get("ref")):
+                continue
+            number = cand["ref"].strip()
+            if number not in found:
+                found[number] = workable_slug(number, ctx)
+            slug, how = found[number]
+            if slug:
+                cand["ref"], cand["account"] = slug, number
+            else:
+                cand["no_address"] = how
+
+
 # ------------------------------------------------------------------ the plan
 
 def _skip(base: dict, kind: str, why: str, **more) -> dict:
@@ -723,6 +828,8 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     if seen.get("landed"):
         check_1["landed"] = seen["landed"]
     base["check_1"] = check_1
+    if seen.get("account"):
+        base["account"] = seen["account"]      # the number their site asks for it by
     # WHAT THE CHECKS ARE JUDGED AGAINST, kept on the row. Check 1 is about a
     # website and check 2 about a name, and both are the record's as it reads
     # at this moment. apply compares them with the record as it reads THEN.
@@ -779,6 +886,12 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append("their site points to more than one board: " + " and ".join(
             f"{show(b['type'], ref if b is first else b['seen'][0]['ref'])} "
             f"(seen {many(b['times'], 'time')})" for b in boards[:4]))
+    if numbered(kind, ref):
+        doubts.append(f"their site asks for this board by its Workable account number "
+                      f"({ref}), and the board's own address could not be found from it"
+                      + (f" ({seen['no_address']})" if seen.get("no_address") else "")
+                      + f": apply.workable.com/{ref} does not open, and the public site "
+                        f"would link to it")
     if first.get("spellings"):
         doubts.append(f"their site spells this board more than one way "
                       f"({' and '.join(first['spellings'][:4])}); where case matters those "
@@ -853,8 +966,20 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # kept with its error and never retried: a refusal is an answer for
         # today, and a board that will not read is not a board that is wrong
         return _skip(base, "unreadable", f"the board did not read: {detail}", error=detail)
-    titles = [str(r.get("title") or "").strip() for r in read]
-    titles = [t for t in titles if t]
+    rows_read = [str(r.get("title") or "").strip() for r in read]
+    rows_read = [t for t in rows_read if t]
+    # A BOARD IS SIZED BY ITS OPENINGS, NOT BY ITS ROWS. The Rippling reader
+    # hands back the company logo's file name as a row on every board
+    # ("logo-justfoia-dots-3000px.png"); a talent-pool page and a template
+    # left unfilled are rows too. The public board drops all of them through
+    # one question, roles.not_a_listing, and this door asks the same one: the
+    # first real batch said "3 postings" of a board with 2, and an EMPTY
+    # Rippling board would have read as one posting and walked past the line
+    # below that holds a board nobody is hiring through.
+    titles = [t for t in rows_read if not roles.not_a_listing(t, c.get("name"), *_akas(c))]
+    if len(titles) != len(rows_read):
+        detail = (f"{detail}; {many(len(titles), 'opening')} among them (the rest are not "
+                  f"openings: a logo's file name, a talent pool, a template)")
     if kind in PARTIAL:
         # said where the count is said: "9 postings" from a reader that
         # filters is not the size of the board, and whoever rules on the row
@@ -961,6 +1086,7 @@ def plan(results: dict, companies: list, board: dict, say=print) -> list:
     ever written or shown in a form the worklist could not hold.
     """
     ctx = standing(companies, board)
+    named_by_number(results, ctx)
     named, claims = {}, collections.defaultdict(list)
     for cid, entry in results.items():
         named[cid] = boards_named(entry)
@@ -1150,6 +1276,9 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             or not isinstance(judged.get("also_known_as"), list):
         return "evidence", ("the row does not carry both checks, what they were judged "
                             "against and a live read with postings on it")
+    if numbered(kind, ref):
+        return "evidence", ("the board is written as a Workable account number, which "
+                            "reads and does not open; a board is wired by its slug")
     total = _count(row.get("board_total"))
     if n >= GIANT or (total or 0) >= GIANT:
         return "giant", GIANT_WHY

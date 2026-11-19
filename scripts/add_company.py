@@ -328,6 +328,13 @@ def board_total(ats_block: dict) -> tuple[int | None, str]:
         return None, str(exc)[:70]
 
 
+def lands_at(url: str) -> str:
+    """Where an address ends up, asking robots.txt at every hop and reading
+    no page (ats.resolve). A seam of its own so a door that needs one landing
+    address has one name to call, and a test has one name to stand in for."""
+    return ats.resolve(url)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("url")

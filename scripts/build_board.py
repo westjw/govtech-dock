@@ -355,6 +355,13 @@ def board_url(c: dict) -> str | None:
            "rippling": "https://ats.rippling.com/{r}/jobs",
            "smartrecruiters": "https://careers.smartrecruiters.com/{r}",
            "icims": "https://{r}.icims.com/jobs/search?ss=1"}
+    if kind == "workable" and isinstance(ref, str) and ref.strip().isdigit():
+        # A WORKABLE ACCOUNT NUMBER READS AND DOES NOT OPEN. The widget a
+        # careers page embeds asks for the board by number, and the reader
+        # asks the same address; apply.workable.com/<number> is Workable's
+        # error page. wire_found.py wires the slug, so this is the net under
+        # it: a number that reaches the record another way links their site.
+        return c.get("website")
     if kind in pat and isinstance(ref, str):
         return pat[kind].format(r=ref)
     return c.get("website")

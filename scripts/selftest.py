@@ -31466,9 +31466,12 @@ class _WiringBox:
     LABEL = "agent:selftest-wiring"
 
     def __init__(self, companies, boards, files=None, totals=None, states=None,
-                 says=None, titles=None, judge=None):
+                 says=None, titles=None, judge=None, urls=None, lands=None):
         import board_proposals as bp
         self.boards = boards
+        self.urls = urls or {}          # each posting's own address, where it matters
+        self.lands = lands or {}        # where a posting's short address ends up
+        self.followed = []
         self.totals = totals or {}      # the board's own total, or why there is none
         self.states = states or {}      # the count the identity probe reports
         self.says = says or {}          # keys laid over what the probe answers
@@ -31504,7 +31507,19 @@ class _WiringBox:
             raise RuntimeError("the reader blew up")
         n = self.boards[key][0]
         titles = self.titles.get(key) or [f"Role {i + 1}" for i in range(n)]
-        return True, f"{n} posting(s) readable", [{"title": t} for t in titles]
+        urls = self.urls.get(key) or []
+        return True, f"{n} posting(s) readable", [
+            dict({"title": t}, **({"url": urls[i]} if i < len(urls) else {}))
+            for i, t in enumerate(titles)]
+
+    def _lands_at(self, url):
+        self.followed.append(url)
+        where = self.lands.get(url)
+        if isinstance(where, Exception):
+            raise where
+        if where is None:
+            raise ats.AtsError(f"HTTP 404 for {url}")
+        return where
 
     def _board_says(self, kind, ref):
         import wire_found as wf
@@ -31533,10 +31548,15 @@ class _WiringBox:
                       verify_boards.board_says, getattr(verify_boards, "proven", self),
                       ats.fetch, ats._get, ats._post_json, ats._page,
                       acquisitions.DATA, acquisitions.RULED, acquisitions.ROOT)
+        # (a fourth seam, added with the slug of a numbered Workable board: where
+        # one address lands. The three ways ats.py walks a redirect are shut too.)
+        self._keep_walk = (add_company.lands_at, ats.resolve, ats.follow, ats._one)
         self._sandbox = _sandbox_admin(self.files)
         self.tmp = self._sandbox.__enter__()
         self.scratch = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-wiring-"))
         add_company.read_board, add_company.board_total = self._read_board, self._board_total
+        add_company.lands_at = self._lands_at
+        ats.resolve = ats.follow = ats._one = self._refuse
         verify_boards.board_says, verify_boards.proven = self._board_says, self.judge
         ats.fetch = ats._get = ats._post_json = ats._page = self._refuse
         # acquisitions.py fixes its paths at import, like board_proposals
@@ -31551,6 +31571,7 @@ class _WiringBox:
         (add_company.read_board, add_company.board_total, verify_boards.board_says,
          was_proven, ats.fetch, ats._get, ats._post_json, ats._page,
          acquisitions.DATA, acquisitions.RULED, acquisitions.ROOT) = self._keep
+        add_company.lands_at, ats.resolve, ats.follow, ats._one = self._keep_walk
         if was_proven is self:
             if hasattr(verify_boards, "proven"):
                 del verify_boards.proven
@@ -32944,6 +32965,336 @@ def check_an_advertisement_is_not_a_second_board() -> int:
             errors += fail(f"the write did not wire the three and file the five, or it "
                            f"filed a board that was only unreadable on the day: "
                            f"{sorted(filed)}; {text[-200:]}")
+    return errors
+
+
+def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
+    """A Workable board a site asks for by account number is wired by its
+    slug, or it is not wired.
+
+    A careers page that embeds Workable's widget asks for its board at
+    apply.workable.com/api/v1/widget/accounts/710855 - the account's NUMBER -
+    and a rendered read of the page sees nothing else. The number reads (it
+    is the address ats.fetch_workable asks) and passes both checks. It does
+    not open: apply.workable.com/710855 is Workable's error page, and
+    build_board.board_url builds the public "go and look" link from the ref.
+    The first real batch (2026-11-19) carried Archistar as workable/710855
+    and a blind reviewer opened that link before it was written; a posting
+    on the feed opens under apply.workable.com/archistar/.
+
+    So scripts/wire_found.py follows ONE posting to where it lands, reads the
+    slug off the landing address, and holds the slug to the number: the board
+    read under the slug must list exactly the postings the number listed.
+    Pinned here:
+      - the board is wired, and filed for the owner, under its slug, with the
+        number kept on the row; the identity question goes to the slug;
+      - done BEFORE anything is keyed, so a board another company holds under
+        its slug, or that was refused under its slug, is seen to be that
+        board when a site asks for it by number;
+      - a number whose slug cannot be found (the posting will not be
+        followed, lands on no board, lands on a DIFFERENT board, or there is
+        no posting) is held with the reason and is never wired - not by the
+        plan, and not by a worklist somebody edited;
+      - a company a person already answered about is not asked;
+      - one number is followed once, however many sites ask for it;
+      - and the net under all of it: board_url() never spells a number into
+        an address.
+    """
+    import add_company
+    import board_proposals as bp
+    import build_board as bb
+    import wire_found as wf
+    errors = 0
+    site, co, cand, entry = _wb_site, _wb_co, _wb_cand, _wb_entry
+    W = "https://apply.workable.com/"
+
+    def careers(cid):
+        return f"{site(cid)}/careers"
+
+    def asks(cid, number, **more):
+        return entry(cid, [cand("workable", number, careers(cid), element="request",
+                                saw=f"{W}api/v1/widget/accounts/{number}?origin=embed")], **more)
+
+    def posts(*codes):
+        return [f"{W}j/{c}" for c in codes]
+
+    for kind, ref, want in (("workable", "710855", True), ("workable", " 710855 ", True),
+                            ("workable", "acme-1", False), ("workable", "7acme", False),
+                            ("greenhouse", "710855", False), ("workable", ["710855"], False),
+                            ("workable", "", False), ("workable", None, False)):
+        if wf.numbered(kind, ref) is not want:
+            errors += fail(f"wire_found.numbered({kind!r}, {ref!r}) is not {want}")
+    for c, want in (({"ats": {"type": "workable", "ref": "710855"}, "website": "https://a.test"},
+                     "https://a.test"),
+                    ({"ats": {"type": "workable", "ref": "acme"}, "website": "https://a.test"},
+                     "https://apply.workable.com/acme")):
+        if bb.board_url(c) != want:
+            errors += fail(f"build_board.board_url spells {c['ats']['ref']!r} as "
+                           f"{bb.board_url(c)!r}, want {want!r}: apply.workable.com/<number> is "
+                           f"Workable's error page, and this is the link the public site shows")
+
+    companies = [
+        co("number-co", "Number Co"), co("held-number-co", "Held Number Co"),
+        co("nolanding-co", "Nolanding Co"), co("wrongboard-co", "Wrongboard Co"),
+        co("oops-co", "Oops Co"), co("empty-number-co", "Empty Number Co"),
+        co("codeswap-co", "Codeswap Co"), co("stillnumber-co", "Stillnumber Co"),
+        co("twin-slug-holder", "Twin Slug Holder", ats={"type": "workable", "ref": "sharedco"}),
+        co("twin-number-co", "Twin Number Co"),
+        co("refused-number-co", "Refused Number Co"),
+        co("answered-co", "Answered Co",
+           out_of_scope={"by": "owner", "on": "2026-10-01", "why": "not a vendor"}),
+        co("wired-co", "Wired Co", ats={"type": "greenhouse", "ref": "wiredco"}),
+        co("dup-number-a", "Dup Number A"), co("dup-number-b", "Dup Number B"),
+        co("slug-co", "Slug Co"),
+    ]
+    BOARDS = {
+        "workable/710855": (3, ["Number Co"]), "workable/numberco": (3, ["Number Co"]),
+        "workable/499231": (2, ["Somebody Else LLC"]),
+        "workable/heldnumberco": (2, ["Somebody Else LLC"]),
+        "workable/111111": (2, ["Nolanding Co"]),
+        "workable/222222": (2, ["Wrongboard Co"]), "workable/otherco": (2, ["Wrongboard Co"]),
+        "workable/333333": (2, ["Oops Co"]),
+        "workable/444444": (0, ["Empty Number Co"]),
+        "workable/454545": (2, ["Codeswap Co"]), "workable/codeswapco": (2, ["Codeswap Co"]),
+        "workable/464646": (2, ["Stillnumber Co"]),
+        "workable/555555": (2, ["Twin Number Co"]), "workable/sharedco": (2, ["Twin Number Co"]),
+        "workable/666666": (2, ["Refused Number Co"]),
+        "workable/refusedco": (2, ["Refused Number Co"]),
+        "workable/777777": (2, ["Answered Co"]),
+        "workable/909090": (2, ["Wired Co"]),
+        "workable/888888": (2, ["Dup Number A"]), "workable/dupco": (2, ["Dup Number A"]),
+        "workable/slugco": (4, ["Slug Co"]),
+    }
+    URLS = {
+        "workable/710855": posts("AAAAAA1", "AAAAAA2", "AAAAAA3"),
+        "workable/numberco": posts("AAAAAA3", "AAAAAA1", "AAAAAA2"),     # any order
+        "workable/499231": posts("BBBBBB1", "BBBBBB2"),
+        "workable/heldnumberco": posts("BBBBBB1", "BBBBBB2"),
+        "workable/111111": posts("CCCCCC1", "CCCCCC2"),
+        "workable/222222": posts("DDDDDD1", "DDDDDD2"),
+        "workable/otherco": posts("DDDDDD1", "ZZZZZZ9"),                 # not the same board
+        "workable/333333": posts("EEEEEE1", "EEEEEE2"),
+        "workable/454545": posts("FFFFFF1", "FFFFFF2"),
+        "workable/codeswapco": posts("FFFFFF1", "FFFFFF2"),
+        "workable/464646": posts("KKKKKK1", "KKKKKK2"),
+        "workable/555555": posts("GGGGGG1", "GGGGGG2"),
+        "workable/sharedco": posts("GGGGGG1", "GGGGGG2"),
+        "workable/666666": posts("HHHHHH1", "HHHHHH2"),
+        "workable/refusedco": posts("HHHHHH1", "HHHHHH2"),
+        "workable/777777": posts("IIIIII1", "IIIIII2"),
+        "workable/909090": posts("LLLLLL1", "LLLLLL2"),
+        "workable/888888": posts("JJJJJJ1", "JJJJJJ2"),
+        "workable/dupco": posts("JJJJJJ1", "JJJJJJ2"),
+    }
+    LANDS = {
+        f"{W}j/AAAAAA1": f"{W}numberco/j/AAAAAA1/",
+        f"{W}j/BBBBBB1": f"{W}heldnumberco/j/BBBBBB1?utm=x",
+        f"{W}j/CCCCCC1": ats.RobotsRefused("robots.txt closes this address"),
+        f"{W}j/DDDDDD1": f"{W}otherco/j/DDDDDD1",
+        f"{W}j/EEEEEE1": f"{W}oops",
+        # lands on a board's address for ANOTHER posting: not this board's word
+        f"{W}j/FFFFFF1": f"{W}codeswapco/j/XXXXXX7",
+        # lands back under the NUMBER: still no address a person can open
+        f"{W}j/KKKKKK1": f"{W}464646/j/KKKKKK1",
+        f"{W}j/GGGGGG1": f"{W}sharedco/j/GGGGGG1",
+        f"{W}j/HHHHHH1": f"{W}refusedco/j/HHHHHH1",
+        f"{W}j/IIIIII1": f"{W}answeredco/j/IIIIII1",
+        f"{W}j/LLLLLL1": f"{W}wiredco/j/LLLLLL1",
+        f"{W}j/JJJJJJ1": f"{W}dupco/j/JJJJJJ1",
+    }
+    files = {"agent_proposals.json": {"board:refused-number-co": {
+        "kind": "board", "id": "refused-number-co", "ats_type": "workable",
+        "ats_ref": "refusedco", "status": "rejected", "ruled_by": "claude",
+        "ruled_on": "2026-11-10", "ruled_why": "a staffing firm's board"}}}
+    found = {
+        "number-co": asks("number-co", "710855"),
+        "held-number-co": asks("held-number-co", "499231"),
+        "nolanding-co": asks("nolanding-co", "111111"),
+        "wrongboard-co": asks("wrongboard-co", "222222"),
+        "oops-co": asks("oops-co", "333333"),
+        "empty-number-co": asks("empty-number-co", "444444"),
+        "codeswap-co": asks("codeswap-co", "454545"),
+        "stillnumber-co": asks("stillnumber-co", "464646"),
+        "twin-number-co": asks("twin-number-co", "555555"),
+        "refused-number-co": asks("refused-number-co", "666666"),
+        "answered-co": asks("answered-co", "777777"),
+        "wired-co": asks("wired-co", "909090"),
+        "dup-number-a": asks("dup-number-a", "888888"),
+        "dup-number-b": asks("dup-number-b", "888888"),
+        # a board found by its slug is left exactly as it was found
+        "slug-co": _wb_one("slug-co", "workable", "slugco", element="iframe"),
+    }
+    with _WiringBox(companies, BOARDS, files=files, urls=URLS, lands=LANDS) as box:
+        code, text, wl, rows = box.plan(_wb_results(found))
+        if code != 0 or rows is None:
+            return errors + fail(f"wire_found plan did not run: {text[-300:]}")
+        got = {a: sorted(i for i, r in rows.items() if r["action"] == a)
+               for a in ("WIRE", "HOLD", "SKIP")}
+        if got["WIRE"] != ["number-co", "slug-co"]:
+            errors += fail(f"the plan would wire {got['WIRE']}: of these only Number Co (by "
+                           f"the slug its postings open under) and Slug Co pass")
+        num = rows.get("number-co") or {}
+        if num.get("ref") != "numberco" or num.get("account") != "710855" \
+                or "workable/710855" in box.probed or "workable/numberco" not in box.probed \
+                or box.asked.count("workable/numberco") != 1 \
+                or box.asked.count("workable/710855") != 1:
+            errors += fail(f"a board asked for by number is not planned under its slug with "
+                           f"the number kept beside it, or was asked more than once each way: "
+                           f"ref {num.get('ref')!r}, account {num.get('account')!r}, asked "
+                           f"{[a for a in box.asked if 'number' in a or '710855' in a]}")
+        if (rows.get("slug-co") or {}).get("account") or "workable/slugco" not in box.asked:
+            errors += fail("a board found by its slug was treated as a numbered one")
+        for cid, action, kind, must_say in (
+                ("held-number-co", "HOLD", None, '"Somebody Else LLC"'),
+                ("nolanding-co", "HOLD", None, "by its Workable account number (111111)"),
+                ("nolanding-co", "HOLD", None, "robots.txt closes this address"),
+                ("wrongboard-co", "HOLD", None, "does not list the same postings as account 222222"),
+                ("oops-co", "HOLD", None, "which names no board"),
+                ("empty-number-co", "HOLD", None, "lists no posting whose address could be followed"),
+                ("codeswap-co", "HOLD", None, "which names no board"),
+                ("stillnumber-co", "HOLD", None, "which names no board"),
+                ("twin-number-co", "HOLD", None,
+                 "workable/sharedco is already on file as the board of Twin Slug Holder"),
+                ("refused-number-co", "SKIP", "refused", "a staffing firm's board"),
+                ("answered-co", "SKIP", "out-of-scope", "ruled"),
+                ("wired-co", "SKIP", "not-waiting", "already reads from greenhouse/wiredco"),
+                ("dup-number-a", "HOLD", None, "the same board was found for Dup Number B"),
+                ("dup-number-b", "HOLD", None, "the same board was found for Dup Number A")):
+            r = rows.get(cid) or {}
+            if r.get("action") != action or (kind and r.get("kind") != kind) \
+                    or must_say not in _wb_words(r):
+                errors += fail(f"{cid}: planned {r.get('action')}/{r.get('kind')} saying "
+                               f"{_wb_words(r)[:220]!r}; wanted {action}"
+                               f"{'/' + kind if kind else ''} saying {must_say!r}")
+        held = (rows.get("held-number-co") or {}).get("queue_row") or {}
+        if held.get("found") != {"type": "workable", "ref": "heldnumberco"}:
+            errors += fail(f"a held board asked for by number is filed for the owner as "
+                           f"{held.get('found')}: he wires what the row says, and a number "
+                           f"would put the dead link on the public site from his desk")
+        for cid, number in (("nolanding-co", "111111"), ("wrongboard-co", "222222"),
+                            ("oops-co", "333333"), ("codeswap-co", "454545"),
+                            ("stillnumber-co", "464646")):
+            if (rows.get(cid) or {}).get("ref") != number:
+                errors += fail(f"{cid}: a number whose slug could not be found was given "
+                               f"the ref {(rows.get(cid) or {}).get('ref')!r}")
+        if "workable/777777" in box.asked or f"{W}j/IIIIII1" in box.followed \
+                or "workable/909090" in box.asked or f"{W}j/LLLLLL1" in box.followed:
+            errors += fail("a company a person ruled out of scope, or one that already has "
+                           "a board, had a board read to find its slug: a company somebody "
+                           "already answered about is not asked of anybody")
+        if box.followed.count(f"{W}j/JJJJJJ1") != 1 or len(box.followed) != len(set(box.followed)):
+            errors += fail(f"a posting was followed more than once ({box.followed}): one "
+                           f"number is resolved once, however many sites ask for it")
+        if errors:
+            return errors
+
+        code, text, look_code = box.look(wl)
+        if code != 0 or "would wire 2, would hold 10" not in text or not look_code:
+            errors += fail(f"the look did not offer two boards and ten held rows: "
+                           f"{text[-260:]}")
+        # a worklist somebody edited back to the number is not wired on it
+        forged = box.edited(wl, "worklist-number.json",
+                            lambda by_id, _doc: by_id["number-co"].update(ref="710855"))
+        code, text, _ = box.look(forged)
+        if "LEFT ALONE 1" not in text or "account number" not in text \
+                or "would wire 1," not in text:
+            errors += fail(f"a WIRE row whose board is a Workable account number was not "
+                           f"left alone by the look: {text[-260:]}")
+        code, text = box.write(wl, look_code)
+        if code != 0 or "wired 2, held 10" not in text \
+                or box.record("number-co")["ats"] != {"type": "workable", "ref": "numberco"} \
+                or bb.board_url(box.record("number-co")) != f"{W}numberco":
+            errors += fail(f"apply --write did not wire Number Co by its slug: "
+                           f"{box.record('number-co')['ats']}; {text[-200:]}")
+        filed = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        if (filed.get("held-number-co") or {}).get("found", {}).get("ref") != "heldnumberco" \
+                or (filed.get("nolanding-co") or {}).get("found", {}).get("ref") != "111111":
+            errors += fail("the held rows did not reach the queue file as planned: the "
+                           "resolved one under its slug, the unresolved one under its number "
+                           "with the reason")
+    if add_company.lands_at.__module__ != "add_company":
+        errors += fail("the sandbox did not put add_company.lands_at back")
+    return errors
+
+
+def check_a_found_board_is_sized_by_its_openings() -> int:
+    """scripts/wire_found.py counts a board's openings, not the rows a reader
+    hands back.
+
+    ats.fetch_rippling returns the company logo's file name as a row on every
+    board. The first real batch (2026-11-19) planned JustFOIA at "3 postings"
+    and Onflo at "4" where the boards show 2 and 3, and two blind reviewers
+    said so. The count matters twice: it is written on the record, and a
+    board with NO openings is held ("nothing shows it is the board they hire
+    through today") - which an empty Rippling board, read as one row, would
+    have walked past. The public board drops such rows through
+    roles.not_a_listing, and the door asks the same question.
+    """
+    import board_proposals as bp
+    errors = 0
+    co = _wb_co
+    companies = [co("logo-two-co", "Logo Two Co"), co("logo-only-co", "Logo Only Co"),
+                 co("pool-only-co", "Pool Only Co"), co("name-row-co", "Name Row Co"),
+                 co("shown-co", "Shown Co")]
+    BOARDS = {"rippling/logotwoco": (3, ["Logo Two Co"]),
+              "rippling/logoonlyco": (1, ["Logo Only Co"]),
+              "greenhouse/poolonlyco": (2, ["Pool Only Co"]),
+              "lever/namerowco": (2, ["Name Row Co"]),
+              "rippling/shownco": (3, ["Shown Co"])}
+    TITLES = {"rippling/logotwoco": ["logo-logotwo-dots-3000px.png", "Account Executive",
+                                     "Sales Development Representative"],
+              "rippling/logoonlyco": ["logoonly_Primary_FullColor@4x.png"],
+              "greenhouse/poolonlyco": ["General Application", "Join our talent community"],
+              # a capture of the page heading is not an opening either
+              "lever/namerowco": ["Name Row Co", "Account Manager"],
+              # two openings and a logo, on a company the board already shows two for
+              "rippling/shownco": ["logo.png", "Account Executive", "Engineer"]}
+    files = {"board.json": {"generated": "2026-11-18T15:23:00+00:00", "postings": [],
+                            "organizations": [{"id": "shown-co", "open_postings": 2}]}}
+    found = {cid: _wb_one(cid, kind, ref, element="iframe") for cid, kind, ref in (
+        ("logo-two-co", "rippling", "logotwoco"), ("logo-only-co", "rippling", "logoonlyco"),
+        ("pool-only-co", "greenhouse", "poolonlyco"), ("name-row-co", "lever", "namerowco"),
+        ("shown-co", "rippling", "shownco"))}
+    with _WiringBox(companies, BOARDS, files=files, titles=TITLES) as box:
+        code, text, wl, rows = box.plan(_wb_results(found))
+        if code != 0 or rows is None:
+            return errors + fail(f"wire_found plan did not run: {text[-300:]}")
+        got = {a: sorted(i for i, r in rows.items() if r["action"] == a)
+               for a in ("WIRE", "HOLD", "SKIP")}
+        if got["WIRE"] != ["logo-two-co", "name-row-co", "shown-co"] \
+                or got["HOLD"] != ["logo-only-co", "pool-only-co"]:
+            errors += fail(f"planned to wire {got['WIRE']} and hold {got['HOLD']}: a board "
+                           f"whose only rows are a logo's file name or a talent pool has no "
+                           f"opening on it, and is held like any empty board")
+        two = rows.get("logo-two-co") or {}
+        if two.get("postings") != 2 or any(".png" in t for t in two.get("titles") or []) \
+                or "2 openings among them" not in str(two.get("verified")):
+            errors += fail(f"a Rippling board with two openings and its logo is planned as "
+                           f"{two.get('postings')} postings {two.get('titles')}, saying "
+                           f"{two.get('verified')!r}")
+        name = rows.get("name-row-co") or {}
+        if name.get("postings") != 1 or name.get("titles") != ["Account Manager"]:
+            errors += fail(f"a row that is only the employer's own name was counted as an "
+                           f"opening: {name.get('postings')} {name.get('titles')}")
+        for cid in ("logo-only-co", "pool-only-co"):
+            if "read no postings" not in _wb_words(rows.get(cid) or {}):
+                errors += fail(f"{cid}: held saying {_wb_words(rows.get(cid) or {})[:160]!r}, "
+                               f"not that the board read no postings")
+        # three rows, two openings, two already shown: equal is not fewer
+        if (rows.get("shown-co") or {}).get("postings") != 2:
+            errors += fail("a board is compared with what the public board shows by its "
+                           "rows, not its openings")
+        if errors:
+            return errors
+        code, text, look_code = box.look(wl)
+        code, text = box.write(wl, look_code)
+        note = str(box.record("logo-two-co").get("ats_note") or "")
+        filed = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        if code != 0 or "wired 3, held 2" not in text or "2 postings read" not in note \
+                or (filed.get("logo-only-co") or {}).get("postings") != 0:
+            errors += fail(f"the write did not carry the count of openings: note {note!r}, "
+                           f"filed {(filed.get('logo-only-co') or {}).get('postings')}; "
+                           f"{text[-160:]}")
     return errors
 
 
@@ -46503,6 +46854,8 @@ def main() -> int:
     errors += check_a_found_board_is_wired_only_on_two_checks()
     errors += check_a_found_board_is_held_for_every_doubt()
     errors += check_an_advertisement_is_not_a_second_board()
+    errors += check_a_board_named_by_a_number_is_wired_by_its_slug()
+    errors += check_a_found_board_is_sized_by_its_openings()
     errors += check_a_found_board_is_not_wired_past_what_moved()
     errors += check_the_boards_found_card_opens_what_it_names()
     errors += check_a_finder_cannot_replace_the_owners_queue()

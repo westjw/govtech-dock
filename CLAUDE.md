@@ -2623,6 +2623,29 @@ round.
   (`failed == "unreadable"`: a timeout, a broken page) is SKIP `unreadable`
   and asked again by the next plan; a page that refused or is gone is still
   held, because it is as closed tomorrow.
+- **A Workable board a site asks for by number is wired by its slug, or not
+  wired.** A page that embeds Workable's widget asks for the board by the
+  account's NUMBER (`.../widget/accounts/710855`), and a rendered read sees
+  nothing else. The number reads (it is the address `fetch_workable` asks)
+  and passes both checks, and it does not open:
+  `apply.workable.com/710855` is Workable's error page, and
+  `build_board.board_url` builds the public "go and look" link from the ref.
+  The first real batch carried Archistar that way and a blind reviewer
+  opened the link before it was written (2026-11-19). `named_by_number`
+  follows ONE posting to where it lands (`add_company.lands_at`: robots.txt
+  at each hop, no page read), reads the slug off the landing address, and
+  holds the slug to the number: the board read under the slug must list
+  exactly the postings the number listed. It runs before anything is keyed,
+  so a board another company holds under its slug is seen to be that board.
+  A number whose slug cannot be found is held with the reason and is never
+  wired, by the plan or by `apply`; `board_url` links the company's website
+  for a number that reaches a record some other way.
+- **A board is sized by its openings, not its rows.** `fetch_rippling`
+  returns the logo's file name as a row on every board, and a talent pool or
+  an unfilled template is a row too. The door counts what
+  `roles.not_a_listing` lets through - the question every path onto the
+  public board asks - so an empty Rippling board does not read as one
+  posting and walk past the hold for a board nobody is hiring through.
 - **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
   not read (kept with its error, not retried); a site that named only a
   reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
@@ -2681,6 +2704,8 @@ round.
 - Guards: `check_a_found_board_is_wired_only_on_two_checks`,
   `check_a_found_board_is_held_for_every_doubt`,
   `check_an_advertisement_is_not_a_second_board`,
+  `check_a_board_named_by_a_number_is_wired_by_its_slug`,
+  `check_a_found_board_is_sized_by_its_openings`,
   `check_a_found_board_is_not_wired_past_what_moved`,
   `check_the_boards_found_card_opens_what_it_names` (executed under node),
   `check_a_finder_cannot_replace_the_owners_queue`. They share `_WiringBox`,
