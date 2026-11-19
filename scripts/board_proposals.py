@@ -70,6 +70,9 @@ def _read(p: pathlib.Path, default):
 # asked here, of the files that answer it, by every door that writes a board.
 DOUBTS = "board_doubts.json"
 PROPOSALS = "agent_proposals.json"
+SUSPECTS = "ats_suspects.json"
+# the journal action of a reader's doubt put on a row already waiting here
+DOUBT_ADDED = "boards-found-doubt"
 
 
 class Unreadable(ValueError):
@@ -99,17 +102,49 @@ def _map_shape(got) -> str | None:
     return "{key: its record}"
 
 
-def _doubts_shape(got) -> str | None:
-    if isinstance(got, dict) and all(isinstance(k, str) and isinstance(v, dict)
-                                     for k, v in got.items()):
+def _suspects_shape(got) -> str | None:
+    # what discovery writes ({company id: {ats, note, on}}), or the same
+    # under "suspects", or a list of rows carrying their id
+    items = got.get("suspects", got) if isinstance(got, dict) else None
+    if isinstance(items, dict) and all(isinstance(k, str) and isinstance(v, dict)
+                                       for k, v in items.items()):
         return None
-    return "{company id: the doubt}"
+    if isinstance(items, list) and all(isinstance(r, dict) and isinstance(r.get("id"), str)
+                                       for r in items):
+        return None
+    return "{company id: discovery's note}"
+
+
+def doubt_id(key: str, rec: dict) -> str:
+    """The company a record in board_doubts.json is about. The first shape
+    keyed one record per company by its id; a record kept since carries its
+    `id`, under the key "<company id>@<when>"."""
+    cid = rec.get("id") if isinstance(rec, dict) else None
+    if isinstance(cid, str) and cid.strip():
+        return cid
+    return key.split("@", 1)[0] if "@" in key else key
+
+
+def _doubts_shape(got) -> str | None:
+    # A RECORD WITHOUT WORDS HOLDS NOTHING, so it is not read as a doubt: one
+    # written {"why": ""} by hand, or {}, planned WIRE in the plan and was
+    # wired by apply (second review, 2026-11-19). It stops the door instead.
+    if not isinstance(got, dict) or not all(isinstance(k, str) and isinstance(v, dict)
+                                            for k, v in got.items()):
+        return "{key: a reader's doubt}"
+    for k, v in got.items():
+        if not isinstance(v.get("why"), str) or not v["why"].strip():
+            return f"{{key: a reader's doubt}}: {k!r} says no doubt in words"
+        if "id" in v and not (isinstance(v["id"], str) and v["id"].strip()):
+            return f"{{key: a reader's doubt}}: {k!r} names no company"
+    return None
 
 
 # name -> (what a missing file is, what a file that reads must look like)
 SHAPES = {"embedded_ats.json": (list, _rows_shape),
           "board_proposal_rulings.json": (dict, _map_shape),
           PROPOSALS: (dict, _map_shape),
+          SUSPECTS: (dict, _suspects_shape),
           DOUBTS: (dict, _doubts_shape)}
 
 
@@ -132,27 +167,102 @@ def strict(name: str, data=None):
     return got
 
 
+# --- the readers' doubts: one record per doubt, grouped by company ---------
+#
+# ONE RECORD PER DOUBT, AND A NEW DOUBT IS ALWAYS AN ADDITION. The file first
+# held one record per company, and a second doubt rewrote it with the words
+# joined by " | " - so a reader's sentence that contained " | " was never
+# found again and was appended on every apply, and once the file held sixty
+# doubts the journal's runaway rule refused any batch that rewrote a third of
+# them, force or not (second review, 2026-11-19). A doubt kept since is its
+# own record under "<company id>@<when>", carrying its `id`; the first shape
+# is still read. Whole records are compared, never pieces of a reader's words.
+
+def doubt_records(raw: dict) -> dict:
+    """{company id: [its doubts, oldest first]} from board_doubts.json as it
+    is on disk; each record a copy carrying its `key` and its `id`."""
+    out: dict = {}
+    for k, v in (raw or {}).items():
+        if isinstance(v, dict):
+            cid = doubt_id(k, v)
+            out.setdefault(cid, []).append(dict(v, key=k, id=cid))
+    for recs in out.values():
+        recs.sort(key=lambda r: (str(r.get("at") or r.get("on") or ""), r["key"]))
+    return out
+
+
+def read_doubts(data=None) -> dict:
+    """data/board_doubts.json, grouped by company (doubt_records). A file
+    that is on disk and does not read, or holds a record with no words,
+    raises Unreadable."""
+    return doubt_records(strict(DOUBTS, data))
+
+
+def _later(a, b) -> bool:
+    """Is the moment `a` ({at, on}) shown to be at or after `b`? By the
+    stamps where both carry one, else only by a LATER date: the same day with
+    nothing to order them by is not shown, and that answer wires less."""
+    if not isinstance(a, dict) or not isinstance(b, dict):
+        return False
+    ta, tb = when(a.get("at")), when(b.get("at"))
+    if ta and tb:
+        return ta >= tb
+    oa, ob = str(a.get("on") or "")[:10], str(b.get("on") or "")[:10]
+    return bool(oa and ob and oa > ob)
+
+
 def ruled_since(ruling, doubt: dict) -> bool:
     """Has the owner ruled on this company in Boards we found since the
-    doubt was recorded? Only a ruling shown to be later counts: by the stamp
-    where both carry one, else by a later date. A ruling from before the
-    doubt, or from the same day with no stamps to tell them apart, leaves the
-    doubt standing - that is the answer that wires less."""
-    if not isinstance(ruling, dict):
-        return False
-    ra, da = when(ruling.get("at")), when(doubt.get("at"))
-    if ra and da:
-        return ra >= da
-    ro, do = str(ruling.get("on") or ""), str(doubt.get("on") or "")
-    return bool(ro and do and ro > do)
+    doubt was recorded? Only a ruling shown to be later counts (_later). A
+    ruling from before the doubt, or from the same day with no stamps to tell
+    them apart, leaves the doubt standing - that is the answer that wires
+    less."""
+    return isinstance(ruling, dict) and _later(ruling, doubt)
 
 
-def standing_doubts(store: dict, ruled: dict) -> dict:
-    """{company id: its standing doubt} - the doubts in `store`
-    (board_doubts.json) the owner has not ruled on since (`ruled`,
-    board_proposal_rulings.json)."""
-    return {cid: d for cid, d in (store or {}).items()
-            if isinstance(d, dict) and not ruled_since((ruled or {}).get(cid), d)}
+def carried(rows, doubt: dict) -> bool:
+    """Did a row in Boards we found put this doubt in front of the owner? One
+    filed (`filed`) or given readers' doubts (`updated`, add_doubt) at or after
+    the doubt was kept, whose words carry the doubt's words whole."""
+    why = str(doubt.get("why") or "").strip()
+    for r in rows or []:
+        if not isinstance(r, dict) or not why or why not in str(r.get("identity_why") or ""):
+            continue
+        if _later(r.get("filed"), doubt) or _later(r.get("updated"), doubt):
+            return True
+    return False
+
+
+def rows_by_id(found) -> dict:
+    """{company id: [its rows in Boards we found]}."""
+    out: dict = {}
+    for r in found or []:
+        if isinstance(r, dict):
+            out.setdefault(r.get("id"), []).append(r)
+    return out
+
+
+def standing_doubts(grouped: dict, ruled: dict, found: list) -> dict:
+    """{company id: [its standing doubts]} - the doubts in `grouped`
+    (read_doubts) the owner has not settled.
+
+    A RULING SETTLES A DOUBT ONLY IF THE ROW HE RULED ON CARRIED IT: a ruling
+    later than the doubt (`ruled`, board_proposal_rulings.json) on a row of the
+    company (`found`, embedded_ats.json) that was filed or given the doubt at
+    or after it was kept, in its words (carried). Any ruling used to settle a
+    doubt - so a doubt the queue could not take onto a row ("already in the
+    list") was settled by his ruling on that older row, whose card never
+    showed it (second review, 2026-11-19). A company with only an older
+    ruling keeps its doubt standing: that queue never shows a ruled company
+    again, and the owner has to be told."""
+    rows = rows_by_id(found)
+    out = {}
+    for cid, recs in (grouped or {}).items():
+        left = [d for d in recs or [] if not (ruled_since((ruled or {}).get(cid), d)
+                                              and carried(rows.get(cid), d))]
+        if left:
+            out[cid] = left
+    return out
 
 
 def held_for_the_owner(data=None) -> dict:
@@ -169,9 +279,9 @@ def held_for_the_owner(data=None) -> dict:
     found = strict("embedded_ats.json", data)
     ruled = strict("board_proposal_rulings.json", data)
     props = strict(PROPOSALS, data)
-    doubts = strict(DOUBTS, data)
+    doubts = read_doubts(data)
     out: dict = {}
-    for cid in sorted(standing_doubts(doubts, ruled)):
+    for cid in sorted(standing_doubts(doubts, ruled, found)):
         out.setdefault(cid, "a reader's doubt about its board stands")
     for r in found:
         if r.get("filed") and r["id"] not in ruled:
@@ -252,6 +362,9 @@ def q_board_proposals(companies, board) -> list:
             # a door held it for a person (file_found); the page then prints
             # identity_why, which on those rows is the doubt in words
             "filed": f.get("filed"),
+            # and a row that was given a reader's doubt since (add_doubt),
+            # whoever left it: the page prints its identity_why too
+            "updated": f.get("updated"),
             # the two things that should make somebody slow down
             "warn_parent": f.get("identity") == "MISMATCH",
             "warn_scale": n >= 150,
@@ -469,6 +582,106 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
         out["error"] = refusal
         if write:
             out["added"] = []
+    return out
+
+
+def add_doubt(doubts: dict, by: str, write: bool = True, force: bool = False,
+              why: str = "") -> dict:
+    """Put readers' doubts on the rows already waiting for the owner here.
+
+    `doubts` is {company id: [doubt records]} as read_doubts gives them.
+    Returns {"added": {id: n}, "already": [ids], "skipped": [{"id", "why"}],
+    "error": str | None}; with write=False nothing is written and `added` is
+    what a write would add.
+
+    WHY THIS EXISTS. The queue holds one row per company. When a reader
+    doubted a company that already had a row waiting - an older finder's, or
+    an earlier batch's filed on another doubt - the door's held row was "already
+    in the list", and the reader's words went nowhere the owner looks: his
+    card showed the older row's words, and his ruling on it settled a doubt he
+    never saw (second review, 2026-11-19). Here each doubt the row does not
+    already carry, in its words, is added to the row's identity_why - which the
+    card prints - and the row is stamped `updated`, so that a ruling on it
+    from then on is a ruling on the doubt too (carried).
+
+    WHAT IT WILL NOT DO: touch a company the owner has ruled on (the queue
+    never shows a ruled company again, so a doubt about one cannot reach him
+    here - the caller says so); add a row; write for a person (agent:<label>
+    only); replace the file (one journalled write of the file plus the words,
+    through admin.save_decisions); force past the journal's 25-record rule
+    unless the caller has printed the count and passes force=True.
+    """
+    import datetime as dt
+
+    import admin
+    import journal
+    import privacy
+
+    out = {"added": {}, "already": [], "skipped": [], "error": None}
+    by = (by or "").strip()
+    if not by.startswith("agent:") or len(by) <= len("agent:") or "@" in by:
+        out["error"] = ("a reader's doubt is added by the agent that carries it, as "
+                        "agent:<label> - a handle, never an address")
+        return out
+    path = admin.DATA / FOUND.name
+    if path.resolve() != FOUND.resolve():
+        out["error"] = (f"board_proposals reads {FOUND} and admin would write {path}: two "
+                        f"data directories. Nothing was written")
+        return out
+    try:
+        current = strict(FOUND.name, admin.DATA)
+        ruled = strict(RULED.name, admin.DATA)
+    except Unreadable as exc:
+        out["error"] = f"{exc}. Nothing was written"
+        return out
+    after = json.loads(json.dumps(current))
+    rows = rows_by_id(after)
+    today, stamp = dt.date.today().isoformat(), admin.now()
+    for cid, recs in sorted((doubts or {}).items()):
+        mine = rows.get(cid) or []
+        if not mine:
+            out["skipped"].append({"id": cid, "why": "no row for it is in the list"})
+            continue
+        if cid in ruled:
+            v = ruled[cid]
+            out["skipped"].append({"id": cid, "why": (
+                f"already ruled: a board was {'accepted' if v.get('accept') else 'refused'} "
+                f"by {v.get('by') or '?'} on {v.get('on') or '?'}, and the queue never shows "
+                f"a ruled company again")})
+            continue
+        n = 0
+        for r in mine:
+            words = str(r.get("identity_why") or "").strip()
+            todo = [d for d in recs or [] if str(d.get("why") or "").strip()
+                    and not carried([r], d)]
+            more = [d for d in todo if str(d["why"]).strip() not in words]
+            if not todo:
+                continue
+            if more:
+                said = "; ".join(f"a reader's doubt, kept {d.get('on') or '?'} by "
+                                 f"{d.get('by') or '?'}: {str(d['why']).strip()}" for d in more)
+                r["identity_why"] = privacy.redact(f"{words}; {said}" if words else said)
+            # the words were already on the row and the row is older than the
+            # doubt: stamped, so a ruling from now on is a ruling on it
+            r["updated"] = {"by": by, "on": today, "at": stamp,
+                            "why": "a reader's doubt put on the row"}
+            n += len(todo)
+        if n:
+            out["added"][cid] = n
+        else:
+            out["already"].append(cid)
+    if not out["added"]:
+        return out
+    why = why or (f"{sum(out['added'].values())} reader's doubt(s) put on the rows already "
+                  f"waiting for the owner, so his card shows them")
+    _changes, refusal = journal.check(FOUND.name, current, after, force)
+    if not refusal and write:
+        refusal = admin.save_decisions(FOUND.name, after, DOUBT_ADDED, why=why, by=by,
+                                       force=force)
+    if refusal:
+        out["error"] = refusal
+        if write:
+            out["added"] = {}
     return out
 
 

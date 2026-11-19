@@ -4308,6 +4308,30 @@ def act_merge(body: dict) -> dict:
     drop = next((c for c in companies if c["id"] == drop_id), None)
     if not keep or not drop:
         return {"error": "company not found"}
+    # A COMPANY WHOSE BOARD IS WAITING ON THE OWNER IS NOT MERGED AWAY. A
+    # reader's doubt and a row a door filed in Boards we found are kept under
+    # the company's id, and nothing moves them: merged into its duplicate, a
+    # doubted company left both behind under an id that no longer exists, the
+    # survivor took its name as also_known_as, and the wiring door wired the
+    # board both readers had doubted (second blind review, 2026-11-19).
+    import board_proposals
+    try:
+        found = board_proposals.strict(board_proposals.FOUND.name, DATA)
+        ruled = board_proposals.strict(board_proposals.RULED.name, DATA)
+        doubts = board_proposals.standing_doubts(board_proposals.read_doubts(DATA),
+                                                 ruled, found)
+    except board_proposals.Unreadable as exc:
+        return {"error": f"{exc}, so whether {drop['name']}'s board is waiting on you cannot "
+                         f"be told. Nothing was merged."}
+    waiting = [r for r in found if r["id"] == drop_id and r.get("filed")
+               and drop_id not in ruled]
+    if drop_id in doubts or waiting:
+        what = ("a board waiting for your ruling in Boards we found" if waiting
+                else "a reader's doubt about its board standing")
+        return {"error": f"{drop['name']} has {what}. Rule on it there first (Yes or Not "
+                         f"theirs): merged now, it would stay behind under an id that no "
+                         f"longer exists, and {keep['name']}'s board could be wired past it. "
+                         f"Nothing was merged."}
     filled = []
     for k, v in drop.items():
         if k in ("id", "name"):
@@ -4774,6 +4798,17 @@ def act_set_board(body: dict) -> dict:
     block = body.get("ats") or {}
     if block.get("type") not in ATS_TYPES:
         return {"error": f"unknown ats type {block.get('type')}"}
+    number = block.get("ref").strip().rstrip("/") if isinstance(block.get("ref"), str) else ""
+    if block.get("type") == "workable" and number.isdigit():
+        # A WORKABLE ACCOUNT NUMBER READS AND DOES NOT OPEN, as act_board_proposal
+        # says: apply.workable.com/<number> is Workable's error page, and a record
+        # holding a number is one board under two keys that no door can match to
+        # the slug a site links (second blind review, 2026-11-19).
+        return {"error": f"workable/{number} is a Workable account number, not the board's "
+                         f"own address: apply.workable.com/{number} is Workable's error page. "
+                         f"Open one of its postings, see where it lands "
+                         f"(apply.workable.com/<slug>/j/...), and set the board by that slug. "
+                         f"Nothing was written."}
     c["ats"] = {"type": block["type"], "ref": block.get("ref")}
     c["ats_note"] = body.get("note") or "set by hand in admin"
     err = validate(companies)

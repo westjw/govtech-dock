@@ -5059,8 +5059,10 @@ RENDER.boardfound = c => {
     e.appendChild(line('The board calls itself:', c.board_calls_itself));
   // A row a door held for you says why in words (board_proposals.file_found).
   // A name mismatch says it in the red line below; this is every other doubt:
-  // a parent on file, two boards on one site, a board that names nobody.
-  if (c.filed && !c.warn_parent && c.identity_why)
+  // a parent on file, two boards on one site, a board that names nobody. So
+  // does a row a reader's doubt was put on since (`updated`, add_doubt),
+  // whoever left it: the doubt is in those words, and nowhere else you look.
+  if ((c.filed || c.updated) && !c.warn_parent && c.identity_why)
     e.appendChild(line('Not wired because:', c.identity_why));
 
   if (c.warn_parent) {

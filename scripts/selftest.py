@@ -31858,13 +31858,19 @@ class _WiringBox:
             code = wf.main([str(x) for x in argv])
         return code, out.getvalue()
 
-    def plan(self, *docs, name="worklist.json", out=None, doubts=None):
-        """(exit code, what it printed, the worklist's path, its rows by id)."""
+    def plan(self, *docs, name="worklist.json", out=None, doubts=None, by=None):
+        """(exit code, what it printed, the worklist's path, its rows by id).
+        `doubts` goes in as --doubts, with --by `by` (the box's label unless
+        given; "" gives none)."""
         args = ["plan"]
         if doubts is not None:
             d = self.scratch / f"doubts-{len(list(self.scratch.iterdir()))}.json"
             d.write_text(doubts if isinstance(doubts, str) else json.dumps(doubts))
             args += ["--doubts", d]
+            if by != "":
+                args += ["--by", by or self.LABEL]
+        elif by:
+            args += ["--by", by]
         for doc in docs:
             p = self.scratch / f"results-{len(list(self.scratch.iterdir()))}.json"
             p.write_text(json.dumps(doc))
@@ -32496,12 +32502,17 @@ def check_a_found_board_is_wired_only_on_two_checks() -> int:
     # THE DOUBT HAS TO REACH THE SCREEN. The desk printed identity_why only on
     # a MISMATCH, so a board held for a parent on file or for naming nobody
     # would have sat in the owner's queue looking exactly like one nobody
-    # doubted. The card prints it for every row a door filed.
+    # doubted. The card prints it for every row a door filed - and for every
+    # row a reader's doubt was put on since (`updated`, board_proposals.
+    # add_doubt), whoever left it: the doubt is in those words and nowhere
+    # else he looks (second review, 2026-11-19).
     page = (ROOT / "admin.html").read_text()
     card = page[page.find("RENDER.boardfound"):page.find("function boardUrlFor")]
-    if not re.search(r"if \(c\.filed[^)]*\)\s*\n\s*e\.appendChild\(line\([^,]+, c\.identity_why\)\)", card):
+    if not re.search(r"if \(\(c\.filed \|\| c\.updated\)[^\n]*\)\s*\n\s*"
+                     r"e\.appendChild\(line\([^,]+, c\.identity_why\)\)", card):
         errors += fail("admin.html's Boards we found card no longer prints why a filed row "
-                       "was not wired (c.identity_why on a row carrying c.filed)")
+                       "was not wired, or a reader's doubt put on a row since "
+                       "(c.identity_why on a row carrying c.filed or c.updated)")
     return errors
 
 
@@ -33534,6 +33545,9 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         # refused under the SLUG, asked for by a number another company resolves
         co("refused-slug-twin-co", "Refused Slug Twin Co"),
         co("brand-refused-twin-co", "Brand Refused Twin Co"),
+        # refused in Agent proposals for a board on ANOTHER platform, and its
+        # site now asks for a Workable account by number
+        co("refused-other-co", "Refused Other Co"),
     ]
     BOARDS = {
         "workable/710855": (3, ["Number Co"]), "workable/numberco": (3, ["Number Co"]),
@@ -33570,6 +33584,8 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         "workable/slugdownco": "HTTP 503 for https://apply.workable.com/api/v1/widget/accounts/slugdownco",
         "workable/676767": (2, ["Brand Refused Twin Co"]),
         "workable/refusedtwinco": (2, ["Brand Refused Twin Co"]),
+        "workable/727272": (2, ["Refused Other Co"]),
+        "workable/refusedotherco": (2, ["Refused Other Co"]),
     }
     # 500 rows under the number, ten of them a logo: 490 openings is under the
     # line, and the board is still a giant by its own rows - read once, it is
@@ -33615,6 +33631,8 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         "workable/838383": posts("XXXXXX1", "XXXXXX2"),
         "workable/676767": posts("YYYYYY1", "YYYYYY2"),
         "workable/refusedtwinco": posts("YYYYYY1", "YYYYYY2"),
+        "workable/727272": posts("WWWWWW1", "WWWWWW2"),
+        "workable/refusedotherco": posts("WWWWWW1", "WWWWWW2"),
     }
     LANDS = {
         f"{W}j/AAAAAA1": f"{W}numberco/j/AAAAAA1/",
@@ -33645,6 +33663,7 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         f"{W}j/VVVVVV1": ats.AtsError(f"HTTP 404 for {W}j/VVVVVV1"),
         f"{W}j/XXXXXX1": f"{W}slugdownco/j/XXXXXX1",
         f"{W}j/YYYYYY1": f"{W}refusedtwinco/j/YYYYYY1",
+        f"{W}j/WWWWWW1": f"{W}refusedotherco/j/WWWWWW1",
     }
 
     def queue_row(cid, ref, filed=None):
@@ -33670,7 +33689,11 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
             "board:refused-slug-twin-co": {
                 "kind": "board", "id": "refused-slug-twin-co", "ats_type": "workable",
                 "ats_ref": "refusedtwinco", "status": "rejected", "ruled_by": "claude",
-                "ruled_on": "2026-11-10", "ruled_why": "a recruiting firm's board"}},
+                "ruled_on": "2026-11-10", "ruled_why": "a recruiting firm's board"},
+            "board:refused-other-co": {
+                "kind": "board", "id": "refused-other-co", "ats_type": "lever",
+                "ats_ref": "someparentco", "status": "rejected", "ruled_by": "claude",
+                "ruled_on": "2026-11-10", "ruled_why": "a parent's Lever board"}},
         bp.FOUND.name: [
             queue_row("desk-refused-number-co", "767676"),
             # waiting under the number: one a door filed on a doubt, one an
@@ -33719,6 +33742,7 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         "slug-down-co": asks("slug-down-co", "838383"),
         "refused-slug-twin-co": asks("refused-slug-twin-co", "676767"),
         "brand-refused-twin-co": asks("brand-refused-twin-co", "676767"),
+        "refused-other-co": asks("refused-other-co", "727272"),
     }
     with _WiringBox(companies, BOARDS, files=files, urls=URLS, lands=LANDS,
                     titles={"workable/797979": GIANT_TITLES}) as box:
@@ -33787,7 +33811,12 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                 # refused board is seen to be the same one by its slug
                 ("refused-slug-twin-co", "SKIP", "refused", "a recruiting firm's board"),
                 ("brand-refused-twin-co", "HOLD", None,
-                 "the same board was found for Refused Slug Twin Co")):
+                 "the same board was found for Refused Slug Twin Co"),
+                # NOT ASKED, AND SAID SO: refused for another board, its number
+                # is not followed, and it is skipped as refused - tell the owner
+                ("refused-other-co", "SKIP", "refused", "a parent's Lever board"),
+                ("refused-other-co", "SKIP", "refused", "its slug was not looked for"),
+                ("refused-other-co", "SKIP", "refused", "tell the owner")):
             r = rows.get(cid) or {}
             if r.get("action") != action or (kind and r.get("kind") != kind) \
                     or must_say not in _wb_words(r):
@@ -33797,7 +33826,16 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         for cid, wrong in (("nolanding-co", "the public site would link to it"),
                            ("waiting-filed-co", "a different board"),
                            ("follow-404-co", "asked again"),
-                           ("refused-slug-twin-co", "taken to be the board refused")):
+                           ("refused-slug-twin-co", "taken to be the board refused"),
+                           # "could not be found" is a claim about an attempt: never
+                           # of a number nobody followed, nor of a follow that
+                           # failed on the day
+                           ("refused-other-co", "could not be found"),
+                           ("follow-timeout-co", "could not be found"),
+                           ("follow-429-co", "could not be found"),
+                           ("slug-down-co", "could not be found"),
+                           ("follow-timeout-co", "was not looked for"),
+                           ("follow-429-co", "was not looked for")):
             if wrong in _wb_words(rows.get(cid) or {}):
                 errors += fail(f"{cid}: says {wrong!r}, which is not true of it: "
                                f"{_wb_words(rows.get(cid) or {})[:220]!r}")
@@ -33821,6 +33859,7 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                                    ("refused-number-co", "666666", "HHHHHH1"),
                                    ("refused-by-number-co", "757575", "OOOOOO1"),
                                    ("desk-refused-number-co", "767676", "PPPPPP1"),
+                                   ("refused-other-co", "727272", "WWWWWW1"),
                                    ("parent-out", None, None)):
             if (number and f"workable/{number}" in box.asked) \
                     or (code_ and f"{W}j/{code_}" in box.followed):
@@ -33831,6 +33870,9 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                 or "workable/797979" in box.probed or box.asked.count("workable/797979") != 1:
             errors += fail("a giant's number was followed, read again under its slug, or "
                            "asked whose it is: read once, it is skipped with the giants")
+        if "workable/727272" in box.probed or (rows.get("refused-other-co") or {}).get("queue_row"):
+            errors += fail("refused-other-co: a refused company's number was asked whose it is, "
+                           "or carries a row for the owner's queue under a number nobody followed")
         for cid in ("follow-timeout-co", "follow-429-co", "slug-down-co"):
             if (rows.get(cid) or {}).get("queue_row"):
                 errors += fail(f"{cid}: a slug that could not be found ON THE DAY carries a "
@@ -33860,6 +33902,22 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         if "LEFT ALONE 1" not in text or "account number" not in text:
             errors += fail(f"a WIRE row whose board is a Workable account number with a last "
                            f"slash was not left alone by the look: {text[-260:]}")
+        # A NUMBER THE PLAN FOLLOWED IS THE SLUG'S HOLDER IN APPLY TOO: Number
+        # Holder sits on 747474, which this plan followed to brandnumberco; a
+        # worklist edited to wire Brand Slug Co (found by that slug alone)
+        # meets the holder through the plan's own workable_numbers
+        def flip_slug(by_id, _doc):
+            r = by_id["brand-slug-co"]
+            r["action"], r["waiting_seen"] = "WIRE", []
+            r["check_2"]["ok"] = True
+            r.pop("doubts", None)
+            r.pop("queue_row", None)
+        code, text, _ = box.look(box.edited(wl, "worklist-slug.json", flip_slug))
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Brand Slug Co")), "")
+        if "is now on file as the board of Number Holder" not in line:
+            errors += fail(f"a WIRE row for a slug the plan followed a number on file to was "
+                           f"not left alone as that record's board: {text[-300:]}")
         # ONE BOARD UNDER TWO KEYS, IN APPLY TOO: two rows meeting only on the
         # number, and a record put on the number since the plan
         twinned = box.edited(wl, "worklist-twinned.json",
@@ -33907,8 +33965,72 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                 or box.asked != asked:
             errors += fail(f"the desk accepted a board filed under a Workable account number, "
                            f"or asked it of the network first: {r}")
+        # ...written as the reader reads it, a last slash and all
+        q = json.loads((box.tmp / bp.FOUND.name).read_text())
+        for row_ in q:
+            if row_["id"] == "nolanding-co":
+                row_["found"]["ref"] = "111111/"
+        (box.tmp / bp.FOUND.name).write_text(json.dumps(q, indent=1))
+        before, asked = box.on_disk(), list(box.asked)
+        r = admin.act_board_proposal({"id": "nolanding-co", "accept": True, "why": "selftest"})
+        if not r.get("error") or "account number 111111" not in r["error"] \
+                or box.on_disk() != before or box.asked != asked:
+            errors += fail(f"the desk accepted a Workable account number written '111111/': {r}")
+        # AND SET BOARD DOES NOT WRITE ONE EITHER, however it is spelt
+        for ref_ in ("710855", "710855/", " 710855 "):
+            before = box.on_disk()
+            r = admin.act_set_board({"id": "slug-co", "ats": {"type": "workable", "ref": ref_},
+                                     "by": "owner", "why": "selftest"})
+            if not r.get("error") or "account number" not in r["error"] \
+                    or box.on_disk() != before:
+                errors += fail(f"the desk's Set board wrote Workable account number {ref_!r}: {r}")
+        r = admin.act_set_board({"id": "slug-co", "ats": {"type": "workable", "ref": "slugco"},
+                                 "by": "owner", "why": "selftest"})
+        if r.get("error") or box.record("slug-co")["ats"] != {"type": "workable", "ref": "slugco"}:
+            errors += fail(f"the desk's Set board refused a Workable slug: {r}")
     if add_company.lands_at.__module__ != "add_company":
         errors += fail("the sandbox did not put add_company.lands_at back")
+
+    # --- A NUMBER ON FILE THAT NOBODY IN THE RUN FOLLOWS ---------------------
+    # A record set to workable/949494 (by hand, or by an older door) and a site
+    # that links the same account by its slug: no request ties the two, so the
+    # door saw no holder and wired the second company - two records on one
+    # account. While a record holds a number the run did not resolve, every
+    # Workable board is held; in apply, a number put on file since the plan
+    # (and not followed by it) leaves every Workable WIRE row alone.
+    companies2 = [co("holder-co", "Holder Co", ats={"type": "workable", "ref": "949494"}),
+                  co("slug-only-co", "Slug Only Co"), co("planned-co", "Planned Co"),
+                  co("other-co", "Other Co"), co("green-co", "Green Co")]
+    BOARDS2 = {"workable/slugonlyco": (2, ["Slug Only Co"]),
+               "workable/plannedco": (2, ["Planned Co"]), "greenhouse/greenco": (2, ["Green Co"])}
+    with _WiringBox(companies2, BOARDS2) as box:
+        code, text, wl, rows = box.plan(_wb_results({
+            "slug-only-co": _wb_one("slug-only-co", "workable", "slugonlyco", element="iframe"),
+            "green-co": _wb_one("green-co", "greenhouse", "greenco", element="iframe")}))
+        r = (rows or {}).get("slug-only-co") or {}
+        if r.get("action") != "HOLD" or "a record holds Workable account 949494 (Holder Co), " \
+                "and whether it is this board was not asked" not in _wb_words(r) \
+                or (rows or {}).get("green-co", {}).get("action") != "WIRE":
+            errors += fail(f"a Workable board was planned {r.get('action')} beside a record "
+                           f"holding an account number nobody followed, saying "
+                           f"{_wb_words(r)[:220]!r} (and a Greenhouse board beside it "
+                           f"{(rows or {}).get('green-co', {}).get('action')})")
+        box.by_hand(lambda b, cs: b["holder-co"].update(ats={"type": "unknown", "ref": None}))
+        code, text, wl2, rows2 = box.plan(_wb_results({
+            "planned-co": _wb_one("planned-co", "workable", "plannedco", element="iframe")}),
+            name="worklist-2.json")
+        if (rows2 or {}).get("planned-co", {}).get("action") != "WIRE":
+            return errors + fail(f"with no number on file, a Workable board found by its slug "
+                                 f"does not plan WIRE: {text[-200:]}")
+        box.by_hand(lambda b, cs: b["other-co"].update(ats={"type": "workable", "ref": "939393"}))
+        code, text, _ = box.look(wl2)
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Planned Co")), "")
+        if "LEFT ALONE 1" not in text or "a record holds Workable account 939393 (Other Co)" \
+                not in line:
+            errors += fail(f"a Workable WIRE row was not left alone beside an account number "
+                           f"put on file since the plan, which the plan never followed: "
+                           f"{text[-300:]}")
     return errors
 
 
@@ -34028,15 +34150,21 @@ def check_a_readers_doubt_holds_the_board() -> int:
     both doubted JustFOIA - its board is its own by name, and its ads open
     "JustFOIA, an MCCi brand". Whether a brand of a parent is wired is the
     owner's call, so the row has to reach his queue with that sentence on it.
-    `plan --doubts` takes {company id: the doubt in words}; such a company is
-    held however well it passes both checks.
+    `plan --doubts` takes {company id: the doubt in words} and --by, the
+    agent the doubts are kept under; such a company is held however well it
+    passes both checks.
 
-    A doubts file that cannot be used stops the plan BEFORE anything is read:
-    a doubt silently dropped is a board wired over a reader's objection.
+    A doubts file that cannot be used, or no --by to keep it under, stops the
+    plan BEFORE anything is read: a doubt silently dropped is a board wired
+    over a reader's objection. And the doubt is KEPT before the first request
+    (data/board_doubts.json, one journalled addition), not when the worklist
+    is written - so the plan dying, or never being written, loses nothing.
     """
     import board_proposals as bp
+    import wire_found as wf
     errors = 0
     co = _wb_co
+    LABEL = _WiringBox.LABEL
     someone = "jane.doe" + "@" + "acme-corp.com"
     WORDS = ("its own ads call the employer 'Doubted Co, a Bigger Group brand' and link "
              f"only to biggergroup.test (ask {someone})")
@@ -34051,17 +34179,22 @@ def check_a_readers_doubt_holds_the_board() -> int:
                                          element="iframe")}
     with _WiringBox(companies, BOARDS) as box:
         # --- a doubts file that cannot be used stops the plan first ----------
-        for label, bad in (("names a company the results do not hold", {"nobody-co": "why"}),
-                           ("is a list", ["doubted-co"]),
-                           ("gives a doubt with no words", {"doubted-co": "  "}),
-                           ("gives a doubt that is not words", {"doubted-co": True}),
-                           ("is not JSON", "{not json")):
-            code, text, wl, _ = box.plan(_wb_results(found), name=f"bad-{len(box.asked)}.json",
-                                         doubts=bad)
-            if code == 0 or box.asked or wl.exists() or "Nothing was read" not in text:
+        for label, bad, by in (("names a company the results do not hold", {"nobody-co": "why"}, None),
+                               ("is a list", ["doubted-co"], None),
+                               ("gives a doubt with no words", {"doubted-co": "  "}, None),
+                               ("gives a doubt that is not words", {"doubted-co": True}, None),
+                               ("is not JSON", "{not json", None),
+                               ("comes with no --by to keep it under", {"doubted-co": "x"}, ""),
+                               ("comes with an address for --by", {"doubted-co": "x"},
+                                "agent:" + someone),
+                               ("comes with a person for --by", {"doubted-co": "x"}, "owner")):
+            code, text, wl, _ = box.plan(_wb_results(found), name=f"bad-{len(label)}.json",
+                                         doubts=bad, by=by)
+            if code == 0 or box.asked or wl.exists() or "Nothing was read" not in text \
+                    or (box.tmp / wf.DOUBTS).exists():
                 errors += fail(f"a --doubts file that {label} did not stop the plan before "
-                               f"its first read: exit {code}, asked {box.asked[:2]}; "
-                               f"{text[-160:]}")
+                               f"its first read, with nothing kept: exit {code}, asked "
+                               f"{box.asked[:2]}; {text[-160:]}")
             del box.asked[:], box.probed[:]
 
         # --- without the doubt it is wired; with it, held in the reader's words
@@ -34070,9 +34203,26 @@ def check_a_readers_doubt_holds_the_board() -> int:
                 "doubted-co", "fine-co"]:
             return errors + fail(f"the fixture's two boards do not both pass on their own: "
                                  f"this check would show nothing ({text[-200:]})")
+        if (box.tmp / wf.DOUBTS).exists():
+            errors += fail("a plan with no --doubts wrote the standing doubts file")
+        # THE DOUBT IS KEPT BEFORE THE FIRST REQUEST: the box's read says
+        # whether the doubts file was on disk when it was first asked
+        kept_first = []
+        real_read = box._read_board
+
+        def watched(block):
+            if not kept_first:
+                kept_first.append((box.tmp / wf.DOUBTS).exists())
+            return real_read(block)
+        box._read_board = watched
+        import add_company
+        add_company.read_board = watched
+        journal_before = len((box.tmp / "admin_journal.jsonl").read_text().splitlines()) \
+            if (box.tmp / "admin_journal.jsonl").exists() else 0
         code, text, wl, rows = box.plan(
             _wb_results(found), doubts={"doubted-co": WORDS,
                                         "giant-doubted-co": "far too many roles for them"})
+        add_company.read_board = box._read_board = real_read
         if code != 0 or rows is None:
             return errors + fail(f"wire_found plan --doubts did not run: {text[-300:]}")
         d = rows.get("doubted-co") or {}
@@ -34083,6 +34233,11 @@ def check_a_readers_doubt_holds_the_board() -> int:
             errors += fail(f"a board a reader doubted was planned {d.get('action')} saying "
                            f"{_wb_words(d)[:200]!r}: it is held, with the reader's words, "
                            f"and still says that both checks passed")
+        if _wb_words(d).count("a Bigger Group brand") != 2:
+            # once in the row's doubts, once in the queue row's line: the doubt
+            # just kept is not quoted a second time as a standing one
+            errors += fail(f"the doubt this plan was given is said twice over: "
+                           f"{_wb_words(d)[:300]!r}")
         if rows["giant-doubted-co"]["action"] != "SKIP":
             errors += fail("a doubt turned a giant into a row for the owner's queue")
         raw = wl.read_text()
@@ -34090,11 +34245,32 @@ def check_a_readers_doubt_holds_the_board() -> int:
                 or '"doubted_by_a_reader": [\n  "doubted-co",\n  "giant-doubted-co"\n ]' not in raw:
             errors += fail("the worklist does not record which companies a reader doubted, "
                            "or carries an address from a reader's words")
+        kept = json.loads((box.tmp / wf.DOUBTS).read_text()) \
+            if (box.tmp / wf.DOUBTS).exists() else {}
+        by_cid = {v.get("id"): (k, v) for k, v in kept.items()}
+        if kept_first != [True] or sorted(by_cid) != ["doubted-co", "giant-doubted-co"] \
+                or "far too many roles" not in str(by_cid.get("giant-doubted-co", ("", {}))[1].get("why")) \
+                or any(not k.startswith(f"{cid}@") or v.get("by") != LABEL or not v.get("at")
+                       for cid, (k, v) in by_cid.items()) or someone in json.dumps(kept):
+            errors += fail(f"the plan did not keep both readers' doubts before its first "
+                           f"request, each its own record under the agent's label, the "
+                           f"skipped giant's included, with no address: on disk at the first "
+                           f"read {kept_first}; {kept}")
+        wrote = [json.loads(ln) for ln in
+                 (box.tmp / "admin_journal.jsonl").read_text().splitlines()][journal_before:]
+        mine = [e for e in wrote if e.get("file") == wf.DOUBTS]
+        if len(mine) != 1 or mine[0].get("by") != LABEL or mine[0].get("action") != wf.DOUBT_ACTION \
+                or any(ch.get("before") is not None for ch in mine[0]["changes"].values()):
+            errors += fail(f"the readers' doubts were not one journalled ADDITION by {LABEL}: "
+                           f"{[(e.get('file'), e.get('by'), e.get('action')) for e in wrote]}")
+        if f"data/{wf.DOUBTS}" not in text or "Commit them together" not in text \
+                or "will be wired, and the HOLD rows filed for the owner, when this worklist " \
+                   "is applied with --write" not in text:
+            errors += fail(f"the plan does not say it wrote the doubts file and that nothing "
+                           f"else is written until the worklist is applied: {text[-400:]}")
         if errors:
             return errors
-        import wire_found as wf
-        if (box.tmp / wf.DOUBTS).exists():
-            errors += fail("a plan wrote the standing doubts file; only apply --write may")
+        store_before = (box.tmp / wf.DOUBTS).read_bytes()
         code, text, look_code = box.look(wl)
         code, text = box.write(wl, look_code)
         filed = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
@@ -34108,20 +34284,21 @@ def check_a_readers_doubt_holds_the_board() -> int:
                            f"queue with the reader's words and no address: "
                            f"{str(row.get('identity_why'))[:200]!r}; {text[-160:]}")
             return errors
-        # the giant's doubt reached no queue row, and is kept all the same
-        kept = json.loads((box.tmp / wf.DOUBTS).read_text()) \
-            if (box.tmp / wf.DOUBTS).exists() else {}
-        if sorted(kept) != ["doubted-co", "giant-doubted-co"] \
-                or "far too many roles" not in str((kept.get("giant-doubted-co") or {}).get("why")):
-            errors += fail(f"the write did not keep both readers' doubts standing, the "
-                           f"skipped giant's included: {kept}")
+        if (box.tmp / wf.DOUBTS).read_bytes() != store_before or f"data/{wf.DOUBTS}" not in text:
+            errors += fail(f"apply wrote the doubts file (the plan keeps the doubts), or its "
+                           f"commit line does not name it: {text[-260:]}")
+        if not bp.carried([row], next(v for v in kept.values() if v["id"] == "doubted-co")):
+            errors += fail("the row filed for the doubted company is not seen to carry the "
+                           "reader's doubt, so the owner's ruling on it would not settle it")
 
         # --- the NEXT plan, with no --doubts: the doubt is in his queue now ----
         # The sweep after the first batch found JustFOIA's board again, and
         # with both checks passing and the same board waiting, the door used
         # to wire it. A row a door filed on a doubt stays the owner's; a row
         # an older finder left with no door's doubt on it may still be
-        # answered by the two checks.
+        # answered by the two checks. The kept doubt is taken off first, so the
+        # words the next plan quotes can only be the filed row's own.
+        (box.tmp / wf.DOUBTS).unlink()
         import board_proposals as bp2
         queue = json.loads((box.tmp / bp2.FOUND.name).read_text())
         queue.append({"id": "legacy-co", "name": "Legacy Co", "was": "html",
@@ -34141,10 +34318,12 @@ def check_a_readers_doubt_holds_the_board() -> int:
         d2 = (rows2 or {}).get("doubted-co") or {}
         if code != 0 or d2.get("action") != "HOLD" \
                 or "already in the owner's queue" not in _wb_words(d2) \
-                or "a Bigger Group brand" not in _wb_words(d2):
-            errors += fail(f"the next plan, with no --doubts, planned the doubted board "
-                           f"{d2.get('action')} saying {_wb_words(d2)[:200]!r}: a board a door "
-                           f"filed on a doubt is the owner's until he rules")
+                or "a Bigger Group brand" not in _wb_words(d2) \
+                or "a reader's doubt about this company stands" in _wb_words(d2):
+            errors += fail(f"the next plan, with no --doubts and no doubt on file, planned the "
+                           f"doubted board {d2.get('action')} saying {_wb_words(d2)[:200]!r}: a "
+                           f"board a door filed on a doubt is the owner's until he rules, in "
+                           f"the words it was filed with")
         if ((rows2 or {}).get("legacy-co") or {}).get("action") != "WIRE":
             errors += fail(f"a board an older finder left in the queue, with no door's doubt "
                            f"on it, is no longer answered by the two checks: "
@@ -34167,28 +34346,40 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
     nowhere and wired by the next plan; a worklist planned before the doubt
     still wired the doubted board after it; and a worklist edited from HOLD
     to WIRE for a doubted company was wired with the doubt in its own header.
+    The third review added: a worklist planned before the doubt, written
+    before the doubted one, wired the board with its own code - the doubt
+    stood only once the doubted worklist was written.
 
     So, pinned here:
-      - `apply --write` keeps every doubt in the worklist's reader_doubts in
-        data/board_doubts.json - HOLD, SKIP or no board at all - through the
-        journal, under the agent's label, the reader's words redacted;
+      - `plan --doubts` keeps every doubt it is given in data/board_doubts.json
+        BEFORE its first request - HOLD, SKIP or no board at all - each its
+        own record, one journalled addition under the agent's label, the
+        reader's words redacted; apply writes none;
+      - from that moment every apply of ANY worklist leaves the company's WIRE
+        row alone (`standing`), and the code a look printed before it no
+        longer opens the write;
       - every later plan holds such a company with the words, unless the
-        owner has ruled on it in Boards we found SINCE (refused: SKIP
-        refused; accepted: the checks decide); a ruling from before the
-        doubt, or the same day with nothing to order them by, leaves it
-        standing; a new --doubts adds on top;
-      - a SKIP made after the doubts were gathered carries them, and the plan
-        and the look say of each doubted company whose doubt reaches no
-        queue row that it is kept as a standing doubt;
+        owner has ruled SINCE on a row in Boards we found that CARRIED the
+        doubt (filed or given it at or after it was kept, in its words): a
+        ruling on a row that never showed it, a ruling from before the doubt,
+        or the same day with nothing to order them by, leaves it standing -
+        and a doubt about a company he ruled on before is said to be one that
+        cannot reach his queue, never one awaiting his ruling there;
+      - a second reader's doubt is a record of its own, its words alone, and
+        goes onto the row already waiting for him (board_proposals.add_doubt);
+      - a SKIP made after the doubts were gathered carries them and prints
+        them, and the plan and the look say of each doubted company whose
+        doubt reaches no new row what it can reach;
       - apply leaves alone, each with its own code and words, a WIRE row a
         reader doubted in its worklist, one with a standing doubt, one whose
         company now has a door-filed row in Boards we found (any board), and
         one with a waiting row or a pending proposal the plan did not see;
         a row an older finder left for the same board, seen by the plan,
         holds nothing;
-      - a doubts file that cannot be read stops the plan and the apply;
-      - a worklist older than version 3, or without its reader_doubts, is
-        refused;
+      - a doubts file that cannot be read, or holds a record with no words,
+        stops the plan and the apply;
+      - a worklist older than version 4, or without its reader_doubts, or with
+        a blank one, is refused;
       - and the journal says a reader may be what held a row.
     """
     import board_proposals as bp
@@ -34207,7 +34398,7 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
         "doubted-co", "flaky-doubted-co", "giant-doubted-co", "noboard-doubted-co",
         "mismatch-doubted-co", "fine-co", "ruled-refused-co", "ruled-accepted-co",
         "ruled-before-co", "same-day-co", "stale-store-co", "late-queue-co",
-        "late-proposal-co", "legacy-same-co")]
+        "late-proposal-co", "legacy-same-co", "ruled-unseen-co", "ruled-early-co")]
     companies.append(co("parent-doubted-co", "Parent Doubted Co", parent="Bigger Group"))
     # a standing doubt about a company something else on file argues about too
     companies.append(co("stand-parent-co", "Stand Parent Co", parent="Bigger Parent Inc"))
@@ -34227,11 +34418,21 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
 
     def stamp(day, hour=10):
         return f"2026-11-{day:02d}T{hour:02d}:00:00-05:00"
+    # doubts already on file, in the FIRST shape (one record per company, keyed
+    # by its id): it is still read
     store = {
         "ruled-refused-co": {"board": "greenhouse/ruledrefusedco", "why": "an older doubt",
                              "by": "agent:old-batch", "on": "2026-11-10", "at": stamp(10)},
         "ruled-accepted-co": {"board": "greenhouse/ruledacceptedco", "why": "an older doubt",
                               "by": "agent:old-batch", "on": "2026-11-10", "at": stamp(10)},
+        "ruled-unseen-co": {"board": "greenhouse/ruledunseenco",
+                            "why": "a doubt his card never showed", "by": "agent:old-batch",
+                            "on": "2026-11-10", "at": stamp(10)},
+        # the same words were on a row filed BEFORE this doubt was kept: that
+        # row did not carry THIS doubt, and his ruling on it does not settle it
+        "ruled-early-co": {"board": "greenhouse/ruledearlyco",
+                           "why": "words a row had before", "by": "agent:old-batch",
+                           "on": "2026-11-10", "at": stamp(10)},
         "ruled-before-co": {"board": "greenhouse/ruledbeforeco",
                             "why": "a doubt after his ruling", "by": "agent:old-batch",
                             "on": "2026-11-12", "at": stamp(12)},
@@ -34247,16 +34448,33 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
                                   "on": "2026-11-12", "at": stamp(12)},
              "ruled-accepted-co": {"accept": True, "why": "", "by": "owner",
                                    "on": "2026-11-12", "at": stamp(12)},
+             "ruled-unseen-co": {"accept": True, "why": "", "by": "owner",
+                                 "on": "2026-11-12", "at": stamp(12)},
+             "ruled-early-co": {"accept": True, "why": "", "by": "owner",
+                                "on": "2026-11-12", "at": stamp(12)},
              "ruled-before-co": {"accept": True, "why": "", "by": "owner",
                                  "on": "2026-11-01", "at": stamp(1)},
              "same-day-co": {"accept": True, "why": "", "by": "owner", "on": "2026-11-12"}}
-    legacy = {"id": "legacy-same-co", "name": "Legacy Same Co", "was": "html",
-              "found": {"type": "greenhouse", "ref": "legacysameco"},
-              "saw": "boards.greenhouse.io/legacysameco", "times": 1,
-              "verified": "3 posting(s) readable", "board_calls_itself": None,
-              "identity": "unknown", "identity_why": "no identity probe for it then",
-              "postings": 3, "titles": []}
-    files = {wf.DOUBTS: store, bp.RULED.name: ruled, bp.FOUND.name: [legacy]}
+
+    def row(cid, why, **more):
+        r = {"id": cid, "name": name[cid], "was": "html",
+             "found": {"type": "greenhouse", "ref": cid.replace("-", "")},
+             "saw": f"boards.greenhouse.io/{cid.replace('-', '')}", "times": 1,
+             "verified": "3 posting(s) readable", "board_calls_itself": None,
+             "identity": "unknown", "identity_why": why, "postings": 3, "titles": []}
+        r.update(more)
+        return r
+    legacy = row("legacy-same-co", "no identity probe for it then")
+    files = {wf.DOUBTS: store, bp.RULED.name: ruled, bp.FOUND.name: [
+        legacy,
+        # the row he accepted was filed AFTER the doubt, in its words: settled
+        row("ruled-accepted-co", "a reader checking this plan doubted it: an older doubt",
+            filed={"by": "agent:old-batch", "on": "2026-11-11", "at": stamp(11)}),
+        # the row he accepted was filed BEFORE the doubt and never showed it
+        row("ruled-unseen-co", "the board states no employer name",
+            filed={"by": "agent:old-batch", "on": "2026-11-09", "at": stamp(9)}),
+        row("ruled-early-co", "an earlier batch: words a row had before",
+            filed={"by": "agent:old-batch", "on": "2026-11-09", "at": stamp(9)})]}
     TIMED_OUT = "could not read the board: network error: it timed out"
 
     with _WiringBox(companies, BOARDS, files=files) as box:
@@ -34270,10 +34488,18 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
         if before_wire != want0:
             return errors + fail(f"the fixture's first plan wires {before_wire}, not {want0}: "
                                  f"nothing below would test what it says")
+        cannot = "it cannot reach the owner's queue: he ruled on this company in Boards we found"
         for cid, action, kind, must_say in (
                 ("ruled-refused-co", "SKIP", "refused", "not theirs"),
                 ("ruled-before-co", "HOLD", None, "a doubt after his ruling"),
+                ("ruled-before-co", "HOLD", None, cannot),
                 ("same-day-co", "HOLD", None, "a doubt the same day"),
+                ("same-day-co", "HOLD", None, cannot),
+                # his ruling was on a row that never showed the doubt
+                ("ruled-unseen-co", "HOLD", None, "a doubt his card never showed"),
+                ("ruled-unseen-co", "HOLD", None, cannot),
+                ("ruled-early-co", "HOLD", None, "words a row had before"),
+                ("ruled-early-co", "HOLD", None, cannot),
                 ("stale-store-co", "HOLD", None,
                  "a reader's doubt about this company stands, recorded 2026-11-15 by "
                  "agent:old-batch about greenhouse/stalestoreco: kept from a batch ago"),
@@ -34284,24 +34510,36 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
             if r.get("action") != action or (kind and r.get("kind") != kind) \
                     or must_say not in _wb_words(r):
                 errors += fail(f"{cid}: planned {r.get('action')}/{r.get('kind')} saying "
-                               f"{_wb_words(r)[:200]!r}; wanted {action}"
+                               f"{_wb_words(r)[:260]!r}; wanted {action}"
                                f"{'/' + kind if kind else ''} saying {must_say!r} - a standing "
-                               f"doubt holds until a ruling made SINCE settles it")
+                               f"doubt holds until a ruling made SINCE, on a row that carried "
+                               f"it, settles it")
+        for cid in ("ruled-before-co", "same-day-co", "ruled-unseen-co", "ruled-early-co"):
+            if "until the owner rules" in _wb_words(rows0.get(cid) or {}):
+                errors += fail(f"{cid}: a doubt about a company the owner ruled on before is "
+                               f"said to wait for his ruling, which that queue can never take")
         if "asked again" in _wb_words(rows0.get("stale-store-co") or {}):
             errors += fail("a standing doubt says it is asked again on the next plan")
+        code, text_, code_0 = box.look(wl0)
+        if code != 0 or not code_0 or "would wire 7," not in text_:
+            return errors + fail(f"the look at the worklist planned before the readers did not "
+                                 f"offer its seven boards: {text_[-300:]}")
 
         # --- the readers' plan: day one ---------------------------------------
         box.says["lever/flakydoubtedco"] = {"failed": "unreadable", "transient": True,
                                             "how": TIMED_OUT, "names": [], "stated": False,
                                             "name": None}
+        journal_before = len((box.tmp / "admin_journal.jsonl").read_text().splitlines()) \
+            if (box.tmp / "admin_journal.jsonl").exists() else 0
         code, text, wl, rows = box.plan(_wb_results(day_one), doubts=WORDS)
         if code != 0 or rows is None:
             return errors + fail(f"wire_found plan --doubts did not run: {text[-300:]}")
+        plan_text = text
         got = {a: sorted(i for i, r in rows.items() if r["action"] == a)
                for a in ("WIRE", "HOLD", "SKIP")}
         if got["WIRE"] != ["fine-co", "ruled-accepted-co"]:
             errors += fail(f"the readers' plan wires {got['WIRE']}: only the two nobody "
-                           f"doubts, or whose doubt the owner has ruled on since")
+                           f"doubts, or whose doubt the owner has settled since")
         for cid, action, kind in (("flaky-doubted-co", "SKIP", "unreadable"),
                                   ("giant-doubted-co", "SKIP", "giant"),
                                   ("noboard-doubted-co", "SKIP", "no-candidate")):
@@ -34312,10 +34550,16 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
             elif kind != "no-candidate" and WORDS[cid][:20] not in " ".join(r.get("doubts") or []):
                 errors += fail(f"{cid}: a SKIP made after the doubts were gathered dropped "
                                f"the reader's words: {r.get('doubts')}")
-            if wf.UNFILED.format(kind=kind) not in text:
+            if f"a reader's doubt reaches no new row: its row is skipped ({kind}); the doubt " \
+                    f"is kept standing (data/{wf.DOUBTS})" not in text:
                 errors += fail(f"{cid}: the plan does not say that a reader's doubt about a "
-                               f"company whose row was skipped ({kind}) is kept as a "
-                               f"standing doubt")
+                               f"company whose row was skipped ({kind}) is kept standing")
+        # THE SKIP LINE PRINTS THE DOUBTS IT CARRIES, the reader's words among them
+        line = next((ln for ln in plan_text.splitlines() if "Flaky Doubted Co" in ln
+                     and ln.lstrip().startswith("SKIP")), "")
+        if "in doubt as well:" not in line or "a Bigger Group brand" not in line:
+            errors += fail(f"the plan's SKIP line does not print the doubts the row carries: "
+                           f"{line[:240]!r}")
         flaky = rows.get("flaky-doubted-co") or {}
         if "asked again on the next plan" not in (flaky.get("why") or "") \
                 or flaky.get("queue_row"):
@@ -34334,23 +34578,67 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
             errors += fail("a reader-doubted board that names another company is not held as "
                            "a MISMATCH")
         doc = json.loads(wl.read_text())
-        if doc.get("version") != wf.VERSION or wf.VERSION < 3 \
+        if doc.get("version") != wf.VERSION or wf.VERSION < 4 \
                 or sorted(doc.get("reader_doubts") or {}) != sorted(WORDS) \
                 or doc["reader_doubts"].get("doubted-co") != WORDS["doubted-co"] \
                 or someone in wl.read_text() or "[address removed]" not in \
-                doc["reader_doubts"].get("flaky-doubted-co", ""):
+                doc["reader_doubts"].get("flaky-doubted-co", "") or doc.get("doubts_by") != LABEL:
             errors += fail(f"the worklist does not carry the readers' doubts in their words, "
-                           f"redacted, at version 3 or later: "
+                           f"redacted, and who kept them, at version 4 or later: "
                            f"{doc.get('version')}, {doc.get('reader_doubts')}")
+        # THE PLAN KEPT THEM: six records of their own, before anything else
+        kept = json.loads((box.tmp / wf.DOUBTS).read_text())
+        fresh = {v["id"]: v for k, v in kept.items() if k not in store}
+        for cid, words in WORDS.items():
+            k = fresh.get(cid) or {}
+            want_board = {"flaky-doubted-co": "lever/flakydoubtedco",
+                          "noboard-doubted-co": None}.get(cid, f"greenhouse/{cid.replace('-', '')}")
+            if k.get("by") != LABEL or not str(k.get("on") or "").startswith("20") \
+                    or k.get("board") != want_board or not k.get("at") \
+                    or k.get("why") != wf.reader_words(words):
+                errors += fail(f"{cid}: the plan did not keep its reader's doubt as a record of "
+                               f"its own with the board, the words, the agent and the time: {k}")
+        if someone in json.dumps(kept) or any(kept.get(cid) != store[cid] for cid in store):
+            errors += fail("the doubts file carries an address, or the doubts already "
+                           "standing were changed by a write that was not about them")
+        wrote = [json.loads(ln) for ln in
+                 (box.tmp / "admin_journal.jsonl").read_text().splitlines()][journal_before:]
+        mine = [e for e in wrote if e.get("file") == wf.DOUBTS]
+        if len(mine) != 1 or mine[0].get("by") != LABEL or mine[0].get("action") != wf.DOUBT_ACTION \
+                or sorted(v["after"]["id"] for v in (mine[0].get("changes") or {}).values()) \
+                != sorted(WORDS):
+            errors += fail(f"the readers' doubts were not one journal entry by {LABEL}, made "
+                           f"by the plan: {mine}")
 
         # --- worklists apply will not read ------------------------------------
-        for label, change in (("version 2", lambda b, d: d.update(version=2)),
+        for label, change in (("version 3", lambda b, d: d.update(version=3)),
                               ("no reader_doubts", lambda b, d: d.pop("reader_doubts")),
                               ("reader_doubts as a list",
-                               lambda b, d: d.update(reader_doubts=sorted(WORDS)))):
+                               lambda b, d: d.update(reader_doubts=sorted(WORDS))),
+                              ("a blank reader's doubt",
+                               lambda b, d: d["reader_doubts"].update({"doubted-co": "  "})),
+                              ("no workable_numbers", lambda b, d: d.pop("workable_numbers"))):
             code, text_, _ = box.look(box.edited(wl, f"bad-{len(label)}.json", change))
             if code == 0 or "could not read the worklist" not in text_:
                 errors += fail(f"apply read a worklist with {label}: {text_[-160:]}")
+
+        # --- the worklist planned BEFORE the doubt, applied after it was given -
+        # (its look was printed before the readers spoke, and their doubted
+        # worklist has not been written)
+        before = box.on_disk()
+        code, text_ = box.write(wl0, code_0)
+        if code == 0 or "REFUSED" not in text_ or box.on_disk() != before:
+            errors += fail(f"the code a look printed before the readers' doubt opened the "
+                           f"write after it: {text_[-300:]}")
+        code, text_, _ = box.look(wl0)
+        body = text_[text_.find("LEFT ALONE"):]
+        for cid in ("doubted-co", "flaky-doubted-co"):
+            if not any(ln.strip().startswith(name[cid])
+                       and "a reader's doubt about this company stands" in ln
+                       for ln in body.splitlines()):
+                errors += fail(f"{cid}: a worklist planned before the reader's doubt, applied "
+                               f"before the doubted one was written, is not left alone as "
+                               f"standing: the doubt stands from the moment it is given")
 
         # --- a doubted HOLD row edited to WIRE is not wired -------------------
         def flip(by_id, d):
@@ -34372,50 +34660,40 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
         if box.on_disk() != before:
             errors += fail("a look wrote")
         if code != 0 or "would wire 2, would hold 4" not in text or not look_code \
-                or "KEPT AS STANDING DOUBTS 6" not in text \
-                or "reader doubts kept standing 6" not in text:
-            errors += fail(f"the look did not offer two boards, four held rows and six "
-                           f"doubts to keep: {text[-400:]}")
+                or "READERS' DOUBTS 6 - kept by the plan" not in text \
+                or "KEPT AS STANDING DOUBTS" in text:
+            errors += fail(f"the look did not offer two boards and four held rows, and say "
+                           f"the plan kept the six doubts: {text[-400:]}")
         for cid, kind in (("flaky-doubted-co", "unreadable"), ("giant-doubted-co", "giant"),
                           ("noboard-doubted-co", "no-candidate")):
-            if wf.UNFILED.format(kind=kind) not in text:
-                errors += fail(f"{cid}: the look does not say its reader's doubt was not "
-                               f"filed and is kept as a standing doubt")
-        journal_before = len((box.tmp / "admin_journal.jsonl").read_text().splitlines()) \
-            if (box.tmp / "admin_journal.jsonl").exists() else 0
+            if f"a reader's doubt reaches no new row: its row is skipped ({kind})" not in text:
+                errors += fail(f"{cid}: the look does not say its reader's doubt reaches no "
+                               f"new row and is kept standing")
+        journal_before = len((box.tmp / "admin_journal.jsonl").read_text().splitlines())
         code, text = box.write(wl, look_code)
         if code != 0 or "wired 2, held 4" not in text or f"data/{wf.DOUBTS}" not in text:
-            errors += fail(f"apply --write did not finish, or did not say it wrote the "
-                           f"doubts file: {text[-300:]}")
-        kept = json.loads((box.tmp / wf.DOUBTS).read_text())
-        for cid, words in WORDS.items():
-            k = kept.get(cid) or {}
-            want_board = {"flaky-doubted-co": "lever/flakydoubtedco",
-                          "noboard-doubted-co": None}.get(cid, f"greenhouse/{cid.replace('-', '')}")
-            if k.get("by") != LABEL or not str(k.get("on") or "").startswith("20") \
-                    or k.get("board") != want_board or not k.get("at") \
-                    or words.split(" (ask")[0] not in str(k.get("why")):
-                errors += fail(f"{cid}: its reader's doubt was not kept standing with the "
-                               f"board, the words, the agent and the day: {k}")
-        if someone in json.dumps(kept) or any(kept.get(cid) != store[cid] for cid in store):
-            errors += fail("the doubts file carries an address, or the doubts already "
-                           "standing were changed by a write that was not about them")
+            errors += fail(f"apply --write did not finish, or its commit line does not name "
+                           f"the doubts file the plan wrote: {text[-300:]}")
+        if json.loads((box.tmp / wf.DOUBTS).read_text()) != kept:
+            errors += fail("apply wrote the doubts file: the plan keeps the readers' doubts")
         wrote = [json.loads(ln) for ln in
                  (box.tmp / "admin_journal.jsonl").read_text().splitlines()][journal_before:]
-        mine = [e for e in wrote if e.get("file") == wf.DOUBTS]
         queue = [e for e in wrote if e.get("file") == bp.FOUND.name]
-        if len(mine) != 1 or mine[0].get("by") != LABEL or mine[0].get("action") != wf.DOUBT_ACTION \
-                or sorted(mine[0].get("changes") or {}) != sorted(WORDS):
-            errors += fail(f"the readers' doubts were not one journal entry by {LABEL}: {mine}")
+        if any(e.get("file") == wf.DOUBTS for e in wrote):
+            errors += fail("apply journalled a write of the doubts file")
         if len(queue) != 1 or "or a reader, argues with it" not in str(queue[0].get("why")):
             errors += fail(f"the journal says of the held rows that only the board or the "
                            f"record argued with them: {[e.get('why') for e in queue]}")
         filed = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
-        if set(filed) - {"legacy-same-co"} != {"doubted-co", "mismatch-doubted-co",
-                                               "parent-doubted-co", "stale-store-co"}:
+        if set(filed) - {"legacy-same-co", "ruled-accepted-co", "ruled-unseen-co",
+                         "ruled-early-co"} != {
+                "doubted-co", "mismatch-doubted-co", "parent-doubted-co", "stale-store-co"}:
             errors += fail(f"the queue took {sorted(filed)}")
+        if "kept from a batch ago" not in str((filed.get("stale-store-co") or {}).get("identity_why")):
+            errors += fail("a row filed for a company with a standing doubt does not carry the "
+                           "doubt's words, so his ruling on it would settle a doubt he never saw")
 
-        # --- the worklist planned before the doubt, applied after it ---------
+        # --- the worklist planned before the doubt, applied after it ----------
         # (and, since it was planned: a door-filed row for another board, and
         # a proposal nobody had made when it was planned)
         q = json.loads((box.tmp / bp.FOUND.name).read_text())
@@ -34456,10 +34734,12 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
         if box.probed.count("lever/flakydoubtedco") < 3:
             errors += fail("a board whose probe failed on the day was not asked again by the "
                            "next plan, as its row said it would be")
-        # --- and a second reader's doubt goes on top of the first --------------
+        # --- a second reader's doubt is a record of its own -------------------
         # (the flaky board's first doubt reached no queue row: its words come
-        # from the standing doubt alone)
+        # from the standing doubt alone; doubted-co's row is waiting, and the
+        # second reader's words go onto it the moment they are given)
         more = "a second reader: the job ads link the parent's benefits page"
+        journal_before = len((box.tmp / "admin_journal.jsonl").read_text().splitlines())
         code, text, wl3, rows3 = box.plan(_wb_results(day_one), name="worklist-more.json",
                                           doubts={"doubted-co": more, "flaky-doubted-co": more})
         for cid in ("doubted-co", "flaky-doubted-co"):
@@ -34467,33 +34747,730 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
             if WORDS[cid][:20] not in words3 or more not in words3:
                 errors += fail(f"{cid}: a new --doubts did not add to the doubt already "
                                f"standing: {words3[:240]!r}")
+        now_kept = json.loads((box.tmp / wf.DOUBTS).read_text())
+        added = {k: v for k, v in now_kept.items() if k not in kept}
+        if sorted(v["id"] for v in added.values()) != ["doubted-co", "flaky-doubted-co"] \
+                or any(v["why"] != more for v in added.values()) \
+                or any(now_kept[k] != v for k, v in kept.items()):
+            errors += fail(f"a second reader's doubt was not kept as a record of its own, in "
+                           f"its own words only, beside the first: {added}")
+        on_row = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        drow = on_row.get("doubted-co") or {}
+        wrote = [json.loads(ln) for ln in
+                 (box.tmp / "admin_journal.jsonl").read_text().splitlines()][journal_before:]
+        if more not in str(drow.get("identity_why")) or (drow.get("updated") or {}).get("by") \
+                != LABEL or not any(e.get("file") == bp.FOUND.name and e.get("by") == LABEL
+                                    and e.get("action") == bp.DOUBT_ADDED for e in wrote):
+            errors += fail(f"the second reader's words did not reach the row already waiting "
+                           f"for the owner, journalled by {LABEL}, before the plan asked "
+                           f"anything: {str(drow.get('identity_why'))[-200:]!r}")
+        card = {r["id"]: r for r in bp.q_board_proposals(
+            json.loads((box.tmp / "companies.json").read_text()), {})}
+        if more not in str((card.get("doubted-co") or {}).get("identity_why")):
+            errors += fail("the owner's card for the doubted company does not show the second "
+                           "reader's words")
         code, text, look3 = box.look(wl3)
-        if "the queue cannot take the row (already in the list); it is kept as a standing " \
-                "doubt" not in text:
+        if "the queue cannot take the row (already in the list); the doubt is kept standing " \
+                f"(data/{wf.DOUBTS}), and it is on its row in Boards we found" not in text:
             errors += fail(f"the look does not say a held reader's doubt the queue cannot take "
-                           f"is kept as a standing doubt: {text[-300:]}")
+                           f"is on the row already waiting: {text[-300:]}")
+        before_store = (box.tmp / wf.DOUBTS).read_bytes()
         code, text = box.write(wl3, look3)
-        why = (json.loads((box.tmp / wf.DOUBTS).read_text()).get("doubted-co") or {}).get("why", "")
-        if code != 0 or WORDS["doubted-co"] not in why or more not in why:
-            errors += fail(f"the second reader's doubt was written over the first, or not "
-                           f"kept: {why!r}")
+        if code != 0 or (box.tmp / wf.DOUBTS).read_bytes() != before_store:
+            errors += fail(f"the write of the second batch failed, or wrote the doubts file: "
+                           f"{text[-200:]}")
 
         # --- a doubts file that cannot be read stops both doors ----------------
         good = (box.tmp / wf.DOUBTS).read_bytes()
-        for bad in (b"{ not json", b'["doubted-co"]', b'{"doubted-co": "a bare string"}'):
+        for bad in (b"{ not json", b'["doubted-co"]', b'{"doubted-co": "a bare string"}',
+                    b'{"doubted-co": {"why": "", "by": "agent:x"}}', b'{"doubted-co": {}}',
+                    b'{"doubted-co@2026-11-19": {"id": "", "why": "words"}}'):
             (box.tmp / wf.DOUBTS).write_bytes(bad)
             del box.asked[:]
             code, text, wl_bad, _ = box.plan(_wb_results(day_one),
                                              name=f"worklist-bad-{len(bad)}.json")
             if code == 0 or box.asked or wl_bad.exists() or "Nothing was read" not in text:
-                errors += fail(f"a doubts file reading {bad[:20]!r} did not stop the plan "
+                errors += fail(f"a doubts file reading {bad[:30]!r} did not stop the plan "
                                f"before its first read: {text[-200:]}")
             before = box.on_disk()
             code, text, _ = box.look(wl)
             if code == 0 or box.on_disk() != before or "Nothing was written" not in text:
-                errors += fail(f"a doubts file reading {bad[:20]!r} did not stop apply: "
+                errors += fail(f"a doubts file reading {bad[:30]!r} did not stop apply: "
                                f"{text[-200:]}")
         (box.tmp / wf.DOUBTS).write_bytes(good)
+    return errors
+
+
+def check_a_readers_doubt_is_kept_once_and_reaches_the_owner() -> int:
+    """A reader's doubt is kept once, as its own record, where the owner sees it.
+
+    The third blind review of scripts/wire_found.py (2026-11-19) found the
+    doubts file one record per company: a second doubt rewrote it, joined by
+    " | " - so a reader's sentence containing " | " was never found again and
+    was appended on every apply; a doubt the owner had settled, given again by
+    a re-plan with the same file, came back with a later stamp and stood
+    again; once the file held sixty doubts the journal's runaway rule refused
+    a batch that re-doubted a third of them, force or not. And a doubt the
+    queue could not take ("already in the list") reached no card the owner
+    sees, while his ruling on the older row settled it. Pinned here:
+
+      - one record per doubt, kept by `plan --doubts` before its first
+        request; the same words about the same board for the same company are
+        never written twice, ruled on since or not; a second plan with the
+        same file, and a second apply of the same worklist, change no data
+        file and add no journal entry;
+      - a doubt about a company with a row already waiting goes onto that row
+        (board_proposals.add_doubt), his card shows it, and his ruling on the
+        row settles it; a ruling on a row that never carried the doubt does
+        not;
+      - a doubt about a company he ruled on before says it cannot reach his
+        queue, and one about a company already on a board says it was wired
+        before the doubt was kept - in the plan's lines and in the journal,
+        never that either holds a board until he rules;
+      - a worklist whose only output is a doubted SKIP keeps the doubt (the
+        plan did) and the next plan holds the board;
+      - more than 25 doubts are one journal entry, the count printed first;
+        sixty on file and twenty-one more are additions, not a rewrite;
+      - a doubt kept between a look and its write refuses the old code;
+      - a doubts write the journal refuses stops the plan before its first
+        request, and a wiring write that fails after the plan leaves the
+        doubts on disk.
+    """
+    import admin
+    import board_proposals as bp
+    import wire_found as wf
+    errors = 0
+    co, one, entry = _wb_co, _wb_one, _wb_entry
+    LABEL = _WiringBox.LABEL
+    ids = ["pipe-co", "flaky-co", "legacy-co", "wired-co", "back-co", "fine-co", "old-row-co"]
+    name = {cid: " ".join(w.capitalize() for w in cid.split("-")) for cid in ids}
+    companies = [co(cid, name[cid]) for cid in ids]
+    companies[ids.index("wired-co")]["ats"] = {"type": "greenhouse", "ref": "wiredco"}
+    BOARDS = {f"greenhouse/{cid.replace('-', '')}": (3, [name[cid]]) for cid in ids}
+    BOARDS["lever/flakyco"] = (3, ["Flaky Co"])
+    found = {cid: one(cid, "greenhouse", cid.replace("-", ""), element="iframe")
+             for cid in ids if cid != "flaky-co"}
+    found["flaky-co"] = one("flaky-co", "lever", "flakyco", element="iframe")
+
+    def row(cid, why, **more):
+        r = {"id": cid, "name": name[cid], "was": "html",
+             "found": {"type": "greenhouse", "ref": cid.replace("-", "")},
+             "saw": f"boards.greenhouse.io/{cid.replace('-', '')}", "times": 1,
+             "verified": "3 posting(s) readable", "board_calls_itself": None,
+             "identity": "unknown", "identity_why": why, "postings": 3, "titles": []}
+        r.update(more)
+        return r
+    files = {wf.DOUBTS: {"old-row-co": {"board": "greenhouse/oldrowco",
+                                        "why": "a later doubt its row lacks", "by": "agent:old",
+                                        "on": "2026-11-10", "at": "2026-11-10T10:00:00-05:00"}},
+             bp.FOUND.name: [row("legacy-co", "every apply link is on the ATS's own domain"),
+                             # filed BEFORE the doubt above was kept, in other words:
+                             # JustFOIA's shape on 2026-11-19
+                             row("old-row-co", "an earlier batch's words",
+                                 filed={"by": "agent:old", "on": "2026-11-01",
+                                        "at": "2026-11-01T10:00:00-04:00"}),
+                             row("back-co", "an earlier batch's doubt",
+                                 filed={"by": "agent:old", "on": "2026-09-01",
+                                        "at": "2026-09-01T10:00:00-04:00"})],
+             bp.RULED.name: {"back-co": {"accept": True, "why": "", "by": "owner",
+                                         "on": "2026-09-03", "at": "2026-09-03T10:00:00-04:00"}}}
+    WORDS = {"pipe-co": "its careers page is titled 'Careers | Parent Group', the parent's",
+             "flaky-co": "its ads say 'a Bigger Group brand'",
+             "legacy-co": "a reader: its job ads are signed by Parent Group, whose board this is",
+             "wired-co": "the board on file is the parent's",
+             "back-co": "a reader: the board is the parent's again"}
+    TIMED_OUT = "could not read the board: network error: it timed out"
+
+    def journal_len():
+        p = box.tmp / "admin_journal.jsonl"
+        return len(p.read_text().splitlines()) if p.exists() else 0
+
+    def entries_since(n):
+        return [json.loads(ln) for ln in
+                (box.tmp / "admin_journal.jsonl").read_text().splitlines()][n:]
+
+    with _WiringBox(companies, BOARDS, files=files) as box:
+        box.says["lever/flakyco"] = {"failed": "unreadable", "transient": True,
+                                     "how": TIMED_OUT, "names": [], "stated": False,
+                                     "name": None}
+        n0 = journal_len()
+        code, text, wl, rows = box.plan(_wb_results(found), doubts=WORDS)
+        if code != 0 or rows is None:
+            return errors + fail(f"wire_found plan --doubts did not run: {text[-300:]}")
+        # read as the door reads them: a record of the first shape has no `id`
+        kept = {k: dict(v, id=bp.doubt_id(k, v))
+                for k, v in json.loads((box.tmp / wf.DOUBTS).read_text()).items()}
+        if sorted(v["id"] for k, v in kept.items() if "@" in k) != sorted(WORDS):
+            errors += fail(f"the plan did not keep one record per doubt: {sorted(kept)}")
+        # what each doubt can reach, said plainly where it is kept
+        lines = {cid: next((ln for ln in text.splitlines() if ln.lstrip().startswith("KEPT")
+                            and name[cid] in ln), "") for cid in WORDS}
+        for cid, must, never in (
+                ("wired-co", "wired before the reader's doubt was kept - tell the owner",
+                 "holds the board"),
+                ("back-co", "it cannot reach the owner's queue: he ruled on this company in "
+                            "Boards we found on 2026-09-03", "until the owner rules"),
+                ("legacy-co", "it is on its row in Boards we found", None),
+                ("pipe-co", "until a plan files one and the owner rules on it", None)):
+            if must not in lines[cid] or (never and never in lines[cid]):
+                errors += fail(f"{cid}: the plan's line for its kept doubt says "
+                               f"{lines[cid][:260]!r}; wanted {must!r}"
+                               + (f" and never {never!r}" if never else ""))
+        doubt_entry = [e for e in entries_since(n0) if e.get("file") == wf.DOUBTS]
+        why = str((doubt_entry or [{}])[0].get("why"))
+        holds = next((p for p in why.split("; ") if "hold their company's board" in p), "")
+        if "wired before the reader's doubt was kept - tell the owner (wired-co)" not in why \
+                or "cannot reach the owner's queue" not in why or "back-co" not in why \
+                or "wired-co" in holds or "back-co" in holds:
+            errors += fail(f"the journal says of a doubt about a company already on a board, "
+                           f"or one he ruled on before, that it holds a board until he rules: "
+                           f"{why[:400]!r}")
+        # the doubt about a company with a row already waiting: onto that row
+        q = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        card = {r["id"]: r for r in bp.q_board_proposals(
+            json.loads((box.tmp / "companies.json").read_text()), {})}
+        legacy_rec = next(v for v in kept.values() if v["id"] == "legacy-co")
+        if WORDS["legacy-co"] not in str(q["legacy-co"].get("identity_why")) \
+                or (q["legacy-co"].get("updated") or {}).get("by") != LABEL \
+                or WORDS["legacy-co"] not in str(card.get("legacy-co", {}).get("identity_why")) \
+                or not card.get("legacy-co", {}).get("updated") \
+                or not bp.carried([q["legacy-co"]], legacy_rec):
+            errors += fail(f"a reader's doubt about a company whose row was already waiting did "
+                           f"not reach that row, or the owner's card: {q['legacy-co']}")
+        if WORDS["back-co"] in str(q["back-co"].get("identity_why")):
+            errors += fail("a doubt was written onto a row the owner had already ruled on")
+        # the door itself, asked directly: a ruled row, no row, a person, an address
+        back_rec = next(v for v in kept.values() if v["id"] == "back-co")
+        before = box.on_disk()
+        rep = bp.add_doubt({"back-co": [back_rec], "nobody-co": [back_rec]}, LABEL)
+        skipped = {x["id"]: x["why"] for x in rep["skipped"]}
+        if rep["added"] or "already ruled" not in skipped.get("back-co", "") \
+                or "no row" not in skipped.get("nobody-co", "") or box.on_disk() != before:
+            errors += fail(f"board_proposals.add_doubt wrote a doubt onto a row the owner ruled "
+                           f"on, or for a company with no row: {rep}")
+        for who in ("owner", "agent:" + "jane.doe" + "@" + "acme-corp.com", ""):
+            rep = bp.add_doubt({"legacy-co": [legacy_rec]}, who)
+            if not rep["error"] or rep["added"] or box.on_disk() != before:
+                errors += fail(f"board_proposals.add_doubt wrote as {who!r}: a doubt is put on a "
+                               f"row by an agent's handle only")
+
+        # --- the same --doubts again, and the same worklist twice -------------
+        store_bytes = (box.tmp / wf.DOUBTS).read_bytes()
+        n1 = journal_len()
+        code, text, wl_again, _ = box.plan(_wb_results(found), name="worklist-again.json",
+                                           doubts=WORDS)
+        if code != 0 or (box.tmp / wf.DOUBTS).read_bytes() != store_bytes \
+                or journal_len() != n1 or "KEPT" in text:
+            errors += fail(f"a second plan with the same --doubts kept something again (its "
+                           f"' | ' included): {text[:400]!r}")
+        code, text, look_code = box.look(wl)
+        code, text = box.write(wl, look_code)
+        if code != 0 or "wired 1, held 1" not in text:
+            errors += fail(f"the first write did not wire Fine Co and file Pipe Co: {text[-300:]}")
+        state = box.on_disk()
+        n2 = journal_len()
+        code, text, look_code = box.look(wl)
+        # a look with nothing to write prints no code: the write is asked bare
+        code, text = (box.write(wl, look_code) if look_code else
+                      box.run("apply", wl, "--by", LABEL, "--write"))
+        if box.on_disk() != state or journal_len() != n2 or "nothing to write" not in text:
+            errors += fail(f"the same worklist applied twice changed something the second "
+                           f"time: {text[-300:]}")
+
+        # --- the owner rules; the same --doubts comes back --------------------
+        r1 = admin.act_board_proposal({"id": "legacy-co", "accept": True, "by": "owner",
+                                       "why": "selftest: it is theirs"})
+        r2 = admin.act_board_proposal({"id": "pipe-co", "accept": False, "by": "owner",
+                                       "why": "selftest: the parent's"})
+        if r1.get("error") or r2.get("error"):
+            return errors + fail(f"the owner's rulings at the desk failed: {r1} {r2}")
+        s = wf.read_stores()
+        standing = wf.standing_doubts(s["doubts"], s)
+        if "legacy-co" in standing or "pipe-co" in standing:
+            errors += fail(f"the owner ruled on rows that carried the doubts, and they still "
+                           f"stand: {sorted(standing)}")
+        store_bytes = (box.tmp / wf.DOUBTS).read_bytes()
+        n3 = journal_len()
+        code, text, _wl, _ = box.plan(_wb_results(found), name="worklist-after-ruling.json",
+                                      doubts=WORDS)
+        if (box.tmp / wf.DOUBTS).read_bytes() != store_bytes \
+                or any(e.get("file") == wf.DOUBTS for e in entries_since(n3)):
+            errors += fail("a doubt the owner settled was written back as new by a re-plan "
+                           "with the same --doubts file")
+        # his board taken off by hand: the settled doubt holds nothing now
+        box.by_hand(lambda b, cs: b["legacy-co"].update(
+            ats={"type": "html", "ref": f"{_wb_site('legacy-co')}/careers"}))
+        code, text, _wl, rows = box.plan(_wb_results(found), name="worklist-later.json")
+        lr = (rows or {}).get("legacy-co") or {}
+        if lr.get("action") != "WIRE":
+            errors += fail(f"a doubt the owner settled on the row that carried it came back: "
+                           f"{lr.get('action')} saying {_wb_words(lr)[:200]!r}")
+        # A ROW THAT DOES NOT CARRY ITS COMPANY'S DOUBT says so, and the next
+        # --doubts naming the company puts it there - no new record for it
+        orow = (rows or {}).get("old-row-co") or {}
+        if "does not carry it, so his ruling there would not settle it" not in _wb_words(orow):
+            errors += fail(f"a doubt its row does not carry is said to wait for his ruling on "
+                           f"that row: {_wb_words(orow)[:300]!r}")
+        before_keys = sorted(json.loads((box.tmp / wf.DOUBTS).read_text()))
+        box.plan(_wb_results(found), name="worklist-old-row.json",
+                 doubts={"old-row-co": "a later doubt its row lacks"})
+        q = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        code, text, _wl, rows = box.plan(_wb_results(found), name="worklist-old-row-2.json")
+        if sorted(json.loads((box.tmp / wf.DOUBTS).read_text())) != before_keys \
+                or "a later doubt its row lacks" not in str(q["old-row-co"].get("identity_why")) \
+                or "it is on its row in Boards we found" not in _wb_words(
+                    (rows or {}).get("old-row-co") or {}):
+            errors += fail("the same words given again did not put a standing doubt on the row "
+                           "that lacked it, or were written a second time")
+        # a doubt no row ever carried is not settled by a ruling on that row
+        stray = {"id": "fine-co", "board": "greenhouse/fineco", "why": "never on any row",
+                 "by": "agent:old", "on": "2026-11-01", "at": "2026-11-01T10:00:00-04:00"}
+        if not bp.standing_doubts({"fine-co": [stray]}, {"fine-co": {
+                "accept": True, "on": "2026-11-02", "at": "2026-11-02T10:00:00-04:00"}},
+                [row("fine-co", "the board states no employer name",
+                     filed={"by": "agent:x", "on": "2026-11-01",
+                            "at": "2026-11-01T11:00:00-04:00"})]):
+            errors += fail("a ruling on a row that never carried a doubt settled it")
+
+    # --- only a doubted SKIP; more than 25; a doubt between look and write ---
+    ids2 = [f"many-{i:02d}" for i in range(26)] + ["flaky-two", "fine-two", "wire-two"]
+    companies2 = [co(cid, " ".join(w.capitalize() for w in cid.split("-"))) for cid in ids2]
+    BOARDS2 = {"lever/flakytwo": (3, ["Flaky Two"]), "greenhouse/finetwo": (3, ["Fine Two"]),
+               "greenhouse/wiretwo": (3, ["Wire Two"])}
+    found2 = {cid: entry(cid, []) for cid in ids2 if cid.startswith("many-")}
+    found2["flaky-two"] = one("flaky-two", "lever", "flakytwo", element="iframe")
+    found2["fine-two"] = one("fine-two", "greenhouse", "finetwo", element="iframe")
+    found2["wire-two"] = one("wire-two", "greenhouse", "wiretwo", element="iframe")
+    with _WiringBox(companies2, BOARDS2) as box:
+        box.says["lever/flakytwo"] = {"failed": "unreadable", "transient": True,
+                                      "how": TIMED_OUT, "names": [], "stated": False,
+                                      "name": None}
+        code, text, wl, rows = box.plan(_wb_results({"flaky-two": found2["flaky-two"]}),
+                                        name="worklist-skip.json",
+                                        doubts={"flaky-two": "a reader: the parent's board"})
+        on_file = json.loads((box.tmp / wf.DOUBTS).read_text()) \
+            if (box.tmp / wf.DOUBTS).exists() else {}
+        code, text, _ = box.look(wl)
+        if [v["id"] for v in on_file.values()] != ["flaky-two"] or "nothing to write" not in text \
+                or "the readers' doubts were kept by the plan" not in text:
+            errors += fail(f"a worklist whose only output is a doubted SKIP did not keep the "
+                           f"doubt, or its look does not say the plan kept it: {text[-200:]}")
+        # a doubt the plan kept, taken off the file since: apply never drops one
+        kept_bytes = (box.tmp / wf.DOUBTS).read_bytes()
+        (box.tmp / wf.DOUBTS).write_text("{}")
+        before = box.on_disk()
+        code, text, _ = box.look(wl)
+        if code == 0 or "no longer on file" not in text or box.on_disk() != before:
+            errors += fail(f"apply went ahead with a worklist whose reader's doubt is no "
+                           f"longer on file: {text[-200:]}")
+        (box.tmp / wf.DOUBTS).write_bytes(kept_bytes)
+        box.says.clear()
+        code, text, _wl, rows = box.plan(_wb_results({"flaky-two": found2["flaky-two"]}),
+                                         name="worklist-skip-next.json")
+        if (rows or {}).get("flaky-two", {}).get("action") != "HOLD" \
+                or "the parent's board" not in _wb_words(rows["flaky-two"]):
+            errors += fail("the next plan wired a board whose only doubt came from a SKIP")
+        # more than 25 doubts: one entry, the count printed first
+        n0 = journal_len()
+        code, text, _wl, _ = box.plan(_wb_results({c: found2[c] for c in ids2[:26]}),
+                                      name="worklist-many.json",
+                                      doubts={c: f"a doubt about {c}" for c in ids2[:26]})
+        mine = [e for e in entries_since(n0) if e.get("file") == wf.DOUBTS]
+        if code != 0 or "26 reader doubts in one entry is over the journal's 25-record limit" \
+                not in text or len(mine) != 1 or len(mine[0]["changes"]) != 26:
+            errors += fail(f"26 readers' doubts were not one journal entry, confirmed after the "
+                           f"count was printed: exit {code}; {text[:300]!r}")
+        # a doubt kept between the look and the write refuses the old code
+        code, text, wl_fine, rows = box.plan(_wb_results({"fine-two": found2["fine-two"]}),
+                                             name="worklist-fine.json")
+        code, text, look_code = box.look(wl_fine)
+        if "would wire 1," not in text:
+            return errors + fail(f"the fixture's Fine Two does not plan WIRE: {text[-200:]}")
+        box.plan(_wb_results({"fine-two": found2["fine-two"]}), name="worklist-fine-doubt.json",
+                 doubts={"fine-two": "a late reader: the board is the parent's"})
+        before = box.on_disk()
+        code, text = box.write(wl_fine, look_code)
+        if code == 0 or "REFUSED" not in text or box.on_disk() != before:
+            errors += fail(f"a reader's doubt kept between the look and the write did not "
+                           f"refuse the old code: {text[-200:]}")
+        # a doubts write the journal refuses: the plan stops before its first request
+        real = admin.save_decisions
+
+        def refusing(name_, *a, **k):
+            if name_ == wf.DOUBTS:
+                return "refusing: the journal will not take this entry (selftest)"
+            return real(name_, *a, **k)
+        admin.save_decisions = refusing
+        try:
+            del box.asked[:], box.probed[:]
+            before = box.on_disk()
+            code, text, wl_no, _ = box.plan(_wb_results({"fine-two": found2["fine-two"]}),
+                                            name="worklist-refused.json",
+                                            doubts={"fine-two": "words the journal refuses"})
+        finally:
+            admin.save_decisions = real
+        if code == 0 or box.asked or wl_no.exists() or box.on_disk() != before \
+                or "STOPPED before the first request" not in text \
+                or "no reader's doubt was kept" not in text:
+            errors += fail(f"a doubts write the journal refused did not stop the plan before "
+                           f"its first request: exit {code}, asked {box.asked[:2]}; "
+                           f"{text[-200:]}")
+        # the wiring write fails after the plan kept the doubts: they stay
+        code, text, wl_w, rows = box.plan(
+            _wb_results({"wire-two": found2["wire-two"], "flaky-two": found2["flaky-two"]}),
+            name="worklist-fails.json", doubts={"flaky-two": "one more reader on flaky two"})
+        if (rows or {}).get("wire-two", {}).get("action") != "WIRE":
+            return errors + fail(f"the fixture's Wire Two does not plan WIRE: {text[-200:]}")
+        kept_now = (box.tmp / wf.DOUBTS).read_bytes()
+        real_save = admin.save_companies
+        admin.save_companies = lambda *a, **k: "refused: the disk is full (selftest)"
+        try:
+            code, text, look_code = box.look(wl_w)
+            code, text = box.write(wl_w, look_code)
+        finally:
+            admin.save_companies = real_save
+        if (box.tmp / wf.DOUBTS).read_bytes() != kept_now or "one more reader" not in \
+                kept_now.decode() or "STOPPED" not in text \
+                or "the readers' doubts the plan kept stay on file" not in text \
+                or box.record("wire-two")["ats"]["type"] != "html":
+            errors += fail(f"a wiring write that failed after the plan took the readers' "
+                           f"doubts with it, or did not say they stay: {text[-200:]}")
+
+    # --- the same words about another board; a doubt after the plan, on a HOLD row
+    companies4 = [co("same-co", "Same Co"), co("hold-two", "Hold Two")]
+    BOARDS4 = {"greenhouse/sameco": (3, ["Same Co"]), "greenhouse/samecotwo": (3, ["Same Co"]),
+               "greenhouse/holdtwo": (3, None)}
+    with _WiringBox(companies4, BOARDS4) as box:
+        words = "a reader: the board is the parent's"
+        box.plan(_wb_results({"same-co": one("same-co", "greenhouse", "sameco",
+                                             element="iframe")}),
+                 name="worklist-same-1.json", doubts={"same-co": words})
+        box.plan(_wb_results({"same-co": one("same-co", "greenhouse", "samecotwo",
+                                             element="iframe")}),
+                 name="worklist-same-2.json", doubts={"same-co": words})
+        recs = [v for v in json.loads((box.tmp / wf.DOUBTS).read_text()).values()
+                if v["id"] == "same-co"]
+        if sorted(v["board"] for v in recs) != ["greenhouse/sameco", "greenhouse/samecotwo"]:
+            errors += fail(f"the same words about a different board were not kept as a doubt "
+                           f"of their own: {recs}")
+        code, text, wl_h, rows = box.plan(_wb_results({"hold-two": one(
+            "hold-two", "greenhouse", "holdtwo", element="iframe")}), name="worklist-hold.json")
+        code, text, code_h = box.look(wl_h)
+        if (rows or {}).get("hold-two", {}).get("action") != "HOLD" or not code_h:
+            return errors + fail(f"the fixture's Hold Two does not plan HOLD: {text[-200:]}")
+        late = "a late reader: the job ads are the parent's"
+        box.plan(_wb_results({"hold-two": one("hold-two", "greenhouse", "holdtwo",
+                                              element="iframe")}),
+                 name="worklist-hold-doubt.json", doubts={"hold-two": late})
+        before = box.on_disk()
+        code, text = box.write(wl_h, code_h)
+        if code == 0 or "REFUSED" not in text or box.on_disk() != before:
+            errors += fail(f"a reader's doubt kept after the look, which the held row will now "
+                           f"carry, did not refuse the old code: {text[-200:]}")
+        code, text, code_h2 = box.look(wl_h)
+        code, text2 = box.write(wl_h, code_h2)
+        q = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        rec = next(v for v in json.loads((box.tmp / wf.DOUBTS).read_text()).values()
+                   if v["id"] == "hold-two")
+        if "and, kept since the plan:" not in text or late not in text \
+                or late not in str((q.get("hold-two") or {}).get("identity_why")) \
+                or not bp.carried([q.get("hold-two")], rec):
+            errors += fail(f"a held row filed after a reader's doubt was kept does not carry "
+                           f"it, so his ruling on it would settle a doubt he never saw: "
+                           f"{text[-300:]}")
+
+    # --- sixty on file, twenty-one more: additions, never a rewrite ---------
+    sixty = {f"old-{i:02d}": {"board": f"greenhouse/old{i:02d}", "why": f"an old doubt {i}",
+                              "by": "agent:old", "on": "2026-11-10"} for i in range(60)}
+    ids3 = [f"old-{i:02d}" for i in range(21)]
+    companies3 = [co(cid, " ".join(w.capitalize() for w in cid.split("-"))) for cid in ids3]
+    with _WiringBox(companies3, {}, files={wf.DOUBTS: sixty}) as box:
+        code, text, _wl, _ = box.plan(_wb_results({c: entry(c, []) for c in ids3}),
+                                      name="worklist-runaway.json",
+                                      doubts={c: f"a second reader on {c}" for c in ids3})
+        after = json.loads((box.tmp / wf.DOUBTS).read_text())
+        if code != 0 or len(after) != 81 or any(after[k] != v for k, v in sixty.items()):
+            errors += fail(f"twenty-one more doubts beside sixty on file were not kept as "
+                           f"additions: exit {code}, {len(after)} records; {text[-240:]!r}")
+    return errors
+
+
+def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
+    """A board held for the owner under one company's id is held for every company.
+
+    The third blind review of scripts/wire_found.py (2026-11-19) merged a
+    doubted company into its duplicate at the desk: the reader's doubt and the
+    door-filed row stayed under the id that was dropped, the survivor took the
+    dropped name as also_known_as (so check 2 passed), and the next plan for
+    the survivor wired the very board both readers doubted, orphaning the row
+    in the owner's queue. Two defences, both pinned here:
+
+      - the plan and apply hold a board by BOARD as well as by company: the
+        board of a standing reader's doubt, or of an unruled row a door filed
+        in Boards we found, is held for whatever company's site names it,
+        with the doubt quoted - and in apply, for a worklist planned before
+        either was recorded;
+      - admin.act_merge refuses to merge away a company that has a standing
+        doubt or an unruled door-filed row, and says to rule on it first; a
+        merge of a company with neither still goes through.
+    """
+    import admin
+    import board_proposals as bp
+    import wire_found as wf
+    errors = 0
+    co, cand, entry, site = _wb_co, _wb_cand, _wb_entry, _wb_site
+    companies = [co("dup-keep", "Dup Co"), co("dup-drop", "Dup Co Inc"),
+                 co("filed-keep", "Filed Co"), co("filed-drop", "Filed Co Inc"),
+                 co("plain-keep", "Plain Co"), co("plain-drop", "Plain Co Inc"),
+                 co("late-co", "Late Co"), co("late-doubted-co", "Late Doubted Co")]
+    for keep, drop in ((0, 1), (2, 3), (4, 5)):
+        companies[drop]["website"] = companies[keep]["website"]   # one vendor, two records
+    BOARDS = {"greenhouse/dupco": (4, ["Dup Co Inc"]), "greenhouse/filedco": (3, ["Filed Co"]),
+              "greenhouse/lateco": (3, ["Late Co"])}
+
+    def names(cid, ref, owner=None):
+        page = f"{site(owner or cid)}/careers"
+        e = entry(cid, [cand("greenhouse", ref, page, element="iframe")])
+        e["website"] = site(owner or cid)
+        e["pages"] = [{"asked": page, "final": page, "same_site": True, "status": "read",
+                       "note": ""}]
+        return e
+    filed_row = {"id": "filed-drop", "name": "Filed Co Inc", "was": "html",
+                 "found": {"type": "greenhouse", "ref": "filedco"},
+                 "saw": "boards.greenhouse.io/filedco", "times": 1,
+                 "verified": "3 posting(s) readable", "board_calls_itself": None,
+                 "identity": "unknown", "identity_why": "an earlier batch's doubt: the parent's",
+                 "postings": 3, "titles": [],
+                 "filed": {"by": "agent:earlier-batch", "on": "2026-11-19",
+                           "at": "2026-11-19T09:00:00-05:00"}}
+    READER = "two readers: its ads say 'Dup Co, a Parent Group company'"
+    with _WiringBox(companies, BOARDS, files={bp.FOUND.name: [filed_row]}) as box:
+        # a worklist planned before anything is held: Late Co is WIRE
+        code, text, wl_late, rows = box.plan(_wb_results({"late-co": names("late-co", "lateco")}),
+                                             name="worklist-late.json")
+        if code != 0 or (rows or {}).get("late-co", {}).get("action") != "WIRE":
+            return errors + fail(f"the fixture's Late Co does not plan WIRE on its own: "
+                                 f"{text[-200:]}")
+        code, text, wl, rows = box.plan(
+            _wb_results({"dup-drop": names("dup-drop", "dupco", owner="dup-keep"),
+                         "late-doubted-co": names("late-doubted-co", "lateco")}),
+            name="worklist-doubts.json",
+            doubts={"dup-drop": READER, "late-doubted-co": "the board is Late Co's, not theirs"})
+        if code != 0 or (rows or {}).get("dup-drop", {}).get("action") != "HOLD":
+            return errors + fail(f"the readers' plan did not hold the doubted company: "
+                                 f"{text[-300:]}")
+
+        # --- the board, found again for another company's id ----------------
+        code, text, wl2, rows2 = box.plan(
+            _wb_results({"dup-keep": names("dup-keep", "dupco"),
+                         "filed-keep": names("filed-keep", "filedco")}),
+            name="worklist-survivors.json")
+        for cid, must_say in (
+                ("dup-keep", "greenhouse/dupco is the board of a reader's doubt that stands "
+                             "about Dup Co Inc"),
+                ("dup-keep", READER),
+                ("filed-keep", "greenhouse/filedco is in the owner's queue (Boards we found) "
+                               "for Filed Co Inc"),
+                ("filed-keep", "an earlier batch's doubt")):
+            r = (rows2 or {}).get(cid) or {}
+            if r.get("action") != "HOLD" or must_say not in _wb_words(r):
+                errors += fail(f"{cid}: a board held for the owner under another company's id "
+                               f"was planned {r.get('action')} saying {_wb_words(r)[:240]!r}; "
+                               f"wanted HOLD saying {must_say!r}")
+        # --- and in apply, for a worklist planned before the doubt ------------
+        code, text, _ = box.look(wl_late)
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Late Co")), "")
+        if "LEFT ALONE 1" not in text or "is the board of a reader's doubt that stands " \
+                "about Late Doubted Co" not in line:
+            errors += fail(f"a WIRE row whose board a reader doubted since, for another "
+                           f"company, was not left alone by the look: {text[-300:]}")
+
+        # --- the desk does not merge a held company away ----------------------
+        for drop, keep, what in (("dup-drop", "dup-keep", "a reader's doubt about its board"),
+                                 ("filed-drop", "filed-keep",
+                                  "a board waiting for your ruling in Boards we found")):
+            before = box.on_disk()
+            r = admin.act_merge({"keep": keep, "drop": drop, "by": "owner",
+                                 "why": "selftest: one vendor, two records"})
+            if not r.get("error") or what not in r["error"] or "Rule on it there first" \
+                    not in r["error"] or box.on_disk() != before:
+                errors += fail(f"the desk merged {drop} into {keep}, or refused without saying "
+                               f"to rule on it first: {r}")
+        r = admin.act_merge({"keep": "plain-keep", "drop": "plain-drop", "by": "owner",
+                             "why": "selftest: one vendor, two records"})
+        if r.get("error") or any(c["id"] == "plain-drop" for c in
+                                 json.loads((box.tmp / "companies.json").read_text())):
+            errors += fail(f"a merge of a company nothing holds was refused: {r}")
+        # an unreadable store is not a store with nothing in it
+        good = (box.tmp / bp.FOUND.name).read_bytes()
+        (box.tmp / bp.FOUND.name).write_bytes(b"<<<<<<< HEAD\n[]\n")
+        before = box.on_disk()
+        r = admin.act_merge({"keep": "filed-keep", "drop": "late-co", "by": "owner",
+                             "why": "selftest"})
+        if not r.get("error") or box.on_disk() != before:
+            errors += fail(f"the desk merged with the queue file unreadable: {r}")
+        (box.tmp / bp.FOUND.name).write_bytes(good)
+    return errors
+
+
+def check_the_wiring_door_reads_every_store_strictly() -> int:
+    """A file the wiring door holds a board against that does not read stops it.
+
+    The door read its refusals, its waiting rows and discovery's suspects
+    through admin.read, which hands back an empty default for a file that does
+    not parse. The third blind review (2026-11-19) wrapped
+    board_proposal_rulings.json in merge-conflict markers: the owner's refusal
+    vanished, the refused board planned WIRE, and apply wrote it. A truncated
+    agent_proposals.json lost its rejections the same way. Now each of the
+    five - the rulings, Agent proposals, the queue file, discovery's suspects
+    and the readers' doubts - is read strictly: a file that is on disk and
+    does not read, or reads as another shape, stops `plan` before its first
+    request and `apply` before anything is written.
+    """
+    import board_proposals as bp
+    import wire_found as wf
+    errors = 0
+    co, one = _wb_co, _wb_one
+    companies = [co("refused-co", "Refused Co"), co("ap-refused-co", "Ap Refused Co"),
+                 co("fine-co", "Fine Co")]
+    BOARDS = {"greenhouse/refusedco": (5, ["Refused Co"]),
+              "lever/aprefusedco": (5, ["Ap Refused Co"]), "greenhouse/fineco": (3, ["Fine Co"])}
+    old_row = {"id": "refused-co", "name": "Refused Co", "was": "html",
+               "found": {"type": "greenhouse", "ref": "refusedco"},
+               "saw": "boards.greenhouse.io/refusedco", "times": 1,
+               "verified": "5 posting(s) readable", "board_calls_itself": "Refused Co",
+               "identity": "unknown", "identity_why": "an older finder's row",
+               "postings": 5, "titles": []}
+    files = {bp.FOUND.name: [old_row],
+             bp.RULED.name: {"refused-co": {"accept": False, "by": "owner", "on": "2026-11-10",
+                                            "why": "that board is the parent's"}},
+             bp.PROPOSALS: {"board:ap-refused-co": {
+                 "kind": "board", "id": "ap-refused-co", "ats_type": "lever",
+                 "ats_ref": "aprefusedco", "status": "rejected", "ruled_by": "owner",
+                 "ruled_on": "2026-11-10", "ruled_why": "a staffing firm's board"}},
+             bp.SUSPECTS: {"fine-co": {"ats": {"type": "ashby", "ref": "x"},
+                                       "note": "an old slug suspect", "on": "2026-08-19"}},
+             bp.DOUBTS: {"fine-co@2026-11-19T10:00:00-05:00": {
+                 "id": "fine-co", "board": "greenhouse/fineco", "why": "a reader's words",
+                 "by": "agent:readers", "on": "2026-11-19", "at": "2026-11-19T10:00:00-05:00"}}}
+    found = {"refused-co": one("refused-co", "greenhouse", "refusedco", element="iframe"),
+             "ap-refused-co": one("ap-refused-co", "lever", "aprefusedco", element="iframe"),
+             "fine-co": one("fine-co", "greenhouse", "fineco", element="iframe")}
+    BAD = {bp.RULED.name: (b'<<<<<<< HEAD\n{"refused-co": {"accept": false}}\n=======\n{}\n'
+                           b'>>>>>>> origin/main\n', b'["refused-co"]'),
+           bp.PROPOSALS: (b'{"board:ap-refused-co": {"kind": "board", "status": "rej',
+                          b'{"board:ap-refused-co": "rejected"}'),
+           bp.FOUND.name: (b"[{\"id\": \"refused-co\",", b'{"refused-co": {}}'),
+           bp.SUSPECTS: (b"{ not json", b'{"fine-co": "a bare string"}'),
+           bp.DOUBTS: (b"{ not json", b'[]')}
+    with _WiringBox(companies, BOARDS, files=files) as box:
+        code, text, wl, rows = box.plan(_wb_results(found))
+        if code != 0 or rows is None:
+            return errors + fail(f"wire_found plan did not run: {text[-300:]}")
+        for cid, kind in (("refused-co", "refused"), ("ap-refused-co", "refused")):
+            if (rows.get(cid) or {}).get("kind") != kind:
+                errors += fail(f"{cid}: with every store readable, a refused board was planned "
+                               f"{(rows.get(cid) or {}).get('action')}, not SKIP refused")
+        if (rows.get("fine-co") or {}).get("action") != "HOLD":
+            errors += fail("a company with a suspect and a reader's doubt on file was not held")
+        for name, bads in BAD.items():
+            good = (box.tmp / name).read_bytes()
+            for bad in bads:
+                (box.tmp / name).write_bytes(bad)
+                del box.asked[:], box.probed[:]
+                code, text, wl_bad, rows_bad = box.plan(_wb_results(found),
+                                                        name=f"bad-{name}-{len(bad)}.json")
+                if code == 0 or box.asked or box.probed or wl_bad.exists() \
+                        or "Nothing was read and nothing was written" not in text:
+                    errors += fail(f"data/{name} reading {bad[:24]!r} did not stop the plan "
+                                   f"before its first request (exit {code}, asked "
+                                   f"{box.asked[:2]}): read as empty it holds nothing")
+                before = box.on_disk()
+                code, text, _ = box.look(wl)
+                code_w, text_w = box.write(wl, "whatever")
+                if code == 0 or code_w == 0 or box.on_disk() != before \
+                        or "Nothing was written" not in text or "Nothing was written" not in text_w:
+                    errors += fail(f"data/{name} reading {bad[:24]!r} did not stop apply "
+                                   f"before anything was written: {text[-160:]}")
+            (box.tmp / name).write_bytes(good)
+        # a file that is not there is empty, and reads
+        (box.tmp / bp.SUSPECTS).unlink()
+        code, text, _wl, rows = box.plan(_wb_results(found), name="worklist-no-suspects.json")
+        if code != 0:
+            errors += fail(f"the plan stopped on a store that is simply not there: {text[-200:]}")
+    return errors
+
+
+def check_a_worklist_row_is_asked_again_at_the_write() -> int:
+    """What apply asks of a WIRE row that the plan's own checks did not cover.
+
+    Two holes the third blind review of scripts/wire_found.py found
+    (2026-11-19), each with a worklist that a plan made and that its look
+    then wired:
+
+      - a discovery slug suspect, or an Acquisitions row, recorded for the
+        company after the plan: the readers read a plan for hours, and the
+        plan would HOLD the company now - so apply asks both again and leaves
+        the row alone as `moved`;
+      - a row's count of openings is held to the titles it carries: a plan
+        keeps the first eight of the openings it read, each one an opening,
+        so a row edited to "postings 1" with no titles, with a logo's file
+        name for its one title, or with fewer titles than its count, is not
+        one this door wires ("1 posting read" of an empty board).
+    """
+    import wire_found as wf
+    errors = 0
+    co, one = _wb_co, _wb_one
+    ids = ["sus-co", "acq-co", "notitles-co", "logo-co", "short-co", "fine-co"]
+    name = {cid: " ".join(w.capitalize() for w in cid.split("-")) for cid in ids}
+    companies = [co(cid, name[cid]) for cid in ids]
+    BOARDS = {f"greenhouse/{cid.replace('-', '')}": (3, [name[cid]]) for cid in ids}
+    found = {cid: one(cid, "greenhouse", cid.replace("-", ""), element="iframe") for cid in ids}
+    with _WiringBox(companies, BOARDS) as box:
+        code, text, wl, rows = box.plan(_wb_results(found))
+        if code != 0 or sorted(i for i, r in (rows or {}).items() if r["action"] == "WIRE") \
+                != sorted(ids):
+            return errors + fail(f"the fixture's boards do not all plan WIRE: {text[-300:]}")
+
+        def spoil(by_id, doc):
+            by_id["notitles-co"].update(postings=1, titles=[])
+            by_id["logo-co"].update(postings=1, titles=["logo-acme-dots-3000px.png"])
+            by_id["short-co"].update(titles=by_id["short-co"]["titles"][:2])
+        code, text, _ = box.look(box.edited(wl, "worklist-titles.json", spoil))
+        body = text[text.find("LEFT ALONE"):]
+        for cid in ("notitles-co", "logo-co", "short-co"):
+            if not any(ln.strip().startswith(name[cid]) and "titles do not bear out" in ln
+                       for ln in body.splitlines()):
+                errors += fail(f"{cid}: a WIRE row whose titles do not bear out its count of "
+                               f"openings was not left alone: {text[-300:]}")
+        if "would wire 3," not in text:
+            errors += fail(f"the rows whose titles bear out their count are no longer wired: "
+                           f"{text[text.find('would wire'):][:80]!r}")
+
+        # --- recorded since the plan: a slug suspect, an Acquisitions row ------
+        (box.tmp / "ats_suspects.json").write_text(json.dumps({"sus-co": {
+            "ats": {"type": "ashby", "ref": "someoneelse"}, "on": "2026-11-19",
+            "note": "ashby:someoneelse reads, but the slug does not match 'Sus Co'"}}))
+        (box.tmp / "acquisitions_research.json").write_text(json.dumps({"acq-co": {
+            "says": "Acq Co was bought by Big Parent Inc in 2026", "parent_claim": "Big Parent Inc",
+            "confidence": "high", "on": "2026-11-19"}}))
+        code, text, look_code = box.look(wl)
+        body = text[text.find("LEFT ALONE"):]
+        for cid, must_say in (("sus-co", "discovery doubted a board for it since the plan"),
+                              ("sus-co", "the slug does not match"),
+                              ("acq-co", "it entered the Acquisitions queue since the plan"),
+                              ("acq-co", "Big Parent Inc")):
+            if not any(ln.strip().startswith(name[cid]) and must_say in ln
+                       for ln in body.splitlines()):
+                errors += fail(f"{cid}: a WIRE row whose company entered discovery's suspects "
+                               f"or the Acquisitions queue since the plan was not left alone "
+                               f"saying {must_say!r}: {text[-300:]}")
+        code, text = box.write(wl, look_code)
+        if code != 0 or "wired 4," not in text or box.record("sus-co")["ats"]["type"] != "html" \
+                or box.record("acq-co")["ats"]["type"] != "html":
+            errors += fail(f"the write wired a company that entered discovery's suspects or the "
+                           f"Acquisitions queue since the plan: {text[-200:]}")
     return errors
 
 
@@ -48103,6 +49080,10 @@ def main() -> int:
     errors += check_a_readers_doubt_holds_the_board()
     errors += check_a_readers_doubt_stands_until_the_owner_rules()
     errors += check_a_found_board_is_not_wired_past_what_moved()
+    errors += check_a_readers_doubt_is_kept_once_and_reaches_the_owner()
+    errors += check_a_board_the_owner_holds_is_held_under_any_id()
+    errors += check_the_wiring_door_reads_every_store_strictly()
+    errors += check_a_worklist_row_is_asked_again_at_the_write()
     errors += check_the_boards_found_card_opens_what_it_names()
     errors += check_a_finder_cannot_replace_the_owners_queue()
     errors += check_capture_parity()
