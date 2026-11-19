@@ -2763,9 +2763,13 @@ round.
   doubted or refused company merged into its duplicate left its hold under
   the dropped id, and the survivor's plan wired the board (third review and
   review of 27eeb628, 2026-11-19). The desk's merge (`admin.act_merge`) is NOT refused for it,
-  as on main: the door holds by board instead. Discovery and
-  wire_embedded.py still hold by company (`held_for_the_owner`), so a
-  survivor they probe is not held by a merged-away company's hold.
+  as on main: the door holds by board instead, and so do discovery and
+  wire_embedded.py (below), through the same reader
+  (`board_proposals.held_boards`), so the three doors cannot drift. A
+  Workable number and slug are one board wherever the two are known to
+  belong together: followed by the run, or said on file in the door's own
+  words ("asks for it as Workable account N; its postings open under
+  apply.workable.com/<slug>", `board_proposals.workable_pairs`).
 - **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
   not read (kept with its error, not retried); a site that named only a
   reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
@@ -2860,10 +2864,20 @@ round.
   probe - the weekly sweep and an `--only` list alike - and prints only a
   count (the workflow's log is public); `wire_embedded.py` asks it before it
   sorts, wires or queues anything, and leaves every row of such a company
-  alone, whichever finder left it. A store that is on disk and does not read
-  stops either run before it starts: read as empty it would hold nobody. The
-  second blind review (2026-11-19) had the unattended discovery sweep write a
-  doubted company's board. Guard: `check_no_door_wires_a_company_the_owner_holds`.
+  alone, whichever finder left it. AND BOTH HOLD BY BOARD
+  (`board_proposals.held_boards_for_the_owner`, `held_board`): discovery does
+  not write a board it found - in the sweep, an `--only` list or `--confirm`
+  - when the owner holds that board under ANY record's id (a doubt about a
+  company merged away, its door-filed row, a refusal under another id in
+  either store, a Workable account under either key where known, or one held
+  under a number nobody followed whose name the company goes by); it logs
+  "a board was found and is held for the owner under another record, so it
+  was not written" and prints only a count. wire_embedded.triage leaves such
+  a row in no pile, and the run counts it with the rows it left for the
+  owner. A store that is on disk and does not read stops either run before
+  it starts: read as empty it would hold nobody. The second blind review
+  (2026-11-19) had the unattended discovery sweep write a doubted company's
+  board. Guard: `check_no_door_wires_a_company_the_owner_holds`.
 - **`find_embedded_ats.py` needs `--out`.** It replaces its output file with
   one run's hits and its default is that queue file, so while the file holds
   anything a bare run is refused before the first request.

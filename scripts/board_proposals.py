@@ -26,8 +26,10 @@ submission - a claim, not a fact.
 """
 from __future__ import annotations
 
+import collections
 import json
 import pathlib
+import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -347,6 +349,335 @@ def held_for_the_owner(data=None) -> dict:
             out.setdefault(p.get("id") or key.split(":", 1)[1],
                            "a board was refused for it in Agent proposals")
     return out
+
+
+# --- the boards the owner holds, under any company's id: the one reader ----
+#
+# THREE DOORS WRITE A BOARD, AND ALL THREE ASK THIS. A company merged into its
+# duplicate at the desk leaves its doubts, its door-filed row and its
+# refusals under the id that was dropped, and nothing moves them; the desk's
+# merge is never refused for it (decided after the blind review of 27eeb628,
+# 2026-11-19). So a board is held BY BOARD as well as by company - for every
+# company whose site names it, under any id, current or merged away - and
+# wire_found.py, discover_ats.py and wire_embedded.py all read the holds
+# here (held_boards; held_boards_for_the_owner for the two that hold no
+# stores of their own), so the three cannot drift. A board is one LOOSE key
+# (board_key), and a Workable account is one board under two keys, its
+# number and its slug, wherever the two are known to belong together.
+
+_PAYLOCITY = re.compile(r"/jobs/all/([^/?#]+)")
+_ICIMS = re.compile(r"([a-z0-9-]+)\.icims\.com(?:[/?]|$)")
+# the words wire_found.py writes on a wired record's note and a held row's
+# doubt when a site asks for a Workable board by its account number (its
+# account_words): the one place the number and the slug are said together
+ACCOUNT_WORDS = re.compile(r"asks for it as Workable account (\d+); its postings open under "
+                           r"apply\.workable\.com/([A-Za-z0-9][A-Za-z0-9-]*)")
+
+
+def board_key(kind, ref) -> str:
+    """One LOOSE spelling per board, for one question: is this board that one?
+
+    It is asked to notice a collision - the same board found for two
+    companies, already held by another, refused before, already waiting - and
+    a collision only ever sends a board to a person. So it leans toward
+    calling two addresses one board. Case is ignored (SmartRecruiters refs
+    are case-sensitive, so two different boards can share a key). An address
+    is the same board with or without its scheme, its www. or a last slash.
+    And three shapes are read for the part that identifies the board, because
+    this repo's own data writes each of them two ways: a Paylocity address is
+    the id after /jobs/All/, with or without the tenant's name after it
+    (keyed on the whole address, a board already on file as
+    .../<uuid>/<Tenant> was not seen to be the board found as .../<uuid>, and
+    would have been wired to a second company); an iCIMS portal is its slug,
+    bare or inside its address; a Jibe or Oracle board is its host.
+
+    IT IS NEVER WHAT GETS READ. Reading goes by the ref exactly as the site
+    gave it (wire_found.spelling): on a platform that minds case the loose
+    form is a different board, or none.
+    """
+    if not isinstance(ref, str):
+        return f"{kind}:{json.dumps(ref, sort_keys=True).lower()}"
+    r = ref.strip().lower()
+    for lead in ("https://", "http://"):
+        r = r.removeprefix(lead)
+    r = r.removeprefix("www.").rstrip("/")
+    if kind == "paylocity":
+        m = _PAYLOCITY.search(r)
+        r = m.group(1) if m else r
+    elif kind == "icims":
+        m = _ICIMS.match(r)
+        r = m.group(1) if m else r
+    elif kind in ("jibe", "oracle"):
+        r = r.split("/", 1)[0]
+    return f"{kind}:{json.dumps(r)}"
+
+
+def show(kind, ref) -> str:
+    """greenhouse/acme - how the journal and the desk already write a board."""
+    if isinstance(ref, list):
+        return f"{kind}/{'/'.join(str(x) for x in ref)}"
+    return f"{kind}/{ref}"
+
+
+def workable_number(ref) -> str:
+    """A Workable ref as the reader asks it: no space, no last slash."""
+    return ref.strip().rstrip("/") if isinstance(ref, str) else ""
+
+
+def numbered(kind, ref) -> bool:
+    """A Workable board written as its account number, not its slug
+    ("710855/" is the same number). See wire_found.numbered."""
+    return kind == "workable" and isinstance(ref, str) and workable_number(ref).isdigit()
+
+
+def doubt_board(d: dict) -> tuple:
+    """(type, ref) of the board a doubt is about, or (None, None). A record
+    kept since carries both; the first shape wrote only "greenhouse/acme"
+    (`show`), and a Workday board as "workday/<tenant>/<pod>/<site>"."""
+    if d.get("type"):
+        return d["type"], d.get("ref")
+    kind, _, rest = str(d.get("board") or "").partition("/")
+    if not kind or not rest:
+        return None, None
+    return kind, (rest.split("/") if kind == "workday" else rest)
+
+
+def refusals(stores: dict) -> dict:
+    """{company id: [earlier refusals]} from the two stores that keep them
+    (`stores`: {"ruled", "proposals", "found"}, each read strictly).
+
+    The stores do not talk to each other, so both are read. A refusal in
+    board_proposal_rulings.json carries no board; the row it ruled on is
+    still in embedded_ats.json, which is where the board is read from.
+    """
+    out = collections.defaultdict(list)
+    listed = {r.get("id"): r for r in stores["found"] if isinstance(r, dict)}
+    for cid, v in stores["ruled"].items():
+        if not isinstance(v, dict) or v.get("accept"):
+            continue
+        row = listed.get(cid) or {}
+        f = row.get("found") if isinstance(row.get("found"), dict) else {}
+        out[cid].append({"store": "Boards we found",
+                         "key": board_key(f.get("type"), f.get("ref")) if f else None,
+                         "board": show(f.get("type"), f.get("ref")) if f else None,
+                         "type": f.get("type"), "ref": f.get("ref"),
+                         # the names the refused board went by: what it stated, and
+                         # whose row it was (held_boards, for a Workable number)
+                         "names": [n for n in (row.get("board_calls_itself"), row.get("name"))
+                                   if isinstance(n, str) and n.strip()],
+                         "by": v.get("by") or "?", "on": v.get("on") or "?",
+                         "why": str(v.get("why") or "").strip()})
+    for key, p in stores["proposals"].items():
+        if not (isinstance(p, dict) and key.startswith("board:")
+                and p.get("status") == "rejected"):
+            continue
+        cid = p.get("id") or key.split(":", 1)[1]
+        out[cid].append({"store": "Agent proposals",
+                         "key": board_key(p.get("ats_type"), p.get("ats_ref")),
+                         "board": show(p.get("ats_type"), p.get("ats_ref")),
+                         "type": p.get("ats_type"), "ref": p.get("ats_ref"),
+                         "names": [n for n in (p.get("name"),)
+                                   if isinstance(n, str) and n.strip()],
+                         "by": p.get("ruled_by") or "?", "on": p.get("ruled_on") or "?",
+                         "why": str(p.get("ruled_why") or "").strip()})
+    return out
+
+
+def strict_names(*names) -> dict:
+    """{a name as verify_boards.strict leaves it: the name as written} for
+    every name given that is one. The comparison the by-name hold makes."""
+    import verify_boards
+    out = {}
+    for n in names:
+        if isinstance(n, str) and n.strip():
+            key = verify_boards.strict(n)[0]
+            if key:
+                out.setdefault(key, n.strip())
+    return out
+
+
+def their_names(c: dict | None) -> list:
+    """A record's name and every other name on file for it."""
+    if not isinstance(c, dict):
+        return []
+    return [c.get("name"), *sorted(str(a) for a in (c.get("also_known_as") or [])
+                                   if str(a).strip())]
+
+
+def slug_of(resolved: dict, number: str) -> str | None:
+    """The slug a Workable account number is known to open under, or None.
+    `resolved` is a plan's ctx['slugs'] ({number: (slug, how, kind)}), a
+    worklist's workable_numbers ({number: slug or null}) or workable_pairs."""
+    got = (resolved or {}).get(number)
+    slug = got[0] if isinstance(got, (list, tuple)) and got else got
+    return slug if isinstance(slug, str) and slug else None
+
+
+def workable_pairs(companies: list | None, found: list | None) -> dict:
+    """{Workable account number: its slug} for every pair this repo has said
+    belong together, in wire_found's own words (ACCOUNT_WORDS) on a record's
+    note or a queue row's doubt. No request: what is on file."""
+    out = {}
+    texts = [c.get("ats_note") for c in companies or [] if isinstance(c, dict)]
+    texts += [r.get("identity_why") for r in found or [] if isinstance(r, dict)]
+    for t in texts:
+        for number, slug in ACCOUNT_WORDS.findall(str(t or "")):
+            out.setdefault(number, slug)
+    return out
+
+
+def numbers_on_file(companies: list) -> dict:
+    """{Workable account number: [ids of the records that hold it]}."""
+    out = collections.defaultdict(list)
+    for c in companies or []:
+        a = c.get("ats") or {}
+        if numbered(a.get("type"), a.get("ref")):
+            out[workable_number(a["ref"])].append(c["id"])
+    return out
+
+
+def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None = None,
+                companies: list | None = None, refusals_: dict | None = None) -> dict:
+    """Every board the owner holds, under WHATEVER company it is held for:
+    {"keys": {board key: [hold]}, "named": [hold], "pairs": {number: slug}},
+    a hold being {id, code, board, words, names}. Codes: `standing` (the board
+    of a reader's doubt that stands), `queued` (the board of a row a door
+    filed in Boards we found that he has not ruled on), `refused` (a board
+    refused in either store: a Boards-we-found refusal by the board on its
+    row, an Agent-proposals rejection by its ats_type/ats_ref), and `number`
+    (a record on a Workable account number nobody followed to a slug).
+
+    A WORKABLE BOARD HELD UNDER ITS ACCOUNT NUMBER is one board under two
+    keys. Where the number is known to open under a slug - followed by this
+    run (`resolved`), or said together on file (workable_pairs) - the hold is
+    under the slug's key as well. Where it is not, no request ties the number
+    to any slug found, and holding every Workable board for it held boards
+    that could not be the same account. So the hold goes in `named`, with the
+    names it goes by - what that board stated, whose record or row it is -
+    and a Workable board going by one of them (verify_boards.strict) is held
+    beside it (named_holds). A record on file holding a number nobody
+    followed is held the same way, by its names.
+    """
+    keys, named = collections.defaultdict(list), []
+    pairs = workable_pairs(companies, stores.get("found"))
+    pairs.update({n: s for n in (resolved or {}) if (s := slug_of(resolved, n))})
+
+    def name_of(cid, *also):
+        # the record's name, or - merged away - the name its row, refusal or
+        # doubt went by
+        return (by_id.get(cid) or {}).get("name") or next(
+            (n for n in also if isinstance(n, str) and n.strip()), cid)
+
+    def hold(cid, code, kind, ref, words, *names):
+        h = {"id": cid, "code": code, "board": show(kind, ref), "words": words,
+             "names": strict_names(*names, *their_names(by_id.get(cid)))}
+        keys[board_key(kind, ref)].append(h)
+        if numbered(kind, ref):
+            slug = pairs.get(workable_number(ref))
+            if slug:
+                keys[board_key("workable", slug)].append(h)
+            elif h["names"]:
+                named.append(dict(h, number=workable_number(ref)))
+
+    for cid, recs in (standing or {}).items():
+        for d in recs:
+            kind, ref = doubt_board(d)
+            if kind:
+                hold(cid, "standing", kind, ref, (
+                    f"{show(kind, ref)} is the board of a reader's doubt that stands about "
+                    f"{name_of(cid, d.get('name'))}, recorded {d.get('on') or '?'} by "
+                    f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}"), d.get("name"))
+    ruled = stores["ruled"]
+    for r in stores["found"]:
+        f = r.get("found") if isinstance(r.get("found"), dict) else None
+        if f and isinstance(r.get("filed"), dict) and r["id"] not in ruled:
+            hold(r["id"], "queued", f.get("type"), f.get("ref"), (
+                f"{show(f.get('type'), f.get('ref'))} is in the owner's queue (Boards we found) "
+                f"for {name_of(r['id'], r.get('name'))}, filed {r['filed'].get('on') or '?'} by "
+                f"{r['filed'].get('by') or '?'} with its doubt: "
+                f"\"{str(r.get('identity_why') or 'none recorded')[:240]}\"; a board filed "
+                f"there is his to settle"), r.get("board_calls_itself"), r.get("name"))
+    for cid, refs in sorted((refusals_ if refusals_ is not None else refusals(stores)).items()):
+        for x in refs:
+            if x.get("key") and x.get("type"):
+                hold(cid, "refused", x["type"], x["ref"], (
+                    f"{x['board']} was refused for {name_of(cid, *(x.get('names') or [])[::-1])} "
+                    f"in {x['store']} ({x['by']} on "
+                    f"{x['on']}" + (f": {x['why']}" if x["why"] else "") + "), and a board "
+                    f"somebody said no to is not proposed again"), *(x.get("names") or []))
+    for number, ids in sorted(numbers_on_file(companies or []).items()):
+        if pairs.get(number):
+            continue                    # the slug's holder, under its own key
+        for cid in ids:
+            names = strict_names(*their_names(by_id.get(cid)))
+            if names:
+                named.append({"id": cid, "code": "number", "number": number, "names": names,
+                              "board": f"workable/{number}", "words": (
+                                  f"a record holds Workable account {number} "
+                                  f"({name_of(cid)}), and whether it is this board was not "
+                                  f"asked")})
+    return {"keys": keys, "named": named, "pairs": pairs}
+
+
+def named_holds(held: dict, kind, names, cid) -> list:
+    """(code, words) for each hold a Workable board going by `names` meets by
+    name (held_boards' `named`), other than `cid`'s own - which hold it by
+    company. Only ever more holding: a name is compared with the names the
+    held account goes by, strictly."""
+    if kind != "workable":
+        return []
+    mine = strict_names(*(names or []))
+    out = []
+    for h in (held or {}).get("named") or []:
+        if h["id"] == cid:
+            continue
+        hit = sorted(set(mine) & set(h["names"]))
+        if hit:
+            out.append((h["code"], (
+                f"{h['words']}; it is held under Workable account {h['number']}, which was not "
+                f"followed to a slug, and this board states \"{mine[hit[0]]}\", a name that "
+                f"account goes by ({h['names'][hit[0]]}) - whether it is the same Workable "
+                f"account was not asked")))
+    return out
+
+
+def found_keys(kind, ref, pairs: dict | None = None) -> list:
+    """Every key a found board is known by: its own, and for a Workable board
+    found by its account number, its slug's where the two are known to belong
+    together (`pairs`, as held_boards gives them). (A board found by its slug
+    needs no other key: a hold under the number is held under the slug too.)"""
+    keys = {board_key(kind, ref)}
+    if numbered(kind, ref) and (pairs or {}).get(workable_number(ref)):
+        keys.add(board_key("workable", pairs[workable_number(ref)]))
+    return sorted(keys)
+
+
+def held_boards_for_the_owner(data=None, companies: list | None = None) -> dict:
+    """held_boards, read for a door that keeps no stores of its own
+    (discover_ats.py, wire_embedded.py): the queue, the rulings, Agent
+    proposals and the readers' doubts read STRICTLY from `data` (the
+    directory the caller writes), its standing doubts, and `companies` as the
+    caller read them. Raises Unreadable for a store that is on disk and does
+    not read - the caller stops before its first probe."""
+    stores = {"found": strict(FOUND.name, data), "ruled": strict(RULED.name, data),
+              "proposals": strict(PROPOSALS, data)}
+    standing = standing_doubts(read_doubts(data), stores["ruled"])
+    by_id = {c.get("id"): c for c in companies or [] if isinstance(c, dict)}
+    return held_boards(standing, stores, by_id, None, companies)
+
+
+def held_board(held: dict, kind, ref, cid=None, names=()) -> tuple | None:
+    """(code, words) of the first hold the owner has on this board, or None:
+    under any company's id but `cid`'s own (held by company already), under
+    any key it is known by (found_keys), and - for a Workable board - by a
+    name it goes by (`names`) that a held account nobody followed goes by
+    too (named_holds)."""
+    for k in found_keys(kind, ref, (held or {}).get("pairs")):
+        for h in (held or {}).get("keys", {}).get(k) or []:
+            if h["id"] != cid:
+                return h["code"], h["words"]
+    hits = named_holds(held, kind, names, cid)
+    return hits[0] if hits else None
 
 
 def when(stamp):

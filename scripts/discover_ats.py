@@ -738,6 +738,23 @@ def main() -> int:
         if a.confirm not in by_id:
             print(f"no company {a.confirm!r}", file=sys.stderr)
             return 1
+        # a board the owner holds - for this company or under any other
+        # record's id - is not confirmed here either: it is his to settle
+        import board_proposals
+        try:
+            held_ids = board_proposals.held_for_the_owner(DATA)
+            boards_held = board_proposals.held_boards_for_the_owner(DATA, companies)
+        except board_proposals.Unreadable as exc:
+            print(f"{exc}. Nothing was written.", file=sys.stderr)
+            return 2
+        block = entry.get("ats") or {}
+        if a.confirm in held_ids or board_proposals.held_board(
+                boards_held, block.get("type"), block.get("ref"), a.confirm,
+                board_proposals.their_names(by_id[a.confirm])):
+            print(f"{a.confirm}: that board, or this company, is held for the owner (a "
+                  f"reader's doubt, a board waiting in Boards we found, or a refusal); "
+                  f"it is his to settle there. Nothing was written.", file=sys.stderr)
+            return 1
         by_id[a.confirm]["ats"] = entry["ats"]
         (DATA / "companies.json").write_text(json.dumps(companies, indent=2) + "\n")
         sus.pop(a.confirm)
@@ -797,9 +814,16 @@ def main() -> int:
     # board, unattended. Asked of the files beside the companies.json this run
     # writes; one that is on disk and does not read stops the run here, before
     # the first probe - read as empty, it would hold nobody.
+    # AND NO BOARD HE HOLDS, UNDER ANY RECORD'S ID. A company merged into its
+    # duplicate at the desk leaves its doubt, its door-filed row and its
+    # refusals under the id that was dropped, so the survivor is held by
+    # nobody - and this sweep would probe it, find the very board, and write
+    # it. So a board found is written only when no hold of his names it
+    # (board_proposals.held_board: the reader the wiring door uses too).
     import board_proposals
     try:
         held = board_proposals.held_for_the_owner(DATA)
+        boards_held = board_proposals.held_boards_for_the_owner(DATA, companies)
     except board_proposals.Unreadable as exc:
         print(f"{exc}. Which companies the owner holds cannot be read, so nothing is "
               f"probed and nothing is written.", file=sys.stderr)
@@ -866,11 +890,28 @@ def main() -> int:
     # whose socket hangs blocks every finished result behind it: a 768-company
     # sweep ran 37 minutes and printed nothing while the workers were in fact
     # working. Results now land as they finish, and so do the checkpoints.
+    left_alone = []
+
+    def unless_held(r):
+        """The result, or - when the board found is one the owner holds under
+        any record's id - a result that writes nothing. The log says so in
+        words that name no board and no doubt (it is committed, and public)."""
+        f = r.get("found")
+        c = by_id_all.get(r.get("id")) or {}
+        if isinstance(f, dict) and board_proposals.held_board(
+                boards_held, f.get("type"), f.get("ref"), r.get("id"),
+                board_proposals.their_names(c)):
+            left_alone.append(r["id"])
+            return {"id": r["id"], "found": None,
+                    "note": "a board was found and is held for the owner under another "
+                            "record, so it was not written"}
+        return r
+
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
         futures = {ex.submit(probe, c): c for c in todo}
         for i, fut in enumerate(cf.as_completed(futures), 1):
             try:
-                results.append(fut.result())
+                results.append(unless_held(fut.result()))
             except Exception as exc:
                 c = futures[fut]
                 results.append({"id": c["id"], "found": None, "retry_soon": True,
@@ -880,6 +921,11 @@ def main() -> int:
                 print(f"  {i}/{len(todo)}, {hits} board(s) found so far", flush=True)
                 checkpoint()
     checkpoint()
+    if left_alone:
+        # counts only: the workflow's log is public
+        print(f"  ({len(left_alone)} board(s) found {'is' if len(left_alone) == 1 else 'are'} "
+              f"held for the owner under another record - a reader's doubt, a board "
+              f"waiting in Boards we found, or a refusal - and not written)")
 
     # Persist the near-misses. A readable board whose slug does not match is
     # usually an acquisition the name gives no hint of: Bonfire Interactive posts
