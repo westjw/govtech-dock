@@ -2,6 +2,7 @@
 """Wire a found board to its company - only when two separate checks agree.
 
     python3 scripts/wire_found.py plan --results site_boards.json --out worklist.json
+    python3 scripts/wire_found.py plan --results ... --doubts doubts.json --out worklist-2.json
     python3 scripts/wire_found.py apply worklist.json --by agent:<label>            # look only
     python3 scripts/wire_found.py apply worklist.json --by agent:<label> --write --expect <code>
 
@@ -936,6 +937,14 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         if r["key"] != key:
             doubts.append(f"a different board, {r['board']}, is already waiting in "
                           f"{r['store']} for this company")
+    reviewed = str((ctx.get("reviewed") or {}).get(cid) or "").strip()
+    if reviewed:
+        # A PLAN IS READ BEFORE IT IS WRITTEN, by readers who try to show each
+        # board is somebody else's. What one of them could not settle is a
+        # doubt like any other: it holds the board and goes to the owner in
+        # the reader's words, through the same door and the same journal
+        # entry as every other held row (plan --doubts).
+        doubts.append(f"a reader checking this plan doubted it: {reviewed}")
 
     # --- the network: three questions, each asked once per spelling --------
     block = {"type": kind, "ref": ref}
@@ -1078,7 +1087,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                           "page": seen["page"]}}
 
 
-def plan(results: dict, companies: list, board: dict, say=print) -> list:
+def plan(results: dict, companies: list, board: dict, say=print, reviewed=None) -> list:
     """Every company in the finder's results, decided. Network happens here.
 
     Each row is made safe to keep - an address redacted, half a character
@@ -1086,6 +1095,7 @@ def plan(results: dict, companies: list, board: dict, say=print) -> list:
     ever written or shown in a form the worklist could not hold.
     """
     ctx = standing(companies, board)
+    ctx["reviewed"] = dict(reviewed or {})
     named_by_number(results, ctx)
     named, claims = {}, collections.defaultdict(list)
     for cid, entry in results.items():
@@ -1164,6 +1174,27 @@ def cmd_plan(a) -> int:
         print(f"could not read the finder's results: {exc}")
         return 2
 
+    reviewed = {}
+    if a.doubts:
+        try:
+            reviewed = json.loads(pathlib.Path(a.doubts).read_text())
+        except (OSError, ValueError) as exc:
+            print(f"could not read --doubts: {exc}. Nothing was read and nothing was written.")
+            return 2
+        if not isinstance(reviewed, dict) or not all(
+                isinstance(k, str) and isinstance(v, str) and v.strip()
+                for k, v in reviewed.items()):
+            print("--doubts is one JSON object: a company's id, then the doubt in words. "
+                  "Nothing was read and nothing was written.")
+            return 2
+        unknown = sorted(set(reviewed) - set(results))
+        if unknown:
+            # a doubt about a company this plan will not look at would be
+            # dropped without a word, and the board it was about wired later
+            print(f"--doubts names {', '.join(unknown[:6])}, which the finder's results do "
+                  f"not hold. Nothing was read and nothing was written.")
+            return 2
+
     companies = admin.read("companies.json", [])
     board = admin.read("board.json", {})
     if not isinstance(board.get("organizations"), list):
@@ -1204,9 +1235,10 @@ def cmd_plan(a) -> int:
                       f"{'at an unknown time' if days is None else f'{days} days ago'}; "
                       f"check 1 is only as fresh as the finder's run")
         print()
-        rows = plan(results, companies, board)
+        rows = plan(results, companies, board, reviewed=reviewed)
         n = counts(rows)
         doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
+               "doubted_by_a_reader": sorted(reviewed),
                "ruling": ("owner, 2026-11-18: wire only when the company's own website "
                           "points to the board AND the board itself names the company; "
                           "anything doubtful goes to Boards we found; giants skipped"),
@@ -1576,6 +1608,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--results", action="append", required=True,
                    help="a results file find_site_boards.py wrote (repeatable)")
     p.add_argument("--out", required=True, help="where the frozen worklist goes")
+    p.add_argument("--doubts", help="a JSON object {company id: the doubt in words} from "
+                                    "the readers who checked an earlier plan; each one "
+                                    "holds its board for the owner")
     w = sub.add_parser("apply", help="apply a frozen worklist; a look unless --write")
     w.add_argument("worklist")
     w.add_argument("--by", required=True, help="agent:<label>, the author on the journal")

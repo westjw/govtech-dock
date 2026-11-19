@@ -31589,9 +31589,13 @@ class _WiringBox:
             code = wf.main([str(x) for x in argv])
         return code, out.getvalue()
 
-    def plan(self, *docs, name="worklist.json", out=None):
+    def plan(self, *docs, name="worklist.json", out=None, doubts=None):
         """(exit code, what it printed, the worklist's path, its rows by id)."""
         args = ["plan"]
+        if doubts is not None:
+            d = self.scratch / f"doubts-{len(list(self.scratch.iterdir()))}.json"
+            d.write_text(doubts if isinstance(doubts, str) else json.dumps(doubts))
+            args += ["--doubts", d]
         for doc in docs:
             p = self.scratch / f"results-{len(list(self.scratch.iterdir()))}.json"
             p.write_text(json.dumps(doc))
@@ -33295,6 +33299,94 @@ def check_a_found_board_is_sized_by_its_openings() -> int:
             errors += fail(f"the write did not carry the count of openings: note {note!r}, "
                            f"filed {(filed.get('logo-only-co') or {}).get('postings')}; "
                            f"{text[-160:]}")
+    return errors
+
+
+def check_a_readers_doubt_holds_the_board() -> int:
+    """A doubt from the readers who check a plan holds the board, in their words.
+
+    Every plan scripts/wire_found.py makes is read before it is written, by
+    independent readers who try to show each board is somebody else's. The
+    first batch (2026-11-19): ten of twelve confirmed by both readers, and
+    both doubted JustFOIA - its board is its own by name, and its ads open
+    "JustFOIA, an MCCi brand". Whether a brand of a parent is wired is the
+    owner's call, so the row has to reach his queue with that sentence on it.
+    `plan --doubts` takes {company id: the doubt in words}; such a company is
+    held however well it passes both checks.
+
+    A doubts file that cannot be used stops the plan BEFORE anything is read:
+    a doubt silently dropped is a board wired over a reader's objection.
+    """
+    import board_proposals as bp
+    errors = 0
+    co = _wb_co
+    someone = "jane.doe" + "@" + "acme-corp.com"
+    WORDS = ("its own ads call the employer 'Doubted Co, a Bigger Group brand' and link "
+             f"only to biggergroup.test (ask {someone})")
+    companies = [co("fine-co", "Fine Co"), co("doubted-co", "Doubted Co"),
+                 co("giant-doubted-co", "Giant Doubted Co")]
+    BOARDS = {"greenhouse/fineco": (3, ["Fine Co"]),
+              "greenhouse/doubtedco": (4, ["Doubted Co"]),
+              "greenhouse/giantdoubtedco": (600, ["Giant Doubted Co"])}
+    found = {"fine-co": _wb_one("fine-co", "greenhouse", "fineco", element="iframe"),
+             "doubted-co": _wb_one("doubted-co", "greenhouse", "doubtedco", element="iframe"),
+             "giant-doubted-co": _wb_one("giant-doubted-co", "greenhouse", "giantdoubtedco",
+                                         element="iframe")}
+    with _WiringBox(companies, BOARDS) as box:
+        # --- a doubts file that cannot be used stops the plan first ----------
+        for label, bad in (("names a company the results do not hold", {"nobody-co": "why"}),
+                           ("is a list", ["doubted-co"]),
+                           ("gives a doubt with no words", {"doubted-co": "  "}),
+                           ("gives a doubt that is not words", {"doubted-co": True}),
+                           ("is not JSON", "{not json")):
+            code, text, wl, _ = box.plan(_wb_results(found), name=f"bad-{len(box.asked)}.json",
+                                         doubts=bad)
+            if code == 0 or box.asked or wl.exists() or "Nothing was read" not in text:
+                errors += fail(f"a --doubts file that {label} did not stop the plan before "
+                               f"its first read: exit {code}, asked {box.asked[:2]}; "
+                               f"{text[-160:]}")
+            del box.asked[:], box.probed[:]
+
+        # --- without the doubt it is wired; with it, held in the reader's words
+        code, text, wl0, rows = box.plan(_wb_results(found), name="worklist-undoubted.json")
+        if code != 0 or sorted(i for i, r in rows.items() if r["action"] == "WIRE") != [
+                "doubted-co", "fine-co"]:
+            return errors + fail(f"the fixture's two boards do not both pass on their own: "
+                                 f"this check would show nothing ({text[-200:]})")
+        code, text, wl, rows = box.plan(
+            _wb_results(found), doubts={"doubted-co": WORDS,
+                                        "giant-doubted-co": "far too many roles for them"})
+        if code != 0 or rows is None:
+            return errors + fail(f"wire_found plan --doubts did not run: {text[-300:]}")
+        d = rows.get("doubted-co") or {}
+        if d.get("action") != "HOLD" or rows["fine-co"]["action"] != "WIRE" \
+                or "a reader checking this plan doubted it" not in _wb_words(d) \
+                or "a Bigger Group brand" not in _wb_words(d) \
+                or (d.get("check_2") or {}).get("ok") is not True:
+            errors += fail(f"a board a reader doubted was planned {d.get('action')} saying "
+                           f"{_wb_words(d)[:200]!r}: it is held, with the reader's words, "
+                           f"and still says that both checks passed")
+        if rows["giant-doubted-co"]["action"] != "SKIP":
+            errors += fail("a doubt turned a giant into a row for the owner's queue")
+        raw = wl.read_text()
+        if someone in raw or someone in text \
+                or '"doubted_by_a_reader": [\n  "doubted-co",\n  "giant-doubted-co"\n ]' not in raw:
+            errors += fail("the worklist does not record which companies a reader doubted, "
+                           "or carries an address from a reader's words")
+        if errors:
+            return errors
+        code, text, look_code = box.look(wl)
+        code, text = box.write(wl, look_code)
+        filed = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        row = filed.get("doubted-co") or {}
+        if code != 0 or "wired 1, held 1" not in text \
+                or box.record("doubted-co")["ats"]["type"] != "html" \
+                or box.record("fine-co")["ats"]["type"] != "greenhouse" \
+                or "a Bigger Group brand" not in str(row.get("identity_why")) \
+                or row.get("identity") != "unknown" or someone in json.dumps(filed):
+            errors += fail(f"the doubted board was wired, or did not reach the owner's "
+                           f"queue with the reader's words and no address: "
+                           f"{str(row.get('identity_why'))[:200]!r}; {text[-160:]}")
     return errors
 
 
@@ -46856,6 +46948,7 @@ def main() -> int:
     errors += check_an_advertisement_is_not_a_second_board()
     errors += check_a_board_named_by_a_number_is_wired_by_its_slug()
     errors += check_a_found_board_is_sized_by_its_openings()
+    errors += check_a_readers_doubt_holds_the_board()
     errors += check_a_found_board_is_not_wired_past_what_moved()
     errors += check_the_boards_found_card_opens_what_it_names()
     errors += check_a_finder_cannot_replace_the_owners_queue()

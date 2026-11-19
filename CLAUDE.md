@@ -2646,6 +2646,18 @@ round.
   `roles.not_a_listing` lets through - the question every path onto the
   public board asks - so an empty Rippling board does not read as one
   posting and walk past the hold for a board nobody is hiring through.
+- **A plan is read before it is written, and a reader's doubt holds the
+  board.** Independent readers try to show each WIRE row is somebody else's
+  board (two lenses: whose board is it, and does their own site point to
+  it); 20 rows or fewer are read whole, a larger batch by the owner's
+  zero-defect draw of 58 (2026-11-01). A WRONG row sends the batch back and
+  the door is fixed first. A row a reader could not settle goes to the
+  owner in the reader's words: `plan --doubts doubts.json` ({company id: the
+  doubt}) holds it however well it passes both checks, and files it with
+  the other held rows. A doubts file that names a company the results do
+  not hold, or is not that shape, stops the plan before its first read. The
+  first batch: JustFOIA's own board, whose ads open "JustFOIA, an MCCi
+  brand" - whether a parent's brand is wired on its own board is his call.
 - **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
   not read (kept with its error, not retried); a site that named only a
   reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
@@ -2706,6 +2718,7 @@ round.
   `check_an_advertisement_is_not_a_second_board`,
   `check_a_board_named_by_a_number_is_wired_by_its_slug`,
   `check_a_found_board_is_sized_by_its_openings`,
+  `check_a_readers_doubt_holds_the_board`,
   `check_a_found_board_is_not_wired_past_what_moved`,
   `check_the_boards_found_card_opens_what_it_names` (executed under node),
   `check_a_finder_cannot_replace_the_owners_queue`. They share `_WiringBox`,
@@ -4100,7 +4113,8 @@ wait above, the takeover and the companies left off, across two redraws.
   but Lever minds case (`Wayground` answers, `wayground` is a 404), and an
   off-site careers link occasionally lands on another company's board.
 - **Wire the boards a finder found:** `wire_found.py plan` to a scratch
-  folder, read the plan, `apply` for the look, read it again, then `apply
+  folder, read the plan, `apply` for the look, have the WIRE rows read
+  blind (a doubt goes back in with `plan --doubts`), then `apply
   --write --expect <code>`; commit the two data files and the journal, and
   tell the owner what was wired, what is in Boards we found, and every SKIP
   the look listed. Never `discover_ats.py --confirm`, `act_set_board` or a
