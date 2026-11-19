@@ -667,10 +667,14 @@ def act_board(body: dict) -> dict:
     positive says it is this company's: the board names them (the judge's
     'matches'), or its slug shares ground with their name or website
     (discover_ats.slug_matches), or - for a careers page - it sits on their
-    own website's host. The judge cannot see a name on Ashby, Lever,
-    BambooHR, Breezy, Recruitee or SmartRecruiters, so 'unknown' there is
-    NOT a pass. Anything unproven is refused WITH its evidence, and the belt
-    offers "wire anyway", which sends force and is journalled as such.
+    own website's host. 'unknown' is NOT a pass. Since 2026-11-18 the judge
+    reads a name on Ashby, Lever, BambooHR, Breezy, Recruitee,
+    SmartRecruiters and six more, and there it says 'matches' only when the
+    name IS theirs (the strict test verify_boards.proven applies): a name
+    that merely contains theirs - "Jacobs" for "StreetLight Data (Jacobs)" -
+    is still 'unknown', as that board always was. Anything unproven is
+    refused WITH its evidence, and the belt offers "wire anyway", which
+    sends force and is journalled as such.
 
     A LinkedIn, Indeed or government-portal link is recorded as where they
     post. A page that reads nothing is not wired at all: it goes to the
