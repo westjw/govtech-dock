@@ -35,15 +35,18 @@ found" queue instead. Each verified batch is written without waiting for him
 and he is told after. Giants (about 500+ open roles) are skipped this round.
 
 THREE OUTCOMES, AND NONE OF THEM IS SILENCE.
-  WIRE  both checks pass, the board was read live a moment ago, and nothing
-        on file argues with it: no parent, no earlier refusal, no other
-        company already holding the same board.
+  WIRE  both checks pass, the board was read live a moment ago and has
+        postings on it - at least as many as the public board already shows
+        for the company - and nothing on file argues with it: no parent, no
+        note about its board, no earlier refusal, no other company already
+        holding the same board.
   HOLD  the board reads, and something is in doubt. The doubt is written in
         words - both names quoted, or the parent named - and the row goes to
         the owner's queue through board_proposals.file_found.
-  SKIP  a giant; a board that did not read (kept with its error: a board that
-        will not read is not a wrong board); a company whose site named no
-        board; a company a person already answered about.
+  SKIP  a giant; a board nobody could show to be smaller than one; a board
+        that did not read (kept with its error: a board that will not read is
+        not a wrong board); a company whose site named no board, or only one
+        this door cannot use; a company a person already answered about.
 
 THE PLAN IS FROZEN, AND APPLY READS NOTHING ELSE. `plan` is the only step that
 touches the network. It writes one worklist with the whole evidence for every
@@ -53,6 +56,13 @@ have grown since the dry run, and rows nobody looked at go into the write. So
 a write here needs --expect with the code the look printed, and that code
 covers the worklist's bytes AND what the look said it would do. If either
 moved, nothing is written and the look is run again.
+
+APPLY DOES ASK THE DATA AGAIN, because the data is the one thing that moves
+under a frozen file. Both checks were judged against a record: check 1
+against its website, check 2 against its name. A person who corrects either
+between the plan and the write has changed what the checks were about, so
+the row is left alone and the plan is run again - as it is when a parent, a
+refusal, a note or another holder of the board was recorded in between.
 
 WHAT APPLY WRITES. The wired boards are ONE journalled batch through
 admin.read_companies() / validate() / save_companies(), with the agent's own
@@ -73,7 +83,9 @@ import collections
 import datetime as dt
 import hashlib
 import json
+import os
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -91,15 +103,21 @@ import verify_boards                                   # noqa: E402
 # The owner's line for this round: AWS / Oracle / Salesforce / IBM size.
 GIANT = 500
 GIANT_WHY = "giant - skipped this round on the owner's ruling of 2026-11-18"
+# A READER THAT DOES NOT READ THE WHOLE BOARD CANNOT SHOW A BOARD IS SMALL.
+# The Workday reader asks two sales searches and the Oracle reader takes one
+# reply, so 180 rows from either is as likely a company with 4,000 openings
+# as one with 200 - and the first draft of this door wired exactly that, on
+# the strength of a count that was never the board's. For these the board's
+# OWN total is asked first (add_company.board_total, one request, and a giant
+# is then never read at all). Where no total can be had the size is unknown,
+# and unknown is skipped with the giants: "probably small" is not this door's
+# to decide, and a giant in the owner's queue is what his ruling ruled out.
+PARTIAL = {"workday": "the Workday reader asks only two sales searches",
+           "oracle": "the Oracle reader takes one reply and never pages"}
 SAMPLE = 8                  # titles kept per board: what ownership is judged on
-# "Verify with a real fetch immediately before writing; stored counts go
-# stale." A worklist is planned and applied in one sitting. One left over from
-# another day wires boards on the strength of a read nobody would now call
-# live, so its WIRE rows are left alone and the plan is run again.
-MAX_AGE_HOURS = 24
 ACTION = "wire-found"
 MADE = "wire_found.py plan"
-VERSION = 1
+VERSION = 2                 # 2: rows carry what they were judged against
 WAITING = board_proposals.WAITING
 
 # How a page points at a board, in the words the note on the record uses.
@@ -110,30 +128,80 @@ POINTS = {"href": "links to the board", "iframe": "embeds the board",
 # Which evidence is quoted when a board was seen more than once. An embed, a
 # request the page itself made or a redirect is the site USING the board; a
 # link is the site sending people to it; bare text is the weakest - one
-# footer line, a partner logo or a blog post can leave a slug on a page.
+# footer line, a partner logo or a blog post can leave a slug on a page - and
+# on its own it is a doubt, not a pointer (see consider).
 STRENGTH = {"iframe": 0, "frame": 0, "script": 0, "request": 0, "redirect": 0,
             "href": 1, "text": 2}
+# What the finder says about a page it asked for. A redirect only counts as
+# theirs when the address was actually followed to where it ends: a page
+# robots.txt refused, a block or an error has no known end.
+FOLLOWED = ("read", "left-site")
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
+              ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
+              ("unusable", "named only a board this door cannot use"),
               ("refused", "refused earlier"),
               ("not-waiting", "already on a board"),
               ("out-of-scope", "ruled out of scope"),
               ("gone", "no longer on file"))
 
+# the part of a Paylocity address that IS the board: the id after /jobs/all/
+# (a uuid on every board seen), whatever follows it
+_PAYLOCITY = re.compile(r"/jobs/all/([^/?#]+)")
+_ICIMS = re.compile(r"([a-z0-9-]+)\.icims\.com(?:[/?]|$)")
+_POD = re.compile(r"wd\d+")             # a Workday pod: wd1, wd5, wd108, wd503
+
 
 # ---------------------------------------------------------------- small words
 
 def board_key(kind, ref) -> str:
-    """One spelling per board, so the same board is found to be the same.
+    """One LOOSE spelling per board, for one question: is this board that one?
 
-    Compared without case and without a trailing slash. That is deliberately
-    loose: SmartRecruiters refs are case-sensitive, so two different boards
-    could share a key - and the only thing a shared key ever does here is send
-    a board to a person instead of wiring it.
+    It is asked to notice a collision - the same board found for two
+    companies, already held by another, refused before, already waiting - and
+    a collision only ever sends a board to a person. So it leans toward
+    calling two addresses one board. Case is ignored (SmartRecruiters refs
+    are case-sensitive, so two different boards can share a key). An address
+    is the same board with or without its scheme, its www. or a last slash.
+    And three shapes are read for the part that identifies the board, because
+    this repo's own data writes each of them two ways: a Paylocity address is
+    the id after /jobs/All/, with or without the tenant's name after it
+    (keyed on the whole address, a board already on file as
+    .../<uuid>/<Tenant> was not seen to be the board found as .../<uuid>, and
+    would have been wired to a second company); an iCIMS portal is its slug,
+    bare or inside its address; a Jibe or Oracle board is its host.
+
+    IT IS NEVER WHAT GETS READ. Reading goes by `spelling`, the ref exactly
+    as the site gave it: on a platform that minds case the loose form is a
+    different board, or none.
+    """
+    if not isinstance(ref, str):
+        return f"{kind}:{json.dumps(ref, sort_keys=True).lower()}"
+    r = ref.strip().lower()
+    for lead in ("https://", "http://"):
+        r = r.removeprefix(lead)
+    r = r.removeprefix("www.").rstrip("/")
+    if kind == "paylocity":
+        m = _PAYLOCITY.search(r)
+        r = m.group(1) if m else r
+    elif kind == "icims":
+        m = _ICIMS.match(r)
+        r = m.group(1) if m else r
+    elif kind in ("jibe", "oracle"):
+        r = r.split("/", 1)[0]
+    return f"{kind}:{json.dumps(r)}"
+
+
+def spelling(kind, ref) -> str:
+    """The board exactly as it was spelled - what a read is filed under.
+
+    Two spellings that share a `board_key` are read separately and never
+    stand in for each other: 'caseco' answering empty says nothing about
+    'CaseCo'.
     """
     if isinstance(ref, str):
         ref = ref.strip().rstrip("/")
-    return f"{kind}:{json.dumps(ref, sort_keys=True).lower()}"
+    return f"{kind}:{json.dumps(ref, sort_keys=True)}"
 
 
 def show(kind, ref) -> str:
@@ -151,6 +219,15 @@ def ref_problem(kind, ref) -> str | None:
         if not (isinstance(ref, list) and len(ref) == 3
                 and all(isinstance(x, str) and x.strip() for x in ref)):
             return "a Workday board is the list [tenant, pod, site]"
+        # THE POD IS THE PART THAT GETS OUT OF ORDER. find_embedded_ats.py
+        # wrote [tenant, site, pod] for months, and that asks
+        # tenant.<site>.myworkdayjobs.com - nobody's host. Every one of the 72
+        # Workday refs on file on 2026-11-18 has "wd" and digits second; the
+        # other order fetch_workday takes is pod first, then a "wd.." tenant.
+        if not (_POD.fullmatch(ref[1])
+                or (_POD.fullmatch(ref[0]) and ref[1].startswith("wd"))):
+            return ("a Workday board is the list [tenant, pod, site], and the pod "
+                    "reads 'wd' and digits")
         return None
     if not isinstance(ref, str) or not ref.strip():
         return "the board has no ref"
@@ -179,12 +256,33 @@ def pointer(seen: dict, full: bool = True) -> str:
     return f"{page if full else short(page)} {how}{tail}"
 
 
-def _when(stamp) -> dt.datetime | None:
-    try:
-        t = dt.datetime.fromisoformat(str(stamp))
-    except (TypeError, ValueError):
-        return None
-    return t if t.tzinfo else t.astimezone()
+_when = board_proposals.when
+
+
+def _count(n) -> int | None:
+    """`n` when it is a real count, else None. True is not one posting."""
+    return n if isinstance(n, int) and not isinstance(n, bool) and n >= 0 else None
+
+
+def _akas(c: dict) -> list:
+    """The other names on file for a company, in one order."""
+    return sorted(str(a) for a in (c.get("also_known_as") or []) if str(a).strip())
+
+
+def _encodable(obj):
+    """`obj` with every string made writable: half a character is dropped.
+
+    A feed that cuts a title in the middle of an emoji hands back half of
+    one, and no file can hold that. It stopped a whole plan at its last line,
+    after every board had been read, and left an empty worklist behind.
+    """
+    if isinstance(obj, str):
+        return obj.encode("utf-8", "replace").decode("utf-8")
+    if isinstance(obj, list):
+        return [_encodable(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: _encodable(v) for k, v in obj.items()}
+    return obj
 
 
 # ------------------------------------------------------- the finder's results
@@ -215,7 +313,7 @@ def load_results(paths: list) -> tuple[dict, list]:
             m = merged.setdefault(cid, {"name": entry.get("name"),
                                         "candidates": [], "pages": [],
                                         "off_site": [], "elsewhere": [],
-                                        "errors": []})
+                                        "errors": [], "read_as": []})
             for cand in entry.get("candidates") or []:
                 if isinstance(cand, dict):
                     m["candidates"].append({**cand, "mode": mode})
@@ -223,6 +321,11 @@ def load_results(paths: list) -> tuple[dict, list]:
                 m[field] += [x for x in entry.get(field) or [] if isinstance(x, dict)]
             if entry.get("error"):
                 m["errors"].append(str(entry["error"]))
+            # the website the FINDER read them at. It decides nothing - the
+            # one on file now does - and it is quoted when the two differ
+            site = str(entry.get("website") or "").strip()
+            if site and site not in m["read_as"]:
+                m["read_as"].append(site)
     return merged, files
 
 
@@ -232,6 +335,12 @@ def boards_named(entry: dict) -> tuple[list, list]:
     One record per board, with every place it was seen. Most-mentioned first:
     when a site names two boards the company is held either way, and the one
     it leans on hardest is the one offered to the person who rules.
+
+    A board is one `board_key`, and that is loose on purpose. So each place
+    it was seen keeps the ref AS IT WAS SPELLED THERE, and when a site spells
+    one board two ways the record says so (`spellings`): the first draft kept
+    whichever spelling came first, read 'caseco', found it empty, and never
+    asked for the 'CaseCo' the page actually embeds.
     """
     boards: dict = {}
     unusable = []
@@ -239,13 +348,16 @@ def boards_named(entry: dict) -> tuple[list, list]:
         kind, ref = cand.get("type"), cand.get("ref")
         problem = ref_problem(kind, ref)
         if problem:
-            unusable.append(f"{kind}/{ref}: {problem}")
+            unusable.append(f"{show(kind, ref)}: {problem}")
             continue
+        if isinstance(ref, str):
+            ref = ref.strip()
         key = board_key(kind, ref)
-        b = boards.setdefault(key, {"type": kind, "ref": ref, "key": key, "seen": []})
+        b = boards.setdefault(key, {"type": kind, "key": key, "seen": []})
         times = cand.get("times")
         hop = cand.get("hop")
         b["seen"].append({
+            "ref": ref,
             "page": str(cand.get("page") or "").strip(),
             "element": str(cand.get("element") or "").strip(),
             "saw": str(cand.get("saw") or "")[:160],
@@ -255,6 +367,9 @@ def boards_named(entry: dict) -> tuple[list, list]:
             "mode": cand.get("mode")})
     for b in boards.values():
         b["times"] = sum(s["times"] for s in b["seen"])
+        spelled = {spelling(b["type"], s["ref"]): show(b["type"], s["ref"]) for s in b["seen"]}
+        if len(spelled) > 1:
+            b["spellings"] = sorted(spelled.values())
     return sorted(boards.values(), key=lambda b: (-b["times"], b["key"])), unusable
 
 
@@ -270,16 +385,21 @@ def their_page(seen: dict, website: str, pages: list) -> str:
     A redirect is theirs when an address ASKED FOR on their site is what
     ended up at the board, and that asked address is the one to quote: the
     address it landed on is the board, which proves nothing about who sent
-    you there.
+    you there. The record has to show where the asked address ENDED - a
+    blank is not an address, and two blanks once compared equal, so a careers
+    page robots.txt had refused was written down as "redirects to the board"
+    - and that the finder really followed it there.
     """
-    page = seen.get("page") or ""
+    page = str(seen.get("page") or "").strip()
     if page_belt._same_site(page, website or ""):
         return page
     if seen.get("element") == "redirect":
         for p in pages:
             asked = str(p.get("asked") or "").strip()
-            if page_belt._same_site(asked, website or "") \
-                    and str(p.get("final") or "").strip().rstrip("/") == page.rstrip("/"):
+            final = str(p.get("final") or "").strip()
+            if final and p.get("status") in FOLLOWED \
+                    and page_belt._same_site(asked, website or "") \
+                    and final.rstrip("/") == page.rstrip("/"):
                 return asked
     return ""
 
@@ -288,7 +408,8 @@ def best_seen(board: dict, website: str, pages: list) -> tuple[dict, bool]:
     """(the evidence to quote for this board, whether it is on their site).
 
     The page on the evidence is the company's own address wherever one was
-    shown; `landed` keeps where a redirect ended up.
+    shown; `landed` keeps where a redirect ended up. The evidence carries
+    the ref as that page spelled it, and that spelling is the one read.
     """
     def rank(s):
         return (not their_page(s, website, pages),
@@ -300,23 +421,36 @@ def best_seen(board: dict, website: str, pages: list) -> tuple[dict, bool]:
     return best, bool(own)
 
 
-def also_seen(entry: dict, key: str) -> dict:
-    """What else the finder saw, kept on the row and decided on by nobody.
+def also_seen(entry: dict, key: str, website: str) -> dict:
+    """What else the finder saw: {elsewhere, off_site, elsewhere_off_site}.
 
-    A different board named on a page that is NOT theirs, or a job platform
-    this repo has no reader for. Neither is one of the checks, and how noisy
-    either list is has not been measured, so they hold nothing back; they are
-    printed so whoever reads the plan can.
+    `elsewhere` is a job platform this repo has no reader for, named on the
+    company's OWN site. That one is a doubt (see consider): it is a second
+    place they may be hiring through, and City Detect is the case on file -
+    its site embedded a platform nothing here read while its old board still
+    answered and still named it. A platform recorded with no page is counted
+    as theirs, because nothing shows it was not.
+
+    The other two were seen on pages that are NOT theirs - a different board,
+    or such a platform. Neither is one of the checks and how noisy either
+    list is has not been measured, so they hold nothing back; they are kept
+    on the row and printed for whoever reads the plan.
     """
     out = {}
     other = sorted({show(o.get("type"), o.get("ref")) for o in entry.get("off_site") or []
                     if board_key(o.get("type"), o.get("ref")) != key})
     if other:
         out["off_site"] = other[:6]
-    vendors = sorted({str(e.get("vendor")) for e in entry.get("elsewhere") or []
-                      if e.get("vendor")})
-    if vendors:
-        out["elsewhere"] = vendors[:6]
+    own, away = set(), set()
+    for e in entry.get("elsewhere") or []:
+        vendor = str(e.get("vendor") or "").strip()
+        page = str(e.get("page") or "").strip()
+        if vendor:
+            (own if not page or page_belt._same_site(page, website or "") else away).add(vendor)
+    if own:
+        out["elsewhere"] = sorted(own)[:6]
+    if away - own:
+        out["elsewhere_off_site"] = sorted(away - own)[:6]
     return out
 
 
@@ -422,6 +556,22 @@ def holders_of(companies: list) -> dict:
     return out
 
 
+def shown_now(board: dict) -> dict:
+    """{company id: how many postings the public board shows for it today}.
+
+    NOT EVERY WAITING COMPANY SHOWS NOTHING. `html` means a careers page and
+    not a feed, and it does not mean unread: on 2026-11-18, 114 of those
+    pages were read every night and put 1,357 postings on the board. The
+    first draft of this door took the whole type for empty, and would have
+    swapped a page that reads eleven roles for a board that reads none.
+    """
+    out = {}
+    for o in (board.get("organizations") or []) if isinstance(board, dict) else []:
+        if isinstance(o, dict) and isinstance(o.get("id"), str):
+            out[o["id"]] = _count(o.get("open_postings")) or 0
+    return out
+
+
 def ownership_on_file(c: dict) -> list:
     """What the record already says about who owns this company or its board.
 
@@ -449,15 +599,18 @@ def ownership_on_file(c: dict) -> list:
 
 
 def standing(companies: list, board: dict) -> dict:
-    """Everything a plan holds a company against, read once, plus the two
-    places the plan remembers what a board answered (`read`, `said`)."""
+    """Everything a plan holds a company against, read once, plus the three
+    places the plan remembers what a board answered (`total`, `read`, `said`),
+    each filed under the board's exact spelling."""
     return {"by_id": {c["id"]: c for c in companies},
             "holders": holders_of(companies),
             "suspects": _suspects(),
             "refusals": _refusals(),
             "waiting": _waiting(),
             "acquisitions": acquisition_doubts(companies, board),
-            "read": {}, "said": {}}
+            "shown": shown_now(board),
+            "crawled": str((board or {}).get("generated") or "")[:10],
+            "total": {}, "read": {}, "said": {}}
 
 
 # ------------------------------------------------------------------ the plan
@@ -491,23 +644,33 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     if c is None:
         return _skip(base, "gone", "no company with this id is on file")
     if not boards:
-        why = ("the finder's reference cannot be used: " + "; ".join(unusable[:3])
-               if unusable else "the finder saw no board on their own site: "
-               + _pages_note(entry))
-        return _skip(base, "no-candidate", why)
+        if unusable:
+            # THEIR SITE DID NAME A BOARD, and the finder wrote it down in a
+            # shape no reader takes. That is not "no board seen": it is
+            # listed under its own name so somebody looks at the reference
+            return _skip(base, "unusable",
+                         "their site named a board, and the finder's reference cannot be "
+                         "used: " + "; ".join(unusable[:3]))
+        return _skip(base, "no-candidate", "the finder saw no board on their own site: "
+                     + _pages_note(entry))
 
     first = boards[0]
-    kind, ref, key = first["type"], first["ref"], first["key"]
+    kind, key = first["type"], first["key"]
     was = c.get("ats") or {}
-    base.update({"type": kind, "ref": ref,
-                 "was": {"type": was.get("type"), "ref": was.get("ref")}})
     website = c.get("website") or ""
     seen, own = best_seen(first, website, entry.get("pages") or [])
+    ref = seen["ref"]                   # as the quoted page spelled it
+    base.update({"type": kind, "ref": ref,
+                 "was": {"type": was.get("type"), "ref": was.get("ref")}})
     check_1 = {"page": seen["page"], "element": seen["element"], "saw": seen["saw"],
                "times": seen["times"], "hop": seen["hop"], "on_their_site": own}
     if seen.get("landed"):
         check_1["landed"] = seen["landed"]
     base["check_1"] = check_1
+    # WHAT THE CHECKS ARE JUDGED AGAINST, kept on the row. Check 1 is about a
+    # website and check 2 about a name, and both are the record's as it reads
+    # at this moment. apply compares them with the record as it reads THEN.
+    base["judged"] = {"name": c.get("name"), "also_known_as": _akas(c), "website": website}
 
     scope = c.get("out_of_scope")
     if scope:
@@ -540,13 +703,46 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # --- everything on file that argues with wiring it, in words -----------
     doubts = []
     if not own:
+        read_as = [s for s in entry.get("read_as") or []
+                   if not page_belt._same_site(s, website)]
         doubts.append(f"the page that named the board, {seen['page'] or '(none recorded)'}, "
-                      f"is not on their website ({website or 'none on file'})")
+                      f"is not on their website ({website or 'none on file'})"
+                      + (f"; the finder read them at {read_as[0]}" if read_as else ""))
+    elif seen["element"] == "text":
+        # CHECK 1 IS THE SITE POINTING AT THE BOARD. A slug in a sentence is
+        # the site mentioning one, and that is how an old board stays on a
+        # page: City Detect's left answering, and still naming them, after
+        # the site had moved to another platform
+        doubts.append("their site names this board only in plain text - no link, embed, "
+                      "script or redirect - and a slug left in a sentence can be an old board")
+    elif seen["element"] not in STRENGTH:
+        doubts.append(f"the finder recorded a kind of reference this door does not know "
+                      f"({seen['element'] or 'none'!r}), so how their site points at the "
+                      f"board is not known")
     if len(boards) > 1:
         doubts.append("their site points to more than one board: " + " and ".join(
-            f"{show(b['type'], b['ref'])} (seen {many(b['times'], 'time')})"
-            for b in boards[:4]))
+            f"{show(b['type'], ref if b is first else b['seen'][0]['ref'])} "
+            f"(seen {many(b['times'], 'time')})" for b in boards[:4]))
+    if first.get("spellings"):
+        doubts.append(f"their site spells this board more than one way "
+                      f"({' and '.join(first['spellings'][:4])}); where case matters those "
+                      f"are different boards, and only {show(kind, ref)} was read")
+    if unusable:
+        doubts.append("their site also names a board this door cannot use ("
+                      + "; ".join(unusable[:3]) + ")")
+    extra = also_seen(entry, key, website)
+    if extra.get("elsewhere"):
+        doubts.append(f"their own site also names {' and '.join(extra['elsewhere'])}, a job "
+                      f"platform the crawl cannot read, so which board they hire through "
+                      f"today is not settled")
     doubts += ownership_on_file(c)
+    note = str(c.get("ats_note") or "").strip()
+    if note:
+        # a note on a company with no board is somebody saying something
+        # about its board - "left unwired on purpose", "their own /careers
+        # page reads 11" - and wiring would write over it
+        doubts.append(f'a note about its board is already on file, and wiring would '
+                      f'replace it: "{note[:220]}"')
     if cid in ctx["suspects"]:
         doubts.append(f"discovery already doubted a board for this company "
                       f"({ctx['suspects'][cid]})")
@@ -572,32 +768,57 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
             doubts.append(f"a different board, {r['board']}, is already waiting in "
                           f"{r['store']} for this company")
 
-    # --- the live read: the only network this script makes -----------------
-    # One read per board per plan. Two companies whose sites name one board
-    # are both held, and neither needs the board asked twice to say so.
-    if key not in ctx["read"]:
-        ctx["read"][key] = (*add_company.read_board({"type": kind, "ref": ref}),
-                            admin.now())
-    ok, detail, read, base["read_at"] = ctx["read"][key]
+    # --- the network: three questions, each asked once per spelling --------
+    block = {"type": kind, "ref": ref}
+    exact = spelling(kind, ref)
+    # HOW BIG, BEFORE ANYTHING ELSE, where the read cannot say. One request
+    # instead of the hundred and twenty a full Workday read of a giant took
+    # before it was skipped anyway.
+    if kind in PARTIAL:
+        if exact not in ctx["total"]:
+            ctx["total"][exact] = add_company.board_total(block)
+        total, how = ctx["total"][exact]
+        total = _count(total)
+        if total is None:
+            return _skip(base, "size-unknown",
+                         f"size unknown - {PARTIAL[kind]}, and the board's own total could "
+                         f"not be had ({how}). A board nobody can show to hold fewer than "
+                         f"{GIANT} postings is skipped with the giants")
+        base["board_total"] = total
+        if total >= GIANT:
+            return _skip(base, "giant", f"{GIANT_WHY} (the board holds {total} postings)")
+
+    # The live read. Two companies whose sites name one board are both held,
+    # and neither needs the board asked twice to say so.
+    if exact not in ctx["read"]:
+        ctx["read"][exact] = (*add_company.read_board(block), admin.now())
+    ok, detail, read, base["read_at"] = ctx["read"][exact]
     if not ok:
         # kept with its error and never retried: a refusal is an answer for
         # today, and a board that will not read is not a board that is wrong
         return _skip(base, "unreadable", f"the board did not read: {detail}", error=detail)
     titles = [str(r.get("title") or "").strip() for r in read]
     titles = [t for t in titles if t]
-    base.update({"postings": len(titles), "verified": detail, "titles": titles[:SAMPLE]})
+    if kind in PARTIAL:
+        # said where the count is said: "9 postings" from a reader that
+        # filters is not the size of the board, and whoever rules on the row
+        # should not have to know which readers those are
+        detail = f"{detail} - {PARTIAL[kind]}, and the whole board holds {total}"
+    shown = ctx["shown"].get(cid, 0)
+    base.update({"postings": len(titles), "verified": detail, "titles": titles[:SAMPLE],
+                 "shown_before": shown})
     if len(titles) >= GIANT:
-        return _skip(base, "giant", GIANT_WHY)
+        return _skip(base, "giant", f"{GIANT_WHY} ({len(titles)} postings read)")
 
-    if key not in ctx["said"]:
-        ctx["said"][key] = verify_boards.board_says(kind, ref)
-    said = ctx["said"][key]
-    stated_n = said.get("n")
-    if isinstance(stated_n, int) and not isinstance(stated_n, bool) and stated_n >= GIANT:
-        # Workday's fetcher asks only for sales roles, so the read above can
-        # be small on a board that is not; the board's own count decides too
-        base["postings"] = stated_n
-        return _skip(base, "giant", GIANT_WHY)
+    if exact not in ctx["said"]:
+        ctx["said"][exact] = verify_boards.board_says(kind, ref)
+    said = ctx["said"][exact]
+    stated_n = _count(said.get("n"))
+    if stated_n is not None and stated_n >= GIANT:
+        # whatever a probe counts, it does not count more than is there: a
+        # board that states 500 holds 500. (It may hold more than it states,
+        # which is why a SMALL count from a probe is never read as small.)
+        return _skip(base, "giant", f"{GIANT_WHY} (the board states {stated_n} postings)")
     verdict = verify_boards.proven(c, said)
     names = [str(n).strip() for n in (said.get("names") or []) if str(n).strip()]
     stated = said.get("stated") is True
@@ -624,9 +845,22 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                        "name": judged or (names[0] if names else None),
                        "names": names, "stated": stated,
                        "how": said.get("how"), "why": why_2}
-    extra = also_seen(entry, key)
     if extra:
         base["also_seen"] = extra
+
+    # WHAT THE READ ITSELF ARGUES. A board with nothing on it shows nothing
+    # about where they hire today - an account left behind answers empty and
+    # still states the name - and wiring one publishes "no openings" for a
+    # company that may have eleven on a page nothing reads. A board that
+    # reads fewer than the public board already shows for them takes roles
+    # off it. Neither is this door's to decide.
+    if not titles:
+        doubts.append("the board read no postings, so nothing shows it is the board they "
+                      "hire through today")
+    elif len(titles) < shown:
+        doubts.append(f"the public board already shows {many(shown)} for this company "
+                      f"(crawl of {ctx['crawled'] or 'an unknown date'}) and this board read "
+                      f"{many(len(titles))}; wiring it would take roles off the board")
 
     if passed and not doubts:
         return {"action": "WIRE", **base}
@@ -648,7 +882,12 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
 
 def plan(results: dict, companies: list, board: dict, say=print) -> list:
-    """Every company in the finder's results, decided. Network happens here."""
+    """Every company in the finder's results, decided. Network happens here.
+
+    Each row is made safe to keep - an address redacted, half a character
+    dropped - BEFORE it is printed or kept, so nothing the boards sent is
+    ever written or shown in a form the worklist could not hold.
+    """
     ctx = standing(companies, board)
     named, claims = {}, collections.defaultdict(list)
     for cid, entry in results.items():
@@ -658,7 +897,8 @@ def plan(results: dict, companies: list, board: dict, say=print) -> list:
     rows = []
     for cid in sorted(results):
         boards, unusable = named[cid]
-        row = consider(cid, results[cid], boards, unusable, claims, ctx)
+        row = privacy.redact_deep(_encodable(
+            consider(cid, results[cid], boards, unusable, claims, ctx)))
         rows.append(row)
         if row["action"] == "SKIP" and row["kind"] == "no-candidate":
             continue                    # most of the file; counted, not listed
@@ -674,9 +914,9 @@ def _line(row: dict) -> str:
         extra, note = row.get("also_seen") or {}, ""
         if extra.get("off_site"):
             note += f"; NOTE a page off their site names {', '.join(extra['off_site'])}"
-        if extra.get("elsewhere"):
-            note += (f"; NOTE their site also names {', '.join(extra['elsewhere'])}, "
-                     f"which the crawl cannot read")
+        if extra.get("elsewhere_off_site"):
+            note += (f"; NOTE a page off their site names "
+                     f"{', '.join(extra['elsewhere_off_site'])}, which the crawl cannot read")
         return (f"{head} {many(row['postings'])}; board names "
                 f"\"{row['check_2']['name']}\"; {pointer(row['check_1'], full=False)}{note}")
     if row["action"] == "HOLD":
@@ -726,27 +966,66 @@ def cmd_plan(a) -> int:
 
     companies = admin.read("companies.json", [])
     board = admin.read("board.json", {})
-    have = sum(1 for e in results.values() if e.get("candidates"))
-    print(f"{len(results)} companies in the finder's results, {have} with a board "
-          f"named on their own site")
-    for f in files:
-        made = _when(f.get("generated"))
-        days = (dt.datetime.now().astimezone() - made).days if made else None
-        if days is None or days > 3:
-            # the boards are read again here; the pages are not. CHECK 1 is
-            # as old as the finder's run, and a careers page can change
-            print(f"NOTE: {f['file']} was written "
-                  f"{'at an unknown time' if days is None else f'{days} days ago'}; "
-                  f"check 1 is only as fresh as the finder's run")
-    print()
-    rows = privacy.redact_deep(plan(results, companies, board))
-    n = counts(rows)
-    doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
-           "ruling": ("owner, 2026-11-18: wire only when the company's own website "
-                      "points to the board AND the board itself names the company; "
-                      "anything doubtful goes to Boards we found; giants skipped"),
-           "results": files, "counts": n, "rows": rows}
-    out.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
+    if not isinstance(board.get("organizations"), list):
+        print("data/board.json has no list of organizations, so what each company "
+              "already shows on the public board cannot be compared with the board "
+              "found for it. Nothing was read and nothing was written.")
+        return 2
+
+    # THE WORKLIST'S NAME IS TAKEN BEFORE THE FIRST REQUEST. The file is
+    # written at the very end, after every board has been read; a folder that
+    # is not there, or a name somebody else took meanwhile, used to be found
+    # out at that last line and threw every read away. Opening it for
+    # exclusive creation now proves the folder, the permission and the name
+    # in one step, and what is left behind if the plan dies is taken back.
+    try:
+        with open(out, "x"):
+            pass
+    except FileExistsError:
+        print(f"{out} already exists. Give the new plan a new name.")
+        return 2
+    except OSError as exc:
+        print(f"the worklist cannot be written to {out} ({exc.strerror or exc}). "
+              f"Nothing was read. Make the folder first, or name another.")
+        return 2
+    part = out.with_name(out.name + ".part")
+    done = False
+    try:
+        have = sum(1 for e in results.values() if e.get("candidates"))
+        print(f"{len(results)} companies in the finder's results, {have} with a board "
+              f"named on their own site")
+        for f in files:
+            made = _when(f.get("generated"))
+            days = (dt.datetime.now().astimezone() - made).days if made else None
+            if days is None or days > 3:
+                # the boards are read again here; the pages are not. CHECK 1
+                # is as old as the finder's run, and a careers page can change
+                print(f"NOTE: {f['file']} was written "
+                      f"{'at an unknown time' if days is None else f'{days} days ago'}; "
+                      f"check 1 is only as fresh as the finder's run")
+        print()
+        rows = plan(results, companies, board)
+        n = counts(rows)
+        doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
+               "ruling": ("owner, 2026-11-18: wire only when the company's own website "
+                          "points to the board AND the board itself names the company; "
+                          "anything doubtful goes to Boards we found; giants skipped"),
+               "results": files, "counts": n, "rows": rows}
+        # ASCII, like every data file here (admin.write_atomic): it cannot
+        # fail to encode on any machine, and every character comes back.
+        # Written whole under another name and then moved, so a worklist is
+        # either all there or not there.
+        part.write_bytes((json.dumps(doc, indent=1) + "\n").encode("ascii"))
+        os.replace(part, out)
+        done = True
+    finally:
+        if not done:
+            part.unlink(missing_ok=True)
+            try:
+                if out.stat().st_size == 0:
+                    out.unlink()        # only ever our own empty placeholder
+            except OSError:
+                pass
     print(f"\nplan: wire {n['wire']}, hold {n['hold']}, {skipped_words(n)}")
     print(f"frozen in {out}")
     print(f"next: python3 scripts/wire_found.py apply {out} --by agent:<label>")
@@ -761,7 +1040,7 @@ def load_worklist(path: str) -> tuple[dict, str]:
     doc = json.loads(raw)
     if not (isinstance(doc, dict) and doc.get("made") == MADE
             and doc.get("version") == VERSION and isinstance(doc.get("rows"), list)):
-        raise ValueError(f"{path} is not a worklist `wire_found.py plan` wrote")
+        raise ValueError(f"{path} is not a worklist this `wire_found.py plan` wrote")
     for row in doc["rows"]:
         if not isinstance(row, dict) or row.get("action") not in ("WIRE", "HOLD", "SKIP") \
                 or not isinstance(row.get("id"), str):
@@ -770,33 +1049,50 @@ def load_worklist(path: str) -> tuple[dict, str]:
 
 
 def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
-                 proposals: dict, twice: set, now: dt.datetime) -> tuple[str, str] | None:
+                 proposals: dict, twice: set, shown: dict,
+                 now: dt.datetime) -> tuple[str, str] | None:
     """(code, words) for a WIRE row that must be left alone, or None.
 
-    Not a second plan: nothing is fetched and nothing is re-judged. These are
-    the things that can have MOVED between the plan and this moment - a person
-    wired the company by hand, recorded a parent, refused the board, or gave
-    the same board to somebody else - plus the row carrying its own evidence,
-    because a row that cannot show both checks is not one this door wires.
+    Not a second plan: nothing is fetched and no board is asked again. Two
+    kinds of question. First, does the row carry what the plan only ever
+    writes on a WIRE row - both checks, a dated read with postings on it, a
+    size under the giants' line - because a row that cannot show them is not
+    one this door wires, however it came to say WIRE. Second, everything
+    that can have MOVED between the plan and this moment: a person wired the
+    company by hand, corrected its website or its name, recorded a parent, a
+    note or a refusal, or gave the same board to somebody else.
     """
     cid = row["id"]
     kind, ref = row.get("type"), row.get("ref")
     c1, c2 = row.get("check_1") or {}, row.get("check_2") or {}
-    n = row.get("postings")
+    judged = row.get("judged") if isinstance(row.get("judged"), dict) else {}
+    n = _count(row.get("postings"))
     if ref_problem(kind, ref) or not c1.get("page") or c1.get("on_their_site") is not True \
+            or STRENGTH.get(c1.get("element"), 2) >= 2 \
             or c2.get("ok") is not True or not c2.get("names") or not c2.get("stated") \
-            or not isinstance(n, int) or isinstance(n, bool) or not row.get("read_at") \
-            or not isinstance(row.get("titles"), list):
-        return "evidence", "the row does not carry both checks and a live read"
-    if n >= GIANT:
+            or not n or not row.get("read_at") \
+            or not isinstance(row.get("titles"), list) \
+            or not isinstance(judged.get("name"), str) \
+            or not isinstance(judged.get("also_known_as"), list):
+        return "evidence", ("the row does not carry both checks, what they were judged "
+                            "against and a live read with postings on it")
+    total = _count(row.get("board_total"))
+    if n >= GIANT or (total or 0) >= GIANT:
         return "giant", GIANT_WHY
+    if kind in PARTIAL and total is None:
+        return "size", (f"{PARTIAL[kind]}, and the row carries no total for the board, so "
+                        f"it was never shown to be under {GIANT} postings")
     key = board_key(kind, ref)
     if cid in twice or key in twice:
         return "twice", "the worklist lists this company or this board more than once"
-    read = _when(row["read_at"])
-    age = (now - read).total_seconds() / 3600 if read else None
-    if age is None or age > MAX_AGE_HOURS or age < -1:
-        old = "undated" if age is None else f"{age:.0f} hours old"
+    # "Verify with a real fetch immediately before writing; stored counts go
+    # stale." A worklist is planned and applied in one sitting. One left over
+    # from another day would wire boards on the strength of a read nobody
+    # would now call live, so its rows are left alone and the plan is run
+    # again. The limit is the queue door's own (board_proposals.MAX_AGE_HOURS):
+    # a board is wired, and a board is filed, on reads of the same freshness.
+    old = board_proposals.stale_read(row["read_at"], now)
+    if old:
         return "stale", (f"the live read is {old}; a board is read again before "
                          f"it is wired - plan again")
     c = by_id.get(cid)
@@ -814,9 +1110,26 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                          f"{show(now_ats.get('type'), now_ats.get('ref'))}")
     if c.get("out_of_scope"):
         return "moved", "it was ruled out of scope since the plan"
+    # THE TWO CHECKS THEMSELVES, against the record as it reads now. A
+    # website on file that turned out to be another company's of the same
+    # name, or a record renamed, used to be wired all the same - with a note
+    # quoting the old site as "their page".
+    was_aka = sorted(str(x) for x in judged["also_known_as"])
+    if c.get("name") != judged["name"] or _akas(c) != was_aka:
+        return "moved", (f'its name on file changed since the plan: the board\'s name was '
+                         f'judged against "{judged["name"]}"'
+                         + (f' (also {", ".join(was_aka)})' if was_aka else "")
+                         + f', and the record now reads "{c.get("name")}"'
+                         + (f' (also {", ".join(_akas(c))})' if _akas(c) else "")
+                         + " - plan again")
+    if not page_belt._same_site(c1["page"], c.get("website") or ""):
+        return "moved", (f"the page that pointed at the board, {c1['page']}, is not on the "
+                         f"website now on file ({c.get('website') or 'none'}) - plan again")
     owned = ownership_on_file(c)
     if owned:
         return "moved", f"since the plan, {owned[0]}"
+    if str(c.get("ats_note") or "").strip():
+        return "moved", "a note about its board was put on file since the plan"
     v = ruled.get(cid)
     p = proposals.get(f"board:{cid}")
     if (isinstance(v, dict) and not v.get("accept")) or \
@@ -825,17 +1138,30 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     held = [by_id[i]["name"] for i in holders.get(key, []) if i != cid and i in by_id]
     if held:
         return "moved", f"{show(kind, ref)} is now on file as the board of {held[0]}"
+    if n < shown.get(cid, 0):
+        return "moved", (f"the public board now shows {many(shown[cid])} for it, more than "
+                         f"the {n} this board read - plan again")
     return None
+
+
+def queue_rows(holds: list) -> list:
+    """What to file for these held boards, each stamped with ITS row's read.
+
+    One stamp per row. The queue row carries no time of its own, so there is
+    nothing to drift from the one this door judges the row by: a worklist
+    whose reads are a month old cannot file them as today's.
+    """
+    return [dict(r["queue_row"], read_at=r.get("read_at"))
+            if isinstance(r.get("queue_row"), dict) else r.get("queue_row") for r in holds]
 
 
 def note_for(row: dict, today: str) -> str:
     """Both checks in one line, kept on the record as ats_note."""
     c1, c2 = row["check_1"], row["check_2"]
     read_on = str(row.get("read_at") or "")[:10]
-    return privacy.redact(
-        f"wired {today}: {pointer(c1, full=False)}; the board names "
-        f"\"{c2['name']}\"; {many(row['postings'])} read"
-        + (f" {read_on}" if read_on and read_on != today else ""))
+    return (f"wired {today}: {pointer(c1, full=False)}; the board names "
+            f"\"{c2['name']}\"; {many(row['postings'])} read"
+            + (f" {read_on}" if read_on and read_on != today else ""))
 
 
 def decide(doc: dict, companies: list, by: str, now: dt.datetime) -> dict:
@@ -844,6 +1170,7 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime) -> dict:
     holders = holders_of(companies)
     ruled = admin.read(board_proposals.RULED.name, {})
     proposals = admin.read("agent_proposals.json", {})
+    shown = shown_now(admin.read("board.json", {}))
     wires = [r for r in doc["rows"] if r["action"] == "WIRE"]
     ids = collections.Counter(r["id"] for r in wires)
     keys = collections.Counter(board_key(r.get("type"), r.get("ref")) for r in wires)
@@ -851,7 +1178,7 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime) -> dict:
 
     wire, left = [], []
     for row in wires:
-        problem = wire_problem(row, by_id, holders, ruled, proposals, twice, now)
+        problem = wire_problem(row, by_id, holders, ruled, proposals, twice, shown, now)
         if problem:
             left.append({"row": row, "code": problem[0], "why": problem[1]})
         else:
@@ -859,9 +1186,14 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime) -> dict:
     holds = [r for r in doc["rows"] if r["action"] == "HOLD"]
     # asked of the same door the write goes through, so the look and the
     # write cannot disagree about which rows the queue will take
-    filing = board_proposals.file_found([r.get("queue_row") for r in holds], by,
-                                        write=False, force=True, companies=companies)
+    filing = board_proposals.file_found(queue_rows(holds), by, write=False, force=True,
+                                        companies=companies)
     return {"wire": wire, "left": left, "holds": holds, "filing": filing,
+            # what each company to be wired reads as at this moment: the
+            # code covers it, so a record corrected after the look is caught
+            # even where the correction would still pass
+            "on_file": {r["id"]: [by_id[r["id"]].get("name"), by_id[r["id"]].get("website"),
+                                  _akas(by_id[r["id"]])] for r in wire},
             "skips": [r for r in doc["rows"] if r["action"] == "SKIP"]}
 
 
@@ -874,7 +1206,8 @@ def expect_code(sha: str, d: dict, by: str) -> str:
     """
     doing = json.dumps({
         "by": by,
-        "wire": [[r["id"], board_key(r["type"], r["ref"])] for r in d["wire"]],
+        "wire": [[r["id"], spelling(r["type"], r["ref"]), *d["on_file"][r["id"]]]
+                 for r in d["wire"]],
         "left": [[x["row"]["id"], x["code"]] for x in d["left"]],
         "file": d["filing"]["added"],
         "not_filed": sorted(str(s.get("id")) for s in d["filing"]["skipped"]),
@@ -923,6 +1256,12 @@ def cmd_apply(a) -> int:
     except (OSError, ValueError) as exc:
         print(f"could not read the worklist: {exc}")
         return 2
+    # REDACTED AS IT IS READ, whoever wrote it. The plan redacts every row,
+    # and this door still does not take a file's word for that: what a row
+    # says goes into companies.json (the note, the board's stated name) and
+    # into the journal, and both are public. The hash above is of the file's
+    # own bytes, so the code a look prints still names the file it read.
+    doc = privacy.redact_deep(doc)
 
     with admin.desk_lock():
         companies = admin.read_companies()
@@ -1006,7 +1345,7 @@ def cmd_apply(a) -> int:
                       f"{journal.BLAST}-record limit; the count and every name are "
                       f"printed above, so the write is confirmed")
             rep = board_proposals.file_found(
-                [r.get("queue_row") for r in d["holds"]], by, write=True,
+                queue_rows(d["holds"]), by, write=True,
                 force=n_hold > journal.BLAST, companies=companies,
                 why=(f"{many(n_hold, 'found board')} held for the owner: the board did "
                      f"not name the company, or something on file argues with it; each "

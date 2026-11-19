@@ -45,10 +45,44 @@ WAITING = ("html", "unknown")
 # "matches" in this file as leave to wire it.
 HELD_AS = ("unknown", "MISMATCH")
 FILE_ACTION = "boards-found"
+# A FILED ROW SAYS "this board reads N postings, here are eight of them", and
+# that is only true for as long as the read behind it is live. A worklist
+# found a month later would put September's count and September's titles in
+# front of the owner under today's date. So a row carries the time its board
+# was read, and is filed only while that read is this fresh - the same limit
+# wire_found.py holds the boards it wires to.
+MAX_AGE_HOURS = 24
 
 
 def _read(p: pathlib.Path, default):
     return json.loads(p.read_text()) if p.exists() else default
+
+
+def when(stamp):
+    """The moment an ISO stamp names, with a timezone, or None."""
+    import datetime as dt
+    try:
+        t = dt.datetime.fromisoformat(str(stamp))
+    except (TypeError, ValueError):
+        return None
+    return t if t.tzinfo else t.astimezone()
+
+
+def stale_read(stamp, now=None) -> str | None:
+    """Why a live read stamped `stamp` is too old to act on, in words, or None.
+
+    Undated is stale: a read nobody can date is not one anybody can call
+    live. So is one dated more than an hour ahead - a clock that wrong says
+    nothing about how old the read is.
+    """
+    import datetime as dt
+    read = when(stamp)
+    if read is None:
+        return "undated"
+    age = ((now or dt.datetime.now().astimezone()) - read).total_seconds() / 3600
+    if age < -1:
+        return "dated in the future"
+    return f"{age:.0f} hours old" if age > MAX_AGE_HOURS else None
 
 
 def q_board_proposals(companies, board) -> list:
@@ -146,6 +180,9 @@ def _row_problem(r) -> str | None:
         return "times must say how often their page named the board"
     if not isinstance(r.get("saw"), str):
         return "saw must be the text their page named the board with"
+    if when(r.get("read_at")) is None:
+        return ("no read_at: a row says when its board was read live, so an old "
+                "read cannot be filed as today's")
     return None
 
 
@@ -175,16 +212,24 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
         the row would be written and never shown - and a refusal is kept so
         the next sweep stops proposing what somebody already said no to.
       - offer a board to a company that already reads from one.
+      - file a row whose live read is more than MAX_AGE_HOURS old, or
+        undated: the count and the titles on it are as old as the read.
+      - file for a person. The author is agent:<label>. The owner does not
+        file boards for himself to rule on, and a row stamped 'owner' would
+        say he had - on the row and in the journal.
       - force. Over the journal's 25-record limit the caller shows the count
         first and passes force=True itself.
 
     A row is {id, found {type, ref}, saw, times, verified, board_calls_itself,
-    identity ("unknown" or "MISMATCH"), identity_why, postings, titles} and
-    may carry `page`, the page on the company's own site that pointed to the
-    board. identity_why is the doubt in words: on a MISMATCH the desk prints
+    identity ("unknown" or "MISMATCH"), identity_why, postings, titles,
+    read_at} and may carry `page`, the page that pointed to the board - on
+    the company's own site unless the doubt on the row says it is not.
+    read_at is the ISO time of the live read the count and the titles came
+    from. identity_why is the doubt in words: on a MISMATCH the desk prints
     it in red, on every other filed row it prints it as the reason the board
     was not wired. `name` and `was` are taken from the company record, not
-    from the caller, and `filed` records who filed it and when.
+    from the caller, and `filed` records who filed it, when, and when the
+    board was read.
     """
     import datetime as dt
 
@@ -194,8 +239,9 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
 
     out = {"added": [], "skipped": [], "error": None}
     by = (by or "").strip()
-    if not by:
-        out["error"] = "a filing needs an author: agent:<label>"
+    if not by.startswith("agent:") or len(by) <= len("agent:"):
+        out["error"] = ("a filing names the agent that made it, as agent:<label>. "
+                        "A person does not file here: he rules, in the admin")
         return out
     if "@" in by:
         out["error"] = "the author is a handle, never an address (the repo is public)"
@@ -237,6 +283,12 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
         if problem:
             out["skipped"].append({"id": cid, "why": problem})
             continue
+        old = stale_read(r["read_at"])
+        if old:
+            out["skipped"].append({"id": cid, "why": (
+                f"the live read behind this row is {old}; a board is read again "
+                f"before it is put in front of a person - plan again")})
+            continue
         if cid in listed:
             out["skipped"].append({"id": cid, "why": "already in the list"})
             continue
@@ -257,7 +309,7 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
                 f"{c.get('name')} already reads from {kind}; a board is offered "
                 f"only to a company that has none")})
             continue
-        filed = {"by": by, "on": today, "at": stamp}
+        filed = {"by": by, "on": today, "at": stamp, "read_at": r["read_at"]}
         # an address, or nothing: a page is something a person will open
         page = r.get("page").strip() if isinstance(r.get("page"), str) else ""
         if page.lower().startswith(("http://", "https://")):
@@ -309,8 +361,14 @@ def main() -> int:
     board = json.loads((DATA / "board.json").read_text())
     rows = q_board_proposals(companies, board)
     if not rows:
-        print("no board proposals waiting."
-              " Run scripts/find_embedded_ats.py to make some.")
+        # NOT "run find_embedded_ats.py": run bare, that script REPLACES this
+        # queue's file with one run's hits, and a queue with nothing waiting
+        # is not a file with nothing in it. The rows already ruled on are
+        # still there, and a refusal's board is read from its row - the
+        # ruling itself records no board (wire_found._refusals).
+        print("no board proposals waiting. scripts/wire_found.py files the boards "
+              "it cannot prove here; scripts/find_embedded_ats.py needs its own "
+              "--out file.")
         return 0
     parent = [r for r in rows if r["warn_parent"]]
     scale = [r for r in rows if r["warn_scale"] and not r["warn_parent"]]

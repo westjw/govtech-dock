@@ -309,6 +309,25 @@ def verify(ats_block: dict) -> tuple[bool, str]:
     return ok, detail
 
 
+def board_total(ats_block: dict) -> tuple[int | None, str]:
+    """(how many postings the WHOLE board holds by its own count, in words).
+
+    NOT THE SAME NUMBER AS read_board's. A reader that filters cannot show a
+    board is small: the Workday reader asks two sales searches, so 180 rows
+    from it is as likely a company with 4,000 openings as one with 200. Where
+    the vendor states a total it is asked for here in one request; everywhere
+    else the answer is None with the reason, and None is "unknown" - never
+    zero, and never leave to treat the board as small.
+    """
+    kind, ref = ats_block.get("type"), ats_block.get("ref")
+    if kind != "workday":
+        return None, f"nothing here asks a {kind} board how many postings it holds"
+    try:
+        return ats.workday_total(ref), "Workday's own total for an empty search"
+    except Exception as exc:
+        return None, str(exc)[:70]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("url")
