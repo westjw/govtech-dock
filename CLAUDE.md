@@ -2577,6 +2577,7 @@ round.
     python3 scripts/wire_found.py plan --results ... --doubts doubts.json --by agent:<label> --out <scratch>/worklist-2.json
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label>            # a look
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label> --write --expect <code>
+    python3 scripts/wire_found.py settle --id <company> --why "<the owner's words>" --by agent:<label>   # only on his word
 
 - **`plan` is the only step on the network, and it freezes a worklist.** It
   reads `find_site_boards.py` results (several files are pooled: a plain read
@@ -2660,16 +2661,24 @@ round.
   `apply`; a company the pre-pass skips keeps the number's key (and gains
   the slug's when the same number was resolved for another company), and a
   record on file holding a number resolved in the run holds the slug too
-  (in `apply` through the worklist's own `workable_numbers`). A record
-  holding a number the run did NOT resolve may be any Workable board: while
-  one is on file every Workable board is held, "a record holds Workable
-  account N, and whether it is this board was not asked", and apply leaves
-  every Workable WIRE row alone beside such a number put on file since the
-  plan. A refused company's number is not followed (marked `declined`) and
-  the company is SKIP refused, whatever it refused - "its slug was not
-  looked for ... tell the owner" - with nothing read, probed or filed under
-  the number; "could not be found from it" is said only of a follow that was
-  made and answered. A follow, or a read under
+  (in `apply` through the worklist's own `workable_numbers`). A board the
+  owner holds under a number (a doubt, a door-filed row, a refusal) is held
+  under the slug's key too where the run resolved the number; where it did
+  not - and for a record on file holding a number nobody in the run
+  followed - a Workable board is held when it STATES one of the names that
+  account goes by (the held row's `board_calls_itself` or company, the
+  doubt's company, the record's name or also_known_as; `verify_boards.strict`),
+  in the plan and in apply: "a record holds Workable account N (X), and
+  whether it is this board was not asked ... this board states "X"". No
+  longer every Workable board (decided after the review of 27eeb628). A refused
+  company's number is not followed (marked `declined`) and the company is
+  SKIP refused, whatever it refused - "its slug was not looked for ... tell
+  the owner" - with nothing read, probed or filed under the number; and a
+  board refused under a number this run did not follow is taken to be any
+  Workable board found for that company now (SKIP refused, nothing read).
+  "Could not be found from it" is said only of a follow that was made and
+  answered; a giant's number and one that did not read say why nothing was
+  followed. A follow, or a read under
   the slug, that failed ON THE DAY is SKIP `unreadable` and asked again; a
   robots.txt disallow, a 404, a landing on no board and the rest are held
   with the reason and never wired, by the plan or by `apply`. The wired
@@ -2701,59 +2710,62 @@ round.
   first read. The first batch: JustFOIA's own board, whose ads open
   "JustFOIA, an MCCi brand" - whether a parent's brand is wired on its own
   board is his call.
-  **And it stays his, from the moment it is given.** `plan --doubts` keeps
-  every doubt it is given - whatever its row will end as, HOLD, SKIP or no
-  board - in `data/board_doubts.json` BEFORE its first request, under the
-  desk lock: one journalled ADDITION under the `--by` label, words redacted
-  and whole. ONE RECORD PER DOUBT: `{"<company id>@<when>": {id, board,
-  type, ref, why, by, on, at}}` (the first shape, `{company id: {board, why,
-  by, on, at}}`, is still read; the five records on file on 2026-11-19 are
-  in it), so a new doubt never rewrites an old one and the journal's runaway
-  rule cannot block a batch. The same words about the same board for the
-  same company are never written twice, ruled on since or not; whole records
-  are compared, never pieces of a reader's sentence. Where the company
-  already has a row waiting in Boards we found, the plan puts the doubt's
-  words on that row too (`board_proposals.add_doubt`, journalled, the row
-  stamped `updated`) - the queue takes one row per company, and the card
-  prints `identity_why` for a row carrying `filed` or `updated`. So apply
-  writes no doubt at all: the readers' own worklist planned before they
-  spoke, applied before or after the doubted one, meets the doubt as
-  `standing`, and the code its look printed no longer opens the write; the
-  plan dying, or its worklist never being written, loses nothing. Apply
-  STOPS a worklist whose reader doubts are no longer on file (plan again with
-  the same file). No file is no doubts; a file that does not read, or holds a
-  record without words, stops plan and apply. A company with a standing
-  doubt is HOLD in every later plan, in the words, until the owner rules on
-  a row that CARRIED it: a ruling in `board_proposal_rulings.json` later
-  than the doubt, on a row of the company filed or given the doubt at or
-  after it was kept, whose words contain it (`board_proposals.carried`).
-  Refused is SKIP refused, accepted means the checks decide; a ruling on a
-  row that never showed the doubt, an older ruling, or one the same day with
-  no stamps, leaves it standing. The plan's lines, the look and the journal
-  say what each doubt can reach (`reach`): its row in Boards we found; a row
-  that does not carry it ("give it again with plan --doubts, which puts it on
-  that row" - JustFOIA's second doubt, kept after its row was filed in other
-  words, is in that state today); no row
-  yet ("until a plan files one"); a company he ruled on before - "it cannot
-  reach the owner's queue ... tell the owner", never "until he rules"; or a
-  company already on a board - "wired before the reader's doubt was kept -
-  tell the owner". A held row filed after a doubt was kept carries its words
-  (`queue_rows`; the look prints "and, kept since the plan"). A SKIP made
-  after the doubts are gathered carries them and its line prints them. A
-  board a door FILED in his queue (the row carries `filed`) is held by every
-  later plan too, with the doubt it was filed on; a row an older finder
-  left, with no door's doubt on it, may still be answered by the two checks.
-  No doubt sentence or SKIP says "asked again on the next plan" unless it
-  is. The plan's last lines say nothing is wired or filed until the worklist
-  is applied with --write.
-- **A board the owner holds is held under any company's id.** The board of a
-  standing doubt, or of an unruled row a door filed in Boards we found, is
-  held for whatever company's site names it, under either Workable key, in
-  the plan and in apply (`held_boards`): a doubted company merged into its
-  duplicate left its doubt under the dropped id, and the survivor's plan
-  wired the doubted board (third review, 2026-11-19). And the desk's merge
-  (`admin.act_merge`) refuses to merge away a company with a standing doubt
-  or an unruled door-filed row: "rule on it there first".
+  **And it stays his, from the moment it is given, until he settles it.**
+  `plan --doubts` keeps every doubt it is given - HOLD, SKIP or no board -
+  in `data/board_doubts.json` BEFORE its first request, under the desk lock:
+  one journalled ADDITION under the `--by` label, words redacted and whole,
+  one record per doubt (`{"<company id>@<when>": {id, name, board, type,
+  ref, why, by, on, at}}`; the first shape `{company id: {...}}` is still
+  read). The same words about the same board for the same company are never
+  written twice, ruled on since or not (the board by its key, a Workable
+  number and slug taken for one account). Where the company has a row
+  waiting in Boards we found, the words go onto it (`board_proposals.add_doubt`,
+  stamped `updated`, which makes the card print `identity_why`), naming the
+  board - "a reader's doubt about greenhouse/xco, not the board on this card
+  (lever/xold)" - in entries of at most a third of the file
+  (`runaway_share`), a count over 25 printed BEFORE the write that passes
+  force; a refused row write stops the plan before its first request. Apply
+  writes no doubt, meets every doubt kept since its plan as `standing` (the
+  old code no longer opens the write), and STOPS a worklist whose reader
+  doubts are no longer on file. A doubts file that does not read, or holds a
+  record without words, stops plan and apply.
+  **The owner settles a doubt, and nothing the door keeps does** (decided
+  after the review of 27eeb628: his desk is never blocked by the door's
+  bookkeeping). ANY ruling of his on the company in Boards we found later
+  than the doubt settles it (by the stamps, else a strictly later date),
+  whichever row or card he ruled from, as on main; refused is then SKIP
+  refused, accepted means the checks decide. A doubt no ruling can reach - a
+  company he ruled on before, one on a board, one not on file (it holds its
+  board for any company), one refused in Agent proposals for that board, one
+  with no row yet - stands, and the plan, the look and the journal say so
+  and that he must be told (`reach`); only a row on his desk is promised his
+  ruling, and a row filed after a doubt says "his ruling on this row in
+  Boards we found settles it" of itself. "Wired before the reader's doubt
+  was kept" is said only of a doubt the same run kept. On his word,
+  `settle` adds one journalled record (`{"<id>@<when>~settled": {id,
+  settles: [keys], why, by, on, at}}`) that settles the company's standing
+  doubts for every reader (plan, apply, `held_for_the_owner`); admin_undo.py
+  takes it back. A settled doubt given again is not kept again, never called
+  standing, and tells nobody anything. A board a door FILED in his queue
+  (`filed`) is held by every later plan too, with its doubt; a row an older
+  finder left may still be answered by the two checks. A SKIP made after
+  the doubts are gathered carries them. No sentence says "asked again on the
+  next plan" unless it is; the plan's last lines say nothing is wired or
+  filed until the worklist is applied with --write.
+- **A board the owner holds is held under any company's id** - current or
+  merged away - whatever it is held by: the board of a standing doubt, or
+  of an unruled row a door filed in Boards we found, is HOLD with the words
+  quoted, and a board refused in either store (a Boards-we-found refusal by
+  the board on its row, an Agent-proposals rejection by its ats_type/ats_ref)
+  is SKIP refused, "tell the owner", with nothing read - for whatever
+  company's site names it, under either Workable key, in the plan and in
+  apply (`held_boards`; apply's codes `standing`, `queued`, `refused`). A
+  doubted or refused company merged into its duplicate left its hold under
+  the dropped id, and the survivor's plan wired the board (third review and
+  review of 27eeb628, 2026-11-19). The desk's merge (`admin.act_merge`) is NOT refused for it,
+  as on main: the door holds by board instead. Discovery and
+  wire_embedded.py still hold by company (`held_for_the_owner`), so a
+  survivor they probe is not held by a merged-away company's hold.
 - **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
   not read (kept with its error, not retried); a site that named only a
   reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
@@ -2792,8 +2804,9 @@ round.
   (check 2 was judged against them), out_of_scope, a parent, a note, a
   refusal, a discovery suspect or an Acquisitions row recorded since
   (`moved`), a reader's doubt kept since (`standing`), the board held for the
-  owner under another company's id (`standing`, `queued`), a Workable
-  account number on file the plan never followed (`number`), a door-filed
+  owner under another company's id (`standing`, `queued`, `refused`), a
+  Workable account held under a number the plan never followed whose name
+  the board states (`number`, or the hold's own code), a door-filed
   row in Boards we found for any board (`queued`), a waiting row or pending
   proposal the plan did not record in the row's `waiting_seen` (`waiting`),
   another holder (under either key), more postings shown than the board
@@ -2802,12 +2815,18 @@ round.
   4, or without `reader_doubts` (or with a blank one) or `workable_numbers`,
   is refused: version 3 kept the readers' doubts only when it was written.
 - **Every store is read strictly.** board_proposal_rulings.json,
-  agent_proposals.json, embedded_ats.json, ats_suspects.json and
-  board_doubts.json (`read_stores`, `board_proposals.strict`): a file that
-  is on disk and does not read, or reads as another shape, stops `plan`
-  before its first request and `apply` before anything is written. Read
-  through admin.read, a rulings file with merge-conflict markers in it lost
-  the owner's refusal and the refused board was wired (third review).
+  agent_proposals.json, embedded_ats.json, ats_suspects.json,
+  board_doubts.json and the files the Acquisitions queue is built from
+  (`board_proposals.ACQUISITION_FILES`: acquisitions_research.json,
+  admin_dismissed.json, acquisition_rulings.json, board_audit.json,
+  logo_log.json, link_health.json, site_identity.json) (`read_stores`,
+  `board_proposals.strict`), and companies.json and board.json
+  (`read_companies`, `read_board`): a file that is on disk and does not
+  read, or reads as another shape, stops `plan` before it keeps a doubt or
+  asks a board and `apply` before anything is written. Read through
+  admin.read, a rulings file with merge-conflict markers in it lost the
+  owner's refusal and the refused board was wired, and a broken research
+  file dropped a company from the Acquisitions queue (third review; review of 27eeb628).
 - **What a write is.** The wired boards are ONE journalled batch (action
   `wire-found`, the agent's own label, never `owner`; force only for the
   25-record rule, after the count is printed): `ats`, an `ats_note` saying
@@ -2816,9 +2835,10 @@ round.
   (its journal entry says "the board did not name the company, or something
   on file, or a reader, argues with it"). The readers' doubts are the
   plan's write, not apply's: one journalled addition to
-  data/board_doubts.json (and one to data/embedded_ats.json where a doubt
-  went onto a waiting row), made before the plan's first request - the plan
-  prints "Commit them together" for those at once. The worklist is redacted
+  data/board_doubts.json (and entries to data/embedded_ats.json where a
+  doubt went onto a waiting row), made before the plan's first request - the
+  plan prints "Commit them together" for those at once; `settle` is one
+  journalled addition to data/board_doubts.json. The worklist is redacted
   as it is read, whoever wrote it. Commit data/companies.json,
   data/embedded_ats.json, data/board_doubts.json and both journal files
   together. Postings appear after the nightly crawl, not before.
@@ -2855,7 +2875,10 @@ round.
   `check_a_readers_doubt_holds_the_board`,
   `check_a_readers_doubt_stands_until_the_owner_rules`,
   `check_a_readers_doubt_is_kept_once_and_reaches_the_owner`,
+  `check_a_readers_doubt_is_settled_only_by_the_owner`,
+  `check_the_doubts_reach_the_rows_in_entries_the_journal_takes`,
   `check_a_board_the_owner_holds_is_held_under_any_id`,
+  `check_a_workable_account_is_held_under_either_key`,
   `check_the_wiring_door_reads_every_store_strictly`,
   `check_a_worklist_row_is_asked_again_at_the_write`,
   `check_a_found_board_is_not_wired_past_what_moved`,
@@ -2869,20 +2892,24 @@ round.
   41). Second blind review (2026-11-19, of the four refinements): 26
   findings, all reproduced, all fixed together with the checks above. Third
   blind review (of 8b926b9a): 25 findings, all reproduced, fixed on branch
-  door-fixes-3 (the discovery guard first, on its own).
+  door-fixes-3 (the discovery guard first, on its own). Fourth (of
+  27eeb628): 30 findings; two of its mechanisms left the owner's desk with
+  dead ends, so the design was made simpler (any later ruling settles a
+  doubt, `settle` on his word, holds by board instead of a merge refusal).
 - **The owner's to settle:** whether a job platform nothing reads, named on
   their own site, should hold a board (it does now; a link to an aggregator
   and a link to the board's own vendor do not); whether a board named
   only in plain text should (it does now); whether Oracle finds are
   worth a way to ask their size; and what becomes of a board held under a
   Workable NUMBER whose slug could not be found: the desk will not accept a
-  number, and while that door-filed row is unruled no plan wires the slug,
-  so it waits for him to refuse it or for a person to put the slug on file.
-  Also his: a doubt about a company he ruled on before can never be ruled on
-  from the desk (that queue never shows a ruled company), so it holds the
-  board until somebody tells him; and the desk's merge does not refuse a
-  company whose REFUSAL is filed under the id being dropped (the refusal
-  stays behind).
+  number, and while that door-filed row is unruled a board under the same
+  account is held wherever a run follows the number to it or the board
+  states a name the row goes by, so it waits for him to refuse it or for a
+  person to put the slug on file. Also his: a doubt no ruling of his
+  can reach (an older ruling, a company on a board, one merged away) holds
+  its board until he is told and answers - `settle` writes his answer; and a
+  board refused for one company is now SKIP refused for every company that
+  names it, the group's own record included, until he says otherwise.
   Giants on readers that do read the whole board are still read in full
   before they are skipped.
 

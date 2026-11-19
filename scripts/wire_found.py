@@ -5,6 +5,7 @@
     python3 scripts/wire_found.py plan --results ... --doubts doubts.json --by agent:<label> --out worklist-2.json
     python3 scripts/wire_found.py apply worklist.json --by agent:<label>            # look only
     python3 scripts/wire_found.py apply worklist.json --by agent:<label> --write --expect <code>
+    python3 scripts/wire_found.py settle --id <company> --why "<the owner's words>" --by agent:<label>
 
 WHY THIS EXISTS. On 2026-11-18 the crawl read postings from about a quarter of
 the companies on the board. Of the rest, roughly a thousand have a careers
@@ -52,7 +53,10 @@ THREE OUTCOMES, AND NONE OF THEM IS SILENCE.
         `plan --doubts` keeps every one in data/board_doubts.json before it
         asks any board, puts its words on a row already waiting for the
         owner, and every later plan and every apply - of any worklist - holds
-        that company until he rules on a row that carried the doubt.
+        that company, and its board under any company's id, until he rules
+        on the company in Boards we found after the doubt was kept, or it is
+        settled on his word (`settle`). Where no ruling of his can reach it,
+        the door says so and that he must be told.
   SKIP  a giant; a board nobody could show to be smaller than one; a board
         that did not read (kept with its error: a board that will not read is
         not a wrong board); a company whose site named no board, or only one
@@ -83,9 +87,11 @@ journal's 25-record rule and only after the count has been printed; its
 34%-of-the-file rule and validate() are never argued with. The held boards
 are one journalled append to data/embedded_ats.json. The readers' doubts
 are not apply's to write: `plan --doubts` kept them before its first
-request (one journalled addition to data/board_doubts.json, and one to the
-rows already waiting), so no worklist, earlier or later, and no failure of
-this plan can wire past one.
+request (one journalled addition to data/board_doubts.json, and their words
+onto the rows already waiting, in entries the journal's runaway rule takes),
+so no worklist, earlier or later, and no failure of this plan can wire past
+one. `settle` writes the owner's word that settles a company's doubts - only
+on his word.
 
 Postings do not appear when this runs. The nightly crawl reads the new boards
 and the site follows it.
@@ -143,15 +149,21 @@ MADE = "wire_found.py plan"
 VERSION = 4
 WAITING = board_proposals.WAITING
 # A READER'S DOUBT STANDS FROM THE MOMENT IT IS GIVEN. One record per doubt,
-# {"<company id>@<when>": {id, board, type, ref, why, by, on, at}} (the first
-# shape, {company id: {board, why, by, on, at}}, is still read), written only
-# by `plan --doubts` before its first request, through the journal, with the
-# agent's own label - an ADDITION every time, never a rewrite. Every later
+# {"<company id>@<when>": {id, name, board, type, ref, why, by, on, at}} (the
+# first shape, {company id: {board, why, by, on, at}}, is still read), written
+# only by `plan --doubts` before its first request, through the journal, with
+# the agent's own label - an ADDITION every time, never a rewrite. Every later
 # plan holds such a company, and every apply of any worklist leaves its WIRE
-# row alone, until the owner rules on a row in Boards we found that carried
-# the doubt (board_proposals.standing_doubts). No file is no doubts.
+# row alone, until the owner rules on the company in Boards we found after the
+# doubt was kept, or it is settled on his word: `settle` adds a record
+# {"<company id>@<when>~settled": {id, settles: [keys], why, by, on, at}}
+# (board_proposals.standing_doubts). No file is no doubts.
 DOUBTS = board_proposals.DOUBTS
 DOUBT_ACTION = "reader-doubt"
+SETTLE_ACTION = "reader-doubt-settled"
+# What a held row filed in Boards we found says of a standing doubt it carries:
+# the row it is written on is the one his ruling settles it by.
+ON_THIS_ROW = "his ruling on this row in Boards we found settles it"
 
 # How a page points at a board, in the words the note on the record uses.
 POINTS = {"href": "links to the board", "iframe": "embeds the board",
@@ -446,11 +458,12 @@ def boards_named(entry: dict) -> tuple[list, list]:
             "hop": hop if isinstance(hop, int) and not isinstance(hop, bool) else 0,
             "mode": cand.get("mode"),
             # set by named_by_number: the account number the site used, or
-            # why the board's own address could not be found from it, or that
-            # it was not looked for (a company somebody refused)
+            # why the board's own address could not be found from it, or why
+            # it was not looked for (a giant, a board that did not read, a
+            # company somebody refused)
             "account": cand.get("account"), "no_address": cand.get("no_address"),
             "follow_failed": cand.get("follow_failed"), "too_big": cand.get("too_big"),
-            "declined": cand.get("declined")})
+            "unread": cand.get("unread"), "declined": cand.get("declined")})
     for b in boards.values():
         b["times"] = sum(s["times"] for s in b["seen"])
         spelled = {spelling(b["type"], s["ref"]): show(b["type"], s["ref"]) for s in b["seen"]}
@@ -586,13 +599,60 @@ def read_stores() -> dict:
     on disk and does not read as its shape stops `plan` before its first
     request and `apply` before anything is written. Raises
     board_proposals.Unreadable; a file that is not there is empty.
+
+    THE ACQUISITIONS QUEUE'S FILES TOO (board_proposals.ACQUISITION_FILES).
+    The door holds every company in that queue, and its builders read their
+    files leniently: with merge-conflict markers in acquisitions_research.json
+    a company held on outside research alone planned WIRE and was written
+    (review of 27eeb628, 2026-11-19). They are read here only to be shown to read.
     """
     d = admin.DATA
+    for name in board_proposals.ACQUISITION_FILES:
+        board_proposals.strict(name, d)
     return {"ruled": board_proposals.strict(board_proposals.RULED.name, d),
             "proposals": board_proposals.strict(board_proposals.PROPOSALS, d),
             "found": board_proposals.strict(board_proposals.FOUND.name, d),
             "suspects": board_proposals.strict(board_proposals.SUSPECTS, d),
             "doubts": board_proposals.read_doubts(d)}
+
+
+def read_companies() -> list:
+    """data/companies.json, read STRICTLY: a file that is on disk and does not
+    read as a list of records, each with its id, raises Unreadable. Read
+    through admin.read it was an empty list, and `plan --doubts` journalled
+    every doubt as naming "no company on file" and put none on the rows
+    waiting for the owner (review of 27eeb628, 2026-11-19)."""
+    p = admin.DATA / "companies.json"
+    if not p.exists():
+        return []
+    try:
+        got = json.loads(p.read_text())
+    except (OSError, ValueError) as exc:
+        raise board_proposals.Unreadable(
+            f"data/companies.json does not read ({' '.join(str(exc).split())[:120]})") from None
+    if not (isinstance(got, list) and all(isinstance(c, dict) and isinstance(c.get("id"), str)
+                                          and c["id"].strip() for c in got)):
+        raise board_proposals.Unreadable("data/companies.json is not a list of records, each "
+                                         "with its id")
+    return got
+
+
+def read_board() -> dict:
+    """data/board.json, which every plan and apply compares a board's count
+    with: a file that does not read, or carries no list of organizations,
+    raises Unreadable (read as empty, the hold for a board that reads fewer
+    postings than the public board shows would hold nothing)."""
+    p = admin.DATA / "board.json"
+    try:
+        got = json.loads(p.read_text()) if p.exists() else None
+    except (OSError, ValueError) as exc:
+        raise board_proposals.Unreadable(
+            f"data/board.json does not read ({' '.join(str(exc).split())[:120]})") from None
+    if not (isinstance(got, dict) and isinstance(got.get("organizations"), list)):
+        raise board_proposals.Unreadable(
+            "data/board.json has no list of organizations, so what each company already "
+            "shows on the public board cannot be compared with the board found for it")
+    return got
 
 
 def _stores(stores: dict | None) -> dict:
@@ -622,11 +682,16 @@ def _refusals(stores: dict | None = None) -> dict:
     for cid, v in s["ruled"].items():
         if not isinstance(v, dict) or v.get("accept"):
             continue
-        f = (listed.get(cid) or {}).get("found") or {}
+        row = listed.get(cid) or {}
+        f = row.get("found") if isinstance(row.get("found"), dict) else {}
         out[cid].append({"store": "Boards we found",
                          "key": board_key(f.get("type"), f.get("ref")) if f else None,
                          "board": show(f.get("type"), f.get("ref")) if f else None,
                          "type": f.get("type"), "ref": f.get("ref"),
+                         # the names the refused board went by: what it stated, and
+                         # whose row it was (held_boards, for a Workable number)
+                         "names": [n for n in (row.get("board_calls_itself"), row.get("name"))
+                                   if isinstance(n, str) and n.strip()],
                          "by": v.get("by") or "?", "on": v.get("on") or "?",
                          "why": str(v.get("why") or "").strip()})
     for key, p in s["proposals"].items():
@@ -638,6 +703,8 @@ def _refusals(stores: dict | None = None) -> dict:
                          "key": board_key(p.get("ats_type"), p.get("ats_ref")),
                          "board": show(p.get("ats_type"), p.get("ats_ref")),
                          "type": p.get("ats_type"), "ref": p.get("ats_ref"),
+                         "names": [n for n in (p.get("name"),)
+                                   if isinstance(n, str) and n.strip()],
                          "by": p.get("ruled_by") or "?", "on": p.get("ruled_on") or "?",
                          "why": str(p.get("ruled_why") or "").strip()})
     return out
@@ -665,60 +732,100 @@ _ruled_since = board_proposals.ruled_since
 
 def standing_doubts(grouped: dict, stores: dict | None = None) -> dict:
     """{company id: [its standing doubts]} - the doubts in `grouped` the
-    owner has not settled by ruling on a row that carried them
+    owner has not settled: by a ruling on the company in Boards we found
+    later than the doubt, or on his word (`settle`)
     (board_proposals.standing_doubts, the one rule every door holds a company
-    to). A refused company is SKIP refused anyway; an accepted one is on a
-    board."""
+    to)."""
     s = _stores(stores)
-    return board_proposals.standing_doubts(grouped, s["ruled"], s["found"])
+    return board_proposals.standing_doubts(grouped, s["ruled"])
 
 
-def reach(c: dict | None, rows: list, ruling, doubts=None) -> tuple[str, str]:
-    """(code, words): whether a reader's doubt about this company can reach
-    the owner, said plainly. Codes: gone, wired, ruled, unseen, row, none.
-    `doubts` are the company's standing doubts, when the words are about them.
+def settled_words(recs: list, ruling) -> str:
+    """How the doubts on file about a company were settled, said plainly."""
+    hows = []
+    for d in recs or []:
+        s = d.get("settled")
+        if isinstance(s, dict):
+            hows.append(f"settled on the owner's word ({s.get('by') or '?'} on "
+                        f"{s.get('on') or '?'}: {str(s.get('why') or '').strip()[:160]})")
+        elif isinstance(ruling, dict):
+            hows.append(f"settled: the owner ruled on this company in Boards we found on "
+                        f"{ruling.get('on') or '?'} (a board "
+                        f"{'accepted' if ruling.get('accept') else 'refused'}), after it was "
+                        f"kept")
+    return "; ".join(dict.fromkeys(hows or ["settled"])) + "; it holds nothing now"
 
-    A DOUBT THAT CANNOT REACH HIM IS NOT "HIS TO RULE ON". The queue never
-    shows a ruled company again, so a doubt about a company he ruled on
-    before holds its board for good and has to be TOLD to him; a company
-    already on a board was wired before the doubt was kept. Neither is
-    promised a ruling in Boards we found (second review, 2026-11-19). Nor is
-    a doubt his row does not carry (`unseen`: JustFOIA's second doubt was kept
-    after its row was filed, in other words) - his ruling there would not
-    settle it, and `plan --doubts` naming the company puts it on the row.
+
+def reach(c: dict | None, rows: list, ruling, standing=None, on_file=None, refusals=None,
+          fresh: bool = False) -> tuple[str, str]:
+    """(code, words): what a reader's doubt about this company can reach,
+    said plainly. Codes: settled, gone, wired, ruled, row, refused, none.
+    `standing` are the company's standing doubts and `on_file` all of its
+    doubts on file (one on file that does not stand was settled); `refusals`
+    its refusals (_refusals); `fresh` that this very run kept the doubts.
+
+    NOTHING IS PROMISED A RULING HE CANNOT MAKE, AND NOTHING SETTLED IS SAID TO
+    STAND. Any ruling of his on the company in Boards we found after the doubt
+    settles it, so a doubt about a company with a row on his desk (`row`) is
+    his to rule on. Every other standing doubt cannot reach him - an older
+    ruling (that queue never shows a ruled company again), a company already
+    on a board, one merged away, one refused in Agent proposals, one with no
+    row yet - so it says so, and that he must be told; on his word, `settle`
+    takes it back. "Wired before the reader's doubt was kept" is said only of
+    a doubt this run kept, when the board was there first (review of 27eeb628,
+    2026-11-19).
     """
+    standing = list(standing or [])
+    if on_file and not standing:
+        return "settled", settled_words(on_file, ruling)
     if c is None:
-        return "gone", "no company with this id is on file, so it holds nothing"
+        boards = sorted({d["board"] for d in standing if d.get("board")})
+        if not boards:
+            return "gone", ("no company with this id is on file, and the doubt names no board, "
+                            "so it holds nothing - tell the owner")
+        return "gone", (f"no company with this id is on file (merged away or taken off), so no "
+                        f"card of his can show it: it holds {' and '.join(boards[:3])} for any "
+                        f"company whose site names it - tell the owner")
     a = c.get("ats") or {}
     if a.get("type") not in WAITING:
-        return "wired", (f"it already reads from {show(a.get('type'), a.get('ref'))}: wired "
-                         f"before the reader's doubt was kept - tell the owner")
+        return "wired", (f"it already reads from {show(a.get('type'), a.get('ref'))}"
+                         + (": wired before the reader's doubt was kept" if fresh
+                            else ", and a doubt does not take a board off")
+                         + " - tell the owner")
     if isinstance(ruling, dict):
         return "ruled", (f"it cannot reach the owner's queue: he ruled on this company in "
                          f"Boards we found on {ruling.get('on') or '?'} (a board "
-                         f"{'accepted' if ruling.get('accept') else 'refused'}), and that "
-                         f"queue never shows a ruled company again - tell the owner")
-    if rows:
-        f = rows[0].get("found") or {}
-        if doubts and not all(board_proposals.carried(rows, d) for d in doubts):
-            return "unseen", (f"its row in Boards we found ({show(f.get('type'), f.get('ref'))}) "
-                              f"does not carry it, so his ruling there would not settle it: "
-                              f"give it again with plan --doubts, which puts it on that row, or "
-                              f"tell the owner")
+                         f"{'accepted' if ruling.get('accept') else 'refused'}), which is not "
+                         f"shown to be after the doubt was kept, and that queue never shows a "
+                         f"ruled company again - tell the owner")
+    live = [r for r in rows or [] if isinstance(r, dict) and isinstance(r.get("found"), dict)]
+    if live:
+        f = live[0]["found"]
         return "row", (f"it is on its row in Boards we found ({show(f.get('type'), f.get('ref'))}), "
-                       f"and holds the board until the owner rules on that row")
-    return "none", ("no row for it is in Boards we found yet: it holds the board until a "
-                    "plan files one and the owner rules on it")
+                       f"and any ruling of his on that row settles it")
+    # refused in Agent proposals FOR THE BOARD THE DOUBT IS ABOUT: every plan
+    # that finds that board skips it as refused, so no row ever carries it
+    doubted = {board_key(*doubt_board(d)) for d in standing if doubt_board(d)[0]}
+    rejected = [r for r in refusals or [] if r.get("store") == "Agent proposals"
+                and r.get("key") in doubted]
+    if rejected:
+        r = rejected[0]
+        return "refused", (f"the board it is about was refused for it in Agent proposals "
+                           f"({r['board']}, {r['by']} on {r['on']}), so no plan files a row for "
+                           f"it in Boards we found: it holds its board - tell the owner")
+    return "none", ("it has no row in Boards we found, so no ruling of his can settle it yet: "
+                    "it holds the board, and the next held row filed for it carries it - tell "
+                    "the owner")
 
 
 def doubt_words(d: dict, holds: str | None = None) -> str:
     """A standing doubt, as a held row says it - the reader's words whole,
-    and what it holds until (`holds`: reach's words for the company)."""
+    and, where given, what settles it (`holds`)."""
     return (f"a reader's doubt about this company stands, recorded "
             f"{d.get('on') or '?'} by {d.get('by') or '?'}"
             + (f" about {d['board']}" if d.get("board") else "")
-            + f": {str(d.get('why') or '(no words recorded)').strip()}; "
-            + (holds or "it holds the board until the owner rules on it in Boards we found"))
+            + f": {str(d.get('why') or '(no words recorded)').strip()}"
+            + (f"; {holds}" if holds else ""))
 
 
 def _waiting(stores: dict | None = None) -> dict:
@@ -764,37 +871,139 @@ def doubt_board(d: dict) -> tuple:
     return kind, (rest.split("/") if kind == "workday" else rest)
 
 
-def held_boards(standing: dict, stores: dict, names: dict) -> dict:
-    """{board key: [{id, code, words}]} - every board the
-    owner holds, under WHATEVER company it is held for: the board of a
-    reader's doubt that stands, and the board of a row a door filed in
-    Boards we found that he has not ruled on.
+def _strict_names(*names) -> dict:
+    """{a name as verify_boards.strict leaves it: the name as written} for
+    every name given that is one. The comparison the by-name hold makes."""
+    out = {}
+    for n in names:
+        if isinstance(n, str) and n.strip():
+            key = verify_boards.strict(n)[0]
+            if key:
+                out.setdefault(key, n.strip())
+    return out
 
-    HELD BY BOARD AS WELL AS BY COMPANY. A doubted company merged into its
-    duplicate at the desk left its doubt, and its door-filed row, under the
-    id that was dropped; the survivor's plan saw neither and the door wired
-    the board both readers doubted (second review, 2026-11-19). A board held
-    for one company is held for every company whose site names it.
+
+def _their_names(c: dict | None) -> list:
+    return [c.get("name"), *_akas(c)] if isinstance(c, dict) else []
+
+
+def _slug_of(resolved: dict, number: str) -> str | None:
+    """The slug this run (or the worklist's plan) followed a Workable account
+    number to, or None. `resolved` is ctx['slugs'] ({number: (slug, how,
+    kind)}) or a worklist's workable_numbers ({number: slug or null})."""
+    got = (resolved or {}).get(number)
+    slug = got[0] if isinstance(got, (list, tuple)) and got else got
+    return slug if isinstance(slug, str) and slug else None
+
+
+def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None = None,
+                companies: list | None = None, refusals: dict | None = None) -> dict:
+    """Every board the owner holds, under WHATEVER company it is held for:
+    {"keys": {board key: [hold]}, "named": [hold]}, a hold being {id, code,
+    board, words, names}. Codes: `standing` (the board of a reader's doubt
+    that stands), `queued` (the board of a row a door filed in Boards we found
+    that he has not ruled on), `refused` (a board refused in either store: a
+    Boards-we-found refusal by the board on its row, an Agent-proposals
+    rejection by its ats_type/ats_ref), and `number` (a record on a Workable
+    account number this run did not follow to a slug).
+
+    HELD BY BOARD AS WELL AS BY COMPANY. A company merged into its duplicate
+    at the desk leaves its doubts, its door-filed row and its refusals under
+    the id that was dropped, and nothing moves them: the survivor's plan saw
+    none of them and wired the board both readers had doubted, or the one the
+    owner had refused (the reviews of 8b926b9a and 27eeb628, 2026-11-19). So a board held
+    for one company is held for every company whose site names it - a refused
+    one is SKIP refused, the others HOLD with the words - and the desk's merge
+    is never refused for it.
+
+    A WORKABLE BOARD HELD UNDER ITS ACCOUNT NUMBER is one board under two
+    keys. Where this run (`resolved`) followed the number to its slug, the
+    hold is under the slug's key as well. Where it did not, no request ties
+    the number to any slug found, and holding every Workable board for it
+    held boards that could not be the same account. So the hold goes in
+    `named`, with the names it goes by - what that board stated, whose
+    record or row it is - and a Workable board that states one of them
+    (verify_boards.strict) is held beside it. A record on file holding a
+    number nobody in the run followed is held the same way, by its names.
     """
-    out = collections.defaultdict(list)
+    keys, named = collections.defaultdict(list), []
+
+    def name_of(cid, *also):
+        # the record's name, or - merged away - the name its row, refusal or
+        # doubt went by
+        return (by_id.get(cid) or {}).get("name") or next(
+            (n for n in also if isinstance(n, str) and n.strip()), cid)
+
+    def hold(cid, code, kind, ref, words, *names):
+        h = {"id": cid, "code": code, "board": show(kind, ref), "words": words,
+             "names": _strict_names(*names, *_their_names(by_id.get(cid)))}
+        keys[board_key(kind, ref)].append(h)
+        if numbered(kind, ref):
+            slug = _slug_of(resolved, _number(ref))
+            if slug:
+                keys[board_key("workable", slug)].append(h)
+            elif h["names"]:
+                named.append(dict(h, number=_number(ref)))
+
     for cid, recs in (standing or {}).items():
         for d in recs:
             kind, ref = doubt_board(d)
             if kind:
-                out[board_key(kind, ref)].append({"id": cid, "code": "standing", "words": (
+                hold(cid, "standing", kind, ref, (
                     f"{show(kind, ref)} is the board of a reader's doubt that stands about "
-                    f"{names.get(cid) or cid}, recorded {d.get('on') or '?'} by "
-                    f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")})
+                    f"{name_of(cid, d.get('name'))}, recorded {d.get('on') or '?'} by "
+                    f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}"), d.get("name"))
     ruled = stores["ruled"]
     for r in stores["found"]:
         f = r.get("found") if isinstance(r.get("found"), dict) else None
         if f and isinstance(r.get("filed"), dict) and r["id"] not in ruled:
-            out[board_key(f.get("type"), f.get("ref"))].append({"id": r["id"], "code": "queued", "words": (
+            hold(r["id"], "queued", f.get("type"), f.get("ref"), (
                 f"{show(f.get('type'), f.get('ref'))} is in the owner's queue (Boards we found) "
-                f"for {names.get(r['id']) or r['id']}, filed {r['filed'].get('on') or '?'} by "
+                f"for {name_of(r['id'], r.get('name'))}, filed {r['filed'].get('on') or '?'} by "
                 f"{r['filed'].get('by') or '?'} with its doubt: "
                 f"\"{str(r.get('identity_why') or 'none recorded')[:240]}\"; a board filed "
-                f"there is his to settle")})
+                f"there is his to settle"), r.get("board_calls_itself"), r.get("name"))
+    for cid, refs in sorted((refusals if refusals is not None else _refusals(stores)).items()):
+        for x in refs:
+            if x.get("key") and x.get("type"):
+                hold(cid, "refused", x["type"], x["ref"], (
+                    f"{x['board']} was refused for {name_of(cid, *(x.get('names') or [])[::-1])} "
+                    f"in {x['store']} ({x['by']} on "
+                    f"{x['on']}" + (f": {x['why']}" if x["why"] else "") + "), and a board "
+                    f"somebody said no to is not proposed again"), *(x.get("names") or []))
+    for number, ids in sorted(numbers_on_file(companies or []).items()):
+        if _slug_of(resolved, number):
+            continue                    # the slug's holder, under its own key
+        for cid in ids:
+            names = _strict_names(*_their_names(by_id.get(cid)))
+            if names:
+                named.append({"id": cid, "code": "number", "number": number, "names": names,
+                              "board": f"workable/{number}", "words": (
+                                  f"a record holds Workable account {number} "
+                                  f"({name_of(cid)}), and whether it is this board was not "
+                                  f"asked")})
+    return {"keys": keys, "named": named}
+
+
+def named_holds(held: dict, kind, names, cid) -> list:
+    """(code, words) for each hold a Workable board stating `names` meets by
+    name (held_boards' `named`), other than `cid`'s own - which hold it by
+    company. Only ever more holding: a name the board states is compared with
+    the names the held account goes by, strictly."""
+    if kind != "workable":
+        return []
+    mine = _strict_names(*(names or []))
+    out = []
+    for h in (held or {}).get("named") or []:
+        if h["id"] == cid:
+            continue
+        hit = sorted(set(mine) & set(h["names"]))
+        if hit:
+            out.append((h["code"], (
+                f"{h['words']}; it is held under Workable account {h['number']}, which was not "
+                f"followed to a slug, and this board states \"{mine[hit[0]]}\", a name that "
+                f"account goes by ({h['names'][hit[0]]}) - whether it is the same Workable "
+                f"account was not asked")))
     return out
 
 
@@ -805,22 +1014,6 @@ def numbers_on_file(companies: list) -> dict:
         a = c.get("ats") or {}
         if numbered(a.get("type"), a.get("ref")):
             out[_number(a["ref"])].append(c["id"])
-    return out
-
-
-def unasked_numbers(on_file: dict, resolved: dict, names: dict, ignore=()) -> list:
-    """The words for every Workable account number a record holds that this
-    run did not resolve to a slug: whether one of them is the board found
-    now was not asked, so no Workable board is wired beside them."""
-    out = []
-    for number in sorted(on_file):
-        got = resolved.get(number)
-        slug = got[0] if isinstance(got, (list, tuple)) and got else got
-        if slug or number in ignore:
-            continue
-        who = " and ".join(names.get(i) or i for i in on_file[number][:3])
-        out.append(f"a record holds Workable account {number} ({who}), and whether it is "
-                   f"this board was not asked")
     return out
 
 
@@ -907,26 +1100,36 @@ def standing(companies: list, board: dict, stores: dict | None = None) -> dict:
     used raises rather than hold nothing."""
     s = _stores(stores)
     by_id = {c["id"]: c for c in companies}
-    names = {cid: c.get("name") for cid, c in by_id.items()}
     doubts = standing_doubts(s["doubts"], s)
+    refusals = _refusals(s)
     return {"by_id": by_id,
+            "companies": companies,
+            "stores": s,
             "holders": holders_of(companies),
             "suspects": _suspects(s),
-            "refusals": _refusals(s),
+            "refusals": refusals,
             "waiting": _waiting(s),
             "doubts": doubts,
-            # what each company's doubt can reach, and every board the owner
-            # holds under any company's id
+            # what each company's doubt can reach (reach)
+            "on_file": s["doubts"],
             "rows": board_proposals.rows_by_id(s["found"]),
             "ruled": s["ruled"],
-            "held_boards": held_boards(doubts, s, names),
-            # Workable account numbers on file, by number: one this run does
-            # not resolve may be any Workable board found
-            "numbers": numbers_on_file(companies),
+            # every board the owner holds under any company's id: set by
+            # plan() once the pre-pass has followed this run's Workable numbers
+            "held_boards": held_boards(doubts, s, by_id, {}, companies, refusals),
             "acquisitions": acquisition_doubts(companies, board),
             "shown": shown_now(board),
             "crawled": str((board or {}).get("generated") or "")[:10],
             "total": {}, "read": {}, "said": {}}
+
+
+def reach_of(cid: str, ctx: dict) -> tuple[str, str]:
+    """reach() for one company, as the plan's data reads (`fresh`: its doubt
+    was kept by this very plan)."""
+    return reach(ctx["by_id"].get(cid), (ctx.get("rows") or {}).get(cid) or [],
+                 (ctx.get("ruled") or {}).get(cid), (ctx.get("doubts") or {}).get(cid),
+                 (ctx.get("on_file") or {}).get(cid), (ctx.get("refusals") or {}).get(cid),
+                 cid in (ctx.get("fresh") or ()))
 
 
 # ------------------------------------------------- a board named by a number
@@ -1056,9 +1259,12 @@ def named_by_number(results: dict, ctx: dict) -> None:
     cheap questions `consider` asks first - never read a board to propose it
     again); a refused company's numbers are marked `declined`, and consider
     skips it as refused. Where the slug cannot be found the number stays,
-    marked with why: `no_address` (consider holds it), `follow_failed`
-    (failed on the day: consider skips it and the next plan asks again) or
-    `too_big` (a giant: consider skips it).
+    marked with why: `no_address` (a follow made and answered: consider holds
+    it), `follow_failed` (failed on the day: consider skips it and the next
+    plan asks again), `too_big` (a giant: nothing was followed, and consider
+    skips it) or `unread` (the board did not read under its number, so
+    nothing was followed: consider skips it with that read's error). "Could
+    not be found from it" is said only of the first.
     """
     found = ctx.setdefault("slugs", {})
     for cid in sorted(results):
@@ -1087,7 +1293,9 @@ def named_by_number(results: dict, ctx: dict) -> None:
             elif kind == "transient":
                 cand["follow_failed"] = how
             elif kind == "giant":
-                cand["too_big"], cand["no_address"] = True, how
+                cand["too_big"] = how
+            elif kind == "unread":
+                cand["unread"] = how
             else:
                 cand["no_address"] = how
 
@@ -1132,11 +1340,16 @@ def _carry(doubts: list) -> dict:
 # What the plan and the look say of a company a reader doubted whose doubt
 # reaches no new queue row. The doubt itself was kept by `plan --doubts`
 # before it asked anything, so "kept" is true when this is printed; what it
-# can reach is said in reach's words.
+# can reach is said in reach's words. A doubt given again in the words of
+# one the owner has settled is not kept again (D2), and is never said to
+# stand: SETTLED.
 UNFILED = ("a reader's doubt reaches no new row: its row is skipped ({kind}); the doubt "
            "is kept standing (data/board_doubts.json), and {reach}")
 UNQUEUED = ("a reader's doubt reaches no new row: the queue cannot take the row ({why}); "
             "the doubt is kept standing (data/board_doubts.json), and {reach}")
+SETTLED = ("a reader's doubt given in the words of one already on file ({reach}): it was not "
+           "kept again and holds no later plan - to hold the board again, give the doubt in "
+           "new words")
 
 
 def _pages_note(entry: dict) -> str:
@@ -1215,15 +1428,29 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # company from that queue for good, so even a different board could not
     # be shown there: it is said out loud here for the owner to be told.
     refused = ctx["refusals"].get(cid) or []
-    # A NUMBER NOBODY ASKED ABOUT MAY BE THE BOARD THAT WAS REFUSED. A
-    # refused company's Workable number is not followed to its slug (the
-    # pre-pass asks nobody about a company somebody said no to), so whether
-    # it is the Workable board refused under its slug is not known - and it
-    # is taken to be: the answer that proposes nothing again.
+    slugs = ctx.get("slugs") or {}
+
+    def refused_keys(r):
+        # a refusal under a Workable NUMBER this run followed is the slug too
+        ks = {r["key"]} if r.get("key") else set()
+        if numbered(r.get("type"), r.get("ref")) and _slug_of(slugs, _number(r["ref"])):
+            ks.add(board_key("workable", _slug_of(slugs, _number(r["ref"]))))
+        return ks
+    # A NUMBER NOBODY ASKED ABOUT MAY BE THE BOARD THAT WAS REFUSED - EITHER
+    # WAY ROUND. A refused company's Workable number is not followed to its
+    # slug (the pre-pass asks nobody about a company somebody said no to), so
+    # whether it is the Workable board refused under its slug is not known;
+    # and a Workable board refused under a number this run did not follow may
+    # be any slug found for it now (review of 27eeb628, 2026-11-19: a board refused
+    # as workable/710855 was read, probed and filed again as its slug). Each
+    # is taken to be the board refused: the answer that proposes nothing again.
     unknown = numbered(kind, ref) and len(keys) == 1
-    same = [r for r in refused if r["key"] in keys]
-    maybe = [r for r in refused if unknown and r not in same and r.get("type") == "workable"
-             and not numbered("workable", r.get("ref"))]
+    same = [r for r in refused if refused_keys(r) & set(keys)]
+    maybe = [r for r in refused if r not in same and r.get("type") == "workable"
+             and kind == "workable"
+             and ((unknown and not numbered("workable", r.get("ref")))
+                  or (numbered("workable", r.get("ref"))
+                      and not _slug_of(slugs, _number(r["ref"]))))]
     desk = [r for r in refused if r["store"] == "Boards we found"]
     # A REFUSED COMPANY'S NUMBER WAS NOT FOLLOWED (named_by_number marks it
     # `declined`), so whatever it refused, nothing is read, probed or filed
@@ -1235,8 +1462,12 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         r = (same or maybe or desk or refused)[0]
         why = (f"refused earlier in {r['store']}: {r['by']} on {r['on']}"
                + (f" - {r['why']}" if r["why"] else ""))
-        if not same and (maybe or declined):
-            got = (ctx.get("slugs") or {}).get(_number(ref)) or (None,)
+        if not same and maybe and numbered("workable", r.get("ref")):
+            why += (f". The board refused then was {r['board']}, a Workable account number "
+                    f"this run did not follow to its slug, so the Workable board found now, "
+                    f"{show(kind, ref)}, is taken to be the board refused - tell the owner")
+        elif not same and (maybe or declined):
+            got = (slugs.get(_number(ref)) or (None,)) if numbered(kind, ref) else (None,)
             why += (f". The board found now is {show(kind, ref)}, a Workable account "
                     f"number, and its slug was not looked for - a company somebody said "
                     f"no to is not asked of anybody"
@@ -1250,6 +1481,18 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                     f"one found now is {show(kind, ref)}, and a ruled company is never "
                     f"shown in that queue again - tell the owner")
         return _skip(base, "refused", why)
+    # A BOARD REFUSED FOR ANOTHER COMPANY'S ID is refused here too
+    # (held_boards): merged into its duplicate, a refused company left its
+    # refusal under the id that was dropped, the survivor took its name as
+    # also_known_as, and the next plan wired the board somebody had said no
+    # to (review of 27eeb628, 2026-11-19).
+    owner_holds = ctx.get("held_boards") or {"keys": {}, "named": []}
+    hits = list({id(h): h for k in keys for h in owner_holds["keys"].get(k, [])
+                 if h["id"] != cid}.values())
+    no = [h for h in hits if h["code"] == "refused"]
+    if no:
+        return _skip(base, "refused", f"{no[0]['words']}; the board found now is that board, "
+                                      f"{show(kind, ref)}, for another record - tell the owner")
 
     # --- everything on file that argues with wiring it, in words -----------
     doubts = []
@@ -1277,7 +1520,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     if numbered(kind, ref) and seen.get("no_address"):
         # ONLY WHEN A FOLLOW WAS MADE AND ANSWERED. A follow that failed on
         # the day is skipped below and asked again; a number nobody followed
-        # says so - "could not be found" is a claim about an attempt.
+        # says why - "could not be found" is a claim about an attempt.
         doubts.append(f"their site asks for this board by its Workable account number "
                       f"({ref}), and the board's own address could not be found from it "
                       f"({seen['no_address']}): apply.workable.com/{_number(ref)} is "
@@ -1285,10 +1528,15 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                       f"all, and its slug has to be found first (the public site and the "
                       f"desk link their own site for a number, never that address)")
     elif numbered(kind, ref) and not seen.get("follow_failed"):
+        # a giant's number is read once and nothing is followed; a number that
+        # did not read cannot be followed either (review of 27eeb628, 2026-11-19)
+        not_why = (f" ({seen['too_big']})" if seen.get("too_big") else
+                   f" (the board did not read under its number: {seen['unread']})"
+                   if seen.get("unread") else "")
         doubts.append(f"their site asks for this board by its Workable account number "
-                      f"({ref}), and its slug was not looked for: apply.workable.com/"
-                      f"{_number(ref)} is Workable's error page, so the board is wired by "
-                      f"its slug or not at all")
+                      f"({ref}), and its slug was not looked for{not_why}: "
+                      f"apply.workable.com/{_number(ref)} is Workable's error page, so the "
+                      f"board is wired by its slug or not at all")
     if first.get("spellings"):
         doubts.append(f"their site spells this board more than one way "
                       f"({' and '.join(first['spellings'][:4])}); where case matters those "
@@ -1334,16 +1582,8 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # A BOARD THE OWNER HOLDS FOR ANOTHER COMPANY'S ID is held here too: the
     # board of a standing doubt, or of an unruled row a door filed, under
     # either Workable key (held_boards; this company's own are said below)
-    for words in dict.fromkeys(h["words"] for k in keys for h in ctx["held_boards"].get(k, [])
-                               if h["id"] != cid):
+    for words in dict.fromkeys(h["words"] for h in hits):
         doubts.append(words)
-    # A WORKABLE NUMBER ON FILE THAT NOBODY IN THIS RUN FOLLOWED may be this
-    # very board under its other key: a record set to workable/710855 by hand
-    # and a site linking workable/archico would be two records on one account
-    if kind == "workable":
-        doubts += unasked_numbers(ctx["numbers"], ctx.get("slugs") or {},
-                                  {i: c.get("name") for i, c in by_id.items()},
-                                  ignore={_number(ref)} if numbered(kind, ref) else ())
     for r in refused:
         doubts.append(f"an earlier board for this company was refused ({r['board']}, "
                       f"{r['by']} on {r['on']}" + (f": {r['why']}" if r["why"] else "") + ")")
@@ -1367,18 +1607,21 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                           f"there is his to settle")
     reviewed = str((ctx.get("reviewed") or {}).get(cid) or "").strip()
     stands = (ctx.get("doubts") or {}).get(cid) or []
-    holds = reach(c, (ctx.get("rows") or {}).get(cid) or [],
-                  (ctx.get("ruled") or {}).get(cid), stands)[1]
+    reach_code, holds = reach_of(cid, ctx)
+    if reach_code == "none":
+        # the row this plan holds is the row that carries it to him: said of
+        # that row, never "no row for it is in Boards we found" on the row
+        # itself (review of 27eeb628, 2026-11-19)
+        holds = ON_THIS_ROW
     for d in stands:
-        # A READER'S DOUBT STANDS UNTIL THE OWNER RULES ON A ROW THAT CARRIED
-        # IT. It used to hold the board for the one plan that was given it:
-        # JustFOIA was filed on two readers' doubt and the next plan had it
-        # WIRE, and a doubted board that ended SKIP that day was filed
-        # nowhere at all. `plan --doubts` keeps every doubt it is given
-        # (data/board_doubts.json) before it asks anything, each its own
-        # record, and every one holds the company here - in the words, and
-        # saying what it holds until (reach). The words this plan was given
-        # are said once, below.
+        # A READER'S DOUBT STANDS UNTIL THE OWNER SETTLES IT. It used to hold
+        # the board for the one plan that was given it: JustFOIA was filed on
+        # two readers' doubt and the next plan had it WIRE, and a doubted
+        # board that ended SKIP that day was filed nowhere at all. `plan
+        # --doubts` keeps every doubt it is given (data/board_doubts.json)
+        # before it asks anything, each its own record, and every one holds
+        # the company here - in the words, and saying what settles it
+        # (reach). The words this plan was given are said once, below.
         if str(d.get("why") or "").strip() != reviewed:
             doubts.append(doubt_words(d, holds))
     if reviewed:
@@ -1434,8 +1677,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     if seen.get("too_big"):
         # read once, under the number, and found to be a giant before any
         # posting was followed: it is not asked whose it is either
-        return _skip(base, "giant", f"{GIANT_WHY} ({seen.get('no_address')})",
-                     **_carry(doubts))
+        return _skip(base, "giant", f"{GIANT_WHY} ({seen['too_big']})", **_carry(doubts))
     rows_read = [str(r.get("title") or "").strip() for r in read]
     rows_read = [t for t in rows_read if t]
     # A BOARD IS SIZED BY ITS OPENINGS, NOT BY ITS ROWS. The Rippling reader
@@ -1518,6 +1760,15 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                        "how": said.get("how"), "why": why_2}
     if extra:
         base["also_seen"] = extra
+    # A WORKABLE ACCOUNT HELD UNDER A NUMBER THIS RUN DID NOT FOLLOW - a
+    # reader's doubt, a door-filed row or a refusal under workable/710855, or
+    # a record on file set to it - may be this board under its slug: held
+    # beside a board that STATES one of the names that account goes by
+    # (held_boards, named_holds). No longer every Workable board, which held
+    # boards that state other names entirely (decided after the review of
+    # 27eeb628, 2026-11-19).
+    if stated:
+        doubts += [w for _c, w in named_holds(owner_holds, kind, names, cid)]
 
     # WHAT THE READ ITSELF ARGUES. A board with nothing on it shows nothing
     # about where they hire today - an account left behind answers empty and
@@ -1565,7 +1816,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
 
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
-         stores: dict | None = None, numbers: dict | None = None) -> list:
+         stores: dict | None = None, numbers: dict | None = None, fresh=()) -> list:
     """Every company in the finder's results, decided. Network happens here.
 
     Each row is made safe to keep - an address redacted, half a character
@@ -1573,13 +1824,19 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     ever written or shown in a form the worklist could not hold. `stores` is
     read_stores() as cmd_plan read it (read here when left out). `numbers`,
     when given, is filled with every Workable account number this run
-    followed: {number: its slug, or None}.
+    followed: {number: its slug, or None}. `fresh` are the companies whose
+    readers' doubts keep_doubts kept in this very run.
     """
     ctx = standing(companies, board, stores)
     ctx["reviewed"] = {cid: reader_words(words) for cid, words in (reviewed or {}).items()}
+    ctx["fresh"] = set(fresh or ())         # the doubts keep_doubts kept in this run
     named_by_number(results, ctx)
     if numbers is not None:
         numbers.update({n: got[0] for n, got in sorted(ctx["slugs"].items())})
+    # what the owner holds by board, now that this run's Workable numbers are
+    # followed: a held number the run resolved is held under its slug too
+    ctx["held_boards"] = held_boards(ctx["doubts"], ctx["stores"], ctx["by_id"], ctx["slugs"],
+                                     companies, ctx["refusals"])
     # a record on file holding a Workable NUMBER is the same board as the
     # slug that number was followed to in this run
     for c in companies:
@@ -1616,10 +1873,9 @@ def reader_words(words) -> str:
 
 
 def reaches_of(rows: list, ctx: dict) -> dict:
-    """{company id: reach's words} for every row, as the plan's data reads."""
-    return {r["id"]: reach(ctx["by_id"].get(r["id"]), (ctx.get("rows") or {}).get(r["id"]) or [],
-                           (ctx.get("ruled") or {}).get(r["id"]),
-                           (ctx.get("doubts") or {}).get(r["id"]))[1] for r in rows}
+    """{company id: reach's (code, words)} for every row, as the plan's data
+    reads."""
+    return {r["id"]: reach_of(r["id"], ctx) for r in rows}
 
 
 def unfiled(rows: list, doubted, why_not: dict | None = None,
@@ -1628,18 +1884,25 @@ def unfiled(rows: list, doubted, why_not: dict | None = None,
     queue row: its row was skipped, or (the look's `why_not`) the queue
     cannot take it. The doubt is not lost - the plan kept it before it asked
     anything - and it is never dropped without a word, nor said to wait for
-    a ruling it cannot get (`reaches`)."""
+    a ruling it cannot get, nor said to stand once it was settled
+    (`reaches`: reach's (code, words) for each company)."""
     by_id = {r["id"]: r for r in rows}
     out = []
     for cid in sorted(doubted or ()):
         r = by_id.get(cid)
         if r is None:
             continue
-        where = (reaches or {}).get(cid) or "it holds the board in every later plan"
-        if r["action"] != "HOLD":
-            line = UNFILED.format(kind=r.get("kind") or r["action"].lower(), reach=where)
+        code, where = (reaches or {}).get(cid) or (None, None)
+        if code == "settled":
+            if r["action"] == "HOLD" and cid not in (why_not or {}):
+                continue
+            line = SETTLED.format(reach=where)
+        elif r["action"] != "HOLD":
+            line = UNFILED.format(kind=r.get("kind") or r["action"].lower(),
+                                  reach=where or "what it can reach was not asked")
         elif cid in (why_not or {}):
-            line = UNQUEUED.format(why=why_not[cid], reach=where)
+            line = UNQUEUED.format(why=why_not[cid], reach=where or "what it can reach was not "
+                                                               "asked")
         else:
             continue
         out.append(f"  NOTE  {str(r['name'])[:28]:<30} {line}")
@@ -1696,6 +1959,22 @@ def board_named(entry: dict | None, c: dict | None) -> tuple:
     return show(first["type"], seen["ref"]), first["type"], seen["ref"]
 
 
+def same_board(a: tuple, b: tuple) -> bool:
+    """Are the boards (type, ref) `a` and `b` one board, for one question:
+    is a reader's doubt already on file about it? By board_key, never by
+    spelling - "greenhouse/AcmeCo" and "greenhouse/acmeco" are one board, and
+    the same words about it were written twice after the owner's ruling and
+    stood again (review of 27eeb628, 2026-11-19). A Workable account number beside
+    a Workable slug is taken to be the same account: nothing before the first
+    request can tell them apart. No board and no board are the same."""
+    (ka, ra), (kb, rb) = a, b
+    if not ka or not kb:
+        return not ka and not kb
+    if board_key(ka, ra) == board_key(kb, rb):
+        return True
+    return ka == kb == "workable" and numbered(ka, ra) != numbered(kb, rb)
+
+
 def new_doubts(reviewed: dict, results: dict, by_id: dict, grouped: dict, taken,
                by: str) -> dict:
     """{record key: record} for every reader's doubt that is not already on
@@ -1704,25 +1983,57 @@ def new_doubts(reviewed: dict, results: dict, by_id: dict, grouped: dict, taken,
     again by a re-plan with the same --doubts file, came back as new, with a
     stamp later than his ruling, and stood again (second review,
     2026-11-19). Each new doubt is a record of its own, under a key nothing
-    else holds: keeping one is an addition to the file, never a rewrite."""
+    else holds: keeping one is an addition to the file, never a rewrite. It
+    carries the company's name as it read then: a doubt held by board under
+    a Workable number is compared with a board's stated name by it, after the
+    record is merged away."""
     on, at = dt.date.today().isoformat(), admin.now()
     taken = set(taken)
     out = {}
     for cid, words in sorted(reviewed.items()):
         board, kind, ref = board_named(results.get(cid), by_id.get(cid))
-        if any(str(d.get("why") or "").strip() == words and d.get("board") == board
+        if any(str(d.get("why") or "").strip() == words and same_board(doubt_board(d), (kind, ref))
                for d in grouped.get(cid) or []):
             continue
         key, n = f"{cid}@{at}", 2
         while key in taken:
             key, n = f"{cid}@{at}~{n}", n + 1
         taken.add(key)
-        out[key] = {"id": cid, "board": board, "type": kind, "ref": ref,
-                    "why": words, "by": by, "on": on, "at": at}
+        name = (by_id.get(cid) or {}).get("name") or (results.get(cid) or {}).get("name")
+        out[key] = {"id": cid, **({"name": str(name)} if name else {}), "board": board,
+                    "type": kind, "ref": ref, "why": words, "by": by, "on": on, "at": at}
     return out
 
 
-def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str) -> tuple:
+def doubt_line(d: dict, row: dict | None) -> str:
+    """A reader's doubt as it goes onto a row already waiting for the owner:
+    naming the board it is about, and saying so when that is not the board
+    on his card. A doubt about greenhouse/xco went onto lever/xold's card
+    with no sign it was about another board (review of 27eeb628, 2026-11-19)."""
+    kind, ref = doubt_board(d)
+    f = (row or {}).get("found") if isinstance((row or {}).get("found"), dict) else {}
+    on_card = show(f.get("type"), f.get("ref")) if f else None
+    if not kind:
+        about = "this company"
+    elif f and board_key(kind, ref) == board_key(f.get("type"), f.get("ref")):
+        about = f"this board ({show(kind, ref)})"
+    elif f and same_board((kind, ref), (f.get("type"), f.get("ref"))):
+        about = (f"{show(kind, ref)} (a Workable account number; this card's board, "
+                 f"{on_card}, may be the same account)")
+    else:
+        about = f"{show(kind, ref)}, not the board on this card" + (
+            f" ({on_card})" if on_card else "")
+    return (f"a reader's doubt about {about}, kept {d.get('on') or '?'} by "
+            f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")
+
+
+def _without_tail(words: str) -> str:
+    """A refusal without the journal's closing "Nothing was written.": said
+    after the readers' doubts WERE written, it was false (review of 27eeb628)."""
+    return re.sub(r"\s*Nothing was written\.?\s*$", "", str(words or "")).rstrip(". ")
+
+
+def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str, say=print) -> tuple:
     """Keep the readers' doubts NOW, before this plan asks any board.
 
     A DOUBT STANDS FROM THE MOMENT IT IS GIVEN. It used to stand from the
@@ -1733,102 +2044,126 @@ def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str) -> tuple:
     2026-11-19). So: one journalled ADDITION to data/board_doubts.json under
     the agent's label, before the first request; then the words onto the row
     already waiting for the owner in Boards we found, where there is one
-    (board_proposals.add_doubt), so his card shows them. Under the desk lock,
-    so a concurrent write is not lost.
+    (board_proposals.add_doubt, in entries the journal's runaway rule takes),
+    so his card shows them. Under the desk lock, so a concurrent write is not
+    lost. A count over the journal's 25-record limit is printed (`say`)
+    BEFORE the write it confirms, never after.
 
-    Returns (lines to print, why it stopped or None, the files written).
+    Returns (why it stopped or None, the files written, the companies whose
+    doubts it kept).
     """
-    lines, wrote = [], []
+    wrote = []
     with admin.desk_lock():
         try:
             raw = board_proposals.strict(DOUBTS, admin.DATA)
             s = read_stores()
+            companies = read_companies()
         except board_proposals.Unreadable as exc:
-            return lines, f"{exc}; no reader's doubt was kept", wrote
-        by_id = {c["id"]: c for c in admin.read("companies.json", [])}
-        new = new_doubts(reviewed, results, by_id, s["doubts"], raw, by)
+            return f"{exc}; no reader's doubt was kept", wrote, set()
+        by_id = {c["id"]: c for c in companies}
+        refusals = _refusals(s)
         rows = board_proposals.rows_by_id(s["found"])
-        reaches = {cid: reach(by_id.get(cid), rows.get(cid) or [], s["ruled"].get(cid))
-                   for cid in reviewed}
+        new = new_doubts(reviewed, results, by_id, s["doubts"], raw, by)
         fresh = {r["id"] for r in new.values()}
         if new:
-            if len(new) > journal.BLAST:
-                lines.append(f"{len(new)} reader doubts in one entry is over the journal's "
-                             f"{journal.BLAST}-record limit; the count and every company are "
-                             f"printed below, so the write is confirmed")
             by_code = collections.defaultdict(list)
             for cid in sorted(fresh):
-                by_code[reaches[cid][0]].append(cid)
+                recs = [v for v in new.values() if v["id"] == cid]
+                by_code[reach(by_id.get(cid), rows.get(cid) or [], s["ruled"].get(cid), recs,
+                              recs, refusals.get(cid), fresh=True)[0]].append(cid)
+
+            def group(code, words):
+                ids = by_code[code]
+                return f"{len(ids)} {words} ({', '.join(ids[:12])})" if ids else None
             parts = [f"{many(len(new), 'reader doubt')} kept, given to the wiring door's plan "
-                     f"before it asked any board (worklist {worklist})"]
-            if by_code["row"] or by_code["none"]:
-                ids = by_code["row"] + by_code["none"]
-                parts.append(f"{len(ids)} hold their company's board in every later plan and "
-                             f"every apply, until the owner rules on a row in Boards we found "
-                             f"that carried the doubt ({', '.join(ids[:12])})")
-            if by_code["ruled"]:
-                parts.append(f"{len(by_code['ruled'])} cannot reach the owner's queue - he "
-                             f"ruled on the company in Boards we found before, and that queue "
-                             f"never shows it again - tell the owner "
-                             f"({', '.join(by_code['ruled'][:12])})")
-            if by_code["wired"]:
-                parts.append(f"{len(by_code['wired'])} are about a company already on a "
-                             f"board: wired before the reader's doubt was kept - tell the "
-                             f"owner ({', '.join(by_code['wired'][:12])})")
-            if by_code["gone"]:
-                parts.append(f"{len(by_code['gone'])} name no company on file "
-                             f"({', '.join(by_code['gone'][:12])})")
+                     f"before it asked any board (worklist {worklist})"] + [p for p in (
+                group("row", "hold their company's board in every later plan and every "
+                             "apply, until the owner rules on the company's row in Boards we "
+                             "found, which shows them"),
+                group("none", "have no row in Boards we found yet: each holds its board, and "
+                              "the next held row filed for it carries it - tell the owner"),
+                group("ruled", "cannot reach the owner's queue - he ruled on the company in "
+                               "Boards we found before, and that queue never shows it again - "
+                               "tell the owner"),
+                group("refused", "are about a company refused in Agent proposals, which no "
+                                 "plan files a row for - tell the owner"),
+                group("wired", "are about a company already on a board: wired before the "
+                               "reader's doubt was kept - tell the owner"),
+                group("gone", "name no company on file: each holds its board for any company "
+                              "whose site names it - tell the owner")) if p]
+            if len(new) > journal.BLAST:
+                say(f"{len(new)} reader doubts in one journal entry is over its "
+                    f"{journal.BLAST}-record limit. The count and every company, before the "
+                    f"write: {', '.join(sorted(fresh))}. So the write is confirmed.")
             bad = admin.save_decisions(DOUBTS, dict(raw, **new), DOUBT_ACTION,
                                        why="; ".join(parts), by=by,
                                        force=len(new) > journal.BLAST)
             if bad:
-                return lines, (f"the doubts file would refuse the readers' doubts: {bad}; no "
-                               f"reader's doubt was kept"), wrote
+                return (f"the doubts file would refuse the readers' doubts: "
+                        f"{_without_tail(bad)}; no reader's doubt was kept"), wrote, set()
             wrote.append(f"data/{DOUBTS}")
         # THE WORDS GO WHERE THE OWNER LOOKS: onto the row already waiting for
-        # him, every standing doubt of each doubted company it does not carry
+        # him, every standing doubt of each doubted company whose words it
+        # does not have, naming the board each is about
         grouped = board_proposals.read_doubts(admin.DATA)
-        standing = board_proposals.standing_doubts(grouped, s["ruled"], s["found"])
-        carry = {cid: standing[cid] for cid in sorted(reviewed)
-                 if cid in standing and reaches[cid][0] in ("row", "unseen")}
-        rep = board_proposals.add_doubt(carry, by, write=False, force=True)
-        if not rep["error"] and rep["added"]:
-            n = len(rep["added"])
-            if n > journal.BLAST:
-                lines.append(f"{n} rows in Boards we found given a reader's doubt in one "
-                             f"entry is over the journal's {journal.BLAST}-record limit; the "
-                             f"count and every company are printed below, so the write is "
-                             f"confirmed")
+        standing = board_proposals.standing_doubts(grouped, s["ruled"])
+        carry = {cid: standing[cid] for cid in sorted(reviewed) if cid in standing
+                 and reach(by_id.get(cid), rows.get(cid) or [], s["ruled"].get(cid),
+                           standing[cid], grouped.get(cid), refusals.get(cid))[0] == "row"}
+        rep = board_proposals.add_doubt(carry, by, write=False, force=True, line=doubt_line)
+        changed = sorted(rep["added"]) + sorted(rep["stamped"])
+        if not rep["error"] and changed:
+            n, size = len(changed), rep["per_entry"]
+            entries = -(-n // size)
+            force = min(n, size) > journal.BLAST
+            if force or entries > 1:
+                say(f"{n} rows in Boards we found get a reader's doubt's words"
+                    + (f", in {entries} journal entries of at most {size} rows each (the "
+                       f"journal refuses one entry that rewrites more than a third of the file)"
+                       if entries > 1 else "")
+                    + (f"; over the journal's {journal.BLAST}-record limit in one entry, so "
+                       f"the count and every company, before the write: " if force else
+                       ": ") + ", ".join(changed) + (". So the write is confirmed." if force
+                                                     else "."))
             rep = board_proposals.add_doubt(
-                carry, by, write=True, force=n > journal.BLAST,
+                carry, by, write=True, force=force, line=doubt_line,
                 why=(f"{many(sum(rep['added'].values()), 'reader doubt')} put on the rows "
-                     f"already waiting for the owner, so his card shows them: the queue "
-                     f"takes one row per company (worklist {worklist})"))
-            if not rep["error"]:
+                     f"already waiting for the owner, so his card shows them, naming the "
+                     f"board each is about: the queue takes one row per company (worklist "
+                     f"{worklist})"))
+            if rep["entries"]:
                 wrote.append(f"data/{board_proposals.FOUND.name}")
         if rep["error"]:
-            return lines, (f"the readers' doubts are kept in data/{DOUBTS}, and their words "
-                           f"could not be put on the rows already waiting for the owner: "
-                           f"{rep['error']}"), wrote
+            done = (f"; {rep['entries']} of its entries were written first" if rep["entries"]
+                    else "; the queue file was not changed")
+            return ((f"the readers' doubts are kept in data/{DOUBTS}, and " if wrote else "")
+                    + f"their words could not be put on the rows already waiting for the "
+                      f"owner{done}: {_without_tail(rep['error'])}"), wrote, fresh
         # what each doubt can reach, said of the files as they are now
         try:
             s = read_stores()
         except board_proposals.Unreadable as exc:
-            return lines, f"{exc}, after the readers' doubts were kept", wrote
-        standing = board_proposals.standing_doubts(s["doubts"], s["ruled"], s["found"])
+            return f"{exc}, after the readers' doubts were kept", wrote, fresh
+        grouped = s["doubts"]
+        standing = board_proposals.standing_doubts(grouped, s["ruled"])
         rows = board_proposals.rows_by_id(s["found"])
-        reaches = {cid: reach(by_id.get(cid), rows.get(cid) or [], s["ruled"].get(cid),
-                              standing.get(cid)) for cid in reviewed}
-    names = {cid: (by_id.get(cid) or {}).get("name") or (results.get(cid) or {}).get("name")
-             or cid for cid in reviewed}
-    lines.append(f"READERS' DOUBTS {len(reviewed)} - kept before any board is asked "
-                 f"({len(fresh)} new, {len(reviewed) - len(fresh)} already on file in the same "
-                 f"words):")
+        refusals = _refusals(s)
+    say(f"READERS' DOUBTS {len(reviewed)} - kept before any board is asked "
+        f"({len(fresh)} new, {len(reviewed) - len(fresh)} already on file in the same words):")
     for cid in sorted(reviewed):
-        board = board_named(results.get(cid), by_id.get(cid))[0]
-        lines.append(f"  {'KEPT' if cid in fresh else 'HAD':<5} {str(names[cid])[:28]:<30} "
-                     f"{str(board or '-')[:44]:<46} {reaches[cid][1]}")
-    return lines, None, wrote
+        name = (by_id.get(cid) or {}).get("name") or (results.get(cid) or {}).get("name") or cid
+        board, kind, ref = board_named(results.get(cid), by_id.get(cid))
+        mine = [d for d in grouped.get(cid) or [] if str(d.get("why") or "").strip()
+                == reviewed[cid] and same_board(doubt_board(d), (kind, ref))]
+        if cid not in fresh and mine and not any(d in (standing.get(cid) or []) for d in mine):
+            words = settled_words(mine, s["ruled"].get(cid))
+        else:
+            words = reach(by_id.get(cid), rows.get(cid) or [], s["ruled"].get(cid),
+                          standing.get(cid), grouped.get(cid), refusals.get(cid),
+                          fresh=cid in fresh)[1]
+        say(f"  {'KEPT' if cid in fresh else 'HAD':<5} {str(name)[:28]:<30} "
+            f"{str(board or '-')[:44]:<46} {words}")
+    return None, wrote, fresh
 
 
 def cmd_plan(a) -> int:
@@ -1890,17 +2225,18 @@ def cmd_plan(a) -> int:
     try:
         stores = read_stores()
     except board_proposals.Unreadable as exc:
-        print(f"{exc}. A refusal, a reader's doubt or a row waiting on the owner that "
-              f"cannot be read cannot hold its board, so nothing may be planned. Nothing "
-              f"was read and nothing was written.")
+        print(f"{exc}. A refusal, a reader's doubt, a row waiting on the owner or an "
+              f"Acquisitions row that cannot be read cannot hold its board, so nothing may "
+              f"be planned. Nothing was read and nothing was written.")
         return 2
-
-    companies = admin.read("companies.json", [])
-    board = admin.read("board.json", {})
-    if not isinstance(board.get("organizations"), list):
-        print("data/board.json has no list of organizations, so what each company "
-              "already shows on the public board cannot be compared with the board "
-              "found for it. Nothing was read and nothing was written.")
+    # the records the checks are judged against, and what the public board
+    # shows, read as strictly: read as empty, every doubt was journalled as
+    # naming "no company on file" and none reached the rows waiting for him
+    try:
+        companies = read_companies()
+        board = read_board()
+    except board_proposals.Unreadable as exc:
+        print(f"{exc}. Nothing was read and nothing was written.")
         return 2
 
     # THE WORKLIST'S NAME IS TAKEN BEFORE THE FIRST REQUEST. The file is
@@ -1920,12 +2256,11 @@ def cmd_plan(a) -> int:
               f"Nothing was read. Make the folder first, or name another.")
         return 2
     part = out.with_name(out.name + ".part")
-    done = False
+    done, kept_new, fresh = False, False, set()
     try:
         if reviewed:
-            lines, stop, wrote = keep_doubts(reviewed, results, by, out.name)
-            for line in lines:
-                print(line)
+            stop, wrote, fresh = keep_doubts(reviewed, results, by, out.name)
+            kept_new = f"data/{DOUBTS}" in wrote
             if wrote:
                 print(f"written by {by}: {', '.join(wrote)} and the journal "
                       f"(data/admin_journal.jsonl, with data/admin_journal.archive.jsonl "
@@ -1934,6 +2269,8 @@ def cmd_plan(a) -> int:
             if stop:
                 print(f"\nSTOPPED before the first request: {stop}. Nothing was read.")
                 return 1
+            # read again: the plan judges every row against the files as the
+            # doubts just left them (and the words just put on the rows)
             try:
                 stores = read_stores()
             except board_proposals.Unreadable as exc:
@@ -1955,7 +2292,7 @@ def cmd_plan(a) -> int:
         print()
         numbers: dict = {}
         rows = plan(results, companies, board, reviewed=reviewed, stores=stores,
-                    numbers=numbers)
+                    numbers=numbers, fresh=fresh)
         n = counts(rows)
         doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
                "doubted_by_a_reader": sorted(reviewed),
@@ -1992,8 +2329,10 @@ def cmd_plan(a) -> int:
     # rest WILL BE written, and only by the write the look prints
     print("nothing is wired or filed yet: the WIRE rows above will be wired, and the HOLD "
           "rows filed for the owner, when this worklist is applied with --write"
-          + ("; the readers' doubts were kept before the first request, and stand "
-             "whatever becomes of it" if reviewed else ""))
+          + ("; the readers' new doubts were kept before the first request, and stand "
+             "whatever becomes of it" if kept_new else
+             "; no reader's doubt was new - each was already on file in the same words, as "
+             "READERS' DOUBTS says" if reviewed else ""))
     print(f"next: python3 scripts/wire_found.py apply {out} --by agent:<label>")
     return 0
 
@@ -2178,19 +2517,21 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     stands = (held_for.get("standing") or {}).get(cid) or []
     if stands:
         return "standing", "since the plan, " + "; and ".join(
-            doubt_words(d, (held_for.get("reaches") or {}).get(cid)) for d in stands)
-    # the board held for the owner under ANY company's id (held_boards)
+            doubt_words(d, ((held_for.get("reaches") or {}).get(cid) or (None, None))[1])
+            for d in stands)
+    # the board held for the owner under ANY company's id (held_boards): a
+    # refused one, a doubted one, a door-filed one - under either Workable key
+    owner_holds = held_for.get("boards") or {}
     for k in keys:
-        for h in (held_for.get("boards") or {}).get(k) or []:
+        for h in (owner_holds.get("keys") or {}).get(k) or []:
             if h["id"] != cid:
-                return h["code"], f"since the plan, {h['words']}"
-    # a Workable account number on file that the plan never followed may be
-    # this very board under its other key
-    if kind == "workable":
-        unasked = unasked_numbers(held_for.get("numbers") or {}, held_for.get("resolved") or {},
-                                  {i: x.get("name") for i, x in by_id.items()})
-        if unasked:
-            return "number", f"{unasked[0]} - plan again"
+                return h["code"], (f"since the plan, {h['words']}"
+                                   + (" - tell the owner" if h["code"] == "refused" else ""))
+    # a Workable account held under a number the plan never followed, beside
+    # a board that states one of the names it goes by
+    for code, words in named_holds(owner_holds, kind, c2.get("names") if c2.get("stated") else [],
+                                   cid):
+        return code, f"{words} - plan again"
     seen = {tuple(x) for x in row.get("waiting_seen") or []
             if isinstance(x, list) and len(x) == 2}
     for w in (held_for.get("waiting") or {}).get(cid) or []:
@@ -2213,7 +2554,7 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     return None
 
 
-def queue_rows(holds: list, standing: dict | None = None, reaches: dict | None = None) -> list:
+def queue_rows(holds: list, standing: dict | None = None) -> list:
     """What to file for these held boards, each stamped with ITS row's read,
     and carrying every reader's doubt that stands for its company NOW.
 
@@ -2221,10 +2562,11 @@ def queue_rows(holds: list, standing: dict | None = None, reaches: dict | None =
     nothing to drift from the one this door judges the row by: a worklist
     whose reads are a month old cannot file them as today's.
 
-    A DOUBT KEPT SINCE THE PLAN GOES ON THE ROW. A row filed after a doubt was
-    kept is a row the owner's ruling settles that doubt by (it is filed at or
-    after it), so it has to carry the doubt's words: a worklist planned before
-    the readers spoke files its rows with the words of that day.
+    A DOUBT KEPT SINCE THE PLAN GOES ON THE ROW. His ruling on a row filed
+    after a doubt was kept settles that doubt, so the row has to show him its
+    words: a worklist planned before the readers spoke files its rows with
+    the words of that day. They are said of THIS row (ON_THIS_ROW), never in
+    words about a row that is not there yet.
     """
     out = []
     for r in holds:
@@ -2239,7 +2581,7 @@ def queue_rows(holds: list, standing: dict | None = None, reaches: dict | None =
                     if str(d.get("why") or "").strip() not in words]
             if more:
                 q["identity_why"] = words + "".join(
-                    "; " + doubt_words(d, (reaches or {}).get(r["id"])) for d in more)
+                    "; " + doubt_words(d, ON_THIS_ROW) for d in more)
         out.append(q)
     return out
 
@@ -2259,13 +2601,13 @@ def note_for(row: dict, today: str) -> str:
 
 
 def decide(doc: dict, companies: list, by: str, now: dt.datetime,
-           stores: dict | None = None) -> dict:
+           stores: dict | None = None, board: dict | None = None) -> dict:
     """What applying this worklist would do against the data as it is now.
-    `stores` is read_stores() as cmd_apply read it; left out, it is read
-    here, and a file that cannot be used raises rather than hold nothing."""
+    `stores` is read_stores() and `board` read_board() as cmd_apply read
+    them; left out, each is read here, and a file that cannot be used raises
+    rather than hold nothing."""
     s = _stores(stores)
     by_id = {c["id"]: c for c in companies}
-    names = {cid: c.get("name") for cid, c in by_id.items()}
     # a record holding a Workable NUMBER the plan followed holds the slug too
     resolved = doc.get("workable_numbers") or {}
     numbers = numbers_on_file(companies)
@@ -2273,7 +2615,7 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
     for number, ids in numbers.items():
         if resolved.get(number):
             holders[board_key("workable", resolved[number])] += ids
-    board = admin.read("board.json", {})
+    board = board if board is not None else read_board()
     shown = shown_now(board)
     wires = [r for r in doc["rows"] if r["action"] == "WIRE"]
     ids = collections.Counter(r["id"] for r in wires)
@@ -2285,13 +2627,13 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
     # discovery and the Acquisitions queue say of it
     standing = standing_doubts(s["doubts"], s)
     rows_on_file = board_proposals.rows_by_id(s["found"])
+    refusals = _refusals(s)
     reaches = {cid: reach(by_id.get(cid), rows_on_file.get(cid) or [], s["ruled"].get(cid),
-                          standing.get(cid))[1]
+                          standing.get(cid), s["doubts"].get(cid), refusals.get(cid))
                for cid in set(standing) | set(doc.get("reader_doubts") or {})}
     held_for = {"doubted": doc.get("reader_doubts") or {},
                 "standing": standing, "reaches": reaches, "waiting": _waiting(s),
-                "boards": held_boards(standing, s, names),
-                "numbers": numbers, "resolved": resolved,
+                "boards": held_boards(standing, s, by_id, resolved, companies, refusals),
                 "suspects": _suspects(s),
                 "acquisitions": acquisition_doubts(companies, board)}
 
@@ -2304,7 +2646,7 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
         else:
             wire.append(row)
     holds = [r for r in doc["rows"] if r["action"] == "HOLD"]
-    queued = queue_rows(holds, standing, reaches)
+    queued = queue_rows(holds, standing)
     # asked of the same door the write goes through, so the look and the
     # write cannot disagree about which rows the queue will take
     filing = board_proposals.file_found(queued, by, write=False, force=True,
@@ -2386,14 +2728,14 @@ def report(doc: dict, d: dict) -> None:
     if doubted:
         # NOT A WRITE: the plan kept these before it asked any board
         names = {r["id"]: r.get("name") for r in doc["rows"]}
-        print(f"\nREADERS' DOUBTS {len(doubted)} - kept by the plan before it asked any "
-              f"board (data/{DOUBTS}); nothing here writes them:")
+        print(f"\nREADERS' DOUBTS {len(doubted)} - on file in data/{DOUBTS}, where the plan "
+              f"kept them before it asked any board; nothing here writes them:")
         for cid in sorted(doubted):
             recs = [x for x in d["doubts"].get(cid) or []
                     if str(x.get("why") or "").strip() == str(doubted[cid]).strip()]
             board = (recs[-1].get("board") if recs else None) or "-"
             print(f"  {str(names.get(cid) or cid)[:28]:<30} {str(board)[:44]:<46} "
-                  f"{(d['reaches'].get(cid) or '')}")
+                  f"{(d['reaches'].get(cid) or (None, ''))[1]}")
     why_not = {s.get("id"): s.get("why") for s in d["filing"]["skipped"]}
     notes = unfiled(doc["rows"], doubted, why_not, d["reaches"])
     if notes:
@@ -2430,14 +2772,17 @@ def cmd_apply(a) -> int:
         # against, and read as empty it holds nothing
         try:
             stores = read_stores()
+            read_companies()            # shown to read, before admin reads it
+            board = read_board()
         except board_proposals.Unreadable as exc:
-            print(f"{exc}. A refusal, a reader's doubt or a row waiting on the owner that "
-                  f"cannot be read cannot hold its board, so nothing may be wired or filed. "
-                  f"Nothing was written.")
+            print(f"{exc}. A refusal, a reader's doubt, a row waiting on the owner, an "
+                  f"Acquisitions row or a record that cannot be read cannot hold its board, "
+                  f"so nothing may be wired or filed. Nothing was written.")
             return 2
         companies = admin.read_companies()
         before = json.loads(json.dumps(companies))
-        d = decide(doc, companies, by, dt.datetime.now().astimezone(), stores=stores)
+        d = decide(doc, companies, by, dt.datetime.now().astimezone(), stores=stores,
+                   board=board)
         code = expect_code(sha, d, by)
         n = counts(doc["rows"])
         print(f"worklist {pathlib.Path(a.worklist).name}, planned {doc.get('generated')}: "
@@ -2559,6 +2904,72 @@ def cmd_apply(a) -> int:
     return 0
 
 
+def cmd_settle(a) -> int:
+    """Settle a company's standing readers' doubts, on the owner's word.
+
+    ON HIS WORD, AND ONLY THEN. A doubt no ruling of his in Boards we found
+    can reach - an older ruling, a company already on a board, one merged
+    away, one refused in Agent proposals, one with no row - holds its board
+    until he is told and answers. This writes his answer down: one
+    journalled ADDITION to data/board_doubts.json, {"<id>@<when>~settled":
+    {id, settles: [the keys of the company's standing doubts], why: his
+    words, by, on, at}}, which every reader of the file honours
+    (board_proposals.standing_doubts) - this door, discovery and
+    wire_embedded.py alike. It rewrites no doubt; admin_undo.py takes it
+    back, and the doubts then stand again.
+    """
+    by = (a.by or "").strip()
+    if not by.startswith("agent:") or len(by) <= len("agent:") or "@" in by:
+        print("--by names the agent that writes the owner's word down, as agent:<label> (a "
+              "handle, never an address): he does not run this himself. Nothing was written.")
+        return 2
+    cid, words = (a.id or "").strip(), reader_words(a.why)
+    if not cid or not words:
+        print("settle needs --id (the company) and --why (the owner's words, as he gave "
+              "them). Nothing was written.")
+        return 2
+    with admin.desk_lock():
+        try:
+            raw = board_proposals.strict(DOUBTS, admin.DATA)
+            stores = read_stores()
+        except board_proposals.Unreadable as exc:
+            print(f"{exc}. Nothing was written.")
+            return 2
+        on_file = stores["doubts"].get(cid) or []
+        ruling = stores["ruled"].get(cid)
+        standing = board_proposals.standing_doubts({cid: on_file}, stores["ruled"]).get(cid) or []
+        if not on_file:
+            print(f"no reader's doubt about {cid} is on file in data/{DOUBTS} - check the id. "
+                  f"Nothing was written.")
+            return 1
+        if not standing:
+            print(f"no reader's doubt about {cid} stands ({settled_words(on_file, ruling)}). "
+                  f"Nothing was written.")
+            return 0
+        at = admin.now()
+        key, n = f"{cid}@{at}~settled", 2
+        while key in raw:
+            key, n = f"{cid}@{at}~settled{n}", n + 1
+        rec = {"id": cid, "settles": [d["key"] for d in standing], "why": words, "by": by,
+               "on": dt.date.today().isoformat(), "at": at}
+        bad = admin.save_decisions(
+            DOUBTS, dict(raw, **{key: rec}), SETTLE_ACTION, by=by,
+            why=(f"on the owner's word, {many(len(standing), 'reader doubt')} about {cid} "
+                 f"settled: {words}"))
+        if bad:
+            print(f"the doubts file would refuse it: {bad}")
+            return 1
+    print(f"SETTLED {many(len(standing), 'reader doubt')} about {cid}, on the owner's word: "
+          f"{words}")
+    for d in standing:
+        print(f"  {str(d.get('board') or '-')[:44]:<46} kept {d.get('on') or '?'} by "
+              f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")
+    print(f"written by {by}: data/{DOUBTS} and the journal (data/admin_journal.jsonl, with "
+          f"data/admin_journal.archive.jsonl when it rolls). Commit them together; "
+          f"admin_undo.py takes it back.")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -2578,8 +2989,13 @@ def main(argv: list[str] | None = None) -> int:
     w.add_argument("--by", required=True, help="agent:<label>, the author on the journal")
     w.add_argument("--write", action="store_true")
     w.add_argument("--expect", help="the code the look printed; required with --write")
+    st = sub.add_parser("settle", help="settle a company's standing readers' doubts - only on "
+                                       "the owner's word")
+    st.add_argument("--id", required=True, help="the company the doubts are about")
+    st.add_argument("--why", required=True, help="the owner's words, as he gave them")
+    st.add_argument("--by", required=True, help="agent:<label>, the author on the journal")
     a = ap.parse_args(argv)
-    return cmd_plan(a) if a.cmd == "plan" else cmd_apply(a)
+    return {"plan": cmd_plan, "apply": cmd_apply, "settle": cmd_settle}[a.cmd](a)
 
 
 if __name__ == "__main__":
