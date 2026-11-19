@@ -174,7 +174,14 @@ def triage(rows: list, by_id: dict) -> tuple[list, list, list]:
     company that already has its own ATS wired is not a collision - that
     company is not going to be written here.
     """
-    live = [e for e in rows if unwired(e, by_id)]
+    # A ROW A DOOR FILED FOR A PERSON IS THAT PERSON'S, and is in none of the
+    # three piles. wire_found.py appends the boards it could not prove to
+    # this same file (board_proposals.file_found), each with the doubt that
+    # held it: a parent on file, two boards on one site, a name the board
+    # never states. `resembles` below knows none of that - a slug that looks
+    # like the company's name would wire the very board the owner was asked
+    # about - and --propose would queue it a second time in another store.
+    live = [e for e in rows if unwired(e, by_id) and not e.get("filed")]
 
     mismatch = [e for e in live if e.get("identity") == "MISMATCH"]
     rest = [e for e in live if e.get("identity") != "MISMATCH"]
@@ -273,6 +280,10 @@ def main() -> int:
     print(f"{len(rows)} discovered board(s) on file")
     print(f"  {len(clean)} to wire   {len(mismatch)} name somebody else   "
           f"{len(shared)} claimed by more than one company\n")
+    held = [e for e in rows if e.get("filed") and unwired(e, by_id)]
+    if held:
+        print(f"  {len(held)} held for the owner by a door, with the doubt on "
+              f"the row - left alone (Boards we found)\n")
 
     # --- the refusals, printed before anything is written ------------------
     if mismatch:

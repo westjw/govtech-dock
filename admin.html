@@ -5053,6 +5053,11 @@ RENDER.boardfound = c => {
   e.appendChild(line('It reads:', c.verified || (c.postings + ' postings')));
   if (c.board_calls_itself)
     e.appendChild(line('The board calls itself:', c.board_calls_itself));
+  // A row a door held for you says why in words (board_proposals.file_found).
+  // A name mismatch says it in the red line below; this is every other doubt:
+  // a parent on file, two boards on one site, a board that names nobody.
+  if (c.filed && !c.warn_parent && c.identity_why)
+    e.appendChild(line('Not wired because:', c.identity_why));
 
   if (c.warn_parent) {
     const w = el('div');

@@ -20642,7 +20642,8 @@ def check_writes_name_their_author() -> int:
         (ROOT / "scripts").glob("promote_*.py")) + [
         ROOT / "scripts" / n for n in ("proposal_rulings.py", "apply_web_rulings.py",
                                        "agents.py", "conference_intake.py",
-                                       "wire_embedded.py", "apply_task_notes.py")
+                                       "wire_embedded.py", "apply_task_notes.py",
+                                       "wire_found.py")
         if (ROOT / "scripts" / n).exists()]
     src = "\n".join(f"# FILE {f.name}\n" + f.read_text() for f in files)
     bad = 0
@@ -27636,6 +27637,676 @@ def check_embedded_wiring() -> int:
               "structured board - this script connects findings, it does not "
               "overrule a person who already answered")
         errors += 1
+
+    # A ROW A DOOR HELD FOR THE OWNER IS IN NO PILE. wire_found.py files the
+    # boards it could not prove into this same file. This one's slug IS its
+    # company's name, so without the guard `resembles` wires the board the
+    # owner was asked about, and --propose queues it a second time.
+    held = {"id": "g", "name": "Eta", "identity": "unknown",
+            "found": {"type": "ashby", "ref": "eta"},
+            "filed": {"by": "agent:selftest", "on": "2026-11-18"}}
+    by_id["g"] = {"id": "g", "ats": {"type": "html"}}
+    piles = w.triage(entries + [held], by_id)
+    if any(e["id"] == "g" for pile in piles for e in pile):
+        print("  FAIL: triage picked up a board a door held for the owner "
+              "(a row carrying `filed`) - wire_embedded --write would wire it "
+              "on its slug alone, past the queue it is waiting in")
+        errors += 1
+    return errors
+
+
+def check_a_found_board_is_wired_only_on_two_checks() -> int:
+    """scripts/wire_found.py wires a board on two checks, and holds the rest.
+
+    The owner's ruling of 2026-11-18: Claude may wire a found board ONLY when
+    the company's own website points to it (check 1) AND the board itself
+    names the company as the employer (check 2). A parent's board, a name
+    mismatch and anything doubtful go to his "Boards we found" queue; giants
+    are skipped this round.
+
+    Driven end to end - plan, look, write - in a sandbox that owns its data,
+    with the two network seams stubbed (the live read and the identity
+    probe) and the rest of ats made to fail loudly if anything reaches it.
+    Every fixture company is one way this door could publish somebody else's
+    jobs, or lose a row the owner is waiting on:
+
+      - both checks pass                    -> wired, by the agent's own
+        label, in ONE journal entry, with both checks on the record
+      - the board names another company     -> held as MISMATCH, both names
+      - the board names nobody              -> held; "unknown is not a pass"
+      - the judge passes a board that stated no name (a name read off a
+        slug)                               -> held all the same
+      - two boards on one site; a board another company already holds; the
+        same board found for two companies; a parent, an acquisition, a
+        discovery suspect or an Acquisitions row on file; a page that is not
+        on their website; a DIFFERENT board already waiting on the owner
+                                            -> held, each saying why
+      - the SAME board already waiting on the owner, now proven -> wired:
+        that is the question he was asked, answered by the rule he set
+      - a board somebody already refused; a company ruled out of scope ->
+        never read, never proposed again
+      - 500 postings                        -> skipped as a giant
+      - a board that will not read          -> skipped WITH its error
+    and the write itself: a look changes nothing, a write needs the code the
+    look printed, a changed worklist or data that moved since the look is
+    refused, a company somebody wired by hand in between is left alone, and
+    the held rows are appended to the queue file without touching the rows
+    already waiting there.
+    """
+    import acquisitions
+    import add_company
+    import admin
+    import board_proposals as bp
+    import journal
+    import verify_boards
+    import wire_embedded
+    import wire_found as wf
+
+    errors = 0
+    LABEL = "agent:selftest-wiring"
+
+    def site(cid):
+        return f"https://www.{cid.replace('-', '')}.test"
+
+    def co(cid, name, kind="html", **over):
+        base = {"id": cid, "name": name, "website": site(cid),
+                "sector": "Parks & Rec", "category": "Aquatics",
+                "description": f"{name} sells pool software", "year_founded": 2010,
+                "location": None, "govtech": True, "vendor_type": "GovTech Product",
+                "ats": ({"type": "html", "ref": f"{site(cid)}/careers"} if kind == "html"
+                        else {"type": "unknown", "ref": None}),
+                "hiring": {"status": "Unknown", "note": "", "roles": [],
+                           "checked": "2026-11-17"}}
+        base.update(over)
+        return base
+
+    companies = [
+        co("acme-water", "Acme Water"),
+        co("plain-co", "Plain Co", kind="unknown"),
+        co("moved-co", "Moved Co"),
+        co("mismatch-co", "Mismatch Co"),
+        co("unproven-co", "Unproven Co"),
+        co("liar-co", "Liar Co"),
+        co("two-boards-co", "Two Boards Co"),
+        co("held-co", "Held Co"),
+        co("holder-co", "Holder Co", ats={"type": "ashby", "ref": "sharedboard"}),
+        co("child-co", "Child Co", parent="Big Parent Inc"),
+        co("bought-co", "Bought Co", acquired={"parent": "Buyer Corp", "year": 2025}),
+        co("suspect-co", "Suspect Co", kind="unknown"),
+        co("research-co", "Research Co"),
+        co("refused-co", "Refused Co"),
+        co("rejected-co", "Rejected Co"),
+        co("rejected-other-co", "Rejected Other Co"),
+        co("scope-co", "Scope Co", out_of_scope={"on": "2026-10-20", "by": "owner",
+                                                 "why": "not a SLED vendor"}),
+        co("giant-co", "Giant Co"),
+        co("bigtenant-co", "Bigtenant Co"),
+        co("gone-board-co", "Gone Board Co"),
+        co("nothing-co", "Nothing Co"),
+        co("twin-a", "Twin A"),
+        co("twin-b", "Twin B"),
+        co("offsite-co", "Offsite Co"),
+        co("wired-co", "Wired Co", ats={"type": "greenhouse", "ref": "wiredco"}),
+        co("queued-co", "Queued Co"),
+        co("old-row-co", "Old Row Co"),
+        co("waited-co", "Waited Co"),
+        co("ruled-co", "Ruled Co"),
+    ]
+    names = {c["id"]: c["name"] for c in companies}
+
+    def old_row(cid, ref):
+        return {"id": cid, "name": names[cid], "was": "html",
+                "found": {"type": "ashby", "ref": ref}, "saw": f"jobs.ashbyhq.com/{ref}",
+                "times": 2, "verified": "6 posting(s) readable",
+                "board_calls_itself": None, "identity": "unknown",
+                "identity_why": "every apply link is on the ATS's own domain",
+                "postings": 6, "titles": []}
+
+    waiting = [old_row("old-row-co", "oldrow"), old_row("queued-co", "queuedco"),
+               old_row("refused-co", "refusedco"), old_row("waited-co", "waitedco")]
+    files = {
+        "companies.json": companies,
+        "schema.json": json.loads((DATA / "schema.json").read_text()),
+        "board.json": {"organizations": [], "postings": []},
+        bp.FOUND.name: waiting,
+        bp.RULED.name: {"refused-co": {"accept": False, "why": "the board is their parent's",
+                                       "by": "owner", "on": "2026-09-08"},
+                        "ruled-co": {"accept": True, "why": "", "by": "owner",
+                                     "on": "2026-09-03"}},
+        "agent_proposals.json": {
+            "board:rejected-co": {"kind": "board", "id": "rejected-co",
+                                  "ats_type": "greenhouse", "ats_ref": "rejectedco",
+                                  "status": "rejected", "ruled_by": "agent:proposals-review",
+                                  "ruled_on": "2026-11-10",
+                                  "ruled_why": "the board is Somebody Else's (two readers)"},
+            "board:rejected-other-co": {"kind": "board", "id": "rejected-other-co",
+                                        "ats_type": "greenhouse", "ats_ref": "someparent",
+                                        "status": "rejected", "ruled_by": "agent:proposals-review",
+                                        "ruled_on": "2026-11-10",
+                                        "ruled_why": "the board is Some Parent's (two readers)"}},
+        "ats_suspects.json": {"suspect-co": {
+            "ats": {"type": "bamboohr", "ref": "boxclever"}, "on": "2026-08-19",
+            "note": "bamboohr:boxclever reads, but the slug does not match 'Suspect Co'"}},
+        "acquisitions_research.json": {"research-co": {
+            "parent_claim": "Outside Parent LLC", "on": "2026-09-01",
+            "says": "Acquired by Outside Parent LLC in 2024"}},
+        "admin_dismissed.json": {},
+    }
+
+    # what each board answers: (postings a live read returns, names it states)
+    BOARDS = {
+        "greenhouse/acmewater": (14, ["Acme Water, Inc."]),
+        "lever/plainco": (3, ["Plain Co"]),
+        "greenhouse/movedco": (5, ["Moved Co"]),
+        "greenhouse/axonstub": (40, ["Axon Stub"]),
+        "ashby/unprovenco": (7, None),
+        "ashby/liarco": (6, None),
+        "greenhouse/twoboardsco": (9, ["Two Boards Co"]),
+        "ashby/sharedboard": (11, ["Held Co"]),
+        "greenhouse/childco": (4, ["Child Co"]),
+        "greenhouse/boughtco": (4, ["Bought Co"]),
+        "greenhouse/suspectco": (2, ["Suspect Co"]),
+        "greenhouse/researchco": (2, ["Research Co"]),
+        "greenhouse/rejectedother": (3, ["Rejected Other Co"]),
+        "greenhouse/giantco": (500, ["Giant Co"]),
+        "workday/bigtenant/wd5/Careers": (40, ["Bigtenant Co"]),
+        "ashby/twinboard": (8, ["Twin A"]),
+        "greenhouse/offsiteco": (5, ["Offsite Co"]),
+        "ashby/queuedco": (6, None),
+        "greenhouse/oldrowco": (2, ["Old Row Co"]),
+        "ashby/waitedco": (5, ["Waited Co"]),
+    }
+    STATES = {"workday/bigtenant/wd5/Careers": 2000}     # the board's own count
+    asked, probed = [], []
+
+    def read_board(block):
+        key = wf.show(block["type"], block["ref"])
+        asked.append(key)
+        if key not in BOARDS:
+            return False, "HTTP 404 for the board's feed", []
+        n = BOARDS[key][0]
+        return True, f"{n} posting(s) readable", [{"title": f"Role {i + 1}"} for i in range(n)]
+
+    def board_says(kind, ref):
+        key = wf.show(kind, ref)
+        probed.append(key)
+        n, stated = BOARDS[key]
+        return {"name": stated[0] if stated else None, "hosts": set(),
+                "n": STATES.get(key, n), "names": sorted(stated or []),
+                "stated": bool(stated),
+                "how": "the board's own feed" if stated else "this board states no name"}
+
+    def proven(company, said):
+        def bare(s):
+            return re.sub(r"[^a-z0-9]", "", re.sub(r"\b(inc|llc)\b", "", s.lower()))
+        if company["id"] == "liar-co":
+            # the judge getting it wrong: a pass with no stated name behind it
+            return {"ok": True, "why": "the slug looks like the name", "name": "Liar Co"}
+        stated = said.get("names") or []
+        if not said.get("stated") or not stated:
+            return {"ok": False, "why": "the board states no employer name", "name": None}
+        other = [n for n in stated if bare(n) != bare(company["name"])]
+        if other:
+            return {"ok": False, "name": other[0],
+                    "why": f'the board names "{other[0]}", and this company is on '
+                           f'file as "{company["name"]}"'}
+        # handed back in OUR spelling on purpose: what goes on the record as
+        # the board's name has to be the spelling the board itself stated
+        return {"ok": True, "name": company["name"],
+                "why": f'the board names "{stated[0]}", which is "{company["name"]}"'}
+
+    def cand(kind, ref, page, element="href", times=1):
+        return {"type": kind, "ref": ref, "element": element, "times": times,
+                "saw": f"{kind} board {ref}", "page": page, "hop": 0}
+
+    def entry(cid, cands, pages=None):
+        home = site(cid)
+        return {"name": names.get(cid, cid), "website": home, "was": "html",
+                "pages": pages or [{"asked": f"{home}/careers", "final": f"{home}/careers",
+                                    "same_site": True, "status": "read", "note": ""}],
+                "candidates": cands, "off_site": [], "elsewhere": [], "left_site": [],
+                "job_like_links": 0, "says_no_openings": False, "error": None}
+
+    def one(cid, kind, ref, **kw):
+        return entry(cid, [cand(kind, ref, f"{site(cid)}/careers", **kw)])
+
+    lever_page = "https://jobs.lever.co/plainco"
+    # their careers page also leads off their site to a page naming another
+    # board, and names a platform nothing here reads. Neither is one of the
+    # two checks: both are kept on the row and printed, and hold nothing back
+    acme = one("acme-water", "greenhouse", "acmewater", element="iframe", times=3)
+    acme["off_site"] = [cand("greenhouse", "someparent", "https://www.parent.test/careers")]
+    acme["elsewhere"] = [{"vendor": "jobvite", "saw": "jobs.jobvite.com/parent",
+                          "page": f"{site('acme-water')}/careers"}]
+    static = {"generated": "2026-11-18T20:00:00-05:00", "mode": "static", "companies": {
+        "acme-water": acme,
+        # a careers address on their own site that lands straight on the board
+        "plain-co": entry("plain-co", [cand("lever", "plainco", lever_page, element="redirect")],
+                          pages=[{"asked": f"{site('plain-co')}/careers", "final": lever_page,
+                                  "same_site": False, "status": "left-site", "note": ""}]),
+        "moved-co": one("moved-co", "greenhouse", "movedco"),
+        "mismatch-co": one("mismatch-co", "greenhouse", "axonstub", times=12),
+        "unproven-co": one("unproven-co", "ashby", "unprovenco"),
+        "liar-co": one("liar-co", "ashby", "liarco"),
+        "two-boards-co": one("two-boards-co", "greenhouse", "twoboardsco", times=3),
+        "held-co": one("held-co", "ashby", "sharedboard"),
+        "child-co": one("child-co", "greenhouse", "childco"),
+        "bought-co": one("bought-co", "greenhouse", "boughtco"),
+        "suspect-co": one("suspect-co", "greenhouse", "suspectco"),
+        "research-co": one("research-co", "greenhouse", "researchco"),
+        "refused-co": one("refused-co", "ashby", "refusedco"),
+        "rejected-co": one("rejected-co", "greenhouse", "rejectedco"),
+        "rejected-other-co": one("rejected-other-co", "greenhouse", "rejectedother"),
+        "scope-co": one("scope-co", "greenhouse", "scopeco"),
+        "giant-co": one("giant-co", "greenhouse", "giantco"),
+        "bigtenant-co": one("bigtenant-co", "workday", ["bigtenant", "wd5", "Careers"]),
+        "gone-board-co": one("gone-board-co", "lever", "goneboard"),
+        "nothing-co": entry("nothing-co", []),
+        "twin-a": one("twin-a", "ashby", "twinboard"),
+        "twin-b": one("twin-b", "ashby", "twinboard"),
+        "offsite-co": entry("offsite-co", [cand("greenhouse", "offsiteco",
+                                                "https://www.someoneelse.test/careers")]),
+        "wired-co": one("wired-co", "greenhouse", "wiredco"),
+        "queued-co": one("queued-co", "ashby", "queuedco"),
+        # already waiting on the owner. The SAME board found again and now
+        # proven is the question he was asked, answered by the rule he set; a
+        # DIFFERENT board is two finders disagreeing, and is held
+        "waited-co": one("waited-co", "ashby", "waitedco"),
+        "old-row-co": one("old-row-co", "greenhouse", "oldrowco"),
+        "ghost-co": one("ghost-co", "greenhouse", "ghostco"),
+    }}
+    # the rendered read of the same sites: one board seen again (still one
+    # board), and a second, different board on a site that already named one
+    render = {"generated": "2026-11-18T20:30:00-05:00", "mode": "render", "companies": {
+        "acme-water": one("acme-water", "greenhouse", "acmewater", element="request"),
+        "two-boards-co": one("two-boards-co", "lever", "twoboardsco"),
+    }}
+
+    def run(*argv):
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            code = wf.main([str(x) for x in argv])
+        return code, out.getvalue()
+
+    def refuse(*whatever, **kw):
+        raise AssertionError("the selftest reached the network")
+
+    NEVER = object()
+    keep = (add_company.read_board, verify_boards.board_says,
+            getattr(verify_boards, "proven", NEVER), ats.fetch, ats._get,
+            acquisitions.DATA, acquisitions.RULED, acquisitions.ROOT)
+    scratch = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-wiring-"))
+    with _sandbox_admin(files) as tmp:
+        def on_disk():
+            return {p.name: p.read_bytes() for p in sorted(tmp.iterdir())
+                    if p.is_file() and p.name != ".admin.lock"}
+
+        def record(cid):
+            return next(c for c in json.loads((tmp / "companies.json").read_text())
+                        if c["id"] == cid)
+
+        try:
+            add_company.read_board, verify_boards.board_says = read_board, board_says
+            ats.fetch = ats._get = refuse
+            # acquisitions.py fixes its paths at import, like board_proposals
+            acquisitions.DATA, acquisitions.RULED, acquisitions.ROOT = (
+                tmp, tmp / acquisitions.RULED.name, tmp)
+            (scratch / "static.json").write_text(json.dumps(static))
+            (scratch / "render.json").write_text(json.dumps(render))
+            wl = scratch / "worklist.json"
+            plan_args = ("plan", "--results", scratch / "static.json",
+                         "--results", scratch / "render.json", "--out")
+
+            # --- no identity check in the checkout, no plan ------------------
+            if hasattr(verify_boards, "proven"):
+                del verify_boards.proven
+            code, text = run(*plan_args, wl)
+            if code == 0 or wl.exists() or asked:
+                errors += fail("wire_found planned with no verify_boards.proven: check 2 "
+                               "cannot run, so nothing may be read or frozen")
+            verify_boards.proven = proven
+            code, text = run(*plan_args, tmp / "worklist.json")
+            if code == 0 or (tmp / "worklist.json").exists():
+                errors += fail("wire_found wrote a worklist into data/, where the nightly "
+                               "job's `git add -A` would commit it")
+
+            # --- the plan ----------------------------------------------------
+            before_plan = on_disk()
+            code, text = run(*plan_args, wl)
+            if code != 0 or not wl.exists():
+                shutil.rmtree(scratch, ignore_errors=True)
+                return errors + fail(f"wire_found plan did not run: {text[-300:]}")
+            if on_disk() != before_plan:
+                errors += fail("wire_found plan changed a data file; only apply --write may")
+            doc = json.loads(wl.read_text())
+            rows = {r["id"]: r for r in doc["rows"]}
+            got = {a: sorted(i for i, r in rows.items() if r["action"] == a)
+                   for a in ("WIRE", "HOLD", "SKIP")}
+            if got["WIRE"] != ["acme-water", "moved-co", "plain-co", "waited-co"]:
+                errors += fail(f"the plan would wire {got['WIRE']}; only the four whose own "
+                               f"site points to a board that names them may be wired")
+
+            def words(cid):
+                r = rows[cid]
+                return " | ".join([r.get("why") or ""] + (r.get("doubts") or [])
+                                  + [(r.get("queue_row") or {}).get("identity_why") or ""])
+
+            for cid, action, kind, must_say in (
+                ("mismatch-co", "HOLD", None, '"Axon Stub"'),
+                ("mismatch-co", "HOLD", None, '"Mismatch Co"'),
+                ("unproven-co", "HOLD", None, "states no employer name"),
+                ("liar-co", "HOLD", None, "is not proof"),
+                ("two-boards-co", "HOLD", None, "more than one board"),
+                ("two-boards-co", "HOLD", None, "lever/twoboardsco"),
+                ("held-co", "HOLD", None, "Holder Co"),
+                ("child-co", "HOLD", None, "Big Parent Inc"),
+                ("bought-co", "HOLD", None, "Buyer Corp"),
+                ("suspect-co", "HOLD", None, "discovery already doubted"),
+                ("research-co", "HOLD", None, "Outside Parent LLC"),
+                ("rejected-other-co", "HOLD", None, "greenhouse/someparent"),
+                ("twin-a", "HOLD", None, "Twin B"),
+                ("twin-b", "HOLD", None, "Twin A"),
+                ("offsite-co", "HOLD", None, "is not on their website"),
+                ("queued-co", "HOLD", None, "states no employer name"),
+                ("old-row-co", "HOLD", None, "a different board, ashby/oldrow, is already waiting"),
+                ("refused-co", "SKIP", "refused", "the board is their parent's"),
+                ("rejected-co", "SKIP", "refused", "Somebody Else"),
+                ("scope-co", "SKIP", "out-of-scope", "out of the board"),
+                ("giant-co", "SKIP", "giant", wf.GIANT_WHY),
+                ("bigtenant-co", "SKIP", "giant", wf.GIANT_WHY),
+                ("gone-board-co", "SKIP", "unreadable", "HTTP 404"),
+                ("nothing-co", "SKIP", "no-candidate", "no board"),
+                ("wired-co", "SKIP", "not-waiting", "greenhouse/wiredco"),
+                ("ghost-co", "SKIP", "gone", "on file"),
+            ):
+                r = rows.get(cid) or {}
+                if r.get("action") != action or (kind and r.get("kind") != kind) \
+                        or must_say not in words(cid):
+                    errors += fail(f"{cid}: planned {r.get('action')}/{r.get('kind')} saying "
+                                   f"{words(cid)[:160]!r}; wanted {action}"
+                                   f"{'/' + kind if kind else ''} saying {must_say!r}")
+            hold = {i: rows[i]["queue_row"] for i in got["HOLD"]}
+            if hold.get("mismatch-co", {}).get("identity") != "MISMATCH" \
+                    or hold.get("mismatch-co", {}).get("board_calls_itself") != "Axon Stub":
+                errors += fail("a board that names another company is not held as a "
+                               "MISMATCH quoting the name it states")
+            soft = sorted(i for i, q in hold.items()
+                          if q["identity"] not in ("unknown", "MISMATCH"))
+            if soft or hold.get("child-co", {}).get("identity") != "unknown":
+                errors += fail(f"a held row calls its board 'matches' ({soft}): "
+                               f"wire_embedded reads that word in this file as leave to wire")
+            w = rows.get("acme-water") or {}
+            if (w.get("check_1") or {}).get("element") != "iframe" \
+                    or (w.get("check_1") or {}).get("on_their_site") is not True \
+                    or (w.get("check_2") or {}).get("name") != "Acme Water, Inc." \
+                    or w.get("postings") != 14 or len(w.get("titles") or []) != 8 \
+                    or not w.get("read_at"):
+                errors += fail(f"a WIRE row does not record both checks, the posting count, "
+                               f"eight titles and the time of the read: {w}")
+            if w.get("also_seen") != {"off_site": ["greenhouse/someparent"],
+                                      "elsewhere": ["jobvite"]} or "NOTE" not in text:
+                errors += fail("what else the finder saw on the way (a board named off their "
+                               "site, a platform we cannot read) is not kept on the row and "
+                               "printed for whoever reads the plan")
+            for board in ("ashby/refusedco", "greenhouse/rejectedco", "greenhouse/scopeco",
+                          "greenhouse/wiredco", "greenhouse/ghostco"):
+                if board in asked:
+                    errors += fail(f"the plan read {board} live: a refused board, a company "
+                                   f"ruled out of scope and one already wired are not asked again")
+            if "greenhouse/giantco" in probed or "lever/goneboard" in probed:
+                errors += fail("the plan asked a giant or an unreadable board whose it is; "
+                               "neither can be wired this round, so that is a wasted request")
+            if len(asked) != len(set(asked)) or len(probed) != len(set(probed)):
+                errors += fail("the plan asked one board more than once: two companies whose "
+                               "sites name the same board are both held on a single read")
+            code, _ = run(*plan_args, wl)
+            if code == 0:
+                errors += fail("wire_found plan overwrote a frozen worklist")
+
+            # --- a look writes nothing ---------------------------------------
+            code, _ = run("apply", wl, "--by", "owner")
+            if code == 0:
+                errors += fail("wire_found applied as 'owner': a door's write must name "
+                               "the agent that made it")
+            before = on_disk()
+            code, text = run("apply", wl, "--by", LABEL)
+            m = re.search(r"--expect (\S+)", text)
+            if code != 0 or not m or "LOOKED ONLY" not in text or "would wire 4" not in text:
+                errors += fail(f"the look did not print what it would do and a code: {text[-300:]}")
+            if on_disk() != before:
+                errors += fail("apply without --write changed a file")
+            look_code = m.group(1) if m else "none"
+
+            # --- a write needs the code, the same file, and the same data ----
+            code, _ = run("apply", wl, "--by", LABEL, "--write")
+            if code == 0 or on_disk() != before:
+                errors += fail("apply --write ran with no --expect")
+            edited = json.loads(wl.read_text())
+            for r in edited["rows"]:
+                if r["id"] == "mismatch-co":
+                    r["action"] = "WIRE"            # the row somebody slipped in
+            wl2 = scratch / "worklist-edited.json"
+            wl2.write_text(json.dumps(edited, indent=1))
+            code, text = run("apply", wl2, "--by", LABEL, "--write", "--expect", look_code)
+            if code == 0 or on_disk() != before or "not the one the look read" not in text:
+                errors += fail("apply --write accepted a worklist that changed after the look")
+            code, text = run("apply", wl2, "--by", LABEL)
+            if "would wire 4" not in text or "does not carry both checks" not in text:
+                errors += fail("a row hand-flipped to WIRE with no proof behind it was not "
+                               "left alone by its own look")
+            aged = json.loads(wl.read_text())
+            for r in aged["rows"]:
+                if r.get("read_at"):
+                    r["read_at"] = "2026-01-01T09:00:00-05:00"
+            wl3 = scratch / "worklist-aged.json"
+            wl3.write_text(json.dumps(aged, indent=1))
+            code, text = run("apply", wl3, "--by", LABEL)
+            if "would wire 0" not in text or "plan again" not in text or on_disk() != before:
+                errors += fail("a worklist whose live reads are months old was still offered "
+                               "for wiring; a board is read again before it is wired")
+
+            # --- validate() and the journal's own limits are never argued with -
+            real_validate = admin.validate
+            admin.validate = lambda cs: "Somebody Co: bad hiring status"
+            try:
+                code, text = run("apply", wl, "--by", LABEL)
+            finally:
+                admin.validate = real_validate
+            if code == 0 or "STOPPED" not in text or "--expect" in text or on_disk() != before:
+                errors += fail("validate() objected to the file and the look still offered "
+                               "a write")
+            limits = (journal.RUNAWAY, journal.RUNAWAY_FLOOR, journal.BLAST)
+            journal.RUNAWAY, journal.RUNAWAY_FLOOR = 0.01, 1
+            try:
+                code, text = run("apply", wl, "--by", LABEL)
+                journal.RUNAWAY, journal.RUNAWAY_FLOOR = limits[:2]
+                # over the record limit the count is shown and force is sent,
+                # or a batch of 26 real boards could never be written at all
+                journal.BLAST = 2
+                code26, text26 = run("apply", wl, "--by", LABEL)
+            finally:
+                journal.RUNAWAY, journal.RUNAWAY_FLOOR, journal.BLAST = limits
+            if code == 0 or "STOPPED" not in text or "--expect" in text or on_disk() != before:
+                errors += fail("a batch over the journal's share-of-the-file limit was still "
+                               "offered for writing; force never lifts that rule")
+            if code26 != 0 or "would wire 4" not in text26:
+                errors += fail("a batch over the journal's record limit cannot be written: "
+                               "force is sent for that rule once the count has been shown")
+
+            # somebody wires one of them by hand between the look and the write
+            cs = admin.read_companies()
+            next(c for c in cs if c["id"] == "moved-co")["ats"] = {"type": "greenhouse",
+                                                                   "ref": "byhand"}
+            admin.save_companies(cs, "set-board", why="selftest: a person's own wiring",
+                                 by="owner")
+            before = on_disk()
+            code, text = run("apply", wl, "--by", LABEL, "--write", "--expect", look_code)
+            if code == 0 or on_disk() != before or "moved since the look" not in text:
+                errors += fail("apply --write went ahead after the data moved under the "
+                               "look: the write would not be what was listed")
+            code, text = run("apply", wl, "--by", LABEL)
+            m = re.search(r"--expect (\S+)", text)
+            if "would wire 3" not in text or "LEFT ALONE 1" not in text or not m:
+                errors += fail(f"a company wired by hand since the plan was not left alone: "
+                               f"{text[-300:]}")
+            journal_before = len((tmp / "admin_journal.jsonl").read_text().splitlines())
+            untouched = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+
+            # --- the write ---------------------------------------------------
+            forced = []
+            real_save, real_decide = admin.save_companies, admin.save_decisions
+
+            def spy_companies(*a, **k):
+                forced.append(("companies.json", k.get("force")))
+                return real_save(*a, **k)
+
+            def spy_decisions(name, *a, **k):
+                forced.append((name, k.get("force")))
+                return real_decide(name, *a, **k)
+
+            admin.save_companies, admin.save_decisions = spy_companies, spy_decisions
+            try:
+                code, text = run("apply", wl, "--by", LABEL, "--write", "--expect",
+                                 m.group(1) if m else "none")
+            finally:
+                admin.save_companies, admin.save_decisions = real_save, real_decide
+            if code != 0 or "wired 3, held " not in text or "giants 2, unreadable 1" not in text:
+                errors += fail(f"apply --write did not finish with its summary: {text[-300:]}")
+            if forced != [("companies.json", False), (bp.FOUND.name, False)]:
+                errors += fail(f"a batch under the journal's 25-record limit was written with "
+                               f"force, or not through the two journalled doors: {forced}")
+            a, p = record("acme-water"), record("plain-co")
+            note = a.get("ats_note") or ""
+            if a["ats"] != {"type": "greenhouse", "ref": "acmewater"} \
+                    or p["ats"] != {"type": "lever", "ref": "plainco"} \
+                    or record("waited-co")["ats"] != {"type": "ashby", "ref": "waitedco"}:
+                errors += fail("the three proven boards were not wired")
+            if not (note.startswith("wired ") and "acmewater.test/careers embeds the board" in note
+                    and 'the board names "Acme Water, Inc."' in note and "14 postings read" in note):
+                errors += fail(f"the wired record's note does not say both checks: {note!r}")
+            if "plainco.test/careers redirects to the board" not in (p.get("ats_note") or ""):
+                errors += fail(f"a board reached by a redirect is not recorded with the "
+                               f"address on THEIR site that sent us there - the address it "
+                               f"landed on is the board, which proves nothing: "
+                               f"{p.get('ats_note')!r}")
+            if a.get("board_owner") != "Acme Water, Inc." or "board_owner" in p:
+                errors += fail("board_owner is not the board's stated name where it differs in "
+                               "form, and only there (act_board_proposal's rule)")
+            after = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+            strays = sorted(i for i in after if i not in ("acme-water", "plain-co", "waited-co")
+                            and after[i] != untouched[i])
+            if strays or record("moved-co")["ats"]["ref"] != "byhand":
+                errors += fail(f"apply --write changed records it never listed: {strays}")
+            wrote = [json.loads(line) for line in
+                     (tmp / "admin_journal.jsonl").read_text().splitlines()][journal_before:]
+            comp = [e for e in wrote if e.get("file") == "companies.json"]
+            queue = [e for e in wrote if e.get("file") == bp.FOUND.name]
+            if len(wrote) != 2 or len(comp) != 1 or len(queue) != 1:
+                errors += fail(f"the write journalled {len(wrote)} entries; one batch for the "
+                               f"wired boards and one for the held rows is the whole of it")
+            elif comp[0].get("by") != LABEL or queue[0].get("by") != LABEL \
+                    or comp[0].get("action") != wf.ACTION \
+                    or sorted(comp[0].get("changes") or {}) != ["acme-water", "plain-co",
+                                                                "waited-co"]:
+                errors += fail(f"the wiring is not one entry by {LABEL} holding exactly the "
+                               f"three boards: by {comp[0].get('by')!r}, "
+                               f"{sorted(comp[0].get('changes') or {})}")
+            filed = json.loads((tmp / bp.FOUND.name).read_text())
+            new = filed[len(waiting):]
+            want = sorted(set(got["HOLD"]) - {"queued-co", "old-row-co"})
+            if filed[:len(waiting)] != waiting:
+                errors += fail("filing the held boards disturbed the rows already waiting in "
+                               "Boards we found")
+            if sorted(r["id"] for r in new) != want:
+                errors += fail(f"the queue file gained {sorted(r['id'] for r in new)}, wanted {want} "
+                               f"(a company already in the list is not added twice)")
+            if any((r.get("filed") or {}).get("by") != LABEL or not r.get("identity_why")
+                   or not (r["filed"].get("page") or "").startswith("https://")
+                   or r["filed"]["page"] not in r["identity_why"] for r in new):
+                errors += fail("a held row does not carry who filed it, its doubt in words "
+                               "and the page that pointed at the board")
+            if queue and any(ch.get("before") is not None
+                             for ch in (queue[0].get("changes") or {}).values()):
+                errors += fail("the journal shows the queue file REWRITTEN, not appended to")
+            shown = {r["id"]: r for r in bp.q_board_proposals(list(after.values()), {})}
+            if not {"old-row-co", "queued-co", "mismatch-co", "child-co"} <= set(shown) \
+                    or "refused-co" in shown or not shown.get("mismatch-co", {}).get("warn_parent") \
+                    or not shown.get("child-co", {}).get("filed") \
+                    or "Big Parent Inc" not in shown.get("child-co", {}).get("identity_why", ""):
+                errors += fail("the owner's queue does not show the held boards beside the rows "
+                               "that were waiting, each with its doubt")
+            piles = wire_embedded.triage(filed, after)
+            grabbed = sorted({e["id"] for pile in piles for e in pile} & set(want))
+            if grabbed:
+                errors += fail(f"wire_embedded would act on rows this door held for the "
+                               f"owner: {grabbed}")
+            code, text = run("apply", wl, "--by", LABEL)
+            if code != 0 or "nothing to write" not in text \
+                    or text.count("already reads from this board") != 3:
+                errors += fail("a worklist already applied still offers something to write, "
+                               "or does not say its three boards are already wired")
+
+            # --- the queue's own door, on its own ----------------------------
+            good = dict(hold["child-co"], id="old-row-co")
+            before = on_disk()
+            for row, by, why in (
+                (dict(good, id="nothing-co"), "", "no author"),
+                (dict(good, id="nothing-co", identity="matches"), LABEL, "'matches'"),
+                (dict(good, id="nothing-co", identity_why=" "), LABEL, "no doubt in words"),
+                (dict(good, id="wired-co"), LABEL, "a company that already reads from a board"),
+                (dict(good, id="ruled-co"), LABEL, "a company already ruled"),
+                (dict(good, id="ghost-co"), LABEL, "a company that is not on file"),
+                (good, LABEL, "a company already in the list"),
+            ):
+                rep = bp.file_found([row], by)
+                if rep["added"] or on_disk() != before:
+                    errors += fail(f"file_found filed a row with {why}: {rep}")
+            there, bp.FOUND = bp.FOUND, scratch / bp.FOUND.name
+            try:
+                rep = bp.file_found([dict(good, id="nothing-co")], LABEL)
+            finally:
+                bp.FOUND = there
+            if not rep["error"] or on_disk() != before:
+                errors += fail("file_found wrote while board_proposals and admin pointed at "
+                               "two data directories: one directory's rows onto the other's file")
+            rep = bp.file_found([dict(good, id="nothing-co")], LABEL, write=False)
+            if rep["added"] != ["nothing-co"] or on_disk() != before:
+                errors += fail("file_found's look (write=False) wrote, or would not file a good row")
+            (tmp / bp.FOUND.name).write_text("{ not a list")
+            broken = on_disk()
+            rep = bp.file_found([dict(good, id="nothing-co")], LABEL)
+            if not rep["error"] or on_disk() != broken:
+                errors += fail("file_found appended to a queue file it could not read: the new "
+                               "rows would have replaced the ones waiting on the owner")
+        finally:
+            (add_company.read_board, verify_boards.board_says, was_proven, ats.fetch,
+             ats._get, acquisitions.DATA, acquisitions.RULED, acquisitions.ROOT) = keep
+            if was_proven is NEVER:
+                if hasattr(verify_boards, "proven"):
+                    del verify_boards.proven
+            else:
+                verify_boards.proven = was_proven
+            shutil.rmtree(scratch, ignore_errors=True)
+
+    src = (ROOT / "scripts" / "wire_found.py").read_text()
+    code_only = _code_only(ROOT / "scripts" / "wire_found.py")
+    if "save_companies(" not in code_only or "write_atomic(" in code_only \
+            or "json.dump(" in code_only or 'by="owner"' in src or "by='owner'" in src:
+        errors += fail("wire_found.py writes companies.json some way other than "
+                       "admin.save_companies with the agent's own label")
+    for seam in ("requests.", "urllib.request", "ats._get(", "ats._page(", "ats.follow("):
+        if seam in code_only:
+            errors += fail(f"wire_found.py makes a request of its own ({seam}); its only "
+                           f"network is add_company.read_board and verify_boards.board_says")
+    # THE DOUBT HAS TO REACH THE SCREEN. The desk printed identity_why only on
+    # a MISMATCH, so a board held for a parent on file or for naming nobody
+    # would have sat in the owner's queue looking exactly like one nobody
+    # doubted. The card prints it for every row a door filed.
+    page = (ROOT / "admin.html").read_text()
+    card = page[page.find("RENDER.boardfound"):page.find("function boardUrlFor")]
+    if not re.search(r"if \(c\.filed[^)]*\)\s*\n\s*e\.appendChild\(line\([^,]+, c\.identity_why\)\)", card):
+        errors += fail("admin.html's Boards we found card no longer prints why a filed row "
+                       "was not wired (c.identity_why on a row carrying c.filed)")
     return errors
 
 
@@ -40736,6 +41407,7 @@ def main() -> int:
     errors += check_fetchers_page_and_do_not_fake_zeros()
     errors += check_the_crawler_paces_itself()
     errors += check_embedded_wiring()
+    errors += check_a_found_board_is_wired_only_on_two_checks()
     errors += check_capture_parity()
     errors += check_extension_icons()
     errors += check_open_actions_never_write_the_map()

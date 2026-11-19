@@ -285,14 +285,28 @@ def find_ats(url: str, paths: list[str] | None = None
     return None, None, notes
 
 
-def verify(ats_block: dict) -> tuple[bool, str]:
-    """Actually fetch the board. An unverified slug looks monitored and is not."""
+def read_board(ats_block: dict) -> tuple[bool, str, list]:
+    """verify(), and the rows it read: (ok, detail, postings with a title).
+
+    ONE READ, NOT TWO. A door that wires a board needs verify()'s answer AND
+    a few of the titles behind it, because the titles are what a person later
+    judges ownership on. Calling verify() and then fetching again for the
+    titles asks every board twice; this hands back the rows of the one read.
+    verify() is this with the rows dropped, so there is still one definition
+    of "the board reads".
+    """
     try:
         jobs = ats.fetch(ats_block)
     except Exception as exc:
-        return False, str(exc)[:70]
+        return False, str(exc)[:70], []
     real = [j for j in jobs if (j.get("title") or "").strip()]
-    return True, f"{len(real)} posting(s) readable"
+    return True, f"{len(real)} posting(s) readable", real
+
+
+def verify(ats_block: dict) -> tuple[bool, str]:
+    """Actually fetch the board. An unverified slug looks monitored and is not."""
+    ok, detail, _rows = read_board(ats_block)
+    return ok, detail
 
 
 def main() -> int:
