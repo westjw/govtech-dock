@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Beyond paying the bill: Why convenience alone isn\u2019t enough",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/bill-payment-experience-beyond-convenience"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Where fraud meets the auto loan: Why the payments flow is your best defense",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/auto-loan-fraud-payments-flow"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/blog/debit-is-gaining-ground-in-bill-pay"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "The most expensive mistake in payments right now is doing nothing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/blog/cost-of-moving-slowly-payments-innovation"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "AI in payments: Why it won\u2019t transform the industry, but it will reveal who\u2019s ready",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/blog/ai-in-payments-modernization-first"
   }
  ],
  "profile": {

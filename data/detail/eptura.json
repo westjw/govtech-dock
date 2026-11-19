@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Need better workflows and asset intelligence? Start with stronger work order automation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eptura.com/discover-more/blog/work-order-automation/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eptura.com/discover-more/blog/flex-dc-2026-recap/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "This month in FM trends: Turning operational insight into coordinated action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eptura.com/discover-more/blog/fm-trends-turning-operational-insights-into-action/"
   }
  ],
  "profile": {

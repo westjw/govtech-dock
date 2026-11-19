@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "QPR Introduces Where Work Waits, a Monthly LinkedIn Newsletter",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.qpr.com/news/where-work-waits-newsletter"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/news/qpr-ai-agent-mining-for-snowflake"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Where Process Intelligence Is Heading: 5 Questions with Gary Chitan of TOCH Consulting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/process-intelligence-ai-gary-chitan-toch-consulting"
   }
  ],
  "profile": {

@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Lesson 6: Trust, but Verify",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meadowfi.com/resources/trust-but-verify"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Net Price Calculator leads, now delivered straight to the CRM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.meadowfi.com/resources/net-price-calculator-leads-now-delivered-straight-to-the-crm"
+  },
+  {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Introducing Predictive Risk Scores",
    "kind": "product",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Lesson 5: You Don't Need the Perfect Prompt",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Getting Buy-In: How to Build the Case for AI in Your Office",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.meadowfi.com/resources/how-to-talk-to-ai-a-prompting-guide-for-student-accounts-professionals"
-  },
-  {
-   "date": "2026-03-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Enrollment Marketing Gets Students In \u2014 But the Financial Experience is What Keeps Them There",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meadowfi.com/resources/enrollment-marketing-gets-students-in----but-the-financial-experience-is-what-keeps-them-there"
-  },
-  {
-   "date": "2026-03-16",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "5 Signs Your Institution\u2019s Pre-Collections Process Is Broken",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.meadowfi.com/resources/5-signs-your-institutions-pre-collections-process-is-broken"
   }
  ],
  "profile": {

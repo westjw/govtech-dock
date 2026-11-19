@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "How Career Centers Can Help Students Turn Classroom Skills Into Career Opportunities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://writesea.com/blog/how-career-centers-help-students-turn-classroom-skills-into-career-opportunities/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://writesea.com/blog/career-readiness-ai-economy/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Career Fair Activation Kit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://writesea.com/resources/career-fair-activation-kit/"
   }
  ]
 }

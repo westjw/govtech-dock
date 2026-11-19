@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "A Guide to Workflow Automation in Case Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casebook.net/blog/a-guide-to-workflow-automation-in-case-management-software/"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.casebook.net/blog/compliance-case-management-how-to-stay-audit-ready/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Case Management Tracking Systems: Features to Look For",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casebook.net/blog/case-management-tracking-systems-features-to-look-for/"
   }
  ],
  "profile": {

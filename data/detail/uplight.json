@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Summer 2026 by the Numbers: When the Grid Called, Flexibility Answered",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uplight.com/blog/summer-2026-by-the-numbers-when-the-grid-called-flexibility-answered/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Uplight On the Fast Company\u2019s Best Workplace for Innovators List for the Fifth Year in a Row",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "July\u2019s Heat Dome Put DR on the Front Lines with One of Our Biggest Event Weeks to Date",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://uplight.com/blog/showing-up-for-our-communities-uplighters-give-back-through-teamup/"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How One Utility Drives Demand Stack Enrollment with eHERs, Achieving 94% Customer Satisfaction",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://uplight.com/blog/how-one-utility-drives-demand-stack-enrollment-with-ehers-achieving-94-customer-satisfaction/"
   }
  ]
 }

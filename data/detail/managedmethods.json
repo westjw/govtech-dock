@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Cybersecurity for Schools: Top Models For K-12 School Districts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/cybersecurity-models/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "In The News | ManagedMethods Launches Cloud Admin to Simplify Google Workspace Management for K-12 IT Teams",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://managedmethods.com/blog/in-the-news-pr-cloud-admin-launch/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://managedmethods.com/blog/in-the-news-government-technology-school-ai-problem/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Classroom Manager Keeps Students Engaged in the Classroom",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/how-classroom-manager-keeps-students-engaged-in-the-classroom/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "In the News | AI Companies Argue There\u2019s a Hidden Cost of Banning AI and Screens in Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/in-the-news-uniteai-banning-ai-and-screens-in-schools-2/"
   }
  ],
  "profile": {

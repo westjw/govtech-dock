@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Budgeting for a Billing System Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/budgeting-for-a-billing-system-change"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/the-complete-guide-to-driver-friendly-school-bus-routing"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Which Transportation Management Tools Enhance Student Safety?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/which-transportation-management-tools-enhance-student-safety"
   }
  ],
  "profile": {

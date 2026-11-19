@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Singlewire Software Introduces Campus Aware, a Complete Suite for K-12 Campus Movement and School Safety Management",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.singlewire.com/news/singlewire-software-introduces-campus-aware-suite"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.singlewire.com/news/8th-annual-vision-award-winners-announced-singlewire"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Relationships at the heart of safety: How Edgewood High modernized campus preparedness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.singlewire.com/news/how-edgewood-modernized-campus-preparedness"
   }
  ],
  "profile": {

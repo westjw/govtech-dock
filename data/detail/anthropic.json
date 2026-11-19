@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Anthropic prices initial public offering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-22",
    "headline": "Physicist Christopher Stubbs joins Anthropic's Long-Term Benefit Trust",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/public-benefit-fund"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-16",
-   "headline": "An update on independent evaluators",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators"
   }
  ],
  "profile": {

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Predictive Maintenance Using Big Data: What to Collect First",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/predictive-maintenance-big-data/"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Predictive Maintenance Challenges: What to Fix First",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/predictive-maintenance-challenges/"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Preventive Maintenance Software for Manufacturing Plants",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/preventive-maintenance-software/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.upkeep.com/blog/what-is-eam-software/"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "What Are the Four Pillars of a Safety Management System?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/four-pillars-of-a-safety-management-system/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "CMMS vs. EAM: How to Choose the Right System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/cmms-vs-eam/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "What Is CMMS in Manufacturing? How It Works on the Plant Floor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/cmms-in-manufacturing/"
   }
  ]
 }
