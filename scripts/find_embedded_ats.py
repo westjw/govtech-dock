@@ -73,7 +73,9 @@ SIGS: list[tuple[str, str, str]] = [
     # GETs it directly - there is no JSON API to build a url from a slug
     ("paylocity",  r"(https://recruiting\.paylocity\.com/recruiting/jobs/All/[0-9a-f-]{36}/[A-Za-z0-9_-]+)", "url"),
     ("rippling",   r"ats\.rippling\.com/([a-z0-9-]{2,60})/jobs", "slug"),
-    ("workday",    r"([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com/([A-Za-z0-9_-]+)", "workday"),
+    # the locale is not the site: adobe.wd5.myworkdayjobs.com/en-US/External
+    # is the site "External" (discover_ats reads it the same way)
+    ("workday",    r"([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com/(?:[a-z]{2}-[A-Z]{2}/)?([A-Za-z0-9_-]+)", "workday"),
     ("icims",      r"([a-z0-9-]{2,40})\.icims\.com", "slug"),
 ]
 
@@ -109,7 +111,12 @@ def scan(html: str) -> list[dict]:
         for m in re.finditer(pat, html or "", re.I):
             if shape == "workday":
                 tenant, wd, site = m.group(1), m.group(2), m.group(3)
-                ref = [tenant, site, wd]
+                # (tenant, pod, site): the order ats.fetch_workday reads. It
+                # was [tenant, site, pod], which asked
+                # tenant.SITE.myworkdayjobs.com, failed verification and
+                # dropped every Workday board a careers page named, Adobe's
+                # among them (found 2026-11-13; none had ever been proposed)
+                ref = [tenant, wd, site]
                 key = (kind, tenant, site)
             else:
                 g = m.group(1)

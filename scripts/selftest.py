@@ -12583,7 +12583,8 @@ def check_the_crawler_honours_robots_txt() -> int:
     # redirect_sweep (where an address lands, no content read), logos (an
     # address a company's claimant gave us).
     for name, n in (("fetch_profiles", 2), ("feeds", 1), ("conference_dates", 1),
-                    ("find_boards", 1), ("find_event_directories", 1), ("find_linkedin", 1),
+                    ("find_boards", 1), ("find_site_boards", 1),
+                    ("find_event_directories", 1), ("find_linkedin", 1),
                     ("find_websites", 1), ("promote_rivals", 1), ("read_descriptions", 1),
                     ("resolve_org_sites", 1), ("supplier_pages", 1), ("sweep_exhibitors", 1),
                     ("supplier_identity", 1), ("add_company", 1), ("discover_ats", 1),
@@ -12597,11 +12598,15 @@ def check_the_crawler_honours_robots_txt() -> int:
     # a browser follows redirects and scripts without asking: both browser
     # readers walk the redirects first, abort refused navigations, and keep
     # nothing from a page they may not read
-    for name, after in (("render_fetch", "robots.check(page.url)"),
-                        ("discover_js", "robots.allowed, page.url"),
-                        ("render_floor", "robots.allowed, page.url")):
+    # (find_site_boards walks the hops itself, each one through ats.follow,
+    # because it has to see where a redirect POINTS before anything opens it:
+    # ats.resolve only says where the walk ended)
+    for name, walk, after in (("render_fetch", "ats.resolve", "robots.check(page.url)"),
+                              ("discover_js", "ats.resolve", "robots.allowed, page.url"),
+                              ("render_floor", "ats.resolve", "robots.allowed, page.url"),
+                              ("find_site_boards", "ats.follow(url, one)", "robots.allowed, page.url")):
         src = (ROOT / "scripts" / f"{name}.py").read_text()
-        if ("ats.resolve" not in src or 'page.route("**/*", only_allowed)' not in src
+        if (walk not in src or 'page.route("**/*", only_allowed)' not in src
                 or 'route.abort("blockedbyclient")' not in src or after not in src):
             errors += fail(f"scripts/{name}.py lets the browser open a page robots.txt refuses")
 
@@ -23171,6 +23176,727 @@ def check_find_boards_reads_real_pages() -> int:
     return bad
 
 
+# Every form of a board's address find_site_boards reads, with the board it
+# names and THE ADDRESS THE REAL FETCHER MUST ASK FOR IT. The address is
+# written here by hand, not built from the ref, so a ref in the wrong shape
+# cannot agree with itself.
+#
+# WHERE EACH FORM CAME FROM, because find_boards' first draft was written
+# from memory and found nothing. Forms marked "seen" were read off a live
+# page on the day named. Unmarked ones are the forms the older tables
+# already carry (FIND_BOARD_CASES), the addresses ats.py itself asks, or -
+# said plainly - vendor forms written from memory and seen on no page yet:
+# the EU hosts, Greenhouse's job_app embed and api. host, Workable's v3 path
+# and <account>.workable.com, Rippling's API path and locale, JazzHR's
+# widget, SmartRecruiters' oneclick-ui link. A remembered form that is wrong
+# matches nothing; what this table proves is that it cannot hand a reader a
+# ref in the wrong shape.
+SITE_BOARD_FORMS = [
+    # Pantheon, Planet Labs, Anaplan: seen 2026-11-18
+    ('<script src="https://boards.greenhouse.io/embed/job_board/js?for=pantheon"></script>',
+     "greenhouse", "pantheon", "https://boards-api.greenhouse.io/v1/boards/pantheon/jobs?content=true"),
+    ('<a href="https://job-boards.greenhouse.io/planetlabs">Open roles</a>',
+     "greenhouse", "planetlabs", "https://boards-api.greenhouse.io/v1/boards/planetlabs/jobs?content=true"),
+    ("https://boards-api.greenhouse.io/v1/boards/anaplan/departments/",
+     "greenhouse", "anaplan", "https://boards-api.greenhouse.io/v1/boards/anaplan/jobs?content=true"),
+    ('<iframe src="https://boards.greenhouse.io/embed/job_board?for=acmegov&amp;b=https%3A%2F%2Facmegov.example%2Fcareers">',
+     "greenhouse", "acmegov", "https://boards-api.greenhouse.io/v1/boards/acmegov/jobs?content=true"),
+    ('<a href="https://boards.greenhouse.io/debtbook/jobs/4012345">Account Executive</a>',
+     "greenhouse", "debtbook", "https://boards-api.greenhouse.io/v1/boards/debtbook/jobs?content=true"),
+    ('<a href="https://job-boards.eu.greenhouse.io/acmeeu">Jobs</a>',
+     "greenhouse", "acmeeu", "https://boards-api.greenhouse.io/v1/boards/acmeeu/jobs?content=true"),
+    ('<iframe src="https://boards.greenhouse.io/embed/job_app?for=acmegov&token=4012345">',
+     "greenhouse", "acmegov", "https://boards-api.greenhouse.io/v1/boards/acmegov/jobs?content=true"),
+    ("fetch('https://api.greenhouse.io/v1/boards/acmegov/jobs')",
+     "greenhouse", "acmegov", "https://boards-api.greenhouse.io/v1/boards/acmegov/jobs?content=true"),
+    # Lever slugs are lower case whatever the page wrote. Softdocs: seen 2026-11-18
+    ('<a href="https://jobs.lever.co/AcmeGov">Careers</a>',
+     "lever", "acmegov", "https://api.lever.co/v0/postings/acmegov?mode=json"),
+    ("https://api.lever.co/v0/postings/softdocs?group=team&mode=json",
+     "lever", "softdocs", "https://api.lever.co/v0/postings/softdocs?mode=json"),
+    ('<a href="https://jobs.eu.lever.co/acmeeu/0a1b">Apply</a>',
+     "lever", "acmeeu", "https://api.lever.co/v0/postings/acmeeu?mode=json"),
+    # Vector Solutions: seen 2026-11-18, capitals and all
+    ('<a href="https://jobs.ashbyhq.com/VectorSolutions?utm_source=vectorcareers">Jobs</a>',
+     "ashby", "VectorSolutions",
+     "https://api.ashbyhq.com/posting-api/job-board/VectorSolutions?includeCompensation=true"),
+    ("https://api.ashbyhq.com/posting-api/job-board/seneca?includeCompensation=true",
+     "ashby", "seneca", "https://api.ashbyhq.com/posting-api/job-board/seneca?includeCompensation=true"),
+    ('<iframe src="https://jobs.ashbyhq.com/embed?org=acmegov">',
+     "ashby", "acmegov", "https://api.ashbyhq.com/posting-api/job-board/acmegov?includeCompensation=true"),
+    # Flock's board has a space in its name; on file as "flock safety"
+    ('<a href="https://jobs.ashbyhq.com/flock%20safety">Jobs</a>',
+     "ashby", "flock safety",
+     "https://api.ashbyhq.com/posting-api/job-board/flock%20safety?includeCompensation=true"),
+    # Genetec: seen 2026-11-18
+    ('<a href="https://apply.workable.com/genetec-inc/?lng=en">Openings</a>',
+     "workable", "genetec-inc", "https://apply.workable.com/api/v1/widget/accounts/genetec-inc?details=true"),
+    ('send your resume to <a href="mailto:nallian@jobs.workablemail.com">',
+     "workable", "nallian", "https://apply.workable.com/api/v1/widget/accounts/nallian?details=true"),
+    ("https://apply.workable.com/api/v3/accounts/notraffic/jobs",
+     "workable", "notraffic", "https://apply.workable.com/api/v1/widget/accounts/notraffic?details=true"),
+    ('<a href="https://acmegov.workable.com/jobs/123">Apply</a>',
+     "workable", "acmegov", "https://apply.workable.com/api/v1/widget/accounts/acmegov?details=true"),
+    ('<a href="https://amilia.recruitee.com/o/account-executive">AE</a>',
+     "recruitee", "amilia", "https://amilia.recruitee.com/api/offers/"),
+    ('<script src="https://truleo.breezy.hr/embed"></script>',
+     "breezy", "truleo", "https://truleo.breezy.hr/json"),
+    # Deckard's embed script: seen 2026-11-18
+    ('<script src="https://deckard.bamboohr.com/js/embed.js" type="text/javascript" async defer></script>',
+     "bamboohr", "deckard", "https://deckard.bamboohr.com/careers/list"),
+    ('<div id="BambooHR" data-domain="technosylva.bamboohr.com"></div>',
+     "bamboohr", "technosylva", "https://technosylva.bamboohr.com/careers/list"),
+    # SmartRecruiters ids keep the case the page wrote
+    ('<a href="https://careers.smartrecruiters.com/Skyward1">Jobs</a>',
+     "smartrecruiters", "Skyward1", "https://api.smartrecruiters.com/v1/companies/Skyward1/postings?limit=100&offset=0"),
+    ("https://api.smartrecruiters.com/v1/companies/Dimonoff/postings",
+     "smartrecruiters", "Dimonoff", "https://api.smartrecruiters.com/v1/companies/Dimonoff/postings?limit=100&offset=0"),
+    ('<a href="https://jobs.smartrecruiters.com/oneclick-ui/company/Xplor/publication/0a1b?dcr_ci=Xplor">Apply</a>',
+     "smartrecruiters", "Xplor", "https://api.smartrecruiters.com/v1/companies/Xplor/postings?limit=100&offset=0"),
+    # Workday is [tenant, POD, site], and a locale is not the site
+    ('<a href="https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced">Jobs</a>',
+     "workday", ["adobe", "wd5", "external_experienced"],
+     "https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_experienced/jobs"),
+    ('<a href="https://acme.wd12.myworkdayjobs.com/Careers/job/Austin/AE_1">AE</a>',
+     "workday", ["acme", "wd12", "Careers"], "https://acme.wd12.myworkdayjobs.com/wday/cxs/acme/Careers/jobs"),
+    ('<a href="https://acme.wd3.myworkdayjobs.com/fr-CA/External_Careers">Emplois</a>',
+     "workday", ["acme", "wd3", "External_Careers"],
+     "https://acme.wd3.myworkdayjobs.com/wday/cxs/acme/External_Careers/jobs"),
+    # the address a rendered page asks: the site is after /wday/cxs/<tenant>/
+    ("https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/motorolasolutions/Careers/jobs",
+     "workday", ["motorolasolutions", "wd5", "Careers"],
+     "https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/motorolasolutions/Careers/jobs"),
+    # JustFOIA's iframe: seen 2026-11-18. "embed" is not the board
+    ('<iframe src="https://ats.rippling.com/embed/justfoia/jobs?s=https%3A%2F%2Fwww.justfoia.com%2Fcareers%2F">',
+     "rippling", "justfoia", "https://ats.rippling.com/justfoia/jobs"),
+    ('<a href="https://ats.rippling.com/en-GB/routeware-careers/jobs">Jobs</a>',
+     "rippling", "routeware-careers", "https://ats.rippling.com/routeware-careers/jobs"),
+    ("https://api.rippling.com/platform/api/ats/v1/board/urban-sdk/jobs",
+     "rippling", "urban-sdk", "https://ats.rippling.com/urban-sdk/jobs"),
+    ('<a href="https://cleargov.applytojob.com/apply/">Join us</a>',
+     "jazzhr", "cleargov", "https://cleargov.applytojob.com/apply/"),
+    ("<script src='https://app.jazz.co/widgets/basic/create/cleargov' charset='utf-8'></script>",
+     "jazzhr", "cleargov", "https://cleargov.applytojob.com/apply/"),
+    # PowerSchool: seen 2026-11-18
+    ('<iframe src="https://careers-powerschool.icims.com/jobs/search?ss=1&in_iframe=1">',
+     "icims", "careers-powerschool", "https://careers-powerschool.icims.com/jobs/search?ss=1&in_iframe=1&pr=0"),
+    # Paylocity keeps the whole address; Circuit's, and FAAC's /List/ shape (seen 2026-11-18)
+    ('<a href="https://recruiting.paylocity.com/recruiting/jobs/All/8fd19852-1c86-4dc6-b447-a9d04e59f12e/TFR-Transit-Inc">',
+     "paylocity", "https://recruiting.paylocity.com/recruiting/jobs/All/8fd19852-1c86-4dc6-b447-a9d04e59f12e/TFR-Transit-Inc",
+     "https://recruiting.paylocity.com/recruiting/jobs/All/8fd19852-1c86-4dc6-b447-a9d04e59f12e/TFR-Transit-Inc"),
+    ('<iframe src="https://recruiting.paylocity.com/recruiting/jobs/List/2115/FAAC-Incorporated">',
+     "paylocity", "https://recruiting.paylocity.com/recruiting/jobs/List/2115/FAAC-Incorporated",
+     "https://recruiting.paylocity.com/recruiting/jobs/List/2115/FAAC-Incorporated"),
+    # ADP keeps the cid, and the career centre only when it is not the default
+    ('<a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html'
+     '?cid=cbabd1ae-568b-4f70-933b-3f462f76c1b5&amp;ccId=19000101_000001&amp;type=MP&amp;lang=en_US">',
+     "adp", "cbabd1ae-568b-4f70-933b-3f462f76c1b5",
+     "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/"
+     "job-requisitions?cid=cbabd1ae-568b-4f70-933b-3f462f76c1b5&ccId=19000101_000001&lang=en_US&locale=en_US"),
+    ('<a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html'
+     '?cid=94da5684-2a09-4d91-90bc-7073c53b74b5&ccId=9200123456789_2&type=JS">',
+     "adp", "94da5684-2a09-4d91-90bc-7073c53b74b5|9200123456789_2",
+     "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/"
+     "job-requisitions?cid=94da5684-2a09-4d91-90bc-7073c53b74b5&ccId=9200123456789_2&lang=en_US&locale=en_US"),
+    # what GovWorx's careers page asks ADP while it draws: seen 2026-11-18
+    # (its cid and career centre; the rest of the query was not kept)
+    ("https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/"
+     "job-requisitions?cid=f73c2257-c8a2-4cc5-a4cd-fe8b9295134d&ccId=9201623385330_3&lang=en_US",
+     "adp", "f73c2257-c8a2-4cc5-a4cd-fe8b9295134d|9201623385330_3",
+     "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/"
+     "job-requisitions?cid=f73c2257-c8a2-4cc5-a4cd-fe8b9295134d&ccId=9201623385330_3&lang=en_US&locale=en_US"),
+    ('<a href="https://jobs.gusto.com/boards/md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922">Careers</a>',
+     "gusto", "md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922",
+     "https://jobs.gusto.com/boards/md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922"),
+    # City Detect iframes Gem; the board is asked by its slug in a POST body
+    ('<iframe src="https://jobs.gem.com/citydetect?embed=true"></iframe>',
+     "gem", "citydetect", ("https://jobs.gem.com/api/public/graphql/batch", "citydetect")),
+]
+
+# Markup that names NO board, and the reason each is here.
+SITE_BOARD_NOT_ONE = [
+    '<link href="/module_Career_-_Greenhouse.min.css">',            # a filename
+    '<a href="https://www.greenhouse.io/customers">Greenhouse</a>',  # the vendor's own site
+    '<a href="https://apply.workable.com/j/0A1B2C3D4E">Apply</a>',   # a posting's short link
+    '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
+    '<img src="https://c-1234-20200101-acme-com.i.icims.com/logo.png">',
+    '<a href="https://acme.wd5.myworkdayjobs.com/en-US">Jobs</a>',   # a locale is not a site
+    '<a href="https://wd3.myworkdaysite.com/recruiting/modaxo/Tadera">Jobs</a>',  # fetch_workday cannot take it
+    '<a href="https://jobs.gusto.com/postings/acme-account-executive-0f3c">AE</a>',  # a posting, no board id
+    '<a href="https://recruiting.paylocity.com/Recruiting/Jobs/Details/123456">AE</a>',
+    '<a href="https://ats.rippling.com/">Rippling</a>',
+    "We cut greenhouse gas emissions for cities and jobs.lever.co is a job site.",
+]
+
+
+def check_a_board_counts_only_when_their_own_site_points_to_it() -> int:
+    """find_site_boards is the first of the owner's two checks, and this is
+    what it must never get wrong.
+
+    THE OWNER'S RULE (2026-11-18): a program may wire a found board only when
+    the company's own website points to it AND the board names that company.
+    The older finders could not be the first half: they read whatever page
+    was on file (87 are not on the company's own site), let the library
+    follow redirects and threw the landing address away, and never said where
+    in the page a reference sat. One of them also built every Workday ref in
+    the wrong order for three months and found none.
+
+    So, with every page stubbed (no network, no browser):
+      - an iframe, a link, a script embed and a redirect are each found and
+        each LABELLED, and a board is counted once per mention;
+      - a reference on a page that left the company's site lands in off_site
+        and never in candidates, and the page it left for is not walked;
+      - a redirect to a board is recorded WITHOUT asking the board;
+      - a page robots.txt closes and a page behind a bot wall are recorded as
+        that, a refused site is not asked again, and neither reads as a
+        company with no board;
+      - a commented-out link is not a pointer;
+      - a guessed /careers counts only when the site answers it with a real
+        page;
+      - every pattern, borrowed or new, yields a ref the real fetcher asks at
+        the right address (the Workday order, the Greenhouse js embed);
+      - a run picks up where the last one stopped, --out is required, and
+        nothing but --out is written.
+    """
+    import asyncio
+    import contextlib
+    import io
+    import tempfile
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import find_site_boards as fsb
+    import page_belt
+    errors = 0
+
+    # ---- every form reaches its fetcher in the shape the fetcher takes ------
+    asked: list = []
+
+    def _rec_get(url, **kw):
+        asked.append(url)
+        raise ats.AtsError("stub: asked")
+
+    def _rec_post(url, body):
+        asked.append((url, body))
+        raise ats.AtsError("stub: asked")
+
+    keep = (ats._get, ats._page, ats._post_json)
+    ats._get, ats._page, ats._post_json = _rec_get, _rec_get, _rec_post
+    try:
+        for markup, kind, ref, address in SITE_BOARD_FORMS:
+            found, _ = fsb.sightings(markup, "https://www.acmegov.example/careers",
+                                     "https://www.acmegov.example")
+            got = [(f["type"], f["ref"]) for f in found]
+            if got != [(kind, ref)]:
+                errors += fail(f"find_site_boards reads {got or 'nothing'} out of {markup[:70]!r}, "
+                               f"not exactly ({kind!r}, {ref!r})")
+                continue
+            asked.clear()
+            try:
+                ats.FETCHERS[kind](ref)
+            except ats.AtsError:
+                pass
+            first = asked[0] if asked else None
+            if kind == "workday" and first:
+                first = first[0]
+            elif kind == "gem" and first:
+                first = (first[0], first[1][0]["variables"]["boardId"])
+            if first != address:
+                errors += fail(f"the {kind} ref {ref!r} lifted from a page is asked at {first!r}, "
+                               f"not {address!r}: its fetcher does not take that shape")
+        # EVERY PATTERN, NOT EVERY KIND. A pattern with no form here is one
+        # nobody has shown a page for, and a pattern that only ever loses to
+        # a longer one is dead: each must lift a listed board by itself.
+        for p in fsb.BOARDS:
+            mine = [r for m_, k, r, _ in SITE_BOARD_FORMS if k == p.kind
+                    for m in p.rx.finditer(fsb.soften(m_))
+                    if (p.make(m) or (None,))[0] == r]
+            if not mine:
+                errors += fail(f"no form in SITE_BOARD_FORMS is read by the {p.kind} pattern from "
+                               f"{p.origin} ({p.rx.pattern[:60]!r}), so nothing proves its output "
+                               f"is a ref ats.fetch_{p.kind} takes. Add the form it was written for.")
+            if p.kind not in ats.FETCHERS or p.kind == "html":
+                errors += fail(f"find_site_boards can name a {p.kind!r} board, which nothing reads")
+    finally:
+        ats._get, ats._page, ats._post_json = keep
+    for markup in SITE_BOARD_NOT_ONE:
+        found, _ = fsb.sightings(markup, "https://www.acmegov.example/careers",
+                                 "https://www.acmegov.example")
+        if found:
+            errors += fail(f"find_site_boards reads {[(f['type'], f['ref']) for f in found]} out of "
+                           f"markup that names no board: {markup[:70]!r}")
+    # what nothing can read is counted, not dropped and not called a board
+    _, rest = fsb.sightings('<a href="https://jobs.jobvite.com/civicplus/search">Jobs</a>'
+                            '<iframe src="https://acme.applicantstack.example/x/openings"></iframe>',
+                            "https://www.acmegov.example/careers", "https://www.acmegov.example")
+    vendors = {(r["vendor"], r["element"]) for r in rest}
+    if ("jobvite", "href") not in vendors:
+        errors += fail(f"a careers link to Jobvite is not tallied as a platform nothing reads: {vendors}")
+    if not any(v.startswith("other:") and el == "iframe" for v, el in vendors):
+        errors += fail(f"a job frame from a host nothing knows is not tallied at all: {vendors}")
+    # WHAT A BROWSER SAW. The first rendered run read "cdn-cgi" as JustFOIA's
+    # second Rippling board, because the host that serves a board serves its
+    # scripts beside it (2026-11-18). A request that names a board only by a
+    # bare first path segment counts when something else on the page names
+    # the same board, and not when it stands alone.
+    rippling_frame = "https://ats.rippling.com/embed/justfoia/jobs?s=https%3A%2F%2Fwww.justfoia.com%2Fcareers%2F"
+    found, rest = fsb.sightings(
+        f'<iframe src="{rippling_frame}"></iframe>', "https://www.justfoia.com/careers/",
+        "https://justfoia.com", frames_seen=[rippling_frame],
+        requests_seen=[rippling_frame, "https://ats.rippling.com/cdn-cgi/challenge-platform/scripts/main.js",
+                       "https://ats.rippling.com/justfoia/jobs", "https://ats.rippling.com/otherco",
+                       "https://jobs.lever.co/static/app.js",
+                       "https://10419396.fls.doubleclick.net/activityi;src=1;~oref=https://www.justfoia.com/careers/"])
+    got = sorted((f["type"], f["ref"], f["element"], f["times"]) for f in found)
+    if got != [("rippling", "justfoia", "frame", 1), ("rippling", "justfoia", "iframe", 1),
+               ("rippling", "justfoia", "request", 2)]:
+        errors += fail(f"what a browser saw of a page that frames one Rippling board is read as {got}: "
+                       f"a vendor's own scripts are counted as boards, or a frame's own requests are lost")
+    found, rest = fsb.sightings(
+        "", "https://www.acmegov.example/careers", "https://www.acmegov.example",
+        frames_seen=["https://10419396.fls.doubleclick.net/activityi;src=1;~oref=https://www.acmegov.example/careers",
+                     "https://acme.applicantstack.example/x/openings"],
+        requests_seen=["https://api.lever.co/v0/postings/softdocs?group=team&mode=json"])
+    if [(f["type"], f["ref"], f["element"]) for f in found] != [("lever", "softdocs", "request")]:
+        errors += fail(f"a page that asks a board's own API for its list is not read as pointing "
+                       f"to that board: {found}")
+    if [r["vendor"] for r in rest] != ["other:applicantstack.example"]:
+        errors += fail(f"an advertising frame is tallied as a job platform, or a real unknown one "
+                       f"is not: {[r['vendor'] for r in rest]}")
+    # Paylocity answers at two addresses for one board (FAAC's page, 2026-11-18)
+    found, rest = fsb.sightings(
+        '<iframe src="https://recruiting.paylocity.com/recruiting/jobs/List/2115/FAAC-Incorporated"></iframe>',
+        "https://www.faac.com/about/careers/", "https://www.faac.com/milo/",
+        frames_seen=["https://recruiting.paylocity.com/Recruiting/Jobs/All/e563c61b-eecf-49aa-9eee-60a8d86766eb/FAAC-Incorporated"],
+        requests_seen=["https://recruiting.paylocity.com/Recruiting/Content/public-jobs-list.js"])
+    all_form = "https://recruiting.paylocity.com/recruiting/jobs/All/e563c61b-eecf-49aa-9eee-60a8d86766eb/FAAC-Incorporated"
+    if sorted((f["ref"], f["element"]) for f in found) != [(all_form, "frame"), (all_form, "iframe")] or rest:
+        errors += fail(f"one Paylocity board framed at its /List/ address and landing on its /All/ "
+                       f"address reads as {[(f['ref'][-40:], f['element']) for f in found]} plus "
+                       f"{[r['vendor'] for r in rest]}: two boards, or its own scripts as a platform")
+    # Jibe names nobody in its address: the ref is the host of the page it runs on
+    found, _ = fsb.sightings('<script src="https://app.jibecdn.com/prod/search/main.js"></script>',
+                             "https://careers.gammaco.example/", "https://www.gammaco.example")
+    if [(f["type"], f["ref"], f["element"]) for f in found] != [("jibe", "careers.gammaco.example", "script")]:
+        errors += fail(f"a Jibe careers site is not read as its own host: {found}")
+
+    # A PAGE CANNOT HOLD THE RUN. A regex never lets go of the GIL, so no
+    # clock in the finder can stop one that has gone quadratic, and two of
+    # the patterns it first borrowed do: ats._ANCHOR and the title pattern in
+    # discover_ats._is_careers each rescan to the end of the page from every
+    # tag nobody closed (measured 2026-11-18: 4 seconds for 6,000 unclosed
+    # anchors, and four times the anchors is sixteen times the wait). This
+    # page takes half a second read the bounded way.
+    nasty = ("<html><body>" + "<a href='/careers/x'>Engineer " * 20000
+             + "<title>x<h1>y" * 5000 + "</body></html>")
+    began = time.monotonic()
+    fsb._anchors(nasty, "https://www.acmegov.example/")
+    fsb.sightings(nasty, "https://www.acmegov.example/", "https://www.acmegov.example")
+    fsb.careers_page("https://www.acmegov.example/x", nasty, "w" * 500)
+    fsb.same_page(nasty, nasty + " ")
+    if time.monotonic() - began > 10:
+        errors += fail(f"a page of unclosed tags held find_site_boards for "
+                       f"{time.monotonic() - began:.0f}s: one such page stops a whole sweep, "
+                       f"and nothing can interrupt it")
+
+    # ---- whose page: the same rule as the page belt's, on every shape -------
+    for page, site in (("https://careers.acme.com/jobs", "https://www.acme.com"),
+                       ("https://www.acme.com/careers", "https://careers.acme.com"),
+                       ("https://acme.com", "http://ACME.com:443/x"),
+                       ("https://acme.com.evil.test/careers", "https://acme.com"),
+                       ("https://notacme.com/careers", "https://acme.com"),
+                       ("https://boards.greenhouse.io/acme", "https://acme.com"),
+                       ("", "https://acme.com"), ("acme.com/careers", "acme.com")):
+        if fsb.own_site(page, site) != page_belt._same_site(page, site):
+            errors += fail(f"find_site_boards and the page belt disagree on whether {page!r} is "
+                           f"on {site!r}'s own site")
+
+    # ---- the walk, on a stubbed web -----------------------------------------
+    pad = " ".join(["Acme Gov builds permitting software for cities and counties."] * 12)
+    careers = ('<html><head><title>Careers at Acme Gov</title></head><body><h1>Careers</h1>'
+               '<iframe src="https://boards.greenhouse.io/embed/job_board?for=acmegov"></iframe>'
+               '<script src="https://boards.greenhouse.io/embed/job_board/js?for=acmegov"></script>'
+               '<a href="https://jobs.lever.co/AcmeGov">Engineering</a> '
+               '<a href="https://jobs.lever.co/acmegov/0a1b">Sales</a>'
+               '<p>Our partner posts at partnerco.bamboohr.com too.</p>'
+               '<a href="/careers/open-positions">View open positions</a>' + pad + '</body></html>')
+    quiet = "<html><head><title>Quiet Co</title></head><body>" + pad + "</body></html>"
+    web = {
+        "https://www.acmegov.example": (200, '<html><head><title>Acme Gov</title></head><body>'
+                                             '<a href="/careers">Careers</a>'
+                                             '<a href="https://jobs.lever.co/AcmeGov">See our open roles</a>'
+                                             '<!-- <a href="https://jobs.lever.co/oldacme">the board we left</a> -->'
+                                             + pad + '</body></html>'),
+        "https://www.acmegov.example/careers": (200, careers),
+        "https://www.acmegov.example/careers/open-positions":
+            (302, "https://acme.wd5.myworkdayjobs.com/en-US/External"),
+        "https://betaworks.example": (301, "https://www.parentco.example/brands/beta"),
+        "https://www.parentco.example/brands/beta":
+            (200, '<html><body><iframe src="https://boards.greenhouse.io/parentco"></iframe>'
+                  '<a href="https://www.parentco.example/careers">Careers</a>' + pad + '</body></html>'),
+        "https://walledco.example": (403, "Forbidden"),
+        "https://quietco.example": (200, quiet),
+        "https://quietco.example/zz-no-such-page-8471": (200, quiet),
+        "https://quietco.example/careers": (200, quiet),
+        "https://quietco.example/jobs": (200, quiet),
+        "https://realco.example": (200, "<html><head><title>Real Co</title></head><body>"
+                                        + pad + "</body></html>"),
+        "https://realco.example/careers":
+            (200, '<html><head><title>Careers</title></head><body><h1>Careers</h1>'
+                  '<p>We have no open positions at this time.</p>'
+                  '<a href="https://jobs.ashbyhq.com/realco">Our job board</a>' + pad + '</body></html>'),
+        "https://vectorco.example":
+            (200, '<html><head><title>Vector Co</title></head><body><a href="/careers">Careers</a>'
+                  '<a href="/industries/career-technical-education/">Career Technical Education</a>'
+                  '<a href="/solutions/job-safety-analysis/">Job Safety Analysis</a>'
+                  '<!-- <a href="/careers/old-openings">Open positions</a> -->' + pad + '</body></html>'),
+        "https://vectorco.example/careers":
+            (200, '<html><head><title>Careers</title></head><body><h1>Careers</h1>'
+                  '<a href="https://jobs.ashbyhq.com/VectorCo?utm_source=careers">Open roles</a>'
+                  '<a href="/careers?hsLang=en">Careers</a><a href="/careers/perks">Perks</a>'
+                  + pad + '</body></html>'),
+        "https://challengeco.example":
+            (200, "<html><head><title>Just a moment...</title></head><body>"
+                  "Checking your browser before accessing the site.</body></html>"),
+        "https://guardco.example": (200, "<html><head><title>Guard Co</title></head><body>"
+                                         + pad + "</body></html>"),
+        "https://guardco.example/zz-no-such-page-8471": (403, "Forbidden"),
+    }
+    reads: list = []
+
+    class _Page:
+        encoding = "utf-8"
+
+        def __init__(self, url):
+            code, body = web.get(url.rstrip("/"), (404, "not found"))
+            self.url, self.status_code = url, code
+            self.headers = {"content-type": "text/html; charset=utf-8"}
+            self._body = b""
+            if code in (301, 302):
+                self.headers["Location"] = body
+            else:
+                self._body = body.encode("utf-8")
+
+        def iter_content(self, chunk_size=65536):
+            yield self._body
+
+        def close(self):
+            pass
+
+    def _stub_request(url):
+        reads.append(url)
+        return _Page(url)
+
+    def _refuse(url, fetch=None):
+        if "closedco.example" in url:
+            return robots.Verdict(False, "robots.txt asks crawlers not to read closedco.example",
+                                  "disallowed")
+        return robots.ALLOWED
+
+    def _co(cid, name, site, kind="unknown", ref=None):
+        return {"id": cid, "name": name, "website": site, "ats": {"type": kind, "ref": ref}}
+
+    acme = _co("acme-gov", "Acme Gov", "https://www.acmegov.example", "html",
+               "https://www.acmegov.example/careers")
+    beta = _co("beta-works", "Beta Works", "https://betaworks.example")
+    closed = _co("closed-co", "Closed Co", "https://closedco.example")
+    walled = _co("walled-co", "Walled Co", "https://walledco.example", "html",
+                 "https://walledco.example/careers")
+    quietc = _co("quiet-co", "Quiet Co", "https://quietco.example")
+    real = _co("real-co", "Real Co", "https://realco.example")
+    vector = _co("vector-co", "Vector Co", "https://vectorco.example", "html",
+                 "https://vectorco.example/careers")
+    challenge = _co("challenge-co", "Challenge Co", "https://challengeco.example", "html",
+                    "https://challengeco.example/careers")
+    guarded = _co("guard-co", "Guard Co", "https://guardco.example")
+
+    keep_req, keep_verdict, keep_data = fsb._request, robots.verdict, fsb.DATA
+    fsb._request, robots.verdict = _stub_request, _refuse
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="selftest-siteboards-"))
+    try:
+        def look(c):
+            return asyncio.run(fsb.look(c, "static", fsb.read_plain))
+
+        def rows(rec, where="candidates"):
+            return {(r["type"], json.dumps(r["ref"]), r["element"], r["times"]) for r in rec[where]}
+
+        a = look(acme)
+        want = {("lever", '"acmegov"', "href", 1),          # the home page's link
+                ("greenhouse", '"acmegov"', "iframe", 1),   # the careers page embeds it...
+                ("greenhouse", '"acmegov"', "script", 1),   # ...and loads its script
+                ("lever", '"acmegov"', "href", 2),          # two links on the careers page
+                ("bamboohr", '"partnerco"', "text", 1),     # a bare mention, labelled as one
+                ("workday", '["acme", "wd5", "External"]', "redirect", 1)}
+        if rows(a) != want:
+            errors += fail(f"the walk of a site that embeds, links and redirects to its boards "
+                           f"found {sorted(rows(a))}, not {sorted(want)}: a reference is missed, "
+                           f"mislabelled or miscounted")
+        if any("oldacme" in json.dumps(r) for r in a["candidates"] + a["off_site"]):
+            errors += fail("a commented-out link is read as the site pointing at a board")
+        if any("myworkdayjobs" in u for u in reads):
+            errors += fail("a redirect to a board was followed onto the board: the finder asked "
+                           "the vendor, which is the second check's job and not this file's")
+        red = [r for r in a["candidates"] if r["element"] == "redirect"]
+        if red and not (fsb.own_site(red[0]["page"], acme["website"])
+                        and "myworkdayjobs.com/en-US/External" in red[0]["saw"]):
+            errors += fail(f"a redirect is not recorded as the own-site address that pointed "
+                           f"and where it pointed: {red[0]}")
+        if a["off_site"] or [p["status"] for p in a["pages"]] != ["read", "read", "left-site"]:
+            errors += fail(f"pages read on a company's own site are not recorded as read: "
+                           f"{[(p['final'], p['status']) for p in a['pages']]}")
+        if not all(p["same_site"] for p in a["pages"][:2]) or a["pages"][2]["same_site"]:
+            errors += fail("same_site does not say which landing addresses were the company's own")
+        hops = {r["page"]: r["hop"] for r in a["candidates"]}
+        if hops.get("https://www.acmegov.example") != 0 or hops.get(
+                "https://www.acmegov.example/careers/open-positions") != 1:
+            errors += fail(f"hop does not count the links followed from a start page: {hops}")
+
+        # THE ONE THAT MATTERS: a reference on a page that left the site
+        reads.clear()
+        b = look(beta)
+        if b["candidates"]:
+            errors += fail(f"a board named on ANOTHER company's page is a candidate: "
+                           f"{b['candidates']}. Beta Works' site redirects to its parent, and "
+                           f"the parent's Greenhouse board would be wired as Beta Works'")
+        if ("greenhouse", '"parentco"', "iframe", 1) not in rows(b, "off_site"):
+            errors += fail(f"a board named on the page a site left for is not kept under "
+                           f"off_site for a person to see: {b['off_site']}")
+        if (b["left_site"] != [{"from": "https://betaworks.example", "to_host": "parentco.example"}]
+                or b["pages"][0]["status"] != "left-site" or b["pages"][0]["same_site"]):
+            errors += fail(f"a site that left for another host is not recorded as having left: "
+                           f"{b['left_site']} {b['pages']}")
+        if any("parentco.example/careers" in u for u in reads):
+            errors += fail("the walk followed a careers link on another company's site")
+
+        # refused, and walled: recorded as that, never as a company with no board
+        reads.clear()
+        c = look(closed)
+        if [p["status"] for p in c["pages"]] != ["robots"] or reads:
+            errors += fail(f"a site robots.txt closes was read or misfiled: "
+                           f"{[p['status'] for p in c['pages']]}, {len(reads)} request(s)")
+        w = look(walled)
+        if [p["status"] for p in w["pages"]] != ["blocked"]:
+            errors += fail(f"a bot wall is not recorded as blocked, or the site was asked again "
+                           f"after it refused: {[(p['asked'], p['status']) for p in w['pages']]}")
+        for rec in (c, w):
+            if (rec["job_like_links"] is not None or rec["says_no_openings"] or rec["candidates"]
+                    or any(p["status"] == "read" for p in rec["pages"])):
+                errors += fail(f"a company whose site could not be read carries a finding "
+                               f"({rec['name']}): an unread page is not a page with no board")
+        said = "\n".join(fsb.summary({"closed-co": c, "walled-co": w}))
+        if "2 NOT READ" not in said or "0 read, no readable board named" not in said:
+            errors += fail(f"the run's own count files unread sites with the ones read and "
+                           f"found empty:\n{said}")
+
+        # a guessed path is believed only when the site answers it with a real page
+        q = look(quietc)
+        if q["candidates"] or sum(1 for p in q["pages"] if p["status"] == "read") != 1:
+            errors += fail(f"a site that answers every address with its home page had a guessed "
+                           f"/careers read as a real page: {[(p['asked'], p['status']) for p in q['pages']]}")
+        r = look(real)
+        if rows(r) != {("ashby", '"realco"', "href", 1)} or not r["says_no_openings"]:
+            errors += fail(f"a real /careers the home page never linked was not found by the "
+                           f"guess, or its 'no open positions' was not read: {r['candidates']} "
+                           f"{r['says_no_openings']}")
+
+        # WHAT THE FIRST REAL RUN ASKED FOR AND SHOULD NOT HAVE (2026-11-18):
+        # product pages named "Career Technical Education" and "Job Safety
+        # Analysis", a careers page a second time under ?hsLang=en, sub-pages
+        # of a careers page that had already named its board, and it would
+        # have followed a commented-out link the same way. Two requests are
+        # the whole walk of this site, and the order says which.
+        reads.clear()
+        v = look(vector)
+        if reads != ["https://vectorco.example", "https://vectorco.example/careers"]:
+            errors += fail(f"a site whose careers page names its board in two requests was "
+                           f"asked for {len(reads)}: {[u.split('example')[-1] for u in reads]}. "
+                           f"Every extra one is a request made of somebody's site for nothing")
+        if rows(v) != {("ashby", '"VectorCo"', "href", 1)}:
+            errors += fail(f"a board's name lost the case its page wrote it in: {v['candidates']}")
+
+        # a bot-check page served as HTTP 200 is a refusal, not a page with no board
+        reads.clear()
+        ch = look(challenge)
+        if [p["status"] for p in ch["pages"]] != ["blocked"] or len(reads) != 1 \
+                or ch["job_like_links"] is not None:
+            errors += fail(f"a bot-check page served as HTTP 200 was read as the company's page, "
+                           f"or the site was asked again: {[(p['asked'], p['status']) for p in ch['pages']]}")
+        # and a site that turns the nonsense path away is not then asked for guesses
+        reads.clear()
+        g = look(guarded)
+        if reads != ["https://guardco.example", "https://guardco.example/zz-no-such-page-8471"]:
+            errors += fail(f"a site that refused one request was asked for guessed paths after "
+                           f"it: {[u.split('example')[-1] for u in reads]}")
+        if [p["status"] for p in g["pages"]] != ["read"]:
+            errors += fail(f"a home page that was read is not recorded as read once the site "
+                           f"refuses elsewhere: {g['pages']}")
+
+        # what only a browser can report, filed by the same rule (no browser
+        # runs here: this is the record a rendered page hands over)
+        shown = fsb._blank(acme)
+        fsb.absorb(shown, {"asked": "https://www.acmegov.example/join", "status": "ok", "note": "",
+                           "opened": "https://www.acmegov.example/join",
+                           "final": "https://acmegov.bamboohr.com/careers",
+                           "html": '<a href="https://otherco.bamboohr.com/careers">x</a>',
+                           "links": [], "requests": [], "frames": []}, 1, acme["website"])
+        if (rows(shown) != {("bamboohr", '"acmegov"', "redirect", 1)} or shown["off_site"]
+                or shown["candidates"][0]["page"] != "https://www.acmegov.example/join"
+                or shown["pages"][0]["status"] != "left-site"):
+            errors += fail(f"a page whose own script sends the browser to a board is not recorded "
+                           f"as that redirect: {shown['candidates']} {shown['off_site']}")
+        shown = fsb._blank(beta)
+        fsb.absorb(shown, {"asked": "https://betaworks.example", "status": "ok", "note": "",
+                           "opened": "https://betaworks.example/",
+                           "final": "https://www.parentco.example/careers", "html": "",
+                           "links": [], "frames": ["https://boards.greenhouse.io/embed/job_board?for=parentco"],
+                           "requests": ["https://boards-api.greenhouse.io/v1/boards/parentco/jobs"]},
+                   0, beta["website"])
+        if shown["candidates"] or {r["element"] for r in shown["off_site"]} != {"frame", "request"}:
+            errors += fail(f"what a browser saw on a page that left the company's site is filed "
+                           f"as the company's: {shown['candidates']} {shown['off_site']}")
+
+        # ---- the list: who is looked at ---------------------------------------
+        (tmp / "data").mkdir()
+        fsb.DATA = tmp / "data"
+        listed = [acme, beta, real,
+                  _co("wired-co", "Wired Co", "https://wired.example", "greenhouse", "wiredco"),
+                  {**_co("ruled-out", "Ruled Out", "https://ruledout.example"),
+                   "out_of_scope": {"why": "a person ruled", "by": "owner"}},
+                  _co("refused-co", "Refused Co", "https://refused.example"),
+                  _co("rejected-co", "Rejected Co", "https://rejected.example"),
+                  _co("no-site", "No Site", "")]
+        (fsb.DATA / "companies.json").write_text(json.dumps(listed))
+        (fsb.DATA / "board_proposal_rulings.json").write_text(json.dumps(
+            {"refused-co": {"accept": False, "by": "owner", "why": ""},
+             "acme-gov": {"accept": True, "by": "owner", "why": ""}}))
+        (fsb.DATA / "agent_proposals.json").write_text(json.dumps(
+            {"board:rejected-co": {"id": "rejected-co", "status": "rejected"},
+             "board:beta-works": {"id": "beta-works", "status": "pending"}}))
+        todo, _why = fsb.worklist(listed)
+        if [x["id"] for x in todo] != ["acme-gov", "beta-works", "real-co"]:
+            errors += fail(f"the worklist is {[x['id'] for x in todo]}: it must hold the html and "
+                           f"unknown companies with a website and never one ruled out of scope "
+                           f"or one whose found board was refused")
+        todo, _why = fsb.worklist(listed, only={"ruled-out", "refused-co", "rejected-co", "wired-co"},
+                                  include_wired=True)
+        if [x["id"] for x in todo] != ["wired-co"]:
+            errors += fail(f"an --only list put {[x['id'] for x in todo]} on the worklist: a list "
+                           f"is a decision about what to look at, not a reversal of a ruling")
+        if fsb.worklist(listed, only={"wired-co"})[0]:
+            errors += fail("a company with a structured board on file is looked at without "
+                           "--include-wired")
+        ids = [f"company-{i}" for i in range(200)]
+        parts = [[i for i in ids if fsb.in_shard(i, k, 4)] for k in (1, 2, 3, 4)]
+        if sorted(sum(parts, [])) != sorted(ids) or min(len(x) for x in parts) < 25:
+            errors += fail("--shard does not put each company in exactly one part of a fair split")
+        if [k for k in (1, 2, 3, 4) if fsb.in_shard("acme-gov", k, 4)] != [3]:
+            errors += fail("--shard moved a company to another part: the split must be the "
+                           "same on every machine and every run, or two runners read one site")
+
+        # ---- a run: resumable, --out required, nothing else written ----------
+        out = tmp / "found" / "boards.json"
+        before = {f.name: f.read_bytes() for f in fsb.DATA.iterdir()}
+        # (the run prints its counts; they are kept out of the suite's
+        # output, so what goes wrong in here is said after, not into it)
+        quiet_out, said = io.StringIO(), []
+        with contextlib.redirect_stdout(quiet_out), contextlib.redirect_stderr(quiet_out):
+            reads.clear()
+            rc = fsb.main(["--out", str(out), "--only", "acme-gov,beta-works", "--pause", "0"])
+            first = len(reads)
+            doc = json.loads(out.read_text()) if out.exists() else {}
+            if rc != 0 or doc.get("mode") != "static" or sorted(doc.get("companies") or {}) != [
+                    "acme-gov", "beta-works"] or not doc.get("generated"):
+                said.append(f"a run did not write the results file the wiring door reads: "
+                            f"rc={rc}, {sorted(doc)} {sorted(doc.get('companies') or {})}")
+            want_keys = {"name", "website", "was", "pages", "candidates", "off_site", "elsewhere",
+                         "left_site", "job_like_links", "says_no_openings", "error"}
+            for cid, rec in (doc.get("companies") or {}).items():
+                if set(rec) != want_keys:
+                    said.append(f"{cid}'s record has keys {sorted(set(rec) ^ want_keys)} "
+                                f"more or fewer than the contract's")
+                for row in rec["candidates"] + rec["off_site"]:
+                    if set(row) != {"type", "ref", "element", "saw", "times", "page", "hop"} \
+                            or len(row["saw"]) > 160 or row["type"] not in ats.FETCHERS:
+                        said.append(f"a reference row is not in the contract's shape: {row}")
+            reads.clear()
+            fsb.main(["--out", str(out), "--only", "acme-gov,beta-works,real-co", "--pause", "0"])
+            again = json.loads(out.read_text())
+            if not first or any("realco.example" not in u for u in reads) or not reads:
+                said.append(f"a second run with the same --out asked {len(reads)} address(es) "
+                            f"again for companies already in the file: it is not resumable")
+            if sorted(again["companies"]) != ["acme-gov", "beta-works", "real-co"] \
+                    or again["companies"]["acme-gov"] != doc["companies"]["acme-gov"]:
+                said.append("a resumed run lost or rewrote what the earlier run had found")
+            try:
+                rc = fsb.main(["--out", str(out), "--render", "--only", "real-co"])
+            except SystemExit as exc:        # it got as far as wanting a browser
+                rc = exc.code
+            if rc != 2:
+                said.append("a browser run was allowed to resume a plain run's file: a company "
+                            "read without a browser would be skipped as already rendered")
+            try:
+                fsb.main(["--only", "acme-gov"])
+                said.append("find_site_boards ran with no --out: it must never choose where "
+                            "to write, least of all data/")
+            except SystemExit as exc:
+                if exc.code != 2:
+                    said.append(f"find_site_boards without --out exited {exc.code!r}")
+            reads.clear()
+            if fsb.main(["--out", str(fsb.DATA / "site_boards.json"), "--only", "acme-gov"]) != 2 \
+                    or reads or (fsb.DATA / "site_boards.json").exists():
+                said.append("find_site_boards accepted an --out inside data/")
+        for msg in said:
+            errors += fail(msg)
+        after = {f.name: f.read_bytes() for f in fsb.DATA.iterdir()}
+        if before != after:
+            errors += fail(f"find_site_boards changed data/ "
+                           f"({sorted(set(before) ^ set(after)) or 'a file was rewritten'}): it "
+                           f"writes its --out file and nothing else")
+        if sorted(f.name for f in out.parent.iterdir()) != ["boards.json"]:
+            errors += fail(f"a run left more than its results file behind: "
+                           f"{sorted(f.name for f in out.parent.iterdir())}")
+    finally:
+        fsb._request, robots.verdict, fsb.DATA = keep_req, keep_verdict, keep_data
+        import shutil
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # ---- the browser half, which no check here can run ----------------------
+    src = (ROOT / "scripts" / "find_site_boards.py").read_text()
+    if re.search(r"^(?:import|from)\s+playwright", src, re.M):
+        errors += fail("find_site_boards imports Playwright at the top: a plain run and this "
+                       "suite would need a browser installed")
+    render = src[src.find("async def read_rendered"):src.find("# ----", src.find("async def read_rendered"))]
+    if not 0 <= render.find("land, url, website") < render.find("page.goto("):
+        errors += fail("the browser opens an address before its redirects were walked hop by hop")
+    if "user_agent=render_fetch.UA" not in src:
+        errors += fail("the finder's browser does not carry the crawler's own user agent")
+    if "asyncio.Semaphore(2)" not in src or src.count("chromium.launch(") != 1:
+        errors += fail("render mode is not one browser with two pages at a time")
+
+    # ---- the workflow that runs it: reads, uploads, never pushes ------------
+    wf = ROOT / ".github" / "workflows" / "board-sweep.yml"
+    if not wf.exists():
+        errors += fail("no .github/workflows/board-sweep.yml: nothing runs the rendered sweep")
+    else:
+        y = wf.read_text()
+        code = "\n".join(ln for ln in y.splitlines() if not ln.lstrip().startswith("#"))
+        if "workflow_dispatch" not in code or re.search(r"^\s*schedule:", code, re.M):
+            errors += fail("board-sweep.yml is not dispatch-only: a sweep of every company's "
+                           "site must be somebody's decision each time")
+        if not re.search(r"^permissions:\n\s+contents: read\s*$", code, re.M) \
+                or re.search(r"^\s+[\w-]+:\s*write\s*$", code, re.M):
+            errors += fail("board-sweep.yml asks for more than contents: read")
+        if "git push" in y or "git commit" in code or "govtech-dock-data" in code:
+            errors += fail("board-sweep.yml pushes, commits or holds the data group: its "
+                           "findings leave as an artifact and enter data/ only through the door")
+        if "upload-artifact" not in code or "find_site_boards.py --render" not in code \
+                or "--out" not in code:
+            errors += fail("board-sweep.yml does not run the rendered finder and hand its "
+                           "results file back as an artifact")
+        if "--show" in code:
+            errors += fail("board-sweep.yml prints company lines into a public log (--show)")
+    return errors
+
+
 def check_posted_date_is_the_employers() -> int:
     """"Posted" must be the employer's date, and absent when they gave none.
 
@@ -27508,6 +28234,50 @@ def check_the_crawler_paces_itself() -> int:
             print(f"  FAIL: Retry-After {junk!r} should read as absent")
             errors += 1
 
+    return errors
+
+
+def check_a_board_named_in_a_page_is_read_as_its_reader_reads_it() -> int:
+    """A board find_embedded_ats lifts out of a careers page must reach the
+    reader in the shape the reader takes, or verification fails and the find
+    is silently dropped.
+
+    Found 2026-11-13: the scan built a Workday ref as [tenant, SITE, pod]
+    where ats.fetch_workday reads (tenant, POD, site), and read a locale
+    ("en-US") as the site. Every Workday board a careers page named would
+    have asked tenant.<site>.myworkdayjobs.com, failed, and never reached
+    Boards we found; Adobe's Phenom page names its Workday board that way.
+    Driven through the real scan and the real fetch_workday, with the
+    transport stubbed to record the address asked.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import find_embedded_ats as fe
+    errors = 0
+    page = ('<a href="https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced">Jobs</a>'
+            '<a href="https://acme.wd12.myworkdayjobs.com/Careers/job/Austin/AE_1">x</a>')
+    found = [f for f in fe.scan(page) if f["type"] == "workday"]
+    refs = {tuple(f["ref"]) for f in found}
+    want = {("adobe", "wd5", "external_experienced"), ("acme", "wd12", "Careers")}
+    if refs != want:
+        errors += fail(f"the scan lifts Workday refs as {sorted(refs)}, not (tenant, pod, site) "
+                       f"{sorted(want)}; a locale is not a site")
+    asked = []
+    keep = ats._post_json
+    ats._post_json = lambda url, body: (asked.append(url), {"jobPostings": []})[1]
+    try:
+        for f in found:
+            try:
+                ats.fetch_workday(f["ref"])
+            except ats.AtsError:
+                pass
+    finally:
+        ats._post_json = keep
+    for t, pod, site in want:
+        u = f"https://{t}.{pod}.myworkdayjobs.com/wday/cxs/{t}/{site}/jobs"
+        if u not in asked:
+            errors += fail(f"a Workday board found in a page is read at the wrong address "
+                           f"(wanted {u}; asked {sorted(set(asked))[:3]})")
     return errors
 
 
@@ -40627,6 +41397,7 @@ def main() -> int:
     errors += check_alert_preview_matches_the_digest()
     errors += check_linkedin_is_the_companys_own()
     errors += check_find_boards_reads_real_pages()
+    errors += check_a_board_counts_only_when_their_own_site_points_to_it()
     errors += check_posted_date_is_the_employers()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()
@@ -40736,6 +41507,7 @@ def main() -> int:
     errors += check_fetchers_page_and_do_not_fake_zeros()
     errors += check_the_crawler_paces_itself()
     errors += check_embedded_wiring()
+    errors += check_a_board_named_in_a_page_is_read_as_its_reader_reads_it()
     errors += check_capture_parity()
     errors += check_extension_icons()
     errors += check_open_actions_never_write_the_map()
