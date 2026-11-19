@@ -1600,6 +1600,40 @@ def _workday_jd(url: str) -> str:
     return plain_html(info.get("jobDescription") or "")
 
 
+def workday_total(ref: list) -> int:
+    """How many postings the WHOLE board holds, by Workday's own count.
+
+    fetch_workday asks two sales searches and nothing else, so the rows it
+    returns say nothing about the size of the board: a tenant with thousands
+    of openings answers "sales" with a couple of hundred. A door that must
+    leave the giants alone (wire_found.py, the owner's ruling of 2026-11-18)
+    cannot learn that from the read, and Workday does state it: `total` on
+    the FIRST reply to a search - the only reply it is true on, see the
+    paging note above - and an empty search matches every posting.
+
+    Measured 2026-11-18 on motorolasolutions: 868 by this count, on a day the
+    two searches returned 385 rows. No board on file reads as 500 rows
+    through the reader, so a giant was never going to be seen that way.
+
+    One request, in the shape and at the address fetch_workday already uses.
+    Raises AtsError when the board will not answer or states no total: "the
+    size is unknown" is the caller's answer to give, not a zero made up here.
+    """
+    tenant, host, site = ref
+    body = {"limit": WD_PAGE, "offset": 0, "searchText": ""}
+    if str(host).startswith("wd") and str(tenant).startswith("wd"):
+        pod, tenant = tenant, host
+        api = f"https://{pod}.myworkdaysite.com/wday/cxs/{tenant}/{site}/jobs"
+        body["appliedFacets"] = {}
+    else:
+        api = f"https://{tenant}.{host}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs"
+    data = _post_json(api, body)
+    total = data.get("total") if isinstance(data, dict) else None
+    if not isinstance(total, int) or isinstance(total, bool) or total < 0:
+        raise AtsError("Workday stated no total for this board")
+    return total
+
+
 def fetch_paylocity(ref: str) -> list[dict]:
     """Paylocity publishes no JSON API; the board ships its data in the page.
 

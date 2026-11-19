@@ -285,14 +285,47 @@ def find_ats(url: str, paths: list[str] | None = None
     return None, None, notes
 
 
-def verify(ats_block: dict) -> tuple[bool, str]:
-    """Actually fetch the board. An unverified slug looks monitored and is not."""
+def read_board(ats_block: dict) -> tuple[bool, str, list]:
+    """verify(), and the rows it read: (ok, detail, postings with a title).
+
+    ONE READ, NOT TWO. A door that wires a board needs verify()'s answer AND
+    a few of the titles behind it, because the titles are what a person later
+    judges ownership on. Calling verify() and then fetching again for the
+    titles asks every board twice; this hands back the rows of the one read.
+    verify() is this with the rows dropped, so there is still one definition
+    of "the board reads".
+    """
     try:
         jobs = ats.fetch(ats_block)
     except Exception as exc:
-        return False, str(exc)[:70]
+        return False, str(exc)[:70], []
     real = [j for j in jobs if (j.get("title") or "").strip()]
-    return True, f"{len(real)} posting(s) readable"
+    return True, f"{len(real)} posting(s) readable", real
+
+
+def verify(ats_block: dict) -> tuple[bool, str]:
+    """Actually fetch the board. An unverified slug looks monitored and is not."""
+    ok, detail, _rows = read_board(ats_block)
+    return ok, detail
+
+
+def board_total(ats_block: dict) -> tuple[int | None, str]:
+    """(how many postings the WHOLE board holds by its own count, in words).
+
+    NOT THE SAME NUMBER AS read_board's. A reader that filters cannot show a
+    board is small: the Workday reader asks two sales searches, so 180 rows
+    from it is as likely a company with 4,000 openings as one with 200. Where
+    the vendor states a total it is asked for here in one request; everywhere
+    else the answer is None with the reason, and None is "unknown" - never
+    zero, and never leave to treat the board as small.
+    """
+    kind, ref = ats_block.get("type"), ats_block.get("ref")
+    if kind != "workday":
+        return None, f"nothing here asks a {kind} board how many postings it holds"
+    try:
+        return ats.workday_total(ref), "Workday's own total for an empty search"
+    except Exception as exc:
+        return None, str(exc)[:70]
 
 
 def main() -> int:

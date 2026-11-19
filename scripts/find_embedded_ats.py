@@ -32,7 +32,11 @@ returns. A person rules. The asymmetric error rule cuts the same way it always
 does - a missed board costs a re-run, a wrong board publishes another
 company's jobs under a name that is not theirs.
 
-  python scripts/find_embedded_ats.py [--limit 200] [--all] [--include-unknown]
+  python scripts/find_embedded_ats.py --out FILE [--limit 200] [--all] [--include-unknown]
+
+--out is needed whenever the default file, data/embedded_ats.json, holds
+anything: that file is the owner's queue and this script replaces what it
+writes to (see queue_in_the_way).
 """
 from __future__ import annotations
 
@@ -147,6 +151,41 @@ def scan(html: str) -> list[dict]:
     return found
 
 
+def queue_in_the_way(out_path: pathlib.Path) -> str | None:
+    """Why this run may not write to `out_path`, in words, or None.
+
+    THIS SCRIPT REPLACES ITS OUTPUT FILE WITH ONE RUN'S HITS, and its default
+    output is the owner's "Boards we found" queue. That was survivable while
+    this script was the file's only writer. It is not now: wire_found.py
+    appends the boards it could not prove to the same file
+    (board_proposals.file_found), each with the doubt that held it, and a
+    bare run here would throw every one of them away - along with the rows
+    already ruled on, which is where a refusal's board is read from. The
+    write is not journalled, so admin_undo.py could not bring them back.
+
+    So while that file holds anything, a run has to name its own --out. An
+    empty or missing queue file is still written, as it always was.
+    """
+    if out_path.resolve() != OUT.resolve() or not out_path.exists():
+        return None
+    try:
+        rows = json.loads(out_path.read_text())
+    except ValueError:
+        rows = None
+    if isinstance(rows, list) and not rows:
+        return None
+    if not isinstance(rows, list):
+        what = "is on disk and does not read as a list of rows"
+    else:
+        held = sum(1 for r in rows if isinstance(r, dict) and r.get("filed"))
+        what = (f"holds {len(rows)} row(s)"
+                + (f", {held} of them held for the owner by a door" if held else ""))
+    return (f"{out_path} is the owner's \"Boards we found\" queue and {what}. This "
+            f"script replaces its output file with this run's hits, so they would be "
+            f"gone, and nothing journals it. Nothing was read and nothing was written. "
+            f"Give this run its own file: --out <somewhere else>.json")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=200)
@@ -160,6 +199,14 @@ def main() -> int:
                                   "two runs do not overwrite each other")
     ap.add_argument("--pause", type=float, default=0.3)
     a = ap.parse_args()
+
+    # asked before the first request: a sweep that reads two hundred pages
+    # and only then finds it may not write has wasted every one of them
+    out_path = pathlib.Path(a.out) if a.out else OUT
+    stop = queue_in_the_way(out_path)
+    if stop:
+        print(stop)
+        return 2
 
     companies = json.loads((DATA / "companies.json").read_text())
     kinds = ({"unknown"} if a.only_unknown
@@ -233,7 +280,6 @@ def main() -> int:
             print(f"  ... {i}/{len(todo)}, {len(hits)} found", flush=True)
         time.sleep(a.pause)
 
-    out_path = pathlib.Path(a.out) if a.out else OUT
     out_path.write_text(json.dumps(hits, indent=1) + "\n")
     print(f"\n{len(hits)} verified boards found in {checked} pages")
     print(f"written to {out_path}")

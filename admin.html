@@ -5050,9 +5050,18 @@ RENDER.boardfound = c => {
   e.appendChild(line('Found in their careers page:',
     c.found.type + ' \u00b7 ' + String(c.found.ref).slice(0, 70)
     + (c.times > 1 ? '  (mentioned ' + c.times + ' times)' : '')));
-  e.appendChild(line('It reads:', c.verified || (c.postings + ' postings')));
+  // a row a door filed says when its board was read: the count and the
+  // titles are as old as that, not as old as the day you open the card
+  const readOn = c.filed && c.filed.read_at ? String(c.filed.read_at).slice(0, 10) : '';
+  e.appendChild(line('It reads:', (c.verified || (c.postings + ' postings'))
+    + (readOn ? '  (read live ' + readOn + ')' : '')));
   if (c.board_calls_itself)
     e.appendChild(line('The board calls itself:', c.board_calls_itself));
+  // A row a door held for you says why in words (board_proposals.file_found).
+  // A name mismatch says it in the red line below; this is every other doubt:
+  // a parent on file, two boards on one site, a board that names nobody.
+  if (c.filed && !c.warn_parent && c.identity_why)
+    e.appendChild(line('Not wired because:', c.identity_why));
 
   if (c.warn_parent) {
     const w = el('div');
@@ -5078,6 +5087,18 @@ RENDER.boardfound = c => {
   open.href = typeof c.found.ref === 'string' && c.found.ref.startsWith('http')
     ? c.found.ref : boardUrlFor(c.found);
   open.target = '_blank'; open.rel = 'noopener noreferrer';
+  // THE OTHER HALF OF THE QUESTION. A row a door filed names the page that
+  // pointed at the board; "is this theirs" is answered by looking at both,
+  // and the page was only ever inside a sentence above. Not labelled "their
+  // page": one doubt a row can carry is that the page is NOT on their site.
+  const from = boardFoundPage(c);
+  let their = null;
+  if (from) {
+    their = el('a', 'btn');
+    their.textContent = 'Open the page that named it';
+    their.href = from;
+    their.target = '_blank'; their.rel = 'noopener noreferrer';
+  }
   const why = el('input', 'in');
   why.placeholder = 'why (recorded either way)';
   why.style.flex = '1';
@@ -5095,13 +5116,41 @@ RENDER.boardfound = c => {
   };
   yes.onclick = () => send(true, c.warn_parent);
   no.onclick = () => send(false);
-  row.append(open, why, yes, no, msg);
+  row.append(...[open, their, why, yes, no, msg].filter(Boolean));
   n.appendChild(row);
   return n;
 };
 
+// The page a door recorded as pointing at the board, or '' - only ever an
+// http(s) address, because it becomes a link.
+function boardFoundPage(c){
+  const p = c && c.filed && typeof c.filed.page === 'string' ? c.filed.page.trim() : '';
+  return /^https?:\/\//i.test(p) ? p : '';
+}
+
+// Where a person can open a found board. EVERY TYPE THE CRAWL READS HAS A
+// LINE HERE (selftest holds this to ats.FETCHERS): it knew ten, and the
+// seven it did not - Workday first among them, the largest group a door
+// holds while Workday states no employer name - opened '#', so "Open the
+// board" did nothing on exactly the rows that most need looking at.
 function boardUrlFor(f){
   const r = f.ref;
+  if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
+  if (f.type === 'workday') {
+    // the list [tenant, pod, site]; two "wd.." parts means the pod-first
+    // host, as ats.fetch_workday reads it
+    if (!Array.isArray(r) || r.length !== 3) return '#';
+    return String(r[0]).startsWith('wd') && String(r[1]).startsWith('wd')
+      ? 'https://'+r[0]+'.myworkdaysite.com/recruiting/'+r[1]+'/'+r[2]
+      : 'https://'+r[0]+'.'+r[1]+'.myworkdayjobs.com/'+r[2];
+  }
+  if (typeof r !== 'string' || !r) return '#';
+  if (f.type === 'adp') {
+    // the portal's cid, with its ccId after a bar when it needs one
+    const [cid, cc] = r.split('|');
+    return 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid='
+      + encodeURIComponent(cid) + '&ccId=' + encodeURIComponent(cc || '19000101_000001') + '&lang=en_US';
+  }
   return ({greenhouse:'https://job-boards.greenhouse.io/'+r,
            lever:'https://jobs.lever.co/'+r,
            ashby:'https://jobs.ashbyhq.com/'+r,
@@ -5111,7 +5160,12 @@ function boardUrlFor(f){
            bamboohr:'https://'+r+'.bamboohr.com/careers',
            jazzhr:'https://'+r+'.applytojob.com',
            rippling:'https://ats.rippling.com/'+r+'/jobs',
-           icims:'https://'+r+'.icims.com'})[f.type] || '#';
+           icims:'https://'+r+'.icims.com',
+           smartrecruiters:'https://careers.smartrecruiters.com/'+r,
+           jibe:'https://'+r,
+           oracle:'https://'+r+'/hcmUI/CandidateExperience/en/sites/CX_1',
+           gusto:'https://jobs.gusto.com/boards/'+r,
+           gem:'https://jobs.gem.com/'+r})[f.type] || '#';
 }
 
 RENDER.placement = c => {
