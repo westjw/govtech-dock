@@ -614,43 +614,25 @@ def read_doubts() -> tuple[dict, str | None]:
     NOT admin.read, which hands back its default for a file that does not
     parse: a doubts file that cannot be read would then hold nothing, and
     every board a reader doubted would plan as WIRE. A file that is there
-    and is not {company id: {...}} stops the door instead.
+    and is not {company id: {...}} stops the door instead. The reader is
+    board_proposals.strict, the one discovery and wire_embedded.py use too.
     """
-    p = admin.DATA / DOUBTS
-    if not p.exists():
-        return {}, None
     try:
-        got = json.loads(p.read_text())
-    except (OSError, ValueError) as exc:
-        return {}, f"data/{DOUBTS} does not read ({exc})"
-    if not isinstance(got, dict) or not all(
-            isinstance(k, str) and isinstance(v, dict) for k, v in got.items()):
-        return {}, f"data/{DOUBTS} is not {{company id: the doubt}}"
-    return got, None
+        return board_proposals.strict(DOUBTS, admin.DATA), None
+    except board_proposals.Unreadable as exc:
+        return {}, str(exc)
 
 
-def _ruled_since(ruling, doubt: dict) -> bool:
-    """Has the owner ruled on this company in Boards we found since the
-    doubt was recorded? Only a ruling shown to be later counts: by the stamp
-    where both carry one, else by a later date. A ruling from before the
-    doubt, or from the same day with no stamps to tell them apart, leaves the
-    doubt standing - that is the answer that wires less."""
-    if not isinstance(ruling, dict):
-        return False
-    ra, da = _when(ruling.get("at")), _when(doubt.get("at"))
-    if ra and da:
-        return ra >= da
-    ro, do = str(ruling.get("on") or ""), str(doubt.get("on") or "")
-    return bool(ro and do and ro > do)
+_ruled_since = board_proposals.ruled_since
 
 
 def standing_doubts(store: dict) -> dict:
     """{company id: its standing doubt} - the doubts in `store` the owner has
     not ruled on since (board_proposal_rulings.json). A ruled company is the
-    ruling's: refused is SKIP refused, accepted is a board on file."""
-    ruled = admin.read(board_proposals.RULED.name, {})
-    return {cid: d for cid, d in (store or {}).items()
-            if isinstance(d, dict) and not _ruled_since(ruled.get(cid), d)}
+    ruling's: refused is SKIP refused, accepted is a board on file. Asked
+    through board_proposals.standing_doubts, the one rule every door holds
+    a company to."""
+    return board_proposals.standing_doubts(store, admin.read(board_proposals.RULED.name, {}))
 
 
 def doubt_words(d: dict) -> str:

@@ -31407,6 +31407,172 @@ def check_embedded_wiring() -> int:
     return errors
 
 
+def check_no_door_wires_a_company_the_owner_holds() -> int:
+    """Discovery and wire_embedded.py leave alone every company the owner holds.
+
+    The second blind review of scripts/wire_found.py (2026-11-19) found that a
+    reader's doubt held its company inside that one door only. The weekly
+    discovery job (.github/workflows/discovery.yml: `discover_ats.py --limit
+    300 --workers 4 --write`, unattended) probes every `unknown` company that
+    has come due and writes any board on its own site whose slug matches the
+    name - which a doubted board's slug does (the readers doubted JustFOIA's
+    own board, "an MCCi brand"). And wire_embedded.py --write wired an older
+    finder's row for a company whose door-held row the queue could not take.
+
+    So both ask board_proposals.held_for_the_owner first: a reader's doubt
+    that stands, a row a door filed in Boards we found that the owner has not
+    ruled on, or a board refused in either store holds the company - it is
+    not probed, not sorted, not wired - and a store that is on disk and does
+    not read stops the run before the first probe. Driven through
+    discover_ats.main with the workflow's own arguments, an --only list,
+    wire_embedded.triage and wire_embedded.main --write, in a sandbox, with
+    the probe and the re-check stubbed.
+    """
+    import admin
+    import board_proposals as bp
+    import discover_ats as da
+    import wire_embedded as we
+    errors = 0
+    co = _wb_co
+    held_ids = ("doubted-co", "filed-co", "refused-co", "rejected-co")
+    names = {"doubted-co": "Doubted Co", "filed-co": "Filed Co", "refused-co": "Refused Co",
+             "rejected-co": "Rejected Co", "free-co": "Free Co"}
+    companies = [co(cid, name, kind="unknown") for cid, name in names.items()]
+
+    def row(cid, **more):
+        r = {"id": cid, "name": names[cid], "was": "unknown",
+             "found": {"type": "greenhouse", "ref": cid.replace("-", "")},
+             "saw": f"boards.greenhouse.io/{cid.replace('-', '')}", "times": 1,
+             "verified": "3 posting(s) readable", "board_calls_itself": names[cid],
+             "identity": "matches", "identity_why": "an older finder's row",
+             "postings": 3, "titles": []}
+        r.update(more)
+        return r
+    files = {
+        "companies.json": companies,
+        "schema.json": json.loads((DATA / "schema.json").read_text()),
+        bp.DOUBTS: {"doubted-co": {"board": "greenhouse/doubtedco",
+                                   "why": "its ads say 'Doubted Co, a Bigger Group brand'",
+                                   "by": "agent:readers", "on": "2026-11-19",
+                                   "at": "2026-11-19T10:05:00-05:00"}},
+        # every company has an older finder's row a slug check passes; filed-co's
+        # is one a door filed for the owner, and nobody has ruled on it
+        bp.FOUND.name: [row("doubted-co"), row("refused-co"), row("rejected-co"),
+                        row("free-co"),
+                        row("filed-co", identity="unknown", identity_why="no stated name",
+                            filed={"by": "agent:earlier-batch", "on": "2026-11-19"})],
+        bp.RULED.name: {"refused-co": {"accept": False, "why": "the parent's board",
+                                       "by": "owner", "on": "2026-11-12"}},
+        bp.PROPOSALS: {"board:rejected-co": {
+            "kind": "board", "id": "rejected-co", "ats_type": "greenhouse",
+            "ats_ref": "rejectedco", "status": "rejected", "ruled_by": "owner",
+            "ruled_on": "2026-11-10", "ruled_why": "a staffing firm's board"}},
+    }
+    probed: list = []
+
+    def probe(c):
+        probed.append(c["id"])
+        return {"id": c["id"], "found": {"type": "greenhouse", "ref": c["id"].replace("-", "")},
+                "note": "greenhouse board, 3 posting(s) readable", "postings": 3}
+
+    def recheck(entry):
+        return {"ok": True, "rows": 3, "titles": ["Account Executive"] * 3}
+
+    def boards(tmp):
+        return {c["id"]: (c.get("ats") or {}).get("type")
+                for c in json.loads((tmp / "companies.json").read_text())}
+
+    keep = (da.DATA, da.LOG, da.SUSPECTS, da.probe, we.DATA, we.recheck, sys.argv)
+    with _sandbox_admin(files) as tmp:
+        try:
+            da.DATA, da.LOG, da.SUSPECTS = tmp, tmp / "discovery_log.json", tmp / "ats_suspects.json"
+            da.probe, we.DATA, we.recheck = probe, tmp, recheck
+            pristine = (tmp / "companies.json").read_bytes()
+            (tmp / "only.txt").write_text("\n".join(names) + "\n")
+            for label, argv in (
+                    ("the workflow's sweep", ["discover_ats.py", "--limit", "300", "--workers",
+                                              "4", "--write"]),
+                    ("an --only list", ["discover_ats.py", "--write", "--workers", "1", "--only",
+                                        str(tmp / "only.txt")])):
+                (tmp / "companies.json").write_bytes(pristine)
+                for p in (da.LOG, da.SUSPECTS):
+                    p.unlink(missing_ok=True)
+                del probed[:]
+                sys.argv = argv
+                out = io.StringIO()
+                with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                    code = da.main()
+                got = boards(tmp)
+                if sorted(probed) != ["free-co"]:
+                    errors += fail(f"{label}: discovery probed {sorted(probed)} - a company "
+                                   f"with a reader's doubt standing, a row a door filed for "
+                                   f"the owner, or a refusal in either store is his")
+                if [cid for cid in held_ids if got.get(cid) != "unknown"] or got.get("free-co") \
+                        != "greenhouse" or code not in (0, None):
+                    errors += fail(f"{label}: discovery wrote {got} (exit {code}): only the "
+                                   f"company nobody holds may be given a board")
+                said = out.getvalue()
+                if not re.search(r"\(4 (companies are|id\(s\) in the list are) held for the "
+                                 r"owner", said) \
+                        or any(cid in said or names[cid] in said for cid in held_ids):
+                    errors += fail(f"{label}: discovery does not count the companies it "
+                                   f"left for the owner, or names one in a log that is "
+                                   f"public: {said[-300:]!r}")
+
+            # --- a store that does not read stops the sweep before a probe ---
+            for name in (bp.DOUBTS, bp.FOUND.name, bp.RULED.name, bp.PROPOSALS):
+                good = (tmp / name).read_bytes()
+                for bad in (b"<<<<<<< HEAD\n{}\n=======\n", b'"a string, not the file"'):
+                    (tmp / name).write_bytes(bad)
+                    (tmp / "companies.json").write_bytes(pristine)
+                    del probed[:]
+                    sys.argv = ["discover_ats.py", "--limit", "300", "--workers", "4", "--write"]
+                    out = io.StringIO()
+                    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                        code = da.main()
+                    if probed or code in (0, None) or \
+                            (tmp / "companies.json").read_bytes() != pristine:
+                        errors += fail(f"data/{name} reading {bad[:16]!r} did not stop "
+                                       f"discovery before its first probe (exit {code}, "
+                                       f"probed {probed}): read as empty it holds nobody")
+                (tmp / name).write_bytes(good)
+
+            # --- wire_embedded: triage, then --write --------------------------
+            (tmp / "companies.json").write_bytes(pristine)
+            by_id = {c["id"]: c for c in admin.read_companies()}
+            rows = json.loads((tmp / bp.FOUND.name).read_text())
+            piles = we.triage(rows, by_id)
+            sorted_ = sorted(e["id"] for pile in piles for e in pile)
+            if sorted_ != ["free-co"] or [e["id"] for e in piles[0]] != ["free-co"]:
+                errors += fail(f"wire_embedded.triage sorted {sorted_} into its piles: a "
+                               f"company the owner holds is in none of them")
+            sys.argv = ["wire_embedded.py", "--write"]
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                code = we.main()
+            got = boards(tmp)
+            if code != 0 or got.get("free-co") != "greenhouse" \
+                    or [cid for cid in held_ids if got.get(cid) != "unknown"]:
+                errors += fail(f"wire_embedded --write wrote {got} (exit {code}): it wired a "
+                               f"company the owner holds, or nothing at all")
+            (tmp / "companies.json").write_bytes(pristine)
+            (tmp / bp.RULED.name).write_bytes(b"{ not json")
+            try:
+                we.triage(rows, by_id)
+                errors += fail("wire_embedded.triage sorted the pile with the rulings file "
+                               "unreadable, as though nobody had refused anything")
+            except bp.Unreadable:
+                pass
+            with contextlib.redirect_stdout(io.StringIO()), \
+                    contextlib.redirect_stderr(io.StringIO()):
+                code = we.main()
+            if code == 0 or (tmp / "companies.json").read_bytes() != pristine:
+                errors += fail("wire_embedded --write ran with the rulings file unreadable")
+        finally:
+            (da.DATA, da.LOG, da.SUSPECTS, da.probe, we.DATA, we.recheck, sys.argv) = keep
+    return errors
+
+
 # ---------------------------------------------- the wiring door, in a sandbox
 #
 # The checks below drive scripts/wire_found.py end to end - plan, look, write -
@@ -47885,6 +48051,7 @@ def main() -> int:
     errors += check_fetchers_page_and_do_not_fake_zeros()
     errors += check_the_crawler_paces_itself()
     errors += check_embedded_wiring()
+    errors += check_no_door_wires_a_company_the_owner_holds()
     errors += check_a_board_named_in_a_page_is_read_as_its_reader_reads_it()
     errors += check_a_found_board_is_wired_only_on_two_checks()
     errors += check_a_found_board_is_held_for_every_doubt()

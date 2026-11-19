@@ -2767,10 +2767,23 @@ round.
   word in this file is leave for `wire_embedded.py` to wire), a company
   already listed, ruled, or on a board, or a row whose read is not dated and
   fresh. A filed row carries `filed {by, on, at, read_at, page}`;
-  `wire_embedded.py` leaves filed rows alone. The card prints the doubt
+  `wire_embedded.py` leaves filed rows alone, and every row of a company the
+  owner holds (below). The card prints the doubt
   ("Not wired because:"), the read date, and links both the board and the
   page that named it; `boardUrlFor` has a line for every type in
   `ats.FETCHERS`.
+- **No other door wires a company the owner holds.**
+  `board_proposals.held_for_the_owner()` is the one reader: a reader's doubt
+  that stands (`data/board_doubts.json`), a row a door filed in Boards we
+  found that he has not ruled on, or a board refused in either store (Boards
+  we found, Agent proposals). `discover_ats.py` asks it before its first
+  probe - the weekly sweep and an `--only` list alike - and prints only a
+  count (the workflow's log is public); `wire_embedded.py` asks it before it
+  sorts, wires or queues anything, and leaves every row of such a company
+  alone, whichever finder left it. A store that is on disk and does not read
+  stops either run before it starts: read as empty it would hold nobody. The
+  second blind review (2026-11-19) had the unattended discovery sweep write a
+  doubted company's board. Guard: `check_no_door_wires_a_company_the_owner_holds`.
 - **`find_embedded_ats.py` needs `--out`.** It replaces its output file with
   one run's hits and its default is that queue file, so while the file holds
   anything a bare run is refused before the first request.
@@ -3136,7 +3149,10 @@ fires.
 - **A person's `out_of_scope` ruling on a company keeps it off the board.**
   `build_board.ruled_out()` serves main() and quick_rebuild, and discover_ats
   and refresh skip the company. Nothing read the field before, so discovery
-  re-wired Concourse after the owner ruled it out.
+  re-wired Concourse after the owner ruled it out. Discovery also skips every
+  company the owner holds for a board (`board_proposals.held_for_the_owner`:
+  a reader's doubt, a door-filed row in Boards we found, a refusal), and
+  stops before its first probe if one of those files does not read.
 - **Alerts:** an unconfirmed signup expires in a week (`putSub`). Every
   mail-sending endpoint has an hourly cooldown per address and a daily
   allowance per caller (`_mail.underDailyCap`), counted before the address is

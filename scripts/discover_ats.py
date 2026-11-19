@@ -788,6 +788,22 @@ def main() -> int:
     # note that warned against it. Applies to --only lists too: a list is a
     # decision about what to probe, not a reversal of a ruling.
     ruled = {c["id"] for c in companies if c.get("out_of_scope")}
+    # NOR ONE THE OWNER HOLDS. A reader's doubt that stands, a row a door filed
+    # for him in Boards we found, or a board refused in either store: each is a
+    # company whose board is his to settle, and a slug that matches the name is
+    # exactly what the doubted board's slug does (the readers doubted JustFOIA's
+    # own board, "an MCCi brand"). The second blind review of the wiring door
+    # (2026-11-19) had this sweep probe a doubted company and write the doubted
+    # board, unattended. Asked of the files beside the companies.json this run
+    # writes; one that is on disk and does not read stops the run here, before
+    # the first probe - read as empty, it would hold nobody.
+    import board_proposals
+    try:
+        held = board_proposals.held_for_the_owner(DATA)
+    except board_proposals.Unreadable as exc:
+        print(f"{exc}. Which companies the owner holds cannot be read, so nothing is "
+              f"probed and nothing is written.", file=sys.stderr)
+        return 2
     if a.only:
         wanted = {ln.strip() for ln in pathlib.Path(a.only).read_text().splitlines()
                   if ln.strip()}
@@ -795,15 +811,26 @@ def main() -> int:
             print(f"  ({len(wanted & ruled)} id(s) in the list were ruled out of scope "
                   f"by a person and are not probed)")
         wanted -= ruled
+        # counts only: the workflow's log is public
+        if wanted & set(held):
+            print(f"  ({len(wanted & set(held))} id(s) in the list are held for the owner - "
+                  f"a reader's doubt, a board waiting in Boards we found, or a refusal - "
+                  f"and are not probed)")
+        wanted -= set(held)
         todo = [c for c in companies if c["id"] in wanted and c.get("website")]
         missing = wanted - {c["id"] for c in todo}
         if missing:
             print(f"  ({len(missing)} id(s) in the list have no website or no record)")
     else:
-        todo = [c for c in companies
-                if (c.get("ats") or {}).get("type") in (None, "unknown")
-                and c.get("website") and stale(log.get(c["id"]))
-                and c["id"] not in ruled]
+        due = [c for c in companies
+               if (c.get("ats") or {}).get("type") in (None, "unknown")
+               and c.get("website") and stale(log.get(c["id"]))
+               and c["id"] not in ruled]
+        todo = [c for c in due if c["id"] not in held]
+        if len(todo) != len(due):
+            print(f"  ({len(due) - len(todo)} compan{'y is' if len(due) - len(todo) == 1 else 'ies are'} "
+                  f"held for the owner - a reader's doubt, a board waiting in Boards we "
+                  f"found, or a refusal - and not probed)")
     todo.sort(key=lambda c: probe_order(c, log))
     # An explicit id list is already the decision about scope. Clipping it to
     # --limit silently probed 300 of 768 and reported as though that were all

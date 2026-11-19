@@ -58,6 +58,134 @@ def _read(p: pathlib.Path, default):
     return json.loads(p.read_text()) if p.exists() else default
 
 
+# --- what the owner holds, read once for every door that could wire past him
+#
+# THE ONE READER. A reader's doubt, a row a door filed for him, and a refusal
+# in either store each hold a company's board until he says otherwise - and
+# for a while only scripts/wire_found.py knew it. The second blind review of
+# that door (2026-11-19) showed the weekly discovery job probing a doubted
+# company and writing the very board the readers doubted, and wire_embedded.py
+# wiring an older finder's row for a company whose door-held row the queue
+# could not take. So the question "is this company the owner's right now" is
+# asked here, of the files that answer it, by every door that writes a board.
+DOUBTS = "board_doubts.json"
+PROPOSALS = "agent_proposals.json"
+
+
+class Unreadable(ValueError):
+    """A file that holds the owner's answers is on disk and cannot be read.
+
+    Never read as empty. A refusal, a doubt or a row waiting on him that
+    cannot be read is one nothing stands behind, and a door that took the
+    file for empty would wire the board somebody said no to.
+    """
+
+
+def _dir(data) -> pathlib.Path:
+    return pathlib.Path(data) if data is not None else DATA
+
+
+def _rows_shape(got) -> str | None:
+    if isinstance(got, list) and all(isinstance(r, dict) and isinstance(r.get("id"), str)
+                                     and r["id"].strip() for r in got):
+        return None
+    return "a list of rows, each with its company's id"
+
+
+def _map_shape(got) -> str | None:
+    if isinstance(got, dict) and all(isinstance(k, str) and isinstance(v, dict)
+                                     for k, v in got.items()):
+        return None
+    return "{key: its record}"
+
+
+def _doubts_shape(got) -> str | None:
+    if isinstance(got, dict) and all(isinstance(k, str) and isinstance(v, dict)
+                                     for k, v in got.items()):
+        return None
+    return "{company id: the doubt}"
+
+
+# name -> (what a missing file is, what a file that reads must look like)
+SHAPES = {"embedded_ats.json": (list, _rows_shape),
+          "board_proposal_rulings.json": (dict, _map_shape),
+          PROPOSALS: (dict, _map_shape),
+          DOUBTS: (dict, _doubts_shape)}
+
+
+def strict(name: str, data=None):
+    """data/<name>, parsed and of its shape. A file that is not there is
+    empty; one that is there and does not read, or reads as something else,
+    raises Unreadable - unlike admin.read, which hands back its default."""
+    empty, shape = SHAPES[name]
+    p = _dir(data) / name
+    if not p.exists():
+        return empty()
+    try:
+        got = json.loads(p.read_text())
+    except (OSError, ValueError) as exc:
+        raise Unreadable(f"data/{name} does not read "
+                         f"({' '.join(str(exc).split())[:120]})") from None
+    problem = shape(got)
+    if problem:
+        raise Unreadable(f"data/{name} is not {problem}")
+    return got
+
+
+def ruled_since(ruling, doubt: dict) -> bool:
+    """Has the owner ruled on this company in Boards we found since the
+    doubt was recorded? Only a ruling shown to be later counts: by the stamp
+    where both carry one, else by a later date. A ruling from before the
+    doubt, or from the same day with no stamps to tell them apart, leaves the
+    doubt standing - that is the answer that wires less."""
+    if not isinstance(ruling, dict):
+        return False
+    ra, da = when(ruling.get("at")), when(doubt.get("at"))
+    if ra and da:
+        return ra >= da
+    ro, do = str(ruling.get("on") or ""), str(doubt.get("on") or "")
+    return bool(ro and do and ro > do)
+
+
+def standing_doubts(store: dict, ruled: dict) -> dict:
+    """{company id: its standing doubt} - the doubts in `store`
+    (board_doubts.json) the owner has not ruled on since (`ruled`,
+    board_proposal_rulings.json)."""
+    return {cid: d for cid, d in (store or {}).items()
+            if isinstance(d, dict) and not ruled_since((ruled or {}).get(cid), d)}
+
+
+def held_for_the_owner(data=None) -> dict:
+    """{company id: why it is the owner's} for every company a door must not
+    wire a board for: a reader's doubt that stands, a row a door filed in
+    Boards we found that he has not ruled on, or a board refused in either
+    store (Boards we found, Agent proposals).
+
+    `data` is the directory the CALLER writes - discovery passes its own, so
+    the files it reads are the files beside the companies.json it writes. A
+    file that is on disk and does not read raises Unreadable, and the caller
+    stops before its first request.
+    """
+    found = strict("embedded_ats.json", data)
+    ruled = strict("board_proposal_rulings.json", data)
+    props = strict(PROPOSALS, data)
+    doubts = strict(DOUBTS, data)
+    out: dict = {}
+    for cid in sorted(standing_doubts(doubts, ruled)):
+        out.setdefault(cid, "a reader's doubt about its board stands")
+    for r in found:
+        if r.get("filed") and r["id"] not in ruled:
+            out.setdefault(r["id"], "a board a door filed for the owner waits in Boards we found")
+    for cid, v in sorted(ruled.items()):
+        if not v.get("accept"):
+            out.setdefault(cid, "a board was refused for it in Boards we found")
+    for key, p in sorted(props.items()):
+        if key.startswith("board:") and p.get("status") == "rejected":
+            out.setdefault(p.get("id") or key.split(":", 1)[1],
+                           "a board was refused for it in Agent proposals")
+    return out
+
+
 def when(stamp):
     """The moment an ISO stamp names, with a timezone, or None."""
     import datetime as dt

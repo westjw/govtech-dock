@@ -61,6 +61,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import admin                                           # noqa: E402
 import agents                                          # noqa: E402
 import ats                                             # noqa: E402
+import board_proposals                                 # noqa: E402
 
 
 def norm(s: str) -> str:
@@ -167,12 +168,15 @@ def unwired(entry: dict, by_id: dict) -> bool:
     return kind in (None, "unknown", "html")
 
 
-def triage(rows: list, by_id: dict) -> tuple[list, list, list]:
+def triage(rows: list, by_id: dict, held: dict | None = None) -> tuple[list, list, list]:
     """Split the pile into wire / refuse-mismatch / refuse-shared.
 
     The shared-board pass runs over the candidates ONLY. A board shared with a
     company that already has its own ATS wired is not a collision - that
     company is not going to be written here.
+
+    `held` is board_proposals.held_for_the_owner(); left out, it is asked
+    here, and a store that does not read raises before anything is sorted.
     """
     # A ROW A DOOR FILED FOR A PERSON IS THAT PERSON'S, and is in none of the
     # three piles. wire_found.py appends the boards it could not prove to
@@ -181,7 +185,15 @@ def triage(rows: list, by_id: dict) -> tuple[list, list, list]:
     # never states. `resembles` below knows none of that - a slug that looks
     # like the company's name would wire the very board the owner was asked
     # about - and --propose would queue it a second time in another store.
-    live = [e for e in rows if unwired(e, by_id) and not e.get("filed")]
+    # AND EVERY ROW OF A COMPANY THE OWNER HOLDS, whichever finder left it: a
+    # reader's doubt that stands, a row a door filed for him, a refusal in
+    # either store. One row per company fits the queue, so a door-held row the
+    # queue could not take left an older finder's row for the same company in
+    # this file, and --write wired it on its slug (second review, 2026-11-19).
+    if held is None:
+        held = board_proposals.held_for_the_owner()
+    live = [e for e in rows if unwired(e, by_id) and not e.get("filed")
+            and e.get("id") not in held]
 
     mismatch = [e for e in live if e.get("identity") == "MISMATCH"]
     rest = [e for e in live if e.get("identity") != "MISMATCH"]
@@ -272,18 +284,26 @@ def main() -> int:
     # recoverable only from git.
     companies = admin.read_companies()
     by_id = {c["id"]: c for c in companies}
+    # what the owner holds, read BEFORE anything is sorted, wired or queued:
+    # a store that does not read would hold nobody
+    try:
+        owners = board_proposals.held_for_the_owner(DATA)
+    except board_proposals.Unreadable as exc:
+        print(f"{exc}. Which companies the owner holds cannot be read, so nothing "
+              f"is wired and nothing is queued.", file=sys.stderr)
+        return 2
 
-    clean, mismatch, shared = triage(rows, by_id)
+    clean, mismatch, shared = triage(rows, by_id, owners)
     if a.limit:
         clean = clean[:a.limit]
 
     print(f"{len(rows)} discovered board(s) on file")
     print(f"  {len(clean)} to wire   {len(mismatch)} name somebody else   "
           f"{len(shared)} claimed by more than one company\n")
-    held = [e for e in rows if e.get("filed") and unwired(e, by_id)]
+    held = [e for e in rows if unwired(e, by_id) and (e.get("filed") or e.get("id") in owners)]
     if held:
-        print(f"  {len(held)} held for the owner by a door, with the doubt on "
-              f"the row - left alone (Boards we found)\n")
+        print(f"  {len(held)} held for the owner - a row a door filed, a reader's doubt, "
+              f"or a refusal - left alone (Boards we found)\n")
 
     # --- the refusals, printed before anything is written ------------------
     if mismatch:
