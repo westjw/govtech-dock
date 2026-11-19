@@ -42,7 +42,11 @@ THREE OUTCOMES, AND NONE OF THEM IS SILENCE.
         holding the same board.
   HOLD  the board reads, and something is in doubt. The doubt is written in
         words - both names quoted, or the parent named - and the row goes to
-        the owner's queue through board_proposals.file_found.
+        the owner's queue through board_proposals.file_found. (Where the
+        roles are merely advertised - the company's Indeed or LinkedIn page,
+        the vendor's own "powered by" link - is a note on the row, not a
+        doubt; and a board whose identity probe failed on the day is listed
+        under SKIP and asked again, not filed.)
   SKIP  a giant; a board nobody could show to be smaller than one; a board
         that did not read (kept with its error: a board that will not read is
         not a wrong board); a company whose site named no board, or only one
@@ -136,6 +140,34 @@ STRENGTH = {"iframe": 0, "frame": 0, "script": 0, "request": 0, "redirect": 0,
 # theirs when the address was actually followed to where it ends: a page
 # robots.txt refused, a block or an error has no known end.
 FOLLOWED = ("read", "left-site")
+# WHERE A COMPANY ALSO ADVERTISES IS NOT A SECOND BOARD. The finder files a
+# link to a company's Indeed or LinkedIn page under `elsewhere`, beside the
+# job platforms nothing here reads, and the first real run of this door
+# (2026-11-18, 38 companies) held Anaplan's Greenhouse board on one: 128
+# postings, loaded by Anaplan's own careers page, the board naming Anaplan,
+# and held because that page also links the company's Indeed profile. An
+# aggregator carries copies of the roles a company posts on its board. It is
+# not somewhere the company keeps one, so it says nothing about which board
+# they hire through. It stays on the row as a note and is never a doubt.
+ADVERTISED_ON = frozenset({"linkedin", "indeed", "ycombinator", "wellfound"})
+# THE PLATFORM'S OWN SITE, LINKED BY ITS OWN WIDGET. "Powered by JazzHR" under
+# an embedded JazzHR board is a link to info.jazzhr.com; the finder files a
+# careers-looking link to a host it does not know as other:<its site>, and
+# the same run held Freebee's board on that one link. ONLY the site of the
+# very platform the board is on. other:<anything else> is a careers link
+# that leaves for a host nothing here knows - which is exactly what a
+# parent's careers site looks like - and it still holds the board. Only the
+# platforms whose boards can be proven here are listed: adp.com, oracle.com
+# and workday.com are also the careers sites of three very large employers,
+# and no board on those three is wired without a person anyway.
+VENDOR_SITES = {
+    "ashby": {"ashbyhq.com"}, "bamboohr": {"bamboohr.com"}, "breezy": {"breezy.hr"},
+    "gem": {"gem.com"}, "greenhouse": {"greenhouse.io", "greenhouse.com"},
+    "gusto": {"gusto.com"}, "icims": {"icims.com"},
+    "jazzhr": {"jazzhr.com", "applytojob.com"}, "jibe": {"jibeapply.com"},
+    "lever": {"lever.co"}, "paylocity": {"paylocity.com"},
+    "recruitee": {"recruitee.com"}, "rippling": {"rippling.com"},
+    "smartrecruiters": {"smartrecruiters.com"}, "workable": {"workable.com"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -421,8 +453,22 @@ def best_seen(board: dict, website: str, pages: list) -> tuple[dict, bool]:
     return best, bool(own)
 
 
-def also_seen(entry: dict, key: str, website: str) -> dict:
-    """What else the finder saw: {elsewhere, off_site, elsewhere_off_site}.
+def advertising(vendor: str, kind) -> bool:
+    """Is this `elsewhere` entry somewhere the roles are only advertised?
+
+    True for an aggregator (ADVERTISED_ON) and for the own site of the very
+    platform the board is on (VENDOR_SITES[kind], which the finder writes as
+    other:<site>). Neither is a second place the company keeps a board.
+    """
+    if vendor in ADVERTISED_ON:
+        return True
+    return vendor.startswith("other:") and \
+        vendor.split(":", 1)[1].strip().lower() in VENDOR_SITES.get(kind, ())
+
+
+def also_seen(entry: dict, key: str, website: str, kind=None) -> dict:
+    """What else the finder saw: {elsewhere, advertised_on, off_site,
+    elsewhere_off_site}.
 
     `elsewhere` is a job platform this repo has no reader for, named on the
     company's OWN site. That one is a doubt (see consider): it is a second
@@ -430,6 +476,10 @@ def also_seen(entry: dict, key: str, website: str) -> dict:
     its site embedded a platform nothing here read while its old board still
     answered and still named it. A platform recorded with no page is counted
     as theirs, because nothing shows it was not.
+
+    `advertised_on` is what the finder files in the same list and is NOT such
+    a platform (see `advertising`): the company's Indeed or LinkedIn page, or
+    the board's own vendor linked from its own widget. A note, not a doubt.
 
     The other two were seen on pages that are NOT theirs - a different board,
     or such a platform. Neither is one of the checks and how noisy either
@@ -441,14 +491,20 @@ def also_seen(entry: dict, key: str, website: str) -> dict:
                     if board_key(o.get("type"), o.get("ref")) != key})
     if other:
         out["off_site"] = other[:6]
-    own, away = set(), set()
+    own, away, ads = set(), set(), set()
     for e in entry.get("elsewhere") or []:
         vendor = str(e.get("vendor") or "").strip()
         page = str(e.get("page") or "").strip()
-        if vendor:
+        if not vendor:
+            continue
+        if advertising(vendor, kind):
+            ads.add(vendor)
+        else:
             (own if not page or page_belt._same_site(page, website or "") else away).add(vendor)
     if own:
         out["elsewhere"] = sorted(own)[:6]
+    if ads:
+        out["advertised_on"] = sorted(ads)[:6]
     if away - own:
         out["elsewhere_off_site"] = sorted(away - own)[:6]
     return out
@@ -730,7 +786,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     if unusable:
         doubts.append("their site also names a board this door cannot use ("
                       + "; ".join(unusable[:3]) + ")")
-    extra = also_seen(entry, key, website)
+    extra = also_seen(entry, key, website, kind)
     if extra.get("elsewhere"):
         doubts.append(f"their own site also names {' and '.join(extra['elsewhere'])}, a job "
                       f"platform the crawl cannot read, so which board they hire through "
@@ -819,6 +875,22 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # board that states 500 holds 500. (It may hold more than it states,
         # which is why a SMALL count from a probe is never read as small.)
         return _skip(base, "giant", f"{GIANT_WHY} (the board states {stated_n} postings)")
+    if said.get("failed") == "unreadable":
+        # THE QUESTION DID NOT GET THROUGH, WHICH IS NOT AN ANSWER. The board
+        # read; asking it whose it is timed out, or its page came back broken.
+        # The first real run filed exactly that in the owner's queue as "the
+        # board states no employer name" (Schneider Geospatial, 2026-11-18): a
+        # row for him to rule on that the next plan would have answered by
+        # itself. So it is listed here with its error and asked again next
+        # time. NOT a page that refused (robots.txt, a 403) or is gone: those
+        # stay refused tomorrow, and a board nobody here can ever ask is a
+        # person's to look at, so they are held below like any other board
+        # that names nobody.
+        how = str(said.get("how") or "the identity probe failed").strip()
+        return _skip(base, "unreadable",
+                     f"the board read, and asking it whose it is failed on the day "
+                     f"({how}); it is asked again on the next plan and is not filed "
+                     f"as a doubt", error=how)
     verdict = verify_boards.proven(c, said)
     names = [str(n).strip() for n in (said.get("names") or []) if str(n).strip()]
     stated = said.get("stated") is True
@@ -917,6 +989,8 @@ def _line(row: dict) -> str:
         if extra.get("elsewhere_off_site"):
             note += (f"; NOTE a page off their site names "
                      f"{', '.join(extra['elsewhere_off_site'])}, which the crawl cannot read")
+        if extra.get("advertised_on"):
+            note += f"; NOTE their site also links {', '.join(extra['advertised_on'])}"
         return (f"{head} {many(row['postings'])}; board names "
                 f"\"{row['check_2']['name']}\"; {pointer(row['check_1'], full=False)}{note}")
     if row["action"] == "HOLD":

@@ -2609,6 +2609,20 @@ round.
   holding the board, or the same board found for two companies in one run; a
   different board refused earlier or already waiting; a board that names
   somebody else (MISMATCH, both names quoted) or nobody.
+- **An advertisement is not a second board, and a question that did not get
+  through is not a doubt** (the first real run, 2026-11-18: 38 companies, 9
+  to wire, 15 held, and three of the 15 were neither). The company's Indeed,
+  LinkedIn, Y Combinator or Wellfound page (`wire_found.ADVERTISED_ON`), and
+  the own site of the very platform the board is on (`VENDOR_SITES`: "Powered
+  by JazzHR" under an embedded JazzHR board, filed as `other:jazzhr.com`),
+  are kept on the row as `advertised_on` and hold nothing: Anaplan's and
+  Freebee's boards were held on exactly those. `other:<any other site>`
+  still holds - a careers link to a host nothing knows is what a parent's
+  careers site looks like - and no vendor site is trusted for adp, oracle or
+  workday. A board that read and whose identity probe failed ON THE DAY
+  (`failed == "unreadable"`: a timeout, a broken page) is SKIP `unreadable`
+  and asked again by the next plan; a page that refused or is gone is still
+  held, because it is as closed tomorrow.
 - **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
   not read (kept with its error, not retried); a site that named only a
   reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
@@ -2666,6 +2680,7 @@ round.
   anything a bare run is refused before the first request.
 - Guards: `check_a_found_board_is_wired_only_on_two_checks`,
   `check_a_found_board_is_held_for_every_doubt`,
+  `check_an_advertisement_is_not_a_second_board`,
   `check_a_found_board_is_not_wired_past_what_moved`,
   `check_the_boards_found_card_opens_what_it_names` (executed under node),
   `check_a_finder_cannot_replace_the_owners_queue`. They share `_WiringBox`,
@@ -2675,7 +2690,8 @@ round.
   mutations of the door, 124 noticed (the first check alone had missed 26 of
   41).
 - **The owner's to settle:** whether a job platform nothing reads, named on
-  their own site, should hold a board (it does now); whether a board named
+  their own site, should hold a board (it does now; an aggregator and the
+  board's own vendor do not); whether a board named
   only in plain text should (it does now); and whether Oracle finds are
   worth a way to ask their size. Giants on readers that do read the whole
   board are still read in full before they are skipped.

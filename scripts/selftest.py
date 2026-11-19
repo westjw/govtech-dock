@@ -32766,6 +32766,187 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
     return errors
 
 
+def check_an_advertisement_is_not_a_second_board() -> int:
+    """Where a role is advertised does not hold the board it is posted on,
+    and a question that did not get through is not a doubt.
+
+    The first real run of scripts/wire_found.py (2026-11-18, the 38 companies
+    a rendered sniff had already placed on a platform the crawl reads) planned
+    9 boards to wire and 15 for the owner's queue. Three of the 15 were not
+    doubts about whose board it was:
+
+      Anaplan   greenhouse/anaplan, 128 postings, loaded by anaplan.com's own
+                careers page, the board naming "Anaplan" - held because that
+                page also links the company's Indeed profile, which the
+                finder files beside the job platforms nothing here reads.
+      Freebee   jazzhr/freebee, the board naming "Freebee" - held on the
+                "Powered by JazzHR" link under its own embedded board, filed
+                as other:jazzhr.com.
+      Schneider Geospatial   lever/schneidergis read 6 postings and the
+                request for its hosted page timed out - held as "the board
+                states no employer name", a row for the owner to rule on
+                that the next plan would have answered by itself.
+
+    The owner's rule sends DOUBT to his queue. An aggregator copying a
+    company's roles, and a vendor's link to its own site, say nothing about
+    whose board it is; and a probe that failed on the day has not answered.
+
+    What must stay shut is checked beside each one, because every line here
+    is one condition away from wiring something it should not:
+      - a platform nothing reads, named on their own site, still holds the
+        board (City Detect's shape);
+      - other:<a site> holds unless it is the site of the very platform the
+        board is on. The same jazzhr.com link under a Greenhouse board, or a
+        careers link to a parent's site, is a careers link to somewhere else;
+      - no vendor site is trusted for a platform whose boards cannot be
+        proven (adp.com, oracle.com and workday.com are employers' own
+        careers sites too);
+      - a page that REFUSED or is GONE is still held for a person: it is as
+        closed tomorrow, so nothing here will ever ask it.
+    """
+    import find_site_boards as fsb
+    import board_proposals as bp
+    import verify_boards
+    import wire_found as wf
+    errors = 0
+    site, co, cand, entry = _wb_site, _wb_co, _wb_cand, _wb_entry
+
+    def careers(cid):
+        return f"{site(cid)}/careers"
+
+    def beside(cid, kind, ref, vendor, page="own"):
+        where = {"own": careers(cid), "none": None}[page]
+        also = {"vendor": vendor, "saw": f"a link to {vendor}", "element": "href", "times": 1}
+        if where:
+            also["page"] = where
+        return entry(cid, [cand(kind, ref, careers(cid), element="iframe")], elsewhere=[also])
+
+    # --- the rule, asked directly -----------------------------------------
+    for vendor, kind, want in (
+            ("indeed", "greenhouse", True), ("linkedin", "lever", True),
+            ("ycombinator", "ashby", True), ("wellfound", "workable", True),
+            ("other:jazzhr.com", "jazzhr", True), ("other:JazzHR.com", "jazzhr", True),
+            ("other:greenhouse.com", "greenhouse", True),
+            ("other:jazzhr.com", "greenhouse", False),
+            ("other:parentgroup.test", "greenhouse", False),
+            ("other:adp.com", "adp", False), ("other:oracle.com", "oracle", False),
+            ("other:workday.com", "workday", False),
+            ("jobvite", "greenhouse", False), ("comeet", "adp", False),
+            ("greenhouse-eu", "greenhouse", False), ("lever-eu", "lever", False),
+            ("adp-other", "adp", False), ("workday-no-site", "workday", False),
+            ("other:", "jazzhr", False), ("", "jazzhr", False),
+            ("other:jazzhr.com", None, False)):
+        if wf.advertising(vendor, kind) is not want:
+            errors += fail(f"wire_found.advertising({vendor!r}, {kind!r}) is not {want}: only "
+                           f"an aggregator, or the own site of the very platform the board "
+                           f"is on, is somewhere a role is merely advertised")
+    unproven = sorted(set(wf.VENDOR_SITES) - set(verify_boards.NAMES_ITS_EMPLOYER))
+    if unproven or set(wf.VENDOR_SITES) - set(ats.FETCHERS):
+        errors += fail(f"wire_found.VENDOR_SITES trusts a vendor's site for {unproven}, a "
+                       f"platform whose boards cannot be proven: adp.com, oracle.com and "
+                       f"workday.com are also three large employers' own careers sites")
+    filed_as = {v for v, _hint, _rx in fsb.ELSEWHERE}
+    if not wf.ADVERTISED_ON or wf.ADVERTISED_ON - filed_as:
+        errors += fail(f"wire_found.ADVERTISED_ON names {sorted(wf.ADVERTISED_ON - filed_as)}, "
+                       f"which find_site_boards.py does not file under `elsewhere`: a "
+                       f"renamed vendor there would be held as a second platform again")
+    readable = wf.ADVERTISED_ON & (set(ats.FETCHERS) | set(wf.VENDOR_SITES))
+    if readable:
+        errors += fail(f"{sorted(readable)} is both a board the crawl reads and 'only an "
+                       f"advertisement'")
+
+    companies = [co("indeed-co", "Indeed Co"), co("linkedin-co", "Linkedin Co"),
+                 co("poweredby-co", "Poweredby Co"), co("othervendor-co", "Othervendor Co"),
+                 co("parentsite-co", "Parentsite Co"), co("jobvite-co", "Jobvite Co"),
+                 co("flaky-co", "Flaky Co"), co("closedpage-co", "Closedpage Co"),
+                 co("gonepage-co", "Gonepage Co")]
+    BOARDS = {"greenhouse/indeedco": (3, ["Indeed Co"]),
+              "lever/linkedinco": (3, ["Linkedin Co"]),
+              "jazzhr/poweredbyco": (3, ["Poweredby Co"]),
+              "greenhouse/othervendorco": (3, ["Othervendor Co"]),
+              "greenhouse/parentsiteco": (3, ["Parentsite Co"]),
+              "greenhouse/jobviteco": (3, ["Jobvite Co"]),
+              "lever/flakyco": (6, None), "lever/closedpageco": (6, None),
+              "lever/gonepageco": (6, None)}
+    TIMED_OUT = "could not read the board: network error: it timed out"
+    SAYS = {"lever/flakyco": {"failed": "unreadable", "how": TIMED_OUT},
+            "lever/closedpageco": {"failed": "refused", "how": (
+                "could not read the board: robots.txt closes https://jobs.lever.co/closedpageco")},
+            "lever/gonepageco": {"failed": "gone", "how": (
+                "could not read the board: HTTP 404 for https://jobs.lever.co/gonepageco")}}
+    found = {
+        "indeed-co": beside("indeed-co", "greenhouse", "indeedco", "indeed"),
+        # recorded with no page: counted as theirs, and still only an advertisement
+        "linkedin-co": beside("linkedin-co", "lever", "linkedinco", "linkedin", page="none"),
+        "poweredby-co": beside("poweredby-co", "jazzhr", "poweredbyco", "other:jazzhr.com"),
+        "othervendor-co": beside("othervendor-co", "greenhouse", "othervendorco",
+                                 "other:jazzhr.com"),
+        "parentsite-co": beside("parentsite-co", "greenhouse", "parentsiteco",
+                                "other:parentgroup.test"),
+        "jobvite-co": beside("jobvite-co", "greenhouse", "jobviteco", "jobvite"),
+        "flaky-co": _wb_one("flaky-co", "lever", "flakyco", element="iframe"),
+        "closedpage-co": _wb_one("closedpage-co", "lever", "closedpageco", element="iframe"),
+        "gonepage-co": _wb_one("gonepage-co", "lever", "gonepageco", element="iframe"),
+    }
+    with _WiringBox(companies, BOARDS, says=SAYS) as box:
+        code, text, wl, rows = box.plan(_wb_results(found))
+        if code != 0 or rows is None:
+            return errors + fail(f"wire_found plan did not run: {text[-300:]}")
+        got = {a: sorted(i for i, r in rows.items() if r["action"] == a)
+               for a in ("WIRE", "HOLD", "SKIP")}
+        if got["WIRE"] != ["indeed-co", "linkedin-co", "poweredby-co"]:
+            errors += fail(f"the plan would wire {got['WIRE']}: a board both checks pass is "
+                           f"wired when the only other thing on the site is the company's "
+                           f"Indeed or LinkedIn page, or its own vendor's link - and only then")
+        for cid, vendor in (("indeed-co", "indeed"), ("linkedin-co", "linkedin"),
+                            ("poweredby-co", "other:jazzhr.com")):
+            extra = (rows.get(cid) or {}).get("also_seen") or {}
+            if extra.get("advertised_on") != [vendor] or extra.get("elsewhere"):
+                errors += fail(f"{cid}: what its site also links is not kept on the row as "
+                               f"a note ({extra}); a person reading the plan has to see it")
+        if "NOTE their site also links indeed" not in text:
+            errors += fail("the plan's WIRE line does not say what else the site links")
+        for cid, action, kind, must_say in (
+                ("othervendor-co", "HOLD", None,
+                 "other:jazzhr.com, a job platform the crawl cannot read"),
+                ("parentsite-co", "HOLD", None,
+                 "other:parentgroup.test, a job platform the crawl cannot read"),
+                ("jobvite-co", "HOLD", None, "jobvite, a job platform the crawl cannot read"),
+                ("closedpage-co", "HOLD", None, "states no employer name"),
+                ("gonepage-co", "HOLD", None, "states no employer name"),
+                ("flaky-co", "SKIP", "unreadable", "asked again on the next plan"),
+                ("flaky-co", "SKIP", "unreadable", "it timed out")):
+            r = rows.get(cid) or {}
+            if r.get("action") != action or (kind and r.get("kind") != kind) \
+                    or must_say not in _wb_words(r):
+                errors += fail(f"{cid}: planned {r.get('action')}/{r.get('kind')} saying "
+                               f"{_wb_words(r)[:200]!r}; wanted {action}"
+                               f"{'/' + kind if kind else ''} saying {must_say!r}")
+        flaky = rows.get("flaky-co") or {}
+        if flaky.get("queue_row") or flaky.get("error") != TIMED_OUT \
+                or "lever/flakyco" not in box.asked or "giants 0, unreadable 1" not in text:
+            errors += fail(f"a board whose identity probe failed on the day is not listed "
+                           f"as unreadable with its error, or carries a row for the owner's "
+                           f"queue: {text[-200:]}")
+        if errors:
+            return errors
+        code, text, look_code = box.look(wl)
+        if code != 0 or "would wire 3, would hold 5" not in text or not look_code:
+            errors += fail(f"the look did not offer three boards and five held rows: "
+                           f"{text[-260:]}")
+        code, text = box.write(wl, look_code)
+        filed = {r["id"] for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        if code != 0 or "wired 3, held 5" not in text or "flaky-co" in filed \
+                or box.record("flaky-co")["ats"]["type"] != "html" \
+                or box.record("indeed-co")["ats"] != {"type": "greenhouse", "ref": "indeedco"} \
+                or filed != {"othervendor-co", "parentsite-co", "jobvite-co",
+                             "closedpage-co", "gonepage-co"}:
+            errors += fail(f"the write did not wire the three and file the five, or it "
+                           f"filed a board that was only unreadable on the day: "
+                           f"{sorted(filed)}; {text[-200:]}")
+    return errors
+
+
 def check_a_found_board_is_not_wired_past_what_moved() -> int:
     """apply holds a frozen worklist against the data as it reads NOW.
 
@@ -46321,6 +46502,7 @@ def main() -> int:
     errors += check_a_board_named_in_a_page_is_read_as_its_reader_reads_it()
     errors += check_a_found_board_is_wired_only_on_two_checks()
     errors += check_a_found_board_is_held_for_every_doubt()
+    errors += check_an_advertisement_is_not_a_second_board()
     errors += check_a_found_board_is_not_wired_past_what_moved()
     errors += check_the_boards_found_card_opens_what_it_names()
     errors += check_a_finder_cannot_replace_the_owners_queue()
