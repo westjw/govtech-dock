@@ -34,6 +34,20 @@ landing address is on the company's own website host. A reference seen
 anywhere else is kept too, under "off_site", so a person can see it - it is
 never a candidate.
 
+"THEIR OWN SITE" IS NARROWER THAN "THE SAME HOST" (the blind review of
+2026-11-18). Of the 1,968 companies on the list, 41 are on file with a
+website that is a page inside a larger site (MILO Range is faac.com/milo/),
+19 with one that is a named part of a host (security.gallagher.com), and 12
+with the very address another record gives. Judged by host alone, FAAC's
+careers page was MILO's own page and FAAC's whole board was MILO's
+candidate, word for word what FAAC's own record got. So the page must be inside the part of the host the website on file
+names, and must not be a page some other record on file has as good a claim
+to; `Whose` below is the whole rule. What fails it is still read once and
+still written down - under off_site, with the reason in the page's note.
+(That errs toward a person: a company on file at about.acme.com whose
+careers page is on acme.com is not told apart from a product line on file
+at product.parent.com, and both go to his queue.)
+
 WHAT A CANDIDATE IS, AND IS NOT
 
 A candidate says: this address, on this company's own site, names this board,
@@ -72,21 +86,38 @@ THE RESULTS FILE (the wiring door reads exactly this):
 
 `ref` is exactly what that type's fetcher in ats.py takes: a slug, the whole
 Paylocity address, an ADP cid, and for Workday the list [tenant, pod, site].
+A slug is spelt as the page spelt it wherever the platform tells spellings
+apart (Lever and SmartRecruiters do), and that is all this file can know: it
+asks no board, so whoever verifies the ref may find a page wrote it wrong.
 `page` is the address the page landed on; for a redirect it is the own-site
 address whose answer pointed at the board, and `saw` is where it pointed.
+For an off_site row it is the address the reference was really seen on: the
+other site's page, or the other site's address that did the redirecting.
+
+`generated` is when the OLDEST record in the file was read. A run that picks
+a file up again keeps the first run's stamp, so nothing in the file is older
+than its date says.
 
 A page's status: `read` (landed on their own site and was read); `left-site`
-(landed on another host, read or deliberately not; `left_site` names the
-host, and a redirect straight to a board is one of these AND a candidate);
-`robots`, `blocked`, `error` (not read, with the reason in `note`, and
-same_site still saying where it was).
+(landed somewhere that is not their own site, read or deliberately not:
+another host, which `left_site` names, or a part of the same host that is
+not theirs, which the note explains; a redirect straight to a board is one
+of these AND a candidate); `robots`, `blocked`, `error` (not read, with the
+reason in `note`, and same_site still saying where it was).
+
+ONE CASE READS `read` AND STILL GIVES NO CANDIDATE: two records on file with
+the same website. The site was read, and it is theirs - and the other
+record's just as much, so which of them a board belongs to is not something
+the site can say. Its references go to off_site and the page's note names
+the other record.
 
 `elsewhere` is a tally, not a finding about ownership. Its vendors are the
 platforms ats.py has no reader for (jobvite, ukg, pinpoint ...); the forms of
 a platform it does read that name no board (gusto-posting, paylocity-other,
-adp-other, workday-no-site, workday-myworkdaysite, greenhouse-shortlink);
-where a company posts instead (linkedin, indeed ...); and `other:<site>` for
-a job frame or a careers link that leaves for a host nothing here knows.
+adp-other, workday-no-site, workday-myworkdaysite, greenhouse-shortlink) or
+that sit where its reader does not ask (greenhouse-eu, lever-eu); where a
+company posts instead (linkedin, indeed ...); and `other:<site>` for a job
+frame or a careers link that leaves for a host nothing here knows.
 """
 from __future__ import annotations
 
@@ -100,10 +131,13 @@ import json
 import os
 import pathlib
 import re
+import socket
 import sys
+import threading
 import time
 import typing
 import urllib.parse
+import weakref
 
 import requests
 
@@ -134,6 +168,11 @@ CONNECT_TIMEOUT, READ_TIMEOUT = 5, 10
 # long page.
 PAGE_CAP = 1_500_000
 SAVE_EVERY = 5
+# Browser pages open at one time, in the one browser a sweep starts. Each is
+# somebody's whole page with its scripts and frames; two is what one runner
+# renders without the pages starving each other, and it is the number the
+# workflow's timings were measured at.
+RENDER_AT_ONCE = 2
 
 
 # ------------------------------------------------------------- whose page
@@ -155,9 +194,206 @@ def own_site(page: str, website: str) -> bool:
     the two together. It is written out here because page_belt imports the
     whole admin server, and a finder that runs on a bare CI machine should
     not need the admin to know what a host is.
+
+    IT IS THE FIRST HALF OF WHOSE PAGE AN ADDRESS IS, AND NOT ENOUGH ALONE.
+    It decides which links the walk may follow and which addresses it may
+    ask. Whether what a page says is the COMPANY'S pointer is `Whose.of`.
     """
     a, b = _host(page), _host(website)
     return bool(a and b) and (a == b or a.endswith("." + b) or b.endswith("." + a))
+
+
+# A locale in an address is not a part of a site: acme.com/en-us is acme.com,
+# and so is us.acme.com. THE LIST IS SHORT ON PURPOSE. A word left off it
+# costs a company whose site lives under /fi its automatic answer (its
+# careers page files under off_site, and a person looks). A word wrongly on
+# it turns a product line's path into "the whole host" and hands that
+# product the parent's board, which is the mistake this section exists to
+# stop. "it" is Italian and it is also somebody's IT division: not here.
+_LOCALE_WORDS = frozenset({"en", "us", "uk", "gb", "ca", "au", "de", "fr", "es", "eu",
+                           "usa", "eng", "intl", "global"})
+# "en-US", "fr_ca": the one shape that is a locale whatever its letters.
+_LOCALE_ONLY = re.compile(r"^[a-z]{2}[-_][a-z]{2}$", re.I)
+# The page a site's front door answers at is not a part of the site either.
+_FRONT_DOOR = frozenset({"home", "index", "default", "main", "welcome"})
+_FILE_NAME = re.compile(r"\.[a-z0-9]{2,5}$", re.I)
+_TWO_PART_TLD = {"co", "com", "org", "net", "gov", "ac", "edu"}
+
+
+def _site_of(host: str) -> str:
+    """acme.co.uk from careers.acme.co.uk. By rule of thumb, not by the public
+    suffix list: near enough to name a platform in a tally, to say which
+    label of a host could be a locale, and to keep two records of one site
+    on one machine."""
+    labels = host.lower().split(".")
+    n = 3 if (len(labels) >= 3 and len(labels[-1]) == 2 and labels[-2] in _TWO_PART_TLD) else 2
+    return ".".join(labels[-n:])
+
+
+def _locale(word: str) -> bool:
+    w = word.lower()
+    if w in _LOCALE_WORDS or _LOCALE_ONLY.match(w):
+        return True
+    a, sep, b = w.replace("_", "-").partition("-")
+    return bool(sep) and a in _LOCALE_WORDS and b in _LOCALE_WORDS      # usa_en
+
+
+def _bare(host: str) -> str:
+    """A host with a locale label in front taken off: us.acme.com is acme.com."""
+    labels = host.split(".")
+    floor = len(_site_of(host).split("."))
+    while len(labels) > floor and _locale(labels[0]):
+        labels.pop(0)
+    return ".".join(labels)
+
+
+def _segments(url: str) -> list[str]:
+    """An address's path, lower case, with any locale in front of it taken
+    off: /us/en/surveillance/x is surveillance, x."""
+    try:
+        path = urllib.parse.urlsplit(url if "//" in url else "https://" + url).path
+    except ValueError:
+        return []
+    segs = [s for s in path.lower().split("/") if s]
+    while segs and _locale(segs[0]):
+        segs.pop(0)
+    return segs
+
+
+class Ground(typing.NamedTuple):
+    """The part of the web a website on file names: a host and, when the
+    website is a page inside a larger site, the path it lives under ("" is
+    the whole host)."""
+    host: str
+    base: str
+
+
+def ground(website: str) -> "Ground | None":
+    """What a website on file claims, and no more than it claims.
+
+      www.faac.com/milo/            faac.com, under /milo only
+      security.gallagher.com        that host, and not gallagher.com above it
+      www.sage.com/en-us/           all of sage.com: a locale is not a part
+      lexisnexis.com/en-us/x.page   all of lexisnexis.com: a file in the root
+    """
+    host = _host(website or "")
+    if not host:
+        return None
+    segs = _segments(website)
+    if segs and _FILE_NAME.search(segs[-1]):
+        segs.pop()
+    if segs and segs[-1] in _FRONT_DOOR:
+        segs.pop()
+    return Ground(_bare(host), "/" + "/".join(segs) if segs else "")
+
+
+def _within(page: str, g: Ground) -> bool:
+    """Is this address in that part of the web: on the host or under it, and
+    under the path when there is one."""
+    h = _bare(_host(page))
+    if not h or not (h == g.host or h.endswith("." + g.host)):
+        return False
+    if not g.base:
+        return True
+    rel = "/" + "/".join(_segments(page))
+    return h == g.host and (rel == g.base or rel.startswith(g.base + "/"))
+
+
+def site_index(companies: list) -> dict:
+    """Every website on file by host: {host: [(Ground, company id), ...]}.
+
+    FROM EVERY RECORD, wired or not and in scope or not. A record that
+    already reads its own board still owns its site, and the product line on
+    file inside that site must not be handed the board it already holds.
+    """
+    out: dict = {}
+    for c in companies:
+        if not isinstance(c, dict) or not c.get("id"):
+            continue
+        g = ground(str(c.get("website") or "").strip())
+        if g:
+            out.setdefault(g.host, []).append((g, c["id"]))
+    return out
+
+
+class Whose:
+    """Whose page an address is, for one company.
+
+    THE HOST IS NOT THE ANSWER (the blind review of 2026-11-18). Companies
+    are on file with a website that is a page inside another site, with one
+    that is a named part of another site's host, and eleven hosts are the
+    website of two or three records at once. Judged by host, the larger
+    site's careers page was every one of those companies' "own page", and
+    one board was handed to two records with nothing to say so.
+
+    `of(address)` answers one of four things, and only the first makes a
+    candidate:
+
+      own     inside what this company's website names, and no other record
+              on file has as good a claim to the page
+      shared  inside it, and another record on file gives the SAME website:
+              the site is read as theirs, but its references are filed under
+              off_site, because the site cannot say which record a board is
+      part    on the same host family and not theirs: outside the path their
+              website names (faac.com/about/careers for faac.com/milo/), on
+              the host their website is only a part of (gallagher.com for
+              security.gallagher.com), or inside a part another record
+              names. Read once, filed under off_site, never walked further
+      other   another site altogether
+
+    With no list of the other records (`on_file`) the first and third rules
+    still hold; the two that need the list cannot, so a sweep always gives it.
+    """
+
+    def __init__(self, company: dict, on_file: dict | None = None):
+        site = str(company.get("website") or "").strip()
+        if site and "//" not in site:
+            site = "https://" + site
+        self.site, self.id = site, company.get("id")
+        self.mine = ground(site)
+        self.on_file = on_file or {}
+        self._known: dict[str, tuple[str, str]] = {}
+
+    def of(self, url: str) -> tuple[str, str]:
+        hit = self._known.get(url)
+        if hit is None:
+            hit = self._known[url] = self._judge(url)
+        return hit
+
+    def theirs(self, url: str) -> bool:
+        return self.of(url)[0] in ("own", "shared")
+
+    def _judge(self, url: str) -> tuple[str, str]:
+        me = self.mine
+        if me is None or not own_site(url, self.site):
+            return "other", ""
+        h = _host(url)
+        if not _within(url, me):
+            if me.base:
+                return "part", (f"on {h}, outside {me.host}{me.base}, which is all of that "
+                                f"site the website on file names")
+            return "part", (f"on {h}, and the website on file ({_host(self.site)}) is "
+                            f"only a part of that site")
+        mine = (me.host.count("."), me.base.count("/"))
+        better, equal = [], []
+        labels = _bare(h).split(".")
+        for i in range(max(1, len(labels) - 1)):
+            for g, cid in self.on_file.get(".".join(labels[i:]), ()):
+                if cid == self.id or not _within(url, g):
+                    continue
+                theirs = (g.host.count("."), g.base.count("/"))
+                if theirs > mine:
+                    better.append(cid)
+                elif theirs == mine:
+                    equal.append(cid)
+        if better:
+            return "part", (f"inside the part of this site that is on file as another "
+                            f"record's website ({', '.join(sorted(set(better))[:3])})")
+        if equal:
+            return "shared", (f"this website is also on file for "
+                              f"{', '.join(sorted(set(equal))[:3])}, and a site cannot say "
+                              f"which record a board belongs to")
+        return "own", ""
 
 
 # ------------------------------------------------------------ the patterns
@@ -179,9 +415,9 @@ def own_site(page: str, website: str) -> bool:
 L = discover_ats.L          # one host label, pinned at its start (see there)
 UUID = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 # "en-US/", "fr-CA/": a locale in front of a Workday site or a Rippling board
-# is not the site. discover_ats skips only en-US.
+# is not the site. discover_ats skips only en-US. (_LOCALE_ONLY, above, is
+# the same shape standing alone.)
 LOCALE = r"(?:[a-z]{2}-[a-z]{2}/)?"
-_LOCALE_ONLY = re.compile(r"^[a-z]{2}[-_][a-z]{2}$", re.I)
 
 # A literal every form of a platform's address contains. A pattern only runs
 # over text that holds its hint, which is what keeps sixty patterns over a
@@ -203,10 +439,16 @@ HINTS = {
 # ats.fetch_jibe takes.
 JIBE_MARK = "jibecdn.com"
 
-# Hosts and Lever's slugs are lower case whatever a page wrote. Everything
-# else is kept as the page spelled it: SmartRecruiters' company id is
-# case-sensitive (Xplor, Skyward1), and guessing a case is guessing a board.
-LOWERED = {"lever", "recruitee", "breezy", "bamboohr", "jazzhr", "icims"}
+# A host is lower case whatever a page wrote, so the platforms that name a
+# board by its host are lowered. Everything else is kept as the page spelled
+# it, because guessing a case is guessing a board: SmartRecruiters' company
+# id tells Xplor from xplor, and SO DOES LEVER. This file lowered Lever's
+# slugs at first, on the repo's own word that they are lower case. Asked on
+# 2026-11-18, api.lever.co answered nine postings for "Wayground", the
+# spelling on file and on that company's page, and HTTP 404 for "wayground":
+# the lowered ref would have lost a board the page named correctly. Two of
+# the 33 Lever boards on file are spelt with a capital.
+LOWERED = {"recruitee", "breezy", "bamboohr", "jazzhr", "icims"}
 
 # The vendor's own furniture, never a customer. Three tables' worth, joined
 # rather than copied, plus what turned up here: Workable's /j/ short links,
@@ -314,17 +556,14 @@ BOARDS: list[_Pat] = (
     + [_Pat(kind, re.compile(pat, re.I), _slug(kind), f"discover_ats.MARKERS[{i}]")
        for i, (kind, pat) in enumerate(discover_ats.MARKERS) if kind in _FROM_MARKERS]
     + [
-        # Greenhouse's EU boards, its application-form embed, and the older
-        # API host. (boards-api. is in find_boards; the lookbehind keeps this
-        # one from matching inside it.)
-        _here("greenhouse", r"(?:boards|job-boards)\.eu\.greenhouse\.io/"
-                            r"(?:embed/job_board(?:/js)?\?for=)?([a-z0-9_-]{2,60})"),
+        # Greenhouse's application-form embed, and the older API host.
+        # (boards-api. is in find_boards; the lookbehind keeps this one from
+        # matching inside it.)
         _here("greenhouse", r"greenhouse\.io/embed/job_app\?for=([a-z0-9_-]{2,60})"),
         _here("greenhouse", r"(?<![a-z0-9-])api\.greenhouse\.io/v1/boards/([a-z0-9_-]{2,60})"),
-        # Lever's API (what a page that draws its own list calls; Softdocs,
-        # seen 2026-11-18) and its EU host.
-        _here("lever", r"api\.(?:eu\.)?lever\.co/v0/postings/([a-z0-9_-]{2,60})"),
-        _here("lever", r"jobs\.eu\.lever\.co/([a-z0-9_-]{2,60})"),
+        # Lever's API, which a page that draws its own list calls (Softdocs,
+        # seen 2026-11-18).
+        _here("lever", r"(?<![a-z0-9.-])api\.lever\.co/v0/postings/([a-z0-9_-]{2,60})"),
         # A board whose name has a space in it arrives as %20, and every
         # borrowed pattern stops at the percent sign: "flock".
         _here("ashby", r"jobs\.ashbyhq\.com/([a-z0-9._-]{1,60}(?:%20[a-z0-9._-]{1,60}){1,4})"),
@@ -406,7 +645,30 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("paylocity-other", "paylocity.com", _B + r"recruiting\.paylocity\.com"),
         ("adp-other", "adp.com", _B + r"(?:workforcenow|myjobs|recruiting)\.adp\.com"),
         ("greenhouse-shortlink", "grnh.se", _B + r"grnh\.se/[a-z0-9]+"),
+        # A PLATFORM WE READ, ON A HOST ITS READER DOES NOT ASK. A board kept
+        # in Greenhouse's or Lever's European region has its own address
+        # (job-boards.eu.greenhouse.io/<x>, jobs.eu.lever.co/<x>), and
+        # ats.fetch_greenhouse and ats.fetch_lever ask the American API only.
+        # Handed over as an ordinary ref, <x> would be asked where it does
+        # not live: a 404, or whichever other employer holds that name there.
+        # So they are counted here until a reader can ask the European host.
+        ("greenhouse-eu", "eu.greenhouse.io", _B + r"(?:[a-z0-9-]+\.)?eu\.greenhouse\.io"),
+        ("lever-eu", "eu.lever.co", _B + r"(?:[a-z0-9-]+\.)?eu\.lever\.co"),
     )]
+# (and no board pattern may read one of those hosts as the ordinary kind:
+# find_boards' embed form is anchored at "greenhouse.io/embed", which the
+# European host ends in too)
+_OTHER_REGION = re.compile(r"\.eu\.(?:greenhouse\.io|lever\.co)", re.I)
+
+
+def _other_region(text: str, m) -> bool:
+    """Does the match sit on a European host. Read off the one host the match
+    is part of (back to where its host begins), so an American board linked
+    beside a European one is still read as itself."""
+    a, floor = m.start(), max(0, m.start() - 40)
+    while a > floor and (text[a - 1].isalnum() or text[a - 1] in ".-"):
+        a -= 1
+    return bool(_OTHER_REGION.search(text, a, m.end()))
 
 # The forms above that belong to a platform we read. A redirect that lands on
 # one is walked one hop further, because the platform's own next hop usually
@@ -446,6 +708,8 @@ def find_refs(text: str) -> tuple[list[tuple], list[tuple]]:
         if not any(h in low for h in HINTS[p.kind]):
             continue
         for m in p.rx.finditer(text):
+            if p.kind in ("greenhouse", "lever") and _other_region(text, m):
+                continue                # the European host: counted under ELSEWHERE
             made = p.make(m)
             if made:
                 hits.append((m.start(), m.end(), p.kind, made[0], made[1]))
@@ -506,21 +770,65 @@ def soften(text: str) -> str:
     return text
 
 
-def _cut(page: str, opener: str, closer: str) -> str:
-    """`page` without its opener...closer runs, by str.find and not a regex:
-    a lazy regex rescans to the end of the page for every unclosed opener,
-    which froze a twelve-worker sweep once (discover_ats._strip_blocks)."""
-    low, out, i = page.lower(), [], 0
+def _script_at(low: str, i: int) -> int:
+    """Where the next <script> tag opens at or after `i` (and not a
+    <script-loader> somebody's framework made up), or -1."""
     while True:
-        j = low.find(opener, i)
-        if j < 0:
-            out.append(page[i:])
-            return "".join(out)
-        out.append(page[i:j])
-        k = low.find(closer, j + len(opener))
-        if k < 0:
-            return "".join(out)
-        i = k + len(closer)
+        j = low.find("<script", i)
+        if j < 0 or not (low[j + 7:j + 8].isalnum() or low[j + 7:j + 8] in ("-", "_")):
+            return j
+        i = j + 7
+
+
+def _apart(page: str) -> tuple[str, list[str]]:
+    """The page with its comments and its script blocks taken out, and the
+    script blocks.
+
+    ONE WALK, TAKING WHICHEVER OPENS FIRST. The first version lifted every
+    <script> block out and cut the comments from what was left, so a script
+    somebody had commented out was still a script: the embed a company
+    retired by wrapping it in <!-- --> read as the page loading that board,
+    labelled "script", and when the company had moved to a platform nothing
+    reads it was the only candidate on the page (the blind review of
+    2026-11-18; a browser shown the same page never asked for the script).
+    A comment that opens outside a script is cut whole, with whatever is
+    inside it. A "<!--" INSIDE a script is the old way of hiding a script
+    from a browser that could not run one, and it is script.
+
+    By str.find and not a regex: a lazy regex rescans to the end of the page
+    for every opener nobody closed, which froze a twelve-worker sweep once
+    (discover_ats._strip_blocks). Each opener is searched for again only
+    when the walk has passed the last one found, so this is one pass however
+    many of either the page holds.
+    """
+    low, body, scripts, i, n = page.lower(), [], [], 0, len(page)
+    c, s = low.find("<!--"), _script_at(low, 0)
+    while i < n:
+        if 0 <= c < i:
+            c = low.find("<!--", i)
+        if 0 <= s < i:
+            s = _script_at(low, i)
+        if c < 0 and s < 0:
+            break
+        if s < 0 or 0 <= c < s:
+            body.append(page[i:c])
+            # ("<!-->" is a whole comment, so the closer is looked for from
+            # the opener's own dashes)
+            end = low.find("-->", c + 2)
+            if end < 0:
+                return "".join(body), scripts       # never closed: the rest is comment
+            i = end + 3
+        else:
+            body.append(page[i:s])
+            end = low.find("</script", s)
+            if end < 0:
+                scripts.append(page[s:])            # never closed: the rest is script
+                return "".join(body), scripts
+            scripts.append(page[s:end])
+            close = low.find(">", end)
+            i = close + 1 if close >= 0 else n
+    body.append(page[i:])
+    return "".join(body), scripts
 
 
 _TAG = re.compile(r"<(a|area|iframe|frame|embed|object|meta)\b[^<>]{0,6000}>", re.I)
@@ -539,26 +847,11 @@ def zones(page: str) -> list[tuple[str, str]]:
       text     everything else: visible words, and the attributes of every
                other tag
 
-    A REFERENCE INSIDE AN HTML COMMENT IS NOT ON THE PAGE. A commented-out
-    link is something the company took down, and the older finders count it.
-    Comments are cut before anything is read (script blocks first, so a
-    script wrapped in the old <!-- --> guard is still a script).
+    A REFERENCE INSIDE AN HTML COMMENT IS NOT ON THE PAGE, whatever kind of
+    element was commented out. A commented-out link or embed is something
+    the company took down, and the older finders count it (_apart).
     """
-    low, scripts, rest, i = page.lower(), [], [], 0
-    while True:
-        j = low.find("<script", i)
-        if j < 0:
-            rest.append(page[i:])
-            break
-        rest.append(page[i:j])
-        end = low.find("</script", j)
-        if end < 0:
-            scripts.append(page[j:])            # unclosed: the rest is script
-            break
-        scripts.append(page[j:end])
-        close = low.find(">", end)
-        i = close + 1 if close > 0 else len(page)
-    body = _cut("".join(rest), "<!--", "-->")
+    body, scripts = _apart(page)
     pieces = {"href": [], "iframe": [], "redirect": []}
     text, at = [], 0
     for m in _TAG.finditer(body):
@@ -582,6 +875,15 @@ def zones(page: str) -> list[tuple[str, str]]:
 _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 
 
+def _short(text: str) -> str:
+    """Text as it goes into the results file: any person's e-mail address
+    taken out FIRST, and then cut to 160 characters. Cut first and redacted
+    after, the words that replace an address pushed a row past the length
+    the file promises (170 was reached), and an address cut in half was no
+    longer recognised as one and went through."""
+    return privacy.redact((text or "")[:4000])[:160]
+
+
 def _saw(text: str, start: int, end: int) -> str:
     """The matched text widened to the whole address as the page wrote it,
     at most 160 characters, with any person's e-mail address taken out (the
@@ -590,10 +892,12 @@ def _saw(text: str, start: int, end: int) -> str:
     a, floor = start, max(0, start - 60)
     while a > floor and text[a - 1] not in _STOP:
         a -= 1
-    b, ceil = end, min(len(text), a + 160)
+    # (widened past the 160 that are kept, so an address lying across that
+    # mark is still whole when it is looked for)
+    b, ceil = end, min(len(text), a + 2000)
     while b < ceil and text[b] not in _STOP:
         b += 1
-    return privacy.redact(text[a:b][:160])
+    return _short(text[a:b])
 
 
 _ADDRESS = re.compile(r"(?:https?:)?//[^\s\"'<>]+", re.I)
@@ -615,14 +919,6 @@ _NOT_A_PLATFORM = re.compile(
     r"6sense\.com|demandbase\.com|zoominfo\.com|bing\.com|clarity\.ms|hotjar\.com|"
     r"adsrvr\.org|adnxs\.com|criteo\.com|calendly\.com|typeform\.com|"
     r"userway\.org|accessibe\.com|stripe\.com|paypal\.com)$", re.I)
-_TWO_PART_TLD = {"co", "com", "org", "net", "gov", "ac", "edu"}
-
-
-def _site_of(host: str) -> str:
-    """acme.co.uk from careers.acme.co.uk; near enough for a tally."""
-    labels = host.lower().split(".")
-    n = 3 if (len(labels) >= 3 and len(labels[-1]) == 2 and labels[-2] in _TWO_PART_TLD) else 2
-    return ".".join(labels[-n:])
 
 
 def _board_row(kind: str, element: str, saw: str) -> dict:
@@ -673,7 +969,7 @@ def _tally(text: str, element: str, page_url: str, website: str,
                 continue
             row = others.setdefault((f"other:{_site_of(host)}", element), {
                 "vendor": f"other:{_site_of(host)}", "element": element,
-                "saw": privacy.redact(url[:160]), "times": 0})
+                "saw": _short(url), "times": 0})
             row["times"] += 1
 
 
@@ -768,6 +1064,36 @@ def _request(url: str):
 
 
 PEEK = 4096      # enough of a body to know a bot-check page from a real one
+# 202 is SiteGround's challenge; the rest are the usual refusals. A refusal
+# is an answer: nothing asks that site again this run, in either mode.
+REFUSALS = (202, 403, 429, 503)
+
+
+def _hang_up(resp) -> None:
+    """End an answer that is still arriving, from outside the thread reading
+    it. Closing a socket does not wake a thread asleep in a read on it;
+    shutting it down does, so that comes first. Best effort: where the
+    socket sits inside requests is not something the library promises."""
+    raw = getattr(resp, "raw", None)
+    conn = getattr(raw, "connection", None) or getattr(raw, "_connection", None)
+    try:
+        sock = getattr(conn, "sock", None)
+        if sock is not None:
+            sock.shutdown(socket.SHUT_RDWR)
+    except Exception:                        # noqa: BLE001
+        pass
+    try:
+        if resp is not None:
+            resp.close()
+    except Exception:                        # noqa: BLE001
+        pass
+
+
+def _gave_up(url: str, state: dict) -> dict:
+    asked = list(state.get("asked") or ())
+    return {"asked": url, "final": asked[-1] if asked else url, "status": "error",
+            "note": "no whole answer before this company's time was up", "html": "",
+            "pointer": None, "hops": asked}
 
 
 def land(url: str, website: str, *, body: bool = True,
@@ -785,23 +1111,63 @@ def land(url: str, website: str, *, body: bool = True,
     board, a short link or a tenant with no site: that hop is asked, robots.txt
     first, because its own next hop usually is the board.)
 
-    Returns {"asked", "final", "status", "note", "html", "pointer"} with
-    status ok | pointer | robots | blocked | error. `html` is filled only for
-    ok and only when `body` is set. A browser that is about to open the page
-    itself passes body=False: the walk then reads just enough of the answer
-    to tell a bot-check page from a real one, because A SITE THAT TURNED THE
-    PLAIN REQUEST AWAY IS NOT ASKED AGAIN WITH A BROWSER. That is stricter
-    than the nightly renderer, which opens whatever the plain fetch could
-    not read; a sweep of every company's site errs toward taking no for an
-    answer.
+    Returns {"asked", "final", "status", "note", "html", "pointer", "hops"}
+    with status ok | pointer | robots | blocked | error. `hops` is every
+    address that was asked, in order; a pointer carries them too, because
+    whether a redirect is the COMPANY'S pointer depends on whose addresses
+    it passed through, and that is `absorb`'s to say. `html` is filled only
+    for ok and only when `body` is set. A browser that is about to open the
+    page itself passes body=False: the walk then reads just enough of the
+    answer to tell a bot-check page from a real one, because A SITE THAT
+    TURNED THE PLAIN REQUEST AWAY IS NOT ASKED AGAIN WITH A BROWSER. That is
+    stricter than the nightly renderer, which opens whatever the plain fetch
+    could not read; a sweep of every company's site errs toward taking no
+    for an answer.
+
+    THE CLOCK IS KEPT FROM OUTSIDE THE READ. requests' timeout governs one
+    socket read, so a server sending nine bytes every half second, of its
+    headers or of its page, never trips it; and a test made between chunks
+    never runs while one chunk is still arriving (measured 2026-11-18:
+    land() came back after 25 seconds against a 3-second deadline, which was
+    when the server hung up). So the reading is done in a thread of its own.
+    When the company's time is up this function answers "error" without it,
+    hangs up on whatever was still arriving, and the thread asks for nothing
+    more. It is a daemon thread: one stuck in a server's headers, where
+    there is no answer yet to hang up on, is left behind rather than waited
+    for when the run ends.
     """
+    if deadline is None:
+        return _land(url, website, body, None, {})
+    state: dict = {}
+    if time.monotonic() >= deadline:
+        return _gave_up(url, state)
+    done: list = []
+    reader = threading.Thread(
+        target=lambda: done.append(_land(url, website, body, deadline, state)),
+        daemon=True, name="find-site-boards-read")
+    reader.start()
+    reader.join(max(0.0, deadline - time.monotonic()))
+    if done:
+        return done[0]
+    state["stop"] = True
+    _hang_up(state.get("resp"))
+    return _gave_up(url, state)
+
+
+def _land(url: str, website: str, body: bool, deadline: float | None, state: dict) -> dict:
+    """The reading `land` describes. `state` is how the caller reaches in:
+    it holds the addresses asked so far and the answer now arriving, and
+    "stop" in it means ask for nothing more."""
+    asked: list[str] = state.setdefault("asked", [])
     out = {"asked": url, "final": url, "status": "error", "note": "", "html": "",
-           "pointer": None}
-    asked: list[str] = []
+           "pointer": None, "hops": asked}
     ahead = {"url": None}
 
     def one(u: str):
+        if state.get("stop"):
+            raise ats.AtsError("stopped: this company's time was up")
         resp = _request(u)
+        state["resp"] = resp
         asked.append(u)
         loc = ((getattr(resp, "headers", None) or {}).get("Location")
                if getattr(resp, "status_code", 200) in ats.REDIRECTS else None)
@@ -819,41 +1185,38 @@ def land(url: str, website: str, *, body: bool = True,
         out["final"] = asked[-1] if asked else url
         code = getattr(resp, "status_code", 200)
         ctype = (getattr(resp, "headers", None) or {}).get("content-type", "") or ""
-        if code in (202, 403, 429, 503):
-            # 202 is SiteGround's challenge; the rest are the usual refusals.
-            # A refusal is an answer: nothing asks this site again this run.
+        if code in REFUSALS:
             out.update(status="blocked", note=f"HTTP {code}")
         elif code != 200:
             out.update(note=f"HTTP {code}")
         elif ctype and not re.search(r"html|xml|text/plain|json", ctype, re.I):
             out.update(note=f"not a page ({ctype.split(';')[0][:40]})")
         else:
-            raw, cap = b"", (PAGE_CAP if body else PEEK)
+            raw, cap, late = b"", (PAGE_CAP if body else PEEK), False
             for chunk in resp.iter_content(chunk_size=65536 if body else PEEK):
                 raw += chunk
-                if len(raw) >= cap or (deadline and time.monotonic() > deadline):
+                late = bool(state.get("stop") or (deadline and time.monotonic() > deadline))
+                if late or len(raw) >= cap:
                     break
             enc = ats.best_charset(raw, ctype, getattr(resp, "encoding", None))
             try:
                 text = raw.decode(enc, errors="replace")
             except LookupError:
                 text = raw.decode("utf-8", errors="replace")
+            if late and len(raw) < cap:
+                # half a page is not a page: what it had not yet sent is
+                # where the board's frame usually is
+                out.update(note="the page was still arriving when this company's time was up")
             # a small body that is mostly a challenge is a bot wall that
             # answered 200 (discover_ats.BLOCK_PAT, and its size gate)
-            if len(text) < 2048 and discover_ats.BLOCK_PAT.search(text):
+            elif len(text) < 2048 and discover_ats.BLOCK_PAT.search(text):
                 out.update(status="blocked", note="a bot-check page, served as HTTP 200")
             else:
                 out.update(status="ok", html=text if body else "")
     except _Pointed as p:
-        # "Straight" means: since it left the company's site, the walk has
-        # been on this one host only. Own site -> a link shortener -> a board
-        # is somebody else's redirect, not the company's pointer.
-        off = [u for u in asked if not own_site(u, website)]
-        own = [u for u in asked if own_site(u, website)]
         out.update(status="pointer", final=p.to,
                    note="redirects to a job platform's address; the platform was not asked",
-                   pointer={"to": p.to, "from": own[-1] if own else p.frm,
-                            "straight": bool(own) and all(_host(u) == _host(p.to) for u in off)})
+                   pointer={"to": p.to, "from": p.frm, "hops": list(asked)})
     except ats.RobotsRefused as exc:
         out.update(status="robots", final=ahead["url"] or (asked[-1] if asked else url),
                    note=str(exc)[:160])
@@ -868,6 +1231,7 @@ def land(url: str, website: str, *, body: bool = True,
                 resp.close()
             except Exception:                # noqa: BLE001
                 pass
+    out["hops"] = list(asked)
     return out
 
 
@@ -891,7 +1255,7 @@ def _anchors(page: str, base: str) -> list[tuple[str, str]]:
     stopped it. The opening tag is matched (bounded), and the words are the
     text up to the next closing tag found by str.find, or a line's worth.
     """
-    page = discover_ats._strip_blocks(_cut(page, "<!--", "-->"), "script")
+    page = _apart(page)[0]
     low = page.lower()
     out, seen = [], set()
     for m in _TAG.finditer(page):
@@ -917,60 +1281,481 @@ def _anchors(page: str, base: str) -> list[tuple[str, str]]:
     return out
 
 
+_ANY_TAG = re.compile(r"<[^<>]{0,4000}>")
+
+
+def visible(page: str) -> str:
+    """What a reader would see of a page: its words, with markup, scripts,
+    styles and comments gone.
+
+    discover_ats.visible WITH ITS TAG STRIP BOUNDED. Theirs is "<[^>]+>",
+    which runs from every "<" to the next ">" wherever that is. On a page
+    of "<" with no ">" after it (a page cut off mid-tag, a megabyte of
+    somebody's comparisons) each one is scanned to the end of the page:
+    250,000 of them held this file for 168 seconds, and twice that where
+    two pages are compared - inside a regex, with the GIL in hand, where no
+    clock could reach it (the blind review of 2026-11-18). A tag is not four
+    thousand characters long. Comments are cut as well, which theirs does
+    not do: "no open positions" in a paragraph somebody commented out is
+    not the page saying so.
+    """
+    t = _apart(page or "")[0]
+    for tag in ("style", "noscript"):
+        t = discover_ats._strip_blocks(t, tag)
+    return re.sub(r"\s+", " ", _ANY_TAG.sub(" ", t)).strip()
+
+
 async def read_plain(url: str, website: str, deadline: float | None = None) -> dict:
     """One address with plain requests: what `land` found, plus the page's
     links and its visible words."""
     pr = await asyncio.to_thread(land, url, website, body=True, deadline=deadline)
     if pr["status"] == "ok":
         pr["links"] = _anchors(pr["html"], pr["final"])
-        pr["words"] = discover_ats.visible(pr["html"])
+        pr["words"] = visible(pr["html"])
     return pr
 
+
+# ------------------------------------------------------------- in a browser
 
 # Pictures, video and fonts name no board, and not loading them is the
 # cheapest courtesy a browser can pay a site it is only reading.
 _SKIP_RESOURCES = {"image", "media", "font"}
+# How long the browser's side waits on a question asked off to one side: a
+# robots.txt, or an address walked before the browser may go to it.
+ASIDE_SECONDS = 30
+# How many addresses one page may have walked on its behalf (see _Session.rule)
+# and how many of its requests are kept to be read.
+WALKS_PER_PAGE = 8
+ASKS_KEPT = 3000
+
+
+async def _aside(fn, *args, seconds: float = ASIDE_SECONDS):
+    """`fn(*args)` in a thread of its own, waited on for `seconds` and no
+    longer (asyncio.TimeoutError after that).
+
+    NOT asyncio.to_thread, for anything that can wait on somebody's server
+    without a clock of its own. That borrows a thread from the loop's pool,
+    and a pool's thread stuck in a slow answer is waited for when the run
+    ends: twelve seconds measured on Python 3.11 for a twelve-second server,
+    and on 3.12 five minutes before the loop gives up on it and the
+    interpreter then waits anyway, with the job's two-hour limit as the only
+    bound left. A daemon thread is simply left behind.
+    """
+    loop = asyncio.get_running_loop()
+    answer = loop.create_future()
+
+    def work():
+        try:
+            got, err = fn(*args), None
+        except BaseException as exc:         # noqa: BLE001 - handed to whoever asked
+            got, err = None, exc
+
+        def hand():
+            if answer.done():
+                return
+            if err is not None:
+                answer.set_exception(err)
+            else:
+                answer.set_result(got)
+        try:
+            loop.call_soon_threadsafe(hand)
+        except RuntimeError:                 # the run ended while a server dawdled
+            pass
+    threading.Thread(target=work, daemon=True, name="find-site-boards-aside").start()
+    return await asyncio.wait_for(answer, seconds)
+
+
+async def _allowed(url: str) -> bool:
+    """May this crawler read `url`: robots.allowed, asked off the event loop
+    and on a clock. No answer in time is a no. robots.txt is asked BEFORE a
+    page is read, and one that never answered has not said yes."""
+    try:
+        return bool(await _aside(robots.allowed, url))
+    except Exception:                        # noqa: BLE001 - out of time, or robots.py itself failing
+        return False
+
+
+def _above(frame) -> list[str]:
+    """The addresses of the documents a frame sits inside, nearest first."""
+    out, f = [], frame.parent_frame
+    while f is not None and len(out) < 20:
+        out.append(f.url)
+        f = f.parent_frame
+    return out
+
+
+def _shut(page) -> None:
+    """Close a window we did not ask for. (Nothing loaded in it: `rule`
+    below lets no request through from any page but the one we opened.)"""
+    task = asyncio.ensure_future(page.close())
+    task.add_done_callback(lambda t: t.cancelled() or t.exception())
+
+
+class _Session:
+    """What one browser context is doing for us: the one page it has open,
+    whose company that is, and what the page's navigations ran into.
+
+    ONE ROUTE FOR THE WHOLE CONTEXT, NOT ONE PER PAGE. A page's own route
+    never sees a window that page opens: one call to window.open loaded an
+    address robots.txt closes, pictures and all, with nobody asked, and the
+    window then sat open for the rest of that company's walk (the blind
+    review of 2026-11-18). Routed at the context, a request from any page
+    but the one we opened is refused outright. We asked for one page, and a
+    second window is not it.
+    """
+
+    def __init__(self):
+        self.page = None
+        self.website = ""
+        self.deadline: float | None = None
+        self.opened = False                  # the first address has gone out
+        self.stopped: dict | None = None     # what a later address of the main frame ran into
+        self.pointed: dict = {}              # frame -> the walk whose answer pointed at a platform
+        self.moved = False                   # the main frame was let go somewhere new
+        self.walks = 0                       # addresses walked for this page so far
+        self.walking = 0
+        self.quiet = asyncio.Event()
+        self.quiet.set()
+
+    def begin(self, page, website: str, deadline: float | None) -> None:
+        self.page, self.website, self.deadline = page, website, deadline
+        self.opened, self.stopped, self.moved, self.pointed = False, None, False, {}
+        self.walks = 0
+
+    def end(self) -> None:
+        self.page = None
+
+    async def rule(self, route) -> None:
+        """What the browser may ask for.
+
+        ROBOTS.TXT AT EVERY STEP A BROWSER TAKES ON ITS OWN (owner's ruling,
+        2026-10-09), and no board is opened to learn what an address already
+        says:
+
+          - the first address of the page was walked hop by hop by `land`
+            before the browser was given it;
+          - ANYWHERE ELSE THE MAIN FRAME GOES (a script's redirect, a meta
+            refresh) IS WALKED THE SAME WAY FIRST, before the browser may
+            go. A walk that ends at a page lets the browser follow. A walk
+            whose answer points at a job platform stops there, as it does
+            without a browser: where it pointed is the finding, and the
+            browser never opens the board. A walk robots.txt or the site
+            refuses stops the browser too, and the refused address is what
+            is written down (the first version let the browser run into
+            its own refusal and recorded the company as having left for a
+            host called "chromewebdata");
+          - a frame at one of the company's own addresses is walked first
+            as well, because Playwright's router sees only the FIRST
+            address of a server redirect: such a frame, answering 302 to a
+            portal robots.txt closes, was loaded and its address kept;
+          - anybody else's frame is asked of its own robots.txt at its
+            first address. Where it redirects after that the router cannot
+            see (the limit render_fetch documents), so where each frame
+            ENDED is asked again before anything is kept of it (`_Watch`).
+
+        Nothing is submitted: a navigation that is not a GET is refused.
+        """
+        req, page = route.request, self.page
+        try:
+            frame = req.frame
+            ours = page is not None and frame.page == page
+        except Exception:                    # noqa: BLE001 - a new window has no frame yet
+            frame, ours = None, False
+        if not ours or req.resource_type in _SKIP_RESOURCES:
+            await route.abort("blockedbyclient")
+            return
+        if req.resource_type != "document":
+            await route.continue_()
+            return
+        url, top = req.url, frame == page.main_frame
+        if req.method != "GET":
+            await route.abort("blockedbyclient")
+            return
+        if top and not self.opened:
+            self.opened = True
+            await route.continue_()
+            return
+        if not top and not own_site(url, self.website):
+            if await _allowed(url):
+                await route.continue_()
+            else:
+                await route.abort("blockedbyclient")
+            return
+        if top and not own_site(url, self.website):
+            named, forms = refs_in_address(url)
+            if named or any(v not in _NO_BOARD_IN_IT for _s, _e, v in forms):
+                # the page sends its reader straight to an address that names
+                # a board, or a platform nothing reads: that address is the
+                # finding, and nothing is asked of the platform to learn it
+                self.stopped = self.stopped or {
+                    "asked": url, "final": url, "status": "pointer", "note": "", "html": "",
+                    "hops": [], "pointer": {"to": url, "from": page.url, "hops": []}}
+                await route.abort("blockedbyclient")
+                return
+        if self.walks >= WALKS_PER_PAGE:
+            # A page that keeps sending its reader on, or frames a dozen of
+            # its own addresses, is not walked without end: every walk is a
+            # request of the company's site beside the browser's own.
+            if top:
+                self.stopped = self.stopped or {
+                    "asked": url, "final": url, "status": "error", "html": "", "hops": [url],
+                    "pointer": None, "note": "",
+                    "say": f"the page had sent the browser on {WALKS_PER_PAGE} times and went "
+                           f"to send it on again; this address was not asked"}
+            await route.abort("blockedbyclient")
+            return
+        self.walks += 1
+        self.walking += 1
+        self.quiet.clear()
+        try:
+            res = await asyncio.to_thread(
+                land, url, self.website, body=False,
+                deadline=min(self.deadline or float("inf"), time.monotonic() + ASIDE_SECONDS))
+        finally:
+            self.walking -= 1
+            if not self.walking:
+                self.quiet.set()
+        if res["status"] == "ok":
+            self.moved = self.moved or top
+            await route.continue_()
+            return
+        if top:
+            self.stopped = self.stopped or res
+        elif res["status"] == "pointer":
+            self.pointed[frame] = res
+        await route.abort("blockedbyclient")
+
+
+_SESSIONS: "weakref.WeakKeyDictionary" = weakref.WeakKeyDictionary()
+_SESSIONS_HELD: dict = {}       # for a context object that cannot be weakly held
+
+
+async def _session(ctx) -> _Session:
+    """A context's session, made the first time the context is used, which is
+    also when its one route is set. (Kept by the context itself, weakly, so
+    a closed context takes its session with it; a context that cannot be
+    held that way is held outright, which keeps its id from being reused
+    and a new context from being mistaken for one already routed.)"""
+    try:
+        sess = _SESSIONS.get(ctx)
+    except TypeError:
+        sess = (_SESSIONS_HELD.get(id(ctx)) or (None, None))[1]
+    if sess is None:
+        sess = _Session()
+
+        async def only_allowed(route):
+            try:
+                await sess.rule(route)
+            except Exception:                # noqa: BLE001 - the page closed with a request still waiting on us
+                try:
+                    await route.abort("blockedbyclient")
+                except Exception:            # noqa: BLE001
+                    pass
+        await ctx.route("**/*", only_allowed)
+        try:
+            _SESSIONS[ctx] = sess
+        except TypeError:
+            _SESSIONS_HELD[id(ctx)] = (ctx, sess)
+    return sess
+
+
+class _Watch:
+    """What one page did while it drew, each thing with the document that did
+    it: where every frame was sent, and what every document asked for.
+
+    A LIST OF ADDRESSES IS NOT ENOUGH. The first version kept every address
+    the page's frames ended on and every address anything asked for, and
+    filed them all as what the company's page points to. A careers page
+    that frames a page of its parent's site, which in turn frames the
+    parent's board, came out pointing at the parent's board twice over, as a
+    frame and as a request (the blind review of 2026-11-18). Which document
+    put a frame there, and which document made a request, is what says whose
+    pointer it is; `absorb` judges that, and this only keeps the facts.
+    """
+
+    def __init__(self, page):
+        self.page = page
+        self.trail: list[str] = []           # every address the main frame was sent to, in order
+        self.hops: dict = {}                 # frame -> every address that frame was sent to
+        self.asks: list[dict] = []           # what was asked for, and by which document
+        self.answers: list = []              # the main frame's answers, in order
+
+    def asked(self, req) -> None:
+        try:
+            frame = req.frame
+            if req.is_navigation_request():
+                self.hops.setdefault(frame, []).append(req.url)
+                if frame == self.page.main_frame:
+                    self.trail.append(req.url)
+            elif req.resource_type not in _SKIP_RESOURCES and len(self.asks) < ASKS_KEPT:
+                self.asks.append({"url": req.url, "doc": frame.url, "up": _above(frame)})
+        except Exception:                    # noqa: BLE001 - a request with no frame to its name
+            pass
+
+    def answered(self, resp) -> None:
+        try:
+            req = resp.request
+            if req.is_navigation_request() and req.frame == self.page.main_frame:
+                self.answers.append(resp)
+        except Exception:                    # noqa: BLE001
+            pass
+
+    def answer(self, final: str):
+        """The answer the browser was given for the document it ended on:
+        the last one for that address, or failing that (a script rewrote
+        the address bar) the last document it was given at all."""
+        want = final.split("#")[0]
+        docs = [r for r in self.answers if r.status not in ats.REDIRECTS]
+        for resp in reversed(docs):
+            if resp.url.split("#")[0] == want:
+                return resp
+        return docs[-1] if docs else None
+
+    async def evidence(self, sess: _Session) -> tuple[list[dict], list[dict]]:
+        """(frames, requests): where each frame ended, with the documents it
+        sits inside and the addresses it went through; and what each
+        document asked for, with the documents that one sits inside.
+
+        NOTHING IS KEPT OF A FRAME THAT ENDED ON A PAGE ROBOTS.TXT CLOSES:
+        not its address, not what it asked for, not a frame inside it.
+        """
+        main, frames, shut = self.page.main_frame, [], set()
+        for f in self.page.frames:
+            if f == main:
+                continue
+            walked = sess.pointed.get(f)
+            if walked is not None:
+                # sent to one of the company's own addresses, whose answer
+                # pointed at a job platform: the platform was not opened,
+                # and where the answer pointed is where this frame was going
+                frames.append({"url": walked["pointer"]["to"], "up": _above(f),
+                               "hops": list(walked.get("hops") or ())})
+                continue
+            url = f.url or ""
+            if not url.startswith("http"):
+                continue                     # about:blank, or a frame that was refused
+            if not await _allowed(url):
+                shut.add(url)
+                continue
+            frames.append({"url": url, "up": _above(f), "hops": list(self.hops.get(f, ()))})
+        frames = [x for x in frames if not shut.intersection(x["up"])]
+        asks = [a for a in self.asks
+                if a["doc"] not in shut and not shut.intersection(a["up"])]
+        return frames, asks
+
+
+async def _settle(page, sess: _Session) -> None:
+    """Let the page draw: until its network goes quiet (ten seconds at most,
+    some pages never do), then two seconds more for what a script adds after
+    that. A page on its way somewhere else is waited for until that address
+    has been walked, and the page it was let through to is given the same
+    time to draw, once."""
+    for _ in range(2):
+        try:
+            await page.wait_for_load_state("networkidle", timeout=10000)
+        except Exception:                    # noqa: BLE001
+            pass
+        if sess.stopped is not None:
+            return
+        await page.wait_for_timeout(2000)
+        try:
+            await asyncio.wait_for(sess.quiet.wait(), ASIDE_SECONDS)
+        except asyncio.TimeoutError:
+            return
+        if sess.stopped is not None or not sess.moved:
+            return
+        sess.moved = False
+
+
+def _stopped(pr: dict, res: dict, trail: list[str]) -> dict:
+    """What a page comes to when its own script sent the browser on to an
+    address the walk would not open. The address it was sent to is the
+    finding (a pointer), or the reason it was not read."""
+    before = trail[:-1] if trail and trail[-1] == res["asked"] else list(trail)
+    hops = before + list(res.get("hops") or [res["asked"]])
+    if res["status"] == "pointer":
+        to = res["pointer"]["to"]
+        return {**pr, "status": "pointer", "final": to, "html": "",
+                "note": "a script on the page sends the browser to a job platform's "
+                        "address; the platform was not opened",
+                "pointer": {"to": to, "from": res["pointer"]["from"], "hops": hops}}
+    why = res.get("say") or {
+        "robots": "a script on the page sends the browser to a page robots.txt closes",
+        "blocked": "a script on the page sends the browser to an address that turned "
+                   "the plain request away"}.get(
+        res["status"], "a script on the page sends the browser to an address that did not answer")
+    return {**pr, "status": res["status"], "final": res["final"], "html": "",
+            "note": f"{why} ({res['note']})" if res.get("note") else why}
 
 
 async def read_rendered(ctx, url: str, website: str, deadline: float | None = None,
                         landed: dict | None = None) -> dict:
-    """One address in the browser.
+    """One address in the browser: what the page drew, where its frames went
+    and what its documents asked for.
 
-    ROBOTS.TXT AT EVERY STEP A BROWSER TAKES ON ITS OWN, the three layers
-    render_fetch keeps: the address's redirects are walked first, every hop
-    asked (`land`); any page navigation after that - a script's redirect, a
-    frame - is asked before it is made and aborted when refused; and the page
-    finally read must itself be one we may read, or nothing from it is kept.
+    WHAT THE BROWSER MAY ASK FOR is `_Session.rule`: robots.txt at every
+    step, no board opened, no second window, nothing submitted.
+
+    AND HOW THE SITE ANSWERED THE BROWSER IS LOOKED AT. The first version
+    never looked: a site that let the plain request in and answered the
+    browser 403 "Access denied" was recorded as read, with no board on it,
+    and then asked again (the blind review of 2026-11-18). A refusal given
+    to the browser is the same refusal: the status the page's own document
+    came back with, and the small challenge page served as a 200, are read
+    here exactly as `land` reads them.
     """
     pr = landed or await asyncio.to_thread(land, url, website, body=False, deadline=deadline)
     if pr["status"] != "ok":
         return pr
-    seen: list[str] = []
+    sess = await _session(ctx)
     page = await ctx.new_page()
-    page.on("request", lambda r: seen.append(r.url))
-
-    async def only_allowed(route):
-        req = route.request
-        if req.resource_type in _SKIP_RESOURCES:
-            await route.abort("blockedbyclient")
-        elif req.resource_type == "document" and not await asyncio.to_thread(
-                robots.allowed, req.url):
-            await route.abort("blockedbyclient")
-        else:
-            await route.continue_()
-    await page.route("**/*", only_allowed)
+    watch = _Watch(page)
+    sess.begin(page, website, deadline)
+    page.on("request", watch.asked)
+    page.on("response", watch.answered)
+    page.on("popup", _shut)
     try:
-        await page.goto(pr["final"], wait_until="domcontentloaded", timeout=25000)
         try:
-            await page.wait_for_load_state("networkidle", timeout=10000)
-        except Exception:                    # noqa: BLE001 - some pages never go idle
+            await page.goto(pr["final"], wait_until="domcontentloaded", timeout=25000)
+        except Exception:                    # noqa: BLE001
+            # A page whose script moves it on before it has finished loading
+            # interrupts the load that was asked for. That is not a page
+            # failing to open: where it went (or was stopped from going) is
+            # still to be read below.
+            if sess.stopped is None and not (sess.moved or sess.walking):
+                raise
+        await _settle(page, sess)
+        if sess.stopped is not None:
+            return _stopped(pr, sess.stopped, watch.trail)
+        final = page.url or ""
+        if not final.startswith("http"):
+            return {**pr, "status": "error", "html": "",
+                    "note": "the browser ended on no page at all"}
+        if not await _allowed(page.url):
+            return {**pr, "status": "robots", "final": final, "html": "",
+                    "note": "the browser ended on a page robots.txt closes"}
+        resp = watch.answer(final)
+        code = resp.status if resp is not None else None
+        if code in REFUSALS:
+            return {**pr, "status": "blocked", "final": final, "html": "",
+                    "note": f"HTTP {code}, answered to the browser"}
+        if code is not None and code != 200:
+            return {**pr, "status": "error", "final": final, "html": "",
+                    "note": f"HTTP {code}, answered to the browser"}
+        html = (await page.content())[:2 * PAGE_CAP]
+        # (the size gate is on what the server SENT, as it is without a
+        # browser: a page's drawn markup is swollen by its own scripts)
+        served = html
+        try:
+            if resp is not None and int(resp.headers.get("content-length") or 0) < 2048:
+                served = await resp.text()
+        except Exception:                    # noqa: BLE001 - the body is gone, or was never text
             pass
-        await page.wait_for_timeout(2000)
-        if not await asyncio.to_thread(robots.allowed, page.url):
-            return {**pr, "status": "robots", "final": page.url, "html": "",
-                    "note": "a script sent the browser to a page robots.txt closes"}
-        pr["opened"], pr["final"] = pr["final"], page.url
-        pr["html"] = (await page.content())[:2 * PAGE_CAP]
+        if len(served) < 2048 and discover_ats.BLOCK_PAT.search(served):
+            return {**pr, "status": "blocked", "final": final, "html": "",
+                    "note": "a bot-check page, shown to the browser"}
+        pr = {**pr, "opened": pr["final"], "final": final, "html": html,
+              "hops": list(watch.trail)}
         try:
             pr["words"] = await page.inner_text("body")
         except Exception:                    # noqa: BLE001
@@ -980,13 +1765,18 @@ async def read_rendered(ctx, url: str, website: str, deadline: float | None = No
         # a JS-built page can put an object where an href belongs (discover_js)
         pr["links"] = [(h, re.sub(r"\s+", " ", t or "")) for h, t in links
                        if isinstance(h, str) and h.startswith("http")]
-        pr["frames"] = [f.url for f in page.frames if f != page.main_frame]
-        pr["requests"] = list(seen)
+        pr["frames"], pr["requests"] = await watch.evidence(sess)
     except Exception as exc:                 # noqa: BLE001
+        if sess.stopped is not None:
+            return _stopped(pr, sess.stopped, watch.trail)
         return {**pr, "status": "error", "html": "",
                 "note": "the browser could not open it: " + " ".join(str(exc).split())[:100]}
     finally:
-        await page.close()
+        sess.end()
+        try:
+            await page.close()
+        except Exception:                    # noqa: BLE001 - it went with the browser
+            pass
     return pr
 
 
@@ -1047,7 +1837,10 @@ def pick_links(links: list[tuple[str, str]], website: str) -> tuple[list[dict], 
     careers (its words or its address), and a link straight to a platform we
     read whose address does not already name the board (a Gusto posting, a
     Paylocity job page: the page it opens usually names its board). A link
-    that already names a board is the finding itself and is not followed.
+    that already names a board is the finding itself and is not followed,
+    and neither is one to a platform's address that is counted under
+    `elsewhere` for some other reason (a board in its European region): the
+    one look is for an address that names nothing yet.
     """
     best: dict[str, dict] = {}
     strays: list[tuple[str, str]] = []
@@ -1075,12 +1868,14 @@ def pick_links(links: list[tuple[str, str]], website: str) -> tuple[list[dict], 
             continue
         if discover_ats.ARTICLE_PATH.search(path) and rank > 0:
             continue                    # a blog post called "Why jobs matter"
+        named, forms = refs_in_address(url)
         if own_site(url, website):
             pass
-        elif _READABLE_HOST.search(_host(url)) and not refs_in_address(url)[0]:
+        elif (_READABLE_HOST.search(_host(url)) and not named
+              and all(v in _NO_BOARD_IN_IT for _s, _e, v in forms)):
             rank += 3                   # after every page of their own
         else:
-            if not any(refs_in_address(url)) and not _NOT_A_PLATFORM.search(_host(url)):
+            if not named and not forms and not _NOT_A_PLATFORM.search(_host(url)):
                 strays.append((url, words))
             continue
         row = {"url": url, "rank": rank, "length": len(path), "n": n}
@@ -1147,60 +1942,178 @@ def _leave(rec: dict, frm: str, to: str) -> None:
         rec["left_site"].append({"from": frm, "to_host": host})
 
 
-def absorb(rec: dict, pr: dict, hop: int, website: str, guessed: bool = False,
+def _is_web(url) -> bool:
+    return isinstance(url, str) and url.startswith("http")
+
+
+def _same_board(row: dict) -> tuple:
+    return row["type"], json.dumps(row["ref"]).lower()
+
+
+def _by_document(pr: dict, who: Whose) -> tuple[list[str], list[str], dict]:
+    """What a browser saw on one of the company's own pages, sorted by whose
+    document did it. Returns (frames, requests, through): the addresses that
+    are the page's own evidence, and for everything else a map from the
+    address of the document it was really seen through to what was seen
+    there ({"frames": [...], "requests": [...]}).
+
+    THE COMPANY'S PAGE POINTS TO WHAT ITS OWN DOCUMENTS DO, AND ONLY THAT:
+
+      a request counts when the document that made it is the company's own,
+        and so is every document that one sits inside;
+      a frame counts when every document it sits inside is the company's
+        own, and every address it went through on the way there was the
+        company's own or on the host it ended at - the rule a redirect is
+        held to, because a frame sent to the parent's site and redirected
+        on to the parent's board is the parent's pointer.
+
+    What a frame of somebody else's site asked for, a frame inside such a
+    frame, and a frame that arrived by way of somebody else's address are
+    that other site's doing: C Co's careers page framed a page of its
+    parent's site, that page framed the parent's board, and the first
+    version filed the parent's board as what C Co's page points to.
+    """
+    frames, asks, through = [], [], {}
+
+    def other(where: str) -> dict:
+        return through.setdefault(where, {"frames": [], "requests": []})
+
+    for f in pr.get("frames") or ():
+        if isinstance(f, str):               # a bare address: seen by the page's own document
+            f = {"url": f}
+        url = f.get("url")
+        if not _is_web(url):
+            continue
+        not_theirs = next((u for u in f.get("up") or () if _is_web(u) and not who.theirs(u)), None) \
+            or next((h for h in f.get("hops") or ()
+                     if _is_web(h) and h != url and not who.theirs(h) and _host(h) != _host(url)),
+                    None)
+        if not_theirs:
+            other(not_theirs)["frames"].append(url)
+        else:
+            frames.append(url)
+    for a in pr.get("requests") or ():
+        if isinstance(a, str):
+            a = {"url": a}
+        url = a.get("url")
+        if not _is_web(url):
+            continue
+        not_theirs = next((u for u in [a.get("doc"), *(a.get("up") or ())]
+                           if _is_web(u) and not who.theirs(u)), None)
+        if not_theirs:
+            other(not_theirs)["requests"].append(url)
+        else:
+            asks.append(url)
+    return frames, asks, through
+
+
+def _flat(items) -> list[str]:
+    return [u for u in ((x if isinstance(x, str) else x.get("url")) for x in items or ())
+            if _is_web(u)]
+
+
+def absorb(rec: dict, pr: dict, hop: int, who: "Whose | str", guessed: bool = False,
            via: str | None = None) -> bool:
     """File one page's reading into the company's record. True when it was a
-    page on their own site that could be read.
+    page of their own site that could be read.
 
     THE WHOLE RULE IS IN WHICH LIST A REFERENCE LANDS IN. `candidates` only
-    from a page whose landing address is on the company's own host, or from
-    an own-site address that redirected straight to the board. Everything
-    else that names a board goes to `off_site`. `via` is the own-site page a
-    followed link was found on, so "left for" can say from where.
+    from a page that is the company's own and nobody else's (`Whose.of` says
+    "own"), or from an address of their own whose answer pointed straight at
+    the board. Everything else that names a board goes to `off_site`: a page
+    that left the site, a page outside the part of a host that is theirs, a
+    website two records share, a frame inside somebody else's frame, a
+    redirect that went by way of somebody else's address. `via` is the
+    own-site page a followed link was found on, so "left for" can say from
+    where. (`who` may be a bare website, for a caller with no record in
+    hand: the host and path rules then hold and the ones that need the
+    other records cannot.)
     """
+    if not isinstance(who, Whose):
+        who = Whose({"website": who})
+    website = who.site
     final = pr["final"]
-    same = own_site(final, website)
-    page = {"asked": pr["asked"], "final": final, "same_site": same,
+    kind, why = who.of(final)
+    theirs = kind in ("own", "shared")
+    page = {"asked": pr["asked"], "final": final, "same_site": theirs,
             "status": pr["status"], "note": privacy.redact(pr.get("note") or "")}
     readable = False
     left_from = pr["asked"] if own_site(pr["asked"], website) else (via or pr["asked"])
-    # A SCRIPT THAT SENDS THE BROWSER STRAIGHT TO A BOARD is the same pointer
-    # a server's redirect is: the company's own address was opened, and where
-    # it took the reader names the board. The board's own page is not read
-    # for more.
-    opened = pr.get("opened")
-    if (pr["status"] == "ok" and not same and opened and own_site(opened, website)
+    # A BROWSER THAT ENDED ON A BOARD'S OWN ADDRESS, by a redirect only a
+    # browser is given, has found the same pointer a server's redirect is.
+    # It is held to the same rule (every address on the way), and the
+    # board's own page is not read for more.
+    if (pr["status"] == "ok" and kind == "other" and pr.get("opened")
             and refs_in_address(final)[0]):
-        for _s, _e, kind, ref, _k in refs_in_address(final)[0]:
-            rec["candidates"].append({"type": kind, "ref": ref, "element": "redirect",
-                                      "saw": privacy.redact(final[:160]), "times": 1,
-                                      "page": opened, "hop": hop})
-        page.update(status="left-site",
-                    note="a script on the page sent the browser to a job board's address")
-        _leave(rec, left_from, final)
-        rec["pages"].append(page)
-        return False
+        hops = [h for h in (pr.get("hops") or ()) if h != final] or [pr["opened"]]
+        pr = {**pr, "status": "pointer",
+              "pointer": {"to": final, "from": hops[-1], "hops": hops}}
+        page["note"] = "the browser was sent on to a job board's address"
     if pr["status"] == "pointer":
         ptr = pr["pointer"]
-        boards, others = refs_in_address(ptr["to"])
-        mine = ptr["straight"] and own_site(ptr["from"], website)
-        for _s, _e, kind, ref, _k in boards:
+        to = ptr["to"]
+        hops = list(ptr.get("hops") or ()) or [ptr.get("from") or pr["asked"]]
+        kinds = [who.of(h)[0] for h in hops]
+        ours = [h for h, k in zip(hops, kinds) if k in ("own", "shared")]
+        # "STRAIGHT" MEANS: every address asked on the way was the company's
+        # own, or was on the host the answer finally pointed at (a Workday
+        # tenant's front door sending its reader on to its one site). Own
+        # site -> the parent's site -> the parent's board, and own site -> a
+        # link shortener -> a board, are somebody else's redirect and not
+        # the company's pointer.
+        straight = bool(ours) and all(k in ("own", "shared") or _host(h) == _host(to)
+                                      for h, k in zip(hops, kinds))
+        mine = straight and "shared" not in kinds
+        # (what pointed: their own last address when the pointer is theirs,
+        # and otherwise the address that really did the pointing)
+        seen_on = ours[-1] if straight else hops[-1]
+        boards, others = refs_in_address(to)
+        for _s, _e, bkind, ref, _k in boards:
             (rec["candidates"] if mine else rec["off_site"]).append({
-                "type": kind, "ref": ref, "element": "redirect",
-                "saw": privacy.redact(ptr["to"][:160]), "times": 1,
-                "page": ptr["from"], "hop": hop})
+                "type": bkind, "ref": ref, "element": "redirect", "saw": _short(to),
+                "times": 1, "page": seen_on, "hop": hop})
         for vendor in dict.fromkeys(v for _s, _e, v in others):
-            rec["elsewhere"].append({"vendor": vendor, "saw": privacy.redact(ptr["to"][:160]),
-                                     "page": ptr["from"], "element": "redirect", "times": 1})
-        page["status"] = "left-site"
-        _leave(rec, left_from, ptr["to"])
+            rec["elsewhere"].append({"vendor": vendor, "saw": _short(to), "page": seen_on,
+                                     "element": "redirect", "times": 1})
+        page["status"], page["same_site"] = "left-site", False
+        doubt = ""
+        if boards and not straight:
+            doubt = ("it got there by way of an address that is not the company's own, "
+                     "so it is filed under off_site")
+        elif boards and not mine:
+            doubt = "filed under off_site: " + next(
+                (who.of(h)[1] for h, k in zip(hops, kinds) if k == "shared"), "")
+        page["note"] = "; ".join(x for x in (page["note"], doubt) if x)
+        for h, k in zip(hops, kinds):
+            if k == "other" and _host(h) != _host(to):
+                _leave(rec, left_from, h)    # the site it went through on the way
+        _leave(rec, left_from, to)
     elif pr["status"] == "ok":
+        if theirs:
+            frames, asks, through = _by_document(pr, who)
+        else:
+            # not their page: whose frame is whose no longer matters, all of
+            # it is filed as seen on a page that is not theirs
+            frames, asks, through = _flat(pr.get("frames")), _flat(pr.get("requests")), {}
         boards, others = sightings(pr["html"], final, website,
-                                   requests_seen=pr.get("requests") or (),
-                                   frames_seen=pr.get("frames") or ())
+                                   requests_seen=asks, frames_seen=frames)
+        own = kind == "own"
         for row in boards:
-            (rec["candidates"] if same else rec["off_site"]).append({**row, "page": final, "hop": hop})
-        if same:
+            (rec["candidates"] if own else rec["off_site"]).append({**row, "page": final, "hop": hop})
+        # what another site's frame inside the page named. A board the
+        # company's own page already points to is not said again from there:
+        # the frame it embeds asking that same board for its list adds a row
+        # under off_site and tells nobody anything.
+        named = {_same_board(r) for r in boards} if own else set()
+        inside = 0
+        for where, seen in through.items():
+            rows, _ = sightings("", where, website, requests_seen=seen["requests"],
+                                frames_seen=seen["frames"])
+            for row in rows:
+                if _same_board(row) not in named:
+                    rec["off_site"].append({**row, "page": where, "hop": hop})
+                    inside += 1
+        if theirs:
             page["status"], readable = "read", True
             # what the company's own page uses; a parent's page that the site
             # left for says nothing about this company's platform
@@ -1217,19 +2130,28 @@ def absorb(rec: dict, pr: dict, hop: int, website: str, guessed: bool = False,
                     and discover_ats.NO_OPENINGS.search(pr.get("words") or "")):
                 rec["says_no_openings"] = True
             page["note"] = f"{len(boards)} board reference(s)"
+            if kind == "shared":
+                page["note"] += f", filed under off_site: {why}"
+            if inside:
+                page["note"] += (f"; {inside} more inside another site's frame on this "
+                                 f"page, filed under off_site")
         else:
             page["status"] = "left-site"
-            page["note"] = (f"landed on another site; {len(boards)} board reference(s) "
-                            f"there, filed under off_site")
+            page["note"] = (f"{why if kind == 'part' else 'landed on another site'}; "
+                            f"{len(boards)} board reference(s) there, filed under off_site")
+            if kind == "other":
+                _leave(rec, left_from, final)
+    else:
+        if kind == "other":
+            # refused or broken, and somewhere else: both facts are kept
             _leave(rec, left_from, final)
-    elif not same:
-        # refused or broken, and somewhere else: both facts are kept
-        _leave(rec, left_from, final)
-    if not same and pr["status"] != "pointer":
+        elif kind == "part":
+            page["note"] = f"{page['note']}; {why}".strip("; ")
+    if not theirs and pr["status"] != "pointer":
         # where it landed may itself be a platform's address (a Gusto posting,
         # a Workday tenant with no site): that much is known without reading it
         for vendor in dict.fromkeys(v for _s, _e, v in refs_in_address(final)[1]):
-            rec["elsewhere"].append({"vendor": vendor, "saw": privacy.redact(final[:160]),
+            rec["elsewhere"].append({"vendor": vendor, "saw": _short(final),
                                      "page": pr["asked"], "element": "redirect", "times": 1})
     if guessed and "guessed path" not in page["note"]:
         # the site was never seen to link this address; we typed it
@@ -1253,7 +2175,7 @@ def same_page(a: str, b: str) -> bool:
     the whole text can match."""
     if not a or not b:
         return False
-    va, vb = discover_ats.visible(a), discover_ats.visible(b)
+    va, vb = visible(a), visible(b)
     if va == vb:
         return True
     ta, tb = _inside(a, "title"), _inside(b, "title")
@@ -1263,7 +2185,7 @@ def same_page(a: str, b: str) -> bool:
 
 
 async def look(company: dict, mode: str, read, plain=read_plain,
-               rec: dict | None = None) -> dict:
+               rec: dict | None = None, on_file: dict | None = None) -> dict:
     """Walk one company's own site for the board it points to.
 
     In order: the website; the careers address on file when it is on their
@@ -1271,18 +2193,20 @@ async def look(company: dict, mode: str, read, plain=read_plain,
     website, deadline)` reads one address (a browser in render mode);
     `plain` is always the plain reader, used to test a guessed path before
     anything is made of it. `rec` is filled in place, so a caller that has to
-    stop the walk still holds what it had found.
+    stop the walk still holds what it had found. `on_file` is site_index()
+    of every record on file: without it nothing can know that the page
+    being read is another record's website too.
     """
     rec = _blank(company) if rec is None else rec
-    site = (company.get("website") or "").strip()
-    if site and "//" not in site:
-        site = "https://" + site
+    who = Whose(company, on_file)
+    site = who.site
     if not site.startswith("http") or not _host(site):
         rec["error"] = "the website on file is not an address"
         return rec
     deadline = time.monotonic() + COMPANY_SECONDS[mode]
     queue: list[dict] = []
     done: set[str] = set()
+    landed: dict[str, dict] = {}        # the row written for each address a read landed on
     counter = [0]
 
     def push(url: str, hop: int, rank: int, length: int = 0, via: str | None = None) -> None:
@@ -1301,12 +2225,13 @@ async def look(company: dict, mode: str, read, plain=read_plain,
 
     push(site, 0, -2)
     ref = (company.get("ats") or {}).get("ref")
-    on_file = isinstance(ref, str) and ref.startswith("http") and own_site(ref, site)
-    if on_file:
+    on_record = isinstance(ref, str) and ref.startswith("http") and own_site(ref, site)
+    if on_record:
         push(ref, 0, -1)
     pages = 0
     home = None                 # the website's own page, once read
     careers_read = False
+    answered = False            # a careers link the site itself offered has been asked
     guessed = False
     weak = looks = 0
     strays: list[tuple[str, str, str]] = []
@@ -1322,7 +2247,19 @@ async def look(company: dict, mode: str, read, plain=read_plain,
             # /jobs are worth one ask each. A guess counts when the site
             # answers 200 with a page that is neither its home page nor the
             # page it gives an address that cannot exist.
-            if guessed or home is None or careers_read:
+            #
+            # "OFFERED NOTHING" IS MEANT. A site whose own careers link was
+            # followed has answered, whatever the link came to: a redirect
+            # to its board, a page on its parent's site, a dead address. So
+            # has one whose careers link plainly leaves for another host, or
+            # links the platform it posts on. The first version went on to
+            # ask such a site for an address that cannot exist and for
+            # /careers besides - two requests, one of them nonsense on
+            # purpose, of every company whose careers link goes straight to
+            # its board (the blind review of 2026-11-18).
+            if (guessed or home is None or careers_read or answered or strays
+                    or rec["candidates"] or rec["off_site"]
+                    or any(e.get("element") == "href" for e in rec["elsewhere"])):
                 break
             guessed = True
             root = "{0.scheme}://{0.netloc}".format(urllib.parse.urlsplit(home["final"]))
@@ -1338,6 +2275,7 @@ async def look(company: dict, mode: str, read, plain=read_plain,
                 pages += 1
                 got = await plain(root + g, site, deadline)
                 got["note"] = ((got.get("note") or "") + " (a guessed path)").strip()
+                turned_away = None
                 if got["status"] == "ok":
                     path = urllib.parse.urlsplit(got["final"]).path.rstrip("/")
                     # (landing on a page already read is the site sending a
@@ -1348,21 +2286,40 @@ async def look(company: dict, mode: str, read, plain=read_plain,
                         done.add(_key(root + g))
                         rec["pages"].append({
                             "asked": got["asked"], "final": got["final"],
-                            "same_site": own_site(got["final"], site), "status": "error",
+                            "same_site": who.theirs(got["final"]), "status": "error",
                             "note": "a guessed path, and not a real page: the site answers "
                                     "it with its home page or its not-found page"})
                         continue
                     if mode == "render" and own_site(got["final"], site):
                         # (the plain read above asked robots.txt at every hop)
-                        got = await read(root + g, site, deadline, landed={**got, "html": ""})
-                        got["note"] = ((got.get("note") or "") + " (a guessed path)").strip()
+                        shown = await read(root + g, site, deadline, landed={**got, "html": ""})
+                        if shown["status"] in ("ok", "pointer"):
+                            got = shown
+                            got["note"] = ((got.get("note") or "") + " (a guessed path)").strip()
+                        else:
+                            # THE BROWSER WAS TURNED AWAY FROM A PAGE THE PLAIN
+                            # REQUEST HAD JUST READ. What was read is still
+                            # read: the first version threw the plain body
+                            # away with its board's frame in it, and wrote
+                            # the refusal down as a page with no board.
+                            turned_away = shown
                 done.update((_key(root + g), _key(got["final"])))
-                if absorb(rec, got, 1, site, guessed=True):
+                found = absorb(rec, got, 1, who, guessed=True)
+                landed[_key(got["final"])] = rec["pages"][-1]
+                if turned_away is not None:
+                    rec["pages"][-1]["note"] += "; read without the browser, which was turned away"
+                    absorb(rec, turned_away, 1, who, guessed=True)
+                refused = "blocked" in (got["status"], (turned_away or {}).get("status"))
+                if found:
                     careers_read = True
-                    offer(got, 1)
-                    break               # one real careers page is the answer
-                if got["status"] == "blocked":
-                    queue.clear()
+                    if not refused:
+                        offer(got, 1)
+                if refused:
+                    queue.clear()       # a refusal is not asked twice, by either reader
+                    break
+                if found or got["status"] == "pointer":
+                    # one real careers page is the answer, and so is a
+                    # /careers that sends its reader straight to a platform
                     break
             if not queue:
                 break
@@ -1379,17 +2336,33 @@ async def look(company: dict, mode: str, read, plain=read_plain,
             if rec["candidates"] or (weak if item["rank"] == 2 else looks):
                 continue
             weak, looks = weak + (item["rank"] == 2), looks + (item["rank"] >= 3)
+        if item["hop"] > 0 and item["rank"] % 3 <= 1:
+            answered = True             # (a link that reads as careers, on a platform or not)
         done.add(_key(item["url"]))
         pages += 1
         pr = await read(item["url"], site, deadline)
-        if pr["status"] == "ok" and _key(pr["final"]) in done and _key(pr["final"]) != _key(item["url"]):
-            # it landed on a page already read: say so, count nothing twice
-            rec["pages"].append({"asked": pr["asked"], "final": pr["final"],
-                                 "same_site": own_site(pr["final"], site), "status": "read",
-                                 "note": "the same page as an address already read"})
+        key = _key(pr["final"])
+        if pr["status"] == "ok" and key in done and key != _key(item["url"]):
+            # IT LANDED ON A PAGE ALREADY ASKED: say so, count nothing twice,
+            # and say of it what was said of that page. An acquired company
+            # whose website and careers address both redirect to the buyer's
+            # front page was written down as left-site and then as "read" -
+            # and one "read" is what tells the run's own count, and the
+            # door, that a company's site was looked at.
+            was = landed.get(key) or {}
+            theirs = was.get("same_site", who.theirs(pr["final"]))
+            status = (was.get("status") if was.get("status") in ("read", "left-site")
+                      else ("read" if theirs else "left-site"))
+            rec["pages"].append({
+                "asked": pr["asked"], "final": pr["final"], "same_site": theirs,
+                "status": status,
+                "note": ("the same page as an address already read" if status == "read"
+                         else "lands on the same page, not on their own site, as an "
+                              "address already asked")})
             continue
-        done.add(_key(pr["final"]))
-        readable = absorb(rec, pr, item["hop"], site, via=item["via"])
+        done.add(key)
+        readable = absorb(rec, pr, item["hop"], who, via=item["via"])
+        landed[key] = rec["pages"][-1]
         if pr["status"] == "blocked":
             # A REFUSAL IS NOT ASKED TWICE. The site said no to this crawler;
             # its other pages are not tried to see whether they agree.
@@ -1398,7 +2371,7 @@ async def look(company: dict, mode: str, read, plain=read_plain,
             continue
         if item["hop"] == 0 and home is None and _key(item["url"]) == _key(site):
             home = pr
-        if item["hop"] > 0 or (on_file and _key(item["url"]) == _key(ref)):
+        if item["hop"] > 0 or (on_record and _key(item["url"]) == _key(ref)):
             careers_read = True
         offer(pr, item["hop"])
     # Careers-looking links that leave for a host nothing here knows: a
@@ -1411,9 +2384,19 @@ async def look(company: dict, mode: str, read, plain=read_plain,
             continue
         seen_hosts.add(name)
         rec["elsewhere"].append({"vendor": f"other:{name}",
-                                 "saw": privacy.redact(url[:160]), "page": on_page,
+                                 "saw": _short(url), "page": on_page,
                                  "element": "href", "times": 1})
+    rec.update(_no_addresses(rec))
     return rec
+
+
+def _no_addresses(rec: dict) -> dict:
+    """The record with any person's e-mail address taken out of every string
+    in it. `saw` and the notes were redacted as they were written; the
+    ADDRESSES of pages were not, and an address can carry one in its query
+    (a redirect to ...?to=somebody@...). The file is an artifact of a public
+    repository, and the door copies from it into a public one."""
+    return privacy.redact_deep(rec)
 
 
 # ---------------------------------------------------------------- the list
@@ -1442,10 +2425,24 @@ def refused_ids() -> set[str]:
     return out
 
 
-def in_shard(company_id: str, k: int, n: int) -> bool:
+def in_shard(key: str, k: int, n: int) -> bool:
     """A split that is the same on every machine and every run (Python's own
     hash() is salted per process, so it is not)."""
-    return int(hashlib.sha1(company_id.encode("utf-8")).hexdigest(), 16) % n == k - 1
+    return int(hashlib.sha1(key.encode("utf-8")).hexdigest(), 16) % n == k - 1
+
+
+def shard_key(company: dict) -> str:
+    """What a company is split by: THE SITE ITS WEBSITE IS ON, not its id.
+
+    Split by id, the eleven hosts that are the website of two or three
+    records each (a product line on file beside its parent, one company
+    entered twice) were dealt to different machines, and the workflow's
+    promise that no site is read by two machines at once was untrue for
+    them. Two records of one site now go to one machine, where the one
+    gate every request at a host queues behind can space them.
+    """
+    host = _host(str(company.get("website") or ""))
+    return _site_of(host) if host else str(company.get("id") or "")
 
 
 def worklist(companies: list[dict], *, only: set[str] | None = None,
@@ -1485,14 +2482,46 @@ def worklist(companies: list[dict], *, only: set[str] | None = None,
 
 # ----------------------------------------------------------------- the run
 
-def _save(path: pathlib.Path, mode: str, companies: dict) -> None:
+def _now() -> str:
+    return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+
+def _save(path: pathlib.Path, mode: str, companies: dict, since: str | None = None) -> None:
     """The whole file, written beside itself and moved into place, so a run
-    that is stopped mid-write leaves the last good file and not half of one."""
-    doc = {"generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-           "mode": mode, "companies": companies}
+    that is stopped mid-write leaves the last good file and not half of one.
+    `since` is the stamp the file carries: when its oldest record was read."""
+    doc = {"generated": since or _now(), "mode": mode, "companies": companies}
     tmp = path.with_name(path.name + ".tmp")
     tmp.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
     os.replace(tmp, path)
+
+
+# What a record says when the look failed on OUR side: this program crashing,
+# our browser not finishing. Neither is a fact about the company's site, and
+# neither is an answer the site gave.
+CRASHED, TIMED_OUT = "the look crashed", "the look did not finish in time"
+
+
+def unfinished(rec) -> bool:
+    """A record a resumed run must make again, because nothing was learned.
+
+    ONLY OUR OWN FAILURES. A run that picks a file up again skipped everyone
+    already in it, so a company whose look had crashed, or whose browser had
+    not finished, was never looked at again and sat in the file under a
+    fresh date (the blind review of 2026-11-18). NOT a site that refused
+    (robots.txt, a bot wall): a refusal is an answer, and a resumed run does
+    not ask it twice. And not a site that was merely slow or unreachable:
+    that is written down as not read, which is what it was.
+    """
+    return not _whole(rec) or str(rec.get("error") or "").startswith((CRASHED, TIMED_OUT))
+
+
+def _whole(rec) -> bool:
+    """Is this a record in this file's shape: every field there, and the
+    lists lists."""
+    return (isinstance(rec, dict) and set(_blank({})) <= set(rec)
+            and all(isinstance(rec[k], list)
+                    for k in ("pages", "candidates", "off_site", "elsewhere", "left_site")))
 
 
 def _line(cid: str, rec: dict) -> str:
@@ -1530,6 +2559,7 @@ def summary(companies: dict) -> list[str]:
     left = [r for r in companies.values() if r["left_site"]]
     nothing = [r for r in companies.values() if not r["candidates"]
                and any(p["status"] == "read" for p in r["pages"])]
+    doubted = [r for r in nothing if r["off_site"]]
     by_kind = collections.Counter()
     for r in pointed:
         for kind in {c["type"] for c in r["candidates"]}:
@@ -1540,7 +2570,9 @@ def summary(companies: dict) -> list[str]:
             by_vendor[v] += 1
     out = [f"{n} companies in the file",
            f"  {len(pointed)} whose own site points to a board we can read",
-           f"  {len(nothing)} read, no readable board named",
+           f"  {len(nothing)} read, no readable board named as their own"
+           + (f" ({len(doubted)} of them with one named where it is not theirs to "
+              f"claim: off_site)" if doubted else ""),
            f"  {len(unread)} NOT READ (robots.txt, a bot wall, an error): not a 'no board'",
            f"  {len(left)} whose site leaves for another host",
            f"  {sum(1 for r in companies.values() if r['says_no_openings'])} "
@@ -1554,9 +2586,17 @@ def summary(companies: dict) -> list[str]:
     return out
 
 
-async def sweep(todo: list[dict], a, out: pathlib.Path, results: dict) -> int:
+class BrowserGone(Exception):
+    """The browser a sweep was reading with has died. Carries the kind of
+    error and nothing else: what Playwright says when it dies names the
+    address it was opening, and the log this ends up in is public."""
+
+
+async def sweep(todo: list[dict], a, out: pathlib.Path, results: dict,
+                on_file: dict | None = None, since: str | None = None) -> int:
     """Look at each company in turn and keep the file current. Returns how
-    many were left for another run (the --budget ran out)."""
+    many were left for another run (the --budget ran out). `on_file` is
+    site_index() of every record, handed to each look."""
     mode = "render" if a.render else "static"
     started = time.monotonic()
     fresh = [0]
@@ -1566,12 +2606,14 @@ async def sweep(todo: list[dict], a, out: pathlib.Path, results: dict) -> int:
         return bool(a.budget) and time.monotonic() - started > a.budget
 
     def keep(c: dict, rec: dict) -> None:
-        results[c["id"]] = rec
+        # (again here: a look that was stopped from outside never reached
+        # its own last line)
+        rec = results[c["id"]] = _no_addresses(rec)
         fresh[0] += 1
         if a.show:
             print(_line(c["id"], rec), flush=True)
         if fresh[0] % SAVE_EVERY == 0:
-            _save(out, mode, results)
+            _save(out, mode, results, since)
             if not a.show:
                 print(f"  ... {fresh[0]}/{len(todo)}", flush=True)
 
@@ -1580,23 +2622,29 @@ async def sweep(todo: list[dict], a, out: pathlib.Path, results: dict) -> int:
             if over():
                 left[0] += 1
                 continue
+            rec = _blank(c)
             try:
-                rec = await look(c, "static", read_plain)
+                # (every read inside the look is on the company's own clock;
+                # this one is over all of it, for whatever that clock missed)
+                await asyncio.wait_for(look(c, "static", read_plain, rec=rec, on_file=on_file),
+                                       timeout=COMPANY_SECONDS["static"] + 30)
+            except asyncio.TimeoutError:
+                rec["error"] = TIMED_OUT
             except Exception as exc:         # noqa: BLE001 - one site must not end the run
-                rec = {**_blank(c), "error": f"the look crashed: {type(exc).__name__}"}
+                rec = {**_blank(c), "error": f"{CRASHED}: {type(exc).__name__}"}
             keep(c, rec)
             await asyncio.sleep(a.pause)
         return left[0]
 
-    # ONE BROWSER, TWO PAGES AT A TIME. Playwright is imported here and
-    # nowhere else, so a plain run and the self-test never need the browser
-    # (CLAUDE.md: it stays out of the run path).
+    # ONE BROWSER, TWO PAGES AT A TIME (RENDER_AT_ONCE). Playwright is
+    # imported here and nowhere else, so a plain run and the self-test never
+    # need the browser (CLAUDE.md: it stays out of the run path).
     try:
         from playwright.async_api import async_playwright
     except ImportError as exc:
         raise SystemExit("--render needs Playwright: pip install playwright && "
                          "python -m playwright install chromium") from exc
-    gate = asyncio.Semaphore(2)
+    gate = asyncio.Semaphore(RENDER_AT_ONCE)
     async with async_playwright() as p:
         browser = await p.chromium.launch()
 
@@ -1605,36 +2653,49 @@ async def sweep(todo: list[dict], a, out: pathlib.Path, results: dict) -> int:
                 if over():
                     left[0] += 1
                     return
-                rec = _blank(c)
-                ctx = await browser.new_context(user_agent=render_fetch.UA,
-                                                viewport={"width": 1280, "height": 1000})
-
-                async def read(url, website, deadline=None, landed=None):
-                    return await read_rendered(ctx, url, website, deadline, landed)
+                rec, ctx = _blank(c), None
                 try:
-                    await asyncio.wait_for(look(c, "render", read, rec=rec),
+                    # (no service workers: a request one makes has no page to
+                    # its name, and the context's one route refuses whatever
+                    # it cannot trace to the page we opened)
+                    ctx = await browser.new_context(user_agent=render_fetch.UA,
+                                                    viewport={"width": 1280, "height": 1000},
+                                                    service_workers="block")
+
+                    async def read(url, website, deadline=None, landed=None):
+                        return await read_rendered(ctx, url, website, deadline, landed)
+                    await asyncio.wait_for(look(c, "render", read, rec=rec, on_file=on_file),
                                            timeout=COMPANY_SECONDS["render"] + 60)
                 except asyncio.TimeoutError:
-                    rec["error"] = "the browser did not finish in time"
+                    rec["error"] = TIMED_OUT
                 except Exception as exc:     # noqa: BLE001
                     # OUR BROWSER DYING IS NOT A FACT ABOUT THEIR SITE. Written
                     # down as this company's result it would be skipped as
                     # "already looked at" by the run that resumes; the run
                     # stops instead and the company is asked again.
                     if not browser.is_connected():
-                        raise
-                    rec["error"] = f"the look crashed: {type(exc).__name__}"
+                        raise BrowserGone(type(exc).__name__) from None
+                    rec["error"] = f"{CRASHED}: {type(exc).__name__}"
                 finally:
                     try:
-                        await ctx.close()
+                        if ctx is not None:
+                            await ctx.close()
                     except Exception:        # noqa: BLE001 - it went with the browser
                         pass
+                if not browser.is_connected():
+                    # (a page that failed to open is written down as that and
+                    # the walk goes on, so a browser that died under it comes
+                    # out of the look as "a page did not open")
+                    raise BrowserGone("closed")
                 keep(c, rec)
                 await asyncio.sleep(a.pause)
         try:
             await asyncio.gather(*[one(c) for c in todo])
         finally:
-            await browser.close()
+            try:
+                await browser.close()
+            except Exception:                # noqa: BLE001 - already gone
+                pass
     return left[0]
 
 
@@ -1657,8 +2718,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--only", default="",
                     help="only these company ids, comma-separated")
     ap.add_argument("--shard", default="",
-                    help="K/N: the K-th of N equal parts of the list, the same split "
-                         "on every machine")
+                    help="K/N: the K-th of N equal parts of the list, split by the site "
+                         "each website is on, the same on every machine")
     ap.add_argument("--budget", type=int, default=0,
                     help="seconds for the whole run; whoever is left waits for the next")
     ap.add_argument("--pause", type=float, default=0.3,
@@ -1686,10 +2747,12 @@ def main(argv: list[str] | None = None) -> int:
         shard = (int(m.group(1)), int(m.group(2)))
 
     results: dict = {}
+    since = _now()
     if out.exists():
-        # RESUMABLE: whoever is in the file already is not asked again. A
-        # file from the other mode is refused rather than mixed - a company
-        # read without a browser has not been looked at by one.
+        # RESUMABLE: whoever is in the file already, with something learned,
+        # is not asked again (`unfinished` says who is). A file from the
+        # other mode is refused rather than mixed - a company read without a
+        # browser has not been looked at by one.
         prior = _read_json(out, None)
         if not isinstance(prior, dict) or not isinstance(prior.get("companies"), dict):
             print(f"{out} exists and is not a results file of this script; "
@@ -1699,28 +2762,46 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{out} was written in {prior.get('mode')} mode and this run is "
                   f"{mode}: give each mode its own --out", file=sys.stderr)
             return 2
-        results = prior["companies"]
+        # (a record that is not this file's shape is not kept: it would be
+        # counted in the summary below as if it said something)
+        results = {k: v for k, v in prior["companies"].items() if _whole(v)}
+        # THE FILE KEEPS THE DATE OF ITS OLDEST RECORD. It has one date, and
+        # stamping it afresh put today's on findings read on another day.
+        if isinstance(prior.get("generated"), str) and prior["generated"] and results:
+            since = prior["generated"]
 
     companies = json.loads((DATA / "companies.json").read_text())
     only = {x.strip() for x in a.only.split(",") if x.strip()} if a.only else None
     todo, skipped = worklist(companies, only=only, include_wired=a.include_wired)
     if shard:
-        todo = [c for c in todo if in_shard(c["id"], *shard)]
-    already = sum(1 for c in todo if c["id"] in results)
-    todo = [c for c in todo if c["id"] not in results]
+        todo = [c for c in todo if in_shard(shard_key(c), *shard)]
+    again = sum(1 for c in todo if c["id"] in results and unfinished(results[c["id"]]))
+    already = sum(1 for c in todo if c["id"] in results) - again
+    todo = [c for c in todo if c["id"] not in results or unfinished(results[c["id"]])]
     if a.limit:
         todo = todo[:a.limit]
     print(f"find_site_boards ({mode}): {len(todo)} to look at"
           + (f", {already} already in the file" if already else "")
+          + (f", {again} of them again because the last look at them failed on our side"
+             if again else "")
           + (f", part {shard[0]} of {shard[1]}" if shard else ""))
     for why, n in sorted(skipped.items()):
         print(f"  {n} not looked at: {why}")
     out.parent.mkdir(parents=True, exist_ok=True)
-    left = 0
+    left, failed = 0, ""
     try:
-        left = asyncio.run(sweep(todo, a, out, results))
+        left = asyncio.run(sweep(todo, a, out, results, site_index(companies), since))
+    except BrowserGone as exc:
+        failed = f"the browser stopped ({exc})"
+    except Exception as exc:                 # noqa: BLE001
+        # COUNTS ONLY, EVEN WHEN IT BREAKS. A traceback names the address
+        # that was being opened, and a workflow's log is public. A person
+        # running it by hand with --show gets the whole of it.
+        if a.show:
+            raise
+        failed = f"the run stopped on an error of its own ({type(exc).__name__})"
     finally:
-        _save(out, mode, results)
+        _save(out, mode, results, since)
     for line in summary(results):
         print(line)
     if left:
@@ -1729,6 +2810,10 @@ def main(argv: list[str] | None = None) -> int:
     print(f"written to {out}")
     print("NOTHING WAS WIRED AND NOTHING IN data/ CHANGED. Each candidate is what a "
           "page says, not whose board it is: the board has not been asked.")
+    if failed:
+        print(f"{failed}. What had been read is in the file; whoever was not reached "
+              f"is not in it. Run it again with the same --out.", file=sys.stderr)
+        return 3
     return 0
 
 

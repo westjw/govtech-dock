@@ -121,8 +121,12 @@ jobs:
         run: |
           # COUNTS ONLY in this log: it is public, and a company's name
           # beside "blocked" or "left for another site" is not ours to
-          # publish here. The split is by company id, the same on every
-          # machine, so no site is read by two of them.
+          # publish here. The split is by the SITE each company's website
+          # is on, the same on every machine, so no site is read by two of
+          # them. (It was by company id, and that sentence was untrue for
+          # the eleven hosts that are the website of two or three records.)
+          # A machine whose browser dies exits 3 after writing what it had
+          # read; the step below still hands that file back.
           mkdir -p sweep
           python scripts/find_site_boards.py --render --shard "$PART/$PARTS" \
             --budget "$BUDGET" --limit "$LIMIT" --out "sweep/site-boards-$PART.json"
