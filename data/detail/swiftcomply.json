@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Follow one backflow test from the tester\u2019s report to the notice that goes out",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/resources/stop-manually-entering-backflow-test-reports/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.swiftcomply.com/blog/three-ways-to-run-a-compliance-program-and-what-each-one-costs-you/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CROMERR deadlines, and four other things people get wrong",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/cromerr-deadlines-and-four-other-things-people-get-wrong/"
   }
  ],
  "profile": {

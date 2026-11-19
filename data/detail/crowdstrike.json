@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "CrowdStrike Brings the Human Advantage to AI Detection and Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-brings-human-advantage-aidr/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "CrowdStrike Is Building the Engine of the Agentic SOC with Falcon Next-Gen SIEM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-named-leader-2026-gartner-mq-siem/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-11-16",
@@ -20,21 +38,12 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-11-12",
    "headline": "CrowdStrike Named a Leader in the 2026 IDC MarketScape for Worldwide Augmented Identity Security Solutions",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-named-leader-2026-idc-marketscape-worldwide-augmented-identity-security-solutions/"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "index-text",
-   "first_seen": "2026-11-11",
-   "headline": "November 2026 Patch Tuesday: 1,252 CVEs Include One Zero-Day and 68 Critical Vulnerabilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-november-2026/"
   },
   {
    "date": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "to Acquire",
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-to-acquire-fiddler/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "CrowdStrike Secures AI Agents Inside Claude Cowork",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-secures-ai-agents-inside-claude-cowork/"
   }
  ]
 }

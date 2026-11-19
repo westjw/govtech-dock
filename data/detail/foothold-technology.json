@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "20+ U.S. Homelessness Statistics (Updated 2027)",
+   "kind": "product",
+   "kind_rule": "Updated",
+   "url": "https://footholdtechnology.com/news/usa-homelessness-statistics/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "The Best Human Services Software for 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://footholdtechnology.com/news/best-human-services-software/"
+  },
+  {
    "date": "2026-06-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://footholdtechnology.com/news/what-is-person-centered-care-behavioral-health/"
-  },
-  {
-   "date": "2024-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Strategic EHR Billing Practices for Human Services Providers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://footholdtechnology.com/news/ehr-billing-strategic-practices/"
-  },
-  {
-   "date": "2024-05-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Foothold Technology\u2019s High SUS Score and User Satisfaction Reduces Burnout",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://footholdtechnology.com/news/sus-score/"
   }
  ],
  "profile": {

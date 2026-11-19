@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Here\u2019s What Business Email Compromise Actually Looks Like (And How to Catch It)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/what-bec-looks-like"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.huntress.com/blog/ahsaycbs-webshells"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "Introducing Brute Force Sentry: See Who's Knocking on Your Exposed Logins, and Know When One Gets In",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.huntress.com/blog/brute-force-sentry"
   }
  ]
 }

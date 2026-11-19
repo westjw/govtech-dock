@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Air quality monitoring in smart cities: How urban sensor networks clear the air",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clarity.io/blog/air-quality-monitoring-in-smart-cities-how-urban-sensor-networks-clear-the-air"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clarity.io/blog/clarity-dust-module-earns-mcerts-certification-for-pm10-first-indicative-monitor-approved-for-elevated-dust-concentrations"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Ultrafine particle monitoring 101: How to measure and track UFP pollution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clarity.io/blog/ultrafine-particle-monitoring-101-how-to-measure-and-track-ufp-pollution"
   }
  ]
 }

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Self-service made passengers the check-in agent \u2013 automation takes the work away",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/en/news/check-in-automation-adds-airport-capacity-without-concrete"
+  },
+  {
+   "date": "2026-10-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Sunshine Coast Airport opens new check-in hall with advanced self-service technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/en/news/sunshine-coast-airport-opens-new-check-in-hall-with-advanced-self-service-technology"
+  },
+  {
+   "date": "2026-02-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "IDEMIA Public Security and Elenium Sign Global Partnership to Deliver Secure, Seamless Biometric Airport Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/en/news/idemia-public-security-and-elenium-sign-global-partnership-to-deliver-secure-seamless-biometric-airport-experience"
+  },
+  {
    "date": "2026-02-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -26,6 +53,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elenium.com/blog/sydney-airport-massive-t2upgrade/"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Auckland Airport to have new check-in and bag drop off technology installed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/en/news/auckland-airport-new-bagdrop-kiosks"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Sydney (SYD) Airport\u2019s massive T2 upgrade to begin in May",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/en/news/sydney-airport-massive-t2upgrade"
   },
   {
    "date": "2022-11-13",
@@ -62,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elenium.com/blog/elenium-named-5-in-fast-companys-top-10-most-innovative-travel-companies/"
-  },
-  {
-   "date": "2022-05-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ola Barshtman Speaks on International Women\u2019s Day",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elenium.com/blog/ola-barshtman-speaks-on-international-womens-day/"
   }
  ],
  "profile": {

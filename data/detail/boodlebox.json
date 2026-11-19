@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "Stop starting from scratch with AI: the workflow one trial lawyer calls her competitive edge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://boodlebox.ai/blog/bethany-schneider-case-study"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "index-text",
    "first_seen": "2026-11-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://boodlebox.ai/blog/buying-for-the-few-deploying-to-the-many"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Death by PowerPoint? Resuscitate Your Nursing Students with AI Socratic Tutors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://boodlebox.ai/blog/death-by-powerpoint"
   }
  ],
  "profile": {

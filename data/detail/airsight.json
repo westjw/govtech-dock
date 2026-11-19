@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "AirSight Metro for DFR: Airspace Awareness and Deconfliction for DFR Programs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/metro-for-dfr-airspace-awareness-dfr-programs"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "AirGuard\u2019s Proximity Intelligence: See Which Drones Are Really Closing In",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/airguards-proximity-intelligence-see-which-drones-are-really-closing-in"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/critical-infrastructure-drone-detection"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Law Enforcement Drone Detection: How to Build a Program | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/law-enforcement-drone-detection"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Drone Detection for Events and Stadiums: Keep the Game On | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-for-events-and-stadiums"
   }
  ],
  "profile": {

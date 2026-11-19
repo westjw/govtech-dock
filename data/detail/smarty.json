@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "The story behind your favorite building in GTA VI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.smarty.com/blog/gta-vi"
+  },
+  {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "Catch voter fraud with address metadata",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Monthly vs. annual plans: How to choose what\u2019s right for you",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Smarty advances open mapping with Overture",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-08-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Is Tornado Alley moving? Yes, and insurers should care.",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Smarty expands parcel boundary coverage to Canada",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Smarty announces the return of Pinpoint for 2026",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://www.smarty.com/blog/smarty-launches-us-business-data"
-  },
-  {
-   "date": "2026-04-27",
-   "date_source": "index-text",
-   "first_seen": "2026-11-13",
-   "headline": "Smarty\u2019s JavaScript SDK now TypeScript native",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.smarty.com/blog/smarty-javascript-sdk-type-script-native"
   }
  ]
 }

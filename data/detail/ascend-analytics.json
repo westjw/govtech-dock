@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "SoftBank's Billion-Dollar Loss May Have Put a Cap on AI's Natural Gas Ambitions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ascendanalytics.com/blog/why-the-data-center-you-dread-might-never-even-be-built"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "What the Midterms Mean for Data Center Developers in PJM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ascendanalytics.com/blog/what-the-midterms-mean-for-data-center-developers-in-pjm"
   },
   {
    "date": "2026-11-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ascendanalytics.com/blog/beyond-cod-the-path-to-successful-market-participation"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Ascend Analytics Appoints Matthew Boyda as Chief Product Officer",
-   "kind": "leadership",
-   "kind_rule": "as Chief",
-   "url": "https://www.ascendanalytics.com/blog/ascend-analytics-appoints-matthew-boyda-as-chief-product-officer"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-11",
-   "headline": "Can VDER Storage Match the Success of VDER Solar?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ascendanalytics.com/blog/new-york-vder-storage-outlook-capacity-charging-costs"
   }
  ],
  "profile": {

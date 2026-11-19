@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "time",
+   "first_seen": "2026-11-18",
+   "headline": "TRM Labs Selected to Support New Federal Threat Disruption Center Targeting Scams, Cybercrime, and Sextortion Schemes",
+   "kind": "contract",
+   "kind_rule": "Selected to",
+   "url": "https://www.trmlabs.com/resources/blog/trm-labs-threat-disruption-center"
+  },
+  {
    "date": "2026-11-12",
-   "date_source": "index-text",
+   "date_source": "time",
    "first_seen": "2026-11-12",
    "headline": "TRM Labs Launches Beacon Concierge to Help Law Enforcement Worldwide Interdict and Seize Illicit Crypto Funds On Any Chain In Any Asset",
    "kind": "product",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "index-text",
+   "date_source": "time",
    "first_seen": "2026-11-12",
    "headline": "TRM Labs Launches Disruption Awards, Celebrating the People and Partnerships Disrupting Crime Together",
    "kind": "product",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-11-10",
    "headline": "Leaked Documents Shed Light on the Banking Behind Iran\u2013China Trade",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-06",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-11-06",
    "headline": "OFAC Designates Eight Canadian Money Services Businesses Under Operation Economic Outcast",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-11-03",
    "headline": "Binance Hack Update: North Korea Launders Proceeds Through Self-Minted Tokens and Chained Bridges",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/recap-trm-labs-quarterly-policy-roundtable-q3-2026"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-26",
-   "headline": "Russia Escalates Prosecutions of Darknet Market Figures as Volume Heads Toward USD 1.7 Billion",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/russia-escalates-prosecutions-of-darknet-market-figures-as-volume-heads-toward-usd-17-billion"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Patches released for critical \u2018NGINX2Root\u2019 vulnerabilities",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.sophos.com/en-us/blog/patches-released-for-critical-nginx2root-vulnerabilities"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Patches released for critical \u2018NGINX2Root\u2019 vulnerabilities",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.sophos.com/blog/patches-released-for-critical-nginx2root-vulnerabilities"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -17,6 +35,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/blog/hijacked-optimizely-snippets-served-malicious-code"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "'Java4Shell' vulnerability (CVE-2026-114938) could allow remote code execution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/en-us/blog/java4shell-could-allow-remote-code-execution"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "'Java4Shell' vulnerability (CVE-2026-114938) could allow remote code execution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/blog/java4shell-could-allow-remote-code-execution"
   },
   {
    "date": "2026-11-16",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/en-us/blog/n-able-issues-advisory-on-critical-vulnerabilities"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "N-able issues advisory on critical vulnerabilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/blog/n-able-issues-advisory-on-critical-vulnerabilities"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Enforcing intent-based access control at the endpoint",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/enforcing-intent-based-access-control-at-the-endpoint"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "Killing ill-willed skills: Sophos AI at BSides Sydney",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/killing-ill-willed-skills-sophos-ai-at-bsides-sydney"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Sophos Helps Organizations Secure the AI-Era Network as Demands on Performance and Protection Grow",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/press/press-releases/2026/11/sophos-helps-organizations-secure-the-ai-era-network"
   }
  ]
 }

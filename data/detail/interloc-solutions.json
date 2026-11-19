@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "Interloc Solutions Achieves Final CMMC Level 2 Certification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/company/news/interloc-solutions-achieves-final-cmmc-level-2-certification"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "index-text",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/ai-assisted-technical-documentation-with-bob"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "Running IBM Maximo Application Suite on AWS SNO",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/running-ibm-maximo-application-suite-on-aws-sno"
   }
  ],
  "profile": {

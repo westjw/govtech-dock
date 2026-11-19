@@ -1,62 +1,188 @@
 {
-  "date": "2026-11-18",
-  "previous": "2026-11-17",
+  "date": "2026-11-19",
+  "previous": "2026-11-18",
   "changes": [
     {
-      "company": "Envisio",
-      "id": "envisio",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Senior Solution Consultant only"
+      "company": "SewerAI",
+      "id": "sewerai",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive, Municipal (Remote)"
+    },
+    {
+      "company": "Schneider Geospatial",
+      "id": "schneider-geospatial",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Geographic Account Executive (Remote)"
+    },
+    {
+      "company": "SOVRA",
+      "id": "sovra",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Softdocs",
+      "id": "softdocs",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "State and Local Government (SLG) A (Remote)"
+    },
+    {
+      "company": "Genetec",
+      "id": "genetec",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - Belgium and Lu"
+    },
+    {
+      "company": "Vector Solutions",
+      "id": "vector-solutions",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Mid-Market Account Executive - Law (Tampa, FL)"
     },
     {
       "company": "D-Fend Solutions",
       "id": "d-fend-solutions",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Executive - Airports Sector (McLean, Virginia)"
+    },
+    {
+      "company": "Anaplan",
+      "id": "anaplan",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive, Sweden (Stockholm, Sweden)"
     },
     {
       "company": "Pimloc, Inc.",
       "id": "pimloc-inc",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "robots.txt asks crawlers not to read car"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Xplor Recreation",
       "id": "xplor-recreation",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive - Direct Sales (Jacksonville, FL)"
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Coordinator only"
     },
     {
-      "company": "Palantir Technologies",
-      "id": "palantir-technologies",
+      "company": "Whip Around",
+      "id": "whip-around",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative - only"
+    },
+    {
+      "company": "Careers In Government",
+      "id": "careers-in-government",
       "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Forward Deployed Enablement Engine only"
+      "note": "sales roles, none AE"
     },
     {
-      "company": "AccessE11",
-      "id": "accesse11",
-      "from": "Unknown",
+      "company": "VotingWorks",
+      "id": "votingworks",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "EMS LINQ",
+      "id": "ems-linq",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive (Austin, Texas)"
+    },
+    {
+      "company": "mdf commerce",
+      "id": "mdf-commerce",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
       "company": "Grant Street Group",
       "id": "grant-street-group",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 502 for https://api.lever.co/v0/pos"
-    },
-    {
-      "company": "LawVu",
-      "id": "lawvu",
-      "from": "Sales (non-AE)",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Archistar",
+      "id": "archistar",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Director - Governme (Toronto)"
+    },
+    {
+      "company": "Freebee",
+      "id": "freebee",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Planet Labs",
+      "id": "planet-labs",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Defence & Intel (Japan, Remote)"
+    },
+    {
+      "company": "Jupiter Intelligence",
+      "id": "jupiter-intelligence",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Element451",
+      "id": "element451",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Future Opportunity: Account Execut (Remote, United Sta)"
+    },
+    {
+      "company": "AM",
+      "id": "am",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "AM Quartex",
+      "id": "am-quartex",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Dun & Bradstreet, Inc.",
+      "id": "dun-bradstreet-inc",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Pluralsight",
+      "id": "pluralsight",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Enterprise Growth Account Executiv only"
     }
   ]
 }

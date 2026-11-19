@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "From machine data to maintenance action: Connecting SIMATIC and asset management in manufacturing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/from-machine-data-to-maintenance-action-connecting-simatic-and-asset-management-in"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -82,31 +91,22 @@
    "url": "https://www.brightlysoftware.com/blog/the-property-tax-squeeze-why-scenario-modeling-is-no-longer-optional"
   },
   {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date": "2026-09-28",
+   "date_source": "time",
    "first_seen": "2026-10-05",
-   "headline": "AI aspirations vs. operational reality: Overcoming implementation anxieties",
+   "headline": "Rethinking healthcare\u2019s approach to infrastructure investment",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/ai-aspirations-vs-operational-reality-overcoming-implementation-anxieties"
   },
   {
-   "date": "2026-09-24",
-   "date_source": "time",
+   "date": "2026-09-28",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "Operational intelligence: Connecting data to better asset decisions",
+   "headline": "Rethinking healthcare\u2019s approach to infrastructure investment",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/rethinking-healthcares-approach-to-infrastructure-investment"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Operational intelligence: Connecting data to better asset decisions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/operational-intelligence-connecting-data-to-better-asset-decisions"
   }
  ],
  "profile": {

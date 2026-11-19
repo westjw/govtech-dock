@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Gabe Klein Joins Circuit's Board of Directors to Help Shape What's Next for Urban Transportation",
+   "kind": "leadership",
+   "kind_rule": "Board of Directors",
+   "url": "https://www.ridecircuit.com/blog/gabe-klein-joins-circuits-board-of-directors"
+  },
+  {
    "date": "2026-10-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "From Pilot to Long-Term Partnership: What Makes Microtransit Successful?",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "5 Things Cities Should Look for in On-Demand Microtransit Software",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "3 Ways Turnkey Microtransit Improves First-Mile and Last-Mile Transportation",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "5 Ways Electric Microtransit Can Integrate With Existing Public Transit",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "3 Challenges Cities Face When Launching Effective Microtransit",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-05-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Circuit Champions: The People Moving Cities",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ridecircuit.com/blog/circuit-powered-by-people-camille-santiago"
-  },
-  {
-   "date": "2026-03-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "3 Things We Learned at Safe Roads Summit 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ridecircuit.com/blog/safe-roads-summit-2026-takeaways"
   }
  ],
  "profile": {

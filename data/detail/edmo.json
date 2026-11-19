@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "What Is Unified Enrollment? A Guide to Building a Connected Enrollment System in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/unified-enrollment-higher-education/"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -55,6 +64,15 @@
    "url": "https://goedmo.com/blog/enrollment-workflow-optimization/"
   },
   {
+   "date": "2026-11-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "How AI Improves Multilingual Student Support in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/ai-multilingual-student-support/"
+  },
+  {
    "date": "2026-10-30",
    "date_source": "index-text",
    "first_seen": "2026-10-30",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/https-goedmo-com-blog-what-is-direct-admissions/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-16",
-   "headline": "AI Texting in Higher Education: A Guide for Admissions and Enrollment Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/ai-texting-in-higher-education/"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-16",
-   "headline": "Marketing to Non-Traditional Students: How Universities Can Reach and Enroll Adult Learners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/https-goedmo-com-blog-marketing-to-non-traditional-students/"
   }
  ],
  "profile": {

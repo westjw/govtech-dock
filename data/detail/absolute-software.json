@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-13",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "Best Zero-Trust Networking Platforms in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.absolute.com/blog/best-zero-trust-networking-platforms-in-2026"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "How to Recover Endpoints After a Ransomware Attack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.absolute.com/blog/how-to-recover-endpoints-after-a-ransomware-attack"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "index-text",
    "first_seen": "2026-11-13",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.absolute.com/blog/ransomware-response-a-step-by-step-playbook-for-it-ops-teams"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "November 2026 Patch Tuesday: The Exploited Bug Is Rated Moderate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.absolute.com/blog/november-2026-patch-tuesday-the-exploited-bug-is-rated-moderate"
   },
   {
    "date": "2026-11-03",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.absolute.com/blog/embedded-ai-control-drives-greater-resilience"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "September 2026 Patch Tuesday: The Only Exploited CVE Had No CVSS Score",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.absolute.com/blog/microsoft-patch-tuesday-september-2026-exploited-cve-no-cvss-score"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Introducing Lenovo ThinkShield TraceLock, Powered by Absolute Security",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.absolute.com/blog/lenovo-thinkshield-tracelock-absolute-security"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Vibe Coders Leave Behind Software Microsoft Patch Tuesday Misses",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.absolute.com/blog/vibe-coders-leave-behind-software-microsoft-patch-tuesday-misses"
   }
  ]
 }

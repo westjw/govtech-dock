@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "New Family Engagement Data Reveals The Most Effective Ways to Reach K-12 Families in the Age of Information Overload",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/press-release-family-engagement-report-2026"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "How to Build a Districtwide Communication Consistency Policy",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "An Absence Alert Isn\u2019t an Attendance Strategy",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Reaching Non-English-Speaking Families Means More Than Translating a Letter",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The Family Communication Compliance Checklist",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "How to Measure Family Engagement",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "How Sumter County Built One Attendance Process to Reduce Chronic Absenteeism",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/schoolstatus-g2-fall-2026-badges"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "SchoolStatus Attend Wins 2026 Tech & Learning Award of Excellence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/schoolstatus-wins-2026-tech-learning-award"
   }
  ],
  "profile": {

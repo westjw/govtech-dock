@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Redesigning Work: Are Business Leaders Asking the Wrong Question?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/redesigning-work-are-business-leaders-asking-the-wrong-question"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Updates",
    "url": "https://lightcast.io/resources/blog/tracking-ai-workforce-trends-october-2026-update"
-  },
-  {
-   "date": "2024-05-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "to Career Pathways for Employers: Benefits + Examples",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lightcast.io/resources/blog/career-pathways-for-employers"
   }
  ]
 }

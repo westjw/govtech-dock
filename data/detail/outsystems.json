@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "AI sovereignty for your agents: Where should they live?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/ai-sovereignty-self-hosted-runtime"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/mobile-app-development-capacitor-odc"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "near-h1",
-   "first_seen": "2026-11-05",
-   "headline": "The Agentic AI Era Is Here\u2014Enterprise Readiness Is Not, New OutSystems Research Finds",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/news/outsystems-research-agentic-ai-enterprise-readiness"
   }
  ]
 }

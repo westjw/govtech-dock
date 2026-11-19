@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "time",
+   "first_seen": "2026-11-18",
+   "headline": "GovPilot and SolarAPP+ Partner to Bring Instant Solar Permitting to Local Governments at No Cost",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govpilot.com/blog/govpilot-and-solarapp-partner-to-bring-instant-solar-permitting-to-local-governments-at-no-cost"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "time",
    "first_seen": "2026-11-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govpilot.com/blog/municipality-led-local-economic-development"
-  },
-  {
-   "date": "2023-08-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How to Build a 15-Minute City",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govpilot.com/blog/building-a-15-minute-city?&&&&&&&&&&&&"
   }
  ],
  "profile": {

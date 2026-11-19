@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "How to Use Elicit-Provide-Elicit in Motivational Interviewing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.relias.com/blog/elicit-provide-elicit-motivational-interviewing"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.relias.com/blog/can-ai-replace-human-expertise-in-healthcare-training"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Measuring the ROI of a Healthcare Training Partnership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.relias.com/blog/measuring-the-roi-of-a-healthcare-training-partnership"
   }
  ]
 }

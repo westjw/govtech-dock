@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Panopto introduces Panopto Develop, accelerating organizations\u2019 ability to deliver high-quality, AI-enabled visual learning at scale",
+   "kind": "product",
+   "kind_rule": "introduces",
+   "url": "https://www.panopto.com/news/panopto-develop-accelerating-organizations-ability-deliver-high-quality-ai-visual-learning-at-scale/"
+  },
+  {
    "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.panopto.com/blog/video-training-software-insurance/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Panopto and WeVideo partner to bring advanced video editing to Panopto libraries",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.panopto.com/news/panopto-and-wevideo-partner-to-bring-advanced-video-editing-to-panopto-libraries/"
   }
  ]
 }

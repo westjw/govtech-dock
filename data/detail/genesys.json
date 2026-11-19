@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "AI for CX Buying Criteria: Look Beyond the Demo | Genesys",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/looking-beyond-the-demo-with-new-ai-for-cx-buying-criteria"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/genesys-named-a-leader-in-the-2026-gartner-magic-quadranttm-for-ccaas-12-years-running"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Infosys BPM: CX innovation to business value | Genesys",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/transforming-experience-innovation-into-measurable-business-value"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "How Does Land Leasing Work?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/how-does-land-leasing-work"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.landapp.com/post/should-i-hire-a-land-broker-or-sell-land-myself"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Commodity Crop Index: LandApp's New Farmland Productivity Score",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/commodity-crop-index-landapp-s-new-farmland-productivity-score"
   }
  ],
  "profile": {

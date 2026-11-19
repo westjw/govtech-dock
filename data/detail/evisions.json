@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Read Student Success Is the Priority. Capacity Is the Challenge. Shared Data Context Can Help",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/student-success-capacity-shared-data-context/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.evisions.com/blog/heat-index-issue-125-acts-reporting/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Read the issue HEat Index, Issue 124 \u2013 AI-Exposed Majors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evisions.com/blog/heat-index-issue-124-ai-exposed-majors/"
   }
  ],
  "profile": {

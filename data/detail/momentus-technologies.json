@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-16",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "10 Essential Event Management Software Features",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/10-features-to-look-for-in-event-management-software"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/space-utilization-analytics"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "Event Management Accounting Software: What It Does and How to Choose",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/event-management-accounting-software"
   }
  ],
  "profile": {

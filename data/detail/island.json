@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "card-date",
+   "first_seen": "2026-11-18",
+   "headline": "Agentic attack frameworks go after the apps nobody is watching",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/blog/agentic-attack-frameworks-go-after-the-apps-nobody-is-watching"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "card-date",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/press/island-brings-the-enterprise-browser-to-ai-agents"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "What Retail Needs from an Enterprise Browser",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/blog/seasonal-surges-shared-kiosks-and-franchise-data-what-retail-needs-from-an-enterprise-browser"
   }
  ]
 }

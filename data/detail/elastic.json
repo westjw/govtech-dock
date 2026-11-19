@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Celebrating Microsoft Ignite with Azure region expansion in Toronto",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/elastic-cloud-serverless-now-available-azure-toronto"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "integration with",
    "url": "https://www.elastic.co/blog/elastic-security-integration-with-google-distributed-cloud"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Making data work across boundaries: The next challenge for policing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/making-data-work-across-boundaries-policing"
   }
  ]
 }

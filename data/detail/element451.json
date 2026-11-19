@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Element451 named to Deloitte's 2026 Technology Fast 500",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/element451-named-deloittes-2026-technology-fast-500"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.element451.com/blog/san-diego-miramar-college-ai-agents-student-support"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Beat the Game of Telephone Before AI Amplifies It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/beat-the-game-of-telephone-before-ai-amplifies-it"
   }
  ],
  "profile": {

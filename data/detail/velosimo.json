@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Chula Vista Adds Card Payments with Velosimo Connect\u2122 Integration Between Authorize.net and Accela",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.velosimo.com/newsroom/chula-vista-adds-card-payments-with-velosimo-connect-integration-between-authorize.net-and-accela-1"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Integration with",
    "url": "https://www.velosimo.com/newsroom/city-of-menlo-park-ca-broadens-government-systems-integration-with-velosimo-connect"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Town of Los Gatos, CA, Advances Financial and Document Integration with Velosimo Connect\u2122",
-   "kind": "product",
-   "kind_rule": "Integration with",
-   "url": "https://www.velosimo.com/newsroom/town-of-los-gatos-ca-advances-financial-and-document-integration-with-velosimo-connect"
   }
  ]
 }

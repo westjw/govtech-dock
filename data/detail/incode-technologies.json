@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Incode Extends Fraud Protection to AI Agents With Biometric Liveness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://incode.com/press/biometric-update-incode-know-your-agent-liveness/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://incode.com/blog/incode-know-your-business-kyb-now-lets-customers-choose-their-checks/"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Incode earns ISO/IEC 42001 certification for responsible AI management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://incode.com/blog/incode-earns-iso-iec-42001-certification-for-responsible-ai-management/"
   }
  ]
 }

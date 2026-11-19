@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "The Optimizely Incident Is a CMO Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/optimizely-incident-cmo-problem"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/future-ai-search-3-tips-getting-llms-recommend-your-brand"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "php2shell: What Teams Asked While the Fix Was Rolling Out",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/php2shell-what-teams-asked-while-fix-was-rolling-out"
   }
  ]
 }

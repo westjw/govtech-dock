@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "Now available: JNUC 2026 session videos!",
+   "kind": "product",
+   "kind_rule": "Now available",
+   "url": "https://www.jamf.com/blog/jnuc-session-videos-now-available/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "What happens when TCC gets bypassed? A look at Music.app race conditions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/music-app-race-conditions-tcc-bypass/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "Jamf wins mobile security solution of the year!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/jamf-wins-mobile-security-solution-of-the-year/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jamf.com/blog/automate-school-device-deployment/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "index-text",
-   "first_seen": "2026-10-27",
-   "headline": "Tech Partner Spotlight: Jamf + sync.blue\u00ae",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/tech-partner-spotlight-jamf-syncblue/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-22",
-   "headline": "What is identity governance and administration in education?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/identity-governance-administration-education/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "How Jamf and Teqtivity work together for end-to-end zero-touch device onboarding",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/zero-touch-device-onboarding-workflow-with-jamf/"
   }
  ]
 }

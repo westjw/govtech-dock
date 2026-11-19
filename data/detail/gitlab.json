@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "GitLab Transcend Hackathon: Meet the 'Life After Code' winners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/gitlab-transcend-hackathon-life-after-code/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/pillow-cve-find-and-fix-with-gitlab/"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "PHP2Shell: GitLab helps find and remediate critical PHP flaws",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/gitlab-helps-remediate-critical-php-flaws/"
   }
  ]
 }

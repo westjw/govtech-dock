@@ -1,8 +1,8 @@
 {
  "news": [
   {
-   "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date": "2026-11-12",
+   "date_source": "index-text",
    "first_seen": "2026-11-17",
    "headline": "What Anthropic Gets Right (and Wrong) About Robots in Recycling",
    "kind": "press",
@@ -28,15 +28,6 @@
    "url": "https://www.everestlabs.ai/news/everestlabs-ceo-paul-singh-on-bringing-agentic-ai-to-mrf-operations"
   },
   {
-   "date": "2026-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "How AI Helps MRFs Meet EPR Compliance and Recovery Targets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/blog/how-ai-helps-mrfs-meet-epr-compliance-and-recovery-targets"
-  },
-  {
    "date": "2026-10-30",
    "date_source": "index-text",
    "first_seen": "2026-10-31",
@@ -55,8 +46,53 @@
    "url": "https://www.everestlabs.ai/blog/why-2026-could-be-the-chatgpt-moment-for-the-industrial-world"
   },
   {
-   "date": "2026-10-20",
+   "date": "2026-10-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-03",
+   "headline": "How AI Helps MRFs Meet EPR Compliance and Recovery Targets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everestlabs.ai/blog/how-ai-helps-mrfs-meet-epr-compliance-and-recovery-targets"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-08",
+   "headline": "EPR demands push AI vision systems toward MRFs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everestlabs.ai/news/epr-demands-push-ai-vision-systems-toward-mrfs"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "index-text",
+   "first_seen": "2026-10-08",
+   "headline": "California Waste Solutions upgrades technology at California MRFs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everestlabs.ai/news/california-waste-solutions-upgrades-technology-at-california-mrfs"
+  },
+  {
+   "date": "2026-08-24",
    "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "EverestLabs Launches First-Ever Agentic AI Platform For Materials Processing, Recovery and Recycling Facilities",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://everestlabs.ai/news/everestlabs-launches-first-ever-agentic-ai-platform-for-materials-processing-recovery-and-recycling-facilities"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "EverestLabs adds AI agent to its MRF robotics offerings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everestlabs.ai/news/everestlabs-adds-ai-agent-to-its-mrf-robotics-offerings"
+  },
+  {
+   "date": "2026-05-25",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Downtime: The Silent Cost Draining Your MRF Revenue Every Single Day",
    "kind": "press",
@@ -64,49 +100,13 @@
    "url": "https://www.everestlabs.ai/blog/downtime-the-silent-cost-draining-your-mrf-revenue-every-single-day"
   },
   {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date": "2026-05-20",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "4 Things AI Can Do For Recycling Plants That You Might Not Know",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everestlabs.ai/blog/4-things-ai-can-do-for-recycling-plants-that-you-might-not-know"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Stepping Into the CEO Role at EverestLabs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/blog/stepping-into-the-ceo-role-at-everestlabs"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "EverestLabs 2025 In Review",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/blog/everestlabs-2025-in-review"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "RWM Wrapped: How AI is Optimizing Resource Recovery",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/blog/rwm-wrapped-how-ai-is-optimizing-resource-recovery"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Future of Material Recovery Starts with a Site Survey - A Free Survey",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/blog/the-future-of-material-recovery-starts-with-a-site-survey---a-free-survey"
   }
  ],
  "profile": {

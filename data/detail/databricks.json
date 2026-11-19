@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Introducing Unity Gateway Insights",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Introducing Genie Migrate for Serverless",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.databricks.com/blog/introducing-genie-migrate-serverless"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "What's new for Genie in Microsoft: Copilot Cowork and Chat, Microsoft Teams, and Excel.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/whats-new-genie-microsoft-copilot-cowork-and-chat-microsoft-teams-and-excel"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "How AUMOVIO centralized AI access with Databricks Unity Gateway",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/how-aumovio-centralized-ai-access-databricks-unity-gateway"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "How we raised Databricks cluster rate limits by 7.5\u00d7",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/how-we-raised-databricks-cluster-rate-limits-75"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -29,7 +74,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-17",
    "headline": "How packaged clean rooms bring RampID to your lakehouse",
    "kind": "press",
@@ -38,7 +83,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-17",
    "headline": "Advancing Catalog Interoperability with Unity Catalog and Google Cloud\u2019s Borderless Lakehouse",
    "kind": "press",
@@ -47,7 +92,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-17",
    "headline": "The new Azure Databricks on Azure Government is now in Beta",
    "kind": "press",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/built-object-storage-served-cache"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-16",
-   "headline": "Introducing the Databricks AI Index: The state of enterprise AI tokenomics",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.databricks.com/blog/introducing-databricks-ai-index-state-enterprise-ai-tokenomics"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "index-text",
-   "first_seen": "2026-11-16",
-   "headline": "Clean data was never enough: How IFS Copperleaf taught AI its business with Databricks Genie One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "index-text",
-   "first_seen": "2026-11-16",
-   "headline": "Build a real-time next-best-offer recommender using Databricks Feature Views",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/build-real-time-next-best-offer-recommender-using-databricks-feature-views"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "index-text",
-   "first_seen": "2026-11-16",
-   "headline": "Tabular foundation models on Databricks AI Runtime",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/tabular-foundation-models-databricks-ai-runtime"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-16",
-   "headline": "Teach Genie One your workflows: The ultimate guide for skills in Genie One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "PMWEB Achieves ISO/IEC 27001:2022 Certification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pmweb.com/news/pmweb-achieves-iso-27001-2022-certification"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Hires",
    "url": "https://pmweb.com/news/pmweb-strengthens-leadership-bench-with-strategic-executive-hires"
-  },
-  {
-   "date": "2025-12-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "PMWEB Achieves SOC 1 Type 2 and SOC 2 Type 1 Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pmweb.com/news/pmweb-achieves-soc-1-type-2-and-soc-2-type-1-compliance"
   }
  ],
  "profile": {

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "VertiGIS Launches VertiGIS Data Gateway, Connecting Trusted Data to Operational Outcomes",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.vertigis.com/news/vertigis-data-gateway-launch/"
+  },
+  {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "VertiGIS Updates to PHP Version 8.4.27",
    "kind": "product",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "VertiGIS Accelerates Enterprise GIS Modernization for the City of Houston",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Future-Ready Geospatial Data for Berlin: BIM and VertiGIS Lay the Foundation for the Next Generation of Digital Real Estate Management",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vertigis.com/de/news/vertigis-bringt-ki-in-vertigis-studio-und-vertigis-fm-schneller-einfacher-effizienter-arbeiten/"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "VertiGIS \u00fcbernimmt 1Spatial und erweitert Produktportfolio sowie globale Reichweite",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vertigis.com/de/news/vertigis-uebernimmt-1spatial-und-erweitert-produktportfolio-sowie-globale-reichweite/"
   }
  ]
 }

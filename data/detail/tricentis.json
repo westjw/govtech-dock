@@ -1,8 +1,71 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "What\u2019s new in Tricentis Agentic Test Creation: Keeping your team in control before, during, and after every test run",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/blog/qtest-agentic-test-creation-control"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "What governance looks like when AI writes your tests",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/blog/ai-governance-software-testing"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "QE leadership in the agentic era",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/resources/qe-leadership-in-the-agentic-era-transform2026"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Unlocking value in HEINEKEN\u2019s largest business transformation with AI-driven testing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/resources/heineken-agentic-qe-practice-transform2026"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Tricentis Highlights 2026 EMEA Customer Innovation Awards Winners at Transform London",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/news/emea-winners-2026-customer-innovation-awards"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Before the next surge: Shifting observability left for reliable public sector services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/blog/shift-left-testing-public-sector"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-18",
+   "headline": "Your APIs aren\u2019t fully tested if they\u2019re only functionally tested",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/blog/api-load-testing-gap"
+  },
+  {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "Agents are in production. Who\u2019s signing off on quality?",
    "kind": "press",
@@ -11,7 +74,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "SAP\u2019s Autonomous Enterprise runs on context. So should quality engineering.",
    "kind": "press",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tricentis.com/resources/the-limits-of-open-source-testing"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Rethinking quality engineering for agentic software development",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/rethinking-quality-engineering-for-agentic-software-development"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "How Tricentis helps you get more from Oracle, faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/get-more-from-oracle-faster"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "Smarter SAP testing: How to cut your ABAP regression scope without cutting coverage",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/better-sap-abap-testing"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-29",
-   "headline": "The PHP2Shell patch: What online retailers should do before Black Friday",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/blog/php2shell-patch-load-testing"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Tricentis and Carahsoft: Reducing risk in Oracle Fusion Cloud: Modern testing strategies for public sector organizations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/reducing-risk-in-oracle-fusion-public-sector"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "From testers to agentic quality engineers: Reskilling your team for the agentic era",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/from-testers-to-agentic-quality-engineers-transform2026"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "The TCoE Reimagined \u2014 How RWS governs quality at enterprise scale",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/how-resort-world-sentosa-governs-quality-transform2026"
   }
  ]
 }
