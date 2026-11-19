@@ -577,9 +577,14 @@ def _waiting() -> dict:
     for r in admin.read(board_proposals.FOUND.name, []):
         f = r.get("found") if isinstance(r, dict) else None
         if isinstance(f, dict) and r.get("id") not in ruled:
+            filed = r.get("filed") if isinstance(r.get("filed"), dict) else None
             out[r["id"]].append({"store": "Boards we found",
                                  "key": board_key(f.get("type"), f.get("ref")),
-                                 "board": show(f.get("type"), f.get("ref"))})
+                                 "board": show(f.get("type"), f.get("ref")),
+                                 # a row a door FILED (only board_proposals.file_found
+                                 # writes `filed`), with the doubt it filed it on
+                                 "filed": filed,
+                                 "why": str(r.get("identity_why") or "").strip()})
     for key, p in admin.read("agent_proposals.json", {}).items():
         if isinstance(p, dict) and key.startswith("board:") and p.get("status") == "pending":
             out[p.get("id") or key.split(":", 1)[1]].append({
@@ -937,6 +942,20 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         if r["key"] != key:
             doubts.append(f"a different board, {r['board']}, is already waiting in "
                           f"{r['store']} for this company")
+        elif r.get("filed"):
+            # A DOUBT THIS DOOR FILED IS THE OWNER'S UNTIL HE RULES. The same
+            # board found again used to be "the question already asked, which
+            # the two checks may now answer" - and for a row filed on a doubt
+            # the checks do not see, that answer overrules the doubt. JustFOIA
+            # was filed on two readers' doubt ("an MCCi brand") on 2026-11-19
+            # with both checks passing; the next plan, run on the sweep, had it
+            # WIRE. A row an older finder left, with no doubt recorded by a
+            # door, may still be answered by the checks.
+            f = r["filed"]
+            doubts.append(f"this board is already in the owner's queue ({r['store']}), filed "
+                          f"{f.get('on') or '?'} by {f.get('by')} with its doubt: "
+                          f"\"{(r.get('why') or 'none recorded')[:240]}\"; a doubt filed "
+                          f"there is his to settle")
     reviewed = str((ctx.get("reviewed") or {}).get(cid) or "").strip()
     if reviewed:
         # A PLAN IS READ BEFORE IT IS WRITTEN, by readers who try to show each

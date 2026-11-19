@@ -33387,6 +33387,45 @@ def check_a_readers_doubt_holds_the_board() -> int:
             errors += fail(f"the doubted board was wired, or did not reach the owner's "
                            f"queue with the reader's words and no address: "
                            f"{str(row.get('identity_why'))[:200]!r}; {text[-160:]}")
+            return errors
+
+        # --- the NEXT plan, with no --doubts: the doubt is in his queue now ----
+        # The sweep after the first batch found JustFOIA's board again, and
+        # with both checks passing and the same board waiting, the door used
+        # to wire it. A row a door filed on a doubt stays the owner's; a row
+        # an older finder left with no door's doubt on it may still be
+        # answered by the two checks.
+        import board_proposals as bp2
+        queue = json.loads((box.tmp / bp2.FOUND.name).read_text())
+        queue.append({"id": "legacy-co", "name": "Legacy Co", "was": "html",
+                      "found": {"type": "greenhouse", "ref": "legacyco"},
+                      "saw": "boards.greenhouse.io/legacyco", "times": 1,
+                      "verified": "2 posting(s) readable", "board_calls_itself": None,
+                      "identity": "unknown", "identity_why": "no identity probe for it then",
+                      "postings": 2, "titles": []})
+        (box.tmp / bp2.FOUND.name).write_text(json.dumps(queue, indent=1))
+        cs = json.loads((box.tmp / "companies.json").read_text())
+        cs.append(co("legacy-co", "Legacy Co"))
+        (box.tmp / "companies.json").write_text(json.dumps(cs, indent=1))
+        box.boards["greenhouse/legacyco"] = (2, ["Legacy Co"])
+        again = dict(found, **{"legacy-co": _wb_one("legacy-co", "greenhouse", "legacyco",
+                                                    element="iframe")})
+        code, text, wl2, rows2 = box.plan(_wb_results(again), name="worklist-again.json")
+        d2 = (rows2 or {}).get("doubted-co") or {}
+        if code != 0 or d2.get("action") != "HOLD" \
+                or "already in the owner's queue" not in _wb_words(d2) \
+                or "a Bigger Group brand" not in _wb_words(d2):
+            errors += fail(f"the next plan, with no --doubts, planned the doubted board "
+                           f"{d2.get('action')} saying {_wb_words(d2)[:200]!r}: a board a door "
+                           f"filed on a doubt is the owner's until he rules")
+        if ((rows2 or {}).get("legacy-co") or {}).get("action") != "WIRE":
+            errors += fail(f"a board an older finder left in the queue, with no door's doubt "
+                           f"on it, is no longer answered by the two checks: "
+                           f"{((rows2 or {}).get('legacy-co') or {}).get('action')}")
+        code, text, look2 = box.look(wl2)
+        if "NOT FILED 1" not in text or "already in the list" not in text:
+            errors += fail(f"the look does not say the doubted board is already in the list "
+                           f"and files nothing twice: {text[-240:]}")
     return errors
 
 

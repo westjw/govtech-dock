@@ -2658,6 +2658,12 @@ round.
   not hold, or is not that shape, stops the plan before its first read. The
   first batch: JustFOIA's own board, whose ads open "JustFOIA, an MCCi
   brand" - whether a parent's brand is wired on its own board is his call.
+  **And it stays his.** A board a door FILED in his queue (the row carries
+  `filed`) is held by every later plan, with the doubt it was filed on,
+  until he rules: the same board found again used to be "the question
+  already asked, which the checks may now answer", and the sweep's plan had
+  JustFOIA as WIRE. A row an older finder left, with no door's doubt on it,
+  may still be answered by the two checks.
 - **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
   not read (kept with its error, not retried); a site that named only a
   reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
