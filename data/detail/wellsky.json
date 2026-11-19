@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Medicaid community engagement requirements: Protecting continuity of care in behavioral health",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/medicaid-community-engagement-requirements-protecting-continuity-of-care-in-behavioral-health/"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "time",
    "first_seen": "2026-10-13",
@@ -35,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/what-is-outsourced-revenue-cycle-management-for-dme/"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "time",
+   "first_seen": "2026-10-13",
+   "headline": "Competitive bidding and the steps to submit your bid",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/resources/on-demand-webinars/"
   },
   {
    "date": "2026-11-06",
@@ -73,15 +91,6 @@
    "url": "https://wellsky.com/blog/340b-webinar-recap-what-covered-entities-need-to-know/"
   },
   {
-   "date": "2026-10-23",
-   "date_source": "time",
-   "first_seen": "2026-10-13",
-   "headline": "Earning it: Why healthcare AI success is built through delivery, not demos.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/resources/on-demand-webinars/"
-  },
-  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/how-can-home-health-certification-help-you-deepen-your-expertise/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "Which diagnoses support M1028 responses for PVD, PAD, and diabetes?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/which-diagnoses-support-m1028-responses-for-pvd-pad-and-diabetes/"
   }
  ]
 }

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "What\u2019s changing with Medicaid in Ohio?",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "What\u2019s changing with Medicaid in Louisiana?",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "What\u2019s changing with Medicaid in Illinois?",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "What\u2019s changing with Medicaid in Arizona?",
    "kind": "press",
@@ -38,21 +38,12 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-14",
    "headline": "What\u2019s changing with Medicaid in Colorado?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.propel.app/blog/what-is-changing-with-medicaid-in-colorado/"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "What\u2019s changing with Medicaid (Medical Assistance) in Pennsylvania?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.propel.app/blog/what-is-changing-with-medicaid-in-pennsylvania/"
   },
   {
    "date": "2026-11-09",
@@ -65,16 +56,16 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-10-16",
-   "headline": "What\u2019s changing with Medi-Cal (Medicaid) in California?",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-03",
+   "headline": "What\u2019s changing with Medicaid (Medical Assistance) in Pennsylvania?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.propel.app/blog/what-is-changing-with-medicaid-in-california/"
+   "url": "https://www.propel.app/blog/what-is-changing-with-medicaid-in-pennsylvania/"
   },
   {
-   "date": "2026-10-24",
-   "date_source": "index-text",
+   "date": "2026-10-21",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "Propel and GiveDirectly $100 cash support FAQs: How it works, who\u2019s eligible, and more",
    "kind": "press",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.propel.app/blog/is-it-cheaper-to-make-your-own-dog-food/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-16",
+   "headline": "What\u2019s changing with Medicaid in Michigan?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/what-is-changing-with-medicaid-in-michigan/"
   }
  ],
  "profile": {

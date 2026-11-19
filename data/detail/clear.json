@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "When Is the Best Time to Buy Plane Tickets?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/best-time-to-buy-plane-tickets"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "CLEAR and Disney\u2019s \u201cHexed\u201d Team Up to Help Families Enjoy the Magic of Stress-Free Holiday Travel",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/clear-disney-hexed-family-travel"
+  },
+  {
    "date": "2026-11-16",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "Cheapest Days to Fly During the Holidays in 2026",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "Introducing the Updated CLEAR App",
    "kind": "product",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "Great Holiday Travel Does Exist with CLEAR",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "CLEAR Travel Tips: JFK Public Transit",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "CLEAR Airport Guides: LaGuardia Airport",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "CLEAR Airport Guides: Newark Liberty International Airport",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-11-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-07",
    "headline": "CLEAR Airport Guide: Louis Armstrong New Orleans International Airport",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "CLEAR Airport Guide: Dallas Fort-Worth International Airport",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/clear-travel-tips-how-to-pack-for-wedding-travel"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "card-date",
-   "first_seen": "2026-11-12",
-   "headline": "CLEAR Travel Tips: How to Pack for Wedding Travel",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/how-to-pack-for-wedding-travel"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "card-date",
-   "first_seen": "2026-10-27",
-   "headline": "Worth the Trip: What\u2019s the One Meal You\u2019d Fly Across the World For?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/worth-the-trip-where-would-you-travel-just-for-one-meal"
   }
  ],
  "profile": {

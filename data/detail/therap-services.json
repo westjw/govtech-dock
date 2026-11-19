@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Charting the LifeCourse: What It Is and How to Put It Into Practice in Daily Documentation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/charting-the-lifecourse-what-it-is-and-how-to-put-it-into-practice-in-daily-documentation/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.therapservices.net/blog/person-centered-planning-what-it-actually-means-for-your-team/"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Electronic Visit Verification (EVV) Explained: What IDD and HCBS Providers Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/electronic-visit-verification-evv-explained-what-idd-and-hcbs-providers-need-to-know/"
   }
  ]
 }

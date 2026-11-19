@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Building Resilience into the Way Organizations Operate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://corporater.com/blog/building-resilience-into-the-way-organizations-operate/"
+  },
+  {
    "date": "2026-08-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How GPRC Helps Organizations Turn Governance into a Strategic Advantage",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-06-25",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AI in Governance and Performance Management: From Hype to Practical...",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-03-25",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "One view, One platform: Integrating GRC and Performance",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-02-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "GPRC for Sustainability & ESG",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-01-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Strategic Edge of Context in Governance, Performance, Risk and...",
    "kind": "press",
@@ -47,16 +56,16 @@
   },
   {
    "date": "2026-01-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "GPRC for Operational Risk in Financial Services",
+   "headline": "Guest Blog GPRC for Operational Risk in Financial Services Michael Rasmussen January 21, 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://corporater.com/blog/gprc-for-operational-risk-in-financial-services/"
   },
   {
    "date": "2025-12-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Modern G(P)RC in Action: Continuity and Organizational Resilience Remon Houweling December 26, 2025",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://corporater.com/resources/dora-and-operational-resilience-mapping/"
-  },
-  {
-   "date": "2022-07-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "5 Tips on Creating a Digital Twin for Your Organization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://corporater.com/blog/5-tips-on-creating-a-digital-twin-for-your-organization/?utm_source=IG_DTO&utm_medium=IG_DTO&cmc=IG_DTO"
   }
  ],
  "profile": {

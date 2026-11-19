@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Confidence on Every Call: How Clearspan and Intrado Close the E9-1-1 Location Gap for Remote Users",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.intrado.com/blog/e911-for-remote-and-webrtc-users-clearspan-ping-with-intrado-intrado"
+  },
+  {
    "date": "2026-10-31",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.intrado.com/blog/from-accident-to-9-1-1-in-seconds-intrado-debuts-aacn-at-auto-tech-showcase-2026"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Intrado ERS is Now Available for Cisco Webex Calling Multi-Tenant",
-   "kind": "product",
-   "kind_rule": "Now Available",
-   "url": "https://www.intrado.com/resources/intrado-ers-is-now-available-for-cisco-webex-calling-multi-tenant-product-brief"
   }
  ],
  "profile": {
