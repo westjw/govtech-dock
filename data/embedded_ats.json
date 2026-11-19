@@ -1378,5 +1378,417 @@
   "identity": "unknown",
   "identity_why": "no identity probe written for paylocity",
   "postings": 0
+ },
+ {
+  "id": "assetworks",
+  "name": "AssetWorks",
+  "was": "html",
+  "found": {
+   "type": "workday",
+   "ref": [
+    "volarisgroup",
+    "wd3",
+    "AssetWorks"
+   ]
+  },
+  "saw": "https://volarisgroup.wd3.myworkdayjobs.com/AssetWorks",
+  "times": 2,
+  "verified": "2 posting(s) readable - the Workday reader asks only two sales searches, and the whole board holds 5",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for workday), so nothing on it says it is \"AssetWorks\"; https://www.assetworks.com/careers/ links to the board (seen 2 times)",
+  "postings": 2,
+  "titles": [
+   "Business Development (Data Analysis) Intern",
+   "Customer Account Manager"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:08-05:00",
+   "page": "https://www.assetworks.com/careers/"
+  }
+ },
+ {
+  "id": "baron-weather",
+  "name": "Baron Weather",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "b25c58c4-606e-4313-bd39-62b15e2dbac6"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=b25c58c4-606e-4313-bd39-62b15e2dbac6&ccId=19000101_000001&jobId=596138&lang=en_",
+  "times": 5,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Baron Weather\"; https://baronweather.com/careers links to the board (seen 5 times)",
+  "postings": 2,
+  "titles": [
+   "Client Success Meteorologist",
+   "Project Manager"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:09-05:00",
+   "page": "https://baronweather.com/careers"
+  }
+ },
+ {
+  "id": "chevin-fleet-solutions",
+  "name": "Chevin Fleet Solutions",
+  "was": "html",
+  "found": {
+   "type": "workday",
+   "ref": [
+    "volarisgroup",
+    "wd3",
+    "chevinfleet"
+   ]
+  },
+  "saw": "https://volarisgroup.wd3.myworkdayjobs.com/chevinfleet",
+  "times": 1,
+  "verified": "0 posting(s) readable - the Workday reader asks only two sales searches, and the whole board holds 0",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for workday), so nothing on it says it is \"Chevin Fleet Solutions\"; the board read no postings, so nothing shows it is the board they hire through today; https://www.chevinfleet.com/careers/ links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:11-05:00",
+   "page": "https://www.chevinfleet.com/careers/"
+  }
+ },
+ {
+  "id": "deckard-technologies",
+  "name": "Deckard Technologies",
+  "was": "html",
+  "found": {
+   "type": "bamboohr",
+   "ref": "deckard"
+  },
+  "saw": "https://deckard.bamboohr.com/js/embed.js",
+  "times": 2,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": "Deckard",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Deckard\", which is not \"Deckard Technologies\": one name only contains the other, and a name inside another name is never taken for the same company; https://deckard.com/careers loads its jobs from the board (seen 2 times)",
+  "postings": 2,
+  "titles": [
+   "Sales Director \u2013 Texas & Colorado",
+   "RevOps Analyst \u2013 San Diego"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:12-05:00",
+   "page": "https://deckard.com/careers"
+  }
+ },
+ {
+  "id": "fmx",
+  "name": "FMX",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "fmx"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/499231?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "11 posting(s) readable",
+  "board_calls_itself": "Facilities Management Express",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Facilities Management Express\", which is not \"FMX\": a different name, which is what a parent's, an operating entity's or another company's board looks like; https://www.gofmx.com/careers/ loads its jobs from the board",
+  "postings": 11,
+  "titles": [
+   "Account Executive",
+   "Account Executive, K-12 Sales",
+   "Account Manager",
+   "AR and Revenue Specialist",
+   "Customer Success Manager",
+   "Director of Product Marketing",
+   "Enterprise Customer Outcome Manager",
+   "Facilities Specialist"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:04-05:00",
+   "page": "https://www.gofmx.com/careers/"
+  }
+ },
+ {
+  "id": "justfoia",
+  "name": "JustFOIA",
+  "was": "html",
+  "found": {
+   "type": "rippling",
+   "ref": "justfoia"
+  },
+  "saw": "https://ats.rippling.com/embed/justfoia/jobs?s=https://www.justfoia.com/careers/",
+  "times": 1,
+  "verified": "3 posting(s) readable; 2 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "JustFOIA",
+  "identity": "unknown",
+  "identity_why": "the board names \"JustFOIA\", which is this company, but a reader checking this plan doubted it: two independent readers: the board is JustFOIA's own by name and content, and its ads open 'JustFOIA, an MCCi brand' and link only to mccinnovations.com, while the careers page on justfoia.com sends general applicants to MCCi's form. MCCi is on file as a separate company. Whether a parent's brand is wired on its own board is the owner's call; https://www.justfoia.com/careers/ embeds the board",
+  "postings": 2,
+  "titles": [
+   "Account Executive, Education East",
+   "Sales Development Representative"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:23-05:00",
+   "page": "https://www.justfoia.com/careers/"
+  }
+ },
+ {
+  "id": "keefe-group",
+  "name": "Keefe Group",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.keefegroup.com"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 227,
+  "verified": "280 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "\"Keefe Group\" does not count as the board naming its employer (jibe hiring_organization on the first 50 of 280 postings; the rest were not read, so these may not be every name the board states): only a name the board states for itself, over the whole of it, says anything about \"Keefe Group\" - never one read off a slug, an address, a host or the first page of a longer board; their site points to more than one board: jibe/careers.keefegroup.com (seen 465 times) and icims/careers-keefe (seen 24 times) and icims/corporatecareers-tkcholdings (seen 14 times) and icims/internal-tkcholdings (seen 6 times); their own site also names other:textrecruit.com and other:tkcholdings.com and other:trinityservicesgroup.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.keefegroup.com/home-keefe-group/jobs loads the board (seen 227 times)",
+  "postings": 280,
+  "titles": [
+   "Food Service Project Manager",
+   "Food Service Director",
+   "Food Service General Manager",
+   "Food Service Worker",
+   "Commissary Operations Team Member",
+   "Assistant Food Service Director",
+   "Assistant Food Service Director",
+   "Dishwasher"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:26-05:00",
+   "page": "https://careers.keefegroup.com/home-keefe-group/jobs"
+  }
+ },
+ {
+  "id": "netsmart",
+  "name": "Netsmart",
+  "was": "html",
+  "found": {
+   "type": "workday",
+   "ref": [
+    "ntst",
+    "wd1",
+    "Careers"
+   ]
+  },
+  "saw": "https://ntst.wd1.myworkdayjobs.com/Careers",
+  "times": 5,
+  "verified": "25 posting(s) readable - the Workday reader asks only two sales searches, and the whole board holds 68",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for workday), so nothing on it says it is \"Netsmart\"; https://www.ntst.com/company/careers-and-culture links to the board (seen 5 times)",
+  "postings": 25,
+  "titles": [
+   "Executive Leader, GM-Revenue Cycle Management (Onsite) Overland Park, KS",
+   "Strategic Client Executive, Revenue Cycle(Onsite) Overland Park, KS",
+   "Revenue Cycle Management (RCM) Regional Sales Advisory Executive \u2013 West",
+   "Director, Marketing HS-(Onsite) Overland Park, KS",
+   "Team Lead & Events Manager",
+   "Program Coordinator",
+   "Director, Engineering-(Onsite) Overland Park, KS",
+   "Vice President, Engineering \u2014 Cloud, DevOps & AI Modernization (Onsite) Overland Park, KS"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:29-05:00",
+   "page": "https://www.ntst.com/company/careers-and-culture"
+  }
+ },
+ {
+  "id": "pantheon",
+  "name": "Pantheon",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "pantheon"
+  },
+  "saw": "https://boards.greenhouse.io/embed/job_board/js?for=pantheon",
+  "times": 1,
+  "verified": "9 posting(s) readable",
+  "board_calls_itself": "Pantheon Systems, Inc",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Pantheon Systems, Inc\", which is not \"Pantheon\": one name only contains the other, and a name inside another name is never taken for the same company; https://pantheon.io/about/careers loads the board",
+  "postings": 9,
+  "titles": [
+   "Enterprise Account Executive",
+   "HR Business Partner",
+   "Principal Software Engineer, Collaborative Web Platform",
+   "Principal Software Engineer, Collaborative Web Platform",
+   "Sales Engineer",
+   "Sales Engineer",
+   "Senior Engineering Manager, Customer Runtimes",
+   "Senior IT Support Engineer"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:31-05:00",
+   "page": "https://pantheon.io/about/careers"
+  }
+ },
+ {
+  "id": "purvis-systems",
+  "name": "PURVIS Systems",
+  "was": "html",
+  "found": {
+   "type": "lever",
+   "ref": "purvis"
+  },
+  "saw": "https://api.lever.co/v0/postings/purvis?group=team&mode=json",
+  "times": 1,
+  "verified": "8 posting(s) readable",
+  "board_calls_itself": "PURVIS",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"PURVIS\", which is not \"PURVIS Systems\" or any other name on file for them: one name only contains the other, and a name inside another name is never taken for the same company; https://www.purvis.com/join-our-team/ loads its jobs from the board",
+  "postings": 8,
+  "titles": [
+   "Integration Specialist (202611)",
+   "Logistician (202611A)",
+   "Mechanical Engineer (202611)",
+   "Oracle Cloud Architect (202611)",
+   "Software Engineer (202611)",
+   "Support Technician (202610)",
+   "Technical Project Coordinator (202611)",
+   "Technical Project Manager (202611)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:34-05:00",
+   "page": "https://www.purvis.com/join-our-team/"
+  }
+ },
+ {
+  "id": "rekor-systems",
+  "name": "Rekor Systems",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "86e68749-0311-4187-875b-9884bbc57a8d"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=86e68749-0311-4187-875b-9884bbc57a8d&ccId=19000101_000001&lang=en_US",
+  "times": 9,
+  "verified": "4 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Rekor Systems\"; their own site also names comeet, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.rekor.ai/careers links to the board (seen 9 times)",
+  "postings": 4,
+  "titles": [
+   "Senior Accountant",
+   "Traffic Data Collection Technician",
+   "Sales Account Manager",
+   "Construction Technician"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:35-05:00",
+   "page": "https://www.rekor.ai/careers"
+  }
+ },
+ {
+  "id": "the-sidwell-company",
+  "name": "The Sidwell Company",
+  "was": "html",
+  "found": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "1"
+   ]
+  },
+  "saw": "https://harriscomputer.wd3.myworkdayjobs.com/1/job/Remote---Virginia/Account-Executive-US---Remote_R0032593",
+  "times": 2,
+  "verified": "98 posting(s) readable - the Workday reader asks only two sales searches, and the whole board holds 217",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for workday), so nothing on it says it is \"The Sidwell Company\"; workday/harriscomputer/wd3/1 is already on file as the board of Harris; https://www.sidwellco.com/company/about-us/careers/ links to the board (seen 2 times)",
+  "postings": 98,
+  "titles": [
+   "Enterprise Account Executive",
+   "(Remote) Sr Account Executive",
+   "(Remote) Senior Account Executive",
+   "Director, Health Plans (Account Executive)",
+   "Vice-pr\u00e9sident(e) ex\u00e9cutif(ve) (VPE)",
+   "Account Manager",
+   "Sales Executive",
+   "Software Sales Executive (Gulf Region)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:47-05:00",
+   "page": "https://www.sidwellco.com/company/about-us/careers/"
+  }
+ },
+ {
+  "id": "wex",
+  "name": "WEX",
+  "was": "html",
+  "found": {
+   "type": "workday",
+   "ref": [
+    "wexinc",
+    "wd5",
+    "WEXInc"
+   ]
+  },
+  "saw": "https://wexinc.wd5.myworkdayjobs.com/WEXInc/job/Portland-ME/Site-Reliability-Engineer-2_R22943/apply",
+  "times": 10,
+  "verified": "73 posting(s) readable - the Workday reader asks only two sales searches, and the whole board holds 92",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for workday), so nothing on it says it is \"WEX\"; their own site also names phenom, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.wexinc.com/us/en/search-results loads the board (seen 10 times)",
+  "postings": 73,
+  "titles": [
+   "Account Executive",
+   "Sr. Sales Account Executive",
+   "Digital Customer Success Manager",
+   "Sr. Partner Solutions Manager",
+   "Sr. Pricing Analyst",
+   "Sr. Pricing Operations Analyst",
+   "Manager, Client Services (Benefits Administration Outsourcing)",
+   "Administrative Assistant 3"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T00:27:07-05:00",
+   "read_at": "2026-11-19T00:26:57-05:00",
+   "page": "https://careers.wexinc.com/us/en/search-results"
+  }
  }
 ]

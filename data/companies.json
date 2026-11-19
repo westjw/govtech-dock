@@ -24442,8 +24442,8 @@
     "category": "Finance & ERP",
     "description": "Beacon and qPublic.net public-access GIS/property portals for county assessors - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, Iowa State Association of Counties 2026, NRPA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.schneidergis.com/careers"
+      "type": "lever",
+      "ref": "schneidergis"
     },
     "hiring": {
       "status": "Unknown",
@@ -24561,7 +24561,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: schneidergis.com/about/careers loads its jobs from the board; the board names \"Schneider Geospatial\"; 5 postings read"
   },
   {
     "id": "aclarian",
@@ -29593,8 +29594,8 @@
     "category": "Operations & SIS",
     "description": "Etrieve document management, e-forms, and workflow for education and local gov - exhibited at CoSN 2026, EDUCAUSE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://softdocs.com/careers"
+      "type": "lever",
+      "ref": "softdocs"
     },
     "hiring": {
       "status": "Unknown",
@@ -29714,7 +29715,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: softdocs.com/careers loads its jobs from the board; the board names \"Softdocs\"; 4 postings read"
   },
   {
     "id": "rollkall",
@@ -42518,8 +42520,8 @@
     "category": "Police",
     "description": "Security Center: VMS, access control, and AutoVu ALPR for cities and enterprises - exhibited at AAAE 2027, APTA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.genetec.com/careers"
+      "type": "workable",
+      "ref": "genetec-inc"
     },
     "hiring": {
       "status": "Unknown",
@@ -42554,7 +42556,8 @@
       }
     ],
     "competitors_checked_on": "2026-09-02",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: genetec.com/careers links to the board (seen 3 times); the board names \"Genetec\"; 178 postings read"
   },
   {
     "id": "milestone-systems",
@@ -45981,8 +45984,8 @@
     "category": "Police",
     "description": "Training LMS, scheduling, and readiness software (TargetSolutions, Guardian Tracking) - exhibited at IAFC FRI 2026, APCO 2026, Illinois Chapter of APCO 2026, FDIC International 2026, FDIC International 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.vectorsolutions.com/about-us/careers/"
+      "type": "ashby",
+      "ref": "VectorSolutions"
     },
     "hiring": {
       "status": "Unknown",
@@ -46087,7 +46090,8 @@
       "by": "agent:profile-police-2026-09-03",
       "ruled_by": "agent:review-police-2026-09-03",
       "ruled_on": "2026-09-03"
-    }
+    },
+    "ats_note": "wired 2026-11-19: vectorsolutions.com/about-us/careers links to the board (seen 2 times); the board names \"Vector Solutions\"; 25 postings read"
   },
   {
     "id": "benchmark-analytics",
@@ -70863,8 +70867,8 @@
     "category": "Suppliers & Services",
     "description": "Planning, budgeting and forecasting software - exhibited at ICMA 2025, NACUBO 2026, GFOA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.anaplan.com/careers"
+      "type": "greenhouse",
+      "ref": "anaplan"
     },
     "hiring": {
       "status": "Sales (non-AE)",
@@ -70983,7 +70987,8 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "ats_note": "wired 2026-11-19: anaplan.com/careers loads its jobs from the board; the board names \"Anaplan\"; 128 postings read"
   },
   {
     "id": "andrews-technology",
@@ -165044,8 +165049,8 @@
     "category": "Permitting & Licensing",
     "description": "AI planning and building code assessment tools sold to councils and cities - exhibited at ICMA 2026, Smart Cities Connect 2026, ICC 2026, APA California Chapter 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.archistar.ai/careers/"
+      "type": "workable",
+      "ref": "archistar"
     },
     "hiring": {
       "status": "Unknown",
@@ -165196,7 +165201,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: archistar.ai/careers loads its jobs from the board; the board names \"Archistar\"; 7 postings read"
   },
   {
     "id": "idox-group",
@@ -166206,8 +166212,8 @@
     "category": "Demand-Response & AV",
     "description": "On-demand electric shuttle programs operated for municipalities and agencies",
     "ats": {
-      "type": "html",
-      "ref": "https://ridefreebee.com/jobs"
+      "type": "jazzhr",
+      "ref": "freebee"
     },
     "hiring": {
       "status": "Unknown",
@@ -166232,7 +166238,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: ridefreebee.com/jobs loads the board; the board names \"Freebee\"; 45 postings read"
   },
   {
     "id": "door2door",
@@ -172387,8 +172394,8 @@
     "category": "Strategy & Performance",
     "description": "Daily satellite imagery and analytics sold to government agencies - exhibited at NSGIC 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.planet.com/company/careers/"
+      "type": "greenhouse",
+      "ref": "planetlabs"
     },
     "hiring": {
       "status": "Unknown",
@@ -172513,7 +172520,9 @@
     "competitors_none_found": false,
     "also_known_as": [
       "Planet"
-    ]
+    ],
+    "ats_note": "wired 2026-11-19: planet.com/company/careers links to the board; the board names \"Planet\"; 112 postings read",
+    "board_owner": "Planet"
   },
   {
     "id": "maxar-intelligence",
@@ -177661,8 +177670,8 @@
     "category": "Emergency Mgmt",
     "description": "Climate and flood risk analytics for state, local and federal agencies",
     "ats": {
-      "type": "html",
-      "ref": "https://www.jupiterintel.com/careers"
+      "type": "lever",
+      "ref": "jupiterintel"
     },
     "hiring": {
       "status": "Unknown",
@@ -177768,7 +177777,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: jupiterintel.com/careers loads its jobs from the board; the board names \"Jupiter Intelligence, Inc.\"; 1 posting read",
+    "board_owner": "Jupiter Intelligence, Inc."
   },
   {
     "id": "salamander-technologies",
@@ -201392,8 +201403,8 @@
     "category": "IT & Administration",
     "description": "AI-native CRM and Bolt AI agents for higher education admissions, marketing, student success, and continuing education teams - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://element451.com/careers"
+      "type": "ashby",
+      "ref": "element451"
     },
     "hiring": {
       "status": "Unknown",
@@ -201519,7 +201530,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: element451.com loads the board; the board names \"Element451\"; 5 postings read"
   },
   {
     "id": "gravyty",
@@ -220225,8 +220237,8 @@
     "category": "Operations & SIS",
     "description": "AI service desk and service operations platform unifying IT, facilities, HR and transportation requests for K-12 districts - exhibited at CoSN 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.onflo.com/about/careers"
+      "type": "rippling",
+      "ref": "onflo"
     },
     "hiring": {
       "status": "Yes",
@@ -220347,7 +220359,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: onflo.com/about/careers embeds the board; the board names \"Onflo\"; 3 postings read"
   },
   {
     "id": "scrible",
