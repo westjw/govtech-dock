@@ -23,22 +23,43 @@ sector vocabulary anywhere in it, so that test would flag hundreds of correct
 boards and teach whoever reads the report to ignore it. A check that cries wolf
 is worse than no check.
 
-So this asks the boards to identify THEMSELVES. Most ATS APIs state the
-employer's own name somewhere in the response - greenhouse puts company_name on
-every job, ashby names the board, lever and workable carry the hosted URL - and
-that name is written by the employer rather than inferred by us. Comparing it
-to what we have on file is a direct identity claim rather than a guess.
+So this asks the boards to identify THEMSELVES. Nearly every board states the
+employer's own name somewhere - greenhouse puts company_name on every job,
+workable names the account, ashby and lever name the organisation on the
+board's own hosted page - and that name is written by the employer rather than
+inferred by us. Comparing it to what we have on file is a direct identity
+claim rather than a guess.
 
-Where an ATS states no name, this falls back to the domain the apply links
+Where a board states no name, this falls back to the domain the apply links
 point at, which is weaker and is reported as weaker. Anything it cannot judge
 comes back as "unknown", never as "fine": a check that cannot see is not a
 check that passed.
+
+TWO JUDGES, AND ONLY ONE OF THEM MAY WIRE A BOARD UNATTENDED (2026-11-18)
+
+judge() is the forgiving one. It tells a person at the desk whether a board
+looks like theirs, so it lets "Tyler" stand for "Tyler Technologies" - and,
+because its test is a substring with no floor, it lets "Go" stand for
+"Google" too. A person is looking, so that is survivable, and three doors
+and a finder depend on it staying as it is.
+
+proven() is the strict one. The owner ruled (2026-11-18) that a found board
+may be wired without him only when two separate checks agree: the company's
+own website points to the board, and THE BOARD ITSELF NAMES THAT COMPANY AS
+THE EMPLOYER. proven() is that second check, in code. It passes only a name
+the board stated in its own words (board_says' "stated"), only when EVERY
+name the board states is the company's, and only on equality once case,
+punctuation, a legal form and a trailing country are set aside. Never a
+substring, a prefix, a slug or a host. A parent's name, an operating entity's
+name, a board that names nobody: each is a refusal that says why, and a
+refusal is the owner's queue, not a wiring.
 
   python scripts/verify_boards.py [--limit 40] [--type greenhouse] [--all]
 """
 from __future__ import annotations
 
 import argparse
+import html as html_lib
 import json
 import pathlib
 import re
@@ -78,19 +99,665 @@ def host_of(url: str) -> str:
         return ""
 
 
+# ------------------------------------------------------------ the strict name
+#
+# FOR proven() ONLY. NOISE above is judge()'s list and is deliberately wide:
+# it drops "Technologies", "Systems", "Group", so a person at the desk is not
+# bothered by "Tyler" against "Tyler Technologies". That width is exactly what
+# an unattended wiring cannot have. "Xplor" is not "Xplor Recreation" - it is
+# the parent, and its board carries the parent's 22 requisitions. "Zonar" is
+# not provably "Zonar Systems". So the strict list holds only what a REGISTERED
+# name adds to a brand and nothing a second company could be told apart by.
+LEGAL_FORMS = {"inc", "incorporated", "llc", "ltd", "limited", "corp",
+               "corporation", "co", "company", "gmbh", "plc", "lp", "llp",
+               "pty", "sa", "ag", "bv"}
+
+# One country tag, at the very end of a name: a board that calls itself
+# "Acusensus United States" is Acusensus, and "IDEMIA North America" is
+# IDEMIA. Each tag keeps what it MEANS, because two names that both carry a
+# tag and carry different ones ("Acme US", "Acme Canada") are two offices
+# with two boards, not one name spelled twice. Longest first, so "United
+# States" is read whole.
+GEOGRAPHY = ((("united", "states"), "US"), (("north", "america"), "North America"),
+             (("us",), "US"), (("usa",), "US"), (("americas",), "Americas"),
+             (("canada",), "Canada"), (("uk",), "UK"))
+
+
+def strict(name: str) -> tuple[str, str | None]:
+    """A name with only its furniture removed: (the name, its country tag).
+
+    Removed, and nothing else: case; punctuation and spacing; a leading
+    "the"; the legal form at the END of the name (any number of them, so
+    "Pty Ltd" and "Co., Ltd." both go); and one country tag at the end,
+    which is handed back rather than thrown away.
+
+    AT THE END ONLY, and that is the point of doing it by words rather than
+    by letters. "SA Power Networks" and "Ag Leader" carry a legal-form word
+    at the FRONT, where it is part of the name; and the "inc" inside "Brinc"
+    is not a word at all (wire_embedded.LEGAL insists on a separator for the
+    same reason: without one Brinc loses its own "inc" and is refused its
+    own board). And the last word is never removed: a company called
+    "Company" keeps its name.
+    """
+    # Full stops and apostrophes close up ("Inc." is Inc, "S.A." is SA,
+    # "Moody's" is Moodys); every other mark is a space. Letters of any
+    # alphabet are kept, so two names in another script cannot both squash
+    # to nothing and so to each other.
+    text = re.sub("[.'`" + chr(0x2019) + "]", "", str(name or "").casefold())
+    words = re.findall(r"[^\W_]+", text)
+    if len(words) > 1 and words[0] == "the":
+        words = words[1:]
+
+    def shed_legal_form():
+        while len(words) > 1 and words[-1] in LEGAL_FORMS:
+            words.pop()
+
+    place = None
+    shed_legal_form()                     # "Acme USA, Inc." -> Acme USA
+    for tag, means in GEOGRAPHY:
+        if len(words) > len(tag) and tuple(words[-len(tag):]) == tag:
+            del words[-len(tag):]
+            place = means
+            break
+    shed_legal_form()                     # "Acme Inc. USA" -> Acme
+    return "".join(words), place
+
+
+def _same(a: tuple, b: tuple) -> bool:
+    """Two strict names are one company: the same name, and never two
+    different countries on it. An empty name equals nothing."""
+    return bool(a[0]) and a[0] == b[0] and (
+        a[1] is None or b[1] is None or a[1] == b[1])
+
+
+def _quoted(names: list) -> str:
+    return ", ".join(f'"{n}"' for n in names[:4]) + (
+        f" and {len(names) - 4} more" if len(names) > 4 else "")
+
+
+def proven(company: dict, said: dict) -> dict:
+    """THE STRICT GATE: has this board, in its own words, named this company?
+
+    Returns {"ok": bool, "why": str, "name": str or None}. `why` is written
+    for the owner's queue and the journal, and quotes both names. `name` is
+    the stated name the answer turned on: the board's name on a pass, the
+    first name that is not theirs on a refusal, None when the board stated
+    none.
+
+    ok is True ONLY when all three hold:
+
+      1. board_says marked the answer `stated` - the employer said it through
+         the board's own feed or hosted page. A name worked out from a slug,
+         a tenant id, the tail of an address or a host is somebody's guess.
+      2. the board states at least one name.
+      3. EVERY name it states is this company's name or one of its
+         also_known_as, compared with strict() and nothing looser.
+
+    WHAT IT REFUSES, each one a mistake this data has already made or nearly
+    made: a parent's name (Prepared's own careers page links greenhouse/axon,
+    some 500 requisitions, every one stamped "Axon"); an operating entity
+    under another name (Circuit's board is registered to TFR Transit Inc and
+    calls itself "Circuit Transit" - probably right, and "probably" is the
+    owner's word to say, after which the name belongs in also_known_as so
+    nobody doubts it twice); a name that merely CONTAINS theirs or sits
+    inside it ("Go" in "Google", "Rave" in "Travelers" - the judge() test
+    that has no floor); and a board stating several employers of which one
+    is not them, which is what a parent's or a group's board looks like from
+    outside.
+
+    It reads name and also_known_as and nothing else. parent, acquired,
+    brands and board_owner are NOT consulted, on purpose: a company whose
+    record says its parent is Axon is not thereby entitled to Axon's board.
+
+    A refusal is not a verdict that the board is wrong. It is "a person has
+    to look", and the caller sends it to the owner's queue with `why`.
+    """
+    company = company if isinstance(company, dict) else {}
+    said = said if isinstance(said, dict) else {}
+    ours = _clean(company.get("name"))
+    aka = company.get("also_known_as")
+    aliases = [_clean(a) for a in aka if _clean(a)] if isinstance(aka, (list, tuple)) else []
+    names = said.get("names")
+    names = [_clean(n) for n in names if _clean(n)] if isinstance(names, (list, tuple)) else []
+    how = said.get("how") or "its answer carried no name"
+
+    def no(why: str, name=None) -> dict:
+        return {"ok": False, "why": why, "name": name}
+
+    if not strict(ours)[0]:
+        return no(f'there is no company name on file to hold the board to '
+                  f'(the record says "{ours}")')
+    if not names or said.get("stated") is not True:
+        loose = names[0] if names else _clean(said.get("name"))
+        if loose:
+            return no(f'"{loose}" was not stated by the board itself ({how}); a '
+                      f'name read off a slug, an address or a host proves '
+                      f'nothing about "{ours}"')
+        return no(f'the board states no employer name ({how}), so nothing on '
+                  f'it says it is "{ours}"')
+
+    mine = [(k, strict(k)) for k in [ours] + aliases]
+    whose = {n: next((k for k, key in mine if _same(strict(n), key)), None)
+             for n in names}
+    foreign = [n for n in names if whose[n] is None]
+    if foreign:
+        bad, theirs = foreign[0], strict(foreign[0])
+        lead = (f'the board calls itself "{bad}"' if len(names) == 1 else
+                f'the board states {len(names)} employer names '
+                f'({_quoted(names)}) and "{bad}" is one of them')
+        known = f'"{ours}"' + (" or any other name on file for them"
+                               if aliases else "")
+        base = strict(ours)[0]
+        if theirs[0] and any(theirs[0] == key[0] for _, key in mine):
+            reason = ("the same name with a different country on it, which "
+                      "is a different office's board")
+        elif theirs[0] and (theirs[0] in base or base in theirs[0]):
+            reason = ("one name only contains the other, and a name inside "
+                      "another name is never taken for the same company")
+        else:
+            reason = ("a different name, which is what a parent's, an "
+                      "operating entity's or another company's board looks "
+                      "like")
+        return no(f"{lead}, which is not {known}: {reason}", bad)
+
+    aside = ("the same name once case, punctuation, the legal form and a "
+             "trailing country are set aside")
+    first, match = names[0], whose[names[0]]
+    if len(names) > 1:
+        why = (f'the board states {len(names)} names ({_quoted(names)}) and '
+               f'every one is "{ours}" or another name on file for it')
+    elif match != ours:
+        why = (f'the board calls itself "{first}", and "{match}" is on file as '
+               f'another name for "{ours}"' + ("" if match == first else f": {aside}"))
+    else:
+        why = (f'the board calls itself "{first}" and the name on file is '
+               f'"{ours}": ' + ("the same name" if first == ours else aside))
+    return {"ok": True, "why": why, "name": first}
+
+
+# ------------------------------------------------- reading a board's own name
+#
+# WHERE EACH BOARD SAYS WHOSE IT IS. Measured on live boards, 2026-11-18,
+# before a line of this was written (3 to 10 boards per vendor):
+#
+#   in the feed the reader already reads - no extra request
+#     greenhouse       jobs[].company_name
+#     workable         the account's name
+#     jibe             jobs[].data.hiring_organization
+#     breezy           [].company.name          (an EMPTY board's feed is "[]",
+#                                                so then the hosted page's
+#                                                breezy-doc-title is asked)
+#     recruitee        offers[].company_name
+#     smartrecruiters  content[].company.name   (empty feed: the hosted page's
+#                                                og:site_name)
+#     gem              jobBoardExternal.teamDisplayName
+#
+#   on the board's own hosted page - a PAGE, so robots.txt is asked at every
+#   hop, and a hop that leaves the board's host ends the read (_board_page)
+#     ashby            window.__appData organization.name   (the feed carries
+#     lever            <meta name="twitter:title">           no name at all on
+#     bamboohr         <meta property="og:site_name">        these three)
+#     rippling         __NEXT_DATA__ ...jobBoard.companyName
+#     jazzhr           the JSON-LD Organization block
+#     gusto            <title>Careers at X</title>, agreeing with the <h1>
+#     paylocity        window.pageData ModuleTitle
+#     icims            the meta description's own sentence
+#
+#   nowhere, so no probe and no pass
+#     adp              the cid is opaque and every name-shaped field comes back
+#                      blank to a public caller
+#     workday          a name exists per POSTING (hiringOrganization), not per
+#                      board, and one tenant states several ("Veritone, Inc."
+#                      and "Broadbean Technology Limited" on one site). A
+#                      sample of postings cannot say "every name"; not built.
+#     oracle, html     no company on file / a page is not a board
+#
+# WHAT IS NEVER READ AS A NAME, because each of these sits right beside the
+# name and is a different thing: the slug ("snd" is Social News Desk,
+# "goswift" is Swiftly), the tail of a Paylocity address ("34ED-LLC" is
+# Centegix), Breezy's friendly_id, SmartRecruiters' identifier ("Skyward1"),
+# Rippling's jobBoard.title and Breezy's og:title (slogans the employer types:
+# "Open Opportunities", "Come work with us."), BambooHR's <title> (the word
+# "BambooHR" on every board), and an inactive JazzHR board's title ("JazzHR -
+# Inactive Career Page").
+#
+# A PROBE THAT READS THE WRONG THING FAILS SAFE. proven() needs equality with
+# the company's own name, so a vendor that redesigns its page gives us a name
+# that matches nobody, and every board on it goes to the owner's queue until
+# the probe is fixed. The dangerous direction would be a probe that ECHOES
+# what we asked for - which is why none of these ever looks at the ref.
+
+_META_TAG = re.compile(r"<meta\b[^>]*>", re.I)
+_ATTR = re.compile(r"""([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')""")
+_H1 = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.S | re.I)
+_LD_JSON = re.compile(
+    r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', re.S | re.I)
+_GUSTO_NAME = re.compile(r"<title>\s*Careers at\s+(\S[^<]*?)\s*</title>", re.I)
+_ICIMS_NAME = re.compile(
+    r"View all current positions at\s+(.*?)\s+across all categories and locations\.",
+    re.I | re.S)
+_LABEL = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?")
+
+
+def _clean(name) -> str:
+    """A stated name as a person reads it: one line, no stray spaces. Ashby's
+    Miovision is stated as "Miovision " and Gusto's GUARDIAN RFID likewise."""
+    return re.sub(r"\s+", " ", name).strip() if isinstance(name, str) else ""
+
+
+def _dig(obj, *keys):
+    """obj[k1][k2]..., or None the moment a level is not a dict. A vendor's
+    payload is somebody else's shape and may change under us."""
+    for k in keys:
+        obj = obj.get(k) if isinstance(obj, dict) else None
+    return obj
+
+
+def _count(n, fallback: int) -> int:
+    return n if isinstance(n, int) and not isinstance(n, bool) and n >= 0 else fallback
+
+
+def _label(ref) -> str:
+    """A slug that is safe to put in front of a vendor's domain.
+
+    The slug of a FOUND board comes out of somebody's web page. Dropped into
+    f"https://{slug}.breezy.hr" unchecked, "evil.example/x#" sends this
+    crawler wherever a page author liked. One DNS label, or no request.
+    """
+    s = str(ref or "").strip()
+    if not _LABEL.fullmatch(s):
+        raise ats.AtsError(f"not a board slug: {ref!r}")
+    return s
+
+
+def _path(ref) -> str:
+    """A slug as one path segment (an Ashby slug on file has a space in it)."""
+    s = str(ref or "").strip()
+    if not s or "/" in s:
+        raise ats.AtsError(f"not a board slug: {ref!r}")
+    return urllib.parse.quote(s, safe="")
+
+
+def _meta(page: str, key: str) -> str:
+    """What the first <meta> tag named `key` says, or "".
+
+    By attribute rather than by position, because the vendors agree on
+    nothing: Lever writes name= then content=, Recruitee content= first,
+    Gusto name= and value=.
+    """
+    for tag in _META_TAG.findall(page or ""):
+        attrs = {k.lower(): (a or b) for k, a, b in _ATTR.findall(tag)}
+        if key.lower() in ((attrs.get("name") or "").lower(),
+                           (attrs.get("property") or "").lower()):
+            return _clean(html_lib.unescape(
+                attrs.get("content") or attrs.get("value") or ""))
+    return ""
+
+
+def _embedded(page: str, marker: str):
+    """The JSON object a page assigns right after `marker`, or None.
+
+    raw_decode reads exactly one JSON value and stops, wherever it ends. A
+    pattern like \\{.*?\\}; stops at the first "};" instead, which is inside
+    the first job description that happens to contain one.
+    """
+    m = re.search(marker, page or "")
+    if not m:
+        return None
+    return json.JSONDecoder().raw_decode(page, m.end())[0]
+
+
+def _state(out: dict, names, how: str) -> bool:
+    """Record what the board STATED about its employer. The only place
+    `stated` is ever set, so nothing reaches proven() as a statement unless a
+    probe read it off the board."""
+    seen = sorted({_clean(n) for n in names} - {""})
+    if not seen:
+        return False
+    out["names"], out["name"] = seen, seen[0]
+    out["stated"], out["how"] = True, how
+    return True
+
+
+def _board_page(url: str) -> str:
+    """A board's own hosted page - and never a page its address led off to.
+
+    A PAGE, so robots.txt is asked at every hop (owner's ruling, 2026-10-09):
+    this is ats._page with one more condition on each hop, and a refusal is
+    an answer, never a retry.
+
+    THE CONDITION: every hop stays on the host that was asked. Measured
+    2026-11-18 with a slug that does not exist: <slug>.applytojob.com/apply/
+    answers 302 to info.jazzhr.com and on to www.jazzhr.com/job-seekers, a
+    marketing page carrying a JSON-LD Organization block of its own - so
+    every dead or mistyped JazzHR board "stated" that its employer was
+    JazzHR. A vendor's own site is not a board, and what it says about
+    itself is not an employer naming itself. A redirect that stays on the
+    host is followed as before (a Gusto board whose name segment changed
+    still answers at its new address).
+    """
+    home = host_of(url)
+
+    def one(hop: str):
+        if host_of(hop) != home:
+            raise ats.AtsError(f"{url} leads off to {host_of(hop)}, which is "
+                               f"not the board")
+        return ats._get(hop, allow_redirects=False)
+
+    return ats.follow(url, one).text
+
+
+def _own_page(out: dict, url: str, read) -> None:
+    """Read the board's own hosted page for the name its feed does not state.
+
+    Kept apart from the feed read on purpose. When the page cannot be read,
+    what the feed already said - the count, the apply hosts - still stands,
+    and `how` says which half failed.
+    """
+    try:
+        read(_board_page(url), out)
+    except Exception as exc:                        # noqa: BLE001 - see board_says
+        out["names"], out["name"], out["stated"], out["site"] = [], None, False, None
+        out["how"] = (f"{out.get('how') or 'the board'}; its own page could "
+                      f"not be read ({type(exc).__name__})")
+
+
+def _ashby_page(page: str, out: dict) -> None:
+    # jobs.ashbyhq.com/<slug> assigns the whole board to window.__appData,
+    # once per page, and its organization block carries the employer's
+    # display name and the website the employer gave Ashby. The slug is in
+    # there too (hostedJobsPageSlug) and is not the name: "snd" is Social
+    # News Desk, "unison-software" is Unison.
+    org = _dig(_embedded(page, r"window\.__appData\s*=\s*"), "organization")
+    if _dig(org, "isDemoOrg") is True:
+        out["how"] = "ashby marks this board a demonstration, not an employer"
+    elif _state(out, [_dig(org, "name")],
+                "ashby organization name, stated on the board's own page"):
+        site = _dig(org, "publicWebsite")
+        out["site"] = site if isinstance(site, str) and site.strip() else None
+    else:
+        out["how"] = "ashby apply hosts (the board's own page names no organization)"
+
+
+def _lever_page(page: str, out: dict) -> None:
+    # The display name the employer set in Lever ("Swiftly, Inc." where the
+    # slug is goswift). twitter:title rather than <title>, which carries the
+    # same name with whatever trailing space the employer typed, and rather
+    # than og:title, which is the name plus the word "jobs".
+    if not _state(out, [_meta(page, "twitter:title")],
+                  "lever board name, stated on the board's own page"):
+        out["how"] = "lever apply hosts (the board's own page names nobody)"
+
+
+def _breezy(ref, out: dict) -> None:
+    slug = _label(ref)
+    rows = ats._json(ats._get(f"https://{slug}.breezy.hr/json"))
+    if not isinstance(rows, list):
+        raise ats.AtsError("unexpected breezy payload")
+    out["n"] = len(rows)
+    # company.name, never company.friendly_id: that one repeats the slug
+    # ("vetro-fibermap-inc" where the name is "VETRO, Inc").
+    if _state(out, [_dig(r, "company", "name") for r in rows],
+              "breezy company name, stated on every position"):
+        return
+    if rows:
+        out["how"] = "breezy positions name no company"
+        return
+    # AN EMPTY BOARD NAMES NOBODY IN ITS FEED - Polco's answers "[]", two
+    # bytes. Its hosted page still says whose it is, in a tag of its own.
+    # Not og:title, which is a slogan the employer types ("Join Our Team").
+    out["how"] = "breezy feed is empty, so it names nobody"
+    _own_page(out, f"https://{slug}.breezy.hr/", _breezy_page)
+
+
+def _breezy_page(page: str, out: dict) -> None:
+    if not _state(out, [_meta(page, "breezy-doc-title")],
+                  "breezy board title, stated on the board's own page "
+                  "(its feed is empty)"):
+        out["how"] = "breezy feed is empty and the board's own page names nobody"
+
+
+def _recruitee(ref, out: dict) -> None:
+    slug = _label(ref)
+    d = ats._json(ats._get(f"https://{slug}.recruitee.com/api/offers/"))
+    offers = _dig(d, "offers")
+    if not isinstance(offers, list):
+        raise ats.AtsError("unexpected recruitee payload")
+    out["n"] = len(offers)
+    # An empty Recruitee board states nothing and gets no fallback: the
+    # hosted page's og:site_name was seen on two boards only, and two is not
+    # a pattern to wire companies on. It goes to the owner's queue.
+    if not _state(out, [_dig(o, "company_name") for o in offers],
+                  "recruitee company_name, stated on every offer"):
+        out["how"] = ("recruitee offers name no company" if offers else
+                      "recruitee board lists no offers, so it names nobody")
+
+
+def _smartrecruiters(ref, out: dict) -> None:
+    ident = _path(ref)
+    d = ats._json(ats._get(f"https://api.smartrecruiters.com/v1/companies/"
+                           f"{ident}/postings?limit=100&offset=0"))
+    rows = _dig(d, "content")
+    if not isinstance(rows, list):
+        raise ats.AtsError("unexpected smartrecruiters payload")
+    out["n"] = _count(_dig(d, "totalFound"), len(rows))
+    # company.name, never company.identifier ("Skyward1", "IFS1"). It is the
+    # ACCOUNT's name, so a product line on its parent's account reads as the
+    # parent - "Xplor" for Xplor Recreation - which proven() refuses, rightly.
+    if _state(out, [_dig(r, "company", "name") for r in rows],
+              "smartrecruiters company name, stated on every posting read"):
+        return
+    if rows:
+        out["how"] = "smartrecruiters postings name no company"
+        return
+    # NO POSTINGS, NO NAME, and this feed cannot tell a live empty board from
+    # an identifier that never existed. The hosted careers page can.
+    out["how"] = "smartrecruiters feed lists no postings, so it names nobody"
+    _own_page(out, f"https://careers.smartrecruiters.com/{ident}",
+              _smartrecruiters_page)
+
+
+def _smartrecruiters_page(page: str, out: dict) -> None:
+    if not _state(out, [_meta(page, "og:site_name")],
+                  "smartrecruiters og:site_name, stated on the board's own "
+                  "page (its feed is empty)"):
+        out["how"] = ("smartrecruiters feed lists no postings and the board's "
+                      "own page names nobody")
+
+
+def _bamboohr(ref, out: dict) -> None:
+    slug = _label(ref)
+    # The list first: it is what the reader reads, it gives the count, and a
+    # tenant that does not answer it is not a board to go looking further at.
+    d = ats._json(ats._get(f"https://{slug}.bamboohr.com/careers/list"))
+    if not isinstance(d, dict) or "result" not in d:
+        raise ats.AtsError("unexpected bamboohr payload")
+    rows = d.get("result") if isinstance(d.get("result"), list) else []
+    out["n"] = _count(_dig(d, "meta", "totalCount"), len(rows))
+    out["how"] = "bamboohr list (the feed states no employer name)"
+    # The list names nobody. The careers page does, in og:site_name - and
+    # NOT in its <title>, which is the bare word "BambooHR" on every board.
+    _own_page(out, f"https://{slug}.bamboohr.com/careers", _bamboohr_page)
+
+
+def _bamboohr_page(page: str, out: dict) -> None:
+    if not _state(out, [_meta(page, "og:site_name")],
+                  "bamboohr og:site_name, stated on the board's own page"):
+        out["how"] = "bamboohr list (the board's own page names nobody)"
+
+
+def _rippling(ref, out: dict) -> None:
+    # The same page the reader reads. companyName is a field of its own,
+    # separate from the board's title, which is free text ("Open
+    # Opportunities", "Current Job Openings", "MCM Careers").
+    page = _board_page(f"https://ats.rippling.com/{_path(ref)}/jobs")
+    m = ats._NEXT_DATA.search(page)
+    props = _dig(json.loads(m.group(1)) if m else None, "props", "pageProps")
+    for q in _dig(props, "dehydratedState", "queries") or []:
+        key = _dig(q, "queryKey")
+        if isinstance(key, list) and "job-posts" in key:
+            out["n"] = _count(_dig(q, "state", "data", "totalItems"), out["n"])
+    board = _dig(props, "apiData", "jobBoard")
+    if _dig(board, "isTest") is True:
+        out["how"] = "rippling marks this a test board, not an employer's"
+    elif not _state(out, [_dig(board, "companyName")],
+                    "rippling companyName, stated on the board's own page"):
+        out["how"] = "rippling page states no companyName"
+
+
+def _jazzhr(ref, out: dict) -> None:
+    # The same page the reader reads. The employer is a JSON-LD Organization
+    # block, with the website the employer typed beside it. An INACTIVE board
+    # has no block at all and is titled "JazzHR - Inactive Career Page" - so
+    # the name is read from the block and never from the title, or every
+    # switched-off board would say its employer is JazzHR.
+    page = _board_page(f"https://{_label(ref)}.applytojob.com/apply/")
+    out["n"] = sum(1 for _, t in re.findall(
+        r'<a[^>]+href="(https?://[^"]*applytojob\.com/apply/[^"]+)"[^>]*>([^<]+)</a>',
+        page) if 4 <= len(html_lib.unescape(t).strip()) <= 90)
+    for raw in _LD_JSON.findall(page):
+        try:
+            block = json.loads(raw)
+        except ValueError:
+            continue
+        if _dig(block, "@type") == "Organization" and _state(
+                out, [block.get("name")],
+                "jazzhr Organization block, stated on the board's own page"):
+            site = block.get("url")
+            out["site"] = site if isinstance(site, str) and site.strip() else None
+            return
+    out["how"] = "jazzhr page carries no Organization block (an inactive board has none)"
+
+
+def _gem(ref, out: dict) -> None:
+    # The one call the reader already makes. teamDisplayName is the name the
+    # employer's Gem team carries; the reader uses it only to tell a live
+    # empty board from a dead slug, and jobBoardExternal is null for a slug
+    # that does not exist - which names nobody.
+    data, _ = ats._gem_payload(ats._gem_slug(ref))
+    posts = _dig(data, "oatsExternalJobPostings", "jobPostings")
+    out["n"] = len(posts) if isinstance(posts, list) else 0
+    board = _dig(data, "jobBoardExternal")
+    if not isinstance(board, dict):
+        out["how"] = "gem says no such board exists"
+    elif not _state(out, [board.get("teamDisplayName")],
+                    "gem teamDisplayName, stated by the board's own API"):
+        out["how"] = "gem board states no team name"
+
+
+def _gusto(ref, out: dict) -> None:
+    # The same page the reader reads, and the weakest statement of the lot:
+    # no field, only the title pattern "Careers at X". So it is believed only
+    # when the page's first heading says the same X. A CLOSED board is titled
+    # the bare word "Careers" and has no heading, and names nobody. The ref's
+    # own name segment is never read: kaiden-incorporated-<uuid> is Kaiden AI
+    # and now redirects to kaiden-ai-<uuid>.
+    page = _board_page(ats.GUSTO_BASE + "boards/" + ats._gusto_seg(ref))
+    out["n"] = len(set(ats._GUSTO_HREF.findall(page)))
+    m, h1 = _GUSTO_NAME.search(page), _H1.search(page)
+    name = _clean(html_lib.unescape(m.group(1))) if m else ""
+    head = _clean(html_lib.unescape(re.sub(r"<[^>]+>", " ", h1.group(1)))) if h1 else ""
+    if not name:
+        out["how"] = "gusto page names nobody (a closed board's title is the bare word Careers)"
+    elif head != name:
+        out["how"] = "gusto page title and heading do not agree on a name"
+    else:
+        _state(out, [name], "gusto page title and heading, stated on the board's own page")
+
+
+def _paylocity(ref, out: dict) -> None:
+    # The board address on file IS the page. ModuleTitle is the name the
+    # employer gave the board, keyed by the uuid: the same page fetched with
+    # its tail cut off states the same title. It is NOT the tail - Centegix's
+    # address ends "34ED-LLC" and Circuit's "TFR-Transit-Inc", while the
+    # boards call themselves "Centegix" and "Circuit Transit".
+    url = str(ref or "").strip()
+    if host_of(url) != "recruiting.paylocity.com" or not url.startswith("http"):
+        out["how"] = "paylocity ref is not a recruiting.paylocity.com board"
+        return
+    data = _embedded(_board_page(url), r"window\.pageData\s*=\s*")
+    jobs = _dig(data, "Jobs")
+    out["n"] = sum(1 for j in jobs if str(_dig(j, "JobTitle") or "").strip()) \
+        if isinstance(jobs, list) else 0
+    if not _state(out, [_dig(data, "ModuleTitle")],
+                  "paylocity ModuleTitle, stated on the board's own page"):
+        out["how"] = "paylocity page states no ModuleTitle"
+
+
+def _icims(ref, out: dict) -> None:
+    # The first page the reader reads. iCIMS writes one sentence of its own
+    # into the meta description - "View all current positions at X across
+    # all categories and locations." - and X is the ACCOUNT holder. Not the
+    # <title>, which the employer rewrites on half of them. The account can
+    # be a third party's: Selux's portal says "Council of Industry", an
+    # association running a member's board, and that is the owner's call.
+    # n is this first page only, not the board's total.
+    ref = str(ref or "").strip()
+    base = ref if ref.startswith("http") else \
+        f"https://{_label(ref)}.icims.com/jobs/search?ss=1"
+    page = _board_page(f"{base}{'&' if '?' in base else '?'}in_iframe=1&pr=0")
+    out["n"] = len(set(re.findall(
+        r'<a\s+href="([^"]+)"[^>]*class="iCIMS_Anchor"[^>]*title="[^"]+"', page)))
+    m = _ICIMS_NAME.match(_meta(page, "description"))
+    if not (m and _state(out, [m.group(1)],
+                         "icims portal description, stated on the board's own page")):
+        out["how"] = "icims page states no employer name"
+
+
+# A type is here only once a probe for it has been measured on live boards
+# and pinned by selftest (check_a_board_is_proven_only_by_its_own_stated_name).
+# Everything else answers "no identity probe written for <kind>", states
+# nothing, and so can never pass proven().
+_PROBES = {"breezy": _breezy, "recruitee": _recruitee,
+           "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
+           "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
+           "gusto": _gusto, "paylocity": _paylocity, "icims": _icims}
+# Every type whose board can state its employer at all - the only types a
+# found board can be proven on. For a caller that wants to say "no probe for
+# this ATS" without making a request to find out.
+NAMES_ITS_EMPLOYER = frozenset(_PROBES) | {"greenhouse", "workable", "jibe",
+                                           "ashby", "lever"}
+
+
 def board_says(kind: str, ref) -> dict:
-    """Ask the board who it belongs to. Returns {name, hosts, n, how}."""
-    out = {"name": None, "hosts": set(), "n": 0, "how": None}
+    """Ask the board who it belongs to.
+
+    Returns {name, hosts, n, how, names, stated, site}:
+
+      name    the employer name the board states, or None. Where it states
+              several, the alphabetically first - kept for the callers that
+              read one name. proven() reads `names`.
+      hosts   the hosts its apply links point at (a set).
+      n       how many postings it showed when asked.
+      how     where the answer came from, in words a person can read.
+      names   EVERY distinct employer name the board states, sorted; empty
+              when it states none. A board that states two is saying
+              something a single name hides (a parent's board, a group's).
+      stated  True only when the names were stated by the employer through
+              the board itself - its feed or its own hosted page. Never a
+              slug, a tenant id, the tail of an address or a host.
+      site    the employer's own website where the board states one (ashby,
+              jazzhr), else None. Reported for the record; nothing here
+              judges by it.
+
+    NEVER RAISES. A board that cannot be read, or answers in a shape nobody
+    recognises, comes back with no name and `how` saying so - and no name is
+    never a pass.
+    """
+    out = {"name": None, "hosts": set(), "n": 0, "how": None,
+           "names": [], "stated": False, "site": None}
     try:
         if kind == "greenhouse":
             d = ats._json(ats._get(
                 f"https://boards-api.greenhouse.io/v1/boards/{ref}/jobs"))
             jobs = d.get("jobs") or []
             out["n"] = len(jobs)
-            names = {j.get("company_name") for j in jobs if j.get("company_name")}
-            if names:
-                out["name"] = sorted(names)[0]
-                out["how"] = "greenhouse company_name, stated by the employer"
+            # EVERY distinct name goes into `names`. A parent's hub stamps
+            # different company_names on different jobs, and `name` alone -
+            # the alphabetically first, which is all this used to keep -
+            # lets a hub pass whenever that one happens to match.
+            _state(out, [j.get("company_name") for j in jobs],
+                   "greenhouse company_name, stated by the employer")
             out["hosts"] = {host_of(j.get("absolute_url", "")) for j in jobs[:8]}
         elif kind == "html":
             # AN HTML BOARD IS A PAGE, AND THE PAGE'S HOST IS THE EVIDENCE.
@@ -112,20 +779,28 @@ def board_says(kind: str, ref) -> dict:
                                    else f"{str(ref).rstrip('/')}/api/jobs?page=1&limit=50"))
             jobs = [j.get("data") or {} for j in (d.get("jobs") or [])]
             out["n"] = d.get("totalCount") or len(jobs)
-            names = {j.get("hiring_organization") for j in jobs if j.get("hiring_organization")}
-            if names:
-                out["name"] = sorted(names)[0]
-                out["how"] = "jibe hiring_organization, stated on every posting"
+            # (The names on the first 50 postings: this asks for one page,
+            # as it always has. No company on file is on jibe yet; a board
+            # bigger than a page that hires for several employers would
+            # want the rest read before anything is wired on it.)
+            _state(out, [j.get("hiring_organization") for j in jobs],
+                   "jibe hiring_organization, stated on every posting")
             out["hosts"] = {host_of(j.get("apply_url", "")) for j in jobs[:8]}
         elif kind == "ashby":
             d = ats._json(ats._get(
                 f"https://api.ashbyhq.com/posting-api/job-board/{ref}"))
             jobs = d.get("jobs") or []
             out["n"] = len(jobs)
-            # ashby states no employer name, so the apply host is all there is
             out["hosts"] = {host_of(j.get("applyUrl") or j.get("jobUrl") or "")
                             for j in jobs[:8]}
-            out["how"] = "ashby apply hosts (this ATS states no employer name)"
+            out["how"] = "ashby apply hosts (the feed states no employer name)"
+            # THE FEED NAMES NOBODY - it is {jobs, apiVersion} and nothing
+            # else - so this branch could only ever answer "unknown": of the
+            # 56 ashby boards in data/board_identity.json not one matched.
+            # The board's own page names the organisation. One more request,
+            # and only once the feed has answered: a slug whose feed is a 404
+            # is not asked a second time.
+            _own_page(out, f"https://jobs.ashbyhq.com/{_path(ref)}", _ashby_page)
         elif kind == "lever":
             d = ats._json(ats._get(
                 f"https://api.lever.co/v0/postings/{ref}?mode=json"))
@@ -133,18 +808,27 @@ def board_says(kind: str, ref) -> dict:
             out["n"] = len(jobs)
             out["hosts"] = {host_of(j.get("applyUrl") or j.get("hostedUrl") or "")
                             for j in jobs[:8]}
-            out["how"] = "lever apply hosts"
+            out["how"] = "lever apply hosts (the feed states no employer name)"
+            # Same shape as ashby: the feed is a bare list of postings with
+            # no company key anywhere, and the hosted list page names the
+            # board. That page is ~700 KB of inlined CSS with the name in
+            # its first kilobyte; it is read once and never per posting.
+            _own_page(out, f"https://jobs.lever.co/{_path(ref)}", _lever_page)
         elif kind == "workable":
             d = ats._json(ats._get(
                 f"https://apply.workable.com/api/v1/widget/accounts/{ref}?details=true"))
             out["n"] = len(d.get("jobs") or [])
-            nm = (d.get("name") or (d.get("account") or {}).get("name"))
-            if nm:
-                out["name"] = nm
-                out["how"] = "workable account name, stated by the employer"
+            _state(out, [d.get("name") or (d.get("account") or {}).get("name")],
+                   "workable account name, stated by the employer")
+        elif kind in _PROBES:
+            _PROBES[kind](ref, out)
         else:
             out["how"] = f"no identity probe written for {kind}"
     except Exception as exc:
+        # A HALF-READ BOARD HAS STATED NOTHING. Whatever a probe had noted
+        # before it fell over is withdrawn, so "could not read" can never
+        # arrive at proven() carrying a name.
+        out["names"], out["name"], out["stated"], out["site"] = [], None, False, None
         out["how"] = f"could not read the board ({type(exc).__name__})"
     out["hosts"] = {h for h in out["hosts"] if h}
     return out
@@ -346,7 +1030,7 @@ def main() -> int:
     print(f"\n{counts}")
     print(f"written to {out.relative_to(ROOT)}")
     print("\n'unknown' is not 'fine' - it means the board never said whose it "
-          "is, which is most of ashby and lever.")
+          "is, or could not be read to say.")
     return 0
 
 

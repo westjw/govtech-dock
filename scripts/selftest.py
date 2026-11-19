@@ -5069,6 +5069,733 @@ def check_jibe_is_read_and_verifiable() -> int:
     return errors
 
 
+# --- identity fixtures --------------------------------------------------------
+#
+# Cut from the real bytes of live boards, 2026-11-18, one vendor each, and
+# trimmed to the lines that matter. Every one keeps the thing it is a trap
+# for, because a fixture without its trap proves a probe reads a name and
+# nothing about WHICH name: the Ashby slug "snd" beside the name "Social News
+# Desk", Lever's <title> with its trailing space, Breezy's friendly_id,
+# SmartRecruiters' identifier "Skyward1", BambooHR's <title> (the word
+# "BambooHR" on every board), Rippling's free-text board title "CodeHS" beside
+# companyName "CodeHS, Inc.", and a Paylocity address that ends "34ED-LLC" on
+# a board that calls itself Centegix.
+_ID_ASHBY = (
+    '<title>Social News Desk Jobs</title>\n<script nonce="">\n'
+    '      window.__appData = {"environment":"production","maintenanceMode":false,'
+    '"organization":{"organizationId":"c059acd8-1beb-46f2-a808-be70ee91f27d",'
+    '"name":"Social News Desk","publicWebsite":"https://www.socialnewsdesk.com/",'
+    '"customJobsPageUrl":null,"hostedJobsPageSlug":"snd","allowJobPostIndexing":true,'
+    '"isDemoOrg":false,"timezone":"America/New_York","__typename":"Organization"},'
+    '"posting":null,"jobBoard":{"stealthAccess":false,"teams":[],"jobPostings":[{'
+    '"id":"45a80201-2c9d-49ac-8d07-2758835f1c9a","title":"Sales Account Executive",'
+    '"locationName":"USA (Remote)","workplaceType":"Remote","employmentType":"FullTime",'
+    '"__typename":"JobPostingBriefsWithIdsAndTeamId"}],"__typename":"JobBoard"},'
+    '"routerPrefix":"/"};\n</script>')
+
+_ID_LEVER = (
+    '<!DOCTYPE html><html><head prefix="og: http://ogp.me/ns#"><meta charset="utf-8">'
+    '<title>Everbridge </title><meta name="twitter:card" value="summary">'
+    '<meta name="twitter:title" content="Everbridge">'
+    '<meta name="twitter:description" content="Job openings at Everbridge">'
+    '<meta property="og:title" content="Everbridge jobs" />'
+    '<meta property="og:description" content="Job openings at Everbridge" />'
+    '<meta property="og:url" content="https://jobs.lever.co/everbridge" />'
+    '<style>/* about 700 KB of inlined CSS removed */</style></head><body></body></html>')
+
+_ID_BREEZY = json.dumps([{
+    "id": "c098271c58eb", "friendly_id": "c098271c58eb-pre-sales-manager-law-enforcement",
+    "name": "Pre-Sales Manager (Law Enforcement)",
+    "url": "https://truleo.breezy.hr/p/c098271c58eb-pre-sales-manager-law-enforcement",
+    "published_date": "2026-10-29T18:35:38.697Z", "department": "Sales",
+    "location": {"name": "Greenville, SC", "city": "Greenville"},
+    "company": {"name": "TRULEO", "logo_url": None, "friendly_id": "truleo",
+                "isMultipleLocationsEnabled": False}}])
+# Polco's board had nothing open: its feed is the two bytes "[]" and only the
+# hosted page says whose it is. og:title is a slogan the employer typed.
+_ID_BREEZY_EMPTY_PAGE = ('<title>Openings at Polco</title>'
+                         '<meta name="breezy-doc-title" content="Polco">'
+                         '<meta name="description" content="">'
+                         '<meta property="og:title" content="Join Our Team">')
+
+_ID_RECRUITEE = json.dumps({"offers": [{
+    "id": 2804412, "slug": "people-and-culture-coordinator",
+    "title": "People and Culture Coordinator", "company_name": "Greyparrot",
+    "careers_url": "https://greyparrotai.recruitee.com/o/people-and-culture-coordinator",
+    "location": "London, England, United Kingdom", "status": "published",
+    "published_at": "2026-10-30 15:46:47 UTC", "department": "People Operations"}]})
+
+_ID_SMARTRECRUITERS = json.dumps({"offset": 0, "limit": 100, "totalFound": 1, "content": [{
+    "id": "744000162336129", "name": "Project Manager", "refNumber": "REF252C",
+    "company": {"identifier": "Skyward1", "name": "Skyward"},
+    "releasedDate": "2026-11-18T15:48:33.133Z",
+    "location": {"city": "Stevens Point", "region": "WI", "country": "us"},
+    "ref": "https://api.smartrecruiters.com/v1/companies/Skyward1/postings/744000162336129"}]})
+# Dimonoff's board had nothing open: totalFound 0, no rows, so no name.
+_ID_SMARTRECRUITERS_EMPTY_PAGE = (
+    '<title>Careers at Dimonoff</title><meta property="og:title" content="Careers at Dimonoff">'
+    '<meta property="og:url" content="Dimonoff"><meta property="og:site_name" content="Dimonoff">'
+    '<meta property="og:image" content="">')
+
+_ID_BAMBOOHR_LIST = json.dumps({"meta": {"totalCount": 43}, "result": [{
+    "id": "118", "jobOpeningName": "Account Executive", "departmentLabel": "Sales",
+    "employmentStatusLabel": "Full-Time", "isRemote": None,
+    "location": {"city": None, "state": None},
+    "atsLocation": {"country": "United States", "state": "Georgia", "city": "Atlanta"}}]})
+_ID_BAMBOOHR_PAGE = (
+    '<title>\n\t\tBambooHR\n\t</title>\n'
+    '<meta property="og:type" content="website"/>\n'
+    '<meta property="og:url" content="https://euna.bamboohr.com/careers"/>\n'
+    '<meta property="og:title" content="Current Openings"/>\n'
+    '<meta property="og:description" content="Take a look at the current openings at Euna Solutions"/>\n'
+    '<meta property="og:site_name" content="Euna Solutions"/>\n')
+
+_ID_RIPPLING = (
+    '<title data-next-head="">CodeHS | CodeHS, Inc.</title>'
+    '<meta property="og:title" content="CodeHS | CodeHS, Inc." data-next-head=""/>'
+    '<script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"apiData":'
+    '{"jobBoard":{"boardType":"RIPPLING","slug":"codehs","title":"CodeHS",'
+    '"subtitle":"Careers at CodeHS","boardURL":"https://ats.rippling.com/codehs/jobs",'
+    '"companyName":"CodeHS, Inc.","isTest":false},"jobBoardSlug":"codehs"},'
+    '"dehydratedState":{"mutations":[],"queries":[{"state":{"data":{"items":[{'
+    '"id":"f4fa9cca-19c5-4ae6-8a69-b7f477e8c5d4","name":"Curriculum Developer, High School",'
+    '"url":"https://ats.rippling.com/codehs/jobs/f4fa9cca-19c5-4ae6-8a69-b7f477e8c5d4",'
+    '"department":{"name":"Education"},"language":"en-US"}],"page":0,"pageSize":20,'
+    '"totalItems":9,"totalPages":1}},"queryKey":["board","codehs","job-posts"]}]}}},'
+    '"page":"/[jobBoardSlug]/jobs","query":{"jobBoardSlug":"codehs"}}</script>')
+
+_ID_JAZZHR = r'''<title>Vision Government Solutions Inc - Career Page</title>
+<script type="application/ld+json">
+{
+    "@type": "Organization",
+    "name": "Vision Government Solutions Inc",
+    "url": "http:\/\/vgsi.com"
+}
+</script>
+<meta property="og:title" content="Vision Government Solutions Inc - Career Page" />
+<a href="https://vgsi.applytojob.com/apply/eOp8Vh876S/Administrative-Assessor"> Administrative Assessor </a>'''
+# A switched-off JazzHR board: no Organization block, and a title that would
+# name the VENDOR as the employer if anybody read it.
+_ID_JAZZHR_INACTIVE = "<title>JazzHR - Inactive Career Page</title>"
+
+_ID_GUSTO = ('<title>Careers at MD Ally\n</title>\n'
+             '<meta name="og:title" value="Careers at MD Ally"/>\n'
+             '<h1 class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl">MD Ally</h1>\n'
+             '<h1 class="text-xl leading-6 font-medium text-gray-900">\nOpen Positions\n</h1>\n'
+             '<a class="block hover:bg-gray-50" href="/postings/md-ally-account-executive-1">x</a>')
+
+_ID_PAYLOCITY = r'''<title>Centegix - Job Opportunities</title>
+<meta property="og:url" content="https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC" />
+<script>window.pageData = {"Departments":["All Departments","Unspecified"],"Jobs":[{"JobId":4657520,"JobTitle":"Customer Trainer (Part-Time/Travel)","LocationName":"Remote Worker - N/A","IsRemote":true,"Description":"CENTEGIX® is the leader in rapid incident response safety so"}],"LogoHref":"https://www.centegix.com/careers/","ModuleId":"25392","ModuleTitle":"Centegix","ShowInternal":false,"UsesBranding":true};</script>'''
+
+_ID_ICIMS = ('<!doctype html><html lang="en-US"><head>\n'
+             '<title>Job Listings at Granicus, LLC</title>\n'
+             '<meta name="description" content="View all current positions at Granicus, LLC '
+             'across all categories and locations. See a position you like? Contact us and '
+             'apply today!"/>\n</head><body>\n'
+             '<a href="https://careers-granicus.icims.com/jobs/10784/strategic-account-manager/'
+             'job?in_iframe=1" class="iCIMS_Anchor" title="10784 - Strategic Account Manager">'
+             '</a>\n</body></html>')
+# Selux's portal: the account belongs to an association that runs a member's
+# board, and the employer has rewritten the <title>.
+_ID_ICIMS_THIRD_PARTY = (
+    '<title>Jobs Opportunities | The Council of Industry | Job Listings at Council of '
+    'Industry</title>\n<meta name="description" content="View all current positions at '
+    'Council of Industry across all categories and locations. See a position you like? '
+    'Contact us and apply today!"/>')
+
+
+def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
+    """A found board is wired unattended only when the BOARD names the company.
+
+    The owner's ruling (2026-11-18): Claude may wire a found board without
+    him only when two separate checks agree - the company's own website
+    points to the board, and the board itself names that company as the
+    employer. This pins the second check: verify_boards.board_says reads the
+    name each vendor's board states about itself, and verify_boards.proven
+    is the strict gate over it.
+
+    WHY IT IS NOT judge(). judge() is the desk's forgiving test - a substring
+    with no floor, so "Go" passes for "Google" - and three doors and a finder
+    depend on it staying that way. Used as the gate it would have passed
+    Xplor's board (the parent, 22 requisitions) as Xplor Recreation's.
+    proven() is equality after case, punctuation, a legal form and a trailing
+    country, and nothing looser. Every refusal below is a mistake this data
+    has made or nearly made: Prepared's own page links Axon's board;
+    Circuit's board is its operating entity's; Concourse's slug matched a
+    different Concourse.
+
+    DRIVEN THROUGH ats.requests, not ats._get, so a probe that reaches round
+    the host gate or reads a PAGE without asking robots.txt goes red here:
+    every page probe is run once with robots.txt refusing, and must come back
+    having read nothing.
+
+    THE THREE THINGS EVERY PROBE MUST DO: read the name the board STATES
+    (and not the slug, title or address tail beside it); answer `stated`
+    False on an empty or unrecognised board; and never raise.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats, verify_boards as vb
+    errors = 0
+    seen = {"get": [], "post": [], "robots": []}
+    refusing = {"on": False}
+
+    class Wire(_Resp):
+        """_Resp whose json() parses the body, so a page served where a feed
+        was expected fails the way requests does."""
+
+        def json(self):
+            return json.loads(self.text)
+
+    def asker(url):
+        seen["robots"].append(url)
+        if refusing["on"]:
+            raise ats.RobotsRefused(f"robots.txt asks crawlers not to read {url}")
+
+    def says(kind, ref, routes=None, post=None):
+        """board_says against one board's canned answers. `routes` is
+        {url: body} (anything else is a 404) or a callable url -> body; a
+        body that is a (status, location) pair is a redirect."""
+        nonlocal errors
+        for k in seen:
+            seen[k].clear()
+
+        def body_for(url):
+            return routes(url) if callable(routes) else (routes or {}).get(url)
+
+        def fake_get(url, **kw):
+            seen["get"].append(url)
+            body = body_for(url)
+            if isinstance(body, tuple):
+                return Wire(body[0], headers={"Location": body[1]}, url=url)
+            return Wire(404, url=url) if body is None else Wire(200, text=body, url=url)
+
+        def fake_post(url, **kw):
+            seen["post"].append(url)
+            return Wire(404, url=url) if post is None else Wire(200, text=post, url=url)
+
+        ats.requests.get, ats.requests.post = fake_get, fake_post
+        try:
+            got = vb.board_says(kind, ref)
+        except Exception as exc:                        # noqa: BLE001
+            errors += fail(f"board_says({kind!r}, {ref!r}) raised {type(exc).__name__}: "
+                           f"{exc}. It is called inside a batch and inside three admin "
+                           f"doors; a board it cannot read is an answer, not a crash")
+            return {"name": None, "hosts": set(), "n": 0, "how": "", "names": [],
+                    "stated": False}
+        shape = (isinstance(got, dict)
+                 and {"name", "hosts", "n", "how", "names", "stated"} <= set(got)
+                 and isinstance(got["hosts"], set) and isinstance(got["names"], list)
+                 and isinstance(got["stated"], bool) and isinstance(got["n"], int)
+                 and (got["name"] is None or isinstance(got["name"], str)))
+        if not shape:
+            errors += fail(f"board_says({kind!r}, {ref!r}) lost a key the doors or the "
+                           f"wiring gate read (name, hosts, n, how, names, stated): {got}")
+        elif got["stated"] != bool(got["names"]) or got["name"] != (
+                got["names"][0] if got["names"] else None):
+            errors += fail(f"board_says({kind!r}, {ref!r}) disagrees with itself: stated="
+                           f"{got['stated']} names={got['names']} name={got['name']!r}")
+        return got
+
+    def gate(company, said):
+        """verify_boards.proven, which is called once per found board in a
+        batch and has to answer every time."""
+        nonlocal errors
+        try:
+            return vb.proven(company, said)
+        except Exception as exc:                        # noqa: BLE001
+            errors += fail(f"proven({company!r}, {said!r}) raised "
+                           f"{type(exc).__name__}: {exc}")
+            return {"ok": False, "why": "", "name": None}
+
+    def silent(got, what):
+        """The board stated nothing, and proven() will not pass it."""
+        nonlocal errors
+        if got["stated"] or got["names"] or got["name"] is not None:
+            errors += fail(f"{what}: a name was reported as STATED that the board never "
+                           f"stated: {got['names'] or got['name']!r} ({got['how']})")
+        elif not got["how"]:
+            errors += fail(f"{what}: no `how`, so the owner's queue cannot say why")
+        if gate({"name": got["name"] or "Acme"}, got)["ok"]:
+            errors += fail(f"{what}: proven() passed a board that stated no name")
+
+    PAY = ("https://recruiting.paylocity.com/recruiting/jobs/All/"
+           "50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC")
+    GUSTO = "md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922"
+    ASHBY_FEED = json.dumps({"apiVersion": "1", "jobs": [{
+        "title": "Sales Account Executive", "jobUrl": "https://jobs.ashbyhq.com/snd/45a80201",
+        "applyUrl": "https://jobs.ashbyhq.com/snd/45a80201/application"}]})
+    LEVER_FEED = json.dumps([{"text": "Account Executive",
+                              "hostedUrl": "https://jobs.lever.co/everbridge/1f0c",
+                              "applyUrl": "https://jobs.lever.co/everbridge/1f0c/apply"}])
+    SR = "https://api.smartrecruiters.com/v1/companies/%s/postings?limit=100&offset=0"
+    A_FEED, A_PAGE = "https://api.ashbyhq.com/posting-api/job-board/snd", "https://jobs.ashbyhq.com/snd"
+    L_FEED, L_PAGE = "https://api.lever.co/v0/postings/everbridge?mode=json", "https://jobs.lever.co/everbridge"
+    B_LIST, B_PAGE = "https://euna.bamboohr.com/careers/list", "https://euna.bamboohr.com/careers"
+    R_PAGE = "https://ats.rippling.com/codehs/jobs"
+    J_PAGE = "https://vgsi.applytojob.com/apply/"
+    G_PAGE = "https://jobs.gusto.com/boards/" + GUSTO
+    I_PAGE = "https://careers-granicus.icims.com/jobs/search?ss=1&in_iframe=1&pr=0"
+
+    # kind, ref, the company on file, routes, POST body, the names stated, n,
+    # and the PAGE that must be asked of robots.txt (None: a feed alone).
+    BOARDS = [
+        ("ashby", "snd", "Social News Desk", {A_FEED: ASHBY_FEED, A_PAGE: _ID_ASHBY}, None,
+         ["Social News Desk"], 1, A_PAGE),
+        ("lever", "everbridge", "Everbridge", {L_FEED: LEVER_FEED, L_PAGE: _ID_LEVER}, None,
+         ["Everbridge"], 1, L_PAGE),
+        ("breezy", "truleo", "Truleo", {"https://truleo.breezy.hr/json": _ID_BREEZY}, None,
+         ["TRULEO"], 1, None),
+        ("breezy", "polco", "Polco", {"https://polco.breezy.hr/json": "[]",
+                                      "https://polco.breezy.hr/": _ID_BREEZY_EMPTY_PAGE}, None,
+         ["Polco"], 0, "https://polco.breezy.hr/"),
+        ("recruitee", "greyparrotai", "Greyparrot",
+         {"https://greyparrotai.recruitee.com/api/offers/": _ID_RECRUITEE}, None,
+         ["Greyparrot"], 1, None),
+        ("smartrecruiters", "Skyward1", "Skyward", {SR % "Skyward1": _ID_SMARTRECRUITERS}, None,
+         ["Skyward"], 1, None),
+        ("smartrecruiters", "Dimonoff", "Dimonoff",
+         {SR % "Dimonoff": '{"offset":0,"limit":100,"totalFound":0,"content":[]}',
+          "https://careers.smartrecruiters.com/Dimonoff": _ID_SMARTRECRUITERS_EMPTY_PAGE}, None,
+         ["Dimonoff"], 0, "https://careers.smartrecruiters.com/Dimonoff"),
+        ("bamboohr", "euna", "Euna Solutions",
+         {B_LIST: _ID_BAMBOOHR_LIST, B_PAGE: _ID_BAMBOOHR_PAGE}, None,
+         ["Euna Solutions"], 43, B_PAGE),
+        ("rippling", "codehs", "CodeHS", {R_PAGE: _ID_RIPPLING}, None,
+         ["CodeHS, Inc."], 9, R_PAGE),
+        ("jazzhr", "vgsi", "Vision Government Solutions", {J_PAGE: _ID_JAZZHR}, None,
+         ["Vision Government Solutions Inc"], 1, J_PAGE),
+        ("gem", "citydetect", "City Detect", None,
+         json.dumps(_gem_payload([_gem_post("am9i", "Account Executive", ["Detroit"])])),
+         ["City Detect"], 1, None),
+        # (a live board with nothing open still states whose it is)
+        ("gem", "citydetect", "City Detect", None, json.dumps(_gem_payload([])),
+         ["City Detect"], 0, None),
+        ("gusto", GUSTO, "MD Ally", {G_PAGE: _ID_GUSTO}, None, ["MD Ally"], 1, G_PAGE),
+        ("paylocity", PAY, "Centegix", {PAY: _ID_PAYLOCITY}, None, ["Centegix"], 1, PAY),
+        ("icims", "careers-granicus", "Granicus", {I_PAGE: _ID_ICIMS}, None,
+         ["Granicus, LLC"], 1, I_PAGE),
+    ]
+
+    keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
+            ats.ask_robots)
+    try:
+        ats.HTTP_CACHE, ats.HOST_PAUSE, ats.ask_robots = None, 0, asker
+
+        # -- 1. every probe reads the name the board states --------------------
+        probed = set()
+        for kind, ref, ours, routes, post, want, n, page in BOARDS:
+            got = says(kind, ref, routes, post)
+            probed.add(kind)
+            if got["names"] != want or not got["stated"]:
+                errors += fail(f"the {kind} probe did not read the employer the board "
+                               f"states: wanted {want}, got {got['names']} "
+                               f"(stated={got['stated']}, how={got['how']!r})")
+                continue
+            if got["n"] != n:
+                errors += fail(f"the {kind} probe counts {got['n']} postings on a board "
+                               f"showing {n}")
+            if kind not in (got["how"] or ""):
+                errors += fail(f"the {kind} probe does not say where its name came "
+                               f"from: {got['how']!r}")
+            if page and page not in seen["robots"]:
+                errors += fail(f"the {kind} probe read the PAGE {page} without asking "
+                               f"robots.txt: a page goes through ats.follow (ats._page), "
+                               f"hop by hop, never a bare ats._get")
+            # the wiring gate, on the company this board is filed against...
+            v = gate({"name": ours}, got)
+            if not v["ok"] or v["name"] != want[0]:
+                errors += fail(f"a {kind} board stating {want[0]!r} was not proven "
+                               f"{ours!r}'s: {v}")
+            # ...and on a stranger, where the same statement is a refusal
+            wrong = gate({"name": "Somebody Else"}, got)
+            if wrong["ok"] or f'"{want[0]}"' not in wrong["why"] or \
+                    '"Somebody Else"' not in wrong["why"]:
+                errors += fail(f"a {kind} board stating {want[0]!r} was not refused "
+                               f"for another company, or the refusal does not quote "
+                               f"both names: {wrong}")
+            # the desk's older judge still reads the same answer
+            if vb.judge({"name": ours, "website": ""}, got)["verdict"] != "matches":
+                errors += fail(f"judge() no longer reads a {kind} answer: "
+                               f"{vb.judge({'name': ours}, got)}")
+        if probed != vb.NAMES_ITS_EMPLOYER - {"greenhouse", "workable", "jibe"}:
+            errors += fail(f"NAMES_ITS_EMPLOYER and the probes pinned here have drifted: "
+                           f"{sorted(probed ^ (vb.NAMES_ITS_EMPLOYER - {'greenhouse', 'workable', 'jibe'}))}. "
+                           f"A type may claim to name its employer only with a probe "
+                           f"that is tested")
+        if not vb.NAMES_ITS_EMPLOYER <= set(ats.FETCHERS):
+            errors += fail("NAMES_ITS_EMPLOYER names a type nothing can read")
+
+        # The employer's own website, where the board states one, is handed
+        # on beside the name (it is what tells two companies of one name
+        # apart) and is never mistaken for it.
+        got = says("ashby", "snd", {A_FEED: ASHBY_FEED, A_PAGE: _ID_ASHBY})
+        if got.get("site") != "https://www.socialnewsdesk.com/" or \
+                got["hosts"] != {"jobs.ashbyhq.com"}:
+            errors += fail(f"the ashby probe lost the employer's stated website or the "
+                           f"apply hosts the desk's judge reads: {got}")
+        got = says("jazzhr", "vgsi", {J_PAGE: _ID_JAZZHR})
+        if got.get("site") != "http://vgsi.com":
+            errors += fail(f"the jazzhr probe lost the employer's stated website: {got}")
+        # A name is trimmed to what a person reads: Ashby states "Miovision ".
+        got = says("ashby", "snd", {A_FEED: ASHBY_FEED, A_PAGE: _ID_ASHBY.replace(
+            '"name":"Social News Desk"', '"name":"Miovision "')})
+        if got["names"] != ["Miovision"]:
+            errors += fail(f"a stated name kept its stray spaces: {got['names']}")
+        # ...and an escaped one is unescaped, or "&amp;" is compared as a name.
+        got = says("lever", "everbridge", {L_FEED: LEVER_FEED, L_PAGE: _ID_LEVER.replace(
+            'content="Everbridge">', 'content="Smith &amp; Wesson">')})
+        if got["names"] != ["Smith & Wesson"]:
+            errors += fail(f"an HTML-escaped name was not unescaped: {got['names']}")
+        # A third party's account is read as it is stated, title or no title.
+        got = says("icims", "careers-selux", {
+            "https://careers-selux.icims.com/jobs/search?ss=1&in_iframe=1&pr=0":
+                _ID_ICIMS_THIRD_PARTY})
+        if got["names"] != ["Council of Industry"] or gate({"name": "Selux"}, got)["ok"]:
+            errors += fail(f"an iCIMS portal held by a third party was read from its "
+                           f"title, or passed for the company filed against it: {got}")
+        # The page's data is read as JSON to its real end, not to the first
+        # "};" - which sits inside any job description that contains one.
+        got = says("paylocity", PAY, {PAY: _ID_PAYLOCITY.replace("safety so", "safety }; so")})
+        if got["names"] != ["Centegix"]:
+            errors += fail(f"a Paylocity board whose job text contains '}};' lost its "
+                           f"name: {got['names']} ({got['how']})")
+        # A full-address iCIMS ref is the same first page.
+        got = says("icims", "https://careers-granicus.icims.com/jobs/search?ss=1",
+                   {I_PAGE: _ID_ICIMS})
+        if got["names"] != ["Granicus, LLC"]:
+            errors += fail(f"an iCIMS ref given as an address was not read: {got}")
+
+        # -- 2. the three probes that already named somebody now say it in full --
+        hub = json.dumps({"jobs": [
+            {"company_name": "Beta Corp", "absolute_url": "https://job-boards.greenhouse.io/acme/jobs/1"},
+            {"company_name": "Acme"}, {"company_name": "Acme"}, {"company_name": " Acme Labs "}]})
+        got = says("greenhouse", "acme",
+                   {"https://boards-api.greenhouse.io/v1/boards/acme/jobs": hub})
+        if got["names"] != ["Acme", "Acme Labs", "Beta Corp"] or got["name"] != "Acme" \
+                or not got["stated"] or got["n"] != 4:
+            errors += fail(f"greenhouse did not report EVERY distinct company_name, "
+                           f"or stopped giving the first as `name`: {got}")
+        if gate({"name": "Acme", "also_known_as": ["Acme Labs"]}, got)["ok"]:
+            errors += fail("a hub stating three employers passed for one of them: "
+                           "`name` alone is the alphabetically first, and it matched")
+        got = says("workable", "acusensus-united-states", {
+            "https://apply.workable.com/api/v1/widget/accounts/acusensus-united-states?details=true":
+                json.dumps({"name": "Acusensus United States", "jobs": [{"title": "x"}]})})
+        if got["names"] != ["Acusensus United States"] or not got["stated"]:
+            errors += fail(f"workable lost its account name: {got}")
+        if not gate({"name": "Acusensus"}, got)["ok"]:
+            errors += fail('"Acusensus United States" was refused for Acusensus')
+        got = says("jibe", "careers.acme.example", lambda url: json.dumps({
+            "totalCount": 2, "jobs": [{"data": {"hiring_organization": "Acme Corp"}},
+                                      {"data": {"hiring_organization": "Acme Federal"}}]}))
+        if got["names"] != ["Acme Corp", "Acme Federal"] or not got["stated"]:
+            errors += fail(f"jibe did not report every hiring_organization: {got}")
+
+        # -- 3. a type with no probe states nothing, and asks nobody ------------
+        for kind in sorted((set(ats.FETCHERS) | {"unknown"}) - vb.NAMES_ITS_EMPLOYER - {"html"}):
+            ref = ["acme", "wd5", "Careers"] if kind == "workday" else "acme"
+            got = says(kind, ref, lambda url: "{}", "{}")
+            if got["how"] != f"no identity probe written for {kind}":
+                errors += fail(f"{kind} has no identity probe and no longer says so: "
+                               f"{got['how']!r}")
+            if seen["get"] or seen["post"]:
+                errors += fail(f"asking whose {kind} board it is made a request "
+                               f"({(seen['get'] + seen['post'])[:1]}) with no probe to read it")
+            silent(got, f"{kind} (no probe)")
+        silent(says("html", "https://acme.test/careers", lambda url: "<html></html>"),
+               "an html careers page")
+
+        # -- 4. an empty or unrecognised board states nothing -------------------
+        QUIET = [
+            ("ashby: a page with no board data", "ashby", "snd",
+             {A_FEED: ASHBY_FEED, A_PAGE: "<title>Social News Desk Jobs</title>"}, None),
+            ("ashby: board data cut off mid-way", "ashby", "snd",
+             {A_FEED: ASHBY_FEED, A_PAGE: _ID_ASHBY[:_ID_ASHBY.index('"publicWebsite"')]}, None),
+            ("ashby: a blank name beside a slug", "ashby", "snd",
+             {A_FEED: ASHBY_FEED, A_PAGE: _ID_ASHBY.replace('"name":"Social News Desk"', '"name":" "')},
+             None),
+            ("ashby: a demonstration organisation", "ashby", "snd",
+             {A_FEED: ASHBY_FEED, A_PAGE: _ID_ASHBY.replace('"isDemoOrg":false', '"isDemoOrg":true')},
+             None),
+            ("ashby: the page is gone", "ashby", "snd", {A_FEED: ASHBY_FEED}, None),
+            ("lever: a title and no twitter:title", "lever", "everbridge",
+             {L_FEED: LEVER_FEED, L_PAGE: "<title>Everbridge </title>"}, None),
+            ("breezy: positions with a friendly_id and no name", "breezy", "truleo",
+             {"https://truleo.breezy.hr/json": '[{"name": "AE", "company": {"friendly_id": "truleo"}}]'},
+             None),
+            ("breezy: an empty feed and a page with only a slogan", "breezy", "polco",
+             {"https://polco.breezy.hr/json": "[]", "https://polco.breezy.hr/":
+              '<title>Openings at Polco</title><meta property="og:title" content="Join Our Team">'},
+             None),
+            ("breezy: an empty feed and no page", "breezy", "polco",
+             {"https://polco.breezy.hr/json": "[]"}, None),
+            ("breezy: a feed that is not a list", "breezy", "truleo",
+             {"https://truleo.breezy.hr/json": '{"company": {"name": "TRULEO"}}'}, None),
+            ("recruitee: no offers", "recruitee", "greyparrotai",
+             {"https://greyparrotai.recruitee.com/api/offers/": '{"offers": []}'}, None),
+            ("recruitee: offers with a slug and no company_name", "recruitee", "greyparrotai",
+             {"https://greyparrotai.recruitee.com/api/offers/":
+              '{"offers": [{"title": "x", "slug": "greyparrotai"}]}'}, None),
+            ("smartrecruiters: an identifier and no name", "smartrecruiters", "Skyward1",
+             {SR % "Skyward1": '{"totalFound": 1, "content": [{"company": {"identifier": "Skyward1"}}]}'},
+             None),
+            ("smartrecruiters: no postings and no careers page (an id that never existed)",
+             "smartrecruiters", "Dimonoff",
+             {SR % "Dimonoff": '{"offset":0,"limit":100,"totalFound":0,"content":[]}'}, None),
+            ("bamboohr: a page whose only name is the vendor's title", "bamboohr", "euna",
+             {B_LIST: _ID_BAMBOOHR_LIST, B_PAGE: "<title>\n\t\tBambooHR\n\t</title>"}, None),
+            ("bamboohr: a list that is a maintenance page", "bamboohr", "euna",
+             {B_LIST: "<html>down for maintenance</html>", B_PAGE: _ID_BAMBOOHR_PAGE}, None),
+            ("bamboohr: a list the reader could not read either", "bamboohr", "euna",
+             {B_LIST: '{"error": "not found"}', B_PAGE: _ID_BAMBOOHR_PAGE}, None),
+            ("rippling: a title and no payload", "rippling", "codehs",
+             {R_PAGE: '<title data-next-head="">CodeHS | CodeHS, Inc.</title>'}, None),
+            ("rippling: a board title and no companyName", "rippling", "codehs",
+             {R_PAGE: _ID_RIPPLING.replace('"companyName":"CodeHS, Inc.",', "")}, None),
+            ("rippling: a test board", "rippling", "codehs",
+             {R_PAGE: _ID_RIPPLING.replace('"isTest":false', '"isTest":true')}, None),
+            ("rippling: a payload that does not parse", "rippling", "codehs",
+             {R_PAGE: _ID_RIPPLING.replace('{"props":', '{"props"')}, None),
+            ("jazzhr: an inactive board", "jazzhr", "automotus",
+             {"https://automotus.applytojob.com/apply/": _ID_JAZZHR_INACTIVE}, None),
+            ("jazzhr: a block that does not parse", "jazzhr", "vgsi",
+             {J_PAGE: _ID_JAZZHR.replace('"@type"', "@type")}, None),
+            ("jazzhr: a block that is not an Organization", "jazzhr", "vgsi",
+             {J_PAGE: _ID_JAZZHR.replace('"Organization"', '"WebSite"')}, None),
+            ("gem: a slug that does not exist", "gem", "citydetect", None,
+             json.dumps(_gem_payload([], board=False))),
+            ("gem: an envelope nobody recognises", "gem", "citydetect", None, "{}"),
+            ("gusto: a closed board", "gusto", GUSTO, {G_PAGE: _GUSTO_CLOSED_PAGE}, None),
+            ("gusto: a title the heading does not repeat", "gusto", GUSTO,
+             {G_PAGE: _ID_GUSTO.replace(">MD Ally</h1>", ">Careers</h1>")}, None),
+            ("gusto: a ref that is not a board id", "gusto", "md-ally", {G_PAGE: _ID_GUSTO}, None),
+            ("paylocity: a title and no page data", "paylocity", PAY,
+             {PAY: "<title>Centegix - Job Opportunities</title>"}, None),
+            ("paylocity: page data with a blank title", "paylocity", PAY,
+             {PAY: _ID_PAYLOCITY.replace('"ModuleTitle":"Centegix"', '"ModuleTitle":""')}, None),
+            ("paylocity: an address on somebody else's host", "paylocity",
+             "https://acme.test/recruiting/jobs/All/50a02ba4/Centegix",
+             lambda url: _ID_PAYLOCITY, None),
+            ("icims: a title and no description", "icims", "careers-granicus",
+             {I_PAGE: "<title>Job Listings at Granicus, LLC</title>"}, None),
+        ]
+        for what, kind, ref, routes, post in QUIET:
+            silent(says(kind, ref, routes, post), what)
+        says("paylocity", "https://acme.test/recruiting/jobs/All/50a02ba4/Centegix",
+             lambda url: _ID_PAYLOCITY)
+        if seen["get"]:
+            errors += fail("a Paylocity ref on another host was fetched and read as a "
+                           "Paylocity board")
+        # What the feed already said survives a page that names nobody, and
+        # one that cannot be read - and `how` says which half failed, because
+        # that sentence is what the owner's queue prints.
+        got = says("ashby", "snd", {A_FEED: ASHBY_FEED, A_PAGE: "<html></html>"})
+        if got["n"] != 1 or got["hosts"] != {"jobs.ashbyhq.com"}:
+            errors += fail(f"a page that named nobody threw away what the ashby feed "
+                           f"said: {got}")
+        got = says("ashby", "snd", {A_FEED: ASHBY_FEED})
+        if got["n"] != 1 or "own page could not be read" not in (got["how"] or ""):
+            errors += fail(f"an ashby board whose page is gone does not say that it "
+                           f"was the PAGE that failed, or lost the feed's count: {got}")
+        # A board whose feed is dead is not asked a second time for its page:
+        # nothing can read it, so nothing it says could put a posting up.
+        for kind, ref, page, body in (("ashby", "snd", A_PAGE, _ID_ASHBY),
+                                      ("lever", "everbridge", L_PAGE, _ID_LEVER)):
+            silent(says(kind, ref, {page: body}), f"{kind} with a dead feed")
+            if page in seen["get"]:
+                errors += fail(f"the {kind} probe went on to ask for {page} after the "
+                               f"board's own feed had answered 404")
+        # A HALF-READ BOARD HAS STATED NOTHING: the name was read, then the
+        # same feed turned out to be a shape nobody recognises.
+        silent(says("greenhouse", "acme", {
+            "https://boards-api.greenhouse.io/v1/boards/acme/jobs":
+                json.dumps({"jobs": [{"company_name": "Acme", "absolute_url": 5}]})}),
+            "greenhouse: a feed that broke after the name was read")
+
+        # -- 5. robots.txt refuses: a page probe reads nothing ------------------
+        refusing["on"] = True
+        for kind, ref, ours, routes, post, want, n, page in BOARDS:
+            if not page:
+                continue
+            got = says(kind, ref, routes, post)
+            silent(got, f"{kind} with robots.txt refusing")
+            if page in seen["get"]:
+                errors += fail(f"the {kind} probe fetched {page} after robots.txt "
+                               f"refused it")
+        refusing["on"] = False
+
+        # -- 5b. a board's address that leads off to another site names nobody ---
+        # Measured live, 2026-11-18: a JazzHR subdomain that does not exist
+        # answers 302 to the vendor's own marketing site, whose page carries
+        # an Organization block reading "JazzHR". Read through, every dead or
+        # mistyped JazzHR board states that its employer is JazzHR.
+        dead = "https://no-such-board.applytojob.com/apply/"
+        vendor = "https://info.jazzhr.com/job-seekers.html"
+        got = says("jazzhr", "no-such-board", {
+            dead: (302, vendor),
+            vendor: _ID_JAZZHR.replace("Vision Government Solutions Inc", "JazzHR")})
+        silent(got, "a JazzHR address that redirects to the vendor's own site")
+        if vendor in seen["get"]:
+            errors += fail("a board's address led off to another host and the page "
+                           "there was fetched and read as the board's")
+        # ...while a redirect that stays on the board's host is still followed:
+        # Kaiden AI's Gusto board moved from kaiden-incorporated-<id> to
+        # kaiden-ai-<id> and answers at both.
+        moved = G_PAGE.replace("md-ally", "md-ally-inc")
+        got = says("gusto", GUSTO, {G_PAGE: (301, moved), moved: _ID_GUSTO})
+        if got["names"] != ["MD Ally"] or moved not in seen["robots"]:
+            errors += fail(f"a board that redirects to its new address on the same host "
+                           f"was not read there, or robots.txt was not asked at the "
+                           f"second hop: {got}")
+
+        # -- 6. a slug out of somebody's page cannot send the crawler elsewhere --
+        for kind in ("breezy", "recruitee", "bamboohr", "jazzhr", "icims"):
+            got = says(kind, "evil.example/x#", lambda url: _ID_BREEZY)
+            silent(got, f"{kind} with a slug that is not a slug")
+            if seen["get"]:
+                errors += fail(f"the {kind} probe put a slug that is not one DNS label "
+                               f"into an address and fetched it: {seen['get'][:1]}")
+
+        # -- 7. never raises, whatever comes back ------------------------------
+        junk = (None, "", "null", "[]", "{}", "7", '"x"', "[1, 2]", "<html>", '{"jobs": 5}',
+                '[{"data": null}]', '[{"data": {"jobBoardExternal": 5}}]',
+                '{"content": [1], "offers": [2], "result": [3], "jobs": [4], "totalFound": "x"}',
+                '<script id="__NEXT_DATA__">[1]</script> window.__appData = [1]; '
+                'window.pageData = "x"; <script type="application/ld+json">[1]</script>')
+        for kind in sorted(set(ats.FETCHERS) | {"unknown", "nonsense"}):
+            for ref in ("acme", None, 7, ["acme", "wd5", "Careers"], "https://acme.test/a b",
+                        GUSTO, PAY):
+                for body in junk:
+                    got = says(kind, ref, lambda url, b=body: b, body)
+                    if got["stated"] or got["names"]:
+                        errors += fail(f"board_says({kind!r}, {ref!r}) read an employer's "
+                                       f"name out of {body!r}: {got['names']}")
+
+        def raises(url, **kw):
+            raise ats.requests.ConnectionError("no route to host")
+        ats.requests.get = ats.requests.post = raises
+        for kind in sorted(ats.FETCHERS):
+            try:
+                got = vb.board_says(kind, PAY if kind == "paylocity" else
+                                    GUSTO if kind == "gusto" else "acme")
+                if got["stated"]:
+                    errors += fail(f"{kind}: a board that did not answer stated a name")
+            except Exception as exc:                    # noqa: BLE001
+                errors += fail(f"board_says({kind!r}) raised {type(exc).__name__} when "
+                               f"the network failed")
+    finally:
+        (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
+         ats.ask_robots) = keep
+
+    # -- 8. proven(): the strict gate, case by case -----------------------------
+    def stating(*names, stated=True, how="a test board"):
+        return {"name": sorted(names)[0] if names else None, "names": sorted(names),
+                "stated": stated, "how": how, "hosts": set(), "n": 3}
+
+    # what it is, the company on file, the board's answer, and the name the
+    # refusal has to quote back (None: the board gave no name to quote)
+    REFUSED = [
+        ("a board that names nobody", {"name": "Acme"}, stating(), None),
+        ("a name inside a longer one", {"name": "Go"}, stating("Google"), "Google"),
+        ("a name inside a longer one", {"name": "Rave"}, stating("Travelers Inc"),
+         "Travelers Inc"),
+        ("a longer name around a shorter one", {"name": "Google"}, stating("Go"), "Go"),
+        ("a product line on its parent's account",
+         {"name": "Xplor Recreation", "parent": "Xplor Technologies"}, stating("Xplor"), "Xplor"),
+        ("a shortened name", {"name": "Zonar Systems"}, stating("Zonar"), "Zonar"),
+        ("a parent's name, parent on file or not",
+         {"name": "Prepared", "parent": "Axon", "board_owner": "Axon", "brands": ["Axon"],
+          "acquired": {"parent": "Axon"}}, stating("Axon"), "Axon"),
+        ("an operating entity under another name", {"name": "Circuit"},
+         stating("TFR Transit Inc"), "TFR Transit Inc"),
+        ("several employers, one of them not ours", {"name": "Acme"},
+         stating("Acme", "Acme, Inc.", "Beta Corp"), "Beta Corp"),
+        ("a name that was never stated", {"name": "Acme"}, stating("Acme", stated=False),
+         "Acme"),
+        ("a name that was never stated", {"name": "Acme"},
+         dict(stating("Acme"), stated="yes"), "Acme"),
+        ("the answer the doors' old stubs give", {"name": "Acme"}, {"name": "Acme"}, "Acme"),
+        ("an answer marked stated that lists no names", {"name": "Acme"},
+         {"name": "Acme", "stated": True}, "Acme"),
+        ("an also_known_as that is only punctuation",
+         {"name": "Acme", "also_known_as": ["-"]}, stating("!!!"), "!!!"),
+        ("an also_known_as that is a bare string, read a letter at a time",
+         {"name": "Acme", "also_known_as": "Beta"}, stating("B"), "B"),
+        ("the same name with another country on it", {"name": "Acme US"},
+         stating("Acme Canada"), "Acme Canada"),
+        ("a legal-form word at the FRONT of a name", {"name": "Power Networks"},
+         stating("SA Power Networks"), "SA Power Networks"),
+        ("an also_known_as that only resembles it",
+         {"name": "Alltus", "also_known_as": ["Just Appraised"]}, stating("Just Appraisals"),
+         "Just Appraisals"),
+        ("a company with no name on file", {"name": ""}, stating("Acme"), None),
+        ("two names that are only punctuation", {"name": "!!!"}, stating("???"), None),
+    ]
+    for what, company, said, quoted in REFUSED:
+        v = gate(company, said)
+        was_stated = said.get("stated") is True and bool(said.get("names"))
+        if v["ok"]:
+            errors += fail(f"proven() passed {what}: {company['name']!r} against "
+                           f"{said.get('names') or said.get('name')} - {v['why']}")
+        elif f'"{company["name"]}"' not in v["why"] or (
+                quoted and f'"{quoted}"' not in v["why"]):
+            errors += fail(f"proven() refused {what} without saying why in words that "
+                           f"quote both names: {v}")
+        elif v["name"] != (quoted if was_stated else None):
+            errors += fail(f"proven() refused {what} and handed back {v['name']!r} as the "
+                           f"name it turned on, not {quoted if was_stated else None!r}")
+
+    # A host is not a name. judge() takes apply links on the company's own
+    # domain as a match with no name at all (its host fallback); the gate
+    # reads no host, whatever judge() makes of this answer.
+    hosted = {"name": None, "names": [], "stated": False, "n": 3,
+              "hosts": {"jobs.acme.com"}, "how": "lever apply hosts"}
+    if gate({"name": "Acme", "website": "https://www.acme.com"}, hosted)["ok"]:
+        errors += fail("proven() passed a board on the strength of a HOST: nothing on "
+                       "the board named anybody")
+
+    PASSED = [
+        ("the exact name", {"name": "Hayden AI"}, stating("Hayden AI")),
+        ("the same name in other capitals", {"name": "Truleo"}, stating("TRULEO")),
+        ("a legal form", {"name": "AiDash"}, stating("AiDASH, Inc.")),
+        ("a legal form", {"name": "VETRO"}, stating("VETRO, Inc")),
+        ("a legal form", {"name": "VertiGIS"}, stating("VertiGIS GmbH")),
+        ("a legal form", {"name": "FAIRTIQ"}, stating("FAIRTIQ AG")),
+        ("two legal forms", {"name": "Acme"}, stating("Acme Co., Ltd.")),
+        ("a legal form on OUR name", {"name": "TCARE, Inc."}, stating("TCARE")),
+        ("a trailing country", {"name": "Acusensus"}, stating("Acusensus United States")),
+        ("a trailing country", {"name": "IDEMIA"}, stating("IDEMIA North America")),
+        ("a country and a legal form", {"name": "Acme"}, stating("Acme USA, Inc.")),
+        ("the same country spelled twice", {"name": "Acme USA"}, stating("Acme U.S.")),
+        ("a leading The", {"name": "Council of Industry"}, stating("The Council of Industry")),
+        ("an also_known_as", {"name": "Alltus", "also_known_as": ["Just Appraised"]},
+         stating("Just Appraised")),
+        ("an also_known_as in its legal form",
+         {"name": "Cyclomedia", "also_known_as": ["Cyclomedia Technology, Inc."]},
+         stating("Cyclomedia Technology")),
+        ("several names, every one ours",
+         {"name": "Acme", "also_known_as": ["Acme Labs"]},
+         stating("ACME", "Acme Labs", "Acme, Inc.")),
+        ("a name that IS a legal-form word", {"name": "Company"}, stating("The Company")),
+    ]
+    for what, company, said in PASSED:
+        v = gate(company, said)
+        if not v["ok"] or v["name"] != said["names"][0]:
+            errors += fail(f"proven() refused {what}: {company['name']!r} against "
+                           f"{said['names']} - {v['why']}")
+        elif f'"{company["name"]}"' not in v["why"] or f'"{v["name"]}"' not in v["why"]:
+            errors += fail(f"proven() passed {what} without quoting both names: {v}")
+    # ...and it answers, without passing, when handed something that is not
+    # an answer at all (gate() reports a raise)
+    for company, said in ((None, None), ({}, {}), ("Acme", "Acme"), ({"name": 5}, {"names": 5}),
+                          ({"name": "Acme", "also_known_as": "Acme"}, {"names": "Acme", "stated": True}),
+                          ({"name": "Acme"}, {"names": [None, 5, ""], "stated": True})):
+        if gate(company, said)["ok"]:
+            errors += fail(f"proven() passed an answer that is not one: {said!r}")
+    return errors
+
+
 def check_merge_repoints_competitor_edges() -> int:
     """A merge leaves no edge pointing at the record it removed.
 
@@ -12579,9 +13306,12 @@ def check_the_crawler_honours_robots_txt() -> int:
     # and so do the scripts a person runs by hand: a sweep is a crawl whoever
     # starts it. Every request they make directly must be one hop of
     # ats.follow, never a library following redirects for it. Exempt, and not
-    # listed: verify_boards (the boards' JSON APIs), link_check and
-    # redirect_sweep (where an address lands, no content read), logos (an
-    # address a company's claimant gave us).
+    # listed: verify_boards (the boards' JSON APIs - the PAGES it reads since
+    # 2026-11-18 go through ats.follow, and that is pinned by behaviour in
+    # check_a_board_is_proven_only_by_its_own_stated_name, robots.txt
+    # refusing included), link_check and redirect_sweep (where an address
+    # lands, no content read), logos (an address a company's claimant gave
+    # us).
     for name, n in (("fetch_profiles", 2), ("feeds", 1), ("conference_dates", 1),
                     ("find_boards", 1), ("find_event_directories", 1), ("find_linkedin", 1),
                     ("find_websites", 1), ("promote_rivals", 1), ("read_descriptions", 1),
@@ -41000,6 +41730,7 @@ def main() -> int:
     errors += check_placement_queues_can_say_both()
     errors += check_a_company_sits_on_at_most_two_shelves()
     errors += check_jibe_is_read_and_verifiable()
+    errors += check_a_board_is_proven_only_by_its_own_stated_name()
     errors += check_a_workable_job_in_two_countries_is_two_postings()
     errors += check_merge_repoints_competitor_edges()
     errors += check_claiming_holds_the_domain_line()
