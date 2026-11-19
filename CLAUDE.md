@@ -431,9 +431,12 @@ Submit records. Rules that were each wrong once (review, 2026-09-28):
 
 **Add board proves ownership, it does not assume it.** A structured board is
 wired when the judge says `matches`, or its slug shares ground with the
-company (`discover_ats.slug_matches`) and the judge does not say MISMATCH. The
-judge sees no name on Ashby, Lever, BambooHR, Breezy, Recruitee or
-SmartRecruiters, so `unknown` is NOT a pass. A careers page must sit on their
+company (`discover_ats.slug_matches`) and the judge does not say MISMATCH. `unknown`
+is NOT a pass. Since 2026-11-18 the judge reads a name on Ashby, Lever,
+BambooHR, Breezy, Recruitee, SmartRecruiters and six more, and there it says
+`matches` only when the name IS theirs (the strict test
+`verify_boards.proven` applies); a name that merely contains theirs is still
+`unknown`. A careers page must sit on their
 own website's host. A LinkedIn/Indeed/Wellfound/Built In link must carry their
 slug. Anything unproven is refused with its evidence; "Wire it anyway" sends
 `force` and the journal says "wired anyway by a person". A pasted board
@@ -601,6 +604,9 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   interfaces published for programs; `link_check` and `redirect_sweep`, which
   read where an address lands and no content; `logos`, which fetches the
   address a claimant gave us.
+  `verify_boards` reads feeds through `ats._get` and a board's own page hop
+  by hop through `ats.follow`; its selftest holds it to the user agent, the
+  host gate and no retries.
   The rules are RFC 9309's and `robots.py` reads them itself: the stdlib
   `urllib.robotparser` takes the first matching rule instead of the longest,
   ignores `*` and `$`, ends a group at a blank line, and wrongly refused Rain
@@ -2388,6 +2394,292 @@ often no ATS behind them to find. Do not add the two together in a status
 report. And `blocked` is not a zero: those probes learned nothing and requeue
 in 7 days.
 
+## Which board a company's own site points to: check one of two (owner, 2026-11-18)
+
+Owner, 2026-11-18: a program may wire a found board only when TWO separate
+checks agree - the company's own website points to the board, AND the board
+itself names that company as the employer. Parent boards, name mismatches
+and anything doubtful go to "Boards we found". `scripts/find_site_boards.py`
+is the FIRST check, with its evidence written down. It asks no board
+anything, wires nothing and never writes `data/`: it writes one results
+file, wherever `--out` says (an `--out` inside `data/` is refused), and the
+wiring door reads it. The older finders (`find_embedded_ats`, `find_boards`,
+`discover_ats`) could not be this check: they read whatever page was on
+file, let the library follow redirects and threw the landing address away,
+and never said where in a page a reference sat.
+
+- **Run it.** `python3 scripts/find_site_boards.py --out /tmp/boards.json
+  --limit 40` (plain requests); `--render` for one Chromium, two pages at a
+  time (needs Playwright, imported only there); `--only id,id --show` for a
+  person's look. The sweep of every html/unknown company (1,968 today) is
+  `.github/workflows/board-sweep.yml`: by hand only, `contents: read`, its
+  own concurrency group, no commit. Each machine's results leave as an
+  artifact (kept a week; an artifact of a public repo is not private) and
+  enter `data/` only through the door. `--shard K/N` splits by the SITE a
+  website is on, so two records of one site go to one machine. The log
+  carries counts only, a dead browser included (exit 3, no traceback);
+  `--show` is for a terminal.
+- **The results file** is the contract the door reads: `{generated, mode,
+  companies: {id: {name, website, was, pages[], candidates[], off_site[],
+  elsewhere[], left_site[], job_like_links, says_no_openings, error}}}`. A
+  reference row is `{type, ref, element, saw, times, page, hop}`: `ref` is
+  exactly what that type's fetcher takes (Workday `[tenant, pod, site]`),
+  `element` is where it sat (href | iframe | script | text | request | frame
+  | redirect), `saw` is at most 160 characters with any e-mail address
+  taken out, `page` is where the read LANDED. `generated` is the date of the
+  file's OLDEST record: a run that picks a file up again keeps it.
+- **A candidate** was seen on a page that landed on the company's own site,
+  or is a redirect from an address of theirs that went straight to the
+  board. Every other reference to a board is `off_site`: for a person, never
+  for a program. A candidate is a claim about the PAGE, not the board:
+  Prepared's own careers page links Axon's board.
+- **"Their own site" is narrower than the host** (`Whose.of`: own | shared |
+  part | other; only "own" makes a candidate). The host rule is still
+  `page_belt._same_site`, and it decides which links the walk may follow.
+  On top of it: a website on file with a path beyond a locale
+  (faac.com/milo/) or a label in front of its site (security.gallagher.com)
+  names a PART of a host, and a page outside that part is the larger
+  site's; a page another record on file has the better claim to is that
+  record's; a website two records give ("shared") is read, and its
+  references go to off_site for both. Such a page is read once, filed under
+  off_site with the reason in its note, and not walked on from. Today: 41
+  path-bound companies, 19 that are a part of a host, 12 that share a
+  website. This errs toward the queue on purpose: about.acme.com with its
+  careers on acme.com is not told apart from product.parent.com.
+- **It never says "no board".** A page robots.txt closes, a bot wall (shown
+  to the plain request or to the browser), an error and a site that left
+  are each written down as that; a company with no page of status `read`
+  was not looked at. A refusal is not asked twice: not by the walk, not by
+  the browser after the plain request, not by a resumed run. A resumed run
+  looks again only where the look failed on OUR side (`unfinished`: it
+  crashed, or did not finish).
+- **Redirects.** Every address is walked one hop at a time through
+  `ats.follow` (robots.txt at each), and a hop whose answer points at a job
+  platform stops the walk: where it pointed is the finding, and the
+  platform is not asked. It is the company's pointer only when every
+  address on the way was theirs, or on the host it ended at (a Workday
+  tenant's front door). Own site -> the parent's site -> the parent's board
+  is off_site, recorded against the parent's address.
+- **In a browser the same rules hold**, and the browser is the only mode the
+  workflow runs. One route for the whole context (`_Session.rule`): every
+  address the main frame goes to after its first, and every frame at one of
+  the company's own addresses, is walked first exactly as above, so a
+  script's redirect to a board is recorded without the board being opened;
+  a second window is refused, nothing is submitted, pictures, video and
+  fonts are not loaded, and a page may have eight addresses walked for it.
+  Where the browser, and each frame, ENDED is asked of robots.txt before
+  anything is kept. What a document that is not the company's own did
+  inside the page (a frame inside another site's frame, what that frame
+  asked for) is off_site, against that document's address. The limit that
+  remains is render_fetch's: Playwright's router never sees a server
+  redirect's second hop, so somebody else's frame that redirects to a
+  closed host is loaded by the browser - and nothing of it is kept.
+- **The clock.** One company gets four pages and 75 seconds (three and 150
+  in a browser). `requests`' timeout is per socket read and bounds nothing,
+  so each read is made in a daemon thread and `land()` is back by its
+  deadline whatever the server does, hanging up on what was still arriving.
+  Never `asyncio.to_thread` for anything that can wait on a server with no
+  clock of its own: a pool's stuck thread is waited for when the run ends.
+- **Patterns** are `find_boards.PATTERNS` and the slug entries of
+  `discover_ats.MARKERS` by reference, plus what no table read right. A
+  slug is spelt as the page spelt it wherever the platform tells spellings
+  apart: SmartRecruiters does, and SO DOES LEVER (asked 2026-11-18:
+  `Wayground` answers, `wayground` is a 404). "Lever slugs are lowercase",
+  under Common tasks and in find_boards.py, is wrong for two of the 33 on
+  file; whoever verifies a Lever ref may try the lowered form second, and
+  must compare Lever refs without regard to case when asking whether a
+  board is already held. Boards in a vendor's European region
+  (job-boards.eu.greenhouse.io, jobs.eu.lever.co) are tallied under
+  `elsewhere` as greenhouse-eu / lever-eu: the readers ask the American API
+  only. A reference inside an HTML comment is not on the page, whatever
+  kind of element was commented out.
+- **What the door must still do, because this file cannot:** make the
+  second check (ask the board whose it is); refuse a (type, ref) another
+  record already holds, or that two records' candidates share (two brands
+  whose separate sites link one group board each get it here as a
+  candidate); skip a company with a parent, an acquisition or a suspect on
+  file, and the giants - the worklist does not, so that what their sites
+  say is still there for a person; treat any `off_site` row, or two
+  different boards among one company's candidates, as doubt.
+- `find_embedded_ats.py` builds a Workday ref as [tenant, pod, site] (it
+  had [tenant, SITE, pod], and found none for three months), reads the
+  address a page's script asks (/wday/cxs/<tenant>/<site>), and no longer
+  takes "wday" or a bare locale for a site. It can therefore put a Workday
+  list ref into its output file for the first time: nothing in this work
+  writes `data/embedded_ats.json`, and the desk's `boardUrlFor` has not
+  been tried on one.
+- Guards: `check_a_board_counts_only_when_their_own_site_points_to_it`
+  (patterns, whose page, the plain walk, the list, a run),
+  `check_the_board_finder_keeps_its_clock_and_its_manners` (the request,
+  the deadline, the caps, redaction),
+  `check_the_board_finder_in_a_browser_points_only_where_the_page_does`
+  (the real `read_rendered` and the real sweep, driven by a stand-in for
+  the part of Playwright they use; no browser runs in the suite), and
+  `check_a_board_named_in_a_page_is_read_as_its_reader_reads_it`. Blind
+  review of b646e97: 10 findings, all reproduced, all fixed (df53403); the
+  first check alone let 21 of 43 small breakages through, the four now
+  catch 81 of 81. Also run by hand in a real Chromium against a server on
+  the same machine (nothing left it); one question was asked of the outside
+  world, two requests to Lever's public feed.
+
+## A found board is proven by its own stated name (owner, 2026-11-18)
+
+The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
+
+**`board_says(kind, ref)` asks the board whose it is.** Fifteen types state their employer (`NAMES_ITS_EMPLOYER`): greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+
+- `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
+- `site`: the employer's website where the board gives one (ashby, jazzhr).
+- `failed`: None, or why the board was not read. `refused` (robots.txt, 401, 403, 429) is never asked again in the same run. `gone` is 404 or 410. `unreadable` is anything else, and `how` says what. `how` gives the status and the address in words.
+- `n_is_partial`: True on icims, where `n` is the first page only. Size a board from the reader (`add_company.verify`), never from `n`.
+- `kind`: the type that was asked.
+
+Never read as a name, because each sits beside the name and is something else: the slug, a Paylocity address tail, Breezy's friendly_id, SmartRecruiters' identifier, a board's free-text title, a vendor's own page title. No probe looks at the ref for a name, so none can echo what it was asked.
+
+**`proven(company, said)` is the only test a board may be wired on unattended.** It returns `{"ok", "why", "name"}`. ok only when `stated` is True, there is at least one name, and EVERY name equals the company's name or an `also_known_as` once these are set aside: case, punctuation, a leading "the", a legal form at the end (inc, incorporated, llc, ltd, limited, corp, corporation, co, company, gmbh, plc, lp, llp, pty, sa, ag, bv) and one trailing country (US, USA, United States, North America, Americas, Canada, UK). Never a substring, prefix, slug or host. parent, acquired, brands and board_owner are not read. Four refusals go beyond the name, each from the blind review of 2026-11-18:
+
+- A country on OUR name must be on the board's too. "Esri Canada" is not proven by a board calling itself "Esri": that is the group's board. The other way round passes ("Acusensus United States" for Acusensus). All 17 names on file that end in a country passed on the bare name before this.
+- The board's own names may not carry two different countries. "Acme US" and "Acme Canada" on one board is a group's board.
+- "US" is a country only in capitals. "Unite Us" is a company.
+- Where the board gives a website and one is on file, they must be the same site (the same host, or one under the other). Two companies are called Concourse; the name cannot tell them apart and the website can. A refusal only: a matching website never passes a name that is not theirs.
+
+A refusal means "a person has to look", and `why` quotes both names (and both websites where it turned on them). When the owner says a refused name is theirs, it goes in `also_known_as` and passes from then on. Expect roughly a fifth of right boards to be refused on the name alone: Flock Safety's board says "Flock", Circuit's says "Circuit Transit".
+
+**`judge()` is the desk's older test and is not the gate.** On greenhouse, workable and jibe it is as forgiving as it always was: one name inside the other, no floor. On the twelve types it could not read a name on until 2026-11-18 it says `matches` only when the strict test passes, `CHECK` when the name is theirs and the board gives another website, `unknown` when the names only share ground, and MISMATCH when they share nothing. So the page belt's Add board, `find_embedded_ats` and `wire_embedded.triage` are no looser than they were. The first version let the substring test loose on the new names, and the belt wired a Lever board calling itself "Jacobs" to "StreetLight Data (Jacobs)".
+
+KNOWN, AND LEFT AS FOUND: on greenhouse, workable and jibe the substring test still passes a parent. "Jacobs" is `matches` there and was before; 4 of the 65 stored audit matches are containment only. Closing it is one condition in `judge()`, and it changes what the owner's doors do on types this work did not touch, so it is his to rule.
+
+**The audit** (`verify_boards.audit`, which `main()` loops over) still asks an ashby or lever board whose name matches what its job ads talk about (LOOK), unless the board gives the website on file. That look is the only thing that ever noticed Concourse.
+
+**Manners, pinned by selftest on every read.**
+- A feed goes through `ats._get`. A page goes through `_board_page`: `ats.follow`, robots.txt at every hop.
+- A hop that leaves the board's HOST ends the read. The same host, not the same domain: BambooHR's marketing site is www.bamboohr.com.
+- Lever's page is read as a stream for its first 64 KB only. Any other page is cut at 2 MB before a pattern runs.
+- Nothing is asked twice.
+- A full-address iCIMS ref must be on icims.com.
+- A pattern over a page reads it once (`_inside`, and `[^<>]` rather than `[^>]`). The first versions took 77 seconds on 300 KB of unclosed `<h1>`.
+
+Selftests: `check_a_board_is_proven_only_by_its_own_stated_name` (the probes, the manners, the gate) and `check_a_stated_name_does_not_loosen_the_older_doors` (judge, the belt, triage, the audit). A new ATS type gets a probe measured on live boards and a row in the first check's BOARDS before any company may be proven on it.
+
+## Wiring a found board: two checks agree, or it goes to the owner (owner, 2026-11-18)
+
+Owner, on coverage (the crawl read postings from 563 of 2,442 companies): Claude
+may wire a found board ONLY when two separate checks agree. CHECK 1: the
+company's own website points to the board. CHECK 2: the board itself names that
+company as the employer. A parent's board, a name mismatch and anything doubtful
+go to his "Boards we found" queue. Each verified batch is written without waiting
+for him and he is told after. Giants (about 500+ open roles) are skipped this
+round.
+
+`scripts/wire_found.py` is that door, and the only one a batch goes through:
+
+    python3 scripts/wire_found.py plan --results <finder results>.json --out <scratch>/worklist.json
+    python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label>            # a look
+    python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label> --write --expect <code>
+
+- **`plan` is the only step on the network, and it freezes a worklist.** It
+  reads `find_site_boards.py` results (several files are pooled: a plain read
+  and a rendered one of the same sites) and asks each board at most three
+  things, once per spelling and never again after a refusal: its own total
+  where the reader does not read the whole board (`add_company.board_total`),
+  the live read (`add_company.read_board`), and who it says it is
+  (`verify_boards.board_says`, judged by `verify_boards.proven`; with no
+  `proven` in the checkout it refuses to start). The worklist's name is taken
+  before the first request, never inside data/, written as ASCII, and never
+  overwritten. A company a person already answered about (out of scope, a
+  refusal, a board already set) is not asked of anybody.
+- **WIRE needs all of it.** The reference sits on a page of the website on
+  file NOW, as a link, embed, script or request, or as a redirect the finder
+  followed from an address on their site to the board (the asked address is
+  what is quoted). `proven` says ok AND the board stated the name itself: a
+  pass with no stated name is held, which is how Concourse got in. The live
+  read has postings on it, at least as many as the public board already shows
+  for them. And nothing on file argues.
+- **`html` does not mean unread.** On 2026-11-18, 114 of those pages put
+  1,357 postings on the board every night. A board that reads nothing, or
+  fewer than `open_postings` in board.json, is held: wiring it takes roles
+  off, and an empty account left behind still states the right name.
+- **HOLD is every other board that reads, with its doubt in words:** the page
+  is not on their website; the site only names the board in plain text; two
+  boards on one site, or one board spelled two ways; a reference beside it
+  that no reader takes; a job platform nothing here reads named on their own
+  site (City Detect's shape); a parent, an acquisition, a board owner or an
+  `ats_note` on file (wiring would write over the note); a discovery suspect
+  or an Acquisitions row (both builders are asked); another company already
+  holding the board, or the same board found for two companies in one run; a
+  different board refused earlier or already waiting; a board that names
+  somebody else (MISMATCH, both names quoted) or nobody.
+- **SKIP is listed, never silent:** a giant; `size unknown`; a board that did
+  not read (kept with its error, not retried); a site that named only a
+  reference no reader takes (a Workday ref that is not `[tenant, wdN, site]`
+  is refused before any request); the same board refused before, or any
+  refusal in the desk's own store ("tell the owner": that queue never shows a
+  ruled company again). Only "no board seen on their site" is counted
+  without being listed.
+- **A reader that filters cannot show a board is small.** The Workday reader
+  asks two sales searches and the Oracle reader takes one reply
+  (`wire_found.PARTIAL`). Measured 2026-11-18: Motorola Solutions' board holds
+  868 postings by its own count on a day the reader returned 385 rows, and no
+  Workday board on file reads as 500. So for those the board's own total is
+  asked FIRST, in one request (`ats.workday_total`: `total` on the first reply
+  to an empty search), a giant is never read at all, and a board whose total
+  cannot be had is skipped with the giants. Oracle has no way to ask, so every
+  Oracle find is skipped. A count from the identity probe skips a board when
+  it is 500 or more and is never read as "small".
+- **`board_key` is loose and `spelling` is exact.** The key only notices
+  collisions, and a collision only ever sends a board to a person: case is
+  ignored, an address matches with or without scheme, `www.` or a last slash,
+  a Paylocity board is the id after `/jobs/All/`, an iCIMS portal its slug, a
+  Jibe or Oracle board its host. What is READ is the ref as the quoted page
+  spelled it; SmartRecruiters minds case, and `caseco` answering empty says
+  nothing about `CaseCo`.
+- **`apply` reads the frozen file and makes no request, but it asks the data
+  again.** A write needs `--expect` with the code the look printed; the code
+  covers the file's bytes, the author, and what the look would do, including
+  what each record to be wired reads as (name, other names, website). Left
+  alone, by name: a row that no longer carries both checks, what they were
+  judged against, a dated read with postings and a size under the line; a
+  read older than 24 hours (`board_proposals.MAX_AGE_HOURS`), undated or
+  dated ahead; a company or board listed twice; and anything that MOVED since
+  the plan: the board on file, the website (check 1 is asked again), the name
+  or also_known_as (check 2 was judged against them), out_of_scope, a parent,
+  a note, a refusal, another holder, more postings shown than the board read.
+- **What a write is.** The wired boards are ONE journalled batch (action
+  `wire-found`, the agent's own label, never `owner`; force only for the
+  25-record rule, after the count is printed): `ats`, an `ats_note` saying
+  both checks, and `board_owner` where the board's stated name differs in
+  form. The held boards are one journalled APPEND to data/embedded_ats.json.
+  The worklist is redacted as it is read, whoever wrote it. Commit
+  data/companies.json, data/embedded_ats.json and both journal files
+  together. Postings appear after the nightly crawl, not before.
+- **The queue's own door is `board_proposals.file_found`.** It appends and
+  never replaces; takes `agent:<label>` only; never files `matches` (that
+  word in this file is leave for `wire_embedded.py` to wire), a company
+  already listed, ruled, or on a board, or a row whose read is not dated and
+  fresh. A filed row carries `filed {by, on, at, read_at, page}`;
+  `wire_embedded.py` leaves filed rows alone. The card prints the doubt
+  ("Not wired because:"), the read date, and links both the board and the
+  page that named it; `boardUrlFor` has a line for every type in
+  `ats.FETCHERS`.
+- **`find_embedded_ats.py` needs `--out`.** It replaces its output file with
+  one run's hits and its default is that queue file, so while the file holds
+  anything a bare run is refused before the first request.
+- Guards: `check_a_found_board_is_wired_only_on_two_checks`,
+  `check_a_found_board_is_held_for_every_doubt`,
+  `check_a_found_board_is_not_wired_past_what_moved`,
+  `check_the_boards_found_card_opens_what_it_names` (executed under node),
+  `check_a_finder_cannot_replace_the_owners_queue`. They share `_WiringBox`,
+  which owns its data and shuts every way out of ats.py: a fixture that
+  stubbed only the seams it knew about once let a new seam ask a real host.
+  Blind review of 7742d06: 10 findings, all real, all fixed in 1a89cdf; 124
+  mutations of the door, 124 noticed (the first check alone had missed 26 of
+  41).
+- **The owner's to settle:** whether a job platform nothing reads, named on
+  their own site, should hold a board (it does now); whether a board named
+  only in plain text should (it does now); and whether Oracle finds are
+  worth a way to ask their size. Giants on readers that do read the whole
+  board are still read in full before they are skipped.
+
 ## Build order (owner, 2026-08-23)
 
 This repo comes first, and inside it: front end, back end, data, admin. The
@@ -3763,8 +4055,15 @@ wait above, the takeover and the companies left off, across two redraws.
   install chromium`, which is **why it's a separate script**: the browser is a
   one-off discovery tool, its conclusions get written into `companies.json` as
   normal `ats` entries, and `refresh.py`/CI stay stdlib-only. Always verify a
-  slug with a real fetch before writing it — Lever slugs are lowercase, and an
+  slug with a real fetch before writing it — most Lever slugs are lowercase
+  but Lever minds case (`Wayground` answers, `wayground` is a 404), and an
   off-site careers link occasionally lands on another company's board.
+- **Wire the boards a finder found:** `wire_found.py plan` to a scratch
+  folder, read the plan, `apply` for the look, read it again, then `apply
+  --write --expect <code>`; commit the two data files and the journal, and
+  tell the owner what was wired, what is in Boards we found, and every SKIP
+  the look listed. Never `discover_ats.py --confirm`, `act_set_board` or a
+  bare `find_embedded_ats.py` for this.
 - **Discover an ATS (plain):** careers page source usually reveals it — look for
   greenhouse.io / lever.co / ashbyhq.com / myworkdayjobs.com / workable.com
   URLs in the HTML, or try `https://boards-api.greenhouse.io/v1/boards/<slug>/jobs`
