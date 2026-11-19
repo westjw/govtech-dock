@@ -1790,5 +1790,2457 @@
    "read_at": "2026-11-19T00:26:57-05:00",
    "page": "https://careers.wexinc.com/us/en/search-results"
   }
+ },
+ {
+  "id": "120water",
+  "name": "120Water",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "d10fa923-90b0-455b-aa60-c6205626cb00|19000101_000003"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=d10fa923-90b0-455b-aa60-c6205626cb00&ccId=19000101_00000",
+  "times": 1,
+  "verified": "6 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"120Water\"; https://www.120water.com/careers loads its jobs from the board",
+  "postings": 6,
+  "titles": [
+   "Business Development Rep",
+   "Commercial Account Manager",
+   "Strategic Account Executive - State Government",
+   "Solutions Consultant",
+   "Commercial Account Executive (Remote)",
+   "Strategic Account Executive"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:57-05:00",
+   "page": "https://www.120water.com/careers"
+  }
+ },
+ {
+  "id": "4m-analytics",
+  "name": "4M Analytics",
+  "was": "html",
+  "found": {
+   "type": "ashby",
+   "ref": "4M"
+  },
+  "saw": "https://api.ashbyhq.com/posting-api/job-board/4M",
+  "times": 1,
+  "verified": "5 posting(s) readable",
+  "board_calls_itself": "4M",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"4M\", which is not \"4M Analytics\": one name only contains the other, and a name inside another name is never taken for the same company; the board gives its website as 4manalytics.com, which is the one on file; their own site also names comeet, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.4manalytics.com/careers loads its jobs from the board",
+  "postings": 5,
+  "titles": [
+   "Lead Forward Deployed Engineer",
+   "Customer Success Manager, Public Sector - Atlanta, GA",
+   "Senior Full Stack Engineer",
+   "Staff Algorithm Engineer",
+   "Senior Algorithm Engineer"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:58-05:00",
+   "page": "https://www.4manalytics.com/careers"
+  }
+ },
+ {
+  "id": "aeries-software",
+  "name": "Aeries Software",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "37c4fafb-e1e2-4540-ae12-08dc228f3f77"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=37c4fafb-e1e2-4540-ae12-08dc228f3f77&ccId=19000101_000001&lang=en_US&selectedMe",
+  "times": 2,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Aeries Software\"; https://www.aeries.com/careers/ links to the board (seen 2 times)",
+  "postings": 2,
+  "titles": [
+   "Account Executive (SMB) - ActivityHero",
+   "Sales Development Representative (SDR)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:00-05:00",
+   "page": "https://www.aeries.com/careers/"
+  }
+ },
+ {
+  "id": "agate-software",
+  "name": "Agate Software",
+  "was": "unknown",
+  "found": {
+   "type": "lever",
+   "ref": "agatesoftware"
+  },
+  "saw": "https://jobs.lever.co/agatesoftware",
+  "times": 1,
+  "verified": "5 posting(s) readable",
+  "board_calls_itself": "Agate Software",
+  "identity": "unknown",
+  "identity_why": "the board names \"Agate Software\", which is this company, but a reader checking this plan doubted it: two readers: the board is titled Agate Software and its roles sit in Agate's two offices, but Agate's own careers page calls it an affiliate of IGX Solutions, and IGX Solutions' own Join Our Team page sends applicants to this same board - one board shared by the Agate and IGX pair, which is a group's board; https://agatesoftware.com/join-the-team/ links to the board",
+  "postings": 5,
+  "titles": [
+   "Account Executive \u2013 Public Sector SaaS (Hybrid \u2013 Okemos, MI) [AE-2026-10]",
+   "Business Development Representative \u2013 Hybrid in Okemos, MI [BDR-2026-10]",
+   "Head of Project Management",
+   "Project Manager - Glendale AZ [PJM-2026-10]",
+   "Senior Systems Administrator - Hybrid in Okemos, MI [SSA-2026-10]"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:00-05:00",
+   "page": "https://agatesoftware.com/join-the-team/"
+  }
+ },
+ {
+  "id": "allocore",
+  "name": "Allocore",
+  "was": "unknown",
+  "found": {
+   "type": "jazzhr",
+   "ref": "summittechnologygroup"
+  },
+  "saw": "https://app.jazz.co/widgets/basic/create/summittechnologygroup",
+  "times": 1,
+  "verified": "7 posting(s) readable",
+  "board_calls_itself": "Allocore",
+  "identity": "unknown",
+  "identity_why": "the board names \"Allocore\", which is this company, but a reader checking this plan doubted it: two readers: the board names Allocore and links allocore.com, but the JazzHR account is summittechnologygroup (Allocore's board chair is founder and CEO of Summit Technology Holding Group) and one posting still reads 'determine if Lenders is the place for you' - possibly a group account shared with other companies; https://allocore.com/company/join-our-team/ loads the board",
+  "postings": 7,
+  "titles": [
+   "AWS Cloud Architect (Hybrid)",
+   "Business Analyst, Client Delivery \u2013 Multiple Levels",
+   "Jr Production Support Engineer",
+   "Product Operations Analyst, Client Delivery \u2013 Multiple Levels",
+   "Product Operations Associate",
+   "Program Manager - Multiple Levels",
+   "Senior Cloud Operations Engineer (Hybrid)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:04-05:00",
+   "page": "https://allocore.com/company/join-our-team/"
+  }
+ },
+ {
+  "id": "amano-mcgann",
+  "name": "Amano McGann",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "63918673-1ceb-4b28-abef-3f2c07864147"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=63918673-1ceb-4b28-abef-3f2c07864147",
+  "times": 1,
+  "verified": "10 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Amano McGann\"; https://amanomcgann.com/about-us/ links to the board",
+  "postings": 10,
+  "titles": [
+   "Controller",
+   "Budget and Forecasting Analyst",
+   "Sales Executive",
+   "Administrative Assistant",
+   "Field Service Technician",
+   "Field Service Technician",
+   "Platform Engineer",
+   "Field Service Technician"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:05-05:00",
+   "page": "https://amanomcgann.com/about-us/"
+  }
+ },
+ {
+  "id": "apporto",
+  "name": "Apporto",
+  "was": "unknown",
+  "found": {
+   "type": "workable",
+   "ref": "481360"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/481360?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Apporto",
+  "identity": "unknown",
+  "identity_why": "the board names \"Apporto\", which is this company, but their site asks for this board by its Workable account number (481360), and the board's own address could not be found from it (it lists no posting whose address could be followed to the board's own): apply.workable.com/481360 is Workable's error page, so the board is wired by its slug or not at all, and its slug has to be found first (the public site and the desk link their own site for a number, never that address); the board read no postings, so nothing shows it is the board they hire through today; https://www.apporto.com/company loads its jobs from the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:36-05:00",
+   "page": "https://www.apporto.com/company"
+  }
+ },
+ {
+  "id": "aristotle-international",
+  "name": "Aristotle International",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "aristotle"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/153474?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "10 posting(s) readable",
+  "board_calls_itself": "Aristotle",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Aristotle\", which is not \"Aristotle International\": one name only contains the other, and a name inside another name is never taken for the same company; https://www.aristotle.com/about/careers/ loads its jobs from the board; their site asks for it as Workable account 153474; its postings open under apply.workable.com/aristotle",
+  "postings": 10,
+  "titles": [
+   "Client Relations Manager",
+   "Digital Design Director",
+   "Manager, Advocacy",
+   "Political Compliance Manager",
+   "Senior .Net Software Engineer",
+   "Senior Director, Advocacy",
+   "Senior Full-Stack Developer",
+   "Senior Political Compliance Manager"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:38-05:00",
+   "page": "https://www.aristotle.com/about/careers/"
+  }
+ },
+ {
+  "id": "ativion",
+  "name": "Ativion",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "3781e231-9b49-4cf6-8045-26975b3ec207|19000101_000003"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=3781e231-9b49-4cf6-8045-26975b3ec207&ccId=19000101_00000",
+  "times": 1,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Ativion\"; https://www.ativion.com/careers/ loads its jobs from the board",
+  "postings": 2,
+  "titles": [
+   "Channel Sales Executive EMEA",
+   "Manager of UK Operations"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:06-05:00",
+   "page": "https://www.ativion.com/careers/"
+  }
+ },
+ {
+  "id": "babel-street",
+  "name": "Babel Street",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "babelstreet"
+  },
+  "saw": "https://api.greenhouse.io/v1/boards/babelstreet/departments?content=true",
+  "times": 1,
+  "verified": "10 posting(s) readable",
+  "board_calls_itself": "Babel Street",
+  "identity": "unknown",
+  "identity_why": "the board names \"Babel Street\", which is this company, but their own site also names other:babelstreet.jp, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.babelstreet.com/about-us/careers loads the board",
+  "postings": 10,
+  "titles": [
+   "Commercial Account Executive",
+   "Engineering Manager - Secure Access",
+   "Mission Director - IC",
+   "Mission Engineer",
+   "Partnership Sales Channel Manager",
+   "Principal Data Architect",
+   "Senior Software Engineer",
+   "Sr. Account Executive"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:07-05:00",
+   "page": "https://www.babelstreet.com/about-us/careers"
+  }
+ },
+ {
+  "id": "benchmark-analytics",
+  "name": "Benchmark Analytics",
+  "was": "html",
+  "found": {
+   "type": "ashby",
+   "ref": "Benchmark Analytics"
+  },
+  "saw": "https://jobs.ashbyhq.com/Benchmark%20Analytics?embed=js",
+  "times": 1,
+  "verified": "6 posting(s) readable",
+  "board_calls_itself": "Benchmark Analytics",
+  "identity": "unknown",
+  "identity_why": "the board names \"Benchmark Analytics\", which is this company, but their site points to more than one board: ashby/Benchmark Analytics (seen 3 times) and ashby/Benchmark (seen 1 time); https://www.benchmarkanalytics.com/careers/ embeds the board",
+  "postings": 6,
+  "titles": [
+   "Mid-Market Account Executive",
+   "Data Analyst",
+   "Senior Software Engineer",
+   "Product Owner",
+   "Public Safety Enterprise Sales Representative",
+   "Law Enforcement Field Consultant (FL)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:08-05:00",
+   "page": "https://www.benchmarkanalytics.com/careers/"
+  }
+ },
+ {
+  "id": "blaise-transit",
+  "name": "Blaise Transit",
+  "was": "html",
+  "found": {
+   "type": "breezy",
+   "ref": "blaise-transit-ltd"
+  },
+  "saw": "https://blaise-transit-ltd.breezy.hr/p/a23214e7b693-account-manager-gestionnaire-de-comptes?state=published",
+  "times": 4,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Blaise Transit Ltd",
+  "identity": "unknown",
+  "identity_why": "the board names \"Blaise Transit Ltd\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.blaisetransit.com/careers links to the board (seen 4 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:12-05:00",
+   "page": "https://www.blaisetransit.com/careers"
+  }
+ },
+ {
+  "id": "blr",
+  "name": "BLR",
+  "was": "unknown",
+  "found": {
+   "type": "jazzhr",
+   "ref": "simplifycompliance"
+  },
+  "saw": "https://simplifycompliance.applytojob.com/apply",
+  "times": 3,
+  "verified": "7 posting(s) readable",
+  "board_calls_itself": "BLR | Leadership Platforms | CCMI",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"BLR | Leadership Platforms | CCMI\", which is not \"BLR\": one name only contains the other, and a name inside another name is never taken for the same company; the board also gives its website as simplifycompliance.com, where the one on file is blr.com; https://blr.com/careers/ links to the board (seen 3 times)",
+  "postings": 7,
+  "titles": [
+   "Strategic Learning Partner (Sales Account Executive)",
+   "Strategic Learning Partner (Sales Account Executive)",
+   "Strategic Learning Partner (Sales Account Executive)",
+   "Strategic Learning Partner (Sales Account Executive)",
+   "Research & Content Director",
+   "Strategic Learning Partner (Sales Account Executive)",
+   "Strategic Learning Partner (Sales Account Executive)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:15-05:00",
+   "page": "https://blr.com/careers/"
+  }
+ },
+ {
+  "id": "boomi",
+  "name": "Boomi",
+  "was": "unknown",
+  "found": {
+   "type": "greenhouse",
+   "ref": "boomilp"
+  },
+  "saw": "https://boards-api.greenhouse.io/v1/boards/boomilp/departments",
+  "times": 1,
+  "verified": "33 posting(s) readable; 25 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "Boomi",
+  "identity": "unknown",
+  "identity_why": "the board names \"Boomi\", which is this company, but their own site also names other:indeed.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://boomi.com/company/careers/ loads its jobs from the board",
+  "postings": 25,
+  "titles": [
+   "Account Executive Commercial France (French speaking)",
+   "Account Executive Commercial Iberia (Spanish speaking)",
+   "Account Manager - Emerging Market",
+   "Director, Solution Engineering - Commercial",
+   "Enterprise Account Executive",
+   "Enterprise Account Executive - Northeast",
+   "Enterprise Account Executive - Southeast",
+   "Enterprise Account Manager"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:16-05:00",
+   "page": "https://boomi.com/company/careers/"
+  }
+ },
+ {
+  "id": "canibuild",
+  "name": "Canibuild",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "562291"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/562291?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Canibuild Au Pty Ltd",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Canibuild Au Pty Ltd\", which is not \"Canibuild\": one name only contains the other, and a name inside another name is never taken for the same company; their site asks for this board by its Workable account number (562291), and the board's own address could not be found from it (it lists no posting whose address could be followed to the board's own): apply.workable.com/562291 is Workable's error page, so the board is wired by its slug or not at all, and its slug has to be found first (the public site and the desk link their own site for a number, never that address); the board read no postings, so nothing shows it is the board they hire through today; https://canibuild.com/en-us/careers loads its jobs from the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:39-05:00",
+   "page": "https://canibuild.com/en-us/careers"
+  }
+ },
+ {
+  "id": "casepoint",
+  "name": "Casepoint",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "dcda5d87-dd88-47b5-adb3-4f1ea5346711|9200777807097_2"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=dcda5d87-dd88-47b5-adb3-4f1ea5346711&ccId=9200777807097_2&lang=en_US",
+  "times": 2,
+  "verified": "3 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Casepoint\"; their own site also names other:keka.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.casepoint.com/careers/ links to the board (seen 2 times)",
+  "postings": 3,
+  "titles": [
+   "Sr. Account Executive, SLED",
+   "Business Development Representative, SLED",
+   "Business Development Representative, SLED"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:17-05:00",
+   "page": "https://www.casepoint.com/careers/"
+  }
+ },
+ {
+  "id": "chainalysis",
+  "name": "Chainalysis",
+  "was": "html",
+  "found": {
+   "type": "ashby",
+   "ref": "chainalysis-careers"
+  },
+  "saw": "https://jobs.ashbyhq.com/chainalysis-careers?embed=js",
+  "times": 1,
+  "verified": "51 posting(s) readable",
+  "board_calls_itself": "Chainalysis",
+  "identity": "unknown",
+  "identity_why": "the board names \"Chainalysis\", which is this company, but their site points to more than one board: ashby/chainalysis-careers (seen 4 times) and ashby/chainalysis-government-solutions (seen 4 times); https://www.chainalysis.com/careers/job-openings/ embeds the board",
+  "postings": 51,
+  "titles": [
+   "Deal Desk Manager (Fixed-Term)",
+   "Revenue Operations Analyst",
+   "Head of US Government Affairs",
+   "Client Account Director - Public Sector - Intelligence",
+   "Channel Partner Manager, APAC",
+   "Deployment Strategist - Crypto Investigations",
+   "Director, Total Rewards",
+   "Staff Software Engineer, Graphs"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:19-05:00",
+   "page": "https://www.chainalysis.com/careers/job-openings/"
+  }
+ },
+ {
+  "id": "checkr",
+  "name": "Checkr",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "checkr"
+  },
+  "saw": "https://job-boards.greenhouse.io/checkr/jobs/8304795",
+  "times": 38,
+  "verified": "38 posting(s) readable",
+  "board_calls_itself": "Checkr",
+  "identity": "unknown",
+  "identity_why": "the board names \"Checkr\", which is this company, but their site points to more than one board: greenhouse/checkr (seen 38 times) and greenhouse/chile (seen 12 times); https://checkr.com/company/careers/open-careers links to the board (seen 38 times)",
+  "postings": 38,
+  "titles": [
+   "AV & Event Specialist II",
+   "Category Manager",
+   "Commercial Account Executive",
+   "Creative Director",
+   "Customer Success Implementation Specialist",
+   "Director, Customer Success, Government",
+   "Director of Customer Success",
+   "Director of Procurement"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:20-05:00",
+   "page": "https://checkr.com/company/careers/open-careers"
+  }
+ },
+ {
+  "id": "comtech",
+  "name": "Comtech (Solacom)",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "09a14fa2-30e8-49e6-80ed-82a5812bd326|9200365399883_2"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=09a14fa2-30e8-49e6-80ed-82a5812bd326&ccId=9200365399883_2&lang=en_US",
+  "times": 3,
+  "verified": "20 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Comtech (Solacom)\"; https://comtech.com/careers/ links to the board (seen 3 times)",
+  "postings": 20,
+  "titles": [
+   "Contracts Administrator I",
+   "Manager, Facilities Maintenance & EHS",
+   "Staff Test Engineer, SATCOM",
+   "CNO Subject Matter Expert (SME) \u2013 Network Analysis",
+   "CNO Training Developer/Technical Writer",
+   "Sales Director",
+   "Senior Project Manager",
+   "Staff Network Engineer"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:24-05:00",
+   "page": "https://comtech.com/careers/"
+  }
+ },
+ {
+  "id": "coursedog",
+  "name": "Coursedog",
+  "was": "unknown",
+  "found": {
+   "type": "workable",
+   "ref": "coursedog-1"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/718080?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "8 posting(s) readable",
+  "board_calls_itself": "Coursedog",
+  "identity": "unknown",
+  "identity_why": "the board names \"Coursedog\", which is this company, but their own site also names pinpoint, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.coursedog.com/company/careers loads its jobs from the board; their site asks for it as Workable account 718080; its postings open under apply.workable.com/coursedog-1",
+  "postings": 8,
+  "titles": [
+   "Account Executive, Existing Customers",
+   "Associate Business Development Representative",
+   "Customer Engagement Manager",
+   "Growth Marketing Manager",
+   "Sales Account Manager, Pod Lead",
+   "Sales Solutions Engineer - Ed Tech",
+   "Senior Marketing Specialist",
+   "Technical Integration Consultant"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:41-05:00",
+   "page": "https://www.coursedog.com/company/careers"
+  }
+ },
+ {
+  "id": "cree-lighting",
+  "name": "Cree Lighting",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "5a2153de-fa05-49cf-b1de-0725fda732bb"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=5a2153de-fa05-49cf-b1de-0725fda732bb&ccId=19000101_000001&lang=en_US",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Cree Lighting\"; the board read no postings, so nothing shows it is the board they hire through today; https://www.creelighting.com/company/careers/ links to the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:24-05:00",
+   "page": "https://www.creelighting.com/company/careers/"
+  }
+ },
+ {
+  "id": "crowdriff",
+  "name": "CrowdRiff",
+  "was": "html",
+  "found": {
+   "type": "lever",
+   "ref": "crowdriff"
+  },
+  "saw": "https://api.lever.co/v0/postings/crowdriff?group=team&mode=json",
+  "times": 1,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": "CrowdRiff",
+  "identity": "unknown",
+  "identity_why": "the board names \"CrowdRiff\", which is this company, but their site points to more than one board: lever/crowdriff (seen 3 times) and bamboohr/crowdriff (seen 1 time); https://crowdriff.com/careers/ loads its jobs from the board",
+  "postings": 2,
+  "titles": [
+   "Account Manager",
+   "Principal, Lifecyle Marketing"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:25-05:00",
+   "page": "https://crowdriff.com/careers/"
+  }
+ },
+ {
+  "id": "current-lighting-solutions",
+  "name": "Current Lighting Solutions",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "47265edf-244d-45d7-ad34-fc81d446a318"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=47265edf-244d-45d7-ad34-fc81d446a318&ccId=19000101_000001&lang=en_US",
+  "times": 1,
+  "verified": "20 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Current Lighting Solutions\"; https://www.currentlighting.com/ links to the board",
+  "postings": 20,
+  "titles": [
+   "Senior Embedded Firmware Engineer",
+   "Lead Design Engineer",
+   "Electrical Engineer (Entry-level)",
+   "Warehouse Operations Supervisor",
+   "Pole Shop Operator - 2nd Shift",
+   "Practicante Finanzas (Temporal)",
+   "Senior Program Manager",
+   "Intern"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:29-05:00",
+   "page": "https://www.currentlighting.com/"
+  }
+ },
+ {
+  "id": "docusign-inc",
+  "name": "Docusign Inc.",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.docusign.com"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 481,
+  "verified": "239 posting(s) readable; 223 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (its answer carried no name), so nothing on it says it is \"Docusign Inc.\"; their site points to more than one board: jibe/careers.docusign.com (seen 1105 times) and icims/employees-docusign (seen 16 times) and icims/uscareers-docusign (seen 15 times) and icims/latamcareers-docusign (seen 14 times); https://careers.docusign.com/careers-home/jobs loads the board (seen 481 times)",
+  "postings": 223,
+  "titles": [
+   "Finance Manager, Digital Growth",
+   "Sr. Data Engineer AI",
+   "Manager, Talent Acquisition",
+   "Lead Partner Solution Architect LATAM",
+   "Senior Incident Responder",
+   "Director, Software Engineering",
+   "Lead Data and Analytics Instrumentation Manager",
+   "Lead Data Engineer"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:34-05:00",
+   "page": "https://careers.docusign.com/careers-home/jobs"
+  }
+ },
+ {
+  "id": "door2door",
+  "name": "door2door",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "6344"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/6344?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "door2door",
+  "identity": "unknown",
+  "identity_why": "the board names \"door2door\", which is this company, but their site asks for this board by its Workable account number (6344), and the board's own address could not be found from it (it lists no posting whose address could be followed to the board's own): apply.workable.com/6344 is Workable's error page, so the board is wired by its slug or not at all, and its slug has to be found first (the public site and the desk link their own site for a number, never that address); the board read no postings, so nothing shows it is the board they hire through today; https://door2door.io/en/about-us/jobs/ loads the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:41-05:00",
+   "page": "https://door2door.io/en/about-us/jobs/"
+  }
+ },
+ {
+  "id": "eagleview",
+  "name": "EagleView",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.eagleview.com"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 62,
+  "verified": "13 posting(s) readable; 12 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "EagleView",
+  "identity": "unknown",
+  "identity_why": "the board names \"EagleView\", which is this company, but their site points to more than one board: jibe/careers.eagleview.com (seen 148 times) and icims/careers-eagleview (seen 20 times) and icims/careers-apac-eagleview (seen 4 times); their own site also names other:eagleview.co.in, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.eagleview.com/jobs loads the board (seen 62 times)",
+  "postings": 12,
+  "titles": [
+   "Sr. Software Engineer",
+   "Technical Account Manager (Kansas, Missouri, Oklahoma, and Arkansas)",
+   "Technical Account Manager (Pacific Northwest)",
+   "Sr. Software Engineer",
+   "Enterprise Architect",
+   "Technical Account Manager (Florida, Georgia, Alabama, and South Carolina)",
+   "Regional Sales Manager",
+   "Data Scientist II"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:35-05:00",
+   "page": "https://careers.eagleview.com/jobs"
+  }
+ },
+ {
+  "id": "earthdaily",
+  "name": "EarthDaily",
+  "was": "html",
+  "found": {
+   "type": "jazzhr",
+   "ref": "earthdaily"
+  },
+  "saw": "https://earthdaily.applytojob.com/apply/",
+  "times": 1,
+  "verified": "7 posting(s) readable",
+  "board_calls_itself": "EarthDaily Analytics",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"EarthDaily Analytics\", which is not \"EarthDaily\": one name only contains the other, and a name inside another name is never taken for the same company; the board gives its website as earthdaily.com, which is the one on file; their site points to more than one board: jazzhr/earthdaily (seen 19 times) and jazzhr/earthdailyagro (seen 5 times); https://earthdaily.com/job-openings loads the board",
+  "postings": 7,
+  "titles": [
+   "Sr. Software Engineer (ML Researcher)",
+   "Corporate Controller",
+   "Treasury & P2P Manager",
+   "Director, Revenue Operations",
+   "Sales Development Representative - APAC",
+   "Sales Engineer - APAC",
+   "Sales Operations Analyst"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:36-05:00",
+   "page": "https://earthdaily.com/job-openings"
+  }
+ },
+ {
+  "id": "econolite",
+  "name": "Econolite",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "336f663d-4d12-4b4f-9883-371d431e3759"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=336f663d-4d12-4b4f-9883-371d431e3759&ccId=19000101_000001&jobId=952080&source=C",
+  "times": 28,
+  "verified": "20 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Econolite\"; https://www.econolite.com/careers/career-opportunities/ links to the board (seen 28 times)",
+  "postings": 20,
+  "titles": [
+   "Account Executive",
+   "Field Support Representative IV",
+   "Senior Technician",
+   "Director of Hardware Engineering",
+   "Support Operations Specialist",
+   "Senior Product Manager, Controllers",
+   "PCB Designer",
+   "Vice President, Software Development"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:38-05:00",
+   "page": "https://www.econolite.com/careers/career-opportunities/"
+  }
+ },
+ {
+  "id": "edulog",
+  "name": "Edulog",
+  "was": "html",
+  "found": {
+   "type": "rippling",
+   "ref": "education-logistics"
+  },
+  "saw": "https://ats.rippling.com/embed/education-logistics/jobs?s=https://www.edulog.com/careers/",
+  "times": 1,
+  "verified": "1 posting(s) readable; 0 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "Education Logistics",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Education Logistics\", which is not \"Edulog\": a different name, which is what a parent's, an operating entity's or another company's board looks like; the board read no postings, so nothing shows it is the board they hire through today; https://www.edulog.com/careers/ embeds the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:46-05:00",
+   "page": "https://www.edulog.com/careers/"
+  }
+ },
+ {
+  "id": "ellucian",
+  "name": "Ellucian",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.ellucian.com"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 225,
+  "verified": "54 posting(s) readable; 53 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "\"Ellucian\" does not count as the board naming its employer (jibe hiring_organization on the first 50 of 54 postings; the rest were not read, so these may not be every name the board states): only a name the board states for itself, over the whole of it, says anything about \"Ellucian\" - never one read off a slug, an address, a host or the first page of a longer board; their site points to more than one board: jibe/careers.ellucian.com (seen 404 times) and icims/opportunities-ellucian (seen 22 times) and icims/usa-ellucian (seen 21 times) and icims/work-ellucian (seen 11 times); their own site also names other:altrulabs.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.ellucian.com/careers-home loads the board (seen 225 times)",
+  "postings": 53,
+  "titles": [
+   "Systems Administrator",
+   "Support Technician, Onsite at Oakwood University, Alabama",
+   "Senior Analyst - SAP S/4 HANA SD",
+   "Senior Software Engineer-Puebla M\u00e9xico",
+   "Senior Project Manager (Higher Education/SaaS/ERP)(Southeast US)",
+   "Senior Manager, Marketing",
+   "Senior Product Counsel, AI & Data | Hybrid | Reston, VA",
+   "Senior Corporate Counsel, Commercial | Hybrid | Reston, VA"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:47-05:00",
+   "page": "https://careers.ellucian.com/careers-home"
+  }
+ },
+ {
+  "id": "first-due",
+  "name": "First Due",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "localitymediallcdbafirstdue"
+  },
+  "saw": "https://job-boards.greenhouse.io/localitymediallcdbafirstdue",
+  "times": 3,
+  "verified": "16 posting(s) readable",
+  "board_calls_itself": "First Due",
+  "identity": "unknown",
+  "identity_why": "the board names \"First Due\", which is this company, but their own site also names zohorecruit, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.firstdue.com/ links to the board (seen 3 times)",
+  "postings": 16,
+  "titles": [
+   "Account Executive",
+   "Account Executive - EMS",
+   "Cloud Security Software Engineer",
+   "Director, Product Marketing",
+   "Engineering Manager",
+   "Implementation Consultant - Assets & Inventory",
+   "Implementation Manager, Core",
+   "Implementation Manager, Enterprise"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:50-05:00",
+   "page": "https://www.firstdue.com/"
+  }
+ },
+ {
+  "id": "fortem-technologies",
+  "name": "Fortem Technologies",
+  "was": "html",
+  "found": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/fa9b835a-8112-420d-9c09-631d7b67b31c/FORTEM-TECHNOLOGIES"
+  },
+  "saw": "https://recruiting.paylocity.com/recruiting/jobs/All/fa9b835a-8112-420d-9c09-631d7b67b31c/FORTEM-TECHNOLOGIES",
+  "times": 1,
+  "verified": "18 posting(s) readable",
+  "board_calls_itself": "FORTEM TECHNOLOGIES",
+  "identity": "unknown",
+  "identity_why": "the board names \"FORTEM TECHNOLOGIES\", which is this company, but it is in the Acquisitions queue: this board is on linkedin.com, which is LinkedIn's own domain. Their postings are not necessarily Fortem Technologies's; https://fortemtech.com/ links to the board",
+  "postings": 18,
+  "titles": [
+   "Senior Program Manager",
+   "Project Manager",
+   "Sr Director, Customer Experience",
+   "Customer Success Engineer III",
+   "Contracts Manager",
+   "2027 Internships",
+   "Systems Integrations Engineer (Graveyard Shift)",
+   "Warehouse Associate"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:50-05:00",
+   "page": "https://fortemtech.com/"
+  }
+ },
+ {
+  "id": "get-group-north-america",
+  "name": "GET Group North America",
+  "was": "unknown",
+  "found": {
+   "type": "bamboohr",
+   "ref": "getgroupna"
+  },
+  "saw": "https://getgroupna.bamboohr.com/js/jobs2.php",
+  "times": 3,
+  "verified": "9 posting(s) readable",
+  "board_calls_itself": "Global Enterprise Technologies",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Global Enterprise Technologies\", which is not \"GET Group North America\": a different name, which is what a parent's, an operating entity's or another company's board looks like; https://getgroupna.com/about/careers/ loads its jobs from the board (seen 3 times)",
+  "postings": 9,
+  "titles": [
+   "Mechatronics Service Technician",
+   "Mechatronics Service Technician",
+   "Internal Posting Only- Lead Mechatronics Support Engineer",
+   "Mechatronics Service Technician",
+   "Mechatronics Service Technician",
+   "Mechatronics Service Technician",
+   "Mechatronics Service Technician",
+   "Mechatronics Technician"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:53-05:00",
+   "page": "https://getgroupna.com/about/careers/"
+  }
+ },
+ {
+  "id": "goodvision",
+  "name": "GoodVision",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "goodvision"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/587945?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "1 posting(s) readable",
+  "board_calls_itself": "GoodVision s.r.o.",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"GoodVision s.r.o.\", which is not \"GoodVision\": one name only contains the other, and a name inside another name is never taken for the same company; https://goodvisionlive.com/careers loads its jobs from the board; their site asks for it as Workable account 587945; its postings open under apply.workable.com/goodvision",
+  "postings": 1,
+  "titles": [
+   "Marketing Specialist"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:45-05:00",
+   "page": "https://goodvisionlive.com/careers"
+  }
+ },
+ {
+  "id": "govpath",
+  "name": "GovPath",
+  "was": "unknown",
+  "found": {
+   "type": "bamboohr",
+   "ref": "truepointsolutions"
+  },
+  "saw": "https://truepointsolutions.bamboohr.com/careers",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "TruePoint Solutions",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"TruePoint Solutions\", which is not \"GovPath\": a different name, which is what a parent's, an operating entity's or another company's board looks like; discovery already doubted a board for this company (bamboohr:truepointsolutions reads (0 posting(s)), but does not match 'GovPath'; likely a parent or another company); it is in the Acquisitions queue; the board read no postings, so nothing shows it is the board they hire through today; https://www.govpath.tech/careers links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:56-05:00",
+   "page": "https://www.govpath.tech/careers"
+  }
+ },
+ {
+  "id": "graph-aware-limited",
+  "name": "Graph Aware Limited",
+  "was": "html",
+  "found": {
+   "type": "breezy",
+   "ref": "graphaware"
+  },
+  "saw": "https://graphaware.breezy.hr/embed/js?inline=true&group_by=dept",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "GraphAware",
+  "identity": "unknown",
+  "identity_why": "the board names \"GraphAware\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://graphaware.com/careers/ loads its jobs from the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:11:57-05:00",
+   "page": "https://graphaware.com/careers/"
+  }
+ },
+ {
+  "id": "hydropoint-data-systems",
+  "name": "HydroPoint Data Systems",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "84c42138-0941-462f-8d99-45fc2dbb3768"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=84c42138-0941-462f-8d99-45fc2dbb3768&ccId=19000101_000001&jobId=566447&lang=en_",
+  "times": 5,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"HydroPoint Data Systems\"; https://www.hydropoint.com/company/careers/ links to the board (seen 5 times)",
+  "postings": 2,
+  "titles": [
+   "Operations Assistant",
+   "Regional Sales Manager Florida"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:02-05:00",
+   "page": "https://www.hydropoint.com/company/careers/"
+  }
+ },
+ {
+  "id": "infinite-campus",
+  "name": "Infinite Campus",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "901f2299-0e41-47d8-bbb1-04f9f6d48676"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=901f2299-0e41-47d8-bbb1-04f9f6d48676&ccId=19000101_000001&type=JS&lang=en_US",
+  "times": 4,
+  "verified": "5 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Infinite Campus\"; https://www.infinitecampus.com/about/careers/ links to the board (seen 4 times)",
+  "postings": 5,
+  "titles": [
+   "SOFTWARE ENGINEER, SR. - CLOUD (503A9926)",
+   "MANAGER, INFRASTRUCTURE SERVICES (315A91826)",
+   "NETWORK SYSTEMS ENGINEER, SR. (315A111026)",
+   "SOFTWARE ENGINEER II - Platform Engineering (50311326)",
+   "MANAGER, ENTERPRISE APPLICATIONS (314A11326)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:05-05:00",
+   "page": "https://www.infinitecampus.com/about/careers/"
+  }
+ },
+ {
+  "id": "intrado-life-safety",
+  "name": "Intrado Life & Safety",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.intrado.com"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 93,
+  "verified": "8 posting(s) readable",
+  "board_calls_itself": "Intrado Life & Safety, Inc.",
+  "identity": "unknown",
+  "identity_why": "the board names \"Intrado Life & Safety, Inc.\", which is this company, but their site points to more than one board: jibe/careers.intrado.com (seen 189 times) and icims/careers-intrado (seen 14 times) and icims/cacareers-intrado (seen 9 times); https://careers.intrado.com/careers-home/jobs loads the board (seen 93 times)",
+  "postings": 8,
+  "titles": [
+   "Senior Product Manager, NGCS ESInet",
+   "Technical Customer Support 2",
+   "Senior Sales Account Executive",
+   "Help Desk Technician 3",
+   "gestionnaire de produit principal (Senior Product Manager)",
+   "Sales Account Executive",
+   "Digital Engagement Specialist",
+   "NOC Technician 2"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:08-05:00",
+   "page": "https://careers.intrado.com/careers-home/jobs"
+  }
+ },
+ {
+  "id": "island",
+  "name": "Island",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "island"
+  },
+  "saw": "https://boards.greenhouse.io/embed/job_board/js?for=island",
+  "times": 2,
+  "verified": "19 posting(s) readable",
+  "board_calls_itself": "Island",
+  "identity": "unknown",
+  "identity_why": "the board names \"Island\", which is this company, but the public board already shows 32 postings for this company (crawl of 2026-11-19) and this board read 19 postings; wiring it would take roles off the board; https://www.island.io/open-positions/position-4412445009 loads the board (seen 2 times)",
+  "postings": 19,
+  "titles": [
+   "AI Implementation Specialist - AI Governance, Gateways, Platform Control",
+   "Benefits and Compensation Manager",
+   "Customer Success Manager",
+   "Deployment Specialist",
+   "Director, Global Growth Marketing",
+   "Global Marketing Program Manager",
+   "Marketing Design & Animation Intern",
+   "Mid Market Sales Representative"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:09-05:00",
+   "page": "https://www.island.io/open-positions/position-4412445009"
+  }
+ },
+ {
+  "id": "kahoot",
+  "name": "Kahoot!",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "kahoot"
+  },
+  "saw": "https://kahoot.workable.com/jobs/5251383",
+  "times": 7,
+  "verified": "12 posting(s) readable",
+  "board_calls_itself": "Kahoot!",
+  "identity": "unknown",
+  "identity_why": "the board names \"Kahoot!\", which is this company, but their own site also names other:kahoot.it, a job platform the crawl cannot read, so which board they hire through today is not settled; https://kahoot.com/open-positions/ links to the board (seen 7 times)",
+  "postings": 12,
+  "titles": [
+   "Sales Executive SME (French-speaking)",
+   "Sales Executive SME (French-speaking)",
+   "Senior Account Executive, Education (France)",
+   "Senior Customer Success Manager (French-speaking)",
+   "Senior Customer Success Manager (French-speaking)",
+   "Senior Customer Success Manager (French-speaking)",
+   "Senior Customer Success Manager (German-speaking)",
+   "Senior Customer Success Manager (German-speaking)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:12-05:00",
+   "page": "https://kahoot.com/open-positions/"
+  }
+ },
+ {
+  "id": "kofile",
+  "name": "Kofile",
+  "was": "html",
+  "found": {
+   "type": "smartrecruiters",
+   "ref": "KofileInc"
+  },
+  "saw": "https://jobs.smartrecruiters.com/KofileInc/744000161139211-document-preservation-specialist",
+  "times": 7,
+  "verified": "9 posting(s) readable",
+  "board_calls_itself": "Kofile Inc.",
+  "identity": "unknown",
+  "identity_why": "the board names \"Kofile Inc.\", which is this company, but their site names this board only in plain text - no link, embed, script or redirect - and a slug left in a sentence can be an old board; https://kofile.com/careers/ names the board (seen 7 times)",
+  "postings": 9,
+  "titles": [
+   "Scanning Systems Specialist",
+   "Supervisor, Imaging",
+   "Document Preservation Specialist",
+   "Production Technician",
+   "Director of Digital Operations",
+   "Preservation Technician",
+   "Digital Imaging Technician",
+   "Director of Pennsylvania Operations"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:18-05:00",
+   "page": "https://kofile.com/careers/"
+  }
+ },
+ {
+  "id": "labware-inc",
+  "name": "LabWare, Inc",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "c34660eb-455f-4abf-97a1-1bbb009ac1dc"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=c34660eb-455f-4abf-97a1-1bbb009ac1dc&ccId=19000101_000001&jobId=291066&source=C",
+  "times": 8,
+  "verified": "10 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"LabWare, Inc\"; http://www.labware.com/about/careers links to the board (seen 8 times)",
+  "postings": 10,
+  "titles": [
+   "Project Manager",
+   "Sales Account Manager",
+   "LabWare Customer Care Consultant",
+   "Technical Trainer",
+   "Senior Validation Engineer",
+   "Associate Consultant",
+   "Consultant",
+   "Validation Engineer"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:19-05:00",
+   "page": "http://www.labware.com/about/careers"
+  }
+ },
+ {
+  "id": "learning-ally",
+  "name": "Learning Ally",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "8e08d051-cf00-439d-9c4c-6c6f3cd3ffbc"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=8e08d051-cf00-439d-9c4c-6c6f3cd3ffbc&ccId=19000101_000001&type=JS&lang=en_US",
+  "times": 1,
+  "verified": "1 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Learning Ally\"; https://learningally.org/careers/ links to the board",
+  "postings": 1,
+  "titles": [
+   "Director of Product Management"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:19-05:00",
+   "page": "https://learningally.org/careers/"
+  }
+ },
+ {
+  "id": "liveview-technologies",
+  "name": "LiveView Technologies (LVT)",
+  "was": "html",
+  "found": {
+   "type": "ashby",
+   "ref": "liveview-technologies"
+  },
+  "saw": "https://jobs.ashbyhq.com/liveview-technologies?embed=js",
+  "times": 1,
+  "verified": "25 posting(s) readable",
+  "board_calls_itself": "LiveView Technologies",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"LiveView Technologies\", which is not \"LiveView Technologies (LVT)\" or any other name on file for them: one name only contains the other, and a name inside another name is never taken for the same company; the board gives its website as lvt.com, which is the one on file; https://www.lvt.com/careers/roles embeds the board",
+  "postings": 25,
+  "titles": [
+   "Staff Technical Program Manager",
+   "Senior Connectivity Engineer",
+   "AR Clerk",
+   "Senior Manager, Software Engineering - Agentic AI Platforms",
+   "Staff ML Data Engineer",
+   "Senior Manager, Software Engineering",
+   "Staff Software Engineer - Backend",
+   "Senior Software Engineer II - Backend"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:24-05:00",
+   "page": "https://www.lvt.com/careers/roles"
+  }
+ },
+ {
+  "id": "millerbernd-manufacturing",
+  "name": "Millerbernd Manufacturing",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "abf58c45-a620-4bbe-ba8e-f3afd9ee8077"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=abf58c45-a620-4bbe-ba8e-f3afd9ee8077&amp;ccId=&amp;jobId=9201927249431_1",
+  "times": 6,
+  "verified": "20 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Millerbernd Manufacturing\"; https://www.millerbernd.com/careers links to the board (seen 6 times)",
+  "postings": 20,
+  "titles": [
+   "Team Lead - 1st shift Shipping & Receiving",
+   "Manufacturing Financial Analyst - onsite in Sauk Rapids, MN",
+   "Machine Operator I",
+   "Manufacturing Supervisor - 1st shift",
+   "Team Lead - 1st shift CP Fab or Machining area",
+   "Automation Technician",
+   "Marketing Specialist",
+   "Commuter Welder"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:27-05:00",
+   "page": "https://www.millerbernd.com/careers"
+  }
+ },
+ {
+  "id": "ms2",
+  "name": "MS2",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "527464"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/527464?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Midwestern Software Solutions, LLC (\"MS2\")",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Midwestern Software Solutions, LLC (\"MS2\")\", which is not \"MS2\": one name only contains the other, and a name inside another name is never taken for the same company; their site asks for this board by its Workable account number (527464), and the board's own address could not be found from it (it lists no posting whose address could be followed to the board's own): apply.workable.com/527464 is Workable's error page, so the board is wired by its slug or not at all, and its slug has to be found first (the public site and the desk link their own site for a number, never that address); the board read no postings, so nothing shows it is the board they hire through today; https://www.ms2soft.com/about-us/careers loads its jobs from the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:48-05:00",
+   "page": "https://www.ms2soft.com/about-us/careers"
+  }
+ },
+ {
+  "id": "msa-safety",
+  "name": "MSA Safety",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.msasafety.com"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 111,
+  "verified": "107 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "\"MSA, The Safety Company\" does not count as the board naming its employer (jibe hiring_organization on the first 50 of 107 postings; the rest were not read, so these may not be every name the board states): only a name the board states for itself, over the whole of it, says anything about \"MSA Safety\" - never one read off a slug, an address, a host or the first page of a longer board; their site points to more than one board: jibe/careers.msasafety.com (seen 143 times) and icims/careers-msasafety (seen 4 times) and icims/internal-international-msasafety (seen 4 times) and icims/internal-msasafety (seen 4 times); their own site also names other:jibeapply.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.msasafety.com/ loads the board (seen 111 times)",
+  "postings": 107,
+  "titles": [
+   "Maintenance Technician",
+   "Temporary Procurement Data Analyst",
+   "Training Instructor",
+   "Customer Service Associate",
+   "HCL Safety Equipment Technician",
+   "RF and Wireless Compliance Engineer",
+   "Jefe de Zona Antofagasta",
+   "HCL Safety Equipment Technician"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:29-05:00",
+   "page": "https://careers.msasafety.com/"
+  }
+ },
+ {
+  "id": "nallian",
+  "name": "Nallian",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "nallian"
+  },
+  "saw": "mailto:nallian@jobs.workablemail.com",
+  "times": 3,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Nallian",
+  "identity": "unknown",
+  "identity_why": "the board names \"Nallian\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://nallian.com/careers links to the board (seen 3 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:30-05:00",
+   "page": "https://nallian.com/careers"
+  }
+ },
+ {
+  "id": "nearmap",
+  "name": "Nearmap",
+  "was": "html",
+  "found": {
+   "type": "smartrecruiters",
+   "ref": "nearmap"
+  },
+  "saw": "https://api.smartrecruiters.com/v1/companies/nearmap/postings?limit=100&offset=0",
+  "times": 2,
+  "verified": "32 posting(s) readable",
+  "board_calls_itself": "Nearmap",
+  "identity": "unknown",
+  "identity_why": "the board names \"Nearmap\", which is this company, but their own site also names paycom, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.nearmap.com/careers loads its jobs from the board (seen 2 times)",
+  "postings": 32,
+  "titles": [
+   "Financial Accountant",
+   "Revenue Systems Administrator",
+   "Payroll Officer - UKG",
+   "Payroll Officer - UKG",
+   "Senior Customer Success Manager",
+   "VP, Sales, Government",
+   "Director, Regulatory Affairs",
+   "Senior Machine Learning Engineer"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:31-05:00",
+   "page": "https://www.nearmap.com/careers"
+  }
+ },
+ {
+  "id": "newsbank",
+  "name": "NewsBank",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "09fae849-7d74-49f9-8d86-5f01ce9a4348|19000101_000003"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=09fae849-7d74-49f9-8d86-5f01ce9a4348&ccId=19000101_00000",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"NewsBank\"; the board read no postings, so nothing shows it is the board they hire through today; https://www.newsbank.com/work-newsbank loads its jobs from the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:33-05:00",
+   "page": "https://www.newsbank.com/work-newsbank"
+  }
+ },
+ {
+  "id": "noredink",
+  "name": "NoRedInk",
+  "was": "unknown",
+  "found": {
+   "type": "greenhouse",
+   "ref": "noredink"
+  },
+  "saw": "https://job-boards.greenhouse.io/embed/job_board?for=noredink",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (its answer carried no name), so nothing on it says it is \"NoRedInk\"; the board read no postings, so nothing shows it is the board they hire through today; https://www.noredink.com/about/jobs/ loads the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:33-05:00",
+   "page": "https://www.noredink.com/about/jobs/"
+  }
+ },
+ {
+  "id": "offenderwatch",
+  "name": "OffenderWatch",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "6fcd00f0-8eb6-4f10-a34c-85e5c222a2de"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=6fcd00f0-8eb6-4f10-a34c-85e5c222a2de&ccId=19000101_000001&type=JS&lang=en_US",
+  "times": 1,
+  "verified": "3 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"OffenderWatch\"; their own site also names paycor, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.offenderwatch.com/careers links to the board",
+  "postings": 3,
+  "titles": [
+   "Community Notifications/Data Entry Specialist",
+   "Quality Assurance/Tier II Support Specialist",
+   "Senior Customer Service Supervisor"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:34-05:00",
+   "page": "https://www.offenderwatch.com/careers"
+  }
+ },
+ {
+  "id": "omnigo-software",
+  "name": "Omnigo Software",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "7eabad14-bc0f-4f66-acf3-ac9fd6fa7388"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=7eabad14-bc0f-4f66-acf3-ac9fd6fa7388&ccId=19000101_000001&lang=en_US",
+  "times": 2,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Omnigo Software\"; https://www.omnigo.com/careers links to the board (seen 2 times)",
+  "postings": 2,
+  "titles": [
+   "Sales Director - Public Safety (Remote Position)",
+   "Database Conversion Specialist (Remote Position)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:34-05:00",
+   "page": "https://www.omnigo.com/careers"
+  }
+ },
+ {
+  "id": "orijin",
+  "name": "Orijin",
+  "was": "unknown",
+  "found": {
+   "type": "lever",
+   "ref": "orijin"
+  },
+  "saw": "https://jobs.lever.co/orijin/93530ded-0d35-4068-808d-2ed8be401df8",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Orijin, a public benefit corporation",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Orijin, a public benefit corporation\", which is not \"Orijin\" or any other name on file for them: one name only contains the other, and a name inside another name is never taken for the same company; the board read no postings, so nothing shows it is the board they hire through today; https://orijin.works/careers links to the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:55-05:00",
+   "page": "https://orijin.works/careers"
+  }
+ },
+ {
+  "id": "otus",
+  "name": "Otus",
+  "was": "unknown",
+  "found": {
+   "type": "bamboohr",
+   "ref": "otus"
+  },
+  "saw": "https://otus.bamboohr.com/js/embed.js",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Otus",
+  "identity": "unknown",
+  "identity_why": "the board names \"Otus\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://otus.com/about/careers loads its jobs from the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:56-05:00",
+   "page": "https://otus.com/about/careers"
+  }
+ },
+ {
+  "id": "oxa",
+  "name": "Oxa",
+  "was": "html",
+  "found": {
+   "type": "ashby",
+   "ref": "oxa"
+  },
+  "saw": "https://jobs.ashbyhq.com/oxa?embed=js&customCssUrl=https://oxa-assets.ryze.uk/ashby-job-board.css",
+  "times": 1,
+  "verified": "8 posting(s) readable",
+  "board_calls_itself": "Oxa",
+  "identity": "unknown",
+  "identity_why": "the board names \"Oxa\", which is this company, but a reader checking this plan doubted it: a reader: the board is Oxa's own (Oxa Autonomy Limited, Oxford UK), but the record describes driverless shuttles for transit and airport operators and Oxa now describes only industrial autonomy (ports, yards, airports) - the record may need correcting before its roles are shown; https://oxa.tech/roles/ embeds the board",
+  "postings": 8,
+  "titles": [
+   "Senior Full-Stack Engineer",
+   "Talent Acquisition Advisor - 12 Month FTC",
+   "Electrical Engineer - Wiring & Assembly",
+   "Robotics Integration Engineer - Launchpad",
+   "Solutions Engineer - Autonomous Vehicles",
+   "Procurement Specialist",
+   "Technical Program Manager - Hardware Abstraction",
+   "Technical Program Manager - Data"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:12:58-05:00",
+   "page": "https://oxa.tech/roles/"
+  }
+ },
+ {
+  "id": "passport",
+  "name": "Passport",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "d23cef2c-fce4-4674-b862-6dab50ccc850"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d23cef2c-fce4-4674-b862-6dab50ccc850&ccId=19000101_000001&lang=en_US",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Passport\"; the board read no postings, so nothing shows it is the board they hire through today; https://www.passportinc.com/company/careers/ links to the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:01-05:00",
+   "page": "https://www.passportinc.com/company/careers/"
+  }
+ },
+ {
+  "id": "pha-web",
+  "name": "PHA-Web",
+  "was": "unknown",
+  "found": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/e388d7be-324c-4613-864a-476a02d101e4/Management-Computer-Support-Inc"
+  },
+  "saw": "https://recruiting.paylocity.com/recruiting/jobs/All/e388d7be-324c-4613-864a-476a02d101e4/Management-Computer-Support-Inc",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Management Computer Support, Inc",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Management Computer Support, Inc\", which is not \"PHA-Web\": a different name, which is what a parent's, an operating entity's or another company's board looks like; discovery already doubted a board for this company (paylocity:Management-Computer-Support-Inc reads (1 posting(s)), but does not match 'PHA-Web'; likely a parent or another company); it is in the Acquisitions queue; the board read no postings, so nothing shows it is the board they hire through today; https://www.pha-web.com/public/about/employment.aspx links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:01-05:00",
+   "page": "https://www.pha-web.com/public/about/employment.aspx"
+  }
+ },
+ {
+  "id": "polimorphic",
+  "name": "Polimorphic",
+  "was": "html",
+  "found": {
+   "type": "ashby",
+   "ref": "polimorphic"
+  },
+  "saw": "https://jobs.ashbyhq.com/polimorphic",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Polimorphic",
+  "identity": "unknown",
+  "identity_why": "the board names \"Polimorphic\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.polimorphic.com/careers loads the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:03-05:00",
+   "page": "https://www.polimorphic.com/careers"
+  }
+ },
+ {
+  "id": "precisely",
+  "name": "Precisely",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "preciselyusjobs"
+  },
+  "saw": "https://job-boards.greenhouse.io/embed/job_board?for=preciselyusjobs&validityToken=dDhq-lKBfB6glZu-Jlag6MKcfisHkYZt_BE4IYiLejYXZw89FObkbApPC7j69kHyyV3DHUB9BHJnC",
+  "times": 1,
+  "verified": "25 posting(s) readable; 23 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "Precisely US Jobs",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Precisely US Jobs\", which is not \"Precisely\": one name only contains the other, and a name inside another name is never taken for the same company; https://www.precisely.com/careers-and-culture/us-jobs/ embeds the board",
+  "postings": 23,
+  "titles": [
+   "Account Executive",
+   "Associate Business Development Representative",
+   "Associate Software Developer (AI)",
+   "Enterprise Account Executive",
+   "Enterprise Account Executive",
+   "Platform Engineer",
+   "Regional Vice President, Strategic Accounts",
+   "Sales Engineer"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:03-05:00",
+   "page": "https://www.precisely.com/careers-and-culture/us-jobs/"
+  }
+ },
+ {
+  "id": "quarterhill",
+  "name": "Quarterhill",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.quarterhill.com"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 124,
+  "verified": "17 posting(s) readable",
+  "board_calls_itself": "Quarterhill",
+  "identity": "unknown",
+  "identity_why": "the board names \"Quarterhill\", which is this company, but their site points to more than one board: jibe/careers.quarterhill.com (seen 264 times) and icims/careers-quarterhill (seen 20 times); their own site also names other:jibeapply.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.quarterhill.com/people loads the board (seen 124 times)",
+  "postings": 17,
+  "titles": [
+   "Manager, Financial Reporting & Accounting",
+   "Senior/Staff Software Engineer",
+   "Manager, Software Development",
+   "Project Manager",
+   "Cloud System Engineer",
+   "Operations Support Specialist",
+   "Test & Field Support Engineer / Ing\u00e9nieur essais et assistance sur site",
+   "ITS Field Technician - Seattle, WA"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:11-05:00",
+   "page": "https://careers.quarterhill.com/people"
+  }
+ },
+ {
+  "id": "radicl",
+  "name": "RADICL",
+  "was": "html",
+  "found": {
+   "type": "rippling",
+   "ref": "radicl-defense"
+  },
+  "saw": "https://ats.rippling.com/embed/radicl-defense/jobs?s=https://radicl.com/careers",
+  "times": 1,
+  "verified": "8 posting(s) readable; 7 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "RADICL",
+  "identity": "unknown",
+  "identity_why": "the board names \"RADICL\", which is this company, but a note about its board is already on file, and wiring would replace it: \"cleared on audit: getradicl.com serves solar and home-services contractors\"; https://radicl.com/careers embeds the board",
+  "postings": 7,
+  "titles": [
+   "Senior Engineer - AI-Driven Workflows",
+   "Senior Software Engineer- Go & Infrastructure",
+   "Senior/ Principal Data Scientist, Security AI & ML",
+   "Senior Product Designer",
+   "Account Executive",
+   "Business Development Representative",
+   "SOC Manager"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:12-05:00",
+   "page": "https://radicl.com/careers"
+  }
+ },
+ {
+  "id": "regrid",
+  "name": "Regrid",
+  "was": "html",
+  "found": {
+   "type": "gusto",
+   "ref": "regrid-map-your-future-c265c805-0902-4628-bd27-d013fdcfb5bc"
+  },
+  "saw": "https://jobs.gusto.com/boards/regrid-map-your-future-c265c805-0902-4628-bd27-d013fdcfb5bc?hsCtaTracking=f32fadc7-2ef2-4bcb-ba61-ded5364f3999%7Cd959f439-eb71-437",
+  "times": 4,
+  "verified": "1 posting(s) readable; 0 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "Regrid - bringing the actionable unit of geography to everyone.",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Regrid - bringing the actionable unit of geography to everyone.\", which is not \"Regrid\": one name only contains the other, and a name inside another name is never taken for the same company; the board read no postings, so nothing shows it is the board they hire through today; https://regrid.com/careers links to the board (seen 4 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:14-05:00",
+   "page": "https://regrid.com/careers"
+  }
+ },
+ {
+  "id": "render-networks",
+  "name": "Render Networks",
+  "was": "html",
+  "found": {
+   "type": "lever",
+   "ref": "rendernetworks"
+  },
+  "saw": "https://jobs.lever.co/rendernetworks?__hstc=171091519.407be6fb86fbce513c175e6862efc810.1795067713144.1795067713144.1795067713144.1&__hssc=171091519.1.1795067713",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Render Networks",
+  "identity": "unknown",
+  "identity_why": "the board names \"Render Networks\", which is this company, but their site points to more than one board: lever/rendernetworks (seen 3 times) and bamboohr/rendernetworks (seen 1 time); the board read no postings, so nothing shows it is the board they hire through today; https://www.rendernetworks.com/cs/c/?cta_guid=fceb32b4-50a3-4d70-8f45-b48a6b8773da&signature=AAH58kGrrBbQzoqsJhTenaylV_tDwezbQQ&portal_id=5136250&pageId=59459760050&placement_guid=0df063bc-dbcb-4c44-b1dc-6703598f4f44&click=c3df102f-904a-4e9c-92a1-dfa4fdbfc2fc&redirect_url=APefjpFDk_-MOBp6yXtXWv3Bjj0ejh1m_lau6FtYFHDNPM1aY7bO1rI5l2iE9_kiVMkoQePmTw0PvnV2CCQX36DoCFtZ2iCTCbtx1lIsHmkE0KigEBnznBceOLHtuSsyTEGtZuzX2e6CtL5AMeURPyjsJFQnAd1EZX0eQ-ML854lWikAYXzYMNVcDZYkV8t-GPH2YiZuxH3pQAtlj2BbV77ufMtT3qQKPBHg195W90KHd4XTJ-Uz_1ZcpVQv46QfzFIKYr62hbDm3NsP9RIGaRdh3lOHbD2p-A&hsutk=407be6fb86fbce513c175e6862efc810&canon=https%3A%2F%2Fwww.rendernetworks.com%2Fcareers&ts=1795067716318&__hstc=171091519.407be6fb86fbce513c175e6862efc810.1795067713144.1795067713144.1795067713144.1&__hssc=171091519.2.1795067713144&__hsfp=8df3451813539e54a8b5903c92d91c98&contentType=standard-page redirects to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:16-05:00",
+   "page": "https://www.rendernetworks.com/cs/c/?cta_guid=fceb32b4-50a3-4d70-8f45-b48a6b8773da&signature=AAH58kGrrBbQzoqsJhTenaylV_tDwezbQQ&portal_id=5136250&pageId=59459760050&placement_guid=0df063bc-dbcb-4c44-b1dc-6703598f4f44&click=c3df102f-904a-4e9c-92a1-dfa4fdbfc2fc&redirect_url=APefjpFDk_-MOBp6yXtXWv3Bjj0ejh1m_lau6FtYFHDNPM1aY7bO1rI5l2iE9_kiVMkoQePmTw0PvnV2CCQX36DoCFtZ2iCTCbtx1lIsHmkE0KigEBnznBceOLHtuSsyTEGtZuzX2e6CtL5AMeURPyjsJFQnAd1EZX0eQ-ML854lWikAYXzYMNVcDZYkV8t-GPH2YiZuxH3pQAtlj2BbV77ufMtT3qQKPBHg195W90KHd4XTJ-Uz_1ZcpVQv46QfzFIKYr62hbDm3NsP9RIGaRdh3lOHbD2p-A&hsutk=407be6fb86fbce513c175e6862efc810&canon=https%3A%2F%2Fwww.rendernetworks.com%2Fcareers&ts=1795067716318&__hstc=171091519.407be6fb86fbce513c175e6862efc810.1795067713144.1795067713144.1795067713144.1&__hssc=171091519.2.1795067713144&__hsfp=8df3451813539e54a8b5903c92d91c98&contentType=standard-page"
+  }
+ },
+ {
+  "id": "roc",
+  "name": "ROC (Rank One Computing)",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "bffbc02a-0a2a-4349-8940-5403dfad1135|9200952486662_3"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=bffbc02a-0a2a-4349-8940-5403dfad1135&ccId=9200952486662_",
+  "times": 1,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"ROC (Rank One Computing)\"; https://roc.ai/careers/ loads its jobs from the board",
+  "postings": 2,
+  "titles": [
+   "Assoc. Software Eng - Comp Vision & Data Eng",
+   "Software Eng - SDK Infrastructure (Associate)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:17-05:00",
+   "page": "https://roc.ai/careers/"
+  }
+ },
+ {
+  "id": "rollkall",
+  "name": "RollKall",
+  "was": "html",
+  "found": {
+   "type": "rippling",
+   "ref": "rollkall-technologies-llc"
+  },
+  "saw": "https://ats.rippling.com/embed/rollkall-technologies-llc/jobs?s=https://www.rollkall.com/company/careers",
+  "times": 1,
+  "verified": "3 posting(s) readable; 2 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "RollKall Technologies, LLC",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"RollKall Technologies, LLC\", which is not \"RollKall\": one name only contains the other, and a name inside another name is never taken for the same company; https://www.rollkall.com/company/careers embeds the board",
+  "postings": 2,
+  "titles": [
+   "Account Executive",
+   "Customer Support Specialist II (Tier 2)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:18-05:00",
+   "page": "https://www.rollkall.com/company/careers"
+  }
+ },
+ {
+  "id": "sita-information-networking-computing-usa-inc",
+  "name": "SITA Information Networking Computing USA Inc.",
+  "was": "html",
+  "found": {
+   "type": "jibe",
+   "ref": "careers.sita.aero"
+  },
+  "saw": "//snowplowjs.jibecdn.com/2.18.2/xK7r45S4KmXL4w8kJapWq.js",
+  "times": 229,
+  "verified": "159 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "\"SITA Switzerland Sarl\" does not count as the board naming its employer (jibe hiring_organization on the first 50 of 159 postings; the rest were not read, so these may not be every name the board states): only a name the board states for itself, over the whole of it, says anything about \"SITA Information Networking Computing USA Inc.\" - never one read off a slug, an address, a host or the first page of a longer board; https://careers.sita.aero/ loads the board (seen 229 times)",
+  "postings": 159,
+  "titles": [
+   "Site Reliability Engineer/ Expert/ Specialist",
+   "Reward Manager",
+   "Senior Software Developer",
+   "Specialist Customer Support",
+   "Project Portfolio Manager",
+   "Senior Contract Manager",
+   "Solution Engineer, Associate",
+   "Senior Manager Business Operations"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:21-05:00",
+   "page": "https://careers.sita.aero/"
+  }
+ },
+ {
+  "id": "spothero",
+  "name": "SpotHero",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "spothero"
+  },
+  "saw": "https://job-boards.greenhouse.io/embed/job_app?for=spothero&validityToken=dBzlw6mA5z8DrVYGf2qcAVHhZBVYEHwF9aVbpkP2jgtQWn0vvkFYoyLk6BevfQhi6ztTRfG_4Ylfq3KPUVJYdH",
+  "times": 1,
+  "verified": "7 posting(s) readable; 6 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "SpotHero",
+  "identity": "unknown",
+  "identity_why": "the board names \"SpotHero\", which is this company, but a reader checking this plan doubted it: two readers: the board is SpotHero's own Greenhouse account, but its careers page reads 'Careers at SpotHero by Uber' and its press page covers Uber's acquisition (November 2026); the record says nothing about Uber; https://spothero.com/careers/113291 embeds the board",
+  "postings": 6,
+  "titles": [
+   "Automation Engineer I",
+   "Customer Hero Operations Specialist",
+   "Growth Manager II (Account Manager), Phoenix/Las Vegas",
+   "Marketing Analyst",
+   "Product Manager, Acquisitions",
+   "Senior Data Engineer I"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:23-05:00",
+   "page": "https://spothero.com/careers/113291"
+  }
+ },
+ {
+  "id": "status-solutions",
+  "name": "Status Solutions",
+  "was": "html",
+  "found": {
+   "type": "workable",
+   "ref": "10865"
+  },
+  "saw": "https://apply.workable.com/api/v1/widget/accounts/10865?origin=embed&callback=whrcallback",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Status Solutions, LLC",
+  "identity": "unknown",
+  "identity_why": "the board names \"Status Solutions, LLC\", which is this company, but their site asks for this board by its Workable account number (10865), and the board's own address could not be found from it (it lists no posting whose address could be followed to the board's own): apply.workable.com/10865 is Workable's error page, so the board is wired by its slug or not at all, and its slug has to be found first (the public site and the desk link their own site for a number, never that address); the board read no postings, so nothing shows it is the board they hire through today; https://www.statussolutions.com/careers/ loads its jobs from the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:10:54-05:00",
+   "page": "https://www.statussolutions.com/careers/"
+  }
+ },
+ {
+  "id": "swiftcomply",
+  "name": "SwiftComply",
+  "was": "html",
+  "found": {
+   "type": "rippling",
+   "ref": "swiftcomply"
+  },
+  "saw": "https://ats.rippling.com/embed/swiftcomply/jobs?s=https://www.swiftcomply.com/careers/",
+  "times": 1,
+  "verified": "1 posting(s) readable; 0 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "SwiftComply",
+  "identity": "unknown",
+  "identity_why": "the board names \"SwiftComply\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.swiftcomply.com/careers/ embeds the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:25-05:00",
+   "page": "https://www.swiftcomply.com/careers/"
+  }
+ },
+ {
+  "id": "task-force-tips",
+  "name": "Task Force Tips",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "7339b347-63bb-4220-baf6-4c82e9c51d06|9200568202327_2"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=7339b347-63bb-4220-baf6-4c82e9c51d06&ccId=9200568202327_2&lang=en_US",
+  "times": 3,
+  "verified": "7 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Task Force Tips\"; https://tft.com/careers/ links to the board (seen 3 times)",
+  "postings": 7,
+  "titles": [
+   "IncomingReceiving QualityAssurance Specialist",
+   "Service and Lab Technician",
+   "IncomingReceiving QualityAssurance Specialist",
+   "Assembler",
+   "Mechanical Design Engineer",
+   "CNC Operator Lathe",
+   "Account Manager - (residency required in Texas)"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:29-05:00",
+   "page": "https://tft.com/careers/"
+  }
+ },
+ {
+  "id": "tax-management-associates",
+  "name": "Tax Management Associates",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "f3a2f871-c465-4fce-a6a0-1455b76e41c5"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=f3a2f871-c465-4fce-a6a0-1455b76e41c5&ccId=19000101_000001&lang=en_US",
+  "times": 2,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Tax Management Associates\"; https://tma1.com/careers/ links to the board (seen 2 times)",
+  "postings": 2,
+  "titles": [
+   "Senior Vice President of Sales",
+   "Senior Vice President of Client Relationships"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:29-05:00",
+   "page": "https://tma1.com/careers/"
+  }
+ },
+ {
+  "id": "tellabs",
+  "name": "Tellabs",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "02cc7f99-d206-41fe-85a1-00118d3c789b"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=02cc7f99-d206-41fe-85a1-00118d3c789b&ccId=19000101_000001&lang=en_US",
+  "times": 1,
+  "verified": "4 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Tellabs\"; https://tellabs.com/about/careers/ embeds the board",
+  "postings": 4,
+  "titles": [
+   "Systems Test Engineer BBD",
+   "Senior Hardware Engineer",
+   "Hardware/FPGA Engineer",
+   "Solutions Architect"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:30-05:00",
+   "page": "https://tellabs.com/about/careers/"
+  }
+ },
+ {
+  "id": "the-mortgage-office",
+  "name": "The Mortgage Office",
+  "was": "html",
+  "found": {
+   "type": "rippling",
+   "ref": "the-mortgage-office"
+  },
+  "saw": "https://ats.rippling.com/embed/the-mortgage-office/jobs?s=https://www.themortgageoffice.com/about/careers/",
+  "times": 1,
+  "verified": "1 posting(s) readable; 0 openings among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "Applied Business Software, Inc.",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Applied Business Software, Inc.\", which is not \"The Mortgage Office\": a different name, which is what a parent's, an operating entity's or another company's board looks like; the board read no postings, so nothing shows it is the board they hire through today; https://www.themortgageoffice.com/about/careers/ embeds the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:30-05:00",
+   "page": "https://www.themortgageoffice.com/about/careers/"
+  }
+ },
+ {
+  "id": "threatlocker",
+  "name": "ThreatLocker",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "54b7f0b8-4b67-424c-8dea-c0dd2eff54ca|19000101_000003"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=54b7f0b8-4b67-424c-8dea-c0dd2eff54ca&ccId=19000101_00000",
+  "times": 3,
+  "verified": "20 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"ThreatLocker\"; their own site also names adp-other, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.threatlocker.com/company/careers loads its jobs from the board (seen 3 times)",
+  "postings": 20,
+  "titles": [
+   "Technical Solutions Engineer",
+   "Technical Solutions Engineer",
+   "Technical Solutions Engineer",
+   "Technical Solutions Engineer",
+   "Technical Solutions Engineer",
+   "INTERNAL CYBER DEFENSE ENGINEER",
+   "ACCOUNT EXECUTIVE",
+   "Customer Experience Ambassador"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:33-05:00",
+   "page": "https://www.threatlocker.com/company/careers"
+  }
+ },
+ {
+  "id": "tiger-correctional-services",
+  "name": "Tiger Correctional Services",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "ab2ad9bb-0184-431c-971c-b31782ee0ffa|9200179240154_2"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=ab2ad9bb-0184-431c-971c-b31782ee0ffa&ccId=9200179240154_2&type=JS&lang=en_US",
+  "times": 24,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Tiger Correctional Services\"; the board read no postings, so nothing shows it is the board they hire through today; https://tigercorrectional.com/careers/ links to the board (seen 24 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:34-05:00",
+   "page": "https://tigercorrectional.com/careers/"
+  }
+ },
+ {
+  "id": "tightrope-media-systems",
+  "name": "Tightrope Media Systems",
+  "was": "unknown",
+  "found": {
+   "type": "bamboohr",
+   "ref": "trms"
+  },
+  "saw": "https://trms.bamboohr.com/js/jobs2.php",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Tightrope Media Systems",
+  "identity": "unknown",
+  "identity_why": "the board names \"Tightrope Media Systems\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.trms.com/careers loads the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:34-05:00",
+   "page": "https://www.trms.com/careers"
+  }
+ },
+ {
+  "id": "trafera",
+  "name": "Trafera",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "34df081a-8727-4032-97fe-3799b4e27bd6"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=34df081a-8727-4032-97fe-3799b4e27bd6&ccId=19000101_000001&lang=en_US",
+  "times": 1,
+  "verified": "3 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Trafera\"; https://www.trafera.com/careers embeds the board",
+  "postings": 3,
+  "titles": [
+   "Sales Director",
+   "Account Executive, Outside Sales - Texas Territory",
+   "Field Sales CTO - Southeast US"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:37-05:00",
+   "page": "https://www.trafera.com/careers"
+  }
+ },
+ {
+  "id": "ufa-inc",
+  "name": "UFA, Inc.",
+  "was": "html",
+  "found": {
+   "type": "adp",
+   "ref": "8949cc25-4fea-4ac4-8c83-7034b9396075"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=8949cc25-4fea-4ac4-8c83-7034b9396075&ccId=19000101_000001&lang=en_US&selectedMe",
+  "times": 2,
+  "verified": "4 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"UFA, Inc.\"; https://www.ufainc.com/careers links to the board (seen 2 times)",
+  "postings": 4,
+  "titles": [
+   "Simulation Data Specialist II",
+   "Simulation Data Specialist I",
+   "Senior Software Engineer",
+   "Project Manager"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:37-05:00",
+   "page": "https://www.ufainc.com/careers"
+  }
+ },
+ {
+  "id": "userful-corporation",
+  "name": "Userful Corporation",
+  "was": "unknown",
+  "found": {
+   "type": "adp",
+   "ref": "2d177604-3489-4405-8eb4-8783e038e2e0|9200048283902_2"
+  },
+  "saw": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2d177604-3489-4405-8eb4-8783e038e2e0&ccId=9200048283902_2&source=CC2&lang=en_CA",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (no identity probe written for adp), so nothing on it says it is \"Userful Corporation\"; the board read no postings, so nothing shows it is the board they hire through today; https://www.userful.com/about/careers links to the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:38-05:00",
+   "page": "https://www.userful.com/about/careers"
+  }
+ },
+ {
+  "id": "verint-systems",
+  "name": "Verint Systems",
+  "was": "unknown",
+  "found": {
+   "type": "ashby",
+   "ref": "27cfd344-670f-4dcd-8b13-0e18005b0d65"
+  },
+  "saw": "https://jobs.ashbyhq.com/27cfd344-670f-4dcd-8b13-0e18005b0d65",
+  "times": 2,
+  "verified": "19 posting(s) readable",
+  "board_calls_itself": "Verint",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Verint\", which is not \"Verint Systems\": one name only contains the other, and a name inside another name is never taken for the same company; the board gives its website as verint.com, which is the one on file; discovery already doubted a board for this company (ashby:27cfd344-670f-4dcd-8b13-0e18005b0d65 reads (18 posting(s)), but does not match 'Verint Systems'; likely a parent or another company); it is in the Acquisitions queue; https://www.verint.com/careers/ links to the board (seen 2 times)",
+  "postings": 19,
+  "titles": [
+   "Account Executive, Canada",
+   "Director Regional Sales, Canada",
+   "ServiceNow Administrator",
+   "Account Executive, Mexico",
+   "Manager, Oracle EBS Application",
+   "Account Executive, Federal",
+   "Account Executive, Central",
+   "Services Sales Manager"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:40-05:00",
+   "page": "https://www.verint.com/careers/"
+  }
+ },
+ {
+  "id": "weave-grid-inc",
+  "name": "WeaveGrid",
+  "was": "unknown",
+  "found": {
+   "type": "ashby",
+   "ref": "weave-grid"
+  },
+  "saw": "https://jobs.ashbyhq.com/weave-grid?embed=js",
+  "times": 1,
+  "verified": "3 posting(s) readable",
+  "board_calls_itself": "WeaveGrid, Inc.",
+  "identity": "unknown",
+  "identity_why": "the board names \"WeaveGrid, Inc.\", which is this company, but their site points to more than one board: ashby/weave-grid (seen 4 times) and greenhouse/weavegrid (seen 2 times); https://www.weavegrid.com/careers/job-openings embeds the board",
+  "postings": 3,
+  "titles": [
+   "Associate Director, Business Development & Strategic Partnerships",
+   "Manager, Policy and Regulatory Affairs",
+   "Customer Experience Associate"
+  ],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:48-05:00",
+   "page": "https://www.weavegrid.com/careers/job-openings"
+  }
+ },
+ {
+  "id": "wevideo",
+  "name": "WeVideo",
+  "was": "unknown",
+  "found": {
+   "type": "breezy",
+   "ref": "wevideo"
+  },
+  "saw": "https://wevideo.breezy.hr/embed/js?inline=true",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "WeVideo",
+  "identity": "unknown",
+  "identity_why": "the board names \"WeVideo\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.wevideo.com/careers loads its jobs from the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:49-05:00",
+   "page": "https://www.wevideo.com/careers"
+  }
+ },
+ {
+  "id": "wrap-technologies",
+  "name": "Wrap Technologies",
+  "was": "unknown",
+  "found": {
+   "type": "jazzhr",
+   "ref": "wraptechnologies"
+  },
+  "saw": "https://wraptechnologies.applytojob.com/",
+  "times": 3,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Wrap Technologies, Inc.",
+  "identity": "unknown",
+  "identity_why": "the board names \"Wrap Technologies, Inc.\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.wrap.com/ loads the board (seen 3 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:board-wiring",
+   "on": "2026-11-19",
+   "at": "2026-11-19T14:55:42-05:00",
+   "read_at": "2026-11-19T14:13:51-05:00",
+   "page": "https://www.wrap.com/"
+  }
  }
 ]

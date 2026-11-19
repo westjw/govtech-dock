@@ -4565,8 +4565,8 @@
     "category": "EMS",
     "description": "Real-time EMS-to-hospital communication and patient handoff platform",
     "ats": {
-      "type": "html",
-      "ref": "https://www.pulsara.com/careers"
+      "type": "bamboohr",
+      "ref": "pulsara"
     },
     "hiring": {
       "status": "Unknown",
@@ -4663,7 +4663,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: pulsara.com/careers links to the board (seen 2 times); the board names \"Pulsara\"; 8 postings read"
   },
   {
     "id": "priority-dispatch",
@@ -17325,8 +17326,8 @@
     "category": "Operations & SIS",
     "description": "Unified school-home communication platform - exhibited at CoSN 2026, ASBO School Business 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.parentsquare.com/careers/"
+      "type": "rippling",
+      "ref": "parentsquare"
     },
     "hiring": {
       "status": "Sales (non-AE)",
@@ -17456,7 +17457,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: parentsquare.com/company/careers embeds the board; the board names \"ParentSquare, Inc\"; 10 postings read",
+    "board_owner": "ParentSquare, Inc"
   },
   {
     "id": "cubic-transportation-systems",
@@ -25976,8 +25979,8 @@
     "category": "Citizen Services",
     "description": "Community engagement, public comment, and meeting participation platform for agencies and DOTs - exhibited at 3CMA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://publicinput.com/careers"
+      "type": "greenhouse",
+      "ref": "publicinput"
     },
     "hiring": {
       "status": "Unknown",
@@ -26107,7 +26110,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: publicinput.com/wp/careers redirects to the board; the board names \"PublicInput\"; 2 postings read"
   },
   {
     "id": "go-vocal",
@@ -42358,8 +42362,8 @@
     "category": "Police",
     "description": "Lawful intercept mediation and intelligence analytics for LE and carriers",
     "ats": {
-      "type": "html",
-      "ref": "https://www.ss8.com/careers"
+      "type": "greenhouse",
+      "ref": "ss8"
     },
     "hiring": {
       "status": "Unknown",
@@ -42486,7 +42490,8 @@
       "by": "agent:profile-police-2026-09-03",
       "ruled_by": "agent:review-police-2026-09-03",
       "ruled_on": "2026-09-03"
-    }
+    },
+    "ats_note": "wired 2026-11-19: ss8.com/careers embeds the board; the board names \"SS8 Networks\"; 4 postings read"
   },
   {
     "id": "genetec",
@@ -48217,8 +48222,8 @@
     "category": "Parking & Curb",
     "description": "Parking permits, enforcement, PARCS, and pay stations for universities and cities (Verra Mobility)",
     "ats": {
-      "type": "html",
-      "ref": "https://www.t2systems.com/careers"
+      "type": "greenhouse",
+      "ref": "t2systems"
     },
     "hiring": {
       "status": "Yes",
@@ -48356,7 +48361,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: t2systems.com/jobs embeds the board; the board names \"T2 Systems\"; 5 postings read"
   },
   {
     "id": "municipal-parking-services",
@@ -52565,8 +52571,8 @@
     "category": "Corrections",
     "description": "Inmate video visitation, calling, and messaging for sheriffs' offices in 30+ states - exhibited at Michigan Sheriffs Association 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.homewav.com/careers"
+      "type": "rippling",
+      "ref": "homewav"
     },
     "hiring": {
       "status": "Unknown",
@@ -52613,7 +52619,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: homewav.com/careers embeds the board; the board names \"HomeWAV\"; 3 postings read"
   },
   {
     "id": "ncic-inmate-communications",
@@ -67903,8 +67910,8 @@
     "category": "Demand-Response & AV",
     "description": "Assisted-mobility platform and driver network delivering ADA paratransit and door-through-door trips - exhibited at CTAA EXPO 2026, APTA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://uzurv.com/careers"
+      "type": "bamboohr",
+      "ref": "uzurv"
     },
     "hiring": {
       "status": "Unknown",
@@ -67929,7 +67936,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: uzurv.com/careers loads its jobs from the board (seen 2 times); the board names \"UZURV\"; 3 postings read"
   },
   {
     "id": "qryde-by-hbss",
@@ -81831,8 +81839,8 @@
     "category": "Suppliers & Services",
     "description": "Payment processing platform - exhibited at ICMA 2025",
     "ats": {
-      "type": "html",
-      "ref": "https://www.nuvei.com/partner-with-us"
+      "type": "workable",
+      "ref": "nuvei"
     },
     "hiring": {
       "status": "Unknown",
@@ -81851,7 +81859,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: nuvei.com/careers loads its jobs from the board, and asks for it as Workable account 378737; its postings open under apply.workable.com/nuvei; the board names \"Nuvei\"; 65 postings read"
   },
   {
     "id": "osintpilot",
@@ -89603,8 +89612,8 @@
     "category": "Water",
     "description": "Octave ultrasonic water meters, Allegro AMI networks, and Harmony meter data management (Arad Ltd.) - exhibited at NLC City Summit 2026, AWWA ACE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.mastermeter.com/company/careers"
+      "type": "jazzhr",
+      "ref": "mastermeter"
     },
     "hiring": {
       "status": "Unknown",
@@ -89723,7 +89732,8 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "ats_note": "wired 2026-11-19: mastermeter.com/company/careers/open-positions loads the board; the board names \"Master Meter\"; 5 postings read"
   },
   {
     "id": "33-alerts",
@@ -109719,8 +109729,8 @@
     "category": "HR & Workforce",
     "description": "Workforce case management and job-matching systems for state workforce agencies - exhibited at NASWA 2025, ACA Congress 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.geographicsolutions.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/b080b7e4-b315-4618-b0c7-5214991a9bb4/GEOGRAPHIC-SOLUTIONS-INC"
     },
     "hiring": {
       "status": "Unknown",
@@ -109817,7 +109827,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: geographicsolutions.com/Careers/Current-Openings embeds the board; the board names \"GEOGRAPHIC SOLUTIONS INC\"; 17 postings read",
+    "board_owner": "GEOGRAPHIC SOLUTIONS INC"
   },
   {
     "id": "vitech-systems-group",
@@ -111974,8 +111986,8 @@
     "category": "HR & Workforce",
     "description": "Unemployment insurance, labor and revenue systems for state agencies - exhibited at NASWA 2025, NCSEA 2026, NCSEA Policy Forum 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.fastenterprises.com/careers"
+      "type": "icims",
+      "ref": "careers-fastenterprises"
     },
     "hiring": {
       "status": "Unknown",
@@ -112088,7 +112100,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: fastenterprises.com/careers/usa-positions redirects to the board; the board names \"Fast Enterprises\"; 5 postings read"
   },
   {
     "id": "skillsmart",
@@ -113319,8 +113332,8 @@
     "category": "Elections",
     "description": "EViD e-pollbooks and voter registration software for state and county offices",
     "ats": {
-      "type": "html",
-      "ref": "https://www.vrsystems.com/About-Us/Careers"
+      "type": "lever",
+      "ref": "VRsystems"
     },
     "hiring": {
       "status": "Unknown",
@@ -113359,7 +113372,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: vrsystems.com/About-Us/Careers embeds the board; the board names \"VR Systems, Inc\"; 1 posting read",
+    "board_owner": "VR Systems, Inc"
   },
   {
     "id": "dfm-associates",
@@ -121743,8 +121758,8 @@
     "category": "Operations & SIS",
     "description": "Multilingual two-way family messaging for public school districts",
     "ats": {
-      "type": "html",
-      "ref": "https://talkingpts.org/ufe-quiz"
+      "type": "bamboohr",
+      "ref": "talkingpts"
     },
     "hiring": {
       "status": "Unknown",
@@ -121858,7 +121873,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: talkingpts.org/our-team links to the board (seen 2 times); the board names \"TalkingPoints\"; 2 postings read"
   },
   {
     "id": "red-rover",
@@ -126769,8 +126785,8 @@
     "category": "Fleet & Asset Mgmt",
     "description": "Mobile CMMS for municipal maintenance, water and facilities teams",
     "ats": {
-      "type": "html",
-      "ref": "https://www.upkeep.com/careers"
+      "type": "greenhouse",
+      "ref": "upkeep"
     },
     "hiring": {
       "status": "Yes",
@@ -126808,7 +126824,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: upkeep.com/careers loads its jobs from the board; the board names \"UpKeep\"; 5 postings read"
   },
   {
     "id": "emaint",
@@ -131755,8 +131772,8 @@
     "category": "Child & Family Services",
     "description": "Foster care, adoption and child welfare software for county/state agencies - exhibited at APHSA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://binti.com/careers"
+      "type": "ashby",
+      "ref": "binti"
     },
     "hiring": {
       "status": "Unknown",
@@ -131779,7 +131796,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: binti.com/current-openings embeds the board; the board names \"Binti\"; 15 postings read"
   },
   {
     "id": "northwoods",
@@ -134188,8 +134206,8 @@
     "category": "Benefits & Medicaid Systems",
     "description": "EVV and homecare management for state Medicaid and MCO programs - exhibited at Healthcare IT Connect 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.hhaexchange.com/careers"
+      "type": "lever",
+      "ref": "hhaexchange"
     },
     "hiring": {
       "status": "Unknown",
@@ -134275,7 +134293,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: hhaexchange.com/careers/career-opportunities loads the board; the board names \"HHAeXchange\"; 25 postings read"
   },
   {
     "id": "therap-services",
@@ -144106,8 +144125,8 @@
     "category": "Corrections",
     "description": "Justice case management for courts, prosecutors and probation agencies - exhibited at APPA Probation 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.journaltech.com/careers"
+      "type": "rippling",
+      "ref": "journaltech"
     },
     "hiring": {
       "status": "Unknown",
@@ -144241,7 +144260,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: journaltech.com/careers embeds the board; the board names \"Journal Technologies\"; 6 postings read"
   },
   {
     "id": "icsolutions",
@@ -145074,8 +145094,8 @@
     "category": "Corrections",
     "description": "GPS and alcohol electronic monitoring for courts and corrections - exhibited at APPA Probation 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.trackgrp.com/careers"
+      "type": "workable",
+      "ref": "track-group-inc"
     },
     "hiring": {
       "status": "Unknown",
@@ -145122,7 +145142,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: trackgrp.com/careers loads its jobs from the board, and asks for it as Workable account 528933; its postings open under apply.workable.com/track-group-inc; the board names \"Track Group, Inc\"; 2 postings read",
+    "board_owner": "Track Group, Inc"
   },
   {
     "id": "attenti",
@@ -163120,8 +163142,8 @@
     "category": "Permitting & Licensing",
     "description": "POSSE permitting, licensing and regulatory platform for state and local agencies - exhibited at ICC 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.computronix.com/careers"
+      "type": "jazzhr",
+      "ref": "cxusa"
     },
     "hiring": {
       "status": "Unknown",
@@ -163278,7 +163300,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: computronix.com/careers/denver-jobs embeds the board (seen 3 times); the board names \"Computronix\"; 2 postings read"
   },
   {
     "id": "citizenserve",
@@ -164209,8 +164232,8 @@
     "category": "Permitting & Licensing",
     "description": "Cloud licensing and regulatory management platform for professional licensing boards",
     "ats": {
-      "type": "html",
-      "ref": "https://thentia.com/careers"
+      "type": "bamboohr",
+      "ref": "thentia"
     },
     "hiring": {
       "status": "Unknown",
@@ -164237,7 +164260,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: thentia.com/all-jobs loads its jobs from the board (seen 2 times); the board names \"Thentia\"; 1 posting read"
   },
   {
     "id": "system-automation",
@@ -180035,8 +180059,8 @@
     "category": "Broadband & Connectivity",
     "description": "Fiber network design and asset management for public and municipal broadband",
     "ats": {
-      "type": "html",
-      "ref": "https://www.3-gis.com/about-us/current-positions"
+      "type": "jazzhr",
+      "ref": "3gis"
     },
     "hiring": {
       "status": "Unknown",
@@ -180164,7 +180188,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: 3-gis.com/about-us/current-positions loads the board; the board names \"3-GIS\"; 11 postings read"
   },
   {
     "id": "biarri-networks",
@@ -180626,8 +180651,8 @@
     "category": "Broadband & Connectivity",
     "description": "Private 5G/LTE networks for government agencies, campuses and utilities",
     "ats": {
-      "type": "html",
-      "ref": "https://www.celona.io/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/2a4006b3-b639-4728-bbf6-8058cf72a3a6"
     },
     "hiring": {
       "status": "Unknown",
@@ -180740,7 +180765,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: celona.io/careers links to the board (seen 2 times); the board names \"Celona Inc\"; 4 postings read",
+    "board_owner": "Celona Inc"
   },
   {
     "id": "sifi-networks",
@@ -191753,8 +191780,8 @@
     "category": "Business & Finance",
     "description": "Donor research, engagement, and stewardship software for university advancement offices and nonprofits - exhibited at NACUBO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.evertrue.com/careers/"
+      "type": "greenhouse",
+      "ref": "evertrue"
     },
     "hiring": {
       "status": "Unknown",
@@ -191872,7 +191899,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: evertrue.com/career-positions embeds the board; the board names \"EverTrue\"; 3 postings read"
   },
   {
     "id": "nelnet-campus-commerce",
@@ -200316,8 +200344,8 @@
     "category": "Child & Family Services",
     "description": "Natural language processing software that surfaces risks and insights from caseworker case notes for child welfare and behavioral health agencies - exhibited at APHSA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "breezy",
+      "ref": "augintel-us"
     },
     "hiring": {
       "status": "Unknown",
@@ -200432,7 +200460,8 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "ats_note": "wired 2026-11-19: augintel.us links to the board; the board names \"Augintel\"; 1 posting read"
   },
   {
     "id": "next-chapter-technology-inc",
@@ -201115,8 +201144,8 @@
     "category": "Libraries",
     "description": "Reference databases, streaming video, and career research content licensed to K-12 schools, colleges, public libraries, and employers - exhibited at PLA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://infobase.com/about/careers/"
+      "type": "lever",
+      "ref": "infobase"
     },
     "hiring": {
       "status": "Unknown",
@@ -201143,7 +201172,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: infobase.com/about/careers loads its jobs from the board; the board names \"Infobase\"; 6 postings read"
   },
   {
     "id": "llmc",
@@ -203361,8 +203391,8 @@
     "category": "Grid & Energy",
     "description": "Cloud customer information, billing and field service software for municipal water, sewer, electric and gas utilities - exhibited at GFOA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.sprypoint.com/careers/"
+      "type": "lever",
+      "ref": "sprypointservices"
     },
     "hiring": {
       "status": "Unknown",
@@ -203497,7 +203527,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: sprypoint.com/careers loads its jobs from the board; the board names \"SpryPoint\"; 6 postings read"
   },
   {
     "id": "menulogic-k12",
@@ -206284,8 +206315,8 @@
     "category": "Libraries",
     "description": "All-you-can-read digital newspaper and magazine subscription licensed to public libraries, schools, hotels, airlines and hospitals - exhibited at PLA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://about.pressreader.com/careers/"
+      "type": "workable",
+      "ref": "pressreader"
     },
     "hiring": {
       "status": "Unknown",
@@ -206401,7 +206432,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: about.pressreader.com/careers links to the board (seen 2 times); the board names \"PressReader\"; 4 postings read"
   },
   {
     "id": "solus",
@@ -207683,8 +207715,8 @@
     "category": "IT & Administration",
     "description": "ERP, student information and CRM software for colleges and universities - exhibited at NACUBO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://jenzabar.com/careers"
+      "type": "workable",
+      "ref": "jenzabar1"
     },
     "hiring": {
       "status": "Unknown",
@@ -207808,7 +207840,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: jenzabar.com/careers loads its jobs from the board, and asks for it as Workable account 695414; its postings open under apply.workable.com/jenzabar1; the board names \"Jenzabar\"; 5 postings read"
   },
   {
     "id": "quodus",
@@ -209207,8 +209240,8 @@
     "category": "Workforce & Labor",
     "description": "AI career navigation and labor exchange platform for state workforce agencies, workforce boards and economic development organizations - exhibited at NASWA 2025",
     "ats": {
-      "type": "html",
-      "ref": "https://www.futurefit.ai/careers"
+      "type": "ashby",
+      "ref": "futurefitai"
     },
     "hiring": {
       "status": "Unknown",
@@ -209334,7 +209367,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: futurefit.ai/careers loads its jobs from the board; the board names \"FutureFit AI\"; 3 postings read"
   },
   {
     "id": "job-machine",
@@ -209755,8 +209789,8 @@
     "category": "Operations & SIS",
     "description": "Student survey, MTSS, behavior analytics and early-warning software for K-12 school districts - exhibited at CoSN 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.panoramaed.com/about/careers"
+      "type": "workable",
+      "ref": "panorama-education"
     },
     "hiring": {
       "status": "Yes",
@@ -209893,7 +209927,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: panoramaed.com/about/careers loads its jobs from the board (seen 2 times), and asks for it as Workable account 716461; its postings open under apply.workable.com/panorama-education; the board names \"Panorama Education\"; 10 postings read"
   },
   {
     "id": "sergeant-laboratories",
@@ -215809,8 +215844,8 @@
     "category": "Behavioral Health",
     "description": "AI-native CRM, EHR and revenue cycle platform for behavioral health, medication-assisted treatment and substance use disorder providers - exhibited at NatCon 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://easehealth.com/careers"
+      "type": "ashby",
+      "ref": "ease-health"
     },
     "hiring": {
       "status": "Unknown",
@@ -215953,7 +215988,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: easehealth.com/careers/gtm-engineer loads the board (seen 4 times); the board names \"Ease Health\"; 14 postings read"
   },
   {
     "id": "hiboop",
@@ -217211,8 +217247,8 @@
     "category": "IT & Administration",
     "description": "Hands-on computing education platform with cloud coding environments, auto-graded labs and courseware for university and college CS programs - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "ashby",
+      "ref": "codio"
     },
     "hiring": {
       "status": "Unknown",
@@ -217325,7 +217361,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: codio.com links to the board; the board names \"Codio\"; 1 posting read"
   },
   {
     "id": "courseleaf",
@@ -220903,8 +220940,8 @@
     "category": "IT & AI Platforms",
     "description": "Government operations platform combining shared workspaces, knowledge base, CRM and AI automation for public agencies - exhibited at APHSA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "ashby",
+      "ref": "Civic Roundtable"
     },
     "hiring": {
       "status": "Unknown",
@@ -221032,7 +221069,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: civicroundtable.com links to the board (seen 2 times); the board names \"Civic Roundtable\"; 2 postings read"
   },
   {
     "id": "emphasys-software",
@@ -225719,8 +225757,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells telemetry pipeline and log management software (Cribl Stream, Edge, Search and Lake) to state and local government and higher education IT and security teams - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://cribl.io/careers/"
+      "type": "greenhouse",
+      "ref": "cribl"
     },
     "hiring": {
       "status": "Unknown",
@@ -225743,7 +225781,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: cribl.io/careers loads its jobs from the board; the board names \"Cribl\"; 82 postings read",
+    "board_owner": "Cribl"
   },
   {
     "id": "crowdstrike",
@@ -228056,8 +228096,8 @@
     "category": "Workforce & Labor",
     "description": "Labor market data, analytics software and APIs used by public-sector workforce and economic development agencies, colleges and employers - exhibited at NASWA 2025",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "lever",
+      "ref": "economicmodeling"
     },
     "hiring": {
       "status": "Unknown",
@@ -228077,7 +228117,8 @@
     ],
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "ats_note": "wired 2026-11-19: lightcast.io/careers loads the board (seen 4 times); the board names \"Lightcast\"; 20 postings read"
   },
   {
     "id": "locus-technologies",
@@ -228325,8 +228366,8 @@
     "category": "IT & AI Platforms",
     "description": "Netskope sells a cloud security and networking (SASE) platform to state and local government agencies and educational institutions - exhibited at NASCIO 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "netskope"
     },
     "hiring": {
       "status": "Unknown",
@@ -228353,7 +228394,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: netskope.com/company/careers/open-positions embeds the board; the board names \"Netskope\"; 127 postings read"
   },
   {
     "id": "okta",
@@ -228425,8 +228467,8 @@
     "category": "Finance & ERP",
     "description": "Financial planning, budgeting, forecasting and reporting software for state and local government finance departments - exhibited at GFOA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "onestream"
     },
     "hiring": {
       "status": "Unknown",
@@ -228457,7 +228499,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: onestream.com/careers/current-openings embeds the board; the board names \"OneStream\"; 63 postings read"
   },
   {
     "id": "onspring-technologies",
@@ -230335,8 +230378,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells cloud object storage for backups, archives and surveillance video to state and local governments, municipalities and school systems - exhibited at GMIS International 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://wasabi.com/company/careers"
+      "type": "greenhouse",
+      "ref": "wasabi"
     },
     "hiring": {
       "status": "Yes",
@@ -230362,7 +230405,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: wasabi.com/company/careers embeds the board; the board names \"Wasabi Technologies\"; 9 postings read"
   },
   {
     "id": "workiva",
@@ -233465,8 +233509,8 @@
     "category": "Operations & SIS",
     "description": "School finance software for K-12 districts that ties fees, payments, activity fund accounting and disbursements to one platform - exhibited at ASBO School Business 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://kevgroup.com/careers/"
+      "type": "greenhouse",
+      "ref": "kevgroup"
     },
     "hiring": {
       "status": "Sales (non-AE)",
@@ -233501,7 +233545,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-19: kevgroup.com/open-positions embeds the board; the board names \"KEV Group\"; 20 postings read"
   },
   {
     "id": "playon",
@@ -234535,8 +234580,8 @@
     "category": "Permitting & Licensing",
     "description": "Cannabis track-and-trace software with RFID tags that state regulators use to monitor and inspect licensed cannabis markets - exhibited at NCSL Legislative Summit 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/823acbc8-bd11-43c8-9065-40669c227ad2/Metrc-LLC"
     },
     "hiring": {
       "status": "Unknown",
@@ -234550,7 +234595,9 @@
     "researched": true,
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "ats_note": "wired 2026-11-19: metrc.com/about/join-the-team links to the board; the board names \"Metrc, LLC\"; 7 postings read",
+    "board_owner": "Metrc, LLC"
   },
   {
     "id": "payment-in-motion-inc",
@@ -239035,8 +239082,8 @@
     "category": "IT & AI Platforms",
     "description": "Security awareness training, phishing simulation and email security software for organizations including K-12 districts and colleges - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.knowbe4.com/careers"
+      "type": "greenhouse",
+      "ref": "knowbe4"
     },
     "hiring": {
       "status": "Unknown",
@@ -239047,7 +239094,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: EDUCAUSE 2026",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: knowbe4.com/careers loads the board; the board names \"KnowBe4\"; 54 postings read"
   },
   {
     "id": "pathsolutions",
@@ -239140,8 +239188,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells a zero trust cloud security platform to businesses and to state and local government agencies - exhibited at NASCIO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.zscaler.com/careers"
+      "type": "greenhouse",
+      "ref": "zscaler"
     },
     "hiring": {
       "status": "Unknown",
@@ -239152,7 +239200,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: NASCIO 2026",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: zscaler.com/careers/search links to the board (seen 10 times); the board names \"Zscaler\"; 376 postings read"
   },
   {
     "id": "customguide",
@@ -239681,8 +239730,8 @@
     "category": "IT & AI Platforms",
     "description": "Firewalls, secure access, endpoint security and managed detection and response for businesses, K-12 schools and state and local governments - exhibited at Smart Cities Connect 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.sonicwall.com/careers"
+      "type": "greenhouse",
+      "ref": "sonicwall"
     },
     "hiring": {
       "status": "Unknown",
@@ -239693,7 +239742,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: Smart Cities Connect 2026",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: sonicwall.com/careers links to the board (seen 43 times); the board names \"SonicWall\"; 43 postings read"
   },
   {
     "id": "deepmatrix",
@@ -239729,8 +239779,8 @@
     "category": "Emergency Mgmt",
     "description": "SAR satellite imagery and flood and wildfire impact data for defense, emergency management agencies, insurers and utilities - exhibited at DISTRIBUTECH 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.iceye.com/careers?hsLang=en"
+      "type": "ashby",
+      "ref": "iceye"
     },
     "hiring": {
       "status": "Unknown",
@@ -239741,7 +239791,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: DISTRIBUTECH 2026",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: iceye.com/careers/positions loads its jobs from the board; the board names \"ICEYE\"; 190 postings read"
   },
   {
     "id": "itineris",
@@ -239825,8 +239876,8 @@
     "category": "Operations & SIS",
     "description": "MTSS and RTI platform for K-12 districts: intervention planning, behavior support, early warning and Canopy case management",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "workable",
+      "ref": "branchingminds"
     },
     "hiring": {
       "status": "Unknown",
@@ -239837,7 +239888,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "research pass: GovWire 150 (2027)",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: branchingminds.com/careers embeds the board; the board names \"Branching Minds\"; 1 posting read"
   },
   {
     "id": "codehs",
@@ -239880,8 +239932,8 @@
     "category": "Operations & SIS",
     "description": "Interactive video lesson platform for teachers, with Pro School plans sold to K-12 schools and districts",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "lever",
+      "ref": "edpuzzle"
     },
     "hiring": {
       "status": "Unknown",
@@ -239892,7 +239944,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "research pass: GovWire 150 (2027)",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: edpuzzle.com/jobs redirects to the board; the board names \"Edpuzzle\"; 2 postings read"
   },
   {
     "id": "edsights",
@@ -239935,8 +239988,8 @@
     "category": "Operations & SIS",
     "description": "Classroom annotation, accessibility and Book Creator apps for K-12 teachers, sold to schools and districts",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "kami"
     },
     "hiring": {
       "status": "Unknown",
@@ -239947,7 +240000,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "research pass: GovWire 150 (2027)",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: kamiapp.com/careers loads its jobs from the board (seen 2 times); the board names \"Kami\"; 10 postings read"
   },
   {
     "id": "labster",
@@ -240102,8 +240156,8 @@
     "category": "IT & Administration",
     "description": "AI-supported discussion, writing feedback and originality platform sold to colleges, universities and K-12 districts",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "workable",
+      "ref": "packback"
     },
     "hiring": {
       "status": "Unknown",
@@ -240114,7 +240168,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "research pass: GovWire 150 (2027)",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: packback.co/careers loads its jobs from the board, and asks for it as Workable account 713917; its postings open under apply.workable.com/packback; the board names \"Packback\"; 2 postings read"
   },
   {
     "id": "padlet",
@@ -240389,8 +240444,8 @@
     "category": "IT & Administration",
     "description": "Active-learning platform with in-class response, attendance, assessments and interactive texts, sold to colleges and universities",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "ashby",
+      "ref": "top-hat"
     },
     "hiring": {
       "status": "Unknown",
@@ -240401,6 +240456,7 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "research pass: GovWire 150 (2027)",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-19: tophat.com/company/work-with-us embeds the board; the board names \"Top Hat\"; 9 postings read"
   }
 ]
