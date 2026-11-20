@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "time",
+   "first_seen": "2026-11-19",
+   "headline": "DPD Polska Goes Live on Creatio with 1,000 Users in Five Weeks",
+   "kind": "contract",
+   "kind_rule": "Goes Live on",
+   "url": "https://www.creatio.com/company/news/25092"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "time",
+   "first_seen": "2026-11-19",
+   "headline": "DPD Polska uruchamia Creatio dla 1000 u\u017cytkownik\u00f3w w pi\u0119\u0107 tygodni \u2014 trzy tygodnie przed planowanym terminem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.creatio.com/company/news/25093"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "time",
    "first_seen": "2026-11-18",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.creatio.com/no-code/insights/ai-control-plane-governing-and-orchestrating-agentic-enterprise"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "time",
-   "first_seen": "2026-10-06",
-   "headline": "Creatio Presents Bank.AI Summit Agenda, Featuring Research Analyst Alyson Clarke",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.creatio.com/company/news/25030"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-06",
-   "headline": "Creatio Referral Agent: Turning Relationships Into Revenue for Banks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.creatio.com/no-code/insights/creatio-referral-agent-turning-relationships-into-revenue-for-banks"
   }
  ],
  "profile": {

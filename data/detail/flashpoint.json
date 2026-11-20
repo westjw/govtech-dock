@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Insider Threat Report: Dark Web Recruitment & Access Trends",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/insider-threat-report-dark-web-recruitment-access-trends/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/the-missing-layer-in-vulnerability-prioritization-full-visibility-into-your-attack-surface/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-19",
-   "headline": "Inside Joint Disruption Week: 28 Arrests and 3.7 Million Scam Accounts Removed",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/inside-joint-disruption-week-28-arrests-and-37-million-scam-accounts-removed/"
   }
  ],
  "profile": {

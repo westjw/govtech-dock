@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "ASTERRA and New Mexico Environment Department\u2019s LeakTracer program saves up to 328 million gallons of water annually",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/asterra-nmed-leaktracer-saves-up-to-328mg-water-annually/"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://asterra.io/resources/eo-discover-3-0-is-here/"
-  },
-  {
-   "date": "2026-06-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Your Network Is Losing Water. EO Discover 3.0 Helps Utilities Find Where to Look First",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://asterra.io/blog/your-network-is-losing-water-eo-discover-3-0-helps-utilities-find-where-to-look-first/"
   }
  ],
  "profile": {

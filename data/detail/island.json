@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Island Named 2026 Global Zero Trust Browser Security Company of the Year by Frost & Sullivan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.island.io/press/island-named-2026-global-zero-trust-browser-security-company-of-the-year-by-frost-and-sullivan"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "card-date",
    "first_seen": "2026-11-18",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-16",
    "headline": "Island Achieves Awardable Status on Department of War Tradewinds Solutions Marketplace",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.island.io/blog/island-the-enterprise-browser-for-ai-agents"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "card-date",
-   "first_seen": "2026-10-29",
-   "headline": "Island Brings the Enterprise Browser to AI Agents",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.island.io/press/island-brings-the-enterprise-browser-to-ai-agents"
   }
  ]
 }

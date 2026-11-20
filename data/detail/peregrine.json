@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Live from Slush: Peregrine CEO on etn",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/live-from-slush-peregrine-ceo-on-etn"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
-   "headline": "An Unstructured Conversation with Zac Brown",
+   "headline": "An Unstructured conversation with Zac Brown",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/an-unstructured-conversation-with-zac-brown"
@@ -56,9 +65,9 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-11",
-   "headline": "Company & Product Commemorating the 25th anniversary of 9/11",
+   "headline": "Commemorating the 25th anniversary of 9/11 Sep 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/commemorating-the-25th-anniversary-of-911"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/how-to-build-a-crisis-response-program-data-driven-strategies-for-measurable-outcomes"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Saving 40+ hours per year: How St. Petersburg Fire Rescue is streamlining CFAI accreditation reporting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/saving-40-hours-per-year-how-st-petersburg-fire-rescue-is-streamlining-cfai-accreditation-reporting"
   }
  ],
  "profile": {

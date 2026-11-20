@@ -1,7 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-11-18",
+   "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "SoftBank's Billion-Dollar Loss May Have Put a Cap on AI's Natural Gas Ambitions",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "The New M&A and PPA Playbook: Interconnection, Offtake Certainty, Permitting and Deal Dynamics in 2027 | November 10, 2026, 11am MT",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Behind the Meter: Capacity Costs, Coincident Peaks, and the Value of Storage | November 5, 2026, 11am MT",
    "kind": "press",

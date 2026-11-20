@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Potential GTA 6 Scam Lures: What DNS Data Shows Ahead of Launch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/potential-gta-6-scam-lures/"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Active Directory DNS Health: A Practical Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/active-directory-dns-health/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/resources/2025-ema-radar-for-ddi-efficientip-named-value-leader/"
-  },
-  {
-   "date": "2025-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Forrester 2025 DNS Security Study Strengthen your network security with insights from the Forrester 2025 Study on DNS Security.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/resources/forrester-2025-dns-security-report/"
-  },
-  {
-   "date": "2025-04-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "2025 EMA Hybrid Multi-cloud Report Make your cloud projects successful with insights from the 2025 EMA Hybrid Multi-cloud Report.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/resources/2025-ema-hybrid-multi-cloud-report/"
   }
  ]
 }

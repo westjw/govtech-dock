@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "Why Human Support Still Matters in Public Safety Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pstrax.com/news/human-customer-support-matters-in-public-safety-technology"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "index-text",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pstrax.com/news/building-a-mental-readiness-program"
-  },
-  {
-   "date": "2026-05-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "PSTrax Is Now Available to Canadian Public Safety Agencies Through Canoe Procurement Group",
-   "kind": "product",
-   "kind_rule": "Now Available",
-   "url": "https://pstrax.com/news/purchase-pstrax-through-canoe-procurement-group-of-canada"
   }
  ],
  "profile": {

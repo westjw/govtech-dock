@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Elastic and HoneyHive join forces to advance AI observability and evaluation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/elastic-and-honeyhive"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elastic.co/blog/elastic-cloud-serverless-now-available-azure-toronto"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Java4Shell Remote Code Execution (RCE) Vulnerability - CVE-2026-114938",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/java4shell-remote-code-execution-rce-vulnerability"
   },
   {
    "date": "2026-11-17",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elastic.co/blog/elastic-audi-revolut-f1-team-partnership"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Elastic looks to speed up Jina Model Inference by 8x using NVIDIA RTX GPUs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/jina-model-inference-nvidia-rtx-gpus"
-  },
-  {
-   "date": "2026-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Elastic Security integration with Google Distributed Cloud: Closing the velocity gap in air-gapped environments",
-   "kind": "product",
-   "kind_rule": "integration with",
-   "url": "https://www.elastic.co/blog/elastic-security-integration-with-google-distributed-cloud"
   }
  ]
 }

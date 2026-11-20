@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "What is a triple net lease (NNN)? Meaning, examples, and how it works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-is-a-triple-net-lease-nnn/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "How to choose a property management company: Criteria, questions, and red flags",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/how-to-find-a-property-manager/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/features-of-commercial-property-management-software/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Downtowns gain momentum as malls await the holiday shopping surge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/resources/downtowns-gain-momentum-as-malls-await-the-holiday-shopping-surge/"
   },
   {
    "date": "2026-11-12",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/tenant-parking-rights-rules-for-property-managers/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "MRI Software Expands Agora AI to Simplify Leasing and Property Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/news/mri-software-expands-agora-ai-to-simplify-leasing-and-property-operations/"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-29",
-   "headline": "CAM reconciliation: What it is, how the process works, and how to automate it",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-is-cam-reconciliation-recovery/"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "What MRI\u2019s IDC Leader position says about where lease administration is heading",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-does-being-an-idc-marketscape-leader-mean-for-property-occupiers/"
   }
  ]
 }

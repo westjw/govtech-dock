@@ -1,10 +1,19 @@
 {
  "news": [
   {
-   "date": "2026-11-16",
+   "date": "2026-11-19",
    "date_source": "index-text",
-   "first_seen": "2026-11-16",
+   "first_seen": "2026-11-19",
    "headline": "This is some text inside of a div block.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/6-signs-its-time-to-replace-your-schools-visitor-management-system"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "How to Introduce a New Visitor Check-In System to Parents and Guardians",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/how-to-introduce-a-new-visitor-check-in-system-to-parents-and-guardians"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/better-screen-time-policy-starts-with-asking-better-questions"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Rethinking Screen Time: What District Leaders Actually Recommend",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/rethinking-screen-time-what-district-leaders-actually-recommend"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Corporate Security Is National Security: When Executives Are Intelligence Targets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/corporate-security-executive-intelligence-threats"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kaseware.com/post/best-oig-case-management-software-compared"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Staying Ahead of Hate \u2013 Part IX: The Vanishing Warning Window",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaseware.com/post/staying-ahead-of-hate-part-ix-the-vanishing-warning-window"
   }
  ],
  "profile": {

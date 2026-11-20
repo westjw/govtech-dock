@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "DOT Requirements for Non-CDL Vehicles (10,001 to 26,000 lbs)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/dot-requirements-non-cdl-vehicles/"
+  },
+  {
    "date": "2026-11-18",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-18",
    "headline": "Fleet Safety Policy Template: What to Include (Free Download)",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-17",
    "headline": "Distracted Driving Policy for Fleets: What to Include",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-16",
    "headline": "FMCSA Hours of Service Rules Explained: 11-Hour, 14-Hour, and 30-Minute Break",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-13",
    "headline": "DOT Safety Ratings Explained: Satisfactory, Conditional, and Unsatisfactory",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-12",
    "headline": "DOT Annual Inspection vs. State Inspection: What's the Difference?",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-11",
    "headline": "DOT Compliance Software: What It Does and What to Look For",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-11",
    "headline": "Why Fleet Labor Costs Are So Hard to Predict, and How to Estimate Them Accurately",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-11",
    "headline": "Vehicle Maintenance BASIC: The Violations That Hurt Your CSA Score Most",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-11-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-06",
    "headline": "OSHA vs. DOT: Which Safety Rules Apply to Your Fleet?",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-05",
    "headline": "How to Get Drivers to Buy Into Your Fleet Safety Program",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "How to Dispute a CSA Violation With DataQs",
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/how-to-dispute-csa-violation-dataqs/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "Pre-Trip Inspections for Non-CDL Vehicles: Pickups, Vans, and Box Trucks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/non-cdl-pre-trip-inspection/"
   }
  ],
  "profile": {

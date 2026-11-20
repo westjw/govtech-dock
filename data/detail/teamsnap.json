@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "We Have a Window of Opportunity with Youth Soccer. Let\u2019s Not Waste It.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.teamsnap.com/blog/news/we-have-a-window-of-opportunity-with-youth-soccer-lets-not-waste-it"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "card-date",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.teamsnap.com/blog/announcements/teamsnap-surpasses-20-million-given-back-youth-sports-brand-sponsored-programs"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "TeamSnap Surpasses $20 Million Given Back to Youth Sports Through Brand-Sponsored Programs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.teamsnap.com/blog/news/teamsnap-surpasses-20-million-given-back-youth-sports-brand-sponsored-programs"
   }
  ],
  "profile": {

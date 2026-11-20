@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Read the latest news",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autura.com/news/autura-publishes-the-2026-state-of-towing-annual-report-a-free-resource-built-on-what-towing-professionals-shared-about-business-this-year"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "What Towing Pros Told Us About 2026: Insurance, Drivers, New Rules, AI and More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autura.com/insights/what-towing-pros-told-us-about-2026-insurance-drivers-new-rules-ai-and-more"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Autura Statement on Recent Las Vegas Towing Coverage",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-08-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "2026 State of Towing Report Is Coming Soon: Share Your Data and Help Shape the Industry",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.autura.com/insights/from-tow-to-title-how-connected-municipal-impound-lots-are-more-efficient-and-profitable"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Impound Lots: The Nation's Billion-Dollar Graveyards",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.autura.com/insights/impound-lots-the-nations-billion-dollar-graveyards"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Takeaways Gathered by Directly Asking Tow Operators and Agencies What They Really Need",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.autura.com/insights/insights-gathered-from-directly-asking-tow-operators-and-agencies-what-they-really-need"
   }
  ],
  "profile": {

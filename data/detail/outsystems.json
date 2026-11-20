@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-17",
+   "headline": "OWT London: OutSystems unveils agentic legacy modernization",
+   "kind": "product",
+   "kind_rule": "unveils",
+   "url": "https://www.outsystems.com/blog/posts/agentic-legacy-modernization"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "EdgeIQ.ai and OutSystems: Accelerating Industry 4.0 outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/edgeiq-outsystems-alliance"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -17,15 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/operationalizing-agentic-ai-manufacturing"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-17",
-   "headline": "OWT London: OutSystems unveils agentic legacy modernization",
-   "kind": "product",
-   "kind_rule": "unveils",
-   "url": "https://www.outsystems.com/blog/posts/agentic-legacy-modernization"
   },
   {
    "date": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/agentic-ai-strategies-that-work"
-  },
-  {
-   "date": "2026-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "A new generation of mobile development: Capacitor on ODC",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/mobile-app-development-capacitor-odc"
   }
  ]
 }

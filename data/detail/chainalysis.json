@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "How Chain, Our AI Workspace, Helps Investigators Fight Crime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/how-chain-our-ai-workspace-helps-investigators-fight-crime/"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-17",
+   "headline": "Refugees, ATMs, and Tax Shifts: What\u2019s Driving Crypto in Eastern Europe",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/eastern-europe-crypto-adoption-2026/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "index-text",
    "first_seen": "2026-11-13",
@@ -19,7 +37,7 @@
    "url": "https://www.chainalysis.com/blog/chinese-ai-proxy-services/"
   },
   {
-   "date": "2026-11-10",
+   "date": "2026-11-09",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
    "headline": "Sanctioned Canadian Crypto OTCs Served Iran and Drug Cartels",
@@ -46,7 +64,7 @@
    "url": "https://www.chainalysis.com/blog/binance-hack-dprk-employment-fraud/"
   },
   {
-   "date": "2026-11-03",
+   "date": "2026-11-02",
    "date_source": "index-text",
    "first_seen": "2026-11-03",
    "headline": "Disrupting the Mercado Bitcoin Attack: How Chainalysis Led the Freeze of Nearly $10M in Stolen Funds",
@@ -55,13 +73,13 @@
    "url": "https://www.chainalysis.com/blog/chainalysis-response-mercado-bitcoin/"
   },
   {
-   "date": "2026-10-30",
+   "date": "2026-11-02",
    "date_source": "index-text",
-   "first_seen": "2026-11-17",
-   "headline": "Refugees, ATMs, and Tax Shifts: What\u2019s Driving Crypto in Eastern Europe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/eastern-europe-crypto-adoption-2026/"
+   "first_seen": "2026-10-30",
+   "headline": "Updated Nov 10: Chainalysis Security Incident Information",
+   "kind": "product",
+   "kind_rule": "Updated",
+   "url": "https://www.chainalysis.com/blog/security-incident-october-30/"
   },
   {
    "date": "2026-10-30",
@@ -75,24 +93,6 @@
   {
    "date": "2026-10-30",
    "date_source": "index-text",
-   "first_seen": "2026-10-30",
-   "headline": "Updated Nov 10: Chainalysis Security Incident Information",
-   "kind": "product",
-   "kind_rule": "Updated",
-   "url": "https://www.chainalysis.com/blog/security-incident-october-30/"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Chainalysis Supports Arc with Automatic Token Support",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/chainalysis-supports-arc-with-automatic-token-support/"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "index-text",
    "first_seen": "2026-10-29",
    "headline": "South Africa Leads Sub-Saharan Africa\u2019s 13.4% Crypto Growth",
    "kind": "press",
@@ -100,13 +100,13 @@
    "url": "https://www.chainalysis.com/blog/sub-saharan-africa-crypto-adoption-2026/"
   },
   {
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "date_source": "index-text",
-   "first_seen": "2026-10-28",
-   "headline": "Treasury Sanctions Russians, North Koreans supporting DPRK IT Worker Fraud",
+   "first_seen": "2026-11-20",
+   "headline": "Chainalysis Supports Arc with Automatic Token Support",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/ofac-sanctions-dprk-it-worker-fraud/"
+   "url": "https://www.chainalysis.com/blog/chainalysis-supports-arc-with-automatic-token-support/"
   }
  ],
  "profile": {

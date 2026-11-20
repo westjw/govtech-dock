@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "IN-DEPTH: Palliser Capital on the rise of UK activism",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/in-depth-palliser-capital-on-the-rise-of-uk-activism"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/resources/blog/ai-innovations-ask-governai-boards-entities"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "Corporate governance at an inflection point",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/governance-ai-inflection-point"
   }
  ]
 }

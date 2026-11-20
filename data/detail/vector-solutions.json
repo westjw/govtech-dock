@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "and best practices from the Vector Solutions team.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vectorsolutions.com/resources/blogs/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "Vector Solutions\u2019 National Insights Report Reveals Gaps in Hazing Prevention Readiness Among College Students, Faculty, and Staff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vectorsolutions.com/resources/newsroom/vector-solutions-national-insights-report-reveals-gaps-in-hazing-prevention-readiness-among-college-students-faculty-and-staff/"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "Vector Solutions Launches Cloud Connect for Learning Integration, a Workday Design Approved Integration",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.vectorsolutions.com/resources/newsroom/vector-solutions-launches-cloud-connect-for-learning-integration-a-workday-design-approved-integration/"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "Vector Solutions Expands AI Literacy Training to Help K-12 Schools and Higher Education Institutions Build AI-Ready Students, Educators, Faculty, and Staff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vectorsolutions.com/resources/newsroom/vector-solutions-expands-ai-literacy-training-to-help-k-12-schools-and-higher-education-institutions-build-ai-ready-students-educators-faculty-and-staff/"
+  },
+  {
    "date": "2023-11-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",

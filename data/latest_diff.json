@@ -1,188 +1,447 @@
 {
-  "date": "2026-11-19",
-  "previous": "2026-11-18",
+  "date": "2026-11-20",
+  "previous": "2026-11-19",
   "changes": [
     {
-      "company": "SewerAI",
-      "id": "sewerai",
+      "company": "Pulsara",
+      "id": "pulsara",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Dream Job - Marketing and Business only"
+    },
+    {
+      "company": "Badger Meter",
+      "id": "badger-meter",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Account Executive, Municipal (Remote)"
+      "note": "Account Manager- Private Water (3 Locations)"
     },
     {
-      "company": "Schneider Geospatial",
-      "id": "schneider-geospatial",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Geographic Account Executive (Remote)"
-    },
-    {
-      "company": "SOVRA",
-      "id": "sovra",
+      "company": "Kaizen Labs",
+      "id": "kaizen-labs",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Softdocs",
-      "id": "softdocs",
+      "company": "PublicInput",
+      "id": "publicinput",
       "from": "Unknown",
       "to": "Yes",
-      "note": "State and Local Government (SLG) A (Remote)"
+      "note": "Account Executive (United States)"
     },
     {
-      "company": "Genetec",
-      "id": "genetec",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive - Belgium and Lu"
+      "company": "SOVRA",
+      "id": "sovra",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only"
     },
     {
-      "company": "Vector Solutions",
-      "id": "vector-solutions",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Mid-Market Account Executive - Law (Tampa, FL)"
-    },
-    {
-      "company": "D-Fend Solutions",
-      "id": "d-fend-solutions",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sales Executive - Airports Sector (McLean, Virginia)"
-    },
-    {
-      "company": "Anaplan",
-      "id": "anaplan",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive, Sweden (Stockholm, Sweden)"
-    },
-    {
-      "company": "Pimloc, Inc.",
-      "id": "pimloc-inc",
+      "company": "Powerfleet",
+      "id": "powerfleet",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Xplor Recreation",
-      "id": "xplor-recreation",
-      "from": "Yes",
+      "company": "SS8 Networks",
+      "id": "ss8-networks",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Customer Success Coordinator only"
+      "note": "Business Development Associate \u2013 U only"
     },
     {
-      "company": "Whip Around",
-      "id": "whip-around",
-      "from": "None found",
+      "company": "VirTra",
+      "id": "virtra",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "HomeWAV",
+      "id": "homewav",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "UZURV",
+      "id": "uzurv",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Starbridge",
+      "id": "starbridge",
+      "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Sales Development Representative - only"
+      "note": "Forward Deployed GTME only"
+    },
+    {
+      "company": "Nuvei",
+      "id": "nuvei",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Business Development Manager (Milan)"
+    },
+    {
+      "company": "Pimloc, Inc.",
+      "id": "pimloc-inc",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "robots.txt asks crawlers not to read car"
+    },
+    {
+      "company": "Master Meter",
+      "id": "master-meter",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Manager - Territory"
+    },
+    {
+      "company": "Geographic Solutions",
+      "id": "geographic-solutions",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Business Development Executive (We only"
+    },
+    {
+      "company": "Propelus",
+      "id": "propelus",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Fast Enterprises",
+      "id": "fast-enterprises",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Careers In Government",
       "id": "careers-in-government",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "TalkingPoints",
+      "id": "talkingpoints",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "SpotHero",
+      "id": "spothero",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Binti",
+      "id": "binti",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Lead Customer Success Manager only"
+    },
+    {
+      "company": "HHAeXchange",
+      "id": "hhaexchange",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (New York City Metr)"
+    },
+    {
+      "company": "mdf commerce",
+      "id": "mdf-commerce",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only"
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Journal Technologies",
+      "id": "journal-technologies",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Director of Solutions Architecture only"
+    },
+    {
+      "company": "Track Group",
+      "id": "track-group",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "VotingWorks",
-      "id": "votingworks",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "EMS LINQ",
-      "id": "ems-linq",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive (Austin, Texas)"
-    },
-    {
-      "company": "mdf commerce",
-      "id": "mdf-commerce",
+      "company": "Virtual Peaker",
+      "id": "virtual-peaker",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Grant Street Group",
-      "id": "grant-street-group",
+      "company": "Computronix",
+      "id": "computronix",
       "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Yes",
+      "company": "Thentia",
+      "id": "thentia",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative only"
+    },
+    {
+      "company": "3-GIS",
+      "id": "3-gis",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Executive \u2013 Utiliti"
+    },
+    {
+      "company": "Celona",
+      "id": "celona",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Director-Southeast (REMOTE - US Only)"
+    },
+    {
+      "company": "EverTrue",
+      "id": "evertrue",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Solutions Engineer only"
+    },
+    {
+      "company": "Augintel",
+      "id": "augintel",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Infobase",
+      "id": "infobase",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Business Development Executive - H only"
+    },
+    {
+      "company": "SpryPoint",
+      "id": "sprypoint",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (Toronto)"
+    },
+    {
+      "company": "PressReader",
+      "id": "pressreader",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Jenzabar",
+      "id": "jenzabar",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "FutureFit AI",
+      "id": "futurefit-ai",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Strategic Account Manager (Remote (US))"
+    },
+    {
+      "company": "Ease Health",
+      "id": "ease-health",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "GTM Engineer only"
+    },
+    {
+      "company": "Codio",
+      "id": "codio",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Director of Partnerships (Account  (United States)"
+    },
+    {
+      "company": "GIS WebTech",
+      "id": "gis-webtech",
+      "from": "None found",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "network error: robots.txt on giswebtech."
     },
     {
-      "company": "Archistar",
-      "id": "archistar",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Regional Sales Director - Governme (Toronto)"
-    },
-    {
-      "company": "Freebee",
-      "id": "freebee",
+      "company": "Civic Roundtable",
+      "id": "civic-roundtable",
       "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Planet Labs",
-      "id": "planet-labs",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive, Defence & Intel (Japan, Remote)"
-    },
-    {
-      "company": "Jupiter Intelligence",
-      "id": "jupiter-intelligence",
-      "from": "Unknown",
+      "company": "Evisions",
+      "id": "evisions",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Element451",
-      "id": "element451",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Future Opportunity: Account Execut (Remote, United Sta)"
+      "company": "Argyle",
+      "id": "argyle",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Revenue Operations Analyst only"
     },
     {
-      "company": "AM",
-      "id": "am",
+      "company": "Cribl, Inc",
+      "id": "cribl-inc",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "AM Quartex",
-      "id": "am-quartex",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Commercial Sales Representative (Remote - Austin, T)"
     },
     {
       "company": "Dun & Bradstreet, Inc.",
       "id": "dun-bradstreet-inc",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Business Development Manager (Hong Kong)"
     },
     {
-      "company": "Pluralsight",
-      "id": "pluralsight",
+      "company": "Lightcast",
+      "id": "lightcast",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - 1083 (Moscow, ID)"
+    },
+    {
+      "company": "Netskope",
+      "id": "netskope",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Sales Manager (Mid-Mark (Belgium)"
+    },
+    {
+      "company": "OneStream",
+      "id": "onestream",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Texas)"
+    },
+    {
+      "company": "KEV Group",
+      "id": "kev-group",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive - Lunchbox (Toronto, Ontario, )"
+    },
+    {
+      "company": "Metrc",
+      "id": "metrc",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Associate Customer Success Manager only"
+    },
+    {
+      "company": "Chmura Economics & Analytics",
+      "id": "chmura-economics-analytics",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative only"
+    },
+    {
+      "company": "KnowBe4",
+      "id": "knowbe4",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (ENT/Strategic) (R (Austin, Texas)"
+    },
+    {
+      "company": "Zscaler",
+      "id": "zscaler",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Remote - Perth, Au)"
+    },
+    {
+      "company": "Everway",
+      "id": "everway",
       "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Enterprise Growth Account Executiv only"
+      "note": "Business Development Executive only"
+    },
+    {
+      "company": "SonicWall",
+      "id": "sonicwall",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Inside Territory Manager- Dutch Sp (Remote, United Kin)"
+    },
+    {
+      "company": "ICEYE",
+      "id": "iceye",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Strategic Account Manager \u2013 Insura (Tokyo)"
+    },
+    {
+      "company": "Branching Minds",
+      "id": "branching-minds",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive: Large Market (F"
+    },
+    {
+      "company": "Edpuzzle",
+      "id": "edpuzzle",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "K-12 Sales Representative - Ohio B (United States)"
+    },
+    {
+      "company": "Kami",
+      "id": "kami",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Manager, Account Executives (Anywhere in the US)"
+    },
+    {
+      "company": "Packback",
+      "id": "packback",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Manager"
+    },
+    {
+      "company": "Top Hat",
+      "id": "top-hat",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Representative - Milwaukee (Milwaukee)"
     }
   ]
 }

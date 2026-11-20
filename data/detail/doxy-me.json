@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Why your telehealth claims are being denied",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://doxy.me/media/telehealth-claims-denied"
+  },
+  {
    "date": "2026-11-17",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "How to start a virtual private practice: a 90-day plan",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "How to reduce telehealth no-shows",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Best telehealth platforms for therapists in 2026",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Best free telehealth platforms: What\u2019s included and where free ends",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Browser-based vs. app-based telehealth",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://doxy.me/media/doxy-me-vs-simplepractice"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "card-date",
-   "first_seen": "2026-10-22",
-   "headline": "What doxy.me doesn\u2019t do, and what to use alongside it",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://doxy.me/media/doxy-me-limitations"
   }
  ]
 }

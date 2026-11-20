@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Geospatial Analytics for Government: How It Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eagleview.com/blog/geospatial-analytics-government/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eagleview.com/pl/blog/top-3-developer-use-cases-for-property-data/?wg-choose-original=false"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Operational Efficiency in Insurance Is No Longer About Doing More with Less. It\u2019s About Knowing More Before You Go.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eagleview.com/blog/operational-efficiency-in-insurance-is-no-longer-about-doing-more-with-less-its-about-knowing-more-before-you-go/"
   }
  ],
  "profile": {

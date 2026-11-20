@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Explore an era of reform, conflict and international influence in Afghanistan with AM\u2019s new resource",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.amdigital.co.uk/insights/news/explore-an-era-of-reform-conflict-and-international-influence-in-afghanistan-with-ams-new-resource"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-14",
@@ -43,11 +52,11 @@
    "headline": "Shaping career-ready graduates through primary sources",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.amdigital.co.uk/insights/news/shaping-career-ready-graduates-through-primary-sources"
+   "url": "https://www.amdigital.co.uk/insights/news/shaping-career-ready-graduates-through-primary-sources?from-search=1"
   },
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "From classroom to corporate: A closer look at the career-ready skills history students are building",
    "kind": "press",
@@ -61,7 +70,7 @@
    "headline": "International connections in African American Women's Histories",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.amdigital.co.uk/insights/blog/international-connections-in-african-american-womens-histories"
+   "url": "https://www.amdigital.co.uk/insights/blog/international-connections-in-african-american-womens-histories?from-search=1"
   },
   {
    "date": "2026-10-06",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-04",
    "headline": "New AM primary source collection showcases Caribbean voices through twentieth-century newspapers",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.amdigital.co.uk/insights/news/new-am-primary-source-collection-showcases-caribbean-voices-through-twentieth-century-newspapers?from-search=1"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Cut, paste, publish: Girls' zines and alternative voices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.amdigital.co.uk/insights/blog/cut-paste-publish-girls-zines-and-alternative-voices"
+   "url": "https://www.amdigital.co.uk/insights/news/new-am-primary-source-collection-showcases-caribbean-voices-through-twentieth-century-newspapers"
   }
  ],
  "profile": {

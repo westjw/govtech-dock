@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "The Role of School Transportation in Emergency Response & Reunification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://busplanner.com/resources/blog/role-school-transportation-emergency-response-reunification/"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "5 Ways School Transportation Data Reduces School Bus Behavior Incidents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://busplanner.com/resources/blog/school-transportation-data-reduces-school-bus-behavior-incidents/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://busplanner.com/resources/blog/evaluate-school-boundary-change-results/"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "5 Ways to Better Align Student Eligibility Criteria With Ridership Across Routes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://busplanner.com/resources/blog/align-student-eligibility-criteria-with-ridership/"
-  },
-  {
-   "date": "2026-10-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "5 Things to Review During School Bus Safety Week",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://busplanner.com/resources/blog/school-bus-safety-week-review/"
   }
  ]
 }

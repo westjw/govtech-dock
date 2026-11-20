@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "How to Become a Trauma-Informed Organization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.relias.com/blog/organization-trauma-informed-approach"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.relias.com/blog/the-business-case-for-physician-engagement"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Can AI Replace Human Expertise in Healthcare Training?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.relias.com/blog/can-ai-replace-human-expertise-in-healthcare-training"
   }
  ]
 }

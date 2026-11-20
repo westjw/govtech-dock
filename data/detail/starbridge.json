@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "Playbook November 19, 2026 How many colleges are in the US? Build your TAM Federal data counts 5,711 Title IV colleges in the US, plus 68 system offices. Here is what each sector holds and which ones ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/how-many-colleges-higher-education-tam"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "index-text",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/government-leadership-change-outreach"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Read the announcement Learn more",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-3-0"
   }
  ],
  "profile": {

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "What is Threat and Vulnerability Management (TVM)?",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-15",
    "headline": "Microsoft 365 Outage Exposes a Risk Bigger Than Downtime",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "N-able N-central Vulnerabilities Expose a Bigger Risk",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "What If N-central Were Compromised, but Customer Endpoints Remained Protected?",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "What is Vulnerability Prioritization? How to Prioritize Vulnerability Remediation by Real Risk",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "What is Continuous Vulnerability Management (CVM)?",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "What is Vulnerability Management? Process, Tools, and Best Practices",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Mean Time to Patch: The Patch Management Metric that Measures Your Exposure Window",
    "kind": "press",

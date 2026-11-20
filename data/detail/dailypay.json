@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "What is employee engagement and why does it matter for your business?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dailypay.com/resource-center/blog/what-is-employee-engagement/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -82,6 +91,15 @@
    "url": "https://www.dailypay.com/resource-center/blog/financial-wellness-benefits-for-your-employees/"
   },
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Financial wellness benefits for your employees",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dailypay.com/resource-center/blog/employee-financial-wellness-benefits/"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dailypay.com/resource-center/blog/workday-rising-2026/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Biweekly vs semimonthly pay: key differences and how to choose",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dailypay.com/resource-center/blog/biweekly-vs-semimonthly-pay/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Get paid early: every option explained (including if an employer isn\u2019t involved)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dailypay.com/resource-center/blog/get-paid-early/"
   }
  ],
  "profile": {

@@ -1,16 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-11-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-18",
-   "headline": "Introducing Unity Gateway Insights",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights"
-  },
-  {
-   "date": "2026-11-18",
+   "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "Introducing Genie Migrate for Serverless",
@@ -19,8 +10,80 @@
    "url": "https://www.databricks.com/blog/introducing-genie-migrate-serverless"
   },
   {
-   "date": "2026-11-18",
+   "date": "2026-11-19",
    "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Genie ZeroOps, now in public beta: An autonomous agent that fixes data pipelines, with lessons from 80,000 customer issues",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/genie-zeroops-now-public-beta-autonomous-agent-fixes-data-pipelines-lessons-80000-customer"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Genie One Accuracy: Why Curated Agents Need Governed Context",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/genie-one-accuracy-why-curated-agents-need-governed-context"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Four AI Architecture Patterns for Regulated Industries",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/ai-architecture-patterns-regulated-industries"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "How partners use Genie's free tier on Azure Databricks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/how-partners-use-genies-free-tier-azure-databricks"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Bulk migrate your dashboards to AI/BI with Genie Code",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Introducing CustomerLake Conversions: Improve advertising performance with first-party customer context",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.databricks.com/blog/customerlake-conversions"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-19",
+   "headline": "Databricks Wins A-Team Award for AI in Capital Markets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/databricks-wins-team-award-ai-capital-markets-0"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "Introducing Unity Gateway Insights",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "index-text",
    "first_seen": "2026-11-18",
    "headline": "What's new for Genie in Microsoft: Copilot Cowork and Chat, Microsoft Teams, and Excel.",
    "kind": "press",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/how-we-raised-databricks-cluster-rate-limits-75"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-16",
-   "headline": "Talk to your clinical data: unlocking AWS HealthLake with OpenSharing and Genie One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-17",
-   "headline": "Branch, sync, serve: What our Lakebase Hackathon taught us about building on Lakebase",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/branch-sync-serve-what-our-lakebase-hackathon-taught-us-about-building-lakebase"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-17",
-   "headline": "Azure Databricks sessions at Microsoft Ignite 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/azure-databricks-sessions-microsoft-ignite-2026"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "index-text",
-   "first_seen": "2026-11-17",
-   "headline": "How packaged clean rooms bring RampID to your lakehouse",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/liveramp-rampid-identity-resolution-packaged-clean-rooms"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "index-text",
-   "first_seen": "2026-11-17",
-   "headline": "Advancing Catalog Interoperability with Unity Catalog and Google Cloud\u2019s Borderless Lakehouse",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/advancing-catalog-interoperability-unity-catalog-and-google-clouds-borderless-lakehouse"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "index-text",
-   "first_seen": "2026-11-17",
-   "headline": "The new Azure Databricks on Azure Government is now in Beta",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/new-azure-databricks-azure-government-now-beta"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-17",
-   "headline": "Built on object storage, served from cache",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/built-object-storage-served-cache"
   }
  ]
 }

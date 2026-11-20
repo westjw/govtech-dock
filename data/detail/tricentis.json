@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-18",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-18",
    "headline": "What\u2019s new in Tricentis Agentic Test Creation: Keeping your team in control before, during, and after every test run",
    "kind": "press",
@@ -11,12 +11,21 @@
   },
   {
    "date": "2026-11-18",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-18",
    "headline": "What governance looks like when AI writes your tests",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tricentis.com/blog/ai-governance-software-testing"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-18",
+   "headline": "Tricentis Highlights 2026 EMEA Customer Innovation Awards Winners at Transform London",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/news/emea-winners-2026-customer-innovation-awards"
   },
   {
    "date": "2026-11-17",
@@ -38,16 +47,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-18",
-   "headline": "Tricentis Highlights 2026 EMEA Customer Innovation Awards Winners at Transform London",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/news/emea-winners-2026-customer-innovation-awards"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-18",
    "headline": "Before the next surge: Shifting observability left for reliable public sector services",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-18",
    "headline": "Your APIs aren\u2019t fully tested if they\u2019re only functionally tested",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-12",
    "headline": "Agents are in production. Who\u2019s signing off on quality?",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-12",
    "headline": "SAP\u2019s Autonomous Enterprise runs on context. So should quality engineering.",
    "kind": "press",

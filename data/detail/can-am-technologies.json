@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Anoka County, Birmingham, and Grand Prairie Expand Revenue Management Capabilities with New Teller Go-Lives",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/anoka-county-birmingham-and-grand-prairie-expand-revenue-management-capabilities-with-new-teller-go-lives"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goteller.com/news/sara-lowe-clark-county-chief-deputy-treasurer-shares-her-experience-with-teller"
-  },
-  {
-   "date": "2026-04-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Neil Heyer, Clark County Tax Service Manager shares his experience with Teller",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goteller.com/news/neil-heyer-clark-county-tax-service-manager-shares-his-experience-with-teller"
   }
  ],
  "profile": {

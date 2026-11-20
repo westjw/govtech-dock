@@ -2,21 +2,12 @@
  "news": [
   {
    "date": "2026-11-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "How We Build, Ship, and Support Software with AI Agents",
    "kind": "press",
    "kind_rule": null,
    "url": "https://brain.co/blog/how-we-build-ship-and-support-software-with-ai-agents"
-  },
-  {
-   "date": "2026-11-18",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "A Design System with Judgment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://brain.co/blog/a-design-system-with-judgment"
   },
   {
    "date": "2026-11-11",
@@ -47,7 +38,16 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "A Design System with Judgment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brain.co/blog/a-design-system-with-judgment"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Knighthead Life Selects Brain Co. to Power Annuity Operations",
    "kind": "contract",
@@ -55,8 +55,8 @@
    "url": "https://brain.co/blog/knighthead-life-selects-brain-co-to-power-annuity-operations"
   },
   {
-   "date": "2026-10-01",
-   "date_source": "index-text",
+   "date": "2026-09-15",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Authorship Over Output Sep 15, 2026 How we rebuilt the design career ladder, headcount, and hiring bar at Brain Co. around a single principle: authorship over output.",
    "kind": "press",

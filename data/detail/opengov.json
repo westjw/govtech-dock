@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Government Permitting Software Buyer\u2019s Guide (2027)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://opengov.com/resources/blog/government-permitting-software-buyers-guide-2027-evaluation-tips/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://opengov.com/resources/blog/large-scale-government-procurement-needs-a-different-approach-to-compliance/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Florida House Bill 1329 Is Here. Is Your Budget Process Ready?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://opengov.com/resources/blog/florida-house-bill-1329-is-here-is-your-budget-process-ready/"
   }
  ],
  "profile": {

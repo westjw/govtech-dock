@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Detecting Timeroasting the Hard Way",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/detecting-timeroasting"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "A Rogue RMM alert at 2am. Who You Gonna Call?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/rmm-alerts-msp-soc-incident-response"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.huntress.com/blog/the-evolving-tradecraft-of-clickfix"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "N-able Disables Cloud Services Following Disclosure of \"Able2Shell\" Exploit Chains",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/n-able-disables-cloud-services-following-disclosure-of-able2shell-exploit-chains"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Inside an AhsayCBS Intrusion: Hidden Webshells, a CryptoMiner, and a C2 Implant",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/ahsaycbs-webshells"
   }
  ]
 }

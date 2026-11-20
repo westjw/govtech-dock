@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "How to Build a Better Playground Inspection Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/how-to-build-a-better-playground-inspection-program"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/the-hidden-costs-of-outdated-municipal-software"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "7 Signs You've Outgrown Spreadsheets for Public Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/7-signs-youve-outgrown-spreadsheets-for-public-works"
   }
  ],
  "profile": {

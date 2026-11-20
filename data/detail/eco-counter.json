@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "Counting Trail Users to Keep 35 Miles of Trail in Good Shape",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eco-counter.com/blog/knox-county-park-district-counting-trail-users-to-keep-35-miles-of-trail-in-good-shape"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eco-counter.com/blog/velo-city-2026-rimini-our-lookback"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Vision Zero Bike Count Data Helped Save a Bike Lane in Washington",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eco-counter.com/blog/how-vision-zero-data-helped-save-washington-dcs-15th-street-bike-lane"
   }
  ]
 }
