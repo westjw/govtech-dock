@@ -224,6 +224,17 @@ VENDOR_SITES = {
     "jazzhr": {"jazzhr.com"}, "lever": {"lever.co"}, "paylocity": {"paylocity.com"},
     "rippling": {"rippling.com"}, "smartrecruiters": {"smartrecruiters.com"}}
 VENDOR_AS = frozenset({"href"})
+# THE BOARD'S OWN PLATFORM IN A FORM THAT NAMES NO BOARD, linked or named in
+# text: the "Powered by ApplicantPro" link, a Teamtailor footer. The finder
+# files every address on these platforms that names a board AS a board, so
+# what is left under these names names none, and as a link it is the vendor
+# doing its job (blind review, 2026-11-21: it held boards that passed both
+# checks, on a doubt that said "a platform the crawl cannot read"). Embedded,
+# scripted or requested, it is still a doubt: a widget of another account's
+# names no board either.
+OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-other"},
+             "pinpoint": {"pinpoint-other"}, "zohorecruit": {"zohorecruit-other"},
+             "comeet": {"comeet-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -490,6 +501,8 @@ def advertising(vendor: str, kind, element=None) -> bool:
     """
     how = str(element or "").strip().lower()
     if vendor in ADVERTISED_ON:
+        return how in ADVERTISED_AS
+    if vendor in OWN_FORMS.get(kind, ()):
         return how in ADVERTISED_AS
     return vendor.startswith("other:") and how in VENDOR_AS and \
         vendor.split(":", 1)[1].strip().lower() in VENDOR_SITES.get(kind, ())

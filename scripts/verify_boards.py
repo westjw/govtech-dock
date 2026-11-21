@@ -760,15 +760,19 @@ def _board_page(url: str, head: int = 0) -> str:
     """
     home = host_of(url)
 
-    def one(hop: str):
+    def stay(hop: str):
+        # asked BEFORE the hop's robots.txt is, so a host a redirect names
+        # is never sent anything (blind review, 2026-11-21)
         if host_of(hop) != home:
             raise ats.AtsError(f"{url} leads off to {host_of(hop)}, which is "
                                f"not the board")
+
+    def one(hop: str):
         if head:
             return ats._one(hop, stream=True)
         return ats._get(hop, allow_redirects=False)
 
-    resp = ats.follow(url, one)
+    resp = ats.follow(url, one, may=stay)
     if not head:
         return (resp.text or "")[:PAGE_MAX]
     try:
@@ -1079,7 +1083,13 @@ def _hirebridge(ref, out: dict) -> None:
                       "id nobody holds answers the same way)")
         return
     sites = {ats._text(j.get("companyurl")) for j in rows} - {""}
-    if len(sites) == 1:
+    if len(sites) > 1:
+        # every name the same and two websites: two companies sharing a name
+        # on one account, which the website is there to tell apart. Not proven.
+        out.update(stated=False, how=f"hirebridge rows give {len(sites)} different "
+                                     f"websites ({', '.join(sorted(sites)[:3])}), so which "
+                                     f"company the name is is not stated")
+    elif sites:
         out["site"] = sites.pop()
 
 
@@ -1099,9 +1109,14 @@ def _applicantpro(ref, out: dict) -> None:
     out["hosts"] = {host}
     out["n"] = sum(1 for j in ats.applicantpro_jobs(host, page)
                    if isinstance(j, dict) and ats._text(j.get("title")))
-    if not _state(out, [_dig(data, "career_site_name"), _dig(data, "organization_name")],
-                  "applicantpro career_site_name and organization_name, stated on "
-                  "the board's own page"):
+    # The SITE's own name is required: without it the account's name alone
+    # would prove a sister brand's site for the account (blind review,
+    # 2026-11-21).
+    if not _clean(_dig(data, "career_site_name")):
+        out["how"] = "applicantpro page states no career site name"
+    elif not _state(out, [_dig(data, "career_site_name"), _dig(data, "organization_name")],
+                    "applicantpro career_site_name and organization_name, stated on "
+                    "the board's own page"):
         out["how"] = "applicantpro page states no career site name"
 
 

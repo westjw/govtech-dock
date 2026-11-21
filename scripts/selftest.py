@@ -18444,10 +18444,31 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
                            f"only, or a field nobody reads: {leaked[0]}")
         if len(rows) > 1 and rows[1].get("mode") != "remote":
             errors += fail("hirebridge: isremote true was not read as remote")
-        for body, want in (('"[]"', []), ("[]", [])):
-            ats._page = serve({HB: body})
-            if ats.fetch_hirebridge("7724") != want:
-                errors += fail(f"hirebridge: the empty board {body} is not a zero")
+        if not asked or not all(same for _u, same in asked):
+            errors += fail(f"hirebridge: the feed was not asked on its own host only: {asked}")
+        HBL = "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=7724"
+        for body in ('"[]"', "[]"):
+            ats._page = serve({HB: body, HBL: "<html><title>Amerlux Career Center</title>"
+                                              "There are no job openings available at this "
+                                              "time.</html>"})
+            if ats.fetch_hirebridge("7724") != []:
+                errors += fail(f"hirebridge: the empty board {body}, whose career centre "
+                               f"answers, is not a zero")
+        # ...and an id nobody holds answers "[]" too: its career centre says so
+        for landed, page_ in ((HBL, "<title>Hirebridge ATS Error</title>"),
+                              ("https://recruit.hirebridge.com/v3/Application/AppErrMsg.aspx"
+                               "?cid=7724&errorType=badurl", "<title>Error</title>"),
+                              (HBL, "<html>a page nobody has seen</html>")):
+            ats._page = serve({HB: '"[]"', HBL: (landed, page_)})
+            try:
+                ats.fetch_hirebridge("7724")
+                errors += fail(f"hirebridge: an empty feed whose career centre answers "
+                               f"{page_[:40]!r} at {landed[-40:]!r} was read as a zero")
+            except ats.AtsError as exc:
+                dead = "ATS Error" in page_ or "AppErrMsg" in landed
+                if dead != ("no company holds" in str(exc)):
+                    errors += fail(f"hirebridge: an id nobody holds is not said to be one, or "
+                                   f"an unknown answer is: {exc}")
         for body in ('"not json', '{"jobs": []}', '"[1, 2]"'):
             ats._page = serve({HB: body})
             try:
@@ -18472,17 +18493,35 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
                 resp = R("x", HB)
                 resp.headers = {"ETag": 'W/"1"', "Last-Modified": "Sat, 21 Nov 2026 00:00:00 GMT"}
                 ats._cache_write(HB, resp)
+                # ...or from another of its hosts, a redirect's included
+                ats._cache_write("https://api2.hirebridge.com/careercenter/v2/x?cid=7724", resp)
             finally:
                 ats.HTTP_CACHE = was
             if any(pathlib.Path(tmp).rglob("*")):
-                errors += fail("the HTTP cache kept an answer from hbapi.hirebridge.com")
+                errors += fail("the HTTP cache kept an answer from a hirebridge.com host")
         # ...and the probe: an empty feed names nobody
-        ats._page = serve({HB: '"[]"'})
+        ats._page = serve({HB: '"[]"', HBL: "<title>Amerlux Career Center</title>"})
         said = vb.board_says("hirebridge", "7724")
         if said["stated"] or said["names"] or vb.proven({"name": "CentralSquare Technologies"},
                                                         said)["ok"]:
             errors += fail(f"hirebridge: an empty feed, which a cid nobody holds also answers, "
                            f"was read as naming an employer: {said}")
+
+        two = dict(_HB_ROW, joblistid="1", companyurl="https://concourse-labs.example")
+        ats._page = serve({HB: json.dumps(json.dumps([dict(_HB_ROW, companyname="Concourse",
+                                                           companyurl="https://concourse.example"),
+                                                      dict(two, companyname="Concourse")]))})
+        said = vb.board_says("hirebridge", "7724")
+        if vb.proven({"name": "Concourse", "website": "https://concourse.example"}, said)["ok"] \
+                or "different websites" not in str(said.get("how")):
+            errors += fail(f"hirebridge: a feed whose rows give two websites was proven, or "
+                           f"does not say why it is not: {said}")
+        ats._page = serve({HB: json.dumps(json.dumps([dict(_HB_ROW, companyname="Concourse",
+                                                           companyurl="https://concourse.example")]))})
+        said = vb.board_says("hirebridge", "7724")
+        if vb.proven({"name": "Concourse", "website": "https://concourse.gov.example"}, said)["ok"]:
+            errors += fail(f"hirebridge: a board giving another company's website was proven "
+                           f"for a company of the same name: {said}")
 
         # ---- applicantpro -----------------------------------------------------
         host = "casellejobs.applicantpro.com"
@@ -18500,9 +18539,12 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         hourly = job(2, payType="Hourly", minSalary="23.00", maxSalary="26.00",
                      payTypeFrame="per hour", payDetails="")
         hidden = job(3, payType="Salary", payDetails="base plus commission (50/50 mix)")
+        ote = job(5, payType="Salary", payDetails="$70K base; $140K on-target earnings")
+        total = job(6, payType="Salary", payDetails="Total compensation $90-160K")
+        target = job(7, payType="Salary", payDetails="On Target Compensation $150K")
         away = job(4, city="Remote", abbreviation=None, stateName=None)
         asked.clear()
-        ats._page = ap([base, salary, hourly, hidden, away])
+        ats._page = ap([base, salary, hourly, hidden, away, ote, total, target])
         rows = ats.fetch_applicantpro(host)
         by = {r["url"].rsplit("/", 1)[-1]: r for r in rows}
         b = by.get("4189983") or {}
@@ -18515,8 +18557,10 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         if (s_.get("min"), s_.get("max"), s_.get("period"), s_.get("currency")) != \
                 (60000, 85000, "year", "USD") or (h_.get("min"), h_.get("period")) != (23, "hour"):
             errors += fail(f"applicantpro: a Salary or Hourly range was not read: {s_} / {h_}")
-        if (by.get("3") or {}).get("comp") is not None:
-            errors += fail("applicantpro: a 'Salary' row whose details say commission was read as pay")
+        for n_ in ("3", "5", "6", "7"):
+            if (by.get(n_) or {}).get("comp") is not None:
+                errors += fail(f"applicantpro: a 'Salary' row whose details say commission, "
+                               f"on-target or total earnings was read as base pay: {by.get(n_)}")
         if "Remote" in str((by.get("4") or {}).get("location")):
             errors += fail(f"applicantpro: a city of 'Remote' was read as a place: {by.get('4')}")
         calls = [(u, same) for u, same in asked]
@@ -18533,6 +18577,20 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         except ats.AtsError as exc:
             if "disabled" not in str(exc):
                 errors += fail(f"applicantpro: a disabled site does not say so: {exc}")
+        ats._page = serve({page: "<html><p>This career site has been disabled. Contact the "
+                                 "Sales Department.</p></html>", feed: "{}"})
+        try:
+            ats.fetch_applicantpro(host)
+            errors += fail("applicantpro: a page saying the site has been disabled was read")
+        except ats.AtsError as exc:
+            if "disabled" not in str(exc):
+                errors += fail(f"applicantpro: a disabled site does not say so: {exc}")
+        blank = _ID_APPLICANTPRO_PAGE.replace('"career_site_name":"Caselle"', '"career_site_name":" "')
+        ats._page = serve({page: blank, feed: _ID_APPLICANTPRO_FEED})
+        said = vb.board_says("applicantpro", host)
+        if said["stated"] or vb.proven({"name": "Caselle"}, said)["ok"]:
+            errors += fail(f"applicantpro: a site with no career site name was proven for the "
+                           f"account on the account's name alone: {said}")
         ats._page = serve({page: _ID_APPLICANTPRO_PAGE, feed: '{"success": false}'})
         try:
             ats.fetch_applicantpro(host)
@@ -18562,6 +18620,62 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
                            f"{verdict}")
     finally:
         ats._page = keep
+
+    # ---- a hop off the board's host is refused before it is asked anything --
+    import wire_found as wf
+    sent, robots_asked = [], []
+
+    class W:
+        def __init__(self, code, url, text="", loc=None):
+            self.status_code, self.url, self.text = code, url, text
+            self.headers = {"Location": loc} if loc else {}
+            self.encoding, self.content = "utf-8", text.encode()
+
+        def json(self):
+            return json.loads(self.text)
+
+        def close(self):
+            pass
+
+        def iter_content(self, chunk_size=1):
+            yield self.content
+
+    def net(url, **kw):
+        sent.append(url)
+        if url.startswith("https://acme.applicantpro.com/") or url.startswith(
+                "https://acme.pinpointhq.com/"):
+            return W(302, url, loc="https://www.vendor-home.example/")
+        return W(200, url, "<html>the vendor's own page</html>")
+
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE)
+    try:
+        ats.requests.get, ats.ask_robots = net, robots_asked.append
+        ats._host_gate, ats.HTTP_CACHE = (lambda u: None), None
+        for what, call in (("ats._page(same_host=True)",
+                            lambda: ats.fetch_applicantpro("acme.applicantpro.com")),
+                           ("verify_boards._board_page", lambda: vb._board_page("https://acme.pinpointhq.com/")),
+                           ("verify_boards._board_page head", lambda: vb._board_page(
+                               "https://acme.pinpointhq.com/", head=1024))):
+            sent.clear(), robots_asked.clear()
+            try:
+                call()
+                errors += fail(f"{what}: a redirect off the board's host was followed")
+            except ats.AtsError as exc:
+                if "leads off" not in str(exc):
+                    errors += fail(f"{what}: the hop off the host was refused for another "
+                                   f"reason: {exc}")
+            if any("vendor-home" in u for u in sent + robots_asked):
+                errors += fail(f"{what}: the host a redirect named was asked for "
+                               f"{[u for u in sent + robots_asked if 'vendor-home' in u]}: a hop "
+                               f"off the board is refused before it is asked anything")
+    finally:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held
+    if not wf.advertising("applicantpro-other", "applicantpro", "href") \
+            or wf.advertising("applicantpro-other", "applicantpro", "script") \
+            or wf.advertising("applicantpro-other", "hirebridge", "href"):
+        errors += fail("wire_found.advertising: a link to the board's own platform that names "
+                       "no board is a note, and the same platform embedded, or another "
+                       "platform's, is not")
     return errors
 
 

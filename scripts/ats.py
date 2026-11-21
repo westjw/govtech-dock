@@ -364,11 +364,17 @@ def _text_comp(jd: str) -> dict | None:
 # IN CI THIS IS INERT unless the workflow restores the directory between runs -
 # a GitHub runner is a fresh machine every time. Locally it works immediately.
 HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cache"
-# Hosts whose answers are never written to the cache, whatever headers they
-# send. Hirebridge's feed carries internal requisition data beside the public
-# ad (see fetch_hirebridge); it sends no ETag today, and if it ever starts to,
-# that is still not a reason to keep a copy of it.
-NEVER_CACHED = frozenset({"hbapi.hirebridge.com"})
+# Domains whose answers are never written to the cache, whatever headers they
+# send - the domain and every host under it. Hirebridge's feed carries
+# internal requisition data beside the public ad (see fetch_hirebridge); it
+# sends no ETag today, and if it ever starts to, or answers from another of
+# its hosts, that is still not a reason to keep a copy of it.
+NEVER_CACHED = frozenset({"hirebridge.com"})
+
+
+def never_cached(url: str) -> bool:
+    host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    return any(host == d or host.endswith("." + d) for d in NEVER_CACHED)
 
 
 class _Cached:
@@ -417,7 +423,7 @@ def _cache_write(url: str, resp) -> None:
     lastmod = resp.headers.get("Last-Modified")
     if not etag and not lastmod:
         return                                 # nothing to revalidate with
-    if (urllib.parse.urlsplit(url).hostname or "").lower() in NEVER_CACHED:
+    if never_cached(url):
         return                                 # see NEVER_CACHED
     try:
         HTTP_CACHE.mkdir(parents=True, exist_ok=True)
@@ -563,15 +569,23 @@ def ask_robots(url: str) -> None:
     raise RobotsRefused(v.why, v.kind, v.error)
 
 
-def follow(url: str, one, *, hops: int = MAX_HOPS):
+def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
     """Fetch `url`, following redirects HERE so every hop asks robots.txt.
 
     `one(u)` makes exactly one request with redirects off. A library that
     follows redirects for us asks only the first host: a careers page that
     301s to an iCIMS portal saying "Disallow: /" was read through the
     company's own permission (blind review, 2026-10-09).
+
+    `may(u)`, when given, is asked of every hop BEFORE anything is sent -
+    its robots.txt included - and raises to refuse it. A hop off a board's
+    own host is refused there, so the host a redirect names is never asked
+    for anything (blind review, 2026-11-21: the refusal used to come after
+    that host's robots.txt had been fetched).
     """
     for _ in range(hops + 1):
+        if may is not None:
+            may(url)
         ask_robots(url)
         resp = one(url)
         # (a stand-in response with no status is not a redirect either)
@@ -619,12 +633,12 @@ def _page(url: str, *, same_host: bool = False, **kw):
     rule. The hop is refused BEFORE it is asked for."""
     home = (urllib.parse.urlsplit(url).hostname or "").lower()
 
-    def one(u: str):
+    def stay(u: str):
         there = (urllib.parse.urlsplit(u).hostname or "").lower()
-        if same_host and there != home:
+        if there != home:
             raise AtsError(f"{url} leads off to {there}, which is not the board")
-        return _get(u, allow_redirects=False, **kw)
-    return follow(url, one)
+    return follow(url, lambda u: _get(u, allow_redirects=False, **kw),
+                  may=stay if same_host else None)
 
 
 def _get(url: str, **kw):
@@ -2700,11 +2714,14 @@ HIREBRIDGE_FEED = ("https://hbapi.hirebridge.com/careercenter/v2/GetJobListings"
 _HIREBRIDGE_CID = re.compile(r"[0-9]{1,7}")
 
 
+HIREBRIDGE_LIST = "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid={cid}"
+
+
 def hirebridge_rows(ref) -> list[dict]:
     cid = str(ref if ref is not None else "").strip()
     if not _HIREBRIDGE_CID.fullmatch(cid):
         raise AtsError(f"not a hirebridge company id: {ref!r}")
-    data = _json(_page(HIREBRIDGE_FEED.format(cid=cid)))
+    data = _json(_page(HIREBRIDGE_FEED.format(cid=cid), same_host=True))
     if isinstance(data, str):
         try:
             data = json.loads(data)
@@ -2712,7 +2729,26 @@ def hirebridge_rows(ref) -> list[dict]:
             raise AtsError("hirebridge feed did not parse") from exc
     if not isinstance(data, list) or not all(isinstance(j, dict) for j in data):
         raise AtsError("unexpected hirebridge payload")
+    if not data:
+        _hirebridge_account(cid)
     return data
+
+
+def _hirebridge_account(cid: str) -> None:
+    """AN EMPTY FEED IS A ZERO ONLY WHEN THE ACCOUNT ANSWERS. A live board with
+    nothing open and a company id nobody holds both answer "[]" (9999999,
+    measured 2026-11-19); the classic career centre tells them apart. A live
+    one is titled "<Name> Career Center"; a dead id is sent, on the same host,
+    to /v3/Application/AppErrMsg.aspx, titled "Hirebridge ATS Error". Anything
+    else is not known, and is not a zero."""
+    resp = _page(HIREBRIDGE_LIST.format(cid=cid), same_host=True)
+    page, landed = resp.text or "", str(getattr(resp, "url", "") or "")
+    if "apperrmsg.aspx" in landed.lower() or "Hirebridge ATS Error" in page:
+        raise AtsError(f"hirebridge: no company holds id {cid} (its career centre "
+                       f"answers with Hirebridge's error page)")
+    if not re.search(r"<title>[^<]*\bCareer Center\s*</title>", page, re.I):
+        raise AtsError(f"hirebridge: the feed for {cid} is empty and its career centre "
+                       f"did not answer as a live board, so the zero is not known")
 
 
 def fetch_hirebridge(ref) -> list[dict]:
@@ -2842,6 +2878,15 @@ def _dig_dict(obj, key) -> dict | None:
     return v if isinstance(v, dict) else None
 
 
+# What a pay note says when min..max is not a base range: commission, a
+# bonus, on-target or total earnings (blind review, 2026-11-21: "$70K base;
+# $140K on-target earnings" was printed as a 70-140K salary).
+_NOT_BASE = re.compile(r"\bcommissions?\b|\bote\b|on.?target|\btotal (cash |target )?"
+                       r"(compensation|comp|earnings|pay)\b|\btarget earnings\b|"
+                       r"\bbonus(es)?\b|\bvariable\b|\buncapped\b|\bincentives?\b|\bequity\b",
+                       re.I)
+
+
 def _applicantpro_comp(j: dict, country: str) -> dict | None:
     # min/max are a pay range only on a 'Salary' or 'Hourly' row. On 'Base +
     # Commission' they run from the base floor to the OTE ceiling (LYT's
@@ -2849,7 +2894,7 @@ def _applicantpro_comp(j: dict, country: str) -> dict | None:
     # reader may print as pay; and 'Base + Bonus' does not say which.
     if _text(j.get("payType")) not in ("Salary", "Hourly"):
         return None
-    if re.search(r"commission|\bote\b|bonus", _text(j.get("payDetails")), re.I):
+    if _NOT_BASE.search(_text(j.get("payDetails"))):
         return None
     return _comp(j.get("minSalary"), j.get("maxSalary"),
                  "USD" if country.upper() in ("USA", "US") else None,
