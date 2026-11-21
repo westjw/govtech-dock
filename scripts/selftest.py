@@ -18371,6 +18371,24 @@ def _strings(value, path="") -> list[tuple[str, str]]:
     return [(path, value)] if isinstance(value, str) else []
 
 
+def _sealed(ats, tried: list):
+    """Every way out of ats through requests, shut. The reader checks stub
+    ats._page, and a reader that went round it - straight to ats._get, say -
+    would ask the live board from inside the suite (blind review, 2026-11-21:
+    the Hirebridge check would have read the real feed). Returns the restore;
+    whatever tried to get out is in `tried`."""
+    held = (ats.requests.get, ats.requests.post)
+
+    def refuse(url, *a, **kw):
+        tried.append(url)
+        raise ats.AtsError(f"the suite does not reach the network: {url}")
+    ats.requests.get = ats.requests.post = refuse
+
+    def restore():
+        ats.requests.get, ats.requests.post = held
+    return restore
+
+
 def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
     """The Hirebridge and ApplicantPro readers (2026-11-21), each held to what
     was measured on the live boards before it was written.
@@ -18422,6 +18440,8 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
     blank = dict(_HB_ROW, joblistid="612999", jobtitle="  ")
     remote = dict(_HB_ROW, joblistid="612600", location={"isremote": True, "country": "US"})
     keep = ats._page
+    tried: list = []
+    unseal = _sealed(ats, tried)
     try:
         # ---- hirebridge -------------------------------------------------------
         ats._page = serve({HB: json.dumps(json.dumps([_HB_ROW, again, blank, remote]))})
@@ -18522,6 +18542,20 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         if vb.proven({"name": "Concourse", "website": "https://concourse.gov.example"}, said)["ok"]:
             errors += fail(f"hirebridge: a board giving another company's website was proven "
                            f"for a company of the same name: {said}")
+        if not vb.proven({"name": "Concourse", "website": "https://www.concourse.example/"}, said)["ok"]:
+            errors += fail(f"hirebridge: a board giving the website on file was not proven: {said}")
+        # every row's name is stated: a shared account names two employers
+        ats._page = serve({HB: json.dumps(json.dumps([_HB_ROW, dict(_HB_ROW, joblistid="9",
+                                                                     companyname="Parent Holdings")]))})
+        said = vb.board_says("hirebridge", "7724")
+        if said["names"] != ["CentralSquare Technologies", "Parent Holdings"] \
+                or vb.proven({"name": "CentralSquare Technologies"}, said)["ok"]:
+            errors += fail(f"hirebridge: a feed naming two employers was not held to both: "
+                           f"{said['names']}")
+        # a blank public date is no date, never the requisition's opening day
+        ats._page = serve({HB: json.dumps(json.dumps([dict(_HB_ROW, publicdate="")]))})
+        if ats.fetch_hirebridge("7724")[0].get("posted") is not None:
+            errors += fail("hirebridge: a blank publicdate was published as some other date")
 
         # ---- applicantpro -----------------------------------------------------
         host = "casellejobs.applicantpro.com"
@@ -18542,9 +18576,16 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         ote = job(5, payType="Salary", payDetails="$70K base; $140K on-target earnings")
         total = job(6, payType="Salary", payDetails="Total compensation $90-160K")
         target = job(7, payType="Salary", payDetails="On Target Compensation $150K")
+        gated = [job(10 + k, payType=t, payDetails="") for k, t in
+                 enumerate(("Base + Commission", "Base + Bonus", "Other", None))]
+        words = [job(20, payType="Salary", payDetails="plus bonus"),
+                 job(21, payType="Salary", payDetails="OTE")]
+        canada = job(30, payType="Salary", payDetails="", iso3="CAN", city="Toronto",
+                     abbreviation="ON", stateName="Ontario")
         away = job(4, city="Remote", abbreviation=None, stateName=None)
         asked.clear()
-        ats._page = ap([base, salary, hourly, hidden, away, ote, total, target])
+        ats._page = ap([base, salary, hourly, hidden, away, ote, total, target] + gated + words
+                       + [canada])
         rows = ats.fetch_applicantpro(host)
         by = {r["url"].rsplit("/", 1)[-1]: r for r in rows}
         b = by.get("4189983") or {}
@@ -18557,10 +18598,14 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         if (s_.get("min"), s_.get("max"), s_.get("period"), s_.get("currency")) != \
                 (60000, 85000, "year", "USD") or (h_.get("min"), h_.get("period")) != (23, "hour"):
             errors += fail(f"applicantpro: a Salary or Hourly range was not read: {s_} / {h_}")
-        for n_ in ("3", "5", "6", "7"):
+        for n_ in ("3", "5", "6", "7", "10", "11", "12", "13", "20", "21"):
             if (by.get(n_) or {}).get("comp") is not None:
                 errors += fail(f"applicantpro: a 'Salary' row whose details say commission, "
                                f"on-target or total earnings was read as base pay: {by.get(n_)}")
+        if ((by.get("30") or {}).get("comp") or {}).get("currency") is not None \
+                or ((by.get("30") or {}).get("comp") or {}).get("min") != 120000:
+            errors += fail(f"applicantpro: a Canadian range was labelled with a currency the "
+                           f"board did not give, or not read: {by.get('30')}")
         if "Remote" in str((by.get("4") or {}).get("location")):
             errors += fail(f"applicantpro: a city of 'Remote' was read as a place: {by.get('4')}")
         calls = [(u, same) for u, same in asked]
@@ -18591,7 +18636,8 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         if said["stated"] or vb.proven({"name": "Caselle"}, said)["ok"]:
             errors += fail(f"applicantpro: a site with no career site name was proven for the "
                            f"account on the account's name alone: {said}")
-        ats._page = serve({page: _ID_APPLICANTPRO_PAGE, feed: '{"success": false}'})
+        ats._page = serve({page: _ID_APPLICANTPRO_PAGE,
+                           feed: '{"success": false, "data": {"jobCount": 0, "jobs": []}}'})
         try:
             ats.fetch_applicantpro(host)
             errors += fail("applicantpro: success:false was read as a board")
@@ -18620,6 +18666,9 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
                            f"{verdict}")
     finally:
         ats._page = keep
+        unseal()
+    if tried:
+        errors += fail(f"hirebridge: a read went round the stub, to the network: {tried[:3]}")
 
     # ---- a hop off the board's host is refused before it is asked anything --
     import wire_found as wf
@@ -18645,6 +18694,9 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         if url.startswith("https://acme.applicantpro.com/") or url.startswith(
                 "https://acme.pinpointhq.com/"):
             return W(302, url, loc="https://www.vendor-home.example/")
+        if url.startswith("https://oldco.applicantpro.com/"):
+            # an acquired tenant redirecting to its acquirer's tenant
+            return W(302, url, loc="https://acquirer-vendor-home.applicantpro.com/jobs/")
         return W(200, url, "<html>the vendor's own page</html>")
 
     held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE)
@@ -18654,6 +18706,8 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         for what, call in (("ats._page(same_host=True)",
                             lambda: ats.fetch_applicantpro("acme.applicantpro.com")),
                            ("verify_boards._board_page", lambda: vb._board_page("https://acme.pinpointhq.com/")),
+                           ("ats._page, tenant to tenant",
+                            lambda: ats.fetch_applicantpro("oldco.applicantpro.com")),
                            ("verify_boards._board_page head", lambda: vb._board_page(
                                "https://acme.pinpointhq.com/", head=1024))):
             sent.clear(), robots_asked.clear()
@@ -18670,6 +18724,35 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
                                f"off the board is refused before it is asked anything")
     finally:
         ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held
+    seen_ = wf.also_seen({"elsewhere": [{"vendor": "applicantpro-other", "element": "href",
+                                          "page": "https://www.caselle.example/careers"}]},
+                         "applicantpro:\"casellejobs.applicantpro.com\"", "https://www.caselle.example",
+                         kind="applicantpro")
+    if "elsewhere" in seen_ or "applicantpro-other" not in seen_.get("advertised_on", []):
+        errors += fail(f"wire_found.also_seen: a 'Powered by ApplicantPro' link beside an "
+                       f"ApplicantPro board is still a doubt, not a note: {seen_}")
+    if not wf.advertising("other:hirebridge.com", "hirebridge", "href"):
+        errors += fail("wire_found.advertising: a link to hirebridge.com beside a Hirebridge "
+                       "board is still a second platform")
+    import build_board as bb
+    import admin as adm
+    import coverage as cov
+    for kind, ref, want in (("hirebridge", "7724", "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=7724"),
+                            ("applicantpro", "lyt.applicantpro.com", "https://lyt.applicantpro.com/jobs/"),
+                            ("teamtailor", "https://acme.teamtailor.com", "https://acme.teamtailor.com"),
+                            ("pinpoint", "acme", "https://acme.pinpointhq.com"),
+                            ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers",
+                             "https://acme.zohorecruit.com/jobs/Careers"),
+                            ("comeet", "https://www.comeet.com/jobs/acme/F7.009",
+                             "https://www.comeet.com/jobs/acme/F7.009"),
+                            ("comeet", "F7.009|0123456789ABCDEF0123456789ABCD", "https://acme.example")):
+        got = bb.board_url({"ats": {"type": kind, "ref": ref}, "website": "https://acme.example"})
+        if got != want:
+            errors += fail(f"build_board.board_url publishes {got!r} for a {kind} board {ref!r}, "
+                           f"not {want!r} (never a feed's own address, never a comeet pair)")
+    if adm.STRUCTURED_ATS != cov.STRUCTURED:
+        errors += fail(f"admin.STRUCTURED_ATS and coverage.STRUCTURED disagree: "
+                       f"{sorted(adm.STRUCTURED_ATS ^ cov.STRUCTURED)}")
     if not wf.advertising("applicantpro-other", "applicantpro", "href") \
             or wf.advertising("applicantpro-other", "applicantpro", "script") \
             or wf.advertising("applicantpro-other", "hirebridge", "href"):
@@ -18738,6 +18821,8 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
         return fake
 
     keep = ats._page
+    tried: list = []
+    unseal = _sealed(ats, tried)
     try:
         two = item(2, jobLocation=[{"address": {"addressLocality": "Boise", "addressCountry": "US"}},
                                    {"address": {"addressLocality": "Phoenix", "addressRegion": "AZ",
@@ -18786,6 +18871,9 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
             errors += fail("teamtailor: a site with nothing open is not a zero")
     finally:
         ats._page = keep
+        unseal()
+    if tried:
+        errors += fail(f"teamtailor: a read went round the stub, to the network: {tried[:3]}")
 
     # ---- found, as the finder finds it -----------------------------------------
     here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
@@ -18871,6 +18959,8 @@ def check_pinpoint_reads_what_the_board_shows() -> int:
         return fake
 
     keep = ats._page
+    tried: list = []
+    unseal = _sealed(ats, tried)
     try:
         hidden = row(2, compensation_visible=False)
         ats._page = serve(json.dumps({"data": [row(1), hidden, row(3, title="  ")]}), rss)
@@ -18907,6 +18997,9 @@ def check_pinpoint_reads_what_the_board_shows() -> int:
                 pass
     finally:
         ats._page = keep
+        unseal()
+    if tried:
+        errors += fail(f"pinpoint: a read went round the stub, to the network: {tried[:3]}")
     return errors
 
 
@@ -18957,6 +19050,8 @@ def check_zoho_recruit_reads_only_the_open_jobs_its_page_carries() -> int:
         return fake
 
     keep = ats._page
+    tried: list = []
+    unseal = _sealed(ats, tried)
     try:
         closed = job(2, Publish=False, Is_Locked=True, Keep_on_Career_Site=True)
         teaser = job(3, Job_Description="We are hiring a seller who will...", Remote_Job=True,
@@ -19015,6 +19110,9 @@ def check_zoho_recruit_reads_only_the_open_jobs_its_page_carries() -> int:
             errors += fail(f"zohorecruit: a board that hides its name was read as naming one: {said}")
     finally:
         ats._page = keep
+        unseal()
+    if tried:
+        errors += fail(f"zoho: a read went round the stub, to the network: {tried[:3]}")
     return errors
 
 
@@ -19068,6 +19166,8 @@ def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
         return fake
 
     keep = ats._page
+    tried: list = []
+    unseal = _sealed(ats, tried)
     try:
         ats._page = serve({hosted: page, api: json.dumps([pos(1), pos(2, name=" "),
                                                           pos(3, url_comeet_hosted_page="x")])})
@@ -19122,6 +19222,9 @@ def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
             errors += fail(f"comeet: a board naming two employers did not state both: {said['names']}")
     finally:
         ats._page = keep
+        unseal()
+    if tried:
+        errors += fail(f"comeet: a read went round the stub, to the network: {tried[:3]}")
     return errors
 
 
@@ -25899,6 +26002,7 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://www.hirebridge.com/">Powered by Hirebridge</a>',  # the vendor's own site
     '<script src="https://recruit.hirebridge.com/v3/scripts/iframeResizer.min.js"></script>',  # no cid
     '<a href="https://recruit.hirebridge.com/v3/jobs/list.aspx?xcid=7724">x</a>',  # not the cid
+    '<a href="https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=12345678">x</a>',  # 8 digits
     '<a href="https://www.applicantpro.com/">ApplicantPro</a>',      # the vendor's own site
     '<a href="//tt.teamtailor.com/auth/linkedin?company=vodaai&connect=1">in</a>',  # vendor's
     '<a href="https://app.teamtailor.com/companies/YfyrsSdTav0@eu/dashboard">x</a>',  # vendor's
@@ -34290,6 +34394,7 @@ def check_an_advertisement_is_not_a_second_board() -> int:
                            f"the very platform the board is on, is somewhere a role is merely "
                            f"advertised")
     tenants = {"jibeapply.com", "applytojob.com", "bamboohr.com", "breezy.hr",
+               "applicantpro.com", "isolvedhire.com", "teamtailor.com", "pinpointhq.com",
                "recruitee.com", "icims.com", "workable.com"}
     trusted = set().union(*wf.VENDOR_SITES.values())
     if trusted & tenants or {"ycombinator", "wellfound"} & wf.ADVERTISED_ON:
