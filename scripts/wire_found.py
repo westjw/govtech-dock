@@ -1378,7 +1378,13 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # card said so of Teamtailor's own pictures).
         import find_site_boards as _fsb
         forms = [v for v in extra["elsewhere"] if v in _fsb._NO_BOARD_IN_IT]
-        unread = [v for v in extra["elsewhere"] if v not in forms]
+        tenants = [v for v in extra["elsewhere"] if v in _fsb.TENANT_FORMS]
+        unread = [v for v in extra["elsewhere"] if v not in forms and v not in tenants]
+        if tenants:
+            doubts.append(f"their own site also names another "
+                          f"{' and '.join(_fsb.TENANT_FORMS[v] for v in tenants)} account than "
+                          f"this board ({', '.join(tenants)}), a tenant whose board this door "
+                          f"cannot name, so which board they hire through today is not settled")
         if unread:
             doubts.append(f"their own site also names {' and '.join(unread)}, a job "
                           f"platform the crawl cannot read, so which board they hire through "

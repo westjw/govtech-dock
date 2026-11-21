@@ -725,7 +725,16 @@ _B = r"(?<![a-z0-9-])"
 ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
     (vendor, hint, re.compile(pat, re.I)) for vendor, hint, pat in (
         ("jobvite-other", "jobvite.com", _B + r"jobvite\.com"),
-        ("zohorecruit-other", "zohorecruit.", _B + r"zohorecruit\.(?:com|eu|in)"),
+        # A ZOHO TENANT'S HOST WITH NO PAGE NAMED is a tenant whose board this
+        # door cannot name - another portal than theirs, maybe a parent's -
+        # and is filed apart from Zoho's own hosts, as a doubt (blind review,
+        # 2026-11-21: it was dropped beside their board, or kept as a note).
+        ("zohorecruit-tenant", "zohorecruit.",
+         r"(?<![a-z0-9.-])(?!(?:www|static|cdn|help|blog|api|accounts)\.)"
+         r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.zohorecruit\.(?:com|eu|in)(?![a-z0-9-])"),
+        ("zohorecruit-other", "zohorecruit.",
+         r"(?<![a-z0-9-])(?:(?:www|static|cdn|help|blog|api|accounts)\.)?zohorecruit\.(?:com|eu|in)"
+         r"(?![a-z0-9-])"),
         ("ukg", "ultipro.", _B + r"ultipro\.(?:com|ca)"),
         ("ukg", "ukg.net", _B + r"ukg\.net"),
         ("dayforce", "dayforcehcm.com", _B + r"dayforcehcm\.com"),
@@ -734,6 +743,9 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("pinpoint-other", "pinpointhq.com", _B + r"pinpointhq\.com"),
         ("applicantpro-other", "applicantpro.com", _B + r"applicantpro\.com"),
         ("teamtailor-other", "teamtailor", _B + r"teamtailor(?:-cdn)?\.com"),
+        # a Comeet address naming a company uid with no token to read it by
+        ("comeet-tenant", "comeet.",
+         r"comeet\.(?:co|com)/jobs/(?:[A-Za-z0-9_-]{1,80}/)?[0-9A-F]{2}\.[0-9A-F]{3}(?![0-9A-F])"),
         ("comeet-other", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
         ("eightfold", "eightfold.ai", _B + r"eightfold\.ai"),
         ("phenom", "phenompeople.com", _B + r"phenompeople\.com"),
@@ -789,6 +801,36 @@ def _other_region(text: str, m) -> bool:
     while a > floor and (text[a - 1].isalnum() or text[a - 1] in ".-"):
         a -= 1
     return bool(_OTHER_REGION.search(text, a, m.end()))
+
+# Forms that name a TENANT of a platform we read but no board this door can
+# name. Not in _NO_BOARD_IN_IT: beside a board of the same platform they are a
+# second account, and a doubt - unless they name the very tenant the board is
+# (same_tenant). The door says so in those words.
+TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet"}
+_TENANT_UID = re.compile(r"(?<![0-9A-F])([0-9A-F]{2}\.[0-9A-F]{3})(?![0-9A-F])", re.I)
+
+
+def tenant_of(kind: str, text) -> str:
+    """The tenant an address names, for the platforms with tenant forms: a
+    Zoho portal's host, a Comeet company uid; "" otherwise."""
+    s = str(text or "")
+    if kind == "zohorecruit":
+        m = re.search(r"([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.zohorecruit\.(?:com|eu|in))", s, re.I)
+        return m.group(1).lower() if m else ""
+    if kind == "comeet":
+        m = _TENANT_UID.search(s.split("|", 1)[0] if "|" in s else s)
+        return m.group(1).lower() if m else ""
+    return ""
+
+
+def same_tenant(row: dict, candidates) -> bool:
+    """A tenant form naming the tenant a board of the same platform on the
+    page or the site already is: theirs, said again."""
+    kind = TENANT_FORMS.get(str(row.get("vendor") or ""))
+    t = tenant_of(kind, row.get("saw")) if kind else ""
+    return bool(t) and any(c.get("type") == kind and tenant_of(kind, c.get("ref")) == t
+                           for c in candidates)
+
 
 # The forms above that belong to a platform we read. A redirect that lands on
 # one is walked one hop further, because the platform's own next hop usually
@@ -1132,11 +1174,15 @@ _LINK_TAG = re.compile(r"<link\b[^<>]{0,1200}>", re.I)
 _TT_FEED = re.compile(r"\bhref\s*=\s*[\"']?https://([a-z0-9.-]{4,253})/jobs\.rss(?=[\"'\s>?#]|$)", re.I)
 
 
-def teamtailor_own_sites(page: str) -> list[tuple[str, str]]:
+def teamtailor_own_sites(page: str, page_url: str = "") -> list[tuple[str, str]]:
     """[(host, the tag that named it)] for a Teamtailor career site served on
     the company's own domain, read off the page as a reader sees it (an
-    address in a comment is not on the page)."""
+    address in a comment is not on the page). THE FEED'S HOST IS THE PAGE'S
+    OWN: a career site publishes its feed on itself, so a rel=alternate to
+    another host is that host's business, never this page's board (blind
+    review, 2026-11-21: any host a page author wrote was asked)."""
     body, scripts = _apart(page or "")
+    here = _host(page_url)
     if "teamtailor-cdn.com" not in (body + "\n".join(scripts)).lower():
         return []
     out = []
@@ -1144,7 +1190,8 @@ def teamtailor_own_sites(page: str) -> list[tuple[str, str]]:
         tag = m.group(0)
         f = _TT_FEED.search(tag) if _ALTERNATE.search(tag) else None
         host = f.group(1).lower() if f else ""
-        if host and ats._HOSTNAME.fullmatch(host) and not host.endswith(".teamtailor.com"):
+        if host and ats._HOSTNAME.fullmatch(host) and not host.endswith(".teamtailor.com") \
+                and host.removeprefix("www.") == here:
             out.append((host, tag[:160]))
     return out
 
@@ -1195,7 +1242,7 @@ def sightings(page: str, page_url: str, website: str, *,
             have["times"] += row["times"]
             if not have["_spelt"]:
                 have["_spelt"].update(twin[1])
-    for host, saw in teamtailor_own_sites(page or ""):
+    for host, saw in teamtailor_own_sites(page or "", page_url):
         row = boards.setdefault(("teamtailor", host, "href"), _board_row("teamtailor", "href", saw))
         row["times"] += 1
         row["_spelt"][json.dumps(f"https://{host}")] += 1
@@ -1204,6 +1251,9 @@ def sightings(page: str, page_url: str, website: str, *,
     # of them, beside the frame that loaded them)
     kinds = {kind for kind, _key, _el in boards}
     others = {k: v for k, v in others.items() if _NO_BOARD_IN_IT.get(k[0]) not in kinds}
+    named = [{"type": kind, "ref": json.loads(row["_spelt"].most_common(1)[0][0])}
+             for (kind, _key, _el), row in boards.items() if row["_spelt"]]
+    others = {k: v for k, v in others.items() if not same_tenant(v, named)}
     return _rows(boards, others)
 
 
@@ -2550,7 +2600,8 @@ async def look(company: dict, mode: str, read, plain=read_plain,
         rec["elsewhere"].append({"vendor": f"other:{name}",
                                  "saw": _short(url), "page": on_page,
                                  "element": "href", "times": 1})
-    rec["elsewhere"] = [e for e in rec["elsewhere"] if not _board_furniture(e, rec["candidates"])]
+    rec["elsewhere"] = [e for e in rec["elsewhere"] if not _board_furniture(e, rec["candidates"])
+                        and not same_tenant(e, rec["candidates"])]
     rec.update(_no_addresses(rec))
     return rec
 

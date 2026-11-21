@@ -2921,7 +2921,8 @@ def teamtailor_feed(ref) -> tuple[str, dict]:
     if parts.scheme != "https" or not host or parts.path or parts.query or parts.fragment \
             or parts.port or parts.username or not _HOSTNAME.fullmatch(host):
         raise AtsError(f"not a teamtailor career site: {ref!r}")
-    d = _json(_page(f"https://{host}/jobs.json", same_host=True))
+    resp = _page(f"https://{host}/jobs.json", same_host=True)
+    d = _json(resp)
     items = d.get("items") if isinstance(d, dict) else None
     feed = (urllib.parse.urlsplit(str(d.get("feed_url") or "")).hostname or "").lower() \
         if isinstance(d, dict) else ""
@@ -2930,6 +2931,15 @@ def teamtailor_feed(ref) -> tuple[str, dict]:
             and all(isinstance(i, dict) and isinstance(i.get("_jobposting"), dict)
                     for i in items)):
         raise AtsError(f"{host}/jobs.json is not a Teamtailor career site's feed")
+    if not items and not host.endswith(".teamtailor.com"):
+        # AN EMPTY FEED VOUCHES FOR NOTHING: any publisher's JSON Feed with no
+        # items passes the checks above. Teamtailor names its app as the one
+        # page allowed to frame the site (Heimdall Power's, 2026-11-21); an
+        # empty feed on a domain of their own without that is not a zero.
+        csp = str((getattr(resp, "headers", None) or {}).get("Content-Security-Policy") or "")
+        if not re.search(r"(?<![a-z0-9.-])app(?:\.na)?\.teamtailor\.com\b", csp, re.I):
+            raise AtsError(f"{host}/jobs.json lists nothing and its answer does not say it is "
+                           f"Teamtailor's, so the zero is not known")
     return host, d
 
 

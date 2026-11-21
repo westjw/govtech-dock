@@ -5226,7 +5226,7 @@ _ID_PINPOINT_PAGE = ('<title>Jobs at Clearview AI | Clearview AI Careers</title>
 _ID_ZOHO = ('<html><input type="hidden" value="' + html.escape(json.dumps([{
     "id": "565243000026177001", "Posting_Title": "Project Manager", "Publish": True}]), quote=True)
     + '" id="jobs"><input type="hidden" value="' + html.escape(json.dumps({
-        "list_url": "https://redmane.zohorecruit.com/jobs/Careers",
+        "list_url": "https://redmane.zohorecruit.com/jobs/Careers", "page_name": "Careers",
         "org_info": {"company_name": "RedMane Technology", "website": "www.redmane.com",
                      "hide_company_name": False}}), quote=True) + '" id="meta"></html>')
 _CM_TOKEN = "0123456789ABCDEF0123456789ABCD"
@@ -18875,9 +18875,15 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
                 pass
         if asked:
             errors += fail(f"teamtailor: a ref that is not an origin was asked for: {asked}")
-        ats._page = serve(feed([]))
+        marked = serve(feed([]))
+
+        def with_mark(url, **kw):
+            r = marked(url, **kw)
+            r.headers = {"Content-Security-Policy": f"frame-ancestors 'self' {host} app.teamtailor.com"}
+            return r
+        ats._page = with_mark
         if ats.fetch_teamtailor(f"https://{host}") != []:
-            errors += fail("teamtailor: a site with nothing open is not a zero")
+            errors += fail("teamtailor: a site with nothing open, marked Teamtailor's, is not a zero")
     finally:
         ats._page = keep
         unseal()
@@ -18904,7 +18910,9 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
              "Teamtailor's own host"),
             ('<link rel="preconnect" href="https://boards.greenhouse.io/acmegov">',
              [("greenhouse", "acmegov", "text")], "a <link> that is not rel=alternate stays text")):
-        found, _rest = fsb.sightings(markup, here, home)
+        # (read as the career site's own page: a site publishes its feed on
+        # itself, and the finder believes no other host's)
+        found, _rest = fsb.sightings(markup, f"https://{host}/jobs", home)
         got = [(f["type"], f["ref"], f["element"]) for f in found]
         if got != want:
             errors += fail(f"teamtailor finder, {why}: read {got}, not {want}")
@@ -19342,6 +19350,239 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
         unseal()
     if tried:
         errors += fail(f"jobvite: a read went round the stub, to the network: {tried[:3]}")
+    return errors
+
+
+def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
+    """The blind review of the Teamtailor, Pinpoint, Zoho and Comeet readers
+    (2026-11-21), each finding pinned where it bit:
+
+      - a Zoho tenant's host with no page, or a Comeet uid with no token, is
+        ANOTHER account beside their board and a doubt - unless it names the
+        very tenant the board is; the door says so in those words, and a
+        read platform's no-board form is never "a platform the crawl cannot
+        read";
+      - a Teamtailor site on their own domain is the page's OWN feed host
+        only, and an empty feed there must show it is Teamtailor's;
+      - the Teamtailor probe states every posting's employer, the Pinpoint
+        probe needs its two titles to agree, and a Zoho page other than the
+        account's own career site states nothing;
+      - one board under two spellings is one board on the public board;
+      - the finder's refusals each have a page that would pass without them.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import build_board as bb
+    import find_site_boards as fsb
+    import verify_boards as vb
+    errors = 0
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+
+    # ---- tenant forms: another account is a doubt, the same one is not -------
+    own_zoho = '<a href="https://acmegov.zohorecruit.com/jobs/Careers">Jobs</a>'
+    for markup, want, why in (
+            (own_zoho + '<a href="https://parentco.zohorecruit.com">Group jobs</a>',
+             {"zohorecruit-tenant"}, "another portal beside their board"),
+            (own_zoho + '<a href="https://acmegov.zohorecruit.com">Jobs home</a>',
+             set(), "their own portal's bare host, beside their board"),
+            (own_zoho + '<a href="https://www.zohorecruit.com/">Powered by Zoho</a>',
+             set(), "Zoho's own site beside their board"),
+            ('<a href="https://www.comeet.com/jobs/acme/F7.009">Jobs</a>'
+             '<a href="https://www.comeet.co/jobs/C2.00D">Group</a>', {"comeet-tenant"},
+             "another Comeet company beside their board"),
+            ('<a href="https://www.comeet.com/jobs/acme/F7.009">Jobs</a>'
+             '<a href="https://www.comeet.co/jobs/F7.009">Jobs</a>', set(),
+             "their own Comeet company, written the other way")):
+        found, rest = fsb.sightings(markup, here, home)
+        got = {r["vendor"] for r in rest} & {"zohorecruit-tenant", "comeet-tenant",
+                                             "zohorecruit-other", "comeet-other"}
+        if got != want or not found:
+            errors += fail(f"finder, {why}: the board {[f['ref'] for f in found]} came with "
+                           f"{sorted(got)}, not {sorted(want)}")
+    import wire_found as wf
+    co = _wb_co("acme-gov", "Acme Gov")
+    site = _wb_site("acme-gov")
+    for vendor, element, want, why in (
+            ("zohorecruit-tenant", "href", "another zohorecruit account", "a second portal"),
+            ("teamtailor-other", "script", "in a form that names no board", "a read platform's widget"),
+            ("dayforce", "href", "a job platform the crawl cannot read", "an unread platform")):
+        entry = _wb_one("acme-gov", "zohorecruit", "https://acmegov.zohorecruit.com/jobs/Careers")
+        entry["elsewhere"] = [{"vendor": vendor, "saw": "https://parentco.zohorecruit.com",
+                               "page": f"{site}/careers", "element": element, "times": 1}]
+        with _WiringBox([co], {"zohorecruit/https://acmegov.zohorecruit.com/jobs/Careers":
+                               (3, ["Acme Gov"])}) as box:
+            _code, text, _wl, rows = box.plan(_wb_results({"acme-gov": entry}))
+        row = (rows or {}).get("acme-gov") or {}
+        if row.get("action") != "HOLD" or want not in _wb_words(row) \
+                or (vendor != "dayforce" and "cannot read" in _wb_words(row)):
+            errors += fail(f"door, {why}: planned {row.get('action')} saying "
+                           f"{_wb_words(row)[:260]!r}, not HOLD in the words {want!r}")
+
+    # ---- Teamtailor: the page's own feed host, and an empty feed's mark ------
+    assets = '<link rel="stylesheet" href="https://assets-aws.teamtailor-cdn.com/x.css">'
+    for markup, page_url, want, why in (
+            (assets + '<link rel="alternate" type="application/rss+xml" '
+                      'href="https://careers.acmegov.example/jobs.rss">',
+             "https://careers.acmegov.example/", ["https://careers.acmegov.example"],
+             "the page's own feed"),
+            (assets + '<link rel="alternate" type="application/rss+xml" '
+                      'href="https://careers.otherco.example/jobs.rss">',
+             "https://careers.acmegov.example/", [], "another host's feed"),
+            (assets + '<link href="https://careers.acmegov.example/jobs.rss">',
+             "https://careers.acmegov.example/", [], "a <link> that is not rel=alternate")):
+        found, _ = fsb.sightings(markup, page_url, home)
+        got = [f["ref"] for f in found if f["type"] == "teamtailor"]
+        if got != want:
+            errors += fail(f"finder, Teamtailor {why}: read {got}, not {want}")
+
+    class R:
+        def __init__(self, text, headers=None):
+            self.text, self.status_code, self.headers = text, 200, headers or {}
+
+        def json(self):
+            return json.loads(self.text)
+
+    def feed(host, items, title="Acme Gov"):
+        return json.dumps({"version": "https://jsonfeed.org/version/1.1", "title": title,
+                           "feed_url": f"https://{host}/jobs.json", "items": items})
+
+    def posting(org):
+        return {"id": "1", "title": "Role", "url": "https://x/jobs/1-role",
+                "_jobposting": {"hiringOrganization": {"name": org}}}
+
+    keep = ats._page
+    tried: list = []
+    unseal = _sealed(ats, tried)
+    try:
+        csp = {"Content-Security-Policy": "frame-ancestors 'self' careers.acmegov.example "
+                                          "app.teamtailor.com"}
+        for host, headers, ok, why in (
+                ("careers.acmegov.example", csp, True, "their own domain, marked Teamtailor's"),
+                ("careers.acmegov.example", {}, False, "their own domain, no mark"),
+                ("acmegov.teamtailor.com", {}, True, "Teamtailor's own host")):
+            ats._page = lambda url, h=host, hd=headers, **kw: R(feed(h, []), hd)
+            try:
+                got = ats.fetch_teamtailor(f"https://{host}")
+                if not ok or got != []:
+                    errors += fail(f"teamtailor: an empty feed on {why} read as {got}")
+            except ats.AtsError:
+                if ok:
+                    errors += fail(f"teamtailor: an empty feed on {why} was refused")
+        ats._page = lambda url, **kw: R(feed("acmegov.teamtailor.com", [posting("Parent Group")]))
+        said = vb.board_says("teamtailor", "https://acmegov.teamtailor.com")
+        if said["names"] != ["Acme Gov", "Parent Group"] or vb.proven({"name": "Acme Gov"}, said)["ok"]:
+            errors += fail(f"teamtailor: a site whose posting names another employer was not held "
+                           f"to both names: {said['names']}")
+
+        # ---- Pinpoint: both titles, agreeing --------------------------------
+        base = "https://acme.pinpointhq.com"
+        rss = "<rss><channel><title>Careers at Acme Gov</title></channel></rss>"
+        for og, why in ('<meta property="og:title" content="Careers at Acme Group">', "titles disagree"),\
+                       ("<title>Jobs</title>", "no og:title"):
+            routes = {f"{base}/postings.json": '{"data": []}', f"{base}/jobs.rss": rss, f"{base}/": og}
+            ats._page = lambda url, rt=routes, **kw: R(rt[url]) if url in rt else (_ for _ in ()).throw(
+                ats.AtsError(f"HTTP 404 for {url}"))
+            held = vb._board_page
+            vb._board_page = lambda url, head=0, rt=routes: rt[url]
+            try:
+                said = vb.board_says("pinpoint", "acme")
+            finally:
+                vb._board_page = held
+            if said["stated"] or said["names"] or said["failed"]:
+                errors += fail(f"pinpoint: the probe stated {said['names']} when the {why}, or "
+                               f"failed reading a board that answered ({said['failed']}: "
+                               f"{said['how']})")
+
+        # ---- Zoho: only the account's own career site states its name --------
+        import html as _h
+        def zpage(page_name):
+            meta = {"list_url": f"https://acmegov.zohorecruit.com/jobs/{page_name}",
+                    "page_name": page_name,
+                    "org_info": {"company_name": "Caselle", "website": "www.caselle.example"}}
+            return ('<input type="hidden" value="' + _h.escape(json.dumps([]), quote=True) + '" id="jobs">'
+                    '<input type="hidden" value="' + _h.escape(json.dumps(meta), quote=True) + '" id="meta">')
+        for page_name, want in (("Careers", ["Caselle"]), ("BlackMountainSoftware", [])):
+            ats._page = lambda url, p=page_name, **kw: R(zpage(p))
+            said = vb.board_says("zohorecruit", f"https://acmegov.zohorecruit.com/jobs/{page_name}")
+            if said["names"] != want:
+                errors += fail(f"zohorecruit: the page {page_name!r} stated {said['names']}, not "
+                               f"{want}: the name is the account's, whatever page of it this is")
+    finally:
+        ats._page = keep
+        unseal()
+    if tried:
+        errors += fail(f"second review checks: a read went round the stub: {tried[:3]}")
+
+    # ---- the finder's refusals, each with a page that needs it ----------------
+    for markup in ("<script>rec_embed_js.load({ widget_id: 'rec_job_listing_div', "
+                   "site: 'https://nexgenam.zohorecruit.com' });</script>",     # no page name
+                   '<script src="https://static.applicantpro.com/x.js"></script>',
+                   '<script src="https://cdn.pinpointhq.com/x.js"></script>',
+                   '<a href="https://app.teamtailor.com/companies/x/dashboard">x</a>',
+                   '<a href="https://www.comeet.com/jobs/careers/F7.009">x</a>'):  # a furniture slug
+        found, _ = fsb.sightings(markup, here, home)
+        if found:
+            errors += fail(f"finder: {[(f['type'], f['ref']) for f in found]} read out of "
+                           f"{markup[:70]!r}, which names no board")
+
+    # ---- a board's own pages showing its own platform: not a second one ------
+    # (Powerfleet's second page of jobs, a fragment with no <head>, its
+    # pictures on teamtailor-cdn.com; the same script on their main site is
+    # still a doubt, because a widget of another account names no board)
+    import asyncio
+    tt_assets = ('<link rel="stylesheet" href="https://assets-aws.teamtailor-cdn.com/x.css">'
+                 '<link rel="alternate" type="application/rss+xml" title="Jobs" '
+                 'href="https://careers.ttco.example/jobs.rss">')
+    web = {
+        "https://www.ttco.example": _site_boards_page(
+            "TT Co", '<a href="https://careers.ttco.example/">Careers</a>'
+                     '<script src="https://scripts.teamtailor-cdn.com/widgets/eu/jobs.js"></script>'),
+        "https://careers.ttco.example": _site_boards_page(
+            "Careers", tt_assets + '<a href="/jobs/show_more?page=2">More jobs</a>'),
+        "https://careers.ttco.example/jobs/show_more?page=2": (
+            200, '<div><img src="https://images.teamtailor-cdn.com/p/1.webp">'
+                 '<script src="https://scripts.teamtailor-cdn.com/frag.js"></script>'
+                 + _SITE_BOARDS_PAD + "</div>"),
+    }
+    with _SiteBoardsWeb(fsb, web):
+        rec = asyncio.run(fsb.look(_site_boards_co("tt-co", "TT Co", "https://www.ttco.example"),
+                                   "static", fsb.read_plain))
+    boards = {(c["type"], c["ref"]) for c in rec["candidates"]}
+    pages = {e["page"] for e in rec["elsewhere"] if e["vendor"] == "teamtailor-other"}
+    if boards != {("teamtailor", "https://careers.ttco.example")} \
+            or any("careers.ttco.example" in pg for pg in pages) \
+            or not any("www.ttco.example" in pg for pg in pages):
+        errors += fail(f"finder: on a Teamtailor site's own pages its own platform was kept as a "
+                       f"second one, or the same script on their main site was dropped: boards "
+                       f"{sorted(boards)}, teamtailor-other on {sorted(pages)} (read: "
+                       f"{[pg['asked'] for pg in rec['pages']]})")
+
+    # ---- a tenant form on another of their pages: theirs, or another account's -
+    for bare, want in (("https://acmegov.zohorecruit.com", set()),
+                       ("https://parentco.zohorecruit.com", {"zohorecruit-tenant"})):
+        web = {"https://www.zco.example": _site_boards_page(
+                   "Z Co", f'<a href="/careers">Careers</a><a href="{bare}">Jobs home</a>'),
+               "https://www.zco.example/careers": _site_boards_page(
+                   "Careers", '<a href="https://acmegov.zohorecruit.com/jobs/Careers">Open roles</a>')}
+        with _SiteBoardsWeb(fsb, web):
+            rec = asyncio.run(fsb.look(_site_boards_co("z-co", "Z Co", "https://www.zco.example"),
+                                       "static", fsb.read_plain))
+        got = {e["vendor"] for e in rec["elsewhere"]} & {"zohorecruit-tenant"}
+        if got != want or not rec["candidates"]:
+            errors += fail(f"finder: a bare {bare} on their home page beside their Zoho board on "
+                           f"their careers page came out as {sorted(got)}, not {sorted(want)} "
+                           f"(boards {[c['ref'] for c in rec['candidates']]})")
+
+    # ---- one board under two spellings is one board on the public board -------
+    T = "0123456789ABCDEF0123456789ABCD"
+    for refs, kind in ((("https://tcp.example/careers", "https://www.tcp.example/careers/"), "html"),
+                       ((f"F7.009|{T}", "https://www.comeet.com/jobs/tcp/F7.009"), "comeet")):
+        pair = [dict(_wb_co("tcp-software", "TCP Software"), ats={"type": kind, "ref": refs[0]}),
+                dict(_wb_co("aladtec", "Aladtec"), ats={"type": kind, "ref": refs[1]})]
+        owns, _unowned = bb.board_owners(pair)
+        if owns != {"aladtec": "tcp-software"}:
+            errors += fail(f"build_board.board_owners: one {kind} board under two spellings "
+                           f"{refs} is two boards ({owns}), so its postings count twice")
     return errors
 
 
@@ -51890,6 +52131,7 @@ def main() -> int:
     errors += check_zoho_recruit_reads_only_the_open_jobs_its_page_carries()
     errors += check_comeet_reads_the_board_its_company_page_hands_out()
     errors += check_jobvite_reads_its_list_page_and_names_it_twice()
+    errors += check_what_the_second_review_of_the_new_readers_found_stays_fixed()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()

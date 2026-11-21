@@ -45,6 +45,7 @@ import urllib.parse
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
+import board_proposals  # noqa: E402
 import roles          # noqa: E402
 import news           # noqa: E402
 import salary         # noqa: E402
@@ -1297,14 +1298,17 @@ def board_owners(companies: list) -> tuple[dict, set]:
         ref = (c.get("ats") or {}).get("ref")
         if kind in (None, "unknown") or ref is None:
             continue
-        shared[(kind, json.dumps(ref, sort_keys=True))].append(c)
+        # by the door's own LOOSE key: one board under two spellings is one
+        # board (Aladtec and TCP Software both read tcpsoftware.com/careers,
+        # one with www.; a Comeet board is one uid in either of its forms)
+        shared[board_proposals.board_key(kind, ref)].append(c)
 
     owns: dict[str, str] = {}          # company id -> id of the board's owner
     unowned: set[str] = set()          # holders the slug does not name
-    for (kind, ref_json), group in shared.items():
+    for _key, group in shared.items():
         if len(group) < 2:
             continue
-        ref = json.loads(ref_json)
+        ref = group[0]["ats"]["ref"]
         slug = ref if isinstance(ref, str) else " ".join(str(x) for x in ref)
         norm = lambda t: re.sub(r"[^a-z0-9]", "", (t or "").lower())
         ns = norm(slug)

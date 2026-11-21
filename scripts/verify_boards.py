@@ -1176,8 +1176,16 @@ def _zohorecruit(ref, out: dict) -> None:
     out["n"] = sum(1 for j in rows if j.get("Publish") is True
                    and ats._text(j.get("Posting_Title") or j.get("Job_Opening_Name")))
     out["hosts"] = {host_of(str(ref))}
+    page_name = ats._text(meta.get("page_name"))
     if org.get("hide_company_name") is True:
         out["how"] = "zohorecruit board hides its company name"
+    elif page_name != "Careers":
+        # The name is the ACCOUNT's, whatever page of it this is: a sister
+        # brand's page on the account would be proven for the account (blind
+        # review, 2026-11-21). Every board read had the one default page,
+        # "Careers"; another page states nothing until a person looks.
+        out["how"] = (f"zohorecruit page {page_name or '(unnamed)'!r} is not the account's own "
+                      f"career site (Careers), and the name is the account's, not the page's")
     elif _state(out, [org.get("company_name")], "zohorecruit org_info.company_name, "
                                                 "stated on the board's own page"):
         site = ats._text(org.get("website"))
