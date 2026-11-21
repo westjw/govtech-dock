@@ -384,6 +384,15 @@ def held_for_the_owner(data=None) -> dict:
 # other (blind review, 2026-11-21)
 _PAYLOCITY = re.compile(r"/jobs/(?:all|list)/([^/?#]+)")
 _ICIMS = re.compile(r"([a-z0-9-]+)\.icims\.com(?:[/?]|$)")
+# a Zoho Recruit career site is its host and its page's name: a posting's
+# address sits under it (.../jobs/<PageName>/<id>-<title>)
+_ZOHO = re.compile(r"([^/?#]+\.zohorecruit\.[a-z]+)/jobs/([^/?#]+)")
+# a Comeet board is its company uid, whichever of its two refs names it -
+# "<UID>|<TOKEN>" or the hosted board comeet.com/jobs/<slug>/<UID> - and a
+# posting under the hosted board is the same board
+_COMEET = re.compile(r"(?:^|comeet\.com/jobs/[^/?#]+/)([0-9a-f]{2}\.[0-9a-f]{3})(?=$|[|/?#])")
+# the platforms whose board is a whole host: any address on it is the board
+HOST_BOARDS = ("jibe", "oracle", "applicantpro", "teamtailor")
 # the words wire_found.py writes on a wired record's note and a held row's
 # doubt when a site asks for a Workable board by its account number (its
 # account_words): the one place the number and the slug are said together
@@ -400,13 +409,20 @@ def board_key(kind, ref) -> str:
     calling two addresses one board. Case is ignored (SmartRecruiters refs
     are case-sensitive, so two different boards can share a key). An address
     is the same board with or without its scheme, its www. or a last slash.
-    And three shapes are read for the part that identifies the board, because
-    this repo's own data writes each of them two ways: a Paylocity address is
+    And some shapes are read for the part that identifies the board, because
+    this repo's own data writes each of them more than one way: a Paylocity address is
     the id after /jobs/All/ or /jobs/List/, with or without the tenant's name
     after it (keyed on the whole address, a board already on file as
     .../<uuid>/<Tenant> was not seen to be the board found as .../<uuid>, and
     would have been wired to a second company); an iCIMS portal is its slug,
-    bare or inside its address; a Jibe or Oracle board is its host.
+    bare or inside its address; a Jibe, Oracle, ApplicantPro or Teamtailor
+    board is its host; a Zoho Recruit career site is its host and its page's
+    name (a posting's address is under it); a Comeet board is its company
+    uid, whether the ref is "<UID>|<TOKEN>" or the hosted board's address.
+    (The last four were read since 2026-11-19 and keyed on the whole ref, so
+    a hold or a refusal written in one spelling missed the other: test
+    review of the door, 2026-11-21. Hirebridge's number and Pinpoint's slug
+    are one spelling already.)
 
     IT IS NEVER WHAT GETS READ. Reading goes by the ref exactly as the site
     gave it (wire_found.spelling): on a platform that minds case the loose
@@ -424,8 +440,14 @@ def board_key(kind, ref) -> str:
     elif kind == "icims":
         m = _ICIMS.match(r)
         r = m.group(1) if m else r
-    elif kind in ("jibe", "oracle"):
+    elif kind in HOST_BOARDS:
         r = r.split("/", 1)[0]
+    elif kind == "zohorecruit":
+        m = _ZOHO.match(r)
+        r = f"{m.group(1)}/jobs/{m.group(2)}" if m else r
+    elif kind == "comeet":
+        m = _COMEET.search(r)
+        r = m.group(1) if m else r
     return f"{kind}:{json.dumps(r)}"
 
 

@@ -33778,6 +33778,32 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
         ("paylocity", LIST + "4821/", "http://recruiting.paylocity.com/Recruiting/Jobs/List/4821"
                                       "/FAAC-Inc?lang=en", True),
         ("paylocity", LIST + "4821", LIST + "4822", False),
+        # an address is the same board with or without its www. (pinned since
+        # board_key moved to board_proposals: test review, 2026-11-21)
+        ("bamboohr", "https://www.acme.bamboohr.com/careers/", "acme.bamboohr.com/careers", True),
+        # the six readers added 2026-11-19..21, each keyed on what identifies
+        # its board (test review of the door, 2026-11-21): a hold or refusal
+        # in one spelling missed the other
+        ("applicantpro", "https://casellejobs.applicantpro.com/jobs/",
+         "casellejobs.applicantpro.com", True),
+        ("applicantpro", "casellejobs.applicantpro.com", "casellejobs.isolvedhire.com", False),
+        ("applicantpro", "casellejobs.applicantpro.com", "caselle.applicantpro.com", False),
+        ("teamtailor", "https://acme.teamtailor.com", "https://acme.teamtailor.com/jobs/12-sales",
+         True),
+        ("teamtailor", "https://careers.acme.test", "https://www.careers.acme.test/", True),
+        ("teamtailor", "https://acme.teamtailor.com", "https://acme.na.teamtailor.com", False),
+        ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers",
+         "https://acme.zohorecruit.com/jobs/Careers/123456000001-Sales-Rep?source=x", True),
+        ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers",
+         "https://acme.zohorecruit.com/jobs/Partners", False),
+        ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers",
+         "https://acme.zohorecruit.eu/jobs/Careers", False),
+        ("comeet", "AB.C12|0123456789ABCDEF0123", "https://www.comeet.com/jobs/acme/AB.C12", True),
+        ("comeet", "https://www.comeet.com/jobs/acme/AB.C12/sales-rep/12.34A",
+         "ab.c12|FEDCBA9876543210FEDC", True),
+        ("comeet", "AB.C12|0123456789ABCDEF0123", "AB.C13|0123456789ABCDEF0123", False),
+        ("hirebridge", "612567", "612568", False),
+        ("pinpoint", "acme", "ACME", True),
         ("icims", "careers-acme", "https://careers-acme.icims.com/jobs/search?ss=1", True),
         ("icims", "careers-acme", "careers-acmeco", False),
         ("jibe", "careers.acme.test", "https://careers.acme.test/api/jobs", True),

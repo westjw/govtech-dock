@@ -2836,7 +2836,12 @@ round.
   a Paylocity board is the id after `/jobs/All/` or `/jobs/List/`, with or
   without the tenant's name after it (a /List/ board had two keys, so a hold
   under one spelling missed the other: blind review, 2026-11-21), an iCIMS
-  portal its slug, a Jibe or Oracle board its host. What is READ is the ref as the quoted page
+  portal its slug, a Jibe, Oracle, ApplicantPro or Teamtailor board its host,
+  a Zoho Recruit career site its host and page name (a posting's address is
+  under it), and a Comeet board its company uid, whether written
+  `<UID>|<TOKEN>` or as the hosted board's address (those four were keyed on
+  the whole ref until the test review of 2026-11-21; Hirebridge's number and
+  Pinpoint's slug need nothing). What is READ is the ref as the quoted page
   spelled it; SmartRecruiters minds case, and `caseco` answering empty says
   nothing about `CaseCo`.
 - **`apply` reads the frozen file and makes no request, but it asks the data
