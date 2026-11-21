@@ -32459,7 +32459,11 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
     held under a number nobody followed whose name the company goes by
     (board_proposals.held_board, the one reader all three doors use) - nor
     kept for review as a near miss (ats_suspects.json feeds the Acquisitions
-    queue and --review: blind review, 2026-11-21). Discovery counts what it left alone, and names nothing (its
+    queue and --review: blind review, 2026-11-21). And a hold ENDS with his
+    ruling: a row a door filed for another record that he has ruled on, and
+    a doubt about another record that he has ruled on since, hold nothing -
+    discovery writes those boards and wire_embedded wires them (test review,
+    2026-11-21: either could be kept holding, and nothing noticed). Discovery counts what it left alone, and names nothing (its
     log is public). A board nobody holds is still written.
 
     Driven through discover_ats.main with the workflow's own arguments, an
@@ -32483,6 +32487,10 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
              # their probes come back with a near miss (a board that read and
              # does not match the name): one the owner holds, one nobody does
              "sus-heir-co": "Sus Heir Co", "sus-free-co": "Sus Free Co",
+             # held by nothing any more: the owner has ruled on the row a door
+             # filed for another record's board, and on a company whose doubt
+             # was about this board, since the doubt (test review, 2026-11-21)
+             "freed-filed-co": "Freed Filed Co", "freed-doubt-co": "Freed Doubt Co",
              "heir-doubt-co": "Heir Doubt Co", "heir-filed-co": "Heir Filed Co",
              "heir-refused-co": "Heir Refused Co", "heir-ruled-co": "Heir Ruled Co",
              "heir-num-co": "Heir Num Co", "named-co-inc": "Named Co Inc",
@@ -32494,6 +32502,12 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
     # its name may be the same account
     companies.append(co("num-holder-co", "Num Holder Co",
                         ats={"type": "workable", "ref": "770770"}))
+    # the records the owner ruled on, each reading from a board of its own now
+    companies.append(co("other-filed-ruled", "Other Filed Ruled Co",
+                        ats={"type": "lever", "ref": "otherfiledruled"}))
+    companies.append(co("other-doubt-ruled", "Other Doubt Ruled Co",
+                        ats={"type": "lever", "ref": "otherdoubtold"}))
+    freed = ("free-co", "freed-doubt-co", "freed-filed-co")
     BOARD_OF = {"heir-num-co": {"type": "workable", "ref": "heirnumslug"},
                 "named-co-inc": {"type": "workable", "ref": "namedcoinc"},
                 # found by the account NUMBER whose slug a door-filed row holds
@@ -32530,11 +32544,28 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
                         "id": "gone-num", "name": "Gone Num Co", "board": "workable/740740",
                         "type": "workable", "ref": "740740",
                         "why": "a reader: the account is the group's", "by": "agent:readers",
-                        "on": "2026-11-19", "at": "2026-11-19T10:07:00-05:00"}},
+                        "on": "2026-11-19", "at": "2026-11-19T10:07:00-05:00"},
+                    # settled: the owner ruled on Other Doubt Ruled Co since
+                    "other-doubt-ruled@2026-11-19T10:08:00-05:00": {
+                        "id": "other-doubt-ruled", "name": "Other Doubt Ruled Co",
+                        "board": "greenhouse/freeddoubtco", "type": "greenhouse",
+                        "ref": "freeddoubtco", "why": "a reader: the group's board",
+                        "by": "agent:readers", "on": "2026-11-19",
+                        "at": "2026-11-19T10:08:00-05:00"}},
         # every company has an older finder's row a slug check passes; filed-co's
         # is one a door filed for the owner, and nobody has ruled on it
         bp.FOUND.name: [row("doubted-co"), row("refused-co"), row("rejected-co"),
-                        row("free-co"), row("pending-co"),
+                        row("free-co"), row("pending-co"), row("freed-filed-co"),
+                        row("freed-doubt-co"),
+                        # a door filed Freed Filed Co's board for another record,
+                        # and the owner has ruled on that row (he accepted it)
+                        dict(row("freed-filed-co"), id="other-filed-ruled",
+                             name="Other Filed Ruled Co", identity="unknown",
+                             identity_why="filed on a doubt",
+                             filed={"by": "agent:earlier-batch", "on": "2026-11-19"}),
+                        dict(row("freed-doubt-co"), id="other-doubt-ruled",
+                             name="Other Doubt Ruled Co",
+                             found={"type": "lever", "ref": "otherdoubtold"}),
                         row("filed-co", identity="unknown", identity_why="no stated name",
                             filed={"by": "agent:earlier-batch", "on": "2026-11-19"})]
         + [row(cid) for cid in heirs]
@@ -32564,7 +32595,10 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
                         "other-ruled": {"accept": False, "why": "the parent's board",
                                         "by": "owner", "on": "2026-11-12"},
                         "pair-row-co": {"accept": True, "why": "", "by": "owner",
-                                        "on": "2026-11-12"}},
+                                        "on": "2026-11-12"},
+                        **{cid: {"accept": True, "why": "", "by": "owner", "on": "2026-11-20",
+                                 "at": "2026-11-20T10:00:00-05:00"}
+                           for cid in ("other-filed-ruled", "other-doubt-ruled")}},
         bp.PROPOSALS: {"board:rejected-co": {
             "kind": "board", "id": "rejected-co", "ats_type": "greenhouse",
             "ats_ref": "rejectedco", "status": "rejected", "ruled_by": "owner",
@@ -32644,10 +32678,12 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
                                    f"with a reader's doubt standing, a row a door filed for "
                                    f"the owner, or a refusal in either store is his")
                 if [cid for cid in held_ids + heirs if got.get(cid) != "unknown"] \
-                        or got.get("free-co") != "greenhouse" or code not in (0, None):
-                    errors += fail(f"{label}: discovery wrote {got} (exit {code}): only the "
+                        or [cid for cid in freed if got.get(cid) != "greenhouse"] \
+                        or code not in (0, None):
+                    errors += fail(f"{label}: discovery wrote {got} (exit {code}): only a "
                                    f"board nobody holds - by company or by board, under any "
-                                   f"record's id - may be written")
+                                   f"record's id - may be written, and one whose row or doubt "
+                                   f"the owner has ruled on since is held by nobody")
                 log = json.loads(da.LOG.read_text()) if da.LOG.exists() else {}
                 if any(log.get(cid, {}).get("found") for cid in heirs) \
                         or "held for the owner under another record" not in \
@@ -32730,7 +32766,7 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
             rows = json.loads((tmp / bp.FOUND.name).read_text())
             piles = we.triage(rows, by_id)
             sorted_ = sorted(e["id"] for pile in piles for e in pile)
-            if sorted_ != ["free-co"] or [e["id"] for e in piles[0]] != ["free-co"]:
+            if sorted_ != list(freed) or sorted(e["id"] for e in piles[0]) != list(freed):
                 errors += fail(f"wire_embedded.triage sorted {sorted_} into its piles: a "
                                f"company the owner holds, or a row whose board he holds under "
                                f"another record's id, is in none of them")
@@ -32739,7 +32775,7 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
             with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
                 code = we.main()
             got = boards(tmp)
-            if code != 0 or got.get("free-co") != "greenhouse" \
+            if code != 0 or [cid for cid in freed if got.get(cid) != "greenhouse"] \
                     or [cid for cid in held_ids + heirs if got.get(cid) != "unknown"]:
                 errors += fail(f"wire_embedded --write wrote {got} (exit {code}): it wired a "
                                f"company or a board the owner holds, or nothing at all")
