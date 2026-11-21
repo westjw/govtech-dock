@@ -1803,24 +1803,36 @@ def board_named(entry: dict | None, c: dict | None) -> tuple:
     return show(first["type"], seen["ref"]), first["type"], seen["ref"]
 
 
-def same_board(a: tuple, b: tuple) -> bool:
+def same_board(a: tuple, b: tuple, pairs: dict | None = None) -> bool:
     """Are the boards (type, ref) `a` and `b` one board, for one question:
     is a reader's doubt already on file about it? By board_key, never by
     spelling - "greenhouse/AcmeCo" and "greenhouse/acmeco" are one board, and
     the same words about it were written twice after the owner's ruling and
-    stood again (review of 27eeb628, 2026-11-19). A Workable account number beside
-    a Workable slug is taken to be the same account: nothing before the first
-    request can tell them apart. No board and no board are the same."""
+    stood again (review of 27eeb628, 2026-11-19). No board and no board are
+    the same.
+
+    A WORKABLE ACCOUNT NUMBER AND A SLUG ARE ONE BOARD ONLY WHERE A PAIR SAYS
+    SO (`pairs`: {number: slug}, board_proposals.workable_pairs - what is said
+    on file; the doubts are kept before the plan's first request, so nothing
+    this run follows can say it). Any number beside any slug was taken for one
+    account: a doubt about workable/othergroup, in the words of one the owner
+    had settled about workable/710855, was dropped as "already on file", the
+    plan said it was settled on his word, and the next plan wired a board he
+    never saw (blind review, 2026-11-21)."""
     (ka, ra), (kb, rb) = a, b
     if not ka or not kb:
         return not ka and not kb
     if board_key(ka, ra) == board_key(kb, rb):
         return True
-    return ka == kb == "workable" and numbered(ka, ra) != numbered(kb, rb)
+    if not (ka == kb == "workable" and numbered(ka, ra) != numbered(kb, rb)):
+        return False
+    number, slug = (ra, rb) if numbered(ka, ra) else (rb, ra)
+    known = _slug_of(pairs, _number(number))
+    return bool(known) and board_key("workable", known) == board_key("workable", slug)
 
 
 def new_doubts(reviewed: dict, results: dict, by_id: dict, grouped: dict, taken,
-               by: str) -> dict:
+               by: str, pairs: dict | None = None) -> dict:
     """{record key: record} for every reader's doubt that is not already on
     file in the same words about the same board for the same company -
     WHETHER OR NOT the owner has settled it since. A doubt he settled, given
@@ -1830,13 +1842,15 @@ def new_doubts(reviewed: dict, results: dict, by_id: dict, grouped: dict, taken,
     else holds: keeping one is an addition to the file, never a rewrite. It
     carries the company's name as it read then: a doubt held by board under
     a Workable number is compared with a board's stated name by it, after the
-    record is merged away."""
+    record is merged away. `pairs` are the Workable numbers and slugs said
+    together on file (same_board)."""
     on, at = dt.date.today().isoformat(), admin.now()
     taken = set(taken)
     out = {}
     for cid, words in sorted(reviewed.items()):
         board, kind, ref = board_named(results.get(cid), by_id.get(cid))
-        if any(str(d.get("why") or "").strip() == words and same_board(doubt_board(d), (kind, ref))
+        if any(str(d.get("why") or "").strip() == words
+               and same_board(doubt_board(d), (kind, ref), pairs)
                for d in grouped.get(cid) or []):
             continue
         key, n = f"{cid}@{at}", 2
@@ -1861,7 +1875,9 @@ def doubt_line(d: dict, row: dict | None) -> str:
         about = "this company"
     elif f and board_key(kind, ref) == board_key(f.get("type"), f.get("ref")):
         about = f"this board ({show(kind, ref)})"
-    elif f and same_board((kind, ref), (f.get("type"), f.get("ref"))):
+    elif f and kind == f.get("type") == "workable" \
+            and numbered(kind, ref) != numbered("workable", f.get("ref")):
+        # a number beside a slug: said as what may be, whatever is on file
         about = (f"{show(kind, ref)} (a Workable account number; this card's board, "
                  f"{on_card}, may be the same account)")
     else:
@@ -1907,7 +1923,9 @@ def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str, say=print
         by_id = {c["id"]: c for c in companies}
         refusals = _refusals(s)
         rows = board_proposals.rows_by_id(s["found"])
-        new = new_doubts(reviewed, results, by_id, s["doubts"], raw, by)
+        # a Workable number and slug are one board only where the file says so
+        pairs = board_proposals.workable_pairs(companies, s["found"])
+        new = new_doubts(reviewed, results, by_id, s["doubts"], raw, by, pairs)
         fresh = {r["id"] for r in new.values()}
         if new:
             by_code = collections.defaultdict(list)
@@ -1998,7 +2016,7 @@ def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str, say=print
         name = (by_id.get(cid) or {}).get("name") or (results.get(cid) or {}).get("name") or cid
         board, kind, ref = board_named(results.get(cid), by_id.get(cid))
         mine = [d for d in grouped.get(cid) or [] if str(d.get("why") or "").strip()
-                == reviewed[cid] and same_board(doubt_board(d), (kind, ref))]
+                == reviewed[cid] and same_board(doubt_board(d), (kind, ref), pairs)]
         if cid not in fresh and mine and not any(d in (standing.get(cid) or []) for d in mine):
             words = settled_words(mine, s["ruled"].get(cid))
         else:

@@ -2730,8 +2730,13 @@ round.
   one record per doubt (`{"<company id>@<when>": {id, name, board, type,
   ref, why, by, on, at}}`; the first shape `{company id: {...}}` is still
   read). The same words about the same board for the same company are never
-  written twice, ruled on since or not (the board by its key, a Workable
-  number and slug taken for one account). Where the company has a row
+  written twice, ruled on since or not (the board by its key; a Workable
+  number and a slug taken for one account only where the file ties the two,
+  `workable_pairs` - the doubts are kept before the first request, so
+  nothing the run follows can. Any number beside any slug was once taken
+  for one account: a doubt about another account in the words of one he
+  had settled was not kept, the plan said it was settled on his word, and
+  the next plan wired the board; blind review, 2026-11-21). Where the company has a row
   waiting in Boards we found, the words go onto it (`board_proposals.add_doubt`,
   stamped `updated`, which makes the card print `identity_why`), naming the
   board - "a reader's doubt about greenhouse/xco, not the board on this card

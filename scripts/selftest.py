@@ -37270,7 +37270,12 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         (held_board) - it held nothing (blind review, 2026-11-21);
       - a board refused under a number this run did not follow is taken to be
         any Workable board found for that company now: SKIP refused, "tell
-        the owner", nothing read or asked.
+        the owner", nothing read or asked;
+      - a reader's doubt about a Workable number and one in the same words
+        about a slug are one doubt only where the file ties the two
+        (workable_pairs): a doubt about another account in the words of a
+        settled one is kept, holds its board, and is never said to be
+        settled (blind review, 2026-11-21).
     """
     import board_proposals as bp
     import wire_found as wf
@@ -37338,8 +37343,8 @@ def check_a_workable_account_is_held_under_either_key() -> int:
             return errors + fail(f"the fixture's Archi Co Inc and Numfound Co do not plan WIRE "
                                  f"on their own: {text[-300:]}")
         # --- the readers doubt Archi Co, whose site asks by NUMBER ---------------
-        code, text, _wl, _rows = box.plan(_wb_results({"archi-co": asks("archi-co", "710855")}),
-                                         name="worklist-doubt.json",
+        code, text, wl_d, _rows = box.plan(_wb_results({"archi-co": asks("archi-co", "710855")}),
+                                          name="worklist-doubt.json",
                                          doubts={"archi-co": "two readers: the account is the "
                                                              "Archi Group's"})
         kept = [v for v in json.loads((box.tmp / wf.DOUBTS).read_text()).values()
@@ -37432,7 +37437,15 @@ def check_a_workable_account_is_held_under_either_key() -> int:
             errors += fail("held_boards does not hold a doubt under an unresolved number by "
                            "the names that account goes by")
         # the same words about the same account, its site now linking the slug:
-        # the same doubt, not written twice
+        # the same doubt, not written twice - once the file says the number
+        # and the slug belong together. The doubted worklist, applied, files
+        # Archi Co's held row, which says so in the door's own words.
+        code, text, look_d = box.look(wl_d)
+        code, text = box.write(wl_d, look_d)
+        if code != 0 or bp.workable_pairs([], json.loads((box.tmp / bp.FOUND.name).read_text())) \
+                .get("710855") != "archico":
+            return errors + fail(f"the doubted worklist, applied, did not put Archi Co's account "
+                                 f"number and slug on file together: {text[-300:]}")
         before = (box.tmp / wf.DOUBTS).read_bytes()
         code, text, _wl, _rows = box.plan(_wb_results({"archi-co": links("archi-co", "archico")}),
                                          name="worklist-doubt-again.json",
@@ -37441,6 +37454,65 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         if (box.tmp / wf.DOUBTS).read_bytes() != before or "KEPT" in text:
             errors += fail(f"the same words about one Workable account, by its number and then "
                            f"by its slug, were kept twice: {text[:300]!r}")
+
+    # --- A NUMBER AND A SLUG NOTHING TIES ARE TWO BOARDS -------------------------
+    # (blind review, 2026-11-21: the owner settled a doubt about workable/790000;
+    # the company's site then linked workable/othergroupfive, a different
+    # account, and a reader doubted it in the same words. Any number beside any
+    # slug was taken for one board: the new doubt was not kept, the plan said
+    # it was settled on his word, and the next plan wired the board.)
+    WORDS5 = "two readers: the account is the Archi Five Group's, every brand's roles"
+    BOARDS5 = {"workable/790000": (2, ["Archi Five"]), "workable/othergroupfive": (3, ["Archi Five"]),
+               "workable/archifiveslug": (2, ["Archi Five"])}
+    with _WiringBox([co("archi-five", "Archi Five")], BOARDS5) as box:
+        box.plan(_wb_results({"archi-five": asks("archi-five", "790000")}),
+                 name="worklist-five-1.json", doubts={"archi-five": WORDS5})
+        args = ["settle", "--id", "archi-five", "--board", "workable/790000", "--why",
+                "the owner: 790000 is their own account", "--by", _WiringBox.LABEL]
+        code, text = box.run(*args)
+        m = re.search(r"--expect (\S+)", text)
+        code, text = box.run(*args, "--write", "--expect", m.group(1) if m else "none")
+        if code != 0 or "SETTLED 1 reader doubt about archi-five" not in text:
+            return errors + fail(f"the fixture's doubt about workable/790000 was not settled on "
+                                 f"the owner's word: {text[-300:]}")
+        code, text, _wl, _rows = box.plan(_wb_results({"archi-five": links("archi-five",
+                                                                           "othergroupfive")}),
+                                         name="worklist-five-2.json",
+                                         doubts={"archi-five": WORDS5})
+        line = next((ln for ln in text.splitlines() if ln.lstrip().startswith(("KEPT", "HAD"))
+                     and "Archi Five" in ln), "")
+        kept = [v for v in json.loads((box.tmp / wf.DOUBTS).read_text()).values()
+                if v.get("id") == "archi-five" and "settles" not in v]
+        if not line.lstrip().startswith("KEPT") or "settled" in line \
+                or sorted(v.get("board") for v in kept) \
+                != ["workable/790000", "workable/othergroupfive"]:
+            errors += fail(f"a doubt about another Workable account, in the words of a doubt the "
+                           f"owner settled about an account number nothing ties to it, was not "
+                           f"kept, or was said to be settled: {line.strip()[:300]!r}")
+        code, text, _wl, rows5 = box.plan(_wb_results({"archi-five": links("archi-five",
+                                                                           "othergroupfive")}),
+                                         name="worklist-five-3.json")
+        r = (rows5 or {}).get("archi-five") or {}
+        if r.get("action") != "HOLD" or WORDS5 not in _wb_words(r):
+            errors += fail(f"the board of a doubt about another Workable account was planned "
+                           f"{r.get('action')}: {_wb_words(r)[:300]!r}")
+        # where the file DOES tie 790000 to a slug, the same words about that
+        # slug are the settled doubt, and are said to be
+        box.by_hand(lambda by_id, cs: by_id["archi-five"].update(ats_note=(
+            "left unwired: their site "
+            + wf.account_words({"account": "790000", "ref": "archifiveslug"}))))
+        before = (box.tmp / wf.DOUBTS).read_bytes()
+        code, text, _wl, _rows = box.plan(_wb_results({"archi-five": links("archi-five",
+                                                                           "archifiveslug")}),
+                                         name="worklist-five-4.json",
+                                         doubts={"archi-five": WORDS5})
+        line = next((ln for ln in text.splitlines() if ln.lstrip().startswith(("KEPT", "HAD"))
+                     and "Archi Five" in ln), "")
+        if (box.tmp / wf.DOUBTS).read_bytes() != before or not line.lstrip().startswith("HAD") \
+                or "settled on the owner's word" not in line:
+            errors += fail(f"the same words about the slug a settled Workable number is said on "
+                           f"file to open under were kept again, or not said to be settled: "
+                           f"{line.strip()[:300]!r}")
 
     # --- a doubt kept by THIS plan holds the account for the rest of the plan --
     # (the follow of its number fails on the day, so nothing in the run ties
