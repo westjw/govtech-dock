@@ -36427,11 +36427,16 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
 
       - ANY ruling of his on the company in Boards we found later than the
         doubt settles it, whichever row he ruled from, and so does his word:
-        `wire_found.py settle --id <company> --why "<his words>" --by
-        agent:<label>` writes one journalled record that settles the
-        company's standing doubts, which plan, apply and held_for_the_owner
-        (discovery, wire_embedded) all honour - a board held by board under
-        a merged-away id included;
+        `wire_found.py settle --id <company> --board <type>/<ref> --why "<his
+        words>" --by agent:<label>` is a look that lists the doubts it would
+        settle - only those about the board named - and the ones it leaves
+        standing, and prints a code; with --write --expect <that code> it
+        writes one journalled record that settles them, which plan, apply and
+        held_for_the_owner (discovery, wire_embedded) all honour - a board
+        held by board under a merged-away id included. A doubt about another
+        board of the company still stands and holds its board, and a doubt
+        whose company has its row on his desk is refused: his card settles it
+        (blind review, 2026-11-21);
       - a doubt about a company with a row waiting goes onto that row naming
         the board it is about, and saying so when that is not the card's;
       - where no ruling can reach him - an older ruling, a company already on
@@ -36459,7 +36464,7 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
     companies[ids.index("wired-co")]["ats"] = {"type": "greenhouse", "ref": "wiredco"}
     BOARDS = {f"greenhouse/{cid.replace('-', '')}": (3, [name[cid]]) for cid in ids}
     BOARDS.update({"lever/noneco": (3, ["None Co"]), "greenhouse/goneco": (3, ["Heir Co"]),
-                   "greenhouse/CaseCo": (3, ["Case Co"])})
+                   "greenhouse/CaseCo": (3, ["Case Co"]), "lever/settlecob": (3, ["Settle Co"])})
     found = {cid: one(cid, "greenhouse", cid.replace("-", ""), element="iframe")
              for cid in ids if cid not in ("none-co", "heir-co")}
     found["none-co"] = one("none-co", "lever", "noneco", element="iframe")
@@ -36590,6 +36595,30 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
             errors += fail(f"a board a doubt about a company no longer on file holds was planned "
                            f"{hr.get('action')} for another company: {_wb_words(hr)[:240]!r}")
 
+        # --- settle refuses a doubt whose row is on his desk ----------------------
+        # (blind review, 2026-11-21: it settled one behind the card that his
+        # own ruling settles it from)
+        def settle(cid, board, words, *more):
+            try:
+                with contextlib.redirect_stderr(io.StringIO()):
+                    return box.run("settle", "--id", cid, *(["--board", board] if board else []),
+                                   "--why", words, "--by", LABEL, *more)
+            except SystemExit as exc:           # argparse: a required argument left out
+                return exc.code, ""
+
+        def on_his_word(cid, board, words):
+            """settle the way it is meant to be run: the look, then its code."""
+            code_, text_ = settle(cid, board, words)
+            m_ = re.search(r"--expect (\S+)", text_)
+            return settle(cid, board, words, "--write", "--expect", m_.group(1) if m_ else "none")
+        before = box.on_disk()
+        for more in ((), ("--write", "--expect", "0000000000000000")):
+            code, text = settle("row-co", "greenhouse/rowco", "the owner: it is theirs", *more)
+            if code == 0 or box.on_disk() != before or "his own card settles it" not in text \
+                    or "it is on its row in Boards we found (lever/rowold)" not in text:
+                errors += fail(f"settle {' '.join(more)} of a doubt whose company has its row on "
+                               f"the owner's desk was not refused, or wrote: {text[-300:]!r}")
+
         # --- the owner rules on row-co's card: settled, whichever board ---------
         r1 = admin.act_board_proposal({"id": "row-co", "accept": False, "by": "owner",
                                        "why": "selftest: the parent's"})
@@ -36600,54 +36629,113 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
             errors += fail("a ruling of the owner's on the company after the doubt did not "
                            "settle it")
 
-        # --- the owner's word: settle --------------------------------------------
+        # --- the owner's word: settle, about ONE board ------------------------------
+        # (blind review, 2026-11-21: `settle --id` settled every standing doubt
+        # of the company, one about a board nobody had shown him included, and
+        # the next plan wired that board.) A later plan keeps a second doubt
+        # about settle-co, about another board; his words are about the first.
+        OTHER = "a reader: lever/settlecob is a reseller's board, not theirs"
+        code, text, _wl, _rows = box.plan(_wb_results({"settle-co": one(
+            "settle-co", "lever", "settlecob", element="iframe")}), name="worklist-settle-b.json",
+            doubts={"settle-co": OTHER})
+        raw = json.loads((box.tmp / wf.DOUBTS).read_text())
+        first = [k for k, v in raw.items() if v.get("id") == "settle-co" and "settles" not in v
+                 and v.get("board") == "greenhouse/settleco"]
+        second = [k for k, v in raw.items() if v.get("id") == "settle-co" and "settles" not in v
+                  and v.get("board") == "lever/settlecob"]
+        if code != 0 or len(first) != 1 or len(second) != 1:
+            return errors + fail(f"the fixture's two doubts about settle-co, about two boards, "
+                                 f"were not both kept: {sorted(raw)}")
         before = box.on_disk()
         for argv, label in ((["--by", "owner"], "a person for --by"),
                             (["--by", "agent:" + "jane.doe" + "@" + "acme-corp.com"],
                              "an address for --by"),
-                            (["--by", LABEL, "--why", "   "], "no words")):
+                            (["--by", LABEL, "--why", "   "], "no words"),
+                            (["--by", LABEL, "--board", "settleco"], "a board with no type")):
             args = ["settle", "--id", "settle-co"]
             if "--why" not in argv:
                 args += ["--why", "the owner: it is theirs"]
+            if "--board" not in argv:
+                args += ["--board", "greenhouse/settleco"]
             code, text = box.run(*args, *argv)
             if code == 0 or box.on_disk() != before or "Nothing was written" not in text:
                 errors += fail(f"settle with {label} wrote, or did not say nothing was: "
                                f"{text[-200:]!r}")
-        code, text = box.run("settle", "--id", "nobody-co", "--why", "x", "--by", LABEL)
+        code, text = settle("settle-co", None, "the owner: it is theirs")
+        if code == 0 or box.on_disk() != before:
+            errors += fail("settle with no --board ran: the board his words are about is named")
+        code, text = settle("nobody-co", "greenhouse/nobodyco", "x")
         if code == 0 or box.on_disk() != before or "check the id" not in text:
             errors += fail(f"settle for a company with no doubt on file did not refuse: {text!r}")
+        code, text = settle("settle-co", "greenhouse/nobodyelse", "x")
+        if code == 0 or box.on_disk() != before or "Nothing was written" not in text \
+                or "greenhouse/settleco" not in text or "lever/settlecob" not in text:
+            errors += fail(f"settle about a board no doubt of the company is about did not "
+                           f"refuse, naming the boards its doubts are about: {text!r}")
         n1 = journal_len()
-        code, text = box.run("settle", "--id", "settle-co", "--why",
-                             "the owner, 2026-11-19: it is their own board, wire it", "--by",
-                             LABEL)
+        WORD = "the owner, 2026-11-19: it is their own board, wire it"
+        code, text = settle("settle-co", "greenhouse/settleco", WORD)
+        m = re.search(r"--expect (\S+)", text)
+        left = text[text.find("LEFT STANDING"):] if "LEFT STANDING" in text else ""
+        if code != 0 or not m or box.on_disk() != before or journal_len() != n1 \
+                or "LOOKED ONLY. Nothing was written" not in text \
+                or "WOULD SETTLE 1 reader doubt about settle-co (greenhouse/settleco)" not in text \
+                or "LEFT STANDING 1" not in left or OTHER not in left \
+                or "it is their own board" not in text:
+            errors += fail(f"settle without --write is not a look that lists the doubt it would "
+                           f"settle and the one it leaves standing, and prints the code: "
+                           f"{text[-500:]!r}")
+        code_ = m.group(1) if m else "none"
+        for more, label in ((("--write",), "no --expect"),
+                            (("--write", "--expect", "0000000000000000"), "another code")):
+            code, text = settle("settle-co", "greenhouse/settleco", WORD, *more)
+            if code == 0 or box.on_disk() != before or "REFUSED, and nothing was written" \
+                    not in text:
+                errors += fail(f"settle --write with {label} wrote, or did not refuse: "
+                               f"{text[-200:]!r}")
+        code, text = settle("settle-co", "greenhouse/settleco", "the owner: other words")
+        if code_ in text:
+            errors += fail("settle's code does not cover the owner's words")
+        code, text = settle("settle-co", "greenhouse/settleco", WORD, "--write", "--expect",
+                            code_)
         raw = json.loads((box.tmp / wf.DOUBTS).read_text())
         marks = {k: v for k, v in raw.items() if "settles" in v}
         mine = [e for e in entries_since(n1)]
         if code != 0 or len(marks) != 1 or list(marks.values())[0].get("by") != LABEL \
-                or list(marks.values())[0].get("settles") != [long_rec[0]["key"]
-                                                              if "key" in long_rec[0] else
-                                                              next(k for k, v in raw.items()
-                                                                   if v.get("id") == "settle-co"
-                                                                   and "settles" not in v)] \
+                or list(marks.values())[0].get("settles") != first \
+                or list(marks.values())[0].get("board") != "greenhouse/settleco" \
                 or len(mine) != 1 or mine[0].get("action") != wf.SETTLE_ACTION \
                 or mine[0].get("by") != LABEL or "it is their own board" not in mine[0]["why"] \
                 or "SETTLED 1 reader doubt about settle-co" not in text:
             errors += fail(f"settle did not write one journalled record, under the agent's "
-                           f"label, settling the company's standing doubt: exit {code}; "
-                           f"{marks}; {text[-300:]!r}")
+                           f"label, settling the standing doubt about the board named and no "
+                           f"other: exit {code}; {marks}; {text[-300:]!r}")
         s_ = wf.read_stores()
-        if "settle-co" in wf.standing_doubts(s_["doubts"], s_) \
+        if [d["key"] for d in wf.standing_doubts(s_["doubts"], s_).get("settle-co") or []] \
+                != second or "settle-co" not in bp.held_for_the_owner(box.tmp):
+            errors += fail("settle about one board settled the company's doubt about another, "
+                           "or the one it did not settle no longer holds the company")
+        code, text, _wl, rows_o = box.plan(_wb_results({"settle-co": one(
+            "settle-co", "lever", "settlecob", element="iframe")}), name="worklist-settle-c.json")
+        ro = (rows_o or {}).get("settle-co") or {}
+        if ro.get("action") != "HOLD" or OTHER not in _wb_words(ro):
+            errors += fail(f"the board of a doubt the owner's words were not about was planned "
+                           f"{ro.get('action')}: {_wb_words(ro)[:300]!r}")
+        # his word about the other board as well: nothing of settle-co stands
+        code, text = on_his_word("settle-co", "lever/settlecob",
+                                 "the owner, 2026-11-20: that one is theirs too")
+        s_ = wf.read_stores()
+        if code != 0 or "settle-co" in wf.standing_doubts(s_["doubts"], s_) \
                 or "settle-co" in bp.held_for_the_owner(box.tmp):
-            errors += fail("a doubt settled on the owner's word still stands for the door, or "
-                           "for discovery and wire_embedded")
-        code, text = box.run("settle", "--id", "settle-co", "--why", "again", "--by", LABEL)
+            errors += fail(f"a doubt settled on the owner's word still stands for the door, or "
+                           f"for discovery and wire_embedded: {text[-300:]!r}")
+        code, text = settle("settle-co", "greenhouse/settleco", "again")
         if code != 0 or "stands" not in text or "Nothing was written" not in text \
                 or len([v for v in json.loads((box.tmp / wf.DOUBTS).read_text()).values()
-                        if "settles" in v]) != 1:
+                        if "settles" in v]) != 2:
             errors += fail(f"settle of a company with nothing standing wrote again: {text!r}")
         # the gone company's doubt, settled: its board is held for nobody now
-        box.run("settle", "--id", "gone-co", "--why", "the owner: the record was a duplicate",
-                "--by", LABEL)
+        on_his_word("gone-co", "greenhouse/goneco", "the owner: the record was a duplicate")
         code, text, _wl, rows_h = box.plan(_wb_results({"heir-co": one(
             "heir-co", "greenhouse", "goneco", element="iframe")}), name="worklist-heir-2.json")
         if ((rows_h or {}).get("heir-co") or {}).get("action") != "WIRE":

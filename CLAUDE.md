@@ -2577,7 +2577,8 @@ round.
     python3 scripts/wire_found.py plan --results ... --doubts doubts.json --by agent:<label> --out <scratch>/worklist-2.json
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label>            # a look
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label> --write --expect <code>
-    python3 scripts/wire_found.py settle --id <company> --why "<the owner's words>" --by agent:<label>   # only on his word
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<the owner's words>" --by agent:<label>   # only on his word; a look
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "..." --by agent:<label> --write --expect <code>
 
 - **`plan` is the only step on the network, and it freezes a worklist.** It
   reads `find_site_boards.py` results (several files are pooled: a plain read
@@ -2747,10 +2748,20 @@ round.
   ruling, and a row filed after a doubt says "his ruling on this row in
   Boards we found settles it" of itself. "Wired before the reader's doubt
   was kept" is said only of a doubt the same run kept. On his word,
-  `settle` adds one journalled record (`{"<id>@<when>~settled": {id,
+  `settle` adds one journalled record (`{"<id>@<when>~settled": {id, board,
   settles: [keys], why, by, on, at}}`) that settles the company's standing
-  doubts for every reader (plan, apply, `held_for_the_owner`); admin_undo.py
-  takes it back. A settled doubt given again is not kept again, never called
+  doubts ABOUT THE ONE BOARD his words are about (`--board`, as the plan
+  prints it, compared by `board_key`; `-` names the doubts that name no
+  board) for every reader (plan, apply, `held_for_the_owner`); admin_undo.py
+  takes it back. Without `--write` it is a look: it lists the doubts it
+  would settle and every other standing doubt of the company it leaves
+  standing, and prints a code, which `--write --expect` must quote, as in
+  apply (the code covers the company, the board, the doubts and his words).
+  It refuses a doubt whose company has its row on his desk (reach `row`):
+  his own ruling on that card settles it. (Blind review, 2026-11-21: `settle
+  --id` settled every standing doubt of the company - one about a board
+  nobody had shown him, which the next plan wired, and one behind the card
+  he settles it from.) A settled doubt given again is not kept again, never called
   standing, and tells nobody anything. A board a door FILED in his queue
   (`filed`) is held by every later plan too, with its doubt; a row an older
   finder left may still be answered by the two checks. A SKIP made after
@@ -2927,7 +2938,8 @@ round.
   states a name the row goes by, so it waits for him to refuse it or for a
   person to put the slug on file. Also his: a doubt no ruling of his
   can reach (an older ruling, a company on a board, one merged away) holds
-  its board until he is told and answers - `settle` writes his answer; and a
+  its board until he is told and answers - `settle` writes his answer, about
+  the one board he answered about; and a
   board refused for one company is now SKIP refused for every company that
   names it, the group's own record included, until he says otherwise.
   Giants on readers that do read the whole board are still read in full

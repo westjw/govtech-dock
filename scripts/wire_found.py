@@ -5,7 +5,8 @@
     python3 scripts/wire_found.py plan --results ... --doubts doubts.json --by agent:<label> --out worklist-2.json
     python3 scripts/wire_found.py apply worklist.json --by agent:<label>            # look only
     python3 scripts/wire_found.py apply worklist.json --by agent:<label> --write --expect <code>
-    python3 scripts/wire_found.py settle --id <company> --why "<the owner's words>" --by agent:<label>
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<the owner's words>" --by agent:<label>   # a look
+    python3 scripts/wire_found.py settle ... --write --expect <code>
 
 WHY THIS EXISTS. On 2026-11-18 the crawl read postings from about a quarter of
 the companies on the board. Of the rest, roughly a thousand have a careers
@@ -90,8 +91,8 @@ are not apply's to write: `plan --doubts` kept them before its first
 request (one journalled addition to data/board_doubts.json, and their words
 onto the rows already waiting, in entries the journal's runaway rule takes),
 so no worklist, earlier or later, and no failure of this plan can wire past
-one. `settle` writes the owner's word that settles a company's doubts - only
-on his word.
+one. `settle` writes the owner's word that settles a company's doubts about
+the one board his words were about - only on his word, and a look first.
 
 Postings do not appear when this runs. The nightly crawl reads the new boards
 and the site follows it.
@@ -106,6 +107,7 @@ import json
 import os
 import pathlib
 import re
+import shlex
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -156,7 +158,8 @@ WAITING = board_proposals.WAITING
 # plan holds such a company, and every apply of any worklist leaves its WIRE
 # row alone, until the owner rules on the company in Boards we found after the
 # doubt was kept, or it is settled on his word: `settle` adds a record
-# {"<company id>@<when>~settled": {id, settles: [keys], why, by, on, at}}
+# {"<company id>@<when>~settled": {id, board, settles: [keys], why, by, on,
+# at}}, settling only the doubts about the board his words were about
 # (board_proposals.standing_doubts). No file is no doubts.
 DOUBTS = board_proposals.DOUBTS
 DOUBT_ACTION = "reader-doubt"
@@ -2707,19 +2710,50 @@ def cmd_apply(a) -> int:
     return 0
 
 
+def settle_board(given: str) -> tuple | None:
+    """(type, ref) of the board `settle --board` names, as the door writes a
+    board ("greenhouse/acme", "workday/<tenant>/<pod>/<site>"; doubt_board's
+    reading), or (None, None) for "-": the doubts that name no board. None
+    when it is neither."""
+    given = str(given or "").strip()
+    if given == "-":
+        return None, None
+    kind, ref = doubt_board({"board": given})
+    return (kind, ref) if kind else None
+
+
+def _doubt_line(d: dict) -> str:
+    return (f"  {str(d.get('board') or '-')[:44]:<46} kept {d.get('on') or '?'} by "
+            f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")
+
+
 def cmd_settle(a) -> int:
-    """Settle a company's standing readers' doubts, on the owner's word.
+    """Settle the standing readers' doubts about ONE board of a company, on
+    the owner's word.
 
     ON HIS WORD, AND ONLY THEN. A doubt no ruling of his in Boards we found
     can reach - an older ruling, a company already on a board, one merged
     away, one refused in Agent proposals, one with no row - holds its board
     until he is told and answers. This writes his answer down: one
     journalled ADDITION to data/board_doubts.json, {"<id>@<when>~settled":
-    {id, settles: [the keys of the company's standing doubts], why: his
-    words, by, on, at}}, which every reader of the file honours
+    {id, board, settles: [the keys of the doubts it settles], why: his words,
+    by, on, at}}, which every reader of the file honours
     (board_proposals.standing_doubts) - this door, discovery and
     wire_embedded.py alike. It rewrites no doubt; admin_undo.py takes it
     back, and the doubts then stand again.
+
+    AND ONLY WHAT HIS WORDS WERE ABOUT (blind review, 2026-11-21). It settled
+    every standing doubt of the company: a doubt about greenhouse/settleco,
+    which he had answered, and one a later plan kept about lever/settlecob,
+    which nobody had shown him - and the next plan wired lever/settlecob. And
+    it settled a doubt whose row is on his desk, behind the card his own
+    ruling settles it from. So `--board` names the board his words are
+    about, as the plan and the look print it (`-`: the doubts that name no
+    board), and only doubts about that board (board_key) are settled; a run
+    without --write is a look that lists them, and everything left standing,
+    and prints the code; --write needs --expect with that code, as apply's
+    does; and a doubt whose company has its row in Boards we found (reach
+    'row') is refused: his ruling there settles it.
     """
     by = (a.by or "").strip()
     if not by.startswith("agent:") or len(by) <= len("agent:") or "@" in by:
@@ -2731,42 +2765,99 @@ def cmd_settle(a) -> int:
         print("settle needs --id (the company) and --why (the owner's words, as he gave "
               "them). Nothing was written.")
         return 2
+    board = settle_board(a.board)
+    if board is None:
+        print("--board is the board the owner's words are about, as the plan prints it: "
+              "<type>/<ref> (greenhouse/acme; workday/<tenant>/<pod>/<site>), or - for the "
+              "doubts that name no board. Nothing was written.")
+        return 2
+    kind, ref = board
+    key_of = board_key(kind, ref) if kind else None
+    named = show(kind, ref) if kind else "no board"
     with admin.desk_lock():
         try:
             raw = board_proposals.strict(DOUBTS, admin.DATA)
             stores = read_stores()
+            by_id = {c["id"]: c for c in read_companies()}
         except board_proposals.Unreadable as exc:
             print(f"{exc}. Nothing was written.")
             return 2
         on_file = stores["doubts"].get(cid) or []
         ruling = stores["ruled"].get(cid)
-        standing = board_proposals.standing_doubts({cid: on_file}, stores["ruled"]).get(cid) or []
         if not on_file:
             print(f"no reader's doubt about {cid} is on file in data/{DOUBTS} - check the id. "
                   f"Nothing was written.")
             return 1
+
+        def about(d):
+            k, r = doubt_board(d)
+            return (board_key(k, r) == key_of) if k else key_of is None
+        mine = [d for d in on_file if about(d)]
+        everything = board_proposals.standing_doubts({cid: on_file}, stores["ruled"]).get(cid) \
+            or []
+        standing = [d for d in everything if about(d)]
+        others = [d for d in everything if not about(d)]
+        if not mine:
+            print(f"no reader's doubt about {cid} is on file about {named}; those on file are "
+                  f"about {', '.join(sorted({str(d.get('board') or '-') for d in on_file}))} - "
+                  f"give --board as the plan printed it. Nothing was written.")
+            return 1
         if not standing:
-            print(f"no reader's doubt about {cid} stands ({settled_words(on_file, ruling)}). "
-                  f"Nothing was written.")
+            print(f"no reader's doubt about {cid} stands about {named} "
+                  f"({settled_words(mine, ruling)})"
+                  + (f"; {many(len(others), 'other doubt')} about another board still "
+                     f"stand{'s' if len(others) == 1 else ''}" if others else "")
+                  + ". Nothing was written.")
             return 0
+        code_r, where = reach(by_id.get(cid), board_proposals.rows_by_id(stores["found"]).get(cid)
+                              or [], ruling, everything, on_file, _refusals(stores).get(cid))
+        if code_r == "row":
+            print(f"REFUSED, and nothing was written: {where}. `settle` writes the owner's word "
+                  f"only where no ruling of his can reach a doubt; this one is on his desk, and "
+                  f"his own card settles it.")
+            return 1
+        code = hashlib.sha256(json.dumps({
+            "id": cid, "board": key_of, "why": words, "by": by,
+            "settles": [[d["key"], str(d.get("why") or "")] for d in standing]},
+            sort_keys=True).encode()).hexdigest()[:16]
+        print(f"{'SETTLE' if a.write else 'WOULD SETTLE'} {many(len(standing), 'reader doubt')} "
+              f"about {cid} ({named}), on the owner's word: {words}")
+        for d in standing:
+            print(_doubt_line(d))
+        if others:
+            print(f"LEFT STANDING {len(others)} - about another board, which these words do not "
+                  f"settle; each holds its board until the owner answers about it too:")
+            for d in others:
+                print(_doubt_line(d))
+        if not a.write:
+            print("LOOKED ONLY. Nothing was written. To write exactly this:")
+            print(f"  python3 scripts/wire_found.py settle --id {shlex.quote(cid)} --board "
+                  f"{shlex.quote(str(a.board).strip())} --why {shlex.quote(words)} --by "
+                  f"{shlex.quote(by)} --write --expect {code}")
+            return 0
+        if (a.expect or "").strip() != code:
+            why = ("--write needs --expect with the code the look printed" if not
+                   (a.expect or "").strip() else
+                   "the doubts it would settle, or the words, are not the ones the look listed")
+            print(f"REFUSED, and nothing was written: {why}. Run the look again (without "
+                  f"--write), read it, and use the code it prints.")
+            return 1
         at = admin.now()
         key, n = f"{cid}@{at}~settled", 2
         while key in raw:
             key, n = f"{cid}@{at}~settled{n}", n + 1
-        rec = {"id": cid, "settles": [d["key"] for d in standing], "why": words, "by": by,
+        rec = {"id": cid, "board": show(kind, ref) if kind else None,
+               "settles": [d["key"] for d in standing], "why": words, "by": by,
                "on": dt.date.today().isoformat(), "at": at}
         bad = admin.save_decisions(
             DOUBTS, dict(raw, **{key: rec}), SETTLE_ACTION, by=by,
             why=(f"on the owner's word, {many(len(standing), 'reader doubt')} about {cid} "
-                 f"settled: {words}"))
+                 f"({named}) settled: {words}"))
         if bad:
             print(f"the doubts file would refuse it: {bad}")
             return 1
-    print(f"SETTLED {many(len(standing), 'reader doubt')} about {cid}, on the owner's word: "
-          f"{words}")
-    for d in standing:
-        print(f"  {str(d.get('board') or '-')[:44]:<46} kept {d.get('on') or '?'} by "
-              f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")
+    print(f"SETTLED {many(len(standing), 'reader doubt')} about {cid} ({named}), on the owner's "
+          f"word: {words}")
     print(f"written by {by}: data/{DOUBTS} and the journal (data/admin_journal.jsonl, with "
           f"data/admin_journal.archive.jsonl when it rolls). Commit them together; "
           f"admin_undo.py takes it back.")
@@ -2792,11 +2883,16 @@ def main(argv: list[str] | None = None) -> int:
     w.add_argument("--by", required=True, help="agent:<label>, the author on the journal")
     w.add_argument("--write", action="store_true")
     w.add_argument("--expect", help="the code the look printed; required with --write")
-    st = sub.add_parser("settle", help="settle a company's standing readers' doubts - only on "
-                                       "the owner's word")
+    st = sub.add_parser("settle", help="settle a company's standing readers' doubts about one "
+                                       "board - only on the owner's word; a look unless --write")
     st.add_argument("--id", required=True, help="the company the doubts are about")
+    st.add_argument("--board", required=True,
+                    help="the board his words are about, as the plan prints it (greenhouse/acme; "
+                         "- for the doubts that name no board): only doubts about it are settled")
     st.add_argument("--why", required=True, help="the owner's words, as he gave them")
     st.add_argument("--by", required=True, help="agent:<label>, the author on the journal")
+    st.add_argument("--write", action="store_true")
+    st.add_argument("--expect", help="the code the look printed; required with --write")
     a = ap.parse_args(argv)
     return {"plan": cmd_plan, "apply": cmd_apply, "settle": cmd_settle}[a.cmd](a)
 
