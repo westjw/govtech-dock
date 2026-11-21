@@ -9367,5 +9367,156 @@
   "via": "apple-touch-icon",
   "url": "https://cdn.prod.website-files.com/688c7b2d192925022748f4ee/69c418ed2b1214e802fdf2aa_argyle-favicon.png",
   "sha256": "e03c541d381fbe05450c63315a3aa4f2052b97f154cc40c074e01ffd7eddf350"
+ },
+ "zscaler": {
+  "ok": true,
+  "note": "https://www.zscaler.com/favicons/apple-touch-icon.png",
+  "site": "https://www.zscaler.com",
+  "on": "2026-11-21",
+  "via": "apple-touch-icon",
+  "url": "https://www.zscaler.com/favicons/apple-touch-icon.png",
+  "sha256": "197c1ce97b55bc1d25120d4897a9efa144ef60b72f88f58c5e455e655c0ddf0e"
+ },
+ "iceye": {
+  "ok": true,
+  "note": "https://www.iceye.com/hubfs/feature-images/homepage-feature-image.png",
+  "site": "https://www.iceye.com",
+  "on": "2026-11-21",
+  "via": "og-image",
+  "url": "https://www.iceye.com/hubfs/feature-images/homepage-feature-image.png",
+  "sha256": "548a213a154c257524f261ef366f4098722aaa05e2fdc5321ca5fb4d43e23292",
+  "review": true
+ },
+ "netskope": {
+  "ok": true,
+  "note": "https://www.netskope.com/wp-content/themes/netskope/images/v3/netskope-logo-reverse.svg",
+  "site": "https://www.netskope.com",
+  "on": "2026-11-21",
+  "via": "markup-logo",
+  "url": "https://www.netskope.com/wp-content/themes/netskope/images/v3/netskope-logo-reverse.svg",
+  "sha256": "8e0686135ec7cb7d0771d4e9374afc05027d7f466a2b37581f44ee2a4a8aaab8",
+  "review": true
+ },
+ "cribl-inc": {
+  "ok": true,
+  "note": "https://images.ctfassets.net/xnqwd8kotbaj/3etrKzhi0UCCFPdBY4JADk/66e1ff433356b509dca22e9a28d41687/cribl-logo.svg",
+  "site": "https://cribl.io/",
+  "on": "2026-11-21",
+  "via": "markup-logo",
+  "url": "https://images.ctfassets.net/xnqwd8kotbaj/3etrKzhi0UCCFPdBY4JADk/66e1ff433356b509dca22e9a28d41687/cribl-logo.svg",
+  "sha256": "826c408370032ac9d16351681ac33bcb4181a8fbecbf6781759952552aeaac07",
+  "review": true
+ },
+ "knowbe4": {
+  "ok": true,
+  "note": "https://www.knowbe4.com/hubfs/knowbe4-logo-blk-orange-cropped-rgb_fixed.svg",
+  "site": "https://www.knowbe4.com/",
+  "on": "2026-11-21",
+  "via": "markup-logo",
+  "url": "https://www.knowbe4.com/hubfs/knowbe4-logo-blk-orange-cropped-rgb_fixed.svg",
+  "sha256": "3fe470a5ae4e87648c610a65ceb29f4637dd41d2011edceaf0e6e432b87ee98d",
+  "review": true
+ },
+ "onestream": {
+  "ok": true,
+  "note": "https://www.onestream.com/apple-icon.png",
+  "site": "https://www.onestream.com",
+  "on": "2026-11-21",
+  "via": "apple-touch-icon",
+  "url": "https://www.onestream.com/apple-icon.png",
+  "sha256": "94a3a6bde69abb531a9c69a659d788fa09b7447e67fa0dcf8e257d8adc56abfb"
+ },
+ "sonicwall": {
+  "ok": true,
+  "note": "https://images-cms.sonicwall.com/v3/assets/blt281ecbfc2563bf9b/blt6cd34f954a2454fc/6812892c4433cb6a830d9592/Logo-SonicWa",
+  "site": "https://www.sonicwall.com/",
+  "on": "2026-11-21",
+  "via": "markup-logo",
+  "url": "https://images-cms.sonicwall.com/v3/assets/blt281ecbfc2563bf9b/blt6cd34f954a2454fc/6812892c4433cb6a830d9592/Logo-SonicWall-White-Registered.png",
+  "sha256": "2a68e4a1f39320bed3755750ace593694fbb58341a41cf35124691a696c7d2e0",
+  "review": true
+ },
+ "kev-group": {
+  "ok": true,
+  "note": "https://kevgroup.com/wp-content/uploads/2026/10/cropped-KEV_ProfilePic-192x192.png",
+  "site": "https://kevgroup.com/",
+  "on": "2026-11-21",
+  "via": "declared-icon",
+  "url": "https://kevgroup.com/wp-content/uploads/2026/10/cropped-KEV_ProfilePic-192x192.png",
+  "sha256": "3f3d0625a2e0155a27cff48c51d3f125fa2a836aff73fbdd2d67d184850cba17"
+ },
+ "lightcast": {
+  "ok": true,
+  "note": "https://lightcast.io/favicon.ico",
+  "site": "https://lightcast.io/",
+  "on": "2026-11-21",
+  "via": "declared-icon",
+  "url": "https://lightcast.io/favicon.ico",
+  "sha256": "13b02f98e38f744bb0e42864828d5351d2f70afd2c0cf717ae5e0a4a5a3ccd01"
+ },
+ "kami": {
+  "ok": true,
+  "note": "https://www.kamiapp.com/wp-content/uploads/2026/09/cropped-kami_512_square_favicon_clear-192x192.png",
+  "site": "https://www.kamiapp.com",
+  "on": "2026-11-21",
+  "via": "declared-icon",
+  "url": "https://www.kamiapp.com/wp-content/uploads/2026/09/cropped-kami_512_square_favicon_clear-192x192.png",
+  "sha256": "657d1d34b7b08ff05bfedc7205e6df785524cd519e1cf8e9bdf91e1a2120392f"
+ },
+ "top-hat": {
+  "ok": true,
+  "note": "https://tophat.com/wp-content/uploads/2017/05/tophat-300x300.png",
+  "site": "https://tophat.com",
+  "on": "2026-11-21",
+  "via": "declared-icon",
+  "url": "https://tophat.com/wp-content/uploads/2017/05/tophat-300x300.png",
+  "sha256": "b220b682fdfdc9cfa64648a769f6232b1c6a1268f4f5c4322e2a1084fffb8bbf"
+ },
+ "wasabi-technologies": {
+  "ok": true,
+  "note": "https://a-us.storyblok.com/f/1019449/890x509/d394d68961/meta-data-wasabi-logo.jpg",
+  "site": "https://wasabi.com/",
+  "on": "2026-11-21",
+  "via": "markup-logo",
+  "url": "https://a-us.storyblok.com/f/1019449/890x509/d394d68961/meta-data-wasabi-logo.jpg",
+  "sha256": "e15b15cc377120fb9e866adb20be3513f963a8dd35060dab17161c28d171383d",
+  "review": true
+ },
+ "metrc": {
+  "ok": true,
+  "note": "https://www.metrc.com/wp-content/uploads/2023/05/cropped-shield_favicon-192x192.png",
+  "site": "https://www.metrc.com",
+  "on": "2026-11-21",
+  "via": "declared-icon",
+  "url": "https://www.metrc.com/wp-content/uploads/2023/05/cropped-shield_favicon-192x192.png",
+  "sha256": "5b2971375ff622fe5abba17ce35f2afd4667e041784b3d33f3ebfcb9778bce92"
+ },
+ "edpuzzle": {
+  "ok": true,
+  "note": "https://image.edpuzzle.com/edpuzzle-logos/vertical-logo.png",
+  "site": "https://edpuzzle.com",
+  "on": "2026-11-21",
+  "via": "markup-logo",
+  "url": "https://image.edpuzzle.com/edpuzzle-logos/vertical-logo.png",
+  "sha256": "6402e203a085a21d10d7e176f3234ebca9369c1937a13ccb20e0a29898f44de5",
+  "review": true
+ },
+ "packback": {
+  "ok": true,
+  "note": "https://packback.co/apple-touch-icon.png",
+  "site": "https://packback.co",
+  "on": "2026-11-21",
+  "via": "apple-touch-icon",
+  "url": "https://packback.co/apple-touch-icon.png",
+  "sha256": "27b1031dc147793af2c36f8fbdd93b55e21a01bf2d323d3dd473c50d2c7cf08d"
+ },
+ "branching-minds": {
+  "ok": true,
+  "note": "https://www.branchingminds.com/hubfs/favicon.png",
+  "site": "https://www.branchingminds.com",
+  "on": "2026-11-21",
+  "via": "declared-icon",
+  "url": "https://www.branchingminds.com/hubfs/favicon.png",
+  "sha256": "9a2069319637c6a6712d54b7d55d9f320705cb0245f2735bd14f340aa96a329f"
  }
 }
