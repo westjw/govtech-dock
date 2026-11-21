@@ -545,7 +545,9 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     filed in Boards we found that he has not ruled on), `refused` (a board
     refused in either store: a Boards-we-found refusal by the board on its
     row, an Agent-proposals rejection by its ats_type/ats_ref), and `number`
-    (a record on a Workable account number nobody followed to a slug).
+    (a record on a Workable account number: by name where nobody followed
+    the number to a slug, under the slug's key where the two are known to
+    belong together).
 
     A WORKABLE BOARD HELD UNDER ITS ACCOUNT NUMBER is one board under two
     keys. Where the number is known to open under a slug - followed by this
@@ -556,7 +558,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     names it goes by - what that board stated, whose record or row it is -
     and a Workable board going by one of them (verify_boards.strict) is held
     beside it (named_holds). A record on file holding a number nobody
-    followed is held the same way, by its names.
+    followed is held the same way, by its names; one holding a number whose
+    slug is known is held under the slug's key.
     """
     keys, named = collections.defaultdict(list), []
     pairs = workable_pairs(companies, stores.get("found"))
@@ -606,10 +609,26 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                     f"{x['on']}" + (f": {x['why']}" if x["why"] else "") + "), and a board "
                     f"somebody said no to is not proposed again"), *(x.get("names") or []))
     for number, ids in sorted(numbers_on_file(companies or []).items()):
-        if pairs.get(number):
-            continue                    # the slug's holder, under its own key
+        slug = pairs.get(number)
         for cid in ids:
             names = strict_names(*their_names(by_id.get(cid)))
+            if slug:
+                # A RECORD ON A NUMBER WHOSE SLUG IS KNOWN HOLDS THE SLUG (blind
+                # review, 2026-11-21). It was skipped as "the slug's holder,
+                # under its own key", and nothing put it there for a pair said
+                # on file: Archi Co on workable/710855, a note saying that
+                # account opens under apply.workable.com/archico, and a
+                # duplicate record whose site links workable/archico was wired
+                # to the same account - where without the note it was held.
+                # (The wiring door also counts such a record among a board's
+                # holders, and says it in those words.)
+                keys[board_key("workable", slug)].append({
+                    "id": cid, "code": "number", "board": f"workable/{number}",
+                    "names": names, "words": (
+                        f"a record on file holds Workable account {number} "
+                        f"({name_of(cid)}), whose postings open under "
+                        f"apply.workable.com/{slug}: workable/{slug} is that record's board")})
+                continue
             if names:
                 named.append({"id": cid, "code": "number", "number": number, "names": names,
                               "board": f"workable/{number}", "words": (

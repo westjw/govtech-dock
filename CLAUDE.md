@@ -2662,7 +2662,13 @@ round.
   `apply`; a company the pre-pass skips keeps the number's key (and gains
   the slug's when the same number was resolved for another company), and a
   record on file holding a number resolved in the run holds the slug too
-  (in `apply` through the worklist's own `workable_numbers`). A board the
+  (in `apply` through the worklist's own `workable_numbers`), as does one
+  whose number and slug are said together on file (`workable_pairs`, below):
+  the door counts it among the slug's holders, in the plan and in apply,
+  and `held_boards` holds the slug under its key (code `number`) for
+  discovery and wire_embedded. Skipped as "the slug's holder" with nothing
+  putting it there, it held nothing, and a duplicate record linking the slug
+  was wired to the same account (blind review, 2026-11-21). A board the
   owner holds under a number (a doubt, a door-filed row, a refusal) is held
   under the slug's key too where the run resolved the number; where it did
   not - and for a record on file holding a number nobody in the run

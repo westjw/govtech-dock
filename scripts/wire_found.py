@@ -1381,8 +1381,11 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append(f"the same board was found for {' and '.join(twins[:4])} in this run")
     # A BOARD THE OWNER HOLDS FOR ANOTHER COMPANY'S ID is held here too: the
     # board of a standing doubt, or of an unruled row a door filed, under
-    # either Workable key (held_boards; this company's own are said below)
-    for words in dict.fromkeys(h["words"] for h in hits):
+    # either Workable key (held_boards; this company's own are said below).
+    # A record on a Workable number whose slug this is (`number`) is said
+    # once, as the board's holder above.
+    for words in dict.fromkeys(h["words"] for h in hits
+                               if not (h["code"] == "number" and h["id"] in holding)):
         doubts.append(words)
     for r in refused:
         doubts.append(f"an earlier board for this company was refused ({r['board']}, "
@@ -1642,13 +1645,18 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     ctx["held_boards"] = held_boards(ctx["doubts"], ctx["stores"], ctx["by_id"], ctx["slugs"],
                                      companies, ctx["refusals"])
     # a record on file holding a Workable NUMBER is the same board as the
-    # slug that number was followed to in this run
+    # slug that number was followed to in this run - or that the two are said
+    # together on file in the door's own words (board_proposals.workable_pairs:
+    # a note or a queue row). Followed only, a duplicate record linking the
+    # slug was wired to the same account whenever the note was all that tied
+    # them (blind review, 2026-11-21).
+    pairs = ctx["held_boards"]["pairs"]
     for c in companies:
         a = c.get("ats") or {}
-        got = ctx["slugs"].get(_number(a.get("ref"))) if numbered(a.get("type"), a.get("ref")) \
+        slug = _slug_of(pairs, _number(a.get("ref"))) if numbered(a.get("type"), a.get("ref")) \
             else None
-        if got and got[0]:
-            ctx["holders"][board_key("workable", got[0])].append(c["id"])
+        if slug:
+            ctx["holders"][board_key("workable", slug)].append(c["id"])
     named, claims = {}, collections.defaultdict(list)
     for cid, entry in results.items():
         named[cid] = boards_named(entry)
@@ -2324,11 +2332,14 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             doubt_words(d, ((held_for.get("reaches") or {}).get(cid) or (None, None))[1])
             for d in stands)
     # the board held for the owner under ANY company's id (held_boards): a
-    # refused one, a doubted one, a door-filed one - under either Workable key
+    # refused one, a doubted one, a door-filed one - under either Workable key.
+    # A record on file on a Workable number whose slug this is (`number`) is
+    # the board's holder, and is said as one below.
     owner_holds = held_for.get("boards") or {}
+    reading = {i for k in keys for i in holders.get(k, [])}
     for k in keys:
         for h in (owner_holds.get("keys") or {}).get(k) or []:
-            if h["id"] != cid:
+            if h["id"] != cid and not (h["code"] == "number" and h["id"] in reading):
                 return h["code"], (f"since the plan, {h['words']}"
                                    + (" - tell the owner" if h["code"] == "refused" else ""))
     # a Workable account held under a number the plan never followed, beside
@@ -2414,13 +2425,17 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
     rather than hold nothing."""
     s = _stores(stores)
     by_id = {c["id"]: c for c in companies}
-    # a record holding a Workable NUMBER the plan followed holds the slug too
+    # a record holding a Workable NUMBER the plan followed holds the slug too,
+    # and so does one whose number and slug are said together on file
+    # (workable_pairs; blind review, 2026-11-21)
     resolved = doc.get("workable_numbers") or {}
+    pairs = board_proposals.workable_pairs(companies, s["found"])
     numbers = numbers_on_file(companies)
     holders = holders_of(companies)
     for number, ids in numbers.items():
-        if resolved.get(number):
-            holders[board_key("workable", resolved[number])] += ids
+        slug = resolved.get(number) or pairs.get(number)
+        if slug:
+            holders[board_key("workable", slug)] += ids
     board = board if board is not None else read_board()
     shown = shown_now(board)
     wires = [r for r in doc["rows"] if r["action"] == "WIRE"]

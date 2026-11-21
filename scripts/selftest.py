@@ -37170,6 +37170,10 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         discovery and wire_embedded hold it (blind review, 2026-11-21);
       - a board held under its SLUG meets a board found by a NUMBER that
         resolves to it, under either key, in the plan and in apply;
+      - a record on file on a Workable number whose slug is said on file in
+        the door's own words (workable_pairs) is that slug's holder, in the
+        plan and in apply, and holds the slug for the other two doors
+        (held_board) - it held nothing (blind review, 2026-11-21);
       - a board refused under a number this run did not follow is taken to be
         any Workable board found for that company now: SKIP refused, "tell
         the owner", nothing read or asked.
@@ -37417,6 +37421,62 @@ def check_a_workable_account_is_held_under_either_key() -> int:
             errors += fail(f"a WIRE row for a company that goes by the name of an account held "
                            f"under a number nobody followed was not left alone in apply: "
                            f"{text[-400:]}")
+
+    # --- A RECORD ON A NUMBER WHOSE SLUG IS SAID ON FILE HOLDS THE SLUG --------
+    # (blind review, 2026-11-21: Pair Holder on workable/790790, its note
+    # saying in the door's own words that the account opens under
+    # apply.workable.com/pairslug; a duplicate record's site links
+    # workable/pairslug. Without the note it was held by name; with it,
+    # nothing held it - knowing more held less - and it was wired.)
+    def account_note(number, slug, name):
+        return (f"wired 2026-11-19: x.test/careers loads the board, and "
+                f"{wf.account_words({'account': number, 'ref': slug})}; the board names "
+                f"\"{name}\"; 2 postings read")
+    companies4 = [co("pair-holder", "Pair Holder", ats={"type": "workable", "ref": "790790"},
+                     ats_note=account_note("790790", "pairslug", "Pair Holder")),
+                  co("pair-dup", "Pair Holder Inc", also_known_as=["Pair Holder"]),
+                  co("late-holder", "Late Holder"),
+                  co("late-dup", "Late Holder Inc", also_known_as=["Late Holder"])]
+    BOARDS4 = {"workable/pairslug": (2, ["Pair Holder"]),
+               "workable/lateslug": (2, ["Late Holder"])}
+    with _WiringBox(companies4, BOARDS4) as box:
+        code, text, wl_l, rows_l = box.plan(_wb_results({
+            "late-dup": links("late-dup", "lateslug")}), name="worklist-late-pair.json")
+        if code != 0 or ((rows_l or {}).get("late-dup") or {}).get("action") != "WIRE":
+            return errors + fail(f"the fixture's Late Holder Inc does not plan WIRE on its own: "
+                                 f"{text[-300:]}")
+        code, text, _wl, rows4 = box.plan(_wb_results({
+            "pair-dup": links("pair-dup", "pairslug")}), name="worklist-pair.json")
+        r = (rows4 or {}).get("pair-dup") or {}
+        if r.get("action") != "HOLD" \
+                or "workable/pairslug is already on file as the board of Pair Holder" \
+                not in _wb_words(r) \
+                or "a record on file holds Workable account 790790" in _wb_words(r):
+            errors += fail(f"a Workable board a record holds by its account number, the two said "
+                           f"together on file, was planned {r.get('action')} for a duplicate "
+                           f"record, or its holder was not said once, as the board's holder: "
+                           f"{_wb_words(r)[:300]!r}")
+        cs = json.loads((box.tmp / "companies.json").read_text())
+        held = bp.held_boards_for_the_owner(box.tmp, cs)
+        hit = bp.held_board(held, "workable", "pairslug", "pair-dup",
+                            bp.their_names(next(c for c in cs if c["id"] == "pair-dup")))
+        if not hit or hit[0] != "number" or "Workable account 790790 (Pair Holder)" not in hit[1]:
+            errors += fail(f"discovery and wire_embedded's reader does not hold the slug of a "
+                           f"Workable number a record holds, the two said together on file: "
+                           f"{hit}")
+        # in apply: a record put on a number since the plan, its note saying the pair
+        box.by_hand(lambda by_id, cs_: by_id["late-holder"].update(
+            ats={"type": "workable", "ref": "791791"},
+            ats_note=account_note("791791", "lateslug", "Late Holder")))
+        code, text, _ = box.look(wl_l)
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Late Holder Inc ")), "") if "LEFT ALONE" in text \
+            else ""
+        if "LEFT ALONE 1" not in text \
+                or "workable/lateslug is now on file as the board of Late Holder" not in line:
+            errors += fail(f"a WIRE row whose board a record put on its Workable number since the "
+                           f"plan holds, the two said together on file, was not left alone as "
+                           f"that record's board: {text[-400:]}")
     return errors
 
 
