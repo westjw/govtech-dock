@@ -438,6 +438,7 @@ HINTS = {
     "pinpoint": ("pinpointhq.com",),
     "zohorecruit": ("zohorecruit.",),
     "comeet": ("comeet.",),
+    "jobvite": ("jobvite.com",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -708,6 +709,10 @@ BOARDS: list[_Pat] = (
         _here("comeet", r"COMEET\.init\(\s*\{([^{}]{0,3000})\}", _comeet_init),
         _here("comeet", rf"(?<![a-z0-9-])www\.comeet\.com/jobs/([A-Za-z0-9_-]{{1,80}})/({_UID})"
                         r"(?=[/\"'?#\s<]|$)", _comeet_hosted),
+        # a link to the career site or one of its postings; never its
+        # __assets__ (the first character cannot be an underscore)
+        _here("jobvite", r"(?<![a-z0-9.-])jobs\.jobvite\.com/([A-Za-z0-9][A-Za-z0-9_-]{0,80})"
+                         r"(?![A-Za-z0-9_-])"),
     ])
 
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
@@ -719,7 +724,7 @@ BOARDS: list[_Pat] = (
 _B = r"(?<![a-z0-9-])"
 ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
     (vendor, hint, re.compile(pat, re.I)) for vendor, hint, pat in (
-        ("jobvite", "jobvite.com", _B + r"jobvite\.com"),
+        ("jobvite-other", "jobvite.com", _B + r"jobvite\.com"),
         ("zohorecruit-other", "zohorecruit.", _B + r"zohorecruit\.(?:com|eu|in)"),
         ("ukg", "ultipro.", _B + r"ultipro\.(?:com|ca)"),
         ("ukg", "ukg.net", _B + r"ukg\.net"),
@@ -793,7 +798,8 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "paylocity-other": "paylocity", "adp-other": "adp",
                    "greenhouse-shortlink": "greenhouse", "teamtailor-other": "teamtailor",
                    "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
-                   "zohorecruit-other": "zohorecruit", "comeet-other": "comeet"}
+                   "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
+                   "jobvite-other": "jobvite"}
 
 _ANY_HINT = re.compile("|".join(sorted(
     {re.escape(h) for hs in HINTS.values() for h in hs}

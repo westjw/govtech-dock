@@ -427,7 +427,8 @@ def board_url(c: dict) -> str | None:
            "applicantpro": "https://{r}/jobs/",
            "teamtailor": "{r}",
            "pinpoint": "https://{r}.pinpointhq.com",
-           "zohorecruit": "{r}"}
+           "zohorecruit": "{r}",
+           "jobvite": "https://jobs.jobvite.com/{r}/jobs"}
     if kind == "workable" and isinstance(ref, str) and ref.strip().rstrip("/").isdigit():
         # A WORKABLE ACCOUNT NUMBER READS AND DOES NOT OPEN. The widget a
         # careers page embeds asks for the board by number, and the reader

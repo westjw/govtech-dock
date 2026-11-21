@@ -1204,13 +1204,57 @@ def _comeet(ref, out: dict) -> None:
         out["site"] = ats._text(company.get("website"))
 
 
+_JOBVITE_TITLE = re.compile(r"(.+?) Careers")
+
+
+def _jobvite(ref, out: dict) -> None:
+    # The list page names its career site only in its <title>, "<Name>
+    # Careers" - a pattern around a name, like gusto's - so it is believed
+    # only when a posting's own schema.org block names the same employer.
+    # They can disagree: Absolute's title says "Absolute Security" and its
+    # postings "Absolute Software" (2026-11-19), and such a board states
+    # nothing. A board with no posting to ask states nothing either.
+    _base, page = ats.jobvite_page(ref)
+    rows = ats.jobvite_rows(page)
+    out["n"] = len(rows)
+    out["hosts"] = {"jobs.jobvite.com"}
+    title = _inside(page, _TITLE)
+    m = _JOBVITE_TITLE.fullmatch(_clean(html_lib.unescape(title[0]))) if title else None
+    if not m:
+        out["how"] = "jobvite page title names no career site"
+        return
+    try:
+        posting = _board_page(rows[0][0])
+    except ats.AtsError as exc:
+        if "leads off" not in str(exc):
+            raise
+        # an embedded board's posting sends a browser to the employer's own
+        # page, as its list does; asked for itself, it answers
+        posting = _board_page(rows[0][0] + "?nl=1&fr=false")
+    org = None
+    for block in re.findall(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>',
+                            posting, re.S)[:3]:
+        try:
+            d = json.loads(block)
+        except ValueError:
+            continue
+        h = d.get("hiringOrganization") if isinstance(d, dict) else None
+        org = h.get("name") if isinstance(h, dict) else h if isinstance(h, str) else org
+    if _clean(org) != _clean(m.group(1)):
+        out["how"] = (f"jobvite page title says \"{_clean(m.group(1))}\" and its posting "
+                      f"names \"{_clean(org) or 'nobody'}\": they do not agree")
+        return
+    _state(out, [m.group(1)], "jobvite page title and a posting's hiringOrganization, "
+                             "stated by the career site")
+
+
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
            "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
            "gusto": _gusto, "paylocity": _paylocity, "icims": _icims,
            "hirebridge": _hirebridge, "applicantpro": _applicantpro,
            "teamtailor": _teamtailor, "pinpoint": _pinpoint,
-           "zohorecruit": _zohorecruit, "comeet": _comeet}
+           "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.

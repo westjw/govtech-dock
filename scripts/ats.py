@@ -3212,6 +3212,75 @@ def fetch_comeet(ref) -> list[dict]:
                                        if p)})
     return out
 
+# ---- jobvite: jobs.jobvite.com/<slug>
+#
+# The career site's list page, server-rendered with every opening on it:
+# <td class="jv-job-list-name"><a href="/<slug>/job/<id>"> and its location
+# cell. The ref is the slug. An embedded board's list page sends a browser on
+# to the employer's own careers page (OverDrive's, 2026-11-19); asked with
+# nl=1&fr=false it answers itself. A dead slug is sent to search.jobvite.com
+# (?invalid=1), a host that is not the board, so it is an error and never a
+# zero - and a list with no rows is an error too, until a real empty board
+# has been read. The XML feed beside it (app.jobvite.com) is not read: it
+# names each job's hiring manager, and its host answers 429 to a second ask.
+# Measured 2026-11-19 and 11-21: Gigamon 22, Absolute 18, Uplight 5,
+# OverDrive 5.
+
+_JOBVITE_SLUG = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,80}")
+# one row per opening; a layout may put cells between the name and the place
+# (OverDrive's has the job's type there)
+_JOBVITE_TR = re.compile(r"<tr\b[^>]*>(.*?)</tr>", re.S)
+_JOBVITE_NAME = re.compile(
+    r'<td class="jv-job-list-name">\s*<a href="(/[A-Za-z0-9_-]+/job/[A-Za-z0-9]{5,16})"[^>]*>'
+    r'(.*?)</a>', re.S)
+_JOBVITE_WHERE = re.compile(r'<td class="jv-job-list-location">(.*?)</td>', re.S)
+
+
+def jobvite_page(ref) -> tuple[str, str]:
+    """(the list's address, the list page), or AtsError."""
+    slug = _text(ref)
+    if not _JOBVITE_SLUG.fullmatch(slug):
+        raise AtsError(f"not a jobvite career site: {ref!r}")
+    base = f"https://jobs.jobvite.com/{slug}/jobs"
+    try:
+        return base, _page(base, same_host=True).text or ""
+    except AtsError as exc:
+        if "leads off" not in str(exc):
+            raise
+    # an embedded board's list, asked for itself; a dead slug leaves the host
+    # this way too, and is an error
+    return base, _page(base + "?nl=1&fr=false", same_host=True).text or ""
+
+
+def _jv_text(raw: str) -> str:
+    return _text(html_lib.unescape(re.sub(r"<[^>]+>", " ", raw or "")))
+
+
+def jobvite_rows(page: str) -> list[tuple[str, str, str]]:
+    """(url, title, location) per opening on a list page, or AtsError."""
+    rows = []
+    for tr in _JOBVITE_TR.findall(page or ""):
+        name, where = _JOBVITE_NAME.search(tr), _JOBVITE_WHERE.search(tr)
+        if name and _jv_text(name.group(2)):
+            rows.append(("https://jobs.jobvite.com" + name.group(1), _jv_text(name.group(2)),
+                         _jv_text(where.group(1)) if where else ""))
+    if not rows:
+        raise AtsError("jobvite list page carried no openings (an empty board has not "
+                       "been seen, so this is not read as a zero)")
+    return rows
+
+
+def fetch_jobvite(ref) -> list[dict]:
+    _base, page = jobvite_page(ref)
+    out = [{"title": title,
+            # 'Dallas, Texas', or '2 Locations' where a job is open in several
+            "location": re.sub(r"\s*,\s*", ", ", where),
+            "url": url} for url, title, where in jobvite_rows(page)]
+    if FETCH_DETAILS:
+        # the ad and any stated pay are each posting's schema.org block
+        _details(out, lambda r: _schema_posting(r["url"]))
+    return out
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -3238,6 +3307,7 @@ FETCHERS = {
     "pinpoint": fetch_pinpoint,
     "zohorecruit": fetch_zohorecruit,
     "comeet": fetch_comeet,
+    "jobvite": fetch_jobvite,
 }
 
 

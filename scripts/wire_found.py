@@ -234,7 +234,7 @@ VENDOR_AS = frozenset({"href"})
 # names no board either.
 OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-other"},
              "pinpoint": {"pinpoint-other"}, "zohorecruit": {"zohorecruit-other"},
-             "comeet": {"comeet-other"}}
+             "comeet": {"comeet-other"}, "jobvite": {"jobvite-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -1343,9 +1343,23 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                       + "; ".join(unusable[:3]) + ")")
     extra = also_seen(entry, keys, website, kind)
     if extra.get("elsewhere"):
-        doubts.append(f"their own site also names {' and '.join(extra['elsewhere'])}, a job "
-                      f"platform the crawl cannot read, so which board they hire through "
-                      f"today is not settled")
+        # A PLATFORM WE READ, in a form that names no board (a widget, a
+        # script, a short link), is not "a platform the crawl cannot read":
+        # it is said for what it is (blind review, 2026-11-21: Powerfleet's
+        # card said so of Teamtailor's own pictures).
+        import find_site_boards as _fsb
+        forms = [v for v in extra["elsewhere"] if v in _fsb._NO_BOARD_IN_IT]
+        unread = [v for v in extra["elsewhere"] if v not in forms]
+        if unread:
+            doubts.append(f"their own site also names {' and '.join(unread)}, a job "
+                          f"platform the crawl cannot read, so which board they hire through "
+                          f"today is not settled")
+        if forms:
+            doubts.append(f"their own site also loads "
+                          f"{' and '.join(_fsb._NO_BOARD_IN_IT[v] for v in forms)} in a form "
+                          f"that names no board ({', '.join(forms)}): a widget or a link of "
+                          f"another account names none either, so which board they hire "
+                          f"through today is not settled")
     doubts += ownership_on_file(c)
     note = str(c.get("ats_note") or "").strip()
     if note:

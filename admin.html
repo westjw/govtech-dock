@@ -5183,7 +5183,8 @@ function boardUrlFor(f, c){
            teamtailor:r,
            pinpoint:'https://'+r+'.pinpointhq.com',
            zohorecruit:r,
-           comeet:(/^https:/.test(r) ? r : '#')})[f.type] || '#';
+           comeet:(/^https:/.test(r) ? r : '#'),
+           jobvite:'https://jobs.jobvite.com/'+encodeURIComponent(r)+'/jobs'})[f.type] || '#';
 }
 
 RENDER.placement = c => {

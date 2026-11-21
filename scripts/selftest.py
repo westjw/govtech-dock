@@ -5236,6 +5236,11 @@ _ID_COMEET_FEED = json.dumps([{"uid": "E1.A52", "name": "Sales Development Rep -
                                "company_name": "Bond Sports",
                                "url_comeet_hosted_page": "https://www.comeet.com/jobs/bondsports/"
                                                          "F7.009/sdr/E1.A52"}])
+_ID_JOBVITE_LIST = ('<title>Gigamon Careers</title><table class="jv-job-list"><tr>'
+                    '<td class="jv-job-list-name"><a href="/gigamon/job/o3YVAfwg">Regional Sales '
+                    'Director - SLED</a></td><td class="jv-job-list-location">Dallas, Texas</td></tr></table>')
+_ID_JOBVITE_POSTING = ('<script type="application/ld+json">{"@type": "JobPosting", '
+                       '"hiringOrganization": "Gigamon"}</script>')
 _ID_TEAMTAILOR = json.dumps({
     "version": "https://jsonfeed.org/version/1.1", "title": "Fonroche Lighting America",
     "home_page_url": "https://fonrochelightingamerica.na.teamtailor.com/jobs",
@@ -5511,6 +5516,7 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
     PP = "https://clearview.pinpointhq.com"
     ZR = "https://redmane.zohorecruit.com/jobs/Careers"
     CM = "https://www.comeet.com/jobs/bondsports/F7.009"
+    JV, JV_POST = "https://jobs.jobvite.com/gigamon/jobs", "https://jobs.jobvite.com/gigamon/job/o3YVAfwg"
     CM_API = ("https://www.comeet.co/careers-api/2.0/company/F7.009/positions"
               f"?token={_CM_TOKEN}&details=true")
 
@@ -5567,6 +5573,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         ("zohorecruit", ZR, "RedMane Technology", {ZR: _ID_ZOHO}, None, ["RedMane Technology"], 1, ZR),
         ("comeet", CM, "Bond Sports", {CM: _ID_COMEET_PAGE, CM_API: _ID_COMEET_FEED}, None,
          ["Bond Sports"], 1, CM),
+        ("jobvite", "gigamon", "Gigamon", {JV: _ID_JOBVITE_LIST, JV_POST: _ID_JOBVITE_POSTING}, None,
+         ["Gigamon"], 1, JV_POST),
     ]
 
     keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
@@ -6175,7 +6183,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
                                     else TT if kind == "teamtailor"
                                     else "clearview" if kind == "pinpoint"
                                     else ZR if kind == "zohorecruit"
-                                    else CM if kind == "comeet" else "acme")
+                                    else CM if kind == "comeet"
+                                    else "gigamon" if kind == "jobvite" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -6519,8 +6528,8 @@ def check_a_stated_name_does_not_loosen_the_older_doors() -> int:
     # the strict test below
     named_since = {"ashby", "bamboohr", "breezy", "gem", "gusto", "icims", "jazzhr", "lever",
                    "paylocity", "recruitee", "rippling", "smartrecruiters",      # 2026-11-18
-                   "applicantpro", "comeet", "hirebridge", "pinpoint", "teamtailor",
-                   "zohorecruit"}                                                # 2026-11-21
+                   "applicantpro", "comeet", "hirebridge", "jobvite", "pinpoint",
+                   "teamtailor", "zohorecruit"}                                  # 2026-11-21
     if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or set(new) != named_since:
         errors += fail(f"the types judge() is forgiving on have changed: "
                        f"{sorted(vb._ALWAYS_NAMED)}, and the ones it is strict on are "
@@ -19228,6 +19237,114 @@ def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
     return errors
 
 
+def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
+    """Jobvite (2026-11-21): the career site's list page carries every opening
+    (a layout may put cells between a job's name and its place); an embedded
+    board's list and postings send a browser to the employer's own page, and
+    are asked for themselves (nl=1&fr=false); a dead slug leaves the host and
+    a list with no rows is an error, never a zero. The probe believes the
+    title's "<Name> Careers" only when a posting's own schema.org block names
+    the same employer - Absolute's do not agree, and state nothing."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import verify_boards as vb
+    errors = 0
+    base = "https://jobs.jobvite.com/acmegov/jobs"
+
+    def row(n, where="Dallas,\n  Texas", extra=""):
+        return (f'<tr>\n<td class="jv-job-list-name">\n<a href="/acmegov/job/oAbC{n}fwg">Role {n} '
+                f'&amp; Co</a>\n</td>{extra}\n<td class="jv-job-list-location">\n{where}\n</td>\n</tr>')
+
+    def page(rows, title="Acme Gov Careers"):
+        return (f"<html><head><title>{title}</title></head><body><table class=\"jv-job-list\">"
+                f"<tbody>{''.join(rows)}</tbody></table></body></html>")
+
+    def posting(org):
+        return ('<script type="application/ld+json">' + json.dumps(
+            {"@type": "JobPosting", "hiringOrganization": org}) + "</script>")
+
+    class R:
+        def __init__(self, text, url):
+            self.text, self.url, self.status_code, self.headers = text, url, 200, {}
+
+    asked = []
+
+    def serve(routes, away=()):
+        def fake(url, **kw):
+            asked.append((url, kw.get("same_host")))
+            if url in away:
+                raise ats.AtsError(f"{url} leads off to company.acmegov.example, which is not the board")
+            if url in routes:
+                return R(routes[url], url)
+            raise ats.AtsError(f"HTTP 404 for {url}")
+        return fake
+
+    keep = ats._page
+    tried: list = []
+    unseal = _sealed(ats, tried)
+    try:
+        ats._page = serve({base: page([row(1), row(2, "2 Locations", "\n<td>\nFull-Time\n</td>")])})
+        rows = ats.fetch_jobvite("acmegov")
+        if [(r["title"], r["location"]) for r in rows] != [("Role 1 & Co", "Dallas, Texas"),
+                                                            ("Role 2 & Co", "2 Locations")] \
+                or rows[0]["url"] != "https://jobs.jobvite.com/acmegov/job/oAbC1fwg":
+            errors += fail(f"jobvite: the rows are not what the list page published: {rows}")
+        if not all(same for _u, same in asked):
+            errors += fail(f"jobvite: the list was not asked on its own host: {asked}")
+        # an embedded board: the list leaves for the employer's page, and is
+        # asked for itself
+        asked.clear()
+        ats._page = serve({base + "?nl=1&fr=false": page([row(1)])}, away={base})
+        if len(ats.fetch_jobvite("acmegov")) != 1 or [u for u, _ in asked] != [base, base + "?nl=1&fr=false"]:
+            errors += fail(f"jobvite: an embedded board was not read as itself: {asked}")
+        for routes, away, why in (({}, {base, base + "?nl=1&fr=false"}, "a dead slug"),
+                                  ({base: page([])}, (), "a list with no rows"),
+                                  ({base: "<html>Page not found</html>"}, (), "another page")):
+            ats._page = serve(routes, away)
+            try:
+                ats.fetch_jobvite("acmegov")
+                errors += fail(f"jobvite: {why} was read as a board with nothing open")
+            except ats.AtsError:
+                pass
+        asked.clear()
+        for ref in ("_assets_", "acme/../x", "", None, "a b"):
+            try:
+                ats.jobvite_page(ref)
+                errors += fail(f"jobvite: {ref!r} was taken as a career site")
+            except ats.AtsError:
+                pass
+        if asked:
+            errors += fail(f"jobvite: a ref that is not a slug was asked for: {asked}")
+        # the probe: the title and a posting agree, or nothing is stated
+        p1 = "https://jobs.jobvite.com/acmegov/job/oAbC1fwg"
+        for org, routes, away, want in (
+                ({"@type": "Organization", "name": "Acme Gov"}, {}, (), ["Acme Gov"]),
+                ("Acme Gov", {}, (), ["Acme Gov"]),
+                ({"name": "Acme Government Software"}, {}, (), []),
+                ({"name": "Acme Gov"}, {p1 + "?nl=1&fr=false": None}, {p1}, ["Acme Gov"])):
+            r_ = {base: page([row(1)]), p1: posting(org)}
+            for k, v in routes.items():
+                r_[k] = posting(org)
+            if away:
+                r_.pop(p1, None)
+            ats._page = serve(r_, away)
+            held = vb._board_page
+            vb._board_page = lambda url, head=0: ats._page(url, same_host=True).text
+            try:
+                said = vb.board_says("jobvite", "acmegov")
+            finally:
+                vb._board_page = held
+            if said["names"] != want or said["stated"] != bool(want):
+                errors += fail(f"jobvite: the probe stated {said['names']} where the title says "
+                               f"Acme Gov and a posting names {org!r}: wanted {want} ({said['how']})")
+    finally:
+        ats._page = keep
+        unseal()
+    if tried:
+        errors += fail(f"jobvite: a read went round the stub, to the network: {tried[:3]}")
+    return errors
+
+
 def check_a_long_location_is_published_short() -> int:
     """A posting never ships a location longer than LOCATION_CHARS.
 
@@ -25988,6 +26105,9 @@ SITE_BOARD_FORMS = [
      "?token=0123456789ABCDEF0123456789ABCD&details=true"),
     ('<a href="https://www.comeet.com/jobs/penlink/E5.002">Careers</a>',
      "comeet", "https://www.comeet.com/jobs/penlink/E5.002", "https://www.comeet.com/jobs/penlink/E5.002"),
+    # Gigamon links its Jobvite career site; OverDrive frames it (seen 2026-11-19)
+    ('<a href="https://jobs.jobvite.com/gigamon/jobs">Careers</a>',
+     "jobvite", "gigamon", "https://jobs.jobvite.com/gigamon/jobs"),
     ('<script>fetch("https://www.comeet.co/careers-api/2.0/company/38.005/positions?details=true'
      '&token=0123456789ABCDEF0123456789ABCD")</script>',
      "comeet", "38.005|0123456789ABCDEF0123456789ABCD",
@@ -26009,6 +26129,8 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://app.pinpointhq.com/">Pinpoint</a>',             # the vendor's app
     '<a href="https://nexgenam.zohorecruit.com">Jobs</a>',            # a host with no page name
     '<script src="//www.comeet.co/careers-api/api.js"></script>',     # the widget's script
+    '<script src="https://jobs.jobvite.com/__assets__/scripts/careersite/public/iframe.js"></script>',
+    '<a href="https://app.jobvite.com/j?cj=ocVbwfwy&s=Career_Site">Apply</a>',  # a job link, no site
     '<a href="https://support.comeet.co/section/terms-and-policies/">Terms</a>',  # vendor's
     '<a href="https://apply.workable.com/j/0A1B2C3D4E">Apply</a>',   # a posting's short link
     '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
@@ -26285,12 +26407,14 @@ def check_a_board_counts_only_when_their_own_site_points_to_it() -> int:
         errors += fail(f"an American board linked beside a European one is read as "
                        f"{[(f['type'], f['ref']) for f in found]}")
     # what nothing can read is counted, not dropped and not called a board
-    _, rest = fsb.sightings('<a href="https://jobs.jobvite.com/civicplus/search">Jobs</a>'
+    # (Jobvite was this example until it had a reader, 2026-11-21; Dayforce
+    # has none)
+    _, rest = fsb.sightings('<a href="https://jobs.dayforcehcm.com/en-US/acmegov/CANDIDATEPORTAL">Jobs</a>'
                             '<iframe src="https://acme.applicantstack.example/x/openings"></iframe>',
                             here, home_site)
     vendors = {(r["vendor"], r["element"]) for r in rest}
-    if ("jobvite", "href") not in vendors:
-        errors += fail(f"a careers link to Jobvite is not tallied as a platform nothing reads: {vendors}")
+    if ("dayforce", "href") not in vendors:
+        errors += fail(f"a careers link to Dayforce is not tallied as a platform nothing reads: {vendors}")
     if not any(v.startswith("other:") and el == "iframe" for v, el in vendors):
         errors += fail(f"a job frame from a host nothing knows is not tallied at all: {vendors}")
     # WHAT A BROWSER SAW. The first rendered run read "cdn-cgi" as JustFOIA's
@@ -37908,7 +38032,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "gem": "acme", "hirebridge": "7724", "applicantpro": "casellejobs.applicantpro.com",
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
-        "comeet": "https://www.comeet.com/jobs/acme/F7.009",
+        "comeet": "https://www.comeet.com/jobs/acme/F7.009", "jobvite": "acme",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -37930,7 +38054,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "adp with its ccId": {"type": "adp", "ref": "cbabd1ae|9200_000002"},
         "jibe as an address": {"type": "jibe", "ref": "https://careers.acme.test"},
         "no ref": {"type": "greenhouse", "ref": None},
-        "a type nothing reads": {"type": "jobvite", "ref": "acme"},
+        "a type nothing reads": {"type": "paycom", "ref": "acme"},
     })
     site_ = "https://www.acme.test"
     number = {"type": "workable", "ref": "710855"}
@@ -37991,6 +38115,7 @@ console.log(JSON.stringify(out));"""
         ("pinpoint", "https://acme.pinpointhq.com"),
         ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers"),
         ("comeet", "https://www.comeet.com/jobs/acme/F7.009"),
+        ("jobvite", "https://jobs.jobvite.com/acme/jobs"),
         ("paylocity", PAY),
         ("greenhouse", "https://job-boards.greenhouse.io/acme"),
         ("no ref", "#"),
@@ -51201,6 +51326,7 @@ def main() -> int:
     errors += check_pinpoint_reads_what_the_board_shows()
     errors += check_zoho_recruit_reads_only_the_open_jobs_its_page_carries()
     errors += check_comeet_reads_the_board_its_company_page_hands_out()
+    errors += check_jobvite_reads_its_list_page_and_names_it_twice()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()
