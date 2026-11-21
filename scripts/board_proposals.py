@@ -323,8 +323,17 @@ def standing_doubts(grouped: dict, ruled: dict, found=None) -> dict:
 def held_for_the_owner(data=None) -> dict:
     """{company id: why it is the owner's} for every company a door must not
     wire a board for: a reader's doubt that stands, a row a door filed in
-    Boards we found that he has not ruled on, or a board refused in either
-    store (Boards we found, Agent proposals).
+    Boards we found that he has not ruled on, a board refused in either
+    store (Boards we found, Agent proposals), or a board proposal of its
+    still pending in Agent proposals.
+
+    PENDING IS HIS TOO (blind review, 2026-11-21). The wiring door holds a
+    company whose board question is waiting in Agent proposals, and the
+    weekly discovery sweep probed such a company and wrote the board it
+    found: Pend Co's "claimed by more than one company - an acquisition to
+    settle". On file that day: board:icsolutions, pending since 2026-09-02,
+    with ICSolutions `unknown` and a website, so the sweep would have probed
+    it when it came due.
 
     `data` is the directory the CALLER writes - discovery passes its own, so
     the files it reads are the files beside the companies.json it writes. A
@@ -348,6 +357,9 @@ def held_for_the_owner(data=None) -> dict:
         if key.startswith("board:") and p.get("status") == "rejected":
             out.setdefault(p.get("id") or key.split(":", 1)[1],
                            "a board was refused for it in Agent proposals")
+        elif key.startswith("board:") and p.get("status") == "pending":
+            out.setdefault(p.get("id") or key.split(":", 1)[1],
+                           "a board proposal for it waits in Agent proposals")
     return out
 
 
@@ -549,7 +561,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     of a reader's doubt that stands), `queued` (the board of a row a door
     filed in Boards we found that he has not ruled on), `refused` (a board
     refused in either store: a Boards-we-found refusal by the board on its
-    row, an Agent-proposals rejection by its ats_type/ats_ref), and `number`
+    row, an Agent-proposals rejection by its ats_type/ats_ref), `waiting` (a
+    board proposal still pending in Agent proposals), and `number`
     (a record on a Workable account number: by name where nobody followed
     the number to a slug, under the slug's key where the two are known to
     belong together).
@@ -605,6 +618,18 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                 f"{r['filed'].get('by') or '?'} with its doubt: "
                 f"\"{str(r.get('identity_why') or 'none recorded')[:240]}\"; a board filed "
                 f"there is his to settle"), r.get("board_calls_itself"), r.get("name"))
+    # a board proposal still pending in Agent proposals is his to settle, for
+    # whatever company's site names the board (blind review, 2026-11-21)
+    for key, p in sorted((stores.get("proposals") or {}).items()):
+        if isinstance(p, dict) and key.startswith("board:") and p.get("status") == "pending" \
+                and p.get("ats_type") and p.get("ats_ref") is not None:
+            cid = p.get("id") or key.split(":", 1)[1]
+            hold(cid, "waiting", p["ats_type"], p["ats_ref"], (
+                f"{show(p['ats_type'], p['ats_ref'])} is waiting in Agent proposals for "
+                f"{name_of(cid, p.get('name'))}, proposed {str(p.get('at') or '?')[:10]} by "
+                f"{p.get('by') or '?'}" + (f" (\"{str(p.get('why')).strip()[:200]}\")"
+                                           if str(p.get("why") or "").strip() else "")
+                + "; a board waiting on a person is his to settle"), p.get("name"))
     for cid, refs in sorted((refusals_ if refusals_ is not None else refusals(stores)).items()):
         for x in refs:
             if x.get("key") and x.get("type"):

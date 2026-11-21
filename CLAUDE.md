@@ -2781,9 +2781,10 @@ round.
   next plan" unless it is; the plan's last lines say nothing is wired or
   filed until the worklist is applied with --write.
 - **A board the owner holds is held under any company's id** - current or
-  merged away - whatever it is held by: the board of a standing doubt, or
-  of an unruled row a door filed in Boards we found, is HOLD with the words
-  quoted, and a board refused in either store (a Boards-we-found refusal by
+  merged away - whatever it is held by: the board of a standing doubt, of
+  an unruled row a door filed in Boards we found, or of a board proposal
+  still pending in Agent proposals (`waiting`, blind review of 2026-11-21),
+  is HOLD with the words quoted, and a board refused in either store (a Boards-we-found refusal by
   the board on its row, an Agent-proposals rejection by its ats_type/ats_ref)
   for a record merged away, or for a record whose name this company's
   also_known_as carries (one company on two records), is SKIP refused, "tell
@@ -2904,8 +2905,11 @@ round.
 - **No other door wires a company the owner holds.**
   `board_proposals.held_for_the_owner()` is the one reader: a reader's doubt
   that stands (`data/board_doubts.json`), a row a door filed in Boards we
-  found that he has not ruled on, or a board refused in either store (Boards
-  we found, Agent proposals). `discover_ats.py` asks it before its first
+  found that he has not ruled on, a board refused in either store (Boards
+  we found, Agent proposals), or a board proposal still pending in Agent
+  proposals (the sweep wrote a pending company's board, where the wiring
+  door held it: blind review, 2026-11-21; on file then, ICSolutions,
+  pending since 2026-09-02). `discover_ats.py` asks it before its first
   probe - the weekly sweep and an `--only` list alike - and prints only a
   count (the workflow's log is public); `wire_embedded.py` asks it before it
   sorts, wires or queues anything, and leaves every row of such a company
@@ -2914,7 +2918,8 @@ round.
   not write a board it found - in the sweep, an `--only` list or `--confirm`
   - when the owner holds that board under ANY record's id (a doubt about a
   company merged away, its door-filed row, a refusal under another id in
-  either store, a Workable account under either key where known, or one held
+  either store, a board pending in Agent proposals for another record
+  (`waiting`), a Workable account under either key where known, or one held
   under a number nobody followed whose name the company goes by); it logs
   "a board was found and is held for the owner under another record, so it
   was not written" and prints only a count. wire_embedded.triage leaves such
