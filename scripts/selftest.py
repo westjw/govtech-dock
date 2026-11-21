@@ -5216,6 +5216,16 @@ _HB_ROW = {"joblistid": "612567", "jobtitle": "Account Manager - Public Safety",
            "companyname": "CentralSquare Technologies",
            "companyurl": "https://www.centralsquare.com/"}
 _ID_HIREBRIDGE = json.dumps(json.dumps([_HB_ROW]))
+_ID_TEAMTAILOR = json.dumps({
+    "version": "https://jsonfeed.org/version/1.1", "title": "Fonroche Lighting America",
+    "home_page_url": "https://fonrochelightingamerica.na.teamtailor.com/jobs",
+    "feed_url": "https://fonrochelightingamerica.na.teamtailor.com/jobs.json",
+    "items": [{"id": "c1c8", "title": "Municipal Sales Representative",
+               "url": "https://fonrochelightingamerica.na.teamtailor.com/jobs/732110-municipal",
+               "date_published": "2026-11-04T10:07:38-06:00", "content_html": "<p>x</p>",
+               "_jobposting": {"hiringOrganization": {"name": "Fonroche Lighting America",
+                                                      "sameAs": "https://fonrochelightingamerica"
+                                                                ".na.teamtailor.com"}}}]})
 _ID_APPLICANTPRO_PAGE = (
     "<script>if(typeof mountingData.courierCurrentRouteData === 'undefined') {\n"
     'mountingData.courierCurrentRouteData = {"domain_id":"1431","career_site_name":"Caselle",'
@@ -5477,6 +5487,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
     AP_HOST = "casellejobs.applicantpro.com"
     AP_PAGE, AP_FEED = f"https://{AP_HOST}/jobs/", f"https://{AP_HOST}/core/jobs/1431?getParams="
 
+    TT = "https://fonrochelightingamerica.na.teamtailor.com"
+
     def ap_routes(url):
         return (_ID_APPLICANTPRO_PAGE if url == AP_PAGE else
                 _ID_APPLICANTPRO_FEED if url.startswith(AP_FEED) else None)
@@ -5522,6 +5534,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         ("hirebridge", "7724", "CentralSquare Technologies", {HB_FEED: _ID_HIREBRIDGE}, None,
          ["CentralSquare Technologies"], 1, HB_FEED),
         ("applicantpro", AP_HOST, "Caselle", ap_routes, None, ["Caselle"], 1, AP_PAGE),
+        ("teamtailor", TT, "Fonroche Lighting America", {TT + "/jobs.json": _ID_TEAMTAILOR}, None,
+         ["Fonroche Lighting America"], 1, TT + "/jobs.json"),
     ]
 
     keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
@@ -6126,7 +6140,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
             try:
                 got = vb.board_says(kind, PAY if kind == "paylocity" else
                                     GUSTO if kind == "gusto" else "7724" if kind == "hirebridge"
-                                    else AP_HOST if kind == "applicantpro" else "acme")
+                                    else AP_HOST if kind == "applicantpro"
+                                    else TT if kind == "teamtailor" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -18507,6 +18522,150 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
     return errors
 
 
+def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
+    """Teamtailor (2026-11-21): the reader, and the two ways a career site is
+    found.
+
+    THE READER takes a site's origin and reads /jobs.json. On a domain of the
+    company's own the host cannot vouch for the vendor, so the BODY must: a
+    JSON Feed whose feed_url is on the host asked and whose every item carries
+    Teamtailor's _jobposting block - anything else is not a board. Places come
+    from every jobLocation, never one; a role is remote only when the site
+    says TELECOMMUTE; pay only from a filled baseSalary.
+
+    FOUND two ways: a link to <label>.teamtailor.com or <label>.na.teamtailor.com
+    (the region label is part of the address; Teamtailor's own hosts - tt, app,
+    scripts, ... - are never a site); and a site on the company's own domain,
+    which names no teamtailor.com host at all and is known by its assets on
+    teamtailor-cdn.com together with its rel=alternate feed <host>/jobs.rss,
+    filed as a link. A feed link alone is any blog's. And the board's own pages
+    showing its own pictures are not a second platform (Powerfleet's page 2).
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import find_site_boards as fsb
+    errors = 0
+    host = "careers.acmegov.example"
+    feed_url = f"https://{host}/jobs.json"
+
+    def item(n, **jp):
+        base = {"jobLocation": [{"address": {"addressLocality": "Coppell", "addressRegion": None,
+                                             "addressCountry": "US"}}],
+                "hiringOrganization": {"name": "Acme Gov"}}
+        base.update(jp)
+        return {"id": str(n), "url": f"https://{host}/jobs/{n}-role", "title": f"Role {n}",
+                "date_published": "2026-11-04T10:07:38-06:00", "content_html": "<p>Sell to cities.</p>",
+                "_jobposting": base}
+
+    def feed(items, **top):
+        d = {"version": "https://jsonfeed.org/version/1.1", "title": "Acme Gov",
+             "feed_url": feed_url, "items": items}
+        d.update(top)
+        return json.dumps(d)
+
+    asked = []
+
+    class R:
+        def __init__(self, text):
+            self.text, self.status_code, self.headers = text, 200, {}
+
+        def json(self):
+            return json.loads(self.text)
+
+    def serve(body):
+        def fake(url, **kw):
+            asked.append((url, kw.get("same_host")))
+            if url != feed_url:
+                raise ats.AtsError(f"HTTP 404 for {url}")
+            return R(body)
+        return fake
+
+    keep = ats._page
+    try:
+        two = item(2, jobLocation=[{"address": {"addressLocality": "Boise", "addressCountry": "US"}},
+                                   {"address": {"addressLocality": "Phoenix", "addressRegion": "AZ",
+                                                "addressCountry": "US"}}],
+                   jobLocationType="TELECOMMUTE",
+                   baseSalary={"currency": "USD", "value": {"unitText": "YEAR", "minValue": 80000,
+                                                            "maxValue": 95000}})
+        ats._page = serve(feed([item(1), two, dict(item(3), title=" ")]))
+        rows = ats.fetch_teamtailor(f"https://{host}/")
+        one = rows[0] if rows else {}
+        if len(rows) != 2 or one.get("location") != "Coppell, US" or one.get("mode") is not None \
+                or one.get("posted") != "2026-11-04" or "Sell to cities" not in one.get("jd", "") \
+                or one.get("comp") is not None:
+            errors += fail(f"teamtailor: the rows are not what the feed published: {rows}")
+        if len(rows) == 2 and (rows[1]["location"] != "Boise, US; Phoenix, AZ, US"
+                               or rows[1]["mode"] != "remote"
+                               or (rows[1]["comp"] or {}).get("max") != 95000):
+            errors += fail(f"teamtailor: every place, the remote word and the stated pay "
+                           f"were not all read: {rows[1]}")
+        if not asked or not all(same for _u, same in asked):
+            errors += fail(f"teamtailor: the feed was not asked on the site's own host: {asked}")
+        for body, why in ((feed([item(1)], version="https://example/v1"), "not a JSON Feed"),
+                          (feed([item(1)], feed_url="https://elsewhere.example/jobs.json"),
+                           "a feed of another host's"),
+                          (feed([{"id": "1", "title": "Role", "url": "x"}]),
+                           "items with no _jobposting: any JSON Feed, not Teamtailor's"),
+                          ('{"items": []}', "no version")):
+            ats._page = serve(body)
+            try:
+                ats.fetch_teamtailor(f"https://{host}")
+                errors += fail(f"teamtailor: {why} was read as a career site")
+            except ats.AtsError:
+                pass
+        asked.clear()
+        for ref in (f"https://{host}/jobs", f"http://{host}", host, f"https://{host}:8443",
+                    "https://user@" + host, "https://a b.example", None):
+            try:
+                ats.fetch_teamtailor(ref)
+                errors += fail(f"teamtailor: {ref!r} was taken as a career site's origin")
+            except ats.AtsError:
+                pass
+        if asked:
+            errors += fail(f"teamtailor: a ref that is not an origin was asked for: {asked}")
+        ats._page = serve(feed([]))
+        if ats.fetch_teamtailor(f"https://{host}") != []:
+            errors += fail("teamtailor: a site with nothing open is not a zero")
+    finally:
+        ats._page = keep
+
+    # ---- found, as the finder finds it -----------------------------------------
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+    assets = '<link rel="stylesheet" href="https://assets-aws.teamtailor-cdn.com/assets/careersite-01.css">\n'
+    alt = f'<link rel="alternate" type="application/rss+xml" title="Jobs" href="https://{host}/jobs.rss">'
+    for markup, want, why in (
+            (assets + alt, [("teamtailor", f"https://{host}", "href")],
+             "a career site on their own domain, its assets and its feed on one page"),
+            (alt, [], "a feed link alone, which any blog has"),
+            ("<!-- " + assets + " -->" + alt, [], "assets that are only in a comment"),
+            (assets.replace("teamtailor-cdn", "example-cdn") + alt, [], "no Teamtailor at all"),
+            (assets + '<link rel="alternate" href="https://acme.teamtailor.com/jobs.rss">',
+             [("teamtailor", "https://acme.teamtailor.com", "href")],
+             "a hosted site's feed, named once and not twice"),
+            ('<a href="https://fonrochelightingamerica.na.teamtailor.com/jobs">Jobs</a>',
+             [("teamtailor", "https://fonrochelightingamerica.na.teamtailor.com", "href")],
+             "the region label kept"),
+            ('<a href="//tt.teamtailor.com/auth/linkedin?company=acme&connect=1">in</a>', [],
+             "Teamtailor's own host"),
+            ('<link rel="preconnect" href="https://boards.greenhouse.io/acmegov">',
+             [("greenhouse", "acmegov", "text")], "a <link> that is not rel=alternate stays text")):
+        found, _rest = fsb.sightings(markup, here, home)
+        got = [(f["type"], f["ref"], f["element"]) for f in found]
+        if got != want:
+            errors += fail(f"teamtailor finder, {why}: read {got}, not {want}")
+    # the board's own page 2 (no <head>, its pictures on teamtailor-cdn.com) is
+    # not a second platform; the same row on another host is
+    cands = [{"type": "teamtailor", "ref": f"https://{host}"}]
+    mine = {"vendor": "teamtailor-other", "page": f"https://{host}/jobs/show_more?page=2"}
+    theirs = {"vendor": "teamtailor-other", "page": "https://www.acmegov.example/about"}
+    if not fsb._board_furniture(mine, cands) or fsb._board_furniture(theirs, cands) \
+            or fsb._board_furniture({**mine, "vendor": "jobvite"}, cands):
+        errors += fail("teamtailor finder: a board's own page showing its own platform is "
+                       "a second platform, or another page's is not")
+    return errors
+
+
 def check_a_long_location_is_published_short() -> int:
     """A posting never ships a location longer than LOCATION_CHARS.
 
@@ -25237,6 +25396,10 @@ SITE_BOARD_FORMS = [
     ('<iframe src="https://springbrooksoftware.isolvedhire.com/iframe/mobile"></iframe>',
      "applicantpro", "springbrooksoftware.isolvedhire.com",
      "https://springbrooksoftware.isolvedhire.com/jobs/"),
+    # Fonroche links its site in Teamtailor's North American data centre
+    ('<a href="https://fonrochelightingamerica.na.teamtailor.com/jobs">Jobs</a>',
+     "teamtailor", "https://fonrochelightingamerica.na.teamtailor.com",
+     "https://fonrochelightingamerica.na.teamtailor.com/jobs.json"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -25247,6 +25410,8 @@ SITE_BOARD_NOT_ONE = [
     '<script src="https://recruit.hirebridge.com/v3/scripts/iframeResizer.min.js"></script>',  # no cid
     '<a href="https://recruit.hirebridge.com/v3/jobs/list.aspx?xcid=7724">x</a>',  # not the cid
     '<a href="https://www.applicantpro.com/">ApplicantPro</a>',      # the vendor's own site
+    '<a href="//tt.teamtailor.com/auth/linkedin?company=vodaai&connect=1">in</a>',  # vendor's
+    '<a href="https://app.teamtailor.com/companies/YfyrsSdTav0@eu/dashboard">x</a>',  # vendor's
     '<a href="https://apply.workable.com/j/0A1B2C3D4E">Apply</a>',   # a posting's short link
     '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
     '<img src="https://c-1234-20200101-acme-com.i.icims.com/logo.png">',
@@ -37142,6 +37307,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "paylocity": PAY, "oracle": "acme.fa.us2.oraclecloud.com",
         "adp": "cbabd1ae-568b-4f70-933b-3f462f76c1b5", "gusto": "acme-c850a9b3",
         "gem": "acme", "hirebridge": "7724", "applicantpro": "casellejobs.applicantpro.com",
+        "teamtailor": "https://acme.teamtailor.com",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -37220,6 +37386,7 @@ console.log(JSON.stringify(out));"""
         ("gem", "https://jobs.gem.com/acme"),
         ("hirebridge", "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=7724"),
         ("applicantpro", "https://casellejobs.applicantpro.com/jobs/"),
+        ("teamtailor", "https://acme.teamtailor.com"),
         ("paylocity", PAY),
         ("greenhouse", "https://job-boards.greenhouse.io/acme"),
         ("no ref", "#"),
@@ -50426,6 +50593,7 @@ def main() -> int:
     errors += check_render_rotation()
     errors += check_a_long_location_is_published_short()
     errors += check_hirebridge_and_applicantpro_read_what_their_boards_publish()
+    errors += check_teamtailor_is_read_and_found_as_its_sites_are()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()

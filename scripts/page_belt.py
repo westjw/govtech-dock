@@ -62,6 +62,7 @@ ATS_NAME = {"ashby": "Ashby", "greenhouse": "Greenhouse", "lever": "Lever",
             "adp": "ADP", "gusto": "Gusto", "gem": "Gem",
             "hirebridge": "Hirebridge",
             "applicantpro": "ApplicantPro",
+            "teamtailor": "Teamtailor",
             "html": "Careers page", "unknown": "No board on file"}
 
 # the owner's three answers to "who buys it". sells_to_gov is what tags.py

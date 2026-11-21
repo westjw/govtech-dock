@@ -434,6 +434,7 @@ HINTS = {
     "gusto": ("jobs.gusto.com",), "gem": ("jobs.gem.com",),
     "hirebridge": ("hirebridge.com",),
     "applicantpro": ("applicantpro.com", "isolvedhire.com"),
+    "teamtailor": ("teamtailor",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -558,6 +559,25 @@ def _applicantpro(m):
     return host, host
 
 
+# Teamtailor's own hosts under teamtailor.com, never a customer's career site
+# ("tt" is the "Powered by Teamtailor" link every career site carries, seen on
+# Voda, AM and Labster's on 2026-11-21)
+_TEAMTAILOR_OWN = {"tt", "app", "www", "career", "careers", "scripts", "assets-aws", "images",
+                   "videos", "screenshots", "fonts", "docs", "api", "support", "status",
+                   "blog", "help", "partners", "marketplace", "go", "na", "eu"}
+
+
+def _teamtailor_hosted(m):
+    # <label>.teamtailor.com, or <label>.na.teamtailor.com: the region label
+    # is part of the site's address (fonrochelightingamerica.na), and the
+    # older patterns elsewhere read "na" as the slug.
+    label, region = m.group(1).lower(), (m.group(2) or "").lower()
+    if label in _TEAMTAILOR_OWN or _furniture(label):
+        return None
+    host = f"{label}{region}.teamtailor.com"
+    return f"https://{host}", host
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -618,6 +638,8 @@ BOARDS: list[_Pat] = (
                             r"[^\s\"'<>]{0,200}?(?:[?&]|&amp;)cid=([0-9]{1,7})(?![0-9])", _hirebridge),
         _here("applicantpro", r"(?<![a-z0-9-])([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)"
                               r"\.(applicantpro|isolvedhire)\.com(?![a-z0-9-])", _applicantpro),
+        _here("teamtailor", r"(?<![a-z0-9.-])([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)(\.na)?"
+                            r"\.teamtailor\.com(?![a-z0-9-])", _teamtailor_hosted),
     ])
 
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
@@ -637,8 +659,8 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("paycom", "paycomonline.", _B + r"paycomonline\.(?:net|com)"),
         ("paycor", "recruitingbypaycor.com", _B + r"recruitingbypaycor\.com"),
         ("pinpoint", "pinpointhq.com", _B + r"pinpointhq\.com"),
-        ("applicantpro", "applicantpro.com", _B + r"applicantpro\.com"),
-        ("teamtailor", "teamtailor", _B + r"teamtailor(?:-cdn)?\.com"),
+        ("applicantpro-other", "applicantpro.com", _B + r"applicantpro\.com"),
+        ("teamtailor-other", "teamtailor", _B + r"teamtailor(?:-cdn)?\.com"),
         ("comeet", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
         ("eightfold", "eightfold.ai", _B + r"eightfold\.ai"),
         ("phenom", "phenompeople.com", _B + r"phenompeople\.com"),
@@ -648,7 +670,7 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("oraclecloud", "oraclecloud.com", r"[a-z0-9-]{1,63}\.fa\.[a-z0-9-]{1,63}\.oraclecloud\.com"),
         ("clearcompany", "clearcompany.com", _B + r"clearcompany\.com"),
         ("hrmdirect", "hrmdirect.com", _B + r"hrmdirect\.com"),
-        ("isolved", "isolvedhire.com", _B + r"isolvedhire\.com"),
+        ("applicantpro-other", "isolvedhire.com", _B + r"isolvedhire\.com"),
         ("trinethire", "trinethire.com", _B + r"trinethire\.com"),
         ("hibob", "hibob.com", _B + r"careers\.hibob\.com"),
         ("avature", "avature.net", _B + r"avature\.net"),
@@ -701,7 +723,8 @@ def _other_region(text: str, m) -> bool:
 # A redirect to any other platform stops where it is.
 _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "paylocity-other": "paylocity", "adp-other": "adp",
-                   "greenhouse-shortlink": "greenhouse"}
+                   "greenhouse-shortlink": "greenhouse", "teamtailor-other": "teamtailor",
+                   "applicantpro-other": "applicantpro"}
 
 _ANY_HINT = re.compile("|".join(sorted(
     {re.escape(h) for hs in HINTS.values() for h in hs}
@@ -856,8 +879,12 @@ def _apart(page: str) -> tuple[str, list[str]]:
     return "".join(body), scripts
 
 
-_TAG = re.compile(r"<(a|area|iframe|frame|embed|object|meta)\b[^<>]{0,6000}>", re.I)
+_TAG = re.compile(r"<(a|area|iframe|frame|embed|object|meta|link)\b[^<>]{0,6000}>", re.I)
 _REFRESH = re.compile(r"http-equiv\s*=\s*[\"']?refresh", re.I)
+# A <link rel="alternate"> is a link the page publishes - the feed of what is
+# on it - and is filed as one. Every other <link> (a stylesheet, a preload, a
+# font) is the page's furniture and stays text.
+_ALTERNATE = re.compile(r"\brel\s*=\s*[\"']?[^\"'>]*\balternate\b", re.I)
 
 
 def zones(page: str) -> list[tuple[str, str]]:
@@ -867,7 +894,8 @@ def zones(page: str) -> list[tuple[str, str]]:
       iframe   the opening tags of <iframe>, <frame>, <embed>, <object>
                (the whole tag: a lazy-loaded frame keeps its address in
                data-src, not src)
-      href     the opening tags of <a> and <area>
+      href     the opening tags of <a> and <area>, and a <link
+               rel="alternate"> (a feed the page publishes)
       redirect a <meta http-equiv="refresh"> - the page sends its reader on
       text     everything else: visible words, and the attributes of every
                other tag
@@ -885,6 +913,10 @@ def zones(page: str) -> list[tuple[str, str]]:
             if not _REFRESH.search(m.group(0)):
                 continue                         # an ordinary meta tag is text
             where = "redirect"
+        elif tag == "link":
+            if not _ALTERNATE.search(m.group(0)):
+                continue                         # a stylesheet or a preload is text
+            where = "href"
         else:
             where = "href" if tag in ("a", "area") else "iframe"
         pieces[where].append(m.group(0))
@@ -1014,6 +1046,34 @@ def _rows(boards: dict, others: dict) -> tuple[list[dict], list[dict]]:
     return out, rest
 
 
+# A TEAMTAILOR CAREER SITE ON A DOMAIN OF THE COMPANY'S OWN names no
+# teamtailor.com host anywhere (Heimdall Power's, read 2026-11-19). The page
+# gives itself away twice over: its assets come from teamtailor-cdn.com, and
+# it publishes the feed Teamtailor gives every career site, <host>/jobs.rss,
+# as its rel=alternate. BOTH must be on the one page - a feed link alone is
+# any blog's - and the board is the feed's host. A pattern cannot see the
+# two together (each piece of a page is read apart), so this reads the page.
+_LINK_TAG = re.compile(r"<link\b[^<>]{0,1200}>", re.I)
+_TT_FEED = re.compile(r"\bhref\s*=\s*[\"']?https://([a-z0-9.-]{4,253})/jobs\.rss(?=[\"'\s>?#]|$)", re.I)
+
+
+def teamtailor_own_sites(page: str) -> list[tuple[str, str]]:
+    """[(host, the tag that named it)] for a Teamtailor career site served on
+    the company's own domain, read off the page as a reader sees it (an
+    address in a comment is not on the page)."""
+    body, scripts = _apart(page or "")
+    if "teamtailor-cdn.com" not in (body + "\n".join(scripts)).lower():
+        return []
+    out = []
+    for m in _LINK_TAG.finditer(body):
+        tag = m.group(0)
+        f = _TT_FEED.search(tag) if _ALTERNATE.search(tag) else None
+        host = f.group(1).lower() if f else ""
+        if host and ats._HOSTNAME.fullmatch(host) and not host.endswith(".teamtailor.com"):
+            out.append((host, tag[:160]))
+    return out
+
+
 def sightings(page: str, page_url: str, website: str, *,
               requests_seen: typing.Iterable[str] = (),
               frames_seen: typing.Iterable[str] = ()) -> tuple[list[dict], list[dict]]:
@@ -1060,6 +1120,10 @@ def sightings(page: str, page_url: str, website: str, *,
             have["times"] += row["times"]
             if not have["_spelt"]:
                 have["_spelt"].update(twin[1])
+    for host, saw in teamtailor_own_sites(page or ""):
+        row = boards.setdefault(("teamtailor", host, "href"), _board_row("teamtailor", "href", saw))
+        row["times"] += 1
+        row["_spelt"][json.dumps(f"https://{host}")] += 1
     # an address of a platform we read that names no board says nothing once
     # the page HAS named that platform's board (Paylocity's own scripts, 23
     # of them, beside the frame that loaded them)
@@ -2411,8 +2475,36 @@ async def look(company: dict, mode: str, read, plain=read_plain,
         rec["elsewhere"].append({"vendor": f"other:{name}",
                                  "saw": _short(url), "page": on_page,
                                  "element": "href", "times": 1})
+    rec["elsewhere"] = [e for e in rec["elsewhere"] if not _board_furniture(e, rec["candidates"])]
     rec.update(_no_addresses(rec))
     return rec
+
+
+def _board_host(kind: str, ref) -> str:
+    """The host a board is served from, for the platforms whose ref names it
+    (a Teamtailor site's origin, an ApplicantPro tenant's host); else ""."""
+    if not isinstance(ref, str):
+        return ""
+    if kind == "teamtailor":
+        return _host(ref)
+    if kind == "applicantpro":
+        return ref.strip().lower()
+    return ""
+
+
+def _board_furniture(row: dict, candidates: list) -> bool:
+    """A form of a platform we read that names no board, seen on a page served
+    by that platform's board ITSELF - the page's host is the board's host -
+    is the board's own furniture. Powerfleet's Teamtailor site answers its
+    second page of jobs as a fragment with no <head>, so no feed link, and
+    its pictures come from teamtailor-cdn.com (2026-11-21): that is the board
+    showing its own jobs, not a second place they hire through. The page
+    level rule (sightings) cannot see it, because the board is named on the
+    site's other pages."""
+    kind = _NO_BOARD_IN_IT.get(str(row.get("vendor") or ""))
+    page = _host(str(row.get("page") or ""))
+    return bool(kind and page) and any(
+        c.get("type") == kind and _board_host(kind, c.get("ref")) == page for c in candidates)
 
 
 def _no_addresses(rec: dict) -> dict:

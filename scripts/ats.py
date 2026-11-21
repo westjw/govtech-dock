@@ -2856,6 +2856,77 @@ def _applicantpro_comp(j: dict, country: str) -> dict | None:
                  _period(j.get("payTypeFrame")))
 
 
+# ---- teamtailor: a career site at <label>.teamtailor.com, at
+# <label>.na.teamtailor.com (its North American data centre), or on a domain
+# of the company's own that it points at Teamtailor (careers.heimdallpower.com)
+#
+# Every Teamtailor career site publishes /jobs.json, a JSON Feed of the whole
+# board, and announces it for programs (its /.well-known/api-catalog). The ref
+# is the site's origin. ON A DOMAIN OF THEIR OWN THE HOST CANNOT VOUCH FOR THE
+# VENDOR, so the body must: a JSON Feed whose feed_url is on the host that was
+# asked and whose every item carries Teamtailor's _jobposting block. Measured
+# 2026-11-19 and 11-21: Fonroche 11, Copenhagen Optimization 3, AM 2, and
+# four sites with nothing open that still name themselves.
+
+def teamtailor_feed(ref) -> tuple[str, dict]:
+    """(host, the site's feed), or AtsError for anything that is not one."""
+    raw = _text(ref).rstrip("/")
+    parts = urllib.parse.urlsplit(raw)
+    host = (parts.hostname or "").lower()
+    if parts.scheme != "https" or not host or parts.path or parts.query or parts.fragment \
+            or parts.port or parts.username or not _HOSTNAME.fullmatch(host):
+        raise AtsError(f"not a teamtailor career site: {ref!r}")
+    d = _json(_page(f"https://{host}/jobs.json", same_host=True))
+    items = d.get("items") if isinstance(d, dict) else None
+    feed = (urllib.parse.urlsplit(str(d.get("feed_url") or "")).hostname or "").lower() \
+        if isinstance(d, dict) else ""
+    if not (isinstance(items, list) and feed == host
+            and str(d.get("version") or "").startswith("https://jsonfeed.org/version/")
+            and all(isinstance(i, dict) and isinstance(i.get("_jobposting"), dict)
+                    for i in items)):
+        raise AtsError(f"{host}/jobs.json is not a Teamtailor career site's feed")
+    return host, d
+
+
+_HOSTNAME = re.compile(r"(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}")
+
+
+def fetch_teamtailor(ref) -> list[dict]:
+    _host, d = teamtailor_feed(ref)
+    out = []
+    for item in d["items"]:
+        title = _text(item.get("title"))
+        if not title:
+            continue
+        jp = item["_jobposting"]
+        places, first = [], None
+        for loc in jp.get("jobLocation") or []:
+            a = loc.get("address") if isinstance(loc, dict) else None
+            if not isinstance(a, dict):
+                continue
+            first = first or a
+            place = ", ".join(p for p in (_text(a.get("addressLocality")),
+                                          _text(a.get("addressRegion")),
+                                          _text(a.get("addressCountry"))) if p)
+            if place:
+                places.append(place)
+        # schema.org's own word for a remote role; absent on every row read,
+        # so a role is remote here only when the site says so in those words
+        remote = _text(jp.get("jobLocationType")).upper() == "TELECOMMUTE"
+        out.append({"title": title,
+                    "location": "; ".join(dict.fromkeys(places)),
+                    "url": _text(item.get("url")),
+                    "posted": posted_date(item.get("date_published")),
+                    "mode": "remote" if remote else None,
+                    "office_hint": office_hint(first.get("addressLocality"),
+                                               first.get("addressRegion"),
+                                               first.get("addressCountry")) if first else None,
+                    "jd": plain_html(item.get("content_html") or ""),
+                    # baseSalary only when the employer filled Teamtailor's
+                    # salary field (1 posting of 14 read); else the ad's text
+                    "comp": _schema_comp(jp)})
+    return out
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -2878,6 +2949,7 @@ FETCHERS = {
     "gem": fetch_gem,
     "hirebridge": fetch_hirebridge,
     "applicantpro": fetch_applicantpro,
+    "teamtailor": fetch_teamtailor,
 }
 
 

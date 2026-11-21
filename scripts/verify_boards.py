@@ -1105,11 +1105,30 @@ def _applicantpro(ref, out: dict) -> None:
         out["how"] = "applicantpro page states no career site name"
 
 
+def _teamtailor(ref, out: dict) -> None:
+    # The feed the reader reads states the site's name as its own title, and
+    # every posting repeats it as hiringOrganization.name; all of them are
+    # stated, so a site posting for two companies shows both. A site with
+    # nothing open still has its title (Heimdall Power, Corporater, Gecko,
+    # Heja, 2026-11-19). It never states a website: hiringOrganization.sameAs
+    # is the career site itself.
+    host, d = ats.teamtailor_feed(ref)
+    items = d["items"]
+    out["n"] = sum(1 for i in items if ats._text(i.get("title")))
+    out["hosts"] = {host}
+    if not _state(out, [d.get("title")] + [_dig(i, "_jobposting", "hiringOrganization", "name")
+                                           for i in items],
+                  "teamtailor feed title and each posting's hiringOrganization, stated "
+                  "by the career site"):
+        out["how"] = "teamtailor feed states no name"
+
+
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
            "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
            "gusto": _gusto, "paylocity": _paylocity, "icims": _icims,
-           "hirebridge": _hirebridge, "applicantpro": _applicantpro}
+           "hirebridge": _hirebridge, "applicantpro": _applicantpro,
+           "teamtailor": _teamtailor}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.

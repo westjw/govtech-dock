@@ -5852,7 +5852,7 @@ def sweep_gaps(c: dict, board_org: dict | None, news: dict,
 STRUCTURED_ATS = {"ashby", "greenhouse", "lever", "workable", "recruitee",
                   "breezy", "smartrecruiters", "bamboohr", "workday",
                   "rippling", "jazzhr", "icims", "paylocity", "oracle",
-                  "jibe", "adp", "gusto", "gem", "hirebridge", "applicantpro"}
+                  "jibe", "adp", "gusto", "gem", "hirebridge", "applicantpro", "teamtailor"}
 
 
 def q_sweep(companies, board, category: str | None = None,

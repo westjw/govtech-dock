@@ -5179,7 +5179,8 @@ function boardUrlFor(f, c){
            gusto:'https://jobs.gusto.com/boards/'+r,
            gem:'https://jobs.gem.com/'+r,
            hirebridge:'https://recruit.hirebridge.com/v3/jobs/list.aspx?cid='+encodeURIComponent(r),
-           applicantpro:'https://'+r+'/jobs/'})[f.type] || '#';
+           applicantpro:'https://'+r+'/jobs/',
+           teamtailor:r})[f.type] || '#';
 }
 
 RENDER.placement = c => {
