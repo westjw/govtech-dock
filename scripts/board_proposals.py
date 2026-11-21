@@ -619,25 +619,39 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     return {"keys": keys, "named": named, "pairs": pairs}
 
 
-def named_holds(held: dict, kind, names, cid) -> list:
+def named_holds(held: dict, kind, names, cid, ours=()) -> list:
     """(code, words) for each hold a Workable board going by `names` meets by
     name (held_boards' `named`), other than `cid`'s own - which hold it by
-    company. Only ever more holding: a name is compared with the names the
-    held account goes by, strictly."""
+    company. `names` are the names the board itself states; `ours` the names
+    the company it was found for goes by (their_names: its name and every
+    also_known_as), compared the same way. Only ever more holding: a name is
+    compared with the names the held account goes by, strictly.
+
+    THE COMPANY'S OWN NAMES TOO (blind review, 2026-11-21). The wiring door
+    asked only the board's stated names, while discovery and wire_embedded.py
+    ask the company's: a doubt kept under Workable account 710855 about
+    "Archi", Archi merged into "Archistar" (also_known_as Archi), and the
+    survivor's own board, which states "Archistar", was held by the other two
+    doors and wired by this one."""
     if kind != "workable":
         return []
-    mine = strict_names(*(names or []))
+    stated = strict_names(*(names or []))
+    theirs = strict_names(*(ours or []))
     out = []
     for h in (held or {}).get("named") or []:
         if h["id"] == cid:
             continue
-        hit = sorted(set(mine) & set(h["names"]))
+        hit = sorted(set(stated) & set(h["names"]))
+        how = f"this board states \"{stated[hit[0]]}\"" if hit else ""
+        if not hit:
+            hit = sorted(set(theirs) & set(h["names"]))
+            how = f"the company it was found for goes by \"{theirs[hit[0]]}\"" if hit else ""
         if hit:
             out.append((h["code"], (
                 f"{h['words']}; it is held under Workable account {h['number']}, which was not "
-                f"followed to a slug, and this board states \"{mine[hit[0]]}\", a name that "
-                f"account goes by ({h['names'][hit[0]]}) - whether it is the same Workable "
-                f"account was not asked")))
+                f"followed to a slug, and {how}, a name that account goes by "
+                f"({h['names'][hit[0]]}) - whether it is the same Workable account was not "
+                f"asked")))
     return out
 
 

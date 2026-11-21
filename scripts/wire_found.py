@@ -1563,9 +1563,13 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # beside a board that STATES one of the names that account goes by
     # (held_boards, named_holds). No longer every Workable board, which held
     # boards that state other names entirely (decided after the review of
-    # 27eeb628, 2026-11-19).
-    if stated:
-        doubts += [w for _c, w in named_holds(owner_holds, kind, names, cid)]
+    # 27eeb628, 2026-11-19). AND beside a board found for a company that GOES
+    # BY one of them (its name or an also_known_as), as discovery and
+    # wire_embedded.py hold it: a doubt about "Archi", merged into Archistar,
+    # held the survivor's own board in those two doors and not in this one
+    # (blind review, 2026-11-21).
+    doubts += [w for _c, w in named_holds(owner_holds, kind, names if stated else [], cid,
+                                          _their_names(c))]
 
     # WHAT THE READ ITSELF ARGUES. A board with nothing on it shows nothing
     # about where they hire today - an account left behind answers empty and
@@ -2325,9 +2329,11 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                 return h["code"], (f"since the plan, {h['words']}"
                                    + (" - tell the owner" if h["code"] == "refused" else ""))
     # a Workable account held under a number the plan never followed, beside
-    # a board that states one of the names it goes by
+    # a board that states one of the names it goes by, or found for a company
+    # that goes by one (its name or an also_known_as, as on file now: blind
+    # review, 2026-11-21)
     for code, words in named_holds(owner_holds, kind, c2.get("names") if c2.get("stated") else [],
-                                   cid):
+                                   cid, _their_names(c)):
         return code, f"{words} - plan again"
     seen = {tuple(x) for x in row.get("waiting_seen") or []
             if isinstance(x, list) and len(x) == 2}

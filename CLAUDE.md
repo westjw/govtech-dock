@@ -2668,8 +2668,13 @@ round.
   followed - a Workable board is held when it STATES one of the names that
   account goes by (the held row's `board_calls_itself` or company, the
   doubt's company, the record's name or also_known_as; `verify_boards.strict`),
-  in the plan and in apply: "a record holds Workable account N (X), and
-  whether it is this board was not asked ... this board states "X"". No
+  or is found for a company that GOES BY one of them (its name or an
+  also_known_as, the names discovery and wire_embedded ask by: a doubt about
+  "Archi", merged into Archistar, held the survivor's own board in those two
+  doors and not in this one, blind review of 2026-11-21), in the plan and in
+  apply: "a record holds Workable account N (X), and whether it is this board
+  was not asked ... this board states "X"" (or "the company it was found for
+  goes by "X""). No
   longer every Workable board (decided after the review of 27eeb628). A refused
   company's number is not followed (marked `declined`) and the company is
   SKIP refused, whatever it refused - "its slug was not looked for ... tell
@@ -2810,7 +2815,8 @@ round.
   (`moved`), a reader's doubt kept since (`standing`), the board held for the
   owner under another company's id (`standing`, `queued`, `refused`), a
   Workable account held under a number the plan never followed whose name
-  the board states (`number`, or the hold's own code), a door-filed
+  the board states or the company goes by (`number`, or the hold's own
+  code), a door-filed
   row in Boards we found for any board (`queued`), a waiting row or pending
   proposal the plan did not record in the row's `waiting_seen` (`waiting`),
   another holder (under either key), more postings shown than the board

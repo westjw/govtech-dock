@@ -37077,7 +37077,9 @@ def check_a_workable_account_is_held_under_either_key() -> int:
       - a held number nobody in the run followed holds a Workable board that
         STATES one of the names that account goes by (the doubt's company, the
         filed row's stated name or company, a record on the number) - in the
-        plan and in apply - and no other Workable board;
+        plan and in apply - and no other Workable board; and one found for a
+        company that GOES BY one of them (its name or an also_known_as), as
+        discovery and wire_embedded hold it (blind review, 2026-11-21);
       - a board held under its SLUG meets a board found by a NUMBER that
         resolves to it, under either key, in the plan and in apply;
       - a board refused under a number this run did not follow is taken to be
@@ -37275,6 +37277,58 @@ def check_a_workable_account_is_held_under_either_key() -> int:
             errors += fail(f"a plan --doubts did not hold, by name, the account a doubt it had "
                            f"just kept is about: {r.get('action')} saying "
                            f"{_wb_words(r)[:300]!r}")
+
+    # --- THE COMPANY'S OWN NAMES MEET A BY-NAME HOLD, as in the other doors --
+    # (blind review, 2026-11-21: a doubt kept under Workable account 780780
+    # about "Archi Three"; Archi Three merged into "Archistar Three", which
+    # keeps also_known_as Archi Three; the survivor's own board states
+    # "Archistar Three". Discovery and wire_embedded held it by the company's
+    # names, and the wiring door - asking only the board's - wired it, in the
+    # plan and in apply for a worklist planned before the doubt.)
+    companies3 = [co("archi-three", "Archi Three"), co("archistar-three", "Archistar Three"),
+                  co("archistar-four", "Archistar Four", also_known_as=["Archi Three"]),
+                  co("plain-three", "Plain Three")]
+    BOARDS3 = {"workable/780780": (2, ["Archistar Three"]),
+               "workable/archistarthree": (2, ["Archistar Three"]),
+               "workable/archistarfour": (2, ["Archistar Four"]),
+               "workable/plainthree": (2, ["Plain Three"])}
+    with _WiringBox(companies3, BOARDS3) as box:
+        code, text, wl_b, rows_b = box.plan(_wb_results({
+            "archistar-four": links("archistar-four", "archistarfour")}), name="worklist-b.json")
+        if code != 0 or ((rows_b or {}).get("archistar-four") or {}).get("action") != "WIRE":
+            return errors + fail(f"the fixture's Archistar Four does not plan WIRE on its own: "
+                                 f"{text[-300:]}")
+        box.plan(_wb_results({"archi-three": asks("archi-three", "780780")}),
+                 name="worklist-doubt-3.json",
+                 doubts={"archi-three": "two readers: 780780 is the Archi Group's account"})
+        box.by_hand(lambda by_id, cs: (cs.remove(by_id["archi-three"]),
+                                       by_id["archistar-three"].update(
+                                           also_known_as=["Archi Three"])),
+                    why="selftest: Archi Three merged into Archistar Three")
+        code, text, _wl, rows3 = box.plan(_wb_results({
+            "archistar-three": links("archistar-three", "archistarthree"),
+            "plain-three": links("plain-three", "plainthree")}), name="worklist-merged.json")
+        r = (rows3 or {}).get("archistar-three") or {}
+        said = ("it is held under Workable account 780780, which was not followed to a slug, and "
+                "the company it was found for goes by \"Archi Three\"")
+        if r.get("action") != "HOLD" or said not in _wb_words(r) \
+                or "workable/780780 is the board of a reader's doubt that stands about Archi " \
+                   "Three" not in _wb_words(r):
+            errors += fail(f"a Workable board found for a company that goes by the name of an "
+                           f"account held under a number nobody followed was planned "
+                           f"{r.get('action')}, saying {_wb_words(r)[:300]!r}; wanted HOLD "
+                           f"saying {said!r}")
+        if ((rows3 or {}).get("plain-three") or {}).get("action") != "WIRE":
+            errors += fail("a Workable board found for a company whose names meet no held "
+                           "account was not planned WIRE beside one that does")
+        code, text, _ = box.look(wl_b)
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Archistar Four ")), "") if "LEFT ALONE" in text \
+            else ""
+        if "LEFT ALONE 1" not in text or said not in line or "would wire" in text:
+            errors += fail(f"a WIRE row for a company that goes by the name of an account held "
+                           f"under a number nobody followed was not left alone in apply: "
+                           f"{text[-400:]}")
     return errors
 
 
