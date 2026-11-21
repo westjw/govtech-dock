@@ -7166,5 +7166,768 @@
   "quote": "\"Selling CitizenObserver\u2019s tip411 solutions to local, state and county law enforcement.\"",
   "on": "2026-11-19",
   "by": "agent:scope-review-2026-11-19"
+ },
+ "3-gis::Senior Account Executive \u2013 Utilities": {
+  "verdict": "MIXED",
+  "why": "Agree. I read the posting page. The territory and account plans cover investor-owned utilities (private) and municipals (public) as well as co-ops, so the role sells to both sides.",
+  "quote": "territory and account plans focused on investor-owned utilities, municipals, cooperatives, and other utility providers across the Americas",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "action1::Account Executive - SLED": {
+  "verdict": "SLED",
+  "why": "Agree. The role owns a defined U.S. SLED territory. The ad's mid-market/enterprise and 'B2B sales experience' lines describe the sales motion and the candidate's background, not who this role sells to.",
+  "quote": "drive new business across state, local, and education accounts in the United States",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "aeries-software::Account Executive (SMB) - ActivityHero Orange, CA, US \u2022 Full Time 40 hours - BE": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. There is no ad text: the ADP page did not render for the first reader, and I did not retry it. 'SMB' at ActivityHero most likely means small activity-provider businesses, which would be B2B. But with no ad, the title alone does not name the buyers, so the role stays and is listed for the owner.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "atlassian::Enterprise sales solutions and Atlassian's future": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. This is not a job opening. The link is a careers-blog article that now redirects to Atlassian's candidate resource hub, so there is no role or buyer to judge. The owner may want to drop it as a non-opening rather than as B2B.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "atlassian::Scaling to enterprise: how you can impact our approach to enterprise sales": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. This is not a job opening. The link is a careers-blog article that now redirects to Atlassian's candidate resource hub, so there is no role or buyer to judge. The owner may want to drop it as a non-opening rather than as B2B.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "badger-meter::Account Manager- Private Water": {
+  "verdict": "B2B",
+  "why": "Agree. The title itself names the buyers: the private water market (privately owned water companies), as distinct from Badger Meter's municipal utility customers. 'Private Water' is a customer segment, not a product line. The Workday ad was not read, by rule, and nothing in the title points to public utilities.",
+  "quote": "Account Manager- Private Water",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "branching-minds::Account Executive: Large Market (Fully Remote)": {
+  "verdict": "SLED",
+  "why": "Agree. The role sells new business to large public K-12 districts (10,000+ students). The ad names no private buyers.",
+  "quote": "5+ years of K-12 ed-tech sales experience selling to public school districts",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "caselle::Account Manager - Sales": {
+  "verdict": "SLED",
+  "why": "Agree. There is no ad text. I read the sibling Territory Manager page on the same ApplicantPro site and got only the frame, with no posting. Caselle's customers are small and mid-size cities and other local governments, and nothing points to private buyers.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "caselle::Territory Manager (Account Executive)": {
+  "verdict": "SLED",
+  "why": "Agree. I read the posting page: it shows only the ApplicantPro frame (153 characters) and no ad text. Caselle sells fund accounting and utility billing to small and mid-size cities and other local governments, so its sales roles sell to local government.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "celona::Regional Sales Director-Southeast": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. I read the Paylocity page and got only an unsupported-browser notice. The 110-character snippet only describes the candidate as an enterprise seller. Celona sells private wireless to businesses and public agencies alike, so nothing settles it.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cloudflare::Senior Commercial Account Executive (Austin) (opens in a new tab) Sales \u00b7 , Austin, TX Yesterday Date posted:": {
+  "verdict": "B2B",
+  "why": "Agree. I read the live Greenhouse page: the role works Cloudflare's Commercial segment of business accounts, and the readable text (first 6,000 of 12,596 characters) names no public buyer. Both parts of the quote are on the page. The live posting now lists Salt Lake City, Denver or Phoenix rather than Austin.",
+  "quote": "focuses on both the acquisition of prospective Commercial accounts ... 5+ years sales experience selling B2B SaaS",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "codio::Director of Partnerships (Account Executive)": {
+  "verdict": "MIXED",
+  "why": "Agree. The target accounts are colleges and universities and school districts (public buyers) plus enterprise organizations (private). Nothing limits the role to one side.",
+  "quote": "a list of target accounts at colleges and universities, school districts, and enterprise organizations",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Commercial Sales Representative": {
+  "verdict": "B2B",
+  "why": "Agree. The ad names the role's segment as Commercial and names no public buyer (the 'local' hit is 'live local to the territory'). Cribl hires separately titled SLED and PubSec reps for state and local accounts, as the Ohio Valley SLED and Tallahassee PubSec ads in this chunk show, so the Commercial rep sells to companies.",
+  "quote": "We are looking for a Commercial Sales Representative",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Director, Ohio Valley (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. The director leads a team of Enterprise reps, and Ohio Valley government accounts have their own Cribl SLED role in this chunk. The ad names no public buyer. Both parts of the quote are in the ad: the Enterprise team line describes the role, and the Fortune 1000 line describes the background it requires.",
+  "quote": "lead a team of 5-7 Enterprise Sales Reps across Ohio Valley ... selling large deals to large enterprises (Fortune 1000)",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Director, Southeast (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. The director leads Enterprise reps, and the ad names no public buyer. Florida and Georgia SLED accounts sit with Cribl's separate Tallahassee PubSec role ('selling into SLED for Florida and Georgia').",
+  "quote": "lead a team of 5-7 Enterprise Sales Reps across the Southeast ... selling large deals to large enterprises (Fortune 1000)",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Atlanta (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. This is an Enterprise-segment rep, and the ad names no public buyer. Georgia's SLED accounts belong to Cribl's separate Tallahassee PubSec role, whose ad says 'selling into SLED for Florida and Georgia'.",
+  "quote": "We are seeking an Enterprise Regional Sales Manager ... 7+ years of quota carrying Enterprise Security sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Bay Area (Strategic)": {
+  "verdict": "B2B",
+  "why": "Agree. This is a Strategic rep expected to sell into Fortune-level organizations and G2K companies. There is no public buyer anywhere in the ad.",
+  "quote": "selling into Fortune Level Organizations ... Success selling to G2K companies",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Digital Native": {
+  "verdict": "B2B",
+  "why": "Agree. The buyers are venture-backed Digital Native startups ('strategic account plans for Digital Native startups'). There is no public buyer in the ad.",
+  "quote": "execute on proven sales processes within venture-backed, high-growth, technologically advanced companies",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Florida (Strategic)": {
+  "verdict": "B2B",
+  "why": "Agree. This is the same Strategic template, naming Fortune-level and G2K companies. Florida SLED accounts sit with the separate Tallahassee PubSec role.",
+  "quote": "selling into Fortune Level Organizations ... Success selling to G2K companies",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Houston (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. The ad matches the other Cribl Enterprise RSM ads word for word apart from the city and pay. It names the Enterprise segment and no public buyer, and Cribl titles its state and local roles SLED or PubSec separately.",
+  "quote": "We are seeking an Enterprise Regional Sales Manager ... 4+ years of quota carrying Enterprise Security sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Minneapolis (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. This is the same Enterprise template as Houston, word for word apart from the city and pay. It names the Enterprise segment and no public buyer, and Cribl titles its state and local roles SLED or PubSec separately.",
+  "quote": "We are seeking an Enterprise Regional Sales Manager ... 4+ years of quota carrying Enterprise Security sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, NYC (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. This is the same Enterprise template as Houston, word for word apart from the city and pay. It names the Enterprise segment and no public buyer, and Cribl titles its state and local roles SLED or PubSec separately.",
+  "quote": "We are seeking an Enterprise Regional Sales Manager ... 4+ years of quota carrying Enterprise Security sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, North Carolina (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. This is the same Enterprise template as Houston, word for word apart from the location. It names the Enterprise segment and no public buyer, and Cribl titles its state and local roles SLED or PubSec separately.",
+  "quote": "We are seeking an Enterprise Regional Sales Manager ... 4+ years of quota carrying Enterprise Security sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Ohio (Strategic)": {
+  "verdict": "B2B",
+  "why": "Agree. This is the Strategic template naming Fortune-level and G2K companies. Ohio's government accounts belong to the separate Ohio Valley SLED role.",
+  "quote": "selling into Fortune Level Organizations ... Success selling to G2K companies",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Ohio Valley (SLED)": {
+  "verdict": "SLED",
+  "why": "Agree. The territory plan is 'selling into SLED' for the Ohio Valley, with 7-figure deals 'within the SLED community'. The one line about 'large, multinational enterprises' appears word for word in the Tallahassee PubSec ad too, so it is template text, not a private territory.",
+  "quote": "experience selling large and complex deals into SLED for the Ohio Valley Region",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, St Louis (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. This is the same Enterprise template as Houston, word for word apart from the location. It names the Enterprise segment and no public buyer, and Cribl titles its state and local roles SLED or PubSec separately.",
+  "quote": "We are seeking an Enterprise Regional Sales Manager ... 4+ years of quota carrying Enterprise Security sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Tallahassee (PubSec)": {
+  "verdict": "SLED",
+  "why": "Agree. The territory plan is 'selling into SLED for Florida and Georgia'. PubSec here means SLED, not federal. The 'multinational enterprises' line is shared template text.",
+  "quote": "experience selling large and complex deals to SLED for the Florida and Georgia regions",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cribl-inc::Regional Sales Manager, Tennessee (Enterprise)": {
+  "verdict": "B2B",
+  "why": "Agree. This is the same Enterprise template as Houston, word for word apart from the location (its 'State of Tennessee' is the location, not a buyer). It names the Enterprise segment and no public buyer.",
+  "quote": "We are seeking an Enterprise Regional Sales Manager ... 4+ years of quota carrying Enterprise Security sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "cybersoft-technologies::Account Executive Cybersoft Technologies Houston, TX Full Time Posted 1 month ago": {
+  "verdict": "SLED",
+  "why": "Agree. I read the posting page and the quote is there. The AE sells PrimeroEdge to K-12 school nutrition departments, and the site says the company serves state agencies and school districts. No private buyers are named.",
+  "quote": "passionate about working with K-12 school districts",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "dragos::Senior Enterprise Account Executive: Electric Utilities": {
+  "verdict": "MIXED",
+  "why": "Agree. The electric utility market includes investor-owned, public power and co-op utilities, and the ad limits the role to none of them.",
+  "quote": "with a focus on the electric utility markets",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "dragos::Senior Enterprise Account Executive: Manufacturing": {
+  "verdict": "B2B",
+  "why": "Agree. The title and the reporting line both name the manufacturing vertical (private manufacturers). The 'electric utility and data center' focus line appears word for word in the oil-and-gas ad, while the title and reporting line were changed for each ad, so it is leftover template text, not this role's buyers.",
+  "quote": "Senior Enterprise Account Executive: Manufacturing ... reports to the Director of Enterprise Sales, Manufacturing",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "dragos::Senior Enterprise Account Executive: Oil and Gas and Chemical": {
+  "verdict": "B2B",
+  "why": "Agree. The title and the reporting line name the oil, gas and chemical vertical (private energy and chemical companies). The 'electric utility and data center' line is the same template text as in the manufacturing ad.",
+  "quote": "Senior Enterprise Account Executive: Oil and Gas and Chemical ... reports to the Director of Enterprise Sales, Oil and Gas and Chemical",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "edpuzzle::K-12 Sales Representative - Ohio Based": {
+  "verdict": "SLED",
+  "why": "Agree. The rep sells to schools and districts in Ohio and must know Ohio's school purchasing system. 'B2B sales development' describes the candidate's background, and the ad names no private buyers.",
+  "quote": "outreach to untapped districts to build your pipeline and acquire new accounts",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "emphasys-software::Sales Manager, FinTech": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. I read the careers page: it has no posting text, only links to the five divisions (public housing, housing finance, SymPro, housing locator, LSS). The title does not say which buyers a FinTech sales manager serves.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "everbridge::Senior Account Executive - Southeast": {
+  "verdict": "B2B",
+  "why": "Agree. The role delivers continuity strategies to enterprise clients, especially Fortune 1000 companies. The only 'government' in the ad is the company footer, which sets 'enterprises' apart from 'government organizations'. The FEMA-standards and RFP lines are frameworks and process, not buyers.",
+  "quote": "deliver complex continuity strategies to enterprise clients- especially within Fortune 1000 companies",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "futurefit-ai::Strategic Account Manager": {
+  "verdict": "MIXED",
+  "why": "Agree. The account manager advises customers across government, education and industry (private employers), so the role serves both sides.",
+  "quote": "serve as a trusted advisor to senior leaders across government, education, and industry",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "granicus::Account Executive - New Logo - Midwest (IA,IL,IN,MI,WI)": {
+  "verdict": "SLED",
+  "why": "Agree. This is a Small-Medium Government AE who needs a local-government sales background, and no private buyers are named. The ad's 'located in the Northeast' is template text copied from the Northeast posting, but the buyers are local governments either way.",
+  "quote": "Granicus is hiring a Small-Medium Government Account Executive ... a technology sales background in local government",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "granicus::Account Executive - New Logo - Northeast (CT,DE,MA,ME,NH,NJ,NY,OH,PA,RI,VT)": {
+  "verdict": "SLED",
+  "why": "Agree. This is a Small-Medium Government AE selling to local governments. The 'business or government' line describes the candidate's background, not the buyers.",
+  "quote": "Granicus is hiring a Small-Medium Government Account Executive ... a technology sales background in local government",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "hhaexchange::Account Manager": {
+  "verdict": "B2B",
+  "why": "agree: this seat upsells existing homecare provider agencies. Its posting page (read) files it under 'Sales \u2013 Sales - Provider', the provider side, not the state Medicaid or health-plan side. The ad names agency leaders, first-time technology buyers and prospects in the homecare industry. States appear only in the company boilerplate.",
+  "quote": "educate agency leaders on our value ... Humility and empathy for the challenges our prospects face on a daily basis in the homecare industry",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "hhaexchange::SMB Account Executive": {
+  "verdict": "B2B",
+  "why": "agree: it sells new business to homecare agency owners, executives and administrators, which are private provider businesses. No state, county or other public buyer appears in the role. States appear only in the company boilerplate.",
+  "quote": "selling new business within your assigned territory to homecare agency owners, executives, and administrators",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "hhaexchange::Sales Manager, SMB": {
+  "verdict": "B2B",
+  "why": "agree: it leads the inside SMB AEs. Its posting page (read) files it under 'Sales \u2013 Sales - Provider', the same provider team as the Account Manager. The ad's prospects are first-time technology buyers in the homecare industry, and the sister SMB AE ad names homecare agency owners. No public buyer appears.",
+  "quote": "As an Inside Sales Manager, SMB at HHAeXchange ... Humility and empathy for the challenges our prospects face on a daily basis in the homecare industry",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "harris::Clinical Sales Manager, Perinatal Solutions": {
+  "verdict": "UNCLEAR",
+  "why": "agree: there is no ad (the posting is on Workday, which is off limits), and the title names a perinatal product line, not a buyer type. FOR THE OWNER: this is the same posting URL (requisition R0047447-2) that was ruled B2B on 2026-11-19 under its old title 'Regional Sales Manager'. That ruling covered OBIX fetal monitors for hospital labour and delivery units, on the quote 'Existing relationships with hospitals and health systems in the Western US'. The new title gave it a new opening id, which is how it came back onto the board. That ruling could be carried over, but this ad is not in hand t",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "iceye::State and Local Strategic Account Manager": {
+  "verdict": "SLED",
+  "why": "agree: the seat owns state and local government agencies (emergency managers, public safety, floodplain and water resource agencies) through RFPs, grant funding and budget cycles. Insurers and defense appear only in the company description, not in this seat.",
+  "quote": "you will own relationships with state and local government agencies",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "ifs::Senior Account Executive \u2013 Strategic Accounts (Net New), Manufacturing \u2013 Remote (US)": {
+  "verdict": "B2B",
+  "why": "agree: the title names the manufacturing segment, and the ad hunts net-new enterprise accounts in industrial, logistics and manufacturing settings. No city, county, utility or other public buyer appears. Its Expansion twin was ruled B2B on 10-27 on the same title word.",
+  "quote": "Strategic Accounts (Net New), Manufacturing",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "kev-group::Account Executive - Texas": {
+  "verdict": "SLED",
+  "why": "agree: it sells School Cash Suite to C-level school district business officials and asks for K-12 selling experience. No private buyer is named.",
+  "quote": "introducing KEV's School Cash Suite of solutions to C-level School District Business Officials in your assigned territory",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "kev-group::Enterprise Account Executive": {
+  "verdict": "SLED",
+  "why": "agree: same buyers as the Texas seat (school district business officials). 'Enterprise' describes the size of the districts. No private buyer is named.",
+  "quote": "introducing KEV\u2019s School Cash Suite of solutions to C-level School District Business Officials in your assigned territory",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "kami::Account Executive": {
+  "verdict": "SLED",
+  "why": "agree: it covers small school and district accounts, K-12 decision makers (superintendents, principals, tech directors) and school district purchasing. No business buyer is named.",
+  "quote": "responsible for acquiring and growing small school and district accounts",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "kami::Sales Manager, Account Executives": {
+  "verdict": "SLED",
+  "why": "agree: it leads Kami's AE team, whose sister ads (AE and Strategic AE) sell to K-12 schools and districts. Kami's buyers are schools and districts, and this ad names no private buyer.",
+  "quote": "3\u20135+ years leading Account Executives Sales teams in EdTech ... making a difference to schools, students, and teachers",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "kami::Strategic Account Executive": {
+  "verdict": "SLED",
+  "why": "agree: same as the AE seat (school and district accounts, school district purchasing). No private buyer is named.",
+  "quote": "responsible for acquiring and growing small school and district accounts",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "knowbe4::Account Manager (ENT/Strategic) (Remote) (Austin, Texas)": {
+  "verdict": "B2B",
+  "why": "agree: the ad says the seat sells to businesses, sized at 1501+ employees. It describes the value as improving the customer's 'business's security awareness training' and asks for Enterprise-segment deals. No school, college or agency buyer appears. KnowBe4's public-sector selling shows up as a separately titled seat (Public Sector Channel Account Manager, Arlington). The quote names a buyer type, not just a size band.",
+  "quote": "promoting and selling KnowBe4\u2019s additional products and services to businesses (organizations with 1501+ employees)",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "knowbe4::Account Manager (ENT/Strategic) (Remote) (Chicago, Illinois)": {
+  "verdict": "B2B",
+  "why": "agree: word for word the same ad as the Austin seat. It sells to businesses of 1501+ employees, describes the value in business terms, and names no school, college or agency buyer.",
+  "quote": "promoting and selling KnowBe4\u2019s additional products and services to businesses (organizations with 1501+ employees)",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "knowbe4::Public Sector Channel Account Manager (Hybrid)": {
+  "verdict": "SLED",
+  "why": "agree: a public-sector channel seat covering both federal and SLED. SLED is a named segment (NCPA/NASPO state cooperative contracts, StateRAMP, SLED budget cycles and funding), so the seat is not federal-only and a FEDERAL call would not hold. The resellers, integrators and distributors it recruits are routes to market, not buyers. No private buyer appears.",
+  "quote": "across the full public sector \u2014 Federal Civilian, Department of Defense (DoD) and Intelligence Community (IC), and State, Local, and Education (SLED)",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "lightcast::Account Executive - 1083": {
+  "verdict": "B2B",
+  "why": "agree: the ad puts the seat in the private sector. Its posting page (read) files it under 'Enterprise \u2013 Sales', which is Lightcast's private-sector team. Public agencies are sold by 'Public Sector \u2013 Sales' and colleges by 'Education \u2013 Sales'.",
+  "quote": "you will drive new business growth within the private sector",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "lightcast::Account Executive - 1097": {
+  "verdict": "SLED",
+  "why": "agree: a higher education seat selling to colleges and universities. Its posting page (read) files it under 'Education \u2013 Sales'. No private-sector buyer is named.",
+  "quote": "responsible for driving new business within the higher education sector",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "lightcast::Account Executive - 1099": {
+  "verdict": "SLED",
+  "why": "agree: a higher education seat selling to colleges and universities, from the same ad family as 1097 (filed under 'Education \u2013 Sales'). No business buyer is named.",
+  "quote": "generating opportunities within the higher education sector ... ensuring colleges and universities can align academic programs with labor market demand",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "lightcast::Account Executive I - 1096 (Moscow, ID)": {
+  "verdict": "B2B",
+  "why": "CHANGED from UNCLEAR. The posting page (read) files this seat under 'Enterprise \u2013 Sales'. Lightcast's own postings split its sellers into three teams. Enterprise \u2013 Sales holds 1083 (read; its ad says 'within the private sector'), and 1102's ad says the Enterprise seat works 'within the private sector'. Education \u2013 Sales holds 1097 (read; colleges). Public Sector \u2013 Sales and Public Sector \u2013 Client Services hold 1091 and 1106 (both read). So this seat is on the private-sector team, and Lightcast's public agencies and colleges are sold by the other two teams. This follows the 10-27 Motive Enterpr",
+  "quote": "Enterprise \u2013 Sales",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "lightcast::Account Executive II - 1091": {
+  "verdict": "SLED",
+  "why": "agree, and now settled: the posting page (read) files it under 'Public Sector \u2013 Sales'. The ad's one role-specific line asks for public-sector, economic development or workforce development selling, which points to state and local workforce and economic development agencies. No private buyer is named.",
+  "quote": "Experience selling in public sector work or in economic development or workforce development.",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "lightcast::Account Manager I - 1106": {
+  "verdict": "SLED",
+  "why": "CHANGED from UNCLEAR: the posting page (read) files this account manager under 'Public Sector \u2013 Client Services'. That team renews and upsells Lightcast's public-sector accounts, the workforce and economic development agencies its 1091 seller works. The ad text names no buyer, and nothing in it points to a private one.",
+  "quote": "Public Sector \u2013 Client Services",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "lightcast::Associate Account Executive - 1102": {
+  "verdict": "B2B",
+  "why": "agree: the ad puts this Enterprise associate seat in the private sector. No public agency or college appears.",
+  "quote": "identifying, engaging, and closing opportunities within the private sector",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "master-meter::Regional Sales Manager - Territory MN/WI": {
+  "verdict": "SLED",
+  "why": "agree: water meters and AMI for 'the Municipal Market' and 'key municipal accounts'. The ad asks for experience selling to municipalities or other government organizations. Its one mention of 'water utility companies' is generic and does not make it MIXED, since US water utilities are mostly municipal.",
+  "quote": "expanding our presence within key municipal accounts ... experience selling to Municipalities",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "master-meter::Regional Sales Manager - Territory OH, IN, MI": {
+  "verdict": "SLED",
+  "why": "agree: the same ad as the MN/WI seat except for the territory. Municipal market and municipalities are named. The generic 'water utility companies' line does not make it MIXED.",
+  "quote": "expanding our presence within key municipal accounts ... experience selling to Municipalities",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "motive::Enterprise Account Executive, Networks": {
+  "verdict": "B2B",
+  "why": "agree: the Networks team sells to large businesses that run through contractors, portfolio companies and franchises, and the ad asks for F500/F1000 experience. 'Public sector' appears only in the company boilerplate. Its Mid-Market Networks twin was ruled B2B on 10-27 on the same line.",
+  "quote": "The Networks team at Motive partners with large, complex businesses that operate using a network of independent contractors, portfolio companies, franchises, and more.",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "neighborly-software::Mid-Market Account Executive": {
+  "verdict": "SLED",
+  "why": "agree: grant and housing program software for cities, counties, states and councils of government, and later public housing authorities, sold through public procurement. Nonprofit subrecipients administer government funds and are a minor side. A sister HCD seat was ruled SLED on 11-19.",
+  "quote": "You will open relationships with the cities, counties, states, councils of government, subrecipients",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "netskope::Director, Regional Sales": {
+  "verdict": "UNCLEAR",
+  "why": "agree: the ad names no segment, and 'Fortune 1,000' is experience asked for, not the buyers. A director over nine regional sales managers in IL, NY, NC and Santa Clara could oversee SLED managers too, since Netskope titles its SLED seat separately. Nothing settles it.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "netskope::Regional Sales Manager": {
+  "verdict": "UNCLEAR",
+  "why": "agree: apart from the title, this is word for word the 'Regional Sales Manager - SLED' ad. Its F1000 and 'local enterprise customer relationships' lines are therefore template, not this seat's buyers. It leans corporate because Netskope titles its SLED and Public Sector seats separately. But no SLED seat for AZ, FL, NV or OH is on the board, so it is not settled.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "netskope::Regional Sales Manager - SLED": {
+  "verdict": "SLED",
+  "why": "agree: the title names the SLED segment. The F1000 line in its ad is Netskope's shared template, not a buyer specific to this seat.",
+  "quote": "Regional Sales Manager - SLED",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "netskope::Territory Sales Manager (Mid-Market)": {
+  "verdict": "UNCLEAR",
+  "why": "agree: 'Mid-Market' is a size band, and the ad names no buyer type at a vendor that also sells to SLED. FOR THE OWNER: the ad's pay section is an EU one ('applies to candidates based in European Union (EU) member states', a EUR range), although this listing says Washington, US. The board also lists the same title for Peru and Portugal. The posting page (read) returned only Netskope's site navigation, so the location could not be checked.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "newsela::Sales Representative, SMB (Remote, US)": {
+  "verdict": "SLED",
+  "why": "agree: it sells reading content to school districts and works each territory's funding and state initiatives. 'Small-medium business market' is Newsela's name for its smaller-district segment, as ruled for its Schoolytics and Mid-Market seats on 11-19. No private buyer is named.",
+  "quote": "building relationships with key decision makers at the school district level",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "onestream::Account Executive": {
+  "verdict": "UNCLEAR",
+  "why": "agree: the only line that differs from the Higher Education ad is the experience asked for ('3\u20135+ years of B2B sales experience'), which does not say who the buyers are. 'Modern enterprises' is template shared with the Higher Education ad. It leans corporate. But the ad names no buyer, and OneStream's open list has no state or local government seller besides the Higher Education seat, so where public accounts sit is not shown.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "onestream::Account Executive- Higher Education": {
+  "verdict": "SLED",
+  "why": "agree: a Higher Education seat that asks for higher-ed or public-sector selling. The 'modern enterprises' wording is shared template. Its buyers are colleges and universities.",
+  "quote": "3+ years of experience selling into the Higher Education or Public Sector vertical.",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "packback::Senior Account Manager": {
+  "verdict": "SLED",
+  "why": "agree: it manages 20 to 40 institutional accounts at colleges and K-12 schools (provosts, deans, superintendents) and asks for a strong grasp of the Higher Education landscape. Some colleges may be private, but the buyers are education institutions, not businesses.",
+  "quote": "key stakeholders at various levels within each institution (e.g.,Superintendents, Provosts, Deans, administrators, instructional designers,etc)",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "panorama-education::Enterprise Account Executive": {
+  "verdict": "SLED",
+  "why": "agree: 'Enterprise' means districts of 20,000+ students in the Northeast, and the ad also names state education administrators. No private buyer appears.",
+  "quote": "within a regional portfolio of school districts serving 20,000 or more students",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "powerfleet::Enterprise Account Executive - On Road": {
+  "verdict": "B2B",
+  "why": "agree: I read the posting page and the quote holds. It is a Germany-based seat ('Sales \u00b7 Germany \u00b7 Fully Remote') that owns named enterprise fleet accounts, asks for enterprise B2B sales experience and sells against Samsara and Geotab. The buyers are commercial and abroad; no US state or local buyer appears.",
+  "quote": "a portfolio of named enterprise fleet accounts ... Location: Germany, Europe",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "powerfleet::Enterprise Account Executive - On Site": {
+  "verdict": "B2B",
+  "why": "agree: I read the posting page and the quote holds. It is a Germany-based seat selling Warehouse 4.0 and on-site safety products to named warehouse, logistics and manufacturing enterprises. The buyers are commercial and abroad.",
+  "quote": "a portfolio of named enterprise accounts in warehouse, logistics, and manufacturing environments ... Location: Germany, Europe",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "publicinput::Account Executive": {
+  "verdict": "SLED",
+  "why": "agree: it sells to local government staff (city and county communications teams, planners, clerks). Consultant partners appear only as users alongside the agencies.",
+  "quote": "We're hiring an Account Executive to sell PublicInput to local governments.",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "publicinput::Senior Account Executive": {
+  "verdict": "SLED",
+  "why": "agree: larger cities and counties, sold through formal RFPs and council or board approval. It requires at least 2 years of selling to government.",
+  "quote": "sell PublicInput to local governments, with a focus on larger cities and counties",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "sonicwall::Inside Territory Manager- Entry level": {
+  "verdict": "B2B",
+  "why": "agree: an inside channel seat whose only end-customer words are 'existing SMB accounts' (small and medium businesses). SonicWall's own line says it serves SMBs and MSPs. No school, district or agency appears in the ad. The board lists SonicWall as also selling to K-12 and local government, but that is a company-level fact the ad does not carry into this seat, as with the CrowdStrike SMB and Mitel channel seats on 11-19.",
+  "quote": "Growing existing SMB accounts through selected regional channel partners and distributors",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "t2-systems::Channel Sales Manager": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. The role recruits and manages 'Resellers and Operators' and says 'Experience as a Parking Operator a plus'. Those partners are businesses, but the ad never names the end buyers, and T2 sells to universities and cities as well as private parking. The ad does not settle it.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "t2-systems::Regional Sales Manager": {
+  "verdict": "SLED",
+  "why": "Agree. The seat will 'build on a large base of current University accounts' and prefers public-sector (municipal, university) experience. Refute check: the ad names no hospital, parking operator or other private buyer.",
+  "quote": "Experience working with the public sector (e.g. municipalities, universities) preferred.",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "top-hat::Inside Sales Representative": {
+  "verdict": "SLED",
+  "why": "Agree. It sells Top Hat's courseware to professors at New England colleges and universities, the board's higher-ed market. Refute check: no business or consumer buyer is named. The list surely includes private colleges as well as public ones, but the ad draws no line between them. At worst it would be MIXED, which also stays.",
+  "quote": "you will be assigned a list of colleges and universities",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "top-hat::Sales Representative - Milwaukee": {
+  "verdict": "SLED",
+  "why": "Agree. It is a campus-based rep selling to professors at colleges and universities in Illinois, Wisconsin and St. Louis. Refute check: no business or consumer buyer is named. Private colleges are probably in the territory, but higher ed is this board's education market, and the call would be MIXED at worst, which also stays.",
+  "quote": "you will be assigned a territory of colleges and universities",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "top-hat::Sales Representative - St. Louis": {
+  "verdict": "SLED",
+  "why": "Agree. It is the same ad as the Milwaukee rep: professors at colleges and universities in Illinois, Wisconsin and St. Louis. Refute check: no business or consumer buyer is named. It would be MIXED at worst, which also stays.",
+  "quote": "you will be assigned a territory of colleges and universities",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "upkeep::Account Executive - Install Base": {
+  "verdict": "B2B",
+  "why": "Agree. The seat grows UpKeep's existing customer base, which the same ad describes as 'Over 4,000 companies' (Shell, Yamaha, Unilever, Marriott). It expands accounts into 'new sites or business units' and wants maintenance, manufacturing and facilities sales experience. Refute check: I read the posting page, and it matches the chunk's ad. Its duties and requirements name no city, county, school, utility or other public buyer. This is the same pattern as the 10-27 MaintainX rulings.",
+  "quote": "Over 4,000 companies\u2014including Shell, Yamaha, Unilever, and Marriott\u2014run on UpKeep ... you will grow revenue within UpKeep\u2019s existing customer base",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "vertigis::Inside Sales Representative": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. This generic inside sales seat supports the Account Managers, and the ad names no buyer or segment. VertiGIS sells to local government but also to utilities and telecom. Its Utilities AE was ruled MIXED on 10-27 (municipal and investor-owned) and its Telecommunications AE B2B. The ad does not settle it.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "virtra::Territory Sales Manager- NE Territory": {
+  "verdict": "SLED",
+  "why": "Agree. I read the posting page: the seat covers NY, VT, NH, MA, RI, CT and ME and 'pursues Law Enforcement and other sales opportunities', quoting prices and 'bid specifications'. Refute check: 'military' appears only in the experience asks ('Experience selling to law enforcement and military accounts', and a military or law enforcement background is preferred). No private buyer is named.",
+  "quote": "pursues Law Enforcement and other sales opportunities",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "wasabi-technologies::Commercial Account Executive, Northeast": {
+  "verdict": "B2B",
+  "why": "Agree. The title names the Commercial segment, and the ad asks for 'proven commercial sales experience' and 'experience in B2B sales or channel sales'. Refute check: the ad names no government, school or agency buyer; the only parties named are partners and 'end-user customers'. This is less certain than the Zscaler calls. No Wasabi public-sector sales posting is on the board to show the split, so the call rests on the title's segment word.",
+  "quote": "Title: Commercial Account Executive, Northeast; ad: proven commercial sales experience",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "workday::Large Enterprise | Customer Base | Account Executive": {
+  "verdict": "B2B",
+  "why": "Agree. There is no ad, and Workday pages are off-limits, but the title names Workday's Large Enterprise segment. Workday posts public sector as its own role ('Account Executive, Platform - SLED, Higher Ed, NFP' is on the board now). The earlier 'Large Enterprise Customer Base Account Executive' page, read on 10-27, sold 'within Large Enterprise customers'. Refute check: nothing in the title points to a public buyer.",
+  "quote": "Title: Large Enterprise | Customer Base | Account Executive",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "workday::Principal Partner Account Manager": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. There is no ad, and Workday pages are off-limits. The title, whose address adds 'MSPs', names a partner type (managed service providers), not the end buyers. Workday sells to businesses and to state, local and higher-ed buyers alike.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "xylem::Channel Sales Manager - UV Disinfection (West)": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. There is no ad, and Workday pages are off-limits. The title names no market. Xylem UV disinfection serves both municipal and industrial treatment. The separate 'UV Disinfection Municipal (West)' channel post (R46897, ruled SLED on 10-27) is still on the board, so this one may be its industrial counterpart or a wider replacement. The title alone cannot tell.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zoll-medical::Territory Manager - Bakersfield": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. There is no ad, and Workday pages are off-limits. 'Bakersfield' is a place, not a buyer. ZOLL's city-named Territory Manager posts have mostly been LifeVest physician sales, ruled B2B on 10-27 and 11-19. But ZOLL also hires EMS territory managers, so the title does not settle it. This matches the 11-19 call on Territory Manager - Carlsbad.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - DoW - DISA/Fourth Estate": {
+  "verdict": "FEDERAL",
+  "why": "Agree. The ad puts the seat in the US Department of War (Defense), covering DISA and the Fourth Estate defense agencies, from D.C. No state or local buyer appears. Its 'engaging with enterprise accounts' line is Zscaler boilerplate.",
+  "quote": "We are looking for an Account Executive in DoW supporting DISA and Fourth Estate",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - Enterprise, Atlanta GA": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. The 'engaging with enterprise accounts' line the first reader quoted is Zscaler boilerplate. The same sentence is in this chunk's SLED HigherEd ad and both federal ads, so it names no buyer. What holds is the title's Enterprise segment and the ad's 'We are looking for an Enterprise Account Executive'. Refute check: the ad names no public buyer. Zscaler covers SLED with its own staff: the board has 'Principal Sales Engineer, SLED - East' (listing Florida and Georgia), 'Regional Vice President Sales - SLED West' and 'Director, Sales Engineering - SLED', and this ",
+  "quote": "Title: Account Executive - Enterprise, Atlanta GA; ad: We are looking for an Enterprise Account Executive",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - Enterprise, Florida": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. 'Engaging with enterprise accounts' is boilerplate shared with Zscaler's SLED and federal ads, so the call rests on the title's Enterprise segment. Refute check: the ad names no public buyer. Zscaler's SLED East sales engineer post lists Florida, so Florida SLED has its own team.",
+  "quote": "Title: Account Executive - Enterprise, Florida",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - Enterprise, Houston TX": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. 'Engaging with enterprise accounts' is boilerplate shared with Zscaler's SLED and federal ads, so the call rests on the title's Enterprise segment. Refute check: the ad names no public buyer. Zscaler covers Texas SLED with its own staff ('Senior Sales Engineer, SLED - Texas' and 'Sr. Partner Business Manager - SLED - TOLA' are on the board).",
+  "quote": "Title: Account Executive - Enterprise, Houston TX",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - Enterprise, North Carolina": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. 'Engaging with enterprise accounts' is boilerplate shared with Zscaler's SLED and federal ads. What holds is the title's Enterprise segment and the ad's 'We are looking for an Enterprise Account Executive'. Refute check: the ad names no public buyer. Zscaler runs SLED as its own team (SLED East, SLED Texas, SLED West, and a SLED sales-engineering director on the board).",
+  "quote": "Title: Account Executive - Enterprise, North Carolina; ad: We are looking for an Enterprise Account Executive",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - Fed Civilian Healthcare": {
+  "verdict": "FEDERAL",
+  "why": "Agree. The ad puts the seat on Zscaler's federal Civilian team in the D.C. area, 'focused on SBA, DHA and VA', all US federal agencies. No state or local buyer appears.",
+  "quote": "We are looking for an Account Executive in Civilian ... focused on SBA, DHA and VA",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - Majors, Chicago": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. 'Engaging with enterprise accounts' is boilerplate shared with the SLED and federal ads. What holds is 'We are looking for a Majors Account Executive'. Majors is Zscaler's largest-company tier, and its sibling posts are split by private industry: 'Account Executive, Majors (Finance)', 'Majors (\u88fd\u9020\u696d)' (manufacturing) and 'Senior Sales Engineer - Majors, NYC Financials'. SLED has its own team and sales-engineering director. Refute check: the ad names no public buyer.",
+  "quote": "Title: Account Executive - Majors, Chicago; ad: We are looking for a Majors Account Executive",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive - SLED - HigherEd - PacNW": {
+  "verdict": "SLED",
+  "why": "Agree. The title and the ad put the seat on Zscaler's SLED higher-education team for Oregon and Washington. Refute check: no business buyer is named. The 'enterprise accounts' and 'client businesses' lines are the same boilerplate every Zscaler AE ad carries.",
+  "quote": "We are looking for an Account Executive in Higher Education, covering the Northwest",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive, Commercial": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. The title names the Commercial segment. The Japanese ad says the seat is based in Japan ('\u3053\u306e\u8077\u52d9\u306f\u65e5\u672c\u3092\u62e0\u70b9\u3068\u3057'), though the listing says Munich; either way it is outside the US. The first reader's '\u6cd5\u4eba\u9867\u5ba2\u3068\u306e\u95a2\u4e0e' is the Japanese form of the 'engaging with enterprise accounts' experience boilerplate, so the title carries the call. No public buyer appears.",
+  "quote": "Title: Account Executive, Commercial",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive, Commercial - Ohio": {
+  "verdict": "B2B",
+  "why": "Agree. The title names Zscaler's Commercial segment, and the board also lists 'Regional Director, Commercial - Midwest'. Refute check: the ad names no public buyer, only boilerplate ('engaging with accounts', 'client businesses'). Zscaler sells to SLED through its own SLED team.",
+  "quote": "Title: Account Executive, Commercial - Ohio",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Account Executive- Public Sector": {
+  "verdict": "FEDERAL",
+  "why": "Agree. It is a Gurugram, India seat reporting to the Regional VP, Public Sector, selling to India's central and state ministries and senior government officials. That is another country's government, not US state or local.",
+  "quote": "selling into Central Ministries & State Ministries",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Associate Product Sales Account Executive": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. It is a SecOps product overlay that will 'support a specific region' alongside the 'primary sales teams', and it names no segment. 'An enterprise's environment' and 'the enterprise security landscape' describe the product and the industry, not the buyers. Zscaler sells to businesses and to SLED, so the ad does not settle which accounts the region holds.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Commercial Account Executive": {
+  "verdict": "B2B",
+  "why": "Agree. The ad puts the seat in the 'Commercial sales department', on 'accounts of 750 to 5,000 employees', and asks for experience 'specifically selling to commercial accounts in the UK'. The seat is outside the US (listed as Frankfurt, while the ad says UK), and Zscaler posts UK public sector separately ('Account Executive, Public Sector', London).",
+  "quote": "reporting to the Sales Director in the Commercial sales department ... specifically selling to commercial accounts in the UK",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Regional Sales Director, Enterprise - Texas": {
+  "verdict": "B2B",
+  "why": "Agree. The title names the Enterprise segment for a Dallas sales leader, and the ad body names no segment and no public buyer. Zscaler covers Texas SLED with its own staff ('Senior Sales Engineer, SLED - Texas' and 'Sr. Partner Business Manager - SLED - TOLA' are on the board).",
+  "quote": "Title: Regional Sales Director, Enterprise - Texas",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Sales Account Executive - Enterprise": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. 'Engaging with enterprise accounts' is boilerplate, so the call rests on the title's Enterprise segment. The ad body places the seat 'in the Mexico City area', though the listing says Arizona/USA, and it also mentions the Bay Area, which looks like a copy slip. No public buyer appears, and Zscaler posts its SLED selling under SLED titles.",
+  "quote": "Title: Sales Account Executive - Enterprise",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Sales Account Executive - Majors": {
+  "verdict": "B2B",
+  "why": "Agree, with the quote corrected. 'Engaging with enterprise accounts' is boilerplate shared with the SLED and federal ads. The title names Majors, Zscaler's largest-company tier, whose sibling posts are split by private industry (Finance, manufacturing, NYC Financials); SLED is its own team. Refute check: the ad names no public buyer.",
+  "quote": "Title: Sales Account Executive - Majors",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Senior Service Sales Manager": {
+  "verdict": "B2B",
+  "why": "Agree. The ad scopes the seat to 'Enterprise and Commercial sectors' and 'enterprise customer accounts', both business segments at Zscaler, which sells to SLED and federal buyers through separate teams. No public buyer is named.",
+  "quote": "developing our service business across Enterprise and Commercial sectors",
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Specialist Account Executive - Sec Ops": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. It is the same SecOps overlay ad as the Associate Product Sales AE: 'a specific region', with no segment named. Its 'enterprise' wording describes the product. Zscaler sells to businesses and to SLED, so it stays on the board and is listed.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
+ },
+ "zscaler::Specialist Account Executive, SecOps": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. It is the same SecOps overlay ad again: 'a specific region', with no segment named. Its 'enterprise' wording describes the product. Zscaler sells to businesses and to SLED, so it stays on the board and is listed.",
+  "quote": null,
+  "on": "2026-11-21",
+  "by": "agent:scope-review-2026-11-21"
  }
 }
