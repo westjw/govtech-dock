@@ -3095,6 +3095,78 @@ def fetch_zohorecruit(ref) -> list[dict]:
         out.append(row)
     return out
 
+# ---- comeet (now "Spark Hire Recruit"; hosts unchanged)
+#
+# The list is Comeet's careers API, one request a company, with the ad on
+# &details=true: www.comeet.co/careers-api/2.0/company/<UID>/positions?token=.
+# The UID is two hex digits, a dot, three ("F2.004"); the token is the public
+# one the company's own careers page hands every visitor's browser - in its
+# iframe, its COMEET.init call, or on its hosted page. So a ref is either
+# "<UID>|<TOKEN>", as the company's page gave them, or the hosted board
+# https://www.comeet.com/jobs/<slug>/<UID>, whose page carries the token
+# (COMPANY_DATA) and is read for it each time. Measured 2026-11-19 and 11-21:
+# Claroty 37, Cognyte 38, Mprest 12, Imagry 6, Bond Sports 3.
+#
+# Never read: the referral bounty (company_referrals_reward, "3000$", is not
+# pay), the apply alias (email), the categories (one names a hiring manager),
+# and location.is_remote, which is true on every Hybrid row. There is no
+# posting date: time_updated is an edit stamp.
+
+_COMEET_UID = r"[0-9A-F]{2}\.[0-9A-F]{3}"
+_COMEET_PAIR = re.compile(rf"({_COMEET_UID})\|([0-9A-F]{{20,64}})")
+_COMEET_HOSTED = re.compile(rf"https://www\.comeet\.com/jobs/([A-Za-z0-9_-]{{1,80}})/({_COMEET_UID})")
+
+
+def comeet_board(ref) -> tuple[str, list, dict]:
+    """(uid, every position, the hosted page's COMPANY_DATA or {})."""
+    raw = _text(ref).rstrip("/")
+    company: dict = {}
+    pair, hosted = _COMEET_PAIR.fullmatch(raw), _COMEET_HOSTED.fullmatch(raw)
+    if pair:
+        uid, token = pair.group(1), pair.group(2)
+    elif hosted:
+        page = _page(raw, same_host=True).text or ""
+        m = re.search(r"COMPANY_DATA\s*=\s*(?=\{)", page)
+        try:
+            company = json.JSONDecoder().raw_decode(page, m.end())[0] if m else {}
+        except ValueError:
+            company = {}
+        uid, token = hosted.group(2), _text(company.get("token") if isinstance(company, dict) else "")
+        if not isinstance(company, dict) or _text(company.get("company_uid")) != uid \
+                or not re.fullmatch(r"[0-9A-F]{20,64}", token):
+            raise AtsError(f"{raw} carried no company data for {uid}")
+    else:
+        raise AtsError(f"not a comeet board: {ref!r}")
+    rows = _json(_page(f"https://www.comeet.co/careers-api/2.0/company/{uid}/positions"
+                       f"?token={token}&details=true", same_host=True))
+    if not isinstance(rows, list) or not all(isinstance(j, dict) for j in rows):
+        raise AtsError("unexpected comeet payload")
+    return uid, rows, company
+
+
+def fetch_comeet(ref) -> list[dict]:
+    _uid, rows, _company = comeet_board(ref)
+    out = []
+    for j in rows:
+        title = _text(j.get("name"))
+        url = _text(j.get("url_comeet_hosted_page"))
+        if not title or not url.startswith("https://www.comeet.com/jobs/"):
+            continue
+        loc = j.get("location") if isinstance(j.get("location"), dict) else {}
+        details = sorted((d for d in j.get("details") or [] if isinstance(d, dict)),
+                         key=lambda d: d.get("order") if isinstance(d.get("order"), int) else 99)
+        out.append({"title": title,
+                    "location": _text(loc.get("name")),
+                    # one row per position uid, even where copies of one role
+                    # in several places share the employer's own page
+                    "url": url,
+                    "posted": None,
+                    "mode": work_mode(j.get("workplace_type")),
+                    "office_hint": office_hint(loc.get("city"), loc.get("state"), loc.get("country")),
+                    "jd": "\n\n".join(p for p in (plain_html(d.get("value") or "") for d in details)
+                                       if p)})
+    return out
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -3120,6 +3192,7 @@ FETCHERS = {
     "teamtailor": fetch_teamtailor,
     "pinpoint": fetch_pinpoint,
     "zohorecruit": fetch_zohorecruit,
+    "comeet": fetch_comeet,
 }
 
 

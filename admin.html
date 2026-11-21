@@ -5182,7 +5182,8 @@ function boardUrlFor(f, c){
            applicantpro:'https://'+r+'/jobs/',
            teamtailor:r,
            pinpoint:'https://'+r+'.pinpointhq.com',
-           zohorecruit:r})[f.type] || '#';
+           zohorecruit:r,
+           comeet:(/^https:/.test(r) ? r : '#')})[f.type] || '#';
 }
 
 RENDER.placement = c => {

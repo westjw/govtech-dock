@@ -5229,6 +5229,13 @@ _ID_ZOHO = ('<html><input type="hidden" value="' + html.escape(json.dumps([{
         "list_url": "https://redmane.zohorecruit.com/jobs/Careers",
         "org_info": {"company_name": "RedMane Technology", "website": "www.redmane.com",
                      "hide_company_name": False}}), quote=True) + '" id="meta"></html>')
+_CM_TOKEN = "0123456789ABCDEF0123456789ABCD"
+_ID_COMEET_PAGE = ('<script>var COMPANY_DATA = {"name": "Bond Sports", "website": "www.bondsports.co", '
+                   f'"company_uid": "F7.009", "slug": "bondsports", "token": "{_CM_TOKEN}"}};</script>')
+_ID_COMEET_FEED = json.dumps([{"uid": "E1.A52", "name": "Sales Development Rep - Sports Tech",
+                               "company_name": "Bond Sports",
+                               "url_comeet_hosted_page": "https://www.comeet.com/jobs/bondsports/"
+                                                         "F7.009/sdr/E1.A52"}])
 _ID_TEAMTAILOR = json.dumps({
     "version": "https://jsonfeed.org/version/1.1", "title": "Fonroche Lighting America",
     "home_page_url": "https://fonrochelightingamerica.na.teamtailor.com/jobs",
@@ -5503,6 +5510,9 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
     TT = "https://fonrochelightingamerica.na.teamtailor.com"
     PP = "https://clearview.pinpointhq.com"
     ZR = "https://redmane.zohorecruit.com/jobs/Careers"
+    CM = "https://www.comeet.com/jobs/bondsports/F7.009"
+    CM_API = ("https://www.comeet.co/careers-api/2.0/company/F7.009/positions"
+              f"?token={_CM_TOKEN}&details=true")
 
     def ap_routes(url):
         return (_ID_APPLICANTPRO_PAGE if url == AP_PAGE else
@@ -5555,6 +5565,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
          {PP + "/postings.json": _ID_PINPOINT_FEED, PP + "/jobs.rss": _ID_PINPOINT_RSS,
           PP + "/": _ID_PINPOINT_PAGE}, None, ["Clearview AI"], 1, PP + "/"),
         ("zohorecruit", ZR, "RedMane Technology", {ZR: _ID_ZOHO}, None, ["RedMane Technology"], 1, ZR),
+        ("comeet", CM, "Bond Sports", {CM: _ID_COMEET_PAGE, CM_API: _ID_COMEET_FEED}, None,
+         ["Bond Sports"], 1, CM),
     ]
 
     keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
@@ -6162,7 +6174,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
                                     else AP_HOST if kind == "applicantpro"
                                     else TT if kind == "teamtailor"
                                     else "clearview" if kind == "pinpoint"
-                                    else ZR if kind == "zohorecruit" else "acme")
+                                    else ZR if kind == "zohorecruit"
+                                    else CM if kind == "comeet" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -18882,6 +18895,113 @@ def check_zoho_recruit_reads_only_the_open_jobs_its_page_carries() -> int:
     return errors
 
 
+def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
+    """Comeet (2026-11-21): the careers API takes the company's uid and the
+    public token its own careers page hands every browser. A ref is the pair
+    "<UID>|<TOKEN>" as their page gave it, or the hosted board, whose page
+    carries the token in COMPANY_DATA - and is believed only for the uid in
+    its address. Rows are keyed on the hosted posting page; a referral bounty,
+    the apply alias and is_remote (true on every Hybrid row) are never read;
+    there is no posting date."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import verify_boards as vb
+    errors = 0
+    T = "0123456789ABCDEF0123456789ABCD"
+    hosted = "https://www.comeet.com/jobs/acmegov/F7.009"
+    api = f"https://www.comeet.co/careers-api/2.0/company/F7.009/positions?token={T}&details=true"
+
+    def pos(n, **kw):
+        p = {"uid": f"E1.A5{n}", "name": f"Role {n}", "company_name": "Acme Gov",
+             "workplace_type": "Hybrid", "company_referrals_reward": "3000$",
+             "email": "jobs.acme@mail.comeet.example",
+             "url_comeet_hosted_page": f"{hosted}/role-{n}/E1.A5{n}",
+             "location": {"name": "Boca Raton, FL", "city": "Boca Raton", "state": "FL",
+                          "country": "US", "is_remote": True},
+             "time_updated": "2026-11-08T14:58:59Z",
+             "details": [{"name": "Requirements", "value": "<p>Five years.</p>", "order": 2},
+                         {"name": "Description", "value": "<p>Sell to cities.</p>", "order": 1}]}
+        p.update(kw)
+        return p
+
+    page = ('<script>var COMPANY_DATA = {"name": "Acme Gov", "website": "www.acmegov.example", '
+            f'"company_uid": "F7.009", "slug": "acmegov", "token": "{T}"}};</script>')
+
+    class R:
+        def __init__(self, text):
+            self.text, self.status_code, self.headers = text, 200, {}
+
+        def json(self):
+            return json.loads(self.text)
+
+    asked = []
+
+    def serve(routes):
+        def fake(url, **kw):
+            asked.append((url, kw.get("same_host")))
+            if url in routes:
+                return R(routes[url])
+            raise ats.AtsError(f"HTTP 404 for {url}")
+        return fake
+
+    keep = ats._page
+    try:
+        ats._page = serve({hosted: page, api: json.dumps([pos(1), pos(2, name=" "),
+                                                          pos(3, url_comeet_hosted_page="x")])})
+        rows = ats.fetch_comeet(hosted)
+        one = rows[0] if rows else {}
+        if len(rows) != 1 or one.get("url") != f"{hosted}/role-1/E1.A51" \
+                or one.get("mode") != "hybrid" or one.get("posted") is not None \
+                or one.get("jd") != "Sell to cities.\n\nFive years." \
+                or (one.get("office_hint") or {}).get("state") != "FL":
+            errors += fail(f"comeet: the rows are not what the board published (details in "
+                           f"their order, hybrid as the board says, no date): {rows}")
+        if any(w in json.dumps(rows) for w in ("3000$", "mail.comeet", "time_updated")):
+            errors += fail("comeet: a row carries the referral bounty, the apply alias or an edit stamp")
+        if not all(same for _u, same in asked):
+            errors += fail(f"comeet: a request left the host it asked: {asked}")
+        # the same board by its pair: no hosted page asked
+        asked.clear()
+        ats._page = serve({api: json.dumps([pos(1)])})
+        if len(ats.fetch_comeet(f"F7.009|{T}")) != 1 or [u for u, _ in asked] != [api]:
+            errors += fail(f"comeet: a uid and token pair was not read straight from the API: {asked}")
+        # a hosted page for another uid, or with no token, is not this board
+        for body in (page.replace('"F7.009"', '"F2.004"'), page.replace(T, "short"),
+                     "<html>no company data</html>"):
+            ats._page = serve({hosted: body, api: "[]"})
+            try:
+                ats.fetch_comeet(hosted)
+                errors += fail(f"comeet: a hosted page with the wrong company data was believed: {body[:60]}")
+            except ats.AtsError:
+                pass
+        asked.clear()
+        for ref in ("F7.009", f"F7.009|{T}x?evil", "https://www.comeet.com/jobs/acme", 
+                    "https://evil.example/jobs/acme/F7.009", f"f7.009|{T.lower()}", None):
+            try:
+                ats.comeet_board(ref)
+                errors += fail(f"comeet: {ref!r} was taken as a board")
+            except ats.AtsError:
+                pass
+        if asked:
+            errors += fail(f"comeet: a ref that is not a board was asked for: {asked}")
+        # the probe: every row's company_name and the hosted page's name and site
+        ats._page = serve({hosted: page, api: json.dumps([pos(1)])})
+        said = vb.board_says("comeet", hosted)
+        if said["names"] != ["Acme Gov"] or not said["stated"] or said["site"] != "www.acmegov.example":
+            errors += fail(f"comeet: the probe did not state the board's name and site: {said}")
+        ats._page = serve({api: "[]"})
+        said = vb.board_says("comeet", f"F7.009|{T}")
+        if said["stated"] or said["names"]:
+            errors += fail(f"comeet: an empty list with no hosted page was read as naming somebody: {said}")
+        ats._page = serve({hosted: page, api: json.dumps([pos(1, company_name="Parent Group")])})
+        said = vb.board_says("comeet", hosted)
+        if said["names"] != ["Acme Gov", "Parent Group"]:
+            errors += fail(f"comeet: a board naming two employers did not state both: {said['names']}")
+    finally:
+        ats._page = keep
+    return errors
+
+
 def check_a_long_location_is_published_short() -> int:
     """A posting never ships a location longer than LOCATION_CHARS.
 
@@ -25628,6 +25748,25 @@ SITE_BOARD_FORMS = [
      "source: 'CareerSite', site: 'https://nexgenam.zohorecruit.com' });</script>",
      "zohorecruit", "https://nexgenam.zohorecruit.com/jobs/Careers",
      "https://nexgenam.zohorecruit.com/jobs/Careers"),
+    # Comeet: Claroty frames it with its public token, Cognyte calls
+    # COMEET.init, Penlink links its hosted board (seen 2026-11-19 and 11-21)
+    ('<iframe src="https://www.comeet.co/jobs/F2.004/social?token=0123456789ABCDEF0123456789ABCD'
+     '&company-uid=F2.004&company-name=claroty"></iframe>',
+     "comeet", "F2.004|0123456789ABCDEF0123456789ABCD",
+     "https://www.comeet.co/careers-api/2.0/company/F2.004/positions"
+     "?token=0123456789ABCDEF0123456789ABCD&details=true"),
+    ('<script>COMEET.init({"token": "0123456789ABCDEF0123456789ABCD", "company-uid": "F2.009",'
+     ' "company-name": "Cognyte",});</script>',
+     "comeet", "F2.009|0123456789ABCDEF0123456789ABCD",
+     "https://www.comeet.co/careers-api/2.0/company/F2.009/positions"
+     "?token=0123456789ABCDEF0123456789ABCD&details=true"),
+    ('<a href="https://www.comeet.com/jobs/penlink/E5.002">Careers</a>',
+     "comeet", "https://www.comeet.com/jobs/penlink/E5.002", "https://www.comeet.com/jobs/penlink/E5.002"),
+    ('<script>fetch("https://www.comeet.co/careers-api/2.0/company/38.005/positions?details=true'
+     '&token=0123456789ABCDEF0123456789ABCD")</script>',
+     "comeet", "38.005|0123456789ABCDEF0123456789ABCD",
+     "https://www.comeet.co/careers-api/2.0/company/38.005/positions"
+     "?token=0123456789ABCDEF0123456789ABCD&details=true"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -25642,6 +25781,8 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://app.teamtailor.com/companies/YfyrsSdTav0@eu/dashboard">x</a>',  # vendor's
     '<a href="https://app.pinpointhq.com/">Pinpoint</a>',             # the vendor's app
     '<a href="https://nexgenam.zohorecruit.com">Jobs</a>',            # a host with no page name
+    '<script src="//www.comeet.co/careers-api/api.js"></script>',     # the widget's script
+    '<a href="https://support.comeet.co/section/terms-and-policies/">Terms</a>',  # vendor's
     '<a href="https://apply.workable.com/j/0A1B2C3D4E">Apply</a>',   # a posting's short link
     '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
     '<img src="https://c-1234-20200101-acme-com.i.icims.com/logo.png">',
@@ -37539,6 +37680,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "gem": "acme", "hirebridge": "7724", "applicantpro": "casellejobs.applicantpro.com",
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
+        "comeet": "https://www.comeet.com/jobs/acme/F7.009",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -37620,6 +37762,7 @@ console.log(JSON.stringify(out));"""
         ("teamtailor", "https://acme.teamtailor.com"),
         ("pinpoint", "https://acme.pinpointhq.com"),
         ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers"),
+        ("comeet", "https://www.comeet.com/jobs/acme/F7.009"),
         ("paylocity", PAY),
         ("greenhouse", "https://job-boards.greenhouse.io/acme"),
         ("no ref", "#"),
@@ -50829,6 +50972,7 @@ def main() -> int:
     errors += check_teamtailor_is_read_and_found_as_its_sites_are()
     errors += check_pinpoint_reads_what_the_board_shows()
     errors += check_zoho_recruit_reads_only_the_open_jobs_its_page_carries()
+    errors += check_comeet_reads_the_board_its_company_page_hands_out()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()

@@ -107,6 +107,7 @@ _PROMOTE_ATS_HOSTS = (
     "isolvedhire.com",
     "pinpointhq.com",
     "zohorecruit.com",
+    "comeet.co",
 )
 
 _SLUG_GENERIC = {
@@ -437,6 +438,8 @@ def board_url(c: dict) -> str | None:
         return c.get("website")
     if kind in pat and isinstance(ref, str):
         return pat[kind].format(r=ref)
+    # (a comeet board on file as "<UID>|<TOKEN>" has no page of its own a
+    # person can open, and the pair is never printed: their website)
     return c.get("website")
 
 

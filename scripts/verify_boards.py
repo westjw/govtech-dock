@@ -1171,13 +1171,31 @@ def _zohorecruit(ref, out: dict) -> None:
         out["how"] = "zohorecruit page states no company name"
 
 
+def _comeet(ref, out: dict) -> None:
+    # company_name on every row of the list the reader reads; a hosted
+    # board's page also states the account's name and the website it gave,
+    # and both are held to the record. An empty list names nobody unless the
+    # board is a hosted page, which still names itself.
+    _uid, rows, company = ats.comeet_board(ref)
+    out["n"] = sum(1 for j in rows if ats._text(j.get("name")))
+    out["hosts"] = {"www.comeet.com"}
+    names = [j.get("company_name") for j in rows] + [company.get("name")]
+    if not _state(out, names, "comeet company_name on every position" +
+                  (", and the hosted board's own name" if company else "")):
+        out["how"] = ("comeet board lists no positions, so it names nobody" if not rows
+                      else "comeet positions name no company")
+        return
+    if ats._text(company.get("website")):
+        out["site"] = ats._text(company.get("website"))
+
+
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
            "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
            "gusto": _gusto, "paylocity": _paylocity, "icims": _icims,
            "hirebridge": _hirebridge, "applicantpro": _applicantpro,
            "teamtailor": _teamtailor, "pinpoint": _pinpoint,
-           "zohorecruit": _zohorecruit}
+           "zohorecruit": _zohorecruit, "comeet": _comeet}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.

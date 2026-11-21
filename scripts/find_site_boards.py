@@ -437,6 +437,7 @@ HINTS = {
     "teamtailor": ("teamtailor",),
     "pinpoint": ("pinpointhq.com",),
     "zohorecruit": ("zohorecruit.",),
+    "comeet": ("comeet.",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -603,6 +604,35 @@ def _zoho_embed(m):
     return ref, ref.lower()
 
 
+_UID = r"[0-9A-F]{2}\.[0-9A-F]{3}"
+
+
+def _comeet_pair(m):
+    # the company's own iframe or API call, which hands its browser the uid
+    # and the public token together
+    uid, token = m.group(1).upper(), m.group(2).upper()
+    return f"{uid}|{token}", uid.lower()
+
+
+def _comeet_init(m):
+    # COMEET.init({"token": ..., "company-uid": ...}): one pattern per key,
+    # because Cognyte's object is not JSON (a trailing comma), and its
+    # "company-name" is a display name, not the board
+    body = m.group(1)
+    t = re.search(r"[\"']token[\"']\s*:\s*[\"']([0-9A-F]{20,64})[\"']", body, re.I)
+    u = re.search(rf"[\"']company-uid[\"']\s*:\s*[\"']({_UID})[\"']", body, re.I)
+    if not t or not u:
+        return None
+    return f"{u.group(1).upper()}|{t.group(1).upper()}", u.group(1).lower()
+
+
+def _comeet_hosted(m):
+    slug, uid = m.group(1), m.group(2).upper()
+    if _furniture(slug):
+        return None
+    return f"https://www.comeet.com/jobs/{slug}/{uid}", uid.lower()
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -671,6 +701,13 @@ BOARDS: list[_Pat] = (
                              r"\.zohorecruit\.(?:com|eu|in))/jobs/([A-Za-z0-9_-]{1,80})"
                              r"(?![A-Za-z0-9_-])", _zoho_link),
         _here("zohorecruit", r"rec_embed_js\.load\(\s*\{([^{}]{0,2000})\}", _zoho_embed),
+        _here("comeet", rf"comeet\.co/jobs/({_UID})/(?:social|{_UID}/apply)\?[^\s\"'<>]*?"
+                        r"\btoken=([0-9A-F]{20,64})", _comeet_pair),
+        _here("comeet", rf"comeet\.com?/careers-api/2\.0/company/({_UID})/positions"
+                        r"[^\s\"'<>]*?\btoken=([0-9A-F]{20,64})", _comeet_pair),
+        _here("comeet", r"COMEET\.init\(\s*\{([^{}]{0,3000})\}", _comeet_init),
+        _here("comeet", rf"(?<![a-z0-9-])www\.comeet\.com/jobs/([A-Za-z0-9_-]{{1,80}})/({_UID})"
+                        r"(?=[/\"'?#\s<]|$)", _comeet_hosted),
     ])
 
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
@@ -692,7 +729,7 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("pinpoint-other", "pinpointhq.com", _B + r"pinpointhq\.com"),
         ("applicantpro-other", "applicantpro.com", _B + r"applicantpro\.com"),
         ("teamtailor-other", "teamtailor", _B + r"teamtailor(?:-cdn)?\.com"),
-        ("comeet", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
+        ("comeet-other", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
         ("eightfold", "eightfold.ai", _B + r"eightfold\.ai"),
         ("phenom", "phenompeople.com", _B + r"phenompeople\.com"),
         ("successfactors", "successfactors.", _B + r"successfactors\.(?:com|eu)"),
@@ -756,7 +793,7 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "paylocity-other": "paylocity", "adp-other": "adp",
                    "greenhouse-shortlink": "greenhouse", "teamtailor-other": "teamtailor",
                    "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
-                   "zohorecruit-other": "zohorecruit"}
+                   "zohorecruit-other": "zohorecruit", "comeet-other": "comeet"}
 
 _ANY_HINT = re.compile("|".join(sorted(
     {re.escape(h) for hs in HINTS.values() for h in hs}
