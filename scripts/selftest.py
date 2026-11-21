@@ -6514,10 +6514,19 @@ def check_a_stated_name_does_not_loosen_the_older_doors() -> int:
 
     streetlight = {"name": "StreetLight Data (Jacobs)", "website": "https://streetlightdata.test"}
     new = sorted(vb.NAMES_ITS_EMPLOYER - vb._ALWAYS_NAMED)
-    if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or len(new) != 12:
+    # every type a board names its employer on since then, BY NAME: a count
+    # said nothing about which type joined, and every one of them is held to
+    # the strict test below
+    named_since = {"ashby", "bamboohr", "breezy", "gem", "gusto", "icims", "jazzhr", "lever",
+                   "paylocity", "recruitee", "rippling", "smartrecruiters",      # 2026-11-18
+                   "applicantpro", "comeet", "hirebridge", "pinpoint", "teamtailor",
+                   "zohorecruit"}                                                # 2026-11-21
+    if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or set(new) != named_since:
         errors += fail(f"the types judge() is forgiving on have changed: "
-                       f"{sorted(vb._ALWAYS_NAMED)}. They are the three whose name it "
-                       f"read before 2026-11-18, and no others")
+                       f"{sorted(vb._ALWAYS_NAMED)}, and the ones it is strict on are "
+                       f"{new}. The first are the three whose name it read before "
+                       f"2026-11-18, and no others; a type added to the second is added "
+                       f"to named_since here, by name")
     for kind in new:
         for company, theirs, want in (
                 (streetlight, "Jacobs", "unknown"),            # the acquirer in parentheses
@@ -18914,7 +18923,7 @@ def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
     def pos(n, **kw):
         p = {"uid": f"E1.A5{n}", "name": f"Role {n}", "company_name": "Acme Gov",
              "workplace_type": "Hybrid", "company_referrals_reward": "3000$",
-             "email": "jobs.acme@mail.comeet.example",
+             "email": "apply-alias-marker-7f3",
              "url_comeet_hosted_page": f"{hosted}/role-{n}/E1.A5{n}",
              "location": {"name": "Boca Raton, FL", "city": "Boca Raton", "state": "FL",
                           "country": "US", "is_remote": True},
@@ -18956,7 +18965,7 @@ def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
                 or (one.get("office_hint") or {}).get("state") != "FL":
             errors += fail(f"comeet: the rows are not what the board published (details in "
                            f"their order, hybrid as the board says, no date): {rows}")
-        if any(w in json.dumps(rows) for w in ("3000$", "mail.comeet", "time_updated")):
+        if any(w in json.dumps(rows) for w in ("3000$", "apply-alias-marker", "time_updated")):
             errors += fail("comeet: a row carries the referral bounty, the apply alias or an edit stamp")
         if not all(same for _u, same in asked):
             errors += fail(f"comeet: a request left the host it asked: {asked}")
