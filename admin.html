@@ -5181,7 +5181,8 @@ function boardUrlFor(f, c){
            hirebridge:'https://recruit.hirebridge.com/v3/jobs/list.aspx?cid='+encodeURIComponent(r),
            applicantpro:'https://'+r+'/jobs/',
            teamtailor:r,
-           pinpoint:'https://'+r+'.pinpointhq.com'})[f.type] || '#';
+           pinpoint:'https://'+r+'.pinpointhq.com',
+           zohorecruit:r})[f.type] || '#';
 }
 
 RENDER.placement = c => {

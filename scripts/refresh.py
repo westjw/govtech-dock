@@ -75,6 +75,7 @@ _ATS_HOSTS = (
     "hirebridge.com",
     "isolvedhire.com",
     "pinpointhq.com",
+    "zohorecruit.com",
 )
 
 

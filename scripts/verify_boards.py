@@ -1149,12 +1149,35 @@ def _pinpoint(ref, out: dict) -> None:
         _state(out, [a.group(1)], "pinpoint RSS channel title and page og:title, stated by the board")
 
 
+def _zohorecruit(ref, out: dict) -> None:
+    # The page the reader reads: its meta input's org_info is the ACCOUNT -
+    # its company_name and the website it gave - so a parent's board states
+    # the parent (QuickLaunch's link goes to ElevenX Capital's). Never the
+    # page's title (Cuseum's is "Jobs at Careers", the page's name) nor the
+    # portal label ("exc" is ElevenX). A board set to hide the name states
+    # nothing.
+    _url, rows, meta = ats.zoho_board(ref)
+    org = meta.get("org_info") if isinstance(meta.get("org_info"), dict) else {}
+    out["n"] = sum(1 for j in rows if j.get("Publish") is True
+                   and ats._text(j.get("Posting_Title") or j.get("Job_Opening_Name")))
+    out["hosts"] = {host_of(str(ref))}
+    if org.get("hide_company_name") is True:
+        out["how"] = "zohorecruit board hides its company name"
+    elif _state(out, [org.get("company_name")], "zohorecruit org_info.company_name, "
+                                                "stated on the board's own page"):
+        site = ats._text(org.get("website"))
+        out["site"] = site or None
+    else:
+        out["how"] = "zohorecruit page states no company name"
+
+
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
            "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
            "gusto": _gusto, "paylocity": _paylocity, "icims": _icims,
            "hirebridge": _hirebridge, "applicantpro": _applicantpro,
-           "teamtailor": _teamtailor, "pinpoint": _pinpoint}
+           "teamtailor": _teamtailor, "pinpoint": _pinpoint,
+           "zohorecruit": _zohorecruit}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.

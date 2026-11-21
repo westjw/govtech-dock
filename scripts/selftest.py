@@ -5223,6 +5223,12 @@ _ID_PINPOINT_RSS = ("<rss><channel><title>Careers at Clearview AI</title><item>"
                     "<link>https://clearview.pinpointhq.com/jobs/484958</link></item></channel></rss>")
 _ID_PINPOINT_PAGE = ('<title>Jobs at Clearview AI | Clearview AI Careers</title>'
                      '<meta property="og:title" content="Careers at Clearview AI">')
+_ID_ZOHO = ('<html><input type="hidden" value="' + html.escape(json.dumps([{
+    "id": "565243000026177001", "Posting_Title": "Project Manager", "Publish": True}]), quote=True)
+    + '" id="jobs"><input type="hidden" value="' + html.escape(json.dumps({
+        "list_url": "https://redmane.zohorecruit.com/jobs/Careers",
+        "org_info": {"company_name": "RedMane Technology", "website": "www.redmane.com",
+                     "hide_company_name": False}}), quote=True) + '" id="meta"></html>')
 _ID_TEAMTAILOR = json.dumps({
     "version": "https://jsonfeed.org/version/1.1", "title": "Fonroche Lighting America",
     "home_page_url": "https://fonrochelightingamerica.na.teamtailor.com/jobs",
@@ -5496,6 +5502,7 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
 
     TT = "https://fonrochelightingamerica.na.teamtailor.com"
     PP = "https://clearview.pinpointhq.com"
+    ZR = "https://redmane.zohorecruit.com/jobs/Careers"
 
     def ap_routes(url):
         return (_ID_APPLICANTPRO_PAGE if url == AP_PAGE else
@@ -5547,6 +5554,7 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         ("pinpoint", "clearview", "Clearview AI",
          {PP + "/postings.json": _ID_PINPOINT_FEED, PP + "/jobs.rss": _ID_PINPOINT_RSS,
           PP + "/": _ID_PINPOINT_PAGE}, None, ["Clearview AI"], 1, PP + "/"),
+        ("zohorecruit", ZR, "RedMane Technology", {ZR: _ID_ZOHO}, None, ["RedMane Technology"], 1, ZR),
     ]
 
     keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
@@ -6153,7 +6161,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
                                     GUSTO if kind == "gusto" else "7724" if kind == "hirebridge"
                                     else AP_HOST if kind == "applicantpro"
                                     else TT if kind == "teamtailor"
-                                    else "clearview" if kind == "pinpoint" else "acme")
+                                    else "clearview" if kind == "pinpoint"
+                                    else ZR if kind == "zohorecruit" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -18765,6 +18774,114 @@ def check_pinpoint_reads_what_the_board_shows() -> int:
     return errors
 
 
+def check_zoho_recruit_reads_only_the_open_jobs_its_page_carries() -> int:
+    """Zoho Recruit (2026-11-21): the career site's page carries its list in
+    a hidden input (id="jobs") and its facts in another (id="meta"). A
+    closed job is kept on view with Publish false (GovEase's only row) and
+    is never published; a page without the list is an error, because Zoho
+    answers 200 for a page that does not exist, and only the input's [] is a
+    zero; a teaser is flagged so no money is read out of it; the probe states
+    the ACCOUNT's company_name and website, and nothing when the board hides
+    its name."""
+    import html as _h
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import verify_boards as vb
+    errors = 0
+    url = "https://acmegov.zohorecruit.com/jobs/Careers"
+
+    def page(rows, org=None, list_url=url):
+        meta = {"list_url": list_url, "page_name": "Careers",
+                "org_info": org or {"company_name": "Acme Gov", "website": "www.acmegov.example",
+                                    "hide_company_name": False}}
+        enc = lambda v: _h.escape(json.dumps(v), quote=True)
+        return ("<html>" + "x" * 5000 + f'<input type="hidden" value="{enc(rows)}" id="jobs">'
+                f'<input type="hidden" value="{enc(meta)}" id="meta"></html>')
+
+    def job(n, **kw):
+        j = {"id": f"56524300002617700{n}", "Posting_Title": f"Role {n}", "Publish": True,
+             "City": "Chicago", "State": "Illinois", "Country": "United States",
+             "Remote_Job": False, "Date_Opened": "2026-11-05",
+             "Job_Description": "Sell case management to state agencies. " * 8}
+        j.update(kw)
+        return j
+
+    class R:
+        def __init__(self, text):
+            self.text, self.status_code, self.headers = text, 200, {}
+
+    asked = []
+
+    def serve(body):
+        def fake(u, **kw):
+            asked.append((u, kw.get("same_host")))
+            if u != url:
+                raise ats.AtsError(f"HTTP 404 for {u}")
+            return R(body)
+        return fake
+
+    keep = ats._page
+    try:
+        closed = job(2, Publish=False, Is_Locked=True, Keep_on_Career_Site=True)
+        teaser = job(3, Job_Description="We are hiring a seller who will...", Remote_Job=True,
+                     City=None, State=None, Country=None)
+        ats._page = serve(page([job(1), closed, teaser, job(4, id="not-a-number")]))
+        rows = ats.fetch_zohorecruit(url + "/")
+        by = {r["title"]: r for r in rows}
+        if sorted(by) != ["Role 1", "Role 3"]:
+            errors += fail(f"zohorecruit: published {sorted(by)}: a closed job (Publish false) "
+                           f"or a row with no id reached the board")
+        one, three = by.get("Role 1") or {}, by.get("Role 3") or {}
+        if one.get("url") != f"{url}/565243000026177001" or one.get("posted") != "2026-11-05" \
+                or (one.get("office_hint") or {}).get("state") != "IL" or one.get("mode") is not None \
+                or one.get("_jd_is_teaser"):
+            errors += fail(f"zohorecruit: the open row is not what the page published: {one}")
+        if three.get("mode") != "remote" or three.get("location") != "Remote" \
+                or three.get("_jd_is_teaser") is not True:
+            errors += fail(f"zohorecruit: a remote teaser row is not read as one: {three}")
+        if not asked or not all(same for _u, same in asked):
+            errors += fail(f"zohorecruit: the page was not asked on its own host: {asked}")
+        # a list_url on another host is never where the rows are linked
+        ats._page = serve(page([job(1)], list_url="https://evil.example/jobs/Careers"))
+        if ats.fetch_zohorecruit(url)[0]["url"] != f"{url}/565243000026177001":
+            errors += fail("zohorecruit: a row was linked on a host the page's meta named")
+        ats._page = serve(page([]))
+        if ats.fetch_zohorecruit(url) != []:
+            errors += fail("zohorecruit: the list's literal [] is not a zero")
+        for body, why in (("<html>Page does not exist</html>", "Zoho's 200 for a wrong page"),
+                          (page([job(1)]).replace('id="meta"', 'id="other"'), "no meta"),
+                          (page("x"), "a list that is not a list")):
+            ats._page = serve(body)
+            try:
+                ats.fetch_zohorecruit(url)
+                errors += fail(f"zohorecruit: {why} was read as a board")
+            except ats.AtsError:
+                pass
+        asked.clear()
+        for ref in ("https://acmegov.zohorecruit.com", "http://acmegov.zohorecruit.com/jobs/Careers",
+                    "https://acmegov.zohorecruit.com.evil.example/jobs/Careers",
+                    "https://careers.acmegov.example/jobs/Careers", None):
+            try:
+                ats.zoho_board(ref)
+                errors += fail(f"zohorecruit: {ref!r} was taken as a career site")
+            except ats.AtsError:
+                pass
+        if asked:
+            errors += fail(f"zohorecruit: a ref that is not a career site was asked for: {asked}")
+        # the probe: the account's name and website; nothing when it hides them
+        ats._page = serve(page([job(1)]))
+        said = vb.board_says("zohorecruit", url)
+        if said["names"] != ["Acme Gov"] or not said["stated"] or said["site"] != "www.acmegov.example":
+            errors += fail(f"zohorecruit: the probe did not state the account's name and site: {said}")
+        ats._page = serve(page([job(1)], org={"company_name": "Acme Gov", "hide_company_name": True}))
+        said = vb.board_says("zohorecruit", url)
+        if said["stated"] or said["names"]:
+            errors += fail(f"zohorecruit: a board that hides its name was read as naming one: {said}")
+    finally:
+        ats._page = keep
+    return errors
+
+
 def check_a_long_location_is_published_short() -> int:
     """A posting never ships a location longer than LOCATION_CHARS.
 
@@ -25502,6 +25619,15 @@ SITE_BOARD_FORMS = [
     # Clearview and Pathify link their Pinpoint boards (seen 2026-11-19)
     ('<a href="https://clearview.pinpointhq.com/">Careers</a>',
      "pinpoint", "clearview", "https://clearview.pinpointhq.com/postings.json"),
+    # Cantata links its postings; NEXGEN embeds Zoho's widget (seen 2026-11-19)
+    ('<a href="https://cantatahealth.zohorecruit.com/jobs/Careers/764831000011456817/'
+     'Clinical-Implementation-Specialist?source=CareerSite">Learn More</a>',
+     "zohorecruit", "https://cantatahealth.zohorecruit.com/jobs/Careers",
+     "https://cantatahealth.zohorecruit.com/jobs/Careers"),
+    ("<script>rec_embed_js.load({ widget_id: 'rec_job_listing_div', page_name: 'Careers', "
+     "source: 'CareerSite', site: 'https://nexgenam.zohorecruit.com' });</script>",
+     "zohorecruit", "https://nexgenam.zohorecruit.com/jobs/Careers",
+     "https://nexgenam.zohorecruit.com/jobs/Careers"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -25515,6 +25641,7 @@ SITE_BOARD_NOT_ONE = [
     '<a href="//tt.teamtailor.com/auth/linkedin?company=vodaai&connect=1">in</a>',  # vendor's
     '<a href="https://app.teamtailor.com/companies/YfyrsSdTav0@eu/dashboard">x</a>',  # vendor's
     '<a href="https://app.pinpointhq.com/">Pinpoint</a>',             # the vendor's app
+    '<a href="https://nexgenam.zohorecruit.com">Jobs</a>',            # a host with no page name
     '<a href="https://apply.workable.com/j/0A1B2C3D4E">Apply</a>',   # a posting's short link
     '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
     '<img src="https://c-1234-20200101-acme-com.i.icims.com/logo.png">',
@@ -37411,6 +37538,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "adp": "cbabd1ae-568b-4f70-933b-3f462f76c1b5", "gusto": "acme-c850a9b3",
         "gem": "acme", "hirebridge": "7724", "applicantpro": "casellejobs.applicantpro.com",
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
+        "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -37491,6 +37619,7 @@ console.log(JSON.stringify(out));"""
         ("applicantpro", "https://casellejobs.applicantpro.com/jobs/"),
         ("teamtailor", "https://acme.teamtailor.com"),
         ("pinpoint", "https://acme.pinpointhq.com"),
+        ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers"),
         ("paylocity", PAY),
         ("greenhouse", "https://job-boards.greenhouse.io/acme"),
         ("no ref", "#"),
@@ -50699,6 +50828,7 @@ def main() -> int:
     errors += check_hirebridge_and_applicantpro_read_what_their_boards_publish()
     errors += check_teamtailor_is_read_and_found_as_its_sites_are()
     errors += check_pinpoint_reads_what_the_board_shows()
+    errors += check_zoho_recruit_reads_only_the_open_jobs_its_page_carries()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()

@@ -3011,6 +3011,90 @@ def fetch_pinpoint(ref) -> list[dict]:
                     "comp": comp})
     return out
 
+# ---- zohorecruit: https://<portal>.zohorecruit.<com|eu|in>/jobs/<PageName>
+#
+# The career site's own page carries the whole list, as JSON in a hidden
+# input (id="jobs"), and the board's facts in another (id="meta": the list's
+# address and the account's name). Both sit at the very end of a page of
+# some 1.8 MB, after an inlined asset map, so the page is read whole. The ref
+# is the page's address on Zoho's own host - a custom domain serves the same
+# board (careers.spektrasystems.com), and the vendor host is the one a probe
+# can hold every read to.
+#
+# CLOSED JOBS ARE IN THE LIST: a row with Publish false is a job kept on view
+# and closed (GovEase's only row, a 2025 opening). Only Publish true is read.
+# Every wrong address answers 200 with a page saying so, so a page without
+# the input is an error, never a zero; the input's literal [] is a zero.
+# Measured 2026-11-19 and 11-21: RedMane 6, NEXGEN 5, Cantata 4, Cuseum 0.
+
+_ZOHO_REF = re.compile(r"https://([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)\.zohorecruit\.(?:com|eu|in)"
+                       r"/jobs/[A-Za-z0-9_-]{1,80}")
+
+
+def _zoho_input(page: str, ident: str):
+    """The JSON a hidden <input id=...> holds, or None. Found by the id and
+    then its own tag, because the value comes before the id and is the
+    whole list, escaped."""
+    i = page.rfind(f'id="{ident}"')
+    if i < 0:
+        return None
+    start, end = page.rfind("<input", 0, i), page.find(">", i)
+    if start < 0 or end < 0:
+        return None
+    m = re.search(r'\bvalue="([^"]*)"', page[start:end + 1])
+    if not m:
+        return None
+    try:
+        return json.loads(html_lib.unescape(m.group(1)))
+    except ValueError:
+        return None
+
+
+def zoho_board(ref) -> tuple[str, list, dict]:
+    """(the board's address, its rows, its meta), or AtsError."""
+    url = _text(ref).rstrip("/")
+    if not _ZOHO_REF.fullmatch(url):
+        raise AtsError(f"not a zoho recruit career site: {ref!r}")
+    page = _page(url, same_host=True).text or ""
+    rows, meta = _zoho_input(page, "jobs"), _zoho_input(page, "meta")
+    if not isinstance(rows, list) or not isinstance(meta, dict) \
+            or not all(isinstance(j, dict) for j in rows):
+        raise AtsError(f"{url} carried no job list (Zoho answers 200 for a page that "
+                       f"does not exist)")
+    return url, rows, meta
+
+
+def fetch_zohorecruit(ref) -> list[dict]:
+    url, rows, meta = zoho_board(ref)
+    base = _text(meta.get("list_url")) or url
+    if (urllib.parse.urlsplit(base).hostname or "") != urllib.parse.urlsplit(url).hostname:
+        base = url
+    out = []
+    for j in rows:
+        title = _text(j.get("Posting_Title") or j.get("Job_Opening_Name"))
+        if not title or j.get("Publish") is not True or not _text(j.get("id")).isdigit():
+            continue
+        city, state, country = (_text(j.get(k)) for k in ("City", "State", "Country"))
+        remote = j.get("Remote_Job") is True
+        jd = _text(j.get("Job_Description"))
+        row = {"title": title,
+               "location": ", ".join(p for p in (city, state, country) if p) or
+                           ("Remote" if remote else ""),
+               # the row has no address; the list's own plus the id answers
+               # with the job, whatever its title becomes
+               "url": f"{base}/{_text(j.get('id'))}",
+               "posted": posted_date(j.get("Date_Opened")),
+               # a bool: True is remote, False is not "onsite"
+               "mode": "remote" if remote else None,
+               "office_hint": office_hint(city or None, state or None, country or None),
+               "jd": jd}
+        if len(jd) <= 160 and jd.endswith("..."):
+            # the list's teaser on a board laid out that way (Spektra's):
+            # what the board gave, and never read for money
+            row["_jd_is_teaser"] = True
+        out.append(row)
+    return out
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -3035,6 +3119,7 @@ FETCHERS = {
     "applicantpro": fetch_applicantpro,
     "teamtailor": fetch_teamtailor,
     "pinpoint": fetch_pinpoint,
+    "zohorecruit": fetch_zohorecruit,
 }
 
 

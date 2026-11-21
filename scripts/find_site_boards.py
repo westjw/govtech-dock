@@ -436,6 +436,7 @@ HINTS = {
     "applicantpro": ("applicantpro.com", "isolvedhire.com"),
     "teamtailor": ("teamtailor",),
     "pinpoint": ("pinpointhq.com",),
+    "zohorecruit": ("zohorecruit.",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -579,6 +580,29 @@ def _teamtailor_hosted(m):
     return f"https://{host}", host
 
 
+def _zoho_link(m):
+    # a link to the career site or to a posting on it: the site is
+    # https://<portal>.zohorecruit.<tld>/jobs/<PageName>, whatever follows
+    ref = f"https://{m.group(1).lower()}/jobs/{m.group(2)}"
+    if _furniture(m.group(1).split(".")[0]):
+        return None
+    return ref, ref.lower()
+
+
+def _zoho_embed(m):
+    # rec_embed_js.load({site: 'https://<portal>.zohorecruit.com', page_name:
+    # 'Careers', ...}): NEXGEN's site names its board this way only. A bare
+    # host is not a board without its page's name.
+    body = m.group(1)
+    site = re.search(r"\bsite\s*:\s*[\"'](https://[a-z0-9-]{1,63}\.zohorecruit\.(?:com|eu|in))/?[\"']",
+                     body, re.I)
+    page = re.search(r"\bpage_name\s*:\s*[\"']([A-Za-z0-9_-]{1,80})[\"']", body)
+    if not site or not page:
+        return None
+    ref = f"{site.group(1).lower()}/jobs/{page.group(1)}"
+    return ref, ref.lower()
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -643,6 +667,10 @@ BOARDS: list[_Pat] = (
                             r"\.teamtailor\.com(?![a-z0-9-])", _teamtailor_hosted),
         _here("pinpoint", r"(?<![a-z0-9.-])([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)"
                           r"\.pinpointhq\.com(?![a-z0-9-])"),
+        _here("zohorecruit", r"(?<![a-z0-9.-])https?://([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?"
+                             r"\.zohorecruit\.(?:com|eu|in))/jobs/([A-Za-z0-9_-]{1,80})"
+                             r"(?![A-Za-z0-9_-])", _zoho_link),
+        _here("zohorecruit", r"rec_embed_js\.load\(\s*\{([^{}]{0,2000})\}", _zoho_embed),
     ])
 
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
@@ -655,7 +683,7 @@ _B = r"(?<![a-z0-9-])"
 ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
     (vendor, hint, re.compile(pat, re.I)) for vendor, hint, pat in (
         ("jobvite", "jobvite.com", _B + r"jobvite\.com"),
-        ("zohorecruit", "zohorecruit.", _B + r"zohorecruit\.(?:com|eu|in)"),
+        ("zohorecruit-other", "zohorecruit.", _B + r"zohorecruit\.(?:com|eu|in)"),
         ("ukg", "ultipro.", _B + r"ultipro\.(?:com|ca)"),
         ("ukg", "ukg.net", _B + r"ukg\.net"),
         ("dayforce", "dayforcehcm.com", _B + r"dayforcehcm\.com"),
@@ -727,7 +755,8 @@ def _other_region(text: str, m) -> bool:
 _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "paylocity-other": "paylocity", "adp-other": "adp",
                    "greenhouse-shortlink": "greenhouse", "teamtailor-other": "teamtailor",
-                   "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint"}
+                   "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
+                   "zohorecruit-other": "zohorecruit"}
 
 _ANY_HINT = re.compile("|".join(sorted(
     {re.escape(h) for hs in HINTS.values() for h in hs}
