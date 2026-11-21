@@ -894,12 +894,19 @@ def main() -> int:
     # whose socket hangs blocks every finished result behind it: a 768-company
     # sweep ran 37 minutes and printed nothing while the workers were in fact
     # working. Results now land as they finish, and so do the checkpoints.
-    left_alone = []
+    left_alone, near_misses_held = [], []
 
     def unless_held(r):
         """The result, or - when the board found is one the owner holds under
         any record's id - a result that writes nothing. The log says so in
-        words that name no board and no doubt (it is committed, and public)."""
+        words that name no board and no doubt (it is committed, and public).
+
+        A NEAR MISS TOO (blind review, 2026-11-21). A board that read and did
+        not match the name is kept in ats_suspects.json, which feeds the
+        Acquisitions queue and --review's "accept" line, and is printed in
+        the run's public log: a board somebody refused for another record
+        went back in front of the owner that way. Held, it is counted and
+        neither kept nor printed."""
         f = r.get("found")
         c = by_id_all.get(r.get("id")) or {}
         if isinstance(f, dict) and board_proposals.held_board(
@@ -909,6 +916,14 @@ def main() -> int:
             return {"id": r["id"], "found": None,
                     "note": "a board was found and is held for the owner under another "
                             "record, so it was not written"}
+        s = r.get("suspect")
+        if isinstance(s, dict) and board_proposals.held_board(
+                boards_held, s.get("type"), s.get("ref"), r.get("id"),
+                board_proposals.their_names(c)):
+            near_misses_held.append(r["id"])
+            return {"id": r["id"], "found": None,
+                    "note": "a board was found and is held for the owner under another "
+                            "record, so it was not kept for review"}
         return r
 
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
@@ -931,6 +946,11 @@ def main() -> int:
               f"held for the owner under another record - a reader's doubt, a board "
               f"waiting in Boards we found or Agent proposals, or a refusal - and not "
               f"written)")
+    if near_misses_held:
+        # counts only, like the line above
+        print(f"  ({len(near_misses_held)} near miss(es) - a board that read and did not "
+              f"match the name - {'is' if len(near_misses_held) == 1 else 'are'} held for "
+              f"the owner under another record, and not kept for review)")
 
     # Persist the near-misses. A readable board whose slug does not match is
     # usually an acquisition the name gives no hint of: Bonfire Interactive posts

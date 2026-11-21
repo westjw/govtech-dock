@@ -32457,7 +32457,9 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
     either store, a board pending in Agent proposals for another record, a
     Workable account held under its number whose slug is said on file, or one
     held under a number nobody followed whose name the company goes by
-    (board_proposals.held_board, the one reader all three doors use). Discovery counts what it left alone, and names nothing (its
+    (board_proposals.held_board, the one reader all three doors use) - nor
+    kept for review as a near miss (ats_suspects.json feeds the Acquisitions
+    queue and --review: blind review, 2026-11-21). Discovery counts what it left alone, and names nothing (its
     log is public). A board nobody holds is still written.
 
     Driven through discover_ats.main with the workflow's own arguments, an
@@ -32478,6 +32480,9 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
     names = {"doubted-co": "Doubted Co", "filed-co": "Filed Co", "refused-co": "Refused Co",
              "rejected-co": "Rejected Co", "pending-co": "Pending Co", "free-co": "Free Co",
              "heir-pending-co": "Heir Pending Co",
+             # their probes come back with a near miss (a board that read and
+             # does not match the name): one the owner holds, one nobody does
+             "sus-heir-co": "Sus Heir Co", "sus-free-co": "Sus Free Co",
              "heir-doubt-co": "Heir Doubt Co", "heir-filed-co": "Heir Filed Co",
              "heir-refused-co": "Heir Refused Co", "heir-ruled-co": "Heir Ruled Co",
              "heir-num-co": "Heir Num Co", "named-co-inc": "Named Co Inc",
@@ -32584,9 +32589,16 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
             "why": "the board names another company"}},
     }
     probed: list = []
+    SUSPECT_OF = {"sus-heir-co": {"type": "greenhouse", "ref": "heirrefusedco"},
+                  "sus-free-co": {"type": "greenhouse", "ref": "susfreegroup"}}
 
     def probe(c):
         probed.append(c["id"])
+        if c["id"] in SUSPECT_OF:
+            s_ = SUSPECT_OF[c["id"]]
+            return {"id": c["id"], "found": None, "suspect": dict(s_),
+                    "note": f"{s_['type']}:{s_['ref']} reads (3 posting(s)), but does not match "
+                            f"{c['name']!r}; likely a parent or another company"}
         return {"id": c["id"], "found": board_of(c["id"]),
                 "note": "a board, 3 posting(s) readable", "postings": 3}
 
@@ -32644,6 +32656,20 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
                                    f"or does not say why it was not written: "
                                    f"{log.get('heir-doubt-co')}")
                 said = out.getvalue()
+                # A NEAR MISS THE OWNER HOLDS is neither kept for review nor
+                # printed (blind review, 2026-11-21: a board refused for another
+                # record went back to his Acquisitions queue as a suspect)
+                sus = json.loads(da.SUSPECTS.read_text()) if da.SUSPECTS.exists() else {}
+                if "sus-heir-co" in sus or "sus-free-co" not in sus \
+                        or "Sus Heir Co" in said or "sus-heir-co" in said \
+                        or "(1 near miss(es) - a board that read and did not match the name - is " \
+                           "held for the owner under another record, and not kept for review)" \
+                        not in said \
+                        or "not kept for review" not in str(log.get("sus-heir-co", {}).get("note")):
+                    errors += fail(f"{label}: discovery kept or printed a near miss whose board the "
+                                   f"owner holds under another record, or did not count it, or "
+                                   f"dropped one nobody holds: suspects {sorted(sus)}; "
+                                   f"{said[-400:]!r}")
                 if not re.search(rf"\({len(held_ids)} (companies are|id\(s\) in the list are) "
                                  rf"held for the owner", said) \
                         or f"({len(heirs)} board(s) found are held for the owner under another " \

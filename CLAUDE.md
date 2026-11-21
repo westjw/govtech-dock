@@ -2922,7 +2922,12 @@ round.
   (`waiting`), a Workable account under either key where known, or one held
   under a number nobody followed whose name the company goes by); it logs
   "a board was found and is held for the owner under another record, so it
-  was not written" and prints only a count. wire_embedded.triage leaves such
+  was not written" and prints only a count. Nor does it keep such a board as
+  a near miss (one that read and did not match the name) in
+  ats_suspects.json, which feeds the Acquisitions queue and `--review`'s
+  "accept" line, or print it: it is counted, and logged as "not kept for
+  review" (a board refused for another record went back in front of him
+  that way: blind review, 2026-11-21). wire_embedded.triage leaves such
   a row in no pile, and the run counts it with the rows it left for the
   owner. A store that is on disk and does not read stops either run before
   it starts: read as empty it would hold nobody. The second blind review
