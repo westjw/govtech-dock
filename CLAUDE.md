@@ -2610,8 +2610,9 @@ round.
   `ats_note` on file (wiring would write over the note); a discovery suspect
   or an Acquisitions row (both builders are asked); another company already
   holding the board, or the same board found for two companies in one run; a
-  different board refused earlier or already waiting; a board that names
-  somebody else (MISMATCH, both names quoted) or nobody.
+  different board refused earlier or already waiting; this board refused for
+  another company still on file (the refusal and whose it was quoted, below);
+  a board that names somebody else (MISMATCH, both names quoted) or nobody.
 - **An advertisement is not a second board, and a question that did not get
   through is not a doubt** (the first real run, 2026-11-18: 38 companies, 9
   to wire, 15 held, and three of the 15 were neither). A LINK to (or a
@@ -2779,9 +2780,23 @@ round.
   of an unruled row a door filed in Boards we found, is HOLD with the words
   quoted, and a board refused in either store (a Boards-we-found refusal by
   the board on its row, an Agent-proposals rejection by its ats_type/ats_ref)
-  is SKIP refused, "tell the owner", with nothing read - for whatever
-  company's site names it, under either Workable key, in the plan and in
-  apply (`held_boards`; apply's codes `standing`, `queued`, `refused`). A
+  for a record merged away, or for a record whose name this company's
+  also_known_as carries (one company on two records), is SKIP refused, "tell
+  the owner", with nothing read - for whatever company's site names it,
+  under either Workable key, in the plan and in apply (`held_boards`,
+  `wire_found.refused_for_it`; apply's codes `standing`, `queued`,
+  `refused`). Refused for ANOTHER company still on file, it is that
+  company's answer, not this one's: the board is read and HELD, and filed in
+  Boards we found for the company whose own site and board both name it,
+  the refusal and whose it was quoted ("... was refused for Sub Co in Agent
+  proposals (...) - refused for another company, still on file (Sub Co);
+  whether it is Parent Co's own board is the owner's to rule on"); apply
+  leaves such a WIRE row alone and says to plan again. (Blind review,
+  2026-11-21: Sub Co's refusal, "the board is Parent Co's", held Parent Co's
+  own board in all three doors, and nothing could put it in front of him for
+  Parent Co; 10 of the 11 board proposals he had rejected name their true
+  owner. Discovery and wire_embedded.py, which never wire past him, still
+  hold it.) A
   doubted or refused company merged into its duplicate left its hold under
   the dropped id, and the survivor's plan wired the board (third review and
   review of 27eeb628, 2026-11-19). The desk's merge (`admin.act_merge`) is NOT refused for it,
@@ -2946,8 +2961,11 @@ round.
   can reach (an older ruling, a company on a board, one merged away) holds
   its board until he is told and answers - `settle` writes his answer, about
   the one board he answered about; and a
-  board refused for one company is now SKIP refused for every company that
-  names it, the group's own record included, until he says otherwise.
+  board refused for one company is SKIP refused for its survivor and for a
+  record that also goes by its name, and for every other company that names
+  it is filed in Boards we found with the refusal quoted, the group's own
+  record included, for him to rule on there (discovery and wire_embedded
+  hold it for every company).
   Giants on readers that do read the whole board are still read in full
   before they are skipped.
 

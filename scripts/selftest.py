@@ -34939,12 +34939,17 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                 # the number it names was followed for another company: the
                 # refused board is seen to be the same one by its slug
                 ("refused-slug-twin-co", "SKIP", "refused", "a recruiting firm's board"),
-                # and a board refused for one company is refused for every
-                # company whose site names it (held by board since the review of 27eeb628)
-                ("brand-refused-twin-co", "SKIP", "refused",
+                # and a board refused for one company is held for every
+                # company whose site names it (held by board since the review
+                # of 27eeb628) - refused for ANOTHER company still on file, it
+                # goes to the owner for this one, the refusal and whose it was
+                # quoted, for him to rule on (blind review, 2026-11-21)
+                ("brand-refused-twin-co", "HOLD", None,
                  "workable/refusedtwinco was refused for Refused Slug Twin Co in Agent "
                  "proposals"),
-                ("brand-refused-twin-co", "SKIP", "refused", "tell the owner"),
+                ("brand-refused-twin-co", "HOLD", None,
+                 "refused for another company, still on file (Refused Slug Twin Co); whether "
+                 "it is Brand Refused Twin Co's own board is the owner's to rule on"),
                 # NOT ASKED, AND SAID SO: refused for another board, its number
                 # is not followed, and it is skipped as refused - tell the owner
                 ("refused-other-co", "SKIP", "refused", "a parent's Lever board"),
@@ -35021,9 +35026,9 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
             return errors
 
         code, text, look_code = box.look(wl)
-        if code != 0 or "would wire 4, would hold 16" not in text or not look_code \
+        if code != 0 or "would wire 4, would hold 17" not in text or not look_code \
                 or "NOT FILED 1" not in text:
-            errors += fail(f"the look did not offer four boards and sixteen held rows: "
+            errors += fail(f"the look did not offer four boards and seventeen held rows: "
                            f"{text[-260:]}")
         # a worklist somebody edited back to the number is not wired on it
         forged = box.edited(wl, "worklist-number.json",
@@ -35075,7 +35080,7 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         code, text, look_code = box.look(wl)
         code, text = box.write(wl, look_code)
         rec = box.record("number-co")
-        if code != 0 or "wired 4, held 16" not in text \
+        if code != 0 or "wired 4, held 17" not in text \
                 or rec["ats"] != {"type": "workable", "ref": "numberco"} \
                 or bb.board_url(rec) != f"{W}numberco" \
                 or box.record("waiting-legacy-co")["ats"] != {"type": "workable",
@@ -36983,9 +36988,16 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         site names it, with the doubt quoted - and in apply, for a worklist
         planned before either was recorded;
       - a board refused in Boards we found (by the board on its row) or in
-        Agent proposals (by its ats_type/ats_ref) is SKIP refused for every
-        other company that names it - "tell the owner" - with nothing read,
-        and apply leaves such a WIRE row alone (`refused`);
+        Agent proposals (by its ats_type/ats_ref) for a record merged away,
+        or for a record whose name this company also goes by, is SKIP refused
+        for every other company that names it - "tell the owner" - with
+        nothing read, and apply leaves such a WIRE row alone (`refused`);
+      - refused for ANOTHER company still on file, in either store, it is HOLD
+        and filed in Boards we found for the company whose own site and
+        board both name it, the refusal and whose it was quoted, for the owner
+        to rule on; apply leaves such a WIRE row alone and says to plan again
+        (blind review, 2026-11-21: Sub Co's refusal held Parent Co's own board
+        in every door, and nothing put it in front of him for Parent Co);
       - a first-shape Workday doubt ("workday/<tenant>/<pod>/<site>") is the
         board's list, and holds it;
       - admin.act_merge merges a company whatever the door holds for it.
@@ -37002,7 +37014,14 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                  co("plain-keep", "Plain Co"), co("plain-drop", "Plain Co Inc"),
                  co("late-co", "Late Co"), co("late-doubted-co", "Late Doubted Co"),
                  co("late-refused-co", "Late Refused Co"), co("other-refused-co", "Other Refused Co"),
-                 co("wd-keep", "Wd Co")]
+                 co("wd-keep", "Wd Co"), co("late-gone-refused-co", "Late Gone Refused Co"),
+                 # a board refused for a subsidiary, named by its true owner's
+                 # own site: in each store, and where the owner's record also
+                 # goes by the refused record's name
+                 co("pr-sub", "Pr Sub Co"), co("pr-parent", "Pr Parent Co"),
+                 co("pd-sub", "Pd Sub Co"), co("pd-parent", "Pd Parent Co"),
+                 co("pa-sub", "Pa Sub Co"), co("pa-parent", "Pa Parent Co",
+                                               also_known_as=["Pa Sub Co"])]
     for keep, drop in ((0, 1), (2, 3), (4, 5), (6, 7), (8, 9)):
         companies[drop]["website"] = companies[keep]["website"]   # one vendor, two records
     WD = ["wdco", "wd5", "Careers"]
@@ -37010,7 +37029,11 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
               "greenhouse/refusedco": (3, ["Refused Co"]), "lever/rejectedco": (3, ["Rejected Co"]),
               "greenhouse/lateco": (3, ["Late Co"]),
               "greenhouse/laterefusedco": (3, ["Late Refused Co"]),
-              "workday/wdco/wd5/Careers": (3, ["Wd Co"])}
+              "workday/wdco/wd5/Careers": (3, ["Wd Co"]),
+              "greenhouse/lategonerefusedco": (3, ["Late Gone Refused Co"]),
+              "greenhouse/prparentco": (3, ["Pr Parent Co"]),
+              "greenhouse/pdparentco": (3, ["Pd Parent Co"]),
+              "greenhouse/paparentco": (3, ["Pa Parent Co"])}
 
     def names(cid, kind, ref, owner=None):
         page = f"{site(owner or cid)}/careers"
@@ -37032,14 +37055,27 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                  filed={"by": "agent:earlier-batch", "on": "2026-11-19",
                                         "at": "2026-11-19T09:00:00-05:00"}),
                              row("refused-drop", "Refused Co Inc", "refusedco",
-                                 identity_why="an older finder's row")],
+                                 identity_why="an older finder's row"),
+                             row("pd-sub", "Pd Sub Co", "pdparentco",
+                                 board_calls_itself="Pd Parent Co", identity="MISMATCH",
+                                 identity_why="the board calls itself Pd Parent Co")],
              bp.RULED.name: {"refused-drop": {"accept": False, "by": "owner", "on": "2026-11-12",
-                                              "why": "the parent's board, not theirs"}},
+                                              "why": "the parent's board, not theirs"},
+                             "pd-sub": {"accept": False, "by": "owner", "on": "2026-11-12",
+                                        "why": "Pd Parent Co's board, not this company's"}},
              bp.PROPOSALS: {"board:rejected-drop": {
                  "kind": "board", "id": "rejected-drop", "name": "Rejected Co Inc",
                  "ats_type": "lever", "ats_ref": "rejectedco", "status": "rejected",
                  "ruled_by": "owner", "ruled_on": "2026-11-10",
-                 "ruled_why": "a staffing firm's board"}},
+                 "ruled_why": "a staffing firm's board"},
+                 **{f"board:{sub}": {
+                     "kind": "board", "id": sub, "name": name, "ats_type": "greenhouse",
+                     "ats_ref": ref, "status": "rejected", "ruled_by": "owner",
+                     "ruled_on": "2026-11-10", "ruled_why": f"the board is {owner}'s, not this "
+                                                           f"company's"}
+                    for sub, name, ref, owner in (
+                        ("pr-sub", "Pr Sub Co", "prparentco", "Pr Parent Co"),
+                        ("pa-sub", "Pa Sub Co", "paparentco", "Pa Parent Co"))}},
              # a doubt in the FIRST shape about a Workday board, for a company no
              # longer on file
              wf.DOUBTS: {"wd-gone": {"board": "workday/wdco/wd5/Careers",
@@ -37052,12 +37088,14 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         # a worklist planned before anything below is held: both WIRE
         code, text, wl_late, rows = box.plan(_wb_results({
             "late-co": names("late-co", "greenhouse", "lateco"),
-            "late-refused-co": names("late-refused-co", "greenhouse", "laterefusedco")}),
+            "late-refused-co": names("late-refused-co", "greenhouse", "laterefusedco"),
+            "late-gone-refused-co": names("late-gone-refused-co", "greenhouse",
+                                          "lategonerefusedco")}),
             name="worklist-late.json")
         if code != 0 or sorted(i for i, r in (rows or {}).items() if r["action"] == "WIRE") \
-                != ["late-co", "late-refused-co"]:
-            return errors + fail(f"the fixture's Late Co and Late Refused Co do not plan WIRE on "
-                                 f"their own: {text[-200:]}")
+                != ["late-co", "late-gone-refused-co", "late-refused-co"]:
+            return errors + fail(f"the fixture's Late Co, Late Refused Co and Late Gone Refused Co "
+                                 f"do not plan WIRE on their own: {text[-200:]}")
         code, text, wl, rows = box.plan(
             _wb_results({"dup-drop": names("dup-drop", "greenhouse", "dupco", owner="dup-keep"),
                          "late-doubted-co": names("late-doubted-co", "greenhouse", "lateco")}),
@@ -37125,24 +37163,80 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             **{"board:other-refused-co": {
                 "kind": "board", "id": "other-refused-co", "ats_type": "greenhouse",
                 "ats_ref": "laterefusedco", "status": "rejected", "ruled_by": "owner",
-                "ruled_on": "2026-11-19", "ruled_why": "the board of a recruiter"}})))
+                "ruled_on": "2026-11-19", "ruled_why": "the board of a recruiter"},
+               # refused for a record no longer on file
+               "board:gone-refuser": {
+                "kind": "board", "id": "gone-refuser", "name": "Gone Refuser Co",
+                "ats_type": "greenhouse", "ats_ref": "lategonerefusedco", "status": "rejected",
+                "ruled_by": "owner", "ruled_on": "2026-11-19",
+                "ruled_why": "a reseller's board"}})))
         code, text, _ = box.look(wl_late)
         body = text[text.find("LEFT ALONE"):]
         for cid_name, must_say in (
                 ("Late Co", "is the board of a reader's doubt that stands about Late Doubted Co"),
                 ("Late Refused Co", "greenhouse/laterefusedco was refused for Other Refused Co "
-                                    "in Agent proposals")):
+                                    "in Agent proposals"),
+                ("Late Refused Co", "refused for another company, still on file (Other Refused "
+                                    "Co): plan again, and the plan holds it for the owner"),
+                ("Late Gone Refused Co", "greenhouse/lategonerefusedco was refused for Gone "
+                                         "Refuser Co in Agent proposals"),
+                ("Late Gone Refused Co", "tell the owner")):
             line = next((ln for ln in body.splitlines()
                          if ln.strip().startswith(cid_name + " ")), "")
             if must_say not in line:
                 errors += fail(f"{cid_name}: a WIRE row whose board was doubted or refused since, "
                                f"for another company, was not left alone saying {must_say!r}: "
                                f"{text[-300:]}")
-        if "LEFT ALONE 2" not in text or "tell the owner" not in body:
-            errors += fail(f"the look did not leave both rows alone, or did not say to tell the "
-                           f"owner of the refused board: {text[-300:]}")
+        if "LEFT ALONE 3" not in text:
+            errors += fail(f"the look did not leave all three rows alone: {text[-300:]}")
         if q != json.loads((box.tmp / bp.FOUND.name).read_text()):
             errors += fail("a look wrote the queue file")
+
+        # --- a board refused for a subsidiary, named by its true owner ---------
+        del box.asked[:], box.probed[:]
+        code, text, wl_p, rows_p = box.plan(
+            _wb_results({"pr-parent": names("pr-parent", "greenhouse", "prparentco"),
+                         "pd-parent": names("pd-parent", "greenhouse", "pdparentco"),
+                         "pa-parent": names("pa-parent", "greenhouse", "paparentco")}),
+            name="worklist-parents.json")
+        owner_rules = "whether it is {}'s own board is the owner's to rule on"
+        for cid, action, kind, must_say in (
+                ("pr-parent", "HOLD", None, "greenhouse/prparentco was refused for Pr Sub Co in "
+                                            "Agent proposals (owner on 2026-11-10: the board is "
+                                            "Pr Parent Co's, not this company's)"),
+                ("pr-parent", "HOLD", None, "refused for another company, still on file (Pr Sub "
+                                            "Co); " + owner_rules.format("Pr Parent Co")),
+                ("pd-parent", "HOLD", None, "greenhouse/pdparentco was refused for Pd Sub Co in "
+                                            "Boards we found (owner on 2026-11-12: Pd Parent "
+                                            "Co's board, not this company's)"),
+                ("pd-parent", "HOLD", None, "refused for another company, still on file (Pd Sub "
+                                            "Co); " + owner_rules.format("Pd Parent Co")),
+                # one company on two records: his refusal is its answer
+                ("pa-parent", "SKIP", "refused", "greenhouse/paparentco was refused for Pa Sub Co "
+                                                 "in Agent proposals"),
+                ("pa-parent", "SKIP", "refused", "tell the owner")):
+            r = (rows_p or {}).get(cid) or {}
+            if r.get("action") != action or (kind and r.get("kind") != kind) \
+                    or must_say not in _wb_words(r):
+                errors += fail(f"{cid}: a board refused for another company was planned "
+                               f"{r.get('action')}/{r.get('kind')} saying {_wb_words(r)[:300]!r}; "
+                               f"wanted {action}{'/' + kind if kind else ''} saying {must_say!r}")
+        if "greenhouse/paparentco" in box.asked or "greenhouse/paparentco" in box.probed:
+            errors += fail("a board refused for this company under another of its records was "
+                           "read or asked whose it is")
+        code, text, look_p = box.look(wl_p)
+        code, text = box.write(wl_p, look_p)
+        q = {r_["id"]: r_ for r_ in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        for cid, words in (("pr-parent", "was refused for Pr Sub Co in Agent proposals"),
+                           ("pd-parent", "was refused for Pd Sub Co in Boards we found")):
+            if code != 0 or words not in str((q.get(cid) or {}).get("identity_why")) \
+                    or not (q.get(cid) or {}).get("filed"):
+                errors += fail(f"{cid}: a board refused for another company did not reach the "
+                               f"owner's desk for the company whose own site and board name it, "
+                               f"the refusal quoted: exit {code}; {(q.get(cid) or {})!r:.300}")
+        if "pa-parent" in q:
+            errors += fail("a board refused for this company under another of its records was "
+                           "filed for the owner again")
     return errors
 
 

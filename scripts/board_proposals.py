@@ -571,9 +571,9 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
         return (by_id.get(cid) or {}).get("name") or next(
             (n for n in also if isinstance(n, str) and n.strip()), cid)
 
-    def hold(cid, code, kind, ref, words, *names):
+    def hold(cid, code, kind, ref, words, *names, **more):
         h = {"id": cid, "code": code, "board": show(kind, ref), "words": words,
-             "names": strict_names(*names, *their_names(by_id.get(cid)))}
+             "names": strict_names(*names, *their_names(by_id.get(cid))), **more}
         keys[board_key(kind, ref)].append(h)
         if numbered(kind, ref):
             slug = pairs.get(workable_number(ref))
@@ -603,11 +603,15 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     for cid, refs in sorted((refusals_ if refusals_ is not None else refusals(stores)).items()):
         for x in refs:
             if x.get("key") and x.get("type"):
-                hold(cid, "refused", x["type"], x["ref"], (
-                    f"{x['board']} was refused for {name_of(cid, *(x.get('names') or [])[::-1])} "
-                    f"in {x['store']} ({x['by']} on "
-                    f"{x['on']}" + (f": {x['why']}" if x["why"] else "") + "), and a board "
-                    f"somebody said no to is not proposed again"), *(x.get("names") or []))
+                # `refusal` is the refusal alone, in words: the wiring door
+                # quotes it on a row it files for the owner, where "not
+                # proposed again" would not be true
+                said = (f"{x['board']} was refused for "
+                        f"{name_of(cid, *(x.get('names') or [])[::-1])} in {x['store']} "
+                        f"({x['by']} on {x['on']}" + (f": {x['why']}" if x["why"] else "") + ")")
+                hold(cid, "refused", x["type"], x["ref"],
+                     f"{said}, and a board somebody said no to is not proposed again",
+                     *(x.get("names") or []), refusal=said)
     for number, ids in sorted(numbers_on_file(companies or []).items()):
         slug = pairs.get(number)
         for cid in ids:
