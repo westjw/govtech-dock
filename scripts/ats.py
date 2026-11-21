@@ -2927,6 +2927,90 @@ def fetch_teamtailor(ref) -> list[dict]:
                     "comp": _schema_comp(jp)})
     return out
 
+# ---- pinpoint: <slug>.pinpointhq.com
+#
+# /postings.json is the feed Pinpoint's own careers widget calls from the
+# browser: the whole board, the ad in four HTML fields, and pay with a flag
+# saying whether the employer shows it. It has no date; /jobs.rss, which the
+# board itself links as rel=alternate, has one per job, joined by job.id.
+# robots.txt is per tenant and two tenants close the whole host (Infor's and
+# Coursedog's), so both are asked as pages. reporting_to names a hiring
+# manager on some rows and is never read. Measured 2026-11-19 and 11-21:
+# Clearview AI 7, Eptura 5, Pathify 4, CARTO 1, Democracy Works 0.
+
+_PINPOINT_SLUG = re.compile(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?")
+_RSS_ITEM = re.compile(r"<item>(.*?)</item>", re.S)
+_RSS_LINK = re.compile(r"<link>\s*(.*?)\s*</link>", re.S)
+_RSS_DATE = re.compile(r"<pubDate>\s*(.*?)\s*</pubDate>", re.S)
+
+
+def pinpoint_base(ref) -> str:
+    slug = _text(ref).lower()
+    if not _PINPOINT_SLUG.fullmatch(slug) or slug in ("www", "app", "api"):
+        raise AtsError(f"not a pinpoint board: {ref!r}")
+    return f"https://{slug}.pinpointhq.com"
+
+
+def _rfc822_day(raw) -> str | None:
+    """The day an RFC 822 stamp names, in the offset it was written in - never
+    moved to UTC, which shifts a midnight stamp east of Greenwich a day back."""
+    import email.utils
+    try:
+        return email.utils.parsedate_to_datetime(_text(raw)).date().isoformat()
+    except (TypeError, ValueError, IndexError):
+        return None
+
+
+def fetch_pinpoint(ref) -> list[dict]:
+    base = pinpoint_base(ref)
+    d = _json(_page(f"{base}/postings.json", same_host=True))
+    rows = d.get("data") if isinstance(d, dict) else None
+    if not isinstance(rows, list) or not all(isinstance(j, dict) for j in rows):
+        raise AtsError("unexpected pinpoint payload")
+    # the dates, from the board's own RSS; a feed that will not read costs
+    # the dates, never the board
+    dates: dict[str, str] = {}
+    try:
+        for it in _RSS_ITEM.findall(_page(f"{base}/jobs.rss", same_host=True).text or ""):
+            link, day = _RSS_LINK.search(it), _RSS_DATE.search(it)
+            job = link.group(1).rstrip("/").rsplit("/", 1)[-1] if link else ""
+            if job.isdigit() and day and _rfc822_day(day.group(1)):
+                dates[job] = _rfc822_day(day.group(1))
+    except AtsError:
+        pass
+    out = []
+    for j in rows:
+        title = _text(j.get("title"))
+        if not title:
+            continue
+        loc = j.get("location") if isinstance(j.get("location"), dict) else {}
+        job = j.get("job") if isinstance(j.get("job"), dict) else {}
+        # the ad is four fields, each under the heading the employer gave it
+        parts = []
+        for key in ("description", "key_responsibilities", "skills_knowledge_expertise",
+                    "benefits"):
+            body = plain_html(j.get(key) or "")
+            if body:
+                head = _text(j.get(f"{key}_header"))
+                parts.append(f"{head}\n{body}" if head else body)
+        comp = None
+        if j.get("compensation_visible") is True:
+            comp = _comp(j.get("compensation_minimum"), j.get("compensation_maximum"),
+                         j.get("compensation_currency"), _period(j.get("compensation_frequency")))
+        out.append({"title": title,
+                    # the employer's own words ('Hybrid - Washington, DC',
+                    # 'Remote USA'); city and province are unreliable (London's
+                    # province reads 'United Kingdom') and there is no country,
+                    # so only the city goes into the hint
+                    "location": _text(loc.get("name")),
+                    "url": _text(j.get("url")),
+                    "posted": dates.get(_text(job.get("id"))),
+                    "mode": work_mode(j.get("workplace_type")),
+                    "office_hint": office_hint(loc.get("city")),
+                    "jd": "\n\n".join(parts),
+                    "comp": comp})
+    return out
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -2950,6 +3034,7 @@ FETCHERS = {
     "hirebridge": fetch_hirebridge,
     "applicantpro": fetch_applicantpro,
     "teamtailor": fetch_teamtailor,
+    "pinpoint": fetch_pinpoint,
 }
 
 

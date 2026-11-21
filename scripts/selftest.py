@@ -5216,6 +5216,13 @@ _HB_ROW = {"joblistid": "612567", "jobtitle": "Account Manager - Public Safety",
            "companyname": "CentralSquare Technologies",
            "companyurl": "https://www.centralsquare.com/"}
 _ID_HIREBRIDGE = json.dumps(json.dumps([_HB_ROW]))
+_ID_PINPOINT_FEED = json.dumps({"data": [{"id": "475777", "title": "Customer Success Manager - State & Local",
+                                           "url": "https://clearview.pinpointhq.com/en/postings/74a5",
+                                           "job": {"id": "484958"}}]})
+_ID_PINPOINT_RSS = ("<rss><channel><title>Careers at Clearview AI</title><item>"
+                    "<link>https://clearview.pinpointhq.com/jobs/484958</link></item></channel></rss>")
+_ID_PINPOINT_PAGE = ('<title>Jobs at Clearview AI | Clearview AI Careers</title>'
+                     '<meta property="og:title" content="Careers at Clearview AI">')
 _ID_TEAMTAILOR = json.dumps({
     "version": "https://jsonfeed.org/version/1.1", "title": "Fonroche Lighting America",
     "home_page_url": "https://fonrochelightingamerica.na.teamtailor.com/jobs",
@@ -5488,6 +5495,7 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
     AP_PAGE, AP_FEED = f"https://{AP_HOST}/jobs/", f"https://{AP_HOST}/core/jobs/1431?getParams="
 
     TT = "https://fonrochelightingamerica.na.teamtailor.com"
+    PP = "https://clearview.pinpointhq.com"
 
     def ap_routes(url):
         return (_ID_APPLICANTPRO_PAGE if url == AP_PAGE else
@@ -5536,6 +5544,9 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         ("applicantpro", AP_HOST, "Caselle", ap_routes, None, ["Caselle"], 1, AP_PAGE),
         ("teamtailor", TT, "Fonroche Lighting America", {TT + "/jobs.json": _ID_TEAMTAILOR}, None,
          ["Fonroche Lighting America"], 1, TT + "/jobs.json"),
+        ("pinpoint", "clearview", "Clearview AI",
+         {PP + "/postings.json": _ID_PINPOINT_FEED, PP + "/jobs.rss": _ID_PINPOINT_RSS,
+          PP + "/": _ID_PINPOINT_PAGE}, None, ["Clearview AI"], 1, PP + "/"),
     ]
 
     keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
@@ -6141,7 +6152,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
                 got = vb.board_says(kind, PAY if kind == "paylocity" else
                                     GUSTO if kind == "gusto" else "7724" if kind == "hirebridge"
                                     else AP_HOST if kind == "applicantpro"
-                                    else TT if kind == "teamtailor" else "acme")
+                                    else TT if kind == "teamtailor"
+                                    else "clearview" if kind == "pinpoint" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -18666,6 +18678,93 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
     return errors
 
 
+def check_pinpoint_reads_what_the_board_shows() -> int:
+    """Pinpoint (2026-11-21): /postings.json for the rows, the board's own
+    /jobs.rss for the dates, joined by job id. Pay only where the employer
+    shows it (compensation_visible); a hiring manager's name (reporting_to)
+    never copied; a date read in the offset it was written in, never moved
+    to UTC; and a feed of dates that will not read costs the dates, never
+    the board."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    errors = 0
+    base = "https://acmegov.pinpointhq.com"
+
+    def row(n, **kw):
+        r = {"id": str(n), "title": f"Role {n}", "url": f"{base}/en/postings/{n}",
+             "workplace_type": "remote", "job": {"id": str(900 + n)},
+             "location": {"city": "Denver", "province": "Colorado", "name": "Remote/Denver, CO"},
+             "description": "<p>Sell to counties.</p>", "description_header": None,
+             "key_responsibilities": "<p>Own a territory.</p>",
+             "key_responsibilities_header": "What You'll Do",
+             "reporting_to": "Pat Example, VP Sales",
+             "compensation_visible": True, "compensation_minimum": 100000.0,
+             "compensation_maximum": 115000.0, "compensation_currency": "USD",
+             "compensation_frequency": "year"}
+        r.update(kw)
+        return r
+
+    rss = ("<rss><channel><title>Careers at Acme Gov</title>"
+           f"<item><link>{base}/jobs/901</link><pubDate>Mon, 02 Nov 2026 00:30:00 +0530</pubDate></item>"
+           f"<item><link>{base}/jobs/902</link><pubDate>not a date</pubDate></item>"
+           "</channel></rss>")
+
+    class R:
+        def __init__(self, text):
+            self.text, self.status_code, self.headers = text, 200, {}
+
+        def json(self):
+            return json.loads(self.text)
+
+    def serve(feed, dates):
+        def fake(url, **kw):
+            if url == f"{base}/postings.json":
+                return R(feed)
+            if url == f"{base}/jobs.rss" and dates is not None:
+                return R(dates)
+            raise ats.AtsError(f"HTTP 404 for {url}")
+        return fake
+
+    keep = ats._page
+    try:
+        hidden = row(2, compensation_visible=False)
+        ats._page = serve(json.dumps({"data": [row(1), hidden, row(3, title="  ")]}), rss)
+        rows = ats.fetch_pinpoint("AcmeGov")
+        a = rows[0] if rows else {}
+        if len(rows) != 2 or a.get("posted") != "2026-11-02" or a.get("mode") != "remote" \
+                or a.get("location") != "Remote/Denver, CO" \
+                or (a.get("comp") or {}).get("max") != 115000 \
+                or "What You'll Do\nOwn a territory." not in a.get("jd", ""):
+            errors += fail(f"pinpoint: the row is not what the board published (a date "
+                           f"written at 00:30 +0530 is that day, not the day before): {a}")
+        if len(rows) == 2 and (rows[1].get("comp") is not None or rows[1].get("posted")):
+            errors += fail(f"pinpoint: pay the employer hides, or a date that does not parse, "
+                           f"was published: {rows[1]}")
+        if any("Pat Example" in json.dumps(r) for r in rows):
+            errors += fail("pinpoint: a row carries the hiring manager's name (reporting_to)")
+        ats._page = serve(json.dumps({"data": [row(1)]}), None)
+        rows = ats.fetch_pinpoint("acmegov")
+        if len(rows) != 1 or rows[0].get("posted") is not None:
+            errors += fail(f"pinpoint: a feed of dates that would not read took the board, "
+                           f"or a date came from nowhere: {rows}")
+        for body in ('{"jobs": []}', "[]", '{"data": [1]}'):
+            ats._page = serve(body, rss)
+            try:
+                ats.fetch_pinpoint("acmegov")
+                errors += fail(f"pinpoint: {body!r} was read as a board")
+            except ats.AtsError:
+                pass
+        for ref in ("www", "app", "acme.evil", "", None, "-acme"):
+            try:
+                ats.pinpoint_base(ref)
+                errors += fail(f"pinpoint: {ref!r} was taken as a board")
+            except ats.AtsError:
+                pass
+    finally:
+        ats._page = keep
+    return errors
+
+
 def check_a_long_location_is_published_short() -> int:
     """A posting never ships a location longer than LOCATION_CHARS.
 
@@ -25400,6 +25499,9 @@ SITE_BOARD_FORMS = [
     ('<a href="https://fonrochelightingamerica.na.teamtailor.com/jobs">Jobs</a>',
      "teamtailor", "https://fonrochelightingamerica.na.teamtailor.com",
      "https://fonrochelightingamerica.na.teamtailor.com/jobs.json"),
+    # Clearview and Pathify link their Pinpoint boards (seen 2026-11-19)
+    ('<a href="https://clearview.pinpointhq.com/">Careers</a>',
+     "pinpoint", "clearview", "https://clearview.pinpointhq.com/postings.json"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -25412,6 +25514,7 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://www.applicantpro.com/">ApplicantPro</a>',      # the vendor's own site
     '<a href="//tt.teamtailor.com/auth/linkedin?company=vodaai&connect=1">in</a>',  # vendor's
     '<a href="https://app.teamtailor.com/companies/YfyrsSdTav0@eu/dashboard">x</a>',  # vendor's
+    '<a href="https://app.pinpointhq.com/">Pinpoint</a>',             # the vendor's app
     '<a href="https://apply.workable.com/j/0A1B2C3D4E">Apply</a>',   # a posting's short link
     '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
     '<img src="https://c-1234-20200101-acme-com.i.icims.com/logo.png">',
@@ -37307,7 +37410,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "paylocity": PAY, "oracle": "acme.fa.us2.oraclecloud.com",
         "adp": "cbabd1ae-568b-4f70-933b-3f462f76c1b5", "gusto": "acme-c850a9b3",
         "gem": "acme", "hirebridge": "7724", "applicantpro": "casellejobs.applicantpro.com",
-        "teamtailor": "https://acme.teamtailor.com",
+        "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -37387,6 +37490,7 @@ console.log(JSON.stringify(out));"""
         ("hirebridge", "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=7724"),
         ("applicantpro", "https://casellejobs.applicantpro.com/jobs/"),
         ("teamtailor", "https://acme.teamtailor.com"),
+        ("pinpoint", "https://acme.pinpointhq.com"),
         ("paylocity", PAY),
         ("greenhouse", "https://job-boards.greenhouse.io/acme"),
         ("no ref", "#"),
@@ -50594,6 +50698,7 @@ def main() -> int:
     errors += check_a_long_location_is_published_short()
     errors += check_hirebridge_and_applicantpro_read_what_their_boards_publish()
     errors += check_teamtailor_is_read_and_found_as_its_sites_are()
+    errors += check_pinpoint_reads_what_the_board_shows()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()

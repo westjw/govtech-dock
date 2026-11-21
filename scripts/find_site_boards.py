@@ -435,6 +435,7 @@ HINTS = {
     "hirebridge": ("hirebridge.com",),
     "applicantpro": ("applicantpro.com", "isolvedhire.com"),
     "teamtailor": ("teamtailor",),
+    "pinpoint": ("pinpointhq.com",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -451,7 +452,7 @@ JIBE_MARK = "jibecdn.com"
 # spelling on file and on that company's page, and HTTP 404 for "wayground":
 # the lowered ref would have lost a board the page named correctly. Two of
 # the 33 Lever boards on file are spelt with a capital.
-LOWERED = {"recruitee", "breezy", "bamboohr", "jazzhr", "icims"}
+LOWERED = {"recruitee", "breezy", "bamboohr", "jazzhr", "icims", "pinpoint"}
 
 # The vendor's own furniture, never a customer. Three tables' worth, joined
 # rather than copied, plus what turned up here: Workable's /j/ short links,
@@ -640,6 +641,8 @@ BOARDS: list[_Pat] = (
                               r"\.(applicantpro|isolvedhire)\.com(?![a-z0-9-])", _applicantpro),
         _here("teamtailor", r"(?<![a-z0-9.-])([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)(\.na)?"
                             r"\.teamtailor\.com(?![a-z0-9-])", _teamtailor_hosted),
+        _here("pinpoint", r"(?<![a-z0-9.-])([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)"
+                          r"\.pinpointhq\.com(?![a-z0-9-])"),
     ])
 
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
@@ -658,7 +661,7 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("dayforce", "dayforcehcm.com", _B + r"dayforcehcm\.com"),
         ("paycom", "paycomonline.", _B + r"paycomonline\.(?:net|com)"),
         ("paycor", "recruitingbypaycor.com", _B + r"recruitingbypaycor\.com"),
-        ("pinpoint", "pinpointhq.com", _B + r"pinpointhq\.com"),
+        ("pinpoint-other", "pinpointhq.com", _B + r"pinpointhq\.com"),
         ("applicantpro-other", "applicantpro.com", _B + r"applicantpro\.com"),
         ("teamtailor-other", "teamtailor", _B + r"teamtailor(?:-cdn)?\.com"),
         ("comeet", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
@@ -724,7 +727,7 @@ def _other_region(text: str, m) -> bool:
 _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "paylocity-other": "paylocity", "adp-other": "adp",
                    "greenhouse-shortlink": "greenhouse", "teamtailor-other": "teamtailor",
-                   "applicantpro-other": "applicantpro"}
+                   "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint"}
 
 _ANY_HINT = re.compile("|".join(sorted(
     {re.escape(h) for hs in HINTS.values() for h in hs}

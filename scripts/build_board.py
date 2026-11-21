@@ -105,6 +105,7 @@ _PROMOTE_ATS_HOSTS = (
     "oraclecloud.com", "paycomonline.net",
     "hirebridge.com",
     "isolvedhire.com",
+    "pinpointhq.com",
 )
 
 _SLUG_GENERIC = {
@@ -422,7 +423,8 @@ def board_url(c: dict) -> str | None:
            "icims": "https://{r}.icims.com/jobs/search?ss=1",
            "hirebridge": "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid={r}",
            "applicantpro": "https://{r}/jobs/",
-           "teamtailor": "{r}"}
+           "teamtailor": "{r}",
+           "pinpoint": "https://{r}.pinpointhq.com"}
     if kind == "workable" and isinstance(ref, str) and ref.strip().rstrip("/").isdigit():
         # A WORKABLE ACCOUNT NUMBER READS AND DOES NOT OPEN. The widget a
         # careers page embeds asks for the board by number, and the reader

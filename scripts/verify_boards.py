@@ -1123,12 +1123,38 @@ def _teamtailor(ref, out: dict) -> None:
         out["how"] = "teamtailor feed states no name"
 
 
+_PINPOINT_NAME = re.compile(r"Careers at (.+)")
+
+
+def _pinpoint(ref, out: dict) -> None:
+    # The feed names nobody. The board states its name in two places of its
+    # own - its RSS channel title and its front page's og:title, both
+    # "Careers at X" - and, like gusto's title and heading, X is believed
+    # only when the two agree. An empty board still states it (Democracy
+    # Works, 2026-11-19). Never the slug: "clearview" is Clearview AI.
+    base = ats.pinpoint_base(ref)
+    out["n"] = sum(1 for j in ats._json(ats._page(f"{base}/postings.json", same_host=True))
+                   .get("data") or [] if isinstance(j, dict) and ats._text(j.get("title")))
+    out["hosts"] = {host_of(base)}
+    rss = ats._page(f"{base}/jobs.rss", same_host=True).text or ""
+    m = re.search(r"<channel>\s*<title>(.*?)</title>", rss[:20000], re.S)
+    a = _PINPOINT_NAME.fullmatch(_clean(html_lib.unescape(m.group(1)))) if m else None
+    page = _board_page(base + "/")
+    b = _PINPOINT_NAME.fullmatch(_clean(html_lib.unescape(_meta(page, "og:title"))))
+    if not a or not b:
+        out["how"] = "pinpoint board states no 'Careers at' name in its feed or on its page"
+    elif a.group(1) != b.group(1):
+        out["how"] = "pinpoint feed title and page title do not agree on a name"
+    else:
+        _state(out, [a.group(1)], "pinpoint RSS channel title and page og:title, stated by the board")
+
+
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
            "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
            "gusto": _gusto, "paylocity": _paylocity, "icims": _icims,
            "hirebridge": _hirebridge, "applicantpro": _applicantpro,
-           "teamtailor": _teamtailor}
+           "teamtailor": _teamtailor, "pinpoint": _pinpoint}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.
