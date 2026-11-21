@@ -2607,14 +2607,13 @@ async def look(company: dict, mode: str, read, plain=read_plain,
 
 
 def _board_host(kind: str, ref) -> str:
-    """The host a board is served from, for the platforms whose ref names it
-    (a Teamtailor site's origin, an ApplicantPro tenant's host); else ""."""
-    if not isinstance(ref, str):
-        return ""
-    if kind == "teamtailor":
+    """The host a board is served from, where the finder reads pages ON the
+    board's own host: a Teamtailor career site on a domain of the company's
+    own is their site, and is walked. (A board on a vendor's host is never
+    walked - a link that names a board is not followed - so no other type
+    has pages here to tell apart.)"""
+    if kind == "teamtailor" and isinstance(ref, str):
         return _host(ref)
-    if kind == "applicantpro":
-        return ref.strip().lower()
     return ""
 
 

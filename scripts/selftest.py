@@ -18483,6 +18483,18 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
             if ats.fetch_hirebridge("7724") != []:
                 errors += fail(f"hirebridge: the empty board {body}, whose career centre "
                                f"answers, is not a zero")
+        # the career centre is asked on its own host, and must be TITLED one
+        asked.clear()
+        ats._page = serve({HB: '"[]"', HBL: "<title>Amerlux Career Center</title>"})
+        ats.fetch_hirebridge("7724")
+        if not all(same for u, same in asked if "list.aspx" in u) or not any("list.aspx" in u for u, _ in asked):
+            errors += fail(f"hirebridge: the career centre was not asked on its own host: {asked}")
+        ats._page = serve({HB: '"[]"', HBL: "<title>Jobs</title><p>Visit our Career Center</p>"})
+        try:
+            ats.fetch_hirebridge("7724")
+            errors += fail("hirebridge: a page that only mentions a Career Center confirmed a zero")
+        except ats.AtsError:
+            pass
         # ...and an id nobody holds answers "[]" too: its career centre says so
         for landed, page_ in ((HBL, "<title>Hirebridge ATS Error</title>"),
                               ("https://recruit.hirebridge.com/v3/Application/AppErrMsg.aspx"
@@ -18591,10 +18603,15 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
                  job(21, payType="Salary", payDetails="OTE")]
         canada = job(30, payType="Salary", payDetails="", iso3="CAN", city="Toronto",
                      abbreviation="ON", stateName="Ontario")
+        notes = ["$70K base + variable", "base plus incentive plan", "incentives on top",
+                 "target earnings $140K", "total cash compensation $140K", "uncapped",
+                 "plus equity", "commissions paid monthly", "two bonuses a year",
+                 "total target compensation", "OTE 140K"]
+        worded = [job(40 + k, payType="Salary", payDetails=t) for k, t in enumerate(notes)]
         away = job(4, city="Remote", abbreviation=None, stateName=None)
         asked.clear()
         ats._page = ap([base, salary, hourly, hidden, away, ote, total, target] + gated + words
-                       + [canada])
+                       + [canada] + worded)
         rows = ats.fetch_applicantpro(host)
         by = {r["url"].rsplit("/", 1)[-1]: r for r in rows}
         b = by.get("4189983") or {}
@@ -18607,7 +18624,8 @@ def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
         if (s_.get("min"), s_.get("max"), s_.get("period"), s_.get("currency")) != \
                 (60000, 85000, "year", "USD") or (h_.get("min"), h_.get("period")) != (23, "hour"):
             errors += fail(f"applicantpro: a Salary or Hourly range was not read: {s_} / {h_}")
-        for n_ in ("3", "5", "6", "7", "10", "11", "12", "13", "20", "21"):
+        for n_ in ("3", "5", "6", "7", "10", "11", "12", "13", "20", "21",
+                   *(str(40 + k) for k in range(len(notes)))):
             if (by.get(n_) or {}).get("comp") is not None:
                 errors += fail(f"applicantpro: a 'Salary' row whose details say commission, "
                                f"on-target or total earnings was read as base pay: {by.get(n_)}")
@@ -18839,8 +18857,19 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
                    jobLocationType="TELECOMMUTE",
                    baseSalary={"currency": "USD", "value": {"unitText": "YEAR", "minValue": 80000,
                                                             "maxValue": 95000}})
-        ats._page = serve(feed([item(1), two, dict(item(3), title=" ")]))
+        hyb = dict(item(4, jobLocationType="HYBRID",
+                        jobLocation=[{"address": {"addressLocality": "Phoenix", "addressRegion": "Arizona",
+                                                  "addressCountry": "US"}}]),
+                   date_modified="2026-11-20T09:00:00-06:00")
+        ats._page = serve(feed([dict(item(1), date_modified="2026-11-20T09:00:00-06:00"), two,
+                                dict(item(3), title=" "), hyb]))
         rows = ats.fetch_teamtailor(f"https://{host}/")
+        four = rows.pop() if len(rows) == 3 else {}
+        if four.get("mode") is not None or four.get("posted") != "2026-11-04" \
+                or (four.get("office_hint") or {}).get("state") != "AZ" \
+                or (four.get("office_hint") or {}).get("country") not in ("US", "USA"):
+            errors += fail(f"teamtailor: a HYBRID role was read as remote, an edit stamp as the "
+                           f"posting date, or a US region not as the state: {four}")
         one = rows[0] if rows else {}
         if len(rows) != 2 or one.get("location") != "Coppell, US" or one.get("mode") is not None \
                 or one.get("posted") != "2026-11-04" or "Sell to cities" not in one.get("jd", "") \
@@ -18901,8 +18930,12 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
             ("<!-- " + assets + " -->" + alt, [], "assets that are only in a comment"),
             (assets.replace("teamtailor-cdn", "example-cdn") + alt, [], "no Teamtailor at all"),
             (assets + '<link rel="alternate" href="https://acme.teamtailor.com/jobs.rss">',
-             [("teamtailor", "https://acme.teamtailor.com", "href")],
+             [("teamtailor", "https://acme.teamtailor.com", "href", 1)],
              "a hosted site's feed, named once and not twice"),
+            (assets + f'<link rel="preload" href="https://{host}/jobs.rss" data-kind="alternate">', [],
+             "a <link> whose other attributes say alternate, not its rel"),
+            (assets + f'<link rel="alternate" type="application/rss+xml" href="https://{host}/news.rss">',
+             [], "the company's own news feed beside Teamtailor's assets"),
             ('<a href="https://fonrochelightingamerica.na.teamtailor.com/jobs">Jobs</a>',
              [("teamtailor", "https://fonrochelightingamerica.na.teamtailor.com", "href")],
              "the region label kept"),
@@ -18913,7 +18946,8 @@ def check_teamtailor_is_read_and_found_as_its_sites_are() -> int:
         # (read as the career site's own page: a site publishes its feed on
         # itself, and the finder believes no other host's)
         found, _rest = fsb.sightings(markup, f"https://{host}/jobs", home)
-        got = [(f["type"], f["ref"], f["element"]) for f in found]
+        got = [(f["type"], f["ref"], f["element"]) + ((f["times"],) if len(want[0] if want else ()) == 4
+                                                      else ()) for f in found]
         if got != want:
             errors += fail(f"teamtailor finder, {why}: read {got}, not {want}")
     # the board's own page 2 (no <head>, its pictures on teamtailor-cdn.com) is
@@ -18966,8 +19000,11 @@ def check_pinpoint_reads_what_the_board_shows() -> int:
         def json(self):
             return json.loads(self.text)
 
+    hops = []
+
     def serve(feed, dates):
         def fake(url, **kw):
+            hops.append(kw.get("same_host"))
             if url == f"{base}/postings.json":
                 return R(feed)
             if url == f"{base}/jobs.rss" and dates is not None:
@@ -18980,8 +19017,25 @@ def check_pinpoint_reads_what_the_board_shows() -> int:
     unseal = _sealed(ats, tried)
     try:
         hidden = row(2, compensation_visible=False)
-        ats._page = serve(json.dumps({"data": [row(1), hidden, row(3, title="  ")]}), rss)
+        unflagged = {k: v for k, v in row(4).items() if k != "compensation_visible"}
+        london = row(5, location={"city": "London", "province": "United Kingdom", "name": "London - UK"},
+                     job={})
+        ats._page = serve(json.dumps({"data": [row(1), hidden, row(3, title="  "), unflagged, london]}),
+                          rss.replace("</channel>", "<item><link>https://acmegov.pinpointhq.com/jobs</link>"
+                                                    "<pubDate>Mon, 09 Nov 2026 10:00:00 +0000</pubDate>"
+                                                    "</item></channel>"))
         rows = ats.fetch_pinpoint("AcmeGov")
+        by_ = {r["title"]: r for r in rows}
+        if (by_.get("Role 4") or {}).get("comp") is not None:
+            errors += fail(f"pinpoint: pay with no visibility flag was published: {by_.get('Role 4')}")
+        lon = by_.get("Role 5") or {}
+        if (lon.get("office_hint") or {}).get("state") or (lon.get("office_hint") or {}).get("country") \
+                or lon.get("posted"):
+            errors += fail(f"pinpoint: London was placed in a state or a country the feed never "
+                           f"gave, or a row with no job id took a date: {lon}")
+        if not hops or not all(hops):
+            errors += fail(f"pinpoint: a read was not held to the tenant's own host: {hops}")
+        rows = [r for r in rows if r["title"] in ("Role 1", "Role 2")]
         a = rows[0] if rows else {}
         if len(rows) != 2 or a.get("posted") != "2026-11-02" or a.get("mode") != "remote" \
                 or a.get("location") != "Remote/Denver, CO" \
@@ -19006,7 +19060,7 @@ def check_pinpoint_reads_what_the_board_shows() -> int:
                 errors += fail(f"pinpoint: {body!r} was read as a board")
             except ats.AtsError:
                 pass
-        for ref in ("www", "app", "acme.evil", "", None, "-acme"):
+        for ref in ("www", "app", "api", "acme.evil", "", None, "-acme"):
             try:
                 ats.pinpoint_base(ref)
                 errors += fail(f"pinpoint: {ref!r} was taken as a board")
@@ -19071,9 +19125,11 @@ def check_zoho_recruit_reads_only_the_open_jobs_its_page_carries() -> int:
     unseal = _sealed(ats, tried)
     try:
         closed = job(2, Publish=False, Is_Locked=True, Keep_on_Career_Site=True)
+        unmarked = {k: v for k, v in job(5).items() if k != "Publish"}
         teaser = job(3, Job_Description="We are hiring a seller who will...", Remote_Job=True,
                      City=None, State=None, Country=None)
-        ats._page = serve(page([job(1), closed, teaser, job(4, id="not-a-number")]))
+        ats._page = serve(page([job(1, Created_Time="2025-01-02 10:00:00"), closed, teaser,
+                                job(4, id="not-a-number"), unmarked]))
         rows = ats.fetch_zohorecruit(url + "/")
         by = {r["title"]: r for r in rows}
         if sorted(by) != ["Role 1", "Role 3"]:
@@ -19116,11 +19172,18 @@ def check_zoho_recruit_reads_only_the_open_jobs_its_page_carries() -> int:
                 pass
         if asked:
             errors += fail(f"zohorecruit: a ref that is not a career site was asked for: {asked}")
-        # the probe: the account's name and website; nothing when it hides them
-        ats._page = serve(page([job(1)]))
+        # the probe: the account's name and website, and the OPEN jobs counted;
+        # nothing when it hides them, nothing from the page's own name
+        ats._page = serve(page([job(1), closed, closed]))
         said = vb.board_says("zohorecruit", url)
-        if said["names"] != ["Acme Gov"] or not said["stated"] or said["site"] != "www.acmegov.example":
-            errors += fail(f"zohorecruit: the probe did not state the account's name and site: {said}")
+        if said["names"] != ["Acme Gov"] or not said["stated"] or said["site"] != "www.acmegov.example" \
+                or said["n"] != 1:
+            errors += fail(f"zohorecruit: the probe did not state the account's name and site, or "
+                           f"counted closed jobs: {said}")
+        ats._page = serve(page([job(1)], org={"website": "www.acmegov.example"}))
+        said = vb.board_says("zohorecruit", url)
+        if said["stated"] or said["names"]:
+            errors += fail(f"zohorecruit: a page with no company name stated {said['names']}")
         ats._page = serve(page([job(1)], org={"company_name": "Acme Gov", "hide_company_name": True}))
         said = vb.board_says("zohorecruit", url)
         if said["stated"] or said["names"]:
@@ -19207,13 +19270,29 @@ def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
             errors += fail(f"comeet: a uid and token pair was not read straight from the API: {asked}")
         # a hosted page for another uid, or with no token, is not this board
         for body in (page.replace('"F7.009"', '"F2.004"'), page.replace(T, "short"),
+                     page.replace(T, T[:4] + "x&details=false&uid=F2.004"),
                      "<html>no company data</html>"):
+            asked.clear()
             ats._page = serve({hosted: body, api: "[]"})
             try:
                 ats.fetch_comeet(hosted)
                 errors += fail(f"comeet: a hosted page with the wrong company data was believed: {body[:60]}")
             except ats.AtsError:
                 pass
+            if [u for u, _ in asked] != [hosted]:
+                errors += fail(f"comeet: a hosted page with no usable company data still had the "
+                               f"API asked: {[u for u, _ in asked]}")
+        for body in ("{}", '{"error": "invalid token"}', "[1]", '"x"'):
+            ats._page = serve({api: body})
+            try:
+                ats.fetch_comeet(f"F7.009|{T}")
+                errors += fail(f"comeet: the API answer {body!r} was read as a board")
+            except ats.AtsError:
+                pass
+        ats._page = serve({api: json.dumps([pos(1, categories=[{"name": "Hiring Manager",
+                                                                "value": "Pat Example"}])])})
+        if "Pat Example" in json.dumps(ats.fetch_comeet(f"F7.009|{T}")):
+            errors += fail("comeet: a category naming a hiring manager reached a row")
         asked.clear()
         for ref in ("F7.009", f"F7.009|{T}x?evil", "https://www.comeet.com/jobs/acme", 
                     "https://evil.example/jobs/acme/F7.009", f"f7.009|{T.lower()}", None):
@@ -19468,6 +19547,14 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
             except ats.AtsError:
                 if ok:
                     errors += fail(f"teamtailor: an empty feed on {why} was refused")
+        ats._page = lambda url, **kw: R(feed("acmegov.teamtailor.com", []))
+        said = vb.board_says("teamtailor", "https://acmegov.teamtailor.com")
+        if said["names"] != ["Acme Gov"] or not said["stated"] or said["n"] != 0:
+            errors += fail(f"teamtailor: a site with nothing open no longer names itself: {said}")
+        untitled = dict(posting("Acme Gov"), title=" ")
+        ats._page = lambda url, **kw: R(feed("acmegov.teamtailor.com", [posting("Acme Gov"), untitled]))
+        if vb.board_says("teamtailor", "https://acmegov.teamtailor.com")["n"] != 1:
+            errors += fail("teamtailor: the probe counts a posting with no title")
         ats._page = lambda url, **kw: R(feed("acmegov.teamtailor.com", [posting("Parent Group")]))
         said = vb.board_says("teamtailor", "https://acmegov.teamtailor.com")
         if said["names"] != ["Acme Gov", "Parent Group"] or vb.proven({"name": "Acme Gov"}, said)["ok"]:
@@ -19513,6 +19600,15 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
     if tried:
         errors += fail(f"second review checks: a read went round the stub: {tried[:3]}")
 
+    # a hosted site's own page, read: its feed is named once, not twice
+    found, _ = fsb.sightings(assets + '<link rel="alternate" type="application/rss+xml" '
+                             'href="https://acmegov.teamtailor.com/jobs.rss">',
+                             "https://acmegov.teamtailor.com/jobs", home)
+    if [(f["type"], f["ref"], f["times"]) for f in found] != \
+            [("teamtailor", "https://acmegov.teamtailor.com", 1)]:
+        errors += fail(f"finder: a hosted Teamtailor site's own page names its board "
+                       f"{[(f['ref'], f['times']) for f in found]}, not once")
+
     # ---- the finder's refusals, each with a page that needs it ----------------
     for markup in ("<script>rec_embed_js.load({ widget_id: 'rec_job_listing_div', "
                    "site: 'https://nexgenam.zohorecruit.com' });</script>",     # no page name
@@ -19524,6 +19620,36 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         if found:
             errors += fail(f"finder: {[(f['type'], f['ref']) for f in found]} read out of "
                            f"{markup[:70]!r}, which names no board")
+
+    # ---- each new platform's own furniture beside its board says nothing -----
+    for kind, board, furniture in (
+            ("applicantpro", '<a href="https://casellejobs.applicantpro.com/jobs/">Jobs</a>',
+             '<a href="https://www.applicantpro.com/">Powered by ApplicantPro</a>'),
+            ("pinpoint", '<a href="https://clearview.pinpointhq.com/">Jobs</a>',
+             '<script src="https://app.pinpointhq.com/widget.js"></script>'),
+            ("comeet", '<a href="https://www.comeet.com/jobs/acme/F7.009">Jobs</a>',
+             '<script src="//www.comeet.co/careers-api/api.js"></script>'),
+            ("jobvite", '<a href="https://jobs.jobvite.com/acmegov/jobs">Jobs</a>',
+             '<script src="https://jobs.jobvite.com/__assets__/scripts/careersite/public/iframe.js"></script>'),
+            ("teamtailor", '<a href="https://acme.teamtailor.com/jobs">Jobs</a>',
+             '<link rel="stylesheet" href="https://assets-aws.teamtailor-cdn.com/x.css">'),
+            ("zohorecruit", '<a href="https://acmegov.zohorecruit.com/jobs/Careers">Jobs</a>',
+             '<a href="https://www.zohorecruit.com/">Powered by Zoho Recruit</a>')):
+        found, rest = fsb.sightings(board + furniture, here, home)
+        if [f["type"] for f in found] != [kind] or rest:
+            errors += fail(f"finder: {kind}'s own furniture beside its board came out as "
+                           f"{[r['vendor'] for r in rest]} (boards {[f['type'] for f in found]})")
+        alone, rest = fsb.sightings(furniture, here, home)
+        vendors = [r["vendor"] for r in rest]
+        if alone or len(vendors) != 1 or not wf.advertising(vendors[0], kind, "href") \
+                or vendors[0] in ats.FETCHERS:
+            errors += fail(f"finder/door: {kind}'s own furniture on another page is {vendors}, "
+                           f"which the door does not take as the board's own platform, or is "
+                           f"filed under a name the crawl reads")
+    unread_as_read = {v for v, _h, _rx in fsb.ELSEWHERE} & set(ats.FETCHERS)
+    if unread_as_read:
+        errors += fail(f"find_site_boards.ELSEWHERE files {sorted(unread_as_read)} as platforms "
+                       f"nothing reads, and a reader of that name exists")
 
     # ---- a board's own pages showing its own platform: not a second one ------
     # (Powerfleet's second page of jobs, a fragment with no <head>, its
@@ -38859,6 +38985,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "jibe as an address": {"type": "jibe", "ref": "https://careers.acme.test"},
         "no ref": {"type": "greenhouse", "ref": None},
         "a type nothing reads": {"type": "paycom", "ref": "acme"},
+        "comeet pair": {"type": "comeet", "ref": "F7.009|0123456789ABCDEF0123456789ABCD"},
     })
     site_ = "https://www.acme.test"
     number = {"type": "workable", "ref": "710855"}
@@ -38924,6 +39051,7 @@ console.log(JSON.stringify(out));"""
         ("greenhouse", "https://job-boards.greenhouse.io/acme"),
         ("no ref", "#"),
         ("a type nothing reads", "#"),
+        ("comeet pair", "#"),
         ("number, filed page", site_ + "/careers"),
         ("number, website", site_),
         ("number with a slash", site_),
