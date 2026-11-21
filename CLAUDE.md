@@ -2784,8 +2784,9 @@ round.
   merged away - whatever it is held by: the board of a standing doubt, of
   an unruled row a door filed in Boards we found, or of a board proposal
   still pending in Agent proposals (`waiting`, blind review of 2026-11-21),
-  is HOLD with the words quoted, and a board refused in either store (a Boards-we-found refusal by
-  the board on its row, an Agent-proposals rejection by its ats_type/ats_ref)
+  is HOLD with the words quoted, and a board refused in either store (a
+  Boards-we-found refusal by the board on its row, an Agent-proposals
+  rejection by its ats_type/ats_ref)
   for a record merged away, or for a record whose name this company's
   also_known_as carries (one company on two records), is SKIP refused, "tell
   the owner", with nothing read - for whatever company's site names it,

@@ -32463,8 +32463,9 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
     ruling: a row a door filed for another record that he has ruled on, and
     a doubt about another record that he has ruled on since, hold nothing -
     discovery writes those boards and wire_embedded wires them (test review,
-    2026-11-21: either could be kept holding, and nothing noticed). Discovery counts what it left alone, and names nothing (its
-    log is public). A board nobody holds is still written.
+    2026-11-21: either could be kept holding, and nothing noticed).
+    Discovery counts what it left alone, and names nothing (its log is
+    public). A board nobody holds is still written.
 
     Driven through discover_ats.main with the workflow's own arguments, an
     --only list, --confirm, wire_embedded.triage and wire_embedded.main
@@ -37651,7 +37652,8 @@ def check_a_workable_account_is_held_under_either_key() -> int:
     # slug was taken for one board: the new doubt was not kept, the plan said
     # it was settled on his word, and the next plan wired the board.)
     WORDS5 = "two readers: the account is the Archi Five Group's, every brand's roles"
-    BOARDS5 = {"workable/790000": (2, ["Archi Five"]), "workable/othergroupfive": (3, ["Archi Five"]),
+    BOARDS5 = {"workable/790000": (2, ["Archi Five"]),
+               "workable/othergroupfive": (3, ["Archi Five"]),
                "workable/archifiveslug": (2, ["Archi Five"])}
     with _WiringBox([co("archi-five", "Archi Five")], BOARDS5) as box:
         box.plan(_wb_results({"archi-five": asks("archi-five", "790000")}),

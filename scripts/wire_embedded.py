@@ -189,7 +189,8 @@ def triage(rows: list, by_id: dict, held: dict | None = None,
     # about - and --propose would queue it a second time in another store.
     # AND EVERY ROW OF A COMPANY THE OWNER HOLDS, whichever finder left it: a
     # reader's doubt that stands, a row a door filed for him, a refusal in
-    # either store, a board proposal still pending in Agent proposals. One row per company fits the queue, so a door-held row the
+    # either store, a board proposal still pending in Agent proposals. One row
+    # per company fits the queue, so a door-held row the
     # queue could not take left an older finder's row for the same company in
     # this file, and --write wired it on its slug (second review, 2026-11-19).
     # AND EVERY ROW WHOSE BOARD HE HOLDS UNDER ANOTHER RECORD'S ID: a company

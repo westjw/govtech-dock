@@ -5,7 +5,7 @@
     python3 scripts/wire_found.py plan --results ... --doubts doubts.json --by agent:<label> --out worklist-2.json
     python3 scripts/wire_found.py apply worklist.json --by agent:<label>            # look only
     python3 scripts/wire_found.py apply worklist.json --by agent:<label> --write --expect <code>
-    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<the owner's words>" --by agent:<label>   # a look
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<his words>" --by agent:<label>  # a look
     python3 scripts/wire_found.py settle ... --write --expect <code>
 
 WHY THIS EXISTS. On 2026-11-18 the crawl read postings from about a quarter of
