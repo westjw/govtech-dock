@@ -2577,7 +2577,8 @@ round.
     python3 scripts/wire_found.py plan --results ... --doubts doubts.json --by agent:<label> --out <scratch>/worklist-2.json
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label>            # a look
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label> --write --expect <code>
-    python3 scripts/wire_found.py settle --id <company> --why "<the owner's words>" --by agent:<label>   # only on his word
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<the owner's words>" --by agent:<label>   # only on his word; a look
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "..." --by agent:<label> --write --expect <code>
 
 - **`plan` is the only step on the network, and it freezes a worklist.** It
   reads `find_site_boards.py` results (several files are pooled: a plain read
@@ -2609,8 +2610,9 @@ round.
   `ats_note` on file (wiring would write over the note); a discovery suspect
   or an Acquisitions row (both builders are asked); another company already
   holding the board, or the same board found for two companies in one run; a
-  different board refused earlier or already waiting; a board that names
-  somebody else (MISMATCH, both names quoted) or nobody.
+  different board refused earlier or already waiting; this board refused for
+  another company still on file (the refusal and whose it was quoted, below);
+  a board that names somebody else (MISMATCH, both names quoted) or nobody.
 - **An advertisement is not a second board, and a question that did not get
   through is not a doubt** (the first real run, 2026-11-18: 38 companies, 9
   to wire, 15 held, and three of the 15 were neither). A LINK to (or a
@@ -2661,15 +2663,26 @@ round.
   `apply`; a company the pre-pass skips keeps the number's key (and gains
   the slug's when the same number was resolved for another company), and a
   record on file holding a number resolved in the run holds the slug too
-  (in `apply` through the worklist's own `workable_numbers`). A board the
+  (in `apply` through the worklist's own `workable_numbers`), as does one
+  whose number and slug are said together on file (`workable_pairs`, below):
+  the door counts it among the slug's holders, in the plan and in apply,
+  and `held_boards` holds the slug under its key (code `number`) for
+  discovery and wire_embedded. Skipped as "the slug's holder" with nothing
+  putting it there, it held nothing, and a duplicate record linking the slug
+  was wired to the same account (blind review, 2026-11-21). A board the
   owner holds under a number (a doubt, a door-filed row, a refusal) is held
   under the slug's key too where the run resolved the number; where it did
   not - and for a record on file holding a number nobody in the run
   followed - a Workable board is held when it STATES one of the names that
   account goes by (the held row's `board_calls_itself` or company, the
   doubt's company, the record's name or also_known_as; `verify_boards.strict`),
-  in the plan and in apply: "a record holds Workable account N (X), and
-  whether it is this board was not asked ... this board states "X"". No
+  or is found for a company that GOES BY one of them (its name or an
+  also_known_as, the names discovery and wire_embedded ask by: a doubt about
+  "Archi", merged into Archistar, held the survivor's own board in those two
+  doors and not in this one, blind review of 2026-11-21), in the plan and in
+  apply: "a record holds Workable account N (X), and whether it is this board
+  was not asked ... this board states "X"" (or "the company it was found for
+  goes by "X""). No
   longer every Workable board (decided after the review of 27eeb628). A refused
   company's number is not followed (marked `declined`) and the company is
   SKIP refused, whatever it refused - "its slug was not looked for ... tell
@@ -2717,8 +2730,13 @@ round.
   one record per doubt (`{"<company id>@<when>": {id, name, board, type,
   ref, why, by, on, at}}`; the first shape `{company id: {...}}` is still
   read). The same words about the same board for the same company are never
-  written twice, ruled on since or not (the board by its key, a Workable
-  number and slug taken for one account). Where the company has a row
+  written twice, ruled on since or not (the board by its key; a Workable
+  number and a slug taken for one account only where the file ties the two,
+  `workable_pairs` - the doubts are kept before the first request, so
+  nothing the run follows can. Any number beside any slug was once taken
+  for one account: a doubt about another account in the words of one he
+  had settled was not kept, the plan said it was settled on his word, and
+  the next plan wired the board; blind review, 2026-11-21). Where the company has a row
   waiting in Boards we found, the words go onto it (`board_proposals.add_doubt`,
   stamped `updated`, which makes the card print `identity_why`), naming the
   board - "a reader's doubt about greenhouse/xco, not the board on this card
@@ -2742,10 +2760,20 @@ round.
   ruling, and a row filed after a doubt says "his ruling on this row in
   Boards we found settles it" of itself. "Wired before the reader's doubt
   was kept" is said only of a doubt the same run kept. On his word,
-  `settle` adds one journalled record (`{"<id>@<when>~settled": {id,
+  `settle` adds one journalled record (`{"<id>@<when>~settled": {id, board,
   settles: [keys], why, by, on, at}}`) that settles the company's standing
-  doubts for every reader (plan, apply, `held_for_the_owner`); admin_undo.py
-  takes it back. A settled doubt given again is not kept again, never called
+  doubts ABOUT THE ONE BOARD his words are about (`--board`, as the plan
+  prints it, compared by `board_key`; `-` names the doubts that name no
+  board) for every reader (plan, apply, `held_for_the_owner`); admin_undo.py
+  takes it back. Without `--write` it is a look: it lists the doubts it
+  would settle and every other standing doubt of the company it leaves
+  standing, and prints a code, which `--write --expect` must quote, as in
+  apply (the code covers the company, the board, the doubts and his words).
+  It refuses a doubt whose company has its row on his desk (reach `row`):
+  his own ruling on that card settles it. (Blind review, 2026-11-21: `settle
+  --id` settled every standing doubt of the company - one about a board
+  nobody had shown him, which the next plan wired, and one behind the card
+  he settles it from.) A settled doubt given again is not kept again, never called
   standing, and tells nobody anything. A board a door FILED in his queue
   (`filed`) is held by every later plan too, with its doubt; a row an older
   finder left may still be answered by the two checks. A SKIP made after
@@ -2753,13 +2781,29 @@ round.
   next plan" unless it is; the plan's last lines say nothing is wired or
   filed until the worklist is applied with --write.
 - **A board the owner holds is held under any company's id** - current or
-  merged away - whatever it is held by: the board of a standing doubt, or
-  of an unruled row a door filed in Boards we found, is HOLD with the words
-  quoted, and a board refused in either store (a Boards-we-found refusal by
-  the board on its row, an Agent-proposals rejection by its ats_type/ats_ref)
-  is SKIP refused, "tell the owner", with nothing read - for whatever
-  company's site names it, under either Workable key, in the plan and in
-  apply (`held_boards`; apply's codes `standing`, `queued`, `refused`). A
+  merged away - whatever it is held by: the board of a standing doubt, of
+  an unruled row a door filed in Boards we found, or of a board proposal
+  still pending in Agent proposals (`waiting`, blind review of 2026-11-21),
+  is HOLD with the words quoted, and a board refused in either store (a
+  Boards-we-found refusal by the board on its row, an Agent-proposals
+  rejection by its ats_type/ats_ref)
+  for a record merged away, or for a record whose name this company's
+  also_known_as carries (one company on two records), is SKIP refused, "tell
+  the owner", with nothing read - for whatever company's site names it,
+  under either Workable key, in the plan and in apply (`held_boards`,
+  `wire_found.refused_for_it`; apply's codes `standing`, `queued`,
+  `refused`). Refused for ANOTHER company still on file, it is that
+  company's answer, not this one's: the board is read and HELD, and filed in
+  Boards we found for the company whose own site and board both name it,
+  the refusal and whose it was quoted ("... was refused for Sub Co in Agent
+  proposals (...) - refused for another company, still on file (Sub Co);
+  whether it is Parent Co's own board is the owner's to rule on"); apply
+  leaves such a WIRE row alone and says to plan again. (Blind review,
+  2026-11-21: Sub Co's refusal, "the board is Parent Co's", held Parent Co's
+  own board in all three doors, and nothing could put it in front of him for
+  Parent Co; 10 of the 11 board proposals he had rejected name their true
+  owner. Discovery and wire_embedded.py, which never wire past him, still
+  hold it.) A
   doubted or refused company merged into its duplicate left its hold under
   the dropped id, and the survivor's plan wired the board (third review and
   review of 27eeb628, 2026-11-19). The desk's merge (`admin.act_merge`) is NOT refused for it,
@@ -2790,8 +2834,15 @@ round.
 - **`board_key` is loose and `spelling` is exact.** The key only notices
   collisions, and a collision only ever sends a board to a person: case is
   ignored, an address matches with or without scheme, `www.` or a last slash,
-  a Paylocity board is the id after `/jobs/All/`, an iCIMS portal its slug, a
-  Jibe or Oracle board its host. What is READ is the ref as the quoted page
+  a Paylocity board is the id after `/jobs/All/` or `/jobs/List/`, with or
+  without the tenant's name after it (a /List/ board had two keys, so a hold
+  under one spelling missed the other: blind review, 2026-11-21), an iCIMS
+  portal its slug, a Jibe, Oracle, ApplicantPro or Teamtailor board its host,
+  a Zoho Recruit career site its host and page name (a posting's address is
+  under it), and a Comeet board its company uid, whether written
+  `<UID>|<TOKEN>` or as the hosted board's address (those four were keyed on
+  the whole ref until the test review of 2026-11-21; Hirebridge's number and
+  Pinpoint's slug need nothing). What is READ is the ref as the quoted page
   spelled it; SmartRecruiters minds case, and `caseco` answering empty says
   nothing about `CaseCo`.
 - **`apply` reads the frozen file and makes no request, but it asks the data
@@ -2810,7 +2861,8 @@ round.
   (`moved`), a reader's doubt kept since (`standing`), the board held for the
   owner under another company's id (`standing`, `queued`, `refused`), a
   Workable account held under a number the plan never followed whose name
-  the board states (`number`, or the hold's own code), a door-filed
+  the board states or the company goes by (`number`, or the hold's own
+  code), a door-filed
   row in Boards we found for any board (`queued`), a waiting row or pending
   proposal the plan did not record in the row's `waiting_seen` (`waiting`),
   another holder (under either key), more postings shown than the board
@@ -2859,8 +2911,11 @@ round.
 - **No other door wires a company the owner holds.**
   `board_proposals.held_for_the_owner()` is the one reader: a reader's doubt
   that stands (`data/board_doubts.json`), a row a door filed in Boards we
-  found that he has not ruled on, or a board refused in either store (Boards
-  we found, Agent proposals). `discover_ats.py` asks it before its first
+  found that he has not ruled on, a board refused in either store (Boards
+  we found, Agent proposals), or a board proposal still pending in Agent
+  proposals (the sweep wrote a pending company's board, where the wiring
+  door held it: blind review, 2026-11-21; on file then, ICSolutions,
+  pending since 2026-09-02). `discover_ats.py` asks it before its first
   probe - the weekly sweep and an `--only` list alike - and prints only a
   count (the workflow's log is public); `wire_embedded.py` asks it before it
   sorts, wires or queues anything, and leaves every row of such a company
@@ -2869,10 +2924,16 @@ round.
   not write a board it found - in the sweep, an `--only` list or `--confirm`
   - when the owner holds that board under ANY record's id (a doubt about a
   company merged away, its door-filed row, a refusal under another id in
-  either store, a Workable account under either key where known, or one held
+  either store, a board pending in Agent proposals for another record
+  (`waiting`), a Workable account under either key where known, or one held
   under a number nobody followed whose name the company goes by); it logs
   "a board was found and is held for the owner under another record, so it
-  was not written" and prints only a count. wire_embedded.triage leaves such
+  was not written" and prints only a count. Nor does it keep such a board as
+  a near miss (one that read and did not match the name) in
+  ats_suspects.json, which feeds the Acquisitions queue and `--review`'s
+  "accept" line, or print it: it is counted, and logged as "not kept for
+  review" (a board refused for another record went back in front of him
+  that way: blind review, 2026-11-21). wire_embedded.triage leaves such
   a row in no pile, and the run counts it with the rows it left for the
   owner. A store that is on disk and does not read stops either run before
   it starts: read as empty it would hold nobody. The second blind review
@@ -2921,9 +2982,13 @@ round.
   states a name the row goes by, so it waits for him to refuse it or for a
   person to put the slug on file. Also his: a doubt no ruling of his
   can reach (an older ruling, a company on a board, one merged away) holds
-  its board until he is told and answers - `settle` writes his answer; and a
-  board refused for one company is now SKIP refused for every company that
-  names it, the group's own record included, until he says otherwise.
+  its board until he is told and answers - `settle` writes his answer, about
+  the one board he answered about; and a
+  board refused for one company is SKIP refused for its survivor and for a
+  record that also goes by its name, and for every other company that names
+  it is filed in Boards we found with the refusal quoted, the group's own
+  record included, for him to rule on there (discovery and wire_embedded
+  hold it for every company).
   Giants on readers that do read the whole board are still read in full
   before they are skipped.
 

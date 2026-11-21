@@ -5,7 +5,8 @@
     python3 scripts/wire_found.py plan --results ... --doubts doubts.json --by agent:<label> --out worklist-2.json
     python3 scripts/wire_found.py apply worklist.json --by agent:<label>            # look only
     python3 scripts/wire_found.py apply worklist.json --by agent:<label> --write --expect <code>
-    python3 scripts/wire_found.py settle --id <company> --why "<the owner's words>" --by agent:<label>
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<his words>" --by agent:<label>  # a look
+    python3 scripts/wire_found.py settle ... --write --expect <code>
 
 WHY THIS EXISTS. On 2026-11-18 the crawl read postings from about a quarter of
 the companies on the board. Of the rest, roughly a thousand have a careers
@@ -90,8 +91,8 @@ are not apply's to write: `plan --doubts` kept them before its first
 request (one journalled addition to data/board_doubts.json, and their words
 onto the rows already waiting, in entries the journal's runaway rule takes),
 so no worklist, earlier or later, and no failure of this plan can wire past
-one. `settle` writes the owner's word that settles a company's doubts - only
-on his word.
+one. `settle` writes the owner's word that settles a company's doubts about
+the one board his words were about - only on his word, and a look first.
 
 Postings do not appear when this runs. The nightly crawl reads the new boards
 and the site follows it.
@@ -106,6 +107,7 @@ import json
 import os
 import pathlib
 import re
+import shlex
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -156,7 +158,8 @@ WAITING = board_proposals.WAITING
 # plan holds such a company, and every apply of any worklist leaves its WIRE
 # row alone, until the owner rules on the company in Boards we found after the
 # doubt was kept, or it is settled on his word: `settle` adds a record
-# {"<company id>@<when>~settled": {id, settles: [keys], why, by, on, at}}
+# {"<company id>@<when>~settled": {id, board, settles: [keys], why, by, on,
+# at}}, settling only the doubts about the board his words were about
 # (board_proposals.standing_doubts). No file is no doubts.
 DOUBTS = board_proposals.DOUBTS
 DOUBT_ACTION = "reader-doubt"
@@ -816,6 +819,29 @@ named_holds = board_proposals.named_holds
 numbers_on_file = board_proposals.numbers_on_file
 
 
+def refused_for_it(h: dict, c: dict, by_id: dict) -> bool:
+    """Is a refusal held under ANOTHER record's id (held_boards, code
+    `refused`) a refusal of this board for THIS company too?
+
+    Yes when that record is no longer on file - merged away, its refusal is
+    its survivor's - or when this company's also_known_as carries its name:
+    one company on two records. Otherwise it is another company's refusal.
+
+    WHY THE DIFFERENCE (blind review, 2026-11-21). The owner refuses Sub Co's
+    claim on greenhouse/parentco, "the board is Parent Co's, not this
+    company's"; Parent Co's own site links that board and the board names
+    Parent Co. Every door held it for Parent Co, the wiring door as SKIP
+    refused, and nothing could ever put it in front of him for Parent Co.
+    10 of the 11 board proposals he had rejected name their true owner. So
+    the wiring door files such a board for him, the refusal quoted and whose
+    it was, and he rules on it; discovery and wire_embedded.py, which never
+    wire past him, still hold it."""
+    other = by_id.get(h.get("id"))
+    if other is None:
+        return True
+    return bool(set(_strict_names(*_akas(c))) & set(_strict_names(other.get("name"))))
+
+
 def acquisition_doubts(companies: list, board: dict) -> dict:
     """{company id: what the Acquisitions queue says about it}.
 
@@ -1279,14 +1305,17 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                     f"shown in that queue again - tell the owner")
         return _skip(base, "refused", why)
     # A BOARD REFUSED FOR ANOTHER COMPANY'S ID is refused here too
-    # (held_boards): merged into its duplicate, a refused company left its
-    # refusal under the id that was dropped, the survivor took its name as
-    # also_known_as, and the next plan wired the board somebody had said no
-    # to (review of 27eeb628, 2026-11-19).
+    # (held_boards) when the refusal was this company's under another record:
+    # merged into its duplicate, a refused company left its refusal under the
+    # id that was dropped, the survivor took its name as also_known_as, and
+    # the next plan wired the board somebody had said no to (review of
+    # 27eeb628, 2026-11-19). A refusal for ANOTHER COMPANY still on file is
+    # not this company's answer: it is held below and filed for the owner,
+    # the refusal quoted (refused_for_it; blind review, 2026-11-21).
     owner_holds = ctx.get("held_boards") or {"keys": {}, "named": []}
     hits = list({id(h): h for k in keys for h in owner_holds["keys"].get(k, [])
                  if h["id"] != cid}.values())
-    no = [h for h in hits if h["code"] == "refused"]
+    no = [h for h in hits if h["code"] == "refused" and refused_for_it(h, c, ctx["by_id"])]
     if no:
         return _skip(base, "refused", f"{no[0]['words']}; the board found now is that board, "
                                       f"{show(kind, ref)}, for another record - tell the owner")
@@ -1392,8 +1421,17 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append(f"the same board was found for {' and '.join(twins[:4])} in this run")
     # A BOARD THE OWNER HOLDS FOR ANOTHER COMPANY'S ID is held here too: the
     # board of a standing doubt, or of an unruled row a door filed, under
-    # either Workable key (held_boards; this company's own are said below)
-    for words in dict.fromkeys(h["words"] for h in hits):
+    # either Workable key (held_boards; this company's own are said below).
+    # A record on a Workable number whose slug this is (`number`) is said
+    # once, as the board's holder above. A board refused for another company
+    # still on file goes to the owner for THIS company, his refusal and whose
+    # it was quoted: he said no to it for them, not for this one.
+    for words in dict.fromkeys(
+            (f"{h.get('refusal') or h['words']} - refused for another company, still on file "
+             f"({(by_id.get(h['id']) or {}).get('name') or h['id']}); whether it is "
+             f"{base['name']}'s own board is the owner's to rule on")
+            if h["code"] == "refused" else h["words"] for h in hits
+            if not (h["code"] == "number" and h["id"] in holding)):
         doubts.append(words)
     for r in refused:
         doubts.append(f"an earlier board for this company was refused ({r['board']}, "
@@ -1577,9 +1615,13 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # beside a board that STATES one of the names that account goes by
     # (held_boards, named_holds). No longer every Workable board, which held
     # boards that state other names entirely (decided after the review of
-    # 27eeb628, 2026-11-19).
-    if stated:
-        doubts += [w for _c, w in named_holds(owner_holds, kind, names, cid)]
+    # 27eeb628, 2026-11-19). AND beside a board found for a company that GOES
+    # BY one of them (its name or an also_known_as), as discovery and
+    # wire_embedded.py hold it: a doubt about "Archi", merged into Archistar,
+    # held the survivor's own board in those two doors and not in this one
+    # (blind review, 2026-11-21).
+    doubts += [w for _c, w in named_holds(owner_holds, kind, names if stated else [], cid,
+                                          _their_names(c))]
 
     # WHAT THE READ ITSELF ARGUES. A board with nothing on it shows nothing
     # about where they hire today - an account left behind answers empty and
@@ -1649,13 +1691,18 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     ctx["held_boards"] = held_boards(ctx["doubts"], ctx["stores"], ctx["by_id"], ctx["slugs"],
                                      companies, ctx["refusals"])
     # a record on file holding a Workable NUMBER is the same board as the
-    # slug that number was followed to in this run
+    # slug that number was followed to in this run - or that the two are said
+    # together on file in the door's own words (board_proposals.workable_pairs:
+    # a note or a queue row). Followed only, a duplicate record linking the
+    # slug was wired to the same account whenever the note was all that tied
+    # them (blind review, 2026-11-21).
+    pairs = ctx["held_boards"]["pairs"]
     for c in companies:
         a = c.get("ats") or {}
-        got = ctx["slugs"].get(_number(a.get("ref"))) if numbered(a.get("type"), a.get("ref")) \
+        slug = _slug_of(pairs, _number(a.get("ref"))) if numbered(a.get("type"), a.get("ref")) \
             else None
-        if got and got[0]:
-            ctx["holders"][board_key("workable", got[0])].append(c["id"])
+        if slug:
+            ctx["holders"][board_key("workable", slug)].append(c["id"])
     named, claims = {}, collections.defaultdict(list)
     for cid, entry in results.items():
         named[cid] = boards_named(entry)
@@ -1770,24 +1817,36 @@ def board_named(entry: dict | None, c: dict | None) -> tuple:
     return show(first["type"], seen["ref"]), first["type"], seen["ref"]
 
 
-def same_board(a: tuple, b: tuple) -> bool:
+def same_board(a: tuple, b: tuple, pairs: dict | None = None) -> bool:
     """Are the boards (type, ref) `a` and `b` one board, for one question:
     is a reader's doubt already on file about it? By board_key, never by
     spelling - "greenhouse/AcmeCo" and "greenhouse/acmeco" are one board, and
     the same words about it were written twice after the owner's ruling and
-    stood again (review of 27eeb628, 2026-11-19). A Workable account number beside
-    a Workable slug is taken to be the same account: nothing before the first
-    request can tell them apart. No board and no board are the same."""
+    stood again (review of 27eeb628, 2026-11-19). No board and no board are
+    the same.
+
+    A WORKABLE ACCOUNT NUMBER AND A SLUG ARE ONE BOARD ONLY WHERE A PAIR SAYS
+    SO (`pairs`: {number: slug}, board_proposals.workable_pairs - what is said
+    on file; the doubts are kept before the plan's first request, so nothing
+    this run follows can say it). Any number beside any slug was taken for one
+    account: a doubt about workable/othergroup, in the words of one the owner
+    had settled about workable/710855, was dropped as "already on file", the
+    plan said it was settled on his word, and the next plan wired a board he
+    never saw (blind review, 2026-11-21)."""
     (ka, ra), (kb, rb) = a, b
     if not ka or not kb:
         return not ka and not kb
     if board_key(ka, ra) == board_key(kb, rb):
         return True
-    return ka == kb == "workable" and numbered(ka, ra) != numbered(kb, rb)
+    if not (ka == kb == "workable" and numbered(ka, ra) != numbered(kb, rb)):
+        return False
+    number, slug = (ra, rb) if numbered(ka, ra) else (rb, ra)
+    known = _slug_of(pairs, _number(number))
+    return bool(known) and board_key("workable", known) == board_key("workable", slug)
 
 
 def new_doubts(reviewed: dict, results: dict, by_id: dict, grouped: dict, taken,
-               by: str) -> dict:
+               by: str, pairs: dict | None = None) -> dict:
     """{record key: record} for every reader's doubt that is not already on
     file in the same words about the same board for the same company -
     WHETHER OR NOT the owner has settled it since. A doubt he settled, given
@@ -1797,13 +1856,15 @@ def new_doubts(reviewed: dict, results: dict, by_id: dict, grouped: dict, taken,
     else holds: keeping one is an addition to the file, never a rewrite. It
     carries the company's name as it read then: a doubt held by board under
     a Workable number is compared with a board's stated name by it, after the
-    record is merged away."""
+    record is merged away. `pairs` are the Workable numbers and slugs said
+    together on file (same_board)."""
     on, at = dt.date.today().isoformat(), admin.now()
     taken = set(taken)
     out = {}
     for cid, words in sorted(reviewed.items()):
         board, kind, ref = board_named(results.get(cid), by_id.get(cid))
-        if any(str(d.get("why") or "").strip() == words and same_board(doubt_board(d), (kind, ref))
+        if any(str(d.get("why") or "").strip() == words
+               and same_board(doubt_board(d), (kind, ref), pairs)
                for d in grouped.get(cid) or []):
             continue
         key, n = f"{cid}@{at}", 2
@@ -1828,7 +1889,9 @@ def doubt_line(d: dict, row: dict | None) -> str:
         about = "this company"
     elif f and board_key(kind, ref) == board_key(f.get("type"), f.get("ref")):
         about = f"this board ({show(kind, ref)})"
-    elif f and same_board((kind, ref), (f.get("type"), f.get("ref"))):
+    elif f and kind == f.get("type") == "workable" \
+            and numbered(kind, ref) != numbered("workable", f.get("ref")):
+        # a number beside a slug: said as what may be, whatever is on file
         about = (f"{show(kind, ref)} (a Workable account number; this card's board, "
                  f"{on_card}, may be the same account)")
     else:
@@ -1874,7 +1937,9 @@ def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str, say=print
         by_id = {c["id"]: c for c in companies}
         refusals = _refusals(s)
         rows = board_proposals.rows_by_id(s["found"])
-        new = new_doubts(reviewed, results, by_id, s["doubts"], raw, by)
+        # a Workable number and slug are one board only where the file says so
+        pairs = board_proposals.workable_pairs(companies, s["found"])
+        new = new_doubts(reviewed, results, by_id, s["doubts"], raw, by, pairs)
         fresh = {r["id"] for r in new.values()}
         if new:
             by_code = collections.defaultdict(list)
@@ -1965,7 +2030,7 @@ def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str, say=print
         name = (by_id.get(cid) or {}).get("name") or (results.get(cid) or {}).get("name") or cid
         board, kind, ref = board_named(results.get(cid), by_id.get(cid))
         mine = [d for d in grouped.get(cid) or [] if str(d.get("why") or "").strip()
-                == reviewed[cid] and same_board(doubt_board(d), (kind, ref))]
+                == reviewed[cid] and same_board(doubt_board(d), (kind, ref), pairs)]
         if cid not in fresh and mine and not any(d in (standing.get(cid) or []) for d in mine):
             words = settled_words(mine, s["ruled"].get(cid))
         else:
@@ -2331,17 +2396,30 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             doubt_words(d, ((held_for.get("reaches") or {}).get(cid) or (None, None))[1])
             for d in stands)
     # the board held for the owner under ANY company's id (held_boards): a
-    # refused one, a doubted one, a door-filed one - under either Workable key
+    # refused one, a doubted one, a door-filed one - under either Workable key.
+    # A record on file on a Workable number whose slug this is (`number`) is
+    # the board's holder, and is said as one below.
     owner_holds = held_for.get("boards") or {}
+    reading = {i for k in keys for i in holders.get(k, [])}
     for k in keys:
         for h in (owner_holds.get("keys") or {}).get(k) or []:
-            if h["id"] != cid:
-                return h["code"], (f"since the plan, {h['words']}"
-                                   + (" - tell the owner" if h["code"] == "refused" else ""))
+            if h["id"] == cid or (h["code"] == "number" and h["id"] in reading):
+                continue
+            if h["code"] == "refused" and not refused_for_it(h, c, by_id):
+                # another company's refusal: the plan files it for the owner
+                return h["code"], (f"since the plan, {h.get('refusal') or h['words']} - refused "
+                                   f"for another company, still on file "
+                                   f"({(by_id.get(h['id']) or {}).get('name') or h['id']}): plan "
+                                   f"again, and the plan holds it for the owner with the "
+                                   f"refusal quoted")
+            return h["code"], (f"since the plan, {h['words']}"
+                               + (" - tell the owner" if h["code"] == "refused" else ""))
     # a Workable account held under a number the plan never followed, beside
-    # a board that states one of the names it goes by
+    # a board that states one of the names it goes by, or found for a company
+    # that goes by one (its name or an also_known_as, as on file now: blind
+    # review, 2026-11-21)
     for code, words in named_holds(owner_holds, kind, c2.get("names") if c2.get("stated") else [],
-                                   cid):
+                                   cid, _their_names(c)):
         return code, f"{words} - plan again"
     seen = {tuple(x) for x in row.get("waiting_seen") or []
             if isinstance(x, list) and len(x) == 2}
@@ -2419,13 +2497,17 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
     rather than hold nothing."""
     s = _stores(stores)
     by_id = {c["id"]: c for c in companies}
-    # a record holding a Workable NUMBER the plan followed holds the slug too
+    # a record holding a Workable NUMBER the plan followed holds the slug too,
+    # and so does one whose number and slug are said together on file
+    # (workable_pairs; blind review, 2026-11-21)
     resolved = doc.get("workable_numbers") or {}
+    pairs = board_proposals.workable_pairs(companies, s["found"])
     numbers = numbers_on_file(companies)
     holders = holders_of(companies)
     for number, ids in numbers.items():
-        if resolved.get(number):
-            holders[board_key("workable", resolved[number])] += ids
+        slug = resolved.get(number) or pairs.get(number)
+        if slug:
+            holders[board_key("workable", slug)] += ids
     board = board if board is not None else read_board()
     shown = shown_now(board)
     wires = [r for r in doc["rows"] if r["action"] == "WIRE"]
@@ -2715,19 +2797,50 @@ def cmd_apply(a) -> int:
     return 0
 
 
+def settle_board(given: str) -> tuple | None:
+    """(type, ref) of the board `settle --board` names, as the door writes a
+    board ("greenhouse/acme", "workday/<tenant>/<pod>/<site>"; doubt_board's
+    reading), or (None, None) for "-": the doubts that name no board. None
+    when it is neither."""
+    given = str(given or "").strip()
+    if given == "-":
+        return None, None
+    kind, ref = doubt_board({"board": given})
+    return (kind, ref) if kind else None
+
+
+def _doubt_line(d: dict) -> str:
+    return (f"  {str(d.get('board') or '-')[:44]:<46} kept {d.get('on') or '?'} by "
+            f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")
+
+
 def cmd_settle(a) -> int:
-    """Settle a company's standing readers' doubts, on the owner's word.
+    """Settle the standing readers' doubts about ONE board of a company, on
+    the owner's word.
 
     ON HIS WORD, AND ONLY THEN. A doubt no ruling of his in Boards we found
     can reach - an older ruling, a company already on a board, one merged
     away, one refused in Agent proposals, one with no row - holds its board
     until he is told and answers. This writes his answer down: one
     journalled ADDITION to data/board_doubts.json, {"<id>@<when>~settled":
-    {id, settles: [the keys of the company's standing doubts], why: his
-    words, by, on, at}}, which every reader of the file honours
+    {id, board, settles: [the keys of the doubts it settles], why: his words,
+    by, on, at}}, which every reader of the file honours
     (board_proposals.standing_doubts) - this door, discovery and
     wire_embedded.py alike. It rewrites no doubt; admin_undo.py takes it
     back, and the doubts then stand again.
+
+    AND ONLY WHAT HIS WORDS WERE ABOUT (blind review, 2026-11-21). It settled
+    every standing doubt of the company: a doubt about greenhouse/settleco,
+    which he had answered, and one a later plan kept about lever/settlecob,
+    which nobody had shown him - and the next plan wired lever/settlecob. And
+    it settled a doubt whose row is on his desk, behind the card his own
+    ruling settles it from. So `--board` names the board his words are
+    about, as the plan and the look print it (`-`: the doubts that name no
+    board), and only doubts about that board (board_key) are settled; a run
+    without --write is a look that lists them, and everything left standing,
+    and prints the code; --write needs --expect with that code, as apply's
+    does; and a doubt whose company has its row in Boards we found (reach
+    'row') is refused: his ruling there settles it.
     """
     by = (a.by or "").strip()
     if not by.startswith("agent:") or len(by) <= len("agent:") or "@" in by:
@@ -2739,42 +2852,99 @@ def cmd_settle(a) -> int:
         print("settle needs --id (the company) and --why (the owner's words, as he gave "
               "them). Nothing was written.")
         return 2
+    board = settle_board(a.board)
+    if board is None:
+        print("--board is the board the owner's words are about, as the plan prints it: "
+              "<type>/<ref> (greenhouse/acme; workday/<tenant>/<pod>/<site>), or - for the "
+              "doubts that name no board. Nothing was written.")
+        return 2
+    kind, ref = board
+    key_of = board_key(kind, ref) if kind else None
+    named = show(kind, ref) if kind else "no board"
     with admin.desk_lock():
         try:
             raw = board_proposals.strict(DOUBTS, admin.DATA)
             stores = read_stores()
+            by_id = {c["id"]: c for c in read_companies()}
         except board_proposals.Unreadable as exc:
             print(f"{exc}. Nothing was written.")
             return 2
         on_file = stores["doubts"].get(cid) or []
         ruling = stores["ruled"].get(cid)
-        standing = board_proposals.standing_doubts({cid: on_file}, stores["ruled"]).get(cid) or []
         if not on_file:
             print(f"no reader's doubt about {cid} is on file in data/{DOUBTS} - check the id. "
                   f"Nothing was written.")
             return 1
+
+        def about(d):
+            k, r = doubt_board(d)
+            return (board_key(k, r) == key_of) if k else key_of is None
+        mine = [d for d in on_file if about(d)]
+        everything = board_proposals.standing_doubts({cid: on_file}, stores["ruled"]).get(cid) \
+            or []
+        standing = [d for d in everything if about(d)]
+        others = [d for d in everything if not about(d)]
+        if not mine:
+            print(f"no reader's doubt about {cid} is on file about {named}; those on file are "
+                  f"about {', '.join(sorted({str(d.get('board') or '-') for d in on_file}))} - "
+                  f"give --board as the plan printed it. Nothing was written.")
+            return 1
         if not standing:
-            print(f"no reader's doubt about {cid} stands ({settled_words(on_file, ruling)}). "
-                  f"Nothing was written.")
+            print(f"no reader's doubt about {cid} stands about {named} "
+                  f"({settled_words(mine, ruling)})"
+                  + (f"; {many(len(others), 'other doubt')} about another board still "
+                     f"stand{'s' if len(others) == 1 else ''}" if others else "")
+                  + ". Nothing was written.")
             return 0
+        code_r, where = reach(by_id.get(cid), board_proposals.rows_by_id(stores["found"]).get(cid)
+                              or [], ruling, everything, on_file, _refusals(stores).get(cid))
+        if code_r == "row":
+            print(f"REFUSED, and nothing was written: {where}. `settle` writes the owner's word "
+                  f"only where no ruling of his can reach a doubt; this one is on his desk, and "
+                  f"his own card settles it.")
+            return 1
+        code = hashlib.sha256(json.dumps({
+            "id": cid, "board": key_of, "why": words, "by": by,
+            "settles": [[d["key"], str(d.get("why") or "")] for d in standing]},
+            sort_keys=True).encode()).hexdigest()[:16]
+        print(f"{'SETTLE' if a.write else 'WOULD SETTLE'} {many(len(standing), 'reader doubt')} "
+              f"about {cid} ({named}), on the owner's word: {words}")
+        for d in standing:
+            print(_doubt_line(d))
+        if others:
+            print(f"LEFT STANDING {len(others)} - about another board, which these words do not "
+                  f"settle; each holds its board until the owner answers about it too:")
+            for d in others:
+                print(_doubt_line(d))
+        if not a.write:
+            print("LOOKED ONLY. Nothing was written. To write exactly this:")
+            print(f"  python3 scripts/wire_found.py settle --id {shlex.quote(cid)} --board "
+                  f"{shlex.quote(str(a.board).strip())} --why {shlex.quote(words)} --by "
+                  f"{shlex.quote(by)} --write --expect {code}")
+            return 0
+        if (a.expect or "").strip() != code:
+            why = ("--write needs --expect with the code the look printed" if not
+                   (a.expect or "").strip() else
+                   "the doubts it would settle, or the words, are not the ones the look listed")
+            print(f"REFUSED, and nothing was written: {why}. Run the look again (without "
+                  f"--write), read it, and use the code it prints.")
+            return 1
         at = admin.now()
         key, n = f"{cid}@{at}~settled", 2
         while key in raw:
             key, n = f"{cid}@{at}~settled{n}", n + 1
-        rec = {"id": cid, "settles": [d["key"] for d in standing], "why": words, "by": by,
+        rec = {"id": cid, "board": show(kind, ref) if kind else None,
+               "settles": [d["key"] for d in standing], "why": words, "by": by,
                "on": dt.date.today().isoformat(), "at": at}
         bad = admin.save_decisions(
             DOUBTS, dict(raw, **{key: rec}), SETTLE_ACTION, by=by,
             why=(f"on the owner's word, {many(len(standing), 'reader doubt')} about {cid} "
-                 f"settled: {words}"))
+                 f"({named}) settled: {words}"))
         if bad:
             print(f"the doubts file would refuse it: {bad}")
             return 1
-    print(f"SETTLED {many(len(standing), 'reader doubt')} about {cid}, on the owner's word: "
-          f"{words}")
-    for d in standing:
-        print(f"  {str(d.get('board') or '-')[:44]:<46} kept {d.get('on') or '?'} by "
-              f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")
+    print(f"SETTLED {many(len(standing), 'reader doubt')} about {cid} ({named}), on the owner's "
+          f"word: {words}")
     print(f"written by {by}: data/{DOUBTS} and the journal (data/admin_journal.jsonl, with "
           f"data/admin_journal.archive.jsonl when it rolls). Commit them together; "
           f"admin_undo.py takes it back.")
@@ -2800,11 +2970,16 @@ def main(argv: list[str] | None = None) -> int:
     w.add_argument("--by", required=True, help="agent:<label>, the author on the journal")
     w.add_argument("--write", action="store_true")
     w.add_argument("--expect", help="the code the look printed; required with --write")
-    st = sub.add_parser("settle", help="settle a company's standing readers' doubts - only on "
-                                       "the owner's word")
+    st = sub.add_parser("settle", help="settle a company's standing readers' doubts about one "
+                                       "board - only on the owner's word; a look unless --write")
     st.add_argument("--id", required=True, help="the company the doubts are about")
+    st.add_argument("--board", required=True,
+                    help="the board his words are about, as the plan prints it (greenhouse/acme; "
+                         "- for the doubts that name no board): only doubts about it are settled")
     st.add_argument("--why", required=True, help="the owner's words, as he gave them")
     st.add_argument("--by", required=True, help="agent:<label>, the author on the journal")
+    st.add_argument("--write", action="store_true")
+    st.add_argument("--expect", help="the code the look printed; required with --write")
     a = ap.parse_args(argv)
     return {"plan": cmd_plan, "apply": cmd_apply, "settle": cmd_settle}[a.cmd](a)
 

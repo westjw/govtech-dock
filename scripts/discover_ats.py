@@ -752,7 +752,8 @@ def main() -> int:
                 boards_held, block.get("type"), block.get("ref"), a.confirm,
                 board_proposals.their_names(by_id[a.confirm])):
             print(f"{a.confirm}: that board, or this company, is held for the owner (a "
-                  f"reader's doubt, a board waiting in Boards we found, or a refusal); "
+                  f"reader's doubt, a board waiting in Boards we found or Agent proposals, or "
+                  f"a refusal); "
                   f"it is his to settle there. Nothing was written.", file=sys.stderr)
             return 1
         by_id[a.confirm]["ats"] = entry["ats"]
@@ -806,8 +807,10 @@ def main() -> int:
     # decision about what to probe, not a reversal of a ruling.
     ruled = {c["id"] for c in companies if c.get("out_of_scope")}
     # NOR ONE THE OWNER HOLDS. A reader's doubt that stands, a row a door filed
-    # for him in Boards we found, or a board refused in either store: each is a
-    # company whose board is his to settle, and a slug that matches the name is
+    # for him in Boards we found, a board refused in either store, or a board
+    # proposal still pending in Agent proposals (blind review, 2026-11-21: the
+    # sweep wrote a pending company's board): each is a company whose board is
+    # his to settle, and a slug that matches the name is
     # exactly what the doubted board's slug does (the readers doubted JustFOIA's
     # own board, "an MCCi brand"). The second blind review of the wiring door
     # (2026-11-19) had this sweep probe a doubted company and write the doubted
@@ -838,7 +841,8 @@ def main() -> int:
         # counts only: the workflow's log is public
         if wanted & set(held):
             print(f"  ({len(wanted & set(held))} id(s) in the list are held for the owner - "
-                  f"a reader's doubt, a board waiting in Boards we found, or a refusal - "
+                  f"a reader's doubt, a board waiting in Boards we found or Agent proposals, "
+                  f"or a refusal - "
                   f"and are not probed)")
         wanted -= set(held)
         todo = [c for c in companies if c["id"] in wanted and c.get("website")]
@@ -854,7 +858,7 @@ def main() -> int:
         if len(todo) != len(due):
             print(f"  ({len(due) - len(todo)} compan{'y is' if len(due) - len(todo) == 1 else 'ies are'} "
                   f"held for the owner - a reader's doubt, a board waiting in Boards we "
-                  f"found, or a refusal - and not probed)")
+                  f"found or Agent proposals, or a refusal - and not probed)")
     todo.sort(key=lambda c: probe_order(c, log))
     # An explicit id list is already the decision about scope. Clipping it to
     # --limit silently probed 300 of 768 and reported as though that were all
@@ -890,12 +894,19 @@ def main() -> int:
     # whose socket hangs blocks every finished result behind it: a 768-company
     # sweep ran 37 minutes and printed nothing while the workers were in fact
     # working. Results now land as they finish, and so do the checkpoints.
-    left_alone = []
+    left_alone, near_misses_held = [], []
 
     def unless_held(r):
         """The result, or - when the board found is one the owner holds under
         any record's id - a result that writes nothing. The log says so in
-        words that name no board and no doubt (it is committed, and public)."""
+        words that name no board and no doubt (it is committed, and public).
+
+        A NEAR MISS TOO (blind review, 2026-11-21). A board that read and did
+        not match the name is kept in ats_suspects.json, which feeds the
+        Acquisitions queue and --review's "accept" line, and is printed in
+        the run's public log: a board somebody refused for another record
+        went back in front of the owner that way. Held, it is counted and
+        neither kept nor printed."""
         f = r.get("found")
         c = by_id_all.get(r.get("id")) or {}
         if isinstance(f, dict) and board_proposals.held_board(
@@ -905,6 +916,14 @@ def main() -> int:
             return {"id": r["id"], "found": None,
                     "note": "a board was found and is held for the owner under another "
                             "record, so it was not written"}
+        s = r.get("suspect")
+        if isinstance(s, dict) and board_proposals.held_board(
+                boards_held, s.get("type"), s.get("ref"), r.get("id"),
+                board_proposals.their_names(c)):
+            near_misses_held.append(r["id"])
+            return {"id": r["id"], "found": None,
+                    "note": "a board was found and is held for the owner under another "
+                            "record, so it was not kept for review"}
         return r
 
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
@@ -925,7 +944,13 @@ def main() -> int:
         # counts only: the workflow's log is public
         print(f"  ({len(left_alone)} board(s) found {'is' if len(left_alone) == 1 else 'are'} "
               f"held for the owner under another record - a reader's doubt, a board "
-              f"waiting in Boards we found, or a refusal - and not written)")
+              f"waiting in Boards we found or Agent proposals, or a refusal - and not "
+              f"written)")
+    if near_misses_held:
+        # counts only, like the line above
+        print(f"  ({len(near_misses_held)} near miss(es) - a board that read and did not "
+              f"match the name - {'is' if len(near_misses_held) == 1 else 'are'} held for "
+              f"the owner under another record, and not kept for review)")
 
     # Persist the near-misses. A readable board whose slug does not match is
     # usually an acquisition the name gives no hint of: Bonfire Interactive posts

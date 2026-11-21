@@ -323,8 +323,17 @@ def standing_doubts(grouped: dict, ruled: dict, found=None) -> dict:
 def held_for_the_owner(data=None) -> dict:
     """{company id: why it is the owner's} for every company a door must not
     wire a board for: a reader's doubt that stands, a row a door filed in
-    Boards we found that he has not ruled on, or a board refused in either
-    store (Boards we found, Agent proposals).
+    Boards we found that he has not ruled on, a board refused in either
+    store (Boards we found, Agent proposals), or a board proposal of its
+    still pending in Agent proposals.
+
+    PENDING IS HIS TOO (blind review, 2026-11-21). The wiring door holds a
+    company whose board question is waiting in Agent proposals, and the
+    weekly discovery sweep probed such a company and wrote the board it
+    found: Pend Co's "claimed by more than one company - an acquisition to
+    settle". On file that day: board:icsolutions, pending since 2026-09-02,
+    with ICSolutions `unknown` and a website, so the sweep would have probed
+    it when it came due.
 
     `data` is the directory the CALLER writes - discovery passes its own, so
     the files it reads are the files beside the companies.json it writes. A
@@ -348,6 +357,9 @@ def held_for_the_owner(data=None) -> dict:
         if key.startswith("board:") and p.get("status") == "rejected":
             out.setdefault(p.get("id") or key.split(":", 1)[1],
                            "a board was refused for it in Agent proposals")
+        elif key.startswith("board:") and p.get("status") == "pending":
+            out.setdefault(p.get("id") or key.split(":", 1)[1],
+                           "a board proposal for it waits in Agent proposals")
     return out
 
 
@@ -365,8 +377,22 @@ def held_for_the_owner(data=None) -> dict:
 # (board_key), and a Workable account is one board under two keys, its
 # number and its slug, wherever the two are known to belong together.
 
-_PAYLOCITY = re.compile(r"/jobs/all/([^/?#]+)")
+# a Paylocity board is the identifier after /jobs/All/ (a uuid) or /jobs/List/
+# (a number), with or without the tenant's name after it: find_site_boards
+# writes /List/<n> both ways (FAAC's shape, 2026-11-18), and keyed on the
+# whole address a hold under one spelling missed the board found under the
+# other (blind review, 2026-11-21)
+_PAYLOCITY = re.compile(r"/jobs/(?:all|list)/([^/?#]+)")
 _ICIMS = re.compile(r"([a-z0-9-]+)\.icims\.com(?:[/?]|$)")
+# a Zoho Recruit career site is its host and its page's name: a posting's
+# address sits under it (.../jobs/<PageName>/<id>-<title>)
+_ZOHO = re.compile(r"([^/?#]+\.zohorecruit\.[a-z]+)/jobs/([^/?#]+)")
+# a Comeet board is its company uid, whichever of its two refs names it -
+# "<UID>|<TOKEN>" or the hosted board comeet.com/jobs/<slug>/<UID> - and a
+# posting under the hosted board is the same board
+_COMEET = re.compile(r"(?:^|comeet\.com/jobs/[^/?#]+/)([0-9a-f]{2}\.[0-9a-f]{3})(?=$|[|/?#])")
+# the platforms whose board is a whole host: any address on it is the board
+HOST_BOARDS = ("jibe", "oracle", "applicantpro", "teamtailor")
 # the words wire_found.py writes on a wired record's note and a held row's
 # doubt when a site asks for a Workable board by its account number (its
 # account_words): the one place the number and the slug are said together
@@ -383,13 +409,20 @@ def board_key(kind, ref) -> str:
     calling two addresses one board. Case is ignored (SmartRecruiters refs
     are case-sensitive, so two different boards can share a key). An address
     is the same board with or without its scheme, its www. or a last slash.
-    And three shapes are read for the part that identifies the board, because
-    this repo's own data writes each of them two ways: a Paylocity address is
-    the id after /jobs/All/, with or without the tenant's name after it
-    (keyed on the whole address, a board already on file as
+    And some shapes are read for the part that identifies the board, because
+    this repo's own data writes each of them more than one way: a Paylocity address is
+    the id after /jobs/All/ or /jobs/List/, with or without the tenant's name
+    after it (keyed on the whole address, a board already on file as
     .../<uuid>/<Tenant> was not seen to be the board found as .../<uuid>, and
     would have been wired to a second company); an iCIMS portal is its slug,
-    bare or inside its address; a Jibe or Oracle board is its host.
+    bare or inside its address; a Jibe, Oracle, ApplicantPro or Teamtailor
+    board is its host; a Zoho Recruit career site is its host and its page's
+    name (a posting's address is under it); a Comeet board is its company
+    uid, whether the ref is "<UID>|<TOKEN>" or the hosted board's address.
+    (The last four were read since 2026-11-19 and keyed on the whole ref, so
+    a hold or a refusal written in one spelling missed the other: test
+    review of the door, 2026-11-21. Hirebridge's number and Pinpoint's slug
+    are one spelling already.)
 
     IT IS NEVER WHAT GETS READ. Reading goes by the ref exactly as the site
     gave it (wire_found.spelling): on a platform that minds case the loose
@@ -407,8 +440,14 @@ def board_key(kind, ref) -> str:
     elif kind == "icims":
         m = _ICIMS.match(r)
         r = m.group(1) if m else r
-    elif kind in ("jibe", "oracle"):
+    elif kind in HOST_BOARDS:
         r = r.split("/", 1)[0]
+    elif kind == "zohorecruit":
+        m = _ZOHO.match(r)
+        r = f"{m.group(1)}/jobs/{m.group(2)}" if m else r
+    elif kind == "comeet":
+        m = _COMEET.search(r)
+        r = m.group(1) if m else r
     return f"{kind}:{json.dumps(r)}"
 
 
@@ -544,8 +583,11 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     of a reader's doubt that stands), `queued` (the board of a row a door
     filed in Boards we found that he has not ruled on), `refused` (a board
     refused in either store: a Boards-we-found refusal by the board on its
-    row, an Agent-proposals rejection by its ats_type/ats_ref), and `number`
-    (a record on a Workable account number nobody followed to a slug).
+    row, an Agent-proposals rejection by its ats_type/ats_ref), `waiting` (a
+    board proposal still pending in Agent proposals), and `number`
+    (a record on a Workable account number: by name where nobody followed
+    the number to a slug, under the slug's key where the two are known to
+    belong together).
 
     A WORKABLE BOARD HELD UNDER ITS ACCOUNT NUMBER is one board under two
     keys. Where the number is known to open under a slug - followed by this
@@ -556,7 +598,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     names it goes by - what that board stated, whose record or row it is -
     and a Workable board going by one of them (verify_boards.strict) is held
     beside it (named_holds). A record on file holding a number nobody
-    followed is held the same way, by its names.
+    followed is held the same way, by its names; one holding a number whose
+    slug is known is held under the slug's key.
     """
     keys, named = collections.defaultdict(list), []
     pairs = workable_pairs(companies, stores.get("found"))
@@ -568,9 +611,9 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
         return (by_id.get(cid) or {}).get("name") or next(
             (n for n in also if isinstance(n, str) and n.strip()), cid)
 
-    def hold(cid, code, kind, ref, words, *names):
+    def hold(cid, code, kind, ref, words, *names, **more):
         h = {"id": cid, "code": code, "board": show(kind, ref), "words": words,
-             "names": strict_names(*names, *their_names(by_id.get(cid)))}
+             "names": strict_names(*names, *their_names(by_id.get(cid))), **more}
         keys[board_key(kind, ref)].append(h)
         if numbered(kind, ref):
             slug = pairs.get(workable_number(ref))
@@ -597,19 +640,51 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                 f"{r['filed'].get('by') or '?'} with its doubt: "
                 f"\"{str(r.get('identity_why') or 'none recorded')[:240]}\"; a board filed "
                 f"there is his to settle"), r.get("board_calls_itself"), r.get("name"))
+    # a board proposal still pending in Agent proposals is his to settle, for
+    # whatever company's site names the board (blind review, 2026-11-21)
+    for key, p in sorted((stores.get("proposals") or {}).items()):
+        if isinstance(p, dict) and key.startswith("board:") and p.get("status") == "pending" \
+                and p.get("ats_type") and p.get("ats_ref") is not None:
+            cid = p.get("id") or key.split(":", 1)[1]
+            hold(cid, "waiting", p["ats_type"], p["ats_ref"], (
+                f"{show(p['ats_type'], p['ats_ref'])} is waiting in Agent proposals for "
+                f"{name_of(cid, p.get('name'))}, proposed {str(p.get('at') or '?')[:10]} by "
+                f"{p.get('by') or '?'}" + (f" (\"{str(p.get('why')).strip()[:200]}\")"
+                                           if str(p.get("why") or "").strip() else "")
+                + "; a board waiting on a person is his to settle"), p.get("name"))
     for cid, refs in sorted((refusals_ if refusals_ is not None else refusals(stores)).items()):
         for x in refs:
             if x.get("key") and x.get("type"):
-                hold(cid, "refused", x["type"], x["ref"], (
-                    f"{x['board']} was refused for {name_of(cid, *(x.get('names') or [])[::-1])} "
-                    f"in {x['store']} ({x['by']} on "
-                    f"{x['on']}" + (f": {x['why']}" if x["why"] else "") + "), and a board "
-                    f"somebody said no to is not proposed again"), *(x.get("names") or []))
+                # `refusal` is the refusal alone, in words: the wiring door
+                # quotes it on a row it files for the owner, where "not
+                # proposed again" would not be true
+                said = (f"{x['board']} was refused for "
+                        f"{name_of(cid, *(x.get('names') or [])[::-1])} in {x['store']} "
+                        f"({x['by']} on {x['on']}" + (f": {x['why']}" if x["why"] else "") + ")")
+                hold(cid, "refused", x["type"], x["ref"],
+                     f"{said}, and a board somebody said no to is not proposed again",
+                     *(x.get("names") or []), refusal=said)
     for number, ids in sorted(numbers_on_file(companies or []).items()):
-        if pairs.get(number):
-            continue                    # the slug's holder, under its own key
+        slug = pairs.get(number)
         for cid in ids:
             names = strict_names(*their_names(by_id.get(cid)))
+            if slug:
+                # A RECORD ON A NUMBER WHOSE SLUG IS KNOWN HOLDS THE SLUG (blind
+                # review, 2026-11-21). It was skipped as "the slug's holder,
+                # under its own key", and nothing put it there for a pair said
+                # on file: Archi Co on workable/710855, a note saying that
+                # account opens under apply.workable.com/archico, and a
+                # duplicate record whose site links workable/archico was wired
+                # to the same account - where without the note it was held.
+                # (The wiring door also counts such a record among a board's
+                # holders, and says it in those words.)
+                keys[board_key("workable", slug)].append({
+                    "id": cid, "code": "number", "board": f"workable/{number}",
+                    "names": names, "words": (
+                        f"a record on file holds Workable account {number} "
+                        f"({name_of(cid)}), whose postings open under "
+                        f"apply.workable.com/{slug}: workable/{slug} is that record's board")})
+                continue
             if names:
                 named.append({"id": cid, "code": "number", "number": number, "names": names,
                               "board": f"workable/{number}", "words": (
@@ -619,25 +694,39 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     return {"keys": keys, "named": named, "pairs": pairs}
 
 
-def named_holds(held: dict, kind, names, cid) -> list:
+def named_holds(held: dict, kind, names, cid, ours=()) -> list:
     """(code, words) for each hold a Workable board going by `names` meets by
     name (held_boards' `named`), other than `cid`'s own - which hold it by
-    company. Only ever more holding: a name is compared with the names the
-    held account goes by, strictly."""
+    company. `names` are the names the board itself states; `ours` the names
+    the company it was found for goes by (their_names: its name and every
+    also_known_as), compared the same way. Only ever more holding: a name is
+    compared with the names the held account goes by, strictly.
+
+    THE COMPANY'S OWN NAMES TOO (blind review, 2026-11-21). The wiring door
+    asked only the board's stated names, while discovery and wire_embedded.py
+    ask the company's: a doubt kept under Workable account 710855 about
+    "Archi", Archi merged into "Archistar" (also_known_as Archi), and the
+    survivor's own board, which states "Archistar", was held by the other two
+    doors and wired by this one."""
     if kind != "workable":
         return []
-    mine = strict_names(*(names or []))
+    stated = strict_names(*(names or []))
+    theirs = strict_names(*(ours or []))
     out = []
     for h in (held or {}).get("named") or []:
         if h["id"] == cid:
             continue
-        hit = sorted(set(mine) & set(h["names"]))
+        hit = sorted(set(stated) & set(h["names"]))
+        how = f"this board states \"{stated[hit[0]]}\"" if hit else ""
+        if not hit:
+            hit = sorted(set(theirs) & set(h["names"]))
+            how = f"the company it was found for goes by \"{theirs[hit[0]]}\"" if hit else ""
         if hit:
             out.append((h["code"], (
                 f"{h['words']}; it is held under Workable account {h['number']}, which was not "
-                f"followed to a slug, and this board states \"{mine[hit[0]]}\", a name that "
-                f"account goes by ({h['names'][hit[0]]}) - whether it is the same Workable "
-                f"account was not asked")))
+                f"followed to a slug, and {how}, a name that account goes by "
+                f"({h['names'][hit[0]]}) - whether it is the same Workable account was not "
+                f"asked")))
     return out
 
 
