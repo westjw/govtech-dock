@@ -32733,6 +32733,27 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
                 if boards(tmp).get(cid) != want:
                     errors += fail(f"discover_ats --confirm {cid} left {boards(tmp).get(cid)}, "
                                    f"wanted {want} (exit {code})")
+            # A COMPANY'S OWN RECORD IS NOT A HOLD ON IT. Num Holder Co sits on
+            # Workable account 770770, which nobody followed, so held_boards
+            # holds Workable boards going by its name - for every OTHER record
+            # (named_holds skips the company's own; test review, 2026-11-21,
+            # D17, which reads as equivalent everywhere but here). The owner's
+            # --confirm of a Workable near miss for Num Holder Co itself is not
+            # refused as "held for the owner under another record".
+            (tmp / "ats_suspects.json").write_text(json.dumps({"num-holder-co": {
+                "ats": {"type": "workable", "ref": "numholderslug"}, "note": "a near miss",
+                "on": "2026-11-19"}}))
+            sys.argv = ["discover_ats.py", "--confirm", "num-holder-co"]
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                code = da.main()
+            rec = next(c for c in json.loads((tmp / "companies.json").read_text())
+                       if c["id"] == "num-holder-co")
+            if code not in (0, None) or rec.get("ats") != {"type": "workable",
+                                                           "ref": "numholderslug"}:
+                errors += fail(f"discover_ats --confirm of a near miss for a company on a Workable "
+                               f"number nobody followed was refused by the company's own record "
+                               f"(exit {code}, now {rec.get('ats')}): {out.getvalue()[-200:]!r}")
 
             # --- a store that does not read stops the sweep before a probe ---
             for name in (bp.DOUBTS, bp.FOUND.name, bp.RULED.name, bp.PROPOSALS):
@@ -37593,6 +37614,36 @@ def check_a_workable_account_is_held_under_either_key() -> int:
             errors += fail(f"the same words about one Workable account, by its number and then "
                            f"by its slug, were kept twice: {text[:300]!r}")
 
+    # --- A HELD NUMBER THIS RUN FOLLOWS HOLDS ITS SLUG IN THE PLAN TOO ------------
+    # (test review, 2026-11-21, D27: the plan's held_boards built without the
+    # run's own follows was not noticed, apply holding it all the same.)
+    # Workable account 727000 was refused for a record since merged away;
+    # Asker Seven's site asks for it by number, which this run follows to
+    # sevenslug, and Slug Seven's site links sevenslug: that is the refused
+    # board, SKIP refused - not just a twin to hold.
+    companies7 = [co("asker-seven", "Asker Seven"), co("slug-seven", "Slug Seven")]
+    BOARDS7 = {"workable/727000": (2, ["Slug Seven"]), "workable/sevenslug": (2, ["Slug Seven"])}
+    with _WiringBox(companies7, BOARDS7,
+                    files={bp.PROPOSALS: {"board:gone-seven": {
+                        "kind": "board", "id": "gone-seven", "name": "Gone Seven Co",
+                        "ats_type": "workable", "ats_ref": "727000", "status": "rejected",
+                        "ruled_by": "owner", "ruled_on": "2026-11-10",
+                        "ruled_why": "a recruiter's account"}}},
+                    urls={"workable/727000": [f"{W}j/SV0001A", f"{W}j/SV0001B"],
+                          "workable/sevenslug": [f"{W}j/SV0001A", f"{W}j/SV0001B"]},
+                    lands={f"{W}j/SV0001A": f"{W}sevenslug/j/SV0001A"}) as box:
+        code, text, _wl, rows7 = box.plan(_wb_results({
+            "asker-seven": asks("asker-seven", "727000"),
+            "slug-seven": links("slug-seven", "sevenslug")}), name="worklist-seven.json")
+        r = (rows7 or {}).get("slug-seven") or {}
+        if r.get("action") != "SKIP" or r.get("kind") != "refused" \
+                or "workable/727000 was refused for Gone Seven Co in Agent proposals" \
+                not in _wb_words(r) \
+                or "the board found now is that board, workable/sevenslug" not in _wb_words(r):
+            errors += fail(f"a board refused under a Workable number this very run followed to "
+                           f"its slug was planned {r.get('action')}/{r.get('kind')} for a company "
+                           f"linking the slug: {_wb_words(r)[:300]!r}")
+
     # --- A NUMBER AND A SLUG NOTHING TIES ARE TWO BOARDS -------------------------
     # (blind review, 2026-11-21: the owner settled a doubt about workable/790000;
     # the company's site then linked workable/othergroupfive, a different
@@ -37894,6 +37945,10 @@ def check_the_wiring_door_reads_every_store_strictly() -> int:
             (box.tmp / name).write_bytes(good)
         # --- the records and the public board, read as strictly ----------------
         for name, bad in (("companies.json", CONFLICT), ("companies.json", b'[{"name": "x"}]'),
+                          # a record whose id is blank (test review, 2026-11-21: a
+                          # read that took any string for an id was not noticed)
+                          ("companies.json", b'[{"id": "fine-co", "name": "Fine Co"}, '
+                                             b'{"id": "   ", "name": "x"}]'),
                           ("board.json", CONFLICT), ("board.json", b'{"organizations": {}}')):
             good = (box.tmp / name).read_bytes()
             (box.tmp / name).write_bytes(bad)
