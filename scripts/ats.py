@@ -364,6 +364,11 @@ def _text_comp(jd: str) -> dict | None:
 # IN CI THIS IS INERT unless the workflow restores the directory between runs -
 # a GitHub runner is a fresh machine every time. Locally it works immediately.
 HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cache"
+# Hosts whose answers are never written to the cache, whatever headers they
+# send. Hirebridge's feed carries internal requisition data beside the public
+# ad (see fetch_hirebridge); it sends no ETag today, and if it ever starts to,
+# that is still not a reason to keep a copy of it.
+NEVER_CACHED = frozenset({"hbapi.hirebridge.com"})
 
 
 class _Cached:
@@ -412,6 +417,8 @@ def _cache_write(url: str, resp) -> None:
     lastmod = resp.headers.get("Last-Modified")
     if not etag and not lastmod:
         return                                 # nothing to revalidate with
+    if (urllib.parse.urlsplit(url).hostname or "").lower() in NEVER_CACHED:
+        return                                 # see NEVER_CACHED
     try:
         HTTP_CACHE.mkdir(parents=True, exist_ok=True)
         meta_p, body_p = _cache_paths(url)
@@ -598,12 +605,26 @@ def resolve(url: str) -> str:
     return str(resp.url or url)
 
 
-def _page(url: str, **kw):
+def _page(url: str, *, same_host: bool = False, **kw):
     """_get for a PAGE, which asks the site's robots.txt first, at every
     redirect hop (owner's ruling, 2026-10-09; scripts/robots.py). The boards'
     JSON feeds go through _get directly: they are interfaces published for
-    programs."""
-    return follow(url, lambda u: _get(u, allow_redirects=False, **kw))
+    programs.
+
+    `same_host`: and never leave the host that was asked. A board's own
+    address that redirects somewhere else is not the board - a dead Jobvite
+    slug lands on the vendor's support page, a dead JazzHR one on its
+    marketing site - and a vendor's page about itself is not a list of
+    anybody's jobs. verify_boards._board_page holds the probes to the same
+    rule. The hop is refused BEFORE it is asked for."""
+    home = (urllib.parse.urlsplit(url).hostname or "").lower()
+
+    def one(u: str):
+        there = (urllib.parse.urlsplit(u).hostname or "").lower()
+        if same_host and there != home:
+            raise AtsError(f"{url} leads off to {there}, which is not the board")
+        return _get(u, allow_redirects=False, **kw)
+    return follow(url, one)
 
 
 def _get(url: str, **kw):
@@ -2632,6 +2653,209 @@ def fetch_gem(ref: str) -> list[dict]:
     return out
 
 
+# ------------------------------------------- boards read since 2026-11-21
+#
+# Each was measured live before a line was written (scratchpad research,
+# 2026-11-19, re-read 2026-11-21), and each is read the way its own board
+# page reads itself. Every request is a PAGE request (_page): robots.txt is
+# asked at every hop, because several of these feeds sit on a tenant's own
+# host, and a tenant can close its host (two Pinpoint tenants did).
+
+def _text(raw) -> str:
+    return re.sub(r"\s+", " ", str(raw or "")).strip()
+
+
+def _dated(raw, form: str) -> str | None:
+    """A date in the one written form a board uses, or None. posted_date
+    refuses to guess an order in general, rightly; these boards each write
+    one order only, so each reader names its own."""
+    try:
+        return dt.datetime.strptime(_text(raw), form).date().isoformat()
+    except ValueError:
+        return None
+
+
+# ---- hirebridge: hbapi.hirebridge.com/careercenter/v2/GetJobListings?cid=N
+#
+# The feed Hirebridge's own career centre calls from every visitor's browser:
+# one GET, the whole board, descriptions included (CentralSquare 13, EAB 42,
+# Tribute 13, Amerlux 0, measured 2026-11-19 and 11-21). The ref is the
+# company id, a number in the board's address ("7724").
+#
+# THE FEED IS OVER-BROAD. Each row also carries the requisition behind it:
+# internal notes that name staff, hiring-manager and coordinator ids, and the
+# ad meant for internal applicants (descriptioninternal). None of it is on the
+# public pages. So this copies the public fields BY NAME and nothing else, and
+# the host is in NEVER_CACHED: no raw answer from it is ever written to disk.
+#
+# The body is a JSON STRING holding the JSON array, so it is decoded twice.
+# An empty board is the string "[]" - and so is a cid nobody holds, which is
+# why an empty feed reads as a zero here but never as a name (verify_boards).
+
+# The query the career centre itself sends. addloc=0 is the part that
+# matters: without it a job open in three places comes back as three rows
+# with one jid (EAB, 2026-11-21: 93 rows for 42 jobs).
+HIREBRIDGE_FEED = ("https://hbapi.hirebridge.com/careercenter/v2/GetJobListings"
+                   "?cid={cid}&language=en&addloc=0&startrow=1&endrow=5000")
+_HIREBRIDGE_CID = re.compile(r"[0-9]{1,7}")
+
+
+def hirebridge_rows(ref) -> list[dict]:
+    cid = str(ref if ref is not None else "").strip()
+    if not _HIREBRIDGE_CID.fullmatch(cid):
+        raise AtsError(f"not a hirebridge company id: {ref!r}")
+    data = _json(_page(HIREBRIDGE_FEED.format(cid=cid)))
+    if isinstance(data, str):
+        try:
+            data = json.loads(data)
+        except ValueError as exc:
+            raise AtsError("hirebridge feed did not parse") from exc
+    if not isinstance(data, list) or not all(isinstance(j, dict) for j in data):
+        raise AtsError("unexpected hirebridge payload")
+    return data
+
+
+def fetch_hirebridge(ref) -> list[dict]:
+    out, seen = [], set()
+    for j in hirebridge_rows(ref):
+        title = _text(j.get("jobtitle"))
+        # one row per job: a second row with a jid already read is the same
+        # job in another place, and the first row already lists its places
+        jid = _text(j.get("joblistid"))
+        if not title or (jid and jid in seen):
+            continue
+        seen.add(jid)
+        # joblocname is the first place and additionalLocations the rest:
+        # neither is the whole list alone (EAB 612567: Philadelphia, PA, then
+        # Richmond, VA and Washington, D.C.)
+        places = [_text(j.get("joblocname"))]
+        for extra in j.get("additionalLocations") or []:
+            if isinstance(extra, dict):
+                places.append(_text(extra.get("name")))
+        loc = j.get("location") if isinstance(j.get("location"), dict) else {}
+        url = _text(j.get("url"))
+        out.append({
+            "title": title,
+            "location": "; ".join(dict.fromkeys(p for p in places if p)),
+            "url": urllib.parse.urljoin("https://recruit.hirebridge.com/", url) if url else "",
+            # M/D/YYYY ('9/29/2026', '11/19/2026'), and the posting page's
+            # JSON-LD datePosted agrees. Blank on one EAB row: None, never
+            # createdate, which is when the requisition was opened.
+            "posted": _dated(j.get("publicdate"), "%m/%d/%Y"),
+            # isremote TRUE means remote. False is "not stated": it is false on
+            # six of the seven CentralSquare roles whose title says Remote.
+            "mode": "remote" if loc.get("isremote") is True else None,
+            "office_hint": office_hint(loc.get("city"), loc.get("state"), loc.get("country")),
+            # description + skills (the qualifications half), as recruitee's
+            # two fields are joined. Never descriptioninternal, and never
+            # extrainfo, which is the EEO paragraph.
+            "jd": "\n\n".join(p for p in (plain_html(j.get("description") or ""),
+                                          plain_html(j.get("skills") or "")) if p)})
+    return out
+
+
+# ---- applicantpro: <label>.applicantpro.com or <label>.isolvedhire.com
+#
+# One platform on two root domains (isolved runs it), so the ref is the whole
+# tenant host. Its /jobs/ page names the domain id the list is asked by, and
+# the list is the call that page's own JobListings component makes:
+# /core/jobs/<domainId>?getParams=<the page's own getParams, as JSON>. Two
+# requests a board (Caselle 17, Black Mountain 2, LYT 3, Springbrook 3).
+#
+# A DISABLED SITE ANSWERS 200: Genasys's /jobs/ lands, on the same host, on
+# /notset.php?...&disabled=1 saying "This career site has been disabled". That
+# is a board that is gone, never a board with nothing open.
+
+_APPLICANTPRO_HOST = re.compile(
+    r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.(?:applicantpro|isolvedhire)\.com")
+_APPLICANTPRO_LIST = re.compile(
+    r"componentData\s*:\s*\{\s*organizationId\s*:\s*[0-9]+\s*,\s*domainId\s*:\s*([0-9]+)"
+    r"\s*,\s*getParams\s*:\s*")
+
+
+def applicantpro_page(ref) -> tuple[str, str]:
+    """(host, the board's /jobs/ page), or AtsError for a host that is not an
+    ApplicantPro tenant's or a site that has been disabled."""
+    host = _text(ref).lower()
+    if host.startswith("http"):
+        host = (urllib.parse.urlsplit(host).hostname or "").lower()
+    if not _APPLICANTPRO_HOST.fullmatch(host) or host.startswith("www."):
+        raise AtsError(f"not an applicantpro board host: {ref!r}")
+    resp = _page(f"https://{host}/jobs/", same_host=True)
+    page = resp.text or ""
+    if "notset.php" in str(getattr(resp, "url", "") or "") or "has been disabled" in page:
+        raise AtsError(f"applicantpro: the career site at {host} has been disabled")
+    return host, page
+
+
+def applicantpro_jobs(host: str, page: str) -> list:
+    """The board's whole list, asked the way its own page asks for it."""
+    m = _APPLICANTPRO_LIST.search(page)
+    if not m:
+        raise AtsError("applicantpro board page carried no job list")
+    try:
+        params, _end = json.JSONDecoder().raw_decode(page, m.end())
+    except ValueError as exc:
+        raise AtsError("applicantpro getParams did not parse") from exc
+    if not isinstance(params, dict):
+        raise AtsError("applicantpro getParams is not an object")
+    api = (f"https://{host}/core/jobs/{m.group(1)}?"
+           + urllib.parse.urlencode({"getParams": json.dumps(params, separators=(",", ":"))}))
+    d = _json(_page(api, same_host=True))
+    data = _dig_dict(d, "data")
+    jobs = data.get("jobs") if data else None
+    if not (isinstance(d, dict) and d.get("success") is True and isinstance(jobs, list)):
+        raise AtsError("unexpected applicantpro payload")
+    return jobs
+
+
+def fetch_applicantpro(ref) -> list[dict]:
+    host, page = applicantpro_page(ref)
+    out = []
+    for j in applicantpro_jobs(host, page):
+        if not isinstance(j, dict) or not _text(j.get("title")):
+            continue
+        city, state = _text(j.get("city")), _text(j.get("abbreviation"))
+        country = _text(j.get("iso3"))
+        # a city of "Remote" is a way of working, not a place
+        if city.lower() == "remote":
+            city = ""
+        place = ", ".join(p for p in (city, state or _text(j.get("stateName")), country) if p)
+        out.append({"title": _text(j.get("title")),
+                    "location": place,
+                    "url": _text(j.get("jobUrl")) or f"https://{host}/jobs/{j.get('id')}",
+                    "posted": _dated(j.get("startDateRef"), "%b %d, %Y"),
+                    "mode": work_mode(j.get("workplaceType")),
+                    "office_hint": office_hint(city or None, state or None, country or None),
+                    "comp": _applicantpro_comp(j, country)})
+    if FETCH_DETAILS:
+        # The ad is on each posting's own page, in a whole schema.org block.
+        # Its pay is NOT taken: the block's baseSalary carries the same
+        # floor-to-ceiling figures _applicantpro_comp refuses on commission
+        # roles, and a figure it refused must not come back by another door.
+        _details(out, lambda r: (_schema_posting(r["url"])[0], None))
+    return out
+
+
+def _dig_dict(obj, key) -> dict | None:
+    v = obj.get(key) if isinstance(obj, dict) else None
+    return v if isinstance(v, dict) else None
+
+
+def _applicantpro_comp(j: dict, country: str) -> dict | None:
+    # min/max are a pay range only on a 'Salary' or 'Hourly' row. On 'Base +
+    # Commission' they run from the base floor to the OTE ceiling (LYT's
+    # Senior AE: 82000-248000 against a stated base of $82k-$124k), which no
+    # reader may print as pay; and 'Base + Bonus' does not say which.
+    if _text(j.get("payType")) not in ("Salary", "Hourly"):
+        return None
+    if re.search(r"commission|\bote\b|bonus", _text(j.get("payDetails")), re.I):
+        return None
+    return _comp(j.get("minSalary"), j.get("maxSalary"),
+                 "USD" if country.upper() in ("USA", "US") else None,
+                 _period(j.get("payTypeFrame")))
+
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -2652,6 +2876,8 @@ FETCHERS = {
     "adp": fetch_adp,
     "gusto": fetch_gusto,
     "gem": fetch_gem,
+    "hirebridge": fetch_hirebridge,
+    "applicantpro": fetch_applicantpro,
 }
 
 

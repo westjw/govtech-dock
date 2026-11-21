@@ -5197,6 +5197,41 @@ _ID_ICIMS = ('<!doctype html><html lang="en-US"><head>\n'
              '<a href="https://careers-granicus.icims.com/jobs/10784/strategic-account-manager/'
              'job?in_iframe=1" class="iCIMS_Anchor" title="10784 - Strategic Account Manager">'
              '</a>\n</body></html>')
+# Hirebridge's feed is a JSON string holding the array (decoded twice), and
+# each row carries the requisition behind the ad. Hand-written: no answer from
+# that host is ever kept, a fixture included (see ats.fetch_hirebridge).
+_HB_ROW = {"joblistid": "612567", "jobtitle": "Account Manager - Public Safety",
+           "joblocname": "Philadelphia, PA",
+           "additionalLocations": [{"name": "Richmond, VA"}, {"name": "Washington, D.C."}],
+           "location": {"city": "Philadelphia", "state": "PA", "country": "US",
+                        "isremote": False},
+           "url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx"
+                  "?jid=612567&cid=7724&locvalue=1",
+           "publicdate": "9/29/2026", "createdate": "8/1/2026",
+           "description": "<p>Sell to cities and counties.</p>", "skills": "<p>Five years.</p>",
+           "descriptioninternal": "INTERNAL-ONLY ad for current staff",
+           "extrainfo": "<p>EEO boilerplate</p>",
+           "joblist": {"gentext1": "INTERNAL note: Pat Example to interview",
+                       "hiringmgr": 4411, "coordinator": 4412},
+           "companyname": "CentralSquare Technologies",
+           "companyurl": "https://www.centralsquare.com/"}
+_ID_HIREBRIDGE = json.dumps(json.dumps([_HB_ROW]))
+_ID_APPLICANTPRO_PAGE = (
+    "<script>if(typeof mountingData.courierCurrentRouteData === 'undefined') {\n"
+    'mountingData.courierCurrentRouteData = {"domain_id":"1431","career_site_name":"Caselle",'
+    '"root_domain_title":"isolved Talent Acquisition","organization_id":"1222",'
+    '"organization_name":"Caselle","csrfToken":""};}</script>\n'
+    "<script>mount('JobListings', [ 'JobListings' ], { componentData: { organizationId : 1222, "
+    'domainId : 1431, getParams : {"isInternal":0,"showLocation":1}, domainName : '
+    '"applicantpro.com", subdomainName : "casellejobs", }});</script>')
+_ID_APPLICANTPRO_FEED = json.dumps({"success": True, "message": "x", "data": {"jobCount": 1, "jobs": [
+    {"id": 4189983, "title": "Territory Manager (Account Executive) ", "city": "Provo",
+     "abbreviation": "UT", "stateName": "Utah", "iso3": "USA",
+     "jobUrl": "https://casellejobs.applicantpro.com/jobs/4189983",
+     "startDateRef": "Nov 17, 2026", "workplaceType": "Fully remote",
+     "minSalary": "120000", "maxSalary": "240000", "payTypeFrame": "per year",
+     "payType": "Base + Commission", "payDetails": "$120K base, $240K OTE"}]}})
+
 # Selux's portal: the account belongs to an association that runs a member's
 # board, and the employer has rewritten the <title>.
 _ID_ICIMS_THIRD_PARTY = (
@@ -5437,6 +5472,14 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
     J_PAGE = "https://vgsi.applytojob.com/apply/"
     G_PAGE = "https://jobs.gusto.com/boards/" + GUSTO
     I_PAGE = "https://careers-granicus.icims.com/jobs/search?ss=1&in_iframe=1&pr=0"
+    HB_FEED = ("https://hbapi.hirebridge.com/careercenter/v2/GetJobListings"
+               "?cid=7724&language=en&addloc=0&startrow=1&endrow=5000")
+    AP_HOST = "casellejobs.applicantpro.com"
+    AP_PAGE, AP_FEED = f"https://{AP_HOST}/jobs/", f"https://{AP_HOST}/core/jobs/1431?getParams="
+
+    def ap_routes(url):
+        return (_ID_APPLICANTPRO_PAGE if url == AP_PAGE else
+                _ID_APPLICANTPRO_FEED if url.startswith(AP_FEED) else None)
 
     # kind, ref, the company on file, routes, POST body, the names stated, n,
     # and the PAGE that must be asked of robots.txt (None: a feed alone).
@@ -5476,6 +5519,9 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         ("paylocity", PAY, "Centegix", {PAY: _ID_PAYLOCITY}, None, ["Centegix"], 1, PAY),
         ("icims", "careers-granicus", "Granicus", {I_PAGE: _ID_ICIMS}, None,
          ["Granicus, LLC"], 1, I_PAGE),
+        ("hirebridge", "7724", "CentralSquare Technologies", {HB_FEED: _ID_HIREBRIDGE}, None,
+         ["CentralSquare Technologies"], 1, HB_FEED),
+        ("applicantpro", AP_HOST, "Caselle", ap_routes, None, ["Caselle"], 1, AP_PAGE),
     ]
 
     keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE, ats.HOST_PAUSE,
@@ -6079,7 +6125,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         for kind in sorted(ats.FETCHERS):
             try:
                 got = vb.board_says(kind, PAY if kind == "paylocity" else
-                                    GUSTO if kind == "gusto" else "acme")
+                                    GUSTO if kind == "gusto" else "7724" if kind == "hirebridge"
+                                    else AP_HOST if kind == "applicantpro" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -18266,6 +18313,200 @@ def _strings(value, path="") -> list[tuple[str, str]]:
     return [(path, value)] if isinstance(value, str) else []
 
 
+def check_hirebridge_and_applicantpro_read_what_their_boards_publish() -> int:
+    """The Hirebridge and ApplicantPro readers (2026-11-21), each held to what
+    was measured on the live boards before it was written.
+
+    HIREBRIDGE. The feed is the one its career centre calls, a JSON string
+    holding the array; it carries each requisition's internal notes, staff
+    ids and an internal-only ad beside the public one, so the reader copies
+    the public fields by name and its host is never cached. A job open in
+    three places must stay one row (EAB came back as 93 rows for 42 jobs
+    without addloc=0), and an empty board is a zero, never an error.
+
+    APPLICANTPRO. The board page names the domain id and the getParams its own
+    list call sends; a disabled site answers 200 on its own host and must read
+    as gone, not empty; min/max is pay only on a Salary or Hourly row, because
+    on a commission role it runs from the base floor to the OTE ceiling. And
+    its probe states BOTH names its page carries, so a sister brand's site on
+    another company's account (Black Mountain Software on Caselle's) is not
+    proven for the brand.
+    """
+    import tempfile
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import verify_boards as vb
+    errors = 0
+
+    class R:
+        def __init__(self, text, url):
+            self.text, self.url, self.status_code, self.headers = text, url, 200, {}
+
+        def json(self):
+            return json.loads(self.text)
+
+    asked: list = []
+
+    def serve(routes):
+        def fake(url, **kw):
+            asked.append((url, kw.get("same_host", False)))
+            for key, body in routes.items():
+                if url == key or (key.endswith("=") and url.startswith(key)):
+                    if isinstance(body, tuple):
+                        return R(body[1], body[0])
+                    return R(body, url)
+            raise ats.AtsError(f"HTTP 404 for {url}")
+        return fake
+
+    HB = ("https://hbapi.hirebridge.com/careercenter/v2/GetJobListings"
+          "?cid=7724&language=en&addloc=0&startrow=1&endrow=5000")
+    again = dict(_HB_ROW, joblocname="Richmond, VA", additionalLocations=[{"name": "Washington, D.C."}])
+    blank = dict(_HB_ROW, joblistid="612999", jobtitle="  ")
+    remote = dict(_HB_ROW, joblistid="612600", location={"isremote": True, "country": "US"})
+    keep = ats._page
+    try:
+        # ---- hirebridge -------------------------------------------------------
+        ats._page = serve({HB: json.dumps(json.dumps([_HB_ROW, again, blank, remote]))})
+        rows = ats.fetch_hirebridge("7724")
+        first = rows[0] if rows else {}
+        if len(rows) != 2:
+            errors += fail(f"hirebridge: {len(rows)} rows from one job listed twice, one blank "
+                           f"title and one more job: a job in several places is one row")
+        if first.get("location") != "Philadelphia, PA; Richmond, VA; Washington, D.C." \
+                or first.get("posted") != "2026-09-29" or first.get("mode") is not None \
+                or (first.get("office_hint") or {}).get("state") != "PA" \
+                or "cities and counties" not in str(first.get("jd")) \
+                or "Five years" not in str(first.get("jd")):
+            errors += fail(f"hirebridge: the row is not what the feed published: {first}")
+        leaked = [r for r in rows if set(r) - {"title", "location", "url", "posted", "mode",
+                                               "office_hint", "jd"}
+                  or any(w in json.dumps(r) for w in ("INTERNAL", "EEO", "4411", "Pat Example"))]
+        if leaked:
+            errors += fail(f"hirebridge: a row carries what the feed holds for internal eyes "
+                           f"only, or a field nobody reads: {leaked[0]}")
+        if len(rows) > 1 and rows[1].get("mode") != "remote":
+            errors += fail("hirebridge: isremote true was not read as remote")
+        for body, want in (('"[]"', []), ("[]", [])):
+            ats._page = serve({HB: body})
+            if ats.fetch_hirebridge("7724") != want:
+                errors += fail(f"hirebridge: the empty board {body} is not a zero")
+        for body in ('"not json', '{"jobs": []}', '"[1, 2]"'):
+            ats._page = serve({HB: body})
+            try:
+                ats.fetch_hirebridge("7724")
+                errors += fail(f"hirebridge: {body!r} was read as a board")
+            except ats.AtsError:
+                pass
+        asked.clear()
+        for ref in ("77a", "", None, "12345678", "7724&x=1"):
+            try:
+                ats.fetch_hirebridge(ref)
+                errors += fail(f"hirebridge: {ref!r} was taken as a company id")
+            except ats.AtsError:
+                pass
+        if asked:
+            errors += fail(f"hirebridge: a ref that is not a company id was asked for: {asked}")
+        # ...and no answer from its host is written to disk, whatever it sends
+        with tempfile.TemporaryDirectory() as tmp:
+            was = ats.HTTP_CACHE
+            ats.HTTP_CACHE = pathlib.Path(tmp)
+            try:
+                resp = R("x", HB)
+                resp.headers = {"ETag": 'W/"1"', "Last-Modified": "Sat, 21 Nov 2026 00:00:00 GMT"}
+                ats._cache_write(HB, resp)
+            finally:
+                ats.HTTP_CACHE = was
+            if any(pathlib.Path(tmp).rglob("*")):
+                errors += fail("the HTTP cache kept an answer from hbapi.hirebridge.com")
+        # ...and the probe: an empty feed names nobody
+        ats._page = serve({HB: '"[]"'})
+        said = vb.board_says("hirebridge", "7724")
+        if said["stated"] or said["names"] or vb.proven({"name": "CentralSquare Technologies"},
+                                                        said)["ok"]:
+            errors += fail(f"hirebridge: an empty feed, which a cid nobody holds also answers, "
+                           f"was read as naming an employer: {said}")
+
+        # ---- applicantpro -----------------------------------------------------
+        host = "casellejobs.applicantpro.com"
+        page, feed = f"https://{host}/jobs/", f"https://{host}/core/jobs/1431?getParams="
+
+        def ap(jobs, landed=None):
+            body = json.dumps({"success": True, "data": {"jobCount": len(jobs), "jobs": jobs}})
+            first = (landed, _ID_APPLICANTPRO_PAGE) if landed else _ID_APPLICANTPRO_PAGE
+            return serve({page: first, feed: body})
+
+        base = json.loads(_ID_APPLICANTPRO_FEED)["data"]["jobs"][0]
+        def job(n, **kw):
+            return dict(base, id=n, jobUrl=f"https://{host}/jobs/{n}", **kw)
+        salary = job(1, payType="Salary", minSalary="60,000.00", maxSalary="85000", payDetails="")
+        hourly = job(2, payType="Hourly", minSalary="23.00", maxSalary="26.00",
+                     payTypeFrame="per hour", payDetails="")
+        hidden = job(3, payType="Salary", payDetails="base plus commission (50/50 mix)")
+        away = job(4, city="Remote", abbreviation=None, stateName=None)
+        asked.clear()
+        ats._page = ap([base, salary, hourly, hidden, away])
+        rows = ats.fetch_applicantpro(host)
+        by = {r["url"].rsplit("/", 1)[-1]: r for r in rows}
+        b = by.get("4189983") or {}
+        if b.get("title") != "Territory Manager (Account Executive)" or b.get("comp") is not None \
+                or b.get("posted") != "2026-11-17" or b.get("mode") != "remote" \
+                or b.get("location") != "Provo, UT, USA":
+            errors += fail(f"applicantpro: the commission row is not what the board published, "
+                           f"or its floor-to-OTE figures were printed as pay: {b}")
+        s_, h_ = (by.get("1") or {}).get("comp") or {}, (by.get("2") or {}).get("comp") or {}
+        if (s_.get("min"), s_.get("max"), s_.get("period"), s_.get("currency")) != \
+                (60000, 85000, "year", "USD") or (h_.get("min"), h_.get("period")) != (23, "hour"):
+            errors += fail(f"applicantpro: a Salary or Hourly range was not read: {s_} / {h_}")
+        if (by.get("3") or {}).get("comp") is not None:
+            errors += fail("applicantpro: a 'Salary' row whose details say commission was read as pay")
+        if "Remote" in str((by.get("4") or {}).get("location")):
+            errors += fail(f"applicantpro: a city of 'Remote' was read as a place: {by.get('4')}")
+        calls = [(u, same) for u, same in asked]
+        listed = [u for u, _ in calls if u.startswith(feed)]
+        if not listed or not all(same for _, same in calls) \
+                or json.loads(up.parse_qs(up.urlsplit(listed[0]).query)
+                              ["getParams"][0]) != {"isInternal": 0, "showLocation": 1}:
+            errors += fail(f"applicantpro: the list was not asked as the board's own page asks "
+                           f"for it, on its own host: {calls}")
+        ats._page = ap([], landed=f"https://{host}/notset.php?genasys&root=4&disabled=1")
+        try:
+            ats.fetch_applicantpro(host)
+            errors += fail("applicantpro: a disabled career site was read as a board with nothing open")
+        except ats.AtsError as exc:
+            if "disabled" not in str(exc):
+                errors += fail(f"applicantpro: a disabled site does not say so: {exc}")
+        ats._page = serve({page: _ID_APPLICANTPRO_PAGE, feed: '{"success": false}'})
+        try:
+            ats.fetch_applicantpro(host)
+            errors += fail("applicantpro: success:false was read as a board")
+        except ats.AtsError:
+            pass
+        asked.clear()
+        for ref in ("www.applicantpro.com", "evil.example", "acme.applicantpro.com.evil.example",
+                    "a b.applicantpro.com"):
+            try:
+                ats.applicantpro_page(ref)
+                errors += fail(f"applicantpro: {ref!r} was taken as a board host")
+            except ats.AtsError:
+                pass
+        if asked:
+            errors += fail(f"applicantpro: a host that is not a tenant's was asked for: {asked}")
+        # the probe, on a sister brand's site: both names stated, so not proven
+        sister = _ID_APPLICANTPRO_PAGE.replace('"career_site_name":"Caselle"',
+                                               '"career_site_name":"Black Mountain Software"')
+        ats._page = serve({page: sister, feed: _ID_APPLICANTPRO_FEED})
+        said = vb.board_says("applicantpro", host)
+        verdict = vb.proven({"name": "Black Mountain Software"}, said)
+        if said["names"] != ["Black Mountain Software", "Caselle"] or verdict["ok"] \
+                or "Caselle" not in verdict["why"]:
+            errors += fail(f"applicantpro: a site on another company's account was proven for "
+                           f"the brand, or the refusal does not name the account: {said['names']}, "
+                           f"{verdict}")
+    finally:
+        ats._page = keep
+    return errors
+
+
 def check_a_long_location_is_published_short() -> int:
     """A posting never ships a location longer than LOCATION_CHARS.
 
@@ -24980,12 +25221,32 @@ SITE_BOARD_FORMS = [
     # City Detect iframes Gem; the board is asked by its slug in a POST body
     ('<iframe src="https://jobs.gem.com/citydetect?embed=true"></iframe>',
      "gem", "citydetect", ("https://jobs.gem.com/api/public/graphql/batch", "citydetect")),
+    # CentralSquare frames Hirebridge's career centre; EAB links a posting,
+    # whose company id comes after the job's (seen 2026-11-19)
+    ('<iframe id="HBIFRAME" src="https://recruit.hirebridge.com/v3/CareerCenter/v2?cid=7724"></iframe>',
+     "hirebridge", "7724", "https://hbapi.hirebridge.com/careercenter/v2/GetJobListings"
+                           "?cid=7724&language=en&addloc=0&startrow=1&endrow=5000"),
+    ('<a href="https://recruit.hirebridge.com/v3/Jobs/JobDetails.aspx?jid=612567&amp;cid=7856&amp;locvalue=1">',
+     "hirebridge", "7856", "https://hbapi.hirebridge.com/careercenter/v2/GetJobListings"
+                           "?cid=7856&language=en&addloc=0&startrow=1&endrow=5000"),
+    # Black Mountain links its ApplicantPro host bare; Springbrook's board is
+    # the same platform on isolved's domain
+    ('<a href="https://BlackMountainSoftware.applicantpro.com">Careers</a>',
+     "applicantpro", "blackmountainsoftware.applicantpro.com",
+     "https://blackmountainsoftware.applicantpro.com/jobs/"),
+    ('<iframe src="https://springbrooksoftware.isolvedhire.com/iframe/mobile"></iframe>',
+     "applicantpro", "springbrooksoftware.isolvedhire.com",
+     "https://springbrooksoftware.isolvedhire.com/jobs/"),
 ]
 
 # Markup that names NO board, and the reason each is here.
 SITE_BOARD_NOT_ONE = [
     '<link href="/module_Career_-_Greenhouse.min.css">',            # a filename
     '<a href="https://www.greenhouse.io/customers">Greenhouse</a>',  # the vendor's own site
+    '<a href="https://www.hirebridge.com/">Powered by Hirebridge</a>',  # the vendor's own site
+    '<script src="https://recruit.hirebridge.com/v3/scripts/iframeResizer.min.js"></script>',  # no cid
+    '<a href="https://recruit.hirebridge.com/v3/jobs/list.aspx?xcid=7724">x</a>',  # not the cid
+    '<a href="https://www.applicantpro.com/">ApplicantPro</a>',      # the vendor's own site
     '<a href="https://apply.workable.com/j/0A1B2C3D4E">Apply</a>',   # a posting's short link
     '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
     '<img src="https://c-1234-20200101-acme-com.i.icims.com/logo.png">',
@@ -36880,7 +37141,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "jazzhr": "acme", "icims": "careers-acme", "jibe": "careers.acme.test",
         "paylocity": PAY, "oracle": "acme.fa.us2.oraclecloud.com",
         "adp": "cbabd1ae-568b-4f70-933b-3f462f76c1b5", "gusto": "acme-c850a9b3",
-        "gem": "acme",
+        "gem": "acme", "hirebridge": "7724", "applicantpro": "casellejobs.applicantpro.com",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -36957,6 +37218,8 @@ console.log(JSON.stringify(out));"""
                               "recruitment.html?cid=cbabd1ae&ccId=9200_000002&lang=en_US"),
         ("gusto", "https://jobs.gusto.com/boards/acme-c850a9b3"),
         ("gem", "https://jobs.gem.com/acme"),
+        ("hirebridge", "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=7724"),
+        ("applicantpro", "https://casellejobs.applicantpro.com/jobs/"),
         ("paylocity", PAY),
         ("greenhouse", "https://job-boards.greenhouse.io/acme"),
         ("no ref", "#"),
@@ -50162,6 +50425,7 @@ def main() -> int:
     errors += check_role_promotion()
     errors += check_render_rotation()
     errors += check_a_long_location_is_published_short()
+    errors += check_hirebridge_and_applicantpro_read_what_their_boards_publish()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()

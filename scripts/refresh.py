@@ -72,6 +72,8 @@ _ATS_HOSTS = (
     "jobvite.com", "dayforcehcm.com", "adp.com", "ycombinator.com",
     "gnahiring.com", "trakstar.com", "oraclecloud.com", "paycomonline.net",
     "gem.com",
+    "hirebridge.com",
+    "isolvedhire.com",
 )
 
 

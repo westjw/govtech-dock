@@ -432,6 +432,8 @@ HINTS = {
     "jazzhr": ("applytojob.com", "jazz.co"), "icims": ("icims.com",),
     "paylocity": ("paylocity.com",), "adp": ("workforcenow.adp.com",),
     "gusto": ("jobs.gusto.com",), "gem": ("jobs.gem.com",),
+    "hirebridge": ("hirebridge.com",),
+    "applicantpro": ("applicantpro.com", "isolvedhire.com"),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -537,6 +539,25 @@ def _gusto(m):
     return (seg, seg.lower()) if ats._GUSTO_REF.match(seg) else None
 
 
+def _hirebridge(m):
+    # The company id, from any address on Hirebridge's three hosts that
+    # carries one (an iframe of the career centre, a link to the classic
+    # list, a posting, the job-alerts page). Never a name or slug: there is
+    # none in these addresses.
+    return m.group(1), m.group(1)
+
+
+def _applicantpro(m):
+    # The whole tenant host is the ref: the label alone does not say which of
+    # the platform's two domains the board is on, and it is not the
+    # company's name ("casellejobs").
+    label = m.group(1).lower()
+    if _furniture(label):
+        return None
+    host = f"{label}.{m.group(2).lower()}.com"
+    return host, host
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -593,6 +614,10 @@ BOARDS: list[_Pat] = (
                      rf"\?[^\s\"'<>]*?\bcid=({UUID})[^\s\"'<>]*", _adp),
         _here("gusto", rf"jobs\.gusto\.com/boards/([a-z0-9][a-z0-9-]*-{UUID})", _gusto),
         _here("gem", r"jobs\.gem\.com/([a-z0-9][a-z0-9._-]{0,80})"),
+        _here("hirebridge", r"(?<![a-z0-9-])(?:recruit|hbapi|alerts)\.hirebridge\.com/"
+                            r"[^\s\"'<>]{0,200}?(?:[?&]|&amp;)cid=([0-9]{1,7})(?![0-9])", _hirebridge),
+        _here("applicantpro", r"(?<![a-z0-9-])([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)"
+                              r"\.(applicantpro|isolvedhire)\.com(?![a-z0-9-])", _applicantpro),
     ])
 
 # Job platforms nothing here can read. Kept as a TALLY, because which reader

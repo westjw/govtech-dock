@@ -220,6 +220,7 @@ ADVERTISED_AS = frozenset({"href", "text"})
 VENDOR_SITES = {
     "ashby": {"ashbyhq.com"}, "gem": {"gem.com"},
     "greenhouse": {"greenhouse.io", "greenhouse.com"}, "gusto": {"gusto.com"},
+    "hirebridge": {"hirebridge.com"},
     "jazzhr": {"jazzhr.com"}, "lever": {"lever.co"}, "paylocity": {"paylocity.com"},
     "rippling": {"rippling.com"}, "smartrecruiters": {"smartrecruiters.com"}}
 VENDOR_AS = frozenset({"href"})

@@ -1063,10 +1063,53 @@ def _icims(ref, out: dict) -> None:
 # and pinned by selftest (check_a_board_is_proven_only_by_its_own_stated_name).
 # Everything else answers "no identity probe written for <kind>", states
 # nothing, and so can never pass proven().
+def _hirebridge(ref, out: dict) -> None:
+    # companyname is on every row of the feed the reader reads, and
+    # companyurl is the website the account gave Hirebridge (empty on
+    # Tribute's), held to the one on file like ashby's. AN EMPTY FEED NAMES
+    # NOBODY: a live board with nothing open and a company id nobody holds
+    # both answer "[]" (cid 9999999, measured 2026-11-19).
+    rows = ats.hirebridge_rows(ref)
+    out["n"] = sum(1 for j in rows if ats._text(j.get("jobtitle")))
+    out["hosts"] = {host_of(str(j.get("url") or "")) for j in rows[:8]}
+    if not _state(out, [j.get("companyname") for j in rows],
+                  "hirebridge companyname, stated on every row of the feed"):
+        out["how"] = ("hirebridge rows name no company" if rows else
+                      "hirebridge feed lists no jobs, so it names nobody (a company "
+                      "id nobody holds answers the same way)")
+        return
+    sites = {ats._text(j.get("companyurl")) for j in rows} - {""}
+    if len(sites) == 1:
+        out["site"] = sites.pop()
+
+
+def _applicantpro(ref, out: dict) -> None:
+    # The board's /jobs/ page carries courierCurrentRouteData, JSON with
+    # TWO names, and both are stated: career_site_name is the site the
+    # employer set up, organization_name the ApplicantPro account behind it.
+    # They differ on a sister brand's site - Black Mountain Software's board
+    # is on Caselle's account (2026-11-19) - and a board is held to every
+    # name it states, so such a board goes to the owner's queue. The page
+    # gives no count, so the list it asks for is asked too, as the reader
+    # does: two requests.
+    host, page = ats.applicantpro_page(ref)
+    # (the page tests "=== 'undefined'" before it assigns, so the
+    # marker must be followed by the object itself)
+    data = _embedded(page, r"courierCurrentRouteData\s*=\s*(?=\{)")
+    out["hosts"] = {host}
+    out["n"] = sum(1 for j in ats.applicantpro_jobs(host, page)
+                   if isinstance(j, dict) and ats._text(j.get("title")))
+    if not _state(out, [_dig(data, "career_site_name"), _dig(data, "organization_name")],
+                  "applicantpro career_site_name and organization_name, stated on "
+                  "the board's own page"):
+        out["how"] = "applicantpro page states no career site name"
+
+
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
            "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
-           "gusto": _gusto, "paylocity": _paylocity, "icims": _icims}
+           "gusto": _gusto, "paylocity": _paylocity, "icims": _icims,
+           "hirebridge": _hirebridge, "applicantpro": _applicantpro}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.
