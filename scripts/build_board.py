@@ -523,6 +523,45 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     return f"{opening_id(company_id, title)}::{disc}"
 
 
+# THE LONGEST LOCATION A POSTING PUBLISHES. A board may list every office a
+# role can sit in as one location string: Zscaler's "Principal Specialist Sales
+# Engineer ... Healthcare/SLED" named 14 remote states in 649 characters, the
+# self-test of the board the 2026-11-20 nightly built refused it (nothing on a
+# posting is prose, so nothing passes 500), and that night's board was not
+# published at all. The whole string is still read - the id is hashed from
+# it, and geography() and is_us() read every place in it - only the copy that
+# ships is cut, at a place boundary, with how many more it named.
+LOCATION_CHARS = 200
+_PLACE_SEP = re.compile(r"\s*(?:;|\||\n)\s*")
+
+
+def published_location(location: str) -> str:
+    """The location a posting ships: the board's own words, whole places only,
+    at most LOCATION_CHARS characters, ending "and N more" when places were
+    left off. A location that fits is returned exactly as given."""
+    loc = location or ""
+    if len(loc) <= LOCATION_CHARS:
+        return loc
+    places = [x for x in _PLACE_SEP.split(loc) if x.strip()]
+    if len(places) > 1:
+        kept = []
+        for i, place in enumerate(places):
+            more = len(places) - (i + 1)
+            tail = f"; and {more} more" if more else ""
+            trial = "; ".join(kept + [place])
+            if len(trial + tail) > LOCATION_CHARS:
+                break
+            kept.append(place)
+        if kept:
+            more = len(places) - len(kept)
+            return "; ".join(kept) + (f"; and {more} more" if more else "")
+    # one place longer than the limit, or a first place that does not fit:
+    # cut at the last comma or space that leaves room for the mark
+    head = loc[:LOCATION_CHARS - 1]
+    cut = max(head.rfind(", "), head.rfind(" "))
+    return (head[:cut] if cut > LOCATION_CHARS // 2 else head).rstrip(" ,;") + "\u2026"
+
+
 def safe_url(u: str) -> str:
     """A url a browser can actually open.
 
@@ -2065,7 +2104,15 @@ def board_payload(generated: str, orgs: list[dict], postings: list[dict],
 
     `crawl_stats` is the run's own {"unreadable", "rendered"}; boards_read
     and coverage are set by the caller once they are known.
+
+    Every posting's location is cut to what a posting ships
+    (published_location) here, where the crawl AND quick_rebuild's redraw
+    both hand their rows: a row stored before the cut existed is put right
+    by the next redraw, without a crawl. Idempotent; ids are not touched.
     """
+    for p in postings:
+        if isinstance(p, dict) and isinstance(p.get("location"), str):
+            p["location"] = published_location(p["location"])
     return {
         "generated": generated,
         "logos": logos_manifest(),
@@ -2510,7 +2557,9 @@ def main() -> int:
                 "states": geo["territory"]["states"],
                 "region": geo["territory"]["region"],
                 "work_mode": geo["work_mode"],
-                "location": loc, "is_us": us,
+                # the whole string was read above (id, geography, is_us);
+                # only the copy that ships is cut (published_location)
+                "location": published_location(loc), "is_us": us,
                 # pay and jd_seen, derived off j["jd"]. The text itself is not
                 # copied into this dict and does not leave this loop.
                 **derived(jd_backfilled(j, url)),

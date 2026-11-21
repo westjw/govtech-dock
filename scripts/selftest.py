@@ -18266,6 +18266,65 @@ def _strings(value, path="") -> list[tuple[str, str]]:
     return [(path, value)] if isinstance(value, str) else []
 
 
+def check_a_long_location_is_published_short() -> int:
+    """A posting never ships a location longer than LOCATION_CHARS.
+
+    The 2026-11-20 nightly built a board whose Zscaler row named 14 remote
+    states in one 649-character location, check_no_jd_text refused it
+    (nothing on a posting is prose), and the night's board was not published.
+    build_board.published_location cuts the copy that ships at a place
+    boundary, saying how many more places it left off; the id, geography()
+    and is_us() still read the whole string, so no id moves.
+    """
+    import build_board as bb
+    import inspect
+    errors = 0
+    states = ["Connecticut", "Florida", "Georgia", "Maine", "Maryland", "Massachusetts",
+              "New Hampshire", "New Jersey", "New York", "North Carolina", "Pennsylvania",
+              "South Carolina", "Virginia", "West Virginia"]
+    zs = "; ".join(f"Remote - {x}, USA" for x in states)
+    for loc in ("", "Atlanta, GA", "x" * bb.LOCATION_CHARS):
+        if bb.published_location(loc) != loc:
+            errors += fail(f"a location that fits ({len(loc)} characters) was changed")
+    out = bb.published_location(zs)
+    kept = out.split("; and ")[0].split("; ")
+    more = out.rsplit("; and ", 1)[-1] if "; and " in out else ""
+    if len(out) > bb.LOCATION_CHARS or not more.endswith(" more") \
+            or kept != zs.split("; ")[:len(kept)] \
+            or int(more.split()[0]) != len(states) - len(kept):
+        errors += fail(f"a {len(zs)}-character list of places published as {out!r}: whole "
+                       f"places from the front, then how many more, within "
+                       f"{bb.LOCATION_CHARS} characters")
+    for loc in ("y" * 5000, "Remote - " + "A" * 300 + "; Austin, TX", "; ".join(["Q"] * 900),
+                "Bellevue, Washington, USA|" * 40, "Dallas, TX\n" * 60):
+        o = bb.published_location(loc)
+        if not o or len(o) > bb.LOCATION_CHARS:
+            errors += fail(f"published_location gave {len(o)} characters for a "
+                           f"{len(loc)}-character location")
+    if bb.LOCATION_CHARS > PROSE_CHARS:
+        errors += fail("LOCATION_CHARS is above the prose line the board's own self-test holds")
+    # ...and the step the crawl and quick_rebuild's redraw both build the
+    # board through cuts a row stored before the cut existed, ids untouched
+    row = {"quota_carrying": True, "is_us": True, "comp": None}
+    stored = [dict(row, id="zscaler::Role::e95fef07", location=zs),
+              dict(row, id="a::B::c", location="Austin, TX")]
+    pay = bb.board_payload("2026-11-21", [], stored, {}, [], {"unreadable": 0, "rendered": 0}, 0, 0)
+    shipped = pay["postings"]
+    if [len(x["location"]) <= bb.LOCATION_CHARS for x in shipped] != [True, True] \
+            or shipped[1]["location"] != "Austin, TX" \
+            or [x["id"] for x in shipped] != ["zscaler::Role::e95fef07", "a::B::c"]:
+        errors += fail(f"board_payload did not cut a stored row's location, or changed "
+                       f"what fits or an id: {[(x['id'], len(x['location'])) for x in shipped]}")
+    src = inspect.getsource(bb.main)
+    if '"location": published_location(loc)' not in src \
+            or "rid = posting_id(c[\"id\"], title, url, loc)" not in src \
+            or "geo = roles.geography(loc, title)" not in src \
+            or "us = roles.is_us(loc, title)" not in src:
+        errors += fail("the crawl must publish published_location(loc) and hash the id, read "
+                       "geography and is_us off the WHOLE location")
+    return errors
+
+
 def check_no_jd_text(postings: list[dict]) -> int:
     """The description text must never reach data/board.json.
 
@@ -50102,6 +50161,7 @@ def main() -> int:
     errors += check_save_needs_read()
     errors += check_role_promotion()
     errors += check_render_rotation()
+    errors += check_a_long_location_is_published_short()
     errors += check_refresh_render_ration()
     errors += check_review_findings()
     errors += check_redirect_hop()

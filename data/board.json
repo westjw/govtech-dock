@@ -572221,7 +572221,7 @@
    "states": [],
    "region": null,
    "work_mode": "remote",
-   "location": "Bellevue, Washington, USA; Remote - D.C., USA; Remote - Georgia, USA; Remote - New York, USA; Remote - North Carolina, USA; Remote - Texas, USA; Remote - USA; Remote - Washington, USA; Santa Clara, California, USA; USA - Update Location",
+   "location": "Bellevue, Washington, USA; Remote - D.C., USA; Remote - Georgia, USA; Remote - New York, USA; Remote - North Carolina, USA; Remote - Texas, USA; Remote - USA; Remote - Washington, USA; and 2 more",
    "is_us": true,
    "jd_seen": true,
    "comp": {
@@ -574066,7 +574066,7 @@
    "states": [],
    "region": null,
    "work_mode": "remote",
-   "location": "Remote - Connecticut, USA; Remote - Florida, USA; Remote - Georgia; Remote - Maine, USA; Remote - Maryland, USA; Remote - Massachusetts, USA; Remote - New Hampshire, USA; Remote - New Jersey, USA; Remote - New York, USA; Remote - North Carolina, USA; Remote - Pennsylvania, USA; Remote - South Carolina, USA; Remote - Virginia, USA; Remote - West Virginia, USA",
+   "location": "Remote - Connecticut, USA; Remote - Florida, USA; Remote - Georgia; Remote - Maine, USA; Remote - Maryland, USA; Remote - Massachusetts, USA; Remote - New Hampshire, USA; and 7 more",
    "is_us": true,
    "jd_seen": true,
    "comp": {
@@ -574903,7 +574903,7 @@
    "states": [],
    "region": null,
    "work_mode": "remote",
-   "location": "AMS - Update Location; Remote - Alabama, USA; Remote - Connecticut, USA; Remote - D.C., USA; Remote - Delaware, USA; Remote - Florida, USA; Remote - Georgia, USA; Remote - Indiana, USA; Remote - Kentucky, USA; Remote - Maine, USA; Remote - Maryland, USA; Remote - Massachusetts, USA; Remote - Michigan, USA; Remote - Mississippi, USA; Remote - New Hampshire, USA; Remote - New Jersey, USA; Remote - New York, USA; Remote - North Carolina, USA; Remote - Ohio, USA; Remote - Pennsylvania, USA; Remote - Rhode Island, USA; Remote - South Carolina, USA; Remote - Tennessee, USA; Remote - Vermont, USA; Remote - Virginia, USA; Remote - West Virginia, USA",
+   "location": "AMS - Update Location; Remote - Alabama, USA; Remote - Connecticut, USA; Remote - D.C., USA; Remote - Delaware, USA; Remote - Florida, USA; Remote - Georgia, USA; Remote - Indiana, USA; and 18 more",
    "is_us": true,
    "jd_seen": true,
    "comp": {
@@ -602317,5 +602317,9 @@
   "absent": 672,
   "blocked": 188,
   "unchecked": 68
+ },
+ "redrawn": {
+  "at": "2026-11-21T12:25:44Z",
+  "inputs": "ce64425187c6b4667380c010a8e81dff17ca7dad399c1a2b0cf22a9cb0651990"
  }
 }
