@@ -2832,8 +2832,10 @@ round.
 - **`board_key` is loose and `spelling` is exact.** The key only notices
   collisions, and a collision only ever sends a board to a person: case is
   ignored, an address matches with or without scheme, `www.` or a last slash,
-  a Paylocity board is the id after `/jobs/All/`, an iCIMS portal its slug, a
-  Jibe or Oracle board its host. What is READ is the ref as the quoted page
+  a Paylocity board is the id after `/jobs/All/` or `/jobs/List/`, with or
+  without the tenant's name after it (a /List/ board had two keys, so a hold
+  under one spelling missed the other: blind review, 2026-11-21), an iCIMS
+  portal its slug, a Jibe or Oracle board its host. What is READ is the ref as the quoted page
   spelled it; SmartRecruiters minds case, and `caseco` answering empty says
   nothing about `CaseCo`.
 - **`apply` reads the frozen file and makes no request, but it asks the data

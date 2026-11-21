@@ -365,7 +365,12 @@ def held_for_the_owner(data=None) -> dict:
 # (board_key), and a Workable account is one board under two keys, its
 # number and its slug, wherever the two are known to belong together.
 
-_PAYLOCITY = re.compile(r"/jobs/all/([^/?#]+)")
+# a Paylocity board is the identifier after /jobs/All/ (a uuid) or /jobs/List/
+# (a number), with or without the tenant's name after it: find_site_boards
+# writes /List/<n> both ways (FAAC's shape, 2026-11-18), and keyed on the
+# whole address a hold under one spelling missed the board found under the
+# other (blind review, 2026-11-21)
+_PAYLOCITY = re.compile(r"/jobs/(?:all|list)/([^/?#]+)")
 _ICIMS = re.compile(r"([a-z0-9-]+)\.icims\.com(?:[/?]|$)")
 # the words wire_found.py writes on a wired record's note and a held row's
 # doubt when a site asks for a Workable board by its account number (its
@@ -385,8 +390,8 @@ def board_key(kind, ref) -> str:
     is the same board with or without its scheme, its www. or a last slash.
     And three shapes are read for the part that identifies the board, because
     this repo's own data writes each of them two ways: a Paylocity address is
-    the id after /jobs/All/, with or without the tenant's name after it
-    (keyed on the whole address, a board already on file as
+    the id after /jobs/All/ or /jobs/List/, with or without the tenant's name
+    after it (keyed on the whole address, a board already on file as
     .../<uuid>/<Tenant> was not seen to be the board found as .../<uuid>, and
     would have been wired to a second company); an iCIMS portal is its slug,
     bare or inside its address; a Jibe or Oracle board is its host.

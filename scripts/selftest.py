@@ -33724,10 +33724,17 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
     # --- the board key: loose for collisions, and never what is read --------
     UUID = "0f0f0f0f-1111-2222-3333-444444444444"
     PAY = "https://recruiting.paylocity.com/recruiting/jobs/All/"
+    LIST = "https://recruiting.paylocity.com/recruiting/jobs/List/"
     slash_found = "https://recruiting.paylocity.com/Recruiting/Jobs/All/" + UUID
     for kind, a, b, same in (
         ("paylocity", PAY + UUID + "/Slash-Holder-Inc", slash_found, True),
         ("paylocity", PAY + UUID + "/A", PAY + UUID.replace("0f0f", "1f1f") + "/A", False),
+        # a /List/ board is its number, with or without the tenant's name
+        # after it (blind review, 2026-11-21: FAAC's two spellings were two keys)
+        ("paylocity", LIST + "4821/FAAC-Inc", LIST + "4821", True),
+        ("paylocity", LIST + "4821/", "http://recruiting.paylocity.com/Recruiting/Jobs/List/4821"
+                                      "/FAAC-Inc?lang=en", True),
+        ("paylocity", LIST + "4821", LIST + "4822", False),
         ("icims", "careers-acme", "https://careers-acme.icims.com/jobs/search?ss=1", True),
         ("icims", "careers-acme", "careers-acmeco", False),
         ("jibe", "careers.acme.test", "https://careers.acme.test/api/jobs", True),
