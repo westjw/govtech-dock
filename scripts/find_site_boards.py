@@ -1024,7 +1024,7 @@ def _apart(page: str) -> tuple[str, list[str]]:
     when the walk has passed the last one found, so this is one pass however
     many of either the page holds.
     """
-    low, body, scripts, i, n = page.lower(), [], [], 0, len(page)
+    low, body, scripts, i, n = ats.lower_same(page), [], [], 0, len(page)
     c, s = low.find("<!--"), _script_at(low, 0)
     while i < n:
         if 0 <= c < i:
@@ -1119,15 +1119,16 @@ _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 # ('sd=Pat Example', 'Pat&#32;Example'), and so does a Jobvite address
 # percent-encoded inside another one ('%26sd%3DPat%2520Example').
 _PARAM_SEP = r"(?:[?&;]|%26)"         # ('&amp;', '&#38;', '&#x26;' all end in ';')
-_PARAM_VALUE = r"""[^&#\s"'<>]*(?:(?:[ \t]|&#32;|&#x20;)(?-i:[A-Z])[A-Za-z'-]*)*"""
+_PARAM_VALUE = r"""(?:[^&#"'<>\r\n]|&(?:nbsp|#160|#xa0|#32|#x20);)*"""
 _PERSON_PARAM = re.compile(
     rf"({_PARAM_SEP}(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|last_?name|"
     rf"full_?name|e-?mail)=){_PARAM_VALUE}", re.I)
 _JV_PERSON_PARAM = re.compile(rf"({_PARAM_SEP}(?:(?:__jv|jv)?sd|name|contact)=){_PARAM_VALUE}", re.I)
-_JV_ENCODED_PERSON = re.compile(r"(%26(?:(?:__jv|jv)?sd|name|contact|recruiter\w*)%3d)(?:(?!%26)[^&#\s\"'<>])*",
-                                re.I)
-_JV_ADDRESS = re.compile(r"""(?:app|hire|jobs)\.jobvite\.com(?:/|%2f)[^\s"'<>]*"""
-                         r"""(?:(?:[ \t]|&#32;|&#x20;)(?-i:[A-Z])[A-Za-z'-]*)*""", re.I)
+_JV_ENCODED_PERSON = re.compile(r"((?:%3f|%26)(?:(?:__jv|jv)?sd|name|contact|recruiter\w*)%3d)"
+                                r"(?:(?!%26)[^&#\s\"'<>])*", re.I)
+_ENCODED_PERSON = re.compile(r"((?:%3f|%26)(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|"
+                             r"last_?name|full_?name|e-?mail)%3d)(?:(?!%26)[^&#\s\"'<>])*", re.I)
+_JV_ADDRESS = re.compile(r"""(?:app|hire|jobs)\.jobvite\.com(?:/|%2f)[^"'<>\r\n]*""", re.I)
 
 
 def _no_person(text: str) -> str:
@@ -1135,7 +1136,7 @@ def _no_person(text: str) -> str:
     Jobvite keys inside Jobvite's own addresses, the person keys anywhere."""
     text = _JV_ADDRESS.sub(lambda m: _JV_ENCODED_PERSON.sub(
         r"\1[removed]", _JV_PERSON_PARAM.sub(r"\1[removed]", m.group(0))), text or "")
-    return _PERSON_PARAM.sub(r"\1[removed]", text)
+    return _ENCODED_PERSON.sub(r"\1[removed]", _PERSON_PARAM.sub(r"\1[removed]", text))
 
 
 def _short(text: str) -> str:
@@ -1690,7 +1691,7 @@ def _anchors(page: str, base: str) -> list[tuple[str, str]]:
     text up to the next closing tag found by str.find, or a line's worth.
     """
     page = _apart(page)[0]
-    low = page.lower()
+    low = ats.lower_same(page)
     out, seen = [], set()
     for m in _TAG.finditer(page):
         if m.group(1).lower() not in ("a", "area"):
@@ -2323,7 +2324,7 @@ def _inside(page: str, tag: str) -> str:
     """The words of the page's first <tag>, found with str.find. The lazy
     regex this replaces (<title[^>]*>(.*?)</title>) rescans to the end of the
     page from every opener that is never closed."""
-    low = page[:400_000].lower()
+    low = ats.lower_same(page[:400_000])
     i = low.find("<" + tag)
     j = low.find(">", i) if i >= 0 else -1
     if j < 0:

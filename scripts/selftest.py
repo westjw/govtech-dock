@@ -19509,7 +19509,9 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                    f"{J}/acmegovernment/jobs"):
             rows, exc = go({base: (302, to), base + "?nl=1&fr=false": (302, to)},
                            lambda: ats.fetch_jobvite("acmegov"))
-            if exc is None or "leads off" not in str(exc) or any(
+            # (refused as leaving the career site, or before that as an
+            # address whose path climbs when sent: ats.plain_address)
+            if exc is None or ("leads off" not in str(exc) and "not a plain address" not in str(exc)) or any(
                     "parentco" in u or "acmegovernment" in u for u in sent + robots_asked):
                 errors += fail(f"jobvite: a redirect to {to[len(J):]} was followed ({sent}): {rows or exc}")
 
@@ -19528,7 +19530,7 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
         def sent_host(u):
             return up.urlsplit(ats.requests.Request("GET", u).prepare().url).hostname
         for to in ("https://evil.example\\@jobs.jobvite.com/acmegov/jobs",
-                   "https://pat" + "@" + "jobs.jobvite.com/acmegov/jobs"):     # (built: no address in a tracked file)
+                   "https://x:" + "@" + "jobs.jobvite.com/acmegov/jobs"):     # (a user and an empty password: no e-mail-like address anywhere)
             rows, exc = go({base: (302, to), base + "?nl=1&fr=false": (302, to)},
                            lambda: ats.fetch_jobvite("acmegov"))
             hosts = {sent_host(u) for u in sent + robots_asked}
@@ -19548,7 +19550,9 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
         if exc or sent != ["https://acme.example/careers"]:
             errors += fail(f"ats._page: an address with a line break in it was not read as a "
                            f"browser reads it: asked {sent}, {exc}")
-        for bad in ("https://acme.example\\.evil.example/x", "https://acme.example/a\x00b",
+        for bad in ("https://jobs.jobvite.com:44\\3/acmegov/jobs", "https://acme.example/a/%2e%2e/b",
+                    "https://acme.example/a/./b".replace("/./", "/%2E/"),
+                    "https://acme.example\\.evil.example/x", "https://acme.example/a\x00b",
                     "https://acme.example/a\nb", "https://acme.example/a\x01b", "https://acme.example/a\x7fb"):
             try:
                 ats.plain_address(bad)
@@ -19573,6 +19577,21 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
             pass
         finally:
             ats.requests.Request = real_request
+
+        class OtherPort(real_request):
+            def prepare(self):
+                prepared = real_request.prepare(self)
+                prepared.url = prepared.url.replace("acme.example/", "acme.example:8443/", 1)
+                return prepared
+        ats.requests.Request = OtherPort
+        try:
+            ats.plain_address("https://acme.example/careers")
+            errors += fail("ats.plain_address let through an address the library would send to "
+                           "another port")
+        except ats.AtsError:
+            pass
+        finally:
+            ats.requests.Request = real_request
         # (a backslash after the host steers no host; a host in another script is
         # encoded as the request encodes it - UTS 46, where 'stra\u00dfe' is not
         # 'strasse': sixth blind review)
@@ -19592,7 +19611,7 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
             v = _robots.verdict(after_host, fetch=lambda u: fetched.append(u) or (200, ""))
             if not v.ok or not fetched or not all(f.endswith("/robots.txt") for f in fetched):
                 errors += fail(f"robots.verdict refused {after_host!r}, whose host is plain: {v} ({fetched})")
-        for two_ways in ("https://evil.example\\@jobs.jobvite.com/x", "https://pat" + "@" + "jobs.jobvite.com/x",
+        for two_ways in ("https://evil.example\\@jobs.jobvite.com/x", "https://x:" + "@" + "jobs.jobvite.com/x",
                          "https://evil.example\\jobs.jobvite.com/x"):
             fetched.clear()
             v = _robots.verdict(two_ways, fetch=lambda u: fetched.append(u) or (200, ""))
@@ -19777,7 +19796,12 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                 ({1: posting("Acme Gov"), 2: posting("Sibling Co").replace('type="application/ld+json"',
                                                                          'id="application/ld+json"')
                   + posting("Acme Gov")},
-                 ["Acme Gov"], "a script whose id names the JSON-LD type")):
+                 ["Acme Gov"], "a script whose id names the JSON-LD type"),
+                ({1: posting("Acme Gov"), 2: "<p>\u0130stanbul</p><!-- x -->" + posting("Sibling Co")},
+                 ["Acme Gov", "Sibling Co"], "a sibling's block after a dotted capital I and a comment"),
+                ({1: posting("Acme Gov"), 2: posting("Acme Gov").replace('type="application/ld+json"',
+                                                                       'type=" application/ld+json "')},
+                 ["Acme Gov"], "a JSON-LD type written with spaces around it")):
             got = said(two, postings)
             if got["names"] != want or got["stated"] != bool(want):
                 errors += fail(f"jobvite probe, {why}: stated {got['names']} (stated={got['stated']}), "
@@ -19818,6 +19842,11 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                    .replace("&lt;!--", "<!--"), {1: posting("Acme Gov"), 2: posting("Acme Gov")})
         if got["n"] != 2:
             errors += fail(f"jobvite: a '<!--' inside the page's <title> hid its rows (read {got['n']})")
+        # ... but a posting the server refuses (403) is no failure of the day
+        got = said(two, {1: posting("Acme Gov"), 2: (403, None)})
+        if got["stated"] or got["transient"] is True or not got["failed"]:
+            errors += fail(f"jobvite probe: a posting that answered 403 was read as failed="
+                           f"{got['failed']!r} transient={got['transient']!r}")
         # a posting that closed between the list and the probe is the day's
         # failure: asked again on the next plan, never "no board there"
         got = said(two, {1: posting("Acme Gov")})          # posting 2 answers 404
@@ -19916,6 +19945,18 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                  "rows after an svg a header left unclosed"),
                 (["<svg><g>", "<div>", r1, r2, "</div>"], ["Role 1 & Co", "Role 2 & Co"],
                  "rows after a <div> that breaks out of an unclosed svg"),
+                ([r1.replace("Dallas", "\u0130stanbul") + "<!-- icon -->" * 3, r2,
+                  "\u0130" * 90 + "<!-- " + row("acmegov", 8) + " -->", row("acmegov", 3)],
+                 ["Role 1 & Co", "Role 2 & Co", "Role 3 & Co"],
+                 "a dotted capital I before comments (its lowercase is two characters)"),
+                ([r1, '<script><!---> var t = "<script>"; </script>', r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "a script whose '<!--->' ends its escape at once"),
+                ([r1, '<script><!--> var t = "<script>"; </script>', r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "a script whose '<!-->' ends its escape at once"),
+                ([r1, "<script><!--<script>--> <script> </script>", r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "a double-escaped script whose '-->' returns it to plain script"),
+                ([r1, '</ <td class="jv-job-list-name">\n<a href="/acmegov/job/oAbC7fwg">Role 7</a>\n</td>', r2],
+                 ["Role 1 & Co", "Role 2 & Co"], "a row tag swallowed by a '</ ' bogus comment"),
                 ([r1, "<style>/* <!-- */</style>", r2], ["Role 1 & Co", "Role 2 & Co"],
                  "a '<!--' inside a style block")):
             if titles(rows_) != want:
@@ -20161,6 +20202,14 @@ def check_successfactors_reads_its_career_site() -> int:
         if exc or len(rows or []) != 15 or sent != [at(0), at(10)]:
             errors += fail(f"successfactors: a <tr class=\"data-row-hidden\"> was counted as a posting "
                            f"row (asked {[u[len(SF):] for u in sent]}): {exc}")
+        # a dotted capital I (two characters when lowered) moves no cut
+        ist = page(["<!-- x -->", row(1, title="Sales Engineer - \u0130stanbul",
+                                        where="\u0130stanbul, TR " + "\u0130" * 80), "<!-- y -->", row(2)], total=2)
+        _n, got_rows, _t = ats.successfactors_list(ist, SF)
+        if [r.get("title") for r in got_rows] != ["Sales Engineer - \u0130stanbul", "Role 2 & Co"] \
+                or not str((got_rows or [{}])[0].get("location")).startswith("\u0130stanbul, TR"):
+            errors += fail(f"successfactors: a dotted capital I moved a cut: "
+                           f"{[(r.get('title'), r.get('location')) for r in got_rows]}")
         # a board of six pages is read to its end
         six = {at(k * 25): page([row(n) for n in range(k * 25 + 1, k * 25 + 26)], total=150,
                                 first=k * 25 + 1) for k in range(6)}
@@ -20227,8 +20276,10 @@ def check_successfactors_reads_its_career_site() -> int:
         if len(kept) != 1:
             errors += fail("successfactors: a plain posting address with a dot and escapes in its slug "
                            "was not read")
-        for to, words in ((SF + "/job/%2e%2e/services/recruiting/v1/jobs", "plainly"),
-                          (SF + "/search/%2e%2e/services/x", "plainly")):
+        # (refused by the reader's own path rule, or before it by
+        # ats.plain_address, which reads the path as the library sends it)
+        for to, words in ((SF + "/job/%2e%2e/services/recruiting/v1/jobs", "plain"),
+                          (SF + "/search/%2e%2e/services/x", "plain")):
             ats.FETCH_DETAILS = True
             rows, exc = go({at(0): page([row(1)], total=1), SF + job(1): (302, to)},
                            lambda: ats.fetch_successfactors(SF))
@@ -20338,7 +20389,7 @@ def check_successfactors_reads_its_career_site() -> int:
                     "https://hcm55.sapsf.eu", "https://api17.sapsf.com",
                     "https://performancemanager5.successfactors.eu", SF + "/search/", SF + "?x=1",
                     SF + "/#top", "http://jobs.acmegov.example", SF + ":8443",
-                    "https://pat" + "@" + "jobs.acmegov.example",    # (built: no address in a tracked file)
+                    "https://x:" + "@" + "jobs.acmegov.example",    # (a user and an empty password: no e-mail-like address anywhere)
                     "jobs.acmegov.example", "https://[::1", "", None, ["acme"]):
             rows, exc = go({}, lambda: ats.fetch_successfactors(ref))
             if exc is None or sent or robots_asked:
@@ -20788,13 +20839,21 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                      (TN + "&sd=Pat&#x20;Example", "a name with a hex entity space"),
                      ("https://x.example/c?recruiter=Pat&#x20;Example&q=1", "a recruiter's name with an entity space"),
                      ("https://hire.jobvite.com/j?cj=oOthr9fw&sd=Pat%20Example", "a hire.jobvite.com job link's sd="),
+                     (TN + "&sd=Pat van Example", "a name with a lower-case particle"),
+                     (TN + "&sd=Pat&nbsp;Example", "a name with a non-breaking space"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fsd%3DPat%2520Example%26ci%3Dq6NaVfwI", "an encoded talent network whose sd= comes first"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26recruiter%3DPat%2520Example", "an encoded talent network's recruiter="),
+                     ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Ffirst_name%3DPat"
+                      "%26last_name%3DExample", "encoded first and last names outside Jobvite"),
                      ("https://acme.example/go?url=" + TN.replace(":", "%3A").replace("/", "%2F")
                       .replace("?", "%3F").replace("=", "%3D") + "%26sd%3DPat%2520Example%26x%3D1",
                       "a talent-network address percent-encoded inside another"),
                      ("https://x.example/careers?recruiter_email=pat%40mail.test&q=1", "a recruiter's e-mail"),
                      ("https://x.example/careers?first_name=Pat&last_name=Example", "a first and a last name")):
         out = fsb._no_person(raw)
-        if "pat" in out.lower() or "example%" in out.lower() or "Example" in out:
+        if "Pat" in out or "Example" in out or "pat%40" in out.lower():
             errors += fail(f"finder: {why} kept a person's name: {out!r}")
     # ... and nothing that is not a person goes: a site's own name=All is a
     # search filter, and the address it is part of is the one the site served
@@ -20813,6 +20872,18 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                               "elsewhere": [{"page": "https://x.example/careers?recruiter=Pat"}]})
     if "Pat" in json.dumps(kept) or "q6NaVfwI" not in json.dumps(kept):
         errors += fail(f"finder: a person's name stayed in a page's address in the results: {kept}")
+    body, scripts = fsb._apart("<p>" + "\u0130" * 20 + "stanbul</p><!-- a comment -->"
+                               '<script src="https://boards.greenhouse.io/embed/job_board/js?for=acmegov"></script>')
+    if not scripts or "greenhouse" not in scripts[0] or "<!--" in body:
+        errors += fail(f"finder: after a dotted capital I the page's script or comment was cut in "
+                       f"the wrong place: scripts {scripts}, body {body[:120]!r}")
+    got = fsb._anchors("<p>" + "\u0130" * 40 + '</p><a href="/careers">Careers</a> and more words here',
+                       "https://www.acmegov.example/")
+    if [w for _u, w in got] != ["Careers"]:
+        errors += fail(f"finder: after dotted capital I letters a link's words were cut in the wrong place: {got}")
+    if fsb._inside("\u0130" * 40 + "<title>Acme Gov Careers</title> and more", "title") != "Acme Gov Careers":
+        errors += fail(f"finder: after dotted capital I letters a page's title was cut in the wrong place: "
+                       f"{fsb._inside(chr(0x130) * 40 + '<title>Acme Gov Careers</title> and more', 'title')!r}")
     # one address that names a tenant is that, once - not also the platform's no-board form
     for markup, want in (('<a href="https://www.comeet.co/jobs/C2.00D">Group</a>', ["comeet-tenant"]),
                          ('<a href="https://app.jobvite.com/j?cj=ocVbwfwy&s=Career_Site">Apply</a>',

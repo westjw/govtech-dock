@@ -619,6 +619,19 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
 
 
 _UNPLAIN = re.compile(r"[\x00-\x1f\x7f]")
+_ASCII_LOWER = str.maketrans("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz")
+
+
+def lower_same(s: str) -> str:
+    """`s` lowercased with its length kept, so a place found in the copy is
+    the same place in `s`. Python lowers 'I' with a dot above (U+0130) to
+    two characters, and every cut after one landed a character late: a row
+    was lost, a taken-down row published, a JSON-LD block cut short
+    (seventh blind review, 2026-11-22; 'Istanbul' with that letter is on the
+    board). It is lowered as 'I' is; should any other character ever do the
+    same, only ASCII is lowered."""
+    low = s.replace("\u0130", "I").lower()
+    return low if len(low) == len(s) else s.translate(_ASCII_LOWER)
 _TAB_OR_BREAK = re.compile(r"[\t\n\r]")
 
 
@@ -641,17 +654,29 @@ def plain_address(u: str) -> None:
     # (a backslash anywhere is left to the comparison below: in the host part
     # it makes the prepared request name another host, and after the host -
     # in a path or a query - it steers none)
+    # (a backslash in the host part makes the host or the port the prepared
+    # request names differ from the one read here, which is refused below)
     if "@" in (parts.netloc or ""):
         raise AtsError(f"{u} is not a plain address (an '@' in its host part)")
     here = (parts.hostname or "").lower().rstrip(".")
     try:
-        sent = (urllib.parse.urlsplit(requests.Request("GET", u).prepare().url).hostname
-                or "").lower().rstrip(".")
+        prepared = urllib.parse.urlsplit(requests.Request("GET", u).prepare().url)
+        sent = (prepared.hostname or "").lower().rstrip(".")
+        # THE PORT AND THE PATH TOO (seventh blind review): ':44\\3' left the
+        # host alone and sent the request to port 44, and '%2e%2e' was asked
+        # of robots.txt as written and sent as '..', which a server resolves
+        default = {"http": 80, "https": 443}
+        if (parts.port or default.get(parts.scheme)) != (prepared.port or default.get(prepared.scheme)):
+            raise AtsError(f"{u} is not a plain address: its port reads otherwise when sent")
+        if any(seg in (".", "..") for seg in prepared.path.split("/")):
+            raise AtsError(f"{u} is not a plain address: its path climbs ('.' or '..') when sent")
         # a name in another script, encoded the way the request itself is
         # (UTS 46, as requests does: 'stra\u00dfe' is xn--strae-oqa, where
         # Python's own codec would say 'strasse' - sixth blind review)
         want = here if here.isascii() else \
             requests.models.PreparedRequest._get_idna_encoded_host(here).lower()
+    except AtsError:
+        raise
     except Exception as exc:                       # noqa: BLE001 - nothing is sent
         raise AtsError(f"{u} is not an address the library can send ({exc})") from exc
     if sent != want:
@@ -3485,7 +3510,10 @@ def _script_end(low: str, i: int, nxt: dict) -> int:
                 return at
             state, pos = 1, at + 8
         elif m == "<!--":
-            state, pos = (0, at + 5) if low.startswith(">", at + 4) else (1, at + 4)
+            # '<!-->' and '<!--->' end the escape they open at once (the
+            # standard's escaped-dash states); only a longer one is escaped
+            state, pos = ((0, at + 5) if low.startswith(">", at + 4) else
+                          (0, at + 6) if low.startswith("->", at + 4) else (1, at + 4))
         elif m == "-->":
             state, pos = 0, at + 3
         else:
@@ -3525,7 +3553,7 @@ def _walk(page: str) -> tuple[str, list[str]]:
     rule). Every '<' is looked at once and every search goes forward only,
     so no page holds a batch up."""
     page = page or ""
-    low, n = page.lower(), len(page)
+    low, n = lower_same(page), len(page)
     out, blocks, stack = [], [], []
     held = Counter()                            # what the stack holds, so no tag searches it
     keep_from, i = 0, 0
@@ -3990,7 +4018,7 @@ def _sf_row(cell: str, origin: str, lang: str) -> dict | None:
     """One posting from one data row's markup: its first titled /job/ link, its
     first place and its first date. The phone's copy of each comes later in
     the row and says the same; a row with no titled posting link is none."""
-    low = cell.lower()
+    low = lower_same(cell)
     shut = {"a": low.find("</a>"), "span": low.find("</span>")}
     nxt = -1                                     # the next <a after this one
     title = url = where = when = None
@@ -4033,7 +4061,7 @@ def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | 
     lang = said.group(1).lower() if said else ""
     starts = [m for m in _SF_TR.finditer(body)
               if "data-row" in m.group(1).lower() and "data-row" in _sf_classes(m.group(1))]
-    low, rows = body.lower(), []
+    low, rows = lower_same(body), []
     tr = low.find("</tr>")
     for k, m in enumerate(starts):
         if 0 <= tr < m.end():
