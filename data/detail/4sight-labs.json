@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-22",
+   "headline": "Welfare-Check Verification in Jail",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/automated-welfare-checks-jail-draft-review-nov20-2026"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Detainee Biometric Monitoring from Intake to Release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/detainee-biometric-monitoring-draft-review-nov20-2026"
+  },
+  {
    "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -46,7 +64,7 @@
    "url": "https://4sightlabs.com/resources/30-minute-checks-in-jail-standard-proof"
   },
   {
-   "date": "2026-10-16",
+   "date": "2026-10-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Correctional Facility Monitoring Technology",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://4sightlabs.com/resources/us-manufactured-correctional-technology"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Alcohol Withdrawal Jail Monitoring",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/alcohol-withdrawal-jail-monitoring"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Jail Detox Monitoring: Why Early Custody Observation Matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/jail-detox-monitoring-why-early-custody-observation-matters"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "MAPP 2.0 and PHAB: What's Possible for Your Next Cycle",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://metopio.com/blog/mapp-2-and-phab-whats-possible-for-your-next-cycle"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://metopio.com/blog/beyond-the-rhtp-buzz"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "How Parkview Health Is Tackling Rural Cancer Disparities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://metopio.com/blog/how-parkview-health-is-tackling-rural-cancer-disparities"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Handling the NIST 800-171 Rev 3 Transition",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/handling-the-nist-800-171-rev-3-transition"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.huntress.com/blog/sckit-worm-rogue-screenconnect"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Beyond the clipboard: The evolving tradecraft of ClickFix",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/the-evolving-tradecraft-of-clickfix"
   }
  ]
 }

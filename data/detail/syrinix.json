@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Why the ModMAG M2000 Electromagnetic Flow Meter Is Ideal for CDU Applications",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.syrinix.com/blog/cdu-flow-measurement/"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Keeping Data Centers Cool, Efficient and Resilient with Smarter Flow Monitoring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.syrinix.com/blog/keeping-data-centers-cool/"
+  },
+  {
+   "date": "2026-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Badger Meter Acquires 37South, Further Expanding Global Operations to Australia",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.syrinix.com/newsroom/37south/"
+  },
+  {
+   "date": "2026-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "5 Ways Flow Measurement Reduces Energy Costs in HVAC Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.syrinix.com/blog/reduce-hvac-energy-costs/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Badger Meter Introduces OneNetwork\u2122 Software Platform for Water and Wastewater Utilities at WEFTEC 2026",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.syrinix.com/newsroom/introducing-onenetwork/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Why Monitoring Cooling Media Quality Is Critical for Liquid\u2011Cooled Data Centers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.syrinix.com/blog/cooling-media-quality/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Wastewater Treatment\u2019s Fourth Purification Stage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.syrinix.com/blog/fourth-stage-purification/"
+  },
+  {
    "date": "2026-07-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.syrinix.com/blog/closing-data-gaps/"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Releases 2025 Sustainability Report",
-   "kind": "product",
-   "kind_rule": "Releases",
-   "url": "https://www.syrinix.com/newsroom/2025-sustainability-report/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Expands Leadership Position in Global Sewer Line Monitoring with Acquisition of UDlive",
-   "kind": "funding",
-   "kind_rule": "Acquisition of",
-   "url": "https://www.syrinix.com/newsroom/udlive/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Expands Leadership Position in Global Sewer Line Monitoring with Acquisition of UDlive",
-   "kind": "funding",
-   "kind_rule": "Acquisition of",
-   "url": "https://www.syrinix.com/en-ca/newsroom/udlive/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Expands Leadership Position in Global Sewer Line Monitoring with Acquisition of UDlive",
-   "kind": "funding",
-   "kind_rule": "Acquisition of",
-   "url": "https://www.syrinix.com/en-gb/newsroom/udlive/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Expands Leadership Position in Global Sewer Line Monitoring with Acquisition of UDlive",
-   "kind": "funding",
-   "kind_rule": "Acquisition of",
-   "url": "https://www.syrinix.com/de-de/news/udlive/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Badger Meter Expands Leadership Position in Global Sewer Line Monitoring with Acquisition of UDlive",
-   "kind": "funding",
-   "kind_rule": "Acquisition of",
-   "url": "https://www.syrinix.com/es-us/newsroom/udlive/"
-  },
-  {
-   "date": "2026-04-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Seeing the Unseen: How Flow and Turbidity Data Reveal Hidden Risks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.syrinix.com/blog/flow-and-turbidity-data/"
   }
  ]
 }

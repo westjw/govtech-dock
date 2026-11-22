@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-21",
+   "headline": "Latest Maptitude Blog Posts:",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.caliper.com/maptitude/blog/default.htm"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.caliper.com/press/acmla-bulletin-142-maptitude-review.pdf"
-  },
-  {
-   "date": "2013-01-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "An Analysis of Access to Primary Care in Rural Alabama",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.caliper.com/press/ruralhealthplan.pdf"
   }
  ],
  "profile": {

@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-11-12",
+   "date": "2026-11-20",
    "date_source": "near-h1",
+   "first_seen": "2026-11-21",
+   "headline": "Building Operations That Work When Things Don't Go as Planned",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hubparking.com/news/building-operations-that-work-when-things-dont-go-as-planned/"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "index-text",
    "first_seen": "2026-11-12",
    "headline": "HUB Solutions not affected by PHP Vulnerabilities",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hubparking.com/news/smart-parking-summer-edition/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Summer Holidays & Closure 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hubparking.com/news/summer-holidays-closure-2026/"
   }
  ],
  "profile": {

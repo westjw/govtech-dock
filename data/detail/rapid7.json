@@ -10,6 +10,15 @@
    "url": "https://www.rapid7.com/blog/post/etr-cve-2026-123890-critical-authentication-bypass-vmware-vcenter/"
   },
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Spying on Governments with Zero Lines of Malware: A Custom SoftEther Bridge in Webworm\u2019s Toolkit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rapid7.com/blog/post/tr-spying-on-governments-no-malware-custom-webworms-toolkit-softether-bridge/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://www.rapid7.com/blog/post/ai-changing-security-operations-center-roles-soc/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "SMTP is the key: BPFDoor and AVERAT hitting the network edge",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.rapid7.com/blog/post/tr-smtp-is-the-key-bpfdoor-averat-hitting-the-network-edge/"
   }
  ]
 }

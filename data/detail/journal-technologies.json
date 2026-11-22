@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Regarding Release of Secured Portal Build & Service Restoration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.journaltech.com/blog/service-restoration-update"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.journaltech.com/blog/how-customer-feedback-shapes-our-roadmap"
-  },
-  {
-   "date": "2025-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "South Australia Embraces Change with eCourt",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.journaltech.com/blog/south-australia-embraces-change-with-ecourt"
   }
  ],
  "profile": {

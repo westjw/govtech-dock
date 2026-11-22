@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "WCAG 2.1 Level AA for government teams: What it means in practice",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://granicus.com/blog/wcag-2-1-level-aa-for-government-teams-what-it-means-in-practice/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://granicus.com/blog/build-infrastructure-support-before-projects-reach-the-public/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Build support before funding conversations begin",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://granicus.com/blog/build-support-before-funding-conversations-begin/"
   }
  ],
  "profile": {

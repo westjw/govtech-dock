@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "EdgeIQ and OutSystems: Accelerating Industry 4.0 outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/edgeiq-outsystems-alliance"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "5 steps to a successful Lotus Notes migration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/lotus-notes-migration"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -8,15 +26,6 @@
    "kind": "product",
    "kind_rule": "unveils",
    "url": "https://www.outsystems.com/blog/posts/agentic-legacy-modernization"
-  },
-  {
-   "date": "2026-11-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-19",
-   "headline": "EdgeIQ.ai and OutSystems: Accelerating Industry 4.0 outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/edgeiq-outsystems-alliance"
   },
   {
    "date": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/enterprise-ai-future"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "How to build an agentic AI enterprise: Strategies that work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/agentic-ai-strategies-that-work"
   }
  ]
 }

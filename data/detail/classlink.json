@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "6 New ClassLink Features To Manage Identities on Apple Devices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/6-new-classlink-features-to-manage-identities-on-apple-devices"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-10-24",
@@ -55,6 +64,15 @@
    "url": "https://www.classlink.com/news/classlink-launches-insights-to-help-schools-see-how-edtech-relates-to-student-outcomes"
   },
   {
+   "date": "2026-10-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "and October 13, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/classlink-products-oct-2026"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -73,15 +91,6 @@
    "url": "https://www.classlink.com/blog/analytics-plus-brings-safari-activity-into-view"
   },
   {
-   "date": "2026-10-13",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "and October 13, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/classlink-products-oct-2026"
-  },
-  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.classlink.com/blog/partnering-with-classlink-sep-2026"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "A New and Improved Prodigy App Is Available",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.classlink.com/blog/a-new-and-improved-prodigy-app-is-available"
   }
  ],
  "profile": {

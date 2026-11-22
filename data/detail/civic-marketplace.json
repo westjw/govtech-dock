@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Co-op contract pages, rebuilt around how agencies buy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://civicmarketplace.com/news/co-op-contract-pages"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Kerr County and the Upper Guadalupe River Authority Responded to Tragedy in Record Time",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://civicmarketplace.com/news/how-kerr-county-and-the-upper-guadalupe-river-authority-responded-to-tragedy-in-record-time"
   }
  ],
  "profile": {

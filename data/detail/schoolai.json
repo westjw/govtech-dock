@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Developing an effective AI strategy for school districts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/ai-strategy-for-school-districts"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/what-school-leaders-should-measure-during-first-month-ai-adoption"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What success looks like for school AI tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/what-success-looks-like-for-school-ai-tools"
   }
  ],
  "profile": {

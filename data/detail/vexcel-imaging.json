@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Master\u2019s Thesis on Richer Building Data and Urban Noise Mapping",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/master-thesis-richer-building-data-urban-noise-mapping/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-16",
+   "headline": "Night-time aerial data collection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/night-time-aerial-data-collection-with-ultracam-and-ultramap/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -74,15 +92,6 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-11-16",
-   "headline": "Night-time aerial data collection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/night-time-aerial-data-collection-with-ultracam-and-ultramap/"
-  },
-  {
-   "date": "2026-09-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Discover the new system",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vexcel-imaging.com/news/ultramap-new-reconstruction-pipeline/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Scientific paper on radiometric adjustment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/scientific-paper-reflectance-in-radiometric-adjustment/"
   }
  ]
 }

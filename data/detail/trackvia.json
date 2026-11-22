@@ -1,7 +1,25 @@
 {
  "news": [
   {
-   "date": "2026-11-09",
+   "date": "2026-11-20",
+   "date_source": "time",
+   "first_seen": "2026-11-21",
+   "headline": "Claude for Manufacturing is here. Is your plant data ready?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/claude-for-manufacturing-plant-data-ready/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "time",
+   "first_seen": "2026-11-21",
+   "headline": "From AI Beginner to Building an App in 20 Minutes: How Innoved Institute Is Putting TrackVia AI to Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/innoved-institute-from-ai-beginner-to-building-an-app-in-20-minutes/"
+  },
+  {
+   "date": "2026-11-19",
    "date_source": "time",
    "first_seen": "2026-11-13",
    "headline": "Your Inspections Went Digital. Your Safety and Compliance Record Didn\u2019t.",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://trackvia.com/blog/a-workflow-automation-guide-for-public-sector-teams/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "How to Track Assets Across Multiple Locations Without Losing Visibility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://trackvia.com/blog/how-to-track-assets-across-multiple-locations-without-losing-visibility/"
-  },
-  {
-   "date": "2026-08-08",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "How to Keep Field Operations Synchronized When Plans Change",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://trackvia.com/blog/how-to-keep-field-operations-synchronized-when-plans-change/"
   }
  ]
 }

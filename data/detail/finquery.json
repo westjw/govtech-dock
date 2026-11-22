@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Capital Asset Overview: Classification, Accounting, and Best Practices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://finquery.com/blog/capital-asset/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Debt Accounting under ASC 470: Overview, Loans/Notes Payable, Bonds Payable, and Advanced Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://finquery.com/blog/debt-accounting-asc-470/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://finquery.com/blog/interest-expense-calculation-explained/"
-  },
-  {
-   "date": "2026-06-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "How to Create a Prepaid Amortization Schedule in Excel",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://finquery.com/blog/how-to-create-a-prepaid-amortization-schedule-in-excel/"
-  },
-  {
-   "date": "2026-06-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Incurred Expenses in Accounting Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://finquery.com/blog/incurred-expenses-explained/"
   }
  ]
 }

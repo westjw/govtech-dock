@@ -1,6 +1,105 @@
 {
  "news": [
   {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Sharing Live Drone Data Across Agencies With AirGuard | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/airguard-drone-data-sharing"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Mobile Drone Detection for Parades, Marathons, and LA28 | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/mobile-drone-detection-moving-events"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Holiday and New Year\u2019s Eve Drone Security for Event Teams | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/holiday-new-years-eve-drone-security"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Super Bowl LXI Drone Security: How Airspace Is Protected | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/super-bowl-lxi-drone-security"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "FEMA Counter-UAS Award: A Six-Month Implementation Plan | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/fema-counter-uas-award-implementation"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Drone Detection for Data Centers: Protecting AI Sites | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-for-data-centers"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Remote ID Receivers: What They Show and How They Work | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/remote-id-receivers"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Drone Sightings: How to Tell Drones From Planes and Stars | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-sightings"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Drone Detection Software: What It Does & What to Look For | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-software"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "One Drone, One Picture: Data Fusion Lessons for LA28 | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-data-fusion-la28"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "FCC Opens 24 GHz for Drone Detection Radar: What It Means | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/fcc-24-ghz-drone-detection-radar"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -8,105 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/metro-for-dfr-airspace-awareness-dfr-programs"
-  },
-  {
-   "date": "2026-11-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-18",
-   "headline": "AirGuard\u2019s Proximity Intelligence: See Which Drones Are Really Closing In",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/airguards-proximity-intelligence-see-which-drones-are-really-closing-in"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "index-text",
-   "first_seen": "2026-11-11",
-   "headline": "FEMA C-UAS Grant: The November 16 Deadline and What Comes After",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/fema-c-uas-grant-november-16-deadline"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "AirSight Metro: Affordable Airspace Intelligence for Cities, Counties, and Towns",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/metro-affordable-airspace-intelligence-cities-counties-towns"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "How AirGuard's New Analytics Turns Drone Detection Data into Findings You Can Act On",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/how-airguards-new-analytics-turns-drone-detection-data-into-findings-you-can-act-on"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Drone Detection for Prisons: Stop Contraband Drops | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-for-prisons"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Drone as First Responder: How Police Drone Programs Work | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-as-first-responder"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Anti-Drone Systems in Action: What Real Deployments Show | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/anti-drone-systems-in-action"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Drone Detection Systems for Every Industry | AirSight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-systems-by-industry"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "What Is a Drone Detection System? How It Works & Who Uses It | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/what-is-a-drone-detection-system"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Best Anti-Drone Systems and Companies | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/best-anti-drone-systems"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-04",
-   "headline": "Critical Infrastructure Drone Detection: A Practical Guide | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/critical-infrastructure-drone-detection"
   }
  ],
  "profile": {

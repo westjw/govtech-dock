@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "How to Ship Websites Faster Without Chasing New Coding Models",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/how-ship-websites-faster-without-chasing-new-coding-models"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/web-is-iceberg-why-context-matters"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Who Is the Web For When Bots Do the Browsing?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/who-web-when-bots-do-browsing"
   }
  ]
 }

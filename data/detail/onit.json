@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-11-04",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "The Hardest Part of Legal Tech Modernization Isn\u2019t the New System",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Legal Invoice Review Should Optimize for Accuracy, Not Maximum Reductions",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "The Hidden Cost of Disconnected Legal Operations in Higher Education",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-10-21",
    "headline": "What Is a Legal Hold, and Why a Defensible Process Matters More Than Ever",
    "kind": "press",

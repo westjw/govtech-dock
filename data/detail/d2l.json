@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "The CEO perspective: What association leaders believe about the future of learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/what-association-leaders-believe-about-the-future-of-learning/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Hire",
    "url": "https://www.d2l.com/blog/new-hire-orientation/"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "How to create an employee development plan (with examples)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/employee-development-plan/"
   }
  ],
  "profile": {

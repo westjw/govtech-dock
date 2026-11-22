@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "The Norwegian Railway Museum selects TIND ILS",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://blog.tind.io/press/the-norwegian-railway-museum-selects-tind-ils"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "index-text",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://blog.tind.io/press/syracuse-university"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Virginia Military Institute selects TIND Digital Archive to host its digital collections",
-   "kind": "contract",
-   "kind_rule": "selects",
-   "url": "https://blog.tind.io/press/vmi-selects-tind-digital-archive"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "5 takeaways: How Lanier\u2019s team used AI in the Meta trial",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://boodlebox.ai/blog/lanier-meta-trial-case-study"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://boodlebox.ai/blog/manifesto"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Buying for the Few, Deploying to the Many",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://boodlebox.ai/blog/buying-for-the-few-deploying-to-the-many"
   }
  ],
  "profile": {

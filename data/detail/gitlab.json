@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Java4Shell: GitLab helps find and remediate a critical Java flaw",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/java4shell-critical-java-flaw-how-gitlab-helps/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/how-to-develop-a-decision-grade-ai-pilot/"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "The Pentagon wants to know who checks code when AI writes it",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/department-of-war-instruction-for-ai-generated-code/"
   }
  ]
 }
