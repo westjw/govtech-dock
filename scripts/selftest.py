@@ -35745,6 +35745,8 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                 ("brand-refused-twin-co", "HOLD", None,
                  "refused for another company, still on file (Refused Slug Twin Co); whether "
                  "it is Brand Refused Twin Co's own board is the owner's to rule on"),
+                ("brand-refused-twin-co", "HOLD", None, "(claude on 2026-11-10: a recruiting "
+                                                        "firm's board) - refused for another"),
                 # NOT ASKED, AND SAID SO: refused for another board, its number
                 # is not followed, and it is skipped as refused - tell the owner
                 ("refused-other-co", "SKIP", "refused", "a parent's Lever board"),
@@ -38291,6 +38293,13 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 & set(box.asked + box.probed):
             errors += fail("a board refused for one company on two records was read or asked "
                            "whose it is for the other record")
+        # A ROW FILED FOR HIM PROPOSES THE BOARD: it never says the board "is not
+        # proposed again" (the refusal is quoted in its own words; third blind
+        # review, 2026-11-21: nothing pinned it)
+        for cid in ("pr-parent", "pd-parent", "pg-parent", "dismissed-b"):
+            if "not proposed again" in _wb_words((rows_p or {}).get(cid) or {}):
+                errors += fail(f"{cid}: the plan's held row says the board it proposes is not "
+                               f"proposed again: {_wb_words((rows_p or {}).get(cid) or {})[:300]!r}")
         if "greenhouse/paparentco" in box.asked or "greenhouse/paparentco" in box.probed:
             errors += fail("a board refused for this company under another of its records was "
                            "read or asked whose it is")
@@ -38301,6 +38310,7 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                            ("pd-parent", "was refused for Pd Sub Co in Boards we found"),
                            ("pg-parent", "was refused for Pg Sub Co in Agent proposals")):
             if code != 0 or words not in str((q.get(cid) or {}).get("identity_why")) \
+                    or "not proposed again" in str((q.get(cid) or {}).get("identity_why")) \
                     or not (q.get(cid) or {}).get("filed"):
                 errors += fail(f"{cid}: a board refused for another company did not reach the "
                                f"owner's desk for the company whose own site and board name it, "
@@ -38558,6 +38568,34 @@ def check_a_workable_account_is_held_under_either_key() -> int:
             errors += fail(f"a board refused under a Workable number this very run followed to "
                            f"its slug was planned {r.get('action')}/{r.get('kind')} for a company "
                            f"linking the slug: {_wb_words(r)[:300]!r}")
+
+    # --- A REFUSAL HELD BY NAME, filed for the owner in its own words -----------
+    # (third blind review, 2026-11-21: refused for Num Co under Workable account
+    # 701701, which nobody followed, the board of Num Co US - stating a name
+    # that account goes by - was held, and its row said the board "is not
+    # proposed again")
+    companies6 = [co("num-co", "Num Co"), co("num-co-us", "Num Co US", also_known_as=["Num Co"])]
+    with _WiringBox(companies6, {"workable/numcous": (3, ["Num Co US"])},
+                    files={bp.PROPOSALS: {"board:num-co": {
+                        "kind": "board", "id": "num-co", "name": "Num Co",
+                        "ats_type": "workable", "ats_ref": "701701", "status": "rejected",
+                        "ruled_by": "owner", "ruled_on": "2026-11-10",
+                        "ruled_why": "a recruiter's account"}}}) as box:
+        code, text, wl6, rows6 = box.plan(_wb_results({"num-co-us": links("num-co-us",
+                                                                          "numcous")}),
+                                          name="worklist-num-us.json")
+        r = (rows6 or {}).get("num-co-us") or {}
+        code, text, look6 = box.look(wl6)
+        code, text = box.write(wl6, look6)
+        q = {x["id"]: x for x in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        filed_words = str((q.get("num-co-us") or {}).get("identity_why"))
+        if r.get("action") != "HOLD" \
+                or "workable/701701 was refused for Num Co in Agent proposals" not in filed_words \
+                or "it is held under Workable account 701701" not in filed_words \
+                or "not proposed again" in filed_words or "not proposed again" in _wb_words(r):
+            errors += fail(f"a board held by name beside a refusal under a Workable number was not "
+                           f"filed for the owner with the refusal in its own words: "
+                           f"{filed_words[:400]!r}")
 
     # --- A NUMBER AND A SLUG NOTHING TIES ARE TWO BOARDS -------------------------
     # (blind review, 2026-11-21: the owner settled a doubt about workable/790000;

@@ -2816,8 +2816,11 @@ round.
   it was quoted ("... was refused for Sub Co in Agent proposals (...) -
   refused for another company, still on file (Sub Co)", or "- refused for a
   record since merged away (Sub Co), and this company does not go by that
-  name"; "whether it is Parent Co's own board is the owner's to rule on");
-  apply leaves such a WIRE row alone and says to plan again. (Blind review,
+  name"; "whether it is Parent Co's own board is the owner's to rule on"),
+  the refusal in its own words - a row that proposes the board never says
+  it "is not proposed again", whether it is held by key or by a name a
+  Workable account goes by; apply leaves such a WIRE row alone and says to
+  plan again. (Blind review,
   2026-11-21: Sub Co's refusal, "the board is Parent Co's", held Parent Co's
   own board in all three doors, and nothing could put it in front of him for
   Parent Co; 10 of the 11 board proposals he had rejected name their true

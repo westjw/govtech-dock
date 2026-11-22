@@ -728,8 +728,12 @@ def named_holds(held: dict, kind, names, cid, ours=()) -> list:
             hit = sorted(set(theirs) & set(h["names"]))
             how = f"the company it was found for goes by \"{theirs[hit[0]]}\"" if hit else ""
         if hit:
+            # a refusal in its own words: the row this goes on is filed for
+            # the owner, so it is not "not proposed again" (third blind review,
+            # 2026-11-21)
+            said = (h.get("refusal") or h["words"]) if h.get("code") == "refused" else h["words"]
             out.append((h["code"], (
-                f"{h['words']}; it is held under Workable account {h['number']}, which was not "
+                f"{said}; it is held under Workable account {h['number']}, which was not "
                 f"followed to a slug, and {how}, a name that account goes by "
                 f"({h['names'][hit[0]]}) - whether it is the same Workable account was not "
                 f"asked")))
