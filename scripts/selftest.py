@@ -26568,7 +26568,7 @@ SITE_BOARD_NOT_ONE = [
     '<img src="https://images4.bamboohr.com/123/logo.png">',         # the vendor's image host
     '<img src="https://c-1234-20200101-acme-com.i.icims.com/logo.png">',
     '<a href="https://acme.wd5.myworkdayjobs.com/en-US">Jobs</a>',   # a locale is not a site
-    '<a href="https://wd3.myworkdaysite.com/recruiting/modaxo/Tadera">Jobs</a>',  # fetch_workday cannot take it
+    '<a href="https://wd3.myworkdaysite.com/recruiting/modaxo/Tadera">Jobs</a>',  # this door does not lift that host yet
     '<a href="https://jobs.gusto.com/postings/acme-account-executive-0f3c">AE</a>',  # a posting, no board id
     '<a href="https://recruiting.paylocity.com/Recruiting/Jobs/Details/123456">AE</a>',
     '<a href="https://ats.rippling.com/">Rippling</a>',
@@ -32501,16 +32501,19 @@ def check_workday_pages_to_the_end() -> int:
               f"ceiling is {ats.WD_MAX_PAGES}")
         errors += 1
 
-    # The bug, as a source shape. Either Workday function posting a literal
-    # zero offset is the defect coming back.
+    # The bug, as a source shape. The Workday reader posting a literal zero
+    # offset is the defect coming back. One reader since 2026-11-22: the
+    # myworkdaysite copy, _workday_jobs, went when both hosts were read the
+    # same way. Read to the next def, so the window is the reader's own body.
     src = (ROOT / "scripts" / "ats.py").read_text()
-    for name in ("def fetch_workday(", "def _workday_jobs("):
+    for name in ("def fetch_workday(",):
         i = src.find(name)
         if i < 0:
             print(f"  FAIL: {name} is gone from ats.py")
             errors += 1
             continue
-        body = src[i:i + 1800]
+        end = src.find("\ndef ", i + len(name))
+        body = src[i:end if end > 0 else len(src)]
         if '"offset": 0' in body:
             print(f"  FAIL: {name} posts a literal offset of 0 again - "
                   f"that is the un-paged fetch this check exists to stop")
@@ -39045,6 +39048,12 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
     asks = {t: {"type": t, "ref": SAMPLES[t]} for t in types if t in SAMPLES}
     asks.update({
         "workday pod-first": {"type": "workday", "ref": ["wd3", "wdtenant", "Tadera"]},
+        "workday pod-first, a tenant of its own": {"type": "workday",
+                                                   "ref": ["wd3", "modaxo", "Tadera"]},
+        "workday, a tenant that begins wd": {"type": "workday", "ref": ["wdc", "wd5", "External"]},
+        "workday pod-first, a tenant that starts like a pod": {"type": "workday",
+                                                               "ref": ["wd3", "wd40co", "Careers"]},
+        "workday, both parts read like a pod": {"type": "workday", "ref": ["wd3", "wd5", "Careers"]},
         "workday as a string": {"type": "workday", "ref": "acme.wd5.myworkdayjobs.com/Careers"},
         "adp with its ccId": {"type": "adp", "ref": "cbabd1ae|9200_000002"},
         "jibe as an address": {"type": "jibe", "ref": "https://careers.acme.test"},
@@ -39094,6 +39103,12 @@ console.log(JSON.stringify(out));"""
     for what, want in (
         ("workday", "https://acme.wd5.myworkdayjobs.com/Careers"),
         ("workday pod-first", "https://wd3.myworkdaysite.com/recruiting/wdtenant/Tadera"),
+        ("workday pod-first, a tenant of its own",
+         "https://wd3.myworkdaysite.com/recruiting/modaxo/Tadera"),
+        ("workday, a tenant that begins wd", "https://wdc.wd5.myworkdayjobs.com/External"),
+        ("workday pod-first, a tenant that starts like a pod",
+         "https://wd3.myworkdaysite.com/recruiting/wd40co/Careers"),
+        ("workday, both parts read like a pod", "https://wd3.wd5.myworkdayjobs.com/Careers"),
         ("workday as a string", "#"),
         ("smartrecruiters", "https://careers.smartrecruiters.com/AcmeInc"),
         ("jibe", "https://careers.acme.test"),
@@ -39876,11 +39891,14 @@ def check_fetchers_page_through_their_callers() -> int:
 
         ats._post_json = post
         want_calls = 2 * (math.ceil(TOTAL / ats.WD_PAGE) + 1)     # two search terms
+        # Both hosts through fetch_workday itself. This used to drive the
+        # myworkdaysite helper with its address already built, which is how
+        # a ref that never reached that host went unseen for three months
+        # (check_a_workday_board_is_asked_at_its_own_host).
         for label, call in (
                 ("fetch_workday", lambda: ats.fetch_workday(["acme", "wd5", "Careers"])),
-                ("_workday_jobs", lambda: ats._workday_jobs(
-                    "https://wd1.myworkdaysite.com/wday/cxs/acme/Careers/jobs",
-                    "https://wd1.myworkdaysite.com/recruiting/acme/Careers", "Careers"))):
+                ("fetch_workday on myworkdaysite.com",
+                 lambda: ats.fetch_workday(["wd1", "acme", "Careers"]))):
             posts.clear()
             rows = call()
             if len(rows) != TOTAL:
@@ -39937,6 +39955,151 @@ def check_fetchers_page_through_their_callers() -> int:
             errors += 1
     finally:
         ats._post_json, ats._get, ats._workday_details, ats.FETCH_DETAILS = keep
+    return errors
+
+
+def check_a_workday_board_is_asked_at_its_own_host() -> int:
+    """Each of Workday's two hosts is asked about its own boards, the same way.
+
+    fetch_workday said it read myworkdaysite.com too, and its branch for that
+    host never fired for a real address. It took the pod-first host only when
+    BOTH of the first two parts began "wd", so (wd3, modaxo, Tadera), the
+    address its own docstring quoted, was asked at
+    wd3.modaxo.myworkdayjobs.com/wday/cxs/wd3/..., which is nobody's host.
+    The other way round, a tenant-first board whose tenant began "wd"
+    (wdc.wd5...) would have been asked on myworkdaysite.com. The checks that
+    held it drove the myworkdaysite helper with its address already built,
+    or a tenant named "wdtenant", so which host a ref is asked at was never
+    measured. Found 2026-11-22 by the agent building the platform catalogue.
+
+    Driven through ats.fetch (the crawl's door, details on) and
+    ats.workday_total (the wiring door's size question), with requests.post
+    and requests.get stubbed and every socket refused. Workday rate-limits
+    the owner's machine, and no test may ask it anything. Every request,
+    each ad included, must go to the ref's own host. Both hosts must be
+    asked the same questions: the request measured on myworkdayjobs.com is
+    the one both get. wire_found.ref_problem restates the rule and is held
+    to it here, the desk's boardUrlFor in
+    check_the_boards_found_card_opens_what_it_names.
+    """
+    import socket
+    import wire_found
+    errors = 0
+    TOTAL = 23              # two pages and a bit, so paging and the wrap both run
+    asked = []              # (method, url, body), every request made
+    AD = "Sells to cities."
+
+    def board(url, json=None, **_):
+        asked.append(("POST", url, json))
+        off = (json or {}).get("offset", 0)
+        if off >= TOTAL:                      # past the end, Workday wraps
+            off = 0
+        return _Resp(200, payload={"total": TOTAL, "jobPostings": [
+            {"externalPath": f"/job/Austin-TX/Account-Executive_R{i}",
+             "title": f"Account Executive {i}", "locationsText": "Austin, TX"}
+            for i in range(off, min(off + ats.WD_PAGE, TOTAL))]})
+
+    def ad(url, **_):
+        asked.append(("GET", url, None))
+        return _Resp(200, payload={"jobPostingInfo": {"jobDescription": f"<p>{AD}</p>"}})
+
+    def refuse(*_a, **_k):
+        raise OSError("selftest refuses the network: no test may ask Workday anything")
+
+    # the ref, the search it is asked at, the page its postings open under
+    cases = (
+        (["wd3", "modaxo", "Tadera"], "https://wd3.myworkdaysite.com/wday/cxs/modaxo/Tadera/jobs",
+         "https://wd3.myworkdaysite.com/en-US/recruiting/modaxo/Tadera"),
+        (["wd12", "acme-gov", "External_Careers"],
+         "https://wd12.myworkdaysite.com/wday/cxs/acme-gov/External_Careers/jobs",
+         "https://wd12.myworkdaysite.com/en-US/recruiting/acme-gov/External_Careers"),
+        (["wd3", "wdtenant", "Tadera"], "https://wd3.myworkdaysite.com/wday/cxs/wdtenant/Tadera/jobs",
+         "https://wd3.myworkdaysite.com/en-US/recruiting/wdtenant/Tadera"),
+        # a pod is the WHOLE part: a tenant that starts like one is a tenant
+        (["wd3", "wd40co", "Careers"], "https://wd3.myworkdaysite.com/wday/cxs/wd40co/Careers/jobs",
+         "https://wd3.myworkdaysite.com/en-US/recruiting/wd40co/Careers"),
+        (["acme", "wd5", "Careers"], "https://acme.wd5.myworkdayjobs.com/wday/cxs/acme/Careers/jobs",
+         "https://acme.wd5.myworkdayjobs.com/en-US/Careers"),
+        # a tenant-first tenant that begins "wd" stays on its own host
+        (["wdc", "wd5", "External"], "https://wdc.wd5.myworkdayjobs.com/wday/cxs/wdc/External/jobs",
+         "https://wdc.wd5.myworkdayjobs.com/en-US/External"),
+        # both parts read like a pod: second place is the pod, the order of
+        # every Workday ref on file
+        (["wd3", "wd5", "Careers"], "https://wd3.wd5.myworkdayjobs.com/wday/cxs/wd3/Careers/jobs",
+         "https://wd3.wd5.myworkdayjobs.com/en-US/Careers"),
+    )
+    questions = {}
+    keep = (ats.requests.post, ats.requests.get, ats.HOST_PAUSE, ats.DETAIL_PAUSE,
+            ats.HTTP_CACHE, ats.FETCH_DETAILS, ats.WORKDAY_SNAPSHOT)
+    shut = [(socket.socket, "connect"), (socket.socket, "connect_ex"),
+            (socket, "create_connection"), (socket, "getaddrinfo")]
+    kept = [(o, n, getattr(o, n)) for o, n in shut]
+    try:
+        for o, n, _ in kept:
+            setattr(o, n, refuse)
+        ats.requests.post, ats.requests.get = board, ad
+        ats.HOST_PAUSE = ats.DETAIL_PAUSE = 0
+        ats.HTTP_CACHE, ats.FETCH_DETAILS, ats.WORKDAY_SNAPSHOT = None, True, False
+        for ref, api, page in cases:
+            host = up.urlsplit(api).netloc
+            del asked[:]
+            try:
+                rows = ats.fetch({"type": "workday", "ref": ref})
+            except ats.AtsError as exc:
+                errors += fail(f"the Workday board {ref} did not read with the network "
+                               f"stubbed: {exc}")
+                continue
+            posts = [(u, b) for m, u, b in asked if m == "POST"]
+            ads = [u for m, u, _ in asked if m == "GET"]
+            hosts = {up.urlsplit(u).netloc for _, u, _ in asked}
+            if hosts != {host}:
+                errors += fail(f"the Workday board {ref} was asked at {sorted(hosts)}, "
+                               f"not at its own host {host}")
+            if not posts or {u for u, _ in posts} != {api}:
+                errors += fail(f"the Workday board {ref} was searched at "
+                               f"{sorted({u for u, _ in posts})}, not at {api}")
+            prefix = api[:-len("/jobs")] + "/job/"
+            if len(ads) != TOTAL or not all(u.startswith(prefix) for u in ads):
+                errors += fail(f"the ads on the Workday board {ref} were read at "
+                               f"{sorted(set(ads))[:2]} ({len(ads)} of {TOTAL}), not under "
+                               f"{prefix}, the prefix the search answers on")
+            links = [r.get("url", "") for r in rows]
+            if len(rows) != TOTAL or not all(u.startswith(page + "/job/") for u in links) \
+                    or {r.get("jd") for r in rows} != {AD}:
+                errors += fail(f"the Workday board {ref} published {len(rows)} of {TOTAL} "
+                               f"postings, linked at {links[:1]} (wanted under "
+                               f"{page}/job/), ads read {sorted({r.get('jd') for r in rows})[:2]}")
+            questions[tuple(ref)] = json.dumps([b for _, b in posts], sort_keys=True)
+            del asked[:]
+            try:
+                total = ats.workday_total(ref)
+            except ats.AtsError as exc:
+                total = str(exc)
+            if total != TOTAL or [(m, u) for m, u, _ in asked] != [("POST", api)]:
+                errors += fail(f"ats.workday_total({ref}) asked "
+                               f"{[u for _, u, _ in asked]} and got {total!r}: the size of "
+                               f"a board is one search at {api}, where fetch_workday reads it")
+    finally:
+        for o, n, orig in kept:
+            setattr(o, n, orig)
+        (ats.requests.post, ats.requests.get, ats.HOST_PAUSE, ats.DETAIL_PAUSE,
+         ats.HTTP_CACHE, ats.FETCH_DETAILS, ats.WORKDAY_SNAPSHOT) = keep
+    if len(set(questions.values())) > 1:
+        apart = sorted(questions, key=lambda r: questions[r])
+        errors += fail(f"Workday's two hosts are not asked the same questions (bodies, "
+                       f"searches and paging differ between {apart[0]} and {apart[-1]}): "
+                       f"both are one service, read by the rules measured on "
+                       f"myworkdayjobs.com")
+    # the wiring door's shape check is "can a fetcher take this ref?"
+    for ref in (["wd3", "modaxo", "Tadera"], ["acme", "wd5", "Careers"],
+                ["wdc", "wd5", "External"]):
+        why = wire_found.ref_problem("workday", ref)
+        if why:
+            errors += fail(f"wire_found.ref_problem refuses {ref}, a board fetch_workday "
+                           f"reads at its own host: {why}")
+    if not wire_found.ref_problem("workday", ["misordered", "Careers", "wd5"]):
+        errors += fail("wire_found.ref_problem takes [tenant, site, pod], whose pod is "
+                       "in neither place a Workday ref keeps it")
     return errors
 
 
@@ -52360,6 +52523,7 @@ def main() -> int:
     errors += check_worklist_drops_what_was_worked()
     errors += check_identify_catches_a_namesake()
     errors += check_fetchers_page_through_their_callers()
+    errors += check_a_workday_board_is_asked_at_its_own_host()
     errors += check_the_gate_is_where_the_requests_are()
     errors += check_mail_is_built_from_the_shell()
     errors += check_capture_keeps_two_reqs_with_one_title()

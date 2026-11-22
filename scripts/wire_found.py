@@ -252,7 +252,6 @@ SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
 _WORKABLE_SHORT = re.compile(r"https://apply\.workable\.com/j/([A-Za-z0-9]{6,24})")
 _WORKABLE_PAGE = re.compile(
     r"https://apply\.workable\.com/([a-z0-9][a-z0-9-]{1,59})/j/([A-Za-z0-9]{6,24})", re.I)
-_POD = re.compile(r"wd\d+")             # a Workday pod: wd1, wd5, wd108, wd503
 
 
 # ---------------------------------------------------------------- small words
@@ -287,9 +286,10 @@ def ref_problem(kind, ref) -> str | None:
         # wrote [tenant, site, pod] for months, and that asks
         # tenant.<site>.myworkdayjobs.com - nobody's host. Every one of the 72
         # Workday refs on file on 2026-11-18 has "wd" and digits second; the
-        # other order fetch_workday takes is pod first, then a "wd.." tenant.
-        if not (_POD.fullmatch(ref[1])
-                or (_POD.fullmatch(ref[0]) and ref[1].startswith("wd"))):
+        # other order fetch_workday takes is pod first, any tenant after it,
+        # for myworkdaysite.com (ats.workday_board, since 2026-11-22: before,
+        # that tenant had to begin "wd" too, and no real one did).
+        if not (ats.WD_POD.fullmatch(ref[1]) or ats.WD_POD.fullmatch(ref[0])):
             return ("a Workday board is the list [tenant, pod, site], and the pod "
                     "reads 'wd' and digits")
         return None

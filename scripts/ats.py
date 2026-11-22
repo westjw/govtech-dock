@@ -1561,23 +1561,54 @@ def _paged(fetch_page, key, page: int = WD_PAGE,
     return out
 
 
-def fetch_workday(ref: list) -> list[dict]:
-    """Workday, on either of its two board hosts.
+# A Workday pod, the whole part: wd1, wd5, wd12, wd503.
+WD_POD = re.compile(r"wd\d+")
 
-    myworkdayjobs.com is tenant-first: acme.wd12.myworkdayjobs.com/Careers.
-    myworkdaysite.com is pod-first and carries the tenant in the path:
-    wd3.myworkdaysite.com/recruiting/modaxo/Tadera. The pod ("wd3", "wd12",
-    "wd502") is never guessable - it has to come out of the URL that was found.
+
+def workday_board(ref) -> tuple[str, str, str]:
+    """(tenant, jobs search, board page) for a Workday ref, on its own host.
+
+    Workday keeps boards on two hosts, and a ref is three strings on both:
+
+        [tenant, pod, site]   acme.wd12.myworkdayjobs.com/Careers
+        [pod, tenant, site]   wd3.myworkdaysite.com/recruiting/modaxo/Tadera
+
+    WHERE THE POD SITS is the only thing that tells them apart: the pod is
+    whichever of the first two reads "wd" and digits, as
+    discover_ats.identity_of reads it. Second place wins a tie, because
+    [tenant, pod, site] is the order of every Workday ref on file (42 on
+    2026-11-22). The pod is never guessable; it comes out of the URL found.
+    Past the host the two are one service, /wday/cxs/<tenant>/<site>/jobs on
+    either, so fetch_workday reads both by one set of rules.
+
+    THE FIRST VERSION (2026-08-20) TOOK THE POD-FIRST HOST ONLY WHEN BOTH
+    PARTS BEGAN "wd". The address it was written for, (wd3, modaxo, Tadera),
+    was asked at wd3.modaxo.myworkdayjobs.com, which is nobody's. A
+    tenant-first board whose tenant began "wd" (wdc.wd5...) went to the
+    other host. The checks of that host skipped the routing or named their
+    tenant "wdtenant" (check_a_workday_board_is_asked_at_its_own_host).
     """
-    tenant, host, site = ref
-    if str(host).startswith("wd") and str(tenant).startswith("wd"):
-        # ("wd3", "modaxo", "Tadera") - pod, tenant, site
-        pod, tenant, site = tenant, host, site
-        base = f"https://{pod}.myworkdaysite.com/recruiting/{tenant}/{site}"
-        api = f"https://{pod}.myworkdaysite.com/wday/cxs/{tenant}/{site}/jobs"
-        return _workday_jobs(api, base, site)
-    base = f"https://{tenant}.{host}.myworkdayjobs.com"
-    api = f"{base}/wday/cxs/{tenant}/{site}/jobs"
+    first, second, site = (str(x) for x in ref)
+    if WD_POD.fullmatch(second) or not WD_POD.fullmatch(first):
+        tenant, host, board = first, f"https://{first}.{second}.myworkdayjobs.com", site
+    else:
+        tenant, host, board = (second, f"https://{first}.myworkdaysite.com",
+                               f"recruiting/{second}/{site}")
+    return tenant, f"{host}/wday/cxs/{tenant}/{site}/jobs", f"{host}/en-US/{board}"
+
+
+def fetch_workday(ref: list) -> list[dict]:
+    """Workday, on either of its two board hosts (workday_board says which).
+
+    Both are read by the rules measured on myworkdayjobs.com: the same two
+    searches, the same request body, paged to the end, the ad read from the
+    search's own prefix. Only the address differs. The myworkdaysite copy
+    this replaced sent a body of its own and linked postings without the
+    locale, and no ref ever reached it, so neither was measured. No board
+    on file sits on that host (2026-11-22): the first one wired there is the
+    first time it is read live.
+    """
+    tenant, api, board = workday_board(ref)
     out, seen = [], set()
     # Two targeted queries beat crawling everything; _paged then takes ALL of
     # each query rather than its first 20.
@@ -1596,30 +1627,7 @@ def fetch_workday(ref: list) -> list[dict]:
             path = j.get("externalPath", "") or ""
             out.append({"title": j.get("title", ""),
                         "location": j.get("locationsText", "") or "",
-                        "url": f"{base}/en-US/{site}{path}",
-                        "_detail_url": _workday_detail_url(api, path)})
-    return _workday_details(out)
-
-
-def _workday_jobs(api: str, base: str, site: str) -> list[dict]:
-    out, seen = [], set()
-    for term in ("account executive", "sales"):
-        rows = _paged(
-            lambda off, t=term: _post_json(
-                api, {"appliedFacets": {}, "limit": WD_PAGE, "offset": off,
-                      "searchText": t}
-            ).get("jobPostings", []),
-            lambda j: j.get("externalPath", j.get("title", "")),
-            page=WD_PAGE, max_pages=WD_MAX_PAGES, label=f"{site}/{term}")
-        for j in rows:
-            k = j.get("externalPath", j.get("title", ""))
-            if k in seen:
-                continue
-            seen.add(k)
-            path = j.get("externalPath", "") or ""
-            out.append({"title": j.get("title", ""),
-                        "location": j.get("locationsText", "") or "",
-                        "url": base + path,
+                        "url": board + path,
                         "_detail_url": _workday_detail_url(api, path)})
     return _workday_details(out)
 
@@ -1629,7 +1637,7 @@ def _workday_detail_url(api: str, path: str) -> str:
 
     Both Workday hosts answer the ad on the same /wday/cxs/<tenant>/<site>
     prefix they answer the search on, which is why this is derived from `api`
-    rather than rebuilt from the pod-and-tenant guessing above.
+    rather than rebuilt from the ref.
     """
     return (api[:-len("/jobs")] if api.endswith("/jobs") else api) + (path or "")
 
@@ -1666,19 +1674,13 @@ def workday_total(ref: list) -> int:
     two searches returned 385 rows. No board on file reads as 500 rows
     through the reader, so a giant was never going to be seen that way.
 
-    One request, in the shape and at the address fetch_workday already uses.
-    Raises AtsError when the board will not answer or states no total: "the
-    size is unknown" is the caller's answer to give, not a zero made up here.
+    One request, in the shape and at the address fetch_workday already uses
+    (workday_board, so the two cannot disagree about a host). Raises AtsError
+    when the board will not answer or states no total: "the size is unknown"
+    is the caller's answer to give, not a zero made up here.
     """
-    tenant, host, site = ref
-    body = {"limit": WD_PAGE, "offset": 0, "searchText": ""}
-    if str(host).startswith("wd") and str(tenant).startswith("wd"):
-        pod, tenant = tenant, host
-        api = f"https://{pod}.myworkdaysite.com/wday/cxs/{tenant}/{site}/jobs"
-        body["appliedFacets"] = {}
-    else:
-        api = f"https://{tenant}.{host}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs"
-    data = _post_json(api, body)
+    _, api, _ = workday_board(ref)
+    data = _post_json(api, {"limit": WD_PAGE, "offset": 0, "searchText": ""})
     total = data.get("total") if isinstance(data, dict) else None
     if not isinstance(total, int) or isinstance(total, bool) or total < 0:
         raise AtsError("Workday stated no total for this board")
