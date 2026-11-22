@@ -31315,28 +31315,63 @@ def check_every_reader_has_a_platform_entry() -> int:
 
     # A CHECK THAT CANNOT FAIL IS NOT A CHECK. Each breakage is made in memory
     # and asked of the catalogue's rules alone (no doc), so the doc comparison
-    # cannot be what catches it. Nothing is written.
-    def caught(label: str, mutate) -> int:
+    # cannot be what catches it, and it must be caught BY ITS OWN RULE: the
+    # problems must say `says`, so another rule firing by chance cannot stand
+    # in for one that was removed (blind tests review, 2026-11-22: seven rules
+    # could go and this still passed). Nothing is written.
+    def caught(label: str, mutate, says: str) -> int:
         c = copy.deepcopy(cat)
         mutate(c["platforms"])
-        return 0 if pc.check(c)[0] else fail(f"platform catalogue: the check passed {label}")
+        if any(says in b for b in pc.check(c)[0]):
+            return 0
+        return fail(f"platform catalogue: the check passed {label} (no problem says {says!r})")
 
     reader = sorted(ats.FETCHERS)[0]
     unread = next(k for k, e in sorted(cat["platforms"].items()) if e["status"] != "read")
-    scratch = "/".join(("", "private", "tmp", "probe", "state.json"))
-    errors += caught(f"with no entry for the reader {reader!r}", lambda p: p.pop(reader))
+    errors += caught(f"with no entry for the reader {reader!r}", lambda p: p.pop(reader),
+                     "has no entry for it")
     errors += caught(f"with {unread!r} marked read and no reader for it",
-                     lambda p: p[unread].update(status="read"))
+                     lambda p: p[unread].update(status="read"), "has no reader for it")
     errors += caught(f"with {reader!r} naming the wrong reader",
-                     lambda p: p[reader].update(reader="fetch_nothing"))
+                     lambda p: p[reader].update(reader="fetch_nothing"), "names its reader")
     errors += caught(f"with {reader!r} marked build though ats.FETCHERS reads it",
-                     lambda p: p[reader].update(status="build", reader=None, why="a test"))
+                     lambda p: p[reader].update(status="build", reader=None, why="a test"),
+                     "it is 'read'")
+    errors += caught(f"with {unread!r}, which nothing reads, naming a reader",
+                     lambda p: p[unread].update(reader=f"fetch_{unread}"), "names a reader")
     errors += caught(f"with {reader!r} naming the wrong identity probe",
-                     lambda p: p[reader].update(probe="_nobody"))
-    errors += caught("with a scratch path in an entry",
-                     lambda p: p[reader]["quirks"].append(f"evidence in {scratch}"))
-    errors += caught("with a token in an entry",
-                     lambda p: p[reader]["quirks"].append("ref F2.004|" + "C0FFEE" * 5))
+                     lambda p: p[reader].update(probe="_nobody"), "names its identity probe")
+    # The shape of an entry: a field nobody reads, a date that is not one of
+    # the shapes the doc explains (fullmatch, so a date followed by words is
+    # refused), and a researched verdict with no reason, for each verdict.
+    errors += caught(f"with {reader!r} carrying a field nobody reads",
+                     lambda p: p[reader].update(evidence="kept in a file"), "nobody reads")
+    errors += caught(f"with {reader!r} measured on '2026-11-19 or so'",
+                     lambda p: p[reader].update(measured_on="2026-11-19 or so"), "measured_on")
+    for status in ("build", "maybe", "skip"):
+        errors += caught(f"with {unread!r} marked {status} and no reason why",
+                         lambda p, s=status: (p[unread].update(status=s), p[unread].pop("why", None)),
+                         "says why")
+    # The repository is public. Every form of a local path, one at a time (each
+    # string holds that form and no other); a token of Comeet's shortest length
+    # in either case; an address. All built here, so this file carries no
+    # path, token or address of its own.
+    roots = (("private",), ("Users", "someone"), ("home", "someone"), ("tmp",),
+             ("var", "folders", "xy"))
+    local = ["/".join(("",) + r + ("probe", "state.json")) for r in roots]
+    local += ["~" + "/probe/state.json", "a scratch" + "pad/probe/state.json"]
+    for path in local:
+        errors += caught(f"with a local path in an entry ({path})",
+                         lambda p, at=path: p[reader]["quirks"].append(f"evidence in {at}"),
+                         "a local path")
+    for token in ("C0FFEE" * 3 + "AB", "c0ffee" * 3 + "ab"):
+        errors += caught(f"with a {len(token)}-digit token in an entry ({token[:2]}...)",
+                         lambda p, t=token: p[reader]["quirks"].append(f"ref F2.004|{t}"),
+                         "hex digits")
+    someone = "jane.doe" + "@" + "acme-corp.com"
+    errors += caught("with an e-mail address in an entry",
+                     lambda p: p[reader]["quirks"].append(f"write to {someone}"),
+                     "an e-mail address")
     # The doc: an edited catalogue line is caught, and the live counts alone are not.
     if not pc.check(cat, doc.replace("**robots.txt.**", "**robots.**", 1))[0]:
         errors += fail("platform catalogue: the check passed a doc whose catalogue text "
