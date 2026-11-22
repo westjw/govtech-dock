@@ -1218,18 +1218,27 @@ _JOBVITE_TITLE = re.compile(r"(.+?) Careers")
 JOBVITE_POSTINGS_ASKED = 40
 
 
-def _jobvite_org(h) -> str:
-    """The employer a JobPosting's hiringOrganization names: an Organization
-    (or a node of no stated type) by its name, or a bare string. A Person is
-    nobody's employer here."""
+_ORG_TYPES = {"Organization", "Corporation", "LocalBusiness", "GovernmentOrganization",
+              "EducationalOrganization", "NGO", "NonprofitOrganization", "MedicalOrganization",
+              "SportsOrganization", "PerformingGroup", "Consortium", "OnlineBusiness"}
+
+
+def _jobvite_orgs(h) -> list:
+    """Every employer a JobPosting's hiringOrganization names - an
+    Organization of any kind (or a node of no stated type) by its name, a bare
+    string, a list item by item - with "" for one that names nobody. A Person
+    is nobody's employer here."""
+    if isinstance(h, list):
+        return [n for x in h for n in _jobvite_orgs(x)] or [""]
     if isinstance(h, str):
-        return _clean(h)
+        return [_clean(h)]
     if isinstance(h, dict):
         kind = h.get("@type")
-        if kind in (None, "Organization", "Corporation", "LocalBusiness") or (
-                isinstance(kind, list) and "Organization" in kind):
-            return _clean(h.get("name"))
-    return ""
+        kinds = set(kind) if isinstance(kind, list) else {kind}
+        if kind is None or kinds & _ORG_TYPES or any(
+                isinstance(k, str) and k.endswith("Organization") for k in kinds):
+            return [_clean(h.get("name"))]
+    return [""]
 
 
 def _jobvite(ref, out: dict) -> None:
@@ -1248,18 +1257,21 @@ def _jobvite(ref, out: dict) -> None:
     rows = ats.jobvite_rows(page, slug)
     out["n"] = len(rows)
     out["hosts"] = {ats.JOBVITE_HOST}
-    title = _inside(page, _TITLE)
+    # (a title inside a comment, a script or a template is not the page's)
+    title = _inside(ats._cut(page), _TITLE)
     m = _JOBVITE_TITLE.fullmatch(_clean(html_lib.unescape(title[0]))) if title else None
     if not m:
         out["how"] = "jobvite page title names no career site"
         return
     names, unnamed = [m.group(1)], []
     for url, job, _where in rows[:JOBVITE_POSTINGS_ASKED]:
-        orgs = {_jobvite_org(n.get("hiringOrganization"))
-                for n in ats.jobposting_nodes(ats.jobvite_posting(url, slug))} - {""}
-        if not orgs:
+        said = [o for n in ats.jobposting_nodes(ats.jobvite_posting(url, slug))
+                for o in _jobvite_orgs(n.get("hiringOrganization"))]
+        # a posting with no block, or with one block that names nobody beside
+        # another that names someone, does not say whose it is
+        if not said or "" in said:
             unnamed.append(job)
-        names.extend(orgs)
+        names.extend(o for o in said if o)
     if unnamed:
         out["how"] = (f"jobvite posting {unnamed[0]!r} names no employer, so the title's "
                       f"\"{_clean(m.group(1))}\" is not confirmed by every posting")

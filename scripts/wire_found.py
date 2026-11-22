@@ -1449,10 +1449,14 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         tenants = [v for v in extra["elsewhere"] if v in _fsb.TENANT_FORMS]
         unread = [v for v in extra["elsewhere"] if v not in forms and v not in tenants]
         if tenants:
-            doubts.append(f"their own site also names another "
-                          f"{' and '.join(_fsb.TENANT_FORMS[v] for v in tenants)} account than "
-                          f"this board ({', '.join(tenants)}), a tenant whose board this door "
-                          f"cannot name, so which board they hire through today is not settled")
+            # (true of each tenant form: another account's address, or one
+            # job's, whose account the address does not show - never "another
+            # account" of a link that may be to this board's own job)
+            doubts.append(f"their own site also points at "
+                          f"{' and '.join(dict.fromkeys(_fsb.TENANT_FORMS[v] for v in tenants))} "
+                          f"somewhere this board's address does not cover ({', '.join(tenants)}): "
+                          f"another account, or a job whose account the address does not show, "
+                          f"so which board they hire through today is not settled")
         if unread:
             doubts.append(f"their own site also names {' and '.join(unread)}, a job "
                           f"platform the crawl cannot read, so which board they hire through "
@@ -1876,9 +1880,9 @@ def _line(row: dict) -> str:
                 note += (f"; NOTE a page off their site names {', '.join(unread)}, which the "
                          f"crawl cannot read")
             if tenants:
-                note += (f"; NOTE a page off their site names a "
-                         f"{' and '.join(_fsb.TENANT_FORMS[v] for v in tenants)} tenant "
-                         f"({', '.join(tenants)}) whose board this door cannot name")
+                note += (f"; NOTE a page off their site points at "
+                         f"{' and '.join(dict.fromkeys(_fsb.TENANT_FORMS[v] for v in tenants))} "
+                         f"somewhere no board here covers ({', '.join(tenants)})")
             if forms:
                 note += (f"; NOTE a page off their site loads "
                          f"{' and '.join(_fsb._NO_BOARD_IN_IT[v] for v in forms)} in a form that "

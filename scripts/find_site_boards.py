@@ -730,7 +730,10 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         # account beside their board, and a doubt (blind review, 2026-11-22).
         ("jobvite-tenant", "jobvite.com",
          r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/(?:CompanyJobs/(?:Careers|Job|Xml)\.aspx"
-         r"|TalentNetwork/[^\s\"'<>?]{0,200}|j/?)\?[^\s\"'<>]{0,300}?\b(?:c|ci|cj)=[A-Za-z0-9]{5,12}"),
+         r"|TalentNetwork/[^\s\"'<>?]{0,200})\?[^\s\"'<>]{0,300}?\b(?:c|ci)=[A-Za-z0-9]{5,12}"),
+        # a link to ONE job (j?cj=), whose account the link does not show
+        ("jobvite-joblink", "jobvite.com",
+         r"(?<![a-z0-9.-])app\.jobvite\.com/j/?\?[^\s\"'<>]{0,300}?\bcj=[A-Za-z0-9]{5,12}"),
         ("jobvite-other", "jobvite.com", _B + r"jobvite\.com"),
         # A ZOHO TENANT'S HOST WITH NO PAGE NAMED is a tenant whose board this
         # door cannot name - another portal than theirs, maybe a parent's -
@@ -814,7 +817,7 @@ def _other_region(text: str, m) -> bool:
 # second account, and a doubt - unless they name the very tenant the board is
 # (same_tenant). The door says so in those words.
 TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet",
-                "jobvite-tenant": "jobvite"}
+                "jobvite-tenant": "jobvite", "jobvite-joblink": "jobvite"}
 _TENANT_UID = re.compile(r"(?<![0-9A-F])([0-9A-F]{2}\.[0-9A-F]{3})(?![0-9A-F])", re.I)
 
 
@@ -1066,13 +1069,21 @@ def zones(page: str) -> list[tuple[str, str]]:
 _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 
 
+# Query parameters that carry a PERSON, not a board: Jobvite's talent-network
+# link puts the recruiter's name in sd= (Tyler's careers page, 2026-11-19),
+# and the sweep's results leave as artifacts of a public repository.
+_PERSON_PARAM = re.compile(r"([?&](?:amp;)?(?:sd|name|full_?name|first_?name|last_?name|"
+                           r"recruiter(?:_?name)?|contact(?:_?name)?|e-?mail)=)[^&#\s\"'<>]*", re.I)
+
+
 def _short(text: str) -> str:
     """Text as it goes into the results file: any person's e-mail address
     taken out FIRST, and then cut to 160 characters. Cut first and redacted
     after, the words that replace an address pushed a row past the length
     the file promises (170 was reached), and an address cut in half was no
-    longer recognised as one and went through."""
-    return privacy.redact((text or "")[:4000])[:160]
+    longer recognised as one and went through. A person's name in an
+    address's query goes the same way (_PERSON_PARAM)."""
+    return privacy.redact(_PERSON_PARAM.sub(r"\1[removed]", (text or "")[:4000]))[:160]
 
 
 def _saw(text: str, start: int, end: int) -> str:

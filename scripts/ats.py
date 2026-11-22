@@ -3290,7 +3290,16 @@ def _jobvite_read(url: str, slug: str):
 
     def stay(u: str):
         parts = urllib.parse.urlsplit(u)
-        path = (parts.path or "/").lower()
+        raw = urllib.parse.unquote(parts.path or "/")
+        path = raw.lower()
+        # A PATH THAT DOES NOT SAY PLAINLY WHERE IT GOES is not held to the
+        # slug at all: urljoin keeps a Location's dot segments, the library
+        # removes them when it sends, so /<slug>/../<other>/ passed a prefix
+        # test and asked another tenant's page (blind review, 2026-11-22).
+        if any(seg in (".", "..") for seg in raw.split("/")) or "//" in raw or "\\" in raw \
+                or "%2f" in (parts.path or "").lower() or "%5c" in (parts.path or "").lower():
+            raise AtsError(f"{url} leads off to {parts.hostname}{parts.path}, a path that does "
+                           f"not say plainly which career site it is")
         if (parts.hostname or "").lower() != JOBVITE_HOST or not (
                 path == want or path.startswith(want + "/")):
             raise AtsError(f"{url} leads off to {parts.hostname}{parts.path}, which is not "
@@ -3328,14 +3337,25 @@ def _cut(page: str, tags=("script", "style", "template")) -> str:
     commented-out row is a job the employer took down (ats._COMMENT's rule)."""
     out, i, low = [], 0, page.lower()
     opens = ["<!--"] + [f"<{t}" for t in tags]
+    # each opener's next place, searched for again only once passed - so the
+    # whole page is searched once per opener, not once per block
+    nxt = {o: low.find(o) for o in opens}
     while True:
-        hits = [(low.find(o, i), o) for o in opens]
-        hits = [(at, o) for at, o in hits if at >= 0]
+        for o in opens:
+            if 0 <= nxt[o] < i:
+                nxt[o] = low.find(o, i)
+        hits = [(at, o) for o, at in nxt.items() if at >= 0]
         if not hits:
             out.append(page[i:])
             break
         at, o = min(hits)
         out.append(page[i:at])
+        if o == "<!--" and low.startswith(">", at + 4):
+            i = at + 5                          # "<!-->": an empty comment, as a browser reads it
+            continue
+        if o == "<!--" and low.startswith("->", at + 4):
+            i = at + 6                          # "<!--->": the same
+            continue
         close = "-->" if o == "<!--" else f"</{o[1:]}"
         end = low.find(close, at + len(o))
         if end < 0:
@@ -3346,15 +3366,22 @@ def _cut(page: str, tags=("script", "style", "template")) -> str:
 
 def jobvite_rows(page: str, slug: str) -> list[tuple[str, str, str]]:
     """(url, title, location) per opening on a list page, or AtsError. One
-    pass: each row is the text from its name cell to the next </tr>."""
+    pass: each row is the text from its name cell to the next </tr>, or to
+    the next row's name cell when the page leaves a row unclosed."""
     body, rows, i = _cut(page or ""), [], 0
     marker = '<td class="jv-job-list-name">'
+    tr = body.find("</tr>")
     while True:
         i = body.find(marker, i)
         if i < 0:
             break
-        end = body.find("</tr>", i)
-        cell = body[i:end if end >= 0 else i + 20000]
+        # a row runs to its </tr> or to the next row's name cell, whichever
+        # comes first, and the next </tr> is looked for again only once passed
+        if 0 <= tr < i:
+            tr = body.find("</tr>", i)
+        nxt = body.find(marker, i + len(marker))
+        ends = [x for x in (tr, nxt) if x >= 0]
+        cell = body[i:min(ends) if ends else i + 20000]
         i += len(marker)
         name = _JOBVITE_NAME.match(cell)
         if not name or name.group(2).lower() != slug.lower() or not _jv_text(name.group(3)):
@@ -3369,9 +3396,12 @@ def jobvite_rows(page: str, slug: str) -> list[tuple[str, str, str]]:
 
 
 def jobposting_nodes(page: str) -> list[dict]:
-    """Every schema.org JobPosting node on a page - in a list, in an @graph or
-    alone - its ld+json blocks found with str.find, one pass."""
-    out, i, low = [], 0, (page or "").lower()
+    """Every schema.org JobPosting node on a page, IN PAGE ORDER - in a list,
+    in an @graph or alone - its ld+json blocks found with str.find, one pass.
+    A block inside an HTML comment is not on the page (blind review,
+    2026-11-22: a commented-out block named the employer for the probe)."""
+    page = _cut(page or "", tags=())
+    out, i, low = [], 0, page.lower()
     while True:
         i = low.find("application/ld+json", i)
         if i < 0:
@@ -3389,13 +3419,13 @@ def jobposting_nodes(page: str) -> list[dict]:
         while stack:
             node = stack.pop()
             if isinstance(node, list):
-                stack.extend(node)
+                stack.extend(reversed(node))      # popped in page order
             elif isinstance(node, dict):
                 kind = node.get("@type")
                 if kind == "JobPosting" or (isinstance(kind, list) and "JobPosting" in kind):
                     out.append(node)
                 if isinstance(node.get("@graph"), list):
-                    stack.extend(node["@graph"])
+                    stack.extend(reversed(node["@graph"]))
 
 
 def jobvite_posting(url: str, slug: str) -> str:
@@ -3415,6 +3445,12 @@ def fetch_jobvite(ref) -> list[dict]:
         # embedded posting sends a browser to
         def detail(row):
             nodes = jobposting_nodes(jobvite_posting(row["url"], slug))
+            if len(nodes) > 1:
+                # several postings on one page: only the one that says it is
+                # this posting gives this row its ad and its pay
+                job = row["url"].rstrip("/").rsplit("/", 1)[-1]
+                nodes = [n for n in nodes if job in json.dumps(
+                    [n.get("url"), n.get("@id"), n.get("identifier")])][:1]
             return ((plain_html(nodes[0].get("description") or ""), _schema_comp(nodes[0]))
                     if nodes else ("", None))
         _details(out, detail)
