@@ -57,3 +57,7 @@ public/
 /data/.profiles_read
 /data/.rivals_read
 /data/.buyer_read
+
+# Beta codes in plain text: minted by scripts/beta_codes.py for the owner only;
+# the site keeps its own copy in KV. Never in this public repository.
+data/beta_codes.jsonl
