@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Benefits of Nonprofit Grant Tracking Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/benefits-nonprofit-grant-tracking-software"
+  },
+  {
    "date": "2026-10-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fluxx.io/blog/replace-grant-tracking-template"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Wealth to Impact: Family Philanthropy Strategies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/family-wealth-philanthropy-strategies"
   }
  ],
  "profile": {

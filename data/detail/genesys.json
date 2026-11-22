@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "The intelligence layer connecting employee and customer experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genesys.com/blog/post/the-intelligence-layer-connecting-employee-and-customer-experience"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-30",
    "headline": "Empowering people to transform customer experience",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genesys.com/blog/post/leading-cx-teams-that-thrive-in-the-ai-era"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Genesys Named a Gartner Leader in CCaaS for 12 Years",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genesys.com/blog/post/genesys-named-a-leader-in-the-2026-gartner-magic-quadranttm-for-ccaas-12-years-running"
   }
  ]
 }

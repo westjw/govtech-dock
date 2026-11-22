@@ -1,4 +1,114 @@
 {
+ "news": [
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "SpryPoint Named to 2026 Deloitte Technology Fast 500\u2122 for Second Consecutive Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sprypoint.com/news/sprypoint-named-to-2026-deloitte-technology-fast-500/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "SpryPoint Names Tara Davidson Chief People Officer",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.sprypoint.com/news/tara-davidson-chief-people-officer/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "SpryPoint Named to Fast Company\u2019s Best Workplaces for Innovators",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sprypoint.com/news/fast-company-best-workplaces-for-innovators-2026/"
+  },
+  {
+   "date": "2026-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "SpryPoint Expands Utility Modernization Footprint with Strong Start to 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sprypoint.com/news/sprypoint-expands-utility-modernization-footprint-with-strong-q1-2026-implementation-and-adoption/"
+  },
+  {
+   "date": "2026-04-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "What Utility Leaders Should Pay Attention to at IUCX 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sprypoint.com/insights/what-utility-leaders-should-pay-attention-to-at-iucx-2026/"
+  },
+  {
+   "date": "2026-04-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "City of Lewisville Selects SpryPoint to Advance Customer Experience, Operational Efficiency, and Data-Driven Utility Management",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.sprypoint.com/news/city-of-lewisville-selects-sprypoint-to-advance-customer-experience-operational-efficiency-and-data-driven-utility-management/"
+  },
+  {
+   "date": "2026-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "City of Missoula Partners with SpryPoint to Modernize Water Utility Billing and Customer Experience",
+   "kind": "contract",
+   "kind_rule": "City of Missoula Partners with",
+   "url": "https://www.sprypoint.com/news/city-of-missoula-partners-with-sprypoint-to-modernize-water-utility-billing-and-customer-experience/"
+  },
+  {
+   "date": "2026-02-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Irvine Ranch Water District Selects SpryPoint and Workday to Modernize Customer Information, Billing and Enterprise Systems",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.sprypoint.com/news/irvine-ranch-water-district-selects-sprypoint-and-workday-to-modernize-customer/"
+  },
+  {
+   "date": "2026-02-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Driving Smarter Utility Investments That Deliver Ongoing Community Value",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sprypoint.com/insights/driving-smarter-utility-investments-that-deliver-ongoing-community-value/"
+  },
+  {
+   "date": "2026-02-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "How Utilities Can Turn Unified Data Into Better Customer Experiences and Operational Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sprypoint.com/insights/how-utilities-can-turn-unified-data-into-better-customer-experiences-and-operational-results/"
+  },
+  {
+   "date": "2026-01-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "SpryPoint Partners with the City of West Jordan, Utah, to Modernize Water Utility Customer Experience and Operations",
+   "kind": "contract",
+   "kind_rule": "Partners with the City",
+   "url": "https://www.sprypoint.com/news/sprypoint-partners-with-the-city-of-west-jordan-utah/"
+  },
+  {
+   "date": "2026-01-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "How Leading Utilities Are Redefining Customer Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sprypoint.com/insights/how-leading-utilities-are-redefining-customer-experience/"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "SpryPoint sells cloud software for utility customer service and operations across the meter-to-cash lifecycle. That platform is sold to water and sewer, electric, and gas utilities as a business transformation partner from meter-to-cash. SpryCIS is the customer information system at the core of that lifecycle, unifying customer service and operations.",

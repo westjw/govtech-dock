@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-19",
    "headline": "Island Named 2026 Global Zero Trust Browser Security Company of the Year by Frost & Sullivan",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-16",
    "headline": "Island Achieves Awardable Status on Department of War Tradewinds Solutions Marketplace",
    "kind": "press",

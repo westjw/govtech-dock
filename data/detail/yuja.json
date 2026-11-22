@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "Alamance Community College Adopts YuJa EqualGround to Augment Web Content Accessibility November 20, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Adopts",
+   "url": "https://www.yuja.com/blog/news/alamance-community-college-yuja-equalground/"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "index-text",
    "first_seen": "2026-11-18",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-11-16",
    "headline": "YuJa EqualGround v26.8.0 Release \u2013 Expanded LiveFix Capabilities, A New Office Add-In, and More\u2026",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-11-10",
    "headline": "Why Continuous Monitoring Needs To Replace One-Time Accessibility Audits",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Updates",
    "url": "https://www.yuja.com/blog/news/2026-q3-business-product-updates/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-29",
-   "headline": "Horry-Georgetown Technical College Selects YuJa EqualGround to Accelerate Accessibility Remediation October 28, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.yuja.com/blog/news/horry-georgetown-technical-college-yuja-equalground/"
   }
  ],
  "profile": {

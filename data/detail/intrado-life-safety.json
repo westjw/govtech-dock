@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Campus Emergency Response and Communication in Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.intrado.com/blog/video-campus-emergency-response-and-communication-in-action"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.intrado.com/blog/you-are-not-alone-recognizing-988-day-of-awareness"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Accident to 9-1-1 in Seconds: Intrado Demonstrates AACN Tech",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.intrado.com/blog/from-accident-to-9-1-1-in-seconds-intrado-debuts-aacn-at-auto-tech-showcase-2026"
   }
  ],
  "profile": {

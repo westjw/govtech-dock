@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "The Connection Between Teen Vaping and Opioid Misuse: What Schools Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeptive.com/post/teen-vaping-and-opioid-misuse"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.zeptive.com/post/how-do-vape-detectors-work"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Getting Parent Buy-In for Vape Detection: A School Guide to FERPA and Privacy Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.zeptive.com/post/getting-parent-buy-in-vape-detection-ferpa-privacy-compliance"
   }
  ]
 }

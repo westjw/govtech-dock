@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Your Survival Guide to Annual Nonprofit Financial Audits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackbaud.com/industry-insights/resources/your-survival-guide-to-annual-nonprofit-financial-audits"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.blackbaud.com/industry-insights/resources/7-tips-for-smooth-ai-agent-onboarding"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Fundraising Technology Built for Today\u2019s Needs, Ready for Tomorrow\u2019s Challenges",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.blackbaud.com/industry-insights/resources/fundraising-technology-built-for-todays-needs-ready-for-tomorrows-challenges"
   }
  ]
 }

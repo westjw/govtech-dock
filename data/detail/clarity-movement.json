@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Multi-pollutant and air toxics monitoring: Measuring many pollutants at once",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clarity.io/blog/multi-pollutant-and-air-toxics-monitoring-measuring-many-pollutants-at-once"
+  },
+  {
    "date": "2026-11-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "Air quality monitoring in smart cities: How urban sensor networks clear the air",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clarity.io/blog/methane-monitoring-101-how-to-detect-measure-and-mitigate-emissions"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Clarity Dust Module earns MCERTS certification for PM10: First indicative monitor approved for elevated dust concentrations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clarity.io/blog/clarity-dust-module-earns-mcerts-certification-for-pm10-first-indicative-monitor-approved-for-elevated-dust-concentrations"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Node2Shell and eMudhra: Can two unrelated vulnerabilities become one attack chain?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/node2shell-and-emudhra-one-attack-chain"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Delinea: A PAM Leader in 2026 Gartner\u00ae Magic Quadrant\u2122",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://delinea.com/blog/php2shell-aftershocks-what-to-do-next"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "When attackers can forge trust",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://delinea.com/blog/attackers-forge-trust-targeting-the-foundations-of-identity-trust"
   }
  ]
 }

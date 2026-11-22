@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "Allowed IP Ranges for SFTP Connection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://samegoal.com/iep/g/company/blog/allowed-ip-ranges-2026"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "index-text",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://samegoal.com/iep/g/company/blog/document-audit-reports-2026"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "index-text",
-   "first_seen": "2026-11-17",
-   "headline": "Tier 1 RTI Report Updates",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://samegoal.com/iep/g/company/blog/tx-tier-1-rti-reports-2026"
   }
  ]
 }

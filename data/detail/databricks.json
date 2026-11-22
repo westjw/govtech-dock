@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Interactive Databricks Reference Architectures Across 70 Industries",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/interactive-databricks-reference-architectures-across-70-industries"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-19",
    "headline": "Introducing CustomerLake Conversions: Improve advertising performance with first-party customer context",
    "kind": "product",
@@ -73,40 +82,31 @@
    "url": "https://www.databricks.com/blog/databricks-wins-team-award-ai-capital-markets-0"
   },
   {
-   "date": "2026-11-18",
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Why PostgreSQL 19 shipped late",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/why-postgresql-19-shipped-late"
+  },
+  {
+   "date": "2026-11-19",
    "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "PostgreSQL 19 is available on Lakebase",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/postgresql-19-available-lakebase"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "Introducing Unity Gateway Insights",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.databricks.com/blog/introducing-unity-gateway-insights"
-  },
-  {
-   "date": "2026-11-18",
-   "date_source": "index-text",
-   "first_seen": "2026-11-18",
-   "headline": "What's new for Genie in Microsoft: Copilot Cowork and Chat, Microsoft Teams, and Excel.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/whats-new-genie-microsoft-copilot-cowork-and-chat-microsoft-teams-and-excel"
-  },
-  {
-   "date": "2026-11-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-18",
-   "headline": "How AUMOVIO centralized AI access with Databricks Unity Gateway",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-aumovio-centralized-ai-access-databricks-unity-gateway"
-  },
-  {
-   "date": "2026-11-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-18",
-   "headline": "How we raised Databricks cluster rate limits by 7.5\u00d7",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/how-we-raised-databricks-cluster-rate-limits-75"
   }
  ]
 }

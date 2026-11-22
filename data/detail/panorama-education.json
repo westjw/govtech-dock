@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "dateline",
+   "first_seen": "2026-11-21",
+   "headline": "Panorama for Skyward Now Available to Eligible Washington School Districts Through WSIPC",
+   "kind": "product",
+   "kind_rule": "Now Available",
+   "url": "https://www.panoramaed.com/blog/panorama-for-skyward-now-available-to-eligible-washington-school-districts-through-wsipc"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.panoramaed.com/blog/how-ai-can-accelerate-hqim-implementation"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "6 AI Tool Use Cases That Are Transforming Special Education (And How to Build Them)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/special-education-ai-use-cases"
   }
  ],
  "profile": {

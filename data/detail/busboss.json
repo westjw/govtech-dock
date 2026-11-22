@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Best School Bus Dispatch Tools for Live Route Changes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/best-school-bus-dispatch-tools-for-live-route-changes"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Districtwide School Bus Dispatch Rollout Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/districtwide-school-bus-dispatch-rollout-guide-1"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/how-to-fix-student-boarding-verification-accuracy"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "Why School Bus Routing Tools Fail Drivers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/why-school-bus-routing-tools-fail-drivers"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "The Complete Guide to Driver-Friendly School Bus Routing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/the-complete-guide-to-driver-friendly-school-bus-routing"
   }
  ],
  "profile": {

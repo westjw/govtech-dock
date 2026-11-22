@@ -10,6 +10,15 @@
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-helps-protect-against-java4shell-cve-2026-114938/"
   },
   {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "NGINX2Root: Identify and Protect with the CrowdStrike Falcon Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-helps-protect-against-nginx2root-cve-2026-123007/"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "index-text",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-brings-enterprise-browser-security-to-falcon-platform/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "CrowdStrike to Acquire Dreadnode to Bring Automated AI Security Testing to the Falcon Platform",
-   "kind": "funding",
-   "kind_rule": "to Acquire",
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-to-acquire-dreadnode/"
   }
  ]
 }

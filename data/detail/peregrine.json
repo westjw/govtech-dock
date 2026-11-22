@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "The Fire-Rescue Data Playbook: A practical guide to fire department data integration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/the-fire-rescue-data-playbook-a-practical-guide-to-connecting-cad-rms-epcr-gis-and-more"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/we-have-a-plan-inside-spokane-countys-school-safety-strategy"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How to build a crisis response program | Peregrine",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/how-to-build-a-crisis-response-program-data-driven-strategies-for-measurable-outcomes"
   }
  ],
  "profile": {

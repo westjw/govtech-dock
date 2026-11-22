@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "The GTA 6 Day-Off Scenario: What happens when millions step away from work?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/gta-6-launch-workforce-implication"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://lightcast.io/resources/blog/skilled-trades-explosives-workers-salaries"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Annual AI Updates Are Too Slow",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://lightcast.io/resources/blog/tracking-ai-workforce-trends-october-2026-update"
   }
  ]
 }

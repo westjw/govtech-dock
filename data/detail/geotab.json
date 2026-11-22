@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Fleet fuel monitoring: How it works and what to track",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/fleet-fuel-monitoring/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-29",
    "headline": "9 best DOT compliance software tools for fleets [2026]",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/php-vulnerability-response-cve-2026-109618-109619/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Garbage truck safety: Three questions for your video review process",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/garbage-truck-safety/"
   }
  ],
  "profile": {

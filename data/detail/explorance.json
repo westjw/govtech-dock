@@ -1,13 +1,13 @@
 {
  "news": [
   {
-   "date": "2026-11-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "Allen Community College Streamlines Course Evaluations and Strengthens Feedback Insights with Explorance Blue",
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Explorance Global Response Rates Report Finds Top Survey Programs Use a Common Foundation, Deploy Targeted Features and Strategies",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://explorance.com/news/allen-community-college-streamlines-course-evaluations-and-strengthens-feedback-insights-with-explorance-blue"
+   "url": "https://explorance.com/news/explorance-global-response-rates-report-finds-top-survey-programs-use-a-common-foundation-deploy-targeted-features-and-strategies"
   },
   {
    "date": "2026-10-28",
@@ -38,7 +38,16 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Allen Community College Streamlines Course Evaluations and Strengthens Feedback Insights with Explorance Blue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/news/allen-community-college-streamlines-course-evaluations-and-strengthens-feedback-insights-with-explorance-blue"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "From Student Evaluations to Actionable Insights with Blue and MLY at Universidad Panamericana",
    "kind": "press",
@@ -46,22 +55,13 @@
    "url": "https://explorance.com/news/from-student-evaluations-to-actionable-insights-with-blue-and-mly-at-universidad-panamericana"
   },
   {
-   "date": "2026-10-07",
-   "date_source": "index-text",
+   "date": "2026-10-02",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Creating a More Flexible, Connected Course Evaluation Process at CSUDH with Explorance Blue",
    "kind": "press",
    "kind_rule": null,
    "url": "https://explorance.com/news/creating-a-more-flexible-connected-course-evaluation-process-at-csudh-with-explorance-blue"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Transforming Manual Course Evaluations at Prism Career Institute with Explorance Blue",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://explorance.com/news/transforming-manual-course-evaluations-at-prism-career-institute-with-explorance-blue"
   },
   {
    "date": "2026-09-28",
@@ -85,28 +85,28 @@
    "date": "2026-09-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
+   "headline": "Transforming Manual Course Evaluations at Prism Career Institute with Explorance Blue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/news/transforming-manual-course-evaluations-at-prism-career-institute-with-explorance-blue"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
    "headline": "Explorance Blue 9.8: Built Around Customer Needs, Designed for Better Feedback",
    "kind": "press",
    "kind_rule": null,
    "url": "https://explorance.com/blog/explorance-blue-9-8-built-around-customer-needs-designed-for-better-feedback"
   },
   {
-   "date": "2026-09-15",
-   "date_source": "index-text",
+   "date": "2026-09-03",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Creating a Future-Ready Evaluation Process at South Texas College of Law Houston with Explorance Blue",
    "kind": "press",
    "kind_rule": null,
    "url": "https://explorance.com/news/creating-a-future-ready-evaluation-process-at-south-texas-college-of-law-houston-with-explorance-blue"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Explorance MLY 3.4: More Control, Privacy, and Consistency for Qualitative Insights",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://explorance.com/blog/explorance-mly-3-4-more-control-privacy-and-consistency-for-qualitative-insights"
   }
  ],
  "profile": {

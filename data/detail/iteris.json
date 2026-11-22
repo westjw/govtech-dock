@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "index-text",
+   "first_seen": "2026-11-21",
+   "headline": "Iteris Vantage Apex\u00ae Approved In Idaho",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iteris.com/news/iteris-vantage-apex-approved-in-idaho"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.iteris.com/news/iteris-and-almaviva-to-showcase-smart-mobility-innovations-at-its-world-congress-2025"
-  },
-  {
-   "date": "2025-07-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Iteris Selected by Kane County for Transportation System Management and Operations Program",
-   "kind": "contract",
-   "kind_rule": "Selected by",
-   "url": "https://www.iteris.com/news/iteris-selected-by-kane-county-for-transportation-system-management-and-operations-program"
   }
  ],
  "profile": {

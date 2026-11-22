@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "The Busiest Travel Days of the Year and How to Plan for Them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/busiest-travel-days-of-the-year"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Flying on Thanksgiving Day: What to Know Before You Book",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/flying-on-thanksgiving-day"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "CLEAR Destination Guide: NYC on a Layover",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/nyc-on-a-layover"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/airport-guide-msy"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-03",
-   "headline": "CLEAR Airport Guide: Dallas Fort-Worth International Airport",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/airport-guides-dfw"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "CLEAR Airport Guide: Dallas Fort-Worth International Airport",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/airport-guide-dfw"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "CLEAR Travel Tips: How to Pack for Wedding Travel",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/clear-travel-tips-how-to-pack-for-wedding-travel"
   }
  ],
  "profile": {

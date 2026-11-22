@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "What Is Transitional Housing? (Benefits, Challenges & How It Works)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://footholdtechnology.com/news/what-is-transitional-housing/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Behavioral Health vs. Mental Health: Key Differences & Connections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://footholdtechnology.com/news/behavioral-health-vs-mental-health/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://footholdtechnology.com/news/residential-mental-health-facilities-vs-inpatient-care/"
-  },
-  {
-   "date": "2025-04-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Best Group Home Management Software for STRTPs and Residential Programs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://footholdtechnology.com/news/group-home-management-software/"
-  },
-  {
-   "date": "2025-02-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Delivering True Person-Centered Care & Planning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://footholdtechnology.com/news/what-is-person-centered-care-behavioral-health/"
   }
  ],
  "profile": {

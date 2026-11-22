@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Ivalua Named Solution Provider of the Year at the Procurement Leaders APAC Awards for the Second Time in Three Years",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/press-releases/ivalua-named-solution-provider-of-the-year-at-the-procurement-leaders-apac-awards-for-the-second-time-in-three-years/"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Ivalua opens new Milan office to support accelerating growth in Italy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/press-releases/ivalua-opens-new-milan-office-to-support-accelerating-growth-in-italy/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Ivalua Named a Leader in Supplier Value Management Platforms, Q4 2026 Evaluation by Independent Research Firm",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Businesses waste $1.5 million a year on manual work AI could do",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ivalua.com/blog/purchase-requisition-vs-purchase-order/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Supplier Risk Assessments: Evaluate & Manage Vendor Risks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/supplier-risk-assessment/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Ultimate Guide to Supplier Performance Management (SPM) [2026]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/supplier-performance-management/"
   }
  ],
  "profile": {

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "How to Tell If a Take-Home Case Study Was Done With AI",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Event - September 1, 2026 ScreenComply at the EDUCAUSE E26 Emerging Tech Preview Demo Day A live demo of device-level detection of AI assistance during a Canvas quiz on September 14, 2026, plus the ED",
    "kind": "press",
@@ -19,8 +19,8 @@
    "url": "https://screencomply.ai/news/educause-e26-demo-day"
   },
   {
-   "date": "2026-04-15",
-   "date_source": "json-ld",
+   "date": "2026-09-01",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Product Launch - April 15, 2026 Introducing Slop Detector: Our Free Chrome Extension to Filter AI Content on X.com X.com is drowning in AI-generated slop. Slop Detector badges every tweet as AI or hum",
    "kind": "product",
@@ -28,8 +28,17 @@
    "url": "https://screencomply.ai/resources/blog/post/slop-detector-chrome-extension"
   },
   {
+   "date": "2026-04-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Company News - March 15, 2026 ScreenComply at OPM Industry Day in Philadelphia for USA Hire ScreenComply, via Guardian Robotics Contracting, Inc., traveled to Philadelphia to meet with the Office of P",
+   "kind": "leadership",
+   "kind_rule": "Hire",
+   "url": "https://screencomply.ai/resources/blog/post/opm-industry-day-usa-hire"
+  },
+  {
    "date": "2026-03-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "The State of AI Interview Cheating in 2026: What Hiring Teams Need to Know",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "How Cluely Works: The AI Tool Candidates Use to Cheat Interviews",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "How to Detect If a Candidate Is Using AI in a Remote Interview",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Interview Coder, Leetcode Wizard, and the Rise of Invisible Overlay Cheating Tools",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "What Does Interview Fraud Cost Your Company?",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Remote Interview Compliance: What Audit Teams Need to Know in 2026",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Final Round AI, Sensei AI, and the 'Interview Copilot' Problem",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-03-18",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "The 3 Critical Points of AI Fraud in Identity Verification and Assessments",
    "kind": "press",
    "kind_rule": null,
    "url": "https://screencomply.ai/resources/blog/post/three-types-ai-fraud"
-  },
-  {
-   "date": "2026-03-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Company News - March 15, 2026 ScreenComply at OPM Industry Day in Philadelphia for USA Hire ScreenComply, via Guardian Robotics Contracting, Inc., traveled to Philadelphia to meet with the Office of P",
-   "kind": "leadership",
-   "kind_rule": "Hire",
-   "url": "https://screencomply.ai/resources/blog/post/opm-industry-day-usa-hire"
   }
  ]
 }

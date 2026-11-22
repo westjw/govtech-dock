@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Community Health Center Fund through 31 December 2026: a cash runway plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/cash-runway-plan-fqhc-community-health-center-cfo/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Warehouse management systems: A buyer\u2019s guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/warehouse-management-system/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "A buyer\u2019s guide to enterprise business intelligence (BI) solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/enterprise-bi-solutions/"
+  },
+  {
    "date": "2026-11-18",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "Medicaid work requirement: how to stress-test a behavioral health revenue forecast",
    "kind": "press",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-11-18",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "AI accounting explained: Uses, benefits, and risks for finance teams",
    "kind": "press",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-11-18",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "ERP evaluation checklist: How to choose the right system",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "What\u2019s new in Sage Intacct 2026 Release 4?",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Building the confidence to grow at Sage Future for Partners North America FY27",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/building-the-confidence-to-grow-at-sage-future-for-partners-north-america-fy27/"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "card-date",
-   "first_seen": "2026-11-06",
-   "headline": "Senior living accounting software vs care platform: which system owns which number",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/senior-living-accounting-software-vs-care-platform/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "card-date",
-   "first_seen": "2026-11-04",
-   "headline": "Dental practice KPIs for multi-location groups: a scorecard by location",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/dental-practice-kpis-multi-location-scorecard/"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "card-date",
-   "first_seen": "2026-11-03",
-   "headline": "Your first month-end close after acquiring a senior living community: the finance setup to settle first",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/first-month-end-close-after-acquiring-senior-living-community/"
   }
  ]
 }

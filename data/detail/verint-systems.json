@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Verint Engage 2027 Registration Is Open: The Customer Experience Conference Comes to Washington, DC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/verint-engage-2027-registration-is-open-the-customer-experience-conference-comes-to-washington-dc/"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verint.com/blog/ai-call-center-coaching-agent-performance/"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "5 Ways AI Agent Assist Tools Make Customer Service Reps\u2019 Jobs Easier",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verint.com/blog/ai-agent-assist-tools-customer-service-reps/"
   }
  ]
 }

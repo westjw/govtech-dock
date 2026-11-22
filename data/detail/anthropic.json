@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Anthropic announces closing of initial public offering, including full exercise of underwriters\u2019 option to purchase additional shares, and closing of concurrent private placement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/ipo-close"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-24",
    "headline": "Open call for guest investigators in the life sciences",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust"
-  },
-  {
-   "date": "2026-10-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-19",
-   "headline": "Investing in the public benefit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/public-benefit-fund"
   }
  ],
  "profile": {
