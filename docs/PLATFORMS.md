@@ -10,7 +10,7 @@ How a platform is met. find_site_boards.py reads a company's own website: an add
 
 measured_on lists the days the code or the research records a live measurement; a window (day..day) is a day within it that the research does not narrow down; unknown is none recorded. A form is a finder vendor id that belongs to the platform and names no board the wiring door can use.
 
-49 platforms: 26 read, 1 build, 1 maybe, 3 skip, 18 seen.
+49 platforms: 27 read, 1 build, 3 skip, 18 seen.
 
 | Status | Means |
 |---|---|
@@ -45,13 +45,13 @@ measured_on lists the days the code or the research records a live measurement; 
 | [Pinpoint](#pinpoint) | `pinpoint` | read | `fetch_pinpoint` | `_pinpoint` | 2026-11-19, 2026-11-21 |
 | [Recruitee](#recruitee) | `recruitee` | read | `fetch_recruitee` | `_recruitee` | 2026-08-23 |
 | [Rippling](#rippling) | `rippling` | read | `fetch_rippling` | `_rippling` | 2026-08-23 |
+| [SAP SuccessFactors (Career Site Builder)](#sap-successfactors-career-site-builder) | `successfactors` | read | `fetch_successfactors` | `_successfactors` | 2026-11-19..2026-11-22 |
 | [SmartRecruiters](#smartrecruiters) | `smartrecruiters` | read | `fetch_smartrecruiters` | `_smartrecruiters` | 2026-08-23, 2026-09-01 |
 | [Teamtailor](#teamtailor) | `teamtailor` | read | `fetch_teamtailor` | `_teamtailor` | 2026-11-19, 2026-11-21, 2026-11-22 |
 | [Workable](#workable) | `workable` | read | `fetch_workable` | `board_says` | 2026-08-23, 2026-11-01, 2026-11-19 |
 | [Workday](#workday) | `workday` | read | `fetch_workday` | - | 2026-08-23, 2026-09-01, 2026-11-16, 2026-11-18 |
 | [Zoho Recruit](#zoho-recruit) | `zohorecruit` | read | `fetch_zohorecruit` | `_zohorecruit` | 2026-11-19, 2026-11-21 |
 | [Trakstar Hire (formerly Recruiterbox)](#trakstar-hire-formerly-recruiterbox) | `trakstar` | build | - | - | 2026-11-19..2026-11-21 |
-| [SAP SuccessFactors (Career Site Builder)](#sap-successfactors-career-site-builder) | `successfactors` | maybe | - | - | 2026-11-19..2026-11-21 |
 | [Paycom](#paycom) | `paycom` | skip | - | - | 2026-11-19..2026-11-21 |
 | [Paycor Recruiting](#paycor-recruiting) | `paycor` | skip | - | - | 2026-11-19 |
 | [UKG Pro Recruiting (UltiPro)](#ukg-pro-recruiting-ultipro) | `ukg` | skip | - | - | 2026-11-19..2026-11-21 |
@@ -742,6 +742,44 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 
 <!-- /live -->
 
+### SAP SuccessFactors (Career Site Builder)
+
+`successfactors` · **read** · researched as maybe · reader `ats.fetch_successfactors` · identity probe `verify_boards._successfactors` · measured 2026-11-19..2026-11-22
+
+**Why maybe.** Read since 2026-11-22, classic Career Site Builder boards only (ats.fetch_successfactors), built when the owner asked for Gainwell Technologies' board. Unify boards, whose list is served only by POST /services/recruiting/v1/jobs (robots-closed), are read as an error that says so, never a zero. The research (2026-11-20) rated the platform maybe: Classic Career Site Builder boards are a clean public listing: server-rendered /search/ pages on the employer's own careers host, 25 rows a page, robots-allowed, no token. Three things hold it at maybe. The newer 'Unify' search draws its results by POST /services/recruiting/v1/jobs, which every CSB robots.txt closes, leaving only sitemap.xml plus one or two requests per posting. The legacy portals companies link (careerN.successfactors.com, careerN.sapsf.com ?company=) are closed outright. And under the owner's rule only 2 of the 8 example companies would wire unattended (Landis+Gyr, and Indra Group, a 623-posting Spanish board): the rest are a parent's board, a placeholder name or a longer registered name. Worth building as a classic-CSB reader that detects Unify and reports Unknown, or falls back to the sitemap if the owner accepts the cost per posting.
+
+**How to spot it.** A page of the company's own site that IS a classic CSB board, by its tells - assets under rmkcdn.successfactors.com/\<8 hex>/, a j2w.init({... ssoCompanyId ...}) block, jQuery from an hcm\<N> or performancemanager\<N> (sapsf|successfactors) host, or /platform/js/j2w/ scripts - read only from the page's own scripts and attributes: the board's ref is that page's scheme and host. A link to https://\<host>/go/\<Name>/\<digits>/ or /search/?...sortColumn=... on the company's own registrable domain gives that origin too. Never a ref from an SAP host. Legacy portals (career\<N>.successfactors.(com|eu), career\<N>.sapsf.(com|eu|cn), ?company=) are the vendor form successfactors-legacy: robots-closed, never a board.
+
+**Forms the finder tallies apart** (`find_site_boards.ELSEWHERE`):
+
+- `successfactors-legacy`: A legacy Recruiting Management portal address, career\<N>.successfactors.(com|eu) or career\<N>.sapsf.(com|eu|cn) at /career or /careers?company=\<id>: robots.txt closes it ('Disallow: /'), so it is a platform the crawl cannot read and a doubt beside a board - except on a CSB board's own pages, where it is furniture (the j2w.init ssoUrl, a sign-in link).
+- `successfactors-other`: Another SAP SuccessFactors address that names no board (assets, an hcm\<N> host, an API host).
+
+**How it publishes.** Classic: GET https://\<board host>/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=\<0, 25, 50, ...>, server-rendered HTML (\<table id="searchresults">, one \<tr class="data-row"> a posting: the jobTitle-link, jobLocation, jobDate and per-site columns), offset-paged 25 at a time with the total in the localized pagination label; category pages /go/\<Name>/\<catid>/\<startrow>/ carry the same table. Description and pay are only on each /job/\<slug>/\<id>/ page. Unify: no list a reader may use; the only robots-clean list is sitemap.xml, then each posting. RSS exists under /services/rss/ and is closed. Measured on Gainwell 2026-11-22: jobs.gainwelltechnologies.com, 334 postings over 14 pages of 25, read in full in 15 requests; remote roles carry a placeholder place ('Any city, TX, US, 99999'), which the reader reads as 'TX, US'.
+
+**robots.txt.** Measured 2026-11-19..21: a byte-identical CSB template robots.txt on all six board hosts read allows /search/, /go/, /job/ and /sitemap.xml, and disallows /services/ (the RSS and the Unify API), /talentcommunity/apply/, /applybutton/ and /preapply/. The legacy portals (career8.successfactors.com, career41.sapsf.com) serve 'Disallow: /', 'Disallow: /\*company', 'Allow: /login' and were never asked.
+
+**Where it names its employer.** Stated on the board's own host: the /search/ page's \<title>, '{site name} Jobs', and its meta description, 'Find at {site name}' (localized: 'JENOPTIK AG - Stellen', 'Buscar en Indra Group'); classic posting pages add \<meta itemprop="hiringOrganization">. The site name is whatever the admin typed: a placeholder on 2 of 6 boards ('esricanada', 'our team'), and a group's board names the parent. The ssoCompanyId in j2w.init is a tenant id, not a name. No probe is written.
+
+**Quirks.**
+
+- Group boards name the parent and carry many units: SPX's 237 rows covered 12 units, the unit only in a site-specific 'Facility' column spelt inconsistently, where Landis+Gyr's same column holds requisition ids.
+- Templates are localized (en_US, de_DE and es_ES seen): the \<title>, the meta description, the pagination label and the date format follow the site's default locale; pass locale=en_US where a site offers English.
+- Multilingual tenants list one role once per language under different ids.
+- A /go/ category page can carry an empty \<title>: read the name from /search/.
+- Giants among the examples: Indra Group 623 postings (mostly Spain), SPX 237, Jenoptik 175.
+
+**Notes.**
+
+- Gainwell Technologies' board states 'Gainwell Technologies LLC' (the /search/ title and description, and the hiringOrganization of its postings), proven for the record.
+- Unify boards (Aurigo, Esri Canada) stay unread: their list is served only by a robots-closed POST.
+
+<!-- live -->
+
+On file today: no company. The last sweep (2026-11-22): did not meet it.
+
+<!-- /live -->
+
 ### SmartRecruiters
 
 `smartrecruiters` · **read** · reader `ats.fetch_smartrecruiters` · identity probe `verify_boards._smartrecruiters` · measured 2026-08-23, 2026-09-01
@@ -926,36 +964,6 @@ On file today: 3 companies (Cantata Health Solutions, NEXGEN Asset Management, R
 - The feed's links are http:// with the stored client-name casing (RideCo.hire...); normalise them to https://\<slug, lowered>.hire.trakstar.com/jobs/\<id>/ so posting ids stay stable. The feed path ignores case, so store the slug lowered.
 - Posting pages' JSON-LD holds raw control characters, so ats.\_schema_posting (a strict json.loads) gets nothing from them.
 - Careers pages carry stale posting links (Focus School Software's linked posting is a 404 while its board is live).
-
-<!-- live -->
-
-On file today: no company. The last sweep (2026-11-22): did not meet it.
-
-<!-- /live -->
-
-## Researched: worth a reader only on conditions
-
-### SAP SuccessFactors (Career Site Builder)
-
-`successfactors` · **maybe** · no reader · no identity probe · measured 2026-11-19..2026-11-21
-
-**Why maybe.** Classic Career Site Builder boards are a clean public listing: server-rendered /search/ pages on the employer's own careers host, 25 rows a page, robots-allowed, no token. Three things hold it at maybe. The newer 'Unify' search draws its results by POST /services/recruiting/v1/jobs, which every CSB robots.txt closes, leaving only sitemap.xml plus one or two requests per posting. The legacy portals companies link (careerN.successfactors.com, careerN.sapsf.com ?company=) are closed outright. And under the owner's rule only 2 of the 8 example companies would wire unattended (Landis+Gyr, and Indra Group, a 623-posting Spanish board): the rest are a parent's board, a placeholder name or a longer registered name. Worth building as a classic-CSB reader that detects Unify and reports Unknown, or falls back to the sitemap if the owner accepts the cost per posting.
-
-**How to spot it.** Any successfactors.com or .eu, or sapsf.com, .eu or .cn address: find_site_boards tallies it as 'successfactors', which fires on a CSB page's assets (rmkcdn.successfactors.com/\<8 hex>/), a j2w.init block, jQuery from an hcm\<N> or performancemanager\<N> host, and the legacy portals alike. The board's ref is the scheme and host of THAT page (careers.landisgyr.com), usually a custom domain, never the SAP host in the address seen; discover_js's pattern captures the SAP host label (rmkcdn, hcm44, career8), not a tenant. A classic board carries \<tr class="data-row"> on /search/; Unify loads j2w.searchResultsUnify.min.js and has \<div id="root">.
-
-**How it publishes.** Classic: GET https://\<board host>/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=\<0, 25, 50, ...>, server-rendered HTML (\<table id="searchresults">, one \<tr class="data-row"> a posting: the jobTitle-link, jobLocation, jobDate and per-site columns), offset-paged 25 at a time with the total in the localized pagination label; category pages /go/\<Name>/\<catid>/\<startrow>/ carry the same table. Description and pay are only on each /job/\<slug>/\<id>/ page. Unify: no list a reader may use; the only robots-clean list is sitemap.xml, then each posting. RSS exists under /services/rss/ and is closed.
-
-**robots.txt.** Measured 2026-11-19..21: a byte-identical CSB template robots.txt on all six board hosts read allows /search/, /go/, /job/ and /sitemap.xml, and disallows /services/ (the RSS and the Unify API), /talentcommunity/apply/, /applybutton/ and /preapply/. The legacy portals (career8.successfactors.com, career41.sapsf.com) serve 'Disallow: /', 'Disallow: /\*company', 'Allow: /login' and were never asked.
-
-**Where it names its employer.** Stated on the board's own host: the /search/ page's \<title>, '{site name} Jobs', and its meta description, 'Find at {site name}' (localized: 'JENOPTIK AG - Stellen', 'Buscar en Indra Group'); classic posting pages add \<meta itemprop="hiringOrganization">. The site name is whatever the admin typed: a placeholder on 2 of 6 boards ('esricanada', 'our team'), and a group's board names the parent. The ssoCompanyId in j2w.init is a tenant id, not a name. No probe is written.
-
-**Quirks.**
-
-- Group boards name the parent and carry many units: SPX's 237 rows covered 12 units, the unit only in a site-specific 'Facility' column spelt inconsistently, where Landis+Gyr's same column holds requisition ids.
-- Templates are localized (en_US, de_DE and es_ES seen): the \<title>, the meta description, the pagination label and the date format follow the site's default locale; pass locale=en_US where a site offers English.
-- Multilingual tenants list one role once per language under different ids.
-- A /go/ category page can carry an empty \<title>: read the name from /search/.
-- Giants among the examples: Indra Group 623 postings (mostly Spain), SPX 237, Jenoptik 175.
 
 <!-- live -->
 
