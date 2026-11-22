@@ -794,7 +794,11 @@ def _waiting(stores: dict | None = None) -> dict:
             out[p.get("id") or key.split(":", 1)[1]].append({
                 "store": "Agent proposals",
                 "key": board_key(p.get("ats_type"), p.get("ats_ref")),
-                "board": show(p.get("ats_type"), p.get("ats_ref"))})
+                "board": show(p.get("ats_type"), p.get("ats_ref")),
+                # the proposal's own words: a question put to the owner, which
+                # the two checks do not answer (consider)
+                "proposed": {"at": str(p.get("at") or "")[:10] or None, "by": p.get("by"),
+                             "why": str(p.get("why") or "").strip()}})
     return out
 
 
@@ -1460,6 +1464,19 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                           f"{f.get('on') or '?'} by {f.get('by')} with its doubt: "
                           f"\"{(r.get('why') or 'none recorded')[:240]}\"; a doubt filed "
                           f"there is his to settle")
+        elif isinstance(r.get("proposed"), dict):
+            # A BOARD QUESTION PENDING IN AGENT PROPOSALS IS HIS TOO, whatever
+            # board it is about (blind review, 2026-11-21). The same board,
+            # proposed and waiting, was "the question already asked" here, so
+            # the two checks answered it and the board was wired while the
+            # proposal - "claimed by more than one company on the board - an
+            # acquisition to settle" - still waited on him, and discovery and
+            # wire_embedded.py held the company for it.
+            q = r["proposed"]
+            doubts.append(f"this board is already waiting in Agent proposals for this company, "
+                          f"proposed {q.get('at') or '?'} by {q.get('by') or '?'}"
+                          + (f": \"{q['why'][:240]}\"" if q.get("why") else "")
+                          + "; a board waiting on a person is his to settle")
     reviewed = str((ctx.get("reviewed") or {}).get(cid) or "").strip()
     stands = (ctx.get("doubts") or {}).get(cid) or []
     reach_code, holds = reach_of(cid, ctx)
@@ -2436,6 +2453,15 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             return "queued", (f"{w['board']} is in the owner's queue ({w['store']}), filed "
                               f"{f.get('on') or '?'} by {f.get('by') or '?'} with its doubt, "
                               f"and a board filed there is his to settle")
+        if isinstance(w.get("proposed"), dict) and (w.get("store"), w.get("key")) in seen:
+            # pending in Agent proposals when the plan was made, and passed by
+            # it (consider held it only after the blind review of 2026-11-21):
+            # his to settle, whatever the plan saw
+            return "waiting", (f"{w['board']} is waiting in Agent proposals for it"
+                               + (f" (\"{w['proposed']['why'][:160]}\")"
+                                  if w["proposed"].get("why") else "")
+                               + "; the plan saw it and did not hold it, and a board waiting "
+                                 "on a person is his to settle")
         if (w.get("store"), w.get("key")) not in seen:
             return "waiting", (f"{w['board']} was put in front of a person in {w['store']} "
                                f"since the plan, and is his to settle")

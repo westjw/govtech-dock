@@ -2610,7 +2610,10 @@ round.
   `ats_note` on file (wiring would write over the note); a discovery suspect
   or an Acquisitions row (both builders are asked); another company already
   holding the board, or the same board found for two companies in one run; a
-  different board refused earlier or already waiting; this board refused for
+  different board refused earlier or already waiting; this very board
+  pending in Agent proposals for the company itself, its words quoted (it was
+  "the question already asked", and the two checks answered it while the
+  owner's question stood: blind review, 2026-11-21); this board refused for
   another company still on file (the refusal and whose it was quoted, below);
   a board that names somebody else (MISMATCH, both names quoted) or nobody.
 - **An advertisement is not a second board, and a question that did not get
@@ -2863,8 +2866,9 @@ round.
   Workable account held under a number the plan never followed whose name
   the board states or the company goes by (`number`, or the hold's own
   code), a door-filed
-  row in Boards we found for any board (`queued`), a waiting row or pending
-  proposal the plan did not record in the row's `waiting_seen` (`waiting`),
+  row in Boards we found for any board (`queued`), a waiting row the plan did
+  not record in the row's `waiting_seen`, or a board proposal pending for the
+  company in Agent proposals whether the plan recorded it or not (`waiting`),
   another holder (under either key), more postings shown than the board
   read. A write whose `--expect` is not the code of the data as it is now is
   REFUSED, even when nothing would be written. A worklist older than version

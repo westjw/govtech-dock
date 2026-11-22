@@ -37795,7 +37795,9 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         in every door, and nothing put it in front of him for Parent Co);
       - a board pending in Agent proposals for another record is HOLD, and a
         WIRE row whose board was put there since the plan is left alone
-        (`waiting`; blind review, 2026-11-21);
+        (`waiting`; blind review, 2026-11-21); so is the very board found,
+        pending for the company ITSELF, its words quoted - in the plan, and
+        in apply even where the plan recorded it beside a WIRE row;
       - a first-shape Workday doubt ("workday/<tenant>/<pod>/<site>") is the
         board's list, and holds it;
       - admin.act_merge merges a company whatever the door holds for it.
@@ -37821,7 +37823,10 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                  co("pa-sub", "Pa Sub Co"), co("pa-parent", "Pa Parent Co",
                                                also_known_as=["Pa Sub Co"]),
                  # a board pending in Agent proposals for another record
-                 co("pw-co", "Pw Co"), co("late-pending-co", "Late Pending Co")]
+                 co("pw-co", "Pw Co"), co("late-pending-co", "Late Pending Co"),
+                 # ... and for the company itself, the very board found
+                 co("own-pending-co", "Own Pending Co"),
+                 co("late-own-pending-co", "Late Own Pending Co")]
     for keep, drop in ((0, 1), (2, 3), (4, 5), (6, 7), (8, 9)):
         companies[drop]["website"] = companies[keep]["website"]   # one vendor, two records
     WD = ["wdco", "wd5", "Careers"]
@@ -37835,7 +37840,9 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
               "greenhouse/pdparentco": (3, ["Pd Parent Co"]),
               "greenhouse/paparentco": (3, ["Pa Parent Co"]),
               "greenhouse/pwgroup": (3, ["Pw Co"]),
-              "greenhouse/latependinggroup": (3, ["Late Pending Co"])}
+              "greenhouse/latependinggroup": (3, ["Late Pending Co"]),
+              "greenhouse/ownpendingco": (3, ["Own Pending Co"]),
+              "greenhouse/lateownpendingco": (3, ["Late Own Pending Co"])}
 
     def names(cid, kind, ref, owner=None):
         page = f"{site(owner or cid)}/careers"
@@ -37883,6 +37890,12 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                      "ats_type": "greenhouse", "ats_ref": "pwgroup", "status": "pending",
                      "by": "wire_embedded.py", "at": "2026-09-02T13:10:21-04:00",
                      "why": "this board is claimed by more than one company on the board - an "
+                            "acquisition to settle"},
+                 "board:own-pending-co": {
+                     "kind": "board", "id": "own-pending-co", "name": "Own Pending Co",
+                     "ats_type": "greenhouse", "ats_ref": "ownpendingco", "status": "pending",
+                     "by": "wire_embedded.py", "at": "2026-09-02T13:10:21-04:00",
+                     "why": "this board is claimed by more than one company on the board - an "
                             "acquisition to settle"}},
              # a doubt in the FIRST shape about a Workday board, for a company no
              # longer on file
@@ -37899,10 +37912,13 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             "late-refused-co": names("late-refused-co", "greenhouse", "laterefusedco"),
             "late-gone-refused-co": names("late-gone-refused-co", "greenhouse",
                                           "lategonerefusedco"),
-            "late-pending-co": names("late-pending-co", "greenhouse", "latependinggroup")}),
+            "late-pending-co": names("late-pending-co", "greenhouse", "latependinggroup"),
+            "late-own-pending-co": names("late-own-pending-co", "greenhouse",
+                                         "lateownpendingco")}),
             name="worklist-late.json")
         if code != 0 or sorted(i for i, r in (rows or {}).items() if r["action"] == "WIRE") \
-                != ["late-co", "late-gone-refused-co", "late-pending-co", "late-refused-co"]:
+                != ["late-co", "late-gone-refused-co", "late-own-pending-co", "late-pending-co",
+                    "late-refused-co"]:
             return errors + fail(f"the fixture's Late Co, Late Refused Co and Late Gone Refused Co "
                                  f"do not plan WIRE on their own: {text[-200:]}")
         code, text, wl, rows = box.plan(
@@ -37984,7 +38000,13 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 "kind": "board", "id": "late-pending-other", "name": "Late Pending Other Co",
                 "ats_type": "greenhouse", "ats_ref": "latependinggroup", "status": "pending",
                 "by": "wire_embedded.py", "at": "2026-11-19T10:00:00-05:00",
-                "why": "the board names another company"}})))
+                "why": "the board names another company"},
+               # and for the company itself, its very board
+               "board:late-own-pending-co": {
+                "kind": "board", "id": "late-own-pending-co", "name": "Late Own Pending Co",
+                "ats_type": "greenhouse", "ats_ref": "lateownpendingco", "status": "pending",
+                "by": "wire_embedded.py", "at": "2026-11-19T10:00:00-05:00",
+                "why": "an acquisition to settle"}})))
         code, text, _ = box.look(wl_late)
         body = text[text.find("LEFT ALONE"):]
         for cid_name, must_say in (
@@ -37997,15 +38019,30 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                          "Refuser Co in Agent proposals"),
                 ("Late Gone Refused Co", "tell the owner"),
                 ("Late Pending Co", "since the plan, greenhouse/latependinggroup is waiting in "
-                                    "Agent proposals for Late Pending Other Co")):
+                                    "Agent proposals for Late Pending Other Co"),
+                ("Late Own Pending Co", "greenhouse/lateownpendingco was put in front of a "
+                                        "person in Agent proposals since the plan")):
             line = next((ln for ln in body.splitlines()
                          if ln.strip().startswith(cid_name + " ")), "")
             if must_say not in line:
                 errors += fail(f"{cid_name}: a WIRE row whose board was doubted or refused since, "
                                f"for another company, was not left alone saying {must_say!r}: "
                                f"{text[-300:]}")
-        if "LEFT ALONE 4" not in text:
-            errors += fail(f"the look did not leave all four rows alone: {text[-300:]}")
+        if "LEFT ALONE 5" not in text:
+            errors += fail(f"the look did not leave all five rows alone: {text[-300:]}")
+        # a worklist whose plan SAW the company's own pending proposal for the
+        # board and called it WIRE beside it (as consider did until the blind
+        # review of 2026-11-21) is left alone all the same
+        def saw_it(by_id, _doc):
+            by_id["late-own-pending-co"]["waiting_seen"] = [
+                ["Agent proposals", bp.board_key("greenhouse", "lateownpendingco")]]
+        code, text, _ = box.look(box.edited(wl_late, "worklist-saw-pending.json", saw_it))
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Late Own Pending Co ")), "")
+        if "greenhouse/lateownpendingco is waiting in Agent proposals for it (\"an " \
+                "acquisition to settle\"); the plan saw it and did not hold it" not in line:
+            errors += fail(f"a WIRE row whose plan recorded the company's own pending board "
+                           f"proposal beside it was not left alone: {text[-300:]}")
         if q != json.loads((box.tmp / bp.FOUND.name).read_text()):
             errors += fail("a look wrote the queue file")
 
@@ -38015,7 +38052,9 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             _wb_results({"pr-parent": names("pr-parent", "greenhouse", "prparentco"),
                          "pd-parent": names("pd-parent", "greenhouse", "pdparentco"),
                          "pa-parent": names("pa-parent", "greenhouse", "paparentco"),
-                         "pw-co": names("pw-co", "greenhouse", "pwgroup")}),
+                         "pw-co": names("pw-co", "greenhouse", "pwgroup"),
+                         "own-pending-co": names("own-pending-co", "greenhouse",
+                                                 "ownpendingco")}),
             name="worklist-parents.json")
         owner_rules = "whether it is {}'s own board is the owner's to rule on"
         for cid, action, kind, must_say in (
@@ -38035,7 +38074,13 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 ("pa-parent", "SKIP", "refused", "tell the owner"),
                 # pending in Agent proposals for another record: his to settle
                 ("pw-co", "HOLD", None, "greenhouse/pwgroup is waiting in Agent proposals for Pw "
-                                        "Other Co, proposed 2026-09-02 by wire_embedded.py")):
+                                        "Other Co, proposed 2026-09-02 by wire_embedded.py"),
+                # pending for the company ITSELF, for this very board: the
+                # question asked is his, and the two checks do not answer it
+                ("own-pending-co", "HOLD", None,
+                 "this board is already waiting in Agent proposals for this company, proposed "
+                 "2026-09-02 by wire_embedded.py: \"this board is claimed by more than one "
+                 "company on the board - an acquisition to settle\"")):
             r = (rows_p or {}).get(cid) or {}
             if r.get("action") != action or (kind and r.get("kind") != kind) \
                     or must_say not in _wb_words(r):
