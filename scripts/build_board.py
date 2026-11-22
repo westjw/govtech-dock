@@ -424,6 +424,9 @@ def board_url(c: dict) -> str | None:
            "rippling": "https://ats.rippling.com/{r}/jobs",
            "smartrecruiters": "https://careers.smartrecruiters.com/{r}",
            "icims": "https://{r}.icims.com/jobs/search?ss=1",
+           # (Gusto's and Gem's boards are where the desk's card opens too)
+           "gusto": "https://jobs.gusto.com/boards/{r}",
+           "gem": "https://jobs.gem.com/{r}",
            "hirebridge": "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid={r}",
            "applicantpro": "https://{r}/jobs/",
            "teamtailor": "{r}",

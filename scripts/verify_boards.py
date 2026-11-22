@@ -1213,47 +1213,66 @@ def _comeet(ref, out: dict) -> None:
 
 
 _JOBVITE_TITLE = re.compile(r"(.+?) Careers")
+# How many of a board's postings the probe asks for their employer. A board
+# longer than this is named on the part asked only, which proves nothing.
+JOBVITE_POSTINGS_ASKED = 40
+
+
+def _jobvite_org(h) -> str:
+    """The employer a JobPosting's hiringOrganization names: an Organization
+    (or a node of no stated type) by its name, or a bare string. A Person is
+    nobody's employer here."""
+    if isinstance(h, str):
+        return _clean(h)
+    if isinstance(h, dict):
+        kind = h.get("@type")
+        if kind in (None, "Organization", "Corporation", "LocalBusiness") or (
+                isinstance(kind, list) and "Organization" in kind):
+            return _clean(h.get("name"))
+    return ""
 
 
 def _jobvite(ref, out: dict) -> None:
     # The list page names its career site only in its <title>, "<Name>
     # Careers" - a pattern around a name, like gusto's - so it is believed
-    # only when a posting's own schema.org block names the same employer.
-    # They can disagree: Absolute's title says "Absolute Security" and its
-    # postings "Absolute Software" (2026-11-19), and such a board states
-    # nothing. A board with no posting to ask states nothing either.
-    _base, page = ats.jobvite_page(ref)
-    rows = ats.jobvite_rows(page)
+    # only with what EVERY posting's schema.org block says its employer is,
+    # all of it stated: a site whose second posting names a sibling company
+    # is not this company's alone (blind review, 2026-11-22: one posting
+    # stood for the board). They can disagree outright - Absolute's title
+    # says "Absolute Security" and its postings "Absolute Software"
+    # (2026-11-19) - and then the board states two names and is not proven.
+    # A posting that names nobody states nothing for the board. Every read
+    # is held to the career site's own path (ats._jobvite_read).
+    slug = ats.jobvite_slug(ref)
+    _base, page = ats.jobvite_page(slug)
+    rows = ats.jobvite_rows(page, slug)
     out["n"] = len(rows)
-    out["hosts"] = {"jobs.jobvite.com"}
+    out["hosts"] = {ats.JOBVITE_HOST}
     title = _inside(page, _TITLE)
     m = _JOBVITE_TITLE.fullmatch(_clean(html_lib.unescape(title[0]))) if title else None
     if not m:
         out["how"] = "jobvite page title names no career site"
         return
-    try:
-        posting = _board_page(rows[0][0])
-    except ats.AtsError as exc:
-        if "leads off" not in str(exc):
-            raise
-        # an embedded board's posting sends a browser to the employer's own
-        # page, as its list does; asked for itself, it answers
-        posting = _board_page(rows[0][0] + "?nl=1&fr=false")
-    org = None
-    for block in re.findall(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>',
-                            posting, re.S)[:3]:
-        try:
-            d = json.loads(block)
-        except ValueError:
-            continue
-        h = d.get("hiringOrganization") if isinstance(d, dict) else None
-        org = h.get("name") if isinstance(h, dict) else h if isinstance(h, str) else org
-    if _clean(org) != _clean(m.group(1)):
-        out["how"] = (f"jobvite page title says \"{_clean(m.group(1))}\" and its posting "
-                      f"names \"{_clean(org) or 'nobody'}\": they do not agree")
+    names, unnamed = [m.group(1)], []
+    for url, job, _where in rows[:JOBVITE_POSTINGS_ASKED]:
+        orgs = {_jobvite_org(n.get("hiringOrganization"))
+                for n in ats.jobposting_nodes(ats.jobvite_posting(url, slug))} - {""}
+        if not orgs:
+            unnamed.append(job)
+        names.extend(orgs)
+    if unnamed:
+        out["how"] = (f"jobvite posting {unnamed[0]!r} names no employer, so the title's "
+                      f"\"{_clean(m.group(1))}\" is not confirmed by every posting")
         return
-    _state(out, [m.group(1)], "jobvite page title and a posting's hiringOrganization, "
-                             "stated by the career site")
+    whole = len(rows) <= JOBVITE_POSTINGS_ASKED
+    _state(out, names, "jobvite page title and every posting's hiringOrganization, stated "
+                       "by the career site" if whole else
+           f"jobvite page title and the first {JOBVITE_POSTINGS_ASKED} of {len(rows)} postings' "
+           f"hiringOrganization; the rest were not asked, so these may not be every name "
+           f"the board states", whole=whole)
+    if len({strict(n)[0] for n in out.get("names") or []}) > 1:
+        out["how"] += (f" - and they do not agree: the title says \"{_clean(m.group(1))}\" "
+                       f"and a posting names another employer")
 
 
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,

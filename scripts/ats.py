@@ -631,7 +631,7 @@ def resolve(url: str) -> str:
     return str(resp.url or url)
 
 
-def _page(url: str, *, same_host: bool = False, **kw):
+def _page(url: str, *, same_host: bool = False, may=None, **kw):
     """_get for a PAGE, which asks the site's robots.txt first, at every
     redirect hop (owner's ruling, 2026-10-09; scripts/robots.py). The boards'
     JSON feeds go through _get directly: they are interfaces published for
@@ -647,10 +647,12 @@ def _page(url: str, *, same_host: bool = False, **kw):
 
     def stay(u: str):
         there = (urllib.parse.urlsplit(u).hostname or "").lower()
-        if there != home:
+        if same_host and there != home:
             raise AtsError(f"{url} leads off to {there}, which is not the board")
+        if may is not None:
+            may(u)                    # a reader's own rule for every hop (Jobvite's path)
     return follow(url, lambda u: _get(u, allow_redirects=False, **kw),
-                  may=stay if same_host else None)
+                  may=stay if (same_host or may is not None) else None)
 
 
 def _get(url: str, *, fresh: bool = False, **kw):
@@ -3251,70 +3253,173 @@ def fetch_comeet(ref) -> list[dict]:
 #
 # The career site's list page, server-rendered with every opening on it:
 # <td class="jv-job-list-name"><a href="/<slug>/job/<id>"> and its location
-# cell. The ref is the slug. An embedded board's list page sends a browser on
-# to the employer's own careers page (OverDrive's, 2026-11-19); asked with
-# nl=1&fr=false it answers itself. A dead slug is sent to search.jobvite.com
-# (?invalid=1), a host that is not the board, so it is an error and never a
-# zero - and a list with no rows is an error too, until a real empty board
-# has been read. The XML feed beside it (app.jobvite.com) is not read: it
-# names each job's hiring manager, and its host answers 429 to a second ask.
-# Measured 2026-11-19 and 11-21: Gigamon 22, Absolute 18, Uplight 5,
-# OverDrive 5.
+# cell. The ref is the slug. An embedded board's list page and postings send a
+# browser on to the employer's own careers page (OverDrive's, 2026-11-19);
+# asked with nl=1&fr=false they answer themselves. A dead slug is sent to
+# search.jobvite.com (?invalid=1), so it is an error and never a zero - and a
+# list with no rows is an error too, until a real empty board has been read.
+# The XML feed beside it (app.jobvite.com) is not read: it names each job's
+# hiring manager, and its host answers 429 to a second ask.
+#
+# JOBVITE'S TENANTS SHARE ONE HOST AND DIFFER BY PATH, so a rule held to the
+# host follows a redirect from one company's board to another's (blind review,
+# 2026-11-22). Every read here is held to jobs.jobvite.com/<slug>/, before the
+# hop is asked anything, and a row is read only under the asked slug.
+# Measured 2026-11-19 and 11-21: Ookla 28, Gigamon 22, Absolute 18,
+# Uplight 5, OverDrive 5.
 
 _JOBVITE_SLUG = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,80}")
-# one row per opening; a layout may put cells between the name and the place
-# (OverDrive's has the job's type there)
-_JOBVITE_TR = re.compile(r"<tr\b[^>]*>(.*?)</tr>", re.S)
+JOBVITE_HOST = "jobs.jobvite.com"
 _JOBVITE_NAME = re.compile(
-    r'<td class="jv-job-list-name">\s*<a href="(/[A-Za-z0-9_-]+/job/[A-Za-z0-9]{5,16})"[^>]*>'
+    r'<td class="jv-job-list-name">\s*<a href="(/([A-Za-z0-9_-]+)/job/[A-Za-z0-9]{5,16})"[^>]*>'
     r'(.*?)</a>', re.S)
 _JOBVITE_WHERE = re.compile(r'<td class="jv-job-list-location">(.*?)</td>', re.S)
 
 
-def jobvite_page(ref) -> tuple[str, str]:
-    """(the list's address, the list page), or AtsError."""
+def jobvite_slug(ref) -> str:
     slug = _text(ref)
     if not _JOBVITE_SLUG.fullmatch(slug):
         raise AtsError(f"not a jobvite career site: {ref!r}")
-    base = f"https://jobs.jobvite.com/{slug}/jobs"
+    return slug
+
+
+def _jobvite_read(url: str, slug: str):
+    """A page of this career site and no other: every hop on jobs.jobvite.com
+    and under /<slug>/, refused before it is asked anything."""
+    want = "/" + slug.lower()
+
+    def stay(u: str):
+        parts = urllib.parse.urlsplit(u)
+        path = (parts.path or "/").lower()
+        if (parts.hostname or "").lower() != JOBVITE_HOST or not (
+                path == want or path.startswith(want + "/")):
+            raise AtsError(f"{url} leads off to {parts.hostname}{parts.path}, which is not "
+                           f"this career site")
+    return _page(url, same_host=True, may=stay)
+
+
+def _jobvite_self(url: str, slug: str) -> str:
+    """The page at `url`, or - when it sends a browser to the employer's own
+    page - the same page asked for itself (nl=1&fr=false). Only a hop off the
+    career site is answered that way; a refusal, a 404 or a 429 is an error."""
     try:
-        return base, _page(base, same_host=True).text or ""
+        return _jobvite_read(url, slug).text or ""
     except AtsError as exc:
         if "leads off" not in str(exc):
             raise
-    # an embedded board's list, asked for itself; a dead slug leaves the host
-    # this way too, and is an error
-    return base, _page(base + "?nl=1&fr=false", same_host=True).text or ""
+    joiner = "&" if "?" in url else "?"
+    return _jobvite_read(url + joiner + "nl=1&fr=false", slug).text or ""
+
+
+def jobvite_page(ref) -> tuple[str, str]:
+    """(the list's address, the list page), or AtsError."""
+    slug = jobvite_slug(ref)
+    base = f"https://{JOBVITE_HOST}/{slug}/jobs"
+    return base, _jobvite_self(base, slug)
 
 
 def _jv_text(raw: str) -> str:
     return _text(html_lib.unescape(re.sub(r"<[^>]+>", " ", raw or "")))
 
 
-def jobvite_rows(page: str) -> list[tuple[str, str, str]]:
-    """(url, title, location) per opening on a list page, or AtsError."""
-    rows = []
-    for tr in _JOBVITE_TR.findall(page or ""):
-        name, where = _JOBVITE_NAME.search(tr), _JOBVITE_WHERE.search(tr)
-        if name and _jv_text(name.group(2)):
-            rows.append(("https://jobs.jobvite.com" + name.group(1), _jv_text(name.group(2)),
-                         _jv_text(where.group(1)) if where else ""))
+def _cut(page: str, tags=("script", "style", "template")) -> str:
+    """The page without its comments and its script, style and template
+    blocks, found with str.find - one pass, whatever is left unclosed. A
+    commented-out row is a job the employer took down (ats._COMMENT's rule)."""
+    out, i, low = [], 0, page.lower()
+    opens = ["<!--"] + [f"<{t}" for t in tags]
+    while True:
+        hits = [(low.find(o, i), o) for o in opens]
+        hits = [(at, o) for at, o in hits if at >= 0]
+        if not hits:
+            out.append(page[i:])
+            break
+        at, o = min(hits)
+        out.append(page[i:at])
+        close = "-->" if o == "<!--" else f"</{o[1:]}"
+        end = low.find(close, at + len(o))
+        if end < 0:
+            break                               # never closed: the rest is not page
+        i = end + len(close)
+    return " ".join(out)
+
+
+def jobvite_rows(page: str, slug: str) -> list[tuple[str, str, str]]:
+    """(url, title, location) per opening on a list page, or AtsError. One
+    pass: each row is the text from its name cell to the next </tr>."""
+    body, rows, i = _cut(page or ""), [], 0
+    marker = '<td class="jv-job-list-name">'
+    while True:
+        i = body.find(marker, i)
+        if i < 0:
+            break
+        end = body.find("</tr>", i)
+        cell = body[i:end if end >= 0 else i + 20000]
+        i += len(marker)
+        name = _JOBVITE_NAME.match(cell)
+        if not name or name.group(2).lower() != slug.lower() or not _jv_text(name.group(3)):
+            continue                            # another tenant's row, or no title
+        where = _JOBVITE_WHERE.search(cell)
+        rows.append((f"https://{JOBVITE_HOST}" + name.group(1), _jv_text(name.group(3)),
+                     _jv_text(where.group(1)) if where else ""))
     if not rows:
         raise AtsError("jobvite list page carried no openings (an empty board has not "
                        "been seen, so this is not read as a zero)")
     return rows
 
 
+def jobposting_nodes(page: str) -> list[dict]:
+    """Every schema.org JobPosting node on a page - in a list, in an @graph or
+    alone - its ld+json blocks found with str.find, one pass."""
+    out, i, low = [], 0, (page or "").lower()
+    while True:
+        i = low.find("application/ld+json", i)
+        if i < 0:
+            return out
+        start = low.find(">", i)
+        end = low.find("</script>", start) if start >= 0 else -1
+        if start < 0 or end < 0:
+            return out
+        i = end
+        try:
+            obj = json.loads(page[start + 1:end])
+        except ValueError:
+            continue
+        stack = [obj]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, list):
+                stack.extend(node)
+            elif isinstance(node, dict):
+                kind = node.get("@type")
+                if kind == "JobPosting" or (isinstance(kind, list) and "JobPosting" in kind):
+                    out.append(node)
+                if isinstance(node.get("@graph"), list):
+                    stack.extend(node["@graph"])
+
+
+def jobvite_posting(url: str, slug: str) -> str:
+    return _jobvite_self(url, slug)
+
+
 def fetch_jobvite(ref) -> list[dict]:
-    _base, page = jobvite_page(ref)
+    slug = jobvite_slug(ref)
+    _base, page = jobvite_page(slug)
     out = [{"title": title,
             # 'Dallas, Texas', or '2 Locations' where a job is open in several
             "location": re.sub(r"\s*,\s*", ", ", where),
-            "url": url} for url, title, where in jobvite_rows(page)]
+            "url": url} for url, title, where in jobvite_rows(page, slug)]
     if FETCH_DETAILS:
-        # the ad and any stated pay are each posting's schema.org block
-        _details(out, lambda r: _schema_posting(r["url"]))
+        # the ad and any stated pay are each posting's own schema.org block,
+        # read from the posting as itself, never from the employer's page an
+        # embedded posting sends a browser to
+        def detail(row):
+            nodes = jobposting_nodes(jobvite_posting(row["url"], slug))
+            return ((plain_html(nodes[0].get("description") or ""), _schema_comp(nodes[0]))
+                    if nodes else ("", None))
+        _details(out, detail)
     return out
+
 
 FETCHERS = {
     "ashby": fetch_ashby,

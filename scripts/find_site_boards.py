@@ -724,6 +724,13 @@ BOARDS: list[_Pat] = (
 _B = r"(?<![a-z0-9-])"
 ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
     (vendor, hint, re.compile(pat, re.I)) for vendor, hint, pat in (
+        # A JOBVITE ADDRESS THAT NAMES AN ACCOUNT (a company code, c= or ci=, on
+        # app./hire.jobvite.com: its CompanyJobs pages and talent network) or a
+        # job of one (j?cj=) but no career site this door can read: another
+        # account beside their board, and a doubt (blind review, 2026-11-22).
+        ("jobvite-tenant", "jobvite.com",
+         r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/(?:CompanyJobs/(?:Careers|Job|Xml)\.aspx"
+         r"|TalentNetwork/[^\s\"'<>?]{0,200}|j/?)\?[^\s\"'<>]{0,300}?\b(?:c|ci|cj)=[A-Za-z0-9]{5,12}"),
         ("jobvite-other", "jobvite.com", _B + r"jobvite\.com"),
         # A ZOHO TENANT'S HOST WITH NO PAGE NAMED is a tenant whose board this
         # door cannot name - another portal than theirs, maybe a parent's -
@@ -806,7 +813,8 @@ def _other_region(text: str, m) -> bool:
 # name. Not in _NO_BOARD_IN_IT: beside a board of the same platform they are a
 # second account, and a doubt - unless they name the very tenant the board is
 # (same_tenant). The door says so in those words.
-TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet"}
+TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet",
+                "jobvite-tenant": "jobvite"}
 _TENANT_UID = re.compile(r"(?<![0-9A-F])([0-9A-F]{2}\.[0-9A-F]{3})(?![0-9A-F])", re.I)
 
 
@@ -820,6 +828,9 @@ def tenant_of(kind: str, text) -> str:
     if kind == "comeet":
         m = _TENANT_UID.search(s.split("|", 1)[0] if "|" in s else s)
         return m.group(1).lower() if m else ""
+    # (jobvite: a company code names an account and a slug names a career
+    # site, and nothing on a page ties one to the other - so a Jobvite
+    # account form is never the board's own tenant, and stays a doubt)
     return ""
 
 
@@ -894,6 +905,12 @@ def find_refs(text: str) -> tuple[list[tuple], list[tuple]]:
             if any(k[0] <= m.start() < k[1] or m.start() <= k[0] < m.end() for k in kept):
                 continue
             others.append((m.start(), m.end(), vendor))
+    # AN ADDRESS THAT NAMES A TENANT is that, and not also the same platform's
+    # form that names nothing: comeet.co/jobs/<UID> was counted both ways
+    tenants = [(s, e, TENANT_FORMS[v]) for s, e, v in others if v in TENANT_FORMS]
+    others = [o for o in others
+              if not (o[2] in _NO_BOARD_IN_IT and any(
+                  k == _NO_BOARD_IN_IT[o[2]] and s < o[1] and o[0] < e for s, e, k in tenants))]
     return kept, others
 
 

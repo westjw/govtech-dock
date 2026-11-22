@@ -19325,110 +19325,204 @@ def check_comeet_reads_the_board_its_company_page_hands_out() -> int:
 
 
 def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
-    """Jobvite (2026-11-21): the career site's list page carries every opening
-    (a layout may put cells between a job's name and its place); an embedded
-    board's list and postings send a browser to the employer's own page, and
-    are asked for themselves (nl=1&fr=false); a dead slug leaves the host and
-    a list with no rows is an error, never a zero. The probe believes the
-    title's "<Name> Careers" only when a posting's own schema.org block names
-    the same employer - Absolute's do not agree, and state nothing."""
+    """Jobvite (2026-11-21; rebuilt after the third blind review, 2026-11-22),
+    driven through ats.requests so every hop and every robots.txt ask is seen.
+
+    THE READS: every one held to jobs.jobvite.com/<slug>/ BEFORE the hop is
+    asked anything - Jobvite's tenants share one host, so a redirect to
+    another company's board is refused like a redirect to another host; an
+    embedded board's list and postings are asked for themselves (nl=1&fr=false)
+    only after a hop off the career site, never after a refusal, a 404 or a
+    429; a dead slug is an error, never a zero.
+    THE ROWS: only under the asked slug, never a commented-out row, never an
+    untitled one, found in one pass whatever the page leaves unclosed.
+    THE PROBE: the title's "<Name> Careers" with EVERY posting's employer (an
+    Organization or a bare string; a Person is none), all stated - so a
+    posting naming a sibling company is a second name, a posting naming nobody
+    states nothing, and a board longer than the probe asks is not proven.
+    """
+    import time as _time
     sys.path.insert(0, str(ROOT / "scripts"))
     import ats
     import verify_boards as vb
     errors = 0
-    base = "https://jobs.jobvite.com/acmegov/jobs"
+    J = "https://jobs.jobvite.com"
 
-    def row(n, where="Dallas,\n  Texas", extra=""):
-        return (f'<tr>\n<td class="jv-job-list-name">\n<a href="/acmegov/job/oAbC{n}fwg">Role {n} '
-                f'&amp; Co</a>\n</td>{extra}\n<td class="jv-job-list-location">\n{where}\n</td>\n</tr>')
+    def row(slug, n, title=None, where="Dallas,\n  Texas", extra=""):
+        t = f"Role {n} &amp; Co" if title is None else title
+        return (f'<tr>\n<td class="jv-job-list-name">\n<a href="/{slug}/job/oAbC{n}fwg">{t}</a>\n'
+                f'</td>{extra}\n<td class="jv-job-list-location">\n{where}\n</td>\n</tr>')
 
     def page(rows, title="Acme Gov Careers"):
         return (f"<html><head><title>{title}</title></head><body><table class=\"jv-job-list\">"
                 f"<tbody>{''.join(rows)}</tbody></table></body></html>")
 
-    def posting(org):
+    def posting(org, more=""):
         return ('<script type="application/ld+json">' + json.dumps(
-            {"@type": "JobPosting", "hiringOrganization": org}) + "</script>")
+            {"@type": "JobPosting", "description": "<p>Sell to counties.</p>",
+             "baseSalary": {"currency": "USD", "value": {"unitText": "YEAR", "minValue": 90000,
+                                                         "maxValue": 110000}},
+             "hiringOrganization": org}) + "</script>" + more)
 
-    class R:
-        def __init__(self, text, url):
-            self.text, self.url, self.status_code, self.headers = text, url, 200, {}
+    sent, robots_asked = [], []
 
-    asked = []
+    class W:
+        def __init__(self, code, url, text="", loc=None):
+            self.status_code, self.url, self.text = code, url, text
+            self.headers = {"Location": loc} if loc else {}
+            self.encoding, self.content = "utf-8", text.encode()
 
-    def serve(routes, away=()):
-        def fake(url, **kw):
-            asked.append((url, kw.get("same_host")))
-            if url in away:
-                raise ats.AtsError(f"{url} leads off to company.acmegov.example, which is not the board")
-            if url in routes:
-                return R(routes[url], url)
-            raise ats.AtsError(f"HTTP 404 for {url}")
-        return fake
+        def json(self):
+            return json.loads(self.text)
 
-    keep = ats._page
-    tried: list = []
-    unseal = _sealed(ats, tried)
+        def close(self):
+            pass
+
+    def web(routes):
+        def get(url, **kw):
+            sent.append(url)
+            v = routes.get(url)
+            if v is None:
+                return W(404, url)
+            if isinstance(v, tuple):
+                return W(v[0], url, loc=v[1]) if v[0] in (301, 302) else W(v[0], url)
+            return W(200, url, v)
+        return get
+
+    held = (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
+            ats.FETCH_DETAILS)
     try:
-        ats._page = serve({base: page([row(1), row(2, "2 Locations", "\n<td>\nFull-Time\n</td>")])})
-        rows = ats.fetch_jobvite("acmegov")
-        if [(r["title"], r["location"]) for r in rows] != [("Role 1 & Co", "Dallas, Texas"),
-                                                            ("Role 2 & Co", "2 Locations")] \
-                or rows[0]["url"] != "https://jobs.jobvite.com/acmegov/job/oAbC1fwg":
-            errors += fail(f"jobvite: the rows are not what the list page published: {rows}")
-        if not all(same for _u, same in asked):
-            errors += fail(f"jobvite: the list was not asked on its own host: {asked}")
-        # an embedded board: the list leaves for the employer's page, and is
-        # asked for itself
-        asked.clear()
-        ats._page = serve({base + "?nl=1&fr=false": page([row(1)])}, away={base})
-        if len(ats.fetch_jobvite("acmegov")) != 1 or [u for u, _ in asked] != [base, base + "?nl=1&fr=false"]:
-            errors += fail(f"jobvite: an embedded board was not read as itself: {asked}")
-        for routes, away, why in (({}, {base, base + "?nl=1&fr=false"}, "a dead slug"),
-                                  ({base: page([])}, (), "a list with no rows"),
-                                  ({base: "<html>Page not found</html>"}, (), "another page")):
-            ats._page = serve(routes, away)
+        ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = robots_asked.append, (lambda u: None), None
+        ats.requests.post = lambda *a, **k: (_ for _ in ()).throw(AssertionError("no POST"))
+
+        def go(routes, call):
+            sent.clear(), robots_asked.clear()
+            ats.requests.get = web(routes)
             try:
-                ats.fetch_jobvite("acmegov")
-                errors += fail(f"jobvite: {why} was read as a board with nothing open")
-            except ats.AtsError:
-                pass
-        asked.clear()
+                return call(), None
+            except ats.AtsError as exc:
+                return None, exc
+
+        base = f"{J}/acmegov/jobs"
+        listing = page([row("acmegov", 1), row("acmegov", 2, where="2 Locations",
+                                              extra="\n<td>\nFull-Time\n</td>"),
+                        row("parentco", 3),                        # another tenant's row
+                        "<!-- " + row("acmegov", 4) + " -->",      # taken down
+                        row("acmegov", 5, title="  ")])            # no title
+        rows, exc = go({base: listing}, lambda: ats.fetch_jobvite("acmegov"))
+        if exc or [(r["title"], r["location"]) for r in rows or []] != \
+                [("Role 1 & Co", "Dallas, Texas"), ("Role 2 & Co", "2 Locations")]:
+            errors += fail(f"jobvite: the list's rows are not its own open, titled rows under the "
+                           f"asked slug: {rows or exc}")
+
+        # an embedded board: the hop off the site is refused unasked, then the list as itself
+        emb = {base: (302, "https://company.acmegov.example/careers/?p=jobs"),
+               base + "?nl=1&fr=false": page([row("acmegov", 1)])}
+        rows, exc = go(emb, lambda: ats.fetch_jobvite("acmegov"))
+        if exc or len(rows or []) != 1 or any("company.acmegov" in u for u in sent + robots_asked):
+            errors += fail(f"jobvite: an embedded board was not read as itself, or the employer's "
+                           f"page was asked ({sent}, robots {robots_asked}): {exc}")
+
+        # leaving the career site, to another host or to another tenant on Jobvite's own
+        for to, why in (("https://search.jobvite.com/?invalid=1", "a dead slug"),
+                        (f"{J}/parentco/jobs", "another tenant on Jobvite's host")):
+            rows, exc = go({base: (302, to), base + "?nl=1&fr=false": (302, to)},
+                           lambda: ats.fetch_jobvite("acmegov"))
+            if exc is None or "leads off" not in str(exc) \
+                    or any(to.split("?")[0] in u for u in sent + robots_asked):
+                errors += fail(f"jobvite: {why} was followed or read as a board ({sent}): {rows or exc}")
+
+        # a refusal, a 404 or a 429 is an error - never a second ask as nl=1
+        for code in (404, 429):
+            rows, exc = go({base: (code, None)}, lambda: ats.fetch_jobvite("acmegov"))
+            if exc is None or any("nl=1" in u for u in sent):
+                errors += fail(f"jobvite: an HTTP {code} list was asked again as nl=1, or read: "
+                               f"{sent} {rows}")
+        for body, why in ((page([]), "a list with no rows"),
+                          (page([row("acmegov", 1, title="")]), "links with no titles"),
+                          ("<html>Page not found</html>", "another page")):
+            rows, exc = go({base: body}, lambda: ats.fetch_jobvite("acmegov"))
+            if exc is None:
+                errors += fail(f"jobvite: {why} was read as a board with nothing open: {rows}")
+
+        # the ad, with details on: the embedded posting asked as itself, never the employer's page
+        p1 = f"{J}/acmegov/job/oAbC1fwg"
+        ats.FETCH_DETAILS = True
+        rows, exc = go({base: page([row("acmegov", 1)]),
+                        p1: (302, "https://company.acmegov.example/job/1"),
+                        p1 + "?nl=1&fr=false": posting("Acme Gov")},
+                       lambda: ats.fetch_jobvite("acmegov"))
+        ats.FETCH_DETAILS = False
+        one = (rows or [{}])[0]
+        if exc or "Sell to counties" not in str(one.get("jd")) or (one.get("comp") or {}).get("max") != 110000 \
+                or any("company.acmegov" in u for u in sent + robots_asked):
+            errors += fail(f"jobvite: a posting's ad was not read from the posting as itself, or "
+                           f"the employer's page was asked ({sent}): {one or exc}")
+
+        # ---- the probe ---------------------------------------------------------
+        def said(listing_, postings, away=()):
+            routes = {base: listing_}
+            for n, body in postings.items():
+                url = f"{J}/acmegov/job/oAbC{n}fwg"
+                if n in away:
+                    routes[url] = (302, "https://company.acmegov.example/job")
+                    routes[url + "?nl=1&fr=false"] = body
+                else:
+                    routes[url] = body
+            sent.clear(), robots_asked.clear()
+            ats.requests.get = web(routes)
+            return vb.board_says("jobvite", "acmegov")
+
+        two = page([row("acmegov", 1), row("acmegov", 2)])
+        for postings, away, want, why in (
+                ({1: posting({"@type": "Organization", "name": "Acme Gov"}), 2: posting("Acme Gov")}, (),
+                 ["Acme Gov"], "every posting agrees"),
+                ({1: posting("Acme Gov"), 2: posting("Acme Gov")}, (2,), ["Acme Gov"],
+                 "an embedded posting, asked as itself"),
+                ({1: posting("Acme Gov"), 2: posting("Sibling Co")}, (), ["Acme Gov", "Sibling Co"],
+                 "the second posting names a sibling"),
+                ({1: posting("Acme Gov"), 2: "<html>no block</html>"}, (), [], "a posting names nobody"),
+                ({1: posting("Acme Gov"), 2: posting({"@type": "Person", "name": "Acme Gov"})}, (), [],
+                 "a posting's 'employer' is a Person"),
+                ({1: posting("Acme Gov"), 2: '<script type="application/ld+json">' + json.dumps(
+                    {"@graph": [{"@type": "JobPosting", "hiringOrganization": "Acme Gov"}]}) + "</script>"},
+                 (), ["Acme Gov"], "an @graph block")):
+            got = said(two, postings, away)
+            stated_ok = bool(want) and len({vb.strict(n)[0] for n in want}) == 1
+            if got["names"] != want or got["stated"] != bool(want) \
+                    or vb.proven({"name": "Acme Gov"}, got)["ok"] != stated_ok \
+                    or got["hosts"] != {"jobs.jobvite.com"} \
+                    or any("company.acmegov" in u for u in sent + robots_asked):
+                errors += fail(f"jobvite probe, {why}: stated {got['names']} (stated={got['stated']}, "
+                               f"hosts {got['hosts']}, asked {sent}), wanted {want}")
+        got = said(page([row("acmegov", 1)], title="Jobs"), {1: posting("Acme Gov")})
+        if got["stated"] or got["names"]:
+            errors += fail(f"jobvite probe: a title that is not '<Name> Careers' named {got['names']}")
+        many = page([row("acmegov", n) for n in range(1, vb.JOBVITE_POSTINGS_ASKED + 3)])
+        got = said(many, {n: posting("Acme Gov") for n in range(1, vb.JOBVITE_POSTINGS_ASKED + 3)})
+        if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"] \
+                or sum(1 for u in sent if "/job/" in u) > vb.JOBVITE_POSTINGS_ASKED:
+            errors += fail(f"jobvite probe: a board longer than the postings asked was proven, or "
+                           f"more than {vb.JOBVITE_POSTINGS_ASKED} postings were asked")
+
+        # one odd page cannot hold a batch up: unclosed tags, read in one pass
+        for flood in ("<tr>" * 60000, '<td class="jv-job-list-name">' * 8000,
+                      '<script type="application/ld+json">' * 20000, "<!--" * 50000):
+            began = _time.monotonic()
+            go({base: flood}, lambda: ats.fetch_jobvite("acmegov"))
+            said(two, {1: flood, 2: flood})
+            if _time.monotonic() - began > 5:
+                errors += fail(f"jobvite: a page of {flood[:30]!r} repeated took "
+                               f"{_time.monotonic() - began:.0f}s: a pattern starts again from every tag")
         for ref in ("_assets_", "acme/../x", "", None, "a b"):
             try:
-                ats.jobvite_page(ref)
+                ats.jobvite_slug(ref)
                 errors += fail(f"jobvite: {ref!r} was taken as a career site")
             except ats.AtsError:
                 pass
-        if asked:
-            errors += fail(f"jobvite: a ref that is not a slug was asked for: {asked}")
-        # the probe: the title and a posting agree, or nothing is stated
-        p1 = "https://jobs.jobvite.com/acmegov/job/oAbC1fwg"
-        for org, routes, away, want in (
-                ({"@type": "Organization", "name": "Acme Gov"}, {}, (), ["Acme Gov"]),
-                ("Acme Gov", {}, (), ["Acme Gov"]),
-                ({"name": "Acme Government Software"}, {}, (), []),
-                ({"name": "Acme Gov"}, {p1 + "?nl=1&fr=false": None}, {p1}, ["Acme Gov"])):
-            r_ = {base: page([row(1)]), p1: posting(org)}
-            for k, v in routes.items():
-                r_[k] = posting(org)
-            if away:
-                r_.pop(p1, None)
-            ats._page = serve(r_, away)
-            held = vb._board_page
-            vb._board_page = lambda url, head=0: ats._page(url, same_host=True).text
-            try:
-                said = vb.board_says("jobvite", "acmegov")
-            finally:
-                vb._board_page = held
-            if said["names"] != want or said["stated"] != bool(want):
-                errors += fail(f"jobvite: the probe stated {said['names']} where the title says "
-                               f"Acme Gov and a posting names {org!r}: wanted {want} ({said['how']})")
     finally:
-        ats._page = keep
-        unseal()
-    if tried:
-        errors += fail(f"jobvite: a read went round the stub, to the network: {tried[:3]}")
+        (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
+         ats.FETCH_DETAILS) = held
     return errors
 
 
@@ -19471,13 +19565,28 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
              "another Comeet company beside their board"),
             ('<a href="https://www.comeet.com/jobs/acme/F7.009">Jobs</a>'
              '<a href="https://www.comeet.co/jobs/F7.009">Jobs</a>', set(),
-             "their own Comeet company, written the other way")):
+             "their own Comeet company, written the other way"),
+            ('<a href="https://jobs.jobvite.com/acmegov/jobs">Jobs</a>'
+             '<a href="https://app.jobvite.com/TalentNetwork/action/joinTN?c=q6NaVfwI">Join</a>',
+             {"jobvite-tenant"}, "a Jobvite talent network beside their Jobvite board"),
+            ('<a href="https://jobs.jobvite.com/acmegov/jobs">Jobs</a>'
+             '<iframe src="https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qtA9VfwR"></iframe>',
+             {"jobvite-tenant"}, "a Jobvite account's careers frame beside their Jobvite board")):
         found, rest = fsb.sightings(markup, here, home)
         got = {r["vendor"] for r in rest} & {"zohorecruit-tenant", "comeet-tenant",
-                                             "zohorecruit-other", "comeet-other"}
+                                             "zohorecruit-other", "comeet-other",
+                                             "jobvite-tenant", "jobvite-other"}
         if got != want or not found:
             errors += fail(f"finder, {why}: the board {[f['ref'] for f in found]} came with "
                            f"{sorted(got)}, not {sorted(want)}")
+    # one address that names a tenant is that, once - not also the platform's no-board form
+    for markup, want in (('<a href="https://www.comeet.co/jobs/C2.00D">Group</a>', ["comeet-tenant"]),
+                         ('<a href="https://app.jobvite.com/j?cj=ocVbwfwy&s=Career_Site">Apply</a>',
+                          ["jobvite-tenant"])):
+        _found, rest = fsb.sightings(markup, here, home)
+        if sorted(r["vendor"] for r in rest) != want:
+            errors += fail(f"finder: {markup[:60]!r} came out as {[r['vendor'] for r in rest]}, "
+                           f"not once as {want}")
     import wire_found as wf
     co = _wb_co("acme-gov", "Acme Gov")
     site = _wb_site("acme-gov")
@@ -19588,7 +19697,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                     "org_info": {"company_name": "Caselle", "website": "www.caselle.example"}}
             return ('<input type="hidden" value="' + _h.escape(json.dumps([]), quote=True) + '" id="jobs">'
                     '<input type="hidden" value="' + _h.escape(json.dumps(meta), quote=True) + '" id="meta">')
-        for page_name, want in (("Careers", ["Caselle"]), ("BlackMountainSoftware", [])):
+        for page_name, want in (("Careers", ["Caselle"]), ("BlackMountainSoftware", []), ("", [])):
             ats._page = lambda url, p=page_name, **kw: R(zpage(p))
             said = vb.board_says("zohorecruit", f"https://acmegov.zohorecruit.com/jobs/{page_name}")
             if said["names"] != want:
@@ -19763,6 +19872,59 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
             errors += fail(f"finder: a bare {bare} on their home page beside their Zoho board on "
                            f"their careers page came out as {sorted(got)}, not {sorted(want)} "
                            f"(boards {[c['ref'] for c in rec['candidates']]})")
+
+    # ---- a CSP that only mentions Teamtailor's assets vouches for nothing ---
+    held_ = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE)
+    try:
+        ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = (lambda u: None), (lambda u: None), None
+        empty_ = json.dumps({"version": "https://jsonfeed.org/version/1.1", "title": "TT",
+                             "feed_url": "https://careers.ttcsp.example/jobs.json", "items": []})
+
+        class _R:
+            status_code, url, encoding = 200, "https://careers.ttcsp.example/jobs.json", "utf-8"
+
+            def __init__(self, csp):
+                self.text, self.content = empty_, empty_.encode()
+                self.headers = __import__("requests").structures.CaseInsensitiveDict(
+                    {"Content-Security-Policy": csp})
+
+            def json(self):
+                return json.loads(self.text)
+        ats.requests.get = lambda url, **kw: _R("script-src 'self' assets-aws.teamtailor-cdn.com")
+        try:
+            ats.fetch_teamtailor("https://careers.ttcsp.example")
+            errors += fail("teamtailor: a CSP naming only teamtailor-cdn.com vouched for an empty feed")
+        except ats.AtsError:
+            pass
+    finally:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held_
+
+    # ---- every type the crawl reads has a public link and a name on the page ---
+    import page_belt
+    link_samples = {"greenhouse": "acme", "lever": "acme", "ashby": "acme", "breezy": "acme",
+                    "recruitee": "acme", "workable": "acme", "jazzhr": "acme", "bamboohr": "acme",
+                    "rippling": "acme", "smartrecruiters": "Acme", "icims": "careers-acme",
+                    "hirebridge": "7724", "applicantpro": "acme.applicantpro.com",
+                    "pinpoint": "acme", "jobvite": "acme",
+                    "teamtailor": "https://acme.teamtailor.com",
+                    "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
+                    "comeet": "https://www.comeet.com/jobs/acme/F7.009",
+                    "workday": ["acme", "wd5", "Careers"], "paylocity": "https://recruiting.paylocity.com/x",
+                    "oracle": "acme.fa.us2.oraclecloud.com", "jibe": "careers.acme.test",
+                    "adp": "cbabd1ae-568b-4f70-933b-3f462f76c1b5", "gusto": "acme-c850a9b3",
+                    "gem": "acme"}
+    for kind in sorted(set(ats.FETCHERS) - {"html"}):
+        if kind not in page_belt.ATS_NAME:
+            errors += fail(f"page_belt.ATS_NAME has no name for {kind!r}: the belt prints the bare type")
+        if kind not in link_samples:
+            errors += fail(f"no sample ref for {kind!r} in this check: add one, with its public link")
+            continue
+        got = bb.board_url({"ats": {"type": kind, "ref": link_samples[kind]},
+                            "website": "https://site.example"})
+        if not str(got).startswith("https://") or (got == "https://site.example"
+                                                    and kind not in ("workday", "adp", "oracle", "jibe")):
+            errors += fail(f"build_board.board_url gives {got!r} for a {kind} board: the public "
+                           f"page links the website, not the board")
 
     # ---- one board under two spellings is one board on the public board -------
     T = "0123456789ABCDEF0123456789ABCD"
