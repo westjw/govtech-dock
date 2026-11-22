@@ -30725,6 +30725,74 @@ def _import_coverage():
     return coverage
 
 
+def check_every_reader_has_a_platform_entry() -> int:
+    """Every reader in ats.FETCHERS has its entry in data/platforms.json, and
+    docs/PLATFORMS.md is what that catalogue writes.
+
+    How each job-posting platform works lived in the readers' docstrings, the
+    finder's patterns and the probes - and, for the twelve platforms measured
+    live on 2026-11-19..21, in a research file in a scratch directory that a
+    reboot clears. data/platforms.json is where it lives now, and it is worth
+    having only while it is true: a reader added to ats.FETCHERS with no
+    entry, or an entry saying "read" with no reader behind it, is the
+    catalogue wrong in the way that matters most. scripts/platform_catalog.py
+    holds the rules (its check is what the script prints with no arguments);
+    this runs them, then shows each can fail.
+
+    THE LIVE COUNTS ARE NOT COMPARED. The doc's companies per type and the
+    last sweep's counts sit between <!-- live --> markers and are left out:
+    data/companies.json moves every night and a sweep's results file is not
+    in the repository, so holding the doc to them would fail the nightly
+    self-test over news nobody has to act on. Every other line of the doc must
+    be what --write writes.
+    """
+    import copy
+    import platform_catalog as pc
+    cat = pc.load()
+    doc = pc.DOC.read_text() if pc.DOC.exists() else ""
+    bad, notes = pc.check(cat, doc)
+    errors = sum(fail(f"platform catalogue: {b}") for b in bad)
+    for n in notes:
+        note(f"platform catalogue: {n}")
+    if bad:
+        return errors
+
+    # A CHECK THAT CANNOT FAIL IS NOT A CHECK. Each breakage is made in memory
+    # and asked of the catalogue's rules alone (no doc), so the doc comparison
+    # cannot be what catches it. Nothing is written.
+    def caught(label: str, mutate) -> int:
+        c = copy.deepcopy(cat)
+        mutate(c["platforms"])
+        return 0 if pc.check(c)[0] else fail(f"platform catalogue: the check passed {label}")
+
+    reader = sorted(ats.FETCHERS)[0]
+    unread = next(k for k, e in sorted(cat["platforms"].items()) if e["status"] != "read")
+    scratch = "/".join(("", "private", "tmp", "probe", "state.json"))
+    errors += caught(f"with no entry for the reader {reader!r}", lambda p: p.pop(reader))
+    errors += caught(f"with {unread!r} marked read and no reader for it",
+                     lambda p: p[unread].update(status="read"))
+    errors += caught(f"with {reader!r} naming the wrong reader",
+                     lambda p: p[reader].update(reader="fetch_nothing"))
+    errors += caught(f"with {reader!r} marked build though ats.FETCHERS reads it",
+                     lambda p: p[reader].update(status="build", reader=None, why="a test"))
+    errors += caught(f"with {reader!r} naming the wrong identity probe",
+                     lambda p: p[reader].update(probe="_nobody"))
+    errors += caught("with a scratch path in an entry",
+                     lambda p: p[reader]["quirks"].append(f"evidence in {scratch}"))
+    errors += caught("with a token in an entry",
+                     lambda p: p[reader]["quirks"].append("ref F2.004|" + "C0FFEE" * 5))
+    # The doc: an edited catalogue line is caught, and the live counts alone are not.
+    if not pc.check(cat, doc.replace("**robots.txt.**", "**robots.**", 1))[0]:
+        errors += fail("platform catalogue: the check passed a doc whose catalogue text "
+                       "is not what --write writes")
+    recounted = pc._LIVE.sub(pc.LIVE_OPEN + "\n\nrecounted\n\n" + pc.LIVE_CLOSE, doc)
+    if recounted == doc or pc.check(cat, recounted)[0]:
+        errors += fail("platform catalogue: a change to the live counts alone failed the "
+                       "check (or the doc carries no live counts), so a night's refresh "
+                       "would fail the self-test")
+    return errors
+
+
 def check_ats_advice_covers_the_board() -> int:
     """Every ATS a company here actually uses needs its own "before you apply".
 
@@ -53752,6 +53820,7 @@ def main() -> int:
     errors += check_queue_strengths_have_a_band()
     errors += check_structured_matches_the_fetchers()
     errors += check_every_ats_type_lands_in_a_coverage_bucket()
+    errors += check_every_reader_has_a_platform_entry()
     errors += check_a_boards_type_matches_its_host()
     errors += check_gusto_and_gem_prove_absence_or_say_unknown()
     errors += check_the_static_pages_carry_the_write_up()
