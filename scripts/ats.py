@@ -386,12 +386,14 @@ class _Cached:
     had not changed since the last probe.
     """
 
-    def __init__(self, text: str, url: str = ""):
+    def __init__(self, text: str, url: str = "", headers=None):
         self.text = text
         self.url = url
         self.status_code = 200
         self.from_cache = True
-        self.headers: dict = {}
+        # what the server said about the page that a reader asks of it, kept
+        # with the body (KEPT_HEADERS) and laid under what the 304 itself said
+        self.headers = requests.structures.CaseInsensitiveDict(headers or {})
 
     def json(self):
         return json.loads(self.text)
@@ -418,6 +420,15 @@ def _cache_body(url: str) -> str | None:
         return None
 
 
+# The headers a reader reads off a page, kept with its body: a 304 replays the
+# body, and without them an unchanged answer is not the answer it was.
+# Teamtailor's frame-ancestors is how an empty feed on a domain of the
+# company's own shows it is Teamtailor's (2026-11-22: Heimdall Power's read
+# as "not known" on its second read, from the cache, and as a zero on its
+# first).
+KEPT_HEADERS = ("Content-Security-Policy",)
+
+
 def _cache_write(url: str, resp) -> None:
     etag = resp.headers.get("ETag")
     lastmod = resp.headers.get("Last-Modified")
@@ -429,8 +440,9 @@ def _cache_write(url: str, resp) -> None:
         HTTP_CACHE.mkdir(parents=True, exist_ok=True)
         meta_p, body_p = _cache_paths(url)
         body_p.write_bytes(gzip.compress(resp.text.encode("utf-8"), 6))
+        kept = {k: resp.headers.get(k) for k in KEPT_HEADERS if resp.headers.get(k)}
         meta_p.write_text(json.dumps(
-            {"url": url, "etag": etag, "last_modified": lastmod}))
+            {"url": url, "etag": etag, "last_modified": lastmod, "headers": kept}))
     except OSError:
         pass                                   # a cache we cannot write is not an error
 
@@ -641,10 +653,12 @@ def _page(url: str, *, same_host: bool = False, **kw):
                   may=stay if same_host else None)
 
 
-def _get(url: str, **kw):
+def _get(url: str, *, fresh: bool = False, **kw):
+    """`fresh`: ask without the cache's validators, for an answer whose headers
+    are wanted and which the cache replayed without them."""
     _host_gate(url)
     headers = dict(UA)
-    meta = _cache_read(url) if HTTP_CACHE else None
+    meta = _cache_read(url) if HTTP_CACHE and not fresh else None
     if meta:
         if meta.get("etag"):
             headers["If-None-Match"] = meta["etag"]
@@ -657,7 +671,9 @@ def _get(url: str, **kw):
     if resp.status_code == 304:
         body = _cache_body(url)
         if body is not None:
-            return _Cached(body, url)
+            said = requests.structures.CaseInsensitiveDict((meta or {}).get("headers") or {})
+            said.update(getattr(resp, "headers", None) or {})
+            return _Cached(body, url, headers=said)
         # The server says nothing changed and we no longer hold the body. That
         # is our bookkeeping failing, not the site refusing, so ask again
         # plainly rather than reporting a board we cannot read - and ask
@@ -2936,8 +2952,17 @@ def teamtailor_feed(ref) -> tuple[str, dict]:
         # items passes the checks above. Teamtailor names its app as the one
         # page allowed to frame the site (Heimdall Power's, 2026-11-21); an
         # empty feed on a domain of their own without that is not a zero.
-        csp = str((getattr(resp, "headers", None) or {}).get("Content-Security-Policy") or "")
-        if not re.search(r"(?<![a-z0-9.-])app(?:\.na)?\.teamtailor\.com\b", csp, re.I):
+        def marked(r) -> bool:
+            csp = str((getattr(r, "headers", None) or {}).get("Content-Security-Policy") or "")
+            return bool(re.search(r"(?<![a-z0-9.-])app(?:\.na)?\.teamtailor\.com\b", csp, re.I))
+        if not marked(resp) and getattr(resp, "from_cache", False):
+            # a replay from a cache kept before its headers were: asked once
+            # more, plainly, so the answer is the server's own and is kept so
+            resp = _page(f"https://{host}/jobs.json", same_host=True, fresh=True)
+            d2 = _json(resp)
+            if not (isinstance(d2, dict) and d2.get("items") == []):
+                raise AtsError(f"{host}/jobs.json changed between two reads")
+        if not marked(resp):
             raise AtsError(f"{host}/jobs.json lists nothing and its answer does not say it is "
                            f"Teamtailor's, so the zero is not known")
     return host, d

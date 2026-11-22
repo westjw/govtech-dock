@@ -19609,6 +19609,71 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         errors += fail(f"finder: a hosted Teamtailor site's own page names its board "
                        f"{[(f['ref'], f['times']) for f in found]}, not once")
 
+    # ---- a cached answer keeps the header that vouches for an empty feed ------
+    # (Heimdall Power's empty feed read as a zero once and as "not known" from
+    # the cache the next time, 2026-11-22: a 304 replayed the body alone)
+    import tempfile
+    feed_url = "https://careers.ttempty.example/jobs.json"
+    empty = json.dumps({"version": "https://jsonfeed.org/version/1.1", "title": "TT Empty",
+                        "feed_url": feed_url, "items": []})
+    csp = "frame-ancestors 'self' careers.ttempty.example app.teamtailor.com"
+    sent = []
+
+    class Resp:
+        def __init__(self, code, text="", headers=None):
+            self.status_code, self.text, self.url = code, text, feed_url
+            self.headers = __import__("requests").structures.CaseInsensitiveDict(headers or {})
+            self.encoding, self.content = "utf-8", text.encode()
+
+        def json(self):
+            return json.loads(self.text)
+
+    def answer(code_first, *later):
+        seq = [code_first, *later]
+
+        def get(url, **kw):
+            sent.append(("cond" if (kw.get("headers") or {}).get("If-None-Match") else "plain", url))
+            return seq.pop(0) if seq else Resp(500)
+        return get
+
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE)
+    with tempfile.TemporaryDirectory() as tmp:
+        try:
+            ats.ask_robots, ats._host_gate = (lambda u: None), (lambda u: None)
+            ats.HTTP_CACHE = pathlib.Path(tmp)
+            first = Resp(200, empty, {"ETag": 'W/"1"', "Content-Security-Policy": csp})
+            ats.requests.get = answer(first, Resp(304))          # read, then a 304 with no headers
+            one = ats.fetch_teamtailor("https://careers.ttempty.example")
+            two = ats.fetch_teamtailor("https://careers.ttempty.example")
+            if one != [] or two != []:
+                errors += fail(f"teamtailor: an empty feed marked Teamtailor's read {one} and then, "
+                               f"replayed from the cache, {two}: a 304 lost the header")
+            # a cache kept before its headers were: asked once more, plainly
+            for f in pathlib.Path(tmp).glob("*.json"):
+                meta = json.loads(f.read_text())
+                meta.pop("headers", None)
+                f.write_text(json.dumps(meta))
+            sent.clear()
+            ats.requests.get = answer(Resp(304), Resp(200, empty, {"ETag": 'W/"1"',
+                                                                    "Content-Security-Policy": csp}))
+            three = ats.fetch_teamtailor("https://careers.ttempty.example")
+            if three != [] or [k for k, _ in sent] != ["cond", "plain"]:
+                errors += fail(f"teamtailor: a replay from an older cache was not asked once more, "
+                               f"plainly ({sent}), or did not read as a zero ({three})")
+            sent.clear()
+            ats.requests.get = answer(Resp(304), Resp(200, empty, {"ETag": 'W/"2"'}))
+            for f in pathlib.Path(tmp).glob("*.json"):
+                meta = json.loads(f.read_text())
+                meta.pop("headers", None)
+                f.write_text(json.dumps(meta))
+            try:
+                ats.fetch_teamtailor("https://careers.ttempty.example")
+                errors += fail("teamtailor: an empty feed with no mark on either read was a zero")
+            except ats.AtsError:
+                pass
+        finally:
+            ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held
+
     # ---- the finder's refusals, each with a page that needs it ----------------
     for markup in ("<script>rec_embed_js.load({ widget_id: 'rec_job_listing_div', "
                    "site: 'https://nexgenam.zohorecruit.com' });</script>",     # no page name
