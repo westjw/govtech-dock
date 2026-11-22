@@ -1,13 +1,14 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-11-13T20:45:00-05:00",
+  "last_updated": "2026-11-22T13:59:33-05:00",
   "status": "Active Build",
   "progress_pct": 58,
   "progress_note": "~58% (free board frame; the paid half has no pricing or billing, and the recruiter side lives in SLED HQ) - 2026-11-13: the site's own sign-in (email link + code, Google), so members take no Cloudflare Access seats",
   "next_move": "Owner, in Cloudflare (DEPLOY.md 3a): add SESSION_SECRET (and the two Google secrets), redeploy, put Path admin back on the existing Access app with its policy left as him and his admins, keep Fail closed. Claude then checks from outside; the owner signs in by email in a private window; GOOGLE goes true after his Google run.",
-  "session_summary": "Built the site's own sign-in so anyone can sign in without spending Cloudflare Access seats (the free plan has 50, and the 51st person is turned away): an emailed link (opened, it asks before it signs in) and a 10-character code, or Google with PKCE, held in an HMAC-signed __Host- cookie with nothing stored. Access now keeps /admin for the owner and his admins only, and the site's sign-in never opens it. Three review rounds found a Chrome-wide refusal (no-referrer makes every form post Origin: null), a race past the daily email cap and several smaller gaps; all fixed, 64 of 64 mutations caught, and a real-browser run signed in by code and by link.",
+  "session_summary": "Fixed Workday's second host: fetch_workday asked a myworkdaysite.com board (pod first, as in wd3.myworkdaysite.com/recruiting/modaxo/Tadera) at wd3.modaxo.myworkdayjobs.com, nobody's host, and would have sent a tenant-first tenant beginning \"wd\" to the other host. One rule now (ats.workday_board: the pod is the part that reads wd and digits) serves the reader, workday_total, the wiring door's shape check and the desk's board link, and both hosts get the request measured on myworkdayjobs.com; the 42 Workday boards on file send byte-identical requests. Pinned by check_a_workday_board_is_asked_at_its_own_host with the network stubbed and every socket refused; 16 of 16 breakages caught.",
   "recent_work": [
+    "2026-11-22 Workday's myworkdaysite.com host asked at its own address (ats.workday_board, one rule for the reader, the size question, the wiring door and the desk link); 42 boards on file unchanged; 16 of 16 mutations caught",
     "2026-11-13 The site's own sign-in: /signin (email link + code, Google OIDC with PKCE and nonce), HMAC-sealed cookies, nothing stored; /admin stays Access-only (proved on the owner's own address)",
     "2026-11-13 Three reviews (security, runtime, a 9-agent blind workflow with skeptics): Origin-null bug that refused every Chrome sign-in, scanner-proof link, email caps (per network, per inbox, a shared daily cap safe under bursts), all fixed",
     "2026-11-13 signin_harness.mjs + check_our_own_sign_in_proves_the_address_and_opens_only_the_boards; 64 of 64 mutations caught; real-browser run via a local Pages stand-in",
