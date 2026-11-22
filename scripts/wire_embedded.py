@@ -279,8 +279,12 @@ def board_on_file(entry: dict, by_id: dict, rows: list, boards: dict | None = No
             if rl == "same":
                 return f"{o.get('name') or o['id']} already reads this board"
             if rl in ("tenant", "unknown"):
+                whole = board_proposals.paylocity_ids(o_refs[0])
                 return (f"{o.get('name') or o['id']} reads a Paylocity board that this one cannot "
-                        f"be told apart from ({(o.get('ats') or {}).get('ref')})")
+                        f"be told apart from ({(o.get('ats') or {}).get('ref')})"
+                        + ("" if rl == "tenant" or (whole[0] and whole[2]) else
+                           " - put on file by its whole /jobs/All/<uuid>/<Tenant> address, it "
+                           "can be compared"))
         return None
     holders = board_proposals.holders_of(records, rows)
     for k in board_proposals.found_keys(kind, ref, (boards or {}).get("pairs")):
@@ -292,12 +296,16 @@ def board_on_file(entry: dict, by_id: dict, rows: list, boards: dict | None = No
 
 def held_by_board(entry: dict, by_id: dict, boards: dict) -> bool:
     """Is this row's board one the owner holds under any other record's id?
-    Asked of the name the board states and the company's own names."""
+    Asked of the name the board states and the company's own names, and for
+    a Paylocity board of every address the row knows it by: a hold that its
+    addresses cannot be told apart from holds it, as it does in the wiring
+    door (board_proposals.held_board; seventh blind review, 2026-11-22)."""
     f = entry.get("found") or {}
     c = by_id.get(entry.get("id")) or {}
     names = [entry.get("board_calls_itself"), *board_proposals.their_names(c)]
     return bool(board_proposals.held_board(boards, f.get("type"), f.get("ref"),
-                                           entry.get("id"), names))
+                                           entry.get("id"), names,
+                                           refs=_paylocity_refs(entry)))
 
 
 def recheck(entry: dict) -> dict:

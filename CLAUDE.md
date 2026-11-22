@@ -2948,7 +2948,28 @@ round.
   name after two ids of one kind that differ - two boards of one tenant,
   never "the board refused": sixth blind review, 2026-11-22) hold the board
   for him, with both addresses in the words; a record whose ref carries no
-  /All/ or /List/ id is no address to compare. The key of
+  /All/ or /List/ id is no address to compare. A SKIP rests only on an id
+  that agrees (`board_proposals.paylocity_ids_agree`): the tenant's name
+  after a /List/ id and after an /All/ id is "same" for holding and never
+  "the board refused", so such a board is read, its page asked for its /All/
+  id, and SKIPped only where that id is the refused one ("this board was
+  refused"), held otherwise (`kinds` in the words) - by /List/ it was
+  SKIPped unread where by its /All/ address it was held (seventh blind
+  review, 2026-11-22). A record with no /All/ id that a find of the run
+  cannot be compared with - a bare /List/ board accepted at the desk or set
+  by hand held every later /All/ find, for every company - has its own
+  board's page asked once for its /All/ address (`wire_found.records_by_page`,
+  through the probe and its manners), and the worklist carries the answer to
+  apply (`record_addresses`, held to the record's board as it reads then);
+  where that page states nothing, the row names the record and says that
+  putting its board on file by its whole /jobs/All/<uuid>/<Tenant> address
+  clears it. The probe and the door keep one grammar for a stated /All/
+  address (a tenant's name may carry , ; ( ): the door refused what the
+  probe stated, and the row said the page "did not state" it), a note's
+  address ends at "; ", and a filed row's `page_ref` reaches its waiting
+  row too. Ids that agree on one kind and differ on the other hold the
+  board, said as that for a hold and for a record on file alike
+  (`wire_found.record_relation`). The key of
   an iCIMS portal is its slug, of a Jibe, Oracle, ApplicantPro or Teamtailor
   board its host, of a Zoho Recruit career site its host and page name (a
   posting's address is under it), and of a Comeet board its company uid,
@@ -3055,7 +3076,13 @@ round.
   apart from, is an ownership question, never the clean pile, and one board
   under two spellings is one board claimed twice (claimants grouped by
   `board_proposals.found_keys` and `paylocity_relation`: sixth blind review,
-  2026-11-22). A store that is on disk and does not read stops either run before
+  2026-11-22). And the hold reader both doors share
+  (`board_proposals.held_board`) compares a Paylocity board with the owner's
+  holds by every address on both sides, holding on anything but "apart", as
+  the wiring door does: by keys alone a hold at a bare /List/ address never
+  met the same board's /All/ address, and wire_embedded --write wired a board
+  the wiring door held (seventh blind review, 2026-11-22). A store that is
+  on disk and does not read stops either run before
   it starts: read as empty it would hold nobody. The second blind review
   (2026-11-19) had the unattended discovery sweep write a doubted company's
   board. Guard: `check_no_door_wires_a_company_the_owner_holds`.
@@ -3103,7 +3130,18 @@ round.
   sides (holds, twins, apply), what the door writes carries the address the
   page stated, the pre-pass asks what consider would read, one website is
   one address, a dismissed Duplicates pair is two companies, and
-  wire_embedded's triage asks the door's holders questions.
+  wire_embedded's triage asks the door's holders questions. Seventh (of
+  460b9171, 2026-11-22): six door findings fixed and pinned on the same
+  branch - held_board's Paylocity half, a SKIP only on an id that agrees,
+  the waiting rows' page_ref, a bare /List/ record's page asked once, one
+  address grammar - and the triage grouping pinned; with them the tests
+  reviewer's unpinned rules (Paylocity holds in discovery and --write, the
+  tenant and Workable-pair rules of triage, a row about another board
+  lending a record nothing, apply's tenant cases, the Duplicates dismissal
+  keys, one website however written, a sibling path, conflicting ids, and
+  the words of a failed page, an own waiting row and a desk-accepted row),
+  and a record whose ids agree on one kind and differ on the other is said
+  as that, not as "nothing compares them".
 - **The owner's to settle:** whether a job platform nothing reads, named on
   their own site, should hold a board (it does now; a link to an aggregator
   and a link to the board's own vendor do not); whether a board named
