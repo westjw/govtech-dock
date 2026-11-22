@@ -4242,5 +4242,405 @@
    "read_at": "2026-11-19T14:13:51-05:00",
    "page": "https://www.wrap.com/"
   }
+ },
+ {
+  "id": "amerlux",
+  "name": "Amerlux",
+  "was": "html",
+  "found": {
+   "type": "hirebridge",
+   "ref": "7161"
+  },
+  "saw": "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=7161",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "the board states no employer name (hirebridge feed lists no jobs, so it names nobody (a company id nobody holds answers the same way)), so nothing on it says it is \"Amerlux\"; the board read no postings, so nothing shows it is the board they hire through today; https://amerlux.com/careers/ embeds the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:10:56-05:00",
+   "page": "https://amerlux.com/careers/"
+  }
+ },
+ {
+  "id": "attenti",
+  "name": "Attenti",
+  "was": "html",
+  "found": {
+   "type": "comeet",
+   "ref": "C2.00D|2CDE01010CEB3410CE59A139BB34867"
+  },
+  "saw": "COMEET.init({\n            \"token\": \"2CDE01010CEB3410CE59A139BB34867\",\n            \"company-uid\": \"C2.00D\",\n            \"company-name\": \"Allied Universal Electro",
+  "times": 1,
+  "verified": "1 posting(s) readable",
+  "board_calls_itself": "Allied Universal Electronic Monitoring",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Allied Universal Electronic Monitoring\", which is not \"Attenti\": a different name, which is what a parent's, an operating entity's or another company's board looks like; https://www.attentigroup.com/ loads the board",
+  "postings": 1,
+  "titles": [
+   "Database Administrator"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:10:58-05:00",
+   "page": "https://www.attentigroup.com/"
+  }
+ },
+ {
+  "id": "black-mountain-software",
+  "name": "Black Mountain Software",
+  "was": "html",
+  "found": {
+   "type": "applicantpro",
+   "ref": "blackmountainsoftware.applicantpro.com"
+  },
+  "saw": "https://blackmountainsoftware.applicantpro.com",
+  "times": 1,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": "Black Mountain Software / Caselle",
+  "identity": "MISMATCH",
+  "identity_why": "the board states 2 employer names (\"Black Mountain Software\", \"Caselle\") and \"Caselle\" is one of them, which is not \"Black Mountain Software\": a different name, which is what a parent's, an operating entity's or another company's board looks like; https://blackmountainsoftware.com/careers/ links to the board",
+  "postings": 2,
+  "titles": [
+   "Senior Software Developer \u2013 Legacy Applications / Visual FoxPro",
+   "Territory Manager"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:10:59-05:00",
+   "page": "https://blackmountainsoftware.com/careers/"
+  }
+ },
+ {
+  "id": "corporater",
+  "name": "Corporater",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://corporater.teamtailor.com"
+  },
+  "saw": "https://corporater.teamtailor.com/",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Corporater",
+  "identity": "unknown",
+  "identity_why": "the board names \"Corporater\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://corporater.com links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:11:24-05:00",
+   "page": "https://corporater.com"
+  }
+ },
+ {
+  "id": "cuseum",
+  "name": "Cuseum",
+  "was": "html",
+  "found": {
+   "type": "zohorecruit",
+   "ref": "https://cuseum.zohorecruit.com/jobs/Careers"
+  },
+  "saw": "https://cuseum.zohorecruit.com/jobs/Careers",
+  "times": 2,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Cuseum",
+  "identity": "unknown",
+  "identity_why": "the board names \"Cuseum\", which is this company, but Cuseum is on file as acquired by \"BID Equity\" in 2025; it is in the Acquisitions queue: BID Equity \u2014 'Cuseum Acquired by BID Equity' is listed as the most recent item on Cuseum's own press page (cuseum.com/press), dated 2025 | deal: Acquired by BID Equity, 2025 | their board sits on https://cuseum.zohorecru; the board read no postings, so nothing shows it is the board they hire through today; https://cuseum.com/careers links to the board (seen 2 times)",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:11:27-05:00",
+   "page": "https://cuseum.com/careers"
+  }
+ },
+ {
+  "id": "gecko",
+  "name": "Gecko",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://careers.geckoengage.com"
+  },
+  "saw": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Jobs\" href=\"https://careers.geckoengage.com/jobs.rss\" />",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Gecko",
+  "identity": "unknown",
+  "identity_why": "the board names \"Gecko\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://careers.geckoengage.com/ links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:11:35-05:00",
+   "page": "https://careers.geckoengage.com/"
+  }
+ },
+ {
+  "id": "govease",
+  "name": "GOVEASE",
+  "was": "html",
+  "found": {
+   "type": "zohorecruit",
+   "ref": "https://govease.zohorecruit.com/jobs/Careers"
+  },
+  "saw": "https://govease.zohorecruit.com/jobs/Careers",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "GovEase",
+  "identity": "unknown",
+  "identity_why": "the board names \"GovEase\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.govease.com/ links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:11:38-05:00",
+   "page": "https://www.govease.com/"
+  }
+ },
+ {
+  "id": "heimdall-power",
+  "name": "Heimdall Power",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://careers.heimdallpower.com"
+  },
+  "saw": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Jobs\" href=\"https://careers.heimdallpower.com/jobs.rss\" />",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Heimdall Power",
+  "identity": "unknown",
+  "identity_why": "the board names \"Heimdall Power\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://careers.heimdallpower.com links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:11:39-05:00",
+   "page": "https://careers.heimdallpower.com"
+  }
+ },
+ {
+  "id": "heja",
+  "name": "Heja",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://jobs.heja.io"
+  },
+  "saw": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Jobs\" href=\"https://jobs.heja.io/jobs.rss\" />",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Heja",
+  "identity": "unknown",
+  "identity_why": "the board names \"Heja\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://jobs.heja.io links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:11:41-05:00",
+   "page": "https://jobs.heja.io"
+  }
+ },
+ {
+  "id": "labster",
+  "name": "Labster",
+  "was": "unknown",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://careers.labster.com"
+  },
+  "saw": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Jobs\" href=\"https://careers.labster.com/jobs.rss\" />",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Labster",
+  "identity": "unknown",
+  "identity_why": "the board names \"Labster\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://careers.labster.com/jobs links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:11:44-05:00",
+   "page": "https://careers.labster.com/jobs"
+  }
+ },
+ {
+  "id": "quicklaunch",
+  "name": "QuickLaunch",
+  "was": "html",
+  "found": {
+   "type": "zohorecruit",
+   "ref": "https://exc.zohorecruit.com/jobs/Careers"
+  },
+  "saw": "https://exc.zohorecruit.com/jobs/Careers/400293000015280318/FullStack-Architect?source=CareerSite",
+  "times": 9,
+  "verified": "26 posting(s) readable",
+  "board_calls_itself": "ElevenX Capital",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"ElevenX Capital\", which is not \"QuickLaunch\": a different name, which is what a parent's, an operating entity's or another company's board looks like; the board also gives its website as elevenxcapital.com, where the one on file is quicklaunch.io; https://quicklaunch.io/careers links to the board (seen 9 times)",
+  "postings": 26,
+  "titles": [
+   "VP of Operations",
+   "Associate Chief of Staff",
+   "TA Specialist",
+   "COS-Technology & Operations",
+   "TA Operations Manager",
+   "Chief Operating Officer",
+   "Senior Legal Counsel",
+   "Marketing Manager"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:12:00-05:00",
+   "page": "https://quicklaunch.io/careers"
+  }
+ },
+ {
+  "id": "springbrook-software",
+  "name": "Springbrook Software",
+  "was": "unknown",
+  "found": {
+   "type": "applicantpro",
+   "ref": "springbrooksoftware.isolvedhire.com"
+  },
+  "saw": "https://springbrooksoftware.isolvedhire.com/jobs/",
+  "times": 1,
+  "verified": "3 posting(s) readable",
+  "board_calls_itself": "Springbrook Holding Company LLC",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Springbrook Holding Company LLC\", which is not \"Springbrook Software\": a different name, which is what a parent's, an operating entity's or another company's board looks like; the same board was found for Xpress Bill Pay in this run; https://springbrooksoftware.com links to the board",
+  "postings": 3,
+  "titles": [
+   "Enterprise Account Executive",
+   "Head of Information Security",
+   "Solutions Engineer"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:12:07-05:00",
+   "page": "https://springbrooksoftware.com"
+  }
+ },
+ {
+  "id": "sysaid",
+  "name": "SysAid",
+  "was": "unknown",
+  "found": {
+   "type": "comeet",
+   "ref": "https://www.comeet.com/jobs/sysaid/43.00A"
+  },
+  "saw": "https://www.comeet.com/jobs/sysaid/43.00A/brand-designer-maternity-leave-cover/B6.470",
+  "times": 8,
+  "verified": "8 posting(s) readable",
+  "board_calls_itself": "SysAid Technologies",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"SysAid Technologies\", which is not \"SysAid\": one name only contains the other, and a name inside another name is never taken for the same company; the board gives its website as sysaid.com, which is the one on file; their own site also names other:teamme.link, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.sysaid.com/ loads the board (seen 8 times)",
+  "postings": 8,
+  "titles": [
+   "Brand Designer (Maternity Leave Cover)",
+   "Business Development Representative",
+   "Business Development Representative (Maternity Cover)",
+   "Implementation Specialist (English/Spanish)",
+   "Revenue Operations Strategist",
+   "Sales Enablement Manager",
+   "Sales Solution Engineer",
+   "Senior Director, Customer Retention & Growth (Americas)"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:12:11-05:00",
+   "page": "https://careers.sysaid.com/"
+  }
+ },
+ {
+  "id": "uveye",
+  "name": "UVeye",
+  "was": "html",
+  "found": {
+   "type": "comeet",
+   "ref": "92.00F|29FA7C17971797FBA179753E53E0A7C"
+  },
+  "saw": "COMEET.init({\n                \"token\": \"29FA7C17971797FBA179753E53E0A7C\",\n                \"company-uid\": \"92.00F\",\n                \"company-name\": \"uveye\",\n    ",
+  "times": 1,
+  "verified": "23 posting(s) readable",
+  "board_calls_itself": "UVeye",
+  "identity": "unknown",
+  "identity_why": "the board names \"UVeye\", which is this company, but the public board already shows 56 postings for this company (crawl of 2026-11-21) and this board read 23 postings; wiring it would take roles off the board; https://uveye.com loads the board",
+  "postings": 23,
+  "titles": [
+   "Area Sales Manager (MN, ND, SD)",
+   "Automotive Dealer Activation Manager - Northeast",
+   "Controller",
+   "Customer Success Manager PA/VA/MD",
+   "Customer Success Manager PA/VA/MD",
+   "Customer Success Manager PA/VA/MD",
+   "Data Tagging",
+   "Director of Accounts"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:12:15-05:00",
+   "page": "https://uveye.com"
+  }
+ },
+ {
+  "id": "xpress-bill-pay",
+  "name": "Xpress Bill Pay",
+  "was": "html",
+  "found": {
+   "type": "applicantpro",
+   "ref": "springbrooksoftware.isolvedhire.com"
+  },
+  "saw": "https://springbrooksoftware.isolvedhire.com",
+  "times": 1,
+  "verified": "3 posting(s) readable",
+  "board_calls_itself": "Springbrook Holding Company LLC",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Springbrook Holding Company LLC\", which is not \"Xpress Bill Pay\": a different name, which is what a parent's, an operating entity's or another company's board looks like; the same board was found for Springbrook Software in this run; https://xpressbillpay.com links to the board",
+  "postings": 3,
+  "titles": [
+   "Enterprise Account Executive",
+   "Head of Information Security",
+   "Solutions Engineer"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-22",
+   "on": "2026-11-21",
+   "at": "2026-11-21T23:12:51-05:00",
+   "read_at": "2026-11-21T23:12:07-05:00",
+   "page": "https://xpressbillpay.com"
+  }
  }
 ]
