@@ -3119,12 +3119,19 @@ review and the owner's word, through the wiring door.
   drawn by the server, 25 rows a page; every hop is held to the ref's host
   (`same_host`) and asked of robots.txt, which allows /search/, /go/ and /job/
   on every CSB host read and closes /services/. It is paged by page 1's own
-  row count to a page that adds no new posting (`_paged`), and an offset at or
-  past the total its pagination label states ("Results <b>1 – 25</b> of
-  <b>334</b>", the second number, in any of its languages) is not asked. Past
-  its end the list says "no open positions matching" and shows the board's
-  10 most recent postings again (Gainwell, 2026-11-22), so a board with no
-  label stops too.
+  row count (`ats.successfactors_walk`), and an offset at or past the total
+  its pagination label states ("Results <b>1 – 25</b> of <b>334</b>", the
+  second number, in any of its languages) is not asked. **A read short of
+  that total is an error, never the board** (seventh blind review,
+  2026-11-22): a page inside it that adds no posting (empty, page 1 again,
+  the past-the-end list served in the middle, rows with no posting link), a
+  read that reaches the total more than a page short of it, and the 80-page
+  ceiling with or without a total; a hop from page N that drops its
+  startrow is refused before it is asked. Past its end the list says "no
+  open positions matching" and shows the board's 10 most recent postings
+  again (Gainwell, 2026-11-22), so a board with no label stops on the page
+  that adds nothing. One posting closing mid-read costs one row, as offset
+  paging always has.
 - **A row** is a `<tr class="data-row">` the page shows (read through
   `ats._cut`: a commented-out or script-held row is none): its first titled
   `jobTitle-link` to a /job/ page on the site - written twice, for a desk and
@@ -3135,7 +3142,12 @@ review and the owner's word, through the wiring door.
   city, AR, US, 99999 +1 more…' reads 'AR, US +1 more…'). A date is read
   in three forms only: 'Nov 20, 2026' (en_US), '21 nov 2026' (es_ES, Indra's),
   and '21.11.2026' (de_DE, JENOPTIK's) only on a page whose `<html lang>` is
-  German. Anything else is no date, never a guess.
+  German. Anything else is no date, never a guess. **No address is read
+  that does not say plainly where it goes**: a posting link or a hop whose
+  path, raw or with any layer of its escapes undone, has a '.', '..' or
+  '..;' segment, an empty one or a backslash (robots.txt is asked of the
+  address as written, and '/job/%2e%2e/services/...' went out as
+  '/job/../services/...').
 - **Behind FETCH_DETAILS** the ad is each posting's `itemprop="description"`
   element, to the close that matches it. CSB has no pay field; a figure in the
   ad's text is plain_rows' text parse, as for every reader.
@@ -3148,15 +3160,26 @@ review and the owner's word, through the wiring door.
   board's own configuration, on the /search/ page: its `<title>` and meta
   description, one locale's pair ('X Jobs' / 'Find at X'; 'X - Stellen' /
   'Bei X nach suchen'; 'X ofertas de trabajo' / 'Buscar en X'), believed only
-  when the two name one name. Then the `hiringOrganization` meta of the first
-  `SF_POSTINGS_ASKED` (5) postings on page 1: every one asked must carry one
-  (a posting naming nobody states nothing), and another employer is a second
-  name, so not proven. Where all agree the board is stated whole; `n` is the
-  label's total (`n_is_partial` when a page has none). Gainwell's states
-  'Gainwell Technologies LLC', which `strict` equates with the record. A
-  placeholder name ('our team' on SPX's board, the tenant id 'esricanada' on
-  Esri Canada's) is stated as it is, and proven() refuses it by name. A
-  posting that answers 404 while it is asked is a failure of the day.
+  when the two name one name, and always one of the names. Then the postings'
+  `hiringOrganization` metas: every one asked must carry one, not empty and
+  not in a comment (a posting naming nobody states nothing), and another
+  employer is a second name, so not proven. **The whole board or nothing**
+  (the owner's rule, seventh blind review, 2026-11-22): a board is stated
+  only when its label states a total of `SF_POSTINGS_ASKED` (40) or fewer and
+  every posting on it was asked, its list read to the end; a longer board,
+  or one with no total, is asked about its first `SF_POSTINGS_SAMPLED` (5)
+  for the desk and states nothing. So Gainwell's 334 goes to the owner's
+  queue, never wired unattended. `n` is the label's total (`n_is_partial`
+  when a page has none). A posting that closed between the list and the
+  probe - a 404, a hop off /job/ (not asked), or a 200 page at its address
+  showing no posting: Gainwell's closed ones say only "Sorry, this position
+  has been filled.", measured 2026-11-22 - is a failure of the day where the
+  board's other postings answer; where none does, the board states nothing.
+  Postings written in more than one language (their title's own lang) are a
+  board listing a role once per language (JENOPTIK's twins), and are not
+  stated. A placeholder name ('our team' on SPX's board, the tenant id
+  'esricanada' on Esri Canada's) is stated as it is, and proven() refuses it
+  by name.
 - **The finder** (`find_site_boards`). A page whose OWN markup - its scripts
   and other tags' attributes, never its links or frames, never what a browser
   saw it ask for - loads CSB's machinery is a board at THAT page's origin:
@@ -3169,28 +3192,40 @@ review and the owner's word, through the wiring door.
   nothing reads, as it was before CSB had a reader (renamed only because
   ELSEWHERE never files a type the crawl reads); every other SAP address is
   `successfactors-other`, a form of a platform we read that names no board.
-  On the board's own pages both are its furniture: its j2w.init ssoUrl names
-  its tenant's legacy portal, and Indra's front page links it to sign in.
+  On the board's own pages both are its furniture - its j2w.init ssoUrl
+  names its tenant's legacy portal, and Indra's front page links it to sign
+  in - but a legacy portal only where it names that board's own tenant (its
+  company= is the page's ssoCompanyId) or none: another tenant's portal
+  beside the board is another account, and stays (seventh blind review).
 - **Measured** on six CSB hosts by the research of 2026-11-20 (Landis+Gyr 63,
   JENOPTIK 175, SPX 237 and Indra 623 classic; Aurigo and Esri Canada Unify)
   and on Gainwell's of 2026-11-22. **Read live once** the same day (details
   off, no cache): 334 rows, every one of the 334 its label states, from 14
   list pages and one robots.txt on its own host, all dated (2026-10-25 to
   2026-11-22); the probe asked page 1 and five postings and stated
-  'Gainwell Technologies LLC', proven for the record. Every placeholder place
+  'Gainwell Technologies LLC', proven for the record - under the first
+  probe. Under the whole-board rule since, the same answer is not stated
+  (334 postings, five asked), so Gainwell goes to the owner. Every placeholder place
   read clean (80 rows read 'TX, US') except 14 rows open in more places than
   one, and the rule that keeps their '+1 more…' was written after that read,
   from one read of the list sorted by place.
 - **Not built**: Unify sites (sitemap.xml plus one request a posting would
   read them, two on Aurigo's); a multi-brand tenant's /<Brand>/search/; a unit
   filter for a group's board (SPX's 237 rows are 12 units, named only in a
-  per-site Facility column).
+  per-site Facility column). And a board on file that lists each role once
+  per language publishes each copy: the list marks no row's language (two
+  JENOPTIK twins share a title and differ by id and by the language of their
+  place), so the reader cannot pair them; the probe holds such a board, so
+  it is never wired unattended, and asking /search/ with a locale was not
+  measured.
 - Guard: `check_successfactors_reads_its_career_site`, beside a row in
   `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS and two forms
-  in SITE_BOARD_FORMS. 64 breaks of the reader, the probe, the finder and the
-  tables, one at a time in a private copy: 64 noticed, three of them only
-  after the check was tightened (the Unify error's own words; a search link
-  beside another page's sortColumn; a title link left unclosed).
+  in SITE_BOARD_FORMS. First round: 64 breaks of the reader, the probe, the
+  finder and the tables, one at a time in a private copy, 64 noticed (three
+  only after the check was tightened). Seventh blind review (2026-11-22):
+  nine findings and the tests reviewer's unpinned breakages (E-01..E-14,
+  E-22), each fixed or pinned; then 99 breaks of the code as it stands, the
+  first round's included where the code moved, 99 noticed.
 
 ## Build order (owner, 2026-08-23)
 
