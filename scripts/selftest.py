@@ -20045,13 +20045,21 @@ def check_successfactors_reads_its_career_site() -> int:
                 f'<table id="searchresults"><tbody><tr id="search-results-header"><th>Title</th>'
                 f'</tr>{"".join(rows)}</tbody></table></body></html>')
 
-    def posting(org="Acme Gov LLC", ad="<p>Sell to state agencies.</p>"):
-        meta = "" if org is None else f'<meta itemprop="hiringOrganization" content="{org}">'
+    def posting(org="Acme Gov LLC", ad="<p>Sell to state agencies.</p>", lang="en-US"):
+        # (org may be a list: every hiringOrganization meta the page carries)
+        orgs = [] if org is None else org if isinstance(org, list) else [org]
+        meta = "".join(f'<meta itemprop="hiringOrganization" content="{o}">' for o in orgs)
         return (f'<html><head><title>Role Job Details | Acme Gov LLC</title></head><body>'
                 f'<div class="jobDisplayShell" itemscope="itemscope"><meta itemprop="datePosted" '
-                f'content="Sun Nov 22 08:00:00 UTC 2026">{meta}<span itemprop="description" '
+                f'content="Sun Nov 22 08:00:00 UTC 2026">{meta}<span xml:lang="{lang}" lang="{lang}" '
+                f'itemprop="title">Role</span><span itemprop="description" '
                 f'class="rtltextaligneligible"><span class="jobdescription">{ad}</span></span></div>'
                 f'</body></html>')
+
+    # what a closed posting answers at its own address: 200, its title, and
+    # one sentence (Gainwell's, measured 2026-11-22)
+    filled = ('<html><head><title>Role Job Details | Acme Gov LLC</title></head><body>'
+              '<p>Sorry, this position has been filled.</p></body></html>')
 
     sent, robots_asked = [], []
 
@@ -20145,6 +20153,92 @@ def check_successfactors_reads_its_career_site() -> int:
         if exc or len(rows or []) != 15 or sent != [at(0), at(10)]:
             errors += fail(f"successfactors: a board of 10 rows a page was not paged by 10 "
                            f"(asked {[u[len(SF):] for u in sent]}): {exc}")
+        # a row of another class is no posting row, and does not move the step
+        stray = page([row(n) for n in range(1, 11)] + ['<tr class="data-row-hidden"><td></td></tr>'],
+                     total=15)
+        rows, exc = go({at(0): stray, at(10): page([row(n) for n in range(11, 16)], total=15, first=11)},
+                       lambda: ats.fetch_successfactors(SF))
+        if exc or len(rows or []) != 15 or sent != [at(0), at(10)]:
+            errors += fail(f"successfactors: a <tr class=\"data-row-hidden\"> was counted as a posting "
+                           f"row (asked {[u[len(SF):] for u in sent]}): {exc}")
+        # a board of six pages is read to its end
+        six = {at(k * 25): page([row(n) for n in range(k * 25 + 1, k * 25 + 26)], total=150,
+                                first=k * 25 + 1) for k in range(6)}
+        rows, exc = go(six, lambda: ats.fetch_successfactors(SF))
+        if exc or len(rows or []) != 150 or len(sent) != 6:
+            errors += fail(f"successfactors: a board of six pages read as {len(rows or [])} rows from "
+                           f"{len(sent)} pages: {exc}")
+        # A READ THAT STOPS SHORT OF THE TOTAL THE BOARD STATES IS NOT THE BOARD
+        # (seventh blind review, 2026-11-22): a page inside it that adds no
+        # posting, a hop that drops its startrow, the ceiling
+        newest = page([row(n) for n in range(1, 11)])
+        for p2_, why in ((p1, "page 2 answering as page 1"),
+                         (page([], total=60), "page 2 with no rows"),
+                         (newest, "page 2 answering with the board's past-the-end list"),
+                         ((301, SF + "/search/?locale=en_US"), "page 2 sent to a page with no startrow"),
+                         (page([row(n) for n in range(26, 51)], total=60, first=26).replace(
+                             "jobTitle-link", "jobTitle-link2"), "page 2's rows with no posting link")):
+            rows, exc = go({at(0): p1, at(25): p2_, at(50): p3, SF + "/search/?locale=en_US": p1},
+                           lambda: ats.fetch_successfactors(SF))
+            if exc is None or rows is not None or SF + "/search/?locale=en_US" in sent:
+                errors += fail(f"successfactors: with {why}, a board stating 60 read as "
+                               f"{len(rows or [])} rows ({exc}), or the page with no startrow was asked")
+        # a hop off the host on page 2 is refused before that host is asked, even
+        # one that keeps the startrow
+        away = "https://tracker.elsewhere.example/landing?startrow=25"
+        rows, exc = go({at(0): p1, at(25): (302, away), away: p2}, lambda: ats.fetch_successfactors(SF))
+        if exc is None or "leads off" not in str(exc) or any("elsewhere" in u for u in sent + robots_asked):
+            errors += fail(f"successfactors: page 2's redirect to another host was followed ({sent}, "
+                           f"robots {robots_asked}): {rows or exc}")
+        short = {at(0): p1, at(25): page([row(n) for n in range(26, 31)], total=60, first=26),
+                 at(50): page([row(n) for n in range(51, 54)], total=60, first=51)}
+        rows, exc = go(short, lambda: ats.fetch_successfactors(SF))
+        if exc is None:
+            errors += fail(f"successfactors: pages carrying 33 of the 60 postings the board states were "
+                           f"read as the board: {len(rows or [])} rows")
+        shrunk = {at(0): p1, at(25): page([row(n) for n in range(27, 52)], total=59, first=26),
+                  at(50): page([row(n) for n in range(52, 61)], total=59, first=51)}
+        rows, exc = go(shrunk, lambda: ats.fetch_successfactors(SF))
+        if exc or len(rows or []) != 59:
+            errors += fail(f"successfactors: a board that lost one posting while it was read was not "
+                           f"read ({len(rows or [])} rows): {exc}")
+        held_max = ats.SF_MAX_PAGES
+        try:
+            ats.SF_MAX_PAGES = 2
+            for total_ in (60, None):
+                rows, exc = go(three if total_ else bare, lambda: ats.fetch_successfactors(SF))
+                if exc is None or "did not end" not in str(exc):
+                    errors += fail(f"successfactors: past its page ceiling a board stating "
+                                   f"{total_ or 'no total'} read as {len(rows or [])} rows: {exc}")
+        finally:
+            ats.SF_MAX_PAGES = held_max
+        if ats.SF_MAX_PAGES != 80:
+            errors += fail(f"successfactors: the page ceiling is {ats.SF_MAX_PAGES}, not 80")
+        # AN ADDRESS THAT DOES NOT SAY PLAINLY WHERE IT GOES is never asked: robots.txt
+        # is asked of it as written, and the library sends its dot segments
+        for href in ("/job/%2e%2e/services/recruiting/v1/jobs", "/job/%252e%252e/services/x/",
+                     "/job/..;/services/x/", "/job/a%2F..%2Fservices/x/", "/job//x/1/",
+                     "/job/x\\..\\services/1/", "/job/%2E/1/"):
+            got = ats.successfactors_list(page([row(1, href=href)], total=1), SF)[1]
+            if got:
+                errors += fail(f"successfactors: a row's link {href!r} was taken as a posting: {got}")
+        kept = ats.successfactors_list(page([row(1, href="/job/Sr.-Engineer%2C-Gov%C3%BC-%26-Co/1400000001/")],
+                                            total=1), SF)[1]
+        if len(kept) != 1:
+            errors += fail("successfactors: a plain posting address with a dot and escapes in its slug "
+                           "was not read")
+        for to, words in ((SF + "/job/%2e%2e/services/recruiting/v1/jobs", "plainly"),
+                          (SF + "/search/%2e%2e/services/x", "plainly")):
+            ats.FETCH_DETAILS = True
+            rows, exc = go({at(0): page([row(1)], total=1), SF + job(1): (302, to)},
+                           lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            asked_sf = [u for u in sent + robots_asked if "services" in u]
+            rows2, exc2 = go({at(0): (302, to)}, lambda: ats.fetch_successfactors(SF))
+            if asked_sf or exc2 is None or words not in str(exc2) \
+                    or any("services" in u for u in sent + robots_asked):
+                errors += fail(f"successfactors: a hop to {to[len(SF):]} was asked ({asked_sf or sent}): "
+                               f"{exc2}")
 
         # ---- the date, in the three forms measured and no other ---------------
         for lang, when, want in (("en-US", "Nov 20, 2026", "2026-11-20"),
@@ -20152,6 +20246,7 @@ def check_successfactors_reads_its_career_site() -> int:
                                  ("de-DE", "21.11.2026", "2026-11-21"),
                                  ("es-ES", "21 nov 2026", "2026-11-21"),
                                  ("es-ES", "3 ene 2027", "2027-01-03"),
+                                 ("es-ES", "21 sept 2026", "2026-09-21"),
                                  ("en-US", "21.11.2026", None),          # day first only on a German page
                                  ("de-DE", "31.02.2026", None),
                                  ("en-US", "Foo 20, 2026", None),
@@ -20165,6 +20260,7 @@ def check_successfactors_reads_its_career_site() -> int:
         # of a role's other places kept (measured on its board, 2026-11-22)
         for where, want in (("Any city, AR, US, 99999 +1 more…", "AR, US +1 more…"),
                             ("Any city, TX, US, 99999", "TX, US"),
+                            ("Any City, TX, US, 99999", "TX, US"),
                             ("Anchorage, AK, US, 99503 +1 more…", "Anchorage, AK, US, 99503 +1 more…"),
                             ("Massachusetts (MA), US +2 more…", "Massachusetts (MA), US +2 more…"),
                             ("West Sacramento, CA, US, 95605-1630", "West Sacramento, CA, US, 95605-1630")):
@@ -20189,7 +20285,7 @@ def check_successfactors_reads_its_career_site() -> int:
         ad = "<p>Sell to state agencies.</p><span>Pay: $90,000-$110,000 a year</span><p>Apply today.</p>"
         ats.FETCH_DETAILS = True
         rows, exc = go({at(0): page([row(1), row(2)], total=2), SF + job(1): posting(ad=ad),
-                        SF + job(2): (302, "https://www.vendor-home.example/job")},
+                        SF + job(2): (302, "https://www.vendor-home.example/job/x/2/")},
                        lambda: ats.fetch_successfactors(SF))
         ats.FETCH_DETAILS = False
         one = (rows or [{}])[0]
@@ -20202,6 +20298,11 @@ def check_successfactors_reads_its_career_site() -> int:
         if ats.successfactors_ad(posting(ad=ad).replace("</span></span></div>", "</div>")) != "" \
                 or ats.successfactors_ad("<!-- " + posting() + " -->") != "":
             errors += fail("successfactors: an ad never closed, or one in a comment, was read")
+        if ats.successfactors_ad('<html><meta itemprop="description" content="Sell to cities &amp; '
+                                 'counties."></html>') != "Sell to cities & counties.":
+            errors += fail("successfactors: an ad given as <meta itemprop=description> was not read")
+        if "Apply today" not in ats.successfactors_ad(posting(ad="<p>Sell.</p><span/><p>Apply today.</p>")):
+            errors += fail("successfactors: a <span/> inside the ad cut the ad short")
 
         # ---- what is not a board: never a zero, and nothing past it asked -----
         unify = page([], head='<script src="/platform/js/j2w/min/j2w.searchResultsUnify.min.js">'
@@ -20251,29 +20352,46 @@ def check_successfactors_reads_its_career_site() -> int:
         # ---- the probe ---------------------------------------------------------
         seven = page([row(n) for n in range(1, 8)], total=7)
 
-        def board(listing, orgs):
+        def board(listing, orgs, more=None):
+            # (orgs: each posting's employer - None for no meta, a list for
+            # several, a raw page or a (status, location) answer; `more`
+            # routes are laid over them)
             routes = {at(0): listing}
             for n, org in orgs.items():
-                routes[SF + job(n)] = org if isinstance(org, tuple) else posting(org)
+                routes[SF + job(n)] = org if isinstance(org, tuple) or (
+                    isinstance(org, str) and org.startswith("<html")) else posting(org)
+            routes.update(more or {})
             return routes
-        agree = board(seven, {n: "Acme Gov LLC" for n in range(1, 8)})
+
+        def every(n_, org="Acme Gov LLC", **but):
+            return {k: but.get(f"p{k}", org) for k in range(1, n_ + 1)}
+        agree = board(seven, every(7))
         got = said(agree)
         asked_n = sum(1 for u in sent if "/job/" in u)
         if got["names"] != ["Acme Gov LLC"] or not got["stated"] or got["n"] != 7 \
-                or got["hosts"] != {"jobs.acmegov.example"} or got["n_is_partial"] or asked_n != 5 \
+                or got["hosts"] != {"jobs.acmegov.example"} or got["n_is_partial"] or asked_n != 7 \
                 or not vb.proven({"name": "Acme Gov"}, got)["ok"] or set(sent) - set(robots_asked):
-            errors += fail(f"successfactors probe: a site whose title, description and postings agree "
-                           f"was not stated whole and proven for the record named without 'LLC' "
+            errors += fail(f"successfactors probe: a site whose title, description and every posting "
+                           f"agree was not stated whole and proven for the record named without 'LLC' "
                            f"({asked_n} postings asked): {got}")
         for routes, want, proved, why in (
                 (board(page([row(n) for n in range(1, 8)], total=7, words="Find  at Acme Holdings"),
-                       {n: "Acme Gov LLC" for n in range(1, 8)}), [], False,
-                 "the title and the description disagree"),
-                (board(seven, {1: "Acme Gov LLC", 2: "Acme Gov LLC", 3: "Parent Co", 4: "Acme Gov LLC",
-                               5: "Acme Gov LLC"}), ["Acme Gov LLC", "Parent Co"], False,
+                       every(7)), [], False, "the title and the description disagree"),
+                (board(seven, every(7, p3="Parent Co")), ["Acme Gov LLC", "Parent Co"], False,
                  "a posting names another employer"),
-                (board(seven, {1: "Acme Gov LLC", 2: None, 3: "Acme Gov LLC", 4: "Acme Gov LLC",
-                               5: "Acme Gov LLC"}), [], False, "a posting names nobody"),
+                (board(page([row(n) for n in range(1, 8)], total=7, title="Parent Group Jobs",
+                            words="Find  at Parent Group"), every(7)), ["Acme Gov LLC", "Parent Group"],
+                 False, "the site names its group, and every posting the company"),
+                (board(seven, every(7, p2='<html><div itemscope="itemscope"><meta itemprop="datePosted" '
+                                          'content="x"><!-- <meta itemprop="hiringOrganization" '
+                                          'content="Acme Gov LLC"> --></div></html>')),
+                 [], False, "a posting's only hiringOrganization inside a comment"),
+                (board(seven, every(7, p7="Parent Co")), ["Acme Gov LLC", "Parent Co"], False,
+                 "the last posting names another employer"),
+                (board(seven, every(7, p2=None)), [], False, "a posting names nobody"),
+                (board(seven, every(7, p2="")), [], False, "a posting's hiringOrganization is empty"),
+                (board(seven, every(7, p2=["", "Acme Gov LLC"])), [], False,
+                 "a posting carries an empty hiringOrganization beside a named one"),
                 (board(page([row(n) for n in range(1, 3)], total=2, title="our team Jobs",
                             words="Find  at our team"), {1: "our team", 2: "our team"}),
                  ["our team"], False, "a placeholder site name ('our team')"),
@@ -20288,19 +20406,80 @@ def check_successfactors_reads_its_career_site() -> int:
                 (board(page([row(1)], total=1, title="Jobs").replace(
                     "<head>", "<head><!-- <title>Acme Gov LLC Jobs</title> -->"), {1: "Acme Gov LLC"}),
                  [], False, "the only title in a comment, before the page's own"),
-                (board(seven, {1: "Acme Gov LLC", 2: (404, None)}), [], False,
+                (board(seven, every(7, p2=(404, None))), [], False,
                  "a posting closed between the list and the probe"),
-                (board(seven, {1: (302, "https://www.vendor-home.example/")}), [], False,
+                (board(seven, every(7, p1=(302, "https://www.vendor-home.example/job/x/1/"))), [], False,
                  "a posting that leaves the host"),
                 (board(unify, {}), [], False, "a Unify site")):
             got = said(routes)
             v = vb.proven({"name": "Acme Gov"}, got)
             if got["names"] != want or got["stated"] != bool(want) or v["ok"] != proved \
                     or not got["how"] or (want and "successfactors" not in got["how"]) \
+                    or (len(want) > 1 and "do not agree" not in got["how"]) \
                     or any("vendor-home" in u for u in sent + robots_asked):
                 errors += fail(f"successfactors probe, {why}: stated {got['names']} (stated="
                                f"{got['stated']}, proven={v['ok']}, how={got['how']!r}), wanted {want}")
-        got = said(board(seven, {1: "Acme Gov LLC", 2: (404, None)}))
+
+        # THE WHOLE BOARD OR NOTHING (seventh blind review, 2026-11-22): a name
+        # stated by part of a board is never stated for all of it
+        p1 = page([row(n) for n in range(1, 26)], total=30)
+        p2 = page([row(n) for n in range(26, 31)], total=30, first=26)
+        got = said(board(p1, every(30), {at(25): p2}))
+        if not got["stated"] or got["names"] != ["Acme Gov LLC"] \
+                or sum(1 for u in sent if "/job/" in u) != 30 or at(25) not in sent \
+                or len(sent) != len(set(sent)) or not vb.proven({"name": "Acme Gov"}, got)["ok"]:
+            errors += fail(f"successfactors probe: a board of 30 whose every posting agrees was not "
+                           f"read to its end, every posting asked once, and stated whole: {got}")
+        got = said(board(p1, every(30, **{f"p{k}": "Sibling Services Inc" for k in range(6, 31)}),
+                         {at(25): p2}))
+        if got["names"] != ["Acme Gov LLC", "Sibling Services Inc"] or vb.proven({"name": "Acme Gov"},
+                                                                                   got)["ok"]:
+            errors += fail(f"successfactors probe: a board whose first five postings name it and the "
+                           f"rest another employer was proven (the reviewer's group board): {got}")
+        for total_, why in ((41, "longer than the postings it asks"), (334, "of Gainwell's size")):
+            got = said(board(page([row(n) for n in range(1, 26)], total=total_), every(25)))
+            asked_n = sum(1 for u in sent if "/job/" in u)
+            if got["stated"] or got["names"] != ["Acme Gov LLC"] or asked_n != vb.SF_POSTINGS_SAMPLED \
+                    or vb.proven({"name": "Acme Gov"}, got)["ok"] or f"of its {total_}" not in got["how"]:
+                errors += fail(f"successfactors probe: a board {why} ({total_}) was stated, proven, or "
+                               f"asked {asked_n} postings: {got}")
+        if vb.SF_POSTINGS_ASKED != 40 or vb.SF_POSTINGS_SAMPLED != 5:
+            errors += fail(f"successfactors probe: it asks every posting of a board of "
+                           f"{vb.SF_POSTINGS_ASKED} or fewer and samples {vb.SF_POSTINGS_SAMPLED}, not "
+                           f"40 and 5")
+        got = said(board(page([row(n) for n in range(1, 4)]), every(3)))
+        if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"]:
+            errors += fail(f"successfactors probe: a board stating no total was stated whole: {got}")
+        gap = page([row(1), row(2, href="/go/View-All-Jobs/8808000/"), row(3)], total=3)
+        got = said(board(gap, {1: "Acme Gov LLC", 3: "Acme Gov LLC"}))
+        if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"]:
+            errors += fail(f"successfactors probe: a board of 3 of which 2 could be asked was stated "
+                           f"whole: {got}")
+
+        # a posting that has CLOSED since the list was read is the day's
+        # failure where the others answer; where none does, the board's
+        landing = SF + "/search/?q=&messageKey=jobNotFound"
+        for closing, why in ((filled, "answers 200 at its address, 'position has been filled'"),
+                             ((302, landing), "sends its reader back to the list"),
+                             ((404, None), "answers 404")):
+            got = said(board(seven, every(7, p4=closing), {landing: seven}))
+            if got["stated"] or got["names"] or got["transient"] is not True or got["failed"] == "gone" \
+                    or landing in sent:
+                errors += fail(f"successfactors probe: a posting that closed and {why} was not a "
+                               f"failure of the day, or the list it was sent to was asked: {got}")
+        got = said(board(seven, {k: filled for k in range(1, 8)}))
+        if got["stated"] or got["names"] or got["transient"] or "none of the" not in str(got["how"]):
+            errors += fail(f"successfactors probe: a board none of whose postings answers as one was "
+                           f"read as a failure of the day, or as naming somebody: {got}")
+        # one role listed once per language (JENOPTIK's twins) is not one board's statement
+        got = said(board(seven, every(7), {SF + job(2): posting(lang="de-DE")}))
+        if got["stated"] or got["names"] != ["Acme Gov LLC"] or "language" not in str(got["how"]) \
+                or vb.proven({"name": "Acme Gov"}, got)["ok"]:
+            errors += fail(f"successfactors probe: postings in two languages were stated whole: {got}")
+        got = said(board(seven, every(7), {SF + job(2): posting(lang="en-GB")}))
+        if not got["stated"]:
+            errors += fail(f"successfactors probe: en-US and en-GB postings read as two languages: {got}")
+        got = said(board(seven, every(7, p2=(404, None))))
         if got["failed"] == "gone" or got["transient"] is not True:
             errors += fail(f"successfactors probe: a posting that answered 404 is failed="
                            f"{got['failed']!r} transient={got['transient']!r}, not a failure of the day")
@@ -20308,12 +20487,11 @@ def check_successfactors_reads_its_career_site() -> int:
                                                              words="Find  at our team"), {1: "our team"})))
         if v["ok"] or '"our team"' not in v["why"]:
             errors += fail(f"successfactors probe: 'our team' is not refused by name: {v}")
-        got = said(board(page([row(n) for n in range(1, 8)], total=334),
-                         {n: "Acme Gov LLC" for n in range(1, 8)}))
+        got = said(board(page([row(n) for n in range(1, 8)], total=334), every(7)))
         if got["n"] != 334 or got["n_is_partial"] is not False:
             errors += fail(f"successfactors probe: n is not the total the board's label states: "
                            f"{got['n']}, {got['n_is_partial']}")
-        got = said(board(page([row(n) for n in range(1, 4)]), {n: "Acme Gov LLC" for n in range(1, 4)}))
+        got = said(board(page([row(n) for n in range(1, 4)]), every(3)))
         if got["n"] != 3 or got["n_is_partial"] is not True:
             errors += fail(f"successfactors probe: with no total stated, n is not the first page's "
                            f"rows and said to be so: {got['n']}, {got['n_is_partial']}")
@@ -20381,6 +20559,8 @@ def check_successfactors_reads_its_career_site() -> int:
              "a search with no sortColumn, beside another page's"),
             ('<a href="https://jobs.acmegov.example/go/careers/">Jobs</a>', here, [],
              "a /go/ path with no category number"),
+            ('<a href="https://news.acmegov.example/go/Events/12/">Events</a>', here, [],
+             "a /go/ path with a two-digit number on their own domain"),
             ('<a href="https://career41.sapsf.com/careers?company=acmegovte">Jobs</a>',
              here, [], "a legacy portal")):
         found, _rest = fsb.sightings(markup, url, home)
@@ -20416,12 +20596,38 @@ def check_successfactors_reads_its_career_site() -> int:
     # its tenant's legacy portal included (Indra's front page links it to sign in)
     own_page = ('<link rel="stylesheet" href="//rmkcdn.successfactors.com/a1b2c3d4/x.css" />'
                 '<script src="https://performancemanager5.successfactors.eu/verp/vmod_v1/ui/extlib/j.js">'
-                '</script><a href="https://career55.sapsf.eu/career?company=acmegovte&amp;lang=en_US">'
+                "</script><script>j2w.init({\"ssoCompanyId\" : 'acmegovte', \"ssoUrl\" : "
+                "'https://career55.sapsf.eu'});</script>"
+                '<a href="https://career55.sapsf.eu/career?company=acmegovte&amp;lang=en_US">'
                 'Sign in</a><script>var api = "https://api17.sapsf.com";</script>')
     found, rest = fsb.sightings(own_page, csb, home)
     if {f["ref"] for f in found} != {CSB} or rest:
         errors += fail(f"successfactors finder: a CSB page's own SAP addresses came out as "
                        f"{[r['vendor'] for r in rest]} (boards {[(f['type'], f['ref']) for f in found]})")
+    # ...ITS OWN TENANT'S portal only, or one naming none: another tenant's beside
+    # the board is another account, and stays (seventh blind review, 2026-11-22)
+    j2w = ("<script>j2w.init({\"ssoCompanyId\" : 'AcmeGovPROD', \"ssoUrl\" : "
+           "'https://career5.successfactors.eu'});</script>")
+    mine = '<a href="https://career5.successfactors.eu/career?company=AcmeGovPROD">Sign in</a>'
+    other = '<a href="https://career41.sapsf.com/careers?company=OtherCoPROD">Jobs at OtherCo</a>'
+    for markup, want, why in (
+            (j2w + mine, [], "its own tenant's portal"),
+            (j2w + mine.replace("AcmeGovPROD", "acmegovprod&amp;lang=en_US"), [],
+             "its own tenant's, in other letters"),
+            (j2w + other, ["OtherCoPROD"], "another tenant's portal"),
+            (j2w + mine + other, ["OtherCoPROD"], "its own and another tenant's in one place"),
+            (j2w + '<a href="https://career41.sapsf.com/">Portal</a>', [], "a portal naming no tenant"),
+            ('<link rel="stylesheet" href="//rmkcdn.successfactors.com/a1b2c3d4/x.css" />' + mine,
+             ["AcmeGovPROD"], "a portal on a board page that states no tenant of its own"),
+            (j2w + '<a href="https://career41.sapsf.com/careers?site=x&amp;' + "q" * 150
+             + '&amp;company=OtherCoPROD">x</a>', ["OtherCoPROD"],
+             "another tenant's portal named past the first 160 characters")):
+        found, rest = fsb.sightings(markup, csb, home)
+        got = [r["saw"].rsplit("company=", 1)[-1][:11] if "company=" in r["saw"] else "(cut)"
+               for r in rest if r["vendor"] == "successfactors-legacy"]
+        if not found or len(got) != len(want) or (want and want[0] == "OtherCoPROD" and len(rest) != 1):
+            errors += fail(f"successfactors finder, {why}: the legacy portals kept beside the board are "
+                           f"{[r['saw'] for r in rest]}, wanted {want}")
     # ...never read off what a browser saw a page ask for: the page that frames
     # a board is not the board
     found, rest = fsb.sightings("", here, home, requests_seen=[
@@ -20431,6 +20637,12 @@ def check_successfactors_reads_its_career_site() -> int:
         errors += fail(f"successfactors finder: a browser's requests made the page a board: {found}")
     cands = [{"type": "successfactors", "ref": CSB}]
     for row_, want in (({"vendor": "successfactors-legacy", "page": CSB + "/job/x/1/"}, True),
+                       ({"vendor": "successfactors-legacy", "page": CSB + "/job/x/1/",
+                         "saw": "https://career41.sapsf.com/careers?company=OtherCoPROD"}, False),
+                       ({"vendor": "successfactors-legacy", "page": CSB + "/job/x/1/",
+                         "saw": "https://career41.sapsf.com/careers?" + "x" * 160}, False),
+                       ({"vendor": "successfactors-legacy", "page": CSB + "/job/x/1/",
+                         "saw": "https://career41.sapsf.com"}, True),
                        ({"vendor": "successfactors-other", "page": CSB + "/go/x/1/"}, True),
                        ({"vendor": "successfactors-legacy", "page": here}, False),
                        ({"vendor": "successfactors-other", "page": here}, False),

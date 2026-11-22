@@ -3912,9 +3912,36 @@ def _sf_day(raw: str, lang: str) -> str | None:
         return None
 
 
+_SF_DOTS = re.compile(r"\.{1,2}(?:;.*)?", re.S)
+
+
+def _sf_plain_path(path: str) -> bool:
+    """Does this path say plainly where it goes? Not if a segment is, raw or
+    once any layer of its escapes is undone, a dot or two (or '..;...'), if a
+    segment is empty, or if it holds a backslash: a server that resolves them
+    serves another path than the one robots.txt was asked about. robots.txt
+    is asked of the address as written, and '/job/%2e%2e/services/...' went
+    out as '/job/../services/...' - the path every CSB robots.txt closes
+    (seventh blind review, 2026-11-22). Every CSB address read here is plain:
+    /search/, /job/<slug>/<id>/."""
+    p = path or "/"
+    for _ in range(4):
+        segs = p.split("/")[1:]
+        if segs and segs[-1] == "":
+            segs = segs[:-1]                     # a last slash
+        if "\\" in p or any(s == "" or _SF_DOTS.fullmatch(s) for s in segs):
+            return False
+        undone = urllib.parse.unquote(p)
+        if undone == p:
+            return True
+        p = undone
+    return False                                 # escapes four deep say nothing plainly
+
+
 def _sf_posting_url(href: str, origin: str) -> str | None:
     """A row's link as the posting's address on this career site, or None for
-    one that leaves it or is not a posting (/job/...)."""
+    one that leaves it, is not a posting (/job/...), or does not say plainly
+    where it goes (_sf_plain_path)."""
     h = html_lib.unescape(href or "").strip()
     if not h:
         return None
@@ -3924,9 +3951,39 @@ def _sf_posting_url(href: str, origin: str) -> str | None:
     except ValueError:                           # an href that is no address ('http://[')
         return None
     if f"{parts.scheme}://{(parts.netloc or '').lower()}" != origin \
-            or not parts.path.startswith("/job/"):
+            or not parts.path.startswith("/job/") or not _sf_plain_path(parts.path):
         return None
     return url
+
+
+class PostingClosed(AtsError):
+    """A posting the list carries answered as no posting: a redirect from its
+    address to a page that is not a posting, or a page at its address that
+    shows no posting (Gainwell's closed ones answer 200 there, saying only
+    "Sorry, this position has been filled.", measured 2026-11-22)."""
+
+
+def _sf_hop(url: str, offset: int | None = None, posting: bool = False):
+    """The rule each hop of one CSB read is held to, asked BEFORE the hop is
+    (on top of same_host): a path that says plainly where it goes; for a list
+    page past the first, an address that still asks for that page (a hop that
+    drops its startrow lands on page 1, and the walk would read page 1 as
+    page 2); for a posting, a /job/ address - a hop anywhere else is the
+    posting gone."""
+    def may(u: str):
+        parts = urllib.parse.urlsplit(u)
+        if not _sf_plain_path(parts.path):
+            raise AtsError(f"{url} leads off to {parts.path}, a path that does not say plainly "
+                           f"where it goes")
+        if offset:
+            rows = urllib.parse.parse_qs(parts.query).get("startrow")
+            if rows != [str(offset)]:
+                raise AtsError(f"{url} leads off to {parts.path}?{parts.query[:80]}, which does "
+                               f"not ask for the list from row {offset}")
+        if posting and not parts.path.startswith("/job/"):
+            raise PostingClosed(f"the posting {url} answers by sending a reader to "
+                                f"{parts.path}, which is not a posting: it has closed")
+    return may
 
 
 def _sf_row(cell: str, origin: str, lang: str) -> dict | None:
@@ -4007,7 +4064,8 @@ def successfactors_board(ref) -> tuple[str, str, list[dict], int, int | None]:
     lists nothing - a Unify site, which says why, or a page nobody has seen a
     CSB board with nothing open draw, which is not read as a zero."""
     origin = successfactors_origin(ref)
-    page = _page(successfactors_list_url(origin, 0), same_host=True).text or ""
+    first = successfactors_list_url(origin, 0)
+    page = _page(first, same_host=True, may=_sf_hop(first)).text or ""
     n, rows, total = successfactors_list(page, origin)
     if not n:
         if _SF_UNIFY.search(page):
@@ -4024,11 +4082,80 @@ def successfactors_board(ref) -> tuple[str, str, list[dict], int, int | None]:
     return origin, page, rows, n, total
 
 
+def successfactors_walk(origin: str, first: list[dict], n: int, total: int | None) -> list[dict]:
+    """Every posting on the list from its first page on, stepping by that
+    page's own row count, each posting once.
+
+    WITH THE BOARD'S OWN TOTAL KNOWN, THE WALK MUST REACH IT (seventh blind
+    review, 2026-11-22). A complete read ends at an offset at or past the
+    total, which is not asked. A page inside the board that adds no new
+    posting - empty, page 1 again, the board's past-the-end list of its
+    newest postings served in the middle - means the read went wrong, and
+    the rows so far are part of the board, not the board: an AtsError. So is
+    a read that reaches the total more than a page short of it, and so is
+    the ceiling with or without a total. With no total, a page that adds
+    nothing is the end (past its end Gainwell's list shows its newest
+    postings again)."""
+    rows, seen = [], set()
+    for i in range(SF_MAX_PAGES):
+        offset = i * n
+        if total is not None and offset >= total:
+            if len(rows) < total - n:
+                raise AtsError(f"{origin}'s list states {total} postings and its pages carried "
+                               f"{len(rows)}: read in part, so not read")
+            return rows
+        if i == 0:
+            got = first
+        else:
+            url = successfactors_list_url(origin, offset)
+            got = successfactors_list(_page(url, same_host=True, may=_sf_hop(url, offset)).text
+                                      or "", origin)[1]
+        fresh = []
+        for r in got:
+            if r["url"] not in seen:
+                seen.add(r["url"])
+                fresh.append(r)
+        if not fresh:
+            if total is not None:
+                raise AtsError(f"{origin}'s list page from row {offset + 1} added no posting, and "
+                               f"the list states {total}: read in part, so not read")
+            return rows
+        rows.extend(fresh)
+    raise AtsError(f"{origin}'s list did not end within {SF_MAX_PAGES} pages ({len(rows)} postings"
+                   f"{f' of {total}' if total is not None else ''}): read in part, so not read")
+
+
 def successfactors_posting(url: str, origin: str) -> str:
-    """One posting's page, asked only on the career site's own host."""
+    """One posting's page, asked only on the career site's own host, at an
+    address that says plainly where it goes; a hop off /job/ is the posting
+    gone (PostingClosed)."""
     if _sf_posting_url(url, origin) != url:
         raise AtsError(f"{url} is not a posting of {origin}")
-    return _page(url, same_host=True).text or ""
+    return _page(url, same_host=True, may=_sf_hop(url, posting=True)).text or ""
+
+
+# what only a page showing a posting carries: the posting's own microdata
+_SF_SHOWN = re.compile(r"\bitemprop\s*=\s*[\"']?(?:title|description|datePosted|hiringOrganization)\b"
+                       r"|\bitemtype\s*=\s*[\"']?https?://schema\.org/JobPosting\b", re.I)
+_SF_SAID_IN = re.compile(r"<[a-z][a-z0-9]{0,15}\b[^<>]*\bitemprop\s*=\s*[\"']?(?:title|description)\b"
+                         r"[^<>]*>", re.I)
+_SF_LANG_ATTR = re.compile(r"(?<![\w:-])lang\s*=\s*[\"']?([A-Za-z]{2,3})\b")
+
+
+def successfactors_shown(page: str) -> bool:
+    """Does this posting page show a posting (its schema.org microdata), as the
+    page a reader sees it? A closed one shows none."""
+    return bool(_SF_SHOWN.search(_cut(page or "")))
+
+
+def successfactors_language(page: str) -> str:
+    """The language a posting is written in, as its own title or description
+    element says ('en' of lang="en-US", Landis+Gyr's and Aurigo's), or ""."""
+    for m in _SF_SAID_IN.finditer(_cut(page or "")):
+        said = _SF_LANG_ATTR.search(m.group(0))
+        if said:
+            return said.group(1).lower()
+    return ""
 
 
 def successfactors_ad(page: str) -> str:
@@ -4056,18 +4183,8 @@ def successfactors_ad(page: str) -> str:
 
 def fetch_successfactors(ref) -> list[dict]:
     origin, _page1, first, n, total = successfactors_board(ref)
-
-    # PAGED BY THE FIRST PAGE'S OWN STEP, to a page that adds no new posting
-    # (_paged); an offset at or past the total the board states is past its
-    # end by its own word and is not asked
-    def at(offset: int) -> list[dict]:
-        if offset == 0:
-            return first
-        if total is not None and offset >= total:
-            return []
-        page = _page(successfactors_list_url(origin, offset), same_host=True).text or ""
-        return successfactors_list(page, origin)[1]
-    rows = _paged(at, lambda r: r["url"], page=n, max_pages=SF_MAX_PAGES, label=origin)
+    # (a partial read is an error, never the board: successfactors_walk)
+    rows = successfactors_walk(origin, first, n, total)
     if FETCH_DETAILS:
         # the ad is on each posting's own page; CSB publishes no pay field, so
         # any figure comes from the ad's text (plain_rows), never from here

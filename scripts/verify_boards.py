@@ -1348,8 +1348,14 @@ _SF_SITE_NAMES = (
     (re.compile(r"(.+?) - Stellen"), re.compile(r"Bei (.+?) nach suchen")),       # de_DE
     (re.compile(r"(.+?) ofertas de trabajo"), re.compile(r"Buscar en (.+)")),     # es_ES
 )
-# How many of page 1's postings the probe asks whose they are.
-SF_POSTINGS_ASKED = 5
+# How many postings the probe asks whose they are. A board of this many or
+# fewer is asked about every one of them, and only such a board can be stated
+# whole (as jobvite's). A longer board, or one whose total is not stated, is
+# asked about the first SF_POSTINGS_SAMPLED on page 1 for the desk to read,
+# and states nothing for the whole board: a name stated by part of a board is
+# never stated for all of it (seventh blind review, 2026-11-22).
+SF_POSTINGS_ASKED = 40
+SF_POSTINGS_SAMPLED = 5
 
 
 def _itemprops(page: str, key: str) -> list:
@@ -1369,17 +1375,26 @@ def _successfactors(ref, out: dict) -> None:
     # THE SITE'S NAME IS THE BOARD'S OWN CONFIGURATION: the /search/ page's
     # <title> ('Gainwell Technologies LLC Jobs') and meta description ('Find
     # at Gainwell Technologies LLC'), believed only when the two agree. Then
-    # each of the first SF_POSTINGS_ASKED postings on that page is asked for
-    # its <meta itemprop="hiringOrganization">: every one asked must carry
-    # one (a posting that names nobody states nothing for the board), and one
-    # naming another employer is a second name, so the board is not proven.
-    # A board whose title, description and postings agree is stated whole.
-    # The name is whatever the site's admin typed: SPX's says "our team" and
-    # Esri Canada's its tenant id, "esricanada" - stated as they are, and
-    # refused by proven() by name. A Unify site, a page off the host and a
-    # ref that is not a CSB origin fail in the reader's own words
-    # (ats.successfactors_board), and state nothing.
-    origin, page, rows, _count, total = ats.successfactors_board(ref)
+    # the postings are asked for their <meta itemprop="hiringOrganization">:
+    # every one asked must carry one (a posting that names nobody states
+    # nothing for the board), and one naming another employer is a second
+    # name, so the board is not proven. THE WHOLE BOARD OR NOTHING: a board
+    # is stated only when its total is stated and every posting on it was
+    # asked (SF_POSTINGS_ASKED or fewer, read to the end by the reader's own
+    # walk); a longer one keeps the names of the postings asked, for the
+    # desk, and states nothing (Gainwell's 334 included).
+    # A posting that has closed since the list was read - a 404, a hop off
+    # /job/, or a page at its address that shows no posting (Gainwell's say
+    # "Sorry, this position has been filled.") - is a failure of the day
+    # where the board's other postings answer, asked again on the next plan;
+    # where none answers it is the board's, and said so. Postings written in
+    # more than one language are a board that lists one role once in each
+    # (JENOPTIK's twins), and state nothing either. The name is whatever the
+    # site's admin typed: SPX's says "our team" and Esri Canada's its tenant
+    # id - stated as they are, refused by proven() by name. A Unify site, a
+    # page off the host and a ref that is not a CSB origin fail in the
+    # reader's own words (ats.successfactors_board), and state nothing.
+    origin, page, rows, n, total = ats.successfactors_board(ref)
     out["hosts"] = {host_of(origin)}
     out["n"] = total if total is not None else len(rows)
     out["n_is_partial"] = total is None             # (no label: page 1's rows only)
@@ -1397,34 +1412,64 @@ def _successfactors(ref, out: dict) -> None:
         out["how"] = (f"successfactors search page's title names \"{_clean(said[0])}\" and its "
                       f"description \"{_clean(said[1])}\": they do not agree on one name")
         return
-    names, unnamed = [said[0]], []
-    asked = rows[:SF_POSTINGS_ASKED]
+    small = total is not None and total <= SF_POSTINGS_ASKED
+    asked = ats.successfactors_walk(origin, rows, n, total) if small else rows[:SF_POSTINGS_SAMPLED]
+    # (every posting the board states was asked: none of its rows lacked a
+    # posting's address, and none is past what was read)
+    whole = small and len(asked) >= total
+    names, unnamed, closed, langs, answered = [said[0]], [], [], set(), 0
     for row in asked:
         try:
             body = ats.successfactors_posting(row["url"], origin)
+        except ats.PostingClosed:
+            closed.append(row["title"])
+            continue
         except ats.AtsError as exc:
             if not isinstance(exc, ats.RobotsRefused) and _failure(exc)[0] == "gone":
-                # closed between the list and the probe: asked again on the
-                # next plan, never "no board there" (as jobvite's)
-                raise PostingGone(f"successfactors posting {row['title']!r} on the list answered "
-                                  f"{_clean(str(exc))[:80]}: it closed while the board was asked, "
-                                  f"so the board is asked again on the next plan") from exc
+                closed.append(row["title"])
+                continue
             raise
+        if not ats.successfactors_shown(body):
+            closed.append(row["title"])
+            continue
+        answered += 1
+        langs.add(ats.successfactors_language(body))
         orgs = _itemprops(ats._cut(body), "hiringOrganization")
         if not orgs or "" in orgs:
             unnamed.append(row["title"])
         names.extend(o for o in orgs if o)
+    if closed and answered:
+        # closed between the list and the probe: asked again on the next
+        # plan, never "no board there" (as jobvite's)
+        raise PostingGone(f"successfactors posting {closed[0]!r} on the list answered as closed "
+                          f"while the board was asked, so the board is asked again on the next "
+                          f"plan")
+    if closed:
+        out["how"] = (f"none of the {len(asked)} successfactors postings asked answered as a "
+                      f"posting ({closed[0]!r} the first), so the board states nothing")
+        return
     if unnamed:
         out["how"] = (f"successfactors posting {unnamed[0]!r} names no employer "
                       f"(hiringOrganization), so the site's \"{_clean(said[0])}\" is not "
                       f"confirmed by every posting asked")
         return
-    if not _state(out, names, f"successfactors search page title and description, and the "
-                              f"hiringOrganization of its first {len(asked)} postings, stated "
-                              f"by the career site"):
+    spoken = sorted(langs - {""})
+    if len(spoken) > 1:
+        # (the names are kept for the desk; a board listing one role once per
+        # language is not stated whole, so proven() refuses it)
+        _state(out, names, f"successfactors postings asked are written in more than one language "
+                           f"({', '.join(spoken)}): a role may be listed once in each, so the "
+                           f"board's names are not stated for it whole", whole=False)
+        return
+    how = (f"successfactors search page title and description, and the hiringOrganization of "
+           f"every one of its {len(asked)} postings, stated by the career site" if whole else
+           f"successfactors search page title and description, and the hiringOrganization of "
+           f"{len(asked)} of its {total if total is not None else 'unstated number of'} "
+           f"postings; the rest were not asked, so these may not be every name the board states")
+    if not _state(out, names, how, whole=whole):
         out["how"] = "successfactors career site states no name a person could read"
         return
-    if len({strict(n)[0] for n in out["names"]}) > 1:
+    if len({strict(n_)[0] for n_ in out["names"]}) > 1:
         out["how"] += (f" - and they do not agree: the site calls itself "
                        f"\"{_clean(said[0])}\" and a posting names another employer")
 
