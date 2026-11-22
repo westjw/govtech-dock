@@ -2899,7 +2899,7 @@ def settle_board(given: str) -> tuple | None:
 
 def _doubt_line(d: dict) -> str:
     return (f"  {str(d.get('board') or '-')[:44]:<46} kept {d.get('on') or '?'} by "
-            f"{d.get('by') or '?'}: {str(d.get('why') or '').strip()}")
+            f"{d.get('by') or '?'} (--key {d.get('key')}): {str(d.get('why') or '').strip()}")
 
 
 def cmd_settle(a) -> int:
@@ -2964,20 +2964,27 @@ def cmd_settle(a) -> int:
                   f"Nothing was written.")
             return 1
 
+        # ABOUT THE BOARD as same_board says it, a Workable account number and
+        # the slug the file ties it to being one (third blind review,
+        # 2026-11-21: a doubt about workable/710855 was "about another board"
+        # beside --board workable/archico, the file saying they are one)
+        pairs = board_proposals.workable_pairs(list(by_id.values()), stores["found"])
+
         def about(d):
-            k, r = doubt_board(d)
-            return (board_key(k, r) == key_of) if k else key_of is None
+            return same_board(doubt_board(d), (kind, ref), pairs)
         mine = [d for d in on_file if about(d)]
         everything = board_proposals.standing_doubts({cid: on_file}, stores["ruled"]).get(cid) \
             or []
-        standing = [d for d in everything if about(d)]
-        others = [d for d in everything if not about(d)]
+        candidates = [d for d in everything if about(d)]
+        named_keys = list(dict.fromkeys(k.strip() for k in a.key or [] if k and k.strip()))
+        standing = [d for d in candidates if not named_keys or d["key"] in named_keys]
+        others = [d for d in everything if d not in standing]
         if not mine:
             print(f"no reader's doubt about {cid} is on file about {named}; those on file are "
                   f"about {', '.join(sorted({str(d.get('board') or '-') for d in on_file}))} - "
                   f"give --board as the plan printed it. Nothing was written.")
             return 1
-        if not standing:
+        if not candidates:
             print(f"no reader's doubt about {cid} stands about {named} "
                   f"({settled_words(mine, ruling)})"
                   + (f"; {many(len(others), 'other doubt')} about another board still "
@@ -2991,6 +2998,29 @@ def cmd_settle(a) -> int:
                   f"only where no ruling of his can reach a doubt; this one is on his desk, and "
                   f"his own card settles it.")
             return 1
+        # ONE DOUBT AT A TIME WHERE THERE ARE MORE (third blind review,
+        # 2026-11-21). Every standing doubt about the board was settled: the
+        # owner's words about one ("it is their own board, not the
+        # parent's") settled a later reader's about the same board in other
+        # words ("every posting on it is a reseller's"), and the next plan
+        # wired it. So where more than one stands about the board, each one
+        # his words answer is named by its key.
+        unknown = [k for k in named_keys if k not in {d["key"] for d in candidates}]
+        if unknown:
+            print(f"--key {', '.join(unknown)} is not a standing reader's doubt about {cid} about "
+                  f"{named}; those that stand about it are listed with their keys:")
+            for d in candidates:
+                print(_doubt_line(d))
+            print("Nothing was written.")
+            return 1
+        if len(candidates) > 1 and not named_keys:
+            print(f"{many(len(candidates), 'reader doubt')} about {cid} stand about {named}, in "
+                  f"words of their own: give --key for each one the owner's words answer (a "
+                  f"doubt he was not asked about is not settled by his answer to another):")
+            for d in candidates:
+                print(_doubt_line(d))
+            print("Nothing was written.")
+            return 1
         code = hashlib.sha256(json.dumps({
             "id": cid, "board": key_of, "why": words, "by": by,
             "settles": [[d["key"], str(d.get("why") or "")] for d in standing]},
@@ -3000,15 +3030,17 @@ def cmd_settle(a) -> int:
         for d in standing:
             print(_doubt_line(d))
         if others:
-            print(f"LEFT STANDING {len(others)} - about another board, which these words do not "
-                  f"settle; each holds its board until the owner answers about it too:")
+            print(f"LEFT STANDING {len(others)} - about another board, or not named by --key, "
+                  f"which these words do not settle; each holds its board until the owner "
+                  f"answers about it too:")
             for d in others:
                 print(_doubt_line(d))
         if not a.write:
             print("LOOKED ONLY. Nothing was written. To write exactly this:")
             print(f"  python3 scripts/wire_found.py settle --id {shlex.quote(cid)} --board "
-                  f"{shlex.quote(str(a.board).strip())} --why {shlex.quote(words)} --by "
-                  f"{shlex.quote(by)} --write --expect {code}")
+                  f"{shlex.quote(str(a.board).strip())}"
+                  + "".join(f" --key {shlex.quote(k)}" for k in named_keys)
+                  + f" --why {shlex.quote(words)} --by {shlex.quote(by)} --write --expect {code}")
             return 0
         if (a.expect or "").strip() != code:
             why = ("--write needs --expect with the code the look printed" if not
@@ -3064,6 +3096,9 @@ def main(argv: list[str] | None = None) -> int:
     st.add_argument("--board", required=True,
                     help="the board his words are about, as the plan prints it (greenhouse/acme; "
                          "- for the doubts that name no board): only doubts about it are settled")
+    st.add_argument("--key", action="append",
+                    help="a doubt his words answer, by the key the look lists (repeatable); "
+                         "needed where more than one doubt stands about the board")
     st.add_argument("--why", required=True, help="the owner's words, as he gave them")
     st.add_argument("--by", required=True, help="agent:<label>, the author on the journal")
     st.add_argument("--write", action="store_true")

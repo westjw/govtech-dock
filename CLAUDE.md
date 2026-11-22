@@ -2578,7 +2578,7 @@ round.
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label>            # a look
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label> --write --expect <code>
     python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<the owner's words>" --by agent:<label>   # only on his word; a look
-    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "..." --by agent:<label> --write --expect <code>
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> [--key <doubt key> ...] --why "..." --by agent:<label> --write --expect <code>
 
 - **`plan` is the only step on the network, and it freezes a worklist.** It
   reads `find_site_boards.py` results (several files are pooled: a plain read
@@ -2766,17 +2766,24 @@ round.
   `settle` adds one journalled record (`{"<id>@<when>~settled": {id, board,
   settles: [keys], why, by, on, at}}`) that settles the company's standing
   doubts ABOUT THE ONE BOARD his words are about (`--board`, as the plan
-  prints it, compared by `board_key`; `-` names the doubts that name no
-  board) for every reader (plan, apply, `held_for_the_owner`); admin_undo.py
-  takes it back. Without `--write` it is a look: it lists the doubts it
-  would settle and every other standing doubt of the company it leaves
-  standing, and prints a code, which `--write --expect` must quote, as in
-  apply (the code covers the company, the board, the doubts and his words).
+  prints it, compared by `same_board`, a Workable number and the slug the
+  file ties it to being one; `-` names the doubts that name no board) for
+  every reader (plan, apply, `held_for_the_owner`); admin_undo.py takes it
+  back. Where more than one doubt stands about that board, each one his
+  words answer is named by `--key` (the look lists every doubt's key), and
+  one he was not asked about is never settled by his answer to another.
+  Without `--write` it is a look: it lists the doubts it would settle and
+  every other standing doubt of the company it leaves standing, and prints a
+  code, which `--write --expect` must quote, as in apply (the code covers
+  the company, the board, his words and exactly the doubts it settles).
   It refuses a doubt whose company has its row on his desk (reach `row`):
   his own ruling on that card settles it. (Blind review, 2026-11-21: `settle
   --id` settled every standing doubt of the company - one about a board
   nobody had shown him, which the next plan wired, and one behind the card
-  he settles it from.) A settled doubt given again is not kept again, never called
+  he settles it from. The third, the same day: it settled every doubt about
+  the board, a later reader's in other words included, and a doubt about a
+  Workable number the file ties to the slug named was "about another
+  board".) A settled doubt given again is not kept again, never called
   standing, and tells nobody anything. A board a door FILED in his queue
   (`filed`) is held by every later plan too, with its doubt; a row an older
   finder left may still be answered by the two checks. A SKIP made after

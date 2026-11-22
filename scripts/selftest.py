@@ -37583,6 +37583,116 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
                 or not look1:
             errors += fail(f"a doubted worklist applied after the owner settled its doubts "
                            f"stopped: {text[-300:]!r}")
+
+    # --- ONE DOUBT AT A TIME, AND ONLY WHAT THE LOOK LISTED -----------------------
+    # (third blind review, 2026-11-21: his words about one doubt settled a
+    # later one about the same board in other words, and the next plan wired
+    # it; a doubt about a Workable number the file ties to the slug named was
+    # "about another board"; and the code's cover of the doubts it settles, a
+    # doubt that names no board, and a --board with no type were unpinned)
+    wired = co("archi-old", "Archi Old Co", ats={"type": "lever", "ref": "archiold"})
+    wired["ats_note"] = ("left unwired: their site "
+                         + wf.account_words({"account": "710855", "ref": "archico"}))
+    BOARDS2 = {"greenhouse/cdco": (3, ["Cd Co"]), "greenhouse/nbco": (3, ["Nb Co"]),
+               "workable/archico": (3, ["Archi Co"]), "workable/710855": (3, ["Archi Co"])}
+    with _WiringBox([co("cd-co", "Cd Co"), co("nb-co", "Nb Co"), co("archi-co", "Archi Co"),
+                     wired], BOARDS2) as box:
+        cd_site = one("cd-co", "greenhouse", "cdco", element="iframe")
+        FIRST = "a reader: greenhouse/cdco may be a reseller's board"
+        LATER = "a reader: its ads say 'Cd Co, now part of Big Group'"
+        WORD2 = "the owner: the reseller worry is wrong, it is theirs"
+        box.plan(_wb_results({"cd-co": cd_site}), name="worklist-cd-1.json",
+                 doubts={"cd-co": FIRST})
+        code, text = settle("cd-co", "greenhouse/cdco", WORD2)
+        m = re.search(r"--expect (\S+)", text)
+        look_code = m.group(1) if m else "none"
+        # a later reader keeps a doubt about the same board, in other words
+        box.plan(_wb_results({"cd-co": cd_site}), name="worklist-cd-2.json",
+                 doubts={"cd-co": LATER})
+        keys = {v["why"]: k for k, v in json.loads((box.tmp / wf.DOUBTS).read_text()).items()
+                if v.get("id") == "cd-co"}
+        before = box.on_disk()
+        code, text = settle("cd-co", "greenhouse/cdco", WORD2, "--write", "--expect", look_code)
+        if code == 0 or box.on_disk() != before:
+            errors += fail(f"settle --write with the code of a look that listed one doubt wrote, "
+                           f"after a second doubt about the same board was kept: {text[-300:]!r}")
+        code, text = settle("cd-co", "greenhouse/cdco", WORD2)
+        if code == 0 or box.on_disk() != before or "give --key for each one" not in text \
+                or keys.get(FIRST, "?") not in text or keys.get(LATER, "?") not in text:
+            errors += fail(f"settle of a board two doubts stand about, naming neither, did not "
+                           f"refuse listing each doubt's key: {text[-400:]!r}")
+        code, text = settle("cd-co", "greenhouse/cdco", WORD2, "--key", "cd-co@nobody")
+        if code == 0 or box.on_disk() != before or "is not a standing reader's doubt" not in text:
+            errors += fail(f"settle --key naming no standing doubt about the board did not "
+                           f"refuse: {text[-300:]!r}")
+        code, text = settle("cd-co", "greenhouse/cdco", WORD2, "--key", keys.get(FIRST, "?"))
+        m = re.search(r"--expect (\S+)", text)
+        code_first = m.group(1) if m else "none"
+        if code != 0 or "WOULD SETTLE 1 reader doubt" not in text \
+                or f"--key {keys.get(FIRST, '?')}" not in text \
+                or "LEFT STANDING 1" not in text or LATER not in text[text.find("LEFT"):]:
+            errors += fail(f"settle --key did not look at the one doubt named, the other left "
+                           f"standing: {text[-400:]!r}")
+        # THE CODE COVERS WHICH DOUBTS: the first's code does not write the later
+        code, text = settle("cd-co", "greenhouse/cdco", WORD2, "--key", keys.get(LATER, "?"),
+                            "--write", "--expect", code_first)
+        if code == 0 or box.on_disk() != before or "REFUSED, and nothing was written" not in text:
+            errors += fail(f"settle --write settled a doubt the look did not list, with the code "
+                           f"of a look that listed another: {text[-300:]!r}")
+        code, text = settle("cd-co", "greenhouse/cdco", WORD2, "--key", keys.get(FIRST, "?"),
+                            "--write", "--expect", code_first)
+        s_ = wf.read_stores()
+        left = [d["why"] for d in wf.standing_doubts(s_["doubts"], s_).get("cd-co") or []]
+        if code != 0 or left != [LATER] or "cd-co" not in bp.held_for_the_owner(box.tmp):
+            errors += fail(f"settle --key settled more or less than the doubt named: exit {code}, "
+                           f"standing {left}: {text[-200:]!r}")
+        code, text, _wl, rows_cd = box.plan(_wb_results({"cd-co": cd_site}),
+                                            name="worklist-cd-3.json")
+        if ((rows_cd or {}).get("cd-co") or {}).get("action") != "HOLD" \
+                or LATER not in _wb_words((rows_cd or {}).get("cd-co") or {}):
+            errors += fail("the board of a doubt the owner's words did not answer was not held")
+
+        # A DOUBT THAT NAMES NO BOARD is settled by "-" and by no board's name
+        box.plan(_wb_results({"nb-co": _wb_entry("nb-co", [])}), name="worklist-nb-1.json",
+                 doubts={"nb-co": "a reader: Nb Co was bought by Big Group; any board on its "
+                                  "site is the group's"})
+        box.plan(_wb_results({"nb-co": one("nb-co", "greenhouse", "nbco", element="iframe")}),
+                 name="worklist-nb-2.json",
+                 doubts={"nb-co": "a reader: greenhouse/nbco may be a reseller's board"})
+        before = box.on_disk()
+        # a --board with no type is the usage line, never "-": nb-co HAS a
+        # doubt naming no board for it to be mistaken for
+        code, text = box.run("settle", "--id", "nb-co", "--board", "nbco", "--why",
+                             "the owner: it is theirs", "--by", LABEL)
+        if code != 2 or box.on_disk() != before \
+                or "--board is the board the owner's words are about" not in text:
+            errors += fail(f"settle --board with no type was not refused with the usage line "
+                           f"(exit {code}): {text[-300:]!r}")
+        code, text = on_his_word("nb-co", "greenhouse/nbco", "the owner: greenhouse/nbco is theirs")
+        s_ = wf.read_stores()
+        left = [d.get("board") for d in wf.standing_doubts(s_["doubts"], s_).get("nb-co") or []]
+        if code != 0 or left != [None] or "nb-co" not in bp.held_for_the_owner(box.tmp):
+            errors += fail(f"settle --board greenhouse/nbco did not leave the doubt that names no "
+                           f"board standing, holding the company: standing {left}")
+        code, text = on_his_word("nb-co", "-", "the owner: Big Group did not buy them")
+        s_ = wf.read_stores()
+        if code != 0 or wf.standing_doubts(s_["doubts"], s_).get("nb-co") \
+                or "nb-co" in bp.held_for_the_owner(box.tmp):
+            errors += fail(f"settle --board - did not settle the doubt that names no board: "
+                           f"{text[-200:]!r}")
+
+        # A WORKABLE NUMBER THE FILE TIES TO THE SLUG NAMED is a doubt about it
+        box.plan(_wb_results({"archi-co": one("archi-co", "workable", "710855", element="iframe")}),
+                 name="worklist-archi.json",
+                 doubts={"archi-co": "a reader: account 710855 is a staffing firm's"})
+        code, text = settle("archi-co", "workable/archico",
+                            "the owner: that Workable account is theirs")
+        if code != 0 or "WOULD SETTLE 1 reader doubt about archi-co (workable/archico)" not in text \
+                or "workable/710855" not in text[:text.find("LOOKED ONLY")] \
+                or "LEFT STANDING" in text:
+            errors += fail(f"settle --board workable/archico called a doubt about Workable account "
+                           f"710855, which the file ties to archico, a doubt about another board: "
+                           f"{text[-400:]!r}")
     return errors
 
 
