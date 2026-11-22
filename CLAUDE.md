@@ -2862,7 +2862,12 @@ round.
   ignored, an address matches with or without scheme, `www.` or a last slash,
   a Paylocity board is the id after `/jobs/All/` or `/jobs/List/`, with or
   without the tenant's name after it (a /List/ board had two keys, so a hold
-  under one spelling missed the other: blind review, 2026-11-21), an iCIMS
+  under one spelling missed the other: blind review, 2026-11-21), and is
+  known by the tenant's name both shapes end in as well
+  (`board_proposals.also_keys`, asked wherever boards meet: FAAC's frame is
+  /List/2115/FAAC-Incorporated and lands on /All/<uuid>/FAAC-Incorporated,
+  one board under two ids; every Paylocity ref on file is /All/, and a /List/
+  find walked past a refusal of the board - third blind review), an iCIMS
   portal its slug, a Jibe, Oracle, ApplicantPro or Teamtailor board its host,
   a Zoho Recruit career site its host and page name (a posting's address is
   under it), and a Comeet board its company uid, whether written

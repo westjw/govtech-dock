@@ -258,6 +258,7 @@ _POD = re.compile(r"wd\d+")             # a Workday pod: wd1, wd5, wd108, wd503
 # ---------------------------------------------------------------- small words
 
 board_key = board_proposals.board_key       # one LOOSE key per board (the shared reader)
+_also_keys = board_proposals.also_keys      # and the others it is known by (a Paylocity tenant)
 
 
 def spelling(kind, ref) -> str:
@@ -929,7 +930,8 @@ def holders_of(companies: list) -> dict:
         a = c.get("ats") or {}
         if a.get("type") in (None, "unknown", "html") or a.get("ref") is None:
             continue
-        out[board_key(a["type"], a["ref"])].append(c["id"])
+        for k in dict.fromkeys([board_key(a["type"], a["ref"]), *_also_keys(a["type"], a["ref"])]):
+            out[k].append(c["id"])
     return out
 
 
@@ -1198,6 +1200,8 @@ def board_keys(board: dict, ctx: dict) -> list:
     keys = {board["key"]}
     slugs = ctx.get("slugs") or {}
     for s in board.get("seen") or []:
+        # a Paylocity board by its tenant's name too (board_proposals.also_keys)
+        keys.update(_also_keys(board["type"], s.get("ref")))
         if s.get("account"):
             keys.add(board_key("workable", s["account"]))
         elif numbered(board["type"], s.get("ref")):
@@ -1315,7 +1319,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
     def refused_keys(r):
         # a refusal under a Workable NUMBER this run followed is the slug too
-        ks = {r["key"]} if r.get("key") else set()
+        ks = ({r["key"], *_also_keys(r.get("type"), r.get("ref"))} if r.get("key") else set())
         if numbered(r.get("type"), r.get("ref")) and _slug_of(slugs, _number(r["ref"])):
             ks.add(board_key("workable", _slug_of(slugs, _number(r["ref"]))))
         return ks
@@ -2327,7 +2331,8 @@ def load_worklist(path: str) -> tuple[dict, str]:
 def row_keys(row: dict) -> list:
     """Every key a planned row's board is known by: its own, and for a
     Workable board its site asks for by number, the number's (board_keys)."""
-    keys = {board_key(row.get("type"), row.get("ref"))}
+    keys = {board_key(row.get("type"), row.get("ref")),
+            *_also_keys(row.get("type"), row.get("ref"))}
     if row.get("account"):
         keys.add(board_key("workable", row["account"]))
     return sorted(keys)
