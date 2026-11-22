@@ -3850,9 +3850,17 @@ def _sf_place(raw: str) -> str:
     """The row's place, with a placeholder city and postal code dropped.
     MEASURED ON GAINWELL'S BOARD (2026-11-22): a remote role's place is
     written 'Any city, TX, US, 99999' - the state and the country are all it
-    says - so it reads 'TX, US'."""
-    parts = [p.strip() for p in _text(raw).split(",")]
-    return ", ".join(p for p in parts if p and p.lower() != "any city" and p != "99999")
+    says - so it reads 'TX, US'; and one open in more places than one ends in
+    the board's own count of the rest ('Any city, AR, US, 99999 +1 more…', 14
+    of its 334 rows), which stays: 'AR, US +1 more…'."""
+    out = []
+    for p in (p.strip() for p in _text(raw).split(",")):
+        more = re.fullmatch(r"99999\s+(\+\s*[0-9]+\b.*)", p)
+        if more and out:
+            out[-1] += " " + more.group(1)
+        elif p and p.lower() != "any city" and p != "99999" and not more:
+            out.append(p)
+    return ", ".join(out)
 
 
 def _sf_day(raw: str, lang: str) -> str | None:

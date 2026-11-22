@@ -20128,6 +20128,17 @@ def check_successfactors_reads_its_career_site() -> int:
             if not got or got[0]["posted"] != want:
                 errors += fail(f"successfactors: the date {when!r} on a {lang} page read as "
                                f"{got[0]['posted'] if got else got!r}, not {want!r}")
+        # the place: Gainwell's placeholders dropped, and the board's own count
+        # of a role's other places kept (measured on its board, 2026-11-22)
+        for where, want in (("Any city, AR, US, 99999 +1 more…", "AR, US +1 more…"),
+                            ("Any city, TX, US, 99999", "TX, US"),
+                            ("Anchorage, AK, US, 99503 +1 more…", "Anchorage, AK, US, 99503 +1 more…"),
+                            ("Massachusetts (MA), US +2 more…", "Massachusetts (MA), US +2 more…"),
+                            ("West Sacramento, CA, US, 95605-1630", "West Sacramento, CA, US, 95605-1630")):
+            got = ats.successfactors_list(page([row(1, where=where)], total=1), SF)[1]
+            if not got or got[0]["location"] != want:
+                errors += fail(f"successfactors: the place {where!r} read as "
+                               f"{got[0]['location'] if got else got!r}, not {want!r}")
         # a link's words end where the next link opens, as a browser ends them
         # (the desk's copy of the title left unclosed before the phone's)
         open_link = row(1, title="Account Executive").replace(
