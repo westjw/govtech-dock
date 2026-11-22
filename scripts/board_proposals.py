@@ -504,6 +504,10 @@ def refusals(stores: dict) -> dict:
                          # whose row it was (held_boards, for a Workable number)
                          "names": [n for n in (row.get("board_calls_itself"), row.get("name"))
                                    if isinstance(n, str) and n.strip()],
+                         # whose refusal it was, by the name the row recorded: what a
+                         # record merged away since is known by (refused_for_it)
+                         "whose": [n for n in (row.get("name"),)
+                                   if isinstance(n, str) and n.strip()],
                          "by": v.get("by") or "?", "on": v.get("on") or "?",
                          "why": str(v.get("why") or "").strip()})
     for key, p in stores["proposals"].items():
@@ -516,6 +520,8 @@ def refusals(stores: dict) -> dict:
                          "board": show(p.get("ats_type"), p.get("ats_ref")),
                          "type": p.get("ats_type"), "ref": p.get("ats_ref"),
                          "names": [n for n in (p.get("name"),)
+                                   if isinstance(n, str) and n.strip()],
+                         "whose": [n for n in (p.get("name"),)
                                    if isinstance(n, str) and n.strip()],
                          "by": p.get("ruled_by") or "?", "on": p.get("ruled_on") or "?",
                          "why": str(p.get("ruled_why") or "").strip()})
@@ -663,7 +669,7 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                         f"({x['by']} on {x['on']}" + (f": {x['why']}" if x["why"] else "") + ")")
                 hold(cid, "refused", x["type"], x["ref"],
                      f"{said}, and a board somebody said no to is not proposed again",
-                     *(x.get("names") or []), refusal=said)
+                     *(x.get("names") or []), refusal=said, whose=list(x.get("whose") or []))
     for number, ids in sorted(numbers_on_file(companies or []).items()):
         slug = pairs.get(number)
         for cid in ids:

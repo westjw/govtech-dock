@@ -2790,23 +2790,36 @@ round.
   is HOLD with the words quoted, and a board refused in either store (a
   Boards-we-found refusal by the board on its row, an Agent-proposals
   rejection by its ats_type/ats_ref)
-  for a record merged away, or for a record whose name this company's
-  also_known_as carries (one company on two records), is SKIP refused, "tell
-  the owner", with nothing read - for whatever company's site names it,
-  under either Workable key, in the plan and in apply (`held_boards`,
+  for THIS company under another record is SKIP refused, "tell the owner",
+  with nothing read - for whatever company's site names it, under either
+  Workable key, in the plan and in apply (`held_boards`,
   `wire_found.refused_for_it`; apply's codes `standing`, `queued`,
-  `refused`). Refused for ANOTHER company still on file, it is that
-  company's answer, not this one's: the board is read and HELD, and filed in
-  Boards we found for the company whose own site and board both name it,
-  the refusal and whose it was quoted ("... was refused for Sub Co in Agent
-  proposals (...) - refused for another company, still on file (Sub Co);
-  whether it is Parent Co's own board is the owner's to rule on"); apply
-  leaves such a WIRE row alone and says to plan again. (Blind review,
+  `refused`). This company's own, as far as the file shows: a record merged
+  away whose name, as the refusal recorded it, this company goes by (its
+  survivor: the desk's merge puts the dropped name in also_known_as); a
+  record on file whose also_known_as carries this one's name, or the other
+  way round; or a record of the same name on the same website or in one
+  group of the Duplicates queue (`wire_found.duplicate_groups`; a pair he
+  dismissed there is two companies). Names are compared as
+  `verify_boards.strict` leaves them, country tag included
+  (`wire_found.names_meet`): "Esri" is not "Esri Canada". Refused for any
+  OTHER company, on file or merged away, it is that company's answer, not
+  this one's: the board is read and HELD, and filed in Boards we found for
+  the company whose own site and board both name it, the refusal and whose
+  it was quoted ("... was refused for Sub Co in Agent proposals (...) -
+  refused for another company, still on file (Sub Co)", or "- refused for a
+  record since merged away (Sub Co), and this company does not go by that
+  name"; "whether it is Parent Co's own board is the owner's to rule on");
+  apply leaves such a WIRE row alone and says to plan again. (Blind review,
   2026-11-21: Sub Co's refusal, "the board is Parent Co's", held Parent Co's
   own board in all three doors, and nothing could put it in front of him for
   Parent Co; 10 of the 11 board proposals he had rejected name their true
-  owner. Discovery and wire_embedded.py, which never wire past him, still
-  hold it.) A
+  owner. The third blind review, the same day: every refusal under a record
+  merged away was still taken for this company's, so a desk merge of Sub Co
+  put Parent Co's board out of his reach again; and two records both named
+  Acme Co were "another company", so his answer for one came back on his
+  desk for the other. Discovery and wire_embedded.py, which never wire past
+  him, still hold it.) A
   doubted or refused company merged into its duplicate left its hold under
   the dropped id, and the survivor's plan wired the board (third review and
   review of 27eeb628, 2026-11-19). The desk's merge (`admin.act_merge`) is NOT refused for it,
@@ -2988,11 +3001,12 @@ round.
   can reach (an older ruling, a company on a board, one merged away) holds
   its board until he is told and answers - `settle` writes his answer, about
   the one board he answered about; and a
-  board refused for one company is SKIP refused for its survivor and for a
-  record that also goes by its name, and for every other company that names
-  it is filed in Boards we found with the refusal quoted, the group's own
-  record included, for him to rule on there (discovery and wire_embedded
-  hold it for every company).
+  board refused for one company is SKIP refused for its survivor and for
+  another record of the same company (an also_known_as either way, or one
+  name and one website or Duplicates group), and for every other company
+  that names it is filed in Boards we found with the refusal quoted, the
+  group's own record included, for him to rule on there (discovery and
+  wire_embedded hold it for every company).
   Giants on readers that do read the whole board are still read in full
   before they are skipped.
 

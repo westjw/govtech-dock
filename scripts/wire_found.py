@@ -823,13 +823,55 @@ named_holds = board_proposals.named_holds
 numbers_on_file = board_proposals.numbers_on_file
 
 
-def refused_for_it(h: dict, c: dict, by_id: dict) -> bool:
-    """Is a refusal held under ANOTHER record's id (held_boards, code
-    `refused`) a refusal of this board for THIS company too?
+def names_meet(ours, theirs) -> bool:
+    """Do two lists of names share one? Compared as verify_boards.strict
+    leaves a name, ITS COUNTRY TAG INCLUDED: "Esri" is not "Esri Canada"
+    (strict_names keeps the name part only, and on file those two are one
+    name - a distributor's refusal would read as Esri's own)."""
+    def keys(names):
+        return {k for k in (verify_boards.strict(n) for n in names or ()
+                            if isinstance(n, str) and n.strip()) if k[0]}
+    return bool(keys(ours) & keys(theirs))
 
-    Yes when that record is no longer on file - merged away, its refusal is
-    its survivor's - or when this company's also_known_as carries its name:
-    one company on two records. Otherwise it is another company's refusal.
+
+def duplicate_groups(companies: list, board: dict) -> dict:
+    """{company id: the ids the Duplicates queue groups it with}, as the desk
+    draws that queue (admin.q_duplicates: one name, one website, one logo; a
+    group the owner dismissed there is not one)."""
+    out = collections.defaultdict(set)
+    for g in admin.q_duplicates(companies, board):
+        ids = {m.get("id") for m in g.get("members") or [] if isinstance(m, dict)}
+        for i in ids:
+            out[i] |= ids - {i}
+    return out
+
+
+def refused_for_whom(h: dict, by_id: dict) -> str:
+    """Whose refusal a refusal under another record's id was, for a row it is
+    quoted on: another company still on file, or a record since merged away
+    whose name this company does not go by."""
+    other = by_id.get(h.get("id"))
+    if other is not None:
+        return f"refused for another company, still on file ({other.get('name') or h['id']})"
+    whose = next((n for n in h.get("whose") or [] if str(n).strip()), h.get("id"))
+    return (f"refused for a record since merged away ({whose}), and this company does not go "
+            f"by that name")
+
+
+def refused_for_it(h: dict, c: dict, by_id: dict, dups: dict | None = None) -> bool:
+    """Is a refusal held under ANOTHER record's id (held_boards, code
+    `refused`) a refusal of this board for THIS company too? Only when the
+    two are one company, as far as the file shows (names_meet):
+
+      - the record is no longer on file, and this company goes by the name
+        the refusal recorded for it (its name or an also_known_as - the
+        desk's merge puts the dropped name there): it is the survivor;
+      - either record's also_known_as carries the other's name;
+      - the two have one name, and one website or one group in the
+        Duplicates queue (`dups`, duplicate_groups; two companies are called
+        Concourse, and a website tells them apart).
+
+    Otherwise it is another company's refusal.
 
     WHY THE DIFFERENCE (blind review, 2026-11-21). The owner refuses Sub Co's
     claim on greenhouse/parentco, "the board is Parent Co's, not this
@@ -839,11 +881,23 @@ def refused_for_it(h: dict, c: dict, by_id: dict) -> bool:
     10 of the 11 board proposals he had rejected name their true owner. So
     the wiring door files such a board for him, the refusal quoted and whose
     it was, and he rules on it; discovery and wire_embedded.py, which never
-    wire past him, still hold it."""
+    wire past him, still hold it.
+
+    AND ONLY ONE COMPANY'S (third blind review, 2026-11-21). Every refusal
+    under a record merged away was taken for this company's, so a desk
+    merge of Sub Co put Parent Co's board back out of his reach; and two
+    records both named Acme Co, or one whose also_known_as carries the
+    other's name, were "another company", so a board he had refused for
+    Acme Co went back on his desk for Acme Co."""
     other = by_id.get(h.get("id"))
     if other is None:
+        return names_meet(_their_names(c), h.get("whose") or [])
+    if names_meet(_akas(c), [other.get("name")]) or names_meet(_akas(other), [c.get("name")]):
         return True
-    return bool(set(_strict_names(*_akas(c))) & set(_strict_names(other.get("name"))))
+    if not names_meet([c.get("name")], [other.get("name")]):
+        return False
+    return page_belt._same_site(c.get("website") or "", other.get("website") or "") \
+        or other.get("id") in (dups or {}).get(c.get("id"), ())
 
 
 def acquisition_doubts(companies: list, board: dict) -> dict:
@@ -947,6 +1001,8 @@ def standing(companies: list, board: dict, stores: dict | None = None) -> dict:
             # plan() once the pre-pass has followed this run's Workable numbers
             "held_boards": held_boards(doubts, s, by_id, {}, companies, refusals),
             "acquisitions": acquisition_doubts(companies, board),
+            # which records the Duplicates queue groups (refused_for_it)
+            "duplicates": duplicate_groups(companies, board),
             "shown": shown_now(board),
             "crawled": str((board or {}).get("generated") or "")[:10],
             "total": {}, "read": {}, "said": {}}
@@ -1319,7 +1375,8 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     owner_holds = ctx.get("held_boards") or {"keys": {}, "named": []}
     hits = list({id(h): h for k in keys for h in owner_holds["keys"].get(k, [])
                  if h["id"] != cid}.values())
-    no = [h for h in hits if h["code"] == "refused" and refused_for_it(h, c, ctx["by_id"])]
+    no = [h for h in hits if h["code"] == "refused"
+          and refused_for_it(h, c, ctx["by_id"], ctx.get("duplicates"))]
     if no:
         return _skip(base, "refused", f"{no[0]['words']}; the board found now is that board, "
                                       f"{show(kind, ref)}, for another record - tell the owner")
@@ -1437,8 +1494,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # still on file goes to the owner for THIS company, his refusal and whose
     # it was quoted: he said no to it for them, not for this one.
     for words in dict.fromkeys(
-            (f"{h.get('refusal') or h['words']} - refused for another company, still on file "
-             f"({(by_id.get(h['id']) or {}).get('name') or h['id']}); whether it is "
+            (f"{h.get('refusal') or h['words']} - {refused_for_whom(h, by_id)}; whether it is "
              f"{base['name']}'s own board is the owner's to rule on")
             if h["code"] == "refused" else h["words"] for h in hits
             if not (h["code"] == "number" and h["id"] in holding)):
@@ -2428,13 +2484,12 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
         for h in (owner_holds.get("keys") or {}).get(k) or []:
             if h["id"] == cid or (h["code"] == "number" and h["id"] in reading):
                 continue
-            if h["code"] == "refused" and not refused_for_it(h, c, by_id):
+            if h["code"] == "refused" and not refused_for_it(h, c, by_id,
+                                                             held_for.get("duplicates")):
                 # another company's refusal: the plan files it for the owner
-                return h["code"], (f"since the plan, {h.get('refusal') or h['words']} - refused "
-                                   f"for another company, still on file "
-                                   f"({(by_id.get(h['id']) or {}).get('name') or h['id']}): plan "
-                                   f"again, and the plan holds it for the owner with the "
-                                   f"refusal quoted")
+                return h["code"], (f"since the plan, {h.get('refusal') or h['words']} - "
+                                   f"{refused_for_whom(h, by_id)}: plan again, and the plan "
+                                   f"holds it for the owner with the refusal quoted")
             return h["code"], (f"since the plan, {h['words']}"
                                + (" - tell the owner" if h["code"] == "refused" else ""))
     # a Workable account held under a number the plan never followed, beside
@@ -2560,7 +2615,8 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
                 "standing": standing, "reaches": reaches, "waiting": _waiting(s),
                 "boards": held_boards(standing, s, by_id, resolved, companies, refusals),
                 "suspects": _suspects(s),
-                "acquisitions": acquisition_doubts(companies, board)}
+                "acquisitions": acquisition_doubts(companies, board),
+                "duplicates": duplicate_groups(companies, board)}
 
     wire, left = [], []
     for row in wires:
