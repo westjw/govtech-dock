@@ -879,9 +879,21 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
 # and the board's own furniture on the board's own pages: a Career Site
 # Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
 # Indra's front page links it for a candidate's sign-in (2026-11-20). Kept
-# off those pages only (sightings, _board_furniture); anywhere else it stays
-# a platform nothing reads.
+# off those pages only, and only where the address names that board's own
+# tenant (its company= is the page's ssoCompanyId) or no tenant at all: a
+# portal of another tenant beside the board is another account, and stays
+# a platform nothing reads, as anywhere else (seventh blind review,
+# 2026-11-22). See sightings and _board_furniture.
 _ON_ITS_OWN_BOARD = {"successfactors-legacy": "successfactors"}
+_SF_COMPANY = re.compile(r"[?&;]company=([^&#\s\"'<>]{1,80})", re.I)
+_SF_SSO = re.compile(r"[\"']ssoCompanyId[\"']\s*:\s*[\"']([^\"'<>]{1,80})[\"']")
+
+
+def legacy_tenant(address) -> str:
+    """The tenant a SuccessFactors legacy portal's address names - its
+    company= - lower-cased, or "" for one that names none (a bare host)."""
+    m = _SF_COMPANY.search(str(address or ""))
+    return urllib.parse.unquote(m.group(1)).strip().lower() if m else ""
 
 _ANY_HINT = re.compile("|".join(sorted(
     {re.escape(h) for hs in HINTS.values() for h in hs}
@@ -1136,6 +1148,18 @@ def _short(text: str) -> str:
     return privacy.redact(_no_person((text or "")[:4000]))[:160]
 
 
+def _address(text: str, start: int, end: int) -> str:
+    """The whole address a match sits in, as the page wrote it (no cut, no
+    redaction: read here, never written)."""
+    a, floor = start, max(0, start - 60)
+    while a > floor and text[a - 1] not in _STOP:
+        a -= 1
+    b, ceil = end, min(len(text), start + 2000)
+    while b < ceil and text[b] not in _STOP:
+        b += 1
+    return text[a:b]
+
+
 def _saw(text: str, start: int, end: int) -> str:
     """The matched text widened to the whole address as the page wrote it,
     at most 160 characters, with any person's e-mail address taken out (the
@@ -1194,7 +1218,11 @@ def _tally(text: str, element: str, page_url: str, website: str,
             row["times"] += 1
             row["_spelt"][json.dumps(ref)] += 1
         for start, end, vendor in oth:
-            row = others.setdefault((vendor, element), {
+            # (a legacy portal is kept apart by the tenant its whole address
+            # names, which a 160-character `saw` can cut off)
+            key = (vendor, element) if vendor not in _ON_ITS_OWN_BOARD else \
+                (vendor, element, legacy_tenant(_address(text, start, end)))
+            row = others.setdefault(key, {
                 "vendor": vendor, "element": element,
                 "saw": _saw(text, start, end), "times": 0})
             row["times"] += 1
@@ -1429,7 +1457,15 @@ def sightings(page: str, page_url: str, website: str, *,
         row["times"] += 1
         row["_spelt"][json.dumps(origin)] += 1
     if tells:
-        others = {k: v for k, v in others.items() if _ON_ITS_OWN_BOARD.get(k[0]) != "successfactors"}
+        # the board's own tenant is the ssoCompanyId its j2w.init names; a
+        # portal naming another is another account, and stays
+        own = {m.group(1).strip().lower() for _el, text in pieces
+               for m in _SF_SSO.finditer(soften(text))}
+
+        def its_own(k) -> bool:
+            return (_ON_ITS_OWN_BOARD.get(k[0]) == "successfactors" and len(k) > 2
+                    and (k[2] == "" or k[2] in own))
+        others = {k: v for k, v in others.items() if not its_own(k)}
     # an address of a platform we read that names no board says nothing once
     # the page HAS named that platform's board (Paylocity's own scripts, 23
     # of them, beside the frame that loaded them)
@@ -2814,6 +2850,11 @@ def _board_furniture(row: dict, candidates: list) -> bool:
     board's own pages name (_ON_ITS_OWN_BOARD): its tenant's sign-in."""
     vendor = str(row.get("vendor") or "")
     kind = _NO_BOARD_IN_IT.get(vendor) or _ON_ITS_OWN_BOARD.get(vendor)
+    saw = str(row.get("saw") or "")
+    if vendor in _ON_ITS_OWN_BOARD and (legacy_tenant(saw) or len(saw) >= 160):
+        # a legacy portal naming a tenant (or that may, past the cut) is the
+        # board's own only where its page showed the board's tenant (sightings)
+        return False
     page = _host(str(row.get("page") or ""))
     return bool(kind and page) and any(
         c.get("type") == kind and _board_host(kind, c.get("ref")) == page for c in candidates)
