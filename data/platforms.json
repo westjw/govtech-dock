@@ -1,0 +1,874 @@
+{
+  "about": [
+    "One entry for every job-posting platform SLED JOBS reads or meets: every reader in ats.FETCHERS (html, the page scan, among them), the platforms researched live on 2026-11-19..21 that have no reader, and every vendor the finder's ELSEWHERE list recognises. Each entry says how a company's site shows the platform, how it publishes its postings, what robots.txt allows, where a board names its employer, its quirks, and which functions read and probe it.",
+    "Written from the code (the readers in scripts/ats.py, the finder's patterns in scripts/find_site_boards.py, the probes in scripts/verify_boards.py, build_board.board_url) and from the research of 2026-11-19..21, whose evidence sat in scratch files that are not kept. Where the research and the code disagree, the code is what runs, and the entry's notes say so. Nothing is guessed: what the sources do not settle says unknown.",
+    "How a platform is met. find_site_boards.py reads a company's own website: an address in one of its board patterns is a candidate, naming a board a reader takes; an address on a platform nothing reads, or a form of one we read that names no board, is tallied under elsewhere (ELSEWHERE, with TENANT_FORMS and _NO_BOARD_IN_IT saying which forms belong to which platform). The reader in ats.FETCHERS reads the board. verify_boards.board_says asks the board whose it is, and proven() decides whether the name it states is the company's. wire_found.py wires a found board only when both checks agree (the owner's rule, 2026-11-18).",
+    "measured_on lists the days the code or the research records a live measurement; a window (day..day) is a day within it that the research does not narrow down; unknown is none recorded. A form is a finder vendor id that belongs to the platform and names no board the wiring door can use."
+  ],
+  "statuses": {
+    "read": "A reader exists in ats.FETCHERS; the nightly crawl reads boards of this type.",
+    "build": "Researched; worth a reader; not built yet.",
+    "maybe": "Researched; worth a reader only on the conditions the entry names.",
+    "skip": "Researched; cannot or should not be read, for the reason the entry gives.",
+    "seen": "The finder recognises it (find_site_boards.ELSEWHERE); not researched yet."
+  },
+  "platforms": {
+    "adp": {
+      "name": "ADP Workforce Now",
+      "status": "read",
+      "spot": "The careers page a person opens, workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=<uuid>[&ccId=<n>_<n>], or the API address that page calls (find_site_boards' own patterns). The cid is the ref, followed by '|<ccId>' only when the link names a career centre other than ADP's default. Hint: workforcenow.adp.com. Nothing guesses a cid: it comes from a link the company published.",
+      "forms": {
+        "adp-other": "An address on workforcenow, myjobs or recruiting.adp.com that names no cid."
+      },
+      "publishes": "A public JSON API, one GET: https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=<cid>&ccId=<ccId>&lang=en_US&locale=en_US -> jobRequisitions[] with requisitionTitle, requisitionLocations[].nameCode.shortName, itemID and postDate. The careers page itself is a ~5 KB shell that draws nothing until its script asks that API. The reader makes one request and does not page.",
+      "link": "None of its own: board_url links the company's website.",
+      "robots": "Not asked by the reader: it reads ADP's JSON API through ats._get, which the owner's ruling of 2026-10-09 exempts as an interface published for programs. Not measured.",
+      "employer": "No identity probe: verify_boards.board_says answers 'no identity probe written for adp', so no ADP board can pass proven().",
+      "quirks": [
+        "Verified 2026-09-02 against Zenner USA (11 requisitions), with a cid read off the company's own careers page.",
+        "Most portals answer on ADP's default ccId (19000101_000001); the few that need another carry it in the ref.",
+        "The location is ADP's label, a site name then a place ('Minol - Addison, TX'), and the reader keeps the place. The address block beside it was empty on every row seen.",
+        "discover_ats.MARKERS still files the recruitment.html address as type html, which reads as a JavaScript shell ('page too small'); ten companies sat in the discovery log that way when the reader was written."
+      ],
+      "reader": "fetch_adp",
+      "probe": null,
+      "measured_on": "2026-09-02"
+    },
+    "applicantpro": {
+      "name": "ApplicantPro (isolved)",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "<label>.applicantpro.com or <label>.isolvedhire.com (one platform on two root domains, run by isolved) in an href, a src, an iframe or frame, or a redirect (find_site_boards; 'www' and the vendor's own labels skipped). The whole tenant host is the ref: the label alone does not say which domain, and it is not the company's name ('casellejobs'). Hints: applicantpro.com, isolvedhire.com.",
+      "forms": {
+        "applicantpro-other": "An address on applicantpro.com or isolvedhire.com that names no tenant: the 'Powered by ApplicantPro' link, and the www.applicantpro.com/openings/<label>/... form a board's own og:url uses, whose label the finder does not read."
+      },
+      "publishes": "Two requests a board. The /jobs/ page (https://<host>/jobs/) names the domain id the list is asked by, in its JobListings componentData (domainId and getParams), and the list is the call that component makes: GET https://<host>/core/jobs/<domainId>?getParams=<the page's getParams, as JSON> -> {success: true, data: {jobs: [...], jobCount}}, each job with title, city, abbreviation (the state), iso3, jobUrl, startDateRef ('Nov 17, 2026'), workplaceType, payType, minSalary, maxSalary, payTypeFrame and payDetails. The ad is each posting's schema.org block (one request a posting, behind FETCH_DETAILS). No paging: jobCount equalled the rows on every board read.",
+      "link": "https://<host>/jobs/",
+      "robots": "Asked at every hop: read as pages, held to the tenant's host. Measured 2026-11-19..21: every tenant host read, on both root domains, allows /jobs/, /core/jobs/ and the posting pages, and disallows only /admin/, /stats/ and the internal-jobs paths. Genasys's host gave no rules, and its site is disabled.",
+      "employer": "The feed names nobody. The /jobs/ page's courierCurrentRouteData states two names: career_site_name, the site the employer set up, and organization_name, the ApplicantPro account behind it. verify_boards._applicantpro states both and requires the site's own name, so a sister brand's site on another company's account states two names and goes to the owner's queue: Black Mountain Software's board is on Caselle's account (2026-11-19).",
+      "quirks": [
+        "A DISABLED SITE ANSWERS 200: Genasys's /jobs/ lands, on the same host, on /notset.php?...&disabled=1, 'This career site has been disabled'. That is a board that is gone, never one with nothing open.",
+        "min..max is pay only on a 'Salary' or 'Hourly' row whose payDetails names no commission, OTE, bonus or equity: on 'Base + Commission' it runs from the base floor to the OTE ceiling (LYT's Senior AE: 82000-248000 against a stated base of $82k-$124k). The posting page's baseSalary is not taken either, so a figure refused here cannot come back by another door.",
+        "The list call is the board's own front-end endpoint, not a published API, and its bundles are hash-named, so a front-end release can change it. The research found a server-rendered fallback list at /iframe/mobile; the code does not read it.",
+        "startDateRef is read as '%b %d, %Y' (posted_date does not take that form); a city of 'Remote' is a way of working, not a place.",
+        "discover_ats.MARKERS still files <label>.applicantpro.com and <label>.isolvedhire.com as type html."
+      ],
+      "notes": [
+        "The research left it to the owner whether the probe states organization_name beside career_site_name (stating both sends Black Mountain to his queue); the code states both. The code is what runs."
+      ],
+      "reader": "fetch_applicantpro",
+      "probe": "_applicantpro",
+      "measured_on": "2026-11-19, 2026-11-21"
+    },
+    "ashby": {
+      "name": "Ashby",
+      "status": "read",
+      "spot": "jobs.ashbyhq.com/<slug>, its embed form jobs.ashbyhq.com/embed?org=<slug>, or the API address api.ashbyhq.com/posting-api/job-board/<slug> (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards), plus the finder's own form for a board whose name has a space in it, which arrives as %20 and is read whole ('flock safety', not 'flock'). Hint: ashbyhq.com. The slug is kept as the page spelt it.",
+      "publishes": "A documented JSON API, one GET for the whole board: https://api.ashbyhq.com/posting-api/job-board/<slug>?includeCompensation=true -> {jobs: [...]}, each with title, location, jobUrl or applyUrl, descriptionPlain, publishedAt, workplaceType and, with includeCompensation, pay as numbers: the only board here that publishes a pay range as numbers on its list endpoint. No paging.",
+      "link": "https://jobs.ashbyhq.com/<slug>",
+      "robots": "Not asked by the reader: it reads Ashby's documented feed through ats._get (exempt under the owner's ruling of 2026-10-09). The identity probe reads the board's own page, jobs.ashbyhq.com/<slug>, through verify_boards._board_page, robots.txt asked at every hop. What either host's robots.txt says is not recorded.",
+      "employer": "The feed names nobody ({jobs, apiVersion}). The board's own page assigns window.__appData, whose organization block carries the display name and the website the employer gave Ashby: verify_boards.board_says reads the feed, then _ashby_page states organization.name and gives publicWebsite as the site proven() holds to the one on file. A board marked isDemoOrg names nobody. The slug (hostedJobsPageSlug) is never a name: 'snd' is Social News Desk.",
+      "quirks": [
+        "workplaceType gives the mode; isRemote is deliberately unused, because False means not remote, not onsite."
+      ],
+      "reader": "fetch_ashby",
+      "probe": "board_says",
+      "measured_on": "2026-08-23"
+    },
+    "bamboohr": {
+      "name": "BambooHR",
+      "status": "read",
+      "spot": "<slug>.bamboohr.com (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards); the slug is lowered. Hint: bamboohr.com.",
+      "publishes": "JSON, one GET: https://<slug>.bamboohr.com/careers/list -> {result: [...], meta}, each opening with jobOpeningName, atsLocation and location parts, and id. The list carries no description: /careers/<id>/detail carries the description and a compensation field (one request a posting, behind FETCH_DETAILS). No paging.",
+      "link": "https://<slug>.bamboohr.com/careers",
+      "robots": "Not asked by the reader (ats._get, exempt under the owner's ruling of 2026-10-09). The identity probe reads the careers page through verify_boards._board_page, robots.txt at every hop. Not measured.",
+      "employer": "The list names nobody. The careers page states the name in og:site_name, and NOT in its <title>, which is the bare word 'BambooHR' on every board: verify_boards._bamboohr reads the list for the count, then _bamboohr_page.",
+      "quirks": [
+        "atsLocation is read first: location is {city: null, state: null} on every row of every board checked, while atsLocation holds 'Denver, Colorado, United States' one key over.",
+        "compensation on the detail record was null on every sample on file.",
+        "BambooHR's marketing site is www.bamboohr.com, on the domain its tenants' boards sit under, so the probe holds every hop to the board's own host."
+      ],
+      "reader": "fetch_bamboohr",
+      "probe": "_bamboohr",
+      "measured_on": "2026-08-23"
+    },
+    "breezy": {
+      "name": "Breezy HR",
+      "status": "read",
+      "spot": "<slug>.breezy.hr (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards); the slug is lowered. Hint: breezy.hr.",
+      "publishes": "JSON, one GET: https://<slug>.breezy.hr/json -> a list of positions with name, location.name, url, published_date and pay as text in the list ('$160,000 - $200,000 / year'). The description is only on each posting page's schema.org JobPosting (one request a posting, behind FETCH_DETAILS). No paging.",
+      "link": "https://<slug>.breezy.hr",
+      "robots": "Not asked for the feed (ats._get, exempt under the owner's ruling of 2026-10-09). The posting pages behind FETCH_DETAILS and the probe's fallback page are read as pages, robots.txt at every hop. Not measured.",
+      "employer": "Stated in the feed: company.name on every position, never company.friendly_id, which repeats the slug ('vetro-fibermap-inc' where the name is 'VETRO, Inc'). An empty feed ('[]', Polco's) names nobody, so verify_boards._breezy falls back to the hosted page's breezy-doc-title meta (_breezy_page); not its og:title, which is a slogan the employer types ('Join Our Team').",
+      "quirks": [
+        "Pay is free in the list; only the description costs a request."
+      ],
+      "reader": "fetch_breezy",
+      "probe": "_breezy",
+      "measured_on": "2026-08-23"
+    },
+    "comeet": {
+      "name": "Comeet (Spark Hire Recruit)",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "The company's own iframe or API call, which hands its browser the company uid and the public token together (comeet.co/jobs/<UID>/social?token=..., or .../jobs/<UID>/<position UID>/apply?token=..., or comeet.co/careers-api/2.0/company/<UID>/positions?token=...); a COMEET.init({...}) script, read one key at a time because Cognyte's object is not JSON; or a hosted board, www.comeet.com/jobs/<slug>/<UID> (find_site_boards). A uid is two hex digits, a dot and three more ('F2.004'). The ref is '<UID>|<TOKEN>' as the company's page gave them, or the hosted board's address. Hint: comeet.",
+      "forms": {
+        "comeet-other": "Any other comeet.co or comeet.com address (a terms link on support.comeet.co, a plugin page).",
+        "comeet-tenant": "A Comeet address naming a company uid with no token to read it by: a doubt beside a board, unless it names the very tenant a board on the page already is."
+      },
+      "publishes": "Comeet's careers API, one request a company, the ad on &details=true: GET https://www.comeet.co/careers-api/2.0/company/<UID>/positions?token=<TOKEN>&details=true -> an array of positions with name, location (name, city, state, country), workplace_type, url_comeet_hosted_page and details[] (Description, Responsibilities, Requirements, in order). For a hosted-board ref the reader first reads the hosted page's COMPANY_DATA for the token: two requests. No paging.",
+      "link": "A hosted-board ref is linked as it is; a '<UID>|<TOKEN>' ref has no page of its own a person can open, the pair is never printed, and board_url links the company's website.",
+      "robots": "Asked at every hop: read as pages, held to the host. Measured 2026-11-19..21: www.comeet.co and www.comeet.com serve the same file, which allows the API, the iframe and the hosted pages and disallows ?src= and utm_ parameters (among a few others); never add them.",
+      "employer": "Stated on every position: company_name. A hosted board's page also states the account's name and the website it gave (COMPANY_DATA.name and website), both held to the record (verify_boards._comeet). An empty list names nobody unless the board is a hosted page, which still names itself. The page <title> is the vendor's ('Spark Hire Recruit Jobs | ...') and is never read.",
+      "quirks": [
+        "Never read: the referral bounty (company_referrals_reward, '3000$', is not pay), the apply alias (email), the categories (one named a hiring manager), and location.is_remote, which is true on every Hybrid row.",
+        "No posting date: time_updated is an edit stamp, so posted is None.",
+        "The token is the public one the company's careers page gives every visitor's browser; a stored one stops working if the employer issues a new one.",
+        "WordPress 'Comeet Jobs' plugin sites (Cellebrite's) keep the token on the server and print no uid, token or comeet address: nothing can be lifted from them, and no slug or uid is ever guessed.",
+        "Mostly a platform for Israeli companies: 26 of the 105 rows the research read were US-located.",
+        "The vendor now calls itself Spark Hire Recruit; the hosts are unchanged, and a move to new hosts would break the reader and the finder's patterns."
+      ],
+      "notes": [
+        "The research said an empty feed needs a fallback to the hosted page, as breezy's probe has; the code names a board through its hosted page only when the ref is that page, so an empty board on file as '<UID>|<TOKEN>' names nobody. The code is what runs."
+      ],
+      "reader": "fetch_comeet",
+      "probe": "_comeet",
+      "measured_on": "2026-11-19, 2026-11-21"
+    },
+    "gem": {
+      "name": "Gem",
+      "status": "read",
+      "spot": "jobs.gem.com/<slug> (find_site_boards). The slug is never derived from the company id: City Detect's is citydetect. Hint: jobs.gem.com.",
+      "publishes": "Every jobs.gem.com page, board and job alike, is the same ~4 KB JavaScript shell with no JobPosting JSON-LD. The shell calls one public GraphQL endpoint that needs no auth, key or Referer: POST https://jobs.gem.com/api/public/graphql/batch, operation JobBoardList, which the reader sends with descriptionHtml added to the board's own query (and once more without it if that field errors). One request.",
+      "link": "https://jobs.gem.com/<slug>",
+      "robots": "Not asked: a POST (ats._post_json). Not measured.",
+      "employer": "Stated by the board's own API, in the one call the reader makes: jobBoardExternal.teamDisplayName (verify_boards._gem). A slug that does not exist answers jobBoardExternal null and names nobody.",
+      "quirks": [
+        "THE DISCRIMINATOR IS jobBoardExternal: a live board with nothing open and a slug that does not exist return a byte-identical empty postings list, and only the board object tells them apart, so a missing board is Unknown, never None found.",
+        "locations[].name never reaches a row: Gem prints team labels there ('City Detect (AL)'), which would read as an Alabama desk."
+      ],
+      "reader": "fetch_gem",
+      "probe": "_gem",
+      "measured_on": "unknown"
+    },
+    "greenhouse": {
+      "name": "Greenhouse",
+      "status": "read",
+      "spot": "boards.greenhouse.io/<slug> or job-boards.greenhouse.io/<slug>, the embed greenhouse.io/embed/job_board[/js]?for=<slug> and the feed boards-api.greenhouse.io/v1/boards/<slug> (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards), plus the finder's own forms: the application-form embed greenhouse.io/embed/job_app?for=<slug> and the older api.greenhouse.io/v1/boards/<slug>. Hint: greenhouse.io.",
+      "forms": {
+        "greenhouse-eu": "A board in Greenhouse's European region (job-boards.eu.greenhouse.io/<x>). fetch_greenhouse asks the American API only, so it is tallied apart until a reader can ask the European host: handed over as an ordinary ref it would be asked where it does not live, a 404 or another employer's board.",
+        "greenhouse-shortlink": "A grnh.se short link, which names no board; a redirect that lands on one is walked one hop further, because Greenhouse's next hop is usually the board."
+      },
+      "publishes": "A documented JSON API, one GET: https://boards-api.greenhouse.io/v1/boards/<slug>/jobs?content=true -> {jobs: [...]} with title, location.name, absolute_url, content (the ad, in the same request), first_published and pay_input_ranges. No paging.",
+      "link": "https://job-boards.greenhouse.io/<slug>",
+      "robots": "Not asked: a documented feed read through ats._get (exempt under the owner's ruling of 2026-10-09); the probe reads the same feed. Not measured.",
+      "employer": "Stated in the feed: company_name on every job. verify_boards.board_says keeps every distinct name (a parent's hub stamps different names on different jobs) and the apply hosts of the first eight. judge() still reads it with the older substring test, under which a parent passes ('Jacobs' for 'StreetLight Data (Jacobs)'); proven() requires every name to equal the record's.",
+      "quirks": [
+        "posted is first_published, never updated_at, which moves on any edit.",
+        "Pay is in cents on some payloads (min_cents, max_cents) and in units on others (min_value, max_value); both are read and neither is assumed.",
+        "Many companies share boards-api.greenhouse.io, so ats' per-host gate holds them HOST_PAUSE (0.5 s) apart."
+      ],
+      "reader": "fetch_greenhouse",
+      "probe": "board_says",
+      "measured_on": "2026-08-23"
+    },
+    "gusto": {
+      "name": "Gusto",
+      "status": "read",
+      "spot": "jobs.gusto.com/boards/<name>-<uuid> (find_site_boards). The segment is never derived from the company id: kaiden-ai's board is kaiden-incorporated-<uuid>. Hint: jobs.gusto.com.",
+      "forms": {
+        "gusto-posting": "A jobs.gusto.com/postings/... link to one job, which names no board; a redirect that lands on one is walked one hop further."
+      },
+      "publishes": "Server-rendered HTML with no API, no JSON-LD and no embedded payload: https://jobs.gusto.com/boards/<segment>, read in five states, each with a positive marker: populated (/postings/ links), empty ('There are no open positions currently', on a page titled 'Careers at X'), closed ('This job board is closed.'), gone (the body says 404) and anything else (Unknown). A paginated board raises rather than report part of itself.",
+      "link": "https://jobs.gusto.com/boards/<segment>",
+      "robots": "Asked at every hop (ats._page). Not measured.",
+      "employer": "Only the title pattern 'Careers at X', believed when the page's first heading says the same X (verify_boards._gusto). A closed board is titled the bare word 'Careers' and names nobody; the ref's own name segment is never read.",
+      "quirks": [
+        "CLOSED IS NOT EMPTY: a closed board means the employer moved (City Detect left Gusto for Gem, and its Gusto board is still live), so it reads Unknown, never a zero.",
+        "Every /postings/ link must be represented, and fewer rows than cards raises: a partial read is never reported as the board.",
+        "A card stating two pay ranges, or an anchor wrapping two headings, raises rather than guess which belongs to which."
+      ],
+      "reader": "fetch_gusto",
+      "probe": "_gusto",
+      "measured_on": "unknown"
+    },
+    "hirebridge": {
+      "name": "Hirebridge",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "Any address on recruit., hbapi. or alerts.hirebridge.com carrying cid=<number> (find_site_boards): an iframe of the career centre (Hirebridge's stock embed, id=HBIFRAME, as on CentralSquare's careers page), a link to the classic /v3/jobs/list.aspx?cid=, a posting, or the job-alerts page. The cid is the ref; there is no name or slug in these addresses. Hint: hirebridge.com.",
+      "publishes": "The JSON feed Hirebridge's own career centre calls from every visitor's browser, one GET for the whole board, descriptions included: https://hbapi.hirebridge.com/careercenter/v2/GetJobListings?cid=<cid>&language=en&addloc=0&startrow=1&endrow=5000. The body is a JSON string holding the JSON array, so it is decoded twice. One feed serves both UI generations (the classic list.aspx tenants and the /v3/CareerCenter/v2 ones). No paging needed: the career centre itself asks 5,000 rows a batch.",
+      "link": "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=<cid>",
+      "robots": "Asked at every hop: read as pages, held to the host. Measured 2026-11-19..21: hbapi.hirebridge.com has no robots.txt (404, so no rules); recruit.hirebridge.com disallows only /application, /company, /jobseeker2 and /jobseeker4 (older career-centre forms a reader never needs).",
+      "employer": "Stated on every row of the feed: companyname, with companyurl the website the account gave (empty on Tribute's). verify_boards._hirebridge reads the same feed, with no extra request, and holds companyurl to the website on file; rows giving two different websites are not stated. An empty feed names nobody: a cid nobody holds answers '[]' too.",
+      "quirks": [
+        "THE FEED IS OVER-BROAD: each row's nested joblist carries internal requisition data (notes naming staff, hiring-manager and coordinator ids) and descriptioninternal, the ad meant for internal applicants. The reader copies the public fields by name and nothing else, and hirebridge.com is in ats.NEVER_CACHED, so no raw answer is written to disk.",
+        "An empty feed is a zero only when the classic career centre answers as a live board (titled '<Name> Career Center'); a dead cid is sent, on the same host, to /v3/Application/AppErrMsg.aspx, titled 'Hirebridge ATS Error'. Anything else is not known, and not a zero.",
+        "addloc=0 matters: without it a job open in three places comes back as three rows with one jid (EAB, 2026-11-21: 93 rows for 42 jobs).",
+        "publicdate is M/D/YYYY and read as such (posted_date refuses to guess an order); never createdate, which is when the requisition was opened.",
+        "location.isremote true means remote; false is not stated (it was false on six of the seven CentralSquare roles whose title says Remote).",
+        "The places are joblocname plus additionalLocations; neither alone is the list.",
+        "The older career-centre forms (/jobseeker2, /jobseeker4) are robots-closed: a cid lifted from such a link is read through the feed."
+      ],
+      "notes": [
+        "The research said an empty feed should read as an empty board, with gone told from empty in the probe or once when the board is wired; the code's reader asks the classic career centre itself, on every empty read, and raises unless it answers as a live board. The code is what runs."
+      ],
+      "reader": "fetch_hirebridge",
+      "probe": "_hirebridge",
+      "measured_on": "2026-11-19, 2026-11-21"
+    },
+    "html": {
+      "name": "A careers page (html)",
+      "status": "read",
+      "spot": "Any careers page with no board behind it that another reader takes. Discovery also files several vendors' addresses as html (discover_ats.MARKERS): ADP's recruitment.html page, paycomonline.net's jobs?clientkey= list, jobs.jobvite.com/<slug>, <label>.teamtailor.com, applicantpro.com, clearcompany.com, isolvedhire.com, dayforcehcm.com, recruiting.ultipro.com/<TENANT>, pinpointhq.com, taleo.net, avature.net, csod.com and careers.hibob.com.",
+      "publishes": "The page itself. refresh.py's reader, fetch_html, returns one pseudo-row carrying the page's visible text for the classifier (a page under 400 characters raises: likely JavaScript-rendered). build_board reads the same page with fetch_html_titles, which counts a link only when its address looks like a job's and its text like a title, needs two, deduplicates on the link, and takes schema.org JobPosting blocks already in the page; a shell falls back to a headless browser (render_fetch.fetch_rendered) within the nightly render budget.",
+      "link": "The ref (the page's address).",
+      "robots": "Asked at every hop (ats._page). A rendered read walks the address's redirects with ats.resolve first and keeps nothing from a page whose final address is refused.",
+      "employer": "Names nobody: board_says' html branch records the page's own host and counts its titles ('html board: the page's own host'), and html is not in NAMES_ITS_EMPLOYER, so an html board can never pass proven().",
+      "quirks": [
+        "A page scan never proves absence: an unreadable page is Unknown, never None found.",
+        "html does not mean unread: on 2026-11-18, 114 such pages put 1,357 postings on the board every night.",
+        "A page-scan verdict read off another company's careers page is downgraded to Unknown (refresh._someone_elses_site).",
+        "A commented-out job is not an opening: comments are stripped before the scan (Pantonium's three commented-out Sales Director rows had published a 'Yes')."
+      ],
+      "reader": "fetch_html",
+      "probe": null,
+      "measured_on": "2026-08-23, 2026-11-18"
+    },
+    "icims": {
+      "name": "iCIMS",
+      "status": "read",
+      "spot": "<slug>.icims.com (discover_ats.MARKERS, borrowed by find_site_boards; lowered), or a full portal address on icims.com. Hint: icims.com.",
+      "publishes": "A server-rendered portal: the plain address is a ~600-character shell with the list in an iframe, and ?in_iframe=1 returns the real list, https://<slug>.icims.com/jobs/search?ss=1&in_iframe=1&pr=<n>. Titles are the iCIMS_Anchor title attribute, '<req id> - <title>'. Paged by number (about 20 a page) until a page adds no new link, at most 60 pages, and deduplicated on the link, never the title. The ad is each posting page's schema.org JobPosting (behind FETCH_DETAILS).",
+      "link": "https://<slug>.icims.com/jobs/search?ss=1; a full-address ref is linked as it is.",
+      "robots": "Asked at every hop (ats._page). Measured 2026-10-09: iCIMS portals saying 'Disallow: /' cost Bruker Detection 213 postings and BigBear.ai 64 when the crawler began honouring robots.txt.",
+      "employer": "Stated on the board's own first page: iCIMS writes one sentence into the meta description, 'View all current positions at X across all categories and locations.', and X is the ACCOUNT holder (not the <title>, which employers rewrite). verify_boards._icims reads it, and a full-address ref must be on icims.com. The account can be a third party's: Selux's portal says 'Council of Industry'.",
+      "quirks": [
+        "The probe reads the first page only (n_is_partial): a board's size comes from the reader, which pages to the end.",
+        "Paged to the end since 2026-09-01: Bruker's portal served nineteen on its first page and twenty after, eleven pages and 204 links; deduplicating on the title had deleted 27 real requisitions.",
+        "An empty portal raises ('no jobs parsed from iCIMS portal'): Unknown, never a zero.",
+        "A Jibe site answers ?in_iframe=1 with a script that bounces back: that is the jibe type, not this one."
+      ],
+      "reader": "fetch_icims",
+      "probe": "_icims",
+      "measured_on": "2026-08-23, 2026-09-01, 2026-10-09"
+    },
+    "jazzhr": {
+      "name": "JazzHR",
+      "status": "read",
+      "spot": "<slug>.applytojob.com (discover_ats.MARKERS, borrowed by find_site_boards) and the embed script app.jazz.co/widgets/basic/create/<slug> (the finder's own); lowered. Hints: applytojob.com, jazz.co.",
+      "publishes": "A server-rendered list of <a> job links at https://<slug>.applytojob.com/apply/. The list page carries only an Organization block; the ad, and a structured baseSalary when the employer set one, are on each posting page (behind FETCH_DETAILS). No paging.",
+      "link": "https://<slug>.applytojob.com/apply",
+      "robots": "Asked at every hop (ats._page). Not measured.",
+      "employer": "Stated on the board's own page as a JSON-LD Organization block, with the website the employer typed beside it: verify_boards._jazzhr states the name and gives the site to proven(). An inactive board has no block and is titled 'JazzHR - Inactive Career Page', so the name is never read from the title.",
+      "quirks": [
+        "A dead or mistyped slug redirects to info.jazzhr.com and on to www.jazzhr.com/job-seekers, a marketing page with an Organization block of its own (measured 2026-11-18): the probe refuses any hop off the board's host.",
+        "A page with no job links raises unless it says it has none ('no open positions' and the like): an unreadable board is not an empty one.",
+        "The title is measured after stripping: JazzHR indents its anchors by 77 characters, and a bound on the raw text kept 2 of 51 real postings (measured across twelve boards, 2026-09-01)."
+      ],
+      "reader": "fetch_jazzhr",
+      "probe": "_jazzhr",
+      "measured_on": "2026-08-23, 2026-09-01, 2026-11-18"
+    },
+    "jibe": {
+      "name": "Jibe (iCIMS Talent Cloud)",
+      "status": "read",
+      "spot": "Jibe lives on the company's own careers host and its address names nobody, so find_site_boards spots it by the script host its pages load, jibecdn.com (JIBE_MARK), and takes the host of the page it was seen on as the ref.",
+      "publishes": "JSON on the careers host: https://<careers host>/api/jobs?page=<n>&limit=100 -> {jobs: [{data: {...}}], totalCount}. The limit is honoured (and capped at 100); the reader pages until totalCount is reached, at most 40 pages. Rows give title, full_location, apply_url, description, create_date, city, state and country.",
+      "link": "board_url links the ref when it is a full address, else the company's website.",
+      "robots": "Not asked: read through ats._get as a feed. Not measured.",
+      "employer": "Stated on every posting: hiring_organization. verify_boards.board_says asks the first 50 postings and marks the names stated only when that page covers the count the site gives (or came back short of a full page); a longer site keeps its names unstated, for the owner's queue.",
+      "quirks": [
+        "Not what fetch_icims reads: a Jibe site answers ?in_iframe=1 with a 143-byte script that bounces back to the careers page and serves an Angular shell at the portal address, which is why BigBear.ai read as a JavaScript wall; its apply links still point back at the iCIMS portal.",
+        "An empty read raises ('no jobs parsed from Jibe API'): Unknown, never a zero."
+      ],
+      "reader": "fetch_jibe",
+      "probe": "board_says",
+      "measured_on": "unknown"
+    },
+    "jobvite": {
+      "name": "Jobvite",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "A link to a career site or one of its postings, jobs.jobvite.com/<slug>[/...], never its __assets__: the first character cannot be an underscore (find_site_boards). The slug is the ref. Hint: jobvite.com.",
+      "forms": {
+        "jobvite-joblink": "A link to ONE job, app.jobvite.com/j?cj=<id>, whose account the link does not show; robots.txt closes its /j/ hop, so the slug cannot be learned from it (INRIX's).",
+        "jobvite-other": "Any other jobvite.com address, such as the embed loader jobs.jobvite.com/__assets__/scripts/careersite/public/iframe.js (NinjaOne's page serves only that, with no slug in its HTML).",
+        "jobvite-tenant": "An address naming a Jobvite account (a company code, c= or ci=, on app. or hire.jobvite.com: its CompanyJobs pages and talent network) but no career site this door can read: another account beside their board, and a doubt."
+      },
+      "publishes": "The career site's list page, server-rendered with every opening on it: GET https://jobs.jobvite.com/<slug>/jobs, one row per opening (<td class=\"jv-job-list-name\"> with its /<slug>/job/<id> link, and its location cell), grouped under category headings. An embedded board's list and postings send a browser on to the employer's own careers page; asked with nl=1&fr=false they answer themselves. The ad and any stated pay are each posting's schema.org block, read from the posting itself (behind FETCH_DETAILS). No paging seen.",
+      "link": "https://jobs.jobvite.com/<slug>/jobs",
+      "robots": "Asked at every hop, and every hop held to jobs.jobvite.com/<slug>/. Measured 2026-11-19..21: jobs.jobvite.com and search.jobvite.com have no robots.txt (404, so no rules); app.jobvite.com allows /CompanyJobs/Xml.aspx (the XML feed) and closes /j/, /Jobs/, /API/, /Careers/ and /Widget/.",
+      "employer": "The list page names its career site only in its <title>, '<Name> Careers', free text in a fixed pattern, so verify_boards._jobvite believes it only with what EVERY posting's schema.org hiringOrganization says (up to 40 postings asked): a posting naming nobody leaves the board unstated, and a board whose title and postings disagree states two names and goes to the owner's queue (Absolute's title says 'Absolute Security' and its postings 'Absolute Software', 2026-11-19).",
+      "quirks": [
+        "JOBVITE'S TENANTS SHARE ONE HOST AND DIFFER BY PATH: every read is held to jobs.jobvite.com/<slug>/ before the hop is asked anything, a path that does not say plainly which career site it is ('..', escapes, backslashes) is refused, and a row is read only under the slug asked (blind reviews, 2026-11-22).",
+        "A dead slug is sent to search.jobvite.com (?invalid=1): an error, never a zero. A list with no rows is an error too, until a real empty board has been read.",
+        "The XML feed beside it (app.jobvite.com/CompanyJobs/Xml.aspx?c=<company code>) is not read: it names each job's hiring manager, and its host answered 429 (Retry-After 30) to a second ask.",
+        "A posting's own block names its job by identifier (the job's id, measured 2026-11-22 on Gigamon's postings); only the node that is this posting gives a row its ad and its pay.",
+        "A job open in several places shows only 'N Locations' on the list (Uplight's '2 Locations').",
+        "discover_ats.MARKERS still files jobs.jobvite.com/<slug> as type html."
+      ],
+      "notes": [
+        "The research said build, reading the HTML list nightly and the XML feed as paced enrichment for descriptions (and Tyler's pay); the reader was built on the list alone and does not read the feed, which names hiring managers and rate-limits. The code is what runs.",
+        "The research proposed believing the title when ONE posting's JSON-LD agrees with it; the probe asks every posting, up to 40, after a blind review found one posting standing for a board (2026-11-22). The code is what runs.",
+        "The research counted Gigamon's board at 21 on 2026-11-19; the reader's own note says 22, measured 2026-11-21."
+      ],
+      "reader": "fetch_jobvite",
+      "probe": "_jobvite",
+      "measured_on": "2026-11-19, 2026-11-21, 2026-11-22"
+    },
+    "lever": {
+      "name": "Lever",
+      "status": "read",
+      "spot": "jobs.lever.co/<slug> (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards) and the API address api.lever.co/v0/postings/<slug>, which a page that draws its own list calls (the finder's own; Softdocs, 2026-11-18). Hint: lever.co. The slug is kept as the page spelt it: Lever minds case.",
+      "forms": {
+        "lever-eu": "A board in Lever's European region (jobs.eu.lever.co/<x>); fetch_lever asks the American API only, so it is tallied apart."
+      },
+      "publishes": "A documented JSON API, one GET: https://api.lever.co/v0/postings/<slug>?mode=json -> a bare list of postings with text, categories.location, hostedUrl, createdAt (epoch milliseconds), workplaceType, country (ISO-2, no city or region), the ad across five fields (descriptionPlain, openingPlain, lists, additionalPlain, salaryDescriptionPlain) and salaryRange. No paging.",
+      "link": "https://jobs.lever.co/<slug>",
+      "robots": "Not asked for the feed (ats._get, exempt under the owner's ruling of 2026-10-09). The identity probe reads the board's page, jobs.lever.co/<slug>, through verify_boards._board_page, robots.txt at every hop, as a stream cut after 64 KB. Not measured.",
+      "employer": "The feed names nobody. The board's own page states the display name the employer set in Lever, in its twitter:title meta (not <title>, which carries whatever trailing space the employer typed, nor og:title, which adds 'jobs'): verify_boards.board_says reads the feed, then _lever_page. 'Swiftly, Inc.' where the slug is goswift.",
+      "quirks": [
+        "Lever minds case: asked 2026-11-18, api.lever.co answered nine postings for 'Wayground' and HTTP 404 for 'wayground', and two of the 33 Lever boards then on file were spelt with a capital. Compare Lever refs without regard to case when asking whether a board is already held.",
+        "No one field is the ad: descriptionPlain is the opening paragraph only, so the reader joins all five, deduplicated by containment.",
+        "The board page is some 700 KB of inlined CSS with the name in its first kilobyte (jobs.lever.co/goswift: 714,503 bytes, 2026-11-18), so the probe reads its first 64 KB.",
+        "Lever sends a country and no city or region, so office_hint can place a role in a country, never in a state."
+      ],
+      "reader": "fetch_lever",
+      "probe": "board_says",
+      "measured_on": "2026-08-23, 2026-11-18"
+    },
+    "oracle": {
+      "name": "Oracle Recruiting Cloud",
+      "status": "read",
+      "spot": "<x>.fa.<y>.oraclecloud.com. Discovery (discover_ats.MARKERS) files the host as type oracle, the host being the ref. find_site_boards does not take it as a board: fetch_oracle reads site CX_1 only, so a tenant with a named site cannot be read, and the finder tallies the host under elsewhere as 'oraclecloud' until it can.",
+      "forms": {
+        "oraclecloud": "An Oracle Recruiting Cloud host (<x>.fa.<y>.oraclecloud.com). It is in neither TENANT_FORMS nor _NO_BOARD_IN_IT, so the finder's summary counts it under 'no reader for', although fetch_oracle exists."
+      },
+      "publishes": "JSON: <host>/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&finder=findReqs;siteNumber=CX_1 -> items[].requisitionList[] with Title, PrimaryLocation, Id and ShortDescription or ExternalDescriptionStr. One reply, never paged.",
+      "link": "board_url links the ref when it is a full address, else the company's website.",
+      "robots": "Not asked: read through ats._get. Not measured.",
+      "employer": "No identity probe: verify_boards.board_says answers 'no identity probe written for oracle'.",
+      "quirks": [
+        "UNVERIFIED: no company on file used the type when the reader was written, so nothing live was probed, and an empty Oracle description is not 'this tenant publishes no descriptions'.",
+        "Its size cannot be asked (the reader takes one reply and never pages: wire_found.PARTIAL), so the wiring door skips every Oracle find; whether Oracle finds are worth a way to ask is the owner's to settle."
+      ],
+      "reader": "fetch_oracle",
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "paylocity": {
+      "name": "Paylocity",
+      "status": "read",
+      "spot": "recruiting.paylocity.com/recruiting/jobs/All/<uuid>[/<Name>] or /jobs/List/<number>[/<Name>] (find_site_boards' own pattern; discovery's marker reads the /All/ shape only). The whole address is the ref: fetch_paylocity reads it, and there is no API to build one from a slug. Hint: paylocity.com.",
+      "forms": {
+        "paylocity-other": "An address on recruiting.paylocity.com that names no board (a job page, the vendor's own scripts); it says nothing once the page has named a Paylocity board."
+      },
+      "publishes": "No JSON API: the board's page ships its data in a window.pageData assignment, read exactly (Jobs[] with JobTitle, LocationName and JobUrl). Description is a ~110-character preview cut mid-word, flagged _jd_is_teaser so no money pattern runs over it; the posting page carries no more. One request; no paging.",
+      "link": "The ref (a full address).",
+      "robots": "Asked at every hop (ats._page). Not measured.",
+      "employer": "Stated on the board's own page: pageData.ModuleTitle, the name the employer gave the board, never the address's tail (Centegix's ends '34ED-LLC', Circuit's 'TFR-Transit-Inc'). verify_boards._paylocity also gives the board's own /jobs/All/<uuid> address from og:url, when the page's LeadJoinUrl, if any, names the same uuid: an address, never a name.",
+      "quirks": [
+        "One board, two ids: FAAC's frame is /List/2115/FAAC-Incorporated and lands on /All/<uuid>/FAAC-Incorporated (2026-11-18). The finder folds the two when one page names both, and wire_found asks a board found by /List/ for the /All/ address its page states (2026-11-22).",
+        "The tenant's name after the id is not always there (Celona's record reads .../All/<uuid> bare), so the wiring door holds a board whose two addresses cannot be compared."
+      ],
+      "reader": "fetch_paylocity",
+      "probe": "_paylocity",
+      "measured_on": "2026-08-23, 2026-11-18, 2026-11-22"
+    },
+    "pinpoint": {
+      "name": "Pinpoint",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "<slug>.pinpointhq.com in an href, a script, an iframe or a browser's request (find_site_boards; www, app and api are the vendor's own hosts). The slug is the ref, lowered; it is not the company id ('clearview' for clearview-ai). Hint: pinpointhq.com.",
+      "forms": {
+        "pinpoint-other": "An address on pinpointhq.com that names no tenant."
+      },
+      "publishes": "Two board-level requests and none per posting: GET https://<slug>.pinpointhq.com/postings.json -> {data: [...]}, the feed Pinpoint's own careers widget calls (title, url, location.name, workplace_type, the ad in four HTML fields each under the employer's own heading, compensation_minimum, compensation_maximum, compensation_currency and compensation_frequency with compensation_visible), and /jobs.rss, which the board itself links as rel=alternate, for the posted date (each item's pubDate, joined by job.id). No paging: ?page=2 is ignored.",
+      "link": "https://<slug>.pinpointhq.com",
+      "robots": "Asked at every hop (read as pages, held to the host), because robots.txt is per tenant. Measured 2026-11-19..21: the standard tenant file disallows only /mydata, /admin and /companies; infor.pinpointhq.com is Disallow: / (and discovery recorded coursedog.pinpointhq.com refused the same way on 2026-11-15); eptura.pinpointhq.com also disallows two postings, in the canonical /postings/<uuid> form.",
+      "employer": "Not in the feed. The board states 'Careers at X' in two places of its own, its RSS channel title and its front page's og:title, and verify_boards._pinpoint believes X only when the two agree. An empty board still states it (Democracy Works). Never the slug.",
+      "quirks": [
+        "Pay is read only when compensation_visible is true; every comp field was null on the rows with it false.",
+        "location.name is the employer's own words ('Hybrid - Washington, DC', 'Remote USA'); city and province are unreliable (London's province reads 'United Kingdom') and there is no country, so only the city goes into office_hint.",
+        "reporting_to names a hiring manager on some rows and is never read; the RSS body repeats it as 'Reporting To', so the ad comes from the JSON fields.",
+        "A dates feed that will not read costs the dates, never the board.",
+        "The widget form <div data-pinpoint-subdomain=\"<slug>\"> (Democracy Works' careers page) carries no pinpointhq.com host, so the finder's markup patterns miss it; the host appears only in a rendered page's request to the feed.",
+        "discover_ats.MARKERS still files <label>.pinpointhq.com as type html."
+      ],
+      "notes": [
+        "The research advised testing each posting's canonical /postings/<uuid> path against the tenant's cached robots rules and dropping a refused row (Eptura disallows postings in that form while the feed hands out /en/postings/<uuid>); fetch_pinpoint does not. Neither refused posting was in the feed when measured. The code is what runs."
+      ],
+      "reader": "fetch_pinpoint",
+      "probe": "_pinpoint",
+      "measured_on": "2026-11-19, 2026-11-21"
+    },
+    "recruitee": {
+      "name": "Recruitee",
+      "status": "read",
+      "spot": "<slug>.recruitee.com (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards); the slug is lowered. Hint: recruitee.com.",
+      "publishes": "A documented JSON API, one GET: https://<slug>.recruitee.com/api/offers/ -> {offers: [...]} with title, location, careers_url, published_at, remote and hybrid booleans, city and country, the ad in description and requirements, and a structured salary block (min, max, currency, period). No paging.",
+      "link": "https://<slug>.recruitee.com",
+      "robots": "Not asked (ats._get, exempt under the owner's ruling of 2026-10-09). Not measured.",
+      "employer": "Stated in the feed: company_name on every offer (verify_boards._recruitee). An empty board states nothing and gets no fallback: the hosted page's og:site_name was seen on two boards only, and two is not a pattern to wire companies on, so it goes to the owner's queue.",
+      "quirks": [
+        "posted is published_at, not created_at or updated_at; the board ships all three.",
+        "The mode is two booleans; both false says nothing.",
+        "The ad is in two fields, and 'Salary range' tends to sit in requirements, so both are read."
+      ],
+      "reader": "fetch_recruitee",
+      "probe": "_recruitee",
+      "measured_on": "2026-08-23"
+    },
+    "rippling": {
+      "name": "Rippling",
+      "status": "read",
+      "spot": "ats.rippling.com/[<locale>/][embed/]<board> and the API address api.rippling.com/platform/api/ats/v1/board/<board> (find_site_boards' own patterns: a locale and the word 'embed' both sit in front of the board, as in JustFOIA's iframe, 2026-11-18; discovery's marker reads 'embed' as the board and is not borrowed). Hint: rippling.com.",
+      "publishes": "A server-rendered page and no public API: https://ats.rippling.com/<slug>/jobs, whose Next.js __NEXT_DATA__ payload carries the postings (titles by pattern, each posting's own address in dehydratedState). A page with no titles is read as page text for the classifier. The ad and pay are on each posting's page (apiData.jobPost, behind FETCH_DETAILS).",
+      "link": "https://ats.rippling.com/<slug>/jobs",
+      "robots": "Asked at every hop (ats._page). Not measured.",
+      "employer": "Stated on the board's own page: apiData.jobBoard.companyName, a field of its own, apart from the board's title, which is free text ('Open Opportunities', 'MCM Careers'). verify_boards._rippling reads the same page; a board marked isTest names nobody.",
+      "quirks": [
+        "A posting's own address is kept as a private _detail_url, not as the row's address: posting ids hash url + location, and promoting it would re-key every Rippling row (the owner's call).",
+        "The reader returns the logo's file name as a row on every board, so the wiring door sizes a board by roles.not_a_listing.",
+        "payRangeDetails was [] on every posting probed; its filled-in shape is unverified."
+      ],
+      "reader": "fetch_rippling",
+      "probe": "_rippling",
+      "measured_on": "2026-08-23"
+    },
+    "smartrecruiters": {
+      "name": "SmartRecruiters",
+      "status": "read",
+      "spot": "jobs.smartrecruiters.com/<id> or careers.smartrecruiters.com/<id> (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards), plus the finder's own forms: api.smartrecruiters.com/v1/companies/<id> and an apply link's jobs.smartrecruiters.com/oneclick-ui/company/<id>. Hint: smartrecruiters.com. The company id is kept as the page spelt it: SmartRecruiters tells Xplor from xplor.",
+      "publishes": "A documented JSON API, paged: https://api.smartrecruiters.com/v1/companies/<id>/postings?limit=100&offset=<n> (100 is its largest page; 200 and 500 both return 100), walked until a page is empty or adds nothing new, at most 40 pages. The list carries no ad and no pay; /postings/<id> carries the ad in named sections (one request a posting, behind FETCH_DETAILS).",
+      "link": "https://careers.smartrecruiters.com/<id>",
+      "robots": "Not asked for the feed (ats._get, exempt under the owner's ruling of 2026-10-09); the probe's fallback, the hosted careers page, is read through verify_boards._board_page. Not measured.",
+      "employer": "Stated in the feed: company.name on every posting read, never company.identifier ('Skyward1', 'IFS1'). It is the ACCOUNT's name, so a product line on its parent's account reads as the parent ('Xplor' for Xplor Recreation), which proven() refuses. An empty feed cannot tell a live empty board from an id that never existed, so verify_boards._smartrecruiters falls back to the hosted careers page's og:site_name.",
+      "quirks": [
+        "Paged since 2026-09-01: Xplor answered totalFound=251 to a request whose content held 100. Past the end the API returns an empty page rather than wrapping, and totalFound is not used as a bound.",
+        "The location block's remote and hybrid booleans are not read: Xplor's board set remote true on 92 of 100 postings that each gave a real city."
+      ],
+      "reader": "fetch_smartrecruiters",
+      "probe": "_smartrecruiters",
+      "measured_on": "2026-08-23, 2026-09-01"
+    },
+    "teamtailor": {
+      "name": "Teamtailor",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "<label>.teamtailor.com or <label>.na.teamtailor.com (its North American data centre; the region label is part of the site's address) in a link, script or frame, the vendor's own labels skipped (find_site_boards). A career site on a domain of the company's own names no teamtailor.com host: the finder spots it when one page both loads assets from teamtailor-cdn.com and links its own <host>/jobs.rss as rel=alternate (teamtailor_own_sites). The ref is the site's origin. Hint: teamtailor.",
+      "forms": {
+        "teamtailor-other": "An address on teamtailor.com or teamtailor-cdn.com that names no career site: the 'Powered by Teamtailor' link (tt.teamtailor.com), assets, and the widget embed (scripts.teamtailor-cdn.com/widgets/<region>/jobs.js with a div carrying data-teamtailor-api-key), which gives no board host."
+      },
+      "publishes": "A JSON Feed of the whole board, which the site announces for programs (its /.well-known/api-catalog lists it): GET https://<host>/jobs.json -> {version: 'https://jsonfeed.org/version/1.1', title, feed_url, items[]}, each item with title, url, date_published, content_html (the whole ad) and a _jobposting block (jobLocation[], hiringOrganization, and baseSalary when the employer fills Teamtailor's salary field). One request; no paging offered or needed.",
+      "link": "The ref (the site's origin).",
+      "robots": "Asked at every hop (read as a page, held to its host). Measured 2026-11-19..21: the same Teamtailor robots.txt on all seven hosts read (two EU, one North American, four on companies' own domains) allows /jobs.json, /jobs.rss, /jobs and the postings, and disallows only /app/, /messages/, /messenger/, /facebook/tab/ and /jobs/internal/.",
+      "employer": "Stated by the feed: its own title and every posting's _jobposting.hiringOrganization.name, and verify_boards._teamtailor states all of them, so a site posting for two companies shows both. A site with nothing open still has its title (Heimdall Power, Corporater, Gecko, Heja). It never states a website: hiringOrganization.sameAs is the career site itself.",
+      "quirks": [
+        "ON A DOMAIN OF THEIR OWN THE HOST CANNOT VOUCH FOR THE VENDOR, so the body must: a JSON Feed whose feed_url is on the host asked and whose every item carries _jobposting.",
+        "An empty feed on a company's own domain is a zero only when the answer's Content-Security-Policy names app(.na).teamtailor.com as the page allowed to frame the site; otherwise 'the zero is not known'. The header is kept with a cached body (ats.KEPT_HEADERS), because a 304 replay without it read Heimdall Power's empty board as not known (2026-11-22).",
+        "addressRegion was null on every US posting read, so a US row gets a city and a country and no state.",
+        "The older discovery patterns read fonrochelightingamerica.na.teamtailor.com as the slug 'na' (discover_js) or the host na.teamtailor.com (discover_ats); find_site_boards keeps the region, and discover_ats.MARKERS still files <label>.teamtailor.com as type html.",
+        "Feeds carry evergreen talent-pool posts that are not openings (Copenhagen Optimization's 'Talent Pool - Consultancy CPH').",
+        "Widget-only embeds (greehill's) are not read: reaching them would mean lifting a key from someone's page."
+      ],
+      "notes": [
+        "The research said an empty feed should read as none open; the code reads it so only on a teamtailor.com host, or on a company's own domain whose answer names Teamtailor in its Content-Security-Policy, because an empty JSON Feed vouches for nothing. The code is what runs."
+      ],
+      "reader": "fetch_teamtailor",
+      "probe": "_teamtailor",
+      "measured_on": "2026-11-19, 2026-11-21, 2026-11-22"
+    },
+    "workable": {
+      "name": "Workable",
+      "status": "read",
+      "spot": "apply.workable.com/<slug> (find_boards.PATTERNS and discover_ats.MARKERS, borrowed by find_site_boards), a <slug>@jobs.workablemail.com forwarding mailbox (Nallian's careers page carried no other tell), and the finder's own forms: the API addresses apply.workable.com/api/v1 or v3/[widget/]accounts/<slug or number> and the older <account>.workable.com host. Hint: workable.",
+      "publishes": "A documented JSON API, the careers widget's, one GET: https://apply.workable.com/api/v1/widget/accounts/<slug>?details=true -> {name, jobs: [...]} with title, city, state, country, url, published_on, telecommuting and, with details=true, the description. Workable publishes no pay field of its own. No paging.",
+      "link": "https://apply.workable.com/<slug>; a numbered account links the company's website instead, because apply.workable.com/<number> is Workable's error page.",
+      "robots": "Not asked (ats._get, exempt under the owner's ruling of 2026-10-09). Not measured.",
+      "employer": "Stated in the feed: the account's name (name, or account.name), read by verify_boards.board_says from the same widget request; judge() reads it with the older substring test.",
+      "quirks": [
+        "One job is listed once for each country it is open in, with the same address, so only the rows that would collide take city, state and country as the location (IRTH's two Cloud Engineer rows broke the nightly self-test, 2026-11-01).",
+        "A page embedding Workable's widget asks for the board by the account's NUMBER (.../widget/accounts/<number>), which reads and does not open: the wiring door follows one posting to its landing address for the slug, holds the slug to the number, and wires the slug or nothing (2026-11-19).",
+        "telecommuting true means remote; false asserts nothing."
+      ],
+      "reader": "fetch_workable",
+      "probe": "board_says",
+      "measured_on": "2026-08-23, 2026-11-01, 2026-11-19"
+    },
+    "workday": {
+      "name": "Workday",
+      "status": "read",
+      "spot": "<tenant>.<wdN>.myworkdayjobs.com/[<locale>/]<site>, and the API address a rendered page calls, <tenant>.<wdN>.myworkdayjobs.com/wday/cxs/<tenant>/<site>/jobs, where the site is the fourth path segment and 'wday' is not a site (find_site_boards' own patterns; discovery's marker skips only en-US and is not borrowed). The ref is the list [tenant, pod, site]: the pod ('wd5', 'wd12') is never guessable and comes out of the address found. Hint: myworkdayjobs.com.",
+      "forms": {
+        "workday-myworkdaysite": "Workday's other host, wdN.myworkdaysite.com/recruiting/<tenant>/<site>, which is pod-first; the finder tallies it apart because, in its own words, ats.fetch_workday cannot take its pod-first refs today.",
+        "workday-no-site": "wdN.myworkdayjobs.com with no tenant or site named; a redirect that lands on one is walked one hop further, since Workday's next hop is usually the board."
+      },
+      "publishes": "JSON by POST: https://<tenant>.<pod>.myworkdayjobs.com/wday/cxs/<tenant>/<site>/jobs with {limit: 20, offset, searchText}. The reader asks two searches only, 'account executive' and 'sales', and pages each by offset, 20 at a time (50 and 100 answer HTTP 400), at most 60 pages a search. The search gives title, locationsText and externalPath; the ad is at /wday/cxs/<tenant>/<site><externalPath> (behind FETCH_DETAILS). ats.workday_total asks the whole board's size: total on the first reply to an empty search.",
+      "link": "None of its own: the ref is a list, so board_url links the company's website.",
+      "robots": "Not asked: JSON requests by POST (ats._post_json). Not measured.",
+      "employer": "No identity probe: verify_boards.board_says answers 'no identity probe written for workday', so no Workday board can pass proven().",
+      "quirks": [
+        "Past the end of a search Workday WRAPS to page one (verified 2026-09-01 on motorolasolutions: offsets 180, 200 and 300 each returned offset 0's rows), so ats._paged stops on a page that adds nothing new; total is true only on the first reply of a walk (161 at offset 0, 0 at offsets 20 to 160).",
+        "The reader filters, so its rows say nothing about a board's size: Motorola Solutions' board held 868 postings by its own count on a day the reader returned 385 rows (2026-11-18). The wiring door asks workday_total first and skips a giant unread (wire_found.PARTIAL).",
+        "One gate for every tenant: Workday's limit is on the caller, not the tenant, so all its hosts share one host gate and one backoff (2026-11-16: 39 of 42 tenants answered 429 to GitHub's runners in both crawls of the day).",
+        "Read from the owner's Mac (his ruling of 2026-11-17): scripts/workday_snapshot.py runs there and commits data/workday_snapshot.json, and the nightly crawl (GOVTECH_DOCK_WORKDAY_SNAPSHOT=1) takes a board from it; a board the Mac has not read in 48 hours is asked live, and a failure names the snapshot's age."
+      ],
+      "notes": [
+        "Code against code: fetch_workday's docstring says it reads both hosts, but its myworkdaysite branch is taken only when the ref's first two parts both start with 'wd', which its own example ('wd3', 'modaxo', 'Tadera') does not; called with the network stubbed on 2026-11-22, that ref was asked at wd3.modaxo.myworkdayjobs.com. find_site_boards says fetch_workday cannot take pod-first refs today and tallies the host apart (workday-myworkdaysite)."
+      ],
+      "reader": "fetch_workday",
+      "probe": null,
+      "measured_on": "2026-08-23, 2026-09-01, 2026-11-16, 2026-11-18"
+    },
+    "zohorecruit": {
+      "name": "Zoho Recruit",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "A link to a career site or one of its postings, https://<portal>.zohorecruit.<com|eu|in>/jobs/<PageName>[/...], or the embed rec_embed_js.load({site: 'https://<portal>.zohorecruit.com', page_name: 'Careers', ...}), whose bare site is not a board without its page's name (find_site_boards). The ref is the page's address on Zoho's own host, even for a tenant on a custom domain. Hint: zohorecruit.",
+      "forms": {
+        "zohorecruit-other": "Zoho Recruit's own hosts (www, static, cdn, help, blog, api, accounts).",
+        "zohorecruit-tenant": "A tenant's host with no page named: a portal whose board this door cannot name, maybe a parent's, filed apart as a doubt unless it is the very tenant a board on the page already is."
+      },
+      "publishes": "A server-rendered page of some 1.8 MB carrying the whole list as JSON in a hidden <input id=\"jobs\"> and the board's facts in another (id=\"meta\": list_url and org_info), both at the very end, after an inlined asset map, so the page is read whole. One request; no paging seen (the largest board read held 31 rows).",
+      "link": "The ref (the career site's address).",
+      "robots": "Asked at every hop (read as a page, held to its host). Measured 2026-11-19..21: an identical Zoho robots.txt on every tenant read allows /jobs, /jobs/ and /jobs/* and disallows everything else; the embed widget's lighter JSON (/recruit/v2/public/Job_Openings) is closed, and a live read of it was refused.",
+      "employer": "Stated on the page the reader reads: the meta input's org_info.company_name, with org_info.website, which proven() holds to the one on file. It is the ACCOUNT's name, so a parent's board states the parent (QuickLaunch's link goes to ElevenX Capital's). verify_boards._zohorecruit states nothing for a board set to hide its name, nor for any page but the account's default 'Careers'. Never the page title ('Jobs at Careers' on Cuseum's) nor the portal label ('exc' is ElevenX).",
+      "quirks": [
+        "CLOSED JOBS ARE IN THE LIST: a row with Publish false is a job kept on view and closed (GovEase's only row, a 2025 opening), so only Publish true is read.",
+        "Every wrong address answers 200 with a page saying so, so a page without the jobs input is an error, never a zero; the input's literal [] is a zero.",
+        "On some layouts the description is a 153-character teaser ending '...' (Spektra's, ElevenX's): flagged _jd_is_teaser and never read for money.",
+        "The row has no address: the list's own address plus the id answers with the job, whatever its title becomes.",
+        "A custom domain serves the same board (careers.spektrasystems.com); the vendor's host is the one a probe can hold every read to."
+      ],
+      "notes": [
+        "The research proposed the probe state org_info.company_name whenever hide_company_name is not true; the code also states nothing for any page but 'Careers', since the name is the account's and a sister brand's page would be proven for it (blind review, 2026-11-21). The code is what runs."
+      ],
+      "reader": "fetch_zohorecruit",
+      "probe": "_zohorecruit",
+      "measured_on": "2026-11-19, 2026-11-21"
+    },
+    "trakstar": {
+      "name": "Trakstar Hire (formerly Recruiterbox)",
+      "status": "build",
+      "research_verdict": "build",
+      "why": "Every tenant serves a public RSS 2.0 feed of the whole board that its own page links ('Jobs RSS Feed') and robots.txt allows: one request a company, with title, link, the full ad, pubDate and city, state and country as fields. The feed names the employer by the display name it set, which equalled the name on file on all four boards read, and a made-up slug answers a clean 404 on its own host, so a dead board cannot pass as an empty one. The payoff today is small: 4 companies, 11 postings, none of them a sales title.",
+      "spot": "Tenants live at <slug>.hire.trakstar.com; legacy <slug>.recruiterbox.com links 301 there. Nothing in the finder names either host, in BOARDS or in ELSEWHERE (a job frame from one is tallied as other:trakstar.com). trakstar.com, not recruiterbox.com, is on the vendor-host lists (build_board._PROMOTE_ATS_HOSTS, refresh._ATS_HOSTS, admin.ATS_HOSTS). Every form the research saw was a plain link: the board home, a posting with ?apply=true, a posting with ?source=. Reduce a posting link to its tenant and read the board, never the posting.",
+      "publishes": "RSS 2.0 with xmlns:job: GET https://<slug>.hire.trakstar.com/jobfeeds/<slug>, unpaged as far as measured (8 of 8 and 3 of 3 openings in one response): each item's title, link, description (the full ad as escaped HTML), pubDate, job:locationCity, job:locationState, job:locationCountry, job:positionType, job:team and job:closeDte. The board page, https://<slug>.hire.trakstar.com/, is server-rendered and gives the count (RB.init_data.total_jobs), the identity statement and the work mode in one more request.",
+      "robots": "Measured 2026-11-19..21 on four tenants (identical files): User-agent: * / Disallow: /prepare* / Disallow: /published_jobs_list_v2* / Allow: /. The board page, the RSS feed, the postings and the sitemap are allowed; /published_jobs_list_v2, the board's own list endpoint, is closed and must never be used. The legacy recruiterbox.com host serves the same file and 301s to the tenant.",
+      "employer": "Stated in the feed: <channel><title>Jobs at {Name}</title> and <description>Current open positions at {Name}</description>; also the board page's <title> and h1, and each posting's JSON-LD hiringOrganization. A pattern statement, like Gusto's 'Careers at X': a probe should take X from 'Jobs at X' and require it to equal the X in 'Current open positions at X'. An empty board's feed still states its name (Selerix). No probe is written.",
+      "quirks": [
+        "Two dates that disagree: pubDate is RFC 822 at midnight +0530 (converting it to UTC moves it back a day), and a posting's JSON-LD datePosted differed from it on 4 of 9 postings compared, in both directions. Leave posted None, or take pubDate's calendar date with the owner's say-so.",
+        "Pay is free text only, with no currency stated, and 7 of RideCo's 8 roles are in Ontario, where '$' means CAD.",
+        "The feed's links are http:// with the stored client-name casing (RideCo.hire...); normalise them to https://<slug, lowered>.hire.trakstar.com/jobs/<id>/ so posting ids stay stable. The feed path ignores case, so store the slug lowered.",
+        "Posting pages' JSON-LD holds raw control characters, so ats._schema_posting (a strict json.loads) gets nothing from them.",
+        "Careers pages carry stale posting links (Focus School Software's linked posting is a 404 while its board is live)."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "2026-11-19..2026-11-21"
+    },
+    "successfactors": {
+      "name": "SAP SuccessFactors (Career Site Builder)",
+      "status": "maybe",
+      "research_verdict": "maybe",
+      "why": "Classic Career Site Builder boards are a clean public listing: server-rendered /search/ pages on the employer's own careers host, 25 rows a page, robots-allowed, no token. Three things hold it at maybe. The newer 'Unify' search draws its results by POST /services/recruiting/v1/jobs, which every CSB robots.txt closes, leaving only sitemap.xml plus one or two requests per posting. The legacy portals companies link (careerN.successfactors.com, careerN.sapsf.com ?company=) are closed outright. And under the owner's rule only 2 of the 8 example companies would wire unattended (Landis+Gyr, and Indra Group, a 623-posting Spanish board): the rest are a parent's board, a placeholder name or a longer registered name. Worth building as a classic-CSB reader that detects Unify and reports Unknown, or falls back to the sitemap if the owner accepts the cost per posting.",
+      "spot": "Any successfactors.com or .eu, or sapsf.com, .eu or .cn address: find_site_boards tallies it as 'successfactors', which fires on a CSB page's assets (rmkcdn.successfactors.com/<8 hex>/), a j2w.init block, jQuery from an hcm<N> or performancemanager<N> host, and the legacy portals alike. The board's ref is the scheme and host of THAT page (careers.landisgyr.com), usually a custom domain, never the SAP host in the address seen; discover_js's pattern captures the SAP host label (rmkcdn, hcm44, career8), not a tenant. A classic board carries <tr class=\"data-row\"> on /search/; Unify loads j2w.searchResultsUnify.min.js and has <div id=\"root\">.",
+      "publishes": "Classic: GET https://<board host>/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=<0, 25, 50, ...>, server-rendered HTML (<table id=\"searchresults\">, one <tr class=\"data-row\"> a posting: the jobTitle-link, jobLocation, jobDate and per-site columns), offset-paged 25 at a time with the total in the localized pagination label; category pages /go/<Name>/<catid>/<startrow>/ carry the same table. Description and pay are only on each /job/<slug>/<id>/ page. Unify: no list a reader may use; the only robots-clean list is sitemap.xml, then each posting. RSS exists under /services/rss/ and is closed.",
+      "robots": "Measured 2026-11-19..21: a byte-identical CSB template robots.txt on all six board hosts read allows /search/, /go/, /job/ and /sitemap.xml, and disallows /services/ (the RSS and the Unify API), /talentcommunity/apply/, /applybutton/ and /preapply/. The legacy portals (career8.successfactors.com, career41.sapsf.com) serve 'Disallow: /', 'Disallow: /*company', 'Allow: /login' and were never asked.",
+      "employer": "Stated on the board's own host: the /search/ page's <title>, '{site name} Jobs', and its meta description, 'Find at {site name}' (localized: 'JENOPTIK AG - Stellen', 'Buscar en Indra Group'); classic posting pages add <meta itemprop=\"hiringOrganization\">. The site name is whatever the admin typed: a placeholder on 2 of 6 boards ('esricanada', 'our team'), and a group's board names the parent. The ssoCompanyId in j2w.init is a tenant id, not a name. No probe is written.",
+      "quirks": [
+        "Group boards name the parent and carry many units: SPX's 237 rows covered 12 units, the unit only in a site-specific 'Facility' column spelt inconsistently, where Landis+Gyr's same column holds requisition ids.",
+        "Templates are localized (en_US, de_DE and es_ES seen): the <title>, the meta description, the pagination label and the date format follow the site's default locale; pass locale=en_US where a site offers English.",
+        "Multilingual tenants list one role once per language under different ids.",
+        "A /go/ category page can carry an empty <title>: read the name from /search/.",
+        "Giants among the examples: Indra Group 623 postings (mostly Spain), SPX 237, Jenoptik 175."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "2026-11-19..2026-11-21"
+    },
+    "paycom": {
+      "name": "Paycom",
+      "status": "skip",
+      "research_verdict": "skip",
+      "why": "robots.txt leaves no way to read a Paycom job list. Both Paycom hosts serve Disallow: /, with Allow lines only for the career portal pages, single postings and two per-posting APIs. The old server-rendered list (jobs?clientkey=) is closed; the new career page is a JavaScript shell with no rows; its rows come from a POST to a closed host that needs a token minted into each page view; the sitemap answers 404. A reader would have to scrape a token and post to a disallowed path, which the owner's rules rule out.",
+      "spot": "Any paycomonline.net or paycomonline.com address: find_site_boards tallies it as 'paycom'. Seen as an href or iframe to www.paycomonline.net/v4/ats/web.php/jobs?clientkey=<KEY> (sometimes with &fromClientSide=true), as per-posting jobs/ViewJobDetails?clientkey=<KEY>&job=<N> links, and as portal /v4/ats/web.php/portal/<KEY>/jobs/<N> links. The client key is 32 upper-case hex characters and names nobody. discover_ats.MARKERS files the old jobs?clientkey= form as type html, an address robots.txt closes, and misses the other two.",
+      "publishes": "Old list: GET www.paycomonline.net/v4/ats/web.php/jobs?clientkey=<KEY> (closed). New career page: /v4/ats/web.php/portal/<KEY>/career-page, allowed, a ~235 KB shell with no rows. The rows: POST https://portal-applicant-tracking.us-cent.paycomonline.net/api/ats/job-posting-previews/search with the page's sessionJWT as its Authorization (closed, and token-gated). Open: one posting page at a time, /v4/ats/web.php/portal/<KEY>/jobs/<N>, with a schema.org JobPosting; its ids have to come from somewhere else.",
+      "robots": "Measured 2026-11-19..21: both Paycom hosts serve Disallow: /, with Allow only for /v4/ats/web.php/portal/, assets, /api/ats/job-postings/, /api/ats/company-name and /api/ats/portal-settings. The old list and ViewJobDetails were refused before any request; the job-posting-previews search is refused; the allowed APIs answered 401 without the page's token; /v4/ats/sitemap.php is allowed and answered 404.",
+      "employer": "Never at the board's level: the career page is titled 'Job Opportunities'. Each posting page names its employer in its JobPosting hiringOrganization.name, a payroll-style legal name in capitals ('VIMO INC', 'CODE FOUR'), one posting at a time. No probe.",
+      "quirks": [
+        "A smaller job than a reader: where an employer links its postings one by one (Code Four's page does), each old ViewJobDetails?clientkey=K&job=N link can be rewritten to the allowed /v4/ats/web.php/portal/K/jobs/N, which ats._schema_posting reads unchanged. The owner should rule on that rewrite before it is built.",
+        "A posting page alone does not prove a job is open: Code Four's 2021 posting still answered 200, with no validThrough.",
+        "The discovery log marks companies retry_soon after a robots refusal of the old Paycom address; that refusal is not transient, so the retries keep failing."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "2026-11-19..2026-11-21"
+    },
+    "paycor": {
+      "name": "Paycor Recruiting",
+      "status": "skip",
+      "research_verdict": "skip",
+      "why": "Every board, its embed script and anything it lists are served from one host, recruitingbypaycor.com, whose robots.txt is 'User-agent: *' and 'Disallow: /'. The companies' own careers pages hold no listing to read instead, only a script that draws the frame from the closed host, and the nightly crawl meets the same refusal. Even open, a board could never name its employer to the crawler.",
+      "spot": "Any recruitingbypaycor.com address: find_site_boards tallies it as 'paycor'. Seen embedded as a script, <script id=\"gnewtonjs\" src=\"//recruitingbypaycor.com/career/iframe.action?clientId=<32 hex>\"> (aggregateIframe.action for a group's combined board), or linked straight to CareerHome.action?clientId=<id>. The clientId is opaque and names nobody.",
+      "publishes": "Two server-rendered pages: CareerHome.action, one employer's board, and AggregateCareerHome.action, a group's combined board, both closed. No JSON or RSS feed was seen, and none was probed for on a host closed to every crawler.",
+      "robots": "Measured 2026-11-19: recruitingbypaycor.com's robots.txt (26 bytes) is 'User-agent: *' then 'Disallow: /', with no group for this crawler. ats._page refused Kahua's and Kuali's CareerHome before any page was asked, and the nightly crawl recorded the same refusal for CemSites that day.",
+      "employer": "States none the crawler may read: the board's own pages are closed and the clientId is an opaque id. No probe.",
+      "quirks": [
+        "Do not route around it: not through Paycor's pre-rebrand Newton host, not by guessing a feed path on the closed host, not by letting a browser run the gnewton script.",
+        "render_fetch.only_allowed asks robots.txt for documents only, so a headless render of such a careers page aborts the Paycor frame and still downloads the gnewton script from the closed host (the research found it in passing; whether a subresource must ask is the owner's call).",
+        "What can be done instead: hand capture, and a posts_at ruling where a company points elsewhere."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "2026-11-19"
+    },
+    "ukg": {
+      "name": "UKG Pro Recruiting (UltiPro)",
+      "status": "skip",
+      "research_verdict": "skip",
+      "why": "robots.txt closes the only listing by name on every UKG host measured: Disallow: */JobBoardView is longer than Allow: */JobBoard/, so the board page's own LoadSearchResults call is refused. What it leaves open carries no full list: the board page shows an employer-chosen 'featured' subset at most, and the posting pages are open but their ids come only from the closed listing. Calling it would be working around a refusal. A person can still capture roles by hand.",
+      "spot": "Any ultipro.com, ultipro.ca or ukg.net address: find_site_boards tallies it as 'ukg'. A board is the whole triple, https://<host>/<TENANT>/JobBoard/<board uuid>/, the host being recruiting[N].ultipro.com, recruiting.ultipro.ca or <alias>.rec.pro.ukg.net; one tenant can hold several boards (Roper's tenant holds Neptune's), so the tenant alone is never the board. discover_ats.MARKERS files recruiting[N].ultipro.com/<TENANT> as type html: the tenant root, which robots.txt closes, and it misses .ultipro.ca and rec.pro.ukg.net.",
+      "publishes": "The listing is the board page's own background call, POST https://<host>/<TENANT>/JobBoard/<uuid>/JobBoardView/LoadSearchResults (pageSize 50, paged by skip with a totalCount, per the page's markup; never called). The board page (437 KB to 3.5 MB) carries only a featured subset, filter facets and the tenant's job-title catalog; a posting page (OpportunityDetail?opportunityId=<id>) is open and fully structured. No JSON-LD, RSS or sitemap.",
+      "robots": "Measured 2026-11-19..21 on recruiting.ultipro.com, recruiting2.ultipro.com, recruiting.ultipro.ca and bellhowell.rec.pro.ukg.net: the same 144-character file, User-agent: * / Disallow: / / Allow: */JobBoard/ / Disallow: */JobBoardView / Disallow: */JobBoard/*/Styles / Disallow: */JobBoard/*/AnonymousSessionCheck. The listing and its filter, count and typeahead calls are refused; the board page and OpportunityDetail are allowed; the tenant root is refused.",
+      "employer": "Only the board's own title, jobBoard.Name on the board page, the same kind of field as Paylocity's ModuleTitle. It equalled the company's name on 2 of 7 boards (i3 Verticals, Bell and Howell); the others read like 'Honorlock Opportunities' and 'Neptune Careers'. There is no company field anywhere, and tenant aliases are codes. No probe.",
+      "quirks": [
+        "A board uuid that does not exist under a real tenant redirects to that tenant's board instead of failing, so a reader would have to check it landed on the uuid it asked.",
+        "Parent tenants: Muni-Link's careers page links Neptune's board on Roper's tenant.",
+        "A reader that took only the featured rows would mislead: 5 of 7 boards feature nothing, and an empty featured list proves nothing.",
+        "welcome-us.ukg.net/u/login is UKG's employee sign-in, not a board, and the finder counts any ukg.net link as 'ukg'."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "2026-11-19..2026-11-21"
+    },
+    "avature": {
+      "name": "Avature",
+      "status": "seen",
+      "spot": "Any avature.net address: find_site_boards tallies it as 'avature'. discover_ats.MARKERS files <label>.avature.net as type html.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "careerplug": {
+      "name": "CareerPlug",
+      "status": "seen",
+      "spot": "Any careerplug.com address: find_site_boards tallies it as 'careerplug'. Nothing else in the code names it.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "clearcompany": {
+      "name": "ClearCompany",
+      "status": "seen",
+      "spot": "Any clearcompany.com address: find_site_boards tallies it as 'clearcompany'. discover_ats.MARKERS files <label>.clearcompany.com as type html, and discover_js has a pattern for it.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "csod": {
+      "name": "Cornerstone OnDemand",
+      "status": "seen",
+      "spot": "Any csod.com address: find_site_boards tallies it as 'csod'. discover_ats.MARKERS files <label>.csod.com as type html.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "dayforce": {
+      "name": "Dayforce",
+      "status": "seen",
+      "spot": "Any dayforcehcm.com address: find_site_boards tallies it as 'dayforce'. discover_ats.MARKERS files <label>.dayforcehcm.com as type html.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "eightfold": {
+      "name": "Eightfold",
+      "status": "seen",
+      "spot": "Any eightfold.ai address: find_site_boards tallies it as 'eightfold'. Nothing else in the code names it.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "hibob": {
+      "name": "HiBob",
+      "status": "seen",
+      "spot": "Any careers.hibob.com address: find_site_boards tallies it as 'hibob'. discover_ats.MARKERS files <label>.careers.hibob.com as type html, deliberately last and never slug-probed: it counts only when the company's own site links it.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [
+        "Every subdomain returns a byte-identical 1342-byte shell, so a probe of a guessed slug proves nothing (discover_ats)."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "hireology": {
+      "name": "Hireology",
+      "status": "seen",
+      "spot": "Any hireology.com address: find_site_boards tallies it as 'hireology'. Nothing else in the code names it.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "hrmdirect": {
+      "name": "HRM Direct",
+      "status": "seen",
+      "spot": "Any hrmdirect.com address: find_site_boards tallies it as 'hrmdirect'. discover_js has a pattern for <label>.hrmdirect.com.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "indeed": {
+      "name": "Indeed",
+      "status": "seen",
+      "spot": "A link to a company's Indeed page or postings (indeed.com/cmp, /jobs or /viewjob): find_site_boards tallies it as 'indeed', where a company posts instead of keeping a board of its own.",
+      "publishes": "Not read, by design: it is not monitorable from here. A person captures a role with the extension, and posts_at records 'indeed' (reach: capture).",
+      "robots": "Unknown: not measured.",
+      "employer": "Not a board this repository reads or wires; there is no probe.",
+      "quirks": [
+        "An advertisement is not a second board: a link to (or a mention of) the company's Indeed page is kept on a WIRE row as advertised_on and holds nothing (wire_found.ADVERTISED_ON)."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "jobscore": {
+      "name": "JobScore",
+      "status": "seen",
+      "spot": "Any jobscore.com address: find_site_boards tallies it as 'jobscore'. discover_js reads careers.jobscore.com/careers/<slug>.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "linkedin": {
+      "name": "LinkedIn",
+      "status": "seen",
+      "spot": "A link to a company's LinkedIn jobs (linkedin.com/company/<x>/jobs, or linkedin.com/jobs/): find_site_boards tallies it as 'linkedin', where a company posts instead of keeping a board of its own. A linkedin.com frame is never taken for a job platform (_NOT_A_PLATFORM).",
+      "publishes": "Not read, by design: scraping it would breach LinkedIn's terms. A person captures a role with the extension, and posts_at records 'linkedin' (reach: capture).",
+      "robots": "Refused: when the crawler began honouring robots.txt (2026-10-09), LinkedIn's robots.txt cost CORE Business Technologies 20 postings and Fortem Technologies 6.",
+      "employer": "Not a board this repository reads or wires; there is no probe.",
+      "quirks": [
+        "An advertisement is not a second board: a link to (or a mention of) the company's LinkedIn page is kept on a WIRE row as advertised_on and holds nothing (wire_found.ADVERTISED_ON)."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "2026-10-09"
+    },
+    "personio": {
+      "name": "Personio",
+      "status": "seen",
+      "spot": "Any personio.de or personio.com address: find_site_boards tallies it as 'personio'. discover_js reads <label>.jobs.personio.de or .com.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "phenom": {
+      "name": "Phenom",
+      "status": "seen",
+      "spot": "Any phenompeople.com address: find_site_boards tallies it as 'phenom'. Nothing else in the code names it.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "taleo": {
+      "name": "Oracle Taleo",
+      "status": "seen",
+      "spot": "Any taleo.net address: find_site_boards tallies it as 'taleo'. discover_ats.MARKERS files <label>.taleo.net as type html, and discover_js has a pattern for it.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "trinethire": {
+      "name": "TriNet Hire",
+      "status": "seen",
+      "spot": "Any trinethire.com address: find_site_boards tallies it as 'trinethire'. discover_js reads app.trinethire.com/companies/<number>-<name> (as 'trinet').",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
+      "quirks": [],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "wellfound": {
+      "name": "Wellfound (formerly AngelList Talent)",
+      "status": "seen",
+      "spot": "A link to wellfound.com/company/<x>/jobs: find_site_boards tallies it as 'wellfound', where a company posts instead of keeping a board of its own.",
+      "publishes": "Not read: the whole domain sits behind a Cloudflare bot check that answers 403 to any fetcher (posts_at.py). Its company pages are per company, so a person opening one sees only that company's openings; posts_at records 'wellfound' (reach: capture).",
+      "robots": "Unknown: not measured.",
+      "employer": "Not a board this repository reads or wires; there is no probe.",
+      "quirks": [
+        "A hiring channel, not a copy of a board: the wiring door holds a found board beside it as a doubt (second blind review, 2026-11-19)."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    },
+    "ycombinator": {
+      "name": "Y Combinator (Work at a Startup)",
+      "status": "seen",
+      "spot": "A link to ycombinator.com/companies/<x>/jobs, or any workatastartup.com address: find_site_boards tallies it as 'ycombinator', where a company posts instead of keeping a board of its own.",
+      "publishes": "Unknown: not researched.",
+      "robots": "Unknown: not measured.",
+      "employer": "Not a board this repository reads or wires; there is no probe.",
+      "quirks": [
+        "A hiring channel, not a copy of a board: the wiring door holds a found board beside it as a doubt (second blind review, 2026-11-19)."
+      ],
+      "reader": null,
+      "probe": null,
+      "measured_on": "unknown"
+    }
+  }
+}
