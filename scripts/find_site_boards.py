@@ -2823,10 +2823,12 @@ def summary(companies: dict) -> list[str]:
     for r in pointed:
         for kind in {c["type"] for c in r["candidates"]}:
             by_kind[kind] += 1
-    by_vendor = collections.Counter()
+    # a tenant form or a no-board form belongs to a platform we read: it is
+    # not one with "no reader" (third review's Jobvite reviewer, 2026-11-21)
+    by_vendor, by_form = collections.Counter(), collections.Counter()
     for r in companies.values():
         for v in {e["vendor"].split(":")[0] for e in r["elsewhere"]}:
-            by_vendor[v] += 1
+            (by_form if v in TENANT_FORMS or v in _NO_BOARD_IN_IT else by_vendor)[v] += 1
     out = [f"{n} companies in the file",
            f"  {len(pointed)} whose own site points to a board we can read",
            f"  {len(nothing)} read, no readable board named as their own"
@@ -2842,6 +2844,9 @@ def summary(companies: dict) -> list[str]:
         out.append("  by platform: " + ", ".join(f"{k} {v}" for k, v in by_kind.most_common()))
     if by_vendor:
         out.append("  no reader for: " + ", ".join(f"{k} {v}" for k, v in by_vendor.most_common()))
+    if by_form:
+        out.append("  forms of platforms we read: "
+                   + ", ".join(f"{k} {v}" for k, v in by_form.most_common()))
     return out
 
 

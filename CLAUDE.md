@@ -2578,7 +2578,7 @@ round.
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label>            # a look
     python3 scripts/wire_found.py apply <scratch>/worklist.json --by agent:<label> --write --expect <code>
     python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "<the owner's words>" --by agent:<label>   # only on his word; a look
-    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> --why "..." --by agent:<label> --write --expect <code>
+    python3 scripts/wire_found.py settle --id <company> --board <type>/<ref> [--key <doubt key> ...] --why "..." --by agent:<label> --write --expect <code>
 
 - **`plan` is the only step on the network, and it freezes a worklist.** It
   reads `find_site_boards.py` results (several files are pooled: a plain read
@@ -2610,7 +2610,10 @@ round.
   `ats_note` on file (wiring would write over the note); a discovery suspect
   or an Acquisitions row (both builders are asked); another company already
   holding the board, or the same board found for two companies in one run; a
-  different board refused earlier or already waiting; this board refused for
+  different board refused earlier or already waiting; this very board
+  pending in Agent proposals for the company itself, its words quoted (it was
+  "the question already asked", and the two checks answered it while the
+  owner's question stood: blind review, 2026-11-21); this board refused for
   another company still on file (the refusal and whose it was quoted, below);
   a board that names somebody else (MISMATCH, both names quoted) or nobody.
 - **An advertisement is not a second board, and a question that did not get
@@ -2627,7 +2630,16 @@ round.
   channels, not copies); a vendor host seen as a frame (a Workable posting
   framed by short code is any account's); `other:<any other site>` (a
   careers link to a host nothing knows is what a parent's careers site
-  looks like). `VENDOR_SITES` lists only vendors whose boards sit under a
+  looks like). Each is said for what it is, on their own site (a doubt) and
+  on a page off it (a note on a WIRE line), with the forms read from
+  `find_site_boards` (`_NO_BOARD_IN_IT`, `TENANT_FORMS`), never listed here:
+  a form of a platform we read that names no board ("loads jobvite in a form
+  that names no board"), a tenant of one this door cannot name, or a
+  platform the crawl cannot read - the WIRE line's note said that last of
+  every one, Jobvite's own form included, and the finder's run summary
+  counted them all under "no reader for" (third review's Jobvite reviewer,
+  2026-11-21); the summary now counts "forms of platforms we read" apart.
+  `VENDOR_SITES` lists only vendors whose boards sit under a
   path on their board host - never a domain that gives each tenant a careers
   site of its own (jibeapply.com, applytojob.com, bamboohr.com, breezy.hr,
   recruitee.com, icims.com, workable.com: a link there can be another
@@ -2763,17 +2775,24 @@ round.
   `settle` adds one journalled record (`{"<id>@<when>~settled": {id, board,
   settles: [keys], why, by, on, at}}`) that settles the company's standing
   doubts ABOUT THE ONE BOARD his words are about (`--board`, as the plan
-  prints it, compared by `board_key`; `-` names the doubts that name no
-  board) for every reader (plan, apply, `held_for_the_owner`); admin_undo.py
-  takes it back. Without `--write` it is a look: it lists the doubts it
-  would settle and every other standing doubt of the company it leaves
-  standing, and prints a code, which `--write --expect` must quote, as in
-  apply (the code covers the company, the board, the doubts and his words).
+  prints it, compared by `same_board`, a Workable number and the slug the
+  file ties it to being one; `-` names the doubts that name no board) for
+  every reader (plan, apply, `held_for_the_owner`); admin_undo.py takes it
+  back. Where more than one doubt stands about that board, each one his
+  words answer is named by `--key` (the look lists every doubt's key), and
+  one he was not asked about is never settled by his answer to another.
+  Without `--write` it is a look: it lists the doubts it would settle and
+  every other standing doubt of the company it leaves standing, and prints a
+  code, which `--write --expect` must quote, as in apply (the code covers
+  the company, the board, his words and exactly the doubts it settles).
   It refuses a doubt whose company has its row on his desk (reach `row`):
   his own ruling on that card settles it. (Blind review, 2026-11-21: `settle
   --id` settled every standing doubt of the company - one about a board
   nobody had shown him, which the next plan wired, and one behind the card
-  he settles it from.) A settled doubt given again is not kept again, never called
+  he settles it from. The third, the same day: it settled every doubt about
+  the board, a later reader's in other words included, and a doubt about a
+  Workable number the file ties to the slug named was "about another
+  board".) A settled doubt given again is not kept again, never called
   standing, and tells nobody anything. A board a door FILED in his queue
   (`filed`) is held by every later plan too, with its doubt; a row an older
   finder left may still be answered by the two checks. A SKIP made after
@@ -2787,23 +2806,39 @@ round.
   is HOLD with the words quoted, and a board refused in either store (a
   Boards-we-found refusal by the board on its row, an Agent-proposals
   rejection by its ats_type/ats_ref)
-  for a record merged away, or for a record whose name this company's
-  also_known_as carries (one company on two records), is SKIP refused, "tell
-  the owner", with nothing read - for whatever company's site names it,
-  under either Workable key, in the plan and in apply (`held_boards`,
+  for THIS company under another record is SKIP refused, "tell the owner",
+  with nothing read - for whatever company's site names it, under either
+  Workable key, in the plan and in apply (`held_boards`,
   `wire_found.refused_for_it`; apply's codes `standing`, `queued`,
-  `refused`). Refused for ANOTHER company still on file, it is that
-  company's answer, not this one's: the board is read and HELD, and filed in
-  Boards we found for the company whose own site and board both name it,
-  the refusal and whose it was quoted ("... was refused for Sub Co in Agent
-  proposals (...) - refused for another company, still on file (Sub Co);
-  whether it is Parent Co's own board is the owner's to rule on"); apply
-  leaves such a WIRE row alone and says to plan again. (Blind review,
+  `refused`). This company's own, as far as the file shows: a record merged
+  away whose name, as the refusal recorded it, this company goes by (its
+  survivor: the desk's merge puts the dropped name in also_known_as); a
+  record on file whose also_known_as carries this one's name, or the other
+  way round; or a record of the same name on the same website or in one
+  group of the Duplicates queue (`wire_found.duplicate_groups`; a pair he
+  dismissed there is two companies). Names are compared as
+  `verify_boards.strict` leaves them, country tag included
+  (`wire_found.names_meet`): "Esri" is not "Esri Canada". Refused for any
+  OTHER company, on file or merged away, it is that company's answer, not
+  this one's: the board is read and HELD, and filed in Boards we found for
+  the company whose own site and board both name it, the refusal and whose
+  it was quoted ("... was refused for Sub Co in Agent proposals (...) -
+  refused for another company, still on file (Sub Co)", or "- refused for a
+  record since merged away (Sub Co), and this company does not go by that
+  name"; "whether it is Parent Co's own board is the owner's to rule on"),
+  the refusal in its own words - a row that proposes the board never says
+  it "is not proposed again", whether it is held by key or by a name a
+  Workable account goes by; apply leaves such a WIRE row alone and says to
+  plan again. (Blind review,
   2026-11-21: Sub Co's refusal, "the board is Parent Co's", held Parent Co's
   own board in all three doors, and nothing could put it in front of him for
   Parent Co; 10 of the 11 board proposals he had rejected name their true
-  owner. Discovery and wire_embedded.py, which never wire past him, still
-  hold it.) A
+  owner. The third blind review, the same day: every refusal under a record
+  merged away was still taken for this company's, so a desk merge of Sub Co
+  put Parent Co's board out of his reach again; and two records both named
+  Acme Co were "another company", so his answer for one came back on his
+  desk for the other. Discovery and wire_embedded.py, which never wire past
+  him, still hold it.) A
   doubted or refused company merged into its duplicate left its hold under
   the dropped id, and the survivor's plan wired the board (third review and
   review of 27eeb628, 2026-11-19). The desk's merge (`admin.act_merge`) is NOT refused for it,
@@ -2836,7 +2871,12 @@ round.
   ignored, an address matches with or without scheme, `www.` or a last slash,
   a Paylocity board is the id after `/jobs/All/` or `/jobs/List/`, with or
   without the tenant's name after it (a /List/ board had two keys, so a hold
-  under one spelling missed the other: blind review, 2026-11-21), an iCIMS
+  under one spelling missed the other: blind review, 2026-11-21), and is
+  known by the tenant's name both shapes end in as well
+  (`board_proposals.also_keys`, asked wherever boards meet: FAAC's frame is
+  /List/2115/FAAC-Incorporated and lands on /All/<uuid>/FAAC-Incorporated,
+  one board under two ids; every Paylocity ref on file is /All/, and a /List/
+  find walked past a refusal of the board - third blind review), an iCIMS
   portal its slug, a Jibe, Oracle, ApplicantPro or Teamtailor board its host,
   a Zoho Recruit career site its host and page name (a posting's address is
   under it), and a Comeet board its company uid, whether written
@@ -2863,8 +2903,9 @@ round.
   Workable account held under a number the plan never followed whose name
   the board states or the company goes by (`number`, or the hold's own
   code), a door-filed
-  row in Boards we found for any board (`queued`), a waiting row or pending
-  proposal the plan did not record in the row's `waiting_seen` (`waiting`),
+  row in Boards we found for any board (`queued`), a waiting row the plan did
+  not record in the row's `waiting_seen`, or a board proposal pending for the
+  company in Agent proposals whether the plan recorded it or not (`waiting`),
   another holder (under either key), more postings shown than the board
   read. A write whose `--expect` is not the code of the data as it is now is
   REFUSED, even when nothing would be written. A worklist older than version
@@ -2984,11 +3025,12 @@ round.
   can reach (an older ruling, a company on a board, one merged away) holds
   its board until he is told and answers - `settle` writes his answer, about
   the one board he answered about; and a
-  board refused for one company is SKIP refused for its survivor and for a
-  record that also goes by its name, and for every other company that names
-  it is filed in Boards we found with the refusal quoted, the group's own
-  record included, for him to rule on there (discovery and wire_embedded
-  hold it for every company).
+  board refused for one company is SKIP refused for its survivor and for
+  another record of the same company (an also_known_as either way, or one
+  name and one website or Duplicates group), and for every other company
+  that names it is filed in Boards we found with the refusal quoted, the
+  group's own record included, for him to rule on there (discovery and
+  wire_embedded hold it for every company).
   Giants on readers that do read the whole board are still read in full
   before they are skipped.
 

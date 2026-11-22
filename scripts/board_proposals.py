@@ -451,6 +451,29 @@ def board_key(kind, ref) -> str:
     return f"{kind}:{json.dumps(r)}"
 
 
+# the tenant's name a Paylocity address ends in, after its /All/ or /List/ id
+_PAYLOCITY_TENANT = re.compile(r"/jobs/(?:all|list)/[^/?#]+/([^/?#]+)")
+
+
+def also_keys(kind, ref) -> list:
+    """The other keys one board is known by, beside board_key's: a Paylocity
+    board by the tenant's name its address ends in.
+
+    ONE BOARD, TWO IDS (third blind review, 2026-11-21). FAAC's page frames
+    /List/2115/FAAC-Incorporated, and the frame lands on
+    /All/<uuid>/FAAC-Incorporated: one board (find_site_boards folds the two
+    only when both are on one page). board_key keys them 2115 and <uuid>, and
+    every Paylocity ref on file is /All/, the refusals included - so a read
+    that saw only the /List/ frame planned WIRE past a refusal of the very
+    board. Both shapes end in the tenant's name; a collision of names only
+    ever sends a board to a person."""
+    if kind == "paylocity" and isinstance(ref, str):
+        m = _PAYLOCITY_TENANT.search(ref.strip().lower())
+        if m:
+            return [f"{kind}:{json.dumps('tenant/' + m.group(1))}"]
+    return []
+
+
 def show(kind, ref) -> str:
     """greenhouse/acme - how the journal and the desk already write a board."""
     if isinstance(ref, list):
@@ -504,6 +527,10 @@ def refusals(stores: dict) -> dict:
                          # whose row it was (held_boards, for a Workable number)
                          "names": [n for n in (row.get("board_calls_itself"), row.get("name"))
                                    if isinstance(n, str) and n.strip()],
+                         # whose refusal it was, by the name the row recorded: what a
+                         # record merged away since is known by (refused_for_it)
+                         "whose": [n for n in (row.get("name"),)
+                                   if isinstance(n, str) and n.strip()],
                          "by": v.get("by") or "?", "on": v.get("on") or "?",
                          "why": str(v.get("why") or "").strip()})
     for key, p in stores["proposals"].items():
@@ -516,6 +543,8 @@ def refusals(stores: dict) -> dict:
                          "board": show(p.get("ats_type"), p.get("ats_ref")),
                          "type": p.get("ats_type"), "ref": p.get("ats_ref"),
                          "names": [n for n in (p.get("name"),)
+                                   if isinstance(n, str) and n.strip()],
+                         "whose": [n for n in (p.get("name"),)
                                    if isinstance(n, str) and n.strip()],
                          "by": p.get("ruled_by") or "?", "on": p.get("ruled_on") or "?",
                          "why": str(p.get("ruled_why") or "").strip()})
@@ -614,7 +643,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     def hold(cid, code, kind, ref, words, *names, **more):
         h = {"id": cid, "code": code, "board": show(kind, ref), "words": words,
              "names": strict_names(*names, *their_names(by_id.get(cid))), **more}
-        keys[board_key(kind, ref)].append(h)
+        for k in dict.fromkeys([board_key(kind, ref), *also_keys(kind, ref)]):
+            keys[k].append(h)
         if numbered(kind, ref):
             slug = pairs.get(workable_number(ref))
             if slug:
@@ -663,7 +693,7 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                         f"({x['by']} on {x['on']}" + (f": {x['why']}" if x["why"] else "") + ")")
                 hold(cid, "refused", x["type"], x["ref"],
                      f"{said}, and a board somebody said no to is not proposed again",
-                     *(x.get("names") or []), refusal=said)
+                     *(x.get("names") or []), refusal=said, whose=list(x.get("whose") or []))
     for number, ids in sorted(numbers_on_file(companies or []).items()):
         slug = pairs.get(number)
         for cid in ids:
@@ -722,8 +752,12 @@ def named_holds(held: dict, kind, names, cid, ours=()) -> list:
             hit = sorted(set(theirs) & set(h["names"]))
             how = f"the company it was found for goes by \"{theirs[hit[0]]}\"" if hit else ""
         if hit:
+            # a refusal in its own words: the row this goes on is filed for
+            # the owner, so it is not "not proposed again" (third blind review,
+            # 2026-11-21)
+            said = (h.get("refusal") or h["words"]) if h.get("code") == "refused" else h["words"]
             out.append((h["code"], (
-                f"{h['words']}; it is held under Workable account {h['number']}, which was not "
+                f"{said}; it is held under Workable account {h['number']}, which was not "
                 f"followed to a slug, and {how}, a name that account goes by "
                 f"({h['names'][hit[0]]}) - whether it is the same Workable account was not "
                 f"asked")))
@@ -735,7 +769,7 @@ def found_keys(kind, ref, pairs: dict | None = None) -> list:
     found by its account number, its slug's where the two are known to belong
     together (`pairs`, as held_boards gives them). (A board found by its slug
     needs no other key: a hold under the number is held under the slug too.)"""
-    keys = {board_key(kind, ref)}
+    keys = {board_key(kind, ref), *also_keys(kind, ref)}
     if numbered(kind, ref) and (pairs or {}).get(workable_number(ref)):
         keys.add(board_key("workable", pairs[workable_number(ref)]))
     return sorted(keys)
