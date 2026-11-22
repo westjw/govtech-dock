@@ -1032,8 +1032,11 @@ def _paylocity(ref, out: dict) -> None:
     # keys a board found by its /List/ address by it, so a record on file at
     # the bare /All/ address is met (fifth blind review, 2026-11-22). Stated
     # only when og:url is a recruiting.paylocity.com /jobs/All/<uuid> address
-    # and the LeadJoinUrl, where the page gives one, names the same uuid: a
-    # page that disagrees with itself about its id states none. It is an
+    # and the LeadJoinUrl, where the page gives one, is exactly the
+    # /Recruiting/PublicLeads/New/<uuid> of that same uuid: a page that
+    # disagrees with itself about its id states none, and so does one whose
+    # LeadJoinUrl is there in another shape - another uuid with a digit more
+    # was taken for no LeadJoinUrl (test review, 2026-11-22). It is an
     # address, never a name.
     url = str(ref or "").strip()
     if host_of(url) != "recruiting.paylocity.com" or not url.startswith("http"):
@@ -1049,9 +1052,10 @@ def _paylocity(ref, out: dict) -> None:
         out["how"] = "paylocity page states no ModuleTitle"
     said = _meta(page, "og:url")
     m = _PAYLOCITY_ALL.fullmatch(said)
-    lead = _PAYLOCITY_LEAD.search(str(_dig(data, "LeadJoinUrl") or "").strip())
+    given = _dig(data, "LeadJoinUrl")
+    lead = _PAYLOCITY_LEAD.fullmatch(str(given).strip()) if given not in (None, "") else None
     if m and host_of(said) == "recruiting.paylocity.com" \
-            and (lead is None or lead.group(1).lower() == m.group(1).lower()):
+            and (given in (None, "") or (lead and lead.group(1).lower() == m.group(1).lower())):
         out["address"] = said.rstrip("/")
 
 
@@ -1059,8 +1063,8 @@ def _paylocity(ref, out: dict) -> None:
 _PAYLOCITY_UUID = r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"
 _PAYLOCITY_ALL = re.compile(r"https://recruiting\.paylocity\.com/recruiting/jobs/all/"
                             + _PAYLOCITY_UUID + r"(?:/[^/?#\s\"'<>]{1,200})?/?", re.I)
-_PAYLOCITY_LEAD = re.compile(r"/recruiting/publicleads/new/" + _PAYLOCITY_UUID
-                             + r"(?![0-9a-f-])", re.I)
+_PAYLOCITY_LEAD = re.compile(r"(?:https://recruiting\.paylocity\.com)?/recruiting/publicleads/"
+                             r"new/" + _PAYLOCITY_UUID + r"/?", re.I)
 
 
 def _icims(ref, out: dict) -> None:

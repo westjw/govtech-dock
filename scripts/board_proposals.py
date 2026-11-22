@@ -487,31 +487,160 @@ def paylocity_ids(ref) -> tuple:
             m.group(2) if m.group(1) == "list" else None, m.group(3) or None)
 
 
-def paylocity_apart(refs, ref) -> bool | None:
-    """Are the Paylocity addresses `refs` (one board) and `ref` shown to be
-    two boards (True), one board (False), or can it not be shown (None)?
+# A Paylocity board's own /jobs/All/<uuid> address, as its page states it
+# (verify_boards' `address`) and as the door keeps it: on a row it filed
+# (`page_ref`) and in the note of a record it wired (PAGE_WORDS)
+_PAYLOCITY_ALL = re.compile(r"https://recruiting\.paylocity\.com/recruiting/jobs/all/"
+                            r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                            r"(?:/[^/?#\s;,()\"'<>]{1,200})?/?", re.I)
+PAGE_WORDS = re.compile(r"its own page states its address is (https://\S+?)(?=[;,)\s]|$)")
 
-    One board, two ids (third blind review, 2026-11-21): /jobs/List/<n> and
-    /jobs/All/<uuid> name the same board, and only the tenant's name after
-    either ties them (also_keys). So an /All/ id and a /List/ id are compared
-    only through that name, and where either address carries none - Celona's
-    record on file reads .../All/<uuid> bare, and find_site_boards writes
-    /List/<n> both ways - nothing on the addresses shows whether they are one
-    board (fifth blind review, 2026-11-22: a /List/ find of Celona's board
-    was wired to a second record). Two ids of one kind that differ, or two
-    tenants' names that differ, are two boards."""
+
+def paylocity_address(value) -> str | None:
+    """`value` when it is a Paylocity board's /jobs/All/<uuid> address, as a
+    board's own page states one (no query, no fragment), trimmed; else None."""
+    v = value.strip().rstrip("/") if isinstance(value, str) else ""
+    return v if v and _PAYLOCITY_ALL.fullmatch(v) else None
+
+
+def board_refs(kind, ref, *stated) -> list:
+    """Every address one board is known by: its ref, and for a Paylocity
+    board each /All/ address its own page was found to state."""
+    if kind != "paylocity":
+        return [ref]
+    return [ref, *dict.fromkeys(a for a in (paylocity_address(x) for x in stated) if a)]
+
+
+def _paylocity_sides(refs) -> tuple:
     alls, lists, tenants = set(), set(), set()
     for r in refs or ():
         a, n, t = paylocity_ids(r)
         alls |= {a} - {None}
         lists |= {n} - {None}
         tenants |= {t} - {None}
-    a, n, t = paylocity_ids(ref)
-    if (a and a in alls) or (n and n in lists) or (t and t in tenants):
-        return False
-    if (a and alls) or (n and lists) or (t and tenants):
-        return True
-    return None
+    return alls, lists, tenants
+
+
+def paylocity_relation(a_refs, b_refs) -> str:
+    """How two Paylocity boards, each given as every address it is known by
+    (board_refs), stand - "same", "tenant", "unknown" or "apart".
+
+    One board, two ids (third blind review, 2026-11-21): /jobs/List/<n> and
+    /jobs/All/<uuid> name the same board, and only the tenant's name after
+    either ties them. So:
+
+      same     an id of one kind agrees and none disagrees; or neither side
+               has an id of the other's kind and the tenant's names agree
+               (FAAC's /List/2115/FAAC-Incorporated and its /All/<uuid>/...).
+      tenant   ids of one kind DISAGREE under one tenant's name: two boards
+               of one tenant, or one the ids do not settle. It holds the board
+               for a person and is never "the same board" (sixth blind review,
+               2026-11-22: a refusal of /All/<uuid1>/Acme-Inc SKIPped the
+               board found at /All/<uuid2>/Acme-Inc, unread).
+      unknown  nothing on the addresses compares them: no id of a kind both
+               have, and a tenant's name missing on one side (Celona's record
+               at a bare .../All/<uuid>, a bare /List/<n> find: fifth blind
+               review, 2026-11-22) - or the ids agree on one kind and disagree
+               on another. It holds the board for a person.
+      apart    ids of one kind disagree under no shared tenant's name, or the
+               tenants' names disagree where no id compares: two boards.
+    """
+    a, b = _paylocity_sides(a_refs), _paylocity_sides(b_refs)
+    agree = disagree = False
+    for kind in (0, 1):
+        if a[kind] and b[kind]:
+            if a[kind] & b[kind]:
+                agree = True
+            else:
+                disagree = True
+    if agree:
+        return "unknown" if disagree else "same"
+    if disagree:
+        return "tenant" if a[2] & b[2] else "apart"
+    if a[2] and b[2]:
+        return "same" if a[2] & b[2] else "apart"
+    return "unknown"
+
+
+def paylocity_tenants(refs) -> set:
+    """The tenants' names these Paylocity addresses end in, lowercased."""
+    return _paylocity_sides(refs)[2]
+
+
+def paylocity_conflict(a_refs, b_refs) -> bool:
+    """Do two Paylocity boards' ids agree on one kind and disagree on the
+    other (paylocity_relation calls that "unknown" too)?"""
+    a, b = _paylocity_sides(a_refs), _paylocity_sides(b_refs)
+    met = [bool(a[k] & b[k]) for k in (0, 1) if a[k] and b[k]]
+    return True in met and False in met
+
+
+def has_paylocity_id(refs) -> bool:
+    """Do these addresses carry a /jobs/All/ or /jobs/List/ id at all? A ref
+    with none (a posting's .../jobs/Details/<n>/...) is no board address to
+    compare, and is left to the keys."""
+    sides = _paylocity_sides(refs)
+    return bool(sides[0] or sides[1])
+
+
+def stated_addresses(companies: list | None, found: list | None) -> dict:
+    """{company id: [the /All/ addresses its Paylocity board's own page was
+    found to state]}, from what is on file: the note the wiring door writes on
+    a record it wires (PAGE_WORDS), and the `page_ref` of the company's row in
+    Boards we found whose board is the board the record reads (a row the owner
+    accepted at the desk is wired as it was filed, its /List/ spelling
+    included). No request: what is on file."""
+    out = collections.defaultdict(list)
+    by_id = {c.get("id"): c for c in companies or [] if isinstance(c, dict)}
+    for cid, c in by_id.items():
+        a = c.get("ats") or {}
+        if a.get("type") != "paylocity":
+            continue
+        for x in PAGE_WORDS.findall(str(c.get("ats_note") or "")):
+            if paylocity_address(x):
+                out[cid].append(paylocity_address(x))
+    for r in found or []:
+        if not isinstance(r, dict):
+            continue
+        c = by_id.get(r.get("id")) or {}
+        a, f = c.get("ats") or {}, r.get("found") if isinstance(r.get("found"), dict) else {}
+        stated = paylocity_address(r.get("page_ref"))
+        if stated and a.get("type") == "paylocity" == f.get("type") \
+                and board_key("paylocity", a.get("ref")) == board_key("paylocity", f.get("ref")):
+            out[r["id"]].append(stated)
+    return {cid: list(dict.fromkeys(v)) for cid, v in out.items()}
+
+
+def holders_of(companies: list, found: list | None = None) -> dict:
+    """{board key: [ids of the companies already reading from that board]},
+    a Paylocity board under every address it is known by - its ref and the
+    /All/ address its own page was found to state (stated_addresses). The
+    one reader the wiring door and wire_embedded.py ask."""
+    out = collections.defaultdict(list)
+    stated = stated_addresses(companies, found)
+    for c in companies or []:
+        a = (c.get("ats") or {}) if isinstance(c, dict) else {}
+        if a.get("type") in (None, "unknown", "html") or a.get("ref") is None:
+            continue
+        refs = board_refs(a["type"], a["ref"], *stated.get(c["id"], ()))
+        for k in dict.fromkeys(k for r in refs for k in (board_key(a["type"], r),
+                                                         *also_keys(a["type"], r))):
+            out[k].append(c["id"])
+    return out
+
+
+def paylocity_records(companies: list | None, found: list | None = None) -> list:
+    """[(record, every address its Paylocity board is known by)] for every
+    record on file that reads a Paylocity board by an address with an id."""
+    stated = stated_addresses(companies, found)
+    out = []
+    for c in companies or []:
+        a = (c.get("ats") or {}) if isinstance(c, dict) else {}
+        if a.get("type") == "paylocity" and isinstance(a.get("ref"), str):
+            refs = board_refs("paylocity", a["ref"], *stated.get(c.get("id"), ()))
+            if has_paylocity_id(refs):
+                out.append((c, refs))
+    return out
 
 
 def show(kind, ref) -> str:
@@ -590,6 +719,9 @@ def refusals(stores: dict) -> dict:
                          "whose": [n for n in (row.get("name"),)
                                    if isinstance(n, str) and n.strip()],
                          "page": _address(filed.get("page")),
+                         # the /All/ address the board's own page stated, where the
+                         # door that filed the row asked it (wire_found)
+                         "page_ref": paylocity_address(row.get("page_ref")),
                          "by": v.get("by") or "?", "on": v.get("on") or "?",
                          "why": str(v.get("why") or "").strip()})
     for key, p in stores["proposals"].items():
@@ -689,8 +821,17 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     beside it (named_holds). A record on file holding a number nobody
     followed is held the same way, by its names; one holding a number whose
     slug is known is held under the slug's key.
+
+    A PAYLOCITY BOARD is held under every address it is known by - its ref,
+    and the /All/ address its own page was found to state where the hold
+    carries it (a door-filed row's `page_ref`, and a refusal of one) - and
+    every Paylocity hold is listed again in `paylocity`, with `type`, `ref`
+    and `refs`, for the comparison keys cannot make (paylocity_relation): a
+    bare /List/<n> hold and the same board's /All/<uuid>/<Tenant> share no
+    key, and the wiring door holds any board it cannot tell apart from one
+    (sixth blind review, 2026-11-22).
     """
-    keys, named = collections.defaultdict(list), []
+    keys, named, paylocity = collections.defaultdict(list), [], []
     pairs = workable_pairs(companies, stores.get("found"))
     pairs.update({n: s for n in (resolved or {}) if (s := slug_of(resolved, n))})
 
@@ -700,11 +841,16 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
         return (by_id.get(cid) or {}).get("name") or next(
             (n for n in also if isinstance(n, str) and n.strip()), cid)
 
-    def hold(cid, code, kind, ref, words, *names, **more):
+    def hold(cid, code, kind, ref, words, *names, page_ref=None, **more):
         h = {"id": cid, "code": code, "board": show(kind, ref), "words": words,
              "names": strict_names(*names, *their_names(by_id.get(cid))), **more}
-        for k in dict.fromkeys([board_key(kind, ref), *also_keys(kind, ref)]):
+        refs = board_refs(kind, ref, page_ref)
+        for k in dict.fromkeys(k for r in refs for k in (board_key(kind, r),
+                                                         *also_keys(kind, r))):
             keys[k].append(h)
+        if kind == "paylocity":
+            h.update(type=kind, ref=ref, refs=refs)
+            paylocity.append(h)
         if numbered(kind, ref):
             slug = pairs.get(workable_number(ref))
             if slug:
@@ -729,7 +875,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                 f"for {name_of(r['id'], r.get('name'))}, filed {r['filed'].get('on') or '?'} by "
                 f"{r['filed'].get('by') or '?'} with its doubt: "
                 f"\"{str(r.get('identity_why') or 'none recorded')[:240]}\"; a board filed "
-                f"there is his to settle"), r.get("board_calls_itself"), r.get("name"))
+                f"there is his to settle"), r.get("board_calls_itself"), r.get("name"),
+                page_ref=r.get("page_ref"))
     # a board proposal still pending in Agent proposals is his to settle, for
     # whatever company's site names the board (blind review, 2026-11-21)
     for key, p in sorted((stores.get("proposals") or {}).items()):
@@ -754,7 +901,7 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                 hold(cid, "refused", x["type"], x["ref"],
                      f"{said}, and a board somebody said no to is not proposed again",
                      *(x.get("names") or []), refusal=said, whose=list(x.get("whose") or []),
-                     page=x.get("page"))
+                     page=x.get("page"), page_ref=x.get("page_ref"))
     for number, ids in sorted(numbers_on_file(companies or []).items()):
         slug = pairs.get(number)
         for cid in ids:
@@ -782,7 +929,7 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                                   f"a record holds Workable account {number} "
                                   f"({name_of(cid)}), and whether it is this board was not "
                                   f"asked")})
-    return {"keys": keys, "named": named, "pairs": pairs}
+    return {"keys": keys, "named": named, "pairs": pairs, "paylocity": paylocity}
 
 
 def named_holds(held: dict, kind, names, cid, ours=()) -> list:
@@ -1034,7 +1181,11 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
     read_at} and may carry `page`, the page that pointed to the board - on
     the company's own site unless the doubt on the row says it is not.
     read_at is the ISO time of the live read the count and the titles came
-    from. identity_why is the doubt in words: on a MISMATCH the desk prints
+    from. A Paylocity row may carry `page_ref`, the /All/ address the board's
+    own page states (kept next to `found`, which stays the board as the site
+    spelled it): every door after meets the board under it too, and the
+    wiring door reads it back for a record wired from the row. identity_why
+    is the doubt in words: on a MISMATCH the desk prints
     it in red, on every other filed row it prints it as the reason the board
     was not wired. `name` and `was` are taken from the company record, not
     from the caller, and `filed` records who filed it, when, and when the
@@ -1123,9 +1274,12 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
         page = r.get("page").strip() if isinstance(r.get("page"), str) else ""
         if page.lower().startswith(("http://", "https://")):
             filed["page"] = page
+        stated = (paylocity_address(r.get("page_ref"))
+                  if r["found"]["type"] == "paylocity" else None)
         new.append(privacy.redact_deep({
             "id": cid, "name": c.get("name"), "was": kind,
             "found": {"type": r["found"]["type"], "ref": r["found"]["ref"]},
+            **({"page_ref": stated} if stated else {}),
             "saw": r["saw"][:160], "times": r["times"],
             "verified": r["verified"].strip(),
             "board_calls_itself": (r.get("board_calls_itself") or "").strip() or None,
