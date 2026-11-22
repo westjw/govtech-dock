@@ -596,6 +596,10 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
     that host's robots.txt had been fetched).
     """
     for _ in range(hops + 1):
+        # an address read as a browser reads it: a tab or a line break inside
+        # an href is dropped (WHATWG URL), and anything else unplain refused
+        url = _TAB_OR_BREAK.sub("", url) if isinstance(url, str) else url
+        plain_address(url)
         if may is not None:
             may(url)
         ask_robots(url)
@@ -611,6 +615,40 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
             pass
         url = urllib.parse.urljoin(url, loc)
     raise AtsError(f"more than {hops} redirects from {url}")
+
+
+_UNPLAIN = re.compile(r"[\\\x00-\x1f\x7f]")
+_TAB_OR_BREAK = re.compile(r"[\t\n\r]")
+
+
+def plain_address(u: str) -> None:
+    """Raise unless `u` names its host the same way to every reader of it.
+
+    THE HOST A RULE CHECKS MUST BE THE HOST THE REQUEST GOES TO (fifth blind
+    review, 2026-11-22). 'https://evil.example\\@jobs.jobvite.com/x' is
+    jobs.jobvite.com to urllib.parse - which every host rule, the board
+    readers' path rules and robots.txt ask - and evil.example to the library
+    that sends it, so a redirect steered a board's reader and its probe to a
+    page nobody had asked about. A crawler sends no credentials, so an '@'
+    in the host part is refused; so is a backslash or a control character
+    anywhere, and any address whose prepared request names another host
+    than the one read here. Asked of every hop in follow(), before anything
+    is sent."""
+    if not isinstance(u, str) or _UNPLAIN.search(u):
+        raise AtsError(f"{u!r} is not a plain address (a backslash or a control character)")
+    parts = urllib.parse.urlsplit(u)
+    if "@" in (parts.netloc or ""):
+        raise AtsError(f"{u} is not a plain address (an '@' in its host part)")
+    here = (parts.hostname or "").lower().rstrip(".")
+    try:
+        sent = (urllib.parse.urlsplit(requests.Request("GET", u).prepare().url).hostname
+                or "").lower().rstrip(".")
+        want = here if here.isascii() else here.encode("idna").decode("ascii")
+    except Exception as exc:                       # noqa: BLE001 - nothing is sent
+        raise AtsError(f"{u} is not an address the library can send ({exc})") from exc
+    if sent != want:
+        raise AtsError(f"{u} is not a plain address: its host reads as {here!r} here and "
+                       f"{sent!r} when sent")
 
 
 def _one(url: str, **kw):
@@ -3273,7 +3311,8 @@ JOBVITE_HOST = "jobs.jobvite.com"
 _JOBVITE_NAME = re.compile(
     r'<td class="jv-job-list-name">\s*<a href="(/([A-Za-z0-9_-]+)/job/[A-Za-z0-9]{5,16})"[^>]*>'
     r'(.*?)</a>', re.S)
-_JOBVITE_WHERE = re.compile(r'<td class="jv-job-list-location">(.*?)</td>', re.S)
+_JV_WHERE = '<td class="jv-job-list-location">'
+_JV_SEGMENT = re.compile(r"[A-Za-z0-9_-]+")
 
 
 def jobvite_slug(ref) -> str:
@@ -3296,8 +3335,14 @@ def _jobvite_read(url: str, slug: str):
         # slug at all: urljoin keeps a Location's dot segments, the library
         # removes them when it sends, so /<slug>/../<other>/ passed a prefix
         # test and asked another tenant's page (blind review, 2026-11-22).
-        if any(seg in (".", "..") for seg in raw.split("/")) or "//" in raw or "\\" in raw \
-                or "%2f" in (parts.path or "").lower() or "%5c" in (parts.path or "").lower():
+        # Every Jobvite path is plain words (/<slug>/jobs, /<slug>/job/<id>),
+        # so a segment that is anything else - a dot, '..;', an escape left
+        # after one decoding (%252e), '//', a backslash - is refused (fifth
+        # blind review: '..;' and double escapes passed a dot test).
+        segs = raw.split("/")[1:]
+        if segs and segs[-1] == "":
+            segs = segs[:-1]                    # a trailing slash
+        if not all(_JV_SEGMENT.fullmatch(seg) for seg in segs):
             raise AtsError(f"{url} leads off to {parts.hostname}{parts.path}, a path that does "
                            f"not say plainly which career site it is")
         if (parts.hostname or "").lower() != JOBVITE_HOST or not (
@@ -3331,37 +3376,109 @@ def _jv_text(raw: str) -> str:
     return _text(html_lib.unescape(re.sub(r"<[^>]+>", " ", raw or "")))
 
 
-def _cut(page: str, tags=("script", "style", "template")) -> str:
-    """The page without its comments and its script, style and template
-    blocks, found with str.find - one pass, whatever is left unclosed. A
-    commented-out row is a job the employer took down (ats._COMMENT's rule)."""
-    out, i, low = [], 0, page.lower()
-    opens = ["<!--"] + [f"<{t}" for t in tags]
-    # each opener's next place, searched for again only once passed - so the
-    # whole page is searched once per opener, not once per block
-    nxt = {o: low.find(o) for o in opens}
+_TAG_END = frozenset(" \t\n\r\f/>")
+
+
+def _tag_at(low: str, name: str, i: int) -> int:
+    """Where the next <name tag starts at or after i - that tag, not a longer
+    name that begins the same (<template-row> is not <template>) - or -1."""
+    probe = "<" + name
     while True:
-        for o in opens:
+        j = low.find(probe, i)
+        if j < 0:
+            return -1
+        k = j + len(probe)
+        if k >= len(low) or low[k] in _TAG_END:
+            return j
+        i = k
+
+
+def _walk(page: str) -> tuple[str, list[str]]:
+    """(the page as a reader sees it, its ld+json blocks): one pass over the
+    markup, found with str.find, as a browser parses it.
+
+    - A comment is not page: it ends at '-->' or '--!>', and '<!-->' and
+      '<!--->' are empty ones. One never closed takes the rest of the page.
+    - <script> and <style> are raw text, not page; a '<!--' or a '<title>'
+      inside one is nothing (fifth blind review, 2026-11-22: an open '<!--'
+      in a script hid the next JSON-LD block, a title in a script string
+      named a career site). A <script> whose own tag says
+      application/ld+json is a block - found by its tag, never by those
+      words anywhere else (a <link> or a builder script with them made the
+      next real block unreadable).
+    - <textarea> is raw text and nobody's rows; <title> is raw text, kept
+      whole for the probe.
+    - <template> content is inert, nested ones included.
+    A commented-out row is a job the employer took down (ats._COMMENT's
+    rule). Each opener is searched for once per page, again only once
+    passed, so no page holds a batch up."""
+    low, n = page.lower(), len(page)
+    kept, blocks, i, depth = [], [], 0, 0
+    find = {"<!--": lambda at: low.find("<!--", at)}
+    for name in ("script", "style", "textarea", "title", "template", "/template"):
+        find["<" + name] = (lambda nm: lambda at: _tag_at(low, nm, at))(name)
+    nxt = {o: f(0) for o, f in find.items()}
+    # where a comment can end, searched for again only once passed too: a
+    # page of comments with no '--!>' was searched to its end per comment
+    shut_at = {c: low.find(c) for c in ("-->", "--!>")}
+    while True:
+        for o, f in find.items():
             if 0 <= nxt[o] < i:
-                nxt[o] = low.find(o, i)
+                nxt[o] = f(i)
         hits = [(at, o) for o, at in nxt.items() if at >= 0]
         if not hits:
-            out.append(page[i:])
+            if depth == 0:
+                kept.append(page[i:])
             break
         at, o = min(hits)
-        out.append(page[i:at])
-        if o == "<!--" and low.startswith(">", at + 4):
-            i = at + 5                          # "<!-->": an empty comment, as a browser reads it
+        if depth == 0:
+            kept.append(page[i:at])
+        if o == "<!--":
+            if low.startswith(">", at + 4):
+                i = at + 5                      # "<!-->": an empty comment
+                continue
+            if low.startswith("->", at + 4):
+                i = at + 6                      # "<!--->": the same
+                continue
+            for c in shut_at:
+                if 0 <= shut_at[c] < at + 4:
+                    shut_at[c] = low.find(c, at + 4)
+            ends = [(e, len(c)) for c, e in shut_at.items() if e >= 0]
+            if not ends:
+                break                           # never closed: the rest is a comment
+            e, w = min(ends)
+            i = e + w
             continue
-        if o == "<!--" and low.startswith("->", at + 4):
-            i = at + 6                          # "<!--->": the same
+        gt = low.find(">", at)
+        if gt < 0:
+            break                               # a tag never closed: the rest is not page
+        if o == "<template":
+            depth += 1
+            i = gt + 1
             continue
-        close = "-->" if o == "<!--" else f"</{o[1:]}"
-        end = low.find(close, at + len(o))
-        if end < 0:
-            break                               # never closed: the rest is not page
-        i = end + len(close)
-    return " ".join(out)
+        if o == "</template":
+            depth = max(depth - 1, 0)
+            i = gt + 1
+            continue
+        name = o[1:]
+        close = _tag_at(low, "/" + name, gt + 1)
+        shut = low.find(">", close) if close >= 0 else -1
+        after = shut + 1 if shut >= 0 else n
+        if depth == 0:
+            if name == "title":
+                kept.append(page[at:after])
+            elif name == "script" and "application/ld+json" in low[at:gt]:
+                blocks.append(page[gt + 1:close if close >= 0 else n])
+        if close < 0 or shut < 0:
+            break                               # never closed: the rest is its body
+        i = after
+    return " ".join(kept), blocks
+
+
+def _cut(page: str) -> str:
+    """The page as a reader sees it: no comments, no script, style, textarea
+    or template, every title kept (_walk)."""
+    return _walk(page or "")[0]
 
 
 def jobvite_rows(page: str, slug: str) -> list[tuple[str, str, str]]:
@@ -3386,9 +3503,15 @@ def jobvite_rows(page: str, slug: str) -> list[tuple[str, str, str]]:
         name = _JOBVITE_NAME.match(cell)
         if not name or name.group(2).lower() != slug.lower() or not _jv_text(name.group(3)):
             continue                            # another tenant's row, or no title
-        where = _JOBVITE_WHERE.search(cell)
-        rows.append((f"https://{JOBVITE_HOST}" + name.group(1), _jv_text(name.group(3)),
-                     _jv_text(where.group(1)) if where else ""))
+        # the place: the row's first location cell to its </td>, found with
+        # str.find (a regex restarted at every opener of a row of unclosed
+        # cells took time with the square of the row: fifth blind review)
+        where, lo = "", cell.find(_JV_WHERE)
+        if lo >= 0:
+            hi = cell.find("</td>", lo + len(_JV_WHERE))
+            if hi >= 0:
+                where = _jv_text(cell[lo + len(_JV_WHERE):hi])
+        rows.append((f"https://{JOBVITE_HOST}" + name.group(1), _jv_text(name.group(3)), where))
     if not rows:
         raise AtsError("jobvite list page carried no openings (an empty board has not "
                        "been seen, so this is not read as a zero)")
@@ -3397,22 +3520,14 @@ def jobvite_rows(page: str, slug: str) -> list[tuple[str, str, str]]:
 
 def jobposting_nodes(page: str) -> list[dict]:
     """Every schema.org JobPosting node on a page, IN PAGE ORDER - in a list,
-    in an @graph or alone - its ld+json blocks found with str.find, one pass.
-    A block inside an HTML comment is not on the page (blind review,
-    2026-11-22: a commented-out block named the employer for the probe)."""
-    page = _cut(page or "", tags=())
-    out, i, low = [], 0, page.lower()
-    while True:
-        i = low.find("application/ld+json", i)
-        if i < 0:
-            return out
-        start = low.find(">", i)
-        end = low.find("</script>", start) if start >= 0 else -1
-        if start < 0 or end < 0:
-            return out
-        i = end
+    in an @graph or alone - from the page's own ld+json blocks as _walk finds
+    them: by their <script> tag, never inside a comment or a template
+    (blind reviews, 2026-11-22: a commented-out block named the employer for
+    the probe; a stray mention of the type hid the next block)."""
+    out = []
+    for block in _walk(page or "")[1]:
         try:
-            obj = json.loads(page[start + 1:end])
+            obj = json.loads(block)
         except ValueError:
             continue
         stack = [obj]
@@ -3426,6 +3541,7 @@ def jobposting_nodes(page: str) -> list[dict]:
                     out.append(node)
                 if isinstance(node.get("@graph"), list):
                     stack.extend(reversed(node["@graph"]))
+    return out
 
 
 def jobvite_posting(url: str, slug: str) -> str:
@@ -3445,12 +3561,24 @@ def fetch_jobvite(ref) -> list[dict]:
         # embedded posting sends a browser to
         def detail(row):
             nodes = jobposting_nodes(jobvite_posting(row["url"], slug))
-            if len(nodes) > 1:
-                # several postings on one page: only the one that says it is
-                # this posting gives this row its ad and its pay
-                job = row["url"].rstrip("/").rsplit("/", 1)[-1]
-                nodes = [n for n in nodes if job in json.dumps(
-                    [n.get("url"), n.get("@id"), n.get("identifier")])][:1]
+            # ONLY THE NODE THAT IS THIS POSTING gives the row its ad and its
+            # pay. Jobvite's own block names its job by "identifier" (the
+            # job's id, measured 2026-11-22 on Gigamon's postings); a node
+            # that names another id is another job, even alone on the page
+            # (fifth blind review), and of several only one naming this id
+            # counts.
+            job = row["url"].rstrip("/").rsplit("/", 1)[-1]
+
+            def names(n):
+                return [x for x in (n.get("url"), n.get("@id"), n.get("identifier"))
+                        if x not in (None, "", [], {})]
+            mine = [n for n in nodes if job in json.dumps(names(n))]
+            if mine:
+                nodes = mine[:1]
+            elif len(nodes) == 1 and not names(nodes[0]):
+                pass                            # one node that names no job: this page's own
+            else:
+                nodes = []
             return ((plain_html(nodes[0].get("description") or ""), _schema_comp(nodes[0]))
                     if nodes else ("", None))
         _details(out, detail)

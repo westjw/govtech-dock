@@ -733,7 +733,7 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
          r"|TalentNetwork/[^\s\"'<>?]{0,200})\?[^\s\"'<>]{0,300}?\b(?:c|ci)=[A-Za-z0-9]{5,12}"),
         # a link to ONE job (j?cj=), whose account the link does not show
         ("jobvite-joblink", "jobvite.com",
-         r"(?<![a-z0-9.-])app\.jobvite\.com/j/?\?[^\s\"'<>]{0,300}?\bcj=[A-Za-z0-9]{5,12}"),
+         r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/j/?\?[^\s\"'<>]{0,300}?\bcj=[A-Za-z0-9]{5,12}"),
         ("jobvite-other", "jobvite.com", _B + r"jobvite\.com"),
         # A ZOHO TENANT'S HOST WITH NO PAGE NAMED is a tenant whose board this
         # door cannot name - another portal than theirs, maybe a parent's -
@@ -1072,8 +1072,9 @@ _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 # Query parameters that carry a PERSON, not a board: Jobvite's talent-network
 # link puts the recruiter's name in sd= (Tyler's careers page, 2026-11-19),
 # and the sweep's results leave as artifacts of a public repository.
-_PERSON_PARAM = re.compile(r"([?&](?:amp;)?(?:sd|name|full_?name|first_?name|last_?name|"
-                           r"recruiter(?:_?name)?|contact(?:_?name)?|e-?mail)=)[^&#\s\"'<>]*", re.I)
+_PERSON_PARAM = re.compile(r"((?:[?&]|%26|&#0?38;)(?:amp;)?(?:(?:__jv|jv)?sd|name|full_?name|"
+                           r"first_?name|last_?name|recruiter(?:_?name)?|contact(?:_?name)?|"
+                           r"e-?mail)=)[^&#\s\"'<>]*", re.I)
 
 
 def _short(text: str) -> str:
@@ -2665,8 +2666,23 @@ def _no_addresses(rec: dict) -> dict:
     in it. `saw` and the notes were redacted as they were written; the
     ADDRESSES of pages were not, and an address can carry one in its query
     (a redirect to ...?to=somebody@...). The file is an artifact of a public
-    repository, and the door copies from it into a public one."""
-    return privacy.redact_deep(rec)
+    repository, and the door copies from it into a public one. A person's
+    name in an address's query goes the same way, in every address the record
+    keeps - the pages asked and landed on, the hops, the pointers - not only
+    in `saw` (fifth blind review, 2026-11-22: a talent-network redirect kept
+    sd=<a recruiter's name> in pages[].final)."""
+    return _no_names(privacy.redact_deep(rec))
+
+
+def _no_names(obj):
+    """_PERSON_PARAM over every string in a JSON-shaped value; the shape is kept."""
+    if isinstance(obj, str):
+        return _PERSON_PARAM.sub(r"\1[removed]", obj)
+    if isinstance(obj, list):
+        return [_no_names(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: _no_names(v) for k, v in obj.items()}
+    return obj
 
 
 # ---------------------------------------------------------------- the list
