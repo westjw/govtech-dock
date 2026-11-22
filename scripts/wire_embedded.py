@@ -208,13 +208,29 @@ def triage(rows: list, by_id: dict, held: dict | None = None,
     mismatch = [e for e in live if e.get("identity") == "MISMATCH"]
     rest = [e for e in live if e.get("identity") != "MISMATCH"]
 
-    claims = defaultdict(list)
-    for e in rest:
-        f = e.get("found") or {}
-        claims[(f.get("type"), str(f.get("ref")))].append(e)
-
-    shared = [e for k, v in claims.items() if len(v) > 1 for e in v]
-    alone = [e for k, v in claims.items() if len(v) == 1 for e in v]
+    # THE DOOR'S OWN QUESTIONS OF A BOARD ALREADY ON FILE (sixth blind review,
+    # 2026-11-22). A board another record already reads is a second company
+    # claiming it, and one board under two spellings - a Paylocity board at
+    # /jobs/All/ and /jobs/List/, a Workable number and its slug - is one
+    # claim, so claimants are grouped by every key the board is known by
+    # (board_proposals.found_keys) and, for Paylocity, by every address that
+    # cannot be told apart (paylocity_relation): a row naming Celona's board
+    # at /List/2115/Celona-Inc beside Celona's bare /All/ record, and a row
+    # naming a board another record reads, were both in the clean pile.
+    on_file = {id(e) for e in rest if board_on_file(e, by_id, rows, boards)}
+    pairs = (boards or {}).get("pairs")
+    keys_of = {id(e): set(board_proposals.found_keys((e.get("found") or {}).get("type"),
+                                                     (e.get("found") or {}).get("ref"), pairs))
+               for e in rest}
+    group = {id(e): {id(e)} for e in rest}
+    for i, a in enumerate(rest):
+        for b in rest[i + 1:]:
+            if keys_of[id(a)] & keys_of[id(b)] or _paylocity_may_be(a, b):
+                joined = group[id(a)] | group[id(b)]
+                for x in joined:
+                    group[x] = joined
+    shared = [e for e in rest if len(group[id(e)]) > 1 or id(e) in on_file]
+    alone = [e for e in rest if len(group[id(e)]) == 1 and id(e) not in on_file]
 
     # THE LAST GATE, and the one the first draft of this script was missing.
     # `identity: unknown` means the board never said whose it was. A slug that
@@ -230,6 +246,48 @@ def triage(rows: list, by_id: dict, held: dict | None = None,
         else:
             unsure.append(e)
     return clean, mismatch, shared + unsure
+
+
+def _paylocity_refs(entry: dict) -> list:
+    f = entry.get("found") or {}
+    return board_proposals.board_refs(f.get("type"), f.get("ref"), entry.get("page_ref"))
+
+
+def _paylocity_may_be(a: dict, b: dict) -> bool:
+    """May two rows' Paylocity boards be one board (paylocity_relation other
+    than "apart")?"""
+    fa, fb = a.get("found") or {}, b.get("found") or {}
+    return fa.get("type") == "paylocity" == fb.get("type") and board_proposals.paylocity_relation(
+        _paylocity_refs(a), _paylocity_refs(b)) != "apart"
+
+
+def board_on_file(entry: dict, by_id: dict, rows: list, boards: dict | None = None) -> str | None:
+    """Why this row's board is, or may be, a board another record already
+    reads, in words, or None: under any key it is known by (the wiring door's
+    holders), or for Paylocity a record whose board its addresses cannot tell
+    apart from it (paylocity_relation: one tenant's name under two ids, or no
+    tenant's name to compare the ids by)."""
+    f = entry.get("found") or {}
+    kind, ref, cid = f.get("type"), f.get("ref"), entry.get("id")
+    records = list(by_id.values())
+    if kind == "paylocity":
+        refs = _paylocity_refs(entry)
+        for o, o_refs in board_proposals.paylocity_records(records, rows):
+            if o.get("id") == cid:
+                continue
+            rl = board_proposals.paylocity_relation(refs, o_refs)
+            if rl == "same":
+                return f"{o.get('name') or o['id']} already reads this board"
+            if rl in ("tenant", "unknown"):
+                return (f"{o.get('name') or o['id']} reads a Paylocity board that this one cannot "
+                        f"be told apart from ({(o.get('ats') or {}).get('ref')})")
+        return None
+    holders = board_proposals.holders_of(records, rows)
+    for k in board_proposals.found_keys(kind, ref, (boards or {}).get("pairs")):
+        for i in holders.get(k, []):
+            if i != cid and i in by_id:
+                return f"{by_id[i].get('name') or i} already reads this board"
+    return None
 
 
 def held_by_board(entry: dict, by_id: dict, boards: dict) -> bool:
@@ -343,8 +401,9 @@ def main() -> int:
         for e in shared:
             f = e.get("found") or {}
             by_board[(f.get("type"), str(f.get("ref")))].append(e.get("name"))
-        print("REFUSED - the slug is not this company's name, or the board is "
-              "claimed by several companies. Both are ownership questions:")
+        print("REFUSED - the slug is not this company's name, the board is claimed by "
+              "several companies, or another record already reads it (or may). Each is an "
+              "ownership question:")
         for (kind, ref), names in by_board.items():
             print(f"  {kind}/{str(ref)[:40]:42} {', '.join(str(n) for n in names)}")
         print()
@@ -374,7 +433,9 @@ def main() -> int:
                                       "the board names another company; who owns it "
                                       "is a judgement a fetch cannot make"))
         for e in shared:
+            known = board_on_file(e, by_id, rows, boards)
             proposals.append(proposal(e, recheck(e),
+                                      f"{known} - an acquisition to settle" if known else
                                       "this board is claimed by more than one company "
                                       "on the board - an acquisition to settle"))
 
