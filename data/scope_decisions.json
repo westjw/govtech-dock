@@ -6022,5 +6022,125 @@
    "company": "Zscaler",
    "description": "developing our service business across Enterprise and Commercial sectors"
   }
+ },
+ "clearview-ai::U.S. Department of War Account Executive (USN/USMC)": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "out of scope (federal or another country's government): Agree. Both quotes are in the title and the ad. The territory is the US Department of the Navy and Marine Corps, with FAR/DFARS, federal contract vehicles and a Secret clearance. State and local law enforcement appear only in the company boilerplate, not in this role.",
+  "saw": {
+   "title": "U.S. Department of War Account Executive (USN/USMC)",
+   "company": "Clearview AI",
+   "description": "U.S. Department of War Account Executive (USN/USMC) / Build and execute a sales territory within the US Department of the Navy"
+  }
+ },
+ "cognyte::Sales Account Manager": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "out of scope (federal or another country's government): Agree. The quote is in the ad and names DHS, a US federal department. The rest of the ad points the same way: SIGINT, intelligence and homeland security agencies, security clearance requirements. It names no state, local, police department or fusion center, unlike Cognyte's other ad, which spells out State and Local. 'Law enforcement' appears only as a generic agency type. My one read of the Comeet page returned an empty template, so the call rests on the stored ad.",
+  "saw": {
+   "title": "Sales Account Manager",
+   "company": "Cognyte",
+   "description": "Strong experience selling to the Department of Homeland Security (DHS)"
+  }
+ },
+ "huntress::Channel Account Manager I, Service Providers": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "B2B: Agree, with a better quote. The ad's own location is 'Remote Ireland' with pay in euros; the board's place field says United States of America, which is wrong. The buyers are MSP and service-provider partners, private businesses that deliver Huntress to their own customers, and no public buyer appears anywhere in the ad. Two parts of the first reader's quote were weak: 'ideally focused on mid-market and below' is the candidate's past experience, and 'businesses of all sizes' is company boilerplate. I quote the title and the partner lines instead.",
+  "saw": {
+   "title": "Channel Account Manager I, Service Providers",
+   "company": "Huntress",
+   "description": "Channel Account Manager I, Service Providers / Location: Remote Ireland / Strong knowledge of the MSP space / Build and maintain strong relationships with multiple contacts within assigned partner organizations"
+  }
+ },
+ "jamf::Manager, Enterprise Sales | HCLS": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "B2B: Agree. The quote is word for word in the ad. The team sells to Jamf's healthcare and life sciences vertical: hospitals, health systems, pharma, biotech and medical device makers. No public hospital, hospital district, county, state or VA is named. The ad's only 'local' and 'school' are 'local collaborative workspace' and 'High school diploma'.",
+  "saw": {
+   "title": "Manager, Enterprise Sales | HCLS",
+   "company": "Jamf",
+   "description": "hospitals, health systems, pharmaceutical and biotech companies, medical device manufacturers, and other life sciences organizations"
+  }
+ },
+ "sewerai::Account Executive, Mid-Market Contractor": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "B2B: agree: I found no public buyer in the role. Municipalities and utilities appear only as the contractors' clients ('the firms whose crews ... maintain underground infrastructure for municipalities and utilities'). The book is private contractors and field-operations firms, sold to their owners and operations leaders. SewerAI sells to cities and utilities through a separate Municipal seat, ruled MIXED on 11-19.",
+  "saw": {
+   "title": "Account Executive, Mid-Market Contractor",
+   "company": "SewerAI",
+   "description": "Own a full-cycle sales motion across mid-sized contractors and field-operations companies in your region ... A territory of contractor and field-operations accounts"
+  }
+ },
+ "tribute-technology::Senior Marketing Account Manager": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "B2B: agree: the clients are funeral homes, and the ad itself calls them businesses ('the businesses that serve them'). No cemetery authority, city or other public buyer is named. Tribute's cemetery software, the reason it is on the board, is not part of this role.",
+  "saw": {
+   "title": "Senior Marketing Account Manager",
+   "company": "Tribute Technology",
+   "description": "Tribute Technology's marketing services help funeral homes show up digitally when it matters most ... it helps the businesses that serve them stay strong"
+  }
+ },
+ "tribute-technology::Solution Account Executive": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "B2B: agree: high-volume outbound sales to small funeral homes, which are private businesses. The portfolio includes management software, but the only buyers named are SMB funeral homes and existing Tribute website clients. No public buyer is named.",
+  "saw": {
+   "title": "Solution Account Executive",
+   "company": "Tribute Technology",
+   "description": "Understand the business, market, and growth goals of SMB funeral home clients"
+  }
+ },
+ "unison::Senior Account Executive": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "out of scope (federal or another country's government): agree: the seat owns federal enterprise accounts, sells to senior federal leaders and asks for 8+ years of selling software to the Federal government, with a possible clearance. The 'state agencies' in the company line do not appear anywhere in the role.",
+  "saw": {
+   "title": "Senior Account Executive",
+   "company": "Unison (Unison Global)",
+   "description": "Unison is hiring a Senior Federal SaaS Account Executive to land new logos and drive strategic expansion of federal enterprise accounts"
+  }
+ },
+ "workday::Medium Enterprise | Account Executive - Nonprofit": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "B2B: agree: the title names Workday's Nonprofit segment. Nonprofits are private organizations, not state or local government. The owner accepted this call for the Customer Base Nonprofit sibling on 10-27, and it was repeated on 11-19. Workday names SLED and Higher Ed in a seat's title when the seat covers them (e.g. 'Platform - SLED, Higher Ed, NFP'). 'Medium Enterprise' is only a size tier. Workday pages are not read.",
+  "saw": {
+   "title": "Medium Enterprise | Account Executive - Nonprofit",
+   "company": "Workday",
+   "description": "Title: \"Medium Enterprise | Account Executive - Nonprofit\""
+  }
+ },
+ "workiva::Senior Solution Sales Executive - Capital Markets - Law Firms": {
+  "in_scope": false,
+  "on": "2026-11-22",
+  "at": "2026-11-22T10:00:15-05:00",
+  "by": "agent:scope-review-2026-11-22",
+  "why": "B2B: agree: the seat sells to capital-markets law firms, working with their partners and associates and with in-house or outside counsel. Those are private businesses, and no public buyer is named. Workiva posts its government selling under separate SLED, State Government and Government titles.",
+  "saw": {
+   "title": "Senior Solution Sales Executive - Capital Markets - Law Firms",
+   "company": "Workiva",
+   "description": "expanding Workiva\u2019s adoption within the most active law firms nationwide"
+  }
  }
 }

@@ -4280,7 +4280,7 @@
    "approx_count": 180,
    "companies": 35,
    "hiring": 17,
-   "open_roles": 494
+   "open_roles": 492
   },
   {
    "tag": "ASBO School Business 2026",
@@ -4302,7 +4302,7 @@
    "approx_count": null,
    "companies": 50,
    "hiring": 19,
-   "open_roles": 372
+   "open_roles": 371
   },
   {
    "tag": "Ohio ASBO 2026",
@@ -4788,7 +4788,7 @@
    "approx_count": null,
    "companies": 72,
    "hiring": 27,
-   "open_roles": 503
+   "open_roles": 502
   },
   {
    "tag": "NACo Legislative 2026",
@@ -5274,7 +5274,7 @@
    "approx_count": 221,
    "companies": 80,
    "hiring": 27,
-   "open_roles": 745
+   "open_roles": 743
   },
   {
    "tag": "NASFAA 2026",
@@ -5717,7 +5717,7 @@
    "approx_count": 37,
    "companies": 11,
    "hiring": 7,
-   "open_roles": 264
+   "open_roles": 263
   },
   {
    "tag": "NPELRA 2026",
@@ -5783,7 +5783,7 @@
    "approx_count": null,
    "companies": 146,
    "hiring": 47,
-   "open_roles": 1310
+   "open_roles": 1309
   },
   {
    "tag": "GMIS International 2026",
@@ -5849,7 +5849,7 @@
    "approx_count": 80,
    "companies": 27,
    "hiring": 15,
-   "open_roles": 932
+   "open_roles": 931
   },
   {
    "tag": "AJA 2027",
@@ -6973,7 +6973,7 @@
    "approx_count": null,
    "companies": 163,
    "hiring": 55,
-   "open_roles": 1780
+   "open_roles": 1778
   },
   {
    "tag": "AAPA 2026",
@@ -7525,7 +7525,7 @@
    "approx_count": null,
    "companies": 15,
    "hiring": 4,
-   "open_roles": 189
+   "open_roles": 188
   },
   {
    "tag": "NSA 2026",
@@ -8256,7 +8256,7 @@
    "approx_count": 80,
    "companies": 58,
    "hiring": 23,
-   "open_roles": 217
+   "open_roles": 215
   },
   {
    "tag": "ISTELive 2026",
@@ -8435,7 +8435,7 @@
    "approx_count": null,
    "companies": 136,
    "hiring": 29,
-   "open_roles": 1045
+   "open_roles": 1044
   },
   {
    "tag": "NAST 2026",
@@ -8557,7 +8557,7 @@
    "approx_count": 950,
    "companies": 45,
    "hiring": 8,
-   "open_roles": 313
+   "open_roles": 312
   },
   {
    "tag": "AWWA ACE 2026",
@@ -8667,7 +8667,7 @@
    "approx_count": 450,
    "companies": 75,
    "hiring": 20,
-   "open_roles": 523
+   "open_roles": 522
   },
   {
    "tag": "NASWA 2025",
@@ -8721,15 +8721,15 @@
  "manual_postings": 225,
  "manual_already_fetched": 0,
  "totals": {
-  "postings": 11902,
-  "quota_carrying_postings": 1214,
-  "openings": 10281,
-  "quota_carrying": 1032,
-  "us": 4358,
-  "non_us": 3627,
+  "postings": 11889,
+  "quota_carrying_postings": 1201,
+  "openings": 10271,
+  "quota_carrying": 1022,
+  "us": 4348,
+  "non_us": 3625,
   "families": {
    "engineering": 2808,
-   "gtm": 3016,
+   "gtm": 3006,
    "ops": 415,
    "ga": 874,
    "product": 474,
@@ -8741,27 +8741,27 @@
    "policy": 15
   },
   "sectors": {
-   "Public Safety": 2124,
-   "Public Works": 1299,
+   "Public Safety": 2122,
+   "Public Works": 1298,
    "Transit & Parking": 633,
-   "General Gov": 2702,
+   "General Gov": 2697,
    "Parks & Rec": 229,
-   "K-12 Schools": 391,
+   "K-12 Schools": 390,
    "Utilities & Energy": 555,
    "Health & Human Services": 541,
    "Courts & Justice": 145,
    "Airports & Aviation": 795,
-   "Higher Education": 816,
+   "Higher Education": 815,
    "Housing & Community Dev": 51
   },
-  "pay_stated": 2461,
-  "pay_stated_postings": 2853,
+  "pay_stated": 2455,
+  "pay_stated_postings": 2847,
   "pay_source": {
-   "ats": 934,
-   "text": 1919
+   "ats": 931,
+   "text": 1916
   },
-  "jd_read_postings": 7046,
-  "jd_unread_postings": 4856
+  "jd_read_postings": 7035,
+  "jd_unread_postings": 4854
  },
  "claim_at": null,
  "hq_post_at": "https://hq.sledjobs.com/recruit",
@@ -14170,20 +14170,20 @@
     "WEFTEC 2026"
    ],
    "conference": "AWWA ACE 2026",
-   "open_roles": 10,
-   "open_postings": 10,
-   "quota_roles": 2,
-   "quota_postings": 2,
+   "open_roles": 9,
+   "open_postings": 9,
+   "quota_roles": 1,
+   "quota_postings": 1,
    "families": {
     "engineering": 6,
-    "gtm": 3,
+    "gtm": 2,
     "ops": 1
    },
    "phase": "building: hiring mostly engineers and product",
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 1,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -35395,12 +35395,12 @@
     "IACP 2026"
    ],
    "conference": "IACP 2026",
-   "open_roles": 36,
-   "open_postings": 38,
-   "quota_roles": 4,
-   "quota_postings": 4,
+   "open_roles": 35,
+   "open_postings": 37,
+   "quota_roles": 3,
+   "quota_postings": 3,
    "families": {
-    "gtm": 7,
+    "gtm": 6,
     "data": 2,
     "engineering": 15,
     "other": 4,
@@ -35413,7 +35413,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 1,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -36194,20 +36194,20 @@
     "North Carolina Sheriffs' Association 2026"
    ],
    "conference": "IACP 2026",
-   "open_roles": 4,
-   "open_postings": 4,
-   "quota_roles": 1,
-   "quota_postings": 1,
+   "open_roles": 3,
+   "open_postings": 3,
+   "quota_roles": 0,
+   "quota_postings": 0,
    "families": {
     "engineering": 1,
-    "gtm": 2,
-    "cs": 1
+    "cs": 1,
+    "gtm": 1
    },
-   "phase": "selling: a go-to-market push",
+   "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 1,
    "federal_dropped": 3,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -36220,8 +36220,7 @@
    "posts_at": null,
    "source": "IACP 2026; North Carolina Sheriffs' Association 2026",
    "researched": true,
-   "claimed": null,
-   "seller_debut": true
+   "claimed": null
   },
   {
    "id": "veritone",
@@ -66379,12 +66378,12 @@
     "ASBO School Business 2026"
    ],
    "conference": "APTA 2026",
-   "open_roles": 129,
-   "open_postings": 140,
-   "quota_roles": 27,
-   "quota_postings": 27,
+   "open_roles": 128,
+   "open_postings": 139,
+   "quota_roles": 26,
+   "quota_postings": 26,
    "families": {
-    "gtm": 63,
+    "gtm": 62,
     "other": 8,
     "field": 9,
     "cs": 9,
@@ -66398,7 +66397,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 26,
+   "offtopic_dropped": 27,
    "federal_dropped": 2,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -99434,20 +99433,19 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
    "conference": null,
-   "open_roles": 4,
-   "open_postings": 4,
-   "quota_roles": 1,
-   "quota_postings": 1,
+   "open_roles": 3,
+   "open_postings": 3,
+   "quota_roles": 0,
+   "quota_postings": 0,
    "families": {
     "ops": 1,
-    "field": 2,
-    "gtm": 1
+    "field": 2
    },
-   "phase": "selling: a go-to-market push",
+   "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 1,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -118598,13 +118596,13 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
    "conference": null,
-   "open_roles": 11,
-   "open_postings": 12,
-   "quota_roles": 2,
-   "quota_postings": 3,
+   "open_roles": 9,
+   "open_postings": 9,
+   "quota_roles": 0,
+   "quota_postings": 0,
    "families": {
     "ga": 1,
-    "gtm": 5,
+    "gtm": 3,
     "cs": 1,
     "data": 2,
     "product": 1,
@@ -118614,7 +118612,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 3,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -118627,8 +118625,7 @@
    "posts_at": null,
    "source": "competitor sweep",
    "researched": null,
-   "claimed": null,
-   "seller_debut": true
+   "claimed": null
   },
   {
    "id": "all-funeral-services",
@@ -163449,12 +163446,12 @@
     "CoSN 2026"
    ],
    "conference": "CoSN 2026",
-   "open_roles": 40,
-   "open_postings": 46,
-   "quota_roles": 3,
-   "quota_postings": 5,
+   "open_roles": 39,
+   "open_postings": 43,
+   "quota_roles": 2,
+   "quota_postings": 2,
    "families": {
-    "gtm": 17,
+    "gtm": 16,
     "other": 6,
     "engineering": 15,
     "ga": 1,
@@ -163464,7 +163461,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 1,
+   "offtopic_dropped": 4,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -168004,12 +168001,12 @@
     "GFOA 2026"
    ],
    "conference": "NACUBO 2026",
-   "open_roles": 80,
-   "open_postings": 83,
-   "quota_roles": 24,
-   "quota_postings": 25,
+   "open_roles": 79,
+   "open_postings": 82,
+   "quota_roles": 23,
+   "quota_postings": 24,
    "families": {
-    "gtm": 49,
+    "gtm": 48,
     "ga": 4,
     "field": 7,
     "cs": 4,
@@ -168023,7 +168020,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 4,
+   "offtopic_dropped": 5,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -170021,12 +170018,12 @@
     "CoSN 2026"
    ],
    "conference": "CoSN 2026",
-   "open_roles": 26,
-   "open_postings": 27,
-   "quota_roles": 8,
-   "quota_postings": 9,
+   "open_roles": 25,
+   "open_postings": 26,
+   "quota_roles": 7,
+   "quota_postings": 8,
    "families": {
-    "gtm": 13,
+    "gtm": 12,
     "engineering": 10,
     "ga": 2,
     "ops": 1
@@ -170035,7 +170032,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 2,
+   "offtopic_dropped": 3,
    "federal_dropped": 1,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -229289,47 +229286,6 @@
    "category": "Water",
    "also": null,
    "first_seen": "2026-11-16",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "sewerai::Account Executive, Mid-Market Contractor::452eaaec",
-   "opening_id": "sewerai::Account Executive, Mid-Market Contractor",
-   "company": "SewerAI",
-   "company_id": "sewerai",
-   "title": "Account Executive, Mid-Market Contractor",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": {
-    "min": 100000,
-    "max": 200000,
-    "currency": "USD",
-    "period": "year",
-    "source": "ats",
-    "raw": "$100K \u2013 $200K \u2022 Offers Commission \u2022 $100,000 base + $100,000 variable"
-   },
-   "comp_floor": 100000,
-   "comp_period": "year",
-   "posted": "2026-11-21",
-   "url": "https://jobs.ashbyhq.com/sewer-ai/85f7e97d-726e-4e54-b982-414012fd170f",
-   "sector": "Public Works",
-   "category": "Water",
-   "also": null,
-   "first_seen": "2026-11-21",
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
@@ -303745,49 +303701,6 @@
    "opening_locations": 1
   },
   {
-   "id": "cognyte::Sales Account Manager::a9436cc3",
-   "opening_id": "cognyte::Sales Account Manager",
-   "company": "Cognyte",
-   "company_id": "cognyte",
-   "title": "Sales Account Manager",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Remote",
-    "state": null
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "USA - Remote",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": {
-    "min": 140000,
-    "max": 160000,
-    "currency": "USD",
-    "period": "year",
-    "source": "text",
-    "raw": "between $140,000 and $160,000"
-   },
-   "comp_floor": 140000,
-   "comp_period": "year",
-   "url": "https://www.comeet.com/jobs/cognyte/F2.009/sales-account-manager/23.17B",
-   "sector": "Public Safety",
-   "category": "Police",
-   "also": null,
-   "first_seen": "2026-11-22",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "cognyte::Sales Engineer - Experienced::812e4ae7",
    "opening_id": "cognyte::Sales Engineer - Experienced",
    "company": "Cognyte",
@@ -328198,50 +328111,6 @@
    "comp_period": "year",
    "posted": "2026-06-27",
    "url": "https://clearview.pinpointhq.com/en/postings/2b17bd79-1ae9-461d-bd7c-9af7f72d4883",
-   "sector": "Public Safety",
-   "category": "Police",
-   "also": null,
-   "first_seen": "2026-11-22",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "clearview-ai::U.S. Department of War Account Executive (USN/USMC)::1a8418d2",
-   "opening_id": "clearview-ai::U.S. Department of War Account Executive (USN/USMC)",
-   "company": "Clearview AI",
-   "company_id": "clearview-ai",
-   "title": "U.S. Department of War Account Executive (USN/USMC)",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Washington",
-    "state": "DC"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "hybrid",
-   "location": "Hybrid - Washington, DC",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": {
-    "min": 300000,
-    "max": 340000,
-    "currency": "USD",
-    "period": "year",
-    "source": "ats",
-    "raw": "300000-340000 USD per year"
-   },
-   "comp_floor": 300000,
-   "comp_period": "year",
-   "posted": "2026-07-13",
-   "url": "https://clearview.pinpointhq.com/en/postings/bca34759-1031-4a0b-8223-aa5f574d5d72",
    "sector": "Public Safety",
    "category": "Police",
    "also": null,
@@ -368012,40 +367881,6 @@
    "category": "Finance & ERP",
    "also": null,
    "first_seen": "2026-11-17",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "workday::Medium Enterprise | Account Executive - Nonprofit::37bee05e",
-   "opening_id": "workday::Medium Enterprise | Account Executive - Nonprofit",
-   "company": "Workday",
-   "company_id": "workday",
-   "title": "Medium Enterprise | Account Executive - Nonprofit",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Usa",
-    "state": "NY"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "USA, NY, New York City",
-   "is_us": true,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-NY-New-York-City/Medium-Enterprise---Account-Executive---Nonprofit_JR-0111577",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "also": null,
-   "first_seen": "2026-11-21",
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
@@ -414955,50 +414790,6 @@
    "opening_locations": 1
   },
   {
-   "id": "unison::Senior Account Executive::6125f995",
-   "opening_id": "unison::Senior Account Executive",
-   "company": "Unison (Unison Global)",
-   "company_id": "unison",
-   "title": "Senior Account Executive",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Tysons",
-    "state": "VA"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Tysons, VA",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": {
-    "min": 130000,
-    "max": 165000,
-    "currency": "USD",
-    "period": "year",
-    "source": "ats",
-    "raw": "$130K \u2013 $165K \u2022 Offers Commission"
-   },
-   "comp_floor": 130000,
-   "comp_period": "year",
-   "posted": "2026-11-20",
-   "url": "https://jobs.ashbyhq.com/unison-software/0dd0aa2b-65ed-4f28-9670-5f8f6b9b820a",
-   "sector": "General Gov",
-   "category": "Procurement & Payments",
-   "also": null,
-   "first_seen": "2026-11-21",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "ivalua::Account Executive::87007205",
    "opening_id": "ivalua::Account Executive",
    "company": "Ivalua",
@@ -451250,47 +451041,6 @@
    "opening_locations": 1
   },
   {
-   "id": "tribute-technology::Senior Marketing Account Manager::7c0cb659",
-   "opening_id": "tribute-technology::Senior Marketing Account Manager",
-   "company": "Tribute Technology",
-   "company_id": "tribute-technology",
-   "title": "Senior Marketing Account Manager",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote USA",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": {
-    "min": 75000,
-    "max": 90000,
-    "currency": "USD",
-    "period": "year",
-    "source": "text",
-    "raw": "$75,000 - $90,000"
-   },
-   "comp_floor": 75000,
-   "comp_period": "year",
-   "posted": "2026-10-21",
-   "url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx?jid=612582&cid=8268&locvalue=1020&bid=1",
-   "sector": "General Gov",
-   "category": "Cemetery Management",
-   "also": null,
-   "first_seen": "2026-11-22",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "tribute-technology::SEO & PPC Marketing Manager::78fb4931",
    "opening_id": "tribute-technology::SEO & PPC Marketing Manager",
    "company": "Tribute Technology",
@@ -451365,70 +451115,6 @@
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
-  },
-  {
-   "id": "tribute-technology::Solution Account Executive::2bff31a8",
-   "opening_id": "tribute-technology::Solution Account Executive",
-   "company": "Tribute Technology",
-   "company_id": "tribute-technology",
-   "title": "Solution Account Executive",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote Canada",
-   "is_us": false,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-08-19",
-   "url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx?jid=611561&cid=8268&locvalue=1033&bid=1",
-   "sector": "General Gov",
-   "category": "Cemetery Management",
-   "also": null,
-   "first_seen": "2026-11-22",
-   "source": "ats",
-   "opening_postings": 2,
-   "opening_locations": 2
-  },
-  {
-   "id": "tribute-technology::Solution Account Executive::50a48bc5",
-   "opening_id": "tribute-technology::Solution Account Executive",
-   "company": "Tribute Technology",
-   "company_id": "tribute-technology",
-   "title": "Solution Account Executive",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote USA",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-11-18",
-   "url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx?jid=612963&cid=8268&locvalue=1020&bid=1",
-   "sector": "General Gov",
-   "category": "Cemetery Management",
-   "also": null,
-   "first_seen": "2026-11-22",
-   "source": "ats",
-   "opening_postings": 2,
-   "opening_locations": 2
   },
   {
    "id": "tribute-technology::Website Implementation Specialist::734240de",
@@ -513444,111 +513130,6 @@
    "opening_locations": 1
   },
   {
-   "id": "huntress::Channel Account Manager I, Service Providers::eb9eae21",
-   "opening_id": "huntress::Channel Account Manager I, Service Providers",
-   "company": "Huntress",
-   "company_id": "huntress",
-   "title": "Channel Account Manager I, Service Providers",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "United States of America",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-11-20",
-   "url": "https://job-boards.greenhouse.io/huntress/jobs/8210679003",
-   "sector": "General Gov",
-   "category": "IT & AI Platforms",
-   "also": null,
-   "first_seen": "2026-11-21",
-   "source": "ats",
-   "opening_postings": 3,
-   "opening_locations": 3
-  },
-  {
-   "id": "huntress::Channel Account Manager I, Service Providers::f777f315",
-   "opening_id": "huntress::Channel Account Manager I, Service Providers",
-   "company": "Huntress",
-   "company_id": "huntress",
-   "title": "Channel Account Manager I, Service Providers",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "United Kingdom",
-   "is_us": false,
-   "jd_seen": true,
-   "comp": {
-    "min": 49200,
-    "max": 49200,
-    "currency": "GBP",
-    "period": "year",
-    "source": "text",
-    "raw": "\u00a349,200"
-   },
-   "comp_floor": 49200,
-   "comp_period": "year",
-   "posted": "2026-11-03",
-   "url": "https://job-boards.greenhouse.io/huntress/jobs/8108714003",
-   "sector": "General Gov",
-   "category": "IT & AI Platforms",
-   "also": null,
-   "first_seen": "2026-11-04",
-   "source": "ats",
-   "opening_postings": 3,
-   "opening_locations": 3
-  },
-  {
-   "id": "huntress::Channel Account Manager I, Service Providers::3d4f7098",
-   "opening_id": "huntress::Channel Account Manager I, Service Providers",
-   "company": "Huntress",
-   "company_id": "huntress",
-   "title": "Channel Account Manager I, Service Providers",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Ireland",
-   "is_us": false,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-11-03",
-   "url": "https://job-boards.greenhouse.io/huntress/jobs/8108716003",
-   "sector": "General Gov",
-   "category": "IT & AI Platforms",
-   "also": null,
-   "first_seen": "2026-11-04",
-   "source": "ats",
-   "opening_postings": 3,
-   "opening_locations": 3
-  },
-  {
    "id": "huntress::Community Field Strategist::5b274b81",
    "opening_id": "huntress::Community Field Strategist",
    "company": "Huntress",
@@ -537644,37 +537225,6 @@
    "opening_locations": 1
   },
   {
-   "id": "workiva::Senior Solution Sales Executive - Capital Markets - Law Firms::5303b359",
-   "opening_id": "workiva::Senior Solution Sales Executive - Capital Markets - Law Firms",
-   "company": "Workiva",
-   "company_id": "workiva",
-   "title": "Senior Solution Sales Executive - Capital Markets - Law Firms",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "USA - Remote",
-   "is_us": true,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers/job/USA---Remote/Senior-Solution-Sales-Executive---Capital-Markets---Law-Firms_R12854",
-   "sector": "Higher Education",
-   "category": "Business & Finance",
-   "also": null,
-   "first_seen": "2026-11-21",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "workiva::Senior Solution Sales Executive - Governance, Risk, and Compliance (Central Canada)::224f7b82",
    "opening_id": "workiva::Senior Solution Sales Executive - Governance, Risk, and Compliance (Central Canada)",
    "company": "Workiva",
@@ -545248,38 +544798,6 @@
    "source": "ats",
    "opening_postings": 2,
    "opening_locations": 2
-  },
-  {
-   "id": "jamf::Manager, Enterprise Sales | HCLS::85083f84",
-   "opening_id": "jamf::Manager, Enterprise Sales | HCLS",
-   "company": "Jamf",
-   "company_id": "jamf",
-   "title": "Manager, Enterprise Sales | HCLS",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Austin, TX; Eau Claire, WI; Minneapolis, MN",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-11-21",
-   "url": "https://www.jamf.com/about/careers/jobs/?gh_jid=6268061004&gh_jid=6268061004",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-11-22",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
   },
   {
    "id": "jamf::Payroll Tax Analyst::9a4bf4b2",
@@ -609391,5 +608909,9 @@
   "absent": 663,
   "blocked": 197,
   "unchecked": 64
+ },
+ "redrawn": {
+  "at": "2026-11-22T15:00:21Z",
+  "inputs": "c977d555a4ca9d4bd844f3f257cb0ab1de2aeead32e6dc8329db68173685d185"
  }
 }
