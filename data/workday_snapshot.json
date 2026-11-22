@@ -2,7 +2,7 @@
  "_comment": "Written by scripts/workday_snapshot.py on the owner's machine; read by ats.fetch when GOVTECH_DOCK_WORKDAY_SNAPSHOT=1 (refresh.yml). Never edit by hand.",
  "boards": {
   "[\"adtran\", \"wd3\", \"ADTRAN\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -147,7 +147,7 @@
    ]
   },
   "[\"alteryx\", \"wd108\", \"AlteryxCareers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -376,7 +376,7 @@
    ]
   },
   "[\"americanfidelity\", \"wd5\", \"External\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -675,7 +675,7 @@
    ]
   },
   "[\"aveva\", \"wd3\", \"AVEVA_careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -1635,11 +1635,18 @@
      "location": "Houston, Texas, United States of America",
      "title": "Software Development Engineer",
      "url": "https://aveva.wd3.myworkdayjobs.com/en-US/AVEVA_careers/job/Houston-Texas-United-States-of-America/Software-Development-Engineer_R015198-1"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "2 Locations",
+     "title": "Senior Software Engineer, Windows-on-Linux Compatibility (Technical Lead)",
+     "url": "https://aveva.wd3.myworkdayjobs.com/en-US/AVEVA_careers/job/Beijing-China/Senior-Software-Engineer--Windows-on-Linux-Compatibility--Technical-Lead-_R015885-1"
     }
    ]
   },
   "[\"badgermeter\", \"wd5\", \"us_careersite\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -1868,7 +1875,7 @@
    ]
   },
   "[\"bentleysystems\", \"wd5\", \"bentley\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -2055,7 +2062,7 @@
    ]
   },
   "[\"bostondynamics\", \"wd1\", \"Boston_Dynamics\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -2340,7 +2347,7 @@
    ]
   },
   "[\"cloudera\", \"wd5\", \"External_Career\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -2569,7 +2576,7 @@
    ]
   },
   "[\"crowdstrike\", \"wd5\", \"crowdstrikecareers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -3659,7 +3666,7 @@
    ]
   },
   "[\"cubic\", \"wd1\", \"cubic_USA_careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -3853,7 +3860,7 @@
    ]
   },
   "[\"dataminr\", \"wd12\", \"Dataminr\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -3942,7 +3949,7 @@
    ]
   },
   "[\"dtn\", \"wd1\", \"DTN_Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -4024,7 +4031,7 @@
    ]
   },
   "[\"flir\", \"wd1\", \"flircareers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -5170,7 +5177,7 @@
    ]
   },
   "[\"giro\", \"wd10\", \"GIRO\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -5329,7 +5336,7 @@
    ]
   },
   "[\"harriscomputer\", \"wd3\", \"1\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -6034,7 +6041,7 @@
    ]
   },
   "[\"harriscomputer\", \"wd3\", \"Smartworks\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -6046,7 +6053,7 @@
    ]
   },
   "[\"itron\", \"wd5\", \"Itron\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -6268,7 +6275,7 @@
    ]
   },
   "[\"kyriba\", \"wd5\", \"Kyriba-Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -6392,7 +6399,7 @@
    ]
   },
   "[\"merative\", \"wd12\", \"External_Career_Site\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -6558,7 +6565,7 @@
    ]
   },
   "[\"mitel\", \"wd3\", \"mitelcareers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -6899,7 +6906,7 @@
    ]
   },
   "[\"modaxo\", \"wd3\", \"Modaxo\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -6946,11 +6953,11 @@
    ]
   },
   "[\"modaxo\", \"wd3\", \"TransTrack\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": []
   },
   "[\"motorolasolutions\", \"wd5\", \"Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -9580,7 +9587,7 @@
    ]
   },
   "[\"mrisoftware\", \"wd501\", \"External_CareerSite\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -9774,7 +9781,7 @@
    ]
   },
   "[\"muellerwaterproducts\", \"wd5\", \"Mueller\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -9947,7 +9954,7 @@
    ]
   },
   "[\"nelnet\", \"wd1\", \"MyNelnet\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10071,7 +10078,7 @@
    ]
   },
   "[\"oclc\", \"wd1\", \"OCLC_Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10146,7 +10153,7 @@
    ]
   },
   "[\"pluralsight\", \"wd1\", \"Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10193,7 +10200,7 @@
    ]
   },
   "[\"sailpoint\", \"wd1\", \"SailPoint\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10271,6 +10278,13 @@
      "location": "2 Locations",
      "title": "Account Executive SLED- MN, WI, IA, SD and ND",
      "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-Minnesota-USA/Account-Executive-SLED-MNWI--IA-SD-and-ND_R014377"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "3 Locations",
+     "title": "Account Exec Enterprise Accounts",
+     "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint/job/Remote-California-USA/Account-Exec-Enterprise-Accounts_R014563"
     },
     {
      "comp": null,
@@ -10758,7 +10772,7 @@
    ]
   },
   "[\"sharecare\", \"wd1\", \"Sharecare_Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10777,7 +10791,7 @@
    ]
   },
   "[\"smiinc\", \"wd108\", \"smicareers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10789,7 +10803,7 @@
    ]
   },
   "[\"syniverse\", \"wd1\", \"SyniverseCareers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10808,7 +10822,7 @@
    ]
   },
   "[\"thales\", \"wd3\", \"Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -10928,13 +10942,6 @@
      "location": "North Dakota Remote",
      "title": "UAS Account & Portfolio Director",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/North-Dakota-Remote/UAS-Account---Portfolio-Director_R0341240-1"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "Bristol",
-     "title": "Key Account Manager - Land",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Bristol/Key-Account-Manager---Land_R0345830"
     },
     {
      "comp": null,
@@ -11702,16 +11709,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "2 Locations",
-     "title": "Technical Presales",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Austin/Technical-Presales_R0335094-1"
+     "location": "Tubize",
+     "title": "Industrial Manager",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Tubize/Industrial-Manager_R0327665-1"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "Tubize",
-     "title": "Industrial Manager",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Tubize/Industrial-Manager_R0327665-1"
+     "location": "2 Locations",
+     "title": "Technical Presales",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Austin/Technical-Presales_R0335094-1"
     },
     {
      "comp": null,
@@ -13270,16 +13277,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "V\u00e9lizy-Villacoublay",
-     "title": "STAGE - Charg\u00e9 de communication et de gestion de contenu interne \u2013 H/F",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/STAGE---Charg-de-communication-et-de-gestion-de-contenu-interne---H-F_R0347084-1"
+     "location": "Stuttgart",
+     "title": "Dualer Student (m/w/d) Wirtschaftsinformatik-IMBIT",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Stuttgart/Dualer-Student--m-w-d--Wirtschaftsinformatik---Sales---Consulting_R0334082"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "Stuttgart",
-     "title": "Dualer Student (m/w/d) Wirtschaftsinformatik-IMBIT",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Stuttgart/Dualer-Student--m-w-d--Wirtschaftsinformatik---Sales---Consulting_R0334082"
+     "location": "V\u00e9lizy-Villacoublay",
+     "title": "STAGE - Charg\u00e9 de communication et de gestion de contenu interne \u2013 H/F",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/STAGE---Charg-de-communication-et-de-gestion-de-contenu-interne---H-F_R0347084-1"
     },
     {
      "comp": null,
@@ -13550,7 +13557,7 @@
    ]
   },
   "[\"tricentis\", \"wd1\", \"Tricentis_Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -13751,7 +13758,7 @@
    ]
   },
   "[\"veritone\", \"wd1\", \"Veritone_Career_Site\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -13770,7 +13777,7 @@
    ]
   },
   "[\"volarisgroup\", \"wd3\", \"Intellicene\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -13789,7 +13796,7 @@
    ]
   },
   "[\"wastequip\", \"wd108\", \"Wastequip_Careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -13822,7 +13829,7 @@
    ]
   },
   "[\"wellsky\", \"wd1\", \"WellSkyCareers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -13876,7 +13883,7 @@
    ]
   },
   "[\"workday\", \"wd5\", \"Workday\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -14896,16 +14903,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "3 Locations",
-     "title": "Principal Commercial Product Manager",
-     "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Principal-Commercial-Product-Manager_JR-0111034-1"
+     "location": "2 Locations",
+     "title": "Compensation Business Partner P&T",
+     "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Compensation-Business-Partner-P-T_JR-0111186"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "2 Locations",
-     "title": "Compensation Business Partner P&T",
-     "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Compensation-Business-Partner-P-T_JR-0111186"
+     "location": "3 Locations",
+     "title": "Principal Commercial Product Manager",
+     "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-GA-Atlanta/Principal-Commercial-Product-Manager_JR-0111034-1"
     },
     {
      "comp": null,
@@ -15064,7 +15071,7 @@
    ]
   },
   "[\"workiva\", \"wd503\", \"careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T12:12:17+00:00",
    "rows": [
     {
      "comp": null,
@@ -15678,7 +15685,7 @@
    ]
   },
   "[\"xylem\", \"wd5\", \"xylem-careers\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T04:40:08+00:00",
    "rows": [
     {
      "comp": null,
@@ -17363,7 +17370,7 @@
    ]
   },
   "[\"zoll\", \"wd5\", \"ZOLLMedicalCorp\"]": {
-   "read_at": "2026-11-21T12:10:05+00:00",
+   "read_at": "2026-11-22T04:40:08+00:00",
    "rows": [
     {
      "comp": null,
@@ -18313,5 +18320,5 @@
    ]
   }
  },
- "generated": "2026-11-21T12:10:05+00:00"
+ "generated": "2026-11-22T12:12:17+00:00"
 }
