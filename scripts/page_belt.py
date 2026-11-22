@@ -67,6 +67,7 @@ ATS_NAME = {"ashby": "Ashby", "greenhouse": "Greenhouse", "lever": "Lever",
             "zohorecruit": "Zoho Recruit",
             "comeet": "Comeet",
             "jobvite": "Jobvite",
+            "successfactors": "SAP SuccessFactors",
             "html": "Careers page", "unknown": "No board on file"}
 
 # the owner's three answers to "who buys it". sells_to_gov is what tags.py

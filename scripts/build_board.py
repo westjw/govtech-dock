@@ -109,6 +109,7 @@ _PROMOTE_ATS_HOSTS = (
     "pinpointhq.com",
     "zohorecruit.com",
     "comeet.co",
+    "successfactors.eu", "sapsf.com", "sapsf.eu", "sapsf.cn",
 )
 
 _SLUG_GENERIC = {
@@ -411,6 +412,13 @@ def board_url(c: dict) -> str | None:
     """Where a person can go look themselves. Matters most where extraction fails."""
     a = c.get("ats") or {}
     kind, ref = a.get("type"), a.get("ref")
+    if kind == "successfactors":
+        # the ref is the career site's origin; its list of every posting is
+        # /search/ (a ref that is not an origin is never linked: their website)
+        try:
+            return ats.successfactors_origin(ref) + "/search/"
+        except ats.AtsError:
+            return c.get("website")
     if isinstance(ref, str) and ref.startswith("http"):
         return ref
     pat = {"greenhouse": "https://job-boards.greenhouse.io/{r}",
