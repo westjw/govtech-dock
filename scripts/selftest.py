@@ -33971,8 +33971,14 @@ def check_a_found_board_is_wired_only_on_two_checks() -> int:
     # and printed, and hold nothing back
     acme = one("acme-water", "greenhouse", "acmewater", element="iframe", times=3)
     acme["off_site"] = [cand("greenhouse", "someparent", "https://www.parent.test/careers")]
-    acme["elsewhere"] = [{"vendor": "jobvite", "saw": "jobs.jobvite.com/parent",
-                          "page": "https://www.parent.test/careers"}]
+    # (a platform nothing reads, a read platform's form that names no board, and
+    # a tenant form of a platform we read - each said for what it is: the third
+    # review's Jobvite reviewer, 2026-11-21, found Jobvite's own form called a
+    # platform the crawl cannot read, and the fixture saying so of Jobvite)
+    acme["elsewhere"] = [{"vendor": v, "saw": s, "page": "https://www.parent.test/careers"}
+                         for v, s in (("dayforce", "jobs.dayforcehcm.com/parent"),
+                                      ("jobvite-other", "jobs.jobvite.com/parent/job/x"),
+                                      ("comeet-tenant", "comeet.com/jobs/parent/AB.C12"))]
     static = _wb_results({
         "acme-water": acme,
         # a careers address on their own site that lands straight on the board
@@ -34107,9 +34113,17 @@ def check_a_found_board_is_wired_only_on_two_checks() -> int:
             errors += fail(f"a WIRE row does not keep what its two checks were judged "
                            f"against - the name and the website on file: {w.get('judged')}")
         if w.get("also_seen") != {"off_site": ["greenhouse/someparent"],
-                                  "elsewhere_off_site": ["jobvite"]} \
+                                  "elsewhere_off_site": ["comeet-tenant", "dayforce",
+                                                         "jobvite-other"]} \
                 or "NOTE a page off their site names greenhouse/someparent" not in text \
-                or "jobvite, which the crawl cannot read" not in text:
+                or "NOTE a page off their site names dayforce, which the crawl cannot read" \
+                not in text \
+                or "NOTE a page off their site loads jobvite in a form that names no board " \
+                   "(jobvite-other)" not in text \
+                or "NOTE a page off their site names a comeet tenant (comeet-tenant) whose " \
+                   "board this door cannot name" not in text \
+                or re.search(r"(jobvite-other|comeet-tenant)[^;]*which the crawl cannot read",
+                             text):
             errors += fail("what else the finder saw on the way (a board and a platform "
                            "named on a page off their site) is not kept on the row and "
                            "printed for whoever reads the plan")
@@ -34771,13 +34785,13 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
         "second-platform-co": entry("second-platform-co", [
             cand("greenhouse", "secondplatformco", careers("second-platform-co"),
                  element="iframe")],
-            elsewhere=[{"vendor": "jobvite", "saw": "jobs.jobvite.com/secondplatformco",
+            elsewhere=[{"vendor": "dayforce", "saw": "jobs.dayforcehcm.com/secondplatformco",
                         "page": careers("second-platform-co")}]),
         # a platform recorded with no page: nothing shows it was NOT their site
         "nopage-platform-co": entry("nopage-platform-co", [
             cand("greenhouse", "nopageplatformco", careers("nopage-platform-co"),
                  element="iframe")],
-            elsewhere=[{"vendor": "teamtailor", "saw": "nopage.teamtailor.com"}]),
+            elsewhere=[{"vendor": "ukg", "saw": "recruiting.ultipro.com/NOPAGE"}]),
         "case-co": entry("case-co", [
             cand("smartrecruiters", "caseco", careers("case-co"), times=3),
             cand("smartrecruiters", "CaseCo", careers("case-co"), element="iframe")]),
@@ -34882,9 +34896,9 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
             ("mixed-co", "HOLD", None, "mixedco.wd5.myworkdayjobs.com/Careers"),
             ("onlybad-co", "SKIP", "unusable", "a Workday board is the list"),
             ("misordered-co", "SKIP", "unusable", "the pod reads 'wd' and digits"),
-            ("second-platform-co", "HOLD", None, "jobvite, a job platform the crawl cannot read"),
+            ("second-platform-co", "HOLD", None, "dayforce, a job platform the crawl cannot read"),
             ("nopage-platform-co", "HOLD", None,
-             "teamtailor, a job platform the crawl cannot read"),
+             "ukg, a job platform the crawl cannot read"),
             ("case-co", "HOLD", None, "spells this board more than one way"),
             ("case-co", "HOLD", None, "only smartrecruiters/CaseCo was read"),
             ("slash-co", "HOLD", None, "is already on file as the board of Slash Holder"),
@@ -35112,7 +35126,7 @@ def check_an_advertisement_is_not_a_second_board() -> int:
             ("other:parentgroup.test", "greenhouse", "href", False),
             ("other:adp.com", "adp", "href", False), ("other:oracle.com", "oracle", "href", False),
             ("other:workday.com", "workday", "href", False),
-            ("jobvite", "greenhouse", "href", False), ("comeet", "adp", "href", False),
+            ("dayforce", "greenhouse", "href", False), ("comeet", "adp", "href", False),
             ("greenhouse-eu", "greenhouse", "href", False), ("lever-eu", "lever", "href", False),
             ("adp-other", "adp", "href", False), ("workday-no-site", "workday", "href", False),
             ("other:", "jazzhr", "href", False), ("", "jazzhr", "href", False),
@@ -35122,6 +35136,24 @@ def check_an_advertisement_is_not_a_second_board() -> int:
                            f"{want}: only a link to an aggregator, or a link to the own site of "
                            f"the very platform the board is on, is somewhere a role is merely "
                            f"advertised")
+    # THE FINDER'S RUN SUMMARY counts a read platform's forms - a form that names
+    # no board, a tenant form - apart from the platforms nothing reads (third
+    # review's Jobvite reviewer, 2026-11-21: all of them were "no reader for")
+    import find_site_boards as fsb_
+
+    def rec_(*vendors):
+        return {"pages": [], "candidates": [], "off_site": [], "left_site": [],
+                "says_no_openings": False, "error": None,
+                "elsewhere": [{"vendor": v} for v in vendors]}
+    summ = fsb_.summary({"a": rec_("dayforce", "jobvite-other"),
+                         "b": rec_("dayforce", "comeet-tenant", "other:parent.test")})
+    unread_ = next((ln for ln in summ if ln.startswith("  no reader for: ")), "")
+    forms_ = next((ln for ln in summ if ln.startswith("  forms of platforms we read: ")), "")
+    if "dayforce 2" not in unread_ or "other 1" not in unread_ \
+            or "jobvite-other" in unread_ or "comeet-tenant" in unread_ \
+            or "jobvite-other 1" not in forms_ or "comeet-tenant 1" not in forms_:
+        errors += fail(f"find_site_boards.summary counts a read platform's own forms among the "
+                       f"platforms nothing reads: {summ[-2:]}")
     tenants = {"jibeapply.com", "applytojob.com", "bamboohr.com", "breezy.hr",
                "applicantpro.com", "isolvedhire.com", "teamtailor.com", "pinpointhq.com",
                "recruitee.com", "icims.com", "workable.com"}
@@ -35179,7 +35211,7 @@ def check_an_advertisement_is_not_a_second_board() -> int:
     companies = [co("indeed-co", "Indeed Co"), co("linkedin-co", "Linkedin Co"),
                  co("indeed-text-co", "Indeed Text Co"),
                  co("poweredby-co", "Poweredby Co"), co("othervendor-co", "Othervendor Co"),
-                 co("parentsite-co", "Parentsite Co"), co("jobvite-co", "Jobvite Co"),
+                 co("parentsite-co", "Parentsite Co"), co("dayforce-co", "Dayforce Co"),
                  co("li-embed-co", "Li Embed Co"), co("li-script-co", "Li Script Co"),
                  co("yc-co", "Yc Co"), co("wellfound-co", "Wellfound Co"),
                  co("wk-frame-co", "Wk Frame Co"), co("gh-app-co", "Gh App Co"),
@@ -35191,7 +35223,7 @@ def check_an_advertisement_is_not_a_second_board() -> int:
               "jazzhr/poweredbyco": (3, ["Poweredby Co"]),
               "greenhouse/othervendorco": (3, ["Othervendor Co"]),
               "greenhouse/parentsiteco": (3, ["Parentsite Co"]),
-              "greenhouse/jobviteco": (3, ["Jobvite Co"]),
+              "greenhouse/dayforceco": (3, ["Dayforce Co"]),
               "greenhouse/liembedco": (3, ["Li Embed Co"]),
               "greenhouse/liscriptco": (3, ["Li Script Co"]),
               "ashby/ycco": (3, ["Yc Co"]), "lever/wellfoundco": (3, ["Wellfound Co"]),
@@ -35213,7 +35245,7 @@ def check_an_advertisement_is_not_a_second_board() -> int:
                                  "other:jazzhr.com"),
         "parentsite-co": beside("parentsite-co", "greenhouse", "parentsiteco",
                                 "other:parentgroup.test"),
-        "jobvite-co": beside("jobvite-co", "greenhouse", "jobviteco", "jobvite"),
+        "dayforce-co": beside("dayforce-co", "greenhouse", "dayforceco", "dayforce"),
         # their careers page EMBEDS its LinkedIn list, or loads it by script
         "li-embed-co": beside("li-embed-co", "greenhouse", "liembedco", "linkedin",
                               element="iframe"),
@@ -35254,7 +35286,7 @@ def check_an_advertisement_is_not_a_second_board() -> int:
         held_on = [
             ("othervendor-co", "other:jazzhr.com, a job platform the crawl cannot read"),
             ("parentsite-co", "other:parentgroup.test, a job platform the crawl cannot read"),
-            ("jobvite-co", "jobvite, a job platform the crawl cannot read"),
+            ("dayforce-co", "dayforce, a job platform the crawl cannot read"),
             ("li-embed-co", "linkedin, a job platform the crawl cannot read"),
             ("li-script-co", "linkedin, a job platform the crawl cannot read"),
             ("yc-co", "ycombinator, a job platform the crawl cannot read"),

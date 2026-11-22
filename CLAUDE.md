@@ -2630,7 +2630,16 @@ round.
   channels, not copies); a vendor host seen as a frame (a Workable posting
   framed by short code is any account's); `other:<any other site>` (a
   careers link to a host nothing knows is what a parent's careers site
-  looks like). `VENDOR_SITES` lists only vendors whose boards sit under a
+  looks like). Each is said for what it is, on their own site (a doubt) and
+  on a page off it (a note on a WIRE line), with the forms read from
+  `find_site_boards` (`_NO_BOARD_IN_IT`, `TENANT_FORMS`), never listed here:
+  a form of a platform we read that names no board ("loads jobvite in a form
+  that names no board"), a tenant of one this door cannot name, or a
+  platform the crawl cannot read - the WIRE line's note said that last of
+  every one, Jobvite's own form included, and the finder's run summary
+  counted them all under "no reader for" (third review's Jobvite reviewer,
+  2026-11-21); the summary now counts "forms of platforms we read" apart.
+  `VENDOR_SITES` lists only vendors whose boards sit under a
   path on their board host - never a domain that gives each tenant a careers
   site of its own (jibeapply.com, applytojob.com, bamboohr.com, breezy.hr,
   recruitee.com, icims.com, workable.com: a link there can be another

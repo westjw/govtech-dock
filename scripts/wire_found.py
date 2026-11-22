@@ -516,8 +516,11 @@ def also_seen(entry: dict, key, website: str, kind=None) -> dict:
     """What else the finder saw: {elsewhere, advertised_on, off_site,
     elsewhere_off_site}.
 
-    `elsewhere` is a job platform this repo has no reader for, named on the
-    company's OWN site. That one is a doubt (see consider): it is a second
+    `elsewhere` is a job platform this repo has no reader for, or a form of a
+    platform it does read that names no board or names a tenant this door
+    cannot name (find_site_boards._NO_BOARD_IN_IT, TENANT_FORMS; each is said
+    for what it is), named on the company's OWN site. That one is a doubt (see
+    consider): it is a second
     place they may be hiring through, and City Detect is the case on file -
     its site embedded a platform nothing here read while its old board still
     answered and still named it. A platform recorded with no page is counted
@@ -1859,8 +1862,27 @@ def _line(row: dict) -> str:
         if extra.get("off_site"):
             note += f"; NOTE a page off their site names {', '.join(extra['off_site'])}"
         if extra.get("elsewhere_off_site"):
-            note += (f"; NOTE a page off their site names "
-                     f"{', '.join(extra['elsewhere_off_site'])}, which the crawl cannot read")
+            # said for what each is, as consider() says it of their own site:
+            # a tenant of a platform we read, a read platform's form that names
+            # no board, or a platform the crawl cannot read (third review's
+            # Jobvite reviewer, 2026-11-21: the note called Jobvite's own
+            # no-board form unreadable)
+            import find_site_boards as _fsb
+            away = extra["elsewhere_off_site"]
+            tenants = [v for v in away if v in _fsb.TENANT_FORMS]
+            forms = [v for v in away if v in _fsb._NO_BOARD_IN_IT and v not in tenants]
+            unread = [v for v in away if v not in tenants and v not in forms]
+            if unread:
+                note += (f"; NOTE a page off their site names {', '.join(unread)}, which the "
+                         f"crawl cannot read")
+            if tenants:
+                note += (f"; NOTE a page off their site names a "
+                         f"{' and '.join(_fsb.TENANT_FORMS[v] for v in tenants)} tenant "
+                         f"({', '.join(tenants)}) whose board this door cannot name")
+            if forms:
+                note += (f"; NOTE a page off their site loads "
+                         f"{' and '.join(_fsb._NO_BOARD_IN_IT[v] for v in forms)} in a form that "
+                         f"names no board ({', '.join(forms)})")
         if extra.get("advertised_on"):
             note += f"; NOTE their site also links {', '.join(extra['advertised_on'])}"
         return (f"{head} {many(row['postings'])}; board names "
