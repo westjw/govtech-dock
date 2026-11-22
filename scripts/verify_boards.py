@@ -674,6 +674,12 @@ def said_transient(text) -> bool:
     return bool(re.match(r"robots\.txt on \S+ answered HTTP 5\d\d\b", t))
 
 
+class PostingGone(ats.AtsError):
+    """One posting a board's list carries answered 404 or 410 while the probe
+    asked it: the list and the posting disagree for the moment, which the
+    next plan asks again (transient). Never "gone": the board is there."""
+
+
 def transient(exc) -> bool:
     """WAS THIS A FAILURE OF THE DAY? True only for a network error, a
     timeout, an HTTP 5xx, an HTTP 429, or a robots.txt that did not answer
@@ -689,7 +695,7 @@ def transient(exc) -> bool:
     """
     if isinstance(exc, ats.RobotsRefused):
         return getattr(exc, "kind", "disallowed") != "disallowed"
-    if isinstance(exc, ats.RateLimited):
+    if isinstance(exc, (ats.RateLimited, PostingGone)):
         return True
     if isinstance(exc, ats.AtsError):
         return said_transient(str(exc))
@@ -1293,7 +1299,20 @@ def _jobvite(ref, out: dict) -> None:
         return
     names, unnamed = [m.group(1)], []
     for url, job, _where in rows[:JOBVITE_POSTINGS_ASKED]:
-        said = [o for n in ats.jobposting_nodes(ats.jobvite_posting(url, slug))
+        try:
+            body = ats.jobvite_posting(url, slug)
+        except ats.AtsError as exc:
+            if not isinstance(exc, ats.RobotsRefused) and _failure(exc)[0] == "gone":
+                # A POSTING THE LIST CARRIES THAT ANSWERS 404 closed between
+                # the list and the probe: the board's answer is for the next
+                # plan, never a reason to send a board both checks may pass
+                # tomorrow to a person (sixth blind review, 2026-11-22). The
+                # list page itself answering 404 is still "gone".
+                raise PostingGone(f"jobvite posting {job!r} on the list answered "
+                                  f"{_clean(str(exc))[:80]}: it closed while the board was "
+                                  f"asked, so the board is asked again on the next plan") from exc
+            raise
+        said = [o for n in ats.jobposting_nodes(body)
                 for o in _jobvite_orgs(n.get("hiringOrganization"))]
         # a posting with no block, or with one block that names nobody beside
         # another that names someone, does not say whose it is

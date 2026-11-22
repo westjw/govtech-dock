@@ -1069,12 +1069,35 @@ def zones(page: str) -> list[tuple[str, str]]:
 _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 
 
-# Query parameters that carry a PERSON, not a board: Jobvite's talent-network
-# link puts the recruiter's name in sd= (Tyler's careers page, 2026-11-19),
-# and the sweep's results leave as artifacts of a public repository.
-_PERSON_PARAM = re.compile(r"((?:[?&]|%26|&#0?38;)(?:amp;)?(?:(?:__jv|jv)?sd|name|full_?name|"
-                           r"first_?name|last_?name|recruiter(?:_?name)?|contact(?:_?name)?|"
-                           r"e-?mail)=)[^&#\s\"'<>]*", re.I)
+# Query parameters that carry a PERSON, not a board (the results leave as
+# artifacts of a public repository, and the door copies from them into the
+# owner's queue). Jobvite's own addresses carry a recruiter's name in the
+# talent network's sd= and a posting link's __jvsd= (Tyler's careers page,
+# 2026-11-19), and name= and contact= there are people too. Anywhere else only
+# a key that says it is a person's - a recruiter, a first, last or full name,
+# a contact's name, an e-mail - is: a site's own name=All is a search filter,
+# and rewriting it made an address the site never served (sixth blind review,
+# 2026-11-22: Rain Bird's careers page). A name's later words go with it
+# ('sd=Pat Example', 'Pat&#32;Example'), and so does a Jobvite address
+# percent-encoded inside another one ('%26sd%3DPat%2520Example').
+_PARAM_SEP = r"(?:[?&;]|%26)"         # ('&amp;', '&#38;', '&#x26;' all end in ';')
+_PARAM_VALUE = r"""[^&#\s"'<>]*(?:(?:[ \t]|&#32;|&#x20;)(?-i:[A-Z])[A-Za-z'-]*)*"""
+_PERSON_PARAM = re.compile(
+    rf"({_PARAM_SEP}(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|last_?name|"
+    rf"full_?name|e-?mail)=){_PARAM_VALUE}", re.I)
+_JV_PERSON_PARAM = re.compile(rf"({_PARAM_SEP}(?:(?:__jv|jv)?sd|name|contact)=){_PARAM_VALUE}", re.I)
+_JV_ENCODED_PERSON = re.compile(r"(%26(?:(?:__jv|jv)?sd|name|contact|recruiter\w*)%3d)(?:(?!%26)[^&#\s\"'<>])*",
+                                re.I)
+_JV_ADDRESS = re.compile(r"""(?:app|hire|jobs)\.jobvite\.com(?:/|%2f)[^\s"'<>]*"""
+                         r"""(?:(?:[ \t]|&#32;|&#x20;)(?-i:[A-Z])[A-Za-z'-]*)*""", re.I)
+
+
+def _no_person(text: str) -> str:
+    """`text` with every person's name taken out of the addresses in it: the
+    Jobvite keys inside Jobvite's own addresses, the person keys anywhere."""
+    text = _JV_ADDRESS.sub(lambda m: _JV_ENCODED_PERSON.sub(
+        r"\1[removed]", _JV_PERSON_PARAM.sub(r"\1[removed]", m.group(0))), text or "")
+    return _PERSON_PARAM.sub(r"\1[removed]", text)
 
 
 def _short(text: str) -> str:
@@ -1084,7 +1107,7 @@ def _short(text: str) -> str:
     the file promises (170 was reached), and an address cut in half was no
     longer recognised as one and went through. A person's name in an
     address's query goes the same way (_PERSON_PARAM)."""
-    return privacy.redact(_PERSON_PARAM.sub(r"\1[removed]", (text or "")[:4000]))[:160]
+    return privacy.redact(_no_person((text or "")[:4000]))[:160]
 
 
 def _saw(text: str, start: int, end: int) -> str:
@@ -2677,7 +2700,7 @@ def _no_addresses(rec: dict) -> dict:
 def _no_names(obj):
     """_PERSON_PARAM over every string in a JSON-shaped value; the shape is kept."""
     if isinstance(obj, str):
-        return _PERSON_PARAM.sub(r"\1[removed]", obj)
+        return _no_person(obj)
     if isinstance(obj, list):
         return [_no_names(x) for x in obj]
     if isinstance(obj, dict):

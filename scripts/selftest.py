@@ -19503,11 +19503,12 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                            f"{robots_asked}): {exc}")
         # an href broken across lines is read as a browser reads it, once
         rows, exc = go({"https://acme.example/careers": "<html>ok</html>"},
-                       lambda: ats._page("https://acme.example/car\neers\t"))
+                       lambda: ats._page("https://acme.example/car\r\neers\t"))
         if exc or sent != ["https://acme.example/careers"]:
             errors += fail(f"ats._page: an address with a line break in it was not read as a "
                            f"browser reads it: asked {sent}, {exc}")
-        for bad in ("https://acme.example/a\\b", "https://acme.example/a\x00b", "https://acme.example/a\nb"):
+        for bad in ("https://acme.example\\.evil.example/x", "https://acme.example/a\x00b",
+                    "https://acme.example/a\nb"):
             try:
                 ats.plain_address(bad)
                 errors += fail(f"ats.plain_address let {bad!r} through")
@@ -19531,18 +19532,30 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
             pass
         finally:
             ats.requests.Request = real_request
-        for ok in ("https://jobs.jobvite.com/acmegov/jobs", "https://m\u00fcnchen.example/x y"):
+        # (a backslash after the host steers no host; a host in another script is
+        # encoded as the request encodes it - UTS 46, where 'stra\u00dfe' is not
+        # 'strasse': sixth blind review)
+        for ok in ("https://jobs.jobvite.com/acmegov/jobs", "https://m\u00fcnchen.example/x y",
+                   "https://acme.example/careers?q=a\\b", "https://acme.example/a\\b",
+                   "https://stra\u00dfe.example/careers", "https://fa\u03c2.example/careers"):
             try:
                 ats.plain_address(ok)
             except ats.AtsError as exc:
                 errors += fail(f"ats.plain_address refused a plain address {ok!r}: {exc}")
         import robots as _robots
         fetched = []
-        v = _robots.verdict("https://evil.example\\@jobs.jobvite.com/x",
-                            fetch=lambda u: fetched.append(u) or (200, ""))
-        if v.ok or fetched:
-            errors += fail(f"robots.verdict asked about an address that names its host two ways "
-                           f"({fetched}): {v}")
+        for two_ways in ("https://evil.example\\@jobs.jobvite.com/x", "https://pat" + "@" + "jobs.jobvite.com/x",
+                         "https://evil.example\\jobs.jobvite.com/x"):
+            fetched.clear()
+            v = _robots.verdict(two_ways, fetch=lambda u: fetched.append(u) or (200, ""))
+            if v.ok or fetched:
+                errors += fail(f"robots.verdict asked about {two_ways!r}, an address that names its "
+                               f"host two ways ({fetched}): {v}")
+
+        rows, exc = go({base: (301, base + "/"), base + "/": page([row("acmegov", 1)])},
+                       lambda: ats.fetch_jobvite("acmegov"))
+        if exc or len(rows or []) != 1:
+            errors += fail(f"jobvite: the list at /acmegov/jobs/ (a trailing slash) was not read: {rows or exc}")
 
         # a refusal, a 404 or a 429 is an error - never a second ask as nl=1
         for code in (404, 429):
@@ -19603,6 +19616,20 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
             if exc or bool(rows and "Lone ad" in str(rows[0].get("jd"))) != want_ad:
                 errors += fail(f"jobvite: the one block on a posting's page that {why} gave the row "
                                f"{(rows or [{}])[0].get('jd')!r} (wanted an ad: {want_ad})")
+        pay = {"currency": "USD", "value": {"unitText": "YEAR", "minValue": 250000, "maxValue": 300000}}
+        for body, why in (
+                (block([{"@type": "JobPosting", "description": "<p>Another job's ad.</p>", "baseSalary": pay},
+                        {"@type": "JobPosting", "description": "<p>Lone ad.</p>"}]),
+                 "two nodes, neither naming a job"),
+                (block({"@type": "JobPosting", "url": f"{J}/parentco/job/oPar9fwg", "baseSalary": pay,
+                        "description": "<p>Another job's ad; see also /acmegov/job/oAbC1fwg.</p>"}),
+                 "one node naming another job, this one's id only in its words")):
+            ats.FETCH_DETAILS = True
+            rows, exc = go({base: page([row("acmegov", 1)]), p1: body}, lambda: ats.fetch_jobvite("acmegov"))
+            ats.FETCH_DETAILS = False
+            if exc or (rows or [{}])[0].get("jd") or (rows or [{}])[0].get("comp"):
+                errors += fail(f"jobvite: {why} gave the row an ad or pay: "
+                               f"{(rows or [{}])[0].get('jd')!r} {(rows or [{}])[0].get('comp')}")
         by_id = both.replace(f'"url": "{p1}"', f'"@id": "{p1}"')
         ats.FETCH_DETAILS = True
         rows, exc = go({base: page([row("acmegov", 1)]), p1: by_id}, lambda: ats.fetch_jobvite("acmegov"))
@@ -19681,14 +19708,39 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                  ["Acme Gov", "Sibling Co"], "a sibling's block after an open comment inside a script"),
                 ({1: posting("Acme Gov"), 2: "<template>" + posting("Sibling Co") + "</template>"
                   + posting("Acme Gov")},
-                 ["Acme Gov"], "a sibling's block inside a template, which no browser runs")):
+                 ["Acme Gov"], "a sibling's block inside a template, which no browser runs"),
+                ({1: posting("Acme Gov"), 2: posting("Sibling Co").replace("<script type", "<script\ntype")
+                  + posting("Acme Gov")},
+                 ["Acme Gov", "Sibling Co"], "a sibling's block whose tag breaks the line after its name"),
+                ({1: posting("Acme Gov"), 2: posting("Sibling Co").replace("<script type", "<script\ttype")
+                  + posting("Acme Gov")},
+                 ["Acme Gov", "Sibling Co"], "a sibling's block whose tag has a tab after its name"),
+                ({1: posting("Acme Gov"), 2: posting("Sibling Co").replace("<script type",
+                                                                         '<script data-x=">" type')
+                  + posting("Acme Gov")},
+                 ["Acme Gov", "Sibling Co"], "a sibling's block whose tag holds a '>' in an attribute"),
+                ({1: posting("Acme Gov"), 2: "<script><!--<script></script>" + posting("Sibling Co")
+                  + "--></script>" + posting("Acme Gov")},
+                 ["Acme Gov"], "a sibling's block inside a script a browser runs past its </script>"),
+                ({1: posting("Acme Gov"), 2: posting("Sibling Co").replace('type="application/ld+json"',
+                                                                         'language="application/ld+json"')
+                  + posting("Acme Gov")},
+                 ["Acme Gov"], "a script whose language, not its type, names the JSON-LD type"),
+                ({1: posting("Acme Gov"), 2: posting("Sibling Co").replace('type="application/ld+json"',
+                                                                         'id="application/ld+json"')
+                  + posting("Acme Gov")},
+                 ["Acme Gov"], "a script whose id names the JSON-LD type")):
             got = said(two, postings)
             if got["names"] != want or got["stated"] != bool(want):
                 errors += fail(f"jobvite probe, {why}: stated {got['names']} (stated={got['stated']}), "
                                f"wanted {want}")
         for hidden, why in (("<!-- <title>Acme Gov Careers</title> -->", "a comment"),
                             ("<template><title>Acme Gov Careers</title></template>", "a <template>"),
-                            ('<script>var t = "<title>Acme Gov Careers</title>";</script>', "a script string")):
+                            ('<script>var t = "<title>Acme Gov Careers</title>";</script>', "a script string"),
+                            ("<noscript><title>Acme Gov Careers</title></noscript>", "a <noscript>"),
+                            ("<iframe><title>Acme Gov Careers</title></iframe>", "an <iframe>'s text"),
+                            ("<svg><title>Acme Gov Careers</title></svg>", "an <svg> image"),
+                            ('<span data-x="<title>Acme Gov Careers</title>"></span>', "an attribute")):
             got = said(page([row("acmegov", 1)], title="Jobs").replace("<head>", "<head>" + hidden),
                        {1: posting("Acme Gov")})
             if got["stated"] or got["names"]:
@@ -19709,9 +19761,28 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                        {k: posting("Acme Gov") for k in range(1, n_ + 1)})
             if got["stated"] != stated_:
                 errors += fail(f"jobvite probe: a board of exactly {n_} postings was stated={got['stated']}")
-        got = said(page([row("acmegov", 1)], title="Jobs"), {1: posting("Acme Gov")})
-        if got["stated"] or got["names"]:
-            errors += fail(f"jobvite probe: a title that is not '<Name> Careers' named {got['names']}")
+        for title in ("Jobs", "Acme Gov Careers | Parent Co"):
+            got = said(page([row("acmegov", 1)], title=title), {1: posting("Acme Gov")})
+            if got["stated"] or got["names"]:
+                errors += fail(f"jobvite probe: the title {title!r}, which is not '<Name> Careers', "
+                               f"named {got['names']}")
+        got = said(page([row("acmegov", 1), row("acmegov", 2)], title="Acme Gov &lt;!-- Careers")
+                   .replace("&lt;!--", "<!--"), {1: posting("Acme Gov"), 2: posting("Acme Gov")})
+        if got["n"] != 2:
+            errors += fail(f"jobvite: a '<!--' inside the page's <title> hid its rows (read {got['n']})")
+        # a posting that closed between the list and the probe is the day's
+        # failure: asked again on the next plan, never "no board there"
+        got = said(two, {1: posting("Acme Gov")})          # posting 2 answers 404
+        if got["stated"] or got["failed"] == "gone" or got["transient"] is not True:
+            errors += fail(f"jobvite probe: a posting that answered 404 was read as failed="
+                           f"{got['failed']!r} transient={got['transient']!r}, not a failure of the day")
+        # every posting up to 40 is asked, and the 40th can name a sibling
+        got = said(page([row("acmegov", k) for k in range(1, 41)]),
+                   {k: posting("Sibling Co" if k == 40 else "Acme Gov") for k in range(1, 41)})
+        asked_n = sum(1 for u in sent if "/job/" in u)
+        if "Sibling Co" not in got["names"] or vb.proven({"name": "Acme Gov"}, got)["ok"] or asked_n != 40:
+            errors += fail(f"jobvite probe: a 40-posting board whose 40th posting names a sibling was "
+                           f"stated {got['names']} after {asked_n} postings were asked")
         many = page([row("acmegov", n) for n in range(1, 43)])
         got = said(many, {n: posting("Acme Gov") for n in range(1, 43)})
         if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"] \
@@ -19755,10 +19826,59 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                 (["<template><template></template>" + row("acmegov", 3) + "</template>", r1],
                  ["Role 1 & Co"], "a row in a template around a template"),
                 ([r1, "</template>", r2], ["Role 1 & Co", "Role 2 & Co"], "a stray </template>"),
+                ([r1, "<script\n>document.write('" + row("acmegov", 7) + "');</script>", r2],
+                 ["Role 1 & Co", "Role 2 & Co"], "a row inside a script whose tag breaks the line"),
+                ([r1, "<template\t>" + row("acmegov", 3) + "</template>", r2],
+                 ["Role 1 & Co", "Role 2 & Co"], "a row inside a template whose tag has a tab"),
+                ([r1, '<span data-x="<template>"></span>', r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "'<template>' inside an attribute"),
+                ([r1, "<span data-x='" + row("acmegov", 7).replace("\n", " ") + "'></span>", r2],
+                 ["Role 1 & Co", "Role 2 & Co"], "a whole row inside an attribute"),
+                ([r1, '<a title="see <!-- note">x</a>', r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "'<!--' inside an attribute"),
+                ([r1, '<i data-x="<script>"></i>', r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "'<script>' inside an attribute"),
+                ([r1, '<i data-x="<textarea>"></i>', r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "'<textarea>' inside an attribute"),
+                ([r1, "<noscript><!-- </noscript>", r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "a '<!--' inside a noscript"),
+                ([r1, "<iframe><!-- </iframe>", r2], ["Role 1 & Co", "Role 2 & Co"], "a '<!--' inside an iframe"),
+                ([r1, "<noembed><!-- </noembed>", r2], ["Role 1 & Co", "Role 2 & Co"], "a '<!--' inside a noembed"),
+                ([r1, "<xmp>" + row("acmegov", 7) + "</xmp>", r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "a row shown as text by <xmp>"),
+                ([r1, "<plaintext>", r2], ["Role 1 & Co"], "a row after <plaintext>"),
+                ([r1, "<svg><style><!-- </style></svg>", r2], ["Role 1 & Co"],
+                 "a comment opened inside an svg style (not raw text there)"),
+                ([r1, "<math><style><!-- </style></math>", r2], ["Role 1 & Co"],
+                 "a comment opened inside a math style"),
+                ([r1, "<script><!--<script></script>" + row("acmegov", 7) + "--></script>", r2],
+                 ["Role 1 & Co", "Role 2 & Co"], "a row inside a script a browser runs past its </script>"),
+                (['<template><i data-x="</template>"></i>' + row("acmegov", 3) + "</template>", r1],
+                 ["Role 1 & Co"], "a row in a template an attribute's '</template>' does not close"),
+                ([r1, "<template>" + row("acmegov", 2)], ["Role 1 & Co"], "a row in a template never closed"),
                 ([r1, "<style>/* <!-- */</style>", r2], ["Role 1 & Co", "Role 2 & Co"],
                  "a '<!--' inside a style block")):
             if titles(rows_) != want:
                 errors += fail(f"jobvite: with {why}, the rows read are {titles(rows_)}, not {want}")
+        unclosed_title = page([r1, r2]).replace("<title>Acme Gov Careers</title>", "<title>Acme Gov Careers")
+        try:
+            got = ats.jobvite_rows(unclosed_title, "acmegov")
+            errors += fail(f"jobvite: rows after an unclosed <title> were read: {got}")
+        except ats.AtsError:
+            pass
+        after = ('<tr><td class="jv-job-list-name"><a href="/acmegov/job/oAbC1fwg">Role 1</a></td>'
+                 '<td class="jv-job-list-location">Dallas, Texas</td><td>Full-Time</td></tr>')
+        got = [w for _u, _t, w in ats.jobvite_rows(page([after]), "acmegov")]
+        if got != ["Dallas, Texas"]:
+            errors += fail(f"jobvite: a row's place ran past its own cell: {got}")
+        began = _time.monotonic()
+        lt = ('<tr><td class="jv-job-list-name"><a href="/acmegov/job/oAbC1fwg">' + "< " * 40000
+              + "Role 1</a></td></tr>")
+        ats.jobvite_rows(page([lt, r2]), "acmegov")
+        ats._walk("<template>" * 30000 + "</template>" * 30000 + "<svg>" * 30000)
+        if _time.monotonic() - began > 3:
+            errors += fail(f"jobvite: a title of 80,000 unclosed '<', or 30,000 nested templates, took "
+                           f"{_time.monotonic() - began:.1f}s")
         closed = ('<tr><td class="jv-job-list-name"><a href="/acmegov/job/oAbC1fwg">Role 1</a></td></tr>'
                   '<td class="jv-job-list-location">Ottawa, Canada</td>')
         got = [(t, w) for _u, t, w in ats.jobvite_rows(page([closed, row("acmegov", 2, where="Boise")]),
@@ -19882,10 +20002,29 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                          f"&{key}=Pat%20Example&jvsrc=x")
         if "Pat" in out or "q6NaVfwI" not in out:
             errors += fail(f"finder: {key}= kept a person's name, or the account went with it: {out!r}")
-    for sep in ("&amp;", "&#038;", "%26"):
+    for sep in ("&amp;", "&#038;", "&#38;", "&#x26;", "%26", ";", "&amp;amp;"):
         out = fsb._short(f"https://app.jobvite.com/TalentNetwork/action/joinTN?ci=q6NaVfwI{sep}sd=Pat%20Example")
         if "Pat" in out:
             errors += fail(f"finder: sd= after {sep!r} kept a person's name: {out!r}")
+    TN = "https://app.jobvite.com/TalentNetwork/action/joinTN?ci=q6NaVfwI"
+    for raw, why in ((TN + "&sd=Pat Example more words", "a name with a space in it"),
+                     (TN + "&sd=Pat&#32;Example", "a name with an entity space"),
+                     ("https://acme.example/go?url=" + TN.replace(":", "%3A").replace("/", "%2F")
+                      .replace("?", "%3F").replace("=", "%3D") + "%26sd%3DPat%2520Example%26x%3D1",
+                      "a talent-network address percent-encoded inside another"),
+                     ("https://x.example/careers?recruiter_email=pat%40mail.test&q=1", "a recruiter's e-mail"),
+                     ("https://x.example/careers?first_name=Pat&last_name=Example", "a first and a last name")):
+        out = fsb._no_person(raw)
+        if "pat" in out.lower() or "example%" in out.lower() or "Example" in out:
+            errors += fail(f"finder: {why} kept a person's name: {out!r}")
+    # ... and nothing that is not a person goes: a site's own name=All is a
+    # search filter, and the address it is part of is the one the site served
+    for raw in ("https://www.rainbird.com/search-jobs?keyword=&name=All&tid=All",
+                "https://x.example/careers?contact=sales&name=All"):
+        kept = fsb._no_addresses({"pages": [{"asked": raw, "final": raw}]})
+        if fsb._short(raw) != raw or kept["pages"][0]["final"] != raw:
+            errors += fail(f"finder: an address with no person in it was rewritten: "
+                           f"{fsb._short(raw)!r} / {kept['pages'][0]['final']!r}")
     found, rest = fsb.sightings('<a href="https://jobs.jobvite.com/acmegov/job/oAbC1fwg?__jvst=Recruiter'
                                 '&amp;__jvsd=Pat%20Example">Job</a>', here, home)
     if "Pat" in json.dumps([found, rest]):

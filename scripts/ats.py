@@ -617,7 +617,7 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
     raise AtsError(f"more than {hops} redirects from {url}")
 
 
-_UNPLAIN = re.compile(r"[\\\x00-\x1f\x7f]")
+_UNPLAIN = re.compile(r"[\x00-\x1f\x7f]")
 _TAB_OR_BREAK = re.compile(r"[\t\n\r]")
 
 
@@ -635,15 +635,22 @@ def plain_address(u: str) -> None:
     than the one read here. Asked of every hop in follow(), before anything
     is sent."""
     if not isinstance(u, str) or _UNPLAIN.search(u):
-        raise AtsError(f"{u!r} is not a plain address (a backslash or a control character)")
+        raise AtsError(f"{u!r} is not a plain address (a control character)")
     parts = urllib.parse.urlsplit(u)
+    # (a backslash anywhere is left to the comparison below: in the host part
+    # it makes the prepared request name another host, and after the host -
+    # in a path or a query - it steers none)
     if "@" in (parts.netloc or ""):
         raise AtsError(f"{u} is not a plain address (an '@' in its host part)")
     here = (parts.hostname or "").lower().rstrip(".")
     try:
         sent = (urllib.parse.urlsplit(requests.Request("GET", u).prepare().url).hostname
                 or "").lower().rstrip(".")
-        want = here if here.isascii() else here.encode("idna").decode("ascii")
+        # a name in another script, encoded the way the request itself is
+        # (UTS 46, as requests does: 'stra\u00dfe' is xn--strae-oqa, where
+        # Python's own codec would say 'strasse' - sixth blind review)
+        want = here if here.isascii() else \
+            requests.models.PreparedRequest._get_idna_encoded_host(here).lower()
     except Exception as exc:                       # noqa: BLE001 - nothing is sent
         raise AtsError(f"{u} is not an address the library can send ({exc})") from exc
     if sent != want:
@@ -3373,7 +3380,9 @@ def jobvite_page(ref) -> tuple[str, str]:
 
 
 def _jv_text(raw: str) -> str:
-    return _text(html_lib.unescape(re.sub(r"<[^>]+>", " ", raw or "")))
+    # (<[^<>]*>: a tag never spans another '<', so a run of unclosed ones is
+    # stripped in one pass - <[^>]+> took time with the square of it)
+    return _text(html_lib.unescape(re.sub(r"<[^<>]*>", " ", raw or "")))
 
 
 _TAG_END = frozenset(" \t\n\r\f/>")
@@ -3393,86 +3402,257 @@ def _tag_at(low: str, name: str, i: int) -> int:
         i = k
 
 
+# Elements whose content is raw text to a browser (scripting on) and no
+# rows of anybody's: dropped from the page a reader sees. <title> is raw text
+# too, kept for the probe; <plaintext> makes the rest of the page text.
+_RAW_DROPPED = frozenset({"script", "style", "textarea", "xmp", "iframe", "noembed",
+                          "noframes", "noscript"})
+# Content a reader never sees as the page: a template's (inert) and an SVG or
+# MathML island's (graphics; its <title> is not the document's).
+_HIDDEN = frozenset({"template", "svg", "math"})
+_FOREIGN = frozenset({"svg", "math"})
+_SPACE = " \t\n\r\f"
+_ATTR = re.compile(r"""([^\s"'>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]*)))?""")
+
+
+def _tag_end(low: str, j: int) -> int:
+    """Where the tag whose attributes start at j ends - the index of its '>'
+    - reading a quoted attribute value as text, as a browser does: a '>' or a
+    '<!--' inside data-x="..." is no markup (sixth blind review, 2026-11-22).
+    -1 when the tag never ends (an open quote runs to the end of the page).
+    Linear: the next '>' is looked for again only once passed."""
+    n = len(low)
+    gt = low.find(">", j)
+    while True:
+        if 0 <= gt < j:
+            gt = low.find(">", j)
+        eq = low.find("=", j, gt if gt >= 0 else n)
+        if eq < 0:
+            return gt
+        k = eq + 1
+        while k < n and low[k] in _SPACE:
+            k += 1
+        if k < n and low[k] in "\"'":
+            close = low.find(low[k], k + 1)
+            if close < 0:
+                return -1
+            j = close + 1
+        else:
+            j = k                               # an unquoted value: up to a space or '>'
+
+
+def _script_end(low: str, i: int, nxt: dict) -> int:
+    """Where a script's body that starts at i ends (its '</script'), or -1,
+    by HTML's script-data states: a '<!--' opens an escaped stretch, a
+    '<script' inside it a double-escaped one in which '</script' does not
+    end the script, and '-->' ends both. `nxt` is the walk's own record of
+    where each mark comes next, kept across scripts: a page's later scripts
+    never search again what its earlier ones searched (a page of 20,000
+    scripts looked for '<!--' to its end once per script)."""
+    find = {"<!--": lambda at: low.find("<!--", at), "-->": lambda at: low.find("-->", at),
+            "<script": lambda at: _tag_at(low, "script", at),
+            "</script": lambda at: _tag_at(low, "/script", at)}
+    for m, f in find.items():
+        if m not in nxt:
+            nxt[m] = f(i)
+    state, pos = 0, i
+    want = {0: ("</script", "<!--"), 1: ("-->", "</script", "<script"), 2: ("-->", "</script")}
+    while True:
+        for m, f in find.items():
+            if 0 <= nxt[m] < pos:
+                nxt[m] = f(pos)
+        hits = [(nxt[m], m) for m in want[state] if nxt[m] >= 0]
+        if not hits:
+            return -1
+        at, m = min(hits)
+        if m == "</script":
+            if state != 2:
+                return at
+            state, pos = 1, at + 8
+        elif m == "<!--":
+            state, pos = (0, at + 5) if low.startswith(">", at + 4) else (1, at + 4)
+        elif m == "-->":
+            state, pos = 0, at + 3
+        else:
+            state, pos = 2, at + 7
+
+
+def _ld_type(attrs: str) -> bool:
+    """Does a <script> tag's own type attribute say application/ld+json? (Its
+    language, its id or a data attribute saying so does not.)"""
+    for m in _ATTR.finditer(attrs):
+        if m.group(1).lower() == "type":
+            v = next((g for g in m.group(2, 3, 4) if g is not None), "")
+            return v.strip().lower() == "application/ld+json"
+    return False
+
+
 def _walk(page: str) -> tuple[str, list[str]]:
     """(the page as a reader sees it, its ld+json blocks): one pass over the
-    markup, found with str.find, as a browser parses it.
+    markup, tag by tag, as a browser parses it.
 
-    - A comment is not page: it ends at '-->' or '--!>', and '<!-->' and
-      '<!--->' are empty ones. One never closed takes the rest of the page.
-    - <script> and <style> are raw text, not page; a '<!--' or a '<title>'
-      inside one is nothing (fifth blind review, 2026-11-22: an open '<!--'
-      in a script hid the next JSON-LD block, a title in a script string
-      named a career site). A <script> whose own tag says
-      application/ld+json is a block - found by its tag, never by those
-      words anywhere else (a <link> or a builder script with them made the
-      next real block unreadable).
-    - <textarea> is raw text and nobody's rows; <title> is raw text, kept
-      whole for the probe.
-    - <template> content is inert, nested ones included.
+    - A tag's quoted attribute values are text: a '<template>', '<!--' or
+      '<script>' inside data-x="..." opens nothing (sixth blind review).
+    - A comment is not page: it ends at '-->' or '--!>', '<!-->' and
+      '<!--->' are empty ones, and one never closed takes the rest.
+    - <script>, <style>, <textarea>, <xmp>, <iframe>, <noembed>, <noframes>
+      and <noscript> are raw text and not page (a '<!--' or a <title> inside
+      one is nothing); a script runs past a '</script>' its own '<!--<script>'
+      escaped. <plaintext> makes the rest of the page text.
+    - <title> is raw text, kept for the probe with its '<' written as '&lt;'
+      - an unclosed one holds the rest of the page, rows and all.
+    - <template> content is inert, nested ones counted; an <svg> or <math>
+      island is no page either (its <title> is not the document's), and
+      inside one <style> and <script> are not raw text.
+    - A JSON-LD block is a top-level <script> whose own type attribute says
+      application/ld+json.
     A commented-out row is a job the employer took down (ats._COMMENT's
-    rule). Each opener is searched for once per page, again only once
-    passed, so no page holds a batch up."""
+    rule). Every '<' is looked at once and every search goes forward only,
+    so no page holds a batch up."""
+    page = page or ""
     low, n = page.lower(), len(page)
-    kept, blocks, i, depth = [], [], 0, 0
-    find = {"<!--": lambda at: low.find("<!--", at)}
-    for name in ("script", "style", "textarea", "title", "template", "/template"):
-        find["<" + name] = (lambda nm: lambda at: _tag_at(low, nm, at))(name)
-    nxt = {o: f(0) for o, f in find.items()}
-    # where a comment can end, searched for again only once passed too: a
-    # page of comments with no '--!>' was searched to its end per comment
-    shut_at = {c: low.find(c) for c in ("-->", "--!>")}
+    out, blocks, stack = [], [], []
+    held = Counter()                            # what the stack holds, so no tag searches it
+    keep_from, i = 0, 0
+    shut = {c: low.find(c) for c in ("-->", "--!>")}
+    marks: dict = {}                            # _script_end's next places, kept across scripts
+
+    def cut(a: int, b: int) -> None:            # page[a:b] is not page
+        nonlocal keep_from
+        if not stack:
+            out.append(page[keep_from:a])
+            keep_from = b
+
+    def plain_tag(a: int, gt: int) -> str:
+        # a kept tag whose attribute values hold '<' or '>' is passed on with
+        # them escaped: the readers after this one match markup by its text,
+        # and found a <title> or a row inside data-x="..." (sixth blind review)
+        return page[a] + page[a + 1:gt].replace("<", "&lt;").replace(">", "&gt;") + ">"
+
+    def keep_tag(a: int, gt: int) -> None:
+        nonlocal keep_from
+        if not stack and (low.find("<", a + 1, gt) >= 0 or low.find(">", a + 1, gt) >= 0):
+            out.append(page[keep_from:a])
+            out.append(plain_tag(a, gt))
+            keep_from = gt + 1
+
     while True:
-        for o, f in find.items():
-            if 0 <= nxt[o] < i:
-                nxt[o] = f(i)
-        hits = [(at, o) for o, at in nxt.items() if at >= 0]
-        if not hits:
-            if depth == 0:
-                kept.append(page[i:])
+        a = low.find("<", i)
+        if a < 0:
             break
-        at, o = min(hits)
-        if depth == 0:
-            kept.append(page[i:at])
-        if o == "<!--":
-            if low.startswith(">", at + 4):
-                i = at + 5                      # "<!-->": an empty comment
+        if low.startswith("<!--", a):
+            if low.startswith(">", a + 4):
+                cut(a, a + 5)
+                i = a + 5
                 continue
-            if low.startswith("->", at + 4):
-                i = at + 6                      # "<!--->": the same
+            if low.startswith("->", a + 4):
+                cut(a, a + 6)
+                i = a + 6
                 continue
-            for c in shut_at:
-                if 0 <= shut_at[c] < at + 4:
-                    shut_at[c] = low.find(c, at + 4)
-            ends = [(e, len(c)) for c, e in shut_at.items() if e >= 0]
+            for c in shut:
+                if 0 <= shut[c] < a + 4:
+                    shut[c] = low.find(c, a + 4)
+            ends = [(e, len(c)) for c, e in shut.items() if e >= 0]
             if not ends:
-                break                           # never closed: the rest is a comment
+                cut(a, n)                       # never closed: the rest is a comment
+                i = n
+                break
             e, w = min(ends)
+            cut(a, e + w)
             i = e + w
             continue
-        gt = low.find(">", at)
+        c1 = low[a + 1:a + 2]
+        if c1 in ("!", "?"):
+            # a doctype, a processing instruction or a bogus comment, to its
+            # '>'; a CDATA section only inside svg or math, to its ']]>'
+            if low.startswith("<![cdata[", a) and (held["svg"] or held["math"]):
+                e = low.find("]]>", a + 9)
+                end = e + 3 if e >= 0 else n
+            else:
+                e = low.find(">", a + 2)
+                end = e + 1 if e >= 0 else n
+            cut(a, end)
+            i = end
+            if e < 0:
+                break
+            continue
+        closing = c1 == "/"
+        j = a + 2 if closing else a + 1
+        if j >= n or not ("a" <= low[j] <= "z"):
+            if closing:                         # '</>' is nothing; '</ ...' a bogus comment
+                e = j if low.startswith(">", j) else low.find(">", j)
+                end = e + 1 if e >= 0 else n
+                cut(a, end)
+                i = end
+                if e < 0:
+                    break
+                continue
+            i = a + 1                           # a '<' that opens no tag is text
+            continue
+        k = j
+        while k < n and low[k] not in _TAG_END:
+            k += 1
+        name = low[j:k]
+        gt = _tag_end(low, k)
         if gt < 0:
-            break                               # a tag never closed: the rest is not page
-        if o == "<template":
-            depth += 1
+            cut(a, n)                           # a tag never closed: the rest is in it
+            i = n
+            break
+        if closing:
+            if held[name]:                      # closes it and anything opened inside it
+                while stack:
+                    top = stack.pop()
+                    held[top] -= 1
+                    if top == name:
+                        break
+                if not stack:
+                    keep_from = gt + 1
+            else:
+                keep_tag(a, gt)
             i = gt + 1
             continue
-        if o == "</template":
-            depth = max(depth - 1, 0)
+        foreign = bool(held["svg"] or held["math"])
+        if name in _HIDDEN:
+            if name in _FOREIGN and low[gt - 1] == "/":
+                i = gt + 1                      # <svg/> holds nothing
+                continue
+            if not stack:
+                out.append(page[keep_from:a])
+            stack.append(name)
+            held[name] += 1
             i = gt + 1
             continue
-        name = o[1:]
-        close = _tag_at(low, "/" + name, gt + 1)
-        shut = low.find(">", close) if close >= 0 else -1
-        after = shut + 1 if shut >= 0 else n
-        if depth == 0:
+        if foreign:
+            i = gt + 1                          # inside svg or math nothing is raw text
+            continue
+        if name == "plaintext":
+            cut(a, n)
+            i = n
+            break
+        if name in _RAW_DROPPED or name == "title":
+            body = gt + 1
+            close = _script_end(low, body, marks) if name == "script" else _tag_at(low, "/" + name, body)
+            end_gt = _tag_end(low, close + 2 + len(name)) if close >= 0 else -1
+            after = end_gt + 1 if end_gt >= 0 else n
+            text_end = close if close >= 0 else n
             if name == "title":
-                kept.append(page[at:after])
-            elif name == "script" and "application/ld+json" in low[at:gt]:
-                blocks.append(page[gt + 1:close if close >= 0 else n])
-        if close < 0 or shut < 0:
-            break                               # never closed: the rest is its body
-        i = after
-    return " ".join(kept), blocks
+                if not stack:
+                    out.append(page[keep_from:a])
+                    out.append(plain_tag(a, gt) + page[body:text_end].replace("<", "&lt;") + "</title>")
+                    keep_from = after
+            else:
+                if name == "script" and not stack and _ld_type(page[k:gt]):
+                    blocks.append(page[body:text_end])
+                cut(a, after)
+            i = after
+            if after >= n:
+                break
+            continue
+        keep_tag(a, gt)
+        i = gt + 1
+    if not stack:
+        out.append(page[keep_from:])
+    return " ".join(out), blocks
 
 
 def _cut(page: str) -> str:
