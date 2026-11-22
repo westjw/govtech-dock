@@ -759,8 +759,27 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("comeet-other", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
         ("eightfold", "eightfold.ai", _B + r"eightfold\.ai"),
         ("phenom", "phenompeople.com", _B + r"phenompeople\.com"),
-        ("successfactors", "successfactors.", _B + r"successfactors\.(?:com|eu)"),
-        ("successfactors", "sapsf.", _B + r"sapsf\.(?:com|eu|cn)"),
+        # SAP SUCCESSFACTORS' LEGACY PORTALS, career<N>.successfactors.(com|eu)
+        # and career<N>.sapsf.(com|eu|cn) (?company=...): robots.txt says
+        # Disallow: /, so one is never a board, and the CSB site of the same
+        # tenant cannot be worked out from it (CUES's, Genfare's and Gainwell's
+        # careers links, 2026-11-20). A platform nothing here reads, as they
+        # were before successfactors had a reader (the name moved off the
+        # type's own: ELSEWHERE never files a type the crawl reads).
+        ("successfactors-legacy", "successfactors.",
+         r"(?<![a-z0-9.-])career[0-9]*\.successfactors\.(?:com|eu)(?![a-z0-9-])"),
+        ("successfactors-legacy", "sapsf.",
+         r"(?<![a-z0-9.-])career[0-9]*\.sapsf\.(?:com|eu|cn)(?![a-z0-9-])"),
+        # ...and every other address on SAP's hosts: what a Career Site Builder
+        # board loads (its rmkcdn assets, its jQuery from hcm<N>. or
+        # performancemanager<N>., its Unify API host), a platform we read in
+        # a form that names no board - and never a board's ref
+        ("successfactors-other", "successfactors.",
+         r"(?<![a-z0-9.-])(?!career[0-9]*\.)(?:[a-z0-9-]{1,63}\.)*successfactors\.(?:com|eu)"
+         r"(?![a-z0-9-])"),
+        ("successfactors-other", "sapsf.",
+         r"(?<![a-z0-9.-])(?!career[0-9]*\.)(?:[a-z0-9-]{1,63}\.)*sapsf\.(?:com|eu|cn)"
+         r"(?![a-z0-9-])"),
         ("taleo", "taleo.net", _B + r"taleo\.net"),
         ("oraclecloud", "oraclecloud.com", r"[a-z0-9-]{1,63}\.fa\.[a-z0-9-]{1,63}\.oraclecloud\.com"),
         ("clearcompany", "clearcompany.com", _B + r"clearcompany\.com"),
@@ -855,7 +874,14 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "greenhouse-shortlink": "greenhouse", "teamtailor-other": "teamtailor",
                    "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
                    "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
-                   "jobvite-other": "jobvite"}
+                   "jobvite-other": "jobvite", "successfactors-other": "successfactors"}
+# A platform's form that is somewhere else to hire through on any other page
+# and the board's own furniture on the board's own pages: a Career Site
+# Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
+# Indra's front page links it for a candidate's sign-in (2026-11-20). Kept
+# off those pages only (sightings, _board_furniture); anywhere else it stays
+# a platform nothing reads.
+_ON_ITS_OWN_BOARD = {"successfactors-legacy": "successfactors"}
 
 _ANY_HINT = re.compile("|".join(sorted(
     {re.escape(h) for hs in HINTS.values() for h in hs}
@@ -1179,6 +1205,11 @@ def _tally(text: str, element: str, page_url: str, website: str,
                 "jibe", element, _saw(text, at, at + len(JIBE_MARK))))
             row["times"] += text.lower().count(JIBE_MARK)
             row["_spelt"][json.dumps(host)] += 1
+    for host, start, end in successfactors_links(text, website):
+        row = boards.setdefault(("successfactors", host, element), _board_row(
+            "successfactors", element, _saw(text, start, end)))
+        row["times"] += 1
+        row["_spelt"][json.dumps(f"https://{host}")] += 1
     if element in ("iframe", "frame"):
         # A FRAME FROM A HOST NOTHING HERE KNOWS, whose address reads like a
         # job page, is very likely a platform nobody has listed yet. Named
@@ -1248,6 +1279,93 @@ def teamtailor_own_sites(page: str, page_url: str = "") -> list[tuple[str, str]]
     return out
 
 
+# SAP SUCCESSFACTORS' CAREER SITE BUILDER (CSB) serves a board from the
+# employer's own careers host (jobs.gainwelltechnologies.com,
+# careers.landisgyr.com), and its address names no vendor. Two things give one
+# away (research of 2026-11-20 on six CSB hosts):
+#
+#   THE PAGE IS ONE: its own markup - its scripts, and the other tags'
+#     attributes (a stylesheet) - loads CSB's machinery: assets from its
+#     site's folder on rmkcdn.successfactors.com/<8 hex>/, the j2w.init({...
+#     "ssoCompanyId" ...}) block, jQuery from (hcm|performancemanager)<N>.
+#     (sapsf|successfactors).(com|eu)/verp/vmod_v1/ui/extlib/, or its own
+#     /platform/js/j2w/ scripts. The board is THAT page's origin, never the
+#     SAP host it loads from. Never read off its links or frames, nor off what
+#     a browser saw it ask for: a frame's requests are not the page's markup,
+#     and the page that frames a board is not the board.
+#   A LINK to <host>/go/<Name>/<digits>/ (a CSB category page) or to
+#     <host>/search/?...sortColumn=... (its search) on a host of the
+#     company's own - the same registrable domain as its website. Those
+#     shapes on anybody else's host prove nothing, and SAP's hosts are never
+#     a board.
+#
+# The legacy portals stay under `elsewhere` (successfactors-legacy, above):
+# robots-closed, never a board.
+_CSB_MARK = re.compile(
+    r"(?<![a-z0-9.-])rmkcdn\.successfactors\.com/[0-9a-f]{8}/"
+    r"|\bj2w\.init\(\s*\{[^{}]{0,4000}?[\"']ssoCompanyId[\"']"
+    r"|(?<![a-z0-9.-])(?:hcm|performancemanager)[0-9]+\.(?:sapsf|successfactors)\.(?:com|eu)"
+    r"/verp/vmod_v1/ui/extlib/", re.I)
+# CSB's own scripts, by the path the site serves them at: a relative address,
+# or one on the page's own host (successfactors_tells holds it to that)
+_CSB_J2W = re.compile(r"(?<=[\"'(=\s])(?:(?:https?:)?//([a-z0-9][a-z0-9.-]{0,252}))?/platform/js/j2w/",
+                      re.I)
+_CSB_LINK = re.compile(
+    r"(?<![a-z0-9.-])https?://([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?"
+    r"(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+)"
+    r"/(?:go/[^/\s\"'<>?#]{1,200}/[0-9]{3,12}(?=[/?#\"'\s<>]|$)"
+    r"|search/\?(?:[^\s\"'<>#]{0,300}?&)?sortColumn=)", re.I)
+_SAP_HOSTS = re.compile(r"(?:^|\.)(?:successfactors\.(?:com|eu)|sapsf\.(?:com|eu|cn))$", re.I)
+
+
+def successfactors_links(text: str, website: str) -> list[tuple[str, int, int]]:
+    """[(host, start, end)] for every link in `text` to a CSB category or
+    search page on a host of the company's own (the registrable domain of its
+    website), never on one of SAP's."""
+    low = (text or "").lower()
+    if not website or ("/go/" not in low and "sortcolumn=" not in low):
+        return []
+    site = _site_of(_host(website))
+    out = []
+    for m in _CSB_LINK.finditer(text):
+        host = m.group(1).lower()
+        if site and _site_of(_host(host)) == site and not _SAP_HOSTS.search(host) \
+                and ats._HOSTNAME.fullmatch(host):
+            out.append((host, m.start(), m.end()))
+    return out
+
+
+def successfactors_tells(pieces, page_url: str) -> list[tuple[str, str]]:
+    """[(element, what showed it)] where a page's own markup - `pieces` is
+    zones(page) - shows the page to be a CSB board: its script blocks and the
+    attributes of its other tags only."""
+    here = _host(page_url)
+    out = []
+    for element, text in pieces:
+        low = text.lower()
+        if element not in ("script", "text") or not (
+                "rmkcdn.successfactors.com" in low or "j2w" in low or "vmod_v1" in low):
+            continue
+        text = soften(text)
+        m = _CSB_MARK.search(text)
+        if not m:
+            m = next((j for j in _CSB_J2W.finditer(text)
+                      if not j.group(1) or _host("https://" + j.group(1)) == here), None)
+        if m:
+            out.append((element, _saw(text, m.start(), m.end())))
+    return out
+
+
+def successfactors_origin(page_url: str) -> str:
+    """The origin a CSB board at this page is read at (ats.successfactors_origin
+    of its host), or "" where it cannot be one."""
+    try:
+        netloc = urllib.parse.urlsplit(page_url or "").netloc
+        return ats.successfactors_origin(f"https://{netloc}") if netloc else ""
+    except (ats.AtsError, ValueError):
+        return ""
+
+
 def sightings(page: str, page_url: str, website: str, *,
               requests_seen: typing.Iterable[str] = (),
               frames_seen: typing.Iterable[str] = ()) -> tuple[list[dict], list[dict]]:
@@ -1258,7 +1376,8 @@ def sightings(page: str, page_url: str, website: str, *,
     boards: dict = {}
     others: dict = {}
     maybe: dict = {}
-    for element, text in zones(page or ""):
+    pieces = zones(page or "")
+    for element, text in pieces:
         _tally(text, element, page_url, website, boards, others, maybe)
     for element, urls in (("request", requests_seen), ("frame", frames_seen)):
         urls = [u for u in urls if isinstance(u, str) and u.startswith("http")]
@@ -1298,6 +1417,19 @@ def sightings(page: str, page_url: str, website: str, *,
         row = boards.setdefault(("teamtailor", host, "href"), _board_row("teamtailor", "href", saw))
         row["times"] += 1
         row["_spelt"][json.dumps(f"https://{host}")] += 1
+    # A CAREER SITE BUILDER PAGE IS ITS OWN BOARD, at its own origin; what it
+    # says of SAP's hosts is its own furniture, its tenant's legacy portal
+    # included (_ON_ITS_OWN_BOARD)
+    origin = successfactors_origin(page_url)
+    tells = successfactors_tells(pieces, page_url) if origin else []
+    for element, saw in tells:
+        host = urllib.parse.urlsplit(origin).hostname or ""
+        row = boards.setdefault(("successfactors", host, element),
+                                _board_row("successfactors", element, saw))
+        row["times"] += 1
+        row["_spelt"][json.dumps(origin)] += 1
+    if tells:
+        others = {k: v for k, v in others.items() if _ON_ITS_OWN_BOARD.get(k[0]) != "successfactors"}
     # an address of a platform we read that names no board says nothing once
     # the page HAS named that platform's board (Paylocity's own scripts, 23
     # of them, beside the frame that loaded them)
@@ -2661,10 +2793,11 @@ async def look(company: dict, mode: str, read, plain=read_plain,
 def _board_host(kind: str, ref) -> str:
     """The host a board is served from, where the finder reads pages ON the
     board's own host: a Teamtailor career site on a domain of the company's
-    own is their site, and is walked. (A board on a vendor's host is never
-    walked - a link that names a board is not followed - so no other type
-    has pages here to tell apart.)"""
-    if kind == "teamtailor" and isinstance(ref, str):
+    own is their site, and is walked, and so is a SuccessFactors Career Site
+    Builder board, which is always on theirs. (A board on a vendor's host is
+    never walked - a link that names a board is not followed - so no other
+    type has pages here to tell apart.)"""
+    if kind in ("teamtailor", "successfactors") and isinstance(ref, str):
         return _host(ref)
     return ""
 
@@ -2677,8 +2810,10 @@ def _board_furniture(row: dict, candidates: list) -> bool:
     its pictures come from teamtailor-cdn.com (2026-11-21): that is the board
     showing its own jobs, not a second place they hire through. The page
     level rule (sightings) cannot see it, because the board is named on the
-    site's other pages."""
-    kind = _NO_BOARD_IN_IT.get(str(row.get("vendor") or ""))
+    site's other pages. So is a legacy portal's address a Career Site Builder
+    board's own pages name (_ON_ITS_OWN_BOARD): its tenant's sign-in."""
+    vendor = str(row.get("vendor") or "")
+    kind = _NO_BOARD_IN_IT.get(vendor) or _ON_ITS_OWN_BOARD.get(vendor)
     page = _host(str(row.get("page") or ""))
     return bool(kind and page) and any(
         c.get("type") == kind and _board_host(kind, c.get("ref")) == page for c in candidates)

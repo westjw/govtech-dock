@@ -2492,7 +2492,10 @@ and never said where in a page a reference sat.
   (job-boards.eu.greenhouse.io, jobs.eu.lever.co) are tallied under
   `elsewhere` as greenhouse-eu / lever-eu: the readers ask the American API
   only. A reference inside an HTML comment is not on the page, whatever
-  kind of element was commented out.
+  kind of element was commented out. A SuccessFactors Career Site Builder
+  board names no vendor in its address: it is known by its page's own markup,
+  or by a link of a CSB shape on their own domain (see "SAP SuccessFactors
+  career sites" below).
 - **What the door must still do, because this file cannot:** make the
   second check (ask the board whose it is); refuse a (type, ref) another
   record already holds, or that two records' candidates share (two brands
@@ -2526,7 +2529,7 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Fifteen types state their employer (`NAMES_ITS_EMPLOYER`): greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-three types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Eight more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), and successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; see "SAP SuccessFactors career sites" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
 - `site`: the employer's website where the board gives one (ashby, jazzhr).
@@ -2949,8 +2952,8 @@ round.
   never "the board refused": sixth blind review, 2026-11-22) hold the board
   for him, with both addresses in the words; a record whose ref carries no
   /All/ or /List/ id is no address to compare. The key of
-  an iCIMS portal is its slug, of a Jibe, Oracle, ApplicantPro or Teamtailor
-  board its host, of a Zoho Recruit career site its host and page name (a
+  an iCIMS portal is its slug, of a Jibe, Oracle, ApplicantPro, Teamtailor or
+  SuccessFactors board its host, of a Zoho Recruit career site its host and page name (a
   posting's address is under it), and of a Comeet board its company uid,
   whether written
   `<UID>|<TOKEN>` or as the hosted board's address (those four were keyed on
@@ -3135,6 +3138,100 @@ round.
   refused.
   Giants on readers that do read the whole board are still read in full
   before they are skipped.
+
+## SAP SuccessFactors career sites: the reader (2026-11-22)
+
+Owner, 2026-11-22: "can we get this board to be scrubbed for gainwell, if
+not, why not?" (jobs.gainwelltechnologies.com/go/View-All-Jobs/8808000/). Until
+then nothing read SAP SuccessFactors' Career Site Builder (CSB), Gainwell's
+record pointed at its marketing site, and its 100 postings on the board were a
+one-time capture of 2026-09-08. `ats.fetch_successfactors` reads a CSB site
+now. Gainwell's record is NOT rewired by this work: that waits for a blind
+review and the owner's word, through the wiring door.
+
+- **The ref is the career site's https origin** (`https://jobs.gainwelltechnologies.com`),
+  on the employer's own domain, and nothing more. `ats.successfactors_origin`
+  refuses a path, a query, a port, a name before the host, and every host of
+  SAP's own (successfactors.com/.eu, sapsf.com/.eu/.cn: rmkcdn. assets,
+  hcm<N>. and performancemanager<N>. scripts, api<N>. the Unify API, career<N>.
+  the legacy portals). `board_url` and the desk's `boardUrlFor` open
+  `<origin>/search/`; `board_key` is its host.
+- **The list** is GET `<origin>/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=N`,
+  drawn by the server, 25 rows a page; every hop is held to the ref's host
+  (`same_host`) and asked of robots.txt, which allows /search/, /go/ and /job/
+  on every CSB host read and closes /services/. It is paged by page 1's own
+  row count to a page that adds no new posting (`_paged`), and an offset at or
+  past the total its pagination label states ("Results <b>1 – 25</b> of
+  <b>334</b>", the second number, in any of its languages) is not asked. Past
+  its end the list says "no open positions matching" and shows the board's
+  10 most recent postings again (Gainwell, 2026-11-22), so a board with no
+  label stops too.
+- **A row** is a `<tr class="data-row">` the page shows (read through
+  `ats._cut`: a commented-out or script-held row is none): its first titled
+  `jobTitle-link` to a /job/ page on the site - written twice, for a desk and
+  for a phone, one posting - and its first `jobLocation` and `jobDate`. Measured
+  on Gainwell's board: a remote role's place is 'Any city, TX, US, 99999', and
+  the placeholder city and postal code are dropped ('TX, US'); a role open in
+  more places ends in the board's own count of the rest, which stays ('Any
+  city, AR, US, 99999 +1 more…' reads 'AR, US +1 more…'). A date is read
+  in three forms only: 'Nov 20, 2026' (en_US), '21 nov 2026' (es_ES, Indra's),
+  and '21.11.2026' (de_DE, JENOPTIK's) only on a page whose `<html lang>` is
+  German. Anything else is no date, never a guess.
+- **Behind FETCH_DETAILS** the ad is each posting's `itemprop="description"`
+  element, to the close that matches it. CSB has no pay field; a figure in the
+  ad's text is plain_rows' text parse, as for every reader.
+- **Never a zero.** A first page with no rows is an error: a "Unify" site
+  (Aurigo's, Esri Canada's: its list is POST /services/recruiting/v1/jobs,
+  which robots.txt closes) says it is one; a classic page with no rows says a
+  CSB board with nothing open has not been seen; rows with no titled posting
+  link say so.
+- **The probe** (`verify_boards._successfactors`). The site's name is the
+  board's own configuration, on the /search/ page: its `<title>` and meta
+  description, one locale's pair ('X Jobs' / 'Find at X'; 'X - Stellen' /
+  'Bei X nach suchen'; 'X ofertas de trabajo' / 'Buscar en X'), believed only
+  when the two name one name. Then the `hiringOrganization` meta of the first
+  `SF_POSTINGS_ASKED` (5) postings on page 1: every one asked must carry one
+  (a posting naming nobody states nothing), and another employer is a second
+  name, so not proven. Where all agree the board is stated whole; `n` is the
+  label's total (`n_is_partial` when a page has none). Gainwell's states
+  'Gainwell Technologies LLC', which `strict` equates with the record. A
+  placeholder name ('our team' on SPX's board, the tenant id 'esricanada' on
+  Esri Canada's) is stated as it is, and proven() refuses it by name. A
+  posting that answers 404 while it is asked is a failure of the day.
+- **The finder** (`find_site_boards`). A page whose OWN markup - its scripts
+  and other tags' attributes, never its links or frames, never what a browser
+  saw it ask for - loads CSB's machinery is a board at THAT page's origin:
+  rmkcdn.successfactors.com/<8 hex>/ assets, a `j2w.init({... "ssoCompanyId"
+  ...})` block, jQuery from (hcm|performancemanager)<N>.(sapsf|successfactors).(com|eu)/verp/vmod_v1/ui/extlib/,
+  or its own /platform/js/j2w/ scripts. A link to `<host>/go/<Name>/<digits>/`
+  or `<host>/search/?...sortColumn=...` on a host of the company's own (the
+  registrable domain of its website, never SAP's) is a board at that origin.
+  A legacy portal's address is filed `successfactors-legacy`, a platform
+  nothing reads, as it was before CSB had a reader (renamed only because
+  ELSEWHERE never files a type the crawl reads); every other SAP address is
+  `successfactors-other`, a form of a platform we read that names no board.
+  On the board's own pages both are its furniture: its j2w.init ssoUrl names
+  its tenant's legacy portal, and Indra's front page links it to sign in.
+- **Measured** on six CSB hosts by the research of 2026-11-20 (Landis+Gyr 63,
+  JENOPTIK 175, SPX 237 and Indra 623 classic; Aurigo and Esri Canada Unify)
+  and on Gainwell's of 2026-11-22. **Read live once** the same day (details
+  off, no cache): 334 rows, every one of the 334 its label states, from 14
+  list pages and one robots.txt on its own host, all dated (2026-10-25 to
+  2026-11-22); the probe asked page 1 and five postings and stated
+  'Gainwell Technologies LLC', proven for the record. Every placeholder place
+  read clean (80 rows read 'TX, US') except 14 rows open in more places than
+  one, and the rule that keeps their '+1 more…' was written after that read,
+  from one read of the list sorted by place.
+- **Not built**: Unify sites (sitemap.xml plus one request a posting would
+  read them, two on Aurigo's); a multi-brand tenant's /<Brand>/search/; a unit
+  filter for a group's board (SPX's 237 rows are 12 units, named only in a
+  per-site Facility column).
+- Guard: `check_successfactors_reads_its_career_site`, beside a row in
+  `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS and two forms
+  in SITE_BOARD_FORMS. 64 breaks of the reader, the probe, the finder and the
+  tables, one at a time in a private copy: 64 noticed, three of them only
+  after the check was tightened (the Unify error's own words; a search link
+  beside another page's sortColumn; a title link left unclosed).
 
 ## Build order (owner, 2026-08-23)
 
@@ -4027,7 +4124,10 @@ an icon the site declares.
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
 - `ats.type` ∈ ashby | greenhouse | lever | workable | recruitee | breezy |
   smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | paylocity
-  | oracle | jibe | adp | gusto | gem | html | unknown.
+  | oracle | jibe | adp | gusto | gem | hirebridge | applicantpro | teamtailor
+  | pinpoint | zohorecruit | comeet | jobvite | successfactors | html | unknown
+  (`ats.FETCHERS` is the list; the seven before successfactors were read from
+  2026-11-21 and had not been added here).
   Prefer structured API types; `html` is a last resort; `unknown` means
   "needs discovery" and is skipped by refresh. `coverage.py::STRUCTURED` is the
   list that decides what counts as a real API — add a new type in both places.

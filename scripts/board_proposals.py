@@ -392,7 +392,7 @@ _ZOHO = re.compile(r"([^/?#]+\.zohorecruit\.[a-z]+)/jobs/([^/?#]+)")
 # posting under the hosted board is the same board
 _COMEET = re.compile(r"(?:^|comeet\.com/jobs/[^/?#]+/)([0-9a-f]{2}\.[0-9a-f]{3})(?=$|[|/?#])")
 # the platforms whose board is a whole host: any address on it is the board
-HOST_BOARDS = ("jibe", "oracle", "applicantpro", "teamtailor")
+HOST_BOARDS = ("jibe", "oracle", "applicantpro", "teamtailor", "successfactors")
 # the words wire_found.py writes on a wired record's note and a held row's
 # doubt when a site asks for a Workable board by its account number (its
 # account_words): the one place the number and the slug are said together
@@ -415,8 +415,8 @@ def board_key(kind, ref) -> str:
     after it (keyed on the whole address, a board already on file as
     .../<uuid>/<Tenant> was not seen to be the board found as .../<uuid>, and
     would have been wired to a second company); an iCIMS portal is its slug,
-    bare or inside its address; a Jibe, Oracle, ApplicantPro or Teamtailor
-    board is its host; a Zoho Recruit career site is its host and its page's
+    bare or inside its address; a Jibe, Oracle, ApplicantPro, Teamtailor or
+    SuccessFactors board is its host; a Zoho Recruit career site is its host and its page's
     name (a posting's address is under it); a Comeet board is its company
     uid, whether the ref is "<UID>|<TOKEN>" or the hosted board's address.
     (The last four were read since 2026-11-19 and keyed on the whole ref, so

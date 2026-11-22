@@ -5139,6 +5139,11 @@ function boardFoundPage(c){
 // board whose own ref does not open.
 function boardUrlFor(f, c){
   const r = f.ref;
+  // a SuccessFactors career site's ref is its origin, and its list is /search/
+  // (as build_board.board_url links it); anything else on file opens nothing
+  if (f.type === 'successfactors')
+    return (typeof r === 'string' && /^https:\/\/[a-z0-9.-]+\/?$/i.test(r.trim()))
+      ? r.trim().replace(/\/+$/, '') + '/search/' : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
     // the list [tenant, pod, site]; two "wd.." parts means the pod-first

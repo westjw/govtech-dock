@@ -47,6 +47,7 @@ Where the description lives, per board (measured, 2026-08-23):
     jazzhr       the posting page      -> schema.org JobPosting
     icims        the posting page      -> schema.org JobPosting
     rippling     the posting page      -> __NEXT_DATA__ apiData.jobPost
+    successfactors  the posting page   -> its itemprop="description" element
 
   nothing published
     oracle       no company on file uses it; unverified either way
@@ -3764,6 +3765,290 @@ def fetch_jobvite(ref) -> list[dict]:
         _details(out, detail)
     return out
 
+# ---- successfactors: SAP SuccessFactors' Career Site Builder (CSB), a career
+# site on the employer's own careers host (jobs.gainwelltechnologies.com,
+# careers.landisgyr.com)
+#
+# The classic CSB list is a page the server draws, 25 postings to a page:
+# <origin>/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=N.
+# Each posting is a <tr class="data-row">, its title link written twice (once
+# for a desk, once for a phone) and its place and date in spans; the page's
+# pagination label states the board's total. The ref is the careers host's
+# https origin. Measured 2026-11-20 on six CSB hosts (Landis+Gyr 63, JENOPTIK
+# 175, SPX 237, Indra 623) and 2026-11-22 on Gainwell's (334, 14 pages);
+# robots.txt allows /search/, /go/ and /job/ on every one and closes
+# /services/. Every read is held to the ref's host (same_host).
+#
+# TWO KINDS OF SAP CAREER SITE ARE NOT READ HERE, and neither is ever a zero.
+# The newer "Unify" layout draws its list in the browser from POST
+# /services/recruiting/v1/jobs, which robots.txt closes: its /search/ page has
+# no rows (Aurigo's, Esri Canada's), and reads as an error that says so. The
+# legacy portals, career<N>.successfactors.(com|eu) and career<N>.sapsf.(com|
+# eu|cn) ?company=..., say Disallow: / and are never a board; nor is any other
+# host of SAP's (rmkcdn., hcm<N>., api<N>.: assets, sign-in, the Unify API).
+
+SF_MAX_PAGES = 80        # 2,000 postings at 25 a page; Indra's 623 is the most read
+_SF_SAP = re.compile(r"(?:^|\.)(?:successfactors\.(?:com|eu)|sapsf\.(?:com|eu|cn))$")
+_SF_TR = re.compile(r"<tr\b([^<>]*)>", re.I)
+_SF_TAG = re.compile(r"<(a|span)\b([^<>]*)>", re.I)
+_SF_LABEL = re.compile(r"<span\b([^<>]*)>", re.I)
+_SF_BOLD = re.compile(r"<b\b[^<>]*>([^<]{0,40})</b>", re.I)
+_SF_LANG = re.compile(r"<html\b[^<>]{0,400}?\slang\s*=\s*[\"']?([A-Za-z]{2})", re.I)
+# what only a Unify page carries: its results script, the React root its list
+# is drawn into, and the API host its widget settings name (Esri Canada's
+# /search/, 2026-11-20)
+_SF_UNIFY = re.compile(r"j2w\.searchResultsUnify\b|\bapiURL\s*:\s*[\"']https://api\d+\.sapsf\."
+                       r"|<div\b[^<>]{0,200}?\bid\s*=\s*[\"']root[\"']", re.I)
+_SF_DESCRIBED = re.compile(r"<([a-z][a-z0-9]{0,15})\b([^<>]*\bitemprop\s*=\s*[\"']?description\b"
+                           r"[^<>]*)>", re.I)
+_SF_EN_MONTHS = {m: i for i, m in enumerate(("jan", "feb", "mar", "apr", "may", "jun", "jul",
+                                             "aug", "sep", "oct", "nov", "dec"), 1)}
+_SF_ES_MONTHS = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6, "jul": 7,
+                 "ago": 8, "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dic": 12}
+_SF_TEXT_MAX = 4000      # of a row's markup one title, place or date is read from
+
+
+def successfactors_origin(ref) -> str:
+    """The https origin of a CSB career site, or AtsError: for anything that is
+    not an origin (a path, a query, a port, a name before the host), and for
+    SAP's own hosts, none of which is an employer's career site."""
+    raw = _text(ref).rstrip("/")
+    try:
+        parts = urllib.parse.urlsplit(raw)
+        host = (parts.hostname or "").lower()
+    except ValueError:                           # 'https://[x': no address at all
+        parts, host = None, ""
+    if parts is None or parts.scheme != "https" or not host \
+            or (parts.netloc or "").lower() != host or parts.path or parts.query \
+            or parts.fragment or not _HOSTNAME.fullmatch(host):
+        raise AtsError(f"not a successfactors career site's origin: {ref!r}")
+    if _SF_SAP.search(host):
+        raise AtsError(f"{host} is one of SAP's own hosts (assets, sign-in, its API, or a "
+                       f"legacy portal robots.txt closes), never an employer's career site")
+    return f"https://{host}"
+
+
+def successfactors_list_url(origin: str, row: int) -> str:
+    """The classic list, newest first, from its `row`th posting."""
+    return (f"{origin}/search/?q=&sortColumn=referencedate&sortDirection=desc"
+            f"&startrow={row}")
+
+
+def _sf_attrs(inner: str) -> dict:
+    """A tag's attributes by lower-cased name (the first of each), as written."""
+    out: dict = {}
+    for m in _ATTR.finditer(inner or ""):
+        out.setdefault(m.group(1).lower(), next((g for g in m.group(2, 3, 4) if g is not None), ""))
+    return out
+
+
+def _sf_classes(inner: str) -> set:
+    return set(html_lib.unescape(_sf_attrs(inner).get("class") or "").lower().split())
+
+
+def _sf_place(raw: str) -> str:
+    """The row's place, with a placeholder city and postal code dropped.
+    MEASURED ON GAINWELL'S BOARD (2026-11-22): a remote role's place is
+    written 'Any city, TX, US, 99999' - the state and the country are all it
+    says - so it reads 'TX, US'; and one open in more places than one ends in
+    the board's own count of the rest ('Any city, AR, US, 99999 +1 more…', 14
+    of its 334 rows), which stays: 'AR, US +1 more…'."""
+    out = []
+    for p in (p.strip() for p in _text(raw).split(",")):
+        more = re.fullmatch(r"99999\s+(\+\s*[0-9]+\b.*)", p)
+        if more and out:
+            out[-1] += " " + more.group(1)
+        elif p and p.lower() != "any city" and p != "99999" and not more:
+            out.append(p)
+    return ", ".join(out)
+
+
+def _sf_day(raw: str, lang: str) -> str | None:
+    """The row's date, in the three forms measured, or None - never a guess.
+    'Nov 20, 2026' (en_US) and '21 nov 2026' (es_ES, Indra's) cannot be read
+    two ways; '21.11.2026' (de_DE, JENOPTIK's) is read day first only on a page
+    that says it is German."""
+    t = _text(raw)
+    m = re.fullmatch(r"([A-Za-z]{3})\.? ([0-9]{1,2}), ([0-9]{4})", t)
+    if m:
+        y, mo, d = int(m.group(3)), _SF_EN_MONTHS.get(m.group(1).lower()), int(m.group(2))
+    else:
+        m = re.fullmatch(r"([0-9]{1,2}) ([A-Za-z]{3,4})\.? ([0-9]{4})", t)
+        if m:
+            y, mo, d = int(m.group(3)), _SF_ES_MONTHS.get(m.group(2).lower()), int(m.group(1))
+        else:
+            m = re.fullmatch(r"([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{4})", t) if lang == "de" else None
+            if not m:
+                return None
+            y, mo, d = int(m.group(3)), int(m.group(2)), int(m.group(1))
+    try:
+        return dt.date(y, mo, d).isoformat() if mo else None
+    except ValueError:
+        return None
+
+
+def _sf_posting_url(href: str, origin: str) -> str | None:
+    """A row's link as the posting's address on this career site, or None for
+    one that leaves it or is not a posting (/job/...)."""
+    h = html_lib.unescape(href or "").strip()
+    if not h:
+        return None
+    try:
+        url = urllib.parse.urljoin(origin + "/", h)
+        parts = urllib.parse.urlsplit(url)
+    except ValueError:                           # an href that is no address ('http://[')
+        return None
+    if f"{parts.scheme}://{(parts.netloc or '').lower()}" != origin \
+            or not parts.path.startswith("/job/"):
+        return None
+    return url
+
+
+def _sf_row(cell: str, origin: str, lang: str) -> dict | None:
+    """One posting from one data row's markup: its first titled /job/ link, its
+    first place and its first date. The phone's copy of each comes later in
+    the row and says the same; a row with no titled posting link is none."""
+    low = cell.lower()
+    shut = {"a": low.find("</a>"), "span": low.find("</span>")}
+    nxt = -1                                     # the next <a after this one
+    title = url = where = when = None
+    for m in _SF_TAG.finditer(cell):
+        name, said = m.group(1).lower(), m.group(2).lower()
+        if "jobtitle-link" not in said and "joblocation" not in said and "jobdate" not in said:
+            continue
+        if 0 <= shut[name] < m.end():
+            shut[name] = low.find(f"</{name}>", m.end())   # forward only: one pass a row
+        if shut[name] < 0:
+            continue
+        cls = _sf_classes(m.group(2))
+        if name == "a" and url is None and "jobtitle-link" in cls:
+            # (a link's words end where the next link opens, as a browser
+            # ends them: a row of links with one </a> is read once)
+            if nxt < m.end():
+                nxt = _tag_at(low, "a", m.end())
+            stop = min(x for x in (shut[name], nxt, m.end() + _SF_TEXT_MAX) if x >= 0)
+            text = _jv_text(cell[m.end():stop])
+            got = _sf_posting_url(_sf_attrs(m.group(2)).get("href"), origin)
+            if got and text:
+                url, title = got, text
+        elif name == "span" and where is None and "joblocation" in cls:
+            where = _jv_text(cell[m.end():min(shut[name], m.end() + _SF_TEXT_MAX)])
+        elif name == "span" and when is None and "jobdate" in cls:
+            when = _jv_text(cell[m.end():min(shut[name], m.end() + _SF_TEXT_MAX)])
+    if not url:
+        return None
+    return {"title": title, "location": _sf_place(where or ""), "url": url,
+            "posted": _sf_day(when or "", lang)}
+
+
+def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | None]:
+    """(how many posting rows one list page carries, the postings on it, the
+    total the board states) - read off the page as a reader sees it (_cut): a
+    row in a comment, a script or a template is not a row. Each row runs to its
+    </tr>, or to the next row where one is left unclosed."""
+    body = _cut(page or "")
+    said = _SF_LANG.search(body[:20000])
+    lang = said.group(1).lower() if said else ""
+    starts = [m for m in _SF_TR.finditer(body)
+              if "data-row" in m.group(1).lower() and "data-row" in _sf_classes(m.group(1))]
+    low, rows = body.lower(), []
+    tr = low.find("</tr>")
+    for k, m in enumerate(starts):
+        if 0 <= tr < m.end():
+            tr = low.find("</tr>", m.end())
+        nxt = starts[k + 1].start() if k + 1 < len(starts) else len(body)
+        row = _sf_row(body[m.end():min(tr, nxt) if tr >= 0 else nxt], origin, lang)
+        if row:
+            rows.append(row)
+    # the total: the pagination label's second <b> ('Results <b>1 – 25</b> of
+    # <b>334</b>'; 'Ergebnisse ... von', 'Resultados ... de' in German and Spanish)
+    total = None
+    for m in _SF_LABEL.finditer(body):
+        if "paginationlabel" not in m.group(1).lower() \
+                or "paginationlabel" not in _sf_classes(m.group(1)):
+            continue
+        end = low.find("</span>", m.end())
+        bold = _SF_BOLD.findall(body[m.end():end if 0 <= end < m.end() + 600 else m.end() + 600])
+        digits = re.sub(r"[^0-9]", "", bold[1]) if len(bold) >= 2 else ""
+        total = int(digits) if digits and len(digits) <= 7 else None
+        break
+    return len(starts), rows, total
+
+
+def successfactors_board(ref) -> tuple[str, str, list[dict], int, int | None]:
+    """(the site's origin, its first list page, the postings on it, how many
+    rows it carries, the total it states), or AtsError: for a ref that is not
+    a CSB site's origin, for a page off its host, and for a first page that
+    lists nothing - a Unify site, which says why, or a page nobody has seen a
+    CSB board with nothing open draw, which is not read as a zero."""
+    origin = successfactors_origin(ref)
+    page = _page(successfactors_list_url(origin, 0), same_host=True).text or ""
+    n, rows, total = successfactors_list(page, origin)
+    if not n:
+        if _SF_UNIFY.search(page):
+            raise AtsError(f"{origin} is a SuccessFactors 'Unify' career site: it draws its "
+                           f"list in the browser from POST /services/recruiting/v1/jobs, which "
+                           f"its robots.txt closes, so it cannot be read here (and it is not a "
+                           f"board with nothing open)")
+        raise AtsError(f"{origin}/search/ carried no posting rows and is not a Unify site; a "
+                       f"SuccessFactors career site with nothing open has not been seen, so "
+                       f"this is not read as a zero")
+    if not rows:
+        raise AtsError(f"{origin}/search/ carried {n} posting rows and not one titled link "
+                       f"to a posting on the site, so it is not read as a zero")
+    return origin, page, rows, n, total
+
+
+def successfactors_posting(url: str, origin: str) -> str:
+    """One posting's page, asked only on the career site's own host."""
+    if _sf_posting_url(url, origin) != url:
+        raise AtsError(f"{url} is not a posting of {origin}")
+    return _page(url, same_host=True).text or ""
+
+
+def successfactors_ad(page: str) -> str:
+    """The ad on a posting page: its itemprop="description" element (the
+    class="jobdescription" span sits inside it, Landis+Gyr's 4,939
+    characters), to the close that matches it, as text. "" for a page with
+    none, or one that never closes it."""
+    body = _cut(page or "")
+    m = _SF_DESCRIBED.search(body)
+    if not m:
+        return ""
+    name = m.group(1).lower()
+    if name == "meta":
+        return plain_html(html_lib.unescape(_sf_attrs(m.group(2)).get("content") or ""))
+    depth = 1
+    for t in re.finditer(rf"<(/?){name}\b[^<>]*>", body[m.end():], re.I):
+        if t.group(1):
+            depth -= 1
+        elif not t.group(0).endswith("/>"):
+            depth += 1
+        if depth == 0:
+            return plain_html(body[m.end():m.end() + t.start()])
+    return ""
+
+
+def fetch_successfactors(ref) -> list[dict]:
+    origin, _page1, first, n, total = successfactors_board(ref)
+
+    # PAGED BY THE FIRST PAGE'S OWN STEP, to a page that adds no new posting
+    # (_paged); an offset at or past the total the board states is past its
+    # end by its own word and is not asked
+    def at(offset: int) -> list[dict]:
+        if offset == 0:
+            return first
+        if total is not None and offset >= total:
+            return []
+        page = _page(successfactors_list_url(origin, offset), same_host=True).text or ""
+        return successfactors_list(page, origin)[1]
+    rows = _paged(at, lambda r: r["url"], page=n, max_pages=SF_MAX_PAGES, label=origin)
+    if FETCH_DETAILS:
+        # the ad is on each posting's own page; CSB publishes no pay field, so
+        # any figure comes from the ad's text (plain_rows), never from here
+        _details(rows, lambda r: (successfactors_ad(successfactors_posting(r["url"], origin)), None))
+    return rows
+
 
 FETCHERS = {
     "ashby": fetch_ashby,
@@ -3792,6 +4077,7 @@ FETCHERS = {
     "zohorecruit": fetch_zohorecruit,
     "comeet": fetch_comeet,
     "jobvite": fetch_jobvite,
+    "successfactors": fetch_successfactors,
 }
 
 

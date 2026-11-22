@@ -1338,13 +1338,105 @@ def _jobvite(ref, out: dict) -> None:
                        f"and a posting names another employer")
 
 
+# SAP SuccessFactors' Career Site Builder names the site twice on its /search/
+# page, each time as a pattern around the name in the site's own language:
+# its <title> and its meta description (the search words, empty here, stand
+# between "Find" and "at"). Measured 2026-11-20 on six boards and 2026-11-22
+# on Gainwell's. The two must be one locale's pair and name one name.
+_SF_SITE_NAMES = (
+    (re.compile(r"(.+?) Jobs"), re.compile(r"Find at (.+)")),                     # en_US
+    (re.compile(r"(.+?) - Stellen"), re.compile(r"Bei (.+?) nach suchen")),       # de_DE
+    (re.compile(r"(.+?) ofertas de trabajo"), re.compile(r"Buscar en (.+)")),     # es_ES
+)
+# How many of page 1's postings the probe asks whose they are.
+SF_POSTINGS_ASKED = 5
+
+
+def _itemprops(page: str, key: str) -> list:
+    """What every <meta itemprop=key> on the page says, in page order, with ""
+    for one that says nothing."""
+    out, want = [], key.lower()
+    for tag in _META_TAG.findall(page or ""):
+        if want not in tag.lower():
+            continue
+        attrs = {k.lower(): (a or b) for k, a, b in _ATTR.findall(tag)}
+        if (attrs.get("itemprop") or "").lower() == want:
+            out.append(_clean(html_lib.unescape(attrs.get("content") or "")))
+    return out
+
+
+def _successfactors(ref, out: dict) -> None:
+    # THE SITE'S NAME IS THE BOARD'S OWN CONFIGURATION: the /search/ page's
+    # <title> ('Gainwell Technologies LLC Jobs') and meta description ('Find
+    # at Gainwell Technologies LLC'), believed only when the two agree. Then
+    # each of the first SF_POSTINGS_ASKED postings on that page is asked for
+    # its <meta itemprop="hiringOrganization">: every one asked must carry
+    # one (a posting that names nobody states nothing for the board), and one
+    # naming another employer is a second name, so the board is not proven.
+    # A board whose title, description and postings agree is stated whole.
+    # The name is whatever the site's admin typed: SPX's says "our team" and
+    # Esri Canada's its tenant id, "esricanada" - stated as they are, and
+    # refused by proven() by name. A Unify site, a page off the host and a
+    # ref that is not a CSB origin fail in the reader's own words
+    # (ats.successfactors_board), and state nothing.
+    origin, page, rows, _count, total = ats.successfactors_board(ref)
+    out["hosts"] = {host_of(origin)}
+    out["n"] = total if total is not None else len(rows)
+    out["n_is_partial"] = total is None             # (no label: page 1's rows only)
+    cut = ats._cut(page)
+    title = _inside(cut, _TITLE)
+    t = _clean(html_lib.unescape(title[0])) if title else ""
+    d = _meta(cut, "description")
+    said = next(((a.group(1), b.group(1)) for a, b in
+                 ((by_title.fullmatch(t), by_words.fullmatch(d))
+                  for by_title, by_words in _SF_SITE_NAMES) if a and b), None)
+    if not said:
+        out["how"] = "successfactors search page's title and description name no career site"
+        return
+    if _clean(said[0]) != _clean(said[1]):
+        out["how"] = (f"successfactors search page's title names \"{_clean(said[0])}\" and its "
+                      f"description \"{_clean(said[1])}\": they do not agree on one name")
+        return
+    names, unnamed = [said[0]], []
+    asked = rows[:SF_POSTINGS_ASKED]
+    for row in asked:
+        try:
+            body = ats.successfactors_posting(row["url"], origin)
+        except ats.AtsError as exc:
+            if not isinstance(exc, ats.RobotsRefused) and _failure(exc)[0] == "gone":
+                # closed between the list and the probe: asked again on the
+                # next plan, never "no board there" (as jobvite's)
+                raise PostingGone(f"successfactors posting {row['title']!r} on the list answered "
+                                  f"{_clean(str(exc))[:80]}: it closed while the board was asked, "
+                                  f"so the board is asked again on the next plan") from exc
+            raise
+        orgs = _itemprops(ats._cut(body), "hiringOrganization")
+        if not orgs or "" in orgs:
+            unnamed.append(row["title"])
+        names.extend(o for o in orgs if o)
+    if unnamed:
+        out["how"] = (f"successfactors posting {unnamed[0]!r} names no employer "
+                      f"(hiringOrganization), so the site's \"{_clean(said[0])}\" is not "
+                      f"confirmed by every posting asked")
+        return
+    if not _state(out, names, f"successfactors search page title and description, and the "
+                              f"hiringOrganization of its first {len(asked)} postings, stated "
+                              f"by the career site"):
+        out["how"] = "successfactors career site states no name a person could read"
+        return
+    if len({strict(n)[0] for n in out["names"]}) > 1:
+        out["how"] += (f" - and they do not agree: the site calls itself "
+                       f"\"{_clean(said[0])}\" and a posting names another employer")
+
+
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "smartrecruiters": _smartrecruiters, "bamboohr": _bamboohr,
            "rippling": _rippling, "jazzhr": _jazzhr, "gem": _gem,
            "gusto": _gusto, "paylocity": _paylocity, "icims": _icims,
            "hirebridge": _hirebridge, "applicantpro": _applicantpro,
            "teamtailor": _teamtailor, "pinpoint": _pinpoint,
-           "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite}
+           "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite,
+           "successfactors": _successfactors}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.
