@@ -489,11 +489,15 @@ def paylocity_ids(ref) -> tuple:
 
 # A Paylocity board's own /jobs/All/<uuid> address, as its page states it
 # (verify_boards' `address`) and as the door keeps it: on a row it filed
-# (`page_ref`) and in the note of a record it wired (PAGE_WORDS)
+# (`page_ref`) and in the note of a record it wired (PAGE_WORDS). The SAME
+# grammar as the probe's: the tenant's name after the id may carry , ; ( ),
+# and a door that refused what the probe stated filed the row as "its own
+# page did not state" an address it had (seventh blind review, 2026-11-22).
+# In a note the address ends at "; " or the end - no address holds a space.
 _PAYLOCITY_ALL = re.compile(r"https://recruiting\.paylocity\.com/recruiting/jobs/all/"
                             r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
-                            r"(?:/[^/?#\s;,()\"'<>]{1,200})?/?", re.I)
-PAGE_WORDS = re.compile(r"its own page states its address is (https://\S+?)(?=[;,)\s]|$)")
+                            r"(?:/[^/?#\s\"'<>]{1,200})?/?", re.I)
+PAGE_WORDS = re.compile(r"its own page states its address is (https://\S+?)(?=; |\s|$)")
 
 
 def paylocity_address(value) -> str | None:
@@ -560,6 +564,17 @@ def paylocity_relation(a_refs, b_refs) -> str:
     if a[2] and b[2]:
         return "same" if a[2] & b[2] else "apart"
     return "unknown"
+
+
+def paylocity_ids_agree(a_refs, b_refs) -> bool:
+    """Do two Paylocity boards share an id of one kind, with none of a kind
+    both have disagreeing? The only "same" a SKIP may rest on: the tenant's
+    name after a /List/ id and after an /All/ id is "same" by
+    paylocity_relation, and those two ids can still be two boards of one
+    tenant (seventh blind review, 2026-11-22)."""
+    a, b = _paylocity_sides(a_refs), _paylocity_sides(b_refs)
+    met = [bool(a[k] & b[k]) for k in (0, 1) if a[k] and b[k]]
+    return True in met and False not in met
 
 
 def paylocity_tenants(refs) -> set:
@@ -997,16 +1012,33 @@ def held_boards_for_the_owner(data=None, companies: list | None = None) -> dict:
     return held_boards(standing, stores, by_id, None, companies)
 
 
-def held_board(held: dict, kind, ref, cid=None, names=()) -> tuple | None:
+def held_board(held: dict, kind, ref, cid=None, names=(), refs=None) -> tuple | None:
     """(code, words) of the first hold the owner has on this board, or None:
     under any company's id but `cid`'s own (held by company already), under
-    any key it is known by (found_keys), and - for a Workable board - by a
-    name it goes by (`names`) that a held account nobody followed goes by
-    too (named_holds)."""
+    any key it is known by (found_keys), for a Paylocity board by every
+    address on both sides (`refs`, else its ref: paylocity_relation, held on
+    anything but "apart", as the wiring door holds it), and - for a Workable
+    board - by a name it goes by (`names`) that a held account nobody
+    followed goes by too (named_holds).
+
+    THE PAYLOCITY HALF (seventh blind review, 2026-11-22). Keys alone never
+    meet a hold at a bare /List/<n> beside the same board's /All/<uuid>/<Tenant>,
+    nor a bare /All/<uuid> beside /List/<n>/<Tenant>: the wiring door held such
+    a pair as "cannot be shown", and wire_embedded --write wired it."""
     for k in found_keys(kind, ref, (held or {}).get("pairs")):
         for h in (held or {}).get("keys", {}).get(k) or []:
             if h["id"] != cid:
                 return h["code"], h["words"]
+    if kind == "paylocity":
+        mine = refs or board_refs(kind, ref)
+        for h in (held or {}).get("paylocity") or []:
+            if h["id"] == cid:
+                continue
+            rl = paylocity_relation(mine, h.get("refs") or [h.get("ref")])
+            if rl != "apart":
+                return h["code"], (h["words"] if rl == "same" else
+                                   f"{h['words']}; and whether {show(kind, ref)} is that board "
+                                   f"cannot be told from the two addresses ({rl})")
     hits = named_holds(held, kind, names, cid)
     return hits[0] if hits else None
 

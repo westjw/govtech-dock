@@ -822,7 +822,9 @@ def main() -> int:
     # refusals under the id that was dropped, so the survivor is held by
     # nobody - and this sweep would probe it, find the very board, and write
     # it. So a board found is written only when no hold of his names it
-    # (board_proposals.held_board: the reader the wiring door uses too).
+    # (board_proposals.held_board: the reader the wiring door uses too, a
+    # Paylocity board compared by every address on both sides - seventh blind
+    # review, 2026-11-22).
     import board_proposals
     try:
         held = board_proposals.held_for_the_owner(DATA)
