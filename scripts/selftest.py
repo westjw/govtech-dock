@@ -5700,6 +5700,34 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         if got["names"] != ["Centegix"]:
             errors += fail(f"a Paylocity board whose job text contains '}};' lost its "
                            f"name: {got['names']} ({got['how']})")
+        # THE BOARD'S OWN ADDRESS, AS ITS PAGE STATES IT (fifth blind review,
+        # 2026-11-22): og:url's /jobs/All/<uuid> address - the id the wiring
+        # door keys a board found by /List/ under - and only where the page's
+        # LeadJoinUrl, if it gives one, names the same uuid. An address, never
+        # a name; and a page that states another kind of address states none.
+        PU = "2a4006b3-b639-4728-bbf6-8058cf72a3a6"
+        P_BARE = "https://recruiting.paylocity.com/recruiting/jobs/All/" + PU
+        P_LIST = "https://recruiting.paylocity.com/recruiting/jobs/List/7341/Celona-Inc"
+        celona = (f'<meta property="og:url" content="{P_BARE}" />\n<script>window.pageData = '
+                  '{"Jobs":[{"JobId":1,"JobTitle":"Sales Engineer"}],"LeadJoinUrl":'
+                  f'"/Recruiting/PublicLeads/New/{PU}","ModuleTitle":"Celona"}};</script>')
+        for page, want, what in (
+                (_ID_PAYLOCITY, PAY, "the og:url of a page that gives no LeadJoinUrl"),
+                (celona, P_BARE, "a bare /All/ og:url beside a LeadJoinUrl of the same uuid"),
+                (celona.replace(f"New/{PU}", "New/" + PU.replace("2a40", "9b51")), None,
+                 "a LeadJoinUrl naming another uuid than its og:url"),
+                (celona.replace(P_BARE, P_LIST), None, "an og:url that is a /List/ address"),
+                (celona.replace("recruiting.paylocity.com/",
+                                "recruiting.paylocity.com.evil.test/"),
+                 None, "an og:url on another host"),
+                (celona.replace(f'<meta property="og:url" content="{P_BARE}" />', ""), None,
+                 "a page with no og:url")):
+            got = says("paylocity", P_LIST, {P_LIST: page})
+            if got.get("address") != want or not got["names"] \
+                    or any("/" in n for n in got["names"]):
+                errors += fail(f"the Paylocity probe, on {what}, stated the board's address as "
+                               f"{got.get('address')!r} (wanted {want!r}), names "
+                               f"{got['names']}")
         # A full-address iCIMS ref is the same first page.
         got = says("icims", "https://careers-granicus.icims.com/jobs/search?ss=1",
                    {I_PAGE: _ID_ICIMS})
@@ -37801,8 +37829,14 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
       - the same words about the same board are found again by its key, not
         by its spelling;
       - a doubted worklist applied after he settled its doubt does not stop,
-        and a doubt longer than 300 characters is kept, and found, whole.
+        and a doubt longer than 300 characters is kept, and found, whole;
+      - the command the look prints ("To write exactly this"), run as
+        printed, settles exactly the doubt its --key named, and a Workable
+        number the file ties to the slug named only on a row in Boards we
+        found is the same board for settle (test review, 2026-11-22).
     """
+    import shlex
+
     import admin
     import board_proposals as bp
     import wire_found as wf
@@ -38179,6 +38213,7 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
             errors += fail(f"settle --key naming no standing doubt about the board did not "
                            f"refuse: {text[-300:]!r}")
         code, text = settle("cd-co", "greenhouse/cdco", WORD2, "--key", keys.get(FIRST, "?"))
+        look_first = text
         m = re.search(r"--expect (\S+)", text)
         code_first = m.group(1) if m else "none"
         if code != 0 or "WOULD SETTLE 1 reader doubt" not in text \
@@ -38192,13 +38227,26 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
         if code == 0 or box.on_disk() != before or "REFUSED, and nothing was written" not in text:
             errors += fail(f"settle --write settled a doubt the look did not list, with the code "
                            f"of a look that listed another: {text[-300:]!r}")
-        code, text = settle("cd-co", "greenhouse/cdco", WORD2, "--key", keys.get(FIRST, "?"),
-                            "--write", "--expect", code_first)
+        # THE LINE THE LOOK PRINTS IS THE COMMAND THAT WRITES EXACTLY THIS: run as
+        # printed (test review, 2026-11-22: it could lose --key unnoticed, and
+        # run as printed it was refused, "give --key for each one")
+        printed = next((ln for ln in look_first.splitlines() if "wire_found.py settle" in ln), "")
+        argv = shlex.split(printed.strip())
+        if argv[:2] != ["python3", "scripts/wire_found.py"] or argv[2:3] != ["settle"] \
+                or f"--key {keys.get(FIRST, '?')}" not in printed:
+            errors += fail(f"the look did not print the settle command it describes, with the "
+                           f"--key it was given: {printed!r}")
+        code, text = box.run(*argv[2:])
         s_ = wf.read_stores()
         left = [d["why"] for d in wf.standing_doubts(s_["doubts"], s_).get("cd-co") or []]
-        if code != 0 or left != [LATER] or "cd-co" not in bp.held_for_the_owner(box.tmp):
-            errors += fail(f"settle --key settled more or less than the doubt named: exit {code}, "
-                           f"standing {left}: {text[-200:]!r}")
+        settled = [v for v in json.loads((box.tmp / wf.DOUBTS).read_text()).values()
+                   if v.get("id") == "cd-co" and v.get("settles")]
+        if code != 0 or left != [LATER] or "cd-co" not in bp.held_for_the_owner(box.tmp) \
+                or [x["settles"] for x in settled] != [[keys.get(FIRST, "?")]] \
+                or [x["why"] for x in settled] != [WORD2]:
+            errors += fail(f"the settle command the look printed, run as printed, settled more "
+                           f"or less than the doubt named: exit {code}, standing {left}, "
+                           f"written {settled}: {text[-200:]!r}")
         code, text, _wl, rows_cd = box.plan(_wb_results({"cd-co": cd_site}),
                                             name="worklist-cd-3.json")
         if ((rows_cd or {}).get("cd-co") or {}).get("action") != "HOLD" \
@@ -38246,6 +38294,33 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
             errors += fail(f"settle --board workable/archico called a doubt about Workable account "
                            f"710855, which the file ties to archico, a doubt about another board: "
                            f"{text[-400:]!r}")
+
+    # --- ...AND WHERE THE FILE TIES THEM ONLY ON A ROW IN BOARDS WE FOUND ------
+    # (test review, 2026-11-22: the pair above sits on a record's note, so
+    # settle could stop reading the queue's rows for pairs unnoticed - and a
+    # doubt about the number was then "not on file about" the slug)
+    tie_row = {"id": "other-co", "name": "Other Co", "was": "html",
+               "found": {"type": "workable", "ref": "architwo"},
+               "saw": "apply.workable.com/architwo", "times": 1,
+               "verified": "3 posting(s) readable", "board_calls_itself": "Archi Two",
+               "identity": "unknown", "postings": 3, "titles": [],
+               "identity_why": ("an older batch: their site "
+                                + wf.account_words({"account": "720600", "ref": "architwo"}))}
+    with _WiringBox([co("archi-two", "Archi Two"), co("other-co", "Other Co")],
+                    {"workable/720600": (3, ["Archi Two"]),
+                     "workable/architwo": (3, ["Archi Two"])},
+                    files={bp.FOUND.name: [tie_row]}) as box:
+        box.plan(_wb_results({"archi-two": one("archi-two", "workable", "720600",
+                                               element="iframe")}),
+                 name="worklist-archi-two.json",
+                 doubts={"archi-two": "a reader: account 720600 is a staffing firm's"})
+        code, text = settle("archi-two", "workable/architwo",
+                            "the owner: that Workable account is theirs")
+        if code != 0 or "WOULD SETTLE 1 reader doubt about archi-two (workable/architwo)" \
+                not in text or "workable/720600" not in text[:text.find("LOOKED ONLY")]:
+            errors += fail(f"settle --board workable/architwo called a doubt about Workable "
+                           f"account 720600, which only a row in Boards we found ties to "
+                           f"architwo, a doubt about another board: {text[-400:]!r}")
     return errors
 
 
@@ -38446,16 +38521,27 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         site names it, with the doubt quoted - and in apply, for a worklist
         planned before either was recorded;
       - a board refused in Boards we found (by the board on its row) or in
-        Agent proposals (by its ats_type/ats_ref) for a record merged away,
-        or for a record whose name this company also goes by, is SKIP refused
-        for every other company that names it - "tell the owner" - with
-        nothing read, and apply leaves such a WIRE row alone (`refused`);
+        Agent proposals (by its ats_type/ats_ref) for THIS company under
+        another record, as the file shows it - a record merged away whose
+        recorded name this company goes by (its name or an also_known_as) and
+        no other record does, or whose recorded page is on its own website;
+        a record on file of one name with it, or tied by an also_known_as
+        either way, on one website, or in one Duplicates group where a
+        website is missing - is SKIP refused, "tell the owner", the tie said,
+        with nothing read, and apply leaves such a WIRE row alone (`refused`);
       - refused for ANOTHER company still on file, in either store, it is HOLD
         and filed in Boards we found for the company whose own site and
         board both name it, the refusal and whose it was quoted, for the owner
         to rule on; apply leaves such a WIRE row alone and says to plan again
         (blind review, 2026-11-21: Sub Co's refusal held Parent Co's own board
-        in every door, and nothing put it in front of him for Parent Co);
+        in every door, and nothing put it in front of him for Parent Co). So
+        is one the file does not show to be this company's (fifth blind
+        review, 2026-11-22): an alias with two websites (a parent listing its
+        brand), one name on two websites (two Concourses, whatever the
+        Duplicates queue groups), a merged-away record that recorded no name,
+        whose recorded page is on another record's website, or whose name
+        another record goes by too, and a desk refusal whose row names the
+        board's true owner - each said in words that name both records;
       - a board pending in Agent proposals for another record is HOLD, and a
         WIRE row whose board was put there since the plan is left alone
         (`waiting`; blind review, 2026-11-21); so is the very board found,
@@ -38463,6 +38549,14 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         in apply even where the plan recorded it beside a WIRE row;
       - a first-shape Workday doubt ("workday/<tenant>/<pod>/<site>") is the
         board's list, and holds it;
+      - a Paylocity board found by its /List/ address is known by the /All/
+        address its own page states, so a record on file at the bare /All/
+        address (Celona's shape) holds it; where the page states none, a
+        record whose address cannot be compared with it holds it, in the plan
+        and in apply; and a page that states another board's address is not
+        held for any of them (fifth blind review, 2026-11-22). The company's
+        own proposal pending under the board's other address is that board,
+        its words quoted, never "a different board";
       - admin.act_merge merges a company whatever the door holds for it.
     """
     import admin
@@ -38506,8 +38600,37 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                  co("theiraka-a", "Theiraka Holdings", also_known_as=["Theiraka Co"]),
                  co("theiraka-b", "Theiraka Co"),
                  co("late-survivor-co", "Late Survivor Co", also_known_as=["Late Gone Old Co"]),
-                 # one company on two records, grouped in Duplicates by their name
-                 co("late-twin-a", "Late Twin Co"), co("late-twin-b", "Late Twin Co"),
+                 # one company on two records, grouped in Duplicates by their name,
+                 # with no website on file for one of them to tell them apart
+                 co("late-twin-a", "Late Twin Co", website=None),
+                 co("late-twin-b", "Late Twin Co"),
+                 # a SECOND SIGN beside the name (fifth blind review, 2026-11-22):
+                 # an alias on one website; one name with no website on file for
+                 # the refused record, grouped in Duplicates, and the same pair
+                 # dismissed there
+                 co("akasite-a", "Akasite Holdings", also_known_as=["Akasite Co"],
+                    website=site("akasite")),
+                 co("akasite-b", "Akasite Co", website=site("akasite")),
+                 co("nosite-a", "Nosite Co", website=None), co("nosite-b", "Nosite Co"),
+                 co("nositedis-a", "Nositedis Co", website=None),
+                 co("nositedis-b", "Nositedis Co"),
+                 # refused under records no longer on file: the survivor by its own
+                 # NAME; a desk refusal whose row names the board's true owner,
+                 # merged away; a refusal that recorded no name, merged away; one
+                 # recorded against a page of another record's website; one
+                 # recorded against a page of this company's own website, whose
+                 # name another record goes by too; and one whose name two
+                 # records go by, with no page
+                 co("nm-survivor", "Nm Survivor Co"),
+                 co("pdg-sub", "Pdg Sub Co"), co("pdg-sub-dup", "Pdg Sub Co Inc",
+                                                 website=site("pdg-sub")),
+                 co("pdg-parent", "Pdg Parent Co"),
+                 co("nn-old", "Nn Water", website=site("nn-water")),
+                 co("nn-water", "Nn Water Inc"),
+                 co("pgo-co", "Pgo Co"), co("pgo-host", "Pgo Host"),
+                 co("amb-keep", "Amb Co Inc", also_known_as=["Amb Co"]), co("amb-other", "Amb Co"),
+                 co("amb2-a", "Ambtwo Holdings", also_known_as=["Ambtwo Co"]),
+                 co("amb2-b", "Ambtwo Co"),
                  # one Paylocity board at its /All/ and /List/ addresses (third
                  # blind review, 2026-11-21): refused, held, and put on file since
                  co("pl-sub", "Pl Sub Co"), co("pl-parent", "Pl Parent Co"),
@@ -38515,11 +38638,15 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                     ats={"type": "paylocity", "ref": PL + "All/" + PLU + "1/Pl-Holder-Co"}),
                  co("pl-holder-dup", "Pl Holder Co Inc", also_known_as=["Pl Holder Co"]),
                  co("late-pl-co", "Late Pl Co"), co("late-pl-holder", "Late Pl Holder"),
-                 co("pl-own", "Pl Own Co")]
+                 co("pl-own", "Pl Own Co"),
+                 # its own board pending in Agent proposals under the /All/
+                 # address, found at the /List/ one (fifth blind review)
+                 co("pl-pend", "Pl Pend Co")]
     for keep, drop in ((0, 1), (2, 3), (4, 5), (6, 7), (8, 9)):
         companies[drop]["website"] = companies[keep]["website"]   # one vendor, two records
     pl = {n: PL + f"List/{n}115/" + t_ for n, t_ in ((2, "Pl-Parent-Co"), (3, "Pl-Holder-Co"),
-                                                    (4, "Late-Pl-Co"), (5, "Pl-Own-Co"))}
+                                                    (4, "Late-Pl-Co"), (5, "Pl-Own-Co"),
+                                                    (7, "Pl-Pend-Co"))}
     WD = ["wdco", "wd5", "Careers"]
     BOARDS = {"greenhouse/dupco": (4, ["Dup Co Inc"]), "greenhouse/filedco": (3, ["Filed Co"]),
               "greenhouse/refusedco": (3, ["Refused Co"]), "lever/rejectedco": (3, ["Rejected Co"]),
@@ -38542,10 +38669,20 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
               "greenhouse/theirakaco": (3, ["Theiraka Co"]),
               "greenhouse/latesurvivorco": (3, ["Late Survivor Co"]),
               "greenhouse/latetwinco": (3, ["Late Twin Co"]),
+              "greenhouse/akasiteco": (3, ["Akasite Co"]),
+              "greenhouse/nositeco": (3, ["Nosite Co"]),
+              "greenhouse/nositedisco": (3, ["Nositedis Co"]),
+              "greenhouse/nmsurvivorco": (3, ["Nm Survivor Co"]),
+              "greenhouse/pdgparentco": (3, ["Pdg Parent Co"]),
+              "greenhouse/nnwater": (3, ["Nn Water"]),
+              "greenhouse/pgoco": (3, ["Pgo Co"]),
+              "greenhouse/ambco": (3, ["Amb Co"]),
+              "greenhouse/ambtwoco": (3, ["Ambtwo Co"]),
               **{f"paylocity/{pl[n]}": (3, [nm]) for n, nm in ((2, "Pl Parent Co"),
                                                                (3, "Pl Holder Co"),
                                                                (4, "Late Pl Co"),
-                                                               (5, "Pl Own Co"))}}
+                                                               (5, "Pl Own Co"),
+                                                               (7, "Pl Pend Co"))}}
 
     def names(cid, kind, ref, owner=None):
         page = f"{site(owner or cid)}/careers"
@@ -38570,11 +38707,18 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                  identity_why="an older finder's row"),
                              row("pd-sub", "Pd Sub Co", "pdparentco",
                                  board_calls_itself="Pd Parent Co", identity="MISMATCH",
-                                 identity_why="the board calls itself Pd Parent Co")],
+                                 identity_why="the board calls itself Pd Parent Co"),
+                             # the row states the board's true owner, and its
+                             # record is merged away below (fifth blind review)
+                             row("pdg-sub", "Pdg Sub Co", "pdgparentco",
+                                 board_calls_itself="Pdg Parent Co", identity="MISMATCH",
+                                 identity_why="the board calls itself Pdg Parent Co")],
              bp.RULED.name: {"refused-drop": {"accept": False, "by": "owner", "on": "2026-11-12",
                                               "why": "the parent's board, not theirs"},
                              "pd-sub": {"accept": False, "by": "owner", "on": "2026-11-12",
-                                        "why": "Pd Parent Co's board, not this company's"}},
+                                        "why": "Pd Parent Co's board, not this company's"},
+                             "pdg-sub": {"accept": False, "by": "owner", "on": "2026-11-12",
+                                         "why": "Pdg Parent Co's board, not this company's"}},
              bp.PROPOSALS: {"board:rejected-drop": {
                  "kind": "board", "id": "rejected-drop", "name": "Rejected Co Inc",
                  "ats_type": "lever", "ats_ref": "rejectedco", "status": "rejected",
@@ -38600,8 +38744,8 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                      "by": "wire_embedded.py", "at": "2026-09-02T13:10:21-04:00",
                      "why": "this board is claimed by more than one company on the board - an "
                             "acquisition to settle"},
-                 # refused for records merged away (pg-sub, esrilike-canada) and for
-                 # records on file (the -a of each pair)
+                 # refused for records merged away (pg-sub, esrilike-canada, nm-gone,
+                 # amb2-old) and for records on file (the -a of each pair)
                  **{f"board:{rid}": {
                      "kind": "board", "id": rid, "name": rname, "ats_type": "greenhouse",
                      "ats_ref": ref, "status": "rejected", "ruled_by": "owner",
@@ -38613,7 +38757,34 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                         ("samename-a", "Samename Co", "samenameco"),
                         ("sitetie-a", "Sitetie Co", "sitetieco"),
                         ("dismissed-a", "Dismissed Co", "dismissedco"),
-                        ("theiraka-a", "Theiraka Holdings", "theirakaco"))},
+                        ("theiraka-a", "Theiraka Holdings", "theirakaco"),
+                        ("akasite-a", "Akasite Holdings", "akasiteco"),
+                        ("nosite-a", "Nosite Co", "nositeco"),
+                        ("nositedis-a", "Nositedis Co", "nositedisco"),
+                        ("nm-gone", "Nm Survivor Co", "nmsurvivorco"),
+                        ("amb2-old", "Ambtwo Co", "ambtwoco"))},
+                 # recorded against a page: of another record's website, and of
+                 # the site of one of the two records that go by its name
+                 **{f"board:{rid}": {
+                     "kind": "board", "id": rid, "name": rname, "ats_type": "greenhouse",
+                     "ats_ref": ref, "status": "rejected", "ruled_by": "owner",
+                     "ruled_on": "2026-11-10", "ruled_why": "a reseller's board",
+                     "evidence": f"{site(host)}/careers"}
+                    for rid, rname, ref, host in (("pgo-old", "Pgo Co", "pgoco", "pgo-host"),
+                                                  ("amb-old", "Amb Co", "ambco", "amb-keep"))},
+                 # refused with no name recorded, for a record merged away below
+                 "board:nn-old": {
+                     "kind": "board", "id": "nn-old", "ats_type": "greenhouse",
+                     "ats_ref": "nnwater", "status": "rejected", "ruled_by": "owner",
+                     "ruled_on": "2026-11-10", "ruled_why": "a staffing firm's board"},
+                 # pending for the company itself, under its /All/ address
+                 "board:pl-pend": {
+                     "kind": "board", "id": "pl-pend", "name": "Pl Pend Co",
+                     "ats_type": "paylocity", "ats_ref": PL + "All/" + PLU + "7/Pl-Pend-Co",
+                     "status": "pending", "by": "wire_embedded.py",
+                     "at": "2026-09-02T13:10:21-04:00",
+                     "why": "claimed by more than one company on the board - an acquisition to "
+                            "settle"},
                  # refused for the company itself, under its /All/ address
                  "board:pl-own": {
                      "kind": "board", "id": "pl-own", "name": "Pl Own Co",
@@ -38629,7 +38800,7 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
              # the owner told the Duplicates queue these pairs are not one company
              "admin_dismissed.json": {"duplicates": {
                  admin.ident(n): {"on": "2026-11-01", "by": "owner", "why": "Not duplicates"}
-                 for n in ("Sitetie Co", "Dismissed Co")}},
+                 for n in ("Sitetie Co", "Dismissed Co", "Nositedis Co")}},
              # a doubt in the FIRST shape about a Workday board, for a company no
              # longer on file
              wf.DOUBTS: {"wd-gone": {"board": "workday/wdco/wd5/Careers",
@@ -38669,7 +38840,8 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         # --- the desk merges, whatever the door holds -------------------------
         for drop, keep in (("dup-drop", "dup-keep"), ("filed-drop", "filed-keep"),
                            ("refused-drop", "refused-keep"), ("rejected-drop", "rejected-keep"),
-                           ("plain-drop", "plain-keep")):
+                           ("plain-drop", "plain-keep"), ("pdg-sub", "pdg-sub-dup"),
+                           ("nn-old", "nn-water")):
             r = admin.act_merge({"keep": keep, "drop": drop, "by": "owner",
                                  "why": "selftest: one vendor, two records"})
             if r.get("error") or any(c["id"] == drop for c in
@@ -38772,9 +38944,20 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 # its survivor: the refusal is its own
                 ("Late Survivor Co", "greenhouse/latesurvivorco was refused for Late Gone Old "
                                      "Co in Agent proposals"),
+                ("Late Survivor Co", "it is taken for this company's because the record "
+                                     "since merged away (Late Gone Old Co) went by a name Late "
+                                     "Survivor Co (late-survivor-co) goes by, and no other "
+                                     "record on file does"),
                 ("Late Survivor Co", "tell the owner"),
-                # the same company's refusal, under its other record
+                # the same company's refusal, under its other record: one name,
+                # no website on file for the other, one group in Duplicates -
+                # and a dismissal there frees the board (fifth blind review)
                 ("Late Twin Co", "greenhouse/latetwinco was refused for Late Twin Co"),
+                ("Late Twin Co", "it is taken for this company's because Late Twin Co "
+                                 "(late-twin-a) and Late Twin Co (late-twin-b) have one name, "
+                                 "the Duplicates queue groups them"),
+                ("Late Twin Co", "dismissing that pair in the Duplicates queue puts this board "
+                                 "in front of the owner"),
                 ("Late Twin Co", "tell the owner"),
                 ("Late Pl Co", "is now on file as the board of Late Pl Holder"),
                 ("Late Pending Co", "since the plan, greenhouse/latependinggroup is waiting in "
@@ -38823,7 +39006,19 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                          "theiraka-b": names("theiraka-b", "greenhouse", "theirakaco"),
                          "pl-parent": names("pl-parent", "paylocity", pl[2]),
                          "pl-holder-dup": names("pl-holder-dup", "paylocity", pl[3]),
-                         "pl-own": names("pl-own", "paylocity", pl[5])}),
+                         "pl-own": names("pl-own", "paylocity", pl[5]),
+                         "pl-pend": names("pl-pend", "paylocity", pl[7]),
+                         "akasite-b": names("akasite-b", "greenhouse", "akasiteco",
+                                            owner="akasite"),
+                         "nosite-b": names("nosite-b", "greenhouse", "nositeco"),
+                         "nositedis-b": names("nositedis-b", "greenhouse", "nositedisco"),
+                         "nm-survivor": names("nm-survivor", "greenhouse", "nmsurvivorco"),
+                         "pdg-parent": names("pdg-parent", "greenhouse", "pdgparentco"),
+                         "nn-water": names("nn-water", "greenhouse", "nnwater"),
+                         "pgo-co": names("pgo-co", "greenhouse", "pgoco"),
+                         "amb-keep": names("amb-keep", "greenhouse", "ambco"),
+                         "amb-other": names("amb-other", "greenhouse", "ambco"),
+                         "amb2-b": names("amb2-b", "greenhouse", "ambtwoco")}),
             name="worklist-parents.json")
         owner_rules = "whether it is {}'s own board is the owner's to rule on"
         for cid, action, kind, must_say in (
@@ -38837,10 +39032,19 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                             "Co's board, not this company's)"),
                 ("pd-parent", "HOLD", None, "refused for another company, still on file (Pd Sub "
                                             "Co); " + owner_rules.format("Pd Parent Co")),
-                # one company on two records: his refusal is its answer
-                ("pa-parent", "SKIP", "refused", "greenhouse/paparentco was refused for Pa Sub Co "
-                                                 "in Agent proposals"),
-                ("pa-parent", "SKIP", "refused", "tell the owner"),
+                # AN ALIAS ALONE IS NOT ONE COMPANY (fifth blind review,
+                # 2026-11-22): its also_known_as carries the refused record's
+                # name, on another website - his words were that the board is
+                # Pa Parent Co's, and it goes in front of him for it
+                ("pa-parent", "HOLD", None, "greenhouse/paparentco was refused for Pa Sub Co in "
+                                            "Agent proposals"),
+                ("pa-parent", "HOLD", None, "refused for another company, still on file (Pa Sub "
+                                            "Co): the also_known_as of Pa Parent Co (pa-parent) "
+                                            "carries \"Pa Sub Co\", the name of Pa Sub Co "
+                                            "(pa-sub), but they are on different websites "
+                                            "(pasub.test and paparent.test), so the file does "
+                                            "not show they are one company; "
+                                            + owner_rules.format("Pa Parent Co")),
                 # pending in Agent proposals for another record: his to settle
                 ("pw-co", "HOLD", None, "greenhouse/pwgroup is waiting in Agent proposals for Pw "
                                         "Other Co, proposed 2026-09-02 by wire_embedded.py"),
@@ -38860,12 +39064,102 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 # a country on the refused name: not this company's name
                 ("esrilike", "HOLD", None, "refused for a record since merged away (Esrilike "
                                            "Canada), and this company does not go by that name"),
-                # one company on two records: his answer stands, unread
-                ("samename-b", "SKIP", "refused", "greenhouse/samenameco was refused for "
-                                                  "Samename Co in Agent proposals"),
+                # ONE NAME ON TWO WEBSITES IS TWO COMPANIES, whatever the
+                # Duplicates queue groups (it groups every pair of one name:
+                # fifth blind review, 2026-11-22)
+                ("samename-b", "HOLD", None, "greenhouse/samenameco was refused for Samename Co "
+                                             "in Agent proposals"),
+                ("samename-b", "HOLD", None, "refused for another company, still on file "
+                                             "(Samename Co): Samename Co (samename-a) and "
+                                             "Samename Co (samename-b) have one name, but they "
+                                             "are on different websites (samenamea.test and "
+                                             "samenameb.test), so the file does not show they "
+                                             "are one company"),
+                # one company on two records, as the file shows it: his answer
+                # stands, unread, and the SKIP line says what shows it
                 ("sitetie-b", "SKIP", "refused", "greenhouse/sitetieco was refused for Sitetie Co"),
-                ("theiraka-b", "SKIP", "refused", "greenhouse/theirakaco was refused for Theiraka "
-                                                  "Holdings"),
+                ("sitetie-b", "SKIP", "refused", "the refusal is taken for this company's because "
+                                                 "Sitetie Co (sitetie-a) and Sitetie Co "
+                                                 "(sitetie-b) have one name, on one website "
+                                                 "(sitetie.test) - tell the owner"),
+                ("akasite-b", "SKIP", "refused", "greenhouse/akasiteco was refused for Akasite "
+                                                 "Holdings in Agent proposals"),
+                ("akasite-b", "SKIP", "refused", "because the also_known_as of Akasite Holdings "
+                                                 "(akasite-a) carries \"Akasite Co\", the name of "
+                                                 "Akasite Co (akasite-b), on one website "
+                                                 "(akasite.test) - tell the owner"),
+                ("nosite-b", "SKIP", "refused", "because Nosite Co (nosite-a) and Nosite Co "
+                                                "(nosite-b) have one name, the Duplicates queue "
+                                                "groups them, and nothing on file tells them "
+                                                "apart (Nosite Co (nosite-a) has no website on "
+                                                "file) - if they are two companies, dismissing "
+                                                "that pair in the Duplicates queue puts this "
+                                                "board in front of the owner for Nosite Co "
+                                                "(nosite-b)"),
+                # an alias on two websites, the other way round: another company's
+                ("theiraka-b", "HOLD", None, "greenhouse/theirakaco was refused for Theiraka "
+                                             "Holdings"),
+                ("theiraka-b", "HOLD", None, "refused for another company, still on file "
+                                             "(Theiraka Holdings): the also_known_as of Theiraka "
+                                             "Holdings (theiraka-a) carries \"Theiraka Co\", the "
+                                             "name of Theiraka Co (theiraka-b), but they are on "
+                                             "different websites (theirakaa.test and "
+                                             "theirakab.test)"),
+                # one name, no website on file for one, and the pair dismissed in
+                # Duplicates: nothing on file says one company
+                ("nositedis-b", "HOLD", None, "refused for another company, still on file "
+                                              "(Nositedis Co): Nositedis Co (nositedis-a) and "
+                                              "Nositedis Co (nositedis-b) have one name, but "
+                                              "Nositedis Co (nositedis-a) has no website on file "
+                                              "and the Duplicates queue does not group them"),
+                # merged away: the survivor by its own NAME is its answer, unread
+                ("nm-survivor", "SKIP", "refused", "greenhouse/nmsurvivorco was refused for Nm "
+                                                   "Survivor Co in Agent proposals"),
+                ("nm-survivor", "SKIP", "refused", "because the record since merged away (Nm "
+                                                   "Survivor Co) went by a name Nm Survivor Co "
+                                                   "(nm-survivor) goes by, and no other record "
+                                                   "on file does"),
+                # a desk refusal whose row names the board's true owner, its record
+                # merged away: the true owner's own board goes in front of him
+                ("pdg-parent", "HOLD", None, "greenhouse/pdgparentco was refused for Pdg Sub Co "
+                                             "in Boards we found (owner on 2026-11-12: Pdg Parent "
+                                             "Co's board, not this company's) - refused for a "
+                                             "record since merged away (Pdg Sub Co), and this "
+                                             "company does not go by that name; "
+                                             + owner_rules.format("Pdg Parent Co")),
+                # a refusal that recorded no name, its record merged into this
+                # one: whose it was cannot be shown, and it is said so - never
+                # "does not go by that name" of a name nobody recorded
+                ("nn-water", "HOLD", None, "greenhouse/nnwater was refused for nn-old in Agent "
+                                           "proposals (owner on 2026-11-10: a staffing firm's "
+                                           "board) - refused for a record no longer on file "
+                                           "(nn-old), and the refusal recorded no name, so "
+                                           "whose it was cannot be shown; "
+                                           + owner_rules.format("Nn Water Inc")),
+                # recorded against a page of another record's website
+                ("pgo-co", "HOLD", None, "refused for a record since merged away (Pgo Co), a "
+                                         "name Pgo Co (pgo-co) goes by, but the refusal was "
+                                         "recorded against https://www.pgohost.test/careers, on "
+                                         "the website of Pgo Host (pgo-host, pgohost.test), so "
+                                         "the file does not show it was this company's"),
+                # recorded against a page of its own website: his answer, though
+                # another record goes by the name too - and that one is held
+                ("amb-keep", "SKIP", "refused", "because the record since merged away (Amb Co) "
+                                                "went by a name Amb Co Inc (amb-keep) goes by, "
+                                                "and the refusal was recorded against "
+                                                "https://www.ambkeep.test/careers, a page of its "
+                                                "own website"),
+                ("amb-other", "HOLD", None, "refused for a record since merged away (Amb Co), a "
+                                            "name Amb Co (amb-other) goes by, but the refusal "
+                                            "was recorded against https://www.ambkeep.test/"
+                                            "careers, on the website of Amb Co Inc (amb-keep, "
+                                            "ambkeep.test)"),
+                # two records go by the name it recorded: which was its survivor
+                # cannot be shown
+                ("amb2-b", "HOLD", None, "refused for a record since merged away (Ambtwo Co), a "
+                                         "name Ambtwo Co (amb2-b) goes by - and so does Ambtwo "
+                                         "Holdings (amb2-a), so which of them it was merged into "
+                                         "cannot be shown"),
                 # one name, two websites, and the owner said in Duplicates they
                 # are not one company: another company's refusal
                 ("dismissed-b", "HOLD", None, "refused for another company, still on file "
@@ -38876,42 +39170,184 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                                 "Co"),
                 # its own refusal, under the board's other address: the same board
                 ("pl-own", "SKIP", "refused", "refused earlier in Agent proposals: owner on "
-                                              "2026-11-10 - a reseller's board")):
+                                              "2026-11-10 - a reseller's board"),
+                # its own proposal, pending under the board's other address: the
+                # same board, the proposal's own words quoted - never "a
+                # different board" (fifth blind review, 2026-11-22)
+                ("pl-pend", "HOLD", None, f"this board (as paylocity/{PL}All/{PLU}7/Pl-Pend-Co) "
+                                          f"is already waiting in Agent proposals for this "
+                                          f"company, proposed 2026-09-02 by wire_embedded.py: "
+                                          f"\"claimed by more than one company on the board - "
+                                          f"an acquisition to settle\"")):
             r = (rows_p or {}).get(cid) or {}
             if r.get("action") != action or (kind and r.get("kind") != kind) \
                     or must_say not in _wb_words(r):
                 errors += fail(f"{cid}: a board refused for another company was planned "
                                f"{r.get('action')}/{r.get('kind')} saying {_wb_words(r)[:300]!r}; "
                                f"wanted {action}{'/' + kind if kind else ''} saying {must_say!r}")
-        if {"greenhouse/samenameco", "greenhouse/sitetieco", "greenhouse/theirakaco"} \
-                & set(box.asked + box.probed):
+        if {"greenhouse/sitetieco", "greenhouse/akasiteco", "greenhouse/nositeco",
+                "greenhouse/nmsurvivorco"} & set(box.asked + box.probed):
             errors += fail("a board refused for one company on two records was read or asked "
                            "whose it is for the other record")
+        if "a different board" in _wb_words((rows_p or {}).get("pl-pend") or {}):
+            errors += fail(f"pl-pend: its own pending proposal for the board, under its other "
+                           f"address, was called a different board: "
+                           f"{_wb_words((rows_p or {}).get('pl-pend') or {})[:400]!r}")
+        for cid in ("nn-water", "pgo-co", "amb2-b", "pa-parent", "theiraka-b", "samename-b",
+                    "nositedis-b"):
+            if "does not go by that name" in _wb_words((rows_p or {}).get(cid) or {}):
+                errors += fail(f"{cid}: the held row says this company does not go by a name it "
+                               f"goes by, or one nobody recorded: "
+                               f"{_wb_words((rows_p or {}).get(cid) or {})[:300]!r}")
         # A ROW FILED FOR HIM PROPOSES THE BOARD: it never says the board "is not
         # proposed again" (the refusal is quoted in its own words; third blind
         # review, 2026-11-21: nothing pinned it)
-        for cid in ("pr-parent", "pd-parent", "pg-parent", "dismissed-b"):
+        for cid in ("pr-parent", "pd-parent", "pg-parent", "dismissed-b", "pa-parent",
+                    "theiraka-b", "samename-b", "nositedis-b", "pdg-parent", "nn-water",
+                    "pgo-co", "amb-other", "amb2-b"):
             if "not proposed again" in _wb_words((rows_p or {}).get(cid) or {}):
                 errors += fail(f"{cid}: the plan's held row says the board it proposes is not "
                                f"proposed again: {_wb_words((rows_p or {}).get(cid) or {})[:300]!r}")
-        if "greenhouse/paparentco" in box.asked or "greenhouse/paparentco" in box.probed:
-            errors += fail("a board refused for this company under another of its records was "
-                           "read or asked whose it is")
         code, text, look_p = box.look(wl_p)
         code, text = box.write(wl_p, look_p)
         q = {r_["id"]: r_ for r_ in json.loads((box.tmp / bp.FOUND.name).read_text())}
         for cid, words in (("pr-parent", "was refused for Pr Sub Co in Agent proposals"),
                            ("pd-parent", "was refused for Pd Sub Co in Boards we found"),
-                           ("pg-parent", "was refused for Pg Sub Co in Agent proposals")):
+                           ("pg-parent", "was refused for Pg Sub Co in Agent proposals"),
+                           ("pa-parent", "was refused for Pa Sub Co in Agent proposals"),
+                           ("theiraka-b", "was refused for Theiraka Holdings in Agent "
+                                          "proposals"),
+                           ("samename-b", "was refused for Samename Co in Agent proposals"),
+                           ("pdg-parent", "was refused for Pdg Sub Co in Boards we found"),
+                           ("nn-water", "refused for a record no longer on file (nn-old), and "
+                                        "the refusal recorded no name"),
+                           ("pgo-co", "was recorded against https://www.pgohost.test/careers"),
+                           ("amb2-b", "so which of them it was merged into cannot be shown")):
             if code != 0 or words not in str((q.get(cid) or {}).get("identity_why")) \
                     or "not proposed again" in str((q.get(cid) or {}).get("identity_why")) \
                     or not (q.get(cid) or {}).get("filed"):
                 errors += fail(f"{cid}: a board refused for another company did not reach the "
                                f"owner's desk for the company whose own site and board name it, "
                                f"the refusal quoted: exit {code}; {(q.get(cid) or {})!r:.300}")
-        if "pa-parent" in q:
-            errors += fail("a board refused for this company under another of its records was "
-                           "filed for the owner again")
+        for cid in ("sitetie-b", "akasite-b", "nosite-b", "nm-survivor", "amb-keep"):
+            if cid in q:
+                errors += fail(f"{cid}: a board refused for this company under another of its "
+                               f"records was filed for the owner again")
+        # a company somebody said no to is not asked of anybody: its /List/
+        # board's page is not asked for its address either (addressed_by_page)
+        if f"paylocity/{pl[5]}" in box.probed:
+            errors += fail("a board refused for the company itself was asked whose it is, or "
+                           "for its address, before it was skipped as refused")
+
+    # --- ONE PAYLOCITY BOARD UNDER TWO IDS THAT NOTHING ON THE ADDRESSES TIES ---
+    # (fifth blind review, 2026-11-22: Celona's record reads .../All/<uuid> with
+    # no tenant's name after it, the one such of the 41 Paylocity records on
+    # file, and a /List/<n>/Celona-Inc find met nothing of it and was WIRED to
+    # a second record, every posting listed twice; find_site_boards writes a
+    # /List/<n> address with no name after it too.) The board's own page states
+    # its /All/ address, and a board found by /List/ is known by it; where the
+    # page states none, a record the addresses cannot be compared with holds it.
+    U = {n: f"{n}a4006b3-b639-4728-bbf6-8058cf72a3a6" for n in range(1, 8)}
+    BARE = {n: PL + "All/" + U[n] for n in U}
+    LB = {n: PL + f"List/73{n}1/Bare-{n}-Inc" for n in range(1, 6)}
+    LB_NAKED = PL + "List/7361"
+    LB_GONE = PL + "List/7371/Bare-Gone-Inc"          # a /List/ board that does not read
+    ALL_CO = PL + "All/" + U[7] + "/All-Co"           # named by its /All/ address
+    TEN = PL + "All/" + U[6] + "/Tenant-Six-Co"
+    companies_b = [co("bare-holder", "Bare Holder"),
+                   co("tenant-six", "Tenant Six Co", ats={"type": "paylocity", "ref": TEN}),
+                   co("late-bare-4", "Late Bare 4"), co("late-bare-5", "Late Bare 5"),
+                   *[co(f"bare-{n}", f"Bare {n} Inc") for n in range(1, 6)],
+                   co("naked-co", "Naked Co"), co("bare-gone", "Bare Gone Inc"),
+                   co("all-co", "All Co")]
+    BOARDS_B = {**{f"paylocity/{LB[n]}": (3, [f"Bare {n} Inc"]) for n in LB},
+                f"paylocity/{LB_NAKED}": (3, ["Naked Co"]),
+                f"paylocity/{ALL_CO}": (3, ["All Co"])}
+    with _WiringBox(companies_b, BOARDS_B) as box:
+        # the page states the address: the holder's (1), another board's (3),
+        # Late Bare 4's to be (4), the tenant's of a record on file (naked);
+        # it states none (2, 5)
+        box.says.update({f"paylocity/{LB[1]}": {"address": BARE[1]},
+                         f"paylocity/{LB[3]}": {"address": BARE[3]},
+                         f"paylocity/{LB[4]}": {"address": BARE[4]},
+                         f"paylocity/{LB_NAKED}": {"address": TEN},
+                         f"paylocity/{LB_GONE}": {"address": BARE[2]},
+                         f"paylocity/{ALL_CO}": {"address": ALL_CO}})
+        code, text, wl_b, rows_b = box.plan(_wb_results({
+            "bare-4": names("bare-4", "paylocity", LB[4]),
+            "bare-5": names("bare-5", "paylocity", LB[5])}), name="worklist-bare-late.json")
+        if code != 0 or sorted(i for i, r in (rows_b or {}).items() if r["action"] == "WIRE") \
+                != ["bare-4", "bare-5"] or (rows_b or {}).get("bare-4", {}).get("page_ref") \
+                != BARE[4]:
+            errors += fail(f"two /List/ Paylocity finds that no record on file can share a board "
+                           f"with did not plan WIRE, the page's own address on the row: "
+                           f"{text[-400:]}")
+        # records put on file since at bare /All/ addresses, Celona's shape:
+        # each on a board those two may be
+        box.by_hand(lambda by_id, cs: (
+            by_id["bare-holder"].update(ats={"type": "paylocity", "ref": BARE[1]}),
+            by_id["late-bare-4"].update(ats={"type": "paylocity", "ref": BARE[4]}),
+            by_id["late-bare-5"].update(ats={"type": "paylocity", "ref": BARE[5]})))
+        code, text, _ = box.look(wl_b)
+        body = text[text.find("LEFT ALONE"):]
+        for who, must in (("Bare 4 Inc", f"paylocity/{LB[4]} is now on file as the board of Late "
+                                         f"Bare 4"),
+                          ("Bare 5 Inc", "cannot be compared with (Bare Holder at "),
+                          ("Bare 5 Inc", "Late Bare 5 at "),
+                          ("Bare 5 Inc", "this board's own page did not state its /jobs/All/ "
+                                         "address"),
+                          ("Bare 5 Inc", "- plan again")):
+            line = next((ln for ln in body.splitlines() if ln.strip().startswith(who + " ")), "")
+            if must not in line:
+                errors += fail(f"{who}: a /List/ Paylocity row whose board a record put on file "
+                               f"since may read was not left alone saying {must!r}: {text[-500:]}")
+        del box.probed[:]
+        code, text, _wl, rows_b = box.plan(_wb_results({
+            cid: names(cid, "paylocity", ref) for cid, ref in (
+                ("bare-1", LB[1]), ("bare-2", LB[2]), ("bare-3", LB[3]),
+                ("naked-co", LB_NAKED), ("bare-gone", LB_GONE), ("all-co", ALL_CO))}),
+            name="worklist-bare.json")
+        for cid, action, must_say in (
+                # the page states the bare holder's own address: one board
+                ("bare-1", "HOLD", f"paylocity/{LB[1]} is already on file as the board of Bare "
+                                   f"Holder (its own page states its address is {BARE[1]})"),
+                # it states none: the bare holder cannot be compared with it
+                ("bare-2", "HOLD", f"cannot be compared with (Bare Holder at "
+                                   f"{BARE[1].removeprefix('https://')}"),
+                ("bare-2", "HOLD", "one Paylocity board has a /jobs/List/ id and a /jobs/All/ id, "
+                                   "tied only by the tenant's name after either"),
+                # a /List/ address with no name after it, whose page states the
+                # address of a record on file with its tenant's name
+                ("naked-co", "HOLD", f"paylocity/{LB_NAKED} is already on file as the board of "
+                                     f"Tenant Six Co (its own page states its address is "
+                                     f"{TEN})")):
+            r = (rows_b or {}).get(cid) or {}
+            if r.get("action") != action or must_say not in _wb_words(r):
+                errors += fail(f"{cid}: a Paylocity board found by /List/ beside a record on its "
+                               f"/All/ address was planned {r.get('action')} saying "
+                               f"{_wb_words(r)[:400]!r}; wanted {action} saying {must_say!r}")
+        # the page states another board's address: shown apart from every
+        # record on file, it is not held for any of them
+        r3 = (rows_b or {}).get("bare-3") or {}
+        if r3.get("action") != "WIRE" or r3.get("page_ref") != BARE[3]:
+            errors += fail(f"bare-3: a /List/ board whose own page states an /All/ address no "
+                           f"record holds was planned {r3.get('action')}: {_wb_words(r3)[:300]!r}")
+        # each page asked once, in the plan, for its address and its name both,
+        # and only after its board read - a board that does not read is never
+        # asked whose it is - and a board named by its /All/ address is not
+        # asked for an address it already has
+        twice = sorted({k for k in box.probed if box.probed.count(k) > 1})
+        if twice or sorted(set(box.probed)) != sorted(f"paylocity/{x}" for x in (
+                LB[1], LB[2], LB[3], LB_NAKED, ALL_CO)):
+            errors += fail(f"the Paylocity boards' pages were not each asked once, after a "
+                           f"read that answered: asked {sorted(box.probed)}")
+        rg, ra = (rows_b or {}).get("bare-gone") or {}, (rows_b or {}).get("all-co") or {}
+        if rg.get("action") != "SKIP" or rg.get("kind") != "unreadable" or rg.get("page_ref") \
+                or ra.get("action") != "WIRE" or ra.get("page_ref"):
+            errors += fail(f"a /List/ board that does not read, or a board named by its /All/ "
+                           f"address, was given the address its page states: "
+                           f"{rg.get('action')}/{rg.get('kind')} {rg.get('page_ref')!r}, "
+                           f"{ra.get('action')} {ra.get('page_ref')!r}")
     return errors
 
 

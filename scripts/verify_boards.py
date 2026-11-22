@@ -1016,17 +1016,45 @@ def _paylocity(ref, out: dict) -> None:
     # its tail cut off states the same title. It is NOT the tail - Centegix's
     # address ends "34ED-LLC" and Circuit's "TFR-Transit-Inc", while the
     # boards call themselves "Centegix" and "Circuit Transit".
+    #
+    # THE BOARD'S OWN ADDRESS, AS ITS PAGE STATES IT (`address`, this probe
+    # only). One Paylocity board has two ids - /jobs/List/<n> and
+    # /jobs/All/<uuid> - and FAAC's /List/ frame lands on its /All/ page. The
+    # page gives its /All/ address in <meta property="og:url">, and its
+    # pageData's LeadJoinUrl (/Recruiting/PublicLeads/New/<uuid>) the same
+    # uuid (Celona's page states both, measured 2026-11-22). The wiring door
+    # keys a board found by its /List/ address by it, so a record on file at
+    # the bare /All/ address is met (fifth blind review, 2026-11-22). Stated
+    # only when og:url is a recruiting.paylocity.com /jobs/All/<uuid> address
+    # and the LeadJoinUrl, where the page gives one, names the same uuid: a
+    # page that disagrees with itself about its id states none. It is an
+    # address, never a name.
     url = str(ref or "").strip()
     if host_of(url) != "recruiting.paylocity.com" or not url.startswith("http"):
         out["how"] = "paylocity ref is not a recruiting.paylocity.com board"
         return
-    data = _embedded(_board_page(url), r"window\.pageData\s*=\s*")
+    page = _board_page(url)
+    data = _embedded(page, r"window\.pageData\s*=\s*")
     jobs = _dig(data, "Jobs")
     out["n"] = sum(1 for j in jobs if str(_dig(j, "JobTitle") or "").strip()) \
         if isinstance(jobs, list) else 0
     if not _state(out, [_dig(data, "ModuleTitle")],
                   "paylocity ModuleTitle, stated on the board's own page"):
         out["how"] = "paylocity page states no ModuleTitle"
+    said = _meta(page, "og:url")
+    m = _PAYLOCITY_ALL.fullmatch(said)
+    lead = _PAYLOCITY_LEAD.search(str(_dig(data, "LeadJoinUrl") or "").strip())
+    if m and host_of(said) == "recruiting.paylocity.com" \
+            and (lead is None or lead.group(1).lower() == m.group(1).lower()):
+        out["address"] = said.rstrip("/")
+
+
+# what a Paylocity board's page says its own id is (_paylocity's `address`)
+_PAYLOCITY_UUID = r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"
+_PAYLOCITY_ALL = re.compile(r"https://recruiting\.paylocity\.com/recruiting/jobs/all/"
+                            + _PAYLOCITY_UUID + r"(?:/[^/?#\s\"'<>]{1,200})?/?", re.I)
+_PAYLOCITY_LEAD = re.compile(r"/recruiting/publicleads/new/" + _PAYLOCITY_UUID
+                             + r"(?![0-9a-f-])", re.I)
 
 
 def _icims(ref, out: dict) -> None:

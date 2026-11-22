@@ -436,7 +436,10 @@ def boards_named(entry: dict) -> tuple[list, list]:
             # company somebody refused)
             "account": cand.get("account"), "no_address": cand.get("no_address"),
             "follow_failed": cand.get("follow_failed"), "too_big": cand.get("too_big"),
-            "unread": cand.get("unread"), "declined": cand.get("declined")})
+            "unread": cand.get("unread"), "declined": cand.get("declined"),
+            # set by addressed_by_page: the /All/ address a Paylocity board's
+            # own page states, for a board their site names by /List/
+            "page_ref": cand.get("page_ref")})
     for b in boards.values():
         b["times"] = sum(s["times"] for s in b["seen"])
         spelled = {spelling(b["type"], s["ref"]): show(b["type"], s["ref"]) for s in b["seen"]}
@@ -788,6 +791,9 @@ def _waiting(stores: dict | None = None) -> dict:
             filed = r.get("filed") if isinstance(r.get("filed"), dict) else None
             out[r["id"]].append({"store": "Boards we found",
                                  "key": board_key(f.get("type"), f.get("ref")),
+                                 # the board as the row spells it: it is met under
+                                 # every key it is known by (consider)
+                                 "type": f.get("type"), "ref": f.get("ref"),
                                  "board": show(f.get("type"), f.get("ref")),
                                  # a row a door FILED (only board_proposals.file_found
                                  # writes `filed`), with the doubt it filed it on
@@ -798,6 +804,7 @@ def _waiting(stores: dict | None = None) -> dict:
             out[p.get("id") or key.split(":", 1)[1]].append({
                 "store": "Agent proposals",
                 "key": board_key(p.get("ats_type"), p.get("ats_ref")),
+                "type": p.get("ats_type"), "ref": p.get("ats_ref"),
                 "board": show(p.get("ats_type"), p.get("ats_ref")),
                 # the proposal's own words: a question put to the owner, which
                 # the two checks do not answer (consider)
@@ -850,58 +857,146 @@ def duplicate_groups(companies: list, board: dict) -> dict:
     return out
 
 
-def refused_for_whom(h: dict, by_id: dict) -> str:
-    """Whose refusal a refusal under another record's id was, for a row it is
-    quoted on: another company still on file, or a record since merged away
-    whose name this company does not go by."""
+def _one_name(c: dict, other: dict) -> str | None:
+    """How two records on file go by one name, in words that name both - one
+    name, or an also_known_as either way carrying the other's (names_meet) -
+    or None."""
+    ours = f"{c.get('name') or c['id']} ({c['id']})"
+    theirs = f"{other.get('name') or other['id']} ({other['id']})"
+    if names_meet([c.get("name")], [other.get("name")]):
+        return f"{theirs} and {ours} have one name"
+    hit = next((a for a in _akas(other) if names_meet([a], [c.get("name")])), None)
+    if hit:
+        return f"the also_known_as of {theirs} carries \"{hit}\", the name of {ours}"
+    hit = next((a for a in _akas(c) if names_meet([a], [other.get("name")])), None)
+    if hit:
+        return f"the also_known_as of {ours} carries \"{hit}\", the name of {theirs}"
+    return None
+
+
+def refusal_tie(h: dict, c: dict, by_id: dict, dups: dict | None = None) -> tuple[bool, str]:
+    """(is a refusal held under ANOTHER record's id - held_boards, code
+    `refused` - a refusal of this board for THIS company too?, why, in
+    words). The words are said either way: on a SKIP line, the tie the file
+    shows; on a row filed for the owner, whose refusal it was and what the
+    file does not show.
+
+    A SKIP never reaches him again - the board is not read and nothing is
+    filed - so it is taken for this company's ONLY WHERE THE FILE SHOWS IT:
+
+      - another record on file: the two go by one name (one name, or either
+        record's also_known_as carrying the other's) AND a second sign agrees
+        - one website, or, where a website is missing so that nothing on file
+        tells them apart, one group in the Duplicates queue (`dups`,
+        duplicate_groups, a pair he dismissed there being two companies).
+        Two websites that differ are two companies, whatever the names say.
+      - a record no longer on file: the refusal recorded a name this company
+        goes by (its name or an also_known_as: the desk's merge keeps a
+        dropped name in its survivor's also_known_as), nothing on file points
+        at another company - no other record goes by that name, and the
+        address the refusal was recorded against (`page`) is on no other
+        record's website - or that address is on this company's own website.
+
+    Otherwise it is another company's refusal, and the board is read and
+    filed for him with the refusal and these words quoted: one look at a
+    board he refused, against a board he would never see again.
+
+    WHY THE ALIAS NEEDS A SECOND SIGN (fifth blind review, 2026-11-22). A
+    parent lists an acquired brand in its also_known_as; the owner refuses
+    the brand's board for the parent ("it is Brand Co's own board, not Big
+    Co's"); the brand's own site embeds it and the board states "Brand Co".
+    Taken as one company on the alias alone, the brand's own board was SKIP
+    refused, unread and unfiled. RapidSOS goes by IamResponding on file, and
+    I Am Responding is a record of its own on another website.
+
+    WHY THE DUPLICATES QUEUE NEEDS A MISSING WEBSITE (the same review). It
+    groups every pair of one name, whatever their websites
+    (admin.q_duplicates), so for two companies called Concourse on two
+    websites a group there is no second sign: a refusal for one SKIPped the
+    other's own board. Where a website is missing it is the one thing on file
+    that says one company, and the SKIP line says that a dismissal there puts
+    the board in front of him.
+
+    WHY A RECORD NO LONGER ON FILE IS HELD TO THE OTHERS (the same review).
+    Compared by its name alone, a refusal for the Concourse merged away was
+    the other Concourse's too. And A REFUSAL THAT RECORDED NO NAME IS NEVER
+    TAKEN FOR THIS COMPANY'S, decided on purpose: the name is the only thing
+    that ties a record no longer on file to its survivor, and the address it
+    was refused at cannot stand in for it - one website holds a parent and
+    its parts (faac.com/milo/: 41 path-bound websites on file, 19 a part of
+    a host), so a page on this company's website does not show that the
+    refusal was this company's. Every refusal on file today records a name;
+    0d2a135e skipped a nameless one, which nothing on file could show was
+    right, and 2026-11-21's code filed it saying "this company does not go
+    by that name" of a name nobody recorded.
+
+    WHY THE DIFFERENCE AT ALL (blind review, 2026-11-21). The owner refuses
+    Sub Co's claim on greenhouse/parentco, "the board is Parent Co's, not
+    this company's"; Parent Co's own site links that board and the board
+    names Parent Co. Every door held it for Parent Co, the wiring door as
+    SKIP refused, and nothing could ever put it in front of him for Parent
+    Co. 10 of the 11 board proposals he had rejected name their true owner.
+    Discovery and wire_embedded.py, which never wire past him, still hold it
+    for every company. AND ONLY ONE COMPANY'S (third blind review,
+    2026-11-21): every refusal under a record merged away was taken for this
+    company's, so a desk merge of Sub Co put Parent Co's board back out of
+    his reach."""
     other = by_id.get(h.get("id"))
-    if other is not None:
-        return f"refused for another company, still on file ({other.get('name') or h['id']})"
-    whose = next((n for n in h.get("whose") or [] if str(n).strip()), h.get("id"))
-    return (f"refused for a record since merged away ({whose}), and this company does not go "
-            f"by that name")
-
-
-def refused_for_it(h: dict, c: dict, by_id: dict, dups: dict | None = None) -> bool:
-    """Is a refusal held under ANOTHER record's id (held_boards, code
-    `refused`) a refusal of this board for THIS company too? Only when the
-    two are one company, as far as the file shows (names_meet):
-
-      - the record is no longer on file, and this company goes by the name
-        the refusal recorded for it (its name or an also_known_as - the
-        desk's merge puts the dropped name there): it is the survivor;
-      - either record's also_known_as carries the other's name;
-      - the two have one name, and one website or one group in the
-        Duplicates queue (`dups`, duplicate_groups; two companies are called
-        Concourse, and a website tells them apart).
-
-    Otherwise it is another company's refusal.
-
-    WHY THE DIFFERENCE (blind review, 2026-11-21). The owner refuses Sub Co's
-    claim on greenhouse/parentco, "the board is Parent Co's, not this
-    company's"; Parent Co's own site links that board and the board names
-    Parent Co. Every door held it for Parent Co, the wiring door as SKIP
-    refused, and nothing could ever put it in front of him for Parent Co.
-    10 of the 11 board proposals he had rejected name their true owner. So
-    the wiring door files such a board for him, the refusal quoted and whose
-    it was, and he rules on it; discovery and wire_embedded.py, which never
-    wire past him, still hold it.
-
-    AND ONLY ONE COMPANY'S (third blind review, 2026-11-21). Every refusal
-    under a record merged away was taken for this company's, so a desk
-    merge of Sub Co put Parent Co's board back out of his reach; and two
-    records both named Acme Co, or one whose also_known_as carries the
-    other's name, were "another company", so a board he had refused for
-    Acme Co went back on his desk for Acme Co."""
-    other = by_id.get(h.get("id"))
+    ours = f"{c.get('name') or c['id']} ({c['id']})"
     if other is None:
-        return names_meet(_their_names(c), h.get("whose") or [])
-    if names_meet(_akas(c), [other.get("name")]) or names_meet(_akas(other), [c.get("name")]):
-        return True
-    if not names_meet([c.get("name")], [other.get("name")]):
-        return False
-    return page_belt._same_site(c.get("website") or "", other.get("website") or "") \
-        or other.get("id") in (dups or {}).get(c.get("id"), ())
+        whose = [n for n in h.get("whose") or [] if isinstance(n, str) and n.strip()]
+        if not whose:
+            return False, (f"refused for a record no longer on file ({h.get('id')}), and the "
+                           f"refusal recorded no name, so whose it was cannot be shown")
+        gone = f"refused for a record since merged away ({whose[0]})"
+        if not names_meet(_their_names(c), whose):
+            return False, f"{gone}, and this company does not go by that name"
+        page = str(h.get("page") or "").strip()
+        sites = [o for o in by_id.values() if o.get("id") != c["id"] and page
+                 and str(o.get("website") or "").strip()
+                 and page_belt._same_site(page, o["website"])]
+        if sites:
+            o = sites[0]
+            return False, (f"{gone}, a name {ours} goes by, but the refusal was recorded "
+                           f"against {page}, on the website of {o.get('name') or o['id']} "
+                           f"({o['id']}, {short(o['website'])}), so the file does not show "
+                           f"it was this company's")
+        if page and str(c.get("website") or "").strip() \
+                and page_belt._same_site(page, c["website"]):
+            return True, (f"the record since merged away ({whose[0]}) went by a name {ours} "
+                          f"goes by, and the refusal was recorded against {page}, a page of "
+                          f"its own website")
+        twins = [o for o in by_id.values() if o.get("id") != c["id"]
+                 and names_meet(_their_names(o), whose)]
+        if twins:
+            o = twins[0]
+            return False, (f"{gone}, a name {ours} goes by - and so does "
+                           f"{o.get('name') or o['id']} ({o['id']}), so which of them it was "
+                           f"merged into cannot be shown")
+        return True, (f"the record since merged away ({whose[0]}) went by a name {ours} goes "
+                      f"by, and no other record on file does (the desk's merge keeps a dropped "
+                      f"name in its survivor's also_known_as)")
+    name = other.get("name") or h["id"]
+    tie = _one_name(c, other)
+    if tie is None:
+        return False, f"refused for another company, still on file ({name})"
+    held = f"refused for another company, still on file ({name})"
+    site_c, site_o = str(c.get("website") or "").strip(), str(other.get("website") or "").strip()
+    if site_c and site_o:
+        if page_belt._same_site(site_c, site_o):
+            return True, f"{tie}, on one website ({short(site_o)})"
+        return False, (f"{held}: {tie}, but they are on different websites ({short(site_o)} "
+                       f"and {short(site_c)}), so the file does not show they are one company")
+    no_site = ("neither has a website on file" if not (site_c or site_o)
+               else f"{name} ({other['id']}) has no website on file" if not site_o
+               else f"{ours} has no website on file")
+    if other.get("id") in (dups or {}).get(c.get("id"), ()):
+        return True, (f"{tie}, the Duplicates queue groups them, and nothing on file tells them "
+                      f"apart ({no_site}) - if they are two companies, dismissing that pair in "
+                      f"the Duplicates queue puts this board in front of the owner for {ours}")
+    return False, (f"{held}: {tie}, but {no_site} and the Duplicates queue does not group them "
+                   f"(a pair the owner dismissed there is two companies), so the file does not "
+                   f"show they are one company")
 
 
 def acquisition_doubts(companies: list, board: dict) -> dict:
@@ -1006,7 +1101,7 @@ def standing(companies: list, board: dict, stores: dict | None = None) -> dict:
             # plan() once the pre-pass has followed this run's Workable numbers
             "held_boards": held_boards(doubts, s, by_id, {}, companies, refusals),
             "acquisitions": acquisition_doubts(companies, board),
-            # which records the Duplicates queue groups (refused_for_it)
+            # which records the Duplicates queue groups (refusal_tie)
             "duplicates": duplicate_groups(companies, board),
             "shown": shown_now(board),
             "crawled": str((board or {}).get("generated") or "")[:10],
@@ -1188,6 +1283,100 @@ def named_by_number(results: dict, ctx: dict) -> None:
                 cand["no_address"] = how
 
 
+# --------------------------------------- a Paylocity board known by two ids
+
+def addressed_by_page(results: dict, ctx: dict) -> None:
+    """Give every Paylocity board a site names only by its /jobs/List/
+    address the /jobs/All/ address its own page states (`page_ref`).
+
+    ONE BOARD, TWO IDS, AND ITS ADDRESS CANNOT ALWAYS TIE THEM (fifth blind
+    review, 2026-11-22). /jobs/List/<n> and /jobs/All/<uuid> name one board,
+    and only the tenant's name after either ties them (also_keys). Celona's
+    record on file reads .../All/<uuid> with no name after it, so a
+    /List/<n>/Celona-Inc find met nothing of it and was wired to a second
+    record, every posting listed twice. The board's own page states its /All/
+    address (verify_boards' `address`, og:url), and the identity probe reads
+    that page anyway: so it is asked here, BEFORE anything is keyed - after
+    the live read, as consider asks them, once per spelling, both kept
+    (ctx["read"], ctx["said"]) where consider finds them, and never of a
+    board that does not read or is a giant - and a board whose page states
+    its address is known by it everywhere after (holders, twins, refusals,
+    the owner's holds, waiting rows; `page_ref` on the row for apply). Done
+    to the finder's results, as named_by_number is.
+
+    Asked only where it can tell something, and never of a board this door
+    would not read: the first board of a company the door may ask about at
+    all (on file, in scope, not on a board, no refusal on file - the
+    questions consider asks first), a Paylocity board named by no /All/
+    address, and one no holder on file or hold under another company's id
+    meets already (consider holds or skips it whatever its page says). A
+    board whose page states nothing is compared by its address alone, and
+    held where that cannot settle it (consider, wire_problem)."""
+    held = (ctx.get("held_boards") or {}).get("keys") or {}
+    for cid in sorted(results):
+        c = ctx["by_id"].get(cid)
+        if c is None or c.get("out_of_scope") \
+                or (c.get("ats") or {}).get("type") not in WAITING or ctx["refusals"].get(cid):
+            continue
+        boards, _unusable = boards_named(results[cid])
+        if not boards or boards[0]["type"] != "paylocity":
+            continue
+        board = boards[0]
+        if any(board_proposals.paylocity_ids(s["ref"])[0] for s in board["seen"]):
+            continue                    # its /All/ id is on its address already
+        keys = board_keys(board, ctx)
+        if any(i != cid for k in keys for i in ctx["holders"].get(k, [])) \
+                or any(h["id"] != cid for k in keys for h in held.get(k, [])):
+            continue
+        seen, _own = best_seen(board, c.get("website") or "", results[cid].get("pages") or [])
+        exact = spelling("paylocity", seen["ref"])
+        # IN consider's ORDER: the live read first, kept where consider finds
+        # it, and a board that does not read or is a giant is not asked whose
+        # it is - there or here
+        if exact not in ctx["read"]:
+            ctx["read"][exact] = (*add_company.read_board({"type": "paylocity",
+                                                           "ref": seen["ref"]}), admin.now())
+        ok, _detail, read, _at = ctx["read"][exact]
+        if not ok or len(read) >= GIANT:
+            continue
+        if exact not in ctx["said"]:
+            ctx["said"][exact] = verify_boards.board_says("paylocity", seen["ref"])
+        address = ctx["said"][exact].get("address")
+        if not (isinstance(address, str) and board_proposals.paylocity_ids(address)[0]):
+            continue
+        for cand in results[cid].get("candidates") or []:
+            if cand.get("type") == "paylocity" and isinstance(cand.get("ref"), str) \
+                    and board_key("paylocity", cand["ref"]) == board["key"]:
+                cand["page_ref"] = address.strip()
+
+
+def uncompared(refs: list, records, cid: str, met=()) -> list:
+    """The Paylocity records among `records` (other than `cid` and those in
+    `met`) whose board cannot be told apart from the one board `refs` name,
+    nor shown to be it (board_proposals.paylocity_apart is None). A record
+    whose ref carries no /jobs/All/ or /jobs/List/ id at all is no address to
+    compare, and is left to the holders' keys."""
+    return [o for o in records if o.get("id") != cid and o.get("id") not in met
+            and (o.get("ats") or {}).get("type") == "paylocity"
+            and any(board_proposals.paylocity_ids((o.get("ats") or {}).get("ref"))[:2])
+            and board_proposals.paylocity_apart(refs, (o.get("ats") or {}).get("ref")) is None]
+
+
+def uncompared_words(refs: list, others: list, board: str) -> str:
+    """What a Paylocity board that cannot be compared with records on file
+    says, in words that name them."""
+    names = ", ".join(f"{o.get('name') or o['id']} at {short((o.get('ats') or {}).get('ref'))}"
+                      for o in others[:3]) + (f" and {len(others) - 3} more"
+                                              if len(others) > 3 else "")
+    page = "" if any(board_proposals.paylocity_ids(r)[0] for r in refs) else (
+        ", and this board's own page did not state its /jobs/All/ address")
+    return (f"{many(len(others), 'record')} on file read{'s' if len(others) == 1 else ''} a "
+            f"Paylocity board that {board} cannot be compared with ({names}): one Paylocity "
+            f"board has a /jobs/List/ id and a /jobs/All/ id, tied only by the tenant's name "
+            f"after either, one of the two addresses carries no such name{page}, so whether "
+            f"{board} is already on file cannot be shown")
+
+
 def board_keys(board: dict, ctx: dict) -> list:
     """Every key one board is known by, for the questions where boards meet:
     a holder on file, a twin in this run, a refusal, a waiting row.
@@ -1203,8 +1392,11 @@ def board_keys(board: dict, ctx: dict) -> list:
     keys = {board["key"]}
     slugs = ctx.get("slugs") or {}
     for s in board.get("seen") or []:
-        # a Paylocity board by its tenant's name too (board_proposals.also_keys)
+        # a Paylocity board by its tenant's name too (board_proposals.also_keys),
+        # and by the /All/ address its own page states (addressed_by_page)
         keys.update(_also_keys(board["type"], s.get("ref")))
+        if board["type"] == "paylocity" and s.get("page_ref"):
+            keys.update(board_proposals.found_keys("paylocity", s["page_ref"]))
         if s.get("account"):
             keys.add(board_key("workable", s["account"]))
         elif numbered(board["type"], s.get("ref")):
@@ -1297,6 +1489,9 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         (s["account"] for s in first["seen"] if s.get("account")), None)
     if account:
         base["account"] = account              # the number their site asks for it by
+    page_ref = next((s["page_ref"] for s in first["seen"] if s.get("page_ref")), None)
+    if page_ref:
+        base["page_ref"] = page_ref            # the /All/ address its own page states
     # WHAT THE CHECKS ARE JUDGED AGAINST, kept on the row. Check 1 is about a
     # website and check 2 about a name, and both are the record's as it reads
     # at this moment. apply compares them with the record as it reads THEN.
@@ -1378,15 +1573,20 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # the next plan wired the board somebody had said no to (review of
     # 27eeb628, 2026-11-19). A refusal for ANOTHER COMPANY still on file is
     # not this company's answer: it is held below and filed for the owner,
-    # the refusal quoted (refused_for_it; blind review, 2026-11-21).
+    # the refusal quoted (refusal_tie; blind review, 2026-11-21). Taken for
+    # this company's only where the file shows it, and the SKIP line says
+    # what shows it (fifth blind review, 2026-11-22).
     owner_holds = ctx.get("held_boards") or {"keys": {}, "named": []}
     hits = list({id(h): h for k in keys for h in owner_holds["keys"].get(k, [])
                  if h["id"] != cid}.values())
-    no = [h for h in hits if h["code"] == "refused"
-          and refused_for_it(h, c, ctx["by_id"], ctx.get("duplicates"))]
+    ties = {id(h): refusal_tie(h, c, ctx["by_id"], ctx.get("duplicates"))
+            for h in hits if h["code"] == "refused"}
+    no = [h for h in hits if ties.get(id(h), (False,))[0]]
     if no:
         return _skip(base, "refused", f"{no[0]['words']}; the board found now is that board, "
-                                      f"{show(kind, ref)}, for another record - tell the owner")
+                                      f"{show(kind, ref)}, under another record, and the refusal "
+                                      f"is taken for this company's because "
+                                      f"{ties[id(no[0])][1]} - tell the owner")
 
     # --- everything on file that argues with wiring it, in words -----------
     doubts = []
@@ -1492,7 +1692,19 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append(f"{show(kind, ref)} is already on file as the board of "
                       + " and ".join(held[:4])
                       + (f" (under the account number {account} or its slug)"
-                         if account else ""))
+                         if account else "")
+                      + (f" (its own page states its address is {page_ref})"
+                         if page_ref else ""))
+    if kind == "paylocity":
+        # ONE BOARD UNDER TWO IDS THAT NOTHING ON THE ADDRESSES TIES (fifth
+        # blind review, 2026-11-22): a record on file whose Paylocity board
+        # cannot be shown to be this one, or another, holds it for a person
+        others = uncompared([s["ref"] for s in first["seen"]] + ([page_ref] if page_ref else []),
+                            ctx["companies"], cid, holding)
+        if others:
+            doubts.append(uncompared_words([s["ref"] for s in first["seen"]]
+                                           + ([page_ref] if page_ref else []), others,
+                                           show(kind, ref)))
     twins = [(by_id.get(i) or {}).get("name") or i
              for i in dict.fromkeys(i for k in keys for i in claims.get(k, [])) if i != cid]
     if twins:
@@ -1505,7 +1717,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # still on file goes to the owner for THIS company, his refusal and whose
     # it was quoted: he said no to it for them, not for this one.
     for words in dict.fromkeys(
-            (f"{h.get('refusal') or h['words']} - {refused_for_whom(h, by_id)}; whether it is "
+            (f"{h.get('refusal') or h['words']} - {ties[id(h)][1]}; whether it is "
              f"{base['name']}'s own board is the owner's to rule on")
             if h["code"] == "refused" else h["words"] for h in hits
             if not (h["code"] == "number" and h["id"] in holding)):
@@ -1514,9 +1726,22 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append(f"an earlier board for this company was refused ({r['board']}, "
                       f"{r['by']} on {r['on']}" + (f": {r['why']}" if r["why"] else "") + ")")
     for r in ctx["waiting"].get(cid) or []:
-        if r["key"] not in keys:
+        # ONE BOARD UNDER ANY KEY IT IS KNOWN BY, as board_keys meets holders
+        # and refusals: a Paylocity board by its tenant's name too, a Workable
+        # number by the slug the file ties it to. Compared by its own key
+        # alone, a company's own pending proposal for /All/<uuid>/Pl-Co beside
+        # a /List/2115/Pl-Co find of the same board was "a different board"
+        # (fifth blind review, 2026-11-22).
+        r_keys = set(board_proposals.found_keys(r.get("type"), r.get("ref"),
+                                                owner_holds.get("pairs"))) | {r["key"]}
+        q = r.get("proposed") if isinstance(r.get("proposed"), dict) else None
+        asked = ((f", proposed {q.get('at') or '?'} by {q.get('by') or '?'}"
+                  + (f": \"{q['why'][:240]}\"" if q.get("why") else "")) if q else "")
+        other_spelling = (f" (as {r['board']})" if r.get("board") and
+                          r["key"] not in keys else "")
+        if not r_keys & set(keys):
             doubts.append(f"a different board, {r['board']}, is already waiting in "
-                          f"{r['store']} for this company")
+                          f"{r['store']} for this company{asked}")
         elif r.get("filed"):
             # A DOUBT THIS DOOR FILED IS THE OWNER'S UNTIL HE RULES. The same
             # board found again used to be "the question already asked, which
@@ -1527,11 +1752,12 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
             # WIRE. A row an older finder left, with no doubt recorded by a
             # door, may still be answered by the checks.
             f = r["filed"]
-            doubts.append(f"this board is already in the owner's queue ({r['store']}), filed "
+            doubts.append(f"this board{other_spelling} is already in the owner's queue "
+                          f"({r['store']}), filed "
                           f"{f.get('on') or '?'} by {f.get('by')} with its doubt: "
                           f"\"{(r.get('why') or 'none recorded')[:240]}\"; a doubt filed "
                           f"there is his to settle")
-        elif isinstance(r.get("proposed"), dict):
+        elif q:
             # A BOARD QUESTION PENDING IN AGENT PROPOSALS IS HIS TOO, whatever
             # board it is about (blind review, 2026-11-21). The same board,
             # proposed and waiting, was "the question already asked" here, so
@@ -1539,11 +1765,9 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
             # proposal - "claimed by more than one company on the board - an
             # acquisition to settle" - still waited on him, and discovery and
             # wire_embedded.py held the company for it.
-            q = r["proposed"]
-            doubts.append(f"this board is already waiting in Agent proposals for this company, "
-                          f"proposed {q.get('at') or '?'} by {q.get('by') or '?'}"
-                          + (f": \"{q['why'][:240]}\"" if q.get("why") else "")
-                          + "; a board waiting on a person is his to settle")
+            doubts.append(f"this board{other_spelling} is already waiting in Agent proposals "
+                          f"for this company{asked}; a board waiting on a person is his to "
+                          f"settle")
     reviewed = str((ctx.get("reviewed") or {}).get(cid) or "").strip()
     stands = (ctx.get("doubts") or {}).get(cid) or []
     reach_code, holds = reach_of(cid, ctx)
@@ -1793,6 +2017,10 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
             else None
         if slug:
             ctx["holders"][board_key("workable", slug)].append(c["id"])
+    # a Paylocity board named by its /List/ address is known by the /All/
+    # address its own page states, before anything is keyed (fifth blind
+    # review, 2026-11-22)
+    addressed_by_page(results, ctx)
     named, claims = {}, collections.defaultdict(list)
     for cid, entry in results.items():
         named[cid] = boards_named(entry)
@@ -2361,6 +2589,9 @@ def row_keys(row: dict) -> list:
             *_also_keys(row.get("type"), row.get("ref"))}
     if row.get("account"):
         keys.add(board_key("workable", row["account"]))
+    if row.get("type") == "paylocity" and isinstance(row.get("page_ref"), str):
+        # the /All/ address the board's own page stated (addressed_by_page)
+        keys.update(board_proposals.found_keys("paylocity", row["page_ref"]))
     return sorted(keys)
 
 
@@ -2515,14 +2746,16 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
         for h in (owner_holds.get("keys") or {}).get(k) or []:
             if h["id"] == cid or (h["code"] == "number" and h["id"] in reading):
                 continue
-            if h["code"] == "refused" and not refused_for_it(h, c, by_id,
-                                                             held_for.get("duplicates")):
-                # another company's refusal: the plan files it for the owner
-                return h["code"], (f"since the plan, {h.get('refusal') or h['words']} - "
-                                   f"{refused_for_whom(h, by_id)}: plan again, and the plan "
-                                   f"holds it for the owner with the refusal quoted")
-            return h["code"], (f"since the plan, {h['words']}"
-                               + (" - tell the owner" if h["code"] == "refused" else ""))
+            if h["code"] == "refused":
+                mine, whose = refusal_tie(h, c, by_id, held_for.get("duplicates"))
+                if not mine:
+                    # another company's refusal: the plan files it for the owner
+                    return h["code"], (f"since the plan, {h.get('refusal') or h['words']} - "
+                                       f"{whose}: plan again, and the plan holds it for the "
+                                       f"owner with the refusal quoted")
+                return h["code"], (f"since the plan, {h['words']}; it is taken for this "
+                                   f"company's because {whose} - tell the owner")
+            return h["code"], f"since the plan, {h['words']}"
     # a Workable account held under a number the plan never followed, beside
     # a board that states one of the names it goes by, or found for a company
     # that goes by one (its name or an also_known_as, as on file now: blind
@@ -2555,6 +2788,15 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             if i != cid and i in by_id]
     if held:
         return "moved", f"{show(kind, ref)} is now on file as the board of {held[0]}"
+    if kind == "paylocity":
+        # a record on file whose Paylocity board nothing on the two addresses
+        # shows to be this one, or another (consider; fifth blind review,
+        # 2026-11-22) - on file since the plan, or not asked by the plan that
+        # made the row
+        refs = [ref] + ([row["page_ref"]] if isinstance(row.get("page_ref"), str) else [])
+        others = uncompared(refs, by_id.values(), cid)
+        if others:
+            return "moved", f"{uncompared_words(refs, others, show(kind, ref))} - plan again"
     if n < shown.get(cid, 0):
         return "moved", (f"the public board now shows {many(shown[cid])} for it, more than "
                          f"the {n} this board read - plan again")

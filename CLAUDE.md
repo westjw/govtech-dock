@@ -2533,6 +2533,7 @@ The owner's rule for wiring a found board without him has two checks, and both m
 - `failed`: None, or why the board was not read. `refused` (robots.txt, 401, 403, 429) is never asked again in the same run. `gone` is 404 or 410. `unreadable` is anything else, and `how` says what. `how` gives the status and the address in words.
 - `n_is_partial`: True on icims, where `n` is the first page only. Size a board from the reader (`add_company.verify`), never from `n`.
 - `kind`: the type that was asked.
+- `address` (paylocity only, where its page gives it): the board's own /jobs/All/<uuid> address, from og:url, stated only when the page's LeadJoinUrl, if any, names the same uuid. An address, never a name; the wiring door keys a board found by /List/ by it (fifth blind review, 2026-11-22).
 
 Never read as a name, because each sits beside the name and is something else: the slug, a Paylocity address tail, Breezy's friendly_id, SmartRecruiters' identifier, a board's free-text title, a vendor's own page title. No probe looks at the ref for a name, so none can echo what it was asked.
 
@@ -2610,10 +2611,16 @@ round.
   `ats_note` on file (wiring would write over the note); a discovery suspect
   or an Acquisitions row (both builders are asked); another company already
   holding the board, or the same board found for two companies in one run; a
-  different board refused earlier or already waiting; this very board
+  different board refused earlier or already waiting (a proposal's own words
+  quoted); this very board
   pending in Agent proposals for the company itself, its words quoted (it was
   "the question already asked", and the two checks answered it while the
-  owner's question stood: blind review, 2026-11-21); this board refused for
+  owner's question stood: blind review, 2026-11-21) - a waiting row is met
+  under every key the board is known by, as holders and refusals are (its
+  Paylocity tenant's name, the /All/ address its page states, a Workable
+  number the file ties to its slug), and one met under the other address is
+  said as "this board (as <its address there>)", never "a different board"
+  (fifth blind review, 2026-11-22); this board refused for
   another company still on file (the refusal and whose it was quoted, below);
   a board that names somebody else (MISMATCH, both names quoted) or nobody.
 - **An advertisement is not a second board, and a question that did not get
@@ -2809,27 +2816,51 @@ round.
   for THIS company under another record is SKIP refused, "tell the owner",
   with nothing read - for whatever company's site names it, under either
   Workable key, in the plan and in apply (`held_boards`,
-  `wire_found.refused_for_it`; apply's codes `standing`, `queued`,
-  `refused`). This company's own, as far as the file shows: a record merged
-  away whose name, as the refusal recorded it, this company goes by (its
-  survivor: the desk's merge puts the dropped name in also_known_as); a
-  record on file whose also_known_as carries this one's name, or the other
-  way round; or a record of the same name on the same website or in one
-  group of the Duplicates queue (`wire_found.duplicate_groups`; a pair he
-  dismissed there is two companies). Names are compared as
+  `wire_found.refusal_tie`; apply's codes `standing`, `queued`,
+  `refused`). A SKIP never reaches him again, so a refusal is this
+  company's ONLY WHERE THE FILE SHOWS IT, and the SKIP line says what shows
+  it ("the refusal is taken for this company's because ..."): a record on
+  file that goes by one name with this one (one name, or an also_known_as
+  either way carrying the other's) AND a second sign - one website, or,
+  where a website is missing so nothing on file tells them apart, one
+  group in the Duplicates queue (`wire_found.duplicate_groups`; the line
+  says that dismissing the pair there puts the board in front of him); or
+  a record no longer on file whose refusal recorded a name this company
+  goes by (its survivor: the desk's merge puts the dropped name in
+  also_known_as), with no other record on file going by it and the address
+  the refusal was recorded against (`page`: the row's `filed.page`, the
+  proposal's `evidence`) on no other record's website - or on this
+  company's own. Two websites that differ are two companies whatever the
+  names say: an alias alone made a parent's refusal of its brand's board
+  SKIP the brand's own board unread (RapidSOS goes by IamResponding, and
+  I Am Responding is a record of its own), and the Duplicates queue groups
+  every pair of one name, so it is no second sign for two Concourses on two
+  websites (fifth blind review, 2026-11-22). A refusal that recorded NO
+  NAME is never taken for this company's - decided on purpose: one website
+  holds a parent and its parts, so a page on this company's site does not
+  show whose refusal it was; every refusal on file today records one.
+  Names are compared as
   `verify_boards.strict` leaves them, country tag included
   (`wire_found.names_meet`): "Esri" is not "Esri Canada". Refused for any
-  OTHER company, on file or merged away, it is that company's answer, not
-  this one's: the board is read and HELD, and filed in Boards we found for
+  OTHER company, on file or merged away, or for one the file does not show
+  to be this one, it is not this one's answer: the board is read and HELD,
+  and filed in Boards we found for
   the company whose own site and board both name it, the refusal and whose
-  it was quoted ("... was refused for Sub Co in Agent proposals (...) -
-  refused for another company, still on file (Sub Co)", or "- refused for a
+  it was quoted in words that name both records and what ties or parts
+  them ("... was refused for Sub Co in Agent proposals (...) -
+  refused for another company, still on file (Sub Co)", "... (Big Co): the
+  also_known_as of Big Co (big-co) carries "Brand Co", the name of Brand Co
+  (brand-co), but they are on different websites (...)", "- refused for a
   record since merged away (Sub Co), and this company does not go by that
-  name"; "whether it is Parent Co's own board is the owner's to rule on"),
+  name", "- refused for a record no longer on file (acme-old), and the
+  refusal recorded no name, so whose it was cannot be shown"; "whether it is
+  Parent Co's own board is the owner's to rule on"),
   the refusal in its own words - a row that proposes the board never says
   it "is not proposed again", whether it is held by key or by a name a
   Workable account goes by; apply leaves such a WIRE row alone and says to
-  plan again. (Blind review,
+  plan again. A desk refusal's `whose` is the row's own name, never the
+  name the board called itself (that is the board's claim, often its true
+  owner's). (Blind review,
   2026-11-21: Sub Co's refusal, "the board is Parent Co's", held Parent Co's
   own board in all three doors, and nothing could put it in front of him for
   Parent Co; 10 of the 11 board proposals he had rejected name their true
@@ -2876,10 +2907,27 @@ round.
   (`board_proposals.also_keys`, asked wherever boards meet: FAAC's frame is
   /List/2115/FAAC-Incorporated and lands on /All/<uuid>/FAAC-Incorporated,
   one board under two ids; every Paylocity ref on file is /All/, and a /List/
-  find walked past a refusal of the board - third blind review), an iCIMS
-  portal its slug, a Jibe, Oracle, ApplicantPro or Teamtailor board its host,
-  a Zoho Recruit career site its host and page name (a posting's address is
-  under it), and a Comeet board its company uid, whether written
+  find walked past a refusal of the board - third blind review). The tenant's
+  name is not always there: Celona's record reads .../All/<uuid> bare (1 of
+  the 41 on file) and find_site_boards writes /List/<n> bare too, so a
+  /List/<n>/Celona-Inc find met nothing of it and was wired to a second
+  record (fifth blind review, 2026-11-22). So `plan` first asks a board
+  their site names only by /List/ for the /All/ address its own page states
+  (`wire_found.addressed_by_page`: the identity probe's `address`, og:url
+  checked against the page's LeadJoinUrl, asked once, after the board's
+  live read as consider asks them, and kept for both; never of a board that
+  does not read or is a giant, of a company out of scope, on a board or
+  refused, nor of a board a holder or a hold already meets), and the board
+  is known by it
+  everywhere after, `page_ref` on the row for apply; and a Paylocity board
+  that a record on file cannot be compared with - one known only by an /All/
+  id and the other only by a /List/ id, a tenant's name missing on one of
+  them (`board_proposals.paylocity_apart`) - is HOLD in the plan and left
+  alone in apply (`wire_found.uncompared`), the records named. The key of
+  an iCIMS portal is its slug, of a Jibe, Oracle, ApplicantPro or Teamtailor
+  board its host, of a Zoho Recruit career site its host and page name (a
+  posting's address is under it), and of a Comeet board its company uid,
+  whether written
   `<UID>|<TOKEN>` or as the hosted board's address (those four were keyed on
   the whole ref until the test review of 2026-11-21; Hirebridge's number and
   Pinpoint's slug need nothing). What is READ is the ref as the quoted page
@@ -3012,6 +3060,13 @@ round.
   27eeb628): 30 findings; two of its mechanisms left the owner's desk with
   dead ends, so the design was made simpler (any later ruling settles a
   doubt, `settle` on his word, holds by board instead of a merge refusal).
+  Fifth (of ba3111cd, 2026-11-22): nine door findings, fixed on branch
+  door-fixes-6 - a refusal under another record is this company's only
+  where the file shows it (an alias or one name needs a second sign; a
+  nameless merged-away refusal never is), a Paylocity board is known by the
+  /All/ address its page states and held where its addresses cannot be
+  compared, a waiting row is met under every key, and settle's printed
+  command and its queue-row pairs are pinned.
 - **The owner's to settle:** whether a job platform nothing reads, named on
   their own site, should hold a board (it does now; a link to an aggregator
   and a link to the board's own vendor do not); whether a board named
@@ -3025,12 +3080,18 @@ round.
   can reach (an older ruling, a company on a board, one merged away) holds
   its board until he is told and answers - `settle` writes his answer, about
   the one board he answered about; and a
-  board refused for one company is SKIP refused for its survivor and for
-  another record of the same company (an also_known_as either way, or one
-  name and one website or Duplicates group), and for every other company
-  that names it is filed in Boards we found with the refusal quoted, the
+  board refused for one company is SKIP refused only where the file shows
+  the refusal was this company's - its survivor (the name the refusal
+  recorded, no other record going by it, nothing it was recorded against on
+  another record's website), or another record of the same company (one
+  name or an also_known_as either way, AND one website, or a Duplicates
+  group where a website is missing) - and for every other company that
+  names it, a nameless refusal's survivor and an alias or a name on another
+  website included, is filed in Boards we found with the refusal quoted, the
   group's own record included, for him to rule on there (discovery and
-  wire_embedded hold it for every company).
+  wire_embedded hold it for every company). Whether a Duplicates group of
+  one name with a website missing should be enough is his: a dismissal
+  there frees the board.
   Giants on readers that do read the whole board are still read in full
   before they are skipped.
 

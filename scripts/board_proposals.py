@@ -474,6 +474,46 @@ def also_keys(kind, ref) -> list:
     return []
 
 
+_PAYLOCITY_IDS = re.compile(r"/jobs/(all|list)/([^/?#]+)(?:/([^/?#]+))?")
+
+
+def paylocity_ids(ref) -> tuple:
+    """(the /jobs/All/ id, the /jobs/List/ id, the tenant's name) a Paylocity
+    address carries, each lowercased, None where it carries none."""
+    m = _PAYLOCITY_IDS.search(ref.strip().lower()) if isinstance(ref, str) else None
+    if not m:
+        return None, None, None
+    return (m.group(2) if m.group(1) == "all" else None,
+            m.group(2) if m.group(1) == "list" else None, m.group(3) or None)
+
+
+def paylocity_apart(refs, ref) -> bool | None:
+    """Are the Paylocity addresses `refs` (one board) and `ref` shown to be
+    two boards (True), one board (False), or can it not be shown (None)?
+
+    One board, two ids (third blind review, 2026-11-21): /jobs/List/<n> and
+    /jobs/All/<uuid> name the same board, and only the tenant's name after
+    either ties them (also_keys). So an /All/ id and a /List/ id are compared
+    only through that name, and where either address carries none - Celona's
+    record on file reads .../All/<uuid> bare, and find_site_boards writes
+    /List/<n> both ways - nothing on the addresses shows whether they are one
+    board (fifth blind review, 2026-11-22: a /List/ find of Celona's board
+    was wired to a second record). Two ids of one kind that differ, or two
+    tenants' names that differ, are two boards."""
+    alls, lists, tenants = set(), set(), set()
+    for r in refs or ():
+        a, n, t = paylocity_ids(r)
+        alls |= {a} - {None}
+        lists |= {n} - {None}
+        tenants |= {t} - {None}
+    a, n, t = paylocity_ids(ref)
+    if (a and a in alls) or (n and n in lists) or (t and t in tenants):
+        return False
+    if (a and alls) or (n and lists) or (t and tenants):
+        return True
+    return None
+
+
 def show(kind, ref) -> str:
     """greenhouse/acme - how the journal and the desk already write a board."""
     if isinstance(ref, list):
@@ -504,6 +544,12 @@ def doubt_board(d: dict) -> tuple:
     return kind, (rest.split("/") if kind == "workday" else rest)
 
 
+def _address(value) -> str | None:
+    """`value` when it is a web address, trimmed; else None."""
+    v = value.strip() if isinstance(value, str) else ""
+    return v if v.lower().startswith(("http://", "https://")) else None
+
+
 def refusals(stores: dict) -> dict:
     """{company id: [earlier refusals]} from the two stores that keep them
     (`stores`: {"ruled", "proposals", "found"}, each read strictly).
@@ -511,6 +557,14 @@ def refusals(stores: dict) -> dict:
     The stores do not talk to each other, so both are read. A refusal in
     board_proposal_rulings.json carries no board; the row it ruled on is
     still in embedded_ats.json, which is where the board is read from.
+
+    Each refusal also carries `page`: the address it was recorded against,
+    where the store kept one - the page a door filed the row from
+    (`filed.page`), an Agent proposal's `evidence` - or None. The wiring
+    door holds it to the websites on file when the record refused is no
+    longer on file (wire_found.refusal_tie); it can be the board's own
+    address rather than a page of the company's site, so it is read only
+    for whose website it is on.
     """
     out = collections.defaultdict(list)
     listed = {r.get("id"): r for r in stores["found"] if isinstance(r, dict)}
@@ -519,6 +573,7 @@ def refusals(stores: dict) -> dict:
             continue
         row = listed.get(cid) or {}
         f = row.get("found") if isinstance(row.get("found"), dict) else {}
+        filed = row.get("filed") if isinstance(row.get("filed"), dict) else {}
         out[cid].append({"store": "Boards we found",
                          "key": board_key(f.get("type"), f.get("ref")) if f else None,
                          "board": show(f.get("type"), f.get("ref")) if f else None,
@@ -528,9 +583,13 @@ def refusals(stores: dict) -> dict:
                          "names": [n for n in (row.get("board_calls_itself"), row.get("name"))
                                    if isinstance(n, str) and n.strip()],
                          # whose refusal it was, by the name the row recorded: what a
-                         # record merged away since is known by (refused_for_it)
+                         # record merged away since is known by (wire_found.refusal_tie).
+                         # NEVER the name the board called itself: that is the
+                         # board's claim, and 10 of the 11 board proposals he had
+                         # rejected name their true owner (blind review, 2026-11-21)
                          "whose": [n for n in (row.get("name"),)
                                    if isinstance(n, str) and n.strip()],
+                         "page": _address(filed.get("page")),
                          "by": v.get("by") or "?", "on": v.get("on") or "?",
                          "why": str(v.get("why") or "").strip()})
     for key, p in stores["proposals"].items():
@@ -546,6 +605,7 @@ def refusals(stores: dict) -> dict:
                                    if isinstance(n, str) and n.strip()],
                          "whose": [n for n in (p.get("name"),)
                                    if isinstance(n, str) and n.strip()],
+                         "page": _address(p.get("evidence")),
                          "by": p.get("ruled_by") or "?", "on": p.get("ruled_on") or "?",
                          "why": str(p.get("ruled_why") or "").strip()})
     return out
@@ -693,7 +753,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                         f"({x['by']} on {x['on']}" + (f": {x['why']}" if x["why"] else "") + ")")
                 hold(cid, "refused", x["type"], x["ref"],
                      f"{said}, and a board somebody said no to is not proposed again",
-                     *(x.get("names") or []), refusal=said, whose=list(x.get("whose") or []))
+                     *(x.get("names") or []), refusal=said, whose=list(x.get("whose") or []),
+                     page=x.get("page"))
     for number, ids in sorted(numbers_on_file(companies or []).items()):
         slug = pairs.get(number)
         for cid in ids:
