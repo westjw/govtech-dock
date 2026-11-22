@@ -240,11 +240,14 @@ def verdict(url: str, fetch=None) -> Verdict:
     p = urllib.parse.urlsplit(url or "")
     if p.scheme not in ("http", "https") or not p.netloc:
         return ALLOWED                                  # nothing to ask
+    # (a backslash after the host, in a path or a query, names no other host,
+    # as ats.plain_address holds: such an address is asked by its own host's
+    # robots.txt like any other - seventh blind review, 2026-11-22)
     # AN ADDRESS THAT NAMES ITS HOST TWO WAYS has no one robots.txt: for
     # 'https://evil.example\\@jobs.jobvite.com/x' this file would ask
     # jobs.jobvite.com's, and the library would send the request (and the
     # robots.txt request too) to evil.example (fifth blind review, 2026-11-22).
-    if "@" in p.netloc or re.search(r"[\\\x00-\x1f\x7f]", url or ""):
+    if "@" in p.netloc or "\\" in p.netloc or re.search(r"[\x00-\x1f\x7f]", url or ""):
         return Verdict(False, f"{url!r} names its host unplainly (an '@' in its host part, a "
                               f"backslash or a control character), so no robots.txt governs it",
                        "disallowed")

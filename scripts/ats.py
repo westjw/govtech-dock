@@ -3412,6 +3412,20 @@ _RAW_DROPPED = frozenset({"script", "style", "textarea", "xmp", "iframe", "noemb
 # MathML island's (graphics; its <title> is not the document's).
 _HIDDEN = frozenset({"template", "svg", "math"})
 _FOREIGN = frozenset({"svg", "math"})
+# HTML's breakout tags: a start tag of one of these inside svg or math ends
+# the island (the HTML standard's foreign-content rule), and so does the end
+# tag of an HTML element, which closes the HTML element the island sits in -
+# an unclosed <svg> in a header does not hide the page after </header>
+# (seventh blind review, 2026-11-22). Names SVG shares with HTML (a, title,
+# style, script, font) are left to SVG.
+_BREAKOUT = frozenset({"b", "big", "blockquote", "body", "br", "center", "code", "dd", "div", "dl", "dt",
+                       "em", "embed", "h1", "h2", "h3", "h4", "h5", "h6", "head", "hr", "i", "img", "li",
+                       "listing", "menu", "meta", "nobr", "ol", "p", "pre", "ruby", "s", "small", "span",
+                       "strong", "strike", "sub", "sup", "table", "tt", "u", "ul", "var"})
+_HTML_END = _BREAKOUT | frozenset({"html", "header", "footer", "main", "nav", "section", "article",
+                                   "aside", "form", "label", "button", "td", "th", "tr", "tbody", "thead",
+                                   "tfoot", "caption", "figure", "figcaption", "details", "summary",
+                                   "fieldset", "address", "picture", "object"})
 _SPACE = " \t\n\r\f"
 _ATTR = re.compile(r"""([^\s"'>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]*)))?""")
 
@@ -3599,6 +3613,17 @@ def _walk(page: str) -> tuple[str, list[str]]:
             cut(a, n)                           # a tag never closed: the rest is in it
             i = n
             break
+        if (held["svg"] or held["math"]) and not held[name] and (
+                (closing and name in _HTML_END) or (not closing and name in _BREAKOUT)):
+            # leaving an svg or math island the page never closed: everything
+            # from the innermost svg or math outward is shut, and this tag is
+            # read again as HTML
+            while stack and (held["svg"] or held["math"]):
+                held[stack.pop()] -= 1
+            if not stack:
+                keep_from = a
+            i = a
+            continue
         if closing:
             if held[name]:                      # closes it and anything opened inside it
                 while stack:

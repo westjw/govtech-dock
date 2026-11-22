@@ -19549,7 +19549,7 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
             errors += fail(f"ats._page: an address with a line break in it was not read as a "
                            f"browser reads it: asked {sent}, {exc}")
         for bad in ("https://acme.example\\.evil.example/x", "https://acme.example/a\x00b",
-                    "https://acme.example/a\nb"):
+                    "https://acme.example/a\nb", "https://acme.example/a\x01b", "https://acme.example/a\x7fb"):
             try:
                 ats.plain_address(bad)
                 errors += fail(f"ats.plain_address let {bad!r} through")
@@ -19585,6 +19585,13 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                 errors += fail(f"ats.plain_address refused a plain address {ok!r}: {exc}")
         import robots as _robots
         fetched = []
+        # a backslash after the host names no other host: its own robots.txt
+        # is asked, as for any address (seventh blind review)
+        for after_host in ("https://careers.acme-gov.us/a\\b", "https://jobs.acme-gov.us/careers?q=a\\b"):
+            fetched.clear()
+            v = _robots.verdict(after_host, fetch=lambda u: fetched.append(u) or (200, ""))
+            if not v.ok or not fetched or not all(f.endswith("/robots.txt") for f in fetched):
+                errors += fail(f"robots.verdict refused {after_host!r}, whose host is plain: {v} ({fetched})")
         for two_ways in ("https://evil.example\\@jobs.jobvite.com/x", "https://pat" + "@" + "jobs.jobvite.com/x",
                          "https://evil.example\\jobs.jobvite.com/x"):
             fetched.clear()
@@ -19897,6 +19904,18 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                 (['<template><i data-x="</template>"></i>' + row("acmegov", 3) + "</template>", r1],
                  ["Role 1 & Co"], "a row in a template an attribute's '</template>' does not close"),
                 ([r1, "<template>" + row("acmegov", 2)], ["Role 1 & Co"], "a row in a template never closed"),
+                ([r1.replace('<a href="/acmegov/job/oAbC1fwg">', '<a href="/acmegov/job/oAbC1fwg" title="Sales > Federal">'), r2],
+                 ["Role 1 & Co", "Role 2 & Co"], "a '>' inside a link's attribute"),
+                (['<svg class="icon" viewBox="0 0 8 8"/>', r1, r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "a self-closed <svg/> before the rows"),
+                ([r1, "<noframes>" + row("acmegov", 9) + "</noframes>", r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "a row inside <noframes>"),
+                ([r1, "<svg><![CDATA[ a > </svg> ]]>" + row("acmegov", 7) + "</svg>", r2],
+                 ["Role 1 & Co", "Role 2 & Co"], "a row inside an svg whose CDATA holds '</svg>'"),
+                (["<header><svg><path d='M0 0'></header>", r1, r2], ["Role 1 & Co", "Role 2 & Co"],
+                 "rows after an svg a header left unclosed"),
+                (["<svg><g>", "<div>", r1, r2, "</div>"], ["Role 1 & Co", "Role 2 & Co"],
+                 "rows after a <div> that breaks out of an unclosed svg"),
                 ([r1, "<style>/* <!-- */</style>", r2], ["Role 1 & Co", "Role 2 & Co"],
                  "a '<!--' inside a style block")):
             if titles(rows_) != want:
@@ -20554,6 +20573,9 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
     TN = "https://app.jobvite.com/TalentNetwork/action/joinTN?ci=q6NaVfwI"
     for raw, why in ((TN + "&sd=Pat Example more words", "a name with a space in it"),
                      (TN + "&sd=Pat&#32;Example", "a name with an entity space"),
+                     (TN + "&sd=Pat&#x20;Example", "a name with a hex entity space"),
+                     ("https://x.example/c?recruiter=Pat&#x20;Example&q=1", "a recruiter's name with an entity space"),
+                     ("https://hire.jobvite.com/j?cj=oOthr9fw&sd=Pat%20Example", "a hire.jobvite.com job link's sd="),
                      ("https://acme.example/go?url=" + TN.replace(":", "%3A").replace("/", "%2F")
                       .replace("?", "%3F").replace("=", "%3D") + "%26sd%3DPat%2520Example%26x%3D1",
                       "a talent-network address percent-encoded inside another"),
