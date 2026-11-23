@@ -2577,7 +2577,7 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Twenty-three types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Eight more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), and successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; see "SAP SuccessFactors career sites" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-three types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Eight more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), and successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
 - `site`: the employer's website where the board gives one (ashby, jazzhr).
@@ -3374,9 +3374,9 @@ review and the owner's word, through the wiring door.
   answers closed is an error, never a zero.
 - **Never a zero.** A first page with no rows is an error: a "Unify" site
   (Aurigo's, Esri Canada's: its list is POST /services/recruiting/v1/jobs,
-  which robots.txt closes) says it is one; a classic page with no rows says a
-  CSB board with nothing open has not been seen; rows with no titled posting
-  link say so.
+  which robots.txt closes) is read from its sitemap instead (below); a
+  classic page with no rows says a CSB board with nothing open has not been
+  seen; rows with no titled posting link say so.
 - **The probe** (`verify_boards._successfactors`). The site's name is the
   board's own configuration, on the /search/ page: its `<title>` and meta
   description, one locale's pair ('X Jobs' / 'Find at X'; 'X - Stellen' /
@@ -3438,6 +3438,83 @@ review and the owner's word, through the wiring door.
   in - but a legacy portal only where it names that board's own tenant (its
   company= is the page's ssoCompanyId) or none: another tenant's portal
   beside the board is another account, and stays (seventh blind review).
+- **Unify sites: the sitemap, then each posting** (owner, 2026-11-23: "yes,
+  build the sitemap reader for those three" - Aurigo, Esri Canada, Octave).
+  `successfactors_board` says a Unify /search/ page is one
+  (`ats.SuccessFactorsUnify`) and `fetch_successfactors` reads the board
+  from `<origin>/sitemap.xml` (`ats.successfactors_unify`): one `<url><loc>`
+  a posting at /job/<slug>/<id>/ (measured 2026-11-23: Aurigo 16, Esri
+  Canada 32 - about 16 roles, each in English and in French - Octave 131;
+  every `<lastmod>` one day, never read). **The sitemap**
+  (`ats.successfactors_sitemap`) is asked as every page is (robots.txt at
+  every hop, its own host, and nothing under /services/ whatever robots.txt
+  says) and read as an XML reader reads it: a commented-out `<url>` is not
+  listed, and a loc's escapes are undone ('&apos;' Esri Canada's, '&amp;'
+  Octave's). A /job/ address on the origin that says plainly where it goes
+  is a posting; anything else is passed over and said; one that is a
+  posting but does not read plainly (a bare '&', an entity XML does not
+  define, '&amp;apos;' undone twice, a relative address, CDATA, a control
+  character) fails the read, so a posting is never silently lost. A
+  `<sitemapindex>` is followed one level, to at most `SF_SITEMAPS_MAX` (5)
+  sitemaps on its own origin; another host's is not asked. **Never a zero,
+  never a giant**: a sitemap robots.txt closes, one not there (404 or 410:
+  the board unreadable, never gone), one listing no posting and one listing
+  more than `SF_SITEMAP_MAX` (400; the owner skips giants of about 500+) are
+  errors that say why. **Each posting is asked once**
+  (`successfactors_posting`: its loc and the 302 to
+  /job/<slug>/<N>-<locale>/), two requests a posting beside the /search/
+  page and the sitemap - Octave 264 a night, Esri Canada 66, Aurigo 34, and
+  robots.txt: the cost the owner accepted. **A row is the posting's own
+  page** (`ats.successfactors_unify_row`): the role (its itemprop="title"
+  text, else og:title); the first of the tenant's place tokens shown with a
+  value (Posting Location, Job Location (Short), Job Location, Location,
+  Work Location), else its Country, a token naming several places split at
+  '|' and joined '; '; Workplace Type as the row's mode, and Remote said
+  first in the place ('Remote; São Paulo, Brazil') so the place a remote
+  role names is not its desk; the Posting Start Date only on a page whose
+  `<html lang>` is en-US (M/D/YY: en-GB writes the day first, so no other
+  page is dated); the url the sitemap's address, never where it landed
+  (Esri Canada writes a French posting's Location twice encoded); the ad
+  (`successfactors_ad`) behind FETCH_DETAILS, for no request more. **One
+  requisition is one row**: copies that land on one N (Esri Canada's
+  .../663-en_US/ and .../663-fr_CA/) are published once, the en_* copy where
+  there is one, and said. **What a posting answers**: the site saying it
+  closed (`successfactors_closed`, `successfactors_filled`) leaves it out,
+  said on stderr; a 429, a 5xx or the network fails the whole read at once,
+  raised as it came, so refresh and build_board ask a 429 and the network
+  once more and a board that still will not read keeps its state (Unknown,
+  never "None found") - one flaky request never empties a board; anything
+  else (a page showing no posting that is not the site saying so,
+  robots.txt closing it, a 401 or 403, a hop off /job/ or off the host, a
+  page naming no role) is left out and said up to `SF_SLACK` (2) postings,
+  and more is the board unreadable; every posting closed is an error.
+  **The probe** (`verify_boards._successfactors_unify`): the site's name is
+  each posting page's `<title>` after its last ' | ' ('<role> Job Details |
+  <site>', in French '<rôle> Détails de l'emploi | <site>'), stated whole
+  only by the classic rule - the sitemap lists `SF_POSTINGS_ASKED` (40) or
+  fewer, every one asked, at most `SF_SLACK` closed; a longer one is asked
+  about its first `SF_POSTINGS_SAMPLED` (5) that answer, for the desk; a
+  block page or any other failure is the board not read. The classic
+  probe's language rule is not asked: the reader pairs the copies. The
+  names measured: 'Aurigo Software Technologies', 'esricanada', 'Octave'.
+  proven() is unchanged: 'esricanada' proves nobody (a country on our name
+  must be on the board's), and 'Aurigo Software Technologies' does not
+  prove the bare 'Aurigo Software' - Aurigo's record passes only through
+  its also_known_as 'Aurigo Software Technologies Inc.' (asked offline of
+  the record on file). **Read offline** over the responses saved
+  2026-11-23, the postings with no saved page served a saved page of their
+  host retitled (no live read yet): Aurigo 16 rows in 34 requests, stated
+  whole and proven for its record by that alias; Esri Canada 16 rows from
+  32 locs, 16 copies paired, in 66, stated whole as 'esricanada' and
+  proven for nobody; Octave 131 rows in 264, five postings asked, not
+  stated.
+  **Known**: the ad is the FIRST itemprop="description" element only
+  (`successfactors_ad`, shared with the classic reader), and Esri Canada's
+  postings split theirs into three, the pay sentence in the third; Esri
+  Canada's Salary Min/Max tokens are not read. Wiring the three waits for
+  the door. Guard: `check_successfactors_unify_reads_its_sitemap` (77
+  one-line breakages of the reader and the probe, each alone in a private
+  copy, each caught).
 - **Measured** on six CSB hosts by the research of 2026-11-20 (Landis+Gyr 63,
   JENOPTIK 175, SPX 237 and Indra 623 classic; Aurigo and Esri Canada Unify)
   and on Gainwell's of 2026-11-22. **Read live once** the same day (details
@@ -3450,8 +3527,7 @@ review and the owner's word, through the wiring door.
   read clean (80 rows read 'TX, US') except 14 rows open in more places than
   one, and the rule that keeps their '+1 more…' was written after that read,
   from one read of the list sorted by place.
-- **Not built**: Unify sites (sitemap.xml plus one request a posting would
-  read them, two on Aurigo's); a multi-brand tenant's /<Brand>/search/; a unit
+- **Not built**: a multi-brand tenant's /<Brand>/search/; a unit
   filter for a group's board (SPX's 237 rows are 12 units, named only in a
   per-site Facility column). And a board on file that lists each role once
   per language publishes each copy: the list marks no row's language (two
