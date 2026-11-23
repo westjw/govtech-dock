@@ -3543,9 +3543,19 @@ review and the owner's word, through the wiring door.
   page is dated); the url the sitemap's address, never where it landed
   (Esri Canada writes a French posting's Location twice encoded); the ad
   (`successfactors_ad`) behind FETCH_DETAILS, for no request more. **One
-  requisition is one row**: copies that land on one N (Esri Canada's
-  .../663-en_US/ and .../663-fr_CA/) are published once, the en_* copy where
-  there is one, and said. **What a posting answers**: the site saying it
+  requisition is one row**: copies of one N (Esri Canada's .../663-en_US/
+  and .../663-fr_CA/) are published once, the en_* copy where there is one,
+  and said - another language's copy, or the same requisition listed again
+  in one language (one number, one locale). The N is the one the address a
+  loc hops to names, else the one the page states of itself - its `<link
+  rel="canonical" href="<origin>/job/<slug>/<N>-<locale>/">`, on every
+  posting page measured - and none where the two disagree
+  (`ats.successfactors_unify_requisition`; blind review 10: an English copy
+  answering at its own sitemap address and its French copy hopping were
+  published as two roles). Where copies in one language differ, the row is
+  the address whose slug is the one the page answers at (a stale slug that
+  hops to the posting is not the row's), and an address the read has
+  already landed on is not asked again. **What a posting answers**: the site saying it
   closed (`successfactors_closed`, `successfactors_filled`) leaves it out,
   said on stderr; **a failure of the day on a posting** - a 429, a 5xx, the
   network failing or timing out - is asked once more (after the gate's

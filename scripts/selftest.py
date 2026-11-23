@@ -21598,7 +21598,7 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
 
     def posting(title="Account Executive", tokens=(), site_name="Acme Gov Software", lang="en-US",
                 ad="<p>Sell to cities and counties.</p>", titled="token", og=True,
-                phrase="Job Details", nbsp="&nbsp;", page_title=None):
+                phrase="Job Details", nbsp="&nbsp;", page_title=None, canonical=None):
         # (titled: "token" - a 'Job Title' token holds the itemprop title, as
         # Aurigo's and Esri Canada's pages do; "h1" - the title in an <h1>
         # with no label, as Octave's; None - no itemprop title at all)
@@ -21610,6 +21610,10 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         else:
             head = ""
         meta = f'<meta property="og:title" content="{title}" />' if og else ""
+        if canonical:
+            # (the address the page states of itself, as every Unify posting
+            # page measured does: /job/<slug>/<N>-<locale>/)
+            meta += f'<link rel="canonical" href="{canonical}" />'
         shown = page_title if page_title is not None else f"{title} {phrase} | {site_name}"
         return (f'<html class="html5" xml:lang="{lang}" lang="{lang}" xmlns="http://www.w3.org/1999/'
                 f'xhtml"><head><title>{shown}</title>{meta}</head><body><div class="jobDisplayShell" '
@@ -21874,11 +21878,63 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         if exc or [r["title"] for r in rows or []] != ["Gestionnaire de comptes", "Field Engineer"]:
             errors += fail(f"successfactors unify: two copies of one requisition and no English did not read "
                            f"as the first of them: {[r['title'] for r in rows or []]} ({exc})")
-        # a posting that does not hop has no requisition to be paired by
+        # a posting that does not hop, and whose page states no requisition,
+        # has nothing to be paired by
         rows, exc, err = go(site([(en[0], None, en[2]), (fr[0], None, fr[2])]))
         if exc or len(rows or []) != 2:
             errors += fail(f"successfactors unify: two postings that answer at their own address were "
                            f"paired with nothing to pair them by: {rows} ({exc})")
+        # ...but ONE THAT ANSWERS IN PLACE is paired by the requisition its
+        # page states of itself, its canonical link (blind review 10: an
+        # English copy answering at its sitemap address and its French copy
+        # hopping were published as two roles)
+        en_here = f"{SF}/job/Account-Manager/621-en_US/"
+        en_in_place = (en[0], None, posting("Account Manager", canonical=en_here))
+        for order, why in (([en_in_place, fr, other], "the English answering in place"),
+                           ([fr, en_in_place, other], "the French first, the English in place")):
+            rows, exc, err = go(site(order))
+            if exc or [r["title"] for r in rows or []] != ["Account Manager", "Field Engineer"] \
+                    or rows[0]["url"] != en[0] or len(sent) != 2 + 2 + 1 + 2 \
+                    or "1 of the postings its sitemap lists are another language's copy" not in err:
+                errors += fail(f"successfactors unify: with {why}, two copies of one requisition did not read "
+                               f"as one row, the English, and say so ({err.strip()!r}, {exc}): "
+                               f"{[r['title'] for r in rows or []]}")
+        for page_, why in ((posting("Account Manager", canonical=f"{SF}/job/Account-Manager/622-en_US/"),
+                            "a page stating another requisition than the one it hopped to"),
+                           (posting("Account Manager", canonical="https://elsewhere.example/job/A/621-en_US/"),
+                            "a page stating an address on another host"),
+                           (posting("Account Manager").replace(
+                               "<head>", f'<head><link rel="alternate" href="{SF}/job/A/621-fr_CA/" />', 1),
+                            "a page naming the requisition only in another link")):
+            hopped_ = (en[0], f"{SF}/job/Account-Manager/621-en_US/", page_) if "622" in page_ \
+                else (en[0], None, page_)
+            rows, exc, err = go(site([hopped_, fr]))
+            if exc or len(rows or []) != 2:
+                errors += fail(f"successfactors unify: {why} was paired on it: "
+                               f"{[r['title'] for r in rows or []]} ({exc})")
+        # TWO SITEMAP ADDRESSES OF ONE REQUISITION IN ONE LANGUAGE are one row,
+        # and said so - not 'another language's copy' - and the row is the
+        # address whose slug the page answers at, not a stale one; an address
+        # the read has landed on already is not asked again (blind review 10)
+        landed_ = f"{SF}/job/Account-Manager/621-en_US/"
+        for order, why in (([x(en[0]), x(landed_)], "a posting's address, then the one it lands on"),
+                           ([x(landed_), x(en[0])], "the address it lands on, then the posting's")):
+            rows, exc, err = go(site([en, (landed_, None, en[2])], smap=sitemap(order)))
+            if exc or [r["title"] for r in rows or []] != ["Account Manager"] \
+                    or sent.count(landed_) != 1 or sent.count(en[0]) != 1 \
+                    or "1 of the postings its sitemap lists are a requisition read listed again in the " \
+                       "same language" not in err or "another language" in err:
+                errors += fail(f"successfactors unify: {why} were not one row, the landing asked once, said "
+                               f"as listed again ({err.strip()!r}, asked {[u[len(SF):] for u in sent[2:]]}): "
+                               f"{[r['title'] for r in rows or []]} {exc}")
+        stale, live = f"{SF}/job/Sales-Engineer/70000031/", f"{SF}/job/Account-Executive/70000032/"
+        live_hop = f"{SF}/job/Account-Executive/632-en_US/"
+        rows, exc, err = go(site([(stale, live_hop, posting("Account Executive")),
+                                  (live, live_hop, posting("Account Executive"))]))
+        if exc or [r["url"] for r in rows or []] != [live] or sent.count(live_hop) != 1:
+            errors += fail(f"successfactors unify: a stale address hopping to a live posting kept its stale "
+                           f"slug as the row's address, or the posting was asked twice "
+                           f"({sent.count(live_hop)}): {[r['url'] for r in rows or []]} {exc}")
 
         # ---- what is not a posting of this site is not asked ------------------
         not_ours = ["https://elsewhere.example/job/Role-32/70000032/", f"{SF}/go/Sales/4488801/", f"{SF}/",

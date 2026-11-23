@@ -4253,7 +4253,8 @@ def successfactors_walk(origin: str, first: list[dict], n: int, total: int | Non
     return rows
 
 
-def successfactors_posting(url: str, origin: str, landed: list | None = None) -> str:
+def successfactors_posting(url: str, origin: str, landed: list | None = None,
+                           known: dict | None = None) -> str:
     """One posting's page, asked only on the career site's own host, at an
     address that says plainly where it goes; a hop to the site's list is the
     posting gone (PostingClosed), and a hop anywhere else off /job/ is not
@@ -4263,7 +4264,9 @@ def successfactors_posting(url: str, origin: str, landed: list | None = None) ->
     to /job/<slug>/<N>-<locale>/), or where an answer that was no page came
     from. A HOP BACK TO AN ADDRESS ALREADY ASKED is a loop, not read (blind
     review 10, 2026-11-23: a posting and its hop sending a reader to each
-    other were asked eleven times in all before the hop limit ended it)."""
+    other were asked eleven times in all before the hop limit ended it).
+    `known`, when given, is the addresses a Unify read has already read as
+    postings: a hop to one of them is not asked again (_SfKnown)."""
     if _sf_posting_url(url, origin) != url:
         raise AtsError(f"{url} is not a posting of {origin}")
     rule, chain = _sf_hop(url, posting=True), []
@@ -4273,6 +4276,8 @@ def successfactors_posting(url: str, origin: str, landed: list | None = None) ->
             raise AtsError(f"{url} sends a reader round in a loop (back to {u[:120]}), so it says "
                            f"nothing of the posting")
         rule(u)
+        if known and u != url and u in known:
+            raise _SfKnown(u)
         chain.append(u)
         if landed is not None:
             landed.append(u)
@@ -4827,19 +4832,70 @@ def _sf_requisition(landed: str) -> tuple[str, str] | None:
     return (m.group(1), m.group(2)) if m else None
 
 
-def _sf_unify_posting(url: str, origin: str):
-    """('row', (row, requisition)), ('closed', None) or ('unread', why) for
-    one posting a Unify sitemap lists, asked once. A FAILURE OF THE DAY - a
-    429, a 5xx, the network failing or timing out (_sf_of_the_day) - is asked
-    once more, after the gate's backoff for a 429 and SF_RETRY_PAUSE for the
-    rest, and failing again is raised as it came (blind review 10,
+_SF_LINK = re.compile(r"<link\b([^<>]*)>", re.I)
+
+
+def _sf_stated_requisition(page: str, origin: str) -> tuple[str, str] | None:
+    """(the number, the locale) a posting page states of itself: its
+    <link rel="canonical" href="<origin>/job/<slug>/<N>-<locale>/"> (on every
+    Unify posting page measured, 2026-11-23: Aurigo's, Esri Canada's and
+    Octave's), on this site's origin; None for a page that states none."""
+    for m in _SF_LINK.finditer(_cut(page or "")):
+        attrs = _sf_attrs(m.group(1))
+        if "canonical" not in (attrs.get("rel") or "").lower().split():
+            continue
+        href = html_lib.unescape(attrs.get("href") or "").strip()
+        parts = urllib.parse.urlsplit(href)
+        if f"{parts.scheme}://{(parts.netloc or '').lower()}" == origin:
+            return _sf_requisition(href)
+        return None
+    return None
+
+
+def successfactors_unify_requisition(page: str, landed: str, origin: str) -> tuple[str, str] | None:
+    """The requisition one Unify posting page is a copy of: the number and
+    locale of the address its loc hopped to (/job/<slug>/<N>-<locale>/), else
+    of the address the page states of itself (_sf_stated_requisition) - so a
+    copy that answers at its own sitemap address is paired too (blind review
+    10, 2026-11-23: an English copy answering in place and its French copy
+    hopping were published as two roles). Where the two disagree, the page
+    does not say plainly which requisition it is, and it is none: its copies
+    are not paired on a guess. The reader pairs copies by this, and the
+    probe asks it of the copies in each language."""
+    hopped, stated = _sf_requisition(landed), _sf_stated_requisition(page, origin)
+    if hopped and stated and hopped != stated:
+        return None
+    return hopped or stated
+
+
+class _SfKnown(AtsError):
+    """A Unify posting's hop lands on an address this read has already read
+    as a posting: its page is that one, and is not asked twice."""
+
+    def __init__(self, address: str):
+        super().__init__(f"{address} is read already")
+        self.address = address
+
+
+def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
+    """('row', (row, requisition, where)), ('closed', None) or ('unread', why)
+    for one posting a Unify sitemap lists, asked once. A FAILURE OF THE DAY -
+    a 429, a 5xx, the network failing or timing out (_sf_of_the_day) - is
+    asked once more, after the gate's backoff for a 429 and SF_RETRY_PAUSE
+    for the rest, and failing again is raised as it came (blind review 10,
     2026-11-23: one 5xx among a read's ~265 requests took the whole board
-    off for the night, and nothing asked it again)."""
+    off for the night, and nothing asked it again). `known` holds what this
+    board's read has already read as a posting, by the address its page
+    came from: a hop to one of them is that page again, not asked twice."""
+    known = {} if known is None else known
     for attempt in (1, 2):
         landed: list = []
         try:
-            page = successfactors_posting(url, origin, landed)
+            page = successfactors_posting(url, origin, landed, known)
             break
+        except _SfKnown as again:
+            row, req, where = known[again.address]
+            return "row", (dict(row, url=url), req, where)
         except AtsError as exc:
             if successfactors_closed(exc):
                 return "closed", None
@@ -4859,7 +4915,16 @@ def _sf_unify_posting(url: str, origin: str):
     if FETCH_DETAILS:
         # the ad is on the page already read: no request more
         row["jd"] = successfactors_ad(page)
-    return "row", (row, _sf_requisition(landed[-1] if landed else url))
+    where = landed[-1] if landed else url
+    req = successfactors_unify_requisition(page, where, origin)
+    known[where] = (row, req, where)
+    return "row", (row, req, where)
+
+
+def _sf_slug(url: str) -> str:
+    """The slug of a /job/<slug>/... address, or ''."""
+    segs = urllib.parse.urlsplit(url or "").path.split("/")
+    return segs[2] if len(segs) > 2 and segs[1] == "job" else ""
 
 
 def successfactors_unify(origin: str) -> list[dict]:
@@ -4867,13 +4932,23 @@ def successfactors_unify(origin: str) -> list[dict]:
     (successfactors_sitemap), each asked once on its own page and read from
     it (successfactors_unify_row), the site's closed postings left out and
     said, a failure of the day raised as it came, and more than SF_SLACK
-    postings that would not read an error; then one row a requisition - a
-    role written in two languages hops to one number twice - in English
-    where there is one. Never a zero."""
+    postings that would not read an error; then one row a requisition
+    (successfactors_unify_requisition) - a role written in two languages is
+    one number twice - in English where there is one, at the address whose
+    slug is the one its page answers at where copies in one language
+    differ (a stale slug that hops to the posting is not the row's). An
+    address the read has already landed on is not asked again. Never a
+    zero."""
     urls, notes = successfactors_sitemap(origin)
-    closed, unread, read = [], [], []
+    closed, unread, read, known = [], [], [], {}
     for url in urls:
-        what, got = _sf_unify_posting(url, origin)
+        if url in known:
+            # (the sitemap lists an address another of its postings hopped
+            # to: that page, read once)
+            row, req, where = known[url]
+            what, got = "row", (dict(row, url=url), req, where)
+        else:
+            what, got = _sf_unify_posting(url, origin, known)
         if what == "row":
             read.append(got)
         elif what == "closed":
@@ -4884,17 +4959,25 @@ def successfactors_unify(origin: str) -> list[dict]:
                 raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
                                f"did not read as postings ({unread[0]} the first): read in part, so "
                                f"not read")
-    kept, at, twins = [], {}, 0
-    for row, req in read:
+    groups: dict = {}
+    for row, req, where in read:
         key = ("requisition", req[0]) if req else ("address", row["url"])
+        groups.setdefault(key, []).append((row, req, where))
+
+    def rank(copy):
+        row, req, where = copy
         english = bool(req) and re.match(r"en(?:_|$)", req[1], re.I) is not None
-        if key not in at:
-            at[key] = len(kept)
-            kept.append((row, english))
-            continue
-        twins += 1
-        if english and not kept[at[key]][1]:
-            kept[at[key]] = (row, english)
+        return (not english, _sf_slug(row["url"]) != _sf_slug(where))
+    kept, languages, again = [], 0, 0
+    for copies in groups.values():
+        best = min(copies, key=rank)            # (the first of equals)
+        kept.append(best[0])
+        for copy in copies:
+            if copy is not best:
+                if (copy[1] or ("", ""))[1].lower() == (best[1] or ("", ""))[1].lower():
+                    again += 1
+                else:
+                    languages += 1
     if not kept:
         raise AtsError(f"{origin}: none of the {len(urls)} postings its sitemap lists answered as an "
                        f"open posting ({len(closed)} closed, {len(unread)} that did not read), so it "
@@ -4907,13 +4990,16 @@ def successfactors_unify(origin: str) -> list[dict]:
     if unread:
         said.append(f"{len(unread)} of the {len(urls)} postings its sitemap lists did not read as "
                     f"postings and are left out: {'; '.join(unread)}")
-    if twins:
-        said.append(f"{twins} of the postings its sitemap lists are another language's copy of a "
+    if languages:
+        said.append(f"{languages} of the postings its sitemap lists are another language's copy of a "
                     f"requisition read (one number) and are published once, in English where there "
                     f"is one")
+    if again:
+        said.append(f"{again} of the postings its sitemap lists are a requisition read listed again in "
+                    f"the same language (one number, one locale) and are published once")
     for line in said:
         print(f"  successfactors: {origin}: {line}", file=sys.stderr)
-    return [row for row, _english in kept]
+    return kept
 
 
 FETCHERS = {
