@@ -2974,7 +2974,15 @@ round.
   never the board of a record ruled out of scope, which is said as not asked
   (eighth blind review, 2026-11-22: a record's page was asked for finds
   nothing compared) - and the worklist carries the answer to
-  apply (`record_addresses`, held to the record's board as it reads then);
+  apply: `page_addresses` records what each page the plan asked stated, by
+  the board's exact spelling, and a WIRE row compared by a record's names it
+  (`leans_on`); apply leans on such an address only for the row that names
+  it, only where both say it, and while the record still reads that board,
+  and the look prints every address it leans on, the row's own `page_ref`
+  included - a `page_ref` the plan did not record leaves the row alone
+  (`evidence`) and is never filed on a held row (eighth blind review,
+  2026-11-22: `record_addresses` and a row's `page_ref` were taken on the
+  worklist's word, and an added address cleared a record and a proposal);
   where that page states nothing, the row names the record and says that
   putting its board on file by its whole /jobs/All/<uuid>/<Tenant> address
   clears it. What the page said is kept as `wire_found.page_answer` words: a
@@ -3032,8 +3040,12 @@ round.
   another holder (under either key), more postings shown than the board
   read. A write whose `--expect` is not the code of the data as it is now is
   REFUSED, even when nothing would be written. A worklist older than version
-  4, or without `reader_doubts` (or with a blank one) or `workable_numbers`,
-  is refused: version 3 kept the readers' doubts only when it was written.
+  5, or without `reader_doubts` (or with a blank one), `workable_numbers` or
+  `page_addresses`, is refused: version 3 kept the readers' doubts only when
+  it was written, and version 4 carried a record's page's address apply took
+  on its word. The look prints, under each row it wires, every /All/ address
+  it leans on ("leans on what the plan was told: ..."), and the code covers
+  them.
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from

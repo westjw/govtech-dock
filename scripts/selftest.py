@@ -38466,6 +38466,10 @@ def check_a_readers_doubt_stands_until_the_owner_rules() -> int:
 
         # --- worklists apply will not read ------------------------------------
         for label, change in (("version 3", lambda b, d: d.update(version=3)),
+                              # version 4 carried what a record's page stated as
+                              # record_addresses, which apply took on the
+                              # worklist's word (eighth blind review, 2026-11-22)
+                              ("version 4", lambda b, d: d.update(version=4)),
                               ("no reader_doubts", lambda b, d: d.pop("reader_doubts")),
                               ("reader_doubts as a list",
                                lambda b, d: d.update(reader_doubts=sorted(WORDS))),
@@ -41457,7 +41461,9 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
     # (12) A RECORD ON A BARE /List/ ADDRESS, ITS PAGE STATING NOTHING ON FILE,
     # held every later /All/ find for every company (seventh blind review,
     # 2026-11-22). The plan asks its board's page once for its /All/ address
-    # and compares by it - in apply too, by the worklist's record_addresses;
+    # and compares by it - in apply too, by what the worklist records the page
+    # stating (page_addresses) for the rows that name it (leans_on), each
+    # address printed in the look;
     # where the page states nothing the row names the record and how he
     # clears it. A record with an /All/ id is not asked. ONCE PER SPELLING: two
     # records on one board, and a find that spells it as they do, are one
@@ -41490,30 +41496,41 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             expect(rows_12, cid, "HOLD", " is already on file as the board of Listed Co and "
                                          "Listed Co Two")
         doc12 = json.loads(wl_12.read_text())
-        if doc12.get("record_addresses") != {"listed-co": {"ref": LIST_REC, "address": ALL_REC},
-                                             "listed-co-2": {"ref": LIST_REC,
-                                                             "address": ALL_REC}} \
+        SP_REC = wf.spelling("paylocity", LIST_REC)
+        leans12 = {cid: ((rows_12 or {}).get(cid) or {}).get("leans_on")
+                   for cid in ("alpha-co", "beta-co")}
+        if doc12.get("page_addresses") != {SP_REC: ALL_REC} \
+                or leans12 != {"alpha-co": {SP_REC: ALL_REC}, "beta-co": {SP_REC: ALL_REC}} \
                 or box.probed.count(f"paylocity/{LIST_REC}") != 1 \
                 or f"paylocity/{pall(0x941)}" in box.probed:
             errors += fail(f"the records on a bare /List/ address were not asked once, and only "
-                           f"they, for the /All/ address its page states: "
-                           f"{doc12.get('record_addresses')!r}, probed {box.probed}")
+                           f"they, for the /All/ address its page states, or the rows do not "
+                           f"name it: {doc12.get('page_addresses')!r}, {leans12!r}, probed "
+                           f"{box.probed}")
         if "NOTE: asked 2 records on file for the /jobs/All/ address its Paylocity board's own " \
            "page states; 2 stated one" not in text:
             errors += fail(f"the plan did not say it asked the records' own pages: "
                            f"{text[:600]!r}")
         code, text, _ = box.look(wl_12)
-        if "WIRE 2" not in text:
+        if "WIRE 2" not in text or text.count(
+                f"leans on what the plan was told: the page of {LIST_REC[8:]} states its address "
+                f"is {ALL_REC}") != 2:
             errors += fail(f"apply did not compare the two boards with the record by the /All/ "
-                           f"address its page stated in the plan: {text[-400:]}")
-        # a worklist that says what a record's page stated in another shape says
-        # nothing apply may lean on
-        code, text, _ = box.look(box.edited(wl_12, "worklist-12-bad.json",
-                                            lambda _rows, doc: doc.update(
-                                                record_addresses={"listed-co": ALL_REC})))
-        if code == 0 or "carries record_addresses that are not" not in text:
-            errors += fail(f"apply took a worklist whose record_addresses are not "
-                           f"{{record id: {{ref, address}}}}: exit {code}, {text[-200:]!r}")
+                           f"address its page stated in the plan, saying so: {text[-600:]}")
+        # a worklist that says what a page stated in another shape, or none,
+        # says nothing apply may lean on
+        for label, change in (
+                ("page_addresses as a list", lambda _rows, doc: doc.update(
+                    page_addresses=[SP_REC, ALL_REC])),
+                ("no page_addresses", lambda _rows, doc: doc.pop("page_addresses")),
+                ("a row's leans_on as a list", lambda rows_, _doc: rows_["alpha-co"].update(
+                    leans_on=[SP_REC, ALL_REC]))):
+            code, text, _ = box.look(box.edited(wl_12, f"worklist-12-bad-{len(label)}.json",
+                                                change))
+            if code == 0 or "could not read the worklist" not in text \
+                    or ("page_addresses" not in text and "leans_on" not in text):
+                errors += fail(f"apply took a worklist with {label}: exit {code}, "
+                               f"{text[-200:]!r}")
         # its page states nothing: the row names the record and how he clears it
         box.by_hand(lambda by_id, cs: by_id["listed-co"].update(
             ats={"type": "paylocity", "ref": LIST_MUTE}))
@@ -41552,11 +41569,10 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                f"/jobs/All/ address in a form this door does not keep ({UNKEPT})",
                f"Failed Rec's board is on file by {LIST_FL[8:]}; its own page could not be "
                f"read (HTTP 404 for the board's page)")
-        if set(json.loads(wl_12e.read_text()).get("record_addresses") or {}) \
-                != {"listed-co", "listed-co-2"}:
+        if json.loads(wl_12e.read_text()).get("page_addresses") != {SP_REC: ALL_REC}:
             errors += fail(f"apply was handed a record's address its page stated in a form the "
                            f"door does not keep, or none of the ones it keeps: "
-                           f"{json.loads(wl_12e.read_text()).get('record_addresses')!r}")
+                           f"{json.loads(wl_12e.read_text()).get('page_addresses')!r}")
     # ...and A RECORD'S OWN PAGE THAT FAILS ON THE DAY is no doubt to file: the
     # find only it could compare is SKIPped and asked again, nothing is filed,
     # and the next plan, the page answering, wires it (eighth blind review,
@@ -41792,6 +41808,78 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             errors += fail(f"ea-co: a WIRE row whose board was put on file since the plan, at its "
                            f"bare /List/ address, the accepted row stating this /All/ address, "
                            f"was not left alone as on file: {line[:300]!r} {text[-300:]!r}")
+
+    # (16) APPLY LEANS ON AN ADDRESS ONLY WHERE THE PLAN RECORDED IT, for the row
+    # that says it leaned on it, and the look prints each (eighth blind review,
+    # 2026-11-22: an address added to record_addresses, or to a row's page_ref,
+    # cleared a record and a pending proposal). A HOLD row edited to WIRE beside
+    # a record whose page stated nothing, with an /All/ address for that
+    # record's board added to the worklist's record of what pages stated alone,
+    # or to the row alone, clears nothing; added to both, the look shows the
+    # address the write would lean on. A row's own page_ref the plan did not
+    # record leaves it alone, and a held row's is never filed
+    LIST_X3, FAKE_X3 = plist(2163), pall(0xdead, "Whatever-Co")
+    ALL_AX = pall(0x9b0, "Alpha3-Co")
+    LIST_Y3, FAKE_Y3 = plist(2164, "Y3-Co"), pall(0xbeef, "Y3-Co")
+    with _WiringBox([co("alpha3-co", "Alpha3 Co"), co("y3-co", "Y3 Co"), co("h3-co", "H3 Co"),
+                     co("listed3-co", "Listed3 Co", ats={"type": "paylocity", "ref": LIST_X3})],
+                    {f"paylocity/{ALL_AX}": (3, ["Alpha3 Co"]),
+                     f"paylocity/{LIST_Y3}": (3, ["Y3 Co"])},
+                    files={bp.PROPOSALS: proposal("h3-co", "H3 Co", pall(0x9b1),
+                                                  status="pending")}) as box:
+        code, text, wl_x3, rows_x3 = box.plan(_wb_results({
+            "alpha3-co": names("alpha3-co", "paylocity", ALL_AX),
+            "y3-co": names("y3-co", "paylocity", LIST_Y3)}), name="worklist-x3.json")
+        expect(rows_x3, "alpha3-co", "HOLD", f"cannot be compared with (Listed3 Co at "
+                                             f"{LIST_X3[8:]})")
+        expect(rows_x3, "y3-co", "HOLD", "is waiting in Agent proposals for H3 Co",
+               "cannot be shown")
+        SP_X3, SP_Y3 = wf.spelling("paylocity", LIST_X3), wf.spelling("paylocity", LIST_Y3)
+
+        def as_wire(rows_, cid, **more):
+            r = rows_[cid]
+            r["action"], r["waiting_seen"] = "WIRE", []
+            r.pop("doubts", None)
+            r.pop("queue_row", None)
+            r.update(more)
+        for label, change, wired, must in (
+                ("the record's address on the worklist's record alone",
+                 lambda rows_, doc: (as_wire(rows_, "alpha3-co"),
+                                     doc["page_addresses"].update({SP_X3: FAKE_X3})),
+                 False, "plan again"),
+                ("the record's address on the row alone",
+                 lambda rows_, doc: as_wire(rows_, "alpha3-co", leans_on={SP_X3: FAKE_X3}),
+                 False, "plan again"),
+                ("the record's address on both",
+                 lambda rows_, doc: (as_wire(rows_, "alpha3-co", leans_on={SP_X3: FAKE_X3}),
+                                     doc["page_addresses"].update({SP_X3: FAKE_X3})),
+                 True, f"leans on what the plan was told: the page of {LIST_X3[8:]} states "
+                       f"its address is {FAKE_X3}"),
+                ("its own page_ref on the row alone",
+                 lambda rows_, doc: as_wire(rows_, "y3-co", page_ref=FAKE_Y3),
+                 False, "the plan recorded no such answer from that page"),
+                ("its own page_ref on both",
+                 lambda rows_, doc: (as_wire(rows_, "y3-co", page_ref=FAKE_Y3),
+                                     doc["page_addresses"].update({SP_Y3: FAKE_Y3})),
+                 True, f"leans on what the plan was told: its own page states its address is "
+                       f"{FAKE_Y3}")):
+            code, text, _ = box.look(box.edited(wl_x3, f"worklist-x3-{len(label)}.json", change))
+            if ("WIRE 1 " in text) != wired or ("LEFT ALONE 1 " in text) == wired \
+                    or must not in text:
+                errors += fail(f"apply, for a worklist with {label}, did not "
+                               + ("show the address it leans on" if wired else
+                                  "leave the row alone") + f": {text[-500:]!r}")
+        # ...and a held row's page_ref the plan did not record is not filed
+        code, text, look_x3 = box.look(box.edited(
+            wl_x3, "worklist-x3-filed.json",
+            lambda rows_, doc: rows_["y3-co"]["queue_row"].update(page_ref=FAKE_Y3)))
+        box.write(box.scratch / "worklist-x3-filed.json", look_x3)
+        filed_y3 = next((x for x in json.loads((box.tmp / bp.FOUND.name).read_text())
+                         if x.get("id") == "y3-co"), {})
+        if "page_ref" in filed_y3 or "files with it what its own page states" in text \
+                or not filed_y3:
+            errors += fail(f"a held row's page_ref the plan never recorded was filed for the "
+                           f"owner: {filed_y3!r:.300}")
     return errors
 
 

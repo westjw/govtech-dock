@@ -146,9 +146,14 @@ MADE = "wire_found.py plan"
 # (`reader_doubts`); and a WIRE row records the waiting rows it was planned
 # beside. 4: the readers' doubts were KEPT by the plan before it asked any
 # board (apply writes none), and the plan records which Workable account
-# numbers it followed (`workable_numbers`). An older worklist is judged by
-# rules that are no longer the door's.
-VERSION = 4
+# numbers it followed (`workable_numbers`). 5: what each Paylocity board's
+# own page stated when the plan asked it is recorded once, by the board's
+# exact spelling (`page_addresses`), and a WIRE row names the addresses of
+# boards on file it was compared by (`leans_on`): apply leans on an address
+# only where both say it, and the look prints each (eighth blind review,
+# 2026-11-22: `record_addresses` was taken on the worklist's word). An older
+# worklist is judged by rules that are no longer the door's.
+VERSION = 5
 WAITING = board_proposals.WAITING
 # A READER'S DOUBT STANDS FROM THE MOMENT IT IS GIVEN. One record per doubt,
 # {"<company id>@<when>": {id, name, board, type, ref, why, by, on, at}} (the
@@ -1486,9 +1491,11 @@ def records_by_page(ctx: dict, finds: list) -> dict:
     does (addressed_by_page), so the plan asks it - one read of a board the
     crawl reads every night, through the probe and its manners, only of a
     record with no /All/ id that some find of this run cannot be compared
-    with - and the worklist carries the answer to apply (`record_addresses`),
-    held to the record's board as it reads then. Where the page states
-    nothing, the row names the record and says how he clears it."""
+    with - and the worklist carries the answer to apply: `page_addresses`
+    records what the page stated, and a WIRE row compared by it names it
+    (`leans_on`, leans_of); apply leans on it for that row alone, while the
+    record still reads that board, and prints it in the look. Where the page
+    states nothing, the row names the record and says how he clears it."""
     out, said_of = {}, ctx.setdefault("record_said", {})
     if not finds:
         return out
@@ -2452,6 +2459,9 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # waiting by then
         base["waiting_seen"] = sorted([r["store"], r["key"]]
                                       for r in ctx["waiting"].get(cid) or [])
+        leans = leans_of(refs, cid, ctx) if pl else {}
+        if leans:
+            base["leans_on"] = leans    # the boards on file it was compared by
         return {"action": "WIRE", **base}
 
     mismatch = not passed and stated and bool(names)
@@ -2477,7 +2487,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
-         records: dict | None = None) -> list:
+         pages: dict | None = None) -> list:
     """Every company in the finder's results, decided. Network happens here.
 
     Each row is made safe to keep - an address redacted, half a character
@@ -2486,7 +2496,9 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     read_stores() as cmd_plan read it (read here when left out). `numbers`,
     when given, is filled with every Workable account number this run
     followed: {number: its slug, or None}. `fresh` are the companies whose
-    readers' doubts keep_doubts kept in this very run.
+    readers' doubts keep_doubts kept in this very run. `pages`, when given,
+    is filled with what each Paylocity board's own page this run asked
+    stated (page_addresses_of).
     """
     ctx = standing(companies, board, stores)
     ctx["reviewed"] = {cid: reader_words(words) for cid, words in (reviewed or {}).items()}
@@ -2530,8 +2542,7 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     # no other (eighth blind review, 2026-11-22)
     finds = [(cid, board_refs_of(b)) for cid, _c, b, _seen in compared(results, ctx)]
     asked = records_by_page(ctx, finds)
-    if records is not None:
-        records.update(asked)
+    ctx["records_asked"] = asked
     n_asked = sum(1 for w in ctx["record_said"].values() if w != "out of scope")
     if n_asked:
         say(f"NOTE: asked {many(n_asked, 'record')} on file for the /jobs/All/ "
@@ -2548,7 +2559,38 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
         say(_line(row))
     for line in unfiled(rows, ctx["reviewed"], reaches=reaches_of(rows, ctx)):
         say(line)
+    if pages is not None:
+        pages.update(page_addresses_of(ctx))
     return rows
+
+
+def page_addresses_of(ctx: dict) -> dict:
+    """{exact spelling: the /All/ address its own page stated} for every
+    Paylocity board this run asked whose page stated one the door keeps -
+    found boards, records', held boards'. The worklist carries it to apply
+    (`page_addresses`): the plan's own record of what each page said, which
+    a row's `page_ref` and `leans_on` must agree with to be leaned on."""
+    return {k: a for k, said in sorted((ctx.get("said") or {}).items())
+            if k.startswith("paylocity:")
+            and (a := board_proposals.paylocity_address((said or {}).get("address")))}
+
+
+def leans_of(refs: list, cid: str, ctx: dict) -> dict:
+    """{exact spelling: address} of the boards on file this Paylocity board
+    was compared by what their own page stated (records_by_page), where its
+    addresses alone did not tell them apart: what a WIRE row leans on, named
+    on the row. Apply leans on an address only for a row that names it, and
+    only where the worklist's page_addresses says it too (eighth blind
+    review, 2026-11-22: an address a worklist added cleared a record)."""
+    out, asked = {}, ctx.get("records_asked") or {}
+    for o, o_refs in ctx.get("paylocity_records") or []:
+        got = asked.get(o["id"])
+        if not got or o["id"] == cid:
+            continue
+        before = [r for r in o_refs if r != got["address"]]
+        if board_proposals.paylocity_relation(refs, before) != "apart":
+            out[spelling("paylocity", got["ref"])] = got["address"]
+    return dict(sorted(out.items()))
 
 
 def reader_words(words) -> str:
@@ -3014,9 +3056,9 @@ def cmd_plan(a) -> int:
                       f"check 1 is only as fresh as the finder's run")
         print()
         numbers: dict = {}
-        records: dict = {}
+        pages: dict = {}
         rows = plan(results, companies, board, reviewed=reviewed, stores=stores,
-                    numbers=numbers, fresh=fresh, records=records)
+                    numbers=numbers, fresh=fresh, pages=pages)
         n = counts(rows)
         doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
                "doubted_by_a_reader": sorted(reviewed),
@@ -3028,10 +3070,11 @@ def cmd_plan(a) -> int:
                # it found (or null): apply holds a Workable board beside any
                # number on file that is not here
                "workable_numbers": numbers,
-               # the /All/ address the board's own page states, for each record
-               # on file the plan asked (records_by_page): apply compares by it
-               # while the record still reads the board it was asked about
-               "record_addresses": records,
+               # what each Paylocity board's own page this plan asked stated,
+               # by the board's exact spelling: a row's page_ref and the
+               # addresses a WIRE row leans on (leans_on) are leaned on in apply
+               # only where this says them too
+               "page_addresses": pages,
                "ruling": ("owner, 2026-11-18: wire only when the company's own website "
                           "points to the board AND the board itself names the company; "
                           "anything doubtful goes to Boards we found; giants skipped"),
@@ -3094,14 +3137,19 @@ def load_worklist(path: str) -> tuple[dict, str]:
         # not follow, and a file that does not say which it followed cannot
         raise ValueError(f"{path} does not say which Workable account numbers its plan "
                          f"followed (workable_numbers)")
-    asked = doc.get("record_addresses", {})
-    if not isinstance(asked, dict) or not all(
-            isinstance(k, str) and isinstance(v, dict) and isinstance(v.get("ref"), str)
-            and isinstance(v.get("address"), str) for k, v in asked.items()):
-        # what a record's own page stated, which apply compares by: a file that
-        # says it in another shape says nothing apply may lean on
-        raise ValueError(f"{path} carries record_addresses that are not "
-                         f"{{record id: {{ref, address}}}}")
+    pages = doc.get("page_addresses")
+    if not isinstance(pages, dict) or not all(
+            isinstance(k, str) and isinstance(v, str) for k, v in pages.items()):
+        # what each board's own page stated, which apply compares by: a file
+        # that does not say it, or says it in another shape, says nothing
+        # apply may lean on
+        raise ValueError(f"{path} does not carry what the boards' own pages stated as "
+                         f"page_addresses {{board: address}}")
+    for row in doc["rows"]:
+        leans = row.get("leans_on", {})
+        if not isinstance(leans, dict) or not all(
+                isinstance(k, str) and isinstance(v, str) for k, v in leans.items()):
+            raise ValueError(f"{path} has a row whose leans_on is not {{board: address}}")
     return doc, hashlib.sha256(raw).hexdigest()
 
 
@@ -3157,6 +3205,17 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     if numbered(kind, ref):
         return "evidence", ("the board is written as a Workable account number, which "
                             "reads and does not open; a board is wired by its slug")
+    # AN ADDRESS ONLY THE ROW SAYS IS NEVER LEANED ON (eighth blind review,
+    # 2026-11-22): a row's page_ref clears holds and records in apply and goes
+    # into the wired record's note, which every door after reads back, so it is
+    # leaned on only where the plan recorded that page stating it
+    pages = held_for.get("pages") or {}
+    if kind == "paylocity" and row.get("page_ref") is not None \
+            and pages.get(spelling(kind, ref)) != row.get("page_ref"):
+        return "evidence", (f"the row says its own page states its address is "
+                            f"{str(row.get('page_ref'))[:160]}, and the plan recorded no such "
+                            f"answer from that page (page_addresses): an address only the "
+                            f"row says is never leaned on")
     total = _count(row.get("board_total"))
     if n >= GIANT or (total or 0) >= GIANT:
         return "giant", GIANT_WHY
@@ -3351,10 +3410,19 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
         # addresses do not tell apart from it (consider; fifth and sixth blind
         # reviews, 2026-11-22) - on file since the plan, or not asked by the
         # plan that made the row
-        on_file = [(o, o_refs) for o, o_refs in (
-            held_for.get("paylocity_records")
-            or board_proposals.paylocity_records(list(by_id.values())))
-            if o["id"] != cid and o["id"] in by_id]
+        # what a record's own page stated, for the one row whose plan was
+        # compared by it and says so (leans_on), where the worklist's
+        # page_addresses says it too, and while the record still reads the
+        # board that page is of (eighth blind review, 2026-11-22: taken from
+        # the worklist's word alone, an invented address cleared a record)
+        lean = leaned(row, pages)
+        on_file = []
+        for o, o_refs in (held_for.get("paylocity_records")
+                          or board_proposals.paylocity_records(list(by_id.values()))):
+            if o["id"] == cid or o["id"] not in by_id:
+                continue
+            a = lean.get(spelling("paylocity", (o.get("ats") or {}).get("ref")))
+            on_file.append((o, list(dict.fromkeys([*o_refs, a])) if a else o_refs))
         recs = [(o, record_relation(refs, o_refs)) for o, o_refs in on_file]
         same = [o for o, rl in recs if rl == "same"]
         if same:
@@ -3377,7 +3445,7 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     return None
 
 
-def queue_rows(holds: list, standing: dict | None = None) -> list:
+def queue_rows(holds: list, standing: dict | None = None, pages: dict | None = None) -> list:
     """What to file for these held boards, each stamped with ITS row's read,
     and carrying every reader's doubt that stands for its company NOW.
 
@@ -3390,6 +3458,11 @@ def queue_rows(holds: list, standing: dict | None = None) -> list:
     words: a worklist planned before the readers spoke files its rows with
     the words of that day. They are said of THIS row (ON_THIS_ROW), never in
     words about a row that is not there yet.
+
+    AN ADDRESS ONLY THE ROW SAYS IS NEVER FILED. Every door after meets the
+    board by a filed row's `page_ref`, so it goes on the row only where the
+    worklist's page_addresses (`pages`) records that page stating it (eighth
+    blind review, 2026-11-22).
     """
     out = []
     for r in holds:
@@ -3398,6 +3471,10 @@ def queue_rows(holds: list, standing: dict | None = None) -> list:
             out.append(q)
             continue
         q = dict(q, read_at=r.get("read_at"))
+        f = q.get("found") if isinstance(q.get("found"), dict) else {}
+        if q.get("page_ref") is not None and (pages or {}).get(
+                spelling(f.get("type"), f.get("ref"))) != q.get("page_ref"):
+            q.pop("page_ref")
         words = q.get("identity_why")
         if isinstance(words, str):
             more = [d for d in (standing or {}).get(r["id"]) or []
@@ -3481,9 +3558,11 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
                 "acquisitions": acquisition_doubts(companies, board),
                 "duplicates": duplicate_groups(companies, board),
                 "dismissed": duplicates_dismissed(),
-                "paylocity_records": [
-                    (o, o_refs + [a] if (a := _asked_address(doc, o)) else o_refs)
-                    for o, o_refs in board_proposals.paylocity_records(companies, s["found"])]}
+                "paylocity_records": board_proposals.paylocity_records(companies, s["found"]),
+                # what the plan recorded each board's own page stating: a row's
+                # page_ref and what it leans on are leaned on only where this
+                # says them too
+                "pages": doc.get("page_addresses") or {}}
 
     wire, left = [], []
     for row in wires:
@@ -3494,7 +3573,7 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
         else:
             wire.append(row)
     holds = [r for r in doc["rows"] if r["action"] == "HOLD"]
-    queued = queue_rows(holds, standing)
+    queued = queue_rows(holds, standing, held_for["pages"])
     # asked of the same door the write goes through, so the look and the
     # write cannot disagree about which rows the queue will take
     filing = board_proposals.file_found(queued, by, write=False, force=True,
@@ -3511,19 +3590,33 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
             # even where the correction would still pass
             "on_file": {r["id"]: [by_id[r["id"]].get("name"), by_id[r["id"]].get("website"),
                                   _akas(by_id[r["id"]])] for r in wire},
+            # every address apply leans on for a row it wires, printed in the
+            # look and covered by its code
+            "leans": {r["id"]: lean_lines(r, held_for["pages"]) for r in wire},
             "skips": [r for r in doc["rows"] if r["action"] == "SKIP"],
             "standing": standing, "reaches": reaches, "missing": missing,
             "doubts": s["doubts"]}
 
 
-def _asked_address(doc: dict, record: dict) -> str | None:
-    """The /All/ address a record's own board page stated when the plan asked
-    it (records_by_page), while the record still reads the board it was asked
-    about; else None."""
-    got = (doc.get("record_addresses") or {}).get(record.get("id")) or {}
-    if got.get("ref") != (record.get("ats") or {}).get("ref"):
-        return None
-    return board_proposals.paylocity_address(got.get("address"))
+def leaned(row: dict, pages: dict | None) -> dict:
+    """{exact spelling: address} of what a WIRE row says it was compared by
+    (`leans_on`) that the worklist's page_addresses says too: an address only
+    one of the two says - a worklist edited to add it - is never leaned on."""
+    return {k: a for k, a in (row.get("leans_on") or {}).items()
+            if isinstance(a, str) and (pages or {}).get(k) == a
+            and board_proposals.paylocity_address(a)}
+
+
+def lean_lines(row: dict, pages: dict | None) -> list:
+    """[whose page, address] for every address apply leans on for this row:
+    its own page's (page_ref) and the pages of boards on file it was compared
+    by (leaned) - each printed in the look, and in the code it prints."""
+    out = []
+    if row.get("type") == "paylocity" and row.get("page_ref"):
+        out.append(["its own page", row["page_ref"]])
+    for k, a in sorted(leaned(row, pages).items()):
+        out.append([f"the page of {short(json.loads(k.split(':', 1)[1]))}", a])
+    return out
 
 
 def expect_code(sha: str, d: dict, by: str) -> str:
@@ -3539,6 +3632,11 @@ def expect_code(sha: str, d: dict, by: str) -> str:
         "wire": [[r["id"], spelling(r["type"], r["ref"]), *d["on_file"][r["id"]]]
                  for r in d["wire"]],
         "left": [[x["row"]["id"], x["code"]] for x in d["left"]],
+        # every address apply leans on, as the look printed each
+        "leans": sorted([cid, *x] for cid, xs in d["leans"].items() for x in xs),
+        "filed_pages": sorted([q.get("id"), q.get("page_ref")] for q in d["queued"]
+                              if isinstance(q, dict) and q.get("id") in filing
+                              and q.get("page_ref")),
         "file": d["filing"]["added"],
         # what each held row will say in front of the owner: a reader's doubt
         # kept between the look and the write is on it, and opens no old code
@@ -3557,6 +3655,9 @@ def report(doc: dict, d: dict) -> None:
           f"board names them:")
     for r in d["wire"]:
         print(_line(r))
+        for whose, address in d["leans"].get(r["id"]) or []:
+            print(f"        leans on what the plan was told: {whose} states its address is "
+                  f"{address}")
     if d["left"]:
         print(f"\nLEFT ALONE {len(d['left'])} - planned to wire, and not wired by this run:")
         for x in d["left"]:
@@ -3571,6 +3672,9 @@ def report(doc: dict, d: dict) -> None:
         now_words = str((queued.get(cid) or {}).get("identity_why") or "")
         if now_words != plan_words and now_words.startswith(plan_words):
             print(f"        and, kept since the plan: {now_words[len(plan_words):].lstrip('; ')}")
+        if (queued.get(cid) or {}).get("page_ref"):
+            print(f"        files with it what its own page states: its address is "
+                  f"{queued[cid]['page_ref']}")
     if d["filing"]["skipped"]:
         print(f"\nNOT FILED {len(d['filing']['skipped'])} - held, and the queue "
               f"cannot take the row:")
