@@ -2958,7 +2958,13 @@ round.
   id, and SKIPped only where that id is the refused one ("this board was
   refused"), held otherwise (`kinds` in the words) - by /List/ it was
   SKIPped unread where by its /All/ address it was held (seventh blind
-  review, 2026-11-22). A record with no /All/ id that a find of the run
+  review, 2026-11-22). So does a waiver: a row waiting for the company
+  itself (an older finder's row, a door-filed row, its own pending
+  proposal) is "this board, the question already asked" only where an id
+  agrees; tied by the tenant's name alone it is held, the name said as all
+  that ties them - in the plan, and in apply whatever `waiting_seen` says
+  (eighth blind review, 2026-11-22: the find was wired and his unruled row
+  dropped off the queue). A record with no /All/ id that a find of the run
   cannot be compared with - a bare /List/ board accepted at the desk or set
   by hand held every later /All/ find, for every company - has its own
   board's page asked once for its /All/ address (`wire_found.records_by_page`,

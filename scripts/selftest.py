@@ -40720,14 +40720,18 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                                + PL + "All/" + PLU + "8/Pl-Own2-Co, so this "
                                                "board was refused"),
                 ("pl-own3", "HOLD", None, "under two ids of one kind that differ"),
-                # its own proposal, pending under the board's other address: the
-                # same board, the proposal's own words quoted - never "a
-                # different board" (fifth blind review, 2026-11-22)
-                ("pl-pend", "HOLD", None, f"this board (as paylocity/{PL}All/{PLU}7/Pl-Pend-Co) "
-                                          f"is already waiting in Agent proposals for this "
-                                          f"company, proposed 2026-09-02 by wire_embedded.py: "
+                # its own proposal, pending under the board's other address: held,
+                # the proposal's own words quoted - never "a different board"
+                # (fifth blind review, 2026-11-22) - and, the tenant's name alone
+                # tying the two, never "this board" either: the name is said as
+                # all that ties them (eighth blind review, 2026-11-22)
+                ("pl-pend", "HOLD", None, f"paylocity/{PL}All/{PLU}7/Pl-Pend-Co is already "
+                                          f"waiting in Agent proposals for this company, "
+                                          f"proposed 2026-09-02 by wire_embedded.py: "
                                           f"\"claimed by more than one company on the board - "
-                                          f"an acquisition to settle\"")):
+                                          f"an acquisition to settle\", and"),
+                ("pl-pend", "HOLD", None, "after ids of the two kinds, /jobs/List/ and /jobs/All/, "
+                                          "that nothing on file compares")):
             r = (rows_p or {}).get(cid) or {}
             if r.get("action") != action or (kind and r.get("kind") != kind) \
                     or must_say not in _wb_words(r):
@@ -40738,9 +40742,11 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 "greenhouse/nmsurvivorco", "greenhouse/soloco"} & set(box.asked + box.probed):
             errors += fail("a board refused for one company on two records was read or asked "
                            "whose it is for the other record")
-        if "a different board" in _wb_words((rows_p or {}).get("pl-pend") or {}):
+        if any(w in _wb_words((rows_p or {}).get("pl-pend") or {})
+               for w in ("a different board", "this board (as")):
             errors += fail(f"pl-pend: its own pending proposal for the board, under its other "
-                           f"address, was called a different board: "
+                           f"address and tied by the tenant's name alone, was called a "
+                           f"different board, or this board: "
                            f"{_wb_words((rows_p or {}).get('pl-pend') or {})[:400]!r}")
         for cid in ("nn-water", "pgo-co", "amb2-b", "pa-parent", "theiraka-b", "samename-b",
                     "nositedis-b"):
@@ -41355,24 +41361,72 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             errors += fail(f"the pre-pass read or asked a board consider does not read, or a "
                            f"giant's page: asked {box.asked}, probed {box.probed}")
 
-    # (9) A ROW IN BOARDS WE FOUND UNDER THE BOARD'S OTHER ADDRESS is that board:
-    # an older finder's row lets the checks answer it, a door-filed row holds it
-    # - "this board (as ...)", never "a different board" (test review, 2026-11-22)
+    # (9) A ROW IN BOARDS WE FOUND UNDER THE BOARD'S OTHER ADDRESS is that board
+    # where an id agrees - its page stating the row's /All/ id: an older
+    # finder's row lets the checks answer it, a door-filed row holds it - "this
+    # board (as ...)", never "a different board" (test review, 2026-11-22).
+    # Tied by the tenant's name alone, either way round, each is held, said as
+    # that and never "this board": the name alone across the two kinds is two
+    # boards of one tenant as often as one, and a waiver rests on an id that
+    # agrees as a SKIP does - in the plan, and in apply for a worklist that says
+    # it saw the row (eighth blind review, 2026-11-22: this case expected the
+    # older finder's row WIRE, and the find was wired past it and the row
+    # dropped off his queue)
     LIST_Q, ALL_Q = plist(9115, "Pl-Q-Co"), pall(0x816, "Pl-Q-Co")
     LIST_F, ALL_F = plist(9215, "Pl-F-Co"), pall(0x817, "Pl-F-Co")
-    with _WiringBox([co("plq-co", "Pl Q Co"), co("plf-co", "Pl F Co")],
+    LIST_R9, ALL_R9 = plist(9315, "Pl-R-Co"), pall(0x81b, "Pl-R-Co")
+    LIST_A9, ALL_A9 = plist(9415, "Pl-A-Co"), pall(0x81c, "Pl-A-Co")
+    LIST_B9, ALL_B9 = plist(9515, "Pl-B-Co"), pall(0x81d, "Pl-B-Co")
+    with _WiringBox([co("plq-co", "Pl Q Co"), co("plf-co", "Pl F Co"), co("plr-co", "Pl R Co"),
+                     co("pla-co", "Pl A Co"), co("plb-co", "Pl B Co")],
                     {f"paylocity/{LIST_Q}": (3, ["Pl Q Co"]),
-                     f"paylocity/{LIST_F}": (3, ["Pl F Co"])},
+                     f"paylocity/{LIST_F}": (3, ["Pl F Co"]),
+                     f"paylocity/{ALL_R9}": (3, ["Pl R Co"]),
+                     f"paylocity/{LIST_A9}": (3, ["Pl A Co"]),
+                     f"paylocity/{LIST_B9}": (3, ["Pl B Co"])},
                     files={bp.FOUND.name: [frow("plq-co", "Pl Q Co", ALL_Q, filed=False,
                                                 identity_why="an older finder's row"),
-                                           frow("plf-co", "Pl F Co", ALL_F)]}) as box:
-        code, text, _wl, rows_q = box.plan(_wb_results({
+                                           frow("plf-co", "Pl F Co", ALL_F),
+                                           frow("plr-co", "Pl R Co", LIST_R9, filed=False,
+                                                identity_why="an older finder's row"),
+                                           frow("pla-co", "Pl A Co", ALL_A9, filed=False,
+                                                identity_why="an older finder's row"),
+                                           frow("plb-co", "Pl B Co", ALL_B9)]},
+                    says={f"paylocity/{LIST_A9}": {"address": ALL_A9},
+                          f"paylocity/{LIST_B9}": {"address": ALL_B9}}) as box:
+        code, text, wl_q, rows_q = box.plan(_wb_results({
             "plq-co": names("plq-co", "paylocity", LIST_Q),
-            "plf-co": names("plf-co", "paylocity", LIST_F)}), name="worklist-q.json")
-        expect(rows_q, "plq-co", "WIRE")
-        expect(rows_q, "plf-co", "HOLD", f"this board (as paylocity/{ALL_F}) is already in the "
+            "plf-co": names("plf-co", "paylocity", LIST_F),
+            "plr-co": names("plr-co", "paylocity", ALL_R9),
+            "pla-co": names("pla-co", "paylocity", LIST_A9),
+            "plb-co": names("plb-co", "paylocity", LIST_B9)}), name="worklist-q.json")
+        for cid, row_ref in (("plq-co", ALL_Q), ("plf-co", ALL_F), ("plr-co", LIST_R9)):
+            expect(rows_q, cid, "HOLD", f"paylocity/{row_ref} is already waiting in Boards we "
+                                        f"found for this company, and",
+                   "after ids of the two kinds, /jobs/List/ and /jobs/All/, that nothing on "
+                   "file compares", never=("this board (as", "a different board"))
+        expect(rows_q, "pla-co", "WIRE")
+        expect(rows_q, "plb-co", "HOLD", f"this board (as paylocity/{ALL_B9}) is already in the "
                                          f"owner's queue (Boards we found)",
                never=("a different board",))
+        code, text, _ = box.look(wl_q)
+        if "WIRE 1 " not in text or "LEFT ALONE" in text:
+            errors += fail(f"pla-co: apply did not wire a board an older finder's row waits "
+                           f"under its /All/ id, the page stating that id: {text[-400:]}")
+
+        def waive(by_id, _doc):
+            r = by_id["plq-co"]
+            r["action"] = "WIRE"
+            r.pop("doubts", None)
+            r.pop("queue_row", None)
+            r["waiting_seen"] = [["Boards we found", bp.board_key("paylocity", ALL_Q)]]
+        code, text, _ = box.look(box.edited(wl_q, "worklist-q-waive.json", waive))
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Pl Q Co ")), "") if "LEFT ALONE" in text else ""
+        if "after ids of the two kinds" not in line or "his to settle" not in line:
+            errors += fail(f"plq-co: apply took a worklist's word that it saw an unruled row the "
+                           f"tenant's name alone ties to the board: {line[:300]!r} "
+                           f"{text[-300:]!r}")
 
     # (10) A PAYLOCITY RECORD WHOSE REF CARRIES NO /All/ OR /List/ ID is no
     # address to compare a board with (test review, 2026-11-22)

@@ -779,8 +779,10 @@ def _waiting(stores: dict | None = None) -> dict:
 
     A row in Boards we found that nobody has ruled, or a board proposal still
     pending in Agent proposals. The SAME board found again is no new doubt -
-    it is the question already asked, and the two checks may now answer it.
-    A DIFFERENT board is: two finders, two boards, one company.
+    it is the question already asked, and the two checks may now answer it
+    (a Paylocity board only where an id agrees, never by the tenant's name
+    alone: consider). A DIFFERENT board is: two finders, two boards, one
+    company.
     """
     s = _stores(stores)
     out = collections.defaultdict(list)
@@ -2124,7 +2126,17 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # was "a different board" (fifth blind review, 2026-11-22).
         r_refs = board_proposals.board_refs(r.get("type"), r.get("ref"), r.get("page_ref"))
         if pl and r.get("type") == "paylocity":
+            # THE SAME BOARD ONLY WHERE AN ID AGREES (eighth blind review,
+            # 2026-11-22). The tenant's name after a /List/ id and after an
+            # /All/ id is two boards of one tenant as often as one board, and
+            # taken for "the question already asked" it let the checks answer
+            # an unruled row of the company's own: the find was wired and the
+            # row dropped off his queue - and the less the door knew, the more
+            # it wired (the page stating another /All/ id held it). A SKIP and a
+            # waiver both rest on an id that agrees (refused_first's is_it).
             rl = board_proposals.paylocity_relation(refs, r_refs)
+            if rl == "same" and not board_proposals.paylocity_ids_agree(refs, r_refs):
+                rl = "kinds"
             same_board = rl == "same"
         else:
             rl = None
@@ -2137,7 +2149,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         other_spelling = (f" (as {r['board']})" if r.get("board")
                           and r["key"] != board_key(kind, ref) else "")
         if not same_board:
-            if rl in ("tenant", "unknown"):
+            if rl in ("tenant", "unknown", "kinds"):
                 doubts.append(f"{r['board']} is already waiting in {r['store']} for this "
                               f"company{asked}, and "
                               + relation_words(rl, show(kind, ref), r["board"], refs, r_refs,
@@ -3242,6 +3254,20 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
         if (w.get("store"), w.get("key")) not in seen:
             return "waiting", (f"{w['board']} was put in front of a person in {w['store']} "
                                f"since the plan, and is his to settle")
+        if pl and w.get("type") == "paylocity":
+            # THE PLAN PASSES A WAITING ROW ONLY AS THIS VERY BOARD, BY AN ID
+            # THAT AGREES (consider): a worklist saying it saw one tied by less
+            # - the tenant's name alone - is not taken at its word (eighth
+            # blind review, 2026-11-22)
+            w_refs = board_proposals.board_refs("paylocity", w.get("ref"), w.get("page_ref"))
+            rl = board_proposals.paylocity_relation(refs, w_refs)
+            if not (rl == "same" and board_proposals.paylocity_ids_agree(refs, w_refs)):
+                return "waiting", (
+                    f"{w['board']} is waiting in {w['store']} for it, and "
+                    + (relation_words("kinds" if rl == "same" else rl, show(kind, ref),
+                                      w["board"], refs, w_refs, row.get("page_said"))
+                       if rl != "apart" else f"it is another board than {show(kind, ref)}")
+                    + "; a board waiting on a person is his to settle")
     if pl:
         # a record on file whose Paylocity board is this one, or that its
         # addresses do not tell apart from it (consider; fifth and sixth blind
