@@ -171,16 +171,70 @@ def _pattern(pat: str) -> re.Pattern:
 
 def decide(rules: list[tuple[bool, str]], url: str) -> bool:
     """RFC 9309 2.2.2: the longest matching pattern decides, an Allow wins a
-    tie, and with nothing matching the page may be read."""
+    tie, and with nothing matching the page may be read.
+
+    THE PATH A SERVER SERVES IS ASKED TOO (eighth blind review, 2026-11-22).
+    The request library resolves '/jobs/../private/x' to '/private/x' before
+    it sends it, and a browser - or a server that reads a backslash as a
+    slash - reads '/jobs\\..\\private/x' the same way: asked as written, no
+    rule matched them. An http(s) page is read only when the path as written
+    and the path as served (`served`) are both allowed."""
     p = urllib.parse.urlsplit(url)
-    path = _norm((p.path or "/") + (f"?{p.query}" if p.query else ""))
-    best = None
-    for allow, pat in rules:
-        if _pattern(pat).match(path):
-            key = (len(pat), allow)                     # longer, then Allow
-            if best is None or key > best:
-                best = key
-    return True if best is None else best[1]
+    query = f"?{p.query}" if p.query else ""
+    paths = [p.path or "/"]
+    if p.scheme in ("http", "https"):
+        paths.append(served(paths[0]))
+    for path in dict.fromkeys(paths):
+        asked, best = _norm(path + query), None
+        for allow, pat in rules:
+            if _pattern(pat).match(asked):
+                key = (len(pat), allow)                 # longer, then Allow
+                if best is None or key > best:
+                    best = key
+        if best is not None and not best[1]:
+            return False
+    return True
+
+
+_SLASH = re.compile(r"\\|%2f|%5c", re.I)
+_DOT = re.compile(r"%2e", re.I)
+
+
+def _segments(path: str) -> list[str]:
+    """A path's segments as a server may read them: a backslash, and an
+    escaped slash or backslash, as a slash; each '%2e' as the dot it encodes
+    (the request library decodes it)."""
+    return _DOT.sub(".", _SLASH.sub("/", path or "")).split("/")
+
+
+def climbs(path: str) -> bool:
+    """Has this path a '.' or '..' segment in any reading a server may give it
+    (_segments)? Such a path is served from another path than the one written,
+    so ats.plain_address refuses it before anything is asked."""
+    return any(s in (".", "..") for s in _segments(path))
+
+
+def served(path: str) -> str:
+    """The path a server serves for `path`: read as _segments reads it, with
+    every '.' and '..' segment resolved (RFC 3986 5.2.4) - '/private/x' for
+    '/jobs/../private/x', '/jobs/%2e%2e/private/x' and '/jobs\\..\\private/x'.
+    A path with none of those is itself."""
+    if not (_SLASH.search(path or "") or climbs(path)):
+        return path
+    segs, out = _segments(path), []
+    for i, s in enumerate(segs[1:], 1):
+        last = i == len(segs) - 1
+        if s == "..":
+            if out:
+                out.pop()
+            if last:
+                out.append("")
+        elif s == ".":
+            if last:
+                out.append("")
+        else:
+            out.append(s)
+    return "/" + "/".join(out)
 
 
 # ---- asking -----------------------------------------------------------------

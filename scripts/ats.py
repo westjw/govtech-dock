@@ -598,8 +598,10 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
     """
     for _ in range(hops + 1):
         # an address read as a browser reads it: a tab or a line break inside
-        # an href is dropped (WHATWG URL), and anything else unplain refused
+        # an href is dropped (WHATWG URL), a backslash in an http(s) path is
+        # a slash, and anything else unplain refused
         url = _TAB_OR_BREAK.sub("", url) if isinstance(url, str) else url
+        url = _browser_path(url)
         plain_address(url)
         if may is not None:
             may(url)
@@ -635,6 +637,31 @@ def lower_same(s: str) -> str:
 _TAB_OR_BREAK = re.compile(r"[\t\n\r]")
 
 
+def _browser_path(u):
+    """`u` with each backslash in an http(s) address's PATH read as a slash,
+    as a browser reads it (WHATWG URL) and a server that resolves backslashes
+    serves it. The library would send '/jobs\\..\\private/x' as
+    '/jobs%5C..%5Cprivate/x', robots.txt was asked about it as written, and
+    the page served was /private/x (eighth blind review, 2026-11-22): read so
+    in follow(), the path robots.txt and plain_address are asked about is the
+    path sent. The host part is left as it is - a backslash there names
+    another host, which plain_address refuses - and so is the query."""
+    if not isinstance(u, str) or "\\" not in u:
+        return u
+    try:
+        parts = urllib.parse.urlsplit(u)
+    except ValueError:
+        return u                                 # (plain_address says why)
+    if parts.scheme not in ("http", "https") or "\\" not in parts.path:
+        return u
+    cut = min([k for k in (u.find("?"), u.find("#")) if k >= 0] or [len(u)])
+    head = u[:cut]
+    if not head.endswith(parts.path):
+        return u
+    at = len(head) - len(parts.path)
+    return head[:at] + parts.path.replace("\\", "/") + u[cut:]
+
+
 def plain_address(u: str) -> None:
     """Raise unless `u` names its host the same way to every reader of it.
 
@@ -644,10 +671,10 @@ def plain_address(u: str) -> None:
     readers' path rules and robots.txt ask - and evil.example to the library
     that sends it, so a redirect steered a board's reader and its probe to a
     page nobody had asked about. A crawler sends no credentials, so an '@'
-    in the host part is refused; so is a backslash or a control character
-    anywhere, and any address whose prepared request names another host
-    than the one read here. Asked of every hop in follow(), before anything
-    is sent."""
+    in the host part is refused; so is a control character anywhere, a path
+    that climbs ('.' or '..', as written or as sent), and any address whose
+    prepared request names another host or port than the one read here.
+    Asked of every hop in follow(), before anything is sent."""
     if not isinstance(u, str) or _UNPLAIN.search(u):
         raise AtsError(f"{u!r} is not a plain address (a control character)")
     parts = urllib.parse.urlsplit(u)
@@ -664,12 +691,18 @@ def plain_address(u: str) -> None:
         sent = (prepared.hostname or "").lower().rstrip(".")
         # THE PORT AND THE PATH TOO (seventh blind review): ':44\\3' left the
         # host alone and sent the request to port 44, and '%2e%2e' was asked
-        # of robots.txt as written and sent as '..', which a server resolves
+        # of robots.txt as written and sent as '..', which a server resolves.
+        # A RAW '..' TOO (eighth blind review): the library resolves it before
+        # it prepares the request, so the prepared path never shows it - and
+        # '/jobs/../private/x' was asked of robots.txt as written and sent as
+        # '/private/x'. So the path as written is read as a server may read
+        # it (robots.climbs: '%2e' a dot; a backslash, '%2f' and '%5c' a slash)
         default = {"http": 80, "https": 443}
         if (parts.port or default.get(parts.scheme)) != (prepared.port or default.get(prepared.scheme)):
             raise AtsError(f"{u} is not a plain address: its port reads otherwise when sent")
-        if any(seg in (".", "..") for seg in prepared.path.split("/")):
-            raise AtsError(f"{u} is not a plain address: its path climbs ('.' or '..') when sent")
+        if robots.climbs(parts.path) or any(seg in (".", "..") for seg in prepared.path.split("/")):
+            raise AtsError(f"{u} is not a plain address: its path climbs ('.' or '..'), so the page "
+                           f"served is not the path asked about")
         # a name in another script, encoded the way the request itself is
         # (UTS 46, as requests does: 'stra\u00dfe' is xn--strae-oqa, where
         # Python's own codec would say 'strasse' - sixth blind review)
@@ -3985,10 +4018,11 @@ def _sf_posting_url(href: str, origin: str) -> str | None:
 
 
 class PostingClosed(AtsError):
-    """A posting the list carries answered as no posting: a redirect from its
-    address to a page that is not a posting, or a page at its address that
-    shows no posting (Gainwell's closed ones answer 200 there, saying only
-    "Sorry, this position has been filled.", measured 2026-11-22)."""
+    """A posting the list carries answered, as the career site, that it has
+    closed by sending a reader from its address back to the site's own list
+    (/search/). A hop anywhere else off /job/ says nothing of the posting:
+    a block page or a challenge can answer so (_sf_hop). The site's own page
+    at its address saying so is successfactors_filled."""
 
 
 def _sf_hop(url: str, offset: int | None = None, posting: bool = False):
@@ -3996,8 +4030,11 @@ def _sf_hop(url: str, offset: int | None = None, posting: bool = False):
     (on top of same_host): a path that says plainly where it goes; for a list
     page past the first, an address that still asks for that page (a hop that
     drops its startrow lands on page 1, and the walk would read page 1 as
-    page 2); for a posting, a /job/ address - a hop anywhere else is the
-    posting gone."""
+    page 2); for a posting, a /job/ address. From a posting, a hop to the
+    site's list is the posting closed (PostingClosed); a hop anywhere else
+    is not read, and says nothing of the posting - not that it closed
+    (eighth blind review, repaired 2026-11-22: any hop off /job/ was read as
+    closed, so a challenge page passed a posting over)."""
     def may(u: str):
         parts = urllib.parse.urlsplit(u)
         if not _sf_plain_path(parts.path):
@@ -4009,8 +4046,12 @@ def _sf_hop(url: str, offset: int | None = None, posting: bool = False):
                 raise AtsError(f"{url} leads off to {parts.path}?{parts.query[:80]}, which does "
                                f"not ask for the list from row {offset}")
         if posting and not parts.path.startswith("/job/"):
-            raise PostingClosed(f"the posting {url} answers by sending a reader to "
-                                f"{parts.path}, which is not a posting: it has closed")
+            if parts.path in ("/search", "/search/"):
+                raise PostingClosed(f"the posting {url} answers by sending a reader to the site's "
+                                    f"list ({parts.path}): it has closed")
+            raise AtsError(f"a posting answers by sending a reader to {parts.path[:60]}, neither a "
+                           f"posting nor the site's list (a block or challenge page), so it says "
+                           f"nothing of the posting: {url}")
     return may
 
 
@@ -4051,11 +4092,39 @@ def _sf_row(cell: str, origin: str, lang: str) -> dict | None:
             "posted": _sf_day(when or "", lang)}
 
 
-def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | None]:
+_SF_NUMBER = r"([0-9]{1,3}(?:[.,\u00a0\u202f]?[0-9]{3})*)"
+_SF_RANGE = re.compile(rf"\s*{_SF_NUMBER}\s*[-\u2010-\u2015]\s*{_SF_NUMBER}\s*")
+_SF_TOTAL = re.compile(rf"\s*{_SF_NUMBER}\s*")
+
+
+def _sf_total(bold: list[str], offset: int, n: int) -> int | None:
+    """The board's total from its pagination label's bold parts, or None.
+    THE LABEL IS A RANGE AND A TOTAL ('Results <b>1 – 25</b> of <b>334</b>',
+    'Ergebnisse ... von', 'Resultados ... de'), believed only when the range
+    is this page's: it starts at the row after `offset`, it spans the page's
+    own `n` rows, and the total reaches its end. Any other shape - 'Page
+    <b>1</b> of <b>25</b>', three bold parts, the total written first, a
+    total of 0 beside the page's rows - is no total, so a part of a board is
+    never read as the whole of it (eighth blind review, 2026-11-22)."""
+    if len(bold) != 2:
+        return None
+    span = _SF_RANGE.fullmatch(html_lib.unescape(bold[0]))
+    said = _SF_TOTAL.fullmatch(html_lib.unescape(bold[1]))
+    if not span or not said:
+        return None
+    a, b, total = (int(re.sub(r"[^0-9]", "", x)) for x in (span.group(1), span.group(2), said.group(1)))
+    if a != offset + 1 or b - a + 1 != n or total < b or total > 9_999_999:
+        return None
+    return total
+
+
+def successfactors_list(page: str, origin: str, offset: int = 0) -> tuple[int, list[dict], int | None]:
     """(how many posting rows one list page carries, the postings on it, the
     total the board states) - read off the page as a reader sees it (_cut): a
     row in a comment, a script or a template is not a row. Each row runs to its
-    </tr>, or to the next row where one is left unclosed."""
+    </tr>, or to the next row where one is left unclosed. `offset` is the row
+    the page was asked from (startrow): its label's range must start after it
+    (_sf_total)."""
     body = _cut(page or "")
     said = _SF_LANG.search(body[:20000])
     lang = said.group(1).lower() if said else ""
@@ -4070,8 +4139,8 @@ def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | 
         row = _sf_row(body[m.end():min(tr, nxt) if tr >= 0 else nxt], origin, lang)
         if row:
             rows.append(row)
-    # the total: the pagination label's second <b> ('Results <b>1 – 25</b> of
-    # <b>334</b>'; 'Ergebnisse ... von', 'Resultados ... de' in German and Spanish)
+    # the total: the pagination label's range and total, read together
+    # (_sf_total: 'Results <b>1 – 25</b> of <b>334</b>', in any of its languages)
     total = None
     for m in _SF_LABEL.finditer(body):
         if "paginationlabel" not in m.group(1).lower() \
@@ -4079,8 +4148,7 @@ def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | 
             continue
         end = low.find("</span>", m.end())
         bold = _SF_BOLD.findall(body[m.end():end if 0 <= end < m.end() + 600 else m.end() + 600])
-        digits = re.sub(r"[^0-9]", "", bold[1]) if len(bold) >= 2 else ""
-        total = int(digits) if digits and len(digits) <= 7 else None
+        total = _sf_total(bold, offset, len(starts))
         break
     return len(starts), rows, total
 
@@ -4110,6 +4178,12 @@ def successfactors_board(ref) -> tuple[str, str, list[dict], int, int | None]:
     return origin, page, rows, n, total
 
 
+# How many rows a read may come up short of what the board's list carries: a
+# posting or two that closed while it was read (each closing moves every later
+# row up one, past the page boundary), or a row or two that gave no posting.
+SF_SLACK = 2
+
+
 def successfactors_walk(origin: str, first: list[dict], n: int, total: int | None) -> list[dict]:
     """Every posting on the list from its first page on, stepping by that
     page's own row count, each posting once.
@@ -4120,43 +4194,66 @@ def successfactors_walk(origin: str, first: list[dict], n: int, total: int | Non
     posting - empty, page 1 again, the board's past-the-end list of its
     newest postings served in the middle - means the read went wrong, and
     the rows so far are part of the board, not the board: an AtsError. So is
-    a read that reaches the total more than a page short of it, and so is
-    the ceiling with or without a total. With no total, a page that adds
+    a read that reaches the total more than SF_SLACK rows short of it, and so
+    is the ceiling with or without a total. With no total, a page that adds
     nothing is the end (past its end Gainwell's list shows its newest
-    postings again)."""
-    rows, seen = [], set()
+    postings again).
+
+    THE SLACK IS FOR CHURN, AND IT IS A ROW OR TWO (eighth blind review,
+    2026-11-22). It was a page: 24 of 25 rows that gave no posting - a title
+    link off the site, an empty title, a path that does not say plainly
+    where it goes - vanished inside it without a word. Every page's rows
+    that gave no posting are counted, and more than SF_SLACK of them in one
+    read is an AtsError. The LAST page inside the total may add nothing -
+    the postings that closed while the board was read moved it past the
+    end, where the list serves its newest again - and the read is still
+    held to the total. A total below page 1's own rows is no total: the
+    walk never returns fewer rows than page 1 carried."""
+    if total is not None and total < n:
+        total = None
+    rows, seen, unread = [], set(), 0
     for i in range(SF_MAX_PAGES):
         offset = i * n
         if total is not None and offset >= total:
-            if len(rows) < total - n:
-                raise AtsError(f"{origin}'s list states {total} postings and its pages carried "
-                               f"{len(rows)}: read in part, so not read")
-            return rows
+            break
         if i == 0:
-            got = first
+            k, got = n, first
         else:
             url = successfactors_list_url(origin, offset)
-            got = successfactors_list(_page(url, same_host=True, may=_sf_hop(url, offset)).text
-                                      or "", origin)[1]
+            k, got, _t = successfactors_list(_page(url, same_host=True, may=_sf_hop(url, offset)).text
+                                             or "", origin, offset)
+        unread += max(0, k - len(got))
+        if unread > SF_SLACK:
+            raise AtsError(f"{origin}'s list carried {unread} rows that gave no posting (a title link "
+                           f"off the site or to no posting, an empty title, an address that does not "
+                           f"say plainly where it goes): read in part, so not read")
         fresh = []
         for r in got:
             if r["url"] not in seen:
                 seen.add(r["url"])
                 fresh.append(r)
         if not fresh:
-            if total is not None:
+            if total is None:
+                return rows
+            if offset + n < total:
                 raise AtsError(f"{origin}'s list page from row {offset + 1} added no posting, and "
                                f"the list states {total}: read in part, so not read")
-            return rows
+            break                       # the last page, moved past the end while it was read
         rows.extend(fresh)
-    raise AtsError(f"{origin}'s list did not end within {SF_MAX_PAGES} pages ({len(rows)} postings"
-                   f"{f' of {total}' if total is not None else ''}): read in part, so not read")
+    else:
+        raise AtsError(f"{origin}'s list did not end within {SF_MAX_PAGES} pages ({len(rows)} postings"
+                       f"{f' of {total}' if total is not None else ''}): read in part, so not read")
+    if len(rows) < total - SF_SLACK:
+        raise AtsError(f"{origin}'s list states {total} postings and its pages carried "
+                       f"{len(rows)}: read in part, so not read")
+    return rows
 
 
 def successfactors_posting(url: str, origin: str) -> str:
     """One posting's page, asked only on the career site's own host, at an
-    address that says plainly where it goes; a hop off /job/ is the posting
-    gone (PostingClosed)."""
+    address that says plainly where it goes; a hop to the site's list is the
+    posting gone (PostingClosed), and a hop anywhere else off /job/ is not
+    read (_sf_hop)."""
     if _sf_posting_url(url, origin) != url:
         raise AtsError(f"{url} is not a posting of {origin}")
     return _page(url, same_host=True, may=_sf_hop(url, posting=True)).text or ""
@@ -4172,8 +4269,38 @@ _SF_LANG_ATTR = re.compile(r"(?<![\w:-])lang\s*=\s*[\"']?([A-Za-z]{2,3})\b")
 
 def successfactors_shown(page: str) -> bool:
     """Does this posting page show a posting (its schema.org microdata), as the
-    page a reader sees it? A closed one shows none."""
+    page a reader sees it? A closed one shows none - and neither does a page
+    that is not the site's at all (successfactors_filled tells them apart)."""
     return bool(_SF_SHOWN.search(_cut(page or "")))
+
+
+# WHAT A CLOSED POSTING'S OWN PAGE SAYS IN ITS PLACE. Gainwell's answer 200 at
+# the posting's address with the career site's own page (measured 2026-11-22):
+# the posting's title kept - 'Provider Enrollment Specialist - Jackson, MS
+# (Onsite) Job Details | Gainwell Technologies LLC', the title every en_US
+# posting page measured carries (Landis+Gyr's, Aurigo's, Gainwell's) - and,
+# where the posting was, "Sorry, this position has been filled."
+_SF_TITLE_TEXT = re.compile(r"<title\b[^<>]*>([^<]*)</title>", re.I)
+_SF_JOB_TITLE = re.compile(r"\S.*\sJob Details \| \S.*", re.I)
+_SF_FILLED = re.compile(r"\bthis position has been filled\b", re.I)
+
+
+def successfactors_filled(page: str) -> bool:
+    """Is this page, at a posting's own address, the career site saying that
+    the posting has closed: a page that shows no posting, titled as the site
+    titles a posting ('<role> Job Details | <site>') or saying "this position
+    has been filled", as a reader sees it (_cut)? A page that shows no
+    posting and says neither - a block page served 200 (F5's "The requested
+    URL was rejected"), an error page - is not the site's word, and says
+    nothing of the posting (eighth blind review, repaired 2026-11-22: every
+    such page was read as closed, and a board was stated whole on the two of
+    its seven postings that answered)."""
+    body = _cut(page or "")
+    if _SF_SHOWN.search(body):
+        return False
+    m = _SF_TITLE_TEXT.search(body)
+    title = _text(html_lib.unescape(m.group(1))) if m else ""
+    return bool(_SF_JOB_TITLE.fullmatch(title) or _SF_FILLED.search(_jv_text(body)))
 
 
 def successfactors_language(page: str) -> str:
@@ -4209,14 +4336,58 @@ def successfactors_ad(page: str) -> str:
     return ""
 
 
+def successfactors_closed(exc: BaseException) -> bool:
+    """Did asking a posting's own page answer that it has closed: a hop to the
+    site's list (PostingClosed), or a 404 or 410 at its address? A refusal, a
+    429, a server error, the network failing or a hop anywhere else says
+    nothing about the posting."""
+    return isinstance(exc, PostingClosed) or (
+        isinstance(exc, AtsError) and not isinstance(exc, RobotsRefused)
+        and bool(re.match(r"HTTP 4(?:04|10)\b", str(exc))))
+
+
 def fetch_successfactors(ref) -> list[dict]:
     origin, _page1, first, n, total = successfactors_board(ref)
     # (a partial read is an error, never the board: successfactors_walk)
     rows = successfactors_walk(origin, first, n, total)
     if FETCH_DETAILS:
         # the ad is on each posting's own page; CSB publishes no pay field, so
-        # any figure comes from the ad's text (plain_rows), never from here
-        _details(rows, lambda r: (successfactors_ad(successfactors_posting(r["url"], origin)), None))
+        # any figure comes from the ad's text (plain_rows), never from here.
+        # A POSTING WHOSE OWN PAGE SAYS IT HAS CLOSED IS NOT PUBLISHED AS OPEN
+        # (eighth blind review, 2026-11-22): a 404 or 410, a hop to the site's
+        # list, or the site's own page saying so (successfactors_filled:
+        # Gainwell's say "Sorry, this position has been filled.") - the row
+        # is dropped, and said. Where every posting asked answers so, that is
+        # not read as a zero either. A page that shows no posting and is not
+        # the site saying so - a block page served 200, an error page, a hop
+        # anywhere else - says nothing of the posting, as a refusal or a 429
+        # says nothing: the row stays as the list states it.
+        closed = set()
+
+        def read(r):
+            try:
+                page = successfactors_posting(r["url"], origin)
+            except AtsError as exc:
+                if successfactors_closed(exc):
+                    closed.add(r["url"])
+                raise
+            if not successfactors_shown(page):
+                if not successfactors_filled(page):
+                    raise AtsError(f"{r['url']} answered a page that shows no posting and is not "
+                                   f"the site saying it has closed")
+                closed.add(r["url"])
+                return "", None
+            return successfactors_ad(page), None
+        _details(rows, read)
+        if closed:
+            if all(r["url"] in closed for r in rows):
+                raise AtsError(f"{origin}: every one of the {len(rows)} postings on its list answered "
+                               f"as closed on its own page, so it is not read as a board with "
+                               f"nothing open")
+            print(f"  successfactors: {origin}: {len(closed)} of the {len(rows)} postings on its list "
+                  f"answered as closed on their own page (a 404 or 410, a hop to its list, or the "
+                  f"site's page saying so) and are not published", file=sys.stderr)
+            rows = [r for r in rows if r["url"] not in closed]
     return rows
 
 

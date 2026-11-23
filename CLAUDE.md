@@ -610,7 +610,17 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   The rules are RFC 9309's and `robots.py` reads them itself: the stdlib
   `urllib.robotparser` takes the first matching rule instead of the longest,
   ignores `*` and `$`, ends a group at a blank line, and wrongly refused Rain
-  Bird. A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
+  Bird. **The path asked is the path served** (eighth blind review,
+  2026-11-22): the library resolves a raw '..' before it sends it, and a
+  browser reads a backslash in a path as a slash, so '/jobs/../private/x' and
+  '/jobs\..\private/x' were asked as written and served as /private/x. An
+  http(s) page is read only when its path as written and as served
+  (`robots.served`: a backslash, '%2f' and '%5c' read as '/', '%2e' as '.', dot
+  segments resolved) are both allowed; `ats.follow` reads a backslash in a
+  path as a slash before it asks or sends anything, and `ats.plain_address`
+  refuses a path with a '.' or '..' segment in any of those readings before
+  anything is asked (`robots.climbs`).
+  A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
   network error, raised as `AtsError("network error: ...")` and never cached,
   so it is retried and never reads as a refusal (`add_company` gives it the
   same tls/dns/timeout diagnosis as the page). A refusal is never "no board":
@@ -2426,7 +2436,12 @@ and never said where in a page a reference sat.
   exactly what that type's fetcher takes (Workday `[tenant, pod, site]`),
   `element` is where it sat (href | iframe | script | text | request | frame
   | redirect), `saw` is at most 160 characters with any e-mail address
-  taken out, `page` is where the read LANDED. `generated` is the date of the
+  taken out, `page` is where the read LANDED. Every address a record keeps
+  (`saw`, pages, hops, elsewhere pages) has a person's name taken out of its
+  query - a recruiter's, a contact's, a first, last or full name, Jobvite's
+  sd= and __jvsd=, raw or percent-encoded inside another address - to the
+  value's end: across spaces, entity spaces and an apostrophe between
+  letters ('Pat O'Brien', eighth blind review). `generated` is the date of the
   file's OLDEST record: a run that picks a file up again keeps it.
 - **A candidate** was seen on a page that landed on the company's own site,
   or is a redirect from an address of theirs that went straight to the
@@ -3258,18 +3273,30 @@ review and the owner's word, through the wiring door.
   (`same_host`) and asked of robots.txt, which allows /search/, /go/ and /job/
   on every CSB host read and closes /services/. It is paged by page 1's own
   row count (`ats.successfactors_walk`), and an offset at or past the total
-  its pagination label states ("Results <b>1 – 25</b> of <b>334</b>", the
-  second number, in any of its languages) is not asked. **A read short of
-  that total is an error, never the board** (seventh blind review,
-  2026-11-22): a page inside it that adds no posting (empty, page 1 again,
-  the past-the-end list served in the middle, rows with no posting link), a
-  read that reaches the total more than a page short of it, and the 80-page
-  ceiling with or without a total; a hop from page N that drops its
-  startrow is refused before it is asked. Past its end the list says "no
-  open positions matching" and shows the board's 10 most recent postings
-  again (Gainwell, 2026-11-22), so a board with no label stops on the page
-  that adds nothing. One posting closing mid-read costs one row, as offset
-  paging always has.
+  its pagination label states is not asked. **The label is a range and a
+  total** ("Results <b>1 – 25</b> of <b>334</b>", in any of its languages),
+  believed only when it is exactly those two bold parts and the range is the
+  page's own: it starts at the row after the page's startrow, spans the
+  page's rows, and the total reaches its end (`ats._sf_total`, eighth blind
+  review). Any other shape - 'Page 1 of 25', three bold parts, the total
+  first, a total of 0 beside the page's rows - is no total, so part of a
+  board is never read or stated as the whole of it; a total below page 1's
+  rows is none either, and the walk never returns fewer rows than page 1
+  carried. **A read short of that total is an error, never the board**
+  (seventh blind review, 2026-11-22): a page inside it that adds no posting
+  (empty, page 1 again, the past-the-end list served in the middle), a read
+  that reaches the total more than `SF_SLACK` (2) rows short of it, more than
+  2 rows in one read that gave no posting (a title link off the site, an
+  empty title, an address that does not say plainly where it goes - counted
+  on every page, eighth blind review: the slack was a page, and 24 of 25 such
+  rows vanished inside it), and the 80-page ceiling with or without a total;
+  a hop from page N that drops or changes its startrow is refused before it
+  is asked. Past its end the list says "no open positions matching" and
+  shows the board's 10 most recent postings again (Gainwell, 2026-11-22), so
+  a board with no label stops on the page that adds nothing. A posting or
+  two closing mid-read cost a row each, as offset paging always has, and may
+  move the last page past the end: that page adding nothing is not an error,
+  and the read is still held to the total.
 - **A row** is a `<tr class="data-row">` the page shows (read through
   `ats._cut`: a commented-out or script-held row is none): its first titled
   `jobTitle-link` to a /job/ page on the site - written twice, for a desk and
@@ -3288,7 +3315,22 @@ review and the owner's word, through the wiring door.
   '/job/../services/...').
 - **Behind FETCH_DETAILS** the ad is each posting's `itemprop="description"`
   element, to the close that matches it. CSB has no pay field; a figure in the
-  ad's text is plain_rows' text parse, as for every reader.
+  ad's text is plain_rows' text parse, as for every reader. **A posting whose
+  own page says it has closed is not published as open** (eighth blind
+  review): a 404 or 410, a hop to the site's list (/search/, not followed),
+  or the site's own page saying so (`ats.successfactors_filled`: a 200 page
+  showing no posting, titled as the site titles a posting - '<role> Job
+  Details | <site>', every en_US posting page measured - or saying "this
+  position has been filled"; Gainwell's closed page, measured 2026-11-22,
+  carries both) drops the row, and the reader says how many on stderr. A
+  refusal, a 429, a 5xx, the network failing, a hop anywhere else off /job/
+  (not followed) and a page that shows no posting and is not the site saying
+  so - a block page served 200 (F5's "The requested URL was rejected"), an
+  error page - say nothing about the posting, and the row stays as the list
+  states it (repaired 2026-11-22: every page showing no posting was read as
+  closed, and five open postings of seven answering a block page were
+  dropped). A list every one of whose postings answers closed is an error,
+  never a zero.
 - **Never a zero.** A first page with no rows is an error: a "Unify" site
   (Aurigo's, Esri Canada's: its list is POST /services/recruiting/v1/jobs,
   which robots.txt closes) says it is one; a classic page with no rows says a
@@ -3304,15 +3346,33 @@ review and the owner's word, through the wiring door.
   employer is a second name, so not proven. **The whole board or nothing**
   (the owner's rule, seventh blind review, 2026-11-22): a board is stated
   only when its label states a total of `SF_POSTINGS_ASKED` (40) or fewer and
-  every posting on it was asked, its list read to the end; a longer board,
-  or one with no total, is asked about its first `SF_POSTINGS_SAMPLED` (5)
-  for the desk and states nothing. So Gainwell's 334 goes to the owner's
-  queue, never wired unattended. `n` is the label's total (`n_is_partial`
-  when a page has none). A posting that closed between the list and the
-  probe - a 404, a hop off /job/ (not asked), or a 200 page at its address
-  showing no posting: Gainwell's closed ones say only "Sorry, this position
-  has been filled.", measured 2026-11-22 - is a failure of the day where the
-  board's other postings answer; where none does, the board states nothing.
+  every posting on its list was asked, its list read to the end (a list
+  whose pages carry more postings than the 40 asked is not stated either);
+  a longer board, or one with no total, is asked about its first
+  `SF_POSTINGS_SAMPLED` (5) for the desk and states nothing. So Gainwell's
+  334 goes to the owner's queue, never wired unattended. `n` is the label's
+  total (`n_is_partial` when a page has none). **A posting that has closed
+  proves nothing either way** - a 404 or 410, a hop to the site's list (not
+  asked), or the site's own page at its address saying so
+  (`ats.successfactors_filled`, the reader's rule above): Gainwell's closed
+  ones say only "Sorry, this position has been filled.", measured
+  2026-11-22. It names nobody for the board and nobody against it: it is
+  passed over, and on a longer board the next posting on page 1 is asked in
+  its place, `SF_POSTINGS_ASKED` (40) in all at most. It is not a failure of
+  the day - it was, and a list that keeps a filled posting answered so every
+  plan, so the board never reached a person (eighth blind review). Where
+  every posting asked answered as closed, the board states nothing and goes
+  to the owner, saying so. **A board is stated whole only with at most
+  `SF_SLACK` (2) of its postings closed** - the churn the walk allows; more
+  is a list carrying postings that name nobody, and the names of the rest
+  are kept for the desk, not stated. **A page that shows no posting and is
+  not the site saying so is not a closed posting** (repaired 2026-11-22: a
+  block page served 200 at five of seven postings was passed over, and the
+  board stated whole and proven on the other two): a block or error page,
+  or a hop anywhere but the list (not asked), is the board unreadable for a
+  person - `failed` "unreadable", not a failure of the day, no name - so the
+  door holds it with the reason. A posting answering 401 or 403 is the board
+  refusing, and 429 a failure of the day: neither is a closed posting.
   Postings written in more than one language (their title's own lang) are a
   board listing a role once per language (JENOPTIK's twins), and are not
   stated. A placeholder name ('our team' on SPX's board, the tenant id
@@ -3363,7 +3423,18 @@ review and the owner's word, through the wiring door.
   only after the check was tightened). Seventh blind review (2026-11-22):
   nine findings and the tests reviewer's unpinned breakages (E-01..E-14,
   E-22), each fixed or pinned; then 99 breaks of the code as it stands, the
-  first round's included where the code moved, 99 noticed.
+  first round's included where the code moved, 99 noticed. Eighth blind
+  review (2026-11-22): the label read as a range and a total, rows that gave
+  no posting counted, the last page's churn, closed postings (passed over in
+  the probe, dropped behind FETCH_DETAILS), and the tests reviewer's
+  unpinned hop targets, startrow, 403/429, no-total, comment and four-deep
+  cases - each fixed and pinned, Gainwell's measured shape (334 postings, 14
+  pages of 25) among the cases; each fix reverted in a private copy fails
+  the check. Its repair pass (2026-11-22): a closed posting is only the site
+  saying so (a block page served 200, or a hop anywhere but the list, is the
+  board unreadable and the row kept), a board is stated whole with at most
+  `SF_SLACK` closed and every listed posting asked - thirteen breaks of the
+  repair, one at a time in a private copy, each noticed.
 
 ## Build order (owner, 2026-08-23)
 
