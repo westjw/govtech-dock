@@ -20810,6 +20810,23 @@ def check_successfactors_reads_its_career_site() -> int:
                 errors += fail(f"successfactors: with details on, five of seven postings answering "
                                f"{why} were not kept as the list states them ({len(rows or [])} rows, "
                                f"ads {ads}), or were said closed ({said_.getvalue().strip()!r}): {exc}")
+        # A HOP TO THE SITE'S LIST IS THE POSTING CLOSED however the list's
+        # address is written: '/search' without its slash, and with a query
+        for to in (SF + "/search", SF + "/search?x"):
+            said_ = io.StringIO()
+            ats.FETCH_DETAILS = True
+            with contextlib.redirect_stderr(said_):
+                rows, exc = go({at(0): page([row(n) for n in range(1, 4)], total=3),
+                                SF + job(1): posting(), SF + job(2): (302, to), SF + job(3): posting(),
+                                to: page([row(n) for n in range(1, 4)], total=3)},
+                               lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            kept = sorted(int(r["url"].rstrip("/").rsplit("/", 1)[-1]) - 1400000000 for r in rows or [])
+            if exc or kept != [1, 3] or "1 of the 3 postings" not in said_.getvalue() \
+                    or to in sent + robots_asked:
+                errors += fail(f"successfactors: with details on, a posting that sends its reader to "
+                               f"{to[len(SF):]!r} was not dropped as closed (kept {kept}, "
+                               f"{said_.getvalue().strip()!r}), or that page was asked: {exc}")
 
         # ---- the date, in the three forms measured and no other ---------------
         for lang, when, want in (("en-US", "Nov 20, 2026", "2026-11-20"),
@@ -21038,14 +21055,20 @@ def check_successfactors_reads_its_career_site() -> int:
         # shows no posting: successfactors_shown reads the page a reader sees)
         commented = filled.replace("<p>Sorry", '<!-- <div itemscope itemtype="https://schema.org/JobPosting">'
                                                '<span itemprop="title">Role 4</span></div> --><p>Sorry')
+        # (the list is the list however its address is written: '/search'
+        # without its slash, and with a query - blind review 9, 2026-11-23)
+        lists_ = (landing, SF + "/search", SF + "/search?x")
         for closing, why in ((filled, "answers 200 at its address, 'position has been filled'"),
                              (commented, "keeps its microdata only inside a comment"),
                              ((302, landing), "sends its reader back to the list"),
+                             ((302, SF + "/search"), "sends its reader to the list written '/search'"),
+                             ((302, SF + "/search?x"), "sends its reader to the list written '/search?x'"),
                              ((404, None), "answers 404"), ((410, None), "answers 410")):
             for plan in (1, 2):
-                got = said(board(seven, every(7, p4=closing), {landing: seven}))
+                got = said(board(seven, every(7, p4=closing), {u: seven for u in lists_}))
                 if not got["stated"] or got["names"] != ["Acme Gov LLC"] or got["transient"] \
-                        or got["failed"] or landing in sent or sent.count(SF + job(4)) != 1 \
+                        or got["failed"] or any(u in sent + robots_asked for u in lists_) \
+                        or sent.count(SF + job(4)) != 1 \
                         or "1 more on its list answered as closed" not in str(got["how"]) \
                         or not vb.proven({"name": "Acme Gov"}, got)["ok"]:
                     errors += fail(f"successfactors probe, plan {plan}: a posting that closed and {why} "
@@ -21145,14 +21168,26 @@ def check_successfactors_reads_its_career_site() -> int:
                                f"{not want}, not {want}")
         # A BOARD IS STATED WHOLE ONLY WITH AT MOST SF_SLACK OF ITS POSTINGS
         # CLOSED, the churn the walk allows; more is a list carrying postings
-        # that name nobody - the names kept for the desk, the board not stated
-        for shut, ok in (((2, 6), True), ((2, 4, 6), False)):
+        # that name nobody - the names kept for the desk, the board not stated.
+        # The words the door and the desk show are the probe's, whole (blind
+        # review 9, 2026-11-23: the words for more than SF_SLACK closed could
+        # change and no check said so)
+        for shut, ok, how in (
+                ((2, 6), True,
+                 "successfactors search page title and description, and the hiringOrganization of "
+                 "every one of its 5 open postings (2 more on its list answered as closed and name "
+                 "nobody), stated by the career site"),
+                ((2, 4, 6), False,
+                 "successfactors search page title and description, and the hiringOrganization of "
+                 "4 of its 7 postings (3 more on its list answered as closed and name nobody): more "
+                 "than 2 closed is not a posting or two closing while it was asked, so these may not "
+                 "be every name the board states")):
             got = said(board(seven, every(7, **{f"p{k}": filled for k in shut})))
             if bool(got["stated"]) is not ok or got["names"] != ["Acme Gov LLC"] or got["failed"] \
                     or got["transient"] or vb.proven({"name": "Acme Gov"}, got)["ok"] is not ok \
-                    or (not ok and f"more than {ats.SF_SLACK} closed" not in str(got["how"])):
+                    or got["how"] != how:
                 errors += fail(f"successfactors probe: a board of seven with {len(shut)} postings closed "
-                               f"was {'not ' if ok else ''}stated whole: {got}")
+                               f"was {'not ' if ok else ''}stated whole, or not in its words: {got}")
         # ...and every posting on its list asked: a board stating 40 whose two
         # pages carry 50 is asked about 40, and not stated for the other ten
         got = said(board(page([row(n) for n in range(1, 26)], total=40), every(50),

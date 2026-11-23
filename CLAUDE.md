@@ -3453,8 +3453,10 @@ review and the owner's word, through the wiring door.
   (2026-11-23): the posting's title alone is no longer the site saying it
   closed - only its words, a 404 or 410, or a hop to the list (the eighth
   review's pin that read a title-only page as closed is turned round, so the
-  title rule and its unescape are gone). Each fix reverted in a private copy
-  fails the check.
+  title rule and its unescape are gone); a hop to '/search' without its
+  slash, and to '/search?x', is pinned as closed, and the probe's words when
+  more than `SF_SLACK` closed are pinned whole. Each fix reverted in a
+  private copy fails the check.
 
 ## Build order (owner, 2026-08-23)
 
