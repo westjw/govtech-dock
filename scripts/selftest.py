@@ -22427,7 +22427,21 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                                                                    plain(6, (302, SF + "/search/?q="))],
                  ["Acme Gov Software"], True, "two of seven closed by a 404 and a hop to the list"),
                 ([plain(n, posting() if n not in (2, 4, 6) else filled) for n in range(1, 8)],
-                 ["Acme Gov Software"], False, "three of seven closed")):
+                 ["Acme Gov Software"], False, "three of seven closed"),
+                # a posting naming its employer (hiringOrganization) names it:
+                # another employer is a second name, as on a classic site
+                # (blind review 10: it was never read on a Unify page)
+                ([plain(n, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                        'content="Parent Holdings Inc">', 1)) for n in (1, 2)],
+                 ["Acme Gov Software", "Parent Holdings Inc"], True, "postings naming another employer"),
+                ([plain(1, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                       'content="Acme Gov Software">', 1)),
+                  plain(2, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                       'content="">', 1))],
+                 ["Acme Gov Software"], True, "postings naming the site, and nobody"),
+                ([plain(1, posting().replace("<body>", '<body><!-- <meta itemprop="hiringOrganization" '
+                                                       'content="Parent Holdings Inc"> -->', 1))],
+                 ["Acme Gov Software"], True, "a hiringOrganization inside a comment")):
             got = said(site(postings_))
             if got["names"] != want or bool(got["stated"]) is not stated or got["failed"] \
                     or (len(want) > 1 and "do not agree" not in str(got["how"])) \
@@ -22435,6 +22449,12 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (want and not stated and f"more than {ats.SF_SLACK} closed" not in str(got["how"])):
                 errors += fail(f"successfactors unify probe, {why}: names {got['names']} stated "
                                f"{got['stated']} ({got['how']!r}), wanted {want} stated {stated}")
+        parent_ = said(site([plain(n, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                                  'content="Parent Holdings Inc">', 1))
+                             for n in (1, 2)]))
+        if vb.proven({"name": "Acme Gov Software"}, parent_)["ok"]:
+            errors += fail(f"successfactors unify probe: postings naming another employer proved the site's "
+                           f"own name: {parent_}")
         # the door is unchanged: Esri Canada's tenant id and Aurigo's longer
         # registered name, in their shapes, prove neither record's name
         for site_name, ours in (("acmecanada", "Acme Canada"),

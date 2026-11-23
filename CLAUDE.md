@@ -3598,7 +3598,11 @@ review and the owner's word, through the wiring door.
   published one row as the board).
   **The probe** (`verify_boards._successfactors_unify`): the site's name is
   each posting page's `<title>` after its last ' | ' ('<role> Job Details |
-  <site>', in French '<rôle> Détails de l'emploi | <site>'), stated whole
+  <site>', in French '<rôle> Détails de l'emploi | <site>'), and a posting
+  naming its employer (a `hiringOrganization` meta, not empty, not in a
+  comment) names it too - another employer is a second name, so not proven
+  (blind review 10: it was never read; the three sites measured carry
+  none) - stated whole
   only by the classic rule - the sitemap lists `SF_POSTINGS_ASKED` (40) or
   fewer, every one asked, at most `SF_SLACK` closed; a longer one is asked
   about its first `SF_POSTINGS_SAMPLED` (5) that answer, for the desk; a

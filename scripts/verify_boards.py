@@ -1556,13 +1556,19 @@ def _successfactors_unify(origin: str, out: dict) -> None:
             closed.append(url)
             continue
         answered += 1
-        title = _inside(ats._cut(body), _TITLE)
+        cut = ats._cut(body)
+        title = _inside(cut, _TITLE)
         t = _clean(html_lib.unescape(title[0])) if title else ""
         site = _clean(t.rsplit(" | ", 1)[1]) if " | " in t else ""
         if site:
             names.append(site)
         else:
             unnamed.append(url)
+        # A POSTING NAMING ITS EMPLOYER names it, as on a classic site: the
+        # three Unify sites measured carry no hiringOrganization, and where a
+        # page does, another employer is a second name, never passed over
+        # (blind review 10, 2026-11-23: it was never read here)
+        names.extend(o for o in _itemprops(cut, "hiringOrganization") if o)
     total = len(postings)
     if not answered:
         out["how"] = (f"none of the {asked} postings asked from the successfactors sitemap answered "
@@ -1591,7 +1597,8 @@ def _successfactors_unify(origin: str, out: dict) -> None:
         out["how"] = "successfactors career site states no name a person could read"
         return
     if len({strict(n_)[0] for n_ in out["names"]}) > 1:
-        out["how"] += " - and they do not agree: its postings' titles name more than one site"
+        out["how"] += (" - and they do not agree: its postings name more than one (in their titles, or "
+                       "as their hiringOrganization)")
 
 
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
