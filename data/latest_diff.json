@@ -1,139 +1,97 @@
 {
-  "date": "2026-11-22",
-  "previous": "2026-11-21",
+  "date": "2026-11-23",
+  "previous": "2026-11-22",
   "changes": [
     {
-      "company": "Caselle",
-      "id": "caselle",
+      "company": "Paymentus",
+      "id": "paymentus",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: robots.txt on www.payment"
+    },
+    {
+      "company": "Aurigo Software",
+      "id": "aurigo-software",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Account Manager - Sales (Provo, UT, USA)"
+      "note": "Federal Account Executive (Austin, U.S.)"
     },
     {
-      "company": "NEXGEN Asset Management",
-      "id": "nexgen-asset-management",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "CentralSquare Technologies",
-      "id": "centralsquare-technologies",
+      "company": "Octave",
+      "id": "octave",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Account Manager - Public Admin (United States)"
+      "note": "Senior Account Manager (Remote; Dortmund, )"
     },
     {
-      "company": "Cognyte",
-      "id": "cognyte",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager (USA - Remote)"
-    },
-    {
-      "company": "Penlink",
-      "id": "penlink",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Enterprise Business Development Ma (Abu Dhabi)"
-    },
-    {
-      "company": "Clearview AI",
-      "id": "clearview-ai",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Director of U.S. Intelligence Comm (Hybrid - Washingto)"
-    },
-    {
-      "company": "LYT",
-      "id": "lyt",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Senior Account Executive, Western  (USA)"
-    },
-    {
-      "company": "Transit",
-      "id": "transit",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Eptura",
-      "id": "eptura",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "GTM Enablement Manager only"
-    },
-    {
-      "company": "RedMane Technology",
-      "id": "redmane-technology",
+      "company": "Whip Around",
+      "id": "whip-around",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Vanderlande",
-      "id": "vanderlande",
+      "company": "Gainwell Technologies",
+      "id": "gainwell-technologies",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Account Business Manager only"
+    },
+    {
+      "company": "IDEMIA",
+      "id": "idemia",
       "from": "Sales (non-AE)",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "HTTP 502 for https://uscareers-idemia.ic"
     },
     {
-      "company": "Tribute Technology",
-      "id": "tribute-technology",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Solution Account Executive (Remote Canada)"
+      "company": "GE Vernova",
+      "id": "ge-vernova",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
-      "company": "EAB",
-      "id": "eab",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager, Hybrid (Philadelphia, PA; )"
-    },
-    {
-      "company": "Cantata Health Solutions",
-      "id": "cantata-health-solutions",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Pathify",
-      "id": "pathify",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sales Account Manager, SMB (Remote/Denver, CO )"
-    },
-    {
-      "company": "OnePlan",
-      "id": "oneplan",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Claroty",
-      "id": "claroty",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Enterprise Account Executive, Cent (United States)"
-    },
-    {
-      "company": "CARTO",
-      "id": "carto",
+      "company": "Uplight",
+      "id": "uplight",
       "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Solutions Engineer only"
+      "note": "Utility Sales Manager/Director only"
     },
     {
-      "company": "Abre",
-      "id": "abre",
+      "company": "Esri Canada",
+      "id": "esri-canada",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Account Manager, Ontario Region (Canada)"
+    },
+    {
+      "company": "EBSCO Information Services",
+      "id": "ebsco-information-services",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Inside Sales Representative only"
+    },
+    {
+      "company": "Huntress",
+      "id": "huntress",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Channel Account Manager I only"
+    },
+    {
+      "company": "Cotiviti",
+      "id": "cotiviti",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 502 for https://careers-cotiviti.ic"
+    },
+    {
+      "company": "Syniverse",
+      "id": "syniverse",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Solutions Engineer only"
     }
   ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-22",
+   "headline": "Conversational AI in financial services: How it works across banking",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/blog/conversational-ai-financial-services/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "time",
    "first_seen": "2026-11-16",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "The prescription starts the journey: Introducing Life Sciences Experience Cloud",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/beyond-determinism-ai-agents-governance/"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "time",
-   "first_seen": "2026-10-27",
-   "headline": "Talkdesk announces 2026 CX Innovators Awards winners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/news-and-press/press-releases/2026-cx-innovators-awards-winners/"
   }
  ]
 }

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-21",
    "headline": "How attackers abuse OAuth permissions to maintain access",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-19",
    "headline": "Proof of Concept for FastUnlock, Windows lock screen bypass from Nightmare Eclipse",
    "kind": "press",

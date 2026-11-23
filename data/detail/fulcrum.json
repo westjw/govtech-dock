@@ -28,15 +28,6 @@
    "url": "https://www.fulcrumapp.com/blog/spatial-networks-iso-27001-certification/"
   },
   {
-   "date": "2026-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-17",
-   "headline": "The Company Behind Fulcrum, Spatial Networks, Inc., Achieves ISO/IEC 27001:2022 Certification for Information Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/newsroom/spatial-networks-achieves-iso-27001-certification/"
-  },
-  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -74,21 +65,21 @@
   },
   {
    "date": "2026-10-21",
+   "date_source": "index-text",
+   "first_seen": "2026-11-17",
+   "headline": "The Company Behind Fulcrum, Spatial Networks, Inc., Achieves ISO/IEC 27001:2022 Certification for Information Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/spatial-networks-achieves-iso-27001-certification/"
+  },
+  {
+   "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "How the Fulcrum and Slalom partnership brings AI to utility field operations",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/fulcrum-slalom-partnership/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Fulcrum and Slalom Bring AI Transformation to Utility Field Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-slalom-partnership/"
   },
   {
    "date": "2026-10-14",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/fixing-the-gap-between-your-water-audit-and-field-data/"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Wildnote Teams: The field record that shows the full picture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/the-field-record-that-shows-the-full-picture/"
   }
  ],
  "profile": {

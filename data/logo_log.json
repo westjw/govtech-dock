@@ -9518,5 +9518,30 @@
   "via": "declared-icon",
   "url": "https://www.branchingminds.com/hubfs/favicon.png",
   "sha256": "9a2069319637c6a6712d54b7d55d9f320705cb0245f2735bd14f340aa96a329f"
+ },
+ "claroty": {
+  "ok": true,
+  "note": "https://claroty.com/apple-touch-icon.png",
+  "site": "https://claroty.com/",
+  "on": "2026-11-23",
+  "via": "apple-touch-icon",
+  "url": "https://claroty.com/apple-touch-icon.png",
+  "sha256": "fdce85b33993dd5196ef199f4fb5ee5110181b512a6f950f440123cf4f54450f"
+ },
+ "am-quartex": {
+  "ok": false,
+  "note": "site answered 405",
+  "site": "https://www.amdigital.co.uk/am-quartex",
+  "on": "2026-11-23"
+ },
+ "carto": {
+  "ok": true,
+  "note": "https://carto.com/images/og-default.webp",
+  "site": "https://carto.com/",
+  "on": "2026-11-23",
+  "via": "og-image",
+  "url": "https://carto.com/images/og-default.webp",
+  "sha256": "3467c8134e58e1cb1c614e63bed32b135a71d10c901f78d220c174314fb59ecf",
+  "review": true
  }
 }

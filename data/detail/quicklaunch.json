@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-11-12",
    "headline": "QuickLaunch and Carahsoft Partner to Expand AI-Powered Identity and Integration Solutions Across Higher Education and the Public Sector",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "time",
    "first_seen": "2026-10-21",
    "headline": "Kilgore College Goes Live on QuickLaunch Student Provisioning",
    "kind": "contract",
@@ -20,12 +20,66 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-10-21",
    "headline": "The College of Science, Technology and Applied Arts of Trinidad and Tobago Goes Live on QuickLaunch IntegrationX",
    "kind": "contract",
    "kind_rule": "Goes Live on",
-   "url": "https://quicklaunch.io/newsroom/the-college-of-science-technology-and-applied-arts-of-trinidad-and-tobago-goes-live-on-quicklaunch-integrationx/"
+   "url": "https://quicklaunch.io/newsroom/the-college-of-science-technology-and-applied-arts-of-trinidad-and-tobago-goes-live-on-quicklaunch-integrationx"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-22",
+   "headline": "QuickLaunch Debuts New Analytic Agent and Insights for visibility for all users",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://quicklaunch.io/newsroom/quicklaunch-debuts-new-analytic-agent-and-insights-for-visibility-for-all-users"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "time",
+   "first_seen": "2026-11-22",
+   "headline": "QuickLaunch and Unifyed Partner to Bring New Retention Analytics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://quicklaunch.io/newsroom/quicklaunch-and-unifyed-partner-to-bring-new-retention-analytics"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "time",
+   "first_seen": "2026-11-22",
+   "headline": "QuickLaunch Reveals Agent Governance and Integration for Agentic Design Studio",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://quicklaunch.io/newsroom/quicklaunch-reveals-agent-governance-and-integration-for-agentic-design-studio"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "time",
+   "first_seen": "2026-11-22",
+   "headline": "QuickLaunch Adds Verified Identity to Account Claim Process to Streamline Financial Aid",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://quicklaunch.io/newsroom/quicklaunch-adds-verified-identity-to-account-claim-process-to-streamline-financial-aid"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "time",
+   "first_seen": "2026-11-22",
+   "headline": "QuickLaunch Expands Partner Network to Accelerate Reach Across Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://quicklaunch.io/newsroom/quicklaunch-expands-partner-network-to-accelerate-reach-across-higher-education"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "time",
+   "first_seen": "2026-11-22",
+   "headline": "Amberton University Automates Google Workspace Provisioning with QuickLaunch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://quicklaunch.io/newsroom/amberton-university-automates-google-workspace-provisioning-with-quickLaunch"
   }
  ],
  "profile": {

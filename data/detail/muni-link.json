@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-22",
+   "headline": "Cloud Utility Billing: The Business Case for Finance and IT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://muni-link.com/blog/cloud-based-utility-billing-benefits/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://muni-link.com/blog/municipal-utility-billing-software-rate-penalty-adjustments/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Comprehensive Implementation and Support Services for Municipal Utility Billing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://muni-link.com/blog/implementation-and-onboarding-support/"
   }
  ],
  "profile": {
