@@ -1383,11 +1383,15 @@ def _successfactors(ref, out: dict) -> None:
     # asked (SF_POSTINGS_ASKED or fewer, read to the end by the reader's own
     # walk); a longer one keeps the names of the postings asked, for the
     # desk, and states nothing (Gainwell's 334 included).
-    # A posting that has closed since the list was read - a 404, a hop off
+    # A POSTING THAT HAS CLOSED PROVES NOTHING EITHER WAY - a 404, a hop off
     # /job/, or a page at its address that shows no posting (Gainwell's say
-    # "Sorry, this position has been filled.") - is a failure of the day
-    # where the board's other postings answer, asked again on the next plan;
-    # where none answers it is the board's, and said so. Postings written in
+    # "Sorry, this position has been filled."): it names nobody for the
+    # board and nobody against it, and the next posting on the list is asked
+    # in its place, SF_POSTINGS_ASKED in all at most. It is not a failure of
+    # the day: a list that keeps a filled posting would answer so every
+    # night, and the board would never reach a person (eighth blind review,
+    # 2026-11-22). Where every posting asked answers as closed, the board
+    # states nothing and goes to the owner, and says so. Postings written in
     # more than one language are a board that lists one role once in each
     # (JENOPTIK's twins), and state nothing either. The name is whatever the
     # site's admin typed: SPX's says "our team" and Esri Canada's its tenant
@@ -1413,19 +1417,20 @@ def _successfactors(ref, out: dict) -> None:
                       f"description \"{_clean(said[1])}\": they do not agree on one name")
         return
     small = total is not None and total <= SF_POSTINGS_ASKED
-    asked = ats.successfactors_walk(origin, rows, n, total) if small else rows[:SF_POSTINGS_SAMPLED]
-    # (every posting the board states was asked: none of its rows lacked a
-    # posting's address, and none is past what was read)
-    whole = small and len(asked) >= total
-    names, unnamed, closed, langs, answered = [said[0]], [], [], set(), 0
-    for row in asked:
+    listed = ats.successfactors_walk(origin, rows, n, total) if small else rows
+    # (every posting the board states is on the list: none of its rows lacked
+    # a posting's address, and none is past what was read)
+    whole = small and len(listed) >= total
+    want = len(listed) if small else SF_POSTINGS_SAMPLED
+    names, unnamed, closed, langs, answered, asked = [said[0]], [], [], set(), 0, 0
+    for row in listed:
+        if answered >= want or asked >= SF_POSTINGS_ASKED:
+            break
+        asked += 1
         try:
             body = ats.successfactors_posting(row["url"], origin)
-        except ats.PostingClosed:
-            closed.append(row["title"])
-            continue
         except ats.AtsError as exc:
-            if not isinstance(exc, ats.RobotsRefused) and _failure(exc)[0] == "gone":
+            if ats.successfactors_closed(exc):
                 closed.append(row["title"])
                 continue
             raise
@@ -1438,15 +1443,10 @@ def _successfactors(ref, out: dict) -> None:
         if not orgs or "" in orgs:
             unnamed.append(row["title"])
         names.extend(o for o in orgs if o)
-    if closed and answered:
-        # closed between the list and the probe: asked again on the next
-        # plan, never "no board there" (as jobvite's)
-        raise PostingGone(f"successfactors posting {closed[0]!r} on the list answered as closed "
-                          f"while the board was asked, so the board is asked again on the next "
-                          f"plan")
-    if closed:
-        out["how"] = (f"none of the {len(asked)} successfactors postings asked answered as a "
-                      f"posting ({closed[0]!r} the first), so the board states nothing")
+    if not answered:
+        out["how"] = (f"none of the {asked} successfactors postings asked answered as a posting "
+                      f"({closed[0] if closed else ''!r} the first): each answered as closed, and a "
+                      f"closed posting names nobody, so the board states nothing")
         return
     if unnamed:
         out["how"] = (f"successfactors posting {unnamed[0]!r} names no employer "
@@ -1461,11 +1461,14 @@ def _successfactors(ref, out: dict) -> None:
                            f"({', '.join(spoken)}): a role may be listed once in each, so the "
                            f"board's names are not stated for it whole", whole=False)
         return
+    gone = (f" ({len(closed)} more on its list answered as closed and name nobody)"
+            if closed else "")
     how = (f"successfactors search page title and description, and the hiringOrganization of "
-           f"every one of its {len(asked)} postings, stated by the career site" if whole else
+           f"every one of its {answered} open postings{gone}, stated by the career site" if whole else
            f"successfactors search page title and description, and the hiringOrganization of "
-           f"{len(asked)} of its {total if total is not None else 'unstated number of'} "
-           f"postings; the rest were not asked, so these may not be every name the board states")
+           f"{answered} of its {total if total is not None else 'unstated number of'} "
+           f"postings{gone}; the rest were not asked, so these may not be every name the board "
+           f"states")
     if not _state(out, names, how, whole=whole):
         out["how"] = "successfactors career site states no name a person could read"
         return

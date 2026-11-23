@@ -20325,6 +20325,7 @@ def check_successfactors_reads_its_career_site() -> int:
 
     held = (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
             ats.FETCH_DETAILS, ats.DETAIL_PAUSE)
+    not_before = dict(ats._HOST_NOT_BEFORE)        # (a 429 below backs its host off)
     try:
         ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = robots_asked.append, (lambda u: None), None
         ats.DETAIL_PAUSE = 0
@@ -20601,6 +20602,52 @@ def check_successfactors_reads_its_career_site() -> int:
                 or any(r["location"] != "TX, US" for r in rows or []) or set(robots_asked) != set(sent):
             errors += fail(f"successfactors: Gainwell's measured board read as {len(rows or [])} rows from "
                            f"{len(sent)} list pages: {exc}")
+        gw_posts = dict(gw, **{SF + job(n): posting() for n in range(1, 335)})
+        gw_posts[SF + job(200)] = filled
+        said_ = io.StringIO()
+        ats.FETCH_DETAILS = True
+        with contextlib.redirect_stderr(said_):
+            rows, exc = go(gw_posts, lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        urls = {r["url"] for r in rows or []}
+        if exc or len(rows or []) != 333 or SF + job(200) in urls \
+                or not all("Sell to state agencies" in str(r.get("jd")) for r in rows or []) \
+                or "1 of the 334 postings" not in said_.getvalue():
+            errors += fail(f"successfactors: with details on, Gainwell's filled posting was published as "
+                           f"open, or not said ({said_.getvalue().strip()!r}): {len(rows or [])} rows, {exc}")
+        got = said(dict(gw_posts, **{SF + job(2): filled}))
+        if got["stated"] or got["transient"] or got["failed"] or got["names"] != ["Acme Gov LLC"] \
+                or got["n"] != 334 or sum(1 for u in sent if "/job/" in u) != vb.SF_POSTINGS_SAMPLED + 1 \
+                or vb.proven({"name": "Gainwell"}, got)["ok"]:
+            errors += fail(f"successfactors probe: Gainwell's board, its second posting filled, was not "
+                           f"left for the owner on the next five that answered: {got}")
+        # A POSTING WHOSE OWN PAGE SAYS IT HAS CLOSED IS NOT PUBLISHED AS OPEN
+        # (with details on); one the server refuses, or that failed on the day,
+        # is kept - its page said nothing about it - and a list every one of
+        # whose postings has closed is not a zero
+        routes = {at(0): page([row(n) for n in range(1, 8)], total=7), SF + job(1): posting(),
+                  SF + job(2): (403, None), SF + job(3): (302, SF + "/search/?q=&messageKey=jobNotFound"),
+                  SF + job(4): filled, SF + job(5): (404, None), SF + job(6): (429, None),
+                  SF + job(7): (503, None)}
+        said_ = io.StringIO()
+        ats.FETCH_DETAILS = True
+        with contextlib.redirect_stderr(said_):
+            rows, exc = go(routes, lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        kept = sorted(int(r["url"].rstrip("/").rsplit("/", 1)[-1]) - 1400000000 for r in rows or [])
+        if exc or kept != [1, 2, 6, 7] or "3 of the 7 postings" not in said_.getvalue() \
+                or SF + "/search/?q=&messageKey=jobNotFound" in sent:
+            errors += fail(f"successfactors: with details on, the postings kept are {kept}, not 1, 2, 6 "
+                           f"and 7 (3, 4 and 5 closed; 2, 6 and 7 said nothing), or it was not said "
+                           f"({said_.getvalue().strip()!r}): {exc}")
+        ats.FETCH_DETAILS = True
+        with contextlib.redirect_stderr(io.StringIO()):
+            rows, exc = go(dict(routes, **{SF + job(k): filled for k in range(1, 8)}),
+                           lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        if exc is None or rows is not None or "every one of the 7" not in str(exc):
+            errors += fail(f"successfactors: with details on, a list whose every posting has closed read "
+                           f"as {rows!r}, not an error: {exc}")
 
         # ---- the date, in the three forms measured and no other ---------------
         for lang, when, want in (("en-US", "Nov 20, 2026", "2026-11-20"),
@@ -20754,8 +20801,8 @@ def check_successfactors_reads_its_career_site() -> int:
                 (board(page([row(1)], total=1, title="Jobs").replace(
                     "<head>", "<head><!-- <title>Acme Gov LLC Jobs</title> -->"), {1: "Acme Gov LLC"}),
                  [], False, "the only title in a comment, before the page's own"),
-                (board(seven, every(7, p2=(404, None))), [], False,
-                 "a posting closed between the list and the probe"),
+                (board(seven, every(7, p2=(404, None))), ["Acme Gov LLC"], True,
+                 "a posting closed between the list and the probe (it proves nothing either way)"),
                 (board(seven, every(7, p1=(302, "https://www.vendor-home.example/job/x/1/"))), [], False,
                  "a posting that leaves the host"),
                 (board(unify, {}), [], False, "a Unify site")):
@@ -20804,21 +20851,64 @@ def check_successfactors_reads_its_career_site() -> int:
             errors += fail(f"successfactors probe: a board of 3 of which 2 could be asked was stated "
                            f"whole: {got}")
 
-        # a posting that has CLOSED since the list was read is the day's
-        # failure where the others answer; where none does, the board's
+        # A POSTING THAT HAS CLOSED PROVES NOTHING EITHER WAY (eighth blind
+        # review, 2026-11-22): it was a failure of the day, and a list that
+        # keeps a filled posting answered so every plan - the board never
+        # reached a person. Passed over, on every plan alike; on a longer board
+        # the next posting is asked in its place; where every posting asked has
+        # closed, the board states nothing and goes to the owner.
         landing = SF + "/search/?q=&messageKey=jobNotFound"
+        # (a closed page that keeps the posting's microdata only in a comment
+        # shows no posting: successfactors_shown reads the page a reader sees)
+        commented = filled.replace("<p>Sorry", '<!-- <div itemscope itemtype="https://schema.org/JobPosting">'
+                                               '<span itemprop="title">Role 4</span></div> --><p>Sorry')
         for closing, why in ((filled, "answers 200 at its address, 'position has been filled'"),
+                             (commented, "keeps its microdata only inside a comment"),
                              ((302, landing), "sends its reader back to the list"),
-                             ((404, None), "answers 404")):
-            got = said(board(seven, every(7, p4=closing), {landing: seven}))
-            if got["stated"] or got["names"] or got["transient"] is not True or got["failed"] == "gone" \
-                    or landing in sent:
-                errors += fail(f"successfactors probe: a posting that closed and {why} was not a "
-                               f"failure of the day, or the list it was sent to was asked: {got}")
+                             ((404, None), "answers 404"), ((410, None), "answers 410")):
+            for plan in (1, 2):
+                got = said(board(seven, every(7, p4=closing), {landing: seven}))
+                if not got["stated"] or got["names"] != ["Acme Gov LLC"] or got["transient"] \
+                        or got["failed"] or landing in sent or sent.count(SF + job(4)) != 1 \
+                        or "1 more on its list answered as closed" not in str(got["how"]) \
+                        or not vb.proven({"name": "Acme Gov"}, got)["ok"]:
+                    errors += fail(f"successfactors probe, plan {plan}: a posting that closed and {why} "
+                                   f"did not leave the board's six open postings to state it whole, or "
+                                   f"was a failure of the day, or the list it was sent to was asked: {got}")
         got = said(board(seven, {k: filled for k in range(1, 8)}))
-        if got["stated"] or got["names"] or got["transient"] or "none of the" not in str(got["how"]):
+        if got["stated"] or got["names"] or got["transient"] or got["failed"] \
+                or "none of the 7" not in str(got["how"]) or sum(1 for u in sent if "/job/" in u) != 7:
             errors += fail(f"successfactors probe: a board none of whose postings answers as one was "
                            f"read as a failure of the day, or as naming somebody: {got}")
+        long_ = page([row(n) for n in range(1, 26)], total=334)
+        got = said(board(long_, every(25, p3=filled, p5=(404, None))))
+        asked_n = [u for u in sent if "/job/" in u]
+        if got["stated"] or got["transient"] or got["failed"] or got["names"] != ["Acme Gov LLC"] \
+                or asked_n != [SF + job(k) for k in range(1, 8)] or "5 of its 334" not in str(got["how"]) \
+                or vb.proven({"name": "Acme Gov"}, got)["ok"]:
+            errors += fail(f"successfactors probe: on a board of 334 whose third and fifth postings had "
+                           f"closed, the sixth and seventh were not asked in their place (asked "
+                           f"{[u[len(SF):] for u in asked_n]}), or the board was stated or skipped: {got}")
+        got = said(board(page([row(n) for n in range(1, 51)], total=334), {k: filled for k in range(1, 51)}))
+        if got["stated"] or got["transient"] or got["names"] \
+                or sum(1 for u in sent if "/job/" in u) != vb.SF_POSTINGS_ASKED \
+                or f"none of the {vb.SF_POSTINGS_ASKED}" not in str(got["how"]):
+            errors += fail(f"successfactors probe: a long board whose postings have all closed asked "
+                           f"{sum(1 for u in sent if '/job/' in u)} of them, not "
+                           f"{vb.SF_POSTINGS_ASKED} at most, or was not left for the owner: {got}")
+        # ...and a posting the server REFUSES says nothing about the posting:
+        # 401 or 403 is the board refusing (filed so), a 429 a failure of the day
+        for code in (401, 403):
+            got = said(board(seven, every(7, p4=(code, None))))
+            if got["stated"] or got["names"] or got["failed"] != "refused" or got["transient"] \
+                    or "answered as closed" in str(got["how"]):
+                errors += fail(f"successfactors probe: a posting that answered {code} was taken as "
+                               f"closed, or not as a refusal: {got}")
+        got = said(board(seven, {k: (429, None) for k in range(1, 8)}))
+        if got["stated"] or got["names"] or got["failed"] != "refused" or got["transient"] is not True \
+                or "none of the" in str(got["how"]):
+            errors += fail(f"successfactors probe: postings that all answered 429 were read as the board "
+                           f"stating nothing, not as a failure of the day: {got}")
         # one role listed once per language (JENOPTIK's twins) is not one board's statement
         got = said(board(seven, every(7), {SF + job(2): posting(lang="de-DE")}))
         if got["stated"] or got["names"] != ["Acme Gov LLC"] or "language" not in str(got["how"]) \
@@ -20828,9 +20918,10 @@ def check_successfactors_reads_its_career_site() -> int:
         if not got["stated"]:
             errors += fail(f"successfactors probe: en-US and en-GB postings read as two languages: {got}")
         got = said(board(seven, every(7, p2=(404, None))))
-        if got["failed"] == "gone" or got["transient"] is not True:
+        if got["failed"] or got["transient"]:
             errors += fail(f"successfactors probe: a posting that answered 404 is failed="
-                           f"{got['failed']!r} transient={got['transient']!r}, not a failure of the day")
+                           f"{got['failed']!r} transient={got['transient']!r}: the board read, and a "
+                           f"closed posting is neither the board gone nor a failure of the day")
         v = vb.proven({"name": "Acme Gov"}, said(board(page([row(1)], total=1, title="our team Jobs",
                                                              words="Find  at our team"), {1: "our team"})))
         if v["ok"] or '"our team"' not in v["why"]:
@@ -20859,6 +20950,8 @@ def check_successfactors_reads_its_career_site() -> int:
     finally:
         (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
          ats.FETCH_DETAILS, ats.DETAIL_PAUSE) = held
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(not_before)
 
     # ---- found, as the finder finds it ---------------------------------------------
     home, here = "https://www.acmegov.example", "https://www.acmegov.example/careers"

@@ -4297,14 +4297,50 @@ def successfactors_ad(page: str) -> str:
     return ""
 
 
+def successfactors_closed(exc: BaseException) -> bool:
+    """Did asking a posting's own page answer that it has closed: a hop off
+    /job/ (PostingClosed), or a 404 or 410 at its address? A refusal, a 429,
+    a server error or the network failing says nothing about the posting."""
+    return isinstance(exc, PostingClosed) or (
+        isinstance(exc, AtsError) and not isinstance(exc, RobotsRefused)
+        and bool(re.match(r"HTTP 4(?:04|10)\b", str(exc))))
+
+
 def fetch_successfactors(ref) -> list[dict]:
     origin, _page1, first, n, total = successfactors_board(ref)
     # (a partial read is an error, never the board: successfactors_walk)
     rows = successfactors_walk(origin, first, n, total)
     if FETCH_DETAILS:
         # the ad is on each posting's own page; CSB publishes no pay field, so
-        # any figure comes from the ad's text (plain_rows), never from here
-        _details(rows, lambda r: (successfactors_ad(successfactors_posting(r["url"], origin)), None))
+        # any figure comes from the ad's text (plain_rows), never from here.
+        # A POSTING WHOSE OWN PAGE SAYS IT HAS CLOSED IS NOT PUBLISHED AS OPEN
+        # (eighth blind review, 2026-11-22): a 404, a hop off /job/, or a page
+        # showing no posting (Gainwell's say "Sorry, this position has been
+        # filled.") - the row is dropped, and said. Where every posting asked
+        # answers so, that is not read as a zero either.
+        closed = set()
+
+        def read(r):
+            try:
+                page = successfactors_posting(r["url"], origin)
+            except AtsError as exc:
+                if successfactors_closed(exc):
+                    closed.add(r["url"])
+                raise
+            if not successfactors_shown(page):
+                closed.add(r["url"])
+                return "", None
+            return successfactors_ad(page), None
+        _details(rows, read)
+        if closed:
+            if all(r["url"] in closed for r in rows):
+                raise AtsError(f"{origin}: every one of the {len(rows)} postings on its list answered "
+                               f"as closed on its own page, so it is not read as a board with "
+                               f"nothing open")
+            print(f"  successfactors: {origin}: {len(closed)} of the {len(rows)} postings on its list "
+                  f"answered as closed on their own page (a 404, a hop off /job/, or a page showing "
+                  f"no posting) and are not published", file=sys.stderr)
+            rows = [r for r in rows if r["url"] not in closed]
     return rows
 
 

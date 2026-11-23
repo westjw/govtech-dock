@@ -3256,7 +3256,13 @@ review and the owner's word, through the wiring door.
   '/job/../services/...').
 - **Behind FETCH_DETAILS** the ad is each posting's `itemprop="description"`
   element, to the close that matches it. CSB has no pay field; a figure in the
-  ad's text is plain_rows' text parse, as for every reader.
+  ad's text is plain_rows' text parse, as for every reader. **A posting whose
+  own page says it has closed is not published as open** (eighth blind
+  review): a 404 or 410, a hop off /job/, or a 200 page showing no posting
+  ('Sorry, this position has been filled.') drops the row, and the reader
+  says how many on stderr; a refusal, a 429, a 5xx or the network failing
+  says nothing about the posting, and the row stays. A list every one of
+  whose postings answers closed is an error, never a zero.
 - **Never a zero.** A first page with no rows is an error: a "Unify" site
   (Aurigo's, Esri Canada's: its list is POST /services/recruiting/v1/jobs,
   which robots.txt closes) says it is one; a classic page with no rows says a
@@ -3276,11 +3282,18 @@ review and the owner's word, through the wiring door.
   or one with no total, is asked about its first `SF_POSTINGS_SAMPLED` (5)
   for the desk and states nothing. So Gainwell's 334 goes to the owner's
   queue, never wired unattended. `n` is the label's total (`n_is_partial`
-  when a page has none). A posting that closed between the list and the
-  probe - a 404, a hop off /job/ (not asked), or a 200 page at its address
-  showing no posting: Gainwell's closed ones say only "Sorry, this position
-  has been filled.", measured 2026-11-22 - is a failure of the day where the
-  board's other postings answer; where none does, the board states nothing.
+  when a page has none). **A posting that has closed proves nothing either
+  way** - a 404 or 410, a hop off /job/ (not asked), or a 200 page at its
+  address showing no posting: Gainwell's closed ones say only "Sorry, this
+  position has been filled.", measured 2026-11-22. It names nobody for the
+  board and nobody against it: it is passed over, and on a longer board the
+  next posting on page 1 is asked in its place, `SF_POSTINGS_ASKED` (40) in
+  all at most. It is not a failure of the day - it was, and a list that keeps
+  a filled posting answered so every plan, so the board never reached a
+  person (eighth blind review). Where every posting asked answered as
+  closed, the board states nothing and goes to the owner, saying so. A
+  posting answering 401 or 403 is the board refusing, and 429 a failure of
+  the day: neither is a closed posting.
   Postings written in more than one language (their title's own lang) are a
   board listing a role once per language (JENOPTIK's twins), and are not
   stated. A placeholder name ('our team' on SPX's board, the tenant id
