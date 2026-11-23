@@ -23821,6 +23821,28 @@ def check_derived() -> int:
         ({"jd_read": True, "comp": None}, {"jd_seen": True, "comp": None}),
         # and only a real True says so; a stray string is not a reading
         ({"jd_read": "no", "comp": None}, {"jd_seen": False, "comp": None}),
+        # WHERE THE ROW IS decides what a bare "$" is, as in ats.plain_rows
+        # (blind review 10, 2026-11-23: a posting in Ontario, its pay read
+        # from the jd cache with a bare "$", was published as US dollars). A
+        # fetched row is read as main() reads its is_us; a capture by the
+        # is_us it carries ("Remote" alone would read as home); a currency
+        # the text names stands anywhere
+        ({"_from_cache": True, "jd": "Base salary range: $140,000 - $200,000 per year.",
+          "location": "Ontario, Canada", "comp": None}, {"jd_seen": True, "comp": None}),
+        ({"_from_cache": True, "jd": "Base salary range: $140,000 - $200,000 per year.",
+          "location": "", "office_hint": {"country": "CA"}, "comp": None}, {"jd_seen": True, "comp": None}),
+        ({"_from_cache": True, "jd": "Base salary range: $140,000 - $200,000 per year.",
+          "location": "Austin, TX", "comp": None},
+         {"jd_seen": True, "comp_floor": 140000, "comp_period": "year"}),
+        ({"_from_cache": True, "jd": "Base salary range: CAD 140,000 - 200,000 per year.",
+          "location": "Ontario, Canada", "comp": None},
+         {"jd_seen": True, "comp": {"min": 140000, "max": 200000, "currency": "CAD", "period": "year",
+                                    "source": "text", "raw": "CAD 140,000 - 200,000 per year"}}),
+        ({"pay_text": "Base salary range: $140,000 - $200,000 per year.", "jd_read": True,
+          "location": "Remote", "is_us": False, "comp": None}, {"jd_seen": True, "comp": None}),
+        ({"pay_text": "Base salary range: $140,000 - $200,000 per year.", "jd_read": True,
+          "location": "Remote", "is_us": None, "comp": None},
+         {"jd_seen": True, "comp_floor": 140000, "comp_period": "year"}),
         # a fetcher handing back something malformed costs the pay range, not
         # the board: this whole script is one process writing one file.
         ({"jd": "text", "comp": "$140k"}, {"jd_seen": True, "comp": None}),

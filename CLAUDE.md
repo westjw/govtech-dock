@@ -1111,11 +1111,12 @@ confident falsehood. All four store what a person actually saw.
   its board named) a range whose currency rests on a bare "$" alone is no pay
   stated, and a range the text names a currency for (CAD, C$, US$, USD, £)
   stands (blind review 10, 2026-11-23: an Esri Canada posting in Canada was
-  published as paying US dollars; cases in `SALARY_ABROAD_CASES`). Pay read
-  later from a description the crawl did not read (`build_board.derived`: the
-  jd cache, a hand capture) and a board's own pay field (`ats._ats_text`, a
-  card's pay chip in `ats.card_fields`) are still read with the home reading
-  wherever the row is.
+  published as paying US dollars; cases in `SALARY_ABROAD_CASES`). The build
+  reads a description the crawl did not (`build_board.derived`: the jd cache,
+  a hand capture) the same way, a capture by the `is_us` it carries (Harris's
+  posting in Ontario, from the jd cache, was published in US dollars too). A
+  board's own pay field (`ats._ats_text`, a card's pay chip in
+  `ats.card_fields`) is still read with the home reading wherever the row is.
   If you are here because "it missed one", the fix is a new *anchored* form
   with a test case — never a loosened anchor.
 
