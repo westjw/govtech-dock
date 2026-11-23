@@ -2461,7 +2461,20 @@ and never said where in a page a reference sat.
   letters ('Pat O'Brien', eighth blind review) or beside a letter's
   percent-escape ("D'%C3%81vila", as the library sends D'Ávila), straight or
   curly, raw or as an entity (&#39;, &#x27;, &apos;, &rsquo;, &#8217;,
-  &#x2019;). `generated` is the date of the
+  &#x2019;) - and in every other spelling of one (blind review 9,
+  2026-11-23): the left curly quote (&lsquo;, &#8216;, &#x2018;), the
+  modifier letter apostrophe (&#700;, &#x2bc;), HTML5's &CloseCurlyQuote;,
+  &OpenCurlyQuote; and &rsquor;, any of the numeric references without its
+  ';' before a letter or a letter's escape ('&#39Brien', '&#x27Brien'), and each form
+  escaped twice (&amp;#39;, &amp;#x27;, &amp;apos;, &amp;rsquo;,
+  &amp;#8217;). A bare &amp; (and &#38;, &#x26;) is none of these and still
+  ends the value - it is the next key's separator, so the account or ref
+  after it survives - and a quote that ends an attribute still ends it.
+  **Two shapes are left on purpose**: an apostrophe followed by a raw space
+  ("O' Brien") and a value that opens with an apostrophe (last_name='Brien)
+  each read the same as a quote that ends the attribute the address sits in
+  ("...?last_name=Pat' title=..."), so the scrub stops there and the part
+  after it stays. `generated` is the date of the
   file's OLDEST record: a run that picks a file up again keeps it.
 - **A candidate** was seen on a page that landed on the company's own site,
   or is a redirect from an address of theirs that went straight to the

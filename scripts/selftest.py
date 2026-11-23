@@ -21649,15 +21649,61 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                      ("https://www.acmegov.example/apply?last_name=O&rsquo;Brien&first_name=Pat",
                       "last_name= with a curly-quote entity"),
                      ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DD'%C3%81vila"
-                      "%26q%3D1", "an encoded last name with an escaped letter")):
+                      "%26q%3D1", "an encoded last name with an escaped letter"),
+                     # ...and EVERY spelling of one (blind review 9, 2026-11-23:
+                     # "Brien" was kept after each of these): the left curly
+                     # quote, the modifier letter apostrophe, HTML5's names, a
+                     # numeric reference without its ';', and each escaped twice
+                     (TN + "&sd=Pat%20O&lsquo;Brien", "a named left curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#8216;Brien", "a decimal left curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#x2018;Brien", "a hex left curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#700;Brien", "a decimal modifier letter apostrophe"),
+                     (TN + "&sd=Pat%20O&#x2bc;Brien", "a hex modifier letter apostrophe"),
+                     (TN + "&sd=Pat%20O&#X2BC;Brien", "an upper-case hex modifier letter apostrophe"),
+                     (TN + "&sd=Pat%20O&CloseCurlyQuote;Brien", "HTML5's &CloseCurlyQuote;"),
+                     (TN + "&sd=Pat%20O&OpenCurlyQuote;Brien", "HTML5's &OpenCurlyQuote;"),
+                     (TN + "&sd=Pat%20O&rsquor;Brien", "HTML5's &rsquor;"),
+                     (TN + "&sd=Pat%20O&#39Brien", "a decimal entity without its ';'"),
+                     (TN + "&sd=Pat%20O&#x27Brien", "a hex entity without its ';'"),
+                     (TN + "&sd=Pat%20O&#8217Brien", "a curly-quote entity without its ';'"),
+                     (TN + "&sd=Pat%20D&#39%C3%81vila", "an entity without its ';' before an escaped letter"),
+                     (TN + "&sd=Pat%20O&#X27;Brien", "an upper-case hex entity"),
+                     (TN + "&amp;sd=Pat%20O&amp;#39;Brien", "a decimal entity escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;#x27;Brien", "a hex entity escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;apos;Brien", "&apos; escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;rsquo;Brien", "&rsquo; escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;#8217;Brien", "&#8217; escaped twice"),
+                     ("https://www.acmegov.example/apply?last_name=O&#700;Brien&first_name=Pat",
+                      "last_name= with a modifier letter apostrophe"),
+                     ("https://www.acmegov.example/apply?last_name=O&amp;#39;Brien&amp;first_name=Pat",
+                      "last_name= with an entity escaped twice"),
+                     ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DO&lsquo;Brien"
+                      "%26q%3D1", "an encoded last name with a left curly-quote entity"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O&amp;#39;Brien", "an encoded talent network's sd= "
+                                                                       "with an entity escaped twice")):
         out = fsb._no_person(raw)
         if "Brien" in out or "Angelo" in out or "Pat" in out or "vila" in out or "eill" in out \
                 or ("q6NaVfwI" in raw and "q6NaVfwI" not in out):
             errors += fail(f"finder: {why} with an apostrophe kept part of a person's name, or the "
                            f"account went with it: {out!r}")
+    # ...but a BARE separator - '&amp;', '&#38;', '&#x26;', none of them an
+    # apostrophe - still ends the value, so the account or a ref after it
+    # survives, whichever spelling of an apostrophe came before
+    for sep in ("&", "&amp;", "&#38;", "&#038;", "&#x26;", "&amp;amp;"):
+        for raw, kept_ in (("https://app.jobvite.com/TalentNetwork/action/joinTN?sd=Pat%20O&#39;Brien"
+                            f"{sep}ci=q6NaVfwI", "ci=q6NaVfwI"),
+                           (TN + f"&sd=Pat%20O&lsquo;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
+                           (TN + f"&sd=Pat%20O&amp;#x27;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
+                           (f"https://www.acmegov.example/apply?last_name=O&#700;Brien{sep}ref=AbC123",
+                            "ref=AbC123")):
+            out = fsb._no_person(raw)
+            if "Brien" in out or "Pat" in out or kept_ not in out:
+                errors += fail(f"finder: after {sep!r} the value did not end, or a name stayed: {out!r}")
     kept = fsb._no_addresses({"pages": [{"asked": here, "final": TN + "&sd=Pat%20O'Brien"},
                                         {"asked": here, "final": TN + "&sd=Pat%20D'%C3%81vila"}],
-                              "hops": [TN + "&sd=Pat O'Brien", TN + "&sd=Pat%20O&rsquo;Brien"],
+                              "hops": [TN + "&sd=Pat O'Brien", TN + "&sd=Pat%20O&rsquo;Brien",
+                                       TN + "&sd=Pat%20O&#700;Brien", TN + "&amp;sd=Pat%20O&amp;#39;Brien"],
                               "elsewhere": [{"page": "https://www.acmegov.example/apply?last_name=O'Brien"
                                                      "&first_name=Pat"}]})
     if "Brien" in json.dumps(kept) or "Pat" in json.dumps(kept) or "vila" in json.dumps(kept) \
@@ -21682,7 +21728,17 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                       ("https://www.acmegov.example/apply?last_name=O'Brien&next=https%3A%2F%2Fjobs.jobvite.com"
                        "%2Facmegov%2Fjobs",
                        "https://www.acmegov.example/apply?last_name=[removed]&next=https%3A%2F%2Fjobs.jobvite.com"
-                       "%2Facmegov%2Fjobs")):
+                       "%2Facmegov%2Fjobs"),
+                      # (a quote before a space ends the attribute too: so "O' Brien"
+                      # and a value opening with a quote are left, as CLAUDE.md says
+                      # - blind review 9, 2026-11-23)
+                      ("<a href='https://x.example/c?last_name=Pat' title='Jobs'>x</a>",
+                       "<a href='https://x.example/c?last_name=[removed]' title='Jobs'>x</a>"),
+                      ("<a href='https://jobs.jobvite.com/acmegov/jobs?sd=' data-x='y'>x</a>",
+                       "<a href='https://jobs.jobvite.com/acmegov/jobs?sd=[removed]' data-x='y'>x</a>"),
+                      # (and an entity quote ending a quoted value ends it too)
+                      ("go(&#39;https://x.example/c?first_name=Pat&#39;)",
+                       "go(&#39;https://x.example/c?first_name=[removed]&#39;)")):
         if fsb._no_person(raw) != want:
             errors += fail(f"finder: the person scrub ran past a quote or a value into an address: "
                            f"{fsb._no_person(raw)!r}")

@@ -1126,9 +1126,19 @@ _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 _PARAM_SEP = r"(?:[?&;]|%26)"         # ('&amp;', '&#38;', '&#x26;' all end in ';')
 # (between letters, or a letter's percent-escape - requests sends 'D'Ávila'
 # as "D'%C3%81vila" - and as a straight or a curly quote, raw or an entity:
-# blind review of the eighth review's fixes, 2026-11-22)
+# blind review of the eighth review's fixes, 2026-11-22. Every spelling of
+# one: the straight quote, the right and left curly quotes and the modifier
+# letter apostrophe (U+02BC) as a named or a numeric reference, a numeric
+# one with or without its ';', and each escaped twice ('&amp;#39;') - blind
+# review 9, 2026-11-23: "Brien" was kept after &lsquo;, &#700;,
+# &CloseCurlyQuote;, '&#39' and &amp;#39;. A bare '&amp;', '&#38;' or
+# '&#x26;' is none of these, so it still ends the value: it is the next
+# key's separator. An apostrophe before a space ("O' Brien") or at a value's
+# start (last_name='Brien) is left: it reads the same as a quote that ends
+# the attribute the address sits in.)
 _APOSTROPHE = (r"(?:(?<=[^\W\d_])|(?<=%[0-9A-Fa-f]{2}))"
-               r"(?:'|&#0*39;|&#x0*27;|&apos;|&rsquo;|&#0*8217;|&#x0*2019;)"
+               r"(?:'|&(?:amp;)?(?:#(?:0*(?:39|700|8216|8217)|x0*(?:27|2bc|2018|2019));?"
+               r"|apos;|[lr]squo;|rsquor;|(?:Open|Close)CurlyQuote;))"
                r"(?=[^\W\d_]|%[0-9A-Fa-f]{2})")
 _PARAM_VALUE = rf"""(?:[^&#"'<>\r\n]|{_APOSTROPHE}|&(?:nbsp|#160|#xa0|#32|#x20);)*"""
 _PERSON_PARAM = re.compile(
