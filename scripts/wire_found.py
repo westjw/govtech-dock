@@ -825,6 +825,19 @@ def _waiting(stores: dict | None = None) -> dict:
     return out
 
 
+def waiting_keys(w: dict, pairs: dict | None = None) -> set:
+    """Every key a board waiting on a person (a `_waiting` row) is known by:
+    the row's own, and each of its addresses' (found_keys: a Workable
+    number's slug's too, where `pairs` ties the two). A waiting row is the
+    find's own board only where one of these is one of the find's keys,
+    asked in this one way by the plan (consider) and again by apply
+    (wire_problem) - save a Paylocity row beside a Paylocity find, which is
+    that board only by an id that agrees (paylocity_relation and
+    paylocity_ids_agree)."""
+    return {k for x in board_proposals.board_refs(w.get("type"), w.get("ref"), w.get("page_ref"))
+            for k in board_proposals.found_keys(w.get("type"), x, pairs)} | {w.get("key")}
+
+
 doubt_board = board_proposals.doubt_board
 
 
@@ -2262,9 +2275,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
             same_board = rl == "same"
         else:
             rl = None
-            r_keys = {k for x in r_refs for k in board_proposals.found_keys(
-                r.get("type"), x, owner_holds.get("pairs"))} | {r["key"]}
-            same_board = bool(r_keys & set(keys))
+            same_board = bool(waiting_keys(r, owner_holds.get("pairs")) & set(keys))
         q = r.get("proposed") if isinstance(r.get("proposed"), dict) else None
         asked = ((f", proposed {q.get('at') or '?'} by {q.get('by') or '?'}"
                   + (f": \"{q['why'][:240]}\"" if q.get("why") else "")) if q else "")
@@ -3493,6 +3504,19 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                                       w["board"], refs, w_refs, row.get("page_said"))
                        if rl != "apart" else f"it is another board than {show(kind, ref)}")
                     + "; a board waiting on a person is his to settle")
+        elif not waiting_keys(w, owner_holds.get("pairs")) & set(keys):
+            # ANY OTHER WAITING ROW ONLY AS THIS VERY BOARD, under a key it is
+            # known by (consider): the plan holds a company beside a different
+            # board waiting on a person and records none in waiting_seen, so a
+            # worklist saying it saw one - another platform's board, or a row
+            # of another platform beside a Paylocity board - is not taken at
+            # its word (review of the eighth blind review's fixes, 2026-11-22:
+            # re-checked only for a Paylocity row beside a Paylocity board, an
+            # edit wired past the company's own unruled row for another board,
+            # and the row dropped off his queue)
+            return "waiting", (f"{w['board']} is waiting in {w['store']} for it, and it is "
+                               f"another board than {show(kind, ref)}; a board waiting on a "
+                               f"person is his to settle")
     if pl:
         # a record on file whose Paylocity board is this one, or that its
         # addresses do not tell apart from it (consider; fifth and sixth blind

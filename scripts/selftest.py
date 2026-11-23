@@ -41475,6 +41475,74 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                            f"tenant's name alone ties to the board: {line[:300]!r} "
                            f"{text[-300:]!r}")
 
+    # (9b) THE COMPANY'S OWN UNRULED ROW FOR ANOTHER BOARD, named in an edited
+    # worklist's waiting_seen, is never waived - of any platform beside a board
+    # of any platform: the plan holds a company beside a different board
+    # waiting on a person and records none in waiting_seen, so a worklist
+    # saying it saw one is not taken at its word, and the row stays in his
+    # queue. The very board an older finder left is still answered by the two
+    # checks and wired (review of the eighth blind review's fixes, 2026-11-22:
+    # apply re-checked only a Paylocity row beside a Paylocity board, and the
+    # edit wired past the row, which dropped off his queue)
+    ALL_O9, ALL_P9 = pall(0x81e, "Pl-O-Co"), pall(0x81f, "Ghp-Co")
+    OTHER9 = {"gho-co": ("Gho Co", "greenhouse/ghoco", "lever", "ghoother"),
+              "plo-co": ("Pl O Co", f"paylocity/{ALL_O9}", "lever", "ploother"),
+              "ghp-co": ("Ghp Co", "greenhouse/ghpco", "paylocity", ALL_P9)}
+    with _WiringBox([co("gho-co", "Gho Co"), co("plo-co", "Pl O Co"), co("ghp-co", "Ghp Co"),
+                     co("ghs-co", "Ghs Co")],
+                    {"greenhouse/ghoco": (3, ["Gho Co"]), f"paylocity/{ALL_O9}": (3, ["Pl O Co"]),
+                     "greenhouse/ghpco": (3, ["Ghp Co"]), "greenhouse/ghsco": (3, ["Ghs Co"])},
+                    files={bp.FOUND.name: [
+                        *(row(cid, name, oref, kind=okind, saw=f"{okind}/{oref}",
+                              identity_why="an older finder's row")
+                          for cid, (name, _b, okind, oref) in OTHER9.items()),
+                        row("ghs-co", "Ghs Co", "ghsco", identity_why="an older finder's row")]}) \
+            as box:
+        code, text, wl_o, rows_o = box.plan(_wb_results({
+            "gho-co": names("gho-co", "greenhouse", "ghoco"),
+            "plo-co": names("plo-co", "paylocity", ALL_O9),
+            "ghp-co": names("ghp-co", "greenhouse", "ghpco"),
+            "ghs-co": names("ghs-co", "greenhouse", "ghsco")}), name="worklist-o9.json")
+        for cid, (_n, _b, okind, oref) in OTHER9.items():
+            expect(rows_o, cid, "HOLD", f"a different board, {okind}/{oref}, is already waiting "
+                                        f"in Boards we found for this company")
+        expect(rows_o, "ghs-co", "WIRE")
+        if ((rows_o or {}).get("ghs-co") or {}).get("waiting_seen") != [
+                ["Boards we found", bp.board_key("greenhouse", "ghsco")]]:
+            errors += fail(f"ghs-co: the plan did not record the very board's waiting row it "
+                           f"passed: {((rows_o or {}).get('ghs-co') or {}).get('waiting_seen')}")
+
+        def claim(by_id, _doc):
+            for cid, (_n, _b, okind, oref) in OTHER9.items():
+                r = by_id[cid]
+                r["action"] = "WIRE"
+                r.pop("doubts", None)
+                r.pop("queue_row", None)
+                r["waiting_seen"] = [["Boards we found", bp.board_key(okind, oref)]]
+        wl_claim = box.edited(wl_o, "worklist-o9-claim.json", claim)
+        code, text, look_o = box.look(wl_claim)
+        body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
+        for cid, (name, board, okind, oref) in OTHER9.items():
+            line = next((ln for ln in body.splitlines() if ln.strip().startswith(name + " ")), "")
+            if f"{okind}/{oref} is waiting in Boards we found for it, and it is another board " \
+                    f"than {board}; a board waiting on a person is his to settle" not in line:
+                errors += fail(f"{cid}: apply took a worklist's word that it saw the company's own "
+                               f"unruled row for another board ({okind}/{oref}): {line[:300]!r} "
+                               f"{text[-400:]!r}")
+        if "Ghs Co" not in (text[:text.find("LEFT ALONE")] if body else text):
+            errors += fail(f"ghs-co: apply no longer wires the very board an older finder left "
+                           f"waiting, seen by the plan: {text[-400:]}")
+        code, text = box.write(wl_claim, look_o)
+        cards = {r_["id"] for r_ in bp.q_board_proposals(
+            json.loads((box.tmp / "companies.json").read_text()), {})}
+        reads = {cid: box.record(cid).get("ats") or {} for cid in [*OTHER9, "ghs-co"]}
+        if code != 0 or (reads["ghs-co"].get("type"), reads["ghs-co"].get("ref")) != \
+                ("greenhouse", "ghsco") \
+                or any(reads[cid].get("type") != "html" or cid not in cards for cid in OTHER9):
+            errors += fail(f"the write wired past the company's own unruled row for another "
+                           f"board, or took it off his queue (exit {code}; on his queue "
+                           f"{sorted(cards)}; the records read {reads}): {text[-300:]}")
+
     # (10) A PAYLOCITY RECORD WHOSE REF CARRIES NO /All/ OR /List/ ID is no
     # address to compare a board with (test review, 2026-11-22)
     LIST_NEW = plist(7421, "New-Co")

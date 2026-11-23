@@ -3049,7 +3049,14 @@ round.
   the board states or the company goes by (`number`, or the hold's own
   code), a door-filed
   row in Boards we found for any board (`queued`), a waiting row the plan did
-  not record in the row's `waiting_seen`, or a board proposal pending for the
+  not record in the row's `waiting_seen`, or one it records that is not this
+  very board - another board under every key it is known by
+  (`wire_found.waiting_keys`, the plan's own test), or a Paylocity board tied
+  by less than an id that agrees: the plan holds beside either and records
+  neither, so a worklist saying it saw one is not taken at its word (review
+  of the eighth blind review's fixes, 2026-11-22: an edited `waiting_seen`
+  naming the company's own unruled row for another board wired past it, and
+  the row dropped off his queue) - or a board proposal pending for the
   company in Agent proposals whether the plan recorded it or not (`waiting`),
   another holder (under either key), more postings shown than the board
   read. A write whose `--expect` is not the code of the data as it is now is
