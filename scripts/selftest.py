@@ -9297,6 +9297,26 @@ def check_a_beta_code_is_one_person_and_records_consent() -> int:
     import beta_codes as bc
     errors = 0
 
+    # --- THE PLAIN-TEXT FILE NEVER REACHES THE PUBLIC REPOSITORY. scripts/
+    # beta_codes.py writes every code it mints to data/beta_codes.jsonl in the
+    # checkout it runs in; without its .gitignore line one `git add -A` stages
+    # them all (found 2026-11-22: the line was missing and the file sat
+    # untracked in a checkout; the eighth review then showed nothing noticed
+    # the line's removal). Asked of git itself where it can be, else of the
+    # file's own lines.
+    import shutil, subprocess
+    codes = "data/beta_codes.jsonl"
+    if shutil.which("git") and (ROOT / ".git").exists():
+        r = subprocess.run(["git", "check-ignore", "--no-index", "-q", codes],
+                           capture_output=True, text=True, cwd=str(ROOT))
+        if r.returncode != 0:
+            errors += fail(f"{codes} is not gitignored: `git add -A` would publish every beta code")
+        r = subprocess.run(["git", "ls-files", codes], capture_output=True, text=True, cwd=str(ROOT))
+        if r.stdout.strip():
+            errors += fail(f"{codes} is committed to the public repository")
+    elif codes not in [ln.strip().lstrip("/") for ln in (ROOT / ".gitignore").read_text().splitlines()]:
+        errors += fail(f".gitignore has no line for {codes}")
+
     # --- the shape. I, L, O and U are OUT because a code is read off a screen
     # and typed by somebody else, and those four are what a person gets wrong.
     for _ in range(200):
@@ -31657,6 +31677,18 @@ def check_every_reader_has_a_platform_entry() -> int:
         errors += caught(f"with {unread!r} marked {status} and no reason why",
                          lambda p, s=status: (p[unread].update(status=s), p[unread].pop("why", None)),
                          "says why")
+    # The four rules the eighth review could remove with this check passing:
+    # a field the doc reads gone, a status that is no section of the doc, a
+    # prose field left blank, and a researched verdict that is not a verdict.
+    errors += caught(f"with {reader!r} missing its robots field",
+                     lambda p: p[reader].pop("robots"), f"{reader}: no robots")
+    errors += caught(f"with {reader!r} at status 'raed'",
+                     lambda p: p[reader].update(status="raed"), "is not one of")
+    errors += caught(f"with {reader!r}'s spot left blank",
+                     lambda p: p[reader].update(spot="   "), "spot is empty")
+    errors += caught(f"with {unread!r} given the research verdict 'yes'",
+                     lambda p: p[unread].update(research_verdict="yes"),
+                     "research_verdict is build, maybe or skip")
     # The repository is public. Every form of a local path, one at a time (each
     # string holds that form and no other); a token of Comeet's shortest length
     # in either case; an address. All built here, so this file carries no
