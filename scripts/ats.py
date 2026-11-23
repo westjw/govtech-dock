@@ -4257,14 +4257,26 @@ def successfactors_posting(url: str, origin: str, landed: list | None = None) ->
     """One posting's page, asked only on the career site's own host, at an
     address that says plainly where it goes; a hop to the site's list is the
     posting gone (PostingClosed), and a hop anywhere else off /job/ is not
-    read (_sf_hop). `landed`, when given, is handed the address the page
-    came from (a Unify sitemap's address hops to /job/<slug>/<N>-<locale>/)."""
+    read (_sf_hop). `landed`, when given, is handed each address the read
+    goes to, in order - the posting's own, then every hop it is let take -
+    so its last is where the page came from (a Unify sitemap's address hops
+    to /job/<slug>/<N>-<locale>/), or where an answer that was no page came
+    from. A HOP BACK TO AN ADDRESS ALREADY ASKED is a loop, not read (blind
+    review 10, 2026-11-23: a posting and its hop sending a reader to each
+    other were asked eleven times in all before the hop limit ended it)."""
     if _sf_posting_url(url, origin) != url:
         raise AtsError(f"{url} is not a posting of {origin}")
-    resp = _page(url, same_host=True, may=_sf_hop(url, posting=True))
-    if landed is not None:
-        landed.append(str(getattr(resp, "url", "") or url))
-    return resp.text or ""
+    rule, chain = _sf_hop(url, posting=True), []
+
+    def may(u: str):
+        if u in chain:
+            raise AtsError(f"{url} sends a reader round in a loop (back to {u[:120]}), so it says "
+                           f"nothing of the posting")
+        rule(u)
+        chain.append(u)
+        if landed is not None:
+            landed.append(u)
+    return _page(url, same_host=True, may=may).text or ""
 
 
 # what only a page showing a posting carries: the posting's own microdata

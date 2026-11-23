@@ -3418,7 +3418,10 @@ review and the owner's word, through the wiring door.
   site's own template, titled for the role, with an error where the posting
   was, was read as closed by its title, and five open postings of seven
   answering so were dropped). A refusal, a 429, a 5xx, the network failing,
-  a hop anywhere else off /job/ (not followed) and a page that shows no
+  a hop anywhere else off /job/ (not followed), a hop back to an address
+  the read already asked (a loop: not asked again - blind review 10, when a
+  posting and its hop sending a reader to each other were asked eleven
+  times before the hop limit ended it) and a page that shows no
   posting and is not the site saying so - a block page served 200 (F5's
   "The requested URL was rejected"), an error page, the site's template
   titled for the role without those words - say nothing about the posting,
@@ -3550,7 +3553,8 @@ review and the owner's word, through the wiring door.
   never "None found") - one flaky request never empties a board; anything
   else (a page showing no posting that is not the site saying so,
   robots.txt closing it, a 401 or 403, a hop off /job/ or off the host, a
-  page naming no role) is left out and said up to `SF_SLACK` (2) postings,
+  hop round in a loop - each address asked once - a page naming no role) is
+  left out and said up to `SF_SLACK` (2) postings,
   and more is the board unreadable; every posting closed is an error.
   **The probe** (`verify_boards._successfactors_unify`): the site's name is
   each posting page's `<title>` after its last ' | ' ('<role> Job Details |

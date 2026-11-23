@@ -20894,6 +20894,22 @@ def check_successfactors_reads_its_career_site() -> int:
                 errors += fail(f"successfactors: with details on, five of seven postings answering "
                                f"{why} were not kept as the list states them ({len(rows or [])} rows, "
                                f"ads {ads}), or were said closed ({said_.getvalue().strip()!r}): {exc}")
+        # A POSTING SENT ROUND IN A LOOP is not read, and says nothing of the
+        # posting: kept as the list states it, each address asked once (blind
+        # review 10: eleven requests before the hop limit ended it)
+        loop_to = SF + "/job/Any-city-Role-2-TX-99999/2-en_US/"
+        said_ = io.StringIO()
+        ats.FETCH_DETAILS = True
+        with contextlib.redirect_stderr(said_):
+            rows, exc = go({at(0): page([row(n) for n in range(1, 4)], total=3), SF + job(1): posting(),
+                            SF + job(2): (302, loop_to), loop_to: (302, SF + job(2)), SF + job(3): posting()},
+                           lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        if exc or len(rows or []) != 3 or rows[1].get("jd") or sent.count(SF + job(2)) != 1 \
+                or sent.count(loop_to) != 1 or "answered as closed" in said_.getvalue():
+            errors += fail(f"successfactors: with details on, a posting sent round in a loop was asked "
+                           f"{sent.count(SF + job(2)) + sent.count(loop_to)} times, or not kept as the "
+                           f"list states it ({len(rows or [])} rows, {said_.getvalue().strip()!r}): {exc}")
         # A HOP TO THE SITE'S LIST IS THE POSTING CLOSED however the list's
         # address is written: '/search' without its slash, and with a query
         for to in (SF + "/search", SF + "/search?x"):
@@ -22116,6 +22132,17 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 errors += fail(f"successfactors unify: {ats.SF_SLACK} postings answering "
                                f"{[nth(p[0]) for p in some]} were not left out and said, or the page a hop "
                                f"named was asked ({err.strip()!r}, {exc}): {[r['url'] for r in rows or []]}")
+        # A HOP BACK TO AN ADDRESS ALREADY ASKED is a loop, left out and said,
+        # each address asked once (blind review 10: the loc and its hop were
+        # asked eleven times in all before the hop limit ended it)
+        for loop_, why in (((loc(82), hop(82), (302, loc(82))), "back to its own address"),
+                           ((loc(82), hop(82), (302, hop(82))), "back to the address it hopped to")):
+            rows, exc, err = go(site([plain(81, posting("Role 81")), loop_, plain(88, posting("Role 88"))]))
+            if exc or [nth(r["url"]) for r in rows or []] != [81, 88] or sent.count(loc(82)) != 1 \
+                    or sent.count(hop(82)) != 1 or "loop" not in err:
+                errors += fail(f"successfactors unify: a posting whose hop sends a reader {why} was asked "
+                               f"{sent.count(loc(82)) + sent.count(hop(82))} times, or not left out and "
+                               f"said ({err.strip()[-160:]!r}, {exc})")
         routes = site([plain(81, posting("Role 81"))] + unreadable[:3] + [plain(88, posting("Role 88"))],
                       more={tspd: blocked})
         rows, exc, err = go(routes)
