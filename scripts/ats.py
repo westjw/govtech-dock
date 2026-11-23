@@ -4878,8 +4878,11 @@ class _SfKnown(AtsError):
 
 
 def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
-    """('row', (row, requisition, where)), ('closed', None) or ('unread', why)
-    for one posting a Unify sitemap lists, asked once. A FAILURE OF THE DAY -
+    """('row', (row, requisition, where)), ('closed', requisition), ('blank',
+    (why, requisition)) for a page that shows no posting and is not the site
+    saying it closed, or ('unread', why), for one posting a Unify sitemap
+    lists, asked once; the requisition is the one the copy is of, or None
+    where it is not known. A FAILURE OF THE DAY -
     a 429, a 5xx, the network failing or timing out (_sf_of_the_day) - is
     asked once more, after the gate's backoff for a 429 and SF_RETRY_PAUSE
     for the rest, and failing again is raised as it came (blind review 10,
@@ -4898,24 +4901,27 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
             return "row", (dict(row, url=url), req, where)
         except AtsError as exc:
             if successfactors_closed(exc):
-                return "closed", None
+                # (a 404 at the address it hopped to names its requisition)
+                return "closed", _sf_requisition(landed[-1]) if landed else None
             if not _sf_of_the_day(exc):
                 return "unread", f"{url} ({_text(str(exc))[:160]})"
             if attempt == 2:
                 raise
             if not isinstance(exc, RateLimited):
                 time.sleep(SF_RETRY_PAUSE)    # (a 429's wait is the gate's: _back_off)
+    where = landed[-1] if landed else url
     if not successfactors_shown(page):
+        req = successfactors_unify_requisition(page, where, origin)
         if successfactors_filled(page):
-            return "closed", None
-        return "unread", f"{url} (a page that shows no posting and is not the site saying it has closed)"
+            return "closed", req
+        return "blank", (f"{url} (a page that shows no posting and is not the site saying it has "
+                         f"closed)", req)
     row = successfactors_unify_row(page, url)
     if row is None:
         return "unread", f"{url} (a posting page that names no role)"
     if FETCH_DETAILS:
         # the ad is on the page already read: no request more
         row["jd"] = successfactors_ad(page)
-    where = landed[-1] if landed else url
     req = successfactors_unify_requisition(page, where, origin)
     known[where] = (row, req, where)
     return "row", (row, req, where)
@@ -4940,7 +4946,7 @@ def successfactors_unify(origin: str) -> list[dict]:
     address the read has already landed on is not asked again. Never a
     zero."""
     urls, notes = successfactors_sitemap(origin)
-    closed, unread, read, known = [], [], [], {}
+    closed, unread, read, known, shut, blank = [], [], [], {}, set(), []
     for url in urls:
         if url in known:
             # (the sitemap lists an address another of its postings hopped
@@ -4953,12 +4959,32 @@ def successfactors_unify(origin: str) -> list[dict]:
             read.append(got)
         elif what == "closed":
             closed.append(url)
+            if got:
+                shut.add(got[0])
+        elif what == "blank" and got[1] and not re.match(r"en(?:_|$)", got[1][1], re.I):
+            # A COPY IN ANOTHER LANGUAGE THAT SHOWS NO POSTING, OF A
+            # REQUISITION ANOTHER COPY OF WHICH THE SITE SAYS HAS CLOSED, is
+            # that copy closed too: both copies of a closed role stay in the
+            # sitemap until it is written again, and the site's words are
+            # read in English only (successfactors_filled), so the French one
+            # was said "did not read as a posting", and three such made a
+            # bilingual board unreadable (blind review 10, 2026-11-23).
+            # Weighed once every copy is read, as its other copy may come
+            # later; an English copy says it in words read, so one that does
+            # not is the page it is, at once.
+            blank.append((url, got[0], got[1][0]))
         else:
-            unread.append(got)
-            if len(unread) > SF_SLACK:
-                raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
-                               f"did not read as postings ({unread[0]} the first): read in part, so "
-                               f"not read")
+            unread.append(got if what == "unread" else got[0])
+        if len(unread) > SF_SLACK:
+            raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
+                           f"did not read as postings ({unread[0]} the first): read in part, so "
+                           f"not read")
+    with_it = [url for url, _why, n in blank if n in shut]
+    closed += with_it
+    unread += [why for url, why, n in blank if n not in shut]
+    if len(unread) > SF_SLACK:
+        raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists did not "
+                       f"read as postings ({unread[0]} the first): read in part, so not read")
     groups: dict = {}
     for row, req, where in read:
         key = ("requisition", req[0]) if req else ("address", row["url"])
@@ -4984,9 +5010,11 @@ def successfactors_unify(origin: str) -> list[dict]:
                        f"is not read as a board with nothing open")
     said = list(notes)
     if closed:
+        twins_shut = (f"; {len(with_it)} of them a copy that shows no posting, of a requisition "
+                      f"another copy of which the site says has closed" if with_it else "")
         said.append(f"{len(closed)} of the {len(urls)} postings its sitemap lists answered as closed "
                     f"on their own page (a 404 or 410, a hop to its list, or the site's page saying "
-                    f"so) and are not published")
+                    f"so{twins_shut}) and are not published")
     if unread:
         said.append(f"{len(unread)} of the {len(urls)} postings its sitemap lists did not read as "
                     f"postings and are left out: {'; '.join(unread)}")

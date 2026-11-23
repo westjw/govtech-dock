@@ -22159,6 +22159,45 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         if exc is None or rows is not None or "none of the 3 postings" not in str(exc):
             errors += fail(f"successfactors unify: a sitemap every one of whose postings has closed read as "
                            f"{rows!r}, not an error: {exc}")
+        # A COPY IN ANOTHER LANGUAGE THAT SHOWS NO POSTING, of a requisition
+        # whose English copy the site says has closed, is closed with it
+        # (blind review 10, 2026-11-23: a closed role's French copy, whose
+        # words the reader does not know, was said "did not read as a
+        # posting", and three such made a bilingual board unreadable)
+        gone_fr = ('<html lang="fr-CA"><head><title>Gestionnaire de comptes Détails de l\'emploi | '
+                   'acmecanada</title></head><body><div class="jobDisplay"><p>Ce poste n\'est plus '
+                   'offert.</p></div></body></html>')
+
+        def pair(n, shut_=False, en_answer=None, fr_answer=None, fr_first=False):
+            en_ = (f"{SF}/job/Account-Manager-{n}/{60000000 + n}/", f"{SF}/job/Account-Manager-{n}/{n}-en_US/",
+                   en_answer or (filled if shut_ else posting(f"Account Manager {n}")))
+            fr_ = (f"{SF}/job/Gestionnaire-de-comptes-{n}/{61000000 + n}/",
+                   f"{SF}/job/Gestionnaire-de-comptes-{n}/{n}-fr_CA/",
+                   fr_answer or (gone_fr if shut_ else posting(f"Gestionnaire de comptes {n}", lang="fr-CA",
+                                                               phrase="Détails de l'emploi")))
+            return [fr_, en_] if fr_first else [en_, fr_]
+        for k, fr_first in ((1, False), (2, False), (3, False), (3, True)):
+            ps = [c for n in range(1, 9) for c in pair(n, shut_=n <= k, fr_first=fr_first)]
+            rows, exc, err = go(site(ps))
+            if exc or len(rows or []) != 8 - k or "did not read" in err \
+                    or f"{2 * k} of the 16 postings its sitemap lists answered as closed" not in err \
+                    or f"{k} of them a copy that shows no posting" not in err:
+                errors += fail(f"successfactors unify: {k} of 8 bilingual roles closed"
+                               f"{', the French copy first' if fr_first else ''}: the French copies were not "
+                               f"closed with the English ({err.strip()!r}): {len(rows or [])} rows {exc}")
+        ps = pair(1, en_answer=(404, None), fr_answer=gone_fr) + pair(2)
+        rows, exc, err = go(site(ps))
+        if exc or [r["title"] for r in rows or []] != ["Account Manager 2"] or "did not read" in err:
+            errors += fail(f"successfactors unify: a French copy that shows no posting, its English copy "
+                           f"answering 404 where it hopped, was not closed with it ({err.strip()!r}): {exc}")
+        for ps, why in ((pair(1, fr_answer=gone_fr) + pair(2), "whose English copy is open"),
+                        ([(f"{SF}/job/Gestionnaire/61000001/", None, gone_fr)] + pair(1, shut_=True)[:1]
+                         + pair(2), "with no requisition to know it by")):
+            rows, exc, err = go(site(ps))
+            if exc or "1 of the" not in err or "did not read as postings" not in err \
+                    or "a copy that shows no posting" in err:
+                errors += fail(f"successfactors unify: a French copy that shows no posting {why} was closed "
+                               f"with another, not said as not read ({err.strip()!r}): {exc}")
 
         # ---- a failure of the day: asked once more, then it fails the read -----
         # (blind review 10, 2026-11-23: one 5xx among a read's ~265 requests

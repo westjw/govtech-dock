@@ -3557,7 +3557,13 @@ review and the owner's word, through the wiring door.
   hops to the posting is not the row's), and an address the read has
   already landed on is not asked again. **What a posting answers**: the site saying it
   closed (`successfactors_closed`, `successfactors_filled`) leaves it out,
-  said on stderr; **a failure of the day on a posting** - a 429, a 5xx, the
+  said on stderr - and so does a copy in another language than English that
+  shows no posting, of a requisition another copy of which the site says
+  has closed, weighed once every copy is read (the site's words are read in
+  English only: blind review 10, 2026-11-23, a closed role's French copy
+  was said "did not read as a posting", and three made a bilingual board
+  unreadable; an English copy that does not say it is the page it is);
+  **a failure of the day on a posting** - a 429, a 5xx, the
   network failing or timing out - is asked once more (after the gate's
   backoff for a 429, `SF_RETRY_PAUSE` (2s) for the rest), so one flaky
   request costs one request more, never the board (blind review 10,
