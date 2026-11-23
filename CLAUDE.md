@@ -622,6 +622,21 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   anything is asked (`robots.climbs`) - '..;' and '.;x' too, which Tomcat,
   Jetty and Spring cut to a dot segment and serve from elsewhere ('/en/..;/
   careers/' is /careers/; blind review of the eighth review's fixes).
+  **They cut a path parameter off EVERY segment** (blind review 9,
+  2026-11-23): ';...' to the next '/', before they decode or resolve
+  anything, so '/careers;jsessionid=1/private/x' is served as
+  /careers/private/x and was asked only as written. `robots.served` cuts it
+  off every segment first (after reading a backslash as a slash, as a browser
+  does), and a segment that is nothing but a parameter goes with it, as
+  Tomcat merges the two slashes it leaves ('/a/;x/b' is /a/b). An empty
+  segment WRITTEN as such ('/a//b') is still asked as written and resolved
+  as RFC 3986 reads it, not merged as Tomcat and nginx merge it - not
+  changed here, and not yet reviewed. `robots.decide`
+  asks the path as written, as served so, and as served with the parameter
+  kept (`served(..., params=False)`, the earlier reading - a server that
+  knows no path parameter), and a page is read only when all three are
+  allowed; an escaped ';' ('%3B') is a character of its segment, not a
+  parameter.
   A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
   network error, raised as `AtsError("network error: ...")` and never cached,
   so it is retried and never reads as a refusal (`add_company` gives it the

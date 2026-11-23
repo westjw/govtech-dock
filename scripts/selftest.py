@@ -14171,6 +14171,11 @@ def check_the_crawler_honours_robots_txt() -> int:
                 ("https://n.robots-fixture/jobs/./roster", True, "a '.' segment in an open path"),
                 ("https://n.robots-fixture/jobs/private/roster", True,
                  "an open path with the closed one's name inside it"),
+                # (blind review 9, 2026-11-23: a Java server cuts ';...' off
+                # every segment, and serves the closed path)
+                ("https://n.robots-fixture/private;jsessionid=1/roster", False,
+                 "a path parameter a Java server cuts off a closed path's segment"),
+                ("https://n.robots-fixture/jobs;v=1/roster", True, "a path parameter on an open path"),
                 ("https://acme.test/careers", True, "a reserved test domain"),
                 ("https://jobs.example.com/x", True, "a reserved example domain")):
             got = robots.allowed(url, fetch=fetch)
@@ -14321,9 +14326,29 @@ def check_the_crawler_honours_robots_txt() -> int:
                            # '..;' and '.;x' are dot segments to a Java server
                            # (blind review of the eighth review's fixes)
                            ("/en/..;/careers/", "/careers/"), ("/jobs/.;jsessionid=1/x", "/jobs/x"),
-                           ("/jobs/..;x=1/private/x", "/private/x"), ("/jobs/x;v=1", "/jobs/x;v=1")):
+                           ("/jobs/..;x=1/private/x", "/private/x"),
+                           # ...and it cuts ';...' off EVERY segment, to the next
+                           # '/', before it decodes anything (blind review 9,
+                           # 2026-11-23: '/jobs/x;v=1' was pinned as itself; it
+                           # is served as /jobs/x, and that pin is turned round)
+                           ("/jobs/x;v=1", "/jobs/x"), ("/careers;jsessionid=1/private/x", "/careers/private/x"),
+                           ("/careers;x/private/x", "/careers/private/x"), ("/a;b/c;d/e;f", "/a/c/e"),
+                           ("/jobs/x;", "/jobs/x"), ("/careers;x%2fy/private", "/careers/private"),
+                           ("/careers;x\\y/private", "/careers/y/private"),     # (a browser's slash first)
+                           # a segment that is only a parameter: Tomcat merges the
+                           # two slashes it leaves; a last one leaves its slash
+                           ("/a/;x/b", "/a/b"), ("/;x/private/y", "/private/y"), ("/a/;x", "/a/"),
+                           ("/a/;x/../b", "/b"),
+                           # an escaped ';' is a letter of its segment, not a parameter
+                           ("/jobs%3Bx/private", "/jobs%3Bx/private")):
             if robots.served(path) != want:
                 errors += fail(f"robots.served({path!r}) is {robots.served(path)!r}, not {want!r}")
+        # (and the reading of a server that knows no path parameter, as it was)
+        for path, want in (("/jobs/x;v=1", "/jobs/x;v=1"), ("/careers;x%2fy/private", "/careers;x/y/private"),
+                           ("/en/..;/careers/", "/careers/"), ("/a/;x/b", "/a/;x/b")):
+            if robots.served(path, params=False) != want:
+                errors += fail(f"robots.served({path!r}, params=False) is "
+                               f"{robots.served(path, params=False)!r}, not {want!r}")
         for path, want in (("/en/..;/careers/", True), ("/a/.;x/b", True), ("/a/...;/b", False),
                            ("/a/b;c", False), ("/a/..b", False)):
             if robots.climbs(path) != want:
@@ -14335,6 +14360,22 @@ def check_the_crawler_honours_robots_txt() -> int:
                 or not robots.decide([(False, "/c")], "https://site.example/a/../b"):
             errors += fail("robots.decide does not refuse a page whose path as written, or as "
                            "served, a rule closes - and only those")
+        # ...with a path parameter too: the written path, the path a Java server
+        # serves (every ';...' cut) and the path a server that knows no path
+        # parameter serves are each asked, and any one closed refuses it
+        for rules, url, want, why in (
+                ([(False, "/careers/private")], "https://site.example/careers;jsessionid=1/private/x", False,
+                 "a closed path, served with the parameter cut"),
+                ([(False, "/*;jsessionid")], "https://site.example/careers;jsessionid=1/open/x", False,
+                 "a rule closing the parameter as written"),
+                ([(False, "/careers;x/y")], "https://site.example/careers;x%2fy/private", False,
+                 "a rule closing the path served with the parameter kept"),
+                ([(False, "/careers/private")], "https://site.example/careers;jsessionid=1/open/x", True,
+                 "an open path with a parameter"),
+                ([(True, "/careers;"), (False, "/careers/")], "https://site.example/careers;x/jobs", False,
+                 "an Allow for the path as written, a Disallow for the path served")):
+            if robots.decide(rules, url) is not want:
+                errors += fail(f"robots.decide is {robots.decide(rules, url)} for {why}, not {want}")
         H = "https://careers.acmegov.example"
         hop, sent_paths, asked_of = [None], [], []
 
@@ -14405,6 +14446,49 @@ def check_the_crawler_honours_robots_txt() -> int:
                 fsb._request = real_request
         finally:
             (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE) = kept
+        # A PATH PARAMETER MID-PATH, through a reader's _page and the site's own
+        # robots.txt (blind review 9, 2026-11-23): 'Disallow: /careers/private',
+        # and a page at '/careers;jsessionid=1/private/x' - which Tomcat, Jetty
+        # and Spring serve as /careers/private/x - was asked of robots.txt as
+        # written, and read. Refused now, asked directly or as a hop, and
+        # nothing past the first page is sent; a parameter on an open path is
+        # read as before.
+        P = "https://p.robots-fixture"
+        real_rules, kept = robots._rules, (ats.requests.get, ats._host_gate, ats.HTTP_CACHE)
+
+        def to_param(url, **kw):
+            sent_paths.append(ats.requests.Request("GET", url).prepare().path_url)
+            return Answer(url, 302, hop[0]) if url == P + "/jobs" else Answer(url)
+        try:
+            robots._rules = lambda base, fetch=None: _ROBOTS_RULES(
+                base, lambda url: (200, "User-agent: *\nDisallow: /careers/private\n"))
+            robots._CACHE.pop(P, None)
+            ats.requests.get, ats._host_gate, ats.HTTP_CACHE = to_param, (lambda u: None), None
+            for start, to, want in ((P + "/careers;jsessionid=1/private/x", None, []),
+                                    (P + "/jobs", P + "/careers;jsessionid=1/private/x", ["/jobs"]),
+                                    (P + "/jobs", P + "/careers;x/private/x", ["/jobs"])):
+                hop[0], sent_paths[:] = to, []
+                try:
+                    ats._page(start, same_host=True)
+                    errors += fail(f"ats._page read {(to or start)[len(P):]!r} under 'Disallow: "
+                                   f"/careers/private', sending {sent_paths}")
+                except ats.RobotsRefused as exc:
+                    if sent_paths != want or "robots.txt asks crawlers not to read" not in str(exc):
+                        errors += fail(f"ats._page: {(to or start)[len(P):]!r} was refused after sending "
+                                       f"{sent_paths}, not {want}: {exc}")
+                except ats.AtsError as exc:
+                    errors += fail(f"ats._page: {(to or start)[len(P):]!r} failed, not refused by "
+                                   f"robots.txt: {exc}")
+            hop[0], sent_paths[:] = P + "/careers;jsessionid=1/open/x", []
+            try:
+                ats._page(P + "/jobs", same_host=True)
+            except ats.AtsError as exc:
+                errors += fail(f"ats._page refused a hop to an open path with a parameter: {exc}")
+            if sent_paths != ["/jobs", "/careers;jsessionid=1/open/x"]:
+                errors += fail(f"ats._page: a hop to an open path with a parameter sent {sent_paths}")
+        finally:
+            robots._rules = real_rules
+            (ats.requests.get, ats._host_gate, ats.HTTP_CACHE) = kept
 
         # discovery steps past one closed page to the next, and files a site
         # closed at the door as blocked, not as a company with no board
