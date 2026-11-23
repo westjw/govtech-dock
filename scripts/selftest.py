@@ -20240,9 +20240,16 @@ def check_successfactors_reads_its_career_site() -> int:
                 f'<td class="colDate hidden-phone"><span class="jobDate">{when}\n</span></td></tr>')
 
     def page(rows, total=None, first=1, title="Acme Gov LLC Jobs", words="Find  at Acme Gov LLC",
-             lang="en-US", head=""):
-        label = (f'<span class="paginationLabel" aria-label="Results {first}">Results <b>{first} – '
-                 f'{first + len(rows) - 1}</b> of <b>{total}</b></span>') if total is not None else ""
+             lang="en-US", head="", label=None):
+        # (the label's range counts the data rows the server draws, as a real
+        # page's does - not a row in a comment or a script; `label` gives the
+        # label's inner markup as it is)
+        drawn = sum(1 for r in rows if r.startswith('<tr class="data-row"'))
+        if label is not None:
+            label = f'<span class="paginationLabel">{label}</span>'
+        else:
+            label = (f'<span class="paginationLabel" aria-label="Results {first}">Results <b>{first} – '
+                     f'{first + drawn - 1}</b> of <b>{total}</b></span>') if total is not None else ""
         return (f'<html class="html5" xml:lang="{lang}" lang="{lang}"><head><title>{title}</title>'
                 f'<meta name="description" content="{words}" />{head}</head><body>{label}'
                 f'<table id="searchresults"><tbody><tr id="search-results-header"><th>Title</th>'
@@ -20301,6 +20308,20 @@ def check_successfactors_reads_its_career_site() -> int:
         sent.clear(), robots_asked.clear()
         ats.requests.get = web(routes)
         return vb.board_says("successfactors", SF)
+
+    def board(listing, orgs, more=None):
+        # (orgs: each posting's employer - None for no meta, a list for
+        # several, a raw page or a (status, location) answer; `more`
+        # routes are laid over them)
+        routes = {at(0): listing}
+        for n, org in orgs.items():
+            routes[SF + job(n)] = org if isinstance(org, tuple) or (
+                isinstance(org, str) and org.startswith("<html")) else posting(org)
+        routes.update(more or {})
+        return routes
+
+    def every(n_, org="Acme Gov LLC", **but):
+        return {k: but.get(f"p{k}", org) for k in range(1, n_ + 1)}
 
     held = (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
             ats.FETCH_DETAILS, ats.DETAIL_PAUSE)
@@ -20453,6 +20474,134 @@ def check_successfactors_reads_its_career_site() -> int:
                 errors += fail(f"successfactors: a hop to {to[len(SF):]} was asked ({asked_sf or sent}): "
                                f"{exc2}")
 
+        # THE LABEL IS A RANGE AND A TOTAL, believed only when the range is the
+        # page's own (eighth blind review, 2026-11-22): any other shape is no
+        # total, so a part of a board is never read - or stated - as the whole
+        rows25 = [row(n) for n in range(1, 26)]
+        for inner, want, why in (
+                ("Results <b>1 – 25</b> of <b>334</b>", 334, "the measured label"),
+                ("Results <b>1 &ndash; 25</b> of <b>1,334</b>", 1334, "an entity dash and a thousands comma"),
+                ("Ergebnisse <b>1 – 25</b> von <b>175</b>", 175, "a German label"),
+                ("Resultados <b>1 - 25</b> de <b>623</b>", 623, "a Spanish label with a hyphen"),
+                ("Showing <b>1</b> to <b>25</b> of <b>334</b>", None, "three bold parts"),
+                ("Results <b>1 – 25</b> of <b>40</b> here, <b>334</b> in all", None,
+                 "a range and two numbers after it"),
+                ("<b>334</b> results, showing <b>1 – 25</b>", None, "the total written first"),
+                ("Results <b>1 – 25</b> of 334", None, "a total that is not bold"),
+                ("Page <b>1</b> of <b>25</b>", None, "a page count"),
+                ("Results <b>2 – 26</b> of <b>334</b>", None, "a range that does not start at the first row"),
+                ("Results <b>1 – 24</b> of <b>334</b>", None, "a range one short of the page's rows"),
+                ("Results <b>1 – 25</b> of <b>20</b>", None, "a total short of the range's end"),
+                ("Results <b>1 – 25</b> of <b>0</b>", None, "a total of 0 beside the page's rows"),
+                ("Results <b>1 – 25</b> of <b>334 jobs</b>", None, "a total with words in it")):
+            got = ats.successfactors_list(page(rows25, label=inner), SF)[2]
+            if got != want:
+                errors += fail(f"successfactors: the label {inner!r} ({why}) read as a total of "
+                               f"{got!r}, not {want!r}")
+        p2_334 = page([row(n) for n in range(26, 51)], total=334, first=26)
+        if ats.successfactors_list(p2_334, SF, 25)[2] != 334 or ats.successfactors_list(p2_334, SF)[2] is not None:
+            errors += fail("successfactors: page 2's 'Results 26 – 50 of 334' is not read against the "
+                           "row it was asked from")
+        # a board of 623 whose label counts pages: read to its end with no total,
+        # and never stated (the reviewer's giant behind 'Page 1 of 25')
+        pages_ = {at(k * 25): page([row(n) for n in range(k * 25 + 1, min(k * 25 + 26, 624))],
+                                   label=f"Page <b>{k + 1}</b> of <b>25</b>") for k in range(25)}
+        pages_[at(625)] = page([row(n) for n in range(1, 11)])
+        rows, exc = go(pages_, lambda: ats.fetch_successfactors(SF))
+        if exc or len(rows or []) != 623:
+            errors += fail(f"successfactors: a board of 623 whose label counts pages read as "
+                           f"{len(rows or [])} rows: {exc}")
+        got = said(board(pages_[at(0)], every(25)))
+        if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"] or not got["n_is_partial"] \
+                or sum(1 for u in sent if "/job/" in u) != vb.SF_POSTINGS_SAMPLED:
+            errors += fail(f"successfactors probe: a board whose label counts pages was stated or "
+                           f"proven: {got}")
+        # a label stating 0 beside seven rows is no total: seven rows, never a
+        # zero, and no board stated having asked nobody
+        zero = page([row(n) for n in range(1, 8)], label="Results <b>1 – 7</b> of <b>0</b>")
+        rows, exc = go({at(0): zero, at(7): page([row(n) for n in range(1, 8)])},
+                       lambda: ats.fetch_successfactors(SF))
+        if exc or len(rows or []) != 7:
+            errors += fail(f"successfactors: a label of 0 beside 7 rows read as {len(rows or [])} rows: {exc}")
+        got = said(board(zero, every(7)))
+        if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"] \
+                or sum(1 for u in sent if "/job/" in u) != vb.SF_POSTINGS_SAMPLED:
+            errors += fail(f"successfactors probe: a label of 0 beside 7 rows stated the board: {got}")
+        seven_rows = ats.successfactors_list(zero, SF)[1]
+        rows, exc = go({at(7): page([row(n) for n in range(1, 8)])},
+                       lambda: ats.successfactors_walk(SF, seven_rows, 7, 0))
+        if exc or len(rows or []) != 7:
+            errors += fail(f"successfactors: the walk handed a total of 0 beside 7 rows returned "
+                           f"{len(rows or [])}: {exc}")
+
+        # ROWS THAT GIVE NO POSTING ARE COUNTED, and more than SF_SLACK in a read
+        # is no read (eighth blind review): the page-sized slack hid 24 of 25
+        p2_30 = page([row(n) for n in range(26, 31)], total=30, first=26)
+        for bad, why in ((lambda n: f"/job//{1400000000 + n}/", "an empty slug"),
+                         (lambda n: f"https://careers.acmegov.example/job/x/{n}/", "another host of theirs"),
+                         (lambda n: "/go/View-All-Jobs/8808000/", "a category page")):
+            for total_, more in ((30, {at(25): p2_30}), (25, {})):
+                p1_ = page([row(n, href=bad(n)) for n in range(1, 25)] + [row(25)], total=total_)
+                rows, exc = go({at(0): p1_, **more}, lambda: ats.fetch_successfactors(SF))
+                if exc is None or "gave no posting" not in str(exc):
+                    errors += fail(f"successfactors: 24 of 25 rows linking {why}, on a board stating "
+                                   f"{total_}, read as {len(rows or [])} rows: {exc}")
+        if ats.SF_SLACK != 2:
+            errors += fail(f"successfactors: a read may fall {ats.SF_SLACK} rows short, not 2")
+        for bad_rows, ok in (((3, 9), True), ((3, 9, 17), False)):
+            p1_ = page([row(n, href="/go/View-All-Jobs/8808000/") if n in bad_rows else row(n)
+                        for n in range(1, 26)], total=30)
+            rows, exc = go({at(0): p1_, at(25): p2_30}, lambda: ats.fetch_successfactors(SF))
+            if ok != (exc is None) or (ok and len(rows or []) != 28):
+                errors += fail(f"successfactors: {len(bad_rows)} rows that gave no posting on a board of "
+                               f"30 read as {len(rows or [])} rows ({exc}); two are its slack, three are not")
+        p2_bad = page([row(n, href="/go/x/1/") if n in (27, 29, 31) else row(n) for n in range(26, 51)],
+                      total=60, first=26)
+        rows, exc = go({at(0): page([row(n) for n in range(1, 26)], total=60), at(25): p2_bad,
+                        at(50): page([row(n) for n in range(51, 61)], total=60, first=51)},
+                       lambda: ats.fetch_successfactors(SF))
+        if exc is None or "gave no posting" not in str(exc):
+            errors += fail(f"successfactors: three rows of page 2 that gave no posting were not "
+                           f"counted: {len(rows or [])} rows, {exc}")
+        # a page inside the board that carries 15 of its 25 rows: ten postings
+        # lost are not churn
+        rows, exc = go({at(0): page([row(n) for n in range(1, 26)], total=60),
+                        at(25): page([row(n) for n in range(26, 41)], total=60, first=26),
+                        at(50): page([row(n) for n in range(51, 61)], total=60, first=51)},
+                       lambda: ats.fetch_successfactors(SF))
+        if exc is None:
+            errors += fail(f"successfactors: a board stating 60 read as {len(rows or [])} rows, ten short")
+        # THE LAST PAGE MAY BE EMPTIED BY CHURN: a posting or two closing while
+        # the board was read moves it past the end, where the list serves its
+        # newest again - the read stands, inside the slack; a page short does not
+        newest10 = page([row(n) for n in range(1, 11)])
+        for total_, lost, want_ok in ((26, 1, True), (52, 2, True), (60, 10, False)):
+            routes = {at(0): page([row(n) for n in range(1, 26)], total=total_),
+                      at(25): page([row(n) for n in range(26, 51)], total=total_, first=26)
+                      if total_ > 50 else newest10}
+            if total_ > 50:
+                routes[at(50)] = newest10
+            rows, exc = go(routes, lambda: ats.fetch_successfactors(SF))
+            want_n = total_ - lost
+            if want_ok != (exc is None) or (want_ok and len(rows or []) != want_n):
+                errors += fail(f"successfactors: a board stating {total_} whose last page answered with its "
+                               f"newest postings read as {len(rows or [])} rows ({exc}); {lost} closing "
+                               f"{'is' if want_ok else 'is not'} the slack")
+
+        # ---- Gainwell's board as measured (2026-11-22): 334 postings, 14 pages of
+        # 25, 'Results 26 – 50 of 334' on page 2, placeholder places, and a filled
+        # posting answering 200 'Sorry, this position has been filled.' -----------
+        gw = {at(k * 25): page([row(n) for n in range(k * 25 + 1, min(k * 25 + 26, 335))], total=334,
+                               first=k * 25 + 1) for k in range(14)}
+        if "Results <b>26 – 50</b> of <b>334</b>" not in gw[at(25)] \
+                or "Results <b>326 – 334</b> of <b>334</b>" not in gw[at(325)]:
+            errors += fail("successfactors: the Gainwell fixture's labels are not the measured shape")
+        rows, exc = go(gw, lambda: ats.fetch_successfactors(SF))
+        if exc or len(rows or []) != 334 or sent != [at(k * 25) for k in range(14)] \
+                or any(r["location"] != "TX, US" for r in rows or []) or set(robots_asked) != set(sent):
+            errors += fail(f"successfactors: Gainwell's measured board read as {len(rows or [])} rows from "
+                           f"{len(sent)} list pages: {exc}")
+
         # ---- the date, in the three forms measured and no other ---------------
         for lang, when, want in (("en-US", "Nov 20, 2026", "2026-11-20"),
                                  ("en-US", "Nov 6, 2026", "2026-11-06"),
@@ -20564,20 +20713,6 @@ def check_successfactors_reads_its_career_site() -> int:
 
         # ---- the probe ---------------------------------------------------------
         seven = page([row(n) for n in range(1, 8)], total=7)
-
-        def board(listing, orgs, more=None):
-            # (orgs: each posting's employer - None for no meta, a list for
-            # several, a raw page or a (status, location) answer; `more`
-            # routes are laid over them)
-            routes = {at(0): listing}
-            for n, org in orgs.items():
-                routes[SF + job(n)] = org if isinstance(org, tuple) or (
-                    isinstance(org, str) and org.startswith("<html")) else posting(org)
-            routes.update(more or {})
-            return routes
-
-        def every(n_, org="Acme Gov LLC", **but):
-            return {k: but.get(f"p{k}", org) for k in range(1, n_ + 1)}
         agree = board(seven, every(7))
         got = said(agree)
         asked_n = sum(1 for u in sent if "/job/" in u)

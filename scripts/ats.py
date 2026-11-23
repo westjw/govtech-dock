@@ -4084,11 +4084,39 @@ def _sf_row(cell: str, origin: str, lang: str) -> dict | None:
             "posted": _sf_day(when or "", lang)}
 
 
-def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | None]:
+_SF_NUMBER = r"([0-9]{1,3}(?:[.,\u00a0\u202f]?[0-9]{3})*)"
+_SF_RANGE = re.compile(rf"\s*{_SF_NUMBER}\s*[-\u2010-\u2015]\s*{_SF_NUMBER}\s*")
+_SF_TOTAL = re.compile(rf"\s*{_SF_NUMBER}\s*")
+
+
+def _sf_total(bold: list[str], offset: int, n: int) -> int | None:
+    """The board's total from its pagination label's bold parts, or None.
+    THE LABEL IS A RANGE AND A TOTAL ('Results <b>1 – 25</b> of <b>334</b>',
+    'Ergebnisse ... von', 'Resultados ... de'), believed only when the range
+    is this page's: it starts at the row after `offset`, it spans the page's
+    own `n` rows, and the total reaches its end. Any other shape - 'Page
+    <b>1</b> of <b>25</b>', three bold parts, the total written first, a
+    total of 0 beside the page's rows - is no total, so a part of a board is
+    never read as the whole of it (eighth blind review, 2026-11-22)."""
+    if len(bold) != 2:
+        return None
+    span = _SF_RANGE.fullmatch(html_lib.unescape(bold[0]))
+    said = _SF_TOTAL.fullmatch(html_lib.unescape(bold[1]))
+    if not span or not said:
+        return None
+    a, b, total = (int(re.sub(r"[^0-9]", "", x)) for x in (span.group(1), span.group(2), said.group(1)))
+    if a != offset + 1 or b - a + 1 != n or total < b or total > 9_999_999:
+        return None
+    return total
+
+
+def successfactors_list(page: str, origin: str, offset: int = 0) -> tuple[int, list[dict], int | None]:
     """(how many posting rows one list page carries, the postings on it, the
     total the board states) - read off the page as a reader sees it (_cut): a
     row in a comment, a script or a template is not a row. Each row runs to its
-    </tr>, or to the next row where one is left unclosed."""
+    </tr>, or to the next row where one is left unclosed. `offset` is the row
+    the page was asked from (startrow): its label's range must start after it
+    (_sf_total)."""
     body = _cut(page or "")
     said = _SF_LANG.search(body[:20000])
     lang = said.group(1).lower() if said else ""
@@ -4103,8 +4131,8 @@ def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | 
         row = _sf_row(body[m.end():min(tr, nxt) if tr >= 0 else nxt], origin, lang)
         if row:
             rows.append(row)
-    # the total: the pagination label's second <b> ('Results <b>1 – 25</b> of
-    # <b>334</b>'; 'Ergebnisse ... von', 'Resultados ... de' in German and Spanish)
+    # the total: the pagination label's range and total, read together
+    # (_sf_total: 'Results <b>1 – 25</b> of <b>334</b>', in any of its languages)
     total = None
     for m in _SF_LABEL.finditer(body):
         if "paginationlabel" not in m.group(1).lower() \
@@ -4112,8 +4140,7 @@ def successfactors_list(page: str, origin: str) -> tuple[int, list[dict], int | 
             continue
         end = low.find("</span>", m.end())
         bold = _SF_BOLD.findall(body[m.end():end if 0 <= end < m.end() + 600 else m.end() + 600])
-        digits = re.sub(r"[^0-9]", "", bold[1]) if len(bold) >= 2 else ""
-        total = int(digits) if digits and len(digits) <= 7 else None
+        total = _sf_total(bold, offset, len(starts))
         break
     return len(starts), rows, total
 
@@ -4143,6 +4170,12 @@ def successfactors_board(ref) -> tuple[str, str, list[dict], int, int | None]:
     return origin, page, rows, n, total
 
 
+# How many rows a read may come up short of what the board's list carries: a
+# posting or two that closed while it was read (each closing moves every later
+# row up one, past the page boundary), or a row or two that gave no posting.
+SF_SLACK = 2
+
+
 def successfactors_walk(origin: str, first: list[dict], n: int, total: int | None) -> list[dict]:
     """Every posting on the list from its first page on, stepping by that
     page's own row count, each posting once.
@@ -4153,37 +4186,59 @@ def successfactors_walk(origin: str, first: list[dict], n: int, total: int | Non
     posting - empty, page 1 again, the board's past-the-end list of its
     newest postings served in the middle - means the read went wrong, and
     the rows so far are part of the board, not the board: an AtsError. So is
-    a read that reaches the total more than a page short of it, and so is
-    the ceiling with or without a total. With no total, a page that adds
+    a read that reaches the total more than SF_SLACK rows short of it, and so
+    is the ceiling with or without a total. With no total, a page that adds
     nothing is the end (past its end Gainwell's list shows its newest
-    postings again)."""
-    rows, seen = [], set()
+    postings again).
+
+    THE SLACK IS FOR CHURN, AND IT IS A ROW OR TWO (eighth blind review,
+    2026-11-22). It was a page: 24 of 25 rows that gave no posting - a title
+    link off the site, an empty title, a path that does not say plainly
+    where it goes - vanished inside it without a word. Every page's rows
+    that gave no posting are counted, and more than SF_SLACK of them in one
+    read is an AtsError. The LAST page inside the total may add nothing -
+    the postings that closed while the board was read moved it past the
+    end, where the list serves its newest again - and the read is still
+    held to the total. A total below page 1's own rows is no total: the
+    walk never returns fewer rows than page 1 carried."""
+    if total is not None and total < n:
+        total = None
+    rows, seen, unread = [], set(), 0
     for i in range(SF_MAX_PAGES):
         offset = i * n
         if total is not None and offset >= total:
-            if len(rows) < total - n:
-                raise AtsError(f"{origin}'s list states {total} postings and its pages carried "
-                               f"{len(rows)}: read in part, so not read")
-            return rows
+            break
         if i == 0:
-            got = first
+            k, got = n, first
         else:
             url = successfactors_list_url(origin, offset)
-            got = successfactors_list(_page(url, same_host=True, may=_sf_hop(url, offset)).text
-                                      or "", origin)[1]
+            k, got, _t = successfactors_list(_page(url, same_host=True, may=_sf_hop(url, offset)).text
+                                             or "", origin, offset)
+        unread += max(0, k - len(got))
+        if unread > SF_SLACK:
+            raise AtsError(f"{origin}'s list carried {unread} rows that gave no posting (a title link "
+                           f"off the site or to no posting, an empty title, an address that does not "
+                           f"say plainly where it goes): read in part, so not read")
         fresh = []
         for r in got:
             if r["url"] not in seen:
                 seen.add(r["url"])
                 fresh.append(r)
         if not fresh:
-            if total is not None:
+            if total is None:
+                return rows
+            if offset + n < total:
                 raise AtsError(f"{origin}'s list page from row {offset + 1} added no posting, and "
                                f"the list states {total}: read in part, so not read")
-            return rows
+            break                       # the last page, moved past the end while it was read
         rows.extend(fresh)
-    raise AtsError(f"{origin}'s list did not end within {SF_MAX_PAGES} pages ({len(rows)} postings"
-                   f"{f' of {total}' if total is not None else ''}): read in part, so not read")
+    else:
+        raise AtsError(f"{origin}'s list did not end within {SF_MAX_PAGES} pages ({len(rows)} postings"
+                       f"{f' of {total}' if total is not None else ''}): read in part, so not read")
+    if len(rows) < total - SF_SLACK:
+        raise AtsError(f"{origin}'s list states {total} postings and its pages carried "
+                       f"{len(rows)}: read in part, so not read")
+    return rows
 
 
 def successfactors_posting(url: str, origin: str) -> str:

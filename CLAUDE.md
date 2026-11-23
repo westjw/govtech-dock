@@ -3214,18 +3214,30 @@ review and the owner's word, through the wiring door.
   (`same_host`) and asked of robots.txt, which allows /search/, /go/ and /job/
   on every CSB host read and closes /services/. It is paged by page 1's own
   row count (`ats.successfactors_walk`), and an offset at or past the total
-  its pagination label states ("Results <b>1 – 25</b> of <b>334</b>", the
-  second number, in any of its languages) is not asked. **A read short of
-  that total is an error, never the board** (seventh blind review,
-  2026-11-22): a page inside it that adds no posting (empty, page 1 again,
-  the past-the-end list served in the middle, rows with no posting link), a
-  read that reaches the total more than a page short of it, and the 80-page
-  ceiling with or without a total; a hop from page N that drops its
-  startrow is refused before it is asked. Past its end the list says "no
-  open positions matching" and shows the board's 10 most recent postings
-  again (Gainwell, 2026-11-22), so a board with no label stops on the page
-  that adds nothing. One posting closing mid-read costs one row, as offset
-  paging always has.
+  its pagination label states is not asked. **The label is a range and a
+  total** ("Results <b>1 – 25</b> of <b>334</b>", in any of its languages),
+  believed only when it is exactly those two bold parts and the range is the
+  page's own: it starts at the row after the page's startrow, spans the
+  page's rows, and the total reaches its end (`ats._sf_total`, eighth blind
+  review). Any other shape - 'Page 1 of 25', three bold parts, the total
+  first, a total of 0 beside the page's rows - is no total, so part of a
+  board is never read or stated as the whole of it; a total below page 1's
+  rows is none either, and the walk never returns fewer rows than page 1
+  carried. **A read short of that total is an error, never the board**
+  (seventh blind review, 2026-11-22): a page inside it that adds no posting
+  (empty, page 1 again, the past-the-end list served in the middle), a read
+  that reaches the total more than `SF_SLACK` (2) rows short of it, more than
+  2 rows in one read that gave no posting (a title link off the site, an
+  empty title, an address that does not say plainly where it goes - counted
+  on every page, eighth blind review: the slack was a page, and 24 of 25 such
+  rows vanished inside it), and the 80-page ceiling with or without a total;
+  a hop from page N that drops or changes its startrow is refused before it
+  is asked. Past its end the list says "no open positions matching" and
+  shows the board's 10 most recent postings again (Gainwell, 2026-11-22), so
+  a board with no label stops on the page that adds nothing. A posting or
+  two closing mid-read cost a row each, as offset paging always has, and may
+  move the last page past the end: that page adding nothing is not an error,
+  and the read is still held to the total.
 - **A row** is a `<tr class="data-row">` the page shows (read through
   `ats._cut`: a commented-out or script-held row is none): its first titled
   `jobTitle-link` to a /job/ page on the site - written twice, for a desk and
