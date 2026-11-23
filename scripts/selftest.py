@@ -36457,6 +36457,43 @@ def check_embedded_wiring() -> int:
                   f"words do not say why: clean {[e['id'] for e in clean]}, said {said!r}, "
                   f"wanted {want!r}")
             errors += 1
+    # ...and BOTH HALVES OF "WHOLE", and the conflict branch's words (review 9's
+    # door verifier, 2026-11-23: each could be changed with every door check
+    # passing). A record known by its tenant's name but by no /All/ id (at
+    # /List/2140/Acme-Inc, no note) beside a row at a bare /All/<uuid> is not
+    # whole, so it IS told to be put on file by its whole address; and a record
+    # whose ids agree on one kind and disagree on the other is told nothing it
+    # cannot use, whole or not (a bare /List/2115 whose note keeps a bare
+    # /All/<u1>, beside a row on /List/2115/X-Inc whose page states
+    # /All/<u2>/X-Inc).
+    ua14, ub14, uc14 = ("5b1c2d3e-0000-4000-8000-000000000951",
+                        "5b1c2d3e-0000-4000-8000-000000000952",
+                        "5b1c2d3e-0000-4000-8000-000000000953")
+    for label, rec, row_ref, row_page, want_tail in (
+            ("a /List/ record with a tenant's name and no /All/ id",
+             {"type": "paylocity", "ref": pl_ + "List/2140/Acme-Inc"}, f"All/{ua14}", None,
+             " - put on file by its whole /jobs/All/<uuid>/<Tenant> address, it can be "
+             "compared"),
+            ("ids that agree on one kind and not the other, the record not whole",
+             {"type": "paylocity", "ref": pl_ + "List/2115"}, "List/2115/X-Inc",
+             f"All/{uc14}/X-Inc", ": their ids agree on one kind and disagree on the other")):
+        by14 = {"rec14": {"id": "rec14", "name": "Rec Co", "ats": rec,
+                          **({"ats_note": f"wired 2026-11-20: its own page states its address is "
+                                          f"{pl_}All/{ub14}; 3 postings read"}
+                             if row_page else {})},
+                "row14-co": {"id": "row14-co", "name": "Row14 Co", "ats": {"type": "html"}}}
+        rows14 = [{"id": "row14-co", "name": "Row14 Co", "identity": "matches",
+                   "found": {"type": "paylocity", "ref": pl_ + row_ref},
+                   **({"page_ref": pl_ + row_page} if row_page else {})}]
+        clean, _mm, refused = w.triage(rows14, by14, held={}, boards=nobody)
+        said = str(w.board_on_file(rows14[0], by14, rows14, nobody))
+        want = (f"Rec Co reads a Paylocity board that this one cannot be told apart from "
+                f"({rec['ref']}){want_tail}")
+        if clean or [e["id"] for e in refused] != ["row14-co"] or said != want:
+            print(f"  FAIL: {label}: wire_embedded's words for a record beside a row its "
+                  f"addresses cannot tell apart are not the door's: clean "
+                  f"{[e['id'] for e in clean]}, said {said!r}, wanted {want!r}")
+            errors += 1
     # A WORKABLE ACCOUNT KNOWN BY ITS NUMBER AND ITS SLUG IS ONE BOARD: a row
     # naming the number of an account a record reads by its slug, the record's
     # note tying the two (board_proposals.ACCOUNT_WORDS), is that record's
