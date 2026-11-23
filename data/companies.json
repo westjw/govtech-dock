@@ -131432,8 +131432,8 @@
     "category": "Benefits & Medicaid Systems",
     "description": "Medicaid MMIS, pharmacy and program integrity systems for states - exhibited at AIRA 2026, Healthcare IT Connect 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.gainwelltechnologies.com/careers"
+      "type": "successfactors",
+      "ref": "https://jobs.gainwelltechnologies.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -131591,7 +131591,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-22 on the owner's word: he named jobs.gainwelltechnologies.com/go/View-All-Jobs/8808000/ as Gainwell's board, Gainwell's own SAP SuccessFactors career site on its own domain; the board names \"Gainwell Technologies LLC\"; 334 postings read",
+    "board_owner": "Gainwell Technologies LLC"
   },
   {
     "id": "optum-serve",
@@ -159851,8 +159853,8 @@
     "category": "Grid & Energy",
     "description": "Customer energy programs, efficiency and DER engagement for utilities - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://uplight.com/careers"
+      "type": "jobvite",
+      "ref": "uplight"
     },
     "hiring": {
       "status": "Unknown",
@@ -159879,7 +159881,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-22: uplight.com/careers links to the board (seen 2 times); the board names \"Uplight\"; 5 postings read"
   },
   {
     "id": "bidgely",
@@ -179311,8 +179314,8 @@
     "category": "Broadband & Connectivity",
     "description": "Speed test and broadband coverage data licensed to broadband offices and regulators",
     "ats": {
-      "type": "html",
-      "ref": "https://jobs.jobvite.com/ookla"
+      "type": "jobvite",
+      "ref": "ookla"
     },
     "hiring": {
       "status": "Yes",
@@ -179335,7 +179338,8 @@
     "sells_to_gov": "yes",
     "buyer_source": "https://www.ookla.com/solutions/governments-regulators",
     "buyer_checked_on": "2026-09-11",
-    "scope_note": "WebFetch is blocked on ookla.com (repeated \"unable to fetch\"), so I read the homepage, /solutions/governments-regulators and /solutions/education by direct HTTP fetch of the same pages. The government page is written for policy setters: \"pinpoint unserved and underserved areas for broadband and mobile investment,\" \"use crowdsourced data to secure grants or challenge funding decisions\" - which in the US is state broadband office work, though the page names no individual state, city or agency by name. The Education page explicitly says \"From K-12 classrooms to large university campuses.\" Commerc"
+    "scope_note": "WebFetch is blocked on ookla.com (repeated \"unable to fetch\"), so I read the homepage, /solutions/governments-regulators and /solutions/education by direct HTTP fetch of the same pages. The government page is written for policy setters: \"pinpoint unserved and underserved areas for broadband and mobile investment,\" \"use crowdsourced data to secure grants or challenge funding decisions\" - which in the US is state broadband office work, though the page names no individual state, city or agency by name. The Education page explicitly says \"From K-12 classrooms to large university campuses.\" Commerc",
+    "ats_note": "wired 2026-11-22: ookla.com/about/careers links to the board (seen 2 times); the board names \"Ookla\"; 28 postings read"
   },
   {
     "id": "ready-net",
@@ -227252,8 +227256,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells network visibility software and appliances that feed traffic to security tools, for state and local governments and universities - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://jobs.jobvite.com/gigamon"
+      "type": "jobvite",
+      "ref": "gigamon"
     },
     "hiring": {
       "status": "Yes",
@@ -227271,7 +227275,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: EDUCAUSE 2026",
-    "researched": true
+    "researched": true,
+    "ats_note": "wired 2026-11-22: gigamon.com links to the board (seen 2 times); the board names \"Gigamon\"; 21 postings read"
   },
   {
     "id": "businessolver",

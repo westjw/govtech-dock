@@ -4642,5 +4642,71 @@
    "read_at": "2026-11-21T23:12:07-05:00",
    "page": "https://xpressbillpay.com"
   }
+ },
+ {
+  "id": "absolute-software",
+  "name": "Absolute Software",
+  "was": "html",
+  "found": {
+   "type": "jobvite",
+   "ref": "absolute"
+  },
+  "saw": "https://jobs.jobvite.com/absolute/",
+  "times": 1,
+  "verified": "18 posting(s) readable",
+  "board_calls_itself": "Absolute Security / Absolute Software",
+  "identity": "MISMATCH",
+  "identity_why": "the board states 2 employer names (\"Absolute Security\", \"Absolute Software\") and \"Absolute Security\" is one of them, which is not \"Absolute Software\": a different name, which is what a parent's, an operating entity's or another company's board looks like; https://www.absolute.com/company/careers links to the board",
+  "postings": 18,
+  "titles": [
+   "Business Development Representative, Enterprise",
+   "Marketing Automation Manager",
+   "Partner Program Manager",
+   "Account Executive, Enterprise (Acquisition) - Midwest",
+   "Account Executive, Enterprise (Acquisition) - New York & New Jersey",
+   "Account Executive, Enterprise (Acquisition) - Pacific Northwest & Northern California",
+   "Account Executive, Enterprise - Brazil",
+   "Account Executive, Japan"
+  ],
+  "filed": {
+   "by": "agent:coverage-jobvite-2026-11-22",
+   "on": "2026-11-22",
+   "at": "2026-11-22T21:34:27-05:00",
+   "read_at": "2026-11-22T21:33:04-05:00",
+   "page": "https://www.absolute.com/company/careers"
+  }
+ },
+ {
+  "id": "ninjaone",
+  "name": "NinjaOne",
+  "was": "html",
+  "found": {
+   "type": "greenhouse",
+   "ref": "ninjaone"
+  },
+  "saw": "https://boards.greenhouse.io/embed/job_board/js?for=ninjaone",
+  "times": 1,
+  "verified": "156 posting(s) readable",
+  "board_calls_itself": "NinjaOne",
+  "identity": "unknown",
+  "identity_why": "the board names \"NinjaOne\", which is this company, but their own site also loads jobvite in a form that names no board (jobvite-other): a widget or a link of another account names none either, so which board they hire through today is not settled; https://www.ninjaone.com/careers/job/4512892009/?gh_jid=4512892009 loads the board",
+  "postings": 156,
+  "titles": [
+   "ABM Manager, Public Sector",
+   "Account Executive, Customer Base",
+   "Account Executive, Mid Market Eastern Canada",
+   "Account Executive, Mid Market Midwest",
+   "Account Executive, Mid Market Northern California",
+   "Account Executive, Mid Market Pennsylvania/New Jersey",
+   "Account Executive, Mid Market Southeast",
+   "Account Executive, MSP"
+  ],
+  "filed": {
+   "by": "agent:coverage-jobvite-2026-11-22",
+   "on": "2026-11-22",
+   "at": "2026-11-22T21:34:27-05:00",
+   "read_at": "2026-11-22T21:33:27-05:00",
+   "page": "https://www.ninjaone.com/careers/job/4512892009/?gh_jid=4512892009"
+  }
  }
 ]
