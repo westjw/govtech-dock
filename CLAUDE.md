@@ -2779,13 +2779,15 @@ round.
   slug moved the owner's queued row, his refusal and a record on the number
   off the slug the file pairs it with, and a row flipped to WIRE beside them
   was wired, the look a plain WIRE line). And a row waiting for a company
-  under such a number is NEITHER board: the find is held, both slugs said
-  ("... the file opens Workable account N under apply.workable.com/<a>, and
-  this run followed that number to apply.workable.com/<b>, so which board
-  the row is cannot be told"), and apply leaves a row flipped to WIRE beside
-  it alone in those words wherever the worklist's `workable_numbers` opens
-  the number under another slug than the pair on file - that word holds,
-  and never clears (`wire_found.number_split`; review 11, 2026-11-23: the
+  under such a number is taken for NEITHER board: the find is held, both
+  slugs said ("... the file opens Workable account N under
+  apply.workable.com/<a>, and this run followed that number to
+  apply.workable.com/<b>, so which board the row is cannot be told"), and
+  apply leaves a row flipped to WIRE beside it alone, naming both too ("...
+  and the worklist says the plan followed that number to ..."), wherever the
+  worklist's `workable_numbers` opens the number under another slug than the
+  pair on file - that word holds, and never clears
+  (`wire_found.number_split`; review 11, 2026-11-23: the
   waiting-row test took the file's slug alone, so an older finder's row
   under 730730, whose words open it under wkco, was taken for wkco's very
   board while the run followed 730730 to zzz for another company, and the
@@ -2833,8 +2835,9 @@ round.
   and nothing on file opening it under another - always of the row's own
   board, which the record then holds. The account CLEARS NOTHING: a row
   waiting for the company under the number is taken for this very board
-  only where a pair on file opens that number under this slug and the run
-  followed it to no other (`number_split`, above), never on the
+  only where a pair on file opens that number under this slug and nothing
+  the run followed opens it under another (`number_split`, above: in apply
+  the worklist's word may hold it, never clear it), never on the
   worklist's `workable_numbers`, the row's `account` or check 1's sighting,
   each of which an edit writes (review 10, 2026-11-23: the repair of review
   9 took such a row on the three, and with `check_1.saw` edited too the
