@@ -3014,7 +3014,9 @@ round.
   first character other than a letter, a digit, _, . or -, a last "."
   stripped): names that are not one spelling but alike in that form, or the
   one the start of the other, are "unknown" and hold the board, never
-  "apart" (`paylocity_near_names`; "spelt" beside a record) - the finder's
+  "apart" (`paylocity_near_names`; "spelt" beside a record; a name the
+  finder cannot write at all, "(US)-Acme", is the start of nothing, or one
+  such record would hold every board) - the finder's
   /List/2140/Acme- and a page's /All/<uuid>/Acme-(US),-Inc were two
   strings, and the door wired past a filed row and a record of the board
   (eighth blind review, 2026-11-22); a record known by its whole address is
