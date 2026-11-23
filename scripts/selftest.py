@@ -41256,32 +41256,55 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
     # /All/ id put in front of a person for another company since the plan, or
     # put on file, leaves the row alone to plan again (seventh blind review,
     # 2026-11-22: unpinned, and without "tenant" apply wired each)
+    # ...and a record put on file since the plan whose ids agree with the row's
+    # board on one kind and disagree on the other: left alone, said as that,
+    # never "carries no such name" (eighth blind review, 2026-11-22: unpinned -
+    # without "conflict" apply wired the row, one /List/ board on two records,
+    # and with the relation unsplit it said what is false)
     ALL_TZ, ALL_TZ2 = pall(0x95b, "Tz-Inc"), pall(0x95c, "Tz-Inc")
     ALL_TQ, ALL_TQ2 = pall(0x95d, "Tq-Inc"), pall(0x95e, "Tq-Inc")
+    LIST_CQ, LIST_CQ_T = plist(2159), plist(2159, "Cq-Inc")
+    ALL_CQ_OLD, ALL_CQ = pall(0x96a), pall(0x96b, "Cq-Inc")
     with _WiringBox([co("tz-co", "Tz Co"), co("tz-other", "Tz Other"),
-                     co("tq-co", "Tq Co"), co("tq-holder", "Tq Holder")],
+                     co("tq-co", "Tq Co"), co("tq-holder", "Tq Holder"),
+                     co("cq-co", "Cq Co"), co("cq-holder", "Cq Holder")],
                     {f"paylocity/{ALL_TZ}": (3, ["Tz Co"]),
-                     f"paylocity/{ALL_TQ}": (3, ["Tq Co"])}) as box:
+                     f"paylocity/{ALL_TQ}": (3, ["Tq Co"]),
+                     f"paylocity/{LIST_CQ_T}": (3, ["Cq Co"])},
+                    says={f"paylocity/{LIST_CQ_T}": {"address": ALL_CQ}}) as box:
         code, text, wl_tz, rows_tz = box.plan(_wb_results({
             "tz-co": names("tz-co", "paylocity", ALL_TZ),
-            "tq-co": names("tq-co", "paylocity", ALL_TQ)}), name="worklist-tz.json")
+            "tq-co": names("tq-co", "paylocity", ALL_TQ),
+            "cq-co": names("cq-co", "paylocity", LIST_CQ_T)}), name="worklist-tz.json")
         expect(rows_tz, "tz-co", "WIRE")
         expect(rows_tz, "tq-co", "WIRE")
+        expect(rows_tz, "cq-co", "WIRE")
         (box.tmp / bp.PROPOSALS).write_text(json.dumps(
             proposal("tz-other", "Tz Other", ALL_TZ2, status="pending")))
-        box.by_hand(lambda by_id, cs: by_id["tq-holder"].update(
-            ats={"type": "paylocity", "ref": ALL_TQ2}))
-        code, text, _ = box.look(wl_tz)
+        box.by_hand(lambda by_id, cs: (
+            by_id["tq-holder"].update(ats={"type": "paylocity", "ref": ALL_TQ2}),
+            by_id["cq-holder"].update(
+                ats={"type": "paylocity", "ref": LIST_CQ},
+                ats_note=f"wired 2026-11-20: its own page states its address is {ALL_CQ_OLD}")))
+        code, text, look_tz = box.look(wl_tz)
         body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
         for cname, must in (("Tz Co", "end in one Paylocity tenant's name (tz-inc) under two ids "
                                       "of one kind that differ"),
-                            ("Tq Co", "1 record on file reads a Paylocity board that ends in")):
+                            ("Tq Co", "1 record on file reads a Paylocity board that ends in"),
+                            ("Cq Co", f"1 record on file reads a Paylocity board whose ids agree "
+                                      f"with paylocity/{LIST_CQ_T}'s on one kind and disagree on "
+                                      f"the other (Cq Holder at {LIST_CQ[8:]})")):
             line = next((ln for ln in body.splitlines() if ln.strip().startswith(cname + " ")),
                         "")
-            if must not in line or "plan again" not in line:
+            if must not in line or "plan again" not in line or "carries no such name" in line:
                 errors += fail(f"{cname}: a WIRE row of one tenant's name under another /All/ id "
-                               f"than a hold or a record put on file since the plan was not left "
-                               f"alone to plan again: {line[:300]!r} {text[-300:]!r}")
+                               f"than a hold or a record put on file since the plan, or of ids "
+                               f"that agree on one kind and disagree on the other, was not left "
+                               f"alone to plan again, saying so: {line[:300]!r} {text[-300:]!r}")
+        box.write(wl_tz, look_tz)
+        if (box.record("cq-co").get("ats") or {}).get("type") != "html":
+            errors += fail(f"cq-co: wired beside a record whose ids agree with its board's on one "
+                           f"kind and disagree on the other: {box.record('cq-co').get('ats')!r}")
 
     # (7) A /List/ FIND OF A BOARD REFUSED FOR THIS COMPANY UNDER ANOTHER RECORD,
     # the List id agreeing, is neither read nor asked for its page: consider
