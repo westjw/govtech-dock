@@ -3664,8 +3664,14 @@ review and the owner's word, through the wiring door.
   the runner's temp directory, never committed), a Unify read that comes
   whole is kept there (`ats.UNIFY_NIGHT`), and the build step's read of that
   board is it, asking nothing - Octave 265 a night with robots.txt. A read
-  that fails keeps nothing, so the build step asks for itself (a failing
-  night costs up to two reads); one older than `UNIFY_NIGHT_MAX_AGE` (6h,
+  that fails keeps nothing, so the build step asks for itself, and **a
+  failing night costs up to about four reads** (blind review 11, 2026-11-23:
+  these words said up to two): refresh asks the board once more on a 429,
+  build_board on a 429 or the network, and each read asks its failing
+  posting twice, so a lasting 429 costs up to about four reads (Octave about
+  1,060 requests, eight a posting), a lasting network failure about three,
+  and a 5xx about two - less where the failing posting comes early in the
+  sitemap, as the read stops there; one older than `UNIFY_NIGHT_MAX_AGE` (6h,
   past the job's 5h), or made without the ads a caller wants, is asked
   again; with no file named (any run but the nightly) each read asks for
   itself. scope_review.py's read of a company with openings nobody has

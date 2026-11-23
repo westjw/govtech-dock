@@ -22639,6 +22639,49 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     errors += fail(f"successfactors unify: a read refused with {why} was kept for the night, "
                                    f"or the build step did not ask for itself (asked {len(then_asked)}): "
                                    f"{jobs!r}")
+            # A FAILING NIGHT'S COST, as CLAUDE.md states it (blind review 11,
+            # 2026-11-23: it said "up to two reads", and the owner's yes was
+            # to the cost): a read that fails keeps nothing, so the build step
+            # asks for itself; refresh asks a 429 once more, build_board's
+            # read_board (its own code, run here) a 429 or the network,
+            # neither a 5xx; and each read asks its failing posting twice.
+            # Measured on a sitemap of twenty, the last posting failing all
+            # night
+            import ast
+            node_ = next((n_ for n_ in ast.walk(ast.parse((ROOT / "scripts" / "build_board.py").read_text()))
+                          if isinstance(n_, ast.FunctionDef) and n_.name == "read_board"), None)
+            if node_ is None:
+                errors += fail("successfactors unify: build_board.py has no read_board to measure a night by")
+            else:
+                space_ = {"ats": ats, "time": type("NoWait", (), {"sleep": staticmethod(lambda s_: None)})}
+                exec(compile(ast.Module(body=[node_], type_ignores=[]), "build_board.py", "exec"), space_)
+                twenty = [plain(n, posting(f"Role {n}")) for n in range(1, 21)]
+                a_read = 2 + 2 * len(twenty)
+                for answer, why, reads in (((429, None), "a lasting 429", 4),
+                                           (ats.requests.ConnectionError("connection refused"),
+                                            "a lasting network failure", 3),
+                                           ((503, None), "a lasting 5xx", 2)):
+                    night_file.unlink(missing_ok=True)
+                    sent.clear(), robots_asked.clear(), shut.clear()
+                    ats.requests.get = web(site(twenty, more={hop(20): answer}))
+                    with contextlib.redirect_stderr(io.StringIO()):
+                        res = refresh.check_company(comp_)
+                        built_ = space_["read_board"](comp_)
+                    if res.get("status") != "Unknown" or built_[1] or built_[2] is None or night_file.exists() \
+                            or round(len(sent) / a_read) != reads:
+                        errors += fail(f"successfactors unify: {why} on the last of twenty postings cost the "
+                                       f"night {len(sent)} requests, {len(sent) / a_read:.2f} reads of "
+                                       f"{a_read}, not about {reads} as CLAUDE.md says (refresh {res}, the "
+                                       f"build {built_[2]!r})")
+                said_ = " ".join((ROOT / "CLAUDE.md").read_text().split())
+                for words_ in ("a lasting 429 costs up to about four reads", "a lasting network failure about "
+                               "three", "and a 5xx about two"):
+                    if words_ not in said_:
+                        errors += fail(f"successfactors unify: CLAUDE.md does not say what a failing night costs "
+                                       f"as measured ({words_!r})")
+                if "a failing night costs up to two reads" in said_:
+                    errors += fail("successfactors unify: CLAUDE.md still says a failing night costs up to two "
+                                   "reads")
             for when, why in ((dt.timedelta(hours=7), "older than the run"),
                               (dt.timedelta(hours=-1), "dated ahead")):
                 night_file.write_text(json.dumps({SF: {"read_at": (ats._utcnow() - when).isoformat(),

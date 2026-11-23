@@ -4491,10 +4491,14 @@ def fetch_successfactors(ref) -> list[dict]:
 # directory: never committed, gone with the run): a Unify read that comes
 # whole is written there, and a later read of that board in the same run,
 # within UNIFY_NIGHT_MAX_AGE, is that one, asking nothing. A read that fails
-# writes nothing, so the next step asks for itself; a read made without the
-# ads a caller wants (FETCH_DETAILS) is asked again. Other reads on a day -
-# scope_review.py's, of a company with openings nobody has ruled on; a
-# person's - are their own. The sitemap is held to SF_SITEMAP_MAX addresses
+# writes nothing, so the next step asks for itself: refresh asks a 429 once
+# more, build_board a 429 or the network, and each read asks its failing
+# posting twice, so a failing night costs up to about four reads on a
+# lasting 429, three on a lasting network failure, two on a 5xx (blind
+# review 11, 2026-11-23). A read made without the ads a caller wants
+# (FETCH_DETAILS) is asked again. Other reads on a day - scope_review.py's,
+# of a company with openings nobody has ruled on; a person's - are their
+# own. The sitemap is held to SF_SITEMAP_MAX addresses
 # (a cap on requests, not roles) and a sitemap index to one level of
 # SF_SITEMAPS_MAX sitemaps on the site's own origin.
 #
