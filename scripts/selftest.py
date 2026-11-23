@@ -20270,6 +20270,11 @@ def check_successfactors_reads_its_career_site() -> int:
     # one sentence (Gainwell's, measured 2026-11-22)
     filled = ('<html><head><title>Role Job Details | Acme Gov LLC</title></head><body>'
               '<p>Sorry, this position has been filled.</p></body></html>')
+    # ...and what a block page served 200 answers there (F5's): no posting,
+    # and nothing of the site's saying it closed
+    blocked = ('<html><head><title>Request Rejected</title></head><body>The requested URL was '
+               'rejected. Please consult with your administrator.<br><br>Your support ID is: 1234'
+               '</body></html>')
 
     sent, robots_asked = [], []
 
@@ -20700,6 +20705,34 @@ def check_successfactors_reads_its_career_site() -> int:
         if exc is None or rows is not None or "every one of the 7" not in str(exc):
             errors += fail(f"successfactors: with details on, a list whose every posting has closed read "
                            f"as {rows!r}, not an error: {exc}")
+        # ...and a posting whose page shows no posting and is not the site saying
+        # it closed - a block page served 200, a hop anywhere but the list - is
+        # kept as the list states it, not said closed, and the hop not followed
+        # (eighth blind review, repaired 2026-11-22: five open postings of seven
+        # answering a block page were dropped as closed)
+        tspd_ = SF + "/TSPD/?type=20"
+        routes = {at(0): page([row(n) for n in range(1, 6)], total=5), SF + job(1): posting(),
+                  SF + job(2): blocked, SF + job(3): (302, tspd_), SF + job(4): filled,
+                  SF + job(5): (302, SF + "/"), tspd_: blocked}
+        said_ = io.StringIO()
+        ats.FETCH_DETAILS = True
+        with contextlib.redirect_stderr(said_):
+            rows, exc = go(routes, lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        kept = sorted(int(r["url"].rstrip("/").rsplit("/", 1)[-1]) - 1400000000 for r in rows or [])
+        if exc or kept != [1, 2, 3, 5] or "1 of the 5 postings" not in said_.getvalue() \
+                or tspd_ in sent + robots_asked or SF + "/" in sent:
+            errors += fail(f"successfactors: with details on, the postings kept are {kept}, not 1, 2, 3 "
+                           f"and 5 (only 4's page says it closed), or a block page was said closed "
+                           f"({said_.getvalue().strip()!r}), or a hop off the posting was followed: {exc}")
+        ats.FETCH_DETAILS = True
+        with contextlib.redirect_stderr(io.StringIO()):
+            rows, exc = go(dict(routes, **{SF + job(k): blocked for k in range(1, 6)}),
+                           lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        if exc or len(rows or []) != 5:
+            errors += fail(f"successfactors: with details on, a list every one of whose postings "
+                           f"answered a block page read as {len(rows or [])} rows, not its 5: {exc}")
 
         # ---- the date, in the three forms measured and no other ---------------
         for lang, when, want in (("en-US", "Nov 20, 2026", "2026-11-20"),
@@ -20975,6 +21008,76 @@ def check_successfactors_reads_its_career_site() -> int:
                 or "none of the" in str(got["how"]):
             errors += fail(f"successfactors probe: postings that all answered 429 were read as the board "
                            f"stating nothing, not as a failure of the day: {got}")
+        # A PAGE THAT SHOWS NO POSTING AND IS NOT THE SITE SAYING IT CLOSED SAYS
+        # NOTHING OF THE POSTING (eighth blind review, repaired 2026-11-22): a
+        # block page served 200, and a hop anywhere but the site's list, were
+        # read as closed - five of seven postings passed over, and the board
+        # stated whole and proven on the other two. Such an answer is the board
+        # unreadable, for a person: never closed, never a failure of the day,
+        # never a name, and the page a hop names is not asked. The wording or
+        # the title only inside a comment is not the site's word either.
+        tspd = SF + "/TSPD/?type=20"
+        hidden_words = ('<html><head><title>Oops</title></head><body><!-- <p>Sorry, this position '
+                        'has been filled.</p> --><p>Error</p></body></html>')
+        hidden_title = ('<html><head><!-- <title>Role Job Details | Acme Gov LLC</title> --></head>'
+                        '<body><p>Error</p></body></html>')
+        for answer, why in ((blocked, "a block page served 200"),
+                            ((302, tspd), "a hop to a challenge page"),
+                            ((302, SF + "/"), "a hop to the site's front page"),
+                            (hidden_words, "the filled wording only inside a comment"),
+                            (hidden_title, "a posting's title only inside a comment")):
+            for many_ in ((5,), (3, 4, 5, 6, 7)):
+                got = said(board(seven, every(7, **{f"p{k}": answer for k in many_}), {tspd: seven}))
+                if got["stated"] or got["names"] or got["failed"] != "unreadable" \
+                        or got["transient"] is not False or "answered as closed" in str(got["how"]) \
+                        or tspd in sent + robots_asked or SF + "/" in sent \
+                        or vb.proven({"name": "Acme Gov"}, got)["ok"]:
+                    errors += fail(f"successfactors probe: {len(many_)} of seven postings answering "
+                                   f"{why} were read as closed, as a failure of the day or as naming "
+                                   f"somebody, or the page it named was asked: {got}")
+        # the site saying so is either half of Gainwell's closed page: the
+        # posting's own title, or the filled wording (through a tag)
+        title_only = ('<html><head><title>Role 4 Job Details | Acme Gov LLC</title></head><body>'
+                      '<p>This job is no longer available.</p></body></html>')
+        words_only = ('<html><head><title>Acme Gov LLC Jobs</title></head><body>'
+                      '<p>Sorry, this <b>position</b> has been filled.</p></body></html>')
+        for closing, why in ((title_only, "titled as the site titles a posting"),
+                             (words_only, "saying the position has been filled")):
+            got = said(board(seven, every(7, p4=closing)))
+            if not got["stated"] or got["failed"] or got["transient"] \
+                    or "1 more on its list answered as closed" not in str(got["how"]):
+                errors += fail(f"successfactors probe: the site's own page {why} was not read as the "
+                               f"posting closed: {got}")
+        gw_closed = ('<html><head><title>Provider Enrollment Specialist - Jackson, MS (Onsite) Job Details'
+                     ' | Gainwell Technologies LLC</title></head><body><p>Sorry, this position has been '
+                     'filled.</p></body></html>')
+        for page_, want, why in ((gw_closed, True, "Gainwell's closed page as measured"),
+                                 (posting(), False, "a page showing the posting"),
+                                 (blocked, False, "a block page"), (hidden_words, False, "words in a comment"),
+                                 (hidden_title, False, "a title in a comment")):
+            if ats.successfactors_filled(page_) is not want:
+                errors += fail(f"successfactors: {why} read as the site saying the posting has closed: "
+                               f"{not want}, not {want}")
+        # A BOARD IS STATED WHOLE ONLY WITH AT MOST SF_SLACK OF ITS POSTINGS
+        # CLOSED, the churn the walk allows; more is a list carrying postings
+        # that name nobody - the names kept for the desk, the board not stated
+        for shut, ok in (((2, 6), True), ((2, 4, 6), False)):
+            got = said(board(seven, every(7, **{f"p{k}": filled for k in shut})))
+            if bool(got["stated"]) is not ok or got["names"] != ["Acme Gov LLC"] or got["failed"] \
+                    or got["transient"] or vb.proven({"name": "Acme Gov"}, got)["ok"] is not ok \
+                    or (not ok and f"more than {ats.SF_SLACK} closed" not in str(got["how"])):
+                errors += fail(f"successfactors probe: a board of seven with {len(shut)} postings closed "
+                               f"was {'not ' if ok else ''}stated whole: {got}")
+        # ...and every posting on its list asked: a board stating 40 whose two
+        # pages carry 50 is asked about 40, and not stated for the other ten
+        got = said(board(page([row(n) for n in range(1, 26)], total=40), every(50),
+                         {at(25): page([row(n) for n in range(26, 51)], total=40, first=26)}))
+        if got["stated"] or got["names"] != ["Acme Gov LLC"] \
+                or sum(1 for u in sent if "/job/" in u) != vb.SF_POSTINGS_ASKED \
+                or "of the 50 postings on its list" not in str(got["how"]) \
+                or vb.proven({"name": "Acme Gov"}, got)["ok"]:
+            errors += fail(f"successfactors probe: a board stating 40 whose pages carry 50 was stated "
+                           f"whole on the 40 asked: {got}")
         # one role listed once per language (JENOPTIK's twins) is not one board's statement
         got = said(board(seven, every(7), {SF + job(2): posting(lang="de-DE")}))
         if got["stated"] or got["names"] != ["Acme Gov LLC"] or "language" not in str(got["how"]) \
@@ -21010,6 +21113,7 @@ def check_successfactors_reads_its_career_site() -> int:
                       '<span class="paginationLabel">' * 60000):
             ats.successfactors_list(page([]) + flood, SF)
             ats.successfactors_ad('<span itemprop="description">' + flood)
+            ats.successfactors_filled('<title>' + flood)
         if _time.monotonic() - began > 8:
             errors += fail(f"successfactors: pages of unclosed rows, links and spans took "
                            f"{_time.monotonic() - began:.0f}s: a pattern starts again from every tag")

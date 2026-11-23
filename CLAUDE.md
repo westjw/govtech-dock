@@ -3258,11 +3258,20 @@ review and the owner's word, through the wiring door.
   element, to the close that matches it. CSB has no pay field; a figure in the
   ad's text is plain_rows' text parse, as for every reader. **A posting whose
   own page says it has closed is not published as open** (eighth blind
-  review): a 404 or 410, a hop off /job/, or a 200 page showing no posting
-  ('Sorry, this position has been filled.') drops the row, and the reader
-  says how many on stderr; a refusal, a 429, a 5xx or the network failing
-  says nothing about the posting, and the row stays. A list every one of
-  whose postings answers closed is an error, never a zero.
+  review): a 404 or 410, a hop to the site's list (/search/, not followed),
+  or the site's own page saying so (`ats.successfactors_filled`: a 200 page
+  showing no posting, titled as the site titles a posting - '<role> Job
+  Details | <site>', every en_US posting page measured - or saying "this
+  position has been filled"; Gainwell's closed page, measured 2026-11-22,
+  carries both) drops the row, and the reader says how many on stderr. A
+  refusal, a 429, a 5xx, the network failing, a hop anywhere else off /job/
+  (not followed) and a page that shows no posting and is not the site saying
+  so - a block page served 200 (F5's "The requested URL was rejected"), an
+  error page - say nothing about the posting, and the row stays as the list
+  states it (repaired 2026-11-22: every page showing no posting was read as
+  closed, and five open postings of seven answering a block page were
+  dropped). A list every one of whose postings answers closed is an error,
+  never a zero.
 - **Never a zero.** A first page with no rows is an error: a "Unify" site
   (Aurigo's, Esri Canada's: its list is POST /services/recruiting/v1/jobs,
   which robots.txt closes) says it is one; a classic page with no rows says a
@@ -3278,22 +3287,33 @@ review and the owner's word, through the wiring door.
   employer is a second name, so not proven. **The whole board or nothing**
   (the owner's rule, seventh blind review, 2026-11-22): a board is stated
   only when its label states a total of `SF_POSTINGS_ASKED` (40) or fewer and
-  every posting on it was asked, its list read to the end; a longer board,
-  or one with no total, is asked about its first `SF_POSTINGS_SAMPLED` (5)
-  for the desk and states nothing. So Gainwell's 334 goes to the owner's
-  queue, never wired unattended. `n` is the label's total (`n_is_partial`
-  when a page has none). **A posting that has closed proves nothing either
-  way** - a 404 or 410, a hop off /job/ (not asked), or a 200 page at its
-  address showing no posting: Gainwell's closed ones say only "Sorry, this
-  position has been filled.", measured 2026-11-22. It names nobody for the
-  board and nobody against it: it is passed over, and on a longer board the
-  next posting on page 1 is asked in its place, `SF_POSTINGS_ASKED` (40) in
-  all at most. It is not a failure of the day - it was, and a list that keeps
-  a filled posting answered so every plan, so the board never reached a
-  person (eighth blind review). Where every posting asked answered as
-  closed, the board states nothing and goes to the owner, saying so. A
-  posting answering 401 or 403 is the board refusing, and 429 a failure of
-  the day: neither is a closed posting.
+  every posting on its list was asked, its list read to the end (a list
+  whose pages carry more postings than the 40 asked is not stated either);
+  a longer board, or one with no total, is asked about its first
+  `SF_POSTINGS_SAMPLED` (5) for the desk and states nothing. So Gainwell's
+  334 goes to the owner's queue, never wired unattended. `n` is the label's
+  total (`n_is_partial` when a page has none). **A posting that has closed
+  proves nothing either way** - a 404 or 410, a hop to the site's list (not
+  asked), or the site's own page at its address saying so
+  (`ats.successfactors_filled`, the reader's rule above): Gainwell's closed
+  ones say only "Sorry, this position has been filled.", measured
+  2026-11-22. It names nobody for the board and nobody against it: it is
+  passed over, and on a longer board the next posting on page 1 is asked in
+  its place, `SF_POSTINGS_ASKED` (40) in all at most. It is not a failure of
+  the day - it was, and a list that keeps a filled posting answered so every
+  plan, so the board never reached a person (eighth blind review). Where
+  every posting asked answered as closed, the board states nothing and goes
+  to the owner, saying so. **A board is stated whole only with at most
+  `SF_SLACK` (2) of its postings closed** - the churn the walk allows; more
+  is a list carrying postings that name nobody, and the names of the rest
+  are kept for the desk, not stated. **A page that shows no posting and is
+  not the site saying so is not a closed posting** (repaired 2026-11-22: a
+  block page served 200 at five of seven postings was passed over, and the
+  board stated whole and proven on the other two): a block or error page,
+  or a hop anywhere but the list (not asked), is the board unreadable for a
+  person - `failed` "unreadable", not a failure of the day, no name - so the
+  door holds it with the reason. A posting answering 401 or 403 is the board
+  refusing, and 429 a failure of the day: neither is a closed posting.
   Postings written in more than one language (their title's own lang) are a
   board listing a role once per language (JENOPTIK's twins), and are not
   stated. A placeholder name ('our team' on SPX's board, the tenant id
@@ -3351,7 +3371,11 @@ review and the owner's word, through the wiring door.
   unpinned hop targets, startrow, 403/429, no-total, comment and four-deep
   cases - each fixed and pinned, Gainwell's measured shape (334 postings, 14
   pages of 25) among the cases; each fix reverted in a private copy fails
-  the check.
+  the check. Its repair pass (2026-11-22): a closed posting is only the site
+  saying so (a block page served 200, or a hop anywhere but the list, is the
+  board unreadable and the row kept), a board is stated whole with at most
+  `SF_SLACK` closed and every listed posting asked - thirteen breaks of the
+  repair, one at a time in a private copy, each noticed.
 
 ## Build order (owner, 2026-08-23)
 

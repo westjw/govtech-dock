@@ -4018,10 +4018,11 @@ def _sf_posting_url(href: str, origin: str) -> str | None:
 
 
 class PostingClosed(AtsError):
-    """A posting the list carries answered as no posting: a redirect from its
-    address to a page that is not a posting, or a page at its address that
-    shows no posting (Gainwell's closed ones answer 200 there, saying only
-    "Sorry, this position has been filled.", measured 2026-11-22)."""
+    """A posting the list carries answered, as the career site, that it has
+    closed by sending a reader from its address back to the site's own list
+    (/search/). A hop anywhere else off /job/ says nothing of the posting:
+    a block page or a challenge can answer so (_sf_hop). The site's own page
+    at its address saying so is successfactors_filled."""
 
 
 def _sf_hop(url: str, offset: int | None = None, posting: bool = False):
@@ -4029,8 +4030,11 @@ def _sf_hop(url: str, offset: int | None = None, posting: bool = False):
     (on top of same_host): a path that says plainly where it goes; for a list
     page past the first, an address that still asks for that page (a hop that
     drops its startrow lands on page 1, and the walk would read page 1 as
-    page 2); for a posting, a /job/ address - a hop anywhere else is the
-    posting gone."""
+    page 2); for a posting, a /job/ address. From a posting, a hop to the
+    site's list is the posting closed (PostingClosed); a hop anywhere else
+    is not read, and says nothing of the posting - not that it closed
+    (eighth blind review, repaired 2026-11-22: any hop off /job/ was read as
+    closed, so a challenge page passed a posting over)."""
     def may(u: str):
         parts = urllib.parse.urlsplit(u)
         if not _sf_plain_path(parts.path):
@@ -4042,8 +4046,12 @@ def _sf_hop(url: str, offset: int | None = None, posting: bool = False):
                 raise AtsError(f"{url} leads off to {parts.path}?{parts.query[:80]}, which does "
                                f"not ask for the list from row {offset}")
         if posting and not parts.path.startswith("/job/"):
-            raise PostingClosed(f"the posting {url} answers by sending a reader to "
-                                f"{parts.path}, which is not a posting: it has closed")
+            if parts.path in ("/search", "/search/"):
+                raise PostingClosed(f"the posting {url} answers by sending a reader to the site's "
+                                    f"list ({parts.path}): it has closed")
+            raise AtsError(f"a posting answers by sending a reader to {parts.path[:60]}, neither a "
+                           f"posting nor the site's list (a block or challenge page), so it says "
+                           f"nothing of the posting: {url}")
     return may
 
 
@@ -4243,8 +4251,9 @@ def successfactors_walk(origin: str, first: list[dict], n: int, total: int | Non
 
 def successfactors_posting(url: str, origin: str) -> str:
     """One posting's page, asked only on the career site's own host, at an
-    address that says plainly where it goes; a hop off /job/ is the posting
-    gone (PostingClosed)."""
+    address that says plainly where it goes; a hop to the site's list is the
+    posting gone (PostingClosed), and a hop anywhere else off /job/ is not
+    read (_sf_hop)."""
     if _sf_posting_url(url, origin) != url:
         raise AtsError(f"{url} is not a posting of {origin}")
     return _page(url, same_host=True, may=_sf_hop(url, posting=True)).text or ""
@@ -4260,8 +4269,38 @@ _SF_LANG_ATTR = re.compile(r"(?<![\w:-])lang\s*=\s*[\"']?([A-Za-z]{2,3})\b")
 
 def successfactors_shown(page: str) -> bool:
     """Does this posting page show a posting (its schema.org microdata), as the
-    page a reader sees it? A closed one shows none."""
+    page a reader sees it? A closed one shows none - and neither does a page
+    that is not the site's at all (successfactors_filled tells them apart)."""
     return bool(_SF_SHOWN.search(_cut(page or "")))
+
+
+# WHAT A CLOSED POSTING'S OWN PAGE SAYS IN ITS PLACE. Gainwell's answer 200 at
+# the posting's address with the career site's own page (measured 2026-11-22):
+# the posting's title kept - 'Provider Enrollment Specialist - Jackson, MS
+# (Onsite) Job Details | Gainwell Technologies LLC', the title every en_US
+# posting page measured carries (Landis+Gyr's, Aurigo's, Gainwell's) - and,
+# where the posting was, "Sorry, this position has been filled."
+_SF_TITLE_TEXT = re.compile(r"<title\b[^<>]*>([^<]*)</title>", re.I)
+_SF_JOB_TITLE = re.compile(r"\S.*\sJob Details \| \S.*", re.I)
+_SF_FILLED = re.compile(r"\bthis position has been filled\b", re.I)
+
+
+def successfactors_filled(page: str) -> bool:
+    """Is this page, at a posting's own address, the career site saying that
+    the posting has closed: a page that shows no posting, titled as the site
+    titles a posting ('<role> Job Details | <site>') or saying "this position
+    has been filled", as a reader sees it (_cut)? A page that shows no
+    posting and says neither - a block page served 200 (F5's "The requested
+    URL was rejected"), an error page - is not the site's word, and says
+    nothing of the posting (eighth blind review, repaired 2026-11-22: every
+    such page was read as closed, and a board was stated whole on the two of
+    its seven postings that answered)."""
+    body = _cut(page or "")
+    if _SF_SHOWN.search(body):
+        return False
+    m = _SF_TITLE_TEXT.search(body)
+    title = _text(html_lib.unescape(m.group(1))) if m else ""
+    return bool(_SF_JOB_TITLE.fullmatch(title) or _SF_FILLED.search(_jv_text(body)))
 
 
 def successfactors_language(page: str) -> str:
@@ -4298,9 +4337,10 @@ def successfactors_ad(page: str) -> str:
 
 
 def successfactors_closed(exc: BaseException) -> bool:
-    """Did asking a posting's own page answer that it has closed: a hop off
-    /job/ (PostingClosed), or a 404 or 410 at its address? A refusal, a 429,
-    a server error or the network failing says nothing about the posting."""
+    """Did asking a posting's own page answer that it has closed: a hop to the
+    site's list (PostingClosed), or a 404 or 410 at its address? A refusal, a
+    429, a server error, the network failing or a hop anywhere else says
+    nothing about the posting."""
     return isinstance(exc, PostingClosed) or (
         isinstance(exc, AtsError) and not isinstance(exc, RobotsRefused)
         and bool(re.match(r"HTTP 4(?:04|10)\b", str(exc))))
@@ -4314,10 +4354,14 @@ def fetch_successfactors(ref) -> list[dict]:
         # the ad is on each posting's own page; CSB publishes no pay field, so
         # any figure comes from the ad's text (plain_rows), never from here.
         # A POSTING WHOSE OWN PAGE SAYS IT HAS CLOSED IS NOT PUBLISHED AS OPEN
-        # (eighth blind review, 2026-11-22): a 404, a hop off /job/, or a page
-        # showing no posting (Gainwell's say "Sorry, this position has been
-        # filled.") - the row is dropped, and said. Where every posting asked
-        # answers so, that is not read as a zero either.
+        # (eighth blind review, 2026-11-22): a 404 or 410, a hop to the site's
+        # list, or the site's own page saying so (successfactors_filled:
+        # Gainwell's say "Sorry, this position has been filled.") - the row
+        # is dropped, and said. Where every posting asked answers so, that is
+        # not read as a zero either. A page that shows no posting and is not
+        # the site saying so - a block page served 200, an error page, a hop
+        # anywhere else - says nothing of the posting, as a refusal or a 429
+        # says nothing: the row stays as the list states it.
         closed = set()
 
         def read(r):
@@ -4328,6 +4372,9 @@ def fetch_successfactors(ref) -> list[dict]:
                     closed.add(r["url"])
                 raise
             if not successfactors_shown(page):
+                if not successfactors_filled(page):
+                    raise AtsError(f"{r['url']} answered a page that shows no posting and is not "
+                                   f"the site saying it has closed")
                 closed.add(r["url"])
                 return "", None
             return successfactors_ad(page), None
@@ -4338,8 +4385,8 @@ def fetch_successfactors(ref) -> list[dict]:
                                f"as closed on its own page, so it is not read as a board with "
                                f"nothing open")
             print(f"  successfactors: {origin}: {len(closed)} of the {len(rows)} postings on its list "
-                  f"answered as closed on their own page (a 404, a hop off /job/, or a page showing "
-                  f"no posting) and are not published", file=sys.stderr)
+                  f"answered as closed on their own page (a 404 or 410, a hop to its list, or the "
+                  f"site's page saying so) and are not published", file=sys.stderr)
             rows = [r for r in rows if r["url"] not in closed]
     return rows
 
