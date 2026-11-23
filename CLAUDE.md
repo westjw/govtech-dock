@@ -610,7 +610,17 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   The rules are RFC 9309's and `robots.py` reads them itself: the stdlib
   `urllib.robotparser` takes the first matching rule instead of the longest,
   ignores `*` and `$`, ends a group at a blank line, and wrongly refused Rain
-  Bird. A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
+  Bird. **The path asked is the path served** (eighth blind review,
+  2026-11-22): the library resolves a raw '..' before it sends it, and a
+  browser reads a backslash in a path as a slash, so '/jobs/../private/x' and
+  '/jobs\..\private/x' were asked as written and served as /private/x. An
+  http(s) page is read only when its path as written and as served
+  (`robots.served`: a backslash, '%2f' and '%5c' read as '/', '%2e' as '.', dot
+  segments resolved) are both allowed; `ats.follow` reads a backslash in a
+  path as a slash before it asks or sends anything, and `ats.plain_address`
+  refuses a path with a '.' or '..' segment in any of those readings before
+  anything is asked (`robots.climbs`).
+  A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
   network error, raised as `AtsError("network error: ...")` and never cached,
   so it is retried and never reads as a refusal (`add_company` gives it the
   same tls/dns/timeout diagnosis as the page). A refusal is never "no board":

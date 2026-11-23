@@ -14116,6 +14116,8 @@ def check_the_crawler_honours_robots_txt() -> int:
                                   "Disallow: /\n\nUser-agent: GOVTECH-DOCK\nDisallow: /b\n"),
         # one spelling for comparison
         "m.robots-fixture": (200, "User-agent: *\nDisallow: /caf%C3%A9\nDisallow: /%7Ejoe\n"),
+        # the path a server serves, asked as well as the path written
+        "n.robots-fixture": (200, "User-agent: *\nDisallow: /private/\n"),
     }
     asked = []
     def fetch(url):
@@ -14154,6 +14156,21 @@ def check_the_crawler_honours_robots_txt() -> int:
                 ("https://k.robots-fixture/c", True, "a path neither of our groups names, under a '*' that does"),
                 ("https://m.robots-fixture/café", False, "a non-ASCII path against its percent-encoding"),
                 ("https://m.robots-fixture/~joe", False, "an unreserved character against its escape"),
+                # (eighth blind review, 2026-11-22: robots.txt was asked of the
+                # path as written, and the library sent the path it resolves to)
+                ("https://n.robots-fixture/jobs/../private/roster", False,
+                 "a raw '..' the library resolves into a closed path"),
+                ("https://n.robots-fixture/jobs/%2e%2e/private/roster", False,
+                 "an escaped '..' a server resolves into a closed path"),
+                ("https://n.robots-fixture/jobs\\..\\private/roster", False,
+                 "backslash dot segments a browser reads as a closed path"),
+                ("https://n.robots-fixture/jobs/..%5Cprivate/roster", False,
+                 "an escaped backslash a server reads as a slash"),
+                ("https://n.robots-fixture/private\\roster", False,
+                 "a backslash a browser reads as the slash of a closed path"),
+                ("https://n.robots-fixture/jobs/./roster", True, "a '.' segment in an open path"),
+                ("https://n.robots-fixture/jobs/private/roster", True,
+                 "an open path with the closed one's name inside it"),
                 ("https://acme.test/careers", True, "a reserved test domain"),
                 ("https://jobs.example.com/x", True, "a reserved example domain")):
             got = robots.allowed(url, fetch=fetch)
@@ -14290,6 +14307,88 @@ def check_the_crawler_honours_robots_txt() -> int:
             robots.verdict, ats._get = real_verdict, real_get
         if any("refused.invalid" in u or "down.invalid" in u for u in read):
             errors += fail(f"a refused page was read anyway: {read}")
+
+        # ROBOTS.TXT IS ASKED ABOUT THE PATH THE LIBRARY SENDS (eighth blind
+        # review, 2026-11-22). The library resolves a raw '..' before it sends
+        # it, and a browser reads a backslash in a path as a slash: a hop with
+        # either was asked of robots.txt as written and served from the path
+        # robots.txt closes. Refused at every hop before anything is asked -
+        # through a reader's _page and through the finder's land() - and a
+        # path with a backslash alone is asked and sent as a browser reads it.
+        for path, want in (("/a/./b/../c/.", "/a/c/"), ("/jobs/../private/x", "/private/x"),
+                           ("/jobs/%2E%2e/private/x", "/private/x"), ("/jobs\\..\\private/x", "/private/x"),
+                           ("/..", "/"), ("/a//../b", "/a/b"), ("/jobs/x", "/jobs/x")):
+            if robots.served(path) != want:
+                errors += fail(f"robots.served({path!r}) is {robots.served(path)!r}, not {want!r}")
+        H = "https://careers.acmegov.example"
+        hop, sent_paths, asked_of = [None], [], []
+
+        class Answer:
+            def __init__(self, url, status=200, loc=None):
+                self.url, self.status_code, self.text = url, status, "<html>a page</html>"
+                self.headers = {"Location": loc} if loc else {}
+                self.encoding, self.content = "utf-8", self.text.encode()
+
+            def close(self):
+                pass
+
+        def send(url, **kw):
+            sent_paths.append(ats.requests.Request("GET", url).prepare().path_url)
+            return Answer(url, 302, hop[0]) if url == H + "/jobs" else Answer(url)
+        kept = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE)
+        try:
+            ats.requests.get, ats.ask_robots = send, asked_of.append
+            ats._host_gate, ats.HTTP_CACHE = (lambda u: None), None
+            for to in (H + "/jobs/../private/roster", H + "/jobs/./private", H + "/private/..",
+                       H + "/jobs\\..\\private/roster", H + "/jobs/..%5Cprivate/roster",
+                       H + "/jobs/..%2Fprivate/roster", H + "/jobs/.%2e/private/roster"):
+                hop[0], sent_paths[:], asked_of[:] = to, [], []
+                try:
+                    ats._page(H + "/jobs", same_host=True)
+                    errors += fail(f"ats._page followed a hop to {to[len(H):]!r}, sending {sent_paths}")
+                except ats.AtsError as exc:
+                    if "not a plain address" not in str(exc) or sent_paths != ["/jobs"] \
+                            or asked_of != [H + "/jobs"]:
+                        errors += fail(f"ats._page: a hop to {to[len(H):]!r} was asked of robots.txt "
+                                       f"{asked_of} or sent {sent_paths}: {exc}")
+            hop[0], sent_paths[:], asked_of[:] = H + "/careers\\open-roles", [], []
+            try:
+                ats._page(H + "/jobs", same_host=True)
+            except ats.AtsError as exc:
+                errors += fail(f"ats._page refused a hop to '/careers\\open-roles': {exc}")
+            if sent_paths != ["/jobs", "/careers/open-roles"] or asked_of != [H + "/jobs", H + "/careers/open-roles"]:
+                errors += fail(f"ats._page: a hop with a backslash in its path was asked of robots.txt as "
+                               f"{asked_of} and sent as {sent_paths}, not as a browser reads it")
+            import find_site_boards as fsb
+            W, landed = "https://www.acmegov.example", []
+
+            class Page:
+                status_code, headers, encoding = 200, {"content-type": "text/html; charset=utf-8"}, "utf-8"
+
+                def __init__(self, u):
+                    self.url = u
+
+                def iter_content(self, chunk_size=1):
+                    yield b"<html><title>Careers</title>Open roles</html>"
+
+                def close(self):
+                    pass
+            real_request = fsb._request
+            fsb._request = lambda u: landed.append(u) or Page(u)
+            try:
+                for link, want in ((W + "/careers/", "ok"), (W + "/en/../careers/", "error"),
+                                   (W + "/en\\..\\careers/", "error")):
+                    landed[:], asked_of[:] = [], []
+                    out = fsb.land(link, W)
+                    if out["status"] != want or (want == "error" and (landed or asked_of
+                                                                      or "plain address" not in out["note"])):
+                        errors += fail(f"find_site_boards.land({link[len(W):]!r}) is {out['status']} "
+                                       f"({out['note'][:80]!r}), having asked {landed} and robots.txt "
+                                       f"of {asked_of}, not {want}")
+            finally:
+                fsb._request = real_request
+        finally:
+            (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE) = kept
 
         # discovery steps past one closed page to the next, and files a site
         # closed at the door as blocked, not as a company with no board
@@ -19573,7 +19672,13 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
         for bad in ("https://jobs.jobvite.com:44\\3/acmegov/jobs", "https://acme.example/a/%2e%2e/b",
                     "https://acme.example/a/./b".replace("/./", "/%2E/"),
                     "https://acme.example\\.evil.example/x", "https://acme.example/a\x00b",
-                    "https://acme.example/a\nb", "https://acme.example/a\x01b", "https://acme.example/a\x7fb"):
+                    "https://acme.example/a\nb", "https://acme.example/a\x01b", "https://acme.example/a\x7fb",
+                    # a RAW '..' or '.', which the library resolves before it
+                    # sends (eighth blind review), and a dot segment beside a
+                    # backslash or an escaped slash or backslash
+                    "https://acme.example/a/../b", "https://acme.example/a/./b", "https://acme.example/a/..",
+                    "https://acme.example/a\\..\\b", "https://acme.example/a/..%5cb",
+                    "https://acme.example/a/..%2Fb", "https://acme.example/a/.%2e/b"):
             try:
                 ats.plain_address(bad)
                 errors += fail(f"ats.plain_address let {bad!r} through")
@@ -19617,7 +19722,9 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
         # 'strasse': sixth blind review)
         for ok in ("https://jobs.jobvite.com/acmegov/jobs", "https://m\u00fcnchen.example/x y",
                    "https://acme.example/careers?q=a\\b", "https://acme.example/a\\b",
-                   "https://stra\u00dfe.example/careers", "https://fa\u03c2.example/careers"):
+                   "https://stra\u00dfe.example/careers", "https://fa\u03c2.example/careers",
+                   "https://acme.example/.well-known/x", "https://acme.example/a..b/Sr.-Engineer.",
+                   "https://acme.example/careers?next=/a/../b"):
             try:
                 ats.plain_address(ok)
             except ats.AtsError as exc:

@@ -598,8 +598,10 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
     """
     for _ in range(hops + 1):
         # an address read as a browser reads it: a tab or a line break inside
-        # an href is dropped (WHATWG URL), and anything else unplain refused
+        # an href is dropped (WHATWG URL), a backslash in an http(s) path is
+        # a slash, and anything else unplain refused
         url = _TAB_OR_BREAK.sub("", url) if isinstance(url, str) else url
+        url = _browser_path(url)
         plain_address(url)
         if may is not None:
             may(url)
@@ -635,6 +637,31 @@ def lower_same(s: str) -> str:
 _TAB_OR_BREAK = re.compile(r"[\t\n\r]")
 
 
+def _browser_path(u):
+    """`u` with each backslash in an http(s) address's PATH read as a slash,
+    as a browser reads it (WHATWG URL) and a server that resolves backslashes
+    serves it. The library would send '/jobs\\..\\private/x' as
+    '/jobs%5C..%5Cprivate/x', robots.txt was asked about it as written, and
+    the page served was /private/x (eighth blind review, 2026-11-22): read so
+    in follow(), the path robots.txt and plain_address are asked about is the
+    path sent. The host part is left as it is - a backslash there names
+    another host, which plain_address refuses - and so is the query."""
+    if not isinstance(u, str) or "\\" not in u:
+        return u
+    try:
+        parts = urllib.parse.urlsplit(u)
+    except ValueError:
+        return u                                 # (plain_address says why)
+    if parts.scheme not in ("http", "https") or "\\" not in parts.path:
+        return u
+    cut = min([k for k in (u.find("?"), u.find("#")) if k >= 0] or [len(u)])
+    head = u[:cut]
+    if not head.endswith(parts.path):
+        return u
+    at = len(head) - len(parts.path)
+    return head[:at] + parts.path.replace("\\", "/") + u[cut:]
+
+
 def plain_address(u: str) -> None:
     """Raise unless `u` names its host the same way to every reader of it.
 
@@ -644,10 +671,10 @@ def plain_address(u: str) -> None:
     readers' path rules and robots.txt ask - and evil.example to the library
     that sends it, so a redirect steered a board's reader and its probe to a
     page nobody had asked about. A crawler sends no credentials, so an '@'
-    in the host part is refused; so is a backslash or a control character
-    anywhere, and any address whose prepared request names another host
-    than the one read here. Asked of every hop in follow(), before anything
-    is sent."""
+    in the host part is refused; so is a control character anywhere, a path
+    that climbs ('.' or '..', as written or as sent), and any address whose
+    prepared request names another host or port than the one read here.
+    Asked of every hop in follow(), before anything is sent."""
     if not isinstance(u, str) or _UNPLAIN.search(u):
         raise AtsError(f"{u!r} is not a plain address (a control character)")
     parts = urllib.parse.urlsplit(u)
@@ -664,12 +691,18 @@ def plain_address(u: str) -> None:
         sent = (prepared.hostname or "").lower().rstrip(".")
         # THE PORT AND THE PATH TOO (seventh blind review): ':44\\3' left the
         # host alone and sent the request to port 44, and '%2e%2e' was asked
-        # of robots.txt as written and sent as '..', which a server resolves
+        # of robots.txt as written and sent as '..', which a server resolves.
+        # A RAW '..' TOO (eighth blind review): the library resolves it before
+        # it prepares the request, so the prepared path never shows it - and
+        # '/jobs/../private/x' was asked of robots.txt as written and sent as
+        # '/private/x'. So the path as written is read as a server may read
+        # it (robots.climbs: '%2e' a dot; a backslash, '%2f' and '%5c' a slash)
         default = {"http": 80, "https": 443}
         if (parts.port or default.get(parts.scheme)) != (prepared.port or default.get(prepared.scheme)):
             raise AtsError(f"{u} is not a plain address: its port reads otherwise when sent")
-        if any(seg in (".", "..") for seg in prepared.path.split("/")):
-            raise AtsError(f"{u} is not a plain address: its path climbs ('.' or '..') when sent")
+        if robots.climbs(parts.path) or any(seg in (".", "..") for seg in prepared.path.split("/")):
+            raise AtsError(f"{u} is not a plain address: its path climbs ('.' or '..'), so the page "
+                           f"served is not the path asked about")
         # a name in another script, encoded the way the request itself is
         # (UTS 46, as requests does: 'stra\u00dfe' is xn--strae-oqa, where
         # Python's own codec would say 'strasse' - sixth blind review)
