@@ -4338,26 +4338,30 @@ def successfactors_language(page: str) -> str:
 
 
 def successfactors_ad(page: str) -> str:
-    """The ad on a posting page: its itemprop="description" element (the
-    class="jobdescription" span sits inside it, Landis+Gyr's 4,939
-    characters), to the close that matches it, as text. "" for a page with
-    none, or one that never closes it."""
+    """The ad on a posting page: EVERY itemprop="description" element of it,
+    in page order, each to the close that matches it, as text, one after
+    another (the class="jobdescription" span sits inside one on Landis+Gyr's,
+    4,939 characters; Esri Canada's postings split theirs into three, the
+    pay sentence in the third - blind review 10, 2026-11-23: only the first
+    was read, so its pay never was). One inside another is read once, with
+    the one it sits in. "" for a page with none, or one that never closes
+    one of them: an ad is not read in part."""
     body = _cut(page or "")
-    m = _SF_DESCRIBED.search(body)
-    if not m:
-        return ""
-    name = m.group(1).lower()
-    if name == "meta":
-        return plain_html(html_lib.unescape(_sf_attrs(m.group(2)).get("content") or ""))
-    depth = 1
-    for t in re.finditer(rf"<(/?){name}\b[^<>]*>", body[m.end():], re.I):
-        if t.group(1):
-            depth -= 1
-        elif not t.group(0).endswith("/>"):
-            depth += 1
-        if depth == 0:
-            return plain_html(body[m.end():m.end() + t.start()])
-    return ""
+    parts, past = [], 0
+    for m in _SF_DESCRIBED.finditer(body):
+        if m.start() < past:
+            continue                     # (inside one read already)
+        name = m.group(1).lower()
+        if name == "meta":
+            parts.append(plain_html(html_lib.unescape(_sf_attrs(m.group(2)).get("content") or "")))
+            past = m.end()
+            continue
+        inner = _sf_inner(body, m.end(), name, len(body))
+        if inner is None:
+            return ""
+        parts.append(plain_html(inner))
+        past = m.end() + len(inner)
+    return "\n".join(p for p in parts if p)
 
 
 def successfactors_closed(exc: BaseException) -> bool:

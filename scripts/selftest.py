@@ -20991,6 +20991,38 @@ def check_successfactors_reads_its_career_site() -> int:
             errors += fail("successfactors: an ad given as <meta itemprop=description> was not read")
         if "Apply today" not in ats.successfactors_ad(posting(ad="<p>Sell.</p><span/><p>Apply today.</p>")):
             errors += fail("successfactors: a <span/> inside the ad cut the ad short")
+        # EVERY DESCRIPTION ELEMENT, IN PAGE ORDER (blind review 10, 2026-11-23:
+        # Esri Canada's postings split the ad into three, the pay sentence in
+        # the third, and only the first was read)
+        def part(text_):
+            return (f'<div class="joblayouttoken"><span xml:lang="en-US" lang="en-US" itemprop="description" '
+                    f'class="rtltextaligneligible"><p>{text_}</p></span></div>')
+        split_ = ('<html><head><title>Role Job Details | Acme Gov LLC</title></head><body><div '
+                  'class="jobDisplayShell" itemscope="itemscope"><meta itemprop="hiringOrganization" '
+                  'content="Acme Gov LLC"><span itemprop="title">Role</span>'
+                  + part("Sell to state agencies.") + '<div class="joblayouttoken"><span>Apply by Friday.'
+                  '</span></div>' + part("Travel to county seats.")
+                  + part("The salary range for this role is $90,000 - $110,000 per year.") + '</div></body></html>')
+        ad_ = ats.successfactors_ad(split_)
+        at_ = [ad_.find(w) for w in ("Sell to state", "Travel to county", "$90,000 - $110,000")]
+        if -1 in at_ or at_ != sorted(at_) or "Apply by Friday" in ad_:
+            errors += fail(f"successfactors: an ad in three description elements was not read whole, in page "
+                           f"order, and only from them: {ad_!r}")
+        ats.FETCH_DETAILS = True
+        rows, exc = go({at(0): page([row(1)], total=1), SF + job(1): split_}, lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        comp_ = (ats.plain_rows(rows or [{}])[0] if rows else {}).get("comp") or {}
+        if exc or "$90,000 - $110,000" not in str((rows or [{}])[0].get("jd")) \
+                or (comp_.get("min"), comp_.get("max")) != (90000, 110000):
+            errors += fail(f"successfactors: with details on, the pay in an ad's third description element "
+                           f"was not read: {comp_} {exc}")
+        nested_ = part("Outer words. " + part("Inner words.").replace('<div class="joblayouttoken">', "")
+                       .replace("</div>", ""))
+        if ats.successfactors_ad(nested_).count("Inner words") != 1:
+            errors += fail(f"successfactors: a description element inside another was read twice: "
+                           f"{ats.successfactors_ad(nested_)!r}")
+        if ats.successfactors_ad(split_.replace("per year.</p></span>", "per year.</p>")) != "":
+            errors += fail("successfactors: an ad whose last description element never closes was read in part")
 
         # ---- what is not a board: never a zero, and nothing past it asked -----
         unify = page([], head='<script src="/platform/js/j2w/min/j2w.searchResultsUnify.min.js">'
@@ -21764,6 +21796,21 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 or sent != expect or any(r["comp"] if "comp" in r else False for r in rows or []):
             errors += fail(f"successfactors unify: with details on, the ad was not the posting page's own, "
                            f"or cost a request ({len(sent)} asked): {exc or [r.get('jd') for r in rows]}")
+        # ...every description element of it, in page order: Esri Canada's
+        # postings split the ad into three, the pay sentence in the third
+        # (blind review 10, 2026-11-23: only the first was read)
+        esri_split = posting("Solutions Engineer", (("Country", "Canada"),), ad="<p>Map the province.</p>").replace(
+            "</div></div></body>", '<div><span xml:lang="en-US" lang="en-US" itemprop="description"><p>Travel '
+            'to clients.</p></span></div><div><span xml:lang="en-US" lang="en-US" itemprop="description"><p>The '
+            'salary range for this role is $86,000 - $99,000 CAD per year.</p></span></div></div></div></body>', 1)
+        ats.FETCH_DETAILS = True
+        rows, exc, err = go(site([plain(3, esri_split)]))
+        ats.FETCH_DETAILS = False
+        jd_ = str((rows or [{}])[0].get("jd"))
+        at_ = [jd_.find(w) for w in ("Map the province", "Travel to clients", "$86,000 - $99,000")]
+        if exc or -1 in at_ or at_ != sorted(at_) or len(sent) != 4:
+            errors += fail(f"successfactors unify: with details on, an ad in three description elements was "
+                           f"not read whole and in order from the page already read: {jd_!r} {exc}")
 
         # ---- the place, the mode and the date, token by token ----------------
         def row_of(page_):

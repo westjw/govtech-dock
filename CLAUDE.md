@@ -3402,8 +3402,13 @@ review and the owner's word, through the wiring door.
   '..;' segment, an empty one or a backslash (robots.txt is asked of the
   address as written, and '/job/%2e%2e/services/...' went out as
   '/job/../services/...').
-- **Behind FETCH_DETAILS** the ad is each posting's `itemprop="description"`
-  element, to the close that matches it. CSB has no pay field; a figure in the
+- **Behind FETCH_DETAILS** the ad is every `itemprop="description"` element
+  of each posting's page, in page order, each to the close that matches it
+  (`ats.successfactors_ad`, the classic reader's and the Unify reader's: Esri
+  Canada's postings split the ad into three, the pay sentence in the third,
+  and only the first was read until blind review 10, 2026-11-23); one inside
+  another is read once, and one never closed is no ad, never part of one.
+  CSB has no pay field; a figure in the
   ad's text is plain_rows' text parse, as for every reader. **A posting whose
   own page says it has closed is not published as open** (eighth blind
   review): a 404 or 410, a hop to the site's list (/search/ or /search, with
@@ -3609,11 +3614,9 @@ review and the owner's word, through the wiring door.
   32 locs, 16 copies paired, in 66, stated whole as 'esricanada' and
   proven for nobody; Octave 131 rows in 264, five postings asked, not
   stated.
-  **Known**: the ad is the FIRST itemprop="description" element only
-  (`successfactors_ad`, shared with the classic reader), and Esri Canada's
-  postings split theirs into three, the pay sentence in the third; Esri
-  Canada's Salary Min/Max tokens are not read. Wiring the three waits for
-  the door. Guard: `check_successfactors_unify_reads_its_sitemap` (77
+  **Known**: Esri Canada's Salary Min/Max tokens are not read (its pay is
+  read from the ad's text, whose third part states it, since blind review
+  10 read every description element). Wiring the three waits for the door. Guard: `check_successfactors_unify_reads_its_sitemap` (77
   one-line breakages of the reader and the probe, each alone in a private
   copy, each caught).
 - **Measured** on six CSB hosts by the research of 2026-11-20 (Landis+Gyr 63,
