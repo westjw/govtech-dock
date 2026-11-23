@@ -34842,6 +34842,26 @@ def check_embedded_wiring() -> int:
         print(f"  FAIL: a row of one tenant's name under another /All/ id than a record's is not "
               f"an ownership question: clean {[e['id'] for e in clean]}, said {said!r}")
         errors += 1
+    # ...and A RECORD ON FILE BY ITS WHOLE /All/<uuid>/<Tenant> ADDRESS beside a
+    # row at a bare /List/ address is an ownership question too, and the record
+    # is never told to be put on file by the whole address it is on file by:
+    # the row's address is the one left short (eighth blind review, 2026-11-22:
+    # unpinned, and without it --propose put that advice into Agent proposals)
+    by12 = {"whole-rec": {"id": "whole-rec", "name": "Whole Rec", "ats": {
+                "type": "paylocity",
+                "ref": pl_ + "All/5b1c2d3e-0000-4000-8000-000000000777/Whole-Inc"}},
+            "list-co": {"id": "list-co", "name": "List Co", "ats": {"type": "html"}}}
+    rows12 = [{"id": "list-co", "name": "List Co", "identity": "matches",
+               "found": {"type": "paylocity", "ref": pl_ + "List/7777"}}]
+    clean, _mm, refused = w.triage(rows12, by12, held={}, boards=nobody)
+    said = str(w.board_on_file(rows12[0], by12, rows12, nobody))
+    if clean or [e["id"] for e in refused] != ["list-co"] \
+            or not said.startswith("Whole Rec reads a Paylocity board that this one cannot be "
+                                   "told apart from") or "put on file by its whole" in said:
+        print(f"  FAIL: a row at a bare /List/ address beside a record on file by its whole /All/ "
+              f"address is not an ownership question, or the record is told to be put on file "
+              f"by the address it is on file by: clean {[e['id'] for e in clean]}, said {said!r}")
+        errors += 1
     # A WORKABLE ACCOUNT KNOWN BY ITS NUMBER AND ITS SLUG IS ONE BOARD: a row
     # naming the number of an account a record reads by its slug, the record's
     # note tying the two (board_proposals.ACCOUNT_WORDS), is that record's
