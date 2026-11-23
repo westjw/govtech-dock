@@ -4556,8 +4556,10 @@ def _sf_sitemap_read(text: str, url: str) -> tuple[str, list[str]]:
         k = text.find("-->", j + 4)
         if k < 0:
             raise AtsError(f"{url} leaves a comment open, so what it lists does not read plainly")
+        # (taken out with nothing in its place, as XML takes a comment out of
+        # character data: a space put there went into a <loc>'s address -
+        # '/job/ Role-5/...' asked and published - blind review 10)
         kept.append(text[i:j])
-        kept.append(" ")
         i = k + 3
     body = "".join(kept)
     first = _SM_OPEN.search(body)

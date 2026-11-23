@@ -3503,8 +3503,9 @@ review and the owner's word, through the wiring door.
   (`ats.successfactors_sitemap`) is asked as every page is (robots.txt at
   every hop, its own host, and nothing under /services/ whatever robots.txt
   says) and read as an XML reader reads it: a commented-out `<url>` is not
-  listed, and a loc's escapes are undone ('&apos;' Esri Canada's, '&amp;'
-  Octave's). A /job/ address on the origin that says plainly where it goes
+  listed, a comment inside a `<loc>` is taken out with nothing in its place
+  (blind review 10: a space put there was asked and published), and a loc's
+  escapes are undone ('&apos;' Esri Canada's, '&amp;' Octave's). A /job/ address on the origin that says plainly where it goes
   is a posting; anything else is passed over and said; one that is a
   posting but does not read plainly (a bare '&', an entity XML does not
   define, '&amp;apos;' undone twice, a relative address, CDATA, a control

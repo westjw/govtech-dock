@@ -21869,6 +21869,16 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             errors += fail(f"successfactors unify: a sitemap's addresses off the host, off /job/, climbing, "
                            f"or in a comment were asked or read, or not said ({err.strip()!r}): asked "
                            f"{sent}, {exc}")
+        # a comment INSIDE a <loc> is taken out with nothing in its place, as
+        # XML takes it out of character data (blind review 10: a space put
+        # there was asked and published, '/job/ Role-31/...')
+        for written in (x(loc(31)).replace("/job/", "/job/<!-- x -->", 1),
+                        "<!-- a -->" + x(loc(31)) + "<!-- b -->"):
+            rows, exc, err = go(site([plain(31, posting("Field Engineer"))], smap=sitemap([written])))
+            if exc or [r["url"] for r in rows or []] != [loc(31)] or sent != [SEARCH, MAP, loc(31), hop(31)]:
+                errors += fail(f"successfactors unify: a <loc> holding a comment ({written!r}) was asked "
+                               f"or published as another address: asked {sent[2:]}, rows "
+                               f"{[r['url'] for r in rows or []]} ({exc})")
         # ...and a posting of this site that does not read plainly is an error,
         # never a posting silently lost
         for written, why, words in (
