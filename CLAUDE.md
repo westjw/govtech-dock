@@ -619,7 +619,9 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   segments resolved) are both allowed; `ats.follow` reads a backslash in a
   path as a slash before it asks or sends anything, and `ats.plain_address`
   refuses a path with a '.' or '..' segment in any of those readings before
-  anything is asked (`robots.climbs`).
+  anything is asked (`robots.climbs`) - '..;' and '.;x' too, which Tomcat,
+  Jetty and Spring cut to a dot segment and serve from elsewhere ('/en/..;/
+  careers/' is /careers/; blind review of the eighth review's fixes).
   A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
   network error, raised as `AtsError("network error: ...")` and never cached,
   so it is retried and never reads as a refusal (`add_company` gives it the
@@ -2441,7 +2443,10 @@ and never said where in a page a reference sat.
   query - a recruiter's, a contact's, a first, last or full name, Jobvite's
   sd= and __jvsd=, raw or percent-encoded inside another address - to the
   value's end: across spaces, entity spaces and an apostrophe between
-  letters ('Pat O'Brien', eighth blind review). `generated` is the date of the
+  letters ('Pat O'Brien', eighth blind review) or beside a letter's
+  percent-escape ("D'%C3%81vila", as the library sends D'Ávila), straight or
+  curly, raw or as an entity (&#39;, &#x27;, &apos;, &rsquo;, &#8217;,
+  &#x2019;). `generated` is the date of the
   file's OLDEST record: a run that picks a file up again keeps it.
 - **A candidate** was seen on a page that landed on the company's own site,
   or is a redirect from an address of theirs that went straight to the
@@ -3010,7 +3015,9 @@ round.
   id (a refusal, a reader's doubt, a door-filed row or a pending proposal at
   a bare /List/ address) is asked the same way (`wire_found.holds_by_page`:
   once per spelling, for a find consider compares, never for the hold's own
-  company's find) - one refused at the desk held every /All/ board found,
+  company's find, and never the hold of a company a person ruled out of
+  scope, which is not probed at all, as its record is not - the row says
+  the held board's page was not asked) - one refused at the desk held every /All/ board found,
   for every company, in all three doors, forever (eighth blind review,
   2026-11-22). Its page's address shows which board the hold is, and the
   hold is never dropped: a find is compared by it (the WIRE row names it in

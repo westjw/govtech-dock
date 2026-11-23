@@ -14317,9 +14317,24 @@ def check_the_crawler_honours_robots_txt() -> int:
         # path with a backslash alone is asked and sent as a browser reads it.
         for path, want in (("/a/./b/../c/.", "/a/c/"), ("/jobs/../private/x", "/private/x"),
                            ("/jobs/%2E%2e/private/x", "/private/x"), ("/jobs\\..\\private/x", "/private/x"),
-                           ("/..", "/"), ("/a//../b", "/a/b"), ("/jobs/x", "/jobs/x")):
+                           ("/..", "/"), ("/a//../b", "/a/b"), ("/jobs/x", "/jobs/x"),
+                           # '..;' and '.;x' are dot segments to a Java server
+                           # (blind review of the eighth review's fixes)
+                           ("/en/..;/careers/", "/careers/"), ("/jobs/.;jsessionid=1/x", "/jobs/x"),
+                           ("/jobs/..;x=1/private/x", "/private/x"), ("/jobs/x;v=1", "/jobs/x;v=1")):
             if robots.served(path) != want:
                 errors += fail(f"robots.served({path!r}) is {robots.served(path)!r}, not {want!r}")
+        for path, want in (("/en/..;/careers/", True), ("/a/.;x/b", True), ("/a/...;/b", False),
+                           ("/a/b;c", False), ("/a/..b", False)):
+            if robots.climbs(path) != want:
+                errors += fail(f"robots.climbs({path!r}) is {robots.climbs(path)}, not {want}")
+        # ...and the path AS WRITTEN is asked as well as the one served: a rule
+        # closing the written path refuses it, though the served path is open
+        if robots.decide([(False, "/a/")], "https://site.example/a/../b") \
+                or robots.decide([(False, "/b")], "https://site.example/a/../b") \
+                or not robots.decide([(False, "/c")], "https://site.example/a/../b"):
+            errors += fail("robots.decide does not refuse a page whose path as written, or as "
+                           "served, a rule closes - and only those")
         H = "https://careers.acmegov.example"
         hop, sent_paths, asked_of = [None], [], []
 
@@ -14341,7 +14356,8 @@ def check_the_crawler_honours_robots_txt() -> int:
             ats._host_gate, ats.HTTP_CACHE = (lambda u: None), None
             for to in (H + "/jobs/../private/roster", H + "/jobs/./private", H + "/private/..",
                        H + "/jobs\\..\\private/roster", H + "/jobs/..%5Cprivate/roster",
-                       H + "/jobs/..%2Fprivate/roster", H + "/jobs/.%2e/private/roster"):
+                       H + "/jobs/..%2Fprivate/roster", H + "/jobs/.%2e/private/roster",
+                       H + "/jobs/..;/private/roster", H + "/jobs/.;x/private"):
                 hop[0], sent_paths[:], asked_of[:] = to, [], []
                 try:
                     ats._page(H + "/jobs", same_host=True)
@@ -14377,7 +14393,7 @@ def check_the_crawler_honours_robots_txt() -> int:
             fsb._request = lambda u: landed.append(u) or Page(u)
             try:
                 for link, want in ((W + "/careers/", "ok"), (W + "/en/../careers/", "error"),
-                                   (W + "/en\\..\\careers/", "error")):
+                                   (W + "/en\\..\\careers/", "error"), (W + "/en/..;/careers/", "error")):
                     landed[:], asked_of[:] = [], []
                     out = fsb.land(link, W)
                     if out["status"] != want or (want == "error" and (landed or asked_of
@@ -20123,6 +20139,27 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                  "a table row after a cell an icon's svg sits in")):
             if words not in ats._cut(markup):
                 errors += fail(f"ats._cut: {why} was hidden: {ats._cut(markup)[:120]!r}")
+        # ...EVERY ONE OF THEM, named here and not read from the code's own set
+        # (blind review of the eighth review's fixes, 2026-11-22: taking li, ul,
+        # h3, section, footer, tbody or form out passed every check): each
+        # breakout start tag ends the island, and so does the end tag of each
+        # HTML element it may sit in; a name SVG shares, or a made-up one, does not
+        breakout = ("b big blockquote body br center code dd div dl dt em embed h1 h2 h3 h4 h5 h6 head hr "
+                    "i img li listing menu meta nobr ol p pre ruby s small span strong strike sub sup "
+                    "table tt u ul var").split()
+        closes = ("html header footer main nav section article aside form label button td th tr tbody "
+                  "thead tfoot caption figure figcaption details summary fieldset address picture "
+                  "object").split()
+        shown = "Account Executive, SLED"
+        for t in breakout:
+            if shown not in ats._cut(f"<html><body>{icon}<{t}>{shown}</body></html>"):
+                errors += fail(f"ats._cut: the text after a <{t}> that ends an unclosed svg was hidden")
+        for t in breakout + closes:
+            if shown not in ats._cut(f"<html><body><{t}>{icon}</{t}>{shown}</body></html>"):
+                errors += fail(f"ats._cut: the text after the </{t}> an unclosed svg sits in was hidden")
+        for t in ("a", "title", "font", "x-card"):
+            if shown in ats._cut(f"<html><body>{icon}<{t}>{shown}</body></html>"):
+                errors += fail(f"ats._cut: a <{t}> inside an unclosed svg was read as ending it")
         unclosed_title = page([r1, r2]).replace("<title>Acme Gov Careers</title>", "<title>Acme Gov Careers")
         try:
             got = ats.jobvite_rows(unclosed_title, "acmegov")
@@ -21429,16 +21466,35 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                      ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
                       "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O'Brien", "an encoded talent network's sd="),
                      ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Ffirst_name%3DPat"
-                      "%26last_name%3DO'Brien%26q%3D1", "an encoded last name")):
+                      "%26last_name%3DO'Brien%26q%3D1", "an encoded last name"),
+                     # ...and past a letter's percent-escape on either side of
+                     # it, and a curly quote raw or as an entity, and the hex
+                     # entity (blind review of the eighth review's fixes,
+                     # 2026-11-22: "'%C3%81vila" and "&rsquo;Brien" were kept)
+                     (TN + "&sd=Pat%20D'%C3%81vila", "an escaped letter after the apostrophe"),
+                     (TN + "&sd=Pat%20O'%C3%91eill", "an escaped capital after the apostrophe"),
+                     (TN + "&sd=Pat%20N%C3%A9'Brien", "an escaped letter before the apostrophe"),
+                     (TN + "&sd=Pat%20O&rsquo;Brien", "a named curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#8217;Brien", "a decimal curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#x2019;Brien", "a hex curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#x27;Brien", "a hex entity apostrophe"),
+                     (TN + "&sd=Pat%20O’Brien", "a raw curly quote"),
+                     ("https://www.acmegov.example/apply?last_name=O&rsquo;Brien&first_name=Pat",
+                      "last_name= with a curly-quote entity"),
+                     ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DD'%C3%81vila"
+                      "%26q%3D1", "an encoded last name with an escaped letter")):
         out = fsb._no_person(raw)
-        if "Brien" in out or "Angelo" in out or "Pat" in out or ("q6NaVfwI" in raw and "q6NaVfwI" not in out):
+        if "Brien" in out or "Angelo" in out or "Pat" in out or "vila" in out or "eill" in out \
+                or ("q6NaVfwI" in raw and "q6NaVfwI" not in out):
             errors += fail(f"finder: {why} with an apostrophe kept part of a person's name, or the "
                            f"account went with it: {out!r}")
-    kept = fsb._no_addresses({"pages": [{"asked": here, "final": TN + "&sd=Pat%20O'Brien"}],
-                              "hops": [TN + "&sd=Pat O'Brien"],
+    kept = fsb._no_addresses({"pages": [{"asked": here, "final": TN + "&sd=Pat%20O'Brien"},
+                                        {"asked": here, "final": TN + "&sd=Pat%20D'%C3%81vila"}],
+                              "hops": [TN + "&sd=Pat O'Brien", TN + "&sd=Pat%20O&rsquo;Brien"],
                               "elsewhere": [{"page": "https://www.acmegov.example/apply?last_name=O'Brien"
                                                      "&first_name=Pat"}]})
-    if "Brien" in json.dumps(kept) or "Pat" in json.dumps(kept) or "q6NaVfwI" not in json.dumps(kept):
+    if "Brien" in json.dumps(kept) or "Pat" in json.dumps(kept) or "vila" in json.dumps(kept) \
+            or "q6NaVfwI" not in json.dumps(kept):
         errors += fail(f"finder: a name with an apostrophe stayed in a page's address, a hop or an "
                        f"elsewhere page in the results: {kept}")
     # ...and it never eats a board's address or a ref the door compares: a
@@ -42687,6 +42743,29 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         if f"paylocity/{LIST_OWN}" in box.probed or "NOTE: asked" in text:
             errors += fail(f"a company's own hold was asked for its page for the company's own "
                            f"find: probed {box.probed}")
+    # ...and the hold of a company a person ruled out of scope is not asked
+    # either - a row waiting in his queue or one refused at the desk - as the
+    # record of such a company is not (records_by_page): the find is held,
+    # and the words say the held board's page was not asked (blind review of
+    # the eighth review's fixes, 2026-11-22: the hold's page was asked)
+    LIST_OH, ALL_G7 = plist(2168), pall(0x9d2, "G7-Co")
+    OOS = {"on": "2026-11-01", "by": "owner", "why": "not govtech"}
+    for label, ruled in (("waiting in his queue", {}),
+                         ("refused at the desk", {bp.RULED.name: {"oh-co": {
+                             "accept": False, "by": "owner", "on": "2026-11-21",
+                             "why": "not theirs"}}})):
+        with _WiringBox([co("oh-co", "Oh Co", out_of_scope=OOS), co("g7", "G7 Co")],
+                        {f"paylocity/{ALL_G7}": (3, ["G7 Co"])},
+                        files={bp.FOUND.name: [frow("oh-co", "Oh Co", LIST_OH)], **ruled}) as box:
+            code, text, _wl, rows_g7 = box.plan(_wb_results({
+                "g7": names("g7", "paylocity", ALL_G7)}), name=f"worklist-g7-{len(label)}.json")
+            expect(rows_g7, "g7", "HOLD", "the held board's own page was not asked: a person ruled "
+                                          "its company out of the board, and a company ruled out "
+                                          "is not probed, so nothing on file compares the two")
+            if f"paylocity/{LIST_OH}" in box.probed or "NOTE: asked" in text:
+                errors += fail(f"the board of a hold {label} whose company is ruled out of scope "
+                               f"was asked for its page: probed {box.probed}; "
+                               f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
     return errors
 
 

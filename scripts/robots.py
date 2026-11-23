@@ -207,11 +207,24 @@ def _segments(path: str) -> list[str]:
     return _DOT.sub(".", _SLASH.sub("/", path or "")).split("/")
 
 
+# A dot segment with a path parameter after it: Tomcat, Jetty and Spring cut
+# ';...' off a segment before they resolve it, and serve '/en/..;/careers/' as
+# /careers/ (blind review of the eighth review's fixes, 2026-11-22: only the
+# SuccessFactors and Jobvite readers' own segment rules knew it)
+_DOT_SEGMENT = re.compile(r"\.{1,2}(?:;.*)?", re.S)
+
+
+def _dot(segment: str) -> str:
+    """'.' or '..' where a server reads this segment as one, else ""."""
+    return segment.split(";", 1)[0] if _DOT_SEGMENT.fullmatch(segment) else ""
+
+
 def climbs(path: str) -> bool:
     """Has this path a '.' or '..' segment in any reading a server may give it
-    (_segments)? Such a path is served from another path than the one written,
-    so ats.plain_address refuses it before anything is asked."""
-    return any(s in (".", "..") for s in _segments(path))
+    (_segments) - '..;' and '.;x' too, as a Java server reads them? Such a
+    path is served from another path than the one written, so
+    ats.plain_address refuses it before anything is asked."""
+    return any(_dot(s) for s in _segments(path))
 
 
 def served(path: str) -> str:
@@ -224,12 +237,12 @@ def served(path: str) -> str:
     segs, out = _segments(path), []
     for i, s in enumerate(segs[1:], 1):
         last = i == len(segs) - 1
-        if s == "..":
+        if _dot(s) == "..":
             if out:
                 out.pop()
             if last:
                 out.append("")
-        elif s == ".":
+        elif _dot(s) == ".":
             if last:
                 out.append("")
         else:

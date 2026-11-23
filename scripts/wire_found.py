@@ -1493,6 +1493,13 @@ def holds_by_page(ctx: dict, finds: list) -> dict:
                            for cid_, f_refs in finds if cid_ != h["id"]):
             continue
         exact = spelling("paylocity", h["ref"])
+        # A HOLD OF A COMPANY A PERSON RULED OUT OF SCOPE IS NOT ASKED, as its
+        # record is not (records_by_page): such a company is not probed at all,
+        # and the hold stands, said as not asked (blind review of the eighth
+        # review's fixes, 2026-11-22: the hold's page was asked, its record's not)
+        if ((ctx.get("by_id") or {}).get(h["id"]) or {}).get("out_of_scope"):
+            said_of.setdefault(exact, "out of scope")
+            continue
         if exact not in ctx["said"]:
             ctx["said"][exact] = verify_boards.board_says("paylocity", h["ref"])
         said_of[exact] = page_answer(ctx["said"][exact])
@@ -1509,6 +1516,10 @@ def _held_page_words(said) -> str:
     it cannot be compared with - in words true of the run."""
     if not said or said == "stated":
         return ""
+    if said == "out of scope":
+        return ("; the held board's own page was not asked: a person ruled its company out of "
+                "the board, and a company ruled out is not probed, so nothing on file compares "
+                "the two: his ruling on this row settles this board")
     rest = str(said).split(":", 1)[1].strip() if ":" in str(said) else ""
     what = ("did not state its /jobs/All/ address" if said == "nothing" else
             f"could not be read for its /jobs/All/ address ({rest[:160]})"
@@ -2630,7 +2641,7 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
             f"address its Paylocity board's own page states; "
             f"{len(asked)} stated one")
     # ...and so is a board the owner holds (eighth blind review, 2026-11-22)
-    held_asked = holds_by_page(ctx, finds)
+    held_asked = {k: w for k, w in holds_by_page(ctx, finds).items() if w != "out of scope"}
     if held_asked:
         say(f"NOTE: asked {many(len(held_asked), 'board')} the owner holds for the /jobs/All/ "
             f"address its own page states; "

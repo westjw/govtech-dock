@@ -1123,7 +1123,12 @@ _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 # review, 2026-11-22). Between letters only, so a quote that ends an
 # attribute ('...sd=Pat'>) still ends the value.
 _PARAM_SEP = r"(?:[?&;]|%26)"         # ('&amp;', '&#38;', '&#x26;' all end in ';')
-_APOSTROPHE = r"(?<=[^\W\d_])(?:'|&#0*39;|&#x0*27;|&apos;)(?=[^\W\d_])"
+# (between letters, or a letter's percent-escape - requests sends 'D'Ávila'
+# as "D'%C3%81vila" - and as a straight or a curly quote, raw or an entity:
+# blind review of the eighth review's fixes, 2026-11-22)
+_APOSTROPHE = (r"(?:(?<=[^\W\d_])|(?<=%[0-9A-Fa-f]{2}))"
+               r"(?:'|&#0*39;|&#x0*27;|&apos;|&rsquo;|&#0*8217;|&#x0*2019;)"
+               r"(?=[^\W\d_]|%[0-9A-Fa-f]{2})")
 _PARAM_VALUE = rf"""(?:[^&#"'<>\r\n]|{_APOSTROPHE}|&(?:nbsp|#160|#xa0|#32|#x20);)*"""
 _PERSON_PARAM = re.compile(
     rf"({_PARAM_SEP}(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|last_?name|"
