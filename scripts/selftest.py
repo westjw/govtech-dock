@@ -21704,12 +21704,21 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
     SF_SITEMAP_MAX addresses are errors. Never a zero, nothing under
     /services/, nothing off the origin, two requests a posting, and one read
     a night (the build step takes the refresh step's: GOVTECH_DOCK_UNIFY_NIGHT).
+    An address the read has been to is not asked again, whatever it
+    answered, and where what it answered names a requisition is one posting,
+    counted once on both sides of the closed share - each address leading
+    to one that names none is its own; a page whose canonical link is no
+    address is a posting that does not read, never a crash; a read refused
+    keeps nothing for the night, and a failing night costs what CLAUDE.md
+    says, measured.
 
     THE PROBE. The site's name is each posting page's <title> after its last
     ' | ', and a hiringOrganization a name too; stated whole only when the
     sitemap lists SF_POSTINGS_ASKED or fewer, every one was asked, at most
     SF_SLACK answered as closed, nothing it lists was passed over, and the
-    rows the reader would publish are in one language or pair.
+    rows the reader would publish are in one language or pair; a copy not in
+    English that shows no posting, of a requisition a copy of which answered
+    closed, is closed with it, as the reader reads it.
 
     And a classic Career Site Builder board reads exactly as it did.
     """
@@ -22141,6 +22150,118 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             errors += fail(f"successfactors unify: a stale address hopping to a live posting kept its stale "
                            f"slug as the row's address, or the posting was asked twice "
                            f"({sent.count(live_hop)}): {[r['url'] for r in rows or []]} {exc}")
+        # AN ADDRESS THE READ HAS ALREADY BEEN TO IS NOT ASKED AGAIN, WHATEVER
+        # IT ANSWERED, and every address leading there is that one posting,
+        # counted once (blind review 11, 2026-11-23: only an open posting was
+        # kept, so a closed role listed three ways - its loc, a second loc
+        # hopping to the same page, that page itself - was asked three times,
+        # counted three closed, and 3 of 10 refused the board)
+        again_loc, landing_ = f"{SF}/job/Role-5/80000005/", hop(5)
+        eight = [plain(n, posting(f"Role {n}")) for n in range(1, 9)]
+        once_more = "2 of the postings its sitemap lists land on a requisition another of them had"
+        of_eight = ("1 of the 8 postings its sitemap lists (10 addresses, 2 of them landing on a requisition "
+                    "another had)")
+        for answer, what_, words in (
+                (posting("Role 5"), "an open posting",
+                 "2 of the postings its sitemap lists are a requisition read listed again in the same language"),
+                (filled, "the site's page saying it has closed", of_eight + " answered as closed"),
+                ((404, None), "a 404", of_eight + " answered as closed"),
+                ((302, SF + "/search/?q="), "a hop to its list", of_eight + " answered as closed"),
+                (blocked, "a block page", of_eight + " did not read as postings"),
+                ((403, None), "a 403", of_eight + " did not read as postings"),
+                # (a page that does not read keeps the requisition it came to
+                # as well, whatever kept it from reading: review 11's repair)
+                (posting("Role 5", titled=None, og=False), "a page naming no role",
+                 of_eight + " did not read as postings"),
+                (posting("Role 5", canonical=f"https://[{HOST}/job/Role-5/5-en_US/"),
+                 "a page whose canonical link is no address", of_eight + " did not read as postings")):
+            for first in (False, True):
+                written = [x(p_[0]) for p_ in eight] + [x(again_loc), x(landing_)]
+                if first:
+                    written = written[-1:] + written[:-1]        # (the page itself listed first)
+                rows, exc, err = go(site(eight, smap=sitemap(written),
+                                         more={again_loc: (302, landing_), landing_: answer}))
+                kept_ = sorted(nth(r["url"]) for r in rows or [])
+                if exc or kept_ != ([1, 2, 3, 4, 5, 6, 7, 8] if what_ == "an open posting" else [1, 2, 3, 4, 6, 7, 8]) \
+                        or [sent.count(u) for u in (loc(5), again_loc, landing_)] != [1, 1, 1] \
+                        or words not in err or (what_ != "an open posting") is not (once_more in err) \
+                        or SF + "/search/?q=" in sent:
+                    errors += fail(f"successfactors unify: {what_} listed three ways"
+                                   f"{', the page itself first' if first else ''} was asked "
+                                   f"{[sent.count(u) for u in (loc(5), again_loc, landing_)]} times, or not "
+                                   f"counted once ({err.strip()!r}): {kept_} {exc}")
+        # ...and every address on the way there, not the landing alone: a loc
+        # hopping to another loc already asked, or to a page another hop went
+        # through, is that posting again, and no address is asked twice
+        mid_, via_mid, via_loc, other_, mid2_, via_mid2 = (f"{SF}/job/Role-6/{90000000 + k}/"
+                                                           for k in (6, 16, 26, 36, 46, 56))
+        for answer, open_ in ((posting("Role 6"), True), ((404, None), False)):
+            # (loc 6 hops through mid_ to its page; via_mid hops to mid_,
+            # via_loc to loc 6; other_ hops through mid2_ to the page already
+            # had, and via_mid2 to mid2_)
+            rows, exc, err = go(site(eight[:4] + [plain(6, answer)], smap=sitemap(
+                [x(p_[0]) for p_ in eight[:4]] + [x(u) for u in (loc(6), via_mid, via_loc, other_, via_mid2)]),
+                more={loc(6): (302, mid_), mid_: (302, hop(6)), via_mid: (302, mid_), via_loc: (302, loc(6)),
+                      other_: (302, mid2_), mid2_: (302, hop(6)), via_mid2: (302, mid2_)}))
+            asked_ = [sent.count(u) for u in (loc(6), mid_, hop(6), via_mid, via_loc, other_, mid2_, via_mid2)]
+            if exc or sorted(nth(r["url"]) for r in rows or []) != ([1, 2, 3, 4, 6] if open_ else [1, 2, 3, 4]) \
+                    or asked_ != [1] * 8:
+                errors += fail(f"successfactors unify: {'an open' if open_ else 'a closed'} posting reached through "
+                               f"a loc and a hop on the way to it asked {asked_} of its addresses "
+                               f"({err.strip()!r}): {exc}")
+        # ...BUT ONLY WHERE WHAT IT ANSWERED NAMES A REQUISITION (blind review
+        # 11's repair, 2026-11-23): an address naming none - /job/,
+        # /job/expired/ - says nothing of which posting leads there, so the
+        # postings sent to it are each their own, closed or not read, counted
+        # each on both sides of the share as if asked, and it is asked once
+        # (130 of 131 sent to one /job/ answering 404 were one closed posting,
+        # and one row was published as the board again)
+        gone_ = SF + "/job/expired/"
+        for answer, why, words in (((404, None), "a 404", "answered as closed, more than a quarter of it"),
+                                   (filled, "the site's page saying it has closed",
+                                    "answered as closed, more than a quarter of it"),
+                                   ((302, SF + "/search/?q="), "a hop to its list",
+                                    "answered as closed, more than a quarter of it"),
+                                   (blocked, "a block page", "did not read as postings"),
+                                   ((403, None), "a 403", "did not read as postings"),
+                                   (posting("Role 9"), "robots.txt closing it", "did not read as postings")):
+            for k in (3, 10):
+                robots_ = {gone_} if why == "robots.txt closing it" else set()
+                rows, exc, err = go(site(eight[:2] + [(loc(n), gone_, answer) for n in range(10, 10 + k)]),
+                                    closed_by_robots=robots_)
+                if exc is None or rows is not None or words not in str(exc) \
+                        or robots_asked.count(gone_) != 1 or sent.count(gone_) != (0 if robots_ else 1) \
+                        or SF + "/search/?q=" in sent:
+                    errors += fail(f"successfactors unify: {k} postings sent to one address naming no "
+                                   f"requisition, answering {why}, were not each their own posting, refused "
+                                   f"as the board (asked there {sent.count(gone_)} times, robots.txt "
+                                   f"{robots_asked.count(gone_)}): {[r['url'] for r in rows or []]} {exc}")
+        rows, exc, err = go(site([plain(1, posting("Role 1"))]
+                                 + [(loc(n), SF + "/job/", None) for n in range(2, 132)]))
+        if exc is None or rows is not None or sent.count(SF + "/job/") != 1 \
+                or "130 of the 131 postings its sitemap lists answered as closed" not in str(exc):
+            errors += fail(f"successfactors unify: 130 of 131 postings sent to /job/, answering 404, were not 130 "
+                           f"closed of 131 and refused, /job/ asked once ({sent.count(SF + '/job/')}): "
+                           f"{[r['url'] for r in rows or []]} {exc}")
+        # (and either side of the share: the slack and the quarter still read a
+        # board whose few postings sent there are a day's closing - and an open
+        # page naming no requisition, reached three ways, is three of the
+        # postings the sitemap lists, as the read publishes it once for each;
+        # the page there is asked once whatever it answered)
+        for answer, n_shared, words in (
+                ((404, None), 2, "2 of the 10 postings its sitemap lists answered as closed"),
+                (blocked, 2, "2 of the 10 postings its sitemap lists did not read as postings"),
+                (posting("General Application"), 3, "1 of the 11 postings its sitemap lists answered as closed")):
+            ps = eight + [(loc(n), gone_, answer) for n in range(10, 10 + n_shared)]
+            if n_shared == 3:
+                ps = ps[:7] + [plain(8, (404, None))] + ps[8:]
+            rows, exc, err = go(site(ps))
+            if exc or words not in err or "another had" in err or sent.count(gone_) != 1 \
+                    or (n_shared != 3 and len(rows or []) != 8) \
+                    or (answer is blocked and not all(f"{loc(n)} (" in err for n in (10, 11))):
+                errors += fail(f"successfactors unify: {n_shared} postings sent to one address naming no "
+                               f"requisition were not counted each their own, the address asked once "
+                               f"({sent.count(gone_)}; {err.strip()!r}): {len(rows or [])} rows {exc}")
 
         # ---- what is not a posting of this site is not asked ------------------
         not_ours = ["https://elsewhere.example/job/Role-32/70000032/", f"{SF}/go/Sales/4488801/", f"{SF}/",
@@ -22397,6 +22518,35 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (not ok and (rows is not None or "more than a quarter of it" not in str(exc))):
                 errors += fail(f"successfactors unify: {why} closed was {'refused' if exc else 'read'} "
                                f"({len(rows or [])} rows): {exc}")
+        # ...EACH POSTING COUNTED ONCE ON BOTH SIDES OF IT (blind review 11,
+        # 2026-11-23): an address landing on a requisition another had is that
+        # posting again, so a closed one listed many ways is one closed (above), and
+        # neither a closed one nor an open one listed many ways makes the rest
+        # a smaller share of the board
+        def listed_ways(n, k):
+            # (posting n listed k ways: its loc; for k > 1, k - 2 more locs
+            # hopping where it hops, and that page itself)
+            extra_ = [f"{SF}/job/Role-{n}/{80000000 + 100 * n + j}/" for j in range(max(0, k - 2))]
+            return [loc(n)] + (extra_ + [hop(n)] if k > 1 else []), {u: (302, hop(n)) for u in extra_}
+        for spec, ok, why in (
+                ([(n, 1, True) for n in range(1, 6)] + [(7, 10, False), (8, 1, False), (9, 1, False)], False,
+                 "3 of 8 postings closed, one of them listed ten ways"),
+                ([(n, 3, True) for n in (1, 2, 3)] + [(n, 1, False) for n in (7, 8, 9)], False,
+                 "3 of 6 postings closed, the open ones listed three ways each"),
+                ([(n, 2, True) for n in range(1, 13)] + [(n, 1, False) for n in range(21, 25)], True,
+                 "4 of 16 postings closed, the open ones listed twice each")):
+            written, more_ = [], {}
+            for n, k, open_ in spec:
+                at_, hops_ = listed_ways(n, k)
+                written += [x(u) for u in at_]
+                more_.update(hops_)
+            rows, exc, err = go(site([plain(n, posting(f"Role {n}") if open_ else (404, None))
+                                      for n, k, open_ in spec], smap=sitemap(written), more=more_))
+            if ok is not (exc is None) or (ok and len(rows or []) != sum(1 for s_ in spec if s_[2])) \
+                    or (not ok and (rows is not None or "more than a quarter of it" not in str(exc))):
+                errors += fail(f"successfactors unify: {why} was {'refused' if exc else 'read'} "
+                               f"({len(rows or [])} rows), not counted a posting once on both sides of the "
+                               f"share: {exc}")
         rows, exc, err = go(site([plain(n, filled) for n in (61, 62, 63)]))
         if exc is None or rows is not None or "none of the 3 postings" not in str(exc):
             errors += fail(f"successfactors unify: a sitemap every one of whose postings has closed read as "
@@ -22543,6 +22693,64 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or hop(72) not in then_asked:
                 errors += fail(f"successfactors unify: a read that failed was kept for the night, or the "
                                f"next step did not ask for itself (asked {len(then_asked)}): {jobs!r}")
+            # ...and so is a read refused for what it found (blind review 11,
+            # 2026-11-23: nothing held the night file to the closed share's
+            # refusal, and one line writing it first had the build step serve,
+            # asking nothing, the near-empty read refresh had refused): more
+            # than a quarter of the sitemap closed, and nothing open at all
+            for routes, why in ((site([plain(n, (404, None) if n <= 5 else posting(f"Role {n}"))
+                                       for n in range(1, 17)]), "5 of its 16 postings closed"),
+                                (site([plain(n, filled) for n in (71, 72, 73)]), "every posting closed")):
+                night_file.unlink(missing_ok=True)
+                res, first_asked, then_asked, jobs, err = nightly(routes)
+                if res.get("status") != "Unknown" or night_file.exists() or not isinstance(jobs, ats.AtsError) \
+                        or MAP not in then_asked or not any("/job/" in u for u in then_asked):
+                    errors += fail(f"successfactors unify: a read refused with {why} was kept for the night, "
+                                   f"or the build step did not ask for itself (asked {len(then_asked)}): "
+                                   f"{jobs!r}")
+            # A FAILING NIGHT'S COST, as CLAUDE.md states it (blind review 11,
+            # 2026-11-23: it said "up to two reads", and the owner's yes was
+            # to the cost): a read that fails keeps nothing, so the build step
+            # asks for itself; refresh asks a 429 once more, build_board's
+            # read_board (its own code, run here) a 429 or the network,
+            # neither a 5xx; and each read asks its failing posting twice.
+            # Measured on a sitemap of twenty, the last posting failing all
+            # night
+            import ast
+            node_ = next((n_ for n_ in ast.walk(ast.parse((ROOT / "scripts" / "build_board.py").read_text()))
+                          if isinstance(n_, ast.FunctionDef) and n_.name == "read_board"), None)
+            if node_ is None:
+                errors += fail("successfactors unify: build_board.py has no read_board to measure a night by")
+            else:
+                space_ = {"ats": ats, "time": type("NoWait", (), {"sleep": staticmethod(lambda s_: None)})}
+                exec(compile(ast.Module(body=[node_], type_ignores=[]), "build_board.py", "exec"), space_)
+                twenty = [plain(n, posting(f"Role {n}")) for n in range(1, 21)]
+                a_read = 2 + 2 * len(twenty)
+                for answer, why, reads in (((429, None), "a lasting 429", 4),
+                                           (ats.requests.ConnectionError("connection refused"),
+                                            "a lasting network failure", 3),
+                                           ((503, None), "a lasting 5xx", 2)):
+                    night_file.unlink(missing_ok=True)
+                    sent.clear(), robots_asked.clear(), shut.clear()
+                    ats.requests.get = web(site(twenty, more={hop(20): answer}))
+                    with contextlib.redirect_stderr(io.StringIO()):
+                        res = refresh.check_company(comp_)
+                        built_ = space_["read_board"](comp_)
+                    if res.get("status") != "Unknown" or built_[1] or built_[2] is None or night_file.exists() \
+                            or round(len(sent) / a_read) != reads:
+                        errors += fail(f"successfactors unify: {why} on the last of twenty postings cost the "
+                                       f"night {len(sent)} requests, {len(sent) / a_read:.2f} reads of "
+                                       f"{a_read}, not about {reads} as CLAUDE.md says (refresh {res}, the "
+                                       f"build {built_[2]!r})")
+                said_ = " ".join((ROOT / "CLAUDE.md").read_text().split())
+                for words_ in ("a lasting 429 costs up to about four reads", "a lasting network failure about "
+                               "three", "and a 5xx about two"):
+                    if words_ not in said_:
+                        errors += fail(f"successfactors unify: CLAUDE.md does not say what a failing night costs "
+                                       f"as measured ({words_!r})")
+                if "a failing night costs up to two reads" in said_:
+                    errors += fail("successfactors unify: CLAUDE.md still says a failing night costs up to two "
+                                   "reads")
             for when, why in ((dt.timedelta(hours=7), "older than the run"),
                               (dt.timedelta(hours=-1), "dated ahead")):
                 night_file.write_text(json.dumps({SF: {"read_at": (ats._utcnow() - when).isoformat(),
@@ -22634,6 +22842,54 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 not in str(exc) or loc(88) in sent:
             errors += fail(f"successfactors unify: {ats.SF_SLACK + 1} postings that did not read were not "
                            f"the board unreadable, at once: {rows!r} {exc} (asked {sent})")
+        # A PAGE STATING ITS OWN ADDRESS AS NO ADDRESS AT ALL - a canonical
+        # 'https://[...', which the page's own markup can say - is a posting
+        # that does not read: left out and said, never a crash of the whole
+        # read (blind review 11, 2026-11-23: urlsplit's ValueError took the
+        # board down; the refresh filed the company 'fetcher crashed:
+        # ValueError', the probe 'unreadable (ValueError)')
+        no_address = f"https://[{HOST}/job/Role-82/82-en_US/"
+        for at_, why in (((loc(82), None, posting("Role 82", canonical=no_address)), "a posting answering in place"),
+                         ((loc(82), hop(82), posting("Role 82", canonical=no_address)), "a posting where it hops"),
+                         ((loc(82), hop(82), filled.replace("<head>", f'<head><link rel="canonical" href="'
+                                                                     f'{no_address}" />', 1)),
+                          "a closed posting's page")):
+            routes = site([plain(81, posting("Account Executive")), at_, plain(88, posting("Role 88"))])
+            try:
+                rows, exc, err = go(routes)
+                sent.clear(), robots_asked.clear(), shut.clear()
+                ats.requests.get = web(routes)
+                with contextlib.redirect_stderr(io.StringIO()):
+                    res = refresh.check_company({"id": "acme-gov", "name": "Acme Gov",
+                                                 "ats": {"type": "successfactors", "ref": SF}})
+                got = said(routes)
+            except Exception as crash:              # noqa: BLE001 - a crash is the failure pinned
+                rows, exc, err, res, got = None, crash, "", {}, {}
+            how_ = str(got.get("how"))
+            if exc or [nth(r["url"]) for r in rows or []] != [81, 88] \
+                    or "1 of the 3 postings its sitemap lists did not read as postings" not in err \
+                    or "its canonical link is no address" not in err or res.get("status") != "Yes" \
+                    or got.get("failed") != "unreadable" or got.get("transient") or got.get("names") \
+                    or "its canonical link is no address" not in how_ or "ValueError" in how_ \
+                    or loc(82) not in how_:
+                errors += fail(f"successfactors unify: {why} whose canonical link is no address was not left "
+                               f"out and said as a posting that did not read ({err.strip()!r}), the refresh "
+                               f"read {res}, the probe {got.get('failed')!r} {how_!r}: "
+                               f"{[r['url'] for r in rows or []]} {exc!r}")
+        for page_, ask_, why in ((posting("Role 82", canonical=no_address), ats.successfactors_unify_requisition,
+                                  "its requisition"),
+                                 (f'<html><head><link rel="canonical" href="{no_address}"></head><body>x</body>'
+                                  f'</html>', ats.successfactors_unify_language, "its language")):
+            try:
+                ask_(page_, loc(82), SF)
+                said_ = "nothing"
+            except ats.AtsError as exc_:
+                said_ = str(exc_)
+            except Exception as exc_:               # noqa: BLE001
+                said_ = repr(exc_)
+            if "its canonical link is no address" not in said_:
+                errors += fail(f"successfactors unify: {why}, asked of a page whose canonical link is no address, "
+                               f"answered {said_[:120]!r}, not an error saying so")
 
         # ---- the probe ---------------------------------------------------------
         seven = [plain(n, posting(f"Role {n}")) for n in range(1, 8)]
@@ -22722,6 +22978,66 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (not stated and "written in more than one language (en, fr)" not in how_):
                 errors += fail(f"successfactors unify probe, {why}: stated {got['stated']} ({how_!r}), "
                                f"wanted {stated}")
+        # A COPY NOT IN ENGLISH THAT SHOWS NO POSTING, of a requisition a copy
+        # of which answered closed, is closed with it in the probe as in the
+        # reader, weighed once every copy is asked (blind review 11,
+        # 2026-11-23: a bilingual board with one role just closed was read
+        # whole by the reader and held 'unreadable' here, its French copy
+        # called a block or error page)
+        with_twin = ("1 of them a copy that shows no posting, of a requisition another copy of which the site "
+                     "says has closed")
+        for postings_, why in (([c for n in range(1, 9) for c in pair(n, shut_=n == 1)], "its English copy first"),
+                               ([c for n in range(1, 9) for c in pair(n, shut_=n == 1, fr_first=True)],
+                                "its French copy first"),
+                               (pair(1, en_answer=(404, None), fr_answer=gone_fr)
+                                + [c for n in range(2, 9) for c in pair(n)], "its English copy a 404 where it hops")):
+            got = said(site(postings_))
+            rows, exc, err = go(site(postings_))
+            if not got["stated"] or got["failed"] or got["names"] != ["Acme Gov Software"] \
+                    or with_twin not in str(got["how"]) or "block or error page" in str(got["how"]) \
+                    or not vb.proven({"name": "Acme Gov Software"}, got)["ok"] or exc or len(rows or []) != 7:
+                errors += fail(f"successfactors unify probe: a bilingual board with one role closed, {why}, was "
+                               f"not stated whole as the reader reads it ({len(rows or [])} rows, {exc}): {got}")
+        got = said(site([c for n in (1, 2, 3) for c in pair(n, shut_=True)]))
+        if got["stated"] or got["names"] or got["failed"] or "none of the 6 postings asked" not in str(got["how"]) \
+                or "3 of them a copy that shows no posting" not in str(got["how"]):
+            errors += fail(f"successfactors unify probe: a bilingual board every role of which has closed was "
+                           f"not said so, its French copies closed with their English: {got}")
+        # (a copy closed with its requisition counts toward SF_SLACK as any
+        # closed posting does: two roles closed in both languages are four
+        # closed, so the board is not stated whole)
+        got = said(site([c for n in range(1, 9) for c in pair(n, shut_=n <= 2)]))
+        if got["stated"] or got["failed"] or got["names"] != ["Acme Gov Software"] \
+                or "4 more on it answered as closed" not in str(got["how"]) \
+                or f"more than {ats.SF_SLACK} closed" not in str(got["how"]):
+            errors += fail(f"successfactors unify probe: two bilingual roles closed, four copies, were not more "
+                           f"than {ats.SF_SLACK} closed: {got}")
+        # (and an English copy that shows no posting is never closed by
+        # another copy: the site's words are read in English, so it is the
+        # page it is - a block page, the board not read - as the reader
+        # leaves it out unread, its French copy's 404 notwithstanding)
+        en_blocked = pair(1, en_answer=blocked, fr_answer=(404, None)) + [c for n in (2, 3, 4) for c in pair(n)]
+        got = said(site(en_blocked))
+        rows, exc, err = go(site(en_blocked))
+        if got["stated"] or got["names"] or got["failed"] != "unreadable" \
+                or "block or error page" not in str(got["how"]) or exc or len(rows or []) != 3 \
+                or "1 of the 8 postings its sitemap lists did not read as postings" not in err:
+            errors += fail(f"successfactors unify probe: an English copy showing a block page, its French copy "
+                           f"a 404, was closed with it ({len(rows or [])} rows read, {exc}): {got}")
+        # ...and one that no copy of its requisition asked answered closed for,
+        # or with no requisition to know it by, is the board not read - in
+        # words that do not call it a block or error page it may not be
+        for postings_, why, words_ in (
+                (pair(1, fr_answer=gone_fr) + [c for n in (2, 3, 4) for c in pair(n)], "whose English copy is open",
+                 "no copy of its requisition asked answered as closed"),
+                ([(f"{SF}/job/Gestionnaire/61000001/", None, gone_fr)] + pair(1, shut_=True)[:1]
+                 + [c for n in (2, 3, 4) for c in pair(n)], "with no requisition to know it by",
+                 "it names no requisition")):
+            got = said(site(postings_))
+            if got["stated"] or got["names"] or got["failed"] != "unreadable" or got["transient"] \
+                    or words_ not in str(got["how"]) or "block or error page" in str(got["how"]):
+                errors += fail(f"successfactors unify probe: a French copy that shows no posting {why} was not "
+                               f"the board unreadable, in words that are true: {got}")
         # (one rule says what language a copy is in, for the reader's English
         # copy and the probe's languages alike: the locale of the address it
         # hopped to, else its page's <html lang>, else the locale its page

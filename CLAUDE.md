@@ -3688,8 +3688,14 @@ review and the owner's word, through the wiring door.
   the runner's temp directory, never committed), a Unify read that comes
   whole is kept there (`ats.UNIFY_NIGHT`), and the build step's read of that
   board is it, asking nothing - Octave 265 a night with robots.txt. A read
-  that fails keeps nothing, so the build step asks for itself (a failing
-  night costs up to two reads); one older than `UNIFY_NIGHT_MAX_AGE` (6h,
+  that fails keeps nothing, so the build step asks for itself, and **a
+  failing night costs up to about four reads** (blind review 11, 2026-11-23:
+  these words said up to two): refresh asks the board once more on a 429,
+  build_board on a 429 or the network, and each read asks its failing
+  posting twice, so a lasting 429 costs up to about four reads (Octave about
+  1,060 requests, eight a posting), a lasting network failure about three,
+  and a 5xx about two - less where the failing posting comes early in the
+  sitemap, as the read stops there; one older than `UNIFY_NIGHT_MAX_AGE` (6h,
   past the job's 5h), or made without the ads a caller wants, is asked
   again; with no file named (any run but the nightly) each read asks for
   itself. scope_review.py's read of a company with openings nobody has
@@ -3720,8 +3726,20 @@ review and the owner's word, through the wiring door.
   answering at its own sitemap address and its French copy hopping were
   published as two roles). Where copies in one language differ, the row is
   the address whose slug is the one the page answers at (a stale slug that
-  hops to the posting is not the row's), and an address the read has
-  already landed on is not asked again. **What a posting answers**: the
+  hops to the posting is not the row's). **An address the read has already
+  been to is not asked again**, whatever it answered there - a posting, a
+  closed one, a page showing none, one that did not read - and where what
+  it answered names a requisition (the <N>-<locale> it came to, or the one
+  its page states), every address leading to it is that one posting,
+  counted once, open or closed (blind review 11, 2026-11-23: only an open
+  posting was kept, so a closed role listed three ways was asked three
+  times and counted three closed, and 3 of 10 refused the board). **An
+  address naming no requisition** - /job/, /job/expired/ - says nothing of
+  which posting leads there, so each address leading to it is a posting of
+  its own, that answer had once and counted for each, closed or not read,
+  as if asked (blind review 11's repair: 130 of 131 postings sent to one
+  /job/ answering 404 were counted one closed posting, and one row was
+  published as the board again). **What a posting answers**: the
   site saying it closed (`successfactors_closed`, `successfactors_filled`)
   leaves it out,
   said on stderr - and so does a copy in another language than English that
@@ -3744,11 +3762,14 @@ review and the owner's word, through the wiring door.
   company reads as one we could not read; anything else (a page showing
   no posting that is not the site saying so,
   robots.txt closing it, a 401 or 403, a hop off /job/ or off the host, a
-  hop round in a loop - each address asked once - a page naming no role) is
+  hop round in a loop - each address asked once - a page naming no role, a
+  page stating its own address as no address at all - a canonical
+  'https://[...', which crashed the whole read until blind review 11) is
   left out and said up to `SF_SLACK` (2) postings, and more is the board
   unreadable; every posting closed is an error, and
   so is more than a quarter of the sitemap closed in one read
-  (`SF_CLOSED_SHARE`, never fewer than `SF_SLACK`): not a day's postings
+  (`SF_CLOSED_SHARE`, never fewer than `SF_SLACK`), each posting counted
+  once on both sides of it: not a day's postings
   closing, but a site answering 404 for postings it has, a soft block or a
   sitemap long out of date (blind review 10: 130 of 131 answering 404
   published one row as the board).
@@ -3766,7 +3787,14 @@ review and the owner's word, through the wiring door.
   /<Brand>/job/, www., http - is part of the board nobody asked: blind
   review 10, 2026-11-23, when the rest was stated "every one it lists
   asked"); a longer one is asked about its first `SF_POSTINGS_SAMPLED` (5)
-  that answer, for the desk; a
+  that answer, for the desk. A copy in another language than English that
+  shows no posting, of a requisition a copy of which answered closed, is
+  closed with it, by the reader's rule, weighed once every copy is asked
+  (blind review 11, 2026-11-23: a bilingual board with one role just closed
+  was read whole by the reader and held here "unreadable", its French copy
+  called a block or error page); one with no closed copy asked, or no
+  requisition to know it by, is the board not read, in words that do not
+  call it a block page it may not be; an English
   block page or any other failure is the board not read. **Copies in more
   than one language** are the classic probe's language rule, asked of what
   the reader would publish (blind review 10, 2026-11-23: it was not asked,
@@ -3803,9 +3831,9 @@ review and the owner's word, through the wiring door.
   for the door.
   Guard: `check_successfactors_unify_reads_its_sitemap` (77 one-line
   breakages of the reader and the probe, each alone in a private copy, each
-  caught); blind review 10's findings on the reader and the probe are each
-  pinned there or in `check_successfactors_reads_its_career_site`, each pin
-  failing with its fix undone.
+  caught); blind review 10's and 11's findings on the reader and the probe
+  are each pinned there or in `check_successfactors_reads_its_career_site`,
+  each pin failing with its fix undone.
 - **Measured** on six CSB hosts by the research of 2026-11-20 (Landis+Gyr 63,
   JENOPTIK 175, SPX 237 and Indra 623 classic; Aurigo and Esri Canada Unify)
   and on Gainwell's of 2026-11-22. **Read live once** the same day (details
