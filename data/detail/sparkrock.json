@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "How Independent and Private Schools Can Raise Funds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://sparkrock.com/knowledge-base/blog/independent-school-fundraising/"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -49,7 +58,7 @@
    "date": "2026-08-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "What schools should look for in permission slip and forms software",
+   "headline": "How Independent and Private Schools Can Raise Funds",
    "kind": "press",
    "kind_rule": null,
    "url": "https://sparkrock.com/knowledge-base/blog/what-schools-should-look-for-in-permission-slip-and-forms-software/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://sparkrock.com/knowledge-base/blog/fundraiser-data-hygiene/"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Common activity fund management mistakes in K-12 schools (and how to fix them)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://sparkrock.com/knowledge-base/blog/common-activity-fund-management-mistakes-in-k-12-schools-and-how-to-fix-them/"
   }
  ],
  "profile": {

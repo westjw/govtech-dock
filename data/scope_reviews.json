@@ -8216,5 +8216,96 @@
   "quote": "focused on local governments, including municipalities and City Clerk offices",
   "on": "2026-11-22",
   "by": "agent:scope-review-2026-11-22"
+ },
+ "aurigo-software::Account Manager, Renewals and Expansion": {
+  "verdict": "SLED",
+  "why": "Agree. The only buyers this ad names are public: it delivers capital programs for public agencies and asks for public agency budgeting knowledge. Aurigo sells overwhelmingly to DOTs, cities, water and transit. 'Infrastructure owners' is loose, and the 'healthcare' in the company boilerplate is company-wide. Neither names a private buyer for this book of accounts, so it is not MIXED.",
+  "quote": "Your work directly shapes how major capital programs are delivered for public agencies and infrastructure owners. ... Familiarity with capital project lifecycles, procurement, and public agency budgeting.",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "aurigo-software::Senior Account Executive - Northeast": {
+  "verdict": "SLED",
+  "why": "Agree. This is public-sector new business in the Northeast, selling Aurigo Essentials to local governments through government procurement. It requires a record of selling to local government agencies. The resellers it mentions are channel partners, not buyers, and no private or federal buyer is named.",
+  "quote": "Develop and execute sales strategies to expand Aurigo Essentials\u2019 presence in local governments.",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "here-technologies::Digital Sales Representative (DSR)": {
+  "verdict": "UNCLEAR",
+  "why": "Agree. The ad names no buyers, only 'defined customer segments' and 'transactional deals', so neither B2B nor FEDERAL has a quote. It is a hybrid role in Sao Paulo, Brazil, so it cannot be a US SLED role whoever the buyers are. Left for the owner.",
+  "quote": null,
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "here-technologies::Senior Account Executive \u2013 Automotive": {
+  "verdict": "B2B",
+  "why": "Agree. This is a UK-based key-account role selling navigation, infotainment, connected-vehicle and automated-driving software to car makers (OEMs) and their Tier 1 suppliers. No public buyer appears anywhere in the ad. The quote is word for word in the ad and names the buyers.",
+  "quote": "The EMEA Passenger Vehicle Sales team grows HERE's commercial partnerships with leading automotive OEMs and mobility players throughout Europe, the Middle East and Africa.",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "nutanix::Senior Commercial Account Manager": {
+  "verdict": "B2B",
+  "why": "Agree. I read the posting page and the quote is there word for word. The role sits in Amsterdam/Hoofddorp, reports to the Benelux director, and sells to the Dutch commercial market ('a solid network in the commercial business market', 'engage with well-known companies'). No public-sector buyer appears in the first 6,000 characters, which is all the reader showed.",
+  "quote": "Strong existing network within large enterprises in commercial accounts in the Netherlands",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "octave::Sales Director - CAD (Remote - US)": {
+  "verdict": "B2B",
+  "why": "Agree. CAD here means computer-aided design (the BricsCAD team), not dispatch. The role leads Americas sales and channel teams that target 'industries, companies', and it asks for enterprise selling in AEC, EPC and manufacturing. No government, procurement or public buyer is named anywhere in the ad. All three quote fragments are word for word in the ad.",
+  "quote": "focused on our computer-aided design software products ... including target industries, companies, and market trends ... Enterprise selling experience in the AEC, EPC and/or Manufacturing sectors.",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "octave::Senior Account Executive, Public Safety (Remote- South / US)": {
+  "verdict": "SLED",
+  "why": "Agree. It sells OnCall Dispatch/CAD, Mobiles and RMS in a TX/AR/LA/OK territory, through government RFP procurement, to 911 centers, police, fire, EMS, municipalities and counties. The ad says these tools are used by 'state and local government agencies across the U.S.' It names no private or federal buyer.",
+  "quote": "principally selling to 911/PSAPs, police, fire, EMS, communications centers, municipalities, counties, and other government/public-safety organizations.",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "octave::Senior Account Executive, Public Safety (Remote- Southeast / US)": {
+  "verdict": "SLED",
+  "why": "Agree. This is the same public-safety ad for an AL/GA/FL/SC territory: dispatch CAD, Mobiles and RMS sold through government procurement to 911 centers, police, fire, EMS, municipalities and counties. It names no private or federal buyer.",
+  "quote": "principally selling to 911/PSAPs, police, fire, EMS, communications centers, municipalities, counties, and other government/public-safety organizations.",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "octave::Senior Account Executive- Public Safety (Remote- Mountain West / US)": {
+  "verdict": "SLED",
+  "why": "Agree. This is the same public-safety ad for the Mountain West, selling to state and local 911, police, fire, EMS, municipalities and counties through government procurement. It names no private or federal buyer.",
+  "quote": "principally selling to 911/PSAPs, police, fire, EMS, communications centers, municipalities, counties, and other government/public-safety organizations.",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "octave::Senior Account Manager - SLED (Remote - NE US)": {
+  "verdict": "SLED",
+  "why": "Agree. It grows a Northeast US portfolio of Public Sector accounts through RFP/RFI deal cycles. The ad defines those accounts as State, Local Government and Education, matching the title. No private or federal buyer is named.",
+  "quote": "Experience selling into Public Sector organizations (State, Local Government, Education)",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "panorama-education::Mid-Market Account Executive": {
+  "verdict": "SLED",
+  "why": "Agree. 'Mid-Market' is the size of the school district, not a business segment. The role sells only to K-12 school districts and their superintendents and administrators. No private schools or businesses are named.",
+  "quote": "closing new business opportunities with K-12 school districts across a defined territory with 2,000 to 20,000 students enrolled",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "ukg::Net New Account Executive 3 SMB United States Sales": {
+  "verdict": "UNCLEAR",
+  "why": "CHANGED from B2B on the 11-22 precedent. 'SMB' is a size band (ruled 11-19, 11-21, 11-22), not a buyer. UKG's own job feed (apply.ukg.com/api/pcsx/position_details, read 2026-11-23 through read_page.py) gives the ad: UKG's generic sales template ('familiar with the local business climate'), naming no buyer type, public or private - the same template the 11-22 skeptics left UNCLEAR. UKG also sells to governments. Listed for the owner.",
+  "quote": null,
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
+ },
+ "uplight::Utility Sales Manager/Director": {
+  "verdict": "MIXED",
+  "why": "Agree. In the same territory it sells to private Investor-Owned Utilities and to large public power entities (municipal and public power utilities are SLED buyers), so it sells to both sides. The ad does not say one side only.",
+  "quote": "structuring multi-million-dollar deals with Investor-Owned Utilities (IOUs) and large public power entities",
+  "on": "2026-11-23",
+  "by": "agent:scope-review-2026-11-23"
  }
 }

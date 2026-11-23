@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Create a Set to Find Small or Large Service Entries",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/create-a-set-to-find-small-or-large-service-entries/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/advanced-options-let-you-fine-tune-searches/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Coordinating Volunteers \u2014 The Complete Guide to Organizing Effective Volunteer Programs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/coordinating-volunteers-the-complete-guide-to-organizing-effective-volunteer-programs/"
   }
  ]
 }

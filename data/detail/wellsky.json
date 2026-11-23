@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Data, workflows, and dollars: What the FY 2027 final rules mean for post-acute care",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/data-workflows-and-dollars-what-the-fy-2027-final-rules-mean-for-post-acute-care/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "What is outsourced revenue cycle management for DME?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/cybersecurity-awareness-month-a-good-time-to-take-stock-of-your-security-posture/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "How can home health certification help you deepen your expertise?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/how-can-home-health-certification-help-you-deepen-your-expertise/"
   }
  ]
 }

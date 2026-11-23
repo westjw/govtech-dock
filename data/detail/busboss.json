@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "School Transportation Software Evaluation Guide 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/school-transportation-software-evaluation-guide-2026"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/school-routing-software-performance-on-district-networks"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-06",
-   "headline": "How to Fix Student Boarding Verification Accuracy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/how-to-fix-student-boarding-verification-accuracy"
   }
  ],
  "profile": {

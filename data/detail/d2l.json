@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Five Assumptions Worth Challenging in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/five-assumptions-worth-challenging-in-higher-education/"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "BCNET expands access to AI-powered learning with D2L Brightspace",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/newsroom/bcnet-expands-access-to-ai-powered-learning-with-d2l-brightspace/"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/beyond-features-a-modern-framework-for-lms-selection/"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Humber Polytechnic and D2L partner to reimagine teaching and learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/newsroom/humber-polytechnic-and-d2l-partner-to-reimagine-teaching-and-learning/"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "New Hire Orientation Guide for HR Leaders and Managers",
-   "kind": "leadership",
-   "kind_rule": "Hire",
-   "url": "https://www.d2l.com/blog/new-hire-orientation/"
   }
  ],
  "profile": {
