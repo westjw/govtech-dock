@@ -2784,20 +2784,33 @@ round.
   pair on file - and prints it under the row ("leans on its account number:
   ..."); any other `account` leaves the row alone (`evidence`). That is
   enough to HOLD by (holders, holds and twins meet the board under the
-  number too). The account CLEARS something - a row waiting for the company
-  under the number, taken for this very board - and goes into the record's
-  note only where `wire_found.account_clears` shows more: a pair on file
-  already opening that number under this slug, or check 1's own sighting
-  asking for the board by that very number (`check_1.saw` carries
+  number too). The account goes into the record's note only where
+  `wire_found.account_noted` shows more: a pair on file already opening
+  that number under this slug, or check 1's own sighting asking for the
+  board by that very number (`check_1.saw` carries
   apply.workable.com/api/v1/widget/accounts/N, `account_sighted`: the wire
   rests on it) with the plan's `workable_numbers` opening it under this slug
-  and nothing on file opening it under another. The look says which,
-  printing the sighting, or "for its holds alone" (repair of review 9,
-  2026-11-23: an edit giving the row the waiting row's number as its
-  `account` and tying it to the find's slug in `workable_numbers` waived the
-  company's own unruled row - it dropped off his queue - and the note planted
-  the pair). A held row's doubt is filed with those words only of its own
-  board's number where `account_clears` shows it, or of a pair the file
+  and nothing on file opening it under another - always of the row's own
+  board, which the record then holds. The account CLEARS NOTHING: a row
+  waiting for the company under the number is taken for this very board
+  only where a pair on file opens that number under this slug, never on the
+  worklist's `workable_numbers`, the row's `account` or check 1's sighting,
+  each of which an edit writes (review 10, 2026-11-23: the repair of review
+  9 took such a row on the three, and with `check_1.saw` edited too the
+  company's own unruled row was waived, dropped off his queue, and the note
+  planted the pair). So the plan's own follow passes the company's own
+  unruled row under the number and apply leaves the WIRE row alone ("... is
+  the Workable account number the row says their site asks for the board
+  by, and nothing on file opens that number under ...; ... his to settle -
+  tell the owner"). The look says which, printing the sighting and that the
+  note says it, or "for its holds alone" (repair of review 9, 2026-11-23: an
+  edit giving the row the waiting row's number as its `account` and tying it
+  to the find's slug in `workable_numbers` waived the company's own unruled
+  row - it dropped off his queue - and the note planted the pair); and under
+  each WIRE row it names every row waiting on the owner the wire takes off
+  his queue ("takes <board>, waiting in <store> for it, as this very board"),
+  which the code covers. A held row's doubt is filed with those words only
+  of its own board's number where `account_noted` shows it, or of a pair the file
   already says (`wire_found.held_words`); any other such words in the
   worklist's doubt are taken out (and taken out again where taking them out
   spells them anew), and the look prints each pair a held row files with
@@ -3145,13 +3158,14 @@ round.
   not record in the row's `waiting_seen`, or one it records that is not this
   very board - another board under every key it is known by
   (`wire_found.waiting_keys`, the plan's own test, asked by keys apply may
-  lean on: the row's own board, its account where `account_clears` shows it,
-  and a waiting Workable number's slug only where a pair on file says it,
-  never the worklist's `workable_numbers` alone - review 9, 2026-11-23: an
+  lean on: the row's own board, and a waiting Workable number's slug only
+  where a pair on file says it - never the worklist's `workable_numbers`,
+  the row's `account` or check 1's sighting - review 9, 2026-11-23: an
   edited `account`, or a number tied to the find's slug in
   `workable_numbers`, waived the company's own unruled row and it dropped
-  off his queue; and its repair: the two edited together, which
-  `account_tie` takes on the worklist's own record, waived it too), or a
+  off his queue; its repair: the two edited together, which `account_tie`
+  takes on the worklist's own record, waived it too; and review 10: so did
+  the two with `check_1.saw` edited to ask by the number), or a
   Paylocity board tied
   by less than an id that agrees: the plan holds beside either and records
   neither, so a worklist saying it saw one is not taken at its word (review
@@ -3168,10 +3182,11 @@ round.
   on its word. The look prints, under each row it wires, every /All/ address
   it leans on ("leans on what the plan was told: ...") and the Workable
   account number it is asked for by, with what ties it to the slug and
-  whether that clears and goes into the note ("leans on its account number:
-  ...", or "... for its holds alone ..."), and under each held row it files
-  the pairs its doubt files with and the account words it is filed without;
-  and the code covers them.
+  whether that goes into the note ("leans on its account number: ...", or
+  "... for its holds alone ..."), and every row waiting on the owner that
+  the wire takes off his queue ("takes ..."), and under each held row it
+  files the pairs its doubt files with and the account words it is filed
+  without; and the code covers them.
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from
