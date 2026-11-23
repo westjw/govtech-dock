@@ -42905,6 +42905,44 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 errors += fail(f"the board of a hold {label} whose company is ruled out of scope "
                                f"was asked for its page: probed {box.probed}; "
                                f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+    # ...and WHAT A HELD BOARD'S PAGE STATED IS TRUE OF EVERY HOLD OF THAT
+    # SPELLING, a ruled-out company's too, met in either order: the page is
+    # asked once, for the in-scope company's hold, and a find it shows to be
+    # another board is wired, compared by it in apply too (review 9, 2026-11-23:
+    # the ruled-out company's hold of the very same board was never given the
+    # address and held the find "cannot be shown"; and met after the in-scope
+    # hold, the ruled-out one must never write "not asked" over what the page
+    # said - setdefault, finding 7(e))
+    LIST_TW, ALL_TW, ALL_G8 = plist(2169), pall(0x9d3, "Tw-Other-Co"), pall(0x9d4, "G8-Co")
+    SP_TW = wf.spelling("paylocity", LIST_TW)
+    for label, refused_id in (("the ruled-out company's row first", "tws-co"),
+                              ("the in-scope company's row first", "twr-co")):
+        with _WiringBox([co("tws-co", "Tws Co"), co("twr-co", "Twr Co", out_of_scope=OOS),
+                         co("g8", "G8 Co")],
+                        {f"paylocity/{ALL_G8}": (3, ["G8 Co"])},
+                        files={bp.FOUND.name: [frow("tws-co", "Tws Co", LIST_TW),
+                                               frow("twr-co", "Twr Co", LIST_TW)],
+                               bp.RULED.name: {refused_id: {
+                                   "accept": False, "by": "owner", "on": "2026-11-21",
+                                   "why": "not theirs"}}},
+                        says={f"paylocity/{LIST_TW}": {"address": ALL_TW}}) as box:
+            code, text, wl_tw, rows_tw = box.plan(_wb_results({
+                "g8": names("g8", "paylocity", ALL_G8)}), name=f"worklist-tw-{len(label)}.json")
+            expect(rows_tw, "g8", "WIRE")
+            if ((rows_tw or {}).get("g8") or {}).get("leans_on") != {SP_TW: ALL_TW} \
+                    or box.probed.count(f"paylocity/{LIST_TW}") != 1 \
+                    or "NOTE: asked 1 board the owner holds for the /jobs/All/ address its own " \
+                       "page states; 1 stated one" not in text:
+                errors += fail(f"two holds of one board, {label}: what its page stated was not "
+                               f"taken for both, or not said: leans_on "
+                               f"{((rows_tw or {}).get('g8') or {}).get('leans_on')}; probed "
+                               f"{box.probed}; "
+                               f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+            code, text, _ = box.look(wl_tw)
+            if "WIRE 1 " not in text or f"leans on what the plan was told: the page of " \
+                    f"{LIST_TW[8:]} states its address is {ALL_TW}" not in text:
+                errors += fail(f"two holds of one board, {label}: apply did not compare the find "
+                               f"with both by what the page stated: {text[-500:]!r}")
     return errors
 
 

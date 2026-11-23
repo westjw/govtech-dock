@@ -1501,10 +1501,11 @@ def holds_by_page(ctx: dict, finds: list) -> dict:
     `paylocity`: a refusal, a reader's doubt, a door-filed row, a pending
     proposal) with no /All/ id that a find consider compares cannot be
     compared with, once per spelling, for the /All/ address its own page
-    states, and compare by it for the rest of the run: the hold is known by it
-    (`refs`; `page_stated`, and `refs_on_file` without it, for the rows that
-    lean on it). {exact spelling: what the page said} (page_answer), also
-    kept in ctx["hold_said"] for the words.
+    states, and compare by it for the rest of the run: every hold of that
+    spelling is known by it, whichever hold it was asked for (`refs`;
+    `page_stated`, and `refs_on_file` without it, for the rows that lean on
+    it). {exact spelling: what the page said} (page_answer), also kept in
+    ctx["hold_said"] for the words.
 
     ONE HOLD AT A BARE /List/ ADDRESS HELD EVERY BOARD FOUND AT AN /All/ ONE
     (eighth blind review, 2026-11-22): a door-filed row whose page stated
@@ -1520,7 +1521,8 @@ def holds_by_page(ctx: dict, finds: list) -> dict:
     hold its page shows to be it - and is held or skipped then, never wired.)
     """
     said_of = ctx.setdefault("hold_said", {})
-    for h in (ctx.get("held_boards") or {}).get("paylocity") or []:
+    holds = (ctx.get("held_boards") or {}).get("paylocity") or []
+    for h in holds:
         refs = _held_refs(h)
         if not isinstance(h.get("ref"), str) \
                 or any(board_proposals.paylocity_ids(r)[0] for r in refs) \
@@ -1532,16 +1534,32 @@ def holds_by_page(ctx: dict, finds: list) -> dict:
         # record is not (records_by_page): such a company is not probed at all,
         # and the hold stands, said as not asked (blind review of the eighth
         # review's fixes, 2026-11-22: the hold's page was asked, its record's not)
+        # - and never in place of what that page said when another company's
+        # hold of the very same spelling asked it (setdefault)
         if ((ctx.get("by_id") or {}).get(h["id"]) or {}).get("out_of_scope"):
             said_of.setdefault(exact, "out of scope")
             continue
         if exact not in ctx["said"]:
             ctx["said"][exact] = verify_boards.board_says("paylocity", h["ref"])
         said_of[exact] = page_answer(ctx["said"][exact])
-        if said_of[exact] == "stated":
-            address = board_proposals.paylocity_address(ctx["said"][exact]["address"])
-            h.update(refs_on_file=refs, page_stated=address,
-                     refs=list(dict.fromkeys([*refs, address])))
+    # WHAT A HELD BOARD'S PAGE STATED IS TRUE OF THAT BOARD, WHOSEVER HOLD ASKED
+    # IT (review 9, 2026-11-23). The page is asked once per spelling, and every
+    # hold of that spelling is known by its answer - a hold of a company ruled
+    # out of scope too, which asks nothing itself: the out-of-scope hold of a
+    # bare /List/ board another company's hold asked kept holding a find its page
+    # shows to be another board, "cannot be shown" though the plan's own read
+    # showed it. Added to the addresses it is on file by, never in their place.
+    for h in holds:
+        if not isinstance(h.get("ref"), str):
+            continue
+        refs = _held_refs(h)
+        exact = spelling("paylocity", h["ref"])
+        if said_of.get(exact) != "stated" or h.get("page_stated") \
+                or any(board_proposals.paylocity_ids(r)[0] for r in refs):
+            continue
+        address = board_proposals.paylocity_address(ctx["said"][exact]["address"])
+        h.update(refs_on_file=refs, page_stated=address,
+                 refs=list(dict.fromkeys([*refs, address])))
     return said_of
 
 

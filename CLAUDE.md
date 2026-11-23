@@ -3027,7 +3027,12 @@ round.
   scope, which is not probed at all, as its record is not - the row says
   the held board's page was not asked) - one refused at the desk held every /All/ board found,
   for every company, in all three doors, forever (eighth blind review,
-  2026-11-22). Its page's address shows which board the hold is, and the
+  2026-11-22). What the page states, asked for one hold, is taken for every
+  hold of that spelling, a ruled-out company's included (that asks nothing
+  more), and a ruled-out hold met after it never writes "not asked" over it
+  (review 9, 2026-11-23: the ruled-out company's hold of the very board kept
+  holding a find the page showed to be another board, "cannot be shown").
+  Its page's address shows which board the hold is, and the
   hold is never dropped: a find is compared by it (the WIRE row names it in
   `leans_on`, so apply compares by it too), a page that fails on the day
   SKIPs the find, and where the page states nothing the row says so and
