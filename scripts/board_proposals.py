@@ -545,9 +545,21 @@ def paylocity_relation(a_refs, b_refs) -> str:
                have, and a tenant's name missing on one side (Celona's record
                at a bare .../All/<uuid>, a bare /List/<n> find: fifth blind
                review, 2026-11-22) - or the ids agree on one kind and disagree
-               on another. It holds the board for a person.
+               on another - or no id agrees and the tenants' names are not one
+               spelling yet may be one name written two ways
+               (paylocity_near_names: alike in the finder's form, or the one
+               the start of the other). It holds the board for a person.
       apart    ids of one kind disagree under no shared tenant's name, or the
-               tenants' names disagree where no id compares: two boards.
+               tenants' names disagree where no id compares - and are not one
+               name written two ways: two boards.
+
+    ONE NAME, TWO SPELLINGS (eighth blind review, 2026-11-22). The door keeps
+    a tenant's name as the board's own page states it, "," ";" "(" ")"
+    included, and find_site_boards writes it only as far as its first other
+    character (paylocity_tenant_form): one board's link
+    /List/2140/Acme-(US),-Inc is the finder's /List/2140/Acme-, and its page's
+    /All/<uuid>/Acme-(US),-Inc. Compared as two strings they were "apart",
+    and the door wired past a filed row and a record of the very board.
     """
     a, b = _paylocity_sides(a_refs), _paylocity_sides(b_refs)
     agree = disagree = False
@@ -559,11 +571,50 @@ def paylocity_relation(a_refs, b_refs) -> str:
                 disagree = True
     if agree:
         return "unknown" if disagree else "same"
+    near = bool(paylocity_near_names(a_refs, b_refs))
     if disagree:
-        return "tenant" if a[2] & b[2] else "apart"
+        return "tenant" if a[2] & b[2] else "unknown" if near else "apart"
     if a[2] and b[2]:
-        return "same" if a[2] & b[2] else "apart"
+        return "same" if a[2] & b[2] else "unknown" if near else "apart"
     return "unknown"
+
+
+# the characters find_site_boards keeps of the name after a Paylocity id (its
+# _paylocity pattern): it cuts the name at the first other one, and strips a
+# last "."
+_PAYLOCITY_FORM = re.compile(r"[a-z0-9_.-]*")
+
+
+def paylocity_tenant_form(name) -> str:
+    """A Paylocity tenant's name in the finder's form, the one form two names
+    are compared in: lowercased, cut at the first character other than a
+    letter, a digit, "_", "." or "-", a last "." stripped
+    (find_site_boards._paylocity). "Acme-(US),-Inc" is "acme-"."""
+    return _PAYLOCITY_FORM.match(str(name or "").lower()).group(0).rstrip(".")
+
+
+def paylocity_near_names(a_refs, b_refs) -> list:
+    """[(a's name, b's name)], sorted: the tenants' names after the two
+    sides' ids that are not one spelling and may still be one name - alike
+    in the finder's form (paylocity_tenant_form), or the one's form the start
+    of the other's (a name cut short). Empty where the two sides share a name,
+    or one side has none."""
+    a, b = _paylocity_sides(a_refs)[2], _paylocity_sides(b_refs)[2]
+    if a & b:
+        return []
+    out = []
+    for x in sorted(a):
+        for y in sorted(b):
+            fx, fy = paylocity_tenant_form(x), paylocity_tenant_form(y)
+            if fx.startswith(fy) or fy.startswith(fx):
+                out.append((x, y))
+    return out
+
+
+def paylocity_ids_differ(a_refs, b_refs) -> bool:
+    """Do two Paylocity boards have ids of one kind that share none?"""
+    a, b = _paylocity_sides(a_refs), _paylocity_sides(b_refs)
+    return any(a[k] and b[k] and not a[k] & b[k] for k in (0, 1))
 
 
 def paylocity_ids_agree(a_refs, b_refs) -> bool:

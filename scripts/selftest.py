@@ -41496,6 +41496,89 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         expect(rows_q2, "qry-co", "HOLD", "this board's own page states its /jobs/All/ address "
                                           "in a form this door does not keep",
                never=("did not state",))
+    # ...and ONE NAME IN TWO SPELLINGS is one name to compare: a link to
+    # /List/2140/Acme-(US),-Inc is the finder's /List/2140/Acme- (it keeps a
+    # tenant's name only as far as its first character other than a letter, a
+    # digit, _, . or -), and the door keeps the name a page states whole. Where
+    # no id compares the two, a record at the bare /All/ address whose note
+    # states the whole name, and an unruled row a door filed there carrying it,
+    # each hold the find - in the plan, in apply for a worklist planned before
+    # either, and in held_board, which discovery and wire_embedded ask; a name
+    # cut short is the same doubt, and a name that is neither is another board
+    # (eighth blind review, 2026-11-22: compared as two strings they were
+    # "apart", and the door wired past a filed row and a record of the board)
+    import find_site_boards as fsb
+    hits_sp = fsb.find_refs(f'<iframe src="{PL}List/2140/Acme-(US),-Inc"></iframe>')[0]
+    FIND_SP = hits_sp[0][3] if hits_sp else None
+    BARE_SP, WHOLE_SP = pall(0x970), pall(0x970, "Acme-(US),-Inc")
+    if FIND_SP != plist(2140, "Acme-"):
+        errors += fail(f"the finder no longer writes a Paylocity tenant's name cut at its first "
+                       f"character outside [A-Za-z0-9_.-] (it wrote {FIND_SP!r}): the door's "
+                       f"one form of a name (paylocity_tenant_form) is the finder's")
+    for a_refs, b_refs, want in (
+            ([FIND_SP], [BARE_SP, WHOLE_SP], "unknown"),                 # the finder's form
+            ([plist(2140, "Acme-Inc.")], [pall(0x971, "Acme-Inc")], "unknown"),  # its last "."
+            ([plist(2140, "Acme")], [pall(0x971, "Acme-Holdings")], "unknown"),  # cut short
+            ([pall(0x972, "Acme-")], [WHOLE_SP], "unknown"),             # ids of one kind differ
+            ([plist(2140, "Bolt-Co")], [WHOLE_SP], "apart"),
+            ([pall(0x972, "Bolt")], [WHOLE_SP], "apart"),
+            ([plist(2140, "Acme-Inc")], [pall(0x971, "Acme-Inc")], "same")):
+        if bp.paylocity_relation(a_refs, b_refs) != want \
+                or bp.paylocity_relation(b_refs, a_refs) != want:
+            errors += fail(f"{a_refs[0][len(PL):]} and {b_refs[-1][len(PL):]} are "
+                           f"{bp.paylocity_relation(a_refs, b_refs)!r}, wanted {want!r}")
+    with _WiringBox([co("sp-rec", "Sp Rec", ats={"type": "paylocity", "ref": BARE_SP},
+                        ats_note=f"wired 2026-11-20: sprec.test/careers embeds the board; its "
+                                 f"own page states its address is {WHOLE_SP}; the board names "
+                                 f"\"Sp Rec\"; 3 postings read"),
+                     co("sp-co", "Sp Co"), co("sq-co", "Sq Co"), co("sq-row", "Sq Row")],
+                    {f"paylocity/{FIND_SP}": (3, ["Sp Co"]),
+                     f"paylocity/{plist(2141, 'Bcme-')}": (3, ["Sq Co"])},
+                    files={bp.FOUND.name: [frow("sq-row", "Sq Row", pall(0x973),
+                                                page_ref=pall(0x973, "Bcme-(US),-Inc"))]}) as box:
+        code, text, _wl, rows_sp = box.plan(_wb_results({
+            "sp-co": names("sp-co", "paylocity", FIND_SP),
+            "sq-co": names("sq-co", "paylocity", plist(2141, "Bcme-"))}), name="worklist-sp.json")
+        expect(rows_sp, "sp-co", "HOLD", "1 record on file reads a Paylocity board whose tenant's "
+                                         "name may be",
+               "acme- and acme-(us),-inc", "this board's own page did not state its /jobs/All/ "
+                                           "address",
+               never=("carries no such name", "put on file by its whole"))
+        expect(rows_sp, "sq-co", "HOLD", "is in the owner's queue (Boards we found) for Sq Row",
+               "their tenants' names, bcme- and bcme-(us),-inc, may be one name written two ways",
+               never=("carries no such name",))
+        held_sp = bp.held_boards_for_the_owner(box.tmp, json.loads(
+            (box.tmp / "companies.json").read_text()))
+        if (bp.held_board(held_sp, "paylocity", plist(2141, "Bcme-"), "sq-co", []) or ("",))[0] \
+                != "queued":
+            errors += fail("held_board, which discovery and wire_embedded ask, did not hold a "
+                           "board whose tenant's name is a filed row's in the finder's form")
+    # ...and in apply, both put on file since a plan that wired the find
+    with _WiringBox([co("sp-rec", "Sp Rec"), co("sp-co", "Sp Co"), co("sq-co", "Sq Co"),
+                     co("sq-row", "Sq Row")],
+                    {f"paylocity/{FIND_SP}": (3, ["Sp Co"]),
+                     f"paylocity/{plist(2141, 'Bcme-')}": (3, ["Sq Co"])}) as box:
+        code, text, wl_sp, rows_sp = box.plan(_wb_results({
+            "sp-co": names("sp-co", "paylocity", FIND_SP),
+            "sq-co": names("sq-co", "paylocity", plist(2141, "Bcme-"))}),
+            name="worklist-sp2.json")
+        expect(rows_sp, "sp-co", "WIRE")
+        expect(rows_sp, "sq-co", "WIRE")
+        box.by_hand(lambda by_id, cs: by_id["sp-rec"].update(
+            ats={"type": "paylocity", "ref": BARE_SP},
+            ats_note=f"wired 2026-11-20: its own page states its address is {WHOLE_SP}"))
+        (box.tmp / bp.FOUND.name).write_text(json.dumps(
+            [frow("sq-row", "Sq Row", pall(0x973), page_ref=pall(0x973, "Bcme-(US),-Inc"))]))
+        code, text, _ = box.look(wl_sp)
+        body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
+        for cname, must in (("Sp Co", "whose tenant's name may be"),
+                            ("Sq Co", "may be one name written two ways")):
+            line = next((ln for ln in body.splitlines() if ln.strip().startswith(cname + " ")),
+                        "")
+            if must not in line or "plan again" not in line:
+                errors += fail(f"{cname}: apply wired a board whose tenant's name, in the "
+                               f"finder's form, is a record's or a filed row's put on file "
+                               f"since the plan: {line[:300]!r} {text[-300:]!r}")
 
     # (14) A ROW UNDER A RECORD'S ID ABOUT ANOTHER BOARD lends the record none of
     # its page's address: a find of a third board is still held against the

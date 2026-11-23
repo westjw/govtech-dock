@@ -1472,10 +1472,19 @@ def records_by_page(ctx: dict) -> dict:
     return out
 
 
-def _clear_words(others: list, record_said: dict | None) -> str:
+def _whole(refs) -> bool:
+    """Is a Paylocity board known by an /All/ id and by a tenant's name?"""
+    return any(board_proposals.paylocity_ids(r)[0] for r in refs or ()) \
+        and bool(board_proposals.paylocity_tenants(refs))
+
+
+def _clear_words(others: list, record_said: dict | None, refs_of: dict | None = None) -> str:
     """How a record whose Paylocity board nothing compares stops holding
-    every later find, and what its own page said where this run asked it."""
-    out = []
+    every later find, and what its own page said where this run asked it.
+    A record already known by its whole /All/<uuid>/<Tenant> address is not
+    told to be put on file by it (`refs_of`: every address each is known by):
+    the board found is the one its addresses leave short."""
+    out, short_ = [], False
     for o in others[:3]:
         said = (record_said or {}).get(o["id"])
         asked = ("" if said is None else
@@ -1484,9 +1493,11 @@ def _clear_words(others: list, record_said: dict | None) -> str:
                  if str(said).startswith("failed:") else "")
         out.append(f"{o.get('name') or o['id']}'s board is on file by "
                    f"{short((o.get('ats') or {}).get('ref'))}{asked}")
-    return ("; " + "; ".join(out) + " - put on file by its whole /jobs/All/<uuid>/<Tenant> "
-            "address, it can be compared with any board found by an /All/ address or by its "
-            "tenant's name")
+        short_ = short_ or not _whole((refs_of or {}).get(o["id"])
+                                      or [(o.get("ats") or {}).get("ref")])
+    return ("; " + "; ".join(out) + (" - put on file by its whole /jobs/All/<uuid>/<Tenant> "
+                                     "address, it can be compared with any board found by an "
+                                     "/All/ address or by its tenant's name" if short_ else ""))
 
 
 def _page_words(refs: list, page_said) -> str:
@@ -1527,26 +1538,50 @@ def relation_words(rl: str, board: str, other: str, refs: list, other_refs: list
     if board_proposals.paylocity_conflict(refs, other_refs):
         return (f"whether {board} is {other} cannot be shown: their ids agree on one kind "
                 f"and disagree on the other")
+    spelt = board_proposals.paylocity_near_names(refs, other_refs)
+    if spelt:
+        return (f"whether {board} is {other} cannot be shown: their tenants' names, "
+                f"{spelt[0][0]} and {spelt[0][1]}, may be one name written two ways ({SPELT}), "
+                + ("under ids of one kind that differ - two boards of one tenant, or one the "
+                   "ids do not settle" if board_proposals.paylocity_ids_differ(refs, other_refs)
+                   else f"and no id of one kind is on both{_page_words(refs, page_said)}"))
     return (f"whether {board} is {other} cannot be shown: one Paylocity board has a /jobs/List/ "
             f"id and a /jobs/All/ id, tied only by the tenant's name after either, and one of "
             f"the two addresses carries no such name{_page_words(refs, page_said)}")
 
 
+# how two tenants' names can be one name written two ways (paylocity_near_names)
+SPELT = ("the finder keeps a tenant's name only as far as its first character other than a "
+         "letter, a digit, _, . or -, so the one may be the other cut short")
+
+# every relation of a Paylocity board to a record on file that holds it for a
+# person (record_relation), in the order the words say them - the plan and
+# apply hold on the same ones; "same" is said as the board's holder, and only
+# "apart" holds nothing
+RECORD_HOLDS = ("tenant", "unknown", "spelt", "conflict")
+
+
 def record_relation(refs: list, o_refs: list) -> str:
     """paylocity_relation of a board and a record on file, with "unknown"
     split: "conflict" where their ids agree on one kind and disagree on the
-    other, so the words say that and not that nothing compares them."""
+    other, and "spelt" where no id agrees and the tenants' names may be one
+    name written two ways (paylocity_near_names), so the words say that and
+    not that nothing compares them."""
     rl = board_proposals.paylocity_relation(refs, o_refs)
-    return "conflict" if rl == "unknown" and board_proposals.paylocity_conflict(refs, o_refs) \
-        else rl
+    if rl == "unknown" and board_proposals.paylocity_conflict(refs, o_refs):
+        return "conflict"
+    if rl == "unknown" and board_proposals.paylocity_near_names(refs, o_refs):
+        return "spelt"
+    return rl
 
 
 def records_words(rl: str, refs: list, others: list, board: str, page_said=None,
-                  record_said: dict | None = None) -> str:
+                  record_said: dict | None = None, refs_of: dict | None = None) -> str:
     """What a Paylocity board that records on file may share says, in words
-    that name them (`others`: their records) and, where nothing on file
-    compares the two, say how the owner clears it (`record_said`: what each
-    record's own page said where the plan asked it, records_by_page)."""
+    that name them (`others`: their records; `refs_of`: every address each is
+    known by) and, where nothing on file compares the two, say how the owner
+    clears it (`record_said`: what each record's own page said where the plan
+    asked it, records_by_page)."""
     names = ", ".join(f"{o.get('name') or o['id']} at {short((o.get('ats') or {}).get('ref'))}"
                       for o in others[:3]) + (f" and {len(others) - 3} more"
                                               if len(others) > 3 else "")
@@ -1558,11 +1593,18 @@ def records_words(rl: str, refs: list, others: list, board: str, page_said=None,
         return (f"{n} a Paylocity board that ends in {board}'s tenant's name under another id "
                 f"({names}): two boards of one tenant, or one the ids do not settle, so whether "
                 f"{board} is already on file is not shown")
+    if rl == "spelt":
+        spelt = next((p for o in others for p in board_proposals.paylocity_near_names(
+            refs, (refs_of or {}).get(o["id"]) or [])), ("?", "?"))
+        return (f"{n} a Paylocity board whose tenant's name may be {board}'s written another way "
+                f"({names}): {spelt[0]} and {spelt[1]} ({SPELT}), and no id on both agrees"
+                f"{_page_words(refs, page_said)}, so whether {board} is already on file cannot be "
+                f"shown{_clear_words(others, record_said, refs_of)}")
     return (f"{n} a Paylocity board that {board} cannot be compared with ({names}): one Paylocity "
             f"board has a /jobs/List/ id and a /jobs/All/ id, tied only by the tenant's name "
             f"after either, one of the two addresses carries no such name"
             f"{_page_words(refs, page_said)}, so whether {board} is already on file cannot be "
-            f"shown{_clear_words(others, record_said)}")
+            f"shown{_clear_words(others, record_said, refs_of)}")
 
 
 def board_keys(board: dict, ctx: dict) -> list:
@@ -2002,11 +2044,12 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # same tenant's name under another id, one nothing on the two
         # addresses compares (fifth and sixth blind reviews, 2026-11-22), or
         # one whose ids agree on one kind and disagree on the other
-        for rl in ("tenant", "unknown", "conflict"):
+        refs_of = {o["id"]: o_refs for o, o_refs in ctx.get("paylocity_records") or []}
+        for rl in RECORD_HOLDS:
             others = [o for o, r_ in rel_records if r_ == rl]
             if others:
                 doubts.append(records_words(rl, refs, others, show(kind, ref), page_said,
-                                            ctx.get("record_said")))
+                                            ctx.get("record_said"), refs_of))
     if pl:
         rel_finds = [(i, t_refs, board_proposals.paylocity_relation(refs, t_refs))
                      for i, t_refs in ctx.get("paylocity_finds") or [] if i != cid]
@@ -3204,17 +3247,19 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
         # addresses do not tell apart from it (consider; fifth and sixth blind
         # reviews, 2026-11-22) - on file since the plan, or not asked by the
         # plan that made the row
-        recs = [(o, record_relation(refs, o_refs))
-                for o, o_refs in (held_for.get("paylocity_records")
-                                  or board_proposals.paylocity_records(list(by_id.values())))
-                if o["id"] != cid and o["id"] in by_id]
+        on_file = [(o, o_refs) for o, o_refs in (
+            held_for.get("paylocity_records")
+            or board_proposals.paylocity_records(list(by_id.values())))
+            if o["id"] != cid and o["id"] in by_id]
+        recs = [(o, record_relation(refs, o_refs)) for o, o_refs in on_file]
         same = [o for o, rl in recs if rl == "same"]
         if same:
             return "moved", f"{show(kind, ref)} is now on file as the board of {same[0]['name']}"
-        for rl in ("tenant", "unknown", "conflict"):
+        for rl in RECORD_HOLDS:
             others = [o for o, r_ in recs if r_ == rl]
             if others:
-                words = records_words(rl, refs, others, show(kind, ref), row.get("page_said"))
+                words = records_words(rl, refs, others, show(kind, ref), row.get("page_said"),
+                                      refs_of={o["id"]: o_refs for o, o_refs in on_file})
                 return "moved", f"{words} - plan again"
     else:
         held = [by_id[i]["name"] for i in dict.fromkeys(i for k in keys

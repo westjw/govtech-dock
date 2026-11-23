@@ -2972,7 +2972,16 @@ round.
   address ends at "; ", and a filed row's `page_ref` reaches its waiting
   row too. Ids that agree on one kind and differ on the other hold the
   board, said as that for a hold and for a record on file alike
-  (`wire_found.record_relation`). The key of
+  (`wire_found.record_relation`). Two tenants' names are compared in one
+  form, the finder's (`board_proposals.paylocity_tenant_form`: cut at the
+  first character other than a letter, a digit, _, . or -, a last "."
+  stripped): names that are not one spelling but alike in that form, or the
+  one the start of the other, are "unknown" and hold the board, never
+  "apart" (`paylocity_near_names`; "spelt" beside a record) - the finder's
+  /List/2140/Acme- and a page's /All/<uuid>/Acme-(US),-Inc were two
+  strings, and the door wired past a filed row and a record of the board
+  (eighth blind review, 2026-11-22); a record known by its whole address is
+  never told to be put on file by it. The key of
   an iCIMS portal is its slug, of a Jibe, Oracle, ApplicantPro, Teamtailor or
   SuccessFactors board its host, of a Zoho Recruit career site its host and page name (a
   posting's address is under it), and of a Comeet board its company uid,
