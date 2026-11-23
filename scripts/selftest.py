@@ -21617,17 +21617,23 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
     the page's role, its first place token with a value (else its country;
     'Remote' said first for a remote workplace), its 'Posting Start Date' on
     an en-US page only, the sitemap's address and its workplace type; the
-    copies of one N in two languages are one row, the English. A closed
-    posting is left out and said; a 429, a 5xx or the network fails the
-    whole read, the nightly way; up to SF_SLACK postings that do not read
-    are left out and said, more fail the read; a sitemap robots.txt closes,
-    one that is not there, one cut short (its root never closed), one with
-    no posting and one with more than SF_SITEMAP_MAX are errors. Never a zero, nothing under /services/,
-    nothing off the origin, two requests a posting.
+    copies of one N - the N it hops to, else the one its page states - are
+    one row, the English. A closed posting is left out and said (a French
+    copy showing nothing, of a requisition closed in English, with it), up
+    to a quarter of the sitemap; a 429, a 5xx or the network is asked once
+    more, and a second fails the whole read, the nightly way; up to SF_SLACK
+    postings that do not read are left out and said, more fail the read; a
+    sitemap robots.txt closes, one that is not there, one cut short (its
+    root never closed), one with no posting and one with more than
+    SF_SITEMAP_MAX addresses are errors. Never a zero, nothing under
+    /services/, nothing off the origin, two requests a posting, and one read
+    a night (the build step takes the refresh step's: GOVTECH_DOCK_UNIFY_NIGHT).
 
     THE PROBE. The site's name is each posting page's <title> after its last
-    ' | '; stated whole only when the sitemap lists SF_POSTINGS_ASKED or
-    fewer, every one was asked and at most SF_SLACK answered as closed.
+    ' | ', and a hiringOrganization a name too; stated whole only when the
+    sitemap lists SF_POSTINGS_ASKED or fewer, every one was asked, at most
+    SF_SLACK answered as closed, nothing it lists was passed over, and the
+    rows the reader would publish are in one language or pair.
 
     And a classic Career Site Builder board reads exactly as it did.
     """
