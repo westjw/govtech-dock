@@ -4995,7 +4995,10 @@ def _sf_known(known: dict, chain: list, what: str, got):
     is asked twice in one read, whatever it answered: a posting, a closed
     one, a page showing none, one that did not read (blind review 11,
     2026-11-23: only an open posting was kept, so a closed role listed three
-    ways was asked three times and counted three times closed). Handed back."""
+    ways was asked three times and counted three times closed). Each answer
+    keeps the requisition it names, by which successfactors_unify knows an
+    address leading there as that one posting, or as one of its own. Handed
+    back."""
     for u in chain:
         known[u] = (what, got)
     return what, got
@@ -5004,18 +5007,21 @@ def _sf_known(known: dict, chain: list, what: str, got):
 def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
     """('row', (row, requisition, where, language)), ('closed', (requisition,
     language)), ('blank', (why, requisition, language)) for a page that shows
-    no posting and is not the site saying it closed, or ('unread', why), for
-    one posting a Unify sitemap lists, asked once; the requisition is the one
-    the copy is of (None where it is not known), the language the copy's own
-    (successfactors_unify_language). A FAILURE OF THE DAY -
-    a 429, a 5xx, the network failing or timing out (_sf_of_the_day) - is
-    asked once more, after the gate's backoff for a 429 and SF_RETRY_PAUSE
-    for the rest, and failing again is raised as it came (blind review 10,
-    2026-11-23: one 5xx among a read's ~265 requests took the whole board
-    off for the night, and nothing asked it again). `known` holds what this
-    board's read has already had at each address it went to (_sf_known): a
-    hop to one of them is that answer again, not asked twice, and is handed
-    back as ('again', (what, got)) - one posting, so counted once."""
+    no posting and is not the site saying it closed, or ('unread', (why,
+    requisition)), for one posting a Unify sitemap lists, asked once; the
+    requisition is the one the copy is of (None where it is not known; for
+    one that did not read, the one the address it came to names), the
+    language the copy's own (successfactors_unify_language). A FAILURE OF
+    THE DAY - a 429, a 5xx, the network failing or timing out
+    (_sf_of_the_day) - is asked once more, after the gate's backoff for a
+    429 and SF_RETRY_PAUSE for the rest, and failing again is raised as it
+    came (blind review 10, 2026-11-23: one 5xx among a read's ~265 requests
+    took the whole board off for the night, and nothing asked it again).
+    `known` holds what this board's read has already had at each address it
+    went to (_sf_known): a hop to one of them is that answer again, not
+    asked twice, and is handed back as ('again', (what, got)) - one posting
+    with the one before it where that answer names a requisition, a posting
+    of its own where it names none (successfactors_unify)."""
     known = {} if known is None else known
     for attempt in (1, 2):
         landed: list = []
@@ -5026,13 +5032,15 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
             # (and each address on the way there leads to that answer too)
             return "again", _sf_known(known, landed, *known[again.address])
         except AtsError as exc:
+            # (the address it came to names its requisition: a 404 there, a
+            # refusal there)
+            hop = landed[-1] if landed else ""
             if successfactors_closed(exc):
-                # (a 404 at the address it hopped to names its requisition)
-                hop = landed[-1] if landed else ""
                 return _sf_known(known, landed, "closed",
                                  (_sf_requisition(hop), successfactors_unify_language("", hop, origin)))
             if not _sf_of_the_day(exc):
-                return _sf_known(known, landed, "unread", f"{url} ({_text(str(exc))[:160]})")
+                return _sf_known(known, landed, "unread", (f"{url} ({_text(str(exc))[:160]})",
+                                                           _sf_requisition(hop)))
             if attempt == 2:
                 raise
             if not isinstance(exc, RateLimited):
@@ -5044,7 +5052,8 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
     except AtsError as exc:
         # (a page stating its own address as no address at all: which
         # posting it is is not said plainly, so it is not read)
-        return _sf_known(known, landed, "unread", f"{url} ({_text(str(exc))[:160]})")
+        return _sf_known(known, landed, "unread", (f"{url} ({_text(str(exc))[:160]})",
+                                                   _sf_requisition(where)))
     if not successfactors_shown(page):
         if successfactors_filled(page):
             return _sf_known(known, landed, "closed", (req, lang))
@@ -5052,7 +5061,7 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
                                                   f"site saying it has closed)", req, lang))
     row = successfactors_unify_row(page, url)
     if row is None:
-        return _sf_known(known, landed, "unread", f"{url} (a posting page that names no role)")
+        return _sf_known(known, landed, "unread", (f"{url} (a posting page that names no role)", req))
     if FETCH_DETAILS:
         # the ad is on the page already read: no request more
         row["jd"] = successfactors_ad(page)
@@ -5124,7 +5133,9 @@ def successfactors_unify(origin: str) -> list[dict]:
     slug is the one its page answers at where copies in one language
     differ (a stale slug that hops to the posting is not the row's). An
     address the read has already been to is not asked again, whatever it
-    answered, and is one posting: counted once. Never a zero."""
+    answered, and where what it answered names a requisition it is one
+    posting, counted once; each address leading to one that names none is a
+    posting of its own. Never a zero."""
     urls, notes = successfactors_sitemap(origin)
     closed, unread, read, known, shut, blank = [], [], [], {}, set(), []
     twice, twice_out = 0, 0
@@ -5136,19 +5147,31 @@ def successfactors_unify(origin: str) -> list[dict]:
         else:
             what, got = _sf_unify_posting(url, origin, known)
         if what == "again":
-            # AN ADDRESS LANDING WHERE ANOTHER HAD IS THAT ONE POSTING (blind
-            # review 11, 2026-11-23: a closed role listed three ways was asked
-            # three times and counted three closed, and 3 of 10 refused the
-            # board): a posting read is a row of its requisition, grouped
-            # below; one that answered as closed or did not read is counted
-            # once, and said
-            twice += 1
+            # AN ADDRESS LANDING WHERE ANOTHER HAD IS THAT ONE POSTING where
+            # what it answered there names a requisition - the <N>-<locale>
+            # it came to, or the one its page states (blind review 11,
+            # 2026-11-23: a closed role listed three ways was asked three
+            # times and counted three closed, and 3 of 10 refused the board):
+            # a posting read is a row of its requisition, grouped below; one
+            # that answered as closed or did not read is counted once, and
+            # said. AN ADDRESS NAMING NONE - /job/, /job/expired/ - says
+            # nothing of which posting leads there, so each address leading
+            # to it is its own posting, that answer had once, not asked again
+            # (review 11's repair: 130 of 131 sent to one /job/ answering 404
+            # were one closed posting, and one row was published as the board)
             what, got = got
-            if what != "row":
-                twice_out += 1
-                continue
-            row, req, where, lang = got
-            got = (dict(row, url=url), req, where, lang)
+            if got[0] if what == "closed" else got[1]:
+                twice += 1
+                if what != "row":
+                    twice_out += 1
+                    continue
+            elif what in ("blank", "unread"):
+                # (said of this address, as if asked)
+                got = (f"{url} (it leads where another address its sitemap lists did: "
+                       f"{got[0]})",) + got[1:]
+            if what == "row":
+                row, req, where, lang = got
+                got = (dict(row, url=url), req, where, lang)
         if what == "row":
             read.append(got)
         elif what == "closed":
@@ -5168,18 +5191,20 @@ def successfactors_unify(origin: str) -> list[dict]:
             # not is the page it is, at once.
             blank.append((url, got[0], got[1][0]))
         else:
-            unread.append(got if what == "unread" else got[0])
+            unread.append(got[0])
         if len(unread) > SF_SLACK:
             raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
                            f"did not read as postings ({unread[0]} the first): read in part, so "
                            f"not read")
     # ONE POSTING COUNTS ONCE, closed or open: what is counted below is of the
-    # postings the sitemap lists once each, an address landing where another
-    # had being that posting again (blind review 11, 2026-11-23)
+    # postings the sitemap lists once each, an address landing on a
+    # requisition another had being that posting again (blind review 11,
+    # 2026-11-23), and one landing where another had on none a posting of
+    # its own
     once = len(urls) - twice
     listed = (f"the {len(urls)} postings its sitemap lists" if not twice else
               f"the {once} postings its sitemap lists ({len(urls)} addresses, {twice} of them landing "
-              f"where another had)")
+              f"on a requisition another had)")
     with_it = [url for url, _why, n in blank if n in shut]
     closed += with_it
     unread += [why for url, why, n in blank if n not in shut]
@@ -5220,9 +5245,9 @@ def successfactors_unify(origin: str) -> list[dict]:
         said.append(f"{len(closed)} of {listed} answered as closed on their own page (a 404 or 410, a "
                     f"hop to its list, or the site's page saying so{twins_shut}) and are not published")
     if twice_out:
-        said.append(f"{twice_out} of the postings its sitemap lists land where another of them had, "
-                    f"which answered as closed or did not read as a posting there, and are counted "
-                    f"once, not asked again")
+        said.append(f"{twice_out} of the postings its sitemap lists land on a requisition another of "
+                    f"them had, which answered as closed or did not read as a posting there, and are "
+                    f"counted once, not asked again")
     if unread:
         said.append(f"{len(unread)} of {listed} did not read as postings and are left out: "
                     f"{'; '.join(unread)}")

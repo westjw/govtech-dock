@@ -3704,11 +3704,18 @@ review and the owner's word, through the wiring door.
   the address whose slug is the one the page answers at (a stale slug that
   hops to the posting is not the row's). **An address the read has already
   been to is not asked again**, whatever it answered there - a posting, a
-  closed one, a page showing none, one that did not read - and every
-  address leading to it is that one posting, counted once, open or closed
-  (blind review 11, 2026-11-23: only an open posting was kept, so a closed
-  role listed three ways was asked three times and counted three closed,
-  and 3 of 10 refused the board). **What a posting answers**: the
+  closed one, a page showing none, one that did not read - and where what
+  it answered names a requisition (the <N>-<locale> it came to, or the one
+  its page states), every address leading to it is that one posting,
+  counted once, open or closed (blind review 11, 2026-11-23: only an open
+  posting was kept, so a closed role listed three ways was asked three
+  times and counted three closed, and 3 of 10 refused the board). **An
+  address naming no requisition** - /job/, /job/expired/ - says nothing of
+  which posting leads there, so each address leading to it is a posting of
+  its own, that answer had once and counted for each, closed or not read,
+  as if asked (blind review 11's repair: 130 of 131 postings sent to one
+  /job/ answering 404 were counted one closed posting, and one row was
+  published as the board again). **What a posting answers**: the
   site saying it closed (`successfactors_closed`, `successfactors_filled`)
   leaves it out,
   said on stderr - and so does a copy in another language than English that
