@@ -178,12 +178,15 @@ def decide(rules: list[tuple[bool, str]], url: str) -> bool:
     it sends it, and a browser - or a server that reads a backslash as a
     slash - reads '/jobs\\..\\private/x' the same way: asked as written, no
     rule matched them. An http(s) page is read only when the path as written
-    and the path as served (`served`) are both allowed."""
+    and the path as served (`served`) are all allowed: served as a Java
+    server serves it, every ';...' path parameter cut off (blind review 9,
+    2026-11-23: '/careers;jsessionid=1/private/x' is /careers/private/x),
+    and as a server that knows no path parameter serves it."""
     p = urllib.parse.urlsplit(url)
     query = f"?{p.query}" if p.query else ""
     paths = [p.path or "/"]
     if p.scheme in ("http", "https"):
-        paths.append(served(paths[0]))
+        paths += [served(paths[0]), served(paths[0], params=False)]
     for path in dict.fromkeys(paths):
         asked, best = _norm(path + query), None
         for allow, pat in rules:
@@ -210,7 +213,8 @@ def _segments(path: str) -> list[str]:
 # A dot segment with a path parameter after it: Tomcat, Jetty and Spring cut
 # ';...' off a segment before they resolve it, and serve '/en/..;/careers/' as
 # /careers/ (blind review of the eighth review's fixes, 2026-11-22: only the
-# SuccessFactors and Jobvite readers' own segment rules knew it)
+# SuccessFactors and Jobvite readers' own segment rules knew it). They cut it
+# off EVERY segment, which `served` does; this is climbs' rule.
 _DOT_SEGMENT = re.compile(r"\.{1,2}(?:;.*)?", re.S)
 
 
@@ -227,14 +231,30 @@ def climbs(path: str) -> bool:
     return any(_dot(s) for s in _segments(path))
 
 
-def served(path: str) -> str:
+def served(path: str, params: bool = True) -> str:
     """The path a server serves for `path`: read as _segments reads it, with
     every '.' and '..' segment resolved (RFC 3986 5.2.4) - '/private/x' for
     '/jobs/../private/x', '/jobs/%2e%2e/private/x' and '/jobs\\..\\private/x'.
-    A path with none of those is itself."""
-    if not (_SLASH.search(path or "") or climbs(path)):
-        return path
-    segs, out = _segments(path), []
+
+    A PATH PARAMETER IS CUT OFF EVERY SEGMENT FIRST (blind review 9,
+    2026-11-23). Tomcat, Jetty and Spring cut ';...' off each segment, to the
+    next '/', before they decode or resolve anything (and after a browser, or
+    ats.follow, has read a backslash as a slash): '/careers;jsessionid=1/
+    private/x' is served as /careers/private/x, and '/jobs/x;v=1' as /jobs/x.
+    A segment that is nothing but a parameter goes with it, as Tomcat merges
+    the two slashes it leaves: '/a/;x/b' is /a/b. Only a dot segment's
+    ('..;', '.;x') was cut before, so a parameter mid-path was asked of
+    robots.txt only as written. `params=False` is that earlier reading, the
+    path of a server that knows no path parameter: decide asks it too, so no
+    path asked before goes unasked. A path with none of these is itself."""
+    p = path or ""
+    if params and ";" in p:
+        parts = p.replace("\\", "/").split("/")
+        p = "/".join(s.split(";", 1)[0] for i, s in enumerate(parts)
+                     if not (0 < i < len(parts) - 1 and s.startswith(";")))
+    if not (_SLASH.search(p) or climbs(p)):
+        return p
+    segs, out = _segments(p), []
     for i, s in enumerate(segs[1:], 1):
         last = i == len(segs) - 1
         if _dot(s) == "..":

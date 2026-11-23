@@ -622,6 +622,21 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   anything is asked (`robots.climbs`) - '..;' and '.;x' too, which Tomcat,
   Jetty and Spring cut to a dot segment and serve from elsewhere ('/en/..;/
   careers/' is /careers/; blind review of the eighth review's fixes).
+  **They cut a path parameter off EVERY segment** (blind review 9,
+  2026-11-23): ';...' to the next '/', before they decode or resolve
+  anything, so '/careers;jsessionid=1/private/x' is served as
+  /careers/private/x and was asked only as written. `robots.served` cuts it
+  off every segment first (after reading a backslash as a slash, as a browser
+  does), and a segment that is nothing but a parameter goes with it, as
+  Tomcat merges the two slashes it leaves ('/a/;x/b' is /a/b). An empty
+  segment WRITTEN as such ('/a//b') is still asked as written and resolved
+  as RFC 3986 reads it, not merged as Tomcat and nginx merge it - not
+  changed here, and not yet reviewed. `robots.decide`
+  asks the path as written, as served so, and as served with the parameter
+  kept (`served(..., params=False)`, the earlier reading - a server that
+  knows no path parameter), and a page is read only when all three are
+  allowed; an escaped ';' ('%3B') is a character of its segment, not a
+  parameter.
   A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
   network error, raised as `AtsError("network error: ...")` and never cached,
   so it is retried and never reads as a refusal (`add_company` gives it the
@@ -2446,7 +2461,20 @@ and never said where in a page a reference sat.
   letters ('Pat O'Brien', eighth blind review) or beside a letter's
   percent-escape ("D'%C3%81vila", as the library sends D'Ávila), straight or
   curly, raw or as an entity (&#39;, &#x27;, &apos;, &rsquo;, &#8217;,
-  &#x2019;). `generated` is the date of the
+  &#x2019;) - and in every other spelling of one (blind review 9,
+  2026-11-23): the left curly quote (&lsquo;, &#8216;, &#x2018;), the
+  modifier letter apostrophe (&#700;, &#x2bc;), HTML5's &CloseCurlyQuote;,
+  &OpenCurlyQuote; and &rsquor;, any of the numeric references without its
+  ';' before a letter or a letter's escape ('&#39Brien', '&#x27Brien'), and each form
+  escaped twice (&amp;#39;, &amp;#x27;, &amp;apos;, &amp;rsquo;,
+  &amp;#8217;). A bare &amp; (and &#38;, &#x26;) is none of these and still
+  ends the value - it is the next key's separator, so the account or ref
+  after it survives - and a quote that ends an attribute still ends it.
+  **Two shapes are left on purpose**: an apostrophe followed by a raw space
+  ("O' Brien") and a value that opens with an apostrophe (last_name='Brien)
+  each read the same as a quote that ends the attribute the address sits in
+  ("...?last_name=Pat' title=..."), so the scrub stops there and the part
+  after it stays. `generated` is the date of the
   file's OLDEST record: a run that picks a file up again keeps it.
 - **A candidate** was seen on a page that landed on the company's own site,
   or is a redirect from an address of theirs that went straight to the
@@ -3324,20 +3352,26 @@ review and the owner's word, through the wiring door.
   element, to the close that matches it. CSB has no pay field; a figure in the
   ad's text is plain_rows' text parse, as for every reader. **A posting whose
   own page says it has closed is not published as open** (eighth blind
-  review): a 404 or 410, a hop to the site's list (/search/, not followed),
-  or the site's own page saying so (`ats.successfactors_filled`: a 200 page
-  showing no posting, titled as the site titles a posting - '<role> Job
-  Details | <site>', every en_US posting page measured - or saying "this
-  position has been filled"; Gainwell's closed page, measured 2026-11-22,
-  carries both) drops the row, and the reader says how many on stderr. A
-  refusal, a 429, a 5xx, the network failing, a hop anywhere else off /job/
-  (not followed) and a page that shows no posting and is not the site saying
-  so - a block page served 200 (F5's "The requested URL was rejected"), an
-  error page - say nothing about the posting, and the row stays as the list
-  states it (repaired 2026-11-22: every page showing no posting was read as
-  closed, and five open postings of seven answering a block page were
-  dropped). A list every one of whose postings answers closed is an error,
-  never a zero.
+  review): a 404 or 410, a hop to the site's list (/search/ or /search, with
+  or without a query; not followed), or the site's own words at its address
+  (`ats.successfactors_filled`: a 200 page showing no posting that says "this
+  position has been filled", as a reader sees it - never inside a comment or
+  a script; Gainwell's closed page, measured 2026-11-22, says "Sorry, this
+  position has been filled." under the posting's own title) drops the row,
+  and the reader says how many on stderr. **The posting's title alone is not
+  the site saying so** ('<role> Job Details | <site>'): every OPEN posting
+  page measured carries it too (blind review 9, 2026-11-23: a page in the
+  site's own template, titled for the role, with an error where the posting
+  was, was read as closed by its title, and five open postings of seven
+  answering so were dropped). A refusal, a 429, a 5xx, the network failing,
+  a hop anywhere else off /job/ (not followed) and a page that shows no
+  posting and is not the site saying so - a block page served 200 (F5's
+  "The requested URL was rejected"), an error page, the site's template
+  titled for the role without those words - say nothing about the posting,
+  and the row stays as the list states it (repaired 2026-11-22: every page
+  showing no posting was read as closed, and five open postings of seven
+  answering a block page were dropped). A list every one of whose postings
+  answers closed is an error, never a zero.
 - **Never a zero.** A first page with no rows is an error: a "Unify" site
   (Aurigo's, Esri Canada's: its list is POST /services/recruiting/v1/jobs,
   which robots.txt closes) says it is one; a classic page with no rows says a
@@ -3360,10 +3394,10 @@ review and the owner's word, through the wiring door.
   334 goes to the owner's queue, never wired unattended. `n` is the label's
   total (`n_is_partial` when a page has none). **A posting that has closed
   proves nothing either way** - a 404 or 410, a hop to the site's list (not
-  asked), or the site's own page at its address saying so
-  (`ats.successfactors_filled`, the reader's rule above): Gainwell's closed
-  ones say only "Sorry, this position has been filled.", measured
-  2026-11-22. It names nobody for the board and nobody against it: it is
+  asked), or the site's own words at its address saying so
+  (`ats.successfactors_filled`, the reader's rule above, never the posting's
+  title alone): Gainwell's closed ones say only "Sorry, this position has
+  been filled.", measured 2026-11-22. It names nobody for the board and nobody against it: it is
   passed over, and on a longer board the next posting on page 1 is asked in
   its place, `SF_POSTINGS_ASKED` (40) in all at most. It is not a failure of
   the day - it was, and a list that keeps a filled posting answered so every
@@ -3375,10 +3409,12 @@ review and the owner's word, through the wiring door.
   are kept for the desk, not stated. **A page that shows no posting and is
   not the site saying so is not a closed posting** (repaired 2026-11-22: a
   block page served 200 at five of seven postings was passed over, and the
-  board stated whole and proven on the other two): a block or error page,
-  or a hop anywhere but the list (not asked), is the board unreadable for a
-  person - `failed` "unreadable", not a failure of the day, no name - so the
-  door holds it with the reason. A posting answering 401 or 403 is the board
+  board stated whole and proven on the other two): a block or error page -
+  the site's own template titled for the role, showing no posting and not
+  saying it was filled, among them (blind review 9) - or a hop anywhere but
+  the list (not asked), is the board unreadable for a person - `failed`
+  "unreadable", not a failure of the day, no name - so the door holds it
+  with the reason. A posting answering 401 or 403 is the board
   refusing, and 429 a failure of the day: neither is a closed posting.
   Postings written in more than one language (their title's own lang) are a
   board listing a role once per language (JENOPTIK's twins), and are not
@@ -3441,7 +3477,14 @@ review and the owner's word, through the wiring door.
   saying so (a block page served 200, or a hop anywhere but the list, is the
   board unreadable and the row kept), a board is stated whole with at most
   `SF_SLACK` closed and every listed posting asked - thirteen breaks of the
-  repair, one at a time in a private copy, each noticed.
+  repair, one at a time in a private copy, each noticed. Blind review 9
+  (2026-11-23): the posting's title alone is no longer the site saying it
+  closed - only its words, a 404 or 410, or a hop to the list (the eighth
+  review's pin that read a title-only page as closed is turned round, so the
+  title rule and its unescape are gone); a hop to '/search' without its
+  slash, and to '/search?x', is pinned as closed, and the probe's words when
+  more than `SF_SLACK` closed are pinned whole. Each fix reverted in a
+  private copy fails the check.
 
 ## Build order (owner, 2026-08-23)
 

@@ -14171,6 +14171,11 @@ def check_the_crawler_honours_robots_txt() -> int:
                 ("https://n.robots-fixture/jobs/./roster", True, "a '.' segment in an open path"),
                 ("https://n.robots-fixture/jobs/private/roster", True,
                  "an open path with the closed one's name inside it"),
+                # (blind review 9, 2026-11-23: a Java server cuts ';...' off
+                # every segment, and serves the closed path)
+                ("https://n.robots-fixture/private;jsessionid=1/roster", False,
+                 "a path parameter a Java server cuts off a closed path's segment"),
+                ("https://n.robots-fixture/jobs;v=1/roster", True, "a path parameter on an open path"),
                 ("https://acme.test/careers", True, "a reserved test domain"),
                 ("https://jobs.example.com/x", True, "a reserved example domain")):
             got = robots.allowed(url, fetch=fetch)
@@ -14321,9 +14326,29 @@ def check_the_crawler_honours_robots_txt() -> int:
                            # '..;' and '.;x' are dot segments to a Java server
                            # (blind review of the eighth review's fixes)
                            ("/en/..;/careers/", "/careers/"), ("/jobs/.;jsessionid=1/x", "/jobs/x"),
-                           ("/jobs/..;x=1/private/x", "/private/x"), ("/jobs/x;v=1", "/jobs/x;v=1")):
+                           ("/jobs/..;x=1/private/x", "/private/x"),
+                           # ...and it cuts ';...' off EVERY segment, to the next
+                           # '/', before it decodes anything (blind review 9,
+                           # 2026-11-23: '/jobs/x;v=1' was pinned as itself; it
+                           # is served as /jobs/x, and that pin is turned round)
+                           ("/jobs/x;v=1", "/jobs/x"), ("/careers;jsessionid=1/private/x", "/careers/private/x"),
+                           ("/careers;x/private/x", "/careers/private/x"), ("/a;b/c;d/e;f", "/a/c/e"),
+                           ("/jobs/x;", "/jobs/x"), ("/careers;x%2fy/private", "/careers/private"),
+                           ("/careers;x\\y/private", "/careers/y/private"),     # (a browser's slash first)
+                           # a segment that is only a parameter: Tomcat merges the
+                           # two slashes it leaves; a last one leaves its slash
+                           ("/a/;x/b", "/a/b"), ("/;x/private/y", "/private/y"), ("/a/;x", "/a/"),
+                           ("/a/;x/../b", "/b"),
+                           # an escaped ';' is a letter of its segment, not a parameter
+                           ("/jobs%3Bx/private", "/jobs%3Bx/private")):
             if robots.served(path) != want:
                 errors += fail(f"robots.served({path!r}) is {robots.served(path)!r}, not {want!r}")
+        # (and the reading of a server that knows no path parameter, as it was)
+        for path, want in (("/jobs/x;v=1", "/jobs/x;v=1"), ("/careers;x%2fy/private", "/careers;x/y/private"),
+                           ("/en/..;/careers/", "/careers/"), ("/a/;x/b", "/a/;x/b")):
+            if robots.served(path, params=False) != want:
+                errors += fail(f"robots.served({path!r}, params=False) is "
+                               f"{robots.served(path, params=False)!r}, not {want!r}")
         for path, want in (("/en/..;/careers/", True), ("/a/.;x/b", True), ("/a/...;/b", False),
                            ("/a/b;c", False), ("/a/..b", False)):
             if robots.climbs(path) != want:
@@ -14335,6 +14360,22 @@ def check_the_crawler_honours_robots_txt() -> int:
                 or not robots.decide([(False, "/c")], "https://site.example/a/../b"):
             errors += fail("robots.decide does not refuse a page whose path as written, or as "
                            "served, a rule closes - and only those")
+        # ...with a path parameter too: the written path, the path a Java server
+        # serves (every ';...' cut) and the path a server that knows no path
+        # parameter serves are each asked, and any one closed refuses it
+        for rules, url, want, why in (
+                ([(False, "/careers/private")], "https://site.example/careers;jsessionid=1/private/x", False,
+                 "a closed path, served with the parameter cut"),
+                ([(False, "/*;jsessionid")], "https://site.example/careers;jsessionid=1/open/x", False,
+                 "a rule closing the parameter as written"),
+                ([(False, "/careers;x/y")], "https://site.example/careers;x%2fy/private", False,
+                 "a rule closing the path served with the parameter kept"),
+                ([(False, "/careers/private")], "https://site.example/careers;jsessionid=1/open/x", True,
+                 "an open path with a parameter"),
+                ([(True, "/careers;"), (False, "/careers/")], "https://site.example/careers;x/jobs", False,
+                 "an Allow for the path as written, a Disallow for the path served")):
+            if robots.decide(rules, url) is not want:
+                errors += fail(f"robots.decide is {robots.decide(rules, url)} for {why}, not {want}")
         H = "https://careers.acmegov.example"
         hop, sent_paths, asked_of = [None], [], []
 
@@ -14405,6 +14446,49 @@ def check_the_crawler_honours_robots_txt() -> int:
                 fsb._request = real_request
         finally:
             (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE) = kept
+        # A PATH PARAMETER MID-PATH, through a reader's _page and the site's own
+        # robots.txt (blind review 9, 2026-11-23): 'Disallow: /careers/private',
+        # and a page at '/careers;jsessionid=1/private/x' - which Tomcat, Jetty
+        # and Spring serve as /careers/private/x - was asked of robots.txt as
+        # written, and read. Refused now, asked directly or as a hop, and
+        # nothing past the first page is sent; a parameter on an open path is
+        # read as before.
+        P = "https://p.robots-fixture"
+        real_rules, kept = robots._rules, (ats.requests.get, ats._host_gate, ats.HTTP_CACHE)
+
+        def to_param(url, **kw):
+            sent_paths.append(ats.requests.Request("GET", url).prepare().path_url)
+            return Answer(url, 302, hop[0]) if url == P + "/jobs" else Answer(url)
+        try:
+            robots._rules = lambda base, fetch=None: _ROBOTS_RULES(
+                base, lambda url: (200, "User-agent: *\nDisallow: /careers/private\n"))
+            robots._CACHE.pop(P, None)
+            ats.requests.get, ats._host_gate, ats.HTTP_CACHE = to_param, (lambda u: None), None
+            for start, to, want in ((P + "/careers;jsessionid=1/private/x", None, []),
+                                    (P + "/jobs", P + "/careers;jsessionid=1/private/x", ["/jobs"]),
+                                    (P + "/jobs", P + "/careers;x/private/x", ["/jobs"])):
+                hop[0], sent_paths[:] = to, []
+                try:
+                    ats._page(start, same_host=True)
+                    errors += fail(f"ats._page read {(to or start)[len(P):]!r} under 'Disallow: "
+                                   f"/careers/private', sending {sent_paths}")
+                except ats.RobotsRefused as exc:
+                    if sent_paths != want or "robots.txt asks crawlers not to read" not in str(exc):
+                        errors += fail(f"ats._page: {(to or start)[len(P):]!r} was refused after sending "
+                                       f"{sent_paths}, not {want}: {exc}")
+                except ats.AtsError as exc:
+                    errors += fail(f"ats._page: {(to or start)[len(P):]!r} failed, not refused by "
+                                   f"robots.txt: {exc}")
+            hop[0], sent_paths[:] = P + "/careers;jsessionid=1/open/x", []
+            try:
+                ats._page(P + "/jobs", same_host=True)
+            except ats.AtsError as exc:
+                errors += fail(f"ats._page refused a hop to an open path with a parameter: {exc}")
+            if sent_paths != ["/jobs", "/careers;jsessionid=1/open/x"]:
+                errors += fail(f"ats._page: a hop to an open path with a parameter sent {sent_paths}")
+        finally:
+            robots._rules = real_rules
+            (ats.requests.get, ats._host_gate, ats.HTTP_CACHE) = kept
 
         # discovery steps past one closed page to the next, and files a site
         # closed at the door as blocked, not as a company with no board
@@ -20312,6 +20396,15 @@ def check_successfactors_reads_its_career_site() -> int:
     blocked = ('<html><head><title>Request Rejected</title></head><body>The requested URL was '
                'rejected. Please consult with your administrator.<br><br>Your support ID is: 1234'
                '</body></html>')
+    # ...and two pages titled as the site titles a posting - which every OPEN
+    # posting is too - that show no posting and do not say it was filled: the
+    # title alone is not the site saying the posting closed (blind review 9,
+    # 2026-11-23)
+    title_only = ('<html><head><title>Role 4 Job Details | Acme Gov LLC</title></head><body>'
+                  '<p>This job is no longer available.</p></body></html>')
+    oops = ('<html><head><title>Role Job Details | Acme Gov LLC</title></head><body>'
+            '<div class="jobDisplayShell"><p>We are experiencing technical difficulties. '
+            'Please try again later.</p></div></body></html>')
 
     sent, robots_asked = [], []
 
@@ -20781,6 +20874,43 @@ def check_successfactors_reads_its_career_site() -> int:
         if exc or len(rows or []) != 5:
             errors += fail(f"successfactors: with details on, a list every one of whose postings "
                            f"answered a block page read as {len(rows or [])} rows, not its 5: {exc}")
+        # ...and so is one whose page carries only the posting's own title - as
+        # every open posting's does - with no posting and no word of its being
+        # filled: five of seven such postings are kept as the list states them,
+        # none said closed (blind review 9, 2026-11-23: they were dropped)
+        for answer, why in ((title_only, "its own title and other words"),
+                            (oops, "the site's template with an error where the posting was")):
+            said_ = io.StringIO()
+            ats.FETCH_DETAILS = True
+            with contextlib.redirect_stderr(said_):
+                rows, exc = go(dict({at(0): page([row(n) for n in range(1, 8)], total=7),
+                                     SF + job(1): posting(), SF + job(2): posting()},
+                                    **{SF + job(k): answer for k in range(3, 8)}),
+                               lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            ads = [bool(r.get("jd")) for r in rows or []]
+            if exc or len(rows or []) != 7 or ads != [True, True] + [False] * 5 \
+                    or "answered as closed" in said_.getvalue():
+                errors += fail(f"successfactors: with details on, five of seven postings answering "
+                               f"{why} were not kept as the list states them ({len(rows or [])} rows, "
+                               f"ads {ads}), or were said closed ({said_.getvalue().strip()!r}): {exc}")
+        # A HOP TO THE SITE'S LIST IS THE POSTING CLOSED however the list's
+        # address is written: '/search' without its slash, and with a query
+        for to in (SF + "/search", SF + "/search?x"):
+            said_ = io.StringIO()
+            ats.FETCH_DETAILS = True
+            with contextlib.redirect_stderr(said_):
+                rows, exc = go({at(0): page([row(n) for n in range(1, 4)], total=3),
+                                SF + job(1): posting(), SF + job(2): (302, to), SF + job(3): posting(),
+                                to: page([row(n) for n in range(1, 4)], total=3)},
+                               lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            kept = sorted(int(r["url"].rstrip("/").rsplit("/", 1)[-1]) - 1400000000 for r in rows or [])
+            if exc or kept != [1, 3] or "1 of the 3 postings" not in said_.getvalue() \
+                    or to in sent + robots_asked:
+                errors += fail(f"successfactors: with details on, a posting that sends its reader to "
+                               f"{to[len(SF):]!r} was not dropped as closed (kept {kept}, "
+                               f"{said_.getvalue().strip()!r}), or that page was asked: {exc}")
 
         # ---- the date, in the three forms measured and no other ---------------
         for lang, when, want in (("en-US", "Nov 20, 2026", "2026-11-20"),
@@ -21009,14 +21139,20 @@ def check_successfactors_reads_its_career_site() -> int:
         # shows no posting: successfactors_shown reads the page a reader sees)
         commented = filled.replace("<p>Sorry", '<!-- <div itemscope itemtype="https://schema.org/JobPosting">'
                                                '<span itemprop="title">Role 4</span></div> --><p>Sorry')
+        # (the list is the list however its address is written: '/search'
+        # without its slash, and with a query - blind review 9, 2026-11-23)
+        lists_ = (landing, SF + "/search", SF + "/search?x")
         for closing, why in ((filled, "answers 200 at its address, 'position has been filled'"),
                              (commented, "keeps its microdata only inside a comment"),
                              ((302, landing), "sends its reader back to the list"),
+                             ((302, SF + "/search"), "sends its reader to the list written '/search'"),
+                             ((302, SF + "/search?x"), "sends its reader to the list written '/search?x'"),
                              ((404, None), "answers 404"), ((410, None), "answers 410")):
             for plan in (1, 2):
-                got = said(board(seven, every(7, p4=closing), {landing: seven}))
+                got = said(board(seven, every(7, p4=closing), {u: seven for u in lists_}))
                 if not got["stated"] or got["names"] != ["Acme Gov LLC"] or got["transient"] \
-                        or got["failed"] or landing in sent or sent.count(SF + job(4)) != 1 \
+                        or got["failed"] or any(u in sent + robots_asked for u in lists_) \
+                        or sent.count(SF + job(4)) != 1 \
                         or "1 more on its list answered as closed" not in str(got["how"]) \
                         or not vb.proven({"name": "Acme Gov"}, got)["ok"]:
                     errors += fail(f"successfactors probe, plan {plan}: a posting that closed and {why} "
@@ -21064,6 +21200,13 @@ def check_successfactors_reads_its_career_site() -> int:
         # unreadable, for a person: never closed, never a failure of the day,
         # never a name, and the page a hop names is not asked. The wording or
         # the title only inside a comment is not the site's word either.
+        # NOR IS THE POSTING'S OWN TITLE (blind review 9, 2026-11-23): every
+        # OPEN posting page carries '<role> Job Details | <site>' too, so a
+        # page in the site's own template, titled for the role, showing no
+        # posting and not saying it was filled - an error where the posting
+        # was - is the board unreadable, not a posting closed. (The eighth
+        # review's repair read a title-only page as closed and pinned it so,
+        # a few lines down; that pin is turned round on purpose.)
         tspd = SF + "/TSPD/?type=20"
         hidden_words = ('<html><head><title>Oops</title></head><body><!-- <p>Sorry, this position '
                         'has been filled.</p> --><p>Error</p></body></html>')
@@ -21073,8 +21216,11 @@ def check_successfactors_reads_its_career_site() -> int:
                             ((302, tspd), "a hop to a challenge page"),
                             ((302, SF + "/"), "a hop to the site's front page"),
                             (hidden_words, "the filled wording only inside a comment"),
-                            (hidden_title, "a posting's title only inside a comment")):
-            for many_ in ((5,), (3, 4, 5, 6, 7)):
+                            (hidden_title, "a posting's title only inside a comment"),
+                            (title_only, "the posting's own title and other words"),
+                            (oops, "the site's own template, titled for the role, with an error "
+                                   "where the posting was")):
+            for many_ in ((5,), (6, 7), (3, 4, 5, 6, 7)):
                 got = said(board(seven, every(7, **{f"p{k}": answer for k in many_}), {tspd: seven}))
                 if got["stated"] or got["names"] or got["failed"] != "unreadable" \
                         or got["transient"] is not False or "answered as closed" in str(got["how"]) \
@@ -21083,39 +21229,49 @@ def check_successfactors_reads_its_career_site() -> int:
                     errors += fail(f"successfactors probe: {len(many_)} of seven postings answering "
                                    f"{why} were read as closed, as a failure of the day or as naming "
                                    f"somebody, or the page it named was asked: {got}")
-        # the site saying so is either half of Gainwell's closed page: the
-        # posting's own title, or the filled wording (through a tag)
-        title_only = ('<html><head><title>Role 4 Job Details | Acme Gov LLC</title></head><body>'
-                      '<p>This job is no longer available.</p></body></html>')
+        # the site saying so is its words, through a tag and under any title
         words_only = ('<html><head><title>Acme Gov LLC Jobs</title></head><body>'
                       '<p>Sorry, this <b>position</b> has been filled.</p></body></html>')
-        for closing, why in ((title_only, "titled as the site titles a posting"),
-                             (words_only, "saying the position has been filled")):
-            got = said(board(seven, every(7, p4=closing)))
-            if not got["stated"] or got["failed"] or got["transient"] \
-                    or "1 more on its list answered as closed" not in str(got["how"]):
-                errors += fail(f"successfactors probe: the site's own page {why} was not read as the "
-                               f"posting closed: {got}")
+        got = said(board(seven, every(7, p4=words_only)))
+        if not got["stated"] or got["failed"] or got["transient"] \
+                or "1 more on its list answered as closed" not in str(got["how"]):
+            errors += fail(f"successfactors probe: the site's own page saying the position has been "
+                           f"filled was not read as the posting closed: {got}")
         gw_closed = ('<html><head><title>Provider Enrollment Specialist - Jackson, MS (Onsite) Job Details'
                      ' | Gainwell Technologies LLC</title></head><body><p>Sorry, this position has been '
                      'filled.</p></body></html>')
         for page_, want, why in ((gw_closed, True, "Gainwell's closed page as measured"),
+                                 (words_only, True, "the filled wording under another title"),
                                  (posting(), False, "a page showing the posting"),
                                  (blocked, False, "a block page"), (hidden_words, False, "words in a comment"),
-                                 (hidden_title, False, "a title in a comment")):
+                                 (hidden_title, False, "a title in a comment"),
+                                 (title_only, False, "a posting's own title and other words"),
+                                 (oops, False, "the site's template with an error and no posting")):
             if ats.successfactors_filled(page_) is not want:
                 errors += fail(f"successfactors: {why} read as the site saying the posting has closed: "
                                f"{not want}, not {want}")
         # A BOARD IS STATED WHOLE ONLY WITH AT MOST SF_SLACK OF ITS POSTINGS
         # CLOSED, the churn the walk allows; more is a list carrying postings
-        # that name nobody - the names kept for the desk, the board not stated
-        for shut, ok in (((2, 6), True), ((2, 4, 6), False)):
+        # that name nobody - the names kept for the desk, the board not stated.
+        # The words the door and the desk show are the probe's, whole (blind
+        # review 9, 2026-11-23: the words for more than SF_SLACK closed could
+        # change and no check said so)
+        for shut, ok, how in (
+                ((2, 6), True,
+                 "successfactors search page title and description, and the hiringOrganization of "
+                 "every one of its 5 open postings (2 more on its list answered as closed and name "
+                 "nobody), stated by the career site"),
+                ((2, 4, 6), False,
+                 "successfactors search page title and description, and the hiringOrganization of "
+                 "4 of its 7 postings (3 more on its list answered as closed and name nobody): more "
+                 "than 2 closed is not a posting or two closing while it was asked, so these may not "
+                 "be every name the board states")):
             got = said(board(seven, every(7, **{f"p{k}": filled for k in shut})))
             if bool(got["stated"]) is not ok or got["names"] != ["Acme Gov LLC"] or got["failed"] \
                     or got["transient"] or vb.proven({"name": "Acme Gov"}, got)["ok"] is not ok \
-                    or (not ok and f"more than {ats.SF_SLACK} closed" not in str(got["how"])):
+                    or got["how"] != how:
                 errors += fail(f"successfactors probe: a board of seven with {len(shut)} postings closed "
-                               f"was {'not ' if ok else ''}stated whole: {got}")
+                               f"was {'not ' if ok else ''}stated whole, or not in its words: {got}")
         # ...and every posting on its list asked: a board stating 40 whose two
         # pages carry 50 is asked about 40, and not stated for the other ten
         got = said(board(page([row(n) for n in range(1, 26)], total=40), every(50),
@@ -21493,15 +21649,61 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                      ("https://www.acmegov.example/apply?last_name=O&rsquo;Brien&first_name=Pat",
                       "last_name= with a curly-quote entity"),
                      ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DD'%C3%81vila"
-                      "%26q%3D1", "an encoded last name with an escaped letter")):
+                      "%26q%3D1", "an encoded last name with an escaped letter"),
+                     # ...and EVERY spelling of one (blind review 9, 2026-11-23:
+                     # "Brien" was kept after each of these): the left curly
+                     # quote, the modifier letter apostrophe, HTML5's names, a
+                     # numeric reference without its ';', and each escaped twice
+                     (TN + "&sd=Pat%20O&lsquo;Brien", "a named left curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#8216;Brien", "a decimal left curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#x2018;Brien", "a hex left curly-quote entity"),
+                     (TN + "&sd=Pat%20O&#700;Brien", "a decimal modifier letter apostrophe"),
+                     (TN + "&sd=Pat%20O&#x2bc;Brien", "a hex modifier letter apostrophe"),
+                     (TN + "&sd=Pat%20O&#X2BC;Brien", "an upper-case hex modifier letter apostrophe"),
+                     (TN + "&sd=Pat%20O&CloseCurlyQuote;Brien", "HTML5's &CloseCurlyQuote;"),
+                     (TN + "&sd=Pat%20O&OpenCurlyQuote;Brien", "HTML5's &OpenCurlyQuote;"),
+                     (TN + "&sd=Pat%20O&rsquor;Brien", "HTML5's &rsquor;"),
+                     (TN + "&sd=Pat%20O&#39Brien", "a decimal entity without its ';'"),
+                     (TN + "&sd=Pat%20O&#x27Brien", "a hex entity without its ';'"),
+                     (TN + "&sd=Pat%20O&#8217Brien", "a curly-quote entity without its ';'"),
+                     (TN + "&sd=Pat%20D&#39%C3%81vila", "an entity without its ';' before an escaped letter"),
+                     (TN + "&sd=Pat%20O&#X27;Brien", "an upper-case hex entity"),
+                     (TN + "&amp;sd=Pat%20O&amp;#39;Brien", "a decimal entity escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;#x27;Brien", "a hex entity escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;apos;Brien", "&apos; escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;rsquo;Brien", "&rsquo; escaped twice"),
+                     (TN + "&amp;sd=Pat%20O&amp;#8217;Brien", "&#8217; escaped twice"),
+                     ("https://www.acmegov.example/apply?last_name=O&#700;Brien&first_name=Pat",
+                      "last_name= with a modifier letter apostrophe"),
+                     ("https://www.acmegov.example/apply?last_name=O&amp;#39;Brien&amp;first_name=Pat",
+                      "last_name= with an entity escaped twice"),
+                     ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DO&lsquo;Brien"
+                      "%26q%3D1", "an encoded last name with a left curly-quote entity"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O&amp;#39;Brien", "an encoded talent network's sd= "
+                                                                       "with an entity escaped twice")):
         out = fsb._no_person(raw)
         if "Brien" in out or "Angelo" in out or "Pat" in out or "vila" in out or "eill" in out \
                 or ("q6NaVfwI" in raw and "q6NaVfwI" not in out):
             errors += fail(f"finder: {why} with an apostrophe kept part of a person's name, or the "
                            f"account went with it: {out!r}")
+    # ...but a BARE separator - '&amp;', '&#38;', '&#x26;', none of them an
+    # apostrophe - still ends the value, so the account or a ref after it
+    # survives, whichever spelling of an apostrophe came before
+    for sep in ("&", "&amp;", "&#38;", "&#038;", "&#x26;", "&amp;amp;"):
+        for raw, kept_ in (("https://app.jobvite.com/TalentNetwork/action/joinTN?sd=Pat%20O&#39;Brien"
+                            f"{sep}ci=q6NaVfwI", "ci=q6NaVfwI"),
+                           (TN + f"&sd=Pat%20O&lsquo;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
+                           (TN + f"&sd=Pat%20O&amp;#x27;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
+                           (f"https://www.acmegov.example/apply?last_name=O&#700;Brien{sep}ref=AbC123",
+                            "ref=AbC123")):
+            out = fsb._no_person(raw)
+            if "Brien" in out or "Pat" in out or kept_ not in out:
+                errors += fail(f"finder: after {sep!r} the value did not end, or a name stayed: {out!r}")
     kept = fsb._no_addresses({"pages": [{"asked": here, "final": TN + "&sd=Pat%20O'Brien"},
                                         {"asked": here, "final": TN + "&sd=Pat%20D'%C3%81vila"}],
-                              "hops": [TN + "&sd=Pat O'Brien", TN + "&sd=Pat%20O&rsquo;Brien"],
+                              "hops": [TN + "&sd=Pat O'Brien", TN + "&sd=Pat%20O&rsquo;Brien",
+                                       TN + "&sd=Pat%20O&#700;Brien", TN + "&amp;sd=Pat%20O&amp;#39;Brien"],
                               "elsewhere": [{"page": "https://www.acmegov.example/apply?last_name=O'Brien"
                                                      "&first_name=Pat"}]})
     if "Brien" in json.dumps(kept) or "Pat" in json.dumps(kept) or "vila" in json.dumps(kept) \
@@ -21526,7 +21728,17 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                       ("https://www.acmegov.example/apply?last_name=O'Brien&next=https%3A%2F%2Fjobs.jobvite.com"
                        "%2Facmegov%2Fjobs",
                        "https://www.acmegov.example/apply?last_name=[removed]&next=https%3A%2F%2Fjobs.jobvite.com"
-                       "%2Facmegov%2Fjobs")):
+                       "%2Facmegov%2Fjobs"),
+                      # (a quote before a space ends the attribute too: so "O' Brien"
+                      # and a value opening with a quote are left, as CLAUDE.md says
+                      # - blind review 9, 2026-11-23)
+                      ("<a href='https://x.example/c?last_name=Pat' title='Jobs'>x</a>",
+                       "<a href='https://x.example/c?last_name=[removed]' title='Jobs'>x</a>"),
+                      ("<a href='https://jobs.jobvite.com/acmegov/jobs?sd=' data-x='y'>x</a>",
+                       "<a href='https://jobs.jobvite.com/acmegov/jobs?sd=[removed]' data-x='y'>x</a>"),
+                      # (and an entity quote ending a quoted value ends it too)
+                      ("go(&#39;https://x.example/c?first_name=Pat&#39;)",
+                       "go(&#39;https://x.example/c?first_name=[removed]&#39;)")):
         if fsb._no_person(raw) != want:
             errors += fail(f"finder: the person scrub ran past a quote or a value into an address: "
                            f"{fsb._no_person(raw)!r}")
