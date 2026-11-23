@@ -22941,6 +22941,27 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 or "3 of them a copy that shows no posting" not in str(got["how"]):
             errors += fail(f"successfactors unify probe: a bilingual board every role of which has closed was "
                            f"not said so, its French copies closed with their English: {got}")
+        # (a copy closed with its requisition counts toward SF_SLACK as any
+        # closed posting does: two roles closed in both languages are four
+        # closed, so the board is not stated whole)
+        got = said(site([c for n in range(1, 9) for c in pair(n, shut_=n <= 2)]))
+        if got["stated"] or got["failed"] or got["names"] != ["Acme Gov Software"] \
+                or "4 more on it answered as closed" not in str(got["how"]) \
+                or f"more than {ats.SF_SLACK} closed" not in str(got["how"]):
+            errors += fail(f"successfactors unify probe: two bilingual roles closed, four copies, were not more "
+                           f"than {ats.SF_SLACK} closed: {got}")
+        # (and an English copy that shows no posting is never closed by
+        # another copy: the site's words are read in English, so it is the
+        # page it is - a block page, the board not read - as the reader
+        # leaves it out unread, its French copy's 404 notwithstanding)
+        en_blocked = pair(1, en_answer=blocked, fr_answer=(404, None)) + [c for n in (2, 3, 4) for c in pair(n)]
+        got = said(site(en_blocked))
+        rows, exc, err = go(site(en_blocked))
+        if got["stated"] or got["names"] or got["failed"] != "unreadable" \
+                or "block or error page" not in str(got["how"]) or exc or len(rows or []) != 3 \
+                or "1 of the 8 postings its sitemap lists did not read as postings" not in err:
+            errors += fail(f"successfactors unify probe: an English copy showing a block page, its French copy "
+                           f"a 404, was closed with it ({len(rows or [])} rows read, {exc}): {got}")
         # ...and one that no copy of its requisition asked answered closed for,
         # or with no requisition to know it by, is the board not read - in
         # words that do not call it a block or error page it may not be
