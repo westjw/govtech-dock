@@ -265,8 +265,11 @@ def board_on_file(entry: dict, by_id: dict, rows: list, boards: dict | None = No
     """Why this row's board is, or may be, a board another record already
     reads, in words, or None: under any key it is known by (the wiring door's
     holders), or for Paylocity a record whose board its addresses cannot tell
-    apart from it (paylocity_relation: one tenant's name under two ids, or no
-    tenant's name to compare the ids by)."""
+    apart from it (paylocity_relation: one tenant's name under two ids, no
+    tenant's name to compare the ids by, ids that agree on one kind and
+    disagree on the other, or a tenant's name that may be written two ways),
+    every address the record is known by compared (its ref and the /All/
+    address its note keeps)."""
     f = entry.get("found") or {}
     kind, ref, cid = f.get("type"), f.get("ref"), entry.get("id")
     records = list(by_id.values())
@@ -279,10 +282,26 @@ def board_on_file(entry: dict, by_id: dict, rows: list, boards: dict | None = No
             if rl == "same":
                 return f"{o.get('name') or o['id']} already reads this board"
             if rl in ("tenant", "unknown"):
-                whole = board_proposals.paylocity_ids(o_refs[0])
-                return (f"{o.get('name') or o['id']} reads a Paylocity board that this one cannot "
-                        f"be told apart from ({(o.get('ats') or {}).get('ref')})"
-                        + ("" if rl == "tenant" or (whole[0] and whole[2]) else
+                head = (f"{o.get('name') or o['id']} reads a Paylocity board that this one cannot "
+                        f"be told apart from ({(o.get('ats') or {}).get('ref')})")
+                if rl == "tenant":
+                    return head
+                if board_proposals.paylocity_conflict(refs, o_refs):
+                    return head + ": their ids agree on one kind and disagree on the other"
+                spelt = board_proposals.paylocity_near_names(refs, o_refs)
+                # BY EVERY ADDRESS THE RECORD IS KNOWN BY, as the wiring door's
+                # _whole asks it: a record wired at a bare /List/ or /All/ address
+                # whose note keeps the whole /All/<uuid>/<Tenant> address its own
+                # page stated is never told to be put on file by it - the board
+                # found is the one its addresses leave short (the eighth review's
+                # door verifier, 2026-11-22: only the record's ref was read, and
+                # --propose put that advice into Agent proposals)
+                whole = any(board_proposals.paylocity_ids(r)[0] for r in o_refs) \
+                    and bool(board_proposals.paylocity_tenants(o_refs))
+                return (head
+                        + (f": their tenants' names, {spelt[0][0]} and {spelt[0][1]}, may be "
+                           f"one name written two ways" if spelt else "")
+                        + ("" if whole else
                            " - put on file by its whole /jobs/All/<uuid>/<Tenant> address, it "
                            "can be compared"))
         return None

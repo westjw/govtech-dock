@@ -35520,6 +35520,42 @@ def check_embedded_wiring() -> int:
               f"address is not an ownership question, or the record is told to be put on file "
               f"by the address it is on file by: clean {[e['id'] for e in clean]}, said {said!r}")
         errors += 1
+    # ...and A RECORD KNOWN BY ITS WHOLE ADDRESS THROUGH ITS NOTE - wired at a
+    # bare address, the whole /All/<uuid>/<Tenant> its own page stated kept in
+    # the note the wiring door writes (PAGE_WORDS) - is never told to be put on
+    # file by it either: decided over every address it is known by, as the
+    # wiring door's _whole decides it; and a tenant's name that may be the
+    # row's written another way, or ids that agree on one kind and disagree on
+    # the other, are said in their own words (the eighth review's door
+    # verifier, 2026-11-22: the advice was decided on the record's ref alone,
+    # and --propose put it into Agent proposals where it could not help)
+    ua13 = "5b1c2d3e-0000-4000-8000-000000000942"
+    for label, rec_ref, tail, row_ref, row_page, says in (
+            ("a bare /List/ row", f"All/{ua13}", "Whole-Inc", "List/7777", None, ""),
+            ("a name written two ways", f"All/{ua13}", "Acme-(US),-Inc", "List/2140/Acme-", None,
+             ": their tenants' names, acme- and acme-(us),-inc, may be one name written two "
+             "ways"),
+            ("ids that agree on one kind and not the other", "List/2115/X-Inc", "X-Inc",
+             "List/2115/X-Inc", "All/5b1c2d3e-0000-4000-8000-000000000943/X-Inc",
+             ": their ids agree on one kind and disagree on the other")):
+        by13 = {"noted-rec": {"id": "noted-rec", "name": "Noted Rec",
+                              "ats": {"type": "paylocity", "ref": pl_ + rec_ref},
+                              "ats_note": f"wired 2026-11-20: its own page states its address is "
+                                          f"{pl_}All/{ua13}/{tail}; 3 postings read"},
+                "row13-co": {"id": "row13-co", "name": "Row13 Co", "ats": {"type": "html"}}}
+        rows13 = [{"id": "row13-co", "name": "Row13 Co", "identity": "matches",
+                   "found": {"type": "paylocity", "ref": pl_ + row_ref},
+                   **({"page_ref": pl_ + row_page} if row_page else {})}]
+        clean, _mm, refused = w.triage(rows13, by13, held={}, boards=nobody)
+        said = str(w.board_on_file(rows13[0], by13, rows13, nobody))
+        want = (f"Noted Rec reads a Paylocity board that this one cannot be told apart from "
+                f"({pl_}{rec_ref}){says}")
+        if clean or [e["id"] for e in refused] != ["row13-co"] or said != want:
+            print(f"  FAIL: {label}: a record known by its whole /All/ address through its note "
+                  f"is not an ownership question, or is told to be put on file by it, or the "
+                  f"words do not say why: clean {[e['id'] for e in clean]}, said {said!r}, "
+                  f"wanted {want!r}")
+            errors += 1
     # A WORKABLE ACCOUNT KNOWN BY ITS NUMBER AND ITS SLUG IS ONE BOARD: a row
     # naming the number of an account a record reads by its slug, the record's
     # note tying the two (board_proposals.ACCOUNT_WORDS), is that record's

@@ -3180,7 +3180,14 @@ round.
   apart from, is an ownership question, never the clean pile, and one board
   under two spellings is one board claimed twice (claimants grouped by
   `board_proposals.found_keys` and `paylocity_relation`: sixth blind review,
-  2026-11-22). And the hold reader both doors share
+  2026-11-22). Its words are decided over every address the record is known
+  by, the whole /All/<uuid>/<Tenant> address its note keeps included, as the
+  wiring door decides them: such a record is never told to be put on file
+  by it, and ids that agree on one kind and disagree on the other, or a
+  tenant's name that may be the row's written another way, are said as that
+  (the eighth review's door verifier, 2026-11-22: only the record's ref was
+  read, and --propose put advice that could not help into Agent proposals).
+  And the hold reader both doors share
   (`board_proposals.held_board`) compares a Paylocity board with the owner's
   holds by every address on both sides, holding on anything but "apart", as
   the wiring door does: by keys alone a hold at a bare /List/ address never
