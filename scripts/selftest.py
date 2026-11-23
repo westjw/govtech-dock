@@ -41473,7 +41473,8 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                      co("listed-co-2", "Listed Co Two", ats={"type": "paylocity",
                                                              "ref": LIST_REC}),
                      co("celona-like", "Celona Like", ats={"type": "paylocity",
-                                                           "ref": pall(0x941)})],
+                                                           "ref": pall(0x941)}),
+                     co("unkept-rec", "Unkept Rec"), co("failed-rec", "Failed Rec")],
                     {f"paylocity/{A_}": (3, ["Alpha Co"]), f"paylocity/{B_}": (3, ["Beta Co"]),
                      f"paylocity/{ALL_REC}": (3, ["Listed Co"]),
                      f"paylocity/{LIST_REC}": (3, ["Listed Co"])},
@@ -41529,6 +41530,58 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                f"Listed Co's board is on file by {LIST_MUTE[8:]}; its own page did not state "
                f"its /jobs/All/ address - put on file by its whole "
                f"/jobs/All/<uuid>/<Tenant> address")
+        # ...a record whose own page states its /All/ address in a form the
+        # door does not keep (a query after it) is no address to compare by, and
+        # says so; one whose page could not be read says that - neither "did not
+        # state" (eighth blind review, 2026-11-22: keeping the stated address as
+        # given wired the find and carried it to apply, and a page that answered
+        # 404 was said to state nothing)
+        LIST_UK, LIST_FL = plist(2136), plist(2137)
+        UNKEPT = pall(0x946, "Unkept-Rec") + "?lang=en"
+        box.says.update({f"paylocity/{LIST_UK}": {"address": UNKEPT},
+                         f"paylocity/{LIST_FL}": {"failed": "gone", "transient": False,
+                                                  "how": "HTTP 404 for the board's page"}})
+        box.by_hand(lambda by_id, cs: (
+            by_id["listed-co"].update(ats={"type": "paylocity", "ref": LIST_REC}),
+            by_id["unkept-rec"].update(ats={"type": "paylocity", "ref": LIST_UK}),
+            by_id["failed-rec"].update(ats={"type": "paylocity", "ref": LIST_FL})))
+        code, text, wl_12e, rows_12 = box.plan(_wb_results({
+            "alpha-co": names("alpha-co", "paylocity", A_)}), name="worklist-12e.json")
+        expect(rows_12, "alpha-co", "HOLD",
+               f"Unkept Rec's board is on file by {LIST_UK[8:]}; its own page states its "
+               f"/jobs/All/ address in a form this door does not keep ({UNKEPT})",
+               f"Failed Rec's board is on file by {LIST_FL[8:]}; its own page could not be "
+               f"read (HTTP 404 for the board's page)")
+        if set(json.loads(wl_12e.read_text()).get("record_addresses") or {}) \
+                != {"listed-co", "listed-co-2"}:
+            errors += fail(f"apply was handed a record's address its page stated in a form the "
+                           f"door does not keep, or none of the ones it keeps: "
+                           f"{json.loads(wl_12e.read_text()).get('record_addresses')!r}")
+    # ...and A RECORD'S OWN PAGE THAT FAILS ON THE DAY is no doubt to file: the
+    # find only it could compare is SKIPped and asked again, nothing is filed,
+    # and the next plan, the page answering, wires it (eighth blind review,
+    # 2026-11-22: it was held and filed in his queue, and every later plan
+    # held it as already there)
+    LIST_TR, ALL_TR, FIND_TR = plist(2138), pall(0x947, "Tr-Rec"), pall(0x948, "Tr-Co")
+    with _WiringBox([co("tr-co", "Tr Co"),
+                     co("tr-rec", "Tr Rec", ats={"type": "paylocity", "ref": LIST_TR})],
+                    {f"paylocity/{FIND_TR}": (3, ["Tr Co"])},
+                    says={f"paylocity/{LIST_TR}": {"failed": "unreadable", "transient": True,
+                                                   "how": "HTTP 503 for the board's page"}}) \
+            as box:
+        code, text, wl_tr, rows_tr = box.plan(_wb_results({
+            "tr-co": names("tr-co", "paylocity", FIND_TR)}), name="worklist-tr.json")
+        expect(rows_tr, "tr-co", "SKIP", "asking that page failed on the day (HTTP 503 for the "
+                                         "board's page); it is asked again on the next plan",
+               kind="unreadable")
+        code, text, _ = box.look(wl_tr)
+        if "HOLD 0 " not in text:
+            errors += fail(f"a find held only by a record's page that failed on the day would be "
+                           f"filed for the owner: {text[-400:]}")
+        box.says = {f"paylocity/{LIST_TR}": {"address": ALL_TR}}
+        code, text, _wl, rows_tr = box.plan(_wb_results({
+            "tr-co": names("tr-co", "paylocity", FIND_TR)}), name="worklist-tr2.json")
+        expect(rows_tr, "tr-co", "WIRE")
     # ...and A RECORD'S PAGE IS ASKED ONLY FOR A FIND CONSIDER COMPARES that
     # its addresses cannot be compared with, of another company - never for a
     # find an id ties to it, for the record's own company's, for a company out

@@ -1443,6 +1443,27 @@ def addressed_by_page(results: dict, ctx: dict) -> None:
                 cand.update(mark)
 
 
+def page_answer(said: dict) -> str:
+    """What a Paylocity board's own page said of its /All/ address when the
+    plan asked it (verify_boards.board_says), in the words the rows go by:
+    "stated"; "transient: <how>", a failure of the day - the find it was asked
+    for is SKIPped and asked again, never filed (consider); "failed: <how>";
+    "unkept: <address>", stated in a form the door does not keep - never "did
+    not state" (eighth blind review, 2026-11-22: a 503 was held and filed,
+    and an address with a query after it read as stated, or as nothing);
+    or "nothing"."""
+    if board_proposals.paylocity_address(said.get("address")):
+        return "stated"
+    how = str(said.get("how") or said.get("failed") or "the request failed")
+    if said.get("transient") is True:
+        return f"transient: {how}"
+    if said.get("failed"):
+        return f"failed: {how}"
+    if said.get("address"):
+        return f"unkept: {str(said.get('address'))[:200]}"
+    return "nothing"
+
+
 def records_by_page(ctx: dict, finds: list) -> dict:
     """Ask the board of each Paylocity record on file that a find of this run
     cannot be compared with, once, for the /All/ address its own page states,
@@ -1491,8 +1512,7 @@ def records_by_page(ctx: dict, finds: list) -> dict:
                 o_refs = list(dict.fromkeys([*o_refs, address]))
                 said_of[o["id"]] = "stated"
             else:
-                said_of[o["id"]] = (f"failed: {said.get('how') or said.get('failed')}"
-                                    if said.get("failed") else "nothing")
+                said_of[o["id"]] = page_answer(said)
         recs.append((o, o_refs))
     ctx["paylocity_records"] = recs
     return out
@@ -1517,6 +1537,12 @@ def _clear_words(others: list, record_said: dict | None, refs_of: dict | None = 
                  "; its own page did not state its /jobs/All/ address" if said == "nothing" else
                  f"; its own page could not be read ({said[len('failed:'):].strip()[:120]})"
                  if str(said).startswith("failed:") else
+                 f"; its own page could not be read on the day "
+                 f"({said[len('transient:'):].strip()[:120]})"
+                 if str(said).startswith("transient:") else
+                 f"; its own page states its /jobs/All/ address in a form this door does not "
+                 f"keep ({said[len('unkept:'):].strip()[:200]})"
+                 if str(said).startswith("unkept:") else
                  "; its own page was not asked: a person ruled it out of the board, and a "
                  "company ruled out is not probed" if said == "out of scope" else "")
         out.append(f"{o.get('name') or o['id']}'s board is on file by "
@@ -2248,6 +2274,29 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                      f"({ref}), and {seen['follow_failed']}; it is asked again on the next "
                      f"plan, and a failure on the day is not a doubt to file",
                      error=seen["follow_failed"], **_carry(doubts))
+    if pl:
+        # A RECORD'S OWN PAGE THAT FAILED ON THE DAY IS NO DOUBT TO FILE (eighth
+        # blind review, 2026-11-22). records_by_page asked it because nothing
+        # else compares this board with the record, and it answered 503, timed
+        # out or said to slow down: held, the find was filed in his queue as
+        # "its own page could not be read", and every later plan held it as
+        # already there, though the next read would have answered. Listed with
+        # the reason, and asked again by the next plan.
+        said_of = ctx.get("record_said") or {}
+        day = [(o, str(said_of[o["id"]])[len("transient:"):].strip())
+               for o, o_refs in ctx.get("paylocity_records") or []
+               if o["id"] != cid and o["id"] in by_id
+               and str(said_of.get(o["id"]) or "").startswith("transient:")
+               and board_proposals.paylocity_relation(refs, o_refs) == "unknown"]
+        if day:
+            o, how = day[0]
+            return _skip(base, "unreadable",
+                         f"{o.get('name') or o['id']}'s Paylocity board is on file by "
+                         f"{short((o.get('ats') or {}).get('ref'))}, which {show(kind, ref)} "
+                         f"cannot be compared with but by the /jobs/All/ address its own page "
+                         f"states, and asking that page failed on the day ({how}); it is asked "
+                         f"again on the next plan, and a failure on the day is not a doubt to "
+                         f"file", error=how, **_carry(doubts))
     block = {"type": kind, "ref": ref}
     exact = spelling(kind, ref)
     # HOW BIG, BEFORE ANYTHING ELSE, where the read cannot say. One request

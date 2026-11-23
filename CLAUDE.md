@@ -2977,7 +2977,13 @@ round.
   apply (`record_addresses`, held to the record's board as it reads then);
   where that page states nothing, the row names the record and says that
   putting its board on file by its whole /jobs/All/<uuid>/<Tenant> address
-  clears it. The probe and the door keep one grammar for a stated /All/
+  clears it. What the page said is kept as `wire_found.page_answer` words: a
+  page that fails ON THE DAY (a 5xx, a 429, a timeout) SKIPs the find only it
+  could compare - asked again by the next plan, never filed (eighth blind
+  review, 2026-11-22: a 503 was filed in his queue and held every later
+  plan) - and one that cannot be read, or states its address in a form the
+  door does not keep, is said as that, never "did not state", and the
+  latter's address is never carried. The probe and the door keep one grammar for a stated /All/
   address (a tenant's name may carry , ; ( ): the door refused what the
   probe stated, and the row said the page "did not state" it), a note's
   address ends at "; ", and a filed row's `page_ref` reaches its waiting
