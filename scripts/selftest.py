@@ -38487,11 +38487,16 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         wired_part = text[:text.find("LEFT ALONE")] if "LEFT ALONE" in text else text
         for number, slug in (("710855", "numberco"), ("737373", "slashco"),
                              ("777002", "waitlegacyco")):
+            # ...and the sighting of the number on their own site that lets it
+            # take a row waiting under the number for this board, and go into
+            # the note (account_clears; repair of review 9, 2026-11-23)
             if f"leans on its account number: their site asks for it as Workable account " \
                     f"{number}, and the plan followed that number to apply.workable.com/" \
-                    f"{slug}" not in wired_part:
+                    f"{slug}; check 1's own sighting asks by it (apply.workable.com/api/v1/" \
+                    f"widget/accounts/{number})" not in wired_part:
                 errors += fail(f"the look does not print the Workable account number "
-                               f"{number} a wired row leans on, and what ties it to {slug}: "
+                               f"{number} a wired row leans on, what ties it to {slug}, and "
+                               f"the sighting on their site it clears by: "
                                f"{wired_part[-700:]!r}")
         if wired_part.count("leans on its account number") != 3:
             errors += fail(f"the look prints an account number for a board found by its slug: "
@@ -38510,6 +38515,11 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                 "apply.workable.com/numberco" not in str(rec.get("ats_note")):
             errors += fail(f"the wired record does not keep the account number its site asks "
                            f"for: {rec.get('ats_note')!r}")
+        legacy_note = str(box.record("waiting-legacy-co").get("ats_note"))
+        if "asks for it as Workable account 777002; its postings open under " \
+                "apply.workable.com/waitlegacyco" not in legacy_note:
+            errors += fail(f"the record wired past its own older row under its number does not "
+                           f"keep the number its site asks for: {legacy_note!r}")
         filed = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
         if (filed.get("held-number-co") or {}).get("found", {}).get("ref") != "heldnumberco" \
                 or (filed.get("nolanding-co") or {}).get("found", {}).get("ref") != "111111" \
@@ -42261,7 +42271,9 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
     # 2026-11-23). Apply met a waiting row under the WIRE row's `account` and
     # under the worklist's own workable_numbers, so (9b)'s edit plus an account
     # - the waiting row's slug, or its number - or plus that number tied to the
-    # find's slug in workable_numbers, wired past the company's own unruled row
+    # find's slug in workable_numbers (and, the repair of 2026-11-23 found, the
+    # row's account set to that number too, which account_tie then took on the
+    # worklist's own record), wired past the company's own unruled row
     # for another board, the row dropped off his queue, and the account's words
     # went into a greenhouse record's note, which every door after read as a
     # pair on file. Each is left alone, its row still on his queue, no note
@@ -42284,6 +42296,14 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
              "xb-co": ("Xb Co", "workable", "xbco", "workable", "7200",
                        lambda r_, doc: doc.update(workable_numbers={
                            **(doc.get("workable_numbers") or {}), "7200": "xbco"})),
+             # ...and with the row's account set to that number as well: the
+             # worklist's own record then ties the account to the find's slug,
+             # which is all a hold needs and never clears his row (repair of
+             # review 9, 2026-11-23: wired, his row dropped, the pair planted)
+             "xd-co": ("Xd Co", "workable", "xdco", "workable", "7250",
+                       lambda r_, doc: (r_.update(account="7250"), doc.update(
+                           workable_numbers={**(doc.get("workable_numbers") or {}),
+                                             "7250": "xdco"}))),
              # ...and the account and the worklist's record edited together, on a
              # greenhouse board: a Workable account belongs to a Workable board
              "xc-co": ("Xc Co", "greenhouse", "xcco", "workable", "7150",
@@ -42300,6 +42320,10 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                      "never leaned on - plan again",
             "xb-co": "workable/7200 is waiting in Boards we found for it, and it is not shown to "
                      "be workable/xbco",
+            "xd-co": "workable/7250 is waiting in Boards we found for it, and it is not shown to "
+                     "be workable/xdco: the two meet under no key apply may know either by (its "
+                     "own; the Workable account number check 1's own sighting asks by, which "
+                     "the plan followed to it; or a number's slug the file says)",
             "xc-co": "the row says their site asks for the board as Workable account 7150, and "
                      "greenhouse/xcco is not a Workable board: an account only the row says is "
                      "never leaned on - plan again",
@@ -42361,6 +42385,68 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                            f"{sorted(cards)}; pairs {bp.workable_pairs(cs9, found9)}; records "
                            f"{ {k: (v.get('ats'), v.get('ats_note')) for k, v in recs9.items()} }"
                            f"): {text[-300:]}")
+
+    # (9d) ...AND NOTHING THE WORKLIST ALONE SAYS OF ONE IS WRITTEN WHERE EVERY
+    # DOOR AFTER READS IT BACK AS A PAIR (repair of review 9, 2026-11-23). A
+    # wired row's account that only the worklist's workable_numbers ties to its
+    # slug - check 1's own sighting is of the slug, and nothing on file ties
+    # the two - is enough to hold by, and the row is wired; the look says
+    # "for its holds alone", and the note does not say the number (it used
+    # to, and every door after read the note as a pair on file).
+    with _WiringBox([co("xn-co", "Xn Co")], {"workable/xnco": (3, ["Xn Co"])}) as box:
+        code, text, wl_9d, rows_9d = box.plan(_wb_results({
+            "xn-co": names("xn-co", "workable", "xnco")}), name="worklist-9d.json")
+        expect(rows_9d, "xn-co", "WIRE")
+
+        def claim9d(by_id, doc):
+            by_id["xn-co"]["account"] = "7260"
+            doc["workable_numbers"] = {**(doc.get("workable_numbers") or {}), "7260": "xnco"}
+        wl_9d2 = box.edited(wl_9d, "worklist-9d-claim.json", claim9d)
+        code, text, look_9d = box.look(wl_9d2)
+        wired9 = text[:text.find("\nHOLD ")] if "\nHOLD " in text else text
+        if "WIRE 1 " not in wired9 or "leans on its account number: for its holds alone, " \
+                "Workable account 7260: the plan followed that number to " \
+                "apply.workable.com/xnco, and check 1's own sighting does not ask for the " \
+                "board by that number, and nothing on file ties the two; so no row waiting " \
+                "under the number is taken for this board, and the record's note does not " \
+                "say it" not in wired9:
+            errors += fail(f"xn-co: an account only the worklist's own record ties to the slug "
+                           f"was not wired for its holds alone, said so in the look: "
+                           f"{wired9[-600:]!r}")
+        code, text = box.write(wl_9d2, look_9d)
+        cs9d = json.loads((box.tmp / "companies.json").read_text())
+        found9d = json.loads((box.tmp / bp.FOUND.name).read_text())
+        xn9 = next(c_ for c_ in cs9d if c_["id"] == "xn-co")
+        if code != 0 or xn9.get("ats") != {"type": "workable", "ref": "xnco"} \
+                or "Workable account" in str(xn9.get("ats_note")) \
+                or bp.workable_pairs(cs9d, found9d) != {}:
+            errors += fail(f"the write put a Workable account only its worklist said into a "
+                           f"note, which every door after reads as a pair (exit {code}; pairs "
+                           f"{bp.workable_pairs(cs9d, found9d)}; xn-co {xn9.get('ats')} "
+                           f"{xn9.get('ats_note')!r:.200}): {text[-300:]}")
+    # what may clear and be written, asked directly: check 1's own sighting of
+    # that very number (not a longer one, not a slug that starts with it) with
+    # the plan's record, or a pair on file - and never the plan's record where
+    # the file opens the number under another slug
+    W9 = "https://apply.workable.com/api/v1/widget/accounts/"
+    for saw9, numbers9, pairs9, want9 in (
+            (f"{W9}7400?origin=embed", {"7400": "s74"}, {}, "check 1's own sighting asks by it "
+             "(apply.workable.com/api/v1/widget/accounts/7400)"),
+            (f"{W9}7400?origin=embed", {"7400": "s74"}, {"7400": "other74"}, None),
+            (f"{W9}7400?origin=embed", {}, {"7400": "s74"},
+             "the file says that number opens under apply.workable.com/s74"),
+            ("workable board s74", {}, {"7400": "s74"},
+             "the file says that number opens under apply.workable.com/s74"),
+            ("workable board s74", {"7400": "s74"}, {}, None),
+            (f"{W9}74001?origin=embed", {"7400": "s74"}, {}, None),
+            (f"{W9}7400abc?origin=embed", {"7400": "s74"}, {}, None),
+            (f"{W9}7400?origin=embed", {"7400": "s75"}, {}, None)):
+        row9 = {"type": "workable", "ref": "s74", "account": "7400", "check_1": {"saw": saw9}}
+        got9 = wf.account_clears(row9, numbers9, pairs9)
+        if (want9 is None) != (got9 is None) or (want9 and want9 not in got9):
+            errors += fail(f"wire_found.account_clears for a sighting {saw9!r}, the plan's record "
+                           f"{numbers9} and pairs on file {pairs9} said {got9!r}, want "
+                           f"{want9!r}")
 
     # (10) A PAYLOCITY RECORD WHOSE REF CARRIES NO /All/ OR /List/ ID is no
     # address to compare a board with (test review, 2026-11-22)

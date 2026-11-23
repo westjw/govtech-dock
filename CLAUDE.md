@@ -2746,7 +2746,21 @@ round.
   `wire_found.account_tie` shows it - a Workable row, the number in digits,
   opened under that very slug by the plan's own `workable_numbers` or by a
   pair on file - and prints it under the row ("leans on its account number:
-  ..."); any other `account` leaves the row alone (`evidence`).
+  ..."); any other `account` leaves the row alone (`evidence`). That is
+  enough to HOLD by (holders, holds and twins meet the board under the
+  number too). The account CLEARS something - a row waiting for the company
+  under the number, taken for this very board - and goes into the record's
+  note only where `wire_found.account_clears` shows more: a pair on file
+  already opening that number under this slug, or check 1's own sighting
+  asking for the board by that very number (`check_1.saw` carries
+  apply.workable.com/api/v1/widget/accounts/N, `account_sighted`: the wire
+  rests on it) with the plan's `workable_numbers` opening it under this slug
+  and nothing on file opening it under another. The look says which,
+  printing the sighting, or "for its holds alone" (repair of review 9,
+  2026-11-23: an edit giving the row the waiting row's number as its
+  `account` and tying it to the find's slug in `workable_numbers` waived the
+  company's own unruled row - it dropped off his queue - and the note planted
+  the pair).
   `board_url` and the desk's `boardUrlFor` link the filed page or the
   company's website for a number, never `apply.workable.com/<number>`; the
   desk's Accept and its Set board both refuse a numbered Workable ref
@@ -3087,12 +3101,14 @@ round.
   not record in the row's `waiting_seen`, or one it records that is not this
   very board - another board under every key it is known by
   (`wire_found.waiting_keys`, the plan's own test, asked by keys apply may
-  lean on: the row's own board, its account where `account_tie` shows it,
+  lean on: the row's own board, its account where `account_clears` shows it,
   and a waiting Workable number's slug only where a pair on file says it,
   never the worklist's `workable_numbers` alone - review 9, 2026-11-23: an
   edited `account`, or a number tied to the find's slug in
   `workable_numbers`, waived the company's own unruled row and it dropped
-  off his queue), or a Paylocity board tied
+  off his queue; and its repair: the two edited together, which
+  `account_tie` takes on the worklist's own record, waived it too), or a
+  Paylocity board tied
   by less than an id that agrees: the plan holds beside either and records
   neither, so a worklist saying it saw one is not taken at its word (review
   of the eighth blind review's fixes, 2026-11-22: an edited `waiting_seen`
@@ -3107,8 +3123,9 @@ round.
   it was written, and version 4 carried a record's page's address apply took
   on its word. The look prints, under each row it wires, every /All/ address
   it leans on ("leans on what the plan was told: ...") and the Workable
-  account number it is asked for by, with what ties it to the slug ("leans
-  on its account number: ..."), and the code covers them.
+  account number it is asked for by, with what ties it to the slug and
+  whether that clears and goes into the note ("leans on its account number:
+  ...", or "... for its holds alone ..."), and the code covers them.
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from

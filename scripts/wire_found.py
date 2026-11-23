@@ -1261,7 +1261,10 @@ def account_tie(row: dict, numbers: dict | None, pairs: dict | None) -> str | No
     leaned on (review 9, 2026-11-23): apply met the company's own unruled row
     for another board under the account's key, so an edited `account` waived
     it - and the row dropped off his queue - and the account's words went into
-    the record's note, which every later door reads as a pair on file."""
+    the record's note, which every later door reads as a pair on file. This
+    tie is what HOLDING needs (the account's key meets the holds, the holders
+    and the twins); a row is cleared by the account, and its words written,
+    only on account_clears."""
     if not account_words(row):
         return None
     account, ref = row["account"], row.get("ref")
@@ -1270,6 +1273,73 @@ def account_tie(row: dict, numbers: dict | None, pairs: dict | None) -> str | No
     if (pairs or {}).get(account) == ref:
         return f"the file says that number opens under apply.workable.com/{ref}"
     return None
+
+
+# the address a site asks Workable's widget (or its API) for an account by,
+# as find_site_boards reads it out of a page and quotes it in a sighting
+_ASKS_BY_NUMBER = re.compile(
+    r"apply\.workable\.com/api/v[13]/(?:widget/)?accounts/([0-9]+)(?![0-9A-Za-z_-])", re.I)
+
+
+def account_sighted(row: dict) -> str | None:
+    """The address in check 1's own sighting (`check_1.saw`, what the finder
+    saw on their site) that asks for the board by the row's account number -
+    apply.workable.com/api/v1/widget/accounts/<the number> - or None."""
+    c1 = row.get("check_1") if isinstance(row.get("check_1"), dict) else {}
+    saw, account = c1.get("saw"), row.get("account")
+    if not isinstance(saw, str) or not isinstance(account, str):
+        return None
+    return next((m.group(0) for m in _ASKS_BY_NUMBER.finditer(saw) if m.group(1) == account),
+                None)
+
+
+def account_clears(row: dict, numbers: dict | None, pairs: dict | None) -> str | None:
+    """How apply knows a row's Workable account number may CLEAR something -
+    a row waiting for the company under that number, taken for this very
+    board - and may be WRITTEN where every door after reads it back as a pair
+    on file (the wired record's note, a held row's doubt), in words - or None.
+
+    MORE THAN account_tie, which is all the holding needs. A pair said on file
+    already ties the number to this very slug; or check 1's own sighting asks
+    for the board by that very number (account_sighted: the wire rests on it,
+    their site asking for account N and its postings opening under the slug)
+    and the plan's record of the numbers it followed opens it under this slug,
+    with nothing on file opening it under another. The worklist's
+    workable_numbers alone - a number tied to a slug their site was never seen
+    asking by - clears nothing and is written nowhere (repair of review 9,
+    2026-11-23: an edit that gave the row that number as its `account` and
+    tied it to the find's slug in workable_numbers waived the company's own
+    unruled row under the number, the row dropped off his queue, and the
+    note planted the pair on file for every door after)."""
+    if not account_words(row):
+        return None
+    account, ref = row["account"], row.get("ref")
+    on_file = (pairs or {}).get(account)
+    if on_file == ref:
+        return f"the file says that number opens under apply.workable.com/{ref}"
+    asked = account_sighted(row)
+    if on_file is None and asked and (numbers or {}).get(account) == ref:
+        return (f"the plan followed that number to apply.workable.com/{ref}; check 1's own "
+                f"sighting asks by it ({asked})")
+    return None
+
+
+def account_said(row: dict, numbers: dict | None, pairs: dict | None) -> str:
+    """What the look prints under a wired row about its account number: what
+    ties it to the slug, and - where that is not enough to clear anything or
+    to be written down (account_clears) - that it only holds."""
+    cleared = account_clears(row, numbers, pairs)
+    if cleared:
+        return (f"their site asks for it as Workable account {row['account']}, and "
+                f"{cleared}")
+    other = (pairs or {}).get(row["account"])
+    why = (f"the file opens that number under apply.workable.com/{other}" if other else
+           "check 1's own sighting does not ask for the board by that number, and nothing "
+           "on file ties the two")
+    return (f"for its holds alone, Workable account {row['account']}: "
+            f"{account_tie(row, numbers, pairs) or 'nothing ties it to the slug'}, and {why}; "
+            f"so no row waiting under the number is taken for this board, and the record's "
+            f"note does not say it")
 
 
 def workable_slug(number: str, ctx: dict) -> tuple[str | None, str, str]:
@@ -3406,7 +3476,10 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     # a Workable row, in digits, where the plan's own record of the numbers it
     # followed or a pair on file opens it under this very slug (account_tie),
     # and the look prints how. (Listed twice under it, above, a row is still
-    # left alone: that only ever holds.)
+    # left alone: that only ever holds.) That is enough to HOLD by. A row
+    # waiting under the number is taken for this board, and the number goes
+    # into the note, only on more (account_clears, below): the worklist's
+    # workable_numbers alone ties an edited account to any slug.
     if row.get("account") and not account_tie(row, held_for.get("numbers"),
                                               held_for.get("pairs_on_file")):
         acct = str(row.get("account"))[:40]
@@ -3559,6 +3632,14 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
         return code, f"{words} - plan again"
     seen = {tuple(x) for x in row.get("waiting_seen") or []
             if isinstance(x, list) and len(x) == 2}
+    # the keys a row waiting for the company may be taken for THIS board by:
+    # the board's own, and its account number's only where account_clears
+    # shows it - never on the worklist's workable_numbers alone, which holds
+    # (above) and clears nothing (repair of review 9, 2026-11-23)
+    clearing = set(row_keys({"type": kind, "ref": ref}))
+    if row.get("account") and account_clears(row, held_for.get("numbers"),
+                                              held_for.get("pairs_on_file")):
+        clearing.add(board_key("workable", row["account"]))
     for w in (held_for.get("waiting") or {}).get(cid) or []:
         if w.get("filed"):
             # filed by a door, on a doubt: his until he rules, whatever board
@@ -3592,7 +3673,7 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                                       w["board"], refs, w_refs, row.get("page_said"))
                        if rl != "apart" else f"it is another board than {show(kind, ref)}")
                     + "; a board waiting on a person is his to settle")
-        elif not waiting_keys(w, held_for.get("pairs_on_file")) & set(keys):
+        elif not waiting_keys(w, held_for.get("pairs_on_file")) & clearing:
             # ANY OTHER WAITING ROW ONLY AS THIS VERY BOARD, under a key it is
             # known by (consider): the plan holds a company beside a different
             # board waiting on a person and records none in waiting_seen, so a
@@ -3602,16 +3683,19 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             # re-checked only for a Paylocity row beside a Paylocity board, an
             # edit wired past the company's own unruled row for another board,
             # and the row dropped off his queue). BY KEYS APPLY MAY LEAN ON
-            # (review 9, 2026-11-23): the row's own, its account's where
-            # account_tie shows it (above), and a waiting Workable number's
-            # slug only where a pair on file says it - never the worklist's
-            # own workable_numbers, which an edit ties to any slug (it still
-            # holds: held_boards and the holders read it)
+            # (review 9, 2026-11-23, and its repair): the board's own, its
+            # account's only where account_clears shows it (`clearing`, above),
+            # and a waiting Workable number's slug only where a pair on file
+            # says it - never the worklist's own workable_numbers, which an
+            # edit ties to any slug, alone: with the row's `account` edited
+            # too it waived the company's own unruled row under that number
+            # (it still holds: held_boards and the holders read it)
             return "waiting", (f"{w['board']} is waiting in {w['store']} for it, and it is "
                                f"not shown to be {show(kind, ref)}: the two meet under no key "
-                               f"apply may know either by (its own, or a Workable number's "
-                               f"slug that the plan followed for this row or the file says); "
-                               f"a board waiting on a person is his to settle - plan again")
+                               f"apply may know either by (its own; the Workable account "
+                               f"number check 1's own sighting asks by, which the plan "
+                               f"followed to it; or a number's slug the file says); a board "
+                               f"waiting on a person is his to settle - plan again")
     if pl:
         # a record on file whose Paylocity board is this one, or that its
         # addresses do not tell apart from it (consider; fifth and sixth blind
@@ -3692,14 +3776,17 @@ def queue_rows(holds: list, standing: dict | None = None, pages: dict | None = N
     return out
 
 
-def note_for(row: dict, today: str) -> str:
+def note_for(row: dict, today: str, noted: bool = False) -> str:
     """Both checks in one line, kept on the record as ats_note - and, for a
     Workable board their site asks for by number, the number: nothing else on
     file would say which account the site embeds if the slug stopped
-    answering."""
+    answering. Said only where `noted` (account_clears showed it): every door
+    after reads those words back as a pair on file, so the worklist's own
+    workable_numbers alone never writes them (repair of review 9,
+    2026-11-23)."""
     c1, c2 = row["check_1"], row["check_2"]
     read_on = str(row.get("read_at") or "")[:10]
-    asks = account_words(row)
+    asks = account_words(row) if noted else ""
     # the /All/ address a Paylocity board's own page states, in the words
     # board_proposals.PAGE_WORDS reads back: a record wired at a bare /List/
     # address is then still compared with the same board's /All/ address,
@@ -3771,10 +3858,10 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
                 "pages": doc.get("page_addresses") or {},
                 # what may tie a Workable number to a slug where a row is
                 # CLEARED by it (a waiting row waived, an account written into a
-                # note): the plan's own record of the numbers it followed, for a
-                # row's own account, and the pairs said on file - never the
-                # worklist's record alone for a row it does not name (account_tie;
-                # review 9, 2026-11-23)
+                # note): the pairs said on file, and the plan's own record of the
+                # numbers it followed only for a row's own account that check 1's
+                # own sighting asks by - never the worklist's record alone
+                # (account_clears; review 9, 2026-11-23, and its repair)
                 "numbers": resolved, "pairs_on_file": pairs}
 
     wire, left = [], []
@@ -3807,9 +3894,13 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
             # look and covered by its code
             "leans": {r["id"]: lean_lines(r, held_for["pages"]) for r in wire},
             # ...and the Workable account number each is asked for by, with
-            # what ties it to the slug wired (account_tie): printed, and covered
-            "accounts": {r["id"]: [r["account"], account_tie(r, resolved, pairs)]
+            # what ties it to the slug wired and whether that clears a row and
+            # goes into the note (account_said): printed, and covered
+            "accounts": {r["id"]: [r["account"], account_said(r, resolved, pairs)]
                          for r in wire if r.get("account")},
+            # the wired rows whose note says their account number (account_clears)
+            "noted": sorted(r["id"] for r in wire if r.get("account")
+                            and account_clears(r, resolved, pairs)),
             "skips": [r for r in doc["rows"] if r["action"] == "SKIP"],
             "standing": standing, "reaches": reaches, "missing": missing,
             "doubts": s["doubts"]}
@@ -3888,9 +3979,7 @@ def report(doc: dict, d: dict) -> None:
             print(f"        leans on what the plan was told: {whose} states its address is "
                   f"{address}")
         if r["id"] in d["accounts"]:
-            account, how = d["accounts"][r["id"]]
-            print(f"        leans on its account number: their site asks for it as Workable "
-                  f"account {account}, and {how}")
+            print(f"        leans on its account number: {d['accounts'][r['id']][1]}")
     if d["left"]:
         print(f"\nLEFT ALONE {len(d['left'])} - planned to wire, and not wired by this run:")
         for x in d["left"]:
@@ -4001,7 +4090,7 @@ def cmd_apply(a) -> int:
         for row in d["wire"]:
             c = by_id[row["id"]]
             c["ats"] = {"type": row["type"], "ref": row["ref"]}
-            c["ats_note"] = note_for(row, today)
+            c["ats_note"] = note_for(row, today, noted=row["id"] in d["noted"])
             # as act_board_proposal does: the same company under its legal
             # form ("Acme, Inc.") is recorded, so the name the board really
             # uses is on file and is not doubted a second time
