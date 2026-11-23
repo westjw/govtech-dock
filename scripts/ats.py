@@ -4770,7 +4770,7 @@ def successfactors_unify_row(page: str, url: str) -> dict | None:
     lang = _SF_HTML_LANG.search(body[:20000])
     posted = None
     day = _SF_MDY.fullmatch(_text(when)) if when else None
-    if day and lang and lang.group(1).lower().replace("_", "-") == "en-us":
+    if day and lang and lang.group(1).lower() == "en-us":
         try:
             posted = dt.date(2000 + int(day.group(3)), int(day.group(1)), int(day.group(2))).isoformat()
         except ValueError:
