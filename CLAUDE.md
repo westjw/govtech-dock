@@ -3460,13 +3460,18 @@ review and the owner's word, through the wiring door.
   about its first `SF_POSTINGS_SAMPLED` (5) that answer, for the desk; a
   block page or any other failure is the board not read. The classic
   probe's language rule is not asked: the reader pairs the copies. The
-  names measured: 'Aurigo Software Technologies', 'esricanada', 'Octave';
-  proven() is unchanged, so the first two prove neither 'Aurigo Software'
-  nor 'Esri Canada'. **Read offline** over the responses saved 2026-11-23,
-  the postings with no saved page served a saved page of their host
-  retitled (no live read yet): Aurigo 16 rows in 34 requests, stated whole;
-  Esri Canada 16 rows from 32 locs, 16 copies paired, in 66, stated whole
-  as 'esricanada'; Octave 131 rows in 264, five postings asked, not stated.
+  names measured: 'Aurigo Software Technologies', 'esricanada', 'Octave'.
+  proven() is unchanged: 'esricanada' proves nobody (a country on our name
+  must be on the board's), and 'Aurigo Software Technologies' does not
+  prove the bare 'Aurigo Software' - Aurigo's record passes only through
+  its also_known_as 'Aurigo Software Technologies Inc.' (asked offline of
+  the record on file). **Read offline** over the responses saved
+  2026-11-23, the postings with no saved page served a saved page of their
+  host retitled (no live read yet): Aurigo 16 rows in 34 requests, stated
+  whole and proven for its record by that alias; Esri Canada 16 rows from
+  32 locs, 16 copies paired, in 66, stated whole as 'esricanada' and
+  proven for nobody; Octave 131 rows in 264, five postings asked, not
+  stated.
   **Known**: the ad is the FIRST itemprop="description" element only
   (`successfactors_ad`, shared with the classic reader), and Esri Canada's
   postings split theirs into three, the pay sentence in the third; Esri

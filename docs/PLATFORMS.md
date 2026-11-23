@@ -775,7 +775,7 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 **Notes.**
 
 - Gainwell Technologies' board states 'Gainwell Technologies LLC' (the /search/ title and description, and the hiringOrganization of its postings), proven for the record.
-- Unify boards (Aurigo, Esri Canada, Octave) are read from their sitemap since 2026-11-23, so far only offline over the responses saved that day: Aurigo 16 rows, Esri Canada 16 (32 locs, each role's two languages paired by requisition), Octave 131; none is wired yet. The probe states 'Aurigo Software Technologies' and 'esricanada' whole, which prove neither record's name, and Octave's 131 not whole.
+- Unify boards (Aurigo, Esri Canada, Octave) are read from their sitemap since 2026-11-23, so far only offline over the responses saved that day: Aurigo 16 rows, Esri Canada 16 (32 locs, each role's two languages paired by requisition), Octave 131; none is wired yet. The probe states 'Aurigo Software Technologies' whole, which proves Aurigo's record only through its also_known_as 'Aurigo Software Technologies Inc.', and 'esricanada' whole, which proves no record (the country on 'Esri Canada' is not on the board's name); Octave's 131 are not stated whole.
 - A Unify posting's ad is read from its first itemprop="description" element only, as the classic reader's is; Esri Canada's postings split theirs into three, the pay sentence in the third, and their Salary Min/Max tokens are not read.
 
 <!-- live -->
