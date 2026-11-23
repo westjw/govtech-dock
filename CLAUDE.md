@@ -2778,7 +2778,18 @@ round.
   `workable_numbers` first, so an entry edited to open 7300 under another
   slug moved the owner's queued row, his refusal and a record on the number
   off the slug the file pairs it with, and a row flipped to WIRE beside them
-  was wired, the look a plain WIRE line). Where the run did
+  was wired, the look a plain WIRE line). And a row waiting for a company
+  under such a number is NEITHER board: the find is held, both slugs said
+  ("... the file opens Workable account N under apply.workable.com/<a>, and
+  this run followed that number to apply.workable.com/<b>, so which board
+  the row is cannot be told"), and apply leaves a row flipped to WIRE beside
+  it alone in those words wherever the worklist's `workable_numbers` opens
+  the number under another slug than the pair on file - that word holds,
+  and never clears (`wire_found.number_split`; review 11, 2026-11-23: the
+  waiting-row test took the file's slug alone, so an older finder's row
+  under 730730, whose words open it under wkco, was taken for wkco's very
+  board while the run followed 730730 to zzz for another company, and the
+  company's own unruled row was waived and left his queue). Where the run did
   not resolve the number - and for a record on file holding a number nobody in the run
   followed - a Workable board is held when it STATES one of the names that
   account goes by (the held row's `board_calls_itself` or company, the
@@ -2822,7 +2833,8 @@ round.
   and nothing on file opening it under another - always of the row's own
   board, which the record then holds. The account CLEARS NOTHING: a row
   waiting for the company under the number is taken for this very board
-  only where a pair on file opens that number under this slug, never on the
+  only where a pair on file opens that number under this slug and the run
+  followed it to no other (`number_split`, above), never on the
   worklist's `workable_numbers`, the row's `account` or check 1's sighting,
   each of which an edit writes (review 10, 2026-11-23: the repair of review
   9 took such a row on the three, and with `check_1.saw` edited too the
@@ -3233,7 +3245,10 @@ round.
   `workable_numbers`, waived the company's own unruled row and it dropped
   off his queue; its repair: the two edited together, which `account_tie`
   takes on the worklist's own record, waived it too; and review 10: so did
-  the two with `check_1.saw` edited to ask by the number), or a
+  the two with `check_1.saw` edited to ask by the number), or one under a
+  Workable number the worklist's `workable_numbers` opens under another slug
+  than the pair on file (`wire_found.number_split`, review 11: the
+  worklist's word holds there), or a
   Paylocity board tied
   by less than an id that agrees: the plan holds beside either and records
   neither, so a worklist saying it saw one is not taken at its word (review

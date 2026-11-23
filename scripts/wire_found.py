@@ -840,6 +840,30 @@ def waiting_keys(w: dict, pairs: dict | None = None) -> set:
             for k in board_proposals.found_keys(w.get("type"), x, pairs)} | {w.get("key")}
 
 
+def number_split(w: dict, keys, slugs: dict | None) -> list | None:
+    """The slugs a row waiting under a Workable account NUMBER is known by -
+    the pair on file first, the slug a run followed the number to beside it
+    (board_proposals.number_slugs, `slugs`) - where there are two and not
+    every one is the find's (`keys`); or None.
+
+    WHERE THE FILE AND THE RUN SAY TWO SLUGS, THE ROW IS NEITHER BOARD
+    (review 11, 2026-11-23). waiting_keys takes one slug per number, the
+    file's first: a non-filed row under workable/730730 whose words open that
+    number under wkco was taken for wkco's very board while this run followed
+    730730 to zzz for another company - the company's own unruled row was
+    waived, wired past and dropped off his queue (before review 10 the run's
+    slug had replaced the file's, and the row was held). The plan (consider)
+    and apply (wire_problem) both hold the find beside such a row, naming
+    both slugs; in apply the second slug is the worklist's workable_numbers,
+    whose word holds and never clears."""
+    if not numbered(w.get("type"), w.get("ref")):
+        return None
+    known = (slugs or {}).get(_number(w.get("ref"))) or []
+    if len(known) > 1 and not all(board_key("workable", s) in set(keys) for s in known):
+        return list(known)
+    return None
+
+
 doubt_board = board_proposals.doubt_board
 
 
@@ -2423,6 +2447,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # /All/<uuid>/Pl-Co beside a /List/2115/Pl-Co find of the same board
         # was "a different board" (fifth blind review, 2026-11-22).
         r_refs = board_proposals.board_refs(r.get("type"), r.get("ref"), r.get("page_ref"))
+        split = None
         if pl and r.get("type") == "paylocity":
             # THE SAME BOARD ONLY WHERE AN ID AGREES (eighth blind review,
             # 2026-11-22). The tenant's name after a /List/ id and after an
@@ -2438,7 +2463,13 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
             same_board = rl == "same"
         else:
             rl = None
-            same_board = bool(waiting_keys(r, owner_holds.get("pairs")) & set(keys))
+            # a number the file opens under one slug and this run followed to
+            # another is not shown to be either board (number_split; review
+            # 11, 2026-11-23: on the file's slug alone the company's own
+            # unruled row was waived)
+            split = number_split(r, keys, owner_holds.get("slugs"))
+            same_board = not split and bool(waiting_keys(r, owner_holds.get("pairs"))
+                                            & set(keys))
         q = r.get("proposed") if isinstance(r.get("proposed"), dict) else None
         asked = ((f", proposed {q.get('at') or '?'} by {q.get('by') or '?'}"
                   + (f": \"{q['why'][:240]}\"" if q.get("why") else "")) if q else "")
@@ -2450,6 +2481,14 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                               f"company{asked}, and "
                               + relation_words(rl, show(kind, ref), r["board"], refs, r_refs,
                                                page_said))
+            elif split:
+                doubts.append(f"{r['board']} is already waiting in {r['store']} for this "
+                              f"company{asked}, and it is not shown to be {show(kind, ref)}: "
+                              f"the file opens Workable account {_number(r.get('ref'))} under "
+                              f"apply.workable.com/{split[0]}, and this run followed that "
+                              f"number to apply.workable.com/{split[1]}, so which board the "
+                              f"row is cannot be told; a board waiting on a person is his to "
+                              f"settle")
             else:
                 doubts.append(f"a different board, {r['board']}, is already waiting in "
                               f"{r['store']} for this company{asked}")
@@ -3812,6 +3851,19 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                    f"the two meet under no key apply may know either by (its own, or a "
                    f"Workable number's slug a pair on file says); a board waiting on a person "
                    f"is his to settle - plan again"))
+        elif split := number_split(w, clearing, board_proposals.number_slugs(
+                held_for.get("pairs_on_file"), held_for.get("numbers"))):
+            # ...AND NOT WHERE THE WORKLIST'S WORD FOR THE NUMBER IS ANOTHER SLUG
+            # (review 11, 2026-11-23): the pair on file ties the number to this
+            # board and the plan followed it to another, so the row is neither
+            # (number_split, as consider holds it). The worklist's word holds
+            # here; it never clears.
+            return "waiting", (
+                f"{w['board']} is waiting in {w['store']} for it, and it is not shown to be "
+                f"{show(kind, ref)}: the file opens Workable account {_number(w.get('ref'))} "
+                f"under apply.workable.com/{split[0]}, and the worklist says the plan followed "
+                f"that number to apply.workable.com/{split[1]}, so which board the row is "
+                f"cannot be told; a board waiting on a person is his to settle - plan again")
     if pl:
         # a record on file whose Paylocity board is this one, or that its
         # addresses do not tell apart from it (consider; fifth and sixth blind
