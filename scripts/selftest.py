@@ -22851,6 +22851,45 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (not stated and "written in more than one language (en, fr)" not in how_):
                 errors += fail(f"successfactors unify probe, {why}: stated {got['stated']} ({how_!r}), "
                                f"wanted {stated}")
+        # A COPY NOT IN ENGLISH THAT SHOWS NO POSTING, of a requisition a copy
+        # of which answered closed, is closed with it in the probe as in the
+        # reader, weighed once every copy is asked (blind review 11,
+        # 2026-11-23: a bilingual board with one role just closed was read
+        # whole by the reader and held 'unreadable' here, its French copy
+        # called a block or error page)
+        with_twin = ("1 of them a copy that shows no posting, of a requisition another copy of which the site "
+                     "says has closed")
+        for postings_, why in (([c for n in range(1, 9) for c in pair(n, shut_=n == 1)], "its English copy first"),
+                               ([c for n in range(1, 9) for c in pair(n, shut_=n == 1, fr_first=True)],
+                                "its French copy first"),
+                               (pair(1, en_answer=(404, None), fr_answer=gone_fr)
+                                + [c for n in range(2, 9) for c in pair(n)], "its English copy a 404 where it hops")):
+            got = said(site(postings_))
+            rows, exc, err = go(site(postings_))
+            if not got["stated"] or got["failed"] or got["names"] != ["Acme Gov Software"] \
+                    or with_twin not in str(got["how"]) or "block or error page" in str(got["how"]) \
+                    or not vb.proven({"name": "Acme Gov Software"}, got)["ok"] or exc or len(rows or []) != 7:
+                errors += fail(f"successfactors unify probe: a bilingual board with one role closed, {why}, was "
+                               f"not stated whole as the reader reads it ({len(rows or [])} rows, {exc}): {got}")
+        got = said(site([c for n in (1, 2, 3) for c in pair(n, shut_=True)]))
+        if got["stated"] or got["names"] or got["failed"] or "none of the 6 postings asked" not in str(got["how"]) \
+                or "3 of them a copy that shows no posting" not in str(got["how"]):
+            errors += fail(f"successfactors unify probe: a bilingual board every role of which has closed was "
+                           f"not said so, its French copies closed with their English: {got}")
+        # ...and one that no copy of its requisition asked answered closed for,
+        # or with no requisition to know it by, is the board not read - in
+        # words that do not call it a block or error page it may not be
+        for postings_, why, words_ in (
+                (pair(1, fr_answer=gone_fr) + [c for n in (2, 3, 4) for c in pair(n)], "whose English copy is open",
+                 "no copy of its requisition asked answered as closed"),
+                ([(f"{SF}/job/Gestionnaire/61000001/", None, gone_fr)] + pair(1, shut_=True)[:1]
+                 + [c for n in (2, 3, 4) for c in pair(n)], "with no requisition to know it by",
+                 "it names no requisition")):
+            got = said(site(postings_))
+            if got["stated"] or got["names"] or got["failed"] != "unreadable" or got["transient"] \
+                    or words_ not in str(got["how"]) or "block or error page" in str(got["how"]):
+                errors += fail(f"successfactors unify probe: a French copy that shows no posting {why} was not "
+                               f"the board unreadable, in words that are true: {got}")
         # (one rule says what language a copy is in, for the reader's English
         # copy and the probe's languages alike: the locale of the address it
         # hopped to, else its page's <html lang>, else the locale its page

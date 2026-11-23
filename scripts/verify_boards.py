@@ -1535,6 +1535,16 @@ def _unify_languages_unpaired(copies: list, shown: list) -> list:
     return spoken
 
 
+def _unify_unsaid(url: str, why: str) -> str:
+    """Why a Unify copy not said to be in English, showing no posting, is
+    the board not read: its words are not ones this reader reads, so it is
+    never called a block or error page it may not be. The reason first: a
+    person reads the first 200 characters (_failure)."""
+    return (f"successfactors posting {url}, not said to be in English, shows no posting, and {why}, "
+            f"so the board is not stated (this reader knows a closed posting's words in English "
+            f"only)")
+
+
 def _successfactors_unify(origin: str, out: dict) -> None:
     # A UNIFY SITE NAMES ITSELF ON EACH POSTING'S OWN PAGE (2026-11-23): its
     # <title> is '<role> Job Details | <site name>' - in French '<rôle>
@@ -1551,8 +1561,11 @@ def _successfactors_unify(origin: str, out: dict) -> None:
     # it lists over (below); a longer sitemap is asked
     # about its first SF_POSTINGS_SAMPLED that answer, for the desk, and
     # states nothing. A closed posting proves nothing either way and is
-    # passed over (40 asked at most); a page that shows no posting and is
-    # not the site saying so, and every other failure, is the board not read.
+    # passed over (40 asked at most) - and so is a copy in another language
+    # than English that shows no posting, of a requisition a copy of which
+    # answered closed, by the reader's rule (below); any other page that
+    # shows no posting and is not the site saying so, and every other
+    # failure, is the board not read.
     # COPIES IN MORE THAN ONE LANGUAGE are the classic probe's language rule,
     # asked of what the reader would publish: it publishes one row a
     # requisition (ats.successfactors_unify_requisition), so a board whose
@@ -1571,6 +1584,7 @@ def _successfactors_unify(origin: str, out: dict) -> None:
     want = len(postings) if small else SF_POSTINGS_SAMPLED
     names, unnamed, closed, answered, asked = [], [], [], 0, 0
     copies, shown = [], []          # (language, requisition) of each copy asked; of each open one
+    shut, blank = set(), []         # requisitions a copy of which answered closed; copies weighed after
     for url in postings:
         if answered >= want or asked >= SF_POSTINGS_ASKED:
             break
@@ -1582,7 +1596,10 @@ def _successfactors_unify(origin: str, out: dict) -> None:
             if ats.successfactors_closed(exc):
                 closed.append(url)
                 hop = landed[-1] if landed else ""
-                copies.append((ats.successfactors_unify_language("", hop, origin), ats._sf_requisition(hop)))
+                req = ats._sf_requisition(hop)
+                copies.append((ats.successfactors_unify_language("", hop, origin), req))
+                if req:
+                    shut.add(req[0])
                 continue
             raise
         where = landed[-1] if landed else url
@@ -1595,12 +1612,28 @@ def _successfactors_unify(origin: str, out: dict) -> None:
             raise ats.AtsError(f"successfactors posting {url}: {exc}, so the board is not "
                                f"stated") from exc
         if not ats.successfactors_shown(body):
-            if not ats.successfactors_filled(body):
-                raise ats.AtsError(f"successfactors posting {url} answered a page that shows no "
-                                   f"posting and does not say it has closed (a block or error "
-                                   f"page), so the board is not stated")
-            closed.append(url)
-            continue
+            if ats.successfactors_filled(body):
+                closed.append(url)
+                if req:
+                    shut.add(req[0])
+                continue
+            if copies[-1][0] != "en":
+                # A COPY NOT IN ENGLISH THAT SHOWS NO POSTING is the reader's
+                # rule (ats.successfactors_unify): closed where a copy of its
+                # requisition answered closed - the site's words are read in
+                # English only - else not read; weighed once every copy is
+                # asked, as its other copy may come later (blind review 11,
+                # 2026-11-23: a bilingual board with one role just closed was
+                # read whole by the reader and held here "unreadable", its
+                # French copy called a block or error page)
+                if not req:
+                    raise ats.AtsError(_unify_unsaid(url, "it names no requisition to pair with a "
+                                                          "closed copy"))
+                blank.append((url, req[0]))
+                continue
+            raise ats.AtsError(f"successfactors posting {url} answered a page that shows no "
+                               f"posting and does not say it has closed (a block or error "
+                               f"page), so the board is not stated")
         answered += 1
         shown.append((copies[-1][0], req, url))
         cut = ats._cut(body)
@@ -1616,11 +1649,17 @@ def _successfactors_unify(origin: str, out: dict) -> None:
         # page does, another employer is a second name, never passed over
         # (blind review 10, 2026-11-23: it was never read here)
         names.extend(o for o in _itemprops(cut, "hiringOrganization") if o)
+    for url, n in blank:
+        if n not in shut:
+            raise ats.AtsError(_unify_unsaid(url, "no copy of its requisition asked answered as closed"))
+    closed += [url for url, _n in blank]
+    twins = (f"; {len(blank)} of them a copy that shows no posting, of a requisition another copy of "
+             f"which the site says has closed" if blank else "")
     total = len(postings)
     if not answered:
         out["how"] = (f"none of the {asked} postings asked from the successfactors sitemap answered "
                       f"as a posting ({closed[0] if closed else ''!r} the first): each answered as "
-                      f"closed, and a closed posting names nobody, so the board states nothing")
+                      f"closed{twins}, and a closed posting names nobody, so the board states nothing")
         return
     if unnamed:
         out["how"] = (f"successfactors posting {unnamed[0]} names no career site in its title "
@@ -1637,7 +1676,7 @@ def _successfactors_unify(origin: str, out: dict) -> None:
     # asked")
     spoken = _unify_languages_unpaired(copies, shown)
     whole = every_one and len(closed) <= ats.SF_SLACK and not passed and not spoken
-    gone = (f" ({len(closed)} more on it answered as closed and name nobody)" if closed else "")
+    gone = (f" ({len(closed)} more on it answered as closed and name nobody{twins})" if closed else "")
     if whole:
         how = (f"successfactors sitemap and the titles of {answered} of its {total} postings, every "
                f"one it lists asked{gone}, stated by the career site")

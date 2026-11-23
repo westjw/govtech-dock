@@ -3750,7 +3750,14 @@ review and the owner's word, through the wiring door.
   /<Brand>/job/, www., http - is part of the board nobody asked: blind
   review 10, 2026-11-23, when the rest was stated "every one it lists
   asked"); a longer one is asked about its first `SF_POSTINGS_SAMPLED` (5)
-  that answer, for the desk; a
+  that answer, for the desk. A copy in another language than English that
+  shows no posting, of a requisition a copy of which answered closed, is
+  closed with it, by the reader's rule, weighed once every copy is asked
+  (blind review 11, 2026-11-23: a bilingual board with one role just closed
+  was read whole by the reader and held here "unreadable", its French copy
+  called a block or error page); one with no closed copy asked, or no
+  requisition to know it by, is the board not read, in words that do not
+  call it a block page it may not be; an English
   block page or any other failure is the board not read. **Copies in more
   than one language** are the classic probe's language rule, asked of what
   the reader would publish (blind review 10, 2026-11-23: it was not asked,
