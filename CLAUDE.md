@@ -3063,7 +3063,17 @@ round.
   agrees; tied by the tenant's name alone it is held, the name said as all
   that ties them - in the plan, and in apply whatever `waiting_seen` says
   (eighth blind review, 2026-11-22: the find was wired and his unruled row
-  dropped off the queue). A record with no /All/ id that a find of the run
+  dropped off the queue). In apply the id must agree BY ADDRESSES ON FILE:
+  the board as the row spells it, beside the waiting row's ref and the
+  `page_ref` filed with it - never the /All/ address the worklist says the
+  find's own page states (`page_ref` and `page_addresses` are both worklist
+  fields: review 10, 2026-11-23, an edit setting both to the waiting row's
+  own address waived the company's own unruled row, it dropped off his
+  queue, and the note planted that address for every door after). So the
+  plan's own page answer passes such a row and apply leaves the WIRE row
+  alone ("only the address the worklist says ...'s own page states ... ties
+  the two by an id, and nothing on file says it ... his ruling on that row
+  settles it"). A record with no /All/ id that a find of the run
   cannot be compared with - a bare /List/ board accepted at the desk or set
   by hand held every later /All/ find, for every company - has its own
   board's page asked once for its /All/ address (`wire_found.records_by_page`,
@@ -3081,7 +3091,10 @@ round.
   included - a `page_ref` the plan did not record leaves the row alone
   (`evidence`) and is never filed on a held row (eighth blind review,
   2026-11-22: `record_addresses` and a row's `page_ref` were taken on the
-  worklist's word, and an added address cleared a record and a proposal);
+  worklist's word, and an added address cleared a record and a proposal),
+  and so does one on a board already named by its /All/ id and its
+  tenant's name, whose page the plan never asks (review 10, 2026-11-23:
+  edited in with `page_addresses`, it put a second /All/ id on the record);
   where that page states nothing, the row names the record and says that
   putting its board on file by its whole /jobs/All/<uuid>/<Tenant> address
   clears it. What the page said is kept as `wire_found.page_answer` words: a

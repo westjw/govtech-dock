@@ -43110,10 +43110,23 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         expect(rows_q, "plb-co", "HOLD", f"this board (as paylocity/{ALL_B9}) is already in the "
                                          f"owner's queue (Boards we found)",
                never=("a different board",))
+        # ...and in apply, the older finder's row Pl A Co's plan passed - tied
+        # to the /List/ find only by the /All/ id the find's own page stated,
+        # which the worklist alone carries (page_ref, page_addresses) - is not
+        # taken off his queue: the worklist's word ties the two, and an edit
+        # of those two fields waived the company's own unruled row for another
+        # board (review 10, 2026-11-23). It is left alone, said as that.
         code, text, _ = box.look(wl_q)
-        if "WIRE 1 " not in text or "LEFT ALONE" in text:
-            errors += fail(f"pla-co: apply did not wire a board an older finder's row waits "
-                           f"under its /All/ id, the page stating that id: {text[-400:]}")
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Pl A Co ")), "") if "LEFT ALONE" in text else ""
+        if "WIRE 0 " not in text \
+                or f"paylocity/{ALL_A9} is waiting in Boards we found for it, and only the " \
+                   f"address the worklist says paylocity/{LIST_A9}'s own page states " \
+                   f"({ALL_A9}) ties the two by an id, and nothing on file says it" not in line \
+                or "his ruling on that row settles it" not in line:
+            errors += fail(f"pla-co: apply took an older finder's row for the board on the /All/ "
+                           f"id the worklist says the find's own page stated, which nothing on "
+                           f"file says: {line[:400]!r} {text[-400:]!r}")
 
         def waive(by_id, _doc):
             r = by_id["plq-co"]
@@ -43128,6 +43141,70 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             errors += fail(f"plq-co: apply took a worklist's word that it saw an unruled row the "
                            f"tenant's name alone ties to the board: {line[:300]!r} "
                            f"{text[-300:]!r}")
+
+    # (9a) A WIRE ROW'S page_ref AND THE WORKLIST'S page_addresses - both
+    # worklist fields - NEVER TIE THE COMPANY'S OWN UNRULED ROW TO THE BOARD
+    # (review 10, 2026-11-23, the Paylocity twin of review 9's Workable
+    # finding). Pt Co's site names /List/9715/Pt-Co beside its own older row at
+    # /All/<a01>/Pt-Co, and the plan holds it: its page states another /All/
+    # id (a02), or nothing. An edit (WIRE, waiting_seen naming the row, page_ref
+    # and page_addresses set to a01) was wired, the row dropped off his queue,
+    # and the note planted a01 for every door after; and a find already at
+    # /All/<a03>/Pt-Co, whose page the plan never asks, took a page_ref the
+    # same way and was on file under two /All/ ids. Each is left alone now, the
+    # row stays on his queue, and nothing is written.
+    ALL_W10, LIST_Z10, ALL_Z10 = pall(0xa01, "Pt-Co"), plist(9715, "Pt-Co"), \
+        pall(0xa03, "Pt-Co")
+    for label, find10, says10, why10 in (
+            ("the page states another /All/ id", LIST_Z10,
+             {f"paylocity/{LIST_Z10}": {"address": pall(0xa02, "Pt-Co")}},
+             f"paylocity/{ALL_W10} is waiting in Boards we found for it, and only the address "
+             f"the worklist says paylocity/{LIST_Z10}'s own page states ({ALL_W10}) ties the "
+             f"two by an id, and nothing on file says it"),
+            ("the page states nothing", LIST_Z10, {},
+             f"paylocity/{ALL_W10} is waiting in Boards we found for it, and only the address "
+             f"the worklist says paylocity/{LIST_Z10}'s own page states ({ALL_W10}) ties the "
+             f"two by an id, and nothing on file says it"),
+            ("the find is already a whole /All/ address", ALL_Z10, {},
+             f"the row says its own page states its address is {ALL_W10}, and "
+             f"paylocity/{ALL_Z10} is already named by its /jobs/All/ id and its tenant's "
+             f"name: the plan asks no such board's page")):
+        with _WiringBox([co("pt-co", "Pt Co")], {f"paylocity/{find10}": (3, ["Pt Co"])},
+                        files={bp.FOUND.name: [frow("pt-co", "Pt Co", ALL_W10, filed=False,
+                                                    identity_why="an older finder's row")]},
+                        says=says10) as box:
+            code, text, wl10, rows10 = box.plan(_wb_results({
+                "pt-co": names("pt-co", "paylocity", find10)}), name="worklist-pt10.json")
+            expect(rows10, "pt-co", "HOLD", f"paylocity/{ALL_W10} is already waiting in Boards we "
+                                            f"found for this company")
+            sp10 = wf.spelling("paylocity", find10)
+
+            def forge10(by_id, doc):
+                r_ = by_id["pt-co"]
+                r_["action"] = "WIRE"
+                r_.pop("doubts", None)
+                r_.pop("queue_row", None)
+                r_["waiting_seen"] = [["Boards we found", bp.board_key("paylocity", ALL_W10)]]
+                r_["page_ref"] = ALL_W10                   # worklist field one
+                doc["page_addresses"][sp10] = ALL_W10      # worklist field two
+            wl10b = box.edited(wl10, "worklist-pt10-forged.json", forge10)
+            code, text, look10 = box.look(wl10b)
+            line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                         if ln.strip().startswith("Pt Co ")), "") if "LEFT ALONE" in text else ""
+            if "WIRE 0 " not in text or why10 not in line:
+                errors += fail(f"{label}: apply took the company's own unruled row for the board "
+                               f"on a page_ref and page_addresses only the worklist says, or did "
+                               f"not say so: {line[:400]!r} {text[-400:]!r}")
+            box.write(wl10b, look10)
+            cs10 = json.loads((box.tmp / "companies.json").read_text())
+            rec10 = next(c_ for c_ in cs10 if c_["id"] == "pt-co")
+            if (rec10.get("ats") or {}).get("type") != "html" or rec10.get("ats_note") \
+                    or "pt-co" not in {q_["id"] for q_ in bp.q_board_proposals(cs10, {})} \
+                    or bp.stated_addresses(cs10, json.loads((box.tmp / bp.FOUND.name)
+                                                            .read_text())):
+                errors += fail(f"{label}: the write wired past the company's own unruled row, "
+                               f"took it off his queue, or planted an address on file: "
+                               f"{rec10.get('ats')} {rec10.get('ats_note')!r}")
 
     # (9b) THE COMPANY'S OWN UNRULED ROW FOR ANOTHER BOARD, named in an edited
     # worklist's waiting_seen, is never waived - of any platform beside a board

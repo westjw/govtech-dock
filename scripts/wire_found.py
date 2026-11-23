@@ -3450,6 +3450,18 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                             f"{str(row.get('page_ref'))[:160]}, and the plan recorded no such "
                             f"answer from that page (page_addresses): an address only the "
                             f"row says is never leaned on")
+    # ...NOR ONE THE PLAN NEVER ASKS (review 10, 2026-11-23): the plan asks the
+    # page of a board named without its /All/ id or its tenant's name and of no
+    # other (addressed_by_page), so a page_ref on a board known by both is the
+    # worklist's alone - edited in with page_addresses, it put a second /All/
+    # id on the record for every door after
+    if kind == "paylocity" and row.get("page_ref") is not None \
+            and _whole(board_proposals.board_refs(kind, ref)):
+        return "evidence", (f"the row says its own page states its address is "
+                            f"{str(row.get('page_ref'))[:160]}, and {show(kind, ref)} is "
+                            f"already named by its /jobs/All/ id and its tenant's name: the "
+                            f"plan asks no such board's page, so an address only the worklist "
+                            f"says is never leaned on - plan again")
     total = _count(row.get("board_total"))
     if n >= GIANT or (total or 0) >= GIANT:
         return "giant", GIANT_WHY
@@ -3673,16 +3685,32 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             # THE PLAN PASSES A WAITING ROW ONLY AS THIS VERY BOARD, BY AN ID
             # THAT AGREES (consider): a worklist saying it saw one tied by less
             # - the tenant's name alone - is not taken at its word (eighth
-            # blind review, 2026-11-22)
+            # blind review, 2026-11-22). AND BY ADDRESSES ON FILE ALONE (review
+            # 10, 2026-11-23): the board as the row spells it, beside the row
+            # waiting as the file keeps it (its ref and the page_ref filed with
+            # it) - never the /All/ address the worklist says the find's own
+            # page states (page_ref, page_addresses: both worklist fields),
+            # which an edit set to the waiting row's own address, and the
+            # company's own unruled row was waived, dropped off his queue, and
+            # the note planted that address for every door after
             w_refs = board_proposals.board_refs("paylocity", w.get("ref"), w.get("page_ref"))
-            rl = board_proposals.paylocity_relation(refs, w_refs)
-            if not (rl == "same" and board_proposals.paylocity_ids_agree(refs, w_refs)):
+            own = board_proposals.board_refs(kind, ref)
+            rl = board_proposals.paylocity_relation(own, w_refs)
+            if not (rl == "same" and board_proposals.paylocity_ids_agree(own, w_refs)):
+                by_page = board_proposals.paylocity_relation(refs, w_refs) == "same" \
+                    and board_proposals.paylocity_ids_agree(refs, w_refs)
                 return "waiting", (
                     f"{w['board']} is waiting in {w['store']} for it, and "
-                    + (relation_words("kinds" if rl == "same" else rl, show(kind, ref),
-                                      w["board"], refs, w_refs, row.get("page_said"))
-                       if rl != "apart" else f"it is another board than {show(kind, ref)}")
-                    + "; a board waiting on a person is his to settle")
+                    + (f"only the address the worklist says {show(kind, ref)}'s own page "
+                       f"states ({str(row.get('page_ref'))[:160]}) ties the two by an id, "
+                       f"and nothing on file says it: the worklist's word takes no row off "
+                       f"his queue; a board waiting on a person is his to settle - tell the "
+                       f"owner (his ruling on that row settles it)"
+                       if by_page else
+                       (relation_words("kinds" if rl == "same" else rl, show(kind, ref),
+                                       w["board"], own, w_refs, row.get("page_said"))
+                        if rl != "apart" else f"it is another board than {show(kind, ref)}")
+                       + "; a board waiting on a person is his to settle"))
         elif not waiting_keys(w, held_for.get("pairs_on_file")) & clearing:
             # ANY OTHER WAITING ROW ONLY AS THIS VERY BOARD, under a key it is
             # known by (consider): the plan holds a company beside a different
