@@ -2738,7 +2738,15 @@ round.
   robots.txt disallow, a 404, a landing on no board and the rest are held
   with the reason and never wired, by the plan or by `apply`. The wired
   record's `ats_note`, and a held row's `identity_why`, say "asks for it as
-  Workable account N; its postings open under apply.workable.com/<slug>".
+  Workable account N; its postings open under apply.workable.com/<slug>" -
+  only of a Workable board asked for by a number in digits
+  (`wire_found.account_words`): every door reads them back as a pair on
+  file, and an edited worklist once put them on a greenhouse record (review
+  9, 2026-11-23). `apply` leans on a WIRE row's `account` only where
+  `wire_found.account_tie` shows it - a Workable row, the number in digits,
+  opened under that very slug by the plan's own `workable_numbers` or by a
+  pair on file - and prints it under the row ("leans on its account number:
+  ..."); any other `account` leaves the row alone (`evidence`).
   `board_url` and the desk's `boardUrlFor` link the filed page or the
   company's website for a number, never `apply.workable.com/<number>`; the
   desk's Accept and its Set board both refuse a numbered Workable ref
@@ -3073,7 +3081,13 @@ round.
   row in Boards we found for any board (`queued`), a waiting row the plan did
   not record in the row's `waiting_seen`, or one it records that is not this
   very board - another board under every key it is known by
-  (`wire_found.waiting_keys`, the plan's own test), or a Paylocity board tied
+  (`wire_found.waiting_keys`, the plan's own test, asked by keys apply may
+  lean on: the row's own board, its account where `account_tie` shows it,
+  and a waiting Workable number's slug only where a pair on file says it,
+  never the worklist's `workable_numbers` alone - review 9, 2026-11-23: an
+  edited `account`, or a number tied to the find's slug in
+  `workable_numbers`, waived the company's own unruled row and it dropped
+  off his queue), or a Paylocity board tied
   by less than an id that agrees: the plan holds beside either and records
   neither, so a worklist saying it saw one is not taken at its word (review
   of the eighth blind review's fixes, 2026-11-22: an edited `waiting_seen`
@@ -3087,8 +3101,9 @@ round.
   `page_addresses`, is refused: version 3 kept the readers' doubts only when
   it was written, and version 4 carried a record's page's address apply took
   on its word. The look prints, under each row it wires, every /All/ address
-  it leans on ("leans on what the plan was told: ..."), and the code covers
-  them.
+  it leans on ("leans on what the plan was told: ...") and the Workable
+  account number it is asked for by, with what ties it to the slug ("leans
+  on its account number: ..."), and the code covers them.
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from
