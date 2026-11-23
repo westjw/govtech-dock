@@ -2741,8 +2741,16 @@ round.
   putting it there, it held nothing, and a duplicate record linking the slug
   was wired to the same account (blind review, 2026-11-21). A board the
   owner holds under a number (a doubt, a door-filed row, a refusal) is held
-  under the slug's key too where the run resolved the number; where it did
-  not - and for a record on file holding a number nobody in the run
+  under the slug's key too where the run resolved the number. A run's slug
+  is ADDED to a pair said on file, never put in its place
+  (`board_proposals.number_slugs`): where the two say different slugs, the
+  holds and the holders under the number are held under each, in the plan
+  and in apply (review 10, 2026-11-23: apply took the worklist's
+  `workable_numbers` first, so an entry edited to open 7300 under another
+  slug moved the owner's queued row, his refusal and a record on the number
+  off the slug the file pairs it with, and a row flipped to WIRE beside them
+  was wired, the look a plain WIRE line). Where the run did
+  not resolve the number - and for a record on file holding a number nobody in the run
   followed - a Workable board is held when it STATES one of the names that
   account goes by (the held row's `board_calls_itself` or company, the
   doubt's company, the record's name or also_known_as; `verify_boards.strict`),

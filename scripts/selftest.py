@@ -44738,6 +44738,114 @@ def check_a_workable_account_is_held_under_either_key() -> int:
                            f"found was called a different board: wk-co {rw.get('action')} "
                            f"{_wb_words(rw)[:200]!r}; wkp-co {rp.get('action')} "
                            f"{_wb_words(rp)[:300]!r}")
+
+    # --- A PAIR ON FILE IS NEVER REPLACED BY THE WORKLIST'S WORD (review 10,
+    # 2026-11-23). Apply built the owner's Workable holds and a numbered
+    # record's holders from the worklist's workable_numbers first, and fell back
+    # to the pairs on file only after (held_boards' pairs.update(resolved);
+    # decide's `resolved.get(number) or pairs.get(number)`). The file pairs 7300
+    # with aco, so every hold under workable/7300 is held under workable/aco
+    # too - and a worklist mapping 7300 to any other slug moved them off it. A
+    # Co's workable/aco find, planned HOLD beside B Co's door-filed row under
+    # 7300, B Co's refusal of it, or C Co's record on it, was flipped to WIRE
+    # with workable_numbers {7300: zzz} and wired, the look a plain WIRE line
+    # (B Co's row stayed on his queue with its board now A Co's; C Co and A Co
+    # read one account). Each is left alone now, in the hold's own words: the
+    # worklist's slug is held BESIDE the file's (board_proposals.number_slugs).
+    pair73 = ("their site " + wf.account_words({"type": "workable", "account": "7300",
+                                                "ref": "aco"}))
+    b_row = {"id": "b-co", "name": "B Co", "was": "html",
+             "found": {"type": "workable", "ref": "7300"},
+             "saw": f"{W}api/v1/widget/accounts/7300", "times": 1,
+             "verified": "3 posting(s) readable", "board_calls_itself": None,
+             "identity": "unknown", "identity_why": pair73, "postings": 3, "titles": [],
+             "filed": {"by": "agent:earlier-batch", "on": "2026-11-20",
+                       "at": "2026-11-20T09:00:00-05:00"}}
+    c_note = ("wired 2026-11-01: cco.test/careers embeds the board, and "
+              + wf.account_words({"type": "workable", "account": "7300", "ref": "aco"})
+              + "; the board names \"C Co\"; 3 postings read")
+    REMAP = {
+        "queued": ([co("a-co", "A Co"), co("b-co", "B Co")], {bp.FOUND.name: [dict(b_row)]},
+                   "since the plan, workable/7300 is in the owner's queue (Boards we found) for "
+                   "B Co"),
+        "refused": ([co("a-co", "A Co"), co("b-co", "B Co")],
+                    {bp.FOUND.name: [dict(b_row)],
+                     bp.RULED.name: {"b-co": {"accept": False, "by": "owner",
+                                              "on": "2026-11-21", "why": "not their board"}}},
+                    "since the plan, workable/7300 was refused for B Co in Boards we found"),
+        "record": ([co("a-co", "A Co"), co("c-co", "C Co", ats={"type": "workable",
+                                                                "ref": "7300"},
+                                           ats_note=c_note)], {},
+                   "workable/aco is now on file as the board of C Co")}
+    for label, (cos, files_r, held_say) in REMAP.items():
+        with _WiringBox(cos, {"workable/aco": (3, ["A Co"])}, files=files_r) as box:
+            code, text, wl_r, rows_r = box.plan(_wb_results({"a-co": links("a-co", "aco")}),
+                                                name=f"worklist-remap-{label}.json")
+            if ((rows_r or {}).get("a-co") or {}).get("action") != "HOLD":
+                errors += fail(f"{label}: the fixture's A Co is not planned HOLD beside a hold "
+                               f"the file pairs with its slug: {text[-300:]}")
+                continue
+
+            def remap(by_id, doc):
+                r_ = by_id["a-co"]
+                r_["action"] = "WIRE"
+                r_.pop("doubts", None)
+                r_.pop("queue_row", None)
+                doc["workable_numbers"] = {**(doc.get("workable_numbers") or {}), "7300": "zzz"}
+            wl_r2 = box.edited(wl_r, f"worklist-remap-{label}-2.json", remap)
+            code, text, look_r = box.look(wl_r2)
+            line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                         if ln.strip().startswith("A Co ")), "") if "LEFT ALONE" in text else ""
+            if "WIRE 0 " not in text or held_say not in line:
+                errors += fail(f"{label}: a worklist whose workable_numbers opens 7300 under "
+                               f"another slug than the pair on file moved the owner's hold off "
+                               f"workable/aco, and a row flipped to WIRE beside it was not left "
+                               f"alone in its words ({held_say!r}): {line[:300]!r} "
+                               f"{text[-400:]!r}")
+            box.write(wl_r2, look_r)
+            if (box.record("a-co").get("ats") or {}).get("type") != "html":
+                errors += fail(f"{label}: the write wired A Co past a hold the file pairs with "
+                               f"its slug, on the worklist's word for the number")
+    # ...and in the plan: a number this run follows to another slug than the
+    # pair on file says (X Co's site asks by 7300, its posting lands on zzz)
+    # does not move C Co's record on workable/7300 off workable/aco either
+    with _WiringBox([co("a-co", "A Co"), co("x-co", "X Co"),
+                     co("c-co", "C Co", ats={"type": "workable", "ref": "7300"},
+                        ats_note=c_note)],
+                    {"workable/aco": (3, ["A Co"]), "workable/7300": (2, ["X Co"]),
+                     "workable/zzz": (2, ["X Co"])},
+                    urls={"workable/7300": [f"{W}j/ZZ0001A", f"{W}j/ZZ0001B"],
+                          "workable/zzz": [f"{W}j/ZZ0001A", f"{W}j/ZZ0001B"]},
+                    lands={f"{W}j/ZZ0001A": f"{W}zzz/j/ZZ0001A"}) as box:
+        code, text, wl_x, rows_x = box.plan(_wb_results({"a-co": links("a-co", "aco"),
+                                                         "x-co": asks("x-co", "7300")}),
+                                            name="worklist-remap-plan.json")
+        r_ = (rows_x or {}).get("a-co") or {}
+        if json.loads(wl_x.read_text()).get("workable_numbers") != {"7300": "zzz"} \
+                or r_.get("action") != "HOLD" \
+                or "workable/aco is already on file as the board of C Co" not in _wb_words(r_):
+            errors += fail(f"a number the plan followed to another slug than the pair on file "
+                           f"moved the record on that number off the file's slug, and its board "
+                           f"was planned {r_.get('action')} for another company: "
+                           f"{_wb_words(r_)[:300]!r}")
+    # ...and asked directly: the file's slug first, the worklist's beside it,
+    # a hold under the number under both keys
+    slugs_of = getattr(bp, "number_slugs", None)
+    got = slugs_of({"7300": "aco"}, {"7300": "zzz", "7400": None, "7500": "s75",
+                                     "7600": "aco6"}) if slugs_of else None
+    if got != {"7300": ["aco", "zzz"], "7500": ["s75"], "7600": ["aco6"]}:
+        errors += fail(f"board_proposals.number_slugs does not keep the pair on file first and "
+                       f"the run's slug beside it: {got}")
+    held_r = bp.held_boards({}, {"found": [dict(b_row)], "ruled": {}, "proposals": {}},
+                            {"b-co": co("b-co", "B Co")}, {"7300": "zzz"}, [co("b-co", "B Co")],
+                            {})
+    under = {k: [h["id"] for h in v] for k, v in held_r["keys"].items()}
+    if under.get(bp.board_key("workable", "aco")) != ["b-co"] \
+            or under.get(bp.board_key("workable", "zzz")) != ["b-co"] \
+            or held_r["pairs"].get("7300") != "aco":
+        errors += fail(f"held_boards does not hold a row under a Workable number under the slug "
+                       f"the file pairs it with AND the run's, or lets the run's word replace "
+                       f"the file's: {under} {held_r['pairs']}")
     return errors
 
 

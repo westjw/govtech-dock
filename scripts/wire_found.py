@@ -2731,13 +2731,12 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     # a note or a queue row). Followed only, a duplicate record linking the
     # slug was wired to the same account whenever the note was all that tied
     # them (blind review, 2026-11-21).
-    pairs = ctx["held_boards"]["pairs"]
+    slugs = ctx["held_boards"]["slugs"]     # the file's, and this run's beside it
     for c in companies:
         a = c.get("ats") or {}
-        slug = _slug_of(pairs, _number(a.get("ref"))) if numbered(a.get("type"), a.get("ref")) \
-            else None
-        if slug:
-            ctx["holders"][board_key("workable", slug)].append(c["id"])
+        if numbered(a.get("type"), a.get("ref")):
+            for slug in slugs.get(_number(a.get("ref"))) or []:
+                ctx["holders"][board_key("workable", slug)].append(c["id"])
     # a Paylocity board named by its /List/ address is known by the /All/
     # address its own page states, before anything is keyed (fifth blind
     # review, 2026-11-22)
@@ -3862,9 +3861,12 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
     pairs = board_proposals.workable_pairs(companies, s["found"])
     numbers = numbers_on_file(companies)
     holders = holders_of(companies, s["found"])
+    # under EVERY slug the number is known by: the worklist's word is added
+    # to a pair on file, never put in its place (review 10, 2026-11-23: an
+    # edited workable_numbers moved a record on the number off the slug the
+    # file named, and a second record was wired to the account)
     for number, ids in numbers.items():
-        slug = resolved.get(number) or pairs.get(number)
-        if slug:
+        for slug in board_proposals.number_slugs(pairs, resolved).get(number) or []:
             holders[board_key("workable", slug)] += ids
     board = board if board is not None else read_board()
     shown = shown_now(board)
