@@ -1581,12 +1581,13 @@ def _successfactors_unify(origin: str, out: dict) -> None:
         except ats.AtsError as exc:
             if ats.successfactors_closed(exc):
                 closed.append(url)
-                req = ats._sf_requisition(landed[-1]) if landed else None
-                copies.append((ats.successfactors_unify_language("", req), req))
+                hop = landed[-1] if landed else ""
+                copies.append((ats.successfactors_unify_language("", hop, origin), ats._sf_requisition(hop)))
                 continue
             raise
-        req = ats.successfactors_unify_requisition(body, landed[-1] if landed else url, origin)
-        copies.append((ats.successfactors_unify_language(body, req), req))
+        where = landed[-1] if landed else url
+        req = ats.successfactors_unify_requisition(body, where, origin)
+        copies.append((ats.successfactors_unify_language(body, where, origin), req))
         if not ats.successfactors_shown(body):
             if not ats.successfactors_filled(body):
                 raise ats.AtsError(f"successfactors posting {url} answered a page that shows no "

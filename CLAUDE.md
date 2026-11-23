@@ -3591,8 +3591,11 @@ review and the owner's word, through the wiring door.
   in one language (one number, one locale). The N is the one the address a
   loc hops to names, else the one the page states of itself - its `<link
   rel="canonical" href="<origin>/job/<slug>/<N>-<locale>/">`, on every
-  posting page measured - and none where the two disagree
-  (`ats.successfactors_unify_requisition`; blind review 10: an English copy
+  posting page measured - and none where the two name different numbers
+  (a page stating its number in another locale, as a translation's
+  canonical may name the English copy, is the same requisition, its copy
+  the address it came from; `ats.successfactors_unify_requisition`; blind
+  review 10: an English copy
   answering at its own sitemap address and its French copy hopping were
   published as two roles). Where copies in one language differ, the row is
   the address whose slug is the one the page answers at (a stale slug that
@@ -3654,11 +3657,13 @@ review and the owner's word, through the wiring door.
   of a requisition a copy in one language was asked of, open or closed
   (Esri Canada's 16 pairs); else the names are kept for the desk, not
   stated. A copy's language is one rule for the reader and the probe
-  (`ats.successfactors_unify_language`): its requisition's locale
-  (.../663-fr_CA/), else its page's `<html lang>`, else its title's own
-  lang. The names measured: 'Aurigo Software Technologies', 'esricanada',
-  'Octave'. proven() is unchanged: 'esricanada' proves nobody (a country on our name
-  must be on the board's), and 'Aurigo Software Technologies' does not
+  (`ats.successfactors_unify_language`): the locale of the address its loc
+  hopped to (.../663-fr_CA/), else its page's `<html lang>`, else the locale
+  its page states of itself (a translation's canonical may name another
+  copy's), else its title's own lang. The names measured: 'Aurigo
+  Software Technologies', 'esricanada', 'Octave'. proven() is unchanged:
+  'esricanada' proves nobody (a country on our name must be on the
+  board's), and 'Aurigo Software Technologies' does not
   prove the bare 'Aurigo Software' - Aurigo's record passes only through
   its also_known_as 'Aurigo Software Technologies Inc.' (asked offline of
   the record on file). **Read offline** over the responses saved

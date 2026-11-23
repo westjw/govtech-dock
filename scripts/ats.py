@@ -4899,26 +4899,41 @@ def successfactors_unify_requisition(page: str, landed: str, origin: str) -> tup
     hopping were published as two roles). Where the two disagree, the page
     does not say plainly which requisition it is, and it is none: its copies
     are not paired on a guess. The reader pairs copies by this, and the
-    probe asks it of the copies in each language."""
+    probe asks it of the copies in each language. A page stating its own
+    number in another locale (a translation's canonical naming the English
+    copy) states the same requisition: the locale is the copy's, the number
+    the requisition's, and the copy is the address it came from."""
     hopped, stated = _sf_requisition(landed), _sf_stated_requisition(page, origin)
-    if hopped and stated and hopped != stated:
+    if hopped and stated and hopped[0] != stated[0]:
         return None
     return hopped or stated
 
 
-def successfactors_unify_language(page: str, req) -> str:
+def _sf_code(locale: str) -> str:
+    """'fr' of 'fr_CA' or 'fr-CA'."""
+    return re.split(r"[-_]", locale or "")[0].lower()
+
+
+def successfactors_unify_language(page: str, landed: str = "", origin: str = "") -> str:
     """The language a Unify copy is written in, as a bare code ('en', 'fr'):
-    the locale of the requisition it is a copy of (.../663-fr_CA/, the site's
+    the locale of the address its loc hopped to (.../663-fr_CA/, the site's
     own word for the copy, measured on Esri Canada's), else its page's
-    <html lang>, else its title or description element's own lang
-    (successfactors_language), else ''. The reader keeps a requisition's 'en'
-    copy, and the probe asks whether the copies it would publish are written
-    in one language (verify_boards._successfactors_unify), by this one rule."""
-    if req:
-        return re.split(r"[-_]", req[1])[0].lower()
+    <html lang> (lang="en-US" on every posting page measured), else the
+    locale its page states of itself (its canonical link, which a
+    translation may point at another copy's), else its title or description
+    element's own lang (successfactors_language), else ''. The reader keeps
+    a requisition's 'en' copy, and the probe asks whether the copies it
+    would publish are written in one language
+    (verify_boards._successfactors_unify), by this one rule."""
+    hopped = _sf_requisition(landed)
+    if hopped:
+        return _sf_code(hopped[1])
     m = _SF_HTML_LANG.search(_cut(page or "")[:20000])
     if m:
-        return re.split(r"[-_]", m.group(1))[0].lower()
+        return _sf_code(m.group(1))
+    stated = _sf_stated_requisition(page, origin) if origin else None
+    if stated:
+        return _sf_code(stated[1])
     return successfactors_language(page)
 
 
@@ -4957,8 +4972,8 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
         except AtsError as exc:
             if successfactors_closed(exc):
                 # (a 404 at the address it hopped to names its requisition)
-                req = _sf_requisition(landed[-1]) if landed else None
-                return "closed", (req, successfactors_unify_language("", req))
+                hop = landed[-1] if landed else ""
+                return "closed", (_sf_requisition(hop), successfactors_unify_language("", hop, origin))
             if not _sf_of_the_day(exc):
                 return "unread", f"{url} ({_text(str(exc))[:160]})"
             if attempt == 2:
@@ -4967,7 +4982,7 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
                 time.sleep(SF_RETRY_PAUSE)    # (a 429's wait is the gate's: _back_off)
     where = landed[-1] if landed else url
     req = successfactors_unify_requisition(page, where, origin)
-    lang = successfactors_unify_language(page, req)
+    lang = successfactors_unify_language(page, where, origin)
     if not successfactors_shown(page):
         if successfactors_filled(page):
             return "closed", (req, lang)

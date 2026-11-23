@@ -21995,6 +21995,17 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 errors += fail(f"successfactors unify: with {why}, two copies of one requisition did not read "
                                f"as one row, the English, and say so ({err.strip()!r}, {exc}): "
                                f"{[r['title'] for r in rows or []]}")
+        # (a French copy whose page states its number in the English locale -
+        # a translation's canonical naming the English copy - is that one
+        # requisition, its own copy: paired, the English kept)
+        fr_canon = (fr[0], fr[1], posting("Gestionnaire de comptes", lang="fr-CA", phrase="Détails de l'emploi",
+                                          canonical=f"{SF}/job/Account-Manager/621-en_US/"))
+        rows, exc, err = go(site([fr_canon, en, other]))
+        if exc or [r["title"] for r in rows or []] != ["Account Manager", "Field Engineer"] \
+                or "1 of the postings its sitemap lists are another language's copy" not in err:
+            errors += fail(f"successfactors unify: a French copy stating its number in the English locale was "
+                           f"not paired with the English as another language's copy ({err.strip()!r}): "
+                           f"{[r['title'] for r in rows or []]} {exc}")
         for page_, why in ((posting("Account Manager", canonical=f"{SF}/job/Account-Manager/622-en_US/"),
                             "a page stating another requisition than the one it hopped to"),
                            (posting("Account Manager", canonical="https://elsewhere.example/job/A/621-en_US/"),
@@ -22613,15 +22624,21 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 errors += fail(f"successfactors unify probe, {why}: stated {got['stated']} ({how_!r}), "
                                f"wanted {stated}")
         # (one rule says what language a copy is in, for the reader's English
-        # copy and the probe's languages alike: its requisition's locale, else
-        # its <html lang>, else its title's own lang)
+        # copy and the probe's languages alike: the locale of the address it
+        # hopped to, else its page's <html lang>, else the locale its page
+        # states of itself, else its title's own lang)
         bare_ = '<html><head><title>Role</title></head><body><span lang="de-DE" itemprop="title">R</span></body></html>'
-        for page_, req_, want in ((posting(lang="fr-CA"), ("1", "en_US"), "en"),
-                                  (posting(), ("1", "fr_CA"), "fr"), (posting(lang="fr-CA"), None, "fr"),
-                                  (bare_, None, "de"), ("<html><body>x</body></html>", None, "")):
-            if ats.successfactors_unify_language(page_, req_) != want:
-                errors += fail(f"successfactors unify: a copy of {req_} read as written in "
-                               f"{ats.successfactors_unify_language(page_, req_)!r}, not {want!r}")
+        canon_ = f'<html><head><link rel="canonical" href="{SF}/job/R/1-fr_CA/"></head><body>x</body></html>'
+        for page_, landed_, want, why in (
+                (posting(lang="fr-CA"), hop(1), "en", "the locale it hopped to, before its page's"),
+                (posting(lang="fr-CA", canonical=hop(1)), loc(1), "fr", "its page's, before the locale it states"),
+                (canon_, loc(1), "fr", "the locale its page states"),
+                (bare_, loc(1), "de", "its title's own lang"),
+                ("<html><body>x</body></html>", loc(1), "", "nothing")):
+            if ats.successfactors_unify_language(page_, landed_, SF) != want:
+                errors += fail(f"successfactors unify: a copy read as written in "
+                               f"{ats.successfactors_unify_language(page_, landed_, SF)!r}, not {want!r} "
+                               f"({why})")
         # WHAT THE SITEMAP LISTS AND THE READER PASSES OVER is part of the board
         # nobody asked, so nothing is stated whole while there is any (blind
         # review 10: an index's sitemap on http, and a second brand's
