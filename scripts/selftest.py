@@ -39318,6 +39318,47 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
             if got_q != filed_want:
                 errors += fail(f"{label}: the write filed {got_q}, where the rows' own boards "
                                f"for the rows the look listed are {filed_want}")
+    # --- A HELD ROW IS PRINTED UNDER THE NAME ITS QUEUE ROW IS FILED UNDER
+    # (review 11, 2026-11-23). The look printed a HOLD row under the
+    # worklist's own `name`, and the write files the row for its own company
+    # (queue_row_apart ties the id) under the record's name (file_found): an
+    # edit naming A Co's held row "Unrelated Other Inc" printed "HOLD
+    # Unrelated Other Inc greenhouse/aco" and filed it for A Co. Now it is
+    # printed under the record's name, as a WIRE row is under the record it
+    # writes, and the code covers that name: renamed since the look, the
+    # write is refused.
+    with q_box() as box:
+        code, text, wl_n, rows_n = box.plan(_wb_results({
+            "a-co": _wb_one("a-co", "greenhouse", "aco", element="iframe")}),
+            name="worklist-held-name.json")
+        if ((rows_n or {}).get("a-co") or {}).get("action") != "HOLD":
+            errors += fail(f"the fixture's A Co does not plan HOLD: {text[-300:]}")
+        else:
+            def n_rename(by_id, _doc):
+                by_id["a-co"]["name"] = "Unrelated Other Inc"
+            wl_n2 = box.edited(wl_n, "worklist-held-name-2.json", n_rename)
+            code, text, look_n = box.look(wl_n2)
+            held_n = text[text.find("\nHOLD "):]
+            if "Unrelated Other Inc" in text or not any(
+                    ln.startswith("  HOLD  A Co ") and "greenhouse/aco" in ln
+                    for ln in held_n.splitlines()):
+                errors += fail(f"the look printed a held row under the worklist's own name, not "
+                               f"the record's its queue row is filed under: {held_n[:400]!r}")
+            box.by_hand(lambda by_id, _cs: by_id["a-co"].update(name="A Co Renamed"))
+            code, out = box.write(wl_n2, look_n)
+            if code == 0 or "REFUSED" not in out \
+                    or json.loads((box.tmp / bp.FOUND.name).read_text()) != []:
+                errors += fail(f"a held row's record renamed since the look was filed on the "
+                               f"look's code, under a name the look never printed: exit {code} "
+                               f"{out[-300:]!r}")
+            code, text, look_n2 = box.look(wl_n2)
+            code, out = box.write(wl_n2, look_n2)
+            filed_n = json.loads((box.tmp / bp.FOUND.name).read_text())
+            if not any(ln.startswith("  HOLD  A Co Renamed ") for ln in text.splitlines()) \
+                    or code != 0 or [(r_["id"], r_["name"]) for r_ in filed_n] \
+                    != [("a-co", "A Co Renamed")]:
+                errors += fail(f"the look and the write disagree on the name a held row is filed "
+                               f"under: exit {code} {filed_n} {text[-400:]!r}")
     return errors
 
 
@@ -45485,7 +45526,12 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         about a slug are one doubt only where the file ties the two
         (workable_pairs): a doubt about another account in the words of a
         settled one is kept, holds its board, and is never said to be
-        settled (blind review, 2026-11-21).
+        settled (blind review, 2026-11-21);
+      - a row waiting for a company under a Workable number the file opens
+        under one slug and the run under another (in apply: the worklist's
+        workable_numbers) is neither board: the find is held with both slugs
+        said, and a row flipped to WIRE beside it is left alone (review 11,
+        2026-11-23).
     """
     import board_proposals as bp
     import wire_found as wf
@@ -46118,6 +46164,91 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         errors += fail(f"held_boards does not hold a row under a Workable number under the slug "
                        f"the file pairs it with AND the run's, or lets the run's word replace "
                        f"the file's: {under} {held_r['pairs']}")
+
+    # --- A NUMBER THE FILE AND THE RUN OPEN UNDER TWO SLUGS: A ROW WAITING
+    # UNDER IT IS NEITHER BOARD (review 11, 2026-11-23). The fix above gave the
+    # waiting-row test the file's slug first, and only it: Wk Co's older
+    # finder's row under workable/730730, whose words open 730730 under wkco,
+    # was taken for wkco's very board while this run followed 730730 (X Co's
+    # site asks by it) to zzz - wk-co planned WIRE, apply passed it, and its
+    # unruled row left his queue (before review 10 the run's slug replaced the
+    # file's, and it was held "a different board"). Now held, naming both, in
+    # the plan; and an edit flipping it to WIRE (waiting_seen set) is left
+    # alone by apply in the same words, on the worklist's workable_numbers.
+    both_p = ("the file opens Workable account 730730 under apply.workable.com/wkco, and "
+              "this run followed that number to apply.workable.com/zzz")
+    both_a = ("the file opens Workable account 730730 under apply.workable.com/wkco, and the "
+              "worklist says the plan followed that number to apply.workable.com/zzz")
+    SPLIT = {"workable/wkco": (3, ["Wk Co"]), "workable/730730": (2, ["X Co"]),
+             "workable/zzz": (2, ["X Co"])}
+    SPLIT_URLS = {"workable/730730": [f"{W}j/ZZ0001A", f"{W}j/ZZ0001B"],
+                  "workable/zzz": [f"{W}j/ZZ0001A", f"{W}j/ZZ0001B"]}
+    SPLIT_LANDS = {f"{W}j/ZZ0001A": f"{W}zzz/j/ZZ0001A"}
+    with _WiringBox([co("wk-co", "Wk Co"), co("x-co", "X Co")], SPLIT,
+                    files={bp.FOUND.name: [dict(older)]}, urls=SPLIT_URLS,
+                    lands=SPLIT_LANDS) as box:
+        code, text, wl_s, rows_s = box.plan(_wb_results({"wk-co": links("wk-co", "wkco"),
+                                                         "x-co": asks("x-co", "730730")}),
+                                            name="worklist-split.json")
+        rs = (rows_s or {}).get("wk-co") or {}
+        if json.loads(wl_s.read_text()).get("workable_numbers") != {"730730": "zzz"} \
+                or rs.get("action") != "HOLD" or both_p not in _wb_words(rs) \
+                or "a different board" in _wb_words(rs) or rs.get("waiting_seen"):
+            errors += fail(f"a row waiting under a Workable number the file opens under the slug "
+                           f"found and this run followed to another was taken for this board, "
+                           f"or held without both slugs: wk-co {rs.get('action')} "
+                           f"{_wb_words(rs)[:400]!r}")
+
+        def split_flip(by_id, doc):
+            r_ = by_id["wk-co"]
+            r_["action"] = "WIRE"
+            r_.pop("doubts", None)
+            r_.pop("queue_row", None)
+            r_["waiting_seen"] = [["Boards we found", bp.board_key("workable", "730730")]]
+        wl_s2 = box.edited(wl_s, "worklist-split-2.json", split_flip)
+        code, text, look_s = box.look(wl_s2)
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Wk Co ")), "") if "LEFT ALONE" in text else ""
+        if "takes workable/730730" in text or both_a not in line:
+            errors += fail(f"apply took a row waiting under a Workable number for this board on "
+                           f"the file's slug while the worklist says the plan followed the "
+                           f"number to another: {line[:300]!r} {text[:600]!r}")
+        box.write(wl_s2, look_s)
+        if (box.record("wk-co").get("ats") or {}).get("type") != "html" \
+                or not any(r_.get("id") == "wk-co" for r_ in json.loads(
+                    (box.tmp / bp.FOUND.name).read_text())):
+            errors += fail("the write wired Wk Co past its own unruled row under a Workable "
+                           "number the file and the plan open under two slugs")
+    # ...and a row waiting under the very number the find's own site asks by:
+    # X Co's older row under 730730, whose words open it under wkco, beside X
+    # Co's find of the number followed to zzz (it met the find's own number key
+    # before and after review 10, and was waived)
+    x_older = dict(older, id="x-co", name="X Co")
+    with _WiringBox([co("x-co", "X Co")], SPLIT, files={bp.FOUND.name: [x_older]},
+                    urls=SPLIT_URLS, lands=SPLIT_LANDS) as box:
+        code, text, _wl, rows_x = box.plan(_wb_results({"x-co": asks("x-co", "730730")}),
+                                           name="worklist-split-own.json")
+        rx = (rows_x or {}).get("x-co") or {}
+        if rx.get("action") != "HOLD" or rx.get("ref") != "zzz" \
+                or "it is not shown to be workable/zzz" not in _wb_words(rx) \
+                or both_p not in _wb_words(rx):
+            errors += fail(f"a row waiting under the number the find's own site asks by, which "
+                           f"the file opens under another slug than the run followed it to, was "
+                           f"taken for this board: x-co {rx.get('action')} {rx.get('ref')} "
+                           f"{_wb_words(rx)[:400]!r}")
+    # ...and asked directly
+    split_of = getattr(wf, "number_split", None)
+    k_wk = [bp.board_key("workable", "wkco")]
+    num_row = {"type": "workable", "ref": "730730/"}
+    got_s = [split_of(num_row, k_wk, {"730730": ["wkco", "zzz"]}),
+             split_of(num_row, k_wk, {"730730": ["wkco"]}),
+             split_of(num_row, k_wk + [bp.board_key("workable", "zzz")],
+                      {"730730": ["wkco", "zzz"]}),
+             split_of({"type": "workable", "ref": "wkco"}, k_wk, {"wkco": ["a", "b"]})] \
+        if split_of else None
+    if got_s != [["wkco", "zzz"], None, None, None]:
+        errors += fail(f"wire_found.number_split does not name the two slugs of a waiting row's "
+                       f"number the file and a run disagree on, and nothing else: {got_s}")
     return errors
 
 
