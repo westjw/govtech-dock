@@ -1519,10 +1519,11 @@ def _successfactors_unify(origin: str, out: dict) -> None:
     # /search/ page lists nothing, so the postings are the board's whole
     # statement, and the list is its sitemap (ats.successfactors_sitemap,
     # the reader's own read: a sitemap robots.txt closes, one with nothing
-    # on it and a giant are errors). THE WHOLE BOARD OR NOTHING, by the
-    # classic probe's rule: stated only when the sitemap lists
-    # SF_POSTINGS_ASKED or fewer, every one was asked, and at most
-    # ats.SF_SLACK of them answered as closed; a longer sitemap is asked
+    # on it and one past the reader's cap are errors). THE WHOLE BOARD OR
+    # NOTHING, by the classic probe's rule: stated only when the sitemap
+    # lists SF_POSTINGS_ASKED or fewer, every one was asked, at most
+    # ats.SF_SLACK of them answered as closed, and the read passed nothing
+    # it lists over (below); a longer sitemap is asked
     # about its first SF_POSTINGS_SAMPLED that answer, for the desk, and
     # states nothing. A closed posting proves nothing either way and is
     # passed over (40 asked at most); a page that shows no posting and is
@@ -1531,7 +1532,7 @@ def _successfactors_unify(origin: str, out: dict) -> None:
     # reader publishes one row a requisition, so the classic probe's
     # language rule is not asked here. The name is whatever the admin typed:
     # "esricanada" is stated as it is, and proven() refuses it by name.
-    postings, _notes = ats.successfactors_sitemap(origin)
+    postings, passed = ats.successfactors_sitemap(origin)
     out["hosts"] = {host_of(origin)}
     out["n"], out["n_is_partial"] = len(postings), False
     small = len(postings) <= SF_POSTINGS_ASKED
@@ -1581,11 +1582,22 @@ def _successfactors_unify(origin: str, out: dict) -> None:
                       f"every posting asked")
         return
     every_one = small and asked >= total
-    whole = every_one and len(closed) <= ats.SF_SLACK
+    # WHAT THE SITEMAP LISTS AND THE READER PASSES OVER - a sitemap its index
+    # names on another origin, an address that is not a /job/ posting of this
+    # site (another brand's /<Brand>/job/, www., http) - is part of the board
+    # nobody asked, so nothing is stated whole while there is any (blind
+    # review 10, 2026-11-23: an index's sitemap on http, and a second brand's
+    # postings, were passed over and the rest stated "every one it lists
+    # asked")
+    whole = every_one and len(closed) <= ats.SF_SLACK and not passed
     gone = (f" ({len(closed)} more on it answered as closed and name nobody)" if closed else "")
     if whole:
         how = (f"successfactors sitemap and the titles of {answered} of its {total} postings, every "
                f"one it lists asked{gone}, stated by the career site")
+    elif every_one and passed:
+        how = (f"successfactors sitemap and the titles of {answered} of the {total} postings this "
+               f"reader asks{gone}; the sitemap lists more it does not ask ({'; '.join(passed)}), so "
+               f"these may not be every name the board states")
     elif every_one:
         how = (f"successfactors sitemap and the titles of {answered} of its {total} postings{gone}: "
                f"more than {ats.SF_SLACK} closed is not a posting or two closing while it was "

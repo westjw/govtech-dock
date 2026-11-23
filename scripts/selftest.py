@@ -22449,6 +22449,31 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (want and not stated and f"more than {ats.SF_SLACK} closed" not in str(got["how"])):
                 errors += fail(f"successfactors unify probe, {why}: names {got['names']} stated "
                                f"{got['stated']} ({got['how']!r}), wanted {want} stated {stated}")
+        # WHAT THE SITEMAP LISTS AND THE READER PASSES OVER is part of the board
+        # nobody asked, so nothing is stated whole while there is any (blind
+        # review 10: an index's sitemap on http, and a second brand's
+        # postings, were passed over and the rest stated "every one it lists
+        # asked")
+        kid_, http_kid = SF + "/sitemap-1.xml", SF.replace("https:", "http:") + "/sitemap-2.xml"
+        three_ = [plain(n, posting(f"Role {n}")) for n in (1, 2, 3)]
+        brand_b = [(f"{SF}/BrandB/job/Role-{n}/{80000000 + n}/", None,
+                    posting(f"Role {n}", site_name="Brand B Holdings")) for n in (4, 5)]
+        for routes, why in ((site(three_, smap=sitemap([x(kid_), x(http_kid)], index=True),
+                                  more={kid_: sitemap([x(p_[0]) for p_ in three_]),
+                                        http_kid: sitemap([x(loc(n)) for n in range(4, 9)])}),
+                             "an index naming a sitemap on http"),
+                            (site(three_ + brand_b, smap=sitemap([x(p_[0]) for p_ in three_ + brand_b])),
+                             "a sitemap listing a second brand's postings"),
+                            (site(three_, smap=sitemap([x(p_[0]) for p_ in three_]
+                                                       + [x(loc(9).replace("://", "://www."))])),
+                             "a sitemap listing a posting on www.")):
+            got = said(routes)
+            if got["stated"] or got["names"] != ["Acme Gov Software"] or got["failed"] \
+                    or "every one it lists asked" in str(got["how"]) \
+                    or "the sitemap lists more it does not ask" not in str(got["how"]) \
+                    or vb.proven({"name": "Acme Gov Software"}, got)["ok"] \
+                    or any("BrandB" in u or u.startswith("http:") or "www." in u for u in sent):
+                errors += fail(f"successfactors unify probe: {why} was stated whole on the part it asks: {got}")
         parent_ = said(site([plain(n, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
                                                                   'content="Parent Holdings Inc">', 1))
                              for n in (1, 2)]))

@@ -3604,7 +3604,12 @@ review and the owner's word, through the wiring door.
   (blind review 10: it was never read; the three sites measured carry
   none) - stated whole
   only by the classic rule - the sitemap lists `SF_POSTINGS_ASKED` (40) or
-  fewer, every one asked, at most `SF_SLACK` closed; a longer one is asked
+  fewer, every one asked, at most `SF_SLACK` closed - and only with nothing
+  it lists passed over (a sitemap its index names on another origin, an
+  address that is not a /job/ posting of this site - another brand's
+  /<Brand>/job/, www., http - is part of the board nobody asked: blind
+  review 10, 2026-11-23, when the rest was stated "every one it lists
+  asked"); a longer one is asked
   about its first `SF_POSTINGS_SAMPLED` (5) that answer, for the desk; a
   block page or any other failure is the board not read. The classic
   probe's language rule is not asked: the reader pairs the copies. The
