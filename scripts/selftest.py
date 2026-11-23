@@ -20846,6 +20846,24 @@ def check_successfactors_reads_its_career_site() -> int:
         if exc is None or rows is not None or "every one of the 7" not in str(exc):
             errors += fail(f"successfactors: with details on, a list whose every posting has closed read "
                            f"as {rows!r}, not an error: {exc}")
+        # ...in any case and through any space: a capitalised 'This position
+        # has been filled.', and one broken by &nbsp; and a line break, are the
+        # site saying so, and the rows are not published (blind review 10)
+        for words_, why in (("This position has been filled.", "capitalised"),
+                            ("THIS POSITION HAS BEEN FILLED", "in capitals"),
+                            ("Sorry, this&nbsp;position\n has been\r\n filled.", "through &nbsp; and line breaks")):
+            closed_page = filled.replace("Sorry, this position has been filled.", words_)
+            said_ = io.StringIO()
+            ats.FETCH_DETAILS = True
+            with contextlib.redirect_stderr(said_):
+                rows, exc = go({at(0): page([row(n) for n in range(1, 4)], total=3), SF + job(1): posting(),
+                                SF + job(2): closed_page, SF + job(3): posting()},
+                               lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            kept = sorted(int(r["url"].rstrip("/").rsplit("/", 1)[-1]) - 1400000000 for r in rows or [])
+            if exc or kept != [1, 3] or "1 of the 3 postings" not in said_.getvalue():
+                errors += fail(f"successfactors: with details on, a posting saying it was filled {why} was "
+                               f"published as open (kept {kept}, {said_.getvalue().strip()!r}): {exc}")
         # ...and a posting whose page shows no posting and is not the site saying
         # it closed - a block page served 200, a hop anywhere but the list - is
         # kept as the list states it, not said closed, and the hop not followed
@@ -21289,8 +21307,18 @@ def check_successfactors_reads_its_career_site() -> int:
         gw_closed = ('<html><head><title>Provider Enrollment Specialist - Jackson, MS (Onsite) Job Details'
                      ' | Gainwell Technologies LLC</title></head><body><p>Sorry, this position has been '
                      'filled.</p></body></html>')
+        # (the words in any case, and through any space: blind review 10,
+        # 2026-11-23 - with the title rule gone, re.I is all that reads a
+        # capitalised sentence as closed, and nothing pinned it)
+        capital_ = gw_closed.replace("Sorry, this position", "This position")
+        nbsp_ = gw_closed.replace("this position has", "this&nbsp;position&#160;has")
+        broken_ = gw_closed.replace("this position has been", "this position\n    has been\r\n")
         for page_, want, why in ((gw_closed, True, "Gainwell's closed page as measured"),
                                  (words_only, True, "the filled wording under another title"),
+                                 (capital_, True, "'This position has been filled.' capitalised"),
+                                 (gw_closed.upper().replace("<HTML>", "<html>"), True, "the wording in capitals"),
+                                 (nbsp_, True, "the wording with non-breaking spaces"),
+                                 (broken_, True, "the wording across line breaks"),
                                  (posting(), False, "a page showing the posting"),
                                  (blocked, False, "a block page"), (hidden_words, False, "words in a comment"),
                                  (hidden_title, False, "a title in a comment"),
@@ -22215,6 +22243,14 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             errors += fail(f"successfactors unify: of sixteen postings, four the site says have closed were "
                            f"not left out and said, or the list one was sent to was asked ({err.strip()!r}, "
                            f"{exc}): {[r['url'] for r in rows or []]}")
+        # (the site's words in any case and through any space - blind review 10)
+        for words_ in ("This position has been filled.", "Sorry, this&nbsp;position\nhas been filled."):
+            rows, exc, err = go(site([plain(1, posting("Role 1")), plain(2, filled.replace(
+                "Sorry, this position has been filled.", words_)), plain(3, posting("Role 3"))]))
+            if exc or [nth(r["url"]) for r in rows or []] != [1, 3] \
+                    or "1 of the 3 postings its sitemap lists answered as closed" not in err:
+                errors += fail(f"successfactors unify: a posting page saying {words_!r} was not left out as "
+                               f"closed ({err.strip()!r}): {[r['url'] for r in rows or []]} {exc}")
         # MORE THAN A QUARTER OF A SITEMAP CLOSED IS NOT A DAY'S CHURN, and the
         # read is refused, never published as the board (blind review 10,
         # 2026-11-23: 130 of 131 answering 404 published one row); never

@@ -3414,8 +3414,10 @@ review and the owner's word, through the wiring door.
   review): a 404 or 410, a hop to the site's list (/search/ or /search, with
   or without a query; not followed), or the site's own words at its address
   (`ats.successfactors_filled`: a 200 page showing no posting that says "this
-  position has been filled", as a reader sees it - never inside a comment or
-  a script; Gainwell's closed page, measured 2026-11-22, says "Sorry, this
+  position has been filled", as a reader sees it - in any case, through any
+  space, &nbsp; or line break between its words (pinned since blind review
+  10: with the title rule gone, the words are the only sign), never inside
+  a comment or a script; Gainwell's closed page, measured 2026-11-22, says "Sorry, this
   position has been filled." under the posting's own title) drops the row,
   and the reader says how many on stderr. **The posting's title alone is not
   the site saying so** ('<role> Job Details | <site>'): every OPEN posting
