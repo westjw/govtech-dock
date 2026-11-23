@@ -4497,10 +4497,13 @@ def _xml_text(raw: str) -> str | None:
 
 def _sf_services(path: str) -> bool:
     """Is this path under /services/ (the Unify search API, the RSS), as
-    written or with any layer of its escapes undone?"""
+    written, as a server serves it (robots.served: a ';...' path parameter
+    cut off each segment - '/services;jsessionid=1/...' is /services/...,
+    blind review 10 - and a dot segment resolved), or with any layer of its
+    escapes undone?"""
     p = path or "/"
     for _ in range(4):
-        if p.lstrip("/").split("/", 1)[0].lower() == "services":
+        if any(q.lstrip("/").split("/", 1)[0].lower() == "services" for q in (p, robots.served(p))):
             return True
         undone = urllib.parse.unquote(p)
         if undone == p:

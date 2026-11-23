@@ -22040,9 +22040,23 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                                                                MAP + "?locale=en_US": sitemap([x(loc(41))])}))
         if exc or len(rows or []) != 1:
             errors += fail(f"successfactors unify: a sitemap that moves on its own host was not followed: {exc}")
+        # (and a path parameter on the way, which a Java server cuts off the
+        # segment, as robots.served does: '/services;jsessionid=1/...' is
+        # served as /services/... - blind review 10)
+        for path_, want in (("/services/x", True), ("/services;jsessionid=1/recruiting/v1/jobs", True),
+                            ("/services;/sitemap.xml", True), ("/;x/services/sitemap.xml", True),
+                            ("/Services;v=2/x", True), ("/services%3Bjsessionid=1/x", True),
+                            ("/job/services/1/", False), ("/servicesx/1/", False), ("/sitemap.xml", False)):
+            if ats._sf_services(path_) is not want:
+                errors += fail(f"successfactors unify: {path_!r} read as {'not ' if want else ''}under "
+                               f"/services/")
+        if ats._sf_child_sitemap(SF + "/services;jsessionid=1/sitemap-1.xml", SF):
+            errors += fail("successfactors unify: a sitemap index's child under /services;...; was a "
+                           "sitemap of the site's own")
         for to in ("https://elsewhere.example/sitemap.xml", SF + "/services/sitemap.xml",
                    SF + "/maps/%2e%2e/services/x.xml", SF + "/maps//sitemap.xml", SF + "/Services/x.xml",
-                   SF + "/%73ervices/x.xml"):
+                   SF + "/%73ervices/x.xml", SF + "/services;jsessionid=1/sitemap.xml",
+                   SF + "/services;/sitemap.xml", SF + "/;x/services/sitemap.xml"):
             rows, exc, err = go(site([plain(41, posting())], more={MAP: (302, to), to: sitemap([x(loc(41))])}))
             if exc is None or rows is not None or to in sent + robots_asked:
                 errors += fail(f"successfactors unify: the sitemap's hop to {to} was asked: {rows!r} ({sent})")

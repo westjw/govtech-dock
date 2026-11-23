@@ -3502,7 +3502,9 @@ review and the owner's word, through the wiring door.
   every `<lastmod>` one day, never read). **The sitemap**
   (`ats.successfactors_sitemap`) is asked as every page is (robots.txt at
   every hop, its own host, and nothing under /services/ whatever robots.txt
-  says) and read as an XML reader reads it: a commented-out `<url>` is not
+  says - written so, or as a server serves it, a ';...' path parameter cut
+  off each segment: '/services;jsessionid=1/...' is /services/..., blind
+  review 10) and read as an XML reader reads it: a commented-out `<url>` is not
   listed, a comment inside a `<loc>` is taken out with nothing in its place
   (blind review 10: a space put there was asked and published), and a loc's
   escapes are undone ('&apos;' Esri Canada's, '&amp;' Octave's). A /job/ address on the origin that says plainly where it goes
