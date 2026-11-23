@@ -41902,6 +41902,12 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                      doc["page_addresses"].update({SP_X3: FAKE_X3})),
                  True, f"leans on what the plan was told: the page of {LIST_X3[8:]} states "
                        f"its address is {FAKE_X3}"),
+                ("an address on both under a key that spells no board",
+                 lambda rows_, doc: (as_wire(rows_, "alpha3-co",
+                                             leans_on={"paylocity:notjson": FAKE_X3}),
+                                     doc["page_addresses"].update(
+                                         {"paylocity:notjson": FAKE_X3})),
+                 False, "plan again"),
                 ("its own page_ref on the row alone",
                  lambda rows_, doc: as_wire(rows_, "y3-co", page_ref=FAKE_Y3),
                  False, "the plan recorded no such answer from that page"),

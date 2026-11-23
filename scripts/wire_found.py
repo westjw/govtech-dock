@@ -3685,12 +3685,22 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
             "doubts": s["doubts"]}
 
 
+def _spelled(key) -> str | None:
+    """The Paylocity ref a `spelling` key is of, or None for any other key."""
+    try:
+        ref = json.loads(key[len("paylocity:"):]) if str(key).startswith("paylocity:") else None
+    except ValueError:
+        return None
+    return ref if isinstance(ref, str) else None
+
+
 def leaned(row: dict, pages: dict | None) -> dict:
     """{exact spelling: address} of what a WIRE row says it was compared by
     (`leans_on`) that the worklist's page_addresses says too: an address only
-    one of the two says - a worklist edited to add it - is never leaned on."""
+    one of the two says - a worklist edited to add it - is never leaned on,
+    and nor is one under a key that spells no Paylocity board."""
     return {k: a for k, a in (row.get("leans_on") or {}).items()
-            if isinstance(a, str) and (pages or {}).get(k) == a
+            if isinstance(a, str) and (pages or {}).get(k) == a and _spelled(k)
             and board_proposals.paylocity_address(a)}
 
 
@@ -3702,7 +3712,7 @@ def lean_lines(row: dict, pages: dict | None) -> list:
     if row.get("type") == "paylocity" and row.get("page_ref"):
         out.append(["its own page", row["page_ref"]])
     for k, a in sorted(leaned(row, pages).items()):
-        out.append([f"the page of {short(json.loads(k.split(':', 1)[1]))}", a])
+        out.append([f"the page of {short(_spelled(k))}", a])
     return out
 
 
