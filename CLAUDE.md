@@ -2470,9 +2470,21 @@ and never said where in a page a reference sat.
   &OpenCurlyQuote; and &rsquor;, any of the numeric references without its
   ';' before a letter or a letter's escape ('&#39Brien', '&#x27Brien'), and each form
   escaped twice (&amp;#39;, &amp;#x27;, &amp;apos;, &amp;rsquo;,
-  &amp;#8217;). A bare &amp; (and &#38;, &#x26;) is none of these and still
-  ends the value - it is the next key's separator, so the account or ref
-  after it survives - and a quote that ends an attribute still ends it.
+  &amp;#8217;) or three times (&amp;amp;#39;), with leading zeros or not
+  ('&#039;', WordPress's esc_url, and '&#x027;' are pinned). **A character
+  reference is the character it stands for** (blind review 10,
+  2026-11-23): a letter written as one ('Jos&#233; Garc&#237;a', '&Aacute;',
+  'D&#039;&Aacute;vila' as PHP's htmlentities writes D'Ávila) and a mark
+  typed for an apostrophe (&acute;, &#180;, &#xb4;, &prime;, &#8242;, &#96;,
+  &grave;, &#x201B;, &#xFF07;) go with the name as their raw characters do,
+  escaped once or twice more too, and inside a percent-encoded address so
+  does a percent-encoded reference ('O%26%2339%3BBrien', '%26apos%3B',
+  '%26rsquo%3B', '%26%23x27%3B'). Only a reference to what ends a value raw
+  ends it: a bare &amp; (and &#38;, &#038;, &#x26;, &AMP;, &amp;amp;, and
+  '%26', '%26amp%3B', '%26%2338%3B' in an encoded address) is none of these
+  and still ends the value - it is the next key's separator, so the account
+  or ref after it survives - and so do a quote, '#', '<', '>' and a line
+  break written as references; a quote that ends an attribute still ends it.
   **Two shapes are left on purpose**: an apostrophe followed by a raw space
   ("O' Brien") and a value that opens with an apostrophe (last_name='Brien)
   each read the same as a quote that ends the attribute the address sits in

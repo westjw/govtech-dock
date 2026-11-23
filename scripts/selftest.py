@@ -22803,25 +22803,87 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                       "%26q%3D1", "an encoded last name with a left curly-quote entity"),
                      ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
                       "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O&amp;#39;Brien", "an encoded talent network's sd= "
-                                                                       "with an entity escaped twice")):
+                                                                       "with an entity escaped twice"),
+                     # ...with its leading zeros, WordPress's esc_url spelling
+                     # (blind review 10: the '0*' had no pin)
+                     (TN + "&sd=Pat%20O&#039;Brien", "a decimal entity with a leading zero"),
+                     (TN + "&sd=Pat%20O&#x027;Brien", "a hex entity with a leading zero"),
+                     (TN + "&amp;sd=Pat%20O&amp;#039;Brien", "'&#039;' escaped twice"),
+                     ("https://www.acmegov.example/apply?last_name=O&#00039;Brien&first_name=Pat",
+                      "last_name= with leading zeros"),
+                     # ...and a CHARACTER REFERENCE IS THE CHARACTER IT STANDS
+                     # FOR (blind review 10, 2026-11-23): an apostrophe before a
+                     # letter written as one, a mark typed for an apostrophe
+                     # written as one, a reference escaped three times, and an
+                     # entity apostrophe percent-encoded inside an encoded address
+                     (TN + "&sd=Pat%20D&#039;&Aacute;vila", "an entity apostrophe before an entity letter"),
+                     (TN + "&sd=Pat%20D&#39;&#193;vila", "an entity apostrophe before a numeric letter"),
+                     ("https://www.acmegov.example/apply?last_name=D'&Aacute;vila&first_name=Pat",
+                      "a raw apostrophe before an entity letter"),
+                     (TN + "&sd=Pat%20O&acute;Brien", "&acute; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#180;Brien", "&#180; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#xb4;Brien", "&#xb4; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&prime;Brien", "&prime; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#8242;Brien", "&#8242; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#96;Brien", "&#96; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&grave;Brien", "&grave; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#x201B;Brien", "&#x201B; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#xFF07;Brien", "&#xFF07; for an apostrophe"),
+                     (TN + "&amp;amp;sd=Pat%20O&amp;amp;#39;Brien", "an entity escaped three times"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O%26%2339%3BBrien", "an encoded sd= with '%26%2339%3B'"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O%26apos%3BBrien", "an encoded sd= with '%26apos%3B'"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O%26rsquo%3BBrien", "an encoded sd= with '%26rsquo%3B'"),
+                     ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DO%26%23x27%3BBrien",
+                      "an encoded last_name= with '%26%23x27%3B'")):
         out = fsb._no_person(raw)
         if "Brien" in out or "Angelo" in out or "Pat" in out or "vila" in out or "eill" in out \
                 or ("q6NaVfwI" in raw and "q6NaVfwI" not in out):
             errors += fail(f"finder: {why} with an apostrophe kept part of a person's name, or the "
                            f"account went with it: {out!r}")
+    # ...and a letter written as a reference is a letter of the name (blind
+    # review 10: 'Jos&#233; Garc&#237;a' kept '&#233; Garc&#237;a')
+    for raw, why in ((TN + "&sd=Jos&#233;%20Garc&#237;a", "letters written as numeric references"),
+                     (TN + "&sd=Pat%20&Aacute;lvarez", "a capital written as a named reference"),
+                     (TN + "&sd=Pat%20Garc&iacute;a&jvsrc=AbC123", "a named reference before the next key"),
+                     ("https://www.acmegov.example/apply?last_name=Garc&#xED;a&ref=AbC123", "a hex reference"),
+                     ("https://www.acmegov.example/apply?last_name=Garc&amp;iacute;a&amp;ref=AbC123",
+                      "a named reference escaped twice")):
+        out = fsb._no_person(raw)
+        if any(w in out for w in ("Jos", "Garc", "lvarez", "Pat")) or ("AbC123" in raw and "AbC123" not in out):
+            errors += fail(f"finder: {why} kept part of a person's name, or the next key went with it: "
+                           f"{out!r}")
     # ...but a BARE separator - '&amp;', '&#38;', '&#x26;', none of them an
     # apostrophe - still ends the value, so the account or a ref after it
     # survives, whichever spelling of an apostrophe came before
-    for sep in ("&", "&amp;", "&#38;", "&#038;", "&#x26;", "&amp;amp;"):
+    for sep in ("&", "&amp;", "&#38;", "&#038;", "&#x26;", "&amp;amp;", "&#x0026;", "&AMP;", "&amp;#38;"):
         for raw, kept_ in (("https://app.jobvite.com/TalentNetwork/action/joinTN?sd=Pat%20O&#39;Brien"
                             f"{sep}ci=q6NaVfwI", "ci=q6NaVfwI"),
                            (TN + f"&sd=Pat%20O&lsquo;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
                            (TN + f"&sd=Pat%20O&amp;#x27;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
                            (f"https://www.acmegov.example/apply?last_name=O&#700;Brien{sep}ref=AbC123",
-                            "ref=AbC123")):
+                            "ref=AbC123"),
+                           (TN + f"&sd=Pat%20O&acute;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
+                           (TN + f"&sd=Pat%20D&#039;&Aacute;vila{sep}jvsrc=AbC123", "jvsrc=AbC123")):
             out = fsb._no_person(raw)
-            if "Brien" in out or "Pat" in out or kept_ not in out:
+            if "Brien" in out or "Pat" in out or "vila" in out or kept_ not in out:
                 errors += fail(f"finder: after {sep!r} the value did not end, or a name stayed: {out!r}")
+    # (a reference to anything else that ends a value raw - a quote, '#', '<',
+    # '>', a line break - ends it too; and in an encoded address the encoded
+    # separator, '%26', and its references, ends it)
+    for end_ in ("&quot;", "&#34;", "&#x22;", "&lt;", "&#60;", "&gt;", "&#x3E;", "&num;", "&#35;", "&#10;",
+                 "&#xA;", "&NewLine;", "&#13;"):
+        out = fsb._no_person(f"https://www.acmegov.example/apply?first_name=Pat{end_}ref=AbC123")
+        if "Pat" in out or f"{end_}ref=AbC123" not in out:
+            errors += fail(f"finder: the person scrub ran past {end_!r}: {out!r}")
+    for sep in ("%26", "%26amp%3B", "%26%2338%3B", "%26%23x26%3B"):
+        out = fsb._no_person("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DO"
+                             f"%26%2339%3BBrien{sep}q%3D1")
+        if "Brien" in out or f"{sep}q%3D1" not in out:
+            errors += fail(f"finder: in an encoded address the value did not end at {sep!r}, or a name "
+                           f"stayed: {out!r}")
     kept = fsb._no_addresses({"pages": [{"asked": here, "final": TN + "&sd=Pat%20O'Brien"},
                                         {"asked": here, "final": TN + "&sd=Pat%20D'%C3%81vila"}],
                               "hops": [TN + "&sd=Pat O'Brien", TN + "&sd=Pat%20O&rsquo;Brien",
