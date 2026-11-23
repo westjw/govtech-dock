@@ -45,7 +45,7 @@ measured_on lists the days the code or the research records a live measurement; 
 | [Pinpoint](#pinpoint) | `pinpoint` | read | `fetch_pinpoint` | `_pinpoint` | 2026-11-19, 2026-11-21 |
 | [Recruitee](#recruitee) | `recruitee` | read | `fetch_recruitee` | `_recruitee` | 2026-08-23 |
 | [Rippling](#rippling) | `rippling` | read | `fetch_rippling` | `_rippling` | 2026-08-23 |
-| [SAP SuccessFactors (Career Site Builder)](#sap-successfactors-career-site-builder) | `successfactors` | read | `fetch_successfactors` | `_successfactors` | 2026-11-19..2026-11-22 |
+| [SAP SuccessFactors (Career Site Builder)](#sap-successfactors-career-site-builder) | `successfactors` | read | `fetch_successfactors` | `_successfactors` | 2026-11-19..2026-11-23 |
 | [SmartRecruiters](#smartrecruiters) | `smartrecruiters` | read | `fetch_smartrecruiters` | `_smartrecruiters` | 2026-08-23, 2026-09-01 |
 | [Teamtailor](#teamtailor) | `teamtailor` | read | `fetch_teamtailor` | `_teamtailor` | 2026-11-19, 2026-11-21, 2026-11-22 |
 | [Workable](#workable) | `workable` | read | `fetch_workable` | `board_says` | 2026-08-23, 2026-11-01, 2026-11-19 |
@@ -82,7 +82,7 @@ From data/companies.json as last refreshed 2026-11-22. **On file** is how many c
 
 | Type | On file | With roles |
 |---|---:|---:|
-| [`html`](#a-careers-page-html) | 970 | 135 |
+| [`html`](#a-careers-page-html) | 966 | 133 |
 | `unknown` (no board on file) | 930 | 0 |
 | [`greenhouse`](#greenhouse) | 116 | 65 |
 | [`ashby`](#ashby) | 91 | 50 |
@@ -104,8 +104,10 @@ From data/companies.json as last refreshed 2026-11-22. **On file** is how many c
 | [`smartrecruiters`](#smartrecruiters) | 4 | 1 |
 | [`gem`](#gem) | 3 | 1 |
 | [`hirebridge`](#hirebridge) | 3 | 3 |
+| [`jobvite`](#jobvite) | 3 | 2 |
 | [`zohorecruit`](#zoho-recruit) | 3 | 0 |
 | [`applicantpro`](#applicantpro-isolved) | 2 | 2 |
+| [`successfactors`](#sap-successfactors-career-site-builder) | 1 | 0 |
 
 **The last sweep**: a `find_site_boards.py` results file generated 2026-11-22T04:00:53+00:00 in static mode, over 59 companies (a sweep covers the companies it was given, not the whole map). 42 companies had a board we read named on their own site.
 
@@ -142,7 +144,7 @@ From data/companies.json as last refreshed 2026-11-22. **On file** is how many c
 
 <!-- live -->
 
-On file today: 970 companies, 135 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 966 companies, 133 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -560,7 +562,7 @@ On file today: no company. The last sweep (2026-11-22): 0 companies' own sites p
 
 <!-- live -->
 
-On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 3 companies (Gigamon, Ookla, Uplight), 2 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -744,9 +746,9 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 
 ### SAP SuccessFactors (Career Site Builder)
 
-`successfactors` · **read** · researched as maybe · reader `ats.fetch_successfactors` · identity probe `verify_boards._successfactors` · measured 2026-11-19..2026-11-22
+`successfactors` · **read** · researched as maybe · reader `ats.fetch_successfactors` · identity probe `verify_boards._successfactors` · measured 2026-11-19..2026-11-23
 
-**Why maybe.** Read since 2026-11-22, classic Career Site Builder boards only (ats.fetch_successfactors), built when the owner asked for Gainwell Technologies' board. Unify boards, whose list is served only by POST /services/recruiting/v1/jobs (robots-closed), are read as an error that says so, never a zero. The research (2026-11-20) rated the platform maybe: Classic Career Site Builder boards are a clean public listing: server-rendered /search/ pages on the employer's own careers host, 25 rows a page, robots-allowed, no token. Three things hold it at maybe. The newer 'Unify' search draws its results by POST /services/recruiting/v1/jobs, which every CSB robots.txt closes, leaving only sitemap.xml plus one or two requests per posting. The legacy portals companies link (careerN.successfactors.com, careerN.sapsf.com ?company=) are closed outright. And under the owner's rule only 2 of the 8 example companies would wire unattended (Landis+Gyr, and Indra Group, a 623-posting Spanish board): the rest are a parent's board, a placeholder name or a longer registered name. Worth building as a classic-CSB reader that detects Unify and reports Unknown, or falls back to the sitemap if the owner accepts the cost per posting.
+**Why maybe.** Read since 2026-11-22 (ats.fetch_successfactors), built when the owner asked for Gainwell Technologies' board: classic Career Site Builder boards from their server-drawn /search/ list. Unify boards, whose list is served only by POST /services/recruiting/v1/jobs (robots-closed), are read since 2026-11-23 from their sitemap.xml and each posting's own page, two requests a posting (ats.successfactors_unify; the owner's word for Aurigo, Esri Canada and Octave, who accepted the cost). The research (2026-11-20) rated the platform maybe: Classic Career Site Builder boards are a clean public listing: server-rendered /search/ pages on the employer's own careers host, 25 rows a page, robots-allowed, no token. Three things hold it at maybe. The newer 'Unify' search draws its results by POST /services/recruiting/v1/jobs, which every CSB robots.txt closes, leaving only sitemap.xml plus one or two requests per posting. The legacy portals companies link (careerN.successfactors.com, careerN.sapsf.com ?company=) are closed outright. And under the owner's rule only 2 of the 8 example companies would wire unattended (Landis+Gyr, and Indra Group, a 623-posting Spanish board): the rest are a parent's board, a placeholder name or a longer registered name. Worth building as a classic-CSB reader that detects Unify and reports Unknown, or falls back to the sitemap if the owner accepts the cost per posting.
 
 **How to spot it.** A page of the company's own site that IS a classic CSB board, by its tells - assets under rmkcdn.successfactors.com/\<8 hex>/, a j2w.init({... ssoCompanyId ...}) block, jQuery from an hcm\<N> or performancemanager\<N> (sapsf|successfactors) host, or /platform/js/j2w/ scripts - read only from the page's own scripts and attributes: the board's ref is that page's scheme and host. A link to https://\<host>/go/\<Name>/\<digits>/ or /search/?...sortColumn=... on the company's own registrable domain gives that origin too. Never a ref from an SAP host. Legacy portals (career\<N>.successfactors.(com|eu), career\<N>.sapsf.(com|eu|cn), ?company=) are the vendor form successfactors-legacy: robots-closed, never a board.
 
@@ -755,11 +757,11 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 - `successfactors-legacy`: A legacy Recruiting Management portal address, career\<N>.successfactors.(com|eu) or career\<N>.sapsf.(com|eu|cn) at /career or /careers?company=\<id>: robots.txt closes it ('Disallow: /'), so it is a platform the crawl cannot read and a doubt beside a board - except on a CSB board's own pages, where it is furniture (the j2w.init ssoUrl, a sign-in link).
 - `successfactors-other`: Another SAP SuccessFactors address that names no board (assets, an hcm\<N> host, an API host).
 
-**How it publishes.** Classic: GET https://\<board host>/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=\<0, 25, 50, ...>, server-rendered HTML (\<table id="searchresults">, one \<tr class="data-row"> a posting: the jobTitle-link, jobLocation, jobDate and per-site columns), offset-paged 25 at a time with the total in the localized pagination label; category pages /go/\<Name>/\<catid>/\<startrow>/ carry the same table. Description and pay are only on each /job/\<slug>/\<id>/ page. Unify: no list a reader may use; the only robots-clean list is sitemap.xml, then each posting. RSS exists under /services/rss/ and is closed. Measured on Gainwell 2026-11-22: jobs.gainwelltechnologies.com, 334 postings over 14 pages of 25, read in full in 15 requests; remote roles carry a placeholder place ('Any city, TX, US, 99999'), which the reader reads as 'TX, US'.
+**How it publishes.** Classic: GET https://\<board host>/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=\<0, 25, 50, ...>, server-rendered HTML (\<table id="searchresults">, one \<tr class="data-row"> a posting: the jobTitle-link, jobLocation, jobDate and per-site columns), offset-paged 25 at a time with the total in the localized pagination label; category pages /go/\<Name>/\<catid>/\<startrow>/ carry the same table. Description and pay are only on each /job/\<slug>/\<id>/ page. Unify: the /search/ page lists nothing (POST /services/recruiting/v1/jobs draws the list in the browser); the robots-clean list is https://\<board host>/sitemap.xml, a \<urlset> of one \<loc> a posting at /job/\<slug>/\<id>/, XML-escaped, every \<lastmod> one day (not a posted date). Each loc answers 302 to /job/\<slug>/\<N>-\<locale>/, and one role's English and French copies land on the same N. The posting page shows the role in itemprop="title", the ad in itemprop="description" and the tenant's own labelled tokens (a place - Posting Location, Job Location (Short) - or Country; Workplace Type; Posting Start Date, M/D/YY on en-US). Measured 2026-11-23: Aurigo 16 locs, Esri Canada 32 (16 roles, each in English and French), Octave 131. RSS exists under /services/rss/ and is closed. Measured on Gainwell 2026-11-22: jobs.gainwelltechnologies.com, 334 postings over 14 pages of 25, read in full in 15 requests; remote roles carry a placeholder place ('Any city, TX, US, 99999'), which the reader reads as 'TX, US'.
 
 **robots.txt.** Measured 2026-11-19..21: a byte-identical CSB template robots.txt on all six board hosts read allows /search/, /go/, /job/ and /sitemap.xml, and disallows /services/ (the RSS and the Unify API), /talentcommunity/apply/, /applybutton/ and /preapply/. The legacy portals (career8.successfactors.com, career41.sapsf.com) serve 'Disallow: /', 'Disallow: /\*company', 'Allow: /login' and were never asked.
 
-**Where it names its employer.** Stated on the board's own host: the /search/ page's \<title>, '{site name} Jobs', and its meta description, 'Find at {site name}' (localized: 'JENOPTIK AG - Stellen', 'Buscar en Indra Group'); classic posting pages add \<meta itemprop="hiringOrganization">. The site name is whatever the admin typed: a placeholder on 2 of 6 boards ('esricanada', 'our team'), and a group's board names the parent. The ssoCompanyId in j2w.init is a tenant id, not a name. No probe is written.
+**Where it names its employer.** Stated on the board's own host: the /search/ page's \<title>, '{site name} Jobs', and its meta description, 'Find at {site name}' (localized: 'JENOPTIK AG - Stellen', 'Buscar en Indra Group'); classic posting pages add \<meta itemprop="hiringOrganization">. The site name is whatever the admin typed: a placeholder on 2 of 6 boards ('esricanada', 'our team'), and a group's board names the parent. The ssoCompanyId in j2w.init is a tenant id, not a name. A Unify posting page names no hiringOrganization: its \<title> is '\<role> Job Details | \<site name>' (translated on a French page), and the probe reads the site name after its last ' | ' ('Aurigo Software Technologies', 'esricanada', 'Octave', measured 2026-11-23).
 
 **Quirks.**
 
@@ -768,15 +770,17 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 - Multilingual tenants list one role once per language under different ids.
 - A /go/ category page can carry an empty \<title>: read the name from /search/.
 - Giants among the examples: Indra Group 623 postings (mostly Spain), SPX 237, Jenoptik 175.
+- Unify sitemaps escape their locs (&apos;, &amp;), and Esri Canada's server writes a French posting's redirect Location encoded twice; the reader keeps the sitemap's own address as the row's.
 
 **Notes.**
 
 - Gainwell Technologies' board states 'Gainwell Technologies LLC' (the /search/ title and description, and the hiringOrganization of its postings), proven for the record.
-- Unify boards (Aurigo, Esri Canada) stay unread: their list is served only by a robots-closed POST.
+- Unify boards (Aurigo, Esri Canada, Octave) are read from their sitemap since 2026-11-23, so far only offline over the responses saved that day: Aurigo 16 rows, Esri Canada 16 (32 locs, each role's two languages paired by requisition), Octave 131; none is wired yet. The probe states 'Aurigo Software Technologies' and 'esricanada' whole, which prove neither record's name, and Octave's 131 not whole.
+- A Unify posting's ad is read from its first itemprop="description" element only, as the classic reader's is; Esri Canada's postings split theirs into three, the pay sentence in the third, and their Salary Min/Max tokens are not read.
 
 <!-- live -->
 
-On file today: no company. The last sweep (2026-11-22): did not meet it.
+On file today: 1 company (Gainwell Technologies), 0 with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
