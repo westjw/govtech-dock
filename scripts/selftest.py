@@ -42323,7 +42323,7 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                            f"word for an account, took the row off his queue, wrote an account's "
                            f"words, or planted a pair on file (exit {code}; on his queue "
                            f"{sorted(cards)}; pairs {bp.workable_pairs(cs9, found9)}; records "
-                           f"{ {k: (recs9[k].get('ats'), recs9[k].get('ats_note')) for k in recs9} }"
+                           f"{ {k: (v.get('ats'), v.get('ats_note')) for k, v in recs9.items()} }"
                            f"): {text[-300:]}")
 
     # (10) A PAYLOCITY RECORD WHOSE REF CARRIES NO /All/ OR /List/ ID is no
@@ -42472,22 +42472,32 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
     # and the next plan, the page answering, wires it (eighth blind review,
     # 2026-11-22: it was held and filed in his queue, and every later plan
     # held it as already there)
+    # ...and ONLY THE FIND THAT PAGE ALONE COULD COMPARE ("unknown" to the
+    # record) is skipped: a find apart from the record - another /List/ id -
+    # is decided as usual, and wired (the eighth review's door verifier,
+    # 2026-11-22: the relation limit was unpinned, and without it a find the
+    # failed page has nothing to do with was skipped every day, in false words)
     LIST_TR, ALL_TR, FIND_TR = plist(2138), pall(0x947, "Tr-Rec"), pall(0x948, "Tr-Co")
-    with _WiringBox([co("tr-co", "Tr Co"),
+    LIST_TA = plist(2198, "Ta-Co")
+    with _WiringBox([co("tr-co", "Tr Co"), co("ta-co", "Ta Co"),
                      co("tr-rec", "Tr Rec", ats={"type": "paylocity", "ref": LIST_TR})],
-                    {f"paylocity/{FIND_TR}": (3, ["Tr Co"])},
+                    {f"paylocity/{FIND_TR}": (3, ["Tr Co"]),
+                     f"paylocity/{LIST_TA}": (3, ["Ta Co"])},
                     says={f"paylocity/{LIST_TR}": {"failed": "unreadable", "transient": True,
                                                    "how": "HTTP 503 for the board's page"}}) \
             as box:
         code, text, wl_tr, rows_tr = box.plan(_wb_results({
-            "tr-co": names("tr-co", "paylocity", FIND_TR)}), name="worklist-tr.json")
+            "tr-co": names("tr-co", "paylocity", FIND_TR),
+            "ta-co": names("ta-co", "paylocity", LIST_TA)}), name="worklist-tr.json")
         expect(rows_tr, "tr-co", "SKIP", "asking that page failed on the day (HTTP 503 for the "
                                          "board's page); it is asked again on the next plan",
                kind="unreadable")
+        expect(rows_tr, "ta-co", "WIRE")
         code, text, _ = box.look(wl_tr)
-        if "HOLD 0 " not in text:
+        if "HOLD 0 " not in text or "WIRE 1 " not in text:
             errors += fail(f"a find held only by a record's page that failed on the day would be "
-                           f"filed for the owner: {text[-400:]}")
+                           f"filed for the owner, or one apart from it is not wired: "
+                           f"{text[-400:]}")
         box.says = {f"paylocity/{LIST_TR}": {"address": ALL_TR}}
         code, text, _wl, rows_tr = box.plan(_wb_results({
             "tr-co": names("tr-co", "paylocity", FIND_TR)}), name="worklist-tr2.json")
@@ -42943,6 +42953,122 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                     f"{LIST_TW[8:]} states its address is {ALL_TW}" not in text:
                 errors += fail(f"two holds of one board, {label}: apply did not compare the find "
                                f"with both by what the page stated: {text[-500:]!r}")
+    # ...and A HELD BOARD'S PAGE IS ASKED ONLY FOR A FIND CONSIDER COMPARES
+    # WHOSE RELATION TO THE HOLD IS "unknown" - the twin of a record's (12):
+    # never for a find the hold's addresses already compare (its tenant's name
+    # across the two kinds of id, or under another /List/ id), nor for a
+    # company out of scope or on a board, a board refused for its company, or
+    # a second board on a site (the eighth review's door verifier, 2026-11-22:
+    # asking on any relation but "apart", and for every Paylocity find, both
+    # passed every check)
+    LIST_LH, LIST_LT = plist(2176), plist(2177, "Lt-Co")
+    K_ = {k: pall(0x9e0 + i, f"K{i}-Co") for i, k in enumerate(("oos", "set", "ref", "sec"))}
+    page_k = f"{site('k-sec')}/careers"
+    with _WiringBox([co("lh-co", "Lh Co"),
+                     co("k-oos", "K Oos", out_of_scope=OOS),
+                     co("k-set", "K Set", ats={"type": "greenhouse", "ref": "kset"}),
+                     co("k-ref", "K Ref"), co("k-sec", "K Sec")],
+                    {"greenhouse/ksec": (3, ["K Sec"]),
+                     **{f"paylocity/{v}": (3, [f"K {k.title()}"]) for k, v in K_.items()}},
+                    files={bp.FOUND.name: [frow("lh-co", "Lh Co", LIST_LH)],
+                           bp.PROPOSALS: proposal("k-ref", "K Ref", K_["ref"])}) as box:
+        sec = entry("k-sec", [cand("greenhouse", "ksec", page_k, element="iframe", times=3),
+                              cand("paylocity", K_["sec"], page_k, element="href")])
+        code, text, _wl, rows_k = box.plan(_wb_results({
+            "k-oos": names("k-oos", "paylocity", K_["oos"]),
+            "k-set": names("k-set", "paylocity", K_["set"]),
+            "k-ref": names("k-ref", "paylocity", K_["ref"]), "k-sec": sec}),
+            name="worklist-17-lim.json")
+        for cid, kind in (("k-oos", "out-of-scope"), ("k-set", "not-waiting"),
+                          ("k-ref", "refused")):
+            expect(rows_k, cid, "SKIP", kind=kind)
+        if ((rows_k or {}).get("k-sec") or {}).get("type") != "greenhouse" \
+                or f"paylocity/{LIST_LH}" in box.probed or "NOTE: asked" in text:
+            errors += fail(f"a held board's page was asked for a find consider does not compare: "
+                           f"probed {box.probed}; "
+                           f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+    with _WiringBox([co("lt-co", "Lt Co"), co("k-kinds", "K Kinds"), co("k-tenant", "K Tenant")],
+                    {f"paylocity/{pall(0x9e8, 'Lt-Co')}": (3, ["K Kinds"]),
+                     f"paylocity/{plist(2178, 'Lt-Co')}": (3, ["K Tenant"])},
+                    files={bp.FOUND.name: [frow("lt-co", "Lt Co", LIST_LT)]}) as box:
+        code, text, _wl, rows_k = box.plan(_wb_results({
+            "k-kinds": names("k-kinds", "paylocity", pall(0x9e8, "Lt-Co")),
+            "k-tenant": names("k-tenant", "paylocity", plist(2178, "Lt-Co"))}),
+            name="worklist-17-rel.json")
+        for cid in ("k-kinds", "k-tenant"):
+            expect(rows_k, cid, "HOLD", f"paylocity/{LIST_LT} is in the owner's queue")
+        if f"paylocity/{LIST_LT}" in box.probed or "NOTE: asked" in text:
+            errors += fail(f"a held board's page was asked for finds its addresses already "
+                           f"compare (one tenant's name across the two kinds of id, or under "
+                           f"another /List/ id): probed {box.probed}")
+    # ...and A HELD BOARD'S PAGE THAT FAILS ON THE DAY SKIPs ONLY THE FINDS IT
+    # ALONE COULD COMPARE ("unknown" to the hold): one its addresses already
+    # compare - the tenant's name across the two kinds of id - is held as
+    # usual, and one apart from it is wired (the eighth review's door
+    # verifier, 2026-11-22: the relation limit was unpinned for holds as for
+    # records, and without it such a find was skipped every day, in false
+    # words)
+    LIST_TD = plist(2179, "Td-Co")
+    TD_ = {"td-near": pall(0x9e1, "Td"), "td-kinds": pall(0x9e2, "Td-Co"),
+           "td-apart": plist(2180, "Ap-Co")}
+    with _WiringBox([co("td-co", "Td Co"), *(co(k, k.title().replace("-", " ")) for k in TD_)],
+                    {f"paylocity/{v}": (3, [k.title().replace("-", " ")]) for k, v in TD_.items()},
+                    files={bp.FOUND.name: [frow("td-co", "Td Co", LIST_TD)]},
+                    says={f"paylocity/{LIST_TD}": {"failed": "unreadable", "transient": True,
+                                                   "how": "HTTP 503 for the board's page"}}) \
+            as box:
+        code, text, _wl, rows_td = box.plan(_wb_results({
+            k: names(k, "paylocity", v) for k, v in TD_.items()}), name="worklist-17-td.json")
+        expect(rows_td, "td-near", "SKIP", "the owner holds", "failed on the day (HTTP 503 for "
+                                                              "the board's page)",
+               kind="unreadable")
+        expect(rows_td, "td-kinds", "HOLD", f"paylocity/{LIST_TD} is in the owner's queue",
+               never=("failed on the day",))
+        expect(rows_td, "td-apart", "WIRE")
+    # ...and WHAT A HELD BOARD'S, OR A RECORD'S, PAGE STATES IS ADDED TO THE
+    # ADDRESSES IT IS ON FILE BY, NEVER PUT IN THEIR PLACE: a find tied to the
+    # hold or the record only by its own /List/ id, its own page stating
+    # nothing, is that board while the page states another /All/ id - held in
+    # the plan, and left alone in apply where a worklist says it leaned on that
+    # page - and a find the page shows to be another board is wired (the
+    # eighth review's door verifier, 2026-11-22: replaced instead of added, on
+    # either side, passed every check, and on both the very board was wired)
+    LIST_K, ALL_K = plist(2181), pall(0x9e5, "Rk-Co")
+    C1_K, C2_K = pall(0x9e6, "Ck1-Co"), plist(2181, "Ck2-Co")
+    SP_K = wf.spelling("paylocity", LIST_K)
+    for label, files_k, rk, plan_says, apply_says in (
+            ("a hold", {bp.FOUND.name: [frow("rk-co", "Rk Co", LIST_K)]}, co("rk-co", "Rk Co"),
+             f"paylocity/{LIST_K} is in the owner's queue (Boards we found) for Rk Co",
+             f"paylocity/{LIST_K} is in the owner's queue (Boards we found) for Rk Co"),
+            ("a record", {}, co("rk-co", "Rk Co", ats={"type": "paylocity", "ref": LIST_K}),
+             f"paylocity/{C2_K} is already on file as the board of Rk Co",
+             f"paylocity/{C2_K} is now on file as the board of Rk Co")):
+        with _WiringBox([rk, co("ck1", "Ck1 Co"), co("ck2", "Ck2 Co")],
+                        {f"paylocity/{C1_K}": (3, ["Ck1 Co"]),
+                         f"paylocity/{C2_K}": (3, ["Ck2 Co"])},
+                        files=files_k, says={f"paylocity/{LIST_K}": {"address": ALL_K}}) as box:
+            code, text, wl_k, rows_k = box.plan(_wb_results({
+                "ck1": names("ck1", "paylocity", C1_K), "ck2": names("ck2", "paylocity", C2_K)}),
+                name=f"worklist-17-kept-{len(label)}.json")
+            expect(rows_k, "ck1", "WIRE")
+            expect(rows_k, "ck2", "HOLD", plan_says)
+            if ((rows_k or {}).get("ck1") or {}).get("leans_on") != {SP_K: ALL_K}:
+                errors += fail(f"{label}: the find its page shows to be another board does not "
+                               f"name that page: {((rows_k or {}).get('ck1') or {})!r:.300}")
+
+            def lean_k(rows_, _doc):
+                r_ = rows_["ck2"]
+                r_["action"], r_["waiting_seen"], r_["leans_on"] = "WIRE", [], {SP_K: ALL_K}
+                r_.pop("doubts", None)
+                r_.pop("queue_row", None)
+            code, text, _ = box.look(box.edited(wl_k, f"worklist-17-lean-{len(label)}.json",
+                                                lean_k))
+            line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                         if ln.strip().startswith("Ck2 Co ")), "") if "LEFT ALONE" in text else ""
+            if apply_says not in line or "WIRE 1 " not in text:
+                errors += fail(f"{label}: apply took what its page stated in place of the address "
+                               f"it is on file by, and the very board was not left alone, or the "
+                               f"other find was not wired: {line[:300]!r} {text[-400:]!r}")
     return errors
 
 
