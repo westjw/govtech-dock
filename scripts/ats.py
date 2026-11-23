@@ -4905,13 +4905,22 @@ def _sf_stated_requisition(page: str, origin: str) -> tuple[str, str] | None:
     """(the number, the locale) a posting page states of itself: its
     <link rel="canonical" href="<origin>/job/<slug>/<N>-<locale>/"> (on every
     Unify posting page measured, 2026-11-23: Aurigo's, Esri Canada's and
-    Octave's), on this site's origin; None for a page that states none."""
+    Octave's), on this site's origin; None for a page that states none.
+    AtsError for one whose canonical is no address at all ('https://[...',
+    which the page's own markup can say): the page does not say plainly
+    which posting it is, so the posting is not read - never a crash of the
+    whole read (blind review 11, 2026-11-23: one such page took a board's
+    read down as a ValueError, and the company went Unknown)."""
     for m in _SF_LINK.finditer(_cut(page or "")):
         attrs = _sf_attrs(m.group(1))
         if "canonical" not in (attrs.get("rel") or "").lower().split():
             continue
         href = html_lib.unescape(attrs.get("href") or "").strip()
-        parts = urllib.parse.urlsplit(href)
+        try:
+            parts = urllib.parse.urlsplit(href)
+        except ValueError:                       # an href that is no address ('https://[')
+            raise AtsError(f"its canonical link is no address ({href[:60]!r}), so the page does not "
+                           f"say plainly which posting it is") from None
         if f"{parts.scheme}://{(parts.netloc or '').lower()}" == origin:
             return _sf_requisition(href)
         return None
@@ -5009,8 +5018,13 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
             if not isinstance(exc, RateLimited):
                 time.sleep(SF_RETRY_PAUSE)    # (a 429's wait is the gate's: _back_off)
     where = landed[-1] if landed else url
-    req = successfactors_unify_requisition(page, where, origin)
-    lang = successfactors_unify_language(page, where, origin)
+    try:
+        req = successfactors_unify_requisition(page, where, origin)
+        lang = successfactors_unify_language(page, where, origin)
+    except AtsError as exc:
+        # (a page stating its own address as no address at all: which
+        # posting it is is not said plainly, so it is not read)
+        return "unread", f"{url} ({_text(str(exc))[:160]})"
     if not successfactors_shown(page):
         if successfactors_filled(page):
             return "closed", (req, lang)

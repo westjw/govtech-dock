@@ -1586,8 +1586,14 @@ def _successfactors_unify(origin: str, out: dict) -> None:
                 continue
             raise
         where = landed[-1] if landed else url
-        req = ats.successfactors_unify_requisition(body, where, origin)
-        copies.append((ats.successfactors_unify_language(body, where, origin), req))
+        try:
+            req = ats.successfactors_unify_requisition(body, where, origin)
+            copies.append((ats.successfactors_unify_language(body, where, origin), req))
+        except ats.AtsError as exc:
+            # (a page stating its own address as no address at all, as the
+            # reader reads it: the posting is not read, so neither is the board)
+            raise ats.AtsError(f"successfactors posting {url}: {exc}, so the board is not "
+                               f"stated") from exc
         if not ats.successfactors_shown(body):
             if not ats.successfactors_filled(body):
                 raise ats.AtsError(f"successfactors posting {url} answered a page that shows no "

@@ -3720,7 +3720,9 @@ review and the owner's word, through the wiring door.
   company reads as one we could not read; anything else (a page showing
   no posting that is not the site saying so,
   robots.txt closing it, a 401 or 403, a hop off /job/ or off the host, a
-  hop round in a loop - each address asked once - a page naming no role) is
+  hop round in a loop - each address asked once - a page naming no role, a
+  page stating its own address as no address at all - a canonical
+  'https://[...', which crashed the whole read until blind review 11) is
   left out and said up to `SF_SLACK` (2) postings, and more is the board
   unreadable; every posting closed is an error, and
   so is more than a quarter of the sitemap closed in one read

@@ -22634,6 +22634,54 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 not in str(exc) or loc(88) in sent:
             errors += fail(f"successfactors unify: {ats.SF_SLACK + 1} postings that did not read were not "
                            f"the board unreadable, at once: {rows!r} {exc} (asked {sent})")
+        # A PAGE STATING ITS OWN ADDRESS AS NO ADDRESS AT ALL - a canonical
+        # 'https://[...', which the page's own markup can say - is a posting
+        # that does not read: left out and said, never a crash of the whole
+        # read (blind review 11, 2026-11-23: urlsplit's ValueError took the
+        # board down; the refresh filed the company 'fetcher crashed:
+        # ValueError', the probe 'unreadable (ValueError)')
+        no_address = f"https://[{HOST}/job/Role-82/82-en_US/"
+        for at_, why in (((loc(82), None, posting("Role 82", canonical=no_address)), "a posting answering in place"),
+                         ((loc(82), hop(82), posting("Role 82", canonical=no_address)), "a posting where it hops"),
+                         ((loc(82), hop(82), filled.replace("<head>", f'<head><link rel="canonical" href="'
+                                                                     f'{no_address}" />', 1)),
+                          "a closed posting's page")):
+            routes = site([plain(81, posting("Account Executive")), at_, plain(88, posting("Role 88"))])
+            try:
+                rows, exc, err = go(routes)
+                sent.clear(), robots_asked.clear(), shut.clear()
+                ats.requests.get = web(routes)
+                with contextlib.redirect_stderr(io.StringIO()):
+                    res = refresh.check_company({"id": "acme-gov", "name": "Acme Gov",
+                                                 "ats": {"type": "successfactors", "ref": SF}})
+                got = said(routes)
+            except Exception as crash:              # noqa: BLE001 - a crash is the failure pinned
+                rows, exc, err, res, got = None, crash, "", {}, {}
+            how_ = str(got.get("how"))
+            if exc or [nth(r["url"]) for r in rows or []] != [81, 88] \
+                    or "1 of the 3 postings its sitemap lists did not read as postings" not in err \
+                    or "its canonical link is no address" not in err or res.get("status") != "Yes" \
+                    or got.get("failed") != "unreadable" or got.get("transient") or got.get("names") \
+                    or "its canonical link is no address" not in how_ or "ValueError" in how_ \
+                    or loc(82) not in how_:
+                errors += fail(f"successfactors unify: {why} whose canonical link is no address was not left "
+                               f"out and said as a posting that did not read ({err.strip()!r}), the refresh "
+                               f"read {res}, the probe {got.get('failed')!r} {how_!r}: "
+                               f"{[r['url'] for r in rows or []]} {exc!r}")
+        for page_, ask_, why in ((posting("Role 82", canonical=no_address), ats.successfactors_unify_requisition,
+                                  "its requisition"),
+                                 (f'<html><head><link rel="canonical" href="{no_address}"></head><body>x</body>'
+                                  f'</html>', ats.successfactors_unify_language, "its language")):
+            try:
+                ask_(page_, loc(82), SF)
+                said_ = "nothing"
+            except ats.AtsError as exc_:
+                said_ = str(exc_)
+            except Exception as exc_:               # noqa: BLE001
+                said_ = repr(exc_)
+            if "its canonical link is no address" not in said_:
+                errors += fail(f"successfactors unify: {why}, asked of a page whose canonical link is no address, "
+                               f"answered {said_[:120]!r}, not an error saying so")
 
         # ---- the probe ---------------------------------------------------------
         seven = [plain(n, posting(f"Role {n}")) for n in range(1, 8)]
