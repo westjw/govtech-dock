@@ -21704,12 +21704,19 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
     SF_SITEMAP_MAX addresses are errors. Never a zero, nothing under
     /services/, nothing off the origin, two requests a posting, and one read
     a night (the build step takes the refresh step's: GOVTECH_DOCK_UNIFY_NIGHT).
+    An address the read has been to is not asked again, whatever it
+    answered, and is one posting, counted once on both sides of the closed
+    share; a page whose canonical link is no address is a posting that does
+    not read, never a crash; a read refused keeps nothing for the night, and
+    a failing night costs what CLAUDE.md says, measured.
 
     THE PROBE. The site's name is each posting page's <title> after its last
     ' | ', and a hiringOrganization a name too; stated whole only when the
     sitemap lists SF_POSTINGS_ASKED or fewer, every one was asked, at most
     SF_SLACK answered as closed, nothing it lists was passed over, and the
-    rows the reader would publish are in one language or pair.
+    rows the reader would publish are in one language or pair; a copy not in
+    English that shows no posting, of a requisition a copy of which answered
+    closed, is closed with it, as the reader reads it.
 
     And a classic Career Site Builder board reads exactly as it did.
     """

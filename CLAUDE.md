@@ -3800,9 +3800,9 @@ review and the owner's word, through the wiring door.
   for the door.
   Guard: `check_successfactors_unify_reads_its_sitemap` (77 one-line
   breakages of the reader and the probe, each alone in a private copy, each
-  caught); blind review 10's findings on the reader and the probe are each
-  pinned there or in `check_successfactors_reads_its_career_site`, each pin
-  failing with its fix undone.
+  caught); blind review 10's and 11's findings on the reader and the probe
+  are each pinned there or in `check_successfactors_reads_its_career_site`,
+  each pin failing with its fix undone.
 - **Measured** on six CSB hosts by the research of 2026-11-20 (Landis+Gyr 63,
   JENOPTIK 175, SPX 237 and Indra 623 classic; Aurigo and Esri Canada Unify)
   and on Gainwell's of 2026-11-22. **Read live once** the same day (details
