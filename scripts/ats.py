@@ -4885,6 +4885,22 @@ def successfactors_unify_requisition(page: str, landed: str, origin: str) -> tup
     return hopped or stated
 
 
+def successfactors_unify_language(page: str, req) -> str:
+    """The language a Unify copy is written in, as a bare code ('en', 'fr'):
+    the locale of the requisition it is a copy of (.../663-fr_CA/, the site's
+    own word for the copy, measured on Esri Canada's), else its page's
+    <html lang>, else its title or description element's own lang
+    (successfactors_language), else ''. The reader keeps a requisition's 'en'
+    copy, and the probe asks whether the copies it would publish are written
+    in one language (verify_boards._successfactors_unify), by this one rule."""
+    if req:
+        return re.split(r"[-_]", req[1])[0].lower()
+    m = _SF_HTML_LANG.search(_cut(page or "")[:20000])
+    if m:
+        return re.split(r"[-_]", m.group(1))[0].lower()
+    return successfactors_language(page)
+
+
 class _SfKnown(AtsError):
     """A Unify posting's hop lands on an address this read has already read
     as a posting: its page is that one, and is not asked twice."""
@@ -4895,11 +4911,12 @@ class _SfKnown(AtsError):
 
 
 def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
-    """('row', (row, requisition, where)), ('closed', requisition), ('blank',
-    (why, requisition)) for a page that shows no posting and is not the site
-    saying it closed, or ('unread', why), for one posting a Unify sitemap
-    lists, asked once; the requisition is the one the copy is of, or None
-    where it is not known. A FAILURE OF THE DAY -
+    """('row', (row, requisition, where, language)), ('closed', (requisition,
+    language)), ('blank', (why, requisition, language)) for a page that shows
+    no posting and is not the site saying it closed, or ('unread', why), for
+    one posting a Unify sitemap lists, asked once; the requisition is the one
+    the copy is of (None where it is not known), the language the copy's own
+    (successfactors_unify_language). A FAILURE OF THE DAY -
     a 429, a 5xx, the network failing or timing out (_sf_of_the_day) - is
     asked once more, after the gate's backoff for a 429 and SF_RETRY_PAUSE
     for the rest, and failing again is raised as it came (blind review 10,
@@ -4914,12 +4931,13 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
             page = successfactors_posting(url, origin, landed, known)
             break
         except _SfKnown as again:
-            row, req, where = known[again.address]
-            return "row", (dict(row, url=url), req, where)
+            row, req, where, lang = known[again.address]
+            return "row", (dict(row, url=url), req, where, lang)
         except AtsError as exc:
             if successfactors_closed(exc):
                 # (a 404 at the address it hopped to names its requisition)
-                return "closed", _sf_requisition(landed[-1]) if landed else None
+                req = _sf_requisition(landed[-1]) if landed else None
+                return "closed", (req, successfactors_unify_language("", req))
             if not _sf_of_the_day(exc):
                 return "unread", f"{url} ({_text(str(exc))[:160]})"
             if attempt == 2:
@@ -4927,21 +4945,21 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
             if not isinstance(exc, RateLimited):
                 time.sleep(SF_RETRY_PAUSE)    # (a 429's wait is the gate's: _back_off)
     where = landed[-1] if landed else url
+    req = successfactors_unify_requisition(page, where, origin)
+    lang = successfactors_unify_language(page, req)
     if not successfactors_shown(page):
-        req = successfactors_unify_requisition(page, where, origin)
         if successfactors_filled(page):
-            return "closed", req
+            return "closed", (req, lang)
         return "blank", (f"{url} (a page that shows no posting and is not the site saying it has "
-                         f"closed)", req)
+                         f"closed)", req, lang)
     row = successfactors_unify_row(page, url)
     if row is None:
         return "unread", f"{url} (a posting page that names no role)"
     if FETCH_DETAILS:
         # the ad is on the page already read: no request more
         row["jd"] = successfactors_ad(page)
-    req = successfactors_unify_requisition(page, where, origin)
-    known[where] = (row, req, where)
-    return "row", (row, req, where)
+    known[where] = (row, req, where, lang)
+    return "row", (row, req, where, lang)
 
 
 def _sf_slug(url: str) -> str:
@@ -4968,17 +4986,17 @@ def successfactors_unify(origin: str) -> list[dict]:
         if url in known:
             # (the sitemap lists an address another of its postings hopped
             # to: that page, read once)
-            row, req, where = known[url]
-            what, got = "row", (dict(row, url=url), req, where)
+            row, req, where, lang = known[url]
+            what, got = "row", (dict(row, url=url), req, where, lang)
         else:
             what, got = _sf_unify_posting(url, origin, known)
         if what == "row":
             read.append(got)
         elif what == "closed":
             closed.append(url)
-            if got:
-                shut.add(got[0])
-        elif what == "blank" and got[1] and not re.match(r"en(?:_|$)", got[1][1], re.I):
+            if got[0]:
+                shut.add(got[0][0])
+        elif what == "blank" and got[1] and got[2] != "en":
             # A COPY IN ANOTHER LANGUAGE THAT SHOWS NO POSTING, OF A
             # REQUISITION ANOTHER COPY OF WHICH THE SITE SAYS HAS CLOSED, is
             # that copy closed too: both copies of a closed role stay in the
@@ -5003,21 +5021,20 @@ def successfactors_unify(origin: str) -> list[dict]:
         raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists did not "
                        f"read as postings ({unread[0]} the first): read in part, so not read")
     groups: dict = {}
-    for row, req, where in read:
+    for row, req, where, lang in read:
         key = ("requisition", req[0]) if req else ("address", row["url"])
-        groups.setdefault(key, []).append((row, req, where))
+        groups.setdefault(key, []).append((row, req, where, lang))
 
     def rank(copy):
-        row, req, where = copy
-        english = bool(req) and re.match(r"en(?:_|$)", req[1], re.I) is not None
-        return (not english, _sf_slug(row["url"]) != _sf_slug(where))
+        row, _req, where, lang = copy
+        return (lang != "en", _sf_slug(row["url"]) != _sf_slug(where))
     kept, languages, again = [], 0, 0
     for copies in groups.values():
         best = min(copies, key=rank)            # (the first of equals)
         kept.append(best[0])
         for copy in copies:
             if copy is not best:
-                if (copy[1] or ("", ""))[1].lower() == (best[1] or ("", ""))[1].lower():
+                if copy[3] == best[3]:
                     again += 1
                 else:
                     languages += 1

@@ -3611,9 +3611,20 @@ review and the owner's word, through the wiring door.
   review 10, 2026-11-23, when the rest was stated "every one it lists
   asked"); a longer one is asked
   about its first `SF_POSTINGS_SAMPLED` (5) that answer, for the desk; a
-  block page or any other failure is the board not read. The classic
-  probe's language rule is not asked: the reader pairs the copies. The
-  names measured: 'Aurigo Software Technologies', 'esricanada', 'Octave'.
+  block page or any other failure is the board not read. **Copies in more
+  than one language** are the classic probe's language rule, asked of what
+  the reader would publish (blind review 10, 2026-11-23: it was not asked,
+  and a board of copies the reader cannot pair - one role under two
+  numbers, or copies with no number to pair them by - was stated whole and
+  proven, each role published twice): the rows it would publish, one a
+  requisition and its 'en' copy where there is one, are stated whole only
+  when written in one language, or when every row in another language is
+  of a requisition a copy in one language was asked of, open or closed
+  (Esri Canada's 16 pairs); else the names are kept for the desk, not
+  stated. A copy's language is one rule for the reader and the probe
+  (`ats.successfactors_unify_language`): its requisition's locale
+  (.../663-fr_CA/), else its page's `<html lang>`, else its title's own
+  lang. The names measured: 'Aurigo Software Technologies', 'esricanada', 'Octave'.
   proven() is unchanged: 'esricanada' proves nobody (a country on our name
   must be on the board's), and 'Aurigo Software Technologies' does not
   prove the bare 'Aurigo Software' - Aurigo's record passes only through

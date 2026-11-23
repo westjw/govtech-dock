@@ -22449,6 +22449,49 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (want and not stated and f"more than {ats.SF_SLACK} closed" not in str(got["how"])):
                 errors += fail(f"successfactors unify probe, {why}: names {got['names']} stated "
                                f"{got['stated']} ({got['how']!r}), wanted {want} stated {stated}")
+        # COPIES IN MORE THAN ONE LANGUAGE: the classic probe's language rule,
+        # asked of what the reader would publish - a board whose copies in
+        # another language are requisitions a copy in one language was asked
+        # of (Esri Canada's pairs) is stated; one whose copies are under two
+        # numbers, or have none to pair them by, may list a role once in each,
+        # and is not (blind review 10, 2026-11-23: such a board was stated
+        # whole and proven, each role published twice)
+        def fr_copy(n, at_=None, canonical=None):
+            return (f"{SF}/job/Gestionnaire-{n}/{61000000 + n}/",
+                    f"{SF}/job/Gestionnaire-{n}/{at_ or n}-fr_CA/" if at_ is not False else None,
+                    posting(f"Gestionnaire {n}", lang="fr-CA", phrase="Détails de l'emploi", canonical=canonical))
+        pairs_ = [c for n in (1, 2, 3, 4) for c in (plain(n, posting(f"Role {n}")), fr_copy(n))]
+        en_shut = [plain(1, filled), fr_copy(1)] + [c for n in (2, 3) for c in (plain(n, posting(f"Role {n}")),
+                                                                              fr_copy(n))]
+        in_place = [(loc(1), None, posting("Role 1", canonical=hop(1))),
+                    fr_copy(1, at_=False, canonical=f"{SF}/job/Gestionnaire-1/1-fr_CA/")]
+        for postings_, stated, why in (
+                (pairs_, True, "four roles, each in English and French under one number (Esri Canada's)"),
+                (en_shut, True, "a French copy open whose English copy has closed"),
+                (in_place, True, "two copies answering in place, each page stating one number"),
+                ([plain(1, posting("Role 1")), fr_copy(2), plain(3, posting("Role 3")), fr_copy(4)], False,
+                 "two roles in English and French under four numbers"),
+                ([(loc(1), None, posting("Role 1")), fr_copy(1, at_=False)], False,
+                 "copies answering in place with no number to pair them by"),
+                ([plain(1, posting("Role 1")), plain(2, posting("Role 2")), fr_copy(7)], False,
+                 "a French copy of a number no English copy was asked of")):
+            got = said(site(postings_))
+            how_ = str(got["how"])
+            if bool(got["stated"]) is not stated or got["failed"] or got["names"] != ["Acme Gov Software"] \
+                    or vb.proven({"name": "Acme Gov Software"}, got)["ok"] is not stated \
+                    or (not stated and "written in more than one language (en, fr)" not in how_):
+                errors += fail(f"successfactors unify probe, {why}: stated {got['stated']} ({how_!r}), "
+                               f"wanted {stated}")
+        # (one rule says what language a copy is in, for the reader's English
+        # copy and the probe's languages alike: its requisition's locale, else
+        # its <html lang>, else its title's own lang)
+        bare_ = '<html><head><title>Role</title></head><body><span lang="de-DE" itemprop="title">R</span></body></html>'
+        for page_, req_, want in ((posting(lang="fr-CA"), ("1", "en_US"), "en"),
+                                  (posting(), ("1", "fr_CA"), "fr"), (posting(lang="fr-CA"), None, "fr"),
+                                  (bare_, None, "de"), ("<html><body>x</body></html>", None, "")):
+            if ats.successfactors_unify_language(page_, req_) != want:
+                errors += fail(f"successfactors unify: a copy of {req_} read as written in "
+                               f"{ats.successfactors_unify_language(page_, req_)!r}, not {want!r}")
         # WHAT THE SITEMAP LISTS AND THE READER PASSES OVER is part of the board
         # nobody asked, so nothing is stated whole while there is any (blind
         # review 10: an index's sitemap on http, and a second brand's
