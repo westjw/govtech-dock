@@ -20982,6 +20982,54 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         out = fsb._no_person(raw)
         if "Pat" in out or "Example" in out or "pat%40" in out.lower():
             errors += fail(f"finder: {why} kept a person's name: {out!r}")
+    # A NAME RUNS PAST AN APOSTROPHE BETWEEN LETTERS (eighth blind review,
+    # 2026-11-22): each of the four patterns stopped at it, and 'Pat O'Brien'
+    # left "'Brien" in the results - raw, %20 and %2520 alike
+    for raw, why in ((TN + "&sd=Pat O'Brien", "a raw name"), (TN + "&sd=Pat%20O'Brien", "a %20 name"),
+                     (TN + "&sd=Pat%2520O'Brien", "a %2520 name"), (TN + "&sd=D'Angelo%20Pat", "a first name"),
+                     (TN + "&sd=Pat%20O&#39;Brien", "an entity apostrophe"),
+                     (TN + "&sd=Pat%20O&apos;Brien&jvsrc=x", "a named entity apostrophe"),
+                     ("https://jobs.jobvite.com/acmegov/job/oAbC1fwg?__jvst=Career%20Site&__jvsd=Pat%20O'Brien",
+                      "a posting link's __jvsd="),
+                     ("https://www.acmegov.example/careers?recruiter_name=Pat%20O'Brien&x=1", "recruiter_name="),
+                     ("https://www.acmegov.example/apply?last_name=O'Brien&first_name=Pat", "last_name="),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O'Brien", "an encoded talent network's sd="),
+                     ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Ffirst_name%3DPat"
+                      "%26last_name%3DO'Brien%26q%3D1", "an encoded last name")):
+        out = fsb._no_person(raw)
+        if "Brien" in out or "Angelo" in out or "Pat" in out or ("q6NaVfwI" in raw and "q6NaVfwI" not in out):
+            errors += fail(f"finder: {why} with an apostrophe kept part of a person's name, or the "
+                           f"account went with it: {out!r}")
+    kept = fsb._no_addresses({"pages": [{"asked": here, "final": TN + "&sd=Pat%20O'Brien"}],
+                              "hops": [TN + "&sd=Pat O'Brien"],
+                              "elsewhere": [{"page": "https://www.acmegov.example/apply?last_name=O'Brien"
+                                                     "&first_name=Pat"}]})
+    if "Brien" in json.dumps(kept) or "Pat" in json.dumps(kept) or "q6NaVfwI" not in json.dumps(kept):
+        errors += fail(f"finder: a name with an apostrophe stayed in a page's address, a hop or an "
+                       f"elsewhere page in the results: {kept}")
+    # ...and it never eats a board's address or a ref the door compares: a
+    # quote that ends an attribute still ends the value
+    rec = {"candidates": [{"type": "jobvite", "ref": "acmegov", "url": "https://jobs.jobvite.com/acmegov/jobs"}],
+           "pages": [{"asked": here, "final": "https://jobs.jobvite.com/acmegov/jobs?__jvst=Career%20Site"}],
+           "elsewhere": [{"vendor": "jobvite-tenant", "page": here,
+                          "saw": "https://app.jobvite.com/TalentNetwork/action/joinTN?ci=q6NaVfwI"}]}
+    if fsb._no_addresses(json.loads(json.dumps(rec))) != rec:
+        errors += fail(f"finder: the person scrub rewrote a board's address or a tenant's id: "
+                       f"{fsb._no_addresses(json.loads(json.dumps(rec)))}")
+    for raw, want in (("<a href='https://x.example/c?first_name=Pat'>x</a>"
+                       "<a href='https://jobs.jobvite.com/acmegov/jobs'>Jobs</a>",
+                       "<a href='https://x.example/c?first_name=[removed]'>x</a>"
+                       "<a href='https://jobs.jobvite.com/acmegov/jobs'>Jobs</a>"),
+                      ("'https://jobs.jobvite.com/acmegov/jobs?sd=Pat','https://jobs.jobvite.com/acmegov/jobs'",
+                       "'https://jobs.jobvite.com/acmegov/jobs?sd=[removed]','https://jobs.jobvite.com/acmegov/jobs'"),
+                      ("https://www.acmegov.example/apply?last_name=O'Brien&next=https%3A%2F%2Fjobs.jobvite.com"
+                       "%2Facmegov%2Fjobs",
+                       "https://www.acmegov.example/apply?last_name=[removed]&next=https%3A%2F%2Fjobs.jobvite.com"
+                       "%2Facmegov%2Fjobs")):
+        if fsb._no_person(raw) != want:
+            errors += fail(f"finder: the person scrub ran past a quote or a value into an address: "
+                           f"{fsb._no_person(raw)!r}")
     # ... and nothing that is not a person goes: a site's own name=All is a
     # search filter, and the address it is part of is the one the site served
     for raw in ("https://www.rainbird.com/search-jobs?keyword=&name=All&tid=All",

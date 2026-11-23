@@ -2436,7 +2436,12 @@ and never said where in a page a reference sat.
   exactly what that type's fetcher takes (Workday `[tenant, pod, site]`),
   `element` is where it sat (href | iframe | script | text | request | frame
   | redirect), `saw` is at most 160 characters with any e-mail address
-  taken out, `page` is where the read LANDED. `generated` is the date of the
+  taken out, `page` is where the read LANDED. Every address a record keeps
+  (`saw`, pages, hops, elsewhere pages) has a person's name taken out of its
+  query - a recruiter's, a contact's, a first, last or full name, Jobvite's
+  sd= and __jvsd=, raw or percent-encoded inside another address - to the
+  value's end: across spaces, entity spaces and an apostrophe between
+  letters ('Pat O'Brien', eighth blind review). `generated` is the date of the
   file's OLDEST record: a run that picks a file up again keeps it.
 - **A candidate** was seen on a page that landed on the company's own site,
   or is a redirect from an address of theirs that went straight to the

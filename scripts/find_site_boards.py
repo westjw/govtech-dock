@@ -1117,18 +1117,24 @@ _STOP = frozenset(" \t\r\n\"'<>`|\\^{}")
 # and rewriting it made an address the site never served (sixth blind review,
 # 2026-11-22: Rain Bird's careers page). A name's later words go with it
 # ('sd=Pat Example', 'Pat&#32;Example'), and so does a Jobvite address
-# percent-encoded inside another one ('%26sd%3DPat%2520Example').
+# percent-encoded inside another one ('%26sd%3DPat%2520Example'). So does
+# the part of a name after an apostrophe between letters ('Pat O'Brien',
+# "D'Angelo"): every pattern stopped at it and kept "'Brien" (eighth blind
+# review, 2026-11-22). Between letters only, so a quote that ends an
+# attribute ('...sd=Pat'>) still ends the value.
 _PARAM_SEP = r"(?:[?&;]|%26)"         # ('&amp;', '&#38;', '&#x26;' all end in ';')
-_PARAM_VALUE = r"""(?:[^&#"'<>\r\n]|&(?:nbsp|#160|#xa0|#32|#x20);)*"""
+_APOSTROPHE = r"(?<=[^\W\d_])(?:'|&#0*39;|&#x0*27;|&apos;)(?=[^\W\d_])"
+_PARAM_VALUE = rf"""(?:[^&#"'<>\r\n]|{_APOSTROPHE}|&(?:nbsp|#160|#xa0|#32|#x20);)*"""
 _PERSON_PARAM = re.compile(
     rf"({_PARAM_SEP}(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|last_?name|"
     rf"full_?name|e-?mail)=){_PARAM_VALUE}", re.I)
 _JV_PERSON_PARAM = re.compile(rf"({_PARAM_SEP}(?:(?:__jv|jv)?sd|name|contact)=){_PARAM_VALUE}", re.I)
 _JV_ENCODED_PERSON = re.compile(r"((?:%3f|%26)(?:(?:__jv|jv)?sd|name|contact|recruiter\w*)%3d)"
-                                r"(?:(?!%26)[^&#\s\"'<>])*", re.I)
+                                rf"(?:(?!%26)(?:[^&#\s\"'<>]|{_APOSTROPHE}))*", re.I)
 _ENCODED_PERSON = re.compile(r"((?:%3f|%26)(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|"
-                             r"last_?name|full_?name|e-?mail)%3d)(?:(?!%26)[^&#\s\"'<>])*", re.I)
-_JV_ADDRESS = re.compile(r"""(?:app|hire|jobs)\.jobvite\.com(?:/|%2f)[^"'<>\r\n]*""", re.I)
+                             rf"last_?name|full_?name|e-?mail)%3d)(?:(?!%26)(?:[^&#\s\"'<>]|{_APOSTROPHE}))*",
+                             re.I)
+_JV_ADDRESS = re.compile(rf"""(?:app|hire|jobs)\.jobvite\.com(?:/|%2f)(?:[^"'<>\r\n]|{_APOSTROPHE})*""", re.I)
 
 
 def _no_person(text: str) -> str:
