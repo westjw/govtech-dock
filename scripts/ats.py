@@ -645,7 +645,13 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
             resp.close()
         except Exception:                          # noqa: BLE001
             pass
-        url = urllib.parse.urljoin(url, loc)
+        # A REDIRECT TO NO ADDRESS IS THAT REQUEST FAILING, NOT THE READER
+        # CRASHING ('https://[' raised ValueError out of every reader: blind
+        # review 11, 2026-11-23)
+        try:
+            url = urllib.parse.urljoin(url, loc)
+        except ValueError as exc:
+            raise AtsError(f"{url} redirects to {str(loc)[:120]!r}, which is no address ({exc})") from exc
     raise AtsError(f"more than {hops} redirects from {url}")
 
 
@@ -706,7 +712,11 @@ def plain_address(u: str) -> None:
     Asked of every hop in follow(), before anything is sent."""
     if not isinstance(u, str) or _UNPLAIN.search(u):
         raise AtsError(f"{u!r} is not a plain address (a control character)")
-    parts = urllib.parse.urlsplit(u)
+    try:
+        parts = urllib.parse.urlsplit(u)
+        parts.hostname                             # (an unclosed '[' raises here or above)
+    except ValueError as exc:
+        raise AtsError(f"{u[:160]!r} is not an address ({exc})") from exc
     # (a backslash anywhere is left to the comparison below: in the host part
     # it makes the prepared request name another host, and after the host -
     # in a path or a query - it steers none)

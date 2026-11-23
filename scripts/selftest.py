@@ -14456,6 +14456,26 @@ def check_the_crawler_honours_robots_txt() -> int:
                             or asked_of != [H + "/jobs"]:
                         errors += fail(f"ats._page: a hop to {to[len(H):]!r} was asked of robots.txt "
                                        f"{asked_of} or sent {sent_paths}: {exc}")
+            # A REDIRECT TO NO ADDRESS fails that request in the readers' own
+            # words, never crashes the reader (blind review 11, 2026-11-23:
+            # 'https://[' raised ValueError out of follow and plain_address)
+            for bad in ("https://[", "http://[::1/x"):
+                hop[0], sent_paths[:], asked_of[:] = bad, [], []
+                try:
+                    ats._page(H + "/jobs", same_host=True)
+                    errors += fail(f"ats._page followed a hop to {bad!r}, sending {sent_paths}")
+                except ats.AtsError as exc:
+                    if sent_paths != ["/jobs"] or "no address" not in str(exc):
+                        errors += fail(f"ats._page: a hop to {bad!r} sent {sent_paths}: {exc}")
+                except Exception as exc:                    # noqa: BLE001
+                    errors += fail(f"ats._page crashed on a hop to {bad!r}: {type(exc).__name__}: {exc}")
+                try:
+                    ats.plain_address(bad)
+                    errors += fail(f"ats.plain_address took {bad!r} as an address")
+                except ats.AtsError:
+                    pass
+                except Exception as exc:                    # noqa: BLE001
+                    errors += fail(f"ats.plain_address crashed on {bad!r}: {type(exc).__name__}: {exc}")
             hop[0], sent_paths[:], asked_of[:] = H + "/careers\\open-roles", [], []
             try:
                 ats._page(H + "/jobs", same_host=True)
