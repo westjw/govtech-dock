@@ -39318,6 +39318,47 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
             if got_q != filed_want:
                 errors += fail(f"{label}: the write filed {got_q}, where the rows' own boards "
                                f"for the rows the look listed are {filed_want}")
+    # --- A HELD ROW IS PRINTED UNDER THE NAME ITS QUEUE ROW IS FILED UNDER
+    # (review 11, 2026-11-23). The look printed a HOLD row under the
+    # worklist's own `name`, and the write files the row for its own company
+    # (queue_row_apart ties the id) under the record's name (file_found): an
+    # edit naming A Co's held row "Unrelated Other Inc" printed "HOLD
+    # Unrelated Other Inc greenhouse/aco" and filed it for A Co. Now it is
+    # printed under the record's name, as a WIRE row is under the record it
+    # writes, and the code covers that name: renamed since the look, the
+    # write is refused.
+    with q_box() as box:
+        code, text, wl_n, rows_n = box.plan(_wb_results({
+            "a-co": _wb_one("a-co", "greenhouse", "aco", element="iframe")}),
+            name="worklist-held-name.json")
+        if ((rows_n or {}).get("a-co") or {}).get("action") != "HOLD":
+            errors += fail(f"the fixture's A Co does not plan HOLD: {text[-300:]}")
+        else:
+            def n_rename(by_id, _doc):
+                by_id["a-co"]["name"] = "Unrelated Other Inc"
+            wl_n2 = box.edited(wl_n, "worklist-held-name-2.json", n_rename)
+            code, text, look_n = box.look(wl_n2)
+            held_n = text[text.find("\nHOLD "):]
+            if "Unrelated Other Inc" in text or not any(
+                    ln.startswith("  HOLD  A Co ") and "greenhouse/aco" in ln
+                    for ln in held_n.splitlines()):
+                errors += fail(f"the look printed a held row under the worklist's own name, not "
+                               f"the record's its queue row is filed under: {held_n[:400]!r}")
+            box.by_hand(lambda by_id, _cs: by_id["a-co"].update(name="A Co Renamed"))
+            code, out = box.write(wl_n2, look_n)
+            if code == 0 or "REFUSED" not in out \
+                    or json.loads((box.tmp / bp.FOUND.name).read_text()) != []:
+                errors += fail(f"a held row's record renamed since the look was filed on the "
+                               f"look's code, under a name the look never printed: exit {code} "
+                               f"{out[-300:]!r}")
+            code, text, look_n2 = box.look(wl_n2)
+            code, out = box.write(wl_n2, look_n2)
+            filed_n = json.loads((box.tmp / bp.FOUND.name).read_text())
+            if not any(ln.startswith("  HOLD  A Co Renamed ") for ln in text.splitlines()) \
+                    or code != 0 or [(r_["id"], r_["name"]) for r_ in filed_n] \
+                    != [("a-co", "A Co Renamed")]:
+                errors += fail(f"the look and the write disagree on the name a held row is filed "
+                               f"under: exit {code} {filed_n} {text[-400:]!r}")
     return errors
 
 

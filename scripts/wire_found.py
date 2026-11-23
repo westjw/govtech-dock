@@ -4164,6 +4164,11 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
             # even where the correction would still pass
             "on_file": {r["id"]: [by_id[r["id"]].get("name"), by_id[r["id"]].get("website"),
                                   _akas(by_id[r["id"]])] for r in wire},
+            # ...and the name each held row's queue row is filed under: its
+            # record's (file_found takes `name` from the record), printed in the
+            # look and covered by its code (review 11, 2026-11-23: the look
+            # printed a HOLD row under the worklist's own `name`, an edit's)
+            "held_on_file": {r["id"]: (by_id.get(r["id"]) or {}).get("name") for r in holds},
             # every address apply leans on for a row it wires, printed in the
             # look and covered by its code
             "leans": {r["id"]: lean_lines(r, held_for["pages"]) for r in wire},
@@ -4245,6 +4250,9 @@ def expect_code(sha: str, d: dict, by: str) -> str:
         # kept between the look and the write is on it, and opens no old code
         "file_words": sorted([q.get("id"), q.get("identity_why")] for q in d["queued"]
                              if isinstance(q, dict) and q.get("id") in filing),
+        # ...and the name each is filed under (its record's), as the look prints it
+        "file_names": sorted([str(cid), str(d["held_on_file"].get(cid))]
+                             for cid in d["filing"]["added"]),
         "not_filed": sorted(str(s.get("id")) for s in d["filing"]["skipped"]),
         "filing_error": bool(d["filing"]["error"])},
         sort_keys=True)
@@ -4275,7 +4283,9 @@ def report(doc: dict, d: dict) -> None:
     print(f"\nHOLD {len(d['filing']['added'])} - to the owner's \"Boards we found\", "
           f"each with its doubt:")
     for cid in d["filing"]["added"]:
-        print(_line(by_row[cid]))
+        # under the name of the company its queue row is filed for, as a WIRE
+        # row is printed under the record it writes (review 11, 2026-11-23)
+        print(_line(by_row[cid], name=d["held_on_file"].get(cid)))
         plan_words, removed = d["held_words"].get(cid) or (None, [])
         plan_words = str(plan_words or "")
         now_words = str((queued.get(cid) or {}).get("identity_why") or "")

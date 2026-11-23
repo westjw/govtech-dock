@@ -3270,7 +3270,13 @@ round.
   the wire takes off his queue ("takes ..."), and under each held row it
   files the board and the words his card will carry ("files for him
   <board>, in these words: ..."), the pairs its doubt files with and the
-  account words it is filed without; and the code covers them. A held row's
+  account words it is filed without; and the code covers them. Each held
+  row is printed under the name of the record its queue row is filed under
+  (file_found takes `name` from the record), as a WIRE row is under the
+  record it writes, and the code covers that name too (review 11,
+  2026-11-23: the look printed a HOLD row under the worklist's own `name`,
+  so an edit naming A Co's held row "Unrelated Other Inc" printed that and
+  filed the row for A Co). A held row's
   queue row is filed only as its row's own - its company, its board as the
   site spelled it, the page check 1 names - and is NOT FILED otherwise, said
   why (`wire_found.queue_row_apart`; review 10, 2026-11-23: an edited queue
