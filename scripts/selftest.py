@@ -22079,10 +22079,23 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                                f"saying so: {exc}")
         giant = site([plain(n, posting()) for n in range(1, ats.SF_SITEMAP_MAX + 2)])
         rows, exc, err = go(giant)
-        if exc is None or rows is not None or f"lists {ats.SF_SITEMAP_MAX + 1} postings" not in str(exc) \
+        if exc is None or rows is not None or f"lists {ats.SF_SITEMAP_MAX + 1} posting addresses" not in str(exc) \
                 or sent != [SEARCH, MAP]:
             errors += fail(f"successfactors unify: a sitemap of {ats.SF_SITEMAP_MAX + 1} postings was not "
                            f"refused unasked, saying how many: {exc} ({len(sent)} asked)")
+        # THE CAP IS ON REQUESTS, NOT ROLES, and says so: a site listing each
+        # of 201 roles in two languages is 402 addresses - short of the
+        # owner's giants of about 500+ roles, and never called one (blind
+        # review 10, 2026-11-23)
+        two_languages = site([c for n in range(1, 202) for c in (
+            plain(2 * n, posting(f"Role {n}")),
+            plain(2 * n + 1, posting(f"Rôle {n}", lang="fr-CA", phrase="Détails de l'emploi"), locale="fr_CA"))])
+        rows, exc, err = go(two_languages)
+        if exc is None or rows is not None or sent != [SEARCH, MAP] or "giant" in str(exc) \
+                or "lists 402 posting addresses" not in str(exc) or "not on roles" not in str(exc) \
+                or f"reaches it at {ats.SF_SITEMAP_MAX // 2}" not in str(exc):
+            errors += fail(f"successfactors unify: a sitemap of 201 roles in two languages was not refused "
+                           f"as past the cap on requests, in those words: {exc}")
         rows, exc, err = go(site([plain(n, posting()) for n in range(1, ats.SF_SITEMAP_MAX + 1)]))
         if exc or len(rows or []) != ats.SF_SITEMAP_MAX or len(sent) != 2 + 2 * ats.SF_SITEMAP_MAX:
             errors += fail(f"successfactors unify: a sitemap of {ats.SF_SITEMAP_MAX} postings did not read "

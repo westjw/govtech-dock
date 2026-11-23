@@ -4467,7 +4467,11 @@ def fetch_successfactors(ref) -> list[dict]:
 # said, up to SF_SLACK postings; more is the board unreadable, never part
 # of it.
 
-SF_SITEMAP_MAX = 400     # postings one sitemap may list: the owner skips giants (~500+ roles)
+# Sitemap addresses one read asks, at two requests each: a cap on this
+# reader's requests, not on roles - a site listing each role in English and
+# in French reaches it at 200 roles (blind review 10, 2026-11-23), short of
+# the owner's giants of about 500+ roles.
+SF_SITEMAP_MAX = 400
 SF_SITEMAPS_MAX = 5      # sitemaps one sitemap index may name, followed one level only
 SF_RETRY_PAUSE = 2.0     # seconds before a posting's 5xx or network failure is asked once more
 # More of a sitemap than this answering closed in one read is not a day's
@@ -4660,8 +4664,8 @@ def successfactors_sitemap(origin: str) -> tuple[list[str], list[str]]:
     on this origin (another host's is not asked, and is counted); a sitemap
     index inside one is an error. NEVER A ZERO AND NEVER PART OF A BOARD: a
     sitemap robots.txt closes, one that is not there, one that lists no
-    posting and one listing more than SF_SITEMAP_MAX are errors, and say
-    why."""
+    posting and one listing more than SF_SITEMAP_MAX addresses (this
+    reader's cap on requests, not on roles) are errors, and say why."""
     first = origin + "/sitemap.xml"
     root, locs = _sf_sitemap_read(_sf_sitemap_page(first, origin), first)
     notes: list[str] = []
@@ -4710,9 +4714,10 @@ def successfactors_sitemap(origin: str) -> tuple[list[str], list[str]]:
         raise AtsError(f"{origin}'s sitemap lists no posting of this site ({len(locs)} addresses), "
                        f"so it is not read as a board with nothing open")
     if len(postings) > SF_SITEMAP_MAX:
-        raise AtsError(f"{origin}'s sitemap lists {len(postings)} postings, more than the "
-                       f"{SF_SITEMAP_MAX} this reader asks one by one at two requests each: a "
-                       f"giant is not read")
+        raise AtsError(f"{origin}'s sitemap lists {len(postings)} posting addresses, more than the "
+                       f"{SF_SITEMAP_MAX} this reader asks one by one at two requests each - a cap "
+                       f"on its requests, not on roles: a site listing each role in two languages "
+                       f"reaches it at {SF_SITEMAP_MAX // 2} - so it is not read")
     return postings, notes
 
 

@@ -3524,10 +3524,14 @@ review and the owner's word, through the wiring door.
   sitemap listing nothing, below). A
   `<sitemapindex>` is followed one level, to at most `SF_SITEMAPS_MAX` (5)
   sitemaps on its own origin; another host's is not asked. **Never a zero,
-  never a giant**: a sitemap robots.txt closes, one not there (404 or 410:
-  the board unreadable, never gone), one listing no posting and one listing
-  more than `SF_SITEMAP_MAX` (400; the owner skips giants of about 500+) are
-  errors that say why. **Each posting is asked once**
+  never past the cap**: a sitemap robots.txt closes, one not there (404 or
+  410: the board unreadable, never gone), one listing no posting and one
+  listing more than `SF_SITEMAP_MAX` (400) posting addresses are errors that
+  say why. The cap is on this reader's requests (two an address), not on
+  roles, and the error says so (blind review 10, 2026-11-23: it called a
+  bilingual site of 201 roles, 402 addresses, "a giant"): a site listing
+  each role in English and in French reaches it at 200 roles, short of the
+  owner's giants of about 500+ - whether such a site should be read is his. **Each posting is asked once**
   (`successfactors_posting`: its loc and the 302 to
   /job/<slug>/<N>-<locale>/), two requests a posting beside the /search/
   page and the sitemap - Octave 264 a night, Esri Canada 66, Aurigo 34, and
