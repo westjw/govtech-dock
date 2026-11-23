@@ -3754,13 +3754,16 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
             # page states (page_ref, page_addresses: both worklist fields),
             # which an edit set to the waiting row's own address, and the
             # company's own unruled row was waived, dropped off his queue, and
-            # the note planted that address for every door after
+            # the note planted that address for every door after. (What the
+            # worklist says may still HOLD: where it shows the two apart, or
+            # not shown one, the row is left alone as before.)
             w_refs = board_proposals.board_refs("paylocity", w.get("ref"), w.get("page_ref"))
             own = board_proposals.board_refs(kind, ref)
-            rl = board_proposals.paylocity_relation(own, w_refs)
-            if not (rl == "same" and board_proposals.paylocity_ids_agree(own, w_refs)):
-                by_page = board_proposals.paylocity_relation(refs, w_refs) == "same" \
-                    and board_proposals.paylocity_ids_agree(refs, w_refs)
+            rl = board_proposals.paylocity_relation(refs, w_refs)
+            by_all = rl == "same" and board_proposals.paylocity_ids_agree(refs, w_refs)
+            by_own = board_proposals.paylocity_relation(own, w_refs) == "same" \
+                and board_proposals.paylocity_ids_agree(own, w_refs)
+            if not (by_own and by_all):
                 return "waiting", (
                     f"{w['board']} is waiting in {w['store']} for it, and "
                     + (f"only the address the worklist says {show(kind, ref)}'s own page "
@@ -3768,9 +3771,9 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                        f"and nothing on file says it: the worklist's word takes no row off "
                        f"his queue; a board waiting on a person is his to settle - tell the "
                        f"owner (his ruling on that row settles it)"
-                       if by_page else
+                       if by_all else
                        (relation_words("kinds" if rl == "same" else rl, show(kind, ref),
-                                       w["board"], own, w_refs, row.get("page_said"))
+                                       w["board"], refs, w_refs, row.get("page_said"))
                         if rl != "apart" else f"it is another board than {show(kind, ref)}")
                        + "; a board waiting on a person is his to settle"))
         elif not waiting_keys(w, held_for.get("pairs_on_file")) & clearing:

@@ -43323,6 +43323,35 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 errors += fail(f"{label}: the write wired past the company's own unruled row, "
                                f"took it off his queue, or planted an address on file: "
                                f"{rec10.get('ats')} {rec10.get('ats_note')!r}")
+    # ...and what the worklist says still HOLDS: the row waiting at
+    # /List/9716/Pu-Co, its page_ref filed /All/<b01>, beside a find of the very
+    # /List/ board whose page the plan was told states /All/<b02> - an id
+    # agreeing on one kind and disagreeing on the other - is left alone in
+    # those words, though the board's own ref alone agrees with the row's
+    LIST_U10 = plist(9716, "Pu-Co")
+    with _WiringBox([co("pu-co", "Pu Co")], {f"paylocity/{LIST_U10}": (3, ["Pu Co"])},
+                    files={bp.FOUND.name: [frow("pu-co", "Pu Co", LIST_U10, filed=False,
+                                                identity_why="an older finder's row",
+                                                page_ref=pall(0xb01, "Pu-Co"))]},
+                    says={f"paylocity/{LIST_U10}": {"address": pall(0xb02, "Pu-Co")}}) as box:
+        code, text, wl10u, rows10u = box.plan(_wb_results({
+            "pu-co": names("pu-co", "paylocity", LIST_U10)}), name="worklist-pu10.json")
+        expect(rows10u, "pu-co", "HOLD", "their ids agree on one kind and disagree on the other")
+
+        def claim10u(by_id, _doc):
+            r_ = by_id["pu-co"]
+            r_["action"] = "WIRE"
+            r_.pop("doubts", None)
+            r_.pop("queue_row", None)
+            r_["waiting_seen"] = [["Boards we found", bp.board_key("paylocity", LIST_U10)]]
+        code, text, _ = box.look(box.edited(wl10u, "worklist-pu10-claim.json", claim10u))
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Pu Co ")), "") if "LEFT ALONE" in text else ""
+        if "WIRE 0 " not in text or "their ids agree on one kind and disagree on the other" \
+                not in line:
+            errors += fail(f"a row the worklist's own page answer shows apart from the "
+                           f"company's waiting row by an /All/ id was taken for it by its /List/ "
+                           f"id alone: {line[:400]!r} {text[-300:]!r}")
 
     # (9b) THE COMPANY'S OWN UNRULED ROW FOR ANOTHER BOARD, named in an edited
     # worklist's waiting_seen, is never waived - of any platform beside a board
