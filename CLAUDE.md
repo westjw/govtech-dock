@@ -3224,7 +3224,15 @@ round.
   `wire-found`, the agent's own label, never `owner`; force only for the
   25-record rule, after the count is printed): `ats`, an `ats_note` saying
   both checks, and `board_owner` where the board's stated name differs in
-  form. The held boards are one journalled APPEND to data/embedded_ats.json
+  form. The note quotes the page check 1 names and the name check 2 quotes;
+  a row whose quoted words would put into it a Workable pair
+  (`board_proposals.ACCOUNT_WORDS`) or a Paylocity address (`PAGE_WORDS`)
+  beyond the door's own part of the note is left alone
+  (`wire_found.note_apart`, `evidence`; review 10, 2026-11-23: an edited
+  check_2.name, or a page on their own host carrying those words, planted a
+  pair on a greenhouse record and an address on a Paylocity one, which every
+  door after read back, and the next plan, unedited, waived another
+  company's own unruled row by the pair). The held boards are one journalled APPEND to data/embedded_ats.json
   (its journal entry says "the board did not name the company, or something
   on file, or a reader, argues with it"). The readers' doubts are the
   plan's write, not apply's: one journalled addition to

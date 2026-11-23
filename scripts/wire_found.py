@@ -3585,6 +3585,23 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                                if isinstance(again, dict) else
                                "verify_boards.proven is not in this checkout")
                             + " - plan again")
+    # NOTHING BUT THE DOOR'S OWN WORDS IS READ BACK FROM THE NOTE (review 10,
+    # 2026-11-23). The note quotes the page check 1 names and the name check 2
+    # quotes, word for word, and every door after reads "asks for it as
+    # Workable account N; its postings open under ..." (workable_pairs) and
+    # "its own page states its address is ..." (stated_addresses) back out of
+    # any note: an edited check_2.name, or a page on their own host carrying
+    # those words, planted a pair on a greenhouse record - and the next plan,
+    # unedited, waived another company's own unruled row by it - or a second
+    # address on a Paylocity record. So the note is built as it will be
+    # written, and those words must be found in it exactly as the door's own
+    # part of it says them.
+    if note_apart(row, bool(row.get("account")) and bool(account_noted(
+            row, held_for.get("numbers"), held_for.get("pairs_on_file")))):
+        return "evidence", ("the page check 1 quotes, or the name check 2 quotes, would put "
+                            "into the record's note words every door after reads back as a "
+                            "Workable account's slug or a Paylocity board's address, which the "
+                            "door did not say - plan again")
     if not page_belt._same_site(c1["page"], c.get("website") or ""):
         return "moved", (f"the page that pointed at the board, {c1['page']}, is not on the "
                          f"website now on file ({c.get('website') or 'none'}) - plan again")
@@ -3918,6 +3935,20 @@ def note_for(row: dict, today: str, noted: bool = False) -> str:
             + (f"; its own page states its address is {stated}" if stated else "")
             + f"; the board names \"{c2['name']}\"; {many(row['postings'])} read"
             + (f" {read_on}" if read_on and read_on != today else ""))
+
+
+def note_apart(row: dict, noted: bool) -> bool:
+    """Would the row's own words - the page check 1 quotes, the name check 2
+    quotes - put into the record's note anything every door after reads back
+    as a pair or an address on file (board_proposals.ACCOUNT_WORDS,
+    PAGE_WORDS) beyond what the door's own part of the note says? The note
+    as it will be written, against the same note with those two quoted as
+    nothing (review 10, 2026-11-23)."""
+    bare = dict(row, check_1=dict(row["check_1"], page="their site"),
+                check_2=dict(row["check_2"], name="-"))
+    real, own = note_for(row, "0000-00-00", noted), note_for(bare, "0000-00-00", noted)
+    return any(rx.findall(real) != rx.findall(own)
+               for rx in (board_proposals.ACCOUNT_WORDS, board_proposals.PAGE_WORDS))
 
 
 def decide(doc: dict, companies: list, by: str, now: dt.datetime,

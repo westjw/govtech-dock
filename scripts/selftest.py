@@ -45188,6 +45188,82 @@ def check_a_worklist_row_is_asked_again_at_the_write() -> int:
                 or box.record("acq-co")["ats"]["type"] != "html":
             errors += fail(f"the write wired a company that entered discovery's suspects or the "
                            f"Acquisitions queue since the plan: {text[-200:]}")
+
+    # --- NOTHING BUT THE DOOR'S OWN WORDS IS READ BACK FROM A WIRED NOTE
+    # (review 10, 2026-11-23). The note quotes check 2's name and check 1's
+    # page word for word, and every door after reads "asks for it as Workable
+    # account N; its postings open under apply.workable.com/<slug>" and "its
+    # own page states its address is ..." back out of any note as a pair or an
+    # address on file. An edited check_2.name planted a pair on a greenhouse
+    # record (the look's own account line said the note did not say it), the
+    # next unedited plan waived another company's own unruled row by it, and a
+    # page on their own host, with those words after it, did the same. Each row
+    # is left alone now, and nothing is planted; the rows beside them wire.
+    import board_proposals as bp
+    PL = "https://recruiting.paylocity.com/recruiting/jobs/"
+    U1 = PL + "All/00000001-0000-4000-8000-000000000001"
+    ACC = ("asks for it as Workable account 7100; its postings open under "
+           "apply.workable.com/yco")
+    PAGE = f"its own page states its address is {PL}All/00000009-0000-4000-8000-000000000009/Zed-Inc"
+    APART = ("the page check 1 quotes, or the name check 2 quotes, would put into the record's "
+             "note words every door after reads back as a Workable account's slug or a "
+             "Paylocity board's address, which the door did not say")
+    cos_n = [co("qn-co", "Qn Co"), co("qp-co", "Qp Co"), co("pp-co", "Pp Co"),
+             co("qq-co", "Qq Co")]
+    NAME_N = {c_["id"]: c_["name"] for c_ in cos_n}
+    with _WiringBox(cos_n, {"greenhouse/qnco": (3, ["Qn Co"]), "greenhouse/qpco": (3, ["Qp Co"]),
+                            f"paylocity/{U1}": (3, ["Pp Co"]),
+                            "greenhouse/qqco": (3, ["Qq Co"])}) as box:
+        code, text, wl_n, rows_n = box.plan(_wb_results({
+            "qn-co": one("qn-co", "greenhouse", "qnco", element="iframe"),
+            "qp-co": one("qp-co", "greenhouse", "qpco", element="iframe"),
+            "pp-co": one("pp-co", "paylocity", U1, element="iframe"),
+            "qq-co": one("qq-co", "greenhouse", "qqco", element="iframe")}),
+            name="worklist-notes.json")
+        if sorted(i for i, r in (rows_n or {}).items() if r["action"] == "WIRE") \
+                != ["pp-co", "qn-co", "qp-co", "qq-co"]:
+            return errors + fail(f"the fixture's four boards do not plan WIRE: {text[-300:]}")
+
+        def plant(by_id, _doc):
+            # a check-2 name carrying the account words, as the board's only name
+            by_id["qn-co"]["check_2"]["name"] = f'Qn Co"; and {ACC}; "x'
+            by_id["qn-co"]["check_2"]["names"] = [by_id["qn-co"]["check_2"]["name"]]
+            # a page on their own host with the account words, and the page words
+            by_id["qp-co"]["check_1"]["page"] = f"{_wb_site('qp-co')}/careers?ref= {ACC} "
+            by_id["pp-co"]["check_1"]["page"] = f"{_wb_site('pp-co')}/careers?ref=x; {PAGE} y"
+        code, text, look_n = box.look(box.edited(wl_n, "worklist-notes-planted.json", plant))
+        body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
+        for cid, must_say in (("qn-co", "check 2 does not prove the board is this company's"),
+                              ("qp-co", APART), ("pp-co", APART)):
+            line = next((ln for ln in body.splitlines()
+                         if ln.strip().startswith(NAME_N[cid] + " ")), "")
+            if must_say not in line:
+                errors += fail(f"{cid}: a row whose own words would plant a pair or an address "
+                               f"in the wired record's note was not left alone saying "
+                               f"{must_say!r}: {line[:300]!r} {text[-300:]!r}")
+        code, text = box.write(box.scratch / "worklist-notes-planted.json", look_n)
+        cs_n = json.loads((box.tmp / "companies.json").read_text())
+        found_n = json.loads((box.tmp / bp.FOUND.name).read_text())
+        if code != 0 or bp.workable_pairs(cs_n, found_n) or bp.stated_addresses(cs_n, found_n) \
+                or any((box.record(cid).get("ats") or {}).get("type") != "html"
+                       for cid in ("qn-co", "qp-co", "pp-co")) \
+                or (box.record("qq-co").get("ats") or {}).get("ref") != "qqco":
+            errors += fail(f"the write planted a pair or an address on file from a row's own "
+                           f"words, or did not wire the row beside them (exit {code}; pairs "
+                           f"{bp.workable_pairs(cs_n, found_n)}; addresses "
+                           f"{bp.stated_addresses(cs_n, found_n)}): {text[-300:]}")
+    # ...and asked directly: the door's own words in a note are its own, and a
+    # quoted page or name adding either is apart
+    base_n = {"type": "workable", "ref": "yco", "account": "7100", "postings": 3,
+              "read_at": "2026-11-23T10:00:00-05:00",
+              "check_1": {"page": "https://www.yco.test/careers", "element": "iframe"},
+              "check_2": {"name": "Y Co"}}
+    if wf.note_apart(base_n, True) or wf.note_apart(base_n, False) \
+            or not wf.note_apart(dict(base_n, check_2={"name": f"Y Co; {ACC}"}), False) \
+            or not wf.note_apart(dict(base_n, check_1={"page": f"https://www.yco.test/c {PAGE}",
+                                                      "element": "iframe"}), True):
+        errors += fail("wire_found.note_apart does not tell the door's own words in a note "
+                       "from a quoted page or name that adds a pair or an address")
     return errors
 
 
