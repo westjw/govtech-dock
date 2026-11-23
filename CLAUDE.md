@@ -3069,7 +3069,10 @@ round.
   find's own page states (`page_ref` and `page_addresses` are both worklist
   fields: review 10, 2026-11-23, an edit setting both to the waiting row's
   own address waived the company's own unruled row, it dropped off his
-  queue, and the note planted that address for every door after). So the
+  queue, and the note planted that address for every door after). What the
+  worklist says may still HOLD the row - ids it shows apart, or not shown
+  one - and never clears it: the row passes only where an id agrees both by
+  the board's own ref and by every address the row gives it. So the
   plan's own page answer passes such a row and apply leaves the WIRE row
   alone ("only the address the worklist says ...'s own page states ... ties
   the two by an id, and nothing on file says it ... his ruling on that row
