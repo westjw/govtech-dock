@@ -1405,10 +1405,14 @@ def _successfactors(ref, out: dict) -> None:
     # role once in each (JENOPTIK's twins), and state nothing either. The
     # name is whatever the site's admin typed: SPX's says "our team" and Esri
     # Canada's its tenant id - stated as they are, refused by proven() by
-    # name. A Unify site, a page off the host and a ref that is not a CSB
-    # origin fail in the reader's own words (ats.successfactors_board), and
-    # state nothing.
-    origin, page, rows, n, total = ats.successfactors_board(ref)
+    # name. A page off the host and a ref that is not a CSB origin fail in
+    # the reader's own words (ats.successfactors_board), and state nothing;
+    # a Unify site is asked through its sitemap (_successfactors_unify).
+    try:
+        origin, page, rows, n, total = ats.successfactors_board(ref)
+    except ats.SuccessFactorsUnify as unify:
+        _successfactors_unify(unify.origin, out)
+        return
     out["hosts"] = {host_of(origin)}
     out["n"] = total if total is not None else len(rows)
     out["n_is_partial"] = total is None             # (no label: page 1's rows only)
@@ -1502,6 +1506,90 @@ def _successfactors(ref, out: dict) -> None:
     if len({strict(n_)[0] for n_ in out["names"]}) > 1:
         out["how"] += (f" - and they do not agree: the site calls itself "
                        f"\"{_clean(said[0])}\" and a posting names another employer")
+
+
+def _successfactors_unify(origin: str, out: dict) -> None:
+    # A UNIFY SITE NAMES ITSELF ON EACH POSTING'S OWN PAGE (2026-11-23): its
+    # <title> is '<role> Job Details | <site name>' - in French '<rôle>
+    # Détails de l'emploi | esricanada' - so the name is the text after the
+    # LAST ' | ' ('Aurigo Software Technologies', 'esricanada', 'Octave',
+    # measured on all three). Its pages carry no hiringOrganization and its
+    # /search/ page lists nothing, so the postings are the board's whole
+    # statement, and the list is its sitemap (ats.successfactors_sitemap,
+    # the reader's own read: a sitemap robots.txt closes, one with nothing
+    # on it and a giant are errors). THE WHOLE BOARD OR NOTHING, by the
+    # classic probe's rule: stated only when the sitemap lists
+    # SF_POSTINGS_ASKED or fewer, every one was asked, and at most
+    # ats.SF_SLACK of them answered as closed; a longer sitemap is asked
+    # about its first SF_POSTINGS_SAMPLED that answer, for the desk, and
+    # states nothing. A closed posting proves nothing either way and is
+    # passed over (40 asked at most); a page that shows no posting and is
+    # not the site saying so, and every other failure, is the board not read.
+    # Its English and French copies of one role are not two boards: the
+    # reader publishes one row a requisition, so the classic probe's
+    # language rule is not asked here. The name is whatever the admin typed:
+    # "esricanada" is stated as it is, and proven() refuses it by name.
+    postings, _notes = ats.successfactors_sitemap(origin)
+    out["hosts"] = {host_of(origin)}
+    out["n"], out["n_is_partial"] = len(postings), False
+    small = len(postings) <= SF_POSTINGS_ASKED
+    want = len(postings) if small else SF_POSTINGS_SAMPLED
+    names, unnamed, closed, answered, asked = [], [], [], 0, 0
+    for url in postings:
+        if answered >= want or asked >= SF_POSTINGS_ASKED:
+            break
+        asked += 1
+        try:
+            body = ats.successfactors_posting(url, origin)
+        except ats.AtsError as exc:
+            if ats.successfactors_closed(exc):
+                closed.append(url)
+                continue
+            raise
+        if not ats.successfactors_shown(body):
+            if not ats.successfactors_filled(body):
+                raise ats.AtsError(f"successfactors posting {url} answered a page that shows no "
+                                   f"posting and does not say it has closed (a block or error "
+                                   f"page), so the board is not stated")
+            closed.append(url)
+            continue
+        answered += 1
+        title = _inside(ats._cut(body), _TITLE)
+        t = _clean(html_lib.unescape(title[0])) if title else ""
+        site = _clean(t.rsplit(" | ", 1)[1]) if " | " in t else ""
+        if site:
+            names.append(site)
+        else:
+            unnamed.append(url)
+    total = len(postings)
+    if not answered:
+        out["how"] = (f"none of the {asked} postings asked from the successfactors sitemap answered "
+                      f"as a posting ({closed[0] if closed else ''!r} the first): each answered as "
+                      f"closed, and a closed posting names nobody, so the board states nothing")
+        return
+    if unnamed:
+        out["how"] = (f"successfactors posting {unnamed[0]} names no career site in its title "
+                      f"('<role> Job Details | <site>'), so the board's name is not confirmed by "
+                      f"every posting asked")
+        return
+    every_one = small and asked >= total
+    whole = every_one and len(closed) <= ats.SF_SLACK
+    gone = (f" ({len(closed)} more on it answered as closed and name nobody)" if closed else "")
+    if whole:
+        how = (f"successfactors sitemap and the titles of {answered} of its {total} postings, every "
+               f"one it lists asked{gone}, stated by the career site")
+    elif every_one:
+        how = (f"successfactors sitemap and the titles of {answered} of its {total} postings{gone}: "
+               f"more than {ats.SF_SLACK} closed is not a posting or two closing while it was "
+               f"asked, so these may not be every name the board states")
+    else:
+        how = (f"successfactors sitemap and the titles of {answered} of its {total} postings{gone}; "
+               f"the rest were not asked, so these may not be every name the board states")
+    if not _state(out, names, how, whole=whole):
+        out["how"] = "successfactors career site states no name a person could read"
+        return
+    if len({strict(n_)[0] for n_ in out["names"]}) > 1:
+        out["how"] += " - and they do not agree: its postings' titles name more than one site"
 
 
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
