@@ -22624,6 +22624,21 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or hop(72) not in then_asked:
                 errors += fail(f"successfactors unify: a read that failed was kept for the night, or the "
                                f"next step did not ask for itself (asked {len(then_asked)}): {jobs!r}")
+            # ...and so is a read refused for what it found (blind review 11,
+            # 2026-11-23: nothing held the night file to the closed share's
+            # refusal, and one line writing it first had the build step serve,
+            # asking nothing, the near-empty read refresh had refused): more
+            # than a quarter of the sitemap closed, and nothing open at all
+            for routes, why in ((site([plain(n, (404, None) if n <= 5 else posting(f"Role {n}"))
+                                       for n in range(1, 17)]), "5 of its 16 postings closed"),
+                                (site([plain(n, filled) for n in (71, 72, 73)]), "every posting closed")):
+                night_file.unlink(missing_ok=True)
+                res, first_asked, then_asked, jobs, err = nightly(routes)
+                if res.get("status") != "Unknown" or night_file.exists() or not isinstance(jobs, ats.AtsError) \
+                        or MAP not in then_asked or not any("/job/" in u for u in then_asked):
+                    errors += fail(f"successfactors unify: a read refused with {why} was kept for the night, "
+                                   f"or the build step did not ask for itself (asked {len(then_asked)}): "
+                                   f"{jobs!r}")
             for when, why in ((dt.timedelta(hours=7), "older than the run"),
                               (dt.timedelta(hours=-1), "dated ahead")):
                 night_file.write_text(json.dumps({SF: {"read_at": (ats._utcnow() - when).isoformat(),

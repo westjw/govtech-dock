@@ -5231,6 +5231,9 @@ def successfactors_unify(origin: str) -> list[dict]:
                     f"the same language (one number, one locale) and are published once")
     for line in said:
         print(f"  successfactors: {origin}: {line}", file=sys.stderr)
+    # (last, after every refusal above: a read refused for what it found -
+    # its closed share, nothing open - keeps nothing for the night, as one
+    # that raised keeps nothing; blind review 11 pinned it)
     _unify_night_write(origin, kept)
     return kept
 
