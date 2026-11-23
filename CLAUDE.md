@@ -2991,7 +2991,19 @@ round.
   review, 2026-11-22: a 503 was filed in his queue and held every later
   plan) - and one that cannot be read, or states its address in a form the
   door does not keep, is said as that, never "did not state", and the
-  latter's address is never carried. The probe and the door keep one grammar for a stated /All/
+  latter's address is never carried. A HOLD of the owner's with no /All/
+  id (a refusal, a reader's doubt, a door-filed row or a pending proposal at
+  a bare /List/ address) is asked the same way (`wire_found.holds_by_page`:
+  once per spelling, for a find consider compares, never for the hold's own
+  company's find) - one refused at the desk held every /All/ board found,
+  for every company, in all three doors, forever (eighth blind review,
+  2026-11-22). Its page's address shows which board the hold is, and the
+  hold is never dropped: a find is compared by it (the WIRE row names it in
+  `leans_on`, so apply compares by it too), a page that fails on the day
+  SKIPs the find, and where the page states nothing the row says so and
+  how the hold clears (every plan that finds such a board asks again; his
+  ruling on the row settles that board). Discovery and wire_embedded ask no
+  page: `held_board` holds such a board there as before. The probe and the door keep one grammar for a stated /All/
   address (a tenant's name may carry , ; ( ): the door refused what the
   probe stated, and the row said the page "did not state" it), a note's
   address ends at "; ", and a filed row's `page_ref` reaches its waiting

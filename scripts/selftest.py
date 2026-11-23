@@ -41880,6 +41880,104 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 or not filed_y3:
             errors += fail(f"a held row's page_ref the plan never recorded was filed for the "
                            f"owner: {filed_y3!r:.300}")
+
+    # (17) A HOLD AT A BARE /List/ ADDRESS IS ASKED FOR ITS PAGE'S /All/ ADDRESS,
+    # once, for the finds consider compares - the twin of a record's (12) - and
+    # the boards found are compared by it, in apply too for the rows that name
+    # it. Where the page states nothing the hold stands, saying how it clears;
+    # a page that fails on the day SKIPs the finds, asked again; two holds on
+    # one board are one request; and neither a hold with an /All/ id nor a
+    # company's own hold beside its own find is asked (eighth blind review,
+    # 2026-11-22: a door-filed
+    # row refused at the desk at a bare /List/ address held every /All/ board
+    # found, for every company, in all three doors, for as long as the refusal
+    # stood, and nothing asked the held board's own page)
+    LIST_H, ALL_PZ, LIST_OWN = plist(2165), pall(0x9d0), plist(2167)
+    G_ = {k: pall(0x9c0 + i, f"{k.upper()}-Co") for i, k in enumerate(("g1", "g2", "g3"))}
+    LIST_G4, ALL_G5 = plist(2166, "G4-Co"), pall(0x9d1, "G5-Co")
+    for label, says, want in (
+            ("states nothing", {}, "HOLD"),
+            ("states another board's id",
+             {f"paylocity/{LIST_H}": {"address": pall(0x9cf, "Rh-Co")}}, "WIRE"),
+            ("fails on the day",
+             {f"paylocity/{LIST_H}": {"failed": "unreadable", "transient": True,
+                                      "how": "HTTP 503 for the board's page"}}, "SKIP")):
+        with _WiringBox([co("rh-co", "Rh Co"), co("rh2-co", "Rh2 Co"), co("pz-co", "Pz Co"),
+                         co("g4", "G4 Co")]
+                        + [co(k, f"{k.upper()} Co") for k in G_],
+                        {f"paylocity/{LIST_G4}": (3, ["G4 Co"]),
+                         **{f"paylocity/{v}": (3, [f"{k.upper()} Co"]) for k, v in G_.items()}},
+                        files={bp.FOUND.name: [frow("rh-co", "Rh Co", LIST_H)],
+                               bp.RULED.name: {"rh-co": {"accept": False, "by": "owner",
+                                                         "on": "2026-11-21",
+                                                         "why": "not their board"}},
+                               wf.DOUBTS: doubt("rh2-co", "Rh2 Co", LIST_H),
+                               bp.PROPOSALS: proposal("pz-co", "Pz Co", ALL_PZ,
+                                                      status="pending")},
+                        says=says) as box:
+            code, text, wl_h, rows_h = box.plan(_wb_results({
+                **{k: names(k, "paylocity", v) for k, v in G_.items()},
+                "g4": names("g4", "paylocity", LIST_G4)}), name=f"worklist-h{len(label)}.json")
+            got = {k: ((rows_h or {}).get(k) or {}).get("action") for k in G_}
+            note = (f"NOTE: asked 1 board the owner holds for the /jobs/All/ address its own page "
+                    f"states; {1 if want == 'WIRE' else 0} stated one")
+            if set(got.values()) != {want} or box.probed.count(f"paylocity/{LIST_H}") != 1 \
+                    or f"paylocity/{ALL_PZ}" in box.probed or note not in text:
+                errors += fail(f"a hold at a bare /List/ address whose page {label}: the /All/ "
+                               f"finds planned {got}, wanted {want}; probed {box.probed}; "
+                               f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+            expect(rows_h, "g4", "HOLD", "is waiting in Agent proposals for Pz Co",
+                   "cannot be shown")
+            if want == "HOLD":
+                for k in G_:
+                    expect(rows_h, k, "HOLD", "was refused for Rh Co in Boards we found",
+                           "is the board of a reader's doubt that stands about Rh2 Co",
+                           "the held board's own page, asked by this plan, did not state its "
+                           "/jobs/All/ address, so nothing on file compares the two: every plan "
+                           "that finds such a board asks that page again, and until it states "
+                           "its address his ruling on this row settles this board")
+            elif want == "SKIP":
+                for k in G_:
+                    expect(rows_h, k, "SKIP", "the owner holds", "failed on the day (HTTP 503 "
+                                                                 "for the board's page)",
+                           kind="unreadable")
+                code, text, _ = box.look(wl_h)
+                if "HOLD 1 " not in text:       # g4 alone
+                    errors += fail(f"finds held only by a held board's page that failed on the "
+                                   f"day would be filed: {text[-300:]!r}")
+            else:
+                SP_H = wf.spelling("paylocity", LIST_H)
+                if any(((rows_h or {}).get(k) or {}).get("leans_on")
+                       != {SP_H: pall(0x9cf, "Rh-Co")} for k in G_):
+                    errors += fail(f"a WIRE row compared with a hold by what its page stated does "
+                                   f"not name it: {[rows_h[k].get('leans_on') for k in G_]}")
+                code, text, _ = box.look(wl_h)
+                if "WIRE 3 " not in text or text.count(
+                        f"leans on what the plan was told: the page of {LIST_H[8:]} states its "
+                        f"address is {pall(0x9cf, 'Rh-Co')}") != 3:
+                    errors += fail(f"apply did not compare the finds with the hold by what its "
+                                   f"page stated, saying so: {text[-600:]!r}")
+                code, text, _ = box.look(box.edited(
+                    wl_h, "worklist-h-unleaned.json",
+                    lambda rows_, _doc: rows_["g1"].pop("leans_on", None)))
+                line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                             if ln.strip().startswith("G1 Co ")), "") \
+                    if "LEFT ALONE" in text else ""
+                if f"paylocity/{LIST_H} " not in line or "plan again" not in line:
+                    errors += fail(f"apply compared a row that does not say it leaned on a held "
+                                   f"board's page by that page's address: {line[:300]!r}")
+    # ...and a company's own hold is not asked for its own find: its own holds
+    # are said by company (consider), and its page would settle nothing more
+    with _WiringBox([co("g5", "G5 Co")], {f"paylocity/{ALL_G5}": (3, ["G5 Co"])},
+                    files={bp.PROPOSALS: proposal("g5", "G5 Co", LIST_OWN,
+                                                  status="pending")}) as box:
+        code, text, _wl, rows_g5 = box.plan(_wb_results({
+            "g5": names("g5", "paylocity", ALL_G5)}), name="worklist-g5.json")
+        expect(rows_g5, "g5", "HOLD", f"paylocity/{LIST_OWN} is already waiting in Agent "
+                                      f"proposals for this company")
+        if f"paylocity/{LIST_OWN}" in box.probed or "NOTE: asked" in text:
+            errors += fail(f"a company's own hold was asked for its page for the company's own "
+                           f"find: probed {box.probed}")
     return errors
 
 
