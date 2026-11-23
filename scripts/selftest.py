@@ -39372,7 +39372,10 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
         def flip_slug(by_id, _doc):
             r = by_id["brand-slug-co"]
             r["action"], r["waiting_seen"] = "WIRE", []
-            r["check_2"]["ok"] = True
+            # check 2 made to pass for Brand Slug Co as well: apply asks the
+            # judge again (review 10), and this asks about the holder after it
+            r["check_2"].update(ok=True, name="Brand Slug Co", names=["Brand Slug Co"],
+                                stated=True)
             r.pop("doubts", None)
             r.pop("queue_row", None)
         code, text, _ = box.look(box.edited(wl, "worklist-slug.json", flip_slug))
@@ -44466,16 +44469,16 @@ def check_a_workable_account_is_held_under_either_key() -> int:
                                f"other Workable key was not left alone saying {must_say!r}: "
                                f"{text[-300:]}")
         # a worklist whose plan followed the number holds it under the slug: an
-        # edited one wiring the slug alone is left alone by the slug's key
+        # edited one wiring the slug alone is left alone by the slug's key -
+        # "since the plan, ...", never by a name the account goes by (its check
+        # 2 is the plan's own, which apply asks the judge again: review 10)
         def slug_only(by_id, doc):
-            r = by_id["archi-inc"]
-            r["check_2"]["names"] = ["Archi Group"]       # a name that would not meet it
-            r["check_2"]["name"] = "Archi Group"
             doc["workable_numbers"] = {"710855": "archico"}
         code, text, _ = box.look(box.edited(wl0, "worklist-resolved.json", slug_only))
         line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
                      if ln.strip().startswith("Archi Co Inc ")), "")
-        if "workable/710855 is the board of a reader's doubt that stands" not in line:
+        if "since the plan, workable/710855 is the board of a reader's doubt that stands" \
+                not in line or "which was not followed to a slug" in line:
             errors += fail(f"a held Workable number the worklist's plan followed did not hold the "
                            f"slug it was followed to: {text[-300:]}")
         # the rule, asked directly
@@ -45349,12 +45352,14 @@ def check_a_found_board_is_not_wired_past_what_moved() -> int:
                            "are not all four left alone")
 
         # --- the worklist the rest is driven from ----------------------------
-        # One row carries an address in the name the board "states" - what a
-        # plan that failed to redact, or a hand, would leave in the file.
+        # One row carries an address in the page check 1 quotes, which the
+        # note says - what a plan that failed to redact, or a hand, would leave
+        # in the file. (It was the name the board "states", which is now asked
+        # of the judge again at the write and is not this company's name: a
+        # row whose names do not pass is left alone, review 10, 2026-11-23.)
         def inject(by_id, doc):
-            c2 = by_id["edit-address-co"]["check_2"]
-            c2["name"] = f"Edit Address Co ({someone})"
-            c2["names"] = [c2["name"]]
+            c1 = by_id["edit-address-co"]["check_1"]
+            c1["page"] = f"{site('edit-address-co')}/careers?contact={someone}"
         main = box.edited(wl, "worklist-main.json", inject)
         code, text, code_0 = box.look(main)
         if code != 0 or "would wire 27, would hold 2" not in text or not code_0:
@@ -45439,12 +45444,71 @@ def check_a_found_board_is_not_wired_past_what_moved() -> int:
             errors += fail(f"records that moved under the plan were wired anyway: {still}")
         if any(box.record(cid)["ats"]["type"] == "html" for cid in edits + edits_wd + steady):
             errors += fail("a board nothing argued with was not wired")
-        owner = str(box.record("edit-address-co").get("board_owner") or "")
+        note = str(box.record("edit-address-co").get("ats_note") or "")
         leaked = [n for n, raw in on_disk().items() if someone.encode() in raw]
-        if leaked or "[address removed]" not in owner:
+        if leaked or "[address removed]" not in note:
             errors += fail(f"an address in the worklist reached {leaked or 'no file'} "
-                           f"(board_owner {owner!r}): a worklist is redacted when it is "
+                           f"(note {note!r}): a worklist is redacted when it is "
                            f"read, whoever wrote it")
+
+    # --- CHECK 2 IS ASKED AGAIN OF THE RECORD AS IT READS NOW (review 10,
+    # 2026-11-23). X Co's greenhouse/xco board names "X Co" and is planned WIRE
+    # for X Co. A worklist that moves the row to T Co - its id, its `judged`,
+    # its check 1 page and `was` set to T Co's, its `name` left "X Co" - passed
+    # every question apply asked, and T Co was wired to a board that, by the
+    # row's own check 2, names X Co: the look said "WIRE X Co ...", T Co was
+    # never named, and T Co's note and board_owner said "X Co". Now the strict
+    # judge is asked again with the names the row says the board states, the
+    # name quoted must be one of them, and the look's WIRE line names the
+    # record it writes.
+    with _WiringBox([co("x-co", "X Co"), co("t-co", "T Co"), co("w-co", "W Co")],
+                    {"greenhouse/xco": (3, ["X Co"]), "greenhouse/wco": (3, ["W Co"])}) as box:
+        code, text, wl_e, rows_e = box.plan(_wb_results({
+            "x-co": one("x-co", "greenhouse", "xco", element="iframe"),
+            "w-co": one("w-co", "greenhouse", "wco", element="iframe")}),
+            name="worklist-e.json")
+        if sorted(i for i, r in (rows_e or {}).items() if r["action"] == "WIRE") \
+                != ["w-co", "x-co"]:
+            return errors + fail(f"the fixture's X Co and W Co do not plan WIRE: {text[-300:]}")
+
+        def move_row(by_id, _doc):
+            r_ = by_id.pop("x-co")
+            r_["id"] = "t-co"
+            r_["judged"] = {"name": "T Co", "also_known_as": [], "website": site("t-co")}
+            r_["check_1"]["page"] = site("t-co") + "/careers"
+            r_["was"] = {"type": "html", "ref": site("t-co") + "/careers"}
+            # ...and W Co's row under another name, its check 2 naming a name
+            # it does not say the board states
+            by_id["w-co"]["name"] = "Somebody Else Inc"
+        code, text, look_e = box.look(box.edited(wl_e, "worklist-e-moved.json", move_row))
+        body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
+        line = next((ln for ln in body.splitlines() if ln.strip().startswith("X Co ")), "")
+        wired_e = text[:text.find("LEFT ALONE")] if body else text
+        if "check 2 does not prove the board is this company's as the record reads now: " \
+                "the board names \"X Co\", and this company is on file as \"T Co\"" \
+                not in line:
+            errors += fail(f"a row moved to another company was not left alone in the judge's "
+                           f"words: {line[:300]!r} {text[-300:]!r}")
+        if "  WIRE  W Co " not in wired_e or "Somebody Else" in wired_e:
+            errors += fail(f"the look's WIRE line does not name the record it writes, or names "
+                           f"the worklist's word for it: {wired_e[-400:]!r}")
+
+        def name_out(by_id, _doc):
+            by_id["w-co"]["check_2"]["name"] = "W Co Holdings"
+        code, text, _ = box.look(box.edited(wl_e, "worklist-e-name.json", name_out))
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("W Co ")), "") if "LEFT ALONE" in text else ""
+        if 'the row says the board names "W Co Holdings", which is not a name it says the ' \
+                'board states' not in line:
+            errors += fail(f"a row whose check 2 quotes a name it does not say the board states "
+                           f"was not left alone: {line[:300]!r} {text[-300:]!r}")
+        box.write(box.scratch / "worklist-e-moved.json", look_e)
+        if (box.record("t-co").get("ats") or {}).get("type") != "html" \
+                or box.record("t-co").get("board_owner") \
+                or (box.record("w-co").get("ats") or {}).get("ref") != "wco":
+            errors += fail(f"T Co was wired to a board that, by the row's own check 2, names X "
+                           f"Co, or W Co's own board was not wired: {box.record('t-co')} "
+                           f"{box.record('w-co').get('ats')}")
     return errors
 
 

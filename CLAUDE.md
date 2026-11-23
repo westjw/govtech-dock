@@ -3154,7 +3154,14 @@ round.
   covers the file's bytes, the author, and what the look would do, including
   what each record to be wired reads as (name, other names, website). Left
   alone, by name: a row that no longer carries both checks, what they were
-  judged against, a dated read with postings and a size under the line; a
+  judged against, a dated read with postings and a size under the line;
+  check 2 itself, asked again of the record as it reads now
+  (`verify_boards.proven`, no request, with the names the row says the board
+  states), the name the note and `board_owner` quote one of those names
+  (`evidence`; review 10, 2026-11-23: a row moved to another company - its
+  id, `judged`, check 1 page and `was` set to T Co's - wired a board whose
+  own check 2 names X Co, and the look said "WIRE X Co"; the look now prints
+  each WIRE row under the name of the record it writes); a
   read older than 24 hours (`board_proposals.MAX_AGE_HOURS`), undated or
   dated ahead; a company or board listed twice (under either key); a
   company its own worklist's readers doubted (`doubted`, however the row

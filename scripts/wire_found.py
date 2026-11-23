@@ -2871,10 +2871,14 @@ def unfiled(rows: list, doubted, why_not: dict | None = None,
     return out
 
 
-def _line(row: dict) -> str:
-    """One row of the plan as a person reads it."""
+def _line(row: dict, name: str | None = None) -> str:
+    """One row of the plan as a person reads it - under `name` where given:
+    the look prints a WIRE row under the name of the record it writes
+    (review 10, 2026-11-23: a row moved to another company printed the
+    worklist's name, and the company wired was never named)."""
     what = show(row["type"], row["ref"]) if row.get("type") else ""
-    head = f"  {row['action']:<5} {str(row['name'])[:28]:<30} {what[:44]:<46}"
+    head = (f"  {row['action']:<5} {str(row['name'] if name is None else name)[:28]:<30} "
+            f"{what[:44]:<46}")
     if row["action"] == "WIRE":
         extra, note = row.get("also_seen") or {}, ""
         if extra.get("off_site"):
@@ -3558,6 +3562,29 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                          + f', and the record now reads "{c.get("name")}"'
                          + (f' (also {", ".join(_akas(c))})' if _akas(c) else "")
                          + " - plan again")
+    # CHECK 2 IS ASKED AGAIN, OF THE RECORD AS IT READS NOW (review 10,
+    # 2026-11-23). The row's `judged` was held to the record, and the board's
+    # names to neither: a row moved to another company - its id, its `judged`
+    # and its check 1 page set to T Co's - wired X Co's board to T Co though
+    # the row's own check 2 said the board names "X Co", and the note and
+    # board_owner said "X Co" on T Co's record. The strict judge (no request)
+    # is asked again with the names the row says the board states, and the
+    # name the note and board_owner quote must be one of them.
+    said_names = c2["names"] if isinstance(c2["names"], list) else []
+    if not said_names or c2.get("name") not in said_names:
+        return "evidence", (f'the row says the board names "{str(c2.get("name"))[:80]}", which '
+                            f'is not a name it says the board states: check 2 is not shown '
+                            f'for this row - plan again')
+    judge = getattr(verify_boards, "proven", None)
+    again = judge(c, {"names": [str(x) for x in said_names], "stated": True,
+                      "how": c2.get("how")}) if callable(judge) else None
+    if not (isinstance(again, dict) and again.get("ok") is True):
+        return "evidence", ("check 2 does not prove the board is this company's as the record "
+                            "reads now: "
+                            + (str(again.get("why") or "the strict judge said no")[:240]
+                               if isinstance(again, dict) else
+                               "verify_boards.proven is not in this checkout")
+                            + " - plan again")
     if not page_belt._same_site(c1["page"], c.get("website") or ""):
         return "moved", (f"the page that pointed at the board, {c1['page']}, is not on the "
                          f"website now on file ({c.get('website') or 'none'}) - plan again")
@@ -4083,7 +4110,7 @@ def report(doc: dict, d: dict) -> None:
     print(f"WIRE {len(d['wire'])} - their own site points to the board, and the "
           f"board names them:")
     for r in d["wire"]:
-        print(_line(r))
+        print(_line(r, name=d["on_file"][r["id"]][0]))
         for whose, address in d["leans"].get(r["id"]) or []:
             print(f"        leans on what the plan was told: {whose} states its address is "
                   f"{address}")
