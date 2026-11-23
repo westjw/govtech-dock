@@ -20519,9 +20519,19 @@ def check_successfactors_reads_its_career_site() -> int:
                 errors += fail(f"successfactors: a hop to {to[len(SF):]} was asked ({asked_sf or sent}): "
                                f"{exc2}")
         # ...nor one that plain_address lets through and only the reader's own
-        # path rule refuses - escapes two deep, '..;', an empty segment - from
-        # the first page, from page N (keeping its startrow) and from a posting
-        # (eighth blind review, 2026-11-22: no hop target reached that rule)
+        # path rule refuses - escapes two deep, an empty segment - from the
+        # first page, from page N (keeping its startrow) and from a posting
+        # (eighth blind review, 2026-11-22: no hop target reached that rule).
+        # '..;' is refused before it, by plain_address (robots.climbs reads it
+        # as the dot segment a Java server serves it as: blind review of the
+        # eighth review's fixes), so the reader's own rule for it is pinned
+        # directly - it still guards the posting links a list carries
+        for path in ("/search/..;/services/x", "/job/..;/services/1/", "/job/.;x/services/1/",
+                     "/job/a/..;jsessionid=1/1/"):
+            if ats._sf_plain_path(path) or ats._sf_posting_url(SF + path, SF) is not None:
+                errors += fail(f"successfactors: its own path rule takes {path!r} as plain")
+        if not ats._sf_plain_path("/job/Austin-Account-Executive-TX-78701/1100100100/"):
+            errors += fail("successfactors: its own path rule refuses a plain posting address")
         for odd in ("/search/%252e%252e/services/recruiting/v1/jobs", "/search/..;/services/x",
                     "/search//services/x"):
             for where, routes, call in (
@@ -20533,7 +20543,8 @@ def check_successfactors_reads_its_career_site() -> int:
                                                                 first=26)},
                      lambda: ats.fetch_successfactors(SF))):
                 rows, exc = go(routes, call)
-                if exc is None or "does not say plainly" not in str(exc) \
+                refused_by = "is not a plain address" if ";" in odd else "does not say plainly"
+                if exc is None or refused_by not in str(exc) \
                         or any("services" in u for u in sent + robots_asked):
                     errors += fail(f"successfactors: a hop from {where} to {odd!r} was followed "
                                    f"({[u[len(SF):] for u in sent]}): {len(rows or [])} rows, {exc}")
