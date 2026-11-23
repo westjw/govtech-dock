@@ -1510,6 +1510,31 @@ def _successfactors(ref, out: dict) -> None:
                        f"\"{_clean(said[0])}\" and a posting names another employer")
 
 
+def _unify_languages_unpaired(copies: list, shown: list) -> list:
+    """The languages of the rows a Unify read would publish, where they are
+    more than one and do not pair; else []. `shown` is (language,
+    requisition, address) of every copy asked that showed a posting, and
+    `copies` (language, requisition) of every copy asked, closed ones too.
+    The reader publishes one row a requisition, its 'en' copy where there is
+    one (ats.successfactors_unify): those rows are one role each when they
+    are written in one language, or when there is a language A such that
+    every row in another is of a requisition a copy in A was asked of (Esri
+    Canada's: each French copy the requisition of an English one, open or
+    closed). A row with no requisition pairs with nothing."""
+    groups: dict = {}
+    for lang, req, url in shown:
+        groups.setdefault(("n", req[0]) if req else ("at", url), []).append((lang, req))
+    rows = [next((c for c in g if c[0] == "en"), g[0]) for g in groups.values()]
+    spoken = sorted({lang for lang, _req in rows})
+    if len(spoken) <= 1:
+        return []
+    for a in spoken:
+        numbers = {req[0] for lang, req in copies if lang == a and req}
+        if all(req and req[0] in numbers for lang, req in rows if lang != a):
+            return []
+    return spoken
+
+
 def _successfactors_unify(origin: str, out: dict) -> None:
     # A UNIFY SITE NAMES ITSELF ON EACH POSTING'S OWN PAGE (2026-11-23): its
     # <title> is '<role> Job Details | <site name>' - in French '<rôle>
@@ -1519,35 +1544,50 @@ def _successfactors_unify(origin: str, out: dict) -> None:
     # /search/ page lists nothing, so the postings are the board's whole
     # statement, and the list is its sitemap (ats.successfactors_sitemap,
     # the reader's own read: a sitemap robots.txt closes, one with nothing
-    # on it and a giant are errors). THE WHOLE BOARD OR NOTHING, by the
-    # classic probe's rule: stated only when the sitemap lists
-    # SF_POSTINGS_ASKED or fewer, every one was asked, and at most
-    # ats.SF_SLACK of them answered as closed; a longer sitemap is asked
+    # on it and one past the reader's cap are errors). THE WHOLE BOARD OR
+    # NOTHING, by the classic probe's rule: stated only when the sitemap
+    # lists SF_POSTINGS_ASKED or fewer, every one was asked, at most
+    # ats.SF_SLACK of them answered as closed, and the read passed nothing
+    # it lists over (below); a longer sitemap is asked
     # about its first SF_POSTINGS_SAMPLED that answer, for the desk, and
     # states nothing. A closed posting proves nothing either way and is
     # passed over (40 asked at most); a page that shows no posting and is
     # not the site saying so, and every other failure, is the board not read.
-    # Its English and French copies of one role are not two boards: the
-    # reader publishes one row a requisition, so the classic probe's
-    # language rule is not asked here. The name is whatever the admin typed:
-    # "esricanada" is stated as it is, and proven() refuses it by name.
-    postings, _notes = ats.successfactors_sitemap(origin)
+    # COPIES IN MORE THAN ONE LANGUAGE are the classic probe's language rule,
+    # asked of what the reader would publish: it publishes one row a
+    # requisition (ats.successfactors_unify_requisition), so a board whose
+    # copies in every other language are requisitions a copy in one language
+    # was asked of is one role a row - Esri Canada's 16 en_US/fr_CA pairs -
+    # and any other is a board that may list a role once in each, its copies
+    # under two numbers or with none to pair them by, and is not stated
+    # whole (blind review 10, 2026-11-23: the rule was not asked here, and
+    # such a board was stated whole and proven with each role published
+    # twice). The name is whatever the admin typed: "esricanada" is stated
+    # as it is, and proven() refuses it by name.
+    postings, passed = ats.successfactors_sitemap(origin)
     out["hosts"] = {host_of(origin)}
     out["n"], out["n_is_partial"] = len(postings), False
     small = len(postings) <= SF_POSTINGS_ASKED
     want = len(postings) if small else SF_POSTINGS_SAMPLED
     names, unnamed, closed, answered, asked = [], [], [], 0, 0
+    copies, shown = [], []          # (language, requisition) of each copy asked; of each open one
     for url in postings:
         if answered >= want or asked >= SF_POSTINGS_ASKED:
             break
         asked += 1
+        landed: list = []
         try:
-            body = ats.successfactors_posting(url, origin)
+            body = ats.successfactors_posting(url, origin, landed)
         except ats.AtsError as exc:
             if ats.successfactors_closed(exc):
                 closed.append(url)
+                hop = landed[-1] if landed else ""
+                copies.append((ats.successfactors_unify_language("", hop, origin), ats._sf_requisition(hop)))
                 continue
             raise
+        where = landed[-1] if landed else url
+        req = ats.successfactors_unify_requisition(body, where, origin)
+        copies.append((ats.successfactors_unify_language(body, where, origin), req))
         if not ats.successfactors_shown(body):
             if not ats.successfactors_filled(body):
                 raise ats.AtsError(f"successfactors posting {url} answered a page that shows no "
@@ -1556,13 +1596,20 @@ def _successfactors_unify(origin: str, out: dict) -> None:
             closed.append(url)
             continue
         answered += 1
-        title = _inside(ats._cut(body), _TITLE)
+        shown.append((copies[-1][0], req, url))
+        cut = ats._cut(body)
+        title = _inside(cut, _TITLE)
         t = _clean(html_lib.unescape(title[0])) if title else ""
         site = _clean(t.rsplit(" | ", 1)[1]) if " | " in t else ""
         if site:
             names.append(site)
         else:
             unnamed.append(url)
+        # A POSTING NAMING ITS EMPLOYER names it, as on a classic site: the
+        # three Unify sites measured carry no hiringOrganization, and where a
+        # page does, another employer is a second name, never passed over
+        # (blind review 10, 2026-11-23: it was never read here)
+        names.extend(o for o in _itemprops(cut, "hiringOrganization") if o)
     total = len(postings)
     if not answered:
         out["how"] = (f"none of the {asked} postings asked from the successfactors sitemap answered "
@@ -1575,11 +1622,30 @@ def _successfactors_unify(origin: str, out: dict) -> None:
                       f"every posting asked")
         return
     every_one = small and asked >= total
-    whole = every_one and len(closed) <= ats.SF_SLACK
+    # WHAT THE SITEMAP LISTS AND THE READER PASSES OVER - a sitemap its index
+    # names on another origin, an address that is not a /job/ posting of this
+    # site (another brand's /<Brand>/job/, www., http) - is part of the board
+    # nobody asked, so nothing is stated whole while there is any (blind
+    # review 10, 2026-11-23: an index's sitemap on http, and a second brand's
+    # postings, were passed over and the rest stated "every one it lists
+    # asked")
+    spoken = _unify_languages_unpaired(copies, shown)
+    whole = every_one and len(closed) <= ats.SF_SLACK and not passed and not spoken
     gone = (f" ({len(closed)} more on it answered as closed and name nobody)" if closed else "")
     if whole:
         how = (f"successfactors sitemap and the titles of {answered} of its {total} postings, every "
                f"one it lists asked{gone}, stated by the career site")
+    elif every_one and passed:
+        how = (f"successfactors sitemap and the titles of {answered} of the {total} postings this "
+               f"reader asks{gone}; the sitemap lists more it does not ask ({'; '.join(passed)}), so "
+               f"these may not be every name the board states")
+    elif every_one and spoken:
+        # (the names are kept for the desk; a board that may list one role
+        # once per language is not stated whole, so proven() refuses it)
+        how = (f"successfactors postings asked are written in more than one language "
+               f"({', '.join(l_ or 'none said' for l_ in spoken)}), and not every copy in another "
+               f"language is a requisition a copy in one of them was asked of: a role may be listed "
+               f"once in each, so the board's names are not stated for it whole")
     elif every_one:
         how = (f"successfactors sitemap and the titles of {answered} of its {total} postings{gone}: "
                f"more than {ats.SF_SLACK} closed is not a posting or two closing while it was "
@@ -1591,7 +1657,8 @@ def _successfactors_unify(origin: str, out: dict) -> None:
         out["how"] = "successfactors career site states no name a person could read"
         return
     if len({strict(n_)[0] for n_ in out["names"]}) > 1:
-        out["how"] += " - and they do not agree: its postings' titles name more than one site"
+        out["how"] += (" - and they do not agree: its postings name more than one (in their titles, or "
+                       "as their hiringOrganization)")
 
 
 _PROBES = {"breezy": _breezy, "recruitee": _recruitee,

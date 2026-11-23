@@ -1136,20 +1136,38 @@ _PARAM_SEP = r"(?:[?&;]|%26)"         # ('&amp;', '&#38;', '&#x26;' all end in '
 # key's separator. An apostrophe before a space ("O' Brien") or at a value's
 # start (last_name='Brien) is left: it reads the same as a quote that ends
 # the attribute the address sits in.)
+#
+# A CHARACTER REFERENCE IS THE CHARACTER IT STANDS FOR (blind review 10,
+# 2026-11-23): a letter written as one ('Jos&#233;', 'D&#039;&Aacute;vila',
+# PHP's htmlentities) and a mark typed for an apostrophe ('O&acute;Brien',
+# '&#8242;', '&#xFF07;') go with the name as their raw characters do, a
+# reference escaped once or twice more ('&amp;amp;#39;') too, and inside a
+# percent-encoded address its percent-encoded form ('O%26%2339%3BBrien').
+# Only a reference to what ends a value raw ends it: '&' (the next key's
+# separator, '&amp;', '&#38;', '&#x26;'), '#', a quote, '<', '>' and a line
+# break - and an apostrophe's own spellings go only between letters, as
+# above (in a percent-encoded address a quote can end no attribute, so
+# there they go anywhere).
+_REF = (r"&(?:amp;){0,2}(?!(?:amp|num|quot|lt|gt|apos|newline|#0*(?:38|35|34|39|60|62|13|10)"
+        r"|#x0*(?:26|23|22|27|3c|3e|d|a))(?![0-9a-z]))"
+        r"(?:#[0-9]{1,7};?|#x[0-9a-f]{1,6};?|[a-z][a-z0-9]{1,31};)")
+_ENC_REF = (r"%26(?:amp%3b){0,2}(?!(?:amp|num|quot|lt|gt|newline|%23(?:0*(?:38|35|34|60|62|13|10)"
+            r"|x0*(?:26|23|22|3c|3e|d|a)))(?![0-9a-z]))"
+            r"(?:%23(?:[0-9]{1,7}|x[0-9a-f]{1,6})(?:%3b|;)?|[a-z][a-z0-9]{1,31}(?:%3b|;))")
 _APOSTROPHE = (r"(?:(?<=[^\W\d_])|(?<=%[0-9A-Fa-f]{2}))"
-               r"(?:'|&(?:amp;)?(?:#(?:0*(?:39|700|8216|8217)|x0*(?:27|2bc|2018|2019));?"
+               r"(?:'|&(?:amp;){0,2}(?:#(?:0*(?:39|700|8216|8217)|x0*(?:27|2bc|2018|2019));?"
                r"|apos;|[lr]squo;|rsquor;|(?:Open|Close)CurlyQuote;))"
-               r"(?=[^\W\d_]|%[0-9A-Fa-f]{2})")
-_PARAM_VALUE = rf"""(?:[^&#"'<>\r\n]|{_APOSTROPHE}|&(?:nbsp|#160|#xa0|#32|#x20);)*"""
+               rf"(?=[^\W\d_]|%[0-9A-Fa-f]{{2}}|{_REF})")
+_PARAM_VALUE = rf"""(?:[^&#"'<>\r\n]|{_APOSTROPHE}|{_REF})*"""
 _PERSON_PARAM = re.compile(
     rf"({_PARAM_SEP}(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|last_?name|"
     rf"full_?name|e-?mail)=){_PARAM_VALUE}", re.I)
 _JV_PERSON_PARAM = re.compile(rf"({_PARAM_SEP}(?:(?:__jv|jv)?sd|name|contact)=){_PARAM_VALUE}", re.I)
 _JV_ENCODED_PERSON = re.compile(r"((?:%3f|%26)(?:(?:__jv|jv)?sd|name|contact|recruiter\w*)%3d)"
-                                rf"(?:(?!%26)(?:[^&#\s\"'<>]|{_APOSTROPHE}))*", re.I)
+                                rf"(?:{_ENC_REF}|{_REF}|(?!%26)(?:[^&#\s\"'<>]|{_APOSTROPHE}))*", re.I)
 _ENCODED_PERSON = re.compile(r"((?:%3f|%26)(?:recruiter(?:_?(?:name|email))?|contact_?name|first_?name|"
-                             rf"last_?name|full_?name|e-?mail)%3d)(?:(?!%26)(?:[^&#\s\"'<>]|{_APOSTROPHE}))*",
-                             re.I)
+                             rf"last_?name|full_?name|e-?mail)%3d)"
+                             rf"(?:{_ENC_REF}|{_REF}|(?!%26)(?:[^&#\s\"'<>]|{_APOSTROPHE}))*", re.I)
 _JV_ADDRESS = re.compile(rf"""(?:app|hire|jobs)\.jobvite\.com(?:/|%2f)(?:[^"'<>\r\n]|{_APOSTROPHE})*""", re.I)
 
 

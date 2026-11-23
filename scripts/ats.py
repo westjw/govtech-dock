@@ -320,26 +320,54 @@ def plain_rows(rows: list[dict]) -> list[dict]:
         r.setdefault("comp", None)
         r.pop("_detail_url", None)        # how a fetcher found the jd, not board data
         if r["comp"] is None and r["jd"] and not r.get("_jd_is_teaser"):
-            r["comp"] = _text_comp(r["jd"])
+            r["comp"] = _text_comp(r["jd"], r)
     return rows
 
 
-def _text_comp(jd: str) -> dict | None:
+def _text_comp(jd: str, row: dict | None = None) -> dict | None:
     """Pay parsed out of the description, when the API stated none itself.
 
     Wrapped because a parser bug must not cost us a posting: the description is
     a nice-to-have and the job is the product. Falling back to None also keeps
     the honest reading - no salary found means not stated, never zero.
+
+    WHERE THE ROW IS decides what a bare "$" is (salary.parse's `abroad`): on
+    a row the board will list outside the US (_abroad) it names no currency,
+    and a range resting on it alone is no pay stated - blind review 10,
+    2026-11-23: an Esri Canada posting in Canada, its pay read from the ad's
+    third part, was published as paying US dollars.
     """
     if salary is None:
         return None
     try:
-        got = salary.parse(jd)
+        got = salary.parse(jd, abroad=_abroad(row) if row else False)
     except Exception:                     # noqa: BLE001 - see docstring
         return None
     if got:
         got.setdefault("source", "text")
     return got or None
+
+
+# A country a board names for a row, read as build_board reads it for is_us.
+_US_COUNTRY = ("us", "usa", "united states", "united states of america")
+
+
+def _abroad(row: dict) -> bool:
+    """Whether the board will list this row outside the US: build_board's
+    is_us false, read the same way - roles.is_us of its location and title,
+    and where they settle nothing, a country its board named (office_hint)
+    that is not the US, 24 characters or fewer. A place that says nothing
+    (no location, 'Remote') is not abroad."""
+    import roles as _roles
+    us = _roles.is_us(row.get("location") or "", (row.get("title") or "").strip())
+    hint = row.get("office_hint")
+    if us is None and isinstance(hint, dict) and hint.get("country"):
+        k = str(hint["country"]).strip().lower().replace(".", "")
+        if k in _US_COUNTRY:
+            us = True
+        elif len(k) <= 24:
+            us = False
+    return us is False
 
 
 # --- conditional requests ---------------------------------------------------
@@ -4253,18 +4281,35 @@ def successfactors_walk(origin: str, first: list[dict], n: int, total: int | Non
     return rows
 
 
-def successfactors_posting(url: str, origin: str, landed: list | None = None) -> str:
+def successfactors_posting(url: str, origin: str, landed: list | None = None,
+                           known: dict | None = None) -> str:
     """One posting's page, asked only on the career site's own host, at an
     address that says plainly where it goes; a hop to the site's list is the
     posting gone (PostingClosed), and a hop anywhere else off /job/ is not
-    read (_sf_hop). `landed`, when given, is handed the address the page
-    came from (a Unify sitemap's address hops to /job/<slug>/<N>-<locale>/)."""
+    read (_sf_hop). `landed`, when given, is handed each address the read
+    goes to, in order - the posting's own, then every hop it is let take -
+    so its last is where the page came from (a Unify sitemap's address hops
+    to /job/<slug>/<N>-<locale>/), or where an answer that was no page came
+    from. A HOP BACK TO AN ADDRESS ALREADY ASKED is a loop, not read (blind
+    review 10, 2026-11-23: a posting and its hop sending a reader to each
+    other were asked eleven times in all before the hop limit ended it).
+    `known`, when given, is the addresses a Unify read has already read as
+    postings: a hop to one of them is not asked again (_SfKnown)."""
     if _sf_posting_url(url, origin) != url:
         raise AtsError(f"{url} is not a posting of {origin}")
-    resp = _page(url, same_host=True, may=_sf_hop(url, posting=True))
-    if landed is not None:
-        landed.append(str(getattr(resp, "url", "") or url))
-    return resp.text or ""
+    rule, chain = _sf_hop(url, posting=True), []
+
+    def may(u: str):
+        if u in chain:
+            raise AtsError(f"{url} sends a reader round in a loop (back to {u[:120]}), so it says "
+                           f"nothing of the posting")
+        rule(u)
+        if known and u != url and u in known:
+            raise _SfKnown(u)
+        chain.append(u)
+        if landed is not None:
+            landed.append(u)
+    return _page(url, same_host=True, may=may).text or ""
 
 
 # what only a page showing a posting carries: the posting's own microdata
@@ -4321,26 +4366,30 @@ def successfactors_language(page: str) -> str:
 
 
 def successfactors_ad(page: str) -> str:
-    """The ad on a posting page: its itemprop="description" element (the
-    class="jobdescription" span sits inside it, Landis+Gyr's 4,939
-    characters), to the close that matches it, as text. "" for a page with
-    none, or one that never closes it."""
+    """The ad on a posting page: EVERY itemprop="description" element of it,
+    in page order, each to the close that matches it, as text, one after
+    another (the class="jobdescription" span sits inside one on Landis+Gyr's,
+    4,939 characters; Esri Canada's postings split theirs into three, the
+    pay sentence in the third - blind review 10, 2026-11-23: only the first
+    was read, so its pay never was). One inside another is read once, with
+    the one it sits in. "" for a page with none, or one that never closes
+    one of them: an ad is not read in part."""
     body = _cut(page or "")
-    m = _SF_DESCRIBED.search(body)
-    if not m:
-        return ""
-    name = m.group(1).lower()
-    if name == "meta":
-        return plain_html(html_lib.unescape(_sf_attrs(m.group(2)).get("content") or ""))
-    depth = 1
-    for t in re.finditer(rf"<(/?){name}\b[^<>]*>", body[m.end():], re.I):
-        if t.group(1):
-            depth -= 1
-        elif not t.group(0).endswith("/>"):
-            depth += 1
-        if depth == 0:
-            return plain_html(body[m.end():m.end() + t.start()])
-    return ""
+    parts, past = [], 0
+    for m in _SF_DESCRIBED.finditer(body):
+        if m.start() < past:
+            continue                     # (inside one read already)
+        name = m.group(1).lower()
+        if name == "meta":
+            parts.append(plain_html(html_lib.unescape(_sf_attrs(m.group(2)).get("content") or "")))
+            past = m.end()
+            continue
+        inner = _sf_inner(body, m.end(), name, len(body))
+        if inner is None:
+            return ""
+        parts.append(plain_html(inner))
+        past = m.end() + len(inner)
+    return "\n".join(p for p in parts if p)
 
 
 def successfactors_closed(exc: BaseException) -> bool:
@@ -4354,6 +4403,12 @@ def successfactors_closed(exc: BaseException) -> bool:
 
 
 def fetch_successfactors(ref) -> list[dict]:
+    try:
+        again = _unify_night_read(successfactors_origin(ref))
+    except AtsError:
+        again = None                    # (successfactors_board says why)
+    if again is not None:
+        return again
     try:
         origin, _page1, first, n, total = successfactors_board(ref)
     except SuccessFactorsUnify as unify:
@@ -4424,27 +4479,61 @@ def fetch_successfactors(ref) -> list[dict]:
 # is the sitemap's address, never where it landed: Esri Canada's server
 # writes a French posting's Location twice encoded, and the page answers it.
 #
-# A board costs its /search/ page, its sitemap and two requests a posting (the
-# loc and its hop): Octave about 263 a night, Esri Canada 65, Aurigo 33 - the
-# cost the owner accepted. The sitemap is held to SF_SITEMAP_MAX postings
-# (the owner skips giants of about 500+ roles) and a sitemap index to one
-# level of SF_SITEMAPS_MAX sitemaps on the site's own origin.
+# A READ costs its /search/ page, its sitemap and two requests a posting (the
+# loc and its hop), and robots.txt once: Octave 264, Esri Canada 66, Aurigo
+# 34. A NIGHT IS ONE READ (blind review 10, 2026-11-23): the owner's yes was
+# to "one or two requests per posting per night", and the nightly job reads
+# every wired board twice - refresh.py for its status, then build_board.py
+# for its postings, in separate processes - so a night cost two reads, about
+# four requests a posting (Octave 530). GOVTECH_DOCK_UNIFY_NIGHT names a
+# file the job's two steps share (refresh.yml sets it in the runner's temp
+# directory: never committed, gone with the run): a Unify read that comes
+# whole is written there, and a later read of that board in the same run,
+# within UNIFY_NIGHT_MAX_AGE, is that one, asking nothing. A read that fails
+# writes nothing, so the next step asks for itself; a read made without the
+# ads a caller wants (FETCH_DETAILS) is asked again. Other reads on a day -
+# scope_review.py's, of a company with openings nobody has ruled on; a
+# person's - are their own. The sitemap is held to SF_SITEMAP_MAX addresses
+# (a cap on requests, not roles) and a sitemap index to one level of
+# SF_SITEMAPS_MAX sitemaps on the site's own origin.
 #
 # THE POSTING'S OWN PAGE IS THE ROW: there is no list to fall back on. A
 # posting the site says has closed (successfactors_closed: a 404 or 410, a
 # hop to its list; or its page saying so, successfactors_filled) is left out
-# and said. A failure of the day - a 429, a 5xx, the network - fails the
-# whole read, as it fails any reader's: refresh and build_board ask a 429
-# and the network once more, and a board that still will not read keeps the
-# state it had (Unknown, never "None found"), so one flaky request never
-# empties a board. Anything else a posting answers that is not the posting -
-# a page showing none that is not the site saying it closed, robots.txt
-# closing it, a refusal, a hop off /job/ or off the host - is left out and
-# said, up to SF_SLACK postings; more is the board unreadable, never part
-# of it.
+# and said - up to SF_CLOSED_SHARE of the sitemap: more is not a day's churn,
+# and the read is refused. A FAILURE OF THE DAY on a posting - a 429, a 5xx,
+# the network failing or timing out - is asked once more (after the gate's
+# backoff for a 429, SF_RETRY_PAUSE for the rest), so one flaky request
+# costs one request more, never the board (blind review 10: one 5xx among a
+# read's ~265 took the board off for the night). A second one fails the
+# whole read, as it came, as any reader's failure of the day does: refresh
+# asks the whole board once more on a 429 (not on a 5xx or the network),
+# build_board on a 429 or the network (not on a 5xx), and a board that still
+# will not read is Unknown for the night, never "None found" - its postings
+# are not on the board that night, and the company reads as one we could
+# not read. Anything else a posting answers that is not the posting - a page
+# showing none that is not the site saying it closed, robots.txt closing it,
+# a refusal, a hop off /job/ or off the host, a hop round in a loop - is left
+# out and said, up to SF_SLACK postings; more is the board unreadable, never
+# part of it.
 
-SF_SITEMAP_MAX = 400     # postings one sitemap may list: the owner skips giants (~500+ roles)
+# Sitemap addresses one read asks, at two requests each: a cap on this
+# reader's requests, not on roles - a site listing each role in English and
+# in French reaches it at 200 roles (blind review 10, 2026-11-23), short of
+# the owner's giants of about 500+ roles.
+SF_SITEMAP_MAX = 400
 SF_SITEMAPS_MAX = 5      # sitemaps one sitemap index may name, followed one level only
+SF_RETRY_PAUSE = 2.0     # seconds before a posting's 5xx or network failure is asked once more
+UNIFY_NIGHT = os.environ.get("GOVTECH_DOCK_UNIFY_NIGHT", "")    # the run's shared read (above)
+UNIFY_NIGHT_MAX_AGE = dt.timedelta(hours=6)                     # longer than the job may run (5h)
+_UNIFY_NIGHT_LOCK = threading.Lock()
+# More of a sitemap than this answering closed in one read is not a day's
+# postings closing - a site answering 404 for postings it has, a soft block,
+# a sitemap long out of date - and the read is refused, never published as
+# the board (blind review 10, 2026-11-23: 130 of 131 answering 404 published
+# one row). A quarter, build_site.MAX_DROP's line for a board falling
+# overnight; never fewer than SF_SLACK.
+SF_CLOSED_SHARE = 0.25
 # The tokens a posting's place is read from, the first shown with a value
 # (Aurigo's 'Posting Location', Octave's 'Job Location (Short)'), else its
 # 'Country' (Esri Canada's, which shows no place: its city is only in the ad).
@@ -4497,10 +4586,13 @@ def _xml_text(raw: str) -> str | None:
 
 def _sf_services(path: str) -> bool:
     """Is this path under /services/ (the Unify search API, the RSS), as
-    written or with any layer of its escapes undone?"""
+    written, as a server serves it (robots.served: a ';...' path parameter
+    cut off each segment - '/services;jsessionid=1/...' is /services/...,
+    blind review 10 - and a dot segment resolved), or with any layer of its
+    escapes undone?"""
     p = path or "/"
     for _ in range(4):
-        if p.lstrip("/").split("/", 1)[0].lower() == "services":
+        if any(q.lstrip("/").split("/", 1)[0].lower() == "services" for q in (p, robots.served(p))):
             return True
         undone = urllib.parse.unquote(p)
         if undone == p:
@@ -4543,9 +4635,10 @@ def _sf_sitemap_page(url: str, origin: str) -> str:
 def _sf_sitemap_read(text: str, url: str) -> tuple[str, list[str]]:
     """(its root element, every <loc>'s text as written) of one sitemap, as an
     XML reader reads it - a commented-out <url> is not listed - or AtsError
-    for a page that is not a sitemap, a comment left open, or a <loc> holding
-    markup (CDATA): an address that cannot be read plainly is never a posting
-    silently lost."""
+    for a page that is not a sitemap, a comment left open, a <loc> holding
+    markup (CDATA), or a text that does not end with its root's close (cut
+    short): an address that cannot be read plainly, or one the cut took, is
+    never a posting silently lost."""
     kept, i = [], 0
     while True:
         j = text.find("<!--", i)
@@ -4555,8 +4648,10 @@ def _sf_sitemap_read(text: str, url: str) -> tuple[str, list[str]]:
         k = text.find("-->", j + 4)
         if k < 0:
             raise AtsError(f"{url} leaves a comment open, so what it lists does not read plainly")
+        # (taken out with nothing in its place, as XML takes a comment out of
+        # character data: a space put there went into a <loc>'s address -
+        # '/job/ Role-5/...' asked and published - blind review 10)
         kept.append(text[i:j])
-        kept.append(" ")
         i = k + 3
     body = "".join(kept)
     first = _SM_OPEN.search(body)
@@ -4568,6 +4663,20 @@ def _sf_sitemap_read(text: str, url: str) -> tuple[str, list[str]]:
     if len(_SM_LOC_TAG.findall(body)) != len(locs):
         raise AtsError(f"{url} lists an address this reader cannot read plainly (markup inside a "
                        f"<loc>), so its board is not read in part")
+    # A SITEMAP CUT SHORT IS NOT THE BOARD (blind review 10, 2026-11-23): it
+    # states no total to hold a read to, so its root's close is the only sign
+    # it came whole. Cut between two <url>s, or in a <lastmod>, the part before
+    # the cut read as every posting the board has, and nothing was said - an
+    # XML reader refuses that text. So the text must end with the root's
+    # close (or the root be empty, '<urlset/>'), only whitespace or a
+    # processing instruction after it - and so after every <loc>.
+    opened = re.compile(rf"<{root}\b[^<>]*>").search(body, first.start())
+    shut = list(re.finditer(rf"</{root}\s*>", body))
+    whole = (opened is not None and opened.group(0).endswith("/>") and not locs) or (
+        bool(shut) and not re.sub(r"<\?[^<>]*\?>", "", body[shut[-1].end():]).strip())
+    if not whole:
+        raise AtsError(f"{url} does not close its <{root}> after the last address it lists: it "
+                       f"came cut short, so its board is not read in part")
     return root, locs
 
 
@@ -4608,8 +4717,8 @@ def successfactors_sitemap(origin: str) -> tuple[list[str], list[str]]:
     on this origin (another host's is not asked, and is counted); a sitemap
     index inside one is an error. NEVER A ZERO AND NEVER PART OF A BOARD: a
     sitemap robots.txt closes, one that is not there, one that lists no
-    posting and one listing more than SF_SITEMAP_MAX are errors, and say
-    why."""
+    posting and one listing more than SF_SITEMAP_MAX addresses (this
+    reader's cap on requests, not on roles) are errors, and say why."""
     first = origin + "/sitemap.xml"
     root, locs = _sf_sitemap_read(_sf_sitemap_page(first, origin), first)
     notes: list[str] = []
@@ -4658,17 +4767,20 @@ def successfactors_sitemap(origin: str) -> tuple[list[str], list[str]]:
         raise AtsError(f"{origin}'s sitemap lists no posting of this site ({len(locs)} addresses), "
                        f"so it is not read as a board with nothing open")
     if len(postings) > SF_SITEMAP_MAX:
-        raise AtsError(f"{origin}'s sitemap lists {len(postings)} postings, more than the "
-                       f"{SF_SITEMAP_MAX} this reader asks one by one at two requests each: a "
-                       f"giant is not read")
+        raise AtsError(f"{origin}'s sitemap lists {len(postings)} posting addresses, more than the "
+                       f"{SF_SITEMAP_MAX} this reader asks one by one at two requests each - a cap "
+                       f"on its requests, not on roles: a site listing each role in two languages "
+                       f"reaches it at {SF_SITEMAP_MAX // 2} - so it is not read")
     return postings, notes
 
 
 def _sf_of_the_day(exc: BaseException) -> bool:
     """Did asking fail for the day only - a 429, a 5xx, the network failing or
     timing out, a robots.txt that would not answer - saying nothing of the
-    posting or the board? refresh and build_board ask a 429 and the network
-    once more, and keep a board that still will not read as it was."""
+    posting or the board? A posting is asked once more (_sf_unify_posting);
+    failing again, the read fails: refresh asks the board once more on a
+    429, build_board on a 429 or the network, and a board that still will
+    not read is Unknown for the night, never "None found"."""
     if isinstance(exc, RateLimited):
         return True
     if isinstance(exc, RobotsRefused):
@@ -4786,30 +4898,186 @@ def _sf_requisition(landed: str) -> tuple[str, str] | None:
     return (m.group(1), m.group(2)) if m else None
 
 
-def _sf_unify_posting(url: str, origin: str):
-    """('row', (row, requisition)), ('closed', None) or ('unread', why) for
-    one posting a Unify sitemap lists, asked once; a failure of the day is
-    raised as it came (_sf_of_the_day)."""
-    landed: list = []
-    try:
-        page = successfactors_posting(url, origin, landed)
-    except AtsError as exc:
-        if successfactors_closed(exc):
-            return "closed", None
-        if _sf_of_the_day(exc):
-            raise
-        return "unread", f"{url} ({_text(str(exc))[:160]})"
+_SF_LINK = re.compile(r"<link\b([^<>]*)>", re.I)
+
+
+def _sf_stated_requisition(page: str, origin: str) -> tuple[str, str] | None:
+    """(the number, the locale) a posting page states of itself: its
+    <link rel="canonical" href="<origin>/job/<slug>/<N>-<locale>/"> (on every
+    Unify posting page measured, 2026-11-23: Aurigo's, Esri Canada's and
+    Octave's), on this site's origin; None for a page that states none."""
+    for m in _SF_LINK.finditer(_cut(page or "")):
+        attrs = _sf_attrs(m.group(1))
+        if "canonical" not in (attrs.get("rel") or "").lower().split():
+            continue
+        href = html_lib.unescape(attrs.get("href") or "").strip()
+        parts = urllib.parse.urlsplit(href)
+        if f"{parts.scheme}://{(parts.netloc or '').lower()}" == origin:
+            return _sf_requisition(href)
+        return None
+    return None
+
+
+def successfactors_unify_requisition(page: str, landed: str, origin: str) -> tuple[str, str] | None:
+    """The requisition one Unify posting page is a copy of: the number and
+    locale of the address its loc hopped to (/job/<slug>/<N>-<locale>/), else
+    of the address the page states of itself (_sf_stated_requisition) - so a
+    copy that answers at its own sitemap address is paired too (blind review
+    10, 2026-11-23: an English copy answering in place and its French copy
+    hopping were published as two roles). Where the two name different
+    numbers, the page does not say plainly which requisition it is, and it
+    is none: its copies are not paired on a guess. A page stating its own
+    number in another locale (a translation's canonical naming the English
+    copy) states the same requisition: the number is the requisition's, the
+    locale the copy's, the address it came from. The reader pairs copies by
+    this, and the probe asks it of the copies in each language."""
+    hopped, stated = _sf_requisition(landed), _sf_stated_requisition(page, origin)
+    if hopped and stated and hopped[0] != stated[0]:
+        return None
+    return hopped or stated
+
+
+def _sf_code(locale: str) -> str:
+    """'fr' of 'fr_CA' or 'fr-CA'."""
+    return re.split(r"[-_]", locale or "")[0].lower()
+
+
+def successfactors_unify_language(page: str, landed: str = "", origin: str = "") -> str:
+    """The language a Unify copy is written in, as a bare code ('en', 'fr'):
+    the locale of the address its loc hopped to (.../663-fr_CA/, the site's
+    own word for the copy, measured on Esri Canada's), else its page's
+    <html lang> (lang="en-US" on every posting page measured), else the
+    locale its page states of itself (its canonical link, which a
+    translation may point at another copy's), else its title or description
+    element's own lang (successfactors_language), else ''. The reader keeps
+    a requisition's 'en' copy, and the probe asks whether the copies it
+    would publish are written in one language
+    (verify_boards._successfactors_unify), by this one rule."""
+    hopped = _sf_requisition(landed)
+    if hopped:
+        return _sf_code(hopped[1])
+    m = _SF_HTML_LANG.search(_cut(page or "")[:20000])
+    if m:
+        return _sf_code(m.group(1))
+    stated = _sf_stated_requisition(page, origin) if origin else None
+    if stated:
+        return _sf_code(stated[1])
+    return successfactors_language(page)
+
+
+class _SfKnown(AtsError):
+    """A Unify posting's hop lands on an address this read has already read
+    as a posting: its page is that one, and is not asked twice."""
+
+    def __init__(self, address: str):
+        super().__init__(f"{address} is read already")
+        self.address = address
+
+
+def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
+    """('row', (row, requisition, where, language)), ('closed', (requisition,
+    language)), ('blank', (why, requisition, language)) for a page that shows
+    no posting and is not the site saying it closed, or ('unread', why), for
+    one posting a Unify sitemap lists, asked once; the requisition is the one
+    the copy is of (None where it is not known), the language the copy's own
+    (successfactors_unify_language). A FAILURE OF THE DAY -
+    a 429, a 5xx, the network failing or timing out (_sf_of_the_day) - is
+    asked once more, after the gate's backoff for a 429 and SF_RETRY_PAUSE
+    for the rest, and failing again is raised as it came (blind review 10,
+    2026-11-23: one 5xx among a read's ~265 requests took the whole board
+    off for the night, and nothing asked it again). `known` holds what this
+    board's read has already read as a posting, by the address its page
+    came from: a hop to one of them is that page again, not asked twice."""
+    known = {} if known is None else known
+    for attempt in (1, 2):
+        landed: list = []
+        try:
+            page = successfactors_posting(url, origin, landed, known)
+            break
+        except _SfKnown as again:
+            row, req, where, lang = known[again.address]
+            return "row", (dict(row, url=url), req, where, lang)
+        except AtsError as exc:
+            if successfactors_closed(exc):
+                # (a 404 at the address it hopped to names its requisition)
+                hop = landed[-1] if landed else ""
+                return "closed", (_sf_requisition(hop), successfactors_unify_language("", hop, origin))
+            if not _sf_of_the_day(exc):
+                return "unread", f"{url} ({_text(str(exc))[:160]})"
+            if attempt == 2:
+                raise
+            if not isinstance(exc, RateLimited):
+                time.sleep(SF_RETRY_PAUSE)    # (a 429's wait is the gate's: _back_off)
+    where = landed[-1] if landed else url
+    req = successfactors_unify_requisition(page, where, origin)
+    lang = successfactors_unify_language(page, where, origin)
     if not successfactors_shown(page):
         if successfactors_filled(page):
-            return "closed", None
-        return "unread", f"{url} (a page that shows no posting and is not the site saying it has closed)"
+            return "closed", (req, lang)
+        return "blank", (f"{url} (a page that shows no posting and is not the site saying it has "
+                         f"closed)", req, lang)
     row = successfactors_unify_row(page, url)
     if row is None:
         return "unread", f"{url} (a posting page that names no role)"
     if FETCH_DETAILS:
         # the ad is on the page already read: no request more
         row["jd"] = successfactors_ad(page)
-    return "row", (row, _sf_requisition(landed[-1] if landed else url))
+    known[where] = (row, req, where, lang)
+    return "row", (row, req, where, lang)
+
+
+def _unify_night_read(origin: str) -> list[dict] | None:
+    """This run's read of a Unify board, as an earlier step of it wrote it
+    (UNIFY_NIGHT), or None: no file named, no entry for the board, one older
+    than UNIFY_NIGHT_MAX_AGE (or dated ahead), one made without the ads this
+    caller wants, or a file that does not read. Copies, the ads dropped for a
+    caller that does not want them; said on stderr."""
+    if not UNIFY_NIGHT:
+        return None
+    try:
+        entry = json.loads(pathlib.Path(UNIFY_NIGHT).read_text()).get(origin)
+        at = dt.datetime.fromisoformat(entry["read_at"])
+        rows = [dict(r) for r in entry["rows"]]
+        details = entry.get("details") is True
+        age = _utcnow() - at
+    except (OSError, ValueError, TypeError, KeyError, AttributeError):
+        return None
+    if not dt.timedelta(0) <= age <= UNIFY_NIGHT_MAX_AGE or (FETCH_DETAILS and not details) or not rows:
+        return None
+    if not FETCH_DETAILS:
+        for r in rows:
+            r.pop("jd", None)
+    print(f"  successfactors: {origin}: its {len(rows)} postings are this run's read of "
+          f"{entry['read_at'][:16]}Z, asked nothing again", file=sys.stderr)
+    return rows
+
+
+def _unify_night_write(origin: str, rows: list[dict]) -> None:
+    """Keep a Unify read that came whole for this run's later steps
+    (UNIFY_NIGHT); a file that cannot be written keeps nothing, and the next
+    step asks for itself."""
+    if not UNIFY_NIGHT:
+        return
+    path = pathlib.Path(UNIFY_NIGHT)
+    with _UNIFY_NIGHT_LOCK:
+        try:
+            held = json.loads(path.read_text())
+            held = held if isinstance(held, dict) else {}
+        except (OSError, ValueError):
+            held = {}
+        held[origin] = {"read_at": _utcnow().isoformat(), "details": bool(FETCH_DETAILS), "rows": rows}
+        try:
+            fresh = path.with_name(path.name + ".tmp")
+            fresh.write_text(json.dumps(held))
+            os.replace(fresh, path)
+        except OSError:
+            pass
+
+
+def _sf_slug(url: str) -> str:
+    """The slug of a /job/<slug>/... address, or ''."""
+    segs = urllib.parse.urlsplit(url or "").path.split("/")
+    return segs[2] if len(segs) > 2 and segs[1] == "job" else ""
 
 
 def successfactors_unify(origin: str) -> list[dict]:
@@ -4817,53 +5085,101 @@ def successfactors_unify(origin: str) -> list[dict]:
     (successfactors_sitemap), each asked once on its own page and read from
     it (successfactors_unify_row), the site's closed postings left out and
     said, a failure of the day raised as it came, and more than SF_SLACK
-    postings that would not read an error; then one row a requisition - a
-    role written in two languages hops to one number twice - in English
-    where there is one. Never a zero."""
+    postings that would not read an error; then one row a requisition
+    (successfactors_unify_requisition) - a role written in two languages is
+    one number twice - in English where there is one, at the address whose
+    slug is the one its page answers at where copies in one language
+    differ (a stale slug that hops to the posting is not the row's). An
+    address the read has already landed on is not asked again. Never a
+    zero."""
     urls, notes = successfactors_sitemap(origin)
-    closed, unread, read = [], [], []
+    closed, unread, read, known, shut, blank = [], [], [], {}, set(), []
     for url in urls:
-        what, got = _sf_unify_posting(url, origin)
+        if url in known:
+            # (the sitemap lists an address another of its postings hopped
+            # to: that page, read once)
+            row, req, where, lang = known[url]
+            what, got = "row", (dict(row, url=url), req, where, lang)
+        else:
+            what, got = _sf_unify_posting(url, origin, known)
         if what == "row":
             read.append(got)
         elif what == "closed":
             closed.append(url)
+            if got[0]:
+                shut.add(got[0][0])
+        elif what == "blank" and got[1] and got[2] != "en":
+            # A COPY IN ANOTHER LANGUAGE THAT SHOWS NO POSTING, OF A
+            # REQUISITION ANOTHER COPY OF WHICH THE SITE SAYS HAS CLOSED, is
+            # that copy closed too: both copies of a closed role stay in the
+            # sitemap until it is written again, and the site's words are
+            # read in English only (successfactors_filled), so the French one
+            # was said "did not read as a posting", and three such made a
+            # bilingual board unreadable (blind review 10, 2026-11-23).
+            # Weighed once every copy is read, as its other copy may come
+            # later; an English copy says it in words read, so one that does
+            # not is the page it is, at once.
+            blank.append((url, got[0], got[1][0]))
         else:
-            unread.append(got)
-            if len(unread) > SF_SLACK:
-                raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
-                               f"did not read as postings ({unread[0]} the first): read in part, so "
-                               f"not read")
-    kept, at, twins = [], {}, 0
-    for row, req in read:
+            unread.append(got if what == "unread" else got[0])
+        if len(unread) > SF_SLACK:
+            raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
+                           f"did not read as postings ({unread[0]} the first): read in part, so "
+                           f"not read")
+    with_it = [url for url, _why, n in blank if n in shut]
+    closed += with_it
+    unread += [why for url, why, n in blank if n not in shut]
+    if len(unread) > SF_SLACK:
+        raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists did not "
+                       f"read as postings ({unread[0]} the first): read in part, so not read")
+    groups: dict = {}
+    for row, req, where, lang in read:
         key = ("requisition", req[0]) if req else ("address", row["url"])
-        english = bool(req) and re.match(r"en(?:_|$)", req[1], re.I) is not None
-        if key not in at:
-            at[key] = len(kept)
-            kept.append((row, english))
-            continue
-        twins += 1
-        if english and not kept[at[key]][1]:
-            kept[at[key]] = (row, english)
+        groups.setdefault(key, []).append((row, req, where, lang))
+
+    def rank(copy):
+        row, _req, where, lang = copy
+        return (lang != "en", _sf_slug(row["url"]) != _sf_slug(where))
+    kept, languages, again = [], 0, 0
+    for copies in groups.values():
+        best = min(copies, key=rank)            # (the first of equals)
+        kept.append(best[0])
+        for copy in copies:
+            if copy is not best:
+                if copy[3] == best[3]:
+                    again += 1
+                else:
+                    languages += 1
     if not kept:
         raise AtsError(f"{origin}: none of the {len(urls)} postings its sitemap lists answered as an "
                        f"open posting ({len(closed)} closed, {len(unread)} that did not read), so it "
                        f"is not read as a board with nothing open")
+    if len(closed) > max(SF_SLACK, SF_CLOSED_SHARE * len(urls)):
+        raise AtsError(f"{origin}: {len(closed)} of the {len(urls)} postings its sitemap lists answered "
+                       f"as closed, more than a quarter of it - not a day's postings closing, but a "
+                       f"site answering so for postings it has or a sitemap long out of date - so the "
+                       f"{len(kept)} left are not read as its board")
     said = list(notes)
     if closed:
+        twins_shut = (f"; {len(with_it)} of them a copy that shows no posting, of a requisition "
+                      f"another copy of which the site says has closed" if with_it else "")
         said.append(f"{len(closed)} of the {len(urls)} postings its sitemap lists answered as closed "
                     f"on their own page (a 404 or 410, a hop to its list, or the site's page saying "
-                    f"so) and are not published")
+                    f"so{twins_shut}) and are not published")
     if unread:
         said.append(f"{len(unread)} of the {len(urls)} postings its sitemap lists did not read as "
                     f"postings and are left out: {'; '.join(unread)}")
-    if twins:
-        said.append(f"{twins} of the postings its sitemap lists are another language's copy of a "
+    if languages:
+        said.append(f"{languages} of the postings its sitemap lists are another language's copy of a "
                     f"requisition read (one number) and are published once, in English where there "
                     f"is one")
+    if again:
+        said.append(f"{again} of the postings its sitemap lists are a requisition read listed again in "
+                    f"the same language (one number, one locale) and are published once")
     for line in said:
         print(f"  successfactors: {origin}: {line}", file=sys.stderr)
-    return [row for row, _english in kept]
+    _unify_night_write(origin, kept)
+    return kept
 
 
 FETCHERS = {

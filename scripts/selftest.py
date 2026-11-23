@@ -549,6 +549,39 @@ SALARY_RAW_CASES = [
     ("Pay range: $140,000 -\n$200,000 per year", "$140,000 - $200,000 per year"),
 ]
 
+# ABROAD, A BARE "$" NAMES NO CURRENCY: salary.parse(text, abroad=True), for a
+# posting the board lists outside the US (blind review 10, 2026-11-23: an
+# Esri Canada posting in Canada, its pay sentence written with a bare "$",
+# was published as paying US dollars). (text, at home, abroad): a currency
+# the text names for the range stands abroad, and abroad reads nothing the
+# home reading refused - a bare range set aside does not let another win.
+SALARY_ABROAD_CASES = [
+    ("The base salary range for this role is $90,000 to $110,000 annually.",
+     (90000, 110000, "USD", "year"), None),
+    ("Pay: $25.00 - $30.00 an hour", (25, 30, "USD", "hour"), None),
+    ("Salary: up to $200,000", (None, 200000, "USD", "year"), None),
+    # one reading of the range names US dollars, so they are named
+    ("Salary: $90,000 - $110,000 per year. Salary range: USD 90,000 - 110,000 per year.",
+     (90000, 110000, "USD", "year"), (90000, 110000, "USD", "year")),
+    ("Salary: US$140,000 - US$200,000",
+     (140000, 200000, "USD", "year"), (140000, 200000, "USD", "year")),
+    ("Salary range: 140000-200000 USD",
+     (140000, 200000, "USD", "year"), (140000, 200000, "USD", "year")),
+    ("Compensation for this role: CAD $120,000 - CAD $150,000 per year",
+     (120000, 150000, "CAD", "year"), (120000, 150000, "CAD", "year")),
+    ("Canadian Salary Range: $152,000- $190,000 CAD",
+     (152000, 190000, "CAD", "year"), (152000, 190000, "CAD", "year")),
+    ("Salary: C$120,000 - C$150,000",
+     (120000, 150000, "CAD", "year"), (120000, 150000, "CAD", "year")),
+    ("Salary: A$120,000 - A$150,000",
+     (120000, 150000, "AUD", "year"), (120000, 150000, "AUD", "year")),
+    ("The salary range is £70,000 - £90,000.",
+     (70000, 90000, "GBP", "year"), (70000, 90000, "GBP", "year")),
+    # two ranges are two ranges abroad too
+    ("Salary range: $124,000 - $205,000 (US); $152,000 - $190,000 CAD (Canada)", None, None),
+    ("Salary range: 140,000 - 200,000", None, None),
+]
+
 
 
 def check_a_rival_category_over_the_blast_limit_lands_whole() -> int:
@@ -14373,7 +14406,22 @@ def check_the_crawler_honours_robots_txt() -> int:
                 ([(False, "/careers/private")], "https://site.example/careers;jsessionid=1/open/x", True,
                  "an open path with a parameter"),
                 ([(True, "/careers;"), (False, "/careers/")], "https://site.example/careers;x/jobs", False,
-                 "an Allow for the path as written, a Disallow for the path served")):
+                 "an Allow for the path as written, a Disallow for the path served"),
+                # ...and with its empty segments merged, as nginx, Tomcat and
+                # Apache serve them (blind review 10, 2026-11-23: '//' was
+                # asked as written only, and read)
+                ([(False, "/careers/private")], "https://site.example/careers//private/x", False,
+                 "an empty segment, which a server merges"),
+                ([(False, "/careers/private")], "https://site.example//careers/private/x", False,
+                 "a path opening with an empty segment"),
+                ([(False, "/careers/private")], "https://site.example/careers///private/x", False,
+                 "a run of three slashes"),
+                ([(False, "/careers/private")], "https://site.example/careers/;x//private/x", False,
+                 "a parameter's segment cut, leaving an empty one"),
+                ([(False, "/careers/private")], "https://site.example/careers//open/x?a=//private", True,
+                 "an open path with an empty segment, and slashes in its query"),
+                ([(False, "/a//b")], "https://site.example/a//b/x", False,
+                 "a rule written with the empty segment")):
             if robots.decide(rules, url) is not want:
                 errors += fail(f"robots.decide is {robots.decide(rules, url)} for {why}, not {want}")
         H = "https://careers.acmegov.example"
@@ -18602,6 +18650,49 @@ def check_salary() -> int:
                            f"{None if got is None else got['raw']!r}, "
                            f"expected {expected_raw!r}")
 
+    # ABROAD, A BARE "$" NAMES NO CURRENCY (see SALARY_ABROAD_CASES), and the
+    # contract's six keys are all a reading carries, home or abroad
+    shape = {"min", "max", "currency", "period", "source", "raw"}
+    for text, home, away in SALARY_ABROAD_CASES:
+        for abroad, expected in ((False, home), (True, away)):
+            got = salary.parse(text, abroad=abroad)
+            actual = got and (got["min"], got["max"], got["currency"], got["period"])
+            if actual != expected or (got and set(got) != shape):
+                errors += fail(f"salary.parse({text[:44]!r}..., abroad={abroad}) = {got}, "
+                               f"expected {expected}")
+    # ...and over the whole table: abroad only takes a range away, and only
+    # one whose currency is US dollars read off a bare "$"
+    for text, _ in SALARY_CASES:
+        home, away = salary.parse(text), salary.parse(text, abroad=True)
+        if away not in (home, None) or (home and home["currency"] != "USD" and away != home):
+            errors += fail(f"salary.parse({text[:44]!r}..., abroad=True) = {away}, at home {home}")
+
+    # WHERE THE ROW IS, read as build_board reads is_us: ats.plain_rows is the
+    # one caller that knows it (blind review 10, 2026-11-23). Abroad by its
+    # location or its title, or by a country its board named when they say
+    # nothing; a place that says nothing is home, as it always was.
+    import ats
+    said = "Salary: $90,000 - $110,000 per year"
+    usd = (90000, 110000, "USD", "year")
+    for row, expected in (({"location": "Toronto, ON, Canada"}, None),
+                          ({"location": "Canada"}, None),
+                          ({"location": "Remote", "title": "Account Executive, Canada"}, None),
+                          ({"location": "", "office_hint": {"country": "CA"}}, None),
+                          ({"location": "Austin, TX"}, usd),
+                          ({"location": "Vancouver, WA"}, usd),
+                          ({"location": "Remote"}, usd),
+                          ({"location": ""}, usd),
+                          ({"location": "", "office_hint": {"country": "U.S."}}, usd),
+                          ({"location": "", "office_hint": {"country": "a sentence some board "
+                                                                       "wrote in a country field"}}, usd),
+                          ({"location": "Toronto, ON, Canada", "jd": "Salary: C$90,000 - C$110,000 per year"},
+                           (90000, 110000, "CAD", "year"))):
+        got = ats.plain_rows([dict({"title": "Account Executive", "url": "https://x.example/1",
+                                    "jd": said}, **row)])[0]["comp"]
+        actual = got and (got["min"], got["max"], got["currency"], got["period"])
+        if actual != expected or (got and set(got) != shape):
+            errors += fail(f"plain_rows: a row at {row} read its pay as {got}, expected {expected}")
+
     # A missed range costs a filter hit; a wrong one is published as a fact
     # about somebody else's company. Keep the table honest about that: if the
     # negatives ever thin out, the parser has been tuned for recall.
@@ -20846,6 +20937,24 @@ def check_successfactors_reads_its_career_site() -> int:
         if exc is None or rows is not None or "every one of the 7" not in str(exc):
             errors += fail(f"successfactors: with details on, a list whose every posting has closed read "
                            f"as {rows!r}, not an error: {exc}")
+        # ...in any case and through any space: a capitalised 'This position
+        # has been filled.', and one broken by &nbsp; and a line break, are the
+        # site saying so, and the rows are not published (blind review 10)
+        for words_, why in (("This position has been filled.", "capitalised"),
+                            ("THIS POSITION HAS BEEN FILLED", "in capitals"),
+                            ("Sorry, this&nbsp;position\n has been\r\n filled.", "through &nbsp; and line breaks")):
+            closed_page = filled.replace("Sorry, this position has been filled.", words_)
+            said_ = io.StringIO()
+            ats.FETCH_DETAILS = True
+            with contextlib.redirect_stderr(said_):
+                rows, exc = go({at(0): page([row(n) for n in range(1, 4)], total=3), SF + job(1): posting(),
+                                SF + job(2): closed_page, SF + job(3): posting()},
+                               lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            kept = sorted(int(r["url"].rstrip("/").rsplit("/", 1)[-1]) - 1400000000 for r in rows or [])
+            if exc or kept != [1, 3] or "1 of the 3 postings" not in said_.getvalue():
+                errors += fail(f"successfactors: with details on, a posting saying it was filled {why} was "
+                               f"published as open (kept {kept}, {said_.getvalue().strip()!r}): {exc}")
         # ...and a posting whose page shows no posting and is not the site saying
         # it closed - a block page served 200, a hop anywhere but the list - is
         # kept as the list states it, not said closed, and the hop not followed
@@ -20894,6 +21003,22 @@ def check_successfactors_reads_its_career_site() -> int:
                 errors += fail(f"successfactors: with details on, five of seven postings answering "
                                f"{why} were not kept as the list states them ({len(rows or [])} rows, "
                                f"ads {ads}), or were said closed ({said_.getvalue().strip()!r}): {exc}")
+        # A POSTING SENT ROUND IN A LOOP is not read, and says nothing of the
+        # posting: kept as the list states it, each address asked once (blind
+        # review 10: eleven requests before the hop limit ended it)
+        loop_to = SF + "/job/Any-city-Role-2-TX-99999/2-en_US/"
+        said_ = io.StringIO()
+        ats.FETCH_DETAILS = True
+        with contextlib.redirect_stderr(said_):
+            rows, exc = go({at(0): page([row(n) for n in range(1, 4)], total=3), SF + job(1): posting(),
+                            SF + job(2): (302, loop_to), loop_to: (302, SF + job(2)), SF + job(3): posting()},
+                           lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        if exc or len(rows or []) != 3 or rows[1].get("jd") or sent.count(SF + job(2)) != 1 \
+                or sent.count(loop_to) != 1 or "answered as closed" in said_.getvalue():
+            errors += fail(f"successfactors: with details on, a posting sent round in a loop was asked "
+                           f"{sent.count(SF + job(2)) + sent.count(loop_to)} times, or not kept as the "
+                           f"list states it ({len(rows or [])} rows, {said_.getvalue().strip()!r}): {exc}")
         # A HOP TO THE SITE'S LIST IS THE POSTING CLOSED however the list's
         # address is written: '/search' without its slash, and with a query
         for to in (SF + "/search", SF + "/search?x"):
@@ -20975,6 +21100,38 @@ def check_successfactors_reads_its_career_site() -> int:
             errors += fail("successfactors: an ad given as <meta itemprop=description> was not read")
         if "Apply today" not in ats.successfactors_ad(posting(ad="<p>Sell.</p><span/><p>Apply today.</p>")):
             errors += fail("successfactors: a <span/> inside the ad cut the ad short")
+        # EVERY DESCRIPTION ELEMENT, IN PAGE ORDER (blind review 10, 2026-11-23:
+        # Esri Canada's postings split the ad into three, the pay sentence in
+        # the third, and only the first was read)
+        def part(text_):
+            return (f'<div class="joblayouttoken"><span xml:lang="en-US" lang="en-US" itemprop="description" '
+                    f'class="rtltextaligneligible"><p>{text_}</p></span></div>')
+        split_ = ('<html><head><title>Role Job Details | Acme Gov LLC</title></head><body><div '
+                  'class="jobDisplayShell" itemscope="itemscope"><meta itemprop="hiringOrganization" '
+                  'content="Acme Gov LLC"><span itemprop="title">Role</span>'
+                  + part("Sell to state agencies.") + '<div class="joblayouttoken"><span>Apply by Friday.'
+                  '</span></div>' + part("Travel to county seats.")
+                  + part("The salary range for this role is $90,000 - $110,000 per year.") + '</div></body></html>')
+        ad_ = ats.successfactors_ad(split_)
+        at_ = [ad_.find(w) for w in ("Sell to state", "Travel to county", "$90,000 - $110,000")]
+        if -1 in at_ or at_ != sorted(at_) or "Apply by Friday" in ad_:
+            errors += fail(f"successfactors: an ad in three description elements was not read whole, in page "
+                           f"order, and only from them: {ad_!r}")
+        ats.FETCH_DETAILS = True
+        rows, exc = go({at(0): page([row(1)], total=1), SF + job(1): split_}, lambda: ats.fetch_successfactors(SF))
+        ats.FETCH_DETAILS = False
+        comp_ = (ats.plain_rows(rows or [{}])[0] if rows else {}).get("comp") or {}
+        if exc or "$90,000 - $110,000" not in str((rows or [{}])[0].get("jd")) \
+                or (comp_.get("min"), comp_.get("max")) != (90000, 110000):
+            errors += fail(f"successfactors: with details on, the pay in an ad's third description element "
+                           f"was not read: {comp_} {exc}")
+        nested_ = part("Outer words. " + part("Inner words.").replace('<div class="joblayouttoken">', "")
+                       .replace("</div>", ""))
+        if ats.successfactors_ad(nested_).count("Inner words") != 1:
+            errors += fail(f"successfactors: a description element inside another was read twice: "
+                           f"{ats.successfactors_ad(nested_)!r}")
+        if ats.successfactors_ad(split_.replace("per year.</p></span>", "per year.</p>")) != "":
+            errors += fail("successfactors: an ad whose last description element never closes was read in part")
 
         # ---- what is not a board: never a zero, and nothing past it asked -----
         unify = page([], head='<script src="/platform/js/j2w/min/j2w.searchResultsUnify.min.js">'
@@ -21241,8 +21398,18 @@ def check_successfactors_reads_its_career_site() -> int:
         gw_closed = ('<html><head><title>Provider Enrollment Specialist - Jackson, MS (Onsite) Job Details'
                      ' | Gainwell Technologies LLC</title></head><body><p>Sorry, this position has been '
                      'filled.</p></body></html>')
+        # (the words in any case, and through any space: blind review 10,
+        # 2026-11-23 - with the title rule gone, re.I is all that reads a
+        # capitalised sentence as closed, and nothing pinned it)
+        capital_ = gw_closed.replace("Sorry, this position", "This position")
+        nbsp_ = gw_closed.replace("this position has", "this&nbsp;position&#160;has")
+        broken_ = gw_closed.replace("this position has been", "this position\n    has been\r\n")
         for page_, want, why in ((gw_closed, True, "Gainwell's closed page as measured"),
                                  (words_only, True, "the filled wording under another title"),
+                                 (capital_, True, "'This position has been filled.' capitalised"),
+                                 (gw_closed.upper().replace("<HTML>", "<html>"), True, "the wording in capitals"),
+                                 (nbsp_, True, "the wording with non-breaking spaces"),
+                                 (broken_, True, "the wording across line breaks"),
                                  (posting(), False, "a page showing the posting"),
                                  (blocked, False, "a block page"), (hidden_words, False, "words in a comment"),
                                  (hidden_title, False, "a title in a comment"),
@@ -21526,17 +21693,23 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
     the page's role, its first place token with a value (else its country;
     'Remote' said first for a remote workplace), its 'Posting Start Date' on
     an en-US page only, the sitemap's address and its workplace type; the
-    copies of one N in two languages are one row, the English. A closed
-    posting is left out and said; a 429, a 5xx or the network fails the
-    whole read, the nightly way; up to SF_SLACK postings that do not read
-    are left out and said, more fail the read; a sitemap robots.txt closes,
-    one that is not there, one with no posting and one with more than
-    SF_SITEMAP_MAX are errors. Never a zero, nothing under /services/,
-    nothing off the origin, two requests a posting.
+    copies of one N - the N it hops to, else the one its page states - are
+    one row, the English. A closed posting is left out and said (a French
+    copy showing nothing, of a requisition closed in English, with it), up
+    to a quarter of the sitemap; a 429, a 5xx or the network is asked once
+    more, and a second fails the whole read, the nightly way; up to SF_SLACK
+    postings that do not read are left out and said, more fail the read; a
+    sitemap robots.txt closes, one that is not there, one cut short (its
+    root never closed), one with no posting and one with more than
+    SF_SITEMAP_MAX addresses are errors. Never a zero, nothing under
+    /services/, nothing off the origin, two requests a posting, and one read
+    a night (the build step takes the refresh step's: GOVTECH_DOCK_UNIFY_NIGHT).
 
     THE PROBE. The site's name is each posting page's <title> after its last
-    ' | '; stated whole only when the sitemap lists SF_POSTINGS_ASKED or
-    fewer, every one was asked and at most SF_SLACK answered as closed.
+    ' | ', and a hiringOrganization a name too; stated whole only when the
+    sitemap lists SF_POSTINGS_ASKED or fewer, every one was asked, at most
+    SF_SLACK answered as closed, nothing it lists was passed over, and the
+    rows the reader would publish are in one language or pair.
 
     And a classic Career Site Builder board reads exactly as it did.
     """
@@ -21582,7 +21755,7 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
 
     def posting(title="Account Executive", tokens=(), site_name="Acme Gov Software", lang="en-US",
                 ad="<p>Sell to cities and counties.</p>", titled="token", og=True,
-                phrase="Job Details", nbsp="&nbsp;", page_title=None):
+                phrase="Job Details", nbsp="&nbsp;", page_title=None, canonical=None):
         # (titled: "token" - a 'Job Title' token holds the itemprop title, as
         # Aurigo's and Esri Canada's pages do; "h1" - the title in an <h1>
         # with no label, as Octave's; None - no itemprop title at all)
@@ -21594,6 +21767,10 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         else:
             head = ""
         meta = f'<meta property="og:title" content="{title}" />' if og else ""
+        if canonical:
+            # (the address the page states of itself, as every Unify posting
+            # page measured does: /job/<slug>/<N>-<locale>/)
+            meta += f'<link rel="canonical" href="{canonical}" />'
         shown = page_title if page_title is not None else f"{title} {phrase} | {site_name}"
         return (f'<html class="html5" xml:lang="{lang}" lang="{lang}" xmlns="http://www.w3.org/1999/'
                 f'xhtml"><head><title>{shown}</title>{meta}</head><body><div class="jobDisplayShell" '
@@ -21642,6 +21819,8 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         def get(url, **kw):
             sent.append(url)
             v = routes.get(url)
+            if callable(v):                 # (an answer that changes: once())
+                v = v()
             if isinstance(v, BaseException):
                 raise v
             if v is None:
@@ -21650,6 +21829,15 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 return W(v[0], url, loc_=v[1]) if v[0] in (301, 302) else W(v[0], url)
             return W(200, url, v)
         return get
+
+    def once(first, then):
+        # (answers `first` the first time it is asked, `then` every time after)
+        asked_ = []
+
+        def answer():
+            asked_.append(1)
+            return first if len(asked_) == 1 else then
+        return answer
 
     def ask(u):
         robots_asked.append(u)
@@ -21676,11 +21864,11 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         return int(last) - 70000000 if last.isdigit() else int(last.split("-")[0])
 
     held = (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
-            ats.FETCH_DETAILS, ats.DETAIL_PAUSE)
+            ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE, ats.UNIFY_NIGHT)
     not_before = dict(ats._HOST_NOT_BEFORE)        # (a 429 below backs its host off)
     try:
         ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = ask, (lambda u: None), None
-        ats.FETCH_DETAILS, ats.DETAIL_PAUSE = False, 0
+        ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE, ats.UNIFY_NIGHT = False, 0, 0, ""
         ats.requests.post = lambda *a, **k: (_ for _ in ()).throw(AssertionError("no POST"))
 
         # ---- every field of a row, for each tenant's tokens as measured ---------
@@ -21733,6 +21921,44 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 or sent != expect or any(r["comp"] if "comp" in r else False for r in rows or []):
             errors += fail(f"successfactors unify: with details on, the ad was not the posting page's own, "
                            f"or cost a request ({len(sent)} asked): {exc or [r.get('jd') for r in rows]}")
+        # ...every description element of it, in page order: Esri Canada's
+        # postings split the ad into three, the pay sentence in the third
+        # (blind review 10, 2026-11-23: only the first was read)
+        esri_split = posting("Solutions Engineer", (("Country", "Canada"),), ad="<p>Map the province.</p>").replace(
+            "</div></div></body>", '<div><span xml:lang="en-US" lang="en-US" itemprop="description"><p>Travel '
+            'to clients.</p></span></div><div><span xml:lang="en-US" lang="en-US" itemprop="description"><p>The '
+            'salary range for this role is $86,000 - $99,000 CAD per year.</p></span></div></div></div></body>', 1)
+        ats.FETCH_DETAILS = True
+        rows, exc, err = go(site([plain(3, esri_split)]))
+        ats.FETCH_DETAILS = False
+        jd_ = str((rows or [{}])[0].get("jd"))
+        at_ = [jd_.find(w) for w in ("Map the province", "Travel to clients", "$86,000 - $99,000")]
+        if exc or -1 in at_ or at_ != sorted(at_) or len(sent) != 4:
+            errors += fail(f"successfactors unify: with details on, an ad in three description elements was "
+                           f"not read whole and in order from the page already read: {jd_!r} {exc}")
+        # ...and the pay its third part states is read where the row is
+        # (blind review 10, 2026-11-23: an Esri Canada posting in Canada, its
+        # pay sentence written with a bare "$", was published as paying US
+        # dollars): in Canada a bare "$" names no currency, so no pay; in the
+        # US it is US dollars; a currency the ad names stands in Canada
+        def esri_pay(place, figure):
+            return esri_split.replace("Canada", place).replace(
+                "The salary range for this role is $86,000 - $99,000 CAD per year.",
+                f"The base pay for this role is {figure} annually.")
+        ats.FETCH_DETAILS = True
+        for place, figure, want_ in (("Canada", "$86,000 to $99,000", None),
+                                     ("Canada", "$86,000 to $99,000 CAD", (86000, 99000, "CAD", "year")),
+                                     ("United States", "$86,000 to $99,000", (86000, 99000, "USD", "year"))):
+            rows, exc, err = go(site([plain(3, esri_pay(place, figure))]),
+                                lambda: ats.fetch({"type": "successfactors", "ref": SF}))
+            row_ = (rows or [{}])[0]
+            comp_ = row_.get("comp")
+            got_ = comp_ and (comp_["min"], comp_["max"], comp_["currency"], comp_["period"])
+            if exc or len(rows or []) != 1 or row_.get("location") != place or got_ != want_ \
+                    or f"{figure} annually" not in str(row_.get("jd")):
+                errors += fail(f"successfactors unify: the pay in an ad's third part, {figure!r}, on a "
+                               f"posting in {place}, was published as {comp_}, not {want_} {exc}")
+        ats.FETCH_DETAILS = False
 
         # ---- the place, the mode and the date, token by token ----------------
         def row_of(page_):
@@ -21847,11 +22073,74 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         if exc or [r["title"] for r in rows or []] != ["Gestionnaire de comptes", "Field Engineer"]:
             errors += fail(f"successfactors unify: two copies of one requisition and no English did not read "
                            f"as the first of them: {[r['title'] for r in rows or []]} ({exc})")
-        # a posting that does not hop has no requisition to be paired by
+        # a posting that does not hop, and whose page states no requisition,
+        # has nothing to be paired by
         rows, exc, err = go(site([(en[0], None, en[2]), (fr[0], None, fr[2])]))
         if exc or len(rows or []) != 2:
             errors += fail(f"successfactors unify: two postings that answer at their own address were "
                            f"paired with nothing to pair them by: {rows} ({exc})")
+        # ...but ONE THAT ANSWERS IN PLACE is paired by the requisition its
+        # page states of itself, its canonical link (blind review 10: an
+        # English copy answering at its sitemap address and its French copy
+        # hopping were published as two roles)
+        en_here = f"{SF}/job/Account-Manager/621-en_US/"
+        en_in_place = (en[0], None, posting("Account Manager", canonical=en_here))
+        for order, why in (([en_in_place, fr, other], "the English answering in place"),
+                           ([fr, en_in_place, other], "the French first, the English in place")):
+            rows, exc, err = go(site(order))
+            if exc or [r["title"] for r in rows or []] != ["Account Manager", "Field Engineer"] \
+                    or rows[0]["url"] != en[0] or len(sent) != 2 + 2 + 1 + 2 \
+                    or "1 of the postings its sitemap lists are another language's copy" not in err:
+                errors += fail(f"successfactors unify: with {why}, two copies of one requisition did not read "
+                               f"as one row, the English, and say so ({err.strip()!r}, {exc}): "
+                               f"{[r['title'] for r in rows or []]}")
+        # (a French copy whose page states its number in the English locale -
+        # a translation's canonical naming the English copy - is that one
+        # requisition, its own copy: paired, the English kept)
+        fr_canon = (fr[0], fr[1], posting("Gestionnaire de comptes", lang="fr-CA", phrase="Détails de l'emploi",
+                                          canonical=f"{SF}/job/Account-Manager/621-en_US/"))
+        rows, exc, err = go(site([fr_canon, en, other]))
+        if exc or [r["title"] for r in rows or []] != ["Account Manager", "Field Engineer"] \
+                or "1 of the postings its sitemap lists are another language's copy" not in err:
+            errors += fail(f"successfactors unify: a French copy stating its number in the English locale was "
+                           f"not paired with the English as another language's copy ({err.strip()!r}): "
+                           f"{[r['title'] for r in rows or []]} {exc}")
+        for page_, why in ((posting("Account Manager", canonical=f"{SF}/job/Account-Manager/622-en_US/"),
+                            "a page stating another requisition than the one it hopped to"),
+                           (posting("Account Manager", canonical="https://elsewhere.example/job/A/621-en_US/"),
+                            "a page stating an address on another host"),
+                           (posting("Account Manager").replace(
+                               "<head>", f'<head><link rel="alternate" href="{SF}/job/A/621-fr_CA/" />', 1),
+                            "a page naming the requisition only in another link")):
+            hopped_ = (en[0], f"{SF}/job/Account-Manager/621-en_US/", page_) if "622" in page_ \
+                else (en[0], None, page_)
+            rows, exc, err = go(site([hopped_, fr]))
+            if exc or len(rows or []) != 2:
+                errors += fail(f"successfactors unify: {why} was paired on it: "
+                               f"{[r['title'] for r in rows or []]} ({exc})")
+        # TWO SITEMAP ADDRESSES OF ONE REQUISITION IN ONE LANGUAGE are one row,
+        # and said so - not 'another language's copy' - and the row is the
+        # address whose slug the page answers at, not a stale one; an address
+        # the read has landed on already is not asked again (blind review 10)
+        landed_ = f"{SF}/job/Account-Manager/621-en_US/"
+        for order, why in (([x(en[0]), x(landed_)], "a posting's address, then the one it lands on"),
+                           ([x(landed_), x(en[0])], "the address it lands on, then the posting's")):
+            rows, exc, err = go(site([en, (landed_, None, en[2])], smap=sitemap(order)))
+            if exc or [r["title"] for r in rows or []] != ["Account Manager"] \
+                    or sent.count(landed_) != 1 or sent.count(en[0]) != 1 \
+                    or "1 of the postings its sitemap lists are a requisition read listed again in the " \
+                       "same language" not in err or "another language" in err:
+                errors += fail(f"successfactors unify: {why} were not one row, the landing asked once, said "
+                               f"as listed again ({err.strip()!r}, asked {[u[len(SF):] for u in sent[2:]]}): "
+                               f"{[r['title'] for r in rows or []]} {exc}")
+        stale, live = f"{SF}/job/Sales-Engineer/70000031/", f"{SF}/job/Account-Executive/70000032/"
+        live_hop = f"{SF}/job/Account-Executive/632-en_US/"
+        rows, exc, err = go(site([(stale, live_hop, posting("Account Executive")),
+                                  (live, live_hop, posting("Account Executive"))]))
+        if exc or [r["url"] for r in rows or []] != [live] or sent.count(live_hop) != 1:
+            errors += fail(f"successfactors unify: a stale address hopping to a live posting kept its stale "
+                           f"slug as the row's address, or the posting was asked twice "
+                           f"({sent.count(live_hop)}): {[r['url'] for r in rows or []]} {exc}")
 
         # ---- what is not a posting of this site is not asked ------------------
         not_ours = ["https://elsewhere.example/job/Role-32/70000032/", f"{SF}/go/Sales/4488801/", f"{SF}/",
@@ -21869,6 +22158,16 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             errors += fail(f"successfactors unify: a sitemap's addresses off the host, off /job/, climbing, "
                            f"or in a comment were asked or read, or not said ({err.strip()!r}): asked "
                            f"{sent}, {exc}")
+        # a comment INSIDE a <loc> is taken out with nothing in its place, as
+        # XML takes it out of character data (blind review 10: a space put
+        # there was asked and published, '/job/ Role-31/...')
+        for written in (x(loc(31)).replace("/job/", "/job/<!-- x -->", 1),
+                        "<!-- a -->" + x(loc(31)) + "<!-- b -->"):
+            rows, exc, err = go(site([plain(31, posting("Field Engineer"))], smap=sitemap([written])))
+            if exc or [r["url"] for r in rows or []] != [loc(31)] or sent != [SEARCH, MAP, loc(31), hop(31)]:
+                errors += fail(f"successfactors unify: a <loc> holding a comment ({written!r}) was asked "
+                               f"or published as another address: asked {sent[2:]}, rows "
+                               f"{[r['url'] for r in rows or []]} ({exc})")
         # ...and a posting of this site that does not read plainly is an error,
         # never a posting silently lost
         for written, why, words in (
@@ -21895,6 +22194,41 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             if exc is None or rows is not None or sent != [SEARCH, MAP] or words not in str(exc):
                 errors += fail(f"successfactors unify: {why} at /sitemap.xml was read as {rows!r}, not "
                                f"refused saying why: {exc}")
+        # A SITEMAP CUT SHORT IS NOT THE BOARD (blind review 10, 2026-11-23):
+        # it states no total, so the root's close is the only sign it came
+        # whole - cut between two <url>s, or in a <lastmod>, the part before
+        # the cut read as every posting, and nothing was said
+        ten = [plain(n, posting(f"Role {n}")) for n in range(1, 11)]
+        whole_map = sitemap([x(p[0]) for p in ten])
+        after_4 = whole_map[:[m.end() for m in re.finditer("</url>", whole_map)][3]]
+        in_lastmod = whole_map[:whole_map.index("<lastmod>", whole_map.index("Role-7")) + 7]
+        kid_ = SF + "/sitemap-1.xml"
+        kids_ = [kid_, SF + "/sitemap-2.xml", SF + "/sitemap-3.xml"]
+        index_ = sitemap([x(u) for u in kids_], index=True)
+        index_cut = index_[:index_.index("</sitemap>", index_.index("sitemap-2")) + len("</sitemap>")]
+        for smap, more, why in ((after_4, {}, "cut after its fourth posting"),
+                                (in_lastmod, {}, "cut inside a <lastmod>"),
+                                (whole_map.replace("</urlset>", "</urlset><url><loc>" + x(loc(11)) + "</loc>"
+                                                   "</url>"), {}, "with a posting after its close"),
+                                (index_cut, {u: sitemap([x(loc(k))]) for k, u in enumerate(kids_, 1)},
+                                 "an index cut after its second sitemap"),
+                                (sitemap([x(kid_)], index=True), {kid_: after_4},
+                                 "an index whose sitemap is cut short")):
+            rows, exc, err = go(site(ten, smap=smap, more=more))
+            if exc is None or rows is not None or "cut short" not in str(exc) \
+                    or any("/job/" in u for u in sent):
+                errors += fail(f"successfactors unify: a sitemap {why} read as {len(rows or [])} rows "
+                               f"(asked {[u[len(SF):] for u in sent]}), not refused as cut short: {exc}")
+        for smap, why in ((whole_map + "\n  \n", "whitespace after its close"),
+                          (whole_map + '<?xml-stylesheet href="x.xsl"?>\n', "an instruction after its close")):
+            rows, exc, err = go(site(ten, smap=smap))
+            if exc or len(rows or []) != 10:
+                errors += fail(f"successfactors unify: a whole sitemap with {why} did not read whole: "
+                               f"{len(rows or [])} rows, {exc}")
+        rows, exc, err = go(site([], smap='<?xml version="1.0"?><urlset xmlns="x"/>'))
+        if exc is None or "lists no posting" not in str(exc):
+            errors += fail(f"successfactors unify: an empty '<urlset/>' was not the sitemap listing no "
+                           f"posting: {rows!r} {exc}")
 
         # ---- a sitemap index: one level, its own origin only -------------------
         kids = [SF + "/sitemap-1.xml", SF + "/sitemap-2.xml"]
@@ -21951,10 +22285,23 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                                f"saying so: {exc}")
         giant = site([plain(n, posting()) for n in range(1, ats.SF_SITEMAP_MAX + 2)])
         rows, exc, err = go(giant)
-        if exc is None or rows is not None or f"lists {ats.SF_SITEMAP_MAX + 1} postings" not in str(exc) \
+        if exc is None or rows is not None or f"lists {ats.SF_SITEMAP_MAX + 1} posting addresses" not in str(exc) \
                 or sent != [SEARCH, MAP]:
             errors += fail(f"successfactors unify: a sitemap of {ats.SF_SITEMAP_MAX + 1} postings was not "
                            f"refused unasked, saying how many: {exc} ({len(sent)} asked)")
+        # THE CAP IS ON REQUESTS, NOT ROLES, and says so: a site listing each
+        # of 201 roles in two languages is 402 addresses - short of the
+        # owner's giants of about 500+ roles, and never called one (blind
+        # review 10, 2026-11-23)
+        two_languages = site([c for n in range(1, 202) for c in (
+            plain(2 * n, posting(f"Role {n}")),
+            plain(2 * n + 1, posting(f"Rôle {n}", lang="fr-CA", phrase="Détails de l'emploi"), locale="fr_CA"))])
+        rows, exc, err = go(two_languages)
+        if exc is None or rows is not None or sent != [SEARCH, MAP] or "giant" in str(exc) \
+                or "lists 402 posting addresses" not in str(exc) or "not on roles" not in str(exc) \
+                or f"reaches it at {ats.SF_SITEMAP_MAX // 2}" not in str(exc):
+            errors += fail(f"successfactors unify: a sitemap of 201 roles in two languages was not refused "
+                           f"as past the cap on requests, in those words: {exc}")
         rows, exc, err = go(site([plain(n, posting()) for n in range(1, ats.SF_SITEMAP_MAX + 1)]))
         if exc or len(rows or []) != ats.SF_SITEMAP_MAX or len(sent) != 2 + 2 * ats.SF_SITEMAP_MAX:
             errors += fail(f"successfactors unify: a sitemap of {ats.SF_SITEMAP_MAX} postings did not read "
@@ -21995,9 +22342,23 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                                                                MAP + "?locale=en_US": sitemap([x(loc(41))])}))
         if exc or len(rows or []) != 1:
             errors += fail(f"successfactors unify: a sitemap that moves on its own host was not followed: {exc}")
+        # (and a path parameter on the way, which a Java server cuts off the
+        # segment, as robots.served does: '/services;jsessionid=1/...' is
+        # served as /services/... - blind review 10)
+        for path_, want in (("/services/x", True), ("/services;jsessionid=1/recruiting/v1/jobs", True),
+                            ("/services;/sitemap.xml", True), ("/;x/services/sitemap.xml", True),
+                            ("/Services;v=2/x", True), ("/services%3Bjsessionid=1/x", True),
+                            ("/job/services/1/", False), ("/servicesx/1/", False), ("/sitemap.xml", False)):
+            if ats._sf_services(path_) is not want:
+                errors += fail(f"successfactors unify: {path_!r} read as {'not ' if want else ''}under "
+                               f"/services/")
+        if ats._sf_child_sitemap(SF + "/services;jsessionid=1/sitemap-1.xml", SF):
+            errors += fail("successfactors unify: a sitemap index's child under /services;...; was a "
+                           "sitemap of the site's own")
         for to in ("https://elsewhere.example/sitemap.xml", SF + "/services/sitemap.xml",
                    SF + "/maps/%2e%2e/services/x.xml", SF + "/maps//sitemap.xml", SF + "/Services/x.xml",
-                   SF + "/%73ervices/x.xml"):
+                   SF + "/%73ervices/x.xml", SF + "/services;jsessionid=1/sitemap.xml",
+                   SF + "/services;/sitemap.xml", SF + "/;x/services/sitemap.xml"):
             rows, exc, err = go(site([plain(41, posting())], more={MAP: (302, to), to: sitemap([x(loc(41))])}))
             if exc is None or rows is not None or to in sent + robots_asked:
                 errors += fail(f"successfactors unify: the sitemap's hop to {to} was asked: {rows!r} ({sent})")
@@ -22005,43 +22366,241 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         # ---- a closed posting is left out, and said; never a zero --------------
         landing = SF + "/search/?q=&messageKey=jobNotFound"
         routes = site([plain(61, posting("Role 61")), plain(62, filled), (loc(63), None, (404, None)),
-                       plain(64, (410, None)), plain(65, (302, landing)), plain(66, posting("Role 66"))],
-                      more={landing: unify})
+                       plain(64, (410, None)), plain(65, (302, landing))]
+                      + [plain(n, posting(f"Role {n}")) for n in range(66, 77)], more={landing: unify})
         rows, exc, err = go(routes)
-        if exc or [nth(r["url"]) for r in rows or []] != [61, 66] or landing in sent \
-                or "4 of the 6 postings its sitemap lists answered as closed" not in err:
-            errors += fail(f"successfactors unify: of six postings, four the site says have closed were not "
-                           f"left out and said, or the list one was sent to was asked ({err.strip()!r}, "
+        if exc or [nth(r["url"]) for r in rows or []] != [61] + list(range(66, 77)) or landing in sent \
+                or "4 of the 16 postings its sitemap lists answered as closed" not in err:
+            errors += fail(f"successfactors unify: of sixteen postings, four the site says have closed were "
+                           f"not left out and said, or the list one was sent to was asked ({err.strip()!r}, "
                            f"{exc}): {[r['url'] for r in rows or []]}")
+        # (the site's words in any case and through any space - blind review 10)
+        for words_ in ("This position has been filled.", "Sorry, this&nbsp;position\nhas been filled."):
+            rows, exc, err = go(site([plain(1, posting("Role 1")), plain(2, filled.replace(
+                "Sorry, this position has been filled.", words_)), plain(3, posting("Role 3"))]))
+            if exc or [nth(r["url"]) for r in rows or []] != [1, 3] \
+                    or "1 of the 3 postings its sitemap lists answered as closed" not in err:
+                errors += fail(f"successfactors unify: a posting page saying {words_!r} was not left out as "
+                               f"closed ({err.strip()!r}): {[r['url'] for r in rows or []]} {exc}")
+        # MORE THAN A QUARTER OF A SITEMAP CLOSED IS NOT A DAY'S CHURN, and the
+        # read is refused, never published as the board (blind review 10,
+        # 2026-11-23: 130 of 131 answering 404 published one row); never
+        # fewer than SF_SLACK closed
+        for open_, shut_n, ok, why in ((12, 4, True, "4 of 16, a quarter"), (11, 5, False, "5 of 16"),
+                                       (1, 130, False, "130 of 131 answering 404"),
+                                       (1, 2, True, "2 of 3, the slack"), (9, 3, True, "3 of 12, a quarter"),
+                                       (8, 4, False, "4 of 12")):
+            ps = [plain(n, (404, None)) for n in range(1, shut_n + 1)] \
+                + [plain(n, posting(f"Role {n}")) for n in range(shut_n + 1, shut_n + open_ + 1)]
+            rows, exc, err = go(site(ps))
+            if ok is not (exc is None) or (ok and len(rows or []) != open_) \
+                    or (not ok and (rows is not None or "more than a quarter of it" not in str(exc))):
+                errors += fail(f"successfactors unify: {why} closed was {'refused' if exc else 'read'} "
+                               f"({len(rows or [])} rows): {exc}")
         rows, exc, err = go(site([plain(n, filled) for n in (61, 62, 63)]))
         if exc is None or rows is not None or "none of the 3 postings" not in str(exc):
             errors += fail(f"successfactors unify: a sitemap every one of whose postings has closed read as "
                            f"{rows!r}, not an error: {exc}")
+        # A COPY IN ANOTHER LANGUAGE THAT SHOWS NO POSTING, of a requisition
+        # whose English copy the site says has closed, is closed with it
+        # (blind review 10, 2026-11-23: a closed role's French copy, whose
+        # words the reader does not know, was said "did not read as a
+        # posting", and three such made a bilingual board unreadable)
+        gone_fr = ('<html lang="fr-CA"><head><title>Gestionnaire de comptes Détails de l\'emploi | '
+                   'acmecanada</title></head><body><div class="jobDisplay"><p>Ce poste n\'est plus '
+                   'offert.</p></div></body></html>')
 
-        # ---- a failure of the day fails the read, the nightly way ---------------
+        def pair(n, shut_=False, en_answer=None, fr_answer=None, fr_first=False):
+            en_ = (f"{SF}/job/Account-Manager-{n}/{60000000 + n}/", f"{SF}/job/Account-Manager-{n}/{n}-en_US/",
+                   en_answer or (filled if shut_ else posting(f"Account Manager {n}")))
+            fr_ = (f"{SF}/job/Gestionnaire-de-comptes-{n}/{61000000 + n}/",
+                   f"{SF}/job/Gestionnaire-de-comptes-{n}/{n}-fr_CA/",
+                   fr_answer or (gone_fr if shut_ else posting(f"Gestionnaire de comptes {n}", lang="fr-CA",
+                                                               phrase="Détails de l'emploi")))
+            return [fr_, en_] if fr_first else [en_, fr_]
+        for k, fr_first in ((1, False), (2, False), (3, False), (3, True)):
+            ps = [c for n in range(1, 17) for c in pair(n, shut_=n <= k, fr_first=fr_first)]
+            rows, exc, err = go(site(ps))
+            if exc or len(rows or []) != 16 - k or "did not read" in err \
+                    or f"{2 * k} of the 32 postings its sitemap lists answered as closed" not in err \
+                    or f"{k} of them a copy that shows no posting" not in err:
+                errors += fail(f"successfactors unify: {k} of 16 bilingual roles closed"
+                               f"{', the French copy first' if fr_first else ''}: the French copies were not "
+                               f"closed with the English ({err.strip()!r}): {len(rows or [])} rows {exc}")
+        ps = pair(1, en_answer=(404, None), fr_answer=gone_fr) + pair(2)
+        rows, exc, err = go(site(ps))
+        if exc or [r["title"] for r in rows or []] != ["Account Manager 2"] or "did not read" in err:
+            errors += fail(f"successfactors unify: a French copy that shows no posting, its English copy "
+                           f"answering 404 where it hopped, was not closed with it ({err.strip()!r}): {exc}")
+        for ps, why in ((pair(1, fr_answer=gone_fr) + pair(2), "whose English copy is open"),
+                        ([(f"{SF}/job/Gestionnaire/61000001/", None, gone_fr)] + pair(1, shut_=True)[:1]
+                         + pair(2), "with no requisition to know it by")):
+            rows, exc, err = go(site(ps))
+            if exc or "1 of the" not in err or "did not read as postings" not in err \
+                    or "a copy that shows no posting" in err:
+                errors += fail(f"successfactors unify: a French copy that shows no posting {why} was closed "
+                               f"with another, not said as not read ({err.strip()!r}): {exc}")
+
+        # ---- a failure of the day: asked once more, then it fails the read -----
+        # (blind review 10, 2026-11-23: one 5xx among a read's ~265 requests
+        # took the whole board off for the night, and the refresh never asked
+        # a network failure again; a posting's failure of the day is asked
+        # once more now, and only a second one fails the read, as it came)
         four = [plain(n, posting(f"Role {n}")) for n in (71, 72, 73, 74)]
-        for answer, why in (((429, None), "a 429"), ((503, None), "a 503"),
-                            (ats.requests.ConnectionError("connection refused"), "the network failing")):
+        days = (((429, None), "a 429"), ((503, None), "a 503"),
+                (ats.requests.ConnectionError("connection refused"), "the network failing"),
+                (ats.requests.Timeout("read timed out"), "a timeout"))
+        for answer, why in days:
+            rows, exc, err = go(site(four, more={hop(72): once(answer, four[1][2])}))
+            if exc or [nth(r["url"]) for r in rows or []] != [71, 72, 73, 74] or sent.count(hop(72)) != 2 \
+                    or sent.count(loc(72)) != 2 or err.strip():
+                errors += fail(f"successfactors unify: {why} once on one posting was not asked once more "
+                               f"and the board read whole ({sent.count(hop(72))} asks of it, "
+                               f"{err.strip()!r}): {len(rows or [])} rows {exc!r}")
+        for answer, why in days:
             routes = site(four, more={hop(72): answer})
             rows, exc, err = go(routes)
             day = isinstance(exc, ats.RateLimited) if answer == (429, None) else \
                 str(exc).startswith("HTTP 503") if answer == (503, None) else \
                 str(exc).startswith("network error")
-            if not day or rows is not None or loc(73) in sent:
-                errors += fail(f"successfactors unify: {why} on one posting did not fail the read as it "
-                               f"came, at once (asked {[u[len(SF):] for u in sent]}): {rows!r} {exc!r}")
-        # what the nightly does with it: the refresh asks a 429 once more and
-        # keeps the company Unknown, never "None found" (build_board reads
-        # the same RateLimited as a transient and asks once more too)
+            if not day or rows is not None or loc(73) in sent or sent.count(hop(72)) != 2:
+                errors += fail(f"successfactors unify: {why} twice on one posting did not fail the read as "
+                               f"it came, on its second ask (asked {[u[len(SF):] for u in sent]}): "
+                               f"{rows!r} {exc!r}")
+        # what the nightly does with it: once, the refresh reads the board
+        # whole; twice, the read fails, the refresh asks a 429 once more and
+        # keeps the company Unknown, never "None found" (build_board reads the
+        # same RateLimited, and a network failure, as a transient and asks
+        # once more too)
+        ae = [plain(n, posting("Account Executive" if n == 74 else f"Role {n}")) for n in (71, 72, 73, 74)]
+        for answer, why in days:
+            sent.clear(), robots_asked.clear(), shut.clear()
+            ats.requests.get = web(site(ae, more={hop(72): once(answer, ae[1][2])}))
+            with contextlib.redirect_stderr(io.StringIO()):
+                res = refresh.check_company({"id": "acme-gov", "name": "Acme Gov",
+                                             "ats": {"type": "successfactors", "ref": SF}})
+            if res.get("status") != "Yes" or sent.count(MAP) != 1 or sent.count(hop(72)) != 2:
+                errors += fail(f"successfactors unify: the refresh read {why} once on a posting as {res}, "
+                               f"not the board ({sent.count(hop(72))} asks of it)")
         sent.clear(), robots_asked.clear(), shut.clear()
         ats.requests.get = web(site(four, more={hop(72): (429, None)}))
         with contextlib.redirect_stderr(io.StringIO()):
             res = refresh.check_company({"id": "acme-gov", "name": "Acme Gov",
                                          "ats": {"type": "successfactors", "ref": SF}})
-        if res.get("status") != "Unknown" or res.get("roles") or sent.count(hop(72)) != 2 \
+        if res.get("status") != "Unknown" or res.get("roles") or sent.count(hop(72)) != 4 \
                 or sent.count(MAP) != 2 or loc(73) in sent:
-            errors += fail(f"successfactors unify: the refresh read a 429 on a posting as {res}, or did not "
-                           f"ask the board once more and stop at the 429 ({sent.count(hop(72))} asks of it)")
+            errors += fail(f"successfactors unify: the refresh read a lasting 429 on a posting as {res}, or "
+                           f"did not ask the board once more and stop at the 429 each time "
+                           f"({sent.count(hop(72))} asks of it)")
+
+        # ---- A NIGHT IS ONE READ ------------------------------------------------
+        # (blind review 10, 2026-11-23: the owner's yes was to "one or two
+        # requests per posting per night", and the nightly job read each board
+        # twice - refresh.py, then build_board.py - so a night cost about four
+        # a posting.) GOVTECH_DOCK_UNIFY_NIGHT names a file the job's steps
+        # share: a read that comes whole is kept there, and a later read of the
+        # board in the same run is that one, asking nothing; a failed read
+        # keeps nothing, and one too old, or made without the ads a caller
+        # wants, is asked again
+        night = tempfile.TemporaryDirectory()
+        night_file = pathlib.Path(night.name) / "unify_night.json"
+        comp_ = {"id": "acme-gov", "name": "Acme Gov", "ats": {"type": "successfactors", "ref": SF}}
+        try:
+            ats.UNIFY_NIGHT = str(night_file)
+
+            def nightly(routes):
+                # (refresh.check_company, then build_board's read, ats.fetch -
+                # each process asks robots.txt for itself)
+                sent.clear(), robots_asked.clear(), shut.clear()
+                ats.requests.get = web(routes)
+                with contextlib.redirect_stderr(io.StringIO()):
+                    res_ = refresh.check_company(comp_)
+                first_ = list(sent)
+                sent.clear()
+                err_ = io.StringIO()
+                with contextlib.redirect_stderr(err_):
+                    try:
+                        jobs_ = ats.fetch(comp_["ats"])
+                    except ats.AtsError as exc_:
+                        jobs_ = exc_
+                return res_, first_, list(sent), jobs_, err_.getvalue()
+            res, first_asked, then_asked, jobs, err = nightly(site(ae))
+            if res.get("status") != "Yes" or len(first_asked) != 2 + 2 * 4 or then_asked \
+                    or [r["url"] for r in jobs] != [loc(n) for n in (71, 72, 73, 74)] \
+                    or "this run's read of" not in err or "asked nothing again" not in err:
+                errors += fail(f"successfactors unify: the night's two reads did not cost one read "
+                               f"(refresh asked {len(first_asked)}, the build {len(then_asked)}; "
+                               f"{err.strip()!r}): {jobs!r}")
+            jobs[0]["title"] = "edited"
+            with contextlib.redirect_stderr(io.StringIO()):
+                again_ = ats.fetch(comp_["ats"])
+            if again_[0]["title"] != "Role 71" or sent:
+                errors += fail(f"successfactors unify: the run's kept read was handed out by reference, "
+                               f"or asked: {again_[0]}")
+            night_file.unlink(missing_ok=True)
+            res, first_asked, then_asked, jobs, err = nightly(site(ae, more={hop(72): (503, None)}))
+            if res.get("status") != "Unknown" or night_file.exists() or not isinstance(jobs, ats.AtsError) \
+                    or hop(72) not in then_asked:
+                errors += fail(f"successfactors unify: a read that failed was kept for the night, or the "
+                               f"next step did not ask for itself (asked {len(then_asked)}): {jobs!r}")
+            for when, why in ((dt.timedelta(hours=7), "older than the run"),
+                              (dt.timedelta(hours=-1), "dated ahead")):
+                night_file.write_text(json.dumps({SF: {"read_at": (ats._utcnow() - when).isoformat(),
+                                                       "details": False,
+                                                       "rows": [{"title": "Stale", "url": loc(1)}]}}))
+                rows, exc, err = go(site(ae))
+                if exc or "Stale" in str(rows) or len(sent) != 2 + 2 * 4:
+                    errors += fail(f"successfactors unify: a kept read {why} was used ({len(sent)} asked): "
+                                   f"{rows} {exc}")
+            for junk in ("not json", "[]", json.dumps({SF: {"read_at": "x", "rows": []}}),
+                         json.dumps({SF: {"read_at": ats._utcnow().replace(tzinfo=None).isoformat(),
+                                          "rows": [{"title": "Naive"}]}})):
+                night_file.write_text(junk)
+                rows, exc, err = go(site(ae))
+                if exc or len(rows or []) != 4 or len(sent) != 2 + 2 * 4:
+                    errors += fail(f"successfactors unify: a kept-read file {junk[:40]!r} was read as a "
+                                   f"board, or broke the read: {rows} {exc}")
+            # a read made without the ads is asked again by a caller that wants
+            # them, and one made with them is handed to one that does not, the
+            # ads dropped
+            night_file.unlink(missing_ok=True)
+            go(site(ae))
+            ats.FETCH_DETAILS = True
+            rows, exc, err = go(site(ae))
+            ats.FETCH_DETAILS = False
+            if exc or len(sent) != 2 + 2 * 4 or not all(r.get("jd") for r in rows or []):
+                errors += fail(f"successfactors unify: a caller wanting the ads was handed a read made "
+                               f"without them ({len(sent)} asked): {rows} {exc}")
+            rows, exc, err = go(site(ae))
+            if exc or sent or any("jd" in r for r in rows or []) or len(rows or []) != 4:
+                errors += fail(f"successfactors unify: a read made with the ads was not handed, without "
+                               f"them, to a caller that does not want them ({len(sent)} asked): {rows} {exc}")
+            ats.FETCH_DETAILS = True
+            rows, exc, err = go(site(ae))
+            ats.FETCH_DETAILS = False
+            if exc or sent or not all(r.get("jd") for r in rows or []):
+                errors += fail(f"successfactors unify: a read made with the ads was not handed, with them, "
+                               f"to a caller that wants them ({len(sent)} asked)")
+            # no file named, nothing kept: each read asks for itself
+            ats.UNIFY_NIGHT = ""
+            night_file.unlink(missing_ok=True)
+            go(site(ae))
+            rows, exc, err = go(site(ae))
+            if night_file.exists() or len(sent) != 2 + 2 * 4:
+                errors += fail(f"successfactors unify: with no file named, a read was kept or taken from "
+                               f"one ({len(sent)} asked)")
+        finally:
+            ats.UNIFY_NIGHT = ""
+            night.cleanup()
+        wf_ = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+        for step_, run_ in (("Refresh hiring data", "python scripts/refresh.py"),
+                            ("Build the job board and market intel", "python scripts/build_board.py")):
+            block_ = wf_[wf_.index(f"- name: {step_}"):]
+            block_ = block_[:block_.index(run_)]
+            if "GOVTECH_DOCK_UNIFY_NIGHT: ${{ runner.temp }}/unify_night.json" not in block_:
+                errors += fail(f"successfactors unify: refresh.yml's '{step_}' step does not name the "
+                               f"run's shared Unify read (GOVTECH_DOCK_UNIFY_NIGHT), so a night reads a "
+                               f"Unify board twice")
 
         # ---- up to SF_SLACK postings that do not read are left out, more fail ---
         tspd = SF + "/TSPD/?type=20"
@@ -22057,6 +22616,17 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 errors += fail(f"successfactors unify: {ats.SF_SLACK} postings answering "
                                f"{[nth(p[0]) for p in some]} were not left out and said, or the page a hop "
                                f"named was asked ({err.strip()!r}, {exc}): {[r['url'] for r in rows or []]}")
+        # A HOP BACK TO AN ADDRESS ALREADY ASKED is a loop, left out and said,
+        # each address asked once (blind review 10: the loc and its hop were
+        # asked eleven times in all before the hop limit ended it)
+        for loop_, why in (((loc(82), hop(82), (302, loc(82))), "back to its own address"),
+                           ((loc(82), hop(82), (302, hop(82))), "back to the address it hopped to")):
+            rows, exc, err = go(site([plain(81, posting("Role 81")), loop_, plain(88, posting("Role 88"))]))
+            if exc or [nth(r["url"]) for r in rows or []] != [81, 88] or sent.count(loc(82)) != 1 \
+                    or sent.count(hop(82)) != 1 or "loop" not in err:
+                errors += fail(f"successfactors unify: a posting whose hop sends a reader {why} was asked "
+                               f"{sent.count(loc(82)) + sent.count(hop(82))} times, or not left out and "
+                               f"said ({err.strip()[-160:]!r}, {exc})")
         routes = site([plain(81, posting("Role 81"))] + unreadable[:3] + [plain(88, posting("Role 88"))],
                       more={tspd: blocked})
         rows, exc, err = go(routes)
@@ -22097,7 +22667,21 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                                                                    plain(6, (302, SF + "/search/?q="))],
                  ["Acme Gov Software"], True, "two of seven closed by a 404 and a hop to the list"),
                 ([plain(n, posting() if n not in (2, 4, 6) else filled) for n in range(1, 8)],
-                 ["Acme Gov Software"], False, "three of seven closed")):
+                 ["Acme Gov Software"], False, "three of seven closed"),
+                # a posting naming its employer (hiringOrganization) names it:
+                # another employer is a second name, as on a classic site
+                # (blind review 10: it was never read on a Unify page)
+                ([plain(n, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                        'content="Parent Holdings Inc">', 1)) for n in (1, 2)],
+                 ["Acme Gov Software", "Parent Holdings Inc"], True, "postings naming another employer"),
+                ([plain(1, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                       'content="Acme Gov Software">', 1)),
+                  plain(2, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                       'content="">', 1))],
+                 ["Acme Gov Software"], True, "postings naming the site, and nobody"),
+                ([plain(1, posting().replace("<body>", '<body><!-- <meta itemprop="hiringOrganization" '
+                                                       'content="Parent Holdings Inc"> -->', 1))],
+                 ["Acme Gov Software"], True, "a hiringOrganization inside a comment")):
             got = said(site(postings_))
             if got["names"] != want or bool(got["stated"]) is not stated or got["failed"] \
                     or (len(want) > 1 and "do not agree" not in str(got["how"])) \
@@ -22105,6 +22689,86 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (want and not stated and f"more than {ats.SF_SLACK} closed" not in str(got["how"])):
                 errors += fail(f"successfactors unify probe, {why}: names {got['names']} stated "
                                f"{got['stated']} ({got['how']!r}), wanted {want} stated {stated}")
+        # COPIES IN MORE THAN ONE LANGUAGE: the classic probe's language rule,
+        # asked of what the reader would publish - a board whose copies in
+        # another language are requisitions a copy in one language was asked
+        # of (Esri Canada's pairs) is stated; one whose copies are under two
+        # numbers, or have none to pair them by, may list a role once in each,
+        # and is not (blind review 10, 2026-11-23: such a board was stated
+        # whole and proven, each role published twice)
+        def fr_copy(n, at_=None, canonical=None):
+            return (f"{SF}/job/Gestionnaire-{n}/{61000000 + n}/",
+                    f"{SF}/job/Gestionnaire-{n}/{at_ or n}-fr_CA/" if at_ is not False else None,
+                    posting(f"Gestionnaire {n}", lang="fr-CA", phrase="Détails de l'emploi", canonical=canonical))
+        pairs_ = [c for n in (1, 2, 3, 4) for c in (plain(n, posting(f"Role {n}")), fr_copy(n))]
+        en_shut = [plain(1, filled), fr_copy(1)] + [c for n in (2, 3) for c in (plain(n, posting(f"Role {n}")),
+                                                                              fr_copy(n))]
+        in_place = [(loc(1), None, posting("Role 1", canonical=hop(1))),
+                    fr_copy(1, at_=False, canonical=f"{SF}/job/Gestionnaire-1/1-fr_CA/")]
+        for postings_, stated, why in (
+                (pairs_, True, "four roles, each in English and French under one number (Esri Canada's)"),
+                (en_shut, True, "a French copy open whose English copy has closed"),
+                (in_place, True, "two copies answering in place, each page stating one number"),
+                ([plain(1, posting("Role 1")), fr_copy(2), plain(3, posting("Role 3")), fr_copy(4)], False,
+                 "two roles in English and French under four numbers"),
+                ([(loc(1), None, posting("Role 1")), fr_copy(1, at_=False)], False,
+                 "copies answering in place with no number to pair them by"),
+                ([plain(1, posting("Role 1")), plain(2, posting("Role 2")), fr_copy(7)], False,
+                 "a French copy of a number no English copy was asked of")):
+            got = said(site(postings_))
+            how_ = str(got["how"])
+            if bool(got["stated"]) is not stated or got["failed"] or got["names"] != ["Acme Gov Software"] \
+                    or vb.proven({"name": "Acme Gov Software"}, got)["ok"] is not stated \
+                    or (not stated and "written in more than one language (en, fr)" not in how_):
+                errors += fail(f"successfactors unify probe, {why}: stated {got['stated']} ({how_!r}), "
+                               f"wanted {stated}")
+        # (one rule says what language a copy is in, for the reader's English
+        # copy and the probe's languages alike: the locale of the address it
+        # hopped to, else its page's <html lang>, else the locale its page
+        # states of itself, else its title's own lang)
+        bare_ = '<html><head><title>Role</title></head><body><span lang="de-DE" itemprop="title">R</span></body></html>'
+        canon_ = f'<html><head><link rel="canonical" href="{SF}/job/R/1-fr_CA/"></head><body>x</body></html>'
+        for page_, landed_, want, why in (
+                (posting(lang="fr-CA"), hop(1), "en", "the locale it hopped to, before its page's"),
+                (posting(lang="fr-CA", canonical=hop(1)), loc(1), "fr", "its page's, before the locale it states"),
+                (canon_, loc(1), "fr", "the locale its page states"),
+                (bare_, loc(1), "de", "its title's own lang"),
+                ("<html><body>x</body></html>", loc(1), "", "nothing")):
+            if ats.successfactors_unify_language(page_, landed_, SF) != want:
+                errors += fail(f"successfactors unify: a copy read as written in "
+                               f"{ats.successfactors_unify_language(page_, landed_, SF)!r}, not {want!r} "
+                               f"({why})")
+        # WHAT THE SITEMAP LISTS AND THE READER PASSES OVER is part of the board
+        # nobody asked, so nothing is stated whole while there is any (blind
+        # review 10: an index's sitemap on http, and a second brand's
+        # postings, were passed over and the rest stated "every one it lists
+        # asked")
+        kid_, http_kid = SF + "/sitemap-1.xml", SF.replace("https:", "http:") + "/sitemap-2.xml"
+        three_ = [plain(n, posting(f"Role {n}")) for n in (1, 2, 3)]
+        brand_b = [(f"{SF}/BrandB/job/Role-{n}/{80000000 + n}/", None,
+                    posting(f"Role {n}", site_name="Brand B Holdings")) for n in (4, 5)]
+        for routes, why in ((site(three_, smap=sitemap([x(kid_), x(http_kid)], index=True),
+                                  more={kid_: sitemap([x(p_[0]) for p_ in three_]),
+                                        http_kid: sitemap([x(loc(n)) for n in range(4, 9)])}),
+                             "an index naming a sitemap on http"),
+                            (site(three_ + brand_b, smap=sitemap([x(p_[0]) for p_ in three_ + brand_b])),
+                             "a sitemap listing a second brand's postings"),
+                            (site(three_, smap=sitemap([x(p_[0]) for p_ in three_]
+                                                       + [x(loc(9).replace("://", "://www."))])),
+                             "a sitemap listing a posting on www.")):
+            got = said(routes)
+            if got["stated"] or got["names"] != ["Acme Gov Software"] or got["failed"] \
+                    or "every one it lists asked" in str(got["how"]) \
+                    or "the sitemap lists more it does not ask" not in str(got["how"]) \
+                    or vb.proven({"name": "Acme Gov Software"}, got)["ok"] \
+                    or any("BrandB" in u or u.startswith("http:") or "www." in u for u in sent):
+                errors += fail(f"successfactors unify probe: {why} was stated whole on the part it asks: {got}")
+        parent_ = said(site([plain(n, posting().replace("<body>", '<body><meta itemprop="hiringOrganization" '
+                                                                  'content="Parent Holdings Inc">', 1))
+                             for n in (1, 2)]))
+        if vb.proven({"name": "Acme Gov Software"}, parent_)["ok"]:
+            errors += fail(f"successfactors unify probe: postings naming another employer proved the site's "
+                           f"own name: {parent_}")
         # the door is unchanged: Esri Canada's tenant id and Aurigo's longer
         # registered name, in their shapes, prove neither record's name
         for site_name, ours in (("acmecanada", "Acme Canada"),
@@ -22194,7 +22858,7 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                            f"{_time.monotonic() - began:.0f}s: a pattern starts again from every tag")
     finally:
         (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
-         ats.FETCH_DETAILS, ats.DETAIL_PAUSE) = held
+         ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE, ats.UNIFY_NIGHT) = held
         ats._HOST_NOT_BEFORE.clear()
         ats._HOST_NOT_BEFORE.update(not_before)
     return errors
@@ -22370,25 +23034,87 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                       "%26q%3D1", "an encoded last name with a left curly-quote entity"),
                      ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
                       "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O&amp;#39;Brien", "an encoded talent network's sd= "
-                                                                       "with an entity escaped twice")):
+                                                                       "with an entity escaped twice"),
+                     # ...with its leading zeros, WordPress's esc_url spelling
+                     # (blind review 10: the '0*' had no pin)
+                     (TN + "&sd=Pat%20O&#039;Brien", "a decimal entity with a leading zero"),
+                     (TN + "&sd=Pat%20O&#x027;Brien", "a hex entity with a leading zero"),
+                     (TN + "&amp;sd=Pat%20O&amp;#039;Brien", "'&#039;' escaped twice"),
+                     ("https://www.acmegov.example/apply?last_name=O&#00039;Brien&first_name=Pat",
+                      "last_name= with leading zeros"),
+                     # ...and a CHARACTER REFERENCE IS THE CHARACTER IT STANDS
+                     # FOR (blind review 10, 2026-11-23): an apostrophe before a
+                     # letter written as one, a mark typed for an apostrophe
+                     # written as one, a reference escaped three times, and an
+                     # entity apostrophe percent-encoded inside an encoded address
+                     (TN + "&sd=Pat%20D&#039;&Aacute;vila", "an entity apostrophe before an entity letter"),
+                     (TN + "&sd=Pat%20D&#39;&#193;vila", "an entity apostrophe before a numeric letter"),
+                     ("https://www.acmegov.example/apply?last_name=D'&Aacute;vila&first_name=Pat",
+                      "a raw apostrophe before an entity letter"),
+                     (TN + "&sd=Pat%20O&acute;Brien", "&acute; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#180;Brien", "&#180; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#xb4;Brien", "&#xb4; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&prime;Brien", "&prime; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#8242;Brien", "&#8242; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#96;Brien", "&#96; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&grave;Brien", "&grave; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#x201B;Brien", "&#x201B; for an apostrophe"),
+                     (TN + "&sd=Pat%20O&#xFF07;Brien", "&#xFF07; for an apostrophe"),
+                     (TN + "&amp;amp;sd=Pat%20O&amp;amp;#39;Brien", "an entity escaped three times"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O%26%2339%3BBrien", "an encoded sd= with '%26%2339%3B'"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O%26apos%3BBrien", "an encoded sd= with '%26apos%3B'"),
+                     ("https://acme.example/go?u=https%3A%2F%2Fapp.jobvite.com%2FTalentNetwork%2Faction%2FjoinTN"
+                      "%3Fci%3Dq6NaVfwI%26sd%3DPat%2520O%26rsquo%3BBrien", "an encoded sd= with '%26rsquo%3B'"),
+                     ("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DO%26%23x27%3BBrien",
+                      "an encoded last_name= with '%26%23x27%3B'")):
         out = fsb._no_person(raw)
         if "Brien" in out or "Angelo" in out or "Pat" in out or "vila" in out or "eill" in out \
                 or ("q6NaVfwI" in raw and "q6NaVfwI" not in out):
             errors += fail(f"finder: {why} with an apostrophe kept part of a person's name, or the "
                            f"account went with it: {out!r}")
+    # ...and a letter written as a reference is a letter of the name (blind
+    # review 10: 'Jos&#233; Garc&#237;a' kept '&#233; Garc&#237;a')
+    for raw, why in ((TN + "&sd=Jos&#233;%20Garc&#237;a", "letters written as numeric references"),
+                     (TN + "&sd=Pat%20&Aacute;lvarez", "a capital written as a named reference"),
+                     (TN + "&sd=Pat%20Garc&iacute;a&jvsrc=AbC123", "a named reference before the next key"),
+                     ("https://www.acmegov.example/apply?last_name=Garc&#xED;a&ref=AbC123", "a hex reference"),
+                     ("https://www.acmegov.example/apply?last_name=Garc&amp;iacute;a&amp;ref=AbC123",
+                      "a named reference escaped twice")):
+        out = fsb._no_person(raw)
+        if any(w in out for w in ("Jos", "Garc", "lvarez", "Pat")) or ("AbC123" in raw and "AbC123" not in out):
+            errors += fail(f"finder: {why} kept part of a person's name, or the next key went with it: "
+                           f"{out!r}")
     # ...but a BARE separator - '&amp;', '&#38;', '&#x26;', none of them an
     # apostrophe - still ends the value, so the account or a ref after it
     # survives, whichever spelling of an apostrophe came before
-    for sep in ("&", "&amp;", "&#38;", "&#038;", "&#x26;", "&amp;amp;"):
+    for sep in ("&", "&amp;", "&#38;", "&#038;", "&#x26;", "&amp;amp;", "&#x0026;", "&AMP;", "&amp;#38;"):
         for raw, kept_ in (("https://app.jobvite.com/TalentNetwork/action/joinTN?sd=Pat%20O&#39;Brien"
                             f"{sep}ci=q6NaVfwI", "ci=q6NaVfwI"),
                            (TN + f"&sd=Pat%20O&lsquo;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
                            (TN + f"&sd=Pat%20O&amp;#x27;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
                            (f"https://www.acmegov.example/apply?last_name=O&#700;Brien{sep}ref=AbC123",
-                            "ref=AbC123")):
+                            "ref=AbC123"),
+                           (TN + f"&sd=Pat%20O&acute;Brien{sep}jvsrc=AbC123", "jvsrc=AbC123"),
+                           (TN + f"&sd=Pat%20D&#039;&Aacute;vila{sep}jvsrc=AbC123", "jvsrc=AbC123")):
             out = fsb._no_person(raw)
-            if "Brien" in out or "Pat" in out or kept_ not in out:
+            if "Brien" in out or "Pat" in out or "vila" in out or kept_ not in out:
                 errors += fail(f"finder: after {sep!r} the value did not end, or a name stayed: {out!r}")
+    # (a reference to anything else that ends a value raw - a quote, '#', '<',
+    # '>', a line break - ends it too; and in an encoded address the encoded
+    # separator, '%26', and its references, ends it)
+    for end_ in ("&quot;", "&#34;", "&#x22;", "&lt;", "&#60;", "&gt;", "&#x3E;", "&num;", "&#35;", "&#10;",
+                 "&#xA;", "&NewLine;", "&#13;"):
+        out = fsb._no_person(f"https://www.acmegov.example/apply?first_name=Pat{end_}ref=AbC123")
+        if "Pat" in out or f"{end_}ref=AbC123" not in out:
+            errors += fail(f"finder: the person scrub ran past {end_!r}: {out!r}")
+    for sep in ("%26", "%26amp%3B", "%26%2338%3B", "%26%23x26%3B"):
+        out = fsb._no_person("https://x.example/go?u=https%3A%2F%2Fother.example%2Fapply%3Flast_name%3DO"
+                             f"%26%2339%3BBrien{sep}q%3D1")
+        if "Brien" in out or f"{sep}q%3D1" not in out:
+            errors += fail(f"finder: in an encoded address the value did not end at {sep!r}, or a name "
+                           f"stayed: {out!r}")
     kept = fsb._no_addresses({"pages": [{"asked": here, "final": TN + "&sd=Pat%20O'Brien"},
                                         {"asked": here, "final": TN + "&sd=Pat%20D'%C3%81vila"}],
                               "hops": [TN + "&sd=Pat O'Brien", TN + "&sd=Pat%20O&rsquo;Brien",
@@ -23095,6 +23821,28 @@ def check_derived() -> int:
         ({"jd_read": True, "comp": None}, {"jd_seen": True, "comp": None}),
         # and only a real True says so; a stray string is not a reading
         ({"jd_read": "no", "comp": None}, {"jd_seen": False, "comp": None}),
+        # WHERE THE ROW IS decides what a bare "$" is, as in ats.plain_rows
+        # (blind review 10, 2026-11-23: a posting in Ontario, its pay read
+        # from the jd cache with a bare "$", was published as US dollars). A
+        # fetched row is read as main() reads its is_us; a capture by the
+        # is_us it carries ("Remote" alone would read as home); a currency
+        # the text names stands anywhere
+        ({"_from_cache": True, "jd": "Base salary range: $140,000 - $200,000 per year.",
+          "location": "Ontario, Canada", "comp": None}, {"jd_seen": True, "comp": None}),
+        ({"_from_cache": True, "jd": "Base salary range: $140,000 - $200,000 per year.",
+          "location": "", "office_hint": {"country": "CA"}, "comp": None}, {"jd_seen": True, "comp": None}),
+        ({"_from_cache": True, "jd": "Base salary range: $140,000 - $200,000 per year.",
+          "location": "Austin, TX", "comp": None},
+         {"jd_seen": True, "comp_floor": 140000, "comp_period": "year"}),
+        ({"_from_cache": True, "jd": "Base salary range: CAD 140,000 - 200,000 per year.",
+          "location": "Ontario, Canada", "comp": None},
+         {"jd_seen": True, "comp": {"min": 140000, "max": 200000, "currency": "CAD", "period": "year",
+                                    "source": "text", "raw": "CAD 140,000 - 200,000 per year"}}),
+        ({"pay_text": "Base salary range: $140,000 - $200,000 per year.", "jd_read": True,
+          "location": "Remote", "is_us": False, "comp": None}, {"jd_seen": True, "comp": None}),
+        ({"pay_text": "Base salary range: $140,000 - $200,000 per year.", "jd_read": True,
+          "location": "Remote", "is_us": None, "comp": None},
+         {"jd_seen": True, "comp_floor": 140000, "comp_period": "year"}),
         # a fetcher handing back something malformed costs the pay range, not
         # the board: this whole script is one process writing one file.
         ({"jd": "text", "comp": "$140k"}, {"jd_seen": True, "comp": None}),

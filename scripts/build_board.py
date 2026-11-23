@@ -712,9 +712,14 @@ def derived(row: dict) -> dict:
     # Guarded on `_from_cache` rather than on jd generally, so a row the
     # fetcher already put through plain_rows is not parsed twice - and an
     # ats-published `comp` is never overwritten, here or anywhere.
+    #
+    # WHERE THE ROW IS decides what a bare "$" is, here as in ats.plain_rows
+    # (salary.parse's `abroad`, blind review 10, 2026-11-23): Harris's posting
+    # in Ontario, its pay read from the jd cache with a bare "$", was
+    # published as paying US dollars. See _abroad below.
     if comp is None and row.get("_from_cache"):
         try:
-            comp = salary.parse(row.get("jd") or "")
+            comp = salary.parse(row.get("jd") or "", abroad=_abroad(row))
         except Exception:
             comp = None
 
@@ -724,7 +729,7 @@ def derived(row: dict) -> dict:
     cap = cap if isinstance(cap, str) and cap.strip() else None
     if cap and comp is None:
         try:
-            comp = salary.parse(cap)
+            comp = salary.parse(cap, abroad=_abroad(row))
         except Exception:
             # same reason as the type checks above: a malformed description
             # costs its own pay range, never the whole board
@@ -750,6 +755,16 @@ def derived(row: dict) -> dict:
     if row.get("posted"):
         out["posted"] = row["posted"]
     return out
+
+
+def _abroad(row: dict) -> bool:
+    """Whether the board lists this row outside the US, for what a bare "$"
+    in its pay means (derived): the is_us a hand capture carries, as
+    manual_row publishes it, else as main() reads a fetched row's is_us
+    (ats._abroad, which plain_rows asks too)."""
+    if "is_us" in row:
+        return row["is_us"] is False
+    return ats._abroad(row)
 
 
 # --- descriptions read outside the crawl ---------------------------------

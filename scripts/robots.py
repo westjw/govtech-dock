@@ -181,12 +181,21 @@ def decide(rules: list[tuple[bool, str]], url: str) -> bool:
     and the path as served (`served`) are all allowed: served as a Java
     server serves it, every ';...' path parameter cut off (blind review 9,
     2026-11-23: '/careers;jsessionid=1/private/x' is /careers/private/x),
-    and as a server that knows no path parameter serves it."""
+    and as a server that knows no path parameter serves it.
+
+    AND WITH ITS EMPTY SEGMENTS MERGED (blind review 10, 2026-11-23): nginx
+    (merge_slashes, on unless turned off), Tomcat and Apache serve
+    '/careers//private/x', '//careers/private/x' and '/careers/;x//private/x'
+    as /careers/private/x, and each was asked only with the empty segment in
+    it, which no rule matched. Each reading above is asked again with every
+    run of slashes read as one, so a page is read only when it is allowed
+    however a server merges or keeps them."""
     p = urllib.parse.urlsplit(url)
     query = f"?{p.query}" if p.query else ""
     paths = [p.path or "/"]
     if p.scheme in ("http", "https"):
         paths += [served(paths[0]), served(paths[0], params=False)]
+        paths += [_SLASHES.sub("/", q) for q in paths]
     for path in dict.fromkeys(paths):
         asked, best = _norm(path + query), None
         for allow, pat in rules:
@@ -200,6 +209,7 @@ def decide(rules: list[tuple[bool, str]], url: str) -> bool:
 
 
 _SLASH = re.compile(r"\\|%2f|%5c", re.I)
+_SLASHES = re.compile(r"/{2,}")
 _DOT = re.compile(r"%2e", re.I)
 
 

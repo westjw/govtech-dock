@@ -553,7 +553,8 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
 - New classifier edge cases go into `classify.py`/`roles.py` **with a matching
   case in `selftest.py`**: `CLASSIFIER_CASES` (title rules), `PAGESCAN_CASES`
   (`html` page-text rules), `TITLE_TEXT_CASES`, `FAMILY_CASES`,
-  `SALARY_CASES`. A new invariant means a new case there.
+  `SALARY_CASES` (`SALARY_ABROAD_CASES` for a posting outside the US). A new
+  invariant means a new case there.
 - After any data or script change: `python3 scripts/selftest.py` must print
   **all checks passed**.
 - **Never let a score reward volume over correctness.** The owner's rule, and
@@ -628,13 +629,16 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   /careers/private/x and was asked only as written. `robots.served` cuts it
   off every segment first (after reading a backslash as a slash, as a browser
   does), and a segment that is nothing but a parameter goes with it, as
-  Tomcat merges the two slashes it leaves ('/a/;x/b' is /a/b). An empty
-  segment WRITTEN as such ('/a//b') is still asked as written and resolved
-  as RFC 3986 reads it, not merged as Tomcat and nginx merge it - not
-  changed here, and not yet reviewed. `robots.decide`
+  Tomcat merges the two slashes it leaves ('/a/;x/b' is /a/b). **An empty
+  segment is asked merged too** (blind review 10, 2026-11-23): written as
+  such ('/a//b', '//a/b', or left by a parameter's segment cut,
+  '/a/;x//b'), it was asked only as written and as RFC 3986 resolves it,
+  where no rule matched, while nginx (merge_slashes), Tomcat and Apache
+  serve it merged - '/careers//private/x' is /careers/private/x. `robots.decide`
   asks the path as written, as served so, and as served with the parameter
   kept (`served(..., params=False)`, the earlier reading - a server that
-  knows no path parameter), and a page is read only when all three are
+  knows no path parameter), and each of those again with every run of
+  slashes read as one, and a page is read only when all of them are
   allowed; an escaped ';' ('%3B') is a character of its segment, not a
   parameter.
   A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
@@ -1100,8 +1104,21 @@ confident falsehood. All four store what a person actually saw.
   on a public board as a fact about somebody else's company. So it is tuned hard
   toward silence: no OTE, no M/B multipliers, no figure without a currency
   marker, no posting with two different ranges, sanity bounds per period, and
-  periods stored rather than converted. If you are here because "it missed one",
-  the fix is a new *anchored* form with a test case — never a loosened anchor.
+  periods stored rather than converted. A bare "$" is read as US dollars only
+  at home: on a row the board lists outside the US (`ats.plain_rows` passes
+  `salary.parse(..., abroad=True)` where `ats._abroad` reads it so, as
+  build_board reads `is_us` false: its location and title, else the country
+  its board named) a range whose currency rests on a bare "$" alone is no pay
+  stated, and a range the text names a currency for (CAD, C$, US$, USD, £)
+  stands (blind review 10, 2026-11-23: an Esri Canada posting in Canada was
+  published as paying US dollars; cases in `SALARY_ABROAD_CASES`). The build
+  reads a description the crawl did not (`build_board.derived`: the jd cache,
+  a hand capture) the same way, a capture by the `is_us` it carries (Harris's
+  posting in Ontario, from the jd cache, was published in US dollars too). A
+  board's own pay field (`ats._ats_text`, a card's pay chip in
+  `ats.card_fields`) is still read with the home reading wherever the row is.
+  If you are here because "it missed one", the fix is a new *anchored* form
+  with a test case — never a loosened anchor.
 
 ## Pipeline agents: briefs out, proposals in
 
@@ -2467,9 +2484,21 @@ and never said where in a page a reference sat.
   &OpenCurlyQuote; and &rsquor;, any of the numeric references without its
   ';' before a letter or a letter's escape ('&#39Brien', '&#x27Brien'), and each form
   escaped twice (&amp;#39;, &amp;#x27;, &amp;apos;, &amp;rsquo;,
-  &amp;#8217;). A bare &amp; (and &#38;, &#x26;) is none of these and still
-  ends the value - it is the next key's separator, so the account or ref
-  after it survives - and a quote that ends an attribute still ends it.
+  &amp;#8217;) or three times (&amp;amp;#39;), with leading zeros or not
+  ('&#039;', WordPress's esc_url, and '&#x027;' are pinned). **A character
+  reference is the character it stands for** (blind review 10,
+  2026-11-23): a letter written as one ('Jos&#233; Garc&#237;a', '&Aacute;',
+  'D&#039;&Aacute;vila' as PHP's htmlentities writes D'Ávila) and a mark
+  typed for an apostrophe (&acute;, &#180;, &#xb4;, &prime;, &#8242;, &#96;,
+  &grave;, &#x201B;, &#xFF07;) go with the name as their raw characters do,
+  escaped once or twice more too, and inside a percent-encoded address so
+  does a percent-encoded reference ('O%26%2339%3BBrien', '%26apos%3B',
+  '%26rsquo%3B', '%26%23x27%3B'). Only a reference to what ends a value raw
+  ends it: a bare &amp; (and &#38;, &#038;, &#x26;, &AMP;, &amp;amp;, and
+  '%26', '%26amp%3B', '%26%2338%3B' in an encoded address) is none of these
+  and still ends the value - it is the next key's separator, so the account
+  or ref after it survives - and so do a quote, '#', '<', '>' and a line
+  break written as references; a quote that ends an attribute still ends it.
   **Two shapes are left on purpose**: an apostrophe followed by a raw space
   ("O' Brien") and a value that opens with an apostrophe (last_name='Brien)
   each read the same as a quote that ends the attribute the address sits in
@@ -3402,15 +3431,25 @@ review and the owner's word, through the wiring door.
   '..;' segment, an empty one or a backslash (robots.txt is asked of the
   address as written, and '/job/%2e%2e/services/...' went out as
   '/job/../services/...').
-- **Behind FETCH_DETAILS** the ad is each posting's `itemprop="description"`
-  element, to the close that matches it. CSB has no pay field; a figure in the
-  ad's text is plain_rows' text parse, as for every reader. **A posting whose
+- **Behind FETCH_DETAILS** the ad is every `itemprop="description"` element
+  of each posting's page, in page order, each to the close that matches it
+  (`ats.successfactors_ad`, the classic reader's and the Unify reader's: Esri
+  Canada's postings split the ad into three, the pay sentence in the third,
+  and only the first was read until blind review 10, 2026-11-23); one inside
+  another is read once, and one never closed is no ad, never part of one.
+  CSB has no pay field; a figure in the ad's text is plain_rows' text parse,
+  as for every reader, where a bare "$" on a row outside the US names no
+  currency (blind review 10, 2026-11-23: Esri Canada's pay sentence, read
+  from the third part, was published as US dollars on its postings in
+  Canada; see `scripts/salary.py` above). **A posting whose
   own page says it has closed is not published as open** (eighth blind
   review): a 404 or 410, a hop to the site's list (/search/ or /search, with
   or without a query; not followed), or the site's own words at its address
   (`ats.successfactors_filled`: a 200 page showing no posting that says "this
-  position has been filled", as a reader sees it - never inside a comment or
-  a script; Gainwell's closed page, measured 2026-11-22, says "Sorry, this
+  position has been filled", as a reader sees it - in any case, through any
+  space, &nbsp; or line break between its words (pinned since blind review
+  10: with the title rule gone, the words are the only sign), never inside
+  a comment or a script; Gainwell's closed page, measured 2026-11-22, says "Sorry, this
   position has been filled." under the posting's own title) drops the row,
   and the reader says how many on stderr. **The posting's title alone is not
   the site saying so** ('<role> Job Details | <site>'): every OPEN posting
@@ -3418,7 +3457,10 @@ review and the owner's word, through the wiring door.
   site's own template, titled for the role, with an error where the posting
   was, was read as closed by its title, and five open postings of seven
   answering so were dropped). A refusal, a 429, a 5xx, the network failing,
-  a hop anywhere else off /job/ (not followed) and a page that shows no
+  a hop anywhere else off /job/ (not followed), a hop back to an address
+  the read already asked (a loop: not asked again - blind review 10, when a
+  posting and its hop sending a reader to each other were asked eleven
+  times before the hop limit ended it) and a page that shows no
   posting and is not the site saying so - a block page served 200 (F5's
   "The requested URL was rejected"), an error page, the site's template
   titled for the role without those words - say nothing about the posting,
@@ -3502,24 +3544,53 @@ review and the owner's word, through the wiring door.
   every `<lastmod>` one day, never read). **The sitemap**
   (`ats.successfactors_sitemap`) is asked as every page is (robots.txt at
   every hop, its own host, and nothing under /services/ whatever robots.txt
-  says) and read as an XML reader reads it: a commented-out `<url>` is not
-  listed, and a loc's escapes are undone ('&apos;' Esri Canada's, '&amp;'
-  Octave's). A /job/ address on the origin that says plainly where it goes
-  is a posting; anything else is passed over and said; one that is a
+  says - written so, or as a server serves it, a ';...' path parameter cut
+  off each segment: '/services;jsessionid=1/...' is /services/..., blind
+  review 10) and read as an XML reader reads it: a commented-out `<url>` is
+  not listed, a comment inside a `<loc>` is taken out with nothing in its place
+  (blind review 10: a space put there was asked and published), and a loc's
+  escapes are undone ('&apos;' Esri Canada's, '&amp;' Octave's). A /job/
+  address on the origin that says plainly where it goes is a posting;
+  anything else is passed over and said; one that is a
   posting but does not read plainly (a bare '&', an entity XML does not
   define, '&amp;apos;' undone twice, a relative address, CDATA, a control
-  character) fails the read, so a posting is never silently lost. A
-  `<sitemapindex>` is followed one level, to at most `SF_SITEMAPS_MAX` (5)
+  character) fails the read, so a posting is never silently lost. **A
+  sitemap cut short is not the board** (blind review 10, 2026-11-23): a
+  Unify sitemap states no total to hold a read to, so its root's close is
+  the only sign it came whole, and a sitemap (or an index, or a sitemap an
+  index names) whose text does not end with `</urlset>` or
+  `</sitemapindex>` - only whitespace or a processing instruction after it -
+  is an error, never the part before the cut (an empty `<urlset/>` is the
+  sitemap listing nothing, below). A `<sitemapindex>` is followed one
+  level, to at most `SF_SITEMAPS_MAX` (5)
   sitemaps on its own origin; another host's is not asked. **Never a zero,
-  never a giant**: a sitemap robots.txt closes, one not there (404 or 410:
-  the board unreadable, never gone), one listing no posting and one listing
-  more than `SF_SITEMAP_MAX` (400; the owner skips giants of about 500+) are
-  errors that say why. **Each posting is asked once**
-  (`successfactors_posting`: its loc and the 302 to
-  /job/<slug>/<N>-<locale>/), two requests a posting beside the /search/
-  page and the sitemap - Octave 264 a night, Esri Canada 66, Aurigo 34, and
-  robots.txt: the cost the owner accepted. **A row is the posting's own
-  page** (`ats.successfactors_unify_row`): the role (its itemprop="title"
+  never past the cap**: a sitemap robots.txt closes, one not there (404 or
+  410: the board unreadable, never gone), one listing no posting and one
+  listing more than `SF_SITEMAP_MAX` (400) posting addresses are errors that
+  say why. The cap is on this reader's requests (two an address), not on
+  roles, and the error says so (blind review 10, 2026-11-23: it called a
+  bilingual site of 201 roles, 402 addresses, "a giant"): a site listing
+  each role in English and in French reaches it at 200 roles, short of the
+  owner's giants of about 500+ - whether such a site should be read is his.
+  **Each posting is asked once** (`successfactors_posting`: its loc and the
+  302 to /job/<slug>/<N>-<locale>/), two requests a posting beside the
+  /search/ page and the sitemap, and robots.txt once: a READ is Octave 264,
+  Esri Canada 66, Aurigo 34. **A night is one read** (blind review 10,
+  2026-11-23: the owner's yes was to "one or two requests per posting per
+  night", and the nightly job reads every wired board twice - refresh.py
+  for its status, then build_board.py for its postings, each a process of
+  its own - so a night cost two reads, about four a posting, Octave 530):
+  refresh.yml names one file for both steps (`GOVTECH_DOCK_UNIFY_NIGHT`, in
+  the runner's temp directory, never committed), a Unify read that comes
+  whole is kept there (`ats.UNIFY_NIGHT`), and the build step's read of that
+  board is it, asking nothing - Octave 265 a night with robots.txt. A read
+  that fails keeps nothing, so the build step asks for itself (a failing
+  night costs up to two reads); one older than `UNIFY_NIGHT_MAX_AGE` (6h,
+  past the job's 5h), or made without the ads a caller wants, is asked
+  again; with no file named (any run but the nightly) each read asks for
+  itself. scope_review.py's read of a company with openings nobody has
+  ruled on, and a person's, are reads of their own. **A row is the
+  posting's own page** (`ats.successfactors_unify_row`): the role (its itemprop="title"
   text, else og:title); the first of the tenant's place tokens shown with a
   value (Posting Location, Job Location (Short), Job Location, Location,
   Work Location), else its Country, a token naming several places split at
@@ -3530,29 +3601,86 @@ review and the owner's word, through the wiring door.
   page is dated); the url the sitemap's address, never where it landed
   (Esri Canada writes a French posting's Location twice encoded); the ad
   (`successfactors_ad`) behind FETCH_DETAILS, for no request more. **One
-  requisition is one row**: copies that land on one N (Esri Canada's
-  .../663-en_US/ and .../663-fr_CA/) are published once, the en_* copy where
-  there is one, and said. **What a posting answers**: the site saying it
-  closed (`successfactors_closed`, `successfactors_filled`) leaves it out,
-  said on stderr; a 429, a 5xx or the network fails the whole read at once,
-  raised as it came, so refresh and build_board ask a 429 and the network
-  once more and a board that still will not read keeps its state (Unknown,
-  never "None found") - one flaky request never empties a board; anything
-  else (a page showing no posting that is not the site saying so,
+  requisition is one row**: copies of one N (Esri Canada's .../663-en_US/
+  and .../663-fr_CA/) are published once, the English copy where there is
+  one (by the language rule below, `ats.successfactors_unify_language`),
+  and said - another language's copy, or the same requisition listed again
+  in one language (one number, one locale). The N is the one the address a
+  loc hops to names, else the one the page states of itself - its `<link
+  rel="canonical" href="<origin>/job/<slug>/<N>-<locale>/">`, on every
+  posting page measured - and none where the two name different numbers
+  (a page stating its number in another locale, as a translation's
+  canonical may name the English copy, is the same requisition, its copy
+  the address it came from; `ats.successfactors_unify_requisition`; blind
+  review 10: an English copy
+  answering at its own sitemap address and its French copy hopping were
+  published as two roles). Where copies in one language differ, the row is
+  the address whose slug is the one the page answers at (a stale slug that
+  hops to the posting is not the row's), and an address the read has
+  already landed on is not asked again. **What a posting answers**: the
+  site saying it closed (`successfactors_closed`, `successfactors_filled`)
+  leaves it out,
+  said on stderr - and so does a copy in another language than English that
+  shows no posting, of a requisition another copy of which the site says
+  has closed, weighed once every copy is read (the site's words are read in
+  English only: blind review 10, 2026-11-23, a closed role's French copy
+  was said "did not read as a posting", and three made a bilingual board
+  unreadable; an English copy that does not say it is the page it is);
+  **a failure of the day on a posting** - a 429, a 5xx, the
+  network failing or timing out - is asked once more (after the gate's
+  backoff for a 429, `SF_RETRY_PAUSE` (2s) for the rest), so one flaky
+  request costs one request more, never the board (blind review 10,
+  2026-11-23: one 5xx among a read's ~265 requests took the whole board off
+  for the night, and the refresh asks no network failure again); a second
+  one fails the whole read at once, raised as it came, as any reader's
+  failure of the day does - refresh asks the board once more on a 429 (not
+  a 5xx or the network), build_board on a 429 or the network (not a 5xx) -
+  and a board that still will not read is Unknown for the night, never
+  "None found": its postings are not on the board that night, and the
+  company reads as one we could not read; anything else (a page showing
+  no posting that is not the site saying so,
   robots.txt closing it, a 401 or 403, a hop off /job/ or off the host, a
-  page naming no role) is left out and said up to `SF_SLACK` (2) postings,
-  and more is the board unreadable; every posting closed is an error.
+  hop round in a loop - each address asked once - a page naming no role) is
+  left out and said up to `SF_SLACK` (2) postings, and more is the board
+  unreadable; every posting closed is an error, and
+  so is more than a quarter of the sitemap closed in one read
+  (`SF_CLOSED_SHARE`, never fewer than `SF_SLACK`): not a day's postings
+  closing, but a site answering 404 for postings it has, a soft block or a
+  sitemap long out of date (blind review 10: 130 of 131 answering 404
+  published one row as the board).
   **The probe** (`verify_boards._successfactors_unify`): the site's name is
   each posting page's `<title>` after its last ' | ' ('<role> Job Details |
-  <site>', in French '<rôle> Détails de l'emploi | <site>'), stated whole
-  only by the classic rule - the sitemap lists `SF_POSTINGS_ASKED` (40) or
-  fewer, every one asked, at most `SF_SLACK` closed; a longer one is asked
-  about its first `SF_POSTINGS_SAMPLED` (5) that answer, for the desk; a
-  block page or any other failure is the board not read. The classic
-  probe's language rule is not asked: the reader pairs the copies. The
-  names measured: 'Aurigo Software Technologies', 'esricanada', 'Octave'.
-  proven() is unchanged: 'esricanada' proves nobody (a country on our name
-  must be on the board's), and 'Aurigo Software Technologies' does not
+  <site>', in French '<rôle> Détails de l'emploi | <site>'), and a posting
+  naming its employer (a `hiringOrganization` meta, not empty, not in a
+  comment) names it too - another employer is a second name, so not proven
+  (blind review 10: it was never read; the three sites measured carry
+  none) - stated whole only by the classic rule - the sitemap lists
+  `SF_POSTINGS_ASKED` (40) or
+  fewer, every one asked, at most `SF_SLACK` closed - and only with nothing
+  it lists passed over (a sitemap its index names on another origin, an
+  address that is not a /job/ posting of this site - another brand's
+  /<Brand>/job/, www., http - is part of the board nobody asked: blind
+  review 10, 2026-11-23, when the rest was stated "every one it lists
+  asked"); a longer one is asked about its first `SF_POSTINGS_SAMPLED` (5)
+  that answer, for the desk; a
+  block page or any other failure is the board not read. **Copies in more
+  than one language** are the classic probe's language rule, asked of what
+  the reader would publish (blind review 10, 2026-11-23: it was not asked,
+  and a board of copies the reader cannot pair - one role under two
+  numbers, or copies with no number to pair them by - was stated whole and
+  proven, each role published twice): the rows it would publish, one a
+  requisition and its 'en' copy where there is one, are stated whole only
+  when written in one language, or when every row in another language is
+  of a requisition a copy in one language was asked of, open or closed
+  (Esri Canada's 16 pairs); else the names are kept for the desk, not
+  stated. A copy's language is one rule for the reader and the probe
+  (`ats.successfactors_unify_language`): the locale of the address its loc
+  hopped to (.../663-fr_CA/), else its page's `<html lang>`, else the locale
+  its page states of itself (a translation's canonical may name another
+  copy's), else its title's own lang. The names measured: 'Aurigo
+  Software Technologies', 'esricanada', 'Octave'. proven() is unchanged:
+  'esricanada' proves nobody (a country on our name must be on the
+  board's), and 'Aurigo Software Technologies' does not
   prove the bare 'Aurigo Software' - Aurigo's record passes only through
   its also_known_as 'Aurigo Software Technologies Inc.' (asked offline of
   the record on file). **Read offline** over the responses saved
@@ -3562,13 +3690,18 @@ review and the owner's word, through the wiring door.
   32 locs, 16 copies paired, in 66, stated whole as 'esricanada' and
   proven for nobody; Octave 131 rows in 264, five postings asked, not
   stated.
-  **Known**: the ad is the FIRST itemprop="description" element only
-  (`successfactors_ad`, shared with the classic reader), and Esri Canada's
-  postings split theirs into three, the pay sentence in the third; Esri
-  Canada's Salary Min/Max tokens are not read. Wiring the three waits for
-  the door. Guard: `check_successfactors_unify_reads_its_sitemap` (77
-  one-line breakages of the reader and the probe, each alone in a private
-  copy, each caught).
+  **Known**: Esri Canada's Salary Min/Max tokens are not read, and on the
+  posting page saved 2026-11-23 they are the only place it names the
+  currency (CAD): its ad's third part states the range with a bare "$".
+  Every Esri Canada row reads 'Canada', so with details on that range is no
+  pay stated - never US dollars, as it was published once every description
+  element was read (blind review 10, 2026-11-23). Wiring the three waits
+  for the door.
+  Guard: `check_successfactors_unify_reads_its_sitemap` (77 one-line
+  breakages of the reader and the probe, each alone in a private copy, each
+  caught); blind review 10's findings on the reader and the probe are each
+  pinned there or in `check_successfactors_reads_its_career_site`, each pin
+  failing with its fix undone.
 - **Measured** on six CSB hosts by the research of 2026-11-20 (Landis+Gyr 63,
   JENOPTIK 175, SPX 237 and Indra 623 classic; Aurigo and Esri Canada Unify)
   and on Gainwell's of 2026-11-22. **Read live once** the same day (details
