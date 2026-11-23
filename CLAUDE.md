@@ -3082,7 +3082,12 @@ round.
   company in scope, waiting, its first board, not skipped as refused), and
   never the board of a record ruled out of scope, which is said as not asked
   (eighth blind review, 2026-11-22: a record's page was asked for finds
-  nothing compared) - and the worklist carries the answer to
+  nothing compared) - unless the page of that very spelling was asked for
+  another record: its answer is the ruled-out record's too, which asks
+  nothing more (review 10, 2026-11-23, the record-side twin of review 9's
+  finding 6: the ruled-out record of a bare /List/ board another record's
+  ask showed to be another board kept holding the find, "its own page was
+  not asked") - and the worklist carries the answer to
   apply: `page_addresses` records what each page the plan asked stated, by
   the board's exact spelling, and a WIRE row compared by a record's names it
   (`leans_on`); apply leans on such an address only for the row that names

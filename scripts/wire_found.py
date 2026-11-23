@@ -1735,6 +1735,24 @@ def records_by_page(ctx: dict, finds: list) -> dict:
             else:
                 said_of[o["id"]] = page_answer(said)
         recs.append((o, o_refs))
+    # WHAT A BOARD'S PAGE STATED IS TRUE OF THAT BOARD, WHOSEVER RECORD ASKED
+    # IT (review 10, 2026-11-23, the record-side twin of review 9's finding 6,
+    # which holds_by_page answers for the holds): a record ruled out of scope
+    # is not probed, and where another record of the very same spelling had
+    # its page asked by this plan, its answer is its answer too - it asks
+    # nothing more. Said "not asked", R Co's record of a bare /List/ board S
+    # Co's record asked kept holding a find the page showed to be another
+    # board. Added to the addresses it is on file by, never in their place.
+    for i, (o, o_refs) in enumerate(recs):
+        exact = spelling("paylocity", (o.get("ats") or {}).get("ref"))
+        if said_of.get(o["id"]) != "out of scope" or exact not in ctx["said"]:
+            continue
+        said = ctx["said"][exact]
+        address = board_proposals.paylocity_address(said.get("address"))
+        said_of[o["id"]] = "stated" if address else page_answer(said)
+        if address:
+            out[o["id"]] = {"ref": (o.get("ats") or {}).get("ref"), "address": address}
+            recs[i] = (o, list(dict.fromkeys([*o_refs, address])))
     ctx["paylocity_records"] = recs
     return out
 

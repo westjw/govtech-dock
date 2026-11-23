@@ -43858,6 +43858,43 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         if f"paylocity/{LIST_O}" in box.probed or "NOTE: asked" in text:
             errors += fail(f"the board of a record ruled out of scope was asked for its page: "
                            f"probed {box.probed}")
+    # ...AND WHAT THAT BOARD'S PAGE STATED, ASKED FOR ANOTHER RECORD OF THE VERY
+    # SAME SPELLING, IS ITS ANSWER TOO (review 10, 2026-11-23, the record-side
+    # twin of review 9's finding 6): R Co (ruled out of scope) and S Co both
+    # read bare /List/2115, and C Co's find at /All/<c>/Cco-Inc cannot be
+    # compared with either. The page is asked once, for S Co's record, and
+    # states another board's address: S Co's record stopped holding the find
+    # and R Co's - the very same board - kept holding it, "its own page was
+    # not asked", though the plan asked it. Now neither holds it, nothing more
+    # is asked, and where the page states nothing R Co's record is said as
+    # that, never as not asked.
+    LIST_RS, ALL_C, ALL_X = plist(2115), pall(0x777, "Cco-Inc"), pall(0x999, "Other-Inc")
+    OOS_R = {"on": "2026-11-01", "by": "owner", "why": "not govtech"}
+    for states, want_c in ((ALL_X, "WIRE"), (None, "HOLD")):
+        with _WiringBox([co("s-co", "S Co", ats={"type": "paylocity", "ref": LIST_RS}),
+                         co("r-co", "R Co", ats={"type": "paylocity", "ref": LIST_RS},
+                            out_of_scope=OOS_R),
+                         co("c-co", "C Co")],
+                        {f"paylocity/{ALL_C}": (3, ["C Co"])},
+                        says=({f"paylocity/{LIST_RS}": {"address": states}} if states
+                              else {})) as box:
+            code, text, wl_rs, rows_rs = box.plan(_wb_results({
+                "c-co": names("c-co", "paylocity", ALL_C)}), name="worklist-rs.json")
+            if want_c == "WIRE":
+                expect(rows_rs, "c-co", "WIRE")
+            else:
+                expect(rows_rs, "c-co", "HOLD", f"R Co's board is on file by {LIST_RS[8:]}; its "
+                                                f"own page did not state its /jobs/All/ address",
+                       never=("its own page was not asked",))
+            if box.probed.count(f"paylocity/{LIST_RS}") != 1:
+                errors += fail(f"the bare /List/ board two records read was not asked exactly "
+                               f"once: probed {box.probed}")
+            if want_c == "WIRE":
+                code, text, _ = box.look(wl_rs)
+                if "WIRE 1 " not in text or "LEFT ALONE" in text:
+                    errors += fail(f"apply did not compare the ruled-out record of the board "
+                                   f"by the address its page stated for the other record: "
+                                   f"{text[-500:]}")
 
     # (13) A STATED ADDRESS WHOSE TENANT'S NAME CARRIES , ; ( ) is kept as the
     # probe states it - compared by its id, wired, and read back from the note
