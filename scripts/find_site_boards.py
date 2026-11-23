@@ -719,8 +719,9 @@ BOARDS: list[_Pat] = (
 # is worth writing next is a question the repo could not answer: no tool
 # recorded what a careers page actually loads. Also here: forms of platforms
 # we DO read that carry no board in the address (a Gusto posting, a Paylocity
-# job page, Workday's other host, whose pod-first refs ats.fetch_workday
-# cannot take today), named apart so they are not counted as missing readers.
+# job page), and Workday's other host, which this door does not lift yet
+# (ats.fetch_workday reads its pod-first refs since 2026-11-22; lifting one
+# is the next step), named apart so they are not counted as missing readers.
 _B = r"(?<![a-z0-9-])"
 ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
     (vendor, hint, re.compile(pat, re.I)) for vendor, hint, pat in (

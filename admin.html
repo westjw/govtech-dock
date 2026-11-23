@@ -5146,10 +5146,12 @@ function boardUrlFor(f, c){
       ? r.trim().replace(/\/+$/, '') + '/search/' : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
-    // the list [tenant, pod, site]; two "wd.." parts means the pod-first
-    // host, as ats.fetch_workday reads it
+    // the list [tenant, pod, site], or [pod, tenant, site] on Workday's other
+    // host: the pod reads "wd" and digits, and second place wins a tie, as
+    // ats.workday_board reads it
     if (!Array.isArray(r) || r.length !== 3) return '#';
-    return String(r[0]).startsWith('wd') && String(r[1]).startsWith('wd')
+    const pod = s => /^wd\d+$/.test(String(s));
+    return !pod(r[1]) && pod(r[0])
       ? 'https://'+r[0]+'.myworkdaysite.com/recruiting/'+r[1]+'/'+r[2]
       : 'https://'+r[0]+'.'+r[1]+'.myworkdayjobs.com/'+r[2];
   }
