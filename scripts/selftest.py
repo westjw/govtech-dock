@@ -549,6 +549,39 @@ SALARY_RAW_CASES = [
     ("Pay range: $140,000 -\n$200,000 per year", "$140,000 - $200,000 per year"),
 ]
 
+# ABROAD, A BARE "$" NAMES NO CURRENCY: salary.parse(text, abroad=True), for a
+# posting the board lists outside the US (blind review 10, 2026-11-23: an
+# Esri Canada posting in Canada, its pay sentence written with a bare "$",
+# was published as paying US dollars). (text, at home, abroad): a currency
+# the text names for the range stands abroad, and abroad reads nothing the
+# home reading refused - a bare range set aside does not let another win.
+SALARY_ABROAD_CASES = [
+    ("The base salary range for this role is $90,000 to $110,000 annually.",
+     (90000, 110000, "USD", "year"), None),
+    ("Pay: $25.00 - $30.00 an hour", (25, 30, "USD", "hour"), None),
+    ("Salary: up to $200,000", (None, 200000, "USD", "year"), None),
+    # one reading of the range names US dollars, so they are named
+    ("Salary: $90,000 - $110,000 per year. Salary range: USD 90,000 - 110,000 per year.",
+     (90000, 110000, "USD", "year"), (90000, 110000, "USD", "year")),
+    ("Salary: US$140,000 - US$200,000",
+     (140000, 200000, "USD", "year"), (140000, 200000, "USD", "year")),
+    ("Salary range: 140000-200000 USD",
+     (140000, 200000, "USD", "year"), (140000, 200000, "USD", "year")),
+    ("Compensation for this role: CAD $120,000 - CAD $150,000 per year",
+     (120000, 150000, "CAD", "year"), (120000, 150000, "CAD", "year")),
+    ("Canadian Salary Range: $152,000- $190,000 CAD",
+     (152000, 190000, "CAD", "year"), (152000, 190000, "CAD", "year")),
+    ("Salary: C$120,000 - C$150,000",
+     (120000, 150000, "CAD", "year"), (120000, 150000, "CAD", "year")),
+    ("Salary: A$120,000 - A$150,000",
+     (120000, 150000, "AUD", "year"), (120000, 150000, "AUD", "year")),
+    ("The salary range is £70,000 - £90,000.",
+     (70000, 90000, "GBP", "year"), (70000, 90000, "GBP", "year")),
+    # two ranges are two ranges abroad too
+    ("Salary range: $124,000 - $205,000 (US); $152,000 - $190,000 CAD (Canada)", None, None),
+    ("Salary range: 140,000 - 200,000", None, None),
+]
+
 
 
 def check_a_rival_category_over_the_blast_limit_lands_whole() -> int:
@@ -18617,6 +18650,49 @@ def check_salary() -> int:
                            f"{None if got is None else got['raw']!r}, "
                            f"expected {expected_raw!r}")
 
+    # ABROAD, A BARE "$" NAMES NO CURRENCY (see SALARY_ABROAD_CASES), and the
+    # contract's six keys are all a reading carries, home or abroad
+    shape = {"min", "max", "currency", "period", "source", "raw"}
+    for text, home, away in SALARY_ABROAD_CASES:
+        for abroad, expected in ((False, home), (True, away)):
+            got = salary.parse(text, abroad=abroad)
+            actual = got and (got["min"], got["max"], got["currency"], got["period"])
+            if actual != expected or (got and set(got) != shape):
+                errors += fail(f"salary.parse({text[:44]!r}..., abroad={abroad}) = {got}, "
+                               f"expected {expected}")
+    # ...and over the whole table: abroad only takes a range away, and only
+    # one whose currency is US dollars read off a bare "$"
+    for text, _ in SALARY_CASES:
+        home, away = salary.parse(text), salary.parse(text, abroad=True)
+        if away not in (home, None) or (home and home["currency"] != "USD" and away != home):
+            errors += fail(f"salary.parse({text[:44]!r}..., abroad=True) = {away}, at home {home}")
+
+    # WHERE THE ROW IS, read as build_board reads is_us: ats.plain_rows is the
+    # one caller that knows it (blind review 10, 2026-11-23). Abroad by its
+    # location or its title, or by a country its board named when they say
+    # nothing; a place that says nothing is home, as it always was.
+    import ats
+    said = "Salary: $90,000 - $110,000 per year"
+    usd = (90000, 110000, "USD", "year")
+    for row, expected in (({"location": "Toronto, ON, Canada"}, None),
+                          ({"location": "Canada"}, None),
+                          ({"location": "Remote", "title": "Account Executive, Canada"}, None),
+                          ({"location": "", "office_hint": {"country": "CA"}}, None),
+                          ({"location": "Austin, TX"}, usd),
+                          ({"location": "Vancouver, WA"}, usd),
+                          ({"location": "Remote"}, usd),
+                          ({"location": ""}, usd),
+                          ({"location": "", "office_hint": {"country": "U.S."}}, usd),
+                          ({"location": "", "office_hint": {"country": "a sentence some board "
+                                                                       "wrote in a country field"}}, usd),
+                          ({"location": "Toronto, ON, Canada", "jd": "Salary: C$90,000 - C$110,000 per year"},
+                           (90000, 110000, "CAD", "year"))):
+        got = ats.plain_rows([dict({"title": "Account Executive", "url": "https://x.example/1",
+                                    "jd": said}, **row)])[0]["comp"]
+        actual = got and (got["min"], got["max"], got["currency"], got["period"])
+        if actual != expected or (got and set(got) != shape):
+            errors += fail(f"plain_rows: a row at {row} read its pay as {got}, expected {expected}")
+
     # A missed range costs a filter hit; a wrong one is published as a fact
     # about somebody else's company. Keep the table honest about that: if the
     # negatives ever thin out, the parser has been tuned for recall.
@@ -21860,6 +21936,29 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         if exc or -1 in at_ or at_ != sorted(at_) or len(sent) != 4:
             errors += fail(f"successfactors unify: with details on, an ad in three description elements was "
                            f"not read whole and in order from the page already read: {jd_!r} {exc}")
+        # ...and the pay its third part states is read where the row is
+        # (blind review 10, 2026-11-23: an Esri Canada posting in Canada, its
+        # pay sentence written with a bare "$", was published as paying US
+        # dollars): in Canada a bare "$" names no currency, so no pay; in the
+        # US it is US dollars; a currency the ad names stands in Canada
+        def esri_pay(place, figure):
+            return esri_split.replace("Canada", place).replace(
+                "The salary range for this role is $86,000 - $99,000 CAD per year.",
+                f"The base pay for this role is {figure} annually.")
+        ats.FETCH_DETAILS = True
+        for place, figure, want_ in (("Canada", "$86,000 to $99,000", None),
+                                     ("Canada", "$86,000 to $99,000 CAD", (86000, 99000, "CAD", "year")),
+                                     ("United States", "$86,000 to $99,000", (86000, 99000, "USD", "year"))):
+            rows, exc, err = go(site([plain(3, esri_pay(place, figure))]),
+                                lambda: ats.fetch({"type": "successfactors", "ref": SF}))
+            row_ = (rows or [{}])[0]
+            comp_ = row_.get("comp")
+            got_ = comp_ and (comp_["min"], comp_["max"], comp_["currency"], comp_["period"])
+            if exc or len(rows or []) != 1 or row_.get("location") != place or got_ != want_ \
+                    or f"{figure} annually" not in str(row_.get("jd")):
+                errors += fail(f"successfactors unify: the pay in an ad's third part, {figure!r}, on a "
+                               f"posting in {place}, was published as {comp_}, not {want_} {exc}")
+        ats.FETCH_DETAILS = False
 
         # ---- the place, the mode and the date, token by token ----------------
         def row_of(page_):

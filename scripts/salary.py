@@ -38,6 +38,8 @@ WHAT IT REFUSES ON PURPOSE
   match ("0.1% - 0.5% equity", "match up to 4%").
 - A figure with no currency marker at all. We cannot fill the currency field
   without inventing it, so "salary range: 140,000 - 200,000" is refused.
+- On a posting outside the US (parse's `abroad`), a figure whose only
+  currency marker is a bare "$": there it does not say which dollar.
 - Two different ranges in one posting (multi-state tiers). Picking one would
   publish a range that may not apply to the reader's location.
 - A bare "$500K+" with no bound word. "up to" and "starting at" state a bound;
@@ -228,13 +230,17 @@ def _amount(num: str, mult: str | None):
     return int(value) if value == int(value) else value
 
 
-def _currency(*raw: str | None) -> str | None:
+def _currency(*raw: str | None, dollar: str | None = "USD") -> str | None:
     """One currency, or None for 'none stated' and for a mixed-currency range.
 
     A spelled-out code beats a bare symbol, because the symbol is the weaker
     evidence: Swiftly writes "$152,000 - $190,000 CAD", and reading that as a
     dollar/CAD conflict threw away a real range. A symbol only contradicts a
     code when it cannot mean it - "$" alongside GBP.
+
+    `dollar` is what a bare "$" alone is read as (below); None reads it as no
+    currency stated, which is how _candidates tells a currency the text names
+    from one it assumes (see parse's `abroad`).
     """
     codes, symbols = set(), set()
     for v in raw:
@@ -260,10 +266,14 @@ def _currency(*raw: str | None) -> str | None:
     if len(symbols) != 1:
         return None
     # A bare "$" is read as USD. This is a US state & local govtech board, and
-    # a posting that means Canadian dollars says CAD. It is an assumption about
-    # notation rather than an invented number, but it is the one assumption in
-    # this module, so it is written down here.
-    return _SYMBOL_CODE[symbols.pop()] or "USD"
+    # a posting in the US that means Canadian dollars says CAD. It is an
+    # assumption about notation rather than an invented number, but it is the
+    # one assumption in this module, so it is written down here - and it is
+    # not made for a posting outside the US (parse's `abroad`): Esri Canada's
+    # ads state their pay in a sentence with a bare "$" and no currency named,
+    # and a posting in Canada was published as paying US dollars (blind
+    # review 10, 2026-11-23).
+    return _SYMBOL_CODE[symbols.pop()] or dollar
 
 
 def _label(text: str, start: int) -> str:
@@ -389,6 +399,8 @@ def _candidates(text: str) -> list[dict]:
         quote_from = m.start("between") if g["between"] else start
         cand = _finish(text, lo, hi, cur, start, m.end(), quote_from)
         if cand:
+            # (its currency read off a bare "$" alone: see parse's `abroad`)
+            cand["_bare"] = _currency(g["c1"], g["c2"], g["c3"], dollar=None) is None
             out.append(cand)
 
     for m in SINGLE_RE.finditer(text):
@@ -416,6 +428,7 @@ def _candidates(text: str) -> list[dict]:
         quote_from = m.start("bound") if g["bound"] else start
         cand = _finish(text, lo, hi, cur, start, m.end(), quote_from)
         if cand:
+            cand["_bare"] = _currency(g["c1"], g["c3"], dollar=None) is None
             out.append(cand)
     return out
 
@@ -424,12 +437,22 @@ def _key(c: dict) -> tuple:
     return (c["min"], c["max"], c["currency"], c["period"])
 
 
-def parse(text: str) -> dict | None:
+def parse(text: str, abroad: bool = False) -> dict | None:
     """Return the comp shape for a pay range stated in `text`, or None.
 
     None means "this posting does not state a pay range we can stand behind",
     which is not the same as "this posting pays nothing" and must never be
     rendered as a zero or filtered as a low number.
+
+    `abroad` is for a posting whose place is outside the US (ats.plain_rows
+    passes it for a row the board lists so: is_us false). A bare "$" there
+    names no currency - Canada, Australia, New Zealand, Singapore and Mexico
+    write their own that way - so a range whose currency rests on bare "$"
+    alone is refused, and the posting shows no pay rather than US dollars it
+    may not pay (blind review 10, 2026-11-23: an Esri Canada posting in
+    Canada was published as paying US dollars). A range the text names a
+    currency for (CAD, C$, US$, USD, £, ...) stands, abroad or not. It only
+    ever takes a range away: abroad, nothing is read that is not read at home.
     """
     if not text or not isinstance(text, str):
         return None
@@ -457,11 +480,20 @@ def parse(text: str) -> dict | None:
             v = c["min"] if c["min"] is not None else c["max"]
             if not (win["min"] <= v <= win["max"]):
                 return None
-        return win
+        return _settled(win, cands, abroad)
 
     if len({_key(c) for c in cands}) > 1:
         return None
-    return cands[0]
+    return _settled(cands[0], cands, abroad)
+
+
+def _settled(win: dict, cands: list[dict], abroad: bool) -> dict | None:
+    """The range parse() agreed on, in the contract's shape - or None abroad
+    when every reading of it in the text took its currency off a bare "$"
+    alone (see parse)."""
+    if abroad and all(c["_bare"] for c in cands if _key(c) == _key(win)):
+        return None
+    return {k: v for k, v in win.items() if k != "_bare"}
 
 
 # --- what a stored description may keep -----------------------------------

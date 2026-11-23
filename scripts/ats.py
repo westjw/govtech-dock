@@ -320,26 +320,54 @@ def plain_rows(rows: list[dict]) -> list[dict]:
         r.setdefault("comp", None)
         r.pop("_detail_url", None)        # how a fetcher found the jd, not board data
         if r["comp"] is None and r["jd"] and not r.get("_jd_is_teaser"):
-            r["comp"] = _text_comp(r["jd"])
+            r["comp"] = _text_comp(r["jd"], r)
     return rows
 
 
-def _text_comp(jd: str) -> dict | None:
+def _text_comp(jd: str, row: dict | None = None) -> dict | None:
     """Pay parsed out of the description, when the API stated none itself.
 
     Wrapped because a parser bug must not cost us a posting: the description is
     a nice-to-have and the job is the product. Falling back to None also keeps
     the honest reading - no salary found means not stated, never zero.
+
+    WHERE THE ROW IS decides what a bare "$" is (salary.parse's `abroad`): on
+    a row the board will list outside the US (_abroad) it names no currency,
+    and a range resting on it alone is no pay stated - blind review 10,
+    2026-11-23: an Esri Canada posting in Canada, its pay read from the ad's
+    third part, was published as paying US dollars.
     """
     if salary is None:
         return None
     try:
-        got = salary.parse(jd)
+        got = salary.parse(jd, abroad=_abroad(row) if row else False)
     except Exception:                     # noqa: BLE001 - see docstring
         return None
     if got:
         got.setdefault("source", "text")
     return got or None
+
+
+# A country a board names for a row, read as build_board reads it for is_us.
+_US_COUNTRY = ("us", "usa", "united states", "united states of america")
+
+
+def _abroad(row: dict) -> bool:
+    """Whether the board will list this row outside the US: build_board's
+    is_us false, read the same way - roles.is_us of its location and title,
+    and where they settle nothing, a country its board named (office_hint)
+    that is not the US, 24 characters or fewer. A place that says nothing
+    (no location, 'Remote') is not abroad."""
+    import roles as _roles
+    us = _roles.is_us(row.get("location") or "", (row.get("title") or "").strip())
+    hint = row.get("office_hint")
+    if us is None and isinstance(hint, dict) and hint.get("country"):
+        k = str(hint["country"]).strip().lower().replace(".", "")
+        if k in _US_COUNTRY:
+            us = True
+        elif len(k) <= 24:
+            us = False
+    return us is False
 
 
 # --- conditional requests ---------------------------------------------------

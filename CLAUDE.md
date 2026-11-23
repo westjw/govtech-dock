@@ -553,7 +553,8 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
 - New classifier edge cases go into `classify.py`/`roles.py` **with a matching
   case in `selftest.py`**: `CLASSIFIER_CASES` (title rules), `PAGESCAN_CASES`
   (`html` page-text rules), `TITLE_TEXT_CASES`, `FAMILY_CASES`,
-  `SALARY_CASES`. A new invariant means a new case there.
+  `SALARY_CASES` (`SALARY_ABROAD_CASES` for a posting outside the US). A new
+  invariant means a new case there.
 - After any data or script change: `python3 scripts/selftest.py` must print
   **all checks passed**.
 - **Never let a score reward volume over correctness.** The owner's rule, and
@@ -1103,8 +1104,20 @@ confident falsehood. All four store what a person actually saw.
   on a public board as a fact about somebody else's company. So it is tuned hard
   toward silence: no OTE, no M/B multipliers, no figure without a currency
   marker, no posting with two different ranges, sanity bounds per period, and
-  periods stored rather than converted. If you are here because "it missed one",
-  the fix is a new *anchored* form with a test case — never a loosened anchor.
+  periods stored rather than converted. A bare "$" is read as US dollars only
+  at home: on a row the board lists outside the US (`ats.plain_rows` passes
+  `salary.parse(..., abroad=True)` where `ats._abroad` reads it so, as
+  build_board reads `is_us` false: its location and title, else the country
+  its board named) a range whose currency rests on a bare "$" alone is no pay
+  stated, and a range the text names a currency for (CAD, C$, US$, USD, £)
+  stands (blind review 10, 2026-11-23: an Esri Canada posting in Canada was
+  published as paying US dollars; cases in `SALARY_ABROAD_CASES`). Pay read
+  later from a description the crawl did not read (`build_board.derived`: the
+  jd cache, a hand capture) and a board's own pay field (`ats._ats_text`, a
+  card's pay chip in `ats.card_fields`) are still read with the home reading
+  wherever the row is.
+  If you are here because "it missed one", the fix is a new *anchored* form
+  with a test case — never a loosened anchor.
 
 ## Pipeline agents: briefs out, proposals in
 
@@ -3423,8 +3436,11 @@ review and the owner's word, through the wiring door.
   Canada's postings split the ad into three, the pay sentence in the third,
   and only the first was read until blind review 10, 2026-11-23); one inside
   another is read once, and one never closed is no ad, never part of one.
-  CSB has no pay field; a figure in the
-  ad's text is plain_rows' text parse, as for every reader. **A posting whose
+  CSB has no pay field; a figure in the ad's text is plain_rows' text parse,
+  as for every reader, where a bare "$" on a row outside the US names no
+  currency (blind review 10, 2026-11-23: Esri Canada's pay sentence, read
+  from the third part, was published as US dollars on its postings in
+  Canada; see `scripts/salary.py` above). **A posting whose
   own page says it has closed is not published as open** (eighth blind
   review): a 404 or 410, a hop to the site's list (/search/ or /search, with
   or without a query; not followed), or the site's own words at its address
@@ -3673,9 +3689,13 @@ review and the owner's word, through the wiring door.
   32 locs, 16 copies paired, in 66, stated whole as 'esricanada' and
   proven for nobody; Octave 131 rows in 264, five postings asked, not
   stated.
-  **Known**: Esri Canada's Salary Min/Max tokens are not read (its pay is
-  read from the ad's text, whose third part states it, since blind review
-  10 read every description element). Wiring the three waits for the door.
+  **Known**: Esri Canada's Salary Min/Max tokens are not read, and on the
+  posting page saved 2026-11-23 they are the only place it names the
+  currency (CAD): its ad's third part states the range with a bare "$".
+  Every Esri Canada row reads 'Canada', so with details on that range is no
+  pay stated - never US dollars, as it was published once every description
+  element was read (blind review 10, 2026-11-23). Wiring the three waits
+  for the door.
   Guard: `check_successfactors_unify_reads_its_sitemap` (77 one-line
   breakages of the reader and the probe, each alone in a private copy, each
   caught); blind review 10's findings on the reader and the probe are each
