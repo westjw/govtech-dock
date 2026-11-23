@@ -4019,8 +4019,9 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
     # to a pair on file, never put in its place (review 10, 2026-11-23: an
     # edited workable_numbers moved a record on the number off the slug the
     # file named, and a second record was wired to the account)
+    known = board_proposals.number_slugs(pairs, resolved)
     for number, ids in numbers.items():
-        for slug in board_proposals.number_slugs(pairs, resolved).get(number) or []:
+        for slug in known.get(number) or []:
             holders[board_key("workable", slug)] += ids
     board = board if board is not None else read_board()
     shown = shown_now(board)
