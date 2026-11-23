@@ -598,7 +598,9 @@ def paylocity_near_names(a_refs, b_refs) -> list:
     sides' ids that are not one spelling and may still be one name - alike
     in the finder's form (paylocity_tenant_form), or the one's form the start
     of the other's (a name cut short). Empty where the two sides share a name,
-    or one side has none."""
+    or one side has none. A name with no finder's form at all ("(US)-Acme":
+    the finder writes no name for it) is the start of nothing - else one such
+    record would hold every board found."""
     a, b = _paylocity_sides(a_refs)[2], _paylocity_sides(b_refs)[2]
     if a & b:
         return []
@@ -606,7 +608,7 @@ def paylocity_near_names(a_refs, b_refs) -> list:
     for x in sorted(a):
         for y in sorted(b):
             fx, fy = paylocity_tenant_form(x), paylocity_tenant_form(y)
-            if fx.startswith(fy) or fy.startswith(fx):
+            if fx and fy and (fx.startswith(fy) or fy.startswith(fx)):
                 out.append((x, y))
     return out
 

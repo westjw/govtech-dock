@@ -41754,6 +41754,10 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             ([pall(0x972, "Acme-")], [WHOLE_SP], "unknown"),             # ids of one kind differ
             ([plist(2140, "Bolt-Co")], [WHOLE_SP], "apart"),
             ([pall(0x972, "Bolt")], [WHOLE_SP], "apart"),
+            # a name with no finder's form is the start of nothing: one such
+            # record held every board found
+            ([pall(0x972, "Bolt")], [pall(0x974, "(US)-Acme")], "apart"),
+            ([plist(2140, "Bolt")], [pall(0x974, "(US)-Acme")], "apart"),
             ([plist(2140, "Acme-Inc")], [pall(0x971, "Acme-Inc")], "same")):
         if bp.paylocity_relation(a_refs, b_refs) != want \
                 or bp.paylocity_relation(b_refs, a_refs) != want:
