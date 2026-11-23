@@ -1397,7 +1397,9 @@ def _successfactors(ref, out: dict) -> None:
     # error page, a hop anywhere else - is not a closed posting: what it
     # would name is not known, so the board is not read (unreadable, for a
     # person; repaired 2026-11-22, when five of seven such pages were passed
-    # over and the board stated whole on the other two). And a board is
+    # over and the board stated whole on the other two). The posting's own
+    # title on a page that shows no posting is not the site saying so either:
+    # every open posting carries it (blind review 9, 2026-11-23). And a board is
     # stated whole only with at most ats.SF_SLACK of its postings closed, the
     # churn the walk allows: more is a list carrying postings that name
     # nobody, and what the rest name is not the board's whole statement.

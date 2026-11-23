@@ -4278,31 +4278,30 @@ def successfactors_shown(page: str) -> bool:
 
 # WHAT A CLOSED POSTING'S OWN PAGE SAYS IN ITS PLACE. Gainwell's answer 200 at
 # the posting's address with the career site's own page (measured 2026-11-22):
-# the posting's title kept - 'Provider Enrollment Specialist - Jackson, MS
-# (Onsite) Job Details | Gainwell Technologies LLC', the title every en_US
-# posting page measured carries (Landis+Gyr's, Aurigo's, Gainwell's) - and,
-# where the posting was, "Sorry, this position has been filled."
-_SF_TITLE_TEXT = re.compile(r"<title\b[^<>]*>([^<]*)</title>", re.I)
-_SF_JOB_TITLE = re.compile(r"\S.*\sJob Details \| \S.*", re.I)
+# the posting's title kept ('Provider Enrollment Specialist - Jackson, MS
+# (Onsite) Job Details | Gainwell Technologies LLC') and, where the posting
+# was, "Sorry, this position has been filled." ONLY THE WORDS ARE THE SITE
+# SAYING IT CLOSED: every OPEN posting page measured carries that same title
+# (Landis+Gyr's, Aurigo's, Gainwell's), so the title says only that the career
+# site answered (blind review 9, 2026-11-23: a page in the site's own template,
+# titled for the role, with an error where the posting was, read as closed).
 _SF_FILLED = re.compile(r"\bthis position has been filled\b", re.I)
 
 
 def successfactors_filled(page: str) -> bool:
     """Is this page, at a posting's own address, the career site saying that
-    the posting has closed: a page that shows no posting, titled as the site
-    titles a posting ('<role> Job Details | <site>') or saying "this position
-    has been filled", as a reader sees it (_cut)? A page that shows no
-    posting and says neither - a block page served 200 (F5's "The requested
-    URL was rejected"), an error page - is not the site's word, and says
-    nothing of the posting (eighth blind review, repaired 2026-11-22: every
-    such page was read as closed, and a board was stated whole on the two of
-    its seven postings that answered)."""
+    the posting has closed: a page that shows no posting and says "this
+    position has been filled", as a reader sees it (_cut: never inside a
+    comment or a script)? A page that shows no posting and does not say so -
+    a block page served 200 (F5's "The requested URL was rejected"), an error
+    page, the site's own template titled for the role ('<role> Job Details |
+    <site>') with no posting in it - is not the site's word, and says nothing
+    of the posting (eighth blind review, repaired 2026-11-22: every such page
+    was read as closed, and a board was stated whole on the two of its seven
+    postings that answered; blind review 9, 2026-11-23: the posting's title
+    alone was still read as the site's word)."""
     body = _cut(page or "")
-    if _SF_SHOWN.search(body):
-        return False
-    m = _SF_TITLE_TEXT.search(body)
-    title = _text(html_lib.unescape(m.group(1))) if m else ""
-    return bool(_SF_JOB_TITLE.fullmatch(title) or _SF_FILLED.search(_jv_text(body)))
+    return not _SF_SHOWN.search(body) and bool(_SF_FILLED.search(_jv_text(body)))
 
 
 def successfactors_language(page: str) -> str:
@@ -4361,9 +4360,10 @@ def fetch_successfactors(ref) -> list[dict]:
         # Gainwell's say "Sorry, this position has been filled.") - the row
         # is dropped, and said. Where every posting asked answers so, that is
         # not read as a zero either. A page that shows no posting and is not
-        # the site saying so - a block page served 200, an error page, a hop
-        # anywhere else - says nothing of the posting, as a refusal or a 429
-        # says nothing: the row stays as the list states it.
+        # the site saying so - a block page served 200, an error page (the
+        # site's own template titled for the role included: blind review 9),
+        # a hop anywhere else - says nothing of the posting, as a refusal or a
+        # 429 says nothing: the row stays as the list states it.
         closed = set()
 
         def read(r):

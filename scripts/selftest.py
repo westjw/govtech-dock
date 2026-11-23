@@ -20312,6 +20312,15 @@ def check_successfactors_reads_its_career_site() -> int:
     blocked = ('<html><head><title>Request Rejected</title></head><body>The requested URL was '
                'rejected. Please consult with your administrator.<br><br>Your support ID is: 1234'
                '</body></html>')
+    # ...and two pages titled as the site titles a posting - which every OPEN
+    # posting is too - that show no posting and do not say it was filled: the
+    # title alone is not the site saying the posting closed (blind review 9,
+    # 2026-11-23)
+    title_only = ('<html><head><title>Role 4 Job Details | Acme Gov LLC</title></head><body>'
+                  '<p>This job is no longer available.</p></body></html>')
+    oops = ('<html><head><title>Role Job Details | Acme Gov LLC</title></head><body>'
+            '<div class="jobDisplayShell"><p>We are experiencing technical difficulties. '
+            'Please try again later.</p></div></body></html>')
 
     sent, robots_asked = [], []
 
@@ -20781,6 +20790,26 @@ def check_successfactors_reads_its_career_site() -> int:
         if exc or len(rows or []) != 5:
             errors += fail(f"successfactors: with details on, a list every one of whose postings "
                            f"answered a block page read as {len(rows or [])} rows, not its 5: {exc}")
+        # ...and so is one whose page carries only the posting's own title - as
+        # every open posting's does - with no posting and no word of its being
+        # filled: five of seven such postings are kept as the list states them,
+        # none said closed (blind review 9, 2026-11-23: they were dropped)
+        for answer, why in ((title_only, "its own title and other words"),
+                            (oops, "the site's template with an error where the posting was")):
+            said_ = io.StringIO()
+            ats.FETCH_DETAILS = True
+            with contextlib.redirect_stderr(said_):
+                rows, exc = go(dict({at(0): page([row(n) for n in range(1, 8)], total=7),
+                                     SF + job(1): posting(), SF + job(2): posting()},
+                                    **{SF + job(k): answer for k in range(3, 8)}),
+                               lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            ads = [bool(r.get("jd")) for r in rows or []]
+            if exc or len(rows or []) != 7 or ads != [True, True] + [False] * 5 \
+                    or "answered as closed" in said_.getvalue():
+                errors += fail(f"successfactors: with details on, five of seven postings answering "
+                               f"{why} were not kept as the list states them ({len(rows or [])} rows, "
+                               f"ads {ads}), or were said closed ({said_.getvalue().strip()!r}): {exc}")
 
         # ---- the date, in the three forms measured and no other ---------------
         for lang, when, want in (("en-US", "Nov 20, 2026", "2026-11-20"),
@@ -21064,6 +21093,13 @@ def check_successfactors_reads_its_career_site() -> int:
         # unreadable, for a person: never closed, never a failure of the day,
         # never a name, and the page a hop names is not asked. The wording or
         # the title only inside a comment is not the site's word either.
+        # NOR IS THE POSTING'S OWN TITLE (blind review 9, 2026-11-23): every
+        # OPEN posting page carries '<role> Job Details | <site>' too, so a
+        # page in the site's own template, titled for the role, showing no
+        # posting and not saying it was filled - an error where the posting
+        # was - is the board unreadable, not a posting closed. (The eighth
+        # review's repair read a title-only page as closed and pinned it so,
+        # a few lines down; that pin is turned round on purpose.)
         tspd = SF + "/TSPD/?type=20"
         hidden_words = ('<html><head><title>Oops</title></head><body><!-- <p>Sorry, this position '
                         'has been filled.</p> --><p>Error</p></body></html>')
@@ -21073,8 +21109,11 @@ def check_successfactors_reads_its_career_site() -> int:
                             ((302, tspd), "a hop to a challenge page"),
                             ((302, SF + "/"), "a hop to the site's front page"),
                             (hidden_words, "the filled wording only inside a comment"),
-                            (hidden_title, "a posting's title only inside a comment")):
-            for many_ in ((5,), (3, 4, 5, 6, 7)):
+                            (hidden_title, "a posting's title only inside a comment"),
+                            (title_only, "the posting's own title and other words"),
+                            (oops, "the site's own template, titled for the role, with an error "
+                                   "where the posting was")):
+            for many_ in ((5,), (6, 7), (3, 4, 5, 6, 7)):
                 got = said(board(seven, every(7, **{f"p{k}": answer for k in many_}), {tspd: seven}))
                 if got["stated"] or got["names"] or got["failed"] != "unreadable" \
                         or got["transient"] is not False or "answered as closed" in str(got["how"]) \
@@ -21083,26 +21122,24 @@ def check_successfactors_reads_its_career_site() -> int:
                     errors += fail(f"successfactors probe: {len(many_)} of seven postings answering "
                                    f"{why} were read as closed, as a failure of the day or as naming "
                                    f"somebody, or the page it named was asked: {got}")
-        # the site saying so is either half of Gainwell's closed page: the
-        # posting's own title, or the filled wording (through a tag)
-        title_only = ('<html><head><title>Role 4 Job Details | Acme Gov LLC</title></head><body>'
-                      '<p>This job is no longer available.</p></body></html>')
+        # the site saying so is its words, through a tag and under any title
         words_only = ('<html><head><title>Acme Gov LLC Jobs</title></head><body>'
                       '<p>Sorry, this <b>position</b> has been filled.</p></body></html>')
-        for closing, why in ((title_only, "titled as the site titles a posting"),
-                             (words_only, "saying the position has been filled")):
-            got = said(board(seven, every(7, p4=closing)))
-            if not got["stated"] or got["failed"] or got["transient"] \
-                    or "1 more on its list answered as closed" not in str(got["how"]):
-                errors += fail(f"successfactors probe: the site's own page {why} was not read as the "
-                               f"posting closed: {got}")
+        got = said(board(seven, every(7, p4=words_only)))
+        if not got["stated"] or got["failed"] or got["transient"] \
+                or "1 more on its list answered as closed" not in str(got["how"]):
+            errors += fail(f"successfactors probe: the site's own page saying the position has been "
+                           f"filled was not read as the posting closed: {got}")
         gw_closed = ('<html><head><title>Provider Enrollment Specialist - Jackson, MS (Onsite) Job Details'
                      ' | Gainwell Technologies LLC</title></head><body><p>Sorry, this position has been '
                      'filled.</p></body></html>')
         for page_, want, why in ((gw_closed, True, "Gainwell's closed page as measured"),
+                                 (words_only, True, "the filled wording under another title"),
                                  (posting(), False, "a page showing the posting"),
                                  (blocked, False, "a block page"), (hidden_words, False, "words in a comment"),
-                                 (hidden_title, False, "a title in a comment")):
+                                 (hidden_title, False, "a title in a comment"),
+                                 (title_only, False, "a posting's own title and other words"),
+                                 (oops, False, "the site's template with an error and no posting")):
             if ats.successfactors_filled(page_) is not want:
                 errors += fail(f"successfactors: {why} read as the site saying the posting has closed: "
                                f"{not want}, not {want}")
