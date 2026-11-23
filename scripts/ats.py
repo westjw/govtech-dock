@@ -4473,21 +4473,21 @@ def fetch_successfactors(ref) -> list[dict]:
 # posting the site says has closed (successfactors_closed: a 404 or 410, a
 # hop to its list; or its page saying so, successfactors_filled) is left out
 # and said - up to SF_CLOSED_SHARE of the sitemap: more is not a day's churn,
-# and the read is refused. A FAILURE OF THE DAY on a posting - a 429, a 5xx, the network
-# failing or timing out - is asked once more (after the gate's backoff for a
-# 429, SF_RETRY_PAUSE for the rest), so one flaky request costs one request
-# more, never the board (blind review 10: one 5xx among a read's ~265 took
-# the board off for the night). A second one fails the whole read, as it
-# came, as any reader's failure of the day does: refresh asks the whole board
-# once more on a 429 (not on a 5xx or the network), build_board on a 429 or
-# the network (not on a 5xx), and a board that still will not read is
-# Unknown for the night, never "None found" - its postings are not on the
-# board that night, and the company reads as one we could not read.
-# Anything else a posting answers that is not the posting -
-# a page showing none that is not the site saying it closed, robots.txt
-# closing it, a refusal, a hop off /job/ or off the host - is left out and
-# said, up to SF_SLACK postings; more is the board unreadable, never part
-# of it.
+# and the read is refused. A FAILURE OF THE DAY on a posting - a 429, a 5xx,
+# the network failing or timing out - is asked once more (after the gate's
+# backoff for a 429, SF_RETRY_PAUSE for the rest), so one flaky request
+# costs one request more, never the board (blind review 10: one 5xx among a
+# read's ~265 took the board off for the night). A second one fails the
+# whole read, as it came, as any reader's failure of the day does: refresh
+# asks the whole board once more on a 429 (not on a 5xx or the network),
+# build_board on a 429 or the network (not on a 5xx), and a board that still
+# will not read is Unknown for the night, never "None found" - its postings
+# are not on the board that night, and the company reads as one we could
+# not read. Anything else a posting answers that is not the posting - a page
+# showing none that is not the site saying it closed, robots.txt closing it,
+# a refusal, a hop off /job/ or off the host, a hop round in a loop - is left
+# out and said, up to SF_SLACK postings; more is the board unreadable, never
+# part of it.
 
 # Sitemap addresses one read asks, at two requests each: a cap on this
 # reader's requests, not on roles - a site listing each role in English and
