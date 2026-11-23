@@ -3867,6 +3867,34 @@ def held_words(row: dict, numbers: dict | None, pairs: dict | None) -> tuple:
         words = left
 
 
+def queue_row_apart(row: dict) -> str | None:
+    """Why a HOLD row's queue row is not the row's own, in words, or None.
+
+    The plan writes the queue row of a held board from the row itself: its
+    company, its board as the site spelled it, the page that named it. Filed
+    as the worklist says it, an edited queue row put another board on the
+    owner's card (and held it for every company after), or one company's
+    board and doubt on another's card, while the look printed each row's own
+    line (review 10, 2026-11-23). So a queue row is filed only where its
+    company, its board and its page are the row's."""
+    q = row.get("queue_row")
+    if not isinstance(q, dict):
+        return None                     # file_found says what is wrong with it
+    f = q.get("found") if isinstance(q.get("found"), dict) else {}
+    if q.get("id") != row.get("id"):
+        return (f"its queue row is filed for {str(q.get('id'))[:60]!r}, not for the row's own "
+                f"company - plan again")
+    if (f.get("type"), f.get("ref")) != (row.get("type"), row.get("ref")):
+        return (f"its queue row files {show(f.get('type'), f.get('ref'))[:120]} where the row "
+                f"holds {show(row.get('type'), row.get('ref'))[:120]} - plan again")
+    page = (row.get("check_1") or {}).get("page") if isinstance(row.get("check_1"), dict) \
+        else None
+    if q.get("page") != page:
+        return (f"its queue row names the page {str(q.get('page'))[:120]} where check 1 names "
+                f"{str(page)[:120]} - plan again")
+    return None
+
+
 def queue_rows(holds: list, standing: dict | None = None, pages: dict | None = None,
                numbers: dict | None = None, pairs: dict | None = None) -> list:
     """What to file for these held boards, each stamped with ITS row's read,
@@ -4028,11 +4056,16 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
         else:
             wire.append(row)
     holds = [r for r in doc["rows"] if r["action"] == "HOLD"]
-    queued = queue_rows(holds, standing, held_for["pages"], resolved, pairs)
+    # a queue row that is not its row's own is not filed (queue_row_apart)
+    apart = {r["id"]: why for r in holds if (why := queue_row_apart(r))}
+    queued = queue_rows([r for r in holds if r["id"] not in apart], standing,
+                        held_for["pages"], resolved, pairs)
     # asked of the same door the write goes through, so the look and the
     # write cannot disagree about which rows the queue will take
     filing = board_proposals.file_found(queued, by, write=False, force=True,
                                         companies=companies)
+    filing = dict(filing, skipped=[{"id": cid, "why": why} for cid, why in apart.items()]
+                  + list(filing["skipped"]))
     # THE READERS' DOUBTS THIS WORKLIST CARRIES ARE ON FILE: the plan kept each
     # before it asked anything, in these words. One that is not (taken back,
     # or lost in a merge) is never dropped by a write.
@@ -4163,6 +4196,12 @@ def report(doc: dict, d: dict) -> None:
         plan_words, removed = d["held_words"].get(cid) or (None, [])
         plan_words = str(plan_words or "")
         now_words = str((queued.get(cid) or {}).get("identity_why") or "")
+        # WHAT HIS CARD WILL SAY, as it is filed (review 10, 2026-11-23: the
+        # look printed the row's doubts, and an edited queue row filed other
+        # words in front of him)
+        f = (queued.get(cid) or {}).get("found") or {}
+        print(f"        files for him {show(f.get('type'), f.get('ref'))}, in these words: "
+              f"\"{now_words}\"")
         if now_words != plan_words and now_words.startswith(plan_words):
             print(f"        and, kept since the plan: {now_words[len(plan_words):].lstrip('; ')}")
         # the Workable accounts its doubt files, which every door after reads

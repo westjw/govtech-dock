@@ -3205,8 +3205,15 @@ round.
   whether that goes into the note ("leans on its account number: ...", or
   "... for its holds alone ..."), and every row waiting on the owner that
   the wire takes off his queue ("takes ..."), and under each held row it
-  files the pairs its doubt files with and the account words it is filed
-  without; and the code covers them.
+  files the board and the words his card will carry ("files for him
+  <board>, in these words: ..."), the pairs its doubt files with and the
+  account words it is filed without; and the code covers them. A held row's
+  queue row is filed only as its row's own - its company, its board as the
+  site spelled it, the page check 1 names - and is NOT FILED otherwise, said
+  why (`wire_found.queue_row_apart`; review 10, 2026-11-23: an edited queue
+  row filed another board on his card, held by every door after, and two
+  rows' swapped ids filed each one's board and doubt on the other's card,
+  while the look printed each row's own line).
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from

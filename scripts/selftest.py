@@ -38456,6 +38456,83 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
                 or "[address removed]" not in " ".join(filed["redact-hold-co"]["titles"]):
             errors += fail("the held rows did not all reach the queue file, spelled as "
                            "read and with an address in a title redacted")
+    # --- A HELD ROW'S QUEUE ROW IS FILED ONLY AS ITS OWN, AND THE LOOK SAYS
+    # WHAT IT FILES (review 10, 2026-11-23). The queue row was filed as the
+    # worklist says it while the look printed the row: (a) its `found` edited
+    # put workable/zzz-other on A Co's card, and every later door held that
+    # board for any company; (b) two held rows' ids swapped filed each one's
+    # board and doubt on the other's card; (c) its doubt rewritten ("held only
+    # for a second look - accept") was filed in front of him under a board
+    # that names somebody else, and the look printed the plan's doubt. Now (a)
+    # and (b), and a queue row naming another page than check 1's, are not
+    # filed (NOT FILED, with why), and the look prints, under each held row,
+    # the board and the words his card will carry.
+    def q_box():
+        return _WiringBox([_wb_co("a-co", "A Co"), _wb_co("b-co", "B Co")],
+                          {"greenhouse/aco": (3, ["Somebody Else Inc"]),
+                           "lever/bco": (2, ["Other Parent LLC"])})
+
+    def q_found(by_id, _doc):
+        by_id["a-co"]["queue_row"]["found"] = {"type": "workable", "ref": "zzz-other"}
+
+    def q_swap(by_id, _doc):
+        qa, qb = by_id["a-co"]["queue_row"], by_id["b-co"]["queue_row"]
+        qa["id"], qb["id"] = "b-co", "a-co"
+
+    def q_page(by_id, _doc):
+        by_id["b-co"]["queue_row"]["page"] = "https://www.somewhere-else.test/jobs"
+
+    def q_words(by_id, _doc):
+        by_id["a-co"]["queue_row"]["identity_why"] = (
+            "both checks pass and a reader cleared it; held only for a second look - accept")
+    for label, edit, not_filed, filed_want in (
+            ("its board edited", q_found,
+             {"A Co": "its queue row files workable/zzz-other where the row holds "
+                      "greenhouse/aco - plan again"},
+             {"b-co": ("lever", "bco")}),
+            ("two rows' ids swapped", q_swap,
+             {"A Co": "its queue row is filed for 'b-co', not for the row's own company",
+              "B Co": "its queue row is filed for 'a-co', not for the row's own company"}, {}),
+            ("its page edited", q_page,
+             {"B Co": "its queue row names the page https://www.somewhere-else.test/jobs where "
+                      "check 1 names https://www.bco.test/careers"},
+             {"a-co": ("greenhouse", "aco")}),
+            ("its doubt rewritten", q_words, {},
+             {"a-co": ("greenhouse", "aco"), "b-co": ("lever", "bco")})):
+        with q_box() as box:
+            code, text, wl_q, rows_q = box.plan(_wb_results({
+                "a-co": _wb_one("a-co", "greenhouse", "aco", element="iframe"),
+                "b-co": _wb_one("b-co", "lever", "bco", element="iframe")}),
+                name="worklist-queue-rows.json")
+            if sorted(r["action"] for r in (rows_q or {}).values()) != ["HOLD", "HOLD"]:
+                errors += fail(f"{label}: the fixture's two boards do not plan HOLD: "
+                               f"{text[-300:]}")
+                continue
+            code, text, look_q = box.look(box.edited(wl_q, "worklist-queue-rows-e.json", edit))
+            nf = text[text.find("NOT FILED"):] if "NOT FILED" in text else ""
+            for name_, why_ in not_filed.items():
+                if not any(ln.strip().startswith(name_ + " ") and why_ in ln
+                           for ln in nf.splitlines()):
+                    errors += fail(f"{label}: {name_}'s queue row, not its row's own, was not "
+                                   f"left unfiled saying {why_!r}: {text[-500:]!r}")
+            held_q = text[text.find("\nHOLD "):text.find("NOT FILED")] if nf \
+                else text[text.find("\nHOLD "):]
+            for cid, (kind_, ref_) in filed_want.items():
+                words_ = str(((rows_q.get(cid) or {}).get("queue_row") or {})
+                             .get("identity_why") or "")
+                if label == "its doubt rewritten" and cid == "a-co":
+                    words_ = ("both checks pass and a reader cleared it; held only for a second "
+                              "look - accept")
+                if f'        files for him {kind_}/{ref_}, in these words: "{words_}"' \
+                        not in held_q:
+                    errors += fail(f"{label}: the look does not print the board and the words "
+                                   f"{cid}'s card will carry: {held_q[:800]!r}")
+            box.write(box.scratch / "worklist-queue-rows-e.json", look_q)
+            got_q = {r_["id"]: (r_["found"]["type"], r_["found"]["ref"])
+                     for r_ in json.loads((box.tmp / bp.FOUND.name).read_text())}
+            if got_q != filed_want:
+                errors += fail(f"{label}: the write filed {got_q}, where the rows' own boards "
+                               f"for the rows the look listed are {filed_want}")
     return errors
 
 
@@ -38773,6 +38850,7 @@ def check_an_advertisement_is_not_a_second_board() -> int:
             errors += fail(f"the write did not wire the four and file the {n_held}, or it "
                            f"filed a board that was only unreadable on the day: "
                            f"{sorted(filed)}; {text[-200:]}")
+
     return errors
 
 
