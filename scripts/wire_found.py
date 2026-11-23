@@ -3735,7 +3735,50 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     return None
 
 
-def queue_rows(holds: list, standing: dict | None = None, pages: dict | None = None) -> list:
+# a Workable account's words as the door writes them (board_proposals.ACCOUNT_WORDS,
+# what workable_pairs reads back), with what leads into them on a held row's
+# doubt ("...; their site asks for it as ...")
+_ACCOUNT_LEAD = re.compile(r"(?:;\s*)?(?:their site\s+)?"
+                           + board_proposals.ACCOUNT_WORDS.pattern)
+
+
+def held_words(row: dict, numbers: dict | None, pairs: dict | None) -> tuple:
+    """(a HOLD row's doubt - its queue_row's identity_why - as it may be
+    filed, [the words taken out of it]).
+
+    Every door after reads "asks for it as Workable account N; its postings
+    open under apply.workable.com/<slug>" in a filed row's doubt as a pair on
+    file (board_proposals.workable_pairs), and leans on that pair to take a
+    row waiting under the number for the slug's board. So a held row files
+    those words only of its own board's number where account_clears shows it
+    (the plan writes them there: consider), or of a pair the file already
+    says; any other such words in the worklist's doubt are taken out - as a
+    page_ref only the row says is (repair of review 9, 2026-11-23: an edit
+    appended them to a greenhouse row's doubt, the write filed them, and the
+    next plan, unedited, wired past another company's own unruled row by
+    that pair)."""
+    q = row.get("queue_row") if isinstance(row.get("queue_row"), dict) else {}
+    words = q.get("identity_why")
+    if not isinstance(words, str):
+        return words, []
+    own = (row["account"], row.get("ref")) if row.get("account") \
+        and account_clears(row, numbers, pairs) else None
+    removed = []
+
+    def keep(m):
+        if (m.group(1), m.group(2)) == own or (pairs or {}).get(m.group(1)) == m.group(2):
+            return m.group(0)
+        removed.append(m.group(0).lstrip("; "))
+        return ""
+    while True:                         # what is left can spell the words again
+        left = _ACCOUNT_LEAD.sub(keep, words)
+        if left == words:
+            return words, removed
+        words = left
+
+
+def queue_rows(holds: list, standing: dict | None = None, pages: dict | None = None,
+               numbers: dict | None = None, pairs: dict | None = None) -> list:
     """What to file for these held boards, each stamped with ITS row's read,
     and carrying every reader's doubt that stands for its company NOW.
 
@@ -3752,7 +3795,10 @@ def queue_rows(holds: list, standing: dict | None = None, pages: dict | None = N
     AN ADDRESS ONLY THE ROW SAYS IS NEVER FILED. Every door after meets the
     board by a filed row's `page_ref`, so it goes on the row only where the
     worklist's page_addresses (`pages`) records that page stating it (eighth
-    blind review, 2026-11-22).
+    blind review, 2026-11-22). NOR IS AN ACCOUNT ONLY THE ROW SAYS: a
+    Workable account's words go into the filed doubt only where held_words
+    lets them (`numbers`, the worklist's workable_numbers, and `pairs`, the
+    pairs said on file).
     """
     out = []
     for r in holds:
@@ -3765,8 +3811,9 @@ def queue_rows(holds: list, standing: dict | None = None, pages: dict | None = N
         if q.get("page_ref") is not None and (pages or {}).get(
                 spelling(f.get("type"), f.get("ref"))) != q.get("page_ref"):
             q.pop("page_ref")
-        words = q.get("identity_why")
+        words = held_words(r, numbers, pairs)[0]
         if isinstance(words, str):
+            q["identity_why"] = words
             more = [d for d in (standing or {}).get(r["id"]) or []
                     if str(d.get("why") or "").strip() not in words]
             if more:
@@ -3873,7 +3920,7 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
         else:
             wire.append(row)
     holds = [r for r in doc["rows"] if r["action"] == "HOLD"]
-    queued = queue_rows(holds, standing, held_for["pages"])
+    queued = queue_rows(holds, standing, held_for["pages"], resolved, pairs)
     # asked of the same door the write goes through, so the look and the
     # write cannot disagree about which rows the queue will take
     filing = board_proposals.file_found(queued, by, write=False, force=True,
@@ -3901,6 +3948,9 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
             # the wired rows whose note says their account number (account_clears)
             "noted": sorted(r["id"] for r in wire if r.get("account")
                             and account_clears(r, resolved, pairs)),
+            # what a held row's doubt files with, and what it is filed without
+            # (held_words), as the look prints each
+            "held_words": {r["id"]: held_words(r, resolved, pairs) for r in holds},
             "skips": [r for r in doc["rows"] if r["action"] == "SKIP"],
             "standing": standing, "reaches": reaches, "missing": missing,
             "doubts": s["doubts"]}
@@ -3990,10 +4040,19 @@ def report(doc: dict, d: dict) -> None:
           f"each with its doubt:")
     for cid in d["filing"]["added"]:
         print(_line(by_row[cid]))
-        plan_words = str((by_row[cid].get("queue_row") or {}).get("identity_why") or "")
+        plan_words, removed = d["held_words"].get(cid) or (None, [])
+        plan_words = str(plan_words or "")
         now_words = str((queued.get(cid) or {}).get("identity_why") or "")
         if now_words != plan_words and now_words.startswith(plan_words):
             print(f"        and, kept since the plan: {now_words[len(plan_words):].lstrip('; ')}")
+        # the Workable accounts its doubt files, which every door after reads
+        # as pairs on file, and the words no door files (held_words)
+        for number, slug in board_proposals.ACCOUNT_WORDS.findall(now_words):
+            print(f"        files with it, as a pair every door after reads: Workable account "
+                  f"{number} opens under apply.workable.com/{slug}")
+        for words in removed:
+            print(f"        files it without what the worklist's doubt says of a Workable "
+                  f"account nothing here shows: \"{words[:200]}\"")
         if (queued.get(cid) or {}).get("page_ref"):
             print(f"        files with it what its own page states: its address is "
                   f"{queued[cid]['page_ref']}")

@@ -2760,7 +2760,15 @@ round.
   2026-11-23: an edit giving the row the waiting row's number as its
   `account` and tying it to the find's slug in `workable_numbers` waived the
   company's own unruled row - it dropped off his queue - and the note planted
-  the pair).
+  the pair). A held row's doubt is filed with those words only of its own
+  board's number where `account_clears` shows it, or of a pair the file
+  already says (`wire_found.held_words`); any other such words in the
+  worklist's doubt are taken out (and taken out again where taking them out
+  spells them anew), and the look prints each pair a held row files with
+  ("files with it, as a pair every door after reads: ...") and the words it
+  is filed without (the same repair: an edit appended them to a greenhouse
+  row's doubt, the write filed them, and the next plan, unedited, wired past
+  another company's own unruled row under the number by that pair).
   `board_url` and the desk's `boardUrlFor` link the filed page or the
   company's website for a number, never `apply.workable.com/<number>`; the
   desk's Accept and its Set board both refuse a numbered Workable ref
@@ -3125,7 +3133,9 @@ round.
   it leans on ("leans on what the plan was told: ...") and the Workable
   account number it is asked for by, with what ties it to the slug and
   whether that clears and goes into the note ("leans on its account number:
-  ...", or "... for its holds alone ..."), and the code covers them.
+  ...", or "... for its holds alone ..."), and under each held row it files
+  the pairs its doubt files with and the account words it is filed without;
+  and the code covers them.
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from
