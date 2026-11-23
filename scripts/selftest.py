@@ -20856,7 +20856,8 @@ def check_successfactors_reads_its_career_site() -> int:
                                          row(3, href="/go/View-All-Jobs/8808000/"), row(4, href="http://[")]),
                                    "rows with no titled posting link on the site", "not one titled")):
             rows, exc = go({at(0): body, at(25): page([row(1)])}, lambda: ats.fetch_successfactors(SF))
-            if exc is None or words not in str(exc) or sent != [at(0)] \
+            if exc is None or words not in str(exc) \
+                    or sent != [at(0)] + ([SF + "/sitemap.xml"] if body is unify else []) \
                     or any("/services/" in u for u in sent + robots_asked):
                 errors += fail(f"successfactors: {what} was read as {rows!r} ({exc}), or more was asked: "
                                f"{sent}")

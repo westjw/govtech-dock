@@ -48,6 +48,7 @@ Where the description lives, per board (measured, 2026-08-23):
     icims        the posting page      -> schema.org JobPosting
     rippling     the posting page      -> __NEXT_DATA__ apiData.jobPost
     successfactors  the posting page   -> its itemprop="description" element
+                    (a Unify site's costs nothing more: its row is read from that page)
 
   nothing published
     oracle       no company on file uses it; unverified either way
@@ -3867,10 +3868,10 @@ def fetch_jobvite(ref) -> list[dict]:
 # robots.txt allows /search/, /go/ and /job/ on every one and closes
 # /services/. Every read is held to the ref's host (same_host).
 #
-# TWO KINDS OF SAP CAREER SITE ARE NOT READ HERE, and neither is ever a zero.
-# The newer "Unify" layout draws its list in the browser from POST
-# /services/recruiting/v1/jobs, which robots.txt closes: its /search/ page has
-# no rows (Aurigo's, Esri Canada's), and reads as an error that says so. The
+# THE NEWER "UNIFY" LAYOUT IS NOT READ FROM THIS LIST. It draws its list in
+# the browser from POST /services/recruiting/v1/jobs, which robots.txt closes:
+# its /search/ page has no rows (Aurigo's, Esri Canada's, Octave's), and its
+# board is read from its sitemap instead (successfactors_unify, below). The
 # legacy portals, career<N>.successfactors.(com|eu) and career<N>.sapsf.(com|
 # eu|cn) ?company=..., say Disallow: / and are never a board; nor is any other
 # host of SAP's (rmkcdn., hcm<N>., api<N>.: assets, sign-in, the Unify API).
@@ -4167,10 +4168,11 @@ def successfactors_board(ref) -> tuple[str, str, list[dict], int, int | None]:
     n, rows, total = successfactors_list(page, origin)
     if not n:
         if _SF_UNIFY.search(page):
-            raise AtsError(f"{origin} is a SuccessFactors 'Unify' career site: it draws its "
-                           f"list in the browser from POST /services/recruiting/v1/jobs, which "
-                           f"its robots.txt closes, so it cannot be read here (and it is not a "
-                           f"board with nothing open)")
+            # (its board is read from its sitemap: successfactors_unify)
+            raise SuccessFactorsUnify(f"{origin} is a SuccessFactors 'Unify' career site: it draws "
+                                      f"its list in the browser from POST /services/recruiting/v1/"
+                                      f"jobs, which its robots.txt closes, so its list is not this "
+                                      f"page (and it is not a board with nothing open)", origin)
         raise AtsError(f"{origin}/search/ carried no posting rows and is not a Unify site; a "
                        f"SuccessFactors career site with nothing open has not been seen, so "
                        f"this is not read as a zero")
@@ -4251,14 +4253,18 @@ def successfactors_walk(origin: str, first: list[dict], n: int, total: int | Non
     return rows
 
 
-def successfactors_posting(url: str, origin: str) -> str:
+def successfactors_posting(url: str, origin: str, landed: list | None = None) -> str:
     """One posting's page, asked only on the career site's own host, at an
     address that says plainly where it goes; a hop to the site's list is the
     posting gone (PostingClosed), and a hop anywhere else off /job/ is not
-    read (_sf_hop)."""
+    read (_sf_hop). `landed`, when given, is handed the address the page
+    came from (a Unify sitemap's address hops to /job/<slug>/<N>-<locale>/)."""
     if _sf_posting_url(url, origin) != url:
         raise AtsError(f"{url} is not a posting of {origin}")
-    return _page(url, same_host=True, may=_sf_hop(url, posting=True)).text or ""
+    resp = _page(url, same_host=True, may=_sf_hop(url, posting=True))
+    if landed is not None:
+        landed.append(str(getattr(resp, "url", "") or url))
+    return resp.text or ""
 
 
 # what only a page showing a posting carries: the posting's own microdata
@@ -4349,7 +4355,10 @@ def successfactors_closed(exc: BaseException) -> bool:
 
 
 def fetch_successfactors(ref) -> list[dict]:
-    origin, _page1, first, n, total = successfactors_board(ref)
+    try:
+        origin, _page1, first, n, total = successfactors_board(ref)
+    except SuccessFactorsUnify as unify:
+        return successfactors_unify(unify.origin)
     # (a partial read is an error, never the board: successfactors_walk)
     rows = successfactors_walk(origin, first, n, total)
     if FETCH_DETAILS:
@@ -4391,6 +4400,470 @@ def fetch_successfactors(ref) -> list[dict]:
                   f"site's page saying so) and are not published", file=sys.stderr)
             rows = [r for r in rows if r["url"] not in closed]
     return rows
+
+
+# ---- successfactors "Unify": the career site's sitemap, then each posting
+#
+# Owner, 2026-11-23: "yes, build the sitemap reader for those three" (Aurigo,
+# Esri Canada and Octave). A Unify site draws its list in the browser from
+# POST /services/recruiting/v1/jobs, which its robots.txt closes, so its
+# /search/ page lists no rows (successfactors_board says so, as
+# SuccessFactorsUnify). What robots.txt leaves open is <origin>/sitemap.xml -
+# a <urlset> of <url><loc>https://<host>/job/<slug>/<id>/</loc>, one a
+# posting - and each posting's own page. Measured 2026-11-23 on the three
+# (robots.txt byte-identical on each, /services/ closed, /sitemap.xml and
+# /job/ open): Aurigo 16 locs, Esri Canada 32 (about 16 roles, each once in
+# English and once in French), Octave 131. Every <lastmod> read 2026-11-21:
+# it is not a posted date, and is never read. A loc carries XML's escapes
+# (Esri Canada's /job/Sp%C3%A9cialiste-d&apos;applications%2C-.../), undone
+# before it is anything. Each loc answers 302 to /job/<slug>/<N>-<locale>/
+# (Aurigo's .../55832644/ to .../2249-en_US/; Octave's page says "Req Id:
+# 3378" of its .../3378-en_US/), and a role's English and French copies land
+# on the SAME N (Esri Canada's .../663-en_US/ and .../663-fr_CA/): one
+# requisition, published once, in English where there is one. The row's url
+# is the sitemap's address, never where it landed: Esri Canada's server
+# writes a French posting's Location twice encoded, and the page answers it.
+#
+# A board costs its /search/ page, its sitemap and two requests a posting (the
+# loc and its hop): Octave about 263 a night, Esri Canada 65, Aurigo 33 - the
+# cost the owner accepted. The sitemap is held to SF_SITEMAP_MAX postings
+# (the owner skips giants of about 500+ roles) and a sitemap index to one
+# level of SF_SITEMAPS_MAX sitemaps on the site's own origin.
+#
+# THE POSTING'S OWN PAGE IS THE ROW: there is no list to fall back on. A
+# posting the site says has closed (successfactors_closed: a 404 or 410, a
+# hop to its list; or its page saying so, successfactors_filled) is left out
+# and said. A failure of the day - a 429, a 5xx, the network - fails the
+# whole read, as it fails any reader's: refresh and build_board ask a 429
+# and the network once more, and a board that still will not read keeps the
+# state it had (Unknown, never "None found"), so one flaky request never
+# empties a board. Anything else a posting answers that is not the posting -
+# a page showing none that is not the site saying it closed, robots.txt
+# closing it, a refusal, a hop off /job/ or off the host - is left out and
+# said, up to SF_SLACK postings; more is the board unreadable, never part
+# of it.
+
+SF_SITEMAP_MAX = 400     # postings one sitemap may list: the owner skips giants (~500+ roles)
+SF_SITEMAPS_MAX = 5      # sitemaps one sitemap index may name, followed one level only
+# The tokens a posting's place is read from, the first shown with a value
+# (Aurigo's 'Posting Location', Octave's 'Job Location (Short)'), else its
+# 'Country' (Esri Canada's, which shows no place: its city is only in the ad).
+_SF_PLACES = ("posting location", "job location (short)", "job location", "location",
+              "work location")
+_SM_OPEN = re.compile(r"<(?![?!/])([A-Za-z_][\w.:-]{0,80})")       # an element, not a PI or a close
+_SM_LOC = re.compile(r"<loc\b[^<>]*>([^<]*)</loc\s*>")
+_SM_LOC_TAG = re.compile(r"<loc\b")
+_XML_REF = re.compile(r"&(?:(lt|gt|amp|quot|apos)|#([0-9]{1,7})|#[xX]([0-9A-Fa-f]{1,6}));")
+_XML_NAMED = {"lt": "<", "gt": ">", "amp": "&", "quot": '"', "apos": "'"}
+_SF_TITLED = re.compile(r"<([a-z][a-z0-9]{0,15})\b([^<>]*\bitemprop\s*=\s*[\"']?title\b[^<>]*)>", re.I)
+_SF_META = re.compile(r"<meta\b([^<>]*)>", re.I)
+_SF_HTML_LANG = re.compile(r"<html\b[^<>]{0,400}?\slang\s*=\s*[\"']?([A-Za-z]{2,3}(?:[-_][A-Za-z0-9]{1,8})*)",
+                           re.I)
+_SF_MDY = re.compile(r"([0-9]{1,2})/([0-9]{1,2})/([0-9]{2})")
+_SF_REQUISITION = re.compile(r"([0-9]{1,15})-([A-Za-z]{2,3}(?:_[A-Za-z0-9]{2,8})?)")
+
+
+class SuccessFactorsUnify(AtsError):
+    """successfactors_board's word that a career site's /search/ page is a
+    Unify site's, which lists no rows: its board is read from its sitemap
+    (successfactors_unify), and its name from its postings' own titles
+    (verify_boards._successfactors_unify)."""
+
+    def __init__(self, why: str, origin: str):
+        super().__init__(why)
+        self.origin = origin
+
+
+def _xml_text(raw: str) -> str | None:
+    """XML character data as the text it stands for: the five entities XML
+    defines and character references, undone in one pass ('&amp;apos;' is the
+    six characters '&apos;'). None where a '&' begins anything else - an
+    entity a DOCTYPE would define, or a bare '&' - which does not read
+    plainly."""
+    refs = list(_XML_REF.finditer(raw or ""))
+    if (raw or "").count("&") != len(refs):
+        return None
+    out, at = [], 0
+    for m in refs:
+        n = None if m.group(1) else int(m.group(2) or m.group(3), 10 if m.group(2) else 16)
+        if n is not None and not (0 < n <= 0x10FFFF and not 0xD800 <= n <= 0xDFFF):
+            return None
+        out.append(raw[at:m.start()])
+        out.append(_XML_NAMED[m.group(1)] if m.group(1) else chr(n))
+        at = m.end()
+    out.append(raw[at:])
+    return "".join(out)
+
+
+def _sf_services(path: str) -> bool:
+    """Is this path under /services/ (the Unify search API, the RSS), as
+    written or with any layer of its escapes undone?"""
+    p = path or "/"
+    for _ in range(4):
+        if p.lstrip("/").split("/", 1)[0].lower() == "services":
+            return True
+        undone = urllib.parse.unquote(p)
+        if undone == p:
+            return False
+        p = undone
+    return True                                  # escapes four deep say nothing plainly
+
+
+def _sf_map_hop(url: str):
+    """The rule each hop of a sitemap read is held to, asked BEFORE the hop is
+    (on top of same_host): a path that says plainly where it goes, and never
+    one under /services/ - refused here whatever robots.txt says."""
+    def may(u: str):
+        path = urllib.parse.urlsplit(u).path or "/"
+        if not _sf_plain_path(path) or _sf_services(path):
+            raise AtsError(f"{url} leads off to {path[:80]}, which is not a sitemap this reader "
+                           f"asks (a path that does not say plainly where it goes, or one under "
+                           f"/services/)")
+    return may
+
+
+def _sf_sitemap_page(url: str, origin: str) -> str:
+    """One sitemap's text, asked as every page is (robots.txt at every hop,
+    the site's own host only, _sf_map_hop), or AtsError. A 404 or 410 says
+    only that no sitemap is there: the career site answered its /search/
+    page, so its board is unreadable, never gone."""
+    try:
+        return _page(url, same_host=True, may=_sf_map_hop(url)).text or ""
+    except AtsError as exc:
+        status = re.match(r"HTTP (4(?:04|10))\b", str(exc))
+        if status and not isinstance(exc, RobotsRefused):
+            raise AtsError(f"{origin} is a SuccessFactors 'Unify' career site: it draws its list in "
+                           f"the browser from POST /services/recruiting/v1/jobs, which its "
+                           f"robots.txt closes, and {url} answered HTTP {status.group(1)}: there is "
+                           f"no sitemap to read its board from (and it is not a board with "
+                           f"nothing open)") from exc
+        raise
+
+
+def _sf_sitemap_read(text: str, url: str) -> tuple[str, list[str]]:
+    """(its root element, every <loc>'s text as written) of one sitemap, as an
+    XML reader reads it - a commented-out <url> is not listed - or AtsError
+    for a page that is not a sitemap, a comment left open, or a <loc> holding
+    markup (CDATA): an address that cannot be read plainly is never a posting
+    silently lost."""
+    kept, i = [], 0
+    while True:
+        j = text.find("<!--", i)
+        if j < 0:
+            kept.append(text[i:])
+            break
+        k = text.find("-->", j + 4)
+        if k < 0:
+            raise AtsError(f"{url} leaves a comment open, so what it lists does not read plainly")
+        kept.append(text[i:j])
+        kept.append(" ")
+        i = k + 3
+    body = "".join(kept)
+    first = _SM_OPEN.search(body)
+    root = first.group(1) if first else ""
+    if root not in ("urlset", "sitemapindex"):
+        raise AtsError(f"{url} is not a sitemap (its first element is "
+                       f"{'<' + root[:40] + '>' if root else 'none'})")
+    locs = _SM_LOC.findall(body)
+    if len(_SM_LOC_TAG.findall(body)) != len(locs):
+        raise AtsError(f"{url} lists an address this reader cannot read plainly (markup inside a "
+                       f"<loc>), so its board is not read in part")
+    return root, locs
+
+
+def _sf_child_sitemap(u: str, origin: str) -> bool:
+    """Is this address, named by a sitemap index, a sitemap of this career
+    site's own: https on its origin, a plain path, nothing under /services/?"""
+    try:
+        parts = urllib.parse.urlsplit(u)
+    except ValueError:
+        return False
+    return (f"{parts.scheme}://{(parts.netloc or '').lower()}" == origin and not _UNPLAIN.search(u)
+            and _sf_plain_path(parts.path) and not _sf_services(parts.path))
+
+
+def _sf_loc(raw: str, url: str) -> str:
+    """A <loc>'s address, its XML escapes undone, or AtsError for one that does
+    not read as XML (a bare '&', an entity XML does not define) or holds a
+    control character: what it names is not known, so no posting it might be
+    is silently lost."""
+    u = _xml_text(raw.strip())
+    if u is None or _UNPLAIN.search(u):
+        raise AtsError(f"{url} lists an address that does not read plainly as XML "
+                       f"({raw.strip()[:80]!r}), so its board is not read in part")
+    return u
+
+
+def successfactors_sitemap(origin: str) -> tuple[list[str], list[str]]:
+    """(every posting of this career site its sitemap lists, in its order and
+    each once; what was passed over, in words), or AtsError.
+
+    A loc is a posting where, its XML escapes undone (_sf_loc), it is a /job/
+    address on this origin that says plainly where it goes (_sf_posting_url);
+    any other address - another host's, a page that is not a posting, a path
+    that climbs - is passed over and counted. One that IS such a posting but
+    reads otherwise once read so ('&amp;apos;' undone twice, a relative
+    address) is an error: the address asked must be the address listed. A
+    <sitemapindex> is followed one level, to at most SF_SITEMAPS_MAX sitemaps
+    on this origin (another host's is not asked, and is counted); a sitemap
+    index inside one is an error. NEVER A ZERO AND NEVER PART OF A BOARD: a
+    sitemap robots.txt closes, one that is not there, one that lists no
+    posting and one listing more than SF_SITEMAP_MAX are errors, and say
+    why."""
+    first = origin + "/sitemap.xml"
+    root, locs = _sf_sitemap_read(_sf_sitemap_page(first, origin), first)
+    notes: list[str] = []
+    if root == "sitemapindex":
+        maps, away = [], 0
+        for raw in locs:
+            u = _sf_loc(raw, first)
+            if _sf_child_sitemap(u, origin):
+                if u != first and u not in maps:
+                    maps.append(u)
+            else:
+                away += 1
+        if len(maps) > SF_SITEMAPS_MAX:
+            raise AtsError(f"{first} is a sitemap index naming {len(maps)} sitemaps on {origin}, more "
+                           f"than the {SF_SITEMAPS_MAX} this reader follows: not read in part")
+        if away:
+            notes.append(f"{away} of the sitemaps its index names are not on its own origin (or do "
+                         f"not say plainly where they go) and were not asked")
+        locs = []
+        for u in maps:
+            kind, more = _sf_sitemap_read(_sf_sitemap_page(u, origin), u)
+            if kind != "urlset":
+                raise AtsError(f"{u}, which {first} names, is itself a sitemap index: one level is "
+                               f"followed, so its board is not read in part")
+            locs.extend((raw, u) for raw in more)
+    else:
+        locs = [(raw, first) for raw in locs]
+    postings, seen, others = [], set(), 0
+    for raw, where in locs:
+        u = _sf_loc(raw, where)
+        got = _sf_posting_url(u, origin)
+        if got is None:
+            others += 1
+        elif got != u:
+            raise AtsError(f"{where} lists {u[:120]!r}, a posting of {origin} that reads as "
+                           f"{got[:120]!r} once read again: the address asked would not be the "
+                           f"address listed, so its board is not read in part")
+        elif got not in seen:
+            seen.add(got)
+            postings.append(got)
+    if others:
+        notes.append(f"{others} of the {len(locs)} addresses its sitemap lists are not postings of "
+                     f"this site (a /job/ page on its host that says plainly where it goes) and "
+                     f"were not asked")
+    if not postings:
+        raise AtsError(f"{origin}'s sitemap lists no posting of this site ({len(locs)} addresses), "
+                       f"so it is not read as a board with nothing open")
+    if len(postings) > SF_SITEMAP_MAX:
+        raise AtsError(f"{origin}'s sitemap lists {len(postings)} postings, more than the "
+                       f"{SF_SITEMAP_MAX} this reader asks one by one at two requests each: a "
+                       f"giant is not read")
+    return postings, notes
+
+
+def _sf_of_the_day(exc: BaseException) -> bool:
+    """Did asking fail for the day only - a 429, a 5xx, the network failing or
+    timing out, a robots.txt that would not answer - saying nothing of the
+    posting or the board? refresh and build_board ask a 429 and the network
+    once more, and keep a board that still will not read as it was."""
+    if isinstance(exc, RateLimited):
+        return True
+    if isinstance(exc, RobotsRefused):
+        return getattr(exc, "kind", "disallowed") != "disallowed"
+    text = str(exc)
+    return bool(re.match(r"HTTP 5[0-9]{2}\b", text)) or text.startswith("network error") \
+        or "timed out" in text.lower()
+
+
+def _sf_inner(body: str, start: int, name: str, stop: int) -> str | None:
+    """The markup from `start` (just past an opening <name> tag) to the close
+    that matches it, before `stop`; None where it does not close there."""
+    depth = 1
+    for t in re.compile(rf"<(/?){name}\b[^<>]*>", re.I).finditer(body, start, stop):
+        if t.group(1):
+            depth -= 1
+        elif not t.group(0).endswith("/>"):
+            depth += 1
+        if depth == 0:
+            return body[start:t.start()]
+    return None
+
+
+def _sf_tokens(body: str) -> list[tuple[str, str]]:
+    """(label, value) of every labelled token a posting page shows, in page
+    order, from the page as a reader sees it (_cut): a <span
+    class="joblayouttoken-label">Posting Location:&nbsp;</span>, and the
+    value is the span after it, before the next label ('' where there is
+    none). The label without its colon."""
+    labels = [m for m in _SF_LABEL.finditer(body)
+              if "joblayouttoken-label" in m.group(1).lower()
+              and "joblayouttoken-label" in _sf_classes(m.group(1))]
+    low, out = lower_same(body), []
+    for k, m in enumerate(labels):
+        stop = min(labels[k + 1].start() if k + 1 < len(labels) else len(body), m.end() + _SF_TEXT_MAX)
+        shut = low.find("</span>", m.end(), stop)
+        if shut < 0:
+            continue
+        label = _jv_text(body[m.end():shut]).rstrip(":").strip()
+        value, v = "", _SF_LABEL.search(body, shut + 7, stop)
+        if v and not v.group(0).endswith("/>"):
+            inner = _sf_inner(body, v.end(), "span", stop)
+            value = _jv_text(inner) if inner is not None else ""
+        out.append((label, value))
+    return out
+
+
+def _sf_unify_title(body: str) -> str:
+    """The role a posting page names: its itemprop="title" element's text,
+    else its og:title, else ''."""
+    m = _SF_TITLED.search(body)
+    if m and not m.group(0).endswith("/>"):
+        inner = _sf_inner(body, m.end(), m.group(1).lower(), min(len(body), m.end() + _SF_TEXT_MAX))
+        if inner is not None and _jv_text(inner):
+            return _jv_text(inner)
+    for meta in _SF_META.finditer(body):
+        attrs = _sf_attrs(meta.group(1))
+        if (attrs.get("property") or attrs.get("name") or "").lower() == "og:title":
+            return _text(html_lib.unescape(attrs.get("content") or ""))
+    return ""
+
+
+def successfactors_unify_row(page: str, url: str) -> dict | None:
+    """One posting from its own page on a Unify site, or None for a page that
+    names no role. `url` is the sitemap's address, and the row's.
+
+    THE PLACE is the first place token shown with a value (_SF_PLACES), else
+    the 'Country' token: several places in one ('Rio de Janeiro, Brazil |
+    São Paulo, Brazil', Octave's) are one each, joined '; ' as the Hirebridge
+    and Teamtailor readers join a job's places. A 'Workplace Type' is the
+    row's mode, as Ashby's and Pinpoint's workplace types are, and Remote is
+    said in the place too, first ('Remote; São Paulo, Brazil') - as the Gem
+    and Zoho readers say it - so the place a remote role names is never read
+    as its desk. THE DATE is the 'Posting Start Date' on a page whose own
+    <html lang> is en-US only ('11/18/26', month first, Aurigo's): another
+    English writes the day first (en-GB's 18/11/26), and another language is
+    not read either - None, never a guess."""
+    body = _cut(page or "")
+    title = _sf_unify_title(body)
+    if not title:
+        return None
+    place = country = mode = when = None
+    for label, value in _sf_tokens(body):
+        key = label.lower()
+        if not value:
+            continue
+        if key in _SF_PLACES and place is None:
+            place = value
+        elif key == "country" and country is None:
+            country = value
+        elif key == "workplace type" and mode is None:
+            mode = value
+        elif key == "posting start date" and when is None:
+            when = value
+    where = "; ".join(dict.fromkeys(p.strip() for p in (place or country or "").split("|") if p.strip()))
+    how = work_mode(mode)
+    if how == "remote" and not re.search(r"\bremote\b", where, re.I):
+        where = "; ".join(["Remote"] + ([where] if where else []))
+    lang = _SF_HTML_LANG.search(body[:20000])
+    posted = None
+    day = _SF_MDY.fullmatch(_text(when)) if when else None
+    if day and lang and lang.group(1).lower().replace("_", "-") == "en-us":
+        try:
+            posted = dt.date(2000 + int(day.group(3)), int(day.group(1)), int(day.group(2))).isoformat()
+        except ValueError:
+            posted = None
+    return {"title": title, "location": where, "url": url, "posted": posted, "mode": how}
+
+
+def _sf_requisition(landed: str) -> tuple[str, str] | None:
+    """(the number, the locale) a posting's address names - /job/<slug>/<N>-
+    <locale>/, where a Unify loc hops - or None."""
+    path = urllib.parse.urlsplit(landed or "").path.rstrip("/")
+    m = _SF_REQUISITION.fullmatch(path.rsplit("/", 1)[-1]) if path.startswith("/job/") else None
+    return (m.group(1), m.group(2)) if m else None
+
+
+def _sf_unify_posting(url: str, origin: str):
+    """('row', (row, requisition)), ('closed', None) or ('unread', why) for
+    one posting a Unify sitemap lists, asked once; a failure of the day is
+    raised as it came (_sf_of_the_day)."""
+    landed: list = []
+    try:
+        page = successfactors_posting(url, origin, landed)
+    except AtsError as exc:
+        if successfactors_closed(exc):
+            return "closed", None
+        if _sf_of_the_day(exc):
+            raise
+        return "unread", f"{url} ({_text(str(exc))[:160]})"
+    if not successfactors_shown(page):
+        if successfactors_filled(page):
+            return "closed", None
+        return "unread", f"{url} (a page that shows no posting and is not the site saying it has closed)"
+    row = successfactors_unify_row(page, url)
+    if row is None:
+        return "unread", f"{url} (a posting page that names no role)"
+    if FETCH_DETAILS:
+        # the ad is on the page already read: no request more
+        row["jd"] = successfactors_ad(page)
+    return "row", (row, _sf_requisition(landed[-1] if landed else url))
+
+
+def successfactors_unify(origin: str) -> list[dict]:
+    """A Unify career site's board: every posting its sitemap lists
+    (successfactors_sitemap), each asked once on its own page and read from
+    it (successfactors_unify_row), the site's closed postings left out and
+    said, a failure of the day raised as it came, and more than SF_SLACK
+    postings that would not read an error; then one row a requisition - a
+    role written in two languages hops to one number twice - in English
+    where there is one. Never a zero."""
+    urls, notes = successfactors_sitemap(origin)
+    closed, unread, read = [], [], []
+    for url in urls:
+        what, got = _sf_unify_posting(url, origin)
+        if what == "row":
+            read.append(got)
+        elif what == "closed":
+            closed.append(url)
+        else:
+            unread.append(got)
+            if len(unread) > SF_SLACK:
+                raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
+                               f"did not read as postings ({unread[0]} the first): read in part, so "
+                               f"not read")
+    kept, at, twins = [], {}, 0
+    for row, req in read:
+        key = ("requisition", req[0]) if req else ("address", row["url"])
+        english = bool(req) and re.match(r"en(?:_|$)", req[1], re.I) is not None
+        if key not in at:
+            at[key] = len(kept)
+            kept.append((row, english))
+            continue
+        twins += 1
+        if english and not kept[at[key]][1]:
+            kept[at[key]] = (row, english)
+    if not kept:
+        raise AtsError(f"{origin}: none of the {len(urls)} postings its sitemap lists answered as an "
+                       f"open posting ({len(closed)} closed, {len(unread)} that did not read), so it "
+                       f"is not read as a board with nothing open")
+    said = list(notes)
+    if closed:
+        said.append(f"{len(closed)} of the {len(urls)} postings its sitemap lists answered as closed "
+                    f"on their own page (a 404 or 410, a hop to its list, or the site's page saying "
+                    f"so) and are not published")
+    if unread:
+        said.append(f"{len(unread)} of the {len(urls)} postings its sitemap lists did not read as "
+                    f"postings and are left out: {'; '.join(unread)}")
+    if twins:
+        said.append(f"{twins} of the postings its sitemap lists are another language's copy of a "
+                    f"requisition read (one number) and are published once, in English where there "
+                    f"is one")
+    for line in said:
+        print(f"  successfactors: {origin}: {line}", file=sys.stderr)
+    return [row for row, _english in kept]
 
 
 FETCHERS = {
