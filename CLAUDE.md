@@ -628,13 +628,16 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   /careers/private/x and was asked only as written. `robots.served` cuts it
   off every segment first (after reading a backslash as a slash, as a browser
   does), and a segment that is nothing but a parameter goes with it, as
-  Tomcat merges the two slashes it leaves ('/a/;x/b' is /a/b). An empty
-  segment WRITTEN as such ('/a//b') is still asked as written and resolved
-  as RFC 3986 reads it, not merged as Tomcat and nginx merge it - not
-  changed here, and not yet reviewed. `robots.decide`
+  Tomcat merges the two slashes it leaves ('/a/;x/b' is /a/b). **An empty
+  segment is asked merged too** (blind review 10, 2026-11-23): written as
+  such ('/a//b', '//a/b', or left by a parameter's segment cut,
+  '/a/;x//b'), it was asked only as written and as RFC 3986 resolves it,
+  where no rule matched, while nginx (merge_slashes), Tomcat and Apache
+  serve it merged - '/careers//private/x' is /careers/private/x. `robots.decide`
   asks the path as written, as served so, and as served with the parameter
   kept (`served(..., params=False)`, the earlier reading - a server that
-  knows no path parameter), and a page is read only when all three are
+  knows no path parameter), and each of those again with every run of
+  slashes read as one, and a page is read only when all of them are
   allowed; an escaped ';' ('%3B') is a character of its segment, not a
   parameter.
   A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a

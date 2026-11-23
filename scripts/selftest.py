@@ -14373,7 +14373,22 @@ def check_the_crawler_honours_robots_txt() -> int:
                 ([(False, "/careers/private")], "https://site.example/careers;jsessionid=1/open/x", True,
                  "an open path with a parameter"),
                 ([(True, "/careers;"), (False, "/careers/")], "https://site.example/careers;x/jobs", False,
-                 "an Allow for the path as written, a Disallow for the path served")):
+                 "an Allow for the path as written, a Disallow for the path served"),
+                # ...and with its empty segments merged, as nginx, Tomcat and
+                # Apache serve them (blind review 10, 2026-11-23: '//' was
+                # asked as written only, and read)
+                ([(False, "/careers/private")], "https://site.example/careers//private/x", False,
+                 "an empty segment, which a server merges"),
+                ([(False, "/careers/private")], "https://site.example//careers/private/x", False,
+                 "a path opening with an empty segment"),
+                ([(False, "/careers/private")], "https://site.example/careers///private/x", False,
+                 "a run of three slashes"),
+                ([(False, "/careers/private")], "https://site.example/careers/;x//private/x", False,
+                 "a parameter's segment cut, leaving an empty one"),
+                ([(False, "/careers/private")], "https://site.example/careers//open/x?a=//private", True,
+                 "an open path with an empty segment, and slashes in its query"),
+                ([(False, "/a//b")], "https://site.example/a//b/x", False,
+                 "a rule written with the empty segment")):
             if robots.decide(rules, url) is not want:
                 errors += fail(f"robots.decide is {robots.decide(rules, url)} for {why}, not {want}")
         H = "https://careers.acmegov.example"
