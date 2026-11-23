@@ -20088,6 +20088,41 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
                  "a '<!--' inside a style block")):
             if titles(rows_) != want:
                 errors += fail(f"jobvite: with {why}, the rows read are {titles(rows_)}, not {want}")
+        # AN <svg> THE PAGE NEVER CLOSED ENDS WHERE A BROWSER ENDS IT, at each
+        # tag that does it (eighth blind review, 2026-11-22: only </header> and
+        # a <div> were pinned): a breakout start tag - p, span and table as well
+        # as div - and the end tag of the HTML element it sits in: </td>, </th>
+        # and </tr> in a table, and </div>, </p> and </span>
+        icon = '<svg class="pin" viewBox="0 0 8 8"><path d="M0 0h8v8z"/>'
+        for rows_, why in (
+                ([icon + "<g>", "<p>", r1, r2, "</p>"], "a <p> after an unclosed svg"),
+                ([icon + "<g>", "<span>", r1, r2, "</span>"], "a <span> after an unclosed svg"),
+                ([icon + "<g>", "<table>", r1, r2, "</table>"], "a <table> after an unclosed svg"),
+                (["<tr><td>" + icon + " Austin</td>", r1, r2], "an svg left open in a cell its </td> closes"),
+                (["<tr><th>" + icon + " Place</th>", r1, r2], "an svg left open in a header cell its </th> closes"),
+                (["<tr>" + icon + "</tr>", r1, r2], "an svg left open in a row its </tr> closes"),
+                (['<div class="card">' + icon + "</div>", r1, r2], "an svg left open in a card its </div> closes"),
+                (["<p>" + icon + "</p>", r1, r2], "an svg left open in a paragraph its </p> closes"),
+                (["<span>" + icon + "</span>", r1, r2], "an svg left open in a span its </span> closes")):
+            try:
+                got = titles(rows_)
+            except ats.AtsError as exc:                 # (every row hidden)
+                got = f"none ({exc})"
+            if got != ["Role 1 & Co", "Role 2 & Co"]:
+                errors += fail(f"jobvite: with {why}, the rows read are {got}, not both")
+        for markup, words, why in (
+                ('<html><body>' + icon + '<p>Open roles: Senior Account Executive, SLED</p></body></html>',
+                 "Senior Account Executive", "a <p> after an icon's unclosed svg"),
+                ('<html><body>' + icon + '<span>Account Executive, SLED</span></body></html>',
+                 "Account Executive, SLED", "a <span> after an icon's unclosed svg"),
+                ('<html><body><div class="card">' + icon + '</div>Account Executive, SLED</body></html>',
+                 "Account Executive, SLED", "the text after the </div> an icon's svg sits in"),
+                ('<table><tbody><tr><td><a href="/job/1">Account Executive</a></td><td>' + icon
+                 + ' Austin, TX</td></tr><tr><td><a href="/job/2">Regional Sales Manager</a></td>'
+                 '<td>Denver, CO</td></tr></tbody></table>', "Regional Sales Manager",
+                 "a table row after a cell an icon's svg sits in")):
+            if words not in ats._cut(markup):
+                errors += fail(f"ats._cut: {why} was hidden: {ats._cut(markup)[:120]!r}")
         unclosed_title = page([r1, r2]).replace("<title>Acme Gov Careers</title>", "<title>Acme Gov Careers")
         try:
             got = ats.jobvite_rows(unclosed_title, "acmegov")
