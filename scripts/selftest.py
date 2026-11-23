@@ -22147,14 +22147,29 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         # ---- a closed posting is left out, and said; never a zero --------------
         landing = SF + "/search/?q=&messageKey=jobNotFound"
         routes = site([plain(61, posting("Role 61")), plain(62, filled), (loc(63), None, (404, None)),
-                       plain(64, (410, None)), plain(65, (302, landing)), plain(66, posting("Role 66"))],
-                      more={landing: unify})
+                       plain(64, (410, None)), plain(65, (302, landing))]
+                      + [plain(n, posting(f"Role {n}")) for n in range(66, 77)], more={landing: unify})
         rows, exc, err = go(routes)
-        if exc or [nth(r["url"]) for r in rows or []] != [61, 66] or landing in sent \
-                or "4 of the 6 postings its sitemap lists answered as closed" not in err:
-            errors += fail(f"successfactors unify: of six postings, four the site says have closed were not "
-                           f"left out and said, or the list one was sent to was asked ({err.strip()!r}, "
+        if exc or [nth(r["url"]) for r in rows or []] != [61] + list(range(66, 77)) or landing in sent \
+                or "4 of the 16 postings its sitemap lists answered as closed" not in err:
+            errors += fail(f"successfactors unify: of sixteen postings, four the site says have closed were "
+                           f"not left out and said, or the list one was sent to was asked ({err.strip()!r}, "
                            f"{exc}): {[r['url'] for r in rows or []]}")
+        # MORE THAN A QUARTER OF A SITEMAP CLOSED IS NOT A DAY'S CHURN, and the
+        # read is refused, never published as the board (blind review 10,
+        # 2026-11-23: 130 of 131 answering 404 published one row); never
+        # fewer than SF_SLACK closed
+        for open_, shut_n, ok, why in ((12, 4, True, "4 of 16, a quarter"), (11, 5, False, "5 of 16"),
+                                       (1, 130, False, "130 of 131 answering 404"),
+                                       (1, 2, True, "2 of 3, the slack"), (9, 3, True, "3 of 12, a quarter"),
+                                       (8, 4, False, "4 of 12")):
+            ps = [plain(n, (404, None)) for n in range(1, shut_n + 1)] \
+                + [plain(n, posting(f"Role {n}")) for n in range(shut_n + 1, shut_n + open_ + 1)]
+            rows, exc, err = go(site(ps))
+            if ok is not (exc is None) or (ok and len(rows or []) != open_) \
+                    or (not ok and (rows is not None or "more than a quarter of it" not in str(exc))):
+                errors += fail(f"successfactors unify: {why} closed was {'refused' if exc else 'read'} "
+                               f"({len(rows or [])} rows): {exc}")
         rows, exc, err = go(site([plain(n, filled) for n in (61, 62, 63)]))
         if exc is None or rows is not None or "none of the 3 postings" not in str(exc):
             errors += fail(f"successfactors unify: a sitemap every one of whose postings has closed read as "
@@ -22177,12 +22192,12 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                                                                phrase="Détails de l'emploi")))
             return [fr_, en_] if fr_first else [en_, fr_]
         for k, fr_first in ((1, False), (2, False), (3, False), (3, True)):
-            ps = [c for n in range(1, 9) for c in pair(n, shut_=n <= k, fr_first=fr_first)]
+            ps = [c for n in range(1, 17) for c in pair(n, shut_=n <= k, fr_first=fr_first)]
             rows, exc, err = go(site(ps))
-            if exc or len(rows or []) != 8 - k or "did not read" in err \
-                    or f"{2 * k} of the 16 postings its sitemap lists answered as closed" not in err \
+            if exc or len(rows or []) != 16 - k or "did not read" in err \
+                    or f"{2 * k} of the 32 postings its sitemap lists answered as closed" not in err \
                     or f"{k} of them a copy that shows no posting" not in err:
-                errors += fail(f"successfactors unify: {k} of 8 bilingual roles closed"
+                errors += fail(f"successfactors unify: {k} of 16 bilingual roles closed"
                                f"{', the French copy first' if fr_first else ''}: the French copies were not "
                                f"closed with the English ({err.strip()!r}): {len(rows or [])} rows {exc}")
         ps = pair(1, en_answer=(404, None), fr_answer=gone_fr) + pair(2)

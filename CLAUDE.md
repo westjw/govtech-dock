@@ -3579,7 +3579,12 @@ review and the owner's word, through the wiring door.
   robots.txt closing it, a 401 or 403, a hop off /job/ or off the host, a
   hop round in a loop - each address asked once - a page naming no role) is
   left out and said up to `SF_SLACK` (2) postings,
-  and more is the board unreadable; every posting closed is an error.
+  and more is the board unreadable; every posting closed is an error, and
+  so is more than a quarter of the sitemap closed in one read
+  (`SF_CLOSED_SHARE`, never fewer than `SF_SLACK`): not a day's postings
+  closing, but a site answering 404 for postings it has, a soft block or a
+  sitemap long out of date (blind review 10: 130 of 131 answering 404
+  published one row as the board).
   **The probe** (`verify_boards._successfactors_unify`): the site's name is
   each posting page's `<title>` after its last ' | ' ('<role> Job Details |
   <site>', in French '<rôle> Détails de l'emploi | <site>'), stated whole

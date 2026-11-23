@@ -4450,7 +4450,8 @@ def fetch_successfactors(ref) -> list[dict]:
 # THE POSTING'S OWN PAGE IS THE ROW: there is no list to fall back on. A
 # posting the site says has closed (successfactors_closed: a 404 or 410, a
 # hop to its list; or its page saying so, successfactors_filled) is left out
-# and said. A FAILURE OF THE DAY on a posting - a 429, a 5xx, the network
+# and said - up to SF_CLOSED_SHARE of the sitemap: more is not a day's churn,
+# and the read is refused. A FAILURE OF THE DAY on a posting - a 429, a 5xx, the network
 # failing or timing out - is asked once more (after the gate's backoff for a
 # 429, SF_RETRY_PAUSE for the rest), so one flaky request costs one request
 # more, never the board (blind review 10: one 5xx among a read's ~265 took
@@ -4469,6 +4470,13 @@ def fetch_successfactors(ref) -> list[dict]:
 SF_SITEMAP_MAX = 400     # postings one sitemap may list: the owner skips giants (~500+ roles)
 SF_SITEMAPS_MAX = 5      # sitemaps one sitemap index may name, followed one level only
 SF_RETRY_PAUSE = 2.0     # seconds before a posting's 5xx or network failure is asked once more
+# More of a sitemap than this answering closed in one read is not a day's
+# postings closing - a site answering 404 for postings it has, a soft block,
+# a sitemap long out of date - and the read is refused, never published as
+# the board (blind review 10, 2026-11-23: 130 of 131 answering 404 published
+# one row). A quarter, build_site.MAX_DROP's line for a board falling
+# overnight; never fewer than SF_SLACK.
+SF_CLOSED_SHARE = 0.25
 # The tokens a posting's place is read from, the first shown with a value
 # (Aurigo's 'Posting Location', Octave's 'Job Location (Short)'), else its
 # 'Country' (Esri Canada's, which shows no place: its city is only in the ad).
@@ -5008,6 +5016,11 @@ def successfactors_unify(origin: str) -> list[dict]:
         raise AtsError(f"{origin}: none of the {len(urls)} postings its sitemap lists answered as an "
                        f"open posting ({len(closed)} closed, {len(unread)} that did not read), so it "
                        f"is not read as a board with nothing open")
+    if len(closed) > max(SF_SLACK, SF_CLOSED_SHARE * len(urls)):
+        raise AtsError(f"{origin}: {len(closed)} of the {len(urls)} postings its sitemap lists answered "
+                       f"as closed, more than a quarter of it - not a day's postings closing, but a "
+                       f"site answering so for postings it has or a sitemap long out of date - so the "
+                       f"{len(kept)} left are not read as its board")
     said = list(notes)
     if closed:
         twins_shut = (f"; {len(with_it)} of them a copy that shows no posting, of a requisition "
