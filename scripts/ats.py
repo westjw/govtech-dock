@@ -4445,11 +4445,17 @@ def fetch_successfactors(ref) -> list[dict]:
 # THE POSTING'S OWN PAGE IS THE ROW: there is no list to fall back on. A
 # posting the site says has closed (successfactors_closed: a 404 or 410, a
 # hop to its list; or its page saying so, successfactors_filled) is left out
-# and said. A failure of the day - a 429, a 5xx, the network - fails the
-# whole read, as it fails any reader's: refresh and build_board ask a 429
-# and the network once more, and a board that still will not read keeps the
-# state it had (Unknown, never "None found"), so one flaky request never
-# empties a board. Anything else a posting answers that is not the posting -
+# and said. A FAILURE OF THE DAY on a posting - a 429, a 5xx, the network
+# failing or timing out - is asked once more (after the gate's backoff for a
+# 429, SF_RETRY_PAUSE for the rest), so one flaky request costs one request
+# more, never the board (blind review 10: one 5xx among a read's ~265 took
+# the board off for the night). A second one fails the whole read, as it
+# came, as any reader's failure of the day does: refresh asks the whole board
+# once more on a 429 (not on a 5xx or the network), build_board on a 429 or
+# the network (not on a 5xx), and a board that still will not read is
+# Unknown for the night, never "None found" - its postings are not on the
+# board that night, and the company reads as one we could not read.
+# Anything else a posting answers that is not the posting -
 # a page showing none that is not the site saying it closed, robots.txt
 # closing it, a refusal, a hop off /job/ or off the host - is left out and
 # said, up to SF_SLACK postings; more is the board unreadable, never part
@@ -4457,6 +4463,7 @@ def fetch_successfactors(ref) -> list[dict]:
 
 SF_SITEMAP_MAX = 400     # postings one sitemap may list: the owner skips giants (~500+ roles)
 SF_SITEMAPS_MAX = 5      # sitemaps one sitemap index may name, followed one level only
+SF_RETRY_PAUSE = 2.0     # seconds before a posting's 5xx or network failure is asked once more
 # The tokens a posting's place is read from, the first shown with a value
 # (Aurigo's 'Posting Location', Octave's 'Job Location (Short)'), else its
 # 'Country' (Esri Canada's, which shows no place: its city is only in the ad).
@@ -4699,8 +4706,10 @@ def successfactors_sitemap(origin: str) -> tuple[list[str], list[str]]:
 def _sf_of_the_day(exc: BaseException) -> bool:
     """Did asking fail for the day only - a 429, a 5xx, the network failing or
     timing out, a robots.txt that would not answer - saying nothing of the
-    posting or the board? refresh and build_board ask a 429 and the network
-    once more, and keep a board that still will not read as it was."""
+    posting or the board? A posting is asked once more (_sf_unify_posting);
+    failing again, the read fails: refresh asks the board once more on a
+    429, build_board on a 429 or the network, and a board that still will
+    not read is Unknown for the night, never "None found"."""
     if isinstance(exc, RateLimited):
         return True
     if isinstance(exc, RobotsRefused):
@@ -4820,17 +4829,26 @@ def _sf_requisition(landed: str) -> tuple[str, str] | None:
 
 def _sf_unify_posting(url: str, origin: str):
     """('row', (row, requisition)), ('closed', None) or ('unread', why) for
-    one posting a Unify sitemap lists, asked once; a failure of the day is
-    raised as it came (_sf_of_the_day)."""
-    landed: list = []
-    try:
-        page = successfactors_posting(url, origin, landed)
-    except AtsError as exc:
-        if successfactors_closed(exc):
-            return "closed", None
-        if _sf_of_the_day(exc):
-            raise
-        return "unread", f"{url} ({_text(str(exc))[:160]})"
+    one posting a Unify sitemap lists, asked once. A FAILURE OF THE DAY - a
+    429, a 5xx, the network failing or timing out (_sf_of_the_day) - is asked
+    once more, after the gate's backoff for a 429 and SF_RETRY_PAUSE for the
+    rest, and failing again is raised as it came (blind review 10,
+    2026-11-23: one 5xx among a read's ~265 requests took the whole board
+    off for the night, and nothing asked it again)."""
+    for attempt in (1, 2):
+        landed: list = []
+        try:
+            page = successfactors_posting(url, origin, landed)
+            break
+        except AtsError as exc:
+            if successfactors_closed(exc):
+                return "closed", None
+            if not _sf_of_the_day(exc):
+                return "unread", f"{url} ({_text(str(exc))[:160]})"
+            if attempt == 2:
+                raise
+            if not isinstance(exc, RateLimited):
+                time.sleep(SF_RETRY_PAUSE)    # (a 429's wait is the gate's: _back_off)
     if not successfactors_shown(page):
         if successfactors_filled(page):
             return "closed", None

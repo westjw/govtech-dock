@@ -3547,10 +3547,18 @@ review and the owner's word, through the wiring door.
   .../663-en_US/ and .../663-fr_CA/) are published once, the en_* copy where
   there is one, and said. **What a posting answers**: the site saying it
   closed (`successfactors_closed`, `successfactors_filled`) leaves it out,
-  said on stderr; a 429, a 5xx or the network fails the whole read at once,
-  raised as it came, so refresh and build_board ask a 429 and the network
-  once more and a board that still will not read keeps its state (Unknown,
-  never "None found") - one flaky request never empties a board; anything
+  said on stderr; **a failure of the day on a posting** - a 429, a 5xx, the
+  network failing or timing out - is asked once more (after the gate's
+  backoff for a 429, `SF_RETRY_PAUSE` (2s) for the rest), so one flaky
+  request costs one request more, never the board (blind review 10,
+  2026-11-23: one 5xx among a read's ~265 requests took the whole board off
+  for the night, and the refresh asks no network failure again); a second
+  one fails the whole read at once, raised as it came, as any reader's
+  failure of the day does - refresh asks the board once more on a 429 (not
+  a 5xx or the network), build_board on a 429 or the network (not a 5xx) -
+  and a board that still will not read is Unknown for the night, never
+  "None found": its postings are not on the board that night, and the
+  company reads as one we could not read; anything
   else (a page showing no posting that is not the site saying so,
   robots.txt closing it, a 401 or 403, a hop off /job/ or off the host, a
   hop round in a loop - each address asked once - a page naming no role) is

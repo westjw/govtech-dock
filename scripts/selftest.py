@@ -21658,6 +21658,8 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         def get(url, **kw):
             sent.append(url)
             v = routes.get(url)
+            if callable(v):                 # (an answer that changes: once())
+                v = v()
             if isinstance(v, BaseException):
                 raise v
             if v is None:
@@ -21666,6 +21668,15 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                 return W(v[0], url, loc_=v[1]) if v[0] in (301, 302) else W(v[0], url)
             return W(200, url, v)
         return get
+
+    def once(first, then):
+        # (answers `first` the first time it is asked, `then` every time after)
+        asked_ = []
+
+        def answer():
+            asked_.append(1)
+            return first if len(asked_) == 1 else then
+        return answer
 
     def ask(u):
         robots_asked.append(u)
@@ -21692,11 +21703,11 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         return int(last) - 70000000 if last.isdigit() else int(last.split("-")[0])
 
     held = (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
-            ats.FETCH_DETAILS, ats.DETAIL_PAUSE)
+            ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE)
     not_before = dict(ats._HOST_NOT_BEFORE)        # (a 429 below backs its host off)
     try:
         ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = ask, (lambda u: None), None
-        ats.FETCH_DETAILS, ats.DETAIL_PAUSE = False, 0
+        ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE = False, 0, 0
         ats.requests.post = lambda *a, **k: (_ for _ in ()).throw(AssertionError("no POST"))
 
         # ---- every field of a row, for each tenant's tokens as measured ---------
@@ -22093,30 +22104,57 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             errors += fail(f"successfactors unify: a sitemap every one of whose postings has closed read as "
                            f"{rows!r}, not an error: {exc}")
 
-        # ---- a failure of the day fails the read, the nightly way ---------------
+        # ---- a failure of the day: asked once more, then it fails the read -----
+        # (blind review 10, 2026-11-23: one 5xx among a read's ~265 requests
+        # took the whole board off for the night, and the refresh never asked
+        # a network failure again; a posting's failure of the day is asked
+        # once more now, and only a second one fails the read, as it came)
         four = [plain(n, posting(f"Role {n}")) for n in (71, 72, 73, 74)]
-        for answer, why in (((429, None), "a 429"), ((503, None), "a 503"),
-                            (ats.requests.ConnectionError("connection refused"), "the network failing")):
+        days = (((429, None), "a 429"), ((503, None), "a 503"),
+                (ats.requests.ConnectionError("connection refused"), "the network failing"),
+                (ats.requests.Timeout("read timed out"), "a timeout"))
+        for answer, why in days:
+            rows, exc, err = go(site(four, more={hop(72): once(answer, four[1][2])}))
+            if exc or [nth(r["url"]) for r in rows or []] != [71, 72, 73, 74] or sent.count(hop(72)) != 2 \
+                    or sent.count(loc(72)) != 2 or err.strip():
+                errors += fail(f"successfactors unify: {why} once on one posting was not asked once more "
+                               f"and the board read whole ({sent.count(hop(72))} asks of it, "
+                               f"{err.strip()!r}): {len(rows or [])} rows {exc!r}")
+        for answer, why in days:
             routes = site(four, more={hop(72): answer})
             rows, exc, err = go(routes)
             day = isinstance(exc, ats.RateLimited) if answer == (429, None) else \
                 str(exc).startswith("HTTP 503") if answer == (503, None) else \
                 str(exc).startswith("network error")
-            if not day or rows is not None or loc(73) in sent:
-                errors += fail(f"successfactors unify: {why} on one posting did not fail the read as it "
-                               f"came, at once (asked {[u[len(SF):] for u in sent]}): {rows!r} {exc!r}")
-        # what the nightly does with it: the refresh asks a 429 once more and
-        # keeps the company Unknown, never "None found" (build_board reads
-        # the same RateLimited as a transient and asks once more too)
+            if not day or rows is not None or loc(73) in sent or sent.count(hop(72)) != 2:
+                errors += fail(f"successfactors unify: {why} twice on one posting did not fail the read as "
+                               f"it came, on its second ask (asked {[u[len(SF):] for u in sent]}): "
+                               f"{rows!r} {exc!r}")
+        # what the nightly does with it: once, the refresh reads the board
+        # whole; twice, the read fails, the refresh asks a 429 once more and
+        # keeps the company Unknown, never "None found" (build_board reads the
+        # same RateLimited, and a network failure, as a transient and asks
+        # once more too)
+        ae = [plain(n, posting("Account Executive" if n == 74 else f"Role {n}")) for n in (71, 72, 73, 74)]
+        for answer, why in days:
+            sent.clear(), robots_asked.clear(), shut.clear()
+            ats.requests.get = web(site(ae, more={hop(72): once(answer, ae[1][2])}))
+            with contextlib.redirect_stderr(io.StringIO()):
+                res = refresh.check_company({"id": "acme-gov", "name": "Acme Gov",
+                                             "ats": {"type": "successfactors", "ref": SF}})
+            if res.get("status") != "Yes" or sent.count(MAP) != 1 or sent.count(hop(72)) != 2:
+                errors += fail(f"successfactors unify: the refresh read {why} once on a posting as {res}, "
+                               f"not the board ({sent.count(hop(72))} asks of it)")
         sent.clear(), robots_asked.clear(), shut.clear()
         ats.requests.get = web(site(four, more={hop(72): (429, None)}))
         with contextlib.redirect_stderr(io.StringIO()):
             res = refresh.check_company({"id": "acme-gov", "name": "Acme Gov",
                                          "ats": {"type": "successfactors", "ref": SF}})
-        if res.get("status") != "Unknown" or res.get("roles") or sent.count(hop(72)) != 2 \
+        if res.get("status") != "Unknown" or res.get("roles") or sent.count(hop(72)) != 4 \
                 or sent.count(MAP) != 2 or loc(73) in sent:
-            errors += fail(f"successfactors unify: the refresh read a 429 on a posting as {res}, or did not "
-                           f"ask the board once more and stop at the 429 ({sent.count(hop(72))} asks of it)")
+            errors += fail(f"successfactors unify: the refresh read a lasting 429 on a posting as {res}, or "
+                           f"did not ask the board once more and stop at the 429 each time "
+                           f"({sent.count(hop(72))} asks of it)")
 
         # ---- up to SF_SLACK postings that do not read are left out, more fail ---
         tspd = SF + "/TSPD/?type=20"
@@ -22280,7 +22318,7 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                            f"{_time.monotonic() - began:.0f}s: a pattern starts again from every tag")
     finally:
         (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
-         ats.FETCH_DETAILS, ats.DETAIL_PAUSE) = held
+         ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE) = held
         ats._HOST_NOT_BEFORE.clear()
         ats._HOST_NOT_BEFORE.update(not_before)
     return errors
