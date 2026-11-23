@@ -488,8 +488,11 @@ def paylocity_ids(ref) -> tuple:
 
 
 # A Paylocity board's own /jobs/All/<uuid> address, as its page states it
-# (verify_boards' `address`) and as the door keeps it: on a row it filed
-# (`page_ref`) and in the note of a record it wired (PAGE_WORDS). The SAME
+# (verify_boards' `address`) and as it is read on file: on a filed row
+# (`page_ref`) and in a record's note (PAGE_WORDS) - which the wiring door
+# no longer writes (review 10's repair, 2026-11-23: the address reached its
+# write only through the worklist, an edit planted one, and every door after
+# read it as on file; what is read is what a person put there). The SAME
 # grammar as the probe's: the tenant's name after the id may carry , ; ( ),
 # and a door that refused what the probe stated filed the row as "its own
 # page did not state" an address it had (seventh blind review, 2026-11-22).
@@ -653,11 +656,14 @@ def has_paylocity_id(refs) -> bool:
 
 def stated_addresses(companies: list | None, found: list | None) -> dict:
     """{company id: [the /All/ addresses its Paylocity board's own page was
-    found to state]}, from what is on file: the note the wiring door writes on
-    a record it wires (PAGE_WORDS), and the `page_ref` of the company's row in
-    Boards we found whose board is the board the record reads (a row the owner
-    accepted at the desk is wired as it was filed, its /List/ spelling
-    included). No request: what is on file."""
+    found to state]}, from what is on file: a record's note (PAGE_WORDS), and
+    the `page_ref` of the company's row in Boards we found whose board is the
+    board the record reads (a row the owner accepted at the desk is wired as
+    it was filed, its /List/ spelling included). No request: what is on file.
+    The wiring door writes neither (review 10's repair, 2026-11-23): the
+    address reached its write through the worklist alone, and an edit that
+    planted one was read here by every door after, which then never asked
+    the board's own page and wired the very board to a second company."""
     out = collections.defaultdict(list)
     by_id = {c.get("id"): c for c in companies or [] if isinstance(c, dict)}
     for cid, c in by_id.items():
@@ -854,6 +860,28 @@ def workable_pairs(companies: list | None, found: list | None) -> dict:
     return out
 
 
+def number_slugs(pairs: dict | None, resolved: dict | None = None) -> dict:
+    """{Workable account number: [every slug it is known to open under]}: the
+    one a pair on file says first (workable_pairs, `pairs`), and beside it the
+    one a run followed it to (`resolved`: a plan's ctx['slugs'] or a
+    worklist's workable_numbers) where that is another. A run's word is ADDED
+    to a pair on file, never put in its place: a hold or a holder under the
+    number is one under each slug (review 10, 2026-11-23: apply let the
+    worklist's workable_numbers replace a pair on file, and an entry edited to
+    open the number under some other slug moved the owner's queued row, his
+    refusal and a record holding the number off the slug the file named, and
+    a row flipped to WIRE beside them was wired)."""
+    out: dict = {}
+    for n, s in (pairs or {}).items():
+        if isinstance(s, str) and s:
+            out.setdefault(n, []).append(s)
+    for n in (resolved or {}):
+        s = slug_of(resolved, n)
+        if s and s not in out.get(n, []):
+            out.setdefault(n, []).append(s)
+    return out
+
+
 def numbers_on_file(companies: list) -> dict:
     """{Workable account number: [ids of the records that hold it]}."""
     out = collections.defaultdict(list)
@@ -867,8 +895,9 @@ def numbers_on_file(companies: list) -> dict:
 def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None = None,
                 companies: list | None = None, refusals_: dict | None = None) -> dict:
     """Every board the owner holds, under WHATEVER company it is held for:
-    {"keys": {board key: [hold]}, "named": [hold], "pairs": {number: slug}},
-    a hold being {id, code, board, words, names}. Codes: `standing` (the board
+    {"keys": {board key: [hold]}, "named": [hold], "pairs": {number: slug},
+    "slugs": {number: [slug]}, "paylocity": [hold]}, a hold being {id, code,
+    board, words, names}. Codes: `standing` (the board
     of a reader's doubt that stands), `queued` (the board of a row a door
     filed in Boards we found that he has not ruled on), `refused` (a board
     refused in either store: a Boards-we-found refusal by the board on its
@@ -881,7 +910,9 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     A WORKABLE BOARD HELD UNDER ITS ACCOUNT NUMBER is one board under two
     keys. Where the number is known to open under a slug - followed by this
     run (`resolved`), or said together on file (workable_pairs) - the hold is
-    under the slug's key as well. Where it is not, no request ties the number
+    under the slug's key as well: under EACH, where the two say different
+    slugs (number_slugs: a run's word is added to a pair on file, never put in
+    its place; `pairs` names the file's slug first). Where it is not, no request ties the number
     to any slug found, and holding every Workable board for it held boards
     that could not be the same account. So the hold goes in `named`, with the
     names it goes by - what that board stated, whose record or row it is -
@@ -892,7 +923,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
 
     A PAYLOCITY BOARD is held under every address it is known by - its ref,
     and the /All/ address its own page was found to state where the hold
-    carries it (a door-filed row's `page_ref`, and a refusal of one) - and
+    carries it (a filed row's `page_ref`, and a refusal of one; the wiring
+    door files none since review 10's repair, 2026-11-23) - and
     every Paylocity hold is listed again in `paylocity`, with `type`, `ref`
     and `refs`, for the comparison keys cannot make (paylocity_relation): a
     bare /List/<n> hold and the same board's /All/<uuid>/<Tenant> share no
@@ -900,8 +932,12 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
     (sixth blind review, 2026-11-22).
     """
     keys, named, paylocity = collections.defaultdict(list), [], []
-    pairs = workable_pairs(companies, stores.get("found"))
-    pairs.update({n: s for n in (resolved or {}) if (s := slug_of(resolved, n))})
+    # A PAIR ON FILE IS NEVER REPLACED BY A RUN'S WORD (review 10, 2026-11-23):
+    # a number is held under the slug the file says AND under the one the run
+    # followed it to (number_slugs); `pairs` names one slug per number, the
+    # file's first, for the questions that take one (found_keys, waiting_keys)
+    slugs = number_slugs(workable_pairs(companies, stores.get("found")), resolved)
+    pairs = {n: v[0] for n, v in slugs.items()}
 
     def name_of(cid, *also):
         # the record's name, or - merged away - the name its row, refusal or
@@ -920,10 +956,10 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
             h.update(type=kind, ref=ref, refs=refs)
             paylocity.append(h)
         if numbered(kind, ref):
-            slug = pairs.get(workable_number(ref))
-            if slug:
+            known = slugs.get(workable_number(ref)) or []
+            for slug in known:
                 keys[board_key("workable", slug)].append(h)
-            elif h["names"]:
+            if not known and h["names"]:
                 named.append(dict(h, number=workable_number(ref)))
 
     for cid, recs in (standing or {}).items():
@@ -971,10 +1007,10 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                      *(x.get("names") or []), refusal=said, whose=list(x.get("whose") or []),
                      page=x.get("page"), page_ref=x.get("page_ref"))
     for number, ids in sorted(numbers_on_file(companies or []).items()):
-        slug = pairs.get(number)
+        known = slugs.get(number) or []
         for cid in ids:
             names = strict_names(*their_names(by_id.get(cid)))
-            if slug:
+            if known:
                 # A RECORD ON A NUMBER WHOSE SLUG IS KNOWN HOLDS THE SLUG (blind
                 # review, 2026-11-21). It was skipped as "the slug's holder,
                 # under its own key", and nothing put it there for a pair said
@@ -983,13 +1019,16 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                 # duplicate record whose site links workable/archico was wired
                 # to the same account - where without the note it was held.
                 # (The wiring door also counts such a record among a board's
-                # holders, and says it in those words.)
-                keys[board_key("workable", slug)].append({
-                    "id": cid, "code": "number", "board": f"workable/{number}",
-                    "names": names, "words": (
-                        f"a record on file holds Workable account {number} "
-                        f"({name_of(cid)}), whose postings open under "
-                        f"apply.workable.com/{slug}: workable/{slug} is that record's board")})
+                # holders, and says it in those words.) Under EVERY slug the
+                # number is known by, the file's and a run's (review 10).
+                for slug in known:
+                    keys[board_key("workable", slug)].append({
+                        "id": cid, "code": "number", "board": f"workable/{number}",
+                        "names": names, "words": (
+                            f"a record on file holds Workable account {number} "
+                            f"({name_of(cid)}), whose postings open under "
+                            f"apply.workable.com/{slug}: workable/{slug} is that record's "
+                            f"board")})
                 continue
             if names:
                 named.append({"id": cid, "code": "number", "number": number, "names": names,
@@ -997,7 +1036,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
                                   f"a record holds Workable account {number} "
                                   f"({name_of(cid)}), and whether it is this board was not "
                                   f"asked")})
-    return {"keys": keys, "named": named, "pairs": pairs, "paylocity": paylocity}
+    return {"keys": keys, "named": named, "pairs": pairs, "slugs": slugs,
+            "paylocity": paylocity}
 
 
 def named_holds(held: dict, kind, names, cid, ours=()) -> list:
@@ -1269,7 +1309,9 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
     from. A Paylocity row may carry `page_ref`, the /All/ address the board's
     own page states (kept next to `found`, which stays the board as the site
     spelled it): every door after meets the board under it too, and the
-    wiring door reads it back for a record wired from the row. identity_why
+    wiring door reads it back for a record wired from the row - so the wiring
+    door files none (its worklist would be all that says it: wire_found.
+    queue_rows, review 10's repair, 2026-11-23). identity_why
     is the doubt in words: on a MISMATCH the desk prints
     it in red, on every other filed row it prints it as the reason the board
     was not wired. `name` and `was` are taken from the company record, not

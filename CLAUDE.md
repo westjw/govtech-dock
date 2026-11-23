@@ -2770,8 +2770,16 @@ round.
   putting it there, it held nothing, and a duplicate record linking the slug
   was wired to the same account (blind review, 2026-11-21). A board the
   owner holds under a number (a doubt, a door-filed row, a refusal) is held
-  under the slug's key too where the run resolved the number; where it did
-  not - and for a record on file holding a number nobody in the run
+  under the slug's key too where the run resolved the number. A run's slug
+  is ADDED to a pair said on file, never put in its place
+  (`board_proposals.number_slugs`): where the two say different slugs, the
+  holds and the holders under the number are held under each, in the plan
+  and in apply (review 10, 2026-11-23: apply took the worklist's
+  `workable_numbers` first, so an entry edited to open 7300 under another
+  slug moved the owner's queued row, his refusal and a record on the number
+  off the slug the file pairs it with, and a row flipped to WIRE beside them
+  was wired, the look a plain WIRE line). Where the run did
+  not resolve the number - and for a record on file holding a number nobody in the run
   followed - a Workable board is held when it STATES one of the names that
   account goes by (the held row's `board_calls_itself` or company, the
   doubt's company, the record's name or also_known_as; `verify_boards.strict`),
@@ -2805,20 +2813,33 @@ round.
   pair on file - and prints it under the row ("leans on its account number:
   ..."); any other `account` leaves the row alone (`evidence`). That is
   enough to HOLD by (holders, holds and twins meet the board under the
-  number too). The account CLEARS something - a row waiting for the company
-  under the number, taken for this very board - and goes into the record's
-  note only where `wire_found.account_clears` shows more: a pair on file
-  already opening that number under this slug, or check 1's own sighting
-  asking for the board by that very number (`check_1.saw` carries
+  number too). The account goes into the record's note only where
+  `wire_found.account_noted` shows more: a pair on file already opening
+  that number under this slug, or check 1's own sighting asking for the
+  board by that very number (`check_1.saw` carries
   apply.workable.com/api/v1/widget/accounts/N, `account_sighted`: the wire
   rests on it) with the plan's `workable_numbers` opening it under this slug
-  and nothing on file opening it under another. The look says which,
-  printing the sighting, or "for its holds alone" (repair of review 9,
-  2026-11-23: an edit giving the row the waiting row's number as its
-  `account` and tying it to the find's slug in `workable_numbers` waived the
-  company's own unruled row - it dropped off his queue - and the note planted
-  the pair). A held row's doubt is filed with those words only of its own
-  board's number where `account_clears` shows it, or of a pair the file
+  and nothing on file opening it under another - always of the row's own
+  board, which the record then holds. The account CLEARS NOTHING: a row
+  waiting for the company under the number is taken for this very board
+  only where a pair on file opens that number under this slug, never on the
+  worklist's `workable_numbers`, the row's `account` or check 1's sighting,
+  each of which an edit writes (review 10, 2026-11-23: the repair of review
+  9 took such a row on the three, and with `check_1.saw` edited too the
+  company's own unruled row was waived, dropped off his queue, and the note
+  planted the pair). So the plan's own follow passes the company's own
+  unruled row under the number and apply leaves the WIRE row alone ("... is
+  the Workable account number the row says their site asks for the board
+  by, and nothing on file opens that number under ...; ... his to settle -
+  tell the owner"). The look says which, printing the sighting and that the
+  note says it, or "for its holds alone" (repair of review 9, 2026-11-23: an
+  edit giving the row the waiting row's number as its `account` and tying it
+  to the find's slug in `workable_numbers` waived the company's own unruled
+  row - it dropped off his queue - and the note planted the pair); and under
+  each WIRE row it names every row waiting on the owner the wire takes off
+  his queue ("takes <board>, waiting in <store> for it, as this very board"),
+  which the code covers. A held row's doubt is filed with those words only
+  of its own board's number where `account_noted` shows it, or of a pair the file
   already says (`wire_found.held_words`); any other such words in the
   worklist's doubt are taken out (and taken out again where taking them out
   spells them anew), and the look prints each pair a held row files with
@@ -3038,14 +3059,23 @@ round.
   company itself at the address its own page states came back to his card;
   now it is SKIP refused, "this board was refused") - and `page_said` says
   what a page that stated nothing said). The board is known by that address
-  everywhere after, and so is what the door WRITES of it: `page_ref` on the
-  row for apply, on the row it files in Boards we found next to `found`
-  (file_found keeps it; refusals, held_boards and the waiting rows read it),
-  and in the note of a record it wires ("its own page states its address is
-  ...", read back by `board_proposals.stated_addresses`, as is the
-  `page_ref` of a row the owner accepted at the desk) - a record wired at a
-  bare /List/ address was compared with nothing, and every later /All/ find
-  of any board was held (sixth blind review, 2026-11-22). Paylocity boards
+  for the rest of the run, and in apply by `page_ref` on the row (leaned on
+  only as below, and printed in the look) - and the door puts it ON FILE
+  NOWHERE: not in the note of a record it wires, not on the row it files in
+  Boards we found (`wire_found.note_for`, `queue_rows`; review 10's repair,
+  2026-11-23: `page_ref` and `page_addresses` are both worklist fields, and
+  an edit setting both put an /All/ address in a bare /List/ record's note,
+  or on the row filed for him, which every door after read as on file -
+  `board_proposals.stated_addresses`, held_boards, the refusals, the
+  waiting rows - so the next plan, unedited, never asked that board's own
+  page, read the very board found for another company as "apart", and wired
+  it to a second record, or past the owner's unruled row of it). A record or
+  a hold at a bare /List/ address is compared by asking its own page, in the
+  plan that needs it (below: a record wired at a bare /List/ address was
+  compared with nothing, and every later /All/ find of any board was held,
+  sixth blind review, 2026-11-22); such words a person put on file - "its
+  own page states its address is ..." in a note, a row's `page_ref` - are
+  still read, by every door. Paylocity boards
   meet BY EVERY ADDRESS ON BOTH SIDES, not by keys
   (`board_proposals.paylocity_relation`: same, tenant, unknown, apart) -
   records on file, the owner's holds under any id, this company's own
@@ -3071,7 +3101,21 @@ round.
   agrees; tied by the tenant's name alone it is held, the name said as all
   that ties them - in the plan, and in apply whatever `waiting_seen` says
   (eighth blind review, 2026-11-22: the find was wired and his unruled row
-  dropped off the queue). A record with no /All/ id that a find of the run
+  dropped off the queue). In apply the id must agree BY ADDRESSES ON FILE:
+  the board as the row spells it, beside the waiting row's ref and the
+  `page_ref` filed with it - never the /All/ address the worklist says the
+  find's own page states (`page_ref` and `page_addresses` are both worklist
+  fields: review 10, 2026-11-23, an edit setting both to the waiting row's
+  own address waived the company's own unruled row, it dropped off his
+  queue, and the note planted that address for every door after - which no
+  note does now: above). What the
+  worklist says may still HOLD the row - ids it shows apart, or not shown
+  one - and never clears it: the row passes only where an id agrees both by
+  the board's own ref and by every address the row gives it. So the
+  plan's own page answer passes such a row and apply leaves the WIRE row
+  alone ("only the address the worklist says ...'s own page states ... ties
+  the two by an id, and nothing on file says it ... his ruling on that row
+  settles it"). A record with no /All/ id that a find of the run
   cannot be compared with - a bare /List/ board accepted at the desk or set
   by hand held every later /All/ find, for every company - has its own
   board's page asked once for its /All/ address (`wire_found.records_by_page`,
@@ -3080,16 +3124,25 @@ round.
   company in scope, waiting, its first board, not skipped as refused), and
   never the board of a record ruled out of scope, which is said as not asked
   (eighth blind review, 2026-11-22: a record's page was asked for finds
-  nothing compared) - and the worklist carries the answer to
+  nothing compared) - unless the page of that very spelling was asked for
+  another record: its answer is the ruled-out record's too, which asks
+  nothing more (review 10, 2026-11-23, the record-side twin of review 9's
+  finding 6: the ruled-out record of a bare /List/ board another record's
+  ask showed to be another board kept holding the find, "its own page was
+  not asked") - and the worklist carries the answer to
   apply: `page_addresses` records what each page the plan asked stated, by
   the board's exact spelling, and a WIRE row compared by a record's names it
   (`leans_on`); apply leans on such an address only for the row that names
   it, only where both say it, and while the record still reads that board,
   and the look prints every address it leans on, the row's own `page_ref`
-  included - a `page_ref` the plan did not record leaves the row alone
-  (`evidence`) and is never filed on a held row (eighth blind review,
-  2026-11-22: `record_addresses` and a row's `page_ref` were taken on the
-  worklist's word, and an added address cleared a record and a proposal);
+  included, which this write leans on and nothing files (above) - a
+  `page_ref` the plan did not record leaves the row alone (`evidence`;
+  eighth blind review, 2026-11-22: `record_addresses` and a row's
+  `page_ref` were taken on the worklist's word, and an added address
+  cleared a record and a proposal),
+  and so does one on a board already named by its /All/ id and its
+  tenant's name, whose page the plan never asks (review 10, 2026-11-23:
+  edited in with `page_addresses`, it put a second /All/ id on the record);
   where that page states nothing, the row names the record and says that
   putting its board on file by its whole /jobs/All/<uuid>/<Tenant> address
   clears it. What the page said is kept as `wire_found.page_answer` words: a
@@ -3149,7 +3202,14 @@ round.
   covers the file's bytes, the author, and what the look would do, including
   what each record to be wired reads as (name, other names, website). Left
   alone, by name: a row that no longer carries both checks, what they were
-  judged against, a dated read with postings and a size under the line; a
+  judged against, a dated read with postings and a size under the line;
+  check 2 itself, asked again of the record as it reads now
+  (`verify_boards.proven`, no request, with the names the row says the board
+  states), the name the note and `board_owner` quote one of those names
+  (`evidence`; review 10, 2026-11-23: a row moved to another company - its
+  id, `judged`, check 1 page and `was` set to T Co's - wired a board whose
+  own check 2 names X Co, and the look said "WIRE X Co"; the look now prints
+  each WIRE row under the name of the record it writes); a
   read older than 24 hours (`board_proposals.MAX_AGE_HOURS`), undated or
   dated ahead; a company or board listed twice (under either key); a
   company its own worklist's readers doubted (`doubted`, however the row
@@ -3166,13 +3226,14 @@ round.
   not record in the row's `waiting_seen`, or one it records that is not this
   very board - another board under every key it is known by
   (`wire_found.waiting_keys`, the plan's own test, asked by keys apply may
-  lean on: the row's own board, its account where `account_clears` shows it,
-  and a waiting Workable number's slug only where a pair on file says it,
-  never the worklist's `workable_numbers` alone - review 9, 2026-11-23: an
+  lean on: the row's own board, and a waiting Workable number's slug only
+  where a pair on file says it - never the worklist's `workable_numbers`,
+  the row's `account` or check 1's sighting - review 9, 2026-11-23: an
   edited `account`, or a number tied to the find's slug in
   `workable_numbers`, waived the company's own unruled row and it dropped
-  off his queue; and its repair: the two edited together, which
-  `account_tie` takes on the worklist's own record, waived it too), or a
+  off his queue; its repair: the two edited together, which `account_tie`
+  takes on the worklist's own record, waived it too; and review 10: so did
+  the two with `check_1.saw` edited to ask by the number), or a
   Paylocity board tied
   by less than an id that agrees: the plan holds beside either and records
   neither, so a worklist saying it saw one is not taken at its word (review
@@ -3189,10 +3250,18 @@ round.
   on its word. The look prints, under each row it wires, every /All/ address
   it leans on ("leans on what the plan was told: ...") and the Workable
   account number it is asked for by, with what ties it to the slug and
-  whether that clears and goes into the note ("leans on its account number:
-  ...", or "... for its holds alone ..."), and under each held row it files
-  the pairs its doubt files with and the account words it is filed without;
-  and the code covers them.
+  whether that goes into the note ("leans on its account number: ...", or
+  "... for its holds alone ..."), and every row waiting on the owner that
+  the wire takes off his queue ("takes ..."), and under each held row it
+  files the board and the words his card will carry ("files for him
+  <board>, in these words: ..."), the pairs its doubt files with and the
+  account words it is filed without; and the code covers them. A held row's
+  queue row is filed only as its row's own - its company, its board as the
+  site spelled it, the page check 1 names - and is NOT FILED otherwise, said
+  why (`wire_found.queue_row_apart`; review 10, 2026-11-23: an edited queue
+  row filed another board on his card, held by every door after, and two
+  rows' swapped ids filed each one's board and doubt on the other's card,
+  while the look printed each row's own line).
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from
@@ -3210,7 +3279,16 @@ round.
   `wire-found`, the agent's own label, never `owner`; force only for the
   25-record rule, after the count is printed): `ats`, an `ats_note` saying
   both checks, and `board_owner` where the board's stated name differs in
-  form. The held boards are one journalled APPEND to data/embedded_ats.json
+  form. The note quotes the page check 1 names and the name check 2 quotes;
+  a row whose quoted words would put into it a Workable pair
+  (`board_proposals.ACCOUNT_WORDS`) or a Paylocity address (`PAGE_WORDS`)
+  beyond the door's own part of the note - which says no Paylocity address
+  at all (above) - is left alone
+  (`wire_found.note_apart`, `evidence`; review 10, 2026-11-23: an edited
+  check_2.name, or a page on their own host carrying those words, planted a
+  pair on a greenhouse record and an address on a Paylocity one, which every
+  door after read back, and the next plan, unedited, waived another
+  company's own unruled row by the pair). The held boards are one journalled APPEND to data/embedded_ats.json
   (its journal entry says "the board did not name the company, or something
   on file, or a reader, argues with it"). The readers' doubts are the
   plan's write, not apply's: one journalled addition to
@@ -3323,7 +3401,9 @@ round.
   2026-11-22): eight door findings and ten unpinned rules, fixed and pinned
   on the same branch - Paylocity boards meet by every address on both
   sides (holds, twins, apply), what the door writes carries the address the
-  page stated, the pre-pass asks what consider would read, one website is
+  page stated (undone by review 10's repair, 2026-11-23: an address only the
+  worklist carries is put on file nowhere, and the page is asked instead),
+  the pre-pass asks what consider would read, one website is
   one address, a dismissed Duplicates pair is two companies, and
   wire_embedded's triage asks the door's holders questions. Seventh (of
   460b9171, 2026-11-22): six door findings fixed and pinned on the same
