@@ -41459,33 +41459,48 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
     # 2026-11-22). The plan asks its board's page once for its /All/ address
     # and compares by it - in apply too, by the worklist's record_addresses;
     # where the page states nothing the row names the record and how he
-    # clears it. A record with an /All/ id is not asked.
+    # clears it. A record with an /All/ id is not asked. ONCE PER SPELLING: two
+    # records on one board, and a find that spells it as they do, are one
+    # request - and the plan says what it asked (eighth blind review,
+    # 2026-11-22: both rules were unpinned)
     LIST_REC, ALL_REC = plist(2130), pall(0x940, "Listed-Co")
     A_, B_ = pall(0xa1, "Alpha-Co"), pall(0xb2, "Beta-Co")
     LIST_MUTE = plist(2131)
     with _WiringBox([co("alpha-co", "Alpha Co"), co("beta-co", "Beta Co"),
                      co("listed-dup", "Listed Co Inc", also_known_as=["Listed Co"]),
+                     co("listed-twin", "Listed Co Group", also_known_as=["Listed Co"]),
                      co("listed-co", "Listed Co", ats={"type": "paylocity", "ref": LIST_REC}),
+                     co("listed-co-2", "Listed Co Two", ats={"type": "paylocity",
+                                                             "ref": LIST_REC}),
                      co("celona-like", "Celona Like", ats={"type": "paylocity",
                                                            "ref": pall(0x941)})],
                     {f"paylocity/{A_}": (3, ["Alpha Co"]), f"paylocity/{B_}": (3, ["Beta Co"]),
-                     f"paylocity/{ALL_REC}": (3, ["Listed Co"])},
+                     f"paylocity/{ALL_REC}": (3, ["Listed Co"]),
+                     f"paylocity/{LIST_REC}": (3, ["Listed Co"])},
                     says={f"paylocity/{LIST_REC}": {"address": ALL_REC}}) as box:
         code, text, wl_12, rows_12 = box.plan(_wb_results({
             "alpha-co": names("alpha-co", "paylocity", A_),
             "beta-co": names("beta-co", "paylocity", B_),
-            "listed-dup": names("listed-dup", "paylocity", ALL_REC)}), name="worklist-12.json")
+            "listed-dup": names("listed-dup", "paylocity", ALL_REC),
+            "listed-twin": names("listed-twin", "paylocity", LIST_REC)}), name="worklist-12.json")
         expect(rows_12, "alpha-co", "WIRE")
         expect(rows_12, "beta-co", "WIRE")
-        expect(rows_12, "listed-dup", "HOLD", f"paylocity/{ALL_REC} is already on file as the "
-                                              f"board of Listed Co")
+        for cid in ("listed-dup", "listed-twin"):
+            expect(rows_12, cid, "HOLD", " is already on file as the board of Listed Co and "
+                                         "Listed Co Two")
         doc12 = json.loads(wl_12.read_text())
-        if doc12.get("record_addresses") != {"listed-co": {"ref": LIST_REC, "address": ALL_REC}} \
+        if doc12.get("record_addresses") != {"listed-co": {"ref": LIST_REC, "address": ALL_REC},
+                                             "listed-co-2": {"ref": LIST_REC,
+                                                             "address": ALL_REC}} \
                 or box.probed.count(f"paylocity/{LIST_REC}") != 1 \
                 or f"paylocity/{pall(0x941)}" in box.probed:
-            errors += fail(f"the record on a bare /List/ address was not asked once, and only it, "
-                           f"for the /All/ address its page states: "
+            errors += fail(f"the records on a bare /List/ address were not asked once, and only "
+                           f"they, for the /All/ address its page states: "
                            f"{doc12.get('record_addresses')!r}, probed {box.probed}")
+        if "NOTE: asked 2 records on file for the /jobs/All/ address its Paylocity board's own " \
+           "page states; 2 stated one" not in text:
+            errors += fail(f"the plan did not say it asked the records' own pages: "
+                           f"{text[:600]!r}")
         code, text, _ = box.look(wl_12)
         if "WIRE 2" not in text:
             errors += fail(f"apply did not compare the two boards with the record by the /All/ "
@@ -41514,6 +41529,57 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                f"Listed Co's board is on file by {LIST_MUTE[8:]}; its own page did not state "
                f"its /jobs/All/ address - put on file by its whole "
                f"/jobs/All/<uuid>/<Tenant> address")
+    # ...and A RECORD'S PAGE IS ASKED ONLY FOR A FIND CONSIDER COMPARES that
+    # its addresses cannot be compared with, of another company - never for a
+    # find an id ties to it, for the record's own company's, for a company out
+    # of scope or on a board, a board refused for its company or a second board
+    # on a site - and never the board of a record ruled out of scope, which is
+    # said as not asked (eighth blind review, 2026-11-22: each was asked, the
+    # NOTE counted it, and the limits were unpinned)
+    LIST_L, LIST_O = plist(2133), plist(2134)
+    F_ = {k: pall(0x9a0 + i, f"F{i}-Co") for i, k in enumerate(("oos", "set", "ref", "sec",
+                                                                "own", "cmp"))}
+    page_l = f"{site('f-sec')}/careers"
+    with _WiringBox([co("lim-rec", "Lim Rec", ats={"type": "paylocity", "ref": LIST_L}),
+                     co("lim-dup", "Lim Dup"),
+                     co("f-oos", "F Oos", out_of_scope={"on": "2026-11-01", "by": "owner",
+                                                        "why": "not govtech"}),
+                     co("f-set", "F Set", ats={"type": "greenhouse", "ref": "fset"}),
+                     co("f-ref", "F Ref"), co("f-sec", "F Sec")],
+                    {f"paylocity/{plist(2133, 'Lim-Co')}": (3, ["Lim Dup"]),
+                     "greenhouse/fsec": (3, ["F Sec"]),
+                     **{f"paylocity/{v}": (3, [f"F {k.title()}"]) for k, v in F_.items()}},
+                    files={bp.PROPOSALS: proposal("f-ref", "F Ref", F_["ref"])}) as box:
+        sec = entry("f-sec", [cand("greenhouse", "fsec", page_l, element="iframe", times=3),
+                              cand("paylocity", F_["sec"], page_l, element="href")])
+        code, text, _wl, rows_l = box.plan(_wb_results({
+            "lim-dup": names("lim-dup", "paylocity", plist(2133, "Lim-Co")),
+            "f-oos": names("f-oos", "paylocity", F_["oos"]),
+            "f-set": names("f-set", "paylocity", F_["set"]),
+            "f-ref": names("f-ref", "paylocity", F_["ref"]),
+            "f-sec": sec, "lim-rec": names("lim-rec", "paylocity", F_["own"])}),
+            name="worklist-12c.json")
+        expect(rows_l, "lim-dup", "HOLD", "is already on file as the board of Lim Rec")
+        for cid, kind in (("f-oos", "out-of-scope"), ("f-set", "not-waiting"),
+                          ("f-ref", "refused"), ("lim-rec", "not-waiting")):
+            expect(rows_l, cid, "SKIP", kind=kind)
+        if (rows_l or {}).get("f-sec", {}).get("type") != "greenhouse" \
+                or f"paylocity/{LIST_L}" in box.probed or "NOTE: asked" in text:
+            errors += fail(f"a record's own page was asked for a find consider does not compare "
+                           f"with it, or one an id already ties to it: probed {box.probed}; "
+                           f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+    with _WiringBox([co("oos-rec", "Oos Rec", ats={"type": "paylocity", "ref": LIST_O},
+                        out_of_scope={"on": "2026-11-01", "by": "owner", "why": "not govtech"}),
+                     co("cmp-co", "Cmp Co")],
+                    {f"paylocity/{F_['cmp']}": (3, ["Cmp Co"])}) as box:
+        code, text, _wl, rows_o2 = box.plan(_wb_results({
+            "cmp-co": names("cmp-co", "paylocity", F_["cmp"])}), name="worklist-12d.json")
+        expect(rows_o2, "cmp-co", "HOLD", f"cannot be compared with (Oos Rec at {LIST_O[8:]})",
+               f"Oos Rec's board is on file by {LIST_O[8:]}; its own page was not asked: a "
+               f"person ruled it out of the board, and a company ruled out is not probed")
+        if f"paylocity/{LIST_O}" in box.probed or "NOTE: asked" in text:
+            errors += fail(f"the board of a record ruled out of scope was asked for its page: "
+                           f"probed {box.probed}")
 
     # (13) A STATED ADDRESS WHOSE TENANT'S NAME CARRIES , ; ( ) is kept as the
     # probe states it - compared by its id, wired, and read back from the note

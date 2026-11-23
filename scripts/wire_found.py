@@ -1355,6 +1355,33 @@ def named_by_number(results: dict, ctx: dict) -> None:
 
 # --------------------------------------- a Paylocity board known by two ids
 
+def compared(results: dict, ctx: dict):
+    """(company id, record, first board, the spelling quoted) of every
+    company whose first board is a Paylocity board consider compares with
+    what is on file: a company on file, in scope and waiting for a board,
+    whose board consider does not skip unread as refused (refused_first, the
+    question consider asks). The one filter the pages the plan asks for a
+    find's sake go by - the find's own (addressed_by_page) and a record's
+    (records_by_page): a board consider never compares is no reason to ask
+    anybody anything (eighth blind review, 2026-11-22: a record's page was
+    asked for a company out of scope, on a board, refused, or for a second
+    board on its site)."""
+    for cid in sorted(results):
+        c = ctx["by_id"].get(cid)
+        if c is None or c.get("out_of_scope") \
+                or (c.get("ats") or {}).get("type") not in WAITING:
+            continue
+        boards, _unusable = boards_named(results[cid])
+        if not boards or boards[0]["type"] != "paylocity":
+            continue
+        board = boards[0]
+        seen, _own = best_seen(board, c.get("website") or "", results[cid].get("pages") or [])
+        if refused_first(cid, c, "paylocity", seen["ref"], board_keys(board, ctx), board,
+                         ctx)["skip"]:
+            continue                    # consider skips it unread: so is it here
+        yield cid, c, board, seen
+
+
 def addressed_by_page(results: dict, ctx: dict) -> None:
     """Give every Paylocity board a site names without its /jobs/All/ id or
     its tenant's name the /jobs/All/ address its own page states (`page_ref`),
@@ -1384,23 +1411,11 @@ def addressed_by_page(results: dict, ctx: dict) -> None:
     a board refused at the address its own page states: sixth blind review,
     2026-11-22), named without an /All/ id or without a tenant's name.
     """
-    for cid in sorted(results):
-        c = ctx["by_id"].get(cid)
-        if c is None or c.get("out_of_scope") \
-                or (c.get("ats") or {}).get("type") not in WAITING:
-            continue
-        boards, _unusable = boards_named(results[cid])
-        if not boards or boards[0]["type"] != "paylocity":
-            continue
-        board = boards[0]
+    for cid, _c, board, seen in compared(results, ctx):
         refs = board_refs_of(board)
         if any(board_proposals.paylocity_ids(r)[0] for r in refs) \
                 and board_proposals.paylocity_tenants(refs):
             continue                    # its /All/ id and its tenant's name are known
-        seen, _own = best_seen(board, c.get("website") or "", results[cid].get("pages") or [])
-        if refused_first(cid, c, "paylocity", seen["ref"], board_keys(board, ctx), board,
-                         ctx)["skip"]:
-            continue                    # consider skips it unread: so is it here
         exact = spelling("paylocity", seen["ref"])
         # IN consider's ORDER: the live read first, kept where consider finds
         # it, and a board that does not read or is a giant is not asked whose
@@ -1428,12 +1443,18 @@ def addressed_by_page(results: dict, ctx: dict) -> None:
                 cand.update(mark)
 
 
-def records_by_page(ctx: dict) -> dict:
+def records_by_page(ctx: dict, finds: list) -> dict:
     """Ask the board of each Paylocity record on file that a find of this run
     cannot be compared with, once, for the /All/ address its own page states,
     and compare by it for the rest of the run. {record id: {ref, address}} for
     the pages that stated one; what each page said is kept in
-    ctx["record_said"] for the words.
+    ctx["record_said"] for the words. `finds` are [(company id, every
+    address)] of the boards consider compares (compared), and only for one of
+    them is a page asked: not for a company out of scope or on a board, a
+    board skipped unread as refused, or a second board on a site, and never
+    the board of a record a person ruled out of scope - such a company is
+    not probed at all (consider), and its record is said as not asked
+    (eighth blind review, 2026-11-22).
 
     ONE BARE /List/ RECORD HELD EVERY LATER /All/ FIND (seventh blind review,
     2026-11-22). A record read at a bare /List/<n> address - an accepted row
@@ -1448,7 +1469,6 @@ def records_by_page(ctx: dict) -> dict:
     held to the record's board as it reads then. Where the page states
     nothing, the row names the record and says how he clears it."""
     out, said_of = {}, ctx.setdefault("record_said", {})
-    finds = ctx.get("paylocity_finds") or []
     if not finds:
         return out
     recs = []
@@ -1457,6 +1477,10 @@ def records_by_page(ctx: dict) -> dict:
         if not any(board_proposals.paylocity_ids(r)[0] for r in o_refs) and any(
                 board_proposals.paylocity_relation(f_refs, o_refs) == "unknown"
                 for cid_, f_refs in finds if cid_ != o["id"]):
+            if o.get("out_of_scope"):
+                said_of[o["id"]] = "out of scope"       # not probed, as consider
+                recs.append((o, o_refs))
+                continue
             exact = spelling("paylocity", ref)
             if exact not in ctx["said"]:
                 ctx["said"][exact] = verify_boards.board_says("paylocity", ref)
@@ -1492,7 +1516,9 @@ def _clear_words(others: list, record_said: dict | None, refs_of: dict | None = 
         asked = ("" if said is None else
                  "; its own page did not state its /jobs/All/ address" if said == "nothing" else
                  f"; its own page could not be read ({said[len('failed:'):].strip()[:120]})"
-                 if str(said).startswith("failed:") else "")
+                 if str(said).startswith("failed:") else
+                 "; its own page was not asked: a person ruled it out of the board, and a "
+                 "company ruled out is not probed" if said == "out of scope" else "")
         out.append(f"{o.get('name') or o['id']}'s board is on file by "
                    f"{short((o.get('ats') or {}).get('ref'))}{asked}")
         short_ = short_ or not _whole((refs_of or {}).get(o["id"])
@@ -2451,12 +2477,15 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
                 ctx["paylocity_finds"].append((cid, board_refs_of(b)))
     # a record on file whose Paylocity board a find of this run cannot be
     # compared with is asked once for the /All/ address its page states
-    # (seventh blind review, 2026-11-22)
-    asked = records_by_page(ctx)
+    # (seventh blind review, 2026-11-22) - for a find consider compares, and
+    # no other (eighth blind review, 2026-11-22)
+    finds = [(cid, board_refs_of(b)) for cid, _c, b, _seen in compared(results, ctx)]
+    asked = records_by_page(ctx, finds)
     if records is not None:
         records.update(asked)
-    if ctx.get("record_said"):
-        say(f"NOTE: asked {many(len(ctx['record_said']), 'record')} on file for the /jobs/All/ "
+    n_asked = sum(1 for w in ctx["record_said"].values() if w != "out of scope")
+    if n_asked:
+        say(f"NOTE: asked {many(n_asked, 'record')} on file for the /jobs/All/ "
             f"address its Paylocity board's own page states; "
             f"{len(asked)} stated one")
     rows = []

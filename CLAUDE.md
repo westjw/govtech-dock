@@ -2968,7 +2968,12 @@ round.
   cannot be compared with - a bare /List/ board accepted at the desk or set
   by hand held every later /All/ find, for every company - has its own
   board's page asked once for its /All/ address (`wire_found.records_by_page`,
-  through the probe and its manners), and the worklist carries the answer to
+  through the probe and its manners, once per spelling) - for a find consider
+  compares and no other (`wire_found.compared`, the pre-pass's own filter: a
+  company in scope, waiting, its first board, not skipped as refused), and
+  never the board of a record ruled out of scope, which is said as not asked
+  (eighth blind review, 2026-11-22: a record's page was asked for finds
+  nothing compared) - and the worklist carries the answer to
   apply (`record_addresses`, held to the record's board as it reads then);
   where that page states nothing, the row names the record and says that
   putting its board on file by its whole /jobs/All/<uuid>/<Tenant> address
