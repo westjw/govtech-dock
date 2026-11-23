@@ -36421,6 +36421,42 @@ def check_embedded_wiring() -> int:
               f"address is not an ownership question, or the record is told to be put on file "
               f"by the address it is on file by: clean {[e['id'] for e in clean]}, said {said!r}")
         errors += 1
+    # ...and A RECORD KNOWN BY ITS WHOLE ADDRESS THROUGH ITS NOTE - wired at a
+    # bare address, the whole /All/<uuid>/<Tenant> its own page stated kept in
+    # the note the wiring door writes (PAGE_WORDS) - is never told to be put on
+    # file by it either: decided over every address it is known by, as the
+    # wiring door's _whole decides it; and a tenant's name that may be the
+    # row's written another way, or ids that agree on one kind and disagree on
+    # the other, are said in their own words (the eighth review's door
+    # verifier, 2026-11-22: the advice was decided on the record's ref alone,
+    # and --propose put it into Agent proposals where it could not help)
+    ua13 = "5b1c2d3e-0000-4000-8000-000000000942"
+    for label, rec_ref, tail, row_ref, row_page, says in (
+            ("a bare /List/ row", f"All/{ua13}", "Whole-Inc", "List/7777", None, ""),
+            ("a name written two ways", f"All/{ua13}", "Acme-(US),-Inc", "List/2140/Acme-", None,
+             ": their tenants' names, acme- and acme-(us),-inc, may be one name written two "
+             "ways"),
+            ("ids that agree on one kind and not the other", "List/2115/X-Inc", "X-Inc",
+             "List/2115/X-Inc", "All/5b1c2d3e-0000-4000-8000-000000000943/X-Inc",
+             ": their ids agree on one kind and disagree on the other")):
+        by13 = {"noted-rec": {"id": "noted-rec", "name": "Noted Rec",
+                              "ats": {"type": "paylocity", "ref": pl_ + rec_ref},
+                              "ats_note": f"wired 2026-11-20: its own page states its address is "
+                                          f"{pl_}All/{ua13}/{tail}; 3 postings read"},
+                "row13-co": {"id": "row13-co", "name": "Row13 Co", "ats": {"type": "html"}}}
+        rows13 = [{"id": "row13-co", "name": "Row13 Co", "identity": "matches",
+                   "found": {"type": "paylocity", "ref": pl_ + row_ref},
+                   **({"page_ref": pl_ + row_page} if row_page else {})}]
+        clean, _mm, refused = w.triage(rows13, by13, held={}, boards=nobody)
+        said = str(w.board_on_file(rows13[0], by13, rows13, nobody))
+        want = (f"Noted Rec reads a Paylocity board that this one cannot be told apart from "
+                f"({pl_}{rec_ref}){says}")
+        if clean or [e["id"] for e in refused] != ["row13-co"] or said != want:
+            print(f"  FAIL: {label}: a record known by its whole /All/ address through its note "
+                  f"is not an ownership question, or is told to be put on file by it, or the "
+                  f"words do not say why: clean {[e['id'] for e in clean]}, said {said!r}, "
+                  f"wanted {want!r}")
+            errors += 1
     # A WORKABLE ACCOUNT KNOWN BY ITS NUMBER AND ITS SLUG IS ONE BOARD: a row
     # naming the number of an account a record reads by its slug, the record's
     # note tying the two (board_proposals.ACCOUNT_WORDS), is that record's
@@ -36709,7 +36745,8 @@ def check_no_door_wires_a_company_the_owner_holds() -> int:
     keep = (da.DATA, da.LOG, da.SUSPECTS, da.probe, we.DATA, we.recheck, sys.argv)
     import wire_found as wf
     # the words the reader takes the number and the slug from are the door's own
-    said = wf.account_words({"account": "710855", "ref": "numberco"})
+    said = wf.account_words({"type": "workable", "account": "710855",
+                             "ref": "numberco"})
     if bp.workable_pairs([{"ats_note": f"wired 2026-11-19: x, and {said}; the board"}], []) \
             != {"710855": "numberco"} or bp.workable_pairs([], [{"identity_why": said}]) \
             != {"710855": "numberco"}:
@@ -39344,6 +39381,35 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                            f"stop the slug being wired to a second company: {text[-260:]}")
         (box.tmp / "companies.json").write_bytes(keep_cs)
         code, text, look_code = box.look(wl)
+        # THE ACCOUNT A ROW IS WIRED BY IS PRINTED IN THE LOOK, with what ties it
+        # to the slug: apply meets the rows waiting under the number by it and
+        # writes it into the note, so what it leans on is in front of whoever
+        # runs the write (review 9, 2026-11-23)
+        wired_part = text[:text.find("LEFT ALONE")] if "LEFT ALONE" in text else text
+        for number, slug in (("710855", "numberco"), ("737373", "slashco"),
+                             ("777002", "waitlegacyco")):
+            # ...and the sighting of the number on their own site that lets it
+            # take a row waiting under the number for this board, and go into
+            # the note (account_clears; repair of review 9, 2026-11-23)
+            if f"leans on its account number: their site asks for it as Workable account " \
+                    f"{number}, and the plan followed that number to apply.workable.com/" \
+                    f"{slug}; check 1's own sighting asks by it (apply.workable.com/api/v1/" \
+                    f"widget/accounts/{number})" not in wired_part:
+                errors += fail(f"the look does not print the Workable account number "
+                               f"{number} a wired row leans on, what ties it to {slug}, and "
+                               f"the sighting on their site it clears by: "
+                               f"{wired_part[-700:]!r}")
+        if wired_part.count("leans on its account number") != 3:
+            errors += fail(f"the look prints an account number for a board found by its slug: "
+                           f"{wired_part[-700:]!r}")
+        # A HELD ROW FILES THE PAIR ITS OWN SIGHTING AND THE PLAN'S FOLLOW SAY,
+        # and the look shows it: every door after reads it back as a pair on file
+        held_part = text[text.find("\nHOLD "):] if "\nHOLD " in text else ""
+        if "files with it, as a pair every door after reads: Workable account 499231 opens " \
+                "under apply.workable.com/heldnumberco" not in held_part \
+                or "files it without" in held_part:
+            errors += fail(f"the look does not show the pair a held board asked for by number "
+                           f"files with it, or takes it out: {held_part[:900]!r}")
         code, text = box.write(wl, look_code)
         rec = box.record("number-co")
         if code != 0 or "wired 4, held 17" not in text \
@@ -39358,7 +39424,18 @@ def check_a_board_named_by_a_number_is_wired_by_its_slug() -> int:
                 "apply.workable.com/numberco" not in str(rec.get("ats_note")):
             errors += fail(f"the wired record does not keep the account number its site asks "
                            f"for: {rec.get('ats_note')!r}")
+        legacy_note = str(box.record("waiting-legacy-co").get("ats_note"))
+        if "asks for it as Workable account 777002; its postings open under " \
+                "apply.workable.com/waitlegacyco" not in legacy_note:
+            errors += fail(f"the record wired past its own older row under its number does not "
+                           f"keep the number its site asks for: {legacy_note!r}")
         filed = {r["id"]: r for r in json.loads((box.tmp / bp.FOUND.name).read_text())}
+        if "their site asks for it as Workable account 499231; its postings open under " \
+                "apply.workable.com/heldnumberco" not in str(
+                    (filed.get("held-number-co") or {}).get("identity_why")):
+            errors += fail(f"the held board asked for by number was filed without the number "
+                           f"its own site asks for and the slug the plan followed it to: "
+                           f"{(filed.get('held-number-co') or {}).get('identity_why')!r:.400}")
         if (filed.get("held-number-co") or {}).get("found", {}).get("ref") != "heldnumberco" \
                 or (filed.get("nolanding-co") or {}).get("found", {}).get("ref") != "111111" \
                 or {"follow-timeout-co", "follow-429-co", "slug-down-co"} & set(filed):
@@ -41073,7 +41150,8 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
     # doubt that names no board, and a --board with no type were unpinned)
     wired = co("archi-old", "Archi Old Co", ats={"type": "lever", "ref": "archiold"})
     wired["ats_note"] = ("left unwired: their site "
-                         + wf.account_words({"account": "710855", "ref": "archico"}))
+                         + wf.account_words({"type": "workable", "account": "710855",
+                                             "ref": "archico"}))
     BOARDS2 = {"greenhouse/cdco": (3, ["Cd Co"]), "greenhouse/nbco": (3, ["Nb Co"]),
                "workable/archico": (3, ["Archi Co"]), "workable/710855": (3, ["Archi Co"])}
     with _WiringBox([co("cd-co", "Cd Co"), co("nb-co", "Nb Co"), co("archi-co", "Archi Co"),
@@ -41199,7 +41277,8 @@ def check_a_readers_doubt_is_settled_only_by_the_owner() -> int:
                "verified": "3 posting(s) readable", "board_calls_itself": "Archi Two",
                "identity": "unknown", "postings": 3, "titles": [],
                "identity_why": ("an older batch: their site "
-                                + wf.account_words({"account": "720600", "ref": "architwo"}))}
+                                + wf.account_words({"type": "workable", "account": "720600",
+                                                    "ref": "architwo"}))}
     with _WiringBox([co("archi-two", "Archi Two"), co("other-co", "Other Co")],
                     {"workable/720600": (3, ["Archi Two"]),
                      "workable/architwo": (3, ["Archi Two"])},
@@ -43083,8 +43162,9 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
         for cid, (name, board, okind, oref) in OTHER9.items():
             line = next((ln for ln in body.splitlines() if ln.strip().startswith(name + " ")), "")
-            if f"{okind}/{oref} is waiting in Boards we found for it, and it is another board " \
-                    f"than {board}; a board waiting on a person is his to settle" not in line:
+            if f"{okind}/{oref} is waiting in Boards we found for it, and it is not shown to be " \
+                    f"{board}: the two meet under no key apply may know either by" not in line \
+                    or "a board waiting on a person is his to settle - plan again" not in line:
                 errors += fail(f"{cid}: apply took a worklist's word that it saw the company's own "
                                f"unruled row for another board ({okind}/{oref}): {line[:300]!r} "
                                f"{text[-400:]!r}")
@@ -43101,6 +43181,256 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             errors += fail(f"the write wired past the company's own unruled row for another "
                            f"board, or took it off his queue (exit {code}; on his queue "
                            f"{sorted(cards)}; the records read {reads}): {text[-300:]}")
+
+    # (9c) A WORKLIST'S OWN WORD FOR A WORKABLE ACCOUNT CLEARS NOTHING (review 9,
+    # 2026-11-23). Apply met a waiting row under the WIRE row's `account` and
+    # under the worklist's own workable_numbers, so (9b)'s edit plus an account
+    # - the waiting row's slug, or its number - or plus that number tied to the
+    # find's slug in workable_numbers (and, the repair of 2026-11-23 found, the
+    # row's account set to that number too, which account_tie then took on the
+    # worklist's own record), wired past the company's own unruled row
+    # for another board, the row dropped off his queue, and the account's words
+    # went into a greenhouse record's note, which every door after read as a
+    # pair on file. Each is left alone, its row still on his queue, no note
+    # written and no pair planted; (9b)'s edit alone is left alone too. The very
+    # board - its Workable number's own unruled row, tied to the slug found by
+    # the door's words on file (ACCOUNT_WORDS) - is still wired: a pair on file
+    # is something apply may lean on.
+    for kind9 in ("greenhouse", None):
+        if wf.account_words({"type": kind9, "account": "7100", "ref": "zco"}):
+            errors += fail(f"wire_found.account_words writes a Workable account's words of a "
+                           f"board that is not a Workable board ({kind9}): every door after "
+                           f"reads them as a pair on file")
+
+    def older9(cid, name, kind, ref, why="an older finder's row"):
+        return row(cid, name, ref, kind=kind, saw=f"{kind}/{ref}", identity_why=why)
+    EDIT9 = {"xa-co": ("Xa Co", "greenhouse", "xaco", "workable", "xaco-old",
+                       lambda r_, doc: r_.update(account="xaco-old")),
+             "xz-co": ("Xz Co", "greenhouse", "xzco", "workable", "7100",
+                       lambda r_, doc: r_.update(account="7100")),
+             "xb-co": ("Xb Co", "workable", "xbco", "workable", "7200",
+                       lambda r_, doc: doc.update(workable_numbers={
+                           **(doc.get("workable_numbers") or {}), "7200": "xbco"})),
+             # ...and with the row's account set to that number as well: the
+             # worklist's own record then ties the account to the find's slug,
+             # which is all a hold needs and never clears his row (repair of
+             # review 9, 2026-11-23: wired, his row dropped, the pair planted)
+             "xd-co": ("Xd Co", "workable", "xdco", "workable", "7250",
+                       lambda r_, doc: (r_.update(account="7250"), doc.update(
+                           workable_numbers={**(doc.get("workable_numbers") or {}),
+                                             "7250": "xdco"}))),
+             # ...and the account and the worklist's record edited together, on a
+             # greenhouse board: a Workable account belongs to a Workable board
+             "xc-co": ("Xc Co", "greenhouse", "xcco", "workable", "7150",
+                       lambda r_, doc: (r_.update(account="7150"), doc.update(
+                           workable_numbers={**(doc.get("workable_numbers") or {}),
+                                             "7150": "xcco"}))),
+             "x0-co": ("X0 Co", "greenhouse", "x0co", "workable", "x0co-old",
+                       lambda r_, doc: None)}
+    WHY9 = {"xa-co": "the row says their site asks for the board as Workable account xaco-old, "
+                     "and greenhouse/xaco is not a Workable board: an account only the row says "
+                     "is never leaned on - plan again",
+            "xz-co": "the row says their site asks for the board as Workable account 7100, and "
+                     "greenhouse/xzco is not a Workable board: an account only the row says is "
+                     "never leaned on - plan again",
+            "xb-co": "workable/7200 is waiting in Boards we found for it, and it is not shown to "
+                     "be workable/xbco",
+            "xd-co": "workable/7250 is waiting in Boards we found for it, and it is not shown to "
+                     "be workable/xdco: the two meet under no key apply may know either by (its "
+                     "own; the Workable account number check 1's own sighting asks by, which "
+                     "the plan followed to it; or a number's slug the file says)",
+            "xc-co": "the row says their site asks for the board as Workable account 7150, and "
+                     "greenhouse/xcco is not a Workable board: an account only the row says is "
+                     "never leaned on - plan again",
+            "x0-co": "workable/x0co-old is waiting in Boards we found for it, and it is not "
+                     "shown to be greenhouse/x0co"}
+    with _WiringBox([co(cid, v[0]) for cid, v in EDIT9.items()] + [co("w9-co", "W9 Co")],
+                    {**{f"{v[1]}/{v[2]}": (3, [v[0]]) for v in EDIT9.values()},
+                     "workable/w9co": (3, ["W9 Co"])},
+                    files={bp.FOUND.name: [
+                        *(older9(cid, v[0], v[3], v[4]) for cid, v in EDIT9.items()),
+                        older9("w9-co", "W9 Co", "workable", "7300",
+                               why="an older finder's row; their site asks for it as Workable "
+                                   "account 7300; its postings open under "
+                                   "apply.workable.com/w9co")]}) as box:
+        code, text, wl_9c, rows_9c = box.plan(_wb_results({
+            **{cid: names(cid, v[1], v[2]) for cid, v in EDIT9.items()},
+            "w9-co": names("w9-co", "workable", "w9co")}), name="worklist-9c.json")
+        for cid, v in EDIT9.items():
+            expect(rows_9c, cid, "HOLD", f"a different board, {v[3]}/{v[4]}, is already waiting "
+                                         f"in Boards we found for this company")
+        expect(rows_9c, "w9-co", "WIRE")
+        if ((rows_9c or {}).get("w9-co") or {}).get("waiting_seen") != [
+                ["Boards we found", bp.board_key("workable", "7300")]]:
+            errors += fail(f"w9-co: the plan did not record its own number's waiting row, tied to "
+                           f"its slug on file: {((rows_9c or {}).get('w9-co') or {})!r:.400}")
+
+        def claim9(by_id, doc):
+            for cid, v in EDIT9.items():
+                r_ = by_id[cid]
+                r_["action"] = "WIRE"
+                r_.pop("doubts", None)
+                r_.pop("queue_row", None)
+                r_["waiting_seen"] = [["Boards we found", bp.board_key(v[3], v[4])]]
+                v[5](r_, doc)
+        wl_9c2 = box.edited(wl_9c, "worklist-9c-claim.json", claim9)
+        code, text, look_9c = box.look(wl_9c2)
+        body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
+        for cid, v in EDIT9.items():
+            line = next((ln for ln in body.splitlines() if ln.strip().startswith(v[0] + " ")), "")
+            if WHY9[cid] not in line:
+                errors += fail(f"{cid}: apply took the worklist's word for a Workable account, "
+                               f"or did not say why it left the row alone: {line[:400]!r} "
+                               f"{text[-300:]!r}")
+        if "W9 Co" not in (text[:text.find("LEFT ALONE")] if body else text):
+            errors += fail(f"w9-co: apply no longer wires the very board whose number's own "
+                           f"unruled row the file ties to its slug: {text[-500:]}")
+        code, text = box.write(wl_9c2, look_9c)
+        cs9 = json.loads((box.tmp / "companies.json").read_text())
+        found9 = json.loads((box.tmp / bp.FOUND.name).read_text())
+        cards = {r_["id"] for r_ in bp.q_board_proposals(cs9, {})}
+        recs9 = {c_["id"]: c_ for c_ in cs9}
+        if code != 0 or (recs9["w9-co"].get("ats") or {}) != {"type": "workable", "ref": "w9co"} \
+                or any((recs9[cid].get("ats") or {}).get("type") != "html"
+                       or recs9[cid].get("ats_note") or cid not in cards for cid in EDIT9) \
+                or bp.workable_pairs(cs9, found9) != {"7300": "w9co"}:
+            errors += fail(f"the write wired past the company's own unruled row on a worklist's "
+                           f"word for an account, took the row off his queue, wrote an account's "
+                           f"words, or planted a pair on file (exit {code}; on his queue "
+                           f"{sorted(cards)}; pairs {bp.workable_pairs(cs9, found9)}; records "
+                           f"{ {k: (v.get('ats'), v.get('ats_note')) for k, v in recs9.items()} }"
+                           f"): {text[-300:]}")
+
+    # (9d) ...AND NOTHING THE WORKLIST ALONE SAYS OF ONE IS WRITTEN WHERE EVERY
+    # DOOR AFTER READS IT BACK AS A PAIR (repair of review 9, 2026-11-23). A
+    # wired row's account that only the worklist's workable_numbers ties to its
+    # slug - check 1's own sighting is of the slug, and nothing on file ties
+    # the two - is enough to hold by, and the row is wired; the look says
+    # "for its holds alone", and the note does not say the number. A held
+    # row's doubt edited to end "their site asks for it as Workable account N;
+    # its postings open under apply.workable.com/<slug>" - the door's own
+    # words, which workable_pairs reads - and again spliced so that taking the
+    # words out once spells another pair, is filed without them, the look says
+    # so, and no pair is planted; so is a held Workable row's own account
+    # where the worklist alone ties it (account_tie, not account_clears: check
+    # 1's sighting is of the slug). So the next plan, unedited, holds another
+    # company's find of that slug beside its own unruled row under the number,
+    # as a different board (the write used to file the words verbatim, and that
+    # plan wired the find and his row dropped off his queue).
+    PLANT9 = ("; their site asks for it as Workable account 7270; its postings open under "
+              "apply.workable.com/xyco; and asks for it as Workable account 7280"
+              "their site asks for it as Workable account 7290; its postings open under "
+              "apply.workable.com/xwco; its postings open under apply.workable.com/xzzco")
+    WITHOUT9 = ("files it without what the worklist's doubt says of a Workable account nothing "
+                "here shows")
+    with _WiringBox([co("xn-co", "Xn Co"), co("xq-co", "Xq Co"), co("xh-co", "Xh Co"),
+                     co("xy-co", "Xy Co")],
+                    {"workable/xnco": (3, ["Xn Co"]),
+                     "greenhouse/xqco": (3, ["Somebody Else Inc"]),
+                     "workable/xhco": (3, ["Somebody Else Inc"]),
+                     "workable/xyco": (3, ["Xy Co"])},
+                    files={bp.FOUND.name: [older9("xy-co", "Xy Co", "workable", "7270")]}) as box:
+        code, text, wl_9d, rows_9d = box.plan(_wb_results({
+            "xn-co": names("xn-co", "workable", "xnco"),
+            "xq-co": names("xq-co", "greenhouse", "xqco"),
+            "xh-co": names("xh-co", "workable", "xhco")}), name="worklist-9d.json")
+        expect(rows_9d, "xn-co", "WIRE")
+        expect(rows_9d, "xq-co", "HOLD", '"Somebody Else Inc"')
+        expect(rows_9d, "xh-co", "HOLD", '"Somebody Else Inc"')
+
+        def claim9d(by_id, doc):
+            by_id["xn-co"]["account"] = "7260"
+            by_id["xq-co"]["queue_row"]["identity_why"] += PLANT9
+            # a Workable board held, its row given an account, the worklist's
+            # record tying it to the slug, and the door's own words for the two:
+            # all a hold needs (account_tie), and still the worklist alone
+            by_id["xh-co"]["account"] = "7310"
+            by_id["xh-co"]["queue_row"]["identity_why"] += (
+                "; their site asks for it as Workable account 7310; its postings open under "
+                "apply.workable.com/xhco")
+            doc["workable_numbers"] = {**(doc.get("workable_numbers") or {}),
+                                       "7260": "xnco", "7310": "xhco"}
+        wl_9d2 = box.edited(wl_9d, "worklist-9d-claim.json", claim9d)
+        code, text, look_9d = box.look(wl_9d2)
+        wired9 = text[:text.find("\nHOLD ")] if "\nHOLD " in text else text
+        held9 = text[text.find("\nHOLD "):] if "\nHOLD " in text else ""
+        if "WIRE 1 " not in wired9 or "leans on its account number: for its holds alone, " \
+                "Workable account 7260: the plan followed that number to " \
+                "apply.workable.com/xnco, and check 1's own sighting does not ask for the " \
+                "board by that number, and nothing on file ties the two; so no row waiting " \
+                "under the number is taken for this board, and the record's note does not " \
+                "say it" not in wired9:
+            errors += fail(f"xn-co: an account only the worklist's own record ties to the slug "
+                           f"was not wired for its holds alone, said so in the look: "
+                           f"{wired9[-600:]!r}")
+        if "HOLD 2 " not in held9 or held9.count(WITHOUT9) != 4 \
+                or f'{WITHOUT9}: "their site asks for it as Workable account 7310' not in held9 \
+                or "files with it, as a pair every door after reads" in held9:
+            errors += fail(f"xq-co, xh-co: the look does not say each held row is filed without "
+                           f"the account's words its worklist added (three, and one): "
+                           f"{held9[:1200]!r}")
+        code, text = box.write(wl_9d2, look_9d)
+        cs9d = json.loads((box.tmp / "companies.json").read_text())
+        found9d = json.loads((box.tmp / bp.FOUND.name).read_text())
+        xn9 = next(c_ for c_ in cs9d if c_["id"] == "xn-co")
+        filed9 = {r_.get("id"): r_ for r_ in found9d}
+        said9 = {k: str((filed9.get(k) or {}).get("identity_why"))[-300:]
+                 for k in ("xq-co", "xh-co")}
+        if code != 0 or xn9.get("ats") != {"type": "workable", "ref": "xnco"} \
+                or "Workable account" in str(xn9.get("ats_note")) \
+                or any(cid not in filed9 or bp.ACCOUNT_WORDS.findall(
+                    str(filed9[cid].get("identity_why")))
+                    or '"Somebody Else Inc"' not in str(filed9[cid].get("identity_why"))
+                    for cid in ("xq-co", "xh-co")) \
+                or bp.workable_pairs(cs9d, found9d) != {}:
+            errors += fail(f"the write put a Workable account only its worklist said into a "
+                           f"note or a held row's doubt, which every door after reads as a pair "
+                           f"(exit {code}; pairs {bp.workable_pairs(cs9d, found9d)}; xn-co "
+                           f"{xn9.get('ats')} {xn9.get('ats_note')!r:.200}; filed {said9}): "
+                           f"{text[-300:]}")
+        code, text, _wl, rows_9d3 = box.plan(_wb_results({
+            "xy-co": names("xy-co", "workable", "xyco")}), name="worklist-9d-next.json")
+        expect(rows_9d3, "xy-co", "HOLD", "a different board, workable/7270, is already waiting "
+                                          "in Boards we found for this company")
+    # what may clear and be written, asked directly: check 1's own sighting of
+    # that very number (not a longer one, not a slug that starts with it) with
+    # the plan's record, or a pair on file - and never the plan's record where
+    # the file opens the number under another slug
+    W9 = "https://apply.workable.com/api/v1/widget/accounts/"
+    for saw9, numbers9, pairs9, want9 in (
+            (f"{W9}7400?origin=embed", {"7400": "s74"}, {}, "check 1's own sighting asks by it "
+             "(apply.workable.com/api/v1/widget/accounts/7400)"),
+            (f"{W9}7400?origin=embed", {"7400": "s74"}, {"7400": "other74"}, None),
+            (f"{W9}7400?origin=embed", {}, {"7400": "s74"},
+             "the file says that number opens under apply.workable.com/s74"),
+            ("workable board s74", {}, {"7400": "s74"},
+             "the file says that number opens under apply.workable.com/s74"),
+            ("workable board s74", {"7400": "s74"}, {}, None),
+            (f"{W9}74001?origin=embed", {"7400": "s74"}, {}, None),
+            (f"{W9}7400abc?origin=embed", {"7400": "s74"}, {}, None),
+            (f"{W9}7400?origin=embed", {"7400": "s75"}, {}, None)):
+        row9 = {"type": "workable", "ref": "s74", "account": "7400", "check_1": {"saw": saw9}}
+        got9 = wf.account_clears(row9, numbers9, pairs9)
+        if (want9 is None) != (got9 is None) or (want9 and want9 not in got9):
+            errors += fail(f"wire_found.account_clears for a sighting {saw9!r}, the plan's record "
+                           f"{numbers9} and pairs on file {pairs9} said {got9!r}, want "
+                           f"{want9!r}")
+    # ...and a held row's doubt that quotes a pair the file already says (a
+    # queued row's doubt, quoted) keeps it: filing it again plants nothing
+    QUOTED9 = ("their site asks for it as Workable account 7300; its postings open under "
+               "apply.workable.com/w9co")
+    hrow9 = {"type": "greenhouse", "ref": "q9", "queue_row": {
+        "identity_why": f'held beside a row filed with its doubt: "{QUOTED9}"'}}
+    if wf.held_words(hrow9, {}, {"7300": "w9co"}) != (hrow9["queue_row"]["identity_why"], []) \
+            or wf.held_words(hrow9, {}, {}) != ('held beside a row filed with its doubt: ""',
+                                                [QUOTED9]) \
+            or wf.held_words(hrow9, {}, {"7300": "other9"}) != (
+                'held beside a row filed with its doubt: ""', [QUOTED9]):
+        errors += fail(f"wire_found.held_words took out a pair the file already says, or kept "
+                       f"one it does not say (or says of another slug): "
+                       f"{wf.held_words(hrow9, {}, {'7300': 'w9co'})!r} "
+                       f"{wf.held_words(hrow9, {}, {})!r} "
+                       f"{wf.held_words(hrow9, {}, {'7300': 'other9'})!r}")
 
     # (10) A PAYLOCITY RECORD WHOSE REF CARRIES NO /All/ OR /List/ ID is no
     # address to compare a board with (test review, 2026-11-22)
@@ -43248,22 +43578,32 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
     # and the next plan, the page answering, wires it (eighth blind review,
     # 2026-11-22: it was held and filed in his queue, and every later plan
     # held it as already there)
+    # ...and ONLY THE FIND THAT PAGE ALONE COULD COMPARE ("unknown" to the
+    # record) is skipped: a find apart from the record - another /List/ id -
+    # is decided as usual, and wired (the eighth review's door verifier,
+    # 2026-11-22: the relation limit was unpinned, and without it a find the
+    # failed page has nothing to do with was skipped every day, in false words)
     LIST_TR, ALL_TR, FIND_TR = plist(2138), pall(0x947, "Tr-Rec"), pall(0x948, "Tr-Co")
-    with _WiringBox([co("tr-co", "Tr Co"),
+    LIST_TA = plist(2198, "Ta-Co")
+    with _WiringBox([co("tr-co", "Tr Co"), co("ta-co", "Ta Co"),
                      co("tr-rec", "Tr Rec", ats={"type": "paylocity", "ref": LIST_TR})],
-                    {f"paylocity/{FIND_TR}": (3, ["Tr Co"])},
+                    {f"paylocity/{FIND_TR}": (3, ["Tr Co"]),
+                     f"paylocity/{LIST_TA}": (3, ["Ta Co"])},
                     says={f"paylocity/{LIST_TR}": {"failed": "unreadable", "transient": True,
                                                    "how": "HTTP 503 for the board's page"}}) \
             as box:
         code, text, wl_tr, rows_tr = box.plan(_wb_results({
-            "tr-co": names("tr-co", "paylocity", FIND_TR)}), name="worklist-tr.json")
+            "tr-co": names("tr-co", "paylocity", FIND_TR),
+            "ta-co": names("ta-co", "paylocity", LIST_TA)}), name="worklist-tr.json")
         expect(rows_tr, "tr-co", "SKIP", "asking that page failed on the day (HTTP 503 for the "
                                          "board's page); it is asked again on the next plan",
                kind="unreadable")
+        expect(rows_tr, "ta-co", "WIRE")
         code, text, _ = box.look(wl_tr)
-        if "HOLD 0 " not in text:
+        if "HOLD 0 " not in text or "WIRE 1 " not in text:
             errors += fail(f"a find held only by a record's page that failed on the day would be "
-                           f"filed for the owner: {text[-400:]}")
+                           f"filed for the owner, or one apart from it is not wired: "
+                           f"{text[-400:]}")
         box.says = {f"paylocity/{LIST_TR}": {"address": ALL_TR}}
         code, text, _wl, rows_tr = box.plan(_wb_results({
             "tr-co": names("tr-co", "paylocity", FIND_TR)}), name="worklist-tr2.json")
@@ -43681,6 +44021,160 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 errors += fail(f"the board of a hold {label} whose company is ruled out of scope "
                                f"was asked for its page: probed {box.probed}; "
                                f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+    # ...and WHAT A HELD BOARD'S PAGE STATED IS TRUE OF EVERY HOLD OF THAT
+    # SPELLING, a ruled-out company's too, met in either order: the page is
+    # asked once, for the in-scope company's hold, and a find it shows to be
+    # another board is wired, compared by it in apply too (review 9, 2026-11-23:
+    # the ruled-out company's hold of the very same board was never given the
+    # address and held the find "cannot be shown"; and met after the in-scope
+    # hold, the ruled-out one must never write "not asked" over what the page
+    # said - setdefault, finding 7(e))
+    LIST_TW, ALL_TW, ALL_G8 = plist(2169), pall(0x9d3, "Tw-Other-Co"), pall(0x9d4, "G8-Co")
+    SP_TW = wf.spelling("paylocity", LIST_TW)
+    for label, refused_id in (("the ruled-out company's row first", "tws-co"),
+                              ("the in-scope company's row first", "twr-co")):
+        with _WiringBox([co("tws-co", "Tws Co"), co("twr-co", "Twr Co", out_of_scope=OOS),
+                         co("g8", "G8 Co")],
+                        {f"paylocity/{ALL_G8}": (3, ["G8 Co"])},
+                        files={bp.FOUND.name: [frow("tws-co", "Tws Co", LIST_TW),
+                                               frow("twr-co", "Twr Co", LIST_TW)],
+                               bp.RULED.name: {refused_id: {
+                                   "accept": False, "by": "owner", "on": "2026-11-21",
+                                   "why": "not theirs"}}},
+                        says={f"paylocity/{LIST_TW}": {"address": ALL_TW}}) as box:
+            code, text, wl_tw, rows_tw = box.plan(_wb_results({
+                "g8": names("g8", "paylocity", ALL_G8)}), name=f"worklist-tw-{len(label)}.json")
+            expect(rows_tw, "g8", "WIRE")
+            if ((rows_tw or {}).get("g8") or {}).get("leans_on") != {SP_TW: ALL_TW} \
+                    or box.probed.count(f"paylocity/{LIST_TW}") != 1 \
+                    or "NOTE: asked 1 board the owner holds for the /jobs/All/ address its own " \
+                       "page states; 1 stated one" not in text:
+                errors += fail(f"two holds of one board, {label}: what its page stated was not "
+                               f"taken for both, or not said: leans_on "
+                               f"{((rows_tw or {}).get('g8') or {}).get('leans_on')}; probed "
+                               f"{box.probed}; "
+                               f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+            code, text, _ = box.look(wl_tw)
+            if "WIRE 1 " not in text or f"leans on what the plan was told: the page of " \
+                    f"{LIST_TW[8:]} states its address is {ALL_TW}" not in text:
+                errors += fail(f"two holds of one board, {label}: apply did not compare the find "
+                               f"with both by what the page stated: {text[-500:]!r}")
+    # ...and A HELD BOARD'S PAGE IS ASKED ONLY FOR A FIND CONSIDER COMPARES
+    # WHOSE RELATION TO THE HOLD IS "unknown" - the twin of a record's (12):
+    # never for a find the hold's addresses already compare (its tenant's name
+    # across the two kinds of id, or under another /List/ id), nor for a
+    # company out of scope or on a board, a board refused for its company, or
+    # a second board on a site (the eighth review's door verifier, 2026-11-22:
+    # asking on any relation but "apart", and for every Paylocity find, both
+    # passed every check)
+    LIST_LH, LIST_LT = plist(2176), plist(2177, "Lt-Co")
+    K_ = {k: pall(0x9e0 + i, f"K{i}-Co") for i, k in enumerate(("oos", "set", "ref", "sec"))}
+    page_k = f"{site('k-sec')}/careers"
+    with _WiringBox([co("lh-co", "Lh Co"),
+                     co("k-oos", "K Oos", out_of_scope=OOS),
+                     co("k-set", "K Set", ats={"type": "greenhouse", "ref": "kset"}),
+                     co("k-ref", "K Ref"), co("k-sec", "K Sec")],
+                    {"greenhouse/ksec": (3, ["K Sec"]),
+                     **{f"paylocity/{v}": (3, [f"K {k.title()}"]) for k, v in K_.items()}},
+                    files={bp.FOUND.name: [frow("lh-co", "Lh Co", LIST_LH)],
+                           bp.PROPOSALS: proposal("k-ref", "K Ref", K_["ref"])}) as box:
+        sec = entry("k-sec", [cand("greenhouse", "ksec", page_k, element="iframe", times=3),
+                              cand("paylocity", K_["sec"], page_k, element="href")])
+        code, text, _wl, rows_k = box.plan(_wb_results({
+            "k-oos": names("k-oos", "paylocity", K_["oos"]),
+            "k-set": names("k-set", "paylocity", K_["set"]),
+            "k-ref": names("k-ref", "paylocity", K_["ref"]), "k-sec": sec}),
+            name="worklist-17-lim.json")
+        for cid, kind in (("k-oos", "out-of-scope"), ("k-set", "not-waiting"),
+                          ("k-ref", "refused")):
+            expect(rows_k, cid, "SKIP", kind=kind)
+        if ((rows_k or {}).get("k-sec") or {}).get("type") != "greenhouse" \
+                or f"paylocity/{LIST_LH}" in box.probed or "NOTE: asked" in text:
+            errors += fail(f"a held board's page was asked for a find consider does not compare: "
+                           f"probed {box.probed}; "
+                           f"{[ln for ln in text.splitlines() if ln.startswith('NOTE')]}")
+    with _WiringBox([co("lt-co", "Lt Co"), co("k-kinds", "K Kinds"), co("k-tenant", "K Tenant")],
+                    {f"paylocity/{pall(0x9e8, 'Lt-Co')}": (3, ["K Kinds"]),
+                     f"paylocity/{plist(2178, 'Lt-Co')}": (3, ["K Tenant"])},
+                    files={bp.FOUND.name: [frow("lt-co", "Lt Co", LIST_LT)]}) as box:
+        code, text, _wl, rows_k = box.plan(_wb_results({
+            "k-kinds": names("k-kinds", "paylocity", pall(0x9e8, "Lt-Co")),
+            "k-tenant": names("k-tenant", "paylocity", plist(2178, "Lt-Co"))}),
+            name="worklist-17-rel.json")
+        for cid in ("k-kinds", "k-tenant"):
+            expect(rows_k, cid, "HOLD", f"paylocity/{LIST_LT} is in the owner's queue")
+        if f"paylocity/{LIST_LT}" in box.probed or "NOTE: asked" in text:
+            errors += fail(f"a held board's page was asked for finds its addresses already "
+                           f"compare (one tenant's name across the two kinds of id, or under "
+                           f"another /List/ id): probed {box.probed}")
+    # ...and A HELD BOARD'S PAGE THAT FAILS ON THE DAY SKIPs ONLY THE FINDS IT
+    # ALONE COULD COMPARE ("unknown" to the hold): one its addresses already
+    # compare - the tenant's name across the two kinds of id - is held as
+    # usual, and one apart from it is wired (the eighth review's door
+    # verifier, 2026-11-22: the relation limit was unpinned for holds as for
+    # records, and without it such a find was skipped every day, in false
+    # words)
+    LIST_TD = plist(2179, "Td-Co")
+    TD_ = {"td-near": pall(0x9e1, "Td"), "td-kinds": pall(0x9e2, "Td-Co"),
+           "td-apart": plist(2180, "Ap-Co")}
+    with _WiringBox([co("td-co", "Td Co"), *(co(k, k.title().replace("-", " ")) for k in TD_)],
+                    {f"paylocity/{v}": (3, [k.title().replace("-", " ")]) for k, v in TD_.items()},
+                    files={bp.FOUND.name: [frow("td-co", "Td Co", LIST_TD)]},
+                    says={f"paylocity/{LIST_TD}": {"failed": "unreadable", "transient": True,
+                                                   "how": "HTTP 503 for the board's page"}}) \
+            as box:
+        code, text, _wl, rows_td = box.plan(_wb_results({
+            k: names(k, "paylocity", v) for k, v in TD_.items()}), name="worklist-17-td.json")
+        expect(rows_td, "td-near", "SKIP", "the owner holds", "failed on the day (HTTP 503 for "
+                                                              "the board's page)",
+               kind="unreadable")
+        expect(rows_td, "td-kinds", "HOLD", f"paylocity/{LIST_TD} is in the owner's queue",
+               never=("failed on the day",))
+        expect(rows_td, "td-apart", "WIRE")
+    # ...and WHAT A HELD BOARD'S, OR A RECORD'S, PAGE STATES IS ADDED TO THE
+    # ADDRESSES IT IS ON FILE BY, NEVER PUT IN THEIR PLACE: a find tied to the
+    # hold or the record only by its own /List/ id, its own page stating
+    # nothing, is that board while the page states another /All/ id - held in
+    # the plan, and left alone in apply where a worklist says it leaned on that
+    # page - and a find the page shows to be another board is wired (the
+    # eighth review's door verifier, 2026-11-22: replaced instead of added, on
+    # either side, passed every check, and on both the very board was wired)
+    LIST_K, ALL_K = plist(2181), pall(0x9e5, "Rk-Co")
+    C1_K, C2_K = pall(0x9e6, "Ck1-Co"), plist(2181, "Ck2-Co")
+    SP_K = wf.spelling("paylocity", LIST_K)
+    for label, files_k, rk, plan_says, apply_says in (
+            ("a hold", {bp.FOUND.name: [frow("rk-co", "Rk Co", LIST_K)]}, co("rk-co", "Rk Co"),
+             f"paylocity/{LIST_K} is in the owner's queue (Boards we found) for Rk Co",
+             f"paylocity/{LIST_K} is in the owner's queue (Boards we found) for Rk Co"),
+            ("a record", {}, co("rk-co", "Rk Co", ats={"type": "paylocity", "ref": LIST_K}),
+             f"paylocity/{C2_K} is already on file as the board of Rk Co",
+             f"paylocity/{C2_K} is now on file as the board of Rk Co")):
+        with _WiringBox([rk, co("ck1", "Ck1 Co"), co("ck2", "Ck2 Co")],
+                        {f"paylocity/{C1_K}": (3, ["Ck1 Co"]),
+                         f"paylocity/{C2_K}": (3, ["Ck2 Co"])},
+                        files=files_k, says={f"paylocity/{LIST_K}": {"address": ALL_K}}) as box:
+            code, text, wl_k, rows_k = box.plan(_wb_results({
+                "ck1": names("ck1", "paylocity", C1_K), "ck2": names("ck2", "paylocity", C2_K)}),
+                name=f"worklist-17-kept-{len(label)}.json")
+            expect(rows_k, "ck1", "WIRE")
+            expect(rows_k, "ck2", "HOLD", plan_says)
+            if ((rows_k or {}).get("ck1") or {}).get("leans_on") != {SP_K: ALL_K}:
+                errors += fail(f"{label}: the find its page shows to be another board does not "
+                               f"name that page: {((rows_k or {}).get('ck1') or {})!r:.300}")
+
+            def lean_k(rows_, _doc):
+                r_ = rows_["ck2"]
+                r_["action"], r_["waiting_seen"], r_["leans_on"] = "WIRE", [], {SP_K: ALL_K}
+                r_.pop("doubts", None)
+                r_.pop("queue_row", None)
+            code, text, _ = box.look(box.edited(wl_k, f"worklist-17-lean-{len(label)}.json",
+                                                lean_k))
+            line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                         if ln.strip().startswith("Ck2 Co ")), "") if "LEFT ALONE" in text else ""
+            if apply_says not in line or "WIRE 1 " not in text:
+                errors += fail(f"{label}: apply took what its page stated in place of the address "
+                               f"it is on file by, and the very board was not left alone, or the "
+                               f"other find was not wired: {line[:300]!r} {text[-400:]!r}")
     return errors
 
 
@@ -43952,7 +44446,8 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         # the file now ties 790600 to archisixslug, on another record's note
         box.by_hand(lambda by_id, cs: by_id["old-six"].update(ats_note=(
             "left unwired: their site "
-            + wf.account_words({"account": "790600", "ref": "archisixslug"}))))
+            + wf.account_words({"type": "workable", "account": "790600",
+                                "ref": "archisixslug"}))))
         code, text, _wl, _rows = box.plan(_wb_results({"archi-six": links("archi-six",
                                                                          "othergroupsix")}),
                                          name="worklist-six-2.json", doubts={"archi-six": WORDS6})
@@ -44041,7 +44536,8 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         # slug are the settled doubt, and are said to be
         box.by_hand(lambda by_id, cs: by_id["archi-five"].update(ats_note=(
             "left unwired: their site "
-            + wf.account_words({"account": "790000", "ref": "archifiveslug"}))))
+            + wf.account_words({"type": "workable", "account": "790000",
+                                "ref": "archifiveslug"}))))
         before = (box.tmp / wf.DOUBTS).read_bytes()
         code, text, _wl, _rows = box.plan(_wb_results({"archi-five": links("archi-five",
                                                                            "archifiveslug")}),
@@ -44159,8 +44655,8 @@ def check_a_workable_account_is_held_under_either_key() -> int:
     # nothing held it - knowing more held less - and it was wired.)
     def account_note(number, slug, name):
         return (f"wired 2026-11-19: x.test/careers loads the board, and "
-                f"{wf.account_words({'account': number, 'ref': slug})}; the board names "
-                f"\"{name}\"; 2 postings read")
+                f"{wf.account_words({'type': 'workable', 'account': number, 'ref': slug})}"
+                f"; the board names \"{name}\"; 2 postings read")
     companies4 = [co("pair-holder", "Pair Holder", ats={"type": "workable", "ref": "790790"},
                      ats_note=account_note("790790", "pairslug", "Pair Holder")),
                   co("pair-dup", "Pair Holder Inc", also_known_as=["Pair Holder"]),
@@ -44213,7 +44709,8 @@ def check_a_workable_account_is_held_under_either_key() -> int:
     # finder's row under workable/730730 lets the checks answer the slug's
     # board; a proposal pending under workable/740740 holds it, as this board.
     def tie_words(number, slug):
-        return "their site " + wf.account_words({"account": number, "ref": slug})
+        return "their site " + wf.account_words({"type": "workable", "account": number,
+                                                 "ref": slug})
     older = {"id": "wk-co", "name": "Wk Co", "was": "html",
              "found": {"type": "workable", "ref": "730730"}, "saw": f"{W}730730", "times": 1,
              "verified": "3 posting(s) readable", "board_calls_itself": None,

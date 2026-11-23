@@ -2766,7 +2766,37 @@ round.
   robots.txt disallow, a 404, a landing on no board and the rest are held
   with the reason and never wired, by the plan or by `apply`. The wired
   record's `ats_note`, and a held row's `identity_why`, say "asks for it as
-  Workable account N; its postings open under apply.workable.com/<slug>".
+  Workable account N; its postings open under apply.workable.com/<slug>" -
+  only of a Workable board asked for by a number in digits
+  (`wire_found.account_words`): every door reads them back as a pair on
+  file, and an edited worklist once put them on a greenhouse record (review
+  9, 2026-11-23). `apply` leans on a WIRE row's `account` only where
+  `wire_found.account_tie` shows it - a Workable row, the number in digits,
+  opened under that very slug by the plan's own `workable_numbers` or by a
+  pair on file - and prints it under the row ("leans on its account number:
+  ..."); any other `account` leaves the row alone (`evidence`). That is
+  enough to HOLD by (holders, holds and twins meet the board under the
+  number too). The account CLEARS something - a row waiting for the company
+  under the number, taken for this very board - and goes into the record's
+  note only where `wire_found.account_clears` shows more: a pair on file
+  already opening that number under this slug, or check 1's own sighting
+  asking for the board by that very number (`check_1.saw` carries
+  apply.workable.com/api/v1/widget/accounts/N, `account_sighted`: the wire
+  rests on it) with the plan's `workable_numbers` opening it under this slug
+  and nothing on file opening it under another. The look says which,
+  printing the sighting, or "for its holds alone" (repair of review 9,
+  2026-11-23: an edit giving the row the waiting row's number as its
+  `account` and tying it to the find's slug in `workable_numbers` waived the
+  company's own unruled row - it dropped off his queue - and the note planted
+  the pair). A held row's doubt is filed with those words only of its own
+  board's number where `account_clears` shows it, or of a pair the file
+  already says (`wire_found.held_words`); any other such words in the
+  worklist's doubt are taken out (and taken out again where taking them out
+  spells them anew), and the look prints each pair a held row files with
+  ("files with it, as a pair every door after reads: ...") and the words it
+  is filed without (the same repair: an edit appended them to a greenhouse
+  row's doubt, the write filed them, and the next plan, unedited, wired past
+  another company's own unruled row under the number by that pair).
   `board_url` and the desk's `boardUrlFor` link the filed page or the
   company's website for a number, never `apply.workable.com/<number>`; the
   desk's Accept and its Set board both refuse a numbered Workable ref
@@ -3047,7 +3077,12 @@ round.
   scope, which is not probed at all, as its record is not - the row says
   the held board's page was not asked) - one refused at the desk held every /All/ board found,
   for every company, in all three doors, forever (eighth blind review,
-  2026-11-22). Its page's address shows which board the hold is, and the
+  2026-11-22). What the page states, asked for one hold, is taken for every
+  hold of that spelling, a ruled-out company's included (that asks nothing
+  more), and a ruled-out hold met after it never writes "not asked" over it
+  (review 9, 2026-11-23: the ruled-out company's hold of the very board kept
+  holding a find the page showed to be another board, "cannot be shown").
+  Its page's address shows which board the hold is, and the
   hold is never dropped: a find is compared by it (the WIRE row names it in
   `leans_on`, so apply compares by it too), a page that fails on the day
   SKIPs the find, and where the page states nothing the row says so and
@@ -3101,7 +3136,15 @@ round.
   row in Boards we found for any board (`queued`), a waiting row the plan did
   not record in the row's `waiting_seen`, or one it records that is not this
   very board - another board under every key it is known by
-  (`wire_found.waiting_keys`, the plan's own test), or a Paylocity board tied
+  (`wire_found.waiting_keys`, the plan's own test, asked by keys apply may
+  lean on: the row's own board, its account where `account_clears` shows it,
+  and a waiting Workable number's slug only where a pair on file says it,
+  never the worklist's `workable_numbers` alone - review 9, 2026-11-23: an
+  edited `account`, or a number tied to the find's slug in
+  `workable_numbers`, waived the company's own unruled row and it dropped
+  off his queue; and its repair: the two edited together, which
+  `account_tie` takes on the worklist's own record, waived it too), or a
+  Paylocity board tied
   by less than an id that agrees: the plan holds beside either and records
   neither, so a worklist saying it saw one is not taken at its word (review
   of the eighth blind review's fixes, 2026-11-22: an edited `waiting_seen`
@@ -3115,8 +3158,12 @@ round.
   `page_addresses`, is refused: version 3 kept the readers' doubts only when
   it was written, and version 4 carried a record's page's address apply took
   on its word. The look prints, under each row it wires, every /All/ address
-  it leans on ("leans on what the plan was told: ..."), and the code covers
-  them.
+  it leans on ("leans on what the plan was told: ...") and the Workable
+  account number it is asked for by, with what ties it to the slug and
+  whether that clears and goes into the note ("leans on its account number:
+  ...", or "... for its holds alone ..."), and under each held row it files
+  the pairs its doubt files with and the account words it is filed without;
+  and the code covers them.
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from
@@ -3188,7 +3235,14 @@ round.
   apart from, is an ownership question, never the clean pile, and one board
   under two spellings is one board claimed twice (claimants grouped by
   `board_proposals.found_keys` and `paylocity_relation`: sixth blind review,
-  2026-11-22). And the hold reader both doors share
+  2026-11-22). Its words are decided over every address the record is known
+  by, the whole /All/<uuid>/<Tenant> address its note keeps included, as the
+  wiring door decides them: such a record is never told to be put on file
+  by it, and ids that agree on one kind and disagree on the other, or a
+  tenant's name that may be the row's written another way, are said as that
+  (the eighth review's door verifier, 2026-11-22: only the record's ref was
+  read, and --propose put advice that could not help into Agent proposals).
+  And the hold reader both doors share
   (`board_proposals.held_board`) compares a Paylocity board with the owner's
   holds by every address on both sides, holding on anything but "apart", as
   the wiring door does: by keys alone a hold at a bare /List/ address never
