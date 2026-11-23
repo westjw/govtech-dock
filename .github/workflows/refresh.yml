@@ -147,6 +147,13 @@ jobs:
         # it is still the only path for a JS-shelled board. Re-measure before
         # moving it again - the docstrings in both scripts still quote the
         # trial's rate, and it is wrong.
+        # GOVTECH_DOCK_UNIFY_NIGHT: a SuccessFactors "Unify" board costs two
+        # requests a posting to read, and the owner's yes was to one or two a
+        # posting a NIGHT (2026-11-23), so this step's read of one is kept in
+        # the runner's temp directory (never committed) and the build step
+        # below takes it instead of asking again (ats.UNIFY_NIGHT).
+        env:
+          GOVTECH_DOCK_UNIFY_NIGHT: ${{ runner.temp }}/unify_night.json
         run: python scripts/refresh.py --ci --force --render-budget 600
 
       - name: Read the jobs employers posted on SLED HQ
@@ -195,6 +202,10 @@ jobs:
         # Same rationing, separate queue: refresh renders to learn a STATUS,
         # this renders to ENUMERATE the postings. Halved from 1800 with the
         # step above and for the same measured reason: 6% of attempts yield.
+        # The same GOVTECH_DOCK_UNIFY_NIGHT as the refresh step: a Unify board
+        # it read whole is not asked again tonight (ats.UNIFY_NIGHT).
+        env:
+          GOVTECH_DOCK_UNIFY_NIGHT: ${{ runner.temp }}/unify_night.json
         run: python scripts/build_board.py --render-budget 900
 
       - name: Record what is in the queues

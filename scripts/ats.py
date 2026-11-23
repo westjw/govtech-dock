@@ -4376,6 +4376,12 @@ def successfactors_closed(exc: BaseException) -> bool:
 
 def fetch_successfactors(ref) -> list[dict]:
     try:
+        again = _unify_night_read(successfactors_origin(ref))
+    except AtsError:
+        again = None                    # (successfactors_board says why)
+    if again is not None:
+        return again
+    try:
         origin, _page1, first, n, total = successfactors_board(ref)
     except SuccessFactorsUnify as unify:
         return successfactors_unify(unify.origin)
@@ -4445,11 +4451,23 @@ def fetch_successfactors(ref) -> list[dict]:
 # is the sitemap's address, never where it landed: Esri Canada's server
 # writes a French posting's Location twice encoded, and the page answers it.
 #
-# A board costs its /search/ page, its sitemap and two requests a posting (the
-# loc and its hop): Octave about 263 a night, Esri Canada 65, Aurigo 33 - the
-# cost the owner accepted. The sitemap is held to SF_SITEMAP_MAX postings
-# (the owner skips giants of about 500+ roles) and a sitemap index to one
-# level of SF_SITEMAPS_MAX sitemaps on the site's own origin.
+# A READ costs its /search/ page, its sitemap and two requests a posting (the
+# loc and its hop), and robots.txt once: Octave 264, Esri Canada 66, Aurigo
+# 34. A NIGHT IS ONE READ (blind review 10, 2026-11-23): the owner's yes was
+# to "one or two requests per posting per night", and the nightly job reads
+# every wired board twice - refresh.py for its status, then build_board.py
+# for its postings, in separate processes - so a night cost two reads, about
+# four requests a posting (Octave 530). GOVTECH_DOCK_UNIFY_NIGHT names a
+# file the job's two steps share (refresh.yml sets it in the runner's temp
+# directory: never committed, gone with the run): a Unify read that comes
+# whole is written there, and a later read of that board in the same run,
+# within UNIFY_NIGHT_MAX_AGE, is that one, asking nothing. A read that fails
+# writes nothing, so the next step asks for itself; a read made without the
+# ads a caller wants (FETCH_DETAILS) is asked again. Other reads on a day -
+# scope_review.py's, of a company with openings nobody has ruled on; a
+# person's - are their own. The sitemap is held to SF_SITEMAP_MAX addresses
+# (a cap on requests, not roles) and a sitemap index to one level of
+# SF_SITEMAPS_MAX sitemaps on the site's own origin.
 #
 # THE POSTING'S OWN PAGE IS THE ROW: there is no list to fall back on. A
 # posting the site says has closed (successfactors_closed: a 404 or 410, a
@@ -4478,6 +4496,9 @@ def fetch_successfactors(ref) -> list[dict]:
 SF_SITEMAP_MAX = 400
 SF_SITEMAPS_MAX = 5      # sitemaps one sitemap index may name, followed one level only
 SF_RETRY_PAUSE = 2.0     # seconds before a posting's 5xx or network failure is asked once more
+UNIFY_NIGHT = os.environ.get("GOVTECH_DOCK_UNIFY_NIGHT", "")    # the run's shared read (above)
+UNIFY_NIGHT_MAX_AGE = dt.timedelta(hours=6)                     # longer than the job may run (5h)
+_UNIFY_NIGHT_LOCK = threading.Lock()
 # More of a sitemap than this answering closed in one read is not a day's
 # postings closing - a site answering 404 for postings it has, a soft block,
 # a sitemap long out of date - and the read is refused, never published as
@@ -4962,6 +4983,54 @@ def _sf_unify_posting(url: str, origin: str, known: dict | None = None):
     return "row", (row, req, where, lang)
 
 
+def _unify_night_read(origin: str) -> list[dict] | None:
+    """This run's read of a Unify board, as an earlier step of it wrote it
+    (UNIFY_NIGHT), or None: no file named, no entry for the board, one older
+    than UNIFY_NIGHT_MAX_AGE (or dated ahead), one made without the ads this
+    caller wants, or a file that does not read. Copies, the ads dropped for a
+    caller that does not want them; said on stderr."""
+    if not UNIFY_NIGHT:
+        return None
+    try:
+        entry = json.loads(pathlib.Path(UNIFY_NIGHT).read_text()).get(origin)
+        at = dt.datetime.fromisoformat(entry["read_at"])
+        rows = [dict(r) for r in entry["rows"]]
+        details = entry.get("details") is True
+        age = _utcnow() - at
+    except (OSError, ValueError, TypeError, KeyError, AttributeError):
+        return None
+    if not dt.timedelta(0) <= age <= UNIFY_NIGHT_MAX_AGE or (FETCH_DETAILS and not details) or not rows:
+        return None
+    if not FETCH_DETAILS:
+        for r in rows:
+            r.pop("jd", None)
+    print(f"  successfactors: {origin}: its {len(rows)} postings are this run's read of "
+          f"{entry['read_at'][:16]}Z, asked nothing again", file=sys.stderr)
+    return rows
+
+
+def _unify_night_write(origin: str, rows: list[dict]) -> None:
+    """Keep a Unify read that came whole for this run's later steps
+    (UNIFY_NIGHT); a file that cannot be written keeps nothing, and the next
+    step asks for itself."""
+    if not UNIFY_NIGHT:
+        return
+    path = pathlib.Path(UNIFY_NIGHT)
+    with _UNIFY_NIGHT_LOCK:
+        try:
+            held = json.loads(path.read_text())
+            held = held if isinstance(held, dict) else {}
+        except (OSError, ValueError):
+            held = {}
+        held[origin] = {"read_at": _utcnow().isoformat(), "details": bool(FETCH_DETAILS), "rows": rows}
+        try:
+            fresh = path.with_name(path.name + ".tmp")
+            fresh.write_text(json.dumps(held))
+            os.replace(fresh, path)
+        except OSError:
+            pass
+
+
 def _sf_slug(url: str) -> str:
     """The slug of a /job/<slug>/... address, or ''."""
     segs = urllib.parse.urlsplit(url or "").path.split("/")
@@ -5066,6 +5135,7 @@ def successfactors_unify(origin: str) -> list[dict]:
                     f"the same language (one number, one locale) and are published once")
     for line in said:
         print(f"  successfactors: {origin}: {line}", file=sys.stderr)
+    _unify_night_write(origin, kept)
     return kept
 
 

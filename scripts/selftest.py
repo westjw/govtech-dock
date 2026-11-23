@@ -21782,11 +21782,11 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         return int(last) - 70000000 if last.isdigit() else int(last.split("-")[0])
 
     held = (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
-            ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE)
+            ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE, ats.UNIFY_NIGHT)
     not_before = dict(ats._HOST_NOT_BEFORE)        # (a 429 below backs its host off)
     try:
         ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = ask, (lambda u: None), None
-        ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE = False, 0, 0
+        ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE, ats.UNIFY_NIGHT = False, 0, 0, ""
         ats.requests.post = lambda *a, **k: (_ for _ in ()).throw(AssertionError("no POST"))
 
         # ---- every field of a row, for each tenant's tokens as measured ---------
@@ -22377,6 +22377,115 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                            f"did not ask the board once more and stop at the 429 each time "
                            f"({sent.count(hop(72))} asks of it)")
 
+        # ---- A NIGHT IS ONE READ ------------------------------------------------
+        # (blind review 10, 2026-11-23: the owner's yes was to "one or two
+        # requests per posting per night", and the nightly job read each board
+        # twice - refresh.py, then build_board.py - so a night cost about four
+        # a posting.) GOVTECH_DOCK_UNIFY_NIGHT names a file the job's steps
+        # share: a read that comes whole is kept there, and a later read of the
+        # board in the same run is that one, asking nothing; a failed read
+        # keeps nothing, and one too old, or made without the ads a caller
+        # wants, is asked again
+        night = tempfile.TemporaryDirectory()
+        night_file = pathlib.Path(night.name) / "unify_night.json"
+        comp_ = {"id": "acme-gov", "name": "Acme Gov", "ats": {"type": "successfactors", "ref": SF}}
+        try:
+            ats.UNIFY_NIGHT = str(night_file)
+
+            def nightly(routes):
+                # (refresh.check_company, then build_board's read, ats.fetch -
+                # each process asks robots.txt for itself)
+                sent.clear(), robots_asked.clear(), shut.clear()
+                ats.requests.get = web(routes)
+                with contextlib.redirect_stderr(io.StringIO()):
+                    res_ = refresh.check_company(comp_)
+                first_ = list(sent)
+                sent.clear()
+                err_ = io.StringIO()
+                with contextlib.redirect_stderr(err_):
+                    try:
+                        jobs_ = ats.fetch(comp_["ats"])
+                    except ats.AtsError as exc_:
+                        jobs_ = exc_
+                return res_, first_, list(sent), jobs_, err_.getvalue()
+            res, first_asked, then_asked, jobs, err = nightly(site(ae))
+            if res.get("status") != "Yes" or len(first_asked) != 2 + 2 * 4 or then_asked \
+                    or [r["url"] for r in jobs] != [loc(n) for n in (71, 72, 73, 74)] \
+                    or "this run's read of" not in err or "asked nothing again" not in err:
+                errors += fail(f"successfactors unify: the night's two reads did not cost one read "
+                               f"(refresh asked {len(first_asked)}, the build {len(then_asked)}; "
+                               f"{err.strip()!r}): {jobs!r}")
+            jobs[0]["title"] = "edited"
+            with contextlib.redirect_stderr(io.StringIO()):
+                again_ = ats.fetch(comp_["ats"])
+            if again_[0]["title"] != "Role 71" or sent:
+                errors += fail(f"successfactors unify: the run's kept read was handed out by reference, "
+                               f"or asked: {again_[0]}")
+            night_file.unlink(missing_ok=True)
+            res, first_asked, then_asked, jobs, err = nightly(site(ae, more={hop(72): (503, None)}))
+            if res.get("status") != "Unknown" or night_file.exists() or not isinstance(jobs, ats.AtsError) \
+                    or hop(72) not in then_asked:
+                errors += fail(f"successfactors unify: a read that failed was kept for the night, or the "
+                               f"next step did not ask for itself (asked {len(then_asked)}): {jobs!r}")
+            for when, why in ((dt.timedelta(hours=7), "older than the run"),
+                              (dt.timedelta(hours=-1), "dated ahead")):
+                night_file.write_text(json.dumps({SF: {"read_at": (ats._utcnow() - when).isoformat(),
+                                                       "details": False,
+                                                       "rows": [{"title": "Stale", "url": loc(1)}]}}))
+                rows, exc, err = go(site(ae))
+                if exc or "Stale" in str(rows) or len(sent) != 2 + 2 * 4:
+                    errors += fail(f"successfactors unify: a kept read {why} was used ({len(sent)} asked): "
+                                   f"{rows} {exc}")
+            for junk in ("not json", "[]", json.dumps({SF: {"read_at": "x", "rows": []}}),
+                         json.dumps({SF: {"read_at": ats._utcnow().replace(tzinfo=None).isoformat(),
+                                          "rows": [{"title": "Naive"}]}})):
+                night_file.write_text(junk)
+                rows, exc, err = go(site(ae))
+                if exc or len(rows or []) != 4 or len(sent) != 2 + 2 * 4:
+                    errors += fail(f"successfactors unify: a kept-read file {junk[:40]!r} was read as a "
+                                   f"board, or broke the read: {rows} {exc}")
+            # a read made without the ads is asked again by a caller that wants
+            # them, and one made with them is handed to one that does not, the
+            # ads dropped
+            night_file.unlink(missing_ok=True)
+            go(site(ae))
+            ats.FETCH_DETAILS = True
+            rows, exc, err = go(site(ae))
+            ats.FETCH_DETAILS = False
+            if exc or len(sent) != 2 + 2 * 4 or not all(r.get("jd") for r in rows or []):
+                errors += fail(f"successfactors unify: a caller wanting the ads was handed a read made "
+                               f"without them ({len(sent)} asked): {rows} {exc}")
+            rows, exc, err = go(site(ae))
+            if exc or sent or any("jd" in r for r in rows or []) or len(rows or []) != 4:
+                errors += fail(f"successfactors unify: a read made with the ads was not handed, without "
+                               f"them, to a caller that does not want them ({len(sent)} asked): {rows} {exc}")
+            ats.FETCH_DETAILS = True
+            rows, exc, err = go(site(ae))
+            ats.FETCH_DETAILS = False
+            if exc or sent or not all(r.get("jd") for r in rows or []):
+                errors += fail(f"successfactors unify: a read made with the ads was not handed, with them, "
+                               f"to a caller that wants them ({len(sent)} asked)")
+            # no file named, nothing kept: each read asks for itself
+            ats.UNIFY_NIGHT = ""
+            night_file.unlink(missing_ok=True)
+            go(site(ae))
+            rows, exc, err = go(site(ae))
+            if night_file.exists() or len(sent) != 2 + 2 * 4:
+                errors += fail(f"successfactors unify: with no file named, a read was kept or taken from "
+                               f"one ({len(sent)} asked)")
+        finally:
+            ats.UNIFY_NIGHT = ""
+            night.cleanup()
+        wf_ = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+        for step_, run_ in (("Refresh hiring data", "python scripts/refresh.py"),
+                            ("Build the job board and market intel", "python scripts/build_board.py")):
+            block_ = wf_[wf_.index(f"- name: {step_}"):]
+            block_ = block_[:block_.index(run_)]
+            if "GOVTECH_DOCK_UNIFY_NIGHT: ${{ runner.temp }}/unify_night.json" not in block_:
+                errors += fail(f"successfactors unify: refresh.yml's '{step_}' step does not name the "
+                               f"run's shared Unify read (GOVTECH_DOCK_UNIFY_NIGHT), so a night reads a "
+                               f"Unify board twice")
+
         # ---- up to SF_SLACK postings that do not read are left out, more fail ---
         tspd = SF + "/TSPD/?type=20"
         unreadable = [plain(82, blocked), plain(84, (302, tspd)), plain(85, posting(titled=None, og=False)),
@@ -22627,7 +22736,7 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                            f"{_time.monotonic() - began:.0f}s: a pattern starts again from every tag")
     finally:
         (ats.requests.get, ats.requests.post, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE,
-         ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE) = held
+         ats.FETCH_DETAILS, ats.DETAIL_PAUSE, ats.SF_RETRY_PAUSE, ats.UNIFY_NIGHT) = held
         ats._HOST_NOT_BEFORE.clear()
         ats._HOST_NOT_BEFORE.update(not_before)
     return errors

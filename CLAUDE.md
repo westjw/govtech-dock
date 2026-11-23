@@ -3553,11 +3553,25 @@ review and the owner's word, through the wiring door.
   roles, and the error says so (blind review 10, 2026-11-23: it called a
   bilingual site of 201 roles, 402 addresses, "a giant"): a site listing
   each role in English and in French reaches it at 200 roles, short of the
-  owner's giants of about 500+ - whether such a site should be read is his. **Each posting is asked once**
-  (`successfactors_posting`: its loc and the 302 to
-  /job/<slug>/<N>-<locale>/), two requests a posting beside the /search/
-  page and the sitemap - Octave 264 a night, Esri Canada 66, Aurigo 34, and
-  robots.txt: the cost the owner accepted. **A row is the posting's own
+  owner's giants of about 500+ - whether such a site should be read is his.
+  **Each posting is asked once** (`successfactors_posting`: its loc and the
+  302 to /job/<slug>/<N>-<locale>/), two requests a posting beside the
+  /search/ page and the sitemap, and robots.txt once: a READ is Octave 264,
+  Esri Canada 66, Aurigo 34. **A night is one read** (blind review 10,
+  2026-11-23: the owner's yes was to "one or two requests per posting per
+  night", and the nightly job reads every wired board twice - refresh.py
+  for its status, then build_board.py for its postings, each a process of
+  its own - so a night cost two reads, about four a posting, Octave 530):
+  refresh.yml names one file for both steps (`GOVTECH_DOCK_UNIFY_NIGHT`, in
+  the runner's temp directory, never committed), a Unify read that comes
+  whole is kept there (`ats.UNIFY_NIGHT`), and the build step's read of that
+  board is it, asking nothing - Octave 265 a night with robots.txt. A read
+  that fails keeps nothing, so the build step asks for itself (a failing
+  night costs up to two reads); one older than `UNIFY_NIGHT_MAX_AGE` (6h,
+  past the job's 5h), or made without the ads a caller wants, is asked
+  again; with no file named (any run but the nightly) each read asks for
+  itself. scope_review.py's read of a company with openings nobody has
+  ruled on, and a person's, are reads of their own. **A row is the posting's own
   page** (`ats.successfactors_unify_row`): the role (its itemprop="title"
   text, else og:title); the first of the tenant's place tokens shown with a
   value (Posting Location, Job Location (Short), Job Location, Location,
