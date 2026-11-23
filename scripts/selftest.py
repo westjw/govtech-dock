@@ -43631,6 +43631,112 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                        f"{wf.held_words(hrow9, {}, {})!r} "
                        f"{wf.held_words(hrow9, {}, {'7300': 'other9'})!r}")
 
+    # (9e) AN ACCOUNT IS LEANED ON ONLY AS A NUMBER IN DIGITS OPENED UNDER THIS
+    # VERY SLUG (review 9's door verifier, 2026-11-23: both rules unpinned).
+    # account_tie's "== ref" halves: the plan follows 7100 to
+    # apply.workable.com/otherco for O Co (its site embeds the widget by
+    # number), and Y Co's own unruled row waits under workable/7100 beside its
+    # workable/yco find, HOLD; a worklist edited to WIRE Y Co with account
+    # "7100" - no plan-level record touched - is left alone in the words of an
+    # account nothing opens under its slug, its row stays on his queue and no
+    # pair is written (taken on a number followed to ANY slug, it was wired
+    # and the note planted {7100: yco} against the plan's own follow). The
+    # same where a pair on file opens 7110 under another slug. And
+    # account_words' digit guard: a Workable row's slug-shaped account with
+    # workable_numbers edited to match is "not an account number".
+    W9e = "https://apply.workable.com/"
+    o9e = entry("o9-co", [cand("workable", "7100", f"{site('o9-co')}/careers", element="request",
+                               saw=f"{W9e}api/v1/widget/accounts/7100?origin=embed")])
+    o9e["website"] = site("o9-co")
+    o9e["pages"] = [{"asked": f"{site('o9-co')}/careers", "final": f"{site('o9-co')}/careers",
+                     "same_site": True, "status": "read", "note": ""}]
+    pair9e = ("wired 2026-11-01: p9co.test/careers embeds the board, and "
+              + wf.account_words({"type": "workable", "account": "7110", "ref": "otherco2"})
+              + "; the board names \"P9 Co\"; 2 postings read")
+    with _WiringBox([co("o9-co", "O9 Co"), co("y9-co", "Y9 Co"), co("y8-co", "Y8 Co"),
+                     co("xe-co", "Xe Co"),
+                     co("p9-co", "P9 Co", ats={"type": "workable", "ref": "otherco2"},
+                        ats_note=pair9e)],
+                    {"workable/7100": (2, ["Somebody Else"]),
+                     "workable/otherco": (2, ["Somebody Else"]),
+                     "workable/y9co": (3, ["Y9 Co"]), "workable/y8co": (3, ["Y8 Co"]),
+                     "workable/xeco": (3, ["Xe Co"])},
+                    files={bp.FOUND.name: [older9("y9-co", "Y9 Co", "workable", "7100"),
+                                           older9("xe-co", "Xe Co", "workable", "xeco-old")]},
+                    urls={"workable/7100": [f"{W9e}j/AAAAAA1", f"{W9e}j/AAAAAA2"],
+                          "workable/otherco": [f"{W9e}j/AAAAAA1", f"{W9e}j/AAAAAA2"]},
+                    lands={f"{W9e}j/AAAAAA1": f"{W9e}otherco/j/AAAAAA1"}) as box:
+        code, text, wl_9e, rows_9e = box.plan(_wb_results({
+            "o9-co": o9e, "y9-co": names("y9-co", "workable", "y9co"),
+            "y8-co": names("y8-co", "workable", "y8co"),
+            "xe-co": names("xe-co", "workable", "xeco")}), name="worklist-9e.json")
+        if json.loads(wl_9e.read_text()).get("workable_numbers") != {"7100": "otherco"}:
+            errors += fail(f"(9e): the fixture's plan did not follow 7100 to otherco: "
+                           f"{text[-300:]}")
+        expect(rows_9e, "y9-co", "HOLD", "a different board, workable/7100, is already waiting "
+                                         "in Boards we found for this company")
+        expect(rows_9e, "y8-co", "WIRE")
+
+        def claim9e(by_id, doc):
+            for cid, acct in (("y9-co", "7100"), ("y8-co", "7110"), ("xe-co", "xeco-old")):
+                r_ = by_id[cid]
+                r_["action"] = "WIRE"
+                r_.pop("doubts", None)
+                r_.pop("queue_row", None)
+                r_["account"] = acct
+            by_id["y9-co"]["waiting_seen"] = [["Boards we found",
+                                               bp.board_key("workable", "7100")]]
+            by_id["xe-co"]["waiting_seen"] = [["Boards we found",
+                                               bp.board_key("workable", "xeco-old")]]
+            doc["workable_numbers"] = {**(doc.get("workable_numbers") or {}),
+                                       "xeco-old": "xeco"}
+        wl_9e2 = box.edited(wl_9e, "worklist-9e-claim.json", claim9e)
+        code, text, look_9e = box.look(wl_9e2)
+        body = text[text.find("LEFT ALONE"):] if "LEFT ALONE" in text else ""
+        for name_, acct, slug_, why_ in (
+                ("Y9 Co", "7100", "y9co", "neither the plan's record of the numbers it followed "
+                                         "(workable_numbers) nor anything on file opens that "
+                                         "account under apply.workable.com/y9co"),
+                ("Y8 Co", "7110", "y8co", "neither the plan's record of the numbers it followed "
+                                         "(workable_numbers) nor anything on file opens that "
+                                         "account under apply.workable.com/y8co"),
+                ("Xe Co", "xeco-old", "xeco", "that is not an account number as the plan writes "
+                                             "one (digits, as text)")):
+            line = next((ln for ln in body.splitlines() if ln.strip().startswith(name_ + " ")),
+                        "")
+            if f"the row says their site asks for the board as Workable account {acct}, and " \
+                    f"{why_}: an account only the row says is never leaned on - plan again" \
+                    not in line:
+                errors += fail(f"{name_}: a row's account that nothing opens under its own slug "
+                               f"({slug_}), or that is not a number in digits, was leaned on, or "
+                               f"not said so: {line[:400]!r} {text[-300:]!r}")
+        box.write(wl_9e2, look_9e)
+        cs9e = json.loads((box.tmp / "companies.json").read_text())
+        found9e = json.loads((box.tmp / bp.FOUND.name).read_text())
+        cards9e = {r_["id"] for r_ in bp.q_board_proposals(cs9e, {})}
+        if any((next(c_ for c_ in cs9e if c_["id"] == cid).get("ats") or {}).get("type")
+               != "html" for cid in ("y9-co", "y8-co", "xe-co")) \
+                or not {"y9-co", "xe-co"} <= cards9e \
+                or bp.workable_pairs(cs9e, found9e) != {"7110": "otherco2", "7100": "otherco"}:
+            # (O9 Co's own held row files its own board's pair, by its site's
+            # sighting and the plan's follow: the one pair that may be new)
+            errors += fail(f"(9e): a row whose account nothing opens under its own slug was "
+                           f"wired, took a row off his queue or planted a pair (on his queue "
+                           f"{sorted(cards9e)}; pairs {bp.workable_pairs(cs9e, found9e)})")
+    # ...and the two rules, asked directly
+    r9e = {"type": "workable", "ref": "y9co", "account": "7100"}
+    if wf.account_tie(r9e, {"7100": "otherco"}, {}) is not None \
+            or wf.account_tie(r9e, {}, {"7100": "otherco"}) is not None \
+            or "the plan followed that number to apply.workable.com/y9co" \
+            not in str(wf.account_tie(r9e, {"7100": "y9co"}, {})) \
+            or "the file says that number opens under apply.workable.com/y9co" \
+            not in str(wf.account_tie(r9e, {}, {"7100": "y9co"})) \
+            or wf.account_words({"type": "workable", "ref": "xeco", "account": "xeco-old"}) \
+            or wf.account_words({"type": "workable", "ref": "xeco", "account": "7100a"}) \
+            or not wf.account_words(r9e):
+        errors += fail("wire_found.account_tie leans on an account opened under another slug, "
+                       "or account_words writes an account that is not a number in digits")
+
     # (10) A PAYLOCITY RECORD WHOSE REF CARRIES NO /All/ OR /List/ ID is no
     # address to compare a board with (test review, 2026-11-22)
     LIST_NEW = plist(7421, "New-Co")
