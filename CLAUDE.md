@@ -3344,7 +3344,14 @@ review and the owner's word, through the wiring door.
   only after the check was tightened). Seventh blind review (2026-11-22):
   nine findings and the tests reviewer's unpinned breakages (E-01..E-14,
   E-22), each fixed or pinned; then 99 breaks of the code as it stands, the
-  first round's included where the code moved, 99 noticed.
+  first round's included where the code moved, 99 noticed. Eighth blind
+  review (2026-11-22): the label read as a range and a total, rows that gave
+  no posting counted, the last page's churn, closed postings (passed over in
+  the probe, dropped behind FETCH_DETAILS), and the tests reviewer's
+  unpinned hop targets, startrow, 403/429, no-total, comment and four-deep
+  cases - each fixed and pinned, Gainwell's measured shape (334 postings, 14
+  pages of 25) among the cases; each fix reverted in a private copy fails
+  the check.
 
 ## Build order (owner, 2026-08-23)
 

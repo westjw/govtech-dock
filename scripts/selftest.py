@@ -20451,7 +20451,9 @@ def check_successfactors_reads_its_career_site() -> int:
         # is asked of it as written, and the library sends its dot segments
         for href in ("/job/%2e%2e/services/recruiting/v1/jobs", "/job/%252e%252e/services/x/",
                      "/job/..;/services/x/", "/job/a%2F..%2Fservices/x/", "/job//x/1/",
-                     "/job/x\\..\\services/1/", "/job/%2E/1/"):
+                     "/job/x\\..\\services/1/", "/job/%2E/1/",
+                     # (escapes four deep say nothing plainly, whatever is under them)
+                     "/job/%2525252e%2525252e/services/recruiting/v1/jobs/"):
             got = ats.successfactors_list(page([row(1, href=href)], total=1), SF)[1]
             if got:
                 errors += fail(f"successfactors: a row's link {href!r} was taken as a posting: {got}")
@@ -20474,6 +20476,56 @@ def check_successfactors_reads_its_career_site() -> int:
                     or any("services" in u for u in sent + robots_asked):
                 errors += fail(f"successfactors: a hop to {to[len(SF):]} was asked ({asked_sf or sent}): "
                                f"{exc2}")
+        # ...nor one that plain_address lets through and only the reader's own
+        # path rule refuses - escapes two deep, '..;', an empty segment - from
+        # the first page, from page N (keeping its startrow) and from a posting
+        # (eighth blind review, 2026-11-22: no hop target reached that rule)
+        for odd in ("/search/%252e%252e/services/recruiting/v1/jobs", "/search/..;/services/x",
+                    "/search//services/x"):
+            for where, routes, call in (
+                    ("the first page", {at(0): (302, SF + odd), SF + odd: page([row(1)], total=1)},
+                     lambda: ats.fetch_successfactors(SF)),
+                    ("page 2", {at(0): page([row(n) for n in range(1, 26)], total=30),
+                                at(25): (302, SF + odd + "?startrow=25"),
+                                SF + odd + "?startrow=25": page([row(n) for n in range(26, 31)], total=30,
+                                                                first=26)},
+                     lambda: ats.fetch_successfactors(SF))):
+                rows, exc = go(routes, call)
+                if exc is None or "does not say plainly" not in str(exc) \
+                        or any("services" in u for u in sent + robots_asked):
+                    errors += fail(f"successfactors: a hop from {where} to {odd!r} was followed "
+                                   f"({[u[len(SF):] for u in sent]}): {len(rows or [])} rows, {exc}")
+            to_job = SF + odd.replace("/search/", "/job/")
+            ats.FETCH_DETAILS = True
+            rows, exc = go({at(0): page([row(1), row(2)], total=2), SF + job(1): (302, to_job),
+                            to_job: posting(), SF + job(2): posting()}, lambda: ats.fetch_successfactors(SF))
+            ats.FETCH_DETAILS = False
+            if exc or len(rows or []) != 2 or (rows or [{}])[0].get("jd") \
+                    or any("services" in u for u in sent + robots_asked):
+                errors += fail(f"successfactors: with details on, a posting's hop to {to_job[len(SF):]!r} "
+                               f"was followed, or the row was lost ({sent}): {rows or exc}")
+            routes = {at(0): page([row(n) for n in range(1, 8)], total=7), to_job: posting()}
+            routes.update({SF + job(k): posting() for k in range(1, 8)})
+            routes[SF + job(3)] = (302, to_job)
+            sent.clear(), robots_asked.clear()
+            ats.requests.get = web(routes)
+            got = vb.board_says("successfactors", SF)
+            if got["stated"] or got["names"] or not got["failed"] \
+                    or any("services" in u for u in sent + robots_asked):
+                errors += fail(f"successfactors probe: a posting's hop to {to_job[len(SF):]!r} was "
+                               f"followed, or the board stated ({sent}): {got}")
+        # A HOP FROM PAGE N THAT ASKS FOR ANOTHER PAGE - page 1 again, or a
+        # later one - is refused like a hop that drops its startrow: on a
+        # board stating no total nothing else would notice (eighth blind review)
+        for to_row in (0, 50):
+            rows, exc = go({at(0): page([row(n) for n in range(1, 26)]), at(25): (302, at(to_row)),
+                            at(50): page([row(n) for n in range(51, 61)]),
+                            at(75): page([row(n) for n in range(1, 11)])},
+                           lambda: ats.fetch_successfactors(SF))
+            if exc is None or "from row 25" not in str(exc) or sent != [at(0), at(25)]:
+                errors += fail(f"successfactors: page 2 of a board stating no total redirected to "
+                               f"startrow={to_row} and was read as page 2 ({[u[len(SF):] for u in sent]}): "
+                               f"{len(rows or [])} rows, {exc}")
 
         # THE LABEL IS A RANGE AND A TOTAL, believed only when the range is the
         # page's own (eighth blind review, 2026-11-22): any other shape is no
@@ -20845,6 +20897,20 @@ def check_successfactors_reads_its_career_site() -> int:
         got = said(board(page([row(n) for n in range(1, 4)]), every(3)))
         if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"]:
             errors += fail(f"successfactors probe: a board stating no total was stated whole: {got}")
+        # A BOARD WITH NO TOTAL IS NOT SMALL: its first page is sampled, and its
+        # list is never walked (it would be asked of every page, and then of a
+        # total nobody stated)
+        got = said(board(page([row(n) for n in range(1, 26)]), every(60),
+                         {at(25): page([row(n) for n in range(26, 51)]),
+                          at(50): page([row(n) for n in range(51, 61)]),
+                          at(75): page([row(n) for n in range(1, 11)])}))
+        lists_n = sum(1 for u in sent if "/search/" in u)
+        asked_n = sum(1 for u in sent if "/job/" in u)
+        if got["stated"] or got["failed"] or got["names"] != ["Acme Gov LLC"] or lists_n != 1 \
+                or asked_n != vb.SF_POSTINGS_SAMPLED or not got["n_is_partial"]:
+            errors += fail(f"successfactors probe: a board of three pages stating no total was asked "
+                           f"{lists_n} list pages and {asked_n} postings, not 1 and "
+                           f"{vb.SF_POSTINGS_SAMPLED}: {got}")
         gap = page([row(1), row(2, href="/go/View-All-Jobs/8808000/"), row(3)], total=3)
         got = said(board(gap, {1: "Acme Gov LLC", 3: "Acme Gov LLC"}))
         if got["stated"] or vb.proven({"name": "Acme Gov"}, got)["ok"]:
