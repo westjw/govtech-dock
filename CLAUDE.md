@@ -3508,7 +3508,14 @@ review and the owner's word, through the wiring door.
   is a posting; anything else is passed over and said; one that is a
   posting but does not read plainly (a bare '&', an entity XML does not
   define, '&amp;apos;' undone twice, a relative address, CDATA, a control
-  character) fails the read, so a posting is never silently lost. A
+  character) fails the read, so a posting is never silently lost. **A
+  sitemap cut short is not the board** (blind review 10, 2026-11-23): a
+  Unify sitemap states no total to hold a read to, so its root's close is
+  the only sign it came whole, and a sitemap (or an index, or a sitemap an
+  index names) whose text does not end with `</urlset>` or
+  `</sitemapindex>` - only whitespace or a processing instruction after it -
+  is an error, never the part before the cut (an empty `<urlset/>` is the
+  sitemap listing nothing, below). A
   `<sitemapindex>` is followed one level, to at most `SF_SITEMAPS_MAX` (5)
   sitemaps on its own origin; another host's is not asked. **Never a zero,
   never a giant**: a sitemap robots.txt closes, one not there (404 or 410:

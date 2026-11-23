@@ -4543,9 +4543,10 @@ def _sf_sitemap_page(url: str, origin: str) -> str:
 def _sf_sitemap_read(text: str, url: str) -> tuple[str, list[str]]:
     """(its root element, every <loc>'s text as written) of one sitemap, as an
     XML reader reads it - a commented-out <url> is not listed - or AtsError
-    for a page that is not a sitemap, a comment left open, or a <loc> holding
-    markup (CDATA): an address that cannot be read plainly is never a posting
-    silently lost."""
+    for a page that is not a sitemap, a comment left open, a <loc> holding
+    markup (CDATA), or a text that does not end with its root's close (cut
+    short): an address that cannot be read plainly, or one the cut took, is
+    never a posting silently lost."""
     kept, i = [], 0
     while True:
         j = text.find("<!--", i)
@@ -4568,6 +4569,20 @@ def _sf_sitemap_read(text: str, url: str) -> tuple[str, list[str]]:
     if len(_SM_LOC_TAG.findall(body)) != len(locs):
         raise AtsError(f"{url} lists an address this reader cannot read plainly (markup inside a "
                        f"<loc>), so its board is not read in part")
+    # A SITEMAP CUT SHORT IS NOT THE BOARD (blind review 10, 2026-11-23): it
+    # states no total to hold a read to, so its root's close is the only sign
+    # it came whole. Cut between two <url>s, or in a <lastmod>, the part before
+    # the cut read as every posting the board has, and nothing was said - an
+    # XML reader refuses that text. So the text must end with the root's
+    # close (or the root be empty, '<urlset/>'), only whitespace or a
+    # processing instruction after it - and so after every <loc>.
+    opened = re.compile(rf"<{root}\b[^<>]*>").search(body, first.start())
+    shut = list(re.finditer(rf"</{root}\s*>", body))
+    whole = (opened is not None and opened.group(0).endswith("/>") and not locs) or (
+        bool(shut) and not re.sub(r"<\?[^<>]*\?>", "", body[shut[-1].end():]).strip())
+    if not whole:
+        raise AtsError(f"{url} does not close its <{root}> after the last address it lists: it "
+                       f"came cut short, so its board is not read in part")
     return root, locs
 
 

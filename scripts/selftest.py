@@ -21530,8 +21530,8 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
     posting is left out and said; a 429, a 5xx or the network fails the
     whole read, the nightly way; up to SF_SLACK postings that do not read
     are left out and said, more fail the read; a sitemap robots.txt closes,
-    one that is not there, one with no posting and one with more than
-    SF_SITEMAP_MAX are errors. Never a zero, nothing under /services/,
+    one that is not there, one cut short (its root never closed), one with
+    no posting and one with more than SF_SITEMAP_MAX are errors. Never a zero, nothing under /services/,
     nothing off the origin, two requests a posting.
 
     THE PROBE. The site's name is each posting page's <title> after its last
@@ -21895,6 +21895,41 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             if exc is None or rows is not None or sent != [SEARCH, MAP] or words not in str(exc):
                 errors += fail(f"successfactors unify: {why} at /sitemap.xml was read as {rows!r}, not "
                                f"refused saying why: {exc}")
+        # A SITEMAP CUT SHORT IS NOT THE BOARD (blind review 10, 2026-11-23):
+        # it states no total, so the root's close is the only sign it came
+        # whole - cut between two <url>s, or in a <lastmod>, the part before
+        # the cut read as every posting, and nothing was said
+        ten = [plain(n, posting(f"Role {n}")) for n in range(1, 11)]
+        whole_map = sitemap([x(p[0]) for p in ten])
+        after_4 = whole_map[:[m.end() for m in re.finditer("</url>", whole_map)][3]]
+        in_lastmod = whole_map[:whole_map.index("<lastmod>", whole_map.index("Role-7")) + 7]
+        kid_ = SF + "/sitemap-1.xml"
+        kids_ = [kid_, SF + "/sitemap-2.xml", SF + "/sitemap-3.xml"]
+        index_ = sitemap([x(u) for u in kids_], index=True)
+        index_cut = index_[:index_.index("</sitemap>", index_.index("sitemap-2")) + len("</sitemap>")]
+        for smap, more, why in ((after_4, {}, "cut after its fourth posting"),
+                                (in_lastmod, {}, "cut inside a <lastmod>"),
+                                (whole_map.replace("</urlset>", "</urlset><url><loc>" + x(loc(11)) + "</loc>"
+                                                   "</url>"), {}, "with a posting after its close"),
+                                (index_cut, {u: sitemap([x(loc(k))]) for k, u in enumerate(kids_, 1)},
+                                 "an index cut after its second sitemap"),
+                                (sitemap([x(kid_)], index=True), {kid_: after_4},
+                                 "an index whose sitemap is cut short")):
+            rows, exc, err = go(site(ten, smap=smap, more=more))
+            if exc is None or rows is not None or "cut short" not in str(exc) \
+                    or any("/job/" in u for u in sent):
+                errors += fail(f"successfactors unify: a sitemap {why} read as {len(rows or [])} rows "
+                               f"(asked {[u[len(SF):] for u in sent]}), not refused as cut short: {exc}")
+        for smap, why in ((whole_map + "\n  \n", "whitespace after its close"),
+                          (whole_map + '<?xml-stylesheet href="x.xsl"?>\n', "an instruction after its close")):
+            rows, exc, err = go(site(ten, smap=smap))
+            if exc or len(rows or []) != 10:
+                errors += fail(f"successfactors unify: a whole sitemap with {why} did not read whole: "
+                               f"{len(rows or [])} rows, {exc}")
+        rows, exc, err = go(site([], smap='<?xml version="1.0"?><urlset xmlns="x"/>'))
+        if exc is None or "lists no posting" not in str(exc):
+            errors += fail(f"successfactors unify: an empty '<urlset/>' was not the sitemap listing no "
+                           f"posting: {rows!r} {exc}")
 
         # ---- a sitemap index: one level, its own origin only -------------------
         kids = [SF + "/sitemap-1.xml", SF + "/sitemap-2.xml"]
