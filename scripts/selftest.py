@@ -22141,6 +22141,58 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
             errors += fail(f"successfactors unify: a stale address hopping to a live posting kept its stale "
                            f"slug as the row's address, or the posting was asked twice "
                            f"({sent.count(live_hop)}): {[r['url'] for r in rows or []]} {exc}")
+        # AN ADDRESS THE READ HAS ALREADY BEEN TO IS NOT ASKED AGAIN, WHATEVER
+        # IT ANSWERED, and every address leading there is that one posting,
+        # counted once (blind review 11, 2026-11-23: only an open posting was
+        # kept, so a closed role listed three ways - its loc, a second loc
+        # hopping to the same page, that page itself - was asked three times,
+        # counted three closed, and 3 of 10 refused the board)
+        again_loc, landing_ = f"{SF}/job/Role-5/80000005/", hop(5)
+        eight = [plain(n, posting(f"Role {n}")) for n in range(1, 9)]
+        once_more = "2 of the postings its sitemap lists land where another of them had"
+        of_eight = "1 of the 8 postings its sitemap lists (10 addresses, 2 of them landing where another had)"
+        for answer, what_, words in (
+                (posting("Role 5"), "an open posting",
+                 "2 of the postings its sitemap lists are a requisition read listed again in the same language"),
+                (filled, "the site's page saying it has closed", of_eight + " answered as closed"),
+                ((404, None), "a 404", of_eight + " answered as closed"),
+                ((302, SF + "/search/?q="), "a hop to its list", of_eight + " answered as closed"),
+                (blocked, "a block page", of_eight + " did not read as postings"),
+                ((403, None), "a 403", of_eight + " did not read as postings")):
+            for first in (False, True):
+                written = [x(p_[0]) for p_ in eight] + [x(again_loc), x(landing_)]
+                if first:
+                    written = written[-1:] + written[:-1]        # (the page itself listed first)
+                rows, exc, err = go(site(eight, smap=sitemap(written),
+                                         more={again_loc: (302, landing_), landing_: answer}))
+                kept_ = sorted(nth(r["url"]) for r in rows or [])
+                if exc or kept_ != ([1, 2, 3, 4, 5, 6, 7, 8] if what_ == "an open posting" else [1, 2, 3, 4, 6, 7, 8]) \
+                        or [sent.count(u) for u in (loc(5), again_loc, landing_)] != [1, 1, 1] \
+                        or words not in err or (what_ != "an open posting") is not (once_more in err) \
+                        or SF + "/search/?q=" in sent:
+                    errors += fail(f"successfactors unify: {what_} listed three ways"
+                                   f"{', the page itself first' if first else ''} was asked "
+                                   f"{[sent.count(u) for u in (loc(5), again_loc, landing_)]} times, or not "
+                                   f"counted once ({err.strip()!r}): {kept_} {exc}")
+        # ...and every address on the way there, not the landing alone: a loc
+        # hopping to another loc already asked, or to a page another hop went
+        # through, is that posting again, and no address is asked twice
+        mid_, via_mid, via_loc, other_, mid2_, via_mid2 = (f"{SF}/job/Role-6/{90000000 + k}/"
+                                                           for k in (6, 16, 26, 36, 46, 56))
+        for answer, open_ in ((posting("Role 6"), True), ((404, None), False)):
+            # (loc 6 hops through mid_ to its page; via_mid hops to mid_,
+            # via_loc to loc 6; other_ hops through mid2_ to the page already
+            # had, and via_mid2 to mid2_)
+            rows, exc, err = go(site(eight[:4] + [plain(6, answer)], smap=sitemap(
+                [x(p_[0]) for p_ in eight[:4]] + [x(u) for u in (loc(6), via_mid, via_loc, other_, via_mid2)]),
+                more={loc(6): (302, mid_), mid_: (302, hop(6)), via_mid: (302, mid_), via_loc: (302, loc(6)),
+                      other_: (302, mid2_), mid2_: (302, hop(6)), via_mid2: (302, mid2_)}))
+            asked_ = [sent.count(u) for u in (loc(6), mid_, hop(6), via_mid, via_loc, other_, mid2_, via_mid2)]
+            if exc or sorted(nth(r["url"]) for r in rows or []) != ([1, 2, 3, 4, 6] if open_ else [1, 2, 3, 4]) \
+                    or asked_ != [1] * 8:
+                errors += fail(f"successfactors unify: {'an open' if open_ else 'a closed'} posting reached through "
+                               f"a loc and a hop on the way to it asked {asked_} of its addresses "
+                               f"({err.strip()!r}): {exc}")
 
         # ---- what is not a posting of this site is not asked ------------------
         not_ours = ["https://elsewhere.example/job/Role-32/70000032/", f"{SF}/go/Sales/4488801/", f"{SF}/",
@@ -22397,6 +22449,35 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
                     or (not ok and (rows is not None or "more than a quarter of it" not in str(exc))):
                 errors += fail(f"successfactors unify: {why} closed was {'refused' if exc else 'read'} "
                                f"({len(rows or [])} rows): {exc}")
+        # ...EACH POSTING COUNTED ONCE ON BOTH SIDES OF IT (blind review 11,
+        # 2026-11-23): an address landing where another had is that posting
+        # again, so a closed one listed many ways is one closed (above), and
+        # neither a closed one nor an open one listed many ways makes the rest
+        # a smaller share of the board
+        def listed_ways(n, k):
+            # (posting n listed k ways: its loc; for k > 1, k - 2 more locs
+            # hopping where it hops, and that page itself)
+            extra_ = [f"{SF}/job/Role-{n}/{80000000 + 100 * n + j}/" for j in range(max(0, k - 2))]
+            return [loc(n)] + (extra_ + [hop(n)] if k > 1 else []), {u: (302, hop(n)) for u in extra_}
+        for spec, ok, why in (
+                ([(n, 1, True) for n in range(1, 6)] + [(7, 10, False), (8, 1, False), (9, 1, False)], False,
+                 "3 of 8 postings closed, one of them listed ten ways"),
+                ([(n, 3, True) for n in (1, 2, 3)] + [(n, 1, False) for n in (7, 8, 9)], False,
+                 "3 of 6 postings closed, the open ones listed three ways each"),
+                ([(n, 2, True) for n in range(1, 13)] + [(n, 1, False) for n in range(21, 25)], True,
+                 "4 of 16 postings closed, the open ones listed twice each")):
+            written, more_ = [], {}
+            for n, k, open_ in spec:
+                at_, hops_ = listed_ways(n, k)
+                written += [x(u) for u in at_]
+                more_.update(hops_)
+            rows, exc, err = go(site([plain(n, posting(f"Role {n}") if open_ else (404, None))
+                                      for n, k, open_ in spec], smap=sitemap(written), more=more_))
+            if ok is not (exc is None) or (ok and len(rows or []) != sum(1 for s_ in spec if s_[2])) \
+                    or (not ok and (rows is not None or "more than a quarter of it" not in str(exc))):
+                errors += fail(f"successfactors unify: {why} was {'refused' if exc else 'read'} "
+                               f"({len(rows or [])} rows), not counted a posting once on both sides of the "
+                               f"share: {exc}")
         rows, exc, err = go(site([plain(n, filled) for n in (61, 62, 63)]))
         if exc is None or rows is not None or "none of the 3 postings" not in str(exc):
             errors += fail(f"successfactors unify: a sitemap every one of whose postings has closed read as "

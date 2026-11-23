@@ -3696,8 +3696,13 @@ review and the owner's word, through the wiring door.
   answering at its own sitemap address and its French copy hopping were
   published as two roles). Where copies in one language differ, the row is
   the address whose slug is the one the page answers at (a stale slug that
-  hops to the posting is not the row's), and an address the read has
-  already landed on is not asked again. **What a posting answers**: the
+  hops to the posting is not the row's). **An address the read has already
+  been to is not asked again**, whatever it answered there - a posting, a
+  closed one, a page showing none, one that did not read - and every
+  address leading to it is that one posting, counted once, open or closed
+  (blind review 11, 2026-11-23: only an open posting was kept, so a closed
+  role listed three ways was asked three times and counted three closed,
+  and 3 of 10 refused the board). **What a posting answers**: the
   site saying it closed (`successfactors_closed`, `successfactors_filled`)
   leaves it out,
   said on stderr - and so does a copy in another language than English that
@@ -3726,7 +3731,8 @@ review and the owner's word, through the wiring door.
   left out and said up to `SF_SLACK` (2) postings, and more is the board
   unreadable; every posting closed is an error, and
   so is more than a quarter of the sitemap closed in one read
-  (`SF_CLOSED_SHARE`, never fewer than `SF_SLACK`): not a day's postings
+  (`SF_CLOSED_SHARE`, never fewer than `SF_SLACK`), each posting counted
+  once on both sides of it: not a day's postings
   closing, but a site answering 404 for postings it has, a soft block or a
   sitemap long out of date (blind review 10: 130 of 131 answering 404
   published one row as the board).
