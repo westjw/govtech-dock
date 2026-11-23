@@ -35041,8 +35041,8 @@
     "category": "Fleet & Asset Mgmt",
     "description": "Masterworks capital program and construction management for DOTs, cities, water, and transit - exhibited at NACE 2026, ICMA 2026, DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.aurigo.com/careers"
+      "type": "successfactors",
+      "ref": "https://careers.aurigo.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -35177,7 +35177,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-23: careers.aurigo.com/search/?q=&sortColumn=referencedate&sortDirection=desc&searchResultView=LIST loads the board; the board names \"Aurigo Software Technologies\"; 16 postings read",
+    "board_owner": "Aurigo Software Technologies"
   },
   {
     "id": "faster",
@@ -69333,8 +69335,8 @@
     "category": "Fleet & Asset Mgmt",
     "description": "Hexagon spin-off: geospatial, EAM, project controls, physical security, and public-safety CAD (~7,200 staff) - exhibited at APCO 2026, APTA 2026, Illinois Chapter of APCO 2026, ACA Congress 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.octave.com/careers"
+      "type": "successfactors",
+      "ref": "https://careers.octave.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -69442,7 +69444,8 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "ats_note": "wired 2026-11-23 on the owner's word (2026-11-23: \"yes, build the sitemap reader for those three\", Aurigo, Esri Canada and Octave): octave.com/careers leads to careers.octave.com, its own SAP SuccessFactors Unify career site, read from its sitemap; the board names \"Octave\" in its postings' titles; 131 postings read (more than the door's probe reads whole)"
   },
   {
     "id": "govstream-ai",
@@ -183668,8 +183671,8 @@
     "category": "IT & AI Platforms",
     "description": "ArcGIS geographic information system software, apps, and implementation for Canadian governments, utilities, schools, and public agencies - exhibited at IAAO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.esri.ca/en-ca/about/careers/overview"
+      "type": "successfactors",
+      "ref": "https://careers.esri.ca"
     },
     "hiring": {
       "status": "Unknown",
@@ -183776,7 +183779,9 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "ats_note": "wired 2026-11-23 on the owner's word (2026-11-23: \"yes, build the sitemap reader for those three\", Aurigo, Esri Canada and Octave): esri.ca's careers page (/en-ca/about/careers/overview) leads to careers.esri.ca, its own SAP SuccessFactors Unify career site, read from its sitemap; the board calls itself \"esricanada\" (the site's tenant name); 16 postings read (32 sitemap entries, English and French copies of 16 requisitions)",
+    "board_owner": "esricanada"
   },
   {
     "id": "myoneflow",

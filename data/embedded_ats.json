@@ -4708,5 +4708,104 @@
    "read_at": "2026-11-22T21:33:27-05:00",
    "page": "https://www.ninjaone.com/careers/job/4512892009/?gh_jid=4512892009"
   }
+ },
+ {
+  "id": "jenoptik-smart-mobility",
+  "name": "Jenoptik Smart Mobility",
+  "was": "html",
+  "found": {
+   "type": "successfactors",
+   "ref": "https://careers.jenoptik.com"
+  },
+  "saw": "https://hcm55.sapsf.eu/verp/vmod_v1/ui/extlib/jquery_3.5.1/jquery.js",
+  "times": 1,
+  "verified": "177 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "\"JENOPTIK AG\" does not count as the board naming its employer (successfactors postings asked are written in more than one language (de, en): a role may be listed once in each, so the board's names are not stated for it whole): only a name the board states for itself, over the whole of it, says anything about \"Jenoptik Smart Mobility\" - never one read off a slug, an address, a host or the first page of a longer board; their own site also names other:jenoptik.us, a job platform the crawl cannot read, so which board they hire through today is not settled; https://careers.jenoptik.com loads the board",
+  "postings": 177,
+  "titles": [
+   "Service Technician",
+   "Working Student (w/m/d) Marketing",
+   "Assembler/Developer",
+   "Leiter Prozessentwicklung (w/m/d) - Schwerpunkt Produktion & Lean Management POS",
+   "Quality Engineer",
+   "Leiter Operational Quality Assurance 100% (m/w/d)",
+   "Advanced Specialist Electrical Design/Elektrokonstrukteur*in (w/m/d)",
+   "Expert*in f\u00fcr LiDAR Technik (w/m/d)"
+  ],
+  "filed": {
+   "by": "agent:coverage-successfactors-2026-11-23",
+   "on": "2026-11-23",
+   "at": "2026-11-23T03:55:52-05:00",
+   "read_at": "2026-11-23T03:54:45-05:00",
+   "page": "https://careers.jenoptik.com"
+  }
+ },
+ {
+  "id": "landis-gyr",
+  "name": "Landis+Gyr",
+  "was": "html",
+  "found": {
+   "type": "successfactors",
+   "ref": "https://careers.landisgyr.com"
+  },
+  "saw": "https://performancemanager5.successfactors.eu/verp/vmod_v1/ui/extlib/jquery_3.5.1/jquery.js",
+  "times": 1,
+  "verified": "63 posting(s) readable",
+  "board_calls_itself": null,
+  "identity": "unknown",
+  "identity_why": "\"Landis+Gyr\" does not count as the board naming its employer (successfactors search page title and description, and the hiringOrganization of 5 of its 63 postings; the rest were not asked, so these may not be every name the board states): only a name the board states for itself, over the whole of it, says anything about \"Landis+Gyr\" - never one read off a slug, an address, a host or the first page of a longer board; https://careers.landisgyr.com/go/View-All-Jobs-Available/4488801/?utm_source=CorpSite&utm_campaign=Corporate_Website loads the board",
+  "postings": 63,
+  "titles": [
+   "Staff Engineer, AI Development",
+   "Co-op - General Engineering Lab and Test Engineering",
+   "Technical Implementation Manager",
+   "PKI Engineer",
+   "Product Manager",
+   "Sr Data and Business Analyst",
+   "Premium Support Engineer III",
+   "Premium Support Engineer II"
+  ],
+  "filed": {
+   "by": "agent:coverage-successfactors-2026-11-23",
+   "on": "2026-11-23",
+   "at": "2026-11-23T03:55:52-05:00",
+   "read_at": "2026-11-23T03:54:54-05:00",
+   "page": "https://careers.landisgyr.com/go/View-All-Jobs-Available/4488801/?utm_source=CorpSite&utm_campaign=Corporate_Website"
+  }
+ },
+ {
+  "id": "vaisala",
+  "name": "Vaisala",
+  "was": "html",
+  "found": {
+   "type": "successfactors",
+   "ref": "https://careers.vaisala.com"
+  },
+  "saw": "j2w.init({\n\t\t\t\t\t\"cookiepolicy\"   : 3,\n\t\t\t\t\t\"useSSL\"         : true,\n\t\t\t\t\t\"isUsingSSL\"     : true,\n\t\t\t\t\t\"isResponsive\"   : true,\n\t\t\t\t\t\"categoryId\"     : 0,\n\t\t\t\t\t",
+  "times": 1,
+  "verified": "21 posting(s) readable",
+  "board_calls_itself": "vaisalaoyj",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"vaisalaoyj\", which is not \"Vaisala\": one name only contains the other, and a name inside another name is never taken for the same company; https://careers.vaisala.com/search/ loads the board",
+  "postings": 21,
+  "titles": [
+   "Application Sales Engineer",
+   "Senior Software Developer",
+   "Inside Sales Representative",
+   "Staff Engineer",
+   "Product Manager",
+   "Software Engineering Manager",
+   "Sales Manager - Northeast Region",
+   "Inside Sales Representative"
+  ],
+  "filed": {
+   "by": "agent:coverage-successfactors-2026-11-23",
+   "on": "2026-11-23",
+   "at": "2026-11-23T03:55:52-05:00",
+   "read_at": "2026-11-23T03:55:03-05:00",
+   "page": "https://careers.vaisala.com/search/"
+  }
  }
 ]
