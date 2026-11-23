@@ -2,7 +2,7 @@
  "_comment": "Written by scripts/workday_snapshot.py on the owner's machine; read by ats.fetch when GOVTECH_DOCK_WORKDAY_SNAPSHOT=1 (refresh.yml). Never edit by hand.",
  "boards": {
   "[\"adtran\", \"wd3\", \"ADTRAN\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -147,7 +147,7 @@
    ]
   },
   "[\"alteryx\", \"wd108\", \"AlteryxCareers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -271,6 +271,13 @@
     {
      "comp": null,
      "jd": "",
+     "location": "US - Remote",
+     "title": "Finance Analytics Engineering & Automation Manager",
+     "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/US---Remote/Manager--Finance-Analytics-Engineering---Automation_R12544"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "47 Locations",
      "title": "Remote SaaS Inside Sales Representative",
      "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/US---Remote/Inside-Sales-Representative_R12261"
@@ -281,13 +288,6 @@
      "location": "London, United Kingdom",
      "title": "Forward Deployed Engineer",
      "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/London-United-Kingdom/Forward-Deployed-Engineer_R12638"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "US - Remote",
-     "title": "Finance Analytics Engineering & Automation Manager",
-     "url": "https://alteryx.wd108.myworkdayjobs.com/en-US/AlteryxCareers/job/US---Remote/Manager--Finance-Analytics-Engineering---Automation_R12544"
     },
     {
      "comp": null,
@@ -376,7 +376,7 @@
    ]
   },
   "[\"americanfidelity\", \"wd5\", \"External\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -1646,7 +1646,7 @@
    ]
   },
   "[\"badgermeter\", \"wd5\", \"us_careersite\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -1875,7 +1875,7 @@
    ]
   },
   "[\"bentleysystems\", \"wd5\", \"bentley\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -1960,13 +1960,6 @@
      "location": "Pennsylvania, United States - Remote",
      "title": "License Compliance Specialist",
      "url": "https://bentleysystems.wd5.myworkdayjobs.com/en-US/bentley/job/Pennsylvania-United-States---Remote/License-Compliance-Specialist_R123-1"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "Spain - Remote",
-     "title": "Product Sales Engineer, Reality Modelling",
-     "url": "https://bentleysystems.wd5.myworkdayjobs.com/en-US/bentley/job/Spain---Remote/Product-Sales-Engineer--Reality-Modelling_RC77"
     },
     {
      "comp": null,
@@ -2062,7 +2055,7 @@
    ]
   },
   "[\"bostondynamics\", \"wd1\", \"Boston_Dynamics\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -2347,7 +2340,7 @@
    ]
   },
   "[\"cloudera\", \"wd5\", \"External_Career\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -2534,6 +2527,13 @@
     {
      "comp": null,
      "jd": "",
+     "location": "India > Mumbai > Remote",
+     "title": "Presales Solutions Engineer",
+     "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/India--Mumbai--Remote/Presales-Solutions-Engineer_261525"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "US-California-San Jose",
      "title": "Senior Product Manager - Unified Data Fabric",
      "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/US-California-San-Jose/Senior-Product-Manager---Unified-Data-Fabric_261180-2"
@@ -2576,7 +2576,7 @@
    ]
   },
   "[\"crowdstrike\", \"wd5\", \"crowdstrikecareers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -2703,13 +2703,6 @@
      "location": "Saudi Arabia - Remote",
      "title": "Regional Sales Manager, Saudi Arabia (Remote)",
      "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Saudi-Arabia---Remote/Regional-Sales-Manager--Saudi-Arabia--Remote-_R30850"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "UAE - Remote",
-     "title": "Regional Sales Manager - Egypt (Remote, UAE)",
-     "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/UAE---Remote/Regional-Sales-Manager---Egypt--Remote--UAE-_R30734"
     },
     {
      "comp": null,
@@ -3232,6 +3225,27 @@
     {
      "comp": null,
      "jd": "",
+     "location": "United Kingdom - Reading",
+     "title": "Corporate Sales Engineer",
+     "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/United-Kingdom---Reading/Corporate-Sales-Engineer_R30965"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Spain - Barcelona",
+     "title": "Corporate Sales Engineer",
+     "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Spain---Barcelona/Corporate-Sales-Engineer_R30966"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Romania - Bucharest",
+     "title": "Software Engineering Manager, Identity Protection (Hybrid, Bucharest)",
+     "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Romania---Bucharest/Software-Engineer---Cloud--Identity-Protection--Hybrid--ISR-_R29780"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "India - Pune",
      "title": "Sr Analyst 2, Deal Desk",
      "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/India---Pune/Sr-Analyst-2--Deal-Desk_R30995"
@@ -3323,13 +3337,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Romania - Bucharest",
-     "title": "Software Engineering Manager, Identity Protection (Hybrid, Bucharest)",
-     "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Romania---Bucharest/Software-Engineer---Cloud--Identity-Protection--Hybrid--ISR-_R29780"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Israel - Tel Aviv",
      "title": "Sr. Software Engineer - Cloud, Identity Protection (Hybrid, ISR)",
      "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Israel---Tel-Aviv/Sr-Software-Engineer---Cloud--Identity-Protection--Hybrid--ISR-_R29783"
@@ -3340,13 +3347,6 @@
      "location": "Canada - Remote QC",
      "title": "Manager, Sales Engineering (Gestionnaire, Ing\u00e9nierie des Ventes) (Remote, CAN)",
      "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Canada---Remote-QC/Manager--Sales-Engineering---Gestionnaire--Ingnierie-des-Ventes---Remote--CAN-_R30813"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "India - Mumbai",
-     "title": "Sales Development Representative, Mumbai",
-     "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/India---Mumbai/Sales-Development-Representative--Mumbai_R26595"
     },
     {
      "comp": null,
@@ -3389,13 +3389,6 @@
      "location": "Mexico - Remote",
      "title": "Professional Services Senior Project Manager (Remote, MEX)",
      "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/Mexico---Remote/Professional-Services-Senior-Project-Manager--Remote--MEX-_R30834"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "United Kingdom - Reading",
-     "title": "Sales Excellence Elite Intern - Summer 2027 (Reading, GBR)",
-     "url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/United-Kingdom---Reading/Sales-Excellence-Elite-Intern_R30656"
     },
     {
      "comp": null,
@@ -3680,7 +3673,7 @@
    ]
   },
   "[\"cubic\", \"wd1\", \"cubic_USA_careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -3874,7 +3867,7 @@
    ]
   },
   "[\"dataminr\", \"wd12\", \"Dataminr\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -3963,7 +3956,7 @@
    ]
   },
   "[\"dtn\", \"wd1\", \"DTN_Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -4045,7 +4038,7 @@
    ]
   },
   "[\"flir\", \"wd1\", \"flircareers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -4123,6 +4116,13 @@
      "location": "US - Field - California",
      "title": "North America Sales Manager - Regional Sales Manager",
      "url": "https://flir.wd1.myworkdayjobs.com/en-US/flircareers/job/US---Field---California/North-America-Sales-Manager---Regional-Sales-Manager_REQ37765"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "UK - Lincoln",
+     "title": "Business Development Associate",
+     "url": "https://flir.wd1.myworkdayjobs.com/en-US/flircareers/job/UK---Lincoln/Business-Development-Associate_REQ36208"
     },
     {
      "comp": null,
@@ -4550,6 +4550,13 @@
      "location": "US - Field - California",
      "title": "Sales Manager (US Market)",
      "url": "https://flir.wd1.myworkdayjobs.com/en-US/flircareers/job/US---Field---California/Sales-Manager--US-Market-_REQ34294"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "UK - Portchester",
+     "title": "Global Sales & Marketing Manager",
+     "url": "https://flir.wd1.myworkdayjobs.com/en-US/flircareers/job/UK---Portchester/Global-Sales---Marketing-Manager_REQ38153"
     },
     {
      "comp": null,
@@ -5191,7 +5198,7 @@
    ]
   },
   "[\"giro\", \"wd10\", \"GIRO\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -5350,7 +5357,7 @@
    ]
   },
   "[\"harriscomputer\", \"wd3\", \"1\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -5418,13 +5425,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Office - Swindon",
-     "title": "New Business Sales Executive",
-     "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Office---Swindon/New-Business-Sales-Executive_R0047303"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "51 Locations",
      "title": "Ingenious Med - Sales Executive",
      "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Michigan-United-States/Ingenious-Med---Sales-Executive_R0046440-5"
@@ -5435,6 +5435,13 @@
      "location": "Office - Wisconsin",
      "title": "Strategic Business Development Manager",
      "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Office---Wisconsin/Strategic-Business-Development-Manager_R0047489"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Office - Swindon",
+     "title": "New Business Development Lead",
+     "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Office---Swindon/New-Business-Sales-Executive_R0047303"
     },
     {
      "comp": null,
@@ -5505,6 +5512,13 @@
      "location": "Remote - Ontario",
      "title": "Sales Director, Canada",
      "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Remote---Ontario/Sales-Director--Canada_R0046602-4"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Illinois, United States",
+     "title": "Director of Professional Services",
+     "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Illinois-United-States/Director-of-Professional-Services_R0475255-1"
     },
     {
      "comp": null,
@@ -5992,13 +6006,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Remote Pune-Baroda, India",
-     "title": "Associate Technical Support Consultant",
-     "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Remote-Pune-Baroda-India/Associate-Technical-Support-Consultant_R0047476-1"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Ontario, Canada",
      "title": "Accounts Receivable Clerk",
      "url": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Ontario-Canada/Accounts-Receivable-Clerk_R0047419"
@@ -6055,7 +6062,7 @@
    ]
   },
   "[\"harriscomputer\", \"wd3\", \"Smartworks\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -6067,7 +6074,7 @@
    ]
   },
   "[\"itron\", \"wd5\", \"Itron\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -6289,7 +6296,7 @@
    ]
   },
   "[\"kyriba\", \"wd5\", \"Kyriba-Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -6413,7 +6420,7 @@
    ]
   },
   "[\"merative\", \"wd12\", \"External_Career_Site\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -6579,7 +6586,7 @@
    ]
   },
   "[\"mitel\", \"wd3\", \"mitelcareers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -6920,7 +6927,7 @@
    ]
   },
   "[\"modaxo\", \"wd3\", \"Modaxo\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -6967,7 +6974,7 @@
    ]
   },
   "[\"modaxo\", \"wd3\", \"TransTrack\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": []
   },
   "[\"motorolasolutions\", \"wd5\", \"Careers\"]": {
@@ -9601,7 +9608,7 @@
    ]
   },
   "[\"mrisoftware\", \"wd501\", \"External_CareerSite\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -9795,7 +9802,7 @@
    ]
   },
   "[\"muellerwaterproducts\", \"wd5\", \"Mueller\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -9968,7 +9975,7 @@
    ]
   },
   "[\"nelnet\", \"wd1\", \"MyNelnet\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -10092,7 +10099,7 @@
    ]
   },
   "[\"oclc\", \"wd1\", \"OCLC_Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -10167,7 +10174,7 @@
    ]
   },
   "[\"pluralsight\", \"wd1\", \"Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -10214,7 +10221,7 @@
    ]
   },
   "[\"sailpoint\", \"wd1\", \"SailPoint\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -10786,7 +10793,7 @@
    ]
   },
   "[\"sharecare\", \"wd1\", \"Sharecare_Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -10805,7 +10812,7 @@
    ]
   },
   "[\"smiinc\", \"wd108\", \"smicareers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -10817,7 +10824,7 @@
    ]
   },
   "[\"syniverse\", \"wd1\", \"SyniverseCareers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -10829,7 +10836,7 @@
    ]
   },
   "[\"thales\", \"wd3\", \"Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -11513,6 +11520,13 @@
     {
      "comp": null,
      "jd": "",
+     "location": "5 Locations",
+     "title": "Radar Sales Manager",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Reading/Sales-Manager_R0316741-1"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "Madrid Tres Cantos",
      "title": "Space systems / payloads Project manager",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Madrid-Tres-Cantos/Space-systems---payloads-Project-manager_R0341758-1"
@@ -11523,13 +11537,6 @@
      "location": "DITZINGEN SRA OME",
      "title": "Head of Discipline - Systems Engineering (m/f/d)",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/DITZINGEN-SRA-OME/Head-of-Discipline---Systems-Engineering--m-f-d-_R0347413-1"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "5 Locations",
-     "title": "Radar Sales Manager",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Reading/Sales-Manager_R0316741-1"
     },
     {
      "comp": null,
@@ -11555,13 +11562,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Tubize",
-     "title": "Service Center Team Leader",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Tubize/Service-Center-Team-Leader_R0343589"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "Melbourne",
      "title": "Internal Control Analyst",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Melbourne/Internal-Controller_R0331630-1"
@@ -11569,9 +11569,23 @@
     {
      "comp": null,
      "jd": "",
+     "location": "Tubize",
+     "title": "Service Center Team Leader",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Tubize/Service-Center-Team-Leader_R0343589"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "Amersfoort CDI",
      "title": "Manager, Cloud Infrastructure & DevOps",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Amersfoort-CDI/Manager--Cloud-Infrastructure---DevOps_R0326148"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Noida Berger Tower",
+     "title": "Associate Product Owner",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Noida-Berger-Tower/Associate-Product-Owner_R0342522-1"
     },
     {
      "comp": null,
@@ -11590,16 +11604,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "V\u00e9lizy",
-     "title": "Complex Systems Product Program Manager",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy/Responsable-de-programme-produit_R0340308-1"
+     "location": "Rydalmere",
+     "title": "Project Engineer",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Rydalmere/Project-Engineer_R0346392-1"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "Rydalmere",
-     "title": "Project Engineer",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Rydalmere/Project-Engineer_R0346392-1"
+     "location": "V\u00e9lizy",
+     "title": "Complex Systems Product Program Manager",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy/Responsable-de-programme-produit_R0340308-1"
     },
     {
      "comp": null,
@@ -11653,16 +11667,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Singapore",
-     "title": "Configuration Manager",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Singapore/Configuration-Engineer_R0330716"
+     "location": "Zaventem_EXC",
+     "title": "Medior PAM & Wallix Consultant",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Zaventem_EXC/Medior-PAM---Wallix-Consultant_R0347550-1"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "Zaventem_EXC",
-     "title": "Medior PAM & Wallix Consultant",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Zaventem_EXC/Medior-PAM---Wallix-Consultant_R0347550-1"
+     "location": "Singapore",
+     "title": "Configuration Manager",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Singapore/Configuration-Engineer_R0330716"
     },
     {
      "comp": null,
@@ -12213,6 +12227,13 @@
     {
      "comp": null,
      "jd": "",
+     "location": "G\u00e9menos",
+     "title": "Stage : AI Marketing & Agent Builder F/H",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Gmenos/Stage---Developpement-outils-IA-F-H_R0344911-1"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "V\u00e9lizy-Villacoublay",
      "title": "STAGE - Product Line Management d'un centre de commandement a\u00e9rien - F/H",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/STAGE---Product-Line-Management-d-un-centre-de-commandement-arien---F-H_R0342202"
@@ -12223,13 +12244,6 @@
      "location": "Gennevilliers",
      "title": "STAGE - Marketing Content - MILIPOL F/H",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Gennevilliers/STAGE---Marketing-Content---MILIPOL-F-H_R0342853"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "Cannes",
-     "title": "Stage \u2013 Assistant Commerce International et R\u00e9ponse aux Appels d\u2019Offres \u2013 March\u00e9 Spatial Institutionnel Europ\u00e9en \u2013 (H/F)",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Cannes/Stage---Assistant-Commerce-International-et-Rponse-aux-Appels-d-Offres---March-Spatial-Institutionnel-Europen----H-F-_R0344343"
     },
     {
      "comp": null,
@@ -12297,9 +12311,9 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Firenze",
-     "title": "Sales accounting & trade finance - Sostituzione di Maternit\u00e0 (Open also To Protected Categories, Law 68/99)",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Firenze/Sales-accounting---trade-finance---Sostituzione-di-Maternit--Open-also-To-Protected-Categories--Law-68-99-_R0341398"
+     "location": "V\u00e9lizy-Villacoublay",
+     "title": "STAGE - AI marketing & Community management \u2013 H/F",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/STAGE---AI-marketing---Community-management---H-F_R0342963-1"
     },
     {
      "comp": null,
@@ -12377,13 +12391,6 @@
      "location": "V\u00e9lizy-Villacoublay",
      "title": "Gestionnaire Financier des Contrats F/H",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/Gestionnaire-Financier-des-Contrats-F-H_R0341632-1"
-    },
-    {
-     "comp": null,
-     "jd": "",
-     "location": "V\u00e9lizy-Villacoublay",
-     "title": "CDD - Gestionnaire Financier des Contrats F/H",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/CDD---Gestionnaire-Financier-des-Contrats-F-H_R0341234-1"
     },
     {
      "comp": null,
@@ -12468,6 +12475,13 @@
      "location": "V\u00e9lizy-Villacoublay",
      "title": "Gestionnaire Financier de Contrats",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/Gestionnaire-Financier-de-Contrats_R0347952-2"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Meudon",
+     "title": "Gestionnaire Tr\u00e9sorerie et Back Office",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Meudon/Gestionnaire-Trsorerie-et-Back-Office_R0349022-1"
     },
     {
      "comp": null,
@@ -12580,6 +12594,13 @@
      "location": "DITZINGEN SRA OME",
      "title": "Director / Head of (m/f/d) Domain OME Germany",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/DITZINGEN-SRA-OME/Director---Head-of--m-f-d--Domain-OME-Germany_R0349000"
+    },
+    {
+     "comp": null,
+     "jd": "",
+     "location": "Singapore",
+     "title": "Technical Product Manager",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Singapore/Technical-Product-Manager_R0342334"
     },
     {
      "comp": null,
@@ -13004,9 +13025,9 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Toulouse",
-     "title": "Responsable technique",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Toulouse/Responsable-technique_R0318863-1"
+     "location": "Pa\u00e7o de Arcos - Q45",
+     "title": "Senior IT System Integrator",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Pao-de-Arcos---Q45/Senior-IT-System-Integrator_R0347075"
     },
     {
      "comp": null,
@@ -13284,16 +13305,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Stuttgart",
-     "title": "Dualer Student (m/w/d) Wirtschaftsinformatik-IMBIT",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Stuttgart/Dualer-Student--m-w-d--Wirtschaftsinformatik---Sales---Consulting_R0334082"
+     "location": "V\u00e9lizy-Villacoublay",
+     "title": "STAGE - Charg\u00e9 de communication et de gestion de contenu interne \u2013 H/F",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/STAGE---Charg-de-communication-et-de-gestion-de-contenu-interne---H-F_R0347084-1"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "V\u00e9lizy-Villacoublay",
-     "title": "STAGE - Charg\u00e9 de communication et de gestion de contenu interne \u2013 H/F",
-     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/STAGE---Charg-de-communication-et-de-gestion-de-contenu-interne---H-F_R0347084-1"
+     "location": "Stuttgart",
+     "title": "Dualer Student (m/w/d) Wirtschaftsinformatik-IMBIT",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Stuttgart/Dualer-Student--m-w-d--Wirtschaftsinformatik---Sales---Consulting_R0334082"
     },
     {
      "comp": null,
@@ -13522,6 +13543,13 @@
     {
      "comp": null,
      "jd": "",
+     "location": "La Fert\u00e9-Saint-Aubin",
+     "title": "Responsable Supply chain - F/H",
+     "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/La-Fert-Saint-Aubin/Responsable-Supply-chain---F-H_R0347845-1"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "V\u00e9lizy-Villacoublay",
      "title": "Ing\u00e9nieur Equipements Industriels Nouveaux Moyens F/H",
      "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Vlizy-Villacoublay/Ingnieur-Equipements-Industriels-Nouveaux-Moyens-F-H---CDD-10-mois_R0330401"
@@ -13564,7 +13592,7 @@
    ]
   },
   "[\"tricentis\", \"wd1\", \"Tricentis_Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -13772,7 +13800,7 @@
    ]
   },
   "[\"veritone\", \"wd1\", \"Veritone_Career_Site\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -13791,7 +13819,7 @@
    ]
   },
   "[\"volarisgroup\", \"wd3\", \"Intellicene\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -13810,7 +13838,7 @@
    ]
   },
   "[\"wastequip\", \"wd108\", \"Wastequip_Careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -13843,7 +13871,7 @@
    ]
   },
   "[\"wellsky\", \"wd1\", \"WellSkyCareers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -15085,7 +15113,7 @@
    ]
   },
   "[\"workiva\", \"wd503\", \"careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -15699,7 +15727,7 @@
    ]
   },
   "[\"xylem\", \"wd5\", \"xylem-careers\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -15816,16 +15844,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Warszawa",
-     "title": "Key Account Manager Poland Water Infrastructure",
-     "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Warszawa/WI-Transport-Key-Account-Manager-Poland_R50581"
+     "location": "Charlotte, North Carolina",
+     "title": "Senior Manager, Product Portfolio & Lifecycle Management,",
+     "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Charlotte-North-Carolina/Sr-Product-Lifecycle-Excellence-Manager_R51021"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "Charlotte, North Carolina",
-     "title": "Senior Manager, Product Portfolio & Lifecycle Management,",
-     "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Charlotte-North-Carolina/Sr-Product-Lifecycle-Excellence-Manager_R51021"
+     "location": "Warszawa",
+     "title": "Key Account Manager Poland Water Infrastructure",
+     "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Warszawa/WI-Transport-Key-Account-Manager-Poland_R50581"
     },
     {
      "comp": null,
@@ -16747,13 +16775,6 @@
     {
      "comp": null,
      "jd": "",
-     "location": "Noida",
-     "title": "Manager - Dewatering Sales",
-     "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Noida/Manager---Dewatering-Sales_R50518"
-    },
-    {
-     "comp": null,
-     "jd": "",
      "location": "5 Locations",
      "title": "Regional Sales Manager",
      "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Los-Angeles-California/Regional-Sales-Manager_R51175"
@@ -17384,7 +17405,7 @@
    ]
   },
   "[\"zoll\", \"wd5\", \"ZOLLMedicalCorp\"]": {
-   "read_at": "2026-11-23T04:40:02+00:00",
+   "read_at": "2026-11-23T12:14:19+00:00",
    "rows": [
     {
      "comp": null,
@@ -17501,16 +17522,16 @@
     {
      "comp": null,
      "jd": "",
-     "location": "US MA Wilmington",
-     "title": "Director, North America Distribution and Logistics",
-     "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/US-MA-Wilmington/Director--North-America-Distribution-and-Logistics_R20830"
+     "location": "9 Locations",
+     "title": "Market Specialist",
+     "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Richmond-VA/Market-Specialist_R20573"
     },
     {
      "comp": null,
      "jd": "",
-     "location": "9 Locations",
-     "title": "Market Specialist",
-     "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Richmond-VA/Market-Specialist_R20573"
+     "location": "US MA Wilmington",
+     "title": "Director, North America Distribution and Logistics",
+     "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/US-MA-Wilmington/Director--North-America-Distribution-and-Logistics_R20830"
     },
     {
      "comp": null,
@@ -18068,6 +18089,13 @@
     {
      "comp": null,
      "jd": "",
+     "location": "United Kingdom Remote",
+     "title": "Territory Manager Public Safety UK",
+     "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/United-Kingdom-Remote/Territory-Manager-Public-Safety-UK_R20908"
+    },
+    {
+     "comp": null,
+     "jd": "",
      "location": "Germany (Remote)",
      "title": "Customer Experience Partner, Hospital & EMS",
      "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Germany-Remote/Customer-Experience-Partner--Hospital---EMS_R20758"
@@ -18334,5 +18362,5 @@
    ]
   }
  },
- "generated": "2026-11-23T04:40:02+00:00"
+ "generated": "2026-11-23T12:14:19+00:00"
 }
