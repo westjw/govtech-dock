@@ -488,8 +488,11 @@ def paylocity_ids(ref) -> tuple:
 
 
 # A Paylocity board's own /jobs/All/<uuid> address, as its page states it
-# (verify_boards' `address`) and as the door keeps it: on a row it filed
-# (`page_ref`) and in the note of a record it wired (PAGE_WORDS). The SAME
+# (verify_boards' `address`) and as it is read on file: on a filed row
+# (`page_ref`) and in a record's note (PAGE_WORDS) - which the wiring door
+# no longer writes (review 10's repair, 2026-11-23: the address reached its
+# write only through the worklist, an edit planted one, and every door after
+# read it as on file; what is read is what a person put there). The SAME
 # grammar as the probe's: the tenant's name after the id may carry , ; ( ),
 # and a door that refused what the probe stated filed the row as "its own
 # page did not state" an address it had (seventh blind review, 2026-11-22).
@@ -653,11 +656,14 @@ def has_paylocity_id(refs) -> bool:
 
 def stated_addresses(companies: list | None, found: list | None) -> dict:
     """{company id: [the /All/ addresses its Paylocity board's own page was
-    found to state]}, from what is on file: the note the wiring door writes on
-    a record it wires (PAGE_WORDS), and the `page_ref` of the company's row in
-    Boards we found whose board is the board the record reads (a row the owner
-    accepted at the desk is wired as it was filed, its /List/ spelling
-    included). No request: what is on file."""
+    found to state]}, from what is on file: a record's note (PAGE_WORDS), and
+    the `page_ref` of the company's row in Boards we found whose board is the
+    board the record reads (a row the owner accepted at the desk is wired as
+    it was filed, its /List/ spelling included). No request: what is on file.
+    The wiring door writes neither (review 10's repair, 2026-11-23): the
+    address reached its write through the worklist alone, and an edit that
+    planted one was read here by every door after, which then never asked
+    the board's own page and wired the very board to a second company."""
     out = collections.defaultdict(list)
     by_id = {c.get("id"): c for c in companies or [] if isinstance(c, dict)}
     for cid, c in by_id.items():
@@ -917,7 +923,8 @@ def held_boards(standing: dict, stores: dict, by_id: dict, resolved: dict | None
 
     A PAYLOCITY BOARD is held under every address it is known by - its ref,
     and the /All/ address its own page was found to state where the hold
-    carries it (a door-filed row's `page_ref`, and a refusal of one) - and
+    carries it (a filed row's `page_ref`, and a refusal of one; the wiring
+    door files none since review 10's repair, 2026-11-23) - and
     every Paylocity hold is listed again in `paylocity`, with `type`, `ref`
     and `refs`, for the comparison keys cannot make (paylocity_relation): a
     bare /List/<n> hold and the same board's /All/<uuid>/<Tenant> share no
@@ -1302,7 +1309,9 @@ def file_found(rows: list, by: str, write: bool = True, force: bool = False,
     from. A Paylocity row may carry `page_ref`, the /All/ address the board's
     own page states (kept next to `found`, which stays the board as the site
     spelled it): every door after meets the board under it too, and the
-    wiring door reads it back for a record wired from the row. identity_why
+    wiring door reads it back for a record wired from the row - so the wiring
+    door files none (its worklist would be all that says it: wire_found.
+    queue_rows, review 10's repair, 2026-11-23). identity_why
     is the doubt in words: on a MISMATCH the desk prints
     it in red, on every other filed row it prints it as the reason the board
     was not wired. `name` and `was` are taken from the company record, not

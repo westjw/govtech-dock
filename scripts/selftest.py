@@ -41671,8 +41671,12 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
       - PAYLOCITY BOARDS MEET BY EVERY ADDRESS ON BOTH SIDES (sixth blind
         review, 2026-11-22): the owner's hold at a bare /List/ address, in
         each store, holds the board found at its /All/ address, in apply and
-        in the plan; what the door files and wires carries the address the
-        page stated, and later plans meet the board by it; another record's
+        in the plan; later plans meet the board by the address its page
+        states, asking that page - what the door files and wires carries no
+        address its worklist alone says, the plan's own answer and an edit
+        of page_ref with page_addresses alike (review 10's repair,
+        2026-11-23: a planted one was read as on file by every door after,
+        and a second company was wired to the board); another record's
         refusal or doubt at a bare /All/ address, and two companies naming
         one board by its two ids in a run or a worklist, are held; a board
         refused for the company itself at the address its page states is
@@ -42811,10 +42815,15 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                         (5, "was refused for Rsub 5 Co in Agent proposals")):
             expect(rows_r, f"rparent-{n}", "HOLD", must, "cannot be shown")
 
-    # (2) WHAT THE DOOR FILES CARRIES THE ADDRESS THE BOARD'S PAGE STATED, and
-    # every door after meets the board by it: Sub Co's /List/ find, held and
-    # filed; then Parent Co's own find at the /All/ address, by the row, then
-    # by his refusal of it - "the same board", never "cannot be compared"
+    # (2) WHAT THE DOOR FILES CARRIES NO ADDRESS ITS WORKLIST ALONE SAYS, and
+    # every door after still meets the board by the address its page states:
+    # Sub Co's /List/ find, held and filed - the row keeps the plan's answer,
+    # the queue row and the filed row do not (review 10's repair, 2026-11-23:
+    # page_ref and page_addresses are both worklist fields, and an edit of the
+    # two filed an address every door after read as on file: (16a)); then
+    # Parent Co's own find at the /All/ address, by the row, then by his
+    # refusal of it - the held board's own page asked by the plan
+    # (holds_by_page), "the same board", never "cannot be compared"
     LIST_S, ALL_S = plist(2116), pall(0x801, "Rs-Parent-Co")
     with _WiringBox([co("rs-sub", "Rs Sub Co"), co("rs-parent", "Rs Parent Co")],
                     {f"paylocity/{LIST_S}": (3, ["Rs Parent Co"]),
@@ -42824,20 +42833,25 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             "rs-sub": names("rs-sub", "paylocity", LIST_S)}), name="worklist-s1.json")
         r = (rows_s or {}).get("rs-sub") or {}
         if r.get("action") != "HOLD" or r.get("page_ref") != ALL_S \
-                or (r.get("queue_row") or {}).get("page_ref") != ALL_S:
+                or "page_ref" in (r.get("queue_row") or {"page_ref": None}):
             errors += fail(f"rs-sub: a /List/ find whose page states its /All/ address was not "
-                           f"held carrying that address on its row: {r!r:.400}")
+                           f"held carrying that address on its row, and on its row alone: "
+                           f"{r!r:.400}")
         code, text, look_s = box.look(wl_s)
         box.write(wl_s, look_s)
         filed_s = next((x for x in json.loads((box.tmp / bp.FOUND.name).read_text())
-                        if x["id"] == "rs-sub"), {})
-        if filed_s.get("page_ref") != ALL_S or filed_s.get("found", {}).get("ref") != LIST_S:
-            errors += fail(f"the row filed for rs-sub does not keep the address its board's page "
-                           f"states next to the site's spelling: {filed_s!r:.400}")
+                        if x["id"] == "rs-sub"), {"page_ref": None})
+        if "page_ref" in filed_s or filed_s.get("found", {}).get("ref") != LIST_S:
+            errors += fail(f"the row filed for rs-sub carries an address its worklist alone says, "
+                           f"or not the board as the site spelled it: {filed_s!r:.400}")
         finds = {"rs-parent": names("rs-parent", "paylocity", ALL_S)}
+        box.probed.clear()
         code, text, _wl, rows_s = box.plan(_wb_results(finds), name="worklist-s2.json")
         expect(rows_s, "rs-parent", "HOLD", "is in the owner's queue (Boards we found) for Rs Sub "
                                             "Co", never=("cannot be shown",))
+        if box.probed.count(f"paylocity/{LIST_S}") != 1:
+            errors += fail(f"the held board at a bare /List/ address was not asked once for its "
+                           f"page's /All/ address: probed {box.probed}")
         admin.act_board_proposal({"id": "rs-sub", "accept": False, "by": "owner",
                                   "why": "Rs Parent Co's board, not this company's"})
         code, text, _wl, rows_s = box.plan(_wb_results(finds), name="worklist-s3.json")
@@ -42846,10 +42860,13 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                never=("cannot be shown",))
 
     # (3) A RECORD WIRED AT A BARE /List/ ADDRESS IS STILL COMPARED with every
-    # /All/ address: the door writes the address its page stated into the
-    # note, and a row accepted at the desk carries it on the row - the same
-    # board is held as on file, and another board is not held at all (sixth
-    # blind review, 2026-11-22: every later /All/ find was "cannot be compared")
+    # /All/ address: its board's own page is asked by the plan that needs it,
+    # once (records_by_page), and a row accepted at the desk is read by the
+    # address on the row, where a person put one there - the same board is
+    # held as on file, and another board is not held at all (sixth blind
+    # review, 2026-11-22: every later /All/ find was "cannot be compared").
+    # The wired record's note says no address: the plan's answer reached the
+    # write through the worklist alone (review 10's repair, 2026-11-23: (16a))
     LIST_W, ALL_W = plist(2117), pall(0x802, "Rw-Co")
     LIST_D, ALL_D = plist(2118), pall(0x803, "Da-Co")
     ALL_O = pall(0x804, "Ro-Co")
@@ -42870,9 +42887,14 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         box.write(wl_w, look_w)
         rec = box.record("rw-co")
         if (rec.get("ats") or {}).get("ref") != LIST_W \
-                or f"its own page states its address is {ALL_W}" not in str(rec.get("ats_note")):
-            errors += fail(f"rw-co: a /List/ board wired without the address its page stated in "
-                           f"its note: {rec.get('ats')!r} {rec.get('ats_note')!r}")
+                or not str(rec.get("ats_note") or "").startswith("wired ") \
+                or bp.PAGE_WORDS.search(str(rec.get("ats_note"))) \
+                or "rw-co" in bp.stated_addresses(
+                    json.loads((box.tmp / "companies.json").read_text()), []):
+            errors += fail(f"rw-co: a /List/ board was not wired, or was wired with an address "
+                           f"its worklist alone says in its note: {rec.get('ats')!r} "
+                           f"{rec.get('ats_note')!r}")
+        box.probed.clear()
         code, text, _wl, rows_w = box.plan(_wb_results({
             "rw-dup": names("rw-dup", "paylocity", ALL_W),
             "ro-co": names("ro-co", "paylocity", ALL_O),
@@ -42882,6 +42904,9 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         expect(rows_w, "da-dup", "HOLD", f"paylocity/{ALL_D} is already on file as the board of "
                                          f"Da Co")
         expect(rows_w, "ro-co", "WIRE")
+        if box.probed.count(f"paylocity/{LIST_W}") != 1:
+            errors += fail(f"the record wired at a bare /List/ address was not asked once for its "
+                           f"page's /All/ address: probed {box.probed}")
 
     # (4) ANOTHER RECORD'S REFUSAL, OR A READER'S DOUBT, AT A BARE /All/ ADDRESS,
     # and two companies naming one board by its two ids in one run, the page
@@ -44069,9 +44094,11 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                    f"{text[-500:]}")
 
     # (13) A STATED ADDRESS WHOSE TENANT'S NAME CARRIES , ; ( ) is kept as the
-    # probe states it - compared by its id, wired, and read back from the note
-    # whole (seventh blind review, 2026-11-22: the door refused it, and the row
-    # said the page "did not state" it)
+    # probe states it - compared by its id, wired, and printed whole in the
+    # look as the address apply leans on - and one in a note a person put on
+    # file is read back whole (seventh blind review, 2026-11-22: the door
+    # refused it, and the row said the page "did not state" it). The door's own
+    # note says no address (review 10's repair, 2026-11-23: (16a))
     LIST_P, ALL_P = plist(2140, "Acme-US-Inc"), pall(0x942, "Acme-(US),-Inc;")
     with _WiringBox([co("acme-us", "Acme US"),
                      co("bare-rec", "Bare Rec", ats={"type": "paylocity", "ref": pall(0x943)})],
@@ -44085,11 +44112,22 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                            f"kept: {r13.get('action')} {r13.get('page_ref')!r} "
                            f"{_wb_words(r13)[:300]!r}")
         code, text, look13 = box.look(wl_p13)
+        if f"leans on what the plan was told: its own page states its address is {ALL_P}\n" \
+                not in text:
+            errors += fail(f"the look does not print whole the address apply leans on: "
+                           f"{text[:600]!r}")
         box.write(wl_p13, look13)
-        back = bp.stated_addresses(json.loads((box.tmp / "companies.json").read_text()), [])
-        if back.get("acme-us") != [ALL_P]:
-            errors += fail(f"the address written in the wired record's note was not read back "
-                           f"whole: {back.get('acme-us')!r}")
+        cs13 = json.loads((box.tmp / "companies.json").read_text())
+        rec13 = next(c_ for c_ in cs13 if c_["id"] == "acme-us")
+        by_hand13 = [dict(rec13, ats_note=f"set by hand: its own page states its address is "
+                                          f"{ALL_P}; checked on their careers page")]
+        if (rec13.get("ats") or {}).get("ref") != LIST_P \
+                or bp.stated_addresses(cs13, []).get("acme-us") \
+                or bp.stated_addresses(by_hand13, []).get("acme-us") != [ALL_P]:
+            errors += fail(f"acme-us was not wired, its note says an address its worklist alone "
+                           f"carried, or one a person put in a note was not read back whole: "
+                           f"{rec13.get('ats')!r} {rec13.get('ats_note')!r} "
+                           f"{bp.stated_addresses(by_hand13, [])!r}")
     # ...and an address the probe states in a form the door does not keep (a
     # query after it) is said as that, never "did not state"
     LIST_Q2 = plist(2141, "Qry-Co")
@@ -44308,6 +44346,84 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 or not filed_y3:
             errors += fail(f"a held row's page_ref the plan never recorded was filed for the "
                            f"owner: {filed_y3!r:.300}")
+
+    # (16a) AN ADDRESS ONLY THE WORKLIST SAYS IS PUT ON FILE NOWHERE, even where
+    # the worklist's own record of what pages stated (page_addresses) agrees
+    # with the row (review 10's repair, 2026-11-23). A WIRE row's page_ref and
+    # page_addresses, set together by an edit, went into the wired record's
+    # note ("its own page states its address is ..."), and a held row's
+    # queue_row.page_ref with page_addresses onto the row filed for him; every
+    # door after read each as on file, so the next plan, unedited, never asked
+    # that bare /List/ board's own page (a record or a hold with an /All/ id is
+    # not asked), read the very board found for another company as "apart",
+    # and wired it to a second record (Wa Co's duplicate) and past the owner's
+    # unruled row of it (Wb Co's). The look still prints what this write leans
+    # on; the note and the filed row say no address; and the next plan asks
+    # each board's own page, once, and holds both, as it does after a worklist
+    # nobody edited ((2), (3))
+    LIST_WA, REAL_WA, FAKE_WA = plist(2171), pall(0xa71, "Wa-Co"), pall(0xa72)
+    LIST_WB, REAL_WB, FAKE_WB = plist(2172), pall(0xa73, "Wb-Parent-Co"), pall(0xa74)
+    with _WiringBox([co("wa-co", "Wa Co"), co("wa-dup", "Wa Co Inc", also_known_as=["Wa Co"]),
+                     co("wb-co", "Wb Co"), co("wb-parent", "Wb Parent Co")],
+                    {f"paylocity/{LIST_WA}": (3, ["Wa Co"]), f"paylocity/{REAL_WA}": (3, ["Wa Co"]),
+                     f"paylocity/{LIST_WB}": (3, ["Wb Parent Co"]),
+                     f"paylocity/{REAL_WB}": (3, ["Wb Parent Co"])},
+                    says={f"paylocity/{LIST_WA}": {"address": REAL_WA},
+                          f"paylocity/{LIST_WB}": {"address": REAL_WB}}) as box:
+        code, text, wl_16a, rows_16a = box.plan(_wb_results({
+            "wa-co": names("wa-co", "paylocity", LIST_WA),
+            "wb-co": names("wb-co", "paylocity", LIST_WB)}), name="worklist-16a.json")
+        expect(rows_16a, "wa-co", "WIRE")
+        expect(rows_16a, "wb-co", "HOLD", 'the board names "Wb Parent Co"')
+        SP_WA, SP_WB = wf.spelling("paylocity", LIST_WA), wf.spelling("paylocity", LIST_WB)
+
+        def plant16a(rows_, doc):
+            rows_["wa-co"]["page_ref"] = FAKE_WA                    # worklist field one
+            if isinstance(rows_["wb-co"].get("queue_row"), dict):
+                rows_["wb-co"]["queue_row"]["page_ref"] = FAKE_WB   # ...on the held row
+            doc["page_addresses"].update({SP_WA: FAKE_WA, SP_WB: FAKE_WB})   # field two
+        wl_16a_e = box.edited(wl_16a, "worklist-16a-planted.json", plant16a)
+        code, text, look_16a = box.look(wl_16a_e)
+        if "WIRE 1 " not in text or "HOLD 1 " not in text \
+                or f"leans on what the plan was told: its own page states its address is " \
+                   f"{FAKE_WA}" not in text \
+                or "files with it what its own page states" in text:
+            errors += fail(f"apply, for a worklist whose page_ref and page_addresses were edited "
+                           f"together, did not print what this write leans on, or said it files "
+                           f"an address for the owner: {text[-700:]!r}")
+        code, text = box.write(wl_16a_e, look_16a)
+        cs_16a = json.loads((box.tmp / "companies.json").read_text())
+        found_16a = json.loads((box.tmp / bp.FOUND.name).read_text())
+        rec_wa = next(c_ for c_ in cs_16a if c_["id"] == "wa-co")
+        filed_wb = next((x for x in found_16a if x.get("id") == "wb-co"), {"page_ref": None})
+        if code != 0 or (rec_wa.get("ats") or {}).get("ref") != LIST_WA \
+                or bp.PAGE_WORDS.search(str(rec_wa.get("ats_note"))) or "page_ref" in filed_wb \
+                or bp.stated_addresses(cs_16a, found_16a):
+            errors += fail(f"the write put on file an address only its worklist says (exit "
+                           f"{code}): note {rec_wa.get('ats_note')!r}, filed row "
+                           f"{filed_wb.get('page_ref')!r}, read back "
+                           f"{bp.stated_addresses(cs_16a, found_16a)!r}: {text[-300:]!r}")
+        # the next plan, nobody's edit in it: the duplicate's own site and the
+        # parent's own site name the very boards, by their /All/ addresses
+        box.probed.clear()
+        code, text, wl_16b, rows_16b = box.plan(_wb_results({
+            "wa-dup": names("wa-dup", "paylocity", REAL_WA),
+            "wb-parent": names("wb-parent", "paylocity", REAL_WB)}),
+            name="worklist-16a-next.json")
+        expect(rows_16b, "wa-dup", "HOLD", f"paylocity/{REAL_WA} is already on file as the board "
+                                           f"of Wa Co")
+        expect(rows_16b, "wb-parent", "HOLD", f"paylocity/{LIST_WB} is in the owner's queue "
+                                              f"(Boards we found) for Wb Co")
+        if box.probed.count(f"paylocity/{LIST_WA}") != 1 \
+                or box.probed.count(f"paylocity/{LIST_WB}") != 1:
+            errors += fail(f"the next plan did not ask once the page of each bare /List/ board "
+                           f"on file: probed {box.probed}")
+        code, text, look_16b = box.look(wl_16b)
+        code, text = box.write(wl_16b, look_16b)
+        if code != 0 or any((box.record(cid).get("ats") or {}).get("type") != "html"
+                            for cid in ("wa-dup", "wb-parent")):
+            errors += fail(f"the next write wired the very board to a second company, or past "
+                           f"the owner's unruled row of it: {text[-400:]!r}")
 
     # (17) A HOLD AT A BARE /List/ ADDRESS IS ASKED FOR ITS PAGE'S /All/ ADDRESS,
     # once, for the finds consider compares - the twin of a record's (12) - and

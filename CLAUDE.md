@@ -3030,14 +3030,23 @@ round.
   company itself at the address its own page states came back to his card;
   now it is SKIP refused, "this board was refused") - and `page_said` says
   what a page that stated nothing said). The board is known by that address
-  everywhere after, and so is what the door WRITES of it: `page_ref` on the
-  row for apply, on the row it files in Boards we found next to `found`
-  (file_found keeps it; refusals, held_boards and the waiting rows read it),
-  and in the note of a record it wires ("its own page states its address is
-  ...", read back by `board_proposals.stated_addresses`, as is the
-  `page_ref` of a row the owner accepted at the desk) - a record wired at a
-  bare /List/ address was compared with nothing, and every later /All/ find
-  of any board was held (sixth blind review, 2026-11-22). Paylocity boards
+  for the rest of the run, and in apply by `page_ref` on the row (leaned on
+  only as below, and printed in the look) - and the door puts it ON FILE
+  NOWHERE: not in the note of a record it wires, not on the row it files in
+  Boards we found (`wire_found.note_for`, `queue_rows`; review 10's repair,
+  2026-11-23: `page_ref` and `page_addresses` are both worklist fields, and
+  an edit setting both put an /All/ address in a bare /List/ record's note,
+  or on the row filed for him, which every door after read as on file -
+  `board_proposals.stated_addresses`, held_boards, the refusals, the
+  waiting rows - so the next plan, unedited, never asked that board's own
+  page, read the very board found for another company as "apart", and wired
+  it to a second record, or past the owner's unruled row of it). A record or
+  a hold at a bare /List/ address is compared by asking its own page, in the
+  plan that needs it (below: a record wired at a bare /List/ address was
+  compared with nothing, and every later /All/ find of any board was held,
+  sixth blind review, 2026-11-22); such words a person put on file - "its
+  own page states its address is ..." in a note, a row's `page_ref` - are
+  still read, by every door. Paylocity boards
   meet BY EVERY ADDRESS ON BOTH SIDES, not by keys
   (`board_proposals.paylocity_relation`: same, tenant, unknown, apart) -
   records on file, the owner's holds under any id, this company's own
@@ -3069,7 +3078,8 @@ round.
   find's own page states (`page_ref` and `page_addresses` are both worklist
   fields: review 10, 2026-11-23, an edit setting both to the waiting row's
   own address waived the company's own unruled row, it dropped off his
-  queue, and the note planted that address for every door after). What the
+  queue, and the note planted that address for every door after - which no
+  note does now: above). What the
   worklist says may still HOLD the row - ids it shows apart, or not shown
   one - and never clears it: the row passes only where an id agrees both by
   the board's own ref and by every address the row gives it. So the
@@ -3096,10 +3106,11 @@ round.
   (`leans_on`); apply leans on such an address only for the row that names
   it, only where both say it, and while the record still reads that board,
   and the look prints every address it leans on, the row's own `page_ref`
-  included - a `page_ref` the plan did not record leaves the row alone
-  (`evidence`) and is never filed on a held row (eighth blind review,
-  2026-11-22: `record_addresses` and a row's `page_ref` were taken on the
-  worklist's word, and an added address cleared a record and a proposal),
+  included, which this write leans on and nothing files (above) - a
+  `page_ref` the plan did not record leaves the row alone (`evidence`;
+  eighth blind review, 2026-11-22: `record_addresses` and a row's
+  `page_ref` were taken on the worklist's word, and an added address
+  cleared a record and a proposal),
   and so does one on a board already named by its /All/ id and its
   tenant's name, whose page the plan never asks (review 10, 2026-11-23:
   edited in with `page_addresses`, it put a second /All/ id on the record);
@@ -3242,7 +3253,8 @@ round.
   form. The note quotes the page check 1 names and the name check 2 quotes;
   a row whose quoted words would put into it a Workable pair
   (`board_proposals.ACCOUNT_WORDS`) or a Paylocity address (`PAGE_WORDS`)
-  beyond the door's own part of the note is left alone
+  beyond the door's own part of the note - which says no Paylocity address
+  at all (above) - is left alone
   (`wire_found.note_apart`, `evidence`; review 10, 2026-11-23: an edited
   check_2.name, or a page on their own host carrying those words, planted a
   pair on a greenhouse record and an address on a Paylocity one, which every
@@ -3360,7 +3372,9 @@ round.
   2026-11-22): eight door findings and ten unpinned rules, fixed and pinned
   on the same branch - Paylocity boards meet by every address on both
   sides (holds, twins, apply), what the door writes carries the address the
-  page stated, the pre-pass asks what consider would read, one website is
+  page stated (undone by review 10's repair, 2026-11-23: an address only the
+  worklist carries is put on file nowhere, and the page is asked instead),
+  the pre-pass asks what consider would read, one website is
   one address, a dismissed Duplicates pair is two companies, and
   wire_embedded's triage asks the door's holders questions. Seventh (of
   460b9171, 2026-11-22): six door findings fixed and pinned on the same
