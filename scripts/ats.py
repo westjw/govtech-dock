@@ -4896,13 +4896,13 @@ def successfactors_unify_requisition(page: str, landed: str, origin: str) -> tup
     of the address the page states of itself (_sf_stated_requisition) - so a
     copy that answers at its own sitemap address is paired too (blind review
     10, 2026-11-23: an English copy answering in place and its French copy
-    hopping were published as two roles). Where the two disagree, the page
-    does not say plainly which requisition it is, and it is none: its copies
-    are not paired on a guess. The reader pairs copies by this, and the
-    probe asks it of the copies in each language. A page stating its own
+    hopping were published as two roles). Where the two name different
+    numbers, the page does not say plainly which requisition it is, and it
+    is none: its copies are not paired on a guess. A page stating its own
     number in another locale (a translation's canonical naming the English
-    copy) states the same requisition: the locale is the copy's, the number
-    the requisition's, and the copy is the address it came from."""
+    copy) states the same requisition: the number is the requisition's, the
+    locale the copy's, the address it came from. The reader pairs copies by
+    this, and the probe asks it of the copies in each language."""
     hopped, stated = _sf_requisition(landed), _sf_stated_requisition(page, origin)
     if hopped and stated and hopped[0] != stated[0]:
         return None
