@@ -30985,6 +30985,10 @@ def check_a_board_counts_only_when_their_own_site_points_to_it() -> int:
         ats._get, ats._page, ats._post_json = keep
     for markup in SITE_BOARD_NOT_ONE:
         found, _ = fsb.sightings(markup, here, home_site)
+        # (a Paylocity posting is no board: it is a candidate of its own, whose
+        # board the wiring door asks its page for - pinned by
+        # check_a_posting_their_site_links_is_a_candidate_not_a_board)
+        found = [f for f in found if f["type"] != fsb.POSTING]
         if found:
             errors += fail(f"find_site_boards reads {[(f['type'], f['ref'], f['element']) for f in found]} "
                            f"out of markup that names no board: {markup[:70]!r}")

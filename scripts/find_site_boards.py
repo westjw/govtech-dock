@@ -94,6 +94,15 @@ address whose answer pointed at the board, and `saw` is where it pointed.
 For an off_site row it is the address the reference was really seen on: the
 other site's page, or the other site's address that did the redirecting.
 
+A POSTING IS NOT A BOARD (owner, 2026-11-23). A link to ONE job on Paylocity
+(recruiting.paylocity.com/recruiting/jobs/Details/<id>...) names no board -
+its address's tenant segment is not the board's (PlayMetrics' postings say
+EMINOR-INC) - so it is a candidate of type `paylocity-posting`, its ref the
+posting's own address, one row per posting a page links (a careers page
+linking twelve postings gives twelve, so the door can try another when one
+has closed). No fetcher takes that type: the wiring door asks the posting's
+page which board it names, and that is the find. Nothing here asks it.
+
 `generated` is when the OLDEST record in the file was read. A run that picks
 a file up again keeps the first run's stamp, so nothing in the file is older
 than its date says.
@@ -715,6 +724,34 @@ BOARDS: list[_Pat] = (
                          r"(?![A-Za-z0-9_-])"),
     ])
 
+# A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
+# and that posting's page names exactly one board" counts as check 1). Ten
+# companies' careers pages link single Paylocity postings -
+# /recruiting/jobs/Details/<id>/<Tenant>/<Title>, or /Recruiting/Jobs/Details/
+# <id> bare - and never their board. The address names no board: its tenant
+# segment is not the board's tenant (PlayMetrics' postings say EMINOR-INC, its
+# board is PlayMetrics), and Paylocity serves the posting by its id alone. So
+# it is a candidate that says it is a posting (POSTING), its ref the posting's
+# own address on Paylocity's host as the page wrote its path (no query, no
+# fragment), one per posting id. No fetcher takes it and this file asks
+# nothing of it: the wiring door asks the posting's page which board it names
+# (wire_found.resolved_by_posting). KEPT APART FROM BOARDS, every pattern of
+# which names a board some fetcher reads.
+POSTING = "paylocity-posting"
+POSTING_HINTS = {POSTING: ("paylocity.com",)}
+
+
+def _paylocity_posting(m):
+    path = m.group(1).rstrip(".")
+    return f"https://recruiting.paylocity.com/{path}", m.group(2)
+
+
+POSTINGS: list[_Pat] = [
+    _here(POSTING, r"(?<![a-z0-9.-])recruiting\.paylocity\.com/(recruiting/jobs/details/"
+                   r"([0-9]{1,12})(?:/[A-Za-z0-9_.~%-]{1,200}){0,2})(?![A-Za-z0-9_.~%-])",
+          _paylocity_posting),
+]
+
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
 # is worth writing next is a question the repo could not answer: no tool
 # recorded what a careers page actually loads. Also here: forms of platforms
@@ -914,16 +951,16 @@ _READABLE_HOST = re.compile(
 def find_refs(text: str) -> tuple[list[tuple], list[tuple]]:
     """Every board, and every platform nothing reads, that `text` names.
 
-    Boards come back as (start, end, kind, ref, key); the rest as (start, end,
-    vendor). WHERE TWO PATTERNS OF ONE KIND OVERLAP, THE ONE THAT STARTS FIRST
+    Boards come back as (start, end, kind, ref, key) - a Paylocity posting
+    among them, of kind POSTING; the rest as (start, end, vendor). WHERE TWO PATTERNS OF ONE KIND OVERLAP, THE ONE THAT STARTS FIRST
     AND RUNS LONGEST STANDS: "jobs.ashbyhq.com/flock%20safety" is one board
     called "flock safety", not also one called "flock", and a page that names
     a board once is counted once however many tables know its form.
     """
     low = text.lower()
     hits = []
-    for p in BOARDS:
-        if not any(h in low for h in HINTS[p.kind]):
+    for p in BOARDS + POSTINGS:
+        if not any(h in low for h in HINTS.get(p.kind) or POSTING_HINTS[p.kind]):
             continue
         for m in p.rx.finditer(text):
             if p.kind in ("greenhouse", "lever") and _other_region(text, m):
@@ -3079,7 +3116,9 @@ def summary(companies: dict) -> list[str]:
     """Counts only. The Actions log is public, and a company's name beside
     "blocked" or "left for another site" is not ours to publish there."""
     n = len(companies)
-    pointed = [r for r in companies.values() if r["candidates"]]
+    # (a posting is not a board: counted apart, never as a platform pointed to)
+    pointed = [r for r in companies.values() if any(c["type"] != POSTING for c in r["candidates"])]
+    posted = [r for r in companies.values() if any(c["type"] == POSTING for c in r["candidates"])]
     unread = [r for r in companies.values()
               if not any(p["status"] == "read" for p in r["pages"])]
     left = [r for r in companies.values() if r["left_site"]]
@@ -3088,7 +3127,7 @@ def summary(companies: dict) -> list[str]:
     doubted = [r for r in nothing if r["off_site"]]
     by_kind = collections.Counter()
     for r in pointed:
-        for kind in {c["type"] for c in r["candidates"]}:
+        for kind in {c["type"] for c in r["candidates"]} - {POSTING}:
             by_kind[kind] += 1
     # a tenant form or a no-board form belongs to a platform we read: it is
     # not one with "no reader" (third review's Jobvite reviewer, 2026-11-21)
@@ -3098,6 +3137,8 @@ def summary(companies: dict) -> list[str]:
             (by_form if v in TENANT_FORMS or v in _NO_BOARD_IN_IT else by_vendor)[v] += 1
     out = [f"{n} companies in the file",
            f"  {len(pointed)} whose own site points to a board we can read",
+           f"  {len(posted)} whose own site links a Paylocity posting (the wiring door asks "
+           f"the posting's page which board it names)",
            f"  {len(nothing)} read, no readable board named as their own"
            + (f" ({len(doubted)} of them with one named where it is not theirs to "
               f"claim: off_site)" if doubted else ""),
