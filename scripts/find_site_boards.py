@@ -654,9 +654,12 @@ def _jobvite_account(m):
 
 def _trinethire_board(m):
     # '<number>-<slug>' as the page wrote it, or the number alone (which
-    # answers as the board itself: /companies/5502/jobs/embed, 2026-11-24).
-    # Keyed on the NUMBER, which alone selects the board - one board is
-    # written 5502-fraudscope and 5502-codoxo - with any leading zero off
+    # answers as the board itself: /companies/5502/jobs/embed, 2026-11-24) -
+    # and '<number>-', a slug left empty, is the number alone too, as
+    # ats.trinethire_ref reads it (it was filed trinethire-other, naming no
+    # board: blind review 13's verifier, 2026-11-24). Keyed on the NUMBER,
+    # which alone selects the board - one board is written 5502-fraudscope
+    # and 5502-codoxo - with any leading zero off
     number, slug = m.group(1), m.group(2)
     return (f"{number}-{slug}" if slug else number), number.lstrip("0") or "0"
 
@@ -758,9 +761,10 @@ BOARDS: list[_Pat] = (
         # and SoundThinking's iframes), the career page (/jobs), a posting
         # (/jobs/<job id>-<slug>) - and only there: the host whole and the
         # number's own path segment whole (ats.fetch_trinethire reads its
-        # /jobs/embed, whatever form it was found in)
+        # /jobs/embed, whatever form it was found in), its slug left empty
+        # too (/companies/<n>-/jobs)
         _here("trinethire", r"(?<![a-z0-9.-])app\.trinethire\.com/companies/([0-9]{1,12})"
-                            r"(?:-([a-z0-9-]{1,200}))?(?![a-z0-9-])", _trinethire_board),
+                            r"(?:-([a-z0-9-]{0,200}))?(?![a-z0-9-])", _trinethire_board),
     ])
 
 # A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
