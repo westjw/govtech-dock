@@ -4485,22 +4485,41 @@ type `clearcompany`. No record is rewired by this; the session runs the door.
   site id (404 on the API), a page past 2,000,000 characters: each raises.
   **No empty board has been measured**, so an empty list raises too - kept
   Unknown, never "None found", as an empty Jobvite feed is.
-- **A row**: positionTitle stripped; the place built from locations[] (city,
-  subdivision, country; a nationwide one 'Remote (US)', the row remote when
-  every place is), never the server's `location` string, whose whitespace is
-  mangled; the office from the first place with a city or state; the ad from
-  the list's own description (always read: it is in the answer); a date only
-  where the row carries postedDate (`ats.posted_date`). **No pay field is
-  read**: salaryRangeLow, salaryRangeHigh and salaryType were on no measured
-  row, and the widget prints USD and CAD both as '$', so pay comes from the
-  ad's text through `ats.plain_rows`' one parser. departmentName (cost
-  centres), customFieldAnswers and the requisition number are not read. A
-  posting page is never read: a closed one answers 200, titled 'Careers'.
+- **A row**: positionTitle stripped; the place built from locations[]
+  (`ats.clearcompany_place`), never the server's `location` string, whose
+  whitespace is mangled; the office from the first place with a city or
+  state, else the first naming a country alone; the ad from the list's own
+  description (always read: it is in the answer); a date only where the row
+  carries postedDate (`ats.posted_date`). **No pay field is read**:
+  salaryRangeLow, salaryRangeHigh and salaryType were on no measured row, and
+  the widget prints USD and CAD both as '$', so pay comes from the ad's text
+  through `ats.plain_rows`' one parser - and on a row abroad a bare '$' is no
+  pay. departmentName (cost centres) and the requisition number are not read.
+  A posting page is never read: a closed one answers 200, titled 'Careers'.
+- **A place the board can read** (blind review of the reader, 2026-11-24).
+  The country is an ISO-2 code and `roles.geography` reads a trailing
+  two-letter code as a US state: 'Toronto, ON, CA' was a California office,
+  'Calgary, AB, CA' and 'Pune, MH, IN' US ones, and a Calgary ad's '$' US
+  dollars. So a US place is 'City, ST' or 'Statewide (ST)'; a place abroad is
+  its city alone (its subdivision can be a US code too, Tamil Nadu's TN) or
+  nothing, its country in `office_hint` and never in the text.
+- **A nationwide place is no way of working.** The widget shows one as
+  'Remote (US)'; three of Rehrig's five are a forklift job, a yard driver and
+  a warehouse associate its own On-Site/Hybrid/Remote field calls On-Site.
+  It is written 'US' (abroad, nothing), which geography reads as no mode, and
+  the row's mode is only the posting's own answer to a custom field that IS
+  that question - every part of its name a work_mode word, two or more, the
+  answer one of them, two answers that differ none (`ats.clearcompany_mode`).
+  No other custom field is read. Rehrig's 115 read 112 on-site, 2 remote (the
+  two Territory Sales Managers), 1 hybrid.
 - **The employer, twice** (`verify_boards._clearcompany`): brandFullName,
   believed only where the hosted page's <title> says the same before
   ' - Careers' ('Clearfield, Inc', 'Rehrig Pacific Company'); the footer's
   home link is handed on as `site`, which `proven()` holds to the website on
-  file as it does ashby's and jazzhr's. A site whose brand filter lists
+  file as it does ashby's and jazzhr's - the link as the settings wrote it,
+  '//www.x/' and 'www.x' naming a website too (dropped, a namesake passed on
+  its name alone: blind review, 2026-11-24), and one naming no host
+  (javascript:, a path, an e-mail address) none. A site whose brand filter lists
   brands states each of them beside its name; one listing more than one
   names several companies, which its rows do not tell apart, so none of its
   names is the whole board's (`stated` False) and the door holds it, even
@@ -4515,11 +4534,16 @@ type `clearcompany`. No record is rewired by this; the session runs the door.
   postings were all re-dated the night it moved to its Jobvite feed
   (2026-11-24). So `build_board.posting_key` names a hosted-site posting by
   its slug and job id (`ats.clearcompany_posting_key`, as a TriNet Hire
-  posting by its number and job id), `posting_id` hashes that, and
-  `carry_first_seen` matches a posting the previous board held under the same
-  company and key, whatever its place reads now. The titles are the same, so
-  the opening id is too (all 8 of Rehrig's rows on file, checked against the
-  measured list).
+  posting by its number and job id), and `carry_first_seen` matches a posting
+  the previous board held under the same company and key, whatever its place
+  reads now. The titles are the same, so the opening id is too (all 8 of
+  Rehrig's rows on file, checked against the measured list). **The posting
+  id moves once, at the move**: `posting_id` hashes a ClearCompany address as
+  written (only TriNet's is keyed), so the 8 html rows keep their ids until
+  the door moves Rehrig to its reader; keyed on the posting, they took new
+  ids at the first build after the merge, before anything was wired, and
+  moved again when the reader gave them a place (blind review, 2026-11-24).
+  A role saved by id before the move shows as no longer listed after it.
 - **The finder**: a link, frame or script naming apply.clearcompany.com/<slug>
   is a `clearcompany` board (a posting's ?jobId= and /<slug>/redirect too).
   A legacy HRM Direct board (<label>.hrmdirect.com/employment/...) seen on a
@@ -4528,13 +4552,32 @@ type `clearcompany`. No record is rewired by this; the session runs the door.
   host only, at most two a company, within the company's own time), and the
   slug ClearCompany's redirect names is the candidate, as that page's
   element; the hosted site itself is never asked, and ClearCompany's
-  furniture beside the frame on that page leaves `elsewhere`. An address
-  that does not redirect there stays `clearcompany-legacy`, a tenant form and
-  a doubt. The widget drawn straight into a page by career-site.js, naming
-  its site by id alone, is `clearcompany-site`, a tenant form: its slug is not
-  on the page and is never guessed. Every other clearcompany.com address
-  (careers-content's assets, cc-client-cdn's logos, the tenant host) is
-  `clearcompany-other`, a form of a platform we read naming no board, the
+  furniture beside the frame on that page leaves `elsewhere`. One address is
+  asked once however a page writes it ('//x...&amp;' and 'https://x...&').
+  An address that does not redirect there stays `clearcompany-legacy`, a
+  tenant form, with a `note` saying what came back or why it was not asked
+  (robots.txt, no redirect, another host, one brand's view, a page not
+  theirs alone, the cap); the door says it as a legacy board not followed,
+  never as another account, and alone as such, never as no board. A follow
+  that failed on the day (the network, a timeout, a 5xx, a 429, a robots.txt
+  that would not say) carries `on_the_day`, and the door skips it and asks
+  again, never files it (`wire_found.legacy_left`). The widget drawn
+  straight into a page by career-site.js, naming its site by id alone, is
+  `clearcompany-site`, a tenant form: its slug is not on the page and is
+  never guessed. **One brand's view of a site** (apply.clearcompany.com/
+  <slug>?brand=: its widget turns ?brand= into a filter whether or not it
+  shows a brand menu, so the site may carry sister brands' postings and its
+  settings need not list them) is `clearcompany-brand`, a tenant form and a
+  doubt, never the board: beside a board it holds it, and alone the door
+  lists it as a board it cannot use (`unusable`), never as no board seen -
+  it is not made a candidate, so it reaches the owner's queue only through a
+  board their site also names. **An account's own host**, <label>.clearcompany.com
+  (robots.txt closes it; its label is no proven slug), is
+  `clearcompany-tenant`, a tenant form and a doubt beside a board or not -
+  filed as naming no board it vanished beside the board and was a note
+  elsewhere (blind review, 2026-11-24). Every other clearcompany.com address
+  (careers-content's assets, cc-client-cdn's logos, ClearCompany's own site)
+  is `clearcompany-other`, a form of a platform we read naming no board, the
   door's own-form note beside a board. discover_js reads the hosted slug.
   discover_ats.MARKERS still files <label>.clearcompany.com as type html,
   which robots.txt refuses (Unknown, never a zero).
@@ -4564,7 +4607,15 @@ type `clearcompany`. No record is rewired by this; the session runs the door.
   board, the cap, each row rule, robots.txt, each half of the probe and its
   brands, the first-seen carry, the id's key, the slug's case in board_key,
   the public link, each finder rule, the door's kept board and own forms,
-  discover_js), each alone, each caught.
+  discover_js), each alone, each caught. Two blind reviewers then found five
+  reader rules and two identity rules that passed with the rule removed (the
+  statewide place, the place dedupe, the title's comment, the home link's
+  check and its class, the pattern's left edge, the legacy gates); the fix
+  pass pinned each, and broke 39 rules of its own alone (the place and the
+  mode, each custom-field rule, the country abroad, the office, the legacy
+  ask's key, the brand and tenant forms, each on-the-day rule, the notes, the
+  door's words and skips, the home link's forms, the count's words, the
+  posting id), each caught; tenant and brand rows also in SITE_BOARD_NOT_ONE.
 
 ## Build order (owner, 2026-08-23)
 
