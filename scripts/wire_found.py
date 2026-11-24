@@ -1818,53 +1818,70 @@ def _posting_list(rows: list, field: str, n: int = 3) -> str:
     return out + (f"; and {len(picked) - n} more" if len(picked) > n else "")
 
 
-def posting_skip(base: dict, c: dict, rows: list, ctx: dict) -> dict:
-    """The SKIP for a company whose own site names no board, only Paylocity
-    postings that named none: said for what each posting's page said, and
-    never a zero - a closed posting is no answer about a board."""
+def posting_skip(base: dict, c: dict, rows: list, ctx: dict, unusable=()) -> dict:
+    """The SKIP for a company whose own site names no board this door can
+    use, only Paylocity postings that named none: said for what each posting's
+    page said, and never a zero - a closed posting is no answer about a board.
+
+    A BOARD THEIR SITE NAMES IN A SHAPE NO READER TAKES (`unusable`,
+    boards_named) is no "no board" (review of the posting change, 2026-11-23:
+    beside a closed posting it was SKIP no-board, and the reference was
+    listed nowhere): every SKIP here names it, and where the postings gave
+    no board the SKIP is `unusable`, listed so somebody looks at the
+    reference, as it is with no posting beside it (consider)."""
+    also = ("; their site also names a board this door cannot use ("
+            + "; ".join(unusable[:3]) + ")") if unusable else ""
+
+    def skip(kind, why, **more):
+        return _skip(base, kind, why + also, **more)
     scope = c.get("out_of_scope")
     if scope:
         on = scope.get("on") if isinstance(scope, dict) else None
-        return _skip(base, "out-of-scope",
-                     f"a person ruled {base['name']} out of the board"
-                     + (f" on {on}" if on else "") + "; it is not probed or proposed, and its "
-                     f"site's Paylocity postings were not asked")
+        return skip("out-of-scope",
+                    f"a person ruled {base['name']} out of the board"
+                    + (f" on {on}" if on else "") + "; it is not probed or proposed, and its "
+                    f"site's Paylocity postings were not asked")
     was = c.get("ats") or {}
     if was.get("type") not in WAITING:
-        return _skip(base, "not-waiting",
-                     f"already reads from {show(was.get('type'), was.get('ref'))}; this door "
-                     f"never overrules a board somebody already set, and its site's Paylocity "
-                     f"postings were not asked")
+        return skip("not-waiting",
+                    f"already reads from {show(was.get('type'), was.get('ref'))}; this door "
+                    f"never overrules a board somebody already set, and its site's Paylocity "
+                    f"postings were not asked")
     if any(r.get("declined") for r in rows):
-        return _skip(base, "refused", _declined_words(base["id"], rows, ctx))
+        return skip("refused", _declined_words(base["id"], rows, ctx))
     if any(r.get("posting_failed") for r in rows):
         how = next(r["posting_failed"] for r in rows if r.get("posting_failed"))
-        return _skip(base, "unreadable",
-                     f"their site links a Paylocity posting, and asking the posting's page which "
-                     f"board it names failed on the day ({_posting_list(rows, 'posting_failed')}); "
-                     f"it is asked again on the next plan, and a failure on the day is not a "
-                     f"doubt to file", error=how)
+        return skip("unreadable",
+                    f"their site links a Paylocity posting, and asking the posting's page which "
+                    f"board it names failed on the day ({_posting_list(rows, 'posting_failed')}); "
+                    f"it is asked again on the next plan, and a failure on the day is not a "
+                    f"doubt to file", error=how)
     if any(r.get("posting_refused") for r in rows):
         how = next(r["posting_refused"] for r in rows if r.get("posting_refused"))
-        return _skip(base, "unreadable",
-                     f"their site links a Paylocity posting, and its page refused "
-                     f"({_posting_list(rows, 'posting_refused')}); a refusal is not asked "
-                     f"again in this run, and which board the posting is on is not known",
-                     error=how)
+        return skip("unreadable",
+                    f"their site links a Paylocity posting, and its page refused "
+                    f"({_posting_list(rows, 'posting_refused')}); a refusal is not asked "
+                    f"again in this run, and which board the posting is on is not known",
+                    error=how)
     if any(r.get("posting_none") for r in rows):
         unasked = _postings_linked([r for r in rows if r.get("posting_unasked")])
+        asked = (f"no posting's page that was asked gives {'a board' if unusable else 'one'} "
+                 f"({_posting_list(rows, 'posting_none')})"
+                 + (f", and {unasked} more of theirs were not asked (at most "
+                    f"{POSTING_TRIES} are)" if unasked else ""))
+        if unusable:
+            return _skip(base, "unusable",
+                         "their site named a board, and the finder's reference cannot be used: "
+                         + "; ".join(unusable[:3]) + f"; it also links "
+                         f"{many(_postings_linked(rows), 'Paylocity posting')}, and {asked}")
         return _skip(base, "no-board",
                      f"their site links {many(_postings_linked(rows), 'Paylocity posting')} "
-                     f"and no board, and no posting's page that was asked gives one "
-                     f"({_posting_list(rows, 'posting_none')})"
-                     + (f", and {unasked} more of theirs were not asked (at most "
-                        f"{POSTING_TRIES} are)" if unasked else "")
-                     + ": the find is not a board - which says nothing about whether they have "
-                       "one")
-    return _skip(base, "unusable",
-                 f"their site links {many(_postings_linked(rows), 'Paylocity posting')}, and "
-                 f"none was asked: "
-                 + (_posting_list(rows, "posting_off") or "the plan did not reach them"))
+                     f"and no board, and {asked}: the find is not a board - which says nothing "
+                     f"about whether they have one")
+    return skip("unusable",
+                f"their site links {many(_postings_linked(rows), 'Paylocity posting')}, and "
+                f"none was asked: "
+                + (_posting_list(rows, "posting_off") or "the plan did not reach them"))
 
 
 def _declined_words(cid: str, rows: list, ctx: dict) -> str:
@@ -2551,7 +2568,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # (resolved_by_posting); a board one of them named is among `boards`
     postings = postings_of(entry)
     if not boards and postings:
-        return posting_skip(base, c, postings, ctx)
+        return posting_skip(base, c, postings, ctx, unusable)
     if not boards:
         if unusable:
             # THEIR SITE DID NAME A BOARD, and the finder wrote it down in a

@@ -2919,8 +2919,11 @@ round.
   and B"). A CLOSED posting (Paylocity's "Job Not Found", a 404 or 410, a
   page naming no board) sends the door to the next posting; where none names
   a board it is SKIP `no-board`, listed in words ("the find is not a board"),
-  never a zero. A failure of the day is SKIP `unreadable`, asked again by the
-  next plan, never filed; a refusal (robots.txt, 401, 403) stops the asking.
+  never a zero - and SKIP `unusable` where their site also names a board in
+  a shape no reader takes, the reference named (every posting SKIP names
+  one: it is no "no board"). A failure of the day is SKIP `unreadable`,
+  asked again by the next plan, never filed; a refusal (robots.txt, 401,
+  403) stops the asking.
   A company with any refusal on file is not asked (`declined`): SKIP refused
   where nothing else on their site names a board, as a number nobody
   followed is, and beside a board of their own that board is read and held
