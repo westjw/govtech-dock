@@ -2467,7 +2467,9 @@ and never said where in a page a reference sat.
   companies: {id: {name, website, was, pages[], candidates[], off_site[],
   elsewhere[], left_site[], job_like_links, says_no_openings, error}}}`. A
   reference row is `{type, ref, element, saw, times, page, hop}`: `ref` is
-  exactly what that type's fetcher takes (Workday `[tenant, pod, site]`),
+  exactly what that type's fetcher takes (Workday `[tenant, pod, site]`; a
+  `paylocity-posting` row is a posting, whose ref is its own address and
+  which no fetcher takes),
   `element` is where it sat (href | iframe | script | text | request | frame
   | redirect), `saw` is at most 160 characters with any e-mail address
   taken out, `page` is where the read LANDED. Every address a record keeps
@@ -2510,6 +2512,27 @@ and never said where in a page a reference sat.
   board. Every other reference to a board is `off_site`: for a person, never
   for a program. A candidate is a claim about the PAGE, not the board:
   Prepared's own careers page links Axon's board.
+- **A Paylocity posting is a candidate of its own, and no board (owner,
+  2026-11-23).** Ten careers pages link single postings
+  (recruiting.paylocity.com/recruiting/jobs/Details/<id>/<Tenant>/<Title>,
+  or /Recruiting/Jobs/Details/<id> bare) and never their board. Asked
+  "Should 'their site links a posting, and that posting's page names exactly
+  one board' count as check 1?", he answered "Yes, count it". The address
+  names no board - its tenant segment is not the board's (PlayMetrics'
+  postings say EMINOR-INC) - so each posting their own page links is a
+  candidate of type `paylocity-posting` (`POSTINGS`, kept apart from
+  `BOARDS`, every pattern of which names a board some fetcher reads), its
+  ref the posting's own address on Paylocity's host with the path as the
+  page wrote it (no query), one row per posting id, every link counted: a
+  careers page linking twelve postings gives twelve, so the door can try
+  another when one has closed. Nothing here asks one: a link that names a
+  posting is not followed (it used to be the walk's one look at a platform,
+  which read the posting's page as another site's and filed its board under
+  off_site). One seen on a page that is not their own is off_site, as any
+  board is. No fetcher takes the type; the wiring door asks the posting's
+  page which board it names (below). The run's summary counts such sites
+  apart ("links a Paylocity posting"), and so does the platform catalogue's
+  sweep count.
 - **"Their own site" is narrower than the host** (`Whose.of`: own | shared |
   part | other; only "own" makes a candidate). The host rule is still
   `page_belt._same_site`, and it decides which links the walk may follow.
@@ -2600,7 +2623,8 @@ and never said where in a page a reference sat.
   first check alone let 21 of 43 small breakages through, the four now
   catch 81 of 81. Also run by hand in a real Chromium against a server on
   the same machine (nothing left it); one question was asked of the outside
-  world, two requests to Lever's public feed.
+  world, two requests to Lever's public feed. The posting candidate, and the
+  other doors leaving one alone: `check_a_posting_their_site_links_is_a_candidate_not_a_board`.
 
 ## A found board is proven by its own stated name (owner, 2026-11-18)
 
@@ -2866,6 +2890,55 @@ round.
   company's website for a number, never `apply.workable.com/<number>`; the
   desk's Accept and its Set board both refuse a numbered Workable ref
   (`710855/` and ` 710855 ` included: its slug is needed).
+- **A posting their site links is check 1 where its page names exactly one
+  board (owner, 2026-11-23: "Yes, count it"). Check 2 is unchanged.**
+  `plan` asks the page of each Paylocity posting the finder wrote
+  (`resolved_by_posting`, before anything is keyed, as a Workable number is
+  followed) through `verify_boards._board_page` - the board read's own path:
+  robots.txt at every hop, never a hop off the host asked (refused before
+  that host is asked anything), paced at the host gate - only at a posting's
+  own address on recruiting.paylocity.com (`posting_address`: anything else
+  is refused unasked), once per address in the run whichever company links
+  it, in the finder's order, at most `POSTING_TRIES` (3) per company. It
+  reads the board addresses the page names (`posting_boards_in`: its
+  breadcrumb's /All/<uuid>/<Tenant>, its "View All Jobs" link written
+  without the host, a /List/<n> where one is carried) in the finder's own
+  spelling, one board however many of its addresses (`paylocity_relation`
+  "same"), named by the fullest. ONE BOARD is the find: a Paylocity
+  candidate added in the posting's own sighting (`posting`,
+  `posting_boards`), and from then a Paylocity find like any other - check
+  2 on its own stated name, the owner's holds under any id, refusals,
+  records, twins, waiting rows, the pages the plan asks. Check 1's words, on
+  the row, the plan's line and the note: "<their page> links a posting on
+  the board (<the posting>), and the posting's page names that one board".
+  TWO OR MORE are HOLD, naming them all ("...names more than one board: A
+  and B"). A CLOSED posting (Paylocity's "Job Not Found", a 404 or 410, a
+  page naming no board) sends the door to the next posting; where none names
+  a board it is SKIP `no-board`, listed in words ("the find is not a board"),
+  never a zero. A failure of the day is SKIP `unreadable`, asked again by the
+  next plan, never filed; a refusal (robots.txt, 401, 403) stops the asking.
+  A company with any refusal on file is not asked (`declined`: SKIP refused,
+  as a number nobody followed is), nor one out of scope or on a board.
+  Postings none of whose pages named a board, beside another board, are a
+  doubt. A board their site names itself by an id that agrees gets no second
+  sighting from a posting. The worklist (version 6) records what each
+  posting's page named (`posting_boards`), and apply wires a row found by
+  way of a posting only where its `check_1.posting` is a posting's own
+  address, check 1's own sighting quotes that posting's id, and the row and
+  `posting_boards` both say its page named that one board, the row's own; a
+  row whose check 1 quotes a posting and says nothing of its page is left
+  alone (`evidence`). The look prints, under the row, "leans on what the plan
+  was told: the page of the posting their site links, <posting>, names one
+  board, <board>", and the code covers it. Discovery never follows a link to
+  a posting (it read the board off the posting's page and wrote it on the
+  tenant's name in its address alone), wire_embedded leaves a row naming one
+  in no pile, and `file_found` files none (`board_proposals.paylocity_posting`
+  is the one test). KNOWN, AND LEFT AS FOUND: another posting a page links
+  is not asked once one has named the board, so a careers page linking a
+  second account's posting beside its own is not seen by this; an apply form
+  (/recruiting/jobs/Apply/<id>) names no board and is still the no-board form
+  `paylocity-other`, which holds a board beside it (the sweep of 2026-11-19
+  read one on BS&A Software's careers page).
 - **A board is sized by its openings, not its rows.** `fetch_rippling`
   returns the logo's file name as a row on every board, and a talent pool or
   an unfilled template is a row too. The door counts what
@@ -3262,10 +3335,10 @@ round.
   another holder (under either key), more postings shown than the board
   read. A write whose `--expect` is not the code of the data as it is now is
   REFUSED, even when nothing would be written. A worklist older than version
-  5, or without `reader_doubts` (or with a blank one), `workable_numbers` or
-  `page_addresses`, is refused: version 3 kept the readers' doubts only when
-  it was written, and version 4 carried a record's page's address apply took
-  on its word. The look prints, under each row it wires, every /All/ address
+  6, or without `reader_doubts` (or with a blank one), `workable_numbers`,
+  `page_addresses` or `posting_boards`, is refused: version 3 kept the
+  readers' doubts only when it was written, version 4 carried a record's
+  page's address apply took on its word, and version 5 knew no posting. The look prints, under each row it wires, every /All/ address
   it leans on ("leans on what the plan was told: ...") and the Workable
   account number it is asked for by, with what ties it to the slug and
   whether that goes into the note ("leans on its account number: ...", or
@@ -3403,7 +3476,10 @@ round.
   `check_a_found_board_is_not_wired_past_what_moved`,
   `check_the_boards_found_card_opens_what_it_names` (executed under node),
   `check_a_finder_cannot_replace_the_owners_queue`,
-  `check_no_door_wires_a_company_the_owner_holds`. They share `_WiringBox`,
+  `check_no_door_wires_a_company_the_owner_holds`,
+  `check_a_board_a_posting_names_is_wired_only_on_both_checks` (the posting's
+  page served by a stand-in for `verify_boards._board_page`, whose manners it
+  pins through ats.requests). They share `_WiringBox`,
   which owns its data and shuts every way out of ats.py: a fixture that
   stubbed only the seams it knew about once let a new seam ask a real host.
   Blind review of 7742d06: 10 findings, all real, all fixed in 1a89cdf; 124
