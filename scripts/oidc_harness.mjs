@@ -623,6 +623,23 @@ const junkCode = () => randomBytes(32).toString("base64url");
     grant_password: (await tok(env, goodForm(junkCode(), pkce().verifier, { grant_type: "password" }), { ip: A })).status,
   };
   const failsAfterClientFails = fails(env);
+  // ...AND FROM A NETWORK WITH NO COUNT (review, 2026-11-24). From A, at its
+  // cap, a count of them could not be written, counted or not, so A's [20]
+  // holds either way. From a fresh network a counted failure leaves a row,
+  // so none may appear; then one request from there that is not the client
+  // is counted, which shows the count is there to be seen
+  const fresh = envOf(), C = "192.0.2.66";
+  const fv = await codeFor(fresh), fr = await codeFor(fresh);
+  const said = (r) => ({ status: r.status, json: r.json });
+  const freshFails = {
+    unknown_code: said(await tok(fresh, goodForm(junkCode(), pkce().verifier), { ip: C })),
+    wrong_verifier: said(await tok(fresh, goodForm(fv.code, pkce().verifier), { ip: C })),
+    wrong_redirect: said(await tok(fresh, goodForm(fr.code, fr.verifier, { redirect_uri: "https://evil.example/cb" }), { ip: C })),
+    grant_password: said(await tok(fresh, goodForm(junkCode(), pkce().verifier, { grant_type: "password" }), { ip: C })),
+  };
+  const freshRows = fails(fresh);
+  const freshControl = await tok(fresh, goodForm(junkCode(), pkce().verifier, { client_secret: "nope-fresh" }), { ip: C });
+  const freshRowsAfterControl = fails(fresh);
   // another network is its own
   const other = await tok(env, goodForm(junkCode(), pkce().verifier, { client_secret: "nope" }), { ip: B });
   // a working sign-in writes nothing
@@ -648,6 +665,8 @@ const junkCode = () => randomBytes(32).toString("base64url");
     fails_at_cap: failsAtCap, fails_after_refusal: failsAfter, again: again.status,
     client: client.status, client_ok: clientOk, fails_after_client: failsAfterClient,
     client_fails: clientFails, fails_after_client_fails: failsAfterClientFails,
+    fresh_client_fails: freshFails, fresh_rows: freshRows, fresh_control: freshControl.status,
+    fresh_rows_after_control: freshRowsAfterControl,
     other_network: other.status, good: good.status, good_wrote: before !== afterGood,
     v6_neighbour: v6Neighbour.status, v6_other: v6Other.status, v6_client: v6Client.status,
     down_not_client: { status: downNotClient.status, json: downNotClient.json },

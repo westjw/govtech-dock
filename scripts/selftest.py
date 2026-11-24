@@ -2405,18 +2405,24 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
       - signed in with no `hunter` or `owner` role: the closed-beta page, no
         code; not set up: every door says so;
       - the token door takes either client method, compares in constant
-        time, spends a code once (two at once: one token), 120 seconds and
-        not 121, holds the verifier, the redirect_uri and the client, and a
-        failed try spends the code; every failure is OAuth's word alone;
+        time (held by its source, review 2026-11-24: only through
+        sameSecret, the id and the secret both, and sameSecret and sameCode
+        as written, since a plain === answers every case alike), spends a
+        code once (two at once: one token), 120 seconds and not 121, holds
+        the verifier, the redirect_uri and the client, and a failed try
+        spends the code; every failure is OAuth's word alone;
       - only a request that is not the client is counted: twenty an hour
-        from one network and those get 429, writing nothing; two hundred
-        wrong secrets sent at once are counted twenty times, not two hundred
-        (one statement takes each try). THE CLIENT IS NEVER COUNTED OR
-        REFUSED BY THE COUNT (review, 2026-11-24): from a network whose hour
-        is used up, from Cloudflare's own shared Worker address after
-        twenty-five requests that were not it, from its /64, in the middle
-        of a burst, it gets its token, and its own failures are OAuth's
-        words, never 429;
+        from one network are answered invalid_client, and past them 429,
+        writing nothing; two hundred wrong secrets sent at once are counted
+        twenty times, not two hundred (one statement takes each try). THE
+        CLIENT IS NEVER COUNTED OR REFUSED BY THE COUNT (review,
+        2026-11-24): from a network whose hour is used up, from Cloudflare's
+        own shared Worker address after twenty-five requests that were not
+        it, from its /64, in the middle of a burst, it gets its token, and
+        its own failures are OAuth's words, never 429, and sent from a
+        network with no count they leave no row (one that is not the client
+        then does, so the count is there to be seen); DEPLOY.md says the
+        count's twenty and its 429 as they are;
       - every not-configured /oidc/jwks answer is exactly 503
         {"error": "not_configured"}, no-store, which Job Hunter's key cache
         reads as "no keys" (its review, 2026-11-24);
@@ -2646,6 +2652,34 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     if (T.get("race_interleaved") or {}).get("statuses") != [200, 400, 400]:
         errors += fail(f"three redemptions that all reach the spend at once gave more than one token: "
                        f"{T.get('race_interleaved')}")
+    # THE CLIENT IS COMPARED IN CONSTANT TIME, AND ONLY SO (review,
+    # 2026-11-24): a plain === of the id and the secret answers every case
+    # the harness sends exactly as the constant-time comparison does, so the
+    # comparison is held by its source. functions/oidc/token.js compares what
+    # it was sent with the one client only through _oidc.js's sameSecret, the
+    # id and the secret both, always (one Promise.all, no early answer), and
+    # reads neither anywhere else; sameSecret hashes each side, then compares
+    # the two digests with _session.js's sameCode, which reads every
+    # character whatever it finds
+    def _flat_js(rel):
+        return re.sub(r"\s+", " ", _strip_js_comments((ROOT / rel).read_text()))
+    tok_src = _flat_js("functions/oidc/token.js")
+    both_ = ("await Promise.all([sameSecret(named.id, setup.client.id), "
+             "sameSecret(named.secret, setup.client.secret)])")
+    if (tok_src.count(both_) != 1
+            or any(tok_src.count(n) != 1 for n in ("named.id", "named.secret", "setup.client.secret"))
+            or "OIDC_CLIENT_ID" in tok_src or "OIDC_CLIENT_SECRET" in tok_src):
+        errors += fail("functions/oidc/token.js compares the client some other way than sameSecret, for the id and "
+                       "the secret both and always, or reads them elsewhere: a plain === passes every case the "
+                       "harness sends")
+    if ("export async function sameSecret(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\") return "
+            "false; const [x, y] = await Promise.all([sha256u(`oidc-compare|${a}`), sha256u(`oidc-compare|${b}`)]); "
+            "return sameCode(x, y); }") not in _flat_js("functions/_oidc.js"):
+        errors += fail("_oidc.js's sameSecret no longer hashes both sides and compares the two digests with sameCode")
+    if ("export function sameCode(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\" || a.length !== "
+            "b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ "
+            "b.charCodeAt(i); return d === 0; }") not in _flat_js("functions/_session.js"):
+        errors += fail("_session.js's sameCode no longer reads every character before it answers")
 
     # ONLY WHAT IS NOT THE CLIENT IS COUNTED, AND THE CLIENT IS NEVER
     # REFUSED BY THE COUNT (review, 2026-11-24): twenty requests an hour from
@@ -2665,6 +2699,21 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
             or rl.get("fails_after_client_fails") != [20]):
         errors += fail(f"the client is refused, or counted, because its network sent requests that were not it: "
                        f"{ {k: rl.get(k) for k in ('client', 'client_ok', 'fails_after_client', 'client_fails', 'fails_after_client_fails')} }")
+    # ...AND FROM A NETWORK WITH NO COUNT (review, 2026-11-24): sent from one
+    # already at its cap, a count of the client's own failures could not be
+    # written whether they were counted or not, so the [20] above held
+    # either way. From a fresh network none of them may leave a row; one
+    # request from there that is not the client then does, so the empty
+    # count is theirs not being counted, not a count nobody could see
+    want_fresh = {"unknown_code": {"status": 400, "json": {"error": "invalid_grant"}},
+                  "wrong_verifier": {"status": 400, "json": {"error": "invalid_grant"}},
+                  "wrong_redirect": {"status": 400, "json": {"error": "invalid_grant"}},
+                  "grant_password": {"status": 400, "json": {"error": "unsupported_grant_type"}}}
+    if (rl.get("fresh_client_fails") != want_fresh or rl.get("fresh_rows") != []
+            or rl.get("fresh_control") != 401 or rl.get("fresh_rows_after_control") != [1]):
+        errors += fail(f"the client's own failures (an unknown code, a wrong verifier, a wrong redirect_uri, a grant "
+                       f"type not offered), sent from a network with no count, are counted or answered otherwise: "
+                       f"{ {k: rl.get(k) for k in ('fresh_client_fails', 'fresh_rows', 'fresh_control', 'fresh_rows_after_control')} }")
     if (rl.get("other_network") != 401 or rl.get("good") != 200 or rl.get("good_wrote")
             or rl.get("v6_neighbour") != 429 or rl.get("v6_other") != 401 or rl.get("v6_client") != 200
             or rl.get("next_hour") != 401):
@@ -2733,6 +2782,14 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
             or "Access, which holds the client secret, is never counted and never refused" not in deploy_flat):
         errors += fail("CLAUDE.md or DEPLOY.md still says the token door counts before it knows the client, "
                        "or does not say the client is never counted or refused")
+    # ...and what the count answers, as the harness has it above (review,
+    # 2026-11-24): the first twenty of those from one network in an hour are
+    # 401 invalid_client, and only those past them 429 (the words read as
+    # twenty refusals with 429)
+    if ("twenty of those an hour from one network are answered `invalid_client`, and past them `429`"
+            not in deploy_flat or "and it answers them `429`" in deploy_flat):
+        errors += fail("DEPLOY.md §3f does not say the count's first twenty are answered invalid_client and only "
+                       "those past them 429")
 
     # THE GATE: these four pass signed out, and nothing beside them
     open_now = sorted(["/admin/api/whoami", "/admin/api/login", "/api/whoami", "/signin", "/signin/email",
