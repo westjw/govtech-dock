@@ -472,6 +472,8 @@ try {
       not_allowed: jhPanelHTML({ failed: "not_allowed" }),
       signedout: jhPanelHTML({ failed: "signedout" }),
       not_set_up: jhPanelHTML({ failed: "not_set_up" }),
+      // and one person's twenty asks a minute used up (review, 2026-11-23)
+      slow_down: jhPanelHTML({ failed: "slow_down" }),
       none: jhPanelHTML(null),
       missing: jhPanelHTML({ found: false }),
       // a role with everything: a failing gate, a score the person rejected,
@@ -532,6 +534,7 @@ try {
       not_set_up: await jhAnswer(reply({ status: 503, json: body({ failed: "not_set_up" }) })),
       not_from_site: await jhAnswer(reply({ status: 403, json: body({ error: "not_from_this_site" }) })),
       bad_id: await jhAnswer(reply({ status: 400, json: body({ error: "bad_id" }) })),
+      slow_down: await jhAnswer(reply({ status: 429, json: body({ error: "slow_down" }) })),
     };
   })()`, ctx);
 } catch (e) {

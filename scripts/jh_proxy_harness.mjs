@@ -11,9 +11,14 @@
  * check_the_panel_asks_job_hunter_through_the_board asserts on it, and
  * verifies the assertion's signature again in Python. The only addresses in
  * here are RFC 2606 ones, and every key and token is made here, per run.
+ * The per-person pace is counted in a D1 that IS SQLite (node:sqlite), each
+ * ask in a fresh one unless a case shares one.
  */
 import { generateKeyPairSync, createHash, createPublicKey, createSign, randomBytes,
          verify as nodeVerify } from "node:crypto";
+
+let DatabaseSync = null;
+try { ({ DatabaseSync } = await import("node:sqlite")); } catch { DatabaseSync = null; }
 
 let clock = Date.parse("2026-11-23T15:00:00.000Z");
 Date.now = () => clock;
@@ -109,6 +114,48 @@ const ASSETS = { fetch: async (u) => {
   return new URL(String(u)).pathname === "/admin/users.json"
     ? new Response(JSON.stringify(USERS), { status: 200 }) : new Response("no", { status: 404 });
 } };
+/* D1 that IS SQLite; `down` makes every call throw, as a D1 outage would.
+ * holdAsks(n): the next n calls that read or write the pace's count each
+ * wait until all n have been asked, then run in order, so asks sent at once
+ * all reach the count before any is done - the interleaving a count read
+ * first and written after would lose to (asks spread out by the sign-in's
+ * own crypto never meet there by themselves). Where node has no
+ * node:sqlite (before 22.13), a stand-in that grants every count, so
+ * everything else still runs and the pace cases say they were skipped. */
+const ASK_ROWS = /^\s*(SELECT|INSERT|UPDATE|DELETE)\b[\s\S]*\bjh_asks\b/i;
+function d1() {
+  if (!DatabaseSync) {
+    return { down: false, prepare: () => ({ bind() { return this; } }),
+      async batch(xs) { if (this.down) throw new Error("D1_ERROR: down"); return xs.map(() => ({ success: true, meta: { changes: 1 } })); } };
+  }
+  const db = new DatabaseSync(":memory:");
+  const box = { down: false, hold: null };
+  box.holdAsks = (n) => { let release; const p = new Promise((r) => { release = r; }); box.hold = { n, count: 0, p, release }; };
+  const wait = async (sqls) => {
+    const g = box.hold;
+    if (!g || !sqls.some((s) => ASK_ROWS.test(s))) return;
+    g.count++;
+    if (g.count >= g.n) { box.hold = null; g.release(); } else await g.p;
+  };
+  const run1 = (sql, p) => {
+    if (/^\s*SELECT/i.test(sql)) return { results: db.prepare(sql).all(...p), success: true };
+    const r = db.prepare(sql).run(...p);
+    return { success: true, meta: { changes: Number(r.changes) } };
+  };
+  const stmt = (sql, p = []) => ({ _sql: sql, _p: p, bind: (...a) => stmt(sql, a),
+    async run() { if (box.down) throw new Error("D1_ERROR: down"); await wait([sql]); return run1(sql, p); },
+    async first() { if (box.down) throw new Error("D1_ERROR: down"); await wait([sql]); return db.prepare(sql).get(...p) ?? null; },
+    async all() { if (box.down) throw new Error("D1_ERROR: down"); await wait([sql]); return run1(sql, p); } });
+  return Object.assign(box, { raw: db, prepare: (s) => stmt(s),
+    async batch(xs) {
+      if (box.down) throw new Error("D1_ERROR: down");
+      await wait(xs.map((x) => x._sql));
+      db.exec("BEGIN");
+      try { const o = xs.map((x) => run1(x._sql, x._p)); db.exec("COMMIT"); return o; }
+      catch (e) { db.exec("ROLLBACK"); throw e; }
+    } });
+}
+const askRows = (DB) => { try { return DB.raw.prepare("SELECT * FROM jh_asks").all(); } catch { return []; } };
 const ENV = { SESSION_SECRET, OIDC_SIGNING_JWK: JSON.stringify(KEY), JH_SERVICE_TOKEN_ID: TOKEN_ID,
   JH_SERVICE_TOKEN_SECRET: TOKEN_SECRET, ASSETS };
 const sessionFor = async (email) => (await S.sessionCookie(ENV, email, "email")).split(";")[0].split("=").slice(1).join("=");
@@ -121,14 +168,17 @@ function req(path, { host = "sledjobs.com", cookies = { [S.SESSION]: HUNTER }, h
   if (site !== null) hd.set("Sec-Fetch-Site", site);
   return new Request(`https://${host}${path}`, { headers: hd });
 }
+/* each ask gets a D1 of its own unless the env names one (or names none) */
 async function ask(id, opts = {}, env = ENV) {
+  const e = "DB" in env ? env : { ...env, DB: d1() };
   const before = calls.length;
   const path = id === undefined ? "/api/jh/board-role" : `/api/jh/board-role?id=${encodeURIComponent(id)}`;
-  const res = await px.onRequestGet({ request: req(opts.path || path, opts), env });
+  const res = await px.onRequestGet({ request: req(opts.path || path, opts), env: e });
   const text = await res.text();
   let json = null;
   try { json = JSON.parse(text); } catch { json = null; }
   return { status: res.status, json, body: text, cache: res.headers.get("cache-control") || "",
+    retry: res.headers.get("retry-after") || "",
     calls: calls.length - before, call: calls.length > before ? calls[calls.length - 1] : null };
 }
 function verifyJwt(jwt, keys) {
@@ -179,6 +229,7 @@ out.no_token = await ask(ID, {}, { ...ENV, JH_SERVICE_TOKEN_ID: undefined });
 out.no_token_secret = await ask(ID, {}, { ...ENV, JH_SERVICE_TOKEN_SECRET: "" });
 out.odd_token = await ask(ID, {}, { ...ENV, JH_SERVICE_TOKEN_ID: "has space\r\nX-Evil: 1" });
 out.no_key = await ask(ID, {}, { ...ENV, OIDC_SIGNING_JWK: undefined });
+out.no_db = await ask(ID, {}, { ...ENV, DB: undefined });
 
 /* --- THE ONE CALL: exactly the fixed address, the two token headers, the
  * assertion, and nothing of the caller's ----------------------------------------- */
@@ -227,14 +278,52 @@ mode = "found";
 /* --- through the gate ---------------------------------------------------------------- */
 async function viaMiddleware(cookies) {
   const before = calls.length;
+  const env = { ...ENV, DB: d1() };
   const r = req(`/api/jh/board-role?id=${encodeURIComponent(ID)}`, { cookies });
-  const res = await onRequest({ request: r, env: ENV, data: {}, next: async () => px.onRequestGet({ request: r, env: ENV }) });
+  const res = await onRequest({ request: r, env, data: {}, next: async () => px.onRequestGet({ request: r, env }) });
   let json = null;
   try { json = JSON.parse(await res.text()); } catch { json = null; }
   return { status: res.status, json, calls: calls.length - before };
 }
 out.mw_signed_in = await viaMiddleware({ [S.SESSION]: HUNTER });
 out.mw_anon = await viaMiddleware({});
+
+/* --- ONE PERSON'S PACE (review, 2026-11-23: one beta user's script filled
+ * Job Hunter's replay book, and every panel said "sign in" for ten minutes):
+ * twenty asks a minute per signed-in address, counted in D1 before anything
+ * is signed or sent, by one statement, so asks sent at once are held to it
+ * too ------------------------------------------------------------------------- */
+if (DatabaseSync) {
+  const env = { ...ENV, DB: d1() };
+  const c0 = calls.length;
+  const first = [];
+  for (let i = 0; i < O.ASKS_PER_MINUTE; i++) first.push((await ask(ID, {}, env)).status);
+  const firstCalls = calls.length - c0;
+  const over = await ask(ID, {}, env);
+  const again = await ask(ID, {}, env);
+  const owner = await ask(ID, { cookies: { [S.SESSION]: await sessionFor("owner@example.org") } }, env);
+  const stored = askRows(env.DB);
+  clock += 60 * 1000;                     // the next minute: fifty at once
+  const b0 = calls.length;
+  env.DB.holdAsks(50);
+  const burst = await Promise.all(Array.from({ length: 50 }, () => ask(ID, {}, env)));
+  const burstCalls = calls.length - b0;
+  const statuses = {};
+  for (const r of burst) statuses[r.status] = (statuses[r.status] || 0) + 1;
+  clock += 60 * 1000;                     // and the minute after that
+  const later = await ask(ID, {}, env);
+  env.DB.down = true;
+  const down = await ask(ID, {}, env);
+  env.DB.down = false;
+  out.pace = { cap: O.ASKS_PER_MINUTE, first, first_calls: firstCalls,
+    over: { status: over.status, json: over.json, calls: over.calls, retry: over.retry },
+    again: { status: again.status, calls: again.calls }, owner: { status: owner.status, calls: owner.calls },
+    stored_rows: stored.length, stored_address: JSON.stringify(stored).includes("@"),
+    burst: { statuses, calls: burstCalls }, later: { status: later.status, calls: later.calls },
+    down: { status: down.status, json: down.json, calls: down.calls } };
+} else {
+  out.pace = { skip: `node:sqlite is not available in node ${process.version}` };
+}
 
 /* NOTHING SECRET IN ANY ANSWER, nothing logged */
 const answers = JSON.stringify([out.anon, out.no_role, out.good.json, out.relay, out.bad_id, out.no_token]);

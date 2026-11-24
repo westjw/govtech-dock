@@ -320,8 +320,10 @@ one-time codes live there) and `SESSION_SECRET` is set (§3a).
   Hunter again: no sign-in at all.
 - **The panel:** on any role on the board, **Job Hunter ▸** fills in with no
   sign-in. "The board's way in to Job Hunter is not set up yet" means step
-  4's Pages secrets; "did not answer" means Job Hunter is asleep or its
-  plist variable is missing.
+  4's Pages secrets (or the D1 binding of §3e); "did not answer" means Job
+  Hunter is asleep or its plist variable is missing. "Wait a minute" means
+  that sign-in asked about more than twenty roles in a minute: the board
+  holds each person to that, so one script cannot swamp Job Hunter.
 
 **A new signing key, once a year (a routine rotation).** Pages never shows a
 secret again, so the key in use cannot be copied, and is not needed: its

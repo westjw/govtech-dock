@@ -24,17 +24,23 @@
  *      site's own address (the sign-in is a host-only cookie);
  *   2. somebody is signed in (signedIn: ours, or the owner's Access);
  *   3. the Users board gives them `hunter` or `owner`;
- *   4. the id has the shape Job Hunter's board_role takes.
+ *   4. the id has the shape Job Hunter's board_role takes;
+ *   5. they have asked fewer than ASKS_PER_MINUTE times this minute
+ *      (takeAsk, D1): Job Hunter keeps every assertion's jti for ten minutes
+ *      in one book that refuses everybody when full, so one beta user's
+ *      script must not be able to fill it (review, 2026-11-23). Over it:
+ *      429 {"error": "slow_down"}, nothing signed, nothing sent.
  * What comes back: Job Hunter's JSON when it answers 200; its 401 and 404
  * reasons (the word alone: no address); and {"failed": "unreachable"} for a
  * timeout, a network error, Access's own login page or anything that is not
- * JSON. Nothing is logged: not the assertion, not the secret.
+ * JSON, and for a count D1 could not take. Nothing is logged: not the
+ * assertion, not the secret.
  */
 import { onSite, random, now } from "../../_session.js";
 import { signedIn } from "../../_identity.js";
 import { whoIs } from "../../_roles.js";
 import { json } from "../../_mail.js";
-import { signJwt, subOf, ISSUER, JH_ROUTE, JH_ROLES, ASSERTION_SECONDS } from "../../_oidc.js";
+import { signJwt, subOf, takeAsk, ISSUER, JH_ROUTE, JH_ROLES, ASSERTION_SECONDS } from "../../_oidc.js";
 
 export const UPSTREAM_MS = 8000;
 export const ID_MAX = 600;
@@ -73,7 +79,15 @@ export async function onRequestGet({ request, env }) {
   const id = cleanId(url.searchParams);
   if (!id) return json({ error: "bad_id" }, 400);
   const token = serviceToken(env);
-  if (!token) return json({ failed: "not_set_up" }, 503);
+  if (!token || !env.DB) return json({ failed: "not_set_up" }, 503);
+  // ONE PERSON'S PACE, counted before anything is signed or sent
+  let go = false;
+  try { go = await takeAsk(env, me.email); } catch { return json({ failed: "unreachable" }, 502); }
+  if (!go) {
+    const slow = json({ error: "slow_down" }, 429);
+    slow.headers.set("retry-after", "60");
+    return slow;
+  }
   const t = now();
   const assertion = await signJwt(env, { iss: ISSUER, aud: JH_ROUTE, sub: await subOf(me.email),
     email: me.email, id, iat: t, exp: t + ASSERTION_SECONDS, jti: random(16) });

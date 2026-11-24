@@ -2733,10 +2733,38 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
             errors += fail(f"a bad id ({k}) reached Job Hunter or was not refused: {c.get('status')} {c.get('calls')}")
     if len(o.get("bad_id") or {}) < 7 or (o.get("longest") or {}).get("status") != 200:
         errors += fail("the id's length cap refuses the longest id Job Hunter takes, or too few bad ids were tried")
-    for k in ("no_token", "no_token_secret", "odd_token", "no_key"):
+    for k in ("no_token", "no_token_secret", "odd_token", "no_key", "no_db"):
         c = o.get(k) or {}
         if c.get("status") != 503 or c.get("json") != {"failed": "not_set_up"} or c.get("calls"):
             errors += fail(f"with {k} the route still calls Job Hunter, or does not say it is not set up: {c}")
+    # ONE PERSON'S PACE (review, 2026-11-23): Job Hunter keeps every
+    # assertion's jti ten minutes in one book that refuses everybody when it
+    # holds 10,000, and one beta user's script at 17 a second filled it; so
+    # twenty asks a minute per signed-in address, counted in D1 by one
+    # statement before anything is signed or sent
+    pc = o.get("pace") or {}
+    if pc.get("skip"):
+        print(f"  note: {pc['skip']}; the panel's pace was not driven")
+    else:
+        pcap = pc.get("cap")
+        ov = pc.get("over") or {}
+        if (pcap != 20 or pc.get("first") != [200] * 20 or pc.get("first_calls") != 20 or ov.get("status") != 429
+                or ov.get("json") != {"error": "slow_down"} or ov.get("calls") or ov.get("retry") != "60"
+                or (pc.get("again") or {}).get("status") != 429 or (pc.get("again") or {}).get("calls")):
+            errors += fail(f"the panel's route does not hold one person to {pcap} asks a minute, refused with "
+                           f"nothing sent: {pc.get('first')} {ov} {pc.get('again')}")
+        if (pc.get("owner") or {}).get("status") != 200 or (pc.get("owner") or {}).get("calls") != 1:
+            errors += fail(f"one person's pace slows another: {pc.get('owner')}")
+        bu = pc.get("burst") or {}
+        if bu.get("statuses") != {"200": 20, "429": 30} or bu.get("calls") != 20:
+            errors += fail(f"fifty asks sent at once by one person reach Job Hunter more than twenty times: {bu}")
+        if (pc.get("later") or {}).get("status") != 200 or (pc.get("later") or {}).get("calls") != 1:
+            errors += fail(f"a person is still slowed the minute after: {pc.get('later')}")
+        dn = pc.get("down") or {}
+        if dn.get("status") != 502 or dn.get("json") != {"failed": "unreachable"} or dn.get("calls"):
+            errors += fail(f"with D1 down the route still calls Job Hunter, or says something else: {dn}")
+        if pc.get("stored_address") or pc.get("stored_rows") != 2:
+            errors += fail(f"the pace keeps an address in D1, or a row that is not one person's minute: {pc}")
     for k in ("typed", "no_fetch_meta", "access_owner"):
         if (o.get(k) or {}).get("status") != 200:
             errors += fail(f"the route refused {k}, a request it should answer")
@@ -56667,7 +56695,9 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
     # not Job Hunter), the board's way in not set up
     for key, needle, href in (("not_allowed", "closed beta", f'href="{app}"'),
                               ("signedout", "SLED JOBS sign-in has run out", 'href="http://x/signin?to=%2F"'),
-                              ("not_set_up", "way in to Job Hunter is not set up", f'href="{app}"')):
+                              ("not_set_up", "way in to Job Hunter is not set up", f'href="{app}"'),
+                              # one person's twenty asks a minute (review, 2026-11-23)
+                              ("slow_down", "Wait a minute, then open this one again", f'href="{app}"')):
         got = flat.get(key, "")
         if needle not in got or href not in got:
             errors += fail(f"the panel's {key} silence does not say {needle!r} or offer {href}: {got[:200]!r}")
@@ -56684,7 +56714,7 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
             "not_allowed": {"failed": "not_allowed"}, "not_signed_in": {"failed": "signedout"},
             "gate_refused": {"failed": "signedout"}, "unreachable": {"failed": "unreachable"},
             "not_set_up": {"failed": "not_set_up"}, "not_from_site": {"failed": "signin"},
-            "bad_id": {"failed": 400}}
+            "bad_id": {"failed": 400}, "slow_down": {"failed": "slow_down"}}
     got = jp.get("answers") or {}
     for k, v in want.items():
         if got.get(k) != v:

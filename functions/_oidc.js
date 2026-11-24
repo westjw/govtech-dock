@@ -277,7 +277,9 @@ export function checkAuthorize(q, setup) {
  * kept only as its SHA-256. The failure counts that slow a guesser live here
  * too: each is a write, and KV's 1,000 writes a day are the sign-in's and the
  * alerts', which a guesser spending one per failure could empty for the
- * whole site; D1's 100,000 a day are beyond a free plan's requests. */
+ * whole site; D1's 100,000 a day are beyond a free plan's requests. The
+ * panel's per-person count (jh_asks) is here for the same reason: an ask is
+ * a write. */
 const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS oidc_codes (
      code_hash TEXT PRIMARY KEY,
@@ -290,6 +292,10 @@ const SCHEMA = [
      made_at INTEGER NOT NULL,
      used INTEGER NOT NULL DEFAULT 0)`,
   `CREATE TABLE IF NOT EXISTS oidc_fails (
+     k TEXT PRIMARY KEY,
+     n INTEGER NOT NULL,
+     at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS jh_asks (
      k TEXT PRIMARY KEY,
      n INTEGER NOT NULL,
      at INTEGER NOT NULL)`,
@@ -390,6 +396,36 @@ export async function giveBack(env, k) {
       env.DB.prepare("UPDATE oidc_fails SET n = n - 1 WHERE k = ? AND n > 1").bind(k),
     ]);
   } catch { /* it stays counted */ }
+}
+
+/* --- the panel, at one person's pace --------------------------------------- */
+
+/* How often one signed-in address may ask the panel's route in a minute.
+ * Every ask is a signed assertion and a call to Job Hunter, which keeps each
+ * assertion's jti for ten minutes in one book that refuses EVERYBODY once
+ * 10,000 are in it, and answers one request at a time (review, 2026-11-23:
+ * one beta user's script at 17 a second filled the book, and every panel,
+ * the owner's too, said "sign in" for ten minutes). Twenty a minute is 200
+ * in Job Hunter's ten, so filling the book would take fifty beta users
+ * asking flat out, and it is more than anybody reading roles asks. */
+export const ASKS_PER_MINUTE = 20;
+
+/* One ask for this address this minute, by one statement as takeTry's: the
+ * count goes up only while it is under ASKS_PER_MINUTE, so asks sent at
+ * once are held to it too, and a refused one writes nothing. The row is
+ * keyed by a hash of the address and the minute; no address is kept. Rows
+ * past two minutes go in the same batch. True: go on. Throws when D1 does. */
+export async function takeAsk(env, email) {
+  await ready(env.DB);
+  const minute = new Date(Date.now()).toISOString().slice(0, 16);
+  const k = (await sha256u(`jh-ask|${String(email).trim().toLowerCase()}|${minute}`)).slice(0, 32);
+  const t = now();
+  const [, r] = await env.DB.batch([
+    env.DB.prepare("DELETE FROM jh_asks WHERE at < ?").bind(t - 120),
+    env.DB.prepare(`INSERT INTO jh_asks (k, n, at) VALUES (?, 1, ?)
+                    ON CONFLICT (k) DO UPDATE SET n = n + 1 WHERE jh_asks.n < ?`).bind(k, t, ASKS_PER_MINUTE),
+  ]);
+  return !!(r && r.meta && Number(r.meta.changes) === 1);
 }
 
 /* --- the pieces each door checks before it does anything ------------------ */

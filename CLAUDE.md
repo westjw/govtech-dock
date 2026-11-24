@@ -329,7 +329,9 @@ panel on a role).**
   `no_account` is a person with no account linked; `unreachable` is the Mac
   asleep, a timeout or Job Hunter's door answering instead ("did not answer",
   whose words say the board's way in may need fixing); `not_set_up` is no
-  service token; any other 401 or 403, or a redirect, asks for a sign-in. A
+  service token (or no D1); `slow_down` is one person's twenty asks a minute
+  used up ("Wait a minute, then open this one again"); any other 401 or 403,
+  or a redirect, asks for a sign-in. A
   failing gate prints above the fit and a score the person rejected says so,
   as on Job Hunter's own board. Everything Job Hunter says is printed as
   text.
@@ -437,10 +439,11 @@ the popout's assertion: change it on one side only and the popout stops.
   working sign-in leaves no count. The cap is also twenty at once, then:
   more than twenty exchanges in flight together from one network would be
   refused, which Access, signing in a closed beta, never comes near.
-- **D1, the `DB` saved roles use** (DEPLOY.md §3e): `oidc_codes` and
-  `oidc_fails`, made on first use. A code row holds an address for minutes:
-  a redeemed row goes at once, and every write clears rows over ten minutes
-  old.
+- **D1, the `DB` saved roles use** (DEPLOY.md §3e): `oidc_codes`,
+  `oidc_fails` and `jh_asks` (the panel's pace, below), made on first use. A
+  code row holds an address for minutes: a redeemed row goes at once, and
+  every write clears rows over ten minutes old. `oidc_fails` and `jh_asks`
+  rows hold a hash, never an address.
 - **The gate's OPEN set** gains exactly `/oidc/authorize`, `/oidc/token`,
   `/oidc/jwks` and `/.well-known/openid-configuration` (no trailing slash,
   no other spelling); the check pins the whole set.
@@ -450,8 +453,17 @@ the popout's assertion: change it on one side only and the popout stops.
   sibling host's (Sec-Fetch-Site), another hostname, no sign-in (401
   `not_signed_in`), no `hunter`/`owner` (403 `not_allowed`), an id Job
   Hunter's `board_role` would not take (1 to 600 characters with "::", no
-  control character; 400 `bad_id`), no service token or key (503
-  `{"failed":"not_set_up"}`) - each refused before anything is sent. Then
+  control character; 400 `bad_id`), no service token, D1 or key (503
+  `{"failed":"not_set_up"}`), and **one person's pace**: twenty asks a
+  minute per signed-in address (`ASKS_PER_MINUTE`, `takeAsk`, D1 `jh_asks`
+  keyed by a hash of the address and the minute, one statement that counts
+  only while under the cap, as the token door's tries), over it 429
+  `{"error":"slow_down"}` with Retry-After 60, D1 failing 502 `unreachable` -
+  each refused before anything is signed or sent. The pace is for Job
+  Hunter's replay book (review, 2026-11-23): it keeps every assertion's jti
+  ten minutes and refuses EVERYBODY at 10,000, and one beta user's script at
+  17 a second filled it; at twenty a minute that takes fifty beta users
+  asking flat out. Then
   ONE call: GET `https://hunter.<domain>/api/board-role?id=<id>` with
   `CF-Access-Client-Id` / `CF-Access-Client-Secret` (`JH_SERVICE_TOKEN_ID` /
   `JH_SERVICE_TOKEN_SECRET`) and `X-SJ-Assertion` (ES256, the same key: iss,
@@ -493,9 +505,13 @@ the popout's assertion: change it on one side only and the popout stops.
   own arithmetic, `_es256_verify`), `check_the_panel_asks_job_hunter_through_the_board`
   (`scripts/jh_proxy_harness.mjs`: every refusal with no call made, the one
   call header by header, the assertion verified in Python, ten awkward ids
-  read back by Python's own query parser as Job Hunter's would, every relay),
+  read back by Python's own query parser as Job Hunter's would, every relay,
+  and the pace: twenty asks and the twenty-first refused unsent, another
+  person unslowed, fifty sent at once held at the count's door until all have
+  come, of which twenty reach Job Hunter, the next minute heard again),
   `check_the_sign_in_secrets_are_made_and_shown_once` (a working pair, d·G
-  checked, nothing written), and the panel's words above.
+  checked, nothing written, nothing printed into a pipe, the rotation's
+  words), and the panel's words above.
 
 ## The job list is cards (owner, 2026-09-27)
 
