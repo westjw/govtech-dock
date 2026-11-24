@@ -250,6 +250,89 @@ your sign-in". Save a role, then open the board signed in on another browser
 whoever signs in after you never sees your list: it is set aside for you
 until you sign in there again. The list itself stays with the sign-in.
 
+## 3f. Job Hunter signs in with SLED JOBS (design C, 2026-11-23, ~25 minutes)
+
+Your pick of three: "C: B plus popout". Access stays in front of Job Hunter
+and its only button becomes **Sign in with SLED JOBS**; signed in on the board
+already, you go straight through. The board's own server asks Job Hunter for
+a role's panel with a service token, so the panel never asks you to sign in.
+Job Hunter stays a closed beta: the Users board's `hunter` role (or `owner`)
+gets a sign-in, everybody else is told it is a closed beta, and the "Beta
+users" policy stays as the second lock. How it works is in CLAUDE.md ("Job
+Hunter signs in with SLED JOBS"). Two rules hold throughout: **never a new
+Access application** (the existing "Job Hunter beta" is the one you change)
+and **no `*.sledjobs.com` wildcard**.
+
+**Before you start:** the board's D1 database is bound as `DB` (§3e; the
+one-time codes live there) and `SESSION_SECRET` is set (§3a).
+
+**Your steps, in this order:**
+1. **The key and the client secret.** In Terminal, in the repository folder:
+   `node scripts/jh_signin_secrets.mjs`. It prints three values ONCE and
+   saves nothing (it refuses to print into a file unless you add
+   `--to-pipe`). Workers & Pages → `solesource` → Settings → Variables and
+   secrets → **Add**, Type **Secret**, Production, one each:
+   `OIDC_SIGNING_JWK`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET`. Keep the
+   client id and secret on screen for step 2, then close the Terminal tab.
+   A new deployment (Deployments → latest → Retry deployment). Check:
+   `curl -s https://sledjobs.com/oidc/jwks` shows one key with no `"d"` in
+   it, and `curl -s https://sledjobs.com/.well-known/openid-configuration`
+   names the issuer `https://sledjobs.com`.
+2. **The identity provider.** Zero Trust → Integrations → Identity providers
+   → **Add new** → **OpenID Connect**. Name `SLED JOBS`. App ID: the
+   `OIDC_CLIENT_ID`. Client secret: the `OIDC_CLIENT_SECRET`. Auth URL
+   `https://sledjobs.com/oidc/authorize`, Token URL
+   `https://sledjobs.com/oidc/token`, Certificate URL
+   `https://sledjobs.com/oidc/jwks`. **PKCE on.** Scopes `openid email`;
+   email claim `email`. Save, then **Test**: you meet the board's sign-in (or
+   go straight through if signed in there), and Access shows your address.
+   An address without the `hunter` or `owner` role sees "Job Hunter is in a
+   closed beta" instead, which is right.
+3. **Job Hunter's application.** Access → Applications → the EXISTING "Job
+   Hunter beta" → Edit → Authentication: tick **only** `SLED JOBS`, and turn
+   **Instant Auth** on. Keep the "Beta users" policy as it is. Never tick
+   `SLED JOBS` on the board's own "SLED JOBS admin" application.
+4. **The popout's service token.** Access → Service credentials → Service
+   Tokens → **Create**, name `board popout`. Copy its Client ID and Client
+   Secret (the secret is shown once). On "Job Hunter beta", add a policy:
+   Action **Service Auth**, Include → Service Token → `board popout`. Then
+   two more Pages secrets: `JH_SERVICE_TOKEN_ID` (the Client ID) and
+   `JH_SERVICE_TOKEN_SECRET` (the Client Secret), and a new deployment. In
+   Job Hunter's serve plist put the Client ID (only the ID) as
+   `JH_BOARD_SERVICE_TOKEN` and restart Job Hunter's server (Job Hunter's
+   deploy/README.md says how). The token passes Access on every path of
+   hunter.sledjobs.com, so Job Hunter believes it only together with the
+   board's signed assertion, and only for the panel's one route.
+5. **Who is in the beta**: grant `hunter` on the Users board, as today, and
+   keep each person on "Beta users".
+
+**Check it afterwards** (Claude can run the first two):
+- `curl -s -o /dev/null -w '%{http_code}\n' -X POST https://sledjobs.com/oidc/token`
+  → `400` (a JSON error, not the board's sign-in card: the door is open to
+  Access). `503` means a secret from step 1 is missing or the deploy has not
+  happened.
+- `curl -s https://sledjobs.com/oidc/jwks` → `{"keys":[{"kty":"EC",...}]}`.
+- **You, in a private window:** `https://hunter.sledjobs.com/` → the board's
+  sign-in, by email → Job Hunter. Then, signed in on the board, open Job
+  Hunter again: no sign-in at all.
+- **The panel:** on any role on the board, **Job Hunter ▸** fills in with no
+  sign-in. "The board's way in to Job Hunter is not set up yet" means step
+  4's Pages secrets; "did not answer" means Job Hunter is asleep or its
+  plist variable is missing.
+
+**A new signing key** (once a year, or if one may have leaked): first copy
+the current `OIDC_SIGNING_JWK` into a new secret `OIDC_SIGNING_JWK_OLD`, then
+`node scripts/jh_signin_secrets.mjs --key` and replace `OIDC_SIGNING_JWK`
+with what it prints, then a new deployment. Both keys are published, so
+nothing signed a minute ago fails; delete `OIDC_SIGNING_JWK_OLD` a day later.
+A new client secret is a run of the script without `--key`, pasted in both
+places (Pages and the identity provider) at once.
+
+**Taking someone out of the beta** is the "Beta users" policy (at once) and
+the `hunter` role on the Users board (after the next deploy). The service
+token is revoked in Zero Trust → Service Tokens; the panel then says Job
+Hunter did not answer, and nothing else changes.
+
 ## 3. Signed-in only until launch (decided 2026-10-05)
 **Read §3a first. Since 2026-11-13 Access covers `/admin` ONLY, for good.**
 Steps 3 to 5 and the Verify below are the 2026-10-05 history, when Access
