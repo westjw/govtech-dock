@@ -437,6 +437,15 @@ def board_url(c: dict) -> str | None:
             return ats.trinethire_url(ref)
         except ats.AtsError:
             return c.get("website")
+    if kind == "jobscore":
+        # the board's hosted list on careers.jobscore.com, every opening on
+        # it, each linking its posting - never the feed, which is for
+        # programs and names a hiring team; a ref that is no slug: their
+        # website
+        try:
+            return ats.jobscore_page(ref)
+        except ats.AtsError:
+            return c.get("website")
     if kind == "html" and ats.trinethire_career(ref) is not None:
         # a careers page on file that is TriNet's career page links the same
         # board's list, its embed: that page says there are no openings
@@ -574,8 +583,20 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     company number and job id (ats.trinethire_posting_key) and keeps its id,
     its first-seen day and its saved links across a rename (blind review 13,
     2026-11-24). Every other address is hashed as it is.
+
+    A JOBSCORE POSTING IS ITS ADDRESS ALONE (ats.jobscore_posting_key): one
+    address is one posting - its 22-character id names it - so the place
+    beside it is no part of its key. The hosted list a careers page reader
+    reads states no place, and the feed states one, so keyed with its place
+    a posting would move ids the night its company moves from type html to
+    jobscore: its first-seen day reset, and every saved role and shared link
+    to it broken (2026-11-24: ImageTrend's 7 on the board, first seen 09-25
+    to 11-03, would all have). Keyed on its address it is the same posting,
+    id and day, under either reader.
     """
-    key = f"{ats.trinethire_posting_key(url) or url or ''}\n{location or ''}"
+    posting = ats.jobscore_posting_key(url)
+    key = (f"{posting}\n" if posting else
+           f"{ats.trinethire_posting_key(url) or url or ''}\n{location or ''}")
     disc = hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
     return f"{opening_id(company_id, title)}::{disc}"
 

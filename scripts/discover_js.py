@@ -47,7 +47,14 @@ ATS_URL_PATS = [
     ("successfactors", r"([a-z0-9-]+)\.(?:successfactors|sapsf)\.com"),
     ("taleo",   r"([a-z0-9-]+)\.taleo\.net"),
     ("clearcompany", r"([a-z0-9-]+)\.clearcompany\.com"),
-    ("jobscore", r"careers\.jobscore\.com/careers/([a-z0-9-]+)"),
+    # (a link to the hosted board, its feed or a posting; the widget's
+    # iframe; the script loader, whose slug is its last argument - the
+    # three forms find_site_boards reads, 2026-11-23)
+    ("jobscore", r"(?:careers|www|hire)\.jobscore\.com/(?:careers|jobs)/([a-z0-9][a-z0-9-]*)"
+                 r"|widgets\.jobscore\.com/jobs/([a-z0-9][a-z0-9-]*)/widget_iframe"
+                 r"|careers\.jobscore\.com/jobs/['\"]\s*\+\s*[A-Za-z_$][\w$]{0,40}\s*\+\s*['\"]/widget\.js"
+                 r"['\"][^<]{0,2000}?\}\s*\)\s*\(\s*document\s*,\s*['\"]script['\"]\s*,\s*"
+                 r"['\"]([a-z0-9][a-z0-9-]*)['\"]\s*\)"),
     ("polymer", r"([a-z0-9-]+)\.polymer\.co"),
 ]
 

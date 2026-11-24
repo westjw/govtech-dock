@@ -452,6 +452,7 @@ HINTS = {
     "jobvite": ("jobvite.com",),
     "jobvitefeed": ("jobvite.com",),
     "trinethire": ("trinethire.com",),
+    "jobscore": ("jobscore.com",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -468,7 +469,7 @@ JIBE_MARK = "jibecdn.com"
 # spelling on file and on that company's page, and HTTP 404 for "wayground":
 # the lowered ref would have lost a board the page named correctly. Two of
 # the 33 Lever boards on file are spelt with a capital.
-LOWERED = {"recruitee", "breezy", "bamboohr", "jazzhr", "icims", "pinpoint"}
+LOWERED = {"recruitee", "breezy", "bamboohr", "jazzhr", "icims", "pinpoint", "jobscore"}
 
 # The vendor's own furniture, never a customer. Three tables' worth, joined
 # rather than copied, plus what turned up here: Workable's /j/ short links,
@@ -666,6 +667,16 @@ def _trinethire_board(m):
     return (f"{number}-{slug}" if slug else number), number.lstrip("0") or "0"
 
 
+def _jobscore_loader(m):
+    # JobScore's script loader builds its address at run time -
+    # '//careers.jobscore.com/jobs/' + c + '/widget.js' - and hands it the
+    # slug as its LAST argument, })(document, 'script', '<slug>') (ImageTrend's
+    # careers page, 2026-11-23): the slug is that argument, read only from a
+    # call in the same script as that very address
+    slug = m.group(1).lower()
+    return None if _furniture(slug) or slug == "jobscore" else (slug, slug)
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -767,6 +778,23 @@ BOARDS: list[_Pat] = (
         # too (/companies/<n>-/jobs)
         _here("trinethire", r"(?<![a-z0-9.-])app\.trinethire\.com/companies/([0-9]{1,12})"
                             r"(?:-([a-z0-9-]{0,200}))?(?![a-z0-9-])", _trinethire_board),
+        # A JOBSCORE BOARD, by its account's slug, in the three forms a
+        # company's own page names it in (2026-11-23): a link to the hosted
+        # board, its feed or a posting, on careers., www. or hire.jobscore.com
+        # under /careers/ or /jobs/ (the loader's fallback link is one); the
+        # widget's iframe, widgets.jobscore.com/jobs/<slug>/widget_iframe
+        # (Finalsite's); and the script loader, whose slug is its last
+        # argument (ImageTrend's). JobScore's own hosts and pages - its asset
+        # hosts, the 'Powered by' link (www.jobscore.com/?utm_source=<slug>) -
+        # are no board: jobscore-other
+        _here("jobscore", r"(?<![a-z0-9.-])(?:careers|www|hire)\.jobscore\.com/(?:careers|jobs)/"
+                          r"([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)(?![a-z0-9_-])"),
+        _here("jobscore", r"(?<![a-z0-9.-])widgets\.jobscore\.com/jobs/([a-z0-9](?:[a-z0-9-]{0,61}"
+                          r"[a-z0-9])?)/widget_iframe(?![a-z0-9_-])"),
+        _here("jobscore", r"(?<![a-z0-9.-])careers\.jobscore\.com/jobs/['\"]\s*\+\s*[A-Za-z_$][\w$]{0,40}"
+                          r"\s*\+\s*['\"]/widget\.js['\"][^<]{0,2000}?\}\s*\)\s*\(\s*document\s*,\s*"
+                          r"['\"]script['\"]\s*,\s*['\"]([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)['\"]\s*\)",
+              _jobscore_loader),
     ])
 
 # A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
@@ -947,7 +975,10 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("avature", "avature.net", _B + r"avature\.net"),
         ("csod", "csod.com", _B + r"csod\.com"),
         ("personio", "personio.", _B + r"personio\.(?:de|com)(?![a-z0-9-])"),
-        ("jobscore", "jobscore.com", _B + r"jobscore\.com"),
+        # any other jobscore.com address (JobScore's own site and asset
+        # hosts, the 'Powered by' link, a page naming no slug): a platform we
+        # read, naming no board
+        ("jobscore-other", "jobscore.com", _B + r"jobscore\.com"),
         ("careerplug", "careerplug.com", _B + r"careerplug\.com"),
         ("hireology", "hireology.com", _B + r"hireology\.com"),
         # where a company posts instead of keeping a board of its own
@@ -1054,7 +1085,7 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
                    "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
                    "jobvite-other": "jobvite", "successfactors-other": "successfactors",
-                   "trinethire-other": "trinethire"}
+                   "trinethire-other": "trinethire", "jobscore-other": "jobscore"}
 # A platform's form that is somewhere else to hire through on any other page
 # and the board's own furniture on the board's own pages: a Career Site
 # Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
