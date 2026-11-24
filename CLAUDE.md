@@ -3010,7 +3010,7 @@ round.
   A BOARD, so a doubt about a company whose own site names no board and
   links a Paylocity posting is kept then about no board, and kept again, in
   the same words and under the same label, against the board the posting's
-  page names once the plan has asked that page and before it asks any board
+  page names once the plan has asked that page and before it reads any board
   (`keep_posted_doubts`, a second journalled addition; never one the owner
   settled since, which would stand again by its later stamp). Kept about no
   board alone it held the company by its id and that board under no other,

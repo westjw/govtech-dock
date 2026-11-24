@@ -45984,10 +45984,10 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                                                doubts={"pq-x": WORDS_PQ},
                                                name="worklist-pq-5.json")
             if code != 1 or "STOPPED once the postings their sites link were asked, before " \
-                    "any board was: data/board_doubts.json does not read" not in text \
+                    "any board was read: data/board_doubts.json does not read" not in text \
                     or wl_s.exists() or box.asked or box.probed or box.sized:
                 errors += fail(f"a doubts file that stopped reading once the posting was asked "
-                               f"did not stop the plan before any board was asked: exit {code}, "
+                               f"did not stop the plan before any board was read: exit {code}, "
                                f"asked {box.asked + box.probed + box.sized}; {text[-500:]!r}")
     finally:
         verify_boards._board_page = keep_page
@@ -47887,7 +47887,8 @@ def check_a_posting_their_site_links_is_a_candidate_not_a_board() -> int:
             ep[3]: (302, eb[4]),
             eb[4]: (200, f"<html><a href='{eb[4]}'>All Jobs</a>{pad}</html>"),
             ep[4]: (200, _pp_page("Pe Co - Engineer", eb[1]) + pad),
-            "https://www.pereal.test/careers": (200, f"<html><a href='{eb[5]}'>Jobs</a>{pad}</html>")}
+            "https://www.pereal.test/careers": (200,
+                                                f"<html><a href='{eb[5]}'>Jobs</a>{pad}</html>")}
     easked = []
 
     class EResp:

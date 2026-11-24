@@ -3272,7 +3272,7 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     stated (page_addresses_of); `postings`, with the boards each Paylocity
     posting's page this run asked named (posting_boards_of).
     `after_postings(results)`, when given, is called once the postings are
-    asked and before any board is: cmd_plan keeps the readers' doubts against
+    asked and before any board is read: cmd_plan keeps the readers' doubts against
     the board a posting named there (keep_posted_doubts), and gets back the
     doubts on file as that left them and the companies it kept them for (or
     None when it wrote nothing), or raises Stopped.
@@ -3773,7 +3773,7 @@ def keep_posted_doubts(reviewed: dict, results: dict, by: str, worklist: str,
     """Keep each reader's doubt about a company whose own site names no board
     and links a Paylocity posting AGAIN, in the same words, against the board
     the posting's page named - once the plan has asked that page
-    (resolved_by_posting; `results` as it left them) and before it asks any
+    (resolved_by_posting; `results` as it left them) and before it reads any
     board.
 
     A POSTING IS NOT A BOARD, so keep_doubts, before the first request, kept
@@ -3822,7 +3822,7 @@ def keep_posted_doubts(reviewed: dict, results: dict, by: str, worklist: str,
                      f"posting's page names, about companies whose own site names no board and "
                      f"links the posting: kept about the company before the wiring door's plan "
                      f"asked anything, and against the board once the plan had asked the "
-                     f"posting's page, before it asked any board (worklist {worklist})"))
+                     f"posting's page, before it read any board (worklist {worklist})"))
             if bad:
                 return (f"the doubts file would refuse the readers' doubts against the board a "
                         f"posting's page names: {_without_tail(bad)}; they stand about the "
@@ -3831,7 +3831,7 @@ def keep_posted_doubts(reviewed: dict, results: dict, by: str, worklist: str,
     fresh = {r["id"] for r in new.values()}
     say(f"READERS' DOUBTS ABOUT A BOARD A POSTING NAMES {len(posted)} - their site names no "
         f"board and links a Paylocity posting, so each doubt is kept against the board the "
-        f"posting's page named, before any board is asked ({len(fresh)} new, "
+        f"posting's page named, before any board is read ({len(fresh)} new, "
         f"{len(posted) - len(fresh)} already on file or settled):")
     for cid in sorted(posted):
         name = (by_id.get(cid) or {}).get("name") or (results.get(cid) or {}).get("name") or cid
@@ -3848,7 +3848,7 @@ def keep_posted_doubts(reviewed: dict, results: dict, by: str, worklist: str,
 
 
 class Stopped(Exception):
-    """The plan stopped after its first request, before any board was asked:
+    """The plan stopped after its first request, before any board was read:
     its words say why."""
 
 
@@ -4014,7 +4014,7 @@ def cmd_plan(a) -> int:
                         after_postings=after_postings if reviewed else None)
         except Stopped as exc:
             print(f"\nSTOPPED once the postings their sites link were asked, before any board "
-                  f"was: {exc}. No worklist was written.")
+                  f"was read: {exc}. No worklist was written.")
             return 1
         n = counts(rows)
         doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
@@ -4067,7 +4067,7 @@ def cmd_plan(a) -> int:
              "READERS' DOUBTS says" if reviewed else "")
           + (f"; and {many(len(kept_posted), 'doubt')} about a company whose site only links a "
              f"Paylocity posting {'was' if len(kept_posted) == 1 else 'were'} kept against the "
-             f"board the posting's page names, before any board was asked" if kept_posted
+             f"board the posting's page names, before any board was read" if kept_posted
              else ""))
     print(f"next: python3 scripts/wire_found.py apply {out} --by agent:<label>")
     return 0
