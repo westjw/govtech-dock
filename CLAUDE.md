@@ -2936,7 +2936,9 @@ round.
   a posting (it read the board off the posting's page and wrote it on the
   tenant's name in its address alone), wire_embedded leaves a row naming one
   in no pile, and `file_found` files none (`board_proposals.paylocity_posting`
-  is the one test). KNOWN, AND LEFT AS FOUND: another posting a page links
+  is the one test); and a posting's address written as a Paylocity BOARD (an
+  older finder's file, or one made by hand) is a reference this door cannot
+  use (`ref_problem`), never read as a board. KNOWN, AND LEFT AS FOUND: another posting a page links
   is not asked once one has named the board, so a careers page linking a
   second account's posting beside its own is not seen by this; an apply form
   (/recruiting/jobs/Apply/<id>) names no board and is still the no-board form

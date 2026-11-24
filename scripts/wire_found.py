@@ -312,6 +312,13 @@ def ref_problem(kind, ref) -> str | None:
         return None
     if not isinstance(ref, str) or not ref.strip():
         return "the board has no ref"
+    if board_proposals.paylocity_posting(kind, ref):
+        # one job's address written as a board (an older finder's file, or one
+        # made by hand): its reader would read the posting's page as a board
+        # and find nothing on it. The finder writes a posting as a posting,
+        # whose page this door asks which board it names
+        return ("a Paylocity posting's address is one job, not a board: it is asked for its "
+                "board only as a posting (paylocity-posting)")
     return None
 
 
@@ -3946,7 +3953,7 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     # that is not a posting's own address on Paylocity, is left alone.
     posting = c1.get("posting")
     if posting is not None or c1.get("posting_boards") is not None \
-            or _QUOTES_A_POSTING.search(str(c1.get("saw") or "")):
+            or (kind == "paylocity" and _QUOTES_A_POSTING.search(str(c1.get("saw") or ""))):
         named = (held_for.get("postings") or {}).get(posting) if isinstance(posting, str) else None
         if kind != "paylocity" or not posting_address(posting) or not isinstance(named, list):
             return "evidence", (f"check 1 says their site links a posting "
