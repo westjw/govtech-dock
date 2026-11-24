@@ -42893,6 +42893,12 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         tenant's name carries , ; ( ) is kept, wired and read back whole; ids
         that agree on one kind and disagree on the other hold the board, said
         as that, beside a hold and a record alike;
+      - a reader's doubt about a company whose site only links a Paylocity
+        posting is kept against the board the posting's page names, and holds
+        it when the company is merged away - for the survivor linking that
+        posting, in the plan and in apply, for a record naming the board
+        itself, and in held_board - and one the owner settled since is not
+        raised again by its board (review of the posting change, 2026-11-23);
       - admin.act_merge merges a company whatever the door holds for it.
     """
     import admin
@@ -45894,6 +45900,97 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
                 errors += fail(f"{label}: apply took what its page stated in place of the address "
                                f"it is on file by, and the very board was not left alone, or the "
                                f"other find was not wired: {line[:300]!r} {text[-400:]!r}")
+    # A READER'S DOUBT ABOUT A COMPANY WHOSE SITE ONLY LINKS A PAYLOCITY POSTING
+    # is kept against the board the posting's page names, once the plan has
+    # asked it, and holds that board under the company's id when the company
+    # is merged away: for the survivor linking the same posting, in the plan
+    # and in apply for a worklist planned before, for a record whose site
+    # names the board itself, and in the hold reader discovery and
+    # wire_embedded share. Kept about no board alone, it held nothing after
+    # the merge, and the survivor was wired to the board the readers doubted
+    # (review of the posting change, 2026-11-23). A doubt the owner settled
+    # since is not raised again by its board.
+    import verify_boards
+    B_PQ, P_PQ = _PP_BOARD + f"{_pp_uuid(0x9a01)}/Pq-Ex-Inc", _PP_DETAILS + "9901/Pq-Ex-Inc/Eng"
+    B_PS, P_PS = _PP_BOARD + f"{_pp_uuid(0x9a02)}/Ps-Co-Inc", _PP_DETAILS + "9902/Ps-Co-Inc/Eng"
+    pq_pages = {P_PQ: _pp_page("Pq Ex - Engineer", B_PQ), P_PS: _pp_page("Ps Co - Engineer", B_PS)}
+    WORDS_PQ, WORDS_PS = ("two readers: this board is Pq Ex's parent's",
+                          "two readers: the posting is a reseller's")
+    BOARDS_PQ = {f"paylocity/{B_PQ}": (3, ["Pq Ex"]), f"paylocity/{B_PS}": (3, ["Ps Co"])}
+    HELD_PQ = f"paylocity/{B_PQ} is the board of a reader's doubt that stands about Pq Ex"
+
+    def pq_posted(cid, ref):
+        return entry(cid, [cand(wf.POSTING, ref, f"{site(cid)}/careers", saw=ref)])
+    keep_page = verify_boards._board_page
+    verify_boards._board_page = lambda url, head=0: pq_pages[url]
+    try:
+        with _WiringBox([co("pq-x", "Pq Ex"), co("ps-co", "Ps Co"), co("pq-w", "Pq Wy")],
+                        BOARDS_PQ, files={
+                wf.DOUBTS: {"ps-co@2026-11-20T10:00:00-05:00": {
+                    "id": "ps-co", "name": "Ps Co", "board": None, "type": None, "ref": None,
+                    "why": WORDS_PS, "by": "agent:readers", "on": "2026-11-20",
+                    "at": "2026-11-20T10:00:00-05:00"}},
+                bp.RULED.name: {"ps-co": {"accept": True, "by": "owner", "on": "2026-11-21",
+                                          "at": "2026-11-21T09:00:00-05:00",
+                                          "why": "their own board"}}}) as box:
+            code, text, _wl, rows_pq = box.plan(_wb_results({
+                "pq-x": pq_posted("pq-x", P_PQ), "ps-co": pq_posted("ps-co", P_PS),
+                "pq-w": names("pq-w", "paylocity", B_PQ)}),
+                doubts={"pq-x": WORDS_PQ, "ps-co": WORDS_PS}, name="worklist-pq-1.json")
+            kept_pq = json.loads((box.tmp / wf.DOUBTS).read_text())
+            about = sorted((v["id"], v.get("type") or "-", v.get("ref") or "-")
+                           for v in kept_pq.values() if v.get("why") in (WORDS_PQ, WORDS_PS))
+            expect(rows_pq, "pq-x", "HOLD", f"a reader checking this plan doubted it: {WORDS_PQ}")
+            # ...and the plan that kept it holds the board for its other records
+            expect(rows_pq, "pq-w", "HOLD", HELD_PQ)
+            if about != [("pq-x", "-", "-"), ("pq-x", "paylocity", B_PQ), ("ps-co", "-", "-")] \
+                    or "READERS' DOUBTS ABOUT A BOARD A POSTING NAMES 2 " not in text \
+                    or "settled: the owner ruled on this company" not in text:
+                errors += fail(f"a doubt about a company whose site only links a posting was not "
+                               f"kept against the board the posting's page names, or one the "
+                               f"owner settled since was raised again by its board: {about}; "
+                               f"{text[text.find('READERS'):][:900]!r}")
+        # pq-x merged into pq-x2 at the desk: the doubts stay under pq-x
+        with _WiringBox([co("pq-x2", "Pq Ex")], BOARDS_PQ) as box:
+            results_x2 = _wb_results({"pq-x2": pq_posted("pq-x2", P_PQ)})
+            code, text, wl_x2, rows_x2 = box.plan(results_x2, name="worklist-pq-2.json")
+            expect(rows_x2, "pq-x2", "WIRE")
+            (box.tmp / wf.DOUBTS).write_text(json.dumps(kept_pq))
+            code, text, _ = box.look(wl_x2)
+            if "WIRE 0 " not in text or HELD_PQ not in text:
+                errors += fail(f"apply wired the survivor of a merge to the board of a reader's "
+                               f"doubt that stands about the company merged away, whose site "
+                               f"only linked a posting: {text[-700:]!r}")
+            code, text, _wl, rows_x2 = box.plan(results_x2, name="worklist-pq-3.json")
+            expect(rows_x2, "pq-x2", "HOLD", HELD_PQ)
+            held_pq = bp.held_boards_for_the_owner(box.tmp, [box.record("pq-x2")])
+            got = bp.held_board(held_pq, "paylocity", B_PQ, "pq-x2", ["Pq Ex"])
+            if not got or got[0] != "standing" or HELD_PQ not in got[1]:
+                errors += fail(f"the hold reader discovery and wire_embedded share does not hold "
+                               f"the board of a reader's doubt about a company merged away whose "
+                               f"site only linked a posting: {got}")
+        with _WiringBox([co("pq-z", "Pq Ex")], BOARDS_PQ, files={wf.DOUBTS: kept_pq}) as box:
+            code, text, _wl, rows_z = box.plan(_wb_results({
+                "pq-z": names("pq-z", "paylocity", B_PQ)}), name="worklist-pq-4.json")
+            expect(rows_z, "pq-z", "HOLD", HELD_PQ)
+        # ...and a doubts file that stops reading once the posting is asked stops
+        # the plan there: no board is asked and no worklist is written
+        with _WiringBox([co("pq-x", "Pq Ex")], BOARDS_PQ) as box:
+            def spoiled(url, head=0):
+                (box.tmp / wf.DOUBTS).write_text("<<<<<<< HEAD\n")
+                return pq_pages[url]
+            verify_boards._board_page = spoiled
+            code, text, wl_s, _rows = box.plan(_wb_results({"pq-x": pq_posted("pq-x", P_PQ)}),
+                                               doubts={"pq-x": WORDS_PQ},
+                                               name="worklist-pq-5.json")
+            if code != 1 or "STOPPED once the postings their sites link were asked, before " \
+                    "any board was: data/board_doubts.json does not read" not in text \
+                    or wl_s.exists() or box.asked or box.probed or box.sized:
+                errors += fail(f"a doubts file that stopped reading once the posting was asked "
+                               f"did not stop the plan before any board was asked: exit {code}, "
+                               f"asked {box.asked + box.probed + box.sized}; {text[-500:]!r}")
+    finally:
+        verify_boards._board_page = keep_page
     return errors
 
 
