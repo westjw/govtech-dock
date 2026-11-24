@@ -3995,9 +3995,10 @@ through the door.
 - Guard: `check_jobvite_feed_reads_one_row_a_job_and_no_person`, beside a
   row in `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS and
   three forms in SITE_BOARD_FORMS (whose check stubs `ats._one` too: the feed
-  is asked through it). 57 one-line breakages of the reader, the parse, the
+  is asked through it). 58 one-line breakages of the reader, the parse, the
   gate, the probe, the finder, the door and the public link, each alone in a
-  private copy, each caught.
+  private copy, each caught; the type's lines in the shared tables are held
+  by the checks that own those tables.
 
 ## Build order (owner, 2026-08-23)
 
