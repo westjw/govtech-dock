@@ -47645,9 +47645,13 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
       - every posting asked closed (Job Not Found, a 404, no board named), up
         to three             -> SKIP: not a board, listed and never a zero;
                                 the fourth is not asked
-      - a posting's page that fails on the day -> SKIP, asked again, not filed
+      - a posting's page that fails on the day -> SKIP, asked again, not filed;
+        one robots.txt closes -> SKIP, and no other of theirs is asked
       - a posting off recruiting.paylocity.com -> refused, never asked
-      - a company refused earlier          -> its postings are not asked
+      - a company refused earlier          -> its postings are not asked: SKIP
+        refused where nothing else names a board, and beside a board of its
+        own (another board refused) that board is held, the posting said as
+        not asked
       - the board a posting names, held for the owner under another company's
         id, refused for another company, on file as another company's, or
         found for two companies by one posting (asked ONCE) -> HOLD, as any
@@ -47666,10 +47670,14 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
 
     def board(n, tenant):
         return f"{_PP_BOARD}{_pp_uuid(n)}/{tenant}"
+    # (pp-two's second board is named only by the page's "View All Jobs" link,
+    # which is written without its host: an address on Paylocity's host all the
+    # same, and a board of its own)
     B = {"one": board(0x7601, "Pp-One-Inc"), "two_a": board(0x7602, "Pp-Two-Inc"),
-         "two_b": board(0x7603, "Pp-Two-Engineering"), "late": board(0x7604, "Pp-Late-LLC"),
+         "two_b": f"{_PP_BOARD}{_pp_uuid(0x7603)}", "late": board(0x7604, "Pp-Late-LLC"),
          "held": board(0x7605, "Pp-Held-Inc"), "ref": board(0x7606, "Pp-Refusal-Inc"),
-         "rec": board(0x7607, "Pp-Recorded-Inc"), "twin": board(0x7608, "Pp-Twin-Inc")}
+         "rec": board(0x7607, "Pp-Recorded-Inc"), "twin": board(0x7608, "Pp-Twin-Inc"),
+         "mixed": board(0x7611, "Pp-Mixed-Inc")}
     P = {"one": D + "7601/Pp-One-Inc/Account-Executive",
          "two": D + "7602/Pp-Two-Inc/Sales-Engineer",
          "late_1": D + "7611/Pp-Late-LLC/Closed-Role", "late_2": D + "7612/Pp-Late-LLC/Open-Role",
@@ -47680,10 +47688,12 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "off": "https://jobs.ppoff.example/recruiting/jobs/Details/7641/Pp-Off/Engineer",
          "held": D + "7651/Pp-Held-Inc/Engineer", "ref": D + "7661/Pp-Refusal-Inc/Engineer",
          "rec": D + "7671/Pp-Recorded-Inc/Engineer", "twin": D + "7681/Pp-Twin-Inc/Engineer",
-         "refused": D + "7691/Pp-Refused/Engineer"}
+         "refused": D + "7691/Pp-Refused/Engineer", "mixed": D + "7692/Pp-Mixed-Inc/Engineer",
+         "shut_door_1": D + "7693/Pp-Door/One", "shut_door_2": D + "7694/Pp-Door/Two"}
     pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
                                 rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
-             P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"], B["two_b"]),
+             P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"],
+                                rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7603)}"),
              P["late_1"]: _PP_CLOSED,
              P["late_2"]: _pp_page("Pp Late - Open Role", B["late"]),
              P["late_3"]: _pp_page("Pp Late - Third Role", B["late"]),
@@ -47696,7 +47706,11 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
              P["ref"]: _pp_page("Pp Refusal - Engineer", B["ref"]),
              P["rec"]: _pp_page("Pp Recorded - Engineer", B["rec"]),
              P["twin"]: _pp_page("Pp Twin - Engineer", B["twin"]),
-             P["refused"]: _pp_page("Pp Refused - Engineer", board(0x7610, "Pp-Refused"))}
+             P["refused"]: _pp_page("Pp Refused - Engineer", board(0x7610, "Pp-Refused")),
+             P["mixed"]: _pp_page("Pp Mixed - Engineer", board(0x7612, "Pp-Mixed-Other")),
+             P["shut_door_1"]: ats.RobotsRefused(f"robots.txt asks crawlers not to read "
+                                                 f"{P['shut_door_1']}"),
+             P["shut_door_2"]: _pp_page("Pp Door - Two", board(0x7613, "Pp-Door"))}
     asked: list = []
 
     def posting_page(url, head=0):
@@ -47714,7 +47728,10 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                  co("pp-recorded", "Pp Recorded"), co("pp-twin-a", "Pp Twin"),
                  co("pp-twin-b", "Pp Twin Two"), co("pp-refused", "Pp Refused"),
                  co("doubt-other", "Doubt Other"), co("refuser-co", "Refuser Co"),
-                 co("holder-co", "Holder Co", ats={"type": "paylocity", "ref": B["rec"]})]
+                 co("holder-co", "Holder Co", ats={"type": "paylocity", "ref": B["rec"]}),
+                 # refused another board in Agent proposals; its own site names a
+                 # board beside a posting
+                 co("pp-mixed", "Pp Mixed"), co("pp-door", "Pp Door")]
 
     def posted(cid, *refs, times=1):
         return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
@@ -47731,12 +47748,17 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         "pp-recorded": posted("pp-recorded", P["rec"]),
         "pp-twin-a": posted("pp-twin-a", P["twin"]),
         "pp-twin-b": posted("pp-twin-b", P["twin"]),
-        "pp-refused": posted("pp-refused", P["refused"])})
+        "pp-refused": posted("pp-refused", P["refused"]),
+        "pp-door": posted("pp-door", P["shut_door_1"], P["shut_door_2"]),
+        "pp-mixed": entry("pp-mixed", [cand("paylocity", B["mixed"], f"{site('pp-mixed')}/careers"),
+                                       cand(wf.POSTING, P["mixed"], f"{site('pp-mixed')}/careers",
+                                            saw=P["mixed"])])})
     show = lambda key: wf.show("paylocity", B[key])        # noqa: E731
     BOARDS = {show("one"): (4, ["Pp One Inc"]), show("two_a"): (3, ["Pp Two Inc"]),
               show("two_b"): (2, ["Pp Two Inc"]), show("late"): (2, ["Pp Late LLC"]),
               show("held"): (2, ["Pp Held Inc"]), show("ref"): (2, ["Pp Refusal Inc"]),
-              show("rec"): (2, ["Pp Recorded Inc"]), show("twin"): (2, ["Pp Twin Inc"])}
+              show("rec"): (2, ["Pp Recorded Inc"]), show("twin"): (2, ["Pp Twin Inc"]),
+              show("mixed"): (2, ["Pp Mixed Inc"])}
     files = {
         # a reader's doubt about pp-held's board, kept for another company
         "board_doubts.json": {"doubt-other@2026-11-20T09:00:00-05:00": {
@@ -47748,7 +47770,12 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         "agent_proposals.json": {"board:refuser-co": {
             "kind": "board", "id": "refuser-co", "ats_type": "paylocity", "ats_ref": B["ref"],
             "status": "rejected", "ruled_by": "owner", "ruled_on": "2026-11-10",
-            "ruled_why": "that board is not Refuser Co's"}},
+            "ruled_why": "that board is not Refuser Co's"},
+            # pp-mixed: another board, refused for it in Agent proposals
+            "board:pp-mixed": {
+                "kind": "board", "id": "pp-mixed", "ats_type": "greenhouse",
+                "ats_ref": "ppmixedold", "status": "rejected", "ruled_by": "owner",
+                "ruled_on": "2026-11-09", "ruled_why": "an old board of theirs"}},
         # pp-refused: a board refused for it in Boards we found
         "board_proposal_rulings.json": {"pp-refused": {
             "accept": False, "why": "not their board", "by": "owner", "on": "2026-11-01"}}}
@@ -47794,6 +47821,7 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
             if shut.get("action") != "SKIP" or shut.get("kind") != "no-board" \
                     or "Job Not Found" not in sw or "HTTP 404" not in sw \
                     or "the find is not a board" not in sw or P["shut_4"] in asked \
+                    or "1 more of theirs were not asked" not in sw \
                     or shut.get("queue_row") or re.search(r"\b0 postings?\b", sw) \
                     or "Pp Shut" not in text.split("plan: wire")[0]:
                 errors += fail(f"pp-shut: postings whose pages give no board (up to "
@@ -47830,6 +47858,21 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                 errors += fail(f"pp-refused: a company refused earlier had its posting asked, or "
                                f"was not skipped as refused: {refused.get('action')} "
                                f"{refused.get('kind')}, asked {P['refused'] in asked}")
+            door = row("pp-door")
+            if door.get("action") != "SKIP" or door.get("kind") != "unreadable" \
+                    or "refused" not in _wb_words(door) or P["shut_door_2"] in asked \
+                    or door.get("queue_row"):
+                errors += fail(f"pp-door: a posting's page robots.txt closes did not stop the "
+                               f"asking, or was filed: {door.get('action')} {door.get('kind')} "
+                               f"{_wb_words(door)[:300]!r}, asked on {P['shut_door_2'] in asked}")
+            mixed = row("pp-mixed")
+            if mixed.get("action") != "HOLD" or P["mixed"] in asked \
+                    or "an old board of theirs" not in _wb_words(mixed) \
+                    or "not asked of anybody" not in _wb_words(mixed):
+                errors += fail(f"pp-mixed: a company refused another board, whose site names a "
+                               f"board of its own beside a posting, had the posting asked, or "
+                               f"is not held with the refusal and the posting said as not "
+                               f"asked: {mixed.get('action')} {_wb_words(mixed)[:400]!r}")
             if len(asked) != len(set(asked)):
                 errors += fail(f"a posting's page was asked more than once in one plan: {asked}")
             doc = json.loads(wl.read_text()) if wl.exists() else {}
