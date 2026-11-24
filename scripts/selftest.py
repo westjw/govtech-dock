@@ -30715,6 +30715,18 @@ SITE_BOARD_FORMS = [
     # Gigamon links its Jobvite career site; OverDrive frames it (seen 2026-11-19)
     ('<a href="https://jobs.jobvite.com/gigamon/jobs">Careers</a>',
      "jobvite", "gigamon", "https://jobs.jobvite.com/gigamon/jobs"),
+    # Tyler Technologies' careers pages name its Jobvite account by its company
+    # id three ways - the widget's script, its frame, a CompanyJobs page - and
+    # no career site (seen 2026-11-23; the other values here are made up)
+    ('<script src="https://app.jobvite.com/__assets__/scripts/source/widgets/JV.getTPWidget.js'
+     '?ty=0&amp;ci=q6NaVfwI&amp;ui=uAbCdfw1&amp;sd=Pat%20Example&amp;width=auto"></script>',
+     "jobvitefeed", "q6NaVfwI", "https://app.jobvite.com/CompanyJobs/Xml.aspx?c=q6NaVfwI"),
+    ('<iframe src="https://app.jobvite.com/TalentNetwork/widget/widgetContainerV2.html?ty=0&amp;'
+     'ci=q6NaVfwI&amp;ui=uAbCdfw1&amp;resume=1&amp;v=2"></iframe>',
+     "jobvitefeed", "q6NaVfwI", "https://app.jobvite.com/CompanyJobs/Xml.aspx?c=q6NaVfwI"),
+    ('<a href="https://app.jobvite.com/CompanyJobs/Careers.aspx?k=Apply&amp;j=oAbCdfwL&amp;'
+     'c=q6NaVfwI">Apply</a>',
+     "jobvitefeed", "q6NaVfwI", "https://app.jobvite.com/CompanyJobs/Xml.aspx?c=q6NaVfwI"),
     # a SuccessFactors Career Site Builder board on a jobs host of their own,
     # linked by its category page and by its search (Gainwell's shapes, 2026-11-22)
     ('<a href="https://jobs.acmegov.example/go/View-All-Jobs/8808000/">All jobs</a>',
@@ -30962,8 +30974,10 @@ def check_a_board_counts_only_when_their_own_site_points_to_it() -> int:
         asked.append((url, body))
         raise ats.AtsError("stub: asked")
 
-    keep = (ats._get, ats._page, ats._post_json)
-    ats._get, ats._page, ats._post_json = _rec_get, _rec_get, _rec_post
+    # (and ats._one: a feed read as a stream asks through it, and would
+    # otherwise ask a real host from here)
+    keep = (ats._get, ats._page, ats._post_json, ats._one)
+    ats._get, ats._page, ats._post_json, ats._one = _rec_get, _rec_get, _rec_post, _rec_get
     try:
         for markup, kind, ref, address in SITE_BOARD_FORMS:
             found, _ = fsb.sightings(markup, here, home_site)
@@ -30999,7 +31013,7 @@ def check_a_board_counts_only_when_their_own_site_points_to_it() -> int:
             if p.kind not in ats.FETCHERS or p.kind == "html":
                 errors += fail(f"find_site_boards can name a {p.kind!r} board, which nothing reads")
     finally:
-        ats._get, ats._page, ats._post_json = keep
+        ats._get, ats._page, ats._post_json, ats._one = keep
     for markup in SITE_BOARD_NOT_ONE:
         found, _ = fsb.sightings(markup, here, home_site)
         if found:
