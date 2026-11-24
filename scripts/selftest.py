@@ -2776,6 +2776,100 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
     return errors
 
 
+def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
+    """scripts/jh_signin_secrets.mjs makes Job Hunter's sign-in secrets on the
+    owner's machine and prints them once (design C, DEPLOY.md §3f step 1).
+
+    A private key must never reach this public repository: the script writes
+    nothing, refuses when its output is not a terminal (unless told
+    --to-pipe), and what it prints is a working P-256 pair (d·G is the
+    published point, checked here by the curve's arithmetic) whose kid is
+    its RFC 7638 thumbprint, a client id, and a secret of at least 32
+    characters, fresh each run. The key it prints signs, in the board's own
+    _oidc.js, a token its published half verifies.
+    """
+    import shutil
+    import subprocess
+    import tempfile
+    errors = 0
+    if not shutil.which("node"):
+        print("  note: node is not installed; the secrets script was not run")
+        return 0
+    script = ROOT / "scripts" / "jh_signin_secrets.mjs"
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-jhsecrets-"))
+    git = lambda: subprocess.run(["git", "status", "--porcelain", "--untracked-files=all"], cwd=ROOT,  # noqa: E731
+                                 capture_output=True, text=True).stdout
+    before = git()
+
+    def run(*args):
+        return subprocess.run(["node", str(script), *args], cwd=tmp, capture_output=True, text=True, timeout=60)
+
+    def values(text):
+        lines, got = text.splitlines(), {}
+        for i, ln in enumerate(lines):
+            if ln in ("OIDC_SIGNING_JWK", "OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET") and i + 1 < len(lines):
+                got[ln] = lines[i + 1]
+        return got
+    try:
+        for args, why in (((), "its output is piped without --to-pipe"), (("--bogus", "--to-pipe"), "an unknown option")):
+            r = run(*args)
+            if r.returncode == 0 or values(r.stdout) or '"d"' in r.stdout + r.stderr:
+                errors += fail(f"the secrets script printed secrets when {why}")
+        r1, r2, rk = run("--to-pipe"), run("--to-pipe"), run("--key", "--to-pipe")
+        v1, v2, vk = values(r1.stdout), values(r2.stdout), values(rk.stdout)
+        if r1.returncode or set(v1) != {"OIDC_SIGNING_JWK", "OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET"}:
+            return errors + fail(f"the secrets script did not print the three secrets: {r1.returncode} {sorted(v1)}")
+        if any(v1[k] == v2.get(k) for k in v1):
+            errors += fail("two runs of the secrets script printed the same value")
+        if set(vk) != {"OIDC_SIGNING_JWK"} or "OIDC_SIGNING_JWK_OLD" not in rk.stdout:
+            errors += fail("--key does not print a signing key alone, with the rotation's first step")
+        for name, raw in (("full run", v1["OIDC_SIGNING_JWK"]), ("--key", vk.get("OIDC_SIGNING_JWK", "{}"))):
+            k = json.loads(raw)
+            b64 = r"[A-Za-z0-9_-]{43}"
+            if (set(k) != {"kty", "crv", "x", "y", "d", "kid", "alg", "use"} or (k["kty"], k["crv"], k["alg"], k["use"])
+                    != ("EC", "P-256", "ES256", "sig") or not all(re.fullmatch(b64, k[f]) for f in ("x", "y", "d"))):
+                errors += fail(f"the {name} key is not a private P-256 JWK for ES256")
+                continue
+            thumb = _up_b64(hashlib.sha256(json.dumps({"crv": k["crv"], "kty": k["kty"], "x": k["x"], "y": k["y"]},
+                                                      separators=(",", ":"), sort_keys=True).encode()).digest())
+            if k["kid"] != thumb:
+                errors += fail(f"the {name} key's kid is not its RFC 7638 thumbprint")
+            x, y, dd = (int.from_bytes(_b64u_bytes(k[f]), "big") for f in ("x", "y", "d"))
+            if not (0 < dd < _P256_N) or _p256_mul(dd, _P256_G) != (x, y):
+                errors += fail(f"the {name} key's private half is not the published point's")
+        if not re.fullmatch(r"job-hunter-[0-9a-f]{16}", v1["OIDC_CLIENT_ID"]):
+            errors += fail(f"the client id is not plain: {v1['OIDC_CLIENT_ID'][:20]!r}")
+        if not re.fullmatch(r"[A-Za-z0-9_-]{32,}", v1["OIDC_CLIENT_SECRET"]):
+            errors += fail("the client secret is under 32 characters, or not plain base64url")
+        # THE KEY WORKS IN THE BOARD: _oidc.js signs with it, its published half verifies
+        probe = ("import(" + json.dumps((ROOT / "functions" / "_oidc.js").as_uri()) + ").then(async (O) => {"
+                 "const env = { OIDC_SIGNING_JWK: process.env.PROBE_JWK };"
+                 "const jwt = await O.signJwt(env, { iss: 'probe', iat: 1 });"
+                 "console.log(JSON.stringify({ jwt, keys: await O.publicKeys(env) })); })")
+        p = subprocess.run(["node", "--input-type=module", "-e", probe], capture_output=True, text=True, timeout=60,
+                           env={**os.environ, "PROBE_JWK": v1["OIDC_SIGNING_JWK"]})
+        try:
+            got = json.loads(p.stdout.strip().splitlines()[-1])
+        except (ValueError, IndexError):
+            got = {}
+        pub = (got.get("keys") or [{}])[0]
+        if (not got.get("jwt") or "d" in pub or pub.get("kid") != json.loads(v1["OIDC_SIGNING_JWK"])["kid"]
+                or not _es256_verify(pub, got["jwt"])):
+            errors += fail(f"the printed key does not sign in the board a token its published half verifies: {p.stderr[-200:]}")
+        if any(tmp.iterdir()):
+            errors += fail(f"the secrets script wrote a file: {[f.name for f in tmp.iterdir()]}")
+        if git() != before:
+            errors += fail("running the secrets script changed the working tree")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def _up_b64(b: bytes) -> str:
+    import base64
+    return base64.urlsafe_b64encode(b).decode("ascii").rstrip("=")
+
+
 def check_the_site_is_signed_in_only_until_launch() -> int:
     """The front door is public; nothing else is served without a sign-in.
 
@@ -61416,6 +61510,7 @@ def main() -> int:
     errors += check_our_own_sign_in_proves_the_address_and_opens_only_the_boards()
     errors += check_job_hunter_signs_in_with_sled_jobs()
     errors += check_the_panel_asks_job_hunter_through_the_board()
+    errors += check_the_sign_in_secrets_are_made_and_shown_once()
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()
