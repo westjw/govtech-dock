@@ -274,8 +274,9 @@ OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-
              # a board, so trinethire-other names none: 2026-11-24)
              "trinethire": {"trinethire-other"},
              # (every jobscore.com address naming a slug in a board's form is a
-             # board, so jobscore-other - the 'Powered by' link, an asset
-             # host - names none: 2026-11-24)
+             # board, and one naming an account or a job in any other shape is
+             # jobscore-tenant - a doubt, never this note - so jobscore-other,
+             # the 'Powered by' link or an asset host, names none: 2026-11-24)
              "jobscore": {"jobscore-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),

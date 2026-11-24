@@ -74,6 +74,7 @@ import re
 import sys
 import threading
 import time
+import unicodedata
 import urllib.parse
 import xml.parsers.expat
 from collections import Counter
@@ -4752,17 +4753,30 @@ def fetch_trinethire(ref) -> list[dict]:
 #
 # ONE REQUEST IS THE WHOLE BOARD: no paging offered and none needed (8 of 8
 # and 14 of 14 rows against the hosted list, the same addresses, 2026-11-23;
-# 8 and 13 on 2026-11-24). Read through ats._page - robots.txt at every hop,
-# the crawler's own name, the host gate - and the feed answers in place, so
-# any redirect (another host, another path, the feed again) is refused
-# before it is asked anything (_jobscore_read). A feed past
-# JOBSCORE_FEED_MAX bytes is refused, never read in part, and a feed that
-# links another page of itself (an Atom link rel next, previous, first or
-# last) raises: one page is never the whole board.
+# 8 and 13 on 2026-11-24). Read through ats.follow and _one - robots.txt at
+# every hop, the crawler's own name, the host gate - as a stream, and the
+# feed answers in place, so any redirect (another host, another path, the
+# feed again) is refused before it is asked anything (_jobscore_read). A
+# feed past JOBSCORE_FEED_MAX bytes is refused, never read in part, and no
+# more of it is taken off the wire than the cap and one chunk (blind review
+# of 2026-11-24: read whole first, a 40 MB answer was pulled down to the last
+# byte before it was refused). A feed that says it is one page of a longer
+# one raises: one page is never the whole board - an Atom link rel first,
+# last or current, or any rel naming a next, a previous or an archive page
+# (RFC 5005's next-archive and prev-archive; a rel spelled as IANA's URI,
+# http://www.iana.org/assignments/relation/next, is the same rel, RFC 4287),
+# a self link carrying a query (?page=1), an OpenSearch totalResults above
+# the entries it holds or a startIndex past the first; and so does an
+# <entry> anywhere but directly under <feed> (wrapped in a vendor's element,
+# it would have been skipped while the rest were read).
 #
-# THE REF IS THE ACCOUNT'S SLUG ('imagetrend', 'finalsite'), lowercased and
-# held to one DNS label's shape as Pinpoint's is: never an address, never
-# anything that changes the path it is put in.
+# THE REF IS THE ACCOUNT'S SLUG ('imagetrend', 'finalsite'), AS SPELLED -
+# never lowered: JobScore minds the case of the path (asked 2026-11-24,
+# /jobs/Finalsite/feed.atom answered 404 and /jobs/finalsite/feed.atom is the
+# board), so a slug in other capitals is another address, never a guess at
+# this one (find_site_boards.LOWERED and the Lever lesson) - and held to one
+# DNS label's shape as Pinpoint's is: never an address, never anything that
+# changes the path it is put in.
 #
 # PARSED AS XML, BY NAME AND BY PLACE, AND NOTHING ELSE IS READ: expat with
 # namespaces, a DOCTYPE or an ENTITY declaration refused before anything it
@@ -4784,12 +4798,16 @@ def fetch_trinethire(ref) -> list[dict]:
 # as the employer typed it ('Remote in Eagan, MN', '100% Remote in the U.S',
 # 'Remote- LatAm'), no country invented; the ad, the entry's <content
 # type="html">; and pay from <j:publicCompensation>, whose salaryMinimum and
-# salaryMaximum count CENTS (5000000 is $50,000), published only where they
-# agree with the block's own <j:formatted> ('From $50,000 to $60,000 per
-# year'), which is kept as raw. One row a posting id: a posting listed twice
-# is one. An entry that does not read as a posting of this board (no title,
-# or not one alternate link to a posting under /careers/<slug>/jobs/) raises:
-# a board is never read in part.
+# salaryMaximum count CENTS (5000000 is $50,000), published only where the
+# block's own <j:formatted> ('From $50,000 to $60,000 per year'), which is
+# kept as raw, agrees with all of it: the very figures, no period but the
+# block's <j:interval>, and no currency sign or code but one its
+# <j:currencyCode> is ('$' for USD, CAD and the other dollars; none named is
+# US dollars) - a comp never contradicts its own raw (blind review of
+# 2026-11-24). One row a posting id: a posting listed twice is one. An entry
+# that does not read as a posting of this board (no title, two titles, or
+# not one alternate link to a posting under /careers/<slug>/jobs/) raises: a
+# board is never read in part.
 #
 # NO POSTED DATE. The feed has no <published>; <updated> moves on every edit
 # (all 8 of ImageTrend's entries read 2026-11-10 or 2026-11-20), and the day
@@ -4821,22 +4839,49 @@ JOBSCORE_TITLE = "Careers at "
 # this is some 1,300 postings - past the owner's giants of about 500.
 JOBSCORE_FEED_MAX = 16_000_000
 JOBSCORE_LOCATION = "http://schemas.jobscore.com/atom#location"
-_JOBSCORE_SLUG = re.compile(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?")
+_JOBSCORE_SLUG = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?")
 _ATOM_NS = "http://www.w3.org/2005/Atom|"
 _JOBSCORE_NS = "http://schemas.jobscore.com/atom|"
+# OpenSearch's namespaces (1.1's, and RSS 1.0's before it), whose
+# totalResults and startIndex say how much of a longer list a page is
+_OPENSEARCH_NS = "http://a9.com/-/spec/opensearch"
+_OPENSEARCH = ("totalResults", "startIndex", "itemsPerPage")
+# a rel written as IANA's registry names it is the short rel (RFC 4287 4.2.7.2)
+_IANA_REL = ("http://www.iana.org/assignments/relation/", "https://www.iana.org/assignments/relation/")
 # a posting of board <slug>: its 22-character id last, the title's slug and a
 # hyphen before it (or nothing: a title with no ASCII letter or digit)
-_JOBSCORE_POSTING = re.compile(r"/careers/([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)/jobs/"
+_JOBSCORE_POSTING = re.compile(r"/careers/([A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)/jobs/"
                                r"(?:[a-z0-9_-]{0,300}-)?([A-Za-z0-9_-]{22})")
 # THE ONLY PAY FIELDS EVER READ, inside <j:publicCompensation>
 _JOBSCORE_PAY = ("salaryMinimum", "salaryMaximum", "interval", "currencyCode", "formatted")
 # what <j:interval> says, word for word (measured: 'per year' on all nine
-# pay blocks); anything else is no period, and no pay published
+# pay blocks); anything else is no period (the figures, where the formatted
+# line agrees, are published with none)
 _JOBSCORE_PERIODS = {"per year": "year", "per month": "month", "per week": "week",
                      "per day": "day", "per hour": "hour"}
+# THE PERIOD A FORMATTED LINE NAMES, word by word: a line naming one its
+# block's <j:interval> does not ('From $25 to $30 per hour' over 'per year')
+# states no pay. 'odd' is a period none of the five is (every two weeks,
+# biweekly, semimonthly), and never agrees with one
+_JOBSCORE_PERIOD_WORDS = {
+    **dict.fromkeys(("year", "years", "yr", "yrs", "annum", "annual", "annually", "yearly"), "year"),
+    **dict.fromkeys(("month", "months", "monthly"), "month"),
+    **dict.fromkeys(("week", "weeks", "weekly", "wk", "wks"), "week"),
+    **dict.fromkeys(("day", "days", "daily"), "day"),
+    **dict.fromkeys(("hour", "hours", "hourly", "hr", "hrs"), "hour")}
+_JOBSCORE_ODD_PERIOD = re.compile(
+    r"\b(?:bi|semi)[\s-]?(?:weekly|monthly|annual(?:ly)?|week|month)\b|\bfortnight"
+    r"|\bevery\s+(?:other|[a-z0-9]+)\s+(?:years?|months?|weeks?|days?|hours?)\b", re.I)
+# THE CURRENCIES A SIGN STANDS FOR in a formatted line: a sign not listed
+# fits no code, and a block naming no code is US dollars ('$' or nothing)
+_JOBSCORE_DOLLARS = frozenset({"USD", "CAD", "AUD", "NZD", "SGD", "HKD", "MXN", "TWD", "BSD", "BMD",
+                               "BBD", "BZD", "JMD", "TTD", "XCD", "FJD", "LRD", "NAD", "SBD", "SRD",
+                               "GYD", "KYD", "BND", "CLP", "COP", "ARS", "UYU", "DOP", "CUP"})
+_JOBSCORE_SIGNS = {"$": _JOBSCORE_DOLLARS, "€": frozenset({"EUR"}), "£": frozenset({"GBP"}),
+                   "₹": frozenset({"INR"}), "¥": frozenset({"JPY", "CNY"}),
+                   "₱": frozenset({"PHP"}), "₩": frozenset({"KRW"})}
 _JOBSCORE_FIGURE = re.compile(r"[0-9][0-9,]*(?:\.[0-9]+)?")
 _JOBSCORE_CENTS = re.compile(r"[0-9]{1,13}")
-_JOBSCORE_PAGER = frozenset({"next", "previous", "prev", "first", "last"})
 _MARKUP = object()        # a field that held markup of its own: not read
 
 
@@ -4846,9 +4891,10 @@ class _JobscoreRefused(Exception):
 
 
 def jobscore_slug(ref) -> str:
-    """The JobScore account a ref names - its slug, lowercased - or AtsError
-    (for anything else, a number or a list among them: a ref is text)."""
-    slug = _text(ref).lower() if isinstance(ref, str) else ""
+    """The JobScore account a ref names - its slug, as spelled: JobScore
+    minds its case - or AtsError (for anything else, a number or a list among
+    them: a ref is text)."""
+    slug = _text(ref) if isinstance(ref, str) else ""
     if not _JOBSCORE_SLUG.fullmatch(slug):
         raise AtsError(f"not a jobscore board: {ref!r} (a JobScore board is its account's slug, "
                        f"as careers.jobscore.com/careers/<slug> names it)")
@@ -4867,12 +4913,16 @@ def jobscore_page(ref) -> str:
 
 
 def _jobscore_read(url: str) -> bytes:
-    """The feed's bytes, asked once: robots.txt at every hop (_page), the
-    crawler's own name, the host gate; no redirect followed - the feed
-    answers in place, so a hop anywhere, the feed itself again included, is
-    refused before it is asked anything. Any answer but a 200 is an error (a
-    slug that is not there answers 404: gone); a feed past JOBSCORE_FEED_MAX
-    bytes is refused, never read in part."""
+    """The feed's bytes, asked once: robots.txt at every hop (follow), the
+    crawler's own name and the host gate (_one); no redirect followed - the
+    feed answers in place, so a hop anywhere, the feed itself again included,
+    is refused before it is asked anything. Read as a stream, as
+    _jvx_body reads a Jobvite feed, and refused past JOBSCORE_FEED_MAX
+    bytes - never read in part, and never pulled down whole to be refused. A
+    429 is honoured at the gate and raised as RateLimited; any other answer
+    but a 200 is an error (a slug that is not there answers 404: gone); the
+    network failing on the way, mid-body included, is a network error. Never
+    the HTTP cache: _one keeps nothing (and jobscore.com is NEVER_CACHED)."""
     hops: list[str] = []
 
     def stay(u: str):
@@ -4881,14 +4931,28 @@ def _jobscore_read(url: str) -> bytes:
             raise AtsError(f"{url} leads off to {str(u)[:160]}, which is not this board's own feed "
                            f"(the feed answers in place), so it is not read as a board with "
                            f"nothing open")
-    resp = _page(url, same_host=True, may=stay)
-    body = getattr(resp, "content", None)
-    if not isinstance(body, (bytes, bytearray)):
-        body = (getattr(resp, "text", "") or "").encode("utf-8")
-    if len(body) > JOBSCORE_FEED_MAX:
-        raise AtsError(f"{url} is more than {JOBSCORE_FEED_MAX:,} bytes, this reader's cap: it is "
-                       f"not read, and never read in part")
-    return bytes(body)
+    resp = follow(url, lambda u: _one(u, stream=True), may=stay)
+    try:
+        status = getattr(resp, "status_code", None)
+        if status == 429:
+            _back_off(url, resp)
+        if status != 200:
+            raise AtsError(f"HTTP {status} for {url}")
+        raw = bytearray()
+        try:
+            for chunk in resp.iter_content(chunk_size=65536):
+                raw += chunk
+                if len(raw) > JOBSCORE_FEED_MAX:
+                    raise AtsError(f"{url} is more than {JOBSCORE_FEED_MAX:,} bytes, this reader's "
+                                   f"cap: it is not read, and never read in part")
+        except requests.RequestException as exc:
+            raise AtsError(f"network error: {exc}") from exc
+    finally:
+        try:
+            resp.close()
+        except Exception:                          # noqa: BLE001
+            pass
+    return bytes(raw)
 
 
 def jobscore_feed(raw: bytes, url: str = "the feed") -> dict:
@@ -4901,10 +4965,14 @@ def jobscore_feed(raw: bytes, url: str = "the feed") -> dict:
 
     The characters of every element not named here are never kept: the
     parser drops them as it meets them, the hiring team's and the author's
-    included. AtsError for a feed that declares a DOCTYPE or an ENTITY, does
-    not read as XML (cut short, a bare '&', an entity XML does not define,
-    junk after it), or whose root is not Atom's <feed>."""
-    feed: dict = {"title": [], "subtitle": [], "links": [], "entries": []}
+    included. Also kept: the feed's OpenSearch totalResults, startIndex and
+    itemsPerPage, under "opensearch". AtsError for a feed that declares a
+    DOCTYPE or an ENTITY, does not read as XML (cut short, a bare '&', an
+    entity XML does not define, junk after it), whose root is not Atom's
+    <feed>, or that holds an element named entry anywhere but an Atom <entry>
+    directly under it (a posting wrapped in another element would be lost
+    while the rest were read)."""
+    feed: dict = {"title": [], "subtitle": [], "links": [], "entries": [], "opensearch": {}}
     stack: list[str] = []
     here: dict = {"entry": None, "into": None, "key": None, "depth": 0}
 
@@ -4915,9 +4983,18 @@ def jobscore_feed(raw: bytes, url: str = "the feed") -> dict:
         into.setdefault(key, []).append([])
         here.update(into=into, key=key, depth=len(stack))
 
+    def rel(attrs) -> str:
+        said = _text(attrs.get("rel")).lower() or "alternate"
+        for lead in _IANA_REL:
+            said = said.removeprefix(lead)
+        return said
+
     def start(name, attrs):
         stack.append(name)
         depth = len(stack)
+        if depth > 1 and name.rsplit("|", 1)[-1] == "entry" and (depth != 2 or name != _ATOM_NS + "entry"):
+            raise _JobscoreRefused(f"holds an <entry> other than directly under its <feed> "
+                                   f"(<{name[-60:]}> at depth {depth}), whose posting would be lost")
         if here["into"] is not None:
             # markup inside a field this reads: that field is not read
             here["into"][here["key"]][-1] = _MARKUP
@@ -4934,13 +5011,14 @@ def jobscore_feed(raw: bytes, url: str = "the feed") -> dict:
             elif name in (_ATOM_NS + "title", _ATOM_NS + "subtitle"):
                 begin(feed, name[len(_ATOM_NS):])
             elif name == _ATOM_NS + "link":
-                feed["links"].append((_text(attrs.get("rel")).lower() or "alternate", attrs.get("href") or ""))
+                feed["links"].append((rel(attrs), attrs.get("href") or ""))
+            elif name.startswith(_OPENSEARCH_NS) and name.rsplit("|", 1)[-1] in _OPENSEARCH:
+                begin(feed["opensearch"], name.rsplit("|", 1)[-1])
         elif depth == 3 and parent == _ATOM_NS + "entry" and entry is not None:
             if name == _ATOM_NS + "title":
                 begin(entry, "title")
             elif name == _ATOM_NS + "link":
-                entry["links"].append((_text(attrs.get("rel")).lower() or "alternate",
-                                       attrs.get("href") or ""))
+                entry["links"].append((rel(attrs), attrs.get("href") or ""))
             elif name == _ATOM_NS + "category":
                 entry["categories"].append((attrs.get("scheme") or "", attrs.get("term") or ""))
             elif name == _ATOM_NS + "content":
@@ -5046,14 +5124,35 @@ def _jobscore_cents(raw) -> tuple[int | float | None, bool]:
     return (int(units) if units.is_integer() else round(units, 2)), True
 
 
+def _jobscore_formatted_agrees(formatted: str, period: str | None, currency: str | None) -> bool:
+    """Whether a block's formatted line says nothing its own fields do not:
+    no period but `period` (the block's <j:interval>, where it is one of the
+    five; where it is none, any the line names stands as raw), and no
+    currency sign or code but one `currency` is - a block naming no code is
+    US dollars, '$' or nothing. A sign this does not know fits no code."""
+    said = {_JOBSCORE_PERIOD_WORDS[w] for w in re.findall(r"[a-z]+", formatted.lower())
+            if w in _JOBSCORE_PERIOD_WORDS}
+    if _JOBSCORE_ODD_PERIOD.search(formatted):
+        said.add("odd")
+    if period is not None and said - {period}:
+        return False
+    want = currency or "USD"
+    signs = {ch for ch in formatted if unicodedata.category(ch) == "Sc"}
+    codes = set(re.findall(r"(?<![A-Za-z])[A-Z]{3}(?![A-Za-z])", formatted))
+    return all(want in _JOBSCORE_SIGNS.get(s, ()) for s in signs) and codes <= {want}
+
+
 def _jobscore_pay(entry: dict, abroad: bool = False) -> dict | None:
     """The contract's comp block from the entry's own <j:publicCompensation>,
     source "ats" - or None where it has none, has two, or states figures that
     do not read or that its own <j:formatted> does not state: the cents,
     converted, must be the very figures the formatted line prints ('From
-    $50,000 to $60,000 per year'), which is kept as raw. A row the board
-    lists outside the US (`abroad`) whose block names no currency code states
-    no pay published (a block with none is read as US dollars on the site)."""
+    $50,000 to $60,000 per year'), which is kept as raw, and the line may name
+    no period but the block's interval and no currency but the block's own
+    (_jobscore_formatted_agrees): a comp never contradicts its raw. A row the
+    board lists outside the US (`abroad`) whose block names no currency code
+    states no pay published (a block with none is read as US dollars on the
+    site)."""
     if entry.get("pay_blocks") != 1:
         return None
     pay = entry.get("pay") or {}
@@ -5073,9 +5172,19 @@ def _jobscore_pay(entry: dict, abroad: bool = False) -> dict | None:
     currency = code if re.fullmatch(r"[A-Z]{3}", code) else None
     if currency is None and abroad:
         return None
-    return {"min": lo, "max": hi, "currency": currency,
-            "period": _JOBSCORE_PERIODS.get(_text(said["interval"]).lower()),
+    period = _JOBSCORE_PERIODS.get(_text(said["interval"]).lower())
+    if not _jobscore_formatted_agrees(formatted, period, currency):
+        return None
+    return {"min": lo, "max": hi, "currency": currency, "period": period,
             "source": "ats", "raw": formatted}
+
+
+def _jobscore_pager(rel: str) -> bool:
+    """Whether a feed link's rel (IANA's URI form already folded) points to
+    another page of the same list: first, last or current (an archive
+    document's), or any rel naming a next, a previous or an archive page -
+    RFC 5005's next-archive and prev-archive among them."""
+    return rel in ("first", "last", "current") or any(w in rel for w in ("next", "prev", "archive"))
 
 
 def jobscore_rows(feed: dict, slug: str, url: str = "the feed") -> list[dict]:
@@ -5086,13 +5195,29 @@ def jobscore_rows(feed: dict, slug: str, url: str = "the feed") -> list[dict]:
     if alternates != [page]:
         raise AtsError(f"{url} does not name this board's own page ({page}) as its one alternate "
                        f"link ({alternates[:3]}), so it is not read as this board")
-    pager = sorted({rel for rel, _h in feed["links"] if rel in _JOBSCORE_PAGER})
+    pager = sorted({rel for rel, _h in feed["links"] if _jobscore_pager(rel)})
     if pager:
         raise AtsError(f"{url} links a {pager[0]!r} page of itself: one page of a longer feed is "
                        f"never read as the whole board")
+    for rel, href in feed["links"]:
+        try:
+            query = urllib.parse.urlsplit(_text(href)).query if rel == "self" else ""
+        except ValueError:
+            query = "unreadable"
+        if query:
+            raise AtsError(f"{url} calls itself {_text(href)[:160]!r}: a feed that knows itself by a "
+                           f"query (?page=) may be one page of a longer one, never read as the whole "
+                           f"board")
     if not feed["entries"]:
         raise AtsError(f"{url} lists no posting: an empty JobScore feed has not been measured, so it "
                        f"is never read as a board with nothing open")
+    for key, most in (("totalResults", len(feed["entries"])), ("startIndex", 1)):
+        if key in feed["opensearch"]:
+            n = _text(_js_one(feed["opensearch"], key) or "")
+            if not re.fullmatch(r"[0-9]{1,9}", n) or int(n) > most:
+                raise AtsError(f"{url} says OpenSearch {key} {n[:20] or 'unreadable'!r} beside "
+                               f"{len(feed['entries'])} entries: one page of a longer list is never "
+                               f"read as the whole board")
     rows, ids = [], set()
     for entry in feed["entries"]:
         title = _text(_js_one(entry, "title") or "")
@@ -5125,10 +5250,11 @@ def jobscore_rows(feed: dict, slug: str, url: str = "the feed") -> list[dict]:
 
 # ONE PLAN ASKS THE FEED ONCE, as for a Jobvite account's feed and a TriNet
 # Hire list: the wiring door reads the board and then asks it whose it is,
-# both this one feed. Inside jobscore_kept() - wire_found.plan, and nothing
-# else - a feed read whole is kept in memory under the address it was asked
-# at, and asked again it is that answer; a read that failed raised and is not
-# kept; nothing is written anywhere; outside the block every call asks.
+# both this one feed. Inside jobscore_kept() - wire_found.plan, and the two
+# accept paths of a held board (one_ask_a_board) - a feed read whole is kept
+# in memory under the address it was asked at, and asked again it is that
+# answer; a read that failed raised and is not kept; nothing is written
+# anywhere; outside the block every call asks.
 _JOBSCORE_KEPT: dict | None = None
 
 
@@ -5170,6 +5296,19 @@ def jobscore_board(ref) -> tuple[str, str, list[dict]]:
 
 def fetch_jobscore(ref) -> list[dict]:
     return jobscore_board(ref)[2]
+
+
+@contextlib.contextmanager
+def one_ask_a_board():
+    """jobvitefeed_kept, trinethire_kept and jobscore_kept at once: inside
+    it, a board those readers read whole is asked once, however many times it
+    is read and then asked whose it is. For the paths that read a board and
+    then probe it - accepting a held board at the desk (admin.
+    act_board_proposal) and by a ruling (proposal_rulings._accept_board): a
+    Jobvite feed and a JobScore feed name people, and the second ask was the
+    same answer again (blind review of 2026-11-24). Also a decorator."""
+    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept():
+        yield
 
 # ---- successfactors: SAP SuccessFactors' Career Site Builder (CSB), a career
 # site on the employer's own careers host (jobs.gainwelltechnologies.com,

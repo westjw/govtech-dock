@@ -14667,10 +14667,20 @@ def check_the_crawler_honours_robots_txt() -> int:
     # the page readers go through _page; a raw _get in one reads past robots.txt
     for name in ("_schema_posting", "fetch_paylocity", "_page_text", "fetch_rippling",
                  "_rippling_detail", "fetch_jazzhr", "fetch_icims", "fetch_html_titles",
-                 "fetch_gusto", "_trinet_read", "_jobscore_read"):
+                 "fetch_gusto", "_trinet_read"):
         src = inspect.getsource(getattr(ats, name))
         if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
             errors += fail(f"ats.{name} reads a page without asking robots.txt")
+    # ...and the feeds read as a stream, capped as they arrive (_get takes a
+    # body whole to fix its charset), walk every hop through follow(), which
+    # asks robots.txt at each, one request a hop by _one (a JobScore feed:
+    # blind review of 2026-11-24; a Jobvite account's feed)
+    for name in ("_jobscore_read", "_jvx_body"):
+        src = inspect.getsource(getattr(ats, name))
+        if re.search(r"(?<![\w.])_(?:get|page)\(", src) or not re.search(
+                r"(?<![\w.])follow\(url, lambda u: _one\(u, stream=True\)", src):
+            errors += fail(f"ats.{name} reads a feed without asking robots.txt at every hop, or reads it "
+                           f"whole before its cap")
     # and so do the scripts a person runs by hand: a sweep is a crawl whoever
     # starts it. Every request they make directly must be one hop of
     # ats.follow, never a library following redirects for it. Exempt, and not
@@ -21880,9 +21890,10 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
     with feeds written here by hand - every company, slug, title, place and
     person in them made up - and nothing that can reach a real host.
 
-    THE READ: one request, /jobs/<slug>/feed.atom, through the repo's page
+    THE READ: one request, /jobs/<slug>/feed.atom, through the repo's
     helpers - robots.txt asked at every hop, the crawler's own name, the
-    host gate - and the feed answers in place, so a redirect anywhere
+    host gate - as a stream, stopped at the cap (never pulled down whole to
+    be refused), and the feed answers in place, so a redirect anywhere
     (another host, the board's own page, the feed again) is refused before
     it is asked; FETCH_DETAILS on or off, never a posting page.
     THE ROWS: one a posting id; the title stripped; the url the entry's one
@@ -21890,8 +21901,9 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
     (/apply_flow/, which robots.txt closes); the location the atom#location
     term as the employer typed it, no country invented, the department and
     the job type no place; the ad from the entry's content; pay from CENTS,
-    published only where j:formatted prints the same figures, which is kept
-    as raw; no posted date, whatever <updated> and <id> say.
+    published only where j:formatted prints the same figures and names no
+    other period and no other currency, and is kept as raw; no posted date,
+    whatever <updated> and <id> say.
     NOBODY'S NAME: the hiring team (names, job titles, LinkedIn addresses,
     photos - and Atom's own element names inside it) and the author are
     never kept, in a row or in what the parser hands back, and the feed is
@@ -21899,19 +21911,30 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
     NO ZERO, BECAUSE NONE IS MEASURED: a feed with no entry raises, and so do
     a 404 (gone, to the probe), a 429, a 503, a challenge page, RSS, a
     DOCTYPE, a feed cut short, another board's page as the feed's own, a
-    pager, an entry that does not read and a feed past the cap.
+    pager in any spelling (next, previous, prev, first, last, current, the
+    archive rels, IANA's URI form), a self link with a query, an OpenSearch
+    total past its entries, an entry anywhere but under <feed>, an entry
+    that does not read (two titles among them) and a feed past the cap.
     THE PROBE: the <subtitle> where the <title> is 'Careers at ' and the same
-    name, stated over the whole board; never the author, the slug or a
-    person.
-    ONE PLAN ASKS THE FEED ONCE (ats.jobscore_kept).
+    name, each given once, stated over the whole board; never the author,
+    the slug or a person.
+    ONE PLAN ASKS THE FEED ONCE (ats.jobscore_kept), and so does accepting
+    a held board, at the desk or by a ruling (ats.one_ask_a_board) - a
+    Jobvite feed and a TriNet Hire list too.
+    THE REF: the slug as spelled - JobScore minds the case.
     THE ID: a posting first read through the hosted list (type html, which
     states no place) keeps its id, its opening id and its first-seen day
-    read through the feed; elsewhere a place still parts two rows.
-    THE FINDER: the hosted links, the widget's iframe and the script loader,
-    and none of JobScore's own furniture; discover_js reads the same forms.
+    read through the feed; elsewhere a place still parts two rows; and the
+    first-seen day follows the 22-character job id across a slug rename.
+    THE FINDER: the hosted links (the bare domain and widgets. among them),
+    the widget's iframe and the script loader - whose slug is taken from the
+    call closing its own function - and none of JobScore's own furniture;
+    an account or a job in a shape it does not read is jobscore-tenant, a
+    doubt; discover_js reads the same forms with the same guards.
     THE DOOR: a company whose own page frames the widget, or runs the loader,
     and whose feed names it is wired, each feed asked once for the read and
-    the probe; one whose feed names somebody else is held.
+    the probe; one whose feed names somebody else is held, and so is one
+    whose site names a second account in any shape.
     """
     import ast as ast_lib
     sys.path.insert(0, str(ROOT / "scripts"))
@@ -22010,7 +22033,41 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
             self.status_code, self.headers, self.url = code, dict(headers or {}), ""
             self.text, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
 
+        def iter_content(self, chunk_size=1):
+            for i in range(0, len(self.content), chunk_size):
+                yield self.content[i:i + chunk_size]
+
         def close(self):
+            pass
+
+    class Endless(Resp):
+        """An answer far past the cap, sent in chunks as a wire sends it: a
+        reader that takes .content pulls every chunk down before it can
+        refuse it, as requests does."""
+        def __init__(self, chunks, size=65536):
+            self.pulled = 0
+            super().__init__(200, "", {"Content-Type": "application/atom+xml; charset=utf-8"})
+            self.chunks, self.size = chunks, size
+
+        def iter_content(self, chunk_size=1):
+            for _ in range(self.chunks):
+                self.pulled += 1
+                yield b"<feed>" + b" " * (self.size - 6)
+
+        @property
+        def content(self):
+            return b"".join(self.iter_content())
+
+        @content.setter
+        def content(self, _value):
+            pass
+
+        @property
+        def text(self):
+            return self.content.decode("utf-8")
+
+        @text.setter
+        def text(self, _value):
             pass
 
     def get(url, **kw):
@@ -22099,42 +22156,83 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
             errors += fail("jobscore: a JobScore address is not kept out of the HTTP cache (NEVER_CACHED)")
 
         # ---- pay: cents, and only what its own formatted line prints --------------------
+        # (each want is (min, max, period, currency), or None for no pay)
+        USD = "USD"
         for block, where, want, why in (
-                (pay("5000000", "6000000", "From $50,000 to $60,000 per year"), None, (50000, 60000, "year"),
-                 "cents read as cents"),
-                (pay("6000000", "5000000", "From $50,000 to $60,000 per year"), None, (50000, 60000, "year"),
-                 "the two figures given backwards"),
-                (pay("5000000", None, "From $50,000 per year"), None, (50000, None, "year"), "a floor alone"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year"), None,
+                 (50000, 60000, "year", USD), "cents read as cents"),
+                (pay("6000000", "5000000", "From $50,000 to $60,000 per year"), None,
+                 (50000, 60000, "year", USD), "the two figures given backwards"),
+                (pay("5000000", None, "From $50,000 per year"), None, (50000, None, "year", USD),
+                 "a floor alone"),
                 (pay("50000", "60000", "From $50,000 to $60,000 per year"), None, None,
                  "figures in whole units where cents are meant"),
                 (pay("5000000", "6000000", None), None, None, "no formatted line to check them by"),
                 (pay("5000000", "6000000", "From $50,000 to $65,000 per year"), None, None,
                  "a formatted line that prints other figures"),
                 (pay("5000000", "6000000", "Competitive"), None, None, "a formatted line with no figure"),
+                # (no figure at all: never an empty comp, whatever the line says)
+                (pay("", "", "Competitive"), None, None, "a block with no figure, its line none either"),
                 (pay("5000000.5", "6000000", "From $50,000 to $60,000 per year"), None, None,
                  "a figure that is not a count of cents"),
+                # (the line agreeing with the figure that reads: the one that
+                # does not is still no pay)
+                (pay("abc", "6000000", "Up to $60,000 per year"), None, None,
+                 "a floor that does not read, the line printing the ceiling alone"),
+                (pay("0", "6000000", "From $0 to $60,000 per year"), None, None,
+                 "a floor of zero cents, which is no figure"),
                 (pay("5000000", "6000000", "From $50,000 to $60,000 every two weeks", "every two weeks"),
-                 None, (50000, 60000, None), "an interval that is no period"),
+                 None, (50000, 60000, None, USD), "an interval that is no period"),
                 (pay("5000000", None, None, None, None) + pay(None, "6000000", "From $50,000 to $60,000 "
                                                                 "per year"), None, None,
                  "two pay blocks, the figures split between them"),
-                (pay("5000000", "6000000", "Up to $60,000 per year").replace(
+                # (the line agreeing with the first of the two: the field given
+                # twice is no pay, never its first)
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year").replace(
                     "<j:salaryMinimum>5000000</j:salaryMinimum>",
                     "<j:salaryMinimum>5000000</j:salaryMinimum><j:salaryMinimum>4000000</j:salaryMinimum>"),
                  None, None, "a figure given twice"),
                 (pay().replace("<j:salaryMinimum>6500000", "<j:salaryMinimum>65<j:x/>00000"), None,
                  None, "a figure holding markup of its own"),
-                (pay(code=None), None, (65000, 150000, "year"), "no currency code, on a row in the US"),
-                (pay(code=None), "Remote, India", None, "no currency code, on a row abroad")):
+                (pay(code=None), None, (65000, 150000, "year", None), "no currency code, on a row in the US"),
+                (pay(code=None), "Remote, India", None, "no currency code, on a row abroad"),
+                (pay(code="US Dollars"), None, (65000, 150000, "year", None),
+                 "a currency code in no code's shape, on a row in the US"),
+                # A COMP NEVER CONTRADICTS ITS OWN RAW: the period and the
+                # currency the formatted line names are the block's own
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year", "per hour"), None, None,
+                 "an interval of hours under a line of years"),
+                (pay("2500", "3000", "From $25 to $30 per hour", "per year"), None, None,
+                 "an interval of years under a line of hours"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 annually", "per month"), None, None,
+                 "an interval of months under a line that says annually"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 every two weeks", "per week"), None,
+                 None, "an interval of weeks under a line of every two weeks"),
+                (pay("2500", "3000", "From $25 to $30 per hour", None), None, (25, 30, None, USD),
+                 "no interval, the line's own period kept as raw"),
+                (pay("150000000", "200000000", "From \u20b91,500,000 to \u20b92,000,000 per year"),
+                 "Remote, India", None, "a code of US dollars under a line of rupees"),
+                (pay("5000000", "6000000", "From \u20ac50,000 to \u20ac60,000 per year", code=None), None,
+                 None, "no code, read as US dollars, under a line of euros"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year", code="EUR"), "Remote, Spain",
+                 None, "a code of euros under a line of dollars"),
+                (pay("5000000", "6000000", "From 50,000 to 60,000 EUR per year"), None, None,
+                 "a code of US dollars under a line naming EUR"),
+                (pay("5000000", "6000000", "From \u20ac50,000 to \u20ac60,000 per year", code="EUR"),
+                 "Remote, Spain", (50000, 60000, "year", "EUR"), "euros, the line and the code agreeing"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year", code="CAD"),
+                 "Remote in Toronto, ON, Canada", (50000, 60000, "year", "CAD"),
+                 "Canadian dollars, a dollar sign"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 USD per year"), None,
+                 (50000, 60000, "year", USD), "the line naming the block's own code")):
             rows, exc = read(feed(entry(1, block=block, **({"where": where} if where else {}))))
             comp = (rows or [{}])[0].get("comp") if not exc else "error"
-            got = (comp["min"], comp["max"], comp["period"]) if isinstance(comp, dict) else comp
+            got = (comp["min"], comp["max"], comp["period"], comp["currency"]) if isinstance(comp, dict) \
+                else comp
             if got != want:
                 errors += fail(f"jobscore pay, {why}: {exc or comp}, not {want}")
-            elif isinstance(comp, dict) and (comp["source"] != "ats" or not comp["raw"]
-                                             or comp["currency"] != (None if "currencyCode" not in block
-                                                                     else "USD")):
-                errors += fail(f"jobscore pay, {why}: its source, raw or currency is wrong: {comp}")
+            elif isinstance(comp, dict) and (comp["source"] != "ats" or not comp["raw"]):
+                errors += fail(f"jobscore pay, {why}: its source or raw is wrong: {comp}")
 
         # ---- the employer's name: the subtitle, where the title agrees ------------------
         for title, subtitle, want in (("Careers at Acme Gov Systems", "Acme Gov Systems", "Acme Gov Systems"),
@@ -22143,7 +22241,13 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
                                       ("Jobs at Acme Gov Systems", "Acme Gov Systems", ""),
                                       ("Careers at ", "", ""),
                                       ("Careers at Smith &amp;amp; Wesson", "Smith &amp;amp; Wesson",
-                                       "Smith & Wesson")):
+                                       "Smith & Wesson"),
+                                      # (each given once: two subtitles, or two
+                                      # titles, state nobody - never the first)
+                                      ("Careers at Acme Gov Systems",
+                                       "Acme Gov Systems</subtitle><subtitle>Beta Holdings", ""),
+                                      ("Careers at Acme Gov Systems</title><title>Careers at Beta Holdings",
+                                       "Acme Gov Systems", "")):
             serve(feed(entry(1), title=title, subtitle=subtitle))
             try:
                 got = ats.jobscore_board(SLUG)[1]
@@ -22160,7 +22264,11 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
                           (feed(entry(1), title="Careers at ", subtitle=""), "a feed naming nobody"),
                           (MAIN.replace("Careers at Acme Gov Systems", "Careers at ").replace(
                               "<subtitle>Acme Gov Systems</subtitle>", "<subtitle></subtitle>"),
-                           "the author and the slug spelling the company, the feed naming nobody")):
+                           "the author and the slug spelling the company, the feed naming nobody"),
+                          (feed(entry(1), subtitle="Acme Gov Systems</subtitle><subtitle>Beta Holdings"),
+                           "two subtitles, the first agreeing with the title"),
+                          (feed(entry(1), title="Careers at Acme Gov Systems</title><title>Careers at "
+                                                "Beta Holdings"), "two titles, the first agreeing")):
             said = says(body, ref="acmegov")
             if said["stated"] or said["names"] or said["name"]:
                 errors += fail(f"jobscore probe, {why}: stated {said['names']} ({said['how']})")
@@ -22203,13 +22311,48 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
             (MAIN.replace("<feed ", "<feeds ").replace("</feed>", "</feeds>"),
              "a document that is no Atom <feed>, holding Atom entries"),
             (feed(entry(1), entry(2, extra=f'<link rel="alternate" href="{posting(9)}"/>')),
-             "an entry with two alternate links")]
+             "an entry with two alternate links"),
+            # (two titles: never the first of them)
+            (feed(entry(1), entry(2, title="Account Executive</title><title>Chief Executive Officer")),
+             "an entry with two titles"),
+            # ONE PAGE OF A LONGER FEED, IN EVERY SPELLING (blind review of
+            # 2026-11-24): Atom's paging rels, RFC 5005's archive rels, a rel
+            # written as IANA's URI, a self link that knows itself by a query,
+            # OpenSearch saying there is more
+            *[(feed(entry(1), links=f'  <link rel="{rel_}" href="{FEED}?page=2"/>\n'),
+               f"a feed with a {rel_!r} link")
+              for rel_ in ("previous", "prev", "first", "last", "current", "next-archive", "prev-archive",
+                           "NEXT", "http://www.iana.org/assignments/relation/next",
+                           "http://www.iana.org/assignments/relation/last")],
+            (feed(entry(1)).replace(f'<link rel="self" href="https://www.jobscore.com/jobs/{SLUG}/feed.atom"',
+                                    f'<link rel="self" href="https://www.jobscore.com/jobs/{SLUG}/feed.atom'
+                                    f'?page=1"'), "a feed whose self link carries ?page=1"),
+            (feed(entry(1), links='  <os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/">60'
+                                  '</os:totalResults>\n'), "a feed whose OpenSearch total is past its entries"),
+            (feed(entry(1), links='  <os:startIndex xmlns:os="http://a9.com/-/spec/opensearch/1.1/">21'
+                                  '</os:startIndex>\n'), "a feed whose OpenSearch page starts past the first"),
+            (feed(entry(1), links='  <os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/">lots'
+                                  '</os:totalResults>\n'), "a feed whose OpenSearch total does not read"),
+            # AN ENTRY ANYWHERE BUT DIRECTLY UNDER <feed> is never skipped
+            # while the rest are read
+            (feed(entry(1), "<j:group>" + entry(2, title="Grants Manager", tslug="grants-manager")
+                  + "</j:group>"), "an entry wrapped in a vendor's element"),
+            (feed(entry(1), entry(2, title="Grants Manager", tslug="grants-manager").replace(
+                "<entry>", '<entry xmlns="">', 1)), "an entry in no namespace"),
+            (feed(entry(1, extra=entry(2, title="Grants Manager", tslug="grants-manager"))),
+             "an entry inside another entry")]
         for body, why in NOT_ZERO:
             rows, exc = read(body)
             if not isinstance(exc, ats.AtsError) or [u for u, _kw in sent] != [FEED]:
                 errors += fail(f"jobscore: {why} was read as {len(rows) if rows is not None else exc!r} "
                                f"row(s) ({[u for u, _ in sent]}): it is unreadable, never a board with "
                                f"nothing open and never part of one")
+        # ...and what it raises is a reading, not a count: a feed that says
+        # it is whole, an OpenSearch total that is its own, still reads
+        rows, exc = read(feed(entry(1), links='  <os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/'
+                                              '1.1/">1</os:totalResults>\n'))
+        if exc or len(rows or []) != 1:
+            errors += fail(f"jobscore: a feed whose OpenSearch total is its own entries did not read: {exc}")
         ats._HOST_NOT_BEFORE.clear()
         ats._HOST_NOT_BEFORE.update(held[5])
         ats.JOBSCORE_FEED_MAX = len(MAIN.encode("utf-8")) - 1
@@ -22217,6 +22360,18 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
         ats.JOBSCORE_FEED_MAX = held[6]
         if not isinstance(exc, ats.AtsError):
             errors += fail(f"jobscore: a feed past the cap was read: {len(rows or [])} row(s)")
+        # THE CAP IS KEPT ON THE WIRE: read as a stream, and no more taken off
+        # it than the cap and a chunk (blind review of 2026-11-24: read whole,
+        # a 40 MB answer was pulled down to its last byte before it was refused)
+        big = Endless(640)
+        ats.JOBSCORE_FEED_MAX = 100_000
+        rows, exc = read({FEED: big})
+        ats.JOBSCORE_FEED_MAX = held[6]
+        if not isinstance(exc, ats.AtsError) or big.pulled > 2 \
+                or [kw.get("stream") for _u, kw in sent] != [True]:
+            errors += fail(f"jobscore: an answer past the cap was taken off the wire {big.pulled} chunk(s) "
+                           f"of 640 before it was refused ({exc!r}; asked as a stream: "
+                           f"{[kw.get('stream') for _u, kw in sent]}): the cap is kept as it arrives")
 
         # ---- the feed answers in place: a redirect is refused before it is asked ---------
         for there, why in (("https://www.jobscore.com/", "JobScore's own site"),
@@ -22230,12 +22385,24 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
         if not isinstance(exc, ats.AtsError) or len(sent) != 1:
             errors += fail(f"jobscore: a feed redirecting to itself was asked {len(sent)} times")
 
-        # ---- the ref: one slug, lowered, nothing else asked --------------------------------
-        for ref in ("AcmeGov", " acmegov "):
-            rows, exc = read(MAIN, ref=ref)
-            if exc or [u for u, _ in sent] != [FEED]:
-                errors += fail(f"jobscore: the ref {ref!r} was not read as the slug {SLUG!r}: "
-                               f"{exc or [u for u, _ in sent]}")
+        # ---- the ref: one slug, AS SPELLED, nothing else asked ------------------------------
+        # JobScore minds the case of the path (2026-11-24: /jobs/Finalsite/
+        # feed.atom answered 404, /jobs/finalsite/feed.atom is the board), so a
+        # slug in capitals is asked as spelled - never lowered into another
+        # account's address - and a feed of that spelling reads
+        rows, exc = read(MAIN, ref=" acmegov ")
+        if exc or [u for u, _ in sent] != [FEED]:
+            errors += fail(f"jobscore: the ref ' acmegov ' was not read as the slug {SLUG!r}: "
+                           f"{exc or [u for u, _ in sent]}")
+        CAPS = "https://careers.jobscore.com/jobs/AcmeGov/feed.atom"
+        rows, exc = read(MAIN, ref="AcmeGov")
+        if not isinstance(exc, ats.AtsError) or [u for u, _ in sent] != [CAPS]:
+            errors += fail(f"jobscore: the ref 'AcmeGov' was asked {[u for u, _ in sent]} ({exc!r}), not "
+                           f"its own spelling alone: a lowered slug is another account's address")
+        rows, exc = read({CAPS: feed(entry(1, slug="AcmeGov"), slug="AcmeGov")}, ref="AcmeGov")
+        if exc or [r["url"] for r in rows or []] != [posting(1, slug="AcmeGov")]:
+            errors += fail(f"jobscore: a board whose slug is spelled with capitals did not read as "
+                           f"spelled: {exc or rows}")
         for ref in (PAGE, "acme/gov", "../acmegov", "acme gov", "-acme", "acme-", "", None, 7, "a" * 64,
                     "acme.gov", "acme_gov", "acmegov?x=1", "acmegov#x"):
             rows, exc = read(MAIN, ref=ref)
@@ -22304,10 +22471,30 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
         if bb.posting_id("acme", "Account Executive", posting(1), "") == \
                 bb.posting_id("acme", "Account Executive", posting(3), ""):
             errors += fail("jobscore: two JobScore postings of one title share an id")
+        # THE FIRST-SEEN DAY FOLLOWS THE JOB ID across a renamed account slug
+        # and a title slug written anew (blind review of 2026-11-24: the id
+        # hashes the whole address, and the day reset with it) - within the
+        # company, and never to another job
+        was = [{"id": bb.posting_id("acme-gov", "Account Executive", posting(1), ""),
+                "company_id": "acme-gov", "title": "Account Executive", "url": posting(1),
+                "first_seen": "2026-09-01"}]
+        now = [{"id": bb.posting_id("acme-gov", "Account Executive", u, "Remote in Anytown, MN"),
+                "opening_id": bb.opening_id("acme-gov", "Account Executive"), "company_id": cid_,
+                "title": "Account Executive", "url": u, "first_seen": "2026-11-24", "source": "ats"}
+               for cid_, u in (("acme-gov", posting(1, slug="acmegov-inc")),
+                               ("acme-gov", posting(1, tslug="account-exec")),
+                               ("acme-gov", posting(2, slug="acmegov-inc")),
+                               ("beta-co", posting(1, slug="acmegov-inc")))]
+        bb.carry_first_seen(now, was, {})
+        if [p["first_seen"] for p in now] != ["2026-09-01", "2026-09-01", "2026-11-24", "2026-11-24"]:
+            errors += fail(f"jobscore: the first-seen day did not follow the 22-character job id across a "
+                           f"renamed slug, or followed it to another job or company: "
+                           f"{[p['first_seen'] for p in now]}")
 
         # ---- the public link: the hosted list, never the feed ----------------------------
         W = "https://www.acmegov.example"
-        for ref, want in (("acmegov", PAGE), ("AcmeGov", PAGE), ("acme/gov", W), (None, W)):
+        for ref, want in (("acmegov", PAGE), ("AcmeGov", "https://careers.jobscore.com/careers/AcmeGov"),
+                          ("acme/gov", W), (None, W)):
             if bb.board_url({"ats": {"type": "jobscore", "ref": ref}, "website": W}) != want:
                 errors += fail(f"jobscore: the public link of the ref {ref!r} is not {want}")
 
@@ -22380,6 +22567,93 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
         if asks != sorted([FEED, B_FEED, D_FEED, E_FEED]) or sorted(asked) != asks:
             errors += fail(f"jobscore door: the plan asked {asks} (robots.txt of {sorted(asked)}), not each "
                            f"feed once")
+
+        # ---- the door: A SECOND ACCOUNT IN ANY SHAPE IS A DOUBT (blind review of 2026-11-24) --
+        # Their careers page frames account A, whose feed names them, and their
+        # site names account B in a form the finder once read as JobScore's own
+        # (the bare domain, a widget's script, a slug run into an underscore,
+        # one job's apply link): held for the owner, never A wired alone
+        FRAMED = ('<iframe src="https://widgets.jobscore.com/jobs/{a}/widget_iframe?bg_color=FFFFFF">'
+                  '</iframe>')
+
+        def entry_of(cid, careers, home_markup=None):
+            site = _wb_site(cid)
+            cands, others, pages = [], [], []
+            for page, markup in ((f"{site}/careers", careers), (site, home_markup)):
+                if markup is None:
+                    continue
+                f_, r_ = fsb.sightings(markup, page, site)
+                cands += [_wb_cand(f["type"], f["ref"], page, element=f["element"], times=f["times"])
+                          for f in f_]
+                others += [{"vendor": r["vendor"], "saw": r["saw"], "page": page, "element": r["element"],
+                            "times": r["times"]} for r in r_]
+                pages.append({"asked": page, "final": page, "same_site": True, "status": "read", "note": ""})
+            return _wb_entry(cid, cands, pages=pages, elsewhere=others)
+        SECOND = {
+            "gamma-gov": ('<a href="https://jobscore.com/careers/betaholdings">Our sister company</a>', None),
+            "hotel-gov": ('<script src="https://widgets.jobscore.com/jobs/betaholdings/widget.js"></script>',
+                          None),
+            "india-gov": ('<a href="https://careers.jobscore.com/careers/beta_holdings">x</a>', None),
+            "juliet-gov": ('<a href="https://careers.jobscore.com/apply_flow/applications/go?job_id='
+                           + jid(99) + '">Apply</a>', None),
+            "kilo-gov": ("", '<a href="https://careers.jobscore.com/careers/beta_holdings">Jobs</a>'),
+            "lima-gov": ("", '<a href="https://jobscore.com/careers/betaholdings">Jobs</a>')}
+        web.clear()
+        for cid_ in SECOND:
+            slug_ = cid_.replace("-", "")
+            web[f"https://careers.jobscore.com/jobs/{slug_}/feed.atom"] = feed(
+                entry(41, slug=slug_), slug=slug_, title=f"Careers at {cid_.title().replace('-', ' ')}",
+                subtitle=cid_.title().replace("-", " "))
+        web["https://careers.jobscore.com/jobs/betaholdings/feed.atom"] = feed(
+            entry(42, slug="betaholdings"), slug="betaholdings", title="Careers at Beta Holdings",
+            subtitle="Beta Holdings")
+        with _WiringBox([_wb_co(c, c.title().replace("-", " ")) for c in SECOND], {}) as box, \
+                contextlib.redirect_stderr(io.StringIO()):
+            (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+             ats._get, ats._page) = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({
+                cid_: entry_of(cid_, FRAMED.format(a=cid_.replace("-", "")) + extra, home_)
+                for cid_, (extra, home_) in SECOND.items()}))
+        for cid_, (extra, home_) in SECOND.items():
+            row_ = (rows_ or {}).get(cid_) or {}
+            if row_.get("action") != "HOLD":
+                errors += fail(f"jobscore door: their page frames one JobScore account and their site names "
+                               f"a second ({(extra or home_)[:90]!r}{', on their home page' if home_ else ''})"
+                               f", and the door said {row_.get('action')} {row_.get('ref')!r}: "
+                               f"{_wb_words(row_)[:240]!r}")
+
+        # ---- accepting a held board asks it ONCE, at the desk and by a ruling -------------
+        # (blind review of 2026-11-24: add_company.verify, then board_says - two
+        # requests of a feed that names a hiring team; and so for a Jobvite
+        # feed and a TriNet Hire list, whose kept blocks wrapped only the door)
+        import admin
+        import proposal_rulings
+        for kind_, ref_, url_, body_, name_ in (
+                ("jobscore", SLUG, FEED, MAIN, "Acme Gov Systems"),
+                ("trinethire", "41234-old-name", _ID_TRINET, _ID_TRINET_PAGE, "Acme Gov Systems, Inc."),
+                ("jobvitefeed", "q6NaVfwI", _ID_JVX, _ID_JVX_FEED, "Tyler Technologies")):
+            cid_ = "held-co"
+            files_ = {bp.FOUND.name: [{"id": cid_, "name": name_, "found": {"type": kind_, "ref": ref_},
+                                       "filed": {"page": f"{_wb_site(cid_)}/careers"}}]}
+            for how_ in ("the desk", "a ruling"):
+                web.clear()
+                web[url_] = body_
+                with _WiringBox([_wb_co(cid_, name_)], {}, files=files_) as box, \
+                        contextlib.redirect_stderr(io.StringIO()):
+                    (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+                     ats._get, ats._page) = real
+                    sent.clear()
+                    if how_ == "the desk":
+                        r_ = admin.act_board_proposal({"id": cid_, "accept": True, "by": "owner",
+                                                       "why": "selftest", "force": True})
+                    else:
+                        r_ = proposal_rulings._accept_board({"id": cid_, "ats_type": kind_, "ats_ref": ref_},
+                                                            "owner", "selftest", True)
+                    wired = box.record(cid_).get("ats")
+                asks_ = [u for u, _kw in sent]
+                if asks_ != [url_] or wired != {"type": kind_, "ref": ref_}:
+                    errors += fail(f"accepting a held {kind_} board by {how_} asked {asks_} ({r_}; on file "
+                                   f"{wired}): it is read, then asked whose it is, in one request")
     finally:
         (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS) = held[:5]
         ats._HOST_NOT_BEFORE.clear()
@@ -22395,29 +22669,95 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
     FRAME = ('<iframe src="https://widgets.jobscore.com/jobs/acmegov/widget_iframe?bg_color=FFFFFF&amp;'
              'group_by=department"></iframe>')
     POWERED = '<a href="https://www.jobscore.com/?utm_source=acmegov">Powered by JobScore</a>'
+    # THE LOADER'S SLUG IS THE ARGUMENT OF THE CALL THAT CLOSES ITS OWN
+    # FUNCTION (blind review of 2026-11-24): closed '}(document, ...));' -
+    # as minifiers and Crockford write it - the call after it was another
+    # snippet's, Facebook's or a second account's
+    CROCK = ("(function(d, s, c) { var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); "
+             "js.src = '//careers.jobscore.com/jobs/' + c + '/widget.js'; fjs.parentNode.insertBefore(js, fjs);"
+             " }(document, 'script', '%s'));")
+    BANG = ('!function(d,s,c){var js=d.createElement(s);js.src="//careers.jobscore.com/jobs/"+c+'
+            '"/widget.js";d.body.appendChild(js)}(document,"script","%s");')
+    SDK = ("(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) "
+           "return; js = d.createElement(s); js.id = id; js.src = 'https://connect.social.example/sdk.js'; "
+           "fjs.parentNode.insertBefore(js, fjs); })(document, 'script', 'social-jssdk');")
+    PLAIN = ("(function(d, s, c) { var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); "
+             "js.src = '//careers.jobscore.com/jobs/' + c + '/widget.js'; fjs.parentNode.insertBefore(js, fjs);"
+             " })(document, 'script', '%s');")
+    ARROW = ("((d, s, id) => { const js = d.createElement(s); js.id = id; js.src = "
+             "'https://connect.social.example/sdk.js'; d.head.appendChild(js); })(document, 'script', "
+             "'social-jssdk');")
+    UNCALLED = ("(function(d, s, c) { js.src = '//careers.jobscore.com/jobs/' + c + '/widget.js'; "
+                "}; ")
     for markup, want, why in (
             ('<a href="https://careers.jobscore.com/careers/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
              "a link to the hosted board"),
             ('<a href="https://careers.jobscore.com/jobs/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
              "a link to its /jobs/ address"),
             (f'<a href="{posting(1)}?ref=rss">AE</a>', [("jobscore", SLUG, "href")], "a link to a posting"),
-            ('<a href="https://www.jobscore.com/careers/AcmeGov">Jobs</a>', [("jobscore", SLUG, "href")],
+            # (as spelled: JobScore minds the case of the path)
+            ('<a href="https://www.jobscore.com/careers/AcmeGov">Jobs</a>', [("jobscore", "AcmeGov", "href")],
              "a link on www., its slug in capitals"),
             ('<a href="https://hire.jobscore.com/jobs/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
              "a link on hire."),
+            ('<a href="https://jobscore.com/careers/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
+             "a link on the bare domain"),
             (FRAME, [("jobscore", SLUG, "iframe")], "the widget's iframe"),
+            ('<iframe src="https://widgets.jobscore.com/jobs/acmegov/other_frame"></iframe>',
+             [("jobscore", SLUG, "iframe")], "another page of the widget's, naming the account"),
+            ('<script src="https://widgets.jobscore.com/jobs/acmegov/widget.js"></script>',
+             [("jobscore", SLUG, "script")], "the widget's own script, naming the account"),
             (LOADER, [("jobscore", SLUG, "script")], "the script loader"),
+            ("<script>" + CROCK % "acmegov" + "</script>", [("jobscore", SLUG, "script")],
+             "the loader closed '}(document, ...))'"),
+            ("<script>" + BANG % "acmegov" + "</script>", [("jobscore", SLUG, "script")],
+             "the loader as a minifier writes it, !function(d,s,c){...}(document, ...)"),
+            ("<script>" + CROCK % "acmegov" + SDK + "</script>", [("jobscore", SLUG, "script")],
+             "the loader closed so, another vendor's snippet after it"),
+            ("<script>" + CROCK % "acmegov" + PLAIN % "betaholdings" + "</script>",
+             [("jobscore", SLUG, "script"), ("jobscore", "betaholdings", "script")],
+             "two loaders in one script: two boards"),
+            # (a function of its own before the address is still the loader's)
+            ("<script>(function(d, s, c) { var ready = function() {}; var js = d.createElement(s); js.src = "
+             "'//careers.jobscore.com/jobs/' + c + '/widget.js'; d.body.appendChild(js); })(document, "
+             "'script', 'acmegov');</script>", [("jobscore", SLUG, "script")],
+             "the loader holding a function of its own before its address"),
+            (LOADER.replace("'acmegov'", "'AcmeGov'"), [("jobscore", "AcmeGov", "script")],
+             "the loader handed a slug in capitals, kept as spelled"),
             ("<div class='jobscore-jobs'><div class='js-fallback'><a href='https://careers.jobscore.com/jobs/"
              "acmegov'>Jobs</a></div></div>" + LOADER,
              [("jobscore", SLUG, "href"), ("jobscore", SLUG, "script")], "the loader beside its fallback link"),
             (FRAME + POWERED, [("jobscore", SLUG, "iframe")], "the iframe beside the 'Powered by' link"),
             (FRAME + '<a href="https://careers.jobscore.com/careers/betaholdings">x</a>',
-             [("jobscore", SLUG, "iframe"), ("jobscore", "betaholdings", "href")], "two slugs: two boards")):
+             [("jobscore", SLUG, "iframe"), ("jobscore", "betaholdings", "href")], "two slugs: two boards"),
+            (FRAME + '<a href="https://jobscore.com/careers/betaholdings">x</a>',
+             [("jobscore", SLUG, "iframe"), ("jobscore", "betaholdings", "href")],
+             "a second account on the bare domain: two boards"),
+            (FRAME + '<script src="https://widgets.jobscore.com/jobs/betaholdings/widget.js"></script>',
+             [("jobscore", SLUG, "iframe"), ("jobscore", "betaholdings", "script")],
+             "a second account's widget script: two boards")):
         found, rest = fsb.sightings(markup, here, home)
         got = sorted((f["type"], f["ref"], f["element"]) for f in found)
         if got != sorted(want) or rest:
             errors += fail(f"finder, {why}: {got}, not {sorted(want)}, or JobScore's own furniture was filed "
                            f"beside the board: {[r['vendor'] for r in rest]}")
+    # AN ACCOUNT OR A JOB IN A SHAPE NO BOARD FORM READS is jobscore-tenant:
+    # beside their board a second account, a doubt - never JobScore's own
+    # form, dropped beside the board (blind review of 2026-11-24)
+    for markup, why in (
+            ('<a href="https://careers.jobscore.com/careers/beta_holdings">x</a>', "a slug run into an underscore"),
+            ('<a href="https://jobscore.com/jobs/beta_holdings">x</a>', "the same, on the bare domain"),
+            ('<a href="https://careers.jobscore.com/apply_flow/applications/go?job_id=' + jid(99)
+             + '&amp;sid=68">Apply</a>', "one job's apply link, whose account it does not show"),
+            ('<a href="https://acme.jobscore.com/careers/betaholdings">x</a>', "a host none of the board's four")):
+        found, rest = fsb.sightings(FRAME + markup, here, home)
+        if sorted((f["type"], f["ref"]) for f in found) != [("jobscore", SLUG)] \
+                or [r["vendor"] for r in rest] != ["jobscore-tenant"]:
+            errors += fail(f"finder, {why}, beside their board: boards {[(f['type'], f['ref']) for f in found]}, "
+                           f"others {[r['vendor'] for r in rest]} - not their board and jobscore-tenant, "
+                           f"a second account")
+    if fsb.TENANT_FORMS.get("jobscore-tenant") != "jobscore" or "jobscore-tenant" in fsb._NO_BOARD_IN_IT:
+        errors += fail("finder: jobscore-tenant is not a tenant form of jobscore (a doubt beside its board)")
     for markup, why in (
             (POWERED, "the 'Powered by' link"),
             ('<link rel="stylesheet" href="https://static.jobscore.com/assets/widget.css">', "an asset host"),
@@ -22427,11 +22767,23 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
             ('<a href="https://xcareers.jobscore.com/careers/acmegov">x</a>', "a host ending in it"),
             ('<a href="https://x.example/careers/acmegov">x</a>', "another host's same path"),
             ('<a href="https://careers.jobscore.com/careers/acme_gov">x</a>', "a slug run into an underscore"),
-            ('<iframe src="https://widgets.jobscore.com/jobs/acmegov/other_frame"></iframe>', "another widget page"),
+            ('<a href="https://www.jobscore.com/careers/jobscore">Work at JobScore</a>', "JobScore's own board"),
             ("<script>(function(d, s, id) {})(document, 'script', 'acmegov');</script>",
              "another vendor's loader, naming no JobScore address"),
             ("<script>var u = '//careers.jobscore.com/jobs/' + c + '/widget.js';</script><script>"
-             "})(document, 'script', 'acmegov');</script>", "the loader's address and a call in two scripts")):
+             "})(document, 'script', 'acmegov');</script>", "the loader's address and a call in two scripts"),
+            # (the loader is told JobScore's own name or its furniture: no board)
+            *[(LOADER.replace("'acmegov'", f"'{s_}'"), f"a loader handed {s_!r}")
+              for s_ in ("jobscore", "JobScore", "widgets", "search")],
+            # (the address built from another name than the loader's own third
+            # parameter, or the call after another function: not its own call)
+            ("<script>(function(d, s, c) { var js = d.createElement(s); js.src = '//careers.jobscore.com/jobs/'"
+             " + slug + '/widget.js'; })(document, 'script', 'acmegov');</script>",
+             "a loader whose address is built from another name"),
+            ("<script>" + UNCALLED + SDK + "</script>",
+             "a loader closed with no call, another vendor's snippet after it"),
+            ("<script>" + UNCALLED + ARROW + "</script>",
+             "a loader closed with no call, an arrow function's snippet after it")):
         found, _rest = fsb.sightings(markup, here, home)
         if found:
             errors += fail(f"finder: {why} was read as a board: {[(f['type'], f['ref']) for f in found]}")
@@ -22440,10 +22792,16 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
             or fsb._NO_BOARD_IN_IT.get("jobscore-other") != "jobscore":
         errors += fail(f"finder: JobScore's own site alone is not jobscore-other (a platform we read, naming "
                        f"no board): {[r['vendor'] for r in alone]}")
+    if "jobscore" in fsb.LOWERED:
+        errors += fail("finder: JobScore's slugs are lowered (LOWERED): JobScore minds their case")
+    # (board_key is loose by design - a collision only sends a board to a
+    # person - so two spellings of one slug are one key there; never what
+    # is read)
     if bp.board_key("jobscore", "AcmeGov") != bp.board_key("jobscore", SLUG) \
             or bp.board_key("jobscore", "betaco") == bp.board_key("jobscore", SLUG):
         errors += fail("board_key: one JobScore slug in two cases is not one board, or two slugs are")
-    # ...and discover_js, which only prints, reads the same three forms
+    # ...and discover_js, which only prints, reads the same three forms with
+    # the same guards
     tree = ast_lib.parse((ROOT / "scripts" / "discover_js.py").read_text())
     pats = next(ast_lib.literal_eval(n.value) for n in tree.body if isinstance(n, ast_lib.Assign)
                 and any(getattr(t, "id", "") == "ATS_URL_PATS" for t in n.targets))
@@ -22453,10 +22811,21 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
         return [next((g for g in m.groups() if g), "") for m in re.finditer(mine[0], text, re.I)] if mine else []
     for markup, want in (('<a href="https://careers.jobscore.com/careers/acmegov">', ["acmegov"]),
                          ('<a href="https://careers.jobscore.com/jobs/acmegov">', ["acmegov"]),
-                         (FRAME, ["acmegov"]), (LOADER, ["acmegov"]), (POWERED, [])):
+                         ('<a href="https://jobscore.com/careers/acmegov">', ["acmegov"]),
+                         (FRAME, ["acmegov"]), (LOADER, ["acmegov"]), (POWERED, []),
+                         ("<script>" + CROCK % "acmegov" + SDK + "</script>", ["acmegov"]),
+                         ("<script>" + CROCK % "acmegov" + PLAIN % "betaholdings" + "</script>",
+                          ["acmegov", "betaholdings"]),
+                         ("<script>" + BANG % "acmegov" + "</script>", ["acmegov"]),
+                         ("<script>" + UNCALLED + SDK + "</script>", []),
+                         ("<script>" + UNCALLED + ARROW + "</script>", []),
+                         ('<a href="https://careers.jobscore.com/careers/acme_gov">', []),
+                         ('<a href="https://xcareers.jobscore.com/careers/acmegov">', []),
+                         ('<a href="https://www.jobscore.com/careers/jobscore">', []),
+                         (LOADER.replace("'acmegov'", "'jobscore'"), [])):
         if len(mine) != 1 or lift(markup) != want:
             errors += fail(f"discover_js reads {lift(markup)} out of {markup[:60]!r}, not {want}: its "
-                           f"jobscore pattern is not in step with the finder's three forms")
+                           f"jobscore pattern is not in step with the finder's three forms and guards")
     return errors
 
 
@@ -32828,8 +33197,9 @@ SITE_BOARD_FORMS = [
     # argument (ImageTrend's)
     ('<a href="https://careers.jobscore.com/careers/acmegov">Careers</a>',
      "jobscore", "acmegov", "https://careers.jobscore.com/jobs/acmegov/feed.atom"),
+    # (the slug as the page spells it: JobScore minds the case of the path)
     ("<div class='js-fallback'><a href='https://careers.jobscore.com/jobs/AcmeGov'>Jobs</a></div>",
-     "jobscore", "acmegov", "https://careers.jobscore.com/jobs/acmegov/feed.atom"),
+     "jobscore", "AcmeGov", "https://careers.jobscore.com/jobs/AcmeGov/feed.atom"),
     ('<iframe src="https://widgets.jobscore.com/jobs/acmegov/widget_iframe?bg_color=FFFFFF&amp;'
      'group_by=department" width="100%"></iframe>',
      "jobscore", "acmegov", "https://careers.jobscore.com/jobs/acmegov/feed.atom"),
@@ -49691,7 +50061,8 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "a type nothing reads": {"type": "paycom", "ref": "acme"},
         "comeet pair": {"type": "comeet", "ref": "F7.009|0123456789ABCDEF0123456789ABCD"},
         "successfactors with a path": {"type": "successfactors", "ref": "https://jobs.acme.test/go/x/1/"},
-        # (a JobScore slug is read lowered; anything that is no slug opens nothing)
+        # (a JobScore slug is read as spelled - JobScore minds its case;
+        # anything that is no slug opens nothing)
         "jobscore in capitals": {"type": "jobscore", "ref": "AcmeGov"},
         "jobscore, no slug": {"type": "jobscore", "ref": "acme/gov"},
     })
@@ -49764,7 +50135,7 @@ console.log(JSON.stringify(out));"""
         ("jobvitefeed", "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX"),
         ("trinethire", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
         ("jobscore", "https://careers.jobscore.com/careers/acmegov"),
-        ("jobscore in capitals", "https://careers.jobscore.com/careers/acmegov"),
+        ("jobscore in capitals", "https://careers.jobscore.com/careers/AcmeGov"),
         ("jobscore, no slug", "#"),
         ("successfactors", "https://jobs.acme.test/search/"),
         ("successfactors with a path", "#"),

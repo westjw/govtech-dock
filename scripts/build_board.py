@@ -592,7 +592,10 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     jobscore: its first-seen day reset, and every saved role and shared link
     to it broken (2026-11-24: ImageTrend's 7 on the board, first seen 09-25
     to 11-03, would all have). Keyed on its address it is the same posting,
-    id and day, under either reader.
+    id and day, under either reader. A rename of the account's slug, or a
+    title slug JobScore writes anew, moves the address and so the id; the
+    first-seen day is carried across by the 22-character job id
+    (carry_first_seen).
     """
     posting = ats.jobscore_posting_key(url)
     key = (f"{posting}\n" if posting else
@@ -2012,14 +2015,29 @@ def mark_read_since(orgs: list[dict], postings: list[dict], by_co: dict) -> None
 def carry_first_seen(postings: list[dict], prev_postings: list[dict],
                      nights: dict | None = None) -> None:
     """Give every posting the earliest first_seen the previous board, or any
-    snapshot in `nights` ({id: night}, from history_first_seen), held for it."""
-    prev, legacy = {}, {}
+    snapshot in `nights` ({id: night}, from history_first_seen), held for it.
+
+    A JOBSCORE POSTING IS ALSO KNOWN BY ITS 22-CHARACTER JOB ID, within its
+    company: its id hashes its whole address (posting_id), the account's
+    slug and the title's slug in it, so a company renaming its JobScore
+    account, or JobScore writing the title's slug anew, gives the same
+    posting a new id - and, matched on ids alone, a new first-seen day on
+    the night of the rename (blind review of 2026-11-24). The job id carries
+    the day across. (The id itself still moves: keyed on the job id instead,
+    ImageTrend's 7 postings on the board would all have moved ids the night
+    their company moved from html to jobscore.)"""
+    prev, legacy, jobs = {}, {}, {}
     for p in prev_postings:
         seen = p.get("first_seen")
         if not seen:
             continue
         if p["id"] not in prev or seen < prev[p["id"]]:
             prev[p["id"]] = seen
+        job = ats.jobscore_posting(p.get("url"))
+        if job:
+            key = (p.get("company_id"), job[1])
+            if key not in jobs or seen < jobs[key]:
+                jobs[key] = seen
         # Rows written before ids carried a requisition discriminator have
         # id == company::title exactly. Without this fallback the very
         # first run under the new scheme matches nothing, resets every
@@ -2033,6 +2051,9 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
                 legacy[p["id"]] = seen
     for p in postings:
         was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
+        if not was:
+            job = ats.jobscore_posting(p.get("url"))
+            was = jobs.get((p.get("company_id"), job[1])) if job else None
         # a snapshot only ever moves a date EARLIER, never past one held
         night = (nights or {}).get(p["id"])
         if night and (not was or night < was) and night < (p.get("first_seen") or "9999"):

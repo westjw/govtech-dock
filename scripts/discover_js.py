@@ -47,14 +47,21 @@ ATS_URL_PATS = [
     ("successfactors", r"([a-z0-9-]+)\.(?:successfactors|sapsf)\.com"),
     ("taleo",   r"([a-z0-9-]+)\.taleo\.net"),
     ("clearcompany", r"([a-z0-9-]+)\.clearcompany\.com"),
-    # (a link to the hosted board, its feed or a posting; the widget's
-    # iframe; the script loader, whose slug is its last argument - the
-    # three forms find_site_boards reads, 2026-11-23)
-    ("jobscore", r"(?:careers|www|hire)\.jobscore\.com/(?:careers|jobs)/([a-z0-9][a-z0-9-]*)"
-                 r"|widgets\.jobscore\.com/jobs/([a-z0-9][a-z0-9-]*)/widget_iframe"
-                 r"|careers\.jobscore\.com/jobs/['\"]\s*\+\s*[A-Za-z_$][\w$]{0,40}\s*\+\s*['\"]/widget\.js"
-                 r"['\"][^<]{0,2000}?\}\s*\)\s*\(\s*document\s*,\s*['\"]script['\"]\s*,\s*"
-                 r"['\"]([a-z0-9][a-z0-9-]*)['\"]\s*\)"),
+    # (a link to the hosted board, its feed or a posting, or any page of the
+    # widget's, the iframe among them; the script loader, whose slug is the
+    # last argument of the first call after its address closed '})(', '}('
+    # or '}', with no other function between - the three forms
+    # find_site_boards reads, with its guards: no host ending in
+    # jobscore.com's, no slug run into an underscore, never JobScore's own
+    # 'jobscore', and no call taken from another snippet; 2026-11-24. The
+    # finder also holds the address to the loader's own third parameter,
+    # which a pattern whose first group is the slug cannot name here)
+    ("jobscore", r"(?<![a-z0-9.-])(?:(?:careers|www|hire|widgets)\.)?jobscore\.com/(?:careers|jobs)/"
+                 r"(?!jobscore(?![a-z0-9_-]))([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)(?![a-z0-9_-])"
+                 r"|(?<![a-z0-9.-])careers\.jobscore\.com/jobs/['\"]\s*\+\s*[A-Za-z_$][\w$]{0,40}\s*\+\s*"
+                 r"['\"]/widget\.js['\"](?:(?!function\b|=>)[^<]){0,2000}?\}\s*\)?\s*\(\s*"
+                 r"document\s*,\s*['\"]script['\"]\s*,\s*['\"](?!jobscore['\"])"
+                 r"([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)['\"]\s*\)"),
     ("polymer", r"([a-z0-9-]+)\.polymer\.co"),
 ]
 
