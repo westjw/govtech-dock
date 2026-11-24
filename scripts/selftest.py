@@ -49380,6 +49380,200 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
     return errors
 
 
+def check_a_postings_own_apply_link_is_no_other_form() -> int:
+    """A Paylocity Apply link whose posting id their own site also links as a
+    posting is that posting's own form: not paylocity-other, no doubt, no note.
+
+    On 2026-11-23 the door held BS&A Software for the owner because "their own
+    site also loads paylocity in a form that names no board (paylocity-other)".
+    Beside each posting its careers page links (.../recruiting/jobs/Details/
+    <id>/<Tenant>/<Title>) sits that posting's Apply link (.../recruiting/jobs/
+    Apply/<the same id>/...), and the finder's catch-all for Paylocity's host
+    filed every one as a form that names no board. It is decided in the
+    finder, where every address is in hand (a row of its file keeps one
+    address and a count), so every door and count that reads `elsewhere`
+    agrees. Driven from the page - find_site_boards.look, the web stubbed -
+    through the run's summary, the platform catalogue's sweep count and the
+    wiring door's plan, look and write (synthetic pages, no network):
+      - every Apply link's id linked as a posting, on the same page or another
+        of theirs, in upper and lower case, with the rest of its path or
+        without              -> nothing under elsewhere; WIRE on both checks
+                                (the posting's page names one board, the board
+                                names them), with no doubt and no note
+      - one Apply link whose id their site does not link as a posting
+                             -> paylocity-other, naming that link: HOLD, the
+                                doubt as before
+      - matching Apply links beside another address on recruiting.paylocity.com
+                             -> paylocity-other, naming that address: HOLD, the
+                                doubt as before
+      - a posting's id in an Apply path on another host's label
+        (x.recruiting.paylocity.com)
+                             -> paylocity-other: HOLD, as before
+      - and what each row was kept with never reaches the file, from a look
+        stopped from outside too.
+    """
+    import find_site_boards as fsb
+    import platform_catalog
+    import verify_boards
+    import wire_found as wf
+    errors = 0
+    co, D = _wb_co, _PP_DETAILS
+    apply_at = "https://recruiting.paylocity.com/recruiting/jobs/Apply/"
+
+    def board(n, tenant):
+        return f"{_PP_BOARD}{_pp_uuid(n)}/{tenant}"
+    B = {"match": board(0x7901, "Pa-Match-Inc"), "stray": board(0x7911, "Pa-Stray-Inc"),
+         "mixed": board(0x7921, "Pa-Mixed-Inc"), "host": board(0x7931, "Pa-Host-Inc")}
+    P = {"match_1": D + "7901/Pa-Match-Inc/Engineer",
+         "match_2": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7902",
+         "stray": D + "7911/Pa-Stray-Inc/Engineer",
+         "mixed_1": D + "7921/Pa-Mixed-Inc/Engineer", "mixed_2": D + "7922/Pa-Mixed-Inc/Analyst",
+         "host": D + "7931/Pa-Host-Inc/Engineer"}
+    stray = apply_at + "7919/Pa-Stray-Inc/Analyst"       # no posting of theirs has this id
+    other = "https://recruiting.paylocity.com/recruiting/jobs/Search/Pa-Mixed-Inc"
+    # (a posting's id in an Apply path on another host's label: not Paylocity's)
+    mirror = "x.recruiting.paylocity.com/recruiting/jobs/Apply/7931"
+    names = {"pa-match": "Pa Match", "pa-stray": "Pa Stray", "pa-mixed": "Pa Mixed",
+             "pa-host": "Pa Host"}
+    careers = {
+        "pa-match": (f'<a href="{P["match_1"]}">Engineer</a> '
+                     f'<a href="{apply_at}7901/Pa-Match-Inc/Engineer">Apply</a> '
+                     f'<a href="{P["match_2"]}">Analyst</a> <a href="https://recruiting.'
+                     f'paylocity.com/RECRUITING/JOBS/APPLY/7902">Apply</a>'),
+        "pa-stray": (f'<a href="{P["stray"]}">Engineer</a> '
+                     f'<a href="{apply_at}7911/Pa-Stray-Inc/Engineer">Apply</a> '
+                     f'<a href="{stray}">Apply</a>'),
+        "pa-mixed": (f'<a href="{P["mixed_1"]}">Engineer</a> <a href="https://recruiting.paylocity.'
+                     f'com/Recruiting/Jobs/Apply/7921/Pa-Mixed-Inc/Engineer">Apply</a> '
+                     f'<a href="{P["mixed_2"]}">Analyst</a> <a href="{apply_at}7922">Apply</a> '
+                     f'<a href="{other}">Search our jobs</a>'),
+        "pa-host": f'<a href="{P["host"]}">Engineer</a> <p>Apply at {mirror}</p>'}
+    web = {}
+    for cid, name in names.items():
+        home = _wb_site(cid)
+        front = '<a href="/careers">Careers</a>'
+        if cid == "pa-match":
+            # an Apply link on their home page, of a posting only /careers links
+            front += (' <a href="https://recruiting.paylocity.com/recruiting/jobs/apply/7901">'
+                      'Apply now</a>')
+        web[home] = _site_boards_page(name, front)
+        web[home + "/careers"] = _site_boards_page(f"Careers at {name}", careers[cid])
+    with _SiteBoardsWeb(fsb, web) as w:
+        recs = {cid: asyncio.run(fsb.look(co(cid, name), "static", fsb.read_plain))
+                for cid, name in names.items()}
+    if any("paylocity.com" in u for u in w.reads):
+        errors += fail(f"the finder asked a Paylocity address: "
+                       f"{[u for u in w.reads if 'paylocity.com' in u]}")
+
+    def forms(rec):
+        return [(e.get("vendor"), e.get("saw"), e.get("times")) for e in rec.get("elsewhere") or []]
+    want = {"pa-match": [], "pa-stray": [("paylocity-other", stray, 1)],
+            "pa-mixed": [("paylocity-other", other, 1)],
+            "pa-host": [("paylocity-other", mirror, 1)]}
+    posted = {"pa-match": {P["match_1"], P["match_2"]}, "pa-stray": {P["stray"]},
+              "pa-mixed": {P["mixed_1"], P["mixed_2"]}, "pa-host": {P["host"]}}
+    for cid in names:
+        got = {c["ref"] for c in recs[cid]["candidates"] if c["type"] == fsb.POSTING}
+        if got != posted[cid] or forms(recs[cid]) != want[cid]:
+            errors += fail(f"{cid}: the Apply links beside the postings their site links are not "
+                           f"filed as each posting's own form (nothing under elsewhere where "
+                           f"every Apply id is a posting of theirs, paylocity-other naming what "
+                           f"is left where one is not): postings {sorted(got)}, elsewhere "
+                           f"{forms(recs[cid])}")
+    if "_each" in json.dumps(recs):
+        errors += fail("a finder record carries the addresses its rows were kept with: the file "
+                       "holds {vendor, saw, page, element, times} and no more")
+    said = "\n".join(fsb.summary(recs))
+    swept = platform_catalog.swept({"generated": "x", "mode": "static", "companies": recs})
+    if swept["forms"].get("paylocity-other") != 3 or "paylocity-other 3" not in said:
+        errors += fail(f"the run's summary or the platform catalogue counts a site whose Apply "
+                       f"links are each its postings' own as one loading Paylocity in a form that "
+                       f"names no board: {swept['forms']}\n{said}")
+
+    pages = {P["match_1"]: _pp_page("Pa Match Inc - Engineer", B["match"]),
+             P["match_2"]: _pp_page("Pa Match Inc - Analyst", B["match"]),
+             P["stray"]: _pp_page("Pa Stray Inc - Engineer", B["stray"]),
+             P["mixed_1"]: _pp_page("Pa Mixed Inc - Engineer", B["mixed"]),
+             P["mixed_2"]: _pp_page("Pa Mixed Inc - Analyst", B["mixed"]),
+             P["host"]: _pp_page("Pa Host Inc - Engineer", B["host"])}
+    asked: list = []
+
+    def posting_page(url, head=0):
+        asked.append(url)
+        if url not in pages:
+            raise AssertionError(f"the door asked {url}, which nothing here serves")
+        return pages[url]
+    BOARDS = {wf.show("paylocity", B[k]): (3, [f"Pa {k.title()} Inc"]) for k in B}
+    form_doubt = "in a form that names no board (paylocity-other)"
+    with _WiringBox([co(cid, name) for cid, name in names.items()], BOARDS) as box:
+        keep = verify_boards._board_page
+        verify_boards._board_page = posting_page
+        try:
+            code, text, wl, rows = box.plan(_wb_results(recs))
+            rows = rows or {}
+            match = rows.get("pa-match") or {}
+            c1 = match.get("check_1") or {}
+            if code != 0 or match.get("action") != "WIRE" or match.get("ref") != B["match"] \
+                    or c1.get("posting") not in posted["pa-match"] \
+                    or c1.get("posting_boards") != [B["match"]] or match.get("doubts") \
+                    or match.get("also_seen"):
+                errors += fail(f"pa-match: their site links each posting's Apply link beside it, "
+                               f"and the board the posting's page names, which names them, is "
+                               f"not WIRE with no doubt and no note: {code} {match.get('action')} "
+                               f"{match.get('ref')} {c1} {match.get('also_seen')} "
+                               f"{_wb_words(match)[:400]!r}")
+            for cid, key in (("pa-stray", "stray"), ("pa-mixed", "mixed"), ("pa-host", "host")):
+                r = rows.get(cid) or {}
+                if r.get("action") != "HOLD" or form_doubt not in _wb_words(r) \
+                        or (r.get("queue_row") or {}).get("found", {}).get("ref") != B[key]:
+                    errors += fail(f"{cid}: an address on Paylocity's host that is no posting's "
+                                   f"own Apply link, beside the board its posting names, is not "
+                                   f"held as before ({form_doubt!r}): {r.get('action')} "
+                                   f"{_wb_words(r)[:400]!r}")
+            _c, _look, expect = box.look(wl)
+            code_w, said_w = box.write(wl, expect)
+            if code_w != 0 or box.record("pa-match").get("ats") != {"type": "paylocity",
+                                                                     "ref": B["match"]} \
+                    or any(box.record(cid).get("ats", {}).get("type") != "html"
+                           for cid in ("pa-stray", "pa-mixed", "pa-host")):
+                errors += fail(f"the write did not wire pa-match's board alone: {code_w} "
+                               f"{box.record('pa-match').get('ats')} {said_w[-400:]}")
+        finally:
+            verify_boards._board_page = keep
+
+    # --- a look stopped from outside is sealed with the same say ------------
+    # (it read pa-stray's careers page and stuck: the run keeps what it had)
+    import types
+
+    async def _stuck(c, mode, read, rec=None, on_file=None):
+        pr = await read(c["website"] + "/careers", c["website"])
+        fsb.absorb(rec, pr, 1, fsb.Whose(c))
+        await asyncio.sleep(60)
+    keep_look, keep_secs = fsb.look, dict(fsb.COMPANY_SECONDS)
+    kept: dict = {}
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-apply-forms-"))
+    try:
+        fsb.look = _stuck
+        fsb.COMPANY_SECONDS["static"] = -28.0          # (thirty more than this is the outer clock)
+        with _SiteBoardsWeb(fsb, web):
+            asyncio.run(fsb.sweep([co("pa-stray", names["pa-stray"])],
+                                  types.SimpleNamespace(render=False, budget=0, show=False,
+                                                        pause=0),
+                                  tmp / "boards.json", kept))
+    finally:
+        fsb.look = keep_look
+        fsb.COMPANY_SECONDS.clear()
+        fsb.COMPANY_SECONDS.update(keep_secs)
+        shutil.rmtree(tmp, ignore_errors=True)
+    stuck = kept.get("pa-stray") or {}
+    if stuck.get("error") != fsb.TIMED_OUT or "_each" in json.dumps(kept) \
+            or forms(stuck) != want["pa-stray"]:
+        errors += fail(f"a look stopped from outside was kept with the addresses its rows were "
+                       f"kept with, or without the say on each Apply link a finished look has: "
+                       f"{stuck.get('error')!r} {stuck.get('elsewhere')}")
+    return errors
+
+
 def check_capture_parity() -> int:
     """The capture extractor exists twice and had drifted BOTH ways.
 
@@ -62663,6 +62857,7 @@ def main() -> int:
     errors += check_a_finder_cannot_replace_the_owners_queue()
     errors += check_a_posting_their_site_links_is_a_candidate_not_a_board()
     errors += check_a_board_a_posting_names_is_wired_only_on_both_checks()
+    errors += check_a_postings_own_apply_link_is_no_other_form()
     errors += check_capture_parity()
     errors += check_extension_icons()
     errors += check_open_actions_never_write_the_map()
