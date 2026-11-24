@@ -4219,36 +4219,73 @@ wired or rewired by this work: that is the door's, after review.
   the crawler's own name), every hop held to the board's own list - the same
   number, at /companies/<n>[-<slug>]/jobs/embed on app.trinethire.com, no
   query - and refused before it is asked anything (`ats._trinet_read`; the
-  employers share one host and differ by path). Server-rendered, never
-  paged, no JSON form. Each <li> of <ul id="jobs-list"> is a row: the title
-  (the link's text, unescaped), the url (its href on app.trinethire.com, the
-  query - ?source=... - dropped), and the location, the label before the LAST
-  ' - ' of the text after <strong>Location:</strong> (labels hold dashes:
-  'Atlanta, GA - Remote - Full-time'). The label is the name the employer
-  gave a location record ('Codoxo Headquarters'): published as given, never
-  read as a city. One row a job id: two postings of one title stay two. No
-  pay field, no date: no jd, no comp, no posted.
+  employers share one host and differ by path). Server-rendered, unpaged as
+  measured, no JSON form; a page that shows a pager (rel=next or prev, a
+  pagination class, a link to this board's list or career page with a query,
+  'View all' or 'Load more' outside its rows) raises, so page one of a longer
+  list is never read as the whole board. Each <li> of <ul id="jobs-list"> is
+  a row: the title (the link's text, unescaped), the url (its href on
+  app.trinethire.com, the query - ?source=... - dropped), and the location,
+  the text after <strong>Location:</strong> less the employment type after
+  its LAST ' - ' (labels hold dashes: 'Atlanta, GA - Remote - Full-time'),
+  dropped only where it IS a type (Full-time, Contractor, Part-time,
+  Temporary, Intern...): 'Remote - US' stays whole, and a type left blank
+  ('Atlanta, GA - Remote - ') leaves the label whole. The label is the name
+  the employer gave a location record ('Codoxo Headquarters'): published as
+  given, never read as a city. One row a job id: two postings of one title
+  stay two. A slug is what Rails' parameterize leaves - '_' too, or nothing
+  after the hyphen - and the board's number is compared as a number (a ref
+  written 041234-x is board 41234). No pay field, no date: no jd, no comp, no
+  posted.
 - **The ad text is not read.** This reader reads the list only and never
   asks a posting page, not even behind FETCH_DETAILS. app.trinethire.com's
   robots.txt says no to AI training, leaves the ai-input content signal unset
   and turns named AI crawlers away, so reading TriNet-hosted ad text is the
   owner's call, still pending.
-- **A zero only where the list says so**: the template (its 'Open Jobs | '
-  title and its <ul id="jobs-list">) with no <li> in it and no posting of the
-  board linked anywhere on the page. No empty list has been seen. The career
-  page (/jobs) is never read and never evidence of zero; a page without the
-  template (that page, a challenge page), a row that does not read as a
-  posting of this board, a posting linked outside the list, a page over
-  2,000,000 characters and any answer but a 200 (a number that is gone
-  answers 404) are errors: Unknown, never "None found".
+- **A zero only where TriNet says so**, in the shape measured on two empty
+  boards on 2026-11-24: the 'Open Jobs | ' title, NO <ul id="jobs-list">
+  anywhere in the raw page (TriNet draws the list only when it has rows), a
+  <div id="jobs"> whose first heading reads "There are currently no open jobs
+  available." with no link, list, table or form inside it, and no posting of
+  the board named anywhere in the RAW page (scripts, templates, noscript and
+  comments too, a JSON '\/' read as '/'). An empty jobs-list is a mount point
+  something else would fill, and raises; so do a page without the title (the
+  career page, a challenge page), a titled page of neither shape, a row that
+  does not read as a posting of this board, a posting named outside the list,
+  a pager, a page over 2,000,000 characters and any answer but a 200 (a
+  number that is gone answers 404): Unknown, never "None found".
+- **TriNet's career page is never read, by any reader.** `ats.follow` asks
+  `ats.trinethire_not_career` of every hop before anything is sent, so
+  app.trinethire.com/companies/<n>[-<slug>]/jobs is refused by the careers-page
+  readers (fetch_html, fetch_html_titles) and by the render fallbacks, which
+  open the same address through `ats.resolve`. Three records on file are type
+  html at that page (SoundThinking, Polimorphic, Green River): they read
+  Unknown, not "None found", and their public link is the same number's list
+  (build_board.board_url), until the door rewires them. No record was edited:
+  Polimorphic passes the strict name rule; SoundThinking and Green River wait
+  on the owner's also_known_as ('SoundThinking, Inc.', 'Green River Data Group
+  Inc.').
 - **Whose it is: the list's own <title>**, 'Open Jobs | {Company}', exactly
-  that prefix taken off and the rest unescaped (`verify_boards._trinethire`,
-  the same one request); the list is the whole board, so the name is stated
-  over it. Never the slug, never og:site_name (the vendor's). It is the name
-  registered with TriNet: 'Codoxo' and 'Polimorphic' pass the strict rule
-  for the records on file; 'SoundThinking, Inc.' and 'Green River Data Group
-  Inc.' are refused against 'SoundThinking (ShotSpotter)' and 'Green River'
-  until the owner rules an also_known_as for each.
+  that prefix taken off and the rest unescaped (`verify_boards._trinethire`),
+  read off the page as a browser shows it (never a <title> commented out or
+  an SVG's); the list is the whole board, so the name is stated over it, n 0
+  on an empty board. Never the slug, never og:site_name (the vendor's).
+  Inside the door's plan the probe takes the answer the read had
+  (`ats.trinethire_kept`, as `ats.jobvitefeed_kept` keeps a feed): one request
+  a list a plan. It is the name registered with TriNet: 'Codoxo' and
+  'Polimorphic' pass the strict rule for the records on file; 'SoundThinking,
+  Inc.' and 'Green River Data Group Inc.' are refused against 'SoundThinking
+  (ShotSpotter)' and 'Green River' until the owner rules an also_known_as for
+  each.
+- **One number is one board, however it is spelled**: a site that frames
+  41234-old-name and links 41234-acme names one board, and the door files no
+  "spells this board more than one way" doubt for it
+  (`wire_found.ANY_SPELLING_ONE_BOARD`).
+- **A posting's id is its number and job id** (`ats.trinethire_posting_key`,
+  hashed by `build_board.posting_id`): the list's links carry the company's
+  CURRENT slug, which a rename changes (two of the four boards researched
+  had renamed), so a posting keeps its id, its first-seen day and its saved
+  links across a rename. The address published is the one the list gives.
 - **The public link is the list itself** (build_board.board_url, the desk's
   card): every opening on one page, each linking its posting and its form.
   Never /jobs, which tells a person there are no openings. A ref that is no
@@ -4262,22 +4299,31 @@ wired or rewired by this work: that is the door's, after review.
 - **Read live 2026-11-24** (six requests through the repo's helpers:
   robots.txt, the four lists, and Codoxo's by its bare number): 7, 16, 1, 6
   and 6 rows; 'SoundThinking, Inc.', 'Polimorphic', 'Green River Data Group
-  Inc.', 'Codoxo', 'Codoxo'.
+  Inc.', 'Codoxo', 'Codoxo'. Blind review 13 read two empty boards the same
+  day: the title, and "There are currently no open jobs available." with no
+  list at all.
 - Guard: `check_trinethire_reads_its_list_and_names_it_once` (the read, the
-  rows, the zero, the hops, robots.txt, the ref, the probe, the public link,
-  the finder, and the door wiring a board their own page embeds and that
-  names them, and holding one that names somebody else), beside a row in
+  rows, the zero and TriNet's measured empty board, the raw page, the pager,
+  the slugs, the number as a number, the location's type, the id across a
+  rename, the hops, robots.txt, the ref, the probe and its <title>, the
+  career page refused by every reader, the public links, the finder, and the
+  door wiring a board their own page embeds and that names them - one
+  request a list - holding one that names somebody else, and wiring one
+  number under two slugs), beside a row in
   `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS (and a quiet
   one: a slug that spells the company beside a title naming nobody), the
   type in `check_a_stated_name_does_not_loosen_the_older_doors`, four forms
-  in SITE_BOARD_FORMS, board_key rows in
-  `check_a_found_board_is_held_for_every_doubt`, `ats._trinet_read` among the
-  page readers of `check_the_crawler_honours_robots_txt`, and TriNet's own
-  site as the board's furniture in
+  in SITE_BOARD_FORMS, board_key rows (one number under two slugs, the bare
+  number, a leading zero, two numbers) in
+  `check_a_found_board_is_held_for_every_doubt` and in the check above,
+  `ats._trinet_read` among the page readers of
+  `check_the_crawler_honours_robots_txt`, and TriNet's own site as the
+  board's furniture in
   `check_what_the_second_review_of_the_new_readers_found_stays_fixed`. 18
-  one-line breakages (the zero and raise rules, the name rule, the hops,
-  robots.txt, list only, the rows, the finder, the door's key and probe, the
-  public link), each alone in a private copy, each caught.
+  one-line breakages at the build and 28 more after blind review 13 (each
+  fix of the review undone: the zero's shape, the raw page, the pager, the
+  slugs, the number, the location, the id, the kept list, the spellings, the
+  title, the career page), each alone in a private copy, each caught.
 
 ## Build order (owner, 2026-08-23)
 
