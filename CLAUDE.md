@@ -2934,8 +2934,11 @@ round.
   alone (`evidence`). The look prints, under the row, "leans on what the plan
   was told: the page of the posting their site links, <posting>, names one
   board, <board>", and the code covers it. Discovery never follows a link to
-  a posting (it read the board off the posting's page and wrote it on the
-  tenant's name in its address alone), wire_embedded leaves a row naming one
+  a posting, from their home page or one hop on, and never reads a page its
+  own fetch LANDED on that is a posting's - their home page, a careers
+  address or a hop page redirecting to one (it read the board off the
+  posting's page and wrote it on the tenant's name in its address alone;
+  the redirect, review of 2026-11-23) - wire_embedded leaves a row naming one
   in no pile, and `file_found` files none (`board_proposals.paylocity_posting`
   is the one test); and a posting's address written as a Paylocity BOARD (an
   older finder's file, or one made by hand) is a reference this door cannot
