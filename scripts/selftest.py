@@ -5315,17 +5315,23 @@ _ID_CC_LIST = (f"https://careers-api.clearcompany.com/v1/{_ID_CC_SITE}"
 
 
 def _cc_page(brand="Acme Gov Systems, Inc.", site=_ID_CC_SITE, home="https://www.acmegov.example/",
-             title=None, script=None, slug="acmegov"):
+             title=None, script=None, slug="acmegov", head=""):
+    # (the anchors in the order the measured page has them: the skip link,
+    # the footer's home link, ClearCompany's own 'Powered by' link - so a
+    # reader that took any anchor but a.cc-home reads another address)
     title = f"{brand} &#x2013; Careers" if title is None else title
     script = (f'<script src="https://careers-content.clearcompany.com/js/v1/career-site.js?hosted=true" '
               f'data-site-id="{site}" data-default-source="CJB-0"></script>') if script is None else script
-    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>{title}</title>'
+    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">{head}<title>{title}</title>'
             f'<link rel="canonical" href="https://apply.clearcompany.com/{slug}">'
             f'<meta property="og:title" content="{title}"></head><body><div class="cc-page">'
+            f'<a class="cc-skip" href="#cc-widget">Skip to job openings</a>'
             f'<main class="cc-main"><div class="cc-wrap cc-widget" id="cc-widget">{script}</div></main>'
             f'<footer class="cc-footer"><div class="cc-copy"><span>&copy; 2026 {brand}</span>'
             f'<a class="cc-home" href="{home}" target="_blank" rel="noopener noreferrer">Visit our home '
-            f'page</a></div></footer></div></body></html>')
+            f'page</a></div><div class="cc-credit"><span>Powered by</span><a href="https://www.'
+            f'clearcompany.com" target="_blank" rel="noopener noreferrer">ClearCompany</a></div>'
+            f'</footer></div></body></html>')
 
 
 def _cc_settings(brand="Acme Gov Systems, Inc.", brands=None, name="Public - Some Label - Career Site"):
@@ -21922,31 +21928,44 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
     gate; every hop held to the site's own addresses and refused before it is
     asked; never the tenant host <label>.clearcompany.com (robots.txt closes
     it), never a posting page, and nothing from the API host kept in the cache.
-    THE ROWS: the title stripped; the place from locations[] (city,
-    subdivision, country; a nationwide place 'Remote (US)', the row remote
-    when every place is), never the server's mangled string; the url the
-    hosted site's own ?jobId=<id lower-cased>, never applyLink; the ad from
-    the list; a date only where the row carries one; no pay field read.
+    THE ROWS: the title stripped; the place from locations[] ('City, ST',
+    'Statewide (ST)', a nationwide place 'US'; abroad the city alone, its
+    country in office_hint - never an ISO-2 code geography reads as a state),
+    never the server's mangled string; the mode only the posting's own answer
+    to a field that is that question, never a nationwide place's 'remote';
+    the url the hosted site's own ?jobId=<id lower-cased>, never applyLink;
+    the ad from the list; a date only where the row carries one; no pay field
+    read, and a '$' abroad no pay.
     WHOLE OR NOT AT ALL: rows short of totalCount are paged at the same size
     and deduplicated by id, and the read raises unless they make up exactly
     totalCount; a count that moves, more rows than the count, an empty list
     (never measured), a page with no site id or two, a gone slug or site, a
-    row that does not read, another shape, a 429 - each raises.
+    row that does not read, another shape, a 429 - each raises, the count's
+    cases each in its own words.
     THE PROBE: brandFullName believed only where the hosted page's <title>
-    says the same before ' - Careers'; the footer's home link handed on as the
-    site (proven() holds it to the record's); a brand filter's brands stated
-    beside it; never settings.name, the slug or the tenant label.
-    THE FINDER: a link to apply.clearcompany.com/<slug> is a board; a legacy
-    HRM Direct frame is asked where ClearCompany's redirect sends it (robots.txt
-    at the hop, the board itself never asked) and the slug it names is the
-    board; a widget naming its site by id alone is a tenant form; the tenant
-    host and the assets name no board.
+    (not one a comment holds) says the same before ' - Careers'; the footer's
+    a.cc-home link handed on as the site as written ('//www.x/', 'www.x'),
+    which proven() holds to the record's, one naming no host none; a brand
+    filter's brands stated beside it; never settings.name, the slug or the
+    tenant label.
+    THE FINDER: a link to apply.clearcompany.com/<slug> is a board; one
+    brand's view of it (?brand=) and an account's own host are tenant forms; a
+    legacy HRM Direct frame on a page of theirs alone is asked where
+    ClearCompany's redirect sends it (robots.txt at the hop, the board itself
+    never asked, one address once however it is written) and the slug it names
+    is the board - any other answer a doubt with a note, a failure of the day
+    so marked; a widget naming its site by id alone is a tenant form; the
+    assets name no board.
     THE BOARD: the public link is the hosted site; a posting moved from the
     careers page (html) to this reader keeps its first-seen day and its
-    opening id; the type ranks 'none' (Job Hunter does not list it).
+    opening id, and its id until it moves; the type ranks 'none' (Job Hunter
+    does not list it).
     THE DOOR: a company whose own page links the site and whose site names it
     is wired, each board asked once for the read and the probe; one whose site
-    names somebody else is held.
+    names somebody else is held; so is one whose site also links one brand's
+    view, an account's host or a legacy board not followed, each said for
+    what it is; a legacy follow that failed on the day is skipped unread and
+    asked again, and a legacy board alone is said as one.
     """
     sys.path.insert(0, str(ROOT / "scripts"))
     import ats
@@ -21956,18 +21975,23 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
     errors = 0
     SLUG = "acmegov"
     HOSTED, SETTINGS, LIST = _ID_CC, _ID_CC_SETTINGS, _ID_CC_LIST
+    MODE_Q = "On-Site/Hybrid/Remote"          # (a site's own field, as Rehrig's asks it)
+
+    def answered(answer, name=MODE_Q):
+        return [{"customFieldId": "AAAAAAAA-1111-4222-8333-444444444444", "customFieldName": name,
+                 "customFieldOptionName": answer, "listOrder": 0, "detailsOrder": None}]
     JOBS = [_cc_job(1, " Account Executive ", [_cc_where("Austin", "TX")]),
             _cc_job(2, "Territory Sales Manager  ", [_cc_where(nationwide=True)],
-                    postedDate="2026-11-20T15:04:05Z"),
+                    postedDate="2026-11-20T15:04:05Z", customFieldAnswers=answered("Remote")),
             _cc_job(3, "Field Engineer", [_cc_where("Erie", "PA"), _cc_where("Dayton", "OH")],
                     id="AAAAAAAA-0000-4000-8000-000000000003"),
             _cc_job(4, "Grants Manager", [], salaryRangeLow=90000, salaryRangeHigh=120000,
                     salaryType="Annually")]
-    WANT = [("Account Executive", "Austin, TX, US", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000001",
+    WANT = [("Account Executive", "Austin, TX", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000001",
              None, None),
-            ("Territory Sales Manager", "Remote (US)", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000002",
+            ("Territory Sales Manager", "US", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000002",
              "2026-11-20", "remote"),
-            ("Field Engineer", "Erie, PA, US; Dayton, OH, US",
+            ("Field Engineer", "Erie, PA; Dayton, OH",
              f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000003", None, None),
             ("Grants Manager", "", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000004", None, None)]
     MAIN = {HOSTED: _cc_page(), SETTINGS: _cc_settings(), LIST: _cc_list(JOBS)}
@@ -22029,10 +22053,12 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
                            f"lower-cased, a date only where stated): {exc or got}")
         else:
             if [r["office_hint"] for r in rows] != [
-                    {"city": "Austin", "state": "TX", "country": "US"}, None,
+                    {"city": "Austin", "state": "TX", "country": "US"},
+                    {"city": None, "state": None, "country": "US"},
                     {"city": "Erie", "state": "PA", "country": "US"}, None]:
                 errors += fail(f"clearcompany: the office is not the first place's city, state and "
-                               f"country: {[r['office_hint'] for r in rows]}")
+                               f"country (a nationwide place's country alone): "
+                               f"{[r['office_hint'] for r in rows]}")
             if rows[0]["jd"] != "The Account Executive role.\nTravel to cities.":
                 errors += fail(f"clearcompany: the ad is not the list's own description: {rows[0]['jd']!r}")
             if rows[3]["comp"] is not None:
@@ -22058,6 +22084,64 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
         if exc or (rows[0]["comp"] or {}).get("source") != "text":
             errors += fail(f"clearcompany: pay stated in the ad was not read by the text parser: "
                            f"{exc or rows[0]['comp']}")
+
+        # ---- a place the board reads as it is; a way of working only as the posting says ---
+        # (blind review of the reader, 2026-11-24: a nationwide place was 'Remote (US)' and the
+        # row remote, though the employer's own field said On-Site; an ISO-2 country at the end
+        # of a place was read as a US state, and a Canadian ad's '$' as US dollars)
+        import roles
+        US = {"city": None, "state": None, "country": "US"}
+        PAY = "<p>The pay is $90,000 - $110,000 per year.</p>"
+        for locs, answers, want_loc, want_mode, want_hint, why in (
+                ([_cc_where(nationwide=True)], answered("On-Site"), "US", "onsite", US,
+                 "a nationwide place its own field calls On-Site"),
+                ([_cc_where(nationwide=True)], [], "US", None, US, "a nationwide place, no field"),
+                ([_cc_where(nationwide=True), _cc_where("Austin", "TX")], [], "US; Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a nationwide place and a city"),
+                ([_cc_where(sub="MN", statewide=True)], [], "Statewide (MN)", None,
+                 {"city": None, "state": "MN", "country": "US"}, "a statewide place"),
+                ([_cc_where("Erie", "PA"), _cc_where("Dayton", "OH"), _cc_where("Erie", "PA")], [],
+                 "Erie, PA; Dayton, OH", None, {"city": "Erie", "state": "PA", "country": "US"},
+                 "one place named twice"),
+                ([_cc_where("Toronto", "ON", "CA")], [], "Toronto", None,
+                 {"city": "Toronto", "state": None, "country": "CA"}, "a Canadian city"),
+                ([_cc_where("Chennai", "TN", "IN")], [], "Chennai", None,
+                 {"city": "Chennai", "state": None, "country": "IN"}, "a subdivision abroad that is a US code"),
+                ([_cc_where(nationwide=True, country="CA")], [], "", None,
+                 {"city": None, "state": None, "country": "CA"}, "a nationwide place abroad"),
+                ([_cc_where(sub="ON", country="CA", statewide=True)], [], "", None,
+                 {"city": None, "state": None, "country": "CA"}, "a statewide place abroad"),
+                ([_cc_where("Austin", "TX")], answered("Remote"), "Austin, TX", "remote",
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a city its own field calls Remote"),
+                ([_cc_where("Austin", "TX")], answered("Hybrid", name="Remote or Hybrid"), "Austin, TX",
+                 "hybrid", {"city": "Austin", "state": "TX", "country": "US"}, "the question asked with 'or'"),
+                ([_cc_where("Austin", "TX")], answered("Remote", name="Work Location"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a field that is not the question"),
+                ([_cc_where("Austin", "TX")], answered("Remote", name="Remote"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a field named by one mode alone"),
+                ([_cc_where("Austin", "TX")], answered("Remote", name="On-Site/Hybrid"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "an answer the field does not offer"),
+                ([_cc_where("Austin", "TX")], answered("Remote") + answered("On-Site"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "two answers that differ"),
+                ([_cc_where("Austin", "TX")], answered("Remote (US)"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "an answer that is no work_mode word")):
+            row = ats.plain_rows(ats.clearcompany_rows(
+                [_cc_job(9, "Role", locs, customFieldAnswers=answers, description=PAY)], SLUG))[0]
+            if (row["location"], row["mode"], row["office_hint"]) != (want_loc, want_mode, want_hint):
+                errors += fail(f"clearcompany: {why} read as {row['location']!r}, mode {row['mode']!r}, "
+                               f"office {row['office_hint']}; wanted {want_loc!r}, {want_mode!r}, {want_hint}")
+                continue
+            geo = roles.geography(row["location"], "Role")
+            abroad = want_hint["country"] != "US"
+            # the board reads the place for no way of working, and an abroad row as abroad:
+            # no US state in its office, not in the US, a bare '$' no pay
+            if geo["work_mode"] != "not stated" \
+                    or (abroad and ((geo["office"] or {}).get("state")
+                                    or not ats._abroad(row) or row["comp"] is not None)) \
+                    or (not abroad and ((row["comp"] or {}).get("currency") != "USD" or ats._abroad(row))):
+                errors += fail(f"clearcompany: {why} ({row['location']!r}) reads on the board as mode "
+                               f"{geo['work_mode']!r}, office {geo['office']}, abroad {ats._abroad(row)}, "
+                               f"pay {row['comp']}")
 
         # ---- whole or not at all ------------------------------------------------------------
         P1 = LIST.replace("pageIndex=0", "pageIndex=1")
@@ -22108,6 +22192,19 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
             if not isinstance(exc, ats.AtsError) or rows is not None:
                 errors += fail(f"clearcompany: {why} was read as {len(rows or [])} row(s), not refused "
                                f"as unreadable: {exc!r}")
+        # (and refused in true words, which the owner's queue shows: one answer is no unstable
+        # order, and more rows than counted is no partial board - blind review, 2026-11-24)
+        for routes, words, never, why in (
+                ({**MAIN, LIST: _cc_list(two, total=3)}, "more than its own count", "not stable",
+                 "more rows than the count"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=4)}, "fewer than its own count where one page "
+                 "holds them all", "not stable", "fewer rows than the count, on one page"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=1003), P1: _cc_list(two[1:3], total=1003, index=1)},
+                 "its 2 pages of 1000 gave 3 distinct ones between them: the order is not stable",
+                 "one answer", "pages that fall short of the count")):
+            rows, exc = read(routes)
+            if words not in str(exc) or never in str(exc):
+                errors += fail(f"clearcompany: {why} was refused in other words: {exc}")
         rows, exc = read({**MAIN, LIST: Resp(429, headers={"Retry-After": "0"})})
         if not isinstance(exc, ats.RateLimited):
             errors += fail(f"clearcompany: a 429 was not raised as RateLimited: {exc!r}")
@@ -22176,6 +22273,26 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
             said = says(routes)
             if said["stated"] or said["names"] or vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
                 errors += fail(f"clearcompany probe: {why} stated {said['names']} or was proven")
+        # (a <title> a comment holds is not the page's: the real one after it is read)
+        said = says({**MAIN, HOSTED: _cc_page(head="<!-- <title>Old Name Co &#x2013; Careers</title> -->")})
+        if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"]:
+            errors += fail(f"clearcompany probe: a commented-out <title> before the page's own was read "
+                           f"as its name: {said['names']} ({said['how']})")
+        # THE FOOTER'S LINK AS THE SETTINGS WROTE IT (blind review of the probe, 2026-11-24):
+        # '//www.x/' and 'www.x' name a website, which proven() holds to theirs - dropped, a
+        # namesake passed on its name alone; one that names no host (javascript:, a path on the
+        # hosted site, an e-mail address) is none, and the name alone is judged
+        for home_link, want_site, why in (
+                ("//www.acme-namesake.example/", "https://www.acme-namesake.example/", "protocol-relative"),
+                ("www.acme-namesake.example", "www.acme-namesake.example", "with no scheme"),
+                ("javascript:void(0)", None, "a script"),
+                ("/about", None, "a path on the hosted site"),
+                ("mailto:jobs@acme-namesake.example", None, "an e-mail address")):
+            said = says({**MAIN, HOSTED: _cc_page(home=home_link)})
+            judged = vb.proven({"name": "Acme Gov Systems", "website": "https://acmegov.example"}, said)["ok"]
+            if said["site"] != want_site or judged != (want_site is None):
+                errors += fail(f"clearcompany probe: a footer link {why} ({home_link!r}) gave the site "
+                               f"{said['site']!r} and proven {judged} for a company at acmegov.example")
         # (several brands: said, never proven - not even where each is a spelling of theirs)
         for brands in (["Acme Gov Systems, Inc.", "Beta Fleet Co"], ["Acme Gov Systems, Inc.", "Acme Gov Systems"]):
             said = says({**MAIN, SETTINGS: _cc_settings(brands=brands)})
@@ -22237,9 +22354,13 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
     if other_co["first_seen"] != "2026-11-24" or other_job["first_seen"] != "2026-11-24":
         errors += fail("clearcompany: another company's posting, or another job of the same site, took "
                        "a date that was never held for it")
-    if bb.posting_id("acme-gov", "AE", f"{HOSTED}?noheader=True&jobId={JID}", "X") != \
-            bb.posting_id("acme-gov", "AE", f"https://apply.clearcompany.com/AcmeGov?jobId={JID.upper()}", "X"):
-        errors += fail("clearcompany: one posting under two spellings of its address has two ids")
+    # ...and a row the careers page carries keeps its id until the company moves to the reader:
+    # its address hashed as written, as on every board (blind review, 2026-11-24: keyed on the
+    # posting, Rehrig's eight rows took new ids at the first build, before anything was wired,
+    # and moved again when the reader gave them a place; saved roles key on the id)
+    if bb.posting_id("acme-gov", "Account Executive", old["url"], old["location"]) != old["id"]:
+        errors += fail("clearcompany: a posting the careers page carries took a new id under the "
+                       "careers page's own reader (its address is hashed as written until it moves)")
 
     # ---- the finder: the forms a company's own page names the board in --------------------
     here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
@@ -22253,8 +22374,31 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
              [("clearcompany", "AcmeGov", "href")], [], "a posting and the redirect, one board"),
             ('<a href="https://apply.clearcompany.com/internal/x">x</a>', [], ["clearcompany-other"],
              "the closed /internal/"),
-            ('<a href="https://acmegov.clearcompany.com/careers/jobs">Jobs</a>', [], ["clearcompany-other"],
+            # AN ACCOUNT'S OWN HOST is a tenant form, a doubt, beside the board or not, framed or
+            # linked; ClearCompany's own hosts name nobody (blind review, 2026-11-24)
+            ('<a href="https://acmegov.clearcompany.com/careers/jobs">Jobs</a>', [], ["clearcompany-tenant"],
              "the tenant host"),
+            ('<a href="https://apply.clearcompany.com/acmegov">Jobs</a><a href="https://betagov.clearcompany.'
+             'com/careers/jobs">More jobs</a>', [("clearcompany", "acmegov", "href")], ["clearcompany-tenant"],
+             "another account's host beside the board"),
+            ('<a href="https://apply.clearcompany.com/acmegov">Jobs</a><iframe src="https://betagov.'
+             'clearcompany.com/careers/jobs"></iframe>', [("clearcompany", "acmegov", "href")],
+             ["clearcompany-tenant"], "another account's host framed beside the board"),
+            ('<a href="https://reapply.clearcompany.com/careers/jobs">Jobs</a>', [], ["clearcompany-tenant"],
+             "a tenant whose label ends in 'apply'"),
+            ('<a href="https://www.clearcompany.com">Powered by ClearCompany</a>', [], ["clearcompany-other"],
+             "ClearCompany's own site"),
+            # ONE BRAND'S VIEW OF A SITE (?brand=) is no board here, read whole under their name: a
+            # tenant form, a doubt - beside the site's own address too (blind review, 2026-11-24)
+            ('<a href="https://apply.clearcompany.com/acmegroup?brand=B-ACME">Jobs</a>', [],
+             ["clearcompany-brand"], "one brand's view of a site"),
+            ('<a href="https://apply.clearcompany.com/acmegroup/redirect?search=true&amp;brand=B-ACME">J</a>',
+             [], ["clearcompany-brand"], "one brand's view, its redirect, the key written after another"),
+            ('<a href="https://apply.clearcompany.com/acmegroup">Jobs</a><a href="https://apply.clearcompany.'
+             'com/acmegroup?Brand=B-ACME">Ours</a>', [("clearcompany", "acmegroup", "href")],
+             ["clearcompany-brand"], "the site and one brand's view of it"),
+            ('<a href="https://apply.clearcompany.com/acmegroup?branding=x&rebrand=y">Jobs</a>',
+             [("clearcompany", "acmegroup", "href")], [], "a query whose keys only contain the word"),
             ('<img src="https://cc-client-cdn.clearcompany.com/x/Logo/y">', [], ["clearcompany-other"],
              "a logo"),
             (WIDGET, [], ["clearcompany-site"], "the widget naming its site by id alone"),
@@ -22274,16 +22418,19 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
             or '("clearcompany", r"([a-z0-9-]+)\\.clearcompany' in dj:
         errors += fail("discover_js labels a ClearCompany board by its tenant label, not the hosted "
                        "site's slug the reader takes")
-    if fsb.TENANT_FORMS.get("clearcompany-site") != "clearcompany" \
-            or fsb.TENANT_FORMS.get("clearcompany-legacy") != "clearcompany" \
+    if any(fsb.TENANT_FORMS.get(f"clearcompany-{v}") != "clearcompany"
+           for v in ("site", "legacy", "brand", "tenant")) \
+            or {f"clearcompany-{v}" for v in ("site", "legacy", "brand", "tenant")} & set(fsb._NO_BOARD_IN_IT) \
             or fsb._NO_BOARD_IN_IT.get("clearcompany-other") != "clearcompany" \
             or {v for v, _h, _rx in fsb.ELSEWHERE} & {"clearcompany"}:
-        errors += fail("finder: ClearCompany's forms are not filed as its own (a site by id and a legacy "
-                       "board as tenant forms, the rest naming no board), or 'clearcompany' is still a "
-                       "platform nothing reads")
+        errors += fail("finder: ClearCompany's forms are not filed as its own (a site by id, a legacy "
+                       "board, one brand's view and an account's host as tenant forms, the rest naming "
+                       "no board), or 'clearcompany' is still a platform nothing reads")
     # A LEGACY HRM DIRECT FRAME IS ASKED WHERE CLEARCOMPANY SENDS IT: robots.txt at the hop,
     # the hosted site its redirect names never asked, and the slug it names the board, from
-    # their own page, with ClearCompany's furniture beside the frame dropped
+    # their own page, with ClearCompany's furniture beside the frame dropped. Any other answer
+    # keeps it a doubt, with a note saying what came back, and `on_the_day` where that was a
+    # failure of the day, which the door skips and asks again (blind review, 2026-11-24)
     LEG = "https://acmegov.hrmdirect.com/employment/job-openings.php?search=true&nohd=&dept=-1"
     LANDS_AT = "https://apply.clearcompany.com/acmegov/redirect?search=true&nohd=&dept=-1"
     frame = ('<iframe name="Career Site iFrame" src="//acmegov.hrmdirect.com/employment/job-openings.php?'
@@ -22291,35 +22438,80 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
              'com/js/dynamic-embed/dynamic-iframe-embed-js.php"></script>')
     asked_robots = []
     real_verdict = robots.verdict
-    for to, want, why in ((LANDS_AT, [("clearcompany", "acmegov", "iframe")], "lands on the hosted site"),
-                          (None, [], "answers in place"),
-                          ("https://www.elsewhere.example/acmegov", [], "leads off to another host")):
-        web_ = {home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
-                here: _site_boards_page("Careers at Acme Gov", frame),
-                LEG: (302, to) if to else _site_boards_page("Openings", "x")}
-        with _SiteBoardsWeb(fsb, web_) as w:
+
+    def legacy_look(web_, site=home, closed=(), down=False, on_file=None):
+        with _SiteBoardsWeb(fsb, web_, closed=closed) as w:
             verdict = robots.verdict
 
             def noted(url, fetch=None, _v=verdict):
                 asked_robots.append(url)
                 return _v(url, fetch)
+
+            def dropped(url, _w=w):
+                if url == LEG:
+                    _w.reads.append(url)
+                    raise ConnectionError("the network dropped it")
+                return _SiteBoardsWeb._request(_w, url)
             robots.verdict = noted
+            if down:
+                fsb._request = dropped
             asked_robots.clear()
             try:
-                rec = asyncio.run(fsb.look(_site_boards_co("acme-gov", "Acme Gov", home), "static",
-                                           fsb.read_plain))
+                rec = asyncio.run(fsb.look(_site_boards_co("acme-gov", "Acme Gov", site), "static",
+                                           fsb.read_plain, on_file=on_file))
             finally:
                 robots.verdict = verdict
         robots.verdict = real_verdict
+        return rec, w
+    for to, want, note, day, why in (
+            (LANDS_AT, [("clearcompany", "acmegov", "iframe")], None, False, "lands on the hosted site"),
+            (None, [], "answered HTTP 200", False, "answers in place"),
+            ("https://www.elsewhere.example/acmegov", [], "leads off to", False, "leads off to another host"),
+            (LANDS_AT + "&brand=B-ACME", [], "one brand's view", False, "lands on one brand's view"),
+            ((503, "busy"), [], "HTTP 503", True, "answers 503"),
+            ((429, "slow down"), [], "HTTP 429", True, "answers 429"),
+            ("down", [], "network error", True, "is lost on the network"),
+            ("closed", [], "robots.txt asks crawlers not to read", False, "is closed by robots.txt")):
+        web_ = {home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+                here: _site_boards_page("Careers at Acme Gov", frame),
+                LEG: (to if isinstance(to, tuple) else (302, to) if to not in (None, "down", "closed")
+                      else _site_boards_page("Openings", "x"))}
+        rec, w = legacy_look(web_, closed=("acmegov.hrmdirect.com",) if to == "closed" else (),
+                             down=to == "down")
         got = sorted((c["type"], c["ref"], c["element"]) for c in rec["candidates"])
         vendors = sorted(e["vendor"] for e in rec["elsewhere"])
-        if got != want or w.reads.count(LEG) != 1 or LEG not in asked_robots \
+        kept = [e for e in rec["elsewhere"] if e["vendor"] == "clearcompany-legacy"]
+        if got != want or w.reads.count(LEG) != (0 if to == "closed" else 1) or LEG not in asked_robots \
                 or any("apply.clearcompany.com" in u or "elsewhere.example" in u for u in w.reads + asked_robots) \
-                or (want and vendors) or (not want and "clearcompany-legacy" not in vendors) \
-                or any(k.startswith("_") for e in rec["elsewhere"] for k in e):
+                or (want and vendors) or (not want and len(kept) != 1) \
+                or any(k.startswith("_") for e in rec["elsewhere"] for k in e) \
+                or (kept and (note not in kept[0].get("note", "") or bool(kept[0].get("on_the_day")) != day)):
             errors += fail(f"finder: a legacy HRM Direct frame that {why} gave boards {got} and forms "
-                           f"{vendors} (asked {w.reads}, robots.txt of {asked_robots}): wanted {want}, the "
-                           f"frame asked once with robots.txt, never the hosted site or another host")
+                           f"{[(e['vendor'], e.get('note'), e.get('on_the_day')) for e in rec['elsewhere']]} "
+                           f"(asked {w.reads}, robots.txt of {asked_robots}): wanted {want}, a note saying "
+                           f"{note!r}, on the day {day}, the frame asked once with robots.txt, never the "
+                           f"hosted site or another host")
+    # ONE ADDRESS WRITTEN TWO WAYS is asked once (the frame's '//...&amp;' and a link's 'https://...&')
+    both = frame + ('<a href="https://acmegov.hrmdirect.com/employment/job-openings.php?search=true&nohd=&'
+                    'dept=-1">All openings</a>')
+    rec, w = legacy_look({home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+                          here: _site_boards_page("Careers at Acme Gov", both), LEG: (302, LANDS_AT)})
+    if w.reads.count(LEG) != 1 or {c["ref"] for c in rec["candidates"]} != {"acmegov"}:
+        errors += fail(f"finder: one legacy address written two ways on a page was asked "
+                       f"{w.reads.count(LEG)} times (a company's asks are {fsb.CC_LEGACY_ASKED}), or its "
+                       f"board was not found: {rec['candidates']}")
+    # A LEGACY FRAME ON A PAGE THAT IS NOT THEIRS ALONE is never asked: another record on file
+    # gives the same website, so the page is read as theirs and cannot say whose a board is
+    shared = fsb.site_index([_site_boards_co("acme-gov", "Acme Gov", home),
+                             _site_boards_co("acme-gov-parks", "Acme Gov Parks", home)])
+    rec, w = legacy_look({home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+                          here: _site_boards_page("Careers at Acme Gov", frame), LEG: (302, LANDS_AT)},
+                         on_file=shared)
+    if LEG in w.reads or LEG in asked_robots or rec["candidates"] or here not in w.reads \
+            or [e.get("note") for e in rec["elsewhere"] if e["vendor"] == "clearcompany-legacy"] != [
+                "not asked: seen on a page that is not theirs alone"]:
+        errors += fail(f"finder: a legacy frame on a site another record shares was asked ({w.reads}) or "
+                       f"made a board of theirs: {rec['candidates']}, {rec['elsewhere']}")
 
     # ---- the door: wired on both checks, held when the site names somebody else --------
     import add_company
@@ -22356,6 +22548,57 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
         if asks != sorted([HOSTED, SETTINGS, LIST, B_HOSTED, B_SETTINGS, B_LIST]):
             errors += fail(f"clearcompany door: the plan asked {asks}, not each site's three addresses once "
                            f"for the read and the probe together")
+
+        # WHAT ELSE THEIR SITE SAYS HOLDS IT, OR SKIPS IT, beside a site their page links and
+        # that names them (blind review, 2026-11-24): one brand's view of a site, another
+        # account's host, a legacy HRM Direct board not followed - said as what each is - and
+        # a legacy board whose follow failed on the day, skipped unread and asked again, never
+        # filed; a legacy board alone is said for what it is, never "none named a board"
+        def door(entry):
+            serve(web_)
+            with _WiringBox([_wb_co("acme-gov", "Acme Gov Systems")], {}) as box_, \
+                    contextlib.redirect_stderr(io.StringIO()):
+                (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+                 ats._get, ats._page) = real
+                planned = box_.plan(_wb_results({"acme-gov": entry}))[3]
+            return (planned or {}).get("acme-gov") or {}
+        careers_, about_ = f"{_wb_site('acme-gov')}/careers", f"{_wb_site('acme-gov')}/about"
+
+        def form(vendor, element="href", page=careers_, **more):
+            return {"vendor": vendor, "saw": f"https://{vendor}.example/x", "page": page,
+                    "element": element, "times": 1, **more}
+        CLOSED = "robots.txt asks crawlers not to read acmegov.hrmdirect.com"
+        for extra, beside, action, kind_, words, never, why in (
+                (form("clearcompany-brand"), True, "HOLD", None, "one brand's view", None,
+                 "one brand's view of a site"),
+                (form("clearcompany-tenant", page=about_), True, "HOLD", None, "another account", None,
+                 "another account's host, linked from their About page"),
+                (form("clearcompany-tenant", element="iframe"), True, "HOLD", None, "another account", None,
+                 "another account's host, framed"),
+                (form("clearcompany-legacy", element="iframe", note=CLOSED), True, "HOLD", None,
+                 f"legacy HRM Direct board (ClearCompany's), clearcompany-legacy.example/x, which "
+                 f"was not followed to the hosted site it names ({CLOSED})", "another account",
+                 "a legacy board robots.txt closes"),
+                (form("clearcompany-legacy", element="iframe", note="network error: ConnectionError",
+                      on_the_day=True), True, "SKIP", "unreadable", "a failure on the day", None,
+                 "a legacy board whose follow failed on the day"),
+                (form("clearcompany-legacy", element="iframe", note="network error: ConnectionError",
+                      on_the_day=True), False, "SKIP", "unreadable", "a failure on the day", None,
+                 "a legacy board alone, whose follow failed on the day"),
+                (form("clearcompany-legacy", element="iframe", note=CLOSED), False, "SKIP", "unusable",
+                 "frames a legacy HRM Direct board", "none named a board",
+                 "a legacy board alone, robots.txt closing it"),
+                (form("clearcompany-brand"), False, "SKIP", "unusable", "links one brand's view of a "
+                 "ClearCompany site", "none named a board", "one brand's view of a site alone")):
+            entry = _wb_one("acme-gov", "clearcompany", SLUG) if beside else _wb_entry("acme-gov", [])
+            entry["elsewhere"] = [extra]
+            row = door(entry)
+            said_ = _wb_words(row)
+            if row.get("action") != action or (kind_ and row.get("kind") != kind_) or words not in said_ \
+                    or (never and never in said_) or (action == "SKIP" and sent):
+                errors += fail(f"clearcompany door: {why} gave {row.get('action')} {row.get('kind') or ''} "
+                               f"({said_[:300]!r}), asking {[u for u, _ in sent]}; wanted {action} "
+                               f"{kind_ or ''} saying {words!r}" + (f", never {never!r}" if never else ""))
         # (only a board read whole is kept, only inside the block)
         serve({**MAIN, LIST: Resp(503)})
         outcomes = []
@@ -32782,6 +33025,9 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>',   # the vendor's own site
     '<a href="https://app.trinethire.com/companies/41234abc/jobs">x</a>',  # no company number
     '<a href="https://app.trinethire.com/login">Sign in</a>',             # no company at all
+    '<a href="https://reapply.clearcompany.com/careers/jobs">Jobs</a>',   # a tenant host, not apply.
+    '<a href="https://www.clearcompany.com">Powered by ClearCompany</a>',  # the vendor's own site
+    '<a href="https://apply.clearcompany.com/acmegroup?brand=B-ACME">Ours</a>',  # one brand's view
     "We cut greenhouse gas emissions for cities and jobs.lever.co is a job site.",
     # WHAT A COMPANY TOOK DOWN BY COMMENTING IT OUT IS NOT ON ITS PAGE, and
     # that is so whatever it commented out. The first version cut a

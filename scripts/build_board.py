@@ -564,8 +564,9 @@ def posting_key(url) -> str | None:
     """What a posting's address NAMES, for the platforms whose one posting is
     written more than one way - a TriNet Hire posting by its company number
     and job id, a ClearCompany posting by its slug and job id - or None for
-    any other address. posting_id hashes it, and carry_first_seen matches a
-    posting on it when the reader or the place written beside it changed."""
+    any other address. carry_first_seen matches a posting on it when the
+    reader or the place written beside it changed. posting_id hashes only
+    TriNet's (see there)."""
     return ats.trinethire_posting_key(url) or ats.clearcompany_posting_key(url)
 
 
@@ -591,13 +592,17 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     changes (5502-fraudscope became 5502-codoxo), so it is hashed as its
     company number and job id (ats.trinethire_posting_key) and keeps its id,
     its first-seen day and its saved links across a rename (blind review 13,
-    2026-11-24). So is a ClearCompany posting (ats.clearcompany_posting_key):
-    its slug and its job id, whatever else its query says - the html reader
-    that read those boards before wrote ?noheader=False&jobId=<id>, the
-    reader writes ?jobId=<id> (2026-11-24). Every other address is hashed as
-    it is.
+    2026-11-24). Every other address is hashed as it is - a ClearCompany
+    posting's too. Keyed on its slug and job id, Rehrig Pacific's eight rows
+    on file (its careers page's, ?noheader=False&jobId=<id>, no place) took
+    new ids at the first build after the reader merged, before any board was
+    wired, and moved again when the reader gave them a place (blind review of
+    the identity, 2026-11-24): saved roles key on the id. Hashed as written,
+    they keep their ids until the company is moved to its reader, and move
+    once then, keeping their first-seen day and their opening id
+    (carry_first_seen matches them on posting_key).
     """
-    key = f"{posting_key(url) or url or ''}\n{location or ''}"
+    key = f"{ats.trinethire_posting_key(url) or url or ''}\n{location or ''}"
     disc = hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
     return f"{opening_id(company_id, title)}::{disc}"
 

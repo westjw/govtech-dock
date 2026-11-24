@@ -4782,17 +4782,33 @@ def fetch_trinethire(ref) -> list[dict]:
 # to the very address it asked).
 #
 # A ROW: positionTitle (the server leaves stray spaces on it), the place from
-# locations[] - city, subdivision, country, a nationwide one 'Remote (<country>)'
-# and the row remote when every place is - never the server's `location`
-# string, whose whitespace is mangled ('Erie  PA', 'Hope Mills\t NC'); the ad
-# from the list's own description (no second request); a date only where the
-# row carries postedDate (both measured sites switch it off, and the feed
-# leaves out what a site does not show). No pay field is read: salaryRangeLow,
+# locations[] (clearcompany_place) - never the server's `location` string,
+# whose whitespace is mangled ('Erie  PA', 'Hope Mills\t NC'); the ad from the
+# list's own description (no second request); a date only where the row
+# carries postedDate (both measured sites switch it off, and the feed leaves
+# out what a site does not show). No pay field is read: salaryRangeLow,
 # salaryRangeHigh and salaryType were on no measured row and the widget prints
 # USD and CAD both as '$', so pay comes from the ad's own text through
-# plain_rows, as for every reader whose feed states none. departmentName (cost
-# centres: '101004 Kenosha Production'), customFieldAnswers and the
+# plain_rows, as for every reader whose feed states none - and where the row
+# is abroad (its office_hint's country, ats._abroad) a bare '$' is no pay.
+# departmentName (cost centres: '101004 Kenosha Production') and the
 # requisition number are not read.
+#
+# A PLACE THE BOARD CAN READ (blind review of the reader, 2026-11-24). The
+# country is an ISO-2 code, and roles.geography reads a trailing two-letter
+# code as a US state: 'Toronto, ON, CA' was a California office and
+# 'Calgary, AB, CA' and 'Pune, MH, IN' US ones. So a US place is 'City, ST'
+# (or 'Statewide (ST)'); a place abroad is its city alone - its subdivision
+# can be a US code too, Tamil Nadu's TN - and its country goes in office_hint
+# and nowhere in the text, where it settles is_us and what a '$' means.
+# A NATIONWIDE PLACE IS NO WAY OF WORKING. The widget shows one as
+# 'Remote (US)', but it is a place an employer picked, not a mode: three of
+# Rehrig's five are a forklift job, a yard driver and a warehouse associate
+# its own On-Site/Hybrid/Remote field calls On-Site. It is written 'US'
+# (abroad: nothing), which geography reads as no mode, and the row's mode is
+# only ever the posting's own answer to a field that IS that question
+# (clearcompany_mode), through work_mode; the site's other custom fields are
+# not read.
 #
 # A ZERO HAS NOT BEEN SEEN. Neither board was empty, so an empty list raises,
 # kept Unknown and never "None found", as an empty Jobvite feed does. Every
@@ -4944,7 +4960,12 @@ def clearcompany_page_name(page: str) -> str:
 
 def clearcompany_home(page: str) -> str | None:
     """The employer's website the hosted page's footer links ('Visit our home
-    page', a.cc-home), or None. An address, never a name."""
+    page', a.cc-home), as the employer's settings wrote it - or None. An
+    address, never a name. What it names is verify_boards._site's to judge,
+    as for ashby's and jazzhr's: a link written '//www.x/' or 'www.x' still
+    names a website, and dropped it let a namesake pass on its name alone
+    (blind review of the probe, 2026-11-24). A link with another scheme
+    (javascript:, mailto:) or an '@' in it names none."""
     for m in _CC_A.finditer(_COMMENT.sub(" ", page or "")):
         attrs = m.group(1)
         if "cc-home" not in _cc_attr(_CC_CLASS, attrs).lower().split():
@@ -4954,7 +4975,9 @@ def clearcompany_home(page: str) -> str | None:
             parts = urllib.parse.urlsplit(href)
         except ValueError:
             return None
-        return href if parts.scheme in ("http", "https") and parts.hostname else None
+        if not href or "@" in href or parts.scheme.lower() not in ("", "http", "https"):
+            return None
+        return "https:" + href if href.startswith("//") else href
     return None
 
 
@@ -5039,52 +5062,98 @@ def clearcompany_jobs(site_id: str) -> list[dict]:
         for j in more:
             by_id.setdefault(_text(j.get("id")).lower(), j)
         index += 1
-    if len(by_id) != total:
-        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and {len(by_id)} "
-                       f"distinct ones were read: the order is not stable between requests, and a "
-                       f"partial board is never published as whole")
+    # (said for what it is, one answer or several: the owner's queue shows it -
+    # blind review of the reader, 2026-11-24)
+    n, asked = len(by_id), ("its one answer" if index == 1 else f"its {index} pages")
+    if n > total:
+        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and {asked} of up to "
+                       f"{CLEARCOMPANY_PAGE_SIZE} gave {n} distinct ones, more than its own count, "
+                       f"so what it lists is not the board it counts")
+    if n < total and index == 1:
+        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and its one answer of "
+                       f"up to {CLEARCOMPANY_PAGE_SIZE} gave {n} distinct ones, fewer than its own "
+                       f"count where one page holds them all, so the board is not read in part")
+    if n < total:
+        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and {asked} of "
+                       f"{CLEARCOMPANY_PAGE_SIZE} gave {n} distinct ones between them: the order is "
+                       f"not stable between requests, and a partial board is never published as "
+                       f"whole")
     return list(by_id.values())
 
 
-def clearcompany_place(loc) -> tuple[str, bool, tuple | None]:
-    """(a place as the board shows it, whether it is nationwide, the office it
-    names as (city, subdivision, country) or None) for one of a posting's
-    locations[]: 'Kenosha, WI, US', 'Remote (US)', 'Statewide (MN), US'."""
+def clearcompany_place(loc) -> tuple[str, tuple | None]:
+    """(a place as the board shows it, what it names as (city, subdivision,
+    country) or None) for one of a posting's locations[]. In the US
+    'Kenosha, WI', 'Statewide (MN)', and a nationwide place 'US'; abroad the
+    city alone, or nothing - never the ISO-2 country or a subdivision code,
+    which roles.geography reads as a US state - its country carried in what
+    it names (see A PLACE THE BOARD CAN READ above). A country that is not
+    stated leaves the place as written ('City, ST')."""
     if not isinstance(loc, dict):
-        return "", False, None
+        return "", None
     city, sub, country = (_text(loc.get(k)) for k in ("city", "subdivision", "country"))
+    k = country.lower().replace(".", "")
+    us, abroad = k in _US_COUNTRY, bool(k) and k not in _US_COUNTRY
     if loc.get("isNationwide") is True:
-        return (f"Remote ({country})" if country else "Remote"), True, None
+        return ("US" if us else ""), ((None, None, country) if country else None)
     if loc.get("isStatewide") is True and sub:
-        return ", ".join(p for p in (f"Statewide ({sub})", country) if p), False, (None, sub, country or None)
-    place = ", ".join(p for p in (city, sub, country) if p)
-    return place, False, ((city or None, sub or None, country or None) if (city or sub) else None)
+        return ("" if abroad else f"Statewide ({sub})"), (None, sub, country or None)
+    place = city if abroad else ", ".join(p for p in (city, sub) if p)
+    return place, ((city or None, sub or None, country or None) if (city or sub or country) else None)
+
+
+def clearcompany_mode(job: dict) -> str | None:
+    """How the posting is worked, as its own answer says - or None. Only an
+    answer to a custom field whose NAME is the question itself, every part of
+    it a work_mode word and two or more of them ('On-Site/Hybrid/Remote', as
+    Rehrig's site asks it), answered with one of those words, through
+    work_mode; two such answers that differ are none. Nothing is inferred
+    from a place (a nationwide place is not remote: A NATIONWIDE PLACE IS NO
+    WAY OF WORKING above), and no other custom field is read."""
+    said = set()
+    answers = job.get("customFieldAnswers")
+    for a in answers if isinstance(answers, list) else ():
+        name = a.get("customFieldName") if isinstance(a, dict) else None
+        answer = a.get("customFieldOptionName") if isinstance(a, dict) else None
+        if not isinstance(name, str) or not isinstance(answer, str):
+            continue
+        asks = [work_mode(p) for p in re.split(r"\s*(?:/|,|\|)\s*|\s+or\s+", name.strip(), flags=re.I)]
+        if len(asks) < 2 or None in asks or len(set(asks)) != len(asks):
+            continue
+        got = work_mode(answer)
+        if got in asks:
+            said.add(got)
+    return said.pop() if len(said) == 1 else None
 
 
 def clearcompany_rows(jobs: list[dict], slug: str, url: str = "the list") -> list[dict]:
     """One row a posting, or AtsError for a row that does not read as one (no
     id in the site's own form, no title): the list is the board, so a row it
-    cannot read is never left out of a board published as whole."""
+    cannot read is never left out of a board published as whole. The office
+    hint is the first place that names a city or a subdivision, else the
+    first that names a country alone (a nationwide place: is_us and what a
+    '$' means settle on it)."""
     rows = []
     for j in jobs:
         jid, title = _text(j.get("id")).lower(), _text(j.get("positionTitle"))
         if not _CC_GUID_RX.fullmatch(jid) or not title:
             raise AtsError(f"{url}: a row does not read as a posting (its id or its title), so the "
                            f"board is not read in part")
-        places, nationwide, office = [], [], None
+        places, named = [], []
         for loc in j.get("locations") if isinstance(j.get("locations"), list) else ():
-            place, remote, where = clearcompany_place(loc)
+            place, where = clearcompany_place(loc)
             if place:
                 places.append(place)
-                nationwide.append(remote)
-            if office is None and where is not None:
-                office = where
+            if where is not None:
+                named.append(where)
+        office = next((w for w in named if w[0] or w[1]), None) or next(iter(named), None)
         desc = j.get("description")
         rows.append({"title": title,
+                     # (one place a posting names twice is written once)
                      "location": "; ".join(dict.fromkeys(places)),
                      "url": clearcompany_posting_url(slug, jid),
                      "posted": posted_date(j.get("postedDate")) if j.get("postedDate") else None,
-                     "mode": "remote" if nationwide and all(nationwide) else None,
+                     "mode": clearcompany_mode(j),
                      "office_hint": office_hint(*office) if office else None,
                      # (the ad is in the answer already downloaded: always read)
                      "jd": plain_html(desc) if isinstance(desc, str) else ""})

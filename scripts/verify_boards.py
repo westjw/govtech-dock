@@ -1411,7 +1411,10 @@ def _clearcompany(ref, out: dict) -> None:
     elif brands:
         how += " - and its brand filter lists a brand, stated beside it"
     if _state(out, [brand] + brands, how, whole=len(brands) <= 1):
-        out["site"] = b["home"]
+        # (the footer's link as the settings wrote it - '//www.x/' and 'www.x'
+        # name a website too - and _site judges what it names; one that names
+        # no host is none, as ashby's and jazzhr's are)
+        out["site"] = b["home"] if _site(b["home"]) else None
     else:
         out["how"] = "clearcompany site names its employer in no form a person could read"
 

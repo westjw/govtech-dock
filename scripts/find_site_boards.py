@@ -80,6 +80,9 @@ THE RESULTS FILE (the wiring door reads exactly this):
          element: href | iframe | script | text | request | frame | redirect
      "off_site":   [the same shape, seen on a page that is not their own site],
      "elsewhere":  [{"vendor", "saw", "page", "element", "times"}],
+         a clearcompany-legacy row also "note" (what came back when it was
+         asked where ClearCompany sends it, or why it was not asked) and,
+         where that was a failure of the day, "on_the_day": true
      "left_site":  [{"from", "to_host"}],
      "job_like_links": int or null, "says_no_openings": bool,
      "error": str or null}}}
@@ -669,9 +672,35 @@ def _trinethire_board(m):
 
 def _clearcompany_site(m):
     # the hosted site's slug as the page wrote it, keyed lower-cased; never
-    # 'internal', which robots.txt closes and which is no employer's site
+    # 'internal', which robots.txt closes and which is no employer's site; and
+    # never an address of ONE BRAND's view of a site (clearcompany_one_brand):
+    # that is clearcompany-brand, a doubt (ELSEWHERE)
     slug = m.group(1)
-    return None if slug.lower() in ats._CC_CLOSED else (slug, slug.lower())
+    if slug.lower() in ats._CC_CLOSED or clearcompany_one_brand(
+            _whole_address(m.string, m.start(), m.end()) or m.string[m.start():m.start() + 2000]):
+        return None
+    return slug, slug.lower()
+
+
+# A hosted-site address's query asking for one brand (?brand=, &brand=): the
+# site's own widget turns every key of FilterTypeEnum in the page's query into
+# a filter on the list it draws, brand among them, whether or not the site
+# shows a brand menu (its code, measured 2026-11-23)
+_CC_BRAND_QUERY = r"\?(?:[^#\s\"'<>]{0,800}?[&;])?brand="
+_CC_BRAND = re.compile(_CC_BRAND_QUERY, re.I)
+
+
+def clearcompany_one_brand(address) -> bool:
+    """Does this hosted-site address ask for ONE BRAND's view of its site? A
+    company's page linking apply.clearcompany.com/<slug>?brand=<id> points at
+    the part of a site that is theirs, and the site may carry its sister
+    brands' postings too - no row names its brand, and its settings list the
+    brands only where the site shows a brand menu - so it is never a board
+    here, read whole under their name: it is clearcompany-brand, a doubt the
+    door holds for the owner (blind review of the identity, 2026-11-24)."""
+    s = soften(address) if isinstance(address, str) else ""
+    q = s.find("?")
+    return q >= 0 and bool(_CC_BRAND.match(s, q))
 
 
 def _here(kind, pattern, make=None):
@@ -983,10 +1012,23 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         # tenant form until then.
         ("clearcompany-legacy", "hrmdirect.com",
          r"(?<![a-z0-9.-])[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.hrmdirect\.com/employment(?![a-z0-9_.-])"),
+        # ONE BRAND's view of a hosted site (clearcompany_one_brand), which is
+        # no board here: a tenant form, a doubt (blind review, 2026-11-24)
+        ("clearcompany-brand", "clearcompany.com",
+         r"(?<![a-z0-9.-])apply\.clearcompany\.com/[^\s\"'<>?#]{1,200}" + _CC_BRAND_QUERY),
+        # AN ACCOUNT'S OWN HOST, <label>.clearcompany.com - its classic career
+        # site (/careers/jobs), its portal, its apply forms: robots.txt closes
+        # it (Disallow: /), so it is never read, and its label is not proven to
+        # be any hosted site's slug. Another account, or theirs: a tenant form,
+        # a doubt, beside a board or not (blind review, 2026-11-24: filed as
+        # naming no board, it vanished beside the board and was a note
+        # elsewhere). Every host of ClearCompany's own services is not one.
+        ("clearcompany-tenant", "clearcompany.com",
+         r"(?<![a-z0-9.-])(?!(?:apply|careers-api|careers-content|cc-client-cdn|www)\.clearcompany\.com"
+         r"(?![a-z0-9-]))[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.clearcompany\.com(?![a-z0-9-])"),
         # every other ClearCompany address: its assets (careers-content's
         # dynamic-embed height helper beside a legacy frame, cc-client-cdn's
-        # logos), the tenant host <label>.clearcompany.com that robots.txt
-        # closes, its own site - a platform we read, naming no board
+        # logos), its own site - a platform we read, naming no board
         ("clearcompany-other", "clearcompany.com", _B + r"clearcompany\.com"),
         ("hrmdirect", "hrmdirect.com", _B + r"hrmdirect\.com(?!/employment(?![a-z0-9_.-]))"),
         ("applicantpro-other", "isolvedhire.com", _B + r"isolvedhire\.com"),
@@ -1044,10 +1086,11 @@ def _other_region(text: str, m) -> bool:
 # (same_tenant). The door says so in those words.
 TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet",
                 "jobvite-tenant": "jobvite", "jobvite-joblink": "jobvite",
-                # (a ClearCompany site named by its id alone, and a legacy HRM
-                # Direct board its own redirect has not named a slug for:
-                # 2026-11-24)
-                "clearcompany-site": "clearcompany", "clearcompany-legacy": "clearcompany"}
+                # (a ClearCompany site named by its id alone, a legacy HRM
+                # Direct board its own redirect has not named a slug for, one
+                # brand's view of a site, an account's own host: 2026-11-24)
+                "clearcompany-site": "clearcompany", "clearcompany-legacy": "clearcompany",
+                "clearcompany-brand": "clearcompany", "clearcompany-tenant": "clearcompany"}
 _TENANT_UID = re.compile(r"(?<![0-9A-F])([0-9A-F]{2}\.[0-9A-F]{3})(?![0-9A-F])", re.I)
 
 
@@ -3188,14 +3231,18 @@ CC_LEGACY_ASKED = 2         # legacy addresses asked a company, at most
 
 def clearcompany_landing(url: str) -> dict:
     """Where ClearCompany sends a legacy HRM Direct board's address:
-    {"slug", "to", "hops", "note"}. Asked hop by hop through ats.follow, so
-    robots.txt is asked before each one, under the crawler's own name and at
-    the host gate, and every hop held to the address's own host
-    (<label>.hrmdirect.com) - refused before it is asked anything - until a
-    redirect names apply.clearcompany.com/<slug>, which ends the walk
+    {"slug", "to", "hops", "note", "on_the_day"}. Asked hop by hop through
+    ats.follow, so robots.txt is asked before each one, under the crawler's
+    own name and at the host gate, and every hop held to the address's own
+    host (<label>.hrmdirect.com) - refused before it is asked anything -
+    until a redirect names apply.clearcompany.com/<slug>, which ends the walk
     unasked: the slug is in the address. Anything else (an answer that sends
-    nobody on, a hop to any other host, robots.txt closing it, the network)
-    is no slug, and the note says why. Never raises."""
+    nobody on, a hop to any other host, robots.txt closing it, one brand's
+    view of a site, the network) is no slug, and the note says why.
+    `on_the_day` is true where what came back was a failure of the day - the
+    network, a timeout, a 5xx, a 429, a challenge (202), a robots.txt that
+    would not say - which the door skips and asks again, and never files
+    (blind review of the finder, 2026-11-24). Never raises."""
     host, hops = _host(url), []
 
     def stay(u: str):
@@ -3210,6 +3257,8 @@ def clearcompany_landing(url: str) -> dict:
         hops.append(u)
         return resp
 
+    def no(note: str, day: bool = False, to=None) -> dict:
+        return {"slug": None, "to": to, "hops": hops, "note": note, "on_the_day": day}
     try:
         resp = ats.follow(url, one, may=stay)
         status = getattr(resp, "status_code", None)
@@ -3217,20 +3266,35 @@ def clearcompany_landing(url: str) -> dict:
             resp.close()
         except Exception:                    # noqa: BLE001
             pass
-        return {"slug": None, "to": None, "hops": hops,
-                "note": f"answered HTTP {status} without sending its reader on to ClearCompany's "
-                        f"hosted site"}
+        return no(f"answered HTTP {status} without sending its reader on to ClearCompany's hosted "
+                  f"site", day=isinstance(status, int) and (status >= 500 or status in (202, 429)))
     except _CcLanded as got:
         to = str(got.args[0])
-        return {"slug": ats.clearcompany_hosted_slug(to), "to": to, "hops": hops, "note": ""}
-    except ats.AtsError as exc:               # robots.txt, a hop off the host, a loop
-        return {"slug": None, "to": None, "hops": hops, "note": privacy.redact(str(exc))[:160]}
+        if clearcompany_one_brand(to):
+            return no(f"sends its reader on to {_short(to)}, one brand's view of a site that can "
+                      f"carry other brands' postings", to=to)
+        return {"slug": ats.clearcompany_hosted_slug(to), "to": to, "hops": hops, "note": "",
+                "on_the_day": False}
+    except ats.RateLimited as exc:            # (asked to slow down: a day's answer)
+        return no(privacy.redact(str(exc))[:160], day=True)
+    except ats.RobotsRefused as exc:          # robots.txt says no - or would not say (a 5xx)
+        return no(privacy.redact(str(exc))[:160], day=getattr(exc, "kind", "") != "disallowed")
+    except ats.AtsError as exc:               # robots.txt unanswered, a hop off the host, a loop
+        why = privacy.redact(str(exc))[:160]
+        return no(why, day=why.startswith("network error"))
     except Exception as exc:                  # noqa: BLE001 - DNS, TLS, a timeout
-        return {"slug": None, "to": None, "hops": hops,
-                "note": f"network error: {type(exc.__cause__ or exc).__name__}"}
+        return no(f"network error: {type(exc.__cause__ or exc).__name__}", day=True)
 
 
 _CC_FOLLOWED = frozenset({"iframe", "frame", "href", "redirect"})
+
+
+def _cc_legacy_url(address: str) -> str:
+    """The address a legacy board is asked at: its wrappings off (soften) and
+    https where the page wrote none - one board however a page wrote it."""
+    url = soften(address)
+    return ("https:" + url if url.startswith("//") else
+            url if url.startswith("http") else "https://" + url)
 
 
 async def clearcompany_legacy(rec: dict, who: "Whose", deadline: float | None = None) -> None:
@@ -3244,44 +3308,70 @@ async def clearcompany_legacy(rec: dict, who: "Whose", deadline: float | None = 
     slug - that would be a guess, and a guess is never a ref - so each such
     address seen on a page of their OWN (a frame, a link, their own redirect)
     is asked where it goes (clearcompany_landing: robots.txt at every hop, the
-    address's own host and nothing else), at most CC_LEGACY_ASKED of them a
-    company, within the company's own time. Where every address of a row
-    lands on one slug, that slug is a candidate from that page, as that
-    page's element - their page points at the board, by way of the vendor's
-    own redirect - and the row leaves `elsewhere`, with the ClearCompany
-    furniture beside it on the same page (its iframe height helper, its
-    pictures: clearcompany-other), as a page naming a board leaves it
-    (sightings). Any other answer keeps the row as it was: a tenant form, a
-    doubt the door holds for the owner, its note saying what came back."""
+    address's own host and nothing else), at most CC_LEGACY_ASKED addresses a
+    company - each address once however a page wrote it (_cc_legacy_url) -
+    within the company's own time. Where every address of a row lands on one
+    slug, that slug is a candidate from that page, as that page's element -
+    their page points at the board, by way of the vendor's own redirect - and
+    the row leaves `elsewhere`, with the ClearCompany furniture beside it on
+    the same page (its iframe height helper, its pictures: clearcompany-other),
+    as a page naming a board leaves it (sightings). Any other answer keeps the
+    row: a tenant form, a doubt the door holds for the owner, with its `note`
+    saying what came back or why it was not asked, and `on_the_day` where that
+    was a failure of the day (clearcompany_landing; the door skips it and asks
+    again, blind review of the finder, 2026-11-24)."""
     rows = [e for e in rec.get("elsewhere") or [] if isinstance(e, dict)
             and e.get("vendor") == CC_LEGACY and e.get(_LEGACY)]
-    landed: dict = {}
+    landed: dict = {}                           # the address asked -> what came back
+    why_not: dict = {}                          # the address asked -> why it was not
     for e in rows:
         if e.get("element") not in _CC_FOLLOWED or who.of(str(e.get("page") or ""))[0] != "own":
             continue
-        for address in dict.fromkeys(e[_LEGACY].get("addresses") or ()):
-            if address in landed or len(landed) >= CC_LEGACY_ASKED:
+        for url in dict.fromkeys(_cc_legacy_url(a) for a in e[_LEGACY].get("addresses") or ()):
+            if url in landed:
                 continue
-            url = soften(address)
-            url = ("https:" + url if url.startswith("//") else
-                   url if url.startswith("http") else "https://" + url)
+            if len(landed) >= CC_LEGACY_ASKED:
+                why_not[url] = (f"not asked: this company's {CC_LEGACY_ASKED} legacy addresses "
+                                f"were asked already")
+                continue
             left = (deadline - time.monotonic()) if deadline is not None else ASIDE_SECONDS
             if left <= 0:
-                break
+                landed[url] = {"slug": None, "to": None, "hops": [], "on_the_day": True,
+                               "note": "not asked: this company's time was up"}
+                continue
             try:
-                landed[address] = await _aside(clearcompany_landing, url,
-                                               seconds=min(ASIDE_SECONDS, left))
+                landed[url] = await _aside(clearcompany_landing, url, seconds=min(ASIDE_SECONDS, left))
             except asyncio.TimeoutError:
-                landed[address] = {"slug": None, "to": None, "hops": [],
-                                   "note": "no answer before this company's time was up"}
+                landed[url] = {"slug": None, "to": None, "hops": [], "on_the_day": True,
+                               "note": "no answer before this company's time was up"}
     named: dict = {}                            # page -> its row's board
     kept = []
     for e in rec.get("elsewhere") or []:
         legacy = e.pop(_LEGACY, None) if isinstance(e, dict) else None
-        got = [landed.get(a) for a in dict.fromkeys((legacy or {}).get("addresses") or ())]
+        if not isinstance(e, dict) or e.get("vendor") != CC_LEGACY:
+            kept.append(e)
+            continue
+        urls = list(dict.fromkeys(_cc_legacy_url(a) for a in (legacy or {}).get("addresses") or ()))
+        got = [landed.get(u) for u in urls]
         slugs = {g["slug"].lower() for g in got if g and g.get("slug")}
-        if e.get("vendor") != CC_LEGACY or not got or len(slugs) != 1 \
-                or not all(g and g.get("slug") for g in got):
+        if not got or len(slugs) != 1 or not all(g and g.get("slug") for g in got):
+            # KEPT, AND SAID WHY: what came back, or why it was not asked
+            if not urls:
+                notes = [("not asked: seen on a page that is not theirs alone"
+                          if who.of(str(e.get("page") or ""))[0] != "own" else
+                          "not asked: its address was not known whole")]
+            elif e.get("element") not in _CC_FOLLOWED:
+                notes = [f"not asked: named in a {e.get('element') or 'form'} - only a link, a "
+                         f"frame or a redirect of theirs is followed"]
+            elif who.of(str(e.get("page") or ""))[0] != "own":
+                notes = ["not asked: seen on a page that is not theirs alone"]
+            else:
+                notes = [(g or {}).get("note") or why_not.get(u) or "" for g, u in zip(got, urls)]
+                if len(slugs) > 1:
+                    notes.append(f"its addresses land on {len(slugs)} hosted sites")
+            e["note"] = _short("; ".join(dict.fromkeys(n for n in notes if n)))
+            if any(g and g.get("on_the_day") for g in got):
+                e["on_the_day"] = True
             kept.append(e)
             continue
         first = next(g for g in got if g and g.get("slug"))
