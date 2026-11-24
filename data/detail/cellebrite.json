@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Closing the Digital Evidence Gap in Violence Against Women and Girls Investigations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/closing-the-digital-evidence-gap-in-violence-against-women-and-girls-investigations/"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Can Law Enforcement Store CSAM Evidence in the Cloud?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/cloud-and-csam-investigations-compatible-or-ill-considered/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cellebrite.com/en/blog/following-the-digital-trail-how-digital-forensics-is-disrupting-human-trafficking-networks-across-emea/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Closing the Digital Evidence Gap in Violence Against Women and Girls Investigations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/closing-the-digital-evidence-gap-in-violence-against-women-and-girls-investigations/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Cellebrite Calls for 2027 JUSTYS Nominees, Premier Event Highlights Unsung Heroes Who Keep the World Safe Read Now",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/resources/cellebrite-calls-for-2027-justys-nominees-premier-event-highlights-unsung-heroes-who-keep-the-world-safe/"
   }
  ],
  "profile": {

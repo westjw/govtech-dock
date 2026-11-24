@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Wherever You Work, You\u2019ll Find PolicyMap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.policymap.com/blog/wherever-you-work-youll-find-policymap"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Smarter Outreach, Targeting, and Planning with Population Health Data in Salesforce",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.policymap.com/blog/smarter-outreach-targeting-and-planning-with-population-health-data-in-salesforce"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://www.policymap.com/blog/a-deeper-look-at-gerrymandering"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Redistricting Tracker: What Changed in 2025 and 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.policymap.com/blog/redistricting-tracker"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Data-Driven Grantmaking in Practice: A Conversation Among Peers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.policymap.com/blog/newsletter-september-2026"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Custom safety training videos vs. off-the-shelf: When to use each",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.panopto.com/blog/custom-safety-training-videos-vs-off-the-shelf-when-to-use-each/"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "index-text",
    "first_seen": "2026-11-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.panopto.com/news/new-panopto-research-video-based-learning/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "training software for insurance: How to choose (and where it fits with your LMS)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.panopto.com/blog/video-training-software-insurance/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Credential leak monitoring: The warning comes early. The handoff is where the time goes.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/credential-leak-monitoring/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.dataminr.com/resources/blog/introducing-client-tailored-threat-intelligence/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "From Signals to Strategic Advantage",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/from-signals-to-strategic-advantage/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Eight outages. Six days. No attacker named.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/eight-outages.-six-days.-no-attacker-named"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/right-vendor-right-sender-wrong-keyboard"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "EP 124 \u2014 Asylon's Damon Henry On How Selling Outcomes Instead Of Robots Changes Defense Acquisition",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/asylon-damon-henry-selling-outcomes"
   }
  ],
  "profile": {

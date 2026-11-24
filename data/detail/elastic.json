@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Elastic 9.6: AlertZero, ES|QL S3 Data Federation, Universal Alerting, and more!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/whats-new-elastic-9-6-0"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "From scattered searches to instant insight: Why Iron Mountain unified its enterprise search with Elastic",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/iron-mountain-enterprise-search"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "Elastic Stack 8.19.26 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-8-19-26-released"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "Elastic Stack 9.5.7 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-9-5-7-released"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "Elastic Stack 9.4.10 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-9-4-10-released"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.elastic.co/blog/ai-adoption-in-soc"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "Elastic Stack 8.19.24 released",
-   "kind": "product",
-   "kind_rule": "released",
-   "url": "https://www.elastic.co/blog/elastic-stack-8-19-24-released"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "Elastic Stack 9.4.9 released",
-   "kind": "product",
-   "kind_rule": "released",
-   "url": "https://www.elastic.co/blog/elastic-stack-9-4-9-released"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "index-text",
-   "first_seen": "2026-11-03",
-   "headline": "Elastic Stack 9.5.6 released",
-   "kind": "product",
-   "kind_rule": "released",
-   "url": "https://www.elastic.co/blog/elastic-stack-9-5-6-released"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "Elastic is a Strong Performer in The Forrester Wave\u2122 for AIOps Platforms, Q4 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/forrester-wave-aiops-platforms-2026"
-  },
-  {
-   "date": "2026-10-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "How Elastic helps Audi Revolut F1\u00ae Team find what matters across engineering software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.elastic.co/blog/elastic-audi-revolut-f1-team-partnership"
   }
  ]
 }

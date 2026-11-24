@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Totara Appoints Warwick Fletcher as CEO to Lead Next Phase of Global Growth",
+   "kind": "leadership",
+   "kind_rule": "as CEO",
+   "url": "https://totara.com/articles/totara-appoints-warwick-fletcher-as-ceo-to-lead-next-phase-of-global-growth/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://totara.com/articles/totara-achieves-iso-iec-270012022-certification-strengthening-its-commitment-to-world-class-information-security/"
-  },
-  {
-   "date": "2025-12-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-14",
-   "headline": "Running L&D like a business: Lessons from professional training providers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://totara.com/resources/running-ld-like-a-business-lessons-from-professional-training-providers/"
   }
  ]
 }

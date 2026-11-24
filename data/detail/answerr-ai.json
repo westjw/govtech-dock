@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "The AI skills employers want in 2027, and how they test for them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://answerr.ai/blog/ai-skills-employers-want"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "How to measure AI fluency: a practical method for teams and hiring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://answerr.ai/blog/how-to-measure-ai-fluency"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "AI readiness assessment questions: 30 questions for teams, leaders and individuals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://answerr.ai/blog/ai-readiness-assessment-questions"
+  },
+  {
    "date": "2026-11-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "AI talent assessment: how to evaluate how people work with AI",
    "kind": "press",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-11-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "Technology capability assessment: what it covers and where AI capability fits",
    "kind": "press",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-11-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "AI in hiring: what changes when every candidate uses AI",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://answerr.ai/blog/prove-ai-capability-to-employers"
-  },
-  {
-   "date": "2026-10-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-26",
-   "headline": "How to Assess a Candidate's AI Skills Before You Hire",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://answerr.ai/blog/how-to-assess-candidate-ai-skills-before-hiring"
-  },
-  {
-   "date": "2026-10-25",
-   "date_source": "index-text",
-   "first_seen": "2026-10-26",
-   "headline": "How to Choose an AI Skills Assessment Tool",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://answerr.ai/blog/how-to-choose-ai-skills-assessment-tool"
-  },
-  {
-   "date": "2026-10-25",
-   "date_source": "index-text",
-   "first_seen": "2026-10-26",
-   "headline": "What Is AI Capability, and How Do You Measure It?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://answerr.ai/blog/what-is-ai-capability"
   }
  ]
 }

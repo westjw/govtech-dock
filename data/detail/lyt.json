@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Smart Cities Drive: AI, rider communications and accessibility innovations showcased at Chicago APTA Expo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lyt.ai/blog/i-rider-communications-and-accessibility-innovations-showcased-at-chicago-apta-expo"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -97,16 +106,7 @@
    "headline": "Tempe Fire Improves Safety and Response Times with LYT",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://lyt.ai/blog/tempe-fire-improves-safety-and-response-times-with-lyt?hsLang=en"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Video, Customer Success Stories",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lyt.ai/blog/wbur-interviews-mbta"
+   "url": "https://lyt.ai/blog/tempe-fire-improves-safety-and-response-times-with-lyt"
   }
  ],
  "profile": {

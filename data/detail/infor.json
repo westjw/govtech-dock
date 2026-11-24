@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Operationalizing AI in hospitality",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/operational-blueprint-ai-hospitality"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "Better corporate banking relationships start with better billing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/corporate-bank-billing-accuracy-transparency"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "index-text",
    "first_seen": "2026-11-17",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/connect-crm-and-erp-data-with-infor-crm-slx"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Building a framework for trusted health data exchange",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/trusted-health-data-exchange"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "index-text",
-   "first_seen": "2026-11-12",
-   "headline": "From insight to action: Bringing Claude into the operations that run manufacturing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/claude-in-manufacturing-operations"
   }
  ],
  "profile": {

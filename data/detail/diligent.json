@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Why your control self-assessment always comes back clean",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/control-self-assessment"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Trust is the real AI advantage: Why Diligent earned ISO 42001 certification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/iso-42001"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/resources/blog/general-counsel-risk-index-report"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "U.K. Cements Position as Europe\u2019s Shareholder Activism Stronghold, According to Diligent",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/company/newsroom/corporate-governance-europe-2026-press-release"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "Board intelligence on demand: What's new across Diligent Boards and Entities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/ai-innovations-ask-governai-boards-entities"
   }
  ]
 }

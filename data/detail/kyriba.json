@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "What's in your treasury's emergency kit?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kyriba.com/blog/treasury-emergency-kit/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kyriba.com/blog/2026-idc-saas-treasury-customer-satisfaction-award/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Political Risk Is a Top Concern, But 86% of French Finance Leaders Cannot Quantify Its Financial Impact",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kyriba.com/news/political-risk-french-finance-leaders/"
   }
  ]
 }
