@@ -419,6 +419,14 @@ def board_url(c: dict) -> str | None:
             return ats.successfactors_origin(ref) + "/search/"
         except ats.AtsError:
             return c.get("website")
+    if kind == "jobvitefeed":
+        # the ref is a Jobvite company id; a person looks at Jobvite's own
+        # careers page for the account, never the feed (it is for programs,
+        # and names a person on every row); a ref that is no id: their website
+        try:
+            return ats.jobvitefeed_page(ref)
+        except ats.AtsError:
+            return c.get("website")
     if isinstance(ref, str) and ref.startswith("http"):
         return ref
     pat = {"greenhouse": "https://job-boards.greenhouse.io/{r}",

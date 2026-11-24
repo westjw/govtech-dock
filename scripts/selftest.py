@@ -5274,6 +5274,18 @@ _ID_JOBVITE_LIST = ('<title>Gigamon Careers</title><table class="jv-job-list"><t
                     'Director - SLED</a></td><td class="jv-job-list-location">Dallas, Texas</td></tr></table>')
 _ID_JOBVITE_POSTING = ('<script type="application/ld+json">{"@type": "JobPosting", '
                        '"hiringOrganization": "Gigamon"}</script>')
+# A Jobvite account's XML feed in Tyler Technologies' shape (2026-11-23): no
+# <company>, the account's custom company-name field on every row, and a
+# hiring manager (a made-up name) that nothing may read
+_ID_JVX = "https://app.jobvite.com/CompanyJobs/Xml.aspx?c=q6NaVfwI"
+_ID_JVX_FEED = ('<?xml version="1.0" encoding="UTF-8"?><result><job><id>oAcmeAfwZ</id>'
+                '<title>Account Executive - Courts</title><requisitionid>2026-0001</requisitionid>'
+                '<category>Sales</category><location>Plano, TX, United States</location>'
+                '<date>11/18/2026</date><detail-url><![CDATA[http://app.jobvite.com/CompanyJobs/'
+                'Job.aspx?c=q6NaVfwI&j=oAcmeAfwZ]]></detail-url><description>&lt;p&gt;Sell to '
+                'courts.&lt;/p&gt;</description><company_x0020_name>Tyler Technologies'
+                '</company_x0020_name><hiring_x0020_manager>Pat Example</hiring_x0020_manager>'
+                '</job></result>')
 # A SuccessFactors Career Site Builder search page and one of its postings, in
 # the shapes measured on Gainwell's board (2026-11-22): the row's title link is
 # written twice, once for a desk and once for a phone
@@ -5628,6 +5640,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
          ["Bond Sports"], 1, CM),
         ("jobvite", "gigamon", "Gigamon", {JV: _ID_JOBVITE_LIST, JV_POST: _ID_JOBVITE_POSTING}, None,
          ["Gigamon"], 1, JV_POST),
+        ("jobvitefeed", "q6NaVfwI", "Tyler Technologies", {_ID_JVX: _ID_JVX_FEED}, None,
+         ["Tyler Technologies"], 1, _ID_JVX),
         # (stated as the board's own configuration names it, LLC and all, and
         # proven for the record that is named without it)
         ("successfactors", _ID_SF, "Gainwell Technologies",
@@ -6285,7 +6299,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
                                     else ZR if kind == "zohorecruit"
                                     else CM if kind == "comeet"
                                     else _ID_SF if kind == "successfactors"
-                                    else "gigamon" if kind == "jobvite" else "acme")
+                                    else "gigamon" if kind == "jobvite"
+                                    else "q6NaVfwI" if kind == "jobvitefeed" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -6631,7 +6646,8 @@ def check_a_stated_name_does_not_loosen_the_older_doors() -> int:
                    "paylocity", "recruitee", "rippling", "smartrecruiters",      # 2026-11-18
                    "applicantpro", "comeet", "hirebridge", "jobvite", "pinpoint",
                    "teamtailor", "zohorecruit",                                  # 2026-11-21
-                   "successfactors"}                                             # 2026-11-22
+                   "successfactors",                                             # 2026-11-22
+                   "jobvitefeed"}                                                # 2026-11-23
     if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or set(new) != named_since:
         errors += fail(f"the types judge() is forgiving on have changed: "
                        f"{sorted(vb._ALWAYS_NAMED)}, and the ones it is strict on are "
@@ -23865,7 +23881,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                     "recruitee": "acme", "workable": "acme", "jazzhr": "acme", "bamboohr": "acme",
                     "rippling": "acme", "smartrecruiters": "Acme", "icims": "careers-acme",
                     "hirebridge": "7724", "applicantpro": "acme.applicantpro.com",
-                    "pinpoint": "acme", "jobvite": "acme",
+                    "pinpoint": "acme", "jobvite": "acme", "jobvitefeed": "qAcmefwX",
                     "teamtailor": "https://acme.teamtailor.com",
                     "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
                     "comeet": "https://www.comeet.com/jobs/acme/F7.009",
@@ -23880,6 +23896,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         "hirebridge": "https://recruit.hirebridge.com/v3/jobs/list.aspx?cid=7724",
         "applicantpro": "https://acme.applicantpro.com/jobs/", "pinpoint": "https://acme.pinpointhq.com",
         "jobvite": "https://jobs.jobvite.com/acme/jobs", "teamtailor": "https://acme.teamtailor.com",
+        "jobvitefeed": "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009",
         "gusto": "https://jobs.gusto.com/boards/acme-c850a9b3", "gem": "https://jobs.gem.com/acme",
@@ -47255,7 +47272,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009", "jobvite": "acme",
-        "successfactors": "https://jobs.acme.test",
+        "jobvitefeed": "qAcmefwX", "successfactors": "https://jobs.acme.test",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -47353,6 +47370,7 @@ console.log(JSON.stringify(out));"""
         ("zohorecruit", "https://acme.zohorecruit.com/jobs/Careers"),
         ("comeet", "https://www.comeet.com/jobs/acme/F7.009"),
         ("jobvite", "https://jobs.jobvite.com/acme/jobs"),
+        ("jobvitefeed", "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX"),
         ("successfactors", "https://jobs.acme.test/search/"),
         ("successfactors with a path", "#"),
         ("paylocity", PAY),

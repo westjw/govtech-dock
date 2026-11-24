@@ -10,7 +10,7 @@ How a platform is met. find_site_boards.py reads a company's own website: an add
 
 measured_on lists the days the code or the research records a live measurement; a window (day..day) is a day within it that the research does not narrow down; unknown is none recorded. A form is a finder vendor id that belongs to the platform and names no board the wiring door can use.
 
-49 platforms: 27 read, 1 build, 3 skip, 18 seen.
+50 platforms: 28 read, 1 build, 3 skip, 18 seen.
 
 | Status | Means |
 |---|---|
@@ -39,6 +39,7 @@ measured_on lists the days the code or the research records a live measurement; 
 | [JazzHR](#jazzhr) | `jazzhr` | read | `fetch_jazzhr` | `_jazzhr` | 2026-08-23, 2026-09-01, 2026-11-18 |
 | [Jibe (iCIMS Talent Cloud)](#jibe-icims-talent-cloud) | `jibe` | read | `fetch_jibe` | `board_says` | unknown |
 | [Jobvite](#jobvite) | `jobvite` | read | `fetch_jobvite` | `_jobvite` | 2026-11-19, 2026-11-21, 2026-11-22 |
+| [Jobvite (an account's XML feed)](#jobvite-an-accounts-xml-feed) | `jobvitefeed` | read | `fetch_jobvitefeed` | `_jobvitefeed` | 2026-11-20, 2026-11-23 |
 | [Lever](#lever) | `lever` | read | `fetch_lever` | `board_says` | 2026-08-23, 2026-11-18 |
 | [Oracle Recruiting Cloud](#oracle-recruiting-cloud) | `oracle` | read | `fetch_oracle` | - | unknown |
 | [Paylocity](#paylocity) | `paylocity` | read | `fetch_paylocity` | `_paylocity` | 2026-08-23, 2026-11-18, 2026-11-22 |
@@ -78,23 +79,23 @@ measured_on lists the days the code or the research records a live measurement; 
 
 <!-- live -->
 
-From data/companies.json as last refreshed 2026-11-22. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
+From data/companies.json as last refreshed 2026-11-23. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
 
 | Type | On file | With roles |
 |---|---:|---:|
-| [`html`](#a-careers-page-html) | 966 | 133 |
+| [`html`](#a-careers-page-html) | 963 | 131 |
 | `unknown` (no board on file) | 930 | 0 |
-| [`greenhouse`](#greenhouse) | 116 | 65 |
+| [`greenhouse`](#greenhouse) | 116 | 64 |
 | [`ashby`](#ashby) | 91 | 50 |
 | [`bamboohr`](#bamboohr) | 53 | 19 |
 | [`lever`](#lever) | 42 | 21 |
-| [`workday`](#workday) | 42 | 33 |
+| [`workday`](#workday) | 42 | 32 |
 | [`paylocity`](#paylocity) | 41 | 11 |
 | [`rippling`](#rippling) | 38 | 16 |
 | [`workable`](#workable) | 31 | 13 |
 | [`jazzhr`](#jazzhr) | 21 | 4 |
 | [`breezy`](#breezy-hr) | 13 | 2 |
-| [`icims`](#icims) | 12 | 6 |
+| [`icims`](#icims) | 12 | 5 |
 | [`adp`](#adp-workforce-now) | 7 | 0 |
 | [`gusto`](#gusto) | 6 | 0 |
 | [`teamtailor`](#teamtailor) | 6 | 5 |
@@ -102,12 +103,12 @@ From data/companies.json as last refreshed 2026-11-22. **On file** is how many c
 | [`recruitee`](#recruitee) | 5 | 4 |
 | [`pinpoint`](#pinpoint) | 4 | 2 |
 | [`smartrecruiters`](#smartrecruiters) | 4 | 1 |
+| [`successfactors`](#sap-successfactors-career-site-builder) | 4 | 3 |
 | [`gem`](#gem) | 3 | 1 |
 | [`hirebridge`](#hirebridge) | 3 | 3 |
 | [`jobvite`](#jobvite) | 3 | 2 |
 | [`zohorecruit`](#zoho-recruit) | 3 | 0 |
 | [`applicantpro`](#applicantpro-isolved) | 2 | 2 |
-| [`successfactors`](#sap-successfactors-career-site-builder) | 1 | 0 |
 
 **The last sweep**: a `find_site_boards.py` results file generated 2026-11-22T04:00:53+00:00 in static mode, over 59 companies (a sweep covers the companies it was given, not the whole map). 42 companies had a board we read named on their own site.
 
@@ -144,7 +145,7 @@ From data/companies.json as last refreshed 2026-11-22. **On file** is how many c
 
 <!-- live -->
 
-On file today: 966 companies, 133 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 963 companies, 131 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -379,7 +380,7 @@ On file today: 3 companies (City Detect, Nutrislice, Token Transit), 1 of them w
 
 <!-- live -->
 
-On file today: 116 companies, 65 of them with roles. The last sweep (2026-11-22): 1 company's own site pointed to a board on it.
+On file today: 116 companies, 64 of them with roles. The last sweep (2026-11-22): 1 company's own site pointed to a board on it.
 
 <!-- /live -->
 
@@ -470,7 +471,7 @@ On file today: 3 companies (CentralSquare Technologies, EAB, Tribute Technology)
 
 <!-- live -->
 
-On file today: 12 companies (BigBear.ai (Pangiam), Bruker Detection, Cotiviti, EBSCO Information Services, Fast Enterprises, Granicus, HERE Technologies, Hyland, IDEMIA, JAGGAER, Selux, ViaPath Technologies), 6 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 12 companies (BigBear.ai (Pangiam), Bruker Detection, Cotiviti, EBSCO Information Services, Fast Enterprises, Granicus, HERE Technologies, Hyland, IDEMIA, JAGGAER, Selux, ViaPath Technologies), 5 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -535,7 +536,7 @@ On file today: no company. The last sweep (2026-11-22): 0 companies' own sites p
 
 - `jobvite-joblink`: A link to ONE job, app.jobvite.com/j?cj=\<id>, whose account the link does not show; robots.txt closes its /j/ hop, so the slug cannot be learned from it (INRIX's).
 - `jobvite-other`: Any other jobvite.com address, such as the embed loader jobs.jobvite.com/\_\_assets\_\_/scripts/careersite/public/iframe.js (NinjaOne's page serves only that, with no slug in its HTML).
-- `jobvite-tenant`: An address naming a Jobvite account (a company code, c= or ci=, on app. or hire.jobvite.com: its CompanyJobs pages and talent network) but no career site this door can read: another account beside their board, and a doubt.
+- `jobvite-tenant`: An address naming a Jobvite account (a company code, c= or ci=, on app. or hire.jobvite.com: its CompanyJobs pages, its talent network and its widget) where this door does not read it as the account's own board: beside a jobs.jobvite.com career site their site names (another account beside their board, and a doubt), or on hire.jobvite.com. On app.jobvite.com, with no career site named anywhere on their site, the same address is a jobvitefeed board.
 
 **How it publishes.** The career site's list page, server-rendered with every opening on it: GET https://jobs.jobvite.com/\<slug>/jobs, one row per opening (\<td class="jv-job-list-name"> with its /\<slug>/job/\<id> link, and its location cell), grouped under category headings. An embedded board's list and postings send a browser on to the employer's own careers page; asked with nl=1&fr=false they answer themselves. The ad and any stated pay are each posting's schema.org block, read from the posting itself (behind FETCH_DETAILS). No paging seen.
 
@@ -549,20 +550,56 @@ On file today: no company. The last sweep (2026-11-22): 0 companies' own sites p
 
 - JOBVITE'S TENANTS SHARE ONE HOST AND DIFFER BY PATH: every read is held to jobs.jobvite.com/\<slug>/ before the hop is asked anything, a path that does not say plainly which career site it is ('..', escapes, backslashes) is refused, and a row is read only under the slug asked (blind reviews, 2026-11-22).
 - A dead slug is sent to search.jobvite.com (?invalid=1): an error, never a zero. A list with no rows is an error too, until a real empty board has been read.
-- The XML feed beside it (app.jobvite.com/CompanyJobs/Xml.aspx?c=\<company code>) is not read: it names each job's hiring manager, and its host answered 429 (Retry-After 30) to a second ask.
+- The XML feed beside it (app.jobvite.com/CompanyJobs/Xml.aspx?c=\<company code>) is not read by this reader: it is the type jobvitefeed, read for an account whose site names no career site (Tyler's), by its company id.
 - A posting's own block names its job by identifier (the job's id, measured 2026-11-22 on Gigamon's postings); only the node that is this posting gives a row its ad and its pay.
 - A job open in several places shows only 'N Locations' on the list (Uplight's '2 Locations').
 - discover_ats.MARKERS still files jobs.jobvite.com/\<slug> as type html.
 
 **Notes.**
 
-- The research said build, reading the HTML list nightly and the XML feed as paced enrichment for descriptions (and Tyler's pay); the reader was built on the list alone and does not read the feed, which names hiring managers and rate-limits. The code is what runs.
+- The research said build, reading the HTML list nightly and the XML feed as paced enrichment for descriptions (and Tyler's pay); this reader was built on the list alone, and the feed got a reader of its own, jobvitefeed (2026-11-23), for an account with no career site to read. The code is what runs.
 - The research proposed believing the title when ONE posting's JSON-LD agrees with it; the probe asks every posting, up to 40, after a blind review found one posting standing for a board (2026-11-22). The code is what runs.
 - The research counted Gigamon's board at 21 on 2026-11-19; the reader's own note says 22, measured 2026-11-21.
 
 <!-- live -->
 
 On file today: 3 companies (Gigamon, Ookla, Uplight), 2 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+
+<!-- /live -->
+
+### Jobvite (an account's XML feed)
+
+`jobvitefeed` · **read** · researched as build · reader `ats.fetch_jobvitefeed` · identity probe `verify_boards._jobvitefeed` · measured 2026-11-20, 2026-11-23
+
+**How to spot it.** An address on app.jobvite.com that names a Jobvite account by its company id, on a page of the company's own site that names no jobs.jobvite.com career site (find_site_boards): the widget's script, /\_\_assets\_\_/scripts/.../JV.getTPWidget.js?...ci=\<id>, its frame, /TalentNetwork/widget/widgetContainerV2.html?...ci=\<id>, a talent network link (/TalentNetwork/...?c=\<id>), or a CompanyJobs page (/CompanyJobs/Careers.aspx, Job.aspx or Xml.aspx ?...c=\<id>), each Tyler's shape on 2026-11-23. The id is the ref: 'q', four letters or digits, 'fw' and one more (q6NaVfwI). Where their site names a jobs.jobvite.com career site, that is the candidate and these addresses are jobvite-tenant, as before. Hint: jobvite.com.
+
+**How it publishes.** One GET of https://app.jobvite.com/CompanyJobs/Xml.aspx?c=\<id>: XML, every job of the account in one answer, with no paging and no total (Tyler's on 2026-11-23: 2,119,266 characters, 266 rows). A \<result> of \<job>s, each with id, title, requisitionid, category, jobtype, location ('City, ST, Country'), date (M/D/YYYY), detail-url and apply-url (CDATA, http), description (the whole ad, as escaped HTML), briefdescription, and the fields the account adds (Tyler's: company_x0020_name, hiring_x0020_manager, agency_x0020_access, and salarymin, salarymax, salarycurrency and salaryfrequency on 213 rows). A job open in several places is a parent row and one row per other place (parentId, 139 of Tyler's 266), so one row per job is read, the copies' places joined to the parent's: 127 jobs. The ad is in the same answer.
+
+**Public link** (`build_board.board_url`). https://app.jobvite.com/CompanyJobs/Careers.aspx?c=\<id>, Jobvite's own careers page for the account (robots.txt allows it; nobody here has opened it yet), never the feed. Each row links its own job page, the feed's detail-url as https.
+
+**robots.txt.** Asked at every hop, and every hop held to the feed's own address. Measured 2026-11-19..21 and 2026-11-23: app.jobvite.com allows /CompanyJobs/ (the feed, Job.aspx, Careers.aspx) and closes /j/, /Jobs/, /API/, /Careers/ and /Widget/. It answered 429 (Retry-After 30) to a second feed asked a second after the first, so its gate holds requests 30 seconds apart (ats.JOBVITE_FEED_PAUSE), and nothing it answers is cached (ats.NEVER_CACHED).
+
+**Where it names its employer.** Only in the feed's own fields, and the feed is the whole board in one answer, so verify_boards.\_jobvitefeed believes a name the feed states on EVERY row: \<company> where any row fills it (and then it must be the same on every row), else the custom company-name field, company_x0020_name, present and the same on every row. A field empty or missing on one row states nothing; rows that disagree, or a company-name field naming another name beside \<company>, are two names stated, which proven() refuses. Measured: Tyler's feed has no \<company> and 'Tyler Technologies' in company_x0020_name on 266 of 266 rows; Absolute's \<company> is 'Absolute Security' on 18 of 18; Gigamon's \<company> is empty on 26 of 26, so it states nothing (2026-11-20).
+
+**Quirks.**
+
+- A PERSON'S NAME ON EVERY ROW: hiring_x0020_manager names one on all of Tyler's 266 rows (and Absolute's 18 and Gigamon's 26). The reader keeps the fields it uses by name (ats.\_JVX_FIELDS) and drops every other field's text as it parses, so no person's name reaches a row, a note, stderr, the probe's answer or a cache.
+- Parsed as XML by expat: a DOCTYPE or an ENTITY declaration is refused before anything it declares is read; a feed cut short, one that is not a \<result> of \<job>s, one listing no job and one over 32,000,000 bytes are errors, never a zero or part of a board; more than 2 rows that do not read as a job of the account (no id, no title, a job page of another account) are an error too.
+- One row per job: a parent and its per-location copies (parentId), grouped whatever their order. The parent gives the row its title, date, job page, category, pay and ad; each copy adds its place, once.
+- A company id nobody holds is sent 302 to app.jobvite.com/Recruiting/Home.aspx and on to Jobvite's own site (research, 2026-11-20): every hop off the feed's address is refused before it is asked, so it is an error, never a zero.
+- posted is the row's \<date>, M/D/YYYY. The research found it is not always the posting's own datePosted (Absolute's oFV3AfwX: 11/4/2026 in its feed, 2026-11-02 on its posting, and 11 of its 18 rows share 10/19/2026).
+- Pay only from the row's own salary fields: the ISO code out of 'US Dollar (USD US$)', a period only from Annually, Annual, Yearly, Monthly, Weekly, Daily or Hourly (Bi-Weekly is not a week), cents kept (20.00-22.50 is not 20-22), and a figure that does not read publishes no pay.
+- The ad goes into jd only behind FETCH_DETAILS, though it costs no request more (asked so, 2026-11-23).
+
+**Notes.**
+
+- Not the type jobvite: a slug names a career site and a company id an account, and nothing on a page ties one to the other. A board on file as one is not known to be the same board as one found as the other.
+- The research of 2026-11-20 proposed reading the career site's HTML nightly and the feed only as paced enrichment, never storing its hiring-manager field; the feed is read as a board of its own where the account's site names no career site. The code is what runs.
+- hire.jobvite.com's CompanyJobs pages name an account by c= too; no site measured here uses one, so the finder leaves them a jobvite-tenant doubt.
+
+<!-- live -->
+
+On file today: no company. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -780,7 +817,7 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 
 <!-- live -->
 
-On file today: 1 company (Gainwell Technologies), 0 with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 4 companies (Aurigo Software, Esri Canada, Gainwell Technologies, Octave), 3 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -904,7 +941,7 @@ On file today: 31 companies, 13 of them with roles. The last sweep (2026-11-22):
 
 <!-- live -->
 
-On file today: 42 companies, 33 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 42 companies, 32 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 

@@ -294,7 +294,7 @@
       "forms": {
         "jobvite-joblink": "A link to ONE job, app.jobvite.com/j?cj=<id>, whose account the link does not show; robots.txt closes its /j/ hop, so the slug cannot be learned from it (INRIX's).",
         "jobvite-other": "Any other jobvite.com address, such as the embed loader jobs.jobvite.com/__assets__/scripts/careersite/public/iframe.js (NinjaOne's page serves only that, with no slug in its HTML).",
-        "jobvite-tenant": "An address naming a Jobvite account (a company code, c= or ci=, on app. or hire.jobvite.com: its CompanyJobs pages and talent network) but no career site this door can read: another account beside their board, and a doubt."
+        "jobvite-tenant": "An address naming a Jobvite account (a company code, c= or ci=, on app. or hire.jobvite.com: its CompanyJobs pages, its talent network and its widget) where this door does not read it as the account's own board: beside a jobs.jobvite.com career site their site names (another account beside their board, and a doubt), or on hire.jobvite.com. On app.jobvite.com, with no career site named anywhere on their site, the same address is a jobvitefeed board."
       },
       "publishes": "The career site's list page, server-rendered with every opening on it: GET https://jobs.jobvite.com/<slug>/jobs, one row per opening (<td class=\"jv-job-list-name\"> with its /<slug>/job/<id> link, and its location cell), grouped under category headings. An embedded board's list and postings send a browser on to the employer's own careers page; asked with nl=1&fr=false they answer themselves. The ad and any stated pay are each posting's schema.org block, read from the posting itself (behind FETCH_DETAILS). No paging seen.",
       "link": "https://jobs.jobvite.com/<slug>/jobs",
@@ -303,19 +303,46 @@
       "quirks": [
         "JOBVITE'S TENANTS SHARE ONE HOST AND DIFFER BY PATH: every read is held to jobs.jobvite.com/<slug>/ before the hop is asked anything, a path that does not say plainly which career site it is ('..', escapes, backslashes) is refused, and a row is read only under the slug asked (blind reviews, 2026-11-22).",
         "A dead slug is sent to search.jobvite.com (?invalid=1): an error, never a zero. A list with no rows is an error too, until a real empty board has been read.",
-        "The XML feed beside it (app.jobvite.com/CompanyJobs/Xml.aspx?c=<company code>) is not read: it names each job's hiring manager, and its host answered 429 (Retry-After 30) to a second ask.",
+        "The XML feed beside it (app.jobvite.com/CompanyJobs/Xml.aspx?c=<company code>) is not read by this reader: it is the type jobvitefeed, read for an account whose site names no career site (Tyler's), by its company id.",
         "A posting's own block names its job by identifier (the job's id, measured 2026-11-22 on Gigamon's postings); only the node that is this posting gives a row its ad and its pay.",
         "A job open in several places shows only 'N Locations' on the list (Uplight's '2 Locations').",
         "discover_ats.MARKERS still files jobs.jobvite.com/<slug> as type html."
       ],
       "notes": [
-        "The research said build, reading the HTML list nightly and the XML feed as paced enrichment for descriptions (and Tyler's pay); the reader was built on the list alone and does not read the feed, which names hiring managers and rate-limits. The code is what runs.",
+        "The research said build, reading the HTML list nightly and the XML feed as paced enrichment for descriptions (and Tyler's pay); this reader was built on the list alone, and the feed got a reader of its own, jobvitefeed (2026-11-23), for an account with no career site to read. The code is what runs.",
         "The research proposed believing the title when ONE posting's JSON-LD agrees with it; the probe asks every posting, up to 40, after a blind review found one posting standing for a board (2026-11-22). The code is what runs.",
         "The research counted Gigamon's board at 21 on 2026-11-19; the reader's own note says 22, measured 2026-11-21."
       ],
       "reader": "fetch_jobvite",
       "probe": "_jobvite",
       "measured_on": "2026-11-19, 2026-11-21, 2026-11-22"
+    },
+    "jobvitefeed": {
+      "name": "Jobvite (an account's XML feed)",
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "An address on app.jobvite.com that names a Jobvite account by its company id, on a page of the company's own site that names no jobs.jobvite.com career site (find_site_boards): the widget's script, /__assets__/scripts/.../JV.getTPWidget.js?...ci=<id>, its frame, /TalentNetwork/widget/widgetContainerV2.html?...ci=<id>, a talent network link (/TalentNetwork/...?c=<id>), or a CompanyJobs page (/CompanyJobs/Careers.aspx, Job.aspx or Xml.aspx ?...c=<id>), each Tyler's shape on 2026-11-23. The id is the ref: 'q', four letters or digits, 'fw' and one more (q6NaVfwI). Where their site names a jobs.jobvite.com career site, that is the candidate and these addresses are jobvite-tenant, as before. Hint: jobvite.com.",
+      "publishes": "One GET of https://app.jobvite.com/CompanyJobs/Xml.aspx?c=<id>: XML, every job of the account in one answer, with no paging and no total (Tyler's on 2026-11-23: 2,119,266 characters, 266 rows). A <result> of <job>s, each with id, title, requisitionid, category, jobtype, location ('City, ST, Country'), date (M/D/YYYY), detail-url and apply-url (CDATA, http), description (the whole ad, as escaped HTML), briefdescription, and the fields the account adds (Tyler's: company_x0020_name, hiring_x0020_manager, agency_x0020_access, and salarymin, salarymax, salarycurrency and salaryfrequency on 213 rows). A job open in several places is a parent row and one row per other place (parentId, 139 of Tyler's 266), so one row per job is read, the copies' places joined to the parent's: 127 jobs. The ad is in the same answer.",
+      "link": "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=<id>, Jobvite's own careers page for the account (robots.txt allows it; nobody here has opened it yet), never the feed. Each row links its own job page, the feed's detail-url as https.",
+      "robots": "Asked at every hop, and every hop held to the feed's own address. Measured 2026-11-19..21 and 2026-11-23: app.jobvite.com allows /CompanyJobs/ (the feed, Job.aspx, Careers.aspx) and closes /j/, /Jobs/, /API/, /Careers/ and /Widget/. It answered 429 (Retry-After 30) to a second feed asked a second after the first, so its gate holds requests 30 seconds apart (ats.JOBVITE_FEED_PAUSE), and nothing it answers is cached (ats.NEVER_CACHED).",
+      "employer": "Only in the feed's own fields, and the feed is the whole board in one answer, so verify_boards._jobvitefeed believes a name the feed states on EVERY row: <company> where any row fills it (and then it must be the same on every row), else the custom company-name field, company_x0020_name, present and the same on every row. A field empty or missing on one row states nothing; rows that disagree, or a company-name field naming another name beside <company>, are two names stated, which proven() refuses. Measured: Tyler's feed has no <company> and 'Tyler Technologies' in company_x0020_name on 266 of 266 rows; Absolute's <company> is 'Absolute Security' on 18 of 18; Gigamon's <company> is empty on 26 of 26, so it states nothing (2026-11-20).",
+      "quirks": [
+        "A PERSON'S NAME ON EVERY ROW: hiring_x0020_manager names one on all of Tyler's 266 rows (and Absolute's 18 and Gigamon's 26). The reader keeps the fields it uses by name (ats._JVX_FIELDS) and drops every other field's text as it parses, so no person's name reaches a row, a note, stderr, the probe's answer or a cache.",
+        "Parsed as XML by expat: a DOCTYPE or an ENTITY declaration is refused before anything it declares is read; a feed cut short, one that is not a <result> of <job>s, one listing no job and one over 32,000,000 bytes are errors, never a zero or part of a board; more than 2 rows that do not read as a job of the account (no id, no title, a job page of another account) are an error too.",
+        "One row per job: a parent and its per-location copies (parentId), grouped whatever their order. The parent gives the row its title, date, job page, category, pay and ad; each copy adds its place, once.",
+        "A company id nobody holds is sent 302 to app.jobvite.com/Recruiting/Home.aspx and on to Jobvite's own site (research, 2026-11-20): every hop off the feed's address is refused before it is asked, so it is an error, never a zero.",
+        "posted is the row's <date>, M/D/YYYY. The research found it is not always the posting's own datePosted (Absolute's oFV3AfwX: 11/4/2026 in its feed, 2026-11-02 on its posting, and 11 of its 18 rows share 10/19/2026).",
+        "Pay only from the row's own salary fields: the ISO code out of 'US Dollar (USD US$)', a period only from Annually, Annual, Yearly, Monthly, Weekly, Daily or Hourly (Bi-Weekly is not a week), cents kept (20.00-22.50 is not 20-22), and a figure that does not read publishes no pay.",
+        "The ad goes into jd only behind FETCH_DETAILS, though it costs no request more (asked so, 2026-11-23)."
+      ],
+      "notes": [
+        "Not the type jobvite: a slug names a career site and a company id an account, and nothing on a page ties one to the other. A board on file as one is not known to be the same board as one found as the other.",
+        "The research of 2026-11-20 proposed reading the career site's HTML nightly and the feed only as paced enrichment, never storing its hiring-manager field; the feed is read as a board of its own where the account's site names no career site. The code is what runs.",
+        "hire.jobvite.com's CompanyJobs pages name an account by c= too; no site measured here uses one, so the finder leaves them a jobvite-tenant doubt."
+      ],
+      "reader": "fetch_jobvitefeed",
+      "probe": "_jobvitefeed",
+      "measured_on": "2026-11-20, 2026-11-23"
     },
     "lever": {
       "name": "Lever",
