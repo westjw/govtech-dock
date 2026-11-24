@@ -4931,5 +4931,63 @@
    "read_at": "2026-11-23T23:33:43-05:00",
    "page": "https://home.playmetrics.com/careers"
   }
+ },
+ {
+  "id": "green-river",
+  "name": "Green River",
+  "was": "html",
+  "found": {
+   "type": "trinethire",
+   "ref": "33617-green-river-analytics"
+  },
+  "saw": "https://app.trinethire.com/companies/33617-green-river-analytics/jobs",
+  "times": 1,
+  "verified": "1 posting(s) readable",
+  "board_calls_itself": "Green River Data Group Inc.",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Green River Data Group Inc.\", which is not \"Green River\": one name only contains the other, and a name inside another name is never taken for the same company; https://greenriver.com links to the board",
+  "postings": 1,
+  "titles": [
+   "Data Analyst & Insights Consultant"
+  ],
+  "filed": {
+   "by": "agent:coverage-trinet-2026-11-24",
+   "on": "2026-11-24",
+   "at": "2026-11-24T10:34:11-05:00",
+   "read_at": "2026-11-24T10:27:27-05:00",
+   "page": "https://greenriver.com"
+  }
+ },
+ {
+  "id": "soundthinking",
+  "name": "SoundThinking (ShotSpotter)",
+  "was": "html",
+  "found": {
+   "type": "trinethire",
+   "ref": "32876-soundthinking-inc"
+  },
+  "saw": "https://app.trinethire.com/companies/32876-soundthinking-inc/jobs/embed",
+  "times": 1,
+  "verified": "7 posting(s) readable",
+  "board_calls_itself": "SoundThinking, Inc.",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"SoundThinking, Inc.\", which is not \"SoundThinking (ShotSpotter)\": one name only contains the other, and a name inside another name is never taken for the same company; their own site also names other:zippia.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.soundthinking.com/careers/ embeds the board",
+  "postings": 7,
+  "titles": [
+   "Regional Sales Director - Southeast Region (Atlanta)",
+   "Regional Sales Director - Southeast Region (Charlotte)",
+   "Regional Sales Director - Southeast Region (Nashville)",
+   "Regional Sales Director - Southeast Region (Tampa)",
+   "Senior Software Engineer",
+   "Data Collection Specialist (Contractor)",
+   "Customer Success Director, NYPD \u2013 SafetySmart Platform Solutions"
+  ],
+  "filed": {
+   "by": "agent:coverage-trinet-2026-11-24",
+   "on": "2026-11-24",
+   "at": "2026-11-24T10:34:11-05:00",
+   "read_at": "2026-11-24T10:27:29-05:00",
+   "page": "https://www.soundthinking.com/careers/"
+  }
  }
 ]
