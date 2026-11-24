@@ -3946,10 +3946,12 @@ through the door.
   a week; a period not read is pay `build_board.derived` does not publish),
   cents kept (20.00-22.50 is 20-22.5; `ats._money` rounds), and a figure that
   does not read publishes no pay, never half a range.
-- **The ad** (`description`, in the same answer) goes into jd only behind
-  FETCH_DETAILS, as asked on 2026-11-23, though it costs no request. So in the
-  nightly, which passes no --details, a row with no salary fields reads
-  `jd_seen` false.
+- **The ad** (`description`, in the same answer) is always each row's jd, flag
+  or no flag: it costs no request, and the boards that hand the description
+  over in the list response are always read (ats.FETCH_DETAILS). Behind the
+  flag, as first built on 2026-11-23, the nightly (no --details) would have
+  published 41 of Tyler's jobs as "We could not read this posting" with the ad
+  in hand.
 - **The probe** (`verify_boards._jobvitefeed`, one request, the reader's own
   path): the feed is the whole board in one answer, so a name it states on
   EVERY row is the board's statement - `<company>` where any row fills it

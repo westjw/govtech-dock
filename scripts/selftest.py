@@ -20609,8 +20609,12 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
                 or (kw.get("headers") or {}).get("User-Agent") != ats.UA["User-Agent"]:
             errors += fail(f"jobvitefeed: the feed was not asked as a stream, redirects off, under "
                            f"the crawler's own name: {kw}")
-        if any(r.get("jd") for r in rows or []):
-            errors += fail("jobvitefeed: with FETCH_DETAILS off a row carries the ad")
+        # the ad comes in the one answer, so it is read with the flag off too
+        # (ats.FETCH_DETAILS: "the boards that hand the description over in
+        # the list response we already make are always read")
+        if [r.get("jd") for r in rows or []] != ["Sell to counties & cities."] * 4:
+            errors += fail(f"jobvitefeed: with FETCH_DETAILS off a row does not carry the ad its feed "
+                           f"gave: {[r.get('jd') for r in rows or []]}")
         nobody("a row", rows)
         nobody("stderr", err)
         rows_d, exc, _err = read(MAIN, details=True)

@@ -4222,9 +4222,12 @@ def jobvitefeed_rows(jobs: list[dict], account: str) -> tuple[list[dict], int]:
                "posted": _jvx_day(_jvx_first(base, "date")),
                "category": _jvx_first(base, "category") or None,
                "comp": _jvx_pay(base)}
-        if FETCH_DETAILS:
-            # the ad is in the answer already downloaded: no request more
-            row["jd"] = plain_html(next((v for v in base.get("description") or () if v.strip()), ""))
+        # THE AD IS ALWAYS READ: it is in the answer already downloaded, so it
+        # costs no request, and "the boards that hand the description over in
+        # the list response we already make are always read, flag or no flag"
+        # (FETCH_DETAILS above). Behind the flag, the nightly published 41 of
+        # Tyler's jobs as "We could not read this posting" with the ad in hand.
+        row["jd"] = plain_html(next((v for v in base.get("description") or () if v.strip()), ""))
         rows.append(row)
     return rows, unread
 
