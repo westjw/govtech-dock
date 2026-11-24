@@ -47501,10 +47501,13 @@ def check_a_posting_their_site_links_is_a_candidate_not_a_board() -> int:
       - no fetcher reads that type, no pattern in BOARDS writes it, the door
         takes it for no board, and the run's summary and the platform
         catalogue count such a site apart from the sites pointing at a board;
-      - discovery never follows a link to a posting (it read the board off
-        the posting's page and wrote it on the tenant's name in its address
-        alone), wire_embedded leaves a row naming one in no pile, and the
-        queue's own door files none.
+      - discovery never follows a link to a posting, from their home page
+        or one hop on, nor reads a page its fetch landed on that is a
+        posting's - their home page, a careers address or a hop page
+        redirecting to one (it read the board off the posting's page and
+        wrote it on the tenant's name in its address alone), wire_embedded
+        leaves a row naming one in no pile, and the queue's own door files
+        none.
     """
     sys.path.insert(0, str(ROOT / "scripts"))
     import board_proposals as bp
@@ -47563,28 +47566,59 @@ def check_a_posting_their_site_links_is_a_candidate_not_a_board() -> int:
                        "board")
 
     # --- discovery does not follow a posting --------------------------------
-    dsite, dpost = "https://disc.example", _PP_DETAILS + "7201/Disc-Co/Engineer"
+    # ...linked from their home page, or from a page one hop on (/about); nor
+    # read one where a fetch LANDED on it: their careers address, the home
+    # page itself, or a hop page redirecting to a posting (review of the
+    # posting change, 2026-11-23: /careers answering 301 to a posting had its
+    # page's breadcrumb board written on the tenant's name alone). Each
+    # posting's page names the board, under the company's own name.
     dboard = f"{_PP_BOARD}{_pp_uuid(0x7201)}/Disc-Co"
-    dpages = {dsite: discover_ats.Fetch(text=f"<a href='{dpost}'>We are hiring: Engineer</a>",
-                                        status=200, url=dsite, outcome="ok"),
-              dpost: discover_ats.Fetch(text=f"<a href='{dboard}'>All Jobs</a>" + " " * 3000,
-                                        status=200, url=dpost, outcome="ok")}
-    dasked = []
+    dpost = {n: _PP_DETAILS + f"{n}/Disc-Co/Engineer" for n in range(7201, 7206)}
+    posting_page = f"<a href='{dboard}'>All Jobs</a>" + " " * 3000
 
-    def dget(u):
-        dasked.append(u)
-        return dpages.get(u.rstrip("/"), discover_ats.Fetch(url=u, outcome="notfound", status=404))
+    def at(text, landed):
+        # what an address answers: its text, and where the fetch LANDED
+        return discover_ats.Fetch(text=text, status=200, url=landed, outcome="ok")
+    nothing = "<p>Welcome to Disc Co.</p>" + " " * 3000
+    dcases = {
+        # (their site, what each address answers) - every other address is a 404
+        "linked": ("https://disc.example", {
+            "https://disc.example": at(f"<a href='{dpost[7201]}'>We are hiring: Engineer</a>",
+                                       "https://disc.example"),
+            dpost[7201]: at(posting_page, dpost[7201])}),
+        "careers lands on it": ("https://disc-r.example", {
+            "https://disc-r.example": at("<a href='/careers'>Careers</a>" + " " * 3000,
+                                         "https://disc-r.example"),
+            "https://disc-r.example/careers": at(posting_page, dpost[7202])}),
+        "linked one hop on": ("https://disc-h.example", {
+            "https://disc-h.example": at(nothing, "https://disc-h.example"),
+            "https://disc-h.example/about": at(f"<a href='{dpost[7203]}'>Open role</a>"
+                                               + " " * 3000, "https://disc-h.example/about"),
+            dpost[7203]: at(posting_page, dpost[7203])}),
+        "home lands on it": ("https://disc-o.example", {
+            "https://disc-o.example": at(posting_page, dpost[7204])}),
+        "a hop page lands on it": ("https://disc-a.example", {
+            "https://disc-a.example": at(nothing, "https://disc-a.example"),
+            "https://disc-a.example/about": at(posting_page, dpost[7205])})}
     real_dget, real_fetch = discover_ats.get, discover_ats.ats.fetch
-    discover_ats.get, discover_ats.ats.fetch = dget, (lambda block: [{"title": "Engineer"}])
     try:
-        r = discover_ats.probe({"id": "disc-co", "name": "Disc Co", "website": dsite})
+        for label, (dsite, dpages) in dcases.items():
+            dasked = []
+
+            def dget(u):
+                dasked.append(u)
+                return dpages.get(u.rstrip("/"), discover_ats.Fetch(url=u, outcome="notfound",
+                                                                    status=404))
+            discover_ats.get, discover_ats.ats.fetch = dget, (lambda block: [{"title": "Engineer"}])
+            r = discover_ats.probe({"id": "disc-co", "name": "Disc Co", "website": dsite})
+            if r.get("found") or r.get("suspect") or any(u in dasked for u in dpost.values()) \
+                    or dboard in dasked or "wiring door" not in str(r.get("note")):
+                errors += fail(f"discovery ({label}) followed a Paylocity posting, or read the page "
+                               f"a fetch landed on as a posting's, and made a board of what it "
+                               f"names - or did not say it left it to the wiring door: {r}, asked "
+                               f"{dasked}")
     finally:
         discover_ats.get, discover_ats.ats.fetch = real_dget, real_fetch
-    if r.get("found") or r.get("suspect") or dpost in dasked \
-            or "wiring door" not in str(r.get("note")):
-        errors += fail(f"discovery followed a link to a Paylocity posting and made a board of what "
-                       f"its page names, or did not say it left it to the wiring door: {r}, asked "
-                       f"{dasked}")
 
     # --- wire_embedded and the queue's door leave a posting alone -----------
     def found_row(cid, kind, ref):
