@@ -267,8 +267,13 @@ def swept(results) -> dict:
         raise SystemExit("--sweep: not a find_site_boards.py results file "
                          "({generated, mode, companies: {id: record}})")
     points, no_reader, forms = collections.Counter(), collections.Counter(), collections.Counter()
-    for r in companies.values():
-        for kind in {str(c.get("type")) for c in r.get("candidates") or []}:
+    # (a Paylocity posting is one job, not a board: a site that links only
+    # postings has pointed to no board yet - the wiring door asks which)
+    boards = {cid: [c for c in r.get("candidates") or []
+                    if str(c.get("type")) != find_site_boards.POSTING]
+              for cid, r in companies.items()}
+    for cid, r in companies.items():
+        for kind in {str(c.get("type")) for c in boards[cid]}:
             points[kind] += 1
         for v in {str(e.get("vendor") or "").split(":")[0] for e in r.get("elsewhere") or []}:
             is_form = v in find_site_boards.TENANT_FORMS or v in find_site_boards._NO_BOARD_IN_IT
@@ -276,7 +281,7 @@ def swept(results) -> dict:
     return {"generated": str(results.get("generated") or "an unknown time"),
             "mode": str(results.get("mode") or "an unknown mode"),
             "companies": len(companies),
-            "pointed": sum(1 for r in companies.values() if r.get("candidates")),
+            "pointed": sum(1 for cid in companies if boards[cid]),
             "points_to": dict(points.most_common()),
             "no_reader_for": dict(no_reader.most_common()),
             "forms": dict(forms.most_common())}
