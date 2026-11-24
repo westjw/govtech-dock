@@ -391,6 +391,9 @@ _ZOHO = re.compile(r"([^/?#]+\.zohorecruit\.[a-z]+)/jobs/([^/?#]+)")
 # "<UID>|<TOKEN>" or the hosted board comeet.com/jobs/<slug>/<UID> - and a
 # posting under the hosted board is the same board
 _COMEET = re.compile(r"(?:^|comeet\.com/jobs/[^/?#]+/)([0-9a-f]{2}\.[0-9a-f]{3})(?=$|[|/?#])")
+# a TriNet Hire board is its company number, which alone selects it: one
+# board is found as 5502-fraudscope and as 5502-codoxo (2026-11-23)
+_TRINETHIRE = re.compile(r"(?:app\.trinethire\.com/companies/)?0*([0-9]{1,12})(?=$|[-/?#])")
 # the platforms whose board is a whole host: any address on it is the board
 HOST_BOARDS = ("jibe", "oracle", "applicantpro", "teamtailor", "successfactors")
 # the words wire_found.py writes on a wired record's note and a held row's
@@ -418,7 +421,8 @@ def board_key(kind, ref) -> str:
     bare or inside its address; a Jibe, Oracle, ApplicantPro, Teamtailor or
     SuccessFactors board is its host; a Zoho Recruit career site is its host and its page's
     name (a posting's address is under it); a Comeet board is its company
-    uid, whether the ref is "<UID>|<TOKEN>" or the hosted board's address.
+    uid, whether the ref is "<UID>|<TOKEN>" or the hosted board's address;
+    a TriNet Hire board is its company number, whatever slug follows it.
     (The last four were read since 2026-11-19 and keyed on the whole ref, so
     a hold or a refusal written in one spelling missed the other: test
     review of the door, 2026-11-21. Hirebridge's number and Pinpoint's slug
@@ -448,6 +452,9 @@ def board_key(kind, ref) -> str:
     elif kind == "comeet":
         m = _COMEET.search(r)
         r = m.group(1) if m else r
+    elif kind == "trinethire":
+        m = _TRINETHIRE.match(r)
+        r = (m.group(1) or "0") if m else r
     return f"{kind}:{json.dumps(r)}"
 
 

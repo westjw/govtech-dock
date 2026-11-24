@@ -257,7 +257,10 @@ OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-
              # An address naming an account, in any path, the finder files as
              # jobvite-tenant, never jobvite-other, so no link to another
              # account is this note: review 12's verifier, 2026-11-23)
-             "jobvitefeed": {"jobvite-other"}}
+             "jobvitefeed": {"jobvite-other"},
+             # (every address naming a company number on app.trinethire.com is
+             # a board, so trinethire-other names none: 2026-11-24)
+             "trinethire": {"trinethire-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),

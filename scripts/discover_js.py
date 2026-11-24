@@ -36,7 +36,7 @@ ATS_URL_PATS = [
     ("bamboohr", r"([a-z0-9-]+)\.bamboohr\.com"),
     ("icims",   r"([a-z0-9-]+)\.icims\.com"),
     ("paylocity", r"recruiting\.paylocity\.com/[Rr]ecruiting/[Jj]obs/[^/]+/([A-Za-z0-9-]+)"),
-    ("trinet",  r"app\.trinethire\.com/companies/([0-9]+-[a-z0-9-]+)"),
+    ("trinethire", r"app\.trinethire\.com/companies/([0-9]+-[a-z0-9-]+)"),
     ("jobvite", r"jobs\.jobvite\.com/([a-z0-9-]+)"),
     ("pinpoint", r"([a-z0-9-]+)\.pinpointhq\.com"),
     ("dover",   r"app\.dover\.io/([A-Za-z0-9-]+)"),

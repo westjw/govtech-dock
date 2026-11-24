@@ -449,6 +449,7 @@ HINTS = {
     "comeet": ("comeet.",),
     "jobvite": ("jobvite.com",),
     "jobvitefeed": ("jobvite.com",),
+    "trinethire": ("trinethire.com",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -651,6 +652,15 @@ def _jobvite_account(m):
     return (account, account) if ats.JOBVITE_ACCOUNT.fullmatch(account) else None
 
 
+def _trinethire_board(m):
+    # '<number>-<slug>' as the page wrote it, or the number alone (which
+    # answers as the board itself: /companies/5502/jobs/embed, 2026-11-24).
+    # Keyed on the NUMBER, which alone selects the board - one board is
+    # written 5502-fraudscope and 5502-codoxo - with any leading zero off
+    number, slug = m.group(1), m.group(2)
+    return (f"{number}-{slug}" if slug else number), number.lstrip("0") or "0"
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -743,6 +753,14 @@ BOARDS: list[_Pat] = (
                              r"|TalentNetwork/[^\s\"'<>?#]{0,200}|__assets__/scripts/[^\s\"'<>?#]{0,200})"
                              r"\?(?:[^\s\"'<>#]{0,300}?[&;])?ci?=([A-Za-z0-9]{8})(?![A-Za-z0-9])",
               _jobvite_account),
+        # A TRINET HIRE BOARD, by its company number on app.trinethire.com and
+        # in any form - the list a careers page frames (/jobs/embed: Codoxo's
+        # and SoundThinking's iframes), the career page (/jobs), a posting
+        # (/jobs/<job id>-<slug>) - and only there: the host whole and the
+        # number's own path segment whole (ats.fetch_trinethire reads its
+        # /jobs/embed, whatever form it was found in)
+        _here("trinethire", r"(?<![a-z0-9.-])app\.trinethire\.com/companies/([0-9]{1,12})"
+                            r"(?:-([a-z0-9-]{1,200}))?(?![a-z0-9-])", _trinethire_board),
     ])
 
 # A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
@@ -848,7 +866,6 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("clearcompany", "clearcompany.com", _B + r"clearcompany\.com"),
         ("hrmdirect", "hrmdirect.com", _B + r"hrmdirect\.com"),
         ("applicantpro-other", "isolvedhire.com", _B + r"isolvedhire\.com"),
-        ("trinethire", "trinethire.com", _B + r"trinethire\.com"),
         ("hibob", "hibob.com", _B + r"careers\.hibob\.com"),
         ("avature", "avature.net", _B + r"avature\.net"),
         ("csod", "csod.com", _B + r"csod\.com"),
@@ -867,6 +884,9 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("workday-no-site", "myworkdayjobs.com", _B + r"wd\d+\.myworkdayjobs\.com"),
         ("gusto-posting", "jobs.gusto.com", _B + r"jobs\.gusto\.com/postings/"),
         ("paylocity-other", "paylocity.com", _B + r"recruiting\.paylocity\.com"),
+        # any other address of TriNet Hire's (its own site, a sign-in, a page
+        # naming no company number): a platform we read, naming no board
+        ("trinethire-other", "trinethire.com", _B + r"trinethire\.com"),
         ("adp-other", "adp.com", _B + r"(?:workforcenow|myjobs|recruiting)\.adp\.com"),
         ("greenhouse-shortlink", "grnh.se", _B + r"grnh\.se/[a-z0-9]+"),
         # A PLATFORM WE READ, ON A HOST ITS READER DOES NOT ASK. A board kept
@@ -956,7 +976,8 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "greenhouse-shortlink": "greenhouse", "teamtailor-other": "teamtailor",
                    "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
                    "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
-                   "jobvite-other": "jobvite", "successfactors-other": "successfactors"}
+                   "jobvite-other": "jobvite", "successfactors-other": "successfactors",
+                   "trinethire-other": "trinethire"}
 # A platform's form that is somewhere else to hire through on any other page
 # and the board's own furniture on the board's own pages: a Career Site
 # Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
