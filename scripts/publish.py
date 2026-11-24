@@ -340,11 +340,9 @@ def run_py(args: list, cwd: pathlib.Path, timeout: int = 900) -> subprocess.Comp
                           text=True, timeout=timeout, env=env)
 
 
-def checks(wt: pathlib.Path, staged: list) -> str | None:
-    """Everything that must hold before a push. None, or what failed."""
-    r = run_py(["scripts/quick_rebuild.py", "--check"], wt, 300)
-    if r.returncode != 0:
-        return "the redrawn board does not match its inputs:\n" + r.stdout[-800:]
+def unparsed(wt: pathlib.Path, staged: list) -> str | None:
+    """The first staged JSON file that does not parse - a sealed archive part
+    read through gzip, so a torn one is named - or None."""
     for p in staged:
         f = wt / p
         if not f.exists() or not p.endswith((".json", ".jsonl", ".jsonl.gz")):
@@ -361,6 +359,17 @@ def checks(wt: pathlib.Path, staged: list) -> str | None:
                 json.loads(f.read_text())
         except (ValueError, EOFError, OSError, zlib.error) as exc:     # a torn gzip too
             return f"{p} does not parse: {exc}"
+    return None
+
+
+def checks(wt: pathlib.Path, staged: list) -> str | None:
+    """Everything that must hold before a push. None, or what failed."""
+    r = run_py(["scripts/quick_rebuild.py", "--check"], wt, 300)
+    if r.returncode != 0:
+        return "the redrawn board does not match its inputs:\n" + r.stdout[-800:]
+    bad = unparsed(wt, staged)
+    if bad:
+        return bad
     r = run_py(["scripts/selftest.py"], wt, 1200)
     if r.returncode != 0 or "all checks passed" not in r.stdout:
         fails = [ln for ln in r.stdout.splitlines() if ln.startswith("FAIL")][:8]
@@ -471,6 +480,8 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
         # rules as after a push - so the desk never works on yesterday's file.
         if git("rev-list", f"HEAD..{theirs_rev}").stdout.split() and not dry_run:
             _sync({}, theirs_rev, st, out)
+        elif not dry_run:
+            out["sync"] = f"checkout at {main_sha[:7]}, which is main"
         if st.get("drift_checked") == main_sha:
             return done("idle", why="nothing to publish")
         if now - st.get("last_push_ts", 0) < GAP_S:
@@ -502,7 +513,7 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
         return done("would-publish", files=take, repair=repair)
 
     # ---- snapshot, merge
-    with admin_lock():
+    with admin_lock(), journal.journal_lock(ROOT / "data"):
         snap = {p: _read(p) for p in take}
     head_sha = git("rev-parse", "HEAD").stdout.strip()
     held = st.get("base_files") if st.get("base_head") == head_sha else None
@@ -596,20 +607,34 @@ def _file_archive(wt: pathlib.Path, arch: list, snap: dict) -> None:
     sealed by main's merged live journal). Main's layout
     stands: a sealed file main has is never replaced, so two seals that came
     out differently cannot conflict - the second one's rows are recognised
-    by line and nothing is filed twice."""
+    by line and nothing is filed twice.
+
+    AND THE LIVE JOURNAL, merged by line (every line either side has), is
+    brought back to its rules there (journal trim_live): a row the archive
+    now holds leaves it - the desk pruned it, main had not, and the union
+    brought it back: 257 rows in both places, filed twice by main's next
+    write (2026-11-24 review) - and it keeps its last KEEP entries. A torn
+    copy in the desk's archive (an append cut off part way) is told by the
+    desk's live journal, which still holds that row whole, and is not
+    carried."""
     lines = []
     for p in sorted(arch, key=_archive_order):
         if snap.get(p) is not None:
             lines += journal.lines_of(p, snap[p])
-    journal.normalize(wt / "data", lines=lines, full=True)
+    known = journal.lines_of(LIVE_JOURNAL, (snap.get(LIVE_JOURNAL) or "").encode())
+    journal.normalize(wt / "data", lines=lines, known=known, full=True, trim=True)
 
 
 def _stage_archive(wt: pathlib.Path) -> None:
     """Stage the archive as it now stands in the worktree: new parts, parts
-    appended to, open parts a seal removed, and the old single file gone."""
+    appended to, open parts a seal removed, and the old single file gone -
+    and the live journal the carry trimmed with it (staged even when the
+    desk's own live journal was not taken: the two go to main together)."""
     for p in (ARCHIVE_DIR, LEGACY_ARCHIVE):
         if (wt / p).exists() or git("ls-files", "--", p, cwd=wt).stdout.strip():
             git("add", "-A", "--", p, cwd=wt)
+    if (wt / LIVE_JOURNAL).exists():
+        git("add", "--", LIVE_JOURNAL, cwd=wt)
 
 
 def _hold_base(snap: dict, st: dict) -> None:
@@ -649,16 +674,30 @@ def _sync(snap: dict, rev: str, st: dict, out: dict) -> None:
 
 
 def _matches(rev: str, p: str) -> bool:
-    """Is the checkout's file already exactly what `rev` holds (both absent
-    counts)? Such a file is not in a fast-forward's way: the owner fetched
-    main's scripts by hand to bring this publisher up (CLAUDE.md, "The
-    journal archive"), and the fast-forward writes the same bytes."""
+    """Is the checkout's file exactly what main holds at `rev`, or held at
+    any commit between the checkout's HEAD and `rev` (both absent counts)?
+    Such a file is not in a fast-forward's way: nothing in it is the desk's
+    own. The owner's step fetches main's scripts by hand to bring this
+    publisher up (CLAUDE.md, "The journal archive"); a script main changed
+    again before a cycle ran matched neither HEAD nor main, and every cycle
+    after stood aside for it - "skipped: would overwrite scripts/..." for
+    good (2026-11-24 review)."""
     f = ROOT / p
-    return (f.read_bytes() if f.is_file() else None) == show_bytes(rev, p)
+    here = f.read_bytes() if f.is_file() else None
+    if here == show_bytes(rev, p):
+        return True
+    r = git("log", "--format=", "--raw", "--no-abbrev", "--no-renames", f"HEAD..{rev}",
+            "--", p, check=False)
+    blobs = {ln.split("\t", 1)[0].split()[3] for ln in r.stdout.splitlines()
+             if ln.startswith(":") and len(ln.split("\t", 1)[0].split()) >= 4}
+    if here is None:
+        return "0" * 40 in blobs              # main deleted it on the way
+    h = git("hash-object", "--", p, check=False).stdout.strip()
+    return bool(h) and h in blobs
 
 
 def _sync_inner(snap: dict, rev: str, st: dict, out: dict) -> bool:
-    with admin_lock():
+    with admin_lock(), journal.journal_lock(ROOT / "data"):
         for p, text in snap.items():
             if _read(p) != text:
                 out["sync"] = f"skipped: {p} changed since the snapshot; the next cycle carries it"
@@ -697,7 +736,7 @@ def _sync_inner(snap: dict, rev: str, st: dict, out: dict) -> bool:
             inbox("sync", "Published, but the checkout's fast-forward failed; the "
                           "desk's files were put back as they were.\n" + out["sync"], st)
             return False
-        out["sync"] = f"checkout at {rev[:7]}"
+        out["sync"] = f"checkout at {git('rev-parse', '--short=7', 'HEAD').stdout.strip()}"
         return True
 
 

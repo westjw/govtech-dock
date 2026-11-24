@@ -49,6 +49,9 @@ public/
 /data/.publish_base/
 /data/publish_state.tmp
 /data/.admin.lock
+# ...and the journal's own lock (journal.journal_lock), held by every writer
+# of the live journal and its archive
+/data/.journal.lock
 
 # GATE STAMPS: "--gate has printed IN THIS CHECKOUT". Committed, they had
 # printed in every clone and worktree, so a fresh worktree's --land passed a

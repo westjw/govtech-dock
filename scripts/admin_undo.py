@@ -107,13 +107,16 @@ def apply(entry: dict, drop: bool, force: bool) -> int:
         entry["file"], current, payload,
         action=("reopen" if drop else "undo"), by="owner",
         why=f"{'reopened' if drop else 'undid'} {entry['id']}", force=True)
-    # mark it so the listing can say so, and so a double-undo is visible
+    # mark it so the listing can say so, and so a double-undo is visible -
+    # the read and the write back under the journal's lock, so a desk ruling
+    # made meanwhile is not written over
     if entry_id:
-        rows = journal._entries()
-        for r in rows:
-            if r.get("id") == entry_id:
-                r["undo_of"] = entry["id"]
-        journal._write_entries(rows)
+        with journal.journal_lock():
+            rows = journal._entries()
+            for r in rows:
+                if r.get("id") == entry_id:
+                    r["undo_of"] = entry["id"]
+            journal._write_entries(rows)
     if refusal:
         print(refusal)
         return 1

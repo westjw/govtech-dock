@@ -46,6 +46,7 @@ from __future__ import annotations
 
 import contextlib
 import datetime as dt
+import fcntl
 import gzip
 import hashlib
 import json
@@ -55,6 +56,8 @@ import re
 import struct
 import sys
 import tempfile
+import threading
+import time
 import zlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -287,6 +290,11 @@ def _entries() -> list[dict]:
 
 
 def _write_entries(rows: list[dict]) -> None:
+    """Write the live journal as exactly these rows, archiving what it prunes.
+
+    Under journal_lock(): a caller that reads the journal to write it back -
+    record(), admin_undo - holds the lock across the read too, so a second
+    writer starts from what the first wrote rather than from what both read."""
     global _CACHE
     # WHAT IS PRUNED IS ARCHIVED, NOT DROPPED. The journal is the ONLY record
     # of boards/websites/duplicates/founded rulings and of every before-image,
@@ -301,13 +309,14 @@ def _write_entries(rows: list[dict]) -> None:
     pruned = rows[:-KEEP] if len(rows) > KEEP else []
     kept = rows[-KEEP:]
     data = LOG.parent
-    if pruned or legacy_archive(data).exists():
-        normalize(data, live=kept, rows=pruned)
-    fd, tmp = tempfile.mkstemp(dir=str(data), suffix=".tmp")
-    with os.fdopen(fd, "w") as fh:
-        for r in kept:
-            fh.write(json.dumps(r) + "\n")
-    os.replace(tmp, LOG)
+    with journal_lock(data):
+        if pruned or legacy_archive(data).exists():
+            normalize(data, live=kept, rows=pruned)
+        fd, tmp = tempfile.mkstemp(dir=str(data), suffix=".tmp")
+        with os.fdopen(fd, "w") as fh:
+            for r in kept:
+                fh.write(json.dumps(r) + "\n")
+        os.replace(tmp, LOG)
     # INVALIDATE, do not refresh from `rows`. Rebuilding the cache from what
     # we meant to write would make the cache authoritative over the file, and
     # the one thing this file must never do is disagree with its own disk.
@@ -383,6 +392,15 @@ def record(name: str, before, after, action: str, by: str = "owner",
         return None, refusal
     if not changes:
         return None, None
+    # the read, the new entry and the write are one step under the journal's
+    # lock: two writers in one checkout (the desk, a session's script) each
+    # read the same journal, and the second's write dropped the first's entry
+    # and re-filed what the first had pruned and sealed
+    with journal_lock():
+        return _record(name, changes, action, by, why, extra)
+
+
+def _record(name, changes, action, by, why, extra) -> tuple[str | None, str | None]:
     rows = _entries()
     entry = {
         "id": next_id(rows),
@@ -491,6 +509,12 @@ def as_payload(original, restored: dict, name: str = ""):
 # copies of the journal pruning one entry name one file, and the second copy
 # can be seen for what it is.
 #
+# A ROW THAT NAMES NO MONTH of its own - no dated "at" and no dated id - is
+# filed under UNDATED ("0000-01"), one fixed name, for the same reason. It
+# was filed under the month it was pruned in, and the same row pruned again a
+# month later (a merge, a checkout that was behind) was filed again in the
+# next month, where no check ever met the first copy (2026-11-24 review).
+#
 # WHEN A MONTH IS FINISHED, AND SEALED: at a write where the calendar is past
 # the month AND no entry left in the live journal is from that month or an
 # earlier one. Rows leave the live journal oldest first, so from that write
@@ -522,6 +546,48 @@ def as_payload(original, restored: dict, name: str = ""):
 # a seal, which reads its month anyway, files one in its own month rather
 # than sealing it where it sits.
 #
+# ONE WRITER AT A TIME. Every write of the journal - record(), admin_undo, a
+# fold, a resolve, and the desk publisher's snapshot and sync of its checkout
+# - holds journal_lock(), an exclusive file lock beside LOG (data/
+# .journal.lock, never data/.admin.lock: the desk holds that one around its
+# whole action, in the same process), across its whole read, prune, file,
+# seal and rewrite. Two writers in one checkout - the desk and a session's
+# script - each listed a month's parts; the first sealed them, and the
+# second's own seal REPLACED the first's gzip with the one row it had pruned:
+# 41 rows to 1 (2026-11-24 review). Under the lock the second starts from
+# what the first left. Behind it, for whatever writes without it (an older
+# copy of this code, git itself): a seal re-reads the folder just before it
+# reads the month, creates every sealed part EXCLUSIVELY - a name that exists
+# is never replaced; the seal re-reads and seals only what no sealed part then
+# holds - and removes an open part only while every line in it is sealed.
+#
+# THE CONSTRUCTIVE STEP FIRST. Every move of a line - a seal, a row going home
+# from another month's file, a re-split, a fold - writes the line where it
+# goes before it is taken from where it was, so a failure part way (a full
+# disk, a kill) leaves a line in two places, never in none. A re-split writes
+# the new parts under numbers past every part of the month and only then
+# removes the old ones. A line in two places is recognised by its whole line
+# and kept once (the seal; the full pass, below).
+#
+# A TORN APPEND IS NEVER GLUED TO THE NEXT ROW. A kill or a full disk part way
+# through an append leaves a part without its final newline, and the next
+# append wrote its row onto the end of the fragment: one line that is no JSON,
+# the row in it unreadable, sealed so for good. An append to a part that does
+# not end in a newline now writes the newline first. The fragment is then a
+# line of its own that does not parse; when it is a byte-prefix of a whole
+# line the month or the live journal holds (the row it was cut from - pruned
+# again, because the live journal is rewritten only after the archive) it is
+# a TORN COPY: left out of the seal and never carried to another copy of the
+# archive. Any other line that does not parse is kept where it is, its month
+# is not sealed while it is there, and archive_problems names it for a person.
+#
+# THE FULL PASS (--fold, --resolve, every desk publish) also takes out of a
+# month's open parts every line a sealed part of it holds, and every second
+# copy of a line its open parts hold. A merge that kept an open part the
+# other side had sealed left them: October's part 2 held 189 rows the sealed
+# October held too (2026-11-24 review). The everyday write does not read a
+# month to look; the seal, which reads it anyway, keeps one copy of a line.
+#
 # NO FILE PASSES CAP. An open part that a row would carry past it continues
 # in the next numbered part, a seal splits the same way, and an open part a
 # union merge pushed over is re-split at the next write. (One row bigger than
@@ -542,17 +608,58 @@ def as_payload(original, restored: dict, name: str = ""):
 
 ARCHIVE_DIR = "journal_archive"
 LEGACY_ARCHIVE = "admin_journal.archive.jsonl"     # the old single file
+LOCK_NAME = ".journal.lock"                        # journal_lock(), beside LOG
+LOCK_WAIT = 300                                    # seconds a writer waits for it
 CAP = 40_000_000                                   # bytes, per file
 GITHUB_WARNS = 50 * 1024 * 1024                    # past this, a push is warned
+UNDATED = "0000-01"                                # a row that names no month of its own
 _MONTH = re.compile(r"\d{4}-(?:0[1-9]|1[0-2])")
 _PART = re.compile(r"(\d{4}-(?:0[1-9]|1[0-2]))(?:\.([1-9][0-9]*))?\.jsonl(\.gz)?")
 # what record() writes first: {"id": "...", "at": "2026-10-...
 _HEAD_AT = re.compile(rb'\{"id": "[^"\\]*", "at": "(\d{4}-(?:0[1-9]|1[0-2]))')
 _GZ_HEADER = b"\x1f\x8b\x08\x00\x00\x00\x00\x00\x02\xff"   # deflate, no name, mtime 0, OS 255
+_HELD = threading.local()                          # the locks this thread holds, and how deep
 
 
 def _data(data=None) -> pathlib.Path:
     return pathlib.Path(data) if data is not None else LOG.parent
+
+
+@contextlib.contextmanager
+def journal_lock(data=None):
+    """The journal's own lock, across processes: an exclusive flock on
+    LOCK_NAME beside the live journal (the comment above, ONE WRITER AT A
+    TIME). Re-entrant within a thread - record() holds it around
+    _write_entries, which takes it too - and a second thread waits like a
+    second process."""
+    p = _data(data) / LOCK_NAME
+    key = os.path.realpath(str(p))        # one key however the folder is spelled
+    held = _HELD.__dict__.setdefault("paths", {})
+    if held.get(key):
+        held[key] += 1
+        try:
+            yield
+        finally:
+            held[key] -= 1
+        return
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with open(p, "a") as fh:
+        deadline = time.monotonic() + LOCK_WAIT
+        while True:
+            try:
+                fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                break
+            except BlockingIOError:
+                if time.monotonic() > deadline:
+                    raise RuntimeError(f"the journal has been held by another writer for over "
+                                       f"{LOCK_WAIT}s ({p}); nothing was written") from None
+                time.sleep(0.02)
+        held[key] = 1
+        try:
+            yield
+        finally:
+            held.pop(key, None)
+            fcntl.flock(fh, fcntl.LOCK_UN)
 
 
 def archive_dir(data=None) -> pathlib.Path:
@@ -567,8 +674,16 @@ def legacy_archive(data=None) -> pathlib.Path:
 
 
 def is_archive_path(path: str) -> bool:
-    """A repo-relative path that belongs to the archive, old file included."""
-    return path == f"data/{LEGACY_ARCHIVE}" or path.startswith(f"data/{ARCHIVE_DIR}/")
+    """A repo-relative path that belongs to the archive: the old single file,
+    or a name the archive writes, directly under data/journal_archive/. Any
+    other file there is no part of it - nothing reads it - so nothing carries
+    or settles its lines: a session's scratch copy of fixture rows left there
+    was published into main's month file, and deleted from the desk
+    (2026-11-24 review)."""
+    if path == f"data/{LEGACY_ARCHIVE}":
+        return True
+    head, _, name = path.rpartition("/")
+    return head == f"data/{ARCHIVE_DIR}" and parse_part(name) is not None
 
 
 def part_name(month: str, n: int, sealed: bool) -> str:
@@ -584,13 +699,15 @@ def parse_part(name: str) -> tuple[str, int, bool] | None:
 
 
 def month_of(row, today: dt.date | None = None) -> str:
-    """The month a row is archived under: its own "at", else its id's date."""
+    """The month a row is archived under: its own "at", else its id's date,
+    else UNDATED - never the day it is pruned on (`today` is accepted and
+    not used, for the callers that pass it)."""
     if isinstance(row, dict):
         for v in (row.get("at"), row.get("id")):
             s = str(v or "")[:7]
             if _MONTH.fullmatch(s):
                 return s
-    return (today or dt.date.today()).isoformat()[:7]
+    return UNDATED
 
 
 def line_month(line: bytes, today: dt.date | None = None) -> str:
@@ -605,8 +722,9 @@ def line_month(line: bytes, today: dt.date | None = None) -> str:
 
 
 def own_month(line: bytes) -> str | None:
-    """The month a line's own at (or id) names; None for a line that does not
-    say - such a line is never moved to another month's file."""
+    """The month a line's own at (or id) names, UNDATED for a row that names
+    none; None for a line that does not parse and does not say - such a line
+    is never moved to another month's file."""
     m = _HEAD_AT.match(line)
     if m:
         return m.group(1).decode()
@@ -614,12 +732,21 @@ def own_month(line: bytes) -> str | None:
         row = json.loads(line)
     except ValueError:
         return None
-    if isinstance(row, dict):
-        for v in (row.get("at"), row.get("id")):
-            s = str(v or "")[:7]
-            if _MONTH.fullmatch(s):
-                return s
-    return None
+    return month_of(row)
+
+
+def _parses(line: bytes) -> bool:
+    try:
+        json.loads(line)
+    except ValueError:
+        return False
+    return True
+
+
+def _torn_copy(line: bytes, whole) -> bool:
+    """Is this line (one that does not parse) the start of a whole line in
+    `whole` - what a torn append leaves of a row that was then filed in full?"""
+    return any(len(w) > len(line) and w.startswith(line) for w in whole)
 
 
 def gz(data: bytes) -> bytes:
@@ -643,11 +770,43 @@ def _digest(line: bytes) -> bytes:
 
 
 def _write_bytes(p: pathlib.Path, blob: bytes) -> None:
+    """Replace p with blob in one step (an open part, rewritten)."""
     p.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=str(p.parent), prefix=".", suffix=".tmp")
-    with os.fdopen(fd, "wb") as fh:
-        fh.write(blob)
-    os.replace(tmp, p)
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(blob)
+        os.replace(tmp, p)
+    except BaseException:
+        with contextlib.suppress(OSError):
+            os.unlink(tmp)
+        raise
+
+
+def _create(p: pathlib.Path, blob: bytes) -> bool:
+    """A NEW file at p holding blob, whole or not at all; False, and nothing
+    written, when p already exists. What a sealed part is written with: a
+    name that exists is never replaced."""
+    p.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=str(p.parent), prefix=".", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(blob)
+        try:
+            os.link(tmp, p)
+        except FileExistsError:
+            return False
+        except OSError:                    # a filesystem with no hard links
+            try:
+                fd2 = os.open(p, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
+            except FileExistsError:
+                return False
+            os.close(fd2)
+            os.replace(tmp, p)
+        return True
+    finally:
+        with contextlib.suppress(OSError):
+            os.unlink(tmp)
 
 
 def archive_parts(data=None) -> list[tuple[str, int, bool, pathlib.Path]]:
@@ -701,6 +860,15 @@ def _live_rows(data) -> list:
     return out
 
 
+def _live_lines(data) -> list[bytes]:
+    p = _data(data) / LOG.name
+    try:
+        raw = p.read_bytes()
+    except OSError:
+        return []
+    return [s for s in (ln.strip() for ln in raw.split(b"\n")) if s]
+
+
 def _chunks(lines: list[bytes], limit: int) -> list[bytes]:
     out, cur, size = [], [], 0
     for ln in lines:
@@ -737,8 +905,17 @@ class _Archive:
             self.parts.setdefault(m, {})[(n, s)] = p
         self._seen: dict = {}              # month -> digests of its lines
         self._size: dict = {}              # open part -> its size
+        self._nl: set = set()              # open parts known to end in a newline
+        self.whole: set = set()            # whole lines held elsewhere (a torn copy's test)
         self.did = {"filed": 0, "known": 0, "folded": 0, "refiled": 0, "sealed": [],
-                    "split": []}
+                    "split": [], "deduped": 0, "torn": 0, "held": [], "trimmed": 0}
+
+    def relist(self, m: str) -> dict:
+        """The month's parts as the folder holds them now: another writer may
+        have sealed it since this archive was listed."""
+        self.parts[m] = {(n, s): p for mm, n, s, p in archive_parts(self.data) if mm == m}
+        self._seen.pop(m, None)
+        return self.parts[m]
 
     def sealed_max(self, m: str) -> int:
         return max((n for (n, s) in self.parts.get(m, {}) if s), default=0)
@@ -765,6 +942,12 @@ class _Archive:
             self._size[p] = p.stat().st_size if p.exists() else 0
         return self._size[p]
 
+    def _torn(self, line: bytes, m: str) -> bool:
+        if _torn_copy(line, self.whole):
+            return True
+        return any(_torn_copy(line, self._lines(p))
+                   for _k, p in sorted(self.parts.get(m, {}).items()))
+
     def _tail(self, m: str, need: int) -> pathlib.Path:
         """The open part a line of `need` bytes goes into: the month's last
         part when it is open and has room, else a new part after it."""
@@ -778,30 +961,63 @@ class _Archive:
         parts[(top + 1, False)] = p
         return p
 
-    def file(self, line: bytes, m: str | None = None, check: bool = True) -> bool:
-        """Append one line to its month. False when the line is already
-        archived (checked when `check`)."""
-        m = m or line_month(line, self.today)
-        if check and _digest(line) in self.seen(m):
-            self.did["known"] += 1
-            return False
-        p = self._tail(m, len(line) + 1)
-        size = self._sz(p)                 # before the append: a new part is 0
+    def _append(self, p: pathlib.Path, blob: bytes) -> None:
+        """Append to an open part. A part that does not end in a newline (an
+        append torn part way) gets one first: the new row is a line of its
+        own, never glued to the fragment."""
+        size = self._sz(p)
+        lead = b""
+        if size and p not in self._nl:
+            with open(p, "rb") as fh:
+                fh.seek(-1, os.SEEK_END)
+                if fh.read(1) != b"\n":
+                    lead = b"\n"
         self.dir.mkdir(parents=True, exist_ok=True)
         with open(p, "ab") as fh:
-            fh.write(line + b"\n")
-        self._size[p] = size + len(line) + 1
+            fh.write(lead + blob)
+        self._nl.add(p)
+        self._size[p] = size + len(lead) + len(blob)
+
+    def file(self, line: bytes, m: str | None = None, check: bool = True) -> bool:
+        """Append one line to its month. False when the line is already
+        archived, or is a torn copy of a row held whole (checked when
+        `check`)."""
+        m = m or line_month(line, self.today)
+        if check:
+            if _digest(line) in self.seen(m):
+                self.did["known"] += 1
+                return False
+            if not _parses(line) and self._torn(line, m):
+                self.did["torn"] += 1
+                return False
+        p = self._tail(m, len(line) + 1)
+        self._append(p, line + b"\n")
         if m in self._seen:
             self._seen[m].add(_digest(line))
         self.did["filed"] += 1
         return True
 
+    def _rewrite(self, m: str, n: int, lines: list[bytes]) -> None:
+        """An open part rewritten to hold just these lines; removed when none."""
+        parts = self.parts.setdefault(m, {})
+        p = parts.get((n, False)) or self.dir / part_name(m, n, False)
+        if lines:
+            blob = b"".join(ln + b"\n" for ln in lines)
+            _write_bytes(p, blob)
+            self._size[p] = len(blob)
+            self._nl.add(p)
+        else:
+            parts.pop((n, False), None)
+            self._size.pop(p, None)
+            p.unlink(missing_ok=True)
+        self._seen.pop(m, None)
+
     def refile(self, m: str) -> None:
         """A row sitting in ANOTHER month's open part goes to its own month, by
-        line; the part keeps the rest. Git puts one there when a merge follows
-        the old single file into a month file it judges a rename of it - a
-        branch from before the migration, merging main - and a plain union of
-        two versions can too."""
+        line - filed there first, and only then taken out of this part. Git
+        puts one there when a merge follows the old single file into a month
+        file it judges a rename of it - a branch from before the migration,
+        merging main - and a plain union of two versions can too."""
         parts = self.parts.get(m, {})
         for n in sorted(n for (n, s) in parts if not s):
             p = parts.get((n, False))
@@ -809,19 +1025,42 @@ class _Archive:
             away = [ln for ln in lines if own_month(ln) not in (None, m)]
             if not away:
                 continue
-            keep = [ln for ln in lines if own_month(ln) in (None, m)]
-            if keep:
-                blob = b"".join(ln + b"\n" for ln in keep)
-                _write_bytes(p, blob)
-                self._size[p] = len(blob)
-            else:
-                parts.pop((n, False))
-                self._size.pop(p, None)
-                p.unlink(missing_ok=True)
-            self._seen.pop(m, None)
             for ln in away:
                 self.file(ln, own_month(ln), check=True)
+            self._rewrite(m, n, [ln for ln in lines if own_month(ln) in (None, m)])
             self.did["refiled"] += len(away)
+
+    def dedupe(self, m: str) -> None:
+        """The full pass's reading of a month: a line a sealed part holds
+        leaves the open parts, and a line the open parts hold twice keeps its
+        first copy. The lines removed are held elsewhere in the month."""
+        parts = self.parts.get(m, {})
+        opens = sorted(n for (n, s) in parts if not s)
+        if not opens:
+            return
+        held = self._sealed_digests(m) if any(s for (_n, s) in parts) else set()
+        for n in opens:
+            lines = self._lines(parts[(n, False)])
+            keep = []
+            for ln in lines:
+                d = _digest(ln)
+                if d not in held:
+                    held.add(d)
+                    keep.append(ln)
+            if len(keep) != len(lines):
+                self.did["deduped"] += len(lines) - len(keep)
+                self._rewrite(m, n, keep)
+
+    def _new_open(self, m: str, n: int, blob: bytes) -> int:
+        """A new open part at the first free number from n; its number."""
+        parts = self.parts.setdefault(m, {})
+        while (n, False) in parts or not _create(self.dir / part_name(m, n, False), blob):
+            n += 1
+        p = self.dir / part_name(m, n, False)
+        parts[(n, False)] = p
+        self._size[p] = len(blob)
+        self._nl.add(p)
+        return n
 
     def tidy(self, m: str) -> None:
         """A stray open part (numbered at or below a sealed one: a merge kept a
@@ -833,32 +1072,43 @@ class _Archive:
             p = parts.pop((n, False))
             self._size.pop(p, None)
             self._seen.pop(m, None)
-            for ln in self._lines(p):
+            lines = self._lines(p)
+            self.whole.update(lines)
+            for ln in lines:                    # into the month's own part first...
                 self.file(ln, m, check=True)
-            p.unlink(missing_ok=True)
+            p.unlink(missing_ok=True)           # ...then the stray goes
         opens = self.proper_open(m)
-        if not any(self._sz(parts[(n, False)]) > CAP for n in opens):
-            return
-        lines = [ln for n in opens for ln in self._lines(parts[(n, False)])]
-        want = {opens[0] + i: c for i, c in enumerate(_chunks(lines, CAP))}
-        for n, blob in want.items():
-            p = self.dir / part_name(m, n, False)
-            _write_bytes(p, blob)
-            parts[(n, False)] = p
-            self._size[p] = len(blob)
+        over = [n for n in opens if self._sz(parts[(n, False)]) > CAP]
+        if all(len(self._lines(parts[(n, False)])) <= 1 for n in over):
+            return                  # (one row bigger than CAP sits alone in its part)
+        # RE-SPLIT, the new parts first: under numbers past every part of the
+        # month, so no part holding a line is replaced before the line is
+        # written again; a line the old parts held twice is written once
+        lines, seen = [], set()
         for n in opens:
-            if n not in want:
-                p = parts.pop((n, False))
-                self._size.pop(p, None)
-                p.unlink(missing_ok=True)
+            for ln in self._lines(parts[(n, False)]):
+                d = _digest(ln)
+                if d not in seen:
+                    seen.add(d)
+                    lines.append(ln)
+        top = max(n for (n, _s) in parts)
+        for blob in _chunks(lines, CAP):
+            top = self._new_open(m, top + 1, blob)
+        for n in opens:
+            p = parts.pop((n, False))
+            self._size.pop(p, None)
+            p.unlink(missing_ok=True)
+        self._seen.pop(m, None)
         self.did["split"].append(m)
 
     def seal(self, m: str) -> None:
         """Every open part of a finished month into gzip part(s), numbered
         after the last sealed one, then the open parts removed. A line a
         sealed part already holds, or one sealed a moment ago, is not sealed
-        twice."""
-        parts = self.parts.get(m, {})
+        twice; another month's row goes home before anything is sealed; a
+        torn copy is left out, and a month holding any other line that does
+        not parse is not sealed at all."""
+        parts = self.relist(m)                  # the folder as it is now
         opens = self.proper_open(m)
         if not opens:
             return
@@ -874,33 +1124,102 @@ class _Archive:
                 if d not in seen:
                     seen.add(d)
                     lines.append(ln)
-        for i, blob in enumerate(_seal_blobs(lines) if lines else []):
-            p = self.dir / part_name(m, sm + 1 + i, True)
-            _write_bytes(p, blob)
-            parts[(sm + 1 + i, True)] = p
-        for n in opens:
-            p = parts.pop((n, False))
-            self._size.pop(p, None)
-            p.unlink(missing_ok=True)
-        self._seen.pop(m, None)
-        self.did["sealed"].append(m)
-        for ln in away:
+        odd = [ln for ln in lines if not _parses(ln)]
+        if odd:
+            whole = set(lines) | self.whole | set(_live_lines(self.data))
+            torn = {ln for ln in odd if _torn_copy(ln, whole)}
+            if len(torn) < len(odd):
+                self.did["held"].append(m)   # archive_problems names it for a person
+                return
+            lines = [ln for ln in lines if ln not in torn]
+            self.did["torn"] += len(torn)
+        for ln in away:                      # 1. another month's row goes home
             self.file(ln, own_month(ln), check=True)
         self.did["refiled"] += len(away)
+        pending = lines                      # 2. the gzip, never over a file
+        for _attempt in range(16):
+            if not pending:
+                break
+            base, made = self.sealed_max(m), 0
+            for blob in _seal_blobs(pending):
+                p = self.dir / part_name(m, base + 1 + made, True)
+                if not _create(p, blob):
+                    break                    # a sealed part appeared under this one
+                self.parts[m][(base + 1 + made, True)] = p
+                made += 1
+            else:
+                pending = []
+                break
+            self.relist(m)
+            have = self._sealed_digests(m)
+            pending = [ln for ln in pending if _digest(ln) not in have]
+        else:
+            raise RuntimeError(f"{ARCHIVE_DIR}/{m}: no free name for a sealed part")
+        # 3. only now the open parts go, each while every line in it is sealed,
+        # went home or was a torn copy (a line written since stays, to be
+        # folded by the next write)
+        done = seen | {_digest(ln) for ln in away}
+        for n in opens:
+            p = self.dir / part_name(m, n, False)
+            if all(_digest(ln) in done for ln in self._lines(p)):
+                self.parts[m].pop((n, False), None)
+                self._size.pop(p, None)
+                p.unlink(missing_ok=True)
+        self._seen.pop(m, None)
+        self.did["sealed"].append(m)
+
+    def trim_live(self) -> list:
+        """The live journal back to its own rules after two copies of it were
+        merged by line (the desk publisher's worktree): a row the archive
+        holds leaves it - one side had pruned it, and the union brought it
+        back - and it keeps its last KEEP entries, the older ones filed by
+        line first. Returns the rows it keeps."""
+        p = self.data / LOG.name
+        try:
+            raw = p.read_bytes()
+        except OSError:
+            return []
+        lines = [s for s in (ln.strip() for ln in raw.split(b"\n")) if s]
+        keep = [ln for ln in lines if _digest(ln) not in self.seen(line_month(ln, self.today))]
+        dropped = len(lines) - len(keep)
+        pruned = keep[:-KEEP] if len(keep) > KEEP else []
+        keep = keep[len(pruned):]
+        for ln in pruned:
+            self.file(ln, line_month(ln, self.today), check=True)
+        if dropped or pruned:
+            fd, tmp = tempfile.mkstemp(dir=str(self.data), suffix=".tmp")
+            with os.fdopen(fd, "wb") as fh:
+                fh.write(b"".join(ln + b"\n" for ln in keep))
+            os.replace(tmp, p)
+        self.did["trimmed"] = dropped + len(pruned)
+        out = []
+        for ln in keep:
+            try:
+                out.append(json.loads(ln))
+            except ValueError:
+                continue
+        return out
 
 
 def finished(month: str, live: list, today: dt.date | None = None) -> bool:
     """Can this journal never hand the month another row: the calendar is
-    past it and nothing left in the live journal is from it or before it."""
+    past it and nothing left in the live journal is from it or before it.
+    An undated live row decides only UNDATED, the one month it goes to."""
     today = today or dt.date.today()
     if month >= today.isoformat()[:7]:
         return False
-    return all(month_of(r, today) > month for r in live)
+    for r in live:
+        m = month_of(r, today)
+        if m == UNDATED and month != UNDATED:
+            continue
+        if m <= month:
+            return False
+    return True
 
 
 def normalize(data=None, live: list | None = None, rows=(), lines=(),
               today: dt.date | None = None, full: bool = False,
-              seal: bool = True) -> dict:
+              seal: bool = True, known=(), trim: bool = False) -> dict:
     """File rows into the archive and bring it to its rules. Returns what it did.
 
       rows   journal entries just pruned from the live journal (dicts). An
@@ -908,48 +1227,68 @@ def normalize(data=None, live: list | None = None, rows=(), lines=(),
              with a sealed part is checked first.
       lines  archived lines from somewhere else - another side of a merge,
              a desk's snapshot. Every one is checked; only what this archive
-             lacks is filed.
+             lacks is filed, and a torn copy of a line held whole is not.
+      known  whole lines held elsewhere (the desk's live journal): only what
+             a torn copy is told by.
       live   the live journal as it stands after this write (read from disk
              when not given): what decides which months are finished.
-      full   also read every open part and move a row of another month to
-             its own (refile) - what a merge can leave. --fold, --resolve and
-             the desk publisher do; the everyday write does not read.
+      full   also read every open part: move a row of another month to its
+             own (refile) and take out of the open parts what a sealed part
+             or an earlier copy holds (dedupe) - what a merge can leave.
+             --fold, --resolve and the desk publisher do; the everyday write
+             does not read.
+      trim   also bring the live journal on disk to its rules (trim_live):
+             the desk publisher, whose merge of two live journals by line
+             brings back what one side pruned.
       seal   seal the finished months (False for a resolver in the middle of
              a merge or rebase: it settles rows and nothing more, and the next
              write or publish seals).
 
-    In order: the old single file is folded in and removed; `rows`, then
-    `lines`, are filed; with `full`, rows in another month's file move;
-    strays are folded and oversized open parts re-split; every finished
-    month is sealed."""
-    a = _Archive(data, today)
-    old = legacy_archive(a.data)
-    if old.is_file():
-        for ln in a._lines(old):
-            a.did["folded"] += a.file(ln, check=True)
-        old.unlink()
-    for r in rows or ():
-        m = month_of(r, a.today)
-        a.file(json.dumps(r).encode(), m, check=bool(a.sealed_max(m)))
-    for ln in lines or ():
-        a.file(ln, check=True)
-    if full:
+    In order, under journal_lock(): the old single file is folded in and
+    removed; `rows`, then `lines`, are filed; with `full`, rows in another
+    month's file move and second copies go; strays are folded and oversized
+    open parts re-split; with `trim`, the live journal is trimmed; every
+    finished month is sealed."""
+    with journal_lock(data):
+        a = _Archive(data, today)
+        lines = list(lines or ())
+        a.whole.update(known or ())
+        a.whole.update(lines)
+        old = legacy_archive(a.data)
+        if old.is_file():
+            old_lines = a._lines(old)
+            a.whole.update(old_lines)
+            for ln in old_lines:
+                a.did["folded"] += a.file(ln, check=True)
+            old.unlink()
+        for r in rows or ():
+            m = month_of(r, a.today)
+            a.file(json.dumps(r).encode(), m, check=bool(a.sealed_max(m)))
+        for ln in lines:
+            a.file(ln, check=True)
+        if full:
+            for m in sorted(a.parts):
+                a.refile(m)
+            for m in sorted(a.parts):
+                a.dedupe(m)
         for m in sorted(a.parts):
-            a.refile(m)
-    for m in sorted(a.parts):
-        a.tidy(m)
-    if not seal:
+            a.tidy(m)
+        if trim:
+            live = a.trim_live()
+        if not seal:
+            return a.did
+        live = _live_rows(a.data) if live is None else live
+        for m in sorted(a.parts):
+            if a.proper_open(m) and finished(m, live, a.today):
+                a.seal(m)
         return a.did
-    live = _live_rows(a.data) if live is None else live
-    for m in sorted(a.parts):
-        if a.proper_open(m) and finished(m, live, a.today):
-            a.seal(m)
-    return a.did
 
 
 def archive_problems(data=None) -> tuple[list[str], list[str]]:
     """(what breaks the archive's rules and needs a person, what the next
-    write, publish or `--fold` puts right by itself) on disk."""
+    write, publish or `--fold` puts right by itself) on disk. Every line is
+    parsed: a line that is no JSON is either a torn copy of a row held whole
+    (a note: the seal leaves it out) or something a person must read."""
     bad, look = [], []
     d = archive_dir(data)
     fold = "python3 scripts/journal.py --fold"
@@ -965,50 +1304,87 @@ def archive_problems(data=None) -> tuple[list[str], list[str]]:
             bad.append(f"{ARCHIVE_DIR}/{name} is not a part name ({part_name('2026-10', 1, True)}, "
                        f"{part_name('2026-10', 2, False)}, ...): nothing reads it")
     sealed_max: dict = {}
+    by_month: dict = {}
     for m, n, s, p in archive_parts(data):
+        by_month.setdefault(m, []).append((n, s, p))
         if s:
             sealed_max[m] = max(sealed_max.get(m, 0), n)
-    for m, n, s, p in archive_parts(data):
-        raw = p.read_bytes()
-        try:
-            lines = lines_of(p.name, raw)
-        except (OSError, EOFError, zlib.error, gzip.BadGzipFile) as exc:
-            bad.append(f"{p.name} does not decompress: {exc}")
-            continue
-        if len(raw) > CAP and len(lines) > 1:
-            (bad if len(raw) > GITHUB_WARNS else look).append(
-                f"{p.name} is {len(raw):,} bytes, past the cap of {CAP:,}: the next journal "
-                f"write re-splits it (or: {fold})")
-        if not s and n <= sealed_max.get(m, 0):
-            look.append(f"{p.name} is open beside a sealed part numbered {sealed_max[m]} (a "
-                        f"merge kept a file the other side sealed): the next journal write "
-                        f"folds it (or: {fold})")
-        away = 0
-        for ln in lines:
-            om = own_month(ln)
-            if om is None:
-                try:
-                    json.loads(ln)
-                except ValueError:
-                    look.append(f"{p.name} holds a line that is not JSON ({len(ln):,} bytes)")
+    live = _live_lines(data)
+    for m, items in by_month.items():
+        read = []                                   # (name, sealed, lines, odd)
+        for n, s, p in items:
+            raw = p.read_bytes()
+            try:
+                lines = lines_of(p.name, raw)
+            except (OSError, EOFError, zlib.error, gzip.BadGzipFile) as exc:
+                bad.append(f"{p.name} does not decompress: {exc}")
                 continue
-            if om != m:
-                away += 1
-        if away and s:
-            bad.append(f"{p.name} is sealed with {away} row(s) of another month in it")
-        elif away:
-            look.append(f"{p.name} holds {away} row(s) of another month (a merge put them "
-                        f"there): {fold} moves them, as the next desk publish does")
+            if len(raw) > CAP and len(lines) > 1:
+                (bad if len(raw) > GITHUB_WARNS else look).append(
+                    f"{p.name} is {len(raw):,} bytes, past the cap of {CAP:,}: the next journal "
+                    f"write re-splits it (or: {fold})")
+            if not s and n <= sealed_max.get(m, 0):
+                look.append(f"{p.name} is open beside a sealed part numbered {sealed_max[m]} (a "
+                            f"merge kept a file the other side sealed): the next journal write "
+                            f"folds it (or: {fold})")
+            away, odd = 0, []
+            for ln in lines:
+                if not _parses(ln):
+                    odd.append(ln)
+                elif own_month(ln) != m:
+                    away += 1
+            if away and s:
+                bad.append(f"{p.name} is sealed with {away} row(s) of another month in it")
+            elif away:
+                look.append(f"{p.name} holds {away} row(s) of another month (a merge put them "
+                            f"there): {fold} moves them, as the next desk publish does")
+            read.append((p.name, s, lines, odd))
+        if any(odd for *_x, odd in read):
+            whole = {ln for _n, _s, lines, _o in read for ln in lines} | set(live)
+            for name, s, _lines, odd in read:
+                torn = [ln for ln in odd if _torn_copy(ln, whole)]
+                other = len(odd) - len(torn)
+                if s and odd:
+                    bad.append(f"{name} is sealed with {len(odd)} line(s) that are not JSON "
+                               f"({', '.join(f'{len(x):,} bytes' for x in odd[:3])}): a sealed "
+                               f"file is never rewritten; a person reads them")
+                elif other:
+                    bad.append(f"{name} holds {other} line(s) that are not JSON and no torn copy "
+                               f"of a row held whole: a person reads and removes them; the month "
+                               f"is not sealed while they are there")
+                if torn and not s:
+                    look.append(f"{name} holds {len(torn)} torn copy(ies) of a row held whole (an "
+                                f"append cut off part way): the seal leaves them out")
+        copies: dict = {}
+        sealed_copies: dict = {}
+        for _name, s, lines, _odd in read:
+            for ln in lines:
+                k = _digest(ln)
+                copies[k] = copies.get(k, 0) + 1
+                if s:
+                    sealed_copies[k] = sealed_copies.get(k, 0) + 1
+        twice = [k for k, c in copies.items() if c > 1]
+        if twice:
+            fixed = [k for k in twice if sealed_copies.get(k, 0) > 1]
+            if len(twice) > len(fixed):
+                look.append(f"{m}: {len(twice) - len(fixed)} line(s) held twice in its parts (a "
+                            f"merge kept an open part the other side sealed, or one row was "
+                            f"pruned twice): {fold} keeps one, as the next desk publish and the "
+                            f"seal do")
+            if fixed:
+                look.append(f"{m}: {len(fixed)} line(s) held by two sealed parts: a sealed file "
+                            f"is written once, so both copies stay; they read as the same row")
     return bad, look
 
 
 def resolve(root, paths: list[str], upstream: int = 2) -> str:
     """Settle the archive paths of a stopped rebase (upstream=2, git's stage
-    for the branch being rebased onto) or merge (upstream=3, the branch being
-    merged in). The upstream's version of each path stands - a sealed file
-    main has is never replaced - and every line any stage holds that the
-    archive then lacks is filed by the rules above, then staged. Nothing is
-    sealed here: the next write or publish does that."""
+    for the branch being rebased onto) or merge (upstream=3 when the branch
+    merged in is main; 2 when main is the one merging it in - main() works it
+    out). The upstream's version of each path stands - a sealed file main has
+    is never replaced, and a path main REMOVED stays removed - and every line
+    any stage holds that the archive then lacks is filed by the rules above,
+    then staged. Nothing is sealed here: the next write or publish does that."""
     import subprocess
     root = pathlib.Path(root)
 
@@ -1025,38 +1401,71 @@ def resolve(root, paths: list[str], upstream: int = 2) -> str:
                 all(own_month(ln) in (None, k[0]) for ln in lines_of(p, raw))
         except (OSError, EOFError, zlib.error):
             return False
-    lines: list = []
-    for p in paths:
-        for n in (1, upstream, other):
-            lines += lines_of(p, stage(n, p))
-    for p in paths:
-        up = stage(upstream, p)
-        # GIT FOLLOWS THE OLD SINGLE FILE INTO A PART IT JUDGES A RENAME OF
-        # IT, so one side's version of a part can be that whole file. It
-        # never stands over the other side's proper part, whichever way the
-        # merge runs (main into the migration's branch, or the branch into
-        # main); its rows are filed with every other stage's.
-        theirs = stage(other, p)
-        if not proper(p, up) and proper(p, theirs):
-            up = theirs
-        subprocess.run(["git", "rm", "-q", "--cached", "--ignore-unmatch", "--", p],
-                       cwd=root, check=True, capture_output=True)
-        f = root / p
-        if up is None:
-            f.unlink(missing_ok=True)
-        else:
-            f.parent.mkdir(parents=True, exist_ok=True)
-            f.write_bytes(up)
-    did = normalize(root / "data", lines=lines, full=True, seal=False)
-    for p in (f"data/{ARCHIVE_DIR}", f"data/{LEGACY_ARCHIVE}"):
-        listed = subprocess.run(["git", "ls-files", "--", p], cwd=root, capture_output=True,
-                                text=True).stdout.strip()
-        if listed or (root / p).exists():
-            subprocess.run(["git", "add", "-A", "--", p], cwd=root, check=True,
-                           capture_output=True)
+    with journal_lock(root / "data"):
+        lines: list = []
+        for p in paths:
+            for n in (1, upstream, other):
+                lines += lines_of(p, stage(n, p))
+        for p in paths:
+            up = stage(upstream, p)
+            # GIT FOLLOWS THE OLD SINGLE FILE INTO A PART IT JUDGES A RENAME OF
+            # IT, so one side's version of a part can be that whole file. It
+            # never stands over the other side's proper part, whichever way the
+            # merge runs (main into the migration's branch, or the branch into
+            # main); its rows are filed with every other stage's. A path the
+            # upstream does not have at all is not that case: main sealed the
+            # month and removed the part, and writing the other side's copy
+            # back would hold every row of it twice - beside the gzip that
+            # holds them (2026-11-24 review: 189 rows, 6.9 MB, on main twice).
+            theirs = stage(other, p)
+            if up is not None and not proper(p, up) and proper(p, theirs):
+                up = theirs
+            subprocess.run(["git", "rm", "-q", "--cached", "--ignore-unmatch", "--", p],
+                           cwd=root, check=True, capture_output=True)
+            f = root / p
+            if up is None:
+                f.unlink(missing_ok=True)
+            else:
+                f.parent.mkdir(parents=True, exist_ok=True)
+                f.write_bytes(up)
+        did = normalize(root / "data", lines=lines, full=True, seal=False)
+        for p in (f"data/{ARCHIVE_DIR}", f"data/{LEGACY_ARCHIVE}"):
+            listed = subprocess.run(["git", "ls-files", "--", p], cwd=root, capture_output=True,
+                                    text=True).stdout.strip()
+            if listed or (root / p).exists():
+                subprocess.run(["git", "add", "-A", "--", p], cwd=root, check=True,
+                               capture_output=True)
     return (f"the journal archive: {len(paths)} path(s) settled, {did['filed']} row(s) "
             f"filed, {did['known']} already archived, {did['refiled']} moved to their own "
-            f"month")
+            f"month, {did['deduped']} second copies taken out")
+
+
+def main_side(root) -> int | None:
+    """In a stopped MERGE, git's stage number for main's side: 3 when the
+    branch merged in is main (origin/main, or main), 2 when HEAD is main and
+    a branch is being merged into it; None when neither side is main.
+    `up = 3` for every merge let a branch merged INTO main replace main's
+    sealed file with its own (2026-11-24 review)."""
+    import subprocess
+    root = pathlib.Path(root)
+
+    def sha(ref: str) -> str | None:
+        r = subprocess.run(["git", "rev-parse", "-q", "--verify", f"{ref}^{{commit}}"],
+                           cwd=root, capture_output=True, text=True)
+        return r.stdout.strip() or None if r.returncode == 0 else None
+    remote, local = sha("refs/remotes/origin/main"), sha("refs/heads/main")
+    head, theirs = sha("HEAD"), sha("MERGE_HEAD")
+    on_main = subprocess.run(["git", "symbolic-ref", "-q", "HEAD"], cwd=root,
+                             capture_output=True, text=True).stdout.strip() == "refs/heads/main"
+    if remote and theirs == remote:
+        return 3
+    if remote and head == remote:
+        return 2
+    if (on_main or (local and head == local)) and theirs != local:
+        return 2
+    if local and theirs == local:
+        return 3
+    return None
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1068,16 +1477,20 @@ def main(argv: list[str] | None = None) -> int:
                         "and seal every finished month")
     g.add_argument("--check", action="store_true", help="say what breaks the archive's rules")
     g.add_argument("--resolve", action="store_true",
-                   help="inside a stopped merge of main (or rebase onto it): settle the "
-                        "conflicted archive paths and stage them")
+                   help="inside a stopped merge with main (either way) or rebase onto it: "
+                        "settle the conflicted archive paths and stage them")
     ap.add_argument("--upstream", type=int, choices=(2, 3),
-                    help="git's stage number for main (default: 3 in a merge, 2 in a rebase)")
+                    help="git's stage number for main's side (default: 2 in a rebase; in a "
+                         "merge, the side that is origin/main or main)")
     a = ap.parse_args(argv)
     if a.fold:
         did = normalize(full=True)
         print(f"folded {did['folded']} row(s) from {LEGACY_ARCHIVE}, filed {did['filed']}, "
-              f"{did['known']} already archived, {did['refiled']} moved to their own month; "
-              f"sealed {did['sealed'] or 'none'}; re-split {did['split'] or 'none'}")
+              f"{did['known']} already archived, {did['refiled']} moved to their own month, "
+              f"{did['deduped']} second copies taken out; sealed {did['sealed'] or 'none'}; "
+              f"re-split {did['split'] or 'none'}"
+              + (f"; NOT sealed, holding a line that is not JSON: {did['held']} "
+                 f"(python3 scripts/journal.py --check)" if did["held"] else ""))
         return 0
     if a.check:
         bad, look = archive_problems()
@@ -1099,7 +1512,13 @@ def main(argv: list[str] | None = None) -> int:
     if up is None:
         merging = subprocess.run(["git", "rev-parse", "-q", "--verify", "MERGE_HEAD"],
                                  cwd=root, capture_output=True).returncode == 0
-        up = 3 if merging else 2
+        up = main_side(root) if merging else 2
+        if up is None:
+            print("refusing: in this merge neither HEAD nor MERGE_HEAD is main (origin/main or "
+                  "main), so there is no telling whose archive files stand. Say it: "
+                  "--upstream 2 when HEAD is the side whose files stand, --upstream 3 when "
+                  "MERGE_HEAD is.")
+            return 2
     print(resolve(root, paths, upstream=up))
     return 0
 
