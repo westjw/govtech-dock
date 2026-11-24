@@ -2572,7 +2572,10 @@ and never said where in a page a reference sat.
   kind of element was commented out. A SuccessFactors Career Site Builder
   board names no vendor in its address: it is known by its page's own markup,
   or by a link of a CSB shape on their own domain (see "SAP SuccessFactors
-  career sites" below).
+  career sites" below). A Jobvite account named by its company id on
+  app.jobvite.com (the widget's ci=, a CompanyJobs page's c=) is a
+  `jobvitefeed` board, unless their site names a jobs.jobvite.com career site,
+  which stays the board (see "A Jobvite account's XML feed" below).
 - **What the door must still do, because this file cannot:** make the
   second check (ask the board whose it is); refuse a (type, ref) another
   record already holds, or that two records' candidates share (two brands
@@ -2606,7 +2609,7 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Twenty-three types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Eight more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), and successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-four types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Nine more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), and jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
 - `site`: the employer's website where the board gives one (ashby, jazzhr).
@@ -3881,6 +3884,121 @@ review and the owner's word, through the wiring door.
   more than `SF_SLACK` closed are pinned whole. Each fix reverted in a
   private copy fails the check.
 
+## A Jobvite account's XML feed: the reader (2026-11-23)
+
+Owner, 2026-11-23, asked "Tyler Technologies is on Jobvite but only reachable
+through its XML feed ... Build a reader for that feed and wire Tyler?": "Yes,
+build it". Tyler's careers pages load a Jobvite widget for one account and
+link its CompanyJobs pages, and name no jobs.jobvite.com career site.
+`ats.fetch_jobvitefeed` reads such an account's feed as the type
+`jobvitefeed`, its ref the account's company id (`q6NaVfwI`: 'q', four
+letters or digits, 'fw', one more - five accounts measured). Tyler's record is
+NOT rewired by this work: wiring, the live read and the review come after it,
+through the door.
+
+- **One request is the whole board.** GET
+  https://app.jobvite.com/CompanyJobs/Xml.aspx?c=<id> through `ats.follow`
+  (robots.txt and `plain_address` at every hop; app.jobvite.com allows
+  /CompanyJobs/), every hop held to that very address - an id nobody holds is
+  sent on to Jobvite's own pages, and that hop is refused before it is asked
+  anything - asked as a stream (`ats._one`) and refused past
+  `JOBVITE_FEED_MAX` (32,000,000 bytes), never read in part. Measured on
+  Tyler's, 2026-11-23: 200, 2,119,266 characters, 266 rows, no paging, no
+  total.
+- **Paced, and never kept.** app.jobvite.com answered 429 (Retry-After 30) to
+  a second feed asked a second after the first, so its gate holds requests
+  `JOBVITE_FEED_PAUSE` (30s) apart (`ats._GATE_PAUSES`, beside HOST_PAUSE;
+  `_SHARED_GATES` makes it one gate however an address writes the host), and
+  it is in `NEVER_CACHED`. A 429 is raised as `RateLimited`, a 5xx and the
+  network failing (mid-body too) as every reader's are: refresh asks once
+  more on a 429, build_board on a 429 or the network, and a board that will
+  not read is Unknown, never "None found". A night asks the feed twice (the
+  two steps are processes of their own), four times at most on a lasting
+  429.
+- **The person on every row is never read.** `hiring_x0020_manager` names a
+  person on every row of Tyler's feed (550 of them on 266 rows, saved
+  2026-11-23) and of Absolute's and Gigamon's. The parser (expat, stdlib)
+  keeps the fields the reader and the probe use BY NAME (`ats._JVX_FIELDS`)
+  and drops every other field's text as it meets it - attributes, CDATA and
+  markup in a field nobody named included - so no person reaches a row, a
+  note, stderr, the probe's answer or a cache. A DOCTYPE or an ENTITY
+  declaration is refused before anything it declares is read; a feed cut
+  short, one that is not a `<result>` of `<job>`s, and one listing no job
+  are errors, never a zero.
+- **One row per job.** A job open in several places is a parent row and one
+  row per other place (`parentId`; 139 of Tyler's 266, each after its parent,
+  with its title, requisition, date, pay and ad, a place of its own, and the
+  parent's job page). Grouped whatever their order, the parent gives the row
+  its title, `posted` (`<date>`, M/D/YYYY only, as YYYY-MM-DD - the research
+  found it is not always the posting's own datePosted: Absolute's oFV3AfwX
+  says 11/4/2026 in its feed and 2026-11-02 on its page), the job's own page
+  (its detail-url as https, and only where that is this account's Job.aspx
+  for this very job, written with c= and j= alone), `category`, pay and ad;
+  each copy adds its place once, "; "-joined: 127 jobs. More than
+  `JOBVITE_FEED_SLACK` (2) rows that do not read as a job of this account
+  (no id, no title, another account's or another job's page) is an error;
+  fewer are left out and said, as counts, on stderr; 500 openings or more
+  is said as a giant, with its count.
+- **Pay only where the row states it**: salarymin, salarymax, salarycurrency
+  and salaryfrequency, as the contract's block with source "ats": the ISO code
+  in the parentheses of 'US Dollar (USD US$)' (else none), a period only from
+  Annually, Annual, Yearly, Monthly, Weekly, Daily or Hourly (Bi-Weekly is not
+  a week; a period not read is pay `build_board.derived` does not publish),
+  cents kept (20.00-22.50 is 20-22.5; `ats._money` rounds), and a figure that
+  does not read publishes no pay, never half a range.
+- **The ad** (`description`, in the same answer) goes into jd only behind
+  FETCH_DETAILS, as asked on 2026-11-23, though it costs no request. So in the
+  nightly, which passes no --details, a row with no salary fields reads
+  `jd_seen` false.
+- **The probe** (`verify_boards._jobvitefeed`, one request, the reader's own
+  path): the feed is the whole board in one answer, so a name it states on
+  EVERY row is the board's statement - `<company>` where any row fills it
+  (and then on every row), else the account's custom company-name field,
+  `company_x0020_name`, on every row - and nothing less is: a field empty or
+  missing on one row states nothing (its names are kept for the desk); rows
+  naming more than one employer, or a company-name field naming another
+  beside `<company>`, are each name, stated, which proven() refuses. `n` is
+  the jobs, not the rows; `how` says which field was read. Measured: Tyler's
+  feed has no `<company>` and 'Tyler Technologies' in company_x0020_name on
+  266 of 266; Absolute's `<company>` is 'Absolute Security' on 18 of 18;
+  Gigamon's is empty on 26 of 26, so it states nothing (2026-11-20).
+  proven() is unchanged.
+- **The finder** (`find_site_boards`): an address on app.jobvite.com naming
+  an account by its company id - the widget's script and frame (ci=), a
+  talent network link, a CompanyJobs page (c=), Tyler's three shapes - on
+  their own site is a `jobvitefeed` candidate with that id as its ref. Where
+  their site names a jobs.jobvite.com career site, on that page
+  (`jobvite_account_forms`) or another (`jobvite_account_board`), the career
+  site stays the candidate and the account is `jobvite-tenant`, a doubt, as
+  before: a slug names a career site and an id an account, and nothing on a
+  page ties one to the other. Beside the account's board, Jobvite's no-board
+  addresses on the same page (`jobvite-other`: the widget's own assets, which
+  a browser sees it load) are its furniture. hire.jobvite.com stays a tenant
+  form: no site measured names an account there. The person scrub is
+  Jobvite's own (sd=, __jvsd= go; the id is not a person).
+- **The door** needed one hook (`OWN_FORMS`: a link to Jobvite beside such a
+  board is a note); keys, holds and the giants rule are every type's. The
+  public link (`build_board.board_url`, the desk's `boardUrlFor`) is
+  Jobvite's own careers page for the account,
+  app.jobvite.com/CompanyJobs/Careers.aspx?c=<id>, which robots.txt allows
+  and nobody here has opened yet - never the feed. A board on file as
+  `jobvite` (a slug) and one found as `jobvitefeed` (an id) are not known to
+  be one board.
+- **Read offline** over the feed saved 2026-11-23 (the network stubbed,
+  robots.txt answered as allowing /CompanyJobs/): one request, 266 rows, 127
+  jobs (139 copies joined to 56 of them; 127 requisitions), every job dated,
+  86 with pay (82 USD, 3 PHP, 1 CAD; 77 a year, 9 an hour), 24 in the Sales
+  category (79 of the 266 rows), 19 placed only outside the US (India, the
+  Philippines, Canada); the probe stated 'Tyler Technologies' whole, n 127,
+  proven for the record on file; no hiring-manager value anywhere in what was
+  read.
+- Guard: `check_jobvite_feed_reads_one_row_a_job_and_no_person`, beside a
+  row in `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS and
+  three forms in SITE_BOARD_FORMS (whose check stubs `ats._one` too: the feed
+  is asked through it). 57 one-line breakages of the reader, the parse, the
+  gate, the probe, the finder, the door and the public link, each alone in a
+  private copy, each caught.
+
 ## Build order (owner, 2026-08-23)
 
 This repo comes first, and inside it: front end, back end, data, admin. The
@@ -4773,9 +4891,10 @@ an icon the site declares.
 - `ats.type` ∈ ashby | greenhouse | lever | workable | recruitee | breezy |
   smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | paylocity
   | oracle | jibe | adp | gusto | gem | hirebridge | applicantpro | teamtailor
-  | pinpoint | zohorecruit | comeet | jobvite | successfactors | html | unknown
-  (`ats.FETCHERS` is the list; the seven before successfactors were read from
-  2026-11-21 and had not been added here).
+  | pinpoint | zohorecruit | comeet | jobvite | jobvitefeed | successfactors | html
+  | unknown (`ats.FETCHERS` is the list; the seven before successfactors were
+  read from 2026-11-21 and had not been added here; jobvitefeed, a Jobvite
+  account's XML feed, since 2026-11-23).
   Prefer structured API types; `html` is a last resort; `unknown` means
   "needs discovery" and is skipped by refresh. `coverage.py::STRUCTURED` is the
   list that decides what counts as a real API — add a new type in both places.
