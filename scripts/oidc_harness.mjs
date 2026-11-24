@@ -87,31 +87,36 @@ globalThis.fetch = async (url, init = {}) => {
  * holdSpends(n): the next n spends of a code each wait until all n have been
  * asked, then run in order, so two redemptions both reach the UPDATE before
  * either reads or deletes the row - the interleaving the atomic `used = 0`
- * is there for (a mutation run found the plain race never produced it). */
+ * is there for (a mutation run found the plain race never produced it).
+ * holdFails(n): the same for the next n calls that read or write the
+ * failure count, so a burst all reaches the count before any request is
+ * done with it - the interleaving a count read first and written after
+ * loses to, however close together the read and the write sit. */
 function d1() {
   const db = new DatabaseSync(":memory:");
   const box = { down: false, hold: null };
-  box.holdSpends = (n) => { let release; const p = new Promise((r) => { release = r; }); box.hold = { n, count: 0, p, release }; };
+  const holdOn = (re, n) => { let release; const p = new Promise((r) => { release = r; }); box.hold = { re, n, count: 0, p, release }; };
+  box.holdSpends = (n) => holdOn(/^\s*UPDATE oidc_codes/i, n);
+  box.holdFails = (n) => holdOn(/^\s*(SELECT|INSERT|UPDATE|DELETE)\b[\s\S]*\boidc_fails\b/i, n);
+  const wait = async (sqls) => {
+    const g = box.hold;
+    if (!g || !sqls.some((s) => g.re.test(s))) return;
+    g.count++;
+    if (g.count >= g.n) { box.hold = null; g.release(); } else await g.p;
+  };
   const run1 = (sql, p) => {
     if (/^\s*SELECT/i.test(sql)) return { results: db.prepare(sql).all(...p), success: true };
     const r = db.prepare(sql).run(...p);
     return { success: true, meta: { changes: Number(r.changes) } };
   };
   const stmt = (sql, p = []) => ({ _sql: sql, _p: p, bind: (...a) => stmt(sql, a),
-    async run() {
-      if (box.down) throw new Error("D1_ERROR: down");
-      if (box.hold && /^\s*UPDATE oidc_codes/i.test(sql)) {
-        const g = box.hold;
-        g.count++;
-        if (g.count >= g.n) { box.hold = null; g.release(); } else await g.p;
-      }
-      return run1(sql, p);
-    },
-    async first() { if (box.down) throw new Error("D1_ERROR: down"); return db.prepare(sql).get(...p) ?? null; },
-    async all() { if (box.down) throw new Error("D1_ERROR: down"); return run1(sql, p); } });
+    async run() { if (box.down) throw new Error("D1_ERROR: down"); await wait([sql]); return run1(sql, p); },
+    async first() { if (box.down) throw new Error("D1_ERROR: down"); await wait([sql]); return db.prepare(sql).get(...p) ?? null; },
+    async all() { if (box.down) throw new Error("D1_ERROR: down"); await wait([sql]); return run1(sql, p); } });
   return Object.assign(box, { raw: db, prepare: (s) => stmt(s),
     async batch(xs) {
       if (box.down) throw new Error("D1_ERROR: down");
+      await wait(xs.map((x) => x._sql));
       db.exec("BEGIN");
       try { const o = xs.map((x) => run1(x._sql, x._p)); db.exec("COMMIT"); return o; }
       catch (e) { db.exec("ROLLBACK"); throw e; }
@@ -631,6 +636,7 @@ const STATE = "st8 a+b/c=d&e%f?g#h~i";
   const env = envOf();
   const ip = "203.0.113.9";
   const N = 200;
+  env.DB.holdFails(N);
   const res = await Promise.all(Array.from({ length: N }, (_, i) =>
     tok(env, goodForm(randomBytes(32).toString("base64url"), pkce().verifier, { client_secret: "guess-" + i }), { ip })));
   const statuses = {};
