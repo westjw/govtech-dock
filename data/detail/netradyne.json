@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "The Riskiest 10 Minutes on American Roads",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/the-riskiest-10-minutes-on-american-roads"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.netradyne.com/blog/the-benefits-of-ai-dash-cams-for-fleet-tracking"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Oil and Gas Fleet Management: How to Build a Safer Fleet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/blog/why-is-oil-and-gas-fleet-safety-important"
   }
  ],
  "profile": {

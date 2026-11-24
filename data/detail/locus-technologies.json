@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Blog // November 23, 2026 PFAS Management in Municipal Biosolids Starts with Better Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/blog/pfas-management-in-municipal-biosolids-starts-with-better-data/"
+  },
+  {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "Blog // November 11, 2026 PFAS and Evolving Drinking Water Rules: Building a Data Foundation for What Comes Next",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Blog // November 2, 2026 Environmental Data as a Chain of Evidence",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Blog // October 27, 2026 How Electronic Data Deliverables (EDDs) Solve the Subsurface Puzzle",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.locustec.com/blog/how-can-buyers-tell-whether-environmental-software-is-truly-proven/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "index-text",
-   "first_seen": "2026-11-10",
-   "headline": "Blog // August 26, 2026 EU F-Gas Regulation: How Equipment Operators Can Turn Compliance Requirements into Practical Workflows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.locustec.com/blog/eu-f-gas-regulation-compliance-workflows/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "AI Penetration Testing Frameworks Are Becoming Tools for Cybercriminals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/ai-penetration-testing-frameworks-are-becoming-tools-for-cybercriminals/"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/preparing-for-2027-five-trends-shaping-enterprise-threat-intelligence/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "The Missing Layer in Vulnerability Prioritization: Full Visibility Into Your Attack Surface",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/the-missing-layer-in-vulnerability-prioritization-full-visibility-into-your-attack-surface/"
   }
  ],
  "profile": {

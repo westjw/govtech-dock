@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Expense Management Has Outgrown the Back Office",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/expense-management-has-outgrown-the-back-office"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-05",
    "headline": "The Modern CFO's Playbook: Building AI-Powered Finance for Tomorrow",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.emburse.com/blog/the-top-10-u-s-cities-driving-business-travel-demand-in-2026"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "card-date",
-   "first_seen": "2026-10-06",
-   "headline": "Modernizing Corporate Travel Policies for Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/blog/modernizing-corporate-travel-policies-for-success"
   }
  ],
  "profile": {

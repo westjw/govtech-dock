@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Why smart access is becoming essential for utilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iloq.com/en/insights/why-smart-access-is-becoming-essential-for-utilities/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.iloq.com/en/insights/what-is-a-smart-door-reader-and-how-do-you-choose-the-right-one/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "iLOQ App update 1.9 enhances user experience",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://www.iloq.com/en/news/iloq-app-update-1-9-enhances-user-experience/"
   }
  ]
 }

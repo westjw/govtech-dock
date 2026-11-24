@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Huntress EU Data Hosting: What Phase 1 Means",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/eu-data-hosting"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Why Resilience Has to Come First",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/why-resilience-has-to-come-first"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.huntress.com/blog/geovision-camera-software-xmrig-cryptominer"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Crafty Microsoft Teams Booking Flow Disguises Device Code Phishing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/crafty-microsoft-teams-booking-flow-disguises-device-code-phishing"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "SCKit Worm Installs Rogue ScreenConnect Clients and Session Cookie Relays Across Hundreds of Endpoints",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.huntress.com/blog/sckit-worm-rogue-screenconnect"
   }
  ]
 }

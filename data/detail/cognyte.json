@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Cognyte to Announce Third Quarter FYE27 Financial Results on December 9, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cognyte.com/news/cognyte-to-announce-third-quarter-fye27-financial-results-on-december-9-2026/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "index-text",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/news/cognyte-to-announce-second-quarter-fye27-financial-results-on-september-9-2026/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "You Can\u2019t Legislate Your Way Off the FATF Grey List",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cognyte.com/blog/fatf-grey-list-investigative-capabilities/"
   }
  ],
  "profile": {

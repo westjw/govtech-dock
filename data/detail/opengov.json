@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Government Procurement Turnover: How to Protect Your Record When Buyers Move On",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://opengov.com/resources/blog/government-procurement-turnover/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://opengov.com/resources/blog/capital-improvement-plans-101/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Large-Scale Government Procurement Needs a Different Approach to Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://opengov.com/resources/blog/large-scale-government-procurement-needs-a-different-approach-to-compliance/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-12",
+   "headline": "S3:E1 // Are you DF, IR, or both? Navigating the overlap between forensics and incident response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/cyber-unpacked-are-you-df-ir-or-both-navigating-the-overlap-between-forensics-and-incident-response/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -17,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s4e9-siri-ous-intelligence-what-ios-27-means-for-digital-forensics/"
-  },
-  {
-   "date": "2026-11-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "S3:E1 // Are you DF, IR, or both? Navigating the overlap between forensics and incident response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/cyber-unpacked-are-you-df-ir-or-both-navigating-the-overlap-between-forensics-and-incident-response/"
   },
   {
    "date": "2026-11-12",

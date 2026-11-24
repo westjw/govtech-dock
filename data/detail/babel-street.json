@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Public-private partnerships to address today's national security challenges",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/public-private-partnerships-brian-cameron"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.babelstreet.com/resources/infographics"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Babel Street Named Security Executive Council Solution Innovation Partner, Providing Mission-Grade Risk Intelligence for Corporate Security Practitioners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.babelstreet.com/about-us/newsroom/babel-street-named-security-executive-council-solution-innovation-partner"
   }
  ],
  "profile": {

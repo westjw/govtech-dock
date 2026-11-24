@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "What we heard at Transport Ticketing North America 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://littlepay.com/resource-hub/blog/articles/what-we-heard-at-transport-ticketing-north-america-2026/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "selected for",
    "url": "https://littlepay.com/resource-hub/blog/articles/littlepay-selected-for-landmark-dft-funded-national-programme/"
-  },
-  {
-   "date": "2026-04-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Is a PSP? The Complete Guide to Payment Service Providers in Transit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://littlepay.com/resource-hub/blog/articles/what-is-a-psp-the-complete-guide-to-payment-service-providers-in-transit/"
   }
  ],
  "profile": {

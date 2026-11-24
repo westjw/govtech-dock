@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "When a Shared Fleet Reservation Fails: How to Build a Vehicle Availability Backup Plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/when-a-shared-fleet-reservation-fails-how-to-build-a-vehicle-availability-backup-plan"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/low-fleet-utilization-how-to-tell-whether-demand-or-operations-are-the-problem"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-14",
-   "headline": "How to Prioritize Fleet Software Integrations: A Decision Framework for Shared Fleets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-to-prioritize-fleet-software-integrations-a-decision-framework-for-shared-fleets"
   }
  ],
  "profile": {

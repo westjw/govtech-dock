@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Introducing the Fire-Rescue Data Playbook",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.peregrine.io/resources/introducing-the-fire-rescue-data-playbook"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -31,7 +40,7 @@
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
-   "headline": "MS NOW: AZ law enforcement prep for election day security",
+   "headline": "MS NOW MS NOW: AZ law enforcement prep for election day security",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/ms-now-az-law-enforcement-prep-for-election-day-security-"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/making-cities-awesome-peregrine-on-sequoia-capitals-training-data-podcast"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "'We have a plan:' Inside Spokane County's school safety strategy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/we-have-a-plan-inside-spokane-countys-school-safety-strategy"
   }
  ],
  "profile": {
