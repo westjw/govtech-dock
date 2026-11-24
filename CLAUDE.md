@@ -2598,7 +2598,10 @@ and never said where in a page a reference sat.
   career sites" below). A Jobvite account named by its company id on
   app.jobvite.com (the widget's ci=, a CompanyJobs page's c=) is a
   `jobvitefeed` board, unless their site names a jobs.jobvite.com career site,
-  which stays the board (see "A Jobvite account's XML feed" below).
+  which stays the board (see "A Jobvite account's XML feed" below). A TriNet
+  Hire company number on app.trinethire.com, in any form (/jobs/embed, /jobs,
+  a posting), is a `trinethire` board, keyed on the number (see "TriNet Hire:
+  the reader" below).
 - **What the door must still do, because this file cannot:** make the
   second check (ask the board whose it is); refuse a (type, ref) another
   record already holds, or that two records' candidates share (two brands
@@ -2634,7 +2637,7 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Twenty-four types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Nine more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), and jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-five types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Ten more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), and trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
 - `site`: the employer's website where the board gives one (ashby, jazzhr).
@@ -4191,6 +4194,91 @@ through the door.
   and the widget's own assets beside them still wired; ten one-line
   breakages of that fix, each alone, each caught.
 
+## TriNet Hire: the reader (2026-11-24)
+
+Owner, 2026-11-18: "review what we got and see if we can get more companies
+with postings and up". The research of 2026-11-23 found four SLED vendors on
+TriNet Hire (app.trinethire.com): SoundThinking, Polimorphic and Green River
+wired as type html to TriNet's career page, /companies/<n>-<slug>/jobs, which
+said "Currently no openings available." on every read while the board's list,
+/companies/<n>-<slug>/jobs/embed, carried 7, 16 and 1; and Codoxo's 6 in an
+iframe of that list on its own careers page. About 30 openings, about 12 of
+them sales. `ats.fetch_trinethire` reads the type `trinethire`. No record is
+wired or rewired by this work: that is the door's, after review.
+
+- **The ref is '<number>-<slug>' as found, or the number alone**, and the
+  number alone selects the board: a stale slug (5502-fraudscope serves
+  Codoxo, whose own links say 5502-codoxo), a made-up one and the bare number
+  (/companies/5502/jobs/embed, measured 2026-11-24) answer the same list. So
+  nothing is ever read from the slug, a name least of all; the finder keys a
+  board on the number (find_site_boards, any leading zero off) and so does
+  the door (`board_proposals.board_key`: 5502-fraudscope, 5502-codoxo and
+  5502 are one board).
+- **One request is the whole board, and only the list is read.** GET
+  /companies/<ref>/jobs/embed through `ats._page` (robots.txt at every hop,
+  the crawler's own name), every hop held to the board's own list - the same
+  number, at /companies/<n>[-<slug>]/jobs/embed on app.trinethire.com, no
+  query - and refused before it is asked anything (`ats._trinet_read`; the
+  employers share one host and differ by path). Server-rendered, never
+  paged, no JSON form. Each <li> of <ul id="jobs-list"> is a row: the title
+  (the link's text, unescaped), the url (its href on app.trinethire.com, the
+  query - ?source=... - dropped), and the location, the label before the LAST
+  ' - ' of the text after <strong>Location:</strong> (labels hold dashes:
+  'Atlanta, GA - Remote - Full-time'). The label is the name the employer
+  gave a location record ('Codoxo Headquarters'): published as given, never
+  read as a city. One row a job id: two postings of one title stay two. No
+  pay field, no date: no jd, no comp, no posted.
+- **The ad text is not read.** This reader reads the list only and never
+  asks a posting page, not even behind FETCH_DETAILS. app.trinethire.com's
+  robots.txt says no to AI training, leaves the ai-input content signal unset
+  and turns named AI crawlers away, so reading TriNet-hosted ad text is the
+  owner's call, still pending.
+- **A zero only where the list says so**: the template (its 'Open Jobs | '
+  title and its <ul id="jobs-list">) with no <li> in it and no posting of the
+  board linked anywhere on the page. No empty list has been seen. The career
+  page (/jobs) is never read and never evidence of zero; a page without the
+  template (that page, a challenge page), a row that does not read as a
+  posting of this board, a posting linked outside the list, a page over
+  2,000,000 characters and any answer but a 200 (a number that is gone
+  answers 404) are errors: Unknown, never "None found".
+- **Whose it is: the list's own <title>**, 'Open Jobs | {Company}', exactly
+  that prefix taken off and the rest unescaped (`verify_boards._trinethire`,
+  the same one request); the list is the whole board, so the name is stated
+  over it. Never the slug, never og:site_name (the vendor's). It is the name
+  registered with TriNet: 'Codoxo' and 'Polimorphic' pass the strict rule
+  for the records on file; 'SoundThinking, Inc.' and 'Green River Data Group
+  Inc.' are refused against 'SoundThinking (ShotSpotter)' and 'Green River'
+  until the owner rules an also_known_as for each.
+- **The public link is the list itself** (build_board.board_url, the desk's
+  card): every opening on one page, each linking its posting and its form.
+  Never /jobs, which tells a person there are no openings. A ref that is no
+  board links the company's website.
+- **The finder**: app.trinethire.com/companies/<n>[-<slug>] in an href or a
+  src, in any form (/jobs/embed, /jobs, a posting), and only on that host and
+  only the number's own path segment; every other trinethire.com address is
+  `trinethire-other`, a form of a platform we read that names no board (the
+  door's own-form note beside a board). discover_js labels the address
+  'trinethire', the one name for the type (it said 'trinet'; it only prints).
+- **Read live 2026-11-24** (six requests through the repo's helpers:
+  robots.txt, the four lists, and Codoxo's by its bare number): 7, 16, 1, 6
+  and 6 rows; 'SoundThinking, Inc.', 'Polimorphic', 'Green River Data Group
+  Inc.', 'Codoxo', 'Codoxo'.
+- Guard: `check_trinethire_reads_its_list_and_names_it_once` (the read, the
+  rows, the zero, the hops, robots.txt, the ref, the probe, the public link,
+  the finder, and the door wiring a board their own page embeds and that
+  names them, and holding one that names somebody else), beside a row in
+  `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS (and a quiet
+  one: a slug that spells the company beside a title naming nobody), the
+  type in `check_a_stated_name_does_not_loosen_the_older_doors`, four forms
+  in SITE_BOARD_FORMS, board_key rows in
+  `check_a_found_board_is_held_for_every_doubt`, `ats._trinet_read` among the
+  page readers of `check_the_crawler_honours_robots_txt`, and TriNet's own
+  site as the board's furniture in
+  `check_what_the_second_review_of_the_new_readers_found_stays_fixed`. 18
+  one-line breakages (the zero and raise rules, the name rule, the hops,
+  robots.txt, list only, the rows, the finder, the door's key and probe, the
+  public link), each alone in a private copy, each caught.
+
 ## Build order (owner, 2026-08-23)
 
 This repo comes first, and inside it: front end, back end, data, admin. The
@@ -5083,10 +5171,11 @@ an icon the site declares.
 - `ats.type` ∈ ashby | greenhouse | lever | workable | recruitee | breezy |
   smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | paylocity
   | oracle | jibe | adp | gusto | gem | hirebridge | applicantpro | teamtailor
-  | pinpoint | zohorecruit | comeet | jobvite | jobvitefeed | successfactors | html
-  | unknown (`ats.FETCHERS` is the list; the seven before successfactors were
-  read from 2026-11-21 and had not been added here; jobvitefeed, a Jobvite
-  account's XML feed, since 2026-11-23).
+  | pinpoint | zohorecruit | comeet | jobvite | jobvitefeed | trinethire
+  | successfactors | html | unknown (`ats.FETCHERS` is the list; the seven
+  before successfactors were read from 2026-11-21 and had not been added
+  here; jobvitefeed, a Jobvite account's XML feed, since 2026-11-23;
+  trinethire, a TriNet Hire board's list, since 2026-11-24).
   Prefer structured API types; `html` is a last resort; `unknown` means
   "needs discovery" and is skipped by refresh. `coverage.py::STRUCTURED` is the
   list that decides what counts as a real API — add a new type in both places.
