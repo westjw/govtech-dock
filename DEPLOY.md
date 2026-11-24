@@ -399,16 +399,18 @@ is NOT the routine rotation: the old key is never published again.
    it a new secret in the same sitting, and end the old one AT ONCE.
    Access → Service credentials → Service Tokens → `board popout` →
    **Rotate secret**, and where it asks "Keep the current secret valid
-   for", choose **Revoke immediately**. Never a grace period after a leak:
-   for as long as one runs, the old secret still passes Access on every
-   path of hunter.sledjobs.com. (Or **Disable token** first, which stops
-   the token, and any old secret still in a grace period, at once; the
-   panel is off until the token is on again.) Put the new secret in the
-   Pages secret `JH_SERVICE_TOKEN_SECRET`, and a new deployment; until it is
-   live the panel says Job Hunter did not answer. (A new token instead
-   works too: delete the old one and create one as in step 4 above; a new
-   token has a new Client ID, so `JH_SERVICE_TOKEN_ID`, the Service Auth
-   policy and Job Hunter's `JH_BOARD_SERVICE_TOKEN` all take the new one.)
+   for", ALWAYS choose **Revoke immediately**. Never a grace period after a
+   leak: for as long as one runs, the old secret still passes Access on
+   every path of hunter.sledjobs.com. Disabling the token first (**Disable
+   token**) is an extra step, not a replacement: the rotation still
+   chooses Revoke immediately, since a token turned back on while a grace
+   period runs could let the old secret in again. (While the token is
+   disabled, the panel is off.) Put the new secret in the Pages secret
+   `JH_SERVICE_TOKEN_SECRET`, and a new deployment; until it is live the
+   panel says Job Hunter did not answer. (A new token instead works too:
+   delete the old one and create one as in step 4 above; a new token has a
+   new Client ID, so `JH_SERVICE_TOKEN_ID`, the Service Auth policy and Job
+   Hunter's `JH_BOARD_SERVICE_TOKEN` all take the new one.)
 4. Check: `curl -s https://sledjobs.com/oidc/jwks` shows ONE key, and its
    `kid` is not the old one. Only then go on: before the new deployment is
    live, Job Hunter would read the old key again.

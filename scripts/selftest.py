@@ -3141,8 +3141,10 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
     The rotations it is for (review, 2026-11-23): --key tells a routine
     rotation (copy the public half /oidc/jwks prints as the earlier key;
     Pages never shows the old private key) from a key that may have leaked
-    (no earlier key, the service token renewed, Job Hunter restarted), and
-    --secret makes a client secret alone, as DEPLOY.md §3f says.
+    (no earlier key, the service token's secret rotated with Revoke
+    immediately, ALWAYS, disabling the token first an extra step and never
+    instead of it, Job Hunter restarted), and --secret makes a client secret
+    alone, as DEPLOY.md §3f says.
     """
     import shutil
     import subprocess
@@ -3222,10 +3224,18 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
                        "MAY HAVE LEAKED", "set NO OIDC_SIGNING_JWK_OLD", "service token a new secret",
                        "restart Job Hunter's server",
                        # the old secret ends AT ONCE after a leak (review, 2026-11-24): Cloudflare's
-                       # Rotate secret offers a grace of an hour to 30 days, or Revoke immediately
-                       '"Keep the current secret valid for", choose Revoke immediately', "Never a grace period after a leak"):
+                       # Rotate secret offers a grace of an hour to 30 days, or Revoke immediately,
+                       # and that is ALWAYS the choice: disabling the token first is an extra step,
+                       # never instead of it (Job Hunter's review, 2026-11-24: "(or Disable token
+                       # first)" read as the other way, and a token turned back on during a grace
+                       # period could let the leaked secret in again)
+                       '"Keep the current secret valid for", ALWAYS choose Revoke immediately',
+                       "Disabling the token first is an extra step, not a replacement",
+                       "Never a grace period after a leak"):
             if needle not in kt:
                 errors += fail(f"--key does not tell a routine rotation from a leaked key: no {needle!r}")
+        if "or Disable token first" in kt:
+            errors += fail("--key still offers disabling the token as the other way to Revoke immediately")
         if "copy the CURRENT OIDC_SIGNING_JWK" in kt:
             errors += fail("--key still asks for the current private key, which Pages never shows again")
         # --secret: the client secret alone (a plain run would make a new key
@@ -3245,9 +3255,11 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
                             ("If the signing key may have leaked", "split off a leaked key"),
                             ("Set no `OIDC_SIGNING_JWK_OLD`; delete it if it is there", "keep a leaked key unpublished"),
                             ("`board popout` → **Rotate secret**, and where it asks \"Keep the current secret valid "
-                             "for\", choose **Revoke immediately**", "end the leaked service-token secret at once"),
+                             "for\", ALWAYS choose **Revoke immediately**", "end the leaked service-token secret at "
+                             "once, always"),
                             ("Never a grace period after a leak", "rule out a grace period after a leak"),
-                            ("**Disable token** first", "name Disable token as the other way to stop it at once"),
+                            ("Disabling the token first (**Disable token**) is an extra step, not a replacement",
+                             "say disabling the token is an extra step, never instead of Revoke immediately"),
                             ("may keep the current secret valid for a short grace period", "allow a grace period "
                              "only for a routine new secret"),
                             ("Restart Job Hunter's server", "restart Job Hunter after a leak"),
@@ -3257,6 +3269,8 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
         if "first copy the current `OIDC_SIGNING_JWK`" in flat3f or "a run of the script without `--key`" in flat3f:
             errors += fail("DEPLOY.md §3f still asks for a copy of a secret Pages never shows, or a plain run "
                            "for a new client secret")
+        if "(Or **Disable token** first" in flat3f:
+            errors += fail("DEPLOY.md §3f still offers disabling the token as the other way to Revoke immediately")
         for name, raw in (("full run", v1["OIDC_SIGNING_JWK"]), ("--key", vk.get("OIDC_SIGNING_JWK", "{}"))):
             k = json.loads(raw)
             b64 = r"[A-Za-z0-9_-]{43}"
