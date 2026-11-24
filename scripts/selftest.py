@@ -39591,7 +39591,10 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
     # that names somebody else, and the look printed the plan's doubt. Now (a)
     # and (b), and a queue row naming another page than check 1's, are not
     # filed (NOT FILED, with why), and the look prints, under each held row,
-    # the board and the words his card will carry.
+    # the board and the words his card will carry. And (d, review 11's low,
+    # 2026-11-23) a company the worklist holds twice - a second row, its own
+    # in every field, for another board - is not filed at all: the look
+    # printed the last row and the write filed the first.
     def q_box():
         return _WiringBox([_wb_co("a-co", "A Co"), _wb_co("b-co", "B Co")],
                           {"greenhouse/aco": (3, ["Somebody Else Inc"]),
@@ -39610,6 +39613,18 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
     def q_words(by_id, _doc):
         by_id["a-co"]["queue_row"]["identity_why"] = (
             "both checks pass and a reader cleared it; held only for a second look - accept")
+
+    def q_twice(by_id, doc):
+        # (review 11's low, 2026-11-23) a second HOLD row for A Co, ahead of
+        # the plan's, self-consistent for another board - its queue row's id,
+        # board and page are its own, so queue_row_apart passes it: the look
+        # printed the plan's row, and the write filed this one on his card
+        evil = json.loads(json.dumps(by_id["a-co"]))
+        evil["ref"] = "evilboard"
+        evil["queue_row"]["found"] = {"type": "greenhouse", "ref": "evilboard"}
+        evil["queue_row"]["identity_why"] = "both checks pass; held only for a second look - accept"
+        evil["doubts"] = ["held for a second look"]
+        doc["rows"] = [evil] + doc["rows"]
     for label, edit, not_filed, filed_want in (
             ("its board edited", q_found,
              {"A Co": "its queue row files workable/zzz-other where the row holds "
@@ -39623,7 +39638,11 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
                       "check 1 names https://www.bco.test/careers"},
              {"a-co": ("greenhouse", "aco")}),
             ("its doubt rewritten", q_words, {},
-             {"a-co": ("greenhouse", "aco"), "b-co": ("lever", "bco")})):
+             {"a-co": ("greenhouse", "aco"), "b-co": ("lever", "bco")}),
+            ("its company held twice", q_twice,
+             {"A Co": "the worklist lists this company more than once, and which of its rows "
+                      "the plan wrote cannot be told - plan again"},
+             {"b-co": ("lever", "bco")})):
         with q_box() as box:
             code, text, wl_q, rows_q = box.plan(_wb_results({
                 "a-co": _wb_one("a-co", "greenhouse", "aco", element="iframe"),
@@ -39699,6 +39718,53 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
                     != [("a-co", "A Co Renamed")]:
                 errors += fail(f"the look and the write disagree on the name a held row is filed "
                                f"under: exit {code} {filed_n} {text[-400:]!r}")
+    # --- A COMPANY HELD AND WIRED IN ONE WORKLIST IS NEITHER (review 11's low,
+    # 2026-11-23): the plan writes one row a company, so a HOLD row beside a
+    # WIRE row for it - each its own in every field - is an edit, and which
+    # one the plan wrote cannot be told. The WIRE row is left alone, as one
+    # listed twice is, and the HOLD row is not filed; the company beside them
+    # is filed as planned.
+    with _WiringBox([_wb_co("a-co", "A Co"), _wb_co("c-co", "C Co")],
+                    {"greenhouse/aco": (3, ["Somebody Else Inc"]),
+                     "greenhouse/cco": (3, ["C Co"])}) as box:
+        code, text, wl_t, rows_t = box.plan(_wb_results({
+            "a-co": _wb_one("a-co", "greenhouse", "aco", element="iframe"),
+            "c-co": _wb_one("c-co", "greenhouse", "cco", element="iframe")}),
+            name="worklist-held-and-wired.json")
+        if [((rows_t or {}).get(i) or {}).get("action") for i in ("a-co", "c-co")] \
+                != ["HOLD", "WIRE"]:
+            errors += fail(f"the fixture's A Co and C Co do not plan HOLD and WIRE: "
+                           f"{text[-300:]}")
+        else:
+            def t_held_too(by_id, doc):
+                # A Co's held row, made C Co's own: its board, its page, its
+                # queue row's id, board and page
+                held = json.loads(json.dumps(by_id["a-co"]))
+                page_c = by_id["c-co"]["check_1"]["page"]
+                held.update(id="c-co", name="C Co", ref="cco",
+                            check_1=dict(held["check_1"], page=page_c))
+                held["queue_row"].update(id="c-co", found={"type": "greenhouse", "ref": "cco"},
+                                         page=page_c)
+                doc["rows"].append(held)
+            wl_t2 = box.edited(wl_t, "worklist-held-and-wired-2.json", t_held_too)
+            code, text, look_t = box.look(wl_t2)
+            left_t = text[text.find("LEFT ALONE"):text.find("\nHOLD ")] \
+                if "LEFT ALONE" in text else ""
+            nf_t = text[text.find("NOT FILED"):] if "NOT FILED" in text else ""
+            if "WIRE 0 " not in text or not any(
+                    ln.strip().startswith("C Co ") and "more than once" in ln
+                    for ln in left_t.splitlines()) or not any(
+                    ln.strip().startswith("C Co ") and wf.LISTED_TWICE in ln
+                    for ln in nf_t.splitlines()):
+                errors += fail(f"a company the worklist both holds and wires was wired, or "
+                               f"filed, or not said to be listed twice: {text[:1400]!r}")
+            box.write(wl_t2, look_t)
+            filed_t = [r_["id"] for r_ in json.loads((box.tmp / bp.FOUND.name).read_text())]
+            if (box.record("c-co").get("ats") or {}).get("type") != "html" \
+                    or filed_t != ["a-co"]:
+                errors += fail(f"the write wired or filed a company the worklist both holds and "
+                               f"wires, or did not file the company beside it: "
+                               f"{box.record('c-co').get('ats')} filed {filed_t}")
     return errors
 
 

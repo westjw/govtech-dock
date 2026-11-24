@@ -3326,7 +3326,9 @@ round.
   own check 2 names X Co, and the look said "WIRE X Co"; the look now prints
   each WIRE row under the name of the record it writes); a
   read older than 24 hours (`board_proposals.MAX_AGE_HOURS`), undated or
-  dated ahead; a company or board listed twice (under either key); a
+  dated ahead; a company or board listed twice (under either key; a
+  company with a HOLD row beside its WIRE row is listed twice too, and its
+  HOLD row is not filed: review 11's low, 2026-11-23); a
   company its own worklist's readers doubted (`doubted`, however the row
   came to say WIRE); and anything that MOVED since the plan: the board on
   file, the website (check 1 is asked again), the name or also_known_as
@@ -3386,7 +3388,13 @@ round.
   why (`wire_found.queue_row_apart`; review 10, 2026-11-23: an edited queue
   row filed another board on his card, held by every door after, and two
   rows' swapped ids filed each one's board and doubt on the other's card,
-  while the look printed each row's own line).
+  while the look printed each row's own line). Nor is a held row of a
+  company the worklist lists more than once - two HOLD rows, or a HOLD row
+  and a WIRE row: the plan writes one row a company, so which is the plan's
+  cannot be told (`wire_found.LISTED_TWICE`; review 11's low, 2026-11-23:
+  with a second HOLD row, its own in every field, put ahead of the plan's,
+  the look printed the plan's row and the write filed the other, a board and
+  a doubt nobody was shown, on his card).
 - **Every store is read strictly.** board_proposal_rulings.json,
   agent_proposals.json, embedded_ats.json, ats_suspects.json,
   board_doubts.json and the files the Acquisitions queue is built from

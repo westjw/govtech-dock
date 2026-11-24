@@ -4511,6 +4511,13 @@ def held_words(row: dict, numbers: dict | None, pairs: dict | None) -> tuple:
         words = left
 
 
+# why a held row of a company the worklist lists more than once is not filed
+# (decide): the plan writes one row a company, so which of them is the plan's
+# cannot be told, and the look and the write would each take a different one
+LISTED_TWICE = ("the worklist lists this company more than once, and which of its rows the "
+                "plan wrote cannot be told - plan again")
+
+
 def queue_row_apart(row: dict) -> str | None:
     """Why a HOLD row's queue row is not the row's own, in words, or None.
 
@@ -4657,7 +4664,13 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
     board = board if board is not None else read_board()
     shown = shown_now(board)
     wires = [r for r in doc["rows"] if r["action"] == "WIRE"]
-    ids = collections.Counter(r["id"] for r in wires)
+    holds = [r for r in doc["rows"] if r["action"] == "HOLD"]
+    # A COMPANY THE WORKLIST LISTS MORE THAN ONCE - two WIRE rows, two HOLD
+    # rows, or one of each - is neither wired nor filed: the plan writes one
+    # row a company (review 11's low, 2026-11-23: with two HOLD rows the look
+    # printed the last row's board and words, and the write filed the first
+    # row's, a board and a doubt nobody was shown, on his card)
+    ids = collections.Counter(r["id"] for r in wires + holds)
     keys = collections.Counter(k for r in wires for k in row_keys(r))
     twice = {k for k, n in list(ids.items()) + list(keys.items()) if n > 1}
     # TWO PAYLOCITY ROWS THAT MAY BE ONE BOARD are listed twice too, whatever
@@ -4716,9 +4729,10 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
             left.append({"row": row, "code": problem[0], "why": problem[1]})
         else:
             wire.append(row)
-    holds = [r for r in doc["rows"] if r["action"] == "HOLD"]
-    # a queue row that is not its row's own is not filed (queue_row_apart)
-    apart = {r["id"]: why for r in holds if (why := queue_row_apart(r))}
+    # a queue row that is not its row's own is not filed (queue_row_apart),
+    # nor one of a company the worklist lists more than once (above)
+    apart = {r["id"]: why for r in holds
+             if (why := (LISTED_TWICE if ids[r["id"]] > 1 else queue_row_apart(r)))}
     queued = queue_rows([r for r in holds if r["id"] not in apart], standing, resolved, pairs)
     # asked of the same door the write goes through, so the look and the
     # write cannot disagree about which rows the queue will take
