@@ -2552,7 +2552,10 @@ and never said where in a page a reference sat.
   those, its `saw` the first of them and its `times` their count. An Apply
   link whose id their site does not link as a posting stays `paylocity-other`,
   a doubt; widening that is the owner's call. A results file written before
-  this still carries the row: the company needs a fresh read.
+  this still carries the row: the company needs a fresh read. With the doubt
+  gone, such a page meets the posting door's KNOWN gap (a second account's
+  posting is not asked once one has named the board), said where the gap is
+  (below).
 - **"Their own site" is narrower than the host** (`Whose.of`: own | shared |
   part | other; only "own" makes a candidate). The host rule is still
   `page_belt._same_site`, and it decides which links the walk may follow.
@@ -2996,7 +2999,21 @@ round.
   their own site also links as a posting is that posting's own form and
   nothing else (2026-11-24: "A posting's own Apply link", above); one whose
   id their site does not link as a posting is still the no-board form
-  `paylocity-other`, which holds a board beside it.
+  `paylocity-other`, which holds a board beside it. So the gap now reaches
+  pages linking each posting's Apply link too: until 2026-11-24 the door
+  held such a page on that form's doubt (where the page names no Paylocity
+  board itself, beside which the form says nothing), which covered the gap
+  there by accident, and now a page linking its own posting and another
+  account's, each with its Apply link, is planned exactly as the same page
+  without them - where the first posting's page names their own board, that
+  board is wired and the second posting is never asked (blind review of the
+  Apply change, 2026-11-24; in the run that held BS&A Software on
+  2026-11-23 it was the only site linking Apply links, and the 13 postings
+  it links all carry one tenant's name in their addresses). Asking each
+  posting, up to `POSTING_TRIES`, after one has named the board, and
+  holding where two name different boards, would close the gap for both
+  kinds of page; that is the owner's call. Pinned with the Apply change
+  (`check_a_postings_own_apply_link_is_no_other_form`).
 - **A board is sized by its openings, not its rows.** `fetch_rippling`
   returns the logo's file name as a row on every board, and a talent pool or
   an unfilled template is a row too. The door counts what

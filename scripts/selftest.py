@@ -49409,6 +49409,12 @@ def check_a_postings_own_apply_link_is_no_other_form() -> int:
       - a posting's id in an Apply path on another host's label
         (x.recruiting.paylocity.com)
                              -> paylocity-other: HOLD, as before
+      - their own posting and another account's, each with its Apply link
+                             -> planned as the same page without them (the
+                                known gap: wired on the board the first
+                                posting's page names, the second never
+                                asked), and CLAUDE.md says the gap reaches
+                                such pages too
       - and what each row was kept with never reaches the file, from a look
         stopped from outside too.
     """
@@ -49540,6 +49546,86 @@ def check_a_postings_own_apply_link_is_no_other_form() -> int:
                                f"{box.record('pa-match').get('ats')} {said_w[-400:]}")
         finally:
             verify_boards._board_page = keep
+
+    # --- the known gap reaches these pages too, as CLAUDE.md says -----------
+    # (blind review of this change, 2026-11-24). The door asks a company's
+    # postings only until one names the board (resolved_by_posting; KNOWN,
+    # AND LEFT AS FOUND), so a careers page linking another account's posting
+    # beside its own is not seen by it. Before this change the door held a
+    # page linking each posting's Apply link beside it (one naming no
+    # Paylocity board itself) on the paylocity-other doubt, which covered
+    # that gap there by accident. A posting's own Apply link changes nothing:
+    # the page with them is planned as the same page without them, and while
+    # the door wires that page on its first posting's board without asking
+    # the second, CLAUDE.md says the gap reaches such pages too (closing it
+    # is the owner's call)
+    pair = {"pa-two": "Pa Two", "pa-twin": "Pa Twin"}
+    own = {"pa-two": board(0x7941, "Pa-Two-Inc"), "pa-twin": board(0x7951, "Pa-Twin-Inc")}
+    parent = board(0x7999, "Parent-Holdings-Inc")
+    linked = {"pa-two": (D + "7941/Pa-Two-Inc/Engineer", D + "7942/Parent-Holdings-Inc/Analyst"),
+              "pa-twin": (D + "7951/Pa-Twin-Inc/Engineer", D + "7952/Parent-Holdings-Inc/Analyst")}
+    web_pair = {}
+    for cid, name in pair.items():
+        links = [f'<a href="{u}">{u.rsplit("/", 1)[-1]}</a>' for u in linked[cid]]
+        if cid == "pa-two":
+            # each posting's own Apply link beside it
+            links = [f'{a} <a href="{apply_at}{u.split("/Details/", 1)[1]}">Apply</a>'
+                     for a, u in zip(links, linked[cid])]
+        home = _wb_site(cid)
+        web_pair[home] = _site_boards_page(name, '<a href="/careers">Careers</a>')
+        web_pair[home + "/careers"] = _site_boards_page(f"Careers at {name}", " ".join(links))
+    with _SiteBoardsWeb(fsb, web_pair):
+        recs_pair = {cid: asyncio.run(fsb.look(co(cid, name), "static", fsb.read_plain))
+                     for cid, name in pair.items()}
+    for cid in pair:
+        got = {c["ref"] for c in recs_pair[cid]["candidates"] if c["type"] == fsb.POSTING}
+        if got != set(linked[cid]) or forms(recs_pair[cid]):
+            errors += fail(f"{cid}: a page linking its own posting and another account's"
+                           f"{', each with its Apply link,' if cid == 'pa-two' else ''} is not "
+                           f"filed as two postings and nothing under elsewhere: postings "
+                           f"{sorted(got)}, elsewhere {forms(recs_pair[cid])}")
+    pages.update({linked["pa-two"][0]: _pp_page("Pa Two Inc - Engineer", own["pa-two"]),
+                  linked["pa-twin"][0]: _pp_page("Pa Twin Inc - Engineer", own["pa-twin"]),
+                  linked["pa-two"][1]: _pp_page("Parent Holdings Inc - Analyst", parent),
+                  linked["pa-twin"][1]: _pp_page("Parent Holdings Inc - Analyst", parent)})
+    asked.clear()
+    with _WiringBox([co(cid, name) for cid, name in pair.items()],
+                    {wf.show("paylocity", own["pa-two"]): (3, ["Pa Two Inc"]),
+                     wf.show("paylocity", own["pa-twin"]): (3, ["Pa Twin Inc"]),
+                     wf.show("paylocity", parent): (5, ["Parent Holdings Inc"])}) as box:
+        keep = verify_boards._board_page
+        verify_boards._board_page = posting_page
+        try:
+            code_p, _said_p, _wl_p, rows_p = box.plan(_wb_results(recs_pair))
+        finally:
+            verify_boards._board_page = keep
+    rows_p = rows_p or {}
+
+    def planned(cid):
+        # (what the plan did with the page: its action, whether on their own
+        # board, how many doubts, its notes, and which of the two postings it
+        # asked - a doubt's words name the company's own board and postings)
+        r = rows_p.get(cid) or {}
+        return (r.get("action"), r.get("ref") == own[cid], len(r.get("doubts") or ()),
+                r.get("also_seen") or None, [u in asked for u in linked[cid]])
+    if code_p != 0 or planned("pa-two") != planned("pa-twin"):
+        errors += fail(f"a page linking its own posting and another account's, each with its "
+                       f"Apply link, is not planned as the same page without them (action, "
+                       f"their own board, doubts, notes, the postings asked): "
+                       f"{code_p} {planned('pa-two')} against {planned('pa-twin')} "
+                       f"{_wb_words(rows_p.get('pa-two') or {})[:300]!r}")
+    said_md = " ".join((ROOT / "CLAUDE.md").read_text().split()).lower()
+    reach = "the gap now reaches pages linking each posting's apply link too"
+    if planned("pa-twin") == ("WIRE", True, 0, None, [True, False]):
+        if reach not in said_md:
+            errors += fail("the door wires a page linking its own posting and another account's on "
+                           "the board the first one's page names without asking the second, with "
+                           "or without each posting's Apply link beside it, and CLAUDE.md does not "
+                           "say the known gap reaches pages linking each posting's Apply link too")
+    elif reach in said_md:
+        errors += fail(f"CLAUDE.md says the known gap reaches pages linking each posting's Apply "
+                       f"link, and the door no longer wires such a page on its first posting's "
+                       f"board with the second unasked: {planned('pa-twin')}")
 
     # --- a look stopped from outside is sealed with the same say ------------
     # (it read pa-stray's careers page and stuck: the run keeps what it had)
