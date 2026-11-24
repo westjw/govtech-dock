@@ -197,12 +197,12 @@ const codeIn = (r) => { try { return new URL(onward(r.body).refresh).searchParam
  * range) unless a case names one: only the rate-limit cases share a caller. */
 let IP_N = 0;
 const nextIp = () => { IP_N++; return `198.18.${Math.floor(IP_N / 250)}.${(IP_N % 250) + 1}`; };
-async function tok(env, form, { basic = null, ip = nextIp(), ctype = "application/x-www-form-urlencoded", raw = null, method = "POST", host = "sledjobs.com" } = {}) {
+async function tok(env, form, { basic = null, ip = nextIp(), ctype = "application/x-www-form-urlencoded", raw = null, method = "POST", host = "sledjobs.com", door = token } = {}) {
   const headers = { "content-type": ctype };
   if (basic) headers.authorization = basic;
   const body = raw !== null ? raw : (form ? qs(form) : "");
   const r = req("/oidc/token", { method, host, headers, body: method === "GET" ? undefined : body, ip });
-  return see(await (method === "GET" ? token.onRequestGet({ request: r, env }) : token.onRequestPost({ request: r, env })));
+  return see(await (method === "GET" ? door.onRequestGet({ request: r, env }) : door.onRequestPost({ request: r, env })));
 }
 const basicOf = (id, secret) => "Basic " + Buffer.from(`${id}:${secret}`).toString("base64");
 const goodForm = (code, verifier, over = {}) => ({ grant_type: "authorization_code", code, redirect_uri: CALLBACK,
@@ -591,6 +591,98 @@ const STATE = "st8 a+b/c=d&e%f?g#h~i";
     env.DB.down = false;
   }
   out.token_refused = T;
+}
+
+/* --- THE CLIENT IS ASKED OF sameSecret, AND ITS ANSWER IS THE ANSWER --------
+ * (review, 2026-11-24: a pin that read token.js's names passed three edits
+ * that compared the client with === or !==: one behind `?.`, one through a
+ * sameSecret of token.js's own, one through a sameCode of _oidc.js's own).
+ * token.js and _oidc.js are copied byte for byte into a folder of their own,
+ * where what token.js imports as "../_oidc.js" is a spy that hands each
+ * question to the copied _oidc.js's sameSecret, and what that copy imports
+ * as "./_session.js" is a spy around the real sameCode; every other module
+ * either imports is the real one. So whatever token.js asks through its
+ * import is seen, with what it asked, and the spy can make it answer either
+ * way. The door must ask it the id and the secret it was sent against the
+ * client's own, both, every time, and answer as it answers: a wrong secret
+ * it calls the same gets a token, the right client it calls different is
+ * refused. And each of its answers must be sameCode's, on the two digests
+ * sameSecret makes. The folder is removed afterwards. */
+{
+  const fs = await import("node:fs");
+  const os = await import("node:os");
+  const path = await import("node:path");
+  const { pathToFileURL } = await import("node:url");
+  const FN = new URL("../functions/", import.meta.url);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "sj-oidc-spy-"));
+  const spy = { asked: [], codes: [], force: null };
+  globalThis.__sjOidcSpy = spy;
+  try {
+    const at = (rel) => path.join(dir, "functions", rel);
+    const realAt = (rel) => JSON.stringify(new URL(rel, FN).href);
+    fs.mkdirSync(at("oidc"), { recursive: true });
+    for (const sub of ["", "oidc/"]) {
+      for (const f of fs.readdirSync(new URL(sub || "./", FN))) {
+        if (f.endsWith(".js")) fs.writeFileSync(at(sub + f), `export * from ${realAt(sub + f)};\n`);
+      }
+    }
+    fs.copyFileSync(new URL("oidc/token.js", FN), at("oidc/token.js"));
+    fs.copyFileSync(new URL("_oidc.js", FN), at("_oidc.real.js"));
+    fs.writeFileSync(at("_oidc.js"), [
+      `import { sameSecret as real } from "./_oidc.real.js";`,
+      `export * from "./_oidc.real.js";`,
+      `export async function sameSecret(a, b) {`,
+      `  const spy = globalThis.__sjOidcSpy, said = await real(a, b);`,
+      `  const answered = spy.force ? spy.force(b, said) : said;`,
+      `  spy.asked.push({ a, b, said, answered });`,
+      `  return answered;`,
+      `}`, ""].join("\n"));
+    fs.writeFileSync(at("_session.js"), [
+      `import { sameCode as real } from ${realAt("_session.js")};`,
+      `export * from ${realAt("_session.js")};`,
+      `export function sameCode(a, b) {`,
+      `  const r = real(a, b);`,
+      `  globalThis.__sjOidcSpy.codes.push({ a, b, r });`,
+      `  return r;`,
+      `}`, ""].join("\n"));
+    const door = await import(pathToFileURL(at("oidc/token.js")).href);
+    const env = envOf();
+    const keys = await jwksOf(env);
+    const digest = (s) => b64u(sha(`oidc-compare|${s}`));
+    const near = (s) => s.slice(0, -1) + (s.endsWith("A") ? "B" : "A");   // the same length, one character off
+    const same = (own) => (b, said) => (b === own ? true : said);
+    const differ = (own) => (b, said) => (b === own ? false : said);
+    const probe = async ({ id = CLIENT_ID, secret = CLIENT_SECRET, basic = false, force = null }) => {
+      const c = await codeFor(env);
+      const f = goodForm(c.code, c.verifier, { client_id: id, client_secret: secret });
+      if (basic) { delete f.client_id; delete f.client_secret; }
+      spy.asked = []; spy.codes = []; spy.force = force;
+      const r = await tok(env, f, { door, basic: basic ? basicOf(id, secret) : null });
+      spy.force = null;
+      const sent = [["sent id", id], ["sent secret", secret]];
+      const own = [["client id", CLIENT_ID], ["client secret", CLIENT_SECRET]];
+      const name = (v, order) => (order.find(([, x]) => x === v) || ["something else"])[0];
+      return { status: r.status, error: r.json && r.json.error, ok: verifyJwt(r.json && r.json.id_token, keys).ok,
+        asked: spy.asked.map((q) => [name(q.a, [...sent, ...own]), name(q.b, [...own, ...sent]), q.said, q.answered,
+          typeof q.a === "string" && typeof q.b === "string"
+            && spy.codes.some((k) => k.a === digest(q.a) && k.b === digest(q.b) && k.r === q.said)]).sort() };
+    };
+    out.compared = {
+      right_post: await probe({}),
+      right_basic: await probe({ basic: true }),
+      wrong_secret: await probe({ secret: near(CLIENT_SECRET) }),
+      wrong_id: await probe({ id: near(CLIENT_ID) }),
+      said_same_secret: await probe({ secret: near(CLIENT_SECRET), force: same(CLIENT_SECRET) }),
+      said_same_secret_basic: await probe({ secret: "not-the-secret", basic: true, force: same(CLIENT_SECRET) }),
+      said_same_id: await probe({ id: "someone-else", force: same(CLIENT_ID) }),
+      said_same_both: await probe({ id: "someone-else", secret: "not-the-secret", force: () => true }),
+      said_differ_secret: await probe({ force: differ(CLIENT_SECRET) }),
+      said_differ_id: await probe({ basic: true, force: differ(CLIENT_ID) }),
+    };
+  } finally {
+    delete globalThis.__sjOidcSpy;
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 }
 
 /* --- a request that is not the client is counted, per network; the client

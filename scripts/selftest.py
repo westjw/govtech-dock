@@ -2381,6 +2381,285 @@ def _strip_js_comments(src: str) -> str:
     return "\n".join(re.sub(r"(^|[^:])//.*$", r"\1", ln) for ln in src.splitlines())
 
 
+_JS_WORD = re.compile(r"[^\W\d][\w$]*|\$[\w$]*|\d[\w.]*")
+_JS_PUNCT = re.compile(r">>>=|\.\.\.|===|!==|\*\*=|<<=|>>=|>>>|&&=|\|\|=|\?\?=|=>|==|!=|<=|>=|&&|\|\||\?\?"
+                       r"|\?\.(?!\d)|\+\+|--|\+=|-=|\*=|/=|%=|&=|\|=|\^=|<<|>>|\*\*|[^\s\w$]")
+_JS_BEFORE_REGEX = {"return", "typeof", "case", "do", "else", "in", "of", "new", "delete", "void", "throw",
+                    "instanceof", "yield", "await"}
+
+
+def _js_skip(src: str, i: int) -> int:
+    """The index just past the string or template literal starting at i, a
+    template's ${...} read as code (so a template inside one ends where it
+    ends)."""
+    q, j, n = src[i], i + 1, len(src)
+    while j < n:
+        if src[j] == "\\":
+            j += 2
+        elif src[j] == q:
+            return j + 1
+        elif q == "`" and src.startswith("${", j):
+            j, depth = j + 2, 0
+            while j < n and not (src[j] == "}" and depth == 0):
+                if src[j] in "'\"`":
+                    j = _js_skip(src, j)
+                    continue
+                depth += {"{": 1, "}": -1}.get(src[j], 0)
+                j += 1
+            j += 1
+        else:
+            j += 1
+    return n
+
+
+def _js_tokens(src: str) -> list:
+    """A JavaScript module's tokens, its comments dropped: a rough lexer, enough
+    to read what one module binds and compares. A string or regex literal is
+    one token, quotes and all; a template is its text, each piece one token in
+    backticks, with the code of each ${...} read as code between "${" and
+    "}", so nothing can hide in one."""
+    toks, i, n = [], 0, len(src)
+    while i < n:
+        c = src[i]
+        if c.isspace():
+            i += 1
+        elif src.startswith("//", i):
+            j = src.find("\n", i)
+            i = n if j < 0 else j
+        elif src.startswith("/*", i):
+            j = src.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+        elif c in "'\"":
+            j = _js_skip(src, i)
+            toks.append(src[i:j])
+            i = j
+        elif c == "`":
+            j, text = i + 1, ""
+            while j < n and src[j] != "`":
+                if src[j] == "\\":
+                    text, j = text + src[j:j + 2], j + 2
+                elif src.startswith("${", j):
+                    k, depth = j + 2, 0
+                    while k < n and not (src[k] == "}" and depth == 0):
+                        if src[k] in "'\"`":
+                            k = _js_skip(src, k)
+                            continue
+                        depth += {"{": 1, "}": -1}.get(src[k], 0)
+                        k += 1
+                    toks += [f"`{text}`", "${", *_js_tokens(src[j + 2:k]), "}"]
+                    text, j = "", k + 1
+                else:
+                    text, j = text + src[j], j + 1
+            toks.append(f"`{text}`")
+            i = j + 1
+        elif c == "/" and (not toks or toks[-1] in _JS_BEFORE_REGEX
+                           or not (re.match(r"[\w$'\"`]", toks[-1][-1]) or toks[-1] in (")", "]"))):
+            j, cls = i + 1, False
+            while j < n and src[j] != "\n" and (src[j] != "/" or cls):
+                if src[j] == "\\":
+                    j += 1
+                elif src[j] in "[]":
+                    cls = src[j] == "["
+                j += 1
+            j += 1
+            while j < n and (src[j].isalnum() or src[j] in "_$"):
+                j += 1
+            toks.append(src[i:j])
+            i = j
+        else:
+            m = _JS_WORD.match(src, i) or _JS_PUNCT.match(src, i)
+            toks.append(m.group())
+            i = m.end()
+    return toks
+
+
+_JS_EQUALITY = {"===", "!==", "==", "!="}
+# what binds looser than an equality: where each side of one ends
+_JS_LOOSER = {"&&", "||", "??", "?", ":", ",", ";", "=", "+=", "-=", "*=", "/=", "%=", "**=", "<<=", ">>=", ">>>=",
+              "&=", "|=", "^=", "&&=", "||=", "??=", "=>", "&", "|", "^", "...", "return", "throw", "case", "else",
+              "do", "yield"}
+
+
+def _js_comparisons(toks: list) -> list:
+    """Every ===, !==, == and != in a module's tokens, as "left op right", each
+    side read out to where an operator looser than equality, or the bracket
+    around the comparison, ends it."""
+    pair = {"(": ")", "[": "]", "{": "}", "${": "}"}
+
+    def side(k, step):
+        j, depth, got = k + step, 0, []
+        into, out_of = (set(pair.values()), set(pair)) if step < 0 else (set(pair), set(pair.values()))
+        while 0 <= j < len(toks):
+            x = toks[j]
+            if x in out_of:
+                if depth == 0:
+                    break
+                depth -= 1
+            elif x in into:
+                depth += 1
+            elif depth == 0 and (x in _JS_LOOSER or (step > 0 and x in _JS_EQUALITY)):
+                break
+            got.append(x)
+            j += step
+        return got[::step]
+
+    return [f"{_js_text(side(k, -1))} {x} {_js_text(side(k, 1))}" for k, x in enumerate(toks) if x in _JS_EQUALITY]
+
+
+def _js_text(toks: list) -> str:
+    """Tokens back into code, a space only where two words meet."""
+    s = ""
+    for x in toks:
+        s += (" " if s and re.match(r"[\w$]", s[-1]) and re.match(r"[\w$]", x[0]) else "") + x
+    return s
+
+
+def _js_imports(toks: list) -> list:
+    """(name imported, name bound, from where) for each static import: a named
+    one as itself or `as` another name, "*" for a namespace, "default" for a
+    default."""
+    found, k = [], 0
+    try:
+        while k < len(toks):
+            if toks[k] != "import" or toks[k + 1] in ("(", "."):
+                k += 1
+                continue
+            j, names = k + 1, []
+            if _JS_WORD.fullmatch(toks[j]) and toks[j] != "from":
+                names.append(("default", toks[j]))
+                j += 2 if toks[j + 1] == "," else 1
+            if toks[j] == "*":
+                names.append(("*", toks[j + 2]))
+                j += 3
+            elif toks[j] == "{":
+                j += 1
+                while toks[j] != "}":
+                    got = (toks[j], toks[j + 2]) if toks[j + 1] == "as" else (toks[j], toks[j])
+                    names.append(got)
+                    j += 3 if toks[j + 1] == "as" else 1
+                    j += 1 if toks[j] == "," else 0
+                j += 1
+            if toks[j] == "from":
+                found += [(a, b, toks[j + 1][1:-1]) for a, b in names]
+            k = j + 1
+    except IndexError:
+        found.append(("?", "?", "an import this reader could not follow"))
+    return found
+
+
+def _the_client_is_compared_only_through_samesecret() -> int:
+    """THE CLIENT IS COMPARED IN CONSTANT TIME, AND ONLY SO, by the source
+    (review, 2026-11-24). The harness's spies (oidc_harness.mjs, "compared")
+    hold that the token door's answer is sameSecret's; this holds what no
+    answer shows and what runs where node:sqlite does not: no other
+    comparison of the client anywhere in functions/oidc/token.js, and the
+    names that compare it bound to the real helpers. Read from the code's
+    tokens, never its comments, and by what each name is bound to, not by
+    its dotted text: the first pin counted the texts "named.secret" and
+    "setup.client.secret", and `named?.secret !== setup.client?.secret`, a
+    sameSecret of token.js's own (`a === b`) and a sameCode of _oidc.js's
+    own each passed it."""
+    errors = 0
+
+    def flat(rel):
+        return re.sub(r"\s+", " ", _strip_js_comments((ROOT / rel).read_text()))
+    tt = _js_tokens((ROOT / "functions" / "oidc" / "token.js").read_text())
+    ot = _js_tokens((ROOT / "functions" / "_oidc.js").read_text())
+    st = _js_tokens((ROOT / "functions" / "_session.js").read_text())
+    tok_src = flat("functions/oidc/token.js")
+    # THE ONE COMPARISON: the id and the secret both, always (one
+    # Promise.all, no early answer), and `named` read nowhere else
+    decide = ("const [idOk, secretOk] = named ? await Promise.all([sameSecret(named.id, setup.client.id), "
+              "sameSecret(named.secret, setup.client.secret)]) : [false, false];")
+    if (tok_src.count(decide) != 1 or tok_src.count("const named = namedClient(basic, form);") != 1
+            or tt.count("named") != 4 or "OIDC_CLIENT_ID" in tok_src or "OIDC_CLIENT_SECRET" in tok_src):
+        errors += fail("functions/oidc/token.js compares the client some other way than sameSecret, for the id and "
+                       "the secret both and always, or reads what it was sent (`named`) or the client's own "
+                       "elsewhere")
+    # THE CLIENT'S OWN, read in four places only: made (setUp), tested (if
+    # (!setup)), its id (sameSecret's question, the code's own client,
+    # the token's audience) and its secret ONCE, as sameSecret's question
+    uses = []
+    for k, x in enumerate(tt):
+        if x != "setup":
+            continue
+        nxt, before = tuple(tt[k + 1:k + 7]), tuple(tt[max(0, k - 6):k])
+        if nxt == ("=", "await", "setUp", "(", "env", ")"):
+            uses.append("made")
+        elif before[-3:] == ("if", "(", "!") and nxt[:1] == (")",):
+            uses.append("tested")
+        elif nxt[:4] == (".", "client", ".", "id") and nxt[4:5] not in ((".",), ("[",), ("?.",), ("(",)):
+            uses.append("id")
+        elif (nxt[:5] == (".", "client", ".", "secret", ")")
+              and before == ("sameSecret", "(", "named", ".", "secret", ",")):
+            uses.append("secret")
+        else:
+            uses.append(_js_text(("setup",) + nxt))
+    if uses.count("made") != 1 or uses.count("secret") != 1 or any(u.startswith("setup") for u in uses):
+        errors += fail(f"functions/oidc/token.js reads the client's own (setup) somewhere it may compare it: "
+                       f"{[u for u in uses if u.startswith('setup')] or uses}")
+    # ...and has no other way to it: setUp is called once, and env, where
+    # the client's own secret lives, is never read here, only handed whole
+    # to _oidc.js's helpers (and taken in as the request's own)
+    helpers = {"notTheClient", "takeTry", "setUp", "spendCode", "signJwt"}
+    pad = ["", "", ""] + tt + [""]
+    env_reads = [_js_text([x for x in pad[k - 2:k + 3] if x]) for k in range(3, len(pad) - 1) if pad[k] == "env"
+                 and not ((pad[k - 1] == "(" and pad[k - 2] in helpers and pad[k + 1] in (",", ")"))
+                          or pad[k - 3:k + 2] == ["{", "request", ",", "env", "}"])]
+    if tt.count("setUp") != 2 or env_reads:
+        errors += fail(f"functions/oidc/token.js reaches the client's own another way than its one setUp(env): "
+                       f"{env_reads or 'setUp called again'}")
+    # NO OTHER COMPARISON: every ===, !==, == and != token.js makes is one
+    # of these, and none puts what was sent beside the client's own id or
+    # secret (the code's client beside the client's id is two of the
+    # board's own values, the code made at authorize for that client)
+    known = {
+        "h === null", "h === undefined",               # basicOf: an Authorization header at all
+        "id === null", "secret === null",              # basicOf: both halves decoded
+        "basic === false",                             # namedClient: a Basic header that cannot be read
+        'form.get("client_id") !== basic.id',          # namedClient: the body names the header's client, or none
+        'form.get("grant_type") !== "authorization_code"',
+        "row.client_id === setup.client.id",           # the code was made for the client as it is now
+        'form.get("redirect_uri") === row.redirect_uri',
+        'typeof row.nonce === "string"',
+    }
+    other = sorted(set(_js_comparisons(tt)) - known)
+    # and none in the forms the list cannot see: a switch's cases, Object.is,
+    # or code made from a string
+    other += [w for w in ("switch", "eval", "Function") if w in tt]
+    other += ["Object.is"] * any(tt[i:i + 3] == ["Object", ".", "is"] for i in range(len(tt)))
+    if other:
+        errors += fail(f"functions/oidc/token.js makes a comparison this pin does not know: {other}. The "
+                       f"client's id and secret are compared only through sameSecret, never with ===, !==, == or "
+                       f"!=; one that touches neither (nor anything taken from them) goes in `known` here")
+    # THE NAMES BOUND TO THE HELPERS: token.js's sameSecret is the one it
+    # imports from _oidc.js, by that name, and nothing else in it is called
+    # that; _oidc.js's sameCode is _session.js's, the same way; and neither
+    # module declares or rebinds its own helper again
+    imp = lambda toks, nm: [x for x in _js_imports(toks) if x[1] == nm or x[0] == nm]  # noqa: E731
+    if imp(tt, "sameSecret") != [("sameSecret", "sameSecret", "../_oidc.js")] or tt.count("sameSecret") != 3:
+        errors += fail("functions/oidc/token.js's sameSecret is not _oidc.js's: imported from elsewhere or under "
+                       "another name, or declared, shadowed or rebound in token.js")
+    if (imp(ot, "sameCode") != [("sameCode", "sameCode", "./_session.js")] or ot.count("sameCode") != 2
+            or ot.count("sameSecret") != 1):
+        errors += fail("functions/_oidc.js's sameSecret does not end in _session.js's sameCode: sameCode imported "
+                       "from elsewhere or renamed, or either declared, shadowed or rebound in _oidc.js")
+    if st.count("sameCode") != 1:
+        errors += fail("functions/_session.js rebinds or shadows sameCode after declaring it")
+    # AND THE HELPERS AS WRITTEN: sameSecret hashes each side, then compares
+    # the two digests with sameCode, which reads every character whatever
+    # it finds
+    if ("export async function sameSecret(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\") return "
+            "false; const [x, y] = await Promise.all([sha256u(`oidc-compare|${a}`), sha256u(`oidc-compare|${b}`)]); "
+            "return sameCode(x, y); }") not in flat("functions/_oidc.js"):
+        errors += fail("_oidc.js's sameSecret no longer hashes both sides and compares the two digests with sameCode")
+    if ("export function sameCode(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\" || a.length !== "
+            "b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ "
+            "b.charCodeAt(i); return d === 0; }") not in flat("functions/_session.js"):
+        errors += fail("_session.js's sameCode no longer reads every character before it answers")
+    return errors
+
+
 def check_job_hunter_signs_in_with_sled_jobs() -> int:
     """"Sign in with SLED JOBS" for Job Hunter (owner, 2026-11-23, design C:
     "Cloudflare Access stays in front of Job Hunter, but its only button
@@ -2405,12 +2684,17 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
       - signed in with no `hunter` or `owner` role: the closed-beta page, no
         code; not set up: every door says so;
       - the token door takes either client method, compares in constant
-        time (held by its source, review 2026-11-24: only through
-        sameSecret, the id and the secret both, and sameSecret and sameCode
-        as written, since a plain === answers every case alike), spends a
-        code once (two at once: one token), 120 seconds and not 121, holds
-        the verifier, the redirect_uri and the client, and a failed try
-        spends the code; every failure is OAuth's word alone;
+        time (review 2026-11-24: only through sameSecret, the id and the
+        secret both; a plain === answers every honest case alike, so spies
+        stand where token.js's sameSecret and _oidc.js's sameCode are
+        imported from, and the door's answer must follow whatever the spy
+        makes sameSecret say, and sameSecret's be sameCode's; and by the
+        source, read from its tokens by what each name is bound to, token.js
+        makes no comparison but the ten it has, and sameSecret and sameCode
+        are the helpers as written), spends a code once (two at once: one
+        token), 120 seconds and not 121, holds the verifier, the
+        redirect_uri and the client, and a failed try spends the code;
+        every failure is OAuth's word alone;
       - only a request that is not the client is counted: twenty an hour
         from one network are answered invalid_client, and past them 429,
         writing nothing; two hundred wrong secrets sent at once are counted
@@ -2435,19 +2719,20 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     """
     import shutil
     import subprocess
-    errors = 0
+    # by the source first: it needs no node, so it holds wherever this runs
+    errors = _the_client_is_compared_only_through_samesecret()
     if not shutil.which("node"):
         print("  note: node is not installed; Job Hunter's sign-in was not driven")
-        return 0
+        return errors
     r = subprocess.run(["node", str(ROOT / "scripts" / "oidc_harness.mjs")],
                        capture_output=True, text=True, timeout=180)
     try:
         o = json.loads(r.stdout.strip().splitlines()[-1])
     except (ValueError, IndexError) as exc:
-        return fail(f"oidc_harness.mjs printed no JSON ({exc}): {r.stderr[-400:]}")
+        return errors + fail(f"oidc_harness.mjs printed no JSON ({exc}): {r.stderr[-400:]}")
     if o.get("skip"):
         print(f"  note: {o['skip']}; Job Hunter's sign-in was not driven")
-        return 0
+        return errors
     brand = json.loads((DATA / "brand.json").read_text())
     issuer = f"https://{brand['domain']}"
     callback = "https://solesource-c6g-pages.cloudflareaccess.com/cdn-cgi/access/callback"
@@ -2652,34 +2937,36 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     if (T.get("race_interleaved") or {}).get("statuses") != [200, 400, 400]:
         errors += fail(f"three redemptions that all reach the spend at once gave more than one token: "
                        f"{T.get('race_interleaved')}")
-    # THE CLIENT IS COMPARED IN CONSTANT TIME, AND ONLY SO (review,
-    # 2026-11-24): a plain === of the id and the secret answers every case
-    # the harness sends exactly as the constant-time comparison does, so the
-    # comparison is held by its source. functions/oidc/token.js compares what
-    # it was sent with the one client only through _oidc.js's sameSecret, the
-    # id and the secret both, always (one Promise.all, no early answer), and
-    # reads neither anywhere else; sameSecret hashes each side, then compares
-    # the two digests with _session.js's sameCode, which reads every
-    # character whatever it finds
-    def _flat_js(rel):
-        return re.sub(r"\s+", " ", _strip_js_comments((ROOT / rel).read_text()))
-    tok_src = _flat_js("functions/oidc/token.js")
-    both_ = ("await Promise.all([sameSecret(named.id, setup.client.id), "
-             "sameSecret(named.secret, setup.client.secret)])")
-    if (tok_src.count(both_) != 1
-            or any(tok_src.count(n) != 1 for n in ("named.id", "named.secret", "setup.client.secret"))
-            or "OIDC_CLIENT_ID" in tok_src or "OIDC_CLIENT_SECRET" in tok_src):
-        errors += fail("functions/oidc/token.js compares the client some other way than sameSecret, for the id and "
-                       "the secret both and always, or reads them elsewhere: a plain === passes every case the "
-                       "harness sends")
-    if ("export async function sameSecret(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\") return "
-            "false; const [x, y] = await Promise.all([sha256u(`oidc-compare|${a}`), sha256u(`oidc-compare|${b}`)]); "
-            "return sameCode(x, y); }") not in _flat_js("functions/_oidc.js"):
-        errors += fail("_oidc.js's sameSecret no longer hashes both sides and compares the two digests with sameCode")
-    if ("export function sameCode(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\" || a.length !== "
-            "b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ "
-            "b.charCodeAt(i); return d === 0; }") not in _flat_js("functions/_session.js"):
-        errors += fail("_session.js's sameCode no longer reads every character before it answers")
+    # THE CLIENT IS ASKED OF sameSecret, AND ITS ANSWER IS THE ANSWER
+    # (review, 2026-11-24). A plain === answers every honest case alike, so
+    # the harness puts spies where token.js's import of sameSecret and
+    # _oidc.js's import of sameCode resolve: the door asks sameSecret the id
+    # and the secret it was sent against the client's own, both, every time
+    # (a wrong id still has its secret asked); a wrong secret the spy calls
+    # the same gets a token, and the right client it calls different is
+    # refused, so no other comparison decides; and every answer is
+    # sameCode's, on the two digests sameSecret makes. What no answer shows
+    # (a comparison that decides nothing) is held by the source, above
+    def asked_(id_, secret_):
+        return [["sent id", "client id", *id_, True], ["sent secret", "client secret", *secret_, True]]
+    yes_, no_ = (True, True), (False, False)
+    want_asked = {"right_post": (200, asked_(yes_, yes_)), "right_basic": (200, asked_(yes_, yes_)),
+                  "wrong_secret": (401, asked_(yes_, no_)), "wrong_id": (401, asked_(no_, yes_)),
+                  "said_same_secret": (200, asked_(yes_, (False, True))),
+                  "said_same_secret_basic": (200, asked_(yes_, (False, True))),
+                  "said_same_id": (200, asked_((False, True), yes_)),
+                  "said_same_both": (200, asked_((False, True), (False, True))),
+                  "said_differ_secret": (401, asked_(yes_, (True, False))),
+                  "said_differ_id": (401, asked_((True, False), yes_))}
+    compared = o.get("compared") or {}
+    for k, (status, asked) in want_asked.items():
+        c = compared.get(k) or {}
+        if (c.get("status") != status or c.get("asked") != asked
+                or (c.get("ok") is not True if status == 200 else c.get("error") != "invalid_client")):
+            errors += fail(f"the token door's answer to the client is not sameSecret's ({k}): it answered "
+                           f"{c.get('status')} {c.get('error')}, having asked sameSecret "
+                           f"[sent, own, said, answered, by sameCode] {c.get('asked')}; it should answer "
+                           f"{status}, having asked {asked}")
 
     # ONLY WHAT IS NOT THE CLIENT IS COUNTED, AND THE CLIENT IS NEVER
     # REFUSED BY THE COUNT (review, 2026-11-24): twenty requests an hour from

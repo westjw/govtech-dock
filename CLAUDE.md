@@ -557,9 +557,14 @@ the popout's assertion: change it on one side only and the popout stops.
   sent from a network with no count leave no row, review 2026-11-24), 13
   unconfigured doors, the gate and the whole OPEN set, nothing logged; the
   ID token verified again in Python by the curve's own arithmetic,
-  `_es256_verify`; and by their source, the client compared only through
-  `sameSecret`, id and secret both, and `sameSecret` and `sameCode` as
-  written, since a plain `===` answers every case the harness sends alike),
+  `_es256_verify`; the client compared only through `sameSecret`, id and
+  secret both: a plain `===` answers every honest case alike, so spies stand
+  where token.js's `sameSecret` and `_oidc.js`'s `sameCode` are imported
+  from, and the door's answer follows whatever the spy makes `sameSecret`
+  say, and `sameSecret`'s is `sameCode`'s; and by their source, read from the
+  tokens by what each name is bound to (review, 2026-11-24, when a pin of
+  dotted names passed `named?.secret !==` and helpers of a file's own), no
+  other comparison in token.js and `sameSecret` and `sameCode` as written),
   `check_the_panel_asks_job_hunter_through_the_board`
   (`scripts/jh_proxy_harness.mjs`: every refusal with no call made, the one
   call header by header, the assertion verified in Python, ten awkward ids
