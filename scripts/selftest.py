@@ -5301,6 +5301,71 @@ _ID_TRINET_PAGE = (
     '  <a target="_blank" href="/companies/41234-acme-gov-systems-inc/jobs/99001-account-'
     'executive">Account Executive</a>\n  <p><strong>Location:</strong> Austin, TX - Remote - '
     'Full-time</p>\n</li>\n</ul></div></body></html>')
+# A ClearCompany career site, in the shapes measured on two boards
+# (2026-11-23) and every company, slug, id, title and place in it made up: the
+# hosted page apply.clearcompany.com/<slug> (its widget's site id, its <title>
+# '<brand> - Careers', its footer's home link), the site's settings, and its
+# list. settings.name is the site's internal label and names nobody; applyLink
+# and jobPortalUrl are on the tenant host robots.txt closes
+_ID_CC = "https://apply.clearcompany.com/acmegov"
+_ID_CC_SITE = "11111111-2222-4333-8444-555555555555"
+_ID_CC_SETTINGS = f"https://careers-api.clearcompany.com/v1/settings/{_ID_CC_SITE}"
+_ID_CC_LIST = (f"https://careers-api.clearcompany.com/v1/{_ID_CC_SITE}"
+               f"?pageIndex=0&pageSize=1000&source=CJB-0")
+
+
+def _cc_page(brand="Acme Gov Systems, Inc.", site=_ID_CC_SITE, home="https://www.acmegov.example/",
+             title=None, script=None, slug="acmegov"):
+    title = f"{brand} &#x2013; Careers" if title is None else title
+    script = (f'<script src="https://careers-content.clearcompany.com/js/v1/career-site.js?hosted=true" '
+              f'data-site-id="{site}" data-default-source="CJB-0"></script>') if script is None else script
+    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>{title}</title>'
+            f'<link rel="canonical" href="https://apply.clearcompany.com/{slug}">'
+            f'<meta property="og:title" content="{title}"></head><body><div class="cc-page">'
+            f'<main class="cc-main"><div class="cc-wrap cc-widget" id="cc-widget">{script}</div></main>'
+            f'<footer class="cc-footer"><div class="cc-copy"><span>&copy; 2026 {brand}</span>'
+            f'<a class="cc-home" href="{home}" target="_blank" rel="noopener noreferrer">Visit our home '
+            f'page</a></div></footer></div></body></html>')
+
+
+def _cc_settings(brand="Acme Gov Systems, Inc.", brands=None, name="Public - Some Label - Career Site"):
+    options = {"location": [{"text": "", "value": "", "count": None, "isDefaultSelection": True,
+                             "metadata": {}}]}
+    if brands is not None:
+        options["brand"] = [{"text": "", "value": "", "count": None, "isDefaultSelection": True,
+                             "metadata": {}}] + [
+            {"text": b, "value": f"B{i}", "count": 1, "isDefaultSelection": False, "metadata": {}}
+            for i, b in enumerate(brands)]
+    return json.dumps({"id": "00000000-0000-0000-0000-000000000000", "name": name,
+                       "orgId": "99999999-8888-4777-8666-555555555555", "pageSize": 10,
+                       "jobPortalUrl": "https://acmegov.clearcompany.com/careers/portal",
+                       "brandFullName": brand,
+                       "requisitionList": {"search": {"filters": ["keywords", "city"],
+                                                      "filterOptions": options}},
+                       "requisitionDetails": {"displayFields": ["city", "subdivision"]}})
+
+
+def _cc_job(n, title, locs, **over):
+    jid = f"aaaaaaaa-0000-4000-8000-{n:012d}"
+    return dict({"id": jid, "positionTitle": title,
+                 "description": f"<p>The {title.strip()} role.</p><ul><li>Travel to cities.</li></ul>",
+                 "applyLink": f"https://acmegov.clearcompany.com/careers/jobs/{jid}/apply?source=CJB-0",
+                 "canSelfSchedule": False, "location": "Somewhere\t  XX", "departmentName": "101 Cost Centre",
+                 "locations": locs, "customFieldAnswers": []}, **over)
+
+
+def _cc_where(city=None, sub="", country="US", nationwide=False, statewide=False):
+    return {"city": city, "subdivision": sub, "country": country, "isNationwide": nationwide,
+            "isStatewide": statewide}
+
+
+def _cc_list(jobs, total=None, index=0):
+    return json.dumps({"results": jobs, "currentPageIndex": index,
+                       "totalCount": len(jobs) if total is None else total,
+                       "currentPageCount": len(jobs)})
+
+
+_ID_CC_JOBS = [_cc_job(1, " Account Executive ", [_cc_where("Austin", "TX")])]
 # A SuccessFactors Career Site Builder search page and one of its postings, in
 # the shapes measured on Gainwell's board (2026-11-22): the row's title link is
 # written twice, once for a desk and once for a phone
@@ -5660,6 +5725,11 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         # (the list's own <title>, never the stale slug the ref carries)
         ("trinethire", "41234-old-name", "Acme Gov Systems", {_ID_TRINET: _ID_TRINET_PAGE}, None,
          ["Acme Gov Systems, Inc."], 1, _ID_TRINET),
+        # (brandFullName where the hosted page's <title> says the same, and
+        # never settings.name, the site's internal label)
+        ("clearcompany", "acmegov", "Acme Gov Systems",
+         {_ID_CC: _cc_page(), _ID_CC_SETTINGS: _cc_settings(), _ID_CC_LIST: _cc_list(_ID_CC_JOBS)}, None,
+         ["Acme Gov Systems, Inc."], 1, _ID_CC),
         # (stated as the board's own configuration names it, LLC and all, and
         # proven for the record that is named without it)
         ("successfactors", _ID_SF, "Gainwell Technologies",
@@ -6673,7 +6743,7 @@ def check_a_stated_name_does_not_loosen_the_older_doors() -> int:
                    "teamtailor", "zohorecruit",                                  # 2026-11-21
                    "successfactors",                                             # 2026-11-22
                    "jobvitefeed",                                                # 2026-11-23
-                   "trinethire"}                                                 # 2026-11-24
+                   "trinethire", "clearcompany"}                                 # 2026-11-24
     if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or set(new) != named_since:
         errors += fail(f"the types judge() is forgiving on have changed: "
                        f"{sorted(vb._ALWAYS_NAMED)}, and the ones it is strict on are "
@@ -14633,7 +14703,7 @@ def check_the_crawler_honours_robots_txt() -> int:
     # the page readers go through _page; a raw _get in one reads past robots.txt
     for name in ("_schema_posting", "fetch_paylocity", "_page_text", "fetch_rippling",
                  "_rippling_detail", "fetch_jazzhr", "fetch_icims", "fetch_html_titles",
-                 "fetch_gusto", "_trinet_read"):
+                 "fetch_gusto", "_trinet_read", "_cc_hosted", "_cc_api"):
         src = inspect.getsource(getattr(ats, name))
         if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
             errors += fail(f"ats.{name} reads a page without asking robots.txt")
@@ -21841,6 +21911,476 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
     return errors
 
 
+def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
+    """A ClearCompany career site (apply.clearcompany.com/<slug>), driven
+    through ats.requests with answers written here by hand - every company,
+    slug, id, title and place made up - and nothing that can reach a real host.
+
+    THE READ: three requests - the hosted page (its widget's site id), the
+    site's settings, the list at pageSize 1000 - through the repo's page
+    helpers: robots.txt asked at every hop, the crawler's own name, the host
+    gate; every hop held to the site's own addresses and refused before it is
+    asked; never the tenant host <label>.clearcompany.com (robots.txt closes
+    it), never a posting page, and nothing from the API host kept in the cache.
+    THE ROWS: the title stripped; the place from locations[] (city,
+    subdivision, country; a nationwide place 'Remote (US)', the row remote
+    when every place is), never the server's mangled string; the url the
+    hosted site's own ?jobId=<id lower-cased>, never applyLink; the ad from
+    the list; a date only where the row carries one; no pay field read.
+    WHOLE OR NOT AT ALL: rows short of totalCount are paged at the same size
+    and deduplicated by id, and the read raises unless they make up exactly
+    totalCount; a count that moves, more rows than the count, an empty list
+    (never measured), a page with no site id or two, a gone slug or site, a
+    row that does not read, another shape, a 429 - each raises.
+    THE PROBE: brandFullName believed only where the hosted page's <title>
+    says the same before ' - Careers'; the footer's home link handed on as the
+    site (proven() holds it to the record's); a brand filter's brands stated
+    beside it; never settings.name, the slug or the tenant label.
+    THE FINDER: a link to apply.clearcompany.com/<slug> is a board; a legacy
+    HRM Direct frame is asked where ClearCompany's redirect sends it (robots.txt
+    at the hop, the board itself never asked) and the slug it names is the
+    board; a widget naming its site by id alone is a tenant form; the tenant
+    host and the assets name no board.
+    THE BOARD: the public link is the hosted site; a posting moved from the
+    careers page (html) to this reader keeps its first-seen day and its
+    opening id; the type ranks 'none' (Job Hunter does not list it).
+    THE DOOR: a company whose own page links the site and whose site names it
+    is wired, each board asked once for the read and the probe; one whose site
+    names somebody else is held.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import build_board as bb
+    import find_site_boards as fsb
+    import verify_boards as vb
+    errors = 0
+    SLUG = "acmegov"
+    HOSTED, SETTINGS, LIST = _ID_CC, _ID_CC_SETTINGS, _ID_CC_LIST
+    JOBS = [_cc_job(1, " Account Executive ", [_cc_where("Austin", "TX")]),
+            _cc_job(2, "Territory Sales Manager  ", [_cc_where(nationwide=True)],
+                    postedDate="2026-11-20T15:04:05Z"),
+            _cc_job(3, "Field Engineer", [_cc_where("Erie", "PA"), _cc_where("Dayton", "OH")],
+                    id="AAAAAAAA-0000-4000-8000-000000000003"),
+            _cc_job(4, "Grants Manager", [], salaryRangeLow=90000, salaryRangeHigh=120000,
+                    salaryType="Annually")]
+    WANT = [("Account Executive", "Austin, TX, US", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000001",
+             None, None),
+            ("Territory Sales Manager", "Remote (US)", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000002",
+             "2026-11-20", "remote"),
+            ("Field Engineer", "Erie, PA, US; Dayton, OH, US",
+             f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000003", None, None),
+            ("Grants Manager", "", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000004", None, None)]
+    MAIN = {HOSTED: _cc_page(), SETTINGS: _cc_settings(), LIST: _cc_list(JOBS)}
+    sent, asked, gated = [], [], []
+    web: dict = {}
+    refusing = {"on": False}
+
+    class Resp:
+        def __init__(self, code, text="", headers=None, url=""):
+            self.status_code, self.headers, self.url = code, dict(headers or {}), url
+            self.text, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
+
+        def json(self):
+            return json.loads(self.text)
+
+        def close(self):
+            pass
+
+    def get(url, **kw):
+        sent.append((url, kw))
+        v = web.get(url)
+        if isinstance(v, Exception):
+            raise v
+        if isinstance(v, Resp):
+            v.url = v.url or url
+            return v
+        return Resp(404, url=url) if v is None else Resp(200, v, {"content-type": "text/html"}, url)
+
+    def ask(url):
+        asked.append(url)
+        if refusing["on"]:
+            raise ats.RobotsRefused(f"robots.txt asks crawlers not to read {url}")
+
+    def serve(routes):
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web.update(routes)
+
+    def read(routes, ref=SLUG):
+        serve(routes)
+        try:
+            return ats.plain_rows(ats.fetch_clearcompany(ref)), None
+        except Exception as exc:                            # noqa: BLE001 - said by the pin
+            return None, exc
+
+    def says(routes, ref=SLUG):
+        serve(routes)
+        return vb.board_says("clearcompany", ref)
+
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, dict(ats._HOST_NOT_BEFORE))
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+
+        # ---- the read: three requests, through the helpers ------------------------------
+        rows, exc = read(MAIN)
+        got = [(r["title"], r["location"], r["url"], r["posted"], r["mode"]) for r in rows or []]
+        if exc or got != WANT:
+            errors += fail(f"clearcompany: the site did not read as one row a posting (the title "
+                           f"stripped, the place from locations[], the hosted site's own ?jobId= "
+                           f"lower-cased, a date only where stated): {exc or got}")
+        else:
+            if [r["office_hint"] for r in rows] != [
+                    {"city": "Austin", "state": "TX", "country": "US"}, None,
+                    {"city": "Erie", "state": "PA", "country": "US"}, None]:
+                errors += fail(f"clearcompany: the office is not the first place's city, state and "
+                               f"country: {[r['office_hint'] for r in rows]}")
+            if rows[0]["jd"] != "The Account Executive role.\nTravel to cities.":
+                errors += fail(f"clearcompany: the ad is not the list's own description: {rows[0]['jd']!r}")
+            if rows[3]["comp"] is not None:
+                errors += fail(f"clearcompany: pay was read from salaryRange fields nobody has "
+                               f"measured (the widget prints USD and CAD both as '$'): {rows[3]['comp']}")
+            if any("clearcompany.com/careers" in str(r) or "Somewhere" in str(r) for r in rows):
+                errors += fail("clearcompany: a row carries applyLink, jobPortalUrl or the server's "
+                               "mangled location string")
+        if [u for u, _ in sent] != [HOSTED, SETTINGS, LIST] or asked != [HOSTED, SETTINGS, LIST] \
+                or gated != [HOSTED, SETTINGS, LIST] \
+                or any((kw.get("headers") or {}).get("User-Agent") != ats.UA["User-Agent"]
+                       or kw.get("allow_redirects") is not False for _u, kw in sent):
+            errors += fail(f"clearcompany: one read asked {[u for u, _ in sent]} (robots.txt of {asked}, "
+                           f"the gate {len(gated)} times): it is the hosted page, the settings and the "
+                           f"list, robots.txt asked at each, at the gate, under the crawler's own name")
+        # (the reader's own rows, before plain_rows: its title already stripped)
+        if [r["title"] for r in ats.clearcompany_rows(JOBS, SLUG)][:2] != ["Account Executive",
+                                                                          "Territory Sales Manager"]:
+            errors += fail("clearcompany: the reader left the server's stray spaces on a title")
+        # the pay a row's own ad states comes through the repo's one text parser
+        rows, exc = read({**MAIN, LIST: _cc_list([_cc_job(5, "Account Executive", [_cc_where("Austin", "TX")],
+                                                          description="<p>Pay: $24-$25/hour</p>")])})
+        if exc or (rows[0]["comp"] or {}).get("source") != "text":
+            errors += fail(f"clearcompany: pay stated in the ad was not read by the text parser: "
+                           f"{exc or rows[0]['comp']}")
+
+        # ---- whole or not at all ------------------------------------------------------------
+        P1 = LIST.replace("pageIndex=0", "pageIndex=1")
+        OTHER_SITE = "22222222-3333-4444-8555-666666666666"
+        OTHER_SETTINGS, OTHER_LIST = SETTINGS.replace(_ID_CC_SITE, OTHER_SITE), LIST.replace(_ID_CC_SITE, OTHER_SITE)
+        two = [_cc_job(i, f"Role {i}", [_cc_where("Austin", "TX")]) for i in range(1, 5)]
+        # (fewer than the count: the next page at the same size; the order is not stable, so
+        # one row comes again, and the union is exactly the count)
+        rows, exc = read({**MAIN, LIST: _cc_list(two[:2], total=1003),
+                          P1: _cc_list(two[1:4] + [_cc_job(i, f"Role {i}", []) for i in range(5, 1004)],
+                                       total=1003, index=1)})
+        if exc or len(rows or []) != 1003 or P1 not in [u for u, _ in sent]:
+            errors += fail(f"clearcompany: a first page short of its count was not paged at the same "
+                           f"size and made whole: {exc or len(rows or [])}")
+        for routes, why in (
+                ({**MAIN, LIST: _cc_list(two[:2], total=1003), P1: _cc_list(two[1:3], total=1003, index=1)},
+                 "pages that do not make up the count"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=1003),
+                  P1: _cc_list(two[2:] + [_cc_job(i, f"Role {i}", []) for i in range(5, 1004)], total=1004,
+                               index=1)},
+                 "a count that moved between two pages, the rows making up the first"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=4)}, "rows short of a count one page holds"),
+                ({**MAIN, LIST: _cc_list(two, total=3)}, "more rows than the count"),
+                ({**MAIN, LIST: _cc_list(two[:1] + two[:1], total=2)}, "one row twice, counted as two"),
+                ({**MAIN, LIST: _cc_list([])}, "an empty list (never measured: no zero)"),
+                ({**MAIN, LIST: _cc_list([_cc_job(1, "", [])])}, "a row with no title"),
+                ({**MAIN, LIST: _cc_list([_cc_job(1, "AE", [], id="7")])}, "a row whose id is not the site's"),
+                ({**MAIN, LIST: json.dumps({"jobs": []})}, "a list in another shape"),
+                ({**MAIN, LIST: "<html>"}, "an answer that is not JSON"),
+                ({**MAIN, LIST: _cc_list(two, index=3)}, "another page than the one asked"),
+                ({HOSTED: _cc_page(), SETTINGS: _cc_settings()}, "a site id that is gone (404)"),
+                ({HOSTED: _cc_page(), LIST: _cc_list(JOBS)}, "settings that are gone (404)"),
+                ({SETTINGS: _cc_settings(), LIST: _cc_list(JOBS)}, "a slug that is gone (404)"),
+                ({**MAIN, HOSTED: _cc_page(script="")}, "a hosted page with no site id (offline)"),
+                ({**MAIN, HOSTED: _cc_page(script='<!-- <script src="https://careers-content.clearcompany.'
+                                           f'com/js/v1/career-site.js" data-site-id="{_ID_CC_SITE}">'
+                                           '</script> -->')}, "a site id inside a comment"),
+                ({**MAIN, HOSTED: _cc_page(script='<script src="https://elsewhere.example/js/v1/career-site.js'
+                                           f'" data-site-id="{_ID_CC_SITE}"></script>')},
+                 "a site id on another host's script"),
+                ({**MAIN, HOSTED: _cc_page() + _cc_page(site=OTHER_SITE),
+                  OTHER_SETTINGS: _cc_settings(), OTHER_LIST: _cc_list(JOBS)},
+                 "a page naming two sites, either of which would read"),
+                ({**MAIN, HOSTED: Resp(503)}, "a server error"),
+                ({**MAIN, HOSTED: _cc_page() + "<!--" + " " * ats.CLEARCOMPANY_PAGE_MAX + "-->"},
+                 "a page past the cap")):
+            rows, exc = read(routes)
+            if not isinstance(exc, ats.AtsError) or rows is not None:
+                errors += fail(f"clearcompany: {why} was read as {len(rows or [])} row(s), not refused "
+                               f"as unreadable: {exc!r}")
+        rows, exc = read({**MAIN, LIST: Resp(429, headers={"Retry-After": "0"})})
+        if not isinstance(exc, ats.RateLimited):
+            errors += fail(f"clearcompany: a 429 was not raised as RateLimited: {exc!r}")
+        ats._HOST_NOT_BEFORE.pop("careers-api.clearcompany.com", None)
+        # (a site id written ?siteId= in the bootstrap's own address reads the same)
+        rows, exc = read({**MAIN, HOSTED: _cc_page(script='<script src="https://careers-content.clearcompany'
+                                                   f'.com/js/v1/career-site.js?siteId={_ID_CC_SITE.upper()}">'
+                                                   '</script>')})
+        if exc or len(rows or []) != 4:
+            errors += fail(f"clearcompany: a site id in the bootstrap's ?siteId= was not read: {exc}")
+
+        # ---- every hop held to the site's own addresses, refused before it is asked --------
+        TENANT = "https://acmegov.clearcompany.com/careers/jobs"
+        for frm, to, why in ((HOSTED, "https://apply.clearcompany.com/othergov", "another employer's site"),
+                             (HOSTED, "https://apply.clearcompany.com/internal/x", "the closed /internal/"),
+                             (HOSTED, TENANT, "the tenant host robots.txt closes"),
+                             (HOSTED, "http://apply.clearcompany.com/acmegov", "its own site over http"),
+                             (HOSTED, "https://www.clearcompany.example/acmegov", "another host"),
+                             (LIST, LIST.replace("pageSize=1000", "pageSize=10"), "another list address"),
+                             (SETTINGS, "https://careers-api.clearcompany.com/v1/insights/team/x",
+                              "the API's hiring team")):
+            rows, exc = read({**MAIN, frm: Resp(302, headers={"Location": to}), to: "{}"})
+            if rows is not None or not isinstance(exc, ats.AtsError) \
+                    or any(u == to for u, _ in sent) or to in asked:
+                errors += fail(f"clearcompany: a redirect to {why} was asked ({[u for u, _ in sent]}, "
+                               f"robots.txt of {asked}) or read: {rows or exc!r}")
+        LANDS = "https://apply.clearcompany.com/AcmeGov?noheader=False"
+        rows, exc = read({**MAIN, HOSTED: Resp(302, headers={"Location": LANDS}), LANDS: _cc_page()})
+        if exc or len(rows or []) != 4 or LANDS not in asked:
+            errors += fail(f"clearcompany: a hosted page sent on to its own slug was not read there, "
+                           f"robots.txt asked at the hop: {exc or rows}")
+        refusing["on"] = True
+        rows, exc = read(MAIN)
+        refusing["on"] = False
+        if not isinstance(exc, ats.RobotsRefused) or sent:
+            errors += fail(f"clearcompany: a site robots.txt closes was asked ({sent}) or read: {rows or exc!r}")
+        for ref in ("internal", "Internal", "", None, 7, ["acmegov"], HOSTED, "acme/gov", "acme gov",
+                    "-acme", "acmegov?x=1", "a" * 90):
+            rows, exc = read(MAIN, ref=ref)
+            if not isinstance(exc, ats.AtsError) or sent:
+                errors += fail(f"clearcompany: {ref!r} was taken as a board's ref ({sent}): {rows or exc!r}")
+        if not ats.never_cached(LIST) or not ats.never_cached(SETTINGS) or ats.never_cached(HOSTED):
+            errors += fail("clearcompany: the career-site API (an e-mail-to-apply posting's applyLink is "
+                           "an e-mail address; the host serves a hiring team) is not kept out of the "
+                           "HTTP cache, or the hosted page is")
+
+        # ---- the probe: brandFullName where the hosted page's title agrees ----------------
+        said = says(MAIN)
+        if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"] or said["n"] != 4 \
+                or said["site"] != "https://www.acmegov.example/" or said["failed"] \
+                or said["hosts"] != {"apply.clearcompany.com"} or [u for u, _ in sent] != [HOSTED, SETTINGS, LIST]:
+            errors += fail(f"clearcompany probe: the site's name, where its settings and its title agree, "
+                           f"was not stated with its home link in three requests: {said}")
+        if not vb.proven({"name": "Acme Gov Systems", "website": "https://acmegov.example"}, said)["ok"] \
+                or vb.proven({"name": "Acme Gov Systems", "website": "https://acme-namesake.example"},
+                             said)["ok"] or vb.proven({"name": "Some Label"}, said)["ok"]:
+            errors += fail("clearcompany probe: the stated name was not proven for its company on its own "
+                           "website, or passed for a namesake's website or settings.name's label")
+        for routes, why in (
+                ({**MAIN, HOSTED: _cc_page(brand="Acme Gov Holdings LLC")}, "a title naming another name"),
+                ({**MAIN, HOSTED: _cc_page(title="Careers")}, "a title that names nobody"),
+                ({**MAIN, SETTINGS: _cc_settings(brand="")}, "settings with no brandFullName"),
+                ({**MAIN, SETTINGS: _cc_settings(brand="", name="Public - Acme Gov Systems, Inc. - "
+                                                              "Career Site")},
+                 "settings whose name alone carries the company")):
+            said = says(routes)
+            if said["stated"] or said["names"] or vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+                errors += fail(f"clearcompany probe: {why} stated {said['names']} or was proven")
+        # (several brands: said, never proven - not even where each is a spelling of theirs)
+        for brands in (["Acme Gov Systems, Inc.", "Beta Fleet Co"], ["Acme Gov Systems, Inc.", "Acme Gov Systems"]):
+            said = says({**MAIN, SETTINGS: _cc_settings(brands=brands)})
+            if not set(brands) <= set(said["names"]) or said["stated"] \
+                    or "several companies" not in said["how"] \
+                    or vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+                errors += fail(f"clearcompany probe: a site whose brand filter lists {brands} did not say it "
+                               f"names several companies, or was proven for one of them: {said}")
+        said = says({**MAIN, SETTINGS: _cc_settings(brands=["Acme Gov Systems, Inc."])})
+        if said["names"] != ["Acme Gov Systems, Inc."] or not vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+            errors += fail(f"clearcompany probe: a brand filter listing the site's own brand alone cost "
+                           f"it its name: {said}")
+        for routes, kind_, why in (({SETTINGS: _cc_settings(), LIST: _cc_list(JOBS)}, "gone", "a gone slug"),
+                                   ({**MAIN, LIST: _cc_list([])}, "unreadable", "an empty list")):
+            said = says(routes)
+            if said["failed"] != kind_ or said["names"] or said["stated"]:
+                errors += fail(f"clearcompany probe: {why} was not '{kind_}', naming nobody: {said}")
+
+        # ---- the public link, the rank ------------------------------------------------------
+        for ref, want in ((SLUG, HOSTED), ("internal", "https://acme.example"),
+                          (TENANT, "https://acme.example"), (None, "https://acme.example")):
+            if bb.board_url({"ats": {"type": "clearcompany", "ref": ref},
+                             "website": "https://acme.example"}) != want:
+                errors += fail(f"clearcompany: the public link for {ref!r} is not {want} (the hosted site, "
+                               f"never the tenant host; else their website)")
+        import board_proposals as bp
+        if bp.board_key("clearcompany", "AcmeGov") != bp.board_key("clearcompany", "acmegov") \
+                or bp.board_key("clearcompany", "acmegov") == bp.board_key("clearcompany", "acmegov2"):
+            errors += fail("board_key: one ClearCompany slug in two cases is two boards, or two slugs one")
+        if bb.ats_tier("clearcompany") != "none":
+            errors += fail("clearcompany: ranks other than 'none', which Job Hunter's parsers do not say")
+    finally:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held[:4]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[4])
+
+    # ---- a posting moved from the careers page to this reader keeps its day ----------------
+    JID = "aaaaaaaa-0000-4000-8000-000000000001"
+    old = {"company_id": "acme-gov", "title": "Account Executive", "location": "",
+           "url": f"{HOSTED}?noheader=False&jobId={JID.upper()}", "first_seen": "2026-11-02"}
+    # (its id as the careers page's reader wrote it: the address whole, no place)
+    old["id"] = "acme-gov::Account Executive::" + hashlib.blake2s(
+        f"{old['url']}\n".encode("utf-8"), digest_size=4).hexdigest()
+    old["opening_id"] = bb.opening_id("acme-gov", old["title"])
+    new_url = ats.clearcompany_posting_url(SLUG, JID)
+
+    def fresh(cid="acme-gov", url=new_url, loc="Austin, TX, US", title="Account Executive"):
+        return {"id": bb.posting_id(cid, title, url, loc), "opening_id": bb.opening_id(cid, title),
+                "company_id": cid, "title": title, "url": url, "location": loc,
+                "first_seen": "2026-11-24", "source": "ats"}
+    same, other_co, other_job = fresh(), fresh(cid="beta-gov"), fresh(
+        url=ats.clearcompany_posting_url(SLUG, "aaaaaaaa-0000-4000-8000-000000000009"))
+    bb.carry_first_seen([same, other_co, other_job], [old], {})
+    if same["first_seen"] != "2026-11-02" or same["opening_id"] != old["opening_id"]:
+        errors += fail(f"clearcompany: a posting the careers page carried (?noheader=False&jobId=, no "
+                       f"place) re-read by the reader (?jobId=, its place) was dated "
+                       f"{same['first_seen']}, or its opening id moved: Tyler's 129 postings were all "
+                       f"re-dated the night it moved off its careers page")
+    if other_co["first_seen"] != "2026-11-24" or other_job["first_seen"] != "2026-11-24":
+        errors += fail("clearcompany: another company's posting, or another job of the same site, took "
+                       "a date that was never held for it")
+    if bb.posting_id("acme-gov", "AE", f"{HOSTED}?noheader=True&jobId={JID}", "X") != \
+            bb.posting_id("acme-gov", "AE", f"https://apply.clearcompany.com/AcmeGov?jobId={JID.upper()}", "X"):
+        errors += fail("clearcompany: one posting under two spellings of its address has two ids")
+
+    # ---- the finder: the forms a company's own page names the board in --------------------
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+    WIDGET = ('<script src="https://careers-content.clearcompany.com/js/v1/career-site.js?hosted=true" '
+              f'data-site-id="{_ID_CC_SITE}"></script>')
+    for markup, want, rest_want, why in (
+            ('<a class="btn" href="https://apply.clearcompany.com/acmegov?noheader=False">Explore</a>',
+             [("clearcompany", "acmegov", "href")], [], "a link to the hosted site"),
+            (f'<a href="https://apply.clearcompany.com/AcmeGov?jobId={JID}">AE</a>'
+             '<a href="https://apply.clearcompany.com/acmegov/redirect?x=1">Jobs</a>',
+             [("clearcompany", "AcmeGov", "href")], [], "a posting and the redirect, one board"),
+            ('<a href="https://apply.clearcompany.com/internal/x">x</a>', [], ["clearcompany-other"],
+             "the closed /internal/"),
+            ('<a href="https://acmegov.clearcompany.com/careers/jobs">Jobs</a>', [], ["clearcompany-other"],
+             "the tenant host"),
+            ('<img src="https://cc-client-cdn.clearcompany.com/x/Logo/y">', [], ["clearcompany-other"],
+             "a logo"),
+            (WIDGET, [], ["clearcompany-site"], "the widget naming its site by id alone"),
+            ('<iframe src="//acmegov.hrmdirect.com/employment/job-openings.php?search=true"></iframe>',
+             [], ["clearcompany-legacy"], "a legacy HRM Direct frame, before it is asked"),
+            ('<a href="https://www.hrmdirect.com/">HRM Direct</a>', [], ["hrmdirect"], "HRM Direct's own site"),
+            ('<a href="https://apply.clearcompany.com/acmegov">Jobs</a><script src="https://careers-content.'
+             'clearcompany.com/js/dynamic-embed/x.js"></script>', [("clearcompany", "acmegov", "href")], [],
+             "the board beside ClearCompany's own furniture")):
+        found, rest = fsb.sightings(markup, here, home)
+        got = sorted((f["type"], f["ref"], f["element"]) for f in found)
+        if got != sorted(want) or sorted(r["vendor"] for r in rest) != sorted(rest_want):
+            errors += fail(f"finder, {why}: boards {got}, forms {[r['vendor'] for r in rest]}; wanted "
+                           f"{sorted(want)} and {rest_want}")
+    dj = (ROOT / "scripts" / "discover_js.py").read_text()
+    if '("clearcompany", r"apply\\.clearcompany\\.com/' not in dj \
+            or '("clearcompany", r"([a-z0-9-]+)\\.clearcompany' in dj:
+        errors += fail("discover_js labels a ClearCompany board by its tenant label, not the hosted "
+                       "site's slug the reader takes")
+    if fsb.TENANT_FORMS.get("clearcompany-site") != "clearcompany" \
+            or fsb.TENANT_FORMS.get("clearcompany-legacy") != "clearcompany" \
+            or fsb._NO_BOARD_IN_IT.get("clearcompany-other") != "clearcompany" \
+            or {v for v, _h, _rx in fsb.ELSEWHERE} & {"clearcompany"}:
+        errors += fail("finder: ClearCompany's forms are not filed as its own (a site by id and a legacy "
+                       "board as tenant forms, the rest naming no board), or 'clearcompany' is still a "
+                       "platform nothing reads")
+    # A LEGACY HRM DIRECT FRAME IS ASKED WHERE CLEARCOMPANY SENDS IT: robots.txt at the hop,
+    # the hosted site its redirect names never asked, and the slug it names the board, from
+    # their own page, with ClearCompany's furniture beside the frame dropped
+    LEG = "https://acmegov.hrmdirect.com/employment/job-openings.php?search=true&nohd=&dept=-1"
+    LANDS_AT = "https://apply.clearcompany.com/acmegov/redirect?search=true&nohd=&dept=-1"
+    frame = ('<iframe name="Career Site iFrame" src="//acmegov.hrmdirect.com/employment/job-openings.php?'
+             'search=true&amp;nohd=&amp;dept=-1"></iframe><script src="https://careers-content.clearcompany.'
+             'com/js/dynamic-embed/dynamic-iframe-embed-js.php"></script>')
+    asked_robots = []
+    real_verdict = robots.verdict
+    for to, want, why in ((LANDS_AT, [("clearcompany", "acmegov", "iframe")], "lands on the hosted site"),
+                          (None, [], "answers in place"),
+                          ("https://www.elsewhere.example/acmegov", [], "leads off to another host")):
+        web_ = {home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+                here: _site_boards_page("Careers at Acme Gov", frame),
+                LEG: (302, to) if to else _site_boards_page("Openings", "x")}
+        with _SiteBoardsWeb(fsb, web_) as w:
+            verdict = robots.verdict
+
+            def noted(url, fetch=None, _v=verdict):
+                asked_robots.append(url)
+                return _v(url, fetch)
+            robots.verdict = noted
+            asked_robots.clear()
+            try:
+                rec = asyncio.run(fsb.look(_site_boards_co("acme-gov", "Acme Gov", home), "static",
+                                           fsb.read_plain))
+            finally:
+                robots.verdict = verdict
+        robots.verdict = real_verdict
+        got = sorted((c["type"], c["ref"], c["element"]) for c in rec["candidates"])
+        vendors = sorted(e["vendor"] for e in rec["elsewhere"])
+        if got != want or w.reads.count(LEG) != 1 or LEG not in asked_robots \
+                or any("apply.clearcompany.com" in u or "elsewhere.example" in u for u in w.reads + asked_robots) \
+                or (want and vendors) or (not want and "clearcompany-legacy" not in vendors) \
+                or any(k.startswith("_") for e in rec["elsewhere"] for k in e):
+            errors += fail(f"finder: a legacy HRM Direct frame that {why} gave boards {got} and forms "
+                           f"{vendors} (asked {w.reads}, robots.txt of {asked_robots}): wanted {want}, the "
+                           f"frame asked once with robots.txt, never the hosted site or another host")
+
+    # ---- the door: wired on both checks, held when the site names somebody else --------
+    import add_company
+    B_HOSTED = "https://apply.clearcompany.com/betagov"
+    B_SITE = "33333333-4444-4555-8666-777777777777"
+    B_SETTINGS = f"https://careers-api.clearcompany.com/v1/settings/{B_SITE}"
+    B_LIST = f"https://careers-api.clearcompany.com/v1/{B_SITE}?pageIndex=0&pageSize=1000&source=CJB-0"
+    web_ = {**MAIN, HOSTED: _cc_page(home=_wb_site("acme-gov") + "/"),
+            B_HOSTED: _cc_page(brand="Gamma Holdings LLC", site=B_SITE, slug="betagov",
+                                       home="https://www.gammaholdings.example/"),
+            B_SETTINGS: _cc_settings(brand="Gamma Holdings LLC"), B_LIST: _cc_list(JOBS[:1])}
+    real = (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch, ats._get,
+            ats._page)
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, dict(ats._HOST_NOT_BEFORE))
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+        serve(web_)
+        with _WiringBox([_wb_co("acme-gov", "Acme Gov Systems"), _wb_co("beta-gov", "Beta Gov")],
+                        {}) as box, \
+                contextlib.redirect_stderr(io.StringIO()):
+            (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+             ats._get, ats._page) = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({
+                "acme-gov": _wb_one("acme-gov", "clearcompany", SLUG),
+                "beta-gov": _wb_one("beta-gov", "clearcompany", "betagov")}))
+        a_row, b_row = ((rows_ or {}).get(c) or {} for c in ("acme-gov", "beta-gov"))
+        if a_row.get("action") != "WIRE" or (a_row.get("type"), a_row.get("ref")) != ("clearcompany", SLUG):
+            errors += fail(f"clearcompany door: a site their own page links, naming them, was not wired: "
+                           f"{a_row.get('action')} ({_wb_words(a_row)[:240]!r})")
+        if b_row.get("action") != "HOLD" or "Gamma Holdings" not in _wb_words(b_row):
+            errors += fail(f"clearcompany door: a site naming somebody else was not held for the owner "
+                           f"with both names: {b_row.get('action')} ({_wb_words(b_row)[:240]!r})")
+        asks = sorted(u for u, _ in sent)
+        if asks != sorted([HOSTED, SETTINGS, LIST, B_HOSTED, B_SETTINGS, B_LIST]):
+            errors += fail(f"clearcompany door: the plan asked {asks}, not each site's three addresses once "
+                           f"for the read and the probe together")
+        # (only a board read whole is kept, only inside the block)
+        serve({**MAIN, LIST: Resp(503)})
+        outcomes = []
+        with ats.clearcompany_kept():
+            for body in (Resp(503), _cc_list(JOBS), Resp(503)):
+                web[LIST] = body
+                try:
+                    outcomes.append(len(ats.fetch_clearcompany(SLUG)))
+                except ats.AtsError:
+                    outcomes.append("error")
+            kept_asks = len(sent)
+        web[LIST] = _cc_list(JOBS)
+        outcomes.append(len(ats.fetch_clearcompany(SLUG)))
+        if outcomes != ["error", 4, 4, 4] or kept_asks != 6 or len(sent) != 9 or ats._CC_KEPT is not None:
+            errors += fail(f"clearcompany: a board was kept that failed or outside a plan, or not kept inside "
+                           f"one ({outcomes}; {kept_asks} then {len(sent)} requests)")
+    finally:
+        (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch, ats._get,
+         ats._page) = real
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held[:4]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[4])
+    return errors
+
+
 def check_successfactors_reads_its_career_site() -> int:
     """SAP SuccessFactors' Career Site Builder (2026-11-22), driven through
     ats.requests so every hop and every robots.txt ask is seen. Fixtures are
@@ -25220,7 +25760,9 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
             ("zohorecruit", '<a href="https://acmegov.zohorecruit.com/jobs/Careers">Jobs</a>',
              '<a href="https://www.zohorecruit.com/">Powered by Zoho Recruit</a>'),
             ("trinethire", '<iframe src="https://app.trinethire.com/companies/41234-acme/jobs/embed"></iframe>',
-             '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>')):
+             '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>'),
+            ("clearcompany", '<a href="https://apply.clearcompany.com/acmegov">Jobs</a>',
+             '<a href="https://www.clearcompany.com/">Powered by ClearCompany</a>')):
         found, rest = fsb.sightings(board + furniture, here, home)
         if [f["type"] for f in found] != [kind] or rest:
             errors += fail(f"finder: {kind}'s own furniture beside its board came out as "
@@ -25318,7 +25860,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                     "rippling": "acme", "smartrecruiters": "Acme", "icims": "careers-acme",
                     "hirebridge": "7724", "applicantpro": "acme.applicantpro.com",
                     "pinpoint": "acme", "jobvite": "acme", "jobvitefeed": "qAcmefwX",
-                    "trinethire": "41234-acme-gov",
+                    "trinethire": "41234-acme-gov", "clearcompany": "acmegov",
                     "teamtailor": "https://acme.teamtailor.com",
                     "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
                     "comeet": "https://www.comeet.com/jobs/acme/F7.009",
@@ -25335,6 +25877,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         "jobvite": "https://jobs.jobvite.com/acme/jobs", "teamtailor": "https://acme.teamtailor.com",
         "jobvitefeed": "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX",
         "trinethire": "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed",
+        "clearcompany": "https://apply.clearcompany.com/acmegov",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009",
         "gusto": "https://jobs.gusto.com/boards/acme-c850a9b3", "gem": "https://jobs.gem.com/acme",
@@ -32200,6 +32743,15 @@ SITE_BOARD_FORMS = [
     # found it filed as a form naming no board)
     ('<iframe src="https://app.trinethire.com/companies/41234-/jobs/embed"></iframe>',
      "trinethire", "41234", "https://app.trinethire.com/companies/41234/jobs/embed"),
+    # A CLEARCOMPANY BOARD by its hosted site's slug, and the hosted page is
+    # what is asked first whatever the form: Rehrig's link (seen 2026-11-23),
+    # a posting on the site, the site's own /redirect (the slug made up)
+    ('<a class="btn" href="https://apply.clearcompany.com/acmegov?noheader=False">Explore Current '
+     'Openings</a>', "clearcompany", "acmegov", "https://apply.clearcompany.com/acmegov"),
+    ('<a href="https://apply.clearcompany.com/acmegov?jobId=aaaaaaaa-0000-4000-8000-000000000001">'
+     'Account Executive</a>', "clearcompany", "acmegov", "https://apply.clearcompany.com/acmegov"),
+    ('<iframe src="https://apply.clearcompany.com/acmegov/redirect?search=true"></iframe>',
+     "clearcompany", "acmegov", "https://apply.clearcompany.com/acmegov"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -49018,7 +49570,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009", "jobvite": "acme",
-        "jobvitefeed": "qAcmefwX", "trinethire": "41234-acme-gov",
+        "jobvitefeed": "qAcmefwX", "trinethire": "41234-acme-gov", "clearcompany": "acmegov",
         "successfactors": "https://jobs.acme.test",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
@@ -49119,6 +49671,7 @@ console.log(JSON.stringify(out));"""
         ("jobvite", "https://jobs.jobvite.com/acme/jobs"),
         ("jobvitefeed", "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX"),
         ("trinethire", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
+        ("clearcompany", "https://apply.clearcompany.com/acmegov"),
         ("successfactors", "https://jobs.acme.test/search/"),
         ("successfactors with a path", "#"),
         ("paylocity", PAY),
@@ -63992,6 +64545,7 @@ def main() -> int:
     errors += check_jobvite_reads_its_list_page_and_names_it_twice()
     errors += check_jobvite_feed_reads_one_row_a_job_and_no_person()
     errors += check_trinethire_reads_its_list_and_names_it_once()
+    errors += check_clearcompany_reads_its_site_whole_and_names_it_twice()
     errors += check_successfactors_reads_its_career_site()
     errors += check_successfactors_unify_reads_its_sitemap()
     errors += check_what_the_second_review_of_the_new_readers_found_stays_fixed()
