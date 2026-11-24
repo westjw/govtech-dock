@@ -2854,10 +2854,13 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
         own (nothing of the person's is sent, so that is Job Hunter not
         taking the board's way in), and "unreachable" for everything else;
       - nothing secret in any answer, and nothing logged;
-      - DEPLOY.md §3f's panel check says where each answer points, and its
-        steps for taking someone out of the beta come in their true order,
-        Job Hunter's unlink (the one step at once) first (review,
-        2026-11-24).
+      - DEPLOY.md §3f's panel check says where each answer points ("not set
+        up yet" at step 1's signing key as well as step 4's secrets, as the
+        route answers for either), and its steps for taking someone out of
+        the beta come in their true order, Job Hunter's unlink (the one step
+        at once) first, taking every address and token Job Hunter's --list
+        shows beside their owner id, and the role last, after the board's
+        next nightly and deploy (review, 2026-11-24).
     """
     import shutil
     import subprocess
@@ -3011,28 +3014,63 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
         errors += fail("DEPLOY.md §3f's panel check does not say that \"did not let the board in\" is Job Hunter's "
                        "JH_BOARD_SERVICE_TOKEN (or its check of the board's signature), or still files a missing "
                        "plist variable under \"did not answer\"")
+    # "NOT SET UP YET" IS EITHER PART OF THE BOARD'S SIDE (review,
+    # 2026-11-24): the route answers not_set_up for step 4's service token or
+    # the D1 binding (no_token, no_db above) and, as much, for step 1's
+    # signing key missing or badly pasted (no_key above), when /oidc/jwks
+    # answers 503 too; the bullet filed it under step 4 alone
+    i_ns = panel.find("\"The board's way in to Job Hunter is not set up yet\"")
+    j_ns = panel.find("\"Job Hunter did not let the board in\"", i_ns + 1)
+    ns_ = panel[i_ns:j_ns] if 0 <= i_ns < j_ns else ""
+    if ("step 4's Pages secrets (or the D1 binding of §3e)" not in ns_
+            or "step 1's `OIDC_SIGNING_JWK`, missing or badly pasted" not in ns_
+            or "`curl -s https://sledjobs.com/oidc/jwks` answers `503` too" not in ns_
+            or "each answer points at one place" in panel):
+        errors += fail("DEPLOY.md §3f's panel check files \"not set up yet\" under step 4 alone: the route says it "
+                       "too when step 1's OIDC_SIGNING_JWK is missing or badly pasted (and /oidc/jwks answers 503)")
     # TAKING SOMEONE OUT OF THE BETA, AS IT REALLY WORKS (review, 2026-11-24):
     # the panel comes in on the service token, so "Beta users" never sees it,
     # and an Access session already granted lasts until it expires. Job
     # Hunter's own unlink is the one step that acts at once, so it comes
     # first; then Access (the policy, and Revoke session); then the role,
-    # after the nightly and deploy. No "at once" anywhere else
+    # after the board's next nightly and deploy (Job Hunter's deploy/README.md
+    # says the same words). No "at once" anywhere else
     out_ = s3f[s3f.find("**Taking someone out of the beta**"):s3f.find("Switching the panel off for everybody")]
-    steps = [out_.find(n) for n in ("1. **In Job Hunter, unlink their address.**",
+    steps = [out_.find(n) for n in ("1. **In Job Hunter, unlink every address and revoke every token of theirs.**",
                                    "2. **At Access**: take their address off the \"Beta users\" policy",
                                    "3. **On the Users board**: take `hunter` off them")]
     if (min(steps) < 0 or steps != sorted(steps)
-            or "`python3 scripts/accounts_cli.py --unlink-email <their address> --why \"left the beta\"`" not in out_
             or "This stops Job Hunter and the panel at once" not in out_
             or "Zero Trust → Users → the person → **Revoke session**" not in out_
-            or "after the next nightly and deploy" not in out_
+            or "after the board's next nightly and deploy" not in out_
             or "Switching the panel off for everybody" not in s3f):
         errors += fail("DEPLOY.md §3f does not take someone out of the beta in its three true steps, in order: "
-                       "unlink in Job Hunter (at once), the Beta users policy and Revoke session, the hunter role "
-                       "after the next nightly and deploy")
+                       "unlink and revoke in Job Hunter (at once), the Beta users policy and Revoke session, the "
+                       "hunter role after the board's next nightly and deploy")
     elif ("at once" in out_[:steps[0]] or "at once" in out_[steps[1]:]
             or '"Beta users" policy (at once)' in s3f):
         errors += fail("DEPLOY.md §3f says a step of taking someone out of the beta acts at once when it does not")
+    # EVERY ADDRESS AND EVERY TOKEN OF THEIRS (review, 2026-11-24): a token's
+    # label is the beta code or "onboarding", never the person, so "--list
+    # shows it by its label" found nobody's, and one account may have several
+    # addresses linked. Job Hunter's --list shows each token and each linked
+    # address beside the account's owner id, each by the hash --revoke and
+    # --unlink-email take, and the step takes every one shown for theirs,
+    # then lists again: as Job Hunter's deploy/README.md says it
+    first_ = out_[steps[0]:steps[1]] if 0 <= steps[0] < steps[1] else ""
+    for needle in ("`python3 scripts/accounts_cli.py --list` shows each token and each linked address beside "
+                   "their account's owner id",
+                   "Unlink every address and revoke every token it shows for that owner id",
+                   "`python3 scripts/accounts_cli.py --unlink-email <hash> --why \"out of the beta\"`",
+                   "`python3 scripts/accounts_cli.py --revoke <hash> --why \"out of the beta\"`",
+                   "Then `--list` once more: nothing may be left beside their owner id",
+                   "one address or token left behind still opens their account"):
+        if needle not in first_:
+            errors += fail(f"DEPLOY.md §3f's first step of taking someone out of the beta does not take every "
+                           f"address and token --list shows beside their owner id: no {needle!r}")
+    if "by its label" in out_ or "If they were ever given" in out_:
+        errors += fail("DEPLOY.md §3f still finds a beta user's token by its label, or revokes one only if "
+                       "somebody remembers giving it")
     return errors
 
 

@@ -329,15 +329,15 @@ panel on a role).**
   `no_account` is a person with no account linked; `unreachable` is the Mac
   asleep, a timeout or Job Hunter's door answering instead ("did not answer",
   whose words say the board's way in may need fixing); `not_set_up` is no
-  service token (or no D1); `not_let_in` is Job Hunter's own 401 other than
-  `no_account`, which the board relays as 502: nothing of the person's is
-  sent, so it can only be Job Hunter not taking the board's way in (its
-  `JH_BOARD_SERVICE_TOKEN` unset or another token's, or the board's assertion
-  refused), and the panel says the way in needs fixing, never "sign in"
-  (review, 2026-11-24: Job Hunter's `no_token` read "Sign in to Job Hunter");
-  `slow_down` is one person's twenty asks a minute used up ("Wait a minute,
-  then open this one again"); any other 401 or 403, or a redirect, asks for
-  a sign-in. A
+  service token, D1 or signing key; `not_let_in` is Job Hunter's own 401
+  other than `no_account`, which the board relays as 502: nothing of the
+  person's is sent, so it can only be Job Hunter not taking the board's way
+  in (its `JH_BOARD_SERVICE_TOKEN` unset or another token's, or the board's
+  assertion refused), and the panel says the way in needs fixing, never
+  "sign in" (review, 2026-11-24: Job Hunter's `no_token` read "Sign in to
+  Job Hunter"); `slow_down` is one person's twenty asks a minute used up
+  ("Wait a minute, then open this one again"); any other 401 or 403, or a
+  redirect, asks for a sign-in. A
   failing gate prints above the fit and a score the person rejected says so,
   as on Job Hunter's own board. Everything Job Hunter says is printed as
   text.
@@ -517,11 +517,13 @@ the popout's assertion: change it on one side only and the popout stops.
   review, 2026-11-24, where the doc had said the "Beta users" policy did it
   "at once"): the panel comes in on the service token, so "Beta users" never
   sees it, and an Access session already granted lasts until it expires.
-  Unlinking the address in Job Hunter (`accounts_cli.py --unlink-email`, and
-  `--revoke` for any token of theirs) is the one step that acts at once, for
-  Job Hunter and the panel; then the policy and Revoke session at Access;
-  then the `hunter` role, which reaches the board after the nightly and a
-  deploy.
+  In Job Hunter, unlinking every address and revoking every token
+  `accounts_cli.py --list` shows beside their account's owner id
+  (`--unlink-email`, `--revoke`, each by the hash it shows: a token's label
+  is the beta code or "onboarding", never the person, and one account may
+  have several addresses) is the one step that acts at once, for Job Hunter
+  and the panel; then the policy and Revoke session at Access; then the
+  `hunter` role, which comes off after the board's next nightly and deploy.
 - The owner's steps are DEPLOY.md §3f. `scripts/jh_signin_secrets.mjs` makes
   the key (kid = its RFC 7638 thumbprint), the client id and the secret and
   prints them once, on a terminal only, and writes nothing: the first setup.

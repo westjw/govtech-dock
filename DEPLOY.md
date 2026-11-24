@@ -351,10 +351,12 @@ to one application, so these two come before it exists.
   page asking for your email for a one-time PIN, with no `SLED JOBS` button
   on it.
 - **The panel:** on any role on the board, **Job Hunter ▸** fills in with no
-  sign-in. If it says something else instead, each answer points at one
-  place:
+  sign-in. If it says something else instead, each answer says where to
+  look:
   - "The board's way in to Job Hunter is not set up yet": the board's side,
-    step 4's Pages secrets (or the D1 binding of §3e).
+    step 4's Pages secrets (or the D1 binding of §3e), or step 1's
+    `OIDC_SIGNING_JWK`, missing or badly pasted (then
+    `curl -s https://sledjobs.com/oidc/jwks` answers `503` too).
   - "Job Hunter did not let the board in": Job Hunter's side. Its
     `JH_BOARD_SERVICE_TOKEN` is missing from the serve plist (or the server
     was not restarted after it was set), or it is not the `board popout`
@@ -437,21 +439,29 @@ immediately, as above.
 Hunter on the service token, never on the person's own Access sign-in, so
 "Beta users" does not stop it, and an Access session already granted lasts
 until it expires.
-1. **In Job Hunter, unlink their address.** On the Mac, in Job Hunter's
-   folder: `python3 scripts/accounts_cli.py --unlink-email <their address>
-   --why "left the beta"`. If they were ever given a Job Hunter token, revoke
-   that too (`python3 scripts/accounts_cli.py --list` shows it by its label,
-   then `--revoke <its hash> --why "left the beta"`), or it still opens
-   their account. This stops Job Hunter and the panel at once: Job Hunter
-   maps the address, Access's or the one the board signs for the panel, to
-   an account on every request, and an unlinked address opens none.
+1. **In Job Hunter, unlink every address and revoke every token of
+   theirs.** On the Mac, in Job Hunter's folder,
+   `python3 scripts/accounts_cli.py --list` shows each token and each
+   linked address beside their account's owner id (the `--owner` they
+   were onboarded as). Unlink every address and revoke every token it
+   shows for that owner id, each by the hash its line shows; for an
+   address,
+   `python3 scripts/accounts_cli.py --unlink-email <hash> --why "out of the beta"`
+   (the address itself works too, but reaches only that one), and for a
+   token,
+   `python3 scripts/accounts_cli.py --revoke <hash> --why "out of the beta"`.
+   Then `--list` once more: nothing may be left beside their owner id, for
+   one address or token left behind still opens their account. This stops
+   Job Hunter and the panel at once: Job Hunter maps the address, Access's
+   or the one the board signs for the panel, to an account on every
+   request, and an unlinked address opens none.
 2. **At Access**: take their address off the "Beta users" policy, so they
    cannot sign in again, and end the session they already have: Zero Trust
    → Users → the person → **Revoke session**.
 3. **On the Users board**: take `hunter` off them. That stops the board
-   giving them a sign-in code for Job Hunter, or a panel, after the next
-   nightly and deploy; until then their board sign-in (30 days, and not
-   ended one person at a time) still asks, and step 1 is what makes Job
+   giving them a sign-in code for Job Hunter, or a panel, after the board's
+   next nightly and deploy; until then their board sign-in (30 days, and
+   not ended one person at a time) still asks, and step 1 is what makes Job
    Hunter say no.
 
 Switching the panel off for everybody is deleting the `board popout` service
