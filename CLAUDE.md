@@ -2955,7 +2955,12 @@ round.
   own fetch LANDED on that is a posting's - their home page, a careers
   address or a hop page redirecting to one (it read the board off the
   posting's page and wrote it on the tenant's name in its address alone;
-  the redirect, review of 2026-11-23) - wire_embedded leaves a row naming one
+  the redirect, review of 2026-11-23) - nor does `find_embedded_ats.py`, of
+  a page its fetch landed on or passed through, or one whose fetch cannot
+  say where it landed (`add_company.fetch(hops=)`: a careers address
+  answering 301 to a posting had the posting's breadcrumb board lifted, the
+  first of two where it named two, and wire_embedded --write wired it on the
+  tenant's name alone; same review) - wire_embedded leaves a row naming one
   in no pile, and `file_found` files none (`board_proposals.paylocity_posting`
   is the one test); and a posting's address written as a Paylocity BOARD (an
   older finder's file, or one made by hand) is a reference this door cannot

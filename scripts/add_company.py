@@ -131,16 +131,26 @@ def _why_unreachable(exc: Exception) -> str:
     return f"unreachable: {name}"
 
 
-def fetch(url: str) -> tuple[str, str]:
+def fetch(url: str, hops: list | None = None) -> tuple[str, str]:
     """Return (html, note). Discovery is not monitoring: a WAF that answers 403
     while still sending the whole page is readable for identification purposes,
     and discarding it on status alone loses real companies. zencity.io does
-    exactly this. A short body is a block page and stays discarded."""
+    exactly this. A short body is a block page and stays discarded.
+
+    `hops`, when given, gets every address this fetch asked appended, in
+    order: the last is where it LANDED. A caller that reads the page for what
+    it names has to know whose page that was - a careers address that
+    redirects to one Paylocity posting is no careers page
+    (find_embedded_ats; review of the posting change, 2026-11-23)."""
     import requests
+
+    def one(u):
+        if hops is not None:
+            hops.append(u)
+        return requests.get(u, headers=ats.UA, timeout=ats.TIMEOUT, allow_redirects=False)
     try:
         # every hop asks robots.txt first (owner's ruling, 2026-10-09)
-        r = ats.follow(url, lambda u: requests.get(
-            u, headers=ats.UA, timeout=ats.TIMEOUT, allow_redirects=False))
+        r = ats.follow(url, one)
         # THE SAME PAGE, READ CORRECTLY. ats._get repairs a body served as
         # UTF-8 with no charset header, which requests otherwise reads as
         # Latin-1; this function calls requests directly and so went around

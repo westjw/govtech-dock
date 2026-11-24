@@ -645,7 +645,8 @@ def paylocity_tenants(refs) -> set:
 # board to both checks. No door writes, files or wires a posting as a board:
 # discovery does not follow one, nor read a page its fetch landed on that is
 # one (it read the board off the posting's page and held it to a tenant's name
-# alone), wire_embedded leaves a row of one in no pile, and the queue's own
+# alone), nor does find_embedded_ats read one its fetch landed on or passed
+# through, wire_embedded leaves a row of one in no pile, and the queue's own
 # door files none.
 POSTING_TYPE = "paylocity-posting"
 _PAYLOCITY_POSTING = re.compile(
