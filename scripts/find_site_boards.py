@@ -452,6 +452,7 @@ HINTS = {
     "jobvite": ("jobvite.com",),
     "jobvitefeed": ("jobvite.com",),
     "trinethire": ("trinethire.com",),
+    "clearcompany": ("clearcompany.com",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -666,6 +667,13 @@ def _trinethire_board(m):
     return (f"{number}-{slug}" if slug else number), number.lstrip("0") or "0"
 
 
+def _clearcompany_site(m):
+    # the hosted site's slug as the page wrote it, keyed lower-cased; never
+    # 'internal', which robots.txt closes and which is no employer's site
+    slug = m.group(1)
+    return None if slug.lower() in ats._CC_CLOSED else (slug, slug.lower())
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -767,6 +775,15 @@ BOARDS: list[_Pat] = (
         # too (/companies/<n>-/jobs)
         _here("trinethire", r"(?<![a-z0-9.-])app\.trinethire\.com/companies/([0-9]{1,12})"
                             r"(?:-([a-z0-9-]{0,200}))?(?![a-z0-9-])", _trinethire_board),
+        # A CLEARCOMPANY BOARD, by its hosted site's slug on
+        # apply.clearcompany.com - a link to the site (Rehrig's 'Explore
+        # Current Openings'), a posting on it (?jobId=), its /<slug>/redirect -
+        # the host whole and the slug's own path segment whole. Never the
+        # tenant host <label>.clearcompany.com (robots.txt: Disallow: /), whose
+        # label is not proven to be the slug; a legacy HRM Direct board is
+        # asked where ClearCompany sends it (clearcompany_legacy)
+        _here("clearcompany", r"(?<![a-z0-9.-])apply\.clearcompany\.com/([a-z0-9](?:[a-z0-9-]{0,80}))"
+                              r"(?![a-z0-9_.%~-])", _clearcompany_site),
     ])
 
 # A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
@@ -816,6 +833,10 @@ POSTINGS: list[_Pat] = [
 _APPLY = re.compile(r"(?<![a-z0-9.-])recruiting\.paylocity\.com/recruiting/jobs/apply/"
                     r"([0-9]{1,12})(?:/[A-Za-z0-9_.~%-]{1,200}){0,2}(?![A-Za-z0-9_.~%-])", re.I)
 _EACH = "_each"     # a paylocity-other row's addresses, [(posting id or None, saw)]; never written
+CC_LEGACY = "clearcompany-legacy"
+# a clearcompany-legacy row's whole addresses and the hop its page was read
+# at, {"hop", "addresses"}, for clearcompany_legacy to ask; never written
+_LEGACY = "_legacy"
 
 
 def apply_id(text: str, at: int) -> str | None:
@@ -835,11 +856,15 @@ def _apply_of(address: str) -> str | None:
     return ids.pop() if len(ids) == 1 and None not in ids else None
 
 
-def _with_forms(row: dict, vendor: str, address: str) -> dict:
+def _with_forms(row: dict, vendor: str, address: str, hop: int | None = None) -> dict:
     """A one-address `elsewhere` row (a redirect's, a landing's), carrying
-    that address's Apply posting id where it is paylocity-other."""
+    that address's Apply posting id where it is paylocity-other, and the
+    address itself where it is a legacy HRM Direct board (clearcompany_legacy
+    asks it)."""
     if vendor == "paylocity-other":
         row[_EACH] = [(_apply_of(address), row["saw"])]
+    if vendor == CC_LEGACY and hop is not None:
+        row[_LEGACY] = {"hop": hop, "addresses": [address]}
     return row
 
 
@@ -858,6 +883,8 @@ def posting_forms(rec: dict) -> dict:
             linked.add(m.group(2))
     kept = []
     for e in rec.get("elsewhere") or []:
+        if isinstance(e, dict):
+            e.pop(_LEGACY, None)         # (clearcompany_legacy's, never written either)
         each = e.pop(_EACH, None) if isinstance(e, dict) else None
         left = [(pid, saw) for pid, saw in each or () if pid not in linked]
         if not each or len(left) == len(each):
@@ -940,8 +967,28 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
          r"(?![a-z0-9-])"),
         ("taleo", "taleo.net", _B + r"taleo\.net"),
         ("oraclecloud", "oraclecloud.com", r"[a-z0-9-]{1,63}\.fa\.[a-z0-9-]{1,63}\.oraclecloud\.com"),
-        ("clearcompany", "clearcompany.com", _B + r"clearcompany\.com"),
-        ("hrmdirect", "hrmdirect.com", _B + r"hrmdirect\.com"),
+        # CLEARCOMPANY (2026-11-24), beside its board's own address (BOARDS).
+        # Its widget drawn straight into a page by its bootstrap, the site
+        # named by its id alone (data-site-id, or ?siteId=): a ClearCompany
+        # site whose slug - the board's ref - the page does not show, and
+        # which is never guessed. A tenant form: a doubt.
+        ("clearcompany-site", "clearcompany.com",
+         r"(?<![a-z0-9.-])careers-content\.clearcompany\.com/js/v1/career-site\.js"
+         r"(?:\?[^\s\"'<>]{0,400}?\bsiteid=[0-9a-f]{8}-|[^<>]{0,800}?\bdata-site-id\s*=\s*[\"']?[0-9a-f]{8}-)"),
+        # A legacy HRM Direct board (ClearCompany owns HRM Direct), framed or
+        # linked: its label is not the hosted site's slug, so it names no
+        # board this door can name until ClearCompany's own redirect names
+        # one - which clearcompany_legacy asks, robots.txt first at every hop
+        # (Clearfield's frame lands on apply.clearcompany.com/clearfield). A
+        # tenant form until then.
+        ("clearcompany-legacy", "hrmdirect.com",
+         r"(?<![a-z0-9.-])[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.hrmdirect\.com/employment(?![a-z0-9_.-])"),
+        # every other ClearCompany address: its assets (careers-content's
+        # dynamic-embed height helper beside a legacy frame, cc-client-cdn's
+        # logos), the tenant host <label>.clearcompany.com that robots.txt
+        # closes, its own site - a platform we read, naming no board
+        ("clearcompany-other", "clearcompany.com", _B + r"clearcompany\.com"),
+        ("hrmdirect", "hrmdirect.com", _B + r"hrmdirect\.com(?!/employment(?![a-z0-9_.-]))"),
         ("applicantpro-other", "isolvedhire.com", _B + r"isolvedhire\.com"),
         ("hibob", "hibob.com", _B + r"careers\.hibob\.com"),
         ("avature", "avature.net", _B + r"avature\.net"),
@@ -996,7 +1043,11 @@ def _other_region(text: str, m) -> bool:
 # second account, and a doubt - unless they name the very tenant the board is
 # (same_tenant). The door says so in those words.
 TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet",
-                "jobvite-tenant": "jobvite", "jobvite-joblink": "jobvite"}
+                "jobvite-tenant": "jobvite", "jobvite-joblink": "jobvite",
+                # (a ClearCompany site named by its id alone, and a legacy HRM
+                # Direct board its own redirect has not named a slug for:
+                # 2026-11-24)
+                "clearcompany-site": "clearcompany", "clearcompany-legacy": "clearcompany"}
 _TENANT_UID = re.compile(r"(?<![0-9A-F])([0-9A-F]{2}\.[0-9A-F]{3})(?![0-9A-F])", re.I)
 
 
@@ -1054,7 +1105,7 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
                    "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
                    "jobvite-other": "jobvite", "successfactors-other": "successfactors",
-                   "trinethire-other": "trinethire"}
+                   "trinethire-other": "trinethire", "clearcompany-other": "clearcompany"}
 # A platform's form that is somewhere else to hire through on any other page
 # and the board's own furniture on the board's own pages: a Career Site
 # Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
@@ -1503,6 +1554,12 @@ def _tally(text: str, element: str, page_url: str, website: str,
                 # (each address, and the posting id where it is one's Apply
                 # form: posting_forms decides once the site is read)
                 row.setdefault(_EACH, []).append((apply_id(text, start), saw))
+            if vendor == CC_LEGACY:
+                # (each legacy address whole, for clearcompany_legacy to ask
+                # where ClearCompany sends it; one not known whole is not asked)
+                whole = _whole_address(text, start, end)
+                if whole:
+                    row.setdefault(_LEGACY, []).append(whole)
         at = text.lower().find(JIBE_MARK)
         if at >= 0 and _host(page_url):
             host = urllib.parse.urlsplit(page_url).netloc.lower()
@@ -2796,7 +2853,7 @@ def absorb(rec: dict, pr: dict, hop: int, who: "Whose | str", guessed: bool = Fa
         for vendor in dict.fromkeys(v for _s, _e, v in others):
             rec["elsewhere"].append(_with_forms({"vendor": vendor, "saw": _short(to),
                                                  "page": seen_on, "element": "redirect",
-                                                 "times": 1}, vendor, to))
+                                                 "times": 1}, vendor, to, hop if mine else None))
         page["status"], page["same_site"] = "left-site", False
         doubt = ""
         if boards and not straight:
@@ -2843,7 +2900,9 @@ def absorb(rec: dict, pr: dict, hop: int, who: "Whose | str", guessed: bool = Fa
                 rec["elsewhere"].append({"vendor": row["vendor"], "saw": row["saw"],
                                          "page": final, "element": row["element"],
                                          "times": row["times"],
-                                         **({_EACH: row[_EACH]} if _EACH in row else {})})
+                                         **({_EACH: row[_EACH]} if _EACH in row else {}),
+                                         **({_LEGACY: {"hop": hop, "addresses": row[_LEGACY]}}
+                                            if _LEGACY in row and own else {})})
             links = pr.get("links") or []
             n = job_like(links)
             rec["job_like_links"] = max(rec["job_like_links"] or 0, n)
@@ -3110,12 +3169,131 @@ async def look(company: dict, mode: str, read, plain=read_plain,
         rec["elsewhere"].append({"vendor": f"other:{name}",
                                  "saw": _short(url), "page": on_page,
                                  "element": "href", "times": 1})
+    await clearcompany_legacy(rec, who, deadline)
     jobvite_account_board(rec)
     posting_forms(rec)
     rec["elsewhere"] = [e for e in rec["elsewhere"] if not _board_furniture(e, rec["candidates"])
                         and not same_tenant(e, rec["candidates"])]
     rec.update(_no_addresses(rec))
     return rec
+
+
+class _CcLanded(Exception):
+    """A legacy board's redirect named ClearCompany's hosted site: raised
+    before that address is asked anything (the board is never read here)."""
+
+
+CC_LEGACY_ASKED = 2         # legacy addresses asked a company, at most
+
+
+def clearcompany_landing(url: str) -> dict:
+    """Where ClearCompany sends a legacy HRM Direct board's address:
+    {"slug", "to", "hops", "note"}. Asked hop by hop through ats.follow, so
+    robots.txt is asked before each one, under the crawler's own name and at
+    the host gate, and every hop held to the address's own host
+    (<label>.hrmdirect.com) - refused before it is asked anything - until a
+    redirect names apply.clearcompany.com/<slug>, which ends the walk
+    unasked: the slug is in the address. Anything else (an answer that sends
+    nobody on, a hop to any other host, robots.txt closing it, the network)
+    is no slug, and the note says why. Never raises."""
+    host, hops = _host(url), []
+
+    def stay(u: str):
+        if hops and ats.clearcompany_hosted_slug(u) is not None:
+            raise _CcLanded(u)
+        if _host(u) != host:
+            raise ats.AtsError(f"{_short(url)} leads off to {_host(u)}, which is neither its own "
+                               f"host nor ClearCompany's hosted site")
+
+    def one(u: str):
+        resp = _request(u)
+        hops.append(u)
+        return resp
+
+    try:
+        resp = ats.follow(url, one, may=stay)
+        status = getattr(resp, "status_code", None)
+        try:
+            resp.close()
+        except Exception:                    # noqa: BLE001
+            pass
+        return {"slug": None, "to": None, "hops": hops,
+                "note": f"answered HTTP {status} without sending its reader on to ClearCompany's "
+                        f"hosted site"}
+    except _CcLanded as got:
+        to = str(got.args[0])
+        return {"slug": ats.clearcompany_hosted_slug(to), "to": to, "hops": hops, "note": ""}
+    except ats.AtsError as exc:               # robots.txt, a hop off the host, a loop
+        return {"slug": None, "to": None, "hops": hops, "note": privacy.redact(str(exc))[:160]}
+    except Exception as exc:                  # noqa: BLE001 - DNS, TLS, a timeout
+        return {"slug": None, "to": None, "hops": hops,
+                "note": f"network error: {type(exc.__cause__ or exc).__name__}"}
+
+
+_CC_FOLLOWED = frozenset({"iframe", "frame", "href", "redirect"})
+
+
+async def clearcompany_legacy(rec: dict, who: "Whose", deadline: float | None = None) -> None:
+    """A legacy HRM Direct board their own page frames or links, made the
+    board ClearCompany's own redirect names, filled in place.
+
+    ClearCompany owns HRM Direct, and its legacy boards (<label>.hrmdirect.com
+    /employment/...) answer with a redirect to the hosted site, apply.
+    clearcompany.com/<slug> (Clearfield's careers page frames one, measured
+    2026-11-23; Rehrig's record on file is another). The label is not the
+    slug - that would be a guess, and a guess is never a ref - so each such
+    address seen on a page of their OWN (a frame, a link, their own redirect)
+    is asked where it goes (clearcompany_landing: robots.txt at every hop, the
+    address's own host and nothing else), at most CC_LEGACY_ASKED of them a
+    company, within the company's own time. Where every address of a row
+    lands on one slug, that slug is a candidate from that page, as that
+    page's element - their page points at the board, by way of the vendor's
+    own redirect - and the row leaves `elsewhere`, with the ClearCompany
+    furniture beside it on the same page (its iframe height helper, its
+    pictures: clearcompany-other), as a page naming a board leaves it
+    (sightings). Any other answer keeps the row as it was: a tenant form, a
+    doubt the door holds for the owner, its note saying what came back."""
+    rows = [e for e in rec.get("elsewhere") or [] if isinstance(e, dict)
+            and e.get("vendor") == CC_LEGACY and e.get(_LEGACY)]
+    landed: dict = {}
+    for e in rows:
+        if e.get("element") not in _CC_FOLLOWED or who.of(str(e.get("page") or ""))[0] != "own":
+            continue
+        for address in dict.fromkeys(e[_LEGACY].get("addresses") or ()):
+            if address in landed or len(landed) >= CC_LEGACY_ASKED:
+                continue
+            url = soften(address)
+            url = ("https:" + url if url.startswith("//") else
+                   url if url.startswith("http") else "https://" + url)
+            left = (deadline - time.monotonic()) if deadline is not None else ASIDE_SECONDS
+            if left <= 0:
+                break
+            try:
+                landed[address] = await _aside(clearcompany_landing, url,
+                                               seconds=min(ASIDE_SECONDS, left))
+            except asyncio.TimeoutError:
+                landed[address] = {"slug": None, "to": None, "hops": [],
+                                   "note": "no answer before this company's time was up"}
+    named: dict = {}                            # page -> its row's board
+    kept = []
+    for e in rec.get("elsewhere") or []:
+        legacy = e.pop(_LEGACY, None) if isinstance(e, dict) else None
+        got = [landed.get(a) for a in dict.fromkeys((legacy or {}).get("addresses") or ())]
+        slugs = {g["slug"].lower() for g in got if g and g.get("slug")}
+        if e.get("vendor") != CC_LEGACY or not got or len(slugs) != 1 \
+                or not all(g and g.get("slug") for g in got):
+            kept.append(e)
+            continue
+        first = next(g for g in got if g and g.get("slug"))
+        rec["candidates"].append({
+            "type": "clearcompany", "ref": first["slug"], "element": e.get("element"),
+            "saw": _short(f"{e.get('saw') or ''} -> {first['to']}"), "times": e.get("times") or 1,
+            "page": e.get("page"), "hop": legacy.get("hop", 0)})
+        named[str(e.get("page") or "")] = True
+    if named:
+        kept = [e for e in kept if not (isinstance(e, dict) and e.get("vendor") == "clearcompany-other"
+                                        and str(e.get("page") or "") in named)]
+    rec["elsewhere"] = kept
 
 
 def jobvite_account_board(rec: dict) -> None:

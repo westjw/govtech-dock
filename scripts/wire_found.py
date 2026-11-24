@@ -272,7 +272,11 @@ OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-
              "jobvitefeed": {"jobvite-other"},
              # (every address naming a company number on app.trinethire.com is
              # a board, so trinethire-other names none: 2026-11-24)
-             "trinethire": {"trinethire-other"}}
+             "trinethire": {"trinethire-other"},
+             # (an address on apply.clearcompany.com naming a slug is a board,
+             # so clearcompany-other names none: its scripts, its pictures, a
+             # tenant host robots.txt closes; 2026-11-24)
+             "clearcompany": {"clearcompany-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -3425,9 +3429,11 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 # (a Jobvite account's feed is read and asked whose it is in ONE request a
 # plan: the probe takes the answer the read had - ats.jobvitefeed_kept, blind
 # review 12, 2026-11-23; and so is a TriNet Hire list - ats.trinethire_kept,
-# blind review 13, 2026-11-24)
+# blind review 13, 2026-11-24 - and a ClearCompany site's three answers -
+# ats.clearcompany_kept, 2026-11-24)
 @ats.jobvitefeed_kept()
 @ats.trinethire_kept()
+@ats.clearcompany_kept()
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
          pages: dict | None = None, postings: dict | None = None,
