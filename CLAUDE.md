@@ -2552,10 +2552,10 @@ and never said where in a page a reference sat.
   those, its `saw` the first of them and its `times` their count. An Apply
   link whose id their site does not link as a posting stays `paylocity-other`,
   a doubt; widening that is the owner's call. A results file written before
-  this still carries the row: the company needs a fresh read. With the doubt
-  gone, such a page meets the posting door's KNOWN gap (a second account's
-  posting is not asked once one has named the board), said where the gap is
-  (below).
+  this still carries the row: the company needs a fresh read. With the doubt gone,
+  a page linking its own posting and another account's is held by the
+  posting door as two boards, with each one's Apply link beside it or
+  without (below).
 - **"Their own site" is narrower than the host** (`Whose.of`: own | shared |
   part | other; only "own" makes a candidate). The host rule is still
   `page_belt._same_site`, and it decides which links the walk may follow.
@@ -2941,7 +2941,9 @@ round.
   is spelled (`posting_id`: Paylocity serves a posting by its id alone, so
   .../Details/8201/<Tenant>/<Title> and .../Details/8201 are one posting,
   asked once and counted once) whichever company links it, in the finder's
-  order, at most `POSTING_TRIES` (3) postings per company. It
+  order, at most `POSTING_TRIES` (3) postings per company - each of them,
+  whether or not an earlier one has named a board (until 2026-11-24 the
+  asking stopped at the first posting naming one: below). It
   reads the board addresses the page names (`posting_boards_in`: its
   breadcrumb's /All/<uuid>/<Tenant>, its "View All Jobs" link written
   without the host, a /List/<n> where one is carried) in the finder's own
@@ -2954,14 +2956,21 @@ round.
   the row, the plan's line and the note: "<their page> links a posting on
   the board (<the posting>), and the posting's page names that one board".
   TWO OR MORE are HOLD, naming them all ("...names more than one board: A
-  and B"). A CLOSED posting (Paylocity's "Job Not Found", a 404 or 410, a
-  page naming no board) sends the door to the next posting; where none names
+  and B"), whichever posting's page it is. A CLOSED posting (Paylocity's
+  "Job Not Found", a 404 or 410, a page naming no board) sends the door to
+  the next posting and counts against no other; where none names
   a board it is SKIP `no-board`, listed in words ("the find is not a board"),
   never a zero - and SKIP `unusable` where their site also names a board in
   a shape no reader takes, the reference named (every posting SKIP names
   one: it is no "no board"). A failure of the day is SKIP `unreadable`,
-  asked again by the next plan, never filed; a refusal (robots.txt, 401,
-  403) stops the asking.
+  asked again by the next plan, never filed - beside a board another
+  posting of theirs named too; a refusal (robots.txt, 401, 403) stops the
+  asking, and beside a board (their site's own, or one a posting named) a
+  posting whose page refused is a doubt: which board it is on is not known.
+  The plan's line says how many of the postings their site links were asked
+  ("3 Paylocity postings their site links were asked which board its page
+  names"), and where the tries left some unasked, that they were not ("...,
+  and 1 more of theirs were not asked (at most 3 are)"), as the SKIP does.
   A company with any refusal on file is not asked (`declined`): SKIP refused
   where nothing else on their site names a board, as a number nobody
   followed is, and beside a board of their own that board is read and held
@@ -2969,16 +2978,23 @@ round.
   one out of scope or on a board.
   Postings none of whose pages named a board, beside another board, are a
   doubt. A board their site names itself by an id that agrees gets no second
-  sighting from a posting. The worklist (version 6) records what each
+  sighting from a posting. The worklist (version 7) records what each
   posting's page named (`posting_boards`, under every spelling of its
   address their sites linked), and apply wires a row found by
   way of a posting only where its `check_1.posting` is a posting's own
-  address, check 1's own sighting quotes that posting's id, and the row and
-  `posting_boards` both say its page named that one board, the row's own; a
-  row whose check 1 quotes a posting and says nothing of its page is left
-  alone (`evidence`). The look prints, under the row, "leans on what the plan
+  address, check 1's own sighting quotes that posting's id, the row and
+  `posting_boards` both say its page named that one board, the row's own,
+  and every posting of theirs the row says the plan asked
+  (`check_1.postings_asked`, the quoted one among them) is recorded in
+  `posting_boards` naming that board or none; a
+  row whose check 1 quotes a posting and says nothing of its page, or not
+  which postings were asked, is left alone (`evidence`). The look prints,
+  under the row, "leans on what the plan
   was told: the page of the posting their site links, <posting>, names one
-  board, <board>", and the code covers it. Discovery never follows a link to
+  board, <board>", and for each other posting asked "...the page of another
+  posting their site links, <posting>, names that board too, <board>" (or
+  "names no board", or that it gave no answer), and the code covers it.
+  Discovery never follows a link to
   a posting, from their home page or one hop on, and never reads a page its
   own fetch LANDED on that is a posting's - their home page, a careers
   address or a hop page redirecting to one (it read the board off the
@@ -2992,28 +3008,40 @@ round.
   in no pile, and `file_found` files none (`board_proposals.paylocity_posting`
   is the one test); and a posting's address written as a Paylocity BOARD (an
   older finder's file, or one made by hand) is a reference this door cannot
-  use (`ref_problem`), never read as a board. KNOWN, AND LEFT AS FOUND:
-  another posting a page links is not asked once one has named the board,
-  so a careers page linking a second account's posting beside its own is
-  not seen by this. An Apply form (/recruiting/jobs/Apply/<id>) whose id
-  their own site also links as a posting is that posting's own form and
-  nothing else (2026-11-24: "A posting's own Apply link", above); one whose
-  id their site does not link as a posting is still the no-board form
-  `paylocity-other`, which holds a board beside it. So the gap now reaches
-  pages linking each posting's Apply link too: until 2026-11-24 the door
-  held such a page on that form's doubt (where the page names no Paylocity
-  board itself, beside which the form says nothing), which covered the gap
-  there by accident, and now a page linking its own posting and another
-  account's, each with its Apply link, is planned exactly as the same page
-  without them - where the first posting's page names their own board, that
-  board is wired and the second posting is never asked (blind review of the
-  Apply change, 2026-11-24; in the run that held BS&A Software on
-  2026-11-23 it was the only site linking Apply links, and the 13 postings
-  it links all carry one tenant's name in their addresses). Asking each
-  posting, up to `POSTING_TRIES`, after one has named the board, and
-  holding where two name different boards, would close the gap for both
-  kinds of page; that is the owner's call. Pinned with the Apply change
-  (`check_a_postings_own_apply_link_is_no_other_form`).
+  use (`ref_problem`), never read as a board. **A SECOND ACCOUNT'S POSTING
+  IS ASKED TOO (blind review of the Apply change, 2026-11-24).** Until then
+  the door stopped asking once one posting had named a board, so a careers
+  page linking its own posting and another account's was wired on the
+  first one's board and the second never asked. A page linking each
+  posting's Apply link was held on the `paylocity-other` doubt, which
+  covered that there by accident; once a posting's own Apply form was no
+  form of anything else ("A posting's own Apply link", above), such a page
+  was planned exactly as the same page without them. Now the door goes on
+  asking after a posting has named a board: each posting id their own site
+  links, up to `POSTING_TRIES` a company - no request beyond that, none
+  twice to one posting, robots.txt at every
+  hop - and two postings whose pages name different boards are held: HOLD,
+  "their site links Paylocity postings whose pages name different boards
+  (<posting>'s page names <board>; <posting>'s page names <board>)", with
+  or without each posting's Apply link beside it. Two addresses of one
+  board (an id that agrees, none that disagrees) are one board, and a later
+  posting naming a board an earlier one named adds no second sighting.
+  Where every posting asked that names a board names the same one, it is
+  wired as before, check 1 quoting the first; a closed posting counts
+  against no other, as before. A refusal after a posting has named a board
+  is a doubt, and a failure of the day SKIP unreadable (above). Readers'
+  doubts kept against a posting's board (`keep_posted_doubts`) see every
+  posting's answer. In the run that held BS&A Software on 2026-11-23 it was
+  the only site linking Apply links, and the 13 postings it links all carry
+  one tenant's name in their addresses (a tenant's name in an address is no
+  proof of the board). Pinned in
+  `check_a_board_a_posting_names_is_wired_only_on_both_checks` (three
+  postings on one board, all asked; four linked, exactly `POSTING_TRIES`
+  asked; a closed one beside two on one board; a refusal, a failure and a
+  two-board page after a naming; apply's re-checks) and
+  `check_a_postings_own_apply_link_is_no_other_form` (their own posting and
+  another account's, with each one's Apply link and without: HOLD, both
+  boards and both postings named).
 - **A board is sized by its openings, not its rows.** `fetch_rippling`
   returns the logo's file name as a row on every board, and a talent pool or
   an unfilled template is a row too. The door counts what
@@ -3427,10 +3455,12 @@ round.
   another holder (under either key), more postings shown than the board
   read. A write whose `--expect` is not the code of the data as it is now is
   REFUSED, even when nothing would be written. A worklist older than version
-  6, or without `reader_doubts` (or with a blank one), `workable_numbers`,
+  7, or without `reader_doubts` (or with a blank one), `workable_numbers`,
   `page_addresses` or `posting_boards`, is refused: version 3 kept the
   readers' doubts only when it was written, version 4 carried a record's
-  page's address apply took on its word, and version 5 knew no posting.
+  page's address apply took on its word, version 5 knew no posting, and
+  version 6 stopped asking a company's postings at the first one naming a
+  board (its rows say nothing of the others).
   The look prints, under each row it wires, every /All/ address it leans on
   ("leans on what the plan was told: ...") and the Workable
   account number it is asked for by, with what ties it to the slug and
