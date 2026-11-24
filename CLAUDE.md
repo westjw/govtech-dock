@@ -508,10 +508,11 @@ the popout's assertion: change it on one side only and the popout stops.
   and so that 401 is Job Hunter refusing the board's way in; anything else -
   a timeout, a network error, Access's login page or redirect, a 5xx,
   anything not a JSON object or over 64 KB - is 502
-  `{"failed":"unreachable"}`. Nothing is logged. THE SERVICE TOKEN PASSES ACCESS ON EVERY PATH of hunter.<domain>:
-  that is why everything about the call is fixed here, and why Job Hunter
-  believes a person only when the token's Access assertion AND the board's
-  signed one verify, for that one route.
+  `{"failed":"unreachable"}`. Nothing is logged. THE SERVICE TOKEN PASSES
+  ACCESS ON EVERY PATH of hunter.<domain>: that is why everything about the
+  call is fixed here, and why Job Hunter believes a person only when the
+  token's Access assertion AND the board's signed one verify, for that one
+  route.
 - **Taking someone out of the beta starts in Job Hunter** (DEPLOY.md §3f;
   review, 2026-11-24, where the doc had said the "Beta users" policy did it
   "at once"): the panel comes in on the service token, so "Beta users" never
@@ -559,7 +560,9 @@ the popout's assertion: change it on one side only and the popout stops.
   read back by Python's own query parser as Job Hunter's would, every relay,
   and the pace: twenty asks and the twenty-first refused unsent, another
   person unslowed, fifty sent at once held at the count's door until all have
-  come, of which twenty reach Job Hunter, the next minute heard again),
+  come, of which twenty reach Job Hunter, the next minute heard again; and
+  DEPLOY.md §3f's panel check and its steps for taking someone out of the
+  beta, in their true order),
   `check_the_sign_in_secrets_are_made_and_shown_once` (a working pair, d·G
   checked, nothing written, nothing printed into a pipe, the rotation's
   words), and the panel's words above.
