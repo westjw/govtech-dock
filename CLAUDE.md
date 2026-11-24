@@ -419,7 +419,18 @@ the popout's assertion: change it on one side only and the popout stops.
   an IPv6 /64) and it answers 429 to that network, counted in D1
   (`oidc_fails`), NOT KV: a guesser spending a KV write per failure could
   empty the 1,000 a day the sign-in and the alerts share, and D1 counts
-  exactly. A working sign-in writes no count.
+  exactly. **The try is taken before anything is compared** (`takeTry`, one
+  `INSERT ... ON CONFLICT DO UPDATE SET n = n + 1 WHERE n < 20`, whose
+  change count says yes or no): a count read first and written after let a
+  burst of 200 sent at once be tried 200 times (review, 2026-11-23); now it
+  is tried 20 times and the rest are 429, and a refused request writes
+  nothing. Only the form's own shape (not a form, too big, a parameter
+  twice, both client methods) is answered before a try is taken: none of it
+  is a guess. A failure keeps its try; a token, a grant type it does not
+  offer, or a door that could not answer gives it back (`giveBack`), so a
+  working sign-in leaves no count. The cap is also twenty at once, then:
+  more than twenty exchanges in flight together from one network would be
+  refused, which Access, signing in a closed beta, never comes near.
 - **D1, the `DB` saved roles use** (DEPLOY.md §3e): `oidc_codes` and
   `oidc_fails`, made on first use. A code row holds an address for minutes:
   a redeemed row goes at once, and every write clears rows over ten minutes
@@ -455,7 +466,8 @@ the popout's assertion: change it on one side only and the popout stops.
 - Guards: `check_job_hunter_signs_in_with_sled_jobs` (`scripts/
   oidc_harness.mjs`: the round trip with a real emailed-code sign-in in the
   middle, 34 refused requests, 8 refused ways back, 27 refused trades, the
-  race, 120 seconds and not 121, the rate, 13 unconfigured doors, the gate
+  race, 120 seconds and not 121, the rate (one by one, and 200 wrong secrets
+  at once: 20 tried), 13 unconfigured doors, the gate
   and the whole OPEN set, nothing logged; the ID token verified again in
   Python by the curve's
   own arithmetic, `_es256_verify`), `check_the_panel_asks_job_hunter_through_the_board`

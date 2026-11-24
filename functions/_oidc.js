@@ -327,7 +327,7 @@ export async function spendCode(env, code) {
 
 /* Failed token requests a network may make in an hour (an IPv4 address, or
  * an IPv6 /64). Access itself never fails one; only a wrong secret, code or
- * verifier counts, so a working sign-in writes nothing here. */
+ * verifier counts, so a working sign-in leaves nothing here. */
 export const FAILS_PER_HOUR = 20;
 
 async function failKey(request) {
@@ -336,25 +336,40 @@ async function failKey(request) {
   return (await sha256u(`oidc-token|${net}|${hour}`)).slice(0, 32);
 }
 
-/* How many failures this caller has this hour. Throws when D1 does. */
-export async function failuresOf(env, request) {
+/* A TRY IS TAKEN BEFORE IT IS MADE, by one statement: the network's count
+ * goes up only while it is under FAILS_PER_HOUR, so of any number of
+ * requests sent at once, only as many as the hour has left are tried,
+ * whatever order D1 runs them in. (A count read first and written after
+ * the try let a parallel burst through whole: 2026-11-23 review, 200 of 200
+ * tried against a cap of 20.) A refused request writes nothing: the WHERE
+ * stops the update. Rows past two hours go in the same batch. The try's key
+ * (giveBack needs it), or null when this hour's tries are used up. Throws
+ * when D1 does. */
+export async function takeTry(env, request) {
   await ready(env.DB);
-  const row = await env.DB.prepare("SELECT n FROM oidc_fails WHERE k = ?").bind(await failKey(request)).first();
-  return row ? Number(row.n) || 0 : 0;
+  const k = await failKey(request), t = now();
+  const [, r] = await env.DB.batch([
+    env.DB.prepare("DELETE FROM oidc_fails WHERE at < ?").bind(t - 7200),
+    env.DB.prepare(`INSERT INTO oidc_fails (k, n, at) VALUES (?, 1, ?)
+                    ON CONFLICT (k) DO UPDATE SET n = n + 1 WHERE oidc_fails.n < ?`).bind(k, t, FAILS_PER_HOUR),
+  ]);
+  return r && r.meta && Number(r.meta.changes) === 1 ? k : null;
 }
 
-/* One more failure for this caller; rows past two hours go with it. Never
- * throws: a count that could not be written refuses nobody. */
-export async function countFailure(env, request) {
+/* A try that was not a failure (a token handed out, a grant type it does
+ * not offer, a door that could not answer) is given back, so a working
+ * sign-in leaves no count: the row goes when it was the only try, or
+ * counts one fewer. A failure keeps its try; it is the count. Never
+ * throws: a try that could not be given back stays counted until its hour
+ * is over. */
+export async function giveBack(env, k) {
+  if (!k) return;
   try {
-    await ready(env.DB);
-    const t = now();
     await env.DB.batch([
-      env.DB.prepare("DELETE FROM oidc_fails WHERE at < ?").bind(t - 7200),
-      env.DB.prepare(`INSERT INTO oidc_fails (k, n, at) VALUES (?, 1, ?)
-                      ON CONFLICT (k) DO UPDATE SET n = n + 1`).bind(await failKey(request), t),
+      env.DB.prepare("DELETE FROM oidc_fails WHERE k = ? AND n <= 1").bind(k),
+      env.DB.prepare("UPDATE oidc_fails SET n = n - 1 WHERE k = ? AND n > 1").bind(k),
     ]);
-  } catch { /* nothing to do */ }
+  } catch { /* it stays counted */ }
 }
 
 /* --- the pieces each door checks before it does anything ------------------ */

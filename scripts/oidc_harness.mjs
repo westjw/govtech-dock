@@ -596,6 +596,30 @@ const STATE = "st8 a+b/c=d&e%f?g#h~i";
     next_hour: nextHour.status, cap: O.FAILS_PER_HOUR };
 }
 
+/* A BURST: two hundred wrong secrets sent at once from one network. The try
+ * is taken before the secret is compared, by one statement, so twenty are
+ * tried and the rest refused unread; a count read first and written after
+ * let all two hundred through (2026-11-23 review). The network's working
+ * exchange after it is refused too, its hour used up. Five good exchanges
+ * at once from another network are five tokens and leave no count. */
+{
+  const env = envOf();
+  const ip = "203.0.113.9";
+  const N = 200;
+  const res = await Promise.all(Array.from({ length: N }, (_, i) =>
+    tok(env, goodForm(randomBytes(32).toString("base64url"), pkce().verifier, { client_secret: "guess-" + i }), { ip })));
+  const statuses = {};
+  for (const r of res) statuses[r.status] = (statuses[r.status] || 0) + 1;
+  const counted = rows(env.DB, "oidc_fails").map((r) => r.n);
+  const c = await codeFor(env);
+  const after = await tok(env, goodForm(c.code, c.verifier), { ip });
+  const codes = [];
+  for (let i = 0; i < 5; i++) codes.push(await codeFor(env));
+  const goods = await Promise.all(codes.map((g) => tok(env, goodForm(g.code, g.verifier), { ip: "203.0.113.10" })));
+  out.burst = { sent: N, statuses, counted, after: after.status, good_statuses: goods.map((r) => r.status),
+    rows_after_goods: rows(env.DB, "oidc_fails").map((r) => r.n) };
+}
+
 /* --- the gate: these four pass signed out, nothing beside them --------------- */
 {
   const env = envOf();

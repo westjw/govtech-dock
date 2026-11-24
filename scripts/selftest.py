@@ -2409,7 +2409,9 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
         not 121, holds the verifier, the redirect_uri and the client, and a
         failed try spends the code; every failure is OAuth's word alone;
       - twenty failures an hour from one network and it is slowed, with
-        nothing written by a working sign-in;
+        nothing left by a working sign-in; two hundred wrong secrets sent at
+        once are tried twenty times, not two hundred (the try is taken by
+        one statement before anything is compared);
       - the gate's OPEN set is exactly the sign-in's paths and these four;
       - nothing logs anything.
     """
@@ -2612,6 +2614,16 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     if (rl.get("other_network") != 200 or rl.get("good") != 200 or rl.get("good_wrote")
             or rl.get("v6_neighbour") != 429 or rl.get("v6_other") != 200 or rl.get("next_hour") != 200):
         errors += fail(f"the slowing reaches another network, the next hour, or a working sign-in writes a count: {rl}")
+    # ...AND SENT ALL AT ONCE (2026-11-23 review): the try is taken before
+    # the secret is compared, by one statement, so a burst of 200 is tried
+    # 20 times, not 200 (a count read first and written after let them all in)
+    bu = o.get("burst") or {}
+    if (bu.get("sent") != 200 or bu.get("statuses") != {"401": cap, "429": 200 - (cap or 0)}
+            or bu.get("counted") != [cap] or bu.get("after") != 429):
+        errors += fail(f"two hundred wrong secrets sent at once are tried more than {cap} times "
+                       f"(the count is read before it is written), or the network is not slowed after: {bu}")
+    if bu.get("good_statuses") != [200] * 5 or bu.get("rows_after_goods") != [cap]:
+        errors += fail(f"good exchanges sent at once are refused, or leave a count behind: {bu}")
 
     # THE GATE: these four pass signed out, and nothing beside them
     open_now = sorted(["/admin/api/whoami", "/admin/api/login", "/api/whoami", "/signin", "/signin/email",

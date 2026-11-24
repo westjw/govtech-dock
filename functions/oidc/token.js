@@ -4,9 +4,13 @@
  * Called by Cloudflare Access, server to server, with no sign-in of ours -
  * so it is OPEN in functions/_gate.js and checks everything itself, in this
  * order:
- *   1. the caller has not failed FAILS_PER_HOUR times this hour (a wrong
- *      secret, code or verifier counts; Access's own calls never fail);
- *   2. a form body, each parameter once;
+ *   1. a form body, each parameter once, the client named one way (neither
+ *      of these is a guess, so neither is counted);
+ *   2. A TRY, TAKEN BEFORE ANYTHING IS COMPARED (takeTry, one D1 statement):
+ *      a network has FAILS_PER_HOUR tries an hour, so twenty wrong secrets
+ *      sent at once get twenty tries and the rest a 429, as twenty sent one
+ *      by one would. A failure keeps its try; anything else gives it back,
+ *      so Access's own calls, which never fail, leave no count;
  *   3. the client: client_secret_basic OR client_secret_post (either, never
  *      both), id and secret compared in constant time against
  *      OIDC_CLIENT_ID and OIDC_CLIENT_SECRET (under 32 characters, and this
@@ -22,8 +26,8 @@
  * detail that tells a guesser which part was wrong.
  */
 import { onSite, random, sha256u, sameCode, now } from "../_session.js";
-import { setUp, sameSecret, spendCode, signJwt, subOf, failuresOf, countFailure, ISSUER,
-         ID_TOKEN_SECONDS, FAILS_PER_HOUR } from "../_oidc.js";
+import { setUp, sameSecret, spendCode, signJwt, subOf, takeTry, giveBack, ISSUER,
+         ID_TOKEN_SECONDS } from "../_oidc.js";
 
 const MAX_BODY = 8192;
 const ONCE = ["grant_type", "code", "redirect_uri", "code_verifier", "client_id", "client_secret"];
@@ -60,10 +64,6 @@ export async function onRequestPost({ request, env }) {
   if (onSite(new URL(request.url))) return oauthError(400, "invalid_request");
   const setup = await setUp(env);
   if (!setup) return oauthError(503, "temporarily_unavailable");
-  let fails = 0;
-  try { fails = await failuresOf(env, request); } catch { return oauthError(503, "temporarily_unavailable"); }
-  if (fails >= FAILS_PER_HOUR) return oauthError(429, "temporarily_unavailable", [["Retry-After", "3600"]]);
-  const failed = async (res) => { await countFailure(env, request); return res; };
 
   const ctype = (request.headers.get("content-type") || "").toLowerCase();
   if (!ctype.startsWith("application/x-www-form-urlencoded")) return oauthError(400, "invalid_request");
@@ -72,32 +72,38 @@ export async function onRequestPost({ request, env }) {
   if (raw.length > MAX_BODY) return oauthError(400, "invalid_request");
   const form = new URLSearchParams(raw);
   if (ONCE.some((k) => form.getAll(k).length > 1)) return oauthError(400, "invalid_request");
+  const basic = basicOf(request.headers.get("authorization"));
+  if (basic && form.has("client_secret")) return oauthError(400, "invalid_request");
+
+  // A TRY, TAKEN FIRST: a failure below keeps it, anything else gives it back
+  let k = null;
+  try { k = await takeTry(env, request); } catch { return oauthError(503, "temporarily_unavailable"); }
+  if (!k) return oauthError(429, "temporarily_unavailable", [["Retry-After", "3600"]]);
+  const back = async (res) => { await giveBack(env, k); return res; };
 
   // THE CLIENT, by one method
-  const basic = basicOf(request.headers.get("authorization"));
-  if (basic === false) return failed(badClient());
+  if (basic === false) return badClient();
   let id = null, secret = null;
   if (basic) {
-    if (form.has("client_secret")) return oauthError(400, "invalid_request");
-    if (form.has("client_id") && form.get("client_id") !== basic.id) return failed(badClient());
+    if (form.has("client_id") && form.get("client_id") !== basic.id) return badClient();
     ({ id, secret } = basic);
   } else {
     id = form.get("client_id");
     secret = form.get("client_secret");
   }
   const [idOk, secretOk] = await Promise.all([sameSecret(id, setup.client.id), sameSecret(secret, setup.client.secret)]);
-  if (!idOk || !secretOk) return failed(badClient());
+  if (!idOk || !secretOk) return badClient();
 
-  if (form.get("grant_type") !== "authorization_code") return oauthError(400, "unsupported_grant_type");
+  if (form.get("grant_type") !== "authorization_code") return back(oauthError(400, "unsupported_grant_type"));
 
   // SPENT FIRST: whatever follows, this code is used up
   let row = null;
-  try { row = await spendCode(env, form.get("code")); } catch { return oauthError(503, "temporarily_unavailable"); }
-  if (!row) return failed(oauthError(400, "invalid_grant"));
+  try { row = await spendCode(env, form.get("code")); } catch { return back(oauthError(503, "temporarily_unavailable")); }
+  if (!row) return oauthError(400, "invalid_grant");
   const verifier = form.get("code_verifier") || "";
   const pkce = VERIFIER.test(verifier) && sameCode(await sha256u(verifier), String(row.code_challenge || ""));
   const bound = row.client_id === setup.client.id && form.get("redirect_uri") === row.redirect_uri;
-  if (!pkce || !bound) return failed(oauthError(400, "invalid_grant"));
+  if (!pkce || !bound) return oauthError(400, "invalid_grant");
 
   const t = now();
   const claims = { iss: ISSUER, aud: setup.client.id, sub: await subOf(row.email), email: row.email,
@@ -106,9 +112,9 @@ export async function onRequestPost({ request, env }) {
   if (Number.isInteger(at) && at > 0 && at <= t) claims.auth_time = at;
   if (typeof row.nonce === "string" && row.nonce) claims.nonce = row.nonce;
   const idToken = await signJwt(env, claims);
-  if (!idToken) return oauthError(503, "temporarily_unavailable");
-  return answer(200, { access_token: random(32), token_type: "Bearer", expires_in: ID_TOKEN_SECONDS,
-    id_token: idToken });
+  if (!idToken) return back(oauthError(503, "temporarily_unavailable"));
+  return back(answer(200, { access_token: random(32), token_type: "Bearer", expires_in: ID_TOKEN_SECONDS,
+    id_token: idToken }));
 }
 
 /* Asked as a page or a link: not how a token is ever got. */
