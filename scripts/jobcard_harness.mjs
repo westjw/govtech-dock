@@ -474,6 +474,8 @@ try {
       not_set_up: jhPanelHTML({ failed: "not_set_up" }),
       // and one person's twenty asks a minute used up (review, 2026-11-23)
       slow_down: jhPanelHTML({ failed: "slow_down" }),
+      // Job Hunter not taking the board's way in (review, 2026-11-24)
+      not_let_in: jhPanelHTML({ failed: "not_let_in" }),
       none: jhPanelHTML(null),
       missing: jhPanelHTML({ found: false }),
       // a role with everything: a failing gate, a score the person rejected,
@@ -535,6 +537,7 @@ try {
       not_from_site: await jhAnswer(reply({ status: 403, json: body({ error: "not_from_this_site" }) })),
       bad_id: await jhAnswer(reply({ status: 400, json: body({ error: "bad_id" }) })),
       slow_down: await jhAnswer(reply({ status: 429, json: body({ error: "slow_down" }) })),
+      not_let_in: await jhAnswer(reply({ status: 502, json: body({ failed: "not_let_in" }) })),
     };
   })()`, ctx);
 } catch (e) {

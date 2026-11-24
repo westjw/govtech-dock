@@ -329,9 +329,15 @@ panel on a role).**
   `no_account` is a person with no account linked; `unreachable` is the Mac
   asleep, a timeout or Job Hunter's door answering instead ("did not answer",
   whose words say the board's way in may need fixing); `not_set_up` is no
-  service token (or no D1); `slow_down` is one person's twenty asks a minute
-  used up ("Wait a minute, then open this one again"); any other 401 or 403,
-  or a redirect, asks for a sign-in. A
+  service token (or no D1); `not_let_in` is Job Hunter's own 401 other than
+  `no_account`, which the board relays as 502: nothing of the person's is
+  sent, so it can only be Job Hunter not taking the board's way in (its
+  `JH_BOARD_SERVICE_TOKEN` unset or another token's, or the board's assertion
+  refused), and the panel says the way in needs fixing, never "sign in"
+  (review, 2026-11-24: Job Hunter's `no_token` read "Sign in to Job Hunter");
+  `slow_down` is one person's twenty asks a minute used up ("Wait a minute,
+  then open this one again"); any other 401 or 403, or a redirect, asks for
+  a sign-in. A
   failing gate prints above the fit and a score the person rejected says so,
   as on Job Hunter's own board. Everything Job Hunter says is printed as
   text.
@@ -487,11 +493,14 @@ the popout's assertion: change it on one side only and the popout stops.
   `JH_SERVICE_TOKEN_SECRET`) and `X-SJ-Assertion` (ES256, the same key: iss,
   aud = that route, sub, email, the id, iat, exp = iat + 60, a 16-byte jti),
   no other header, no cookie, no redirect followed, eight seconds. Job
-  Hunter's 200 JSON is relayed; its 401 and 404 as the reason word alone
-  (never the address its no_account carries); anything else - a timeout, a
-  network error, Access's login page or redirect, a 5xx, anything not a
-  JSON object or over 64 KB - is 502 `{"failed":"unreachable"}`. Nothing is
-  logged. THE SERVICE TOKEN PASSES ACCESS ON EVERY PATH of hunter.<domain>:
+  Hunter's 200 JSON is relayed; its 401 `no_account` and its 404 as the
+  reason word alone (never the address its no_account carries); any other
+  401 of Job Hunter's (`no_token`, `bad_token`) is 502
+  `{"failed":"not_let_in"}`, because the board sends nothing of the person's
+  and so that 401 is Job Hunter refusing the board's way in; anything else -
+  a timeout, a network error, Access's login page or redirect, a 5xx,
+  anything not a JSON object or over 64 KB - is 502
+  `{"failed":"unreachable"}`. Nothing is logged. THE SERVICE TOKEN PASSES ACCESS ON EVERY PATH of hunter.<domain>:
   that is why everything about the call is fixed here, and why Job Hunter
   believes a person only when the token's Access assertion AND the board's
   signed one verify, for that one route.

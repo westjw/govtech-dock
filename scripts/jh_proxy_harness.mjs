@@ -70,6 +70,7 @@ const ANSWERS = {
   missing: () => jsonRes(200, { found: false }),
   no_account: () => jsonRes(401, { error: "no_account", email: "hunter@example.org" }),
   no_token: () => jsonRes(401, { error: "no_token" }),
+  bad_token: () => jsonRes(401, { error: "bad_token" }),
   refused_sentence: () => jsonRes(401, { error: "that token is not one we issued" }),
   not_found: () => jsonRes(404, { error: "no such endpoint /api/board-role" }),
   bad: () => jsonRes(400, { error: "id must be a SLED JOBS role id" }),

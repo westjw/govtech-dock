@@ -30,11 +30,21 @@
  *      in one book that refuses everybody when full, so one beta user's
  *      script must not be able to fill it (review, 2026-11-23). Over it:
  *      429 {"error": "slow_down"}, nothing signed, nothing sent.
- * What comes back: Job Hunter's JSON when it answers 200; its 401 and 404
- * reasons (the word alone: no address); and {"failed": "unreachable"} for a
- * timeout, a network error, Access's own login page or anything that is not
- * JSON, and for a count D1 could not take. Nothing is logged: not the
- * assertion, not the secret.
+ * What comes back: Job Hunter's JSON when it answers 200; its 401
+ * no_account and its 404 reasons (the word alone: no address); any other
+ * 401 of Job Hunter's as {"failed": "not_let_in"} (below); and
+ * {"failed": "unreachable"} for a timeout, a network error, Access's own
+ * login page or anything that is not JSON, and for a count D1 could not
+ * take. Nothing is logged: not the assertion, not the secret.
+ *
+ * A 401 FROM JOB HUNTER IS NEVER THE PERSON'S SIGN-IN (review, 2026-11-24):
+ * nothing of theirs is sent, so it is either no_account (the board's word
+ * was taken and the address opens no account) or Job Hunter not taking the
+ * board's way in at all - its no_token or bad_token, for a missing
+ * JH_BOARD_SERVICE_TOKEN, another token's Client ID, or the board's
+ * assertion refused. That is the way in needing fixing, and the panel says
+ * so; relayed as a 401 it read "Sign in to Job Hunter", which no sign-in
+ * could mend.
  */
 import { onSite, random, now } from "../../_session.js";
 import { signedIn } from "../../_identity.js";
@@ -113,10 +123,11 @@ export async function onRequestGet({ request, env }) {
   try { body = JSON.parse(text); } catch { return unreachable(); }
   if (!isObject(body)) return unreachable();
   if (res.status === 200) return json(body, 200);
-  if (res.status === 401 || res.status === 404) {
-    const word = typeof body.error === "string" && WORD.test(body.error) ? body.error
-      : res.status === 401 ? "refused" : "not_found";
-    return json({ error: word }, res.status);
+  if (res.status === 401) {
+    return body.error === "no_account" ? json({ error: "no_account" }, 401) : json({ failed: "not_let_in" }, 502);
+  }
+  if (res.status === 404) {
+    return json({ error: typeof body.error === "string" && WORD.test(body.error) ? body.error : "not_found" }, 404);
   }
   if (res.status === 400) return json({ error: "bad_id" }, 400);
   return unreachable();

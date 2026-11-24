@@ -2757,8 +2757,10 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
         carries iss, aud, sub, email, the id, iat, exp = iat + 60, a fresh
         jti; Python's own query reader, as Job Hunter's is, reads every
         awkward id back exactly;
-      - what comes back: Job Hunter's JSON, its 401/404 reason words (never
-        the address), and "unreachable" for everything else;
+      - what comes back: Job Hunter's JSON, its no_account and 404 reason
+        words (never the address), "not_let_in" for any other 401 of its
+        own (nothing of the person's is sent, so that is Job Hunter not
+        taking the board's way in), and "unreachable" for everything else;
       - nothing secret in any answer, and nothing logged.
     """
     import shutil
@@ -2872,9 +2874,15 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
     rel = o.get("relay") or {}
     found = {"found": True, "id": "sig-1", "org": "Acme Gov", "title": "Account Executive", "status": "open",
              "fit": {"as_is": 71, "ceiling": 88, "review": "accepted"}}
+    # A 401 FROM JOB HUNTER IS NEVER THE PERSON'S SIGN-IN (review,
+    # 2026-11-24): nothing of theirs is sent, so its no_token (no
+    # JH_BOARD_SERVICE_TOKEN, another token's, the assertion refused) and any
+    # other 401 but no_account is Job Hunter not taking the board's way in,
+    # a setup problem the panel words as one (it said "Sign in to Job Hunter")
     want_rel = {"found": (200, found), "missing": (200, {"found": False}),
-                "no_account": (401, {"error": "no_account"}), "no_token": (401, {"error": "no_token"}),
-                "refused_sentence": (401, {"error": "refused"}), "not_found": (404, {"error": "not_found"}),
+                "no_account": (401, {"error": "no_account"}), "no_token": (502, {"failed": "not_let_in"}),
+                "bad_token": (502, {"failed": "not_let_in"}),
+                "refused_sentence": (502, {"failed": "not_let_in"}), "not_found": (404, {"error": "not_found"}),
                 "bad": (400, {"error": "bad_id"})}
     for k in ("busy", "forbidden_json", "tunnel_down", "access_redirect", "access_page", "json_array", "not_json",
               "huge", "no_type", "network", "slow"):
@@ -2895,6 +2903,18 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
     if src.count("fetch(") != 1 or "fetch(`${JH_ROUTE}?id=${encodeURIComponent(id)}`" not in src \
             or 'redirect: "manual"' not in src:
         errors += fail("functions/api/jh/board-role.js makes another call than the one fixed GET")
+    # THE OWNER'S CHECK READS EACH ANSWER RIGHT (review, 2026-11-24): a
+    # missing or wrong JH_BOARD_SERVICE_TOKEN is "did not let the board in",
+    # Job Hunter's side, and no longer filed under "did not answer"
+    deploy = (ROOT / "DEPLOY.md").read_text()
+    s3f = re.sub(r"\s+", " ", deploy[deploy.find("## 3f."):deploy.find("\n## ", deploy.find("## 3f.") + 1)])
+    panel = s3f[s3f.find("**The panel:**"):s3f.find("**A new signing key")]
+    if ('"Job Hunter did not let the board in": Job Hunter\'s side' not in panel
+            or "`JH_BOARD_SERVICE_TOKEN` is missing from the serve plist" not in panel
+            or "plist variable is missing" in panel or "`board-role:`" not in panel):
+        errors += fail("DEPLOY.md §3f's panel check does not say that \"did not let the board in\" is Job Hunter's "
+                       "JH_BOARD_SERVICE_TOKEN (or its check of the board's signature), or still files a missing "
+                       "plist variable under \"did not answer\"")
     return errors
 
 
@@ -58658,7 +58678,8 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         got = flat.get(key, "")
         if needle not in got or f'href="{app}"' not in got:
             errors += fail(f"the panel's {key} silence does not say {needle!r} or offer Job Hunter: {got[:200]!r}")
-    if "did not answer" in flat.get("signin", "") or "Sign in" in flat.get("unreachable", ""):
+    if ("did not answer" in flat.get("signin", "") or "Sign in" in flat.get("unreachable", "")
+            or "Sign in" in flat.get("not_let_in", "") or "did not answer" in flat.get("not_let_in", "")):
         errors += fail("the panel says one silence for another")
     # THE BOARD'S OWN FUNCTION'S WORDS (design C, 2026-11-23): no place in the
     # beta, the board's sign-in run out (offered a sign-in back to this page,
@@ -58667,7 +58688,11 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
                               ("signedout", "SLED JOBS sign-in has run out", 'href="http://x/signin?to=%2F"'),
                               ("not_set_up", "way in to Job Hunter is not set up", f'href="{app}"'),
                               # one person's twenty asks a minute (review, 2026-11-23)
-                              ("slow_down", "Wait a minute, then open this one again", f'href="{app}"')):
+                              ("slow_down", "Wait a minute, then open this one again", f'href="{app}"'),
+                              # Job Hunter not taking the board's way in (review, 2026-11-24):
+                              # a setup problem, never "sign in"
+                              ("not_let_in", "did not let the board in", f'href="{app}"'),
+                              ("not_let_in", "way in to Job Hunter needs fixing; it is not your sign-in", f'href="{app}"')):
         got = flat.get(key, "")
         if needle not in got or href not in got:
             errors += fail(f"the panel's {key} silence does not say {needle!r} or offer {href}: {got[:200]!r}")
@@ -58684,7 +58709,8 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
             "not_allowed": {"failed": "not_allowed"}, "not_signed_in": {"failed": "signedout"},
             "gate_refused": {"failed": "signedout"}, "unreachable": {"failed": "unreachable"},
             "not_set_up": {"failed": "not_set_up"}, "not_from_site": {"failed": "signin"},
-            "bad_id": {"failed": 400}, "slow_down": {"failed": "slow_down"}}
+            "bad_id": {"failed": 400}, "slow_down": {"failed": "slow_down"},
+            "not_let_in": {"failed": "not_let_in"}}
     got = jp.get("answers") or {}
     for k, v in want.items():
         if got.get(k) != v:

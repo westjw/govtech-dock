@@ -322,11 +322,25 @@ one-time codes live there) and `SESSION_SECRET` is set (§3a).
   sign-in, by email → Job Hunter. Then, signed in on the board, open Job
   Hunter again: no sign-in at all.
 - **The panel:** on any role on the board, **Job Hunter ▸** fills in with no
-  sign-in. "The board's way in to Job Hunter is not set up yet" means step
-  4's Pages secrets (or the D1 binding of §3e); "did not answer" means Job
-  Hunter is asleep or its plist variable is missing. "Wait a minute" means
-  that sign-in asked about more than twenty roles in a minute: the board
-  holds each person to that, so one script cannot swamp Job Hunter.
+  sign-in. If it says something else instead, each answer points at one
+  place:
+  - "The board's way in to Job Hunter is not set up yet": the board's side,
+    step 4's Pages secrets (or the D1 binding of §3e).
+  - "Job Hunter did not let the board in": Job Hunter's side. Its
+    `JH_BOARD_SERVICE_TOKEN` is missing from the serve plist (or the server
+    was not restarted after it was set), or it is not the `board popout`
+    token's Client ID, or Job Hunter could not check the board's signature.
+    Its serve log says which, in a line starting `board-role:` (a missing
+    variable logs nothing).
+  - "did not answer": Job Hunter is asleep or offline, or Access did not let
+    the token through (step 4's Service Auth policy on "Job Hunter beta", or
+    a `JH_SERVICE_TOKEN_ID` / `JH_SERVICE_TOKEN_SECRET` that is not the
+    token's).
+  - "no Job Hunter account is linked to that address": everything works, and
+    the address you signed in with opens no account in Job Hunter.
+  - "Wait a minute": that sign-in asked about more than twenty roles in a
+    minute. The board holds each person to that, so one script cannot swamp
+    Job Hunter.
 
 **A new signing key, once a year (a routine rotation).** Pages never shows a
 secret again, so the key in use cannot be copied, and is not needed: its

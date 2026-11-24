@@ -4932,6 +4932,7 @@ function jhPanelHTML(r){
       signedout:"Your SLED JOBS sign-in has run out. Sign in again to see what Job Hunter holds.",
       signin:"Sign in to Job Hunter to see this role there.",
       not_set_up:"The board's way in to Job Hunter is not set up yet.",
+      not_let_in:"Job Hunter did not let the board in to ask about this role. The board's way in to Job Hunter needs fixing; it is not your sign-in.",
       slow_down:"That is a lot of roles in one minute. Wait a minute, then open this one again.",
       unreachable:"Job Hunter did not answer. It may be offline (it runs on a computer that sleeps), or the board's way in to it may need fixing; from here the two look the same.",
     }[why]||`Job Hunter could not answer just now (${String(why)}).`;
@@ -4993,16 +4994,18 @@ function jhPanelHTML(r){
    refusal says the same), "not_allowed" no place in the beta, "no_account"
    Job Hunter's own 401 for a person with no account linked, "unreachable"
    Job Hunter asleep, timed out or its door answering instead, "not_set_up"
-   the board's way in not configured, "slow_down" this person's twenty asks
-   a minute used up. Any other 401 or 403 is a door: sign in. So is a
-   redirect. */
+   the board's way in not configured, "not_let_in" Job Hunter not taking the
+   board's way in (any 401 of its own but no_account: nothing of the
+   person's is sent, so no sign-in mends it), "slow_down" this person's
+   twenty asks a minute used up. Any other 401 or 403 is a door: sign in.
+   So is a redirect. */
 async function jhAnswer(res){
   if(res.type==="opaqueredirect")return {failed:"signin"};
   if(res.ok)return await res.json();
   let b=null; try{ b=await res.json(); }catch(e){ b=null; }
   const word=b&&typeof b==="object"?(b.failed||b.error):null;
   if(word==="not_signed_in")return {failed:"signedout"};
-  if(word==="no_account"||word==="not_allowed"||word==="unreachable"||word==="not_set_up"||word==="slow_down")return {failed:word};
+  if(word==="no_account"||word==="not_allowed"||word==="unreachable"||word==="not_set_up"||word==="not_let_in"||word==="slow_down")return {failed:word};
   return {failed:res.status===401||res.status===403?"signin":res.status};
 }
 async function openJhPanel(p,btn){
