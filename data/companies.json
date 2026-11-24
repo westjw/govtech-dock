@@ -37633,8 +37633,8 @@
     "category": "Streets",
     "description": "AI detection of pavement markings and road defects from crowdsourced dashcams (Bentley Systems) - exhibited at ITS America 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://jobs.bentley.com"
+      "type": "unknown",
+      "ref": null
     },
     "hiring": {
       "status": "Unknown",
@@ -37796,7 +37796,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "unwired 2026-11-24: the html board 'https://jobs.bentley.com' is Bentley Systems's, not Blyncsy's - jobs.bentley.com is Bentley Systems' company-wide careers site, not Blyncsy's own board (Blyncsy is a Bentley company); taken off on the owner's word, 2026-11-24",
+    "board_owner": "Bentley Systems"
   },
   {
     "id": "cyclomedia",
@@ -158246,8 +158248,8 @@
     "category": "Terminal & Passenger Experience",
     "description": "Mobile food ordering marketplace deployed across airport terminals",
     "ats": {
-      "type": "html",
-      "ref": "https://www.grab.careers/en/"
+      "type": "unknown",
+      "ref": null
     },
     "hiring": {
       "status": "Unknown",
@@ -158261,7 +158263,9 @@
     "source": "competitor sweep",
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "ats_note": "unwired 2026-11-24: the html board 'https://www.grab.careers/en/' is Grab Holdings' (the Singapore company), not this airport-ordering company's; the two only share a name. Taken off on the owner's word",
+    "board_owner": "Grab Holdings"
   },
   {
     "id": "zensors",

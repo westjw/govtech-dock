@@ -32641,7 +32641,7 @@
     "govtech-product"
    ],
    "parent": null,
-   "ats_note": null,
+   "ats_note": "unwired 2026-11-24: the html board 'https://jobs.bentley.com' is Bentley Systems's, not Blyncsy's - jobs.bentley.com is Bentley Systems' company-wide careers site, not Blyncsy's own board (Blyncsy is a Bentley company); taken off on the owner's word, 2026-11-24",
    "brands": null,
    "acquired": null,
    "also_known_as": null,
@@ -32701,7 +32701,7 @@
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
-   "board_owner": null,
+   "board_owner": "Bentley Systems",
    "no_board_on_file": false,
    "probe": null,
    "enumerable": true,
@@ -115260,7 +115260,7 @@
     "govtech-product"
    ],
    "parent": null,
-   "ats_note": null,
+   "ats_note": "unwired 2026-11-24: the html board 'https://www.grab.careers/en/' is Grab Holdings' (the Singapore company), not this airport-ordering company's; the two only share a name. Taken off on the owner's word",
    "brands": null,
    "acquired": null,
    "also_known_as": null,
@@ -115287,7 +115287,7 @@
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
-   "board_owner": null,
+   "board_owner": "Grab Holdings",
    "no_board_on_file": false,
    "probe": null,
    "enumerable": true,
@@ -619346,13 +619346,13 @@
  ],
  "coverage": {
   "structured": 561,
-  "page only": 957,
+  "page only": 955,
   "absent": 663,
   "blocked": 197,
-  "unchecked": 64
+  "unchecked": 66
  },
  "redrawn": {
-  "at": "2026-11-24T17:27:59Z",
-  "inputs": "35a2e14ad43573da4ee94057e26ef4c1130beda7cd1802f17fe751fec674ab76"
+  "at": "2026-11-24T18:30:31Z",
+  "inputs": "bf737c57bb3250733cf47e384d3527e9eca9bee31f770e1a64e2ba52a32ec56f"
  }
 }
