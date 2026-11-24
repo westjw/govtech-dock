@@ -4006,18 +4006,27 @@ def jobvitefeed_page(ref) -> str:
 
 
 def _jvx_body(url: str) -> bytes:
-    """The feed's bytes, asked once: robots.txt at every hop (follow), every
-    hop held to this very address - an account nobody holds is sent on to
-    Jobvite's own pages, and that hop is refused before it is asked anything
-    - paced at the host's gate (_one), read as a stream, and refused past
-    JOBVITE_FEED_MAX. A 429 is honoured at the gate and raised as
-    RateLimited; any other answer but a 200 is an error; the network failing
-    on the way, mid-body included, is a network error."""
+    """The feed's bytes, asked once: robots.txt asked (follow), and no
+    redirect followed - the feed answers in place, so a hop anywhere is
+    refused before it is asked anything: to Jobvite's own pages, where an
+    account nobody holds is sent, or back to the feed itself, which follow()
+    asked eleven times over, at the host's 30-second pace, before it gave up
+    (blind review 12, 2026-11-23). Paced at the host's gate (_one), read as
+    a stream, and refused past JOBVITE_FEED_MAX. A 429 is honoured at the
+    gate and raised as RateLimited; any other answer but a 200 is an error;
+    the network failing on the way, mid-body included, is a network error."""
+    hops: list[str] = []
+
     def stay(u: str):
+        hops.append(u)
         if u != url:
             raise AtsError(f"{url} leads off to {str(u)[:120]}, which is not this account's feed "
                            f"(an account that is not there is sent on to Jobvite's own pages), so "
                            f"it is not read as a board with nothing open")
+        if len(hops) > 1:
+            raise AtsError(f"{url} leads off to itself again: the feed answers in place, so a "
+                           f"redirect is never followed (an account that is not there is sent on "
+                           f"to Jobvite's own pages), and it is not read as a board with nothing open")
     resp = follow(url, lambda u: _one(u, stream=True), may=stay)
     try:
         status = getattr(resp, "status_code", None)

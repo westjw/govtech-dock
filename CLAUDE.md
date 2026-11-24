@@ -3898,10 +3898,12 @@ through the door.
 
 - **One request is the whole board.** GET
   https://app.jobvite.com/CompanyJobs/Xml.aspx?c=<id> through `ats.follow`
-  (robots.txt and `plain_address` at every hop; app.jobvite.com allows
-  /CompanyJobs/), every hop held to that very address - an id nobody holds is
-  sent on to Jobvite's own pages, and that hop is refused before it is asked
-  anything - asked as a stream (`ats._one`) and refused past
+  (robots.txt and `plain_address` asked; app.jobvite.com allows
+  /CompanyJobs/), and no redirect followed: the feed answers in place, so a
+  hop anywhere is refused before it is asked anything - to Jobvite's own
+  pages, where an id nobody holds is sent, or back to the feed itself, which
+  was asked eleven times over at the 30-second pace before blind review 12 -
+  asked as a stream (`ats._one`) and refused past
   `JOBVITE_FEED_MAX` (32,000,000 bytes), never read in part. Measured on
   Tyler's, 2026-11-23: 200, 2,119,266 characters, 266 rows, no paging, no
   total.

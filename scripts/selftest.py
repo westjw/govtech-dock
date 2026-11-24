@@ -20740,13 +20740,16 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
         refusing["on"] = False
         if r_ is not None or not isinstance(e_, ats.RobotsRefused) or sent:
             errors += fail(f"jobvitefeed: a feed robots.txt closes was asked ({sent}) or read: {r_ or e_}")
+        # (and one back to the feed itself, as written or relative: the feed
+        # answers in place, and follow() asked it eleven times, robots.txt
+        # and the 30-second gate each time - blind review 12, 2026-11-23)
         for to in ("https://app.jobvite.com/Recruiting/Home.aspx", "https://www.jobvite.com/",
-                   FEED + "&x=1"):
+                   FEED + "&x=1", FEED, f"Xml.aspx?c={A}"):
             r_, e_, _ = read(Resp(302, headers={"Location": to}))
             if r_ is not None or "leads off" not in str(e_) or [u for u, _kw in sent] != [FEED] \
-                    or asked != [FEED]:
-                errors += fail(f"jobvitefeed: a redirect to {to} was asked ({sent}, robots {asked}) "
-                               f"or read: {r_ or e_}")
+                    or asked != [FEED] or gated != [FEED]:
+                errors += fail(f"jobvitefeed: a redirect to {to} was asked ({len(sent)} times, robots "
+                               f"{len(asked)}, the gate {len(gated)}) or read: {r_ or e_}")
 
         # ---- a failure of the day is raised as every reader raises it -----------------------
         keep_hold = dict(ats._HOST_NOT_BEFORE)
