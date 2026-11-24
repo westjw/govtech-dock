@@ -51,6 +51,7 @@ import urllib.parse
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import ats            # noqa: E402
 import add_company    # noqa: E402
+import board_proposals  # noqa: E402
 import verify_boards  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -217,7 +218,6 @@ def main() -> int:
     # next sweep proposed it straight back - which is how a queue teaches
     # somebody to stop reading it.
     try:
-        import board_proposals
         refused = {k for k, v in board_proposals._read(
             board_proposals.RULED, {}).items() if not v.get("accept")}
     except Exception:
@@ -231,17 +231,33 @@ def main() -> int:
         todo = todo[:a.limit]
 
     print(f"scanning {len(todo)} careers pages for an embedded board\n", flush=True)
-    hits, checked = [], 0
+    hits, checked, left = [], 0, set()
     for i, c in enumerate(todo, 1):
         html = ""
         for url in careers_urls(c):
+            hops: list = []
             try:
-                r = add_company.fetch(url)
-                html = r[0] if isinstance(r, tuple) else r
-                if html and len(html) > 400:
-                    break
+                r = add_company.fetch(url, hops=hops)
+                got = r[0] if isinstance(r, tuple) else r
             except Exception:
                 continue
+            if got and (not hops or any(board_proposals.paylocity_posting(None, h)
+                                        for h in hops)):
+                # A PAGE A FETCH LANDED ON THAT IS A PAYLOCITY POSTING IS NOT
+                # READ (review of the posting change, 2026-11-23): a careers
+                # address answering 301 to one job had the board in the
+                # posting's breadcrumb lifted as an embedded board, which
+                # wire_embedded --write wired on the tenant's name in its
+                # address, the first of two boards taken where the page named
+                # two. A posting is one job, not a board: the wiring door asks
+                # its page which board it names and holds that to both checks
+                # (board_proposals.paylocity_posting, as discovery does). And a
+                # page whose fetch cannot say where it landed is not read.
+                left.add(c["id"])
+                continue
+            html = got
+            if html and len(html) > 400:
+                break
         checked += 1
         for f in scan(html)[:2]:
             # a reference is a claim; verify it returns real postings before
@@ -282,6 +298,11 @@ def main() -> int:
 
     out_path.write_text(json.dumps(hits, indent=1) + "\n")
     print(f"\n{len(hits)} verified boards found in {checked} pages")
+    if left:
+        print(f"{len(left)} companies have a careers address that lands on a Paylocity "
+              f"posting, or a page whose fetch could not say where it landed, and that "
+              f"page was not read: a posting is one job, not a board - left to the "
+              f"wiring door (scripts/wire_found.py asks its page which board it names)")
     print(f"written to {out_path}")
     print("\nNOT written to companies.json. Every one needs a person to confirm "
           "the board belongs to this company - Circuit's says 'TFR Transit Inc', "

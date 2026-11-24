@@ -94,6 +94,15 @@ address whose answer pointed at the board, and `saw` is where it pointed.
 For an off_site row it is the address the reference was really seen on: the
 other site's page, or the other site's address that did the redirecting.
 
+A POSTING IS NOT A BOARD (owner, 2026-11-23). A link to ONE job on Paylocity
+(recruiting.paylocity.com/recruiting/jobs/Details/<id>...) names no board -
+its address's tenant segment is not the board's (PlayMetrics' postings say
+EMINOR-INC) - so it is a candidate of type `paylocity-posting`, its ref the
+posting's own address, one row per posting a page links (a careers page
+linking twelve postings gives twelve, so the door can try another when one
+has closed). No fetcher takes that type: the wiring door asks the posting's
+page which board it names, and that is the find. Nothing here asks it.
+
 `generated` is when the OLDEST record in the file was read. A run that picks
 a file up again keeps the first run's stamp, so nothing in the file is older
 than its date says.
@@ -439,6 +448,7 @@ HINTS = {
     "zohorecruit": ("zohorecruit.",),
     "comeet": ("comeet.",),
     "jobvite": ("jobvite.com",),
+    "jobvitefeed": ("jobvite.com",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -634,6 +644,13 @@ def _comeet_hosted(m):
     return f"https://www.comeet.com/jobs/{slug}/{uid}", uid.lower()
 
 
+def _jobvite_account(m):
+    # the company id, exactly as the page wrote it: ids mind case (q6NaVfwI),
+    # and one that is not in Jobvite's shape is no account this reads
+    account = m.group(1)
+    return (account, account) if ats.JOBVITE_ACCOUNT.fullmatch(account) else None
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -713,7 +730,48 @@ BOARDS: list[_Pat] = (
         # __assets__ (the first character cannot be an underscore)
         _here("jobvite", r"(?<![a-z0-9.-])jobs\.jobvite\.com/([A-Za-z0-9][A-Za-z0-9_-]{0,80})"
                          r"(?![A-Za-z0-9_-])"),
+        # A JOBVITE ACCOUNT NAMED BY ITS COMPANY ID on app.jobvite.com: the
+        # widget's script and its frame (ci=), a talent network link, or a
+        # CompanyJobs page (c=) - Tyler Technologies' careers pages, seen
+        # 2026-11-23. Its board is the account's XML feed
+        # (ats.fetch_jobvitefeed). Where their site names a jobs.jobvite.com
+        # career site, that stays the board and these are jobvite-tenant, as
+        # they were before the feed had a reader (jobvite_account_forms,
+        # jobvite_account_board). hire.jobvite.com is left a tenant form: no
+        # site measured here names an account there.
+        _here("jobvitefeed", r"(?<![a-z0-9.-])app\.jobvite\.com/(?:CompanyJobs/(?:Careers|Job|Xml)\.aspx"
+                             r"|TalentNetwork/[^\s\"'<>?#]{0,200}|__assets__/scripts/[^\s\"'<>?#]{0,200})"
+                             r"\?(?:[^\s\"'<>#]{0,300}?[&;])?ci?=([A-Za-z0-9]{8})(?![A-Za-z0-9])",
+              _jobvite_account),
     ])
+
+# A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
+# and that posting's page names exactly one board" counts as check 1). Ten
+# companies' careers pages link single Paylocity postings -
+# /recruiting/jobs/Details/<id>/<Tenant>/<Title>, or /Recruiting/Jobs/Details/
+# <id> bare - and never their board. The address names no board: its tenant
+# segment is not the board's tenant (PlayMetrics' postings say EMINOR-INC, its
+# board is PlayMetrics), and Paylocity serves the posting by its id alone. So
+# it is a candidate that says it is a posting (POSTING), its ref the posting's
+# own address on Paylocity's host as the page wrote its path (no query, no
+# fragment), one per posting id. No fetcher takes it and this file asks
+# nothing of it: the wiring door asks the posting's page which board it names
+# (wire_found.resolved_by_posting). KEPT APART FROM BOARDS, every pattern of
+# which names a board some fetcher reads.
+POSTING = "paylocity-posting"
+POSTING_HINTS = {POSTING: ("paylocity.com",)}
+
+
+def _paylocity_posting(m):
+    path = m.group(1).rstrip(".")
+    return f"https://recruiting.paylocity.com/{path}", m.group(2)
+
+
+POSTINGS: list[_Pat] = [
+    _here(POSTING, r"(?<![a-z0-9.-])recruiting\.paylocity\.com/(recruiting/jobs/details/"
+                   r"([0-9]{1,12})(?:/[A-Za-z0-9_.~%-]{1,200}){0,2})(?![A-Za-z0-9_.~%-])",
+          _paylocity_posting),
+]
 
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
 # is worth writing next is a question the repo could not answer: no tool
@@ -729,9 +787,13 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         # app./hire.jobvite.com: its CompanyJobs pages and talent network) or a
         # job of one (j?cj=) but no career site this door can read: another
         # account beside their board, and a doubt (blind review, 2026-11-22).
+        # IN ANY PATH there (review 12's verifier, 2026-11-23): one the account
+        # forms do not list - CompanyJobs/Apply.aspx?c=, an __assets__ page's
+        # ci= - was "any other jobvite.com address", which names no board, so
+        # beside the widget it was its furniture and as a link a note, and
+        # the door wired the widget's account with another named beside it.
         ("jobvite-tenant", "jobvite.com",
-         r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/(?:CompanyJobs/(?:Careers|Job|Xml)\.aspx"
-         r"|TalentNetwork/[^\s\"'<>?]{0,200})\?[^\s\"'<>]{0,300}?\b(?:c|ci)=[A-Za-z0-9]{5,12}"),
+         r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/[^\s\"'<>]{0,500}?\b(?:c|ci)=[A-Za-z0-9]{5,12}"),
         # a link to ONE job (j?cj=), whose account the link does not show
         ("jobvite-joblink", "jobvite.com",
          r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/j/?\?[^\s\"'<>]{0,300}?\bcj=[A-Za-z0-9]{5,12}"),
@@ -866,6 +928,25 @@ def same_tenant(row: dict, candidates) -> bool:
                            for c in candidates)
 
 
+def jobvite_account_forms(boards: dict, others: dict) -> tuple[dict, dict]:
+    """One page's tally, where it names a Jobvite account by its company id
+    (a jobvitefeed board) AND a jobs.jobvite.com career site: the career site
+    is the page's board, and the account is filed as the form it was before
+    its feed had a reader - jobvite-tenant, another account beside their
+    board, a doubt. A slug names a career site and an id an account, and
+    nothing on a page ties one to the other (tenant_of). (sightings' rows,
+    keyed (kind, key, element) and (vendor, element).)"""
+    kinds = {kind for kind, _key, _el in boards}
+    if "jobvitefeed" not in kinds or "jobvite" not in kinds:
+        return boards, others
+    for bkey in [b for b in boards if b[0] == "jobvitefeed"]:
+        row = boards.pop(bkey)
+        form = others.setdefault(("jobvite-tenant", bkey[2]), {
+            "vendor": "jobvite-tenant", "element": bkey[2], "saw": row["saw"], "times": 0})
+        form["times"] += row["times"]
+    return boards, others
+
+
 # The forms above that belong to a platform we read. A redirect that lands on
 # one is walked one hop further, because the platform's own next hop usually
 # IS the board (a grnh.se short link, a Workday tenant with no site named).
@@ -914,16 +995,17 @@ _READABLE_HOST = re.compile(
 def find_refs(text: str) -> tuple[list[tuple], list[tuple]]:
     """Every board, and every platform nothing reads, that `text` names.
 
-    Boards come back as (start, end, kind, ref, key); the rest as (start, end,
-    vendor). WHERE TWO PATTERNS OF ONE KIND OVERLAP, THE ONE THAT STARTS FIRST
+    Boards come back as (start, end, kind, ref, key) - a Paylocity posting
+    among them, of kind POSTING; the rest as (start, end, vendor). WHERE TWO
+    PATTERNS OF ONE KIND OVERLAP, THE ONE THAT STARTS FIRST
     AND RUNS LONGEST STANDS: "jobs.ashbyhq.com/flock%20safety" is one board
     called "flock safety", not also one called "flock", and a page that names
     a board once is counted once however many tables know its form.
     """
     low = text.lower()
     hits = []
-    for p in BOARDS:
-        if not any(h in low for h in HINTS[p.kind]):
+    for p in BOARDS + POSTINGS:
+        if not any(h in low for h in HINTS.get(p.kind) or POSTING_HINTS[p.kind]):
             continue
         for m in p.rx.finditer(text):
             if p.kind in ("greenhouse", "lever") and _other_region(text, m):
@@ -1201,6 +1283,48 @@ def _address(text: str, start: int, end: int) -> str:
     return text[a:b]
 
 
+_WHOLE = 4000       # an address running further than this off a match is not known whole
+
+
+def _whole_address(text: str, start: int, end: int) -> str:
+    """The whole address a match sits in, from where that address BEGINS to
+    where it ends, as the page wrote it - or "" where either end lies more
+    than _WHOLE characters off, so it is not known whole. (_address looks 60
+    characters back, which is less than the address a match sits in: a
+    jobs.jobvite.com loader written near the start of an app.jobvite.com
+    address was read as on app.jobvite.com - review 12's verifier,
+    2026-11-23.)"""
+    lo, hi = max(0, start - _WHOLE), min(len(text), end + _WHOLE)
+    a = max(text.rfind(c, lo, start) for c in _STOP) + 1
+    if a == 0 and lo > 0:
+        return ""
+    ends = [i for i in (text.find(c, end, hi) for c in _STOP) if i >= 0]
+    if not ends and hi < len(text):
+        return ""
+    return text[a:min(ends) if ends else hi]
+
+
+# Jobvite's own keys for an account (c=, ci=) and a job (j=, cj=), with a
+# value in the shape the tenant forms read
+_JV_NAMES_ONE = re.compile(r"\b(?:c|ci|j|cj)=[A-Za-z0-9]{5,12}", re.I)
+_JV_MENTION = re.compile(_B + r"jobvite\.com", re.I)       # (jobvite-other's own pattern)
+
+
+def jobvite_widget_asset(address: str) -> bool:
+    """Is this WHOLE address (_whole_address) one the account widget loads
+    beside itself: on app.jobvite.com, the widget's own host, naming no
+    account and no job, and holding no other Jobvite address? Only these
+    are the widget's furniture on its page (sightings). One that names another
+    account in a path the account forms do not list is jobvite-tenant
+    before it gets here (ELSEWHERE); a jobs.jobvite.com career site's
+    loader is not on the widget's host; and one inside an app.jobvite.com
+    address makes that address no furniture either (review 12's verifier,
+    2026-11-23: each was dropped beside the widget, and the door wired its
+    feed with no doubt)."""
+    return (bool(address) and _host(address) == ats.JOBVITE_FEED_HOST
+            and len(_JV_MENTION.findall(address)) == 1 and not _JV_NAMES_ONE.search(address))
+
+
 def _saw(text: str, start: int, end: int) -> str:
     """The matched text widened to the whole address as the page wrote it,
     at most 160 characters, with any person's e-mail address taken out (the
@@ -1260,9 +1384,19 @@ def _tally(text: str, element: str, page_url: str, website: str,
             row["_spelt"][json.dumps(ref)] += 1
         for start, end, vendor in oth:
             # (a legacy portal is kept apart by the tenant its whole address
-            # names, which a 160-character `saw` can cut off)
-            key = (vendor, element) if vendor not in _ON_ITS_OWN_BOARD else \
-                (vendor, element, legacy_tenant(_address(text, start, end)))
+            # names, which a 160-character `saw` can cut off; and a Jobvite
+            # address naming no board by its WHOLE address's host and by
+            # whether it is the account widget's own asset - the key's last
+            # part, which sightings reads - so the widget's assets are never
+            # one row with a career site's loader, or with an app.jobvite.com
+            # address holding one: jobvite_widget_asset)
+            if vendor in _ON_ITS_OWN_BOARD:
+                key = (vendor, element, legacy_tenant(_address(text, start, end)))
+            elif vendor == "jobvite-other":
+                whole = _whole_address(text, start, end)
+                key = (vendor, element, _host(whole) if whole else "", jobvite_widget_asset(whole))
+            else:
+                key = (vendor, element)
             row = others.setdefault(key, {
                 "vendor": vendor, "element": element,
                 "saw": _saw(text, start, end), "times": 0})
@@ -1507,11 +1641,21 @@ def sightings(page: str, page_url: str, website: str, *,
             return (_ON_ITS_OWN_BOARD.get(k[0]) == "successfactors" and len(k) > 2
                     and (k[2] == "" or k[2] in own))
         others = {k: v for k, v in others.items() if not its_own(k)}
+    boards, others = jobvite_account_forms(boards, others)
     # an address of a platform we read that names no board says nothing once
     # the page HAS named that platform's board (Paylocity's own scripts, 23
     # of them, beside the frame that loaded them)
     kinds = {kind for kind, _key, _el in boards}
     others = {k: v for k, v in others.items() if _NO_BOARD_IN_IT.get(k[0]) not in kinds}
+    # ...and beside a Jobvite ACCOUNT (a jobvitefeed board), what its widget
+    # loads beside itself, and nothing else Jobvite on the page: an address on
+    # app.jobvite.com naming no account or job and holding no other Jobvite
+    # address, read off the whole address (jobvite_widget_asset, the key's
+    # last part). A career site's loader is a board nothing ties to the
+    # account, and so is any address it sits in (blind review 12 and its
+    # verifier, 2026-11-23).
+    if "jobvitefeed" in kinds:
+        others = {k: v for k, v in others.items() if not (k[0] == "jobvite-other" and k[-1] is True)}
     named = [{"type": kind, "ref": json.loads(row["_spelt"].most_common(1)[0][0])}
              for (kind, _key, _el), row in boards.items() if row["_spelt"]]
     others = {k: v for k, v in others.items() if not same_tenant(v, named)}
@@ -2861,10 +3005,38 @@ async def look(company: dict, mode: str, read, plain=read_plain,
         rec["elsewhere"].append({"vendor": f"other:{name}",
                                  "saw": _short(url), "page": on_page,
                                  "element": "href", "times": 1})
+    jobvite_account_board(rec)
     rec["elsewhere"] = [e for e in rec["elsewhere"] if not _board_furniture(e, rec["candidates"])
                         and not same_tenant(e, rec["candidates"])]
     rec.update(_no_addresses(rec))
     return rec
+
+
+def jobvite_account_board(rec: dict) -> None:
+    """The whole site's say on a Jobvite account named by its company id (a
+    jobvitefeed candidate), filled in place.
+
+    WHERE THEIR SITE NAMES A jobs.jobvite.com CAREER SITE, on any page, that
+    is the candidate, and every account form is filed as it was before the
+    feed had a reader: jobvite-tenant, a doubt (the page-level rule is
+    jobvite_account_forms; this is the same across pages). Otherwise the
+    account is the board.
+
+    ITS FURNITURE IS NOT SORTED HERE: the widget's own assets beside it were
+    left out as its page was read (sightings, jobvite_widget_asset), off the
+    whole address. Here only `saw` was left, cut to 160 characters and its
+    people taken out, and a page's other Jobvite address - a jobs.jobvite.com
+    career site's loader, written near the start of an app.jobvite.com
+    address - read as the widget's own and was dropped, and the door wired
+    the feed with no doubt (review 12's verifier, 2026-11-23)."""
+    feeds = [c for c in rec["candidates"] if c.get("type") == "jobvitefeed"]
+    if not feeds:
+        return
+    if any(c.get("type") == "jobvite" for c in rec["candidates"]):
+        rec["candidates"] = [c for c in rec["candidates"] if c.get("type") != "jobvitefeed"]
+        rec["elsewhere"].extend({"vendor": "jobvite-tenant", "saw": c.get("saw"),
+                                 "page": c.get("page"), "element": c.get("element"),
+                                 "times": c.get("times") or 1} for c in feeds)
 
 
 def _board_host(kind: str, ref) -> str:
@@ -3079,7 +3251,9 @@ def summary(companies: dict) -> list[str]:
     """Counts only. The Actions log is public, and a company's name beside
     "blocked" or "left for another site" is not ours to publish there."""
     n = len(companies)
-    pointed = [r for r in companies.values() if r["candidates"]]
+    # (a posting is not a board: counted apart, never as a platform pointed to)
+    pointed = [r for r in companies.values() if any(c["type"] != POSTING for c in r["candidates"])]
+    posted = [r for r in companies.values() if any(c["type"] == POSTING for c in r["candidates"])]
     unread = [r for r in companies.values()
               if not any(p["status"] == "read" for p in r["pages"])]
     left = [r for r in companies.values() if r["left_site"]]
@@ -3088,7 +3262,7 @@ def summary(companies: dict) -> list[str]:
     doubted = [r for r in nothing if r["off_site"]]
     by_kind = collections.Counter()
     for r in pointed:
-        for kind in {c["type"] for c in r["candidates"]}:
+        for kind in {c["type"] for c in r["candidates"]} - {POSTING}:
             by_kind[kind] += 1
     # a tenant form or a no-board form belongs to a platform we read: it is
     # not one with "no reader" (third review's Jobvite reviewer, 2026-11-21)
@@ -3098,6 +3272,8 @@ def summary(companies: dict) -> list[str]:
             (by_form if v in TENANT_FORMS or v in _NO_BOARD_IN_IT else by_vendor)[v] += 1
     out = [f"{n} companies in the file",
            f"  {len(pointed)} whose own site points to a board we can read",
+           f"  {len(posted)} whose own site links a Paylocity posting (the wiring door asks "
+           f"the posting's page which board it names)",
            f"  {len(nothing)} read, no readable board named as their own"
            + (f" ({len(doubted)} of them with one named where it is not theirs to "
               f"claim: off_site)" if doubted else ""),

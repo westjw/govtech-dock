@@ -4807,5 +4807,129 @@
    "read_at": "2026-11-23T03:55:03-05:00",
    "page": "https://careers.vaisala.com/search/"
   }
+ },
+ {
+  "id": "bs-a-software",
+  "name": "BS&A Software",
+  "was": "html",
+  "found": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/96c79f09-e201-48b6-927d-6e8d5c69b443/BSA-Software-LLC"
+  },
+  "saw": "https://recruiting.paylocity.com/recruiting/jobs/Details/4320292/BSA-Software-LLC/Associate-Support-Specialist",
+  "times": 1,
+  "verified": "13 posting(s) readable",
+  "board_calls_itself": "BS&A Software LLC",
+  "identity": "unknown",
+  "identity_why": "the board names \"BS&A Software LLC\", which is this company, but their own site also loads paylocity in a form that names no board (paylocity-other): a widget or a link of another account names none either, so which board they hire through today is not settled; https://www.bsasoftware.com/careers/ links a posting on the board (https://recruiting.paylocity.com/recruiting/jobs/Details/4320292/BSA-Software-LLC/Associate-Support-Specialist), and the posting's page names that one board",
+  "postings": 13,
+  "titles": [
+   "Support Team Lead",
+   "Product Manager, Utility Billing & Resident Portal",
+   "Director of Customer Support",
+   "Product Manager, Community Development",
+   "Senior Product Marketing Manager",
+   "Manager, Demand Generation",
+   "Implementation and Training Specialist",
+   "Cloud Upgrade Implementation Specialist \u2013 Tax"
+  ],
+  "filed": {
+   "by": "agent:coverage-r12-2026-11-23",
+   "on": "2026-11-23",
+   "at": "2026-11-23T23:35:17-05:00",
+   "read_at": "2026-11-23T23:33:36-05:00",
+   "page": "https://www.bsasoftware.com/careers/"
+  }
+ },
+ {
+  "id": "implan",
+  "name": "IMPLAN",
+  "was": "html",
+  "found": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/65558f1a-1e09-498a-a824-375fa57dd268/IMPLAN-Group-LLC"
+  },
+  "saw": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/2232550",
+  "times": 1,
+  "verified": "5 posting(s) readable",
+  "board_calls_itself": "IMPLAN Group LLC",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"IMPLAN Group LLC\", which is not \"IMPLAN\": one name only contains the other, and a name inside another name is never taken for the same company; https://implan.com/careers/ links a posting on the board (https://recruiting.paylocity.com/Recruiting/Jobs/Details/2232550), and the posting's page names that one board",
+  "postings": 5,
+  "titles": [
+   "Sales Development Representative",
+   "Enterprise Customer Success Manager",
+   "Contract Administrator",
+   "Inside Sales Executive",
+   "Regional Sales Manager Q22024"
+  ],
+  "filed": {
+   "by": "agent:coverage-r12-2026-11-23",
+   "on": "2026-11-23",
+   "at": "2026-11-23T23:35:17-05:00",
+   "read_at": "2026-11-23T23:33:38-05:00",
+   "page": "https://implan.com/careers/"
+  }
+ },
+ {
+  "id": "leotech",
+  "name": "LeoTech",
+  "was": "html",
+  "found": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/5ce08591-7d2d-42a3-bff8-3ee7d5d0e018/LeoTech-Engineering-Career-Page"
+  },
+  "saw": "https://recruiting.paylocity.com/recruiting/jobs/Details/4344887/LeoTech/AI-Engineer",
+  "times": 1,
+  "verified": "5 posting(s) readable",
+  "board_calls_itself": "LeoTech Engineering Career Page",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"LeoTech Engineering Career Page\", which is not \"LeoTech\" or any other name on file for them: one name only contains the other, and a name inside another name is never taken for the same company; their site links a posting on Paylocity (https://recruiting.paylocity.com/recruiting/jobs/Details/4344887/LeoTech/AI-Engineer), and the posting's page names more than one board: paylocity/https://recruiting.paylocity.com/recruiting/jobs/All/8edbd8e2-c9d9-4b5c-a3f8-051a2155457f/LeoTech and paylocity/https://recruiting.paylocity.com/recruiting/jobs/All/5ce08591-7d2d-42a3-bff8-3ee7d5d0e018/LeoTech-Engineering-Career-Page, so which one it is on is not settled; https://leotechnologies.com/careers/ links a posting on the board (https://recruiting.paylocity.com/recruiting/jobs/Details/4344887/LeoTech/AI-Engineer), and the posting's page names 2 boards",
+  "postings": 5,
+  "titles": [
+   "SDET",
+   "Agentic Development Platform Engineer",
+   "Senior DevOps Engineer",
+   "DevOps Manager",
+   "AI Engineer"
+  ],
+  "filed": {
+   "by": "agent:coverage-r12-2026-11-23",
+   "on": "2026-11-23",
+   "at": "2026-11-23T23:35:17-05:00",
+   "read_at": "2026-11-23T23:33:39-05:00",
+   "page": "https://leotechnologies.com/careers/"
+  }
+ },
+ {
+  "id": "playmetrics",
+  "name": "PlayMetrics",
+  "was": "html",
+  "found": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/32242378-d809-4dc8-a287-c9a383d397dc/PlayMetrics"
+  },
+  "saw": "https://recruiting.paylocity.com/recruiting/jobs/Details/4508337/EMINOR-INC/Senior-Accounts-Payable-Specialist",
+  "times": 1,
+  "verified": "6 posting(s) readable",
+  "board_calls_itself": "PlayMetrics",
+  "identity": "unknown",
+  "identity_why": "the board names \"PlayMetrics\", which is this company, but a reader checking this plan doubted it: every posting address on their careers page is filed under the Paylocity company \"EMINOR-INC\", while their own site signs \"PlayMetrics, LLC\" and the board holds only PlayMetrics' six jobs; nothing read on 2026-11-23 says what Eminor Inc is to PlayMetrics (a parent, a payroll entity or a sister company); https://home.playmetrics.com/careers links a posting on the board (https://recruiting.paylocity.com/recruiting/jobs/Details/4508337/EMINOR-INC/Senior-Accounts-Payable-Specialist), and the posting's page names that one board",
+  "postings": 6,
+  "titles": [
+   "Customer Success Manager",
+   "Customer Operations Manager",
+   "Director, Growth Strategy",
+   "Contract Administrator",
+   "Business Development Representative",
+   "Senior Accounts Payable Specialist"
+  ],
+  "filed": {
+   "by": "agent:coverage-r12-2026-11-23",
+   "on": "2026-11-23",
+   "at": "2026-11-23T23:35:17-05:00",
+   "read_at": "2026-11-23T23:33:43-05:00",
+   "page": "https://home.playmetrics.com/careers"
+  }
  }
 ]

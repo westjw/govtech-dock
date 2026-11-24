@@ -638,6 +638,31 @@ def paylocity_tenants(refs) -> set:
     return _paylocity_sides(refs)[2]
 
 
+# A PAYLOCITY POSTING IS ONE JOB, NOT A BOARD (owner, 2026-11-23).
+# find_site_boards writes a link to one - .../recruiting/jobs/Details/<id>... -
+# as a candidate of its own type, and only the wiring door asks the posting's
+# page which board it names (wire_found.resolved_by_posting) and holds that
+# board to both checks. No door writes, files or wires a posting as a board:
+# discovery does not follow one, nor read a page its fetch landed on that is
+# one (it read the board off the posting's page and held it to a tenant's name
+# alone), nor does find_embedded_ats read one its fetch landed on or passed
+# through, wire_embedded leaves a row of one in no pile, and the queue's own
+# door files none.
+POSTING_TYPE = "paylocity-posting"
+_PAYLOCITY_POSTING = re.compile(
+    r"(?<![a-z0-9.-])recruiting\.paylocity\.com/recruiting/jobs/details/", re.I)
+
+
+def paylocity_posting(kind, ref) -> bool:
+    """Is (type, ref) a Paylocity posting - the finder's posting type, or a
+    Paylocity ref on one job's address - and so no board to wire, file or
+    read as one?"""
+    if kind == POSTING_TYPE:
+        return True
+    return kind in ("paylocity", None) and isinstance(ref, str) \
+        and bool(_PAYLOCITY_POSTING.search(ref.strip()))
+
+
 def paylocity_conflict(a_refs, b_refs) -> bool:
     """Do two Paylocity boards' ids agree on one kind and disagree on the
     other (paylocity_relation calls that "unknown" too)?"""
@@ -1232,6 +1257,9 @@ def _row_problem(r) -> str | None:
     if kind not in ats.FETCHERS or kind == "html":
         return (f"{kind!r} is not a board the crawl can read (html is another "
                 f"page we cannot enumerate, not a board found)")
+    if paylocity_posting(kind, ref):
+        return ("a Paylocity posting is one job, not a board: the wiring door asks its page "
+                "which board it names, and files that board")
     ref_ok = (isinstance(ref, str) and ref.strip()) or (
         isinstance(ref, list) and ref
         and all(isinstance(x, str) and x.strip() for x in ref))

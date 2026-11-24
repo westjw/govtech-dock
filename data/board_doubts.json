@@ -33,5 +33,27 @@
   "by": "agent:board-wiring",
   "on": "2026-11-19",
   "at": "2026-11-19T14:55:42-05:00"
+ },
+ "playmetrics@2026-11-23T23:33:06-05:00": {
+  "id": "playmetrics",
+  "name": "PlayMetrics",
+  "board": null,
+  "type": null,
+  "ref": null,
+  "why": "every posting address on their careers page is filed under the Paylocity company \"EMINOR-INC\", while their own site signs \"PlayMetrics, LLC\" and the board holds only PlayMetrics' six jobs; nothing read on 2026-11-23 says what Eminor Inc is to PlayMetrics (a parent, a payroll entity or a sister company)",
+  "by": "agent:coverage-r12-2026-11-23",
+  "on": "2026-11-23",
+  "at": "2026-11-23T23:33:06-05:00"
+ },
+ "playmetrics@2026-11-23T23:33:25-05:00": {
+  "id": "playmetrics",
+  "name": "PlayMetrics",
+  "board": "paylocity/https://recruiting.paylocity.com/recruiting/jobs/All/32242378-d809-4dc8-a287-c9a383d397dc/PlayMetrics",
+  "type": "paylocity",
+  "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/32242378-d809-4dc8-a287-c9a383d397dc/PlayMetrics",
+  "why": "every posting address on their careers page is filed under the Paylocity company \"EMINOR-INC\", while their own site signs \"PlayMetrics, LLC\" and the board holds only PlayMetrics' six jobs; nothing read on 2026-11-23 says what Eminor Inc is to PlayMetrics (a parent, a payroll entity or a sister company)",
+  "by": "agent:coverage-r12-2026-11-23",
+  "on": "2026-11-23",
+  "at": "2026-11-23T23:33:25-05:00"
  }
 }

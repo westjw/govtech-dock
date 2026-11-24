@@ -5144,6 +5144,12 @@ function boardUrlFor(f, c){
   if (f.type === 'successfactors')
     return (typeof r === 'string' && /^https:\/\/[a-z0-9.-]+\/?$/i.test(r.trim()))
       ? r.trim().replace(/\/+$/, '') + '/search/' : '#';
+  // a Jobvite account's feed is read by its company id; a person opens
+  // Jobvite's own careers page for the account (as build_board.board_url
+  // links it), never the feed, which names a person on every row
+  if (f.type === 'jobvitefeed')
+    return (typeof r === 'string' && /^q[A-Za-z0-9]{4}fw[A-Za-z0-9]$/.test(r.trim()))
+      ? 'https://app.jobvite.com/CompanyJobs/Careers.aspx?c=' + r.trim() : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
     // the list [tenant, pod, site], or [pod, tenant, site] on Workday's other

@@ -12627,8 +12627,8 @@
     "category": "Finance & ERP",
     "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026, ASBO School Business 2026, NACVSO 2026, ACA Congress 2026, FDIC International 2026, APA Colorado Chapter 2026, APA - Illinois Chapter 2026, APA Minnesota Chapter 2026, APA Texas Chapter 2026, APA Virginia Chapter 2026, APA Wisconsin Chapter 2026, American Planning Association Ohio Chapter 2026, Georgia Planning Association 2026, Michigan Association of Planning 2026, FDIC International 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.tylertech.com/careers/job-listings"
+      "type": "jobvitefeed",
+      "ref": "q6NaVfwI"
     },
     "hiring": {
       "status": "Yes",
@@ -12787,7 +12787,8 @@
     },
     "also_known_as": [
       "EMERGENCY NETWORKING"
-    ]
+    ],
+    "ats_note": "wired 2026-11-23: tylertech.com/careers/job-listings embeds the board; the board names \"Tyler Technologies\"; 129 postings read"
   },
   {
     "id": "euna-solutions",
@@ -68537,8 +68538,8 @@
     "category": "Demand-Response & AV",
     "description": "Turnkey autonomous shuttle operations for transit agencies, airports, and communities - exhibited at APTA 2026, ITS America 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://ridebeep.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/3a4d8744-ab51-41d9-a0cf-43de316c7dca/Beep-Inc"
     },
     "hiring": {
       "status": "Unknown",
@@ -68678,7 +68679,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-23: ridebeep.com/about-beep/careers links a posting on the board (recruiting.paylocity.com/recruiting/jobs/Details/4009345/Beep-Inc/Shuttle-Attendant-Autonomous-Vehicle-Operator), and the posting's page names that one board; the board names \"Beep Inc\"; 6 postings read",
+    "board_owner": "Beep Inc"
   },
   {
     "id": "adastec",
@@ -122940,8 +122943,8 @@
     "category": "Operations & SIS",
     "description": "Single sign-on, rostering and usage analytics for public school districts - exhibited at CoSN 2026, EDUCAUSE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.classlink.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/13331849-87b2-4cc9-a4bf-5880f11fe8ab/Classlink-Inc"
     },
     "hiring": {
       "status": "Yes",
@@ -123081,7 +123084,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-23: classlink.com/company/careers links a posting on the board (recruiting.paylocity.com/recruiting/jobs/Details/4519422/ClassLink-Inc/Partner-Solutions-Engineer), and the posting's page names that one board; the board names \"Classlink Inc\"; 6 postings read",
+    "board_owner": "Classlink Inc"
   },
   {
     "id": "clever",
@@ -146903,8 +146908,8 @@
     "category": "Corrections",
     "description": "Behavioral-health and correctional furniture for jails and facilities - exhibited at ACA Congress 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://norix.com/about-us/careers/"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/83f5445f-5783-4f6b-b1ff-b400586c76c2/Norix-Group-Inc"
     },
     "hiring": {
       "status": "Unknown",
@@ -147005,7 +147010,9 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "ats_note": "wired 2026-11-23: norix.com/about-us/careers links a posting on the board (recruiting.paylocity.com/recruiting/jobs/Details/4549626/Norix-Group-Inc/Production-Supervisor), and the posting's page names that one board; the board names \"Norix Group Inc\"; 4 postings read",
+    "board_owner": "Norix Group Inc"
   },
   {
     "id": "vendengine",
@@ -160426,8 +160433,8 @@
     "category": "Grid & Energy",
     "description": "Non-contact transmission line monitoring and dynamic line ratings for utilities - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.linevisioninc.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/e85e8980-8325-4e41-9404-be920804d97d/LineVision-Inc"
     },
     "hiring": {
       "status": "Sales (non-AE)",
@@ -160557,7 +160564,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-23: linevisioninc.com/careers links a posting on the board (recruiting.paylocity.com/recruiting/jobs/Details/4392452/LineVision-Inc/Vice-President-of-Engineering), and the posting's page names that one board; the board names \"LineVision, Inc.\"; 9 postings read",
+    "board_owner": "LineVision, Inc."
   },
   {
     "id": "heimdall-power",

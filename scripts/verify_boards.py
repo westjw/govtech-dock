@@ -424,6 +424,9 @@ def proven(company: dict, said: dict) -> dict:
 #     smartrecruiters  content[].company.name   (empty feed: the hosted page's
 #                                                og:site_name)
 #     gem              jobBoardExternal.teamDisplayName
+#     jobvitefeed      <company>, else company_x0020_name, on every row (the
+#                                                feed is the whole board in one
+#                                                answer; 2026-11-23)
 #
 #   on the board's own hosted page - a PAGE, so robots.txt is asked at every
 #   hop, and a hop that leaves the board's host ends the read (_board_page)
@@ -1338,6 +1341,71 @@ def _jobvite(ref, out: dict) -> None:
                        f"and a posting names another employer")
 
 
+def _jvx_said(jobs: list, field: str) -> tuple:
+    """(every distinct name a feed's rows give `field`, how many rows give it
+    one): a value that is blank is none."""
+    names, rows = set(), 0
+    for job in jobs:
+        mine = {_clean(v) for v in job.get(field) or ()} - {""}
+        names |= mine
+        rows += bool(mine)
+    return names, rows
+
+
+def _jobvitefeed(ref, out: dict) -> None:
+    # THE FEED IS THE WHOLE BOARD IN ONE ANSWER, so a name it states on EVERY
+    # row is the board's whole statement, and nothing less is. Jobvite's own
+    # field first: <company>, where any row fills it (Absolute's, 'Absolute
+    # Security' on 18 of 18), and then it must be filled on every row. Where
+    # no row fills it (Gigamon's is empty on 26 of 26; Tyler's feed has no
+    # <company> at all), the account's custom company-name field,
+    # company_x0020_name ('Tyler Technologies' on 266 of 266), on every row.
+    # A field empty or missing on a row states nothing (the names are kept
+    # for the desk); rows that name more than one employer, or a company-name
+    # field naming another beside <company>, are every one of those names,
+    # stated - which proven() refuses (measured 2026-11-20 and 2026-11-23).
+    # One request, held to the reader's own path (ats.jobvitefeed_read): the
+    # account's feed and nothing else. NO OTHER FIELD IS READ, a person's
+    # name above all: the parser drops hiring_x0020_manager unread.
+    _account, jobs, rows, _notes = ats.jobvitefeed_read(ref)
+    out["hosts"] = {ats.JOBVITE_FEED_HOST}
+    out["n"] = len(rows)                       # one a job: its copies are its places
+    total = len(jobs)
+    company, company_rows = _jvx_said(jobs, "company")
+    custom, custom_rows = _jvx_said(jobs, "company_x0020_name")
+    own = f"stated by the account's own feed, on every one of its {total} rows ({len(rows)} jobs)"
+    whole = True
+    if company_rows:
+        names = company | custom
+        if company_rows < total:
+            whole, how = False, (f"jobvitefeed <company> names an employer on {company_rows} of "
+                                 f"its {total} rows only, so it is not the whole board's statement")
+        else:
+            how = f"jobvitefeed <company>, {own}"
+            if len(company) > 1:
+                how += " - and they do not agree: its rows name more than one employer"
+            if custom - company:
+                how += (" - and its company-name field (company_x0020_name) names another name "
+                        "beside it")
+    elif custom_rows:
+        names = custom
+        if custom_rows < total:
+            whole, how = False, (f"jobvitefeed company-name field (company_x0020_name) on "
+                                 f"{custom_rows} of its {total} rows only, so it is not the whole "
+                                 f"board's statement (no row fills <company>)")
+        else:
+            how = (f"jobvitefeed company-name field (company_x0020_name), {own} (no row fills "
+                   f"<company>)")
+            if len(custom) > 1:
+                how += " - and they do not agree: its rows name more than one employer"
+    else:
+        out["how"] = ("jobvitefeed: the feed names no employer (no row fills <company> or a "
+                      "company-name field)")
+        return
+    if not _state(out, names, how, whole=whole):
+        out["how"] = "jobvitefeed: the feed names its employer in no form a person could read"
+
+
 # SAP SuccessFactors' Career Site Builder names the site twice on its /search/
 # page, each time as a pattern around the name in the site's own language:
 # its <title> and its meta description (the search words, empty here, stand
@@ -1538,10 +1606,12 @@ def _unify_languages_unpaired(copies: list, shown: list) -> list:
 def _unify_unsaid(url: str, why: str) -> str:
     """Why a Unify copy not said to be in English, showing no posting, is
     the board not read: its words are not ones this reader reads, so it is
-    never called a block or error page it may not be. The reason first: a
-    person reads the first 200 characters (_failure)."""
-    return (f"successfactors posting {url}, not said to be in English, shows no posting, and {why}, "
-            f"so the board is not stated (this reader knows a closed posting's words in English "
+    never called a block or error page it may not be. The reason first and
+    the address after it: a person reads the first 200 characters
+    (_failure), and a percent-encoded French address of about 110 cut the
+    reason off when it came first (review 11's verifier, 2026-11-23)."""
+    return (f"successfactors posting not said to be in English shows no posting, and {why}, so the "
+            f"board is not stated: {url} (this reader knows a closed posting's words in English "
             f"only)")
 
 
@@ -1713,7 +1783,7 @@ _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "hirebridge": _hirebridge, "applicantpro": _applicantpro,
            "teamtailor": _teamtailor, "pinpoint": _pinpoint,
            "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite,
-           "successfactors": _successfactors}
+           "jobvitefeed": _jobvitefeed, "successfactors": _successfactors}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.
