@@ -2917,8 +2917,11 @@ round.
   a board it is SKIP `no-board`, listed in words ("the find is not a board"),
   never a zero. A failure of the day is SKIP `unreadable`, asked again by the
   next plan, never filed; a refusal (robots.txt, 401, 403) stops the asking.
-  A company with any refusal on file is not asked (`declined`: SKIP refused,
-  as a number nobody followed is), nor one out of scope or on a board.
+  A company with any refusal on file is not asked (`declined`): SKIP refused
+  where nothing else on their site names a board, as a number nobody
+  followed is, and beside a board of their own that board is read and held
+  as any board beside a refusal is, the postings said as not asked; nor is
+  one out of scope or on a board.
   Postings none of whose pages named a board, beside another board, are a
   doubt. A board their site names itself by an id that agrees gets no second
   sighting from a posting. The worklist (version 6) records what each

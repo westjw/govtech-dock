@@ -1704,9 +1704,11 @@ def resolved_by_posting(results: dict, ctx: dict) -> None:
 
     A company a person already answered about is not asked, as for a number:
     out of scope or on a board (consider says so), or with ANY refusal on file
-    in either store - its postings are marked `declined`, and consider skips
-    it as refused: whether the posting's board is the one refused is not
-    looked at."""
+    in either store - its postings are marked `declined`: whether a posting's
+    board is the one refused is not looked at. Where nothing else on their site
+    names a board, consider skips it as refused (posting_skip); beside a board
+    of their own, that board is read and held as any board beside a refusal
+    is, and the postings are said as not asked."""
     said_of = ctx.setdefault("postings", {})
     for cid in sorted(results):
         entry = results[cid]
@@ -1807,11 +1809,15 @@ def posting_skip(base: dict, c: dict, rows: list, ctx: dict) -> dict:
                      f"again in this run, and which board the posting is on is not known",
                      error=how)
     if any(r.get("posting_none") for r in rows):
+        unasked = sum(1 for r in rows if r.get("posting_unasked"))
         return _skip(base, "no-board",
                      f"their site links {many(len(rows), 'Paylocity posting')} and no board, and "
                      f"no posting's page that was asked gives one "
-                     f"({_posting_list(rows, 'posting_none')}): the find is not a board - "
-                     f"which says nothing about whether they have one")
+                     f"({_posting_list(rows, 'posting_none')})"
+                     + (f", and {unasked} more of theirs were not asked (at most "
+                        f"{POSTING_TRIES} are)" if unasked else "")
+                     + ": the find is not a board - which says nothing about whether they have "
+                       "one")
     return _skip(base, "unusable",
                  f"their site links {many(len(rows), 'Paylocity posting')}, and none was asked: "
                  + (_posting_list(rows, "posting_off") or "the plan did not reach them"))
@@ -2567,11 +2573,6 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     refusal = refused_first(cid, c, kind, ref, keys, first, ctx)
     if refusal["skip"]:
         return _skip(base, "refused", refusal["skip"])
-    if any(p.get("declined") for p in postings):
-        # a refused company's postings were not asked (resolved_by_posting), so
-        # whether one is on the board refused is not known: SKIP refused,
-        # whatever it refused, as a Workable number nobody followed is
-        return _skip(base, "refused", _declined_words(cid, postings, ctx))
     refused, hits, ties, loose = (refusal["refused"], refusal["hits"], refusal["ties"],
                                   refusal["loose"])
     owner_holds = ctx.get("held_boards") or {"keys": {}, "named": []}
@@ -2640,7 +2641,16 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # PAYLOCITY POSTINGS BESIDE ANOTHER BOARD, NONE OF WHOSE PAGES NAMED ONE:
         # a platform their site points at, on a board nobody could name - a
         # second place they may hire through, as a no-board form is (a failure
-        # of the day is skipped below, and asked again)
+        # of the day is skipped below, and asked again). A refused company's
+        # postings were not asked at all (resolved_by_posting): its own board
+        # is read and held as any board beside a refusal is, and the postings
+        # are said as not asked (where nothing else names a board, posting_skip
+        # skips it as refused)
+        if any(p.get("declined") for p in postings):
+            doubts.append(f"their site also links "
+                          f"{many(len(postings), 'Paylocity posting')}, and no posting's page "
+                          f"was asked which board it names - a company somebody said no to is "
+                          f"not asked of anybody")
         if any(p.get("posting_refused") for p in postings):
             doubts.append(f"their site also links a Paylocity posting whose page refused "
                           f"({_posting_list(postings, 'posting_refused')}), so which board it "
