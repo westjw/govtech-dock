@@ -1300,9 +1300,16 @@ def _tally(text: str, element: str, page_url: str, website: str,
             row["_spelt"][json.dumps(ref)] += 1
         for start, end, vendor in oth:
             # (a legacy portal is kept apart by the tenant its whole address
-            # names, which a 160-character `saw` can cut off)
-            key = (vendor, element) if vendor not in _ON_ITS_OWN_BOARD else \
-                (vendor, element, legacy_tenant(_address(text, start, end)))
+            # names, which a 160-character `saw` can cut off; and a Jobvite
+            # address naming no board by the host it is on, so the account
+            # widget's own assets on app.jobvite.com are never one row with
+            # a career site's loader on jobs.jobvite.com: jobvite_account_board)
+            if vendor in _ON_ITS_OWN_BOARD:
+                key = (vendor, element, legacy_tenant(_address(text, start, end)))
+            elif vendor == "jobvite-other":
+                key = (vendor, element, _host(_address(text, start, end)))
+            else:
+                key = (vendor, element)
             row = others.setdefault(key, {
                 "vendor": vendor, "element": element,
                 "saw": _saw(text, start, end), "times": 0})
@@ -2917,10 +2924,15 @@ def jobvite_account_board(rec: dict) -> None:
     is the candidate, and every account form is filed as it was before the
     feed had a reader: jobvite-tenant, a doubt (the page-level rule is
     jobvite_account_forms; this is the same across pages). Otherwise the
-    account is the board, and Jobvite's addresses that name none on a page
-    where it was seen (jobvite-other: the widget's own assets, which a
-    browser sees it load) are its furniture, as a platform's no-board forms
-    are beside its board on one page (sightings)."""
+    account is the board, and Jobvite's addresses that name none ON
+    app.jobvite.com, THE WIDGET'S OWN HOST, on a page where it was seen
+    (jobvite-other: the widget's own assets, which a browser sees it load)
+    are its furniture, as a platform's no-board forms are beside its board
+    on one page (sightings). Any other Jobvite address there stays a doubt:
+    a jobs.jobvite.com career site's loader or frame names no slug, and
+    loads a board nothing ties to this account (blind review 12,
+    2026-11-23: one beside the widget was dropped, and the door wired the
+    account's feed with no doubt), and so does any address it sits in."""
     feeds = [c for c in rec["candidates"] if c.get("type") == "jobvitefeed"]
     if not feeds:
         return
@@ -2932,7 +2944,8 @@ def jobvite_account_board(rec: dict) -> None:
         return
     pages = {c.get("page") for c in feeds}
     rec["elsewhere"] = [e for e in rec["elsewhere"]
-                        if not (e.get("vendor") == "jobvite-other" and e.get("page") in pages)]
+                        if not (e.get("vendor") == "jobvite-other" and e.get("page") in pages
+                                and _host(str(e.get("saw") or "")) == ats.JOBVITE_FEED_HOST)]
 
 
 def _board_host(kind: str, ref) -> str:

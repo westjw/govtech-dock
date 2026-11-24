@@ -3974,8 +3974,14 @@ through the door.
   site stays the candidate and the account is `jobvite-tenant`, a doubt, as
   before: a slug names a career site and an id an account, and nothing on a
   page ties one to the other. Beside the account's board, Jobvite's no-board
-  addresses on the same page (`jobvite-other`: the widget's own assets, which
-  a browser sees it load) are its furniture. hire.jobvite.com stays a tenant
+  addresses on app.jobvite.com, the widget's own host, on the same page
+  (`jobvite-other`: the widget's own assets, which a browser sees it load)
+  are its furniture, and nothing else is: a jobs.jobvite.com career site's
+  loader or frame there names no slug and loads a board nothing ties to the
+  account, so it stays a doubt, as any no-board Jobvite address on another
+  page does (blind review 12, 2026-11-23: a loader beside the widget was
+  dropped, and the door wired the feed with no doubt; the finder tallies
+  these by host, so the widget's assets never stand for one). hire.jobvite.com stays a tenant
   form: no site measured names an account there. The person scrub is
   Jobvite's own (sd=, __jvsd= go; the id is not a person).
 - **The door** needed one hook (`OWN_FORMS`: a link to Jobvite beside such a

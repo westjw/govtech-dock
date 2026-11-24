@@ -20894,13 +20894,31 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
         errors += fail(f"finder: an account beside a career site named on another page is not "
                        f"jobvite-tenant: {rec}")
     css = '<link rel="stylesheet" href="https://app.jobvite.com/__assets__/css/jv-widget.css">'
-    for web_, want, gone, why in (
-            ({home: _site_boards_page("Acme Gov", SITE + '<a href="/careers">Careers</a>'),
-              here: _site_boards_page("Careers", WIDGET)},
-             {("jobvite", "acmegov")}, {"jobvite-tenant"}, "a career site on one page, the widget on another"),
-            ({home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
-              here: _site_boards_page("Careers", WIDGET + css)},
-             {("jobvitefeed", A)}, set(), "the widget and its own stylesheet")):
+    own_js = '<script src="https://app.jobvite.com/__assets__/scripts/source/widgets/jv-util.js"></script>'
+    # ONLY app.jobvite.com, THE WIDGET'S OWN HOST, IS ITS FURNITURE, and only on
+    # its own page (blind review 12, 2026-11-23): a jobs.jobvite.com career
+    # site embedded by its loader or its frame names no slug (the form
+    # platforms.json files as jobvite-other), and was dropped beside the
+    # widget, so the door wired the account's feed with no doubt
+    loader = '<script src="https://jobs.jobvite.com/__assets__/scripts/careersite/public/iframe.js"></script>'
+    site_frame = '<iframe src="https://jobs.jobvite.com/__assets__/careersite/embed.html"></iframe>'
+    to_careers = '<a href="/careers">Careers</a>'
+    co = _wb_co("acme-gov", "Acme Gov")
+    for at_home, at_careers, want, gone, why in (
+            (SITE + to_careers, WIDGET, {("jobvite", "acmegov")}, {"jobvite-tenant"},
+             "a career site on one page, the widget on another"),
+            (to_careers, WIDGET + css, {("jobvitefeed", A)}, set(), "the widget and its own stylesheet"),
+            (to_careers, WIDGET + loader, {("jobvitefeed", A)}, {"jobvite-other"},
+             "the widget and a career site's loader"),
+            (to_careers, WIDGET + site_frame, {("jobvitefeed", A)}, {"jobvite-other"},
+             "the widget and a career site's frame"),
+            (to_careers, own_js + WIDGET + loader, {("jobvitefeed", A)}, {"jobvite-other"},
+             "a script of the widget's own host, the widget and a career site's loader, all scripts"),
+            (loader + to_careers, WIDGET, {("jobvitefeed", A)}, {"jobvite-other"},
+             "a career site's loader on another page"),
+            (own_js + to_careers, WIDGET, {("jobvitefeed", A)}, {"jobvite-other"},
+             "a script of the widget's host that names no account, on another page")):
+        web_ = {home: _site_boards_page("Acme Gov", at_home), here: _site_boards_page("Careers", at_careers)}
         with _SiteBoardsWeb(fsb, web_):
             rec = asyncio.run(fsb.look(_site_boards_co("acme-gov", "Acme Gov", home), "static",
                                        fsb.read_plain))
@@ -20909,9 +20927,23 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
             errors += fail(f"finder, {why}: candidates {[(c['type'], c['ref']) for c in rec['candidates']]}, "
                            f"elsewhere {sorted(vendors)}")
         nobody(f"the finder's record of {why}", rec)
+        if ("jobvitefeed", A) in want:
+            # ...and the door, over the finder's own record, holds the
+            # account's feed on that doubt, and wires it on none
+            mine = _wb_site("acme-gov")
+            entry = _wb_entry("acme-gov", [dict(c, page=c["page"].replace(home, mine))
+                                           for c in rec["candidates"]])
+            entry["elsewhere"] = [dict(e, page=str(e.get("page") or "").replace(home, mine))
+                                  for e in rec["elsewhere"]]
+            with _WiringBox([co], {f"jobvitefeed/{A}": (3, ["Acme Gov"])}) as box:
+                _code, _text, _wl, rows_ = box.plan(_wb_results({"acme-gov": entry}))
+            row = (rows_ or {}).get("acme-gov") or {}
+            if row.get("action") != ("HOLD" if gone else "WIRE") \
+                    or (gone and "jobvite-other" not in _wb_words(row)):
+                errors += fail(f"door, {why}: the account's feed planned {row.get('action')} saying "
+                               f"{_wb_words(row)[:200]!r}, not {'HOLD on the doubt' if gone else 'WIRE'}")
 
     # ---- the door: both checks, the giants, Jobvite's own link --------------------------------
-    co = _wb_co("acme-gov", "Acme Gov")
     for n, link, want, words, why in (
             (3, False, "WIRE", "", "both checks agree"),
             (3, True, "WIRE", "", "Jobvite's own link beside it"),
