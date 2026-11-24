@@ -2631,7 +2631,7 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     if set(o.get("fetched") or []) - {"api.resend.com", "solesource-c6g-pages.cloudflareaccess.com"}:
         errors += fail(f"the sign-in fetched somewhere it has no reason to: {o.get('fetched')}")
     for f in ("functions/_oidc.js", "functions/oidc/authorize.js", "functions/oidc/token.js", "functions/oidc/jwks.js",
-              "functions/.well-known/openid-configuration.js"):
+              "functions/.well-known/openid-configuration.js", "functions/api/jh/board-role.js"):
         src = _strip_js_comments((ROOT / f).read_text())
         if "console." in src:
             errors += fail(f"{f} logs; nothing in Job Hunter's sign-in may")
@@ -2640,6 +2640,139 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     if not m or not all(f'"{p}"' in m.group(1) for p in ("/oidc/authorize", "/oidc/token", "/oidc/jwks",
                                                           "/.well-known/openid-configuration")):
         errors += fail("functions/_gate.js's OPEN set no longer names the sign-in's four paths")
+    return errors
+
+
+def check_the_panel_asks_job_hunter_through_the_board() -> int:
+    """The Job Hunter panel asks the board's own server, which asks Job
+    Hunter with a service token and a signed assertion (owner, 2026-11-23,
+    design C: "the board's server fetches the scoring popout for you with a
+    Cloudflare service token, so the popout never asks you to sign in").
+
+    The service token passes Access on every path of hunter.<domain>, so
+    functions/api/jh/board-role.js must make ONE fixed call and decide for
+    itself who may set it off. Driven through scripts/jh_proxy_harness.mjs
+    (the real function, a fake Job Hunter that records each request):
+      - signed out, no role, another site's page, another host, a bad id or
+        nothing set up: refused, and NOTHING reaches Job Hunter;
+      - allowed: exactly one GET of https://hunter.<domain>/api/board-role
+        ?id=<id>, no redirect followed, an eight-second timeout, and exactly
+        the two service-token headers and X-SJ-Assertion, none of the
+        caller's (a forged assertion, a forged token, cookies, auth);
+      - the assertion verifies with the published key (in Python too) and
+        carries iss, aud, sub, email, the id, iat, exp = iat + 60, a fresh
+        jti; Python's own query reader, as Job Hunter's is, reads every
+        awkward id back exactly;
+      - what comes back: Job Hunter's JSON, its 401/404 reason words (never
+        the address), and "unreachable" for everything else;
+      - nothing secret in any answer, and nothing logged.
+    """
+    import shutil
+    import subprocess
+    import urllib.parse as _up
+    errors = 0
+    if not shutil.which("node"):
+        print("  note: node is not installed; the panel's route was not driven")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "jh_proxy_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    try:
+        o = json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError) as exc:
+        return fail(f"jh_proxy_harness.mjs printed no JSON ({exc}): {r.stderr[-400:]}")
+    brand = json.loads((DATA / "brand.json").read_text())
+    issuer, jh = f"https://{brand['domain']}", f"https://hunter.{brand['domain']}"
+
+    for k, status, word in (("anon", 401, "not_signed_in"), ("no_role", 403, "not_allowed"),
+                            ("admin_only", 403, "not_allowed"), ("revoked", 403, "not_allowed"),
+                            ("users_down", 403, "not_allowed"), ("cross_site", 403, "not_from_this_site"),
+                            ("same_site", 403, "not_from_this_site"), ("www", 404, "not_here"),
+                            ("alias", 404, "not_here")):
+        c = o.get(k) or {}
+        if c.get("status") != status or c.get("json") != {"error": word} or c.get("calls"):
+            errors += fail(f"the panel's route answered {k} with {c.get('status')} {c.get('json')} "
+                           f"({c.get('calls')} call(s) to Job Hunter), not {status} {word} and none")
+    for k, c in (o.get("bad_id") or {}).items():
+        if c.get("status") != 400 or c.get("json") != {"error": "bad_id"} or c.get("calls"):
+            errors += fail(f"a bad id ({k}) reached Job Hunter or was not refused: {c.get('status')} {c.get('calls')}")
+    if len(o.get("bad_id") or {}) < 7 or (o.get("longest") or {}).get("status") != 200:
+        errors += fail("the id's length cap refuses the longest id Job Hunter takes, or too few bad ids were tried")
+    for k in ("no_token", "no_token_secret", "odd_token", "no_key"):
+        c = o.get(k) or {}
+        if c.get("status") != 503 or c.get("json") != {"failed": "not_set_up"} or c.get("calls"):
+            errors += fail(f"with {k} the route still calls Job Hunter, or does not say it is not set up: {c}")
+    for k in ("typed", "no_fetch_meta", "access_owner"):
+        if (o.get(k) or {}).get("status") != 200:
+            errors += fail(f"the route refused {k}, a request it should answer")
+    if o.get("access_owner_email") != "owner@example.org":
+        errors += fail("the owner signed in through Access is not who the assertion names")
+
+    g = o.get("good") or {}
+    call = g.get("call") or {}
+    want = g.get("want") or {}
+    u = _up.urlsplit(call.get("url", ""))
+    if (g.get("status") != 200 or g.get("calls") != 1 or g.get("cache") != "no-store"
+            or (u.scheme, u.netloc, u.path) != ("https", f"hunter.{brand['domain']}", "/api/board-role")
+            or _up.parse_qs(u.query, keep_blank_values=True) != {"id": [want.get("id")]}
+            or call.get("method") != "GET" or call.get("redirect") != "manual" or not call.get("signal")
+            or call.get("body") is not None):
+        errors += fail(f"the route's one call is not the fixed GET of Job Hunter's route, unredirected, with a "
+                       f"timeout: {call.get('url')} {call.get('method')} {call.get('redirect')}")
+    hd = call.get("headers") or {}
+    if (sorted(hd) != ["cf-access-client-id", "cf-access-client-secret", "x-sj-assertion"]
+            or hd.get("cf-access-client-id") != want.get("token_id") or hd.get("cf-access-client-secret") != want.get("token_secret")):
+        errors += fail(f"the call carries other headers than the two token headers and the assertion, or the caller's: {sorted(hd)}")
+    a = g.get("assertion") or {}
+    jwt = g.get("assertion_jwt") or ""
+    keys = {k.get("kid"): k for k in o.get("keys") or []}
+    cl = _jwt_claims(jwt)
+    if (not a.get("ok") or not _es256_verify(keys.get("proxy-test-key") or {}, jwt)
+            or a.get("head") != {"alg": "ES256", "typ": "JWT", "kid": "proxy-test-key"} or a.get("sig_bytes") != 64):
+        errors += fail(f"the assertion does not verify with the published key (Node and Python both must): {a.get('head')}")
+    if (set(cl) != {"iss", "aud", "sub", "email", "id", "iat", "exp", "jti"} or cl.get("iss") != issuer
+            or cl.get("aud") != f"{jh}/api/board-role" or cl.get("sub") != want.get("sub")
+            or cl.get("email") != "hunter@example.org" or cl.get("id") != want.get("id")
+            or cl.get("iat") != want.get("iat") or cl.get("exp") != (want.get("iat") or 0) + 60
+            or not re.fullmatch(r"[A-Za-z0-9_-]{22}", cl.get("jti") or "")):
+        errors += fail(f"the assertion's claims are not the interface's: {cl}")
+    if not o.get("jti_differs") or g.get("delays") != [8000] or o.get("slow_delay") != 8000:
+        errors += fail(f"two assertions share a jti, or the call's timeout is not about eight seconds: {g.get('delays')}")
+    tricky = o.get("tricky") or []
+    if len(tricky) < 10:
+        errors += fail("the harness asked about too few awkward ids")
+    for t in tricky:
+        tu = _up.urlsplit(t.get("url", ""))
+        if (t.get("status") != 200 or (tu.netloc, tu.path) != (f"hunter.{brand['domain']}", "/api/board-role")
+                or _up.parse_qs(tu.query, keep_blank_values=True) != {"id": [t.get("id")]}
+                or t.get("claim_id") != t.get("id") or not t.get("ok")):
+            errors += fail(f"Job Hunter would read another id than the one asked, or the assertion names another: {t}")
+
+    rel = o.get("relay") or {}
+    found = {"found": True, "id": "sig-1", "org": "Acme Gov", "title": "Account Executive", "status": "open",
+             "fit": {"as_is": 71, "ceiling": 88, "review": "accepted"}}
+    want_rel = {"found": (200, found), "missing": (200, {"found": False}),
+                "no_account": (401, {"error": "no_account"}), "no_token": (401, {"error": "no_token"}),
+                "refused_sentence": (401, {"error": "refused"}), "not_found": (404, {"error": "not_found"}),
+                "bad": (400, {"error": "bad_id"})}
+    for k in ("busy", "forbidden_json", "tunnel_down", "access_redirect", "access_page", "json_array", "not_json",
+              "huge", "no_type", "network", "slow"):
+        want_rel[k] = (502, {"failed": "unreachable"})
+    for k, (status, body) in want_rel.items():
+        c = rel.get(k) or {}
+        if c.get("status") != status or c.get("json") != body or c.get("calls") != 1:
+            errors += fail(f"Job Hunter's {k} answer reached the panel as {c.get('status')} {c.get('json')}, not {status} {body}")
+    if o.get("mw_signed_in", {}).get("status") != 200 or o.get("mw_signed_in", {}).get("calls") != 1:
+        errors += fail(f"through the middleware a signed-in person is refused: {o.get('mw_signed_in')}")
+    mwa = o.get("mw_anon") or {}
+    if mwa.get("calls") or mwa.get("status") not in (401, 403) or (mwa.get("json") or {}).get("error") != "not_signed_in":
+        errors += fail(f"through the middleware a signed-out request reaches Job Hunter: {mwa}")
+    if any((o.get("leaks") or {}).values()) or o.get("logged"):
+        errors += fail(f"a secret, the assertion or an address leaked into an answer, or something was logged: "
+                       f"{o.get('leaks')} {o.get('logged')}")
+    src = _strip_js_comments((ROOT / "functions" / "api" / "jh" / "board-role.js").read_text())
+    if src.count("fetch(") != 1 or "fetch(`${JH_ROUTE}?id=${encodeURIComponent(id)}`" not in src \
+            or 'redirect: "manual"' not in src:
+        errors += fail("functions/api/jh/board-role.js makes another call than the one fixed GET")
     return errors
 
 
@@ -12439,11 +12572,11 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
                            f"and blanks thousands of style attributes")
         if "report-uri" in d or "report-to" in d:
             errors += fail(f"{k}: a report endpoint costs a Function request per report")
-        # THE APP MAY ASK JOB HUNTER ONE THING (its panel on a role, owner,
-        # 2026-10-25), at hunter.<the brand's domain> and nowhere else; every
-        # other kind of page fetches only from itself
-        dom = json.loads((DATA / "brand.json").read_text()).get("domain")
-        want_connect = ["'self'", f"https://hunter.{dom}"] if k == "app" else ["'self'"]
+        # EVERY KIND OF PAGE FETCHES ONLY FROM ITSELF. The app page named
+        # hunter.<the brand's domain> for the Job Hunter panel from 2026-10-25;
+        # since 2026-11-23 (design C) the panel asks this site's own
+        # /api/jh/board-role and nothing on any page talks to Job Hunter
+        want_connect = ["'self'"]
         if d.get("img-src") != ["'self'"] or d.get("connect-src") != want_connect:
             errors += fail(f"{k}: img-src/connect-src widened: {d.get('img-src')} / {d.get('connect-src')}")
 
@@ -56271,6 +56404,15 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
             errors += fail(f"the panel's {key} silence does not say {needle!r} or offer Job Hunter: {got[:200]!r}")
     if "did not answer" in flat.get("signin", "") or "Sign in" in flat.get("unreachable", ""):
         errors += fail("the panel says one silence for another")
+    # THE BOARD'S OWN FUNCTION'S WORDS (design C, 2026-11-23): no place in the
+    # beta, the board's sign-in run out (offered a sign-in back to this page,
+    # not Job Hunter), the board's way in not set up
+    for key, needle, href in (("not_allowed", "closed beta", f'href="{app}"'),
+                              ("signedout", "SLED JOBS sign-in has run out", 'href="http://x/signin?to=%2F"'),
+                              ("not_set_up", "way in to Job Hunter is not set up", f'href="{app}"')):
+        got = flat.get(key, "")
+        if needle not in got or href not in got:
+            errors += fail(f"the panel's {key} silence does not say {needle!r} or offer {href}: {got[:200]!r}")
     if "not on your Job Hunter board" not in flat.get("missing", "") or "jhp-flaghost" not in flat.get("missing", ""):
         errors += fail(f"a role Job Hunter does not hold is not offered its Flag: {flat.get('missing','')[:160]!r}")
     # THE REPLY BECOMES THE RIGHT SILENCE, run on the page's own jhAnswer: Job
@@ -56279,7 +56421,12 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
     # its status (second review, 2026-10-26: the mapping was never run)
     want = {"redirect": {"failed": "signin"}, "no_account": {"failed": "no_account"},
             "no_token": {"failed": "signin"}, "forbidden": {"failed": "signin"},
-            "down": {"failed": 503}, "found": {"found": True, "id": "s"}}
+            "down": {"failed": 503}, "found": {"found": True, "id": "s"},
+            # functions/api/jh/board-role.js's own answers, and the gate's
+            "not_allowed": {"failed": "not_allowed"}, "not_signed_in": {"failed": "signedout"},
+            "gate_refused": {"failed": "signedout"}, "unreachable": {"failed": "unreachable"},
+            "not_set_up": {"failed": "not_set_up"}, "not_from_site": {"failed": "signin"},
+            "bad_id": {"failed": 400}}
     got = jp.get("answers") or {}
     for k, v in want.items():
         if got.get(k) != v:
@@ -56348,11 +56495,17 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         errors += fail("an unexpected failure is escaped twice or not at all")
     src = re.sub(r"\s+", "", (ROOT / "index.html").read_text())
     op = src[src.find("asyncfunctionopenJhPanel("):src.find("document.addEventListener(\"keydown\",e=>{constel=$(\"#jhpanel\");")]
+    # THE PANEL ASKS THIS SITE (design C, 2026-11-23): its own
+    # /api/jh/board-role, same origin only, and the board's server asks Job
+    # Hunter (check_the_panel_asks_job_hunter_through_the_board); the page
+    # never fetches Job Hunter itself
+    if "fetch(jhOrigin()" in src or 'fetch("https://hunter.' in src or "jhOrigin()" in src:
+        errors += fail("the page still fetches Job Hunter across sites; the panel asks the board's own server")
     for needle, why in (
-            ('r=awaitjhAnswer(awaitfetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),'
-             '{credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"}));',
-             "asks Job Hunter something besides the posting's id, follows its door's redirect, "
-             "or reads the reply some other way than jhAnswer"),
+            ('r=awaitjhAnswer(awaitfetch("/api/jh/board-role?id="+encodeURIComponent(p.id),'
+             '{credentials:"same-origin",mode:"same-origin",redirect:"manual",cache:"no-store"}));',
+             "asks the board's own server something besides the posting's id, asks another site, "
+             "follows a redirect, or reads the reply some other way than jhAnswer"),
             ('}catch(e){r={failed:"unreachable"};}', "reads a request that never answered as something else"),
             ("constfh=body.querySelector(\".jhp-flaghost\");if(fh)fh.appendChild(jhFlagLink(p));",
              "offers a role Job Hunter does not hold no Flag"),
@@ -61262,6 +61415,7 @@ def main() -> int:
     errors += check_continue_with_google_waits_for_its_own_door()
     errors += check_our_own_sign_in_proves_the_address_and_opens_only_the_boards()
     errors += check_job_hunter_signs_in_with_sled_jobs()
+    errors += check_the_panel_asks_job_hunter_through_the_board()
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()

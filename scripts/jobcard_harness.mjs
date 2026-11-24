@@ -467,6 +467,11 @@ try {
       unreachable: jhPanelHTML({ failed: "unreachable" }),
       no_account: jhPanelHTML({ failed: "no_account" }),
       status: jhPanelHTML({ failed: 503 }),
+      // the board's own function answers since 2026-11-23 (design C): no
+      // place in the beta, the board's sign-in run out, its way in not set up
+      not_allowed: jhPanelHTML({ failed: "not_allowed" }),
+      signedout: jhPanelHTML({ failed: "signedout" }),
+      not_set_up: jhPanelHTML({ failed: "not_set_up" }),
       none: jhPanelHTML(null),
       missing: jhPanelHTML({ found: false }),
       // a role with everything: a failing gate, a score the person rejected,
@@ -519,6 +524,14 @@ try {
       forbidden: await jhAnswer(reply({ status: 403 })),
       down: await jhAnswer(reply({ status: 503, json: body({ error: "busy" }) })),
       found: await jhAnswer(reply({ ok: true, json: body({ found: true, id: "s" }) })),
+      // what functions/api/jh/board-role.js answers, and the gate before it
+      not_allowed: await jhAnswer(reply({ status: 403, json: body({ error: "not_allowed" }) })),
+      not_signed_in: await jhAnswer(reply({ status: 401, json: body({ error: "not_signed_in" }) })),
+      gate_refused: await jhAnswer(reply({ status: 403, json: body({ error: "not_signed_in" }) })),
+      unreachable: await jhAnswer(reply({ status: 502, json: body({ failed: "unreachable" }) })),
+      not_set_up: await jhAnswer(reply({ status: 503, json: body({ failed: "not_set_up" }) })),
+      not_from_site: await jhAnswer(reply({ status: 403, json: body({ error: "not_from_this_site" }) })),
+      bad_id: await jhAnswer(reply({ status: 400, json: body({ error: "bad_id" }) })),
     };
   })()`, ctx);
 } catch (e) {
