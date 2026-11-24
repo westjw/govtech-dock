@@ -67,6 +67,7 @@ ATS_NAME = {"ashby": "Ashby", "greenhouse": "Greenhouse", "lever": "Lever",
             "zohorecruit": "Zoho Recruit",
             "comeet": "Comeet",
             "jobvite": "Jobvite",
+            "jobvitefeed": "Jobvite (an account's feed)",
             "successfactors": "SAP SuccessFactors",
             "html": "Careers page", "unknown": "No board on file"}
 

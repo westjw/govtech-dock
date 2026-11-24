@@ -38,6 +38,8 @@ Where the description lives, per board (measured, 2026-08-23):
                  read because the page is already downloaded, but rare: none of
                  ten careers indexes sampled carried one. Ten is not 887, so
                  this is "not seen yet", not "does not happen".
+    jobvitefeed  description, every job's whole ad, in the account's one feed:
+                 always each row's jd, flag or no flag (2026-11-23)
 
   one extra request per posting (behind FETCH_DETAILS, off by default)
     bamboohr     /careers/<id>/detail  -> description + a compensation field
@@ -55,6 +57,7 @@ Where the description lives, per board (measured, 2026-08-23):
 """
 from __future__ import annotations
 
+import contextlib
 import html as html_lib
 import json
 import gzip
@@ -67,6 +70,7 @@ import sys
 import threading
 import time
 import urllib.parse
+import xml.parsers.expat
 from collections import Counter
 
 import requests
@@ -398,8 +402,10 @@ HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cac
 # send - the domain and every host under it. Hirebridge's feed carries
 # internal requisition data beside the public ad (see fetch_hirebridge); it
 # sends no ETag today, and if it ever starts to, or answers from another of
-# its hosts, that is still not a reason to keep a copy of it.
-NEVER_CACHED = frozenset({"hirebridge.com"})
+# its hosts, that is still not a reason to keep a copy of it. A Jobvite
+# account's XML feed names each job's hiring manager, a person, on every row
+# (fetch_jobvitefeed): its host is here for the same reason.
+NEVER_CACHED = frozenset({"hirebridge.com", "app.jobvite.com"})
 
 
 def never_cached(url: str) -> bool:
@@ -517,11 +523,21 @@ _HOST_TABLE = threading.Lock()
 # alone answered at once. Workday's limit is on the caller, not the tenant,
 # so its tenants share one gate (and one backoff). Every host not named here
 # keeps its own gate.
-_SHARED_GATES = ((re.compile(r"(^|\.)(myworkdayjobs|myworkdaysite)\.com$"), "workday"),)
+_SHARED_GATES = ((re.compile(r"(^|\.)(myworkdayjobs|myworkdaysite)\.com$"), "workday"),
+                 # (one gate however the address spells its host - a port, a
+                 # user part - so the pace below cannot be stepped round)
+                 (re.compile(r"^app\.jobvite\.com$"), "app.jobvite.com"))
 # A 429 that names no Retry-After still backs its gate off this long: a
 # server that says only "too many" has said to wait, and asking again at once
 # is the burst that earned the 429.
 RATE_LIMIT_PAUSE = float(os.environ.get("GOVTECH_DOCK_429_PAUSE", "15"))
+# A HOST THAT HAS SAID HOW OFTEN IT MAY BE ASKED is asked no oftener than
+# that, beside HOST_PAUSE (2026-11-23). app.jobvite.com answered a second
+# feed request a second after the first with 429 and Retry-After 30 (the
+# research of 2026-11-20), so its requests start JOBVITE_FEED_PAUSE apart:
+# fetch_jobvitefeed's one request a board, and its identity probe's.
+JOBVITE_FEED_PAUSE = 30.0
+_GATE_PAUSES = {"app.jobvite.com": JOBVITE_FEED_PAUSE}
 
 
 def _gate_key(url: str) -> str:
@@ -536,14 +552,21 @@ def _gate_key(url: str) -> str:
 
 def _host_gate(url: str) -> None:
     host = _gate_key(url)
-    if not host or HOST_PAUSE <= 0:
+    if not host:
         return
+    # A HOST'S OWN PACE AND A 429'S HOLD ARE KEPT WHATEVER HOST_PAUSE IS: the
+    # gate is off only where all three are nothing (blind review 12,
+    # 2026-11-23: GOVTECH_DOCK_HOST_PAUSE=0 returned before either was read,
+    # and two feed requests went to app.jobvite.com back to back)
+    pause = max(HOST_PAUSE, _GATE_PAUSES.get(host, 0.0))
     with _HOST_TABLE:                       # only guards the dicts, never a sleep
+        if pause <= 0 and _HOST_NOT_BEFORE.get(host, 0.0) <= time.monotonic():
+            return
         lock = _HOST_LOCKS.setdefault(host, threading.Lock())
     with lock:
         now = time.monotonic()
         last = _HOST_LAST.get(host)
-        wait = HOST_PAUSE - (now - last) if last is not None else 0.0
+        wait = pause - (now - last) if last is not None else 0.0
         # A SERVER'S OWN INSTRUCTION OUTRANKS OUR INTERVAL. The first version
         # folded a 429's Retry-After into _HOST_LAST as a stamp in the future,
         # written outside this lock - so a same-host worker already asleep
@@ -3892,6 +3915,411 @@ def fetch_jobvite(ref) -> list[dict]:
         _details(out, detail)
     return out
 
+# ---- jobvitefeed: a Jobvite account's XML feed,
+# app.jobvite.com/CompanyJobs/Xml.aspx?c=<company id>
+#
+# Owner, 2026-11-23, asked whether to read Tyler Technologies' openings
+# through the only place they can be read - Tyler's careers pages load a
+# Jobvite widget for one account (ci=q6NaVfwI) and link its CompanyJobs
+# pages, and name no jobs.jobvite.com career site: "Yes, build it". The ref
+# is the account's company id, eight characters, 'q', four, 'fw', one
+# (q6NaVfwI; ql9aVfwj, qtA9VfwR, qf79Vfwa, qzDaVfw1 in the research of
+# 2026-11-20). app.jobvite.com's robots.txt allows /CompanyJobs/.
+#
+# ONE REQUEST IS THE WHOLE BOARD. Measured 2026-11-23 on Tyler's: 200, one
+# answer of 2,119,266 characters, 266 <job> rows, no paging, no total. A job
+# open in several places is a parent row and one row per other place
+# (parentId; 139 of the 266, each after its parent, each the parent's title,
+# requisition, date, pay and ad, a place of its own, and a detail-url that
+# is the parent's job page): 127 jobs, one row each here, the copies' places
+# joined to the parent's.
+#
+# A PERSON'S NAME ON EVERY ROW. hiring_x0020_manager names one on all 266
+# (and on every row of Absolute's and Gigamon's feeds, 2026-11-20). So the
+# feed is read BY NAME, field by field (_JVX_FIELDS), and the characters of
+# every other field are dropped as the parser meets them: no person's name
+# is held, let alone put in a row, a note, stderr, the probe's answer or a
+# cache (app.jobvite.com is in NEVER_CACHED, and nothing of the feed is
+# written anywhere).
+#
+# PARSED AS XML, AND NOTHING ELSE IS TRUSTED: expat, with a DOCTYPE or an
+# ENTITY declaration refused before anything it declares is read (a billion
+# laughs, an external entity); read as a stream and refused past
+# JOBVITE_FEED_MAX bytes; a feed cut short, one that is not a <result> of
+# <job>s, and one that lists no job are errors, never a zero and never part
+# of a board. CDATA (detail-url, salarycurrency) is text like any other.
+#
+# PACED: app.jobvite.com answered 429 (Retry-After 30) to a second feed
+# asked a second after the first, so its gate holds requests
+# JOBVITE_FEED_PAUSE apart (_GATE_PAUSES). A 429, a 5xx and the network
+# failing are raised as every reader raises them - the nightly asks a board
+# once more on a 429 or the network, and keeps it Unknown, never "None
+# found".
+JOBVITE_FEED_HOST = "app.jobvite.com"
+JOBVITE_FEED = "https://app.jobvite.com/CompanyJobs/Xml.aspx?c={account}"
+# Bytes of a feed read, and more is refused, never read in part. Tyler's 127
+# jobs are 2.1 MB (8 KB a row); Absolute's and Gigamon's rows run to 15 KB,
+# so this reads a feed of some 2,000 rows - past the owner's giants of about
+# 500 openings, so a giant is read and counted rather than refused unseen.
+JOBVITE_FEED_MAX = 32_000_000
+# Rows that may not read as a job of this account (no id, no title, a job
+# page that is another account's) before the read is an error: the feed is
+# the board, so more is a feed this reader does not understand.
+JOBVITE_FEED_SLACK = 2
+JOBVITE_FEED_GIANT = 500     # the owner's line for giants (wire_found.GIANT)
+JOBVITE_ACCOUNT = re.compile(r"q[A-Za-z0-9]{4}fw[A-Za-z0-9]")
+# a job's id (odUyAfwZ), or a per-location copy's (<parent id>-<its own>)
+_JVX_JOB_ID = re.compile(r"[A-Za-z0-9]{5,16}(?:-[A-Za-z0-9]{5,16})?")
+# THE ONLY FIELDS EVER READ. Not hiring_x0020_manager, not apply-url,
+# briefdescription, jobtype, externalJobPostingId, agency_x0020_access, nor
+# any field a feed adds tomorrow: what is not named here is dropped unread.
+_JVX_FIELDS = frozenset({"id", "parentId", "title", "requisitionid", "category", "location",
+                         "date", "detail-url", "description", "salarymin", "salarymax",
+                         "salarycurrency", "salaryfrequency",
+                         # (whose board it is, for verify_boards: never a person)
+                         "company", "company_x0020_name"})
+# what salaryfrequency says, word for word ('Annually', 'Hourly' on Tyler's
+# 213 paid rows). _period would read 'Bi-Weekly' as a week and 'Semi-Monthly'
+# as a month, so anything else is no period, and no pay published.
+_JVX_PERIODS = {"annually": "year", "annual": "year", "yearly": "year", "monthly": "month",
+                "weekly": "week", "daily": "day", "hourly": "hour"}
+_JVX_DAY = re.compile(r"([0-9]{1,2})/([0-9]{1,2})/([0-9]{4})")
+_JVX_FIGURE = re.compile(r"[0-9]{1,9}(?:\.[0-9]{1,4})?")
+_JVX_CODE = re.compile(r"(?<![A-Za-z])([A-Z]{3})(?![A-Za-z])")
+
+
+class _JvxRefused(Exception):
+    """A feed the parser stops reading at once (a DOCTYPE or ENTITY, a root
+    that is not <result>), raised out of an expat handler."""
+
+
+def jobvitefeed_account(ref) -> str:
+    """The Jobvite company id a ref names, or AtsError."""
+    account = _text(ref)
+    if not JOBVITE_ACCOUNT.fullmatch(account):
+        raise AtsError(f"not a jobvite company id: {ref!r}")
+    return account
+
+
+def jobvitefeed_url(ref) -> str:
+    return JOBVITE_FEED.format(account=jobvitefeed_account(ref))
+
+
+def jobvitefeed_page(ref) -> str:
+    """Where a person can look at the account's jobs: Jobvite's own careers
+    page for it, which robots.txt allows (never the feed: it is for programs,
+    and it names a person on every row). Not opened by this reader."""
+    return f"https://{JOBVITE_FEED_HOST}/CompanyJobs/Careers.aspx?c={jobvitefeed_account(ref)}"
+
+
+def _jvx_body(url: str) -> bytes:
+    """The feed's bytes, asked once: robots.txt asked (follow), and no
+    redirect followed - the feed answers in place, so a hop anywhere is
+    refused before it is asked anything: to Jobvite's own pages, where an
+    account nobody holds is sent, or back to the feed itself, which follow()
+    asked eleven times over, at the host's 30-second pace, before it gave up
+    (blind review 12, 2026-11-23). Paced at the host's gate (_one), read as
+    a stream, and refused past JOBVITE_FEED_MAX. A 429 is honoured at the
+    gate and raised as RateLimited; any other answer but a 200 is an error;
+    the network failing on the way, mid-body included, is a network error."""
+    hops: list[str] = []
+
+    def stay(u: str):
+        hops.append(u)
+        if u != url:
+            raise AtsError(f"{url} leads off to {str(u)[:120]}, which is not this account's feed "
+                           f"(an account that is not there is sent on to Jobvite's own pages), so "
+                           f"it is not read as a board with nothing open")
+        if len(hops) > 1:
+            raise AtsError(f"{url} leads off to itself again: the feed answers in place, so a "
+                           f"redirect is never followed (an account that is not there is sent on "
+                           f"to Jobvite's own pages), and it is not read as a board with nothing open")
+    resp = follow(url, lambda u: _one(u, stream=True), may=stay)
+    try:
+        status = getattr(resp, "status_code", None)
+        if status == 429:
+            _back_off(url, resp)
+        if status != 200:
+            raise AtsError(f"HTTP {status} for {url}")
+        raw = bytearray()
+        try:
+            for chunk in resp.iter_content(chunk_size=65536):
+                raw += chunk
+                if len(raw) > JOBVITE_FEED_MAX:
+                    raise AtsError(f"{url} is more than {JOBVITE_FEED_MAX:,} bytes, this reader's "
+                                   f"cap: it is not read, and never read in part")
+        except requests.RequestException as exc:
+            raise AtsError(f"network error: {exc}") from exc
+    finally:
+        try:
+            resp.close()
+        except Exception:                          # noqa: BLE001
+            pass
+    return bytes(raw)
+
+
+def jobvitefeed_jobs(raw: bytes, url: str = "the feed") -> list[dict]:
+    """Every <job> of a feed, as {field: [its text, once for each time the
+    field appears]}, for the fields in _JVX_FIELDS and no others - or
+    AtsError for a feed that declares a DOCTYPE or an ENTITY, does not read
+    as XML (cut short, a bare '&', an entity XML does not define, junk after
+    it), is not a <result> of <job>s, or lists no job.
+
+    The characters of a field not named are never kept: the parser drops
+    them as it meets them, hiring_x0020_manager's included. Comments and
+    processing instructions are not text; CDATA is."""
+    jobs: list[dict] = []
+    path: list[str] = []
+    here: dict = {"job": None, "field": None}
+
+    def refuse(*_args):
+        raise _JvxRefused("declares a DOCTYPE or an ENTITY")
+
+    def start(name, _attrs):
+        path.append(name)
+        if len(path) == 1 and name != "result":
+            raise _JvxRefused(f"is not a Jobvite feed (its root is <{name[:40]}>, not <result>)")
+        if len(path) == 2:
+            here["job"] = {} if name == "job" else None
+        elif len(path) == 3 and here["job"] is not None:
+            here["field"] = name if name in _JVX_FIELDS else None
+            if here["field"]:
+                here["job"].setdefault(name, []).append([])
+
+    def end(name):
+        if len(path) == 3 and here["field"]:
+            parts = here["job"][here["field"]]
+            parts[-1] = "".join(parts[-1])
+            here["field"] = None
+        elif len(path) == 2 and here["job"] is not None:
+            jobs.append(here["job"])
+            here["job"] = None
+        path.pop()
+
+    def text(data):
+        if here["field"]:                     # (a field named, or something inside one)
+            here["job"][here["field"]][-1].append(data)
+
+    p = xml.parsers.expat.ParserCreate()
+    p.buffer_text = True
+    p.StartDoctypeDeclHandler = refuse
+    p.EntityDeclHandler = refuse
+    p.UnparsedEntityDeclHandler = refuse
+    p.NotationDeclHandler = refuse
+    p.SetParamEntityParsing(xml.parsers.expat.XML_PARAM_ENTITY_PARSING_NEVER)
+    p.StartElementHandler, p.EndElementHandler, p.CharacterDataHandler = start, end, text
+    try:
+        p.Parse(raw, True)
+    except _JvxRefused as exc:
+        raise AtsError(f"{url} {exc}: refused, and nothing it lists is read") from None
+    except xml.parsers.expat.ExpatError as exc:
+        raise AtsError(f"{url} does not read as XML ({exc}): a feed cut short, or not a feed, "
+                       f"and never read in part") from None
+    if not jobs:
+        raise AtsError(f"{url} lists no job, so it is not read as a board with nothing open "
+                       f"(an empty feed has not been seen)")
+    return jobs
+
+
+def _jvx_first(job: dict, field: str) -> str:
+    """The first text a job gives a field, one line, or ""."""
+    for value in job.get(field) or ():
+        t = _text(value)
+        if t:
+            return t
+    return ""
+
+
+def _jvx_job_url(detail: str, account: str, job: str) -> str | None:
+    """The job's own page, https - its detail-url, http in the feed - where
+    it is this account's job page for this very job (Job.aspx, c= the
+    account, j= the job), written with those two keys and no others; None
+    for anything else, which names some other page."""
+    try:
+        parts = urllib.parse.urlsplit(detail)
+        query = urllib.parse.parse_qs(parts.query, keep_blank_values=True)
+    except ValueError:
+        return None
+    if (parts.scheme not in ("http", "https") or parts.netloc.lower() != JOBVITE_FEED_HOST
+            or parts.path.lower() != "/companyjobs/job.aspx"
+            or query.get("c") != [account] or query.get("j") != [job]):
+        return None
+    return f"https://{JOBVITE_FEED_HOST}/CompanyJobs/Job.aspx?c={account}&j={job}"
+
+
+def _jvx_day(raw: str) -> str | None:
+    """M/D/YYYY ('8/26/2026', all 266 of Tyler's) as YYYY-MM-DD, or None:
+    two-digit years and every other form are no date, never a guess."""
+    m = _JVX_DAY.fullmatch(_text(raw))
+    if not m:
+        return None
+    try:
+        return dt.date(int(m.group(3)), int(m.group(1)), int(m.group(2))).isoformat()
+    except ValueError:
+        return None
+
+
+def _jvx_figure(raw: str) -> tuple[int | float | None, bool]:
+    """(the figure, whether it read). Blank or zero is no figure; '22.50'
+    stays 22.5 - _money rounds to whole units, which would publish a rate
+    the feed never stated."""
+    s = re.sub(r"[,\s$]", "", raw or "")
+    if not s:
+        return None, True
+    if not _JVX_FIGURE.fullmatch(s):
+        return None, False
+    v = float(s)
+    if v <= 0:
+        return None, True
+    return (int(v) if v.is_integer() else v), True
+
+
+def _jvx_currency(raw: str) -> str | None:
+    """The ISO code salarycurrency names ('US Dollar (USD US$)', 'Philippine
+    Piso (PHP ₱)', 'Canadian Dollar (CAD $)' on Tyler's), or None where it
+    names none, or more than one."""
+    t = _text(raw)
+    inside = re.findall(r"\(([^()]*)\)", t)
+    codes = {c for part in (inside or [t]) for c in _JVX_CODE.findall(part)}
+    return codes.pop() if len(codes) == 1 else None
+
+
+def _jvx_pay(job: dict, abroad: bool = False) -> dict | None:
+    """The contract's comp block from the row's own salary fields
+    (salarymin, salarymax, salarycurrency, salaryfrequency: 213 of Tyler's
+    266 rows), source "ats" as every reader's stated range is - or None
+    where the row states no figure, or a figure that does not read (half a
+    range is not published as a floor or a ceiling the row never stated). A
+    frequency not in _JVX_PERIODS leaves period None, which build_board.
+    derived drops, as it drops every reader's pay with no period.
+
+    `abroad` is where the row is (_abroad): a row the board lists outside
+    the US whose salarycurrency names no code states no pay published, as a
+    bare "$" there names no currency (_text_comp) - a block with none is
+    read as US dollars on the site (blind review 12, 2026-11-23: 'Philippine
+    Piso' with no code, on a row in the Philippines, was published as
+    between $874k and $1116k a year)."""
+    lo_raw, hi_raw = _jvx_first(job, "salarymin"), _jvx_first(job, "salarymax")
+    (lo, lo_ok), (hi, hi_ok) = _jvx_figure(lo_raw), _jvx_figure(hi_raw)
+    if not (lo_ok and hi_ok) or (lo is None and hi is None):
+        return None
+    if lo is not None and hi is not None and lo > hi:
+        lo, hi, lo_raw, hi_raw = hi, lo, hi_raw, lo_raw
+    currency = _jvx_currency(_jvx_first(job, "salarycurrency"))
+    if currency is None and abroad:
+        return None
+    period = _JVX_PERIODS.get(_jvx_first(job, "salaryfrequency").lower())
+    return {"min": lo, "max": hi, "currency": currency, "period": period, "source": "ats",
+            "raw": _raw_from(lo_raw if lo is not None else None,
+                             hi_raw if hi is not None else None, currency, period)}
+
+
+def jobvitefeed_rows(jobs: list[dict], account: str) -> tuple[list[dict], int]:
+    """(one row per job, how many of the feed's rows did not read as a job
+    of this account). A job is a parent row and its per-location copies,
+    grouped by parentId whatever their order; the parent gives the row its
+    title, date, page, category, pay and ad, and every copy's place joins
+    its own, in the feed's order, once each, as the readers that read
+    several places join them. A row with no id, a group with no title, and
+    one whose page is not this account's job page for it are not read."""
+    groups: dict[str, list[dict]] = {}
+    unread = 0
+    for job in jobs:
+        jid, parent = _jvx_first(job, "id"), _jvx_first(job, "parentId")
+        if not _JVX_JOB_ID.fullmatch(jid) or (parent and not _JVX_JOB_ID.fullmatch(parent)):
+            unread += 1
+            continue
+        groups.setdefault(parent or jid, []).append(job)
+    rows = []
+    for key, members in groups.items():
+        base = next((j for j in members if _jvx_first(j, "id") == key
+                     and not _jvx_first(j, "parentId")), members[0])
+        title = _jvx_first(base, "title")
+        url = _jvx_job_url(_jvx_first(base, "detail-url"), account, key)
+        if not title or not url:
+            unread += len(members)               # (every row of the job is lost with it)
+            continue
+        places = dict.fromkeys(p for j in [base] + [m for m in members if m is not base]
+                               for p in (_text(v) for v in j.get("location") or ()) if p)
+        row = {"title": title,
+               "location": "; ".join(places),
+               "url": url,
+               "posted": _jvx_day(_jvx_first(base, "date")),
+               "category": _jvx_first(base, "category") or None}
+        # (where the board will list it decides what a currency naming no
+        # code is: _jvx_pay)
+        row["comp"] = _jvx_pay(base, abroad=_abroad(row))
+        # THE AD IS ALWAYS READ: it is in the answer already downloaded, so it
+        # costs no request, and "the boards that hand the description over in
+        # the list response we already make are always read, flag or no flag"
+        # (FETCH_DETAILS above). Behind the flag, as first built, the nightly
+        # would have published 41 of Tyler's jobs as "We could not read this
+        # posting" with the ad in hand.
+        row["jd"] = plain_html(next((v for v in base.get("description") or () if v.strip()), ""))
+        rows.append(row)
+    return rows, unread
+
+
+# ONE PLAN ASKS THE FEED ONCE (blind review 12, 2026-11-23). The wiring door
+# reads a board (add_company.read_board) and then asks it whose it is
+# (verify_boards.board_says), and for this type both are this one feed: one
+# plan asked the same address twice, 30 seconds apart, though one answer
+# serves both. Inside jobvitefeed_kept() - wire_found.plan, and nothing else
+# - a feed read whole is kept in memory under the address it was asked at,
+# for as long as the plan runs, and asked again it is that answer. Nothing
+# is written anywhere; a read that failed raised, and is not kept; outside
+# the block every call asks.
+_JVX_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def jobvitefeed_kept():
+    """Each feed read whole is the answer to every later ask of it in the
+    block (see above). Also a decorator: each call is a block of its own."""
+    global _JVX_KEPT
+    outer = _JVX_KEPT
+    _JVX_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _JVX_KEPT = outer
+
+
+def jobvitefeed_read(ref) -> tuple[str, list[dict], list[dict], list[str]]:
+    """(the account, the feed's <job>s by field, one row per job, what was
+    noticed in words) - one request, or none inside jobvitefeed_kept() where
+    the feed was read whole already - or AtsError: more than
+    JOBVITE_FEED_SLACK rows that do not read, or none that does, is a feed
+    this reader does not understand, never part of a board or a zero."""
+    account = jobvitefeed_account(ref)
+    url = JOBVITE_FEED.format(account=account)
+    kept = _JVX_KEPT
+    if kept is not None and url in kept:
+        return kept[url]
+    jobs = jobvitefeed_jobs(_jvx_body(url), url)
+    rows, unread = jobvitefeed_rows(jobs, account)
+    if unread > JOBVITE_FEED_SLACK or not rows:
+        raise AtsError(f"{url}: {unread} of its {len(jobs)} rows did not read as a job of this "
+                       f"account (no id, no title, or a job page that is not this account's), so "
+                       f"it is not read in part")
+    notes = []
+    if unread:
+        notes.append(f"{unread} of its {len(jobs)} rows did not read as a job of this account "
+                     f"and are left out")
+    if len(rows) >= JOBVITE_FEED_GIANT:
+        notes.append(f"{len(rows)} openings: a giant by the owner's line (about "
+                     f"{JOBVITE_FEED_GIANT})")
+    if kept is not None:
+        kept[url] = (account, jobs, rows, notes)
+    return account, jobs, rows, notes
+
+
+def fetch_jobvitefeed(ref) -> list[dict]:
+    account, _jobs, rows, notes = jobvitefeed_read(ref)
+    for line in notes:
+        print(f"  jobvitefeed: {account}: {line}", file=sys.stderr)
+    return rows
+
 # ---- successfactors: SAP SuccessFactors' Career Site Builder (CSB), a career
 # site on the employer's own careers host (jobs.gainwelltechnologies.com,
 # careers.landisgyr.com)
@@ -5203,9 +5631,15 @@ def successfactors_unify(origin: str) -> list[dict]:
         else:
             unread.append(got[0])
         if len(unread) > SF_SLACK:
-            raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
-                           f"did not read as postings ({unread[0]} the first): read in part, so "
-                           f"not read")
+            # (no total of postings is known yet - an address still to come
+            # may land on a requisition another had, and be that posting
+            # again - so the sitemap is counted in addresses, as the refusal
+            # after the loop says them beside its postings: one board's shape
+            # was '3 of the 5 postings' here and '3 of the 4 postings (5
+            # addresses ...)' there, review 11's verifier, 2026-11-23)
+            raise AtsError(f"{origin}: {len(unread)} of the postings its sitemap lists ({len(urls)} "
+                           f"addresses) did not read as postings ({unread[0]} the first): read in "
+                           f"part, so not read")
     # ONE POSTING COUNTS ONCE, closed or open: what is counted below is of the
     # postings the sitemap lists once each, an address landing on a
     # requisition another had being that posting again (blind review 11,
@@ -5304,6 +5738,7 @@ FETCHERS = {
     "zohorecruit": fetch_zohorecruit,
     "comeet": fetch_comeet,
     "jobvite": fetch_jobvite,
+    "jobvitefeed": fetch_jobvitefeed,
     "successfactors": fetch_successfactors,
 }
 
