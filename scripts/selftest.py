@@ -5286,6 +5286,21 @@ _ID_JVX_FEED = ('<?xml version="1.0" encoding="UTF-8"?><result><job><id>oAcmeAfw
                 'courts.&lt;/p&gt;</description><company_x0020_name>Tyler Technologies'
                 '</company_x0020_name><hiring_x0020_manager>Pat Example</hiring_x0020_manager>'
                 '</job></result>')
+# A TriNet Hire board's list in the shape measured on 2026-11-23 and 11-24,
+# every name, slug, title and place in it made up: the ref's slug is a stale
+# one that names nobody (as Codoxo's 5502-fraudscope does), og:site_name and
+# the heading are the vendor's and the template's, and the employer is named
+# by the <title> alone, legal form and all
+_ID_TRINET = "https://app.trinethire.com/companies/41234-old-name/jobs/embed"
+_ID_TRINET_PAGE = (
+    '<!DOCTYPE html><html><!--[if IE 8]> <html lang="en" class="lt-ie9 ie8"> <![endif]-->'
+    '<head><meta charset="UTF-8"><title>Open Jobs | Acme Gov Systems, Inc.</title>'
+    '<meta property="og:site_name" content="TriNet Applicant Tracking"></head>'
+    "<body class='career_site embed_jobs'><div id=\"jobs\" class=\"container\">"
+    '<h1>Our Current Job Openings</h1><ul id="jobs-list"><li class="form-group">\n'
+    '  <a target="_blank" href="/companies/41234-acme-gov-systems-inc/jobs/99001-account-'
+    'executive">Account Executive</a>\n  <p><strong>Location:</strong> Austin, TX - Remote - '
+    'Full-time</p>\n</li>\n</ul></div></body></html>')
 # A SuccessFactors Career Site Builder search page and one of its postings, in
 # the shapes measured on Gainwell's board (2026-11-22): the row's title link is
 # written twice, once for a desk and once for a phone
@@ -5642,6 +5657,9 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
          ["Gigamon"], 1, JV_POST),
         ("jobvitefeed", "q6NaVfwI", "Tyler Technologies", {_ID_JVX: _ID_JVX_FEED}, None,
          ["Tyler Technologies"], 1, _ID_JVX),
+        # (the list's own <title>, never the stale slug the ref carries)
+        ("trinethire", "41234-old-name", "Acme Gov Systems", {_ID_TRINET: _ID_TRINET_PAGE}, None,
+         ["Acme Gov Systems, Inc."], 1, _ID_TRINET),
         # (stated as the board's own configuration names it, LLC and all, and
         # proven for the record that is named without it)
         ("successfactors", _ID_SF, "Gainwell Technologies",
@@ -6017,6 +6035,12 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
             ("gem: a board with no team name at all", "gem", "citydetect", None,
              json.dumps([{"data": {"oatsExternalJobPostings": {"jobPostings": []},
                                    "jobBoardExternal": {"id": "1"}}}])),
+            # THE SLUG IS NEVER A NAME: it spells the company here, and the
+            # list's <title> names nobody after 'Open Jobs | '
+            ("trinethire: a title naming nobody, beside a slug that spells the company",
+             "trinethire", "41234-acme-gov-systems",
+             {"https://app.trinethire.com/companies/41234-acme-gov-systems/jobs/embed":
+              _ID_TRINET_PAGE.replace("Open Jobs | Acme Gov Systems, Inc.", "Open Jobs | ")}, None),
             # a field of 5,000 characters is not a name, whatever it is called
             ("rippling: a companyName too long to be a name", "rippling", "codehs",
              {R_PAGE: _ID_RIPPLING.replace('"companyName":"CodeHS, Inc."',
@@ -6300,7 +6324,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
                                     else CM if kind == "comeet"
                                     else _ID_SF if kind == "successfactors"
                                     else "gigamon" if kind == "jobvite"
-                                    else "q6NaVfwI" if kind == "jobvitefeed" else "acme")
+                                    else "q6NaVfwI" if kind == "jobvitefeed"
+                                    else "41234-acme" if kind == "trinethire" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -6647,7 +6672,8 @@ def check_a_stated_name_does_not_loosen_the_older_doors() -> int:
                    "applicantpro", "comeet", "hirebridge", "jobvite", "pinpoint",
                    "teamtailor", "zohorecruit",                                  # 2026-11-21
                    "successfactors",                                             # 2026-11-22
-                   "jobvitefeed"}                                                # 2026-11-23
+                   "jobvitefeed",                                                # 2026-11-23
+                   "trinethire"}                                                 # 2026-11-24
     if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or set(new) != named_since:
         errors += fail(f"the types judge() is forgiving on have changed: "
                        f"{sorted(vb._ALWAYS_NAMED)}, and the ones it is strict on are "
@@ -14607,7 +14633,7 @@ def check_the_crawler_honours_robots_txt() -> int:
     # the page readers go through _page; a raw _get in one reads past robots.txt
     for name in ("_schema_posting", "fetch_paylocity", "_page_text", "fetch_rippling",
                  "_rippling_detail", "fetch_jazzhr", "fetch_icims", "fetch_html_titles",
-                 "fetch_gusto"):
+                 "fetch_gusto", "_trinet_read"):
         src = inspect.getsource(getattr(ats, name))
         if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
             errors += fail(f"ats.{name} reads a page without asking robots.txt")
@@ -21162,6 +21188,362 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
     return errors
 
 
+def check_trinethire_reads_its_list_and_names_it_once() -> int:
+    """A TriNet Hire board (app.trinethire.com), driven through ats.requests
+    with pages written here by hand - every company, number, slug, title and
+    place in them made up - and nothing that can reach a real host.
+
+    THE READ: one request, /companies/<ref>/jobs/embed, through the repo's
+    page helpers - robots.txt asked at every hop, the crawler's own name, the
+    host gate - every hop held to the board's own list (the same number, no
+    query) and refused before it is asked; never /jobs, the career page that
+    says it has no openings, and never a posting page, FETCH_DETAILS on or
+    off (robots.txt's content signals leave reading ad text there the
+    owner's call).
+    THE ROWS: one a job id (two postings of one title stay two; one listed
+    twice is one), the title unescaped, the url its href on app.trinethire.com
+    with ?source= dropped, the location the label before the LAST ' - '
+    (never read as a city); no jd, no comp, no posted, whatever dollar
+    figure a title carries.
+    A ZERO ONLY WHERE THE LIST SAYS SO: the template ('Open Jobs | ' title and
+    <ul id="jobs-list">) with no <li> and no posting linked. The career page,
+    a challenge page, a page with no template, a row that does not read, a
+    posting outside the list, a list cut short, a page past the cap, a 404
+    and a 429 raise.
+    THE PROBE: the <title> after exactly 'Open Jobs | ', unescaped, stated
+    over the whole board; never the slug, og:site_name or a heading.
+    THE FINDER: the number on app.trinethire.com, in an href or a src and in
+    any form, is a board, '<n>-<slug>' as written or the bare number, keyed
+    on the number; other hosts and other paths are none.
+    THE DOOR: a company whose own page embeds the board and whose board names
+    it is wired; one whose board names somebody else is held.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import board_proposals as bp
+    import build_board as bb
+    import find_site_boards as fsb
+    import verify_boards as vb
+    errors = 0
+    N = "41234"
+    REF = N + "-old-name"                    # a stale slug: it names nobody
+    LIST = f"https://app.trinethire.com/companies/{REF}/jobs/embed"
+    CAREERS = f"https://app.trinethire.com/companies/{REF}/jobs"
+
+    def li(job, title, where, slug="acme-gov-systems-inc", tail=""):
+        return (f'<li class="form-group">\n  <a target="_blank" href="/companies/{N}-{slug}/jobs/'
+                f'{job}-x{tail}">{title}</a>\n  <p><strong>Location:</strong> {where}</p>\n</li>\n')
+
+    def page(*rows, title="Open Jobs | Acme Gov Systems, Inc.", head="", body="", ul='id="jobs-list"'):
+        return (f'<!DOCTYPE html><html><!--[if IE 8]> <html class="ie8"> <![endif]--><head>'
+                f'<title>{title}</title>{head}</head><body class=\'career_site embed_jobs\'>'
+                f'<div id="jobs" class="container"><h1>Our Current Job Openings</h1>'
+                f'<ul {ul}>' + "".join(rows) + f"</ul></div>{body}</body></html>")
+
+    def posting(job, slug="acme-gov-systems-inc"):
+        return f"https://app.trinethire.com/companies/{N}-{slug}/jobs/{job}-x"
+
+    MAIN = page(
+        li(99001, "Account Executive &amp; Partner Lead", "Austin, TX - Remote - Full-time",
+           tail="?source=Our+Job+Board"),
+        li(99002, "Account Executive", "Remote- Texas preferred - Full-time"),
+        li(99003, "Account Executive", "Acme HQ - Contractor"),       # one title, another posting
+        li(99003, "Account Executive", "Acme HQ - Contractor"),       # the same posting, listed again
+        li(99004, "Field Engineer", "Remote - Full-time", slug="a-renamed-slug"),
+        li(99005, "Account Executive ($150K OTE)", " - Full-time"))   # a label left blank
+    WANT = [("Account Executive & Partner Lead", "Austin, TX - Remote", posting(99001)),
+            ("Account Executive", "Remote- Texas preferred", posting(99002)),
+            ("Account Executive", "Acme HQ", posting(99003)),
+            ("Field Engineer", "Remote", posting(99004, "a-renamed-slug")),
+            ("Account Executive ($150K OTE)", "", posting(99005))]
+    CAREER_PAGE = ('<title>Careers at Acme Gov Systems, Inc.</title><body class="career_site index">'
+                   '<h5 class="text-center">Careers at Acme Gov Systems, Inc.</h5><section '
+                   'class="jobs-list"><table class="table job-list"><tr class="no-job"><td>'
+                   'Currently no openings available.</td></tr></table></section></body>')
+
+    sent, asked, gated = [], [], []
+    web: dict = {}
+    refusing = {"on": False}
+
+    class Resp:
+        def __init__(self, code, text="", headers=None):
+            self.status_code, self.headers, self.url = code, dict(headers or {}), ""
+            self.text, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
+
+        def close(self):
+            pass
+
+    def get(url, **kw):
+        sent.append((url, kw))
+        v = web.get(url)
+        if isinstance(v, Exception):
+            raise v
+        if isinstance(v, Resp):
+            return v
+        return Resp(404) if v is None else Resp(200, v, {"content-type": "text/html; charset=utf-8"})
+
+    def ask(url):
+        asked.append(url)
+        if refusing["on"]:
+            raise ats.RobotsRefused(f"robots.txt asks crawlers not to read {url}")
+
+    def serve(routes):
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web.update(routes if isinstance(routes, dict) else {LIST: routes})
+
+    def read(routes, ref=REF, details=False):
+        """(rows, the error) of one read of the board `ref`."""
+        serve(routes)
+        ats.FETCH_DETAILS = details
+        try:
+            return ats.plain_rows(ats.fetch_trinethire(ref)), None
+        except Exception as exc:                            # noqa: BLE001 - said by the pin
+            return None, exc
+
+    def says(routes, ref=REF):
+        serve(routes)
+        return vb.board_says("trinethire", ref)
+
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS,
+            dict(ats._HOST_NOT_BEFORE))
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+
+        # ---- the read: one request, the list, through the helpers -----------------------
+        for details in (False, True):
+            rows, exc = read(MAIN, details=details)
+            got = [(r["title"], r["location"], r["url"]) for r in rows or []]
+            if exc or got != WANT:
+                errors += fail(f"trinethire (FETCH_DETAILS {details}): the list did not read as one row "
+                               f"a posting, its title unescaped, its url on app.trinethire.com with no "
+                               f"query, its label before the last ' - ': {exc or got}")
+            elif any(r.get("jd") or r.get("comp") is not None or r.get("posted") for r in rows):
+                errors += fail(f"trinethire: a row carries an ad, pay or a date the list never "
+                               f"states: {[(r.get('jd'), r.get('comp'), r.get('posted')) for r in rows]}")
+            if [u for u, _kw in sent] != [LIST] or asked != [LIST] or gated != [LIST] \
+                    or any((kw.get("headers") or {}).get("User-Agent") != ats.UA["User-Agent"]
+                           or kw.get("allow_redirects") is not False for _u, kw in sent):
+                errors += fail(f"trinethire (FETCH_DETAILS {details}): one read asked {[u for u, _ in sent]} "
+                               f"(robots.txt of {asked}, the gate {len(gated)} times): it is one request, "
+                               f"the list, robots.txt asked, at the gate, under the crawler's own name, "
+                               f"redirects walked by ats.follow - never /jobs or a posting page")
+
+        # (a link written relative to the list is joined to the list, as a browser joins it)
+        rows, exc = read(page('<li class="form-group"><a href="99006-x">Grants Manager</a>'
+                              '<p><strong>Location:</strong> Remote - Full-time</p></li>'))
+        if exc or [r["url"] for r in rows or []] != [f"https://app.trinethire.com/companies/{REF}/jobs/99006-x"]:
+            errors += fail(f"trinethire: a link relative to the list was not joined to it: {exc or rows}")
+
+        # ---- a zero only where the list says so ------------------------------------------
+        for body, why in ((page(), "the template with no row"),
+                          (page(title="Open Jobs | "), "the template with no row, its title naming nobody")):
+            rows, exc = read(body)
+            if exc or rows != []:
+                errors += fail(f"trinethire: {why} is not a board with nothing open: {exc or rows}")
+        rows_ = [li(99001, "Account Executive", "Remote - Full-time")]
+        UNREAD = [
+            (CAREER_PAGE, "the career page (/jobs), which says it has no openings"),
+            (page(*rows_).replace('id="jobs-list"', 'id="job-list"'), "a page with no jobs-list"),
+            (page(*rows_, title="Careers at Acme Gov Systems, Inc."), "a page whose title is not 'Open Jobs | '"),
+            (page(*rows_, title="Open jobs | Acme Gov Systems, Inc."), "'Open jobs | ' in another case"),
+            ('<html><head><title>Just a moment...</title></head><body>Checking your browser'
+             '</body></html>', "a challenge page"),
+            ("", "an empty answer"), ("<html>", "a page that is not one"),
+            (page().replace("</ul>", ""), "a list cut short"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace("<a ", "<span "),
+                  ), "a row with no link"),
+            (page(li(99001, "", "Remote - Full-time")), "a row with no title"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace(
+                f"/companies/{N}-", "/companies/51234-")), "a row that is another board's posting"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace(
+                'href="/companies', 'href="https://evil.example/companies')), "a row whose link is off the host"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace(
+                "/jobs/99001-x", "/jobs")), "a row linking the career page, not a posting"),
+            (page(body=f'<a href="/companies/{N}-acme/jobs/99009-x">Account Executive</a>'),
+             "an empty list beside a posting the page links"),
+            (page(*rows_, body=f'<div><a href="/companies/{N}-acme/jobs/99009-x">Field Engineer</a></div>'),
+             "a posting the page links outside its list"),
+            (page('<li><ul><li class="form-group"></li></ul></li>'), "a list inside the list"),
+            (page(*rows_) + "<!--" + " " * ats.TRINETHIRE_PAGE_MAX + "-->", "a page past the cap"),
+            (Resp(404), "a number that is gone (404)"), (Resp(403), "a refusal (403)"),
+            (Resp(503), "a server error (503)")]
+        for body, why in UNREAD:
+            rows, exc = read(body)
+            if not isinstance(exc, ats.AtsError) or rows is not None:
+                errors += fail(f"trinethire: {why} was read as {rows!r}, not refused as unreadable: {exc!r}")
+        rows, exc = read(Resp(429, headers={"Retry-After": "0"}))
+        if not isinstance(exc, ats.RateLimited):
+            errors += fail(f"trinethire: a 429 was not raised as RateLimited: {exc!r}")
+        ats._HOST_NOT_BEFORE.pop("app.trinethire.com", None)
+
+        # ---- every hop held to the board's own list, refused before it is asked ----------
+        OTHER = "https://app.trinethire.com/companies/51234-other-co/jobs/embed"
+        MOVED = f"https://app.trinethire.com/companies/{N}-acme-gov-systems-inc/jobs/embed"
+        for to, why in ((OTHER, "another employer's list on the same host"),
+                        (CAREERS, "the career page"),
+                        (LIST + "?page=2", "its own list with a query"),
+                        (f"https://app.trinethire.com/companies/{N}-x/jobs/99001-x", "a posting"),
+                        ("https://www.trinethire.example/companies/41234-x/jobs/embed", "another host"),
+                        (LIST.replace("https:", "http:"), "its own list over http")):
+            rows, exc = read({LIST: Resp(302, headers={"Location": to}), to: MAIN})
+            if rows is not None or not isinstance(exc, ats.AtsError) \
+                    or any(u == to for u, _kw in sent) or to in asked:
+                errors += fail(f"trinethire: a redirect to {why} was asked ({[u for u, _ in sent]}, "
+                               f"robots.txt of {asked}) or read: {rows or exc!r}")
+        rows, exc = read({LIST: Resp(301, headers={"Location": MOVED}), MOVED: MAIN})
+        if exc or len(rows or []) != 5 or MOVED not in asked:
+            errors += fail(f"trinethire: a board that moved to a new slug of its own number was not "
+                           f"read there, robots.txt asked at the hop: {exc or rows}")
+        refusing["on"] = True
+        rows, exc = read(MAIN)
+        refusing["on"] = False
+        if not isinstance(exc, ats.RobotsRefused) or sent:
+            errors += fail(f"trinethire: a list robots.txt closes was asked ({sent}) or read: {rows or exc!r}")
+
+        # ---- the ref: '<number>-<slug>' or the number, nothing else asked ----------------
+        for ref, url in ((N, f"https://app.trinethire.com/companies/{N}/jobs/embed"),
+                         (N + "-Acme-Gov", f"https://app.trinethire.com/companies/{N}-Acme-Gov/jobs/embed")):
+            rows, exc = read({url: MAIN}, ref=ref)
+            if exc or len(rows or []) != 5 or [u for u, _ in sent] != [url]:
+                errors += fail(f"trinethire: the ref {ref!r} was not read at {url}: {exc or [u for u, _ in sent]}")
+        for ref in ("acme", "", None, 7.5, ["41234"], f"https://app.trinethire.com/companies/{REF}/jobs",
+                    f"{N}/../51234", f"{N}-x/jobs", f"{N}-x?y=1", f"{N}-x#y", f"{N}-", f"-{N}", f"{N}_x",
+                    f"{N}-x.y", "1" * 13):
+            rows, exc = read(MAIN, ref=ref)
+            if not isinstance(exc, ats.AtsError) or sent:
+                errors += fail(f"trinethire: {ref!r} was taken as a board's ref ({sent}): {rows or exc!r}")
+
+        # ---- the probe: the list's <title>, and nothing else ------------------------------
+        said = says(MAIN)
+        if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"] or said["n"] != 5 \
+                or said["hosts"] != {"app.trinethire.com"} or said["failed"] \
+                or [u for u, _ in sent] != [LIST] or asked != [LIST]:
+            errors += fail(f"trinethire probe: the list's <title> was not read as its whole board's one "
+                           f"statement in one request: {said} (asked {[u for u, _ in sent]})")
+        if not vb.proven({"name": "Acme Gov Systems"}, said)["ok"] \
+                or vb.proven({"name": "Old Name"}, said)["ok"]:
+            errors += fail("trinethire probe: the stated name was not proven for its company, or the "
+                           "ref's slug passed for one")
+        for title, want, why in (
+                ("Open Jobs | Smith &amp; Wesson Gov", ["Smith & Wesson Gov"], "an escaped name"),
+                ("Open Jobs |   Acme   Gov  ", ["Acme Gov"], "a name with stray spaces"),
+                ("Open Jobs | Open Jobs | Acme", ["Open Jobs | Acme"], "the prefix taken off once")):
+            said = says(page(li(99001, "Account Executive", "Remote - Full-time"), title=title))
+            if said["names"] != want or not said["stated"]:
+                errors += fail(f"trinethire probe, {why}: stated {said['names']}, not {want}")
+        # THE SLUG IS NEVER A NAME, and nor is anything but the <title>: the
+        # vendor's og:site_name, the template's heading, a logo's alt text
+        quiet = page(li(99001, "Account Executive", "Remote - Full-time"), title="Open Jobs | ",
+                     head='<meta property="og:site_name" content="Acme Gov Systems">',
+                     body='<h5>Careers at Acme Gov Systems</h5><img alt="Acme Gov Systems">')
+        said = says({f"https://app.trinethire.com/companies/{N}-acme-gov-systems/jobs/embed": quiet},
+                    ref=f"{N}-acme-gov-systems")
+        if said["stated"] or said["names"] or said["failed"] or said["n"] != 1 \
+                or vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+            errors += fail(f"trinethire probe: a list whose title names nobody stated a name from its "
+                           f"slug, og:site_name or a heading, or was proven: {said}")
+        for body, kind_, why in ((CAREER_PAGE, "unreadable", "the career page"),
+                                 (page(title="Careers at Acme Gov Systems, Inc."), "unreadable",
+                                  "a list whose title is not 'Open Jobs | '"),
+                                 (Resp(404), "gone", "a number that is gone")):
+            said = says({LIST: body})
+            if said["failed"] != kind_ or said["names"] or said["stated"] or said["transient"]:
+                errors += fail(f"trinethire probe: {why} was not '{kind_}', naming nobody: {said}")
+
+        # ---- the public link: the list, never the career page -----------------------------
+        for ref, want in ((REF, LIST), (N, f"https://app.trinethire.com/companies/{N}/jobs/embed"),
+                          (CAREERS, "https://acme.example"), ("acme", "https://acme.example")):
+            if bb.board_url({"ats": {"type": "trinethire", "ref": ref},
+                             "website": "https://acme.example"}) != want:
+                errors += fail(f"trinethire: the public link for {ref!r} is not {want} (the board's own "
+                               f"list, never /jobs, which says it has no openings; else their website)")
+
+        # ---- the door: wired on both checks, held when the board names somebody else -----
+        import add_company
+        real = (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+                ats._get, ats._page)
+        A_LIST = "https://app.trinethire.com/companies/41234-old-name/jobs/embed"
+        B_LIST = "https://app.trinethire.com/companies/51234-beta/jobs/embed"
+        serve({A_LIST: MAIN, B_LIST: page(li(99101, "Account Executive", "Remote - Full-time").replace(
+            f"/companies/{N}-", "/companies/51234-"), title="Open Jobs | Gamma Holdings LLC")})
+        with _WiringBox([_wb_co("acme-gov-systems", "Acme Gov Systems"), _wb_co("beta-co", "Beta Co")],
+                        {}) as box, contextlib.redirect_stderr(io.StringIO()):
+            (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+             ats._get, ats._page) = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({
+                "acme-gov-systems": _wb_one("acme-gov-systems", "trinethire", "41234-old-name",
+                                            element="iframe"),
+                "beta-co": _wb_one("beta-co", "trinethire", "51234-beta", element="iframe")}))
+        a_row, b_row = ((rows_ or {}).get(c) or {} for c in ("acme-gov-systems", "beta-co"))
+        if a_row.get("action") != "WIRE":
+            errors += fail(f"trinethire door: a board their own page embeds, naming them, was not "
+                           f"wired: {a_row.get('action')} ({_wb_words(a_row)[:200]!r})")
+        if b_row.get("action") != "HOLD" or "Gamma Holdings" not in _wb_words(b_row):
+            errors += fail(f"trinethire door: a board naming somebody else was not held for the owner "
+                           f"with both names: {b_row.get('action')} ({_wb_words(b_row)[:200]!r})")
+        if {u for u, _kw in sent} - {A_LIST, B_LIST} or not set(asked) <= {A_LIST, B_LIST}:
+            errors += fail(f"trinethire door: the plan asked {sorted({u for u, _ in sent})}, not only "
+                           f"the two lists")
+    finally:
+        (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS) = held[:5]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[5])
+
+    # ---- the finder: the number on app.trinethire.com, in any form -----------------------
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+    FRAME = f'<iframe src="https://app.trinethire.com/companies/{REF}/jobs/embed"></iframe>'
+    for markup, want, why in (
+            (FRAME, [("trinethire", REF, "iframe")], "the list their page frames"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">Jobs</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "a link to the career page"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs/99001-ae?source=x">AE</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "a link to a posting"),
+            (f'<a href="https://app.trinethire.com/companies/{N}/jobs">Jobs</a>',
+             [("trinethire", N, "href")], "the bare number"),
+            (f'<script src="https://app.trinethire.com/companies/{N}-acme-gov/jobs/embed"></script>',
+             [("trinethire", f"{N}-acme-gov", "script")], "a script's src"),
+            (f'<a href="https://app.trinethire.com/companies/{REF}/jobs">a</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">b</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs/99001-ae">c</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "one number under two slugs: one board"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">a</a>'
+             f'<a href="https://app.trinethire.com/companies/51234-beta/jobs">b</a>',
+             [("trinethire", f"{N}-acme-gov", "href"), ("trinethire", "51234-beta", "href")],
+             "two numbers: two boards")):
+        found, _rest = fsb.sightings(markup, here, home)
+        got = sorted((f["type"], f["ref"], f["element"]) for f in found)
+        if got != sorted(want):
+            errors += fail(f"finder, {why}: {got}, not {sorted(want)}")
+    for markup, why in (
+            ('<a href="https://evilapp.trinethire.com/companies/41234-x/jobs">x</a>', "a host ending in it"),
+            ('<a href="https://app.trinethire.com.evil.example/companies/41234-x/jobs">x</a>', "a host under another"),
+            ('<a href="https://x.example/companies/41234-acme/jobs/embed">x</a>', "another host's same path"),
+            ('<a href="https://app.trinethire.com/assets/companies/41234-x/jobs">x</a>', "another path"),
+            ('<a href="https://app.trinethire.com/companies/41234abc/jobs">x</a>', "a number run into letters"),
+            ('<a href="https://app.trinethire.com/companies/">x</a>', "no number"),
+            ('<a href="https://app.trinethire.com/companies/1234567890123-x/jobs">x</a>', "13 digits"),
+            ('<a href="https://www.trinethire.com/">TriNet Hire</a>', "TriNet's own site")):
+        found, _rest = fsb.sightings(markup, here, home)
+        if found:
+            errors += fail(f"finder: {why} was read as a board: {[(f['type'], f['ref']) for f in found]}")
+    found, rest = fsb.sightings(FRAME + '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>',
+                                here, home)
+    alone, rest_alone = fsb.sightings('<a href="https://www.trinethire.com/">TriNet Hire</a>', here, home)
+    if [f["ref"] for f in found] != [REF] or rest or [r["vendor"] for r in rest_alone] != ["trinethire-other"] \
+            or "trinethire" in {v for v, _h, _rx in fsb.ELSEWHERE}:
+        errors += fail(f"finder: TriNet's own site beside their board is not dropped, or alone is not "
+                       f"trinethire-other (a platform we read, naming no board): {rest} {rest_alone}")
+    if bp.board_key("trinethire", REF) != bp.board_key("trinethire", f"{N}-acme-gov") \
+            or bp.board_key("trinethire", N) != bp.board_key("trinethire", REF) \
+            or bp.board_key("trinethire", "51234-acme-gov") == bp.board_key("trinethire", f"{N}-acme-gov"):
+        errors += fail("board_key: one TriNet Hire number under two slugs is not one board, or two "
+                       "numbers are")
+    dj = (ROOT / "scripts" / "discover_js.py").read_text()
+    if re.search(r"\(\s*[\"']trinet[\"']\s*,", dj) or '("trinethire", r"app\\.trinethire\\.com/companies/' not in dj:
+        errors += fail("discover_js labels TriNet Hire otherwise than 'trinethire', the type's one name")
+    return errors
+
+
 def check_successfactors_reads_its_career_site() -> int:
     """SAP SuccessFactors' Career Site Builder (2026-11-22), driven through
     ats.requests so every hop and every robots.txt ask is seen. Fixtures are
@@ -24539,7 +24921,9 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
             ("teamtailor", '<a href="https://acme.teamtailor.com/jobs">Jobs</a>',
              '<link rel="stylesheet" href="https://assets-aws.teamtailor-cdn.com/x.css">'),
             ("zohorecruit", '<a href="https://acmegov.zohorecruit.com/jobs/Careers">Jobs</a>',
-             '<a href="https://www.zohorecruit.com/">Powered by Zoho Recruit</a>')):
+             '<a href="https://www.zohorecruit.com/">Powered by Zoho Recruit</a>'),
+            ("trinethire", '<iframe src="https://app.trinethire.com/companies/41234-acme/jobs/embed"></iframe>',
+             '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>')):
         found, rest = fsb.sightings(board + furniture, here, home)
         if [f["type"] for f in found] != [kind] or rest:
             errors += fail(f"finder: {kind}'s own furniture beside its board came out as "
@@ -24637,6 +25021,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                     "rippling": "acme", "smartrecruiters": "Acme", "icims": "careers-acme",
                     "hirebridge": "7724", "applicantpro": "acme.applicantpro.com",
                     "pinpoint": "acme", "jobvite": "acme", "jobvitefeed": "qAcmefwX",
+                    "trinethire": "41234-acme-gov",
                     "teamtailor": "https://acme.teamtailor.com",
                     "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
                     "comeet": "https://www.comeet.com/jobs/acme/F7.009",
@@ -24652,6 +25037,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         "applicantpro": "https://acme.applicantpro.com/jobs/", "pinpoint": "https://acme.pinpointhq.com",
         "jobvite": "https://jobs.jobvite.com/acme/jobs", "teamtailor": "https://acme.teamtailor.com",
         "jobvitefeed": "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX",
+        "trinethire": "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009",
         "gusto": "https://jobs.gusto.com/boards/acme-c850a9b3", "gem": "https://jobs.gem.com/acme",
@@ -31497,6 +31883,21 @@ SITE_BOARD_FORMS = [
      "comeet", "38.005|0123456789ABCDEF0123456789ABCD",
      "https://www.comeet.co/careers-api/2.0/company/38.005/positions"
      "?token=0123456789ABCDEF0123456789ABCD&details=true"),
+    # A TRINET HIRE BOARD by its company number on app.trinethire.com, in any
+    # form, and its list (/jobs/embed) is what is asked whatever the form: the
+    # list a careers page frames (Codoxo's and SoundThinking's iframes), the
+    # career page (Green River's link), a posting, the bare number (seen
+    # 2026-11-23 and 11-24; the numbers and slugs here are made up)
+    ('<iframe src="https://app.trinethire.com/companies/41234-old-name/jobs/embed" '
+     'style="border:0px;height:750px;width:100%;"></iframe>',
+     "trinethire", "41234-old-name", "https://app.trinethire.com/companies/41234-old-name/jobs/embed"),
+    ('<a href="https://app.trinethire.com/companies/41234-acme-gov/jobs">Careers</a>',
+     "trinethire", "41234-acme-gov", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
+    ('<a href="https://app.trinethire.com/companies/41234-acme-gov/jobs/99001-account-executive'
+     '?source=Our+Job+Board">Account Executive</a>',
+     "trinethire", "41234-acme-gov", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
+    ('<a href="https://app.trinethire.com/companies/41234/jobs">Careers</a>',
+     "trinethire", "41234", "https://app.trinethire.com/companies/41234/jobs/embed"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -31524,6 +31925,9 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://jobs.gusto.com/postings/acme-account-executive-0f3c">AE</a>',  # a posting, no board id
     '<a href="https://recruiting.paylocity.com/Recruiting/Jobs/Details/123456">AE</a>',
     '<a href="https://ats.rippling.com/">Rippling</a>',
+    '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>',   # the vendor's own site
+    '<a href="https://app.trinethire.com/companies/41234abc/jobs">x</a>',  # no company number
+    '<a href="https://app.trinethire.com/login">Sign in</a>',             # no company at all
     "We cut greenhouse gas emissions for cities and jobs.lever.co is a job site.",
     # WHAT A COMPANY TOOK DOWN BY COMMENTING IT OUT IS NOT ON ITS PAGE, and
     # that is so whatever it commented out. The first version cut a
@@ -39909,6 +40313,13 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
          "ab.c12|FEDCBA9876543210FEDC", True),
         ("comeet", "AB.C12|0123456789ABCDEF0123", "AB.C13|0123456789ABCDEF0123", False),
         ("hirebridge", "612567", "612568", False),
+        # a TriNet Hire board is its company number, whatever slug follows it
+        # (5502-fraudscope and 5502-codoxo are one board, 2026-11-23)
+        ("trinethire", "41234-old-name", "41234-acme-gov", True),
+        ("trinethire", "41234", "41234-acme-gov", True),
+        ("trinethire", "041234-x", "41234-acme-gov", True),
+        ("trinethire", "41234-acme-gov", "412340-acme-gov", False),
+        ("trinethire", "41234-acme-gov", "4123-acme-gov", False),
         ("pinpoint", "acme", "ACME", True),
         ("icims", "careers-acme", "https://careers-acme.icims.com/jobs/search?ss=1", True),
         ("icims", "careers-acme", "careers-acmeco", False),
@@ -48305,7 +48716,8 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009", "jobvite": "acme",
-        "jobvitefeed": "qAcmefwX", "successfactors": "https://jobs.acme.test",
+        "jobvitefeed": "qAcmefwX", "trinethire": "41234-acme-gov",
+        "successfactors": "https://jobs.acme.test",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -48404,6 +48816,7 @@ console.log(JSON.stringify(out));"""
         ("comeet", "https://www.comeet.com/jobs/acme/F7.009"),
         ("jobvite", "https://jobs.jobvite.com/acme/jobs"),
         ("jobvitefeed", "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX"),
+        ("trinethire", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
         ("successfactors", "https://jobs.acme.test/search/"),
         ("successfactors with a path", "#"),
         ("paylocity", PAY),
@@ -62629,6 +63042,7 @@ def main() -> int:
     errors += check_comeet_reads_the_board_its_company_page_hands_out()
     errors += check_jobvite_reads_its_list_page_and_names_it_twice()
     errors += check_jobvite_feed_reads_one_row_a_job_and_no_person()
+    errors += check_trinethire_reads_its_list_and_names_it_once()
     errors += check_successfactors_reads_its_career_site()
     errors += check_successfactors_unify_reads_its_sitemap()
     errors += check_what_the_second_review_of_the_new_readers_found_stays_fixed()
