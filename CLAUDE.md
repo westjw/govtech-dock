@@ -2533,6 +2533,26 @@ and never said where in a page a reference sat.
   page which board it names (below). The run's summary counts such sites
   apart ("links a Paylocity posting"), and so does the platform catalogue's
   sweep count.
+- **A posting's own Apply link is no other form (2026-11-24).** BS&A
+  Software's careers page links, beside each posting, that posting's Apply
+  link (/recruiting/jobs/Apply/<the same id>/<Tenant>/<Title>), and the
+  catch-all for Paylocity's host filed each as `paylocity-other`, so the door
+  held their board on "a form that names no board" (2026-11-23). An Apply
+  address - in any case, with the rest of its path or without, on
+  recruiting.paylocity.com itself - whose posting id their own site also
+  links as a posting (a `paylocity-posting` candidate, on that page or
+  another of theirs) is that posting's own form: in no `elsewhere` row, so no
+  doubt and no note for the door, the run's summary or the catalogue's count.
+  Decided in the finder, where every address is in hand (`_tally` keeps each
+  paylocity-other address's posting id beside its row, `posting_forms`
+  decides once the site is read, and `keep` seals a look stopped from
+  outside the same way); a row of the file keeps one address and a count,
+  so no door reading it could tell thirteen Apply links from twelve and an
+  address of something else. A row with other addresses beside them keeps
+  those, its `saw` the first of them and its `times` their count. An Apply
+  link whose id their site does not link as a posting stays `paylocity-other`,
+  a doubt; widening that is the owner's call. A results file written before
+  this still carries the row: the company needs a fresh read.
 - **"Their own site" is narrower than the host** (`Whose.of`: own | shared |
   part | other; only "own" makes a candidate). The host rule is still
   `page_belt._same_site`, and it decides which links the walk may follow.
@@ -2628,7 +2648,9 @@ and never said where in a page a reference sat.
   the same machine (nothing left it); one question was asked of the outside
   world, two requests to Lever's public feed. The posting candidate, and the
   other doors leaving one alone:
-  `check_a_posting_their_site_links_is_a_candidate_not_a_board`.
+  `check_a_posting_their_site_links_is_a_candidate_not_a_board`; a
+  posting's own Apply link, from the page to the door's write:
+  `check_a_postings_own_apply_link_is_no_other_form`.
 
 ## A found board is proven by its own stated name (owner, 2026-11-18)
 
@@ -2970,10 +2992,11 @@ round.
   use (`ref_problem`), never read as a board. KNOWN, AND LEFT AS FOUND:
   another posting a page links is not asked once one has named the board,
   so a careers page linking a second account's posting beside its own is
-  not seen by this; an apply form
-  (/recruiting/jobs/Apply/<id>) names no board and is still the no-board form
-  `paylocity-other`, which holds a board beside it (the sweep of 2026-11-19
-  read one on BS&A Software's careers page).
+  not seen by this. An Apply form (/recruiting/jobs/Apply/<id>) whose id
+  their own site also links as a posting is that posting's own form and
+  nothing else (2026-11-24: "A posting's own Apply link", above); one whose
+  id their site does not link as a posting is still the no-board form
+  `paylocity-other`, which holds a board beside it.
 - **A board is sized by its openings, not its rows.** `fetch_rippling`
   returns the logo's file name as a row on every board, and a talent pool or
   an unfilled template is a row too. The door counts what
