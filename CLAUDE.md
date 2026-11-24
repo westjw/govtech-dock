@@ -2624,7 +2624,8 @@ and never said where in a page a reference sat.
   catch 81 of 81. Also run by hand in a real Chromium against a server on
   the same machine (nothing left it); one question was asked of the outside
   world, two requests to Lever's public feed. The posting candidate, and the
-  other doors leaving one alone: `check_a_posting_their_site_links_is_a_candidate_not_a_board`.
+  other doors leaving one alone:
+  `check_a_posting_their_site_links_is_a_candidate_not_a_board`.
 
 ## A found board is proven by its own stated name (owner, 2026-11-18)
 
@@ -2938,9 +2939,10 @@ round.
   in no pile, and `file_found` files none (`board_proposals.paylocity_posting`
   is the one test); and a posting's address written as a Paylocity BOARD (an
   older finder's file, or one made by hand) is a reference this door cannot
-  use (`ref_problem`), never read as a board. KNOWN, AND LEFT AS FOUND: another posting a page links
-  is not asked once one has named the board, so a careers page linking a
-  second account's posting beside its own is not seen by this; an apply form
+  use (`ref_problem`), never read as a board. KNOWN, AND LEFT AS FOUND:
+  another posting a page links is not asked once one has named the board,
+  so a careers page linking a second account's posting beside its own is
+  not seen by this; an apply form
   (/recruiting/jobs/Apply/<id>) names no board and is still the no-board form
   `paylocity-other`, which holds a board beside it (the sweep of 2026-11-19
   read one on BS&A Software's careers page).
@@ -3343,8 +3345,9 @@ round.
   6, or without `reader_doubts` (or with a blank one), `workable_numbers`,
   `page_addresses` or `posting_boards`, is refused: version 3 kept the
   readers' doubts only when it was written, version 4 carried a record's
-  page's address apply took on its word, and version 5 knew no posting. The look prints, under each row it wires, every /All/ address
-  it leans on ("leans on what the plan was told: ...") and the Workable
+  page's address apply took on its word, and version 5 knew no posting.
+  The look prints, under each row it wires, every /All/ address it leans on
+  ("leans on what the plan was told: ...") and the Workable
   account number it is asked for by, with what ties it to the slug and
   whether that goes into the note ("leans on its account number: ...", or
   "... for its holds alone ..."), and every row waiting on the owner that
