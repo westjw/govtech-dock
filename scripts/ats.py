@@ -660,6 +660,7 @@ def follow(url: str, one, *, hops: int = MAX_HOPS, may=None):
         url = _TAB_OR_BREAK.sub("", url) if isinstance(url, str) else url
         url = _browser_path(url)
         plain_address(url)
+        trinethire_not_career(url)
         if may is not None:
             may(url)
         ask_robots(url)
@@ -4352,13 +4353,35 @@ def fetch_jobvitefeed(ref) -> list[dict]:
 # number, on app.trinethire.com, at /companies/<n>[-<slug>]/jobs/embed - as
 # its tenants share one host and differ by path (as Jobvite's do).
 #
-# A ZERO ONLY WHERE THE LIST SAYS SO: the embed's own template, its 'Open
-# Jobs | ' title and its <ul id="jobs-list">, with no <li> in it and no
-# posting of the board linked anywhere on the page. An empty embed has not
-# been seen. A page without the template (the career page, a challenge page,
-# anything else), a row that does not read as a posting of this board, a
-# posting the page links outside its list, and any answer but a 200 are
-# errors, never a zero and never part of a board.
+# A ZERO ONLY WHERE TRINET SAYS SO, in the shape it was measured in on two
+# empty boards (2026-11-24): the 'Open Jobs | ' title, NO <ul id="jobs-list">
+# anywhere (TriNet draws the list only when it has rows), and a <div
+# id="jobs"> whose heading reads "There are currently no open jobs
+# available." with no link, list, table or form inside it - and no posting of
+# the board named anywhere in the RAW page (its scripts, templates, noscript
+# and comments too, a JSON '\/' read as '/'). An empty jobs-list is a shape
+# TriNet does not serve - an empty mount point a script, a template or inline
+# JSON would fill - and raises. A page without the title (the career page, a
+# challenge page, anything else), a titled page with neither shape, a row
+# that does not read as a posting of this board, a posting the page names
+# outside its list, a pager (rel=next, a pagination class, a link to this
+# board's list or career page with a query, 'View all' or 'Load more'), and
+# any answer but a 200 are errors, never a zero and never part of a board.
+#
+# THE BOARD IS ITS NUMBER, compared as a number (a ref written 041234-x is
+# board 41234, whose rows TriNet writes 41234), and a slug is anything Rails'
+# parameterize leaves - letters, digits, '-' and '_', or nothing after the
+# hyphen - none of which changes the path. A posting's address carries the
+# company's CURRENT slug, which a rename changes (5502-fraudscope became
+# 5502-codoxo), so the board's ids are keyed on the number and the job id
+# alone (trinethire_posting_key, build_board.posting_id); the address
+# published is the one the list gives.
+#
+# ONE PLAN ASKS THE LIST ONCE (blind review 13, 2026-11-24): the wiring door
+# reads the board and then asks it whose it is, both this one list. Inside
+# trinethire_kept() - wire_found.plan, and nothing else - a list read whole
+# is kept in memory under the address it was asked at, as jobvitefeed_kept
+# keeps a feed; a read that failed raised and is not kept.
 #
 # THE LIST ONLY: no posting page is asked, flag or no flag. app.trinethire.com's
 # robots.txt states Cloudflare content signals (search=yes, ai-train=no,
@@ -4369,14 +4392,69 @@ def fetch_jobvitefeed(ref) -> list[dict]:
 TRINETHIRE_HOST = "app.trinethire.com"
 TRINETHIRE_TITLE = "Open Jobs | "
 TRINETHIRE_PAGE_MAX = 2_000_000      # characters of a page read; more is refused, never cut
+TRINETHIRE_NONE = "There are currently no open jobs available."   # TriNet's own words, measured
 _TRINET_REF = re.compile(r"([0-9]{1,12})(?:-[A-Za-z0-9-]{1,200})?")
-_TRINET_EMBED_PATH = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9-]{1,200})?/jobs/embed/?")
-_TRINET_POSTING_PATH = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9-]{1,200})?/jobs/"
-                                  r"([0-9]{1,12})(?:-[A-Za-z0-9-]{1,300})?/?")
+# (a slug: what Rails' parameterize leaves - letters, digits, '-' and '_' -
+# or nothing at all after the hyphen; none of it changes the path)
+_TRINET_EMBED_PATH = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9_-]{0,200})?/jobs/embed/?")
+_TRINET_POSTING_PATH = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9_-]{0,200})?/jobs/"
+                                  r"([0-9]{1,12})(?:-[A-Za-z0-9_-]{0,300})?/?")
+_TRINET_BOARD_PAGE = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9_-]{0,200})?/jobs(?:/embed)?/?")
+# a posting of a board, wherever a page names it: an attribute, a script's
+# JSON, a template, a comment (the path alone, on any host, its slashes as
+# '\/', '\u002f', '&#47;' or '%2F' read as '/')
+_TRINET_ANY_POSTING = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9_-]{0,200})?/jobs/"
+                                 r"([0-9]{1,12})(?![0-9])")
+_TRINET_SLASH = re.compile(r"\\/|\\u002f|&#0*47;|&#x0*2f;|%2f", re.I)
 _TRINET_LIST = re.compile(r"<ul\b[^<>]{0,400}?\sid\s*=\s*[\"']jobs-list[\"'][^<>]{0,400}>", re.I)
+_TRINET_JOBS_DIV = re.compile(r"<div\b[^<>]{0,400}?\sid\s*=\s*(?:\"jobs\"|'jobs'|jobs(?=[\s>]))[^<>]{0,400}>",
+                              re.I)
+_TRINET_HEADING = re.compile(r"<h[1-6](?=[\s/>])")
 _TRINET_HREF = re.compile(r"""\shref\s*=\s*(?:"([^"<>]{0,800})"|'([^'<>]{0,800})'|([^\s"'<>]{1,800}))""",
                           re.I)
 _TRINET_WHERE = re.compile(r"<strong\b[^<>]{0,200}>\s*Location:\s*</strong\s*>", re.I)
+# A PAGE OF A LONGER LIST: a pager's rel or class, and words that ask for more
+_TRINET_PAGER = re.compile(
+    r"""\srel\s*=\s*(?:"[^"<>]{0,200}?\b(?:next|prev)\b|'[^'<>]{0,200}?\b(?:next|prev)\b|(?:next|prev)\b)"""
+    r"""|\sclass\s*=\s*["']?[^"'<>]{0,200}?(?:paginat|\bpager\b|\bpage-(?:item|link|numbers)\b"""
+    r"""|\bload-more\b|\bshow-more\b)""", re.I)
+_TRINET_MORE = re.compile(r">\s*(?:(?:view|see|show|browse)\s+(?:all|more)\b|load\s+more\b"
+                          r"|more\s+(?:jobs|openings|positions|roles|results)\b|next\s+page\b)", re.I)
+# the employment type TriNet prints after a location's last ' - ' (measured:
+# Full-time, Contractor); text after it that is no type is part of the label
+_TRINET_KINDS = frozenset({"full-time", "full time", "fulltime", "part-time", "part time", "parttime",
+                           "contractor", "contract", "temporary", "temp", "intern", "internship",
+                           "seasonal", "per diem", "per-diem", "freelance", "volunteer"})
+
+
+_TRINET_CAREER_PATH = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9_-]{0,200})?/jobs/?")
+
+
+def trinethire_career(url) -> str | None:
+    """The board number of TriNet Hire's CAREER page at `url` -
+    app.trinethire.com/companies/<n>[-<slug>]/jobs, any query - or None for
+    any other address (its list, /jobs/embed, and a posting are not it)."""
+    try:
+        parts = urllib.parse.urlsplit(url if isinstance(url, str) else "")
+    except ValueError:
+        return None
+    m = _TRINET_CAREER_PATH.fullmatch(parts.path or "")
+    return m.group(1) if m and (parts.hostname or "").lower() == TRINETHIRE_HOST else None
+
+
+def trinethire_not_career(url) -> None:
+    """NEVER READ TRINET'S CAREER PAGE, by any reader (follow asks this of
+    every hop before anything is sent). It said "Currently no openings
+    available." on all four boards read on 2026-11-23 while their lists
+    carried 30: read as a careers page (type html: three records on file
+    point at it) it is a false "None found" every night. Refused, it is
+    Unknown - and the render fallbacks, which open the same address through
+    ats.resolve, are refused with it (blind review 13, 2026-11-24)."""
+    number = trinethire_career(url)
+    if number is not None:
+        raise AtsError(f"{str(url)[:160]} is TriNet Hire's career page, which says it has no "
+                       f"openings whatever its list carries: never read, and never evidence of "
+                       f"zero (its list is /companies/{number}/jobs/embed, type trinethire)")
 
 
 def trinethire_ref(ref) -> tuple[str, str]:
@@ -4407,7 +4485,7 @@ def _trinet_read(url: str, number: str) -> str:
         parts = urllib.parse.urlsplit(u)
         m = _TRINET_EMBED_PATH.fullmatch(parts.path or "")
         if (parts.scheme != "https" or (parts.netloc or "").lower() != TRINETHIRE_HOST
-                or not m or m.group(1) != number or parts.query or parts.fragment):
+                or not m or int(m.group(1)) != int(number) or parts.query or parts.fragment):
             raise AtsError(f"{url} leads off to {str(u)[:160]}, which is not this board's own list "
                            f"(/companies/{number}-<name>/jobs/embed), so it is not read as a board "
                            f"with nothing open")
@@ -4429,30 +4507,121 @@ def _trinet_posting(href: str, base: str) -> tuple[str, str, str] | None:
     return f"https://{TRINETHIRE_HOST}{parts.path}", m.group(1), m.group(2)
 
 
+def trinethire_location(said: str) -> str:
+    """The label of a row's 'Location:' text, '{label} - {type}': the type
+    after the LAST ' - ' is dropped only where it IS an employment type
+    (labels hold dashes of their own: 'Atlanta, GA - Remote - Full-time'),
+    and a type left blank ('Atlanta, GA - Remote - ') leaves the label whole.
+    Text after the last ' - ' that is no type ('Remote - US') is the label's.
+    The space put back in front keeps a label left blank (' - Full-time')
+    a blank label."""
+    s = _text(said)
+    if s == "-" or s.endswith(" -"):                  # the type left blank
+        return s[:-1].strip()
+    label, sep, kind = (" " + s).rpartition(" - ")
+    return label.strip() if sep and _text(kind).lower() in _TRINET_KINDS else s
+
+
+def _trinet_named(raw: str, number: str) -> set:
+    """The job id of every posting of board `number` the RAW page names
+    anywhere - a script's JSON, a template, a noscript, a comment, an
+    attribute, any host - its escaped slashes read as '/'."""
+    n, text = int(number), _TRINET_SLASH.sub("/", raw or "")
+    return {str(int(m.group(2))) for m in _TRINET_ANY_POSTING.finditer(text) if int(m.group(1)) == n}
+
+
+def _trinet_none_open(body: str, low: str) -> bool:
+    """True where the cut page is TriNet's own word that the board has nothing
+    open, as measured on two empty boards (2026-11-24): a <div id="jobs">
+    whose first heading reads exactly TRINETHIRE_NONE, holding no link, list,
+    table, form or division of its own."""
+    m = _TRINET_JOBS_DIV.search(body)
+    close = low.find("</div", m.end()) if m else -1
+    if close < 0:
+        return False
+    inner, inner_low = body[m.end():close], low[m.end():close]
+    if any(_tag_at(inner_low, t, 0) >= 0 for t in ("a", "ul", "ol", "li", "table", "form", "div",
+                                                    "button", "input", "select")):
+        return False
+    h = _TRINET_HEADING.search(inner_low)
+    h_gt = inner_low.find(">", h.end()) if h else -1
+    h_end = inner_low.find("</h", h_gt) if h_gt >= 0 else -1
+    return h_end >= 0 and _jv_text(inner[h_gt + 1:h_end]).lower() == TRINETHIRE_NONE.lower()
+
+
+def _trinet_more(body: str, outside: str, number: str, base: str) -> str:
+    """Why the cut page shows itself to be one page of a longer list, or "":
+    a pager's rel (next, prev) or class (pagination, pager, load-more), a link
+    to this board's list or career page with a query (?page=2), or words
+    that ask for more ('View all 40 jobs', 'Load more') on the page outside
+    its rows (`outside`: a posting may be titled anything)."""
+    m = _TRINET_PAGER.search(body)
+    if m:
+        return f"carries a pager ({m.group(0).strip()[:60]!r})"
+    for m in _TRINET_HREF.finditer(body):
+        try:
+            parts = urllib.parse.urlsplit(urllib.parse.urljoin(
+                base, html_lib.unescape(next((g for g in m.groups() if g is not None), "")).strip()))
+        except ValueError:
+            continue
+        page = _TRINET_BOARD_PAGE.fullmatch(parts.path or "")
+        if (page and parts.query and (parts.netloc or "").lower() == TRINETHIRE_HOST
+                and int(page.group(1)) == int(number)):
+            return f"links its own list with a query ({parts.path}?{parts.query[:40]})"
+    m = _TRINET_MORE.search(outside)
+    if m:
+        return f"asks for more ({_text(m.group(0).lstrip('>'))[:40]!r})"
+    return ""
+
+
 def trinethire_rows(page: str, number: str, url: str | None = None) -> tuple[str, list[dict]]:
     """(the name its <title> states after 'Open Jobs | ', "" for none; one row
     a posting) of board `number`'s list page, read from `url` (its hrefs are
-    joined to it), or AtsError for a page that is not the embed's template,
-    or whose list does not read whole (see above)."""
+    joined to it): rows where the page is the list, none where it is
+    TriNet's own word that nothing is open, or AtsError for a page that is
+    neither, or whose list does not read whole (see above)."""
     base = url or f"https://{TRINETHIRE_HOST}/companies/{number}/jobs/embed"
     url = url or "the list"
     if len(page or "") > TRINETHIRE_PAGE_MAX:
         raise AtsError(f"{url} is more than {TRINETHIRE_PAGE_MAX:,} characters: not read, and "
                        f"never read in part")
+    n = int(number)
+    # (the title from the CUT page: a <title> commented out, or an SVG's, is
+    # not the document's - seventh blind review's rule, held in _walk)
     body = _cut(page or "")
     low = lower_same(body)
     t0 = _tag_at(low, "title", 0)
     t1 = low.find("</title", t0) if t0 >= 0 else -1
     gt = low.find(">", t0) if t0 >= 0 else -1
     title = _text(html_lib.unescape(body[gt + 1:t1])) if 0 <= gt < t1 else ""
+    if not (title == TRINETHIRE_TITLE.strip() or title.startswith(TRINETHIRE_TITLE)):
+        raise AtsError(f"{url} is not a TriNet Hire list (its <title> is not 'Open Jobs | '): a "
+                       f"career page, a challenge or another page, never a board with nothing open")
+    name = title[len(TRINETHIRE_TITLE):].strip() if title.startswith(TRINETHIRE_TITLE) else ""
+    # every posting of the board the RAW page names, wherever it names it
+    named = _trinet_named(page or "", number)
     ul = _TRINET_LIST.search(body)
-    if not ul or not (title == TRINETHIRE_TITLE.strip() or title.startswith(TRINETHIRE_TITLE)):
-        raise AtsError(f"{url} is not a TriNet Hire list (no 'Open Jobs | ' title and jobs-list): "
-                       f"a career page, a challenge or another page, never a board with nothing open")
+    if not ul:
+        # NOTHING OPEN, IN TRINET'S OWN WORDS: no jobs-list anywhere in the
+        # raw page (a template, a noscript or a script that holds one is a
+        # list this reader cannot see), no posting of the board named
+        # anywhere, and the 'no open jobs' heading alone in <div id="jobs">
+        more = _trinet_more(body, body, number, base)
+        if (_trinet_none_open(body, low) and not named and not more
+                and "jobs-list" not in lower_same(page or "")):
+            return name, []
+        raise AtsError(f"{url} is titled 'Open Jobs | ' but is neither its jobs-list nor TriNet's "
+                       f"own '{TRINETHIRE_NONE}' alone"
+                       + (f" ({more})" if more else f" ({len(named)} posting(s) of board {number} "
+                                                       f"named on it)" if named else "")
+                       + ": a template this reader does not know, never a board with nothing open")
     close = low.find("</ul", ul.end())
     if close < 0 or _tag_at(low[:close], "ul", ul.end()) >= 0:
         raise AtsError(f"{url}: its jobs-list is cut short or holds a list of its own, so it is "
                        f"not read in part")
+    more = _trinet_more(body, body[:ul.end()] + body[close:], number, base)
+    if more:
+        raise AtsError(f"{url} {more}: one page of a longer list is never read as the whole board")
     inner, inner_low = body[ul.end():close], low[ul.end():close]
     rows, ids, i = [], set(), _tag_at(inner_low, "li", 0)
     while i >= 0:
@@ -4464,46 +4633,90 @@ def trinethire_rows(page: str, number: str, url: str | None = None) -> tuple[str
         href = _TRINET_HREF.search(row[a:a_end + 1]) if a_end >= 0 else None
         got = _trinet_posting(next((g for g in href.groups() if g is not None), ""), base) if href else None
         title_ = _jv_text(row[a_end + 1:a_close]) if a_close >= 0 else ""
-        if not got or got[1] != number or not title_:
+        if not got or int(got[1]) != n or not title_:
             raise AtsError(f"{url}: a row of its list does not read as a posting of board {number} "
                            f"(its link, its board's number or its title), so the board is not read "
                            f"in part")
-        if got[2] not in ids:                          # one posting listed twice is one posting
-            ids.add(got[2])
+        job = str(int(got[2]))
+        if job not in ids:                             # one posting listed twice is one posting
+            ids.add(job)
             where = _TRINET_WHERE.search(row)
             if where:
                 p_end = lower_same(row).find("</p", where.end())
                 said = _jv_text(row[where.end():p_end if p_end >= 0 else len(row)])
             else:
                 said = ""
-            # the type is after the LAST ' - ' (labels hold dashes of their
-            # own: 'Atlanta, GA - Remote - Full-time'); the space put back in
-            # front keeps a label left blank (' - Full-time') a blank label
-            label, sep, _kind = (" " + said).rpartition(" - ")
-            rows.append({"title": title_, "location": (label if sep else said).strip(),
-                         "url": got[0]})
+            rows.append({"title": title_, "location": trinethire_location(said), "url": got[0]})
         i = nxt
-    # ...and every posting of the board the page links is a row of its list:
-    # rows in some other markup are a template this reader does not know,
-    # never a zero (and never a board read in part)
-    linked = set()
+    if not rows:
+        # TriNet draws no jobs-list for a board with nothing open (measured
+        # 2026-11-24): an empty one is a mount point something else fills
+        raise AtsError(f"{url}: its jobs-list holds no posting, which TriNet does not serve (a "
+                       f"board with nothing open has no list at all), so it is not read as a zero")
+    # ...and every posting of the board the page names - linked, or anywhere
+    # in its raw text - is a row of its list: rows in some other markup are
+    # a template this reader does not know, never a board read in part
+    linked = set(named)
     for m in _TRINET_HREF.finditer(body):
         got = _trinet_posting(next((g for g in m.groups() if g is not None), ""), base)
-        if got and got[1] == number:
-            linked.add(got[2])
+        if got and int(got[1]) == n:
+            linked.add(str(int(got[2])))
     if linked - ids:
-        raise AtsError(f"{url} links {len(linked - ids)} posting(s) of board {number} its jobs-list "
+        raise AtsError(f"{url} names {len(linked - ids)} posting(s) of board {number} its jobs-list "
                        f"does not carry, so the list is not read as the whole board")
-    return (title[len(TRINETHIRE_TITLE):].strip() if title.startswith(TRINETHIRE_TITLE) else ""), rows
+    return name, rows
+
+
+_TRINET_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def trinethire_kept():
+    """Each list read whole is the answer to every later ask of it in the
+    block (see ONE PLAN ASKS THE LIST ONCE above). Also a decorator: each
+    call is a block of its own."""
+    global _TRINET_KEPT
+    outer = _TRINET_KEPT
+    _TRINET_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _TRINET_KEPT = outer
 
 
 def trinethire_board(ref) -> tuple[str, str, list[dict]]:
     """(the list's address, the name its title states or "", its rows): one
-    request, or AtsError."""
+    request - none inside trinethire_kept() where the list was read whole
+    already - or AtsError."""
     _ref, number = trinethire_ref(ref)
     url = trinethire_url(ref)
+    kept = _TRINET_KEPT
+    if kept is not None and url in kept:
+        name, rows = kept[url]
+        return url, name, [dict(r) for r in rows]
     name, rows = trinethire_rows(_trinet_read(url, number), number, url)
+    if kept is not None:
+        kept[url] = (name, [dict(r) for r in rows])
     return url, name, rows
+
+
+def trinethire_posting_key(url) -> str | None:
+    """The posting a TriNet Hire address names, as the board knows it - its
+    company number and its job id, https://app.trinethire.com/companies/<n>/
+    jobs/<job id> - or None for any other address. The list's links carry the
+    company's CURRENT slug, which a rename changes (5502-fraudscope is now
+    5502-codoxo), and the job's slug follows its title: build_board.posting_id
+    hashes this key, so a posting keeps its id, its first-seen day and every
+    saved link across a rename. It is a key, never an address anybody is
+    sent to: the address published is the one the list gives."""
+    try:
+        parts = urllib.parse.urlsplit(url if isinstance(url, str) else "")
+    except ValueError:
+        return None
+    m = _TRINET_POSTING_PATH.fullmatch(parts.path or "")
+    if (parts.netloc or "").lower() != TRINETHIRE_HOST or not m:
+        return None
+    return f"https://{TRINETHIRE_HOST}/companies/{int(m.group(1))}/jobs/{int(m.group(2))}"
 
 
 def fetch_trinethire(ref) -> list[dict]:

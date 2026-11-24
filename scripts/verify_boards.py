@@ -1353,9 +1353,13 @@ def _trinethire(ref, out: dict) -> None:
     # taken off, the rest unescaped. Nothing else is a name: not the slug in
     # the ref (5502-fraudscope serves Codoxo, and a made-up slug serves the
     # same board), not og:site_name (the vendor, 'TriNet Applicant
-    # Tracking'), not a heading. A page that is not the embed's template is
-    # an error (ats.trinethire_rows), never a board that names nobody; every
-    # hop is held to the board's own list (ats._trinet_read).
+    # Tracking'), not a heading. A page that is neither the list nor TriNet's
+    # own 'no open jobs' (measured on two empty boards, 2026-11-24: the same
+    # title, n 0) is an error (ats.trinethire_rows), never a board that names
+    # nobody; every hop is held to the board's own list (ats._trinet_read),
+    # and a page that shows a pager raises, so the list read is the whole
+    # board. Inside the door's plan this is the answer its read had
+    # (ats.trinethire_kept): one request a plan.
     _url, name, rows = ats.trinethire_board(ref)
     out["n"] = len(rows)
     out["hosts"] = {ats.TRINETHIRE_HOST}

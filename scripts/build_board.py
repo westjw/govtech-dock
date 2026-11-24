@@ -437,6 +437,13 @@ def board_url(c: dict) -> str | None:
             return ats.trinethire_url(ref)
         except ats.AtsError:
             return c.get("website")
+    if kind == "html" and ats.trinethire_career(ref) is not None:
+        # a careers page on file that is TriNet's career page links the same
+        # board's list, its embed: that page says there are no openings
+        # whatever the list carries (blind review 13, 2026-11-24: three
+        # records point at it)
+        parts = urllib.parse.urlsplit(ref)
+        return f"https://{ats.TRINETHIRE_HOST}{parts.path.rstrip('/')}/embed"
     if isinstance(ref, str) and ref.startswith("http"):
         return ref
     pat = {"greenhouse": "https://job-boards.greenhouse.io/{r}",
@@ -560,8 +567,15 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     content rather than from its position in the list, because an id that
     churns when a board reorders breaks every saved role and every shared link
     on every refresh, and turns the daily history diff into noise.
+
+    ONE ADDRESS IS KEYED ON WHAT IT NAMES, not on how it is spelled: a TriNet
+    Hire posting's address carries the company's CURRENT slug, which a rename
+    changes (5502-fraudscope became 5502-codoxo), so it is hashed as its
+    company number and job id (ats.trinethire_posting_key) and keeps its id,
+    its first-seen day and its saved links across a rename (blind review 13,
+    2026-11-24). Every other address is hashed as it is.
     """
-    key = f"{url or ''}\n{location or ''}"
+    key = f"{ats.trinethire_posting_key(url) or url or ''}\n{location or ''}"
     disc = hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
     return f"{opening_id(company_id, title)}::{disc}"
 

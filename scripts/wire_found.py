@@ -438,6 +438,15 @@ def load_results(paths: list) -> tuple[dict, list]:
     return merged, files
 
 
+# The types whose board_key IS the board, however its ref is spelled: a
+# TriNet Hire company number selects its list whatever slug follows it (a
+# stale slug, a made-up one and the bare number served one list, measured
+# 2026-11-23 and 11-24), so a site that writes 41234-old-name in a frame and
+# 41234-acme in a link names one board, and "where case matters those are
+# different boards" is false of it (blind review 13, 2026-11-24).
+ANY_SPELLING_ONE_BOARD = frozenset({"trinethire"})
+
+
 def boards_named(entry: dict) -> tuple[list, list]:
     """(the distinct boards a company's own site named, references unusable).
 
@@ -495,7 +504,7 @@ def boards_named(entry: dict) -> tuple[list, list]:
     for b in boards.values():
         b["times"] = sum(s["times"] for s in b["seen"])
         spelled = {spelling(b["type"], s["ref"]): show(b["type"], s["ref"]) for s in b["seen"]}
-        if len(spelled) > 1:
+        if len(spelled) > 1 and b["type"] not in ANY_SPELLING_ONE_BOARD:
             b["spellings"] = sorted(spelled.values())
     return sorted(boards.values(), key=lambda b: (-b["times"], b["key"])), unusable
 
@@ -3265,8 +3274,10 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
 # (a Jobvite account's feed is read and asked whose it is in ONE request a
 # plan: the probe takes the answer the read had - ats.jobvitefeed_kept, blind
-# review 12, 2026-11-23)
+# review 12, 2026-11-23; and so is a TriNet Hire list - ats.trinethire_kept,
+# blind review 13, 2026-11-24)
 @ats.jobvitefeed_kept()
+@ats.trinethire_kept()
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
          pages: dict | None = None, postings: dict | None = None,
