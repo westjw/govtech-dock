@@ -2690,6 +2690,34 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
         errors += fail(f"the client's exchanges during or after a burst from its network are refused: {bu}")
     if bu.get("good_statuses") != [200] * 5 or bu.get("rows_after_goods") != [cap]:
         errors += fail(f"good exchanges sent at once are refused, or leave a count behind: {bu}")
+    # THE NEW IDENTITY PROVIDER OPENS JOB HUNTER AND NOTHING ELSE (review,
+    # 2026-11-24): identity providers are account-wide, and an Access
+    # application with "Accept all available identity providers" on offers a
+    # new one with nothing ticked; on "SLED JOBS admin" the board's own
+    # 30-day sign-in would then open /admin. So DEPLOY.md §3f has the owner
+    # turn that switch off on every application BEFORE the provider is
+    # added, require the one-time PIN on the admin's Allow policies, tick
+    # SLED JOBS on "Job Hunter beta" alone, and check /admin afterwards
+    deploy_doc = (ROOT / "DEPLOY.md").read_text()
+    s3f = re.sub(r"\s+", " ", deploy_doc[deploy_doc.find("## 3f."):deploy_doc.find("\n## ", deploy_doc.find("## 3f.") + 1)])
+    first = s3f[s3f.find("**First, BEFORE step 2 adds the `SLED JOBS` identity provider**"):s3f.find("**Your steps, in this order:**")]
+    idp_step = s3f.find("2. **The identity provider.**")
+    for needle, why in (("turn **Accept all available identity providers** OFF", "turn the accept-all switch off"),
+                        ('"SLED JOBS admin", the `*.solesource-c6g.pages.dev` preview application and "Job Hunter beta"',
+                         "name every application, the admin and the preview one included"),
+                        ("every **Allow** policy → Edit → add a rule **Require** → **Login Methods** → `One-time PIN`",
+                         "require the one-time PIN on every Allow policy of the admin"),
+                        ("Why: an application with that switch on offers every identity provider", "say why the switch"),
+                        ("Why: Cloudflare's Login Methods selector checks which identity provider", "say why the rule")):
+        if not first or needle not in first:
+            errors += fail(f"DEPLOY.md §3f does not, before the identity provider is added, {why}: no {needle!r}")
+    if not first or idp_step < 0 or s3f.find(first) > idp_step:
+        errors += fail("DEPLOY.md §3f's login-method steps no longer come before the identity provider is added")
+    if ("tick **only** `SLED JOBS`" not in s3f or "make sure `SLED JOBS` is ticked on none of them" not in s3f
+            or "Why: `SLED JOBS` is Job Hunter's sign-in alone" not in s3f
+            or "`https://sledjobs.com/admin/` → Access's own page" not in s3f or "no `SLED JOBS` button" not in s3f):
+        errors += fail("DEPLOY.md §3f does not keep SLED JOBS ticked on Job Hunter beta alone, or check /admin offers "
+                       "no SLED JOBS button afterwards")
     # and the docs say what the door now does, not what it did
     claude_flat = re.sub(r"\s+", " ", (ROOT / "CLAUDE.md").read_text())
     deploy_flat = re.sub(r"\s+", " ", (ROOT / "DEPLOY.md").read_text())

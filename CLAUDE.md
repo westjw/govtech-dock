@@ -376,6 +376,14 @@ beta ("on the same system but need a beta code"): the Users board's `hunter`
 role (or `owner`) is the beta, Access's "Beta users" policy stays, and
 `/api/beta` codes admit nobody. Never a new Access application (the existing
 "Job Hunter beta" is the one changed), never a `*.sledjobs.com` wildcard.
+**The `SLED JOBS` identity provider opens Job Hunter and nothing else**
+(review, 2026-11-24): identity providers are account-wide, and an Access
+application with "Accept all available identity providers" on offers a new
+one with nothing ticked, so on "SLED JOBS admin" the board's own 30-day
+sign-in would open /admin. DEPLOY.md §3f has the owner turn that switch off
+on every application before the provider exists, tick `SLED JOBS` on "Job
+Hunter beta" alone, and add Require → Login Methods → One-time PIN to every
+Allow policy of "SLED JOBS admin"; never undo any of the three.
 The interface is shared with Job Hunter's `scripts/serve.py`, which verifies
 the popout's assertion: change it on one side only and the popout stops.
 - **The board is an OpenID Connect provider with ONE client**, that Access

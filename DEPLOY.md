@@ -266,6 +266,25 @@ and **no `*.sledjobs.com` wildcard**.
 **Before you start:** the board's D1 database is bound as `DB` (§3e; the
 one-time codes live there) and `SESSION_SECRET` is set (§3a).
 
+**First, BEFORE step 2 adds the `SLED JOBS` identity provider** (review,
+2026-11-24): identity providers belong to the whole Zero Trust account, not
+to one application, so these two come before it exists.
+- **Every application's login methods.** Zero Trust → Access →
+  Applications, and open every application listed, one at a time: at least
+  "SLED JOBS admin", the `*.solesource-c6g.pages.dev` preview application
+  and "Job Hunter beta". In each: Edit → **Login methods** (the
+  Authentication tab on older screens) → turn **Accept all available
+  identity providers** OFF, leave ticked the methods that application uses
+  today (One-time PIN on "SLED JOBS admin"), and Save. Why: an application
+  with that switch on offers every identity provider in the account, one
+  added later included, without anything being ticked.
+- **"SLED JOBS admin" requires the one-time PIN.** In that application, open
+  every **Allow** policy → Edit → add a rule **Require** → **Login
+  Methods** → `One-time PIN`, and Save. Why: Cloudflare's Login Methods
+  selector checks which identity provider a person signed in with, so a
+  sign-in through `SLED JOBS` is refused at /admin even if that application
+  were ever to offer it.
+
 **Your steps, in this order:**
 1. **The key and the client secret.** Yourself, in the macOS **Terminal**
    app (not the Claude app's own terminal panel, which a Claude session can
@@ -292,9 +311,13 @@ one-time codes live there) and `SESSION_SECRET` is set (§3a).
    An address without the `hunter` or `owner` role sees "Job Hunter is in a
    closed beta" instead, which is right.
 3. **Job Hunter's application.** Access → Applications → the EXISTING "Job
-   Hunter beta" → Edit → Authentication: tick **only** `SLED JOBS`, and turn
-   **Instant Auth** on. Keep the "Beta users" policy as it is. Never tick
-   `SLED JOBS` on the board's own "SLED JOBS admin" application.
+   Hunter beta" → Edit → **Login methods**: Accept all available identity
+   providers still OFF, tick **only** `SLED JOBS`, and turn **Instant
+   Auth** on. Keep the "Beta users" policy as it is. Then open every other
+   application once more and make sure `SLED JOBS` is ticked on none of
+   them, "SLED JOBS admin" above all. Why: `SLED JOBS` is Job Hunter's
+   sign-in alone, and on any other application the board's own 30-day
+   sign-in, which cannot be taken back one person at a time, would open it.
 4. **The popout's service token.** Access → Service credentials → Service
    Tokens → **Create**, name `board popout`. Copy its Client ID and Client
    Secret (the secret is shown once). On "Job Hunter beta", add a policy:
@@ -321,6 +344,9 @@ one-time codes live there) and `SESSION_SECRET` is set (§3a).
 - **You, in a private window:** `https://hunter.sledjobs.com/` → the board's
   sign-in, by email → Job Hunter. Then, signed in on the board, open Job
   Hunter again: no sign-in at all.
+- **And in a private window:** `https://sledjobs.com/admin/` → Access's own
+  page asking for your email for a one-time PIN, with no `SLED JOBS` button
+  on it.
 - **The panel:** on any role on the board, **Job Hunter ▸** fills in with no
   sign-in. If it says something else instead, each answer points at one
   place:
