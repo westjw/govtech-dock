@@ -47472,6 +47472,489 @@ def check_a_finder_cannot_replace_the_owners_queue() -> int:
     return errors
 
 
+# A Paylocity posting's own address, for the two checks below (synthetic: no
+# company's page and no person is in any of them)
+_PP_DETAILS = "https://recruiting.paylocity.com/recruiting/jobs/Details/"
+_PP_BOARD = "https://recruiting.paylocity.com/recruiting/jobs/All/"
+
+
+def _pp_uuid(n):
+    return f"{n:08x}-0000-4000-8000-{n:012x}"
+
+
+def check_a_posting_their_site_links_is_a_candidate_not_a_board() -> int:
+    """A Paylocity posting their own site links is a candidate that says it is
+    a posting, and no door but the wiring door makes anything of one.
+
+    The owner, 2026-11-23, asked whether "their site links a posting, and that
+    posting's page names exactly one board" should count as check 1: "Yes,
+    count it". Ten careers pages link single postings
+    (recruiting.paylocity.com/recruiting/jobs/Details/<id>/<Tenant>/<Title>)
+    and never their board, and the finder had filed each only as a tally under
+    `elsewhere`. Pinned, with the web stubbed:
+      - find_site_boards writes every posting their own page links as a
+        candidate of type paylocity-posting - its ref the posting's own
+        address, one row per posting, a link given twice counted twice - and
+        asks none of them; one seen on a page that is not their own site goes
+        under off_site; one inside a comment, or after another host's label,
+        is none;
+      - no fetcher reads that type, no pattern in BOARDS writes it, the door
+        takes it for no board, and the run's summary and the platform
+        catalogue count such a site apart from the sites pointing at a board;
+      - discovery never follows a link to a posting (it read the board off
+        the posting's page and wrote it on the tenant's name in its address
+        alone), wire_embedded leaves a row naming one in no pile, and the
+        queue's own door files none.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import board_proposals as bp
+    import discover_ats
+    import find_site_boards as fsb
+    import platform_catalog
+    import wire_embedded
+    import wire_found as wf
+    errors = 0
+    pa = _PP_DETAILS + "7101/Pfco-Inc/Field-Engineer"
+    pb = "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7102"
+    pc = _PP_DETAILS + "7103/Pfparent-Holdings/Analyst"
+    site, left = "https://www.pfco.example", "https://www.pfleft.example"
+    careers = (f'<a href="{pa}">Field Engineer</a> <a href="{pa}?src=careers">Field Engineer</a> '
+               f'<a href="{pb}">Analyst</a> '
+               f'<!-- <a href="{_PP_DETAILS}7199/Pfco-Inc/Retired">a retired role</a> --> '
+               f'<p>Not theirs: x.recruiting.paylocity.com/recruiting/jobs/Details/7198/X/Y</p>')
+    web = {site: _site_boards_page("Pfco", '<a href="/careers">Careers</a>'),
+           site + "/careers": _site_boards_page("Careers at Pfco", careers),
+           left: _site_boards_page("Pfleft", '<a href="/careers">Careers</a>'),
+           # their careers address sends its reader on to another company's site
+           left + "/careers": (301, "https://www.pfparent.example/careers"),
+           "https://www.pfparent.example/careers": _site_boards_page(
+               "Careers at Pfparent", f'<a href="{pc}">Analyst</a>')}
+    with _SiteBoardsWeb(fsb, web) as w:
+        rec = asyncio.run(fsb.look(_site_boards_co("pfco", "Pfco", site), "static", fsb.read_plain))
+        rec_left = asyncio.run(fsb.look(_site_boards_co("pfleft", "Pfleft", left), "static",
+                                        fsb.read_plain))
+    got = [(c["type"], c["ref"], c["element"], c["times"]) for c in rec["candidates"]]
+    if got != [(fsb.POSTING, pa, "href", 2), (fsb.POSTING, pb, "href", 1)]:
+        errors += fail(f"the postings their own careers page links are not each a candidate of "
+                       f"type {fsb.POSTING}, by the posting's own address, every link kept and "
+                       f"counted: {got}")
+    if any("paylocity.com" in u for u in w.reads):
+        errors += fail(f"the finder asked a posting it found: "
+                       f"{[u for u in w.reads if 'paylocity.com' in u]} - it asks no board, and a "
+                       f"posting's page is the wiring door's to ask")
+    if rec_left["candidates"] or [(o["type"], o["ref"]) for o in rec_left["off_site"]] \
+            != [(fsb.POSTING, pc)]:
+        errors += fail(f"a posting seen on a page that is not their own site is a candidate, or "
+                       f"is lost: candidates {rec_left['candidates']}, off_site "
+                       f"{rec_left['off_site']}")
+    said = "\n".join(fsb.summary({"pfco": rec, "pfleft": rec_left}))
+    if "0 whose own site points to a board we can read" not in said \
+            or "1 whose own site links a Paylocity posting" not in said or "by platform" in said:
+        errors += fail(f"the run's summary counts a site that links only a posting as one that "
+                       f"points to a board:\n{said}")
+    swept = platform_catalog.swept({"generated": "x", "mode": "static",
+                                    "companies": {"pfco": rec, "pfleft": rec_left}})
+    if swept["pointed"] != 0 or fsb.POSTING in swept["points_to"]:
+        errors += fail(f"the platform catalogue counts a site that links only a posting as one "
+                       f"pointing to a board on a platform: {swept}")
+    if fsb.POSTING in ats.FETCHERS or any(p.kind == fsb.POSTING for p in fsb.BOARDS) \
+            or wf.ref_problem(fsb.POSTING, pa) is None or wf.POSTING != fsb.POSTING:
+        errors += fail("a Paylocity posting can be read, or written by a board pattern, as a "
+                       "board")
+
+    # --- discovery does not follow a posting --------------------------------
+    dsite, dpost = "https://disc.example", _PP_DETAILS + "7201/Disc-Co/Engineer"
+    dboard = f"{_PP_BOARD}{_pp_uuid(0x7201)}/Disc-Co"
+    dpages = {dsite: discover_ats.Fetch(text=f"<a href='{dpost}'>We are hiring: Engineer</a>",
+                                        status=200, url=dsite, outcome="ok"),
+              dpost: discover_ats.Fetch(text=f"<a href='{dboard}'>All Jobs</a>" + " " * 3000,
+                                        status=200, url=dpost, outcome="ok")}
+    dasked = []
+
+    def dget(u):
+        dasked.append(u)
+        return dpages.get(u.rstrip("/"), discover_ats.Fetch(url=u, outcome="notfound", status=404))
+    real_dget, real_fetch = discover_ats.get, discover_ats.ats.fetch
+    discover_ats.get, discover_ats.ats.fetch = dget, (lambda block: [{"title": "Engineer"}])
+    try:
+        r = discover_ats.probe({"id": "disc-co", "name": "Disc Co", "website": dsite})
+    finally:
+        discover_ats.get, discover_ats.ats.fetch = real_dget, real_fetch
+    if r.get("found") or r.get("suspect") or dpost in dasked \
+            or "wiring door" not in str(r.get("note")):
+        errors += fail(f"discovery followed a link to a Paylocity posting and made a board of what "
+                       f"its page names, or did not say it left it to the wiring door: {r}, asked "
+                       f"{dasked}")
+
+    # --- wire_embedded and the queue's door leave a posting alone -----------
+    def found_row(cid, kind, ref):
+        return {"id": cid, "name": cid, "was": "html", "found": {"type": kind, "ref": ref},
+                "saw": str(ref), "times": 1, "verified": "1 posting(s) readable",
+                "board_calls_itself": "We Co", "identity": "matches", "identity_why": "-",
+                "postings": 1, "titles": ["Engineer"],
+                "read_at": dt.datetime.now().astimezone().isoformat(timespec="seconds")}
+    rows = [found_row("we-post", "paylocity", _PP_DETAILS + "7301/We-Post/Engineer"),
+            found_row("we-type", fsb.POSTING, _PP_DETAILS + "7302/We-Type/Engineer")]
+    by_id = {cid: {"id": cid, "name": cid, "ats": {"type": "html", "ref": None}}
+             for cid in ("we-post", "we-type")}
+    nobody = {"keys": {}, "named": [], "pairs": {}, "slugs": {}, "paylocity": []}
+    piles = wire_embedded.triage(rows, by_id, held={}, boards=nobody)
+    if any(e for pile in piles for e in pile):
+        errors += fail(f"wire_embedded sorted a row naming a Paylocity posting into a pile it "
+                       f"wires or proposes: {[[e['id'] for e in p] for p in piles]}")
+    for row in rows:
+        problem = bp._row_problem(dict(row, identity="unknown"))
+        if not problem or ("posting" not in problem and row["found"]["type"] == "paylocity"):
+            errors += fail(f"the queue's own door would file a Paylocity posting as a board: "
+                           f"{row['found']} -> {problem!r}")
+    if not bp.paylocity_posting(None, pa) or bp.paylocity_posting("paylocity", f"{_PP_BOARD}"
+                                                                   f"{_pp_uuid(1)}/Pfco-Inc"):
+        errors += fail("board_proposals.paylocity_posting does not tell a posting from a board")
+    return errors
+
+
+def _pp_page(title, *boards, rel=None, notes=""):
+    """A Paylocity posting's page, as small as the door needs: its title, a
+    breadcrumb link to each board, and a "View All Jobs" link written without
+    its host."""
+    crumbs = "".join(f'<a href="{b}" class="breadcrumb-link">All Jobs</a> &gt; ' for b in boards)
+    view = f'<a href="{rel}">View All Jobs</a>' if rel else ""
+    return (f"<html><head><title>{title}</title></head><body>{crumbs}<h1>{title}</h1>"
+            f"<p>About the role.</p>{notes}<a href=\"#apply\">Apply</a>{view}</body></html>")
+
+
+_PP_CLOSED = "<html><head><title>Job Not Found</title></head><body><h2>Job not found</h2></body></html>"
+
+
+def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
+    """A Paylocity posting their own site links counts as check 1 only where
+    the posting's own page names exactly one board, and that board is held to
+    everything any Paylocity find is held to.
+
+    The owner, 2026-11-23: "Yes, count it" - to "their site links a posting,
+    and that posting's page names exactly one board" as check 1. Check 2 is
+    unchanged. Driven through plan, look and write in _WiringBox, with the
+    posting's page served by a stand-in for verify_boards._board_page (the
+    board read's own path, whose manners are pinned at the end through
+    ats.requests):
+      - one board, named by the posting's page, the board stating their name
+                          -> WIRE, check 1 in the owner's words, on the record
+      - two boards on the posting's page   -> HOLD, naming both
+      - a closed posting, then an open one -> the open one's board; nothing
+                                              asked after it
+      - every posting asked closed (Job Not Found, a 404, no board named), up
+        to three             -> SKIP: not a board, listed and never a zero;
+                                the fourth is not asked
+      - a posting's page that fails on the day -> SKIP, asked again, not filed
+      - a posting off recruiting.paylocity.com -> refused, never asked
+      - a company refused earlier          -> its postings are not asked
+      - the board a posting names, held for the owner under another company's
+        id, refused for another company, on file as another company's, or
+        found for two companies by one posting (asked ONCE) -> HOLD, as any
+        Paylocity find is
+    and in apply: a worklist edited to point a posting's row at another board,
+    to give it another posting, to drop what check 1 says of the posting, or
+    to have the posting's page name two boards, leaves the row alone; one
+    without the plan's record of the posting pages is refused; the look
+    prints what the posting's page named, under the row it wires.
+    """
+    import verify_boards
+    import wire_found as wf
+    errors = 0
+    co, cand, entry, site = _wb_co, _wb_cand, _wb_entry, _wb_site
+    D = _PP_DETAILS
+
+    def board(n, tenant):
+        return f"{_PP_BOARD}{_pp_uuid(n)}/{tenant}"
+    B = {"one": board(0x7601, "Pp-One-Inc"), "two_a": board(0x7602, "Pp-Two-Inc"),
+         "two_b": board(0x7603, "Pp-Two-Engineering"), "late": board(0x7604, "Pp-Late-LLC"),
+         "held": board(0x7605, "Pp-Held-Inc"), "ref": board(0x7606, "Pp-Refusal-Inc"),
+         "rec": board(0x7607, "Pp-Recorded-Inc"), "twin": board(0x7608, "Pp-Twin-Inc")}
+    P = {"one": D + "7601/Pp-One-Inc/Account-Executive",
+         "two": D + "7602/Pp-Two-Inc/Sales-Engineer",
+         "late_1": D + "7611/Pp-Late-LLC/Closed-Role", "late_2": D + "7612/Pp-Late-LLC/Open-Role",
+         "late_3": D + "7613/Pp-Late-LLC/Third-Role",
+         "shut_1": D + "7621/Pp-Shut/One", "shut_2": D + "7622/Pp-Shut/Two",
+         "shut_3": D + "7623/Pp-Shut/Three", "shut_4": D + "7624/Pp-Shut/Four",
+         "flaky": D + "7631/Pp-Flaky/Engineer",
+         "off": "https://jobs.ppoff.example/recruiting/jobs/Details/7641/Pp-Off/Engineer",
+         "held": D + "7651/Pp-Held-Inc/Engineer", "ref": D + "7661/Pp-Refusal-Inc/Engineer",
+         "rec": D + "7671/Pp-Recorded-Inc/Engineer", "twin": D + "7681/Pp-Twin-Inc/Engineer",
+         "refused": D + "7691/Pp-Refused/Engineer"}
+    pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
+                                rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
+             P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"], B["two_b"]),
+             P["late_1"]: _PP_CLOSED,
+             P["late_2"]: _pp_page("Pp Late - Open Role", B["late"]),
+             P["late_3"]: _pp_page("Pp Late - Third Role", B["late"]),
+             P["shut_1"]: _PP_CLOSED,
+             P["shut_2"]: ats.AtsError(f"HTTP 404 for {P['shut_2']}"),
+             P["shut_3"]: _pp_page("Pp Shut - Three"),
+             P["shut_4"]: _pp_page("Pp Shut - Four", board(0x7609, "Pp-Shut")),
+             P["flaky"]: ats.AtsError(f"HTTP 503 for {P['flaky']}"),
+             P["held"]: _pp_page("Pp Held - Engineer", B["held"]),
+             P["ref"]: _pp_page("Pp Refusal - Engineer", B["ref"]),
+             P["rec"]: _pp_page("Pp Recorded - Engineer", B["rec"]),
+             P["twin"]: _pp_page("Pp Twin - Engineer", B["twin"]),
+             P["refused"]: _pp_page("Pp Refused - Engineer", board(0x7610, "Pp-Refused"))}
+    asked: list = []
+
+    def posting_page(url, head=0):
+        asked.append(url)
+        got = pages.get(url)
+        if got is None:
+            raise AssertionError(f"the door asked {url}, which nothing here serves")
+        if isinstance(got, Exception):
+            raise got
+        return got
+
+    companies = [co("pp-one", "Pp One"), co("pp-two", "Pp Two"), co("pp-late", "Pp Late"),
+                 co("pp-shut", "Pp Shut"), co("pp-flaky", "Pp Flaky"), co("pp-off", "Pp Off"),
+                 co("pp-held", "Pp Held"), co("pp-refusal", "Pp Refusal"),
+                 co("pp-recorded", "Pp Recorded"), co("pp-twin-a", "Pp Twin"),
+                 co("pp-twin-b", "Pp Twin Two"), co("pp-refused", "Pp Refused"),
+                 co("doubt-other", "Doubt Other"), co("refuser-co", "Refuser Co"),
+                 co("holder-co", "Holder Co", ats={"type": "paylocity", "ref": B["rec"]})]
+
+    def posted(cid, *refs, times=1):
+        return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
+                           for r in refs])
+    results = _wb_results({
+        "pp-one": posted("pp-one", P["one"], times=3),
+        "pp-two": posted("pp-two", P["two"]),
+        "pp-late": posted("pp-late", P["late_1"], P["late_2"], P["late_3"]),
+        "pp-shut": posted("pp-shut", P["shut_1"], P["shut_2"], P["shut_3"], P["shut_4"]),
+        "pp-flaky": posted("pp-flaky", P["flaky"]),
+        "pp-off": posted("pp-off", P["off"]),
+        "pp-held": posted("pp-held", P["held"]),
+        "pp-refusal": posted("pp-refusal", P["ref"]),
+        "pp-recorded": posted("pp-recorded", P["rec"]),
+        "pp-twin-a": posted("pp-twin-a", P["twin"]),
+        "pp-twin-b": posted("pp-twin-b", P["twin"]),
+        "pp-refused": posted("pp-refused", P["refused"])})
+    show = lambda key: wf.show("paylocity", B[key])        # noqa: E731
+    BOARDS = {show("one"): (4, ["Pp One Inc"]), show("two_a"): (3, ["Pp Two Inc"]),
+              show("two_b"): (2, ["Pp Two Inc"]), show("late"): (2, ["Pp Late LLC"]),
+              show("held"): (2, ["Pp Held Inc"]), show("ref"): (2, ["Pp Refusal Inc"]),
+              show("rec"): (2, ["Pp Recorded Inc"]), show("twin"): (2, ["Pp Twin Inc"])}
+    files = {
+        # a reader's doubt about pp-held's board, kept for another company
+        "board_doubts.json": {"doubt-other@2026-11-20T09:00:00-05:00": {
+            "id": "doubt-other", "name": "Doubt Other", "board": show("held"),
+            "type": "paylocity", "ref": B["held"],
+            "why": "a reader doubts this board is Doubt Other's own", "by": "agent:earlier-readers",
+            "on": "2026-11-20", "at": "2026-11-20T09:00:00-05:00"}},
+        # pp-refusal's board, refused in Agent proposals for another company
+        "agent_proposals.json": {"board:refuser-co": {
+            "kind": "board", "id": "refuser-co", "ats_type": "paylocity", "ats_ref": B["ref"],
+            "status": "rejected", "ruled_by": "owner", "ruled_on": "2026-11-10",
+            "ruled_why": "that board is not Refuser Co's"}},
+        # pp-refused: a board refused for it in Boards we found
+        "board_proposal_rulings.json": {"pp-refused": {
+            "accept": False, "why": "not their board", "by": "owner", "on": "2026-11-01"}}}
+    with _WiringBox(companies, BOARDS, files=files) as box:
+        keep = verify_boards._board_page
+        verify_boards._board_page = posting_page
+        try:
+            code, text, wl, rows = box.plan(results)
+            rows = rows or {}
+
+            def row(cid):
+                return rows.get(cid) or {}
+
+            if code != 0:
+                errors += fail(f"the plan over Paylocity postings did not run: {text[-600:]}")
+            one = row("pp-one")
+            c1 = one.get("check_1") or {}
+            words = wf.pointer(c1)
+            if one.get("action") != "WIRE" or one.get("ref") != B["one"] \
+                    or c1.get("posting") != P["one"] or c1.get("posting_boards") != [B["one"]] \
+                    or f"links a posting on the board ({P['one']}" not in words \
+                    or "and the posting's page names that one board" not in words:
+                errors += fail(f"pp-one: a posting whose page names one board, the board naming "
+                               f"them, is not WIRE with check 1 in the owner's words: "
+                               f"{one.get('action')} {one.get('ref')} {c1} {_wb_words(one)[:300]!r}")
+            two = row("pp-two")
+            if two.get("action") != "HOLD" or not all(
+                    B[k] in _wb_words(two) for k in ("two_a", "two_b")) \
+                    or "names more than one board" not in _wb_words(two) \
+                    or (two.get("queue_row") or {}).get("found", {}).get("ref") \
+                    not in (B["two_a"], B["two_b"]):
+                errors += fail(f"pp-two: a posting whose page names two boards is not HOLD for the "
+                               f"owner, naming both: {two.get('action')} {_wb_words(two)[:400]!r}")
+            late = row("pp-late")
+            if late.get("action") != "WIRE" or late.get("ref") != B["late"] \
+                    or (late.get("check_1") or {}).get("posting") != P["late_2"] \
+                    or P["late_3"] in asked:
+                errors += fail(f"pp-late: a closed posting, then an open one, did not make the open "
+                               f"one's board the find, or asked on after it: {late.get('action')} "
+                               f"{late.get('ref')} {late.get('check_1')}, asked {asked}")
+            shut = row("pp-shut")
+            sw = _wb_words(shut)
+            if shut.get("action") != "SKIP" or shut.get("kind") != "no-board" \
+                    or "Job Not Found" not in sw or "HTTP 404" not in sw \
+                    or "the find is not a board" not in sw or P["shut_4"] in asked \
+                    or shut.get("queue_row") or re.search(r"\b0 postings?\b", sw) \
+                    or "Pp Shut" not in text.split("plan: wire")[0]:
+                errors += fail(f"pp-shut: postings whose pages give no board (up to "
+                               f"{wf.POSTING_TRIES} asked) are not listed as SKIP, not a board, in "
+                               f"words - or a fourth was asked: {shut.get('kind')} {sw[:400]!r}")
+            flaky = row("pp-flaky")
+            if flaky.get("action") != "SKIP" or flaky.get("kind") != "unreadable" \
+                    or "failed on the day" not in _wb_words(flaky) \
+                    or "asked again on the next plan" not in _wb_words(flaky) \
+                    or flaky.get("queue_row"):
+                errors += fail(f"pp-flaky: a posting's page that failed on the day is not SKIPped "
+                               f"and asked again: {flaky.get('action')} {_wb_words(flaky)[:300]!r}")
+            off = row("pp-off")
+            if off.get("action") != "SKIP" or P["off"] in asked or "not asked" not in _wb_words(off):
+                errors += fail(f"pp-off: a posting off recruiting.paylocity.com was asked, or not "
+                               f"refused in words: {off.get('action')} {_wb_words(off)[:300]!r}")
+            for cid, must in (("pp-held", "a reader doubts this board is Doubt Other's own"),
+                              ("pp-refusal", "that board is not Refuser Co's"),
+                              ("pp-recorded", "already on file as the board of Holder Co")):
+                r = row(cid)
+                if r.get("action") != "HOLD" or must not in _wb_words(r):
+                    errors += fail(f"{cid}: the board its posting names is not held as any "
+                                   f"Paylocity find is ({must!r}): {r.get('action')} "
+                                   f"{_wb_words(r)[:400]!r}")
+            twins = [row("pp-twin-a"), row("pp-twin-b")]
+            if any(r.get("action") != "HOLD" or "the same board was found for" not in _wb_words(r)
+                   for r in twins) or asked.count(P["twin"]) != 1:
+                errors += fail(f"one posting linked by two companies is not one board found twice "
+                               f"(both held), or its page was asked {asked.count(P['twin'])} "
+                               f"times: {[(r.get('action'), _wb_words(r)[:160]) for r in twins]}")
+            refused = row("pp-refused")
+            if refused.get("action") != "SKIP" or refused.get("kind") != "refused" \
+                    or P["refused"] in asked:
+                errors += fail(f"pp-refused: a company refused earlier had its posting asked, or "
+                               f"was not skipped as refused: {refused.get('action')} "
+                               f"{refused.get('kind')}, asked {P['refused'] in asked}")
+            if len(asked) != len(set(asked)):
+                errors += fail(f"a posting's page was asked more than once in one plan: {asked}")
+            doc = json.loads(wl.read_text()) if wl.exists() else {}
+            if doc.get("posting_boards", {}).get(P["one"]) != [B["one"]] \
+                    or doc.get("posting_boards", {}).get(P["late_1"]) != [] \
+                    or P["flaky"] in doc.get("posting_boards", {}):
+                errors += fail(f"the worklist does not carry what each posting's page named "
+                               f"(posting_boards): {doc.get('posting_boards')}")
+
+            # --- apply -----------------------------------------------------
+            code, look, expect = box.look(wl)
+            lean = (f"leans on what the plan was told: the page of the posting their site links, "
+                    f"{P['one']}, names one board, {show('one')}")
+            if lean not in look or "WIRE 2" not in look:
+                errors += fail(f"the look does not print what the posting's page named, under the "
+                               f"row it wires: {look[:900]}")
+
+            def left_alone(name, change, why):
+                nonlocal errors
+                bad = box.edited(wl, name, change)
+                _c, text_, _x = box.look(bad)
+                wire_part = text_.split("\nHOLD ", 1)[0]
+                wire_part, _, left_part = wire_part.partition("\nLEFT ALONE")
+                if "Pp One" in wire_part or "Pp One" not in left_part \
+                        or "posting" not in left_part:
+                    errors += fail(f"apply would wire pp-one from a worklist {why}: "
+                                   f"{text_[:900]}")
+
+            left_alone("pp-other-board.json",
+                       lambda rs, doc: rs["pp-one"].update(ref=B["two_a"]),
+                       "edited to point the posting's row at another board")
+            left_alone("pp-other-posting.json",
+                       lambda rs, doc: rs["pp-one"]["check_1"].update(posting=P["two"]),
+                       "edited to give the row another posting")
+            # ...another company's posting, whose page the plan did record naming
+            # one board, and that board: the record agrees with itself, and check
+            # 1's own sighting on their page quotes the posting it always did
+            left_alone("pp-their-posting.json",
+                       lambda rs, doc: (rs["pp-one"].update(ref=B["twin"]),
+                                        rs["pp-one"]["check_1"].update(
+                                            posting=P["twin"], posting_boards=[B["twin"]])),
+                       "edited to point the row, and its posting, at another company's")
+            left_alone("pp-no-posting.json",
+                       lambda rs, doc: (rs["pp-one"]["check_1"].pop("posting"),
+                                        rs["pp-one"]["check_1"].pop("posting_boards")),
+                       "edited to drop what check 1 says of the posting")
+            left_alone("pp-two-named.json",
+                       lambda rs, doc: doc["posting_boards"].update({P["one"]: [B["one"],
+                                                                                 B["two_a"]]}),
+                       "edited to have the posting's page name two boards")
+            bare = box.edited(wl, "pp-no-record.json",
+                              lambda rs, doc: doc.pop("posting_boards"))
+            code_b, text_b, _x = box.look(bare)
+            if code_b == 0 or "posting_boards" not in text_b:
+                errors += fail(f"a worklist without the plan's record of the posting pages is not "
+                               f"refused: {text_b[:300]}")
+            code, said = box.write(wl, expect)
+            rec = box.record("pp-one")
+            note_ = str(rec.get("ats_note") or "")
+            if code != 0 or rec.get("ats") != {"type": "paylocity", "ref": B["one"]} \
+                    or f"links a posting on the board ({wf.short(P['one'])}" not in note_ \
+                    or "the posting's page names that one board" not in note_ \
+                    or box.record("pp-late").get("ats", {}).get("ref") != B["late"]:
+                errors += fail(f"the write did not wire the boards the postings' pages named, with "
+                               f"check 1 in the note: {code} {rec.get('ats')} {note_!r} {said[-400:]}")
+        finally:
+            verify_boards._board_page = keep
+
+    # --- the posting's page is asked as a board's page is ----------------
+    sent, robots_asked, gated = [], [], []
+    m_closed, m_away = D + "7701/Pm-Co/Engineer", D + "7702/Pm-Co/Analyst"
+    m_shut = D + "7703/Pm-Co/Shut"
+
+    class W:
+        def __init__(self, code, url, text="", loc=None):
+            self.status_code, self.url, self.text = code, url, text
+            self.headers = {"Location": loc} if loc else {"content-type": "text/html"}
+            self.encoding, self.content = "utf-8", text.encode()
+
+        def close(self):
+            pass
+
+    def net(url, **kw):
+        sent.append(url)
+        if url == m_closed:
+            return W(302, url, loc="/Recruiting/jobs/JobNotFound")
+        if url == m_away:
+            return W(302, url, loc="https://www.vendor-home.example/careers")
+        return W(200, url, _PP_CLOSED)
+
+    def robots_of(url):
+        robots_asked.append(url)
+        if url == m_shut:
+            raise ats.RobotsRefused(f"robots.txt asks crawlers not to read {url}")
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE)
+    try:
+        ats.requests.get, ats.ask_robots = net, robots_of
+        ats._host_gate, ats.HTTP_CACHE = gated.append, None
+        s = wf.posting_says(m_closed)
+        if s["boards"] or "Job Not Found" not in str(s["closed"]) \
+                or robots_asked != [m_closed, "https://recruiting.paylocity.com/Recruiting/jobs/JobNotFound"] \
+                or gated != robots_asked or sent != robots_asked:
+            errors += fail(f"a posting's page was not asked as a board's page is - robots.txt and "
+                           f"the host gate before every hop: {s}, robots {robots_asked}, gate "
+                           f"{gated}, sent {sent}")
+        sent.clear(), robots_asked.clear()
+        s = wf.posting_says(m_away)
+        if s["failed"] != "unreadable" or "leads off" not in s["how"] \
+                or any("vendor-home" in u for u in sent + robots_asked):
+            errors += fail(f"a posting's page that leads off Paylocity's host was followed, or its "
+                           f"host asked anything: {s}, sent {sent}, robots {robots_asked}")
+        sent.clear(), robots_asked.clear()
+        s = wf.posting_says(m_shut)
+        if s["failed"] != "refused" or sent:
+            errors += fail(f"a posting's page robots.txt closes was read: {s}, sent {sent}")
+        sent.clear(), robots_asked.clear()
+        s = wf.posting_says(P["off"])
+        if s["failed"] != "refused" or sent or robots_asked:
+            errors += fail(f"an address off recruiting.paylocity.com was asked as a posting: {s}, "
+                           f"sent {sent}, robots {robots_asked}")
+    finally:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held
+    return errors
+
+
 def check_capture_parity() -> int:
     """The capture extractor exists twice and had drifted BOTH ways.
 
@@ -60752,6 +61235,8 @@ def main() -> int:
     errors += check_a_worklist_row_is_asked_again_at_the_write()
     errors += check_the_boards_found_card_opens_what_it_names()
     errors += check_a_finder_cannot_replace_the_owners_queue()
+    errors += check_a_posting_their_site_links_is_a_candidate_not_a_board()
+    errors += check_a_board_a_posting_names_is_wired_only_on_both_checks()
     errors += check_capture_parity()
     errors += check_extension_icons()
     errors += check_open_actions_never_write_the_map()
