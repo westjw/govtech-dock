@@ -45947,7 +45947,11 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             expect(rows_pq, "pq-w", "HOLD", HELD_PQ)
             if about != [("pq-x", "-", "-"), ("pq-x", "paylocity", B_PQ), ("ps-co", "-", "-")] \
                     or "READERS' DOUBTS ABOUT A BOARD A POSTING NAMES 2 " not in text \
-                    or "settled: the owner ruled on this company" not in text:
+                    or "settled: the owner ruled on this company" not in text \
+                    or "Commit them together: these doubts hold the board a posting names" \
+                    not in text or "and 1 doubt about a company whose site only links a Paylocity " \
+                                   "posting was kept against the board the posting's page " \
+                                   "names, before any board was read" not in text:
                 errors += fail(f"a doubt about a company whose site only links a posting was not "
                                f"kept against the board the posting's page names, or one the "
                                f"owner settled since was raised again by its board: {about}; "
