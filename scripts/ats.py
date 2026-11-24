@@ -4177,14 +4177,21 @@ def _jvx_currency(raw: str) -> str | None:
     return codes.pop() if len(codes) == 1 else None
 
 
-def _jvx_pay(job: dict) -> dict | None:
+def _jvx_pay(job: dict, abroad: bool = False) -> dict | None:
     """The contract's comp block from the row's own salary fields
     (salarymin, salarymax, salarycurrency, salaryfrequency: 213 of Tyler's
     266 rows), source "ats" as every reader's stated range is - or None
     where the row states no figure, or a figure that does not read (half a
     range is not published as a floor or a ceiling the row never stated). A
     frequency not in _JVX_PERIODS leaves period None, which build_board.
-    derived drops, as it drops every reader's pay with no period."""
+    derived drops, as it drops every reader's pay with no period.
+
+    `abroad` is where the row is (_abroad): a row the board lists outside
+    the US whose salarycurrency names no code states no pay published, as a
+    bare "$" there names no currency (_text_comp) - a block with none is
+    read as US dollars on the site (blind review 12, 2026-11-23: 'Philippine
+    Piso' with no code, on a row in the Philippines, was published as
+    between $874k and $1116k a year)."""
     lo_raw, hi_raw = _jvx_first(job, "salarymin"), _jvx_first(job, "salarymax")
     (lo, lo_ok), (hi, hi_ok) = _jvx_figure(lo_raw), _jvx_figure(hi_raw)
     if not (lo_ok and hi_ok) or (lo is None and hi is None):
@@ -4192,6 +4199,8 @@ def _jvx_pay(job: dict) -> dict | None:
     if lo is not None and hi is not None and lo > hi:
         lo, hi, lo_raw, hi_raw = hi, lo, hi_raw, lo_raw
     currency = _jvx_currency(_jvx_first(job, "salarycurrency"))
+    if currency is None and abroad:
+        return None
     period = _JVX_PERIODS.get(_jvx_first(job, "salaryfrequency").lower())
     return {"min": lo, "max": hi, "currency": currency, "period": period, "source": "ats",
             "raw": _raw_from(lo_raw if lo is not None else None,
@@ -4229,8 +4238,10 @@ def jobvitefeed_rows(jobs: list[dict], account: str) -> tuple[list[dict], int]:
                "location": "; ".join(places),
                "url": url,
                "posted": _jvx_day(_jvx_first(base, "date")),
-               "category": _jvx_first(base, "category") or None,
-               "comp": _jvx_pay(base)}
+               "category": _jvx_first(base, "category") or None}
+        # (where the board will list it decides what a currency naming no
+        # code is: _jvx_pay)
+        row["comp"] = _jvx_pay(base, abroad=_abroad(row))
         # THE AD IS ALWAYS READ: it is in the answer already downloaded, so it
         # costs no request, and "the boards that hand the description over in
         # the list response we already make are always read, flag or no flag"

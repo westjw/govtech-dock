@@ -3947,7 +3947,11 @@ through the door.
   Annually, Annual, Yearly, Monthly, Weekly, Daily or Hourly (Bi-Weekly is not
   a week; a period not read is pay `build_board.derived` does not publish),
   cents kept (20.00-22.50 is 20-22.5; `ats._money` rounds), and a figure that
-  does not read publishes no pay, never half a range.
+  does not read publishes no pay, never half a range. On a row the board
+  lists outside the US (`ats._abroad`), a currency naming no code publishes
+  no pay: the site reads a block with none as US dollars, as a bare "$"
+  there names none (blind review 12, 2026-11-23: 'Philippine Piso' with no
+  code, on a row in the Philippines, was published as $874k-$1116k a year).
 - **The ad** (`description`, in the same answer) is always each row's jd, flag
   or no flag: it costs no request, and the boards that hand the description
   over in the list response are always read (ats.FETCH_DETAILS). Behind the

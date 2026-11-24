@@ -20660,6 +20660,18 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
             if e_ or (r_ or [{}])[0].get("comp") != want:
                 errors += fail(f"jobvitefeed: {why} reads as pay {(r_ or [{}])[0].get('comp')} ({e_}), "
                                f"not {want}")
+        # (and a row the board lists outside the US whose currency names no
+        # code states no pay published: the site reads a block with none as
+        # US dollars, as a bare "$" there names none - blind review 12,
+        # 2026-11-23: a Philippine row was published as $874k-$1116k a year)
+        for cur, where in (("Philippine Piso", "Bonifacio Global City, Philippines"),
+                           ("", "Bonifacio Global City, Philippines"),
+                           ("Indian Rupee", "Bengaluru, Karnataka, India")):
+            r_, e_, _ = read(feed(job(P1, where=where, pay=("873703.80", "1116045.00", cur, "Annually"))))
+            if e_ or len(r_ or []) != 1 or r_[0].get("comp") is not None \
+                    or bb.derived(r_[0])["comp"] is not None:
+                errors += fail(f"jobvitefeed: pay in {cur or 'no currency'!r} on a row in {where} was "
+                               f"published ({e_}): {(r_ or [{}])[0].get('comp')}")
         for freq in ("Bi-Weekly", "Semi-Monthly", "Per Diem"):
             r_, e_, _ = read(feed(job(P1, pay=("2000", "2500", "US Dollar (USD US$)", freq))))
             comp = (r_ or [{}])[0].get("comp") or {}

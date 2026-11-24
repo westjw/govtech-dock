@@ -332,7 +332,7 @@
         "One row per job: a parent and its per-location copies (parentId), grouped whatever their order. The parent gives the row its title, date, job page, category, pay and ad; each copy adds its place, once.",
         "A company id nobody holds is sent 302 to app.jobvite.com/Recruiting/Home.aspx and on to Jobvite's own site (research, 2026-11-20): every hop off the feed's address is refused before it is asked, so it is an error, never a zero.",
         "posted is the row's <date>, M/D/YYYY. The research found it is not always the posting's own datePosted (Absolute's oFV3AfwX: 11/4/2026 in its feed, 2026-11-02 on its posting, and 11 of its 18 rows share 10/19/2026).",
-        "Pay only from the row's own salary fields: the ISO code out of 'US Dollar (USD US$)', a period only from Annually, Annual, Yearly, Monthly, Weekly, Daily or Hourly (Bi-Weekly is not a week), cents kept (20.00-22.50 is not 20-22), and a figure that does not read publishes no pay.",
+        "Pay only from the row's own salary fields: the ISO code out of 'US Dollar (USD US$)', a period only from Annually, Annual, Yearly, Monthly, Weekly, Daily or Hourly (Bi-Weekly is not a week), cents kept (20.00-22.50 is not 20-22), and a figure that does not read publishes no pay. On a row listed outside the US, a currency naming no code publishes no pay either: the site reads a block with none as US dollars (blind review 12, 2026-11-23).",
         "The ad goes into jd only behind FETCH_DETAILS, though it costs no request more (asked so, 2026-11-23)."
       ],
       "notes": [
