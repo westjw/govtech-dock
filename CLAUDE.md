@@ -2979,6 +2979,15 @@ round.
   posting of theirs named too; a refusal (robots.txt, 401, 403) stops the
   asking, and beside a board (their site's own, or one a posting named) a
   posting whose page refused is a doubt: which board it is on is not known.
+  A posting whose page could not be read, not on the day (a 400, a redirect
+  off Paylocity's host, an answer in a shape nobody knows), is no closed
+  posting (blind review of the asking-on change, 2026-11-24: it was counted
+  as one, so beside a posting naming a board it was wired past, while a
+  refusal in the same place was held). The next posting is asked as
+  before; beside a board (their site's own, or one a posting named) it is a
+  doubt, "their site also links a Paylocity posting whose page could not be
+  read (...), so which board it is on is not known", and where nothing
+  names a board it is SKIP `unreadable`, never "not a board".
   The plan's line says how many of the postings their site links were asked
   ("3 Paylocity postings their site links were asked which board its page
   names"), and where the tries left some unasked, that they were not ("...,
@@ -2990,22 +2999,26 @@ round.
   one out of scope or on a board.
   Postings none of whose pages named a board, beside another board, are a
   doubt. A board their site names itself by an id that agrees gets no second
-  sighting from a posting. The worklist (version 7) records what each
+  sighting from a posting. The worklist (version 8) records what each
   posting's page named (`posting_boards`, under every spelling of its
-  address their sites linked), and apply wires a row found by
+  address their sites linked; a closed posting's page - a 404's or a 410's
+  too - as naming none, and nothing for a page that refused, could not be
+  read or failed on the day), and apply wires a row found by
   way of a posting only where its `check_1.posting` is a posting's own
   address, check 1's own sighting quotes that posting's id, the row and
   `posting_boards` both say its page named that one board, the row's own,
   and every posting of theirs the row says the plan asked
   (`check_1.postings_asked`, the quoted one among them) is recorded in
-  `posting_boards` naming that board or none; a
+  `posting_boards` naming that board or none - one with no record leaves
+  the row alone (version 7 recorded no 404's page and passed a posting
+  with none, so a page that could not be read was wired past); a
   row whose check 1 quotes a posting and says nothing of its page, or not
   which postings were asked, is left alone (`evidence`). The look prints,
   under the row, "leans on what the plan
   was told: the page of the posting their site links, <posting>, names one
   board, <board>", and for each other posting asked "...the page of another
   posting their site links, <posting>, names that board too, <board>" (or
-  "names no board", or that it gave no answer), and the code covers it.
+  "names no board (it has closed, or names none)"), and the code covers it.
   Discovery never follows a link to
   a posting, from their home page or one hop on, and never reads a page its
   own fetch LANDED on that is a posting's - their home page, a careers
@@ -3040,8 +3053,9 @@ round.
   posting naming a board an earlier one named adds no second sighting.
   Where every posting asked that names a board names the same one, it is
   wired as before, check 1 quoting the first; a closed posting counts
-  against no other, as before. A refusal after a posting has named a board
-  is a doubt, and a failure of the day SKIP unreadable (above). Readers'
+  against no other, as before. A refusal, or a page that could not be read,
+  after a posting has named a board is a doubt, and a failure of the day
+  SKIP unreadable (above). Readers'
   doubts kept against a posting's board (`keep_posted_doubts`) see every
   posting's answer. In the run that held BS&A Software on 2026-11-23 it was
   the only site linking Apply links, and the 13 postings it links all carry
@@ -3049,8 +3063,11 @@ round.
   proof of the board). Pinned in
   `check_a_board_a_posting_names_is_wired_only_on_both_checks` (three
   postings on one board, all asked; four linked, exactly `POSTING_TRIES`
-  asked; a closed one beside two on one board; a refusal, a failure and a
-  two-board page after a naming; apply's re-checks) and
+  asked; a closed one beside two on one board; a refusal, a failure, a
+  two-board page and a page that led off the host or answered 400 after a
+  naming; a page that could not be read beside a closed one and no board,
+  and beside a board of their own; a 404 beside two on one board, wired;
+  apply's re-checks, and a version-7 worklist refused) and
   `check_a_postings_own_apply_link_is_no_other_form` (their own posting and
   another account's, with each one's Apply link and without: HOLD, both
   boards and both postings named).
@@ -3467,12 +3484,13 @@ round.
   another holder (under either key), more postings shown than the board
   read. A write whose `--expect` is not the code of the data as it is now is
   REFUSED, even when nothing would be written. A worklist older than version
-  7, or without `reader_doubts` (or with a blank one), `workable_numbers`,
+  8, or without `reader_doubts` (or with a blank one), `workable_numbers`,
   `page_addresses` or `posting_boards`, is refused: version 3 kept the
   readers' doubts only when it was written, version 4 carried a record's
-  page's address apply took on its word, version 5 knew no posting, and
+  page's address apply took on its word, version 5 knew no posting,
   version 6 stopped asking a company's postings at the first one naming a
-  board (its rows say nothing of the others).
+  board (its rows say nothing of the others), and version 7 wired past a
+  posting whose page could not be read and recorded no 404's page.
   The look prints, under each row it wires, every /All/ address it leans on
   ("leans on what the plan was told: ...") and the Workable
   account number it is asked for by, with what ties it to the slug and
