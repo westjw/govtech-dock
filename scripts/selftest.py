@@ -2408,10 +2408,15 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
         time, spends a code once (two at once: one token), 120 seconds and
         not 121, holds the verifier, the redirect_uri and the client, and a
         failed try spends the code; every failure is OAuth's word alone;
-      - twenty failures an hour from one network and it is slowed, with
-        nothing left by a working sign-in; two hundred wrong secrets sent at
-        once are tried twenty times, not two hundred (the try is taken by
-        one statement before anything is compared);
+      - only a request that is not the client is counted: twenty an hour
+        from one network and those get 429, writing nothing; two hundred
+        wrong secrets sent at once are counted twenty times, not two hundred
+        (one statement takes each try). THE CLIENT IS NEVER COUNTED OR
+        REFUSED BY THE COUNT (review, 2026-11-24): from a network whose hour
+        is used up, from Cloudflare's own shared Worker address after
+        twenty-five requests that were not it, from its /64, in the middle
+        of a burst, it gets its token, and its own failures are OAuth's
+        words, never 429;
       - the gate's OPEN set is exactly the sign-in's paths and these four;
       - nothing logs anything.
     """
@@ -2619,27 +2624,64 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
         errors += fail(f"three redemptions that all reach the spend at once gave more than one token: "
                        f"{T.get('race_interleaved')}")
 
-    # A GUESSER, SLOWED
+    # ONLY WHAT IS NOT THE CLIENT IS COUNTED, AND THE CLIENT IS NEVER
+    # REFUSED BY THE COUNT (review, 2026-11-24): twenty requests an hour from
+    # one network that are not the client, then 429 for those, writing
+    # nothing; the client from that same network still gets its token, takes
+    # no try, and its own failures are OAuth's words, never 429
     rl = o.get("rate") or {}
     cap = rl.get("cap")
     if (cap != 20 or rl.get("statuses") != [401] * 20 or (rl.get("capped") or {}).get("status") != 429
             or (rl.get("capped") or {}).get("json") != {"error": "temporarily_unavailable"}
             or (rl.get("capped") or {}).get("retry") != "3600" or rl.get("again") != 429
             or rl.get("fails_at_cap") != [20] or rl.get("fails_after_refusal") != [20]):
-        errors += fail(f"the token door does not slow a network after {cap} failures an hour, or a refusal writes: {rl}")
-    if (rl.get("other_network") != 200 or rl.get("good") != 200 or rl.get("good_wrote")
-            or rl.get("v6_neighbour") != 429 or rl.get("v6_other") != 200 or rl.get("next_hour") != 200):
-        errors += fail(f"the slowing reaches another network, the next hour, or a working sign-in writes a count: {rl}")
-    # ...AND SENT ALL AT ONCE (2026-11-23 review): the try is taken before
-    # the secret is compared, by one statement, so a burst of 200 is tried
-    # 20 times, not 200 (a count read first and written after let them all in)
+        errors += fail(f"the token door does not refuse a network's requests that are not the client after {cap} "
+                       f"an hour, or a refusal writes: {rl}")
+    if (rl.get("client") != 200 or not rl.get("client_ok") or rl.get("fails_after_client") != [20]
+            or rl.get("client_fails") != {"unknown_code": 400, "wrong_verifier": 400, "grant_password": 400}
+            or rl.get("fails_after_client_fails") != [20]):
+        errors += fail(f"the client is refused, or counted, because its network sent requests that were not it: "
+                       f"{ {k: rl.get(k) for k in ('client', 'client_ok', 'fails_after_client', 'client_fails', 'fails_after_client_fails')} }")
+    if (rl.get("other_network") != 401 or rl.get("good") != 200 or rl.get("good_wrote")
+            or rl.get("v6_neighbour") != 429 or rl.get("v6_other") != 401 or rl.get("v6_client") != 200
+            or rl.get("next_hour") != 401):
+        errors += fail(f"the count reaches another network or the next hour, misses the rest of an IPv6 /64, refuses "
+                       f"the client in it, or a working sign-in writes a count: {rl}")
+    if (rl.get("down_not_client") or {}) != {"status": 401, "json": {"error": "invalid_client"}}:
+        errors += fail(f"with D1 down, a request that is not the client is not refused as invalid_client: "
+                       f"{rl.get('down_not_client')}")
+    # CLOUDFLARE'S OWN SHARED ADDRESS: every Worker's cross-zone subrequest
+    # comes from 2a06:98c0:3600::103, and so may Access's own calls; twenty-
+    # five requests from it that are not the client must not cost Access its
+    # sign-in, from that address or its /64
+    sc = o.get("shared_caller") or {}
+    if (sc.get("statuses") != [401] * 20 + [429] * 5 or sc.get("counted") != [20]
+            or sc.get("same") != 200 or not sc.get("same_ok") or sc.get("neighbour") != 200
+            or sc.get("basic") != 200 or sc.get("counted_after") != [20]):
+        errors += fail(f"twenty-five requests from Cloudflare's shared address with no or wrong client credentials "
+                       f"lock the client out of the token door (from that address or its /64): {sc}")
+    # ...AND SENT ALL AT ONCE (2026-11-23 review): each is counted by one
+    # statement once it is found not to be the client, so a burst of 200 is
+    # counted 20 times, not 200 (a count read first and written after let
+    # them all in); the client's exchanges in the middle of it, and after
+    # it, from the same network, are tokens
     bu = o.get("burst") or {}
     if (bu.get("sent") != 200 or bu.get("statuses") != {"401": cap, "429": 200 - (cap or 0)}
-            or bu.get("counted") != [cap] or bu.get("after") != 429):
-        errors += fail(f"two hundred wrong secrets sent at once are tried more than {cap} times "
-                       f"(the count is read before it is written), or the network is not slowed after: {bu}")
+            or bu.get("counted") != [cap]):
+        errors += fail(f"two hundred wrong secrets sent at once are counted more than {cap} times "
+                       f"(the count is read before it is written): {bu}")
+    if bu.get("mid") != [200] * 5 or bu.get("after") != 200:
+        errors += fail(f"the client's exchanges during or after a burst from its network are refused: {bu}")
     if bu.get("good_statuses") != [200] * 5 or bu.get("rows_after_goods") != [cap]:
         errors += fail(f"good exchanges sent at once are refused, or leave a count behind: {bu}")
+    # and the docs say what the door now does, not what it did
+    claude_flat = re.sub(r"\s+", " ", (ROOT / "CLAUDE.md").read_text())
+    deploy_flat = re.sub(r"\s+", " ", (ROOT / "DEPLOY.md").read_text())
+    if ("THE CLIENT IS NEVER COUNTED AND NEVER REFUSED BY THE COUNT" not in claude_flat
+            or "The try is taken before anything is compared" in claude_flat
+            or "Access, which holds the client secret, is never counted and never refused" not in deploy_flat):
+        errors += fail("CLAUDE.md or DEPLOY.md still says the token door counts before it knows the client, "
+                       "or does not say the client is never counted or refused")
 
     # THE GATE: these four pass signed out, and nothing beside them
     open_now = sorted(["/admin/api/whoami", "/admin/api/login", "/api/whoami", "/signin", "/signin/email",

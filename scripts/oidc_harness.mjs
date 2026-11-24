@@ -592,63 +592,136 @@ const STATE = "st8 a+b/c=d&e%f?g#h~i";
   out.token_refused = T;
 }
 
-/* --- a guesser is slowed, per network, and a working sign-in writes nothing - */
+/* --- a request that is not the client is counted, per network; the client
+ * never is (review, 2026-11-24) -------------------------------------------- */
+const fails = (env) => rows(env.DB, "oidc_fails").map((r) => r.n);
+const junkCode = () => randomBytes(32).toString("base64url");
 {
   const env = envOf();
   const A = "192.0.2.77", B = "192.0.2.88";
+  // twenty wrong secrets from one network: each counted, each invalid_client
   const statuses = [];
   for (let i = 0; i < O.FAILS_PER_HOUR; i++) {
-    statuses.push((await tok(env, goodForm(randomBytes(32).toString("base64url"), pkce().verifier, { client_secret: "nope" + i }), { ip: A })).status);
+    statuses.push((await tok(env, goodForm(junkCode(), pkce().verifier, { client_secret: "nope" + i }), { ip: A })).status);
   }
+  const failsAtCap = fails(env);
+  // the next one is refused, unread, and writes nothing
+  const capped = await tok(env, goodForm(junkCode(), pkce().verifier, { client_secret: "nope-over" }), { ip: A });
+  const failsAfter = fails(env);
+  const again = await tok(env, goodForm(junkCode(), pkce().verifier, { client_id: null, client_secret: null }), { ip: A });
+  // THE CLIENT, from that network with its hour used up: a token, no try
   const c = await codeFor(env);
-  const capped = await tok(env, goodForm(c.code, c.verifier), { ip: A });
-  const failsAtCap = rows(env.DB, "oidc_fails").map((r) => r.n);
-  const again = await tok(env, goodForm(c.code, c.verifier), { ip: A });
-  const failsAfter = rows(env.DB, "oidc_fails").map((r) => r.n);
-  const other = await tok(env, goodForm(c.code, c.verifier), { ip: B });
+  const client = await tok(env, goodForm(c.code, c.verifier), { ip: A });
+  const clientOk = verifyJwt(client.json && client.json.id_token, await jwksOf(env)).ok;
+  const failsAfterClient = fails(env);
+  // and the client's own failures from there: OAuth's word, never 429, never counted
+  const cv = await codeFor(env);
+  const clientFails = {
+    unknown_code: (await tok(env, goodForm(junkCode(), pkce().verifier), { ip: A })).status,
+    wrong_verifier: (await tok(env, goodForm(cv.code, pkce().verifier), { ip: A })).status,
+    grant_password: (await tok(env, goodForm(junkCode(), pkce().verifier, { grant_type: "password" }), { ip: A })).status,
+  };
+  const failsAfterClientFails = fails(env);
+  // another network is its own
+  const other = await tok(env, goodForm(junkCode(), pkce().verifier, { client_secret: "nope" }), { ip: B });
+  // a working sign-in writes nothing
   const before = JSON.stringify(rows(env.DB, "oidc_fails"));
   const c2 = await codeFor(env);
-  const good = await tok(env, goodForm(c2.code, c2.verifier), { ip: B });
+  const good = await tok(env, goodForm(c2.code, c2.verifier), { ip: "192.0.2.99" });
   const afterGood = JSON.stringify(rows(env.DB, "oidc_fails"));
-  // IPv6: one /64 is one caller
+  // IPv6: one /64 is one network for the count, and the client is never refused in it
   const v6 = envOf();
   for (let i = 0; i < O.FAILS_PER_HOUR; i++) await tok(v6, goodForm("x", "y", { client_secret: "no" }), { ip: `2001:db8:1:2::${(i + 1).toString(16)}` });
+  const v6Neighbour = await tok(v6, goodForm("x", "y", { client_secret: "no" }), { ip: "2001:db8:1:2:ffff::9" });
+  const v6Other = await tok(v6, goodForm("x", "y", { client_secret: "no" }), { ip: "2001:db8:1:3::1" });
   const c3 = await codeFor(v6);
-  const v6Neighbour = await tok(v6, goodForm(c3.code, c3.verifier), { ip: "2001:db8:1:2:ffff::9" });
-  const v6Other = await tok(v6, goodForm(c3.code, c3.verifier), { ip: "2001:db8:1:3::1" });
-  // the next hour, the same network is heard again
+  const v6Client = await tok(v6, goodForm(c3.code, c3.verifier), { ip: "2001:db8:1:2:ffff::9" });
+  // D1 down: a request that is not the client is still refused, never let through
+  env.DB.down = true;
+  const downNotClient = await tok(env, goodForm(junkCode(), pkce().verifier, { client_secret: "nope-down" }), { ip: "192.0.2.111" });
+  env.DB.down = false;
+  // the next hour, the same network's count starts again
   clock += 3600 * 1000;
-  const c4 = await codeFor(env);
-  const nextHour = await tok(env, goodForm(c4.code, c4.verifier), { ip: A });
+  const nextHour = await tok(env, goodForm(junkCode(), pkce().verifier, { client_secret: "nope-later" }), { ip: A });
   out.rate = { statuses, capped: { status: capped.status, json: capped.json, retry: capped.headers["retry-after"] || "" },
-    fails_at_cap: failsAtCap, fails_after_refusal: failsAfter, again: again.status, other_network: other.status,
-    good: good.status, good_wrote: before !== afterGood, v6_neighbour: v6Neighbour.status, v6_other: v6Other.status,
+    fails_at_cap: failsAtCap, fails_after_refusal: failsAfter, again: again.status,
+    client: client.status, client_ok: clientOk, fails_after_client: failsAfterClient,
+    client_fails: clientFails, fails_after_client_fails: failsAfterClientFails,
+    other_network: other.status, good: good.status, good_wrote: before !== afterGood,
+    v6_neighbour: v6Neighbour.status, v6_other: v6Other.status, v6_client: v6Client.status,
+    down_not_client: { status: downNotClient.status, json: downNotClient.json },
     next_hour: nextHour.status, cap: O.FAILS_PER_HOUR };
 }
 
-/* A BURST: two hundred wrong secrets sent at once from one network. The try
- * is taken before the secret is compared, by one statement, so twenty are
- * tried and the rest refused unread; a count read first and written after
- * let all two hundred through (2026-11-23 review). The network's working
- * exchange after it is refused too, its hour used up. Five good exchanges
- * at once from another network are five tokens and leave no count. */
+/* CLOUDFLARE'S OWN SHARED ADDRESS (review, 2026-11-24). Every Worker's
+ * cross-zone subrequest arrives with CF-Connecting-IP 2a06:98c0:3600::103,
+ * whoever owns the Worker, and Access calls from Cloudflare too: a count
+ * that refused everybody from there refused Access. Twenty-five requests
+ * from that address with no or wrong client credentials, then THE client
+ * from the same address and from another in its /64: tokens, and no try
+ * taken. */
+{
+  const env = envOf();
+  const W = "2a06:98c0:3600::103", W64 = "2a06:98c0:3600::1";
+  const junk = [
+    (i) => [goodForm(junkCode(), pkce().verifier, { client_id: null, client_secret: null }), {}],
+    (i) => [goodForm(junkCode(), pkce().verifier, { client_secret: "wrong-" + i }), {}],
+    (i) => { const f = goodForm(junkCode(), pkce().verifier); delete f.client_id; delete f.client_secret;
+             return [f, { basic: basicOf(CLIENT_ID, "wrong-" + i) }]; },
+    (i) => [goodForm(junkCode(), pkce().verifier, { client_id: "someone-" + i }), {}],
+    (i) => { const f = goodForm(junkCode(), pkce().verifier); delete f.client_secret; return [f, { basic: "Basic !!!" }]; },
+  ];
+  const statuses = [];
+  for (let i = 0; i < 25; i++) {
+    const [form, opts] = junk[i % junk.length](i);
+    statuses.push((await tok(env, form, { ...opts, ip: W })).status);
+  }
+  const counted = fails(env);
+  const c = await codeFor(env);
+  const same = await tok(env, goodForm(c.code, c.verifier), { ip: W });
+  const sameOk = verifyJwt(same.json && same.json.id_token, await jwksOf(env)).ok;
+  const c2 = await codeFor(env);
+  const neighbour = await tok(env, goodForm(c2.code, c2.verifier), { ip: W64 });
+  const c3 = await codeFor(env);
+  const f3 = goodForm(c3.code, c3.verifier); delete f3.client_id; delete f3.client_secret;
+  const basicSame = await tok(env, f3, { basic: basicOf(CLIENT_ID, CLIENT_SECRET), ip: W });
+  out.shared_caller = { statuses, counted, same: same.status, same_ok: sameOk, neighbour: neighbour.status,
+    basic: basicSame.status, counted_after: fails(env) };
+}
+
+/* A BURST: two hundred wrong secrets sent at once from one network. Each is
+ * counted by one statement once its secret is found wrong, so twenty are
+ * counted and the rest refused; a count read first and written after let
+ * all two hundred through (2026-11-23 review). THE CLIENT is not held by
+ * it: five good exchanges sent in the middle of the burst, from the same
+ * network, are five tokens, and so is one after it; five at once from
+ * another network leave no count. */
 {
   const env = envOf();
   const ip = "203.0.113.9";
   const N = 200;
+  const mid = [];
+  for (let i = 0; i < 5; i++) mid.push(await codeFor(env));
   env.DB.holdFails(N);
-  const res = await Promise.all(Array.from({ length: N }, (_, i) =>
-    tok(env, goodForm(randomBytes(32).toString("base64url"), pkce().verifier, { client_secret: "guess-" + i }), { ip })));
-  const statuses = {};
-  for (const r of res) statuses[r.status] = (statuses[r.status] || 0) + 1;
-  const counted = rows(env.DB, "oidc_fails").map((r) => r.n);
+  const sent = [];
+  for (let i = 0; i < N; i++) {
+    sent.push(tok(env, goodForm(junkCode(), pkce().verifier, { client_secret: "guess-" + i }), { ip }));
+    if (i % 40 === 20) sent.push(tok(env, goodForm(mid[i / 40 | 0].code, mid[i / 40 | 0].verifier), { ip }).then((r) => ({ ...r, good: true })));
+  }
+  const res = await Promise.all(sent);
+  const statuses = {}, midStatuses = [];
+  for (const r of res) {
+    if (r.good) { midStatuses.push(r.status); continue; }
+    statuses[r.status] = (statuses[r.status] || 0) + 1;
+  }
+  const counted = fails(env);
   const c = await codeFor(env);
   const after = await tok(env, goodForm(c.code, c.verifier), { ip });
   const codes = [];
   for (let i = 0; i < 5; i++) codes.push(await codeFor(env));
   const goods = await Promise.all(codes.map((g) => tok(env, goodForm(g.code, g.verifier), { ip: "203.0.113.10" })));
-  out.burst = { sent: N, statuses, counted, after: after.status, good_statuses: goods.map((r) => r.status),
-    rows_after_goods: rows(env.DB, "oidc_fails").map((r) => r.n) };
+  out.burst = { sent: N, statuses, counted, mid: midStatuses, after: after.status,
+    good_statuses: goods.map((r) => r.status), rows_after_goods: fails(env) };
 }
 
 /* --- the gate: these four pass signed out, nothing beside them --------------- */

@@ -423,22 +423,34 @@ the popout's assertion: change it on one side only and the popout stops.
   iss, aud = the client, sub = b64url(SHA-256("sub:" + address)), email,
   email_verified, iat, exp = iat + 300, auth_time (the sign-in's own iat:
   `sessionOf` and `signedIn` carry `iat` since this), nonce. Every failure is
-  OAuth's word alone. **Twenty failures an hour from one network** (IPv4, or
-  an IPv6 /64) and it answers 429 to that network, counted in D1
-  (`oidc_fails`), NOT KV: a guesser spending a KV write per failure could
-  empty the 1,000 a day the sign-in and the alerts share, and D1 counts
-  exactly. **The try is taken before anything is compared** (`takeTry`, one
-  `INSERT ... ON CONFLICT DO UPDATE SET n = n + 1 WHERE n < 20`, whose
-  change count says yes or no): a count read first and written after let a
-  burst of 200 sent at once be tried 200 times (review, 2026-11-23); now it
-  is tried 20 times and the rest are 429, and a refused request writes
-  nothing. Only the form's own shape (not a form, too big, a parameter
-  twice, both client methods) is answered before a try is taken: none of it
-  is a guess. A failure keeps its try; a token, a grant type it does not
-  offer, or a door that could not answer gives it back (`giveBack`), so a
-  working sign-in leaves no count. The cap is also twenty at once, then:
-  more than twenty exchanges in flight together from one network would be
-  refused, which Access, signing in a closed beta, never comes near.
+  OAuth's word alone. **Only a request that is NOT THE CLIENT is counted**
+  (no credentials, an id or secret that is not the one client's, a Basic
+  header that cannot be read): twenty an hour from one network (IPv4, or an
+  IPv6 /64), and past them those get 429 and write nothing. Counted in D1
+  (`oidc_fails`), NOT KV: a sender of junk spending a KV write per request
+  could empty the 1,000 a day the sign-in and the alerts share, and D1
+  counts exactly. Each is counted by one statement (`takeTry`, `INSERT ...
+  ON CONFLICT DO UPDATE SET n = n + 1 WHERE n < 20`, whose change count says
+  yes or no): a count read first and written after let a burst of 200 sent
+  at once through whole (review, 2026-11-23); now 20 are counted and the
+  rest are 429. **THE CLIENT IS NEVER COUNTED AND NEVER REFUSED BY THE
+  COUNT** (review, 2026-11-24): its id and secret are compared first, and a
+  request that is the client takes no try and gets no 429, whatever its
+  network has done; its own failures (a code that is no good, a wrong
+  verifier, a grant type not offered) are not counted either. Until then the
+  count was consulted before the client was known, and Access, the only
+  client, calls from Cloudflare's own network, where every Worker's
+  cross-zone subrequest arrives as `2a06:98c0:3600::103` whoever owns it: a
+  free Worker sending twenty junk POSTs an hour could have refused every
+  sign-in to Job Hunter. The count slows no guesser, and need not: a 429
+  says as plainly as a 401 that the client was wrong, the secret (256 random
+  bits from the script) is compared by its hash in constant time, and a code
+  is 256 random bits, spent by its first try and bound to the PKCE verifier.
+  What it bounds is the writes junk can cost. Nothing secret leaks by
+  timing: the comparison is the same whatever is sent, and the count's work
+  follows only a refusal the answer states anyway. Only the form's own shape
+  (not a form, too big, a parameter twice, both client methods) is answered
+  before the client is compared, and none of it is counted.
 - **D1, the `DB` saved roles use** (DEPLOY.md §3e): `oidc_codes`,
   `oidc_fails` and `jh_asks` (the panel's pace, below), made on first use. A
   code row holds an address for minutes: a redeemed row goes at once, and
@@ -498,8 +510,11 @@ the popout's assertion: change it on one side only and the popout stops.
 - Guards: `check_job_hunter_signs_in_with_sled_jobs` (`scripts/
   oidc_harness.mjs`: the round trip with a real emailed-code sign-in in the
   middle, 34 refused requests, 8 refused ways back, 27 refused trades, the
-  race, 120 seconds and not 121, the rate (one by one, and 200 wrong secrets
-  at once: 20 tried), 13 unconfigured doors, the gate
+  race, 120 seconds and not 121, the count (one by one, and 200 wrong secrets
+  at once: 20 counted; the client never refused by it, from a network whose
+  hour is used up, from Cloudflare's shared Worker address after 25 that
+  were not it, from its /64 and in the middle of a burst), 13 unconfigured
+  doors, the gate
   and the whole OPEN set, nothing logged; the ID token verified again in
   Python by the curve's
   own arithmetic, `_es256_verify`), `check_the_panel_asks_job_hunter_through_the_board`

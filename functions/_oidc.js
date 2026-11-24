@@ -274,10 +274,11 @@ export function checkAuthorize(q, setup) {
 
 /* D1 bound as DB (the same database saved roles use), not the ALERTS KV:
  * spending a code must be atomic, and KV has no compare-and-set. A code is
- * kept only as its SHA-256. The failure counts that slow a guesser live here
- * too: each is a write, and KV's 1,000 writes a day are the sign-in's and the
- * alerts', which a guesser spending one per failure could empty for the
- * whole site; D1's 100,000 a day are beyond a free plan's requests. The
+ * kept only as its SHA-256. The count of token requests that are not the
+ * client lives here too: each is a write, and KV's 1,000 writes a day are
+ * the sign-in's and the alerts', which a sender of junk spending one per
+ * request could empty for the whole site; D1's 100,000 a day are beyond a
+ * free plan's requests. The
  * panel's per-person count (jh_asks) is here for the same reason: an ask is
  * a write. */
 const SCHEMA = [
@@ -349,11 +350,22 @@ export async function spendCode(env, code) {
   return row || null;
 }
 
-/* --- a guesser, slowed ----------------------------------------------------- */
+/* --- a request that is not the client, counted -------------------------- */
 
-/* Failed token requests a network may make in an hour (an IPv4 address, or
- * an IPv6 /64). Access itself never fails one; only a wrong secret, code or
- * verifier counts, so a working sign-in leaves nothing here. */
+/* Token requests that are NOT THE CLIENT (no credentials, an id or secret
+ * that is not the one client's, a Basic header that cannot be read) a
+ * network may send in an hour: an IPv4 address, or an IPv6 /64. Past them
+ * those requests are answered 429 and write nothing.
+ *
+ * THE CLIENT IS NEVER COUNTED (review, 2026-11-24). The count is taken only
+ * after the id and secret have been compared and found wrong, so a request
+ * that is the client never takes a try and is never refused by the count,
+ * whatever its network has done, and its own failures (a code that is no
+ * good, a wrong verifier) are not counted either. Access, the one client,
+ * calls from Cloudflare's own network, where every Worker's cross-zone
+ * subrequest arrives as 2a06:98c0:3600::103 whoever owns the Worker; a
+ * count consulted before the client was known let twenty junk POSTs an hour
+ * from anybody's Worker refuse every sign-in to Job Hunter. */
 export const FAILS_PER_HOUR = 20;
 
 async function failKey(request) {
@@ -362,15 +374,16 @@ async function failKey(request) {
   return (await sha256u(`oidc-token|${net}|${hour}`)).slice(0, 32);
 }
 
-/* A TRY IS TAKEN BEFORE IT IS MADE, by one statement: the network's count
- * goes up only while it is under FAILS_PER_HOUR, so of any number of
- * requests sent at once, only as many as the hour has left are tried,
- * whatever order D1 runs them in. (A count read first and written after
- * the try let a parallel burst through whole: 2026-11-23 review, 200 of 200
- * tried against a cap of 20.) A refused request writes nothing: the WHERE
- * stops the update. Rows past two hours go in the same batch. The try's key
- * (giveBack needs it), or null when this hour's tries are used up. Throws
- * when D1 does. */
+/* ONE TRY FOR A REQUEST THAT IS NOT THE CLIENT, by one statement: the
+ * network's count goes up only while it is under FAILS_PER_HOUR, so of any
+ * number of such requests sent at once only as many as the hour has left
+ * are counted, whatever order D1 runs them in. (A count read first and
+ * written after let a parallel burst through whole: 2026-11-23 review, 200
+ * of 200 against a cap of 20.) A refused request writes nothing: the WHERE
+ * stops the update. Rows past two hours go in the same batch. True when the
+ * try was taken, false when this hour's are used up. Throws when D1 does.
+ * Called only once the client has been compared and found wrong: never for
+ * the client. */
 export async function takeTry(env, request) {
   await ready(env.DB);
   const k = await failKey(request), t = now();
@@ -379,23 +392,7 @@ export async function takeTry(env, request) {
     env.DB.prepare(`INSERT INTO oidc_fails (k, n, at) VALUES (?, 1, ?)
                     ON CONFLICT (k) DO UPDATE SET n = n + 1 WHERE oidc_fails.n < ?`).bind(k, t, FAILS_PER_HOUR),
   ]);
-  return r && r.meta && Number(r.meta.changes) === 1 ? k : null;
-}
-
-/* A try that was not a failure (a token handed out, a grant type it does
- * not offer, a door that could not answer) is given back, so a working
- * sign-in leaves no count: the row goes when it was the only try, or
- * counts one fewer. A failure keeps its try; it is the count. Never
- * throws: a try that could not be given back stays counted until its hour
- * is over. */
-export async function giveBack(env, k) {
-  if (!k) return;
-  try {
-    await env.DB.batch([
-      env.DB.prepare("DELETE FROM oidc_fails WHERE k = ? AND n <= 1").bind(k),
-      env.DB.prepare("UPDATE oidc_fails SET n = n - 1 WHERE k = ? AND n > 1").bind(k),
-    ]);
-  } catch { /* it stays counted */ }
+  return !!(r && r.meta && Number(r.meta.changes) === 1);
 }
 
 /* --- the panel, at one person's pace --------------------------------------- */

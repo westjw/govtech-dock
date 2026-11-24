@@ -313,7 +313,10 @@ one-time codes live there) and `SESSION_SECRET` is set (§3a).
 - `curl -s -o /dev/null -w '%{http_code}\n' -X POST https://sledjobs.com/oidc/token`
   → `400` (a JSON error, not the board's sign-in card: the door is open to
   Access). `503` means a secret from step 1 is missing or the deploy has not
-  happened.
+  happened. The door counts only requests that are not its one client:
+  twenty of those an hour from one network, and it answers them `429`.
+  Access, which holds the client secret, is never counted and never refused,
+  whatever address it calls from (Cloudflare's own Workers share one).
 - `curl -s https://sledjobs.com/oidc/jwks` → `{"keys":[{"kty":"EC",...}]}`.
 - **You, in a private window:** `https://hunter.sledjobs.com/` → the board's
   sign-in, by email → Job Hunter. Then, signed in on the board, open Job
