@@ -559,9 +559,15 @@ def probe(company: dict) -> dict:
     # the control request and the one-hop crawl cost.
     guesses = [] if len(links) >= 2 or catch_all else [site + p for p in CAREER_PATHS]
     targets, seen = [], set()
+    # A LINK TO ONE PAYLOCITY POSTING IS LEFT TO THE WIRING DOOR (owner,
+    # 2026-11-23). Read here, the posting's page named its board and the
+    # board was written on the tenant's name in its address alone; the wiring
+    # door asks that page and holds the board it names to both checks
+    # (board_proposals.paylocity_posting). Never followed, here or one hop on.
+    left_to_the_door = [t for t in links if posting_link(t)]
     for t in links + guesses:
         t = t.rstrip("/")
-        if t and t not in seen and t != site:
+        if t and t not in seen and t != site and not posting_link(t):
             seen.add(t)
             targets.append(t)
 
@@ -611,8 +617,10 @@ def probe(company: dict) -> dict:
             block, slug = read_marker(r.text, company)
             if block is not None:
                 break
-            more += [u for u in career_links(r.text, r.url)
-                     if u.rstrip("/") not in seen]
+            found_links = career_links(r.text, r.url)
+            left_to_the_door += [u for u in found_links if posting_link(u)]
+            more += [u for u in found_links
+                     if u.rstrip("/") not in seen and not posting_link(u)]
         if block is not None:
             break
         targets = []
@@ -678,11 +686,23 @@ def probe(company: dict) -> dict:
                 "note": f"{note} ({shown[:44]})",
                 "postings": 0, "weak": True}
 
+    if left_to_the_door:
+        return {"id": company["id"], "found": None,
+                "note": "no board found here; their site links a Paylocity posting, which is "
+                        "left to the wiring door (scripts/wire_found.py asks its page which "
+                        "board it names)"}
     if catch_all:
         return {"id": company["id"], "found": None,
                 "note": "no board found; host answers 200 to any path, so a "
                         "negative here is weak"}
     return {"id": company["id"], "found": None, "note": "no board found"}
+
+
+def posting_link(url: str) -> bool:
+    """Is this address one Paylocity posting's - left to the wiring door
+    (board_proposals.paylocity_posting)?"""
+    import board_proposals
+    return board_proposals.paylocity_posting(None, url)
 
 
 def _is_careers(url: str, html: str) -> bool:

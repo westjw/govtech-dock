@@ -202,8 +202,12 @@ def triage(rows: list, by_id: dict, held: dict | None = None,
         held = board_proposals.held_for_the_owner()
     if boards is None:
         boards = board_proposals.held_boards_for_the_owner(None, list(by_id.values()))
+    # AND EVERY ROW WHOSE "BOARD" IS A PAYLOCITY POSTING - one job, which names
+    # no board (a_posting): only the wiring door asks a posting's page which
+    # board it names, and holds that board to both checks (owner, 2026-11-23)
     live = [e for e in rows if unwired(e, by_id) and not e.get("filed")
-            and e.get("id") not in held and not held_by_board(e, by_id, boards)]
+            and e.get("id") not in held and not held_by_board(e, by_id, boards)
+            and not a_posting(e)]
 
     mismatch = [e for e in live if e.get("identity") == "MISMATCH"]
     rest = [e for e in live if e.get("identity") != "MISMATCH"]
@@ -246,6 +250,16 @@ def triage(rows: list, by_id: dict, held: dict | None = None,
         else:
             unsure.append(e)
     return clean, mismatch, shared + unsure
+
+
+def a_posting(entry: dict) -> bool:
+    """Is this row's board a Paylocity POSTING - one job's address, or the
+    finder's posting type (board_proposals.paylocity_posting) - and so no
+    board at all? Such a row is left in no pile, wired by no --write and
+    proposed by no --propose: the wiring door asks the posting's page which
+    board it names and holds that board to both checks (owner, 2026-11-23)."""
+    f = entry.get("found") or {}
+    return board_proposals.paylocity_posting(f.get("type"), f.get("ref"))
 
 
 def _paylocity_refs(entry: dict) -> list:
@@ -413,6 +427,11 @@ def main() -> int:
               f"a refusal, or a board waiting in Agent proposals, for this company or for "
               f"its board under another record - "
               f"left alone (Boards we found)\n")
+    postings = [e for e in rows if unwired(e, by_id) and a_posting(e) and e not in held]
+    if postings:
+        print(f"  {len(postings)} name a Paylocity posting, which is one job and no board - "
+              f"left to the wiring door (scripts/wire_found.py asks the posting's page which "
+              f"board it names)\n")
 
     # --- the refusals, printed before anything is written ------------------
     if mismatch:
