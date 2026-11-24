@@ -4212,7 +4212,7 @@ def jobvitefeed_rows(jobs: list[dict], account: str) -> tuple[list[dict], int]:
         title = _jvx_first(base, "title")
         url = _jvx_job_url(_jvx_first(base, "detail-url"), account, key)
         if not title or not url:
-            unread += 1
+            unread += len(members)               # (every row of the job is lost with it)
             continue
         places = dict.fromkeys(p for j in [base] + [m for m in members if m is not base]
                                for p in (_text(v) for v in j.get("location") or ()) if p)

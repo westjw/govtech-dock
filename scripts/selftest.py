@@ -20716,6 +20716,14 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
             r_, e_, err_ = read(feed(job(P1, detail=detail), job("oDdddDfw4")))
             if e_ or [r["url"] for r in r_ or []] != [page_of("oDdddDfw4")]:
                 errors += fail(f"jobvitefeed: a row whose page is {why} was read: {r_ or e_}")
+        # a job that does not read takes its copies with it: three rows lost
+        lost = feed(job(P1, detail="<![CDATA[http://evil.example/x]]>"),
+                    job(P1 + "-CBbbbBfw2", parent=P1), job(P1 + "-CCcccCfw3", parent=P1),
+                    job("oDdddDfw4"))
+        r_, e_, err_ = read(lost)
+        if r_ is not None or "3 of its 4 rows did not read" not in str(e_):
+            errors += fail(f"jobvitefeed: a job whose page is not this account's lost its copies "
+                           f"uncounted ({r_ or e_}; {err_!r})")
         ats.JOBVITE_FEED_MAX = 400
         big = Resp(200, MAIN, chunk=50)
         r_, e_, _ = read(big)
