@@ -267,10 +267,13 @@ and **no `*.sledjobs.com` wildcard**.
 one-time codes live there) and `SESSION_SECRET` is set (§3a).
 
 **Your steps, in this order:**
-1. **The key and the client secret.** In Terminal, in the repository folder:
-   `node scripts/jh_signin_secrets.mjs`. It prints three values ONCE and
-   saves nothing (it refuses to print into a file unless you add
-   `--to-pipe`). Workers & Pages → `solesource` → Settings → Variables and
+1. **The key and the client secret.** Yourself, in the macOS **Terminal**
+   app (not the Claude app's own terminal panel, which a Claude session can
+   read), in the repository folder: `node scripts/jh_signin_secrets.mjs`.
+   Claude never runs it and never needs to see what it prints; never paste
+   its values into a chat. It prints three values ONCE, on that terminal
+   only (into a file or a pipe it prints nothing), and saves nothing.
+   Workers & Pages → `solesource` → Settings → Variables and
    secrets → **Add**, Type **Secret**, Production, one each:
    `OIDC_SIGNING_JWK`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET`. Keep the
    client id and secret on screen for step 2, then close the Terminal tab.

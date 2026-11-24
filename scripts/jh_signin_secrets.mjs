@@ -8,11 +8,17 @@
  *                                              rotation (DEPLOY.md §3f says
  *                                              how)
  *
+ * THE OWNER RUNS IT, HIMSELF, IN THE macOS TERMINAL APP. Never Claude, in
+ * any way (its own shell, a pseudo-terminal, the Claude app's terminal
+ * panel): whatever an agent's command prints lands in its transcript, and
+ * the private key would leave this machine with it. CLAUDE.md says so too.
+ *
  * IT WRITES NOTHING. No file, no log, nothing in this public repository: the
  * values exist on the screen until they are pasted into Cloudflare, and then
- * only there. It refuses when its output is not a terminal, so a stray
- * `> file` cannot put a private key on disk; --to-pipe says that is meant
- * (`| pbcopy`, or the selftest reading it).
+ * only there. It prints only to a terminal, so a `> file`, a pipe or an
+ * agent's shell gets nothing, and NO SWITCH SAYS OTHERWISE: there was one
+ * (--to-pipe), and the refusal named it, which handed an agent the way past
+ * (review, 2026-11-23).
  *
  * The key is P-256 for ES256 (functions/_oidc.js signs with it, Access and
  * Job Hunter verify with its public half at /oidc/jwks). Its kid is its own
@@ -22,15 +28,16 @@
 import { generateKeyPairSync, randomBytes, createHash } from "node:crypto";
 
 const args = process.argv.slice(2);
-const KNOWN = new Set(["--key", "--to-pipe"]);
+const KNOWN = new Set(["--key"]);
 const unknown = args.filter((a) => !KNOWN.has(a));
 if (unknown.length) {
   process.stderr.write(`Unknown option ${unknown[0]}. Use --key for a new signing key only.\n`);
   process.exit(2);
 }
-if (!process.stdout.isTTY && !args.includes("--to-pipe")) {
-  process.stderr.write("This prints secrets, so it prints them only to a terminal. Run it in Terminal as it is,\n"
-    + "or add --to-pipe if you mean to send them elsewhere (for example | pbcopy).\n");
+// the refusal names no way past it: an agent reading it must stop here
+if (!process.stdout.isTTY) {
+  process.stderr.write("Nothing was printed. This makes secrets and shows them only on a terminal, and this is\n"
+    + "not one. The site's owner runs it himself, in the macOS Terminal app (DEPLOY.md 3f).\n");
   process.exit(2);
 }
 

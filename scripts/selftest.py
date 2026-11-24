@@ -2812,17 +2812,69 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
     return errors
 
 
+def _on_a_terminal(cmd: list, cwd, timeout: float = 60.0):
+    """Run `cmd` with its output on a pseudo-terminal of our own, as the
+    owner's Terminal is, and read what it printed: a CompletedProcess, or
+    None where Python has no pty (Windows). A script that prints secrets
+    only to a terminal is run this way, so it needs no switch that would
+    let it print into a pipe (an agent's shell is one)."""
+    try:
+        import pty
+        import select
+    except ImportError:
+        return None
+    master, slave = pty.openpty()
+    try:
+        p = subprocess.Popen(cmd, cwd=cwd, stdin=subprocess.DEVNULL, stdout=slave, stderr=subprocess.PIPE)
+    except OSError:
+        os.close(master)
+        raise
+    finally:
+        os.close(slave)
+    chunks, end = [], time.monotonic() + timeout
+    try:
+        while True:
+            left = end - time.monotonic()
+            if left <= 0:
+                break
+            ready, _, _ = select.select([master], [], [], left)
+            if not ready:
+                break
+            try:
+                b = os.read(master, 65536)
+            except OSError:   # Linux: the other end is closed and read dry
+                break
+            if not b:         # macOS: end of file
+                break
+            chunks.append(b)
+    finally:
+        os.close(master)
+    try:
+        p.wait(timeout=max(1.0, end - time.monotonic()))
+    except subprocess.TimeoutExpired:
+        p.kill()
+        p.wait()
+    err = p.stderr.read().decode("utf-8", "replace")
+    p.stderr.close()
+    out = b"".join(chunks).decode("utf-8", "replace").replace("\r\n", "\n")
+    return subprocess.CompletedProcess(cmd, p.returncode, out, err)
+
+
 def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
     """scripts/jh_signin_secrets.mjs makes Job Hunter's sign-in secrets on the
     owner's machine and prints them once (design C, DEPLOY.md §3f step 1).
 
-    A private key must never reach this public repository: the script writes
-    nothing, refuses when its output is not a terminal (unless told
-    --to-pipe), and what it prints is a working P-256 pair (d·G is the
-    published point, checked here by the curve's arithmetic) whose kid is
-    its RFC 7638 thumbprint, a client id, and a secret of at least 32
-    characters, fresh each run. The key it prints signs, in the board's own
-    _oidc.js, a token its published half verifies.
+    A private key must never reach this public repository, nor a transcript:
+    the script writes nothing, prints only to a terminal - into a pipe it
+    prints nothing, whatever it is told, and its refusal names no way past
+    it (review, 2026-11-23: it named --to-pipe, and an agent's shell is a
+    pipe) - and what it prints is a working P-256 pair (d·G is the published
+    point, checked here by the curve's arithmetic) whose kid is its RFC 7638
+    thumbprint, a client id, and a secret of at least 32 characters, fresh
+    each run. It is run here on a pseudo-terminal of our own. The key it
+    prints signs, in the board's own _oidc.js, a token its published half
+    verifies. CLAUDE.md says Claude never runs it; DEPLOY.md sends the owner
+    to the macOS Terminal app, not the Claude app's panel.
     """
     import shutil
     import subprocess
@@ -2837,8 +2889,11 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
                                  capture_output=True, text=True).stdout
     before = git()
 
-    def run(*args):
+    def run(*args):    # into a pipe, as an agent's shell is
         return subprocess.run(["node", str(script), *args], cwd=tmp, capture_output=True, text=True, timeout=60)
+
+    def term(*args):   # on a terminal, as the owner's is
+        return _on_a_terminal(["node", str(script), *args], tmp)
 
     def values(text):
         lines, got = text.splitlines(), {}
@@ -2846,12 +2901,41 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
             if ln in ("OIDC_SIGNING_JWK", "OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET") and i + 1 < len(lines):
                 got[ln] = lines[i + 1]
         return got
+
+    # WHAT AN AGENT IS TOLD: the docs and the script hand it no way past
+    src = script.read_text()
+    if "to-pipe" in _strip_js_comments(src) or "pbcopy" in src:
+        errors += fail("the secrets script still has a way to print its secrets into a pipe")
+    deploy = (ROOT / "DEPLOY.md").read_text()
+    s3f = deploy[deploy.find("## 3f."):deploy.find("\n## ", deploy.find("## 3f.") + 1)]
+    flat3f = re.sub(r"\s+", " ", s3f)
+    if (not s3f or "to-pipe" in s3f or "pbcopy" in s3f or "macOS **Terminal** app" not in flat3f
+            or "not the Claude app's own terminal panel" not in flat3f or "Claude never runs it" not in flat3f):
+        errors += fail("DEPLOY.md §3f does not send the owner to the macOS Terminal app (not the Claude app's "
+                       "panel, which a session can read), or still names a way to pipe the secrets")
+    if "**Claude never runs `scripts/jh_signin_secrets.mjs`**" not in re.sub(r"\s+", " ", (ROOT / "CLAUDE.md").read_text()):
+        errors += fail("CLAUDE.md's house rules do not say Claude never runs the secrets script")
     try:
-        for args, why in (((), "its output is piped without --to-pipe"), (("--bogus", "--to-pipe"), "an unknown option")):
+        # INTO A PIPE IT PRINTS NOTHING, AND NO SWITCH SAYS OTHERWISE
+        for args, why in (((), "its output is piped"), (("--key",), "--key's output is piped"),
+                          (("--to-pipe",), "told --to-pipe, the switch it no longer has"),
+                          (("--key", "--to-pipe"), "told --key --to-pipe"), (("--bogus",), "given an unknown option")):
             r = run(*args)
-            if r.returncode == 0 or values(r.stdout) or '"d"' in r.stdout + r.stderr:
-                errors += fail(f"the secrets script printed secrets when {why}")
-        r1, r2, rk = run("--to-pipe"), run("--to-pipe"), run("--key", "--to-pipe")
+            if r.returncode == 0 or r.stdout or '"d"' in r.stdout + r.stderr:
+                errors += fail(f"the secrets script printed something when {why}")
+        refusal = run().stderr
+        if (re.search(r"(?<![\w-])--?[A-Za-z]", refusal) or "pbcopy" in refusal or "|" in refusal
+                or "Nothing was printed" not in refusal or "macOS Terminal app" not in refusal):
+            errors += fail(f"the secrets script's refusal names a way past it, or does not say the owner runs it "
+                           f"himself in Terminal: {refusal!r}")
+        r1 = term()
+        if r1 is None:
+            print("  note: no pseudo-terminal here; the secrets script was not run on one")
+            return errors
+        gone = term("--to-pipe")
+        if gone.returncode == 0 or values(gone.stdout):
+            errors += fail("the secrets script still takes --to-pipe")
+        r2, rk = term(), term("--key")
         v1, v2, vk = values(r1.stdout), values(r2.stdout), values(rk.stdout)
         if r1.returncode or set(v1) != {"OIDC_SIGNING_JWK", "OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET"}:
             return errors + fail(f"the secrets script did not print the three secrets: {r1.returncode} {sorted(v1)}")

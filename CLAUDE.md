@@ -467,8 +467,13 @@ the popout's assertion: change it on one side only and the popout stops.
   signed one verify, for that one route.
 - The owner's steps are DEPLOY.md §3f. `scripts/jh_signin_secrets.mjs` makes
   the key (kid = its RFC 7638 thumbprint), the client id and the secret and
-  prints them once; it refuses a pipe unless told `--to-pipe`, and writes
-  nothing. `--key` makes a key alone, for a rotation.
+  prints them once, on a terminal only, and writes nothing. `--key` makes a
+  key alone, for a rotation. Into a pipe or a file it prints nothing and NO
+  SWITCH SAYS OTHERWISE: it had one, `--to-pipe`, and its refusal named it,
+  which handed an agent (whose shell is a pipe) the way to put the private
+  key in a transcript (review, 2026-11-23). The owner runs it in the macOS
+  Terminal app; **Claude never runs it** (House rules). The selftest runs it
+  on a pseudo-terminal of its own and reads the values only to check them.
 - Guards: `check_job_hunter_signs_in_with_sled_jobs` (`scripts/
   oidc_harness.mjs`: the round trip with a real emailed-code sign-in in the
   middle, 34 refused requests, 8 refused ways back, 27 refused trades, the
@@ -672,6 +677,18 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   `None found`: a false `None found` silently deletes a warm door, which is the
   one failure this tool cannot afford. Assert a status only on concrete
   evidence in the text.
+- **Claude never runs `scripts/jh_signin_secrets.mjs`**, in any way: not in
+  its own shell (a pipe, so the script refuses, and its refusal names no way
+  past it), not on a pseudo-terminal or through `script`, not in the Claude
+  app's terminal panel or the owner's terminal tabs. It never reads his
+  terminal or clipboard after he has run it, and never asks for, accepts or
+  repeats what it printed: whatever reaches a transcript has left this
+  machine, and the script prints Job Hunter's private signing key. A value
+  the owner pastes into a chat is no longer secret: say so, and point him to
+  DEPLOY.md §3f's steps for a key that may have leaked (review, 2026-11-23).
+  The one other run is the selftest's own
+  (`check_the_sign_in_secrets_are_made_and_shown_once`), which makes
+  throwaway values nobody pastes anywhere, checks them and prints none.
 - **Never invent a fact to fill a field.** No estimated salary, no guessed
   founding year, no magic constant standing in for a count. If we do not know,
   the UI says we do not know. Every module here is tuned toward silence for
