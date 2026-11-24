@@ -553,22 +553,27 @@ the popout's assertion: change it on one side only and the popout stops.
   race, 120 seconds and not 121, the count (one by one, and 200 wrong secrets
   at once: 20 counted; the client never refused by it, from a network whose
   hour is used up, from Cloudflare's shared Worker address after 25 that
-  were not it, from its /64 and in the middle of a burst), 13 unconfigured
-  doors, the gate
-  and the whole OPEN set, nothing logged; the ID token verified again in
-  Python by the curve's
-  own arithmetic, `_es256_verify`), `check_the_panel_asks_job_hunter_through_the_board`
+  were not it, from its /64 and in the middle of a burst; its own failures
+  sent from a network with no count leave no row, review 2026-11-24), 13
+  unconfigured doors, the gate and the whole OPEN set, nothing logged; the
+  ID token verified again in Python by the curve's own arithmetic,
+  `_es256_verify`; and by their source, the client compared only through
+  `sameSecret`, id and secret both, and `sameSecret` and `sameCode` as
+  written, since a plain `===` answers every case the harness sends alike),
+  `check_the_panel_asks_job_hunter_through_the_board`
   (`scripts/jh_proxy_harness.mjs`: every refusal with no call made, the one
   call header by header, the assertion verified in Python, ten awkward ids
   read back by Python's own query parser as Job Hunter's would, every relay,
   and the pace: twenty asks and the twenty-first refused unsent, another
   person unslowed, fifty sent at once held at the count's door until all have
   come, of which twenty reach Job Hunter, the next minute heard again; and
-  DEPLOY.md §3f's panel check and its steps for taking someone out of the
-  beta, in their true order),
+  DEPLOY.md §3f's panel check, "not set up yet" naming step 1's signing key
+  as well as step 4, and its steps for taking someone out of the beta, in
+  their true order, every address and token `--list` shows taken),
   `check_the_sign_in_secrets_are_made_and_shown_once` (a working pair, d·G
   checked, nothing written, nothing printed into a pipe, the rotation's
-  words), and the panel's words above.
+  words: after a leak ALWAYS Revoke immediately, disabling the token an
+  extra step and never instead), and the panel's words above.
 
 ## The job list is cards (owner, 2026-09-27)
 
