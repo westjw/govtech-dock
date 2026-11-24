@@ -1589,6 +1589,18 @@ def posting_address(ref) -> str | None:
     return v if v and _POSTING_ADDRESS.fullmatch(v) else None
 
 
+def posting_id(ref) -> str | None:
+    """The id of the Paylocity posting at `ref` (a posting_address), as its
+    address writes it, or None. PAYLOCITY SERVES A POSTING BY ITS ID ALONE, so
+    .../Details/8201/<Tenant>/<Title> and .../Details/8201 are one posting:
+    asked once, and counted once (review of the posting change, 2026-11-23:
+    the two spellings were asked twice, spent two of a company's three tries,
+    and were said as two postings)."""
+    address = posting_address(ref)
+    m = _POSTING_ID.search(address) if address else None
+    return m.group(1) if m else None
+
+
 def posting_boards_in(page: str) -> tuple[list, list]:
     """(the boards a Paylocity posting's page names - ONE address each, in the
     order the page first names them - every board address it names).
@@ -1694,8 +1706,10 @@ def resolved_by_posting(results: dict, ctx: dict) -> None:
     holds under any id, its waiting rows, the pages the plan asks, check 2.
 
     Each posting row the finder wrote (type POSTING) is asked in the finder's
-    order, once per address in the run (ctx["postings"], whichever company
-    linked it), at most POSTING_TRIES per company, and marked with what its
+    order, once per posting ID in the run however its address is spelled
+    (posting_id; ctx["posting_ids"], whichever company linked it - and
+    ctx["postings"] keeps the answer under every spelling it was linked by),
+    at most POSTING_TRIES postings per company, and marked with what its
     page said: `posting_named` (it named a board: the asking stops there),
     `posting_none` (closed, gone, or naming no board: the next is asked),
     `posting_failed` (a failure of the day: consider skips the company, and
@@ -1716,7 +1730,8 @@ def resolved_by_posting(results: dict, ctx: dict) -> None:
     names a board, consider skips it as refused (posting_skip); beside a board
     of their own, that board is read and held as any board beside a refusal
     is, and the postings are said as not asked."""
-    said_of = ctx.setdefault("postings", {})
+    said_of = ctx.setdefault("postings", {})        # by the address as linked
+    asked_of = ctx.setdefault("posting_ids", {})    # by the posting's id: asked once
     for cid in sorted(results):
         entry = results[cid]
         rows = [r for r in entry.get("candidates") or []
@@ -1738,15 +1753,16 @@ def resolved_by_posting(results: dict, ctx: dict) -> None:
                 r["posting_off"] = (f"not a posting's own address on {POSTING_HOST}, so it was "
                                     f"not asked")
                 continue
-            if stop or (address not in tried and len(tried) >= POSTING_TRIES):
+            pid = posting_id(address)
+            if stop or (pid not in tried and len(tried) >= POSTING_TRIES):
                 r["posting_unasked"] = stop or (f"not asked: {many(POSTING_TRIES, 'posting')} "
                                                 f"of theirs were asked first")
                 continue
-            if address not in tried:
-                tried.append(address)
-            if address not in said_of:
-                said_of[address] = posting_says(address)
-            s = said_of[address]
+            if pid not in tried:
+                tried.append(pid)
+            if pid not in asked_of:
+                asked_of[pid] = posting_says(address)
+            s = said_of[address] = asked_of[pid]
             if s["boards"]:
                 r["posting_named"] = list(s["boards"])
                 for board in s["boards"]:
@@ -1776,16 +1792,28 @@ def postings_of(entry: dict) -> list:
             if isinstance(r, dict) and r.get("type") == POSTING]
 
 
+def _posting_key(r: dict) -> tuple:
+    """One posting, however often and however spelled their site links it: its
+    id (posting_id), or the row's ref where it is no posting's own address."""
+    pid = posting_id(r.get("ref"))
+    return ("id", pid) if pid else ("ref", str(r.get("ref")))
+
+
 def _postings_linked(rows: list) -> int:
     """How many postings these rows are: one posting seen twice (a page the
-    finder read twice, or one link in two elements) is one."""
-    return len({str(r.get("ref")) for r in rows})
+    finder read twice, one link in two elements, or its id under two spellings
+    of its address) is one."""
+    return len({_posting_key(r) for r in rows})
 
 
 def _posting_list(rows: list, field: str, n: int = 3) -> str:
     """'<posting> (<what its page said>); ...' for the rows marked `field`,
-    each posting once."""
-    picked = list({str(r.get("ref")): r for r in rows if r.get(field)}.values())
+    each posting once (the first spelling of it their site linked)."""
+    first: dict = {}
+    for r in rows:
+        if r.get(field):
+            first.setdefault(_posting_key(r), r)
+    picked = list(first.values())
     out = "; ".join(f"{str(r.get('ref'))[:160]} ({str(r[field])[:160]})" for r in picked[:n])
     return out + (f"; and {len(picked) - n} more" if len(picked) > n else "")
 
@@ -3213,9 +3241,10 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     resolved_by_posting(results, ctx)
     if postings is not None:
         postings.update(posting_boards_of(ctx))
-    if ctx.get("postings"):
-        n_named = sum(1 for s in ctx["postings"].values() if s["boards"])
-        say(f"NOTE: asked {many(len(ctx['postings']), 'Paylocity posting')} their sites link "
+    asked = ctx.get("posting_ids") or {}             # one per posting id asked
+    if asked:
+        n_named = sum(1 for s in asked.values() if s["boards"])
+        say(f"NOTE: asked {many(len(asked), 'Paylocity posting')} their sites link "
             f"which board its own page names; {n_named} named one or more")
     # a Paylocity board named by its /List/ address is known by the /All/
     # address its own page states, before anything is keyed (fifth blind
@@ -3278,9 +3307,11 @@ def page_addresses_of(ctx: dict) -> dict:
 def posting_boards_of(ctx: dict) -> dict:
     """{posting address: [the boards its page named]} for every Paylocity
     posting's page this run asked and read (resolved_by_posting) - [] for one
-    that named none. The worklist carries it to apply (`posting_boards`): the
-    plan's own record of what each posting's page said, which a WIRE row found
-    by way of a posting must agree with to be wired at all."""
+    that named none - under each spelling of its address their sites linked,
+    the one answer its id was asked for. The worklist carries it to apply
+    (`posting_boards`): the plan's own record of what each posting's page
+    said, which a WIRE row found by way of a posting must agree with to be
+    wired at all."""
     return {a: list(s["boards"]) for a, s in sorted((ctx.get("postings") or {}).items())
             if not s.get("failed")}
 

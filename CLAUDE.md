@@ -2899,8 +2899,11 @@ round.
   robots.txt at every hop, never a hop off the host asked (refused before
   that host is asked anything), paced at the host gate - only at a posting's
   own address on recruiting.paylocity.com (`posting_address`: anything else
-  is refused unasked), once per address in the run whichever company links
-  it, in the finder's order, at most `POSTING_TRIES` (3) per company. It
+  is refused unasked), once per posting ID in the run however its address
+  is spelled (`posting_id`: Paylocity serves a posting by its id alone, so
+  .../Details/8201/<Tenant>/<Title> and .../Details/8201 are one posting,
+  asked once and counted once) whichever company links it, in the finder's
+  order, at most `POSTING_TRIES` (3) postings per company. It
   reads the board addresses the page names (`posting_boards_in`: its
   breadcrumb's /All/<uuid>/<Tenant>, its "View All Jobs" link written
   without the host, a /List/<n> where one is carried) in the finder's own
@@ -2926,7 +2929,8 @@ round.
   Postings none of whose pages named a board, beside another board, are a
   doubt. A board their site names itself by an id that agrees gets no second
   sighting from a posting. The worklist (version 6) records what each
-  posting's page named (`posting_boards`), and apply wires a row found by
+  posting's page named (`posting_boards`, under every spelling of its
+  address their sites linked), and apply wires a row found by
   way of a posting only where its `check_1.posting` is a posting's own
   address, check 1's own sighting quotes that posting's id, and the row and
   `posting_boards` both say its page named that one board, the row's own; a
