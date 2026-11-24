@@ -47695,6 +47695,9 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         posting by its id alone), in one company's links or in two companies'
                           -> asked ONCE, said as one posting, and it spends
                              one try: the open posting after it is asked
+      - a board their site names in a shape no reader takes, beside a closed
+        posting -> SKIP unusable, the reference named (never "no board");
+        beside a posting that fails on the day -> SKIP unreadable, naming it
     and in apply: a worklist edited to point a posting's row at another board,
     to give it another posting, to drop what check 1 says of the posting, or
     to have the posting's page name two boards, leaves the row alone; one
@@ -47738,7 +47741,9 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "spell_shut": D + "7811/Pp-Spell-Shut/Engineer",
          "spell_shut_bare": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7811",
          "spell_x": D + "7821/Pp-Spell-X-Inc/Engineer",
-         "spell_y": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7821"}
+         "spell_y": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7821",
+         "unusable": D + "7831/Pp-Unusable/Engineer",
+         "unusable_flaky": D + "7832/Pp-Unusable-Flaky/Engineer"}
     pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
                                 rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
              P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"],
@@ -47765,7 +47770,9 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
              P["spell_3"]: _pp_page("Pp Spell - Manager", B["spell"]),
              P["spell_shut"]: _PP_CLOSED, P["spell_shut_bare"]: _PP_CLOSED,
              P["spell_x"]: _pp_page("Pp Spell X - Engineer", B["spell_x"]),
-             P["spell_y"]: _pp_page("Pp Spell X - Engineer", B["spell_x"])}
+             P["spell_y"]: _pp_page("Pp Spell X - Engineer", B["spell_x"]),
+             P["unusable"]: _PP_CLOSED,
+             P["unusable_flaky"]: ats.AtsError(f"HTTP 503 for {P['unusable_flaky']}")}
     asked: list = []
 
     def posting_page(url, head=0):
@@ -47789,7 +47796,8 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                  co("pp-mixed", "Pp Mixed"), co("pp-door", "Pp Door"),
                  co("pp-as-board", "Pp As Board"), co("pp-spell", "Pp Spell"),
                  co("pp-spell-shut", "Pp Spell Shut"), co("pp-spell-x", "Pp Spell X"),
-                 co("pp-spell-y", "Pp Spell Y")]
+                 co("pp-spell-y", "Pp Spell Y"), co("pp-unusable", "Pp Unusable"),
+                 co("pp-unusable-flaky", "Pp Unusable Flaky")]
 
     def posted(cid, *refs, times=1):
         return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
@@ -47815,6 +47823,16 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         "pp-spell-shut": posted("pp-spell-shut", P["spell_shut"], P["spell_shut_bare"]),
         "pp-spell-x": posted("pp-spell-x", P["spell_x"]),
         "pp-spell-y": posted("pp-spell-y", P["spell_y"]),
+        # a Workday board their site names in a shape no reader takes (its pod
+        # out of place), beside a closed posting, and beside one that fails
+        "pp-unusable": entry("pp-unusable", [
+            cand("workday", ["ppun", "notapod", "site"], f"{site('pp-unusable')}/careers"),
+            cand(wf.POSTING, P["unusable"], f"{site('pp-unusable')}/careers",
+                 saw=P["unusable"])]),
+        "pp-unusable-flaky": entry("pp-unusable-flaky", [
+            cand("workday", ["ppuf", "notapod", "site"], f"{site('pp-unusable-flaky')}/careers"),
+            cand(wf.POSTING, P["unusable_flaky"], f"{site('pp-unusable-flaky')}/careers",
+                 saw=P["unusable_flaky"])]),
         # a posting's address written as a Paylocity BOARD (an older finder's file,
         # or one made by hand)
         "pp-as-board": entry("pp-as-board", [cand("paylocity", P["as_board"],
@@ -47972,6 +47990,25 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                     or P["spell_shut_bare"] in ssw or P["spell_shut"] not in ssw:
                 errors += fail(f"pp-spell-shut: one posting under two spellings of its address is "
                                f"said as two postings, or listed twice: {ssw[:400]!r}")
+            # A BOARD THEIR SITE NAMES IN A SHAPE NO READER TAKES IS NO "NO
+            # BOARD" (review of the posting change, 2026-11-23: beside a closed
+            # posting it was SKIP no-board, and the reference was listed nowhere)
+            un, unf = row("pp-unusable"), row("pp-unusable-flaky")
+            if un.get("action") != "SKIP" or un.get("kind") != "unusable" \
+                    or "the finder's reference cannot be used: workday/ppun/notapod/site" \
+                    not in _wb_words(un) or "and no board" in _wb_words(un) \
+                    or "Job Not Found" not in _wb_words(un) or un.get("queue_row"):
+                errors += fail(f"pp-unusable: a board their site names in a shape no reader takes, "
+                               f"beside a closed posting, is not SKIP unusable naming the "
+                               f"reference: {un.get('action')} {un.get('kind')} "
+                               f"{_wb_words(un)[:400]!r}")
+            if unf.get("action") != "SKIP" or unf.get("kind") != "unreadable" \
+                    or "failed on the day" not in _wb_words(unf) \
+                    or "workday/ppuf/notapod/site" not in _wb_words(unf) or unf.get("queue_row"):
+                errors += fail(f"pp-unusable-flaky: a posting that failed on the day, beside a "
+                               f"board their site names in a shape no reader takes, is not SKIP "
+                               f"unreadable naming the reference: {unf.get('action')} "
+                               f"{unf.get('kind')} {_wb_words(unf)[:400]!r}")
             spelled = [row("pp-spell-x"), row("pp-spell-y")]
             if any(r.get("action") != "HOLD" or "the same board was found for" not in _wb_words(r)
                    for r in spelled):
